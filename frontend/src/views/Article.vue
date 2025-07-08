@@ -1,12 +1,21 @@
 <template>
   <div class="container">
     <div class="article-detail" v-if="article">
+      <!-- 返回按钮 -->
+      <div class="back-button">
+        <router-link to="/" class="back-link icon-btn-text">
+          <i class="iconfont icon-arrow-left"></i>
+          返回首页
+        </router-link>
+      </div>
+      
       <header>
         <h1>{{ article.title }}</h1>
         <div class="meta">
           <span class="date">{{ formatDate(article.created_at) }}</span>
           <div class="labels">
             <span v-for="label in article.labels" :key="label" class="label">
+              <i class="iconfont icon-tag"></i>
               {{ label }}
             </span>
           </div>
@@ -15,11 +24,32 @@
       <main>
         <div class="markdown-body" v-html="markdownToHtml(article.content)"></div>
         <div class="source">
-          <a :href="article.url" target="_blank">查看原文</a>
+          <a :href="article.url" target="_blank" class="icon-btn-text">
+            <i class="iconfont icon-external-link"></i>
+            查看原文
+          </a>
         </div>
       </main>
       <div class="image-preview" v-if="previewImage" @click="closePreview">
-        <img :src="previewImage" alt="preview">
+        <img :src="previewImage" alt="🖼️ 预览图片">
+      </div>
+    </div>
+    
+    <!-- 文章不存在时的提示 -->
+    <div v-else class="not-found">
+      <div class="not-found-content">
+        <div class="not-found-icon">
+          <i class="iconfont icon-file icon-xl"></i>
+        </div>
+        <h2>
+          <i class="iconfont icon-search"></i>
+          文章未找到
+        </h2>
+        <p>抱歉，您访问的文章不存在或已被移除。</p>
+        <router-link to="/" class="back-home-btn icon-btn-text">
+          <i class="iconfont icon-home"></i>
+          返回首页
+        </router-link>
       </div>
     </div>
   </div>
@@ -87,6 +117,31 @@ window.handleImageClick = handleImageClick
   padding: 32px 24px;
   min-height: calc(100vh - 64px);
   background: #ffffff;
+}
+
+.back-button {
+  margin-bottom: 24px;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #3b82f6;
+  text-decoration: none;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.back-link:hover {
+  background: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
 }
 
 h1 {
@@ -190,7 +245,7 @@ main {
 }
 
 .markdown-body code {
-  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+  font-family: var(--font-family-mono);
   color: #475569;
   background: #f1f5f9;
   padding: 2px 6px;
@@ -302,5 +357,56 @@ main {
     margin-top: 16px;
     padding-top: 12px;
   }
+}
+
+/* 404 页面样式 */
+.not-found {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding: 40px 20px;
+}
+
+.not-found-content {
+  text-align: center;
+  max-width: 400px;
+}
+
+.not-found-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.not-found h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+}
+
+.not-found p {
+  color: #64748b;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: white;
+  background: #3b82f6;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.back-home-btn:hover {
+  background: #2563eb;
+  transform: translateY(-1px);
 }
 </style> 

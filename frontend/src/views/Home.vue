@@ -2,7 +2,10 @@
   <div class="container" :style="{minHeight:fullShow?'calc(100vh - 100px)':'auto'}">
     <header>
       <div class="search">
-        <input v-model="searchQuery" placeholder="搜索文章...">
+        <div class="search-input-wrapper">
+          <i class="iconfont icon-search"></i>
+          <input v-model="searchQuery" placeholder="搜索文章...">
+        </div>
       </div>
     </header>
 
@@ -26,6 +29,7 @@
           </div>
           <div class="labels">
             <span v-for="label in article.labels" :key="label" class="label">
+              <i class="iconfont icon-tag"></i>
               {{ label }}
             </span>
           </div>
@@ -34,39 +38,52 @@
             <div class="content-fade"></div>
           </div>
           <div class="article-footer">
-            <span class="date">{{ formatDate(article.created_at) }}</span>
-            <a :href="article.url" target="_blank">阅读更多</a>
+            <span class="date">
+              <i class="iconfont icon-calendar"></i>
+              {{ formatDate(article.created_at) }}
+            </span>
+            <router-link :to="{ name: 'article', params: { id: article.id }}" class="read-more-link icon-btn-text">
+              <i class="iconfont icon-book"></i>
+              阅读更多
+            </router-link>
           </div>
         </article>
       </div>
 
       <div class="pagination" v-if="totalPages > 1 && !fullShow">
         <button 
-          class="page-btn" 
+          class="page-btn icon-btn-text" 
           :disabled="currentPage === 1"
           @click="currentPage--"
         >
+          <i class="iconfont icon-arrow-left"></i>
           上一页
         </button>
         
         <span class="page-info">{{ currentPage }} / {{ totalPages }}</span>
         
         <button 
-          class="page-btn" 
+          class="page-btn icon-btn-text" 
           :disabled="currentPage === totalPages"
           @click="currentPage++"
         >
+          <i class="iconfont icon-arrow-right"></i>
           下一页
         </button>
       </div>
-      <div v-if="fullShow" class="loading"></div>
+      <div v-if="fullShow" class="loading">
+        <div class="loading-spinner"></div>
+        <span class="loading-text">
+          <i class="iconfont icon-book"></i>
+          加载更多内容中...
+        </span>
+      </div>
     </main>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
-import { marked } from 'marked'
+import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import articles from '../data/articles.json'
 
 const props = defineProps<{
@@ -223,6 +240,104 @@ const formatDate = (dateStr: string) => {
     day: 'numeric'
   })
 }
+
+// 滚动位置记忆功能
+const mainContainer = ref<HTMLElement | null>(null)
+
+// 保存滚动位置和当前页码
+const saveScrollState = () => {
+  if (props.fullShow && mainContainer.value) {
+    const scrollTop = mainContainer.value.scrollTop
+    const state = {
+      scrollPosition: scrollTop,
+      currentPage: currentPage.value,
+      searchQuery: searchQuery.value,
+      timestamp: Date.now()
+    }
+    sessionStorage.setItem('iohub-scroll-state', JSON.stringify(state))
+  }
+}
+
+// 恢复滚动位置和当前页码
+const restoreScrollState = async () => {
+  const savedState = sessionStorage.getItem('iohub-scroll-state')
+  if (savedState && props.fullShow) {
+    try {
+      const state = JSON.parse(savedState)
+      const isRecent = (Date.now() - state.timestamp) < 30 * 60 * 1000 // 30分钟内
+      
+      if (isRecent) {
+        // 恢复搜索查询
+        if (state.searchQuery) {
+          searchQuery.value = state.searchQuery
+        }
+        
+        // 恢复页码
+        if (state.currentPage && state.currentPage > 0) {
+          currentPage.value = state.currentPage
+        }
+        
+        // 等待DOM更新后恢复滚动位置
+        await nextTick()
+        if (mainContainer.value && state.scrollPosition) {
+          setTimeout(() => {
+            if (mainContainer.value) {
+              mainContainer.value.scrollTop = state.scrollPosition
+            }
+          }, 100)
+        }
+      }
+    } catch (error) {
+      console.warn('Failed to restore scroll state:', error)
+    }
+  }
+}
+
+// 定期保存滚动位置
+let saveScrollTimer: NodeJS.Timeout | null = null
+const throttledSaveScroll = () => {
+  if (saveScrollTimer) {
+    clearTimeout(saveScrollTimer)
+  }
+  saveScrollTimer = setTimeout(saveScrollState, 500)
+}
+
+// 监听滚动事件
+const handleScroll = () => {
+  throttledSaveScroll()
+}
+
+// 页码变化时保存状态
+watch(currentPage, () => {
+  saveScrollState()
+})
+
+// 搜索变化时清除状态
+watch(searchQuery, () => {
+  sessionStorage.removeItem('iohub-scroll-state')
+})
+
+// 组件挂载时设置事件监听和恢复状态
+onMounted(async () => {
+  await nextTick()
+  mainContainer.value = document.querySelector('main') as HTMLElement
+  
+  if (mainContainer.value) {
+    mainContainer.value.addEventListener('scroll', handleScroll, { passive: true })
+    await restoreScrollState()
+  }
+})
+
+// 组件卸载时清理事件监听
+onBeforeUnmount(() => {
+  if (mainContainer.value) {
+    mainContainer.value.removeEventListener('scroll', handleScroll)
+  }
+  if (saveScrollTimer) {
+    clearTimeout(saveScrollTimer)
+  }
+  saveScrollState() // 保存最终状态
+})
 </script>
 
 <style scoped>
@@ -247,9 +362,22 @@ header {
   position: relative;
 }
 
+.search-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-wrapper .iconfont {
+  position: absolute;
+  left: 16px;
+  z-index: 1;
+  pointer-events: none;
+}
+
 .search input {
   display: inline-block;
-  padding: 14px 20px;
+  padding: 14px 20px 14px 45px;
   font-size: 0.9375rem;
   border: 1px solid #e2e8f0;
   border-radius: 12px;
@@ -378,7 +506,7 @@ article h2 a:hover {
   font-weight: 500;
 }
 
-.article-footer a {
+.article-footer .read-more-link {
   font-size: 0.875rem;
   color: #3b82f6;
   font-weight: 600;
@@ -388,7 +516,7 @@ article h2 a:hover {
   transition: all 0.2s ease;
 }
 
-.article-footer a:hover {
+.article-footer .read-more-link:hover {
   background: #eff6ff;
   color: #2563eb;
 }
@@ -467,13 +595,27 @@ article h2 a:hover {
 }
 
 .loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.loading-spinner {
   border: 4px solid #f3f3f3; 
   border-top: 4px solid #3498db; 
   border-radius: 50%;
   width: 20px;
   height: 20px;
   animation: spin 2s linear infinite;
-  margin: 10px auto; 
+}
+
+.loading-text {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-weight: 500;
 }
 
 @keyframes spin {
