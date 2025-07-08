@@ -84,29 +84,35 @@ window.handleImageClick = handleImageClick
 .container {
   max-width: 60%;
   margin: 0 auto;
-  padding: 24px;
+  padding: 32px 24px;
   min-height: calc(100vh - 64px);
+  background: #ffffff;
 }
 
 h1 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  color: #111827;
-  margin-bottom: 16px;
-  line-height: 1.3;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 24px;
+  line-height: 1.2;
   letter-spacing: -0.025em;
 }
 
 .meta {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  margin: 16px 0;
+  gap: 16px;
+  margin: 24px 0;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
 }
 
 .date {
-  color: #6b7280;
-  font-size: 0.875rem;
+  color: #64748b;
+  font-size: 0.9375rem;
+  font-weight: 500;
 }
 
 .labels {
@@ -116,35 +122,37 @@ h1 {
 }
 
 .label {
-  padding: 4px 12px;
-  border-radius: 16px;
-  font-size: 12px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8125rem;
   font-weight: 500;
-  color: #16a34a;
-  background: #dcfce7;
+  color: #0f766e;
+  background: #f0fdfa;
   transition: all 0.2s ease;
   cursor: default;
   display: inline-flex;
   align-items: center;
   line-height: 1.2;
+  border: 1px solid #99f6e4;
 }
 
 .label:hover {
-  background: #bbf7d0;
+  background: #ccfbf1;
+  border-color: #5eead4;
 }
 
 main {
   background: white;
-  padding: 32px;
+  padding: 40px;
   border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
 }
 
 .markdown-body {
-  color: #374151;
-  line-height: 1.8;
-  font-size: 1rem;
+  color: #475569;
+  line-height: 1.7;
+  font-size: 1.0625rem;
 }
 
 .markdown-body >>> img {
@@ -160,57 +168,68 @@ main {
 .markdown-body h2,
 .markdown-body h3,
 .markdown-body h4 {
-  color: #111827;
+  color: #1e293b;
   font-weight: 600;
-  margin: 1.5em 0 1em;
-  line-height: 1.3;
+  margin: 2em 0 1em;
+  line-height: 1.25;
 }
 
-.markdown-body h1 { font-size: 1.5rem; }
-.markdown-body h2 { font-size: 1.375rem; }
+.markdown-body h1 { font-size: 1.75rem; }
+.markdown-body h2 { font-size: 1.5rem; }
 .markdown-body h3 { font-size: 1.25rem; }
 .markdown-body h4 { font-size: 1.125rem; }
 
 .markdown-body pre {
-  background: #f8fafc;
-  padding: 16px;
-  border-radius: 8px;
+  background: #f1f5f9;
+  padding: 20px;
+  border-radius: 12px;
   overflow-x: auto;
   margin: 1.5em 0;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #e2e8f0;
   font-size: 0.9375rem;
 }
 
 .markdown-body code {
-  font-family: ui-monospace, monospace;
-  color: #374151;
+  font-family: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.875em;
 }
 
 .markdown-body blockquote {
   margin: 1.5em 0;
-  padding: 0.5em 1em;
-  border-left: 4px solid #e5e7eb;
-  background: #f9fafb;
-  color: #4b5563;
+  padding: 1em 1.5em;
+  border-left: 4px solid #3b82f6;
+  background: #f8fafc;
+  color: #475569;
+  border-radius: 0 8px 8px 0;
 }
 
 .source {
-  margin-top: 24px;
-  padding-top: 16px;
-  border-top: 1px solid #f3f4f6;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid #e2e8f0;
   display: flex;
   justify-content: flex-end;
 }
 
 .source a {
-  font-size: 0.875rem;
-  color: #2563eb;
-  font-weight: 500;
+  font-size: 0.9375rem;
+  color: #3b82f6;
+  font-weight: 600;
   text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  border: 1px solid #e2e8f0;
 }
 
 .source a:hover {
-  text-decoration: underline;
+  background: #eff6ff;
+  color: #2563eb;
+  border-color: #bfdbfe;
 }
 
 .image-preview {
@@ -219,19 +238,21 @@ main {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(15, 23, 42, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1000;
   cursor: zoom-out;
+  backdrop-filter: blur(4px);
 }
 
 .image-preview img {
   max-width: 90%;
   max-height: 90vh;
   object-fit: contain;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
 }
 
 @media screen and (max-width: 768px) {
