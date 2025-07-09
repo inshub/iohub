@@ -3,9 +3,8 @@
     <div class="article-detail" v-if="article">
       <!-- 返回按钮 -->
       <div class="back-button">
-        <router-link to="/" class="back-link icon-btn-text">
-          <i class="iconfont icon-arrow-left"></i>
-          返回首页
+        <router-link to="/" class="back-link btn-rounded btn-sm">
+          ← 返回首页
         </router-link>
       </div>
       
@@ -15,7 +14,6 @@
           <span class="date">{{ formatDate(article.created_at) }}</span>
           <div class="labels">
             <span v-for="label in article.labels" :key="label" class="label">
-              <i class="iconfont icon-tag"></i>
               {{ label }}
             </span>
           </div>
@@ -24,9 +22,8 @@
       <main>
         <div class="markdown-body" v-html="markdownToHtml(article.content)"></div>
         <div class="source">
-          <a :href="article.url" target="_blank" class="icon-btn-text">
-            <i class="iconfont icon-external-link"></i>
-            查看原文
+          <a :href="article.url" target="_blank" class="btn-shadow">
+            🔗 查看原文
           </a>
         </div>
       </main>
@@ -39,16 +36,14 @@
     <div v-else class="not-found">
       <div class="not-found-content">
         <div class="not-found-icon">
-          <i class="iconfont icon-file icon-xl"></i>
+          📄
         </div>
         <h2>
-          <i class="iconfont icon-search"></i>
           文章未找到
         </h2>
         <p>抱歉，您访问的文章不存在或已被移除。</p>
-        <router-link to="/" class="back-home-btn icon-btn-text">
-          <i class="iconfont icon-home"></i>
-          返回首页
+        <router-link to="/" class="back-home-btn btn-text btn-lg">
+          🏠 返回首页
         </router-link>
       </div>
     </div>
@@ -114,40 +109,19 @@ window.handleImageClick = handleImageClick
 .container {
   max-width: 60%;
   margin: 0 auto;
-  padding: 32px 24px;
+  padding: 24px;
   min-height: calc(100vh - 64px);
-  background: #ffffff;
+  background: transparent;
 }
 
 .back-button {
   margin-bottom: 24px;
 }
 
-.back-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 16px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  color: #3b82f6;
-  text-decoration: none;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background: white;
-  transition: all 0.2s ease;
-}
-
-.back-link:hover {
-  background: #eff6ff;
-  border-color: #bfdbfe;
-  color: #2563eb;
-}
-
 h1 {
   font-size: 2rem;
   font-weight: 700;
-  color: #1e293b;
+  color: var(--color-text-primary);
   margin-bottom: 24px;
   line-height: 1.2;
   letter-spacing: -0.025em;
@@ -159,9 +133,10 @@ h1 {
   gap: 16px;
   margin: 24px 0;
   padding: 20px;
-  background: #f8fafc;
-  border-radius: 12px;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .date {
@@ -177,37 +152,42 @@ h1 {
 }
 
 .label {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8125rem;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
   font-weight: 500;
-  color: #0f766e;
-  background: #f0fdfa;
-  transition: all 0.2s ease;
+  color: var(--color-secondary);
+  background: var(--color-secondary-light);
+  transition: all var(--transition-base);
   cursor: default;
   display: inline-flex;
   align-items: center;
   line-height: 1.2;
-  border: 1px solid #99f6e4;
+  border: 1px solid var(--color-secondary);
 }
 
 .label:hover {
-  background: #ccfbf1;
-  border-color: #5eead4;
+  background: var(--color-secondary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 main {
-  background: white;
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-primary);
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
 }
 
 .markdown-body {
-  color: #475569;
+  color: var(--color-text-secondary);
   line-height: 1.7;
-  font-size: 1.0625rem;
+  max-width: none;
+  margin: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
 }
 
 .markdown-body >>> img {
@@ -223,43 +203,70 @@ main {
 .markdown-body h2,
 .markdown-body h3,
 .markdown-body h4 {
-  color: #1e293b;
+  color: var(--color-text-primary);
   font-weight: 600;
-  margin: 2em 0 1em;
+  margin: 2.5em 0 1.5em;
   line-height: 1.25;
+  position: relative;
 }
 
-.markdown-body h1 { font-size: 1.75rem; }
-.markdown-body h2 { font-size: 1.5rem; }
-.markdown-body h3 { font-size: 1.25rem; }
+.markdown-body h1::before,
+.markdown-body h2::before {
+  content: '';
+  position: absolute;
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--color-secondary);
+  border-radius: 2px;
+}
+
+.markdown-body h1 { font-size: 1.875rem; }
+.markdown-body h2 { font-size: 1.625rem; }
+.markdown-body h3 { font-size: 1.375rem; }
 .markdown-body h4 { font-size: 1.125rem; }
 
 .markdown-body pre {
-  background: #f1f5f9;
-  padding: 20px;
-  border-radius: 12px;
+  background: var(--color-bg-secondary);
+  padding: 16px;
+  border-radius: var(--radius-md);
   overflow-x: auto;
   margin: 1.5em 0;
-  border: 1px solid #e2e8f0;
-  font-size: 0.9375rem;
+  border: 1px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  box-shadow: var(--shadow-sm);
 }
 
 .markdown-body code {
   font-family: var(--font-family-mono);
-  color: #475569;
-  background: #f1f5f9;
+  color: var(--color-primary);
+  background: var(--color-primary-light);
   padding: 2px 6px;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   font-size: 0.875em;
+  font-weight: 500;
 }
 
 .markdown-body blockquote {
   margin: 1.5em 0;
   padding: 1em 1.5em;
-  border-left: 4px solid #3b82f6;
-  background: #f8fafc;
-  color: #475569;
-  border-radius: 0 8px 8px 0;
+  border-left: 4px solid var(--color-secondary);
+  background: var(--color-secondary-light);
+  color: var(--color-text-secondary);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  position: relative;
+}
+
+.markdown-body blockquote::before {
+  content: '"';
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 1.5rem;
+  color: var(--color-secondary);
+  opacity: 0.5;
 }
 
 .source {
@@ -270,22 +277,6 @@ main {
   justify-content: flex-end;
 }
 
-.source a {
-  font-size: 0.9375rem;
-  color: #3b82f6;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-  border: 1px solid #e2e8f0;
-}
-
-.source a:hover {
-  background: #eff6ff;
-  color: #2563eb;
-  border-color: #bfdbfe;
-}
 
 .image-preview {
   position: fixed;
@@ -391,22 +382,4 @@ main {
   line-height: 1.6;
 }
 
-.back-home-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 24px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: white;
-  background: #3b82f6;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
-
-.back-home-btn:hover {
-  background: #2563eb;
-  transform: translateY(-1px);
-}
 </style> 

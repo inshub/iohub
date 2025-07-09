@@ -1,84 +1,80 @@
 <template>
   <div class="container" :style="{minHeight:fullShow?'calc(100vh - 100px)':'auto'}">
-    <header>
-      <div class="search">
-        <div class="search-input-wrapper">
-          <i class="iconfont icon-search"></i>
-          <input v-model="searchQuery" placeholder="搜索文章...">
+    <!-- 整合的主内容卡片 -->
+    <div class="main-card">
+      <header>
+        <div class="search">
+          <div class="search-input-wrapper">
+            <input v-model="searchQuery" placeholder="搜索文章...">
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
 
-    <main 
-      :class="{ 'hide-scrollbar': props.fullShow }"
-      :style="{
-        overflowY: props.fullShow ? 'auto' : 'hidden',
-        height: props.fullShow ? 'calc(100vh - 180px)' : 'auto'
-      }" 
-      v-on:scrollend="scorllEnd"
-    >
-      <div class="articles">
-        <article v-for="article in paginatedArticles" :key="article.id">
-          <h2>
-            <router-link :to="{ name: 'article', params: { id: article.id }}">
-              {{ article.title }}
-            </router-link>
-          </h2>
-          <div class="preview-image" v-if="getFirstImage(article.content)">
-            <img :src="getFirstImage(article.content)" :alt="article.title">
-          </div>
-          <div class="labels">
-            <span v-for="label in article.labels" :key="label" class="label">
-              <i class="iconfont icon-tag"></i>
-              {{ label }}
-            </span>
-          </div>
-          <div class="content">
-            <p>{{ getArticleExcerpt(article.content) }}</p>
-            <div class="content-fade"></div>
-          </div>
-          <div class="article-footer">
-            <span class="date">
-              <i class="iconfont icon-calendar"></i>
-              {{ formatDate(article.created_at) }}
-            </span>
-            <router-link :to="{ name: 'article', params: { id: article.id }}" class="read-more-link icon-btn-text">
-              <i class="iconfont icon-book"></i>
-              阅读更多
-            </router-link>
-          </div>
-        </article>
-      </div>
+      <main 
+        :class="{ 'hide-scrollbar': props.fullShow }"
+        :style="{
+          overflowY: props.fullShow ? 'auto' : 'hidden',
+          height: props.fullShow ? 'calc(100vh - 180px)' : 'auto'
+        }" 
+        v-on:scrollend="scorllEnd"
+      >
+        <div class="articles">
+          <article v-for="article in paginatedArticles" :key="article.id">
+            <h2>
+              <router-link :to="{ name: 'article', params: { id: article.id }}">
+                {{ article.title }}
+              </router-link>
+            </h2>
+            <div class="preview-image" v-if="getFirstImage(article.content)">
+              <img :src="getFirstImage(article.content)" :alt="article.title">
+            </div>
+            <div class="labels">
+              <span v-for="label in article.labels" :key="label" class="label">
+                {{ label }}
+              </span>
+            </div>
+            <div class="content">
+              <p>{{ getArticleExcerpt(article.content) }}</p>
+              <div class="content-fade"></div>
+            </div>
+            <div class="article-footer">
+              <span class="date">
+                {{ formatDate(article.created_at) }}
+              </span>
+              <router-link :to="{ name: 'article', params: { id: article.id }}" class="read-more-link btn-text btn-sm">
+                阅读更多
+              </router-link>
+            </div>
+          </article>
+        </div>
 
-      <div class="pagination" v-if="totalPages > 1 && !fullShow">
+        <div class="pagination" v-if="totalPages > 1 && !fullShow">
         <button 
-          class="page-btn icon-btn-text" 
+          class="page-btn btn-secondary btn-sm" 
           :disabled="currentPage === 1"
           @click="currentPage--"
         >
-          <i class="iconfont icon-arrow-left"></i>
           上一页
         </button>
         
         <span class="page-info">{{ currentPage }} / {{ totalPages }}</span>
         
         <button 
-          class="page-btn icon-btn-text" 
+          class="page-btn btn-secondary btn-sm" 
           :disabled="currentPage === totalPages"
           @click="currentPage++"
         >
-          <i class="iconfont icon-arrow-right"></i>
           下一页
         </button>
       </div>
       <div v-if="fullShow" class="loading">
         <div class="loading-spinner"></div>
         <span class="loading-text">
-          <i class="iconfont icon-book"></i>
           加载更多内容中...
         </span>
       </div>
     </main>
+    </div>
   </div>
 </template>
 
@@ -347,18 +343,30 @@ onBeforeUnmount(() => {
   margin: 0 auto;
   padding: 24px;
   min-height: calc(100vh - 64px);
-  background: #ffffff;
+  background: transparent;
+}
+
+/* 主内容卡片 - 整合搜索和内容 */
+.main-card {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
 }
 
 header {
-  margin-bottom: 32px;
-  text-align: center;
-  padding: 24px 0;
+  padding: 24px 24px 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  margin-bottom: 0;
+  border-bottom: 1px solid var(--color-border);
 }
 
 .search {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 24px;
   position: relative;
 }
 
@@ -368,24 +376,17 @@ header {
   align-items: center;
 }
 
-.search-input-wrapper .iconfont {
-  position: absolute;
-  left: 16px;
-  z-index: 1;
-  pointer-events: none;
-}
-
 .search input {
   display: inline-block;
-  padding: 14px 20px 14px 45px;
-  font-size: 0.9375rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  background: white;
-  transition: all 0.2s ease;
-  color: #374151;
+  padding: 12px 16px;
+  font-size: var(--font-size-base);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  transition: all var(--transition-base);
+  color: var(--color-text-primary);
   width: 100%;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-sm);
 }
 
 .search input {
@@ -397,13 +398,19 @@ header {
 }
 
 .search input:focus {
-  border-color: #3b82f6;
+  border-color: var(--color-primary);
   outline: none;
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1), var(--shadow-md);
 }
 
 .search input::placeholder {
-  color: #9ca3af;
+  color: var(--color-text-tertiary);
+}
+
+/* 主内容区域 */
+main {
+  padding: 24px;
+  background: transparent;
 }
 
 .articles {
@@ -414,19 +421,20 @@ header {
 }
 
 article {
-  padding: 24px;
-  border-radius: 16px;
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-primary);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
   display: flex;
   flex-direction: column;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--color-border);
 }
 
 article:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
 }
 
 article h2 {
@@ -444,7 +452,7 @@ article h2 a {
 }
 
 article h2 a:hover {
-  color: #3b82f6;
+  color: var(--color-primary);
 }
 
 .labels {
@@ -455,23 +463,25 @@ article h2 a:hover {
 }
 
 .label {
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8125rem;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
   font-weight: 500;
-  color: #0f766e;
-  background: #f0fdfa;
-  transition: all 0.2s ease;
+  color: var(--color-secondary);
+  background: var(--color-secondary-light);
+  transition: all var(--transition-base);
   cursor: default;
   display: inline-flex;
   align-items: center;
   line-height: 1.2;
-  border: 1px solid #99f6e4;
+  border: 1px solid var(--color-secondary);
 }
 
 .label:hover {
-  background: #ccfbf1;
-  border-color: #5eead4;
+  background: var(--color-secondary);
+  color: white;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 
 .content {
@@ -508,17 +518,11 @@ article h2 a:hover {
 
 .article-footer .read-more-link {
   font-size: 0.875rem;
-  color: #3b82f6;
+  color: white;
   font-weight: 600;
   text-decoration: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.article-footer .read-more-link:hover {
-  background: #eff6ff;
-  color: #2563eb;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
 .preview-image {
@@ -527,10 +531,11 @@ article h2 a:hover {
   height: 0;
   padding-bottom: 56.25%;
   margin-bottom: 16px;
-  border-radius: 12px;
+  border-radius: var(--radius-md);
   overflow: hidden;
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
 }
 
 .preview-image img {
@@ -540,11 +545,11 @@ article h2 a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  transition: transform var(--transition-base);
 }
 
 .preview-image:hover img {
-  transform: scale(1.05);
+  transform: scale(1.02);
 }
 
 .pagination {
@@ -556,36 +561,6 @@ article h2 a:hover {
   padding: 24px 0;
 }
 
-.page-btn {
-  padding: 10px 20px;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  background: white;
-  color: #374151;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 100px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-.page-btn:hover:not(:disabled) {
-  background: #f8fafc;
-  border-color: #cbd5e1;
-  color: #1e293b;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.page-btn:disabled {
-  background: #f8fafc;
-  border-color: #e2e8f0;
-  color: #94a3b8;
-  cursor: not-allowed;
-}
 
 .page-info {
   font-size: 0.875rem;

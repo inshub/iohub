@@ -1,21 +1,27 @@
-/* 统一的设计系统 */
+/* 统一的设计系统 - 风格 */
 :root {
-  /* 现代配色方案 */
-  --color-primary: #3b82f6;
-  --color-primary-hover: #2563eb;
-  --color-primary-light: #eff6ff;
-  --color-secondary: #0f766e;
-  --color-secondary-light: #f0fdfa;
-  --color-text-primary: #1e293b;
-  --color-text-secondary: #475569;
-  --color-text-tertiary: #64748b;
+  /* 配色方案 */
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-primary-light: #ede9fe;
+  --color-secondary: #f97316;
+  --color-secondary-light: #fed7aa;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-tertiary: #9ca3af;
   --color-bg-primary: #ffffff;
-  --color-bg-secondary: #f8fafc;
-  --color-bg-tertiary: #f1f5f9;
-  --color-border: #e2e8f0;
-  --color-border-light: #f1f5f9;
+  --color-bg-secondary: #f3f4f6;
+  --color-bg-tertiary: #f9fafb;
+  --color-bg-page: #faf7ff;
+  --color-border: #e5e7eb;
+  --color-border-light: #f3f4f6;
   --color-shadow: rgba(0, 0, 0, 0.1);
   --color-shadow-hover: rgba(0, 0, 0, 0.15);
+  
+  /* 渐变色 */
+  --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  --gradient-secondary: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+  --gradient-bg: linear-gradient(135deg, #faf7ff 0%, #f0f1ff 100%);
   
   /* 字体系统 - 优先使用霞鹜文楷 */
   --font-family-base: "LXGW Bright", "霞鹜文楷", -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans CJK SC', 'Source Han Sans SC', 'Microsoft YaHei', sans-serif;
@@ -46,9 +52,9 @@
   
   /* 阴影 */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
   
   /* 过渡动画 */
   --transition-fast: 0.15s ease;
@@ -67,306 +73,230 @@
   font-variant-ligatures: common-ligatures;
 }
 
-/* SVG 图标方案 - 不依赖外部资源 */
-.iconfont {
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  vertical-align: middle;
-  font-size: 16px;
-  line-height: 1;
-}
+/* 风格按钮样式 */
 
-/* SVG 图标定义 - 支持 currentColor */
-.icon-search::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-tag::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z'/%3E%3Ccircle cx='7.5' cy='7.5' r='.5' fill='currentColor'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z'/%3E%3Ccircle cx='7.5' cy='7.5' r='.5' fill='currentColor'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-calendar::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M8 2v4'/%3E%3Cpath d='M16 2v4'/%3E%3Crect width='18' height='18' x='3' y='4' rx='2'/%3E%3Cpath d='M3 10h18'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M8 2v4'/%3E%3Cpath d='M16 2v4'/%3E%3Crect width='18' height='18' x='3' y='4' rx='2'/%3E%3Cpath d='M3 10h18'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-home::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8'/%3E%3Cpath d='M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8'/%3E%3Cpath d='M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-book::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M12 7v14'/%3E%3Cpath d='M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-file::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/%3E%3Cpath d='M14 2v4a2 2 0 0 0 2 2h4'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z'/%3E%3Cpath d='M14 2v4a2 2 0 0 0 2 2h4'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-github::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='currentColor'%3E%3Cpath d='M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-arrow-left::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='m15 18-6-6 6-6'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='m15 18-6-6 6-6'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-arrow-right::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='m9 18 6-6-6-6'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-.icon-external-link::before {
-  content: "";
-  display: inline-block;
-  width: 1em;
-  height: 1em;
-  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M15 3h6v6'/%3E%3Cpath d='M10 14 21 3'/%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3C/svg%3E");
-  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M15 3h6v6'/%3E%3Cpath d='M10 14 21 3'/%3E%3Cpath d='M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6'/%3E%3C/svg%3E");
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
-  background-color: currentColor;
-}
-
-/* 图标大小变体 */
-.iconfont.icon-sm { font-size: 12px; width: 12px; height: 12px; }
-.iconfont.icon-md { font-size: 16px; width: 16px; height: 16px; }
-.iconfont.icon-lg { font-size: 20px; width: 20px; height: 20px; }
-.iconfont.icon-xl { font-size: 24px; width: 24px; height: 24px; }
-
-/* 图标颜色变体 */
-.iconfont.icon-primary { color: var(--color-primary); }
-.iconfont.icon-secondary { color: var(--color-secondary); }
-.iconfont.icon-muted { color: var(--color-text-tertiary); }
-
-/* 特定图标的颜色样式 - 天蓝色调 */
-.icon-external-link { color: #38bdf8; } /* 天蓝色 - 外链 */
-.icon-tag { color: #0ea5e9; } /* 蓝色 - 标签 */
-.icon-arrow-left { color: #64748b; } /* 灰色 - 箭头 */
-.icon-arrow-right { color: #64748b; } /* 灰色 - 箭头 */
-.icon-calendar { color: #06b6d4; } /* 青蓝色 - 日历 */
-.icon-book { color: #3b82f6; } /* 蓝色 - 书籍 */
-.icon-search { color: #0ea5e9; } /* 蓝色 - 搜索 */
-
-/* 图标悬停效果 */
-.icon-external-link:hover { color: #0ea5e9; }
-.icon-tag:hover { color: #0284c7; }
-.icon-arrow-left:hover { color: #475569; }
-.icon-arrow-right:hover { color: #475569; }
-.icon-calendar:hover { color: #0891b2; }
-.icon-book:hover { color: #2563eb; }
-.icon-search:hover { color: #0284c7; }
-
-
-/* 图标与文字组合 */
-.icon-text {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-}
-
-.icon-text .iconfont {
-  flex-shrink: 0;
-}
-
-/* 基于 iconfont 的按钮样式 */
-.icon-btn {
+/* 1. 主按钮 - 紫色简洁风格 */
+.btn-text {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-sm);
-  border: none;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-primary);
   border-radius: var(--radius-md);
-  background: transparent;
-  color: var(--color-text-secondary);
-  cursor: pointer;
-  transition: all var(--transition-base);
-  text-decoration: none;
-  font-size: var(--font-size-base);
-  min-width: 32px;
-  min-height: 32px;
-}
-
-.icon-btn:hover {
-  background: var(--color-bg-tertiary);
-  color: var(--color-primary);
-  transform: translateY(-1px);
-}
-
-.icon-btn.active {
-  background: var(--color-primary-light);
-  color: var(--color-primary);
-}
-
-/* 带文字的图标按钮 */
-.icon-btn-text {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-bg-primary);
-  color: var(--color-text-primary);
+  background: var(--color-primary);
+  color: white;
   cursor: pointer;
   transition: all var(--transition-base);
   text-decoration: none;
   font-size: var(--font-size-sm);
   font-weight: 500;
+  line-height: 1.5;
+  box-shadow: var(--shadow-sm);
 }
 
-.icon-btn-text:hover {
-  background: var(--color-bg-tertiary);
-  border-color: var(--color-primary);
-  color: var(--color-primary);
-  transform: translateY(-1px);
+.btn-text:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
   box-shadow: var(--shadow-md);
 }
 
-.icon-btn-text .iconfont {
-  flex-shrink: 0;
+/* 2. 次要按钮 - 白色边框风格 */
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: white;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  box-shadow: var(--shadow-md);
+}
+
+/* 3. 橙色强调按钮 - 用于重要操作 */
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-secondary);
+  border-radius: var(--radius-md);
+  background: var(--color-secondary);
+  color: white;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-accent:hover {
+  background: #ea580c;
+  border-color: #ea580c;
+  box-shadow: var(--shadow-md);
+}
+
+/* 4. 圆形按钮 - 简洁风格 */
+.btn-rounded {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-primary);
+  border-radius: 50px;
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-rounded:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-md);
+}
+
+/* 5. 极简按钮 - 透明背景 */
+.btn-minimal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: transparent;
+  color: var(--color-primary);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.btn-minimal:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary-hover);
+}
+
+/* 6. 阴影按钮 - 周刊风格 */
+.btn-shadow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  line-height: 1.5;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-shadow:hover {
+  background: var(--color-primary-hover);
+  border-color: var(--color-primary-hover);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-1px);
+}
+
+/* 按钮尺寸 - PrompterHub风格 */
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+.btn-lg {
+  padding: 14px 28px;
+  font-size: 16px;
+  border-radius: 14px;
+}
+
+.btn-xl {
+  padding: 18px 36px;
+  font-size: 18px;
+  border-radius: 16px;
 }
 
 /* 禁用状态 */
-.icon-btn-text:disabled,
-.icon-btn-text[disabled] {
-  background: var(--color-bg-secondary);
-  border-color: var(--color-border-light);
-  color: var(--color-text-tertiary);
+.btn-text:disabled,
+.btn-secondary:disabled,
+.btn-minimal:disabled,
+.btn-rounded:disabled,
+.btn-shadow:disabled {
+  opacity: 0.5;
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
+  transform: none !important;
+  box-shadow: none !important;
 }
 
-.icon-btn-text:disabled:hover,
-.icon-btn-text[disabled]:hover {
-  background: var(--color-bg-secondary);
-  border-color: var(--color-border-light);
-  color: var(--color-text-tertiary);
-  transform: none;
-  box-shadow: none;
+/* 添加带图标的按钮样式 */
+.btn-with-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-with-icon svg,
+.btn-with-icon img {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-with-icon.btn-lg svg,
+.btn-with-icon.btn-lg img {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-with-icon.btn-xl svg,
+.btn-with-icon.btn-xl img {
+  width: 20px;
+  height: 20px;
 }
 
 /* 全局基础样式 */
 body {
   margin: 0;
   padding: 0;
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-page);
   color: var(--color-text-primary);
   font-family: var(--font-family-base);
   font-size: var(--font-size-base);
   line-height: 1.6;
   transition: background-color var(--transition-base);
+  min-height: 100vh;
 }
 
 /* 应用容器 */
@@ -374,7 +304,7 @@ body {
   width: 100%;
   margin: 0 auto;
   min-height: 100vh;
-  background: var(--color-bg-secondary);
+  background: var(--color-bg-page);
 } 
 
 /* 通用工具类 */
@@ -388,8 +318,9 @@ body {
 }
 
 .card:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
 }
 
 /* 确保所有元素都使用 border-box */
