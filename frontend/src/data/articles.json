@@ -36,7 +36,9 @@
     "title": "【开源自荐】EPUB 双语无损翻译",
     "content": "## 简要\n\n**项目名:** epub-translator\n**GitHub:** https://github.com/oomol-lab/epub-translator\n**协议:** MIT\n\n## 功能特性\n\n- **多语言互译**：支持 英文、中文、日文、西班牙语、法语、德语等主流语言互译。\n- **无损翻译**：基于 AI 大模型 100% 保留原书的格式、插图、目录和排版\n- **双语对照**：支持双语对照，方便学习和阅读\n- **插入提示词**：指导 AI 翻译，如术语表，角色人名表等。\n- **AI 模型可选**：支持 DeepSeek、ChatGPT 等主流大模型\n- **高性能并行**：AI 请求多路并发，快速翻译整本书籍\n- **错误自恢复**：自动重试超时 & 速率限制，长书也能一次跑通\n\n## 安装\n\n```bash\npip install epub-translator\n```\n\n## 核心用法示例\n\n```python\nfrom epub_translator import LLM, translate, Language\n\nllm = LLM(\n  key=\"<LLM-API-KEY>\", # LLM 的 API key\n  url=\"https://api.deepseek.com\", # LLM 的 base URL\n  model=\"deepseek-chat\", # LLM 的模型名\n  token_encoding=\"o200k_base\", # 计算 tokens 个数的本地模型\n)\n\ntranslate(\n  llm=llm, # 上一步构造的 llm 对象\n  source_path=\"/path/to/epub/file\", # 要翻译的原 EPUB 文件\n  translated_path=\"/path/to/translated/epub/file\", # 翻译后的 EPUB 保存路径\n  target_language=Language.SIMPLIFIED_CHINESE, # 翻译目标语言，此例为简体中文。\n  user_prompt=\"Le Petit Prince 应该译为“小王子”。\", # 用户提示词，指导 AI 翻译 （可选）\n)\n```\n\n运行后即可得到保留原版版式的「双语 EPUB」，在 KOReader / Koodo Reader / Apple Books 等阅读器里直接打开即可\n\n## 实际效果\n\n<img width=\"1795\" height=\"656\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfb4f098-e653-4567-b996-cf6f46345ad6\" />",
     "created_at": "2025-07-15T08:49:33Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/7273"
   },
   {
@@ -60,7 +62,9 @@
     "title": "【工具推荐】Configs 自动扫描出各种常见配置文件，shell配置文件编辑保存时自动执行 source ~/.zshrc",
     "content": "# Configs\n\n[https://github.com/iHongRen/configEditor](https://github.com/iHongRen/configEditor)\n\nConfigs 是一款 **macOS** **应用程序**，旨在帮助您轻松管理和编辑您的配置文件,基于 SwiftUI。大小仅几百KB.\n\n它会自动扫描各种编程语言和工具的常见配置文件，提供一个方便的界面来查看和编辑它们，并允许您添加自己的自定义配置文件。\n\n## 截图\n\n![](https://raw.githubusercontent.com/iHongRen/configEditor/main/screenshots/light.png)\n\n## 功能\n\n- **自动发现**：扫描您的主目录以查找常见的配置文件（例如，`.zshrc`、`.gitconfig`、`.vimrc`、`.npmrc` 等）。\n- **自动 source**: 当编辑 .zshrc 和 .bashrc 这类文件时，保存时自动执行 `source ~/.zshrc`，使修改立即生效。\n- **文件管理**：添加自定义配置文件，置顶常用文件以便快速访问，并删除自定义文件。\n- **代码编辑器**：集成代码编辑器，支持多种文件类型的语法高亮。\n- **搜索功能**：在侧边栏中按名称或路径搜索特定配置文件，并在当前打开的文件内容中进行搜索。\n- **缩放控制**：调整编辑器内容的缩放级别。\n- **外观选项**：在**浅色**和**深色**模式之间切换。\n- **键盘快捷键**：\n  - `Cmd + F`：在编辑器中显示/隐藏搜索栏。\n  - `Cmd + S`：保存文件。\n  - `Cmd + =` / `Cmd + +`：放大。\n  - `Cmd + -`：缩小。\n  - `Cmd + 0`：重置缩放。\n  - `Esc`：关闭搜索栏。\n- **上下文菜单操作**：在侧边栏中右键单击文件，可选择：\n  - 置顶/取消置顶\n  - 复制路径\n  - 在 Finder 中打开\n  - 在 VSCode 中打开\n  - 在 Cursor 中打开\n\n## 安装\n\n要安装和运行 Configs，您需要在 macOS 机器上安装 Xcode。\n\n1. **克隆仓库**：\n\n   ```bash\n   git clone https://github.com/iHongRen/configEditor.git\n   cd configEditor/Configs\n   ```\n\n2. **在 Xcode 中打开**：\n   在 Xcode 中打开 `Configs.xcodeproj` 文件。\n\n3. **构建应用程序**：\n   选择您的目标（例如，“My Mac”），然后单击 Xcode 中的“构建”按钮（⌘B）。`Configs.app` 将在 Xcode 项目导航器中的 `Products` 文件夹中生成。您可以右键单击 `Configs.app` 并选择“在 Finder 中显示”来找到它。\n\n4. **安装并运行**：\n   解压 [[configs.zip](https://github.com/iHongRen/configEditor/releases)](https://github.com/iHongRen/configEditor/releases) 后， 将 `Configs.app` 包拖到您的 `/Applications` 文件夹中。\n   打开终端并运行以下命令，使应用程序可执行：\n\n   ```bash\n   chmod +x /Applications/Configs.app/Contents/MacOS/Configs\n   ```\n\n   现在您可以从 `/Applications` 文件夹或 Launchpad 打开应用程序。\n\n   如果弹窗提示无法打开，打开 **系统偏好设置** > **隐私与安全性** > **安全性** > 允许以下来源的应用程序：**App Store与已知开发者** > **仍要打开**",
     "created_at": "2025-07-15T06:41:45Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/7270"
   },
   {
