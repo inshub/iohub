@@ -1,10 +1,22 @@
 [
   {
+    "id": 7294,
+    "title": "【工具自荐】扩展 git branch 命令 增加分支描述的功能",
+    "content": "## 背景说明\n\n> 目前，Git 本身并没有内置的分支描述功能，开发者通常通过分支名来了解分支的目的，但这种方式不够直观。\n\n为了提升分支管理的清晰度和可读性，我在项目中引入了一个名为 .git/branch-notes 的本地文件，用于记录每个 Git 分支的描述信息。这个文件不会影响 Git 的版本控制功能，仅作为开发人员在本地维护分支说明的工具。\n\n通过添加 `git branch.note` 命令，可以更方便地为当前分支添加描述，提高团队协作效率与代码可维护性。该命令对团队成员完全透明、易于使用，是对外展示的入口。\n\n\n\n## 一、 配置 Git 别名\n\n将以下配置添加到你的 .gitconfig 文件中，使 git branch.note 命令正常工作：\n\n> ⚠️ 注意：以下命令为 Mac OS 系统的配置文件。\n\n```shell\n[alias \"branch\"]\n  clear = \"!f() { if test -f .git/branch-notes ; then grep -v $(git rev-parse --abbrev-ref HEAD) .git/branch-notes > .git/branch-notes.tmp && mv .git/branch-notes.tmp .git/branch-notes; fi;}; f\"\n  add =  \"!f() { if [[ -n $1 ]]; then echo \\\"| $(git rev-parse --abbrev-ref HEAD) | $1 |\\\" >> .git/branch-notes ; fi; }; f\"\n  show = \"!f() { if test -f .git/branch-notes ; then grep --no-filename $(git rev-parse --abbrev-ref HEAD) .git/branch-notes | awk -F '|' '{print $3}'; else echo 'The file `.git/branch-notes` does not exist'; fi; }; f\"\n  notes = \"!f() { git branch --list | tr -d ' *' | while read -r name; do if [[ -n $(grep ${name} .git/branch-notes) ]]; then grep ${name} .git/branch-notes| sed 's/^|[[:space:]]//g' | awk -F '|' '{print $1 \\\"\\\\033[32m\\\" $2 \\\"\\\\033[0m\\\" }'; else echo  $name; fi; done; }; f\"\n  note =  \"!f() { if [[ -n $1 && $1 = '--add' && -n $2 ]]; then git branch.add $2; elif [[ -n $1 && $1 = '--clear' ]]; then git branch.clear; else git branch.show; fi; }; f\"\n\n```\n\n## 📌 二、 git branch.note 应该如何使用\n\n\n### 1. 为当前分支 添加分支描述\n\n使用如下命令为当前分支添加描述：\n\n```bash\ngit branch.note --add \"第三方登录\"\n```\n\n> 💡 运行后，`git branch.note` 会自动将描述写入 `.git/branch-notes` 文件，格式如下：\n\n```\n| <branch-name> | <description> |\n```\n\n### 2. 查看当前分支的描述\n\n直接使用以下命令查看当前分支的说明：\n\n```bash\ngit branch.note\n```\n\n> 📝 此命令会自动读取 `.git/branch-notes` 文件中的内容，并输出当前分支的描述。如果没有设置描述，则会显示空白。\n\n### 3. 查看所有分支的描述\n\n直接使用以下命令查看当前分支的说明：\n\n```bash\ngit branch.notes\n```\n\n列出所有分支并展示出分支的描述\n\n```\nfeat/oAuth 第三方登录\nfeat/package-switching 套餐切换\nfeat/stat-maas  大模型数据统计\n```\n\n\n[原文地址](https://github.com/shangwenhe/shangwenhe.github.io/issues/69)\n",
+    "created_at": "2025-07-17T09:01:37Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/7294"
+  },
+  {
     "id": 7293,
     "title": "【开源自荐】好享记账 - AI记账软件",
     "content": "阮老师您好，自荐一个我独立开发的开源项目——好享记账，希望能被周刊收录。\n\n- 项目链接\n1. 前端：https://github.com/suyu610/journal-flutter\n2. 后端：https://github.com/suyu610/journal-server\n- 视频介绍：https://www.bilibili.com/video/BV1WbGBzcEec\n- 项目体验：[AppStore](https://apps.apple.com/cn/app/%E5%A5%BD%E4%BA%AB%E8%AE%B0%E8%B4%A6/id6736673372)\n## 项目简介\n\n`好享记账`是一个基于flutter开发的，跨端AI记账APP。实现了多人记账、语音记账、截屏快捷记账、自然语言记账等功能。\n整体功能完整，前后端全开源。\n\n## 技术栈\n前端使用flutter、后端使用java、mysql、redis\n\n## 项目截图\n| 首页 | 对话页 |\n| --- | --- |\n| ![Image](https://github.com/user-attachments/assets/e336bc09-a076-443f-bbfe-70de0109ab9f) |![Image](https://github.com/user-attachments/assets/ddfb3850-7270-462b-b4f2-dfc7959ed16b)\n| 语音记账 | - |\n| ![Image](https://github.com/user-attachments/assets/5a656e06-35dc-4c09-b47d-33e78cacc1b0) | |\n\n\n\n\n\n\n",
     "created_at": "2025-07-17T06:51:43Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/7293"
   },
   {
@@ -836,13 +848,5 @@
     "created_at": "2025-07-02T15:32:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7193"
-  },
-  {
-    "id": 7192,
-    "title": "【工具自荐】 Emoji Translator：随时将你的语言转化为Emoji，或者解释 Emoji，每天一个猜emoji 意思的小游戏。",
-    "content": "网站地址： https://emoji-translator.com/\n\n**主页：**\n\n![Image](https://github.com/user-attachments/assets/52f70641-4024-4286-9be2-8b470a526c2e)\n\n**Emoji 转 Text**\n\n![Image](https://github.com/user-attachments/assets/e47058b5-0859-489f-b4ad-351cfc64c601)\n\n**每日 Emoji 挑战：**\n\n![Image](https://github.com/user-attachments/assets/b233a03c-06ab-42b6-bd9c-a71370adc6fb)",
-    "created_at": "2025-07-02T13:41:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7192"
   }
 ]
