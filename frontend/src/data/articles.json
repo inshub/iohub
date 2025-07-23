@@ -1,5 +1,37 @@
 [
   {
+    "id": 7339,
+    "title": "【开源自荐】开发者小工具集devutils",
+    "content": "DevUtils 借助AI开发的基于 Web 的开发者工具集，目前已包含20+常用小工具，旨在简化常见的开发任务。所有工具都在浏览器中本地运行，无任何后端数据传输，确保隐私数据不会泄露。 \n\n体验地址：[https://devutils.xindoo.xyz/](https://devutils.xindoo.xyz/)\n\n项目主页：[https://github.com/xindoo/devutils](https://github.com/xindoo/devutils)  ",
+    "created_at": "2025-07-23T08:17:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7339"
+  },
+  {
+    "id": 7338,
+    "title": "【工具自荐】How To Say - 助您对话中都能游刃有余，既不失风度，又能精准回应。温和时如春风化雨，机智时如妙语连珠，反击时如四两拨千斤",
+    "content": "**工具名称：** [How To Say](https://howtosay.cc/)\n\n**工具地址：** https://howtosay.cc/\n\n**工具简介：**\n\n [How To Say](https://howtosay.cc/) 是一款基于 LLM 智能理解语意、语境，生成更多风格表述和优雅回复的工具。\n\n不同于传统翻译软件，How To Say 提供三种专业模式，让我们一次性看到同一句话在同一语言不同场景下的表达/回复（回怼）方式，以及不同语言文化中的表达/回复（回怼）方式。\n\n**[How To Say](https://howtosay.cc/) 主要特点：**\n\n1、无需注册登录，即来即用\n2、AI 智能理解，理解翻译地道不生硬，适应当地语言环境\n3、支持 500 字符+20 种语言，最多可选 6 种语言同时处理\n4、可收藏常用语言组合，快速切换使用\n5、隐私保障，不收集保存用户内容，本地存储可随时删除\n\n**三种模式：**\n\n1、表达模式：提供 9 种不同风格的地道表达，包含友好、正式、幽默、讽刺、暴躁等风格，优化自己的回复表达。\n2、翻译模式：准确的标准翻译，适合正式场合，可以当做随身多语言翻译助手。\n3、理解模式：分析语境（可以自定义语境），提供 3 种场景下的地道回复，友好->更友好，讽刺->高级反讽，谩骂->高级回怼。\n\n正所谓\"以柔克刚，以智胜力，以文化人\"。让你在任何对话中都能游刃有余，既不失风度，又能精准回应。温和时如春风化雨，机智时如妙语连珠，反击时如四两拨千斤。\n\n【理解模式】\n\n<img width=\"794\" height=\"1682\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2282a5f8-2317-4270-97a8-c6de3728d122\" />\n\n【表达模式】\n![Image](https://github.com/user-attachments/assets/28bbe2d5-c34c-4b77-b696-b7b8cc5f541b)\n\n【翻译模式】\n\n<img width=\"928\" height=\"1235\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3c373bfc-0d56-4ea4-b612-99a79a9265ab\" />",
+    "created_at": "2025-07-23T07:28:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7338"
+  },
+  {
+    "id": 7337,
+    "title": "【工具推荐】 个人自用的Linux单文件脚本：防火墙-systemctl服务模版-端口转发-用户管理-screen命令简化",
+    "content": "# 【工具推荐】 个人自用的Linux单文件脚本：防火墙-systemctl服务模版-端口转发-用户管理-screen命令简化\n\n## 防火墙\n通过修改iptables input链规则来放行传入端口与网段\n\n### CUI菜单界面\n```\n\"==================================================\"\n\"           iptables 防火墙管理 (黑名单模式)\"\n\"==================================================\"\n\" 1. 放行TCP/UDP端口\"\n\" 2. 取消放行端口\"\n\" 3. 放行IP网段\"\n\" 4. 取消放行IP网段\"\n\" 5. 查看当前规则\"\n\" 6. 保存规则并持久化\"\n\" 0. 退出\"\n\"==================================================\"\n```\n\n## systemctl服务模版\n只需要修改模版文件的内容并重命名，之后执行脚本，即可完成systemctl自启服务的创建\n\n## 端口转发\n快速创建socat端口转发服务，需要安装好socat\n\n### 运行方式\n`./port-forward.sh <本地端口> <远程地址> <远程端口>`\n\n## 用户管理\n快速创建，删除Linux用户\n\n### CUI菜单界面\n\n```\n\"=======================================\"\n\"      Linux 用户管理系统\"\n\"=======================================\"\n\"  1. 创建普通用户\"\n\"  2. 创建管理员用户\"\n\"  3. 修改用户密码\"\n\"  4. 列出所有用户\"\n\"  5. 删除用户\"\n\"  6. 退出\"\n=======================================\"\n```\n\n## screen命令简化\n用于简化screen会话操作\n```\n用法:\n  screen-tool.sh write <name> <command>  向名称为name的screen会话写入命令（不存在则创建）（自动添加换行符\\n）\n  screen-tool.sh read <name>             读取名称为name的screen会话当前所有输出\n  screen-tool.sh del <name>              关闭名称为name的screen会话\n  screen-tool.sh ls                      列出所有screen会话\n  screen-tool.sh [-h|--help]             显示此帮助信息\n\n示例:\n  screen-tool.sh write myterm \"ls -l\"\n  screen-tool.sh read myterm\n  screen-tool.sh del myterm\n```\n\n访问连接: https://github.com/hvhghv/se-script\n[点击此快速跳转](https://github.com/hvhghv/se-script)",
+    "created_at": "2025-07-23T07:09:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7337"
+  },
+  {
+    "id": 7336,
+    "title": "【开源自荐】基于Rust构建的自托管电子邮件API",
+    "content": "产品网址：https://rustmailer.com/\n\n开源项目地址： https://github.com/rustmailer/rustmailer\n\n文档地址： https://rustmailer.com/docs\n\n## 🎯 应用场景\nRustMailer可轻松集成到您的应用程序中，通过提供强大的自托管电子邮件同步和发送后端，帮助您节省开发时间并提升效率。\n\n典型应用场景和行业包括：\n\n- 需要多账户邮件同步的SaaS平台  \n- 带有自动化事务邮件发送功能的CRM系统  \n- 支持动态邮件模板的营销自动化工具  \n- 集成实时邮件通知的客户支持软件  \n- 需要可靠IMAP和SMTP处理的企业应用  \n- 管理订单确认和促销邮件的电商平台  \n- 通过Webhook跟踪邮件打开和点击的数据分析解决方案  \n- 需要安全可审计邮件工作流的金融科技和医疗系统  \n\nRustMailer让开发者无需从零构建复杂邮件基础设施，专注于核心业务逻辑。\n\n## ✨ 功能特性\n- 🌐 **现代化API** - 提供gRPC和OpenAPI接口，支持多版本API文档\n- 🚀 **高性能&低成本** - 采用Rust编写，内存占用低，无需Redis或外部依赖，极简生产部署成本\n- 📬 **多账户IMAP支持** - 基于UID的增量同步，支持文件夹选择、窗口化或日期范围同步\n- 📤 **SMTP发送** - 通过连接池管理外发邮件\n- 🧾 **邮件模板支持** - 支持事务性和营销邮件的动态模板\n- 📡 **灵活MTA集成** - 可通过账户专属SMTP服务器、自托管MTA服务或第三方提供商发送\n- 📈 **打开与点击追踪** - 内置邮件打开和链接点击追踪功能\n- 🔄 **Webhook与VRL** - 向外部系统发送Webhook载荷，并通过VRL脚本进行过滤转换\n- 🔌 **NATS集成** - 将实时事件推送至NATS，实现下游系统无缝对接\n- 🖥️ **Web界面&客户端** - 内置基于网页的邮件客户端和管理面板\n- 🔐 **OAuth2支持** - 内置带网页授权界面的OAuth2流程，自动管理访问令牌和刷新令牌\n- 🌍 **代理支持** - 在受限环境中为IMAP/SMTP/OAuth2连接提供代理支持\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/81f39485-5688-41ad-8ee7-70752f18ee31\" />\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/05a1664a-6a39-4a38-af27-35cba1c32cfb\" />\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd0a29df-b99b-43e1-a15f-91b3e41e7f19\" />\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/64511e18-c4c2-4de5-83cd-a2f8df8ef0b7\" />",
+    "created_at": "2025-07-23T06:50:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7336"
+  },
+  {
     "id": 7335,
     "title": "【开源自荐】在微信群里做任务",
     "content": "使用微信小程序 Skyline 引擎 + 聊天工具 API 实现的微信任务管理，好友或群友无需另外注册登录，即可将任务分派给他们！\n\n介绍: https://docs.liubai.cc/article/2025/weixin-task.html\n\n开源地址: https://github.com/yenche123/liubai/tree/cool/liubai-frontends/liubai-weixin",
@@ -810,37 +842,5 @@
     "created_at": "2025-07-09T02:20:38Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7234"
-  },
-  {
-    "id": 7233,
-    "title": "【思路分享】最大速度提升你的网站提交效率插件",
-    "content": "我们团队的内部项目 `ai-site-submitter-v2` 正在悄然推进，核心目标：**极限加速网站提交流程，告别重复、繁琐的人工填写**。\n\n### 🚀 功能亮点\n\n- **AI自动识别网页字段结构**，智能匹配输入区域  \n- **首次字段分析时间缩短至 5 秒内**  \n- **已有规则匹配速度达毫秒级**，无需等待  \n- **结构化规则写入，一次配置，终身适配**\n\n### 💡 解决痛点\n\n还在因为手动填写网站而烦恼吗？  \n还在因为字段不一致、识别出错而反复试错吗？\n\n这一切，我们都遇到过——所以才开发了这个工具。\n\n> **注意**：目前项目为内部使用，暂不对外开放。\n\n### 🎬 实际效果回放\n\n我们已经录制好相关操作演示视频，敬请查看 VCR（视频链接附后）。\n\n> [点击这里观看操作视频](https://vimeo.com/1099842735)\n\n---\n\n### 🔍 延伸推荐：关键词分析 + AI生成新品页面\n\n我们还运营了一个免费工具网站 👉 [CatchIdeas.com](https://catchideas.com/)\n\n目前已支持 **关键词趋势分析、用户搜索需求挖掘**，未来计划增加新品发布功能：\n\n只需输入域名，其余如标题、简介、标签、特色功能等等一切，**全部由 AI 自动生成**。\n\n欢迎关注更新，敬请期待。\n",
-    "created_at": "2025-07-09T01:33:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7233"
-  },
-  {
-    "id": 7232,
-    "title": "【开源自荐】Ambigram Generator - 免费对称字艺术生成器",
-    "content": "\n# Ambigram Generator - 免费对称字（Ambigram）艺术生成器\n\n**[➡️ 在线体验 Ambigram Generator](https://ambigramgen.com/)**\n\n仓库地址：https://github.com/Gijela/ambigram-Gen\n\n**Ambigram Generator** 是一个强大且免费的在线工具，使用 AI 为您创造出令人惊叹的对称字（Ambigram）艺术。无论您是想设计一个独特的纹身、一个巧妙的 Logo，还是仅仅为了好玩，这个工具都能满足您的需求。我们支持不同长度的单词组合，生成的设计完美、对称，并且可以免费下载高质量的 SVG 或 PNG 文件，**完全没有水印**！\n\n## 🌟 功能特性\n\n我们致力于提供最强大、最易用的对称字生成体验。\n\n- **🤖 AI 驱动生成:** 输入一个或两个单词（即使长度不同），我们先进的 AI 算法将为您计算并生成最完美的对称设计。\n- **👁️ 实时预览:** 在您调整设置时，可以通过实时预览窗口即时看到最终效果。\n- **🎨 丰富的设计选项:**\n    - **多种字体:** 提供一系列精选字体，以适应不同的风格。\n    - **高级定制:** 自由调整字体大小、颜色、描边宽度和字符间距，创造独一无二的设计。\n    - **风格预设:** 一键应用“浪漫”、“哥特”、“优雅”等多种预设风格。\n- **⏳ 历史记录:** 自动保存您最近的创作，方便您随时查看和重新编辑。\n- **📥 高质量导出:** 免费下载您的设计为 **SVG** (矢量) 或 **PNG** (透明背景) 格式，完美用于打印、网页或社交媒体。\n- **💯 完全免费，无水印:** 我们承诺所有功能完全免费，下载的文件不包含任何水印。\n- **❤️ 为纹身优化:** 生成的线条和设计经过特别优化，非常适合用作纹身图案。\n\n## 🚀 如何使用\n\n只需三步，即可拥有您的对称字艺术品：\n\n1.  **输入文字:** 在输入框中键入您想要转换的文字。您可以输入一个词（例如 \"Angel\"），它将自身对称；或者输入两个词（例如 \"Family / Forever\"），它们将互相转换。\n2.  **定制设计:** 从字体库中选择一款您喜欢的字体，然后使用高级定制工具微调细节，直到您满意为止。\n3.  **生成并下载:** 点击“生成”按钮，等待 AI 完成创作。之后，您可以将完美的作品下载到您的设备上。\n\n## ✨ 一些示例\n\n| 输入 1 | 输入 2 | 对称效果 |\n| :--- | :--- | :--- |\n| `Family` | `Forever` | \"Family\" 旋转180°后变成 \"Forever\" |\n| `Angel` | | \"Angel\" 旋转180°后仍是 \"Angel\" |\n| `Love` | `Hate` | \"Love\" 旋转180°后变成 \"Hate\" |\n| `Create` | | \"Create\" 旋转180°后仍是 \"Create\" |\n\n\n## 🛠️ 技术栈\n\n本项目采用现代化的 Web 技术构建：\n\n- [Next.js](https://nextjs.org/) – React 框架\n- [React](https://reactjs.org/) – 用户界面库\n- [TypeScript](https://www.typescriptlang.org/) – 类型化 JavaScript\n- [Tailwind CSS](https://tailwindcss.com/) – CSS 框架\n- [Framer Motion](https://www.framer.com/motion/) – 动画库\n- [Zustand](https://zustand-demo.pmnd.rs/) – 状态管理\n\n## 🤝 欢迎贡献\n\n我们欢迎任何形式的贡献！如果您有好的想法、发现了 Bug，或者想要改进代码，请随时提交 Pull Request 或创建 Issue。\n\n立即访问 [AmbigramGen.com](https://ambigramgen.com/)，开始您的创作之旅吧！\n",
-    "created_at": "2025-07-08T16:38:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7232"
-  },
-  {
-    "id": 7229,
-    "title": "【开源自荐】 免费对称字（Ambigram）艺术生成器",
-    "content": "\n# Ambigram Generator - 免费对称字（Ambigram）艺术生成器\n\n**[➡️ 在线体验 Ambigram Generator](https://ambigramgen.com/)**\n\n仓库地址：https://github.com/Gijela/ambigram-Gen\n\n**Ambigram Generator** 是一个强大且免费的在线工具，使用 AI 为您创造出令人惊叹的对称字（Ambigram）艺术。无论您是想设计一个独特的纹身、一个巧妙的 Logo，还是仅仅为了好玩，这个工具都能满足您的需求。我们支持不同长度的单词组合，生成的设计完美、对称，并且可以免费下载高质量的 SVG 或 PNG 文件，**完全没有水印**！\n\n## 🌟 功能特性\n\n我们致力于提供最强大、最易用的对称字生成体验。\n\n- **🤖 AI 驱动生成:** 输入一个或两个单词（即使长度不同），我们先进的 AI 算法将为您计算并生成最完美的对称设计。\n- **👁️ 实时预览:** 在您调整设置时，可以通过实时预览窗口即时看到最终效果。\n- **🎨 丰富的设计选项:**\n    - **多种字体:** 提供一系列精选字体，以适应不同的风格。\n    - **高级定制:** 自由调整字体大小、颜色、描边宽度和字符间距，创造独一无二的设计。\n    - **风格预设:** 一键应用“浪漫”、“哥特”、“优雅”等多种预设风格。\n- **⏳ 历史记录:** 自动保存您最近的创作，方便您随时查看和重新编辑。\n- **📥 高质量导出:** 免费下载您的设计为 **SVG** (矢量) 或 **PNG** (透明背景) 格式，完美用于打印、网页或社交媒体。\n- **💯 完全免费，无水印:** 我们承诺所有功能完全免费，下载的文件不包含任何水印。\n- **❤️ 为纹身优化:** 生成的线条和设计经过特别优化，非常适合用作纹身图案。\n\n## 🚀 如何使用\n\n只需三步，即可拥有您的对称字艺术品：\n\n1.  **输入文字:** 在输入框中键入您想要转换的文字。您可以输入一个词（例如 \"Angel\"），它将自身对称；或者输入两个词（例如 \"Family / Forever\"），它们将互相转换。\n2.  **定制设计:** 从字体库中选择一款您喜欢的字体，然后使用高级定制工具微调细节，直到您满意为止。\n3.  **生成并下载:** 点击“生成”按钮，等待 AI 完成创作。之后，您可以将完美的作品下载到您的设备上。\n\n## ✨ 一些示例\n\n| 输入 1 | 输入 2 | 对称效果 |\n| :--- | :--- | :--- |\n| `Family` | `Forever` | \"Family\" 旋转180°后变成 \"Forever\" |\n| `Angel` | | \"Angel\" 旋转180°后仍是 \"Angel\" |\n| `Love` | `Hate` | \"Love\" 旋转180°后变成 \"Hate\" |\n| `Create` | | \"Create\" 旋转180°后仍是 \"Create\" |\n\n\n## 🛠️ 技术栈\n\n本项目采用现代化的 Web 技术构建：\n\n- [Next.js](https://nextjs.org/) – React 框架\n- [React](https://reactjs.org/) – 用户界面库\n- [TypeScript](https://www.typescriptlang.org/) – 类型化 JavaScript\n- [Tailwind CSS](https://tailwindcss.com/) – CSS 框架\n- [Framer Motion](https://www.framer.com/motion/) – 动画库\n- [Zustand](https://zustand-demo.pmnd.rs/) – 状态管理\n\n## 🤝 欢迎贡献\n\n我们欢迎任何形式的贡献！如果您有好的想法、发现了 Bug，或者想要改进代码，请随时提交 Pull Request 或创建 Issue。\n\n立即访问 [AmbigramGen.com](https://ambigramgen.com/)，开始您的创作之旅吧！\n",
-    "created_at": "2025-07-08T14:44:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7229"
-  },
-  {
-    "id": 7228,
-    "title": "Hard Usernames：AI驱动的免费硬核用户名生成器（Claude3.5系列）",
-    "content": "# Hard Usernames：AI驱动的硬核用户名生成器\n\n> 🎮 为游戏玩家而生，📸 为社交达人而设 —— 用AI一键生成让人难忘的酷炫用户名！\n\n[👉 点此立即生成用户名](https://hardusernames.com/zh)\n\n## 🔥 什么是 Hard Usernames？\n\n**Hard Usernames** 是一个专为游戏玩家、内容创作者、社交媒体用户打造的 **免费AI驱动用户名生成平台**。你只需输入兴趣关键词，系统便会结合姓名、风格和使用场景，瞬间生成多个 **独特、富有创意、平台优化** 的用户名。\n\n- 💡 **AI驱动**：根据风格偏好和语义模型，自动生成硬核ID  \n- ⚡ **极速生成**：一键出10个候选，支持复制粘贴  \n- 💯 **100%免费**：无需注册，无限制，无隐藏费用  \n- 🌐 **支持30+风格**：从游戏、审美、暗黑到搞笑、古风，应有尽有  \n- 📱 **兼容多个平台**：如微信、抖音、Instagram、TikTok、王者荣耀等  \n\n## 🎨 特色风格\n- 🕹️ 游戏风格\n- 📸 Instagram风格\n- ✨ 美学风格\n- 😆 搞笑风格\n- 🧛 暗黑风格\n- 🎨 创意风格\n- 👑 名媛风格\n- 📚 古风诗意\n- 👽 外星风格\n- 📦 极简风格  \n...共计 **30+ 款风格持续更新**\n\n## 🛠️ 如何使用\n\n1. 选择一个你喜欢的风格（如：赛博、美学、酷炫等）\n2. 输入你的名字或兴趣词，例如 “方文达” 或 “二次元”\n3. 设置长度、是否包含数字/符号\n4. 点击【🚀 生成硬核用户名】\n5. 浏览结果、点击复制你喜欢的那个\n\n## 📌 示例生成效果\n\n输入：`方文达` + `赛博风格`\n\n- **文达光年** — 简洁有力，富有科幻感  \n- **方文达芯** — 短小精悍，科技感十足  \n- **达文骇客** — 极客风浓郁，发音利落  \n- **方文星链** — 联想到数字互联  \n\n每个名称均配有简评与评分，帮助你快速选出最合适的ID。\n\n## 💬 为什么选择 Hard Usernames？\n\n- 🧠 避免撞名：AI根据词根组合，生成高度原创的组合  \n- 🧑‍🎨 个性化定制：支持包含自己名字/兴趣关键词  \n- 🌍 多平台适配：支持 Instagram / TikTok / 微信 / 抖音 / QQ / 王者荣耀 等主流平台  \n- 🔓 完全免费：不登录、不限用、不收费用  \n\n## 🧩 技巧提示\n\n- **保持独特性**：结合多个风格更易脱颖而出  \n- **关注相关性**：与平台内容一致更具吸引力  \n- **验证可用性**：提前在社交平台检查是否可注册  \n\n---\n\n## 📫 联系方式\n\n欢迎创作者、开发者、玩家们试用体验，也可反馈建议至：\n\n📧 info@hardusernames.com  \n🌐 官网：https://hardusernames.com/zh\n\n---\n\n<img width=\"2305\" height=\"1129\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a01f50c-6231-4643-8a33-e66952fbf702\" />\n\n<img width=\"1901\" height=\"1155\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/71d14f50-f830-4868-8b76-aa885ab99280\" />\n\n<img width=\"1811\" height=\"1181\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/85480144-2779-4ba0-bd65-0f6951a2ff18\" />\n\n<img width=\"1925\" height=\"787\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/187d0d6d-7642-4fcf-a143-79c87c3122ef\" />",
-    "created_at": "2025-07-08T11:20:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7228"
   }
 ]
