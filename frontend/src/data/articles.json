@@ -1,5 +1,13 @@
 [
   {
+    "id": 7390,
+    "title": "【工具自荐】“国庆旅行路线设计师” MCP server",
+    "content": "\n假设我输入的是：\n\n> 10-1到10-5国庆期间，深圳到厦门自驾游，每天游玩一个城市并住宿。请帮我规划酒店安排。\n内容输出到左侧文档。\n\n可以看到，MCP先根据需求，规划途径路线。然后调用 MCP Tool 传入格式化的参数。MCP 服务端会去后端数据库查询匹配的酒店信息，并返回。然后输出，为了方便展示，这里是写入到左侧编辑区的md文件中。\n\n\n\n## MCP的安装\n\n非常简单，在配置文件中输入：\n\n```\n{\n  \"mcpServers\": {\n    \"特惠酒店MCP\": {\n      \"url\": \"https://hotel.gqmg.com/sse/\",\n      \"serverUrl\": \"https://hotel.gqmg.com/sse/\"\n\n    }\n  }\n}\n```\n当你的 AI Agent 识别到意图，就会自动去调用特惠酒店MCP工具。\n\n\n对于不满意的酒店，还可以精准替换。\n\n假设我输入的是：\n\n> 请提升线路1，第二天的酒店品质。\n\n\n![image](https://oray.kainy.cn:38002/https://oray.kainy.cn:38400/_upload/./content/temp/2025/07/md4fggoc.png)\n\n\n接下来，以 cherry studio 为例看看怎么设置 MCP，很简单\n\n先点左下角齿轮，然后“MCP设置”，类型选择“streamableHttp”， URL填写 https://hotel.gqmg.com/mcp/ 即可。\n\n![image](https://oray.kainy.cn:38002/https://oray.kainy.cn:38400/_upload/./content/temp/2025/07/md4flfaa.png)\n\n我用的是免费版 7B 模型，比较吃力，但也可以看到大致效果。\n\n![image](https://oray.kainy.cn:38002/https://oray.kainy.cn:38400/_upload/./content/temp/2025/07/md2uxqen.png)\n\n![image](https://oray.kainy.cn:38002/https://oray.kainy.cn:38400/_upload/./content/temp/2025/07/md2uzjwz.png)\n\n\n## 也支持网页调用\n\n生成旅程： https://hotel.gqmg.com/plan\n浏览旅程： https://hotel.gqmg.com/p/89\n",
+    "created_at": "2025-07-29T05:28:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7390"
+  },
+  {
     "id": 7389,
     "title": "【开源自荐】Office Word MCP Server 开发者轻松快速操作转换Word文档",
     "content": "Spire.Doc MCP Server is a Model Context Protocol (MCP) server that enables you to manipulate Word documents without requiring Microsoft Word. With it, you can [create](https://www.e-iceblue.com/Tutorials/Python/Spire.Doc-for-Python/Program-Guide/Document-Operation/Python-Create-Word-Document.html), [read](https://www.e-iceblue.com/Tutorials/Python/Spire.Doc-for-Python/Program-Guide/Document-Operation/read-word-doc-or-docx-files-in-python.html), and [modify](https://www.e-iceblue.com/Tutorials/Python/Spire.Doc-for-Python/Program-Guide/Document-Operation/Python-Edit-or-Modify-a-Word-Document.html) Word documents directly using your AI agent.\n\nhttps://github.com/eiceblue/spire-doc-mcp-server",
@@ -190,46 +198,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/7367"
   },
   {
-    "id": 7366,
-    "title": "【网站推荐】SnapAny视频在线下载站",
-    "content": "产品：SnapAny\n网址：[https://snapany.org](https://snapany.org)\n详情：SnapAny 是一款万能在线下载工具，支持从多平台（如 YouTube、TikTok、哔哩哔哩）提取视频和图片，提供多格式、多清晰度选择。用户仅需粘贴链接即可下载，无需安装软件，适合内容创作者、教育工作者及普通用户保存媒体资源\n",
-    "created_at": "2025-07-25T14:45:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7366"
-  },
-  {
-    "id": 7365,
-    "title": "网站推荐：PlayPokiGame 在线小游戏网",
-    "content": "产品：PlayPokiGame\n网址：https://playpokigame.com\n详情：PlayPokiGame 是一个专注于 Poki 风格休闲游戏的在线平台，提供大量即点即玩的 HTML5 小游戏，涵盖动作、益智、赛车、体育等多种类型。该网站适配 PC 和移动设备，无需下载或注册，适合碎片化娱乐。热门游戏包括《Temple Run 2》、《Stickman Hook》等，用户可快速访问并享受流畅的游戏体验\n\n",
-    "created_at": "2025-07-25T14:44:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7365"
-  },
-  {
-    "id": 7364,
-    "title": "网站推荐：AIWriter 在线写作网",
-    "content": "产品：AI-Writer \n网址：https://aiwriter.fun \n详情：AI-Writer 是一款基于 AI（如 GPT-3）的写作助手，可自动生成高质量、SEO 优化的文章，支持多语言。适用于博客、营销文案及学术写作，提供多种套餐选择，生成速度快，适合内容创作者。  \n\n",
-    "created_at": "2025-07-25T14:31:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7364"
-  },
-  {
-    "id": 7363,
-    "title": "网站推荐：CalculatorFree 在线计算工具网",
-    "content": "产品：Calculatorfree\n网址：https://calculatorfree.net\n详情：CalculatorFree 是一款多功能在线计算器，涵盖数学、金融、健康等计算需求。支持自由文本输入，可执行复杂运算、单位转换及变量计算，适合学生、工程师及日常使用。无需安装，即用即走，界面简洁。 ",
-    "created_at": "2025-07-25T14:31:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7363"
-  },
-  {
-    "id": 7362,
-    "title": "【网站推荐】在线编辑工具(edittools)",
-    "content": "产品：EditTools\n网址：https://edittools.org\n详情：EditTools 提供基础的图片和文本编辑功能，适合快速处理简单任务，如裁剪、格式调整等。但相比专业工具功能较有限，可能更适合轻度用户或应急使用。  \n",
-    "created_at": "2025-07-25T14:23:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7362"
-  },
-  {
     "id": 7361,
     "title": "【开源自荐】PongHub：免费易用、0侵入式、无需服务器的服务监控平台",
     "content": "## [仓库地址](https://github.com/WCY-dt/ponghub)\n\nPongHub：免费易用、0侵入式、无需服务器的服务监控平台\n\n<img width=\"1744\" height=\"1125\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f2052ec7-7b87-4b67-8bff-e4972600558d\" />\n\n## 为什么做这个工具？\n\n相信不少人有这样的烦恼：\n\n1. 推特崩了，刷新不出来，还以为是自己那个*神秘网络工具*的问题\n2. 自己搭建的网站崩了，结果过了好几天有用户提醒才发现\n\n现有的解决方案有两类：\n\n1. 以 prometheus 为首的工具，通过在服务器内部安装该工具，可以实现对服务器的监控——但它*必须修改服务器代码*\n2. uptimerobot、OpenStatus 等网站，它们功能繁多，且无需修改服务器——但使用*不是那么方便，而且收费*\n\n于是，我就想到了可以仿照后者，但是白嫖 GitHub Actions 的免费资源，再通过 GitHub Pages 发布，最终得到了 PongHub！\n\n## 为什么推荐自己的这个工具？\n\n目前，PongHub 主要有这么几个优点：\n\n* **🕵️ 零侵入监控** - 无需改动服务器即可实现全功能监控\n* **🚀 一键免费部署** - 通过 Actions 自动构建，一键部署至 Github Pages\n* **🌐 全平台支持** - 兼容 OpenAI 等公共服务及私有服务接口\n* **🔍 多端口探测** - 单服务支持同时监控多个端口状态\n* **🤖 智能响应验证** - 精准匹配状态码及正则表达式校验响应体\n* **🛠️ 自定义请求引擎** - 自由配置请求头/体、超时和重试策略\n\n## 真的好用吗？\n\n使用 PongHub 分为两步：\n\n1. Fork 走这个仓库\n2. 修改下 `config.yaml`\n\n然后网站就建好了，再也不用管它了。\n\n> 最后，再次感谢一下阮一峰老师之前为我推荐 EasyTransfer 项目🌹！",
@@ -248,22 +216,6 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/7360"
-  },
-  {
-    "id": 7359,
-    "title": "网站推荐 - 字体库",
-    "content": "产品：字体库(Zitiku)\n网址：https://zitiku.org\n详情：这个字体库目前已经收集了1800多款字体，包括常用的中英文字体、手写体、艺术字等等。\n\n<img width=\"1302\" height=\"825\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/81c01e4b-370a-49a6-8b84-513b290994f3\" />",
-    "created_at": "2025-07-25T13:11:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7359"
-  },
-  {
-    "id": 7358,
-    "title": "网站自荐：VPSBang排行榜",
-    "content": "产品：VPSBang\n网址：[VPSBang.org](https://vpsbang.org)\n\n<img width=\"1599\" height=\"634\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/263b3bd3-3e37-4dcf-b229-6d00742d05db\" />\n\n详情：最近做了一个VPS排行榜网站，收集了美国VPS,香港VPS,日本VPS,韩国以及新加坡VPS服务商。获取了最新的一些优惠信息，根据一些地区进行排行。\n\n",
-    "created_at": "2025-07-25T12:52:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7358"
   },
   {
     "id": 7357,
@@ -848,5 +800,55 @@
     "created_at": "2025-07-16T08:17:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7284"
+  },
+  {
+    "id": 7283,
+    "title": "【工具自荐】免费在线PDF工具30+合集，纯前端实现",
+    "content": "阮老师好 :)\n\n网址：https://pdf.imagestool.com/zh-CN/\n\n简介：\n\n1. 免费的在线PDF工具箱，不用登录，无限制使用，批量处理用完即走，纯前端实现，数据不会离开用户浏览器，隐私安全\n2. 目前支持30种PDF功能，例如拆分PDF、合并、排序、压缩、图片pdf互转、提取PDF内的图片文字和路径、PDF to html、PDF转长图等等，持续更新中\n3. 手机浏览器也能使用\n4. 处理完成后可选其他PDF工具继续处理\n\n预览：\n\n![Image](https://github.com/user-attachments/assets/eb6b7ae9-3cf0-419f-9ef0-8aa4b33920b1)",
+    "created_at": "2025-07-16T05:45:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7283"
+  },
+  {
+    "id": 7282,
+    "title": "【工具自荐】客群采集小程序 - 一个免费的拓客小工具",
+    "content": "✅ [客群采集-微信小程序](https://my-works.oss-cn-beijing.aliyuncs.com/images/download.jpg)：\n一个免费的商户信息采集小程序，基于地理位置以及地图API，从地图平台根据关键字等信息抓取商户信息。功能：\n1、丰富的采集方式：\n附近客源：以设定的位置为中心点，在指定范围内搜索特定的poi信息，适合周边范围的场景；\n区域客源：以关键字搜索特定“省-市-区”的客源信息，适合大范围的场景；\n行业客源：在区域客源的基础上，添加了行业关键字的设定，最多可以同时设置5个行业关键字；\n2、丰富的客源管理功能\n单次采集的信息会被设定为一次记录，记录可以查看到符合条件的所有客源信息。允许批量或单独对客源信息进行操作：\n1. 拨打电话：如果有采集到电话号码，可以调用系统的拨打电话功能；\n2. 导出通讯录：如果有采集到电话号码，允许保存到系统通讯录里；\n3. 文件导出：将所选的客源信息整合到文本文件里，并在微信聊天里进行分享；\n4. 地图展示：显示在地图中，查看更直观；\n导航：根据客源信息的地理位置信息调用微信的导航功能；\n等等。\n\n部分页面截图可查看[这里](https://developers.weixin.qq.com/community/develop/doc/000a8277754320aaf773c3a416640c)\n\n功能持续更新中，并且会一直免费提供，欢迎体验：\n![小程序码](https://my-works.oss-cn-beijing.aliyuncs.com/images/download.jpg)",
+    "created_at": "2025-07-16T05:34:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7282"
+  },
+  {
+    "id": 7281,
+    "title": "【网站自荐】buzz0.com - 按日查看 hacker news  SHOW HN 产品",
+    "content": "网址：https://buzz0.com\n介绍：一个用以方便查看每日 show hn 作品列表的工具。兼容 PC 和手机屏幕。\n\nPC 预览：\n\n<img width=\"2586\" height=\"1984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/23b5b7c9-aa3d-41c8-a867-a52bc19afb96\" />\n\n手机上预览：\n\n<img width=\"1042\" height=\"1984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d79defef-3fa7-4505-8c09-8aecb2788a16\" />\n\n同系列工具：\nhttps://upvote0.com producthunt 每日产品查看\nhttps://follow0.com  reddit 创业、程序版块帖子查看",
+    "created_at": "2025-07-16T04:46:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7281"
+  },
+  {
+    "id": 7280,
+    "title": "【网站自荐】 paopaopaike.com 泡泡排课，让排课更简单",
+    "content": "[https://www.paopaopaike.com](https://www.paopaopaike.com)\n\n### 泡泡排课，让排课更简单。\n---\n\n只需填写 [年级与班级](https://www.paopaopaike.com/grade-class)、[科目](https://www.paopaopaike.com/subject)、[教师](https://www.paopaopaike.com/teacher)、[教学场地](https://www.paopaopaike.com/facility)、[上课时间](https://www.paopaopaike.com/schedule)、[教学计划](https://www.paopaopaike.com/teaching-task) 和 [排课要求](https://www.paopaopaike.com/rules)，泡泡排课便能为你快速生成最优的[ 课程表](https://www.paopaopaike.com/timetables)。\n\n#### 简单、快捷、方便\n\n教学管理不再繁琐，助你轻松安排课程表，提升教学效率。\n体验智能化的教学管理服务，节省时间，专注于更重要的教育工作。\n\n#### 使用说明\n\n##### 步骤 1\n填写 [年级与班级](https://www.paopaopaike.com/grade-class)、[科目](https://www.paopaopaike.com/subject)、[教师](https://www.paopaopaike.com/teacher)、[教学场地](https://www.paopaopaike.com/facility)、[上课时间](https://www.paopaopaike.com/schedule)、[教学计划](https://www.paopaopaike.com/teaching-task) 内容\n\n##### 步骤 2\n填写 [排课要求](https://www.paopaopaike.com/rules) 内容(选填，没有排课要求不用填写)\n\n##### 步骤 3\n点击 [智能排课](https://www.paopaopaike.com/task)，等待系统生成[ 课程表](https://www.paopaopaike.com/timetables)\n\n##### 步骤 4\n查看或下载[ 课程表](https://www.paopaopaike.com/timetables)\n\n---\n\n<img width=\"1333\" height=\"839\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0a155d82-80d9-46cf-a16e-394c21ec1619\" />",
+    "created_at": "2025-07-16T03:27:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7280"
+  },
+  {
+    "id": 7279,
+    "title": "【开源自荐】Weekday clock - 一个只显示今天是周几的钟表",
+    "content": "创意来自一个叫做 Day Clock 的实体钟表，亚马逊还有商品链接，只不过价格高的吓人：\n\nhttps://www.amazon.com/stores/page/A831F4BA-DAD5-470C-A4CD-96555B68422A/\n\n<img width=\"1469\" height=\"491\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d33769b6-0a1d-4fe9-9eac-6965e7d42c49\" />\n\n访问地址：https://weekdayclock.1link.fun\n只显示钟表：https://weekdayclock.1link.fun?clockonly=1\n\n项目代码：https://github.com/jwenjian/weekday-clock",
+    "created_at": "2025-07-16T03:26:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7279"
+  },
+  {
+    "id": 7278,
+    "title": "【开源自荐】多功能加速服务：提供 Docker 镜像加速、GitHub 文件加速、Docker离线镜像下载、在线搜索 Docker 镜像等功能。",
+    "content": "## ✨ 特性\n\n- 🐳 **Docker 镜像加速** - 单域名实现 Docker Hub、GHCR、Quay 等多个镜像仓库加速，流式传输优化拉取速度。\n- 🐳 **离线镜像包** - 支持下载离线镜像包，流式传输加防抖设计。\n- 📁 **GitHub 文件加速** - 加速 GitHub Release、Raw 文件下载，支持`api.github.com`，脚本嵌套加速等等\n- 🤖 **AI 模型库支持** - 支持 Hugging Face 模型下载加速\n- 🛡️ **智能限流** - IP 限流保护，防止滥用\n- 🚫 **仓库审计** - 强大的自定义黑名单，白名单，同时审计镜像仓库，和GitHub仓库\n- 🔍 **镜像搜索** - 在线搜索 Docker 镜像\n- ⚡ **轻量高效** - 基于 Go 语言，单二进制文件运行，资源占用低，优雅的内存清理机制。\n- 🔧 **统一配置** - 统一配置管理\n\n\n### 项目地址：https://github.com/sky22333/hubproxy\n\n### 演示站：https://demo.52013120.xyz\n\n\n#### 预览\n\n<img width=\"2398\" height=\"1450\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b64a09c-a826-4362-9765-c44363ffd11e\" />\n\n<img width=\"2455\" height=\"1434\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/05dca424-db60-4fde-beea-5038398032cf\" />\n\n<img width=\"2398\" height=\"1438\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bb2c3a78-54eb-4215-a1fb-b9ef2267c304\" />",
+    "created_at": "2025-07-16T02:48:59Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/7278"
   }
 ]
