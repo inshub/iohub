@@ -1,5 +1,37 @@
 [
   {
+    "id": 7421,
+    "title": "【工具自荐】一款专门为创作者和角色扮演者打造的，高度可定制人物关系原型生成工具",
+    "content": "# 工具名称\nCharacter Headcanon Generator\n# 工具地址\n[Character Headcanon Generator](https://www.headcanon-generator.app/)\n# 工具特点\n- 多模型支持\n您可以在不同的 AI 模型（Google Gemini pro, GLM, groq）之间切换，以获得多样化的写作风格和语调。\n- 深度定制\n用户可以选择性格特征、习惯、世界观等等\n- 一键复制和分析功能\n# 如何使用？\n1. 输入人物名称\n2. 选择人物性格特点，支持自定义输入\n3. 选择当前世界观背景\n4. 选择角色特征长度\n5. 选择模型或默认模型\n6. 点击生成即可\n\n# 工具截图\n\n<img width=\"2924\" height=\"3934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3d4ed0a2-6e8f-428c-8b4a-3fbea7b6e272\" />\n<img width=\"3022\" height=\"1604\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/49fb90a6-4535-43f9-835c-c2c979f2e82c\" />",
+    "created_at": "2025-07-31T12:42:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7421"
+  },
+  {
+    "id": 7420,
+    "title": "【开源自荐】Context Space：一键管理和连接外部数据的开源平台",
+    "content": "无论是构建一个智能AI助手、一个SaaS产品，还是一个自动化工作流，作为开发者我们都需要处理各种外部数据和服务，比如常用的GitHub、stripe、notion等等。\n\n然而，每当我们需要接入一个新的服务时，通常意味着一系列重复且繁琐的工作：\n\n- 研究API文档：每个服务的API都自成一派，学习成本高。\n- 处理OAuth认证：为每个服务实现一遍完整的OAuth 2.0流程，处理回调、刷新令牌。\n- 管理API密钥：如何安全地存储和轮换几十个服务的API密钥？这是一个巨大的安全挑战，一不小心就可能将敏感信息泄露在代码仓库中。\n- 编写重复代码：为每个服务编写几乎一样的客户端、错误处理和重试逻辑。\n\n\n这些繁杂的配置流程不仅消耗了大量宝贵的开发时间，也带来了持续的安全和维护成本。\n\n为了解决这个痛点，我们开发并开源了 Context Space ：**一个致力于将复杂的数据集成变为一键操作的开源平台。**\n\n### 项目简介\n\nContext Space 是一个开源的、可自部署的平台，提供一个统一的接口，让你能够安全、高效地管理和连接各种外部数据源。它将所有复杂的认证、API调用和安全管理工作都封装起来，让你用一个极其简单的统一接口就能在cursor和claude code里调用外部数据。\n\n目前，Context Space已经内置支持38+主流服务，包括：\n- 开发工具: GitHub\n- 团队协作: Slack, Notion, Figma, Zoom\n- 商业SaaS: HubSpot, Stripe\n- 公共数据: Spotify, TMDB\n- 以及更多...\n\n<img width=\"1274\" height=\"711\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5fd8f364-fd80-40d6-8d8d-5b615e9bbb31\" />\n\n  \n### 核心特点：实现外部数据的一键连接\n\n**1. 统一的API接口**\n\n在Context Space中，无论是从GitHub拉取issue，还是向Slack发送消息，都使用完全相同的API格式，连接不同的外部服务就像调用一个函数一样简单。\n\n// 使用统一的客户端\nimport { contextSpace } from './lib/client';\n\n// 获取GitHub仓库的Issues\nconst issues = await contextSpace.invoke(\"github\", \"list_issues\", {\n  owner: \"context-space\",\n  repo: \"context-space\"\n});\n\n// 向Slack频道发送消息\nawait contextSpace.invoke(\"slack\", \"post_message\", {\n  channel: \"#general\",\n  text: \"Hello from Context Space!\"\n});\n\n**2. 企业级的安全保障**\n\nContext Space在后端集成了HashiCorp Vault，这是一个业界领先的密钥管理工具。所有服务的OAuth令牌和API密钥都被加密存储在Vault中，并且支持自动刷新，从根本上杜绝了密钥泄露的风险。\n\n**3. 优化开发者的产品体验**\n\n我们深知开发者的痛点，因此在产品体验上做了大量优化：\n\n- 交互式工作台 (Playground)：在Web界面可以直接测试和调用任何已连接的服务，实时查看返回结果，极大地方便了调试过程。\n- 一键集成AI开发工具：Context Space提供了独创的cursor://深度链接功能，只需点击一个按钮，就能将所有服务能力一键注入Cursor，无需手动编辑任何JSON配置文件。\n  \n### Context Space的应用场景\n\n- AI应用开发者：快速为AI Agent赋予与真实世界交互的能力，让它能读写代码、收发消息、处理支付。\n- SaaS产品团队：想要为产品快速上线丰富的第三方集成功能，提升产品竞争力。\n- 独立开发者和初创公司：希望将精力聚焦在核心业务创新上，而不是被基础设施拖慢脚步。\n- 自动化爱好者：构建比Zapier更灵活、成本更低的个人或团队自动化工作流。\n  \n### 开源共享\n\n我们选择将Context Space完全开源，让每个开发者和团队都能没有后顾之忧。\n- 完全透明：可以审查每一行代码，确保没有安全后门。\n- 灵活自部署：将Context Space部署在自己的服务器上，数据和凭证由自己完全掌控。\n- 自由扩展：轻松添加官方尚未支持的私有服务或API。\n  \n\n我们相信，未来的应用开发，应该建立在更高效、更安全的数据连接基础之上，Context Space是我们为实现这一愿景迈出的第一步。\n\n我们诚挚地邀请开发者们来体验这个能极大提升开发效率的开源平台。\n\n- GitHub仓库 (欢迎Star⭐): https://github.com/context-space/context-space\n- 在线体验/官方网站: https://context.space/\n  \n我们真正想做的是创造有价值的业务逻辑，而不是日复一日地搭建数据管道。使用Context Space，一起告别繁琐的配置工程，把时间还给创造本身。",
+    "created_at": "2025-07-31T11:43:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7420"
+  },
+  {
+    "id": 7419,
+    "title": "【工具自荐】TracePlay-一款微信小程序，将运动轨迹可视化为3D动画",
+    "content": "# 工具名称\nTracePlay\n\n# 工具地址\n微信小程序搜索 “TracePlay”，或者微信扫描以下二维码\n\n<img src='https://github.com/user-attachments/assets/aba9cef3-de5e-46dc-8fbc-0fd172a55641' width='200'/>\n\n# 工具描述\n- 记录骑行、徒步等运动轨迹，轨迹可以添加照片\n- 也可以导入其他平台（如行者、两步路、AllTrail、Strava等）的轨迹的GPX\n- 缩放地图搜索路线\n- **将轨迹制作成 3D 轨迹动画**\n\n视频演示：https://www.bilibili.com/video/BV11k82zNECN\n\n<img src='https://github.com/user-attachments/assets/00908f9e-abcc-4ae8-8518-5ea8e4e3d884' width='400'/>\n\n<img src='https://github.com/user-attachments/assets/4978e807-e70d-4e23-aaab-4e14c039abd1' width='400'/>\n",
+    "created_at": "2025-07-31T11:15:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7419"
+  },
+  {
+    "id": 7418,
+    "title": "【开源自荐】Meta Dashboard：大模型时代的超级AI独立开发者项目管理工具",
+    "content": "***这是一个专为独立开发者设计的全栈项目管理面板，用它来管理个人AI产品独立开发多个项目的进展。***\n\n体验地址： https://100.agitao.net/\nGitHub: https://github.com/your-username/meta-dashboard\n\n### 界面UI\n\n<img width=\"2267\" height=\"1542\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8ad382e2-3c84-425a-92ac-dd0199c46445\" />\n\n<img width=\"2280\" height=\"1581\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1378c4a1-333b-4c8c-b72f-f6e4b348faae\" />\n\n### **核心亮点：**\n- **AI项目生成器**：输入创意描述，大模型自动生成完整的项目结构和技术方案\n- **项目全生命周期跟踪**：从创意到上线的完整记录，包括进度更新、里程碑管理和开发笔记\n- **个人品牌建设**：内置简历管理系统，自动聚合项目作品集，一键生成公开简历\n- **多平台认证**：支持 GitHub、Google 和微信公众号以及微信开放平台登录，支持账号密码登录，适配不同用户群体\n\n技术栈采用 Vue.js 3 + Node.js + SQLite，轻量化部署，开箱即用。特别适合想要系统化管理多个项目的独立开发者。\n\n项目完全开源，还在持续更新中。如果你也在做独立开发，这个工具值得试试。\n\n### **详细介绍**\n\n#### ✨ 功能特性\n\n##### 🤖 AI增强开发\n- **AI项目生成器** - 基于OpenAI API，从创意描述自动生成完整项目结构\n- **智能项目分析** - AI辅助项目规划和技术栈推荐\n- **多语言支持** - 中英文双语AI生成，适配国际化开发\n\n##### 📊 项目管理核心\n- **可视化看板** - 直观展示100个AI项目的进展状态\n- **项目历史追踪** - 完整记录进度更新、状态变更、里程碑和手动笔记\n- **全局活动时间线** - 跨项目的统一历史视图，掌控全局开发节奏\n- **任务管理** - 支持新增任务，Markdown格式详细描述\n\n##### 👤 个人品牌建设\n- **简历管理系统** - 版本控制、状态跟踪、一键发布公开简历\n- **项目作品集** - 自动聚合项目成果，展示开发历程\n- **开发者档案** - 记录技能成长轨迹和项目经验\n\n##### 💬 社区互动\n- **想法征集系统** - 用户提交创意想法，社区投票排名，AI转化优秀想法为项目\n- **智能投票机制** - 每人每个想法最多投2票，每日投票限制，防止刷票\n- **评论系统增强** - 支持图片、视频等多媒体附件上传预览\n- **团队协作** - 基于角色的权限管理（admin/viewer）\n- **微信生态集成** - 支持微信登录、群二维码管理\n\n##### 🛠️ 开发者友好\n- **OAuth多平台** - GitHub、Google、微信账号登录\n- **国际化** - 完整的中英文双语界面\n- **云存储集成** - OSS文件上传服务，支持多种文件格式\n- **响应式设计** - 适配移动端和桌面端开发场景\n\n##### 📈 数据洞察\n- **管理员统计面板** - 项目数据可视化分析\n- **进度追踪** - 量化开发效率和项目完成情况\n- **站点配置管理** - 灵活的平台参数配置\n\n\n<img width=\"2338\" height=\"1557\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/25bd70b3-8b80-4bbe-acb9-96a04c9fba73\" />\n\n<img width=\"2154\" height=\"1566\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/16e980b0-43c1-483f-825b-173d0030981b\" />\n\n<img width=\"2274\" height=\"1551\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b1c0d601-b383-4397-9ece-bed4aa9a5511\" />\n\n<img width=\"2250\" height=\"1513\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/33c9f70e-b6c1-46f6-a46c-afc154b666a3\" />\n\n<img width=\"2239\" height=\"1563\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3dd38ccc-6893-4e18-b4df-ece4a612b7c4\" />\n\n<img width=\"2177\" height=\"1585\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f7fa83b6-c720-44b6-b50a-45e6a0265a5a\" />\n\n<img width=\"2117\" height=\"1561\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/71afa6c3-f769-465d-b1f5-4ebcf1e644b1\" />\n",
+    "created_at": "2025-07-31T10:38:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7418"
+  },
+  {
     "id": 7417,
     "title": "【工具推荐】飞搜侠 -  一款在线飞书文档搜索工具,快速找到公开的高质量飞书文档",
     "content": "# 飞搜侠 - 飞书文档搜索工具,快速找到公开的高质量飞书文档 \n\n## 工具地址\n[https://www.feisoo.com](https://www.feisoo.com/#ruanyf)\n\n## 工具介绍\n现在很多大佬喜欢把教程放在飞书上，如果不是被人分享，这些文档几乎很难搜索到，所以飞书文档一直是高品质资源的代名词。\n\"飞搜侠\"就是一款专注于搜索飞书文档的软件，它能够通过关键词，快速搜索到飞书文档，并且能够直接打开或复制链接。\n目前软件完全免费无限制、界面也很简单清爽。\n\n工具支持在网页端、安卓端中使用\n\n## 工具界面\n\n<img width=\"3022\" height=\"1548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9f76fc46-28fb-4054-a81e-e1db3ceb966d\" />\n\n<img width=\"3022\" height=\"1550\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5ee16820-c1f0-4933-9cf0-38a8da78645f\" />",
@@ -826,39 +858,5 @@
     "created_at": "2025-07-20T07:08:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7310"
-  },
-  {
-    "id": 7309,
-    "title": "【开源自荐】Apple Docs MCP - Apple 开发者文档 MCP服务",
-    "content": "Apple 开发者文档 MCP 服务器 - 通过模型上下文协议访问 Apple 官方开发文档、框架、API、SwiftUI、UIKit 和 WWDC 视频。使用 AI 自然语言查询搜索 iOS、macOS、watchOS、tvOS 和 visionOS 文档。在 Claude、Cursor 或任何兼容 MCP 的 AI 助手中即时获取 Swift/Objective-C 代码示例、API 参考和技术指南。\n\nhttps://github.com/kimsungwhee/apple-docs-mcp",
-    "created_at": "2025-07-20T03:58:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7309"
-  },
-  {
-    "id": 7308,
-    "title": "【工具自荐】网页访问时辅助觉察的Chrome插件",
-    "content": "### 工具名称 \nAwareMe Chrome浏览器插件\n\n### 插件地址\nChrome: https://chromewebstore.google.com/detail/awareme/akbnblfgnljahpgnamdghnicmkkagjjk\n\nGitHub：https://github.com/leonezhu/AwareMe\n\n### 插件简介\n经常不经意或者过度访问一些网站，但当时是没有觉察到的。通过这个插件工具可以使用简单的配置，当你访问配置的网站时候弹窗提醒下自己。\n支持的策略有：每次访问提醒、访问时长超时时提醒、一周访问天数达标后提醒。\n\n\n### 插件页面截图\n\n<img width=\"2862\" height=\"1478\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/883510b0-e03c-43ce-939f-62612dfa3a9b\" />\n\n \n<img width=\"2868\" height=\"1470\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/91d441c8-a958-428b-98ce-5bc55f02a760\" />",
-    "created_at": "2025-07-19T13:37:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7308"
-  },
-  {
-    "id": 7307,
-    "title": "【工具自荐】美股财报网站，帮助价值投资者快速分析美股财报",
-    "content": "网站地址：https://ch2report.com/\n\n开发者故事：[离职后，我的第一个出海产品上线了](https://zhuanlan.zhihu.com/p/1919858045250434904)\n\n简介：这是一款美股财报分析、翻译、聊天应用\n\n## ✨核心特性\n- [x] 免费浏览下载所有财务报告\n- [x] 涵盖 5151 家美股上市公司，收录近 10 年超 13 万份财务报告\n- [x] 基于大模型，根据您的问题智能检索财报原文，确保回答准确性\n- [x] 内置引用功能，将回答与财报对应的页面相链接，无需逐页翻找\n- [x] 自动提取关键财务指标，生成专业摘要报告和直观思维导图，让复杂财报一目了然\n- [x] 支持多种语言，您可以使用任意语言进行交流，并将财报翻译成您想要的语言\n- [x] 将对话、摘要、思维导图保存为 PNG 或 HTML，下载财报进行离线分析和分享\n\n产品图 ✅\n\n![Image](https://github.com/user-attachments/assets/8fc6e711-7542-491c-b948-35add307023a)\n\n<img width=\"4380\" height=\"2460\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8a14eff6-9086-446c-906c-7e0ddaf17d15\" />\n\n<img width=\"1599\" height=\"830\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a46e2331-befc-49a6-ace9-35adbe88726e\" />\n\n<img width=\"4016\" height=\"2096\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/75c84fb2-e7be-467c-a742-2877bc33ebe9\" />\n\n<img width=\"1599\" height=\"830\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/54d596ba-7724-427c-96a8-86f8654fa422\" />",
-    "created_at": "2025-07-19T10:41:57Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7307"
-  },
-  {
-    "id": 7306,
-    "title": "【刊误】第 355 期 - ECMAScript 2025 的新增语法（英文）原文描述新增了8个语法而不是7个",
-    "content": "> JS 语法标准发布了2025版，本文罗列了今年的7个新增语法 \n\n原文章 列举了8个新增语法, 此处应该是笔误\n\n[What’s new in ECMAScript 2025?](https://2ality.com/2025/06/ecmascript-2025.html#what%E2%80%99s-new-in-ecmascript-2025%3F)\n1. [Import attributes and JSON modules](https://2ality.com/2025/06/ecmascript-2025.html#import-attributes-and-json-modules)\n2. [Iterator helper methods](https://2ality.com/2025/06/ecmascript-2025.html#iterator-helper-methods)\n3. [New Set methods](https://2ality.com/2025/06/ecmascript-2025.html#new-set-methods)\n4. [RegExp.escape()](https://2ality.com/2025/06/ecmascript-2025.html#regexp.escape())\n5. [Regular expression pattern modifiers (inline flags)](https://2ality.com/2025/06/ecmascript-2025.html#regular-expression-pattern-modifiers-(inline-flags))\n6. [Duplicate named capture groups](https://2ality.com/2025/06/ecmascript-2025.html#duplicate-named-capture-groups)\n7. [Promise.try()](https://2ality.com/2025/06/ecmascript-2025.html#promise.try())\n8. [Support for 16-bit floating point numbers (float16)](https://2ality.com/2025/06/ecmascript-2025.html#support-for-16-bit-floating-point-numbers-(float16))\n",
-    "created_at": "2025-07-19T06:24:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7306"
   }
 ]
