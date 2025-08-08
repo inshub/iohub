@@ -1,5 +1,13 @@
 [
   {
+    "id": 7493,
+    "title": "【开源自荐】DBOS: 基于 Postgres 的持久化工作流编排库",
+    "content": "想和大家分享一个我们开发了两年的项目，希望它能帮大家更轻松地写出可靠的后端。\n太久没用中文写技术文档了，如果有不妥之处还请多多指正！\n\n## 项目地址\n\nTypeScript 版本：https://github.com/dbos-inc/dbos-transact-ts\n\n其他语言版本（Python, Go, Java）详见项目主页：https://github.com/dbos-inc\n\n文档：https://docs.dbos.dev/ \n\n##  项目介绍\n\nDBOS 是一个基于 Postgres 的持久化工作流编排（Durable Workflow Execution）库，只需几行代码就能在Node.js（TypeScript 或 JavaScript）应用中使用。DBOS 让开发者专注于核心业务逻辑实现，并提供持久化执行、自动状态管理、错误处理、分布式任务队列等功能。\n\n我们开发 DBOS 的核心目标是让它足够轻量和灵活，使开发者无需重构代码即可集成进已有应用中。所有运行持久化工作流和队列所需的功能都包含在这个库中，无需部署和管理额外的服务器。只需安装库、连接一个 Postgres 数据库（用于存储工作流/队列状态）就可以开始使用。\n\n## 功能介绍\n\n- 工作流即代码 (Workflow as Code): 用普通代码的方式编写和管理工作流。\n- 持久化工作流执行：自动将输入和输出存储在数据库中，并自动重试失败的步骤。即使程序发生故障，工作流也能从检查点（checkpoint）继续执行。\n- 分布式任务队列：在后台持久化运行任务，保证任务完成，并提供流控机制、任务超时设置、执行频率限制、任务去重、任务优先级等功能。\n- 持久化调度：使用 cron 语法来调度工作流，或者使用持久化休眠功能，将工作流暂停任意时长（甚至数天或数周）后再执行。\n- 编程式工作流状态管理：工作流状态记录在数据库中，支持灵活的编程控制。可以编写脚本查询工作流执行情况、批量暂停或恢复工作流，或从指定步骤重新启动失败的工作流。\n- 全面的可观测性：可通过图形化界面交互式地查看、搜索和管理工作流。\n\n\n## 使用场景\n\n- 复杂的跨服务分布式事务（如平台支付）：即使服务器中途崩溃，重启后也能从检查点恢复，完成交易处理。\n- 长时间运行的自动化数据管道 (data pipeline) ：中断后可从检查点恢复，而不用从头重跑。\n- AI Agent 自动化工作流：自动执行任务并确保可靠性。\n- 大规模并发任务执行：在后台运行并发任务并保证任务可靠完成。\n- 构建可靠的 Webhook、事件处理器 (Event Handler) 或 Kafka 消费者：\n每当接收到事件时，以“恰好一次”语义启动工作流，立即确认事件，同时在后台可靠处理。\n\n\n## 开发团队\n\nDBOS 项目由斯坦福大学和麻省理工学院的研究人员发起。目前商业化和软件开发由初创公司 [DBOS, Inc](https://www.dbos.dev/) 负责。",
+    "created_at": "2025-08-08T19:56:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7493"
+  },
+  {
     "id": 7492,
     "title": "【网站自推】一个免费的工具站，可以进行文件对比，转json，转csv，以及json格式化",
     "content": "一个完全免费的工具网站，支持多语言，支持文本转json，json格式化，json修复，以及文本对比：\n\n<img width=\"1663\" height=\"901\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/37827373-6f75-414a-84b6-bb59c76c9f9e\" />\n\n地址：https://tooleasy.org",
@@ -828,13 +836,5 @@
     "created_at": "2025-07-29T03:23:16Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7389"
-  },
-  {
-    "id": 7388,
-    "title": "日程小助手",
-    "content": "![Image](https://github.com/user-attachments/assets/984a78da-feec-41c7-9a10-b8082cc7a056)\n可以根据文字，图片，文件准备识别出日程，并在手机中创建日程，欢迎试用。\n#小程序://日程小帮手/b8Tz2TQHEI3Dx4i",
-    "created_at": "2025-07-29T01:42:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7388"
   }
 ]
