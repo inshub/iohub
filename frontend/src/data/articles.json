@@ -1,5 +1,21 @@
 [
   {
+    "id": 7495,
+    "title": "【网站自荐】AudioX: Anything to Audio by AI",
+    "content": "网站自荐\n\n网站名称：AudioX.app\n网站地址：[https://audiox.app/](https://audiox.app/)\n\n目前支持的功能\n- Video to Audio\n- Image to Audio\n- Text to Audio\n- Text to Music\n- Video to Music\n- Voice Cloning\n- Aduio to Video\n- Sound Effects\n\n![Image](https://github.com/user-attachments/assets/bcaeb0d5-02dd-4974-8b2f-d7c56a4fcc71)\n\n![Image](https://github.com/user-attachments/assets/b6261a10-a972-45f1-8d8a-b3eab2a64359)\n\n![Image](https://github.com/user-attachments/assets/34f5c887-7a8e-4845-b235-9ca49ceb9d82)",
+    "created_at": "2025-08-09T04:55:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7495"
+  },
+  {
+    "id": 7494,
+    "title": "最佳免费图片托管服务 - ImgToLink+",
+    "content": "ImgToLink+ 是一个功能强大的免费图片托管平台，专为博主、论坛用户、开发者以及任何需要可靠图片 URL 托管的用户而设计。上传您的图片即可获得可在网络上任何地方使用的即时直达链接。\n\nhttps://imgtolinkx.com/",
+    "created_at": "2025-08-09T04:38:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7494"
+  },
+  {
     "id": 7493,
     "title": "【开源自荐】DBOS: 基于 Postgres 的持久化工作流编排库",
     "content": "想和大家分享一个我们开发了两年的项目，希望它能帮大家更轻松地写出可靠的后端。\n太久没用中文写技术文档了，如果有不妥之处还请多多指正！\n\n## 项目地址\n\nTypeScript 版本：https://github.com/dbos-inc/dbos-transact-ts\n\n其他语言版本（Python, Go, Java）详见项目主页：https://github.com/dbos-inc\n\n文档：https://docs.dbos.dev/ \n\n##  项目介绍\n\nDBOS 是一个基于 Postgres 的持久化工作流编排（Durable Workflow Execution）库，只需几行代码就能在Node.js（TypeScript 或 JavaScript）应用中使用。DBOS 让开发者专注于核心业务逻辑实现，并提供持久化执行、自动状态管理、错误处理、分布式任务队列等功能。\n\n我们开发 DBOS 的核心目标是让它足够轻量和灵活，使开发者无需重构代码即可集成进已有应用中。所有运行持久化工作流和队列所需的功能都包含在这个库中，无需部署和管理额外的服务器。只需安装库、连接一个 Postgres 数据库（用于存储工作流/队列状态）就可以开始使用。\n\n## 功能介绍\n\n- 工作流即代码 (Workflow as Code): 用普通代码的方式编写和管理工作流。\n- 持久化工作流执行：自动将输入和输出存储在数据库中，并自动重试失败的步骤。即使程序发生故障，工作流也能从检查点（checkpoint）继续执行。\n- 分布式任务队列：在后台持久化运行任务，保证任务完成，并提供流控机制、任务超时设置、执行频率限制、任务去重、任务优先级等功能。\n- 持久化调度：使用 cron 语法来调度工作流，或者使用持久化休眠功能，将工作流暂停任意时长（甚至数天或数周）后再执行。\n- 编程式工作流状态管理：工作流状态记录在数据库中，支持灵活的编程控制。可以编写脚本查询工作流执行情况、批量暂停或恢复工作流，或从指定步骤重新启动失败的工作流。\n- 全面的可观测性：可通过图形化界面交互式地查看、搜索和管理工作流。\n\n\n## 使用场景\n\n- 复杂的跨服务分布式事务（如平台支付）：即使服务器中途崩溃，重启后也能从检查点恢复，完成交易处理。\n- 长时间运行的自动化数据管道 (data pipeline) ：中断后可从检查点恢复，而不用从头重跑。\n- AI Agent 自动化工作流：自动执行任务并确保可靠性。\n- 大规模并发任务执行：在后台运行并发任务并保证任务可靠完成。\n- 构建可靠的 Webhook、事件处理器 (Event Handler) 或 Kafka 消费者：\n每当接收到事件时，以“恰好一次”语义启动工作流，立即确认事件，同时在后台可靠处理。\n\n\n## 开发团队\n\nDBOS 项目由斯坦福大学和麻省理工学院的研究人员发起。目前商业化和软件开发由初创公司 [DBOS, Inc](https://www.dbos.dev/) 负责。",
@@ -820,21 +836,5 @@
     "created_at": "2025-07-29T07:32:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7391"
-  },
-  {
-    "id": 7390,
-    "title": "【工具自荐】“国庆旅行路线设计师” MCP server",
-    "content": "\n假设我输入的是：\n\n> 10-1到10-5国庆期间，深圳到厦门自驾游，每天游玩一个城市并住宿。请帮我规划酒店安排。\n内容输出到左侧文档。\n\n可以看到，MCP先根据需求，规划途径路线。然后调用 MCP Tool 传入格式化的参数。MCP 服务端会去后端数据库查询匹配的酒店信息，并返回。然后输出，为了方便展示，这里是写入到左侧编辑区的md文件中。\n\n\n\n## MCP的安装\n\n非常简单，在配置文件中输入：\n\n```\n{\n  \"mcpServers\": {\n    \"特惠酒店MCP\": {\n      \"url\": \"https://hotel.gqmg.com/sse/\",\n      \"serverUrl\": \"https://hotel.gqmg.com/sse/\"\n\n    }\n  }\n}\n```\n当你的 AI Agent 识别到意图，就会自动去调用特惠酒店MCP工具。\n\n\n对于不满意的酒店，还可以精准替换。\n\n假设我输入的是：\n\n> 请提升线路1，第二天的酒店品质。\n\n\n![image](https://oray.kainy.cn:38002/https://oray.kainy.cn:38400/_upload/./content/temp/2025/07/md4fggoc.png)\n\n\n接下来，以 cherry studio 为例看看怎么设置 MCP，很简单\n\n先点左下角齿轮，然后“MCP设置”，类型选择“streamableHttp”， URL填写 https://hotel.gqmg.com/mcp/ 即可。\n\n![image](https://oray.kainy.cn:38002/https://oray.kainy.cn:38400/_upload/./content/temp/2025/07/md4flfaa.png)\n\n我用的是免费版 7B 模型，比较吃力，但也可以看到大致效果。\n\n![image](https://oray.kainy.cn:38002/https://oray.kainy.cn:38400/_upload/./content/temp/2025/07/md2uxqen.png)\n\n![image](https://oray.kainy.cn:38002/https://oray.kainy.cn:38400/_upload/./content/temp/2025/07/md2uzjwz.png)\n\n\n## 也支持网页调用\n\n生成旅程： https://hotel.gqmg.com/plan\n浏览旅程： https://hotel.gqmg.com/p/89\n",
-    "created_at": "2025-07-29T05:28:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7390"
-  },
-  {
-    "id": 7389,
-    "title": "【开源自荐】Office Word MCP Server 开发者轻松快速操作转换Word文档",
-    "content": "Spire.Doc MCP Server is a Model Context Protocol (MCP) server that enables you to manipulate Word documents without requiring Microsoft Word. With it, you can [create](https://www.e-iceblue.com/Tutorials/Python/Spire.Doc-for-Python/Program-Guide/Document-Operation/Python-Create-Word-Document.html), [read](https://www.e-iceblue.com/Tutorials/Python/Spire.Doc-for-Python/Program-Guide/Document-Operation/read-word-doc-or-docx-files-in-python.html), and [modify](https://www.e-iceblue.com/Tutorials/Python/Spire.Doc-for-Python/Program-Guide/Document-Operation/Python-Edit-or-Modify-a-Word-Document.html) Word documents directly using your AI agent.\n\nhttps://github.com/eiceblue/spire-doc-mcp-server",
-    "created_at": "2025-07-29T03:23:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7389"
   }
 ]
