@@ -1,5 +1,13 @@
 [
   {
+    "id": 7525,
+    "title": "【网站推荐】Mapedia.cc：AI+地图，让知识有“地“可寻",
+    "content": "网站地址：https://mapedia.cc/\n\nMapedia融合了百科全书式的知识广度与地图的直观空间呈现：搜索您感兴趣的任何话题，AI 技术将提炼、呈现核心信息，并智能识别其中提及的相关地点，将其直观地标注在互动地图上，提供了一个深度理解信息、探索知识地理维度的全新方式。\n\n比如：\n搜索”第二次布匿战争“：https://mapedia.cc/view/1723e379e909362e568b7018ea9685cc\n\n<img width=\"1920\" height=\"871\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ef743d30-d4d5-483b-b150-e1b901b67be4\" />\n\n搜索”苏东坡“：https://mapedia.cc/view/22cb103f456b4502dfa7315ebfc3dc83\n\n<img width=\"1909\" height=\"867\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/926a6bb8-6f34-47d6-8bab-7156c43cc695\" />\n\n搜索”从深圳到哈尔滨的自驾游（每天驾车不超过6小时）\"：https://mapedia.cc/view/96d6dc6e347c628b8c685ce0446d4a06\n\n<img width=\"1913\" height=\"866\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f0907ebd-00da-4203-8d74-e96e369a499c\" />\n\n搜索\"Alexander the Great\"：https://mapedia.cc/view/2e41609ec857e6a6ba699c1786c5900b\n<img width=\"1898\" height=\"873\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ecb0f07d-e6b1-488c-be05-5e9042ffec5b\" />\n",
+    "created_at": "2025-08-12T11:41:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7525"
+  },
+  {
     "id": 7524,
     "title": "【工具自荐】免费在线图片SDR转HDR工具，支持AVIF，JPEG与PNG等格式",
     "content": "网址：https://sdr2hdr.hiripple.com/zh\n\n简介：\n\n免费的在线拼图工具，无须登录，完全免费。\n支持多种输出格式AVIF，JPEG与PNG。\n在线预览，对比原图查看差异。\n精细的调节参数，可以调整出自己需要的效果。\n全球化支持，适配主流的 7 种语言。\n\n<img width=\"1116\" height=\"719\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8b261c51-a5f0-4894-8e87-76757e8686c4\" />\n<img width=\"1103\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/550c25ba-1fb5-44c7-9777-b91d92eb9cc5\" />\n",
@@ -824,13 +832,5 @@
     "created_at": "2025-07-31T12:42:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7421"
-  },
-  {
-    "id": 7420,
-    "title": "【开源自荐】Context Space：一键管理和连接外部数据的开源平台",
-    "content": "无论是构建一个智能AI助手、一个SaaS产品，还是一个自动化工作流，作为开发者我们都需要处理各种外部数据和服务，比如常用的GitHub、stripe、notion等等。\n\n然而，每当我们需要接入一个新的服务时，通常意味着一系列重复且繁琐的工作：\n\n- 研究API文档：每个服务的API都自成一派，学习成本高。\n- 处理OAuth认证：为每个服务实现一遍完整的OAuth 2.0流程，处理回调、刷新令牌。\n- 管理API密钥：如何安全地存储和轮换几十个服务的API密钥？这是一个巨大的安全挑战，一不小心就可能将敏感信息泄露在代码仓库中。\n- 编写重复代码：为每个服务编写几乎一样的客户端、错误处理和重试逻辑。\n\n\n这些繁杂的配置流程不仅消耗了大量宝贵的开发时间，也带来了持续的安全和维护成本。\n\n为了解决这个痛点，我们开发并开源了 Context Space ：**一个致力于将复杂的数据集成变为一键操作的开源平台。**\n\n### 项目简介\n\nContext Space 是一个开源的、可自部署的平台，提供一个统一的接口，让你能够安全、高效地管理和连接各种外部数据源。它将所有复杂的认证、API调用和安全管理工作都封装起来，让你用一个极其简单的统一接口就能在cursor和claude code里调用外部数据。\n\n目前，Context Space已经内置支持38+主流服务，包括：\n- 开发工具: GitHub\n- 团队协作: Slack, Notion, Figma, Zoom\n- 商业SaaS: HubSpot, Stripe\n- 公共数据: Spotify, TMDB\n- 以及更多...\n\n<img width=\"1274\" height=\"711\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5fd8f364-fd80-40d6-8d8d-5b615e9bbb31\" />\n\n  \n### 核心特点：实现外部数据的一键连接\n\n**1. 统一的API接口**\n\n在Context Space中，无论是从GitHub拉取issue，还是向Slack发送消息，都使用完全相同的API格式，连接不同的外部服务就像调用一个函数一样简单。\n\n// 使用统一的客户端\nimport { contextSpace } from './lib/client';\n\n// 获取GitHub仓库的Issues\nconst issues = await contextSpace.invoke(\"github\", \"list_issues\", {\n  owner: \"context-space\",\n  repo: \"context-space\"\n});\n\n// 向Slack频道发送消息\nawait contextSpace.invoke(\"slack\", \"post_message\", {\n  channel: \"#general\",\n  text: \"Hello from Context Space!\"\n});\n\n**2. 企业级的安全保障**\n\nContext Space在后端集成了HashiCorp Vault，这是一个业界领先的密钥管理工具。所有服务的OAuth令牌和API密钥都被加密存储在Vault中，并且支持自动刷新，从根本上杜绝了密钥泄露的风险。\n\n**3. 优化开发者的产品体验**\n\n我们深知开发者的痛点，因此在产品体验上做了大量优化：\n\n- 交互式工作台 (Playground)：在Web界面可以直接测试和调用任何已连接的服务，实时查看返回结果，极大地方便了调试过程。\n- 一键集成AI开发工具：Context Space提供了独创的cursor://深度链接功能，只需点击一个按钮，就能将所有服务能力一键注入Cursor，无需手动编辑任何JSON配置文件。\n  \n### Context Space的应用场景\n\n- AI应用开发者：快速为AI Agent赋予与真实世界交互的能力，让它能读写代码、收发消息、处理支付。\n- SaaS产品团队：想要为产品快速上线丰富的第三方集成功能，提升产品竞争力。\n- 独立开发者和初创公司：希望将精力聚焦在核心业务创新上，而不是被基础设施拖慢脚步。\n- 自动化爱好者：构建比Zapier更灵活、成本更低的个人或团队自动化工作流。\n  \n### 开源共享\n\n我们选择将Context Space完全开源，让每个开发者和团队都能没有后顾之忧。\n- 完全透明：可以审查每一行代码，确保没有安全后门。\n- 灵活自部署：将Context Space部署在自己的服务器上，数据和凭证由自己完全掌控。\n- 自由扩展：轻松添加官方尚未支持的私有服务或API。\n  \n\n我们相信，未来的应用开发，应该建立在更高效、更安全的数据连接基础之上，Context Space是我们为实现这一愿景迈出的第一步。\n\n我们诚挚地邀请开发者们来体验这个能极大提升开发效率的开源平台。\n\n- GitHub仓库 (欢迎Star⭐): https://github.com/context-space/context-space\n- 在线体验/官方网站: https://context.space/\n  \n我们真正想做的是创造有价值的业务逻辑，而不是日复一日地搭建数据管道。使用Context Space，一起告别繁琐的配置工程，把时间还给创造本身。",
-    "created_at": "2025-07-31T11:43:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7420"
   }
 ]
