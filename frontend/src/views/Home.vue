@@ -1,16 +1,70 @@
 <template>
-  <div class="container" :style="{minHeight:fullShow?'calc(100vh - 100px)':'auto'}">
-    <!-- 整合的主内容卡片 -->
-    <div class="main-card">
-      <header>
-        <div class="search">
-          <div class="search-input-wrapper">
-            <input v-model="searchQuery" placeholder="搜索文章...">
+  <div class="home-container" :style="{minHeight:fullShow?'calc(100vh - 100px)':'auto'}">
+    <!-- 震撼的Hero区域 -->
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span class="badge-icon">🚀</span>
+          <span class="badge-text">GitHub Weekly</span>
+        </div>
+        <h1 class="hero-title">
+          发现最前沿的
+          <span class="title-highlight">开源项目</span>
+        </h1>
+        <p class="hero-description">
+          精选全球优质开源项目，追踪技术发展趋势，助力开发者成长
+        </p>
+        <div class="hero-search">
+          <div class="search-container">
+            <div class="search-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
+              </svg>
+            </div>
+            <input 
+              v-model="searchQuery" 
+              placeholder="搜索感兴趣的技术、框架、工具..."
+              class="search-input"
+            >
+            <div class="search-shortcut">⌘K</div>
           </div>
         </div>
-      </header>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">{{ filteredArticles.length }}</div>
+            <div class="stat-label">精选项目</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">持续更新</div>
+            <div class="stat-label">每周发布</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div class="stat-number">开源免费</div>
+            <div class="stat-label">完全公开</div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-cards">
+          <div class="floating-card" v-for="(article, index) in featuredArticles" :key="index">
+            <div class="card-icon">⭐</div>
+            <div class="card-title">{{ article.title.slice(0, 20) }}...</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 重新设计的文章网格 -->
+    <section class="articles-section">
+      <div class="section-header">
+        <h2 class="section-title">最新精选</h2>
+      </div>
 
       <main 
+        class="articles-main"
         :class="{ 'hide-scrollbar': props.fullShow }"
         :style="{
           overflowY: props.fullShow ? 'auto' : 'hidden',
@@ -18,63 +72,87 @@
         }" 
         v-on:scrollend="scorllEnd"
       >
-        <div class="articles">
-          <article v-for="article in paginatedArticles" :key="article.id">
-            <h2>
-              <router-link :to="{ name: 'article', params: { id: article.id }}">
-                {{ article.title }}
-              </router-link>
-            </h2>
-            <div class="preview-image" v-if="getFirstImage(article.content)">
+        <div class="articles-grid">
+          <article class="article-card" v-for="article in paginatedArticles" :key="article.id">
+            <!-- 文章卡片头部 -->
+            <div class="card-header">
+              <div class="card-meta">
+                <span class="card-date">{{ formatDate(article.created_at) }}</span>
+                <div class="card-labels">
+                  <span v-for="label in article.labels.slice(0, 2)" :key="label" class="label-tag">
+                    {{ label }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- 预览图片 -->
+            <div class="card-image" v-if="getFirstImage(article.content)">
               <img :src="getFirstImage(article.content)" :alt="article.title">
+              <div class="image-overlay"></div>
             </div>
-            <div class="labels">
-              <span v-for="label in article.labels" :key="label" class="label">
-                {{ label }}
-              </span>
+            
+            <!-- 文章内容 -->
+            <div class="card-content">
+              <h3 class="card-title">
+                <router-link :to="{ name: 'article', params: { id: article.id }}">
+                  {{ article.title }}
+                </router-link>
+              </h3>
+              <p class="card-excerpt">{{ getArticleExcerpt(article.content) }}</p>
             </div>
-            <div class="content">
-              <p>{{ getArticleExcerpt(article.content) }}</p>
-              <div class="content-fade"></div>
-            </div>
-            <div class="article-footer">
-              <span class="date">
-                {{ formatDate(article.created_at) }}
-              </span>
-              <router-link :to="{ name: 'article', params: { id: article.id }}" class="read-more-link btn-text btn-sm">
-                阅读更多
+            
+            <!-- 文章底部 -->
+            <div class="card-footer">
+              <router-link 
+                :to="{ name: 'article', params: { id: article.id }}" 
+                class="btn-minimal"
+              >
+                阅读全文
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"></path>
+                </svg>
               </router-link>
             </div>
           </article>
         </div>
 
-        <div class="pagination" v-if="totalPages > 1 && !fullShow">
-        <button 
-          class="page-btn btn-secondary btn-sm" 
-          :disabled="currentPage === 1"
-          @click="currentPage--"
-        >
-          上一页
-        </button>
+        <!-- 分页控制 -->
+        <div class="pagination-wrapper" v-if="totalPages > 1 && !fullShow">
+          <div class="pagination">
+            <button 
+              class="page-btn btn-secondary" 
+              :disabled="currentPage === 1"
+              @click="currentPage--"
+            >
+              ← 上一页
+            </button>
+            
+            <div class="page-info">
+              <span class="current-page">{{ currentPage }}</span>
+              <span class="page-separator">/</span>
+              <span class="total-pages">{{ totalPages }}</span>
+            </div>
+            
+            <button 
+              class="page-btn btn-secondary" 
+              :disabled="currentPage === totalPages"
+              @click="currentPage++"
+            >
+              下一页 →
+            </button>
+          </div>
+        </div>
         
-        <span class="page-info">{{ currentPage }} / {{ totalPages }}</span>
-        
-        <button 
-          class="page-btn btn-secondary btn-sm" 
-          :disabled="currentPage === totalPages"
-          @click="currentPage++"
-        >
-          下一页
-        </button>
-      </div>
-      <div v-if="fullShow" class="loading">
-        <div class="loading-spinner"></div>
-        <span class="loading-text">
-          加载更多内容中...
-        </span>
-      </div>
-    </main>
-    </div>
+        <!-- 加载状态 -->
+        <div v-if="fullShow" class="loading-section">
+          <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <span class="loading-text">发现更多精彩内容...</span>
+          </div>
+        </div>
+      </main>
+    </section>
   </div>
 </template>
 
@@ -102,6 +180,11 @@ const filteredArticles = computed(() => {
     const content = article.content || ''
     return title.toLowerCase().includes(query) || content.toLowerCase().includes(query)
   })
+})
+
+// 特色文章（用于Hero区域展示）
+const featuredArticles = computed(() => {
+  return articles.slice(0, 6)
 })
 
 const totalPages = computed(() => 
@@ -337,260 +420,530 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-
-.container {
-  max-width: 1200px;
+/* Hero区域 - 震撼第一印象 */
+.home-container {
+  max-width: 100%;
   margin: 0 auto;
-  padding: 24px;
+  background: var(--color-bg-page);
   min-height: calc(100vh - 64px);
-  background: transparent;
 }
 
-/* 主内容卡片 - 整合搜索和内容 */
-.main-card {
-  background: var(--color-bg-primary);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+.hero-section {
+  position: relative;
+  padding: var(--spacing-5xl) var(--spacing-xl);
+  background: var(--color-bg-page);
   overflow: hidden;
-}
-
-header {
-  padding: 24px 24px 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  margin-bottom: 0;
-  border-bottom: 1px solid var(--color-border);
-}
-
-.search {
-  max-width: 600px;
-  margin: 0 auto 24px;
-  position: relative;
-}
-
-.search-input-wrapper {
-  position: relative;
+  min-height: 70vh;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
-.search input {
-  display: inline-block;
-  padding: 12px 16px;
-  font-size: var(--font-size-base);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-bg-secondary);
-  transition: all var(--transition-base);
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 20%, rgba(0, 102, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(255, 107, 53, 0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  max-width: 800px;
+  z-index: 2;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background: var(--gradient-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-2xl);
+  box-shadow: var(--shadow-lg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.badge-icon {
+  font-size: var(--font-size-lg);
+}
+
+.badge-text {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
   color: var(--color-text-primary);
-  width: 100%;
-  box-shadow: var(--shadow-sm);
 }
 
-.search input {
-  width: 80%;
+.hero-title {
+  font-size: var(--font-size-5xl);
+  font-weight: var(--font-weight-extrabold);
+  line-height: 1.1;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text-primary);
 }
 
-.search input[type="checkbox"] {
-  width: 5%;
+.title-highlight {
+  background: var(--gradient-primary);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: gradientShift 3s ease-in-out infinite;
 }
 
-.search input:focus {
+.hero-description {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-3xl);
+  line-height: 1.6;
+}
+
+/* 搜索区域 */
+.hero-search {
+  margin-bottom: var(--spacing-3xl);
+}
+
+.search-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  background: var(--color-bg-primary);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--spacing-sm);
+  box-shadow: var(--shadow-xl);
+  transition: all var(--transition-base);
+}
+
+.search-container:focus-within {
   border-color: var(--color-primary);
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1), var(--shadow-md);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-2px);
 }
 
-.search input::placeholder {
+.search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-secondary);
+}
+
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-primary);
+}
+
+.search-input::placeholder {
   color: var(--color-text-tertiary);
 }
 
-/* 主内容区域 */
-main {
-  padding: 24px;
-  background: transparent;
-}
-
-.articles {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 24px;
-  padding: 12px 0;
-}
-
-article {
-  padding: 20px;
-  border-radius: var(--radius-lg);
-  background: var(--color-bg-primary);
-  box-shadow: var(--shadow-sm);
-  transition: all var(--transition-base);
+.search-shortcut {
   display: flex;
-  flex-direction: column;
-  border: 1px solid var(--color-border);
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-bg-secondary);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-family: var(--font-family-secondary);
 }
 
-article:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
+/* 统计数据 */
+.hero-stats {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-2xl);
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--color-border);
+}
+
+/* 视觉装饰 */
+.hero-visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-cards {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.floating-card {
+  position: absolute;
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  min-width: 200px;
+  box-shadow: var(--shadow-lg);
+  animation: floatMove 6s ease-in-out infinite;
+}
+
+.floating-card:nth-child(1) {
+  top: 10%;
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.floating-card:nth-child(2) {
+  top: 20%;
+  right: 10%;
+  animation-delay: 1s;
+}
+
+.floating-card:nth-child(3) {
+  bottom: 30%;
+  left: 8%;
+  animation-delay: 2s;
+}
+
+.floating-card:nth-child(4) {
+  bottom: 20%;
+  right: 5%;
+  animation-delay: 3s;
+}
+
+.card-icon {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--spacing-sm);
+}
+
+.card-title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-primary);
+}
+
+/* 文章区域 */
+.articles-section {
+  padding: var(--spacing-4xl) var(--spacing-xl);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-3xl);
+  text-align: center;
+}
+
+.section-title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0;
+}
+
+
+/* 文章网格 */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: var(--spacing-3xl);
+  padding: var(--spacing-xl) 0;
+}
+
+.article-card {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  height: fit-content;
+}
+
+.article-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-2xl);
   border-color: var(--color-primary);
 }
 
-article h2 {
-  font-size: 1.375rem;
-  font-weight: 600;
-  margin-bottom: 16px;
+.card-header {
+  padding: var(--spacing-xl) var(--spacing-xl) 0;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-lg);
+}
+
+.card-date {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-medium);
+}
+
+.card-labels {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+.label-tag {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  margin: 0 var(--spacing-xl) var(--spacing-xl);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-bg-tertiary);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.article-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.1) 100%);
+}
+
+.card-content {
+  padding: 0 var(--spacing-xl) var(--spacing-xl);
+}
+
+.card-title {
+  margin: 0 0 var(--spacing-lg);
   line-height: 1.3;
-  color: #1e293b;
 }
 
-article h2 a {
-  color: inherit;
+.card-title a {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-base);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
-article h2 a:hover {
+.card-title a:hover {
   color: var(--color-primary);
 }
 
-.labels {
-  margin: 12px 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.label {
-  padding: 4px 8px;
-  border-radius: var(--radius-sm);
-  font-size: var(--font-size-xs);
-  font-weight: 500;
-  color: var(--color-secondary);
-  background: var(--color-secondary-light);
-  transition: all var(--transition-base);
-  cursor: default;
-  display: inline-flex;
-  align-items: center;
-  line-height: 1.2;
-  border: 1px solid var(--color-secondary);
-}
-
-.label:hover {
-  background: var(--color-secondary);
-  color: white;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
-}
-
-.content {
-  position: relative;
-  margin: 12px 0;
-  min-height: 40px;
-}
-
-.content p {
-  margin: 0;
-  font-size: 0.9375rem;
+.card-excerpt {
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
   line-height: 1.6;
-  color: #475569;
+  margin: 0;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-.article-footer {
+.card-footer {
+  padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-xl);
+  border-top: 1px solid var(--color-border-light);
+}
+
+
+/* 分页样式 - 优化设计 */
+.pagination-wrapper {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-  padding-top: 16px;
-  border-top: 1px solid #e2e8f0;
-}
-
-.date {
-  color: #64748b;
-  font-size: 0.875rem;
-  font-weight: 500;
-}
-
-.article-footer .read-more-link {
-  font-size: 0.875rem;
-  color: white;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-}
-
-.preview-image {
-  position: relative;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  margin-bottom: 16px;
-  border-radius: var(--radius-md);
-  overflow: hidden;
-  background: var(--color-bg-tertiary);
-  border: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
-}
-
-.preview-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-base);
-}
-
-.preview-image:hover img {
-  transform: scale(1.02);
+  justify-content: center;
+  margin-top: var(--spacing-4xl);
 }
 
 .pagination {
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 16px;
-  margin-top: 48px;
-  padding: 24px 0;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  background: var(--color-bg-glass);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
 }
 
+.page-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  box-shadow: var(--shadow-xs);
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background: var(--color-primary-light);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.page-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  color: var(--color-text-tertiary);
+}
 
 .page-info {
-  font-size: 0.875rem;
-  color: #64748b;
-  font-weight: 500;
-  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-weight: var(--font-weight-bold);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--color-primary-light);
+  border-radius: var(--radius-lg);
 }
 
-.loading {
+.current-page {
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-extrabold);
+}
+
+.page-separator {
+  color: var(--color-text-tertiary);
+  font-weight: var(--font-weight-normal);
+}
+
+.total-pages {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* 加载状态 */
+.loading-section {
+  display: flex;
+  justify-content: center;
+  padding: var(--spacing-3xl) 0;
+}
+
+.loading-content {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin: 20px auto;
-  padding: 20px;
+  gap: var(--spacing-lg);
 }
 
 .loading-spinner {
-  border: 4px solid #f3f3f3; 
-  border-top: 4px solid #3498db; 
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--color-border);
+  border-top: 3px solid var(--color-primary);
   border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 2s linear infinite;
+  animation: spin 1s linear infinite;
 }
 
 .loading-text {
-  font-size: 0.875rem;
-  color: #64748b;
-  font-weight: 500;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* 动画 */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes floatMove {
+  0%, 100% { 
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% { 
+    transform: translateY(-20px) translateX(10px) rotate(1deg);
+  }
+  66% { 
+    transform: translateY(10px) translateX(-5px) rotate(-1deg);
+  }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 @keyframes spin {
@@ -598,123 +951,83 @@ article h2 a:hover {
   100% { transform: rotate(360deg); }
 }
 
-@media screen and (max-width: 768px) {
-  .container {
-    padding: 16px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .articles {
-    display: grid;
-    grid-template-columns: 1fr;  /* 强制单列 */
-    gap: 16px;
-    padding: 8px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  article {
-    width: 100%;
-    margin: 0;
-    box-sizing: border-box;
-  }
-
-  .preview-image {
-    width: 100%;
-    padding-bottom: 52.25%;
-  }
-
-  .search {
-    width: 100%;
-    padding: 0 8px;
-    box-sizing: border-box;
-  }
-
-  .search input {
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  article h2 {
-    font-size: 1.125rem;  /* 调小标题字体 */
-    margin-bottom: 8px;
-    line-height: 1.4;
-  }
-
-  .preview-image {
-    margin-bottom: 8px;  /* 减小图片下方间距 */
-  }
-
-  .content p {
-    font-size: 0.875rem;
-    line-height: 1.5;
-    -webkit-line-clamp: 2;  /* 移动端显示2行 */
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .container {
-    padding: 12px 8px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .articles {
-    padding: 4px;
-    gap: 12px;
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  article {
-    padding: 12px;
-    width: 100%;
-    min-width: 300px;
-    max-width: 100%;
-    box-sizing: border-box;
-  }
-
-  .article-footer {
-    flex-direction: column;
-    gap: 8px;
-    align-items: flex-start;
-  }
-
-  .content p {
-    font-size: 0.875rem;
-    -webkit-line-clamp: 3;
-  }
-
-  .pagination {
-    padding: 16px 8px;
-  }
-
-  article h2 {
-    font-size: 1rem;  /* 更小屏幕进一步缩小标题 */
-  }
-
-  article {
-    padding: 12px;  /* 减小卡片内边距 */
-  }
-
-  .labels {
-    margin: 8px 0;
-  }
-
-  .label {
-    padding: 2px 8px;  /* 减小标签内边距 */
-    font-size: 11px;   /* 稍微调小标签字体 */
-  }
-}
-
 .hide-scrollbar {
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
+  display: none;
 }
 
+/* 响应式设计 */
+@media screen and (max-width: 1200px) {
+  .articles-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--spacing-2xl);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-section {
+    padding: var(--spacing-3xl) var(--spacing-lg);
+    min-height: 60vh;
+  }
+  
+  .hero-title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .hero-description {
+    font-size: var(--font-size-lg);
+  }
+  
+  .hero-stats {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  
+  .stat-divider {
+    width: 40px;
+    height: 1px;
+  }
+  
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+  }
+  
+  .section-header {
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    text-align: center;
+  }
+  
+  .floating-card {
+    display: none;
+  }
+  
+  .search-container {
+    margin: 0 var(--spacing-lg);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .hero-section {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+  
+  .articles-section {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+  
+  .article-card {
+    border-radius: var(--radius-lg);
+  }
+  
+  .pagination {
+    padding: var(--spacing-lg);
+    gap: var(--spacing-lg);
+  }
+}
 </style> 

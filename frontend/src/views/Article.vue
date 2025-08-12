@@ -3,7 +3,7 @@
     <div class="article-detail" v-if="article">
       <!-- 返回按钮 -->
       <div class="back-button">
-        <router-link to="/" class="back-link btn-rounded btn-sm">
+        <router-link to="/" class="btn-link">
           ← 返回首页
         </router-link>
       </div>
@@ -22,8 +22,8 @@
       <main>
         <div class="markdown-body" v-html="markdownToHtml(article.content)"></div>
         <div class="source">
-          <a :href="article.url" target="_blank" class="btn-shadow">
-            🔗 查看原文
+          <a :href="article.url" target="_blank" class="btn-source">
+            查看原文
           </a>
         </div>
       </main>
@@ -42,7 +42,7 @@
           文章未找到
         </h2>
         <p>抱歉，您访问的文章不存在或已被移除。</p>
-        <router-link to="/" class="back-home-btn btn-text btn-lg">
+        <router-link to="/" class="btn-link">
           🏠 返回首页
         </router-link>
       </div>
