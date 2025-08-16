@@ -1,5 +1,21 @@
 [
   {
+    "id": 7555,
+    "title": "【工具自荐】一款macOS垃圾清理工具（CleanYourMac），利用AI自动分析和生成清理垃圾的方案，一键执行清理命令",
+    "content": "**名称：CleanYourMac**\n**github：https://github.com/GitDzreal93/clean-your-mac**\n\n---\n\n### 我是如何用半天时间，开发一款 AI 工具来解决 Mac 空间焦虑的\n\n和大家分享一个我刚开源的小工具：**Clean Your Mac**，以及我开发它的心路历程。\n\n去年，我入手了一台丐版的 Mac mini，250G 的硬盘是它最大的短板。我主要用它来做开发和日常办公，实际自己存放的文件加起来不到 70G。但几乎每个月，系统都会提醒我磁盘空间不足。\n\n查看“存储空间”，发现“系统数据”和各种应用缓存像一个黑洞，疯狂吞噬着我的硬盘。最让我烦恼的是，我每周都得手动清理一次，但效果甚微，通常只能释放几个G，没过几天又满了回来。\n\n我也试过几款市面上流行的清理软件，但它们大多只是“大文件查找器”或者“缓存扫描器”。它们能找到很多东西，但最后把“删或不删”的决策权又交回给了我，面对一长串文件列表，我根本不敢乱动，生怕删错什么导致系统或应用崩溃。\n\n**这种需要用户自己做专业判断的工具，并不能真正解决问题。**\n\n上周，我又一次收到了“磁盘已满”的警告，我真的忍无可-可忍了。于是，我决定自己动手，开发一款真正“智能”的清理工具。\n\n花了半天时间，**Clean Your Mac** 的第一个版本诞生了。它运行了不到2分钟，就帮我清理了 **30多G** 的垃圾！我的目标是，把复杂的分析和判断交给程序，用户只需要做一件事：点击“清理”按钮。\n\n#### 科技风的首页\n<img width=\"2072\" height=\"1572\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7bff4b01-3d60-4e82-88ff-badb7e2291d4\" />\n\n#### 分析报告页\n<img width=\"2072\" height=\"1572\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4efde603-5115-4560-87f9-423120d34ae9\" />\n\n#### 清理结果页（我特别喜欢这个绿色的键盘，很解压很治愈）\n<img width=\"2072\" height=\"1572\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/985e468a-e80c-44c9-9358-f778ab83ecbe\" />\n\n### 功能介绍\n\n它主要有以下几个核心特点，也是我认为它与众不同的地方：\n\n#### 1. 🤖 AI 智能分析，不做选择题\n\n这是它的核心。我不想再手动筛选文件了。所以，我加入了一个基于 AI 的分析引擎。它会根据你的 Mac 使用习惯和文件类型，自动分析哪些是可安全删除的“垃圾”，并生成一份个性化的清理报告。你不需要了解什么是日志、什么是缓存，AI 会帮你评估风险，你只需要确认结果。\n\n#### 2. 📸 智能快照管理，释放“看不见”的空间\n\n很多 Mac 用户可能都不知道，Time Machine（时间机器）会在本地磁盘上创建“快照”，以便在没有连接备份盘时也能恢复。这些快照非常占用空间，而且常常被系统归为“系统数据”，难以清理。我的工具能智能识别这类快照，并调用苹果官方的 `tmutil` 命令进行“无损”清理，既安全又高效。\n\n#### 3. 🎯 精准扫描与白名单保护\n\n除了 AI 分析，它也具备强大的常规扫描能力，能精准定位系统缓存、应用日志、下载的临时文件、Xcode 等开发工具的衍生数据等等。更重要的是，我内置了一份“白名单”，确保像微信聊天记录、重要的应用配置这类文件绝对不会被误删，让你用得放心。\n\n### 技术栈\n\n作为一名开发者，我也想简单分享一下它的技术栈，这套组合非常现代化，开发体验也很棒：\n\n*   **桌面框架：Tauri 2.x**。我选择了 Tauri 而不是 Electron，因为它基于 Rust，性能接近原生应用，而且打包出来的体积小得多。\n*   **后端：Rust**。所有核心的扫描和分析逻辑都由 Rust 实现，保证了运行效率和内存安全。\n*   **前端：React + TypeScript**。界面则由大家熟悉的 React 构建，配合 Ant Design 组件库，做到了美观和易用。\n\n---\n\n开发这个工具的初衷是解决我自己的问题，现在我把它开源出来，希望能帮助到更多和我有同样烦恼的 Mac 用户。\n\n如果你也经常为磁盘空间不足而头疼，不妨试试它。\n\n**项目已经发布在 GitHub：[clean-your-mac](https://github.com/GitDzreal93/clean-your-mac)**",
+    "created_at": "2025-08-16T15:56:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7555"
+  },
+  {
+    "id": 7554,
+    "title": "【开源自荐】轻量级的HTML组件模板引擎",
+    "content": "**htemplate** 是一个另类的HTML模板引擎，用原生HTML标签实现组件/模板，我们只会用到HTML基础知识，不需要写JavaScript。\n\n**htemplate** 仅依靠HTML `<template>` `<iframe>` 标签，`h-tmpl` `h-slot` `h-import` 属性，就能提供前端开发的组件系统功能，有效简化页面结构，不需要打包或者服务端渲染，支持静态文件直接预览。\n\n它和 [Alpine.js](https://alpinejs.dev/start-here) 这种简单的 MVVM 框架非常搭配\n\n预览地址：https://hwh008.github.io/htemplate/htemplate-test.html\n项目地址：https://github.com/hwh008/htemplate",
+    "created_at": "2025-08-16T15:14:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7554"
+  },
+  {
     "id": 7553,
     "title": "【开源自荐】硬件类-NodeMCU时钟、电脑远程开机、接入小爱",
     "content": "两三年前写的项目，最近整理了一下开源，有兴趣的小伙伴可以动手玩玩，文档非常详细，基本能说是保姆级。\n\n（第一次写 cpp，代码有点菜，但是功能是暂时没发现什么问题的，欢迎大家优化）\n\n项目地址：https://github.com/AkenClub/CuteClock\n\n⭐ 如果这个项目对您有帮助，请给个 Star 支持一下！\n\n硬件（成本约 50 元）：\n* 1 个 NodeMcu Lua CP2012 驱动版本（ESP8266 开发板 V3）\n* 1 个 DS3231 高精度时钟模块\n* 2 个 3.3V DC 1 路继电器\n* 1 个 MAX7219 点阵模块 4 合 1\n* 若干杜邦线，包括公对公、母对母、公对母（可选）\n\n功能：\n- 时钟\n- 天气\n- 温度\n- 灯光控制\n- 时钟亮度控制\n- 电脑电源远程开机\n- 小爱同学语音控制\n- ....\n\n\n<img width=\"571\" height=\"419\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2f37c761-9be3-4935-8616-945cfa2057f3\" />\n\n<img width=\"843\" height=\"505\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a5bc420f-b9b6-4e4e-aae8-af99a595419f\" />",
@@ -818,23 +834,5 @@
     "created_at": "2025-08-04T08:53:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7451"
-  },
-  {
-    "id": 7450,
-    "title": "AI数学手册计算器",
-    "content": "https://github.com/DrHuangCom/mathHandbook\n\n数学手册计算器是一种功能强大的数学软件，可以进行符号计算和图形绘制。它可以在手机和电脑上使用，并且具有机器学习功能，能够解任意阶微分方程。用户只需在数学手册网站输入数学公式，即可连续点击计算微积分、解方程并给出解析解。\n\n此外，数学手册计算器还被称为“手机上的数学运算和数学作图神器”，集成了数学手册、计算器和计算机三合一的功能。这种计算器不仅适用于基本的数学运算，还可以处理复杂的数学问题，如数列求和。其简便实用的特性使其广泛应用于教学和科研中，为公众提供计算支持和服务。\n\n总之，数学手册计算器是一款多功能的数学软件，具备强大的符号计算和图形绘制能力，适合各种数学需求。\n\nhttps://mathHand.com/math/",
-    "created_at": "2025-08-04T08:51:56Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7450"
-  },
-  {
-    "id": 7449,
-    "title": "【网站自荐】LabEx - 为 Linux 初学者打造动手实践学习网站",
-    "content": "LabEx 是一款 3 人小团队出海产品（提供中文版），面向 Linux 的【初学者/小白】用户，以纯动手实践的方式入门 Linux，DevOps 和信息安全。\n\n- https://labex.io/zh/learn/linux\n\n## 特点一：交互式学习（动手实践 + AI 自动验证）\n\nLearn by doing，通过动手实验掌握 Linux 和编程技能，AI 和 VM 深度结合，验证用户是否完成并给予初学者个性化的引导和提示。\n\n<img width=\"2560\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7912b915-427b-4026-b230-6b466875963e\" />\n\n## 特点二：体系化学习（技能树）\n\n我们将一个技术领域初学者需要掌握的技能点拆解出来，初学者通过完成动手实践的 labs 点亮相应的技能点，进行体系化学习。\n\n<img width=\"429\" height=\"612\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/082d44f9-c685-4fb7-9c1c-5fab5472e9e3\" />\n\n## 定价\n\n- 免费 + 付费：免费用户每天限制开启 3 次 VM，每天重置虚拟机额度，付费用户无限制；",
-    "created_at": "2025-08-04T08:11:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7449"
   }
 ]
