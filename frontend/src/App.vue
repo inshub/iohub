@@ -9,9 +9,10 @@
             <div class="brand-icon">
               <div class="icon-circle">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
-                  <line x1="12" y1="22" x2="12" y2="15.5"></line>
-                  <polyline points="22,8.5 12,15.5 2,8.5"></polyline>
+                  <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                  <path d="M18 14h-8"></path>
+                  <path d="M15 18h-5"></path>
+                  <path d="M10 6h8"></path>
                 </svg>
               </div>
             </div>
@@ -34,11 +35,11 @@
               class="theme-btn"
               :title="isDark ? '切换到浅色模式' : '切换到深色模式'"
             >
-              <svg v-if="isDark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg v-if="isDark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <circle cx="12" cy="12" r="5"></circle>
                 <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
               </svg>
-              <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
             </button>
@@ -53,10 +54,10 @@
             >
               <div class="switch-track">
                 <div class="switch-thumb">
-                  <svg v-if="fullShow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg v-if="fullShow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M8 3v18M16 3v18"></path>
                   </svg>
-                  <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <svg v-else width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <rect x="3" y="3" width="7" height="7"></rect>
                     <rect x="14" y="3" width="7" height="7"></rect>
                     <rect x="14" y="14" width="7" height="7"></rect>
@@ -75,11 +76,6 @@
             class="github-btn"
             title="访问GitHub仓库"
           >
-            <div class="github-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M9 19c-5 1.5-5-2.5-7-3M14 19v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 18 2.5 5.07 5.07 0 0 0 18 .5S16.74.5 14 2.5 9.26.5 9.26.5A5.07 5.07 0 0 0 9 2.5 5.44 5.44 0 0 0 7.5 7c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 13 16.87V19"></path>
-              </svg>
-            </div>
             <span class="github-text">Star</span>
           </a>
         </div>
@@ -197,7 +193,7 @@ onMounted(() => {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 var(--spacing-xl);
-  height: 72px;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -220,7 +216,7 @@ onMounted(() => {
 }
 
 .brand-link:hover {
-  transform: translateY(-1px);
+  /* 移除上移动画，保持简洁 */
 }
 
 .brand-icon {
@@ -230,8 +226,8 @@ onMounted(() => {
 }
 
 .icon-circle {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background: var(--gradient-primary);
   border-radius: var(--radius-lg);
   display: flex;
@@ -243,8 +239,7 @@ onMounted(() => {
 }
 
 .brand-link:hover .icon-circle {
-  box-shadow: var(--shadow-glow);
-  transform: rotate(5deg) scale(1.05);
+  /* 移除logo动画，保持简洁 */
 }
 
 .brand-text {
@@ -315,7 +310,8 @@ onMounted(() => {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-lg);
+  height: 40px;
+  padding: 0 var(--spacing-lg);
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -357,8 +353,9 @@ onMounted(() => {
 .github-btn {
   display: flex;
   align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-lg);
+  justify-content: center;
+  height: 40px;
+  padding: 0 var(--spacing-lg);
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -375,12 +372,6 @@ onMounted(() => {
   background: var(--color-primary-light);
 }
 
-.github-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .github-text {
   font-weight: var(--font-weight-medium);
 }
@@ -391,8 +382,8 @@ onMounted(() => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -486,7 +477,7 @@ onMounted(() => {
 
 /* 主要内容 */
 .main-content {
-  min-height: calc(100vh - 72px);
+  min-height: calc(100vh - 68px);
 }
 
 /* 响应式设计 */
@@ -513,7 +504,7 @@ onMounted(() => {
   }
   
   .navbar-container {
-    height: 64px;
+    height: 60px;
     padding: 0 var(--spacing-lg);
   }
   
@@ -530,8 +521,8 @@ onMounted(() => {
   }
   
   .main-content {
-    padding-top: 64px;
-    min-height: calc(100vh - 64px);
+    padding-top: 60px;
+    min-height: calc(100vh - 60px);
   }
   
   .brand-text {

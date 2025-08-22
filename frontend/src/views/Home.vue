@@ -5,7 +5,11 @@
       <div class="hero-container">
         <div class="hero-content">
           <div class="hero-badge">
-            <span class="badge-icon">✦</span>
+            <span class="badge-icon">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+              </svg>
+            </span>
             <span class="badge-text">GitHub Weekly</span>
           </div>
           <h1 class="hero-title">
@@ -46,7 +50,7 @@
                 aria-label="清除搜索"
                 title="清除搜索"
               >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                   <line x1="18" y1="6" x2="6" y2="18"></line>
                   <line x1="6" y1="6" x2="18" y2="18"></line>
                 </svg>
@@ -69,7 +73,12 @@
                   :aria-selected="selectedSuggestionIndex === index"
                   tabindex="-1"
                 >
-                  <div class="suggestion-icon" aria-hidden="true">🔍</div>
+                  <div class="suggestion-icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                      <circle cx="11" cy="11" r="8"></circle>
+                      <path d="M21 21l-4.35-4.35"></path>
+                    </svg>
+                  </div>
                   <div class="suggestion-text" v-html="highlightSuggestion(suggestion)"></div>
                 </div>
               </div>
@@ -126,11 +135,17 @@
         <!-- 错误状态 -->
         <div v-else-if="hasError" class="error-state">
           <div class="error-content">
-            <div class="error-icon">⚠️</div>
+            <div class="error-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                <line x1="12" y1="9" x2="12" y2="13"></line>
+                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+              </svg>
+            </div>
             <h3 class="error-title">{{ errorMessage }}</h3>
             <p class="error-description">请检查网络连接后重试</p>
             <button @click="retryLoad" class="btn-secondary">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M23 4v6h-6M1 20v-6h6"/>
                 <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.64A9 9 0 0 1 3.51 15"/>
               </svg>
@@ -199,7 +214,7 @@
                 class="btn-minimal"
               >
                 阅读全文
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"></path>
                 </svg>
               </router-link>
@@ -261,7 +276,11 @@
           <!-- 没有更多数据 -->
           <div v-else-if="!hasMoreData && paginatedArticles.length > 0" class="no-more-data">
             <div class="no-more-content">
-              <div class="no-more-icon">✨</div>
+              <div class="no-more-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+              </div>
               <span class="no-more-text">已经到底了，没有更多内容</span>
             </div>
           </div>
@@ -893,7 +912,9 @@ onBeforeUnmount(() => {
 }
 
 .badge-icon {
-  font-size: var(--font-size-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--color-primary);
 }
 
@@ -1052,7 +1073,9 @@ onBeforeUnmount(() => {
 }
 
 .suggestion-icon {
-  font-size: var(--font-size-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--color-text-tertiary);
 }
 
@@ -1450,7 +1473,10 @@ onBeforeUnmount(() => {
 }
 
 .error-icon {
-  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-warning);
   margin-bottom: var(--spacing-lg);
 }
 
@@ -1513,7 +1539,10 @@ onBeforeUnmount(() => {
 }
 
 .no-more-icon {
-  font-size: var(--font-size-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
   opacity: 0.7;
 }
 
@@ -1652,7 +1681,7 @@ onBeforeUnmount(() => {
     padding: var(--spacing-sm) var(--spacing-md);
     font-size: var(--font-size-sm);
     min-width: 44px; /* 确保触摸目标足够大 */
-    min-height: 44px;
+    min-height: 40px;
   }
   
   .page-info {
@@ -1670,7 +1699,7 @@ onBeforeUnmount(() => {
   
   .suggestion-item {
     padding: var(--spacing-md) var(--spacing-lg);
-    min-height: 44px;
+    min-height: 40px;
     display: flex;
     align-items: center;
   }
@@ -1822,7 +1851,7 @@ onBeforeUnmount(() => {
   padding: 8px;
   text-decoration: none;
   border-radius: var(--radius-sm);
-  z-index: 9999;
+  z-index: var(--z-tooltip);
   font-weight: var(--font-weight-medium);
 }
 
