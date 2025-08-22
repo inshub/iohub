@@ -27,6 +27,23 @@
 
         <!-- 控制区域 -->
         <div class="navbar-controls">
+          <!-- 主题切换器 -->
+          <div class="theme-switcher">
+            <button 
+              @click="toggleTheme"
+              class="theme-btn"
+              :title="isDark ? '切换到浅色模式' : '切换到深色模式'"
+            >
+              <svg v-if="isDark" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+              </svg>
+              <svg v-else width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+            </button>
+          </div>
+
           <!-- 视图切换器 -->
           <div class="view-switcher">
             <button 
@@ -113,26 +130,67 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
 const fullShow = ref(true)
 const mobileMenuOpen = ref(false)
 const showArchive = ref(false)
 const showStats = ref(false)
+const isDark = ref(false)
+
+// 主题切换功能
+const toggleTheme = () => {
+  isDark.value = !isDark.value
+  const theme = isDark.value ? 'dark' : 'light'
+  
+  // 更新DOM属性
+  document.documentElement.setAttribute('data-theme', theme)
+  
+  // 保存到本地存储
+  localStorage.setItem('theme', theme)
+}
+
+// 初始化主题
+const initTheme = () => {
+  const savedTheme = localStorage.getItem('theme')
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+  
+  const theme = savedTheme || (prefersDark ? 'dark' : 'light')
+  isDark.value = theme === 'dark'
+  document.documentElement.setAttribute('data-theme', theme)
+}
+
+onMounted(() => {
+  initTheme()
+  
+  // 监听系统主题变化
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      isDark.value = e.matches
+      document.documentElement.setAttribute('data-theme', e.matches ? 'dark' : 'light')
+    }
+  })
+})
 </script>
 
 <style>
-/* 新导航样式 - 未来科技感 */
+/* 新导航样式 - 毛玻璃效果 */
 .navbar {
   position: sticky;
   top: 0;
   z-index: var(--z-sticky);
-  background: var(--color-bg-glass);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow-sm);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
   transition: all var(--transition-base);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 .navbar-container {
@@ -221,7 +279,33 @@ const showStats = ref(false)
   flex-shrink: 0;
 }
 
-/* 视图切换器 - 优化后的设计 */
+/* 主题切换器 - 简约设计 */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  color: var(--color-text-secondary);
+}
+
+.theme-btn:hover {
+  border-color: var(--color-primary);
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+/* 视图切换器 - 简化设计 */
 .view-switcher {
   display: flex;
   align-items: center;
@@ -232,98 +316,63 @@ const showStats = ref(false)
   align-items: center;
   gap: var(--spacing-sm);
   padding: var(--spacing-sm) var(--spacing-lg);
-  background: var(--color-bg-secondary);
+  background: transparent;
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-xl);
+  border-radius: var(--radius-lg);
   cursor: pointer;
   transition: all var(--transition-base);
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
-  box-shadow: var(--shadow-xs);
 }
 
 .switch-btn:hover {
   border-color: var(--color-primary);
   background: var(--color-primary-light);
   color: var(--color-primary);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
 }
 
 .switch-btn.active {
   border-color: var(--color-primary);
-  background: transparent;
-  color: var(--color-primary);
-  box-shadow: var(--shadow-sm);
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
 }
 
 .switch-track {
-  position: relative;
-  width: 32px;
-  height: 18px;
-  background: rgba(255, 255, 255, 0.5);
-  border-radius: var(--radius-full);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all var(--transition-base);
+  display: none;
 }
 
 .switch-thumb {
-  position: absolute;
-  top: 1px;
-  left: 1px;
-  width: 14px;
-  height: 14px;
-  background: white;
-  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all var(--transition-bounce);
-  color: var(--color-text-secondary);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.switch-btn.active .switch-track {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.switch-btn.active .switch-thumb {
-  transform: translateX(14px);
-  background: white;
-  color: var(--color-primary);
 }
 
 .switch-label {
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
-  transition: color var(--transition-base);
+  font-weight: var(--font-weight-medium);
 }
 
-/* GitHub按钮 - 统一风格 */
+/* GitHub按钮 - 简约风格 */
 .github-btn {
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  padding: var(--spacing-md) var(--spacing-xl);
+  padding: var(--spacing-sm) var(--spacing-lg);
   background: transparent;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   color: var(--color-text-secondary);
   text-decoration: none;
   font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
   transition: all var(--transition-base);
-  box-shadow: var(--shadow-xs);
 }
 
 .github-btn:hover {
   border-color: var(--color-primary);
   color: var(--color-primary);
   background: var(--color-primary-light);
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-sm);
 }
 
 .github-icon {
@@ -333,7 +382,7 @@ const showStats = ref(false)
 }
 
 .github-text {
-  font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-medium);
 }
 
 /* 移动端菜单 */
