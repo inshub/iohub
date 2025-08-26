@@ -1,5 +1,13 @@
 [
   {
+    "id": 7636,
+    "title": "[开源自荐] Gooze-Starter - 开箱即用的 Go 项目脚手架",
+    "content": "作为一名 Go 开发者，你是否也经历过这样的循环：每当开启一个新的 **Go Web 项目**，总要先花上一两天，甚至更久的时间来处理 **Go 项目的工程化** 问题？\n\n-   **Go 项目结构** 应该怎么规划才清晰？\n-   日志、配置、数据库这些基础模块，每次都要重新选型和封装吗？\n-   如何为 **Go API 开发** 设计一套优雅的规范，并处理好版本管理？\n-   怎样才能从项目初期就引入完善的测试、CI/CD 等 **Go 最佳实践**？\n\n这些问题是每个 **Go 后端开发** 者都会遇到的。为了不再重复“造轮子”，也为了能让大家把更多精力聚焦于业务逻辑，我开发了这款 Go 项目脚手架——**`gooze-starter`**。\n\n它是一个帮你解决了所有前期烦恼的 **Go 项目模板**。\n\n**[GitHub 地址](https://github.com/soryetong/gooze-starter)**\n\n**[项目文档](https://soryetong.github.io/gooze-docs/)**\n\n### **什么是 `gooze-starter`？**\n\n首先要明确，`gooze-starter` 不是要取代 Gin 或 Echo 这样的 Web 框架，而是基于优秀的 **Gin 框架**，构建了一套更完整、更强大的 **Go 工程化** 体系。\n\n你可以把它看作一个高度整合的“**Golang 脚手架**”，它的核心理念是 **“约定优于配置”** 和 **“关注点分离”** ，让你和你的团队能够遵循统一的规范，高效地进行 **Go 应用开发**。\n\n#### 它解决了哪些痛点？\n\n1.  **清晰的 Go 项目结构**：采纳并优化了社区公认的 `project-layout` 方案。无论是 `api`, `internal`, 还是 `pkg` 目录，职责都一目了然。这对于团队协作和项目维护至关重要。\n\n1.  **简化的 Go API 开发**：内置了 CURD 代码生成，你可以直接在 API 文件中进行定义，就会自动生成 API 代码（handler、serveice、dto、router），你就可以省略这些重复且无意义的工作内容，让 **Go Web 开发** 的代码更加内聚和直观。\n\n1.  **开箱即用的核心组件**：这个 **Go 脚手架** 已经为你集成了 Go 开发中最常用的组件：\n\n    -   **配置管理 (Viper)** ：轻松驾驭多环境配置。\n    -   **日志系统 (Zap)** ：高性能结构化日志，排查问题的好帮手。\n    -   **数据库 ORM (GORM)** ：成熟稳定的 **Go 数据库** 操作库。\n    -   **模块的插拔式使用(Modules)**：Redis、Mongo、DB 等按需安装使用。\n    -   **任务调度 (Cron)** ：内置定时任务模块，处理后台任务不再麻烦。（规划版本）\n\n1.  **高效的代码生成器**：提供了一个简单的命令行工具，一键即可生成新模块所需的 `handler`, `service`, `dto` 分层代码骨架，让你从重复的体力劳动中解放出来。\n\n1.  **自动化的 CI/CD 流程**：项目已配置好 `GitHub Actions`，当你推送代码时，自动编译、测试、构建 Docker 镜像等一系列流程将自动执行，这是现代 **Go 工程化** 不可或缺的一环。（规划版本）\n\n\n#### 它适合谁？\n\n-   **Go 初学者**：想学习和了解 **Go 最佳实践** 与项目组织方式。\n-   **中小型团队**：需要一个统一、规范、高效的 **Go 项目模板** 来快速启动新业务。\n-   **独立开发者**：希望专注于业务逻辑，不想在基础架构上耗费过多时间的 **Go 开发者**。\n\n`gooze-starter` 的诞生，源于我自己在真实项目开发中的思考和沉淀。现在我将它开源，希望能成为你工具箱里那个足够“趁手”的 **Go 项目脚手架**。\n\n\n---\n\n\n### **配套工具 `gooze-cli`**\n> `Gooze-Cli` 是为 `gooze-starter` 提供辅助的 `cli` 工具\n\n目前支持以下功能：\n\n1. 基于 `gooze-starter` 一键生成项目目录结构\n\n2. 更多 cli 工具正在构思更新中......\n\n**[GitHub 地址](https://github.com/soryetong/gooze-cli)**\n\n两步即可使用：\n\n1. 安装\n\n```bash\ngo install github.com/soryetong/gooze-cli@latest\n```\n\n2. 使用\n```bash\ngooze-cli init\n```\n\n> 如果 `go install` 成功，却提示找不到 `gooze-cli` 命令，那么需要先添加环境变量\n\n---\n\n\n### **开源示例 `gooze-vben`**\n\n基于 **`gooze-starter`** 搭配 **`vue-vben-admin`** 实现了一个企业级可用的管理后台\n\n实现了用户、菜单、角色、API 权限管理（配合Casbin实现了接口的权限验证），而且后端接口可快速移植至老项目中\n\n管理后台常用的功能已经实现，可直接使用：\n\n1.  用户管理\n1.  菜单管理\n1.  API权限管理\n1.  角色管理\n1.  字典管理\n1.  操作日志\n\n**[GitHub 地址](https://github.com/soryetong/gooze-vben)**\n\n--- \n\n\n\n\n<p align=\"center\" style=\"color:#7A4442; font-size:18px;\"> END </p>\n\n\n<br>",
+    "created_at": "2025-08-26T06:06:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7636"
+  },
+  {
     "id": 7635,
     "title": "求入职",
     "content": "本人双非，C++出身，在目前公司拓展了ｒｅｄｉｓ，但是公司业务太局限，发展太受限。\n求内推岗位，希望可以开发岗或与C++相关，不求大厂。\n求各位佬可内推或介绍，谢谢！！无以为报！\n13293277139＠163.ｃｏｍ\nｗｘ：13293277139",
@@ -830,13 +838,5 @@
     "created_at": "2025-08-13T09:49:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7532"
-  },
-  {
-    "id": 7531,
-    "title": "【工具自荐】聚合分类管理Github Star的Obsidian简单插件",
-    "content": "Obsidian Plugin: Obsidian GitHub Stars Manager\n\n<img width=\"1032\" height=\"941\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a4d9d77a-4c39-4a92-ab5e-c722c4bebdf9\" />\n\n## 功能特性\n\n- 📋 在 Obsidian 中查看所有已加星标的 GitHub 仓库\n- 🏷️ 为仓库添加自定义标签和笔记\n- 🔗 关联仓库到 Obsidian 笔记\n- 🔄 自动或手动同步星标仓库\n- 🔍 通过名称、语言、标签进行搜索和筛选\n- 📊 按星标时间、名称、语言等多种方式排序\n- 🎨 简洁的用户界面，与 Obsidian 主题完美融合\n\n## 配置\n\n要使用此插件，您需要提供一个具有必要权限的 GitHub 个人访问令牌 (PAT)，以便读取您已加星标的仓库。\n\n**如何获取 GitHub 个人访问令牌 (PAT):**\n\n1.  **登录 GitHub:** 访问 [github.com](https://github.com) 并登录您的账户。\n2.  **访问设置:** 点击页面右上角的个人头像，然后选择 \"Settings\"。\n3.  **开发者设置:** 在左侧菜单栏中，滚动到底部，点击 \"Developer settings\"。\n4.  **个人访问令牌:** 在左侧菜单中，选择 \"Personal access tokens\"，然后选择 \"Tokens (classic)\"。 *(注意：请选择 Classic Token，Fine-grained tokens 可能需要更复杂的权限设置)*\n5.  **生成新令牌:** 点击 \"Generate new token\" 按钮，然后选择 \"Generate new token (classic)\"。\n6.  **令牌描述:** 在 \"Note\" 字段中，为您的令牌添加一个描述性的名称，例如 \"Obsidian Stars Manager\"。\n7.  **设置过期时间:** 选择一个合适的过期时间 (Expiration)。为了安全起见，建议不要选择 \"No expiration\"。\n8.  **选择范围 (Scopes):** 这是最关键的一步。您需要授予此令牌访问您的仓库的权限。勾选 `repo` 这个顶级复选框。这将自动选中其下的所有子权限，这是插件读取您的星标仓库所必需的。\n9.  **生成令牌:** 点击页面底部的 \"Generate token\" 按钮。\n10. **复制令牌:** **重要！** GitHub 只会显示一次完整的令牌。请立即点击复制按钮将其复制下来，并妥善保管。**离开此页面后将无法再次看到完整的令牌。**\n11. **在插件中使用:** 将复制的令牌粘贴到 Obsidian 中 \"GitHub Stars Manager\" 插件设置选项卡里的 \"GitHub 个人访问令牌 (PAT)\" 字段中。\n\n## 使用说明\n\n1. 安装并启用插件后，在左侧面板会出现一个 GitHub 星标图标\n2. 点击图标打开星标仓库视图\n3. 首次使用需要在设置中配置您的 GitHub PAT\n4. 点击\"同步\"按钮获取您的星标仓库\n5. 您可以为每个仓库添加个人笔记、标签，或关联到现有的 Obsidian 笔记\n\n## 安装\n\n### 从 Obsidian 社区插件安装（推荐）\n\n1. 打开 Obsidian 设置\n2. 转到\"社区插件\"选项卡\n3. 搜索 \"GitHub Stars Manager\"\n4. 点击安装并启用插件\n\n### 手动安装\n\n1. 下载最新版本的 `main.js`、`manifest.json` 和 `styles.css`\n2. 将这些文件复制到您的保险库文件夹：`VaultFolder/.obsidian/plugins/obsidian-github-stars-manager/`\n3. 重启 Obsidian\n4. 在设置中启用插件\n\n\n",
-    "created_at": "2025-08-13T08:37:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7531"
   }
 ]
