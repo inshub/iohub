@@ -1,5 +1,23 @@
 [
   {
+    "id": 7647,
+    "title": "【开源自荐】比 Comlink 更好的跨 JS 上下文通信库",
+    "content": "Github: https://github.com/molvqingtai/comctx\n\n这是一个解决 JavaScript 环境中跨上下问题的通信库， 类似 [Comlink](https://github.com/GoogleChromeLabs/comlink)  但是比 [Comlink](https://github.com/GoogleChromeLabs/comlink)  更强大，它实现了以一种灵活的方式适配不同环境，例如：Web Workers, Browser Extensions, iframes, Electron 等。\n\n浏览器扩展中不同上下文通信 Demo:\n\nhttps://github.com/user-attachments/assets/a876edb3-2b03-40b2-95e4-a0596713c989\n\n**相比 Comlink 有什么改进**\n\n除了解决环境限制问题，[Comctx](https://github.com/molvqingtai/comctx) 在其他方面也做了一些优化：\n\n包体积更小 得益于核心代码的极简设计，[Comctx](https://github.com/molvqingtai/comctx) 只有 1KB+，而 [Comlink](https://github.com/GoogleChromeLabs/comlink) 是 4KB+\n\n自动处理 Transferable Objects 当你传输 [ArrayBuffer](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer)、[ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) 这些大对象时，[Comctx](https://github.com/molvqingtai/comctx) 可以自动提取为 [transfer](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Transferable_objects)。[Comlink](https://github.com/GoogleChromeLabs/comlink) 需要你手动处理。\n\n更好的连接管理 [Comctx](https://github.com/molvqingtai/comctx) 内置了心跳检测，能自动等待远程服务准备好。这解决了 [Comlink](https://github.com/GoogleChromeLabs/comlink) 中常见的时序问题——有时候你调用方法时，对方还没准备好接收消息。\n\n类型安全 [TypeScript](https://www.typescriptlang.org/) 支持和 [Comlink](https://github.com/GoogleChromeLabs/comlink) 一样好，该有的类型推导都有。",
+    "created_at": "2025-08-27T09:32:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7647"
+  },
+  {
+    "id": 7646,
+    "title": "【开源自荐】VideoAdGuard - 浏览器插件：基于大模型识别B站视频中的口播广告，并自动跳过",
+    "content": "### 项目地址\n\nhttps://github.com/Warma10032/VideoAdGuard\n\n\n### 项目标题\n\n一个能识别B站视频中口播广告的插件，帮助一键跳过口播广告\n\n### 项目描述\n\n插件在用户观看视频时，会基于视频字幕，使用大语言模型，自动检测视频中是否存在植入广告。其思想与AI搜索屏蔽广告类似，都是在获取输入前使用LLM进行预处理，筛选不重要内容，节约用户时间。对于广告时间段，提供自动跳过/手动一键跳过功能。\n目前插件适配多个大模型厂商和多个浏览器（Chrome，Edge，Firefox）\n\n### 亮点\n\n项目具有完整的功能实现，包括：\n- 自动跳过广告\n- 识别结果缓存\n- 无字幕视频的音频识别\n- 免费模型的适配（可以纯免费使用）\n- 本地Ollama适配，提供给在意隐私的用户\n- UP主白名单设置\n\n插件界面、交互逻辑清晰\n插件适配多个浏览器\n\n\n### 截图或演示视频\n\n插件界面：\n<img width=\"437\" height=\"750\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e35969e4-2c25-48c9-8ef1-3c1ad21942a0\" />\n\n插件效果：\n<img width=\"608\" height=\"195\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/73dcf68b-b30d-4603-8ae0-71e0b005e896\" />\n\n演示视频：https://youtu.be/7cx48oY0Ht8?si=8fCyel1YBjkODHlo",
+    "created_at": "2025-08-27T08:34:58Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/7646"
+  },
+  {
     "id": 7645,
     "title": "【开源自荐】图像提示词生成器，一键生成令人惊叹的图像提示词",
     "content": "项目地址：[midjourney-prompt-generator](https://github.com/Amery2010/midjourney-prompt-generator)\n体验地址：[Midjourney 提示词生成器](https://mj.u14.app/zh/prompt)\n\n一个基于 Next.js、TypeScript 和 Tailwind CSS 构建的开源 Midjourney 提示词生成器。旨在帮助用户轻松创建富有创意和多样化的 Midjourney 提示词，激发无限的艺术可能性。\n\n<img width=\"3024\" height=\"1646\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dab66cc8-7d0d-4f23-a384-8945c7c226de\" />\n\n## ✨ 特性\n\n- **智能提示词优化 (文本转提示词)**：用户输入初步想法或关键词，系统将对其进行智能优化和扩展，生成高质量的 Midjourney 提示词。\n- **图片转提示词 (图像描述)**：支持上传图片，系统会分析图片内容并将其转换为详细的文本描述，作为生成提示词的基础。\n- **预设参数选择**：提供便捷的预设参数按钮，用户可选择常用的图片比例和多种绘画风格。这些参数将在提示词优化过程中作为基础，确保生成结果符合用户偏好。\n- **直观的用户界面**：使用 Tailwind CSS 构建的简洁美观的界面，提供流畅的用户体验。\n- **实时预览**：在生成提示词时提供实时预览，帮助用户快速迭代。\n- **一键复制**：轻松复制生成的提示词，方便直接粘贴到 Midjourney。\n- **开源且可扩展**：社区驱动，易于贡献和功能扩展。\n\n**这款图像提示词生成器主要用于 Midjourney 提示词生成，但也可用于其他各类图像生成平台。**",
@@ -92,7 +110,9 @@
     "title": "【开源自荐】Dataset Viewer：一款轻量的文件查看器，专为大型云端文件优化",
     "content": "## 项目地址\n\n[下载链接](https://github.com/stardustai/dataset-viewer/releases) · https://github.com/stardustai/dataset-viewer\n\n## 项目描述\n\n一款轻量的文件查看工具，提供对本地或云端（WebDAV, OSS, AWS, COS, HuggingFace）大文件及压缩包的高效查看，同时也支持绝大部分常用格式文件。\n\n## 亮点\n\n* 分块加载 + 虚拟列表：云端大文件也可秒开查看\n* 压缩包直接预览：ZIP/TAR 文件流式浏览，无需解压即可查看内容\n* 跨平台支持：macOS/Windows/Linux 一致的优秀体验\n* 现代化界面：深色/浅色主题，响应式设计，多语言支持\n\n另外支持文件批量下载，pptx/docx/xlsx/pdf 等格式预览，对于和我一样不需要编辑 Office 文件的人基本可以卸载 WPS 等软件了\n\n## 截图\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/524599d3-bda4-4a67-8a60-59bf2f1dc182\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0664f677-e747-43ef-99d1-beb24ab71a7c\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31626d1a-43f6-4e0f-af05-ed5e8ddfea97\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6d79cfea-b435-4685-8e3f-90d96262e9a6\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/26be3cd1-a0de-49fc-9f00-bb071564c546\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e1af23f-1985-41bc-8e1a-a36c5f40940c\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1274606e-7c89-4bef-9d3d-8037faf3b45a\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/078a4645-ef22-4b26-84a4-ad1bb9f8aed2\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dbe225e0-5e42-41e8-9d98-1f3654cdc831\" />",
     "created_at": "2025-08-25T15:18:19Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/7634"
   },
   {
@@ -116,7 +136,9 @@
     "title": "【开源自荐】Go/React开发的端到端webrtc的桌面共享/文件传输/文字传输，安全，隐私，数据不经过服务器。",
     "content": "# 项目地址\nhttps://github.com/MatrixSeven/file-transfer-go\n# 在线体验地址\nhttps://transfer.52python.cn\n\n# 项目描述\n项目起因是因为要经常传一些文件到 win 服务,以及各种设备跨网络传输文件。了解了下 webrtc 技术。摸着需求就开始过河了！！\n主要功能是通过webrtc建立端到端的链接，然后在p2p基础上进行文字/桌面/文件的传输。\n> 项目的初心就是 即开即用，传输文件/共享桌面/同步文字 。原则就是直观，直接，不拖泥带水，开门即是主题，传输文件 or 文字 or 共享桌面。\n\n\n# 亮点\n* 无需注册，即开即用\n* 端到端的文件传输\n* 端到端的文字传输\n* 端到端的桌面共享\n* 支持Mac/Linux/win 单文件部署\n* 所有数据不经过服务端，安全，隐私。\n\n# 备注\np2p打洞依赖所处的NAT网络环境，存在打洞失败场景。\n\n# 截图\n ![](https://i.imgur.com/rKFhPYK.png)",
     "created_at": "2025-08-25T09:23:00Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/7631"
   },
   {
@@ -820,23 +842,5 @@
     "created_at": "2025-08-15T02:56:40Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7544"
-  },
-  {
-    "id": 7543,
-    "title": "【工具自荐】新一代端侧智能语音交互解决方案",
-    "content": "[七牛灵矽 AI 正式发布：重塑端侧新生态，释放 AI 创作者想象力](https://mp.weixin.qq.com/s?__biz=MjM5NzAwNDI4Mg==&mid=2652210823&idx=1&sn=cb30fd4f31cf4eb40cb4ba2dd88d2540&chksm=bc2a8f88b2033b03799f56a5bd9ca311b828c96e755215d9c12880db5ecd0cc3eb9df66621d0&xtrack=1&scene=0&subscene=7&sessionid=1755220591&clicktime=1755223288&enterid=1755223288&ascene=7&fasttmpl_type=0&fasttmpl_fullversion=7864048-zh_CN-zip&fasttmpl_flag=0&realreporttime=1755223288739&devicetype=android-31&version=4.1.30.99529&nettype=WIFI&abtest_cookie=AAACAA%3D%3D&lang=zh_CN&session_us=gh_f13bb18ce4e7&countrycode=CN&exportkey=n_ChQIAhIQ3GYhIegqJdfR%2BGeKZ%2BzIsRLxAQIE97dBBAEAAAAAAC3aAYzNKmUAAAAOpnltbLcz9gKNyK89dVj0V5laK6%2FBZl9zLNwqpYZ6VUUWu%2FNNDDD1OQqERbVo87nG5rLmfWj%2F7tiUidSbSalivOjQ5gR%2FouyMrn4vFWDfkvtDDzVlX%2BnkClQvWVHeJOLqyvotXGOUMSTHGOo9WnizriJL57mBRz5E4LL%2BrEnHuxbbrUF6RRSkw8I961Z9D7fQfqVVbeMGmj4ND7MRy0zQK3QM2JpjedbalHKsuXhZp99ISLmSFGyIaSxO6mqvkfaCBpO2z4U79mNdiGTRtzQEbbma9wQFxTxwDUI%3D&pass_ticket=pgBxqh3rQxwunQ1RW%2FdKnPj7%2F9yJc6Lfgj9QeycJXnKgIfTrFD9dqTFYWv%2BVVFC6&wx_header=3&platform=mac)\n\n七牛云灵矽AI是一款新一代端侧智能语音交互解决方案，支持接入主流AI大模型，打造开放、多模态的AI语音生态。技术亮点包括多模型无缝接入、APP级技能拓展、逼真的情感语音和低延迟自然对话体验，让设备“会聊天、会表达”。灵矽AI可广泛应用于教育智能硬件、智能家居与机器人场景，兼容主流芯片平台，助力开发者和企业低门槛打造创新AI产品。",
-    "created_at": "2025-08-15T02:32:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7543"
-  },
-  {
-    "id": 7542,
-    "title": "【工具自荐】一款团队适用的语音转录总结工具，完整的前后端代码。",
-    "content": "https://github.com/weynechen/intrascribe/tree/master\n面向企业、学校与机关等内网环境的本地优先语音转写与协作平台：支持实时转写、说话人分离、高质量批处理、AI 总结与标题生成。默认提供浏览器 WebRTC 接入与 SSE 实时返回，也支持边缘设备/硬件作为前端，架构解耦、可替换任意采集与传输方案；数据全程留在本地，重视隐私与合规。",
-    "created_at": "2025-08-15T01:18:55Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7542"
   }
 ]
