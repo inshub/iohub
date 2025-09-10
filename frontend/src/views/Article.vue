@@ -3,9 +3,9 @@
     <div class="article-detail" v-if="article">
       <!-- 返回按钮 -->
       <div class="back-button">
-        <router-link to="/" class="btn-link">
+        <button @click="goBack" class="btn-link">
           ← 返回首页
-        </router-link>
+        </button>
       </div>
       
       <header>
@@ -53,15 +53,23 @@
 <script setup lang="ts">
 import { ref, computed } from 'vue'
 import { marked } from 'marked'
+import { useRouter } from 'vue-router'
 import articles from '../data/articles.json'
 
 const props = defineProps<{
   id: string
 }>()
 
+const router = useRouter()
+
 const article = computed(() => 
   articles.find(a => a.id === parseInt(props.id))
 )
+
+const goBack = () => {
+  // 直接跳转到首页，确保触发 Home.vue 的 restoreScrollState()
+  router.push('/')
+}
 
 const formatDate = (dateStr: string) => {
   return new Date(dateStr).toLocaleDateString('zh-CN', {

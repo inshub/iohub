@@ -16,7 +16,20 @@ const router = createRouter({
       component: Article,
       props: true
     }
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    // 当从文章页面导航到首页时，阻止默认滚动行为
+    if (from.name === 'article' && to.name === 'home') {
+      return false
+    }
+    
+    // 其他情况使用默认行为
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { top: 0 }
+    }
+  }
 })
 
 export default router 

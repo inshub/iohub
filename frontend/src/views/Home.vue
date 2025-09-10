@@ -1,101 +1,65 @@
 <template>
   <div class="home-container" :style="{minHeight:fullShow?'calc(100vh - 100px)':'auto'}">
-    <!-- 简约大气的Hero区域 -->
-    <section class="hero-section">
-      <div class="hero-container">
-        <div class="hero-content">
-          <div class="hero-badge">
-            <span class="badge-icon">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+    <!-- 简化的搜索区域 -->
+    <section class="search-section">
+      <div class="search-container" ref="searchContainer">
+        <div class="search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="M21 21l-4.35-4.35"></path>
+          </svg>
+        </div>
+        <input 
+          v-model="searchQuery" 
+          @focus="showSuggestions = true"
+          @blur="hideSuggestions"
+          @keydown="handleSearchKeydown"
+          placeholder="搜索技术、框架、工具..."
+          class="search-input"
+          ref="searchInput"
+          role="searchbox"
+          aria-label="搜索文章"
+          aria-expanded="false"
+          aria-autocomplete="list"
+          :aria-activedescendant="selectedSuggestionIndex >= 0 ? `suggestion-${selectedSuggestionIndex}` : ''"
+        >
+        <button 
+          v-if="searchQuery" 
+          @click="clearSearch"
+          class="search-clear"
+          aria-label="清除搜索"
+          title="清除搜索"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        
+        <!-- 搜索建议下拉框 -->
+        <div 
+          v-if="showSuggestions && searchSuggestions.length" 
+          class="search-suggestions"
+          role="listbox"
+          aria-label="搜索建议"
+        >
+          <div 
+            v-for="(suggestion, index) in searchSuggestions" 
+            :key="suggestion"
+            :id="`suggestion-${index}`"
+            @mousedown="selectSuggestion(suggestion)"
+            :class="['suggestion-item', { active: selectedSuggestionIndex === index }]"
+            role="option"
+            :aria-selected="selectedSuggestionIndex === index"
+            tabindex="-1"
+          >
+            <div class="suggestion-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="M21 21l-4.35-4.35"></path>
               </svg>
-            </span>
-            <span class="badge-text">GitHub Weekly</span>
-          </div>
-          <h1 class="hero-title">
-            发现最前沿的
-            <span class="title-highlight">开源项目</span>
-          </h1>
-          <p class="hero-description">
-            精选全球优质开源项目，追踪技术发展趋势
-          </p>
-          
-          <!-- 智能搜索区域 -->
-          <div class="hero-search">
-            <div class="search-container" ref="searchContainer">
-              <div class="search-icon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <circle cx="11" cy="11" r="8"></circle>
-                  <path d="M21 21l-4.35-4.35"></path>
-                </svg>
-              </div>
-              <input 
-                v-model="searchQuery" 
-                @focus="showSuggestions = true"
-                @blur="hideSuggestions"
-                @keydown="handleSearchKeydown"
-                placeholder="搜索技术、框架、工具..."
-                class="search-input"
-                ref="searchInput"
-                role="searchbox"
-                aria-label="搜索文章"
-                aria-expanded="false"
-                aria-autocomplete="list"
-                :aria-activedescendant="selectedSuggestionIndex >= 0 ? `suggestion-${selectedSuggestionIndex}` : ''"
-              >
-              <button 
-                v-if="searchQuery" 
-                @click="clearSearch"
-                class="search-clear"
-                aria-label="清除搜索"
-                title="清除搜索"
-              >
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <line x1="18" y1="6" x2="6" y2="18"></line>
-                  <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-              </button>
-              
-              <!-- 搜索建议下拉框 -->
-              <div 
-                v-if="showSuggestions && searchSuggestions.length" 
-                class="search-suggestions"
-                role="listbox"
-                aria-label="搜索建议"
-              >
-                <div 
-                  v-for="(suggestion, index) in searchSuggestions" 
-                  :key="suggestion"
-                  :id="`suggestion-${index}`"
-                  @mousedown="selectSuggestion(suggestion)"
-                  :class="['suggestion-item', { active: selectedSuggestionIndex === index }]"
-                  role="option"
-                  :aria-selected="selectedSuggestionIndex === index"
-                  tabindex="-1"
-                >
-                  <div class="suggestion-icon" aria-hidden="true">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                      <circle cx="11" cy="11" r="8"></circle>
-                      <path d="M21 21l-4.35-4.35"></path>
-                    </svg>
-                  </div>
-                  <div class="suggestion-text" v-html="highlightSuggestion(suggestion)"></div>
-                </div>
-              </div>
             </div>
-          </div>
-          
-          <!-- 精简的统计信息 -->
-          <div class="hero-stats">
-            <div class="stat-item">
-              <div class="stat-number">{{ filteredArticles.length }}</div>
-              <div class="stat-label">精选项目</div>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat-item">
-              <div class="stat-number">实时更新</div>
-              <div class="stat-label">每周发布</div>
-            </div>
+            <div class="suggestion-text" v-html="highlightSuggestion(suggestion)"></div>
           </div>
         </div>
       </div>
@@ -200,6 +164,7 @@
                 <router-link 
                   :to="{ name: 'article', params: { id: article.id }}"
                   :aria-label="`阅读文章：${article.title}`"
+                  @click="saveScrollState"
                 >
                   {{ article.title }}
                 </router-link>
@@ -212,6 +177,7 @@
               <router-link 
                 :to="{ name: 'article', params: { id: article.id }}" 
                 class="btn-minimal"
+                @click="saveScrollState"
               >
                 阅读全文
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -292,6 +258,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import { useRouter } from 'vue-router'
 import articles from '../data/articles.json'
 
 const props = defineProps<{
@@ -299,6 +266,9 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits(['update:fullShow'])
+
+// 初始化路由
+const router = useRouter()
 
 const searchQuery = ref('')
 const currentPage = ref(1)
@@ -327,8 +297,10 @@ const handleImageLoad = () => {
 const handleArticleKeydown = (event: KeyboardEvent, article: any) => {
   if (event.key === 'Enter' || event.key === ' ') {
     event.preventDefault()
-    // 导航到文章详情页
-    window.location.href = `/article/${article.id}`
+    // 保存当前状态后导航到文章详情页
+    saveScrollState()
+    // 使用 router 导航
+    router.push(`/article/${article.id}`)
   }
 }
 
@@ -735,22 +707,34 @@ const mainContainer = ref<HTMLElement | null>(null)
 
 // 保存滚动位置和当前页码
 const saveScrollState = () => {
-  if (props.fullShow && mainContainer.value) {
-    const scrollTop = mainContainer.value.scrollTop
-    const state = {
-      scrollPosition: scrollTop,
-      currentPage: currentPage.value,
-      searchQuery: searchQuery.value,
-      timestamp: Date.now()
+  let scrollPosition = 0
+  
+  if (props.fullShow) {
+    // 滚动模式下，获取正确的滚动容器 
+    const articlesMain = document.querySelector('.articles-main') as HTMLElement
+    if (articlesMain) {
+      scrollPosition = articlesMain.scrollTop
     }
-    sessionStorage.setItem('iohub-scroll-state', JSON.stringify(state))
+  } else {
+    // 分页模式下，使用window滚动
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop
   }
+  
+  const state = {
+    scrollPosition: scrollPosition,
+    currentPage: currentPage.value,
+    searchQuery: searchQuery.value,
+    timestamp: Date.now(),
+    fullShow: props.fullShow
+  }
+  console.log('💾 Saving scroll state:', state)
+  sessionStorage.setItem('iohub-scroll-state', JSON.stringify(state))
 }
 
 // 恢复滚动位置和当前页码
 const restoreScrollState = async () => {
   const savedState = sessionStorage.getItem('iohub-scroll-state')
-  if (savedState && props.fullShow) {
+  if (savedState) {
     try {
       const state = JSON.parse(savedState)
       const isRecent = (Date.now() - state.timestamp) < 30 * 60 * 1000 // 30分钟内
@@ -766,19 +750,116 @@ const restoreScrollState = async () => {
           currentPage.value = state.currentPage
         }
         
-        // 等待DOM更新后恢复滚动位置
+        // 等待DOM更新和数据加载完成后恢复滚动位置
         await nextTick()
-        if (mainContainer.value && state.scrollPosition) {
-          setTimeout(() => {
-            if (mainContainer.value) {
-              mainContainer.value.scrollTop = state.scrollPosition
-            }
-          }, 100)
+        
+        // 在滚动模式下，需要确保加载足够的内容来恢复位置
+        if (props.fullShow && state.currentPage > 1) {
+          console.log(`Need to load content up to page ${state.currentPage} for scroll position ${state.scrollPosition}`)
+          
+          // 强制加载所有需要的内容，不依赖异步加载机制
+          const forceLoadContent = async () => {
+            let loadAttempts = 0
+            const maxLoadAttempts = 20
+            
+            // 直接设置目标页码，让 paginatedArticles 计算显示所有需要的内容
+            const originalPage = currentPage.value
+            currentPage.value = state.currentPage
+            
+            // 等待内容更新
+            await nextTick()
+            
+            console.log(`Content loading completed. Page set to: ${currentPage.value}, Articles count: ${paginatedArticles.value.length}`)
+          }
+          
+          await forceLoadContent()
         }
+        
+        // 改进的滚动位置恢复算法
+        const attemptScrollRestore = async (attempts = 0) => {
+          const maxAttempts = 40
+          
+          if (attempts >= maxAttempts) {
+            console.warn(`Failed to restore scroll position after ${maxAttempts} attempts`)
+            return
+          }
+          
+          if (state.scrollPosition > 0) {
+            if (props.fullShow) {
+              const mainContainer = document.querySelector('.articles-main') as HTMLElement
+              
+              if (mainContainer) {
+                const currentScrollHeight = mainContainer.scrollHeight
+                const clientHeight = mainContainer.clientHeight
+                const targetPosition = state.scrollPosition
+                
+                console.log(`Attempt ${attempts + 1}: Container height=${currentScrollHeight}, Target=${targetPosition}, Client=${clientHeight}`)
+                
+                // 检查是否有足够的内容来滚动
+                if (currentScrollHeight > clientHeight) {
+                  // 计算可滚动的最大位置
+                  const maxScrollTop = currentScrollHeight - clientHeight
+                  const scrollToPosition = Math.min(targetPosition, maxScrollTop)
+                  
+                  // 设置滚动位置
+                  mainContainer.scrollTop = scrollToPosition
+                  
+                  // 等待滚动完成
+                  await new Promise(resolve => setTimeout(resolve, 50))
+                  
+                  // 验证滚动是否成功 - 放宽验证条件
+                  const actualPosition = mainContainer.scrollTop
+                  const tolerance = Math.max(100, targetPosition * 0.05) // 5%容错或最小100px
+                  
+                  if (Math.abs(actualPosition - scrollToPosition) <= tolerance || 
+                      (scrollToPosition === maxScrollTop && actualPosition >= maxScrollTop - 50)) {
+                    console.log(`✅ Scroll position restored successfully: ${actualPosition} (target: ${targetPosition})`)
+                    return
+                  }
+                  
+                  console.log(`❌ Scroll verification failed: actual=${actualPosition}, expected=${scrollToPosition}, tolerance=${tolerance}`)
+                }
+                
+                // 如果内容高度不足，等待更多渲染
+                if (currentScrollHeight <= targetPosition + clientHeight) {
+                  console.log('Content height insufficient, waiting for more rendering...')
+                  // 给更多时间让内容渲染
+                  await new Promise(resolve => setTimeout(resolve, 200))
+                }
+              }
+            } else {
+              // 分页模式的滚动恢复
+              const targetPosition = Math.min(state.scrollPosition, document.body.scrollHeight - window.innerHeight)
+              
+              if (document.body.scrollHeight >= targetPosition + window.innerHeight) {
+                window.scrollTo(0, targetPosition)
+                
+                if (Math.abs(window.pageYOffset - targetPosition) < 50) {
+                  console.log('Window scroll position restored successfully:', targetPosition)
+                  return
+                }
+              }
+            }
+          }
+          
+          // 使用渐进式延迟重试
+          const delay = attempts < 5 ? 50 : attempts < 15 ? 100 : attempts < 25 ? 200 : 300
+          setTimeout(() => attemptScrollRestore(attempts + 1), delay)
+        }
+        
+        // 延迟开始尝试，确保DOM完全渲染
+        setTimeout(() => {
+          console.log('🔄 Starting scroll position restoration attempts...')
+          attemptScrollRestore()
+        }, 150) // 减少延迟，让恢复更快
+      } else {
+        console.log('❌ Saved state is too old, ignoring')
       }
     } catch (error) {
-      console.warn('Failed to restore scroll state:', error)
+      console.error('❌ Failed to restore scroll state:', error)
     }
+  } else {
+    console.log('ℹ️ No saved scroll state found')
   }
 }
 
@@ -796,6 +877,13 @@ const handleScroll = () => {
   throttledSaveScroll()
 }
 
+// 页面滚动事件处理（非fullShow模式）
+const handleWindowScroll = () => {
+  if (!props.fullShow) {
+    throttledSaveScroll()
+  }
+}
+
 // 页码变化时保存状态
 watch(currentPage, () => {
   saveScrollState()
@@ -809,18 +897,29 @@ watch(searchQuery, () => {
 // 组件挂载时设置事件监听和恢复状态
 onMounted(async () => {
   await nextTick()
-  mainContainer.value = document.querySelector('main') as HTMLElement
+  
+  // 滚动模式下监听 .articles-main，分页模式下监听 window
+  const articlesMain = document.querySelector('.articles-main') as HTMLElement
+  if (articlesMain) {
+    articlesMain.addEventListener('scroll', handleScroll, { passive: true })
+    console.log('📡 Added scroll listener to .articles-main')
+  }
   
   // 初始化图片懒加载
   initImageLazyLoading()
   
-  if (mainContainer.value) {
-    mainContainer.value.addEventListener('scroll', handleScroll, { passive: true })
-    await restoreScrollState()
-  }
+  // 为非fullShow模式添加window滚动监听
+  window.addEventListener('scroll', handleWindowScroll, { passive: true })
   
-  // 初始化数据加载
+  // 先初始化数据加载
   await initializeData()
+  
+  // 等待DOM完全更新后恢复滚动状态 - 增加更多延迟确保内容渲染完成
+  await nextTick()
+  // 使用更长的延迟确保所有内容都已渲染
+  setTimeout(async () => {
+    await restoreScrollState()
+  }, 100)
   
   // 预加载关键图片
   await nextTick()
@@ -838,9 +937,13 @@ onBeforeUnmount(() => {
     lazyImages.value.clear()
   }
   
-  if (mainContainer.value) {
-    mainContainer.value.removeEventListener('scroll', handleScroll)
+  // 清理滚动事件监听
+  const articlesMain = document.querySelector('.articles-main') as HTMLElement
+  if (articlesMain) {
+    articlesMain.removeEventListener('scroll', handleScroll)
   }
+  window.removeEventListener('scroll', handleWindowScroll)
+  
   if (saveScrollTimer) {
     clearTimeout(saveScrollTimer)
   }
@@ -849,7 +952,7 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* 简约大气Hero区域 */
+/* 简化的搜索区域 */
 .home-container {
   max-width: 100%;
   margin: 0 auto;
@@ -857,98 +960,15 @@ onBeforeUnmount(() => {
   min-height: calc(100vh - 64px);
 }
 
-.hero-section {
-  position: relative;
-  padding: var(--spacing-4xl) var(--spacing-xl) var(--spacing-3xl);
+.search-section {
+  padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-lg);
   background: var(--color-bg-page);
-  overflow: hidden;
-}
-
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: radial-gradient(circle at center, rgba(37, 99, 235, 0.02) 0%, transparent 50%);
-  pointer-events: none;
-}
-
-.hero-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.hero-content {
-  position: relative;
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
-  z-index: 2;
-}
-
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--spacing-sm);
-  padding: var(--spacing-sm) var(--spacing-lg);
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-full);
-  margin-bottom: var(--spacing-xl);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-}
-
-[data-theme="dark"] .hero-badge {
-  background: rgba(30, 41, 59, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-}
-
-.badge-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-primary);
-}
-
-.hero-title {
-  font-size: var(--font-size-4xl);
-  font-weight: var(--font-weight-bold);
-  line-height: 1.1;
-  margin-bottom: var(--spacing-lg);
-  color: var(--color-text-primary);
-}
-
-.title-highlight {
-  background: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 100% 100%;
-}
-
-.hero-description {
-  font-size: var(--font-size-lg);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--spacing-2xl);
-  line-height: 1.5;
-}
-
-/* 智能搜索区域 */
-.hero-search {
-  margin-bottom: var(--spacing-2xl);
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .search-container {
   position: relative;
-  max-width: 500px;
+  max-width: 600px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -1093,104 +1113,9 @@ onBeforeUnmount(() => {
   font-weight: var(--font-weight-semibold);
 }
 
-/* 精简统计数据 */
-.hero-stats {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-lg);
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-number {
-  font-size: var(--font-size-2xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-xs);
-}
-
-.stat-label {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  font-weight: var(--font-weight-medium);
-}
-
-.stat-divider {
-  width: 1px;
-  height: 32px;
-  background: var(--color-border);
-}
-
-/* 视觉装饰 */
-.hero-visual {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.floating-cards {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.floating-card {
-  position: absolute;
-  background: var(--color-bg-glass);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-lg);
-  min-width: 200px;
-  box-shadow: var(--shadow-lg);
-  animation: floatMove 6s ease-in-out infinite;
-}
-
-.floating-card:nth-child(1) {
-  top: 10%;
-  left: 5%;
-  animation-delay: 0s;
-}
-
-.floating-card:nth-child(2) {
-  top: 20%;
-  right: 10%;
-  animation-delay: 1s;
-}
-
-.floating-card:nth-child(3) {
-  bottom: 30%;
-  left: 8%;
-  animation-delay: 2s;
-}
-
-.floating-card:nth-child(4) {
-  bottom: 20%;
-  right: 5%;
-  animation-delay: 3s;
-}
-
-.card-icon {
-  font-size: var(--font-size-lg);
-  margin-bottom: var(--spacing-sm);
-}
-
-.card-title {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-primary);
-}
-
 /* 文章区域布局 */
 .articles-section {
-  padding: var(--spacing-2xl) var(--spacing-xl);
+  padding: var(--spacing-lg) var(--spacing-xl);
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -1232,14 +1157,13 @@ onBeforeUnmount(() => {
 }
 
 .article-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: var(--shadow-xl);
-  border-color: var(--color-primary);
-  transition: all var(--transition-elastic);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+  transition: all var(--transition-base);
 }
 
 .article-card:active {
-  transform: translateY(-2px) scale(0.98);
+  box-shadow: var(--shadow-sm);
   transition: all var(--transition-fast);
 }
 
@@ -1594,22 +1518,22 @@ onBeforeUnmount(() => {
     gap: var(--spacing-xl);
   }
   
-  .hero-section {
-    padding: var(--spacing-3xl) var(--spacing-xl) var(--spacing-2xl);
+  .search-section {
+    padding: var(--spacing-lg) var(--spacing-xl);
   }
   
   .articles-section {
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg) var(--spacing-xl);
   }
 }
 
 @media screen and (max-width: 768px) {
-  .hero-section {
-    padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-xl);
+  .search-section {
+    padding: var(--spacing-lg);
   }
   
   .articles-section {
-    padding: var(--spacing-xl) var(--spacing-lg);
+    padding: var(--spacing-lg);
   }
   
   .articles-grid {
@@ -1619,16 +1543,6 @@ onBeforeUnmount(() => {
   
   .section-title {
     font-size: var(--font-size-2xl);
-  }
-  
-  .hero-title {
-    font-size: var(--font-size-3xl);
-    line-height: 1.2;
-  }
-  
-  .hero-description {
-    font-size: var(--font-size-lg);
-    margin-bottom: var(--spacing-xl);
   }
   
   .search-container {
@@ -1645,7 +1559,8 @@ onBeforeUnmount(() => {
   }
   
   .article-card:hover {
-    transform: translateY(-3px) scale(1.01);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-light);
   }
   
   .card-header {
@@ -1706,24 +1621,16 @@ onBeforeUnmount(() => {
 }
 
 @media screen and (max-width: 480px) {
-  .hero-section {
-    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
+  .search-section {
+    padding: var(--spacing-md);
   }
   
   .articles-section {
-    padding: var(--spacing-lg) var(--spacing-md);
+    padding: var(--spacing-md);
   }
   
   .section-title {
     font-size: var(--font-size-xl);
-  }
-  
-  .hero-title {
-    font-size: var(--font-size-2xl);
-  }
-  
-  .hero-description {
-    font-size: var(--font-size-base);
   }
   
   .articles-grid {
@@ -1787,12 +1694,12 @@ onBeforeUnmount(() => {
 
 /* 超小屏幕优化 */
 @media screen and (max-width: 360px) {
-  .hero-section {
-    padding: var(--spacing-lg) var(--spacing-sm) var(--spacing-md);
+  .search-section {
+    padding: var(--spacing-sm);
   }
   
   .articles-section {
-    padding: var(--spacing-md) var(--spacing-sm);
+    padding: var(--spacing-sm);
   }
   
   .search-input {
@@ -1814,22 +1721,12 @@ onBeforeUnmount(() => {
 
 /* 横屏模式优化 */
 @media screen and (max-height: 500px) and (orientation: landscape) {
-  .hero-section {
-    padding: var(--spacing-lg) var(--spacing-xl) var(--spacing-md);
-  }
-  
-  .hero-title {
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--spacing-sm);
-  }
-  
-  .hero-description {
-    font-size: var(--font-size-base);
-    margin-bottom: var(--spacing-md);
+  .search-section {
+    padding: var(--spacing-md) var(--spacing-xl);
   }
   
   .search-container {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
   }
 }
 
@@ -1943,7 +1840,8 @@ a:focus {
   }
   
   .article-card:hover {
-    transform: none;
+    /* 在减少动画模式下保持简洁的hover效果 */
+    box-shadow: var(--shadow-lg);
   }
   
   .skeleton {
