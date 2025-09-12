@@ -1,5 +1,13 @@
 [
   {
+    "id": 7752,
+    "title": "【开源自荐】 @feoe/fs-router 基于文件系统的约定式路由",
+    "content": "# [@feoe/fs-router](https://knfeoe.github.io/fs-router/)\n\n`@feoe/fs-router`，这是一个基于文件的约定式路由库，为 React 应用提供类型安全的路由解决方案。\n\n## Why fs-router？\n\n### 约定式路由的优势\n\n约定式路由是一种基于文件系统配置路由的方式。相比于在代码中定义路由结构，你可以通过一系列文件和目录来表示应用的路由层次结构。这种方式带来了诸多优势：\n\n- **简洁直观**：基于文件的路由在视觉上直观易懂，无论是新手还是经验丰富的开发者都能快速理解\n- **结构清晰**：路由组织方式与应用的 URL 结构保持一致，便于理解和维护\n- **易于扩展**：随着应用规模的增长，基于文件的路由让添加新路由和维护现有路由变得轻松简单\n- **自动代码分割**：基于文件的路由允许自动对路由进行代码分割，提升应用性能\n- **类型安全**：通过生成和管理路由的类型链接，大幅提升类型安全性，避免了基于代码路由中繁琐的手动维护\n- **保持一致性**：约定式路由强制执行一致的路由结构，使应用更易维护和更新，也便于在不同项目间迁移\n\n*—— 摘自 TanStack Router*\n\n### CSR 数据并行加载\n\nReact Router 最新版本支持客户端渲染（CSR）的并行加载机制：\n\n- **并行处理**：在客户端加载 JavaScript 的同时，并行发起数据请求，加载页面所需数据。**仅数据路由模式支持**\n- **性能提升**：这种机制可以显著缩短页面初始化的加载时间，提升用户体验\n\n### 组件化最佳实践\n\n约定式路由天然支持组件化的最佳实践：\n\n- **模块化设计**：通过逻辑拆分，将组件划分为 `layout`、`page`、`loader`、`loading`、`error` 等独立模块\n- **职责分离**：各模块各司其职，互不干扰，通过运行时的动态组合实现功能\n- **更好的可维护性**：这种架构提供了更好的可扩展性和可维护性，便于长期项目维护\n\n---\n\n综合以上特性，`@feoe/fs-router` 为现代 React 应用提供了**更快的渲染速度**、**更前沿的架构设计**以及**更优秀的可扩展性和可维护性**。\n\n## 设计理念\n\n@feoe/fs-router 的设计遵循以下原则：\n\n1. **约定优于配置** - 通过文件系统约定减少配置，设计参考 [Modern.js](https://modernjs.dev/zh/guides/basic-features/routes.html#%E8%B7%AF%E7%94%B1), [Next.js](https://nextjs.org/docs/app/getting-started/layouts-and-pages), [Remix](https://reactrouter.com/how-to/file-route-conventions), [@TanStack/router](https://tanstack.com/router/latest/docs/framework/react/routing/file-based-routing) 等，了解更多见 [File Route Conventions & Runtime Router 基于文件的约定式路由 & 运行时路由](https://www.notion.so/mountainwu/File-Route-Conventions-Runtime-Router-194320d1c0fc80899959de01f087f7e3)\n2. **类型安全** - 提供完整的 TypeScript 支持，主要参考 @TanStack/router\n3. **性能优先** - 支持代码分割和懒加载\n4. **开发体验** - 热更新和快速构建\n\n## 主要概念\n\n- [约定式路由](https://knfeoe.github.io/fs-router/guide/basic/file-based-routing.html) - 基于文件系统的路由约定\n- [动态路由](https://knfeoe.github.io/fs-router/guide/basic/dynamic-routes.html) - 参数路由和嵌套路由\n- [类型安全](https://knfeoe.github.io/fs-router/guide/advanced/type-safety.html) - TypeScript 支持和类型生成\n- [数据获取](https://knfeoe.github.io/fs-router/guide/advanced/data-fetch.html) - 开箱即用的数据获取能力\n\n## Inspiration & Thanks\n\n- [modern.js](https://github.com/web-infra-dev/modern.js) - 这是一个极重的 Runtime，因为想做的事情太多了。SSR / SSR-Streaming / CSR / SPR / MPR / 约定式路由 / 注册式路由 等等，更关键的是**你不可能去改它**。本项目完全是因为改不动 Modern.js 但又觉得其内置的约定式路由设计不错所以开发了这个，🤣\n- [Next.js App Router](https://nextjs.org/docs/app) - 如果用 React SSR 这应该是最佳实践\n- [Remix-run File System Route Convention](https://remix.run/docs/en/main/start/v2#file-system-route-convention) - Remix-run 版本的约定式路由\n- [@TanStack/react-router File-Based Routing](https://tanstack.com/router/latest/docs/framework/react/routing/file-based-routing) - 在类型声明方面，参考了很多 TanStack 的实现\n- [@loadable/component](https://github.com/gregberge/loadable-components) - The recommended Code Splitting library for React ✂️✨，内部懒加载默认使用该组件\n\n## 📄 License\n\nMIT\n",
+    "created_at": "2025-09-12T03:01:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7752"
+  },
+  {
     "id": 7751,
     "title": "【网站自荐】jobleap.cn - 一个可帮人找工作的网站",
     "content": "\n<img width=\"2580\" height=\"1436\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/90ebae94-f380-4669-8975-a3a9cf4e70b3\" />\n\n# Jobleap.cn 介绍\n\nhttps://jobleap.cn/ （专注职场提升，免费体验核心功能）\n\n一款聚焦职场人求职优化、技能提升与机会匹配的工具型平台，上传简历可获智能修改建议、查询行业求职攻略、匹配适配岗位，高效解决求职痛点，助力职业发展。\n\n\n## 背景\n在职业发展中，我们常会遇到各类职场难题：应届生缺乏求职经验，投出的简历石沉大海；职场人想转行却找不到方向，不知如何适配新岗位需求；即便是有经验的从业者，也可能因不了解最新面试趋势、岗位偏好，导致求职效率低下……  \n大家需要的不是零散的“求职信息”，而是能针对性解决“简历优化、岗位匹配、技巧提升”的整合方案——但直接在网络上搜索，往往要在多个平台间切换，难以快速获得有效帮助。\n\n\n## 现状：\n1. 信息零散杂乱 —— 求职攻略、简历模板、岗位信息分散在招聘网站、社交平台、干货公众号等多个渠道，需花费大量时间整合，且质量参差不齐。\n2. 简历优化不精准 —— 多数职场工具仅提供“通用简历模板”，缺乏针对岗位需求的关键词补充、表述优化建议，简历与岗位匹配度低，难以吸引HR注意。\n3. 岗位匹配低效 —— 盲目在招聘平台投递岗位，不了解自身技能与岗位要求的适配度，导致“投得多、回应少”，浪费时间与精力。\n\n\n## 痛点\n如果你只是想高效解决“简历没反馈、岗位找不到、求职没技巧”的核心问题，市面上很多职场工具要么功能单一（只做模板/只推岗位），要么核心功能收费高昂，很难满足“低成本、高实用”的需求。\n\n\n## 我希望是：\n- 精准的简历优化建议\n- 高效的适配岗位匹配\n- 易懂的职场攻略指南\n- 低门槛的使用成本\n\n\n## 功能特色\n「Jobleap.cn」就是为解决职场人核心痛点而生：\n\n📄 **智能简历优化** —— 上传简历后自动识别问题（如关键词缺失、表述冗长、逻辑混乱），结合目标行业岗位需求，提供“可直接复用”的修改建议，提升简历通过率。\n🔍 **精准岗位匹配** —— 基于个人简历信息（学历、技能、工作经验）与职业意向（行业、岗位、城市），筛选适配度高的岗位，减少盲目投递，节省求职时间。\n📚 **免费职场攻略库** —— 涵盖应届生求职技巧、转行准备指南、面试常见问题（STAR法则应用、薪资谈判技巧等），分类清晰，随查随用，无需付费解锁。\n👔 **行业专属简历模板** —— 按行业（互联网、金融、教育、制造业等）、求职场景（应届生/转行/资深从业者）分类，模板贴合行业招聘偏好，一键套用后支持个性化修改。\n✅ 后续更多功能添加中 —— 即将上线“职业规划测评”“薪资行情查询”“面试模拟问答”等工具，进一步覆盖职场全周期需求。",
@@ -828,15 +836,5 @@
     "created_at": "2025-08-27T09:32:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7647"
-  },
-  {
-    "id": 7646,
-    "title": "【开源自荐】VideoAdGuard - 浏览器插件：基于大模型识别B站视频中的口播广告，并自动跳过",
-    "content": "### 项目地址\n\nhttps://github.com/Warma10032/VideoAdGuard\n\n\n### 项目标题\n\n一个能识别B站视频中口播广告的插件，帮助一键跳过口播广告\n\n### 项目描述\n\n插件在用户观看视频时，会基于视频字幕，使用大语言模型，自动检测视频中是否存在植入广告。其思想与AI搜索屏蔽广告类似，都是在获取输入前使用LLM进行预处理，筛选不重要内容，节约用户时间。对于广告时间段，提供自动跳过/手动一键跳过功能。\n目前插件适配多个大模型厂商和多个浏览器（Chrome，Edge，Firefox）\n\n### 亮点\n\n项目具有完整的功能实现，包括：\n- 自动跳过广告\n- 识别结果缓存\n- 无字幕视频的音频识别\n- 免费模型的适配（可以纯免费使用）\n- 本地Ollama适配，提供给在意隐私的用户\n- UP主白名单设置\n\n插件界面、交互逻辑清晰\n插件适配多个浏览器\n\n\n### 截图或演示视频\n\n插件界面：\n<img width=\"437\" height=\"750\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e35969e4-2c25-48c9-8ef1-3c1ad21942a0\" />\n\n插件效果：\n<img width=\"608\" height=\"195\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/73dcf68b-b30d-4603-8ae0-71e0b005e896\" />\n\n演示视频：https://youtu.be/7cx48oY0Ht8?si=8fCyel1YBjkODHlo",
-    "created_at": "2025-08-27T08:34:58Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7646"
   }
 ]
