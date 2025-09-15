@@ -1,5 +1,13 @@
 [
   {
+    "id": 7766,
+    "title": "【开源推荐】TypeScript MCP-MQTT SDK：将 AI  Agent 从 Web 扩展到 IoT 和边缘计算",
+    "content": "我们构建了一个完整的 SDK 生态系统，实现了基于 MQTT 传输的模型上下文协议（MCP），支持 Python、C 和 TypeScript。这里推荐和介绍 TypeScript 版本，因为它最容易集成和测试。\n\n### 为什么选择 MQTT？\n\n现有的 MCP 实现主要基于 HTTP。通过引入 MQTT 传输，我们将 MCP AI 智能体应用的边界从 Web 扩展到了更广阔的领域：\n\n- 原生发布/订阅允许 AI 智能体同时监控多个数据源\n- 内置服务发现和负载均衡，零配置\n- 轻量级协议，在不稳定网络环境中性能更好\n- 跨平台：浏览器使用 WebSocket，Node.js 使用 TCP\n\n### 可以构建的实际应用\n\n**浏览器 AI 工具**：将浏览器的摄像头、麦克风、地理位置暴露给 AI 智能体。想象 ChatGPT 说\"让我为你拍张照片\"并真正访问你的摄像头。\n\n**IoT 集成**：运行我们 C SDK 的 ESP32 设备可以直接向 AI 智能体暴露传感器数据。你的 AI 助手可以问\"我工作室的温度是多少？\"并获得实时数据。\n\n**企业仪表板**：任何 JavaScript 环境都可以成为 AI 工具提供者——从 Electron 应用到 Node.js 服务器到浏览器扩展。\n\n### 30 秒快速开始\n\n```javascript\nconst server = new McpMqttServer({\n  host: 'mqtt://localhost:1883',\n  serverId: 'camera-server',\n  serverName: 'browser-tools',\n  name: 'Browser Camera Server',\n  version: '1.0.0'\n})\n\nserver.tool('take-photo', 'Take a photo using webcam', {\n  type: 'object',\n  properties: {}\n}, async () => {\n  const stream = await navigator.mediaDevices.getUserMedia({video: true})\n  // 拍照逻辑...\n  return { content: [{ type: 'image', data: photoBase64 }] }\n})\n\nawait server.start()\n```\n\n客户端自动发现和连接：\n\n```javascript\nconst client = new McpMqttClient({...})\nclient.on('serverDiscovered', async (server) => {\n  const photo = await client.callTool(server.serverId, 'take-photo', {})\n  // AI 现在可以访问你的摄像头了！\n})\n```\n\n### 应用场景推荐\n\n- 智能家居：DeepSeek/Qwen/ChatGPT/Claude 通过 MQTT 控制 IoT 设备\n- 工业应用：AI 质量控制获取实时传感器数据  \n- 边缘 AI：在资源受限环境中的轻量级 AI 服务\n- Web 应用：浏览器 API 暴露给 AI 智能体（摄像头、位置、存储）\n- 移动应用：React Native 应用成为 AI 工具提供者\n\nApache 2.0 开源协议\n\n项目主页：https://mqtt.ai/\nGitHub：https://github.com/emqx/mcp-typescript-sdk  \nNPM：npm install @emqx-ai/mcp-mqtt-sdk",
+    "created_at": "2025-09-15T17:10:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7766"
+  },
+  {
     "id": 7765,
     "title": "【工具自荐】便宜稳定API推荐！Nano Banana 谷歌模型 0.022/张",
     "content": "最近谷歌新发布的 gemini-2.5-flash-image（Nano Banana）模型，你一次调用多少钱一张图？\n\n[Nano Banana](https://grsai.com/) 模型具备出色的角色一致性保持能力，能够精准保留人物的面部特征、表情、妆容和服饰等细节，即使按照提示文本调整动作与手势，也能与原图高度契合，效果比 Flux 强很多。而这种精准修改的功能也能让出海独立创作者延伸更多功能产品，去哪里找便宜靠谱的 API 平台来降低成本呢？\n\n谷歌官方开放的 Api 调用，生成单张图片成本需要 0.039 美元（约人民币 0.28 元）。而通过稳定便宜的[GrsAi](https://grsai.com/) APi接口平台，能将调用成本降至 0.022 元/张，比官方直接调用便宜约 92%。\n\n<img width=\"1813\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9f924b1c-4148-4159-b4f9-bd388c5f09db\" />\n\n\n两个版本的 Nano Banana 怎么选？\n\n（推荐）nano-banana-fast——0.022/张（特价版，性价比高效果与直连一致）\n\nnano-banana——0.07/张（官方直连）\n\n官网\n\n[GrsAi](https://grsai.com/) ：https://grsai.com/\n\n加站长（vx：qw1012117138）发账号可以开通最高优惠的自定义直充功能",
@@ -828,15 +836,5 @@
     "created_at": "2025-08-29T01:01:08Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7661"
-  },
-  {
-    "id": 7660,
-    "title": "【工具自荐】开源电子书拆解工具，可生成章节总结和思维导图",
-    "content": "网址：https://ebook2me.mind-elixir.com/\n\nGithub 地址：https://github.com/SSShooter/ebook-to-mindmap\n\n简介：\n\n- 自动按章节拆分电子书（支持 epub 和 pdf）\n- 拆解后以章节为单位使用 AI 生成章节总结或章节思维导图\n- 汇总所有章节总结生成全书内容关联\n- 汇总所有思维导图生成全书思维导图\n- 缓存 AI 生成结果，刷新不丢数据\n\n**使用前须填写 API key，本程序不会收集 key，所有请求直接发到 AI 提供商**\n\n<img width=\"1975\" height=\"631\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dfa2fb23-1096-49de-8514-43deed24cef6\" />\n\n思维导图：\n\n<img width=\"1800\" height=\"1233\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3f146cf4-eff1-4f40-a4dc-a290479b2ebc\" />\n\n文字总结：\n\n<img width=\"1846\" height=\"1209\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b6a5748e-b6ab-4a17-8485-6bcc9455e43f\" />",
-    "created_at": "2025-08-28T13:57:00Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7660"
   }
 ]
