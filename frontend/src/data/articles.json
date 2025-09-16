@@ -1,5 +1,21 @@
 [
   {
+    "id": 7768,
+    "title": "【开源自荐】从命令行到公众号，一键发布 Markdown — 文颜 CLI",
+    "content": "文颜 CLI 是一个基于 Node.js 的命令行工具，它可以让你：\n\n* ✅ 使用内置主题系统对 Markdown 自动排版（[主题预览](https://yuzhi.tech/docs/wenyan/theme)）\n* ✅ 将文章直接上传到微信公众号草稿箱\n* ✅ 自动上传本地或网络图片，无需手工处理\n* ✅ 保持全流程在终端完成，支持脚本化与自动化\n\n## 如何使用？\n\n### 安装\n\n```bash\nnpm install -g @wenyan-md/cli\n```\n\n### 环境变量配置\n\n发布到公众号需要配置两个环境变量：\n\n* `WECHAT_APP_ID`\n* `WECHAT_APP_SECRET`\n\n#### macOS / Linux\n\n```bash\nexport WECHAT_APP_ID=xxx\nexport WECHAT_APP_SECRET=yyy\n```\n\n#### Windows PowerShell\n\n```powershell\n$env:WECHAT_APP_ID=\"xxx\"; $env:WECHAT_APP_SECRET=\"yyy\"\n```\n\n> ⚠️ 记得把服务器 IP 加入公众号后台的 **IP 白名单**，否则接口会报错。\n\n### 命令行示例\n\n直接传入 Markdown 内容：\n\n```bash\nwenyan publish \"# Hello, Wenyan\" -t lapis -h solarized-light\n```\n\n从文件读取并关闭 Mac 风格代码块：\n\n```bash\ncat example.md | wenyan publish -t lapis -h dracula --no-mac-style\n```\n\n## 与文颜 MCP Server 的协同使用\n\n如果说 **文颜 CLI** 更适合「开发者」和「写作者」的日常使用场景（比如：本地脚本、CI/CD 自动化），那么 **[文颜 MCP Server](https://babyno.top/posts/2025/06/wenyan-mcp-server-released/)** 就是面向 **LLM 协作场景** 的另一把利器。\n\n* 在命令行里：你用 `wenyan-cli` 把文章一键发布到公众号；\n* 在对话中：你让 LLM 调用 `wenyan-mcp` 的工具，让它自动完成文章排版与上传。\n\n两者结合，可以覆盖 **自动化操作** 与 **AI 辅助操作** 的完整工作流：\n\n* 想要快速写作和自动化发布？用 `wenyan-cli`。\n* 想要和大语言模型自然协作？用 `wenyan-mcp`。\n\n它们共享同一套主题和上传逻辑，保证排版效果一致。\n\n👉 GitHub 地址：[https://github.com/caol64/wenyan-cli](https://github.com/caol64/wenyan-cli)",
+    "created_at": "2025-09-15T23:58:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7768"
+  },
+  {
+    "id": 7767,
+    "title": "【工具推荐】免费在线 Trace Route 工具",
+    "content": "免费在线 Trace Route 工具，探测网络路由路径。\n\nhttps://github.com/user-attachments/assets/85e605d3-67d5-444f-a910-9ea9875c44c2\n\n<img width=\"1600\" height=\"1598\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/87902e2c-68b9-4075-b711-8800b5bb6b17\" />\n<img width=\"1630\" height=\"1628\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/594ef5f7-2997-4bdc-a5ad-5b547f46db39\" />\n\n工具地址： [免费在线 Trace Route 工具](https://tracerouteai.com/zh)",
+    "created_at": "2025-09-15T23:42:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7767"
+  },
+  {
     "id": 7766,
     "title": "【开源推荐】TypeScript MCP-MQTT SDK：将 AI  Agent 从 Web 扩展到 IoT 和边缘计算",
     "content": "我们构建了一个完整的 SDK 生态系统，实现了基于 MQTT 传输的模型上下文协议（MCP），支持 Python、C 和 TypeScript。这里推荐和介绍 TypeScript 版本，因为它最容易集成和测试。\n\n### 为什么选择 MQTT？\n\n现有的 MCP 实现主要基于 HTTP。通过引入 MQTT 传输，我们将 MCP AI 智能体应用的边界从 Web 扩展到了更广阔的领域：\n\n- 原生发布/订阅允许 AI 智能体同时监控多个数据源\n- 内置服务发现和负载均衡，零配置\n- 轻量级协议，在不稳定网络环境中性能更好\n- 跨平台：浏览器使用 WebSocket，Node.js 使用 TCP\n\n### 可以构建的实际应用\n\n**浏览器 AI 工具**：将浏览器的摄像头、麦克风、地理位置暴露给 AI 智能体。想象 ChatGPT 说\"让我为你拍张照片\"并真正访问你的摄像头。\n\n**IoT 集成**：运行我们 C SDK 的 ESP32 设备可以直接向 AI 智能体暴露传感器数据。你的 AI 助手可以问\"我工作室的温度是多少？\"并获得实时数据。\n\n**企业仪表板**：任何 JavaScript 环境都可以成为 AI 工具提供者——从 Electron 应用到 Node.js 服务器到浏览器扩展。\n\n### 30 秒快速开始\n\n```javascript\nconst server = new McpMqttServer({\n  host: 'mqtt://localhost:1883',\n  serverId: 'camera-server',\n  serverName: 'browser-tools',\n  name: 'Browser Camera Server',\n  version: '1.0.0'\n})\n\nserver.tool('take-photo', 'Take a photo using webcam', {\n  type: 'object',\n  properties: {}\n}, async () => {\n  const stream = await navigator.mediaDevices.getUserMedia({video: true})\n  // 拍照逻辑...\n  return { content: [{ type: 'image', data: photoBase64 }] }\n})\n\nawait server.start()\n```\n\n客户端自动发现和连接：\n\n```javascript\nconst client = new McpMqttClient({...})\nclient.on('serverDiscovered', async (server) => {\n  const photo = await client.callTool(server.serverId, 'take-photo', {})\n  // AI 现在可以访问你的摄像头了！\n})\n```\n\n### 应用场景推荐\n\n- 智能家居：DeepSeek/Qwen/ChatGPT/Claude 通过 MQTT 控制 IoT 设备\n- 工业应用：AI 质量控制获取实时传感器数据  \n- 边缘 AI：在资源受限环境中的轻量级 AI 服务\n- Web 应用：浏览器 API 暴露给 AI 智能体（摄像头、位置、存储）\n- 移动应用：React Native 应用成为 AI 工具提供者\n\nApache 2.0 开源协议\n\n项目主页：https://mqtt.ai/\nGitHub：https://github.com/emqx/mcp-typescript-sdk  \nNPM：npm install @emqx-ai/mcp-mqtt-sdk",
@@ -820,21 +836,5 @@
     "created_at": "2025-08-29T02:47:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7663"
-  },
-  {
-    "id": 7662,
-    "title": "【周刊投稿】一个完全由AI编程助手构建的SaaS项目",
-    "content": "阮老师，您好。\n\n我是您的长期读者，我叫 double2。作为一名长期自由职业的程序员，我一直在关注 AI 对软件开发带来的变革。最近，我进行了一次有趣的实验：**能否完全借助 AI 编程助手 (Google Gemini)，从零到一构建一个能解决真实问题的SaaS产品？**\n\n我选择了我自己最熟悉的痛点——为个人项目获取早期流量，并发现高潜力的关键词。\n\n整个开发过程非常有启发性。我负责产品设计、需求拆解和提供精确的提示词 (Prompt)，而 Gemini 则负责生成前端HTML/CSS、后端逻辑、数据库交互、甚至包括我们之间对话中生成的Logo和Banner。最终的成果，就是这款名为 **Daily Keyword Reports** 的工具。\n\n这次投稿，我不仅想分享这个小工具，更想分享**这次‘人与AI协作’的开发经历**。我相信这个过程对于许多正在探索 AI 潜力的开发者读者来说，会很有参考价值。\n\n* **项目名称:** Daily Keyword Reports\n* **项目链接:** https://dailykeywordreports.com\n* **一句话描述:** 一个完全由AI编程助手构建的SaaS，旨在为用户提供每日的低竞争、高潜力关键词报告。\n\n如果您觉得这个项目和它背后的开发故事对您的读者有价值，非常希望能被收录在某一期的周刊中。\n\n<img width=\"1001\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8716aaca-3687-4789-be58-7e1eb88f252e\" />\n\n<img width=\"717\" height=\"568\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5ddd023d-433a-4e70-a526-546d70221d41\" />\n\n感谢您的时间和考虑！\n\n祝好，\ndouble2",
-    "created_at": "2025-08-29T02:34:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7662"
-  },
-  {
-    "id": 7661,
-    "title": "【工具自荐】在线免费开源的图片转像素画工具image2pixel.app",
-    "content": "网址：https://image2pixel.app/\n\nGithub 地址：https://github.com/JobYu/image2pixel-web\n\n简介：\n\n- 无服务器存储，用户隐私100%安全\n- 所见即所得，支持开启网格\n- 支持2个参数：像素尺寸和颜色数量\n- 支持保存图片和打印图片\n\n![](https://github.com/JobYu/image2pixel-web/raw/main/web/o1.PNG)\n![](https://github.com/JobYu/image2pixel-web/raw/main/web/r1.PNG)\n\n![](https://github.com/JobYu/image2pixel-web/raw/main/web/o2.PNG)\n![](https://github.com/JobYu/image2pixel-web/raw/main/web/r2.PNG)\n\n![](https://github.com/JobYu/image2pixel-web/raw/main/web/o3.png)\n![](https://github.com/JobYu/image2pixel-web/raw/main/web/r3.PNG)",
-    "created_at": "2025-08-29T01:01:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7661"
   }
 ]
