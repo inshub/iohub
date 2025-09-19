@@ -1,5 +1,13 @@
 [
   {
+    "id": 7789,
+    "title": "【开源自荐】index-tts-lora: 只需 15 分钟数据，即可微调训练高品质语音合成模型",
+    "content": "### 项目地址\nhttps://github.com/asr-pub/index-tts-lora\n\n### 项目背景\n\nBilibili 开源的 Index-TTS 语音合成模型，在一句话声音复刻任务中表现出色，这一点在我之前的[评测](https://mp.weixin.qq.com/s/5z_aRKQG3OIv7fnSdxegqQ)中已得到验证。然而，该项目并未提供官方训练代码，且通过一句话复刻生成的音频韵律较为单一。为解决此问题，我基于官方代码，实现了少量数据下的 LoRA 微调方案。实践证明，该方案能有效提升合成音频的韵律感和自然度，取得了良好的效果。\n\n### 项目效果\n\n#### 1. \"凯叔讲故事\" 音色微调\n训练数据是少量纯中文的故事音频，合成的效果，我们可以看到在中文、中英文混合、英文文本都有不错的表现。\n| Text                                                         | Audio                                                        |\n| ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 老宅的钟表停在午夜三点，灰尘中浮现一串陌生脚印。侦探蹲下身，发现地板缝隙里藏着一枚带血的戒指。 | [kaishu_cn_1.wav](https://github.com/user-attachments/files/22354649/kaishu_cn_1.wav) |\n| 月光下，南瓜突然长出笑脸，藤蔓扭动着推开花园栅栏。小女孩踮起脚，听见蘑菇在哼唱古老的摇篮曲。 | [kaishu_cn_2.wav](https://github.com/user-attachments/files/22354652/kaishu_cn_2.wav) |\n| 那么Java里面中级还要学，M以及到外部前端的应用系统开发，要学到Java Script的数据库，要学做动态的网站。 | [kaishu_cn_en_mix_1.wav](https://github.com/user-attachments/files/22354654/kaishu_cn_en_mix_1.wav) |\n| 这份 financial report 详细分析了公司在过去一个季度的 revenue performance 和 expenditure trends。 | [kaishu_cn_en_mix_2.wav](https://github.com/user-attachments/files/22354656/kaishu_cn_en_mix_2.wav) |\n| 上山下山上一山，下一山，跑了三里三米三，登了一座大高山，山高海拔三百三。上了山，大声喊：我比山高三尺三。 | [kaishu_raokouling.wav](https://github.com/user-attachments/files/22354658/kaishu_raokouling.wav) |\n| A thin man lies against the side of the street with his shirt and a shoe off and bags nearby. | [kaishu_en_1.wav](https://github.com/user-attachments/files/22354659/kaishu_en_1.wav) |\n| As research continued, the protective effect of fluoride against dental decay was demonstrated. | [kaishu_en_2.wav](https://github.com/user-attachments/files/22354661/kaishu_en_2.wav) |\n\n#### 2. 马督工音色微调\n看过 \"睡前消息\" 节目的朋友，肯定会对下面的视频效果感到震惊。\n\n[睡前消息番外篇](https://www.bilibili.com/video/BV1uCptzTEqh/)\n\n大家有其他问题，可以在这边留言，我会一一解答。",
+    "created_at": "2025-09-19T13:27:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7789"
+  },
+  {
     "id": 7788,
     "title": "【网站自荐】xiuyuantech博客，一个跨平台技术内容分享的博客平台",
     "content": "[xiuyuantech博客](https://xiuyuantech.github.io)\n---\nxiuyuantech是一个面向全球开发者的技术内容分享的博客平台。我们通过技术文章和日常避坑经验记录，打造一个激发开发者思路灵感，帮助开发者沉淀减少踩坑，陪伴开发者成长的综合类技术博客。\n\n\n<img width=\"1065\" height=\"794\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ceb8230b-9f99-48a8-935a-cddbe76223ce\" />\n\n内容涉猎\n---\n• 前端：Android、IOS、小程序、uniapp、Vue、鸿蒙、Flutter、\n• 后端：Springboot、Mysql、Redis、Docker等\n• 日常分享\n• 出海\n• AI\n...\n\n博客地址\n---\nhttps://xiuyuantech.github.io\n\n<img width=\"1065\" height=\"794\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ceb8230b-9f99-48a8-935a-cddbe76223ce\" />",
@@ -824,13 +832,5 @@
     "created_at": "2025-09-02T03:58:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7685"
-  },
-  {
-    "id": 7684,
-    "title": "【开源自荐】Api-Conversion —— OpenAI/Claude/Gemini api任意格式互转 & 能力检测",
-    "content": "项目地址：[https://github.com/chinrain/Api-Conversion](https://github.com/chinrain/Api-Conversion?utm_source=chatgpt.com)\n<img width=\"886\" height=\"956\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/41aa0dc0-7167-4250-ae82-235becd9c1c5\" />\n主要功能：\n\n任意互转：OpenAI ↔ Anthropic ↔ Gemini（含模型名映射）\n```\n# 支持的转换路径\nOpenAI ↔ Anthropic ↔ Gemini\n  ↑         ↑         ↑\n  └─────────┼─────────┘\n            │\n        任意互转\n```\n\n完整流式支持：SSE 流式请求/响应格式统一\n\n函数/工具调用映射（Tool Calling）、结构化输出（JSON Schema）、视觉理解等高级能力保持一致\n\n思考预算映射：OpenAI reasoning_effort ↔ Anthropic/Gemini thinkingBudget 互转\n\n统一模型列表 API：一键返回三种格式（OpenAI/Anthropic/Gemini），告别硬编码\n\n代理与连通性：支持 HTTP/HTTPS/SOCKS5，内置连通性测试",
-    "created_at": "2025-09-02T02:59:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7684"
   }
 ]
