@@ -4,7 +4,9 @@
     "title": "【开源自荐】mcpstore：轻松管理使用mcp服务，不绑定agent和llm框架，优雅调用mcp服务。",
     "content": "**项目地址**\n\nhttps://github.com/whillhill/mcpstore\n\n \n\n> 使用`pip install mcpstore`\n\n\n```python\nstore = MCPStore.setup_store()\n\nstore.for_store().add_service({\"name\": \"mcpstore-wiki\", \"url\": \"https://mcpstore.wiki/mcp\"})\n\ntools = store.for_store().for_langchain().list_tools()\n# 或者\ntools = store.for_store().for_langgraph().list_tools()\n# 或者\ntools = store.for_store().for_openai().list_tools()\n#.....\n```\n\n几行代码就可以直接使用注册的mcp服务 这个产出的tool的列表完全和llm或者agent框架兼容使用\n以下是一个可以直接运行的示例\n\n```python\nfrom langchain.agents import create_tool_calling_agent, AgentExecutor\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_openai import ChatOpenAI\nfrom mcpstore import MCPStore\nstore = MCPStore.setup_store()\nstore.for_store().add_service({\"name\":\"mcpstore-wiki\",\"url\":\"https://mcpstore.wiki/mcp\"})\ntools = store.for_store().for_langchain().list_tools()\n\nllm = ChatOpenAI(\n    temperature=0, model=\"deepseek-chat\",\n    openai_api_key=\"sk-****\",\n    openai_api_base=\"httpss://api.deepseek.com\"\n)\nprompt = ChatPromptTemplate.from_messages([\n    (\"system\", \"你是一个助手，回答的时候带上表情\"),\n    (\"human\", \"{input}\"),\n    (\"placeholder\", \"{agent_scratchpad}\"),\n])\nagent = create_tool_calling_agent(llm, tools, prompt)\nagent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)\nquery = \"北京的天气怎么样？\"\nprint(f\"\\n   🤔: {query}\")\nresponse = agent_executor.invoke({\"input\": query})\nprint(f\"   🤖 : {response['output']}\")\n```\n不会绑定任何的模型和框架 旨在为每一家agent框架都做好mcp的中间层\n\n求推荐 还有agent模式 api模式 webdemo\n",
     "created_at": "2025-09-20T04:31:00Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/7790"
   },
   {
