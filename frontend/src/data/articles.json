@@ -1,5 +1,13 @@
 [
   {
+    "id": 7791,
+    "title": "【开源自荐】zustand状态变化监视器——zustand-state-monitor",
+    "content": "众所周知，zustand已经是当前react的主流state管理库。目前业内还缺乏一个针对zustand的调试工具。因此这次自荐一下zustand-state-monitor。\n\n一句话介绍：一个用于 Zustand 状态库的 React 状态监控工具，支持自动注册和调试功能。支持追踪状态变化并记录变更历史。内置可视化调试界面。\n\n<img width=\"421\" height=\"623\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a11d326-507a-4299-8987-ec5ada56d50b\" />\n\n图中演示了基本的调试界面，支持观察变化的部分。\n\n介绍网站：https://zustand-state-monitor.surge.sh/\ngithub：https://github.com/sahadev/zustand-state-monitor\n\n感谢关注，有用的话请帮推荐。",
+    "created_at": "2025-09-21T03:35:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7791"
+  },
+  {
     "id": 7790,
     "title": "【开源自荐】mcpstore：轻松管理使用mcp服务，不绑定agent和llm框架，优雅调用mcp服务。",
     "content": "**项目地址**\n\nhttps://github.com/whillhill/mcpstore\n\n \n\n> 使用`pip install mcpstore`\n\n\n```python\nstore = MCPStore.setup_store()\n\nstore.for_store().add_service({\"name\": \"mcpstore-wiki\", \"url\": \"https://mcpstore.wiki/mcp\"})\n\ntools = store.for_store().for_langchain().list_tools()\n# 或者\ntools = store.for_store().for_langgraph().list_tools()\n# 或者\ntools = store.for_store().for_openai().list_tools()\n#.....\n```\n\n几行代码就可以直接使用注册的mcp服务 这个产出的tool的列表完全和llm或者agent框架兼容使用\n以下是一个可以直接运行的示例\n\n```python\nfrom langchain.agents import create_tool_calling_agent, AgentExecutor\nfrom langchain_core.prompts import ChatPromptTemplate\nfrom langchain_openai import ChatOpenAI\nfrom mcpstore import MCPStore\nstore = MCPStore.setup_store()\nstore.for_store().add_service({\"name\":\"mcpstore-wiki\",\"url\":\"https://mcpstore.wiki/mcp\"})\ntools = store.for_store().for_langchain().list_tools()\n\nllm = ChatOpenAI(\n    temperature=0, model=\"deepseek-chat\",\n    openai_api_key=\"sk-****\",\n    openai_api_base=\"httpss://api.deepseek.com\"\n)\nprompt = ChatPromptTemplate.from_messages([\n    (\"system\", \"你是一个助手，回答的时候带上表情\"),\n    (\"human\", \"{input}\"),\n    (\"placeholder\", \"{agent_scratchpad}\"),\n])\nagent = create_tool_calling_agent(llm, tools, prompt)\nagent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)\nquery = \"北京的天气怎么样？\"\nprint(f\"\\n   🤔: {query}\")\nresponse = agent_executor.invoke({\"input\": query})\nprint(f\"   🤖 : {response['output']}\")\n```\n不会绑定任何的模型和框架 旨在为每一家agent框架都做好mcp的中间层\n\n求推荐 还有agent模式 api模式 webdemo\n",
@@ -830,15 +838,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/7687"
-  },
-  {
-    "id": 7686,
-    "title": "【文章自荐】一个自学习的Telegram广告拦截机器人",
-    "content": "文章链接：[一个自学习的Telegram广告拦截机器人](https://ramsayleung.github.io/zh/post/2025/%E4%B8%80%E4%B8%AA%E8%87%AA%E5%AD%A6%E4%B9%A0%E7%9A%84telegram%E5%B9%BF%E5%91%8A%E6%8B%A6%E6%88%AA%E6%9C%BA%E5%99%A8%E4%BA%BA/)",
-    "created_at": "2025-09-02T06:14:31Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7686"
   }
 ]
