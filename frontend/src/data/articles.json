@@ -1,5 +1,13 @@
 [
   {
+    "id": 7795,
+    "title": "【开源推荐】量化交易框架",
+    "content": "\n### 择时机器人框架\n只需 docker 和几行代码，便可在新兴金融市场，自动赚钱/亏钱\n- [freqtrade](https://github.com/freqtrade/freqtrade)\n- [ft_pantheon](https://github.com/XQuant42/ft_pantheon)，收集了大量开源 freqtrade 策略源码，仅供参考\n\n\n### 做市商/套利框架\n- [hummingbot](https://github.com/hummingbot/hummingbot)\n\n\n### 事件驱动\n基于 rust 的高性能算法交易平台\n- [nautilus_trader](https://github.com/nautechsystems/nautilus_trader)\n\n",
+    "created_at": "2025-09-22T03:47:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7795"
+  },
+  {
     "id": 7794,
     "title": "【网站自荐】Fezz —— 一句话生成短动画视频",
     "content": "### 官网 🛜\n[Fezz](https://fezz.one/)\n\n### 产品介绍 ⬇️\nFezz是一款面向视频创作者的**短动画生成**工具：通过自然语言描述即可生成用于**视频素材/解说素材**的动画\n\n### 主要亮点 🌟\n\n1. 短动画生成：**无需AE/PR**等专业技能，动动嘴就能做动画视频\n2. 丰富的动画形式：无论是基础动画，还是图表动画，或是复杂些的地图动画，都可以生成\n3. 动画编辑：除了生成能力，还可以通过**语言自由编辑动画**内容\n4. 多输入支持（未来支持）：根据**上传素材制作各类动画**\n\n### 生成效果 👀\n\nhttps://github.com/user-attachments/assets/5e541365-8208-41c8-825d-6c266268748b\n\nhttps://github.com/user-attachments/assets/a42311f8-12f5-4ef3-a8e4-101afb7f5ca6\n\n\n### 联系方式\n有感兴趣的朋友可以加我v: **YLTB26**\n\n",
@@ -828,15 +836,5 @@
     "created_at": "2025-09-02T13:17:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7693"
-  },
-  {
-    "id": 7690,
-    "title": "【开源自荐】ApeRAG - 生产级GraphRAG平台，开源版腾讯IMA",
-    "content": "在线体验: https://rag.apecloud.com\n项目地址: https://github.com/apecloud/ApeRAG\n\n---\n\n## 项目简介\n\nApeRAG是一个生产级的Agentic RAG平台，集成了GraphRAG、向量搜索和全文搜索等功能，支持构建复杂的AI应用。可以视为开源版本的腾讯IMA，提供企业级的知识图谱构建和多模态AI能力。\n\n支持联网搜索、多轮知识库搜索\n\nApache 2.0协议完整开源、支持k8s和docker compose部署。\n\n<img width=\"3448\" height=\"1756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1fb3a419-921d-44ca-8ff4-6a738a445657\" />\n\n<img width=\"3456\" height=\"3930\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92162e35-bf4b-4cf0-bb52-6a65655a40f3\" />\n\n## 核心特性\n\n**支持五种索引类型**\n\n* Vector（向量）\n* Full-text（全文）\n* Graph（图）\n* Summary（摘要）\n* Vision（视觉）\n\n实现多维度文档理解和检索。内置智能AI代理，支持MCP（模型上下文协议），可自动识别相关知识库并进行智能搜索。\n\n**技术亮点**\n\n采用深度改造的LightRAG实现，支持实体规范化和实体合并，构建更清晰的知识图谱关系。集成MinerU文档解析服务，对复杂文档、表格、公式提供卓越解析能力，支持GPU加速。\n\n**多模态处理**\n\n完整的多模态文档处理能力，包括图像、图表、视觉内容分析。支持PDF、DOCX等多种格式，具备智能内容提取和结构识别。\n\n**生产部署**\n\n提供完整的Kubernetes支持，包含Helm charts和KubeBlocks集成，一键部署PostgreSQL、Neo4j、Redis、Qdrant、Elasticsearch等生产级数据库集群。\n\n**企业功能**\n\n内置审计日志、LLM模型管理、图可视化、文档管理界面。FastAPI + React技术栈，支持Celery异步任务处理，提供完整的开发和部署文档。\n\n适合需要构建企业级知识库、RAG应用或AI代理系统的开发者使用。\n\n## 本地部署\n启动 ApeRAG 最简单的方法是通过 Docker Compose。在运行以下命令之前，请确保您的机器上已安装 [Docker](https://docs.docker.com/get-docker/) 和 [Docker Compose](https://docs.docker.com/compose/install/)：\n```\ngit clone https://github.com/apecloud/ApeRAG.git\ncd ApeRAG\ncp envs/env.template .env\ncp web/deploy/env.local.template web/.env\ndocker-compose up -d --pull always\n```\n运行后，您可以在浏览器中访问 ApeRAG：\n\nWeb 界面: http://localhost:3000/web/\nAPI 文档: http://localhost:8000/docs\n\n## MCP（模型上下文协议）支持\n\nApeRAG 支持 [MCP（模型上下文协议）](https://modelcontextprotocol.io/) 集成，允许 AI 助手直接与您的知识库交互。启动服务后，使用以下配置您的 MCP 客户端：\n\n```\n{\n  \"mcpServers\": {\n    \"aperag-mcp\": {\n      \"url\": \"https://rag.apecloud.com/mcp\",\n      \"headers\": {\n        \"Authorization\": \"Bearer your-api-key-here\"\n      }\n    }\n  }\n}\n```",
-    "created_at": "2025-09-02T07:58:46Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7690"
   }
 ]
