@@ -1,5 +1,13 @@
 [
   {
+    "id": 7804,
+    "title": "【网站推荐】通过3D体积渲染来在线检测显卡性能",
+    "content": "[[Volume Shader BM 在线GPU性能测试工具](https://www.volumeshader.dev/)](https://www.volumeshader.dev/)\n\n这个网站是一个在线GPU性能测试工具，通过3D体积渲染来检测显卡性能。\n\nVolume Shader BM 网站主要用于测试和评估你电脑显卡（GPU）的3D渲染性能。它的核心功能包括：\n • WebGL 体积渲染：直接在浏览器里运行3D体积着色器（volume shader）渲染，无需下载安装任何软件。\n • 实时性能数据：测试过程中会显示实时的帧率（FPS）、帧时间和显卡利用率等性能指标。\n • 跨平台支持：支持 Windows、macOS 和 Linux，只要浏览器支持 WebGL 就能用。\n • 结果导出与分享：测试完成后可以导出和分享你的显卡测试结果。\n\n使用方法很简单：\n 1. 点击“Start GPU Test”按钮开始测试。\n 2. 浏览器会实时渲染3D体积效果，同时检测你的显卡性能。\n 3. 测试结束后可以查看详细的性能数据。\n\n这个工具适合想要了解自己电脑显卡3D渲染能力、对比不同设备性能，或者开发者需要测试WebGL渲染效果的人群。\n\n\n",
+    "created_at": "2025-09-24T05:01:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7804"
+  },
+  {
     "id": 7803,
     "title": "【开源自荐】xDPI：基于 eBPF 的网络深度洞察利器",
     "content": "\n**项目地址:**\n[xDPI](https://github.com/liudf0716/apfree-wifidog/tree/master/ebpf)\n\n**xDPI 是什么？**\nxDPI（Extended Deep Packet Inspection）是一个轻量级、可扩展的七层协议与域名识别和统计框架。该系统基于 Linux eBPF 技术，能在不修改内核源码的前提下，对网络数据包进行深度分析。其核心功能包括：\n* **L7 协议快速识别**：能够迅速识别 HTTP、HTTPS、SSH、DNS、RTP 等多种应用层协议。\n* **动态域名学习**：xDPI 能够从真实的 DNS 响应中“自养”特征集合，并对域名进行动态识别和编号。\n* **多维度流量统计**：按协议 SID、IP、MAC 地址等聚合统计上下行字节及数据包速率。\n* **实时会话事件输出**：通过环形缓冲区实时输出连接级会话事件。\n\n---\n\n### **xDPI 与传统 DPI 的区别**\n\nxDPI 的设计原则和技术实现使其与传统 DPI 方案有显著区别：\n\n| 对比项 | 传统静态特征库 | xDPI 动态自生成 |\n| :--- | :--- | :--- |\n| **维护方式** | 依赖外部发布或人工定期更新 | 运行时自动学习，无需人工干预 |\n| **特征库大小** | 易膨胀，通常包含上千甚至上万条规则，但实际场景有效规则有限 | 固定上限（例如 256 条），资源浪费可控 |\n| **无效匹配** | 需要遍历大量与当前网络无关的特征，导致性能冗余 | 仅匹配本网络中实际出现的域名，显著减少 CPU 消耗 |\n| **HTTPS 适应性** | 依赖旧式负载（Payload）特征，在 HTTPS 普及后逐渐失效 | 利用 DNS 或 SNI 动态学习特征，更适应加密流量环境 |\n| **性能** | 随特征库增大而线性变慢，有性能退化风险 | 性能稳定，开销低，即使在低性能嵌入式设备上也能运行 |\n\n---\n\n### **为什么选择 eBPF？**\n\neBPF 允许 xDPI 直接在内核态执行轻量级解析，避免了频繁的用户态/内核态切换与数据复制，从而实现高性能。在加载前，内核的验证器会进行静态检查，确保程序的安全性，使 xDPI 不会破坏系统稳定性。这种设计使得 xDPI 能够提供精确可控的协议识别和域名匹配，同时成本可控，非常适合动态可观测性、轻量级 DPI 等应用场景。",
@@ -832,13 +840,5 @@
     "created_at": "2025-09-04T02:01:38Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7702"
-  },
-  {
-    "id": 7701,
-    "title": "【开源】Nano Banana MCP谷歌最新图像编辑模型",
-    "content": "https://github.com/shadowcz007/nano-banana-mcp\n\n一个用rust写的轻量级 Model Context Protocol (MCP) 服务器，提供 OpenRouter API 访问 google/gemini-2.5-flash-image 模型。提供：\n🖼️ 图像生成: 使用 AI 模型生成图像\n✏️ 图像编辑: 支持多图像输入的分析和编辑\n\n",
-    "created_at": "2025-09-03T13:32:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7701"
   }
 ]
