@@ -1,5 +1,13 @@
 [
   {
+    "id": 7803,
+    "title": "【开源自荐】xDPI：基于 eBPF 的网络深度洞察利器",
+    "content": "\n**项目地址:**\n[xDPI](https://github.com/liudf0716/apfree-wifidog/tree/master/ebpf)\n\n**xDPI 是什么？**\nxDPI（Extended Deep Packet Inspection）是一个轻量级、可扩展的七层协议与域名识别和统计框架。该系统基于 Linux eBPF 技术，能在不修改内核源码的前提下，对网络数据包进行深度分析。其核心功能包括：\n* **L7 协议快速识别**：能够迅速识别 HTTP、HTTPS、SSH、DNS、RTP 等多种应用层协议。\n* **动态域名学习**：xDPI 能够从真实的 DNS 响应中“自养”特征集合，并对域名进行动态识别和编号。\n* **多维度流量统计**：按协议 SID、IP、MAC 地址等聚合统计上下行字节及数据包速率。\n* **实时会话事件输出**：通过环形缓冲区实时输出连接级会话事件。\n\n---\n\n### **xDPI 与传统 DPI 的区别**\n\nxDPI 的设计原则和技术实现使其与传统 DPI 方案有显著区别：\n\n| 对比项 | 传统静态特征库 | xDPI 动态自生成 |\n| :--- | :--- | :--- |\n| **维护方式** | 依赖外部发布或人工定期更新 | 运行时自动学习，无需人工干预 |\n| **特征库大小** | 易膨胀，通常包含上千甚至上万条规则，但实际场景有效规则有限 | 固定上限（例如 256 条），资源浪费可控 |\n| **无效匹配** | 需要遍历大量与当前网络无关的特征，导致性能冗余 | 仅匹配本网络中实际出现的域名，显著减少 CPU 消耗 |\n| **HTTPS 适应性** | 依赖旧式负载（Payload）特征，在 HTTPS 普及后逐渐失效 | 利用 DNS 或 SNI 动态学习特征，更适应加密流量环境 |\n| **性能** | 随特征库增大而线性变慢，有性能退化风险 | 性能稳定，开销低，即使在低性能嵌入式设备上也能运行 |\n\n---\n\n### **为什么选择 eBPF？**\n\neBPF 允许 xDPI 直接在内核态执行轻量级解析，避免了频繁的用户态/内核态切换与数据复制，从而实现高性能。在加载前，内核的验证器会进行静态检查，确保程序的安全性，使 xDPI 不会破坏系统稳定性。这种设计使得 xDPI 能够提供精确可控的协议识别和域名匹配，同时成本可控，非常适合动态可观测性、轻量级 DPI 等应用场景。",
+    "created_at": "2025-09-24T01:55:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7803"
+  },
+  {
     "id": 7802,
     "title": "【网站推荐】分享一个在线协作画架构图的网站 excalidraw.com",
     "content": "[访问地址](https://excalidraw.com/)",
@@ -12,7 +20,9 @@
     "title": "【开源自荐】FlyCutCaption 纯前端实现的视频字幕编辑工具，支持字幕裁剪视频，视频字幕合成",
     "content": "![](https://github.com/x007xyz/flycut-caption/raw/main/screenshots/complete-subtitle-editing-interface.png)\n\nGitHub地址： https://github.com/x007xyz/flycut-caption\n\n## ✨ 功能特色\n\n### 🎯 核心功能\n- **🎤 智能语音识别**：基于 Whisper 模型的高精度语音转文字，支持多种语言\n- **✂️ 可视化字幕编辑**：直观的字幕片段选择和删除界面\n- **🎬 实时视频预览**：与字幕同步的视频播放器，支持区间播放\n- **📤 多格式导出**：支持 SRT、JSON 字幕格式以及视频文件导出\n- **🎨 字幕样式定制**：自定义字幕字体、颜色、位置等样式\n- **🌐 国际化支持**：组件化国际化设计，支持中文、英文、自定义语言包（如日语示例）\n\n### 🔧 技术特色\n- **⚡ 现代化技术栈**：React 19 + TypeScript + Vite + Tailwind CSS\n- **🧠 本地 AI 处理**：使用 Hugging Face Transformers.js 在浏览器本地运行 AI 模型\n- **🎯 Web Workers**：ASR 处理在后台线程运行，不阻塞主界面\n- **📱 响应式设计**：适配不同屏幕尺寸的现代化界面\n- **🎪 组件化架构**：模块化设计，易于维护和扩展\n",
     "created_at": "2025-09-23T12:23:30Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/7801"
   },
   {
@@ -20,7 +30,9 @@
     "title": "【开源自荐】AI桌面英语",
     "content": "项目地址：https://github.com/klemperer/binglish\n自动更换必应每日壁纸，顺便学个单词（AI生成相关图片、例句及翻译）\n点亮屏幕，欣赏美景，邂逅知识，聚沙成塔。\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0fb67628-e78f-474b-b56f-e7c09066fa44\" />",
     "created_at": "2025-09-23T11:57:29Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/7800"
   },
   {
@@ -828,13 +840,5 @@
     "created_at": "2025-09-03T13:32:02Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7701"
-  },
-  {
-    "id": 7700,
-    "title": "【网站自荐】域名等级监控网站：drchecker.net",
-    "content": "一般来说，网站的访问量与 DR 存在正相关的关系。\n\n\nhttps://drchecker.net\n\n对于一些工具站和导航站来说，域名等级特别重要，我们可以在 drchecker.net 实现免费的域名登记排名监控（交换外链）\n\n<img width=\"1418\" height=\"948\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/23045d95-cfe7-4587-a268-289c107860cf\" />\n\n<img width=\"1288\" height=\"970\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1bd0db3-ae93-4670-8085-d5eae2de0c13\" />",
-    "created_at": "2025-09-03T12:57:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7700"
   }
 ]
