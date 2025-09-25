@@ -1,5 +1,13 @@
 [
   {
+    "id": 7808,
+    "title": "网站自荐：中国女性择偶数据实验室",
+    "content": "项目地址：https://hermatch-svelte.vercel.app/\n\n模拟数据地址：https://github.com/hongtaoh/ChineseMenData\n\n项目初衷：很多人谈到择偶时条件苛刻，大多会说很多看起来不起眼的要求叠加在一起，符合要求的人会大大减少。我也在网上看到有网友把条件塞给 DeekSeek 来猜符合要求的人有多少。\n\n我觉得更好的方法是在真实统计数据的基础上模拟出数据。我才用了最新的权威统计数据，用条件概率的方法模拟出一百万中国男性的数据，涵盖各种常见的择偶要求。通过筛选条件，网站更新出符合要求的人数。",
+    "created_at": "2025-09-25T03:44:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7808"
+  },
+  {
     "id": 7807,
     "title": "【开源自荐】支持批量操作、自定义复制模板、参数清理、短链等功能的 URL 复制工具",
     "content": "这是一个浏览器扩展程序。\n\n名称：Arclet Copier\n官网：https://arcletcopier.com/\nChrome 商店页面：https://chromewebstore.google.com/detail/mkflehheaokdfopijachhfdbofkppdil\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3d353fc-d2a3-4faa-a382-8e4b22c987e2\" />\n\n核心功能亮点：\n1. 智能参数清理 - 自动移除UTM、fbclid等跟踪参数，分享干净链接\n2. 灵活复制格式 - 支持模板配置，完全自定义复制格式，满足不同使用场景\n3. 集成短链服务 - 快速生成短链，方便分享\n4. 强大批量操作 - 上面所有操作都可以对所有标签页一键批量执行，大幅提升效率\n5. 便捷操作方式 - 支持自定义快捷键实现静默复制和右键菜单，无需打开界面\n6. 二维码生成 - 快速生成页面二维码，便于移动端访问\n\n额外优势：\n- UI 设计美观现代\n- 完全开源免费\n\n相比普通复制插件只能复制单个链接，Arclet Copier提供了完整的链接处理解决方案，特别适合需要频繁处理多个链接的用户。",
@@ -836,15 +844,5 @@
     "created_at": "2025-09-04T09:04:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7706"
-  },
-  {
-    "id": 7705,
-    "title": "【工具推荐】Website Screenshot Online - 给网站截屏和给网站录制滚屏演示视频的小工具",
-    "content": "我8月份做了一个小工具网站，用来给任何public访问权限的**网站截图**或**录制滚屏视频**\n\n刚开始我想的也比较简单，就是简单的给网站截个屏而已，然后随着调研的展开，我发现这样的小工具也可以做得很深入。\n\n### 网站截屏\n\n如何截屏比较干净清爽且完整的网站截图？会有这些因素要考虑到：\n\n1. 首先支持各种设备分辨率（desktop、pad、手机），这个需求不用多说；\n2. 截图是截取屏幕显示区内容，还是全网页尺寸，这里提供一了个“Full Size”开关；\n3. 截屏图片输出什么格式，图片输出JPEG/PNG两种足够用了；有的网页是知识型的，可能是很长的文章，会有用户想通过PDF保存下来慢慢学习，所以支持输出PDF格式；\n4. 截屏时机的把握，如果截屏过早会截取到加载中的状态，所以需要等到网站加载完成再截屏，比如等到load事件甚至等到network idle再截屏，但有些网站还涉及到client异步加载，这样就需要主动再多等一定时间再加载，所以加了个“Capture Delay”参数；\n5. 有些网站会有广告，我们截屏肯定不希望把广告也截取进去，那就需要屏蔽广告，所以加了个Block Ads的选项；\n6. 有些网站，尤其是面向欧洲的网站，会有Cookies Consent & GDPR Banners弹出，所以加了个“Block Cookies & GDPR Banners”选项；\n\n以上是目前我针对截图做的一些尝试，主要体现在使用时的各个参数的调配上，一图胜千言，网站截图界面：\n\n<img width=\"1595\" height=\"857\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/964a2e77-6b4e-4440-b0a5-3e62a5464f12\" />\n\n### 网站滚屏视频录制\n\n接下来就是网站滚屏视频录制功能，这个有部分功能参数与截图类似，比如分辨率、Block Ads、Block Cookies & GDPR Banners、Initial Delay。\n\n如果要截屏出相对平滑效果过得去的视频，还有很多需要打磨的点，比如：\n\n1. 录制视频采用的工具一般要从打开网页就开始了录制了，所以前面会有一段加载过程的视频，需要精确计时从开始加载网页到开始滚动网页前这段时长，后期处理需要把这部分剪掉；\n2. 录屏时滚动和间歇的节奏控制，这里就涉及两个参数“Scroll Distance”和“Scroll Delay”， 分别是一次滚动多少距离和两次滚动之间停顿的时长；\n3. 输出格式，默认录屏格式是webm，视频应用更广泛的是MP4格式，另外一种就是GIF，网站录屏社交媒体分享也是一部分需要（Twitter上很多分享GIF录像的）；所以提供WEBM/MP4/GIF三种格式输出；初始拿到webm格式视频后，切掉开始的加载部分，以及转换格式，这个通过ffmpeg就可以做到了。\n\n以上是目前我针对网站视频录制做的一些尝试，同样主要体现在使用时的各个参数的调配上，一图胜千言，网站视频录制界面：：\n\n<img width=\"1596\" height=\"905\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6e1879d8-1b99-4523-b525-2b7117a836f2\" />\n\n下面这个附件视频是默认参数下，对stripe网站录屏的效果，文件大概4M多点\nhttps://github.com/user-attachments/assets/8ab22ba0-23cd-42ac-a2be-67f1927fb7be\n\n还有很多值得深挖的点，比如目前想到但还没做的深浅色模式切换后再截图录屏，比如提供API服务，比如如何并行高效处理让服务更稳定健壮等等；\n\n欢迎大家试用和提建议：\n\n网站截屏工具地址：https://websitescreenshot.online\n录制网站滚屏视频工具地址：https://websitescreenshot.online/tools/record-website-video\n",
-    "created_at": "2025-09-04T09:03:53Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7705"
   }
 ]
