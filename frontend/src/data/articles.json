@@ -1,5 +1,21 @@
 [
   {
+    "id": 7886,
+    "title": "【开源自荐】 Tab Hive - 在一个页面中 Grid 布局查看多个网站",
+    "content": "阮老师好，\n\n有朋友跟我说他工作时需要同时打开好几个网页（比如监控面板、文档、后台系统），来回切换标签页挺麻烦的，问我有没有什么办法。\n\n想起之前看过类似的分屏工具，就试着做了这个小东西。主要就是把多个网站放在一个页面里，用 Grid 布局展示，点击可以全屏查看单个网站。支持动态切换多个工作布局，后续会支持大家分享自己的某个工作场景布局，别人可以直接用。\n\n**项目地址：** https://github.com/MaskerPRC/tab-hive  \n**演示视频：** https://youtu.be/z_rfNVBBLWo\n**演示页面：** https://tabs.apexstone.ai/\n\n技术上比较简单，就是 Vue 3 + iframe，纯前端实现。Web 版本会受 CORS 限制，所以也提示用户安装谷歌插件来规避，所以也打包了桌面客户端（Electron），可以加载任何网站。\n\n觉得可能对一些需要多屏查看网页的朋友有点用，就想着推荐给您。如果觉得合适的话，能否在周刊里提一下，让更多有类似需求的人知道。\n\n谢谢！",
+    "created_at": "2025-10-12T07:48:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7886"
+  },
+  {
+    "id": 7885,
+    "title": "【开源推荐】tinystruct framework - 给十年后的程序员设计的Java开发框架",
+    "content": "# tinystruct framework\n\n> **版本：** 1.7.7  \n> **语言：** Java  \n> **许可证：** Apache License 2.0  \n> **GitHub：** [tinystruct](https://github.com/tinystruct)\n\n\n\n## 简要说明\n\ntinystruct 是一个轻量级 Java 应用框架，支持命令行工具与 Web 接口的统一调用方式。其目标是通过最少的依赖、简洁的设计、模块化扩展，来降低开发复杂度。\n\n在 1.7.7 版本中，对 HTTP 模块（Tomcat / Netty）、模块化结构和上下文管理进行了优化以减轻核心负担。\n\n\n\n## 核心特性\n\n- **最少依赖**：核心库保持轻量，仅引入必要的组件  \n- **统一 `@Action` 调用机制**：命令行与 HTTP 接口共用调用方式  \n- **模块化 HTTP 支持**：可选集成 Tomcat / Netty 模块  \n- **低延迟调用**：方法内部调用减少中间开销  \n- **扩展能力**：支持构建插件 / 生态模块  \n- **适用场景广泛**：适合小型服务、CLI 工具、AI 应用等  \n\n<img width=\"1111\" height=\"757\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/57173ff0-a286-46ef-9000-51e1c53c11fe\" />\n\n\n\n## 生态模块 / 示例项目\n\n下面是一些已有的模块或实例，可作为参考或扩展：\n\n| 模块 / 项目 | 类型 | 功能 / 说明 |\n|--------------|------|----------------------------|\n| `tinystruct-mcp` | MCP 服务端模块 | 基于 tinystruct 实现的 MCP（Model Context Protocol）服务器 |\n| `tinystruct-tomcat-server` | HTTP 模块 | 提供 Tomcat 方式的 HTTP 支持 |\n| `tinystruct-netty-http-server` | HTTP 模块 | 提供 Netty 模式的 HTTP 支持 |\n| `smalltalk` | 应用示例 | 基于 tinystruct 的聊天系统，支持 CLI 与 Web 模式 |\n| `tinystruct-examples` | 示例项目 | 演示 CLI / Web 混合模式使用方法  |\n\n\n\n\n## 快速上手示例\nhttps://github.com/tinystruct/tinystruct\n### 引入依赖（Maven 示例）\n\n```xml\n<dependency>\n  <groupId>org.tinystruct</groupId>\n  <artifactId>tinystruct</artifactId>\n  <version>1.7.7</version>\n  <classifier>jar-with-dependencies</classifier>\n</dependency>\n",
+    "created_at": "2025-10-12T06:41:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7885"
+  },
+  {
     "id": 7884,
     "title": "【工具自荐】微信小程序：云文档查找工具",
     "content": "‘云文档查找工具’没有广告，只有高密度、高质量的云文档分享。\n\n✨【使用超简单】 只需打开微信小程序“云文档查找工具”，输入关键词，就能一秒找到心仪的文档。\n\n✨【内容平台丰富】涵盖飞书云文档、Notion、语雀、FlowUS、金山云文档、腾讯云文档等众多平台的公开云文档。\n\n✨【文档自发上传】用户可以自发上传自己喜欢的云文档供他人查看。",
@@ -840,21 +856,5 @@
     "created_at": "2025-09-18T12:37:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7781"
-  },
-  {
-    "id": 7780,
-    "title": "【开源自荐】Aser Agent 是一个模块化、多功能、低门槛的 Agent框架。",
-    "content": "Aser Agent将多个核心功能进行了最小化的封装，帮助开发者快速学习和启动Agent。\n\n功能特性：\n功能组件模块化，结构层级清晰，开发者们可以按需组装。\n中间件齐全，包含Memory，RAG，CoT，API，Tools，Social Clients，MCP，Multi-Agent，Workflow，UI等。\n例子丰富，使用简单，几行代码轻松集成。\n易与拓展，开发者可根据需求自定义toolkit和组件。\n\nGithub地址：https://github.com/AmeNetwork/aser\n",
-    "created_at": "2025-09-17T23:58:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7780"
-  },
-  {
-    "id": 7779,
-    "title": "【工具自荐】 ICOAPEX - AI 一键生成专属商标与全格式导出工具，直接可用",
-    "content": "**项目简介**\nICOAPEX 是一个基于 AI 的商标和图标生成工具，专为个人开发者和创业者设计。通过输入品牌名称和关键词，可以快速生成多种风格的 logo，并自动导出所有常用格式和尺寸的图标文件。\n\n**核心功能**\n- ✨ AI 驱动：基于关键词和品牌名生成多种风格 logo\n- ✨ 全格式支持：PNG、SVG、ICO、ICNS、WebP、favicon 套装\n- ✨ 在线编辑：支持颜色、边距、阴影等实时调整\n- ✨ 批量导出：一键下载包含所有平台尺寸的完整图标包\n\n**解决的问题**\n个人开发者和创业者经常面临品牌设计瓶颈：代码可以快速迭代，但 logo 和图标设计需要专业工具或设计师，成本高、耗时长。ICOAPEX 让品牌设计变得像写代码一样简单。\n\n**适用场景**\n- 独立应用发布\n- 个人创业项目\n- 电商店铺装修\n- 个人品牌建设\n- 快速原型验证\n\n**在线体验**\nhttps://ico.apexstone.ai/playground",
-    "created_at": "2025-09-17T20:34:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7779"
   }
 ]
