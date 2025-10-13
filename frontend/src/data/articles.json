@@ -1,5 +1,13 @@
 [
   {
+    "id": 7901,
+    "title": "【开源自荐】GhostScope：把 printf 调试带到生产环境的 eBPF 运行时追踪器",
+    "content": "**GhostScope：把 printf 调试带到生产环境的 eBPF 运行时追踪器**\n\n项目地址： https://github.com/swananan/ghostscope\n\n<img width=\"478\" height=\"241\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c5b19fa5-4251-46f5-8adb-d7d37e53d826\" />\n\nGhostScope 是一款将 printf 调试的简单直接带到生产系统的运行时追踪工具：基于 DWARF 调试信息与 eBPF/uProbe，在不停机、不改代码的前提下，为运行中的进程在任意位置（函数、源码行、指令级）提供**高语义可观测性**。\n\n下面的演示展示了使用 GhostScope 追踪带有调试信息的 nginx worker 进程。可以看到，GhostScope 支持条件判断逻辑，能够轻松提取复杂数据结构的内部信息，且完全不影响进程的正常运行。\n\n![Demo](https://raw.githubusercontent.com/swananan/ghostscope/main/assets/demo.gif)\n\n**项目亮点**\n- 零侵入追踪：无需重启、无需修改代码。按需在函数入口、源码行或任意中间位置放置追踪点\n- 实时低开销：一次上下文切换 + eBPF 执行，流式输出不阻塞进程\n- DWARF 感知：可直接打印局部/全局变量、函数参数，并且支持复杂嵌套的结构\n- 脚本化探测：内置脚本语言，支持 `print`、变量与逻辑判断（支持 memcmp 等内置函数），可以自由追踪需要的信息，同时方便复用追踪脚本\n- 友好 TUI：cgdb 风格面板与 VIM 快捷键，所见即所得地浏览源码、设置与管理追踪点\n- Rust 构建：内存安全与高性能并重\n\n\n**使用限制（当前阶段）**\n- 实验性项目，仍在快速迭代中；请将采集结果作为辅助参考并与其他工具交叉验证\n- 目前对编译器高优化选项编译的程序探测能力存在一些缺陷，仍在支持中。另外对 C 语言支持较好，C++、Rust 等编译型语言的高级语法特性还有待补全。\n- 更多限制，可以参考文档：https://github.com/swananan/ghostscope/blob/main/docs/zh/limitations.md\n\n",
+    "created_at": "2025-10-13T14:08:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7901"
+  },
+  {
     "id": 7900,
     "title": "【工具自荐】SoundCloud to MP3 – 一键下载 SoundCloud 音乐神器",
     "content": "**SoundCloud to MP3** 是一款高效便捷的音乐下载工具，专为音乐爱好者、创作者和内容收集者打造。  \n通过简单操作，你可以将 SoundCloud 上喜欢的音乐一键转换为 MP3 格式，离线随时欣赏。  \n\n---\n\n## 🎯 核心功能亮点  \n\n- **一键下载**：支持将 SoundCloud 音乐直接转换为高品质 MP3 文件。  \n- **高速转换**：快速解析音乐链接，几秒钟即可完成下载。  \n- **高音质输出**：保持原始音乐音质，支持多种比特率选择。  \n- **跨设备使用**：适用于电脑、平板和手机，随时随地获取音乐。  \n- **操作简便**：无需注册或安装任何软件，打开网页即可使用。  \n\n---\n\n## 💡 适用人群  \n\n- **音乐爱好者**：收藏喜爱的 SoundCloud 音乐，离线随时播放。  \n- **内容创作者**：轻松获取音乐素材，用于视频、播客等创作。  \n- **学生与通勤族**：下载学习或娱乐用的音乐，无需网络也能听。  \n- **DJ 和混音爱好者**：快速获取音源素材，灵活进行创作。  \n\n---\n\n## 🚀 为什么选择 SoundCloud to MP3  \n\n- 简单高效，一键下载  \n- 支持高品质 MP3 音乐输出  \n- 无需安装软件，网页即可操作  \n- 完全免费，安全可靠  \n\n---\n\n## ✨ [立即体验 SoundCloud to MP3](https://soundcloudtomp3.ai/)  \n\n轻松下载你喜欢的音乐，让每一次播放都随心所欲！  \n",
@@ -844,13 +852,5 @@
     "created_at": "2025-09-22T08:25:11Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7796"
-  },
-  {
-    "id": 7795,
-    "title": "【开源推荐】量化交易框架",
-    "content": "\n### 择时机器人框架\n只需 docker 和几行代码，便可在新兴金融市场，自动赚钱/亏钱\n- [freqtrade](https://github.com/freqtrade/freqtrade)\n- [ft_pantheon](https://github.com/XQuant42/ft_pantheon)，收集了大量开源 freqtrade 策略源码，仅供参考\n\n\n### 做市商/套利框架\n- [hummingbot](https://github.com/hummingbot/hummingbot)\n\n\n### 事件驱动\n基于 rust 的高性能算法交易平台\n- [nautilus_trader](https://github.com/nautechsystems/nautilus_trader)\n\n",
-    "created_at": "2025-09-22T03:47:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7795"
   }
 ]
