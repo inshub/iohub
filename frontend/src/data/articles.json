@@ -1,5 +1,13 @@
 [
   {
+    "id": 7902,
+    "title": "【文章自荐】在 Hugo 静态站点中展示 Live Photos 实况照片或 Motion Photos 动态照片。",
+    "content": "[Hugo](https://gohugo.io/) 是一个静态网站生成器，本文介绍在 Hugo 静态网站中展示实况照片或动态照片的实践。",
+    "created_at": "2025-10-14T05:00:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7902"
+  },
+  {
     "id": 7901,
     "title": "【开源自荐】GhostScope：把 printf 调试带到生产环境的 eBPF 运行时追踪器",
     "content": "**GhostScope：把 printf 调试带到生产环境的 eBPF 运行时追踪器**\n\n项目地址： https://github.com/swananan/ghostscope\n\n<img width=\"478\" height=\"241\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c5b19fa5-4251-46f5-8adb-d7d37e53d826\" />\n\nGhostScope 是一款将 printf 调试的简单直接带到生产系统的运行时追踪工具：基于 DWARF 调试信息与 eBPF/uProbe，在不停机、不改代码的前提下，为运行中的进程在任意位置（函数、源码行、指令级）提供**高语义可观测性**。\n\n下面的演示展示了使用 GhostScope 追踪带有调试信息的 nginx worker 进程。可以看到，GhostScope 支持条件判断逻辑，能够轻松提取复杂数据结构的内部信息，且完全不影响进程的正常运行。\n\n![Demo](https://raw.githubusercontent.com/swananan/ghostscope/main/assets/demo.gif)\n\n**项目亮点**\n- 零侵入追踪：无需重启、无需修改代码。按需在函数入口、源码行或任意中间位置放置追踪点\n- 实时低开销：一次上下文切换 + eBPF 执行，流式输出不阻塞进程\n- DWARF 感知：可直接打印局部/全局变量、函数参数，并且支持复杂嵌套的结构\n- 脚本化探测：内置脚本语言，支持 `print`、变量与逻辑判断（支持 memcmp 等内置函数），可以自由追踪需要的信息，同时方便复用追踪脚本\n- 友好 TUI：cgdb 风格面板与 VIM 快捷键，所见即所得地浏览源码、设置与管理追踪点\n- Rust 构建：内存安全与高性能并重\n\n\n**使用限制（当前阶段）**\n- 实验性项目，仍在快速迭代中；请将采集结果作为辅助参考并与其他工具交叉验证\n- 目前对编译器高优化选项编译的程序探测能力存在一些缺陷，仍在支持中。另外对 C 语言支持较好，C++、Rust 等编译型语言的高级语法特性还有待补全。\n- 更多限制，可以参考文档：https://github.com/swananan/ghostscope/blob/main/docs/zh/limitations.md\n\n",
@@ -848,13 +856,5 @@
     "created_at": "2025-09-22T23:06:16Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7797"
-  },
-  {
-    "id": 7796,
-    "title": "【网站自荐】：WheelPage - 简单好用的在线转盘，支持抽奖、游戏和快速决策",
-    "content": "[WheelPage - 在线转盘](https://wheelpage.com/)\n\n#### 一个简洁的在线转盘工具，欢迎体验\n\n很多时候，我们在做活动或小决定时，都需要一个小小的“随机工具”\n可惜，我发现市面上的转盘网站广告太多、界面复杂、体验也不够好\n\n于是，我花了一点心思，自己做了一个——**简洁、美观、干净的在线转盘**\n它不会打扰你，只是安静地帮你转一转。  \n\n---\n\n#### 目前功能：\n\n👉 点击中间的小白点就能旋转，也可以选择全屏展示转盘\n\n1. 输入自定义选项，一键旋转  \n2. 免费使用，无需注册  \n3. 支持多语言（英文 / 中文 / 西班牙语）  \n\n---\n\n希望这个小工具能在你需要的时候，帮你轻松做个决定 😊\n\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/55e5c0be-1d86-4fa4-b370-abdb7cdfd542\" />",
-    "created_at": "2025-09-22T08:25:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7796"
   }
 ]
