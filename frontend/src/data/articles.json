@@ -1,5 +1,37 @@
 [
   {
+    "id": 7931,
+    "title": "【网站自推】一个可以在线敲木鱼、放松身心的网站。",
+    "content": "## 简介\n一个可以在线敲木鱼、放松身心的网站。\n\n简单纯粹的网页交互，模拟佛教木鱼的敲击声，带来片刻宁静。\n支持自动播放与多语言（涵盖亚洲佛教流行国家），无需账户、无费用——只需轻敲、聆听与呼吸。\n适合在忙碌的工作间隙放松自己，找回心灵的平静。\n\n## 地址\n- [官网](https://www.woodenfish.online/)\n- [Product Hunt](https://www.producthunt.com/products/woodenfish-online?launch=woodenfish-online)\n\n## 移动端截图\n![Image](https://github.com/user-attachments/assets/5d8d421b-a43f-4149-bf79-542a9480c48e)\n![Image](https://github.com/user-attachments/assets/39a8ee4e-70a4-4563-b918-b6675b0e1784)",
+    "created_at": "2025-10-17T08:00:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7931"
+  },
+  {
+    "id": 7930,
+    "title": "【开源插件自荐】极简的光标拖尾",
+    "content": "Chrome 应用商店安装即用。低代码量、低消耗、低选项。\n\n<img width=\"1656\" height=\"1081\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/63f83d6e-598c-42d5-aefc-307479d420e7\" />\n\n介绍：这是一个由 SVG 实现的 path 路径拖尾效果，无任何其它添加。\n\n起因：当看完一个视频/文章，总是会忘记鼠标光标在哪里，就需要乱动下鼠标一会才能看到。就想着需要一个提示的东西。\n\n而现在的商店光标插件的功能都有的花、乱，然后就 AI 辅助快速写完了这个功能，并优化消耗。\n\n后续会继续优化线条流程度、美观度、消耗。\n\nChrome 插件地址：https://chromewebstore.google.com/detail/cursor-trail/mgajakofhfihfalihlaciinkgadlnchn\n\nGithub 地址：https://github.com/YYsuni/cursor-trail",
+    "created_at": "2025-10-17T07:50:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7930"
+  },
+  {
+    "id": 7929,
+    "title": "【开源&工具推荐】Cent 完全免费、开源的多人协作记账 Web App",
+    "content": "# Cent\n\n> 你可能只需要一个记账软件。\n\n[![License: CC BY-NC-SA 4.0](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/)\n[![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)]()\n[![PWA](https://img.shields.io/badge/PWA-supported-blue.svg)]()\n[![GitHub Repo](https://img.shields.io/badge/data-storage_on_GitHub-black?logo=github)]()\n\nCent 是一个 **完全免费、开源的多人协作记账 Web App**，  \n基于 **GitHub 仓库** 实现数据同步与版本控制，无需服务器，即可实现跨平台实时同步。\n\n🔗 **在线体验**：[https://cent.linkai.work](https://cent.linkai.work)  \n💾 **开源仓库**：[https://github.com/glink25/Cent](https://github.com/glink25/Cent)  \n📖 **博客**：[https://glink25.github.io/tag/Cent/](https://glink25.github.io/tag/Cent/)  \n\n---\n\n## ✨ 特性\n\n- 💾 **数据完全自持**：账本数据保存在你的 GitHub 私人仓库中，无需任何第三方服务器。  \n- 👥 **多人协作**：通过 GitHub Collaborator 功能即可共享账本，实时同步修改。  \n- ⚡️ **增量同步**：只上传/下载变更数据，大幅缩短同步时间。  \n- 📊 **丰富的统计分析**：支持多维度筛选与走势分析，可自定义分析视图。  \n- 🏷️ **分类与标签系统**：支持二级分类、自定义标签、图标、排序。  \n- 💰 **预算管理**：按分类或标签设置预算并实时监控进度。  \n- 🖼️ **附件支持**：可为账单上传图片附件。  \n- 📱 **PWA 支持**：可安装到桌面，像原生 App 一样使用，支持 iOS 与 Android。  \n- 🔒 **完全开源**：部署成本几乎为零，代码完全可审计、可自建。\n\n---\n\n## 🧠 核心原理\n\nCent 是一个“纯前端”的 PWA 应用。  \n除 GitHub OAuth 登录外，Cent 不依赖任何后端服务。\n\n### 🗂 数据结构\n\n- 每个账本（Book）即为一个 GitHub 仓库。\n- 数据以 JSON 格式存储在仓库中，支持历史版本回滚。\n- 通过仓库名识别账本，实现多账本管理。\n\n### 🔁 增量同步机制\n\nCent 内置一套自定义的增量同步策略，仅同步增量差异：  \n- 首次同步：完整下载数据。  \n- 后续同步：仅传输新增或修改部分。  \n- 支持离线缓存与断点续传。  \n\n该机制显著提升了同步效率，使得多人协作体验流畅自然。\n\n### 🧩 可扩展同步端点\n\n同步逻辑经过抽象封装，未来将支持：  \n- 自建服务器  \n- 网盘（如 Dropbox、OneDrive）  \n- 本地离线账本  \n\n---\n\n## 📈 功能预览\n\n| 功能 | 截图 |\n|------|------|\n| 二级分类 & 标签管理 | ![分类示例](https://glink25.github.io/post-assets/mgucw881-cent-accountting.jpg) |\n| 自定义标签 | ![标签示例](https://glink25.github.io/post-assets/mgucw884-cent-tag-1.jpg) |\n| 统计与分析视图 | ![统计分析](https://glink25.github.io/post-assets/mgucw884-cent-stat.jpg) |\n| 预算管理 | ![预算视图](https://glink25.github.io/post-assets/mgucw884-cent-budget.jpg) |\n| GitHub 协作 | ![协作功能](https://glink25.github.io/post-assets/mgucw884-github-collaborator.jpg) |\n\n---\n\n## 🚀 部署与使用\n\n### 方式一：直接使用线上版本\n\n1. 打开 [https://cent.linkai.work](https://cent.linkai.work)\n2. 使用 GitHub 登录授权\n3. 新建账本（将自动创建一个仓库）\n4. 开始记账 🎉\n\n### 方式二：自行部署\n\n1. Fork 本仓库  \n2. 在 [Cloudflare Pages](https://pages.cloudflare.com/) 或任意静态托管平台部署  \n3. 在登录界面手动输入 GitHub Token 使用  \n4. 所有账本与数据均存储于你的 GitHub 仓库中  \n\n---\n\n## 🧪 开发计划\n\n- ✅ 增量同步核心实现  \n- ✅ 多人协作账本  \n- 🚧 自动测试体系  \n- 🚧 地图支出可视化  \n- 🚧 更多同步端点（网盘 / 自建服务器）  \n- 🚧 移动端交互优化  \n\n---\n\n## 💬 贡献与反馈\n\nCent 欢迎所有开发者与用户参与贡献：\n\n```bash\n# 克隆项目\ngit clone https://github.com/glink25/Cent.git\n\n# 安装依赖\npnpm install\n\n# 本地运行\npnpm dev\n```\n\n## 📜 许可证\n\n本项目采用 Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)\n 协议。\n - 允许共享、改编与再发布\n - 必须署名原作者\n - 禁止商业使用\n - 派生作品须使用相同许可协议",
+    "created_at": "2025-10-17T06:31:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7929"
+  },
+  {
+    "id": 7928,
+    "title": "【网站自推】看youtube视频，学英语，通过视频字幕进行输入练习",
+    "content": "## 软件亮点\n通过观看自己感兴趣的视频学习英语，1是掌握母语者发音，2通过软件的输入练习比单纯的背诵单词更有效，如果你听力够好默写也能帮你测试你的听力。\n\n## 软件功能\n- 可以通过输入单词来控制视频\n- 默写练习听力\n- 翻译单词\n- 单词收藏\n- 下载字幕\n\n网页版：（网页版也需要下载插件才能使用）https://langkey.win/youtubeVideo\n插件版：[google插件](https://chromewebstore.google.com/detail/langkey-%EF%BD%9Clearning-foreign/chhjnodmnfbljoindmeeafjiepfjpamn) [微软Bing插件](https://microsoftedge.microsoft.com/addons/detail/langkey-%EF%BD%9C%E5%AD%A6%E5%A4%96%E8%AF%AD%E8%80%8C%E6%97%A0%E9%9C%80%E5%8A%AA%E5%8A%9B/pfamchnplpbecklooemkedlmccegkbkk)\n\n## 插件版截图\n<img width=\"1905\" height=\"1026\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/72b95dcf-bb7e-4d2f-ba65-cdcc60eb5d10\" />\n\n<img width=\"1198\" height=\"671\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0307de7a-07e4-449e-95e6-5574c3e9c7ef\" />\n\n## 网页版截图\n<img width=\"1182\" height=\"738\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f6c03d92-639e-47ea-b4f9-d8729988edeb\" />",
+    "created_at": "2025-10-17T06:30:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/7928"
+  },
+  {
     "id": 7927,
     "title": "【工具推荐】AICrop —— 一款注重隐私的智能图片裁剪工具",
     "content": "**推荐：AICrop —— 一款注重隐私的智能图片裁剪工具**\n网站地址：[https://aicrop.app/](https://aicrop.app)\n\n在日常创作中，无论是做社交媒体内容、博客封面还是宣传素材，我们经常需要为不同平台（如 Instagram、X/Twitter、TikTok、LinkedIn、YouTube 等）调整图片尺寸与比例。这本是一件琐碎且重复的工作——不仅耗时，还容易让主体偏位或构图失衡。\n\nAICrop 就是为了解决这个问题而生的一款小工具。它由我与 Claude Code 一起通过 “vibe coding” 协作方式开发完成，核心理念是：**自动化、轻量、隐私优先**。\n\n<img width=\"2622\" height=\"1744\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1852169d-32df-4548-8635-52f1cb42bb1b\" />\n\n<img width=\"2750\" height=\"1760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a4acc422-3013-4100-8f44-ae485b887bf1\" />\n\n---\n\n### 💡 主要特性\n\n* **AI 智能识别主体**：自动检测人脸、动物或物体，确保在不同尺寸下主体始终居中。\n* **多平台裁剪模板**：内置主流社交平台的图片比例预设（Instagram、X、TikTok、LinkedIn、YouTube 等），一键生成预览。\n* **完全本地运行**：所有处理都在浏览器端完成，无需上传图片，100% 保护隐私。\n* **无需注册、无水印**：打开即用，不限次数，无广告干扰。\n* **手动微调**：如果自动裁剪略有偏差，可直接拖拽调整。\n\n---\n\n### 🔧 使用场景\n\n1. **社交媒体创作者**：一键生成不同平台所需图片比例，节省繁琐调整时间。\n2. **品牌设计与市场营销**：保持图片视觉一致性，自动聚焦主要内容。\n3. **摄影师与工作室**：快速生成适配尺寸的作品预览图。\n4. **开发者或设计师**：想快速测试不同封面比例或UI展示效果。\n\n---\n\n### 💬 推荐理由\n\n* **隐私友好**：与许多在线图片工具不同，AICrop 不会上传任何图片数据。\n* **极简高效**：界面简洁，几乎无需学习成本。\n* **AI 加持**：主体识别准确率高，能显著减少手动调整。\n* **开箱即用**：网页即工具，无需安装或登录。\n* **创造性协作产物**：这是一次人类开发者与 Claude Code 通过 “vibe coding” 共同完成的实验项目，展现了人机协作的新范式。\n\n---\n\n无论你是内容创作者、设计师还是开发者，AICrop 都能帮你节省时间，让图片裁剪这件小事变得智能又轻松。\n👉 立即试用：[https://aicrop.app/](https://aicrop.app)",
@@ -808,39 +840,5 @@
     "created_at": "2025-09-29T01:50:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7827"
-  },
-  {
-    "id": 7826,
-    "title": "【工具自荐】Vidwall Hub：一款可以将视频（mp4/mov）设置为锁屏壁纸的新应用",
-    "content": "![Vidwall Hub](https://github.com/user-attachments/assets/60adec30-9a5b-43cb-bd36-ccf8f65be155)\n\n<img  alt=\"Vidwall Hub\" src=\"https://github.com/user-attachments/assets/74996c85-8de4-4c65-ac1d-93415e6dd24f\" />\n\n\n**Vidwall Hub** 是一款可以轻松将视频（`mp4`、`mov`）导入系统壁纸服务，并在 `系统设置` 中用作锁屏动画的工具。\n\n在尝试通过 [Vidwall](https://github.com/jaywcjlove/vidwall) 应用同时实现动态壁纸和动态锁屏功能时，由于 macOS 沙盒限制，这一功能无法实现。因此，我将测试后的代码独立成一个新应用 免费提供给大家使用，作为 [Vidwall](https://github.com/jaywcjlove/vidwall) 的补充。即使独立运行、绕过沙盒限制，仍无法直接设置动态锁屏，因为 macOS 并未提供相关 API。Vidwall Hub 仅将视频导入系统壁纸服务，用户需要在系统设置的壁纸选项中完成最终应用。\n\n**URL Scheme**\n\n**Vidwall Hub** 支持通过 URL 激活工具，并根据 URL 中的视频文件路径参数自动导入视频。\n\n```bash\nvidwallhub://open?file=/file/to/path/video.mp4\n```\n\n📥 https://github.com/jaywcjlove/vidwall-hub",
-    "created_at": "2025-09-28T15:44:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7826"
-  },
-  {
-    "id": 7825,
-    "title": "【网站自荐】AI Beat Maker - AI 一键生成动感节奏",
-    "content": "# 🎵 AI Beat Maker — 几秒钟生成免版权节拍，人人都能做音乐！\n\n![AI Beat Maker](https://p.cdntoday.com/ai-beat-maker/a.png)\n\n你是否曾经想过，**几秒钟就能生成一段完全属于自己的节拍**，还能随时调整风格、乐器、节奏，甚至直接用于视频或创作中？  \n**AI Beat Maker** 帮你实现这个梦想。  \n\n## ✨ 产品亮点\n- **即时生成**：输入风格和情绪，AI 秒级输出节拍。  \n- **免版权**：创作的音乐可自由商用，无版权烦恼。  \n- **多风格支持**：Hip-Hop、Lo-Fi、EDM、爵士……任你挑选。  \n- **在线体验**：无需下载，打开网页即可开始创作。  \n\n## 🧑‍🎤 谁适合用它？\n- **短视频创作者**：快速生成背景音乐。  \n- **播客主**：轻松做出专属 BGM。  \n- **独立音乐人**：寻找灵感或伴奏 Demo。  \n\n## 🚀 立即试用\n[👉 访问 AI Beat Maker](https://aibeatmaker.app/)  \n\n创作音乐从未如此简单。让 AI 帮你找到灵感，做出属于自己的节拍！  \n",
-    "created_at": "2025-09-28T15:31:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7825"
-  },
-  {
-    "id": 7823,
-    "title": "【书籍推荐】《主权个人：掌握信息时代的变革》中文版_精校",
-    "content": "《主权个人》写作于 1990 年代中期，首次出版于 1996 年，距今整整四分之一个世纪。彼得·蒂尔对这本《主权个人》推崇备至，虽然其算不上严格的学术著作，很多地方的表述有失偏颇，预计很多中文读者会感觉不舒服，甚至受到了冒犯。但我觉得这正是它的价值所在。它提供了一种全新的视角和思考框架，去理解和分析当今世界的变迁。为什么现在全球的债务问题如此突出？为什么通货膨胀如此严重？为什么特朗普的第二个任期要不遗余力推动美国成为加密金融中心？为什么比特币已经突破10万美元一枚？比特币会不会真的如预测一样涨到100万美元一枚？这些问题的答案都可以在《主权个人》中找到线索。\n\n这本精校版是全网最全的中文版，可以细细品读。下载地址：[Sovereign_Individual_V2.pdf](https://github.com/Macin20/sovereign-individual-cn/releases/download/2.0/Sovereign_Individual_V2.pdf)\n\n![](https://macinorg-blog.oss-cn-chengdu.aliyuncs.com/blog/Screenshot2025-09-28at02.29.21.webp)\n\n![](https://macinorg-blog.oss-cn-chengdu.aliyuncs.com/blog/Screenshot2025-09-28at02.26.45.webp)\n\n![](https://macinorg-blog.oss-cn-chengdu.aliyuncs.com/blog/Screenshot2025-09-28at02.28.31.webp)",
-    "created_at": "2025-09-28T09:00:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7823"
-  },
-  {
-    "id": 7822,
-    "title": "【开源自荐】NativeMind — 一款完全基于本地 AI 的浏览器 AI 助手",
-    "content": "# 项目介绍\n\n网站：https://nativemind.app/\n\nGitHub：https://github.com/NativeMindBrowser/NativeMindExtension\n\nNativeMind 是一款完全基于本地 AI 的浏览器 AI 助手，无需任何 API Key——更快的响应、零跟踪、无限使用——所有能力都在浏览器中本地运行\n\n![](https://raw.githubusercontent.com/NativeMindBrowser/NativeMindExtension/main/docs/images/demo-screenrecord-2.gif)\n\n支持连接 Ollama 和 LM Studio，支持在 Chrome、Microsoft Edge、Firefox 和 Brave 中运行。\n\n# 功能特点\n\n## 使用本地 AI 增强浏览器\n\n- 自主任务执行：能够理解复杂请求并将其分解为可执行步骤的 AI 智能体\n- 上下文感知决策：智能体理解你当前的上下文并做出智能决策\n- AI 驱动的本地搜索：直接在浏览器中提问并搜索网络 — 无需第三方 API\n- 智能页面理解：即时总结并解读任何网页内容\n- 沉浸式翻译：以并排视图翻译整页或所选文本（支持多种语言）\n- 快捷操作：为任意任务定制技能，借助本地模型能力，使 NativeMind 与你的工作流程相匹配\n\n## 使用 AI 工具提升生产力\n\n- 与 PDF 对话：通过智能文本提取，直接就 PDF 文件提问\n- 与图像对话：理解并与视觉内容进行交互，包括屏幕截图和上传的图像\n- 高级写作工具：提供全面的写作辅助，包括改写、校对、语气调整和创意改写\n\n# 为什么做一个基于本地 AI 的浏览器插件\n\n在一个每次发送都可能被监控、每份文档都可能被分析的时代，如果把所有任务都使用基于云服务的 AI\n\n那么你的敏感数据——个人文档、商业通信、创作内容——会成为他人的训练数据或监控装置的一部分，而总会存在一些隐私敏感型工作\n\n而且隐私不再等于妥协，目前已有很多款智能程度足够处理很大一部分基础任务，且可在本地运行的模型了：\n\n- Qwen3 4B\n- Qwen3 30B A3B\n- gpt-oss 20B\n...\n\n随时可用：没有 API 限制、限流或服务中断",
-    "created_at": "2025-09-28T08:31:54Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7822"
   }
 ]
