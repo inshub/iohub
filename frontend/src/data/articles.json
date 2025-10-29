@@ -1,5 +1,13 @@
 [
   {
+    "id": 8000,
+    "title": "专业毒蘑菇 GPU 压力测试｜Burn & Measure 浏览器基准｜WebGL/WebGPU",
+    "content": "Volume Shader BM 是面向发烧友与专业评测的浏览器端 GPU 基准测试工具。采用体积着色器与 Ray Marching（曼德尔球分形）生成真实且持续的 3D 工作负载，专注测量显卡在长时间高负载下的稳定性与热衰减表现。支持 WebGL/WebGPU，无需安装即可运行。\n\n核心指标包括：\nSLS（Sustained Load Score）持续负载评分，量化长时性能保持率P95/P99 帧时间与帧稳定性、卡顿（stutter）检测\n热降频识别与内存带宽/算力压力分析 官方建议 15–30 分钟测试以达到热平衡，适用于游戏玩家、3D 创作者、硬件评测与散热/超频调校。\n\n访问地址：https://volumeshader-bm.com/",
+    "created_at": "2025-10-29T08:00:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8000"
+  },
+  {
     "id": 7999,
     "title": "【工具自荐】CrafteAl: 一站式 AI 图像创作平台及照片编辑器",
     "content": "工具名称：\nCrafteAl: 一站式 AI 图像创作平台及照片编辑器\n\n网址链接：\nhttps://www.crafteai.com\n\n工具简介：\n一站式 AI 图像创作平台及照片编辑器\n\n详细介绍：\n从创作令人惊叹的艺术作品到完美编辑任何照片，CrafteAI 是您的全能智能工具包，能将任何想法转化为杰作。\n\n✨ 主要特点：\n\n高级定制：有负提示、多种模型和自定义设置。\n文本到图像的转换：可将文本提示转换为符合需求的图像。\n快速生成：可以在几秒钟内生成专业质量的图像，节省宝贵的时间。\n高质量图像：可生成适合个人或商业项目的专业图像。\nCrafteAI 将易用性与强大功能相结合，使其成为创作者和专业人士的首选免费 AI 图像生成器。\n\n\n",
@@ -830,13 +838,5 @@
     "created_at": "2025-10-13T09:12:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7896"
-  },
-  {
-    "id": 7895,
-    "title": "【开源自荐】ZenBox - 像 Vue 一样写 React",
-    "content": "## ZenBox\n\n把 Vue 的愉悦开发体验带到 React 中，让 React 状态管理更简单\n\n**项目地址:** https://github.com/idootop/ZenBox\n\n**官方网站:** https://zenbox.del.wang\n\n![Banner](https://raw.githubusercontent.com/idootop/ZenBox/refs/heads/main/website/public/banners/light.png)\n\n## 如果 React 也能像 Vue 一样简单呢？\n\n我已经写了很多年 React 了，期间用过许多状态管理库：\n\n比如 Redux、MobX、Zustand、Jotai、Valtio 等，每个都有自己的特点和使用场景，但总感觉差点什么。\n\n后来我开始接触 Vue 生态，第一次使用 `computed` 的时候，我想：\"为什么 React 不能像 Vue 一样简单？\"\n\n## 让 React 状态管理更简单\n\n**ZenBox = 像 Vue 一样写 React 💚 + 像 Zustand 一样管理状态 🐻**\n\n- 💪 **强大易用**: 包含 Zustand 的所有特性 + 更多优化升级。\n- ⚡️ **简单高效**: 像 Vue 一样符合直觉，自动类型推导，自动依赖追踪。\n- 📦 **超级轻量**: [核心代码不到 100 行](https://zenbox.del.wang/cn/blog/react-state-management-in-100-lines)，压缩后不到 3KB（不含 Immer），浓缩的都是精华。\n\n```tsx\n// 自动类型推导，无需手写类型接口\nconst userStore = createStore({\n  name: \"小明\",\n  posts: [\"你好，世界\"],\n});\n\n// 计算属性\nconst greeting = useComputed(() => `你好 ${userStore.value.name}!`);\n\n// 监听变化\nuseWatch(\n  () => userStore.value.posts.length,\n  (count) => console.log(`现在有 ${count} 篇文章了`)\n);\n```\n\n仔细一看，这不就是 Vue 代码嘛，但它确实是 React，而且完全按照你期望的方式工作。\n\n这就是 ZenBox - 既有 Zustand 的简洁，又有 Vue 的愉悦开发体验，让 React 状态管理更简单。\n\n## ZenBox vs Zustand\n\n| 特性                  | ZenBox                         | Zustand                 |\n| --------------------- | ------------------------------ | ----------------------- |\n| **学习曲线**          | ✅ 像 Vue 一样简单             | ✅ 较低                 |\n| **Vue Hooks**         | ✅ `useComputed`/`useWatch`    | ❌ 不支持               |\n| **TypeScript**        | ✅ 自动推断类型                | ⚠️ 手动定义类型         |\n| **跨 Store 计算属性** | ✅ 自动跟踪依赖                | ❌ 不支持               |\n| **状态访问**          | ✅ 统一的 `store.value` 接口   | ⚠️ 显式 `get()`/`set()` |\n| **状态隔离**          | ✅ 内置 Provider               | ❌ 默认全局状态         |\n| **Immer 集成**        | ✅ 内置支持                    | ⚠️ 需要中间件           |\n| **打包大小**          | **< 3KB** 压缩后（不含 Immer） | **< 1KB** 压缩后        |\n",
-    "created_at": "2025-10-13T08:56:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7895"
   }
 ]
