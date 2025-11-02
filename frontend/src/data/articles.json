@@ -1,5 +1,21 @@
 [
   {
+    "id": 8028,
+    "title": "【文章自荐】Z0Scan设计与实现：网络安全中动态插件与分布式Web漏洞扫描新思路",
+    "content": "原文链接：[Z0Scan设计与实现：通用插件与分布式扫描新思路](https://mp.weixin.qq.com/s/z9x6kur8VkYOowk9dGcQ6Q)",
+    "created_at": "2025-11-02T05:55:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8028"
+  },
+  {
+    "id": 8027,
+    "title": "【开源自荐】MHtoolX -基于 Python 的多语言支持命令行交互式数学计算工具",
+    "content": "项目介绍\nMHtoolX 是一个基于 Python 的命令行交互式数学计算工具，支持33+种数学功能，涵盖从基础算术到高级数学模型的广泛领域。该工具提供 交互式菜单导航 与 结果导出功能，并有中英双语界面支持\n\n链接\nGitHub仓库链接: https://github.com/sudo1123/MHtoolX\n\n核心特性\n-大体基于函数式编程理念，新功能添加容易，可以此项目为原型轻松修改出适配用户需求的特殊版本\n-CLI ( command line interface 命令行交互界面 )，服务器等场景友好\n-中英双语界面，iI8n（国际化）支持完善，全部用户交互文本全部保存在外置json文件，避免硬编码\n-全部核心计算功能基于python标准库，标准python环境可轻松运行，不必处理复杂的第三方依赖\n-包含许多算法完整实现，并非直接包装标准库（如math）函数\n-基于MIT协议开源，自由度高\n\n技术栈\nPython / Turtle / Json\n\n致周刊维护者：本项目已投稿过一次，但是由于项目迁移至新仓库+项目改名+大规模重构，原先的介绍已不再有效，希望维护者酌情考虑将这篇新仓库的介绍再发布一次，感激不尽！\n\n",
+    "created_at": "2025-11-02T05:48:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8027"
+  },
+  {
     "id": 8026,
     "title": "【开源自荐】Texo：一款纯前端的 LaTeX 公式识别工具",
     "content": "https://github.com/user-attachments/assets/234c657d-be27-4733-8b95-631a01d48841\n\n身为一名理工科学生，在笔记中频繁插入 LaTeX 公式是家常便饭，许多识别LaTeX公式截图的项目也因此应运而生。在这些项目中，一方面各类在线商软虽表现优秀，但每月订阅费对学生而言仍然略显高昂，而免费账户在高峰期又需排队等待。另一方面相关的开源模型也已满坑满谷，且识别准确度与商软无异，然而其部署又受限于本地算力、环境配置、模型体积、跨平台兼容性等等，使得新手小白望而却步。因此作为一名用户和新手开发者，我想探索是否有可能在既有的开源模型基础上，开发出轻量而不失准确的模型，同时把本地部署门槛降至最低的解决方案。\n\n于是有了 Texo 这个项目，我首先在PaddleOCR的基础上微调并蒸馏了一个参数量仅20M，全精度模型体积仅 80MB 的模型，随后我借助 Transformers.js 框架将导出的onnx模型运行在浏览器中。通过Web应用交付的模型，既省去了配置python环境的繁琐配置，又因推理完全调用本地算力，无需担心隐私通过api泄漏。最重要的是该模型兼顾了底模的识别准确率和轻量模型的推理效率，把对本地算力的需求降到最低，在没有GPU加持下也能达到商软调用API的响应速率和准确度。\n\n希望通过这个项目可以帮助到更多理工科学生提高做笔记、写文章的效率。\n\n项目主仓库：https://github.com/alephpi/Texo\n项目前端仓库：https://github.com/alephpi/Texo-web\n在线演示demo：https://texocr.netlify.app/",
@@ -816,23 +832,5 @@
     "created_at": "2025-10-17T02:58:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/pull/7926"
-  },
-  {
-    "id": 7925,
-    "title": "【开源推荐】 — htmldocs ：构建 PDF 文档模板的现代方案",
-    "content": "# 🌟 开源推荐 — htmldocs\n\n> **[htmldocs](https://github.com/htmldocs-js/htmldocs)**  \n> 用 React / JSX + Tailwind 构建 PDF 文档模板的现代方案\n\n---\n\n你还在为用 LaTeX 编写合同、报表或发票模板而头疼吗？  \nHTML＋Word 虽然方便，但在模板化、版本控制、复用插值上很容易变得混乱不堪。  \n**htmldocs** 的出现，正是为了解决这一痛点 —— 它把文档（PDF / 报表 / 合同 / 发票）当成可组件化、可编程的界面来构建。\n\n---\n\n## 🚀 核心亮点\n\n- **🧩 JSX / React 模板**  \n  使用熟悉的 React 语法和组件化思维构建文档结构、布局与逻辑。  \n  你可以把可复用的文档块做成组件，然后组合使用。\n\n- **🎨 Tailwind / 原生 CSS 支持**  \n  支持现代 CSS 特性（如 Flexbox、Grid、margin boxes 等），样式灵活可控。\n\n- **⚡ 实时预览 + 热重载体验**  \n  本地开发体验流畅，修改模板立刻可见，提高设计与排版效率。\n\n- **🧠 TypeScript 强类型保障**  \n  模板与数据接口一体化，减少运行时错误。\n\n- **📄 基于 Paged.js 的专业分页引擎**  \n  自动处理分页、页眉页脚、跨页布局等复杂逻辑。\n\n- **🌐 完全开放的 Web 技术栈**  \n  不是黑盒的 PDF 生成器，而是基于 HTML / CSS / JS，可轻松集成进你的系统。\n\n- **💡 MIT 开源许可**  \n  商业项目、SaaS 平台、个人项目均可自由使用与二次开发。\n\n---\n\n## 🧰 适用场景\n\n| 应用场景 | 为什么选 htmldocs |\n|-----------|-------------------|\n| 合同 / 协议 / 模板生成 | 模板化 + 插值 + 样式控制能力强 |\n| 报表 / 分析报告 / 发票 | 复杂布局与分页轻松实现 |\n| 动态文档生成服务 | 前后端解耦，后端传数据即可生成 PDF |\n| 团队协作 / 版本控制 | 模板即代码，便于多人协作与审查 |\n| 与 Web 前端系统集成 | 可直接复用组件与样式逻辑 |\n\n---\n\n## ✅ 推荐理由总结\n\n1. **上手简单** — 前端技术栈友好，学习曲线平滑。  \n2. **组件化设计** — 模块化、复用性强，维护成本低。  \n3. **布局灵活** — 支持现代 CSS 与 Tailwind 样式。  \n4. **开发体验出色** — 实时预览 + 热更新。  \n5. **生态开放** — 欢迎贡献模板、插件与样式库。\n\n---\n\n👉 **项目地址**：[https://github.com/htmldocs-js/htmldocs](https://github.com/htmldocs-js/htmldocs)\n\n---\n",
-    "created_at": "2025-10-16T16:45:00Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7925"
-  },
-  {
-    "id": 7924,
-    "title": "【开源自荐】CursorX - 跨平台实时光标高亮工具",
-    "content": "<img width=\"394\" height=\"143\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fcfe0b00-cbfa-43c5-9f34-22be586d4385\" />\n\nCursorX是一款功能强大且轻量级的桌面应用程序，通过提供实时光标高亮功能，增强您的屏幕录制、演示和教程。它采用现代技术构建，在macOS、Windows和Linux上无缝运行。\n\n<img width=\"1872\" height=\"1384\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/174c5c59-2f50-45f8-8130-f9975c21dc57\" />\n\nRepo: [https://github.com/luckrnx09/CursorX](https://github.com/luckrnx09/CursorX)",
-    "created_at": "2025-10-16T14:23:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7924"
   }
 ]
