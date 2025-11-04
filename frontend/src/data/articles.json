@@ -1,5 +1,21 @@
 [
   {
+    "id": 8049,
+    "title": "【开源自荐】Paper Burner X，一个即开即用，专为深度阅读设计的浏览器端 AI 工作站",
+    "content": "被海量的 PDF 文献、复杂的公式和跨语言的障碍所困扰？我开发了一款工具，希望能有所帮助。\n\n这是一款开源的、在浏览器中即开即用的 AI 工作站，专为需要进行精细、长文本阅读的研究人员和深度学习者设计。\n\n它致力于将复杂的文档处理、翻译和分析流程整合到单一、流畅的体验中。\n\nGitHub: https://github.com/Feather-2/paper-burner-x\n在线体验: https://paperburner.viwoplus.site/\n\n目前实现了：\n\n*   **前端 Agent 驱动的智能检索：** 我们在前端实现了一个 Agentic RAG 系统。通过赋予 AI 全局的文章结构 和一系列工具（如 `grep`, `vector search`, `fetch`等等），AI 能够自主决策、多步推理，并在长文本中实现复杂的分析和信息提取任务。\n*   **高性能批量处理：** 支持多种文档格式（PDF/DOCX/EPUB 等）和代码库的直接导入。利用并发 OCR 和翻译，并结合术语库（支持数万词条快速匹配），显著提升了文献处理效率。\n*   **高可扩展性与本地化：** 目前所有数据均在浏览器本地，支持用户接入自定义 AI 模型端点，并提供了配套的 [OCR Server](https://github.com/Feather-2/PBX-DS-OCR-server) 和 Docker 部署选项(开发中)，让用户未来可以实现完全离线的本地化使用。\n\n\n我们希望这个工具能成为研究人员和知识工作者的得力助手，欢迎试用和提出宝贵意见！\n\n---\n\n<img width=\"1920\" height=\"916\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4ea2e00f-031f-4308-9ab1-2a09415ea9e5\" />\n\n## 具体介绍\n\n### 一体化的文档处理引擎\n\n我们为工具打造了一个强大的“入口”，使其能够轻松消化各种来源的知识。\n\n*   **广泛的格式支持：** 能够处理 PDF、DOCX、PPTX、EPUB、Markdown 甚至代码注释等多种格式，并支持导出为 DOCX、MD 等常用格式。\n*   **智能导入与处理：** 不仅支持本地文件上传，更可一键从 GitHub 仓库或任意 URL 导入内容，自动完成解析。PDF可以使用OCR (支持mineru/doc2x等) 与翻译引擎，并实现**保留原文格式翻译**功能（基于mineru，目前优化中，并会支持更多模型）。\n*   **术语备择库：** 进行了性能优化，支持一次性导入数万条术语并进行快速匹配。\n*   支持自定义模型端点，可以支持检测、多key、快捷导出等机制，使用灵活。\n\n\n### 为深度阅读优化的交互体验\n\n*   **沉浸式对照阅读：** 提供智能对齐的段落级原译文对照、文档结构目录（TOC）、高亮与标注功能，先进行无障碍的阅读，再进行AI总结。\n*   **增强学术内容展示：** 针对学术场景，特别优化了复杂公式的渲染。\n*   **结构化信息提取：** 内置了“文献矩阵”等实用工具，能够将非结构化的论文内容，智能提取为清晰的结构化数据，方便进行横向对比和分析。\n\n### 不止于问答：前端 Agent 驱动的智能分析\n\n- 我们在纯前端环境中，实现了一个长文本Agent。少量文本下，将使用全量的策略；而当提供长文本时候，使用长文本Agent。\n-  **赋予 AI 全局视野：** 我们为 AI 构建了“分层意群/地图”，让它在处理长文本时拥有对全文结构的整体认知。\n*   **为 AI 配备工具箱：** 我们给予 AI 一系列工具，如精确匹配的 `grep`、向量搜索 `vector search`、内容抓取 `fetch` 等。AI 会根据你的问题，自主分析并决定调用哪种工具组合来寻找最佳答案。\n\n- 上述皆在纯前端实现，浏览器打开即用\n\n\n### 项目正在活跃地迭代\n\n*   **完全本地化部署：** 正在开发Docker 部署方案，还提供了可自托管的 [OCR Server](https://github.com/Feather-2/PBX-DS-OCR-server)，最终目标是让用户可以完全在离线环境中使用全部功能。\n*   **从单文档到多文档：** 下一个里程碑是将能力从分析单篇文献，扩展到处理多篇文献，并基于此开发能自动生成文献综述的 **综述 Agent**，成为真正的 AI 研究助理。\n\n### 基于AGPL 3.0开源\n\n本项目基于[baoyudu/paper-burner](https://github.com/baoyudu/paper-burner) （该项目是基于mistral ocr的pdf极简翻译工具），并已在原始项目上进行了重构和各方面极多内容的扩充。\n避免和Paper Burner原项目名称产生重复，为示尊重和区分，该分支项目改名Paper Burner X。\n\n\n<img width=\"1919\" height=\"926\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9f317c25-49f3-46ea-9b5d-eef28b532b26\" />\n\n<img width=\"1955\" height=\"957\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2ca3fdc9-04bf-4bd8-8dab-b640da423c7e\" />\n\n<img width=\"1320\" height=\"869\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e511bac6-0a6c-4f4d-b338-f24ca5ff9da8\" />\n\n<img width=\"1910\" height=\"890\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/649f0032-53bf-4b3e-a3cf-8d2928d494c9\" />\n\n",
+    "created_at": "2025-11-04T16:15:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8049"
+  },
+  {
+    "id": 8048,
+    "title": "【网站自荐】坏苹果-互联网离谱言论博物馆",
+    "content": "## 网站介绍：\n在社交媒体的洪流里，总有一些\"坏苹果\"格外显眼——\n有人堂而皇之地输出荒谬的价值观，有人一本正经地贩卖焦虑，也有人在虚荣与偏见中自得其乐。\n\n坏苹果 是一个由网友共建的观察站。\n我们收集那些令人无语的\"三观言论\"，用榜单的形式展示社交平台上的\"精神奇景\"。\n不是为了骂人，也不是猎奇，而是希望：\n在笑出声的同时，能一起思考——这些言论为何出现、为何流行、又为何让我们愤怒或共鸣。\n\n这里没有举报，没有网暴，\n只有一群清醒的互联网观察者，用幽默和理性抵御荒唐。\n\n投稿、点赞、排名，由你决定谁是本周的\"坏苹果冠军\"。\n让我们一起，用榜单记录时代的离谱。\n\n网址：https://badapples.net\n\n<img width=\"1820\" height=\"946\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3225bd6e-83d8-40b0-8626-ce0cce6785ce\" />\n\n<img width=\"1833\" height=\"1069\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0bdf3478-68c8-482d-a26a-3f59e182039b\" />\n\n<img width=\"1832\" height=\"1046\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/41099a2b-196c-4c04-89ec-19540e62cb5a\" />\n\n<img width=\"1835\" height=\"998\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/71666fb3-7643-4257-a0f7-3a6079b3b10a\" />",
+    "created_at": "2025-11-04T14:42:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8048"
+  },
+  {
     "id": 8047,
     "title": "【项目自荐】一个免费使用Claude AI纯公益号池镜像站",
     "content": "### 使用链接： [https://www.claude.now](https://www.claude.now)\n说明：这是一个完全免费的Claude公益号池站点，界面简洁 无须注册，已接入道德审查，违法内容勿扰！\n\n![免费的Claude公益站](https://pic1.imgdb.cn/item/6909ec683203f7be00d06c4e.png)\n\n基于Claude周限政策上线以及Anthropic的持续封号，故上线这款Claude公益镜像号池，虽然号池只有普号，勿嫌弃，且用且珍惜，自动同步Claude官网最新模型，支持Claude Sonnet 4.5、Claude Opus 4.1，支持Claude会话隔离（只有自己能看到自己的聊天记录），同时自动适配Claude最新UI，电脑/手机均可浏览器一键使用\n\n特点\n**所见即所得，完全免费，无需魔法，没有登录，没有注册，界面简洁打开即用。**\n\n\n",
@@ -44,7 +60,9 @@
     "title": "【开源自荐】一个超快、轻量的多格式文档翻译工具Docutranslate",
     "content": "项目名：DocuTranslate  \n\n项目地址：[https://github.com/xunbu/docutranslate](https://github.com/xunbu/docutranslate)\n\n一款支持多格式文档的翻译工具，只需配置OpenAI兼容API即可完成对多种常见格式文件的翻译（pdf需额外设置）。使用切片与并发技术实现文档的超快翻译，支持AI自动生成术语表。同时docx与xlsx文件能够达到市面上最好的译文格式保留。\n\n- ✅ **支持多种格式**：能翻译 `pdf`、`docx`、`xlsx`、`md`、`txt`、`json`、`epub`、`srt` 、`ass`等多种文件。\n- ✅ **自动生成术语表**：支持自动生成术语表实现术语的对齐。\n- ✅ **PDF表格、公式、代码识别**：凭借`docling`、`mineru`pdf解析引擎实现对学术论文中经常出现的表格、公式、代码的识别与翻译\n- ✅ **json翻译**：支持通过json路径(`jsonpath-ng`语法规范)指定json中需要被翻译的值。\n- ✅ **Word/Excel保持格式翻译**：支持`docx`、`xlsx`文件（暂不支持`doc`、`xls`文件）保持原格式进行翻译。\n- ✅ **多ai平台支持**：支持绝大部分的ai平台，可以实现自定义提示词的并发高性能ai翻译。\n- ✅ **异步支持**：专为高性能场景设计，提供完整的异步支持，实现了可以多任务并行的服务接口。\n- ✅ **局域网、多人使用支持**：支持在局域网中多人同时使用。\n- ✅ **交互式Web界面**：提供开箱即用的 Web UI 和 RESTful API，方便集成与使用。\n- ✅ **小体积、多平台懒人包支持**：不到40M的windows、mac懒人包（不使用`docling`本地解析pdf的版本）。\n\n## 软件界面\n\n<img width=\"2872\" height=\"1468\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad51b497-f71e-449e-9842-ea67eef595a4\" />\n\n## 翻译效果：\n\n### epub：\n<img width=\"2113\" height=\"1531\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8422c9c1-fd17-4a40-b642-1e3b38ff0b4f\" />\n\n### xlsx：\n<img width=\"2269\" height=\"1025\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/13517675-f2a8-4b45-aa8e-b6481a33d8f3\" />\n\n### json:\n<img width=\"2395\" height=\"931\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4153b550-b814-4684-b7f9-b44f92b163fc\" />\n\n### pdf:\n\n<img width=\"2816\" height=\"1376\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7d8cc0b0-ae41-4f86-b7f6-2f93aaf36950\" />",
     "created_at": "2025-11-04T06:11:11Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8042"
   },
   {
@@ -100,7 +118,7 @@
   {
     "id": 8035,
     "title": "【开源自荐】Mini-Kode: 为想要深入理解Coding Agent工作原理的开发者设计",
-    "content": "\n  Mini-Kode 是一个教育项目，专为帮助开发者理解现代 Coding Agent\n  架构而设计。我们在过于复杂的开源项目和过于简化的演示示例之间找到了平衡点，提供了完整但易于理解的实现，具备以下特性：\n\n  - 📚 教育优先设计 - 基于 OpenAI SDK 构建的清晰架构，具有恰当的类型设计和详尽的注释\n  - 🛠️ 完整工具系统 - 统一接口，包含文件操作、搜索和命令执行等全面工具\n  - 🔌 MCP 集成 - 连接外部 MCP 服务器以扩展功能\n  - ⚙️ 多 LLM 支持 - 兼容 OpenAI API，包括 GLM、DeepSeek 和其他主流模型\n  - 🤖 Agent 循环 - 完整的 LLM 工作流，支持流式响应和人工干预权限审批\n  - 🎨 现代化 UI - 基于 React/Ink 的终端界面，支持主题切换\n\n项目地址: https://github.com/minmaxflow/mini-kode\n\n<img width=\"1264\" height=\"1356\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfa7e29b-b854-4595-9c40-ae8fcdec4aba\" />",
+    "content": "\n  Mini-Kode 是一个教育项目，专为帮助开发者理解现代 Coding Agent\n  架构而设计。我们在过于复杂的开源项目和过于简化的演示示例之间找到了平衡点，提供了完整但易于理解的实现，具备以下特性：\n\n  - 📚 教育优先设计 - 基于 OpenAI SDK 构建的清晰架构，具有恰当的类型设计和详尽的注释\n  - 🛠️ 完整工具系统 - 统一接口，包含文件操作、搜索和命令执行等全面工具\n  - 🔌 MCP 集成 - 连接外部 MCP 服务器以扩展功能\n  - ⚙️ 多 LLM 支持 - 兼容 OpenAI API，包括 GLM、DeepSeek 和其他主流模型\n  - 🤖 Agent 循环 - 完整的 LLM 工作流，支持流式响应和人工干预权限审批(human in the loop)\n  - 🎨 现代化 UI - 基于 React/Ink 的终端界面，支持主题切换\n\n项目地址: https://github.com/minmaxflow/mini-kode\n\n<img width=\"1264\" height=\"1356\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfa7e29b-b854-4595-9c40-ae8fcdec4aba\" />",
     "created_at": "2025-11-03T14:06:27Z",
     "labels": [
       "weekly"
@@ -822,21 +840,5 @@
     "created_at": "2025-10-19T08:07:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7948"
-  },
-  {
-    "id": 7947,
-    "title": "【工具自荐】地铁通勤半年，我开发了一款双语字幕听力 app",
-    "content": "##  背景\n我的学习理念很简单，我不需要你帮我推荐哪期节目或者播客，我只想听我自己导入的内容。所以 Reloop 界面非常干净，除了初始化的演示视频，没有任何其他内容。\n\n然后，与其泛泛地听 100 期，不如把一期节目听到烂。\n\n“烂” 到哪种程度？ 耳朵里播放着当前的对话，你可以脱口而出下一句。\n\n这就是 Reloop。\n\n\n## 核心功能\n\n#### 一键导入\n支持YouTube、Podcasts 主流平台的链接导入，通过智能剪贴板检测即可快速导入，同时支持批量导入本地音视频。\n\n\n#### 智能AI转录\n\n能准确识别音视频的内容，目前支持英语，中文，日语、法语、西班牙语、韩语、阿拉伯语、德语、葡萄牙语、印尼语等数十种语言。\n\n#### 双语字幕\n\n实时双语字幕同步，词级的滚动对齐。支持变速播放、循环复听。\n\n#### 句子讲解\n\n播放过程中可随时随地解析句子，解析句子会带上上下文的语境，而不是简单的直接讲解。\n\n<img width=\"1001\" height=\"525\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/52cee4ad-3c14-4970-bdef-4e91375e9b65\" />\n\n\n\n**下载地址**\nAppStore: https://apps.apple.com/cn/app/id6752853818?platform=iphone\n\n详细文章: https://mp.weixin.qq.com/s/v80g4DmPjdwY-CNhklu1hQ\n\n\napp 内无广告，有免费的转录额度，欢迎体验👏。\n",
-    "created_at": "2025-10-19T01:47:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7947"
-  },
-  {
-    "id": 7946,
-    "title": "【网站自荐】完全免费&绝对安全的在线图像处理套件：压缩、裁剪、转格式一站式搞定",
-    "content": "# image-compressor.app：在线图像处理工具\n\n[image-compressor.app](https://image-compressor.app/) 提供压缩、裁剪、尺寸调整、格式互转、favicon 生成等常用能力，全部操作在浏览器端完成，无需上传服务器，绝对安全。\n\n## 功能亮点\n\n- 🗜 **批量压缩**：一次上传多张图片即可集中处理，最高可减少 90% 文件体积，支持 WebP、JPEG、PNG、AVIF 等输出格式，并提供统一打包下载。\n- 📏 **尺寸调整**：按像素、百分比或预设尺寸快速修改，既能保持比例，也能手动输入具体数值，适合社交媒体和网页素材。\n- ✂️ **可视化裁剪**：直观的拖拽式裁剪界面配合实时预览，头像、横幅、产品图都能精准截取。\n- 🔁 **格式转换**：覆盖 JPG、PNG、WebP、GIF、AVIF 等主流格式，避免在不同工具间来回切换。\n- ⭐ **Favicon 套餐**：上传图片后即可生成完整 favicon 包和 `<head>` 代码，部署网站时直接使用。\n\n## 使用体验\n\n- 🚀 **多种导入方式**：支持拖拽、本地上传，也支持批量粘贴 URL，系统自动抓取并去重，处理网络素材更省时。\n- 👀 **实时反馈**：每张图片会显示处理进度、压缩前后大小对比和格式提示，方便随时判断效果。\n- 🛠 **可视化设置**：质量滑块、格式切换、尺寸输入集中在同一个界面，调整后立即能观察预览变化。\n- 📦 **批量管理顺畅**：提供一键清空、批量下载、ZIP 打包等操作，处理大量文件也不凌乱。\n\n网站持续更新，并保持免费使用，也欢迎体验后分享建议与想法。\n\n<img width=\"2717\" height=\"9196\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2977a4bf-8e11-44bf-bf89-b274fb421ddf\" />",
-    "created_at": "2025-10-18T15:38:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7946"
   }
 ]
