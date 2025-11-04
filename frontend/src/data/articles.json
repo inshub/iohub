@@ -1,5 +1,21 @@
 [
   {
+    "id": 8042,
+    "title": "【开源自荐】一个超快、轻量的多格式文档翻译工具Docutranslate",
+    "content": "项目名：DocuTranslate  \n\n项目地址：[https://github.com/xunbu/docutranslate](https://github.com/xunbu/docutranslate)\n\n一款支持多格式文档的翻译工具，只需配置OpenAI兼容API即可完成对多种常见格式文件的翻译（pdf需额外设置）。使用切片与并发技术实现文档的超快翻译，支持AI自动生成术语表。同时docx与xlsx文件能够达到市面上最好的译文格式保留。\n\n- ✅ **支持多种格式**：能翻译 `pdf`、`docx`、`xlsx`、`md`、`txt`、`json`、`epub`、`srt` 、`ass`等多种文件。\n- ✅ **自动生成术语表**：支持自动生成术语表实现术语的对齐。\n- ✅ **PDF表格、公式、代码识别**：凭借`docling`、`mineru`pdf解析引擎实现对学术论文中经常出现的表格、公式、代码的识别与翻译\n- ✅ **json翻译**：支持通过json路径(`jsonpath-ng`语法规范)指定json中需要被翻译的值。\n- ✅ **Word/Excel保持格式翻译**：支持`docx`、`xlsx`文件（暂不支持`doc`、`xls`文件）保持原格式进行翻译。\n- ✅ **多ai平台支持**：支持绝大部分的ai平台，可以实现自定义提示词的并发高性能ai翻译。\n- ✅ **异步支持**：专为高性能场景设计，提供完整的异步支持，实现了可以多任务并行的服务接口。\n- ✅ **局域网、多人使用支持**：支持在局域网中多人同时使用。\n- ✅ **交互式Web界面**：提供开箱即用的 Web UI 和 RESTful API，方便集成与使用。\n- ✅ **小体积、多平台懒人包支持**：不到40M的windows、mac懒人包（不使用`docling`本地解析pdf的版本）。\n\n## 软件界面\n\n<img width=\"2872\" height=\"1468\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad51b497-f71e-449e-9842-ea67eef595a4\" />\n\n## 翻译效果：\n\n### epub：\n<img width=\"2113\" height=\"1531\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8422c9c1-fd17-4a40-b642-1e3b38ff0b4f\" />\n\n### xlsx：\n<img width=\"2269\" height=\"1025\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/13517675-f2a8-4b45-aa8e-b6481a33d8f3\" />\n\n### json:\n<img width=\"2395\" height=\"931\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4153b550-b814-4684-b7f9-b44f92b163fc\" />\n\n### pdf:\n\n<img width=\"2816\" height=\"1376\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7d8cc0b0-ae41-4f86-b7f6-2f93aaf36950\" />",
+    "created_at": "2025-11-04T06:11:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8042"
+  },
+  {
+    "id": 8041,
+    "title": "【文章自荐】没有 AI，没有融资，一个 17K Star 开源项目的真实收入 —— NocoBase 总结分享（续）",
+    "content": "2022 年周刊推荐过我们的产品：https://github.com/ruanyf/weekly/issues/2416\n2024 年我们在周刊上分享了 3 年总结：https://github.com/ruanyf/weekly/issues/4458\n\n上周刚发布 NocoBase 2.0，我们的收入已过千万，再与大家分享一下目前的情况以及与 AI 相关的话题。\n",
+    "created_at": "2025-11-04T04:41:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8041"
+  },
+  {
     "id": 8040,
     "title": "【工具/文章自荐】WebAssembly 重构图片工作流：我的“零服务器”隐私保护工具箱实践",
     "content": "## WebAssembly 重构图片工作流：我的“零服务器”隐私保护工具箱实践\n\n### 🚀 别把隐私交给云端：用浏览器做图片处理\n\n我们每天都要处理图片。调整大小、格式转换、压缩优化。每当你打开一个“在线工具”上传文件时，你是否曾犹豫：我的私人照片会不会留在别人的服务器上？\n\n这种对隐私的担忧，以及等待文件上传下载的效率折损，是传统在线工具模式的固有弊病。我们一直默认：复杂的计算必须由强大的服务器来完成。\n\n但我要说，这个默认设定已经失效了。 得益于前端技术的飞速发展，今天的浏览器已经蜕变成了一个强大的本地计算引擎，它彻底颠覆了这种传统的“服务器依赖”模式。\n\n\n### 🚀 WebAssembly 的革命：浏览器有了“原生”计算力\n\n浏览器不再仅仅是“文档阅读器”了。近年来，得益于一系列底层技术的突破，浏览器获得了处理复杂计算任务的能力，尤其是对图片和视频这类高计算密度的场景：\n\n- **WebAssembly (Wasm) 的引入：** 这是最核心的变革。Wasm 允许我们将 C/C++ 等高性能语言编译成浏览器可执行的二进制格式，运行速度已接近原生应用。这意味着过去只能在服务器端运行的复杂编解码库（如用于图像处理的 FFmpeg 或 libwebp 核心逻辑），现在可以被直接移植到前端沙箱内执行。\n\n- **Web Worker / Service Worker：** 它们让耗时的图片处理任务可以在后台线程中执行，从而保证了用户界面的流畅，解决了前端应用卡顿的顽疾。\n\n- **强大的图形 API：** 结合 <canvas> 和 WebGL，前端可以轻松进行像素级的快速操作，甚至直接利用用户的 GPU 硬件加速进行图像渲染和处理。\n\n正是这些能力叠加，让“零服务器处理”成为了可能：文件从始至终都未离开用户的电脑，所有处理都在本地浏览器沙箱内完成。\n\n<img width=\"1024\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/304bc97c-a7ec-45e4-bb77-1f1aea862869\" />\n\n### 🚀 零服务器解决方案：隐私与效率的双重提升\n\n基于浏览器能力的工具具备两大不可撼动的优势：\n\n🔒 绝对隐私： 所有计算都在本地完成，图片数据从未离开用户的设备。我们承诺真正的**“零服务器”隐私保护**。\n\n⚡ 极致效率： 由于省去了上传和下载的漫长网络等待时间，本地处理的效率远高于传统的云端处理模式。\n\n这种模式不仅限于图片，还可用于音频编辑、视频剪辑、甚至简单的 AI 模型运行。\n\n\n### 🚀 我的前端工具箱实践\n\n基于对这一趋势的洞察，作为一个独立开发者，我最近尝试开发了一系列完全在浏览器内部运行的图片处理工具。它们的核心理念是：将计算视为本地能力，将隐私视为最高优先级。\n\n以下是其中的三个工具：\n\n1. **[bulkresizeimages.online](https://bulkresizeimages.online)：** 批量图片缩放工具\n\n切中要点： 解决了开发者和电商用户急需的高并发、零等待批量处理痛点。它利用 Wasm 加速，支持按像素、百分比或最大尺寸等模式统一调整几十张图片。\n\n<img width=\"842\" height=\"662\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfd850df-fadf-4c2e-ac71-f6fc886df5a8\" />\n\n2. **[imageconverter.dev](https://imageconverter.dev)：** 全能图片格式转换\n\n切中要点： 专注于图片在主流与新兴格式间的互相转换（例如 WebP, AVIF, PNG, JPEG）。\n\n技术优势： 内部集成了 Wasm 优化的编解码器，确保了即便在本地进行复杂的格式转换，也能保持极高的速度和精度，满足现代 Web 性能优化的严格需求。\n\n<img width=\"952\" height=\"724\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/15848865-c3c0-4b26-8f42-6b6a96bfe928\" />\n\n3. **[resizeimage.dev](https://resizeimage.dev)：** 快速精确的单图裁剪工具\n\n切中要点： 作为一个精确的单图控制台，为用户提供精细的尺寸和比例控制。\n\n技术优势： 充分利用本地计算，让用户操作的实时反馈更快，无需等待任何网络延迟。\n\n![Image](https://github.com/user-attachments/assets/638ba4ad-3fa9-49ea-810a-4d18fd6019fa)\n\n### 🚀 总结与展望：借助浏览器能力帮用户夺回数据主权\n\n浏览器能力带来的不仅是速度和效率，更是对用户数据主权的回归。\n\n我们正在从“上传-处理-下载”的 Web 模式，转向“本地加载-本地处理-本地保存”的新模式。\n\n这种“零服务器”架构，预示着未来：不仅是基础工具，甚至许多轻量级的 AI 模型推理、数据可视化和办公套件，都将迁移到前端，形成更安全、更快速、更尊重用户数据主权的 Web 应用生态。\n\n我们现在要做的，就是积极利用它的新能力，打造更安全、更快速、更以用户为中心的应用。\n\n后续我还会继续探索和开发更多的工具，可能会包括音频处理，视频处理等等，丰富“零服务器”隐私保护工具箱。\n\n\n原文：https://mp.weixin.qq.com/s/fZn32I3bKhxkGtMPzHbqbQ\n",
@@ -49,7 +65,7 @@
   },
   {
     "id": 8034,
-    "title": "资源推荐",
+    "title": "资源推荐-- Agent、MCP、RAG、模型微调等开发教程及原理详解 ，含开箱即用的源码 ，例：多模态数据分析Agent（PDF->可视化大屏）、多模态数据集生成器（微调数据集生成器）、RAG知识问答（带溯源）等",
     "content": "推荐AI相关教程，包括Agent开发、RAG、MCP、模型微调等资源。包含原理、各种框架使用教程、自研工业级/企业级项目开箱即用源码\n网站链接：https://kq4b3vgg5b.feishu.cn/wiki/JuJSwfbwmiwvbqkiQ7LcN1N1nhd\n部分截屏：\n\n<img width=\"494\" height=\"1220\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5e5c6f61-3519-4866-a773-85d71c63ede1\" />\n\n<img width=\"640\" height=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cea4693a-e262-4631-bf9b-48911585be91\" />\n\n<img width=\"892\" height=\"1258\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/614c9d06-1be7-44c3-9554-3c509811cbbf\" />",
     "created_at": "2025-11-03T10:32:24Z",
     "labels": [],
@@ -818,21 +834,5 @@
     "created_at": "2025-10-18T11:20:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/7941"
-  },
-  {
-    "id": 7940,
-    "title": "【开源&工具自荐】bilibili无限历史记录浏览器插件",
-    "content": "### 浏览器插件介绍\nb站本身的历史记录有存储上限，用户最多只能查看近3个月的历史记录。这个插件通过alarms定时功能，调用b站历史记录的api，将历史数据保存到本地indexeddb，实现了历史记录的永久保存。\n\n### 插件截图\n\n<img width=\"2940\" height=\"1836\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8cce4400-626e-404f-805e-ae157a88c987\" />\n\n<img width=\"2940\" height=\"1830\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0239fae7-076b-44ef-b7ee-4aaa1d5deeaf\" />\n\n<img width=\"2940\" height=\"1832\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56c47ed6-4f9d-4b66-aed0-869c9563a312\" />\n\n\n### 功能特点\n- 突破 Bilibili 历史记录的数量限制\n- 每隔1分钟自动同步一次历史记录到本地，也可以自定义时间间隔\n- 支持增量同步和全量同步\n- 支持按时间排序浏览历史记录\n- 支持搜索历史记录\n- 所有数据都存储在本地indexedDB\n- 新增了听歌功能，可以用这个插件来搜歌、听歌\n\n### 官网\n[bilibilihistory.com](https://bilibilihistory.com)\n\n### 插件地址\n[chrome](https://chromewebstore.google.com/detail/bilibili-%E6%97%A0%E9%99%90%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95/cfloggaggkeocfoflejkmhdhbehjojga?hl=zh)  \n[edge](https://microsoftedge.microsoft.com/addons/detail/ekdaecpdimflnhalemibjjjdfoplnbna)  \n[firefox](https://addons.mozilla.org/zh-CN/firefox/addon/bilibili-%E6%97%A0%E9%99%90%E5%8E%86%E5%8F%B2%E8%AE%B0%E5%BD%95/)\n\n### 代码开源\nhttps://github.com/mundane799699/bilibili-history-wxt",
-    "created_at": "2025-10-18T10:00:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7940"
-  },
-  {
-    "id": 7939,
-    "title": "【网站自荐】Queens Game：一款每日挑战性的逻辑益智游戏",
-    "content": "网址：[https://queensgame.io/](https://queensgame.io/)\n\nQueens Game 是一款受 N 皇后启发、规则更严格的网页解谜游戏：每行、每列、每个彩色区域各放一枚皇后，且皇后之间不能相邻（含对角），形成独特的三重约束逻辑。\n\n特色在于“颜色区域 + 相邻禁止”的组合，让推理链条更长、更具结构化成就感；支持 PC/手机，打开即玩，无需下载。\n\n<img width=\"1200\" height=\"630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/14fa9b76-9dc3-47d9-8a03-42c741099d29\" />\n\n### 主要特性\n\n- 三重约束与相邻禁止：一行一列一色块仅一枚皇后，互不相邻，难度与趣味显著高于传统 N 皇后。\n- 直观交互与标记：点击落子为皇后，二击标 X，三击清空；棋盘可高亮行列/区域，方便排除。\n- 海量关卡与社区内容：500+ 手工关卡，另有 165+ 社区创作地图，8×8 到 15×15 多样图案。\n- 即开即玩与进度记录：无需登录即可试玩，邮箱登录后可记录历史成绩与查看排行榜。\n- 每日挑战：历史挑战归档，支持回顾过往题目。\n\n<img width=\"595\" height=\"626\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2ff4dd90-26fa-440e-8fd1-c7b897cf64ae\" />\n\n### 推荐理由\n\n- 碎片时间的高质量动脑：5–20 分钟一关，纯逻辑推理，无广告打扰。\n- 思维训练与课堂拓展：空间推理、约束传播、假设-排除等策略训练，适合理科/编程爱好者与学生。​\n- 体验门槛低、深度上限高：上手靠直觉，深入靠推理链，既适合入门者，也能满足硬核玩家。\n- 真正的“无负担”解谜：无计时或体力限制，通关节奏由玩家掌控，适合放松与专注共存。\n\n<img width=\"716\" height=\"336\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9ab40b9a-bfb0-4484-922a-20aa6b97de5f\" />\n\n### 上手建议\n\n- 从色块格子少的区域入手，先放确定子，逐步向外扩散。\n- 多用 X 做排除，先缩小搜索空间再落子，减少回退。\n- 注意皇后 8 向攻击线，优先选择对棋盘“支配力”更强的位置。\n\n### 与传统 N 皇后的区别\n\n在行列与对角约束之外引入“彩色区域唯一性”和“相邻禁止”，规则更严格、解法更具结构化推理味道。\n\n尝试一把：[https://queensgame.io/daily-challenge/today](https://queensgame.io/daily-challenge/today)\n\n\n\n\n\n",
-    "created_at": "2025-10-18T07:48:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/7939"
   }
 ]
