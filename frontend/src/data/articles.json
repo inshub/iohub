@@ -1,5 +1,13 @@
 [
   {
+    "id": 8044,
+    "title": "【IDEA插件自荐】Bean Copy插件解决Java源对象通过Bean Copy赋值给目标对象以后通过IDEA的引用找不到字段读取和写入等问题",
+    "content": "插件名称：**bean-copy-helper**\n插件地址：[https://plugins.jetbrains.com/plugin/28686-bean-copy-helper](https://plugins.jetbrains.com/plugin/28686-bean-copy-helper)  \n源码地址：[https://github.com/Aresxue/bean-copy-helper](https://github.com/Aresxue/bean-copy-helper)\n\n安装方式：在 **Settings** -> **Plugins** -> **Marketplace** 中输入bean-copy-helper检索即可找到该插件\n\n![](https://imgur.com/0Sn4TBn.png)\n\n这个插件一开始主要是写给自己用的，在阅读代码和排查bug的时候发现有很多项目使用了Bean Copy，Bean Copy有时候确实很好用， 但是它也会带来一些困扰比如源对象通过Bean Copy赋值给目标对象以后通过IDEA的引用是找不到字段读取和写入（Bean Copy）的地方的，这个插件可以解决这个问题\n\n![](https://imgur.com/sRWrMZc.png)  \n![](https://imgur.com/fjjuFPA.png)  \n![](https://imgur.com/PmuWbxu.png)\n\n可以看到我们可以对于**Getter/Setter方法或者字段**使用属性复制范围查找，会认为一次Bean Copy是对源对象和目标对象同名且同类型的字段读取和写入（对于源对象来说是读取对于目标对象来说是写入）\n\n为了避免对原有方法引用的污染所以采用类似**Find Usages**的方式，这样在跟踪某个字段的读取/写入时再也不会因为Bean Copy而被阻断了！！！\n\n除此之外Bean Copy还经常被误用，这里也会对其做一些风险识别\n\n![](https://imgur.com/C8WnGpO.png)  \n![](https://imgur.com/DjrFVhl.png)  \n![](https://imgur.com/SeSqcsD.png)  \n![](https://imgur.com/SYDlTOj.png)\n\n最典型的场景就是**同名字段类型不一致**，实际上这个字段是没法被Copy过去的！！！\n\n除此之外还集成了其它一些功能\n\n可以预览源类和目标类属性的**对比**并生成相应注释![](https://imgur.com/NDXKDy1.png)  \n![](https://imgur.com/64iFjyI.png)\n\n预览生成属性复制对应的**Getter/Setter代码**\n\n![](https://imgur.com/6qNWE4W.png)  \n![](https://imgur.com/EF3UkUF.png)\n\n可以预览源类和目标类**复制成功的属性**并生成相应注释\n\n![](https://imgur.com/R1m4qfa.png)  \n![](https://imgur.com/JjCGx74.png)\n\n\n\n而且使用中我常常发现字体时大时小有时候几乎无法观看，所以开放了字体大小自定义大家可自行修改\n\n![](https://imgur.com/vKQRAn2.png)\n\n\n\n**本插件永久免费，有需要的小伙伴自取。**\n\n",
+    "created_at": "2025-11-04T09:49:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8044"
+  },
+  {
     "id": 8043,
     "title": "【工具推荐】短视频文案提取工具,一键视频转文本,支持抖音/小红书链接",
     "content": "# 使用入口\nhttps://www.anytocopy.com/\n\n# 工具说明\nAnyToCopy - 短视频文案提取，在线短视频文案提取工具，一键视频转文本，支持抖音、小红书等50+平台的视频作品链接，免费提取口播文稿内容;\n\n# 工具特点\n1. 一键完成作品信息提取、无水印视频文件、音频文件、视频文本内容\n2. 支持图文类作品，无水印图片、live图解析批量下载\n3. 支持视频转音频，视频转文本，一次点击全部完成\n4. 支持抖音、小红书等50+主流内容平台视频链接;\n\n# 使用方式\n1. 打开网址\n2. 从抖音或小红书平台复制作品链接\n3. 粘贴链接到输入框，点击开始提取\n4. 等待作品内容、视频信息、音频信息、视频文稿内容提取，需要等待1-2分钟\n\n# 工具截图\n\n<img width=\"1511\" height=\"764\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1aa1e600-085d-44f9-8ebc-46a52ff1f671\" />\n\n<img width=\"1511\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eaded0cd-1a16-498a-9885-22257559c26f\" />\n",
@@ -824,15 +832,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/7943"
-  },
-  {
-    "id": 7942,
-    "title": "【应用推荐】跨平台 SSH & SFTP 客户端 Shell360 开源啦",
-    "content": "跨平台 SSH & SFTP 客户端 Shell360 开源啦，项目地址：https://github.com/nashaofu/shell360\n\n## 主要功能\n\nShell360 支持 Windows / macOS / Linux / Android / iOS 等操作系统，具体功能如下：\n\n- SSH / SFTP：SSH 支持密码、公钥认证\n- 端口转发功能：支持远程、本地、动态转发模式\n- 数据导入导出：支持数据导入导出，方便多端同步\n- 应用数据加密：应用的数据支持加密存储，避免被窃取\n\n## 下载安装\n\n<p align=\"center\">\n  <a href=\"https://apps.apple.com/app/shell360/id6502880351\">\n    <img src=\"https://raw.githubusercontent.com/nashaofu/shell360/93abeeec519914202bd6a4501a22bb71c1559764/resources/app-store.svg\" width=\"123\" alt=\"在 App Store 上下载\" />\n  </a>\n  <a href=\"https://play.google.com/store/apps/details?id=com.nashaofu.shell360\">\n    <img src=\"https://github.com/nashaofu/shell360/blob/master/resources/GooglePlay.png?raw=true\" width=\"140\" alt=\"在 Google Play 上下载\" />\n  </a>\n</p>\n<p align=\"center\">\n  <a href=\"https://github.com/nashaofu/shell360/releases\">\n    <img src=\"https://img.shields.io/badge/下载%20Windows%20版本-blue?style=for-the-badge\" alt=\"下载 Windows 版本\" />\n  </a>\n  <a href=\"https://github.com/nashaofu/shell360/releases\">\n    <img src=\"https://img.shields.io/badge/下载%20macOS%20版本-blue?style=for-the-badge\" alt=\"下载 macOS 版本\" />\n  </a>\n  <a href=\"https://github.com/nashaofu/shell360/releases\">\n    <img src=\"https://img.shields.io/badge/下载%20Linux%20版本-blue?style=for-the-badge\" alt=\"下载 Linux 版本\" />\n  </a>\n  <a href=\"https://github.com/nashaofu/shell360/releases\">\n    <img src=\"https://img.shields.io/badge/下载%20Android%20版本-blue?style=for-the-badge\" alt=\"下载 Android 版本\" />\n  </a>\n</p>\n\n此外也可加入[TestFlight](https://testflight.apple.com/join/teqJZCRm)或者[Google Play](https://play.google.com/apps/testing/com.nashaofu.shell360)测试计划，抢先体验新功能。\n\n## 桌面端截图展示\n\n<p align=\"center\">\n  <img width=\"45%\" src=\"https://github.com/nashaofu/shell360/blob/master/resources/screenshots/desktop/terminal.png?raw=true1\" />\n  <img width=\"45%\" src=\"https://github.com/nashaofu/shell360/blob/master/resources/screenshots/desktop/sftp.png?raw=true\" />\n</p>\n\n## 移动端截图展示\n\n<p align=\"center\">\n  <img width=\"23%\" src=\"https://github.com/user-attachments/assets/03b9d1df-3e01-4925-868b-f1f5cfe83f71\" />\n  <img width=\"23%\" src=\"https://github.com/user-attachments/assets/26a66f05-df68-41b6-bb83-417df73a10fe\" />\n  <img width=\"23%\" src=\"https://github.com/user-attachments/assets/2bcb011b-eb43-4982-a4e8-3bdd575150e1\" />\n  <img width=\"23%\" src=\"https://github.com/user-attachments/assets/c06134cd-0774-435c-a145-78374c3f660b\" />\n</p>\n\n## 招募 Google Play 测试用户\n\n由于 Google Play 需要 12 名成员参与封闭测试 14 天才能上架，所以邀请大家帮忙加入一下测试。由于封测只能通过邀请的方式，所以有愿意参与的朋友可以发送邮箱到(base64)：ZGlhb2NoZW5nQG91dGxvb2suY29t\n",
-    "created_at": "2025-10-18T13:05:59Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/7942"
   }
 ]
