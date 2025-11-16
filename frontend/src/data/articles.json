@@ -1,5 +1,13 @@
 [
   {
+    "id": 8221,
+    "title": "【工具推荐】微信小程序：云文档查找工具， 一个分享和查找云文档的平台。",
+    "content": "‘云文档查找工具’， 一个分享和查找云文档的平台。\n\n:sparkles: 零广告零消费的纯粹分享平台。\n\n:sparkles:【使用超简单】只需打开**微信小程序**“云文档查找工具”，输入关键词，就能找到心仪的文档。\n\n:sparkles:【内容平台丰富】涵盖飞书云文档、Notion、语雀、FlowUS、金山云文档、腾讯云文档等众多平台的公开云文档。\n\n![Image](https://github.com/user-attachments/assets/faeac673-96a2-4b15-8f8d-e8793f0fe40d)\n\n![Image](https://github.com/user-attachments/assets/573324a6-eedb-4de7-8cae-eb8e72515ff7)\n\n![Image](https://github.com/user-attachments/assets/156625a2-9856-4530-a537-3324877d1322)",
+    "created_at": "2025-11-16T07:38:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8221"
+  },
+  {
     "id": 8219,
     "title": "[文章自荐] AWS IoT Core 成本优化实战：从 PoC 到生产的省钱之旅",
     "content": "之前 [从 HTTP 轮询到 MQTT：我们在 AWS IoT Core 上的架构演进与实战复盘](https://mp.weixin.qq.com/s/3wyrIFf3pQh5EJ0NWbHOjA) 的后续。\n这篇主要介绍了从 POC 到实际生产架构的变化，以及 AWS IoT 的成本优化心得（如 Basic Ingest，Rule 和 Action 的设计）与实践。\n\n[https://mp.weixin.qq.com/s/eI_eZcaakl5p1ouyqoKypg](https://mp.weixin.qq.com/s/eI_eZcaakl5p1ouyqoKypg)\n\n<img width=\"1080\" height=\"608\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56d6402b-e3b6-490b-a0fd-2cbb6f647a4f\" />",
@@ -832,13 +840,5 @@
     "created_at": "2025-11-04T04:41:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8041"
-  },
-  {
-    "id": 8040,
-    "title": "【工具/文章自荐】WebAssembly 重构图片工作流：我的“零服务器”隐私保护工具箱实践",
-    "content": "## WebAssembly 重构图片工作流：我的“零服务器”隐私保护工具箱实践\n\n### 🚀 别把隐私交给云端：用浏览器做图片处理\n\n我们每天都要处理图片。调整大小、格式转换、压缩优化。每当你打开一个“在线工具”上传文件时，你是否曾犹豫：我的私人照片会不会留在别人的服务器上？\n\n这种对隐私的担忧，以及等待文件上传下载的效率折损，是传统在线工具模式的固有弊病。我们一直默认：复杂的计算必须由强大的服务器来完成。\n\n但我要说，这个默认设定已经失效了。 得益于前端技术的飞速发展，今天的浏览器已经蜕变成了一个强大的本地计算引擎，它彻底颠覆了这种传统的“服务器依赖”模式。\n\n\n### 🚀 WebAssembly 的革命：浏览器有了“原生”计算力\n\n浏览器不再仅仅是“文档阅读器”了。近年来，得益于一系列底层技术的突破，浏览器获得了处理复杂计算任务的能力，尤其是对图片和视频这类高计算密度的场景：\n\n- **WebAssembly (Wasm) 的引入：** 这是最核心的变革。Wasm 允许我们将 C/C++ 等高性能语言编译成浏览器可执行的二进制格式，运行速度已接近原生应用。这意味着过去只能在服务器端运行的复杂编解码库（如用于图像处理的 FFmpeg 或 libwebp 核心逻辑），现在可以被直接移植到前端沙箱内执行。\n\n- **Web Worker / Service Worker：** 它们让耗时的图片处理任务可以在后台线程中执行，从而保证了用户界面的流畅，解决了前端应用卡顿的顽疾。\n\n- **强大的图形 API：** 结合 <canvas> 和 WebGL，前端可以轻松进行像素级的快速操作，甚至直接利用用户的 GPU 硬件加速进行图像渲染和处理。\n\n正是这些能力叠加，让“零服务器处理”成为了可能：文件从始至终都未离开用户的电脑，所有处理都在本地浏览器沙箱内完成。\n\n<img width=\"1024\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/304bc97c-a7ec-45e4-bb77-1f1aea862869\" />\n\n### 🚀 零服务器解决方案：隐私与效率的双重提升\n\n基于浏览器能力的工具具备两大不可撼动的优势：\n\n🔒 绝对隐私： 所有计算都在本地完成，图片数据从未离开用户的设备。我们承诺真正的**“零服务器”隐私保护**。\n\n⚡ 极致效率： 由于省去了上传和下载的漫长网络等待时间，本地处理的效率远高于传统的云端处理模式。\n\n这种模式不仅限于图片，还可用于音频编辑、视频剪辑、甚至简单的 AI 模型运行。\n\n\n### 🚀 我的前端工具箱实践\n\n基于对这一趋势的洞察，作为一个独立开发者，我最近尝试开发了一系列完全在浏览器内部运行的图片处理工具。它们的核心理念是：将计算视为本地能力，将隐私视为最高优先级。\n\n以下是其中的三个工具：\n\n1. **[bulkresizeimages.online](https://bulkresizeimages.online)：** 批量图片缩放工具\n\n切中要点： 解决了开发者和电商用户急需的高并发、零等待批量处理痛点。它利用 Wasm 加速，支持按像素、百分比或最大尺寸等模式统一调整几十张图片。\n\n<img width=\"842\" height=\"662\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfd850df-fadf-4c2e-ac71-f6fc886df5a8\" />\n\n2. **[imageconverter.dev](https://imageconverter.dev)：** 全能图片格式转换\n\n切中要点： 专注于图片在主流与新兴格式间的互相转换（例如 WebP, AVIF, PNG, JPEG）。\n\n技术优势： 内部集成了 Wasm 优化的编解码器，确保了即便在本地进行复杂的格式转换，也能保持极高的速度和精度，满足现代 Web 性能优化的严格需求。\n\n<img width=\"952\" height=\"724\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/15848865-c3c0-4b26-8f42-6b6a96bfe928\" />\n\n3. **[resizeimage.dev](https://resizeimage.dev)：** 快速精确的单图裁剪工具\n\n切中要点： 作为一个精确的单图控制台，为用户提供精细的尺寸和比例控制。\n\n技术优势： 充分利用本地计算，让用户操作的实时反馈更快，无需等待任何网络延迟。\n\n![Image](https://github.com/user-attachments/assets/638ba4ad-3fa9-49ea-810a-4d18fd6019fa)\n\n### 🚀 总结与展望：借助浏览器能力帮用户夺回数据主权\n\n浏览器能力带来的不仅是速度和效率，更是对用户数据主权的回归。\n\n我们正在从“上传-处理-下载”的 Web 模式，转向“本地加载-本地处理-本地保存”的新模式。\n\n这种“零服务器”架构，预示着未来：不仅是基础工具，甚至许多轻量级的 AI 模型推理、数据可视化和办公套件，都将迁移到前端，形成更安全、更快速、更尊重用户数据主权的 Web 应用生态。\n\n我们现在要做的，就是积极利用它的新能力，打造更安全、更快速、更以用户为中心的应用。\n\n后续我还会继续探索和开发更多的工具，可能会包括音频处理，视频处理等等，丰富“零服务器”隐私保护工具箱。\n\n\n原文：https://mp.weixin.qq.com/s/fZn32I3bKhxkGtMPzHbqbQ\n",
-    "created_at": "2025-11-04T04:18:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8040"
   }
 ]
