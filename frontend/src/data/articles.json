@@ -1,26 +1,20 @@
 [
   {
     "id": 8228,
-    "title": "【工具自荐】音伴FM 一个纯粹的收音机APP (iOS/MacOS)",
+    "title": "【工具自荐】音伴FM 一个纯粹的收音机APP (iOS/macOS)",
     "content": "工作、开车、学习的时候，你是否习惯让广播当背景音？不必思考播放什么，只要有人实时在说话，就像和世界保持同频。\n\n我有一台物理收音机，电台少总是嘶嘶嘶拧半天；用大平台，杂七杂八的内容太多；用小工具，不稳定广告多。\t\n于是我做了这款 App：音伴FM\n\t\n它解决我三个刚需场景：\n1️⃣ 办公白噪音：Mac 上顶部栏一键播放，随机听一会，或者固定听音乐台/新闻台\n2️⃣ 睡眠白噪音：iPhone 后台播放、定时关闭，播音腔的夜读，或许比自然白噪音更容易入睡\n3️⃣ 开车不想选歌：手机蓝牙连上就播，能快速切换喜欢的电台，也能一键找到本地交通广播\n\t\n它不是算法推荐，而是编辑推荐的老派广播。更轻松，没有信息茧房，也没有选择负担。\n\t\n你或许会喜欢这些细节：\n📻 拟物设计：就像一个真的收音机藏在手机里，可切换三种主题\n💻 移动PC两不误：iOS/macOS 双端支持，车载蓝牙可播\n🗒 零干扰界面：只保留播放、暂停、换台、收藏，无广告\n🏠 搜索家乡电台：在外地想家了？设置家乡快速过滤，听家乡的声音\n🇨🇳 海量电台：300+ 内置电台，将根据反馈不断维护添加\n\nhttps://apps.apple.com/app/id6752507531\n\n<img width=\"2948\" height=\"1581\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8f94e3f3-f992-4fb6-8d83-aafb28e99e56\" />",
     "created_at": "2025-11-17T13:54:54Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8228"
   },
   {
-    "id": 8227,
-    "title": "【网站自荐】全网最低价AI大模型APi，sora2-0.08/条支持调用Cameo多角色上传+Remix功能",
-    "content": "​\n你还记得Sora2推出的Cameo和Remix功能吗？\n\n[Cameo](https://grsai.com/)（客串）是 Sora 2 推出的官方真人出镜功能,允许用户通过录制验证视频,将自己的面部、体型、声音特征提取并融合到 AI 生成的任意场景中,实现\"真人演员+虚拟场景+配音\"的混合视频生成。它允许你将多个角色（包括自己、朋友、宠物甚至原创形象）置入同一个AI生成的视频中。\n\nRemix（重混）是Sora 2 的一项非常强大的视频二次创作能力，它允许你对已有的视频进行对象级和场景级的深度修改，而不仅仅是简单的剪辑或添加滤镜，通过提示词你可以修改视频并且加入自己的Cameo角色。\n\n本文将详细介绍Sora 2 的Cameo 和Remix功能如何使用 ,以及企业、独立开发和普通用户如何通过[GrsAi API](https://grsai.com/)调用Sora 2 Cameo和Remix。\n\n### Sora 2 Cameo和Remix 功能如何使用\n1. 创建Cameo 角色\n\n- 录制视频：根据要求录制一段个人短视频，并按照屏幕指示读出屏幕中的数字，系统会从中学习你的外貌、动作甚至声线。\n- 活体检测：Sora 2 采用多重活体检测技术防止冒充，所以需要几分钟审核时间。\n- 权限配置：创建角色后，你可以精细设置其使用权限，例如仅自己使用、对所有朋友开放，或设置为需要你批准后才能使用。\n\n<img width=\"720\" height=\"478\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3fa5caf5-aab5-4f09-8535-87fb5bc0e227\" />\n\n2. 使用Cameo角色\n以“sora”app为例，点击底部“+”创建视频，选择cameo出镜秀中的角色，通过“@”标签来调用你已经创建或他人共享的角色，实现多角色同框，输入提示词（支持中文），等待生成。\n\n<img width=\"720\" height=\"357\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1b24b12-059c-492b-8eb9-d77049b20ecf\" />\n\n3. 提示词公式\n\n> [场景描述] + [主角(我/Cameo角色)动作] + [环境细节] + [风格要求]\n\n案例：\n\n> 古老巨龙盘踞的山巅，我是精灵法师举杖召唤魔法护盾，抵挡烈焰吐息，破碎巨石，魔法尘埃，云海夕阳，史诗奇幻，电影广角，戏剧灯光。\n\n注意：\n使用\"我\"或\"主角\"指代 Cameo 角色\n详细描述动作和场景\n避免描述面部细节(AI 会自动匹配你的特征)\n可以指定服装、场景、氛围\n\n\n\n4. Remix二创视频\n当你在 Sora App 的瀑布流中浏览视频时，可以直接对感兴趣的公开视频使用 Remix 功能，输入你的新想法来生成全新版本。\n\n- 元素替换：一键更换视频中的主角，例如将街头漫步的角色换成您自己。\n- 场景转换：无缝切换视频背景，如从东京街头变为赛博都市，AI会自动适配光影。\n- 细节调整：修改道具与氛围，例如将手中的咖啡换成茶，或将雨天变为雪天。\n- 情节续写：基于原视频生成续集，保持角色与画风一致，以延伸叙事（如通过API实现）。\n- \n\n<img width=\"720\" height=\"487\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a490e03-292b-4796-9cbc-0dd0a7b2833b\" />\n\n\n5. Sora2 应用场景\n\n- 个人娱乐：将自已或朋友置入历史大片、科幻场景\n- 内容创作：虚拟网红运营、品牌营销内容制作\n- IP经济：数字肖像权租赁，为明星、经典IP提供新的变现渠道\n- 广告营销：规模化生成个性化广告\n\n\n\n### [Sora2 API](https://grsai.com)调用实战\n\nSora2目前有严格的地区限制，并且采用邀请制，没有码且非美国，加拿大IP用户则无法使用。Openai目前还没有开通Sora 2 APi包括Cameo和Remix功能，那企业或独立开发者应该怎么调用正版的Sora2 Api？\n\n**GrsAi Sora2 Cameo多角色生成功能接入**\nGrsAi（[https://grsai.com](https://grsai.com)）是Ai大模型APi源头供应商，提供便宜稳定的Ai大模型APi接入服务，国内直连。Sora 2—0.08/条视频，同时支持Sora 2 Cameo多角色上传和Remix功能的调用。\n\n<img width=\"720\" height=\"322\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/caded1f7-bbdd-412e-aa2d-a23c565dd840\" />\n\n\nSora 2 API接入文档请到控制台查看：[https://grsai.com/zh/dashboard/documents/sora-2](https://grsai.com/zh/dashboard/documents/sora-2)\n\n目前站内模型包含：Nano Banana-0.022/张，Sora-image（Gpt4o）-0.02/张，Veo3.1/Veo3.0-0.4/张，Gemini，Flux.......更多请查看GrsAi控制台([https://grsai.com/zh/dashboard/models](https://grsai.com/zh/dashboard/models))模型列表。\n\n<img width=\"720\" height=\"560\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c0e48f7e-aa42-445a-8c60-2b3a6aa877e1\" />\n\n\n基础环境配置\n1.API端点信息\n```\n// 海外用户使用\nconst HOST_OVERSEAS = \"https://api.grsai.com\";\n\n// 国内用户使用  \nconst HOST_DOMESTIC = \"https://grsai.dakka.com.cn\";\n\n// 接口地址\nconst API_ENDPOINT = `${HOST_DOMESTIC}/v1/video/sora-video`;\n```\n2.请求头配置\n```\nconst headers = {\n  \"Content-Type\": \"application/json\",\n  \"Authorization\": \"Bearer apikey\" // 替换为实际API密钥\n};\n```\nCameo APi多角色上传功能调用\n1.characters参数完整说明\n```\n{\n  \"characters\": [\n    {\n      \"url\": \"https://example.com/characterA.mp4\",\n      \"timestamps\": \"0,3\"\n    },\n    {\n      \"url\": \"https://example.com/characterB.mp4\", \n      \"timestamps\": \"1,4\"\n    }\n  ]\n}\n```\n2.参数规范：\n\n- url：角色视频的公开访问URL，支持MP4格式\n- timestamps：视频截取范围，格式为\"开始秒数,结束秒数\"\n- 时长限制：每个角色视频最多截取3秒\n- 禁止内容：不可上传真人视频内容\n\n\n3.角色引用语法\n在prompt中使用@character+位置索引格式引用角色：\n\n```\n// 正确示例\nconst prompt = \"在公园长椅上，@character1正在读书，@character2在旁边玩耍\";\n\n// 位置索引从1开始，对应characters数组中的顺序\n// @character1 → characters[0]\n// @character2 → characters[1] \n```\n如果要使用Sora2中公开的Cameo角色，则可以直接在提示词中@用户ID使用。\n\n\n完整实战案例\n案例：创建两个卡通角色在公园场景\n\n步骤1：准备角色视频\n确保视频文件可通过URL公开访问\n\n步骤2：构造API请求\n```\nconst requestBody = {\n  \"model\": \"sora-2\",\n  \"prompt\": \"在阳光明媚的公园里，@character1在草地上快乐地跳舞，@character2在天空中盘旋飞翔，背景有鲜花和树木，风格为卡通动画\",\n  \"url\": \"https://example.com/park_background.png\", // 场景参考图\n  \"aspectRatio\": \"16:9\",\n  \"duration\": 10,\n  \"size\": \"large\",\n  \"characters\": [\n    {\n      \"url\": \"https://example.com/rabbit_dance.mp4\",\n      \"timestamps\": \"0,3\"\n    },\n    {\n      \"url\": \"https://example.com/bird_fly.mp4\", \n      \"timestamps\": \"0,3\"\n    }\n  ],\n  \"webHook\": \"https://your-app.com/callback\", // 回调地址\n  \"shutProgress\": false\n};\n```\n步骤3：执行API调用\n```\n// 使用Fetch API调用\nasync function generateSoraVideo() {\n  try {\n    const response = await fetch('https://grsai.dakka.com.cn/v1/video/sora-video', {\n      method: 'POST',\n      headers: headers,\n      body: JSON.stringify(requestBody)\n    });\n    \n    const data = await response.json();\n    console.log('任务ID:', data.data.id);\n    return data;\n  } catch (error) {\n    console.error('API调用失败:', error);\n  }\n}\n```\n结果获取方式\n方式1：WebHook回调（推荐）\n```\n// 你的回调接口需要处理的数据格式\nconst callbackData = {\n  \"id\": \"f44bcf50-f2d0-4c26-a467-26f2014a771b\",\n  \"results\": [\n    {\n      \"url\": \"https://example.com/generated_video.mp4\",\n      \"removeWatermark\": true,\n      \"pid\": \"s_6916910fc8548191aa07e106e84b3bb8\"\n    }\n  ],\n  \"progress\": 100,\n  \"status\": \"succeeded\",\n  \"failure_reason\": \"\",\n  \"error\": \"\"\n};\n```\n方式2：轮询获取结果\n```\n// 使用结果查询接口\nasync function getResult(taskId) {\n  const response = await fetch('https://grsai.dakka.com.cn/v1/draw/result', {\n    method: 'POST',\n    headers: headers,\n    body: JSON.stringify({ id: taskId })\n  });\n  \n  return await response.json();\n}\n\n// 轮询示例\nasync function pollResult(taskId, interval = 5000) {\n  while (true) {\n    const result = await getResult(taskId);\n    \n    if (result.data.status === 'succeeded') {\n      console.log('生成成功:', result.data.results[0].url);\n      break;\n    } else if (result.data.status === 'failed') {\n      console.error('生成失败:', result.data.failure_reason);\n      break;\n    }\n    \n    console.log(`进度: ${result.data.progress}%`);\n    await new Promise(resolve => setTimeout(resolve, interval));\n  }\n}\n```\n重要注意事项\n1.视频规格限制\n\n- 角色视频最长截取3秒\n- 支持MP4格式，确保URL可公开访问\n- 禁止上传真人视频内容\n\n\n2.计费与配额\n\n- 生成失败会返还积分\n- 视频URL有效期为2小时\n- 及时下载生成结果\n\n3.错误处理\n\n```\n// 常见的状态码和错误信息\nconst errorMessages = {\n  \"output_moderation\": \"输出内容违规\",\n  \"input_moderation\": \"输入内容违规\", \n  \"error\": \"其他系统错误\"\n};\n```\nRemix功能APi调用\n二次创作功能\n使用remixTargetId参数基于已有视频创作续集：\n\n```\n{\n  \"remixTargetId\": \"s_6916910fc8548191aa07e106e84b3bb8\",\n  \"prompt\": \"同样的角色在夜晚的公园中，@character1和@character2在月光下继续他们的冒险\"\n}\n```\n多尺寸输出策略\n```\n// 快速预览使用small尺寸\nconst previewRequest = {\n  size: \"small\",\n  duration: 10\n};\n\n// 最终输出使用large尺寸  \nconst finalRequest = {\n  size: \"large\", \n  duration: 15\n};\n```\n通过GRSAI的Sora 2 API，开发者可以充分利用多角色上传功能，创建出丰富多样的个性化AI视频内容，为应用程序增添强大的视频生成能力。\n\n更详细的Sora 2 Api文档请参考[GrsAi](https://grsai.com)控制台\n\n​",
-    "created_at": "2025-11-17T13:47:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8227"
-  },
-  {
     "id": 8226,
     "title": "【工具自荐】解决MacOS的终端中SSH登录机器需要频繁输入密码问题",
     "content": "## 适合的人群\n- 习惯为自己的私钥设置密码保护\n- 习惯直接使用终端中的SSH命令登录机器\n- 每天都要使用SSH连接至目标及其\n- 习惯使用终端中的SSH命令登录机器\n- 使用MacOS且带有指纹认证(后续会增加Windows的支持)\n\n## 解决的问题\n- 每次ssh登录目标机器不需要输入私钥的密码,直接利用指纹认证。\n- ~/.ssh/config中配置了大量的Host，登录不常用的机器时需要打开该文件查看目标名称\n\n## 项目地址\nhttps://github.com/Mister-leo/fssh",
     "created_at": "2025-11-17T09:30:13Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8226"
   },
   {
@@ -28,7 +22,9 @@
     "title": "【工具自荐】网页版 svg 压缩，40+压缩配置，多种代码 svg 组件导出",
     "content": "github：https://github.com/hehehai/tiny-svg\n网址：https://tiny-svg.actnow.dev\n\n![](https://github.com/hehehai/tiny-svg/raw/main/docs/images/home.webp)\n![](https://github.com/hehehai/tiny-svg/raw/main/docs/images/optimize.webp)",
     "created_at": "2025-11-17T07:54:07Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8225"
   },
   {
@@ -842,5 +838,13 @@
     "created_at": "2025-11-04T11:45:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8046"
+  },
+  {
+    "id": 8045,
+    "title": "【工具自荐】一个完全免费、无广告的Telegram ChatGPT机器人",
+    "content": "刚做了一个完全免费、无广告的Telegram ChatGPT机器人，使用GPT-4o-mini模型，支持图片识别，欢迎大家使用。\n\n**用法：** 在Telegram里直接给 @iMessageAI_bot 发消息，或者点击 [Telegram AI助手](http://t.me/iMessageAI_bot)\n\n\n\n![Image](https://github.com/user-attachments/assets/4ecebd71-859e-4fa9-96c4-0db43635e8a9)\n",
+    "created_at": "2025-11-04T11:35:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8045"
   }
 ]
