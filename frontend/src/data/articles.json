@@ -1,5 +1,13 @@
 [
   {
+    "id": 8259,
+    "title": "【开源自荐】一个开发体验接近 Vercel AI SDK 的 Python 库",
+    "content": "项目名称：LiteAI-SDK\n项目地址：https://github.com/BHznJNs/liteai\n\n# 项目描述\n\nLiteAI-SDK 是一个封装了 [LiteLLM](https://github.com/BerriAI/litellm)，旨在提供更直观的 API 和更方便的工具接入的 Python 库。得益于 LiteLLM 对于各种 LLM 供应商的适配，LiteAI-SDK 能让你用更简单的代码接入各种主流 LLM 提供商。\n\n## 核心功能\n\nPython 函数直接作为工具接入：\n\n```python\nimport os\nfrom liteai_sdk import LLM, LlmProviders, LlmRequestParams, UserMessage\n\ndef example_tool():\n    \"\"\"\n    This is a test tool that is used to test the tool calling functionality.\n    \"\"\"\n    print(\"The example tool is called.\")\n    return \"Hello World\"\n\nllm = LLM(provider=LlmProviders.OPENAI,\n          api_key=os.getenv(\"API_KEY\", \"\"),\n          base_url=os.getenv(\"BASE_URL\", \"\"))\n\nparams = LlmRequestParams(\n        model=\"deepseek-v3.1\",\n        tools=[example_tool],\n        messages=[UserMessage(\"...\")])\n```\n\n在识别到模型返回工具调用指令时自动进行工具调用（由 execute_tools 参数控制）：\n```python\ndef example_tool():\n    \"\"\"\n    This is a test tool that is used to test the tool calling functionality.\n    \"\"\"\n    print(\"The example tool is called.\")\n    return \"Hello World\"\n\nllm = LLM(provider=LlmProviders.OPENAI,\n          api_key=os.getenv(\"API_KEY\", \"\"),\n          base_url=os.getenv(\"BASE_URL\", \"\"))\n\nparams = LlmRequestParams(\n        model=\"deepseek-v3.1\",\n        tools=[example_tool],\n        execute_tools=True,\n        messages=[UserMessage(\"Please call the tool example_tool.\")])\n\nprint(\"User: \", \"Please call the tool example_tool.\")\nmessages = llm.generate_text_sync(params)\nfor message in messages:\n    match message.role:\n        case \"assistant\":\n            print(\"Assistant: \", message.content)\n        case \"tool\":\n            print(\"Tool: \", message.content)\n\n\"\"\" outputs:\nUser:  Please call the tool example_tool.\nThe example tool is called.\nAssistant:  I'll call the example_tool for you.\nTool:  \"Hello World\"\n\"\"\"\n```",
+    "created_at": "2025-11-20T16:32:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8259"
+  },
+  {
     "id": 8258,
     "title": "【网站自荐】临时邮箱Tempmail123 极致精简的临时邮箱",
     "content": "![tempmail123](https://i.imgs.ovh/2025/11/20/CFCy7x.png)\n\n## 介绍 \n\n### 🚀 即时邮箱生成\n- **无需注册**：无需任何注册或繁琐设置\n- **一键生成**：访问网站即可立即获得临时邮箱地址\n- **简单操作**：复制、刷新、更换、删除，一键完成\n\n### 🔒 隐私与安全\n- **100% 匿名**：无需提供任何个人身份信息\n- **安全可靠**：所有数据自动销毁，不留痕迹\n- **防垃圾邮件**：有效隔离垃圾邮件和恶意攻击\n\n### 💰 完全免费\n- **无隐藏费用**：所有功能完全免费使用\n- **无限生成**：不限次数生成临时邮箱地址\n- **无使用限制**：尽情使用，无需担心额度问题\n\n\n## 快速访问\n\n> **官方网址**：[**https://tempmail123.com**](https://tempmail123.com)\n>\n> 点击上方链接，立即体验安全匿名的临时邮箱服务。",
@@ -832,13 +840,5 @@
     "created_at": "2025-11-07T02:20:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8116"
-  },
-  {
-    "id": 8115,
-    "title": "【网站自荐】结合思维导图的AI工具",
-    "content": "传统聊天界面不太适合严谨的想要从大模型获取知识的场景。于是我做了一个搭配思维导图的工具网站。\n配合上思维导图，问AI问题的时候，可以实现以下优点：\n1. 深挖知识，只需要点击鼠标\n2. 并发生成答案，效率提高\n3. 丝滑的上下文切换\n\n非常适合探索未知的知识领域。\n\n暂时只支持电脑端PC访问。\n\n视频演示：\n[https://x.com/longbill/status/1986613173395603771](https://x.com/longbill/status/1986613173395603771)\n\n免费体验：\n国际版（google登录）： [https://seekmap.ai ](https://seekmap.ai ) \n国内版（微信登录）： [https://seekmap.com](https://seekmap.com)",
-    "created_at": "2025-11-07T02:09:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8115"
   }
 ]
