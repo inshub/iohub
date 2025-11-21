@@ -1,5 +1,13 @@
 [
   {
+    "id": 8260,
+    "title": "【网站推荐】gempix2.live —— AI 图像生成与编辑平台",
+    "content": "## 【网站推荐】gempix2.live —— AI 图像生成与编辑平台\n\n这是一个基于最新模型 **Google Gemini 3 Pro Image（“Nano Banana Pro”）** 的  \n**AI 图像生成与编辑网站**，主要功能包括：\n\n🎨 **文本生成图像**：输入描述即可生成高质量视觉内容，得益于 Nano Banana Pro 的图像理解能力，画面细节清晰自然。  \n🛠 **图像编辑工具**：支持扩图、去除物体、替换背景、添加元素等常用编辑功能，操作轻松上手。  \n🔁 **Remix 重混模式**：在保留主体的前提下，自动生成不同风格的视觉变体，适用于广告、宣传图和社交媒体内容制作。  \n🌐 **多语言支持**：目前提供英文、中文界面。  \n📱 **移动端优化**：手机端也可流畅生成和编辑图片。  \n💼 **适合商业用途**：可用于营销视觉、产品展示、品牌海报等专业场景。\n\n项目目标是为创作者和团队提供一个  \n**无需专业设计技能也能快速产出高质量视觉内容** 的 AI 工具。\n\n网站地址 👉 **gempix2.live**",
+    "created_at": "2025-11-21T02:59:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8260"
+  },
+  {
     "id": 8259,
     "title": "【开源自荐】一个开发体验接近 Vercel AI SDK 的 Python 库",
     "content": "项目名称：LiteAI-SDK\n项目地址：https://github.com/BHznJNs/liteai\n\n# 项目描述\n\nLiteAI-SDK 是一个封装了 [LiteLLM](https://github.com/BerriAI/litellm)，旨在提供更直观的 API 和更方便的工具接入的 Python 库。得益于 LiteLLM 对于各种 LLM 供应商的适配，LiteAI-SDK 能让你用更简单的代码接入各种主流 LLM 提供商。\n\n## 核心功能\n\nPython 函数直接作为工具接入：\n\n```python\nimport os\nfrom liteai_sdk import LLM, LlmProviders, LlmRequestParams, UserMessage\n\ndef example_tool():\n    \"\"\"\n    This is a test tool that is used to test the tool calling functionality.\n    \"\"\"\n    print(\"The example tool is called.\")\n    return \"Hello World\"\n\nllm = LLM(provider=LlmProviders.OPENAI,\n          api_key=os.getenv(\"API_KEY\", \"\"),\n          base_url=os.getenv(\"BASE_URL\", \"\"))\n\nparams = LlmRequestParams(\n        model=\"deepseek-v3.1\",\n        tools=[example_tool],\n        messages=[UserMessage(\"...\")])\n```\n\n在识别到模型返回工具调用指令时自动进行工具调用（由 execute_tools 参数控制）：\n```python\ndef example_tool():\n    \"\"\"\n    This is a test tool that is used to test the tool calling functionality.\n    \"\"\"\n    print(\"The example tool is called.\")\n    return \"Hello World\"\n\nllm = LLM(provider=LlmProviders.OPENAI,\n          api_key=os.getenv(\"API_KEY\", \"\"),\n          base_url=os.getenv(\"BASE_URL\", \"\"))\n\nparams = LlmRequestParams(\n        model=\"deepseek-v3.1\",\n        tools=[example_tool],\n        execute_tools=True,\n        messages=[UserMessage(\"Please call the tool example_tool.\")])\n\nprint(\"User: \", \"Please call the tool example_tool.\")\nmessages = llm.generate_text_sync(params)\nfor message in messages:\n    match message.role:\n        case \"assistant\":\n            print(\"Assistant: \", message.content)\n        case \"tool\":\n            print(\"Tool: \", message.content)\n\n\"\"\" outputs:\nUser:  Please call the tool example_tool.\nThe example tool is called.\nAssistant:  I'll call the example_tool for you.\nTool:  \"Hello World\"\n\"\"\"\n```",
@@ -832,13 +840,5 @@
     "created_at": "2025-11-07T03:02:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8117"
-  },
-  {
-    "id": 8116,
-    "title": "【网站自荐】TAO 子网监控与快捷方式工具站",
-    "content": "TAO tracker快捷工具站\n网站地址：https://taotracker.org\n\n展示128个子网实时价格、涨跌幅排序，快捷导航到交易链接，方便交易员查看操作。\n可以收藏自选，盯盘异动，快捷跳转交易页等，后续补充相应社区快捷导航，方便查看对应子网消息。\n\n<img width=\"1920\" height=\"953\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/12ad70b7-3446-457b-82af-884e2ea17043\" />",
-    "created_at": "2025-11-07T02:20:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8116"
   }
 ]
