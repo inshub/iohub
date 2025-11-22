@@ -1,5 +1,13 @@
 [
   {
+    "id": 8269,
+    "title": "【工具自荐】剪存 - 多平台剪贴板历史管理工具",
+    "content": "一个基于 Wails + Vue 3 开发的多平台剪贴板历史管理工具，支持 Mac 和 Windows。\n核心功能：\n📋 自动保存剪贴板历史，支持文本、图片、文件、URL、颜色、JSON 等多种类型\n🔍 实时搜索和智能过滤，支持按类型筛选和关键词搜索\n⭐ 收藏功能，重要内容永久保存\n🖼️ 图片识别二维码、预览放大、一键保存\n🎨 颜色值识别和格式转换（HEX、RGB、HSL）\n📝 JSON 可视化编辑，支持语法高亮和格式验证\n🔒 密码保护、自动清理、快捷键配置等个性化设置\n技术栈：\n后端：Go + Wails v2\n前端：Vue 3 + TypeScript + Vite\n数据库：SQLite3（本地存储，保护隐私）\n下载地址：\nMac 版本（App Store）：https://apps.apple.com/us/app/剪存/id6754015301\nWindows 版本（GitHub）：https://github.com/snsogbl/clip-save/releases\n开源地址：\nGitHub：https://github.com/snsogbl/clip-save\n许可证：MIT\n数据完全本地存储，保护隐私安全。支持全局快捷键操作，提高工作效率。适合程序员、设计师、文案工作者等需要频繁复制粘贴的场景。",
+    "created_at": "2025-11-22T01:58:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8269"
+  },
+  {
     "id": 8268,
     "title": "【网站自荐】Contemdao AI —— 一个用 AI 自动生成交易复盘报告的在线工具",
     "content": "大家好，我最近做了一个面向交易者的复盘工具 —— **Contemdao AI**。  \n它是一个纯 Web 的网站，不需要下载 App，打开即可使用（移动端适配很好）。\n\n做这个工具的初衷，是帮助普通交易者更容易地记录交易、看清问题、提升纪律。  \n很多人做交易时不知道自己的问题在哪里，也很难坚持复盘，我希望 AI 能让这件事情变得更轻松。\n\n### 🌟 它主要有以下功能：\n\n1. **AI 自动生成复盘报告**  \n   你输入你的买入价格、卖出价格、截图、原因等，AI 会自动为你生成一份结构化复盘、情绪分析和改进建议。\n\n2. **情绪化交易识别**  \n   自动判断你的交易是否偏离计划（追高、抄底、恐慌卖飞、迟迟不止损等），并给出行为标签。\n\n3. **多维度数据洞察**  \n   支持查看 7 天、30 天交易习惯趋势，帮助用户发现自己的常见错误。\n\n4. **截图识别**（可选）  \n   上传 K 线截图，AI 能识别图上的位置，对买卖是否合理给出评价。\n\n5. **注重隐私，不需要输入真实账户**  \n   所有数据都存储在用户自己账号下，不涉及券商账户信息。\n\n### 🧪 体验地址（无需登录即可试用）  \nhttps://contemdao.com\n\n目前是公开测试版，欢迎随便试用。如果有任何建议，也欢迎在 GitHub 或页面底部邮箱给我反馈，我会持续改进。\n",
@@ -77,7 +85,7 @@
   },
   {
     "id": 8259,
-    "title": "【开源自荐】一个开发体验接近 Vercel AI SDK 的 Python 库",
+    "title": "【开源自荐】一个提供直观接口设计和极简工具接入的 AI SDK",
     "content": "项目名称：LiteAI-SDK\n项目地址：https://github.com/BHznJNs/liteai\n\n# 项目描述\n\nLiteAI-SDK 是一个封装了 [LiteLLM](https://github.com/BerriAI/litellm)，旨在提供更直观的 API 和更方便的工具接入的 Python 库。得益于 LiteLLM 对于各种 LLM 供应商的适配，LiteAI-SDK 能让你用更简单的代码接入各种主流 LLM 提供商。\n\n## 核心功能\n\nPython 函数直接作为工具接入：\n\n```python\nimport os\nfrom liteai_sdk import LLM, LlmProviders, LlmRequestParams, UserMessage\n\ndef example_tool():\n    \"\"\"\n    This is a test tool that is used to test the tool calling functionality.\n    \"\"\"\n    print(\"The example tool is called.\")\n    return \"Hello World\"\n\nllm = LLM(provider=LlmProviders.OPENAI,\n          api_key=os.getenv(\"API_KEY\", \"\"),\n          base_url=os.getenv(\"BASE_URL\", \"\"))\n\nparams = LlmRequestParams(\n        model=\"deepseek-v3.1\",\n        tools=[example_tool],\n        messages=[UserMessage(\"...\")])\n```\n\n在识别到模型返回工具调用指令时自动进行工具调用（由 execute_tools 参数控制）：\n```python\ndef example_tool():\n    \"\"\"\n    This is a test tool that is used to test the tool calling functionality.\n    \"\"\"\n    print(\"The example tool is called.\")\n    return \"Hello World\"\n\nllm = LLM(provider=LlmProviders.OPENAI,\n          api_key=os.getenv(\"API_KEY\", \"\"),\n          base_url=os.getenv(\"BASE_URL\", \"\"))\n\nparams = LlmRequestParams(\n        model=\"deepseek-v3.1\",\n        tools=[example_tool],\n        execute_tools=True,\n        messages=[UserMessage(\"Please call the tool example_tool.\")])\n\nprint(\"User: \", \"Please call the tool example_tool.\")\nmessages = llm.generate_text_sync(params)\nfor message in messages:\n    match message.role:\n        case \"assistant\":\n            print(\"Assistant: \", message.content)\n        case \"tool\":\n            print(\"Tool: \", message.content)\n\n\"\"\" outputs:\nUser:  Please call the tool example_tool.\nThe example tool is called.\nAssistant:  I'll call the example_tool for you.\nTool:  \"Hello World\"\n\"\"\"\n```",
     "created_at": "2025-11-20T16:32:16Z",
     "labels": [],
@@ -834,13 +842,5 @@
     "created_at": "2025-11-08T02:08:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8126"
-  },
-  {
-    "id": 8125,
-    "title": "Google 的 Gempix2 (Nano Banana 2)",
-    "content": "[Nano Banana 2](https://gempix2.vip)",
-    "created_at": "2025-11-07T15:27:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8125"
   }
 ]
