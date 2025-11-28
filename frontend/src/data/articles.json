@@ -1,5 +1,13 @@
 [
   {
+    "id": 8318,
+    "title": "[WebHooker] 兼容转发各种webhook, 支持广播/RAW模式/Docker部署/CF Worker, 已支持 飞书/钉钉/企业微信/slack/telegram/discord",
+    "content": "https://github.com/TokenRollAI/webhooker\n\n\n先简单介绍下为什么会做这个项目，开始的时间大概在两个月前，自部署了一个 airbyte, 需要考虑在任务失败的情况下调用 webhook 通知，但是很可惜，使用的版本还不支持 飞书 webhook, 于是就自己写了一个 worker 用来做转发.\n\n效果还不错，于是想到可能有很多人都遇到了类似的问题，某个平台支持 webhook, 但是和公司的 IM 并不兼容，于是只能手动写一个 Lambda Function / CF Worker 来中转。于是就简单的把主流的 IM / 协同办公的 webhook 协议收集了下，拿 claude code + gemini 糊了一套.\n\n目前的功能比较简陋，但是核心功能已经没啥问题了.\n\n提供了在线使用的链接，请大家注意不要使用任何线上的 webhook 进行测试。会有日志残留！\n\n\n## 支持的平台\n\n**输入** (source)\n- `slack` - Slack webhook\n- `feishu` - 飞书机器人\n- `dingtalk` - 钉钉机器人\n- `wechatwork` - 企业微信\n- `generic` - 通用 JSON\n- `raw` - 原样输出 (兜底)\n\n**输出** (target 参数)\n\n| 参数 | 平台 | 说明 |\n|-----|------|-----|\n| `feishu` / `fs` | 飞书 | 只需 token |\n| `dingtalk` / `dd` | 钉钉 | 只需 access_token |\n| `wechatwork` / `wxwork` | 企业微信 | 只需 key |\n| `discord` / `dc` | Discord | 格式: `ID/TOKEN` |\n| `telegram` / `tg` | Telegram | 格式: `BOT_TOKEN:CHAT_ID` |\n| `slack` | Slack | 格式: `T.../B.../xxx` |\n| `generic` | 自定义 | 完整 URL |\n\n多个目标：`?feishu=A&feishu=B&dd=C`\n",
+    "created_at": "2025-11-28T15:38:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8318"
+  },
+  {
     "id": 8317,
     "title": "【网站自荐】BananaPrompts--Image to Keywords",
     "content": "\nhttps://bananaprompts.org/\n一个高质量的提示词聚合站。可以图片转提示词，也可以根据提示词生成图片。它解决了一个核心痛点——“脑子里有画面但写不出 关键词”。网站汇集了大量高精 AI 作品，无需点击进入详情页，可直接复制提示词，极大地提高了作业效率。对于想学习 Prompt 结构或寻找风格参考的创作者来说，这是一个非常高效的工具库。\nA high-quality prompt aggregation platform that supports both image-to-prompt conversion and image generation from prompts. It addresses a core pain point: \"having a clear mental image but struggling to translate it into effective keywords\". The platform curates a vast collection of high-definition AI-generated works, allowing users to copy prompts directly without clicking into detailed pages—greatly boosting workflow efficiency. For creators looking to learn prompt structures or seek style references, it serves as an incredibly efficient toolkit.\n<img width=\"1268\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/75cd4f9f-845f-4316-b42c-7b7c293fad9a\" />",
@@ -832,13 +840,5 @@
     "created_at": "2025-11-14T08:18:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8212"
-  },
-  {
-    "id": 8210,
-    "title": "【网站自荐】 一个收集查找 claude skill 的站 skillsmp.com",
-    "content": "## 为什么做这个网站\n\nClaude 在今年 10 月发布了 Skills 功能，我觉得这个功能挺有意思。在我看来，Skill 是个很好的\"沉淀经验\"的方式，也比 MCP 更方便阅读学习（本身主要就是个 markdown 文件）。\n\n虽然 Claude 自带了 skill-creator 工具可以帮你创建和更新 skill，但我还是想看看其他人都创建了什么样的 skills，用在了哪些领域。而且我觉得专业人士写的（或基于 AI 生成后优化的）skill 质量可能会更高。\n\n可问题是这些 skills 都散落在 GitHub 各个角落，找起来太费劲了。\n\n于是就有了这个 [Skills Marketplace](https://skillsmp.com) 网站。\n\n## 关于内容\n\n现在网站已经收录了 **10000+ 个 Claude Skills**，都来自 GitHub，内容涵盖各个领域。\n\n**主要功能：**\n\n- **智能分类**：按用途分成区块链、商务、内容创作、数据 & AI、数据库、开发工具、DevOps 等十几个大类，每个技能可能属于多个分类（分类准确度还在持续优化中）\n- **AI 搜索**：集成了 RAG Search，可以用自然语言描述你想要的功能（搜索效果也在不断调优）\n- **一键安装**：支持 marketplace.json 的技能可以通过 Claude Code 一条命令安装，也提供 zip 下载\n- **定期更新**：定期同步 GitHub 数据，展示每个技能的最新更新时间和 star 数\n\n可以来看看都有哪些 Claude Skills，用在了什么场景，说不定能发现一些你没想到的用法。\n\n如果你正在用 Claude Code，或者对 Skills 感兴趣，欢迎来逛逛~\n\n\n网站地址: https://skillsmp.com\n\nSkill Marketplace\n\n\n\n<img width=\"2924\" height=\"2034\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/052a6394-455b-4bbd-b5e4-3a43a42d941b\" />\n\n<img width=\"2582\" height=\"1682\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/46713bfe-b582-4e9e-b78e-81e1bae9df00\" />\n\n<img width=\"2910\" height=\"1682\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a050411f-f731-4822-a137-153c82180380\" />",
-    "created_at": "2025-11-14T06:33:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8210"
   }
 ]
