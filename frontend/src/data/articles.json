@@ -1,5 +1,13 @@
 [
   {
+    "id": 8343,
+    "title": "【网站推荐】AI生成小红书爆款封面和图文",
+    "content": "推荐一个AI创作小红书爆款封面和图文的网站\n简单设计\n网址：[https://jiandan.link](https://jiandan.link/?from=ryf)\n功能很强大，有很多免费工具，每天可以免费领取AI创作次数，很好用！\n\n<img width=\"1844\" height=\"1031\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/47882fb8-df51-4720-8902-8296251a11c8\" />",
+    "created_at": "2025-12-01T14:51:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8343"
+  },
+  {
     "id": 8341,
     "title": "【开源自荐】memU 是一个面向 LLM 与 AI Agent 的智能体记忆框架（Agentic memory framework）",
     "content": "[memU](https://github.com/NevaMind-AI/memU)是一个面向 LLM 与 AI Agent 的智能体记忆框架（Agentic memory framework）。它能够接收多模态输入，将内容提取为细粒度的记忆单元（Memory items），并进一步自主组织聚类为结构化的记忆文件（Memory files/Memory categories）。\n\n与传统仅依赖向量检索（embedding search）的 RAG 系统不同，memU 支持**非向量检索**，模型可以直接读取记忆文件本身。LLM 能以自然语言直接从语义的角度理解这些记忆文件，并通过“类别（Memory files/Memory categories）→ 记忆单元（Memory items）→ 原始资源（Resource）”逐层回溯，实现深度检索（Deep search）与精准推理。\n\n# 统一多模态记忆架构（Unified multimodal memory framework）\nmemU 将异构输入数据逐级转化为可查询、可理解的文本记忆。\n其核心架构由三层组成（自下而上）：**Resource layer → Memory item layer → Memory category layer**\n<img width=\"1280\" height=\"528\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed4e8833-2b4c-4b1a-8f7c-78a3a1a2bd65\" />\n\n## (1) Resource layer —— 多模态原始数据仓库\n- 存储完整的原始输入数据，包括文本、图像、语音、视频等\n- 负责数据清洗、模态标准化与统一索引\n- 该层保存“全量历史信息”，保证所有上层抽象结果都能追溯至原始内容\n- 类似“底层事实层（ground truth layer）”，为记忆系统提供语义基底\n## (2) Memory item layer —— 记忆单元抽象层\n- memU 从resource layer提取出最小粒度的memory items\n- 每个单元均为自然语言句子（该层也同时支持embedding检索方式），描述一个明确的事实、事件或状态\n- 该层实现跨模态的语义对齐（所有信息都被抽象为文本形式）\n- 它是整个系统的“语义缓存层”，为后续检索和推理提供高密度语义向量\n## (3) Memory category layer —— 主题化文件层\n- 将大量零散的记忆单元按主题聚合为“文件（File）”，形成高层次知识结构\n- 每个文件代表一个独立的记忆主题（如“用户画像”、“生活事件”、“工作日志”等）\n- 系统在此层实现动态容量管理（Dynamic Capacity Management）：\n       - 仅保留最常访问或最新相关的文件在高优先层\n       - 冷门或过期文件自动下沉至下层\n- 该设计模拟人类的记忆机制，兼顾“短期响应效率”与“长期信息完备性”\n\n这三层之间保持完整可追溯关系（Full Traceability）：\n> 从原始数据 → 记忆单元 → 聚合分类，\n> 可双向追踪每条知识的来源与演化过程，实现高透明度与可解释性。\n\n# 核心流程（Memorize & Retrieve & Evolve）\nmemU 的运行由三个核心流程构成：\n**记忆形成（Memorization）→ 信息检索（Retrieval）→ 自我进化（Self-Evolution）**\n<img width=\"1280\" height=\"313\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/925b7479-8035-4159-af0e-c3af5d3bac7c\" />\n## (1) 记忆形成（Memorization）\n- 当系统接收到新数据（多模态输入）时，memU 异步完成从底层到高层的转化：\n  1. 存储原始数据至资源层（Resource layer）\n  2. 提取核心记忆（根据语义分析提取出需要memorize的内容）形成记忆单元（Memory items）\n  3. 聚合并存入相应主题文件（Memory categories/files）\n- 若顶层文件数量达到容量上限，系统自动淘汰访问频率最低的文件并替换为访问高频的新文件\n- 形成过程完全自治化，无需人工标注或干预\n结果： 系统在保持记忆连贯性的同时，自动调节资源使用，实现可持续扩展。\n## (2) 信息检索（Retrieval）\n- 检索遵循自顶向下的分层搜索逻辑：\n  1. 首先在记忆类别层（Memory category layer）/主题文件中查找\n  2. 若未命中，则下沉至记忆单元层（Memory item layer）\n  3. 再不匹配则回溯到资源层（Resource layer）进行原始搜索\n- 该设计在保证响应速度的同时，维持信息完整性\n- 对记忆单元层（Memory item layer）引入高效检索机制（结合 BM25 + Embedding 混合搜索）\n结果： 检索效率与可解释性兼得，支持跨主题、跨模态的语义查询与reasoning。\n## (3) 自我进化（Self-Evolution）\n- 系统持续监控用户交互与访问频率，当某一主题被频繁引用时：\n  - 相关信息自动“晋升”至记忆类别层（Memory category layer）\n  - 并在底层建立新的语义链接与聚类\n- 通过这种反馈驱动的演化机制，memU 的记忆结构会随使用模式不断自我重组，最终实现“记忆随交互而成长”的闭环\n## (4) 双模检索（Dual-Mode Retrieval）\nmemU 支持两种检索方式:\n- 向量检索(Embedding Search)：在记忆单元层进行语义匹配,快速定位相关信息\n- 文件直读(File Reading)：LLM 直接读取并理解记忆文件内容,获取更完整准确的上下文\n\n两种方式可根据查询需求灵活选择,在检索效率与理解准确度之间取得平衡。\n\n### 项目GitHub地址🌟：https://github.com/NevaMind-AI/memU",
@@ -828,13 +836,5 @@
     "created_at": "2025-11-19T07:06:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8239"
-  },
-  {
-    "id": 8238,
-    "title": "【网站自荐】AI图片翻译器-立刻翻译图片为任何语言",
-    "content": "## 网站链接\n网站链接：https://aiimagetranslator.net\n## [AI图片翻译器](https://aiimagetranslator.net)\nAI图片翻译器是一款基于先进 OCR 与大模型翻译技术的在线 AI 图片翻译工具，专门用于将图片中的文字快速、精准地翻译成多种语言，并尽量还原原图的版式和视觉效果。用户只需上传图片、选择目标语言，即可在数秒内获得可直接使用的本地化图片和可编辑文本，适合个人用户和跨境团队高效处理海量图片。\n## 核心功能\n1. 智能文字识别 + 多语种翻译\n自动识别海报、商品图、截图、菜单等各种图片中的文字，支持多国语言互译，涵盖出海常用语种，满足跨境电商、内容出海、本地化运营等多种需求。\n2. 无痕擦除与文字回填\n一键抹除图片中的原始文字，智能填充背景，再将翻译后的文本自动回填到图片中，让图片看起来干净、自然，无需复杂的 PS 手工操作。\n3. 版式自动适配，尽量还原设计感\n根据原图的排版结构自动调整字号、行距、对齐方式等，让翻译后的文案在图片中依然保持整齐、美观，尽量保留设计风格和视觉层次。\n4. 批量图片翻译，高效处理海量素材\n支持多张图片批量上传与翻译，一次性完成整套商品图、专题页或广告物料的本地化处理，大幅提升运营与设计效率。",
-    "created_at": "2025-11-19T06:56:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8238"
   }
 ]
