@@ -1,5 +1,29 @@
 [
   {
+    "id": 8401,
+    "title": "Michigan Paycheck Calculator Free 2025 Michigan salary & hourly tax calculator • Calculate your take-home pay instantly",
+    "content": "[Michigan math in a heartbeat: flat 4.25 % state, Detroit/GR city bite, 2025 exemptions, FICA, 401(k), union dues—punch once, net pay drops before your coffee does. Swing shifts, overtime, bonus check? One click, zero signup, PDF ready to slap on HR’s desk.](https://michiganpaycheckcalculator.org/)",
+    "created_at": "2025-12-09T02:23:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8401"
+  },
+  {
+    "id": 8400,
+    "title": "Free Significant Figures Calculator with Step-by-Step Solutions",
+    "content": "[SigFigCalculator.org is a specialized educational tool designed for chemistry and physics students. Unlike standard calculators, it provides detailed step-by-step explanations for every calculation, showing exactly how significant figure rules (addition/subtraction vs. multiplication/division) are applied. It supports complex mixed operations, scientific notation, and includes a visual counter to help students master precision rules.](https://sigfigscalculator.org/)",
+    "created_at": "2025-12-09T02:16:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8400"
+  },
+  {
+    "id": 8399,
+    "title": "【开源自荐】make-vue-coding-more-like-react: 基于Vue的babel插件，使Vue jsx语法更接近React",
+    "content": "# make-vue-coding-more-like-react\n\n项目地址: https://github.com/apades/make-vue-coding-more-like-react\n\n就如同标题所述，让React开发者更熟悉的jsx语法，只需要编写tsx文件 + 编辑器自带的语法提示，不再需要Vuter插件达到语法提示了。\n\n举个🌰\n```tsx\n// ChildComp.tsx\nimport { effect, ref, type VNode } from 'vue'\ntype Props = {\n  name: string\n  header: (count: number) => VNode\n  children?: VNode\n}\ntype Handler = {\n  addCount: () => void\n}\nfunction ChildComp(props: Props) {\n  const innerCount = ref(0)\n  defineExpose<Handler>({\n    addCount() {\n      innerCount.value++\n    },\n  })\n  if (!props.children) return <div>no children</div>\n\n  return (\n    <>\n      <div>{props.header(innerCount.value)}</div>\n      <div onClick={() => innerCount.value++}>\n        {props.name} count: {innerCount.value}\n      </div>\n      {props.children}\n    </>\n  )\n}\n```\n\n将转化成下面的代码\n```tsx\nconst ChildComp = defineComponent({\n  props: ['name', 'header', 'children'],\n  setup(_props, ctx) {\n    const props = new Proxy({},{\n      get:(_,key) => key === 'children' ? ctx.slots.default?.() : _props[key]\n    })\n    const innerCount = ref(0)\n    ctx.expose({\n      addCount() {\n        innerCount.value++\n      },\n    })\n    return () => {\n      if (!props.children) return <div>no children</div>\n\n      return (\n        <>\n          <div>{props.header(innerCount.value)}</div>\n          <div onClick={() => innerCount.value++}>\n            {props.name} count: {innerCount.value}\n          </div>\n          {props.children}\n        </>\n      )\n    }\n  },\n})\n```\n\n## how to use\n```\nnpm i @mvcmlr/plugin-vue-jsx -D\n```\nvite.mts\n```ts\nimport { defineConfig } from 'vite'\nimport vueJsx from '@mvcmlr/plugin-vue-jsx'\n\nexport default defineConfig({\n  plugins: [vueJsx()],\n})\n```\ntsconfig.json\n```json\n{\n  \"compilerOptions\": {\n    // ...\n    \"jsx\": \"preserve\",\n    \"jsxImportSource\": \"vue\",\n  },\n}\n```\n\n**由于处于初期阶段，现只支持Typescript**",
+    "created_at": "2025-12-09T01:55:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8399"
+  },
+  {
     "id": 8398,
     "title": "【软件自荐】『京墨文库』鸿蒙版，开源古诗词文（名句）、成语、句子阅读 APP",
     "content": "使用官方提供的 ArkTS、ArkUI、ArkData、ArkWeb、NetworkKit 等技术栈开发的 HarmonyOS  NEXT 原生 APP，已上架华为应用市场。\n\nGitHub 仓库：\n\nhttps://github.com/hefengbao/jingmo-for-HarmonyOS\n\n功能：\n\n1. 功能模块：经典诗文、诗文名句、汉字、词语、成语、对联、句子、知识卡片、节日、节气、传统色、世界遗产名录。\n2.  数据离线\n\n另附 Android 版仓库：\n\nhttps://github.com/hefengbao/jingmo\n\n截图：\n\n<img width=\"1080\" height=\"1920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4bbf139c-2fd8-4418-87fe-0171fab7e954\" />\n\n<img width=\"720\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b191c97-90d3-49d5-b4a1-12d084212d4e\" />\n\n<img width=\"720\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/633a8781-51b0-4e1f-b2b6-fddcfd968ffa\" />\n\n<img width=\"720\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2c9b4a25-8f2c-495b-a0f6-3af3b8ed244c\" />\n\n<img width=\"720\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3df3da68-8661-4456-b039-7250297d7605\" />\n\n<img width=\"720\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6c658b51-ca9c-4209-a648-42c3dc53da32\" />\n\n<img width=\"720\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f418314b-b700-4051-94c0-a2c5f08710e1\" />\n",
@@ -814,31 +838,5 @@
     "created_at": "2025-11-27T02:02:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8296"
-  },
-  {
-    "id": 8295,
-    "title": "【网站自荐】404: 不一样的404页面",
-    "content": "[https://xujingyichang.top/404](https://xujingyichang.top/404)\n\n<img width=\"1483\" height=\"806\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/03b6283f-ef96-44ef-a3dc-1df148254414\" />",
-    "created_at": "2025-11-26T23:43:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8295"
-  },
-  {
-    "id": 8294,
-    "title": "【开源自荐】NodeBBS：一个现代论坛系统，完整的 AI 全栈项目",
-    "content": "在 AI 时代，除了使用 AI，我更希望能一起构建一些 **真正有意思的产品**。\n于是我做了这个开源论坛系统 —— 初衷是 **学习 + 技术交流**。\n\n欢迎对全栈、AI 应用、社区系统、现代架构感兴趣的朋友一起参与。\n\n---\n\n### 📍 项目地址\n\n👉 [https://github.com/aiprojecthub/nodebbs](https://github.com/aiprojecthub/nodebbs)\n\n---\n\n### 🌟 特性一览\n\n* ⚡ **现代全栈架构**（前后端均采用 AI 友好的 JS 技术栈）\n* 🚀 **支持一键部署**：不论你是技术小白还是资深开发者，都可以轻松跑起来\n* 📚 **适合作为全栈 / AI 项目学习案例**\n* 🔧 **有趣功能**：目前已完成很多有意思的功能，开箱即用。\n\n\n### 🤝 欢迎一起参与\n\n这个项目是 **非盈利、开放、友好、欢迎贡献** 的社区项目。\n\n你可以：\n\n* ⭐ star 支持一下\n* 🐛 提 issue\n* 🔧 提 PR\n* 🧠 一起讨论架构、设计、AI 功能\n* 🎯 共同打磨一个现代社区系统",
-    "created_at": "2025-11-26T14:08:28Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8294"
-  },
-  {
-    "id": 8293,
-    "title": "【开源自荐】CodeKanban - 在一张页面，管理你所有的AI Coding工具和项目",
-    "content": "\n### 应用场景\n\n最近开始尝试各种 AI Coding Agent，比如 OpenAI Codex、Claude Code、Gemini 等。不得不说，相比去年的这个时候可以说是天翻地覆的进步，感觉离失业又近了一点。\n\n不过，这些工具（尤其是 Codex）普遍存在一个痛点：**速度太慢**。布置一个任务往往要等很久。为了不浪费时间，我通常会同时开多个终端，进而扩展到多个项目每个开几个终端并行处理。\n\n但终端一多就乱了：**哪个终端在干什么？哪个任务已经完成？** 完全记不住，也管不过来。\n\n为了解决这些痛点，我开发了 **CodeKanban**。\n\n\n---\n\n### 主要特性\n\n- **🚀 开箱即用**  \n  单文件部署，本地数据库，双击即可运行。\n\n- **📊 多项目多终端管理**  \n  一个页面统一管理所有项目和终端（快捷键 `` ` ``）。\n\n- **🤖 AI 编程工具状态检测**  \n  自动识别 Claude Code / Codex 等工具的运行状态（空闲/工作中/需审批），任务完成时自动提醒。\n\n- **📋 任务看板**  \n  可视化方式管理开发任务，清晰直观。\n\n- **🌿 Worktree 管理**  \n  简单支持创建 worktree 分支，以及进行 rebase 和 merge 回主分支的功能。\n\n- **📝 笔记功能**  \n  支持多标签页笔记，随手记录灵感与问题（快捷键 `1`）。\n\n---\n\n### 项目地址\nhttps://github.com/fy0/CodeKanban\n\n### 快速开始\n\n```bash\nnpx codekanban\n# or\nnpm install -g codekanban\n```\n\n\n### 界面展示\n\n| 主界面 |\n|:---:|\n| ![主界面](https://github.com/user-attachments/assets/3578f156-379d-4359-9a8b-ba95df829d21) |\n",
-    "created_at": "2025-11-26T08:19:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8293"
   }
 ]
