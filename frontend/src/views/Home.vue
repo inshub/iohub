@@ -123,8 +123,9 @@
                 <div class="flex items-center justify-between text-xs text-muted-foreground mb-4">
                     <span class="font-medium">{{ formatDate(article.created_at) }}</span>
                     <div class="flex gap-2">
-                        <span v-for="label in article.labels.slice(0, 2)" :key="label" class="px-2 py-1 bg-secondary/10 text-secondary rounded-md text-xs font-semibold">
-                        {{ label }}
+                        <span v-for="label in article.labels.slice(0, 2)" :key="label" class="inline-flex items-center gap-1 px-2 py-1 bg-secondary/10 text-secondary rounded-md text-xs font-semibold">
+                            <Calendar v-if="label === 'weekly'" class="w-3 h-3" />
+                            {{ label }}
                         </span>
                     </div>
                 </div>
@@ -154,28 +155,32 @@
         </div>
 
         <!-- 分页控制 -->
-        <div class="py-12 flex justify-center mt-16" v-if="totalPages > 1 && !fullShow && !isInitialLoading">
-          <nav class="flex justify-center items-center gap-4 px-8 py-4 bg-card/70 backdrop-blur-xl border border-border/20 rounded-[var(--radius-2xl)] shadow-lg md:gap-2 md:flex-wrap md:justify-center dark:bg-card/70 dark:border-border/10 dark:shadow-xl">
-            <button 
-              class="inline-flex items-center gap-2 px-6 py-3 border rounded-xl bg-card text-foreground no-underline font-semibold text-sm transition-all duration-300 cursor-pointer shadow-xs disabled:opacity-40 disabled:cursor-not-allowed disabled:text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/10 hover:-translate-y-px hover:shadow-sm md:px-3 md:py-2 md:min-w-[44px] md:min-h-[40px]"
+        <div class="py-6 flex justify-center" v-if="totalPages > 1 && !fullShow && !isInitialLoading">
+          <nav class="flex justify-center items-center gap-3 px-6 py-3 bg-card/80 backdrop-blur-xl border border-border/30 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:bg-card/90">
+            <button
+              class="inline-flex items-center gap-2 px-5 py-2.5 border border-border/50 rounded-lg bg-card text-foreground no-underline font-medium text-sm transition-all duration-200 cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/5 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
               :disabled="currentPage === 1"
               @click="currentPage--"
             >
-              <i data-lucide="arrow-left" class="w-4 h-4 mr-1"></i>
+              <i data-lucide="chevron-left" class="w-4 h-4"></i>
               上一页
             </button>
             
-            <div class="flex items-center gap-2 font-bold px-3 py-2 bg-primary/10 rounded-lg md:order-[-1] md:w-full md:text-center md:mb-2">
-              第 <span class="text-primary text-lg font-extrabold">{{ currentPage }}</span> <span class="text-muted-foreground font-normal">/</span> <span class="text-muted-foreground font-semibold">{{ totalPages }}</span> 页
+            <div class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border border-primary/20">
+              <span class="text-sm text-muted-foreground">第</span>
+              <span class="text-primary font-bold text-lg">{{ currentPage }}</span>
+              <span class="text-sm text-muted-foreground">/</span>
+              <span class="text-muted-foreground font-semibold">{{ totalPages }}</span>
+              <span class="text-sm text-muted-foreground">页</span>
             </div>
             
-            <button 
-              class="inline-flex items-center gap-2 px-6 py-3 border rounded-xl bg-card text-foreground no-underline font-semibold text-sm transition-all duration-300 cursor-pointer shadow-xs disabled:opacity-40 disabled:cursor-not-allowed disabled:text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/10 hover:-translate-y-px hover:shadow-sm md:px-3 md:py-2 md:min-w-[44px] md:min-h-[40px]"
+            <button
+              class="inline-flex items-center gap-2 px-5 py-2.5 border border-border/50 rounded-lg bg-card text-foreground no-underline font-medium text-sm transition-all duration-200 cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/5 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
               :disabled="currentPage === totalPages"
               @click="currentPage++"
             >
               下一页
-              <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
             </button>
           </nav>
         </div>
@@ -204,6 +209,7 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
+import { Calendar } from 'lucide-vue-next'
 import articles from '../data/articles.json'
 
 const props = defineProps<{

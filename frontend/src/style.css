@@ -831,21 +831,45 @@ a:hover {
   box-shadow: 0 0 0 4px hsl(var(--primary) / 0.1);
 }
 
-/* 按钮焦点样式 */
-button:focus,
-.btn-secondary:focus,
-.btn-minimal:focus {
-  outline: 2px solid hsl(var(--primary));
-  outline-offset: 2px;
-  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.1);
+/* 按钮焦点样式 - 移除黑色轮廓 */
+button {
+  outline: none !important;
 }
 
-/* 链接焦点样式 */
-a:focus {
-  outline: 2px solid hsl(var(--primary));
-  outline-offset: 2px;
-  border-radius: var(--radius-sm);
+button:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2) !important;
 }
+
+.btn-secondary:focus,
+.btn-minimal:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2) !important;
+}
+
+/* 保留可访问性，只在键盘导航时显示焦点 */
+button:focus-visible {
+  outline: 2px solid hsl(var(--primary)) !important;
+  outline-offset: 2px !important;
+}
+
+/* Logo 和链接焦点样式 - 移除黑边框 */
+a, router-link {
+  outline: none !important;
+}
+
+a:focus, router-link:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* 保留键盘导航的可访问性 */
+a:focus-visible, router-link:focus-visible {
+  outline: 2px solid hsl(var(--primary)) !important;
+  outline-offset: 2px !important;
+}
+
+/* 链接焦点样式已在上面统一定义 */
 
 /* 建议项焦点样式 */
 .suggestion-item:focus,

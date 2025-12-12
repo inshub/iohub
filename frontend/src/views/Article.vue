@@ -14,7 +14,8 @@
         <div class="flex items-center text-sm text-muted-foreground">
           <span>{{ formatDate(article.created_at) }}</span>
           <div v-if="article.labels.length" class="ml-4 flex gap-2">
-            <span v-for="label in article.labels" :key="label" class="px-2 py-1 bg-secondary/10 text-secondary rounded-md text-xs font-semibold">
+            <span v-for="label in article.labels" :key="label" class="inline-flex items-center gap-1 px-2 py-1 bg-secondary/10 text-secondary rounded-md text-xs font-semibold">
+              <Calendar v-if="label === 'weekly'" class="w-3 h-3" />
               {{ label }}
             </span>
           </div>
@@ -51,6 +52,7 @@
 import { ref, computed } from 'vue'
 import { marked } from 'marked'
 import { useRouter } from 'vue-router'
+import { Calendar } from 'lucide-vue-next'
 import articles from '../data/articles.json'
 
 const props = defineProps<{
