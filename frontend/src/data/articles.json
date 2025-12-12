@@ -1,5 +1,21 @@
 [
   {
+    "id": 8433,
+    "title": "【开源自荐】Aegis：企业级 RBAC 权限管理框架（JDK 8/21，Spring Boot 2/3，Spring Security 5/6）",
+    "content": "  - 项目概述                                                                                                                                                                                                \n    前后端分离的后台管理系统，基于 RBAC，覆盖用户、角色、菜单、部门、字典、日志、通知、文件、IP 白名单等完整中后台能力。多种登录方式、动态路由菜单、URL/按钮/数据三级细粒度权限；内置操作审计、限流、防重复提交、数据脱敏、文件多平台上传。                                                                                                                                                                    \n  - 分支与技术栈                                                                                                                                                                                            \n      - master：JDK 1.8 + Spring Boot 2.7.18 + Spring Security 5.x                                                                                                                                          \n      - jdk21：JDK 21 + Spring Boot 3.5.6 + Spring Security 6.x\n - 核心特性\n     - 多样化认证: 支持密码、邮箱、短信多种登录方式\n     - JWT无状态认证: 基于JWT的Token认证机制，支持Token刷新\n     - 细粒度权限控制: URL级、按钮级、数据级多层权限控制\n     - 数据权限: 支持按用户、部门、自定义等多种数据权限范围\n     - 多存储支持: 支持本地、MinIO、阿里云OSS、腾讯云COS多种文件存储\n     - 操作审计: 完整的操作日志记录和审计功能\n     - 防重复提交: 内置防重复提交机制\n     - IP地理位置: 基于ip2region的IP地理位置识别\n     - Excel导入导出: 支持Excel文件的导入导出功能\n     - 邮件服务: 内置邮件发送功能\n     - 接口限流: 基于Redis的分布式限流控制\n     - 数据脱敏: 支持多种脱敏类型的数据保护\n     - 定时任务: 支持系统通知自动发布等定时任务功能\n     - 接口文档: 集成Knife4j提供完整的API文档                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \n- 适用场景\n    - 快速搭建/改造企业级中后台；需要 URL/按钮/数据多层授权、审计、限流、防重复、脱敏、定时任务、可插拔文件存储的 Spring Boot 项目；希望在 JDK 8 ↔ 21、Spring Boot 2 ↔ 3 间平滑选择/迁移的团队。\n\n",
+    "created_at": "2025-12-12T02:41:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8433"
+  },
+  {
+    "id": 8432,
+    "title": "【工具自荐】WeMD - 一款纯本地的微信 Markdown 编辑器",
+    "content": "![](https://github.com/tenngoxars/WeMD/raw/main/.github/assets/screenshot.png)\n\nWeMD 的诞生源于对现有微信编辑器的三个不满：\n1. **数据绑架**：大多数微信编辑器强制云同步，你的数据变成了它们的资产。\n2. **排版割裂**：写作在 A 处，复制到公众号 B 处后样式全乱，需要二次调整。\n3. **样式太丑**：有些在线微信编辑器的样式及其丑陋，让人不忍直视。\n\n因此，WeMD 确立了 Local First 的核心原则。Local First 不仅仅是「离线可用」。它意味着：\n\n- **数据所有权**：数据的主副本永远在你的本地硬盘上。\n- **软件长存性**：假设 WeMD 的服务器关停了，只要你的电脑里有这个软件，你就可以永远使用它，且功能不受任何影响。\n- **隐私**：你的文章草稿不需要经过任何人的服务器。\n\nWeMD 在技术上通过 [File System Access API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API) 实现了这一点。浏览器直接读写你的硬盘，中间没有云端服务器参与。\n\n官网：[https://wemd.app](https://wemd.app)\n\n在线编辑：[https://edit.wemd.app](https://edit.wemd.app/)\n\nGitHub：[https://github.com/tenngoxars/WeMD](https://github.com/tenngoxars/WeMD)\n",
+    "created_at": "2025-12-12T01:55:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8432"
+  },
+  {
     "id": 8431,
     "title": "【工具自荐】Bookmark Checker 用于检查和提取书签链接的工具",
     "content": "浏览器导出的书签文件是 HTML 格式，手动提取链接麻烦且容易出错。有时候仅仅想获得一份纯净的链接列表，或导出更适合整理的数据格式，却常因浏览器缺乏相关功能而受限。\n\n为了解决这个问题，Bookmark Checker 专注于解决“书签提取”与“链接检测”两个问题，并提供灵活的导出能力，帮助使用者更好的整理书签。\n\n![Image](https://github.com/user-attachments/assets/11afc492-a754-4a35-a5f4-4be106990fea)\n\n## 功能介绍\n\nBookmark Checker 是一个开源的书签处理工具，可从浏览器导出的 HTML 书签文件中：\n\n- 快速提取所有书签链接，精准提取 URL 与标题\n- 检查链接可用性，识别正常、失效或异常状态。\n- 灵活导出格式，将处理后的结果导出为：XLSX、CSV、JSON、HTML、TXT（纯链接列表）\n\n## 快速使用\n\n网站：https://bookmark-checker.itea.dev/\nGithub：https://github.com/isixe/BookmarkChecker\n\n## 适用场景\n\n- 从书签中快速批量提取 URL\n- 批量检测书签中是否存在失效或过期链接\n- 将浏览器书签转换为更通用的数据格式",
@@ -820,21 +836,5 @@
     "created_at": "2025-11-30T03:33:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8325"
-  },
-  {
-    "id": 8324,
-    "title": "【工具自荐】梦呓像素，免费的壁纸软件，内置50+炫酷动态壁纸，还可以使用AI开发自己的壁纸",
-    "content": "https://dream-pixel.kingfisher.live/\n\nhttps://store.steampowered.com/app/4132360/_/ \n\n# 让算法艺术点亮你的桌面\n\n  *Illuminate Your Desktop with Algorithmic Art*\n\n  梦呓像素是一款开放的动态壁纸引擎，将数字艺术创意编程的无限可能带到你的桌面。从粒子星空到液态梦境，从音频可视化到 3D\n\n  生成艺术——每一帧都是代码与美学的对话。\n\n  ✨ **核心特性**\n\n  • 30+ 内置艺术壁纸，涵盖6大创作类型\n\n  • 实时音频响应，壁纸随系统音频律动\n\n  • 内置创意实验室，所见即所得的创作体验\n\n  • Steam Workshop 支持，一键订阅社区创作\n\n  🎨 **壁纸类型**\n\n  粒子效果 · 音频可视化 · 3D渲染 · 生成艺术 · 视频特效 · 交互游戏\n\n  🛠️ **为创作者设计**\n\n  • 基于 Web 技术栈 (数字艺术 + WebGL)\n\n  • JSON 化的设置系统，实时热重载\n\n  • 完整的音频数据 API (FFT + 波形)\n\n  • Workshop 一键发布，全球触达\n\n  用代码书写诗歌，用像素描绘梦境。\n\n  现在就加入创作者社区，让算法成为你的画笔。",
-    "created_at": "2025-11-29T11:37:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8324"
-  },
-  {
-    "id": 8323,
-    "title": "【安卓APP自荐】免费的时间轴记录APP TraceTime笔记，简洁，简洁还是简洁",
-    "content": "# 地址 \nhttps://tracetime.xyz/\n\n# 介绍\nTraceTime是一款面向个人用户的智能时间管理与日常记录应用，旨在帮助用户科学规划时间、记录生活点滴，提升时间利用效率，为用户提供个性化的时间管理解决方案，实现高效的时间分配与追踪。\n\n# 当前功能\n- 时间轴记录显示文字图片\n- 支持设置图片背景作为日历背景\n- 标签、搜索、图片分享等基础功能\n- 简单的富文本编辑功能，加粗、背景颜色、下划线等\n-  AI助手即将推出",
-    "created_at": "2025-11-29T07:28:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8323"
   }
 ]
