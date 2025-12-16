@@ -1,5 +1,37 @@
 [
   {
+    "id": 8469,
+    "title": "【开源自荐】hyperlane-macros 零成本抽象，让 Rust Web 开发效率起飞",
+    "content": "# 【开源自荐】hyperlane-macros —— 零成本抽象，让 Rust Web 开发效率起飞\n\n## 项目简介\n\n**hyperlane-macros** 是 Hyperlane 框架官方提供的 **过程宏集合库**，用于在**编译期生成高性能 Web 服务代码**，在 **不引入任何运行时开销的前提下**，大幅提升开发效率与工程可维护性。\n\n项目核心目标只有一个：\n\n> **用零成本抽象，把 Rust Web 开发的效率推到极限。**\n\n* 📘 官方文档：[https://docs.ltpp.vip/hyperlane-macros/](https://docs.ltpp.vip/hyperlane-macros/)\n* 🧩 开源仓库：[https://github.com/hyperlane-dev/hyperlane-macros](https://github.com/hyperlane-dev/hyperlane-macros)\n\n## 核心定位\n\n* **零成本抽象**：所有能力在编译期展开，运行期零额外开销\n* **效率优先**：显著减少样板代码，专注业务逻辑本身\n* **高性能保证**：展开后代码等价于手写最优 Rust 实现\n* **生态一体化**：与 Hyperlane 框架深度集成，非通用拼装方案\n\n## 能力覆盖范围\n\nhyperlane-macros 通过属性宏形式，完整覆盖 Web 服务生命周期：\n\n* HTTP 方法与路由声明\n* 协议与版本校验（HTTP / WS / TLS / HTTP2 / HTTP3 等）\n* 请求数据提取（Body / Query / Header / Cookie / Path）\n* 响应构建（状态码 / Header / Body / Version）\n* 中间件、Hook、Panic 处理\n* WebSocket / SSE / Stream 编译期封装\n\n所有能力均以 **声明式方式使用**，并在编译期生成最优执行路径。\n\n## 核心价值\n\n* 🚀 **开发速度大幅提升**\n* ⚡ **性能保持 Tokio 原生级别**\n* 🧩 **代码结构更清晰、可维护**\n* 🔒 **完全遵循 Rust 类型与安全模型**\n\n## 适用场景\n\n* 高并发 Web / API 服务\n* 实时通信（WebSocket / SSE）\n* 微服务与网关系统\n* 对性能与开发效率同时敏感的 Rust 项目\n\n如果你正在使用 Hyperlane，\n或者你希望在 Rust 中获得 **接近脚本语言的开发效率 + 原生级别的性能表现**，\n那么 **hyperlane-macros 是不可或缺的一部分。**\n",
+    "created_at": "2025-12-16T14:03:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8469"
+  },
+  {
+    "id": 8468,
+    "title": "【开源自荐】一款 Rust 版 Lombok 风格的轻量级开源过程宏 —— lombok-macros",
+    "content": "# 【开源自荐】一款 Rust 版 Lombok 风格的轻量级开源过程宏 —— lombok-macros\n\n## 项目概述\n\n**lombok-macros** 是一个基于 Rust 过程宏（`proc_macro`）实现的实用型宏集合，旨在为 Rust 结构体和枚举提供 **类似 Java Lombok 的自动代码生成能力**。截至2025.12.16，改项目的 **下载量破5w** ，项目专注于减少样板代码（boilerplate），在不牺牲类型安全与可读性的前提下，大幅提升 Rust 项目的开发效率。\n\n通过一组语义清晰、粒度可控的派生宏，`lombok-macros` 可以自动生成 **getter / setter、自定义 Debug、Display 实现**，并支持 **字段级别可见性控制、字段跳过、元组结构体、枚举、泛型与生命周期** 等复杂场景。\n\n项目已发布至 crates.io，并提供完整文档与 API 说明。\n\n* **开源仓库**：[https://github.com/crates-dev/lombok-macros](https://github.com/crates-dev/lombok-macros)\n* **官方文档**：[https://docs.ltpp.vip/lombok-macros](https://docs.ltpp.vip/lombok-macros)\n\n---\n\n## 核心特性\n\n### 1. Lombok 风格的自动代码生成\n\n* 自动生成 **getter / setter / mutable getter**\n* Setter 支持链式调用（返回 `&mut Self`）\n* 命名规则稳定、可预测，符合 Rust 生态习惯\n\n### 2. 字段级别可见性精细控制\n\n* 可为每个字段单独指定：\n\n  * getter 可见性\n  * setter 可见性\n  * 是否生成可变访问器\n* 支持 `pub`、`pub(crate)`、私有等多种可见性组合\n\n### 3. 安全且可控的 Debug 派生\n\n* 提供 `CustomDebug` 派生宏\n* 支持字段级 `#[debug(skip)]`\n* 避免敏感信息意外打印到日志\n\n### 4. Display 自动实现\n\n* 一键生成 `Display` 实现\n* 基于 Debug 输出格式\n* 适用于日志、调试输出与快速展示\n\n### 5. 全结构支持\n\n* 普通结构体（struct）\n* 元组结构体（tuple struct）\n* 枚举（enum）\n* 同时支持：\n\n  * 泛型参数\n  * trait bound\n  * 生命周期参数\n\n---\n\n## 设计优势\n\n### 1. 零运行时开销\n\n* 所有逻辑在 **编译期展开**\n* 生成的代码与手写实现等价\n* 不引入任何运行时依赖或性能损耗\n\n### 2. 完全 Rust 原生体验\n\n* 不改变 Rust 的所有权与借用语义\n* 不引入 DSL 或魔法行为\n* 展开结果清晰、可预测、易调试\n\n### 3. 高可读的宏展开结果\n\n* 生成的方法命名清晰\n* Debug / Clone / Display 实现符合标准库风格\n* 便于阅读、审计与二次维护\n",
+    "created_at": "2025-12-16T13:52:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8468"
+  },
+  {
+    "id": 8467,
+    "title": "【开源自荐】AI自动答题插件——一个智能的浏览器答题插件，能够自动识别网页中的题目，通过AI大模型获取答案并自动填写。",
+    "content": "# AI自动答题助手\n<picture>\n    <img alt=\"\" src=\"https://github.com/rehuan/AI-ANSWER-ASSISTANT/blob/master/icons/hero-image.jpg?raw=true\">\n</picture>\n\n\n## 一句话介绍\n一个智能的浏览器答题插件，能够自动识别网页中的题目（单选、多选、填空题），通过AI大模型获取答案并自动填写。\n\n\n## 解决问题\n如果你经常需要处理各类在线题库、培训系统或表单填写，这个工具或许能为你节省大量重复劳动时间。\n\n## 功能特点\n- **🔍 智能题目识别**: 自动识别网页中的单选题、多选题和填空题\n- **🤖 AI自动答题**: 使用AI大模型获取问题答案，并自动勾选/填写正确答案\n- **⚙️ 模型灵活配置**: 支持自定义AI模型，使用第三方模型来分析回答题目\n- **⚡ 题型模板系统**: 预设常见站点DOM结构，秒级完成题目识别，无需每次AI分析\n\n## 功能视频演示\nhttps://github.com/user-attachments/assets/9431dbe5-1127-41a0-bede-b15d8898fdcb\n\n## 功能动图演示\n<img width=\"1141\" height=\"720\" alt=\"intro\" src=\"https://github.com/user-attachments/assets/204f2626-8fd8-4441-8e82-3ca64689c32f\" />\n\n## 工具截图\n<img width=\"360\" height=\"795\" alt=\"intro\" src=\"https://github.com/user-attachments/assets/67b42924-895e-47ab-9e1e-2ddf1b7e3575\" />\n\n\n####  欢迎使用和反馈：）\n",
+    "created_at": "2025-12-16T13:41:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8467"
+  },
+  {
+    "id": 8466,
+    "title": "【开源自荐】一个开箱即用的 Next.js + Cloudflare 全栈项目模板。适合个人开发者/初创企业快速免费出海",
+    "content": "项目地址：https://github.com/TangSY/edge-next-starter\n\n项目介绍：https://juejin.cn/post/7564921269491580943\n\n一个开箱即用的 Next.js + Cloudflare 全栈项目模板，集成 Edge Runtime、D1 数据库、R2 存储和完整的 CI/CD 流程。\n\n不用再从零开始搭架子。这个模板把一个全栈应用需要的东西都分好类，并提供了最佳实践：\n\n最近正在加入海外支付相关的逻辑",
+    "created_at": "2025-12-16T13:26:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8466"
+  },
+  {
     "id": 8465,
     "title": "由人工智能生成的睡前故事与音乐，助您拥有宁静的夜晚",
     "content": "SleepGen是一个由人工智能驱动的平台，它能够生成个性化的睡前故事及背景音乐，帮助您放松身心、更快入睡。其主要功能包括：  \n• 为儿童和成人定制由人工智能生成的睡前故事；  \n• 由人工智能创作、融入自然音效的助眠音乐；  \n• 带有同步旁白的动态视频故事；  \n• 根据您的喜好提供个性化内容；  \n• 基于信用机制的服务模式——只需支付一次费用，即可随时使用；  \n• 完全不需要订阅服务。  \n\n官方网站：: https://www.sleepgen.net",
@@ -812,39 +844,5 @@
     "created_at": "2025-12-03T10:54:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8362"
-  },
-  {
-    "id": 8361,
-    "title": "【开源自荐】code996 2.0，统计 Git 项目的 commit 时间分布，进而推导出项目的编码工作强度",
-    "content": "链接： https://github.com/hellodigua/code996\n\n之前的旧版是基于shell命令运行的，该版本已经彻底重写为 Node.js 新版本，功能更强大\n\n## 介绍\n\n面试时我们会询问面试官加班情况，但得到的答案有时不那么真实。但是代码的提交时间不会骗人，因此就有了这个工具。\n\n当你入职新公司，跑一下 npx code996，就可以看到数据背后的真相，从而判断这家公司的真实加班文化。\n\n## 使用方式\n\n无需安装，快速使用：\n\n```\n# 在当前仓库或仓库上级目录运行\nnpx code996\n```\n\n## 功能特性\n\n- **📊 996 指数**：将复杂的加班情况转化为直观数值，一眼看穿项目卷度\n- **🕰️ 智能工时推演**：采用分位数与拐点检测算法，精准还原团队真实的上下班时间窗口\n- **📈 月度趋势追踪**：通过趋势识别项目是“越来越卷”还是“趋于平稳”\n- **📅 多维度加班画像**：全方位分析，不仅识别工作日/周末加班高峰，还能识别团队成员的加班比例\n- **📦 多仓库横向对比**：支持一键扫描并分析文件夹下的多个仓库，自动生成对比\n- **🌍 跨时区检测能力**：自动识别时区分布，支持指定时区精准分析\n- **🇨🇳 节假日调休支持**：内置国内节假日调休逻辑，精准剔除调休干扰\n- **🔒 隐私安全**：纯本地运行，基于 git log 进行离线分析\n\n## 预览\n\n#### 查看核心结果\n\n<img src=\"https://raw.githubusercontent.com/hellodigua/code996/main/public/images/demo1.png\" alt=\"核心结果预览\" style=\"width:600px; max-width:100%; height:auto;\"/>\n\n#### 加班情况分析\n\n<img src=\"https://raw.githubusercontent.com/hellodigua/code996/main/public/images/demo3.png\" alt=\"加班情况分析图\" style=\"width:600px; max-width:100%; height:auto;\"/>\n\n#### 月度趋势分析\n\n<img src=\"https://raw.githubusercontent.com/hellodigua/code996/main/public/images/demo4.png\" alt=\"月度趋势分析图\" style=\"width:600px; max-width:100%; height:auto;\"/>\n\n#### 团队工作模式分析\n\n<img src=\"https://raw.githubusercontent.com/hellodigua/code996/main/public/images/demo5.png\" alt=\"团队工作模式分析图\" style=\"width:600px; max-width:100%; height:auto;\"/>\n\n",
-    "created_at": "2025-12-03T09:21:09Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8361"
-  },
-  {
-    "id": 8360,
-    "title": "【资源整合】C++自动驾驶资源库",
-    "content": "聚焦 C++ 的自动驾驶资源库，含感知、规划等核心技术讲解，覆盖多岗位面试题，从技术学习到求职全支持。\n\n这个仓库的目标是收集全球最优秀的 C++ 自动驾驶相关资源，成为 C++ 开发者进入自动驾驶领域的第一站。\n\n仓库地址：https://github.com/0voice/Awesome-CPP-Autonomous-Driving\n",
-    "created_at": "2025-12-03T08:33:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8360"
-  },
-  {
-    "id": 8359,
-    "title": "【工具自荐】一款免费AI照片编辑器和图像生成器 | 一键增强转换创建精美图像无需登录立即使用免费",
-    "content": "[Image FX ](https://image-fx.app)是一款免费的AI驱动照片编辑器和图像生成器。一键即可增强、转换和创建令人惊艳的视觉效果。支持多种AI模型，包括Nonbanana、Imagen 4、Qwen和Seedream。提供专业级图像处理功能，高质量输出，快速生成，适合个人和商业使用，完全免费，无需登录即可使用，立即开始创作精美图像。\n\n<img width=\"3840\" height=\"1822\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d43ede52-58b9-4ad8-a3f7-41859706b5f5\" />",
-    "created_at": "2025-12-03T08:23:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8359"
-  },
-  {
-    "id": 8358,
-    "title": "【产品自荐】VirWorld AI：不仅是动图，更是 Pinterest/TikTok 爆款视频生成器",
-    "content": "VirWorld AI 是专为 Etsy 卖家、独立站运营及社媒营销人员打造的 AI 视频生成工具。它可以将现有的静态产品图（Listing Photos）一键转化为符合平台算法偏好的短视频，无需额外拍摄成本，通过视频化内容显著提升店铺权重与转化。\n\n**适合人群：**\nEtsy/Amazon 卖家、Pinterest/TikTok 营销人员、POD（按需打印）从业者、独立站店主。\n\n**主要特点：**\n* **Listing 视频生成：** 完美适配 Etsy/Amazon 的视频位要求，解决“有图无视频”导致的产品权重低问题。\n* **社媒引流利器：** 生成的动态视频非常适合 Pinterest Idea Pins 和 TikTok，视频形式的贴文通常比静态图获得多 3-5 倍的自然曝光。\n* **视觉吸睛：** 通过 AI 赋予产品（如首饰、挂画、家居品）动态光影与运镜效果，在搜索结果页瞬间抓住买家眼球。\n* **极速产出：** 只要有产品图就能做视频，无需寄样拍摄，极大缩短上架测款周期。\n\n**解决的问题：**\n* **Etsy 排名优化：** 平台明确鼓励上传视频，带有视频的 Listing 在搜索排名中更具优势。\n* **拍摄成本高昂：** 解决了小卖家没预算请模特、没时间搭棚拍视频的痛点。\n* **Pinterest 引流难：** 静态 Pin 图流量下滑，通过工具批量生成 Video Pin，低成本撬动社媒免费流量。\n* **页面转化率低：** 动态展示能更直观体现产品细节（如光泽、材质），减少买家犹豫，提高下单率。\n\n**网站链接：**\n[https://image-to-video.app/](https://image-to-video.app/)\n\n---\n\n<img width=\"1908\" height=\"1758\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8a6ecb5a-5da2-482a-8fa4-932fad2fd1ed\" />\n\n<img width=\"1806\" height=\"1491\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/74ef528c-c428-4aab-8133-bbf04e38868a\" />",
-    "created_at": "2025-12-03T08:21:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8358"
   }
 ]
