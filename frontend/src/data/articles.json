@@ -1,5 +1,13 @@
 [
   {
+    "id": 8473,
+    "title": "【开源自荐】Ones wiki mcp",
+    "content": "https://github.com/yunlongwen/ones-mcp\n\n\n📖 项目背景\nONES 官方提供了 [ONES Copilot](https://docs.ones.cn/wiki/#/team/6mRWUuNv/space/JwHAUL1L/page/UEQ6z54V) 产品，包含了 MCP 服务器功能。但 ONES Copilot 需要额外付费授权，对于未购买该服务的团队来说无法使用。\n\n本项目通过调用 ONES 现有的开放 API（Wiki API），为未购买 ONES Copilot 的团队提供了一个开源、免费的 MCP 服务器实现方案，让 AI 助手（如 Cursor、Claude Desktop）能够访问和查询公司内网的 ONES Wiki 知识库。\n\n🎯 核心价值\n💰 零成本：无需购买 ONES Copilot 授权，利用现有 ONES API\n🔓 开源免费：代码完全开源，可自由部署和定制\n🏢 企业友好：支持内网部署，数据不出公司网络\n👥 多用户支持：支持团队多人同时使用，每人使用自己的账号\n🔐 权限隔离：基于 ONES 原有权限体系，确保数据安全\n📝 项目简介\n这是一个用于连接 ONES Wiki 知识库的 MCP（Model Context Protocol）服务器，允许 AI 助手通过 MCP 协议访问和查询公司内网的 ONES Wiki 知识库。\n\n✨ 主要特性\n🔐 多用户认证模式 - 每个用户使用自己的 ONES 账号，权限隔离\n📚 获取知识库空间列表\n🌲 查看知识库页面树结构\n📄 读取页面完整内容，包括：\n📝 标题、段落、列表等富文本内容\n💻 代码块（支持各种编程语言语法高亮）\n📊 表格数据\n🖼️ 图片引用\n📈 图表内容（Mermaid 时序图/流程图、PlantUML 类图/时序图等）\n🔍 搜索知识库页面\n📜 查看页面历史版本\n🌐 HTTP/SSE 服务端部署，支持多人同时使用\n\n🎯 最新更新（v2.0）\n完整的内容解析支持：\n✅ 代码块：PlantUML、Mermaid、Python、Java 等所有语言\n✅ 表格：自动转换为 Markdown 格式\n✅ 图片/附件：提取图片 URL 和描述\n✅ 文档结构：完整保留标题、列表、段落层级\n现在 AI 可以直接分析 Wiki 中的 PlantUML 系统架构图、时序图等！",
+    "created_at": "2025-12-17T01:48:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8473"
+  },
+  {
     "id": 8472,
     "title": "【开源自荐】VideoDataset：基于 GPU 硬件解码的视频随机帧数据加载组件 from 智元机器人",
     "content": "随着 AI 技术的飞速发展，尤其是在大型语言模型（LLM）向视觉语言模型（VLM）及具身智能的跨越，训练数据的形式也正在经历从“静态图片”向“海量视频”的全面转变。视频数据凭借其蕴含的丰富时序信息，已成为 AI 理解物理世界动态规律的关键。\n\n然而，伴随而来的挑战也同样巨大，海量视频数据训练面临两大核心痛点：\n\n- 存储难：视频数据的存储容量庞大，若将其转为图片序列（如 PNG 格式），会占用大量空间；而若存储为视频文件（如 MP4），则会导致读取速度缓慢。\n- 计算瓶颈：传统数据加载方式多依赖 CPU 进行软件解码，导致 CPU 成瓶颈，昂贵的 GPU 资源闲置浪费\n\n可见，传统的数据加载方案（DataLoader）已无法满足高效视频数据训练的需求，成为制约模型训练速度的最大瓶颈。我们急需一个能配得上高性能 GPU 的数据加载器——这正是智元团队倾力打造 VideoDataset 的初心。\n\n目前已正式开源，欢迎体验：\n\nGitHub 地址：https://github.com/AgiBot-World/VideoDataset\n\n更多详情请关注：https://mp.weixin.qq.com/s/l1HTQnAKN2VFxS3J3st6Ww",
@@ -834,13 +842,5 @@
     "created_at": "2025-12-04T02:11:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8366"
-  },
-  {
-    "id": 8365,
-    "title": "【開源自薦】Universal Agents - 為 AGENTS.md 規範補上子目錄支援",
-    "content": "## 問題背景\n\n目前的 `AGENTS.md` 規範只支援單一檔案，無法組織多個規則與技能。如 https://github.com/openai/agents.md/issues/9 所提，需要支援 `.agents/` 子目錄結構以提升組織與模組化。\n\n許多 AI 編碼助手（如 Cursor、Codex、Gemini 等）已採用各自的目錄結構（如 .cursor/rules/、.codex/rules/），但 `AGENTS.md` 規範尚未支援。\n\n## 解決方案\n\n此專案透過在 `AGENTS.md` 中定義執行協議，讓 AI 代理能讀取與使用 `.agents/` 目錄中的規則與技能，即使運行時不自動載入這些檔案，代理也會模擬此支援。\n\n## 核心特性\n\n- 目錄結構支援：透過協議實現 `.agents/skills/` 和 `.agents/rules/` 目錄結構\n- 統一標準：提供跨 AI 編碼助手的統一配置格式\n- CLI 工具：快速初始化專案並建立新的規則與技能\n- 向後相容：基於現有 `AGENTS.md` 規範，透過協議擴展功能\n\n## 目錄結構\n\n```\n.agents/\n  skills/\n    code-review/\n      SKILL.md\n  rules/\n    api-guideline.md\n    react-components-guideline.md\nAGENTS.md\n```\n\n## Universal Agents\n\nGitHub: https://github.com/leochiu-a/universal-agents\n官網：https://leochiu-a.github.io/universal-agents/",
-    "created_at": "2025-12-03T15:45:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8365"
   }
 ]
