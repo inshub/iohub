@@ -1,5 +1,29 @@
 [
   {
+    "id": 8489,
+    "title": "【文章自荐】别再用 rsync 了！试试 GitHub 自托管 Runner 让云服务器自己干活",
+    "content": "新手程序员阿牛最近在负责公司一个静态网站开发和部署，一开始每次更新他都是手动通过 SSH、rsync 方式手动操作，有时候一天更新好几次，让他忙得不可开交。后来他了解到 GitHub Actions 有一个 self-hosted runner 功能，从此之后，他每天都能多睡2小时。本文详细介绍了 Self-hosted runner 的概念、原理，并结合案例进行实践。\n\nSelf-hosted runner 即“自托管运行器”，它是 GitHub Actions 的一种运行器类型，用于在你自己提供的服务器上执行 GitHub Actions 工作流。与 GitHub-hosted runners（GitHub 托管的运行器）相比，Self-hosted runners 运行在你自己的服务器上，而不是由 GitHub 提供和维护，因此可以访问你的私有网络、数据库、Docker 环境等，适合需要访问服务器资源的部署场景。同时，Self-hosted runners 不占用 GitHub 的免费额度。和传统 rsync 操作相比，Self-hosted runner 相当于一个会主动干活的机器人。\n\n文章链接：[https://getiot.tech/article/server-self-deploy-github/](https://getiot.tech/article/server-self-deploy-github/)\n微信公众号链接：[https://mp.weixin.qq.com/s/KVzlrUwFQiAW-VGrpTrNEw](https://mp.weixin.qq.com/s/KVzlrUwFQiAW-VGrpTrNEw)",
+    "created_at": "2025-12-19T09:48:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8489"
+  },
+  {
+    "id": 8488,
+    "title": "【开源自荐】 termdev : 对于前端开发人员和终端爱好者来说，这都是一款很cool的工具，可以用来直接在终端连接chrome devtool，不用离开终端就能调试和输出debug",
+    "content": "https://private-user-images.githubusercontent.com/24582204/528416827-6b8df7be-1860-438f-baff-72f5377ee7ba.mov?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjYxMzc0MjQsIm5iZiI6MTc2NjEzNzEyNCwicGF0aCI6Ii8yNDU4MjIwNC81Mjg0MTY4MjctNmI4ZGY3YmUtMTg2MC00MzhmLWJhZmYtNzJmNTM3N2VlN2JhLm1vdj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMTklMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjE5VDA5Mzg0NFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTliZjQ5ZTQzYWUyYWIyN2QyNTVjMjkzZTY3YTU4OWY0MTNlODBmYWUzZmUyODYwMzkyN2E2ZDY2NGQ2YjFjNDAmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.P_d_zPW8GpfhTVeYKuAZIx70fN7WY9jf6p5LONpHtsc\n\n项目地址:\nhttps://github.com/taotao7/termdev",
+    "created_at": "2025-12-19T09:40:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8488"
+  },
+  {
+    "id": 8487,
+    "title": "开源自荐  ImageFlow  和 CattoPic",
+    "content": "# CattoPic\n\nCattoPic 是一款**轻量级、自托管的图片托管服务**，专为那些希望运行自己的图片服务器、但又不想占用 VPS CPU 资源的用户而设计。\n\n* **后端**：完全运行在 Cloudflare 的边缘网络上\n* **前端**：部署在 Vercel 上\n* **无需任何传统服务器**\n\n---\n\n## 背景与动机\n\n我之前实现过一个 **基于 Go 的版本**，但很多用户反馈：\n\n* 小型 VPS 在进行 **AVIF / WebP 格式转换** 时 CPU 占用极高\n* 在高并发或批量处理场景下，性能瓶颈非常明显\n\n这是一个非常正常的问题，因为这些现代图片格式本身就**高度依赖 CPU 计算能力**。\n\n因此，在 CattoPic 的新版本中，我将**所有图片处理任务全部交给 Cloudflare 的边缘基础设施来完成**，彻底摆脱了 VPS 的性能负担。\n\n> Go 版本项目地址：\n> [https://github.com/Yuri-NagaSaki/ImageFlow](https://github.com/Yuri-NagaSaki/ImageFlow)\n\n> CloudFlare 版本项目地址：\n> [https://github.com/Yuri-NagaSaki/CattoPic](https://github.com/Yuri-NagaSaki/CattoPic)\n\n> 博客介绍地址：\n> [博客介绍1](https://catcat.blog/2025/12/cattopic-self-hosted-image-hosting)\n> [博客介绍2](https://catcat.blog/imageflow-install)\n\n\n---\n\n<img width=\"2816\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/895ef802-3977-43b0-854f-c01260079ee9\" />\n\n## CattoPic 的主要功能\n\n* **图片上传**\n  支持 JPEG、PNG、GIF、WebP、AVIF\n\n* **自动格式转换**\n  上传后自动生成 WebP 和 AVIF 版本\n\n* **标签系统**\n  便于组织和管理大型图片库\n\n* **临时图片支持**\n  可为图片设置可选的过期时间\n\n* **随机图片 API**\n  适用于博客封面、背景图、占位图等场景\n\n* **方向感知 API 过滤**\n  支持按纵向 / 横向图片进行筛选\n\n---\n\n## 架构设计：它是如何构建的\n\nCattoPic 是一个**完全无服务器（Serverless）并运行在边缘网络上的系统**。\n\n### 后端（Cloudflare 生态）/  GO (Go Version)\n\n* **Cloudflare Workers + Hono**\n  提供高性能的边缘 API\n\n* **Cloudflare D1**（边缘 SQLite）\n  用于存储图片元数据\n\n* **Cloudflare R2**\n  用于对象存储（图片文件）\n\n* **Cloudflare KV**\n  用于缓存热点数据\n\n* **Cloudflare 异步图片处理队列**\n  负责格式转换等高消耗任务\n\n* **定时任务触发器（Cron Triggers）**\n  自动清理过期图片文件\n\n### 前端\n\n* **Next.js 16**\n* **React 19**\n* **Tailwind CSS**\n\n---\n",
+    "created_at": "2025-12-19T08:31:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8487"
+  },
+  {
     "id": 8486,
     "title": "[开源自荐] miniCC : 一个用于学习agent系统的精简版本的claude code实现 with great llmdoc",
     "content": "https://github.com/TokenRollAI/miniCC\n\n# 已经具备的能力\n\n1. 对标claude code tools\n2. SubAgent\n3. MCP\n4. 基于Textual的TUI\n5. 自定义系统提示词\n6. Prompt Cache\n\n# 重点\n1. 极为详细的文档建设: https://llmdoc.tokenroll.ai/TokenRollAI/miniCC/llmdoc/index.md (powered by [cc-plugin](https://github.com/TokenRollAI/cc-plugin))\n2. AskUserQuestion支持\n3. 核心代码1000行.\n\n# 演示\n\n### 基本对话\n<img width=\"1035\" height=\"522\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bafb4ae1-8ad3-497d-9309-d07072aefc5f\" />\n\n### 工具调用\n<img width=\"1035\" height=\"505\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9f3f51a5-f524-49f8-8659-db89dd5d77fb\" />\n\n### AskUserQuestion\n<img width=\"1035\" height=\"552\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc1c76ba-7662-45c4-8171-275113a55b40\" />\n\n### subagent\n<img width=\"1035\" height=\"303\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ef9e2e64-a123-4540-a407-1c41eb485642\" />\n",
@@ -68,7 +92,9 @@
     "title": "【开源自荐】MADOLA：将数学、文档与可执行代码统一的新型数学领域编程语言",
     "content": "### 项目地址\n\nhttps://github.com/AI4Engr/MADOLA\n\n### 类别\n\n编程语言 / 数学计算 / 文档生成 / WASM\n\n### 项目简介\n\nMADOLA 是一个将数学表达、可执行代码与文档生成完整融合的新型数学领域语言（Math Domain Language）。它让用户像写数学一样编写代码，同时又能直接运行、生成优雅的 HTML 文档，并编译为高性能的 C++ 或 WebAssembly 模块，实现“一份源码 = 数学表达 + 文档 + 程序逻辑”的统一体验。\n\n相比 LaTeX、Python、Mathcad 等现有工具各自分离的生态，MADOLA 试图解决“数学公式、解释性文档与可执行代码割裂”的痛点：\n\n- 数学式语法：表达式即数学，无需在数学与代码间切换思维模式。\n\n- 自动文档生成：原生支持 LaTeX 风格排版、MathJax 渲染与可执行结果展示。\n \n- WASM / C++ 编译：可将数学逻辑直接部署到网页或本地高性能环境。\n \n- AI 友好：为未来的 AI 代码生成与解释提供一致且结构化的表达方式。\n\nMADOLA 非常适合研究人员、工程师和教育工作者，用于构建带有计算能力的数学文档、教学内容、可交互公式页面，以及需要数学逻辑的 Web 应用。\n\n演示截图\n\n![image](https://github.com/AI4Engr/MADOLA/raw/main/images/Screenshot.jpg)\n",
     "created_at": "2025-12-17T19:04:26Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8478"
   },
   {
@@ -814,31 +840,5 @@
     "created_at": "2025-12-05T14:39:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8385"
-  },
-  {
-    "id": 8384,
-    "title": "Nano Banana Pro Prompt",
-    "content": "[Nano Banana Pro Prompt\n](https://bananapro.xyz)  https://bananapro.xyz\n<img width=\"1279\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/18dfc12e-ffb3-48f5-974c-774a801a8031\" />",
-    "created_at": "2025-12-05T14:14:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8384"
-  },
-  {
-    "id": 8383,
-    "title": "【工具自荐】VIPCalendar，一个适合查看全世界所有国家节假日的日历工具，支持免费打印和下载，并支持导入生成专属日历",
-    "content": "[VIPCalendar](https://vipcalendar.me/) 是适合有打印日历需求的在线日历工具。支持日、周、月、半年、年多种视图切换，随时打印下载。\n\n多视图灵活切换：支持日视图、周视图、月视图，半年视图，年视图满足不同场景下的时间管理需求\n\n响应式设计：完美适配PC端和移动端，随时可用\n\n导入支持：可以导入ics文件生成个人专属日历后再打印或下载，使用更方便\n\nhttps://vipcalendar.me/\n\n<img width=\"1252\" height=\"1217\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e9c46145-0925-4742-8697-853deac65174\" />\n\n<img width=\"1288\" height=\"1155\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/16006f62-7012-4f60-b9e4-0feb41d8a2e1\" />",
-    "created_at": "2025-12-05T12:09:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8383"
-  },
-  {
-    "id": 8382,
-    "title": "【开源推荐】QM-Music：你的私人音乐库",
-    "content": "项目地址：https://github.com/chenqimiao/qm-music\n\n作为这个项目的使用者和作者，推荐一下 QM-Music， 可以结合[feishin](https://github.com/jeffvli/feishin)、[StreamMusic](https://github.com/gitbobobo/StreamMusic)一起使用，构建你的私人音乐库，项目完全开源免费！\n\n项目说明：\nhttps://github.com/chenqimiao/qm-music/blob/main/README.md\n项目使用说明:\nhttps://mp.weixin.qq.com/s/zWgtYM2HBsgxnOsjwNxPjQ\n\n项目截图：\n<div style=\"display: flex; gap: 5px;\">\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433026310-55019589-116b-4afd-ba90-dc0b7a704520.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433026335-9ddbb5e3-8bb0-4336-b282-9f0d712a12d7.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433027765-68ecdc95-df2c-4424-983d-dc44103af125.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433027782-26769aea-be11-447c-89c1-524827fc6175.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433026371-93d66adb-8659-4351-ad57-731c16668224.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433026401-e91adfc7-2721-4b5e-82df-5a967fc6ae87.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433033515-cc6d37dd-0d06-4dd9-8466-673f5cc2c02c.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433033525-7a207bdd-26c8-48d2-ace3-227130ef0374.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/433033533-de036d64-b1db-45c4-b545-9c75bc2bc2cc.png?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/IMG118.jpg?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/IMG119.jpg?raw=true\" style=\"width:25%\" />\n  <img src=\"https://github.com/chenqimiao/qm-music/blob/main/docs/assets/IMG120.jpg?raw=true\" style=\"width:25%\" />\n</div>\n",
-    "created_at": "2025-12-05T07:18:35Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8382"
   }
 ]
