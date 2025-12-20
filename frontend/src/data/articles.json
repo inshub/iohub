@@ -1,5 +1,13 @@
 [
   {
+    "id": 8493,
+    "title": "【开源自荐】Rust CLI 启动屏瞬间变电影海报！用 tui-banner 零依赖 + 真彩渐变 + Matrix/Neon 等酷炫预设",
+    "content": "### tui-banner：让你的 Rust CLI 瞬间变身电影海报的终极神器！\n\n在终端里敲代码的你，是不是也曾幻想过：程序启动时，屏幕突然爆出一幅炫酷到炸裂的 ASCII/ANSI 大片？字体扭曲、渐变发光、赛博朋克风、矩阵雨、霓虹夜……那种仪式感直接拉满！\n\n现在，这个梦想不再是幻想——因为 **tui-banner** 来了！这是一个零外部依赖、纯 Rust 实现的终端横幅生成库，专为 CLI/TUI 程序打造的“视觉核弹”。它让你在几行代码内，就能把终端启动画面变成好莱坞级别的艺术品。\n\n#### 为什么 tui-banner 这么硬核？\n\n- **零依赖**：不靠任何外部 crate，不用安装字体、不用下载 Figlet 文件。打包成二进制后依然小巧。\n- **真彩支持**：完美支持 Truecolor (24-bit) 和 ANSI256 色，色彩过渡丝滑，远超传统 ANSI 艺术。\n- **Figlet 字体渲染**：内置经典 Figlet 字体引擎，支持所有标准 Figlet 字体（包括中文支持的字体包）。\n- **预设风格**：官方精选 14 种电影级配色方案，一键调用：\n  - Matrix（经典绿黑赛博矩阵雨）\n  - Neon Cyber（霓虹赛博朋克）\n  - Aurora Flux（极光幻彩）\n  - Deep Space（深空星云）\n  - Ocean Flow（海洋流动）\n  - Sunset Neon（霓虹落日）\n  - Fire Warning（火焰警戒）\n  - Warm Luxury（奢华暖金）\n  - Forest Sky（森林天空）\n  - Earth Tone（大地色调）\n  - Chrome（金属铬）\n  - Royal Purple（皇家紫）\n  - CRT Amber（CRT 琥珀）\n  - Arctic Tech（极地科技）\n- **高度可定制**：渐变、调色板、填充字符、边框……想怎么玩就怎么玩。\n- **性能爆炸**：渲染速度快到飞起，启动画面几乎瞬间出现。\n\n#### 实际效果有多炸裂？看图说话\n\n（以下是官网展示的 14 种风格效果，想象一下在你的终端里直接炸开！）\n\n- Matrix 风格：绿色的代码雨从上往下流，文字仿佛被黑客入侵。\n\n<img width=\"1458\" height=\"312\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/00312948-d916-432b-b934-f5b0d61d0951\" />\n\n- Neon Cyber：粉紫蓝的霓虹灯管在黑暗中闪烁，纯正 2077 味。\n\n<img width=\"1468\" height=\"318\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/673e7ae2-e002-4e23-a38f-bc56effa2354\" />\n\n- Aurora Flux：极光般流动的彩虹渐变，梦幻又科幻。\n\n<img width=\"1456\" height=\"316\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c7f2505a-c13a-453b-ae09-3c0c2b9056a8\" />\n\n- Deep Space：深蓝星云背景，文字像悬浮在宇宙中。\n\n<img width=\"1456\" height=\"314\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a593db7e-272a-485d-ad63-330cf63a2bde\" />\n\n#### 写代码有多简单？\n\n```rust\nuse tui_banner::{Banner, Style};\n\nfn main() -> Result<(), tui_banner::BannerError> {\n    let banner = Banner::new(\"RUST CLI\")?\n        .style(Style::Matrix)           // 一键选风格\n        .render();\n    println!(\"{banner}\");\n    Ok(())\n}\n```\n\n就这几行，你的程序启动时终端就直接变身黑客帝国！\n\n想更骚一点？试试自定义渐变和字体：\n\n```rust\nlet banner = Banner::new(\"WELCOME\")\n    .font(\"Big\")                        // 换成大号字体\n    .gradient(true)                     // 开启渐变\n    .palette(\"cyberpunk\")               // 自定义调色板\n    .fill(\"•\")                          // 填充字符\n    .render();\n```\n\n#### 谁会用它？\n\n- Rust 开发者：给你的命令行工具加个高端大气上档次的启动画面。\n- TUI 项目作者：让 ratatui、cursive 等项目启动时更有仪式感。\n- 开源爱好者：想让你的工具在 GitHub 上截图时直接“吸睛”。\n- 终端美学党：每天写代码也要美到飞起！\n\n#### 官网地址\n\nhttps://tui-banner-website.pages.dev/\n\n点进去就是视觉盛宴：14 种风格的真实渲染效果、详细用法、API 文档、全部免费开源。\n\n#### 最后说一句\n\n如果你还在用 `println!(\"Hello, world!\")` 启动程序，那真的太委屈了。  \n现在，轮到你的 CLI 成为终端里的电影主角了！\n\nRust 社区又一个“让人尖叫”的神器诞生，赶快 star 起来，刷屏你的终端吧！🚀\n\n#Rust #TUI #CLI #TerminalArt #RustLang",
+    "created_at": "2025-12-20T04:36:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8493"
+  },
+  {
     "id": 8492,
     "title": "【网站自荐】AI主持的海龟汤游戏，支持多人游戏",
     "content": "## [出前一汤](https://haiguitang.net/)\n## 什么是海龟汤\n海龟汤，也叫情境推理游戏，是一种以推理真相为核心的桌游 / 语言游戏。主持人掌握一个完整真相（汤底），只给玩家一个诡异的表面描述（汤面），玩家只能用“是 / 否 / 无关”提问，一步步还原真相。\n\n## 网站特点\n* 社交元素\n* 多人游戏\n* AI主持\n* 支持自己投稿\n\n## 网站截图\n\n<img width=\"2358\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/01225cd9-184e-4bb6-9194-d4ba3354d6a9\" />\n\n<img width=\"2914\" height=\"1390\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b328ee43-2f6b-46af-bb8c-5cfed92556de\" />",
@@ -840,13 +848,5 @@
     "created_at": "2025-12-06T18:25:10Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8389"
-  },
-  {
-    "id": 8387,
-    "title": "【工具自荐】适合J人的个人副业管理看板",
-    "content": "做独立开发两年多了，手上陆续有了十几个小项目。最头疼的事情不是写代码，而是 SEO 外链建设。\n\n主要是有这些问题很苦恼：\n1. 每次发现一个可以提交外链的网站，就随手记在某个 Notion 页面，后来根本找不到\n2. 提交了外链，不知道有没有被收录，更不知道带来了多少流量\n3. 想看某个外链平台的 DR、流量，得一个个去 Ahrefs 查\n4. 项目多了之后，哪个项目做了哪些外链完全是一团乱麻\n\n所以花了几个月时间做了 MyBacklinks.app：\n\n核心功能：\n- 📊 外链资源库：记录所有可提交的平台，包括类型、DR、流量、提交方式\n- 🔍 自动发现：输入域名自动拉取所有反向链接\n- 📈 流量归因：追踪每个外链实际带来多少访客（暂时支持Plausible，GA4和umami还在对接）\n- 💰 财务追踪：项目的收入支出一目了然（可以手动录入也可以对接stripe和adsense等广告平台）\n- 🕸️ 域名记录：记录购买了多少域名、有多少即将到期、每个域名是否回本\n\n技术栈：\n- Next.js 15 + TypeScript\n- PostgreSQL + Drizzle ORM\n- 部署在 Cloudflare Workers\n- Stripe 支付\n\n免费版可以管理 3 个项目，够个人用了。\n\n欢迎各位试用提建议：https://mybacklinks.app\n留言邮箱我为大家赠送credit，可以用来抄别人的外链！",
-    "created_at": "2025-12-06T07:35:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8387"
   }
 ]
