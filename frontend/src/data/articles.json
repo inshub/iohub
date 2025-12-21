@@ -1,5 +1,21 @@
 [
   {
+    "id": 8497,
+    "title": "【开源自荐】cpp‑linter — 让 C/C++ 代码检查更简单、更自动化",
+    "content": "### 项目简介\n\n**cpp-linter** 是一个即插即用的 C/C++ 静态检查工具，旨在简化代码质量管理。它可以在 CI/CD 流程中快速集成 clang-format 和 clang-tidy 检查，提供清晰的反馈，帮助团队在本地开发或 CI 自动化环境中高效发现和修复潜在问题。\n\n主要特点：\n\n* **无需复杂配置**：开箱即可在 CI/CD 流程中运行。\n* **多种集成方式**：支持 GitHub Actions、pre-commit 钩子、本地 CLI 等。\n* **改善协作反馈**：通过 PR 注释、线程评论和 workflow 摘要输出代码问题。\n* **生态友好**：提供插件和辅助工具，轻松与现有流程结合。\n* **开源可扩展**：MIT 许可，社区可自由贡献。\n\n---\n\n### 项目主页\n\n* 官网/文档: [https://cpp-linter.github.io/](https://cpp-linter.github.io)\n* GitHub 仓库: [https://github.com/cpp-linter](https://github.com/cpp-linter)\n* GitHub Actions 集成: https://github.com/cpp-linter/cpp-linter-action\n* Pre-commit Hooks: https://github.com/cpp-linter/cpp-linter-hooks\n\n---\n\n### 示例代码\n\n**GitHub Actions 集成示例**：\n\n```yaml\nsteps:\n  - uses: actions/checkout@v5\n  - uses: cpp-linter/cpp-linter-action@v2\n    id: linter\n    env:\n      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n    with:\n      style: 'file'  # 使用 .clang-format 配置文件\n      tidy-checks: '' # 使用 .clang-tidy 配置文件\n      thread-comments: ${{ github.event_name == 'pull_request' && 'update' }}\n  - name: Fail fast?!\n    if: steps.linter.outputs.checks-failed > 0\n    run: exit 1\n```\n\n> 每次 PR 提交后，自动在 Pull Request 中输出 clang-format 和 clang-tidy 检查结果。\n\n更多示例见截图：https://github.com/cpp-linter/cpp-linter-action?tab=readme-ov-file#example\n\n**Pre-commit 集成示例**：\n\n```yaml\nrepos:\n  - repo: https://github.com/cpp-linter/cpp-linter-hooks\n    rev: v1.1.11  # Use the tag or commit you want\n    hooks:\n      - id: clang-format\n        args: [--style=Google] # Other coding style: LLVM, GNU, Chromium, Microsoft, Mozilla, WebKit.\n      - id: clang-tidy\n        args: [--checks='boost-*,bugprone-*,performance-*,readability-*,portability-*,modernize-*,clang-analyzer-*,cppcoreguidelines-*']\n```\n\n更多示例见输出：https://github.com/cpp-linter/cpp-linter-hooks?tab=readme-ov-file#output\n\n---\n\n### 谁会使用它\n\n* C/C++ 开发者，希望在本地或 CI/CD 中轻松进行代码检查。\n* 团队协作项目，需要在 Pull Request 中自动反馈代码质量问题。\n* DevOps 或 CI/CD 工程师，希望快速集成静态分析工具到现有流水线。\n* 开源项目维护者，需要可扩展、生态友好的检查方案。\n\n**cpp-linter-action 已被以下知名开源项目使用：**\n\nMicrosoft、Apache、NASA、Samsung、TheAlgorithms、Nextcloud、CachyOS、Imgproxy、NNStreamer、Chocolate Doom、Diasurgical、Khronos Group、Man Group、Stanford SSI、Cambridge ICCS、OpenMSL、Xemu Project\n\n---\n\n**无论是个人开发还是团队协作，cpp-linter 都能让你的 C/C++ 代码更整洁、可维护。**",
+    "created_at": "2025-12-21T11:22:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8497"
+  },
+  {
+    "id": 8496,
+    "title": "【工具自荐】HeyCss 一个 CSS 的样式展示合集",
+    "content": "Hey CSS 是一个样式合集工具，提供了丰富的预定义 CSS 效果展示和复制功能。它不仅包含常见的阴影效果，还扩展了多种实用样式，帮助开发者快速构建精美的用户界面。\n\n工具灵感源自一个叫做 CSS Scan 阴影展示网页，复制即走即用很方便，不过扩展性不好。所以我写了一个类似的工具，用 JSON 去收集自己写过的一些简单的 CSS 效果。在迁移原有工具样式的基础的同时，还增加了一些其他样式的展示，，方便后续持续更新和收集。\n\n<img width=\"2544\" height=\"1430\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dc57f1fc-f330-44f4-b41b-5f89aa66d0cc\" />\n\n### 快速预览\n\n网站： https://heycss.itea.dev/\nGithub: https://github.com/isixe/HeyCss\n\n### 主要功能\n\n- 实时展示各种 CSS 效果的视觉呈现\n- 点击即可复制到剪贴板\n\n### 使用场景\n开发时为布局增加一些效果",
+    "created_at": "2025-12-21T10:24:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8496"
+  },
+  {
     "id": 8495,
     "title": "【开源自荐】MacOS 应用 Alertivity, 菜单栏中的实时系统健康状态",
     "content": "[Alertivity](https://github.com/nobbbbby/Alertivity) 是一款 macOS 菜单栏监控工具，通过采样 CPU、内存、磁盘、网络和进程活动，助你及早发现系统隐患。它将系统健康状况概括为“正常/升高/严重”三个等级，明确告知导致异常的指标，并提供快速操作以处理违规进程。\n\n- 实时采样： 紧凑的菜单设计，显示各项指标摘要及网络吞吐量。\n- 菜单栏指示器： 支持跟踪负载最高的指标、固定显示特定指标，或仅在状态进入“严重”时显示。\n- 高占用进程列表： 一键在“活动监视器”中查看或强制退出异常运行的程序。\n- 智能通知： 针对严重状态或异常进程发送通知，并附带触发详情，让你掌控系统变动。\n- 自定义设置： 支持调整阈值、判定时间、Dock 栏可见性、开机启动、通知选项及图标行为。",
@@ -834,23 +850,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/8393"
-  },
-  {
-    "id": 8392,
-    "title": "[Feature Request] 在各段落標題支援複製鏈接跳轉",
-    "content": "有時候在當週blog看到了一段特別喜歡，想轉發給朋友的段落時，又想附上您的摘要而不是直接轉給他該文章鏈接，就會陷入困境\n\n不知道這個blog能不能像markdown類的網頁一樣(例如github repo readme) 在大或中標題上可以右鍵複製直接跳轉到它的鏈接，方便看到不錯的段落時快速簡單分享給朋友?\n例如點擊截圖中的標題時就能產生這個鏈接，直接跳轉到該段落: https://github.com/ruanyf/weekly?tab=readme-ov-file#2025\n\n<img width=\"912\" height=\"979\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd2fb590-4f08-48be-ab7b-bb342a80dae8\" />",
-    "created_at": "2025-12-07T06:20:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8392"
-  },
-  {
-    "id": 8391,
-    "title": "【开源自荐】hacker-news-agent：小时级获取最新的 AI 新闻",
-    "content": "项目地址：https://github.com/wjcwjc77/hacker-news-agent\n\n<img width=\"662\" height=\"1482\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/81eaec6a-767c-4a46-9cf7-ae23dd295add\" />",
-    "created_at": "2025-12-07T06:04:09Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8391"
   }
 ]
