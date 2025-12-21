@@ -4,7 +4,9 @@
     "title": "【开源自荐】MacOS 应用 Alertivity, 菜单栏中的实时系统健康状态",
     "content": "[Alertivity](https://github.com/nobbbbby/Alertivity) 是一款 macOS 菜单栏监控工具，通过采样 CPU、内存、磁盘、网络和进程活动，助你及早发现系统隐患。它将系统健康状况概括为“正常/升高/严重”三个等级，明确告知导致异常的指标，并提供快速操作以处理违规进程。\n\n- 实时采样： 紧凑的菜单设计，显示各项指标摘要及网络吞吐量。\n- 菜单栏指示器： 支持跟踪负载最高的指标、固定显示特定指标，或仅在状态进入“严重”时显示。\n- 高占用进程列表： 一键在“活动监视器”中查看或强制退出异常运行的程序。\n- 智能通知： 针对严重状态或异常进程发送通知，并附带触发详情，让你掌控系统变动。\n- 自定义设置： 支持调整阈值、判定时间、Dock 栏可见性、开机启动、通知选项及图标行为。",
     "created_at": "2025-12-20T13:49:40Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8495"
   },
   {
@@ -20,7 +22,9 @@
     "title": "【开源自荐】Rust CLI 启动屏瞬间变电影海报！用 tui-banner 零依赖 + 真彩渐变 + Matrix/Neon 等酷炫预设",
     "content": "### tui-banner：让你的 Rust CLI 瞬间变身电影海报的终极神器！\n\n在终端里敲代码的你，是不是也曾幻想过：程序启动时，屏幕突然爆出一幅炫酷到炸裂的 ASCII/ANSI 大片？字体扭曲、渐变发光、赛博朋克风、矩阵雨、霓虹夜……那种仪式感直接拉满！\n\n现在，这个梦想不再是幻想——因为 **tui-banner** 来了！这是一个零外部依赖、纯 Rust 实现的终端横幅生成库，专为 CLI/TUI 程序打造的“视觉核弹”。它让你在几行代码内，就能把终端启动画面变成好莱坞级别的艺术品。\n\n#### 为什么 tui-banner 这么硬核？\n\n- **零依赖**：不靠任何外部 crate，不用安装字体、不用下载 Figlet 文件。打包成二进制后依然小巧。\n- **真彩支持**：完美支持 Truecolor (24-bit) 和 ANSI256 色，色彩过渡丝滑，远超传统 ANSI 艺术。\n- **Figlet 字体渲染**：内置经典 Figlet 字体引擎，支持所有标准 Figlet 字体（包括中文支持的字体包）。\n- **预设风格**：官方精选 14 种电影级配色方案，一键调用：\n  - Matrix（经典绿黑赛博矩阵雨）\n  - Neon Cyber（霓虹赛博朋克）\n  - Aurora Flux（极光幻彩）\n  - Deep Space（深空星云）\n  - Ocean Flow（海洋流动）\n  - Sunset Neon（霓虹落日）\n  - Fire Warning（火焰警戒）\n  - Warm Luxury（奢华暖金）\n  - Forest Sky（森林天空）\n  - Earth Tone（大地色调）\n  - Chrome（金属铬）\n  - Royal Purple（皇家紫）\n  - CRT Amber（CRT 琥珀）\n  - Arctic Tech（极地科技）\n- **高度可定制**：渐变、调色板、填充字符、边框……想怎么玩就怎么玩。\n- **性能爆炸**：渲染速度快到飞起，启动画面几乎瞬间出现。\n\n#### 实际效果有多炸裂？看图说话\n\n（以下是官网展示的 14 种风格效果，想象一下在你的终端里直接炸开！）\n\n- Matrix 风格：绿色的代码雨从上往下流，文字仿佛被黑客入侵。\n\n<img width=\"1458\" height=\"312\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/00312948-d916-432b-b934-f5b0d61d0951\" />\n\n- Neon Cyber：粉紫蓝的霓虹灯管在黑暗中闪烁，纯正 2077 味。\n\n<img width=\"1468\" height=\"318\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/673e7ae2-e002-4e23-a38f-bc56effa2354\" />\n\n- Aurora Flux：极光般流动的彩虹渐变，梦幻又科幻。\n\n<img width=\"1456\" height=\"316\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c7f2505a-c13a-453b-ae09-3c0c2b9056a8\" />\n\n- Deep Space：深蓝星云背景，文字像悬浮在宇宙中。\n\n<img width=\"1456\" height=\"314\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a593db7e-272a-485d-ad63-330cf63a2bde\" />\n\n#### 写代码有多简单？\n\n```rust\nuse tui_banner::{Banner, Style};\n\nfn main() -> Result<(), tui_banner::BannerError> {\n    let banner = Banner::new(\"RUST CLI\")?\n        .style(Style::Matrix)           // 一键选风格\n        .render();\n    println!(\"{banner}\");\n    Ok(())\n}\n```\n\n就这几行，你的程序启动时终端就直接变身黑客帝国！\n\n想更骚一点？试试自定义渐变和字体：\n\n```rust\nlet banner = Banner::new(\"WELCOME\")\n    .font(\"Big\")                        // 换成大号字体\n    .gradient(true)                     // 开启渐变\n    .palette(\"cyberpunk\")               // 自定义调色板\n    .fill(\"•\")                          // 填充字符\n    .render();\n```\n\n#### 谁会用它？\n\n- Rust 开发者：给你的命令行工具加个高端大气上档次的启动画面。\n- TUI 项目作者：让 ratatui、cursive 等项目启动时更有仪式感。\n- 开源爱好者：想让你的工具在 GitHub 上截图时直接“吸睛”。\n- 终端美学党：每天写代码也要美到飞起！\n\n#### 官网地址\n\nhttps://tui-banner-website.pages.dev/\n\n点进去就是视觉盛宴：14 种风格的真实渲染效果、详细用法、API 文档、全部免费开源。\n\n#### 最后说一句\n\n如果你还在用 `println!(\"Hello, world!\")` 启动程序，那真的太委屈了。  \n现在，轮到你的 CLI 成为终端里的电影主角了！\n\nRust 社区又一个“让人尖叫”的神器诞生，赶快 star 起来，刷屏你的终端吧！🚀\n\n#Rust #TUI #CLI #TerminalArt #RustLang",
     "created_at": "2025-12-20T04:36:41Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8493"
   },
   {
