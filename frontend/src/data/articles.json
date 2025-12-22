@@ -1,5 +1,21 @@
 [
   {
+    "id": 8502,
+    "title": "【资源自荐】:rocket: M-Apps: 让应用管理回归简单与优雅",
+    "content": "# 🚀 M-Apps: 让应用管理回归简单与优雅\n\n> **一处 Notion 记录，全球丝滑同步。**\n\n`m-apps` 是一款专为开发者和应用收藏爱好者打造的 **Next.js 15 原生应用导航系统**。它完美融合了 **Notion** 的生产力与 **App Store** 的丰富生态，让你只需专注内容，剩下的全部自动化。\n\n<img width=\"5110\" height=\"2392\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b998a668-df59-4f40-b811-74a28f3eabdb\" />\n\n## ✨ 核心亮点\n\n### 📑 以 Notion 为核心的极简 CMS\n\n告别复杂的数据库配置。直接使用 Notion 表格作为源，添加、修改、分类应用，就像编辑文档一样自然。\n\n### 🔄 App Store 自动化“黑科技”\n\n只需在 Notion 中填入 Apple App ID，`m-apps` 便能自动抓取应用图标、高清描述、官方链接，并**反向同步**回您的 Notion 数据库。您的数据，永远是最新的。\n\n### 🎨 惊艳的现代视觉设计\n\n* **Shadcn UI + Tailwind CSS**: 极简但不简单，每一个像素都经过精心雕琢。\n* **全自动深色模式**: 完美适配日间与夜间的视觉体验。\n* **响应式布局**: 无论是 4K 显示器还是 6 寸手机，呈现效果始终如一。\n\n### ⚡ 顶尖的技术底座\n\n* **Next.js 15 (Turbopack)**: 毫秒级的热更新与构建速度。\n* **SEO 深度优化**: 动态生成页面元数据，让你的应用库在搜索引擎中脱颖而出。\n* **高效检索**: 内置快速搜索过滤功能，即便应用成百上千也能瞬间触达。\n\n## 🌟 愿景\n\n应用不应只是代码，更应该是生活的一部分。`m-apps` 致力于通过自动化的手段，让每位开发者都能拥有属于自己的、精美的、易于维护的“应用博物馆”。",
+    "created_at": "2025-12-22T03:18:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8502"
+  },
+  {
+    "id": 8501,
+    "title": "【开源自荐】BoxLite — 为 AI Agent 打造的嵌入式微型虚拟机运行时",
+    "content": "## 项目介绍\n\n**BoxLite** 是一个可嵌入的微型虚拟机运行时，专为 AI Agent 安全执行环境设计。\n\n遵循 SQLite 的设计哲学：\"小巧、快速、可靠\"，BoxLite 让你在轻量级 VM 中运行容器，提供硬件级隔离——无需守护进程。\n\n## 解决的问题\n\nAI Agent 在拥有完全自由时最强大——可以写代码、安装包、修改文件、访问网络。但这种自由在宿主机上很危险。\n\n现有方案的困境：\n\n| 方案 | 问题 |\n|------|------|\n| Docker 容器 | 共享宿主内核，隔离不彻底 |\n| 传统虚拟机 | 太重、启动慢、难以编排 |\n| 云端沙箱 | 延迟高、成本高、厂商锁定 |\n\n**BoxLite 的方案**：VM 级安全 + 容器级简单\n\n## 核心特性\n\n- 🔒 **硬件级隔离** — 每个 Box 是独立 VM，有自己的内核\n- 📦 **嵌入式设计** — 无守护进程，无需 root，直接作为库嵌入应用\n- 🐳 **OCI 兼容** — 支持任何 Docker 镜像 (`python:slim`, `node:alpine` 等)\n- 🍎 **跨平台** — macOS (Apple Silicon) + Linux (x86_64, ARM64)\n- 🐍 **Python SDK** — `pip install boxlite` 即可使用\n\n## 快速体验\n\n```python\nimport asyncio\nimport boxlite\n\nasync def main():\n    async with boxlite.SimpleBox(image=\"python:slim\") as box:\n        result = await box.exec(\"python\", \"-c\", \"print('Hello from BoxLite!')\")\n        print(result.stdout)\n\nasyncio.run(main())\n```\n\n## 使用场景\n\n- **AI Agent 沙箱** — 让 AI 自由探索，同时保护你的系统安全\n- **多租户 AI 托管** — 按需为每个用户的 AI 创建隔离环境\n- **本地开发** — 在 macOS 上获得一致的 Linux 环境，无需 Docker Desktop\n\n## 技术栈\n\n- **核心**: Rust\n- **虚拟化**: Linux 基于 KVM ，macOS 基于 Hypervisor.framework\n- **网络**: gvisor-tap-vsock\n- **SDK**: Python (PyO3), Node.js / Go (即将推出)\n\n## 链接\n\n- GitHub: https://github.com/boxlite-labs/boxlite\n- PyPI: https://pypi.org/project/boxlite/\n\n## 架构图\n\n```\n┌─────────────────────────────────────────────────────────────┐\n│  Your Application                                           │\n│  ┌──────────────────────────────────────────────────────┐   │\n│  │  BoxLite Runtime (embedded library)                  │   │\n│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐   │   │\n│  │  │   Box A     │  │   Box B     │  │   Box C     │   │   │\n│  │  │  (micro-VM) │  │  (micro-VM) │  │  (micro-VM) │   │   │\n│  │  └─────────────┘  └─────────────┘  └─────────────┘   │   │\n│  └──────────────────────────────────────────────────────┘   │\n└─────────────────────────────────────────────────────────────┘\n                    Hardware Virtualization\n                  (KVM / Hypervisor.framework)\n```\n\n---\n\n**开源协议**: Apache 2.0",
+    "created_at": "2025-12-22T02:28:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8501"
+  },
+  {
     "id": 8500,
     "title": "【工具自荐】免费的AI英语口语练习网站TalkAny",
     "content": "自己找外教练习英语口语有一年了，也尝试过找chatgpt练习，发现自己当前这个口语水平还经常会有语法错误，即便是外教对话，也不能总是纠正我的语法错误，并且自己说的话，句子都是比较简单，复杂一点的学的时候记得，说起来就忘了。\n\n于是自己开发了一个AI口语练习网站，除了可以实时对话，更重要的是可以提供示例，还有实时纠正语法错误\n\n目前有个bug就是延迟问题，但是这个我还没有找到更好的解决方案，我尝试过浏览器端的推理模型，发现速度比云端的慢很多。以及AI语音模型，目前是用的电脑自带的，所以发音上有点生硬，也没有找到更合适的。\n\n想邀请大家体验，多多提问题\n\n这方面如果有推荐的，欢迎在评论区留言。\n\n[网站地址：https://talkany.app/](https://talkany.app/)\n\n<img width=\"1302\" height=\"833\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dd24f891-044d-46f1-9057-030db0efefff\" />\n\n",
@@ -834,21 +850,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/8398"
-  },
-  {
-    "id": 8397,
-    "title": "【活动自荐】免费沙龙！快手+支付宝+腾讯+JetBrains分享跨端技术新范式！",
-    "content": "多端生态蓬勃发展，为业务拓展注入新动能的同时，跨端适配的核心痛点也愈发突出：新增终端适配耗费大量人力时间，研发压力陡增；而在 iOS、Android、鸿蒙等多终端间兼顾功能完整与体验一致，更是行业共性难题。\n\n`JetBrains`、`支付宝`、`腾讯`、`快手`等行业标杆企业的技术专家 + 跨端业务负责人齐聚！\n从底层架构设计、实战落地经验、行业未来趋势三大维度，深度解析原生级体验与多端一致性的核心突破路径，带你看透跨端技术本质。\n\n· **活动时间**：2025 年 12 月 13 日（周六）下午13:30-18:00\n· **活动地点**：北京~快手公司 北京市海淀区西二旗中路 29 号）\n· **参与方式**：线下免费参与（签到领伴手礼）+ 线上直播（关注「快手技术」视频号收看）\n· **报名链接**：[https://9395530718219.huodongxing.com/event/6835615553300](https://9395530718219.huodongxing.com/event/6835615553300)\n\n无论你是跨端开发新手、资深架构师，还是想布局 AI + 跨端技术的开发者，这场沙龙都能让你满载而归～ 12 月 13 日，北京线下面对面交流 + 线上实时互动，和行业大佬一起解锁跨端技术新可能！\n\n<img width=\"2160\" height=\"3278\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e351bc2e-63f4-4755-a38f-669bcac9ae75\" />",
-    "created_at": "2025-12-08T09:39:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8397"
-  },
-  {
-    "id": 8396,
-    "title": "【工具推荐】飞职AI简历 - AI简历生成工具,多轮对话持续优化,智能排版秒出高质量简历",
-    "content": "# 飞职AI简历 - 对话式AI简历工具，智能排版秒出高质量简历\n\n# 使用入口\nhttps://www.jianliai.com\n\n# 工具说明\n飞职AI简历是一款对话式AI简历工具，能够帮助0经验的求职者降低简历制作门槛，快速完成一份符合自己经历的、可交付的简历；\n\n也能帮助有工作经验的人更深地挖掘和发现自身过往经历中的优势和优点，帮助他们总结和归纳过往项目中的亮点，并对一些成就成果进行指标提炼与量化；\n\n该项目已经辅助了30w+求职者，具有专业的岗位技能知识图谱、技能体系，完善的职位数据辅助参与简历设计，精准命中企业招聘JD关键词，让你的简历100%通过企业的AI面试环节，人资&技术面简历筛选环节通过率超过80%;\n\n\n# 工具特点\n1. 对话式AI交互，通过多轮对话随时补充求职信息，AI实时优化简历\n2. 支持多种格式简历文件上传，自动优化简历内容话术\n3. 智能岗位关键系匹配系统，结合岗位技能知识库，自动调整技能关键词，初筛通过率超80%\n4. 自动简历排版，简历优化完成后，自动进行简历排版，支持50+简历模板渲染\n\n# 工具截图\n### 首页\n<img width=\"3022\" height=\"1556\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0764d678-93c0-4222-ad73-43019003fe3c\" />\n\n### 对话AI简历生成\n#### 简单介绍，一键制作简历框架\n<img width=\"3022\" height=\"1542\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fdc8ad60-750e-476b-83fd-5a2b957033bf\" />\n\n#### 补充信息，优化简历\n<img width=\"3022\" height=\"1548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/86d63463-9ff8-4bf0-a6ef-12e8e5696a3d\" />\n\n#### 智能排版，简历文件直接下载\n<img width=\"3022\" height=\"1554\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a38e2cd-3000-458f-b131-ac1fd8d5ed86\" />\n\n### 简历AI在线编辑\n\n<img width=\"3022\" height=\"1542\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/67580fdc-d032-472d-a606-b24a33c10aa7\" />\n",
-    "created_at": "2025-12-08T07:50:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8396"
   }
 ]
