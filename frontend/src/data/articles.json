@@ -1,5 +1,29 @@
 [
   {
+    "id": 8519,
+    "title": "【开源自荐】Xget：面向开发者资源的超高性能、安全、一体化加速引擎",
+    "content": "阮老师好，自荐一个开源存储库 [xixu-me/Xget](https://github.com/xixu-me/xget)。\n\n### 体验\n\n* **预部署实例**：`https://xget.xi-xu.me`\n* **URL 转换器**：[https://xuc.xi-xu.me](https://xuc.xi-xu.me)\n* **跨浏览器扩展**：[Xget Now](https://github.com/xixu-me/Xget-Now)\n\n### 项目简介\n\nXget 是一个基于边缘计算（如 Cloudflare Workers）的统一加速引擎，专为开发者设计。\n\n针对目前开发者访问各类资源（位于代码存储库、模型和数据集中心、软件包注册表、容器注册表、AI 推理提供商等）速度慢、配置分散的问题，Xget 提供了一个**一体化**的解决方案。它不仅仅是一个反向代理，还针对 Git、OCI/Docker、AI 推理等不同协议进行了深度的适配和优化。\n\n### 核心功能与亮点\n\n1. **覆盖全开发场景**：\n* **代码托管**：支持 GitHub, GitLab, Gitea, Bitbucket 等。\n* **包管理**：加速 npm, PyPI, Conda, Maven, Gradle, Go Modules, Rust Crates, Homebrew 等主流包管理器。\n* **容器镜像**：支持 Docker Hub, Quay, GCR, GHCR, k8s.io 等容器注册表。\n* **AI 模型与推理**：加速 Hugging Face, Civitai 模型下载，以及 OpenAI, Claude, Gemini 等 AI 推理 API。\n\n\n2. **极致性能**：\n* 基于全球边缘网络，支持 HTTP/3 协议。\n* 实现了智能多重压缩（gzip, deflate, brotli）和并行分片下载。\n* 内置缓存策略，大幅降低源站压力。\n\n\n3. **多平台兼容**：\n* 只需简单的 URL 替换（如 `github.com` -> `xget.xi-xu.me/gh`）即可使用。\n* 提供 URL 转换器和浏览器扩展。\n\n\n4. **部署灵活**：\n* 支持一键部署到 Cloudflare Workers/Pages, Vercel, Netlify, Deno Deploy, EdgeOne 等 Serverless 平台。\n* 也支持通过 Docker 或 Podman 进行自托管。\n\n\n\n### 示例代码\n\n**加速 Git Clone:**\n\n```bash\ngit clone https://xget.xi-xu.me/gh/microsoft/vscode.git\n\n```\n\n**加速 Docker Pull:**\n\n```bash\ndocker pull xget.xi-xu.me/cr/docker/library/nginx:latest\n\n```\n\n**加速 OpenAI API:**\n\n```python\nclient = OpenAI(\n    base_url=\"https://xget.xi-xu.me/ip/openai/v1\",\n    api_key=\"...\"\n)\n\n```\n\n希望能帮助到更多受网络问题困扰的开发者。",
+    "created_at": "2025-12-23T09:35:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8519"
+  },
+  {
+    "id": 8518,
+    "title": "【开源自荐】离线版问卷：一个可嵌入任意系统的问卷/表单渲染与设计引擎",
+    "content": "# 离线版问卷\n\n## 💡 前言\n\n某天在【掘金】看到低代码相关文章，结合自己开发过那么多的项目，系统集成 “表单”、“问卷”、”考试” 还是挺常见的，查阅了好多开源项目，都是独立的一个系统，很难集成到现有的项目中，于是我在想：为什么不能有一款【离线版问卷】，它提供 ”设计问卷页面“ ，也提供 “渲染问卷页面”，它只关心数据，不关心集成到哪个系统，不关心集成到哪个功能。\n\n#### 亮点\n\n1. 提供 “设计问卷” 页面\n2. 提供 “填写问卷” 页面\n3. 提供 “只读问卷” 页面\n4. 提供 “简洁填写问卷” 页面\n5. 提供 “简洁只读问卷” 页面\n6. 数据安全，点击【提交】按钮后，提交回调函数由“宿主系统”提供\n\n#### 场景\n\n- 想开发一款【问卷系统】，不用从 0 开始去构建：控件模型、事件交互、逻辑解析、问卷渲染，拿来即用。\n- 想开发一款【活动系统】，每个活动需要填写的 “报名信息” 不一样，引入【离线版问卷】，可进行动态配置填写字段。\n\n\n## 🎨 预览\n\n[点击链接直达预览地址](http://wj.titongpaolu.com)\n\n![设计页面](https://i.mji.rip/2025/12/23/bbcb495b3d5d1a2691f0b7f2a479cf87.png)\n\n<br />\n\n## 📦 仓库\n\n[questionnaire_web](https://github.com/chenbz777/questionnaire_web)\n",
+    "created_at": "2025-12-23T09:25:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8518"
+  },
+  {
+    "id": 8517,
+    "title": "【开源自荐】天气时钟看板",
+    "content": "一个基于 Vue 3 + TypeScript + Vite + Tailwind CSS 构建的天气时钟看板。 将废弃iPad变为时钟看板，支持天气、农历、日历、Home Assistant 智能设备控制（通过左右滑动切换页面）。\n\n[GitHub 地址](https://github.com/teojs/clock-dashboard)\n\n<img width=\"2048\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b9b5f56e-8221-4bf9-81d3-db5bc52311d9\" />\n\n<img width=\"2048\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/89b6877f-fb36-4540-934c-f3710167269f\" />\n\n<img width=\"2048\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9e02fcc4-0d2f-468d-b715-269ebf9931a1\" />",
+    "created_at": "2025-12-23T08:40:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8517"
+  },
+  {
     "id": 8516,
     "title": "【开源自荐】AntV Infographic：AI 友好的声明式信息图渲染框架",
     "content": "### 项目地址\n\n**GitHub**: https://github.com/antvis/infographic\n\n**官网**：https://infographic.antv.vision/\n\n### 项目标题\n\nAntV Infographic：AI 友好的声明式信息图渲染框架\n\n### 项目描述\n\n由数据可视化团队 AntV 推出的前端开源信息图渲染框架，支持通过配置快速生成信息图，内置了丰富的模版。适用于实时数据驱动的信息图生成、新闻/报告的批量可视化输出、AI 生成配置，自动渲染信息图、SaaS平台的可视化功能模块等场景。\n\n### 亮点\n\n- AI 友好：配置和语法更适合 AI 生成，提供简洁有效的 Prompt，支持 AI 流式输出和渲染\n- 开箱即用：内置 ~200 信息图模板、数据项组件与布局，快速构建专业信息图\n- 主题系统：支持手绘、渐变、图案、多套预设主题，允许深度自定义\n- 内置编辑器：内置信息图的编辑器，让 AI 生成之后可以二次编辑\n- 质量 SVG 输出：默认基于 SVG 渲染，保证视觉品质与可编辑性\n\n\n### 示例代码\n\n```markdown\nimport { Infographic } from '@antv/infographic';\n\nconst infographic = new Infographic({\n  container: '#container',\n  width: '100%',\n  height: '100%',\n  editable: true,\n});\n\ninfographic.render(`\ninfographic list-row-simple-horizontal-arrow\ndata\n  items:\n    - label: Step 1\n      desc: Start\n    - label: Step 2\n      desc: In Progress\n    - label: Step 3\n      desc: Complete\n`);\n```\n\n### 截图或演示视频\n\n**声明式使用**\n\n<img width=\"2498\" height=\"1284\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e369738-b90b-4d43-a9ea-505609abae34\" />\n\n**创意案例集**\n<img width=\"300\" src=\"https://github.com/user-attachments/assets/420a0f11-7cee-4e08-b2f9-e0543c1177de\" />\n<img width=\"300\" src=\"https://github.com/user-attachments/assets/d7acf5e4-52b2-4434-b94b-3b3b5c74f55f\" />\n<img width=\"300\" src=\"https://github.com/user-attachments/assets/a6f8cf8d-d72c-4200-af42-7a8b877ba091\" />\n<img width=\"300\" src=\"https://github.com/user-attachments/assets/8dcc3c67-de6c-437f-a909-e28d3bc761d5\" />\n<img width=\"300\" src=\"https://github.com/user-attachments/assets/e92625b6-46a3-4f42-9a9b-24f0d95dfa26\" />\n\n**AI 生成信息图示例**\n\n<img width=\"600\" src=\"https://github.com/user-attachments/assets/7394dc75-d65d-4ca9-8548-19b8a392ab0e\" />\n\n<img width=\"600\" src=\"https://mdn.alipayobjects.com/huamei_qa8qxu/afts/img/A*e_PFSZrR9AQAAAAASdAAAAgAemJ7AQ/original\" />\n\n**风格化渲染**\n\n<img width=\"600\" src=\"https://github.com/user-attachments/assets/ac56da87-43dc-4dc4-a256-ffc61dc2e7c6\" />\n\n<img width=\"600\" src=\"https://github.com/user-attachments/assets/557a255a-ca18-40e4-8f58-ac39d4084847\" />",
@@ -9,7 +33,7 @@
   },
   {
     "id": 8515,
-    "title": "【网站自荐】落地页构建器Nocokit产品自荐",
+    "title": "【网站自荐】Nocokit - 面向初创团队、独立开发者和增长黑客的“高转化落地页构建器",
     "content": "\n大家好，作为独立开发者或小团队，你是否也曾为了给新产品搭个落地页，在 CSS 布局、移动端适配和 SEO 优化上耗费数天？\n\n🎉  我们推出了 **Nocokit** —— 一个让你能像拼积木一样，在几分钟内上线“商业级”落地页的构建器。\n\n**为什么选择 Nocokit？**\n*   **零代码，但更自由**：模块化布局，不需要你考虑复杂的层级，只管填充内容。\n*   **出海友好，极速部署**：针对海外 SaaS 场景优化，支持自定义域名，真正实现“所见即所得”。\n*   **数据自主权**：你的数据你做主，支持自由导出。\n*   **原生 AI SEO 加持（待上线）**：内置 AI 优化引擎，让你的页面在上线之初就拥有极佳的搜索排名潜力。\n\n**产品访问**：[www.nocokit.com](http://www.nocokit.com)\n\n**效果预览**：[https://landingpage.nocokit.com/](https://landingpage.nocokit.com/)\n\n目前处于 Beta 阶段，所有功能**免费试用**。参与bate版本的内测账号 🎉 **赠送6个月** 🎉 的会员\n\n欢迎各位大佬前来拍砖，你的每一个反馈都可能决定 Nocokit 的下一个 Feature！\n\n\n",
     "created_at": "2025-12-23T06:03:20Z",
     "labels": [],
@@ -820,29 +844,5 @@
     "created_at": "2025-12-10T09:33:42Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8417"
-  },
-  {
-    "id": 8416,
-    "title": "【工具自荐】CodeProt： 新一代 AI 智能深度代码审查工具",
-    "content": "🚀 [CodeProt](https://codeprot.com/) —— 新一代 AI 智能深度代码审查工具\n\n<img width=\"1423\" height=\"508\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1afe94a6-1fcb-479e-b099-ddc6c84159fb\" />\nPR Review\n<img width=\"1123\" height=\"838\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e293f76e-d212-4a67-a705-167df5116b4d\" />\nCode Suggestion\n<img width=\"1182\" height=\"555\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f6fae8ef-12fc-479d-be2b-42236db48a61\" />\n\n更快 · 更准 · 更懂代码上下文\n\n在高速迭代的开发时代，人工 Code Review 往往成为效率瓶颈。CodeProt 的目标很明确：让代码审查变得更快、更智能、更可靠。\n\n🌟 为什么选择 CodeProt？\n1. 真正“懂上下文”的智能审查\n\n区别于传统 Lint 工具，CodeProt 通过先进的 NLP 与 ML 技术，理解代码的真实意图：\n\n识别安全漏洞与性能隐患\n\n捕捉边界条件遗漏、状态不一致等高风险问题\n\n避免无价值提示，不打扰你的专注\n\n2. 无缝融入你的研发流程\n\n支持 GitHub / GitLab /自建GitLab\n每一次 Pull Request，都能自动生成精准、可执行的审查报告。\n无黑盒、不改代码，一切决定仍由你掌控。\n\n3. 为团队提升效率 · 为个人守住质量\n\n大团队：减少漏检，加速审查周期，资深开发者从重复检查中解放出来\n\n小团队 & 独立开发者：随时可用的“第二双眼睛”，提供专业级别审查支持\n\n✨ 让代码审查不再是负担\n\n无论你正在构建大型系统，还是刚启动一个新项目，\nCodeProt 都是提升代码质量、效率与安全性的最佳伙伴。",
-    "created_at": "2025-12-10T05:46:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8416"
-  },
-  {
-    "id": 8415,
-    "title": "一款文字自动转换的趣味工具",
-    "content": "输入 ：测试文字，看看好不好用\n输出：\n测💞🤣是💗❤️🌹文💕🥳💘字，❤️✨刊刊🌹✨号😜不号🤣🤣用\nhttps://hexcolor.cc/word",
-    "created_at": "2025-12-10T04:14:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8415"
-  },
-  {
-    "id": 8414,
-    "title": "【开源自荐】一款基于 Rust 开发的CDN SSL 证书自动更新工具",
-    "content": "[cdn-ssl-updater](https://github.com/iKeepLearn/cdn-ssl-updater)\n\n现在免费证书有效期越来越短，后面甚至会变成45天。每次更新CDN证书都有烦，更重要的是经常忘记，经常用户反馈才发现。\n\n所以就写了一个自动更新工具，放在服务器上定时任务执行。\n\n为什么已有 acme.sh 等其他 ssl 相关工具还要重新开发这个？因为这些工具解决的是 ssl 续费，主要适用于 web 服务器。\n\n而 cdn 证书不同，需要登录 cdn 平台去上传更新旧证书。",
-    "created_at": "2025-12-10T04:07:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8414"
   }
 ]
