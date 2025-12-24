@@ -1,5 +1,13 @@
 [
   {
+    "id": 8535,
+    "title": "【开源自荐】FDC，Rust 构建的文件分类整理工具",
+    "content": "🗂️FDC，一个快速、优雅的 Rust 命令行 工具，用于让 `macOS` 与 `Linux` 文件夹保持整洁。 它会按 `年份` 和 `类型` 对源目录的一级项进行归类，避免覆盖冲突，保留顶层结构，并允许在进行任何破坏性更改前先预览。\n\n![FDC，Rust 构建的文件分类整理工具](https://camo.githubusercontent.com/6fdc0b25b38b5e06e49b3e3cfe4308fd68d02ea7d5ac2f8e0f58e187d2019540/68747470733a2f2f6c6f76656a6164652e6f73732d636e2d7368656e7a68656e2e616c6979756e63732e636f6d2f66696e652d6469726563746f72792d63757261746f722e706e67)\n\nGithub 开源仓库地址：[nicejade/fine-directory-curator](https://github.com/nicejade/fine-directory-curator)。\n\n## 为什么要用 fdc？\n\n因为现实是：下载文件夹会被塞满、发生命名冲突、并且递归工具有风险。 **fdc** 故意有明确设计取向：\n\n- **浅且安全**：仅处理源目录的**第一层**内容。目录作为整体移动，不会递归深入修改。\n- **年份优先**：时间是“该文件放在哪儿”的最佳主键。\n- **不覆盖**：如果冲突则生成 `name (1).ext`, `name (2).ext` 等，而不是覆盖已有文件。\n- **先预览**：使用 `--dry-run` 可查看将要发生的改动。\n- **快速且跨平台**：用 Rust 编写，在 macOS 与 Linux 上运行良好。\n\n## 如何快速安装？\n\n### 基于 cargo.io\n\n```bash\ncargo install fine-directory-curator\n```\n\n### 基于 Homebrew\n\n```\nbrew tap nicejade/homebrew-fdc\nbrew install fdc\n```\n\n## 如何开始使用？\n\n```bash\n# See help\nfdc --help\n\n# Use defaults (source: ~/Downloads, target: ~/Documents/Matrixs)\nfdc\n\n# Dry run (no changes)\nfdc --dry-run\n\n# Custom source & target\nfdc -s ~/Downloads -t ~/Documents/Matrixs\n\n# Set source path in config only (no execution)\nfdc -s ~/Downloads\n\n# Verbose logging (stackable)\nfdc -v\nfdc -vv\n```",
+    "created_at": "2025-12-24T16:32:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8535"
+  },
+  {
     "id": 8534,
     "title": "【工具自荐】Midscene.js - UI 自动化框架发布 1.0 版本",
     "content": "UI 自动化框架 Midscene.js 发布了 1.0 版本，全面采用视觉 AI 模型来操控各平台界面（PC、Android、iOS），以提升 SDK 的适配范围与接入体验。\n\n在发布日志里，还看到有开发者扩展了一套机械臂 + 视觉模型来操控车载系统的完整视频，给传统 UI 测试带来了一些新的路径。\n\n\n发布日志：https://midscenejs.com/zh/changelog.html\n产品官网：https://midscenejs.com/zh\n\n<img width=\"3162\" height=\"1762\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/575e8a79-c26e-44d9-8e3f-52ee9382e710\" />\n\n<img width=\"1727\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c267f35c-4864-4dcb-9fa9-9c1f9d1938ca\" />",
@@ -848,13 +856,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/8434"
-  },
-  {
-    "id": 8433,
-    "title": "【开源自荐】Aegis：企业级 RBAC 权限管理框架（JDK 8/21，Spring Boot 2/3，Spring Security 5/6）",
-    "content": "  - 项目概述                                                                                                                                                                                                \n    前后端分离的后台管理系统，基于 RBAC，覆盖用户、角色、菜单、部门、字典、日志、通知、文件、IP 白名单等完整中后台能力。多种登录方式、动态路由菜单、URL/按钮/数据三级细粒度权限；内置操作审计、限流、防重复提交、数据脱敏、文件多平台上传。                                                                                                                                                                    \n  - 分支与技术栈                                                                                                                                                                                            \n      - master：JDK 1.8 + Spring Boot 2.7.18 + Spring Security 5.x                                                                                                                                          \n      - jdk21：JDK 21 + Spring Boot 3.5.6 + Spring Security 6.x\n - 核心特性\n     - 多样化认证: 支持密码、邮箱、短信多种登录方式\n     - JWT无状态认证: 基于JWT的Token认证机制，支持Token刷新\n     - 细粒度权限控制: URL级、按钮级、数据级多层权限控制\n     - 数据权限: 支持按用户、部门、自定义等多种数据权限范围\n     - 多存储支持: 支持本地、MinIO、阿里云OSS、腾讯云COS多种文件存储\n     - 操作审计: 完整的操作日志记录和审计功能\n     - 防重复提交: 内置防重复提交机制\n     - IP地理位置: 基于ip2region的IP地理位置识别\n     - Excel导入导出: 支持Excel文件的导入导出功能\n     - 邮件服务: 内置邮件发送功能\n     - 接口限流: 基于Redis的分布式限流控制\n     - 数据脱敏: 支持多种脱敏类型的数据保护\n     - 定时任务: 支持系统通知自动发布等定时任务功能\n     - 接口文档: 集成Knife4j提供完整的API文档                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \n- 适用场景\n    - 快速搭建/改造企业级中后台；需要 URL/按钮/数据多层授权、审计、限流、防重复、脱敏、定时任务、可插拔文件存储的 Spring Boot 项目；希望在 JDK 8 ↔ 21、Spring Boot 2 ↔ 3 间平滑选择/迁移的团队。\n\n",
-    "created_at": "2025-12-12T02:41:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8433"
   }
 ]
