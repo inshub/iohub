@@ -1,5 +1,13 @@
 [
   {
+    "id": 8561,
+    "title": "【开源自荐】云图 - 极简风格的云图库，无数据库图床项目，支持NAS部署，支持设置密钥，支持各种灵活的API开放接口，PicGo插件直接安装使用",
+    "content": "今天非常高兴能为大家带来一款我们团队精心打磨的开源项目——**云图 (CloudImgs)**。\n\n如果你是 NAS 玩家，或者你像我一样，在用 **N8N** 处理自动化流程时，总是苦于找不到一个既轻量、API 又强大，还不需要付费订阅的图床工具，那么「云图」可能就是你一直在寻找的那块拼图。\n\n---\n\n# ☁️ 云图 (CloudImgs) - 极简主义者的私有云图库\n\n> **💡 开发初衷**\n> 项目的诞生源于实实在在的需求。在使用 **N8N** 搭建自动化工作流时，我发现市面上的开源图床要么年久失修，要么功能受限（想要高级功能得加钱上 Pro）。\n> 作为一个 NAS 用户，我想要的是：**数据在自己手里，API 足够灵活，界面足够清爽**。于是，CloudImgs 应运而生。\n\n---\n\n## 🖥️ 在线体验\n\n在部署之前，您可以直接访问我们的演示站点体验丝滑的交互：\n\n👉 **演示地址**：[https://yt.qazz.site/](https://yt.qazz.site)\n\n* **访问密码**：`123456`\n* *注：演示站为纯静态 Mock 模式，数据不保存，仅供体验 UI 交互与流程。真实部署后配合 Thumbhash 技术，加载体验会更上一层楼。*\n\n---\n\n## ✨ 核心亮点：为什么选择云图？\n\n云图不仅仅是一个存储图片的仓库，它更是一个强大的图片处理中心。\n\n### 1. ⚡️ 强大的实时处理能力\n\n这是云图最硬核的功能之一。我们支持通过 URL 参数实时处理图片，类似于商业云存储（OSS/S3）的功能：\n\n* **格式转换**：自动转 WebP，节省带宽。\n* **尺寸调整**：`?w=500&h=300` 轻松定义宽高。\n* **质量压缩**：`?q=80` 自定义压缩率。\n* **SVG 转 PNG**：原生支持 SVG 转换，方便前端使用。\n\n### 2. 🎨 极致的视觉体验\n\n* **瀑布流布局**：美观且高效的图片展示。\n* **Thumbhash 集成**： 采用先进的 Thumbhash 算法，在图片未加载完成时展示优雅的模糊占位符，实现“无感”加载，体验极佳。\n* **多主题切换**：支持深色/浅色模式，适应不同环境。\n* **移动端适配**：无论在电脑还是手机上，管理图片都得心应手。\n\n### 3. 🛠️ 极其友好的生态集成\n\n* **[PicGo 插件](https://github.com/qazzxxx/picgo-plugin-cloudimgs-uploader)**：官方提供 [PicGo 插件](https://github.com/qazzxxx/picgo-plugin-cloudimgs-uploader)，支持拖拽上传、剪贴板上传，写作效率倍增。\n* **丰富的 API**：专为开发者设计。支持 Base64 上传、随机图片获取、图片列表拉取等，完美适配 N8N 等自动化工具。\n\n### 4. 🛡️ 安全与管理\n\n* **隐私保护**：支持设置访问密钥（密码），保护你的私有数据。\n* **批量管理**：支持批量圈选、删除，整理图库不再繁琐。\n* **目录管理**：支持多级子目录，文件井井有条。\n\n---\n\n## 📸 界面预览\n\n**简洁的登录页面**\n![简洁的登录页面](https://raw.githubusercontent.com/qazzxxx/cloudimgs/main/client/public/login.jpg)\n\n**功能丰富的管理面板**\n![功能丰富的管理面板](https://raw.githubusercontent.com/qazzxxx/cloudimgs/main/client/public/cloudimgs.jpg)\n\n**高效的批量操作**\n![高效的批量操作](https://raw.githubusercontent.com/qazzxxx/cloudimgs/main/client/public/batch.jpg)\n\n**简单的相册分享**\n![简单的相册分享](https://raw.githubusercontent.com/qazzxxx/cloudimgs/main/client/public/share.jpg)\n\n**便捷的整页上传**\n![便捷的整页上传](https://raw.githubusercontent.com/qazzxxx/cloudimgs/main/client/public/upload.jpg)\n\n**开发者友好的 API 文档**\n![API 文档](https://raw.githubusercontent.com/qazzxxx/cloudimgs/main/client/public/api.jpg)\n---\n\n## 🚀 快速开始 (Docker 部署)\n\n我们推荐使用 Docker Compose 进行一键部署，特别是对于 NAS 用户（群晖、威联通、极空间等）非常友好。\n\n### 1. 创建 `docker-compose.yml`\n\n将以下内容保存为 `docker-compose.yml` 文件：\n\n```yaml\nservices:\n  cloudimgs:\n    image: qazzxxx/cloudimgs:latest\n    container_name: cloudimgs-app\n    restart: unless-stopped\n    ports:\n      - \"3001:3001\"\n    volumes:\n      # 请确保宿主机目录存在且有读写权限\n      - ./uploads:/app/uploads:rw \n    environment:\n      # 权限设置 (建议使用 id -u 和 id -g 获取当前用户ID)\n      - PUID=1000\n      - PGID=1000\n      - UMASK=002\n      - NODE_ENV=production\n      - PORT=3001\n      - STORAGE_PATH=/app/uploads\n      # 🔐 安全设置：取消下方注释以启用密码保护\n      # - PASSWORD=your_secure_password_here\n\n```\n\n### 2. 启动服务\n\n在终端运行以下命令：\n\n```bash\ndocker-compose up -d\n\n```\n\n### 3. 访问与配置\n\n* 打开浏览器访问 `http://ip:3001`。\n* 如果在环境变量中设置了 `PASSWORD`，首次访问需要输入密码。\n* 尽情享受你的私有图床吧！\n\n---\n\n## 🤝 参与共建\n\n开源不易，如果「云图」觉得对你有帮助，请不吝在 GitHub 上点亮一颗 ⭐ **Star**，这是对我们最大的鼓励！\n\n* **项目地址**: [[https://github.com/qazzxxx/cloudimgs](https://www.google.com/search?q=https://github.com/qazzxxx/cloudimgs)](https://www.google.com/search?q=https://github.com/qazzxxx/cloudimgs)\n* **PicGo插件**: [https://github.com/qazzxxx/picgo-plugin-cloudimgs-uploader](https://github.com/qazzxxx/picgo-plugin-cloudimgs-uploader)",
+    "created_at": "2025-12-28T01:03:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8561"
+  },
+  {
     "id": 8560,
     "title": "【开源自荐】GitStats — Git 历史统计与可视化的命令行工具",
     "content": "**项目名**：GitStats\n**功能**：从 Git 仓库生成可视化统计报告\n**技术栈**：Python、HTML 报告、命令行工具\n**许可证**：开源\n\n### 项目简介\n\nGitStats 是一个命令行工具，用来分析 Git 仓库的历史，生成详细的统计报告，包括提交活动、作者贡献、文件与代码变化等，可输出为 HTML 或可选 JSON 格式，便于查看和分享。\n\n### 主要功能\n\n* **总体统计**：文件数、代码行数、提交数、作者数、项目年龄\n* **活跃度分析**：\n  * 按小时、星期、月份、年份统计提交分布\n  * 提交随时间变化趋势\n* **作者分析**：\n  * 作者列表（提交占比、首次/最后提交时间、活跃周期）\n  * 月度作者、年度作者\n* **文件统计**：\n  * 文件数量随时间变化\n  * 按文件扩展名统计\n* **代码行统计**：代码行数随时间变化\n* **标签统计**：标签按时间与作者分布\n* **可配置**：通过 `gitstats.conf` 自定义统计行为\n* **跨平台**：支持 Linux、macOS、Windows\n\n### 使用示例\n\n```bash\npip install gitstats\ngitstats /path/to/repo report\n```\n\n运行后，可在指定的输出目录中打开生成的 HTML 报告查看统计结果（下方附有部分截图供参考）。\n\n更多报告可以查看：https://shenxianpeng.github.io/gitstats/activity.html \n\n<img width=\"1312\" height=\"709\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/22405aea-a981-437f-be59-35f00dcb376f\" />\n\n<img width=\"1516\" height=\"645\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f9e0f9c2-2264-416e-9b87-ae8e15d89d44\" />\n\n<img width=\"1068\" height=\"510\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4db63bc9-e492-484f-ad1e-89e56da45d9c\" />\n\n### 适用场景\n\n* 快速了解项目发展历程与团队贡献度\n* 研发效能分析、代码基线健康检查\n* 在博客或内部报告中展示项目统计数据\n\n### 项目链接\n\n* 项目仓库：https://github.com/shenxianpeng/gitstats \n* 文档（最新用法）： https://gitstats.readthedocs.io/en/latest/\n* PyPI 安装页面：https://pypi.org/project/gitstats/\n",
@@ -834,13 +842,5 @@
     "created_at": "2025-12-16T02:11:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8459"
-  },
-  {
-    "id": 8458,
-    "title": "【开源自荐】Patternia：为现代 C++ 提供模式匹配。旨在简化复杂的条件判断，支持泛型、多值守卫和结构绑定，同时保持类型安全性和编译时验证。",
-    "content": null,
-    "created_at": "2025-12-15T17:34:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8458"
   }
 ]
