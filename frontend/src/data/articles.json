@@ -1,5 +1,21 @@
 [
   {
+    "id": 8576,
+    "title": "【工具自荐】AppScreenshots - 应用商店截图生成工具",
+    "content": "## 简介\n\nAppScreenshots 是一款专业的应用商店截图设计和生成工具，帮助开发者和设计师快速为 iOS App Store、Google Play Store 和 Chrome Web Store 准备完美的应用截图。\n\n## 网站\n\nhttps://appscreenshots.net\n\n## 主要功能\n\n- **多平台支持**：支持 iOS App Store（iPhone 6.5寸、5.5寸 和 iPad）、Google Play Store（Android）、Chrome Web Store 和 HarmonyOS 应用截图生成\n\n- **3D 设备展示**：支持将截图放置在真实设备模型中，如 iPhone 16、Pixel 8、Galaxy S24 等，提升视觉呈现\n\n- **AI 功能**：集成 AI 辅助生成功能，帮助快速创建内容和设计\n\n- **跨平台**：支持 iOS、Android 系统，也可以通过浏览器使用\n\n- **Mockup Creator**：内置丰富的设备模型和模板，轻松创建mockup\n\n## 使用场景\n\n- App 开发者提交应用到各大应用商店\n- 产品设计师设计应用窗口截图\n- 市场人员准备应用推广素材\n\n## 产品特色\n\n- 简单易用，无需复杂的设计经验\n- 适配各大应用商店的截图规范\n- 提供免费版和 Pro 版，满足不同需求\n- 支持一次购买终身使用的 Lifetime 计划",
+    "created_at": "2025-12-30T08:38:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8576"
+  },
+  {
+    "id": 8575,
+    "title": "【开源自荐】py2dist - 将 Python 项目源码方便地编译为二进制文件发布的工具",
+    "content": "# py2dist\n\n## 源码仓库\n\nhttps://github.com/xxnuo/py2dist\n\n## 项目起源：\n\n有时候需要发布 Python 项目，但是不希望客户自己乱改代码导致出问题，所以需要能够简单的保护源码文件。\n\n因为 Python 的设计哲学就是发布源代码，所以 CPython 并没有真正的编译功能，但是有许多人做了这方面的工作了。\n\n我比较了现在比较流行的几个项目：\n- [`Nuitka`](https://nuitka.net/) 的编译是真编译，经过特殊优化将 Python 代码编译成 C 代码，因此一些第三方包还要单独适配和设置，并且有时候包多了编译时间会很长，用了一段时间遂放弃。\n- [`Pyarmor`](https://github.com/dashingsoft/pyarmor) 专注于混淆加密，试了一下其实工作倒是正常，但是没有选择这个项目，因为我并不需要它的许多加密混淆功能，而且它是商业软件需要付费买机器许可证，所以没有选择这个工具。\n- [`Cython`](https://cython.org/) 完全兼容现代 Python 版本和生态，虽然纯 `.py` 代码的编译并非真的编译为 C 代码，但是也足够满足一般的保护源代码不被修改的目的了。\n\n工作流完善使用了一段时间了，没有问题，所以将这个项目写成一个工具包方便安装使用并发布😊。\n\n这个项目不涉及加密混淆，有这方面的需要可以自行优化。\n\n## 简要介绍\n\npy2dist 是一个使用 Cython 将 Python 源代码编译为二进制扩展模块（.so/.pyd）的工具，用于简单地保护源代码不被更改，适用于发布 Python 项目、Docker 服务镜像的构建等场景。\n\n## 功能\n\n- 支持 Linux、Mac、Windows 平台\n- 支持将单个 `.py` 文件或整个目录编译为二进制文件\n- 保持目录结构，自动复制其他文件到输出目录\n- 支持排除指定文件或目录\n- 自动检测并使用 ccache 加速编译\n- 获得 Cython 编译带来的一点性能提升\n- 提供 CLI 和 Python API 两种使用方式\n\n## 安装\n\n```bash\npip install py2dist\n```\n\n建议使用 [`uv`](https://docs.astral.sh/uv/) 安装和管理虚拟环境，并固定 Python 版本号，避免版本不一致导致编译结果与实际运行环境不一致。以 Python 3.12 为例：\n\n```bash\nuv python pin 3.12\nuv venv\nuv add --dev py2dist\n```\n\n> 不建议使用 `uv tool install py2dist` 方法安装，因为这样的话会调用系统的 Python 版本编译，导致编译结果与实际运行的虚拟环境环境不一致。\n\n## 使用\n\n编译单个文件：\n```bash\npy2dist -f myscript.py\n```\n\n或使用 `uv` 命令：\n```bash\nuv run py2dist -f myscript.py\n```\n\n输出文件位置为 `dist/myscript.so`\n\n编译整个目录：\n```bash\npython3 -m py2dist -d myproject\n```\n\n或使用 `uv` 命令：\n```bash\nuv run py2dist -d myproject\n```\n\n输出文件位置为 `dist/myproject`，并且会自动复制非 `.py` 文件到输出目录。\n\n编译生成的二进制扩展模块（.so/.pyd）与特定的 Python 版本绑定。您必须确保编译时使用的 Python 版本与运行时使用的 Python 版本完全一致（包括次要版本号，例如 3.10 和 3.11 是不兼容的）。\n\n复杂使用场景介绍详见：https://github.com/xxnuo/py2dist/blob/main/README_zh.md#%E7%A4%BA%E4%BE%8B%E7%94%A8%E6%B3%95",
+    "created_at": "2025-12-30T08:33:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8575"
+  },
+  {
     "id": 8574,
     "title": "【开源自荐】 轻量 macOS 键鼠使用统计菜单栏应用 KeyStats",
     "content": "\n* 统计键盘敲击、鼠标点击/移动/滚动\n* 数据全部本地存储\n* 每日自动重置，能看到趋势图\n* 体积约 1MB ，轻量\n\n项目地址： https://github.com/debugtheworldbot/keyStats\n\n<img width=\"361\" height=\"733\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7153c5f-a56b-4704-9bfd-b9ef9ed58c9f\" />\n\n",
@@ -834,21 +850,5 @@
     "created_at": "2025-12-17T03:29:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8474"
-  },
-  {
-    "id": 8473,
-    "title": "【开源自荐】Ones wiki mcp",
-    "content": "https://github.com/yunlongwen/ones-mcp\n\n\n📖 项目背景\nONES 官方提供了 [ONES Copilot](https://docs.ones.cn/wiki/#/team/6mRWUuNv/space/JwHAUL1L/page/UEQ6z54V) 产品，包含了 MCP 服务器功能。但 ONES Copilot 需要额外付费授权，对于未购买该服务的团队来说无法使用。\n\n本项目通过调用 ONES 现有的开放 API（Wiki API），为未购买 ONES Copilot 的团队提供了一个开源、免费的 MCP 服务器实现方案，让 AI 助手（如 Cursor、Claude Desktop）能够访问和查询公司内网的 ONES Wiki 知识库。\n\n🎯 核心价值\n💰 零成本：无需购买 ONES Copilot 授权，利用现有 ONES API\n🔓 开源免费：代码完全开源，可自由部署和定制\n🏢 企业友好：支持内网部署，数据不出公司网络\n👥 多用户支持：支持团队多人同时使用，每人使用自己的账号\n🔐 权限隔离：基于 ONES 原有权限体系，确保数据安全\n📝 项目简介\n这是一个用于连接 ONES Wiki 知识库的 MCP（Model Context Protocol）服务器，允许 AI 助手通过 MCP 协议访问和查询公司内网的 ONES Wiki 知识库。\n\n✨ 主要特性\n🔐 多用户认证模式 - 每个用户使用自己的 ONES 账号，权限隔离\n📚 获取知识库空间列表\n🌲 查看知识库页面树结构\n📄 读取页面完整内容，包括：\n📝 标题、段落、列表等富文本内容\n💻 代码块（支持各种编程语言语法高亮）\n📊 表格数据\n🖼️ 图片引用\n📈 图表内容（Mermaid 时序图/流程图、PlantUML 类图/时序图等）\n🔍 搜索知识库页面\n📜 查看页面历史版本\n🌐 HTTP/SSE 服务端部署，支持多人同时使用\n\n🎯 最新更新（v2.0）\n完整的内容解析支持：\n✅ 代码块：PlantUML、Mermaid、Python、Java 等所有语言\n✅ 表格：自动转换为 Markdown 格式\n✅ 图片/附件：提取图片 URL 和描述\n✅ 文档结构：完整保留标题、列表、段落层级\n现在 AI 可以直接分析 Wiki 中的 PlantUML 系统架构图、时序图等！",
-    "created_at": "2025-12-17T01:48:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8473"
-  },
-  {
-    "id": 8472,
-    "title": "【开源自荐】VideoDataset：基于 GPU 硬件解码的视频随机帧数据加载组件 from 智元机器人",
-    "content": "随着 AI 技术的飞速发展，尤其是在大型语言模型（LLM）向视觉语言模型（VLM）及具身智能的跨越，训练数据的形式也正在经历从“静态图片”向“海量视频”的全面转变。视频数据凭借其蕴含的丰富时序信息，已成为 AI 理解物理世界动态规律的关键。\n\n然而，伴随而来的挑战也同样巨大，海量视频数据训练面临两大核心痛点：\n\n- 存储难：视频数据的存储容量庞大，若将其转为图片序列（如 PNG 格式），会占用大量空间；而若存储为视频文件（如 MP4），则会导致读取速度缓慢。\n- 计算瓶颈：传统数据加载方式多依赖 CPU 进行软件解码，导致 CPU 成瓶颈，昂贵的 GPU 资源闲置浪费\n\n可见，传统的数据加载方案（DataLoader）已无法满足高效视频数据训练的需求，成为制约模型训练速度的最大瓶颈。我们急需一个能配得上高性能 GPU 的数据加载器——这正是智元团队倾力打造 VideoDataset 的初心。\n\n目前已正式开源，欢迎体验：\n\nGitHub 地址：https://github.com/AgiBot-World/VideoDataset\n\n更多详情请关注：https://mp.weixin.qq.com/s/l1HTQnAKN2VFxS3J3st6Ww",
-    "created_at": "2025-12-17T01:21:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8472"
   }
 ]
