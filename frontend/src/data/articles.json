@@ -1,5 +1,13 @@
 [
   {
+    "id": 8581,
+    "title": "【开源自荐】正则表达式的 可视化调试器 和 编辑器",
+    "content": "## 地址\n[GitHub](https://github.com/longxya/regexdev)  \n[regexdev](https://regexdev.com)\n\n## 演示\n输入**正则表达式**和**需要匹配的字符串**，点击调试，就会输出整个匹配过程\n\n![Image](https://github.com/user-attachments/assets/ac2665ff-110b-4e90-a233-79ca5eef138c)\n\n## 功能：\n\n- 正则表达式结构可视化\n- 正则表达式匹配过程可视化\n- 正则表达式编辑\n- 正则表达式多屏协同使用\n- 正则表达式断点\n\n## 代码\n目前开源了解析器部分。\n\n因为不想手写词法分析器，所有使用[C# regex](https://github.com/longxya/regexdev/blob/main/RegexDev/RegexParse.cs#L933)来替代词法分析器，以及大部分语法检查的功能。\n\n## 控制台程序Demo\n如果使用控制台程序，可以得到这样的两个可视化图\n\n<img width=\"1505\" height=\"1012\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e7be96de-f4eb-4848-870f-a918cf195969\" />\n\n<img width=\"1884\" height=\"932\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e3f9b25f-6e6d-4d0e-bc21-ac4711fa61be\" />",
+    "created_at": "2025-12-31T01:52:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8581"
+  },
+  {
     "id": 8580,
     "title": "【自荐】孩子练习数字手势的摄像头小游戏",
     "content": "现在的孩子用手势表示数字的方法和我们那时候不一样了，不知道已经是不是全国统一了，现在的规则如下：\n\n0：握拳 (把所有手指都藏起来)。 \n1：伸出一个食指。 \n2：伸出食指 + 中指。 \n3：伸出食指 + 中指 + 无名指。 \n4：伸出食指 + 中指 + 无名指 + 小拇指。 \n5：只伸出大拇指 (像点赞一样)。 \n6：伸出大拇指 + 食指。 \n7：伸出大拇指 + 食指 + 中指。 \n8：伸出大拇指 + 食指 + 中指 + 无名指。\n9：五指张开 (全部伸出)。 \n10：需要 两只手 配合：左手比 1 (食指)，右手握拳 (0)。\n\n反正我家的上幼儿园全是这么交的，但是还不熟练，于是做了一个用摄像头+AI 来识别小朋友是不是比对手势的游戏。\n\n会从数字 0 - 10 随机出题并识别手势，如果做对了就下一个数字，否则会一直尝试。\n\n分享给需要的朋友。\n\n地址： https://handgame.1link.fun/",
@@ -18,7 +26,7 @@
   {
     "id": 8578,
     "title": "【文章自荐】Claude Chrome插件是如何工作的？",
-    "content": "文章通过逆向claude chrome插件，解析claude chrome插件在agent和配合claude code两种工作模式的原理\n\n文章链接 [Claude Chrome插件是如何工作的](https://www.claudechrome.com/zh/blog/how-claude-chrome-works)\n\n并且逆向得到的system prompt、tools定义已开源在 https://github.com/AIPexStudio/system-prompts-of-claude-chrome",
+    "content": "文章通过逆向claude chrome插件，解析claude chrome插件在插件agent模式和配合claude code两种工作模式的原理\n\n文章链接 [Claude Chrome插件是如何工作的](https://www.claudechrome.com/zh/blog/how-claude-chrome-works)\n\n并且逆向得到的system prompt、tools定义已开源在 https://github.com/AIPexStudio/system-prompts-of-claude-chrome",
     "created_at": "2025-12-30T17:11:31Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8578"
@@ -838,15 +846,5 @@
     "created_at": "2025-12-18T01:46:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8479"
-  },
-  {
-    "id": 8478,
-    "title": "【开源自荐】MADOLA：将数学、文档与可执行代码统一的新型数学领域编程语言",
-    "content": "### 项目地址\n\nhttps://github.com/AI4Engr/MADOLA\n\n### 类别\n\n编程语言 / 数学计算 / 文档生成 / WASM\n\n### 项目简介\n\nMADOLA 是一个将数学表达、可执行代码与文档生成完整融合的新型数学领域语言（Math Domain Language）。它让用户像写数学一样编写代码，同时又能直接运行、生成优雅的 HTML 文档，并编译为高性能的 C++ 或 WebAssembly 模块，实现“一份源码 = 数学表达 + 文档 + 程序逻辑”的统一体验。\n\n相比 LaTeX、Python、Mathcad 等现有工具各自分离的生态，MADOLA 试图解决“数学公式、解释性文档与可执行代码割裂”的痛点：\n\n- 数学式语法：表达式即数学，无需在数学与代码间切换思维模式。\n\n- 自动文档生成：原生支持 LaTeX 风格排版、MathJax 渲染与可执行结果展示。\n \n- WASM / C++ 编译：可将数学逻辑直接部署到网页或本地高性能环境。\n \n- AI 友好：为未来的 AI 代码生成与解释提供一致且结构化的表达方式。\n\nMADOLA 非常适合研究人员、工程师和教育工作者，用于构建带有计算能力的数学文档、教学内容、可交互公式页面，以及需要数学逻辑的 Web 应用。\n\n演示截图\n\n![image](https://github.com/AI4Engr/MADOLA/raw/main/images/Screenshot.jpg)\n",
-    "created_at": "2025-12-17T19:04:26Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8478"
   }
 ]
