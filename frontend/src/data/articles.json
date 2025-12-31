@@ -1,5 +1,21 @@
 [
   {
+    "id": 8587,
+    "title": "【开源自荐】cups-web：把家用 USB 打印机变成随时可访问的网络打印服务",
+    "content": "项目地址：[https://github.com/hanxi/cups-web](https://github.com/hanxi/cups-web)\n\n这是一个基于 **CUPS + Web UI** 的轻量级网络打印服务，目标很简单：\n👉 **让家里的 USB 打印机，可以在外网随时打印。**\n\n### 📸 界面预览\n\n<div align=\"center\">\n\n<table>\n  <tr>\n    <td align=\"center\">\n      <img src=\"https://github.com/hanxi/cups-web/raw/master/screenshots/login.png\" width=\"400\" alt=\"登录认证\"><br/>\n      <b>登录认证</b>\n    </td>\n    <td align=\"center\">\n      <img src=\"https://github.com/hanxi/cups-web/raw/master/screenshots/print1.png\" width=\"400\" alt=\"打印机列表\"><br/>\n      <b>打印机列表</b>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"center\">\n      <img src=\"https://github.com/hanxi/cups-web/raw/master/screenshots/print2.png\" width=\"400\" alt=\"文件上传\"><br/>\n      <b>文件上传</b>\n    </td>\n    <td align=\"center\">\n      <img src=\"https://github.com/hanxi/cups-web/raw/master/screenshots/print3.png\" width=\"400\" alt=\"打印任务\"><br/>\n      <b>打印任务</b>\n    </td>\n  </tr>\n</table>\n\n</div>\n\n### 为什么做这个项目？\n\n我的实际需求是：\n\n* 打印机在家里\n* 人在公司 / 外面\n* 需要**远程给家里打印文件**（比如给小孩打印作业、资料）\n\n传统方案要么是厂商云打印、要么配置复杂、要么依赖特定系统。于是做了这个项目：\n**只要浏览器，就能上传文件并打印。**\n\n### 项目特点\n\n* 🖨 **基于 CUPS**\n  使用 Linux 下成熟稳定的打印系统，不绑定特定品牌打印机\n\n* 🌐 **Web 页面操作**\n  浏览器上传 PDF / 文档即可打印，不需要客户端\n\n* 🐳 **Docker 一键部署**\n  非常适合部署在家用 NAS / 迷你主机 / Linux 服务器上\n\n* 🔌 **USB 打印机即插即用**\n  适合普通家用打印机（喷墨 / 激光）\n\n* 🔒 **可反向代理 + 鉴权**\n  可配合 Nginx / Cloudflare / 内网穿透使用\n\n### 适合哪些人？\n\n* 家里有打印机，但人在外面\n* 有 NAS / Linux 主机\n* 想给家人（尤其是孩子）远程打印作业、资料\n* 不想折腾厂商私有云打印方案\n\n### 一个典型使用场景\n\n> 晚上在公司发现孩子作业需要打印\n> 👉 打开 cups-web\n> 👉 上传 PDF\n> 👉 家里的打印机直接开始打印\n\n### 当前状态\n\n* 项目已可正常使用\n* 持续维护中\n* 欢迎 issue / PR / 使用反馈\n\n如果你也有类似的家庭打印需求，欢迎试试 👍\n",
+    "created_at": "2025-12-31T09:52:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8587"
+  },
+  {
+    "id": 8586,
+    "title": "【开源自荐】WayLog - AI 编程对话历史导出、管理工具，支持 IDE 和 CLI。",
+    "content": "\nWayLog 是一个**免费、开源、本地优先**的解决方案，它能将你转瞬即逝的 AI 对话转化为永久的、Git 友好的知识库。无论你是在 **IDE**（VS Code/Cursor）中编码，还是在**终端**（CLI）中与 AI 交互，WayLog 都能确保你的上下文永不丢失。\n\n\n- VS Code 插件 repo: https://github.com/shayne-snap/WayLog\n- CLI 工具 repo: https://github.com/shayne-snap/waylog-cli\n\n---\n\n## ✨ 核心理念与特性\n\n* **🔐 本地优先 & 隐私安全**：\n数据完全存储在本地（`.waylog` 文件夹），直接访问磁盘上的 SQLite/JSON。我们**不会**上传你的数据，你拥有完全的掌控权。\n* **📝 Markdown 原生**：\n所有历史记录均保存为带 Frontmatter 元数据的整洁 Markdown 文件，易于阅读、搜索和版本控制。\n* **🔄 全场景覆盖**：\n提供 **IDE 扩展** 和 **命令行工具 (CLI)** 两种形态，覆盖 GUI 与 Terminal 所有的 AI 编程场景。\n* **📦 统一历史聚合**：\n不管是 Claude Code 的命令行会话，还是 IDE 中的 Copilot 聊天，都能汇聚在同一个项目中。\n\n---\n\n## 🛠️ 组件一：WayLog IDE 扩展\n\n**适用于 VS Code、Cursor 及相关分支 IDE**\n\nWayLog 扩展在后台自动运行，智能发现并读取已安装 AI 插件的对话历史。\n\n### ✅ 支持的助手\n\n* **Cursor IDE** (Chat & Composer/Agent)\n* **GitHub Copilot**\n* **通义灵码 (Tongyi Lingma)**\n* **Roo Code** / **Cline**\n* **腾讯云代码助手 CodeBuddy**\n* **OpenAI Codex**\n* *...更多持续添加中*\n\n### 🚀 安装与使用\n\n1. 从 [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=waylog.waylog) 或者 [Open VSX](https://open-vsx.org/extension/waylog/waylog) 安装 WayLog。\n2. **打开工作区**：WayLog 需要一个活动文件夹来保存历史记录。\n3. **自动保存**：扩展会自动检测并保存新对话。\n4. **手动保存**：使用 `Save AI Chat History` 命令手动选择特定对话。\n\n\n![IDE 演示](https://imgur.com/a/aRaikBi.gif)\n\n---\n\n## 🛠️ 组件二：WayLog CLI\n\n**适用于终端用户 (Rust 构建)**\n\nWayLog CLI 是一个轻量级工具，专为习惯在命令行使用 AI 的开发者设计。它既可以实时拦截记录，也可以扫描全机恢复历史。\n\n\n\n\n### ✅ 支持的工具\n\n| 工具 | 状态 | 描述 |\n| --- | --- | --- |\n| **Claude Code** | 🚧 Beta | 支持 Anthropic 的 `claude` 命令行工具 |\n| **Gemini CLI** | 🚧 Beta | 支持 Google 的 Gemini 命令行工具 |\n| **OpenAI Codex CLI** | 🚧 Beta | 支持 OpenAI Codex CLI |\n\n### 🚀 安装\n\n**使用 Homebrew (推荐):**\n\n```bash\nbrew install shayne-snap/tap/waylog\n\n```\n\n**使用 Cargo:**\n\n```bash\ncargo install waylog\n\n```\n\n### 💡 使用方法\n\n#### 1. 实时记录 (`run`)\n\n使用 `waylog run` 启动 AI 工具，实现“边聊边记”。\n\n```bash\n# 启动 Claude Code 并同步\nwaylog run claude\n\n# 启动 Gemini CLI\nwaylog run gemini\n\n```\n\n![Claude Code 内 run 命令--演示](https://imgur.com/2hKVoSB.gif)\n\n\n#### 2. 历史回溯 (`pull`)\n\n扫描本地 AI 供应商的缓存存储，将过去或丢失的会话“拉取”到当前目录。\n\n```bash\n# 拉取当前项目相关的所有历史记录\nwaylog pull\n\n```\n\n---\n![Claude Code 内 pull 命令--演示](https://imgur.com/FlnQRV8.gif)\n\n\n\n---\n\n**享受零记忆丢失的编码体验。**\n\n\n\n\n",
+    "created_at": "2025-12-31T09:25:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8586"
+  },
+  {
     "id": 8585,
     "title": "【文章推荐】绝望驱动开发：利用倦怠情绪实现高效软件工程",
     "content": "https://lia.mg/posts/despair-driven-development/\n\n部分摘要翻译：\n\n> 在一个常常颂扬激情、创新与不懈乐观的行业里，潜藏着一股更阴暗、更普遍却同样强大的力量：绝望。绝望驱动开发（DDD）是一种非传统但高效的软件工程方法，它将存在性倦怠、职业耗竭以及迫近的末日感转化为生产力。虽然绝望通常被视为有害因素，但若善加引导，它能激发效率、务实精神，并让人以近乎冷酷的专注力交付可运行的软件。",
@@ -828,21 +844,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/8486"
-  },
-  {
-    "id": 8485,
-    "title": "【资源自荐】lx-music音源收集（听歌必备）",
-    "content": "项目地址： https://github.com/Macrohard0001/lx-ikun-music-sources\n\n简介没什么好写的……\n\n主要是收集了 **洛雪音乐** 与 **ikun音乐** 以及 **lx-n music** 的音源，部分音源最高支持**母带音质**\n\n详细简介请见项目页面\n\n备注：部分资源转载自网络，侵删；第一次发这种issue，请多指教\n\n(ps:小破项目真的会有人看吗)",
-    "created_at": "2025-12-18T04:14:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8485"
-  },
-  {
-    "id": 8484,
-    "title": "【网站自荐】Tobby 你的个人 AI 全能管家",
-    "content": "简单对话即可为你管理任务，记录健康数据，进入专注模式，以及贴心陪伴，后续还有更多功能，拭目以待！\n\n\n[官网](https://www/tobby.site)\n[开聊](https://app/tobby.site)",
-    "created_at": "2025-12-18T03:24:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8484"
   }
 ]
