@@ -1,5 +1,13 @@
 [
   {
+    "id": 8588,
+    "title": "【开源自荐】Zedis：Rust + GPUI 构建的Redis 客户端",
+    "content": "项目地址：https://github.com/vicanso/zedis\n\n# 项目简介\n\nZedis基于 **Rust** 编写，UI 层使用了与 [Zed Editor](https://zed.dev) 同款的渲染引擎 **GPUI**。这意味着 Zedis 的每一个像素都是由 GPU 直接绘制的，带来了原生、60 FPS 丝般顺滑的体验。\n\n### 核心特性一览\n\n- **🚀 极速渲染**：告别 HTML/CSS 的重绘负担，即使在低配机器上也能秒开。\n  \n- **♾️ 虚拟列表**：实测轻松处理 **10万+** 级别的 Key 列表（我的手提百万级别也很流畅），配合 `SCAN` 迭代，滚动浏览毫无卡顿。\n  \n- **🧠 数据自动检测**：\n  \n  - 如果是 **GZIP/ZSTD** 压缩的数据，它会自动解压显示。\n    \n  - 如果是 **JSON/MsgPack**，它会自动格式化并高亮。\n    \n  - 如果是图片二进制流，直接显示预览图。\n    \n- 🛠️ 开箱即用**：自动适配 Cluster、Sentinel（单 Master 可免填名称）或单机模式。\n  \n- **💻 全平台支持**：支持 **macOS** 、**Windows** 和 **Linux**，均可在 GitHub Release 下载。\n  \n\n---\n\n# 项目截图\n\n<img width=\"2052\" height=\"704\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/53b74320-6682-40f9-960c-63fd90951cb4\" />",
+    "created_at": "2026-01-01T01:24:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8588"
+  },
+  {
     "id": 8587,
     "title": "【开源自荐】cups-web：把家用 USB 打印机变成随时可访问的网络打印服务",
     "content": "项目地址：[https://github.com/hanxi/cups-web](https://github.com/hanxi/cups-web)\n\n这是一个基于 **CUPS + Web UI** 的轻量级网络打印服务，目标很简单：\n👉 **让家里的 USB 打印机，可以在外网随时打印。**\n\n### 📸 界面预览\n\n<div align=\"center\">\n\n<table>\n  <tr>\n    <td align=\"center\">\n      <img src=\"https://github.com/hanxi/cups-web/raw/master/screenshots/login.png\" width=\"400\" alt=\"登录认证\"><br/>\n      <b>登录认证</b>\n    </td>\n    <td align=\"center\">\n      <img src=\"https://github.com/hanxi/cups-web/raw/master/screenshots/print1.png\" width=\"400\" alt=\"打印机列表\"><br/>\n      <b>打印机列表</b>\n    </td>\n  </tr>\n  <tr>\n    <td align=\"center\">\n      <img src=\"https://github.com/hanxi/cups-web/raw/master/screenshots/print2.png\" width=\"400\" alt=\"文件上传\"><br/>\n      <b>文件上传</b>\n    </td>\n    <td align=\"center\">\n      <img src=\"https://github.com/hanxi/cups-web/raw/master/screenshots/print3.png\" width=\"400\" alt=\"打印任务\"><br/>\n      <b>打印任务</b>\n    </td>\n  </tr>\n</table>\n\n</div>\n\n### 为什么做这个项目？\n\n我的实际需求是：\n\n* 打印机在家里\n* 人在公司 / 外面\n* 需要**远程给家里打印文件**（比如给小孩打印作业、资料）\n\n传统方案要么是厂商云打印、要么配置复杂、要么依赖特定系统。于是做了这个项目：\n**只要浏览器，就能上传文件并打印。**\n\n### 项目特点\n\n* 🖨 **基于 CUPS**\n  使用 Linux 下成熟稳定的打印系统，不绑定特定品牌打印机\n\n* 🌐 **Web 页面操作**\n  浏览器上传 PDF / 文档即可打印，不需要客户端\n\n* 🐳 **Docker 一键部署**\n  非常适合部署在家用 NAS / 迷你主机 / Linux 服务器上\n\n* 🔌 **USB 打印机即插即用**\n  适合普通家用打印机（喷墨 / 激光）\n\n* 🔒 **可反向代理 + 鉴权**\n  可配合 Nginx / Cloudflare / 内网穿透使用\n\n### 适合哪些人？\n\n* 家里有打印机，但人在外面\n* 有 NAS / Linux 主机\n* 想给家人（尤其是孩子）远程打印作业、资料\n* 不想折腾厂商私有云打印方案\n\n### 一个典型使用场景\n\n> 晚上在公司发现孩子作业需要打印\n> 👉 打开 cups-web\n> 👉 上传 PDF\n> 👉 家里的打印机直接开始打印\n\n### 当前状态\n\n* 项目已可正常使用\n* 持续维护中\n* 欢迎 issue / PR / 使用反馈\n\n如果你也有类似的家庭打印需求，欢迎试试 👍\n",
@@ -834,15 +842,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/8487"
-  },
-  {
-    "id": 8486,
-    "title": "[开源自荐] miniCC : 一个用于学习agent系统的精简版本的claude code实现 with great llmdoc",
-    "content": "https://github.com/TokenRollAI/miniCC\n\n# 已经具备的能力\n\n1. 对标claude code tools\n2. SubAgent\n3. MCP\n4. 基于Textual的TUI\n5. 自定义系统提示词\n6. Prompt Cache\n\n# 重点\n1. 极为详细的文档建设: https://llmdoc.tokenroll.ai/TokenRollAI/miniCC/llmdoc/index.md (powered by [cc-plugin](https://github.com/TokenRollAI/cc-plugin))\n2. AskUserQuestion支持\n3. 核心代码1000行.\n\n# 演示\n\n### 基本对话\n<img width=\"1035\" height=\"522\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bafb4ae1-8ad3-497d-9309-d07072aefc5f\" />\n\n### 工具调用\n<img width=\"1035\" height=\"505\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9f3f51a5-f524-49f8-8659-db89dd5d77fb\" />\n\n### AskUserQuestion\n<img width=\"1035\" height=\"552\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc1c76ba-7662-45c4-8171-275113a55b40\" />\n\n### subagent\n<img width=\"1035\" height=\"303\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ef9e2e64-a123-4540-a407-1c41eb485642\" />\n",
-    "created_at": "2025-12-18T09:42:36Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8486"
   }
 ]
