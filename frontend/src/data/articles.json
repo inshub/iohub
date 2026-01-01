@@ -28,7 +28,9 @@
     "title": "【开源自荐】Zedis：Rust + GPUI 构建的Redis 客户端",
     "content": "项目地址：https://github.com/vicanso/zedis\n\n# 项目简介\n\nZedis基于 **Rust** 编写，UI 层使用了与 [Zed Editor](https://zed.dev) 同款的渲染引擎 **GPUI**。这意味着 Zedis 的每一个像素都是由 GPU 直接绘制的，带来了原生、60 FPS 丝般顺滑的体验。\n\n### 核心特性一览\n\n- **🚀 极速渲染**：告别 HTML/CSS 的重绘负担，即使在低配机器上也能秒开。\n  \n- **♾️ 虚拟列表**：实测轻松处理 **10万+** 级别的 Key 列表（我的手提百万级别也很流畅），配合 `SCAN` 迭代，滚动浏览毫无卡顿。\n  \n- **🧠 数据自动检测**：\n  \n  - 如果是 **GZIP/ZSTD** 压缩的数据，它会自动解压显示。\n    \n  - 如果是 **JSON/MsgPack**，它会自动格式化并高亮。\n    \n  - 如果是图片二进制流，直接显示预览图。\n    \n- 🛠️ 开箱即用**：自动适配 Cluster、Sentinel（单 Master 可免填名称）或单机模式。\n  \n- **💻 全平台支持**：支持 **macOS** 、**Windows** 和 **Linux**，均可在 GitHub Release 下载。\n  \n\n---\n\n# 项目截图\n\n<img width=\"2052\" height=\"704\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/53b74320-6682-40f9-960c-63fd90951cb4\" />",
     "created_at": "2026-01-01T01:24:37Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8588"
   },
   {
@@ -76,7 +78,9 @@
     "title": "【工具自荐】StreamPanel浏览器插件能更好的查看stream流式信息，方便ai聊天类应用的开发与调试",
     "content": "### 简介\n\n**Stream Panel** 是一个 Chrome DevTools 扩展，允许开发者实时监控和检查流式请求。它支持 **服务器发送事件 (SSE)** 和 **基于 Fetch 的流式连接**，是调试流式 API 和查看实时数据推送的必备工具。\n\n### 功能特性\n\n- 🔍 **实时监控**：拦截并显示所有 EventSource 和基于 Fetch 的 SSE 连接\n- 📊 **消息检查**：查看详细的消息数据，支持 JSON 语法高亮\n- 🔗 **连接管理**：同时跟踪多个流式连接\n- 🎯 **URL 过滤**：按 URL 过滤连接，专注于特定端点\n- 🔎 **消息筛选**：根据 JSON 字段值筛选消息，支持自动完成字段选择器\n  - 全等/包含匹配模式\n  - 多条件筛选，使用 AND 逻辑\n  - 嵌套字段支持（点号表示法）\n  - 实时筛选统计\n- 🔍 **高级消息搜索**：在所有消息内容中进行全文搜索，支持关键词高亮\n- 💾 **数据导出**：支持 JSON 或 CSV 格式导出捕获的数据\n  - 导出当前连接或所有连接\n  - UTF-8 BOM 支持，确保 Excel 正确编码\n  - 支持导出筛选后的数据\n- 📋 **筛选预设**：保存和管理自定义筛选配置\n  - 将当前筛选条件保存为可复用预设\n  - 快速加载已保存的预设\n  - 管理预设库（删除、重命名）\n- 🔄 **消息重放**：复制消息数据用于重放和测试\n- 📈 **连接统计**：查看全面的分析数据\n  - 总连接数和消息统计\n  - 活跃连接监控\n  - 每个连接的详细统计和持续时间追踪\n- 🖼️ **Iframe 支持**：监控主页面和 iframe 中的流式连接\n- 📐 **可调整列宽**：调整表格列宽以提高可读性\n- 🌓 **深色模式**：根据系统偏好自动支持深色模式\n\n### 链接\n\n仓库地址：[https://github.com/bywwcnll/StreamPanel](https://github.com/bywwcnll/StreamPanel)\n\n### 界面截图\n\n<img width=\"1162\" height=\"911\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/69d90f49-c5f8-409c-8c3d-39ed3f41d3f7\" />\n\n<img width=\"1160\" height=\"843\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ec39bc8e-b0d3-44cf-9661-8b822ce82f35\" />",
     "created_at": "2025-12-31T03:29:55Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8582"
   },
   {
@@ -132,7 +136,9 @@
     "title": "【开源自荐】py2dist - 将 Python 项目源码方便地编译为二进制文件发布的工具",
     "content": "# py2dist\n\n## 源码仓库\n\nhttps://github.com/xxnuo/py2dist\n\n## 项目起源：\n\n有时候需要发布 Python 项目，但是不希望客户自己乱改代码导致出问题，所以需要能够简单的保护源码文件。\n\n因为 Python 的设计哲学就是发布源代码，所以 CPython 并没有真正的编译功能，但是有许多人做了这方面的工作了。\n\n我比较了现在比较流行的几个项目：\n- [`Nuitka`](https://nuitka.net/) 的编译是真编译，经过特殊优化将 Python 代码编译成 C 代码，因此一些第三方包还要单独适配和设置，并且有时候包多了编译时间会很长，用了一段时间遂放弃。\n- [`Pyarmor`](https://github.com/dashingsoft/pyarmor) 专注于混淆加密，试了一下其实工作倒是正常，但是没有选择这个项目，因为我并不需要它的许多加密混淆功能，而且它是商业软件需要付费买机器许可证，所以没有选择这个工具。\n- [`Cython`](https://cython.org/) 完全兼容现代 Python 版本和生态，虽然纯 `.py` 代码的编译并非真的编译为 C 代码，但是也足够满足一般的保护源代码不被修改的目的了。\n\n工作流完善使用了一段时间了，没有问题，所以将这个项目写成一个工具包方便安装使用并发布😊。\n\n这个项目不涉及加密混淆，有这方面的需要可以自行优化。\n\n## 简要介绍\n\npy2dist 是一个使用 Cython 将 Python 源代码编译为二进制扩展模块（.so/.pyd）的工具，用于简单地保护源代码不被更改，适用于发布 Python 项目、Docker 服务镜像的构建等场景。\n\n## 功能\n\n- 支持 Linux、Mac、Windows 平台\n- 支持将单个 `.py` 文件或整个目录编译为二进制文件\n- 保持目录结构，自动复制其他文件到输出目录\n- 支持排除指定文件或目录\n- 自动检测并使用 ccache 加速编译\n- 获得 Cython 编译带来的一点性能提升\n- 提供 CLI 和 Python API 两种使用方式\n\n## 安装\n\n```bash\npip install py2dist\n```\n\n建议使用 [`uv`](https://docs.astral.sh/uv/) 安装和管理虚拟环境，并固定 Python 版本号，避免版本不一致导致编译结果与实际运行环境不一致。以 Python 3.12 为例：\n\n```bash\nuv python pin 3.12\nuv venv\nuv add --dev py2dist\n```\n\n> 不建议使用 `uv tool install py2dist` 方法安装，因为这样的话会调用系统的 Python 版本编译，导致编译结果与实际运行的虚拟环境环境不一致。\n\n## 使用\n\n编译单个文件：\n```bash\npy2dist -f myscript.py\n```\n\n或使用 `uv` 命令：\n```bash\nuv run py2dist -f myscript.py\n```\n\n输出文件位置为 `dist/myscript.so`\n\n编译整个目录：\n```bash\npython3 -m py2dist -d myproject\n```\n\n或使用 `uv` 命令：\n```bash\nuv run py2dist -d myproject\n```\n\n输出文件位置为 `dist/myproject`，并且会自动复制非 `.py` 文件到输出目录。\n\n编译生成的二进制扩展模块（.so/.pyd）与特定的 Python 版本绑定。您必须确保编译时使用的 Python 版本与运行时使用的 Python 版本完全一致（包括次要版本号，例如 3.10 和 3.11 是不兼容的）。\n\n复杂使用场景介绍详见：https://github.com/xxnuo/py2dist/blob/main/README_zh.md#%E7%A4%BA%E4%BE%8B%E7%94%A8%E6%B3%95",
     "created_at": "2025-12-30T08:33:30Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/8575"
   },
   {
