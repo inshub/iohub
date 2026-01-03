@@ -1,5 +1,29 @@
 [
   {
+    "id": 8602,
+    "title": "【开源自荐】ChatTutor: 可视化AI Tutor",
+    "content": "项目地址: https://github.com/HugeCatLab/ChatTutor\n\nChatTutor 是拥有电子白板功能的 AI 教师，相比于Chatbot主要通过文字与用户交互,在真实课堂中，教师拥有许多教学工具——粉笔、电脑、黑板等——这些都能帮助学生更好地理解知识。但对于Chatbot来说，仅靠文字传递信息是非常有限的，尤其是在 STEM 学科中\n\nChatTutor使用Geogebra, Mermaid等工具实现了更好的与学习者的交互\n\n<img width=\"2606\" height=\"1584\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e5f78b34-65fb-4487-8903-42c649b857c6\" />\n\n<img width=\"2606\" height=\"1584\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8521e8bd-1c5d-4128-b7ca-0254ff682954\" />\n\n<img width=\"2606\" height=\"1584\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aa17216f-1152-4f34-8305-cc64d1829feb\" />",
+    "created_at": "2026-01-03T13:53:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8602"
+  },
+  {
+    "id": 8601,
+    "title": "【免费工具自荐】winutil最新2026汉化版，不到1mb的windows优化神器",
+    "content": "仓库地址：https://github.com/constansino/WinUtil_CN/tree/main\n# WinUtil 中文汉化版（非官方）— 2026-01-03/Release 25.12.18同步版本\n<img width=\"2000\" height=\"1583\" alt=\"PixPin_2026-01-03_12-08-32\" src=\"https://github.com/user-attachments/assets/fa871cb1-4d96-4f2e-9a9d-99730a720812\" />\n\n\n首先非常感谢 Chris Titus Tech 以及所有贡献者开发并维护 WinUtil。这个工具把“安装软件 / 系统优化 / 修复 / 更新策略 / MicroWin”等常用功能整合得非常清晰，对普通用户也很友好。\n\n为方便中文用户理解每个选项的意义，我基于 **2026-01-03 我同步到的 WinUtil 版本**制作了一个 **中文汉化 + 功能说明**版本，并开放给社区使用与共同维护。\n\n> 免责声明：  \n> - 本汉化版为个人维护的**非官方**版本，与上游无隶属关系。  \n> - 我尽量只翻译 UI 文本与说明，不改动功能逻辑；但系统优化类工具仍存在风险，请自行评估并做好备份。  \n> - 如你更信任上游，请以官方版本为准。\n\n---\n\n\n\n## 使用方法（建议）\n\n###  一。傻瓜式\npowershell管理员执行\n\n```powershell\nirm \"https://raw.githubusercontent.com/constansino/WinUtil_CN/refs/heads/main/winutil.zh_CN.commented.20260103.ps1\" | iex\n````\n### 二。更推荐的方式：下载到本地后运行（更安全、可审计）\n1. 下载汉化版脚本到本地（`winutil.zh_CN...ps1`）\n2. 打开 PowerShell（建议管理员权限）\n3. 解除“来自互联网文件”的锁定（避免无法运行/闪退）：\n\n```powershell\nUnblock-File -Path \"\"你的目录\\winutil.zh_CN.commented.20260103.ps1\"\"\nSet-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force\n.\\winutil.zh_CN.commented.20260103.ps1\n````\n\n> 为什么要 Unblock-File：\n> Windows 会对从浏览器下载的脚本打上“Mark of the Web”，导致执行被限制或出现各种异常。解除锁定后更稳定。\n\n---\n\n## 汉化范围（已完成）\n\n### 1) UI 顶部导航与通用按钮\n- Install / Tweaks / Config / Updates / MicroWin 等导航标签\n- 常用按钮、提示文本、部分弹窗提示\n\n### 2) Tweaks 页面（重点）\n- **功能项标题：中文化**\n- **功能项解释：补充中文说明**（帮助理解“这个开关到底改了什么，会影响什么”）\n- 分组标题与注意事项（例如 Advanced Tweaks - CAUTION）\n\n> 说明：WinUtil 的很多条目不是写死在 XAML 里，而是来自脚本内部的配置（例如 tweaks 配置集合）。因此单纯汉化 XAML 会“看起来只翻了少量文字”。本汉化版把“配置层的条目标题/说明”也一起做了中文化。\n\n### 3) 其他页面（逐步完善中）\n- Install / Config / Updates / MicroWin：已汉化常用区域的标题与说明\n- 软件条目名称（例如 7-Zip、VS Code）通常保留产品英文名，避免用户对照困难\n\n---\n\n\n## 后续维护汉化的方法（给贡献者）\n\n为了尽量降低与上游合并冲突，本汉化遵循以下原则：\n\n1. **不改动功能逻辑**\n   不改注册表路径、命令、参数、键名、逻辑分支；只处理用户可见文本（标题/描述/提示）。\n\n2. **优先在“配置层”维护翻译**\n   WinUtil 很多 UI 文本来自配置集合（例如 tweaks 项的 Title/Description）。\n   因此维护时建议只更新对应配置项的显示字段，而不是改内部 key/逻辑判断字段。\n\n3. **建议用 patch / diff 方式维护**\n\n   * 上游更新后先同步原版脚本\n   * 再应用汉化 patch\n   * 对照冲突位置补齐新增条目的翻译\n\n如果你希望参与维护：\n\n* 提交 PR 增补新条目的中文解释\n* 或提交 issue 标注“哪一项翻译/解释不准确、需要更好的中文描述”\n\n---\n\n再次感谢上游开发者与社区贡献者！\n",
+    "created_at": "2026-01-03T13:28:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8601"
+  },
+  {
+    "id": 8600,
+    "title": "【工具自荐】LeetSolv：一个用于算法题复习的本地 CLI 工具",
+    "content": "**项目名称**：LeetSolv\n**项目地址**：https://github.com/eannchen/leetsolv\n\n**简介**：\nLeetSolv 是一个本地运行的 CLI 工具，用「间隔重复」的方式管理算法 / LeetCode 题目的复习。\n\n我在 2025 年中前后做了约 190 道 LeetCode，发现一个问题：题目一直在往前做，但旧的解题思路会慢慢遗忘。只靠收藏题目或笔记，很难形成稳定的复习节奏。\n\nLeetSolv 的思路不是背解法，而是定期重新做题。它会根据题目的重要性、熟悉度和思考深度，计算复习优先级，帮助决定「今天应该复习哪些题」。\n\n**特点**：\n\t•\t本地优先，不上传任何数据\n\t•\t针对解题过程，而不是闪卡记忆\n\t•\t适合长期算法练习和面试准备",
+    "created_at": "2026-01-03T13:15:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8600"
+  },
+  {
     "id": 8599,
     "title": "【工具自荐】nopin：让你输入密码又记不住密码的小工具",
     "content": "\n**免费自用、辅助减少手机使用时间的小工具/玩具**\n\n我习惯使用 iOS 的「屏幕使用时间 → App 限额」来帮助我减少手机的使用时间，但每当达到限额时，我可以轻松的输入 4 位密码来绕过限制（因为 4 位密码是我自己设置的），所以弄了个小工具，提高输入 4 位密码的成本，这样我就不会随意的绕过限制了 ✌️\n\n<img width=\"996\" height=\"978\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7de2720a-2940-44be-99a7-279c6bd374ee\" />",
@@ -814,31 +838,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/8501"
-  },
-  {
-    "id": 8500,
-    "title": "【工具自荐】免费的AI英语口语练习网站TalkAny",
-    "content": "自己找外教练习英语口语有一年了，也尝试过找chatgpt练习，发现自己当前这个口语水平还经常会有语法错误，即便是外教对话，也不能总是纠正我的语法错误，并且自己说的话，句子都是比较简单，复杂一点的学的时候记得，说起来就忘了。\n\n于是自己开发了一个AI口语练习网站，除了可以实时对话，更重要的是可以提供示例，还有实时纠正语法错误\n\n目前有个bug就是延迟问题，但是这个我还没有找到更好的解决方案，我尝试过浏览器端的推理模型，发现速度比云端的慢很多。以及AI语音模型，目前是用的电脑自带的，所以发音上有点生硬，也没有找到更合适的。\n\n想邀请大家体验，多多提问题\n\n这方面如果有推荐的，欢迎在评论区留言。\n\n[网站地址：https://talkany.app/](https://talkany.app/)\n\n<img width=\"1302\" height=\"833\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dd24f891-044d-46f1-9057-030db0efefff\" />\n\n",
-    "created_at": "2025-12-22T01:19:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8500"
-  },
-  {
-    "id": 8499,
-    "title": "【工具自荐】RemakePic｜为电商卖家生成“不重复但一致”的商品图",
-    "content": "分享一个我最近做的小工具，主要解决一个在跨平台电商中很常见、但一直比较麻烦的问题。\n\n**工具名称**\n\nRemakePic\nhttps://remakepic.com/\n\n**解决什么问题**\n- 很多电商卖家并不生产商品，而是从 B2B 平台（例如 1688、GigaB2B 等）采购，再销售到 Amazon、Wayfair、Perigold 等 B2C 平台。\n- 但不少平台会要求商品图片不能与已有商品图完全一致，必须是卖家自己制作的图片。\n- 现实中，这意味着卖家需要在「不改变商品本身」的前提下，重新制作一套视觉上不同、但信息一致的商品图（尺寸图、细节图、对比图等）。\n手工 PS 成本高、外包慢，而普通 AI 生成又容易“改坏产品”。\n\n**一个例子**\n\n<p align=\"center\">\n  <img src=\"https://github.com/user-attachments/assets/f20c6a5f-8ecf-4ade-b39a-4a9f5c774f4a\" width=\"45%\" />\n  <img src=\"https://github.com/user-attachments/assets/a6876478-3daa-43a7-ba60-e8bcc3f41985\" width=\"45%\" />\n</p>\n\n**RemakePic 做了什么**\n\nRemakePic 专注做一件事：\n在最大程度保持商品一致性的前提下，对商品图进行 AI 重绘，使图片不再与原图重复。\n\n具体特点：\n- 保留产品结构、比例、关键细节（不“魔改”商品）\n- 可用于重新生成主图、白底图、场景图、尺寸示意图\n- 适合需要合规上架、避免图片重复的电商场景\n- 支持中英文界面\n- 目前功能非常克制，只做“重绘一致性图片”这一件事。\n\n**适合谁**\n- 跨平台电商卖家（Amazon / Wayfair / Perigold 等）\n- 不具备设计团队、但需要大量合规商品图的个人或小团队\n- 想降低图片制作成本、避免侵权/重复风险的商家",
-    "created_at": "2025-12-21T14:00:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8499"
-  },
-  {
-    "id": 8498,
-    "title": "【开源自荐】我决定把我自用了两年的笔记项目开源出来",
-    "content": "\n**直接上手 >>** **[Demo](https://demo.rote.ink/)** ｜ **[Github](https://github.com/Rabithua/Rote)** ｜ **[Website](https://beta.rote.ink)** ｜ **[iOS APP](https://apps.apple.com/us/app/rote/id6755513897)** ｜ **[Explore](https://beta.rote.ink/explore)** ｜ **[Rabithua](https://beta.rote.ink/rabithua)**\n\n从 Rote 诞生到现在，有两年了，陆陆续续开发和重构了不知道多少个版本，截止写下这篇文章的时候，已经有 860 个 Commits 了，它伴随着我的成长。\n\n### Web 预览\n![Rote Preview](https://github.com/Rabithua/Rote/blob/main/doc/assets/imgs/github_preview_img.png?raw=true)\n\n### 诞生背景\n\n关于 Rote 的诞生，毫不避讳的说灵感来自于 [usememos](https://usememos.com/) 这个开源项目，在更早的时候我是 usememos 的忠实用户，还为 usememos 做了一个小程序的开源客户端（[memos_wmp](https://github.com/Rabithua/memos_wmp)），但是后面慢慢感觉这个项目变得臃肿且复杂，和自己的笔记需求有了更多的分歧。\n\n就自己另起炉灶开发了 [Rote](https://github.com/Rabithua/Rote)，Web 版本在界面和交互设计上更多的借鉴了 Twitter 和 Tailwindcss 官网的我喜欢的设计，实现了自己认为已经足够丝滑和优雅的响应式设计。\n\n虽然有探索页面以及 Reactions，但是我对它的定义并不是社区。探索页面只是会显示一些用户公开的笔记，就像我自己会经常公开一些自己觉得有意思的内容，其实本质上算是公开笔记功能的副作用。\n\n对我来说公开笔记是为了让对我感兴趣的人，有一个快速了解我在做什么，或者对什么感兴趣的渠道（你可能需要知道，在注册了账户后每个人都会有一个公开的个人页面，类似我的 [个人主页](https://beta.rote.ink/rabithua)，就像 Telegram 的 Channel，我个人觉得也可以用来做博客，在大概好几年前我就已经丧失了经常去写一些长篇幅内容的心力，像这种笔记片段正好，写起来没有压力）\n\n### Rote 的核心设计思路\n\n- **保持克制** - 一切为了优雅的笔记体验，和克制的互动体验\n- **低心智负担** - 更少的压力和更简单直观的记录体验乃至部署体验\n- **开放接口** - 开放 API 接口，支持在任意的场景记录或者获取数据\n- **无拘无束** - 完全掌控你的数据，自由导出数据\n\n### 已支持的功能\n\n- **Self-Hosted** 的 **Server 端**以及 **Web 端**（前后端分离设计）\n- 简单的部署体验，通过 `Docker compose` 或者 `Dokploy` 模版快速启动 [部署文档](https://beta.rote.ink/doc/selfhosted)\n- [iOS 客户端](https://apps.apple.com/us/app/rote/id6755513897) 支持任意**自托管的实例**（默认为我自己托管的站点，可通过多次点击登录页面左上角的欢迎文字，切换到你自己的实例）\n- 丝滑的 Web **响应式设计**以及沉浸感十足的 **PWA** 支持\n- **OAuth** 支持，目前已经支持 `GitHub` 和 `Apple Login`，`Google` 在计划中\n- **RSS** 支持，类似 [RSS 订阅](https://api.rote.ink/v2/api/rss/rabithua) 可以订阅我的动态\n- **Reactions** 匿名用户或者登录用户都可以对自己的或者别人公开的笔记戳表情\n- **S3** 储存支持，默认使用 `Cloudflare R2` 储存，可以跳过配置\n- **探索页面**，用来展示站内所有用户公开的笔记内容\n- **笔记标签**，**归档状态**，**可见性状态**，**附件**\n- 基础的组件**热力图**，**标签云**，**随机回顾**以及**搜索**支持\n- 带有权限控制的 **OpenKey** 用来部分使用勾选的能力（比如直接通过 `GET` 请求来添加笔记）\n- **管理员仪表页面**，包括站点设置，存储设置，界面设置，用户管理，安全设置，OAuth 登录\n- 实验中的功能，**Service Worker** 通知（我想让 Rote 实现类似 `Bark` 的即时通知），**数据导出**，`EveryDayOneCat` 小组件 🐱\n- **公开的笔记直链分享** [示例笔记](https://beta.rote.ink/rote/ad7c6701-d6de-4de0-9fe6-f89258db9da7)，你的**个人公开的主页** [Rabithua](https://beta.rote.ink/rabithua)\n- **多语言支持** 中文 / 英文\n\n## iOS 客户端功能\n\n- 基础的**笔记功能**（**增删改查**）\n- **个人信息**以及**个人主页**\n- **探索页面**（可以在里面看到别人公开的有意思的内容以及添加 **Reaction**）\n- **生成笔记分享图**（长按笔记）\n- **自定义界面显示**（文字粗细大小，是否显示头像，颜色主题偏好，是否开启震动反馈）\n- **统计页面**（现在的笔记数据沉淀太差，未来客户端会着重考虑这块）\n- 几个符合直觉的**小组件**（**最近笔记**，**随机笔记**，**热力图**）\n- **快捷指令**，复制完内容后手动触发快捷指令快速记录笔记（目前尚不稳定，可能在不同的语言环境或者特殊内容情况下出现问题）\n- 按照 `标签`/`可见性`/`是否归档`/`时间`/`关键字` **搜索笔记**\n- 非常丝滑的**时间轴视图**\n- **多语言支持** 简体中文 / 繁体中文 / 英文 / 日语 / 韩语 / \n- **iOS** 符合直觉的**原生交互体验**\n- 可爱的头上长草的未知生物\n- 未知**小彩蛋**\n\nRote iOS 客户端目前并没有开源，很惭愧由于生活拮据，未来考虑把 Rote 客户端作为付费项目来维持生计（目前仍然是免费下载），如果哪天我不为生计发愁了，会把它开源出来的。",
-    "created_at": "2025-12-21T13:25:01Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8498"
   }
 ]
