@@ -1,5 +1,37 @@
 [
   {
+    "id": 8613,
+    "title": "【开源自荐】效果领先的进化Agent框架，具备通用性场景的泛化能力~",
+    "content": "LoongFlow定位为进化 Agent 通用开发框架。它不仅定义了一套标准化的进化 Agent 开发范式，更面向通用优化与机器学习两个典型场景提供了高性能、实战级的 Agent 实现，旨在解决传统智能体在复杂任务中的“盲目尝试”与“长程推理”瓶颈。\n﻿\n项目基于创新的PES (Plan-Execute-Summarize, 计划-执行-总结) 认知范式，将进化算法的全局搜索能力与大语言模型的深度推理能力有机结合，显著提升了进化效率和进化稳定性（在典型任务circle_packing评估，进化效率提升约60%）。LoongFlow不仅提供了一套标准化的进化 Agent 开发框架，还同步开源了针对 通用任务与机器学习两个典型场景的高性能 Agent 实现，从原子组件、开发框架到典型场景 Agent，提供了全面的进化 Agent 构建和应用支持。\n﻿\n通用进化Agent（general_evolve）：在陶哲轩&AlphaEvolve（谷歌）发布开放性数学问题上验证，在11个题目上取得超过之前人类数学家已知最好结果，其中7个题目超过AlphaEvolve公布最好结果。\n\n![Image](https://github.com/user-attachments/assets/5ef2792e-0d7d-4849-88a7-13f5f36fd124)\n\n机器学习Agent（ml_evolve）：在mle-bench（openai）公布kaggle机器学习竞赛任务上验证，截止目前，取得金牌:16场、银牌:11场、铜牌:2场。\n\n![Image](https://github.com/user-attachments/assets/52063b5b-02ff-4fa4-8ac2-74c492eaf3e1)\n\n﻿\nLoongFlow：命名取意“龙场悟道”，将 模型之“知” 与 工具之“行” 深度熔炼，以知促行，由行成悟，开启 Agent 认知自主时代。不再是机械执行的工具，而是在 PES（规划-执行-总结）的循环磨砺中打破认知天花板，实现从“被动工具”向“自主智能”的进化飞跃。\n\n项目地址：https://github.com/baidu-baige/LoongFlow\n",
+    "created_at": "2026-01-05T03:54:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8613"
+  },
+  {
+    "id": 8612,
+    "title": "【开源自荐】PyGitX —— 基于 Rust 的高性能 Git 历史重写引擎（Python API）",
+    "content": "# 【开源自荐】PyGitX —— 基于 Rust 的高性能 Git 历史重写引擎（Python API）\n\n## 项目概述  \n\nPyGitX 是一款基于 Rust 实现、通过 PyO3 向 Python 暴露接口的高性能 Git 历史重写工具库。  \n项目专注于安全、可控、可扩展地修改 Git 提交历史，为 Python 生态提供一个比 GitPython / git filter-branch 更快、更可靠的底层能力。\n\nPyGitX 并非简单封装 Git CLI，而是直接操作 Git 的对象模型（commit / tree / ref / DAG），以 Rust 的内存安全与并发能力为核心，面向大仓库、复杂历史以及批量重写场景进行设计。\n\n- 项目地址：https://github.com/zangjiucheng/pygitx\n- PyPI 地址 https://pypi.org/project/pygitx/\n- 官方文档：https://zangjiucheng.github.io/pygitx/\n\n## 核心定位  \n\n- Rust 作为核心引擎，Python 作为唯一对外接口  \n- 面向 Git 历史结构级别的 rewrite / rebase / squash / filter  \n- 适用于工具开发者、平台工程、CI 自动化与仓库治理场景  \n\n## 核心特性  \n\n### 极致性能  \n- 基于 Rust 实现，直接操作 Git 对象数据库  \n- 避免 Shell 调用与进程切换开销  \n- 适用于大规模提交历史重写任务  \n\n### 历史重写引擎  \n- 提交信息重写（commit message rewrite）  \n- 作者 / 提交者信息重写（author / committer）  \n- Commit DAG 重建，安全维护父子关系  \n- 支持 rebase / squash / drop / filter 等历史操作模型  \n\n### Python 原生 API  \n- 仅提供 Python API，不强制依赖 CLI  \n- 面向脚本化、自动化、可组合使用  \n- 易于嵌入 CI、代码审计、仓库治理工具  \n\n### 示例代码  \n\n```python\nimport pygitx\nfrom pathlib import Path\n\nrepo = pygitx.open_repo(Path(\"path_to_repo\"))\n\n# Show HEAD and resolve a branch/tag/short oid\nhead = repo.head()\nprint(\"HEAD:\", head.id if head else \"None\")\nprint(\"main ->\", repo.rev_parse(\"main\"))\n\n# List the last 5 commits with author/message\nfor c in repo.list_commits(max=5):\n    print(f\"{c.id[:7]} {c.author}: {c.summary}\")\n\n# Reword an older commit on the current branch (linear history only)\n# (replace abc123 with the commit you want to reword)\ntarget = repo.rev_parse(\"HEAD~2\")\nresult = repo.reword(target, \"Refine API error handling\")\nprint(\"Reworded mapping:\", {k[:7]: v[:7] for k, v in result.old_to_new.items()})\nprint(\"Updated refs:\", {k: v[:7] for k, v in result.updated_refs.items()})\n\n# Keep only src/**/*.rs across history (drops other paths)\nkept = repo.keep_path(\"src/**/*.rs\")\nprint(\"Kept-only-Rust mapping:\", {k[:7]: v[:7] for k, v in kept.old_to_new.items()})\n\n# Backup refs before a rewrite\nbackup_root = repo.create_backup_ref()\nprint(\"Backups at:\", backup_root)\n```\n\n### 并发与可扩展性\n- Rust 多线程 / 多进程友好设计\n- 支持在分析、过滤阶段并行处理提交\n- PyO3 释放 GIL，避免 Python 层性能瓶颈\n\n### 安全与可控\n- 默认不破坏原始对象（可选备份 refs）\n- 明确 old → new commit 映射\n- 显式 API 设计，避免“隐式破坏历史”\n\n### 跨平台支持\n- Windows / Linux / macOS 全平台可用\n- 不依赖系统 Git 版本差异\n- 适合构建跨平台开发工具\n\n### 设计优势\n对比维度 | PyGitX | 传统方案\n-- | -- | --\n执行方式 | Rust 原生对象操作 | Git CLI / Shell\n性能 | 高（无进程切换） | 中等\n安全性 | 强（类型 + 内存安全） | 易踩坑\n可组合性 | 高（API 级） | 低\n自动化 | 极佳 | 一般\n\n\n### 典型使用场景\n- 企业级仓库作者信息批量修复\n- 清洗历史提交中的敏感信息\n- 自动化 rebase / squash 工作流\n- 构建 Git 历史分析 / 重写工具\n- CI 中的大规模仓库治理\n\n### 项目愿景\nPyGitX 的目标不是替代 Git，而是提供一个：\n> “可编程、可验证、可扩展的 Git 历史重写基础设施”\n\n### 未来将逐步支持：\n- 更完整的 rebase / merge DAG 处理\n- 类 git-filter-repo 的高级过滤能力\n- 更细粒度的性能并行优化\n- CLI 作为可选层（不影响 Python API 纯度）",
+    "created_at": "2026-01-05T03:50:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8612"
+  },
+  {
+    "id": 8611,
+    "title": "【开源自荐】PDFCraft : 一个纯浏览器端处理 PDF 文件的开源工具箱，目前有 80 多个工具，采用MIT协议",
+    "content": "GitHub： https://github.com/PDFCraftTool/pdfcraft\n工具预览： https://pdfcraft.devtoolcafe.com/\n\nPDFCraft 是一套全面的 PDF 工具套件，旨在注重隐私和性能。与许多在线转换器不同，PDFCraft 通过 WebAssembly 技术在浏览器内完全处理你的文件。您的文件从未离开您的设备，确保敏感数据的最大安全保障。\n\n该项目采用现代 Web 技术构建，旨在直接在浏览器中提供流畅、类似应用的体验。\n✨ 主要特征\n\n🔒 100% 私密：所有处理都在客户端完成。没有文件上传到外部服务器。\n🚀 快速响应：由 Next.js 和 WebAssembly 驱动，实现近乎原生的性能。\n🛠️ 全面工具集：超过 80 + 工具，可处理常见 PDF 任务。\n🎨 现代 UI：简洁、易用且响应式设计，采用 Tailwind CSS 构建。\n🌐 多语言：支持英语、西班牙语、法语、德语、葡萄牙语、日语、韩语和中文。\n\n<img width=\"2345\" height=\"1403\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4b239bac-df53-45fc-9287-450578e10df7\" />\n\n<img width=\"2400\" height=\"1423\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/85e3848b-eac4-4299-a1e3-cbd566254282\" />",
+    "created_at": "2026-01-05T03:36:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8611"
+  },
+  {
+    "id": 8610,
+    "title": "【开源自荐】 XApi 是高性能开源 Chrome 插件，在浏览器开发者工具中实现类 Postman 调试能力，支持 HTTP 请求全流程操作（拦截、调试、编辑、重放）及 Cookie、Origin 等敏感请求头修改。",
+    "content": "https://github.com/user-attachments/assets/3699e622-d54f-4350-9fed-52d85b4181c4\n\n亮点功能：\n1. 自动捕获当前标签页的 Fetch 与 XHR 网络请求流量\n2. 依托 declarativeNetRequest（DNR）技术，业内领先支持改写 Cookie、Origin、Referer 字段，突破浏览器标准安全限制\n3. cURL 无缝集成：粘贴原生 cURL 命令，即可即时生成可全量编辑的请求对象\n\n项目地址：\nhttps://github.com/lustan/XApi",
+    "created_at": "2026-01-05T02:05:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8610"
+  },
+  {
     "id": 8609,
     "title": "【网站推荐】MiSide Zero：一场打破虚拟与现实边界的 Meta 恐怖之旅",
     "content": "### 项目名称\nMiSide Zero\n\n### 项目地址\nhttps://misidezero.xyz/\n\n### 一句话介绍\n一款打破“第四面墙”的元恐怖（Meta-horror）解谜游戏官方入口，带你步入从手机屏幕延伸至现实的错位恐惧空间。\n\n### 详细介绍\nMiSide Zero 是由独立团队 AHe_Hole 创作的一款极具心理压迫感的元恐怖游戏。玩家在游戏中扮演一名正在手机上运行模拟养成类游戏的普通用户，却在一次意外中被卷入了虚构的游戏世界。在那里，原本乖巧可爱的游戏女主角 Mita 以一种病态且扭曲的方式欢迎你的到来。该项目通过清新的二次元美术风格与极度压抑的恐怖剧情形成鲜明反差，旨在探讨虚拟角色的自我意识以及玩家与游戏之间危险的边界感。\n\n### 核心特点\n* **打破第四面墙 (Breaking the Fourth Wall)：** 游戏设计巧妙地模糊了“屏幕外”与“屏幕内”的界限，通过模拟手机交互、修改本地文件等手段，让恐惧感直接作用于现实中的玩家。\n* **反差式视觉美学 (Contrast Aesthetic)：** 融合了明亮的 3D 二次元角色设计与阴森、荒废的场景建模，利用“诡异谷”效应营造出一种令人如坐针毡的违和感。\n* **深度的病娇式叙事 (Yandere Narrative)：** 核心角色 Mita 的情感表达从最初的纯真互动逐渐演变为极端的控制欲，为喜欢心理惊悚（Psychological Thriller）的玩家提供了极佳的情感冲击。\n* **非线性解谜 (Non-linear Puzzles)：** 谜题设计紧扣 Meta 元素，要求玩家跳出传统游戏思维，在看似温馨的日常互动中挖掘隐藏的逃生线索。\n\n### 技术栈\nUnity Engine (3D 渲染与物理引擎), C#, Custom Shaders (环境氛围渲染), WebGL (网页预览技术).\n\n### 适用场景\n非常适合**恐怖游戏爱好者**、**Meta-game（元游戏）忠实拥趸**（如《DDLC》、《史丹利的寓言》玩家）以及追求独特叙事体验的独立游戏鉴赏家。其极具戏剧张力的表现形式，也是游戏博主进行实况解说或视频创作的绝佳素材。\n\n<img width=\"997\" height=\"624\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/404aedec-094e-420d-8530-93c01f200b43\" />",
@@ -33,7 +65,7 @@
   },
   {
     "id": 8605,
-    "title": "网站推荐】GitPortrait - AI 驱动的 GitHub 开发者画像生成工具",
+    "title": "【网站推荐】GitPortrait - AI 驱动的 GitHub 开发者画像生成工具",
     "content": "[GitPortrait](https://gitportrait.refined-x.workers.dev) 是一个专注于将 GitHub 开发者数据转化为可视化画像和可分享卡片的创新平台，为程序员和工程师提供个性化的代码贡献分析和 AI 驱动的洞察。\n\n## 核心功能\n\n### 多维度数据可视化\n\n- **GitHub 数据深度分析**：自动分析用户的代码贡献、仓库活跃度、技术栈偏好等多维度数据\n- **可分享卡片生成**：一键生成精美的个人开发者画像卡片，支持多种模板（Linktree、Flomo、Multidimension、AI Portrait 等）\n- **排行榜系统**：公开的开发者排行榜，展示活跃度和贡献度排名，激发社区参与\n\n### AI 驱动的智能分析\n\n- **四阶段 AI 流水线**：通过 Analyzer → Insight → Gaze → Writer 四个阶段，生成结构化的开发者画像分析\n- **AI 画像生成**：基于 GitHub 数据自动生成个性化的 AI 画像，包含开发者风格、技术偏好、工作习惯等深度洞察\n- **技术栈智能识别**：自动识别和分析项目使用的技术栈，包括前端框架、后端技术、开发工具等\n\n### 零门槛使用体验\n\n- **GitHub OAuth 一键登录**：无需注册，使用 GitHub 账号即可快速开始\n- **浏览器直接使用**：完全基于 Web，无需安装任何软件或插件\n- **实时数据同步**：自动同步最新的 GitHub 数据，确保画像始终反映最新状态\n\n## 适用场景\n\n- **个人品牌展示**：在个人网站、简历、社交媒体上展示开发者画像\n- **团队招聘**：HR 和招聘经理可以快速了解候选人的技术背景和贡献\n- **社区交流**：开发者社区中的个人展示和互动\n- **自我洞察**：通过数据可视化了解自己的代码贡献模式和成长轨迹\n\n---\n\n**网站链接**：https://gitportrait.refined-x.workers.dev\n\n## 功能预览\n\n![](https://refined-x.com/asset/git-portrait/Snipaste_2026-01-04_14-24-12.png)\n\n![](https://refined-x.com/asset/git-portrait/Snipaste_2026-01-04_14-25-09.png)\n\n![](https://refined-x.com/asset/git-portrait/Snipaste_2026-01-04_14-28-26.png)\n\n![](https://refined-x.com/asset/git-portrait/Snipaste_2026-01-04_14-28-50.png)\n\n![](https://refined-x.com/asset/git-portrait/Snipaste_2026-01-04_14-29-14.png)\n\n![](https://refined-x.com/asset/git-portrait/Snipaste_2026-01-04_14-29-26.png)\n\n![](https://refined-x.com/asset/git-portrait/card-show.jpg)\n",
     "created_at": "2026-01-04T07:06:03Z",
     "labels": [],
@@ -802,39 +834,5 @@
     "created_at": "2025-12-23T02:52:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8512"
-  },
-  {
-    "id": 8511,
-    "title": "【开源自荐】ChatLab - 一个本地化的聊天记录分析工具，通过 SQL 和 AI Agent 分析你的聊天记录",
-    "content": "github：[ChatLab](https://github.com/hellodigua/chatlab)\n\n简单介绍下：\n\nChatLab 是一个免费、开源、本地化的，专注于分析聊天记录的应用。通过 AI Agent 和灵活的 SQL 引擎，你可以自由地拆解、查询甚至重构你的社交数据。\n\n为什么开发：Github上的大部分聊天记录分析都是用Python写的，分析还得本地跑命令，很麻烦，所以我写了一个傻瓜版，拖拽聊天记录进去就能直接分析。\n\n- 使用 Electron 开发，纯本地保存和分析（AI功能例外）\n- 定义了一套标准化格式，在导入的时候统一转换，现在它能兼容任何聊天软件的格式\n- 导入后会把聊天记录存在本地SQLite，然后通过SQL去查询分析\n- 写了一些Function Calling，这些天测试了一下，AI分析聊天记录的可玩性很不错，不过后续有非常大的优化空间\n- 本地AI方面，我测试了qwen-8B，这个是最低的模型要求了，再低的话连tool call都不知道调用，而且分析出来的内容也会比较智障。要是你电脑性能可以的话，建议还是配置本地AI模型，更加安全。\n\n## 截图看看它的功能\n\n### 聊天分析总览\n\n<img width=\"2602\" height=\"1678\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/89701804-005a-4a5c-9113-3b9c42bb3a51\" />\n<img width=\"2584\" height=\"1580\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ba22bd9-7a88-4e7b-bdbb-f2f974e89ce4\" />\n\n### 群排行榜\n\n<img width=\"2360\" height=\"1520\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/69855461-3604-4850-a471-5ca3a9612849\" />\n\n### 最火复读内容\n\n<img width=\"2360\" height=\"1520\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/22135d55-be1e-47e4-9921-2e92012b4347\" />\n\n### 聊天记录查看器\n\n![Image](https://github.com/user-attachments/assets/db62dd09-512b-4d6b-89e8-40fe00661403)\n\n### AI对话功能\n\n<img width=\"2360\" height=\"1722\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7e37ddcd-beff-462a-a686-c62374dd3dfe\" />\n\n### AI生成SQL查询聊天记录，并让AI总结\n\n![Image](https://github.com/user-attachments/assets/bf25013e-2480-4a83-9d48-313c409441f3)\n\n目前开发进度大概在 30% 左右，还有一堆想法没实现，不过据群友反馈，可玩性已经比较高了，所以开源了出来，希望得到更多的建议反馈。\n\n",
-    "created_at": "2025-12-23T02:25:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8511"
-  },
-  {
-    "id": 8510,
-    "title": "【工具自荐】ReviewMyContract.org 是一款面向普通用户和中小企业的 AI 合同智能审查平台。",
-    "content": "## 基本信息\n\n- **网站名称**  \n  ReviewMyContract | AI 合同智能审查平台\n- **网址链接**  \n  https://reviewmycontract.org\n\n## 网站简介\n\nReviewMyContract 是一款专业的合同分析平台，支持上传中英文合同，一键完成自动审查与结构化分析。\n\n平台通过 AI 模型识别潜在风险条款、法律漏洞、不公平或模糊条款，并以可视化方式给出风险等级与提示，帮助非法律专业人士也能看懂合同要点。\n\n## 核心功能\n\n- **智能风险识别**：自动标记违约责任不对等、单方解除权、模糊表述、隐藏费用等潜在风险条款，并生成简明解释与修改建议。\n- **合同要点提取**：自动提取合同中的当事人信息、生效与终止时间、金额、违约责任、争议解决等关键要素，便于快速浏览和记录。\n- **多语言与多场景支持**：面向个人、自由职业者和中小企业，支持多种合同类型（服务合同、劳动合同、租赁合同等），适合签约前快速自查。\n\n![Dashboard](https://reviewmycontract.org/_next/image?url=%2Fimages%2Fdashboard.png&w=1920&q=75)\n\n![Details](https://reviewmycontract.org/_next/image?url=%2Fimages%2Fdetails.png&w=1920&q=75)\n\n## 推荐理由\n\n- 一键审合同，极大降低\"看不懂条款但又不敢问律师\"的心理成本，让用户在签字前就能对合同风险有清晰预期。\n- 相比传统人工审查，AI 可在秒级完成全文扫描和风险标注，适合高频签约、跨境合作或需要批量审查的场景，显著提升效率。\n- 产品界面简洁，上手门槛低，不需要专业法律背景即可使用，同时保留与专业法律服务对接的空间，适合作为签约前的第一道安全防线。",
-    "created_at": "2025-12-22T16:10:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8510"
-  },
-  {
-    "id": 8509,
-    "title": "## 好工具推荐 Desearch.ai 推特 Twitter X 实时搜索 API 官方替代方案  ",
-    "content": "## 好工具推荐 Desearch 推特 Twitter X 实时搜索 API 官方替代方案  \n稳定 省钱 适合长期使用\n\n最近在寻找 Twitter X 的数据接口，主要需求是 **实时搜索 推文抓取 历史数据**。  \n对比了 Twitter 官方 API 以及多个第三方服务之后，发现 **Desearch** 是一个非常值得推荐的方案。\n\n整体使用下来，不管是稳定性、价格还是接口完整度，都非常适合作为 Twitter X 官方 API 的替代方案。\n\n---\n\n## 核心功能\n\n• 实时搜索 Twitter X 推文  \n• 获取历史推文数据  \n• 支持关键词 用户 时间范围等查询条件  \n• 高并发请求支持  \n• 返回字段完整 结构清晰  \n• 适合爬虫 数据分析 AI Agent 使用  \n\n---\n\n## 为什么推荐 Desearch\n\n### 1 价格友好  \n相比 Twitter 官方 API 动辄 200 美元起步的套餐，Desearch 采用更灵活的定价方式，整体成本低很多，对个人开发者和中小团队非常友好。\n\n### 2 实时性强  \n支持真正的 Real time 搜索，不是延迟几小时的数据，非常适合做监控 舆情分析 交易信号 社媒追踪。\n\n### 3 API 简单易用  \n接口设计直观，返回结构清晰，上手非常快，文档也写得比较清楚。\n\n### 4 去中心化架构  \n不是单点服务，整体稳定性比很多传统 Twitter 爬虫 API 要强，适合长期集成。\n\n---\n\n## 已提供的 API 接口\n\n| API | 说明 | 鉴权方式 | 实时 | 历史 |\n|---|---|---|---|---|\n| [Twitter Search](https://docs.desearch.ai/docs/basic-x-search) | 去中心化实时 Twitter X 搜索 API | apiKey | Yes | Yes |\n| [Web Search SERP](https://desearch.ai/docs/api-reference/get-web) | 去中心化实时 Web 搜索 API | apiKey | Yes | Yes |\n| [AI Search](https://desearch.ai/) | 去中心化实时 AI 搜索与总结 | apiKey | Yes | Yes |\n\n---\n\n## 文档地址\n\nTwitter X 搜索文档  \nhttps://docs.desearch.ai/docs/basic-x-search  \n\n官网  \nhttps://desearch.ai  \n\n---\n\n## 适合哪些人使用\n\n• 想替代 Twitter 官方 API 的开发者  \n• 做社媒监控 舆情分析 数据研究  \n• AI Agent 或 LLM 需要实时外部信息  \n• 不想被官方 API 价格和限制卡住的团队  \n\n---\n\n整体来说，如果你正在寻找一个 **稳定 便宜 实时** 的 Twitter X 数据解决方案，Desearch 非常值得一试。  \n有问题也可以直接查看文档或在 GitHub 里交流。",
-    "created_at": "2025-12-22T13:27:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8509"
-  },
-  {
-    "id": 8508,
-    "title": "【开源自荐】octopus:为个人用户打造的高颜值大模型 API 转换聚合 负载均衡 创新性的分组管理方式 完美支持 codex cc 热重载渠道模型 无需重启客户端",
-    "content": "\n### 🖥️ 桌面端\n\n<div align=\"center\">\n<table>\n<tr>\n<td align=\"center\"><b>首页</b></td>\n<td align=\"center\"><b>渠道</b></td>\n<td align=\"center\"><b>分组</b></td>\n</tr>\n<tr>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/desktop-home.png\" alt=\"首页\" width=\"400\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/desktop-channel.png\" alt=\"渠道\" width=\"400\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/desktop-group.png\" alt=\"分组\" width=\"400\"></td>\n</tr>\n<tr>\n<td align=\"center\"><b>价格</b></td>\n<td align=\"center\"><b>日志</b></td>\n<td align=\"center\"><b>设置</b></td>\n</tr>\n<tr>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/desktop-price.png\" alt=\"价格\" width=\"400\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/desktop-log.png\" alt=\"日志\" width=\"400\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/desktop-setting.png\" alt=\"设置\" width=\"400\"></td>\n</tr>\n</table>\n</div>\n\n### 📱 移动端\n\n<div align=\"center\">\n<table>\n<tr>\n<td align=\"center\"><b>首页</b></td>\n<td align=\"center\"><b>渠道</b></td>\n<td align=\"center\"><b>分组</b></td>\n<td align=\"center\"><b>价格</b></td>\n<td align=\"center\"><b>日志</b></td>\n<td align=\"center\"><b>设置</b></td>\n</tr>\n<tr>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/mobile-home.png\" alt=\"移动端首页\" width=\"140\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/mobile-channel.png\" alt=\"移动端渠道\" width=\"140\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/mobile-group.png\" alt=\"移动端分组\" width=\"140\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/mobile-price.png\" alt=\"移动端价格\" width=\"140\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/mobile-log.png\" alt=\"移动端日志\" width=\"140\"></td>\n<td><img src=\"https://raw.githubusercontent.com/bestruirui/octopus/refs/heads/dev/web/public/screenshot/mobile-setting.png\" alt=\"移动端设置\" width=\"140\"></td>\n</tr>\n</table>\n</div>\n\n\n## ✨ 特性\n\n- ⭐ **分组管理**  - 分组名称即请求模型名称，无需重启客户端即可更换渠道和模型\n- 🔀 **多渠道聚合** - 支持接入多个 LLM 供应商渠道，支持 OpenAI Chat / OpenAI Responses / Anthropic / Gemini\n- ⚖️ **负载均衡** - 四种负载均衡模式，更好的确保流畅稳定的编码体验\n- 🔄 **协议互转** - 支持 OpenAI Chat / OpenAI Responses / Anthropic 三种 API 格式互相转换\n- 💰 **价格同步** - 自动更新模型价格\n- 🔃 **模型同步** - 自动与渠道同步可用模型列表\n- 📊 **数据统计** - 全面的请求统计、Token 消耗、费用追踪\n- 🎨 **优雅界面** - 简洁美观的 Web 管理面板\n\n## 开源地址\n\nhttps://github.com/bestruirui/octopus",
-    "created_at": "2025-12-22T13:04:00Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8508"
   }
 ]
