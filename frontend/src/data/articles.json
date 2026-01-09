@@ -1,5 +1,13 @@
 [
   {
+    "id": 8656,
+    "title": "【工具自荐】OpenLicr - 开源许可证选择、对比与生成工具",
+    "content": "### OpenLicr - 开源许可证选择、对比与生成工具\n大家好，非常高兴能在这里介绍我的第一款vibe coding产品——openlicr，这是一个聚焦于开源许可证选择、对比与生成的网站。\n[openlicr.com](https://openlicr.com)\n\n### 网站页面\n\n<img width=\"946\" height=\"393\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d8b0c4f3-e592-446d-8d5c-631246717b0b\" />\n\n<img width=\"595\" height=\"390\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/10083d1a-a245-4677-95c5-8b4b88988c5f\" />\n\n<img width=\"847\" height=\"702\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d204872f-da34-423e-b728-929f81f3e98d\" />\n\n<img width=\"1562\" height=\"801\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/97fc30cc-ce47-4f12-9f04-0712f071ee40\" />\n\n<img width=\"590\" height=\"309\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a5b5653c-e98a-4da8-a08e-7408e2ff2292\" />\n\n<img width=\"305\" height=\"299\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b6f6d053-e685-40d9-8935-fe7f52b4009d\" />\n\n\n ### 为什么要开发这个网站？\n作为开发者，我在做项目时经常需要结合开源项目，所以需要经常关注它们的许可证到底是哪个。每次都要去搜索 MIT、GPL、Apache 等许可证的具体条款和区别，这个过程既耗时又繁琐。\n市面上确实有一些专门收录开源许可证信息的网站，但用下来总觉得不够满意：\n信息不够全面 - 很多网站只收录了几个主流许可证，对一些小众但有用的许可证缺乏介绍；\n界面设计糟糕 - 即使是业内访问量最高、最知名的网站，排版布局也非常陈旧，查找信息很费劲；\n对比功能薄弱 - 想同时对比几个许可证的差异时，需要来回切换页面；\n\n### OpenLicr功能有哪些\n目前收录了30+开源许可证，每个许可证的详细信息和核心条款；\n多个许可证之间的对比功能；\n针对不同场景和需求的选择模块；\n一键生成许可证。\n所有许可证信息都经过与官方文档核对，确保准确。\n\n### 开发的过程\n这是我的第一个vibe coding产品，一开始我试图通过ai完成所有开发过程，但随着开发深入就发现ai实在容易糊弄人，而且你如果不指出，它很可能就不承认，这个在许可证文本确认上尤为突出。\n作为一个开源许可证信息网站，毫无疑问，最重要的是许可证文本本身，一开始我认为这个很容易，ai应该有能力给出具体的文本信息，结果试过几个不同ai，要么给的不是官网来源的，要么给ai指定官网，也仍然整理出错误的。\n无奈，回归传统手工方式，手工从官网下载文件，让ai整理到项目，到这里以为大功告成。\n但没想到一个工具整理一个固定内容都会出错。\n无奈，下载的文件A与ai基于这个整理到项目的文件B，我直接拉到word进行文件比较，反复修改，直到确认是100%对齐。关键时候，还得是word靠谱！\n\n这个项目上线已经超过半年，大部分时间处于无人问津的状态。对于我的第一款产品，当然已经做好这个心理准备，权且当做自己日常使用的工具就好了。\n对于这个工具，大家有什么好的意见或者建议，也欢迎一起交流。",
+    "created_at": "2026-01-09T01:42:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8656"
+  },
+  {
     "id": 8655,
     "title": "【开源自荐】一个文件系统存储的记忆框架，与Claude的skills设计内涵相似，非embedding检索",
     "content": "GitHub：https://github.com/NevaMind-AI/memU （如果大家感兴趣，求个star⭐️，感谢！）\n\n**memU**是一个基于文件的agent记忆框架，将记忆以**Markdown文件**的形式存储，使其可读、可检查。这跟Claude的skills在设计内涵上是相似的。系统会完整保留原始输入数据，不进行删除、修改或激进裁剪，并原生支持多模态输入。memU 会从原始数据中抽取结构化的文本记忆单元，并将其组织到分类的记忆文件中。在此结构之上，系统不仅支持基于RAG的检索方式，还支持基于LLM的直接文件读取，从而弥补RAG在时序推理和复杂逻辑场景中的局限。\n此外，memU支持对记忆进行创建、更新和删除，并提供了server的ui仓库，方便管理和集成。\n\nmemU主打：\n**轻量**：使用轻量，好理解，也便于二次开发。prompt可实现针对场景高度个性化定制\n**双检索模式**：除了传统RAG之外，memU还支持基于LLM直接读文件内容的深度语义理解和推理的检索方式，能够弥补RAG在复杂时序、逻辑任务上的不足，提高准确度\n**Evolve**：这是一个内化在结构里面的机制，这一点很特别。在设计上，检索会优先发生在Category层。如果某条记忆在这一层长时间未被引用、被“遗忘”，检索就会向下层继续进行。当这种情况发生时，MemU 会触发一次演化过程，生成新的关联关系，使这条记忆在下次更有可能直接在Category层被检索到\n\n<img width=\"6391\" height=\"3916\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bcade764-0883-4446-8c08-41fd56acf1ec\" />\n\n<img width=\"6634\" height=\"4643\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/100aa70c-87b3-4fd5-9ded-118a2c86d3e4\" />\n\n<img width=\"7945\" height=\"5014\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc9cb052-538c-43c5-ab90-655d3452a5f0\" />\n\n<img width=\"6644\" height=\"6357\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a2783a19-880d-472e-bf4c-32c964bb2649\" />",
@@ -814,13 +822,5 @@
     "created_at": "2025-12-27T09:28:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8557"
-  },
-  {
-    "id": 8556,
-    "title": "【工具自荐】基于谷歌Nano Banana (pro)的一键AI换衣神器：AI Clothes Changer",
-    "content": "<img width=\"1200\" height=\"630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e322d10f-babc-4377-860c-da9b06e24e36\" />\n\n[AI Clothes Changer](https://aiclotheschanger.net) 是一款基于先AI 的虚拟试衣与换装工具，支持谷歌Nano Banana (Pro)、GPT-4O、Flux 2、Seedream 等多种模型，一键实现真实自然的服装更换效果。适用于 电商产品图生成、个人穿搭体验、自媒体内容创作以及创意图片生成 等多种场景。 无需模特重拍、无需摄影棚，只需几分钟，即可完成多套风格造型的可视化展示。\n\n### 我们和别人不一样\n1. 可在 Nano Banana (Pro)、GPT-4O、Flux、Seedream 等模型之间自由切换\n2. 可编辑提示词，兼顾新手与高级用户，可用语言描述给模特换什么样的服装\n3. 成为我们的订阅会员，生成的AI换装图可用于商业用途\n\n### 使用流程（3 步完成换装）\n1. 上传个人照片或选择模特\n2. 上传服装（支持鞋、帽、手表等配饰上传）\n3. 生成并下载新图片\n\n### 免费体验\n新用户首次登录就能获得3积分，可获得一次免费体验的机会\n\n### 网站地址\n全球官网：https://aiclotheschanger.net\n中文官网：https://aiclotheschanger.net/zh/\n\n### 网站截图\n<img width=\"1200\" height=\"725\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0bfb59ed-cc15-4a5f-b9e3-c3a5ea6722ed\" />\n\n关键词\nAI Clothes Changer · AI Virtual Try-On · AI 换衣 · 虚拟试衣 · 电商产品图生成 · AI Fashion\n最后更新：2025-12",
-    "created_at": "2025-12-27T03:08:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8556"
   }
 ]
