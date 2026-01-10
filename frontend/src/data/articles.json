@@ -1,5 +1,21 @@
 [
   {
+    "id": 8671,
+    "title": "【开源自荐】Rox：一个使用 Rust 实现的解释器",
+    "content": "## 🧠 **简介.**  Rox is a strongly-typed, tree-walk interpreter, implemented in Rust.\n\nBased on the excellent book [Crafting Interpreters](https://craftinginterpreters.com/) by Bob Nystrom, this implementation diverges to Rust patterns, focusing on memory safety, strict type checking, and a robust error-handling architecture.\n\n### 🎯 **地址.** [https://github.com/inblossoms/rox](https://github.com/inblossoms/rox).\n\n### 🪄 **贡献参与.** [https://github.com/inblossoms/rox/blob/main/CONTRIBUTING_zh.md](https://github.com/inblossoms/rox/blob/main/CONTRIBUTING_zh.md).\n\n### 🌟 **Usage.**\n\n**1. REPL Mode (Interactive)**\nRun without arguments to start the interactive shell:\n\n```bash\ncargo run\n```\n\n```javascript\n> var a = \"Hello\";\n> print a + \" World\";\nHello World\n```\n\n**2. Script Mode**\nRun a `.rox` file:\n\n```bash\ncargo run -- scripts/fibonacci.rox\n```\n\n#### 📝 Syntax Examples\n\n**Classes and Inheritance:**\n\n```javascript\nclass Doughnut {\n  cook() {\n    print \"Fry until golden brown.\";\n  }\n}\n\nclass BostonCream < Doughnut {\n  cook() {\n    super.cook();\n    print \"Pipe full of custard.\";\n  }\n}\n\nBostonCream().cook();\n```\n\n**Closures:**\n\n```javascript\nfun makeCounter() {\n  var i = 0;\n  fun count() {\n    i = i + 1;\n    print i;\n  }\n  return count;\n}\n\nvar counter = makeCounter();\ncounter(); // \"1\"\ncounter(); // \"2\"\n```\n\n**Bitwise Operations & Control Flow:**\n\n```javascript\nvar flags = 5; // 0101\nvar mask = 1;  // 0001\n\nif ((flags & mask) == 1) {\n    print \"Bit is set!\";\n}\n\nfor (var i = 0; i < 10; i += 1) {\n    if (i % 2 == 0) continue;\n    print i;\n}\n```\n---\n\n### **更多详细内容请参考：[Rox](https://github.com/inblossoms/rox)** ",
+    "created_at": "2026-01-10T03:21:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8671"
+  },
+  {
+    "id": 8670,
+    "title": "【网站自荐】Viidx AI：多模型 AI 视频生成聚合平台（支持 Reference to Video / Frames to Video）",
+    "content": "**项目**：Viidx  AI\n**链接**：https://viidx.com  \n**一句话简介**：把最新的 AI 视频生成模型放到一个统一界面里，方便对比与控制，不用来回切换平台/订阅。\n**截图/演示**：\n\n<img width=\"1312\" height=\"758\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2aeee20c-aae0-43f9-8343-304f7485e970\" />\n\n<img width=\"1139\" height=\"735\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/23aba3ec-4cd3-4b1c-be23-249aec97b2e8\" />\n\n<img width=\"1109\" height=\"741\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/781b5d19-043d-4504-8464-2b902464e22c\" />\n\n<img width=\"1184\" height=\"751\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/45d519f9-bca5-41c1-a7f1-afc67fa6e988\" />\n\n<img width=\"1256\" height=\"873\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eae8e900-0ed3-4c42-809d-e885ce30abbe\" />\n\n**它解决什么问题**\n- 想体验不同视频模型的效果，但每家平台界面/订阅/参数各不相同，切换成本高。\n- 需要比 text-to-video 更强的可控性（例如参考视频的运动/风格，或用首尾帧控制镜头）。\n\n**核心功能**\n- Multi-Model Support：可在多个模型之间切换对比（例如 Seedance 1.5 Pro / Veo 3.1 / Sora 2）。\n- Advanced Control：\n  - Frames to Video：用起始帧/结束帧控制生成结果\n  - Reference to Video：用视频作为参考，引导运动/风格\n- 工作流体验：精确的画幅比例选择、统一的 credits 管理等。\n\n**适合谁**\n- 视频创作者 / AI 视频尝鲜用户 / Indie maker / 需要快速试错的团队\n\n**当前状态**\n- Early release，正在持续新增模型与工作流，欢迎反馈。",
+    "created_at": "2026-01-10T02:59:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8670"
+  },
+  {
     "id": 8669,
     "title": "【工具自荐】Video Thumbnail Generator 纯前端、隐私安全的视频缩略图生成器",
     "content": "### 🔧 工具名称\n\nVideo Thumbnail Generator / 视频缩略图生成器\n\n### 🔗 工具在线地址\n\n[Video Thumbnail Generator](https://videotojpg.com/video-thumbnail-generator \"Video Thumbnail Generator\")\n\n\n### 📖 工具简介\n\n一个完全基于浏览器的视频缩略图生成工具。利用 WebAssembly 技术，无需将视频上传至服务器，所有处理均在用户本地完成，确保了极高的隐私安全性和处理速度。\n\n### ✨ 核心功能与技术特点\n\n* **全格式兼容（含 H.265）**：支持 MP4, WebM, MOV, AVI, MKV 等主流格式，更能**直接在浏览器中解码播放 H.265/HEVC 视频**。\n* **帧级精准控制**：提供直观的时间轴，支持按秒、分钟跳转，甚至**逐帧步进**，能精准定位到视频的任意一帧。\n* **灵活截图模式**：既支持捕获单张完美画面，也支持设置间隔自动批量截取多张缩略图。\n* **多样化导出**：支持导出为 JPEG, PNG, WebP 格式，并提供 ZIP 一键打包下载功能。\n\n<img width=\"1243\" height=\"719\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5fd0ec7f-158b-4836-818a-7c9af3f6d465\" />\n\n### 👨‍💻 推荐理由\n\n市面上的同类工具大多需要上传文件，不仅速度受限，还存在隐私泄露风险。这个工具展示了现代 Web 技术（WASM）在多媒体处理领域的潜力，轻量、免费且无广告，是一个“小而美”的实用工具。\n",
@@ -804,21 +820,5 @@
     "created_at": "2025-12-30T03:27:31Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8571"
-  },
-  {
-    "id": 8570,
-    "title": "【文章自荐】尼尔·斯蒂芬森|起初是命令行",
-    "content": ">In the Beginning There was the Command Line\n>\n>作者：尼尔·斯蒂芬森（Neal Stephenson, 1999）\n> \n>译者：[1Haschwalth](https://github.com/1Haschwalth)（2023/11/22）\n\n1. https://zhuanlan.zhihu.com/p/1987205696069062727\n2. https://github.com/1Haschwalth/Translation/blob/MAIN/Archive/Backup/bibanon/In_the_Beginning_There_was_the_Command_Line.md",
-    "created_at": "2025-12-30T03:02:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8570"
-  },
-  {
-    "id": 8569,
-    "title": "【开源自荐】 ONES WIKI MCP",
-    "content": "https://github.com/yunlongwen/ones-mcp\n\n\n📖 项目背景\nONES 官方提供了 [ONES Copilot](https://docs.ones.cn/wiki/#/team/6mRWUuNv/space/JwHAUL1L/page/UEQ6z54V) 产品，包含了 MCP 服务器功能。但 ONES Copilot 需要额外付费授权，对于未购买该服务的团队来说无法使用。\n\n本项目通过调用 ONES 现有的开放 API（Wiki API），为未购买 ONES Copilot 的团队提供了一个开源、免费的 MCP 服务器实现方案，让 AI 助手（如 Cursor、Claude Desktop）能够访问和查询公司内网的 ONES Wiki 知识库。\n\n🎯 核心价值\n💰 零成本：无需购买 ONES Copilot 授权，利用现有 ONES API\n🔓 开源免费：代码完全开源，可自由部署和定制\n🏢 企业友好：支持内网部署，数据不出公司网络\n👥 多用户支持：支持团队多人同时使用，每人使用自己的账号\n🔐 权限隔离：基于 ONES 原有权限体系，确保数据安全\n📝 项目简介\n这是一个用于连接 ONES Wiki 知识库的 MCP（Model Context Protocol）服务器，允许 AI 助手通过 MCP 协议访问和查询公司内网的 ONES Wiki 知识库。\n\n✨ 主要特性\n🔐 多用户认证模式 - 每个用户使用自己的 ONES 账号，权限隔离\n📚 获取知识库空间列表\n🌲 查看知识库页面树结构\n📄 读取页面完整内容，包括：\n📝 标题、段落、列表等富文本内容\n💻 代码块（支持各种编程语言语法高亮）\n📊 表格数据\n🖼️ 图片引用\n📈 图表内容（Mermaid 时序图/流程图、PlantUML 类图/时序图等）\n🔍 搜索知识库页面\n📜 查看页面历史版本\n🌐 HTTP/SSE 服务端部署，支持多人同时使用\n\n🎯 最新更新（v2.0）\n完整的内容解析支持：\n✅ 代码块：PlantUML、Mermaid、Python、Java 等所有语言\n✅ 表格：自动转换为 Markdown 格式\n✅ 图片/附件：提取图片 URL 和描述\n✅ 文档结构：完整保留标题、列表、段落层级\n现在 AI 可以直接分析 Wiki 中的 PlantUML 系统架构图、时序图等！",
-    "created_at": "2025-12-30T01:14:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8569"
   }
 ]
