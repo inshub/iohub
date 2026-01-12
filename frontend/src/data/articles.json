@@ -1,5 +1,13 @@
 [
   {
+    "id": 8693,
+    "title": "【工具自荐】AI歌曲翻唱",
+    "content": "在线 AI 音乐重塑工具，简单高效，一键焕新 【https://aicoversong.com/】\n\n✨ 核心功能\n\nAI 智能翻唱 - 上传音频，保留原曲旋律与歌词，自动生成全新版本\n\n曲风自由重塑 - 流行、摇滚、爵士、电子...多种音乐风格一键切换\n\n极简交互设计 - 摒弃复杂参数，只需上传音频，剩下的交给 AI\n\n为什么选择我们的工具\n\n快速高效：云端极速渲染，无需排队，生成音乐作品\n\n零门槛上手：无需懂乐理或编曲，小白也能创作大师级翻唱\n\n创意无限：突破原曲限制，用 AI 探索音乐的无限可能性\n\n全平台支持：兼容电脑、手机、平板等所有设备和主流浏览器\n\n网站预览：\n\n<img width=\"1277\" height=\"687\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c7edbbad-3329-419e-8766-a542944e1a2e\" />",
+    "created_at": "2026-01-12T17:09:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8693"
+  },
+  {
     "id": 8692,
     "title": "【开源自荐】jumble.social : nostr 客户端",
     "content": "[jumble.social](https://jumble.social/)\n\n仓库地址：[github.com/CodyTseng/jumble](https://github.com/CodyTseng/jumble)\n\n一个功能丰富、响应迅速的 nostr web 客户端，专注于直接浏览 relay 内容。经过一年的打磨，在圈内获得包括 nostr 创始人在内大量用户的好评。\n\n<img width=\"3840\" height=\"2160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c212e8ea-f5f3-4b59-adea-198ab3e23b8f\" />\n\n## 特点\n\n- 响应迅速\n- 简洁的 UI、优秀的交互体验\n- 专注于浏览 relay feed\n- 灵活的 spam 过滤机制\n- 双列布局\n\n## 为什么又做一个 nostr 客户端\n\n由于 nostr 是一个去中心化的协议，假设未来会越来越中心化，每个用户都使用着不同的 relay。那么传统的通过关注用户来构建 feed （信息流）的方式将会让客户端不堪重负，因为需要从成百上千个不同的 relay 获取关注人的帖子。\n\n所以我在一年多前设想存在一种特殊的 relay，专门用于提供 feed（为了避免混淆，后续称这些 relay 为社区），每个社区各自有自己的算法来为用户提供内容。用户获取信息的主要方式变为订阅自己喜欢的社区，然后关注少量的用户为辅。当然，这一切是建立在原有的基础上的，用户的数据仍然是存放在多个不同的 relay 上，保证去中心化、抗审查。\n\n但在一年多前，没有一个客户端可以方便的直接浏览 relay，都是模仿传统社交应用，专注于关注人信息流。于是我在 AI 的帮助下学习 react 开发了 Jumble\n\n## nostrzh 中文社区\n\n为了方便中文用户抱团取暖，我运行了一个以中文内容为主的社区 relay\n\n中文社区 relay 地址：`wss://relay.nostrzh.org/`\n浏览地址：[jumble.social/?r=relay.nostrzh.org](https://jumble.social/?r=relay.nostrzh.org)\n\n这是一个白名单 relay，要加入的同学可以点击[此处](https://nostrzh.org/#relay)。为了防止非中文用户加入，所以会随机三道非常简单的题目，只要答对两道即可加入 :)\n\n想了解 nostr 现状的同学可以看看这篇 [blog](https://nostrzh.org/blog/what-is-nostr/)",
@@ -812,15 +820,5 @@
     "created_at": "2026-01-01T07:57:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8589"
-  },
-  {
-    "id": 8588,
-    "title": "【开源自荐】Zedis：Rust + GPUI 构建的Redis 客户端",
-    "content": "项目地址：https://github.com/vicanso/zedis\n\n# 项目简介\n\nZedis基于 **Rust** 编写，UI 层使用了与 [Zed Editor](https://zed.dev) 同款的渲染引擎 **GPUI**。这意味着 Zedis 的每一个像素都是由 GPU 直接绘制的，带来了原生、60 FPS 丝般顺滑的体验。\n\n### 核心特性一览\n\n- **🚀 极速渲染**：告别 HTML/CSS 的重绘负担，即使在低配机器上也能秒开。\n  \n- **♾️ 虚拟列表**：实测轻松处理 **10万+** 级别的 Key 列表（我的手提百万级别也很流畅），配合 `SCAN` 迭代，滚动浏览毫无卡顿。\n  \n- **🧠 数据自动检测**：\n  \n  - 如果是 **GZIP/ZSTD** 压缩的数据，它会自动解压显示。\n    \n  - 如果是 **JSON/MsgPack**，它会自动格式化并高亮。\n    \n  - 如果是图片二进制流，直接显示预览图。\n    \n- 🛠️ 开箱即用**：自动适配 Cluster、Sentinel（单 Master 可免填名称）或单机模式。\n  \n- **💻 全平台支持**：支持 **macOS** 、**Windows** 和 **Linux**，均可在 GitHub Release 下载。\n  \n\n---\n\n# 项目截图\n\n<img width=\"2052\" height=\"704\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/53b74320-6682-40f9-960c-63fd90951cb4\" />",
-    "created_at": "2026-01-01T01:24:37Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8588"
   }
 ]
