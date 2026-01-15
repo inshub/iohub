@@ -1,5 +1,21 @@
 [
   {
+    "id": 8715,
+    "title": "【工具自荐】SlideNote - 住在浏览器侧边的便利贴",
+    "content": "> **Simple notes, always by your side**\n> **侧边笔记，常伴左右**\n>\n> 项目地址：https://github.com/maoruibin/SlideNote\n\n---\n\n## 投稿标题\n\n**SlideNote - 住在浏览器侧边的便利贴**\n\n---\n\n## 项目简介（100字以内）\n\nSlideNote 是一款 Chrome 侧边栏插件。它将便利贴固定在浏览器侧边，**不遮挡页面内容**，让你随时记录和查找碎片信息（密钥、服务器地址、常用命令等）。支持跨设备自动同步，无框架依赖，打包仅 25KB。\n\n---\n\n## 项目截图\n\n![SlideNote Demo](https://gudong.s3.bitiful.net/images/slidenote-marquee-zh.png)\n\n实际效果\n\n<img width=\"1600\" height=\"1015\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/32be1763-ea62-4769-94ce-062c65266bad\" />\n\n---\n\n## 为什么做这个项目？\n\n写代码时经常需要临时查一些命令或配置，查完切回编辑器就忘了；在公司电脑学了新东西，回家想用却找不到；各种云服务的密钥、API 文档链接散落各处，每次都要翻半天。\n\n现有的笔记插件都悬浮在页面上，遮挡内容，打断工作流。直到发现 Chrome 的 Side Panel API，可以固定在侧边栏不干扰主页面，于是做了 SlideNote。\n\n**它不是一个笔记本**。它更像一个云剪贴板，专门存那些需要\"快速记、随时查\"的碎片信息。\n\n---\n\n## 核心亮点\n\n| 亮点 | 说明 |\n|------|------|\n| **侧边栏，不遮挡** | 固定在浏览器侧边，与主内容并排，不遮挡任何东西 |\n| **秒开，即用** | 打包 25KB，加载 < 100ms，点开立即可用 |\n| **自动同步** | 多设备无缝同步，公司的密钥回家就能查 |\n| **实时搜索** | 输入即过滤，秒速找到 |\n| **支持 Markdown** | 密钥、命令、代码有格式，更清晰 |\n\n---\n\n## 使用场景\n\n- **开发者**：存 API Key、服务器地址、常用命令、数据库密码\n- **多设备工作者**：公司 Mac + 家里 Mac + 笔记本，信息随身走\n- **内容创作者**：账号凭证、文案模板、AI 提示词\n- **日常碎片**：IP 地址、会议记录、待办事项\n\n---\n\n\n\n## 链接\n\n- GitHub: https://github.com/maoruibin/SlideNote\n- 作者博客: https://blog.gudong.site/\n- Chrome Web Store: [链接](https://chromewebstore.google.com/detail/appaojacakbjbbellfehlgjophpdpjom?utm_source=item-share-cb)\n\n---\n\n## 作者自荐\n\n我是咕咚同学，前端开发者，喜欢做些小工具提升工作效率。SlideNote 是我自己日常在用的工具，希望能帮助到有类似需求的朋友。如果觉得有用，欢迎 Star 支持一下！",
+    "created_at": "2026-01-15T00:37:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8715"
+  },
+  {
+    "id": 8714,
+    "title": "【漏洞修复】314000+下载量的hyperlane框架被曝安全漏洞",
+    "content": "近日，Rust 轻量级web框架[hyperlane](https://github.com/hyperlane-dev/hyperlane)被开源社区发现严重安全漏洞，攻击者可利用进行提权等操作。\n\n## 安全与行为回退问题说明\n在**长连接（keep-alive）** 场景下，同一个实例可能被多次复用，进而导致**跨请求的上下文状态泄露**。\n\n`ctx` 的生命周期并未按单个请求完全隔离，这是一个**长期存在的设计缺陷**，而非本次改动新引入的问题。\n\n近期的一次代码修改进一步暴露了该问题：它导致 `ctx.aborted()` 和 `ctx.closed()` 方法无法正常工作，从而破坏了请求拦截逻辑与生命周期钩子函数的执行。\n\n**问题相关代码路径**：\n[https://github.com/hyperlane-dev/hyperlane/blob/a8efce23092098bee023911c30ecd3807225c754/src/server/impl.rs](https://github.com/hyperlane-dev/hyperlane/blob/a8efce23092098bee023911c30ecd3807225c754/src/server/impl.rs)\n\n![问题相关截图](https://github.com/user-attachments/assets/22bb4c78-99cb-4466-93cd-dc4b1cfa9241)\n\n## 影响范围\n1.  `ctx.aborted()` 和 `ctx.closed()` 无法再正确反映连接的实际状态\n2.  请求拦截功能与基于生命周期的控制逻辑失效\n3.  长连接场景下，单个 `ctx` 实例会被多个请求复用，造成**跨请求上下文状态泄露**\n\n## 修复方案\n1.  **v10.23.1 版本** — 恢复了 `ctx.aborted()` 的功能与生命周期拦截逻辑，修复提交：[https://github.com/hyperlane-dev/hyperlane/commit/f5565ba46771b5a0914819276ff6f9f1e519b558](https://github.com/hyperlane-dev/hyperlane/commit/f5565ba46771b5a0914819276ff6f9f1e519b558)\n2.  **v10.23.3 版本** — 确保长连接下 `ctx` 实例不再被复用，彻底杜绝跨请求上下文状态泄露问题，修复提交：[https://github.com/hyperlane-dev/hyperlane/commit/87f6745d88775c0f419019a9e015c1151d8be159](https://github.com/hyperlane-dev/hyperlane/commit/87f6745d88775c0f419019a9e015c1151d8be159)\n\n## 升级建议\n**强烈建议用户升级至 v10.23.3 或更高版本**，以保障请求隔离与生命周期管理功能正常运行。\n\n## 最简复现示例\n在存在问题的代码版本中，访问 `http://127.0.0.1:80` 时，控制台会依次输出 **\"Middleware1 reached\"** 和 **\"Middleware2 reached\"**。\n\n而 **\"Middleware2 reached\"** 的输出属于**不符合预期的行为**，因为第一个中间件理论上应该终止后续的生命周期处理流程。\n\n```rust\nuse hyperlane::*;\n\nstruct Middleware1;\n\nstruct Middleware2;\n\nimpl ServerHook for Middleware1 {\n    async fn new(_ctx: &hyperlane::Context) -> Self {\n        Self\n    }\n\n    async fn handle(self, ctx: &Context) {\n        println!(\"Middleware1 reached\");\n        ctx.aborted().await;\n    }\n}\n\nimpl ServerHook for Middleware2 {\n    async fn new(_ctx: &hyperlane::Context) -> Self {\n        Self\n    }\n\n    async fn handle(self, _ctx: &Context) {\n        println!(\"Middleware2 reached\");\n    }\n}\n\n#[tokio::main]\nasync fn main() {\n    Server::new()\n        .await\n        .request_middleware::<Middleware1>()\n        .await\n        .request_middleware::<Middleware2>()\n        .await\n        .run()\n        .await\n        .unwrap()\n        .wait()\n        .await;\n}\n```\n\n## 测试未发现该问题的原因\n\n该问题在测试阶段未被发现，是因为单测代码覆盖场景不全，测试用例仅通过响应结果判断请求是否发送成功，而非检测控制台输出内容。\n\n框架在发送响应前，会执行实时的中断状态检查。因此当上下文被标记为中断时，响应不会被处理或发送，从响应层面无法发现异常。\n\n![测试逻辑截图1](https://github.com/user-attachments/assets/3b5c85e3-e1ff-4f17-9160-e8d36f58e929)\n![测试逻辑截图2](https://github.com/user-attachments/assets/612173eb-35bd-45a6-b844-aa4b0a8b8de0)\n\n## 修复后代码仓库\n\n[https://github.com/hyperlane-dev/hyperlane](https://github.com/hyperlane-dev/hyperlane)\n\n---\n",
+    "created_at": "2026-01-14T23:46:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8714"
+  },
+  {
     "id": 8713,
     "title": "【开源自荐】DataAgent 基于 Spring AI Alibaba 的企业级智能数据分析师",
     "content": "DataAgent 是一个基于 Spring AI Alibaba Graph 打造的企业级智能数据分析 Agent。它超越了传统的 Text-to-SQL 工具，进化为一个能够执行 Python 深度分析、生成 多维度图表报告 的 AI 智能数据分析师。\n\n系统采用高度可扩展的架构设计，全面兼容 OpenAI 接口规范的对话模型与 Embedding 模型，并支持灵活挂载任意向量数据库。无论是私有化部署还是接入主流大模型服务（如 Qwen, Deepseek），都能轻松适配，为企业提供灵活、可控的数据洞察服务。\n\n同时，本项目原生支持 MCP (Model Context Protocol)，可作为 MCP 服务器无缝集成到 Claude Desktop 等支持 MCP 的生态工具中。\n\n特性 | 说明\n-- | --\n智能数据分析 | 基于 StateGraph 的 Text-to-SQL 转换，支持复杂的多表查询和多轮对话意图理解。\nPython 深度分析 | 内置 Docker / Local Python 执行器，自动生成并执行 Python 代码进行统计分析与机器学习预测。\n智能报告生成 | 分析结果自动汇总为包含 ECharts 图表的 HTML / Markdown 报告，所见即所得。\n人工反馈机制 | 独创的 Human-in-the-loop 机制，支持用户在计划生成阶段进行干预和调整。\nRAG 检索增强 | 集成向量数据库，支持对业务元数据、术语库的语义检索，提升 SQL 生成准确率。\n多模型调度 | 内置模型注册表，支持运行时动态切换不同的 LLM 和 Embedding 模型。\nMCP 服务器 | 遵循 MCP 协议，支持作为 Tool Server 对外提供 NL2SQL 和 智能体管理能力。\nAPI Key 管理 | 完善的 API Key 生命周期管理，支持细粒度的权限控制。\n\n目前star马上破500！\ngithub地址：https://github.com/spring-ai-alibaba/DataAgent",
@@ -804,23 +820,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/8611"
-  },
-  {
-    "id": 8610,
-    "title": "【开源自荐】 XApi 是高性能开源 Chrome 插件，在浏览器开发者工具中实现类 Postman 调试能力，支持 HTTP 请求全流程操作（拦截、调试、编辑、重放）及 Cookie、Origin 等敏感请求头修改。",
-    "content": "https://github.com/user-attachments/assets/3699e622-d54f-4350-9fed-52d85b4181c4\n\n亮点功能：\n1. 自动捕获当前标签页的 Fetch 与 XHR 网络请求流量\n2. 依托 declarativeNetRequest（DNR）技术，业内领先支持改写 Cookie、Origin、Referer 字段，突破浏览器标准安全限制\n3. cURL 无缝集成：粘贴原生 cURL 命令，即可即时生成可全量编辑的请求对象\n\n项目地址：\nhttps://github.com/lustan/XApi",
-    "created_at": "2026-01-05T02:05:00Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8610"
-  },
-  {
-    "id": 8609,
-    "title": "【网站推荐】MiSide Zero：一场打破虚拟与现实边界的 Meta 恐怖之旅",
-    "content": "### 项目名称\nMiSide Zero\n\n### 项目地址\nhttps://misidezero.xyz/\n\n### 一句话介绍\n一款打破“第四面墙”的元恐怖（Meta-horror）解谜游戏官方入口，带你步入从手机屏幕延伸至现实的错位恐惧空间。\n\n### 详细介绍\nMiSide Zero 是由独立团队 AHe_Hole 创作的一款极具心理压迫感的元恐怖游戏。玩家在游戏中扮演一名正在手机上运行模拟养成类游戏的普通用户，却在一次意外中被卷入了虚构的游戏世界。在那里，原本乖巧可爱的游戏女主角 Mita 以一种病态且扭曲的方式欢迎你的到来。该项目通过清新的二次元美术风格与极度压抑的恐怖剧情形成鲜明反差，旨在探讨虚拟角色的自我意识以及玩家与游戏之间危险的边界感。\n\n### 核心特点\n* **打破第四面墙 (Breaking the Fourth Wall)：** 游戏设计巧妙地模糊了“屏幕外”与“屏幕内”的界限，通过模拟手机交互、修改本地文件等手段，让恐惧感直接作用于现实中的玩家。\n* **反差式视觉美学 (Contrast Aesthetic)：** 融合了明亮的 3D 二次元角色设计与阴森、荒废的场景建模，利用“诡异谷”效应营造出一种令人如坐针毡的违和感。\n* **深度的病娇式叙事 (Yandere Narrative)：** 核心角色 Mita 的情感表达从最初的纯真互动逐渐演变为极端的控制欲，为喜欢心理惊悚（Psychological Thriller）的玩家提供了极佳的情感冲击。\n* **非线性解谜 (Non-linear Puzzles)：** 谜题设计紧扣 Meta 元素，要求玩家跳出传统游戏思维，在看似温馨的日常互动中挖掘隐藏的逃生线索。\n\n### 技术栈\nUnity Engine (3D 渲染与物理引擎), C#, Custom Shaders (环境氛围渲染), WebGL (网页预览技术).\n\n### 适用场景\n非常适合**恐怖游戏爱好者**、**Meta-game（元游戏）忠实拥趸**（如《DDLC》、《史丹利的寓言》玩家）以及追求独特叙事体验的独立游戏鉴赏家。其极具戏剧张力的表现形式，也是游戏博主进行实况解说或视频创作的绝佳素材。\n\n<img width=\"997\" height=\"624\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/404aedec-094e-420d-8530-93c01f200b43\" />",
-    "created_at": "2026-01-04T17:30:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8609"
   }
 ]
