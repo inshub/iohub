@@ -1,5 +1,21 @@
 [
   {
+    "id": 8724,
+    "title": "【工具自荐】MemoryBubble  👉戳泡泡清理 Mac 内存",
+    "content": "[MemoryBubble](https://memorybubble.app/zh) Mac 内存占用可视化和清理 App\n\n用气泡模式直观展示内存占用大户，双击泡泡即可 kill 进程释放内存\n\n![](https://cdnv2.ruguoapp.com/Fhyi2rA5__Dbx56kcl0ixTBX16t4v3.png)\n\n或者使用传统的进程树模式，可以看到父子进程关系，找到罪魁祸首\n\n![](https://cdnv2.ruguoapp.com/Fvqiy9YEcwj6s_LuwJ1enrVABN7pv3.png)\n",
+    "created_at": "2026-01-16T04:14:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8724"
+  },
+  {
+    "id": 8723,
+    "title": "【开源自荐】一个可以采用代码调用 Skills 的 SDK",
+    "content": "OpenSkills 是一个为 AI Agent 设计的技能框架。它通过“三层渐进式架构”解决了 Agent 开发中 Prompt 过长、背景资料杂乱、Token 浪费的问题。\n\n### 1. 它是做什么的？\n当你有很多 Prompt 指令和参考文档时，全部塞给 LLM 会导致成本高、响应慢且容易出错。OpenSkills 让 Agent 具备“按需取用”的能力：\n- **匹配层**：只看技能简介，确定用户想干嘛。\n- **指令层**：确定意图后，才加载具体的角色设定和 Prompt。\n- **资源层**：只有聊到专业知识时，才去读对应的本地 PDF/Markdown 或运行 Python 脚本。\n\n---\n\n### 2. 使用方法\n\n#### 第一步：创建技能包\n新建一个目录（如 `my-skill/`），结构如下：\n```text\nmy-skill/\n├── SKILL.md          # 技能核心定义（必须）\n└── references/       # 该技能相关的参考文档（可选）\n    └── api_docs.md\n\n```\n\n在 `SKILL.md` 中写下配置和 Prompt：\n\n```markdown\n---\nname: meeting-summary\ndescription: 专门负责会议总结和待办提取\ntriggers:\n  - \"总结会议\"\n  - \"会议记录\"\n---\n# 会议总结指令\n你是一个专业秘书，请从以下对话中提取：\n1. 会议核心结论\n2. 明确的待办事项及负责人\n\n```\n\n#### 第二步：在代码中调用\n\n你不需要写逻辑判断用户说的是不是“总结会议”，SDK 会自动完成匹配。\n\n```python\nimport asyncio\nfrom openskills import create_agent\n\nasync def main():\n    # 1. 自动扫描 ./skills 目录下的所有技能包\n    agent = await create_agent(\n        skill_paths=[\"./skills\"],\n        api_key=\"your-api-key\",\n        model=\"gpt-4\"\n    )\n\n    # 2. 直接对话。当用户输入包含“会议”时，Agent 自动加载对应的 SKILL.md\n    response = await agent.chat(\"帮我整理一下这段会议录音文字：[...内容...]\")\n    \n    print(f\"回答：{response.content}\")\n    print(f\"调用的技能：{response.skill_used}\")\n\nasyncio.run(main())\n\n```\n\n---\n\n### 3. 核心优势\n\n* **SKILL.md 标准**：用简单的 Markdown 管理复杂的 Agent 逻辑，开发像写文档一样简单。\n* **智能文档发现**：`references/` 目录下的文档支持自动关联。你可以设置 `implicit` 模式，让 LLM 自己判断什么时候该看哪份文档。\n* **代码触发**：支持在 Prompt 中通过 `[INVOKE:script_name]` 让 AI 直接运行本地 Python 脚本。\n* **全模型兼容**：支持 OpenAI、Azure、DeepSeek、Groq，以及通过 Ollama 运行的本地模型。\n\n---\n\n### 4. 快速安装\n\n```bash\npip install openskills-sdk\n\n```\n\n**项目地址：** [https://github.com/twwch/OpenSkills](https://github.com/twwch/OpenSkills)",
+    "created_at": "2026-01-16T04:13:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8723"
+  },
+  {
     "id": 8722,
     "title": "【工具自荐】 Better Sidebar：让 Google AI Studio 拥有文件夹分类与时间轴视图",
     "content": "### 项目名称\n\nBetter Sidebar for Google AI Studio\n\n### 项目描述\n\n这是一个 Chrome 浏览器扩展，专为 Google AI Studio 重度用户开发。\n\n原生的 Google AI Studio 侧边栏非常简陋，所有历史对话混在一起，时间一长很难找到之前的测试记录。这个插件将侧边栏升级为类似 IDE 的资源管理器，让“管理历史对话”变得更高效。\n\n**主要功能：**\n\n*   **📁 文件夹管理**：支持拖拽，可以将不同的对话归档到自定义文件夹中。\n*   **📅 时间轴视图 (Timeline)**：除了传统列表，还支持按“今天”、“昨天”、“过去 7 天”等时间段分组查看历史记录。\n*   **🏷️ 标签与搜索**：支持给对话打标签，并提供基于标题的本地搜索功能。\n*   **🔒 数据隐私**：技术架构上使用 SQLite (WASM) 进行纯本地存储，整理后的目录结构和标签数据不会上传云端。\n\n### 项目链接\n\n*   **Chrome 商店**：[https://chromewebstore.google.com/detail/better-sidebar-for-google/cjeoaidogoaekodkbhijgljhenknkenj](https://chromewebstore.google.com/detail/better-sidebar-for-google/cjeoaidogoaekodkbhijgljhenknkenj)\n*   **GitHub Support**：[https://github.com/Paper-Crane-Devteam/better-sidebar-for-google-ai-studio-support](https://github.com/Paper-Crane-Devteam/better-sidebar-for-google-ai-studio-support)\n\n### 演示图片\n\n<img width=\"1376\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5cf42d78-8902-4cc1-9285-130e2e752640\" />\n<img width=\"1512\" height=\"949\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d9c8ab0d-a062-496d-9933-7cdb9cfb445f\" />\n<img width=\"1512\" height=\"949\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/52577534-039d-4aa7-b5e9-a7e868a2f38c\" />\n<img width=\"1376\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/12b1bcf1-9525-4b4f-917a-4a9e896cc331\" />\n<img width=\"1376\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3b4d4446-c0fc-42fb-a772-5d9d0870a4c5\" />\n<img width=\"1376\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1144f29-848e-44b4-869c-34babcddce5a\" />",
@@ -804,21 +820,5 @@
     "created_at": "2026-01-05T22:22:25Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8619"
-  },
-  {
-    "id": 8618,
-    "title": "【开源自荐】AI修仙模拟器",
-    "content": "# 一句话介绍\n构建起了完备的修仙世界规则，同时将LLM作为agent投入其中，共同构成完整合理有涌现性的修仙世界。\n下载release后，输入api key立刻就可用。\n\n# 地址\nhttps://github.com/AI-Cultivation/cultivation-world-simulator\n\n# 截图\n\n<img width=\"736\" height=\"553\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68d1fd92-21ea-40be-85bb-deec0f507dc9\" />\n\n![项目截图](https://github.com/AI-Cultivation/cultivation-world-simulator/raw/main/assets/screenshot.gif)\n\n",
-    "created_at": "2026-01-05T17:38:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8618"
-  },
-  {
-    "id": 8617,
-    "title": "Square Face Generator - 在线生成可爱像素方头像",
-    "content": "网址：https://square-face-generator.online\n\n这是我做的一款「方头像」生成器：打开网页，几秒钟就能捏一个有性格的小方脸。支持 12 大类、200+ 项可选，发型、眼睛、嘴型、配饰、颜色都能随手改；随机按钮也很好玩，一键出灵感。生成是纯前端的，本地渲染，不上传、不存储，隐私友好。最终导出 256×256 PNG，适合 Discord、X、TikTok、YouTube 等平台做头像。\n\n做这个工具的动机很简单：我常在社交平台换头像，但找一张「可爱、统一风格、能表达自己」的图并不容易。于是就做了这个轻量的在线生成器，希望它能帮你快速搞定一个「像你但更可爱」的方头像。\n\n如果你愿意分享作品，欢迎把链接转给朋友；Twitter/X 会自动展示预览卡片。也欢迎到站内留言区交流使用体验。\n\n特点\n\n- 免费、免注册、无广告\n\n- 即时导出 PNG，无水印\n\n- 全设备适配（手机/平板/桌面）\n\n- 本地生成，保护隐私\n\n- 随机生成器，灵感加成\n\n试试这里：https://square-face-generator.online",
-    "created_at": "2026-01-05T17:30:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8617"
   }
 ]
