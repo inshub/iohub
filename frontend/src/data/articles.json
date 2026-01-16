@@ -1,5 +1,37 @@
 [
   {
+    "id": 8728,
+    "title": "【工具自荐】Kirkify AI",
+    "content": "[Kirkified Meme Generator](https://kirkifyai.ai/)\n\n### **项目官网**\nhttps://kirkifyai.ai/\n\n### **一句话介绍**\n一个在线 AI Meme 头像生成器，一键生成 “Kirkification” 风格夸张人像，无需登录即可体验。\n\n### **详细介绍**\nKirkify AI 是一个基于浏览器的 AI 图像生成工具，用于将普通照片快速转化为夸张比例、强烈表情的 Meme 风格头像（社区称为 Kirkification）。\n\n用户只需上传一张照片，即可在几秒内生成具有明显 Kirkification 特征的Meme，适合用于社交头像、梗图创作或娱乐分享。\n\n### **核心特点：**\n\n**即开即用**：无需注册登录，打开网页即可上传图片并生成结果。\n\n**AI 自动夸张**：基于人脸关键点与生成模型，对五官比例进行夸张处理，形成统一的 Kirkify 风格。\n\n**隐私友好**：不要求用户绑定账号，生成流程尽量简化，适合临时、轻量使用场景。\n\n**Meme 导向设计**：输出结果适合用于社交媒体头像、论坛签名或 Meme 二次创作。\n\n**Web 端体验**：面向普通用户设计，无需安装任何客户端。\n\n<img width=\"1660\" height=\"912\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0799c434-5af5-4061-bdc2-e2bebbafa289\" />\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/91ab5487-8527-47a4-a735-f2aef047cf1a\" />",
+    "created_at": "2026-01-16T06:09:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8728"
+  },
+  {
+    "id": 8727,
+    "title": "【开源自荐】一个可以运行在 Linux 软路由上的 Lastmile 网络质量仿真工具",
+    "content": "[NetHang](https://github.com/stephenyin/NetHang) 是一个基于 Linux 平台的网络质量仿真软件工具。类似工具的其他常见名称还有：弱网测试工具，网络损伤工具（网损仪）或 网络流量控制工具 等。NetHang 主要针对的测试产品是对网络实时性要求较高的网络产品，主要包括 RTC 产品（网络音视频通信，网络会议，网络直播连麦等），AI Agent 软件（通过网络与大模型实时交互的软件），当然，也可以用来测试产品的拥塞控制算法性能和链接稳定性等。\n\n### 相对于传统网损仪 NetHang 主要解决了一下几个痛点问题：\n\n**1. 弱网怎么测的问题：**\n传统网损仪主要的卖点是高精度、高吞吐量和提供大量参数，但网络损伤仪提供商并不告诉用户应该怎么配置不同的弱网场景。因为传统网损仪的目标使用场景基本是运营商，云服务提供商或电信设备制造商等，测试的主要是高吞吐量下的低丢包和低延迟抖动场景，而对于真正的互联网产品来说 Lastmile 才是网络问题的最主要的来源，并且常见流量速率集中在几百 Kbps - 几十 Mbps 之间。NetHang 通过内置网络模型将常见的 Packet Loss （各种模型 Markov ， Gilbert-Elliot 等），Delay ，Jitter （各种分布 Normal ，Uniform ，Pareto 等），Bandwidth Limit （组合 Queue-depth ，Burst ，TokenBucket 设置），Accumulate-Burst （堆积突发时长控制），以及要不要 Reordering （乱序） 的选项组成了真正可以重复测试场景仿真模型。之前测试人员要用这些参数组合出合理的弱网测试条件并不是见容易的事，甚至基本不可能，见过太多测试人员用持续带乱序的 1000+ ms jitter 测试互联网产品了， 这不只是无用功，甚至如果产品在这个方向上做了足够多的优化之后一定会引入其他方面的问题，无论是抗弱网能力还是计算性能这都是得不偿失的。而针对这个问题 NetHang 根据大量网络探测结果内置了一批在一定程度和合理的网络损伤模型可供选择使用，并且会不断的更新和添加更丰富和准确的网络模型，这在提高测试效率的同时更重要的是规避了投入大量精力测试很多现网中根本不会出现或极少出现的网络条件。\n\n<img width=\"825\" height=\"493\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8ae7640e-ca92-46fa-b25f-ce04e69131a7\" />\n\n**2. 弱网测试成本高的问题：**\n相对于网络损伤仪几万 - 几十万的价格，NetHang 只需要部署在一台软路由上，并按需接上交换机或 AP 就可以开展基本的测试业务。真正将成本降到趋近于 0.\n\n<img width=\"857\" height=\"377\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/210ed24c-3b33-4faa-8d82-e94103ff61bd\" />\n\n**3. 动态网络模型无法模拟的问题：**\n众所周知 Lastmile 网络因为其多样的接入方式，接入设备，负载，信号强度，竞争流量等原因呈现出多变的特征，而类似 TC / Netem 的原生命令无法支持时变的网络条件模拟。NetHang 支持通过 YAML 语法自定义组合不同的网络条件组合出实时变化的网络仿真条件。\n\n**4. 仿真结果不直观的问题：**\nNetHang 通过 BitRate、Queuing Packet 和 Loss 动态图表使测试人员能够直观的理解网络中在发生了什么问题。\n\n<img width=\"848\" height=\"444\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cf8bd53e-f54a-43cc-9966-1c8bb1cd0f41\" />\n\n仓库地址：https://github.com/stephenyin/NetHang\n项目文档：https://nethang.org",
+    "created_at": "2026-01-16T05:35:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8727"
+  },
+  {
+    "id": 8726,
+    "title": "【工具自荐】一个支持导出 3D 纸模的复古像素头像生成器",
+    "content": "**【相关链接】**\n\n* 官网：[https://squareface.app/](https://squareface.app)\n* 3D 纸模生成示例：[https://squareface.app/generators/square-face-papercraft-generator](https://squareface.app/generators/square-face-papercraft-generator)\n\n**【项目简介】**\n这是一个致敬早期互联网 Flash 风格的在线像素头像生成器。\n\n在 AI 生成大行其道的今天，这个工具回归了“手工拼装”的乐趣。它完全基于现代 Web 技术（无 Flash），允许用户通过组合 200 多个部件来设计类似 Minecraft 风格的方块头像。\n\n主要特点：\n\n1. **注重隐私**：无需注册登录，所有生成过程在前端完成。\n2. **多风格支持**：除了经典的方块脸（Square Face），还支持 8-bit 猫咪（Cat Pixel）和 Q 版（Chibi）风格。\n3. **支持实体化（Papercraft）**：这是最有趣的功能，它可以将你设计好的头像直接展开生成为 **PDF 纸模图纸**。下载打印后，可以通过折叠粘贴，把头像变成桌面上立体的 3D 玩具。\n\n**【预览图】**\n![Square Face Generator](https://image.squareface.app/cover/square-face-papercraft-generator.webp)\n\n---\n",
+    "created_at": "2026-01-16T05:12:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8726"
+  },
+  {
+    "id": 8725,
+    "title": "【工具自荐】一个专门生成复古橡皮印章效果的 AI 工具",
+    "content": "**【相关链接】**\n\n* 官网：[https://pixsprout.com/](https://pixsprout.com)\n\n**【项目简介】**\n这是一个面向设计师和普通用户的在线 AI 图像工具，专注于“橡皮印章（Rubber Stamp）”这一细分垂直场景。\n\n传统的印章效果制作通常需要熟练使用 Photoshop 的蒙版、噪点和纹理叠加。PixSprout 通过 AI 模型简化了这一过程，支持两种主要模式：\n\n1. **Text to Stamp**：输入文字提示词，生成复古邮戳、公司公章或徽章。\n2. **Image to Stamp**：上传现有的 Logo、人像或物体照片，自动去底并转化为带有磨损纹理的印章风格 PNG。\n\n**【技术栈】**\nNext.js, Tailwind CSS, Supabase\n\n**【预览图】**\n![AI Stamp Maker](https://pixsprout.com/og-image.jpg)\n\n---",
+    "created_at": "2026-01-16T05:04:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8725"
+  },
+  {
     "id": 8724,
     "title": "【工具自荐】MemoryBubble  👉戳泡泡清理 Mac 内存",
     "content": "[MemoryBubble](https://memorybubble.app/zh) Mac 内存占用可视化和清理 App\n\n用气泡模式直观展示内存占用大户，双击泡泡即可 kill 进程释放内存\n\n![](https://cdnv2.ruguoapp.com/Fhyi2rA5__Dbx56kcl0ixTBX16t4v3.png)\n\n或者使用传统的进程树模式，可以看到父子进程关系，找到罪魁祸首\n\n![](https://cdnv2.ruguoapp.com/Fvqiy9YEcwj6s_LuwJ1enrVABN7pv3.png)\n",
@@ -788,37 +820,5 @@
     "created_at": "2026-01-06T07:14:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8623"
-  },
-  {
-    "id": 8622,
-    "title": "【开源自荐】snapwrite-专注微信公众号的 AI 自动排版工具。一键将文本转化为精美移动端布局，支持实时手机预览与富文本一键复制。",
-    "content": "(【Ai微信公众号自动排版 演示】 https://www.bilibili.com/video/BV1kxinBDEcZ/?share_source=copy_web&vd_source=b38d30b9afa4cdb7d6538c4c2978a4c8)\n\n[开源地址](https://github.com/WtecHtec/snapwrite)\n\n[在线体验](https://snapwrite.xujingyichang.top/)\n\nSnapWrite 是一个基于 AI 的智能排版工具，专为微信公众号内容创作者设计。它能将普通文本一键转化为适配移动端阅读的精美 HTML 布局，让排版变得简单、高效、优雅。\n\n1. 支持版本控制\n2. 支持定义自己LLM 模型请求地址，不会弄存储本地 绝对安全。\n\n<img width=\"1730\" height=\"930\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0010372a-4326-4094-8a34-028496242856\" />\n\n",
-    "created_at": "2026-01-06T04:51:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8622"
-  },
-  {
-    "id": 8621,
-    "title": "【项目自荐】Aimmar: 全球首个Vibe LoRA 智能体 ｜ The World’s First Vibe LoRA AI Agent",
-    "content": "## **Description**\n**[Aimmar](https://aimmar.ink/home/)** — 一种全新的 AI 代理系统，专为实现 **Vibe LoRA**（对话式审美控制技术）而构建。\n\n#### **一句话介绍**\nAimmar 不是一个简单的绘画工具，而是一个拥有独立 Runtime 和审美记忆的 Agent 系统，通过对话与交互将你的“创意氛围（Vibe）”转化为可进化的动态 LoRA。\n\n<img width=\"2640\" height=\"1560\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/326aef14-17ad-4987-b62c-aa2a5977f71d\" />\n\n#### **项目深度解析 (System Architecture)**\nAimmar 的存在是为了解决传统 AI 创作中“风格不可延续”的痛点。我们认为：**风格不应是被预设的指令，而是在交互中被发现的共鸣。**\n\n不同于传统的 Web UI，Aimmar 是一个具备 **Aesthetic Memory（审美记忆）** 的代理系统：\n*   **不仅仅是界面：** 它拥有自己的决策逻辑和运行环境，能够跨会话保持创意连续性。\n*   **从 Prompt 到 Vibe：** 摒弃枯燥的参数调试，Aimmar 能够从你的对话信号中解读“审美意图”，并实时将其转化为动态的 LoRA 状态。\n*   **Workspace 协作：** 在画布式的空间内，Agent 在后台管理风格演化，用户在前台进行灵感碰撞。\n\n#### **核心技术栈 (The Aimmar Edge)**\n*   **Vibe-Dynamic LoRA (VDL):** 业界首个将对话信号直接映射为模型权重偏移的算法引擎。\n*   **Aesthetic Continuity Logic:** 确保在长周期的项目迭代中，视觉风格不会因为单次 Prompt 的偏差而产生剧烈抖动（Style Drift）。\n*   **Agentic Runtime:** 独立于界面的 Agent 逻辑层，负责处理审美意图的提取、存储与调用。\n\n#### **为什么关注 Aimmar？**\n在生成式 AI 进入“存量竞争”的时代，Aimmar 重新定义了**人机边界**。我们不追求一次性的惊艳生成，我们追求的是让 AI 真正“懂”你的审美偏好，并让这种偏好随着你的每一次反馈而不断进化。\n\n**Vibe LoRA 定义了对话式风格控制的上限，而 Aimmar 则是这一理论唯一的工程化实现。**",
-    "created_at": "2026-01-06T02:05:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8621"
-  },
-  {
-    "id": 8620,
-    "title": "【开源自荐】PaperMate，集成了翻译agent，对照阅读，agent解析，知识问答和划词解释的论文阅读助手",
-    "content": "https://github.com/chinrain/PaperMate\n\n# PaperMate\n\nPaperMate 是 AI 学术论文分析助手，支持论文解析、翻译、术语记忆与自适应对话。\n\n<img width=\"1562\" height=\"959\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9ad3e813-ed02-4206-87c1-e3591f0e9efe\" />\n\n## 功能简介\n\n### 1. 论文解析与翻译（保留格式）\n\n- 论文解析为 Markdown 后进行翻译，结构与公式不丢失\n- 中英对照阅读界面\n- 翻译采用 ReAct Agent 架构：结合 arXiv 与网络检索，补充背景、动机与切入点\n- 输出强相关论文链接，并给出相关性说明\n- 深度解析核心创新点：是什么、为什么重要、与已有方法对比、关键模块细节\n- 给出实验结果、优势与局限性\n- 提供 AI 推断的可行未来方向\n\n### 2. 术语记忆与全局高亮\n\n- 划词触发 AI 解析专业术语\n- 解析后在项目内全局高亮\n- 鼠标悬停显示术语解释与上下文\n\n### 3. 用户画像驱动的论文对话\n\n- 对话中自动更新用户画像\n- AI 根据画像实时调整回答深度与表达方式\n",
-    "created_at": "2026-01-06T01:49:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8620"
-  },
-  {
-    "id": 8619,
-    "title": "【项目自荐】Steal A Brainrot Wiki：主打“酸性美学”风格的硬核游戏百科站",
-    "content": "### 项目名称\nSteal A Brainrot Wiki (Tuff Toucan)\n### 项目地址\n[https://tufftoucan.com/](https://tufftoucan.com/)\n### 一句话介绍\n一款主打“酸性美学”（Acid Graphics）视觉风格的硬核游戏百科工具，为 Roblox 现象级热门游戏提供深度资产分析与合成指南。\n### 详细介绍\nSteal A Brainrot Wiki 致力于打破传统游戏百科“千篇一律”的白底黑字。本项目深度结合了 2026 年最前沿的 Neo-Brutalist（新野兽派）与酸性美学视觉趋势，将复杂的游戏数据转化为极具视觉冲击力的“战术仪表盘”。\n在《Steal A Brainrot》这款快节奏、高风险的掠夺类游戏中，玩家需要精准的数值指导来决策资产配置。本项目不仅提供了基础的数据查询，更引入了 ROI（投资回报率）分析、2026 年 Meta 强度排行以及可视化的“资产合成协议”（Fabrication Protocol），让 Wiki 本身也成为游戏沉浸式体验的一部分。\n### 核心特点\n1. **酸性美学视觉 (Acid Graphics Aesthetic)**：摒弃了 Fandom 的廉价感，采用了高饱和酸性黄、深绿混响与霓虹视觉，完美契合游戏本身“发疯/混乱”的抽象基调。\n2. **深度资产分析 (Data-Driven Insights)**：针对顶级资产（如 Tuff Toucan）提供超过 2000 字的深度解析，包括 2.7B 生产成本拆解、收益曲线对比，而非简单的文字堆砌。\n3. **可视化合成手册 (Visual Fabrication Guide)**：采用流程图式的 UI 节点设计，将复杂的“部件-成品”关系直观化，支持角色全维度的 3D 悬浮卡片展示。\n4. **极致性能与无广告 (Performance & Ad-Free)**：基于 Next.js 极速渲染架构，全站零广告、零干扰，为玩家在高强度对抗中抢占先机提供最纯粹的离线式数据支持。\n### 技术栈\nNext.js 14 (App Router), TypeScript, Tailwind CSS (Custom Design System), Lucide React, Framer Motion (Micro-animations).\n### 适用场景\n*   **硬核玩家**：需要精准计算角色收益率、合成路径及 2026 Meta 趋势的专业玩家。\n*   **设计爱好者**：对 Acid Graphics、Neo-Brutalist 网页设计风格感兴趣，寻找现代化 Wiki 构建方案的开发者。\n*   **社区探索者**：希望在混乱的 Roblox 亚文化中寻找一份具备“战术美感”档案的爱好者。\n\n<img width=\"998\" height=\"657\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a0c1e1f-60ef-4534-962c-d96a35c70f0b\" />",
-    "created_at": "2026-01-05T22:22:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8619"
   }
 ]
