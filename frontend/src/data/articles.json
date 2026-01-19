@@ -1,5 +1,13 @@
 [
   {
+    "id": 8751,
+    "title": "【开源自荐】低延迟、支持漫游、不会掉线的 ssh",
+    "content": "项目地址：https://github.com/trzsz/tsshd\n\n项目简介：`tsshd` 是一个 `ssh` 服务端程序，灵感来源于 [mosh](https://github.com/mobile-shell/mosh)（ 类似于 `mosh-server` ），相当于 OpenSSH 的 `sshd`。\n\n核心优势：`tsshd` 特别适用于在弱网环境（`4G`）或跨国网络中使用 `ssh` 的场景：\n - 使用 `tsshd` ，你的 `ssh` 可以避免掉线（从此告别 `ssh` 在弱网环境下经常掉线的苦恼，无需经常重新登录）\n - 使用 `tsshd` ，你的 `ssh` 可以支持漫游（举例：你的笔记本在公司 `ssh` 登录后，带回到家还可以保持连接）\n - 使用 `tsshd` ，你的 `ssh` 可以获得低延迟（避免 `ssh` 按键不跟手的情况，特别是使用 `KCP` 协议时延迟更低更稳定）\n\n项目对比：`tsshd` 相比 `mosh`，支持更多更完善的 `ssh` 功能，解决了 `mosh` 长时间未解决的痛点，详见 [README 功能对比](https://github.com/trzsz/tsshd/blob/main/README.cn.md#%E5%8A%9F%E8%83%BD%E5%AF%B9%E6%AF%94)。\n\n技术原理：`tsshd` 类似 `mosh` 的原理，详见 [README 原理简介](https://github.com/trzsz/tsshd/blob/main/README.cn.md#%E5%8E%9F%E7%90%86%E7%AE%80%E4%BB%8B)。\n\n安全保障：`tsshd` 作为 `ssh` 服务端程序，特别注重安全，详见 [README 安全保障](https://github.com/trzsz/tsshd/blob/main/README.cn.md#%E5%AE%89%E5%85%A8%E4%BF%9D%E9%9A%9C)。\n\n使用简单：\n  1. 在客户端（本地电脑）上安装 [tssh](https://github.com/trzsz/trzsz-ssh?tab=readme-ov-file#installation)。\n\n  2. 在服务端（远程机器）上安装 [tsshd](https://github.com/trzsz/tsshd?tab=readme-ov-file#installation)。\n\n  3. 使用 `tssh --udp xxx` 登录服务器（参考 [README 配置说明](https://github.com/trzsz/tsshd/blob/main/README.cn.md#%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E) 配置后，可省略 `--udp` 参数）。\n\n特别说明（新用户首次使用需关注）：\n  1. `tsshd` 随机监听 `61001-61999` 的 UDP 端口，防火墙要放开相应策略。可通过配置项 `TsshdPort`，或命令行参数 `--tsshd-port` 自定义。\n  2. `tssh` 登录时，要在服务器的 `$PATH` 路径下找到 `tsshd` 并运行。可通过配置项 `TsshdPath`，或命令行参数 `--tsshd-path` 指定路径。",
+    "created_at": "2026-01-19T07:10:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8751"
+  },
+  {
     "id": 8750,
     "title": "【工具自荐】Printery | Print for Figma",
     "content": "**[Tool]** Printery | Print for Figma\n\n**Links**\n\nWebsite: https://www.printery.app\n\n**Introduction**\n\nPrintery (Print for Figma) is a Figma plugin that exports press-ready PDFs with CMYK conversion, bleed, crop marks, and PDF/X support. It streamlines print workflows with DPI checks, multi-page export, and spot color options.\n\nTech Stack: Figma Plugin + CMYK + PDF/X\n\n**Key Features**\n\n- **CMYK Conversion**: Export press-ready PDFs using ICC profiles and custom color mapping\n- **Bleed & Crop Marks**: Automatic bleed, trim, and crop mark handling for print workflows\n- **DPI Checker**: Detect low-resolution assets before export\n- **Multi-page PDF Export**: Combine pages into a single production-ready PDF/X\n- **Spot Color Support**: Pantone colors with density control and overprint options\n\n**Preview**\n\n![Printery | Print for Figma](https://www.printery.app/og-image.png)\n",
@@ -818,13 +826,5 @@
     "created_at": "2026-01-08T03:16:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8645"
-  },
-  {
-    "id": 8644,
-    "title": "【工具自荐】面料印花设计工具",
-    "content": "🌸花快图：一个快速生成面料印花的工具网站，类似万花筒效果，一张图片可以生成无数张纹理图，纯前端技术栈实现。\nhttps://hua.kuaitu.cc/#/\n\n<img width=\"2950\" height=\"1666\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3bc82d39-b725-44ff-a3ad-26531de886f0\" />",
-    "created_at": "2026-01-08T02:35:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8644"
   }
 ]
