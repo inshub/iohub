@@ -1,5 +1,21 @@
 [
   {
+    "id": 8817,
+    "title": "【开源自荐】web-sqlite-js：解决 Web 端“缺少开箱即用持久化关系型数据库”的核心痛点",
+    "content": "\n\n  ![web-sqlite-js 演示](https://raw.githubusercontent.com/wuchuheng/web-sqlite-js/HEAD/vitepress-docs/public/web-sqlite-js.gif)\n\n   ## 核心问题\n  在 Web 端长期缺少一个**开箱即用、可持久化、真正关系型**的用户端数据库。\n  开发者要么被迫使用 IndexedDB，要么引入复杂且高延迟的后端服务，无法像桌面应用那样直接调用基于本地存储的 SQLite。\n\n  **web-sqlite-js 的目标：让浏览器像桌面一样拥有 本地存储SQLite一致的使用体验和效果。**\n\n  ## 技术原理\n  - **SQLite → WASM**：将 SQLite 编译为 WebAssembly，使其可在浏览器端直接运行 SQL\n  - **OPFS 持久化**：基于 Origin Private File System 将数据落盘保存，**刷新页面不会丢失**（除非用户清理浏览器存储）\n  - **Worker 执行**：SQL 在 Web Worker 中运行，避免阻塞主线程\n  - **结构化日志**：支持订阅 SQL、耗时、错误与事件\n\n  ## 为什么推荐\n  - **开发体验一致**：使用方式与本地 SQLite 几乎一致，只需写直观 SQL 即可读写本地数据库并返回结果\n  - **真正关系型数据库**：完整 SQL 能力，不是简单 KV 存储\n  - **开箱即用**：安装即用，无需后端\n  - **持久化可靠**：OPFS 本地保存，不会随刷新消失\n  - **工程化完整**：事务、版本迁移、日志订阅、回滚/发布\n  - **调试友好**：专用 Chrome DevTools 插件\n  - **释放前端能力上限**：基于这种数据库，可开发更复杂、更强大的网页应用\n\n  ## 额外亮点\n  - TypeScript 原生支持\n  - `debug` 模式可输出 SQL 执行耗时与参数\n  - DevTools 插件：\n    https://chromewebstore.google.com/detail/web-sqlite-devtools/gacoipdgbohogohjdofcnbflcfldidfh\n\n  ## 项目链接\n  - 官网：https://web-sqlite-js.wuchuheng.com/\n  - GitHub：https://github.com/wuchuheng/web-sqlite-js\n  - NPM：https://www.npmjs.com/package/web-sqlite-js",
+    "created_at": "2026-01-24T07:52:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8817"
+  },
+  {
+    "id": 8816,
+    "title": "【开源自荐】Future-Style-Periodic-Table：可视化核外电子排布的未来风元素周期表",
+    "content": "### 项目名称\nFuture-Style-Periodic-Table\n\n### 链接地址\n- **在线演示 (Demo)**：https://seanwong17.github.io/Future-Style-Periodic-Table/\n- **GitHub 仓库**：https://github.com/SeanWong17/Future-Style-Periodic-Table\n\n### 简短描述\n这是一个基于 Web 标准（HTML/CSS/JS）构建的**交互式 3D 元素周期表**。\n\n项目采用赛博朋克风格设计，核心亮点在于**可视化了抽象的“核外电子排布”**。用户点击任意元素即可查看详细数据，并能进入 3D 模式旋转观察原子结构与电子轨道，非常适合初高中化学教学与科普。\n\n### 推荐理由\n1.  **3D 电子排布可视化**：基于电子排布算法，实时渲染出动态旋转的 3D 原子结构模型，直观展示电子层分布。\n2.  **沉浸式交互**：点击元素即弹出详情卡片，展示电子排布式、同位素、化合价等详尽数据。\n3.  **零依赖纯前端**：完全使用 Vanilla JavaScript (ES6+) 开发，代码结构清晰，是学习 CSS 3D 变换与原生 JS 的优质案例。\n\n### 预览图\n**1. 周期表主界面**\n![Overview](https://raw.githubusercontent.com/SeanWong17/Future-Style-Periodic-Table/main/screenshots/overview.png)\n\n**2. 元素详情卡片（点击元素触发，展示电子排布数据）**\n![Detail](https://raw.githubusercontent.com/SeanWong17/Future-Style-Periodic-Table/main/screenshots/detail.png)\n\n**3. 3D 原子结构模型（核心特色，可视化电子轨道）**\n![Atom 3D](https://raw.githubusercontent.com/SeanWong17/Future-Style-Periodic-Table/main/screenshots/atom3d.png)",
+    "created_at": "2026-01-24T07:36:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8816"
+  },
+  {
     "id": 8815,
     "title": "llmdoc: 解决AI Coding的最后100米",
     "content": "在过去一年半的时间里, 我的工作流有了巨大的变化, 也亲眼见证了 AI Coding从兴起到现在的全面铺开, 个人工作模式已经被彻底颠覆了\n\n当我们回顾 2025 年的变化, 从年初的 gemini 2.5 到 sonnet 4.5, gpt-5-codex, opus 4.5, gemini 3, gpt-5.2-codex.\n\n我们应该认为: 模型的能力进步速度没有变得缓慢, 而且Cursor / Claude Code / OpenCode这类Coding Agent 的兴起, ToD 的应用也以令人难以预料的速度推进.\n\n随之而来的有另一个问题: Context, 是的上下文构建, 而且我想要说的是在严肃的面向生产的环境中的 Context, 这不是 chatbot 中用personality 这种可以糊弄过去的, 代码更新留下了遗漏是真的会出现线上故障的.\n\n让我们再看一下现在的这些Coding Agent 提供的能力吧:\n\n1. AGENTS.md / CLAUDE.md: 注入到 User Message 满足 Context定制化的需求\n2. SubAgent / Fork-Context: 通过增加并行度实现 Task 的更快解决\n3. Skill / Command / Workflow: 虽然都在鼓吹 Skill 的渐进式披露, 但是我认为对于编程这种极度明确的场景太多的 Skill只会让你的模型编程笨蛋\n\n但是, 还差了一些东西, Agent 实际上并不了解你的仓库, 我这里的了解指的是 Agent 实际上是通过Claude.md + 大量阅读代码文件才感知到了当前的环境.\n\n这是正常的工作模式, 我们也习惯于这一点, 但是这不是一个好的路径, 如果使用 codex-cli 的人对此应该深有感触: 不断的不断的阅读代码文件, 甚至是完全不需要阅读的代码文件, 在 Context 足够解决问题的时候, 才开始解决问题.\n\n# Context Floor\n\n我个人会把 \"满足 Agent 解决需求的 context 的丰富度\" 称之为: **Context Floor**\n\n1. 调用了多少工具\n2. 占用了多少 Token\n3. 关键信息的密度\n\n现在让我们回过头来看, 一些经典的解决方案:\n\n1. LSP MCP: 通过提升关键Symbol密度 + 大量的工具调用 实现快速到达context floor\n2. ACE / RAG: 通过少量的工具调用 + 稀疏的关键信息密度, 很难保证信息的关联性和有效性\n3. Agentic RAG: 让 Agent 做一次信息的搜集, 提供一份概要, 一般使用 SubAgent, 在 claude code 中的`explorer`就是承担了类似的作用, 虽然 subagent 执行任务可以保证 master agent 上下文足够干净, token 占用量也不高, 关键信息密度也很高, 但是耗时太久了 TTCR (Time to Context Floor)实在是难以忍受\n\n**那么, 有没有一个解决方案足够快, 信息密度足够高, 主Agent的Token 占用足够少, 信息和任务存在强关联而且有效呢?**\n\n# 我的解决方案\n\n[https://github.com/TokenRollAI/cc-plugin](https://github.com/TokenRollAI/cc-plugin)\n\n调试了一个月, 在公司内验证了3 个月之后,我觉得在现在时间节点的 SOTA 模型的加持下, 这套方案足够满足需求了\n\n**llmdoc + subagnet RAG**\n\n过去我有几个帖子说名字他的诞生的思考过程, 这里就不在详细的介绍\n\n### llmdoc\n\n一个在设计之处就用来解决AI 快速获取高密度信息 + 人类可读性的文档系统\n\n脱胎于 [[diataxis](https://diataxis.fr/)](https://diataxis.fr/), 做了些微不足道的改动\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cadac4aa-038a-446b-bd2e-4e694f024774\" />\n\n1. 利用 Agent 能够快速批量 Read的能力, 文档中保留最关键的文件路径+负责的模块说明\n2. 项目概览 + 架构 + 通过主题串联的 guides + refrence\n\n以上作为基础, 在代码库中插入一个 llmdoc, 满足人类可读性 + Agent 可读性\n\n示例: [https://github.com/TokenRollAI/minicc/tree/main/llmdoc](https://github.com/TokenRollAI/minicc/tree/main/llmdoc)\n\n### subagent RAG\n\n为了解决并行度的问题, 必须要引入 subagent, 但是 subagent 用来做什么呢?\n\n主要是两件事情:\n\n1. 调研: 基于 llmdoc + 现有的代码文件, 调研拆解后的任务作为前置条件\n2. 记录: 在完成了编码任务之后, 自动的更新维护 llmdoc\n\n# 问题\n\n效果当然非常好, 或者说, 自从有了这一套解决方案之后我没有再使用过其他乱七八糟的 plugin\n\n但是有一个问题: **贵**\n\n而且不是有点贵, 大概是用1.5倍的价钱完成了从 85 分 -> 90 分的效果, 在一些简单的项目中, 效果一般, 但是越复杂的项目收益越好.\n\n# 效果\n\n在我们公司的线上业务中, 后端代码仓库大概有 10W 行代码, 这套系统工作出色, 在几乎所有的情况下, 都能够准确的完成需求.\n\n在建立了 llmdoc 的基础上, 根据需求的大小, 需求完成的成本大概在 1 - 5 刀, 而且最关键的是: 人类介入的次数大大降低, 只需要 Review 代码, 以及执行少量的修改后, 就能够放心交付.\n\n现在也在我们的前端团队内开始推进, 效果依然出色.\n\n我推荐大家使用 cc-plugin, 强烈推荐!",
@@ -820,21 +836,5 @@
     "created_at": "2026-01-14T15:25:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8713"
-  },
-  {
-    "id": 8712,
-    "title": "【工具自荐】地图尺寸星际对比工具",
-    "content": "工具介绍：小工具本身允许用户可以拖拽任何国家或地区到不同的位置，进行尺寸对比。支持在墨卡托投影2d平面上进行拖拽，也支持拖拽到不同的星球上（如看格陵兰岛在月球上的大小）\n\n+ 在线链接：[3d true size](https://www.runcell.dev/tool/true-size-map)\n\nhttps://github.com/user-attachments/assets/a2f1fcd6-c120-4107-9f8c-e647602c2114\n\n",
-    "created_at": "2026-01-14T12:10:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8712"
-  },
-  {
-    "id": 8711,
-    "title": "【工具自荐】Signature Sketch - 开源、纯前端的免费手写签名生成器",
-    "content": "### 工具名称\nSignature Sketch\n\n### 在线地址\nhttps://signaturesketch.tech/\n\n### 开源地址\nhttps://github.com/[jyxwant/free-handwritten-signature-generator](https://github.com/jyxwant/free-handwritten-signature-generator)\n\n### 工具简介\n一个完全开源、纯前端运行的手写签名生成工具。\n主要解决了在签署电子文档（PDF/Word）时，找不到好看、真实的手写体签名，或者不想在第三方网站留下个人姓名隐私的痛点。\n\n### 核心亮点\n- **🛡️ 开源透明**：代码完全开源，任何人都可审计，确保没有隐藏的后台上传逻辑。\n- **🔒 隐私安全**：所有计算均在浏览器本地（Canvas）完成，数据不离线。\n- **🎨 高度仿真**：支持调整笔触颜色、线条粗细、倾斜度，生成的签名如同真实手写。\n- **🚀 零门槛**：无后台、无数据库、无需注册，打开即用，直接导出透明 PNG。\n\n### 适用场景\n- 远程办公/自由职业者签署电子合同\n- 开发者学习 Canvas 手写板实现逻辑\n- 对隐私极其敏感的用户\n\n### 为什么做这个？\n市面上的签名工具大多闭源且需要注册，我很担心我的签名图片被滥用。作为一个开发者，我选择开源这个工具，既是为了方便大家使用，也是为了证明“纯前端”就能完美解决隐私顾虑。",
-    "created_at": "2026-01-14T10:57:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8711"
   }
 ]
