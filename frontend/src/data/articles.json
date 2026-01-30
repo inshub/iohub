@@ -1,5 +1,13 @@
 [
   {
+    "id": 8880,
+    "title": "【开源自荐】LingFrame：遗留 Java 单体系统的运行时零信任治理框架，无需微服务重构",
+    "content": "大家好，最近开源了一个小项目 LingFrame（灵珑），想自荐一下，希望对还在维护老 Java 单体系统的同学有帮助。\n\n项目地址：https://github.com/LingFrame/LingFrame  \n\n一句话介绍：  \n这是一个专为**长运行遗留单体应用**设计的 JVM 运行时治理框架。核心想法是：在**不重写原有代码、不强制拆微服务**的情况下，通过插件隔离、金丝雀发布和零信任治理，让老系统边界更清晰、变更更可控。不是加新功能或做大而全的框架，就专注解决“改一次心惊肉跳、重启成本巨大”的痛点。\n\n主要特性：\n- 单 JVM 内插件**隔离**（结构+运行时），支持热插拔、动态加载/卸载/回滚\n- **无重启金丝雀**：实时流量切分、权重控制，安全灰度验证变更\n- **零信任**：所有操作必须授权，全链路审计日志，防越权\n- 实时仪表盘：插件状态、流量分布、审计日志 SSE 推送（中英双语、暗黑主题）\n- 支持 Spring Boot 3.x、JDK 21（后续计划加入Spring Boot 2.x、 JDK 8 支持）\n\n快速上手（demo 应用）：\n```bash\ngit clone https://github.com/LingFrame/LingFrame.git\ncd LingFrame/lingframe-examples/lingframe-example-host-app\nmvn spring-boot:run\n```\n跑起来后浏览器打开仪表盘，就能直接 drop/load 插件、调金丝雀流量、看零信任日志。demo 很简单，几分钟就能感受到效果。\n\n<img width=\"2558\" height=\"1309\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6102c26c-4dbb-43ca-9ba9-3368162ecfe7\" />\n\n\n\n\n为什么做这个 & 为什么自荐：\n\n我自己和身边一些朋友还在维护5+年的老单体系统，微服务拆分成本太高，但每次上线都像赌博。想搞一种“中间态”方案：在原有进程里强加边界和治理，让它“优雅老化”而不是激进重构。做出来后自己用着还挺解压的，仪表盘也直观，就想分享给有类似痛点的同学看看。如果合适，欢迎阮老师收录到周刊，也欢迎大家 star / 试用 / 提 issue 反馈。\n\n\n谢谢大家！如果有问题随时评论～",
+    "created_at": "2026-01-30T13:51:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8880"
+  },
+  {
     "id": 8879,
     "title": "【工具推荐】照片一键变身复古艺术照",
     "content": "网站: https://ditherimage.online/\n介绍\nDither Image Online 是一个在线工具，不用下载软件，在网页上就能一键切换复古像素、漫画圆点或手绘素描风格。\n有以下4个风格\n怀旧像素 (Bayer) 像老式游戏机画面一样，让照片充满复古的科技感。\n素描钢笔 (Crosshatch)  一键把照片‘素描化’，自带手绘纹理感。\n复古报纸 (Halftone) 模仿旧报纸和漫画书里的圆点效果，艺术感拉满。\n极简轮廓 (Contour) 只保留最关键的线条，像艺术海报一样干净高级。\n\n<img width=\"1866\" height=\"949\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7c31efd-2d6a-4431-bad7-1d705926e58a\" />",
@@ -818,13 +826,5 @@
     "created_at": "2026-01-21T14:56:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8776"
-  },
-  {
-    "id": 8774,
-    "title": "【开源自荐】D-NET 一款轻量级动态网络管理工具，支持多平台的 CDN、DNS 和 内网穿透自动化管理与监控",
-    "content": "\n\n## 项目简介\n\nD-NET 一款轻量级动态网络管理工具，支持多平台的 CDN、DNS 和 内网穿透自动化管理与监控。通过自动监听 IP 地址变化并实时同步到 CDN、DNS 等服务，让您的家庭设备也能拥有良好的访问体验。\n\n**项目地址：** [https://github.com/cxbdasheng/dnet](https://github.com/cxbdasheng/dnet)\n## 主要功能\n### 动态 CDN 管理 (DCDN)\n自动监听本机 IPv6/IPv4 地址变化，实时将新地址同步到 CDN 回源配置中。\n\n**核心优势：**\n\n1. **回源速度更快**\n   直接使用 IP 地址回源，无需 DNS 解析，减少网络延迟\n\n2. **零解析延迟**\n   避免传统 DDNS 的 DNS 缓存和传播延迟问题\n\n3. **双协议栈支持**\n   依托 CDN 的双协议栈能力，使仅有 IPv6 的家庭网络也能被 IPv4 客户端访问\n\n4. **高可用性**\n   CDN 自带负载均衡和故障转移，提升服务可用性\n\n**已支持的云平台：**\n\n| 云服务商 | 支持的服务          |\n|----------|-------------------|\n| 阿里云   | CDN、DCDN、ESA    |\n| 腾讯云   | CDN、EdgeOne      |\n| 百度云   | CDN、DRCDN        |\n\n**实战案例：**\n[使用阿里云 ESA 实现家庭 IPv6 地址的 IPv4/IPv6 双协议栈访问](https://aio.it927.com/remote/esa/)\n\n### 其他功能模块\n\n- **动态 DNS 管理 (DDNS)**\n  自动更新域名解析记录，支持主流 DNS 服务商\n  *状态：V2 版本规划中*\n\n- **内网穿透管理**\n  无需公网 IP，轻松从外网访问内网服务\n  *状态：V3 版本规划中*\n\n- **Webhook 通知**\n  支持多种通知渠道（钉钉、企业微信、飞书等），实时推送 IP 变更通知\n\n- **Web 管理界面**\n  直观的可视化配置界面，支持多任务管理和实时监控\n\n## 产品截图\n![D-NET 管理界面](https://raw.githubusercontent.com/cxbdasheng/dnet/refs/heads/main/dnet.png)\n\n\n## 适用场景\n\n-  **家庭服务器**：家庭 NAS、媒体服务器、智能家居远程访问\n-  **小型企业**：办公网络动态 IP 管理\n-  **游戏服务器**：私人游戏服务器的动态 IP 解决方案\n-  **视频监控**：远程访问家庭或办公监控系统\n-  **个人网站**：在家托管个人博客或服务\n## 技术亮点\n- **轻量级设计**：单一二进制文件，资源占用极低\n- **跨平台支持**：支持 Linux、Windows、macOS 等主流操作系统\n- **多云平台兼容**：支持阿里云、腾讯云、百度云等主流云服务商\n- **实时监控**：自动检测 IP 地址变化，秒级响应\n- **可视化管理**：提供友好的 Web 管理界面\n- **高可靠性**：自动重试机制，确保配置更新成功",
-    "created_at": "2026-01-21T08:48:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8774"
   }
 ]
