@@ -1,5 +1,13 @@
 [
   {
+    "id": 8922,
+    "title": "【工具自荐】OpenClaw 101 - AI 助手入门导航站，7 天学会部署私人 AI",
+    "content": "## 网站链接\n\nhttps://openclaw101.dev\n\n<img width=\"2234\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c09e73a5-a978-48d7-b32d-4487e261f337\" />\n\n## 简介\n\nOpenClaw 101 是一个 **OpenClaw 入门导航站**，帮助用户快速上手部署自己的 24/7 私人 AI 助手。\n\n## 特色\n\n- **7 天学习路径**：从零开始，每天一个主题，循序渐进掌握 OpenClaw 全部能力\n- **63+ 精选教程**：整合阿里云、腾讯云、DigitalOcean、B站、Reddit 等平台的优质教程，中英文各半\n- **技能分类导航**：按场景分类（效率工具、SEO 营销、开发者工具、内容创作、生活习惯、心理健康等），一键找到所需技能\n- **开源免费**：代码开源，托管在 GitHub\n\n## 为什么做这个\n\nOpenClaw 是一个开源 AI 助手平台（GitHub 145k+ stars），支持 Telegram/Discord/WhatsApp 等多平台接入。但官方文档比较分散，新手上手有门槛。这个导航站把学习资源整合起来，降低入门难度。\n\n## 技术栈\n\nNext.js 14 + TypeScript + TailwindCSS，静态导出部署在 Cloudflare Pages。\n\nGitHub: https://github.com/mengjian-github/openclaw101",
+    "created_at": "2026-02-04T05:11:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/8922"
+  },
+  {
     "id": 8921,
     "title": "【开源自荐】PastePaw --- 一款为 Windows 打造的精美剪贴板历史管理工具",
     "content": "项目仓库：https://github.com/XueshiQiao/PastePaw/\n\n## 一款为 Windows 打造的精美剪贴板历史管理工具\n\n基于 Rust + Tauri + React + TypeScript 构建\n\n## 功能特性\n\n- 🔒 **隐私安全** - 这一点至关重要！所有数据仅存储在本地，绝不上传。\n- 🎨 **精美界面** - 现代化的深色/浅色主题，支持即时切换，配合流畅的动画效果。\n- ⚡ **轻量极速** - 基于 Rust 构建，性能强劲，资源占用极低。\n- ⌨️ **自定义快捷键** - 设置您习惯的快捷键来随时呼出历史记录。\n- 📋 **历史记录** - 自动保存您复制的所有内容。\n- 🖥️ **多显示器支持** - 智能跟随，始终在鼠标所在的活动显示器上显示。\n- 🔍 **快速搜索** - 即使历史记录再多，也能秒级找到复制过的内容。\n- 📁 **文件夹管理** - 将常用的剪贴内容分类整理到自定义文件夹。\n- 🚫 **应用屏蔽 (排除列表)** - 自动忽略来自特定敏感应用（如密码管理器）的内容，保护隐私。\n- 🔄 **无限滚动** - 无缝浏览无限的历史记录，无需翻页。\n- 🛡️ **智能过滤** - 采用智能防抖逻辑，自动忽略来自其他剪贴板工具（如翻译软件、输入法）的“幽灵复制”。\n- 🤖 **AI 智能助手** - 内置 AI 功能，支持一键总结、翻译、解释代码以及修复语法错误。\n- ⚙️ **高度可自定义 AI** - 支持在设置中完全自定义 AI 功能的名称以及系统提示词 (Prompt)，打造专属您的 AI 工作流。\n\n## 应用截图\n\n### Light theme\n![docs/paste_paw_dark.png](https://github.com/XueshiQiao/PastePaw/raw/main/docs/paste_paw_light.png)\n### Dark theme\n![docs/paste_paw_dark.png](https://github.com/XueshiQiao/PastePaw/raw/main/docs/paste_paw_dark.png)\n",
@@ -826,13 +834,5 @@
     "created_at": "2026-01-24T10:00:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8818"
-  },
-  {
-    "id": 8817,
-    "title": "【开源自荐】web-sqlite-js：解决 Web 端“缺少开箱即用持久化关系型数据库”的核心痛点",
-    "content": "\n\n  ![web-sqlite-js 演示](https://raw.githubusercontent.com/wuchuheng/web-sqlite-js/HEAD/vitepress-docs/public/web-sqlite-js.gif)\n\n   ## 核心问题\n  在 Web 端长期缺少一个**开箱即用、可持久化、真正关系型**的用户端数据库。\n  开发者要么被迫使用 IndexedDB，要么引入复杂且高延迟的后端服务，无法像桌面应用那样直接调用基于本地存储的 SQLite。\n\n  **web-sqlite-js 的目标：让浏览器像桌面一样拥有 本地存储SQLite一致的使用体验和效果。**\n\n  ## 技术原理\n  - **SQLite → WASM**：将 SQLite 编译为 WebAssembly，使其可在浏览器端直接运行 SQL\n  - **OPFS 持久化**：基于 Origin Private File System 将数据落盘保存，**刷新页面不会丢失**（除非用户清理浏览器存储）\n  - **Worker 执行**：SQL 在 Web Worker 中运行，避免阻塞主线程\n  - **结构化日志**：支持订阅 SQL、耗时、错误与事件\n\n  ## 为什么推荐\n  - **开发体验一致**：使用方式与本地 SQLite 几乎一致，只需写直观 SQL 即可读写本地数据库并返回结果\n  - **真正关系型数据库**：完整 SQL 能力，不是简单 KV 存储\n  - **开箱即用**：安装即用，无需后端\n  - **持久化可靠**：OPFS 本地保存，不会随刷新消失\n  - **工程化完整**：事务、版本迁移、日志订阅、回滚/发布\n  - **调试友好**：专用 Chrome DevTools 插件\n  - **释放前端能力上限**：基于这种数据库，可开发更复杂、更强大的网页应用\n\n  ## 额外亮点\n  - TypeScript 原生支持\n  - `debug` 模式可输出 SQL 执行耗时与参数\n  - DevTools 插件：\n    https://chromewebstore.google.com/detail/web-sqlite-devtools/gacoipdgbohogohjdofcnbflcfldidfh\n\n  ## 项目链接\n  - 官网：https://web-sqlite-js.wuchuheng.com/\n  - GitHub：https://github.com/wuchuheng/web-sqlite-js\n  - NPM：https://www.npmjs.com/package/web-sqlite-js",
-    "created_at": "2026-01-24T07:52:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8817"
   }
 ]
