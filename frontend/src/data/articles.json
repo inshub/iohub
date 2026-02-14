@@ -1,5 +1,21 @@
 [
   {
+    "id": 9018,
+    "title": "【开源自荐】结印 Ketsuin: 一个中二的火影忍者手势输入法",
+    "content": "## 结印 Ketsuin - 忍者手势输入法\n\ngithub主页: https://github.com/huanglizhuo/Ketsuin\n中文readme: https://github.com/huanglizhuo/Ketsuin/blob/main/README_zh.md\n在线体验地址: https://ketsuin.clothpath.com\n\nvibe coding 了一个基于 yolox + onnx runtime web实现的一个火影忍者结印手势识别的 web app，将结印手势对应到 T9 键盘用于输入法模拟\n\n![Image](https://github.com/user-attachments/assets/af057229-210c-45b3-b49b-77a777faa998)\n\n\n下面是中二版项目介绍😂:\n\nKetsuin (结印) 拒绝凡人的键盘敲击，带你重返忍者的世界。以此项目，将古老的结印之术与现代计算机视觉（YOLOX-Nano）完美融合，打造出这一款 T9 结印输入系统。\n\n凝聚查克拉，结出十二地支之印，像真正的忍者一样将意念转化为文字。该项目基于 ONNX Runtime Web 驱动的神经网络，实时捕捉你的每一个手势，将摄像头化身为通灵之术的媒介。\n\n",
+    "created_at": "2026-02-14T18:01:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9018"
+  },
+  {
+    "id": 9017,
+    "title": "【开源自荐】Codes CLI — Claude Code 多环境管理与多 Agent 协作工具",
+    "content": "## Codes CLI\n\n**仓库地址**：https://github.com/ourines/codes\n\n**简介**：Claude Code 的环境配置管理、项目管理与多 Agent 协作工具。用 Go 编写，跨平台支持 Linux / macOS / Windows。\n\n### 核心功能\n\n1. **Profile 一键切换** — 在多套 API 配置之间秒切（Anthropic 官方、代理、自定义端点），开发/测试环境自由切换\n2. **多 Agent 团队协作** — 创建自治的 Claude Agent 团队，支持任务依赖、消息传递和自动汇报，多个 Agent 并行完成复杂工程任务\n3. **MCP Server 集成** — 提供 29 个 MCP 工具，直接在 Claude Code 对话中管理 Agent 团队、项目和配置，无需离开编辑器\n4. **交互式 TUI** — 基于 bubbletea 的终端 UI，可视化管理项目、Profile 和远程主机\n5. **远程主机管理** — SSH 配置同步，一键将本地 Profile 同步到远程服务器\n\n### 亮点\n\n- 纯文件系统存储，无需数据库或消息中间件，JSON 文件 + 原子重命名保证并发安全\n- Agent 守护进程独立运行，每 3 秒轮询任务队列，自动分配和执行\n- 一行命令安装：`curl -fsSL https://raw.githubusercontent.com/ourines/codes/main/install.sh | sh`\n\n### 使用场景示例\n\n```bash\n# 创建 Agent 团队并行完成任务\ncodes agent team create myteam --workdir ~/project\ncodes agent add myteam coder --role \"implementation\" --model sonnet\ncodes agent add myteam tester --role \"testing\" --model sonnet\ncodes agent start-all myteam\ncodes agent task create myteam \"实现登录 API\" --assign coder --priority high\ncodes agent task create myteam \"编写登录测试\" --assign tester --blocked-by 1\n```\n\n**技术栈**：Go, Cobra, Bubbletea, MCP Protocol\n\n**协议**：MIT",
+    "created_at": "2026-02-14T17:41:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9017"
+  },
+  {
     "id": 9016,
     "title": "【开源自荐】Lumina：一站式信息管理工作台（缓解信息FOMO）",
     "content": "## 一句话描述\n\n一站式信息管理工作台，通过采集 → 解读 → 沉淀 → 复用，让高质量内容真正变成可持续资产。\nGithub：https://github.com/shawnxie94/lumina\n演示站点：https://lumina.shawnxie.top/\n\n## 核心功能\n\n- **浏览器采集工作流**：支持全文/选区一键采集（弹窗与右键菜单），并内置最近采集与错误日志。\n- **结构化文章库管理**：支持按分类、作者、来源、时间等高级筛选，并提供批量操作能力。\n- **深度阅读体验**：详情页支持原文/译文切换、沉浸模式、目录导航、批注与评论。\n- **AI 解读流水线**：可生成摘要、大纲、要点、翻译与相关文章推荐，后台任务支持监控与重试。\n- **后台控制中心**：集中管理模型 API（通用/向量）、提示词、推荐策略、分类与站点配置。\n- **运维与可观测能力**：提供 AI 任务与调用计量（次数/Tokens/费用）以及评论状态监控。\n- **内容生命周期管理**：支持本地媒体存储/压缩/清理，以及 JSON 备份导出与增量导入恢复。\n- **多语言与权限模型**：内置中英文界面，支持访客浏览与管理员鉴权管理流程。\n\n## 页面截图\n\n### 1) 主页\n\n<img width=\"3024\" height=\"3142\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/51d7b9d2-1fa1-4738-a124-f772a02cf648\" />\n\n### 2) 列表页\n\n<img width=\"3024\" height=\"2301\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f50c7a25-8548-410f-a298-3555c3ae2335\" />\n\n### 3) 文章详情页\n- **普通模式（默认）**：显示/编辑原文、全文批注、划线批注、目录、AI 解读和推荐阅读等。\n\n<img width=\"3024\" height=\"2105\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11bba3c6-ec18-4f10-a32d-9612b7178398\" />\n\n<img width=\"3024\" height=\"1716\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e9955eff-0d95-4166-8dda-69ad2746a49b\" />\n\n- **沉浸模式**：宽屏模式，隐藏导航栏，专注于文章内容。\n\n<img width=\"3024\" height=\"2045\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/db755f38-e980-4119-8673-3cabac078f18\" />\n\n### 4) 管理后台\n\n- **监控模块**：支持模型调用记录/计费、AI任务和评论数据监控。\n\n<img width=\"3024\" height=\"1716\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d10fe810-d6ce-46d5-b179-10fcae6a26ba\" />\n\n<img width=\"3024\" height=\"1716\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/df7f0811-277c-43c1-be76-d13b8edf9943\" />\n\n- **设置模块**：支持基础、分类、AI、评论和文件存储等配置。\n\n<img width=\"3024\" height=\"1716\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7ee1b7c3-e2b1-44a3-80ea-4ce51b190c7d\" />\n\n<img width=\"2634\" height=\"1396\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4dc390f9-7e8e-455c-86b1-fd731a5f4bb6\" />\n\n### 5) 扩展插件\n- **全文一键采集**：不选中内容，点击插件采集按钮或页面右键采集。\n\n<img width=\"2316\" height=\"1104\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/873de171-bf58-4123-884b-fe05e178cbce\" />\n\n- **选区一键采集**：选中内容后，点击插件采集按钮或页面右键采集。\n\n<img width=\"2592\" height=\"1292\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/24f6ccba-4a42-4d90-9bec-5d876d88b1e2\" />\n\n### 6) 其他功能\n- **主题切换**：支持明亮/暗黑模式。\n\n<img width=\"3024\" height=\"2076\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/17dcfd72-ee74-410a-89c2-a173a9f3f18d\" />\n\n- **最近阅读记录**：显示最近阅读的5篇内容，方便快速跳转。\n\n<img width=\"2916\" height=\"616\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b6de00a6-9f4d-47e5-95b5-7df39466c00f\" />\n\n- **文章评论**：支持在详情页对文章进行评论，方便交流与反馈。\n\n<img width=\"2462\" height=\"1306\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eba1c19a-4460-4864-adde-0e23025f62a3\" />\n\n- **内容导出**：支持按分类导出文章标题、头图和摘要。\n\n<img width=\"2544\" height=\"1480\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e71a151d-fe25-4659-a1a9-5a7e2981001f\" />",
@@ -800,23 +816,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/8917"
-  },
-  {
-    "id": 8916,
-    "title": "【开源自荐】Ophel - 让 AI 对话如文档般可阅读、导航、复用的浏览器增强工具",
-    "content": "## 项目简介\nOphel 是一款基于 React 的浏览器插件，聚焦于会话的导航与结构化管理，内置大纲导航、会话管理、提示词库等核心能力，目标是**将“无限滚动的聊天记录”转化为“可导航的 AI 文档”**，让 AI 对话真正进入可组织的工作流，并在多平台保持一致、可复用的体验。\n\n![Image](https://github.com/user-attachments/assets/03a17410-92c6-4122-adf6-ce0277346c71)\n\n## 项目地址\nhttps://github.com/urzeye/ophel\n\n## 核心特性\n- 智能大纲：自动抽取用户问题与AI回复生成可导航目录，快速定位、跳转到关键信息\n- 会话管理：使用层级文件夹管理会话，像管理知识库\n- Prompt 词库：沉淀与复用高质量提示词\n- 阅读体验优化：滚动锁定、阅读历史恢复、Markdown 渲染优化\n- 界面与效率增强：宽屏模式、侧栏布局控制、快捷键、模型锁定\n- 隐私优先：本地存储、WebDAV 同步、无数据采集\n\n## 功能演示\n\n|                                                        大纲 Outline                                                        |                                                     会话 Conversations                                                     |                                                       功能 Features                                                        |\n| :------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------: |\n| <video src=\"https://github.com/user-attachments/assets/a40eb655-295e-4f9c-b432-9313c9242c9d\" width=\"280\" controls></video> | <video src=\"https://github.com/user-attachments/assets/a249baeb-2e82-4677-847c-2ff584c3f56b\" width=\"280\" controls></video> | <video src=\"https://github.com/user-attachments/assets/6dfca20d-2f88-4844-b3bb-c48321100ff4\" width=\"280\" controls></video> |\n\n## 支持平台\nChatGPT / Gemini / Claude / Grok / AI Studio / Gemini Enterprise 及更多平台",
-    "created_at": "2026-02-03T12:17:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8916"
-  },
-  {
-    "id": 8915,
-    "title": "【工具自荐】视频压缩 - 免费在线工具 - 优先使用GPU 10x 加速压缩过程",
-    "content": "在线体验： [视频压缩](https://videocompressors.com/zh \"视频压缩\")\n\n一个专注于隐私和速度的在线视频压缩工具。与传统基于 WASM 的纯 CPU 处理不同，该工具**深度集成了 WebCodecs API**，能够直接调用用户设备的 **GPU 进行硬件加速**，实现了接近本地原生应用的压缩性能。\n\n## ⚡️ 极致性能 (GPU First)\n\n> 注：为了获得最佳的 GPU 加速体验，建议使用最新版本的 Chrome、Edge 或 Safari 浏览器。\n\n优先利用浏览器底层的硬件编解码能力，压缩速度远超传统的纯前端CPU方案。\n\n<img width=\"1474\" height=\"718\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dcf232a0-4f2c-4f72-b9fd-60ed2c36d00b\" />\n\n\n## 🔒 隐私安全\n\n所有数据处理均在浏览器本地（Client-side）完成，视频无需上传服务器，无文件大小限制。\n\n## 👁️ 实时对比预览\n\n支持压缩前后的画质与体积实时同屏对比，可拖拽滑块查看细节，不满意随时调整。\n\n<img width=\"952\" height=\"757\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/18e9b27c-818e-4043-9aff-35816b8e216b\" />\n\n## 📱 场景化预设\n\n针对 Discord、WhatsApp 等平台限制做了专门的体积优化。\n\n<img width=\"449\" height=\"591\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f60c9320-3685-4e1c-9ac0-c68573fd3df9\" />\n\n适合追求处理速度、同时不希望上传隐私视频的用户。\n\n**目前正在测试不同显卡的兼容性，欢迎大家试用后反馈压缩速度和效果！**\n\n\n感谢阮老师/大家审核！\n",
-    "created_at": "2026-02-03T12:00:39Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8915"
   }
 ]
