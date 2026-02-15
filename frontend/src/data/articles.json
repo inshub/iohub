@@ -1,5 +1,13 @@
 [
   {
+    "id": 9021,
+    "title": "【开源自荐】myclaw：单二进制 + Docker + 多渠道接入的个人 AI 助手",
+    "content": "项目名称：myclaw\n\n项目地址：https://github.com/stellarlinkco/myclaw\n\n项目简介：\n基于 agentsdk-go 的跨平台个人 AI 助手，支持 Telegram/飞书/企业微信/WhatsApp/WebUI 多渠道接入，内置 Skills 扩展、长期记忆、定时任务与心跳自动化，适合个人和小团队自托管部署。\n\n核心特点：\n- 单二进制部署：`make build` / `make build-release` 直接产出 `./myclaw`\n- 压缩分发友好：`make package-all` 可一次产出 darwin/arm64、linux/amd64、linux/arm64 压缩包\n- 低配置可跑：优化后二进制约 30 MiB，gzip 包约 9~10 MiB\n- Docker/Compose 部署：支持 `make docker-up`、`make docker-up-tunnel`\n- Skills 体系：支持本地 `SKILL.md` 加载与 `skills list/info/check --json` 诊断\n\n快速开始：\n```bash\nmake build-release\nmake package-all\nmake onboard\n./myclaw agent -m \"你好\"\n```\n\n截图：\nWebUI（桌面）\n![myclaw-webui-desktop](https://n.uguu.se/QBLhvHGw.png)\n\nWebUI（移动）\n![myclaw-webui-mobile](https://n.uguu.se/AvRVfYmK.png)\n",
+    "created_at": "2026-02-15T13:17:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9021"
+  },
+  {
     "id": 9020,
     "title": "【开源自荐】Colleen：轻量、类型安全的 Kotlin / Java Web 框架",
     "content": "Colleen 是一个轻量、类型安全的 Kotlin / Java Web 框架。\n\nGitHub：https://github.com/cymoo/colleen\n\n## 主要特点\n\n- 显式配置\n- 可组合的中间件\n- 自动参数提取\n- 清晰直接的依赖注入\n- 基于虚拟线程的同步请求处理模型\n\n## 设计理念\n\n- 显式优于隐式\n- 同步优于异步\n- 类型安全不可或缺\n- 清晰本身就是 feature\n- 魔法是负债\n\n## 安装\n\n```xml\n<dependency>\n    <groupId>io.github.cymoo</groupId>\n    <artifactId>colleen</artifactId>\n    <version>0.1.0</version>\n</dependency>\n```\n\n## Hello World\n\n```kotlin\nfun main() {\n    val app = Colleen()\n    app.get(\"/\") { \"hello world\" }\n    app.listen(8000)\n}\n```\n\n## 简明示例\n\n```kotlin\nimport io.github.cymoo.colleen.*\nimport io.github.cymoo.colleen.middleware.*\n\n// ---------- Function-style handlers ----------\n\nfun getUser(id: Path<Int>, service: UserService): User =\n    service.find(id.value)\n\nfun createUser(body: Json<CreateUser>, service: UserService): User =\n    service.create(body.value.name)\n\n// ---------- Controller-style Handlers ----------\n\n@Controller(\"/api\")\nclass ApiController {\n\n    @Get(\"/ping\")\n    fun ping(): String = \"pong\"\n\n    @Get(\"/users/{id}\")\n    fun get(id: Path<Int>, service: UserService): User =\n        service.find(id.value)\n}\n\n// ---------- Application ----------\n\nfun main() {\n    val app = Colleen()\n\n    // Provide service\n    app.provide(UserService())\n\n    // Register middleware\n    app.use(RequestLogger())\n    app.use(Cors())\n\n    // Lambda-style\n    app.get(\"/\") { \"Hello World\" }\n\n    // Function-style\n    app.get(\"/users/{id}\", ::getUser)\n    app.post(\"/users\", ::createUser)\n\n    // Controller-style\n    app.addController(ApiController())\n\n    app.listen(8000)\n    println(\"→ http://localhost:8000\")\n}\n\n// ---------- Data ----------\n\ndata class CreateUser(val name: String)\ndata class User(val id: Int, val name: String)\n\n// ---------- Service ----------\n\nclass UserService {\n\n    private val users = mutableMapOf(\n        1 to User(1, \"Alice\"),\n        2 to User(2, \"Bob\")\n    )\n\n    private var nextId = 3\n\n    fun create(name: String): User {\n        val user = User(nextId++, name)\n        users[user.id] = user\n        return user\n    }\n\n    fun find(id: Int): User =\n        users[id] ?: throw NotFound(\"User not found\")\n}\n```",
@@ -810,13 +818,5 @@
     "created_at": "2026-02-04T03:51:05Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8920"
-  },
-  {
-    "id": 8919,
-    "title": "【工具自荐】SideTodo - 住在浏览器侧边的极简待办清单",
-    "content": "**SideTodo - 住在浏览器侧边的极简待办清单**\n\n>  [官网](https://sidetodo.com) https://sidetodo.com\n>  [Chrome Web Store](https://chromewebstore.google.com/detail/sidetodo/lhfndapnoolgalcnjhbkcmkmphfkdehg) \n\n## 项目简介\n\nSideTodo 是一款 Chrome 侧边栏插件。将待办清单固定在浏览器侧边，**不遮挡页面内容**，让你随时管理任务而不打断当前工作流。支持中英文双语、深色模式、数据自动同步。无框架依赖，打包体积小，秒开即用。\n\n## 核心亮点\n\n| 亮点 | 说明 |\n| --- | --- |\n| **开箱即用** | 无需注册，开箱即用 |\n| **侧边栏，不遮挡** | 固定在浏览器侧边，与主内容并排，随时可见 |\n| **数据同步** | 多设备无缝同步（使用 Chrome Storage Sync API） |\n| **极简设计** | 无多余功能，专注核心的增删改查 |\n| **双语支持** | 中英文界面无缝切换 |\n| **深色模式** | 自动跟随系统或手动切换 |\n| **秒开即用** | 轻量级实现，无性能负担 |\n\n## 项目截图\n\n<img width=\"600\"  alt=\"Image\" src=\"https://github.com/user-attachments/assets/41250a8d-fbd2-4654-b7b5-8f6818ed21a3\" />\n\n<img width=\"600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca6b244d-faa0-4c52-96c7-e1b3c2c3168e\" />\n\n## 使用场景\n\n- **开发者**：记录今天要修的 bug、要写的功能、待调研的技术\n- **产品经理**：随时记下用户反馈、产品想法\n- **会议场景**：边开会边记录 action items\n- **日常碎片**：购物清单、周末计划、临时想法\n\n## 为什么做这个项目？\n\n日常工作中有太多待办事项散落各处：今天要完成的 bug、会议记录的行动点、临时想到的想法等。每次都要切换到专门的待办应用（如 Things、TickTick）打断了思路。\n\n现有的待办插件要么悬浮在页面上遮挡内容，要么功能过于臃肿。发现 Chrome 的 Side Panel API 后，觉得这是完美的待办工具形态——常驻侧边，不干扰主内容，随时可查看和添加。\n\n**它不是一个功能完备的项目管理工具**。它更像一个\"快速记、随手划\"的便利贴，专门存那些短期、碎片化的待办事项。\n\n\n## 作者自荐\n\n我是 andyiac，前端开发者，相信\"简单即是美\"。SideTodo 是我自己日常在用的工具，专注解决\"快速记录、随手完成\"这个核心需求。没有复杂的功能设计，只有最实用的待办管理。如果觉得有用，欢迎安装体验！\n\n",
-    "created_at": "2026-02-04T00:06:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8919"
   }
 ]
