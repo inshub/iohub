@@ -1,5 +1,13 @@
 [
   {
+    "id": 9020,
+    "title": "【开源自荐】Colleen：轻量、类型安全的 Kotlin / Java Web 框架",
+    "content": "Colleen 是一个轻量、类型安全的 Kotlin / Java Web 框架。\n\nGitHub：https://github.com/cymoo/colleen\n\n## 主要特点\n\n- 显式配置\n- 可组合的中间件\n- 自动参数提取\n- 清晰直接的依赖注入\n- 基于虚拟线程的同步请求处理模型\n\n## 设计理念\n\n- 显式优于隐式\n- 同步优于异步\n- 类型安全不可或缺\n- 清晰本身就是 feature\n- 魔法是负债\n\n## 安装\n\n```xml\n<dependency>\n    <groupId>io.github.cymoo</groupId>\n    <artifactId>colleen</artifactId>\n    <version>0.1.0</version>\n</dependency>\n```\n\n## Hello World\n\n```kotlin\nfun main() {\n    val app = Colleen()\n    app.get(\"/\") { \"hello world\" }\n    app.listen(8000)\n}\n```\n\n## 简明示例\n\n```kotlin\nimport io.github.cymoo.colleen.*\nimport io.github.cymoo.colleen.middleware.*\n\n// ---------- Function-style handlers ----------\n\nfun getUser(id: Path<Int>, service: UserService): User =\n    service.find(id.value)\n\nfun createUser(body: Json<CreateUser>, service: UserService): User =\n    service.create(body.value.name)\n\n// ---------- Controller-style Handlers ----------\n\n@Controller(\"/api\")\nclass ApiController {\n\n    @Get(\"/ping\")\n    fun ping(): String = \"pong\"\n\n    @Get(\"/users/{id}\")\n    fun get(id: Path<Int>, service: UserService): User =\n        service.find(id.value)\n}\n\n// ---------- Application ----------\n\nfun main() {\n    val app = Colleen()\n\n    // Provide service\n    app.provide(UserService())\n\n    // Register middleware\n    app.use(RequestLogger())\n    app.use(Cors())\n\n    // Lambda-style\n    app.get(\"/\") { \"Hello World\" }\n\n    // Function-style\n    app.get(\"/users/{id}\", ::getUser)\n    app.post(\"/users\", ::createUser)\n\n    // Controller-style\n    app.addController(ApiController())\n\n    app.listen(8000)\n    println(\"→ http://localhost:8000\")\n}\n\n// ---------- Data ----------\n\ndata class CreateUser(val name: String)\ndata class User(val id: Int, val name: String)\n\n// ---------- Service ----------\n\nclass UserService {\n\n    private val users = mutableMapOf(\n        1 to User(1, \"Alice\"),\n        2 to User(2, \"Bob\")\n    )\n\n    private var nextId = 3\n\n    fun create(name: String): User {\n        val user = User(nextId++, name)\n        users[user.id] = user\n        return user\n    }\n\n    fun find(id: Int): User =\n        users[id] ?: throw NotFound(\"User not found\")\n}\n```",
+    "created_at": "2026-02-15T12:33:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9020"
+  },
+  {
     "id": 9019,
     "title": "【开源自荐】CursorLens：开源免费录屏与自动剪辑工具，面向开发者产品演示",
     "content": "CursorLens 是一个面向开发者和产品团队的开源录屏工具，目标是低成本做出高质量产品演示视频。项目基于 OpenScreen 深度重构，重点强化了 macOS 原生采集链路与后期编辑能力。\n核心特性包括：屏幕/窗口录制、原生光标隐藏、相机叠加、麦克风录音、倒计时与快捷键控制、多画幅导出（16:9/9:16/1:1）、字幕生成、粗剪与光标增强等。\n项目完全开源、MIT 协议，可商用、可二次开发，适合做产品 Demo、教程、发布视频等场景。\n\nGitHub：https://github.com/blueberrycongee/CursorLens\nReleases：https://github.com/blueberrycongee/CursorLens/releases\n\n![CursorLens Demo](https://raw.githubusercontent.com/blueberrycongee/CursorLens/main/icons/icons/gif/gif.gif)\n",
@@ -810,13 +818,5 @@
     "created_at": "2026-02-04T00:06:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8919"
-  },
-  {
-    "id": 8918,
-    "title": "拼豆生成大师 - 浏览器端的图片转拼豆图纸工具",
-    "content": "### 拼豆生成大师 (Pixel Bead Art Generator)\n\n官网：https://www.pixelbead.art/\n\n这是一个完全免费、无需登录、且保护隐私（所有处理均在本地浏览器完成）的拼豆图纸生成工具。\n\n**背景与痛点：**\n作为一名拼豆爱好者，发现现有的生成工具大多需要付费订阅、强制注册账号，或者在手机端的操作体验极差。为了解决这些问题，自己开发了这个工具。\n\n**核心功能：**\n*   **100% 本地处理**：基于 Canvas API 和 Web Workers，图片不上传服务器，保护用户隐私。\n*   **品牌色卡支持**：内置 Perler、Hama、Artkal 等主流拼豆品牌色卡，算法自动匹配最近颜色。\n*   **移动端优先**：专门优化了移动端交互，方便用户在制作台边看着手机边拼豆。\n*   **多语言支持**：支持中文、英文、日文、韩文。\n\n**技术栈**：React, Vite, Web Workers (用于高性能图像量化)。\n\n<img width=\"1193\" height=\"885\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9ce5fadc-4310-48cb-ab07-052f45bbc721\" />",
-    "created_at": "2026-02-03T14:54:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8918"
   }
 ]
