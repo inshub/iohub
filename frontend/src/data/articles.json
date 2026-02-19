@@ -1,5 +1,29 @@
 [
   {
+    "id": 9040,
+    "title": "【开源自荐】SafeReceipt -- AI Agent 问责协议，链上收据证明 AI 到底做了什么",
+    "content": "## SafeReceipt — Agent Accountability Protocol\n\n当 AI Agent 替你操作链上交易时，你怎么知道它有没有偷偷改金额、换收款地址？\n\nSafeReceipt 解决这个问题：**在 AI 执行交易之前，先把用户的真实意图做成密码学收据上链；执行之后，对比收据和实际交易，自动判定是否一致。**\n\n一句话：**When AI fails, receipts prove who's responsible.**\n\n**在线体验：** https://safereceipt.vercel.app\n**源码仓库：** https://github.com/calderbuild/SafeReceipt\n**链上合约（已验证）：** https://testnet.monadscan.com/address/0x7761871A017c1C703C06B0021bF341d707c6226A#code\n\n---\n\n### 首页\n\n![首页](https://raw.githubusercontent.com/calderbuild/SafeReceipt/base-version/docs/screenshots/hero.png)\n\n### Agent 验证 Demo（3 个场景：安全授权 / 高危授权 / 恶意篡改）\n\n![Agent Demo](https://raw.githubusercontent.com/calderbuild/SafeReceipt/base-version/docs/screenshots/agent-demo.png)\n\n### 6 条自动风险评估规则\n\n![Risk Rules](https://raw.githubusercontent.com/calderbuild/SafeReceipt/base-version/docs/screenshots/risk-rules.png)\n\n---\n\n### 推荐理由\n\n随着 AI Agent 越来越多地代替用户执行链上操作（授权、转账、DeFi 交互），一个关键问题浮现：**Agent 说它做了 X，但实际做的是 Y，用户怎么办？**\n\n现有方案要么依赖事后人工审查，要么信任 Agent 的自我报告。SafeReceipt 提出一个不同的思路：\n\n1. **执行前锁定意图**：用户声明 \"授权 100 USDC 给 Uniswap\"，系统将意图规范化后做 keccak256 哈希，连同风险评分一起写入智能合约\n2. **执行后自动验证**：将实际交易的 calldata 解码，与链上收据逐字段对比（token、spender、amount）\n3. **不可篡改的证据链**：如果 Agent 篡改了交易（比如把 100 改成 10000），收据状态变为 MISMATCH，任何人都可以验证\n\n这不是又一个钱包插件，而是一个**协议层的问责机制** —— 适用于任何 AI Agent 框架。\n\n---\n\n### 核心功能\n\n- **6 条自动风险规则**：无限授权检测、未知合约识别、重复授权模式、异常金额等，每笔交易自动评分 0-100\n- **确定性哈希**：固定字段顺序 + 字母序排列的规范化 JSON，确保同一意图永远产生同一哈希\n- **链上收据生命周期**：`CREATED → VERIFIED / MISMATCH`，不可逆转\n- **一键 Demo**：连接钱包后选择场景（安全授权 / 高危授权 / 恶意篡改），全流程自动演示\n- **证据导出**：一键下载包含哈希证明、验证步骤的 JSON 文件，可用于争议仲裁\n\n### 技术栈\n\nReact 19 + TypeScript + Vite + ethers.js v6 + Solidity 0.8.19 + Tailwind CSS v4，部署在 Monad Testnet（合约已在 MonadScan 开源验证）。\n\n---\n\n### 项目背景\n\n为 Monad Blitz Pro Series Hackathon（Rebel in Paradise AI Hackathon）开发，关注 AI Agent 安全这一新兴领域。",
+    "created_at": "2026-02-19T08:16:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9040"
+  },
+  {
+    "id": 9039,
+    "title": "【开源自荐】博弈圆桌 -- AI Agent 三轮自动谈判，SecondMe 分身替你博弈达成共识",
+    "content": "## 博弈圆桌 (Negotiation Arena)\n\n两个 AI Agent 代表各自立场，围绕一个议题进行三轮谈判，自动达成共识或明确分歧。\n\n- **甲方**：你的 SecondMe 分身（通过 OAuth 登录后调用 SecondMe Chat API 代你发言）\n- **乙方**：LLM 驱动的 AI 对手\n\n用户只需两步操作：**登录** + **设定议题**，其余 100% 由 AI 自动完成。\n\n**在线体验：** https://negotiation-table.vercel.app\n**源码仓库：** https://github.com/calderbuild/negotiation-arena\n\n---\n\n### 首页\n\n![首页](https://raw.githubusercontent.com/calderbuild/negotiation-arena/main/docs/screenshots/homepage.png)\n\n### 谈判设置（内置 5 个预设场景，也可自定义）\n\n![谈判设置](https://raw.githubusercontent.com/calderbuild/negotiation-arena/main/docs/screenshots/setup.png)\n\n### 三轮谈判 + 结构化共识报告\n\n![谈判完成](https://raw.githubusercontent.com/calderbuild/negotiation-arena/main/docs/screenshots/negotiation-complete.png)\n\n---\n\n### 核心特性\n\n- **SecondMe OAuth 登录**：一键授权，你的 AI 分身即刻上线\n- **三轮渐进式谈判**：基于 NeurIPS 2024 LLM-Deliberation 论文的策略框架，逐轮推进共识\n- **实时 SSE 流式对话**：思考状态、轮次切换、消息逐条呈现\n- **结构化共识报告**：收敛度评分、协议条款、双方让步、未解决分歧、谈判风格分析\n- **5 个预设场景**：年终奖分配、周末聚餐、项目排期、办公室温度、远程办公\n\n### 为什么谈判是 A2A 的关键场景\n\n多数 A2A demo 是信息传递型 -- Agent A 传话给 Agent B。博弈圆桌展示的是 **利益博弈型 A2A**：两个 Agent 有各自立场和底线，需要理解对方、策略性让步、在约束条件下寻找最优解。\n\n未来当每个人都有自己的 AI 分身，Agent 代理谈判将成为常态。\n\n### 技术栈\n\nNext.js 16 + React 19 + TypeScript + Tailwind CSS v4 + SecondMe OAuth/Chat/Act API + DeepSeek LLM，部署在 Vercel。",
+    "created_at": "2026-02-19T08:00:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9039"
+  },
+  {
+    "id": 9038,
+    "title": "【开源自荐】SplitDot — AI 小票识别 + 链上透明记账，Polkadot Hackathon 参赛作品",
+    "content": "## 项目信息\n\n**项目名称**：SplitDot\n\n**项目地址**：https://github.com/calderbuild/splitdot\n\n**在线演示**：https://splitdot.vercel.app\n\n**一句话介绍**：拍照扫描小票，AI 自动识别金额和明细，链上透明记账 —— 基于 Polkadot Hub EVM 的去中心化 AA 记账工具。\n\n## 推荐理由\n\n和朋友聚餐、合租、旅行，最头疼的就是记账和算账。现有工具（如 Splitwise）都是中心化的，余额只是数据库里的一个数字，谁改了什么、算没算对，完全是黑盒。\n\nSplitDot 用智能合约做账本，用 AI 做录入：\n\n1. **AI 小票识别**：手机拍照或上传小票图片，GPT-4o-mini Vision 自动提取金额、商家、分类和明细行，一秒填好表单，不用手动输入\n2. **链上透明账本**：群组、账单、每笔拆分全部记录在智能合约上，任何人可验证，不可篡改\n3. **智能净额计算**：贪心匹配算法将 N 人之间的债务关系压缩到最少转账笔数（最多 N-1 次），不用两两互转\n4. **均分 / 自定义拆分**：支持平均分摊和自定义金额，覆盖聚餐、合租、旅行等场景\n5. **余额可视化**：每个成员的净收支一目了然，绿色代表别人欠你，红色代表你欠别人\n\n这是一个 Polkadot Hackathon 参赛作品，主要探索 AI + 智能合约在日常生活场景中的应用。\n\n## 截图\n\n### AI 小票识别（核心功能）\n\n拍照上传小票后，AI 自动识别金额 $15.14、商家 Starbucks、3 个明细行，表单一键填充：\n\n![AI Receipt Scanner](https://raw.githubusercontent.com/calderbuild/splitdot/main/docs/screenshots/03-ai-scanner.png)\n\n### 添加账单\n\n支持金额输入、描述、分类选择、均分/自定义拆分模式：\n\n![Add Expense](https://raw.githubusercontent.com/calderbuild/splitdot/main/docs/screenshots/05-add-expense.png)\n\n### 创建群组\n\n输入成员地址，链上创建透明账本群组：\n\n![Create Group](https://raw.githubusercontent.com/calderbuild/splitdot/main/docs/screenshots/02-create-group.png)\n\n### 结算总览\n\n净额算法优化后的结算方案，最少转账次数清账：\n\n![Settlement](https://raw.githubusercontent.com/calderbuild/splitdot/main/docs/screenshots/04-settlement.png)\n\n## 技术栈\n\n- 智能合约：Solidity 0.8.28 + Hardhat + OpenZeppelin\n- 前端：React 19 + TypeScript + Vite 7 + Tailwind CSS v4\n- 链交互：Wagmi v3 + viem\n- AI：OpenAI Vision API（gpt-4o-mini）\n- 部署链：Polkadot Hub Testnet\n\n**补充信息**：\n- 开源协议：MIT\n- 在线体验：https://splitdot.vercel.app （需安装 MetaMask 并添加 Polkadot Hub Testnet）\n- 安装方式：`npm install && npm run dev`\n- 适合人群：对 AI + 区块链技术结合感兴趣的开发者",
+    "created_at": "2026-02-19T07:54:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9038"
+  },
+  {
     "id": 9037,
     "title": "【网站自荐】Graffiti Generator - 免费在线 AI 涂鸦与字体生成器",
     "content": "[Graffiti Generator](https://graffitigenerator.io)\n\n**Graffiti Generator** 是一个专注于涂鸦艺术的在线生成工具，旨在降低涂鸦创作的门槛。它结合了 AI 绘画生成与传统的字体设计功能，让用户无需任何绘画基础，也能在几秒钟内创造出专业级的涂鸦作品。\n\n主要特点：\n\n- **双重 AI 创作模式**：\n  - **预设工坊 (Preset Workshop)**：内置赛博朋克、经典街头、泡泡字等多种流行风格，新手一键即可生成炫酷效果。\n  - **自由创作 (Free Creation)**：支持高度自定义的 Prompt 输入，精准控制画面的光影、纹理和细节，满足专业需求。\n- **专业字体生成器**：提供 50+ 款精选涂鸦字体，支持实时在线编辑。用户可以自由调整填充色、轮廓、阴影、模糊度等参数，并直接下载 PNG 格式。\n- **完全商用授权**：用户对生成的图片拥有完整的商业使用权，可放心地用于品牌 Logo、周边产品或宣传海报。\n- **零门槛易用**：无需安装任何软件，浏览器打开即用，智能语义分析引擎能较好地理解简短的描述。\n\n适合人群：\n设计师、街头艺术爱好者、游戏开发者、品牌运营人员。\n\n官网：[https://graffitigenerator.io](https://graffitigenerator.io)\n",
@@ -798,29 +822,5 @@
     "created_at": "2026-02-06T08:26:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8940"
-  },
-  {
-    "id": 8939,
-    "title": "【工具自荐】🎂生日天气——查询出生时天气的小程序",
-    "content": "小程序「**生日天气**」，专门回溯你出生那天的气象数据。\n\n- 核心功能：支持查询 1940 年至今的全球历史天气。\n- 好评细节：支持农历输入，自动反推公历日期（这点很关键，查长辈生日很方便）。\n\n没啥大用，但作为聊天话题或发朋友圈挺有意思的，查了一下我出生那天居然是暴雨🌧️\n\n![首页截图](https://15tar.com/images/birthday-weather/index.PNG)\n![结果页截图](https://15tar.com/images/birthday-weather/result.PNG)\n\n![二维码](https://15tar.com/images/birthday-weather/qr_code.JPG)",
-    "created_at": "2026-02-06T07:56:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8939"
-  },
-  {
-    "id": 8938,
-    "title": "【开源自荐】Paytick —— macOS 菜单栏实时工资计算器，看见每一分钟的价值",
-    "content": "## 项目地址\n\nhttps://github.com/miniLV/Paytick\n\n## 这是什么\n\nPaytick 是一款常驻 macOS 菜单栏的实时收入计算器。输入月薪和上下班时间，菜单栏会实时显示你今天已经赚了多少钱——精确到分，每秒跳动。\n\n![Normal State](https://raw.githubusercontent.com/miniLV/Paytick/master/docs/images/normal_state.png)\n\n## 为什么做这个\n\n工作多年之后，可能失去对上班的热情，这时候就遇到有个告诉你上班价值的工具，提醒你自己的价值。我觉得这个东西应该像时钟一样，安静地挂在菜单栏里，随时瞥一眼就知道自己赚了多少。\n\n所以用 SwiftUI 写了一个原生 macOS 菜单栏应用。赛博朋克风格，霓虹绿配色，CRT 扫描线效果，摸鱼也要有仪式感。\n\n## 功能亮点\n\n**实时收入跳动** —— 菜单栏实时显示当前已赚金额，支持按分钟计算收入率。\n\n**愿望清单** —— 想买 iPhone？设置目标金额，看进度条慢慢填满。给自己一个上班的动力。\n\n**加班提醒** —— 过了下班时间还在干活？界面变红，提醒你时薪正在被稀释。该走就走。\n\n**隐私保护** —— 同事凑过来看屏幕的时候，一键切换：\n- Emoji 模式：数字变成 🍎🚀⭐\n- 模糊模式：高斯模糊遮盖\n- 打码模式：显示为 ****\n\n![Privacy Mode](https://raw.githubusercontent.com/miniLV/Paytick/master/docs/images/privacy_mode.png)\n\n**加班状态：**\n\n![Overtime Alert](https://raw.githubusercontent.com/miniLV/Paytick/master/docs/images/overtime_alert.jpg)\n\n## 技术栈\n\n- Swift 6 + SwiftUI\n- macOS 13+ 原生应用\n- 数据全部本地存储，不联网、不上传、不追踪\n- 已通过 Apple 公证，双击即可运行\n- 支持 GitHub Actions 自动构建和发布\n\n## 安装\n\n去 [Releases](https://github.com/miniLV/Paytick/releases) 下载 DMG，拖进应用程序文件夹即可使用。\n\n## 写在最后\n\n上班就是拿时间换钱，公平交易。与其假装看不见，不如让数字告诉你每一分钟值多少钱。给自己定个小目标，攒够了就奖励自己。\n\n项目完全开源，欢迎 Star、Issue 和 PR！",
-    "created_at": "2026-02-06T06:55:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8938"
-  },
-  {
-    "id": 8937,
-    "title": "【开源自荐】TINKER - 跨平台桌面工具箱",
-    "content": "## 介绍\n\nTINKER 是一个提升效率的跨平台桌面工具箱，内置了多个精选工具，涵盖开发、设计、日常办公等多个场景，同时可以通过 npm 自由编写安装插件。\n\n### 亮点\n\n* 一键快捷键呼出，搜索即用，用完自动隐藏。\n* 内置 30 + 高质量常用插件，持续更新。\n* 无需注册，纯本地运行，数据不上传服务器。\n* 支持 npm 自定义插件，免审核扩展，已集成近 20 个优质第三方插件。\n* 支持搜索本地应用。\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68e544c9-cc48-4fb6-9782-0df8cae92189\" />\n\n## 相关链接\n\n* [Github](https://github.com/liriliri/tinker)\n* [官网](https://tinker.liriliri.io/)\n\n## 部分插件截图\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e41b61a-2d99-4550-90ef-96cb2517431a\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e32a8381-d70f-4761-9b68-8bcf9b0529a4\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/445743ed-0177-45d1-8964-f5b04bfb9b3b\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3a17c060-f35d-4436-8348-4a30605ffa91\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/64f72613-7c9b-4a9e-a901-953f96f26816\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/af99f764-7fbd-417e-b70c-e74de11b2412\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/714f74f0-1e37-4a6e-b9b0-45dd9041d227\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/513dab68-3451-4363-8b4e-e512ccbd3a14\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e183bd01-3297-4c35-b1fa-6b3caf8d0671\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e4b44418-c539-4525-a433-8d1fcef79707\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fc595969-05a3-4500-b392-3af28892f6b5\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aafd6a30-83b3-491e-94fe-17edbd9f0028\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/80341575-6b4d-4615-bf31-0bafc01dd4f4\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d961e920-fbb1-4888-a5c9-6bb6944e8f2d\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fa19ced5-1deb-4ec9-8d82-1e49869f1760\" />\n\n<img width=\"400\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/abdf569a-f2a1-4d0e-b483-f574b902c776\" />\n",
-    "created_at": "2026-02-06T05:59:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8937"
   }
 ]
