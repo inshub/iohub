@@ -1,5 +1,13 @@
 [
   {
+    "id": 9036,
+    "title": "OpenAPI -> Skills 转化器，让 Agent 按需精准读取 API 文档",
+    "content": "https://neutree.ai/projects/openapi-to-skills\n\n之前尝试过各种方法让 Agent 可以更可靠地读取 API 文档，不论是基于它开发客户端代码、做集成测试还是自动化。但复杂一些的 API 文档就会遇到超出上下文大小，即使不超出，也非常浪费上下文空间、多轮对话之后模型就又幻觉了。\n\n最近又想做个公司产品 API 的 code helper ，但是产品的 API 文档的 OpenAPI JSON 接近 10MB ，又遇到上面的问题。陆续尝试过几种切分的方法，部分奏效，但是复杂度挺高，维护成本也高。\n\n前几天突然想到 Skills 最擅长按需加载，就做了一个 CLI ，把 OpenAPI 文档转为 Skills 结构，核心是按 API 语义的拆分 + link ，实现按需加载，实际使用效果惊人，顺便加了点模版定制功能，更好用了。\n\n原本单个 10MB API 文档，拆完之后是 2000+ 小的 md 文件，但是对于具体的 API 任务请求（比如写个 xx 场景运维脚本），Agent 都可以精准地读取所需的片段，探索性特别好，对单个资源的操作需求一般读 5 个片段就能准确写出了，最关键是没幻觉。\n",
+    "created_at": "2026-02-19T02:12:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9036"
+  },
+  {
     "id": 9035,
     "title": "【开源自荐】cc-costline — Claude Code 增强状态栏，实时显示花费和用量",
     "content": "## 项目信息\n\n**项目名称**：cc-costline\n\n**项目地址**：https://github.com/Ventuss-OvO/cc-costline\n\n**一句话介绍**：Claude Code 终端增强状态栏，实时显示 Token 花费、上下文占比、用量限制和排行榜排名\n\n## 推荐理由\n\nClaude Code 用户最大的痛点之一是「不知道自己花了多少钱」。cc-costline 在终端底部添加一行状态栏，一眼看清：\n\n1. **实时花费追踪**：当前会话的 Token 数、花费金额、上下文占比和当前模型\n2. **用量限制提醒**：5 小时 / 7 天使用率，颜色随用量自动变化（绿→橙→红）\n3. **周期成本统计**：支持 7 天或 30 天滚动花费汇总\n4. **排行榜集成**：自动显示 ccclub 排名（可选）\n\n安装一行命令搞定：\n\n```bash\nnpm i -g cc-costline && cc-costline install\n```\n\n零配置即开即用，OAuth 凭证自动从 macOS Keychain 读取。\n\n**截图**：\n\n![cc-costline screenshot](https://github.com/Ventuss-OvO/cc-costline/raw/main/screenshot.png)\n\n**补充信息**：\n- 安装方式：npm\n- 系统要求：Node.js >= 22\n- 适合人群：所有 Claude Code 用户（尤其是 Max/Team 订阅用户）",
@@ -812,13 +820,5 @@
     "created_at": "2026-02-06T02:00:10Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8936"
-  },
-  {
-    "id": 8935,
-    "title": "【开源自荐】React Timeline Editor 快速搭建时间线编辑能力的React组件",
-    "content": "GitHub: https://github.com/xzdarcy/react-timeline-editor\n\n# React Timeline Editor\n这是一款基于React的组件，专为快速搭建时间线编辑功能而生，适配动画播放、音频加载等多样化时间线场景需求。\n\n组件无需复杂配置，即可实现丰富的时间线交互效果，同时支持灵活自定义与独立运行，大幅提升时间线相关项目的开发效率。\n\n相关地址：https://zdarcy.com\n\n# 使用演示：\n![Image](https://github.com/user-attachments/assets/1ced941d-d167-40e7-89ae-83e2ed429070)\n\n# 功能特性\n- 支持拖拽和缩放操作，提供网格吸附、辅助线吸附功能\n\n- 支持无限滚动，保障大量时间线元素的流畅交互\n \n- 支持自定义样式，满足不同项目的视觉设计需求\n\n- 支持通过钩子函数扩展交互行为，适配个性化业务场景\n\n- 支持自定义运行性能，适配不同复杂度的项目需求\n\n- 具备独立运行器能力，可脱离编辑器单独运行\n\n",
-    "created_at": "2026-02-05T15:03:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8935"
   }
 ]
