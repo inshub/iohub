@@ -1,5 +1,13 @@
 [
   {
+    "id": 9041,
+    "title": "【开源自荐】一个帮你秒提视频字幕和摘要的 skill",
+    "content": "刷到一个干货视频，想快速回顾内容？手动记笔记太慢，AI 转录工具又要来回切换？\n\n  **video-to-subtitle-summary** 是一个 Skill，让你在终端里直接丢一个视频链接（抖音、小红书、B站），或者一个本地视频文件路径，就能自动完成：\n\n> 下载视频   → 提取音频 → 语音识别 → 生成字幕 → AI 总结要点。\n\n  ## 用法\n就一句话：\n\n  请帮我总结这个视频：https://v.douyin.com/xxxxxx/\n\n  本地文件：\n\n  请帮我提取字幕并总结：~/Downloads/meeting.mp4\n\n  输出包括 SRT 字幕文件、纯文本、AI 生成的标题、摘要和核心要点。\n\n  ## 为什么推荐\n\n  1. **零切换成本**：不用打开任何网页工具或 App，在你已经在用的 Claude Code 里直接完成，工作流不中断。\n\n  2. **多平台支持**：抖音、小红书、B站、本地文件，一个 Skill 全覆盖。不用为不同平台找不同工具。\n\n  3. **输出即笔记**：结果不是简单的转录文字，而是结构化的标题 + 摘要 + 要点，直接就能用。字幕文件也同时生成，需要精确到时间轴也没问题。\n\n  4. **几乎免费**：依赖的 TikHub API（100次/天免费）和火山引擎语音识别（新用户送约2万次）都有免费额度，个人日常使用完全够。\n\n  5. **安装简单**：克隆仓库、复制到 `~/.claude/skills/` 目录、配置几个环境变量，三步搞定。\n\n  ## 适合谁\n\n  - 经常刷短视频学习，想快速整理内容的人\n  - 需要将会议录音、访谈视频转文字的人\n  - Claude Code 重度用户，希望一切都在终端里完成\n\n  GitHub: https://github.com/imlewc/video-to-subtitle-summary\n\n",
+    "created_at": "2026-02-20T06:04:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9041"
+  },
+  {
     "id": 9040,
     "title": "【开源自荐】SafeReceipt -- AI Agent 问责协议，链上收据证明 AI 到底做了什么",
     "content": "## SafeReceipt — Agent Accountability Protocol\n\n当 AI Agent 替你操作链上交易时，你怎么知道它有没有偷偷改金额、换收款地址？\n\nSafeReceipt 解决这个问题：**在 AI 执行交易之前，先把用户的真实意图做成密码学收据上链；执行之后，对比收据和实际交易，自动判定是否一致。**\n\n一句话：**When AI fails, receipts prove who's responsible.**\n\n**在线体验：** https://safereceipt.vercel.app\n**源码仓库：** https://github.com/calderbuild/SafeReceipt\n**链上合约（已验证）：** https://testnet.monadscan.com/address/0x7761871A017c1C703C06B0021bF341d707c6226A#code\n\n---\n\n### 首页\n\n![首页](https://raw.githubusercontent.com/calderbuild/SafeReceipt/base-version/docs/screenshots/hero.png)\n\n### Agent 验证 Demo（3 个场景：安全授权 / 高危授权 / 恶意篡改）\n\n![Agent Demo](https://raw.githubusercontent.com/calderbuild/SafeReceipt/base-version/docs/screenshots/agent-demo.png)\n\n### 6 条自动风险评估规则\n\n![Risk Rules](https://raw.githubusercontent.com/calderbuild/SafeReceipt/base-version/docs/screenshots/risk-rules.png)\n\n---\n\n### 推荐理由\n\n随着 AI Agent 越来越多地代替用户执行链上操作（授权、转账、DeFi 交互），一个关键问题浮现：**Agent 说它做了 X，但实际做的是 Y，用户怎么办？**\n\n现有方案要么依赖事后人工审查，要么信任 Agent 的自我报告。SafeReceipt 提出一个不同的思路：\n\n1. **执行前锁定意图**：用户声明 \"授权 100 USDC 给 Uniswap\"，系统将意图规范化后做 keccak256 哈希，连同风险评分一起写入智能合约\n2. **执行后自动验证**：将实际交易的 calldata 解码，与链上收据逐字段对比（token、spender、amount）\n3. **不可篡改的证据链**：如果 Agent 篡改了交易（比如把 100 改成 10000），收据状态变为 MISMATCH，任何人都可以验证\n\n这不是又一个钱包插件，而是一个**协议层的问责机制** —— 适用于任何 AI Agent 框架。\n\n---\n\n### 核心功能\n\n- **6 条自动风险规则**：无限授权检测、未知合约识别、重复授权模式、异常金额等，每笔交易自动评分 0-100\n- **确定性哈希**：固定字段顺序 + 字母序排列的规范化 JSON，确保同一意图永远产生同一哈希\n- **链上收据生命周期**：`CREATED → VERIFIED / MISMATCH`，不可逆转\n- **一键 Demo**：连接钱包后选择场景（安全授权 / 高危授权 / 恶意篡改），全流程自动演示\n- **证据导出**：一键下载包含哈希证明、验证步骤的 JSON 文件，可用于争议仲裁\n\n### 技术栈\n\nReact 19 + TypeScript + Vite + ethers.js v6 + Solidity 0.8.19 + Tailwind CSS v4，部署在 Monad Testnet（合约已在 MonadScan 开源验证）。\n\n---\n\n### 项目背景\n\n为 Monad Blitz Pro Series Hackathon（Rebel in Paradise AI Hackathon）开发，关注 AI Agent 安全这一新兴领域。",
@@ -814,13 +822,5 @@
     "created_at": "2026-02-06T09:13:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8941"
-  },
-  {
-    "id": 8940,
-    "title": "【工具自荐】借小记：一款纯私密、无社交压力的个人借条管理小程序",
-    "content": "生活中总有这样的时刻：亲友开口周转，你因为不好意思拒绝，总是硬着头皮答应。\n钱借出去时大方爽快，可日子一久，忙碌的生活让你不仅忘了归期，甚至连“借给了谁”、“借了多少”都变得模糊不清。\n\n为了解决这个“脸皮薄”的烦恼，我开发了一个微信小程序——**借小记**。它不是一个复杂的财务软件，而是一个专门为你守护“情分”与“钱包”的贴身管家。\n\n### 主要功能\n\n#### 1. 极速记录，拒绝遗忘\n借出那一刻，只需三秒钟即可完成记录。支持记录借款人姓名、金额、借款日期以及备注信息。不再因为“不好意思”或者“记性差”而把钱变成一本糊涂账。\n\n#### 2. 归还进度，一目了然\n借款状态实时追踪。无论是全额还款，还是分期归还，系统都能清晰记录每一笔还款明细，自动计算剩余未还金额。谁还了、还多少、剩多少，打开小程序便心中有数。\n\n#### 3. 隐私至上，无感登录\n拒绝繁琐的注册流程，小程序通过微信 OpenID 自动识别身份，实现完全的“免登录”体验。我们承诺**不获取头像、昵称等任何个人信息**，仅利用 OpenID 进行数据隔离。后端配合严格的行级安全策略（RLS），确保你的账本纯净且私密。\n\n### 预览\n\n<table>\n  <tr>\n    <td><img src=\"https://15tar.com/images/borrow-tracker/index.PNG\" width=\"300\" /></td>\n    <td><img src=\"https://15tar.com/images/borrow-tracker/person.PNG\" width=\"300\" /></td>\n  </tr>\n  <tr>\n    <td><img src=\"https://15tar.com/images/borrow-tracker/details.PNG\" width=\"300\" /></td>\n    <td><img src=\"https://15tar.com/images/borrow-tracker/qr_code.png\" width=\"300\" /></td>\n  </tr>\n</table>\n\n借钱是情分，记账是本分。希望「借小记」能帮你告别借钱后的“失忆”尴尬，让每一笔善意都有回响。\n\n欢迎大家体验，如果有任何 bug 或建议，欢迎在博客下方留言或在小程序内反馈！",
-    "created_at": "2026-02-06T08:26:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8940"
   }
 ]
