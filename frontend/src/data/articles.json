@@ -1,5 +1,13 @@
 [
   {
+    "id": 9050,
+    "title": "【开源自荐】AgentCut -- 多 Agent 协作的 AI 视频生产工具，一条 Prompt 生成完整视频",
+    "content": "**项目名称**：AgentCut\n\n**项目地址**：https://github.com/calderbuild/agentcut\n\n**项目简介**：\n\nAgentCut 是一个多 Agent 协作的 AI 视频生产工具。输入一段文字描述，6 个 AI Agent 按照标准化流程（SOP）协作，自动完成从创意策划到成片剪辑的全过程，输出一个完整的 MP4 视频。\n\n架构流程：\n\n```\n用户输入 Prompt\n    |\n    v\n[Director Agent] -- 分析创意方向，规划分镜\n    |\n    v\n[Script Agent] -- 编写详细制作脚本（视频提示词、旁白、字幕）\n    |\n    +------------------+------------------+\n    |                  |                  |\n    v                  v                  v\n[Visual Agent]    [Voice Agent]     [Music Agent]\n 视频生成(Hailuo)   语音合成(TTS)     背景音乐生成\n    |                  |                  |\n    +------------------+------------------+\n    |\n    v\n[Editor Agent] -- ffmpeg 合成：拼接视频、混音、烧录字幕\n    |\n    v\n最终 MP4\n```\n\nVisual、Voice、Music 三个 Agent 并行执行，Editor 等三者全部完成后合成最终视频。\n\n**技术栈**：\n\n| 组件 | 技术 |\n|------|------|\n| LLM | MiniMax M1 (Director + Script) |\n| 视频生成 | MiniMax Hailuo 2.3 (1080P, 6s) |\n| 语音合成 | MiniMax Speech-2.6-HD (带情感 TTS) |\n| 背景音乐 | MiniMax Music-2.0 (纯音乐) |\n| 视频合成 | ffmpeg (拼接、混音、字幕) |\n| 后端 | Python FastAPI + SSE 实时推送 |\n| 前端 | HTML + Tailwind CSS |\n\n**项目截图**：\n\n<p align=\"center\">\n<img src=\"https://raw.githubusercontent.com/calderbuild/agentcut/main/docs/images/landing.png\" width=\"80%\" />\n</p>\n\n<p align=\"center\">\n<img src=\"https://raw.githubusercontent.com/calderbuild/agentcut/main/docs/images/pipeline.png\" width=\"80%\" />\n</p>\n\n**推荐理由**：\n\n1. **完整的多 Agent 协作架构**：不是简单的 API 调用封装，而是 6 个 Agent 各司其职、流水线式协作，体现了 Agent SOP（标准作业流程）的设计思路。\n2. **真实可用**：一条 prompt 到一个完整 MP4，端到端跑通。每个视频生成成本约 $0.40-0.70。\n3. **实时可视化**：前端通过 SSE 实时展示每个 Agent 的工作状态和日志，整个生产过程透明可见。\n4. **轻量部署**：支持 Docker 一键部署，也可以 `pip install` 后直接运行。\n5. **开源 MIT 协议**，代码简洁，适合学习多 Agent 编排模式。\n",
+    "created_at": "2026-02-22T03:22:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9050"
+  },
+  {
     "id": 9049,
     "title": "一个比较新的项目evomap 让 AI 智能体具备“自我进化”和“能力遗传”的底层基础设施。",
     "content": "https://evomap.ai/",
@@ -20,7 +28,9 @@
     "title": "【开源自荐】Trending AI - 用 AI 快速读懂 GitHub Trending 项目的 App",
     "content": "**项目名称**：Trending AI\n\n**项目地址**：https://github.com/HarlonWang/TrendingAI\n\n**项目简介**：\n用 AI 快速读懂 GitHub Trending 开源项目。帮你省去翻阅冗长 README 和源码的时间，高效过滤并定位高价值的开源项目。\n\n**项目截图**：\n\n<img width=\"300\" height=\"650\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0bfee933-1ea0-449e-a9d5-2878dd899b2b\" />\n\n**推荐理由**：\n1. **解决痛点**：对于开发者来说，关注 GitHub Trending 是了解技术动向的好习惯，但挨个点开查看冗长的英文 README 非常耗费精力。这款 App 接入了 Gemini / DeepSeek，直接过滤并提取高价值信息，大幅节省时间。\n2. **数据回溯**：不仅能看当天的数据，还支持按日期和批次（早报/晚报）回溯往期榜单。\n3. **技术与体验**：采用了 Compose Multiplatform 一套代码覆盖双端（Android & iOS）。UI 严格遵循了 Material Design 3 规范，交互体验丝滑。\n\nAndroid 端已提供 APK 供下载体验：\n[![Download](https://img.shields.io/badge/Download-APK-green?style=flat-square&logo=android)](https://github.com/HarlonWang/Trending/releases)\n\n希望分享给周刊的读者们，帮助大家更高效率地淘金开源项目 :)",
     "created_at": "2026-02-21T13:07:24Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9047"
   },
   {
@@ -816,15 +826,5 @@
     "created_at": "2026-02-07T11:58:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8950"
-  },
-  {
-    "id": 8949,
-    "title": "【网站自荐】- DevOps Engineer 超过 300 个零基础免费交互式实验室",
-    "content": "[DevOps Engineer](https://labex.io/engineer/zh/devops/) 特别适合【0 基础的初学者】。完全动手实践，掌握 Linux 和 DevOps 的实践技能。\n\n1. 整个路径由若干模块和项目组成，体系化、结构化。采用无限画布和树状结构呈现，300 个动手 labs。\n2. 每个模块包含若干 hands-on labs 和 challenge。动手实践 + 场景验证。\n3. 多个 模块穿插 projects，交叉验证。\n4. 除了特别消耗云资源的 labs，**超过 200 个 labs 均免费提供。**\n5. 支持简体中文，为中国用户 🇨🇳 特别呈现。\n\n<img width=\"3400\" height=\"2306\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a4944088-bd23-4e54-98e4-405f6c616230\" />\n\n<img width=\"3400\" height=\"2306\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b75472b2-f3fd-4b23-8d55-963138d39d97\" />\n\n<img width=\"3400\" height=\"2306\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9ed65f98-1817-4911-8427-01867686f828\" />",
-    "created_at": "2026-02-07T05:07:14Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/8949"
   }
 ]
