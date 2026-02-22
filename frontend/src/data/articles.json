@@ -1,8 +1,16 @@
 [
   {
+    "id": 9051,
+    "title": "【工具自荐】NanoMaker：一次订阅，使用多种主流 AI 模型",
+    "content": "大家好，分享一个自己做的 AI 工具平台：https://nanomaker.im/\n\n[NanoMaker](https://nanomaker.im) 的核心思路很简单：只需一次订阅，可以使用多个主流 AI 模型。\n\n目前支持：\n\n1、图像生成（支持Nano banana 和pro）\n\n2、视频生成（支持sora 2和veo3.1）\n\n3、AI 音乐生成（支持suno）\n\n4、语音与音频处理（支持elevenlabs）\n\n不同领域的模型统一在一个界面和账户体系中，避免分别订阅多个平台，可以大幅减少成本，适合内容创作者，以及希望系统体验不同 AI 模型的人。\n\n项目还在持续迭代中，欢迎大家提出改进建议。\n\n![screenshot](https://cdn.nanomaker.im/images/og.webp)\n",
+    "created_at": "2026-02-22T12:29:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9051"
+  },
+  {
     "id": 9050,
     "title": "【开源自荐】AgentCut -- 多 Agent 协作的 AI 视频生产工具，一条 Prompt 生成完整视频",
-    "content": "**项目名称**：AgentCut\n\n**项目地址**：https://github.com/calderbuild/agentcut\n\n**项目简介**：\n\nAgentCut 是一个多 Agent 协作的 AI 视频生产工具。输入一段文字描述，6 个 AI Agent 按照标准化流程（SOP）协作，自动完成从创意策划到成片剪辑的全过程，输出一个完整的 MP4 视频。\n\n架构流程：\n\n```\n用户输入 Prompt\n    |\n    v\n[Director Agent] -- 分析创意方向，规划分镜\n    |\n    v\n[Script Agent] -- 编写详细制作脚本（视频提示词、旁白、字幕）\n    |\n    +------------------+------------------+\n    |                  |                  |\n    v                  v                  v\n[Visual Agent]    [Voice Agent]     [Music Agent]\n 视频生成(Hailuo)   语音合成(TTS)     背景音乐生成\n    |                  |                  |\n    +------------------+------------------+\n    |\n    v\n[Editor Agent] -- ffmpeg 合成：拼接视频、混音、烧录字幕\n    |\n    v\n最终 MP4\n```\n\nVisual、Voice、Music 三个 Agent 并行执行，Editor 等三者全部完成后合成最终视频。\n\n**技术栈**：\n\n| 组件 | 技术 |\n|------|------|\n| LLM | MiniMax M1 (Director + Script) |\n| 视频生成 | MiniMax Hailuo 2.3 (1080P, 6s) |\n| 语音合成 | MiniMax Speech-2.6-HD (带情感 TTS) |\n| 背景音乐 | MiniMax Music-2.0 (纯音乐) |\n| 视频合成 | ffmpeg (拼接、混音、字幕) |\n| 后端 | Python FastAPI + SSE 实时推送 |\n| 前端 | HTML + Tailwind CSS |\n\n**项目截图**：\n\n<p align=\"center\">\n<img src=\"https://raw.githubusercontent.com/calderbuild/agentcut/main/docs/images/landing.png\" width=\"80%\" />\n</p>\n\n<p align=\"center\">\n<img src=\"https://raw.githubusercontent.com/calderbuild/agentcut/main/docs/images/pipeline.png\" width=\"80%\" />\n</p>\n\n**推荐理由**：\n\n1. **完整的多 Agent 协作架构**：不是简单的 API 调用封装，而是 6 个 Agent 各司其职、流水线式协作，体现了 Agent SOP（标准作业流程）的设计思路。\n2. **真实可用**：一条 prompt 到一个完整 MP4，端到端跑通。每个视频生成成本约 $0.40-0.70。\n3. **实时可视化**：前端通过 SSE 实时展示每个 Agent 的工作状态和日志，整个生产过程透明可见。\n4. **轻量部署**：支持 Docker 一键部署，也可以 `pip install` 后直接运行。\n5. **开源 MIT 协议**，代码简洁，适合学习多 Agent 编排模式。\n",
+    "content": "**项目名称**：AgentCut\n\n**项目地址**：https://github.com/calderbuild/agentcut\n\n**成品演示**：https://imgur.com/a/JfPhJ32 （一条 Prompt 自动生成，带旁白、背景音乐、字幕，17 秒完整成片）\n\n**项目简介**：\n\nAgentCut 是一个多 Agent 协作的 AI 视频生产工具。输入一段文字描述，6 个 AI Agent 按照标准化流程（SOP）协作，自动完成从创意策划到成片剪辑的全过程，输出一个完整的 MP4 视频。\n\n架构流程：\n\n```\n用户输入 Prompt\n    |\n    v\n[Director Agent] -- 分析创意方向，规划分镜\n    |\n    v\n[Script Agent] -- 编写详细制作脚本（视频提示词、旁白、字幕）\n    |\n    +------------------+------------------+\n    |                  |                  |\n    v                  v                  v\n[Visual Agent]    [Voice Agent]     [Music Agent]\n 视频生成(Hailuo)   语音合成(TTS)     背景音乐生成\n    |                  |                  |\n    +------------------+------------------+\n    |\n    v\n[Editor Agent] -- ffmpeg 合成：拼接视频、混音、烧录字幕\n    |\n    v\n最终 MP4\n```\n\nVisual、Voice、Music 三个 Agent 并行执行，Editor 等三者全部完成后合成最终视频。\n\n**生成成本**：\n\n| 环节 | 费用 |\n|------|------|\n| LLM 调用 (Director + Script) | ~$0.01 |\n| 视频生成 (3 个镜头) | ~$0.30-0.60 |\n| 语音合成 (3 段旁白) | ~$0.01 |\n| 背景音乐生成 | ~$0.05 |\n| **合计** | **~$0.40-0.70 / 视频** |\n\n**技术栈**：\n\n| 组件 | 技术 |\n|------|------|\n| LLM | MiniMax M1 (Director + Script) |\n| 视频生成 | MiniMax Hailuo 2.3 (1080P, 6s) |\n| 语音合成 | MiniMax Speech-2.6-HD (带情感 TTS) |\n| 背景音乐 | MiniMax Music-2.0 (纯音乐) |\n| 视频合成 | ffmpeg (拼接、混音、字幕) |\n| 后端 | Python FastAPI + SSE 实时推送 |\n| 前端 | HTML + Tailwind CSS |\n\n**项目截图**：\n\n<p align=\"center\">\n<img src=\"https://raw.githubusercontent.com/calderbuild/agentcut/main/docs/images/landing.png\" width=\"80%\" />\n</p>\n\n<p align=\"center\">\n<img src=\"https://raw.githubusercontent.com/calderbuild/agentcut/main/docs/images/pipeline.png\" width=\"80%\" />\n</p>\n\n**推荐理由**：\n\n1. **完整的多 Agent 协作架构**：不是简单的 API 调用封装，而是 6 个 Agent 各司其职、流水线式协作，体现了 Agent SOP（标准作业流程）的设计思路。\n2. **真实可用**：一条 prompt 到一个完整 MP4，端到端跑通。每个视频生成成本约 $0.40-0.70。\n3. **实时可视化**：前端通过 SSE 实时展示每个 Agent 的工作状态和日志，整个生产过程透明可见。\n4. **轻量部署**：支持 Docker 一键部署，也可以 `pip install` 后直接运行。\n5. **开源 MIT 协议**，代码简洁，适合学习多 Agent 编排模式。\n",
     "created_at": "2026-02-22T03:22:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9050"
@@ -26,7 +34,7 @@
   {
     "id": 9047,
     "title": "【开源自荐】Trending AI - 用 AI 快速读懂 GitHub Trending 项目的 App",
-    "content": "**项目名称**：Trending AI\n\n**项目地址**：https://github.com/HarlonWang/TrendingAI\n\n**项目官网**：https://trendingai.cn\n\n**项目简介**：\n用 AI 快速读懂 GitHub Trending 开源项目。帮你省去翻阅冗长 README 和源码的时间，高效过滤并定位高价值的开源项目。\n\n**项目截图**：\n\n<img width=\"300\" height=\"650\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0bfee933-1ea0-449e-a9d5-2878dd899b2b\" />\n\n**推荐理由**：\n1. **解决痛点**：对于开发者来说，关注 GitHub Trending 是了解技术动向的好习惯，但挨个点开查看冗长的英文 README 非常耗费精力。这款 App 接入了 Gemini / DeepSeek，直接过滤并提取高价值信息，大幅节省时间。\n2. **数据回溯**：不仅能看当天的数据，还支持按日期和批次（早报/晚报）回溯往期榜单。\n3. **技术与体验**：采用了 Compose Multiplatform 一套代码覆盖双端（Android & iOS）。UI 严格遵循了 Material Design 3 规范，交互体验丝滑。\n\nAndroid 端已提供 APK 供下载体验：\n[![Download](https://img.shields.io/badge/Download-APK-green?style=flat-square&logo=android)](https://github.com/HarlonWang/Trending/releases)\n\n希望分享给周刊的读者们，帮助大家更高效率地淘金开源项目 :)",
+    "content": "**项目名称**：Trending AI\n\n**项目地址**：https://github.com/HarlonWang/TrendingAI\n\n**项目官网**：https://trendingai.cn\n\n**项目简介**：\n用 AI 快速读懂 GitHub Trending 开源项目。帮你省去翻阅冗长 README 和源码的时间，高效过滤并定位高价值的开源项目。\n\n**项目截图**：\n\n<img width=\"300\" height=\"650\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0bfee933-1ea0-449e-a9d5-2878dd899b2b\" />\n\n**推荐理由**：\n1. **解决痛点**：对于开发者来说，关注 GitHub Trending 是了解技术动向的好习惯，但挨个点开查看冗长的英文 README 非常耗费精力。这款 App 接入了 Gemini / DeepSeek，直接过滤并提取高价值信息，大幅节省时间。\n2. **数据回溯**：不仅能看当天的数据，还支持按日期和批次（早报/晚报）回溯往期榜单。\n3. **技术与体验**：采用了 Compose Multiplatform 一套代码覆盖双端（Android & iOS）。UI 严格遵循了 Material Design 3 规范，交互体验丝滑。\n\nAndroid 端已提供 APK 供下载体验：[![Download](https://img.shields.io/badge/Download-APK-green?style=flat-square&logo=android)](https://download.trendingai.cn/TrendingAI-latest.apk)\n\n希望分享给周刊的读者们，帮助大家更高效率地淘金开源项目 :)",
     "created_at": "2026-02-21T13:07:24Z",
     "labels": [
       "weekly"
@@ -818,13 +826,5 @@
     "created_at": "2026-02-07T13:04:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8951"
-  },
-  {
-    "id": 8950,
-    "title": "【网站自荐】 - 免费在线迷你游戏，随时享受乐趣",
-    "content": "这是我做的第一个网站——Online MiniGames，作为开发者，我非常高兴能分享给大家。这个网站提供了一个简单、快速、免费的浏览器游戏体验，不需要注册，打开就能玩。无论是桌面电脑还是手机上，游戏都能快速加载，类型也很丰富，从益智游戏到冒险游戏都有。\n\n作为一个新手开发者，我希望能做出一个简洁又实用的平台，所以特别注重没有广告干扰和不必要的复杂功能。希望大家能喜欢，也请多多指教！如果你有空，欢迎访问 https://online-minigames.com/\n，体验一下这些轻松有趣的小游戏",
-    "created_at": "2026-02-07T11:58:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8950"
   }
 ]
