@@ -1,5 +1,21 @@
 [
   {
+    "id": 9069,
+    "title": "[工具自荐] APA Citation Generator — AI 辅助 APA 引用生成器（支持 URL/DOI，缺失字段可解释）",
+    "content": "项目名称：APA Citation Generator  \n项目地址：https://apacitationgenerator.online  \n\n这是一个面向论文写作场景的 APA 7 引用生成工具，重点解决“网页元数据不完整导致作者/日期缺失”的问题。\n\n核心特点：\n- 输入 URL 或 DOI，自动生成 APA reference + in-text citation\n- 规则优先提取元数据，AI 仅补缺失字段（降低幻觉）\n- 给出置信度与 Needs Review 提示，便于人工复核\n- 支持手动编辑后重新生成引用\n- 已接入 Google 登录、配额/积分体系与 PayPal 支付\n\n技术栈：\n- Next.js + Supabase + OpenRouter + PayPal + Vercel\n- 已做安全加固：SSRF 防护、OAuth 回调重定向限制、nonce CSP、表单防刷等\n\n欢迎体验和反馈，尤其是复杂网页/边缘引用场景的准确性建议。\n",
+    "created_at": "2026-02-26T08:21:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9069"
+  },
+  {
+    "id": 9068,
+    "title": "【工具自荐】2026全年公休假与考试日历（最全整理版） 可视化倒计时网站",
+    "content": "<img width=\"1901\" height=\"958\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/62010b4c-46c0-4652-b8c9-c8684576017b\" />\n\n每年一到年初，很多人都会有同一种焦虑：假期怎么安排？考试怎么规划？\n真正让人慌的不是事情多，而是时间线太乱。\n\n所以我把 2026 全年公休假 + 重点考试时间 做了一次整理，并做成了一个可视化日历网站，方便自己用，也分享给大家。\n\n这份内容适合两类人：\n打工人（看假期、做拼假计划）和 考证党（看考试节点、排备考节奏）。\n\n比如：\n\n春节（2月15日-23日）连休9天，适合提前规划返乡/旅行；\n\n5月 是财会、软考、建筑类考试密集期；\n\n9月-11月 建造师、法考、执业药师等重磅考试接连来临，是全年备考硬仗阶段。\n\n我做这个工具时，尽量把它做得简单、干净、耐看：\n支持深色模式、卡片翻转、倒计时按“天/周”查看，让时间不只是一个日期，而是更有体感的节奏提醒。\n\n希望它能陪你走过 2026 那些重要时刻：放假、出发、备考、上岸、见想见的人。\n\n>  工具地址：https://deadline-wheat.vercel.app/\n\n<img width=\"1902\" height=\"957\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c3e7e03e-6b4e-4d7f-99f8-b2f53544fbd3\" />\n\n<img width=\"1896\" height=\"956\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a8fb092a-8b48-45e0-8f11-882e9249968a\" />",
+    "created_at": "2026-02-26T08:04:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9068"
+  },
+  {
     "id": 9067,
     "title": "【开源自荐】让 LLM 玩 Wordle （网页 / MCP）",
     "content": "起因是[看到了 Neuro-sama 经常被 Wordle 难住](https://www.bilibili.com/video/BV14WBxBjEaw?t=16.3)，于是想着让大模型自己来玩 Wordle。有两个实现版本\n\n1. 网页版（自备密钥）：填写 base_url / api_key / model_name 之后直接开玩；浏览器内直接发请求\n- 地址：https://pages.nekonull.me/llm-wordle.html\n- 单静态网页 app，右键就能看源代码了\n\n（示例为 4x 速度，deepseek-chat）\n![Image](https://github.com/user-attachments/assets/f595bd04-630b-4621-a6e6-70de49ae7ac4)\n\n2. MCP 版：提供 MCP 服务，有 start_game / submit_guess 方法；可以和任何支持 MCP 的客户端 / Agent 配合使用；当然也可以本地部署；带简单统计视图\n- MCP 端点： https://lhus1.nekonull.me/wordle-mcp/mcp  (Streamable HTTP)\n- 前端监控&数据分析： https://lhus1.nekonull.me/wordle-mcp/\n- 项目地址：https://github.com/jerrylususu/wordle-mcp\n\n<img width=\"2369\" height=\"1075\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e4e3950-d54e-4b42-addd-57dd7eb8d2d7\" />\n\n<img width=\"2419\" height=\"645\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/db29c717-e005-4da6-b76b-c93203f77270\" />",
@@ -814,21 +830,5 @@
     "created_at": "2026-02-09T03:03:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8969"
-  },
-  {
-    "id": 8968,
-    "title": "[开源自荐] Orbit Agent - 打造个性化的人工智能自动化排程工作流",
-    "content": "## 简介\n\n* Orbit Agent 是一个专为知识管理和开发者设计的开源 AI 代理工具。其最大的特点在于实现零成本流程，通过直接调用本地端的 Claude Code 或 Gemini CLI 进行排程工作，并将产出结果（如摘要、分析）自动发送到个人邮箱或写入笔记软件。\n\n<img width=\"2773\" height=\"1775\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/72426cc3-e2ef-4529-a96f-5aba34357507\" />\n\n## 为什么开发这个项目？\n\n* 作为前端工程师，我希望将繁琐的知识内化流程自动化，但又不想支付昂贵的 API 订阅费用。Orbit Agent 利用开发者机器上已有的 AI CLI 工具作为核心引擎，让 AI 代理能够像行星轨道（Orbit）一样，定时且稳定地处理需求\n\n## 主要特点\n\n* 零成本运行：直接串接 Claude Code 或 Gemini CLI，无需额外负担 API Token 费用\n* 强大的可扩展性：支持 MCP (Model Context Protocol) 协议，可调用各种外部 Skill 和文件操作\n* 知识管理整合：完美适配 Obsidian 等笔记工作流，例如将剪辑的文章自动产出摘要\n* 灵活排程：内置排程机制，可定时执行复杂的 AI 指令并通过 Email 报告进度\n* 支持文件上传：可针对本地文件进行深度分析和处理\n\n## 适用场景\n\n* 每日信息摘要：定时整理 Obsidian 剪辑库中的新文章，并发送精华摘要到邮箱\n* 自动化开发任务：定时检查项目代码或执行简单的 Unit Test 报告\n* 个人助理：结合系统排程，处理需要长时间运行的 AI 推理任务\n\n## 相关链接\n\n* GitHub：[https://github.com/mukiwu/orbit-agents](https://github.com/mukiwu/orbit-agents)\n* APP 下载与介绍 (支持 MacOS 和 Windows 双平台)：[https://mukiwu.github.io/orbit-agents/](https://mukiwu.github.io/orbit-agents/)\n",
-    "created_at": "2026-02-09T03:01:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8968"
-  },
-  {
-    "id": 8967,
-    "title": "【开源自荐】FallacyCards - 交互式逻辑谬误学习卡片",
-    "content": "**项目地址**：\nhttps://github.com/SeanWong17/FallacyCards\n\n**在线演示**：\nhttps://seanwong17.github.io/FallacyCards/\n\n**项目配图**：\n![FallacyCards 效果示例](https://github.com/SeanWong17/FallacyCards/raw/main/demo.png)\n\n**项目简介**：\nFallacyCards 是一个旨在帮助用户提升批判性思维的轻量级 Web 工具。它将晦涩的逻辑学知识转化为设计精美的视觉卡片，帮助用户识别常见的逻辑陷阱（如稻草人谬误、滑坡谬误等）。\n\n**核心亮点**：\n* **交互体验好**：支持按定义、示例、中英文名称实时检索，内置多维筛选与“随机抽卡”模式，增加了学习的趣味性。\n* **实用性强**：详情页支持一键复制谬误解析，方便用户在日常网络讨论中快速引用，指出逻辑漏洞。\n* **纯原生技术栈**：项目完全由原生 HTML/CSS/JS 编写（零依赖、无框架），代码结构清晰，通过 JSON 管理数据，易于扩展和二次开发。",
-    "created_at": "2026-02-08T14:23:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8967"
   }
 ]
