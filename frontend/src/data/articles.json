@@ -1,8 +1,24 @@
 [
   {
+    "id": 9078,
+    "title": "【开源推荐】antdv-next 是 Ant Design 设计体系的 vue 实现",
+    "content": "## 项目背景与定位\nVue 生态中原有的 ant-design-vue 维护工作已实质性停滞（最后更新停留在 2024 年 11 月的 v4.2.6 版本）。在此背景下，antdv-next 希望延续在 vue 生态中使用 Ant Design 设计体系。\n\n它并非对 ant-design-vue 的简单修补或续写，而是基于 Ant Design 6.x 设计体系的全面重构。\n\n架构升级：完整迁移了 Ant Design 6.x 的 Design Token 体系与语义化 DOM 结构。\n底层重构：对标 React 生态的 rc-* 无头组件方案，底层采用 vc-*  无头组件。这种架构实现了样式与逻辑的解耦，不仅能完美复刻 Ant Design 的交互体验，更为有定制化需求的开发者提供了底层支撑，便于二次封装或构建私有组件库。\n\n## 组件完成度\n项目目前具备极高的完成度，已实现 Ant Design 规范中的绝大多数组件。\n\n未实现组件：仅 List 组件未纳入开发。\n原因说明：Ant Design 官方目前对 List 组件已有重构规划并标记为废弃 (Deprecated)，为保持代码库的前瞻性与一致性，antdv-next 选择与其保持同步，暂未实现该组件。\n\n## AI 支持\n- llm.txt 集成，默认集成了 llm.txt 支持，方便用户通过本地或远程 LLM 模型进行离线问答。\n- skills 支持，目前比较流行的本地的技能库，配合 [Antfu Skills 集合](https://github.com/antfu/skills) 一起使用，可以减少 AI 幻觉导致的一些问题。\n\n## Nuxt 支持\n提供了 @antdv-next/nuxt 模块\n```js\nexport default defineNuxtConfig({\n  modules: ['@antdv-next/nuxt'],\n  antd: {\n    icon: true,\n  },\n  css: ['antdv-next/dist/reset.css'],\n})\n```\n\n## 相关链接\n官方文档：https://www.antdv-next.com/\n组件库仓库：https://github.com/antdv-next/antdv-next\n底层基础设施 (vc-* 组件)：https://github.com/antdv-next/vue-components\n\n<img width=\"2550\" height=\"1233\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c808df4b-2d86-4f68-a73f-ef61a43d7586\" />",
+    "created_at": "2026-02-27T03:07:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9078"
+  },
+  {
+    "id": 9077,
+    "title": "【工具自荐】简谱Do Re Mi对应关系记忆小游戏",
+    "content": "你也和我一样吗？看着简谱里的 1 2 3，脑子却反应不过来是 Do Re Mi？😩 哪怕死记硬背了好久，真到用的时候还是卡壳。 为了解决这个小痛点，我做了一个快乐学唱名的小工具：\n\t\n> 不用下载，手机/电脑打开就能玩\n> 边听边点，慢慢就形成肌肉记忆\n> 适合自己练，也适合给小朋友当音乐小游戏\n\n完全免费，轻量，开箱即用\n\nhttps://happy-numbered-notation.app",
+    "created_at": "2026-02-27T02:45:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9077"
+  },
+  {
     "id": 9076,
     "title": "【开源自荐】个人投资管理系统",
-    "content": "写了一篇文章介绍：[两天时间撸了个投资管理系统](https://mp.weixin.qq.com/s/FErP5OH4qZMSEyoAG5nyZg)",
+    "content": "访问地址：https://financial.5udou.cn\n\n写了一篇文章介绍：[两天时间撸了个投资管理系统](https://mp.weixin.qq.com/s/FErP5OH4qZMSEyoAG5nyZg)",
     "created_at": "2026-02-27T01:16:52Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9076"
@@ -814,21 +830,5 @@
     "created_at": "2026-02-10T08:51:04Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8978"
-  },
-  {
-    "id": 8977,
-    "title": "【工具自荐】Remote Override 浏览器插件 - 简单好用的远程资源代理工具，支持测试、开发调试或覆盖在线资源的各种场景",
-    "content": "## 一句话介绍：\n一个 Chrome 插件，用于将远程资源代理到本地环境，支持测试、开发调试或覆盖在线资源的各种场景。\n\n详细介绍及使用文档：https://superraytin.github.io/remote-override/\n\nchrome 应用商店地址：https://chromewebstore.google.com/detail/remote-override/beegiejnndpmaffebpfmcpifhaljjmam\n\n## 核心功能\n\n- **远程资源代理到本地服务**：将线上 URL 映射到本地服务，加速调试与开发流程。\n\n- **全面的规则管理**：轻松添加、删除、复制和编辑规则。\n\n- **拖拽排序**：以可视化方式控制规则优先级，实现灵活匹配与覆盖。\n\n- **规则分组**：按模块、功能或项目组织管理规则，结构清晰，一目了然。\n\n- **一键启用 / 禁用**：快速启用或禁用规则配置，无需重启 Chrome。\n\n## 典型使用场景\n\n- 本地 API 测试与联调\n\n- 覆盖 CDN 或静态资源文件\n\n- 调试第三方脚本\n\n- 临时替换生产环境资源以排查问题\n\n- 管理大型项目中的多个代理配置\n\n## 截图\n\n图 1\n<img width=\"1328\" height=\"728\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fca0b997-9584-4cca-a812-c189306034e2\" />\n\n图 2\n<img width=\"814\" height=\"575\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/87ea64af-1da4-4731-bd99-70ca5b20e3d7\" />\n",
-    "created_at": "2026-02-10T08:36:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8977"
-  },
-  {
-    "id": 8976,
-    "title": "【开源自荐】next-chat-skills 一个通过对话让 AI 自动管理 skills 的工具",
-    "content": "核心功能：你可以通过对话来完成 skill 的创建调用，还可以查找网上现成的 skills 进行安装使用。在调用 skill 的过程中， 如果遇到错误，可以自动进行修复。\n\n项目地址：https://github.com/twwch/next-chat-skills\n\n演示视频：\n<video src=\"https://github.com/user-attachments/assets/4c7a6dc7-b852-458f-ac94-67c60544f23f\" controls width=\"100%\"></video>\n\n\nskill 使用和环境修复 demo：\n\n<img  alt=\"Image\" src=\"https://github.com/user-attachments/assets/ab05a784-670a-45a0-8b76-7825f5a0a5fc\" />\n\n<img  alt=\"Image\" src=\"https://github.com/user-attachments/assets/5ce586c8-ab78-427a-ace0-61193621cbb5\" />\n\nskill 创建 demo：\n\n<img  alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe5e2b84-f0e1-47e9-a010-a0a5982c3be2\" />\n\n<img alt=\"Image\" src=\"https://github.com/user-attachments/assets/72c995d5-d128-4598-915f-45d16ef1c460\" />\n",
-    "created_at": "2026-02-10T02:35:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8976"
   }
 ]
