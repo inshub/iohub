@@ -1,5 +1,21 @@
 [
   {
+    "id": 9086,
+    "title": "【开源自荐】SkillForge -- AI 驱动的 OpenClaw 技能生成器",
+    "content": "## SkillForge\n\n**仓库地址**：https://github.com/calderbuild/skillforge\n**在线演示**：https://skillforge-frontend-gold.vercel.app\n**协议**：MIT\n\n### 它是什么\n\nSkillForge 是一个 AI 驱动的 OpenClaw 技能生成器。用户用自然语言描述想让 AI Agent 做什么，系统就能在几秒内生成一个完整的、符合规范的 SKILL.md 文件，并自动完成格式校验和安全扫描。\n\n### 为什么做这个\n\nOpenClaw 是一个开放的 AI Agent 技能生态，但手写 SKILL.md 门槛不低：需要严格的 YAML frontmatter、特定的 markdown 段落结构、kebab-case 命名等。更关键的是，技能会在 Agent 环境中执行，一旦包含 `curl | bash`、`eval()` 之类的危险操作，后果很严重，而此前没有任何工具能在部署前做安全审查。\n\n### 主要功能\n\n- **实时流式生成**：基于 Claude API + SSE，逐 token 输出 SKILL.md，所见即所得\n- **格式校验**：自动检查 YAML frontmatter、必填字段、命名规范，校验失败自动重试\n- **安全扫描器**：20+ 条静态分析规则，覆盖 4 个严重等级（Critical / High / Medium / Low），输出 0-100 安全评分\n- **快速模板**：内置 Code Reviewer、Email Digest、Git Commit Helper 三个模板，点击即用\n- **历史记录**：localStorage 保存最近 20 条生成记录，跨会话可回看\n- **一键安装**：自动生成 shell 命令，直接部署到 `~/.openclaw/skills/`\n\n### 技术栈\n\n- 前端：React 19 + Vite + TypeScript + Tailwind CSS\n- 后端：Python FastAPI + Claude API (SSE streaming)\n- 部署：Vercel（前后端均为 serverless）\n\n### SkillForge 首页界面\n\n<img width=\"1728\" height=\"963\" alt=\"SkillForge 首页 -- 描述、生成、安装一站式技能创建\" src=\"https://github.com/user-attachments/assets/f9e665c9-a54c-4414-868c-f9ce8bf1e88a\" />",
+    "created_at": "2026-02-28T03:26:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9086"
+  },
+  {
+    "id": 9085,
+    "title": "【开源自荐】SkillForge -- AI 驱动的 OpenClaw 技能生成器",
+    "content": "## SkillForge\n\n**仓库地址**：https://github.com/calderbuild/skillforge\n**在线演示**：https://skillforge-frontend-gold.vercel.app\n**协议**：MIT\n\n### 它是什么\n\nSkillForge 是一个 AI 驱动的 OpenClaw 技能生成器。用户用自然语言描述想让 AI Agent 做什么，系统就能在几秒内生成一个完整的、符合规范的 SKILL.md 文件，并自动完成格式校验和安全扫描。\n\n### 为什么做这个\n\nOpenClaw 是一个开放的 AI Agent 技能生态，但手写 SKILL.md 门槛不低：需要严格的 YAML frontmatter、特定的 markdown 段落结构、kebab-case 命名等。更关键的是，技能会在 Agent 环境中执行，一旦包含 `curl | bash`、`eval()` 之类的危险操作，后果很严重，而此前没有任何工具能在部署前做安全审查。\n\n### 主要功能\n\n- **实时流式生成**：基于 Claude API + SSE，逐 token 输出 SKILL.md，所见即所得\n- **格式校验**：自动检查 YAML frontmatter、必填字段、命名规范，校验失败自动重试\n- **安全扫描器**：20+ 条静态分析规则，覆盖 4 个严重等级（Critical / High / Medium / Low），输出 0-100 安全评分\n- **快速模板**：内置 Code Reviewer、Email Digest、Git Commit Helper 三个模板，点击即用\n- **历史记录**：localStorage 保存最近 20 条生成记录，跨会话可回看\n- **一键安装**：自动生成 shell 命令，直接部署到 `~/.openclaw/skills/`\n\n### 技术栈\n\n- 前端：React 19 + Vite + TypeScript + Tailwind CSS\n- 后端：Python FastAPI + Claude API (SSE streaming)\n- 部署：Vercel（前后端均为 serverless）\n\n### SkillForge 首页界面\n\n<img width=\"1728\" height=\"963\" alt=\"SkillForge 首页 -- 描述、生成、安装一站式技能创建\" src=\"https://github.com/user-attachments/assets/f9e665c9-a54c-4414-868c-f9ce8bf1e88a\" />",
+    "created_at": "2026-02-28T03:20:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9085"
+  },
+  {
     "id": 9083,
     "title": "【开源自荐】MoePeek 轻量级 macOS 划词翻译工具，纯 Swift 6 开发，安装体积仅 5MB ，后台运行内存稳定约 50MB",
     "content": "之前 Easydict 经常漏内存太麻了，用久了就卡的要死，然后我的划词翻译需求又其实特别少，正好之前学了点 Swift 就自己过年顺手 vibe 写了一个（\n\n主要自己用，纯 Swift 6 构建，安装体积约 5 MB ，后台运行内存约 50 MB ，很放心的挂后台，如果开 OCR 截图的话运行内存差不多到 100 MB\n\n开源出来欢迎提 Issue ～ 但是不一定会加新功能了，会修修 bug\n\nPS：我真的很喜欢 Easydict 但是找他们的内存泄漏问题再改有点难了 hhh 索性 vibe 一个只加自己需要的功能\n\nGitHub: https://github.com/cosZone/MoePeek\n\n![](https://github.com/cosZone/MoePeek/raw/main/Resources/MoePeek-promo.webp)\n\n支持以下翻译 Provider\n\n| Free | API | LLM | System |\n|------|-----|-----|--------|\n| Google Translate | DeepL | OpenAI | Apple Translation |\n| Bing Translate | Baidu | Anthropic | *(macOS 15+, on-device)* |\n| Youdao Translate | NiuTrans | DeepSeek | |\n| | Caiyun | OpenRouter | |\n| | DeepLX | 智谱 GLM | |\n| | | Ollama (local) | |\n| | | LM Studio (local) | |",
@@ -812,21 +828,5 @@
     "created_at": "2026-02-11T05:58:52Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8986"
-  },
-  {
-    "id": 8985,
-    "title": "【工具推荐】chrome 侧边栏插件，网页高亮，笔记，本地存储，时间轴形式汇总每天记录的内容。",
-    "content": "工具亮点：可以快速回顾自己浏览网页时高亮过哪些内容，记录过哪些想法，一键跳到高亮的位置。\n\n插件地址：[https://chromewebstore.google.com/detail/footprints-%E2%80%93-web-highligh/mcmocianjmikahenfklonjejnigenjfh](https://chromewebstore.google.com/detail/footprints-%E2%80%93-web-highligh/mcmocianjmikahenfklonjejnigenjfh)\n\n\n\n\n",
-    "created_at": "2026-02-11T05:54:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8985"
-  },
-  {
-    "id": 8984,
-    "title": "【开源自荐】phpDmAdmin：一个轻量级、单文件的达梦数据库Web管理工具",
-    "content": "## 项目地址\nhttps://github.com/dedemao/phpDmAdmin\n\n## 简介\n国产达梦数据库（DM8）缺少轻量化的 Web 管理端，传统的桌面管理工具安装繁琐且受环境限制。phpDmAdmin 借鉴了 phpMyAdmin 的设计理念，提供单文件、零依赖的 Web 管理方案。只需部署至 PHP 环境，即可随时随地实现对达梦数据库的在线管理。\n\n## 功能\n\n- 带默认连接配置的登录页\n- Schema / Table 浏览与筛选\n- SQL Console（服务端分页、列筛选、可编辑）\n- Table View（支持 NULL/空字符串区分、长文本预览、行内编辑）\n- 默认 Schema 自动补全（可选）\n- 基本的字符集转换支持（mbstring/iconv）\n\n## 界面展示\n\n<table>\n  <tr>\n    <td><b>登录界面</b><br/><img src=\"https://raw.githubusercontent.com/dedemao/phpDmAdmin/main/images/login.png\" alt=\"登录界面\"></td>\n  </tr>\n  <tr>\n    <td><b>首页</b><br/><img src=\"https://raw.githubusercontent.com/dedemao/phpDmAdmin/main/images/index.png\" alt=\"首页\"></td>\n  </tr>\n  <tr>\n    <td><b>数据表预览</b><br/><img src=\"https://raw.githubusercontent.com/dedemao/phpDmAdmin/main/images/table_view.png\" alt=\"数据表预览\"></td>\n  </tr>\n  <tr>\n    <td><b>编辑字段</b><br/><img src=\"https://raw.githubusercontent.com/dedemao/phpDmAdmin/main/images/edit_field.png\" alt=\"编辑字段\"></td>\n  </tr>\n  <tr>\n    <td><b>筛选字段</b><br/><img src=\"https://raw.githubusercontent.com/dedemao/phpDmAdmin/main/images/filter_column.png\" alt=\"筛选字段\"></td>\n  </tr>\n</table>",
-    "created_at": "2026-02-11T04:18:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8984"
   }
 ]
