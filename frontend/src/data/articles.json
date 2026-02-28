@@ -1,8 +1,16 @@
 [
   {
+    "id": 9090,
+    "title": "【开源自荐】agent4j：面向 Java 的 Agents SDK",
+    "content": "**agent4j：面向 Java 的 Agent SDK**\n\n当前市场上的 Agent 框架多以 Python 或 JavaScript 为主，而企业后台系统普遍采用 Java + Spring Boot。agent4j 基于 Java 构建，天然适配 Spring Boot 生态，便于在现有 Java 后台中接入，无需引入额外技术栈。\nagent4j 是一个轻量级多智能体 SDK，提供 Agent、工具调用、Handoff、会话记忆等能力，支持 OpenAI 格式接口（OpenAI、DeepSeek 等）。\ntradingAgents-ashare 是基于 agent4j 的 A 股多智能体交易框架，负责策略与交易逻辑；tradingAgents-vue3 为前端界面，三者共同构成完整的 A 股智能体交易系统。\n\n*仓库地址*：https://github.com/agent4java\n\n# [agent4j](https://github.com/agent4java/agent4j)\n\nagent4j 是一个基于 Spring Boot 的**轻量级多智能体（multi‑agent）框架**，设计灵感来自 [openai-agents-python](https://github.com/openai/openai-agents-python)。  \n它通过一组接口抽象，把「智能体、工具调用、Agent 之间的 handoff、会话记忆、Guardrail」等概念封装成可插拔组件，并内置了对 **OpenAI 格式 HTTP 接口（OpenAI、DeepSeek 等）** 的访问实现，无需依赖 Spring AI。\n\n当前仓库已经收敛为两个对外可复用的模块：\n\n- `agent4j-core`：核心能力与接口定义\n- `agent4j-spring-boot-starter`：Spring Boot 自动装配与配置封装（Starter）\n\n# [tradingAgents-ashare](https://github.com/agent4java/tradingAgents-ashare)\n\n面向 A 股市场的多智能体交易框架，基于 Spring Boot，参考 [TauricResearch/TradingAgents](https://github.com/TauricResearch/TradingAgents)。\n不提供实盘下单，仅输出研究与模拟用决策信号。\nagents依赖自研agents平台[agent4j](https://github.com/agent4java/agent4j)\n\n# [tradingAgents-vue3](https://github.com/agent4java/tradingAgents-vue3)\n\n基于 Vue 3 + Vite + TypeScript + Tailwind CSS 的 A 股多智能体交易推演前端。\n\n前端通过 SSE（Server-Sent Events）方式调用后端 trandingAgents-ashare 项目中的：\n\nGET /api/trading/propagate/stream\n实时接收各阶段 Markdown 推演结果，并在右侧卡片中滚动展示。",
+    "created_at": "2026-02-28T07:40:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9090"
+  },
+  {
     "id": 9089,
     "title": "【开源自荐】HamHome -- AI 驱动的浏览器书签管理插件",
-    "content": "## HamHome\n**仓库地址**：https://github.com/bingoYB/ham_home  \n**产品介绍页**：https://bingoyb.github.io/ham_home/  \n**体验入口**：[Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/hamhome-%E6%99%BA%E8%83%BD%E4%B9%A6%E7%AD%BE%E5%8A%A9%E6%89%8B/) / [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/hamhome-smart-bookmark-/nmbdgbicgagmokdmohgngcbhkaicfnpi) / [GitHub Releases](https://github.com/bingoYB/ham_home/releases)  \n**协议**：MIT\n\n### 它是什么\nHamHome 是一个 AI 驱动的浏览器书签管理插件，保存网页时自动提取正文、生成摘要、推荐分类和标签；回查内容时既能做全文检索，也支持语义搜索和 AI 对话搜索。\n\n### 为什么做这个\n传统书签的核心问题不是“保存不了”，而是“保存之后很快失联”。收藏越来越多之后，用户通常会遇到几个典型问题：一是标题和链接不足以帮助回忆内容，二是目录层级越分越乱，三是想找资料时只能靠关键词碰运气，四是换浏览器、换设备，或者原网页失效后，沉淀下来的收藏很难继续复用。\n\nHamHome 想解决的就是这类“收藏容易、整理困难、回看低效”的问题。它用 AI 帮用户降低整理成本，用本地优先的方式保护隐私，再通过多浏览器支持、导入导出和网页快照能力，把书签从“积灰仓库”变成真正能长期使用的知识库。\n\n### 主要功能\n* **AI 智能保存**：保存网页时自动提取正文，生成摘要、推荐分类和标签，减少手动整理成本\n* **AI 对话搜索**：支持自然语言提问，从书签里直接找出相关内容并给出引用来源\n* **语义检索 + 全文搜索**：不仅能搜关键词，也能按语义查找“之前看过但记不清标题”的内容\n* **分类方案管理**：内置预设分类模板，也支持让 AI 根据使用场景生成层级分类树\n* **网页快照归档**：本地保存 HTML 快照，即使原网页失效，也能继续查看核心内容\n* **侧边栏工作流**：提供保存面板、侧边栏、管理页等多种入口，适合边浏览边整理\n* **导入导出**：支持从浏览器直接导入书签并保留目录结构，支持导出 `JSON` / `HTML` 备份\n* **隐私优先**：书签数据默认保存在本地，支持隐私域名排除与自带 API Key（BYOK）\n* **多模型兼容**：支持 OpenAI、Anthropic、Ollama 及自定义兼容端点\n* **多浏览器支持**：覆盖 Chrome / Edge / Firefox\n\n### 技术栈\n* **Extension**：WXT + React 19 + TypeScript + Tailwind CSS\n* **Web**：Next.js 16\n* **内容提取**：Mozilla Readability + Turndown\n* **数据存储**：Chrome Storage API + IndexedDB\n* **国际化**：i18next + react-i18next\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b8105caa-9f7b-4345-a9a5-0705550781d7\" />\n\n<img width=\"2918\" height=\"1570\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8710f254-8b8a-4dce-8f8c-ce07c2f91fbb\" />\n\n",
+    "content": "## HamHome\n**仓库地址**：https://github.com/bingoYB/ham_home  \n**产品介绍页**：https://bingoyb.github.io/ham_home/  \n**体验入口**：[Firefox Add-ons](https://addons.mozilla.org/zh-CN/firefox/addon/hamhome-%E6%99%BA%E8%83%BD%E4%B9%A6%E7%AD%BE%E5%8A%A9%E6%89%8B/) / [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/hamhome-smart-bookmark-/nmbdgbicgagmokdmohgngcbhkaicfnpi) / [GitHub Releases](https://github.com/bingoYB/ham_home/releases)  \n**协议**：MIT\n\n### 它是什么\nHamHome 是一个 AI 驱动的浏览器书签管理插件，保存网页时自动提取正文、生成摘要、推荐分类和标签；回查内容时既能做全文检索，也支持语义搜索和 AI 对话搜索。\n\n### 为什么做这个\n传统书签的核心问题不是“保存不了”，而是“保存之后很快失联”。收藏越来越多之后，用户通常会遇到几个典型问题：一是标题和链接不足以帮助回忆内容，二是目录层级越分越乱，三是想找资料时只能靠关键词碰运气，四是原网页失效后，无法继续查看内容。\n\nHamHome 想解决的就是这类“收藏容易、整理困难、搜索低效”的问题。\n\n### 主要功能\n* **AI 智能保存**：保存网页时自动提取正文，生成摘要、推荐分类和标签，减少手动整理成本\n* **AI 对话搜索**：支持自然语言提问，从书签里直接找出相关内容并给出引用来源\n* **语义检索 + 全文搜索**：不仅能搜关键词，也能按语义查找“之前看过但记不清标题”的内容\n* **分类方案管理**：内置预设分类模板，也支持让 AI 根据使用场景生成层级分类树\n* **网页快照归档**：本地保存 HTML 快照，即使原网页失效，也能继续查看核心内容\n* **侧边栏工作流**：提供保存面板、侧边栏、管理页等多种入口，适合边浏览边整理\n* **导入导出**：支持从浏览器直接导入书签并保留目录结构，支持导出 `JSON` / `HTML` 备份\n* **隐私优先**：书签数据默认保存在本地，支持隐私域名排除与自带 API Key（BYOK）\n* **多模型兼容支持**：支持 OpenAI、Anthropic、Ollama 及自定义兼容端点\n\n### 技术栈\n* **Extension**：WXT + React 19 + TypeScript + Tailwind CSS\n* **Web**：Next.js 16\n* **内容提取**：Mozilla Readability + Turndown\n* **数据存储**：Chrome Storage API + IndexedDB\n* **国际化**：i18next + react-i18next\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b8105caa-9f7b-4345-a9a5-0705550781d7\" />\n\n<img width=\"2918\" height=\"1570\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8710f254-8b8a-4dce-8f8c-ce07c2f91fbb\" />\n\n",
     "created_at": "2026-02-28T06:35:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9089"
@@ -820,13 +828,5 @@
     "created_at": "2026-02-11T07:14:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/8989"
-  },
-  {
-    "id": 8988,
-    "title": "【开源自荐】Mingest：面向 AI 时代的视频保存工具（本地 CLI，支持登录鉴权）",
-    "content": "项目地址：https://github.com/harrisonwang/media-ingest\n官网：https://mingest.com\n\nMingest 是一个本地视频保存工具：把你有权限保存的视频下载到电脑里，方便长期保存和查找。\n\n<img src=\"https://github.com/harrisonwang/media-ingest/raw/main/og-image.png\" width=\"50%\" alt=\"图片说明\">\n\n特性：\n\n  - 一条命令保存：`mingest get \"<url>\"`\n  - 支持登录鉴权：`mingest auth youtube` / `mingest auth bilibili`\n  - 自动维护 cookies 缓存，优先使用本地缓存；必要时从浏览器刷新登录状态\n  - macOS / Windows 桌面版正在开发中\n  - 未来目标是把视频从“一次观看”变成“可复习的学习资料”：先稳定保存，后续可接入 AI 完成笔记和知识整理。",
-    "created_at": "2026-02-11T06:06:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/8988"
   }
 ]
