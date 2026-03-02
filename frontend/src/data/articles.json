@@ -1,10 +1,28 @@
 [
   {
+    "id": 9113,
+    "title": "【开源自荐】Broxy-Dev 将任意网页变成 API/MCP 服务器（webmcp）",
+    "content": "## 一句话介绍\n将任意网页变成 API/MCP 服务器，实现外部工具调用接口/MCP工具就能在用户网页上执行操作并获取结果。\n\n<img width=\"639\" height=\"489\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cd9df4e1-c629-42dd-b3f2-ea6536391350\" />\n\n## 项目简介\n将用户浏览器里打开的网页，一键启动成为API/MCP服务（运行在用户的网页上），主要用于自动化操作用户的网页，比如填写表单、模拟调用页面的js函数对象等。\n用户可使用JS代码编写API接口以及MCP工具（JS运行在用户的网页端），然后就能够在外部通过调用生成的API接口，实现请求接口 => 用户网页执行获取结果 => 返回 的流程。\n\n## 简单使用\n访问[Broxy官网](https://broxy.dev)即可立即体验功能\n\n用户可以在自己的网站中集成SDK，即可为所有网站的访客提供“前端API/MCP\"服务，从而节省您的服务器开销，使用户可以在工作流，或者AI客户端中，自动化调用您提供的接口或者工具，实现您的网页提供的如数据获取、模拟搜索、模拟HTTP请求等功能。\n\n假设这么一个场景：用户安装了Broxy，并打开了小红书网页，然后创建了几个API/MCP工具，并将接口集成到如Claude等AI客户端中，这时候只需要说”帮我搜索关于xxxx的20条笔记，并点赞前5条热门的笔记，挑选其中最热门的笔记，发布一条夸赞笔记的精彩评论！“，通常调用接口或者工具，都能在秒级别内响应，整个工作流执行下来速度就非常的快，相比传统的通用的浏览器MCP方案，极速且省token。\n\n## 说点别的\n这不算是一个新概念，MCP服务一般都运行在服务器或者本地命令行，其实很多网页上的操作，只需要几行JS代码就能实现了。那么我们何不化繁为简，直接的把JS操作的代码转换为AI能够直接调用执行的工具。\nGoogle最近也推出了webmcp的概念：https://developer.chrome.com/blog/webmcp-epp?hl=zh-cn\n个人看下来，和我这个项目所表达的意思非常接近！\n\n\n不多说，整个项目所有代码全部开源！\n后端使用cloudflare worker部署（免费版），所以如果个人想自己部署，那完全是没有成本的。\n\n\n项目地址：https://github.com/broxy-dev\n官网：https://broxy.dev\n",
+    "created_at": "2026-03-02T16:50:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9113"
+  },
+  {
+    "id": 9112,
+    "title": "【文章自荐】静态资源预压缩：零运行时开销，极致节省带宽",
+    "content": "- 标题：静态资源预压缩：零运行时开销，极致节省带宽\n- 链接：[howiehz.top/archives/static-resource-precompression](https://howiehz.top/archives/static-resource-precompression)\n- 分类：教程 / 前端\n\n## 简介\n\n研究站点资源优化的踩坑记录。\n\n介绍了静态资源预压缩技术，通过在构建时使用最高压缩等级（gzip level 9、brotli level 11、zstd level 22）预生成压缩文件（.gz、.br、.zst），实现零运行时开销，极致节省服务器CPU、内存和带宽。\n\n提供了 Vite、Rsbuild、webpack 的构建配置，以及 Nginx、Apache 的部署配置。分享了一些遇到的坑该如何解决（构建时被 OOM 怎么解决、浏览器未启用新协议进行请求怎么解决）。",
+    "created_at": "2026-03-02T14:48:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9112"
+  },
+  {
     "id": 9111,
     "title": "【开源工具自荐】vscode-stylelint-plus 一个使用 Stylelint 检查 CSS/SCSS/Less 文件的 VSCode 编辑器扩展",
     "content": "vscode-stylelint-plus: 使用 Stylelint 检查 CSS/SCSS/Less\n\n使用 Stylelint 对 CSS、SCSS、Less 等进行代码检查——支持保存时自动修复等各种丰富特性，兼容 v14–v17，并支持 Vue、Svelte 以及 styled-components 等文件格式。\n\n仓库地址: https://github.com/hex-ci/vscode-stylelint-plus\n扩展地址: https://marketplace.visualstudio.com/items?itemName=hex-ci.stylelint-plus",
     "created_at": "2026-03-02T13:31:23Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9111"
   },
   {
@@ -20,7 +38,9 @@
     "title": "【工具自荐】Skills Manager - 管理 Agent Skills，支持多种 Coding 工具",
     "content": "做了个小工具：Skills Manager\n\nAI 编码工具越用越多，每个都要单独管理 skill 太麻烦了。\n这个 App 帮你统一安装、一键同步到所有工具，还能按场景切换。\n\n支持 Claude Code、Cursor、Gemini CLI、Codex 等 16 款工具。\nTauri + Rust 构建。\n\n→ GitHub 链接: https://github.com/xingkongliang/skills-manager\n\n![Image](https://github.com/user-attachments/assets/e756a3f1-0d09-4d7f-834f-2de05028a41d)\n\n<img width=\"2852\" height=\"1786\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b786d042-3c87-49fb-8773-894805876ff0\" />",
     "created_at": "2026-03-02T12:24:45Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9109"
   },
   {
@@ -60,7 +80,9 @@
     "title": "【开源自荐】魔方简历（Magic Resume）-AI 驱动隐私至上的现代化简历制作编辑器",
     "content": "# ✨ Magic Resume: 现代化 AI 简历工具\n\n## 1. 项目简介\n\n**Magic Resume** 是一款基于最新 Web 技术栈构建公开源在线简历编辑器，最近发布2.0版本，迎来全新改版；它旨在解决开发者在制作简历时的四大痛点：\n- **定制能力弱**\n- **操作繁杂**\n- **排版繁琐**\n- **内容描述生硬**\n\n通过集成多种大模型 AI 能力，Magic Resume 不仅能帮你生成排版精美的 PDF，还能给优化遣词造句、文字错误检查。\n\n- **GitHub**: [https://github.com/JOYCEQL/magic-resume](https://github.com/JOYCEQL/magic-resume)\n- **技术栈**: TanStack Start + TypeScript + Framer Motion + Tiptap + Tailwind CSS\n\n<img width=\"1920\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2f123103-b363-4236-8ab4-b37966c932fc\" />\n\n## 2. 核心特性\n\n### 🚀 智能 AI 简历导入 (New!)\n不再需要从零开始复制黏贴。你可以直接上传一个旧简历PDF。Magic Resume 利用 **Gemini ** 的多模态能力，能够精准识别并结构化提取你的个人信息、工作经历和项目经验，完成简历快速导入初始化。\n\n![Image](https://github.com/user-attachments/assets/44c85f7e-4ef3-4f77-ad2d-ef1b740daea8)\n\n### 🎨 7+ 套专业模板与模块化设计\n内置了从“经典校招版”到“现代时间轴版”的 7 套不同风格模板。所有模板均采用模块化开发，支持实时切换，预览效果所见即所得。\n\n<img width=\"1930\" height=\"1010\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a03c4d42-5b27-4e31-a671-6666bfe72ead\" />\n\n### 🧠 深度集成的 AI 助手 (多模型支持)\n支持 **DeepSeek**、**Gemini**、**豆包**以及 **OpenAI** 等主流大模型配置。\n- **内容润色**: 流式输出自动优化工作描述，让你的项目经历更有说服力。\n<img width=\"996\" height=\"662\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/116cb9ae-0d67-4d8b-95e9-ef7d81e762cb\" />\n\n- **语法检查**: 实时发现中英文混合排版、错别字及语法错误。\n\n<img width=\"1755\" height=\"1028\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6e62a7aa-7b23-44ff-9873-39679cccb29d\" />\n\n\n### 🔒 隐私安全与本地化\n- **无需登录**: 打开即用，数据只存储在浏览器本地，不存在云存储\n- **Docker 部署**: 支持一键私有化部署，确保简历数据绝对安全。\n---\n\n## 3. 项目亮点\n1. **创新交互**：区别市面同类产品交互，简洁易用\n1. **TanStack Start 实践**:  早期方案由 Next.js 14实现，现 2.0 版本重构，带来丝滑快速的页面操作体验\n2. **多模态 AI 应用**: 结合 Google Gemini 的视觉模型处理简历照片，是一个非常实用的多模态落地场景。\n3. **极致动效**: 使用 Motion 实现丝滑的交互体验，提升了工具类产品的品质感。\n---\n\n## 4. 结语\nMagic Resume 已开源许久，希望它能帮助更多在求职路上的开发者，目前正高频迭代中...欢迎使用！\n",
     "created_at": "2026-03-02T05:47:37Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9104"
   },
   {
@@ -814,21 +836,5 @@
     "created_at": "2026-02-14T02:01:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9011"
-  },
-  {
-    "id": 9010,
-    "title": "【开源自荐】Seedance 2.0 提示词集合站 — 200+ 高质量视频生成提示词，免费、多语言、持续更新",
-    "content": "很多朋友会发 AI 视频，但是提示词却很少发。\n我们整理了 200+ 条高质量 Seedance 2.0 提示词，做成了一个开源集合站，持续从 X/Twitter 顶级创作者那里收录更新。\n\n亮点：\n- 🔍 支持 AI 搜索（不只是关键词搜索）\n- 🌍 翻译为 16 种语言\n- 📥 全量提示词可一键下载\n- 🖼️ 部分提示词附带参考图，方便复现\n- 🆓 完全免费，开源\n\n在线 Gallery： https://youmind.com/seedance-2-0-prompts\n\nGitHub 仓库： https://github.com/YouMind-OpenLab/awesome-seedance-2-prompts\n\n<img width=\"1470\" height=\"833\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ffbcf1aa-0174-46ae-8a89-75d8097bdc5f\" />",
-    "created_at": "2026-02-13T15:17:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9010"
-  },
-  {
-    "id": 9009,
-    "title": "【开源自荐】项目代码转换为结构清晰的Markdown文档--repo2md",
-    "content": "**项目名称：** repo2md  \n**一句话介绍：** 一款将本地项目代码快速转换为结构化 Markdown 文档的多平台工具，专为简化 AI 编程辅助设计。\n**推荐理由：**  \n在与大语言模型（LLM）进行代码调试或架构分析时，常常需要手动复制大量文件内容作为上下文。repo2md 解决了这一痛点，能自动生成包含清晰目录树和核心代码内容的 Markdown 文档，即贴即用，极大地提升了开发效率。\n**版本功能区分：**\n*   **🌐 Web版 / 📱 移动端版**  \n    无需安装，纯前端运行，隐私安全有保障。支持浏览器原生文件夹选择，移动端特化支持上传 ZIP/TAR 压缩包直接解压生成，方便在手机或平板上随时随地处理代码。\n*   **💻 Python GUI 桌面版**  \n    功能最全面，具备 Token 数量预估、敏感信息自动脱敏、文件变动实时监听刷新等高级功能，支持导出为 MD、HTML 或 PDF 格式。\n*   **⚡ VS Code 插件版**  \n    已发布至 Open VSX 市场。深度集成开发环境，自动忽略 `node_modules`、`.git` 等干扰目录，支持代码变动自动同步，适合开发者日常随用随取。\n**核心亮点：**\n1.  **智能过滤**：自动识别并跳过二进制文件（图片/压缩包等），支持按后缀名筛选。\n2.  **安全提示**：检测 `.env`、`secret` 等敏感文件路径并发出警告，防止密钥泄露。\n3.  **纯本地运行**：所有数据均在本地处理，不上传服务器，保障代码安全。\n",
-    "created_at": "2026-02-13T14:35:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9009"
   }
 ]
