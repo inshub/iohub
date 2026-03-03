@@ -1,5 +1,13 @@
 [
   {
+    "id": 9117,
+    "title": "【开源自荐】Self-System —— 用对话生长出来的个人 AI 操作系统",
+    "content": "**项目地址**：https://github.com/MaskerPRC/self-system\n\n#### 一句话介绍\n\n一个 Docker-in-Docker 架构的「数字渐进式分身」系统 —— 你用自然语言描述需求，AI 实时生成 Vue 页面 + Express API + 自动部署，30 秒内从想法到可用功能，系统的代码像活体组织一样持续生长。\n\n<img width=\"1376\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/150a0b68-ae31-46a3-b1ec-ede9b7b8c49c\" />\n\n#### 为什么做这个\n\n现有的 AI 助手（ChatGPT、Claude）是「用完即走」的对话框。我想要的是一个**会积累、会生长的数字分身** —— 每次对话不是消耗 token，而是在给系统添砖加瓦。聊完之后，功能留下来了，API 留下来了，页面留下来了。\n\n#### 核心机制\n\n```\n用户描述需求 → Claude Code 实时生成代码 → 热部署到 App 容器 → Git 自动提交 → 功能永久保留\n```\n\n整个系统由两个 Docker 容器组成：\n\n- **CONTROL 容器**（大脑）：运行 Claude Code 引擎，挂载 Docker Socket，拥有对 App 容器的完全控制权\n- **APP 容器**（身体）：承载所有 AI 生成的功能页面和 API，支持热重载\n\n#### 最有意思的设计\n\n1. **对话即功能**：说一句\"帮我做个食物日记页面\"，30 秒后你就有了一个完整的 CRUD 应用，含前端页面、后端 API、数据持久化\n2. **Skill = Markdown**：技能系统不是代码插件，而是 Markdown 知识文档。写一份 API 说明书（含 Key、端点、参数），AI 就知道怎么调用它 —— 当执行者从人变成 AI，你不需要函数签名，你需要意图文档\n3. **代码是消耗品**：功能坏了？不用 debug，重新描述一遍让 AI 再生成一次。每次变更自动 Git 提交，随时 revert\n\n#### 已经「长」出来的功能（全部由对话生成，零手写代码）\n\n- 微信消息自动化（通过 n8n Webhook，支持私聊/群聊/@成员）\n- Telegram Bot 集成\n- 工作任务管理 + 闲时任务管理（含 TTS 语音播放）\n- 自我认知记录系统\n- 联想触发器（看到信息 → 自动关联可执行的行动）\n- 多平台推广文章生成器（40 种传播触发器模型）\n- 英语学习工具、食物日记、GitHub 仓库监控……\n\n#### 技术栈\n\n| 层 | 技术 |\n|---|------|\n| 前端 | Vue 3 + Vite + Tailwind CSS 4 + PWA |\n| 后端 | Node.js + Express |\n| AI 引擎 | Claude Code API |\n| 基础设施 | Docker + Docker-in-Docker |\n| 数据库 | Supabase (PostgreSQL) |\n| 语言 | JavaScript ES Modules（不用 TypeScript，AI 生成的代码不需要类型系统） |\n\n#### 和同类项目的差异\n\n| 维度 | 传统 AI 助手 | Self-System |\n|------|-------------|-------------|\n| 输出 | 文本回复 | 可运行的功能（页面 + API + 数据） |\n| 积累性 | 无，对话结束即消失 | 每次对话沉淀为系统功能 |\n| 扩展方式 | 插件市场 / Plugin SDK | 自然语言描述 → AI 直接生成 |\n| 定位 | 工具 | 操作系统 |\n\n#### 适合什么人\n\n- 懂 Docker + Git 的程序员\n- 想要一个深度定制化的个人数字系统\n- 相信「AI 原生」应该是代码由 AI 生成，而不只是 AI 辅助写代码\n",
+    "created_at": "2026-03-03T08:05:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9117"
+  },
+  {
     "id": 9116,
     "title": "【网站自荐】3mins.news — 每日新闻速览，3 分钟读完今天的世界",
     "content": "每天从 180+ 全球媒体源中 AI 筛选最重要的新闻，生成结构化摘要。\n不是无限信息流，而是每天一份有限的新闻快照 — 读完就走，不刷不焦虑。\n\n  **核心功能**：\n  - AI 评分筛选 + 去重，每天只留最值得知道的\n  - 事件叙事：自动生成事件的来龙去脉时间线\n  - 11 种语言同步生成（中/英/日/韩/法/德/西/葡/俄/阿/印地）\n  - 邮件订阅：每日 Digest 直达邮箱\n\n  技术栈：Next.js + Cloudflare Workers + 通义千问 + DeepSeek\n\n  **链接**：https://3mins.news\n\n<img width=\"3342\" height=\"1826\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/838f7c8d-e0c9-4929-948d-73c50c6434e5\" />\n\n<img width=\"3342\" height=\"1828\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d45204b5-61bc-4515-9f43-8c1f59251676\" />",
@@ -12,7 +20,9 @@
     "title": "【开源自荐】AGI Agent智创智能体",
     "content": "我亲自研发的类Cursor富文档转写/编程智能体平台，交互式开发。\n网址：https://agiagentonline.com\n开源地址：https://github.com/agi-hub/AGIAgent\n\nAGI Agent 不仅是一个支持 Vibe Colorful Doc、Vibe Coding 和自然语言通用任务执行的智能体平台，更是一个图文文档与代码的交互式创作平台。\n\n通过直观的 GUI，AGI Agent 能够与您携手完成内容的深度加工——更换图片、编辑文字、实时修改 SVG 矢量图与 Mermaid 流程图，乃至边写边运行 HTML 小程序，让每一次创作都所见即所得。结合自然语言与丰富的 skills 技能库，支持多轮次创意迭代，在网页端和纯 Python 环境下均可获得类 Cursor 的强交互智能体创作体验。\n\n平台内置 40+ 工具，提供 GUI、CLI 及嵌入式运行等多种模式，可部署于云端、笔记本或嵌入式设备（ARM），全面支持 Anthropic/OpenAI 大模型接口及开源/私有化部署。\n",
     "created_at": "2026-03-03T04:47:42Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9115"
   },
   {
@@ -20,7 +30,9 @@
     "title": "【开源自荐】2026 AI 预测国内樱花地图",
     "content": "完全由AI自己根据我提供的论文，应该搜集的资料，想要效果的网页模板生成网站。并且AI每日会根据最新的天气预测更新最新的预测结果。\n源代码：https://github.com/rogerzhu/yinghua-map\n最终版网页：https://rogerzhu.github.io/yinghua-map/\nAI的最后的作品让我觉得很惊艳。\n",
     "created_at": "2026-03-02T22:55:45Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9114"
   },
   {
@@ -828,13 +840,5 @@
     "created_at": "2026-02-14T14:58:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9015"
-  },
-  {
-    "id": 9014,
-    "title": "【开源自荐】Spark Words，优雅的首字母填空学习工具",
-    "content": "# Spark Words\n一款简洁优雅的英语首字母填空练习工具，沉浸式练习，融合AI助力学习。\nGithub：[https://github.com/Mystic-Stars/Spark-Words](https://github.com/Mystic-Stars/Spark-Words)\nDemo：[https://spark.ghs.red](https://spark.ghs.red)\n## 特性\n- 极简设计：完全无干扰的设计，流畅而现代化。\n- AI 驱动：深度融合AI体验，支持API和手动导入多种方式导入试卷。\n- 社区题库：提供在线题库，鼓励大家共创。\n## 截图预览\n\n<img width=\"1439\" height=\"735\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92239672-a3cd-4453-be93-2aa647e2b51d\" />\n\n<img width=\"1439\" height=\"732\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/87b99e0b-e4a1-4614-b4f7-9ab1bed4b44f\" />\n\n<img width=\"1439\" height=\"729\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a7fc0bd2-545d-48af-8cf8-254b5a1c76a7\" />\n\n<img width=\"1439\" height=\"728\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/05e6a3d2-3ba6-410b-8a8a-0f285a5cf398\" />\n\n<img width=\"1439\" height=\"726\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2cbbf4d3-e234-416b-81d3-72ad1ac687f1\" />\n",
-    "created_at": "2026-02-14T11:25:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9014"
   }
 ]
