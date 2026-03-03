@@ -1,5 +1,13 @@
 [
   {
+    "id": 9120,
+    "title": "【开源自荐】GitHub Gist  + Github page 一键部署的个人导航网站",
+    "content": "GitHub Gist  + page 一键部署的个人导航网站\n\nhttps://github.com/yunlongwen/NavGate\n\n<img width=\"1771\" height=\"870\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4efbf612-c92e-4c6e-a85d-e3d8d7ebc816\" />\n\n\n\n<img width=\"1054\" height=\"839\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e60f00f4-111c-46dc-b07e-e58cd7d58981\" />",
+    "created_at": "2026-03-03T11:22:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9120"
+  },
+  {
     "id": 9119,
     "title": "[推荐] ArXiv Daily Researcher：基于 LLM 的全自动学术论文监控与深度分析系统",
     "content": "项目名称：ArXiv Daily Researcher\n项目地址：[https://github.com/yzr278892/arxiv-daily-researcher](https://www.google.com/search?q=https://github.com/yzr278892/arxiv-daily-researcher)\n\n一句话简介：\n一个基于大语言模型（LLM）的开源自动化工具，用于监控、精准筛选、深度阅读并推送 ArXiv 及 20+ 顶级学术期刊的最新前沿论文。\n\n项目背景与解决的痛点：\n科研人员和算法工程师每天面临海量的学术更新，手动检索、筛选和精读耗时巨大。传统的 RSS 或文献订阅工具通常只提供基础元数据或摘要，无法根据个人研究方向进行精准过滤，更无法直接提取长篇 PDF 中的核心技术细节。本项目旨在构建一个“全自动文献追踪流”，以极低的 API 成本实现从抓取、打分、解析到推送的全链路自动化。\n\n核心技术与特性：\n\n多源数据与智能回退策略：支持 ArXiv 及 Nature、Science、PRL 等 20+ 顶级期刊。系统内置“ArXiv 优先策略”，当检索到受版权保护的期刊论文时，会自动检测其是否存在 ArXiv 预印本，并智能切换来源以获取完整的可下载 PDF。\n\n双层 LLM 漏斗架构：\n\n初筛层：使用低成本 LLM（如 gpt-4o-mini / DeepSeek）结合用户自定义的关键词（支持多级权重）进行打分。系统会根据关键词总权重计算“动态及格线”，过滤掉低相关度论文。\n\n精读层：仅针对高分通过的论文，调用高性能 LLM（如 gpt-4o / Claude-3-Opus）进行 PDF 深度解析，自动提取“研究方法、核心创新、技术栈、局限性、未来方向”等 7 大结构化维度。\n\n高保真 PDF 解析：集成 MinerU 云端解析服务（支持复杂数学公式与多模态排版还原），并具备 PyMuPDF 本地自动降级回退机制，保障生产级可用性。\n\n长效研究趋势追踪：将历史提取的关键词存入 SQLite，利用 AI 进行批量语义标准化（消除同义词碎片化），并自动生成 Mermaid 语法的主题演变折线图与柱状图。\n\n极其轻量的部署方案：\n\n支持 GitHub Actions 纯云端零成本定时运行（报告通过 Artifact 持久化）。\n\n提供 Docker 镜像（跨 AMD64/ARM64 架构，待机内存仅 3MB），支持多渠道（微信、钉钉、Telegram、Slack）推送精美的 HTML / Markdown 报告。",
@@ -834,13 +842,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9018"
-  },
-  {
-    "id": 9017,
-    "title": "【开源自荐】Codes CLI — Claude Code 多环境管理与多 Agent 协作工具",
-    "content": "## Codes CLI\n\n**仓库地址**：https://github.com/ourines/codes\n\n**简介**：Claude Code 的环境配置管理、项目管理与多 Agent 协作工具。用 Go 编写，跨平台支持 Linux / macOS / Windows。\n\n### 核心功能\n\n1. **Profile 一键切换** — 在多套 API 配置之间秒切（Anthropic 官方、代理、自定义端点），开发/测试环境自由切换\n2. **多 Agent 团队协作** — 创建自治的 Claude Agent 团队，支持任务依赖、消息传递和自动汇报，多个 Agent 并行完成复杂工程任务\n3. **MCP Server 集成** — 提供 29 个 MCP 工具，直接在 Claude Code 对话中管理 Agent 团队、项目和配置，无需离开编辑器\n4. **交互式 TUI** — 基于 bubbletea 的终端 UI，可视化管理项目、Profile 和远程主机\n5. **远程主机管理** — SSH 配置同步，一键将本地 Profile 同步到远程服务器\n\n### 亮点\n\n- 纯文件系统存储，无需数据库或消息中间件，JSON 文件 + 原子重命名保证并发安全\n- Agent 守护进程独立运行，每 3 秒轮询任务队列，自动分配和执行\n- 一行命令安装：`curl -fsSL https://raw.githubusercontent.com/ourines/codes/main/install.sh | sh`\n\n### 使用场景示例\n\n```bash\n# 创建 Agent 团队并行完成任务\ncodes agent team create myteam --workdir ~/project\ncodes agent add myteam coder --role \"implementation\" --model sonnet\ncodes agent add myteam tester --role \"testing\" --model sonnet\ncodes agent start-all myteam\ncodes agent task create myteam \"实现登录 API\" --assign coder --priority high\ncodes agent task create myteam \"编写登录测试\" --assign tester --blocked-by 1\n```\n\n**技术栈**：Go, Cobra, Bubbletea, MCP Protocol\n\n**协议**：MIT",
-    "created_at": "2026-02-14T17:41:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9017"
   }
 ]
