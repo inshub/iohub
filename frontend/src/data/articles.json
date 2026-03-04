@@ -1,5 +1,13 @@
 [
   {
+    "id": 9138,
+    "title": "[自荐项目] AI Video Generation Workflow - 开源的 AI 视频自动化生产流",
+    "content": "项目名称：AI Video Generation Workflow\n项目地址：https://github.com/haolinwang819-boop/ai-video-generation-workflow\n一句话介绍：一套面向稳定生产的 AI 视频自动化工作流，从脚本到字幕配音再到 MP4 成片。\n核心亮点：模块化重跑、时间轴同步、适合批量知识内容生产。\n\n大家好，我开源了一个 AI 视频自动化工作流，目标是稳定、可复用地批量生成知识型短视频。\n\n流程：\n脚本 -> 幻灯片素材 -> 中文配音 -> 字幕同步 -> FFmpeg 合成 MP4\n\n适合场景：\n- 财经/教育/知识科普内容生产\n\n欢迎试用和反馈。",
+    "created_at": "2026-03-04T19:44:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9138"
+  },
+  {
     "id": 9137,
     "title": "【开源自荐】TwitterXZ：一个免费的 Twitter/X 视频与 GIF 在线下载工具",
     "content": "[TwitterXZ](https://twitterxz.com/) 是一个面向中文用户的在线工具，用来下载 Twitter/X 上的公开视频和 GIF 动图。它的使用方式比较直接：复制推文链接，粘贴到网站输入框，即可解析并下载，不需要注册，也不需要安装插件或客户端，手机和电脑都可以使用。\n\n这个产品主要解决几个很常见的需求：保存推特视频到本地、下载 GIF 动图、在手机上快速完成视频保存，以及尽量保留原始清晰度、不额外添加水印。整体设计偏轻量，适合临时使用，也适合中文用户直接上手。\n\n除了基础下载能力，TwitterXZ 还做了多语言支持，并配有一些教程内容，比如“怎么下推特视频”“手机怎么下载”“GIF 怎么保存”等，方便第一次接触这类工具的用户理解使用流程。\n\n官网：\nhttps://twitterxz.com/\n\nGitHub：\nhttps://github.com/twitterxz/twitter-video-downloader\n\n<img width=\"1552\" height=\"1056\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a9d89e3c-502d-4412-9b17-85ee64f0b8bc\" />\n\n",
@@ -832,15 +840,5 @@
     "created_at": "2026-02-19T02:17:23Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9037"
-  },
-  {
-    "id": 9036,
-    "title": "OpenAPI -> Skills 转化器，让 Agent 按需精准读取 API 文档",
-    "content": "https://neutree.ai/projects/openapi-to-skills\n\n之前尝试过各种方法让 Agent 可以更可靠地读取 API 文档，不论是基于它开发客户端代码、做集成测试还是自动化。但复杂一些的 API 文档就会遇到超出上下文大小，即使不超出，也非常浪费上下文空间、多轮对话之后模型就又幻觉了。\n\n最近又想做个公司产品 API 的 code helper ，但是产品的 API 文档的 OpenAPI JSON 接近 10MB ，又遇到上面的问题。陆续尝试过几种切分的方法，部分奏效，但是复杂度挺高，维护成本也高。\n\n前几天突然想到 Skills 最擅长按需加载，就做了一个 CLI ，把 OpenAPI 文档转为 Skills 结构，核心是按 API 语义的拆分 + link ，实现按需加载，实际使用效果惊人，顺便加了点模版定制功能，更好用了。\n\n原本单个 10MB API 文档，拆完之后是 2000+ 小的 md 文件，但是对于具体的 API 任务请求（比如写个 xx 场景运维脚本），Agent 都可以精准地读取所需的片段，探索性特别好，对单个资源的操作需求一般读 5 个片段就能准确写出了，最关键是没幻觉。\n",
-    "created_at": "2026-02-19T02:12:38Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9036"
   }
 ]
