@@ -1,5 +1,29 @@
 [
   {
+    "id": 9126,
+    "title": "【开源自荐】 OneDroid - 系统级Android全能工具箱",
+    "content": "# 📱 OneDroid - 系统级Android全能工具箱\n\n> 一款功能强大的安卓多功能工具集，集成了多种实用工具，帮助用户更好地管理和了解自己的安卓设备。\n\n中文 | [English](README_EN.md)  \n\n官方网站: [https://qingge.tech/onedroid/web/](https://qingge.tech/onedroid/web/)\n\nGithub: [https://github.com/QingGeTech/OneDroid](https://github.com/QingGeTech/OneDroid)\n\n## 🚀 特性\n\n- 📦 **应用管理**:\n  - 应用列表\n  - 基础信息、签名、权限、组件\n  - 应用操作（启动、提取、卸载、修改内部文件、反编译）\n\n- 📱 **设备管理**：\n  - 设备、系统、CPU、GPU、内存、存储、屏幕、网络、位置、传感器、相机、温度、PROP\n- 🔧 **小工具合集**：\n    - 屏幕分析：长截图(待完善)、界面分析、屏幕录制、屏幕取色、屏幕取字\n    - 逆向调试：反编译、Logcat(待实现)、终端(待实现)、模拟位置(待实现)、wifi密码(需要root)\n    - 网络管理：抓包(待实现)、文件服务器(待实现)\n## 💾 下载\n\n在 [Release页面](https://github.com/QingGeTech/OneDroid/releases) 下载最新的APK\n\n## 📸 截图展示\n\n### 应用管理\n\n\n| 应用列表 | 基础信息 | 应用操作 |\n|---------|---------|--------|\n| <img src=\"https://github.com/user-attachments/assets/10fae9de-9ae6-4aae-9c58-443cf0f8bc15\" width=\"200\" alt=\"应用列表\"> | <img src=\"https://github.com/user-attachments/assets/54e5e432-6972-497f-9b31-a4d5187df54e\" width=\"200\" alt=\"基础信息\"> | <img src=\"https://github.com/user-attachments/assets/6d01f802-6edb-4e6a-ab61-b07716b488d2\" width=\"200\" alt=\"应用操作\"> |\n\n### 设备管理 & 小工具合集\n\n| 设备信息 | 小工具合集 |\n|---------|----------|\n| <img src=\"https://github.com/user-attachments/assets/986983fb-d5e4-453a-8dd2-e0076b15b598\" width=\"200\" alt=\"设备信息\"> | <img src=\"https://github.com/user-attachments/assets/ec07a813-527d-4173-815b-281a754a3315\" width=\"200\" alt=\"小工具合集\"> |\n\n",
+    "created_at": "2026-03-04T03:09:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9126"
+  },
+  {
+    "id": 9125,
+    "title": "【网站自荐】StyleLookLab - AI 虚拟试妆",
+    "content": "Try <a href=\"https://stylelooklab.com\" target=\"_blank\">free ai hairstyle</a> on StyleLookLab to preview and explore hairstyle looks quickly.\n\nStyle Look Lab 提供 AI 虚拟试戴/试妆式的形象预览：上传照片后，系统会基于脸型推荐并生成发型、眼镜与眉形效果；流程清晰（上传→选择→下载结果），支持高分辨率导出，适合在剪发/配镜/修眉前做决策。",
+    "created_at": "2026-03-04T02:15:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9125"
+  },
+  {
+    "id": 9124,
+    "title": "【网站自荐】IMGG.ai - Best AI Image Generator & AI Image Editor",
+    "content": "Try <a href=\"https://imgg.ai\" target=\"_blank\">free nano banana</a> on IMGG.ai to generate and edit images fast.\n\nIMGG.ai 是一款 AI 图片生成与编辑平台，主打“把创意快速变成高质量视觉内容”，提供从生成到编辑的一站式体验，适合内容创作者、营销物料制作与日常图片处理需求。\n",
+    "created_at": "2026-03-04T02:14:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9124"
+  },
+  {
     "id": 9123,
     "title": "【开源自荐】ESPClaw — 嵌入式领域的 OpenClaw，最便宜的 AI Agent 学习平台",
     "content": "## 项目地址\n\nhttps://github.com/tianrking/espclaw\n\n## ESPClaw 是什么\n\n**嵌入式领域的 OpenClaw**，最便宜的嵌入式 AI Agent 学习平台。一个能在 **2 美元芯片上**跑的 AI Agent 固件，纯 C 实现，4MB Flash 就够了。\n\n我们想回答一个问题：**Agent 的核心能力，能不能塞进最便宜的芯片里？**\n\n[演示视频](https://github.com/user-attachments/assets/4ca20a3d-8336-4232-ae38-6b1f12aa64bc)\n\nESPClaw 想在这些探索上再往前走一步：**如果砍掉 PSRAM，用最便宜的 C3，Agent 还能跑吗？**\n\n## 架构设计\n\n```\n串口 / Telegram / WebSocket\n         │\n    ┌────▼────┐\n    │ Channel │ ← vtable 抽象，可扩展新通道\n    └────┬────┘\n         │\n    ┌────▼────────┐\n    │ Message Bus │ FreeRTOS 队列，异步解耦\n    └────┬────────┘\n         │\n    ┌────▼──────┐\n    │ Agent     │ ReAct 循环：思考 → 行动 → 观察\n    │ Loop      │ 多轮上下文，对话历史管理\n    └────┬──────┘\n         │\n    ┌────▼──────────┐\n    │ Provider      │ ← vtable 抽象，多后端支持\n    │ Anthropic/    │   流式 JSON 解析（省内存）\n    │ OpenAI/...    │\n    └────┬──────────┘\n         │\n    ┌────▼──────────┐\n    │ Tool Registry │ 能力位掩码，按平台自动过滤\n    │ GPIO/Memory/  │ LLM 可调用硬件\n    │ Cron/System   │\n    └────┬──────────┘\n         │\n    ┌────▼────┐\n    │  HAL    │ 硬件抽象层，安全护栏\n    └─────────┘\n```\n\n## 设计理念\n\n**1. vtable 抽象，一切可替换**\n\nChannel、Provider、Tool、HAL 全部用 vtable（函数指针表）抽象。想换 LLM 后端?实现一个新的 Provider。想加新通道?实现一个新的 Channel。\n\n嵌入式里没有继承，但我们用 C 的函数指针做到了同样的事。\n\n**2. 流式解析，极限省内存**\n\nESP32-C3 只有 400KB RAM。我们用 SAX 风格的流式 JSON 解析器，边收边解析，不需要把整个响应塞进内存。这让我们能用 4KB 缓冲区处理 LLM 的长回复——这也是为什么不需要 PSRAM。\n\n**3. 能力位掩码，自动适配平台**\n\n同一个固件，C3 / C5 / S3 都能跑。Tool Registry 在启动时根据芯片能力自动过滤可用工具：C3/C5 用基础工具，S3 用全部工具。一套代码，三种芯片。\n\n**4. 安全护栏在 HAL 层**\n\nGPIO 操作不直接调用 ESP-IDF API，而是走 HAL 层。HAL 层会检查引脚是否在允许范围内，不在就拒绝。安全不是靠\"小心写代码\"，而是靠架构设计。\n\n**5. 异步消息总线**\n\nFreeRTOS 队列把输入/输出/处理完全解耦。串口接收 task 只管往队列塞消息，Agent task 只管从队列取消息。谁也不阻塞谁。\n## 与其他项目的对比\n\n| 项目 | 硬件成本 | 语言 | 特点 |\n|------|----------|------|------|\n| OpenClaw | 服务器 | TypeScript | 功能完整的 Agent 框架 |\n| NanoBot | 服务器 | Python | ~4000 行，学习友好 |\n| ZeroClaw | 任意 | Rust | <5MB 内存，零开销 |\n| PicoClaw | $10 | Go | <10MB 内存，1 秒启动 |\n| MimiClaw | $5 (S3+PSRAM) | C | 嵌入式完整 AI 助手 |\n| **ESPClaw** | **$2 (C3)** | **C** | **最便宜的学习平台** |\n\nESPClaw 不是要取代谁——每个项目都有自己的定位。我们想做的是 **Agent 的\"Arduino\"**：够便宜、够简单、架构够清晰，让任何人都能理解 Agent 是怎么实现的。\n## 能做什么\n一块 ESP32-C3/C5/S3，接上 WiFi：\n- **多轮对话**：串口和 LLM 聊天，上下文自动保持\n- **定时提醒**：LLM 设置定时任务，到点发消息\n- **智能家居**：LLM 控制 GPIO，接继电器、传感器\n- **学习 Agent**：ReAct 循环、工具调用、状态管理，代码全透明\n支持 Anthropic / OpenAI / OpenRouter / Ollama / 任意 OpenAI 兼容 API\n```bash\nidf.py set-target esp32c5\nidf.py menuconfig   # 填 WiFi + API Key\nidf.py build flash monitor\n```\n## 当前进度\nStep 1-4 已完成：固件启动 → WiFi 连接 → 串口交互 → 多轮 LLM 对话\nStep 5 正在进行：ReAct Agent + 工具系统\n完整路线图见 [PLAN.md](https://github.com/tianrking/espclaw/blob/main/PLAN.md)\n## 一起来\nESPClaw 还很早期，代码量也不大——正是参与的好时候。\n如果你也想：\n- 理解 Agent 架构是怎么设计的\n- 用最便宜的价格做一个能\"思考\"的硬件\n- 把 AI 接进智能家居、机器人、可穿戴设备\n欢迎提 Issue、提 PR，或者只是 star 一下。如果这个方向对你有用，一起来吧。\n## 致敬\n这个项目站在很多优秀项目的肩膀上：\n- **OpenClaw** — 开创了个人 AI Agent 的范式，证明了 AI 可以是每个人的私人助手\n- **NanoBot** — 用 ~4000 行代码展示了 Agent 可以多简洁，学习友好的典范\n- **PicoClaw** — 用 Go 实现了超轻量 Agent，<10MB 内存的标杆\n- **ZeroClaw** — 展示了 Rust 在嵌入式 Agent 的可能性，零开销的追求\n- **MimiClaw** — 证明了 ESP32-S3 能跑完整的 AI 助手，Telegram + 记忆 + 工具调用\n",
@@ -812,31 +836,5 @@
     "created_at": "2026-02-16T23:45:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9025"
-  },
-  {
-    "id": 9024,
-    "title": "【开源自荐】Xcode Proxy - 专为 Xcode 设计的 LLM 模型万能适配器",
-    "content": "\n### 项目介绍\n**Xcode Proxy** 是一个专为 macOS 开发者设计的，轻量级、高性能的 AI 代理服务器。它充当了 Xcode 与现代 AI 模型之间的中间件。\n\n它的核心目标是**解锁**与**连接**：让封闭的 Xcode 开发生态能够无缝对接 OpenRouter、DeepSeek、Anthropic (Claude)、智谱 GLM-5 等任何强大的第三方 AI 服务，打破厂商锁定。\n\n### 项目地址\nhttps://github.com/tianrking/xcode-proxy\n\n### 核心痛点\nXcode 原生的 AI 功能通常限制了后端模型。开发者想要使用更便宜（如 DeepSeek）、更聪明（如 Claude 4.5 Sonnet）或国内合规的模型时，往往束手无策或需要复杂的配置。Xcode Proxy 以“中间人”的身份完美解决了这个问题。\n\n### 主要特性\n- ⚡️ **轻量高效**：基于 Python 开发，作为本地服务运行，极低资源占用。\n- 🔍 **隐形集成**：对 Xcode 来说，它就是一个标准的 OpenAI 接口服务，无需 Hack Xcode 二进制文件。\n- 🌐 **万能协议**：只要是兼容 OpenAI 接口标准的模型服务皆可接入。\n- ⚙️ **动态路由**：简单易读的 [settings.toml](cci:7://file:///Users/w0x7ce/Downloads/xcode_hack/xcode_ok/settings.toml:0:0-0:0) 配置，修改即生效，无需重启服务或重新编译。\n- 🛡 **智能兜底**：内建自动认证处理与错误透传，并能自动读取 `~/.claude/settings.json` 作为备用配置。\n\n### 演示 Demo\n\nhttps://github.com/user-attachments/assets/6b6342cf-b4f7-4b72-abda-5afc05191881\n",
-    "created_at": "2026-02-16T11:18:07Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9024"
-  },
-  {
-    "id": 9023,
-    "title": "【工具自荐】高质量真实全球地址生成工具 mockaddress.com 生成真实的地址，",
-    "content": "尊敬的站长你好。\n\n您好！\n\n我是 [mockaddress.com](http://mockaddress.com/) 的开发者，很高兴联系您。\n\n\n\n我开发了这个地址生成工具，目前支持生成美国（含免税州）、台湾、香港、加拿大、日本、印度等多个国家/地区的地址。生成的地址高度真实，街名、门牌号、邮编等细节均经过精心设计，大多数地址都可以在谷歌地图上找到对应位置，真实度远超普通的随机地址生成器。\n\n\n并且支持香港英文的地址生成。这样更符合香港的账号注册时的格式要求。\n\n并且支持中文，英文，俄语，意大利语四种语言。\n\n它特别适合需要填写海外地址的场景，例如注册 ChatGPT、创建美国 Apple ID 或其他海外账号时使用，成功率很高，很多用户反馈效果显著。\n\n我注意到贵站/您的博客经常推荐实用工具和资源，希望您能考虑将 [mockaddress.com](http://mockaddress.com/) 收录到相关文章、工具导航或推荐列表中。如果方便的话，非常期待您能撰写一篇介绍该工具的博客文章，并附上合适的 meta description（我可以提供建议），以便更多有需要的人发现它。\n\n感谢您抽出宝贵时间阅读这份推荐！期待您的回复，如有任何问题欢迎随时交流。\n\n此致 敬礼\n\n强 [mockaddress.com](http://mockaddress.com/) 开发者",
-    "created_at": "2026-02-16T08:31:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9023"
-  },
-  {
-    "id": 9021,
-    "title": "【开源自荐】myclaw：单二进制 + Docker + 多渠道接入的个人 AI 助手",
-    "content": "项目名称：myclaw\n\n项目地址：https://github.com/stellarlinkco/myclaw\n\n项目简介：\n基于 agentsdk-go 的跨平台个人 AI 助手，支持 Telegram/飞书/企业微信/WhatsApp/WebUI 多渠道接入，内置 Skills 扩展、长期记忆、定时任务与心跳自动化，适合个人和小团队自托管部署。\n\n核心特点：\n- 单二进制部署：`make build` / `make build-release` 直接产出 `./myclaw`\n- 压缩分发友好：`make package-all` 可一次产出 darwin/arm64、linux/amd64、linux/arm64 压缩包\n- 低配置可跑：优化后二进制约 30 MiB，gzip 包约 9~10 MiB\n- Docker/Compose 部署：支持 `make docker-up`、`make docker-up-tunnel`\n- Skills 体系：支持本地 `SKILL.md` 加载与 `skills list/info/check --json` 诊断\n\n快速开始：\n```bash\nmake build-release\nmake package-all\nmake onboard\n./myclaw agent -m \"你好\"\n```\n\n截图：\nWebUI（桌面）\n![myclaw-webui-desktop](https://n.uguu.se/QBLhvHGw.png)\n\nWebUI（移动）\n![myclaw-webui-mobile](https://n.uguu.se/AvRVfYmK.png)\n",
-    "created_at": "2026-02-15T13:17:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9021"
   }
 ]
