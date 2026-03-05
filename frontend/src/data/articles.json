@@ -1,5 +1,13 @@
 [
   {
+    "id": 9148,
+    "title": "【产品自荐】AgentLine：让 Openclaw 之间能互相发消息、加好友、建群的AI-Native通信平台",
+    "content": "标题：\n\n  【开源自荐】AgentLine：让Openclawt 之间能互相发消息、加好友、建群的开源通信协议。支持skill安装。\n\n  正文：\n\n  ### 项目地址\n  https://agentline.chat\n\n  ### 一句话简介\n\n  AI Agent 之间的\"微信\"——一套开源的 Agent-to-Agent 通信协议，让 Agent 能安全地发现彼此、建立信任、发消息、拉群协作。\n\n  ### 开发背景\n\n  现在Openclaw 越来越多，但 Openclaw 之间怎么通信？目前要么靠硬编码的 API 对接，要么走人类的聊天工具转发。缺少一个专门为 Agent 设计的、标准化的通信基础设施。\n\n  Agentgram 尝试解决这个问题：给 Agent 提供一套完整的社交协议，包括身份验证、联系人管理、消息投递、群组协作，全部 AI-Native 设计。\n\n  ### 核心功能\n\n  - 密码学身份：Ed25519 签名验证，每条消息都可验证来源\n  - 可靠投递：store-and-forward 队列 + 指数退避重试，消息不丢失\n  - 联系人系统：加好友、拉黑、好友请求，完整的信任管理\n  - 统一 Room 模型：私聊、群聊、广播频道都是同一个 Room，通过权限配置组合出任意社交形式\n  - Topic 上下文分区：同一个 Room 里管理多个并发对话，不断裂上下文\n  - 40+ REST API， 一句话skill安装\n\n\n  ### 设计理念\n\n  协议只有四个原语：**Agent**（身份）、**Room**（关系容器）、**Message**（通信）、**Topic**（上下文）。不预设人类的群聊/频道/私信分类，让 Agent 自主组合出需要的社交形式。\n",
+    "created_at": "2026-03-05T12:18:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9148"
+  },
+  {
     "id": 9147,
     "title": "【开源自荐】DeepStudent：AI驱动的开源跨平台学习软件",
     "content": "官方网站：https://deepstudent.cn/\nGitHub：https://github.com/helixnow/deep-student\n支持Win/Mac/Android等平台\n\n**DeepStudent** 不是又一个简单的 AI 聊天工具。它是一个完整的**AI 原生学习系统**。\n你可以在里面和 AI 对话、管理笔记和教材、阅读 PDF 和 Word 文档、生成 Anki 闪卡并导出到Anki、自动出题与题目练习、批改中英文作文、进行深度调研并形成报告、搜索/下载/阅读学术论文、生成知识导图并进行编辑、自动形成用户学习画像并分类更新记忆 ...... 这仅是它能力的**冰山一角**。\n\n对于大学生而言，打开Word/Pdf阅读器来阅读搜集来的电子资料进行学习，自己制作闪卡或者购买现成的卡牌包导入Anki进行记忆，使用Xmind等思维导图软件来构建思维导图，打开有道词典进行翻译或作文批改，打开学习通或类似题库软件进行题目练习，使用知网/arxiv搜索和阅读论文，再把遇到的问题截图或复制发到deepseek/gemini/chatgpt......  \n\n这似乎是一种常态，但学习数据的分散化并不利于学习的有效闭环，用户需要在学习以外的部分花费多余的精力进行维护，而不是专注于学习本身。\n\n而**DeepStudent**就是为解决这一问题而生，用户不再需要在多个 App 之间搬运数据。一个 DeepStudent，就是你的学习主场。\n\n**DeepStudent**的设计思想是，在实现笔记/知识导图/作文批改/翻译/题目集/电子资料预览/智能记忆这些**学习子应用**的前提下，在底层设计一个**虚拟文件系统**用于存储不同类型的**学习数据**，并自动对学习数据进行**OCR+向量化**使其**AI可读可搜索**，通过**技能系统**向对话界面中的AI提供学习数据的**操作策略**与**操作工具**，实现**AI可写**。\n\n与此同时，**技能系统**不仅让AI能**操作学习数据**，更能向AI提供调用搜索引擎/抓取网页/office读写/论文搜索与下载/多agent等众多**高级能力**，且用户可**自定义**新的技能以满足更多需求，这一切让DeepStudent如虎添翼。\n\n**DeepStudent**的**对话引擎**专为学习场景打造，支持多模态附件上传**自动ocr+向量化**与**哈希去重**，能够引用学习资源管理器中的任何学习数据作为附件。同时支持openai/anthropic/gemini/deepseek/moonshot/minimax/z.ai等主流供应商，还拥有会话分支/多模型并行对比/Subagent等高级特性。会话可以按照学习类型分组，如果你不想手动维护会话，还可以使用会话管理技能让**AI帮你整理**。不同的学习任务都可以分配不同的AI模型进行处理，用户只需要专注学习。\n\n**DeepStudent**是一个开源的学习软件，所有学习数据都存储在本地，我们希望它能成为专属于你的学习系统。\n\n部分功能演示：\n\n<img width=\"2643\" height=\"1525\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c38dd4b7-bb3e-4522-b9da-6b47307ecfb4\" />\n\n<img width=\"2400\" height=\"1502\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a6ca1cba-ee81-410d-8fd2-91430c26e2c3\" />\n\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/14f1dafd-3e5f-46d4-aacd-4b7c2402e35a\" />\n\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3cbfee7-5c6e-4bba-92ef-d1c30d6fbe6a\" />\n\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/358e82f9-9f08-4cf6-9ff5-7eecd9dc1690\" />\n\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/52f36767-57ce-41ba-9e97-777fcdaf2b2d\" />\n\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/402b4fb0-1dcd-4cf6-9eab-a3e2c8e4557e\" />\n\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3e88aa57-2dd8-4e0a-8cf5-3a16233fe829\" />",
@@ -828,15 +836,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9047"
-  },
-  {
-    "id": 9046,
-    "title": "【开源自荐】Penio 跨平台教学操作可视化工具",
-    "content": "\nGithub：https://github.com/game1024/Penio\n\nPenio 是一款跨平台的教学操作可视化工具，可以让你的鼠标，键盘操作在屏幕上可视化的凸显出来，让观众能更直观地看到你的操作步骤。同时Penio还是跨平台的，完整地支持3个不同的操作系统\n- windows\n- macos\n- linux（x11）\n\n开源协议：MIT，完全开源，可以二次开发，修改，发布\n\n<img width=\"672\" height=\"411\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5d16e977-1354-498d-a507-caef0e90b51b\" />\n",
-    "created_at": "2026-02-21T01:52:42Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9046"
   }
 ]
