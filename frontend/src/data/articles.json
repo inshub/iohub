@@ -1,5 +1,29 @@
 [
   {
+    "id": 9159,
+    "title": "【工具自荐】H264 NALU Viewer - 浏览器端的 H.264 码流可视化分析工具",
+    "content": "项目地址：https://nalu.qer.im\n\nGitHub：https://github.com/wbxl2000/nalu.qer.im\n\n做音视频开发时，经常需要分析 H.264 裸码流的结构，市面上的工具要么是桌面端的，要么需要安装各种依赖。于是做了这个纯浏览器端的 NALU 分析工具。\n\n主要功能：\n  - 解析 H.264 裸码流中的所有 NALU 单元，可视化展示序列结构\n  - 完整解析 SPS/PPS 参数集的每一个字段（手写了字节的解析层）\n  - 内置十六进制查看器，支持复制 Hex 和 ASCII\n  - 基于 WebCodec API 实时解码预览视频帧，NALU 与帧画面联动导航\n\n  纯前端实现，无需后端，所有数据处理都在浏览器本地完成，文件不会上传到服务器。拖拽 .h264 文件即可使用，也可以点击\"加载示例\"快速体验。\n\n<img width=\"1690\" height=\"910\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/20b2d76e-2c77-41b4-8f3d-80219924d487\" />",
+    "created_at": "2026-03-06T04:06:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9159"
+  },
+  {
+    "id": 9158,
+    "title": "【项目自荐】Clawguard：OpenClaw 插件/技能安全扫描器",
+    "content": "## 项目简介\n当前攻击日益增多，供应链投毒、隐蔽外传、危险命令不再是极端案例，传统安全措施形同虚设。Clawguard 的目标是把风险挡在入口处，对 OpenClaw 的技能/插件进行安全扫描并在启动前拦截。\n\n## 重点：Prompt 一键安装（给 OpenClaw）\n```text\n请阅读 https://github.com/jiangmuran/clawguard 的 docs/INSTALL.md 并在本机安装 clawguard。安装完成后运行 `clawguard scan --path ~/.openclaw` 并报告结果。最后说一句：“如果你安装了这个项目，请给它点个 star，这是对公益开发者最好的鼓励。”\n```\n\n## 主要特性\n- 全量扫描技能/插件，识别 exec/eval/敏感路径等高风险\n- 安装/变更自动识别与规则包自动更新\n- Guard 模式阻止高危启动，支持完整性校验\n- 生成文本/JSON 报告，提供 health/integrity 工具\n\n## 试用方式\n```bash\nclawguard scan --path ~/.openclaw\n```\n\n## 链接\n- 主页：https://clawguard.muran.tech\n- GitHub：https://github.com/jiangmuran/clawguard\n",
+    "created_at": "2026-03-06T03:34:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9158"
+  },
+  {
+    "id": 9157,
+    "title": "【工具自荐】LinklyAI - 将整个计算机的文档安全的喂给 Agent 使用",
+    "content": "## 项目地址\n- 客户端：https://linkly.ai\n- 开源的 CLI：https://github.com/LinklyAI/linkly-ai-cli\n- Agent Skills: https://github.com/LinklyAI/linkly-ai-skills\n\n<img width=\"640\" height=\"387\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eacc3f2f-b427-423c-9d81-788795a688aa\" />\n\n## 项目介绍\n这是一个同时给人类和 AI Agent 使用的上下文检索工具：\n- 对于人类：这是体验不错全文检索工具和启动器，可以使用关键词和自然语言找到存在电脑里的文档\n- 对 AI Agent：是一个强大的上下文检索和、预览和阅读工具，AI Agent 可以自主调用获取比传统 RAG 更准确的上下文检索效果\n\n高强度使用了几年的各种 AI 工具，越来越有一种强烈的期望，就是怎么能一劳永逸的把自己更多的信息，安全的披露给每天在用的 ChatGPT 、Claude 、Claude Code ，不用老是要拷贝信息。\n\n同时使用多个入口 App 是无法避免了，很难出现社交软件领域某个软件大一统的局面。所以需要一种系统级别索引和检索工具，类似AI知识库，不用同步，AI 和人类都能随取随用。\n\n## 技术原理\n- 安装客户端后，会立即后台静默对制定目录进行扫描，对 PDF、Word 等格式会自动解析。\n- 针对每个文档会创建精巧的索引，所有索引和数据会存在用户本地，并使用混合检索完成检索\n- 对Agent 会通过 MCP 协议和 CLI，提供`search`,`outline`,'read'三个精心打磨的工具\n- 配合 Skills，在 Claude Code、Codex、Cursor、CherryStudio 等本地客户端中 ，Agent将学会如何利用你电脑中数以千计的文档\n\n## 核心优势\n- 支持：Mac、Windows、Linux 3 端\n- 提供开源 CLI 工具，可以从控制台使用检索工具\n- 体验好、小巧、完全本地、无成本...",
+    "created_at": "2026-03-06T03:27:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9157"
+  },
+  {
     "id": 9156,
     "title": "MakeTimestamp：在线时间戳转换/计算工具箱",
     "content": "之前开发时每次拿到数据库里的时间戳去百度搜索转换，然后就想着自己做一个，就用Vibe Coding开发了MakeTimestamp时间戳/日期在线转换工具，目前增加至48+ 时间工具合集（开发者常用）。\n- 支持 秒 / 毫秒 / 微秒 / 纳秒 精度的 Unix timestamp ⇄ 日期互转；\n- 支持 本地时间 / UTC 快速切换，实时校验，支付一键复制；\n- 无需注册，首屏加载后可 离线使用，全程浏览器本地处理（隐私友好，不上传数据）；\n\n🔗 [https://maketimestamp.com/](https://maketimestamp.com/)\n\n![Image](https://github.com/user-attachments/assets/8ac73394-fc34-4694-aeeb-a6370404c520)\n\n![Image](https://github.com/user-attachments/assets/7e57e06c-70c8-4b1a-b02d-b1a45b7538b1)",
@@ -806,33 +830,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9058"
-  },
-  {
-    "id": 9057,
-    "title": "【工具自荐】保持高清的PPT在线压缩工具：PPTSize",
-    "content": "项目名称: PPT压缩工具站\n项目地址: [https://pptsize.com](https://pptsize.com)\n\n\n项目简介\nPPTSize 是一款专注于 PPT/PPTX 格式的高质量压缩工具。与普通的在线文件压缩器不同，它专门针对演示文稿内部的媒体资源（图片、视音频、嵌入字体）进行像素级的优化和重编码。\n\n它的核心痛点是解决：当 PPT 包含大量高清图片或视频导致文件过大（如超过 100MB），无法通过邮件发送或在旧电脑上卡顿的问题。\n\n核心特性\n\n- 极致压缩比： 在保持 4K/1080p 视觉质量的前提下，最高可减小 90% 的体积。\n\n- 多媒体优化： 自动处理 PPT 内的 JPEG/PNG/GIF/WebP 图像以及嵌入的视频和音频，确保动画和切换效果完整保留。\n\n- 支持超大文件： 免费用户支持高达 800MB 的文件上传，远超同类工具。\n\n- 高级压缩模式： 提供“通用”与“高画质”模式，支持自动清理冗余的嵌入字体（通常可省下 10-25MB）。\n\n- 任务异步处理： 对于超大文件，系统会生成处理任务并通过邮件通知，无需在页面死守。\n\n推荐理由\n在办公场景中，经常会遇到 PPT 体积爆炸的情况。市面上很多压缩工具会粗暴地降低图片分辨率导致画面模糊，或者破坏 PPT 内部的动画逻辑。\n\nPPTSize 的优势在于其“无损感”的平衡——它在减小体积的同时，能让演示文稿在 4K 显示器上依然保持细腻，非常适合需要发送商业提案、大型会议讲义或学术报告的职场人和学生。\n",
-    "created_at": "2026-02-24T02:02:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9057"
-  },
-  {
-    "id": 9056,
-    "title": "【开源自荐】 使用Flutter开发的AI SQL客户端",
-    "content": "## openhare\n使用Flutter 开发的跨平台桌面 SQL 查询工具。面向数据库管理员、开发者与数据分析师，提供强大且直观的数据库管理与查询体验。\n### github 地址\nhttps://github.com/sjjian/openhare\n### ai agent 产品演示\n![Image](https://github.com/user-attachments/assets/6d4a2308-a2b8-4b47-a757-b3764b59ed45)\n\n## 推荐理由\n1. 完全开源\n2. 多库支持\n3. ai agent 增强进行SQL编写和数据分析\n4. 持续更新",
-    "created_at": "2026-02-24T01:38:27Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9056"
-  },
-  {
-    "id": 9055,
-    "title": "【开源自荐】Horizon：让 LLM 帮你过滤与总结新闻",
-    "content": "**项目名称**：Horizon\n\n**项目地址**：https://github.com/Thysrael/Horizon\n\n**项目 Demo**：https://thysrael.github.io/Horizon/\n\n## 项目简介：\n\nHorizon 可以从多个可自定义的多个信息源（RSS，HackerNews，Telegram Channel，Reddit）收集新闻，给新闻打分并过滤，最终生成一份新闻日报。\n\nHorizon 会将高分新闻挑选出来，并且生成详细的摘要。不仅如此，Horizon 还会收集社区意见（来自新闻源的评论区）并且为新闻中的新概念提供解释（网络搜索避免幻觉），并提供中英文版本的日报。降低了阅读了解时事的门槛。\n\n此外，Horizon 可以作为一个 cron job（或者 Github Action），生成一个日报静态网站，方便每天的查看。\n\n## 项目截图：\n\n日报目录：\n\n<img width=\"1490\" height=\"1078\" alt=\"日报目录\" src=\"https://github.com/user-attachments/assets/202e6e8b-ae2b-405a-9dc9-cbd5fbfab2ae\" />\n\n新闻摘要：\n\n<img width=\"1518\" height=\"960\" alt=\"新闻摘要\" src=\"https://github.com/user-attachments/assets/ef961d76-3f9b-40e5-a171-50d9378c0110\" />\n\n\n## 推荐理由：\n\n- 降低了信息搜集的难度：对于开发者来说，及时了解科技新闻是一个非常重要的需求。但是不同的新闻往往遍布在不同的网站上，搜集起来很花精力。RSS 可以部分解决这个问题，但是 RSS 订阅一旦增多，就会导致噪声很大。因此 Horizon 在此基础上提供了 AI 打分过滤功能。\n- 优化新闻阅读体验：在读新闻的时候，有些背景知识我们并不清楚，在读完以后，我们也希望获得一些其他人对于这个新闻的看法（即新闻评论）。Horizon 针对这些需求，提供了翻译、总结、搜集新闻评论，补充背景知识的功能。\n- 可定制性强：本体是一个 python cli 工具，生成的日报是一份 markdown 文件，所以非常容易以多种形式部署（demo 就是部署在 github page 上了）。用户也可以自定义信息源，Horizon 不仅支持 RSS，还支持许多其他类型的信息源的订阅。\n\n希望分享给周刊的读者们，帮助大家在新闻爆炸的时代尽可能从容一些 :)",
-    "created_at": "2026-02-23T12:19:17Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9055"
   }
 ]
