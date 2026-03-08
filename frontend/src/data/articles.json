@@ -1,5 +1,21 @@
 [
   {
+    "id": 9180,
+    "title": "【开源自荐】基于视觉大模型的前端(Umi+Antd)全自动 CRUD 代码生成器",
+    "content": "告别手写 Table/Form：截图即代码，提升你的开发效率，告别烦人的复制粘贴。 \n拒绝接口联调痛苦：自动读取 Swagger，AI 帮你抹平前后端字段命名差异。 \n架构解耦：核心逻辑与 UI 框架分离，React/Vue/Angular 均可适配。\n项目地址：https://github.com/yorha2b-lab/auto-crud-copilot",
+    "created_at": "2026-03-08T11:22:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9180"
+  },
+  {
+    "id": 9179,
+    "title": "【开源自荐】OpenWeChat-Claw 为 OpenClaw 提供类微信 IM SKILL：开源、AI 原生，支持自然语言注册/好友/收发消息/发现/拉黑",
+    "content": "<img width=\"980\" height=\"578\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/41fee01a-260d-4650-914a-8c8c86bf3807\" />\n\n## 是什么\n\n**OpenWeChat-Claw** 为 OpenClaw 生态提供一层**类微信的 IM**：Agent 可以注册账号、加好友、收发消息、拉收件箱、发现用户、拉黑解黑，和人在微信里的用法一致，只是操作方是 Agent。协议从设计上就为 Agent 服务（HTTP + 纯文本，大模型好解析），即**AI 原生**；**完全开源**（MIT），服务端和 Skill 代码都在仓库里。\n\n- 仓库：https://github.com/Zhaobudaoyuema/openwechat-claw  \n- ClawHub Skill：https://clawhub.ai/Zhaobudaoyuema/openwechat-im-client  \n\n## 怎么快速体验（AI 原生：只加载 Skill，自然语言对话即可）\n\n**AI 原生**：不用手写调 API，只要加载 Skill，用自然语言跟 Agent 说「帮我注册」「发现用户」「给 xxx 发消息」「看收件箱」等，Agent 会按你的话去调接口、写配置、收发消息。\n\n1. **加载 Skill**：从 ClawHub 或 GitHub 下载 `openwechat-im-client`，解压后作为 Skill 加到OpenClaw（或其它支持 Skill 的环境）。\n2. **注册**：用自然语言对 Agent 说「帮我注册 OpenWeChat-Claw」或「注册一下」→ Agent 会调服务端 `POST /register`，拿到 ID、名称、Token 并写入本地配置（Token 只返回一次，Agent 会替你保存）。\n3. **之后**：继续用自然语言即可，例如「发现可以加的好友」「给 [某用户] 发一条消息」「拉一下收件箱」「谁是我好友」等，Agent 按你的意图操作。\n\n流程概括：**加载 Skill → 说「帮我注册」→ 用自然语言发消息/加好友/看收件箱**。详见仓库 README。",
+    "created_at": "2026-03-08T11:07:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9179"
+  },
+  {
     "id": 9178,
     "title": "【工具自荐】XFolder - 现代化的macOS文件管理器",
     "content": "从windows切换到macOS，Finder使用很不顺手。由于自己的工作需要长期处理大量文件，于是就自己花时间从0开始打造了一款文件管理器，自己用着还行，主要功能特性如下：\n*   **多窗格布局** - 支持水平、垂直及混合布局，灵活管理文件\n*   **多标签页管理** - 在每个窗格中打开多个文件夹\n*   **目录树视图** - 通过内置的目录树导航文件夹层级\n*   **快捷访问** - 将常用文件夹（如桌面、文档、下载）固定到侧边栏，实现快速访问\n*   **面包屑路径导航** - 直观的面包屑路径导航栏，显示完整目录层级，支持点击切换\n\ngithub链接 https://github.com/zebrapixel/XFolder/\n\n<img width=\"1421\" height=\"822\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9bf5dfb7-3e9d-4f3e-896e-6f1769134e4a\" />\n\n\n",
@@ -812,21 +828,5 @@
     "created_at": "2026-02-27T07:01:05Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9079"
-  },
-  {
-    "id": 9078,
-    "title": "【开源推荐】antdv-next 是 Ant Design 设计体系的 vue 实现",
-    "content": "## 项目背景与定位\nVue 生态中原有的 ant-design-vue 维护工作已实质性停滞（最后更新停留在 2024 年 11 月的 v4.2.6 版本）。在此背景下，antdv-next 希望延续在 vue 生态中使用 Ant Design 设计体系。\n\n它并非对 ant-design-vue 的简单修补或续写，而是基于 Ant Design 6.x 设计体系的全面重构。\n\n架构升级：完整迁移了 Ant Design 6.x 的 Design Token 体系与语义化 DOM 结构。\n底层重构：对标 React 生态的 rc-* 无头组件方案，底层采用 vc-*  无头组件。这种架构实现了样式与逻辑的解耦，不仅能完美复刻 Ant Design 的交互体验，更为有定制化需求的开发者提供了底层支撑，便于二次封装或构建私有组件库。\n\n## 组件完成度\n项目目前具备极高的完成度，已实现 Ant Design 规范中的绝大多数组件。\n\n未实现组件：仅 List 组件未纳入开发。\n原因说明：Ant Design 官方目前对 List 组件已有重构规划并标记为废弃 (Deprecated)，为保持代码库的前瞻性与一致性，antdv-next 选择与其保持同步，暂未实现该组件。\n\n## AI 支持\n- llm.txt 集成，默认集成了 llm.txt 支持，方便用户通过本地或远程 LLM 模型进行离线问答。\n- skills 支持，目前比较流行的本地的技能库，配合 [Antfu Skills 集合](https://github.com/antfu/skills) 一起使用，可以减少 AI 幻觉导致的一些问题。\n\n## Nuxt 支持\n提供了 @antdv-next/nuxt 模块\n```js\nexport default defineNuxtConfig({\n  modules: ['@antdv-next/nuxt'],\n  antd: {\n    icon: true,\n  },\n  css: ['antdv-next/dist/reset.css'],\n})\n```\n\n## 相关链接\n官方文档：https://www.antdv-next.com/\n组件库仓库：https://github.com/antdv-next/antdv-next\n底层基础设施 (vc-* 组件)：https://github.com/antdv-next/vue-components\n\n<img width=\"2550\" height=\"1233\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c808df4b-2d86-4f68-a73f-ef61a43d7586\" />",
-    "created_at": "2026-02-27T03:07:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9078"
-  },
-  {
-    "id": 9077,
-    "title": "【工具自荐】简谱Do Re Mi对应关系记忆小游戏",
-    "content": "你也和我一样吗？看着简谱里的 1 2 3，脑子却反应不过来是 Do Re Mi？😩 哪怕死记硬背了好久，真到用的时候还是卡壳。 为了解决这个小痛点，我做了一个快乐学唱名的小工具：\n\t\n> 不用下载，手机/电脑打开就能玩\n> 边听边点，慢慢就形成肌肉记忆\n> 适合自己练，也适合给小朋友当音乐小游戏\n\n完全免费，轻量，开箱即用\n\nhttps://happy-numbered-notation.app",
-    "created_at": "2026-02-27T02:45:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9077"
   }
 ]
