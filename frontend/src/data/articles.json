@@ -1,5 +1,13 @@
 [
   {
+    "id": 9183,
+    "title": "【开源自荐】阮一峰周刊 · Issue 浏览器 —— 一个静态网站，用于分类浏览阮一峰科技爱好者周刊的 GitHub Issues（自荐/投稿区）。",
+    "content": "\n## 📎 项目地址\n\nhttps://github.com/shaozhengmao/ruanyf-weekly-issue-browser\n\n## 🌐 在线演示\n\nhttps://shaozhengmao.github.io/ruanyf-weekly-issue-browser/\n\n## 💡 背景与痛点\n\n阮一峰老师的科技爱好者周刊是很多开发者每周必读的内容。周刊的 GitHub 仓库有一个 Issues 区，大家会在里面自荐开源项目、工具、文章等。\n\n但是，GitHub Issues 的浏览体验并不友好：\n- 只能按时间顺序查看，历史数据不方便搜索\n- 无法按分类查看内容\n\n本项目就是为了解决这些痛点。\n\n## ✨ 核心功能\n\n1. **两级分类**：一级按标题前缀（开源项目/工具/产品/投稿推荐/讨论反馈），二级按内容关键词（AI、前端、后端、DevOps 等 9 个类别）\n2. **全文搜索**：前端构建倒排索引，支持中英文混合搜索，毫秒级响应\n3. **已收录标记**：有 `weekly` 标签的 issue 会标记为 ⭐，方便识别\n4. **时间筛选**：按年月过滤，快速定位特定时期的内容\n5. **自动更新**：每天自动抓取最新数据，无需手动维护\n\n## 🏗️ 技术亮点\n\n- **零依赖前端**：纯 HTML/CSS/JS，无框架，加载极快\n- **倒排索引**：前端实现的全文搜索引擎\n- **GitHub Actions**：自动化 CI/CD，每天更新数据并部署\n- **响应式设计**：完美适配手机端\n\n## 📊 数据范围\n\n2024年1月至今的所有 open issues，约 4300+ 条数据。\n\n## 🔧 本地运行\n\n```bash\ngit clone https://github.com/shaozhengmao/ruanyf-weekly-issue-browser.git\ncd ruanyf-weekly-issue-browser\npython -m http.server 8000\n# 访问 http://localhost:8000\n```\n\n\n",
+    "created_at": "2026-03-09T02:40:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9183"
+  },
+  {
     "id": 9182,
     "title": "【开源自荐】AI 赋能数据库设计",
     "content": "项目地址：https://github.com/dddcp/db-designer\n\n一款**跨平台**的、**轻量级**的**智能**数据库设计工具。\n\n## 功能特性\n\n| 功能 | 说明 |\n|------|------|\n| 表结构设计 | 可视化设计表、列、索引，支持拖拽排序 |\n| AI 智能建表 | 接入 AI 大模型，自然语言描述即可生成表结构 |\n| 初始数据管理 | 为表配置初始数据，支持导出 INSERT 语句 |\n| 版本管理 | 对项目结构打快照，支持版本间差异对比和 SQL 导出 |\n| 数据库比对 | 连接远程 MySQL / PostgreSQL，对比本地设计与线上结构差异 |\n| 数据库同步 | 对比线上，生成增量脚本；一键同步线上到模型库 |\n| SQL 导出 | 一键导出完整 SQL（表结构 + 索引 + 初始数据），支持 MySQL / PostgreSQL |\n| Git 数据同步 | 通过 Git 管理设计数据，适配 GitHub / GitLab / Gitee |\n| 本地存储 | 基于 SQLite 本地存储，无需联网、无需服务端 |\n\n## 截图预览\n\n### AI 设计表结构\n\n![1](https://github.com/dddcp/db-designer/raw/main/doc/images/setting_ai.png)\n![1](https://github.com/dddcp/db-designer/raw/main/doc/images/ai_design.png)\n\n### SQL 导出\n![2](https://github.com/dddcp/db-designer/raw/main/doc/images/export_sql.png)\n\n### 数据库对比与同步\n![3](https://github.com/dddcp/db-designer/blob/main/doc/images/sync_db.png)",
@@ -818,15 +826,5 @@
     "created_at": "2026-02-27T09:13:51Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9082"
-  },
-  {
-    "id": 9081,
-    "title": "【开源自荐】R2 Web: 轻盈优雅的 Web 原生 Cloudflare R2 桶文件管理器，一切皆在浏览器中完成。",
-    "content": "## 项目信息\n \n- 名称: R2 Web\n- 源码: [vikiboss/r2-web](https://github.com/vikiboss/r2-web)\n- 地址: [r2.viki.moe](https://r2.viki.moe)\n- 简介: 轻盈优雅的 Web 原生 Cloudflare R2 桶文件管理器，一切皆在浏览器中完成。\n\n## 自荐说明\n\n官方控制台功能基础，登录、操作麻烦；第三方客户端要下载安装，跨平台麻烦；命令行工具上手门槛高，不适合临时操作；其他 Web 项目不专注 R2，功能不完善，体验欠佳。\n\nR2 Web 专注于简单和用户体验，基于原生 HTML5/CSS3/ES6+ 开发，打开浏览器就能用，跨平台零成本，也能当图床使用，支持拖拽、粘贴上传 + 图片压缩，省流量省时间。\n\n> 一直用的 sm.ms 图床彻底改版，感觉有点臃肿，没合适图床就开始用 Cloudflare R2 做自建，找了一圈没合适 Web 端管理应用，要么审美不在线要么功能不到位。所以搓了个 R2 web 来管理，能充当图床角色，支持私有部署，尤其注重轻量、用户体验，后期不再迭代过多功能，保持精简。\n\n> 核心总结：H5 纯前端/跨平台 + 目录/文件管理和预览 + 自动图片压缩\n\n**项目截图**\n\n![93c1205d.png](https://image.viki.moe/github/93c1205d.png)\n\n![9392ee.png](https://image.viki.moe/github/9392ee.png)\n\n![ea7dd6.png](https://image.viki.moe/github/ea7dd6.png)\n",
-    "created_at": "2026-02-27T08:45:42Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9081"
   }
 ]
