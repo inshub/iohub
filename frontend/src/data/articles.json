@@ -1,5 +1,21 @@
 [
   {
+    "id": 9202,
+    "title": "【开源自荐】把 Claude Code / Codex 变成你的飞书/Telegram AI 助手，秒变 OpenClaw",
+    "content": "推荐项目：[cc-connect](https://github.com/chenhg5/cc-connect)\n\n**项目简介：**\n\ncc-connect 是一个开源的多平台 AI 聊天机器人连接器，让用户可以在自己熟悉的聊天平台上使用 Claude Code、Gemini、Codex 等 AI 助手——秒变 OpenClaw！\n\n**支持的平台：**\n- 飞书\n- Telegram\n- Discord\n- QQ (go-cqhttp)\n- Slack\n\n**核心功能：**\n1. **多 AI 模型支持** - 支持 Claude Code、Gemini CLI、Cursor Agent、Codex CLI 等\n2. **会话管理** - 支持多用户独立会话，可配置会话隔离策略\n3. **权限控制** - 细粒度的工具权限配置，支持白名单/黑名单模式\n4. **定时任务** - 支持 cron 语法定时执行 AI 任务\n5. **机器人互转** - 支持多个 AI 机器人之间的消息转发\n\n**使用场景：**\n- 日常对话：在飞书/Telegram 里和 AI 聊天、问答\n- 远程编程：让 AI 帮你写代码、调试、重构\n- 自动化任务：定时生成报告、监控告警、代码审查\n- 团队协作：在群里共享 AI 助手\n\n**技术栈：** Go\n\n**开源协议：** MIT",
+    "created_at": "2026-03-10T09:40:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9202"
+  },
+  {
+    "id": 9201,
+    "title": "【开源自荐】Sentinel 实时监控系统 —— 基于局域网的安卓设备再利用，搭配 AI 视觉模型进行复杂信息监测",
+    "content": "# Sentinel 实时监控系统\n\n**项目地址**：[`suzuran0y/CCTV-Smartphone-AI-Monitoring`](https://github.com/suzuran0y/CCTV-Smartphone-AI-Monitoring)\n\nSentinel 是一个运行于局域网环境中的分布式实时视觉系统框架。\n\n♻️ 支持将闲置安卓设备转化为网络摄像头节点，实现：\n\n- 局域网图像采集与上传；\n- PC 端实时视频展示；\n- AI 监控分析。\n\nSentinel 的设计目标不是提供单一监控功能，而是构建一个可扩展的“移动端采集 + PC 端处理 + 浏览器控制”实时视觉系统框架。其核心能力包括：\n\n<table>\n<tr>\n<td width=\"50%\">\n\n- **自研 Android 摄像客户端（CamFlow）**  \n  可使用普通手机即可作为实时摄像终端，无需购买专用 IP Camera 或额外硬件设备。\n\n- **浏览器实时 MJPEG 视频预览**  \n  基于 HTTP 流式输出，无需插件即可在浏览器中实时查看画面。\n\n- **标准化图像帧上传接口（HTTP POST）**  \n  Android 客户端以 JPEG 单帧形式持续上传，接口清晰、可扩展。\n\n- **分段式本地视频录制（MP4）与实时截图**  \n  支持按时间分段写入视频、图像文件，适用于长期运行与存档管理。\n\n  </td>\n<td width=\"50%\">\n\n- **分层触发式视觉处理机制**  \n  采用“传统 CV 算法 → 模型推理”的两阶段架构，升实时性并降低计算与推理成本。\n\n- **结构化多模态视觉认知能力**  \n  在触发条件后调用视觉模型进行语义分析，输出结构化结果，支持风险分级与事件管理。\n\n- **UDP 自动发现服务器机制**  \n  Android 客户端可自动识别局域网服务器地址，减少手动配置。\n\n- **结构化日志与配置管理系统**  \n  本地生成运行日志与 AI 事件记录，支持可追溯与数据分析。\n\n</td>\n</tr>\n</table>\n\n系统采用“移动端采集 + PC 端处理 + 浏览器控制”的分层架构设计，支持实时图像预览、本地视频录制与结构化事件分析，并可扩展接入多模态 AI 模型。\n\n- 系统前端由 PC 端 Dashboard + CamFlow 安卓客户端组成。  \n\n在多模态视觉模型的支持下，Sentinel 不仅能够“看到画面”，更能够对场景进行结构化理解与风险判断。系统采用“运动触发 + 模型分析”的分层机制：\n\n- 用“传统视觉算法 + 大模型推理”进行分层处理，减少 token 消耗与 API 成本；\n- 当触发条件满足时，系统调用模型进入 OBSERVE 状态；\n- 调用视觉模型进行语义分析并输出结构化 JSON 结果；\n- 记录观测结果并实时展示于 Dashboard。\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/suzuran0y/Sentinel/main/assets/ai_monitoring_record.png\" width=\"100%\">\n</p>\n\n<p align=\"center\"><b>图 1 - 启用 AI 状态</b></p>\n\nAI 模块具备以下能力：\n\n#### ① 结构化语义输出\n\n当前设定下，模型分析统一输出标准化字段，例如：是否存在人员（`has_person`）、风险等级（`risk_level`）、置信度（`confidence`）、场景摘要（`summary`）等。\n\n结构化输出便于后续规则引擎处理，也方便进行事件统计、日志归档与数据分析。\n\n---\n\n#### ② 事件级状态管理\n\n系统可记录完整的事件周期信息，包括：\n\n- `SLEEP → OBSERVE` 状态机切换；\n- 触发时刻与持续时间统计；\n- AI 调用状态与健康监测；\n- 最近一次结构化分析结果。\n\n这使系统不仅能够判断“事件是否发生”，还能够进一步管理“事件何时发生、持续多久、是否值得响应”。\n\n---\n\n#### ③ 模型规则灵活可变\n\n使用者可通过修改多种提示参数，对模型行为进行编程式引导，包括：\n\n- **Prompt Template**：角色设定与输出格式约束  \n- **Scene Profile**：长期场景上下文  \n- **Session Focus**：短期任务关注目标  \n- **Extra Rules**：额外补充规范\n\n这使 AI 模块不再只是固定功能组件，而是可针对不同空间、对象与任务进行灵活配置的可扩展分析层。\n\n此外，Sentinel 并非固定行为的“黑盒监控工具”，而是一套高度可调的实时视觉系统。用户可通过 Dashboard 对视频流、录制策略以及 AI 行为进行精细化控制，以适配不同硬件环境与应用场景。\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/suzuran0y/Sentinel/main/assets/dashboard_recording.png\" width=\"100%\">\n</p>\n\n<p align=\"center\"><b>图 2 - Dashboard 参数控制界面（展开信息）</b></p>\n\n系统参数主要分为三类：\n\n#### ① 视频流参数\n\n- Stream FPS（实时预览帧率）\n- JPEG Quality（图像压缩质量）\n- Upload FPS（上传速率）\n- 其他与画面传输相关的基础参数\n\n使用者可以在画质、流畅度与网络带宽之间进行平衡，以适配弱网或低性能设备环境。\n\n---\n\n#### ② 录制策略参数\n\n- Record FPS（录制帧率）\n- Segment Seconds（分段时长）\n- Codec（视频编码方式）\n- 其他录像写入相关参数\n\n系统支持按设定分段写入视频文件，避免单文件过大，同时便于长期运行、回看检索与存档管理。\n\n---\n\n#### ③ AI 行为参数\n\n- OBSERVE Interval（检测间隔）\n- Motion Threshold（运动触发阈值）\n- Prompt Template\n- Scene Profile\n- 其他与 AI 判断相关的控制项\n\n这些参数允许使用者在设置页中调整“AI 触发灵敏度”与“模型判断逻辑”，从而实现 token 消耗优化，以及面向不同监控场景的个性化配置。\n\n---\n\n本项目既可作为轻量级本地监控系统使用，亦可作为视觉数据采集与智能分析的工程原型平台。\n更详细的部署说明、系统架构与功能介绍，请参考：\n- [Sentinel 项目说明（README_CN）](https://github.com/suzuran0y/CCTV-Smartphone-AI-Monitoring/blob/main/README_CN.md)\n- [CamFlow 客户端说明（CamFlow_UserGuide_CN）](https://github.com/suzuran0y/CCTV-Smartphone-AI-Monitoring/blob/main/CamFlow_UserGuide_CN.md)",
+    "created_at": "2026-03-10T08:49:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9201"
+  },
+  {
     "id": 9200,
     "title": "【开源自荐】KAN Lab — 浏览器端的 Kolmogorov-Arnold 神经网络可视化实验室",
     "content": "GitHub：https://github.com/feiyang-xiaofei/kan-lab\nKAN Lab — 浏览器端交互式 KAN 神经网络可视化工具\n\n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2df4311a-144e-448a-a69f-ff0058947033\" />\n\n\nKAN Lab 是一个在浏览器中运行的交互式工具，用于构建、训练和可视化 Kolmogorov-Arnold Networks（KAN）。单个 HTML 文件，无需安装 Python、PyTorch 或任何依赖，打开即用。\n\nKAN 是 2024 年提出的新型神经网络架构（Liu et al., ICLR 2025, 3500+ 引用），用可学习的 B 样条函数替代了传统的固定激活函数，具有更强的可解释性和符号回归能力。\n\n## 功能\n\n- **可视化网络构建**：添加层和节点，实时预览网络结构\n- **实时训练可视化**：训练过程中观察 B 样条激活函数从平直线逐渐弯曲成目标函数的形状\n- **KAN vs MLP 对比**：在相同任务上并排对比两种架构的表现\n- **符号回归**：从训练好的网络中提取数学公式\n- **零依赖**：纯 HTML/CSS/JavaScript，单文件，离线可用\n",
@@ -331,7 +347,7 @@
   },
   {
     "id": 9157,
-    "title": "【工具自荐】LinklyAI - 将整个计算机的文档安全的喂给 Agent 使用",
+    "title": "【工具自荐】LinklyAI - 一个 可以让 AI Agents 方便的检索、阅读本地文档的客户端，no RAG, no uploads, no cloud",
     "content": "## 项目地址\n- 客户端：https://linkly.ai\n- 开源的 CLI：https://github.com/LinklyAI/linkly-ai-cli\n- Agent Skills: https://github.com/LinklyAI/linkly-ai-skills\n\n<img width=\"640\" height=\"387\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eacc3f2f-b427-423c-9d81-788795a688aa\" />\n\n## 项目介绍\n这是一个同时给人类和 AI Agent 使用的上下文检索工具：\n- 对于人类：这是体验不错全文检索工具和启动器，可以使用关键词和自然语言找到存在电脑里的文档\n- 对 AI Agent：是一个强大的上下文检索和、预览和阅读工具，AI Agent 可以自主调用获取比传统 RAG 更准确的上下文检索效果\n\n高强度使用了几年的各种 AI 工具，越来越有一种强烈的期望，就是怎么能一劳永逸的把自己更多的信息，安全的披露给每天在用的 ChatGPT 、Claude 、Claude Code ，不用老是要拷贝信息。\n\n同时使用多个入口 App 是无法避免了，很难出现社交软件领域某个软件大一统的局面。所以需要一种系统级别索引和检索工具，类似AI知识库，不用同步，AI 和人类都能随取随用。\n\n## 技术原理\n- 安装客户端后，会立即后台静默对制定目录进行扫描，对 PDF、Word 等格式会自动解析。\n- 针对每个文档会创建精巧的索引，所有索引和数据会存在用户本地，并使用混合检索完成检索\n- 对Agent 会通过 MCP 协议和 CLI，提供`search`,`outline`,'read'三个精心打磨的工具\n- 配合 Skills，在 Claude Code、Codex、Cursor、CherryStudio 等本地客户端中 ，Agent将学会如何利用你电脑中数以千计的文档\n\n## 核心优势\n- 支持：Mac、Windows、Linux 3 端\n- 提供开源 CLI 工具，可以从控制台使用检索工具\n- 体验好、小巧、完全本地、无成本...",
     "created_at": "2026-03-06T03:27:05Z",
     "labels": [],
@@ -804,21 +820,5 @@
     "created_at": "2026-03-02T03:26:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9101"
-  },
-  {
-    "id": 9100,
-    "title": "【AI 产品】6个AI打工天团上线",
-    "content": "\n6个AI打工天团上线。\n\n<img width=\"1218\" height=\"745\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7b2ad856-a587-4e8b-bc54-6386a471a906\" />\n\nhttps://www.voxyz.space/about",
-    "created_at": "2026-03-02T01:42:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9100"
-  },
-  {
-    "id": 9099,
-    "title": "【周刊自荐】代码之外周刊（已持续更新168期）",
-    "content": "阮老师好，\n\n受您的科技爱好者周刊影响，我从 2021 年起开始写「代码之外周刊」，每周一 07:30 发布，距今已有 168 期。\n\n核心理念是：**代码可以构建世界，但生活的乐趣远不止于此**。\n\n关注科技、认知与个人成长领域，希望为技术人提供代码之外的视野和思考。\n\n## 定位\n\n科技爱好者周刊侧重工具和资讯，「代码之外」侧重思维和方法论——读者可以各取所需。\n\n每期包含五个固定栏目：\n- 「一周讨论」— 围绕一个核心问题的深度思考\n- 「热点新闻」— 一周值得关注的科技动态\n- 「文章」— 精选值得深读的好文\n- 「好奇星人」— 有趣的知识和观点\n- 「精彩语录」— 启发性语录精选\n\n## 内容示例\n\n几篇代表性内容：\n\n1. [[第 121 期：数量永远胜过质量](https://wmyskxz.cn/weekly/121)](https://wmyskxz.cn/weekly/121)— 通过一个陶艺实验的故事，探讨\"做得多\"比\"想得多\"更重要\n2. [[第 163 期：你需要学会无聊](https://wmyskxz.cn/weekly/163)](https://wmyskxz.cn/weekly/163)— 信息过载时代，无聊反而是创造力的土壤\n3. [[第 123 期：我们应该给自己多大的压力？](https://wmyskxz.cn/weekly/123)](https://wmyskxz.cn/weekly/123)\n— 结合《斑马为什么不得胃溃疡》探讨压力与效率的关系\n\n## 链接\n\n- 博客：https://wmyskxz.cn/\n- 个人公众号搜索：我没有三颗心脏\n\n如果内容质量达到推荐标准，希望能被更多读者看到。\n也期待阮老师和各路网友的反馈和建议，无论结果如何，我都会继续写下去。",
-    "created_at": "2026-03-01T23:42:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9099"
   }
 ]
