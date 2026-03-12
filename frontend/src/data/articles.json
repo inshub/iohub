@@ -1,5 +1,21 @@
 [
   {
+    "id": 9222,
+    "title": "【开源自荐】Gosanke AI御三家！ 浏览器插件可以同时给三个AI平台的网页发送消息能够快速布局或者快速转发聊天",
+    "content": "**A browser extension that sends the same prompt to Claude, ChatGPT, and Gemini simultaneously.\nhttps://github.com/taotao7/Gosanke**\n\n<img width=\"1400\" height=\"560\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f335d9ae-7ddd-43eb-ae6e-b04199a50bd3\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c8b90302-9a9d-440f-bd95-2b3fd965edfd\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/15145284-4ab8-4fc3-b0f0-2c4e98149cbf\" />\n\n",
+    "created_at": "2026-03-12T10:13:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9222"
+  },
+  {
+    "id": 9221,
+    "title": "【开发自荐】看图识梗：一个看图猜词语的趣味小程序",
+    "content": "分享一个最近上线的个人小程序，主要功能是根据展示的图片猜词语，有一定的趣味性，适合休闲摸鱼时间把玩～  \n推广图：  \n![推广图](https://i.imgur.com/nrjBTyK.jpeg)   \n微信搜索“看图识梗”或扫码体验：  \n![小程序码](https://i.imgur.com/oUSoDjm.jpeg)",
+    "created_at": "2026-03-12T09:09:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9221"
+  },
+  {
     "id": 9220,
     "title": "【开源自荐】PolyGate - Polymarket 的统一 HTTP 命令网关",
     "content": "# 【开源自荐】PolyGate - Polymarket 的统一 HTTP 命令网关 支持 cloudflare 一键部署\n\n项目地址：\n[https://github.com/tianrking/PolyGate](https://github.com/tianrking/PolyGate)\n\n<img width=\"910\" height=\"668\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0843ccf6-5148-4db5-bd5f-4fe9b82bdb95\" />\n\n**PolyGate** 是一个为 Polymarket 设计的统一 HTTP 命令网关，将 Polymarket 的市场数据、订单簿、交易接口以及链上 CTF 操作整合为标准化的 command API。开发者只需通过一个统一接口即可调用各种能力，例如查询市场、获取价格、下单交易或执行链上操作。\n\n项目提供统一的命令协议，例如：\n\n```\nPOST /api/v1/commands/execute\n```\n\n通过传入不同的 command 来执行操作，例如：\n\n```\nmarkets.list\nclob.price\nclob.createOrder\ndata.positions\nctf.split\n```\n\n相比直接使用多个 API 或 SDK，PolyGate 提供：\n\n* **统一 command 协议**，简化调用方式\n* **统一钱包签名与 funder 逻辑**\n* **一致的错误处理和响应结构**\n* **命令清单和参数 schema 自动生成**\n* **SSE 实时事件流和 webhook 通知**\n\n项目同时支持 **Node.js 服务模式** 和 **Cloudflare Workers 边缘部署**，可以用于：\n\n* 构建预测市场 **交易机器人**\n* 搭建 **Polymarket 数据 API**\n* 开发 **自动化策略服务**\n* 为 **AI Agent / Bot** 提供统一交易接口\n\n整体目标是把 Polymarket 的复杂接口抽象为一个简单稳定的 **Command Gateway**，方便自动化系统和策略程序接入。\n\n部分接口截图   \n\n<img width=\"1442\" height=\"758\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c1b7fb6b-3c83-4b56-95dd-16de68ce3d94\" />\n\n\n",
@@ -659,8 +675,8 @@
   },
   {
     "id": 9136,
-    "title": "【开源自荐】Neo：把任意网页变成 AI 可调用的 API，无需官方 API，无需浏览器自动化",
-    "content": "## [Neo](https://github.com/4ier/neo)\n\nAI Agent 操作网页的两条老路都不好走：官方 API 覆盖不全，浏览器自动化（截图→OCR→点击）慢且脆弱。\n\nNeo 走第三条路：**每个 Web App 的前端已经在调用完整的内部 API，Neo 被动捕获这些调用，让你直接 replay。**\n\n### 三步上手\n\n```bash\n# 1. 正常浏览，Neo 自动捕获所有 API 流量\nneo capture search \"CreateTweet\"\n\n# 2. 一条命令生成完整 API 文档\nneo schema generate x.com\n\n# 3. 直接调用，自动继承浏览器登录态\nneo api x.com CreateTweet --body '{\"variables\":{\"tweet_text\":\"hello\"}}'\n```\n\n### 亮点\n\n- 🔍 **被动抓包**：Chrome 扩展自动记录 fetch/XHR/WebSocket，还能追踪是哪个按钮触发的\n- 📋 **Schema 自动生成**：端点、认证头、参数、响应结构，一键生成，支持导出 OpenAPI 3.0\n- 🔑 **零认证管理**：API 在浏览器标签页内执行，Cookie/CSRF/Session 自动继承\n- 🤖 **v2 UI 自动化**：基于无障碍树的 UI 控制，API 和 UI 统一在一个 CLI\n\n### 适用场景\n\n- AI Agent 调用任意网站功能（200ms API 调用替代 5s 截图点击）\n- 快速了解任何 Web App 的内部 API 结构\n- 给没有官方 API 的 SaaS 建立可编程接口\n\n### 项目信息\n\n- **GitHub**: https://github.com/4ier/neo （100+ ⭐）\n- **协议**: MIT\n- **详细介绍**: https://4ier.github.io/git-blog/ai-agent/2026/03/04/neo-turn-any-web-app-into-an-api/\n",
+    "title": "【开源自荐】Neo：把任意网页/Electron 桌面应用变成 AI 可调用的 API，无需官方 API，无需浏览器自动化",
+    "content": "## 【开源自荐】Neo：把任意网页/Electron 桌面应用变成 AI 可调用的 API，无需官方 API，无需浏览器自动化\n\nAI Agent 操作网页的两条老路都不好走：官方 API 覆盖不全，浏览器自动化（截图→OCR→点击）慢且脆弱。\n\nNeo 走第三条路：每个 Web App 的前端已经在调用完整的内部 API，Neo 被动捕获这些调用，让你直接 replay。**v2 新增基于无障碍树的 UI 操作层，API + UI 双通道，一个 CLI 搞定。**\n\n### 三步上手\n\n```bash\n# 1. 正常浏览，Neo 自动捕获所有 API 流量\nneo capture search \"CreateTweet\"\n\n# 2. 一条命令生成完整 API 文档（支持导出 OpenAPI 3.0）\nneo schema generate x.com\n\n# 3. 直接调用，自动继承浏览器登录态\nneo api x.com CreateTweet --body '{\"variables\":{\"tweet_text\":\"hello\"}}'\n```\n\n### v2：UI 自动化层\n\n当 API 不够用时，Neo v2 通过无障碍树直接操作 UI——无截图、无坐标、无像素匹配：\n\n```bash\nneo snapshot          # 每个可交互元素分配 @ref\n#  @1  button \"Sign in\"\n#  @2  textbox \"Search\"\n\nneo click @1          # 点击\nneo fill @2 \"AI\"      # 填写\nneo press Enter       # 按键\nneo screenshot        # 截图\n```\n\nAPI 优先，UI 兜底，同一个 CLI 两套能力。\n\n### Electron 桌面应用支持\n\nNeo 不止能操作网页，还能连接 Electron 桌面应用——VS Code、Slack、Discord、Cursor 等，通过 CDP 直接连接，不依赖 Chrome 扩展：\n\n```bash\n# 启动 VS Code 并自动连接\nneo launch code --port 9230\nneo snapshot                # 看到 VS Code 的无障碍树\nneo click @14               # 点击菜单项\n\n# 连接已运行的 Electron 应用\nneo connect --electron slack\n```\n\n> ⚠️ Electron 支持是比较新的功能，还没经过大量实际测试。欢迎大家试用反馈，一起改进 🙏\n\n### 亮点\n\n- 🔍 **被动抓包**：Chrome 扩展自动记录 fetch/XHR/WebSocket，追踪哪个按钮触发了哪个 API\n- 📋 **Schema 自动生成**：端点、认证头、参数、响应结构一键生成，支持导出 OpenAPI 3.0\n- 🔑 **零认证管理**：API 在浏览器标签页内执行，Cookie/CSRF/Session 自动继承\n- 🖥️ **Electron 支持**：通过 CDP 直接连接桌面应用，Session 自动管理\n- 🤖 **v2 UI 层**：基于无障碍树的 snapshot → click/fill/type/press/hover/scroll/select，200ms 级响应\n- 🔒 **本地运行**：无服务器、无遥测，认证头自动脱敏存储\n\n### 适用场景\n\n- AI Agent 调用任意网站功能（200ms API 调用替代 5s 截图点击）\n- 快速了解任何 Web App 的内部 API 结构\n- 给没有官方 API 的 SaaS 建立可编程接口\n- 自动化 Electron 桌面应用（VS Code、Slack、Discord 等）\n\n### 项目信息\n\n- GitHub: https://github.com/4ier/neo （550+ ⭐）\n- 协议: MIT\n- 详细介绍: https://4ier.github.io/git-blog/ai-agent/2026/03/04/neo-turn-any-web-app-into-an-api/",
     "created_at": "2026-03-04T15:41:51Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9136"
@@ -796,25 +812,5 @@
     "created_at": "2026-03-03T11:22:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9120"
-  },
-  {
-    "id": 9119,
-    "title": "[推荐] ArXiv Daily Researcher：基于 LLM 的全自动学术论文监控与深度分析系统",
-    "content": "项目名称：ArXiv Daily Researcher\n项目地址：[https://github.com/yzr278892/arxiv-daily-researcher](https://www.google.com/search?q=https://github.com/yzr278892/arxiv-daily-researcher)\n\n一句话简介：\n一个基于大语言模型（LLM）的开源自动化工具，用于监控、精准筛选、深度阅读并推送 ArXiv 及 20+ 顶级学术期刊的最新前沿论文。\n\n项目背景与解决的痛点：\n科研人员和算法工程师每天面临海量的学术更新，手动检索、筛选和精读耗时巨大。传统的 RSS 或文献订阅工具通常只提供基础元数据或摘要，无法根据个人研究方向进行精准过滤，更无法直接提取长篇 PDF 中的核心技术细节。本项目旨在构建一个“全自动文献追踪流”，以极低的 API 成本实现从抓取、打分、解析到推送的全链路自动化。\n\n核心技术与特性：\n\n多源数据与智能回退策略：支持 ArXiv 及 Nature、Science、PRL 等 20+ 顶级期刊。系统内置“ArXiv 优先策略”，当检索到受版权保护的期刊论文时，会自动检测其是否存在 ArXiv 预印本，并智能切换来源以获取完整的可下载 PDF。\n\n双层 LLM 漏斗架构：\n\n初筛层：使用低成本 LLM（如 gpt-4o-mini / DeepSeek）结合用户自定义的关键词（支持多级权重）进行打分。系统会根据关键词总权重计算“动态及格线”，过滤掉低相关度论文。\n\n精读层：仅针对高分通过的论文，调用高性能 LLM（如 gpt-4o / Claude-3-Opus）进行 PDF 深度解析，自动提取“研究方法、核心创新、技术栈、局限性、未来方向”等 7 大结构化维度。\n\n高保真 PDF 解析：集成 MinerU 云端解析服务（支持复杂数学公式与多模态排版还原），并具备 PyMuPDF 本地自动降级回退机制，保障生产级可用性。\n\n长效研究趋势追踪：将历史提取的关键词存入 SQLite，利用 AI 进行批量语义标准化（消除同义词碎片化），并自动生成 Mermaid 语法的主题演变折线图与柱状图。\n\n极其轻量的部署方案：\n\n支持 GitHub Actions 纯云端零成本定时运行（报告通过 Artifact 持久化）。\n\n提供 Docker 镜像（跨 AMD64/ARM64 架构，待机内存仅 3MB），支持多渠道（微信、钉钉、Telegram、Slack）推送精美的 HTML / Markdown 报告。",
-    "created_at": "2026-03-03T10:00:54Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9119"
-  },
-  {
-    "id": 9118,
-    "title": "【文章自荐】2026年的今天，我做了一个 AI 版的自己",
-    "content": "链接：[https://luolei.org/luolei-ai](https://luolei.org/luolei-ai)\n\n我在网上写了十几年博客，加上 YouTube、X/Twitter、GitHub 等平台的公开内容，最近把这些数据做了结构化处理，在博客上实现了两个功能：\n\n-   让 6 个 AI 模型各自写出「AI 眼中的罗磊」，支持多视角切换（luolei.org/about）\n-   基于 RAG 做了一个可以直接聊天的 AI 数字分身（luolei.org 首页）\n\n文章分享了完整的实现思路、技术方案，以及过程中踩的一些坑。\n\n<img width=\"3298\" height=\"1952\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f1403054-c939-4a93-baa8-1663b9cc013d\" />",
-    "created_at": "2026-03-03T08:51:15Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9118"
   }
 ]
