@@ -1,5 +1,37 @@
 [
   {
+    "id": 9220,
+    "title": "【开源自荐】PolyGate - Polymarket 的统一 HTTP 命令网关",
+    "content": "# 【开源自荐】PolyGate - Polymarket 的统一 HTTP 命令网关 支持 cloudflare 一键部署\n\n项目地址：\n[https://github.com/tianrking/PolyGate](https://github.com/tianrking/PolyGate)\n\n<img width=\"910\" height=\"668\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0843ccf6-5148-4db5-bd5f-4fe9b82bdb95\" />\n\n**PolyGate** 是一个为 Polymarket 设计的统一 HTTP 命令网关，将 Polymarket 的市场数据、订单簿、交易接口以及链上 CTF 操作整合为标准化的 command API。开发者只需通过一个统一接口即可调用各种能力，例如查询市场、获取价格、下单交易或执行链上操作。\n\n项目提供统一的命令协议，例如：\n\n```\nPOST /api/v1/commands/execute\n```\n\n通过传入不同的 command 来执行操作，例如：\n\n```\nmarkets.list\nclob.price\nclob.createOrder\ndata.positions\nctf.split\n```\n\n相比直接使用多个 API 或 SDK，PolyGate 提供：\n\n* **统一 command 协议**，简化调用方式\n* **统一钱包签名与 funder 逻辑**\n* **一致的错误处理和响应结构**\n* **命令清单和参数 schema 自动生成**\n* **SSE 实时事件流和 webhook 通知**\n\n项目同时支持 **Node.js 服务模式** 和 **Cloudflare Workers 边缘部署**，可以用于：\n\n* 构建预测市场 **交易机器人**\n* 搭建 **Polymarket 数据 API**\n* 开发 **自动化策略服务**\n* 为 **AI Agent / Bot** 提供统一交易接口\n\n整体目标是把 Polymarket 的复杂接口抽象为一个简单稳定的 **Command Gateway**，方便自动化系统和策略程序接入。\n\n部分接口截图   \n\n<img width=\"1442\" height=\"758\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c1b7fb6b-3c83-4b56-95dd-16de68ce3d94\" />\n\n\n",
+    "created_at": "2026-03-12T08:37:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9220"
+  },
+  {
+    "id": 9219,
+    "title": "【开源自荐】AICheck - 离线检测 AI 生成内容的命令行工具",
+    "content": "https://github.com/MatrixA/aicheck\n\nAICheck 是一个用 Rust 编写的命令行工具，可以离线检测图片、视频、音频和文档是否由 AI 生成。无需 API 密钥，无需联网。\n\n## 演示视频\n\n[![AICheck Demo](https://img.youtube.com/vi/1u-6TkHtWiA/maxresdefault.jpg)](https://youtu.be/1u-6TkHtWiA?si=_g8IKzvd1rl1JESy)\n\n## 主要特点\n\n- **10 种检测方法**：C2PA 数字水印验证、XMP/IPTC 元数据、EXIF 启发式分析、PNG 文本块扫描、MP4 容器分析、ID3 音频标签、WAV 容器元数据、文件名模式匹配、音频频谱分析、不可见水印（DWT-DCT）检测\n- **识别 61+ AI 工具**：覆盖 DALL-E、Midjourney、Stable Diffusion、Sora、Runway、Suno 等主流 AI 生成工具\n- **支持 16 种文件格式**：JPEG、PNG、WebP、AVIF、HEIF、TIFF、GIF、BMP、MP4、MOV、AVI、WebM、MP3、M4A、WAV、PDF\n- **完全离线运行**：零网络请求，无隐私顾虑\n- **三级置信度评估**：HIGH / MEDIUM / LOW，清晰标注每个检测信号的可信度\n- **支持 7 种语言**：中文、英文、日文、韩文、德文、西班牙文、印地文\n\n## 快速使用\n\n```bash\ncargo install aicheck\naic check photo.jpg\n```\n\n输出示例：\n\n```\nphoto.jpg\n  HIGH   C2PA: digitalSourceType = trainedAlgorithmicMedia (fully AI-generated)\n  HIGH   C2PA: claim_generator matches AI tool: DALL-E 3/OpenAI [dall-e]\n  MEDIUM XMP: AISystemUsed = DALL-E 3 [dall-e]\n  Verdict: AI-generated (confidence: HIGH)\n```\n\n开源协议：AGPL-3.0\n",
+    "created_at": "2026-03-12T08:14:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9219"
+  },
+  {
+    "id": 9218,
+    "title": "【文章自荐】「AI是怎么回事」—— 一个写给普通人的 AI 原理系列（16篇）",
+    "content": "最近写了一个面向普通读者的 AI 系列《AI是怎么回事》，目前一共 16 篇。\n\n它不是教程，更像一套把 AI 黑箱拆开的探索笔记：从手机人脸识别、词向量、神经网络、Transformer，一直讲到 AI 幻觉、能力边界、Prompt、AI 编程，以及“AI 会不会取代我们”。\n\n写法上尽量不堆术语，而是从具体问题出发，把概念一步步拆开。比如：\n- 手机为什么换了发型还能认出你\n- ChatGPT 为什么能对话\n- AI 为什么会“一本正经地胡说八道”\n- 为什么同一个 AI，有人用得比你好很多\n- AI 写代码到底快了多少，又错了多少\n\n如果你已经在用 ChatGPT / Claude，但总觉得“会用、不懂原理”，这组文章应该比较适合。\n\n地址：https://wmyskxz.cn/wiki/whats_ai/\n\n如果只看几篇，推荐这几篇：\n- 第 1 篇：AI到底聪明在哪——从手机人脸识别说起\n  https://wmyskxz.cn/wiki/whats_ai/1/\n- 第 6 篇：ChatGPT为什么能对话——一篇引用17万次的论文\n  https://wmyskxz.cn/wiki/whats_ai/6/\n- 第 13 篇：怎么让AI听懂你的话——同一个AI为什么他用得比你好10倍\n  https://wmyskxz.cn/wiki/whats_ai/13/\n- 第 15 篇：AI 写代码有多厉害？——快了 55%，但错多了 75%\n  https://wmyskxz.cn/wiki/whats_ai/15/",
+    "created_at": "2026-03-12T08:11:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9218"
+  },
+  {
+    "id": 9217,
+    "title": "【网站自荐】用玄学来判断金融市场走势的网站",
+    "content": "https://github.com/Olcmyk/xuanshare\n\n<img width=\"1440\" height=\"826\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca171892-31dc-479a-b22c-8046d4bfcc85\" />\n\n<img width=\"1439\" height=\"789\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/45962b34-6285-488e-b8db-09536f897ccf\" />",
+    "created_at": "2026-03-12T07:40:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9217"
+  },
+  {
     "id": 9216,
     "title": "【文章自荐】拒绝 AI 焦虑！一个普通程序员的真实 AI 工作流（附成本账单）",
     "content": "文章：[拒绝 AI 焦虑！一个普通程序员的真实 AI 工作流（附成本账单）](https://mp.weixin.qq.com/s/i8x_Nx5caleF0_RZWriNmg)\n\n推荐理由：\n分享了我自己作为一个普通开发者工作和非工作时的 AI 工作流和工具的使用。以及思考 AI 在提升效率的同时是否让人更累了。",
@@ -784,41 +816,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9118"
-  },
-  {
-    "id": 9117,
-    "title": "【开源自荐】Self-System —— 用对话生长出来的个人 AI 操作系统",
-    "content": "**项目地址**：https://github.com/MaskerPRC/self-system\n\n#### 一句话介绍\n\n一个 Docker-in-Docker 架构的「数字渐进式分身」系统 —— 你用自然语言描述需求，AI 实时生成 Vue 页面 + Express API + 自动部署，30 秒内从想法到可用功能，系统的代码像活体组织一样持续生长。\n\n<img width=\"1376\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/150a0b68-ae31-46a3-b1ec-ede9b7b8c49c\" />\n\n#### 为什么做这个\n\n现有的 AI 助手（ChatGPT、Claude）是「用完即走」的对话框。我想要的是一个**会积累、会生长的数字分身** —— 每次对话不是消耗 token，而是在给系统添砖加瓦。聊完之后，功能留下来了，API 留下来了，页面留下来了。\n\n#### 核心机制\n\n```\n用户描述需求 → Claude Code 实时生成代码 → 热部署到 App 容器 → Git 自动提交 → 功能永久保留\n```\n\n整个系统由两个 Docker 容器组成：\n\n- **CONTROL 容器**（大脑）：运行 Claude Code 引擎，挂载 Docker Socket，拥有对 App 容器的完全控制权\n- **APP 容器**（身体）：承载所有 AI 生成的功能页面和 API，支持热重载\n\n#### 最有意思的设计\n\n1. **对话即功能**：说一句\"帮我做个食物日记页面\"，30 秒后你就有了一个完整的 CRUD 应用，含前端页面、后端 API、数据持久化\n2. **Skill = Markdown**：技能系统不是代码插件，而是 Markdown 知识文档。写一份 API 说明书（含 Key、端点、参数），AI 就知道怎么调用它 —— 当执行者从人变成 AI，你不需要函数签名，你需要意图文档\n3. **代码是消耗品**：功能坏了？不用 debug，重新描述一遍让 AI 再生成一次。每次变更自动 Git 提交，随时 revert\n\n#### 已经「长」出来的功能（全部由对话生成，零手写代码）\n\n- 微信消息自动化（通过 n8n Webhook，支持私聊/群聊/@成员）\n- Telegram Bot 集成\n- 工作任务管理 + 闲时任务管理（含 TTS 语音播放）\n- 自我认知记录系统\n- 联想触发器（看到信息 → 自动关联可执行的行动）\n- 多平台推广文章生成器（40 种传播触发器模型）\n- 英语学习工具、食物日记、GitHub 仓库监控……\n\n#### 技术栈\n\n| 层 | 技术 |\n|---|------|\n| 前端 | Vue 3 + Vite + Tailwind CSS 4 + PWA |\n| 后端 | Node.js + Express |\n| AI 引擎 | Claude Code API |\n| 基础设施 | Docker + Docker-in-Docker |\n| 数据库 | Supabase (PostgreSQL) |\n| 语言 | JavaScript ES Modules（不用 TypeScript，AI 生成的代码不需要类型系统） |\n\n#### 和同类项目的差异\n\n| 维度 | 传统 AI 助手 | Self-System |\n|------|-------------|-------------|\n| 输出 | 文本回复 | 可运行的功能（页面 + API + 数据） |\n| 积累性 | 无，对话结束即消失 | 每次对话沉淀为系统功能 |\n| 扩展方式 | 插件市场 / Plugin SDK | 自然语言描述 → AI 直接生成 |\n| 定位 | 工具 | 操作系统 |\n\n#### 适合什么人\n\n- 懂 Docker + Git 的程序员\n- 想要一个深度定制化的个人数字系统\n- 相信「AI 原生」应该是代码由 AI 生成，而不只是 AI 辅助写代码\n",
-    "created_at": "2026-03-03T08:05:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9117"
-  },
-  {
-    "id": 9116,
-    "title": "【网站自荐】3mins.news — 每日新闻速览，3 分钟读完今天的世界",
-    "content": "每天从 180+ 全球媒体源中 AI 筛选最重要的新闻，生成结构化摘要。\n不是无限信息流，而是每天一份有限的新闻快照 — 读完就走，不刷不焦虑。\n\n  **核心功能**：\n  - AI 评分筛选 + 去重，每天只留最值得知道的\n  - 事件叙事：自动生成事件的来龙去脉时间线\n  - 11 种语言同步生成（中/英/日/韩/法/德/西/葡/俄/阿/印地）\n  - 邮件订阅：每日 Digest 直达邮箱\n\n  技术栈：Next.js + Cloudflare Workers + 通义千问 + DeepSeek\n\n  **链接**：https://3mins.news\n\n<img width=\"3342\" height=\"1826\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/838f7c8d-e0c9-4929-948d-73c50c6434e5\" />\n\n<img width=\"3342\" height=\"1828\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d45204b5-61bc-4515-9f43-8c1f59251676\" />",
-    "created_at": "2026-03-03T06:51:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9116"
-  },
-  {
-    "id": 9115,
-    "title": "【开源自荐】AGI Agent智创智能体",
-    "content": "我亲自研发的类Cursor富文档转写/编程智能体平台，交互式开发。\n网址：https://agiagentonline.com\n开源地址：https://github.com/agi-hub/AGIAgent\n\nAGI Agent 不仅是一个支持 Vibe Colorful Doc、Vibe Coding 和自然语言通用任务执行的智能体平台，更是一个图文文档与代码的交互式创作平台。\n\n通过直观的 GUI，AGI Agent 能够与您携手完成内容的深度加工——更换图片、编辑文字、实时修改 SVG 矢量图与 Mermaid 流程图，乃至边写边运行 HTML 小程序，让每一次创作都所见即所得。结合自然语言与丰富的 skills 技能库，支持多轮次创意迭代，在网页端和纯 Python 环境下均可获得类 Cursor 的强交互智能体创作体验。\n\n平台内置 40+ 工具，提供 GUI、CLI 及嵌入式运行等多种模式，可部署于云端、笔记本或嵌入式设备（ARM），全面支持 Anthropic/OpenAI 大模型接口及开源/私有化部署。\n",
-    "created_at": "2026-03-03T04:47:42Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9115"
-  },
-  {
-    "id": 9114,
-    "title": "【开源自荐】2026 AI 预测国内樱花地图",
-    "content": "完全由AI自己根据我提供的论文，应该搜集的资料，想要效果的网页模板生成网站。并且AI每日会根据最新的天气预测更新最新的预测结果。\n源代码：https://github.com/rogerzhu/yinghua-map\n最终版网页：https://rogerzhu.github.io/yinghua-map/\nAI的最后的作品让我觉得很惊艳。\n",
-    "created_at": "2026-03-02T22:55:45Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9114"
   }
 ]
