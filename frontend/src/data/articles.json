@@ -1,5 +1,13 @@
 [
   {
+    "id": 9231,
+    "title": "【开源自荐】OpenCovibe：本地优先的Claude Code桌面应用",
+    "content": "大家好，推荐一个我在做的开源项目：OpenCovibe。\n\n<img width=\"1600\" height=\"1004\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d6d6a22b-4f61-4941-8db3-4ddd15b8f9e1\" />\n\n  它是一个 local-first 的桌面端 AI 编程助手，核心思路是：\n  不替代 CLI，而是把 Claude Code 的工作过程可视化、可追踪、可管理。\n\n  - 项目地址：https://github.com/AnyiWang/OpenCovibe\n  - 适用平台：macOS / Linux / Windows\n  - 技术栈：Tauri v2 + Rust + Svelte 5\n\n  想解决的问题\n\n  直接用 AI CLI 写代码时，常见痛点：\n  1. 会话和上下文分散，不好回看和复用\n  2. 工具调用过程不透明，出错难排查\n  3. 多轮 run 难管理，token 花费无感知\n\n  主要功能\n\n  会话管理\n  - Chat Dashboard：实时流式输出、工具调用可视化、thinking 过程展示\n  - 会话 fork / resume / replay，支持从任意节点分叉重试\n  - prompt 收藏与全文搜索，快速复用历史 prompt\n  - 文件、图片、PDF、截图作为附件直接发送\n\n  开发工具集成\n  - 多平台支持：内置 Anthropic、DeepSeek、Kimi、智谱、百炼、豆包、MiniMax、OpenRouter 等 20+ 供应商预设，支持自定义 API\n  端点，每次会话可独立选择供应商\n  - 内置文件浏览器 + 代码编辑器（语法高亮）\n  - Git diff / status 集成，直观查看代码变更\n  - 40+ 斜杠命令（/model, /plan, /compact, /diff, /cost...）\n  - MCP Server 浏览、安装与管理\n  - 插件/技能市场，支持自定义 Skill 编写\n\n  可观测性\n  - 完整的 token 用量 & 费用追踪（按模型、按时间段）\n  - GitHub 风格活跃热力图 + 连续编码天数统计\n  - 上下文窗口实时可视化，随时知道还剩多少空间\n  - 每次工具调用的耗时、输入输出、状态一目了然\n\n  团队协作（实验性）\n  - 多 Agent 组队：创建团队、分配任务、查看进度\n  - 任务看板 + 依赖关系管理\n  - Agent 间消息收件箱\n\n  其他\n  - 支持 SSH 远程开发（连接远程机器上的 Claude Code）\n  - 权限管理（工具级别的 allow / deny 控制）\n  - 全局快捷键 & 自定义键绑定\n  - 中英双语界面\n  - 所有数据本地 JSON 存储，不上传任何数据\n\n  适合人群\n\n  - 重度使用 Claude Code 的开发者\n  - 想保留本地数据、重视可观测性的个人/小团队\n  - 对 AI 编码过程想要更精细控制的用户\n\n  如果你也有类似需求，欢迎试用和提建议 🙌\n  Issue / PR 都非常欢迎。",
+    "created_at": "2026-03-13T13:59:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9231"
+  },
+  {
     "id": 9230,
     "title": "【网站自荐】交互动画案例集合网站",
     "content": "[https://rive.cool/](https://rive.cool/)\n整理了多个优秀的互动动画示例，方便设计师和开发者查找动效灵感。\n✓ 精选优质作品，每个都值得一看\n✓ 手动标签分类，快速筛选你需要的类型\n✓ 涵盖按钮交互、角色动画、数据可视化等多种场景\n✓ 持续更新，发现更多创意可能\n<img width=\"2880\" height=\"1740\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9d9f52de-33f8-48c2-a959-6357e338b796\" />",
@@ -92,7 +100,9 @@
     "title": "【开源自荐】AICheck - 离线检测 AI 生成内容的命令行工具",
     "content": "https://github.com/MatrixA/aicheck\n\nAICheck 是一个用 Rust 编写的命令行工具，可以离线检测图片、视频、音频和文档是否由 AI 生成。无需 API 密钥，无需联网。\n\n## 演示视频\n\n[![AICheck Demo](https://img.youtube.com/vi/1u-6TkHtWiA/maxresdefault.jpg)](https://youtu.be/1u-6TkHtWiA?si=_g8IKzvd1rl1JESy)\n\n## 主要特点\n\n- **10 种检测方法**：C2PA 数字水印验证、XMP/IPTC 元数据、EXIF 启发式分析、PNG 文本块扫描、MP4 容器分析、ID3 音频标签、WAV 容器元数据、文件名模式匹配、音频频谱分析、不可见水印（DWT-DCT）检测\n- **识别 61+ AI 工具**：覆盖 DALL-E、Midjourney、Stable Diffusion、Sora、Runway、Suno 等主流 AI 生成工具\n- **支持 16 种文件格式**：JPEG、PNG、WebP、AVIF、HEIF、TIFF、GIF、BMP、MP4、MOV、AVI、WebM、MP3、M4A、WAV、PDF\n- **完全离线运行**：零网络请求，无隐私顾虑\n- **三级置信度评估**：HIGH / MEDIUM / LOW，清晰标注每个检测信号的可信度\n- **支持 7 种语言**：中文、英文、日文、韩文、德文、西班牙文、印地文\n\n## 快速使用\n\n```bash\ncargo install aicheck\naic check photo.jpg\n```\n\n输出示例：\n\n```\nphoto.jpg\n  HIGH   C2PA: digitalSourceType = trainedAlgorithmicMedia (fully AI-generated)\n  HIGH   C2PA: claim_generator matches AI tool: DALL-E 3/OpenAI [dall-e]\n  MEDIUM XMP: AISystemUsed = DALL-E 3 [dall-e]\n  Verdict: AI-generated (confidence: HIGH)\n```\n\n开源协议：AGPL-3.0\n",
     "created_at": "2026-03-12T08:14:35Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9219"
   },
   {
@@ -100,7 +110,9 @@
     "title": "【文章自荐】「AI是怎么回事」—— 一个写给普通人的 AI 原理系列（16篇）",
     "content": "最近写了一个面向普通读者的 AI 系列《AI是怎么回事》，目前一共 16 篇。\n\n它不是教程，更像一套把 AI 黑箱拆开的探索笔记：从手机人脸识别、词向量、神经网络、Transformer，一直讲到 AI 幻觉、能力边界、Prompt、AI 编程，以及“AI 会不会取代我们”。\n\n写法上尽量不堆术语，而是从具体问题出发，把概念一步步拆开。比如：\n- 手机为什么换了发型还能认出你\n- ChatGPT 为什么能对话\n- AI 为什么会“一本正经地胡说八道”\n- 为什么同一个 AI，有人用得比你好很多\n- AI 写代码到底快了多少，又错了多少\n\n如果你已经在用 ChatGPT / Claude，但总觉得“会用、不懂原理”，这组文章应该比较适合。\n\n地址：https://wmyskxz.cn/wiki/whats_ai/\n\n如果只看几篇，推荐这几篇：\n- 第 1 篇：AI到底聪明在哪——从手机人脸识别说起\n  https://wmyskxz.cn/wiki/whats_ai/1/\n- 第 6 篇：ChatGPT为什么能对话——一篇引用17万次的论文\n  https://wmyskxz.cn/wiki/whats_ai/6/\n- 第 13 篇：怎么让AI听懂你的话——同一个AI为什么他用得比你好10倍\n  https://wmyskxz.cn/wiki/whats_ai/13/\n- 第 15 篇：AI 写代码有多厉害？——快了 55%，但错多了 75%\n  https://wmyskxz.cn/wiki/whats_ai/15/",
     "created_at": "2026-03-12T08:11:24Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9218"
   },
   {
@@ -804,13 +816,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9129"
-  },
-  {
-    "id": 9128,
-    "title": "【工具自荐】一个帮直男和女生聊天的神器--恋爱回话军师",
-    "content": "之前用豆包帮我和女生聊天，但是往往生成的是“添狗式”的回复，所以做了这个工具。\n\nRAG 了 1000+真实撩妹聊天对话集，和 50+小时追女生聊天教程\n\n上传微信聊天截图-->得到不油不添，风趣自然的高情商回复\n\n免费试用：\n网址：https://helpflirt.com/\n小程序：恋爱回话军师截图回复\n",
-    "created_at": "2026-03-04T06:29:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9128"
   }
 ]
