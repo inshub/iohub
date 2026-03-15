@@ -1,5 +1,13 @@
 [
   {
+    "id": 9253,
+    "title": "【工具自荐】拼豆图纸生成工具 支持 3D 预览",
+    "content": "项目名称：Pindou.org\n项目地址：https://pindou.org\n\n## 产品特色\n\n- 支持 3D 预览拼出来的东西长什么样子\n- 拼豆图纸编辑优化，可以直接拖拽来合并豆子，同时也支持画笔编辑图纸\n- 图片直接转拼豆图纸\n- 移动端优化，导出图纸也非常流畅\n- 支持翻转图纸，帮助玩家在美纹纸上熨烫豆子\n- 支持辅助线，拼大图的时候更快\n\n## 项目截图\n![Image](https://github.com/user-attachments/assets/19e0548e-7f49-47a0-bd24-abfb093008e4)\n\nhttps://github.com/user-attachments/assets/b58309ff-47be-4789-8832-e1bae3a715e1\nhttps://github.com/user-attachments/assets/e6992c07-d6d7-4eb4-9943-16bc92459037\nhttps://github.com/user-attachments/assets/474f06a3-c040-42c3-ad68-91317b3b00a9\n\n",
+    "created_at": "2026-03-15T14:22:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9253"
+  },
+  {
     "id": 9252,
     "title": "【开源自荐】ai-rss-feeds：AI 驱动的 RSS 生成器，为没有 RSS 的博客自动生成订阅源",
     "content": "## 项目介绍\n\n[ai-rss-feeds](https://github.com/leontloveless/ai-rss-feeds) 是一个开源的 RSS Feed 生成器，专门解决「很多热门技术博客没有 RSS」的问题。\n\n### 核心特色：LLM 只用一次，之后零成本运行\n\n与传统 AI 工具不同，本项目的 LLM 只在「分析网页结构」时调用一次，生成一份 JSON 配置文件（CSS 选择器）。之后每小时的定时更新完全使用 Cheerio 确定性解析，零 API 成本。\n\n```\nBlog HTML ──▶ LLM (一次性) ──▶ JSON 配置\n                                    │\n                                    ▼\nRSS 2.0 XML ◀── 验证器 ◀── 解析器 (Cheerio, 每小时)\n```\n\n### 四种解析模式\n\n| 模式 | 适用场景 | 数据来源 |\n|------|----------|----------|\n| CSS（默认） | 博客列表页 | Cheerio CSS 选择器 |\n| JSON | Next.js / SPA | `<script>` 标签中的 JSON |\n| Changelog | Keep a Changelog | Markdown `## version` 标题 |\n| GitHub Releases | GitHub 项目 | GitHub Releases API |\n\n### 六层验证\n\n每次更新都经过结构验证、去重、日期合理性、链接可达性、XML 有效性、回归检测六层校验。\n\n### 添加订阅源只需提一个 Issue\n\n提交一个包含 URL 的 GitHub Issue，CI 自动识别类型并生成 RSS Feed。对于 GitHub 项目，全程不需要 LLM。\n\n### 技术栈\n\nTypeScript + Bun + Cheerio + GitHub Actions（免费 CI）\n\n### 当前可用 Feed\n\nPaul Graham Essays、Google DeepMind Blog、Cursor Blog、Groq News、Stability AI News、OpenClaw Releases、Claude Code Releases 等 7 个源。\n\n**GitHub**: https://github.com/leontloveless/ai-rss-feeds  \n**博文**: https://ai-rss-feeds.hashnode.dev/building-an-ai-rss-feed-generator-with-zero-ongoing-cost",
@@ -816,13 +824,5 @@
     "created_at": "2026-03-05T14:20:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9151"
-  },
-  {
-    "id": 9150,
-    "title": "【开源自荐】大学生吃饭决策软件",
-    "content": "这是我利用AI开发的第一个项目，主要解决到饭点不知道吃什么的问题，侧重社区分享功能，通过Github的issue和pr，同校同学可共享食堂配置，部分解决食堂窗口过多导致难以配置的问题，实现“前人栽树后人乘凉”\n\n项目地址：https://github.com/AmoxilinJN/ChooseMeal\n\n![Image](https://github.com/user-attachments/assets/7e524eb1-c2c3-4345-b3bb-203088377597)\n\n![Image](https://github.com/user-attachments/assets/88476540-c01c-470a-988b-bb42c1854aee)\n\n![Image](https://github.com/user-attachments/assets/765dc969-8344-4649-a834-bec4dc58fb9e)\n\n![Image](https://github.com/user-attachments/assets/09ea48cc-f25c-4b7b-9bb4-8b894ab35b11)",
-    "created_at": "2026-03-05T14:08:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9150"
   }
 ]
