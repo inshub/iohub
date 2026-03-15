@@ -1,5 +1,13 @@
 [
   {
+    "id": 9252,
+    "title": "【开源自荐】ai-rss-feeds：AI 驱动的 RSS 生成器，为没有 RSS 的博客自动生成订阅源",
+    "content": "## 项目介绍\n\n[ai-rss-feeds](https://github.com/leontloveless/ai-rss-feeds) 是一个开源的 RSS Feed 生成器，专门解决「很多热门技术博客没有 RSS」的问题。\n\n### 核心特色：LLM 只用一次，之后零成本运行\n\n与传统 AI 工具不同，本项目的 LLM 只在「分析网页结构」时调用一次，生成一份 JSON 配置文件（CSS 选择器）。之后每小时的定时更新完全使用 Cheerio 确定性解析，零 API 成本。\n\n```\nBlog HTML ──▶ LLM (一次性) ──▶ JSON 配置\n                                    │\n                                    ▼\nRSS 2.0 XML ◀── 验证器 ◀── 解析器 (Cheerio, 每小时)\n```\n\n### 四种解析模式\n\n| 模式 | 适用场景 | 数据来源 |\n|------|----------|----------|\n| CSS（默认） | 博客列表页 | Cheerio CSS 选择器 |\n| JSON | Next.js / SPA | `<script>` 标签中的 JSON |\n| Changelog | Keep a Changelog | Markdown `## version` 标题 |\n| GitHub Releases | GitHub 项目 | GitHub Releases API |\n\n### 六层验证\n\n每次更新都经过结构验证、去重、日期合理性、链接可达性、XML 有效性、回归检测六层校验。\n\n### 添加订阅源只需提一个 Issue\n\n提交一个包含 URL 的 GitHub Issue，CI 自动识别类型并生成 RSS Feed。对于 GitHub 项目，全程不需要 LLM。\n\n### 技术栈\n\nTypeScript + Bun + Cheerio + GitHub Actions（免费 CI）\n\n### 当前可用 Feed\n\nPaul Graham Essays、Google DeepMind Blog、Cursor Blog、Groq News、Stability AI News、OpenClaw Releases、Claude Code Releases 等 7 个源。\n\n**GitHub**: https://github.com/leontloveless/ai-rss-feeds  \n**博文**: https://ai-rss-feeds.hashnode.dev/building-an-ai-rss-feed-generator-with-zero-ongoing-cost",
+    "created_at": "2026-03-15T12:00:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9252"
+  },
+  {
     "id": 9251,
     "title": "【开源自荐】IwaraTool：一个高颜值的 Iwara 视频批量下载与本地归档工具。",
     "content": "## 项目名称： **IwaraTool**\n\n一句话介绍：\n一个拥有现代化 **Fluent** 风格界面、专为本地媒体库（Jellyfin/Emby）打造的 Iwara 视频批量下载与归档工具。\n\n项目地址：\nhttps://github.com/Moeary/IwaraTool\n\nRelease：\nhttps://github.com/Moeary/IwaraTool/releases\n\n**演示demo：**\n\n![Image](https://github.com/user-attachments/assets/9511f4dd-e49d-43f6-b559-c8b0ba2259a0)\n\nIwara 平台聚集了大量优秀的 3D 动画和 MMD 创作者，但目前市面上优秀的 Iwara 下载器大多是纯命令行工具/浏览器工具,对普通用户门槛极高；同时，很多“数据仓鼠”和 NAS 玩家希望将喜欢的画师作品全量备份到本地，并接入 Jellyfin/Emby 等媒体库，但手动整理文件夹/文件名、下载封面和编写元数据的过程极其痛苦。\n\nIwaraTool 就是为了解决“低门槛批量下载”和“自动化本地归档”这两个痛点而生的。它把硬核的爬虫技术包装在了一个极其易用的图形界面下。\n\n**它目前有这些特点：**\n\n*   **现代化 GUI 体验**：基于 Python + PySide6 + Fluent UI 构建，告别繁琐的命令行，提供类似 Win11 的原生视觉体验。\n*   **一键全量解析**：支持直接粘贴画师主页、播放列表或搜索页链接，自动解析出几十上百个视频加入队列。\n*   **完美适配本地媒体库**：支持高度自定义的命名模板（按作者、日期、ID等自动创建目录），自动下载视频封面，并生成 `.nfo` 元数据文件，无缝接入 Jellyfin / Emby。\n*   **精细化筛选器**：在批量下载前，可按播放量、点赞数、发布日期、包含/排除特定 Tag 进行多维度过滤。\n*   **智能防重复与防过期**：内置 SQLite 数据库记录下载历史，实现本地去重；自带状态调度器，防止大批量下载时底层直链提前过期。\n*   **开箱即用**：通过 GitHub Actions 自动构建 Windows (.exe) 和 Linux 的免安装二进制文件，支持中/英/日多语言热切换。\n\n**如果周刊愿意收录，我觉得它比较适合这几类读者：**\n\n*   有“仓鼠症”、喜欢全量备份特定创作者视频的 ACG 爱好者。\n*   正在搭建本地影音库（Jellyfin/Emby/Plex），需要自动化刮削元数据的 NAS 玩家。\n*   想参考如何用 Python + PySide6 + Fluent UI 开发高颜值现代化桌面端应用的开发者。\n*   对视频网站 API 逆向（如 X-Version 签名计算、Token 缓存）感兴趣的技术人员(同时本项目也收录了详细的API文档方便其他开发者继续开发其他语言或者更好的应用)。",
@@ -816,13 +824,5 @@
     "created_at": "2026-03-05T14:08:04Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9150"
-  },
-  {
-    "id": 9149,
-    "title": "[投稿] Gingiris 开源营销三件套：产品发布/B2B增长/开源推广完整 SOP",
-    "content": "## 推荐理由\n\n这是一套完整的开源营销方法论，基于 AFFiNE (60K GitHub Stars) 的实战经验整理。\n\n## 三个开源项目\n\n### 1. AI 产品发布行动指南\n- GitHub: https://github.com/Gingiris/gingiris-launch\n- 内容：Product Hunt 打榜 SOP、Launch Week 执行清单、KOL 合作策略\n- 案例：Manus、Devin 等现象级产品复盘\n\n### 2. B2B SaaS 增长指南\n- GitHub: https://github.com/Gingiris/gingiris-b2b-growth\n- 内容：PMF 验证、PLG/SLG 混合增长、联盟营销、合同模板\n- 案例：HeyGen、Deel、Vercel、Supabase\n\n### 3. 开源项目发布整合营销手册\n- GitHub: https://github.com/Gingiris/gingiris-opensource\n- 内容：GitHub Star 增长策略、KOL 报价清单、Reddit 运营、1000+ 开发者群组\n\n## 特点\n\n- 📚 完整的 SOP（从 T-4 周到 T+7）\n- 🌍 四语支持（中文/English/日本語/한국어）\n- 💰 包含实际 KOL 报价（$70-$1500）\n- 📋 可直接使用的模板和清单\n\n## 作者\n\nIris (生姜iris) - AFFiNE 前 COO，Product Hunt 日榜第一 ×30\n\n希望能帮助更多中国开发者做好出海和开源推广！",
-    "created_at": "2026-03-05T14:02:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9149"
   }
 ]
