@@ -1,8 +1,24 @@
 [
   {
+    "id": 9269,
+    "title": "【网站自荐】展示了公元前800年至公元2000年间，近百位中西方著名思想家的生卒年份。",
+    "content": "https://history-philosopher.adbyte.indevs.in/\n直观展示了公元前800年至公元2000年间，近百位中西方著名思想家的生卒年份。\n\n<img width=\"1920\" height=\"911\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/89cd3dd1-2fd1-432b-8d1f-5a178b006845\" />",
+    "created_at": "2026-03-16T08:43:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9269"
+  },
+  {
+    "id": 9268,
+    "title": "【开源自荐】Autonomous Dev Team：多 AI Agent 协作，从 GitHub Issue 到合并 PR 全程无人值守",
+    "content": "## 项目信息\n\n- **GitHub**: https://github.com/zxkane/autonomous-dev-team\n- **安装**: `npx skills add zxkane/autonomous-dev-team`\n- **详细实践**: [多 Agent 协作：用 Claude Code 构建全自动开发流水线](https://mp.weixin.qq.com/s/T7qsqI4ZW-CdVLgO3wwdqg)\n\n## 项目简介\n\n一个全自动开发流水线——给 GitHub Issue 打上 `autonomous` 标签，AI Agent 自动完成开发、测试、代码审查、合并 PR，全程无需人工干预。\n\n**核心是三个 AI Agent 分工协作：**\n\n| Agent | 职责 |\n|-------|------|\n| **Dispatcher（调度器）** | 定时扫描 Issue，分派任务，管理并发，检测崩溃恢复 |\n| **Dev Agent（开发）** | 在隔离 Git Worktree 中 TDD 开发，自动创建 PR |\n| **Review Agent（审查）** | 代码审查 + E2E 浏览器验证，通过后自动合并 |\n\n通过 GitHub Label 状态机驱动整个流水线：\n\n```\nautonomous → in-progress → pending-review → reviewing → approved (merged)\n```\n\n下图是一个真实 Issue 的完整生命周期——从 Dispatcher 调度，到 Dev Agent 实现，再到 Review Agent 审查合并的全过程：\n\n<img width=\"1905\" height=\"2053\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/22376b16-fc4d-43f0-b428-945fd7d550d4\" />\n\n## 主要特性\n\n- **多 Coding Agent 支持**：支持 Claude Code、Codex CLI、Kiro CLI 等多种 AI 编码 Agent CLI，通过可插拔的抽象层适配\n- **跨平台 Skills**：以 [skills.sh](https://skills.sh) 可移植技能形式发布，一条命令安装到 Claude Code、Cursor、Windsurf、Gemini CLI 等 40+ 主流 AI 编码 Agent\n- **Git Worktree 隔离**：每个 Issue 在独立 Worktree 中开发，互不影响，支持并行开发多个任务\n- **TDD + Hook 强制**：设计 → 测试 → 实现 → 审查，关键步骤由 Git Hook 自动拦截，直推 main、跳过测试均会被阻止\n- **崩溃恢复 & 会话续传**：Agent 进程崩溃后自动检测并重新调度，Dev Agent 支持断点续传避免重复工作\n- **GitHub App 认证**：支持为每个 Agent 配置独立的 Bot 身份，操作记录清晰可追溯\n\n## 适用场景\n\n- 中小团队将明确需求的开发任务自动化\n- 开源项目批量处理 good-first-issue 类型的任务\n- 个人项目将重复性的功能开发和 Bug 修复交给 AI\n\n---\n\n*MIT License | 欢迎 Star 和反馈*",
+    "created_at": "2026-03-16T07:43:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9268"
+  },
+  {
     "id": 9267,
     "title": "【文章推荐】人工智能不会减少工作——反而会加剧工作强度 --- AI Doesn’t Reduce Work—It Intensifies It",
-    "content": "https://hbr.org/2026/02/ai-doesnt-reduce-work-it-intensifies-it",
+    "content": "链接：https://hbr.org/2026/02/ai-doesnt-reduce-work-it-intensifies-it\n\n关于ai对工作的效率提升和员工的认知疲劳、职业倦怠的一些看法，觉得讲的挺对的，我本人就有这种感觉。",
     "created_at": "2026-03-16T07:18:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9267"
@@ -808,21 +824,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9165"
-  },
-  {
-    "id": 9164,
-    "title": "【已开源】Convert any REST API into a Model Context Protocol (MCP) service. **将API转换成MCP服务**",
-    "content": "https://github.com/larryteal/mcp-workspace.\n\n**Please ⭐ star it!**",
-    "created_at": "2026-03-06T09:04:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9164"
-  },
-  {
-    "id": 9163,
-    "title": "【工具自荐】Fatesky 一个Bluesky原生替代无审查实时去中心化社交网络",
-    "content": "Bluesky大家都知道它是基于atproto去中心化网络，但大家不知道的是bsky和X（Twitter）一样有平台影子审查问题，只不过在去中心化网络中bsky无法做到封禁只能做到影子过滤。\n\n[Fatesky](https://hukoubook.com) 是由我开发的无审查实时去中心化社交网络，可以帮助用户看到真实的社交活动。\n\n举个例子：地震速报账号在bsky是无法看到的，可以通过Fatesky查看。\n\n[https://bsky.app/profile/eqim-bot.hukoubook.com](https://bsky.app/profile/eqim-bot.hukoubook.com)\n[https://app.hukoubook.com/profile/eqim-bot.hukoubook.com](https://app.hukoubook.com/profile/eqim-bot.hukoubook.com)\n\n还提供一些bsky平台没有的功能，比如订阅任意列表动态，批量通知粉丝群体等。\n\n目前Fatesky只有web app免费，移动端可以通过[Soar 遨游蓝天](https://soar.smitechow.com)进行付费使用！",
-    "created_at": "2026-03-06T08:00:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9163"
   }
 ]
