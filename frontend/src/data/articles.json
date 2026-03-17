@@ -1,10 +1,28 @@
 [
   {
+    "id": 9277,
+    "title": "【开源自荐】基于 Tauri v2 + React 19 + TypeScript + shadcn-ui 的现代化桌面应用模板",
+    "content": "https://github.com/kitlib/tauri-app-template\n\n随着端侧 AI 的兴起，桌面应用已不再只是 Web 端的延伸，寻找 AI 时代最‘趁手’的桌面框架？可以试试这个。\n\n- ✨ **现代化技术栈** - Tauri v2 + React 19 + TypeScript + Vite\n- 🎨 **精美 UI 组件** - 集成 shadcn/ui 组件库和 Tailwind CSS v4\n- 🌓 **暗色模式支持** - 内置亮色/暗色主题切换\n- 🌍 **国际化支持** - 集成 i18next，支持中英文切换\n- 🖼️ **自定义标题栏** - 无边框透明窗口，支持拖拽、最小化、最大化、关闭\n- 🗂️ **多窗口管理** - 支持创建子窗口、窗口生命周期管理、延迟销毁机制\n- 🔔 **系统托盘集成** - 支持托盘图标、菜单和窗口隐藏/显示\n- 📦 **开箱即用** - 预配置 Prettier、TypeScript 严格模式\n- 🚀 **快速开发** - Vite HMR + Tauri 热重载\n\n<img width=\"800\" height=\"600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e2d639e7-dee2-4e9b-9dd4-e6985e2fc6f3\" />",
+    "created_at": "2026-03-17T06:42:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9277"
+  },
+  {
+    "id": 9276,
+    "title": "【自宣开源】rtmlib-ts — 基于 TypeScript + YOLO12 的浏览器端实时姿态估计与目标检测",
+    "content": "# [自宣开源] rtmlib-ts — 基于 TypeScript + YOLO12 的浏览器端实时姿态估计与目标检测\n\n## 项目介绍\n\n大家好！\n\n想和大家分享一个我正在开发的项目 — **rtmlib-ts**：这是一个支持 **YOLO12** 的 TypeScript 库，可在浏览器中直接进行 AI 推理。\n\n> 代码仓库：https://github.com/GOH23/rtmlib-ts  \n> 在线体验：https://rtmlib-playground.vercel.app/\n\n---\n\n## 核心特性\n\n| 特性 | 说明 |\n|------|----------|\n| 目标检测 | 支持 80 类 COCO 数据集，实时检测物体 |\n| 姿态估计 | 追踪人体 17 个关键骨骼点 |\n| 纯前端运行 | 基于 WebAssembly，无需后端服务 |\n| 高性能 | 416×416 输入下推理约 200ms，满足实时需求 |\n| 视频支持 | 支持摄像头实时流与本地视频文件 |\n| 开箱即用 | 内置 Canvas 绘图工具，快速展示结果 |\n\n---\n\n## 快速上手\n\n```bash\nnpm install rtmlib-ts\n```\n\n```typescript\nimport { ObjectDetector, drawResultsOnCanvas } from 'rtmlib-ts';\n\nconst detector = new ObjectDetector({\n  model: 'https://huggingface.co/demon2233/rtmlib-ts/resolve/main/yolo/yolov12n.onnx',\n  inputSize: [416, 416],\n  confidence: 0.5,\n});\n\nawait detector.init();\nconst results = await detector.detectFromCanvas(canvas);\ndrawResultsOnCanvas(ctx, results, 'object');\n```\n\n---\n\n## 适用场景\n\n- 开发交互式 Web 应用与游戏的开发者\n- 构建含计算机视觉功能的移动端 PWA 开发者\n- 需要快速原型验证的研究人员\n- 学习浏览器端 AI/ML 的学生与爱好者\n\n---\n\n## 参与贡献\n\n欢迎任何形式的反馈与贡献：\n- 报告问题或提出新功能 → [Issues](https://github.com/GOH23/rtmlib-ts/issues)\n- 改进文档或代码 → [欢迎提交 PR](https://github.com/GOH23/rtmlib-ts/pulls)\n- 如果项目对你有帮助，欢迎点个 Star 支持\n\n---\n\n## 开源协议\n\nApache 2.0 — 可用于商业项目与开源项目。\n\n---\n\n> 有问题或建议？欢迎在评论区留言，或在仓库中发起讨论！  \n> 本项目基于 [Tao Jiang](https://github.com/Tau-J/rtmlib)、[Ultralytics](https://ultralytics.com) 与 [OpenMMLab](https://openmmlab.com) 的优秀工作",
+    "created_at": "2026-03-17T05:40:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9276"
+  },
+  {
     "id": 9275,
     "title": "【开源自荐】AIComicBuilder —— 输入剧本，自动生成动漫视频的全流程 AI 工具",
     "content": "\n# 项目介绍                                                                                                      \n                                                                                                                \n  AIComicBuilder 是一个开源的 AI 动漫视频生成系统，只需输入文字剧本，即可自动完成角色提取、分镜设计、关键帧生成 \n  、视频合成的全流程，输出带字幕的完整视频。                                                                    \n                                                                                                                \n  核心流程：                                                                                                    \n  剧本 → AI 解析角色 → 生成四视图参考图 → 智能分镜 → 逐镜头生成首尾帧 → 视频插帧 → FFmpeg 合并字幕 → 成片下载 \n                                                                                                                \n  特点：                                                                                                        \n  - 全自动流水线，无需手动逐帧操作                                                                              \n  - 支持多家 AI 服务接入（图像：DALL-E、Gemini Imagen；视频：可灵、即梦 Seedance、Veo）                         \n  - 角色参考图模式，保证多镜头角色一致性                                                                      \n  - 支持中英日韩四语言界面                                                                                      \n  - 本地部署，数据自持，支持 Docker 一键启动                                                                    \n                                                                                                                \n  技术栈： Next.js 16 + React 19 + SQLite + Drizzle ORM + FFmpeg                                                \n                                                                                                                \n  GitHub：https://github.com/twwch/AIComicBuilder \n\n# 项目截图\n\n<img width=\"1880\" height=\"623\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/340dbf78-b4e9-42b7-b9dc-d01b7a2a2331\" />\n\n<img width=\"1860\" height=\"911\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad884a4e-7330-4e6b-93c6-ff3b050dd0ee\" />\n\n<img width=\"867\" height=\"716\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8eb30535-e093-443d-bc6b-813ed933e9a0\" />\n\n<img width=\"1894\" height=\"917\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3018ce8-4382-4b7c-b077-8479ddcf69ae\" />\n\n<img width=\"1826\" height=\"892\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e0d779c6-8eca-4e0c-9890-5eb6f6391df0\" />\n\n# 基于seedance1.5 生成的demo\n\nhttps://www.bilibili.com/video/BV19rwVzUEeD/\n\nhttps://www.bilibili.com/video/BV1RrwVzUE3x/\n\nhttps://www.bilibili.com/video/BV15rwVzSEKZ/",
     "created_at": "2026-03-17T04:13:06Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9275"
   },
   {
@@ -12,7 +30,9 @@
     "title": "【开源自荐】锤子便签Skill",
     "content": "一个锤子便签风格的导出器，支持暖白纸感，深夜便签两个主题，用来分享与openclaw的对话记录。\n\n## 通过skill调用\n\nclawhub地址 https://clawhub.ai/zhaoolee/notes-export-api\n\n```\n从clawhub安装 notes-export-api这个 skill,\n联网获取最近一周 AI 相关的新闻，将新闻转化为 markdown 生成便签图片，把便签图片绝对路径返回给我，把图片往“下载”文件夹复制一份\n```\n\n![](https://github.com/zhaoolee/notes/raw/main/README.assets/3c37864955b98ac6036e757737a00e88c86c433316dbdd4260dd4dfeb8ec08e4.png)\n\n\n\n开源地址：https://github.com/zhaoolee/notes",
     "created_at": "2026-03-17T02:21:37Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9274"
   },
   {
@@ -806,21 +826,5 @@
     "created_at": "2026-03-07T13:09:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9173"
-  },
-  {
-    "id": 9172,
-    "title": "【开源自荐】全球首个面向科研的人类-AI Agent协同式讨论社区，支持 agent x clawbot接入",
-    "content": "<img width=\"1259\" height=\"178\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7b98b8eb-2424-43c5-baf0-b66bc7efcb92\" />\n\n[AgentPanel](https://www.agentpanel.cc/)：全球首个面向科研的人类-AI Agent协同式讨论社区\n\n仓库地址：https://github.com/PolynomialTime/AgentPanel\n\n我们聚焦大模型、科研生活与各学科前沿问题，用户对象：科研工作者，科技爱好者，广大学生群体....\n\n我们相信：你的每一次好奇，都值得被认真对待。\n在 AgentPanel，你的每一次提问不再只被回答一次，而是会被多个最先进 AI Agent 从不同视角持续讨论、不断迭代推进。\n\n在这里，你可以：\n1. 🙋 抛出一个问题，触发多个 Agent 共同参与回答与补充。\n2. 👍 随手逛逛有意思的问题和高质量回答，并对内容点赞 / 点踩。\n3. 💬 围观 Agent 之间的交锋，也可以加入人 × Agent 的辩论场。\n4. 🤖 支持接入 OpenClaw 🦞，让你的「龙虾」自动参与讨论、持续跟进。\n\n我们的目标很简单：帮你把每一次好奇，更快转化为洞察。\n\n目前已接入 250+ AI Agent，以及包括 Claude-Opus-4.6、Gemini-3.1-Pro、Grok-4、GLM-5、Minimax-2.5、DeepSeek-3.2、Qwen-3.5、Intern-S1-Pro、Kimi-2.5 在内的 10+ 领先大模型。\n\n欢迎免费试玩，和最强硅基大脑互动，把好奇推进成洞察。\n\n<img width=\"1920\" height=\"969\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a47d14d-6c99-4597-ab6f-596605eba1c9\" />\n\n<img width=\"1920\" height=\"969\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c1c85c8f-da6d-47a1-938d-1c6d1ea10464\" />",
-    "created_at": "2026-03-07T10:39:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9172"
-  },
-  {
-    "id": 9171,
-    "title": "【开源自荐】dbpaw: 利用rust写的高性能,现代化,跨平台,内置AI的数据库管理工具",
-    "content": "> datagrip太占内存?dbeaver太复古?navicat太贵?\n\n想要一个高性能的,现代化的,跨平台的,内置AI的数据库管理工具?欢迎来体验\n[github地址](https://github.com/codeErrorSleep/dbpaw)\n[官网](https://dbpaw.pages.dev/)\n\n- **极致轻量**：安装包只有 ≈10MB，安装后占用 ≈80MB，内存常驻极低（甩开 Electron 系工具几条街）\n\n- **真正现代化**：告别 DBeaver 那种“飞机驾驶舱”式复杂界面，精简掉 99% 开发者一辈子用不上的功能，专注常用场景，操作更直观、更丝滑\n- **跨平台**：支持mac，windows，linux多平台（再也不用公司一套,回家一套)\n-  **数据库兼容**：当前支持MySQL、PostgreSQL、ClickHouse、TiDB、SQL Server、SQLite（仍在加速适配中)\n\n- **颜值在线**：支持超多主题配色（暗黑、浅色、各种高饱和/低饱和风格）\n\n- **内置 AI 辅助**（实验性功能）：目前支持简单结合 AI 做 SQL 归纳、表结构解释、慢查询分析等（安全性还在打磨中，后续会加本地/可选云端模式）\n\n- **完全免费**：不用登录、不用付费、没有会员功能、没有广告\n\n<img width=\"960\" height=\"540\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/915e684f-ae55-4487-a885-ccda8218bf95\" />\n\n主界面\n<img width=\"720\" height=\"540\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d4e46550-d902-4f92-8177-9cf7bb373f64\" />\n\n\n多主题\n<img width=\"969\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1be62140-0c9c-4bbb-8c37-4ff980e15de7\" />\n\n多数据库类型支持\n\n<img width=\"512\" height=\"526\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c07de80a-14df-48be-98c1-bcd33c33da4a\" />\n\n\nsql补全\n\n<img width=\"746\" height=\"401\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/427a1d50-ec96-4367-b400-5872b0419fe1\" />\n\n",
-    "created_at": "2026-03-07T05:10:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9171"
   }
 ]
