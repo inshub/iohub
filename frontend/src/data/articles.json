@@ -1,5 +1,53 @@
 [
   {
+    "id": 9291,
+    "title": "【开源自荐】macOS 状态栏股票盯盘小工具 —— Stockbar",
+    "content": "### 💡 为什么做这个工具？\n\n平时工作写代码时经常需要瞄一眼股市行情，但又不想一直开着笨重的交易软件，也不希望界面太引人注目（懂的都懂）。虽然市面上有不少状态栏看盘工具，但总有一些痛点没被满足，比如：不支持美股盘前盘后行情、没有直观的分时图、或者需要去配置繁琐的 API Key。\n\n### ✨ 核心功能\n\n* **🌍 多市场全覆盖**：支持 A股（沪/深/北）、港股、美股实时行情。\n* **📊 极简分时图**：点击列表里的任意股票，即可展开查看当天的分钟级分时走势。\n* **🕒 美股全时段支持**：完美支持美股盘前、盘中、盘后及夜盘。分时图涵盖美东时间 04:00 – 20:00，并有清晰的交易时段标识。\n* **💰 持仓盈亏追踪**：支持为自选股设置“成本价”和“持仓数量”，自动计算并展示你的实时浮动盈亏和当日盈亏。\n* **🎨 自定义配色**：支持“红涨绿跌（A股习惯）”或“绿涨红跌（美股习惯）”一键切换。\n* **⚡ 纯净无后端**：所有数据均通过新浪、腾讯、Yahoo Finance 的公开免费接口直连获取，无需注册账号，也无需任何 API Key 配置。\n\n### 📸 界面预览\n\n![截图](https://raw.githubusercontent.com/VGEAREN/Stockbar/main/docs/screenshot-chart.png)\n\n*(图注：点击状态栏图标即可展开自选股列表，点击任意股票即可查看分时图，支持美股盘前盘后及持仓盈亏展示)*\n\n### 💻 运行环境\n\n* macOS 13.5 (Ventura) 及以上系统。\n* Universal 原生应用，完美兼容 Apple Silicon (M1/M2/M3) 和 Intel 芯片。\n\n### 🔗 获取与下载\n\n项目完全开源，代码清爽，欢迎大家审查或者进行二次开发。如果你觉得还不错，希望能到 GitHub 给个 Star ⭐️ 支持一下！\n\n* **GitHub 仓库**：[https://github.com/VGEAREN/Stockbar](https://github.com/VGEAREN/Stockbar)\n* **安装包下载**：可直接前往仓库的 [Releases 页面](https://github.com/VGEAREN/Stockbar/releases) 下载最新的 `Stockbar.dmg`。\n\n> **安装小贴士**：因为没有花钱买苹果的开发者证书，首次运行如果被 macOS 拦截，请进入 `系统设置 -> 隐私与安全性` 中点击`仍要打开`。\n\n**纯Vibe Coding项目。**",
+    "created_at": "2026-03-18T06:48:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9291"
+  },
+  {
+    "id": 9290,
+    "title": "【开源自荐】astro-minimax：基于 Astro v6 + Tailwind CSS v4 + AI SDK v6 构建的模块化博客主题，支持 cloudflare pages + functinos 部署免费享受全球CDN+AI陪读/对话能力",
+    "content": "[astro-minimax](https://github.com/souloss/astro-minimax) 采用 Astro v6 + Tailwind CSS v4 + TypeScript 严格模式的前沿技术栈，以 monorepo 架构拆分为 @astro-minimax/core、viz、ai、notify、cli 五个独立 NPM 包，支持 CLI、GitHub Template、NPM 集成三种使用方式。\n\n核心亮点包括：\n- 基于 Vercel AI SDK v6 的 RAG 检索增强对话系统，支持 OpenAI、Cloudflare Workers AI 多 Provider 自动故障转移与流式输出；\n- 开箱即用的 Mermaid、Markmap、Excalidraw、Asciinema 可视化组件；\n- Pagefind/Algolia 全文搜索、Waline 评论、Umami 隐私友好统计、Telegram/Email 多渠道通知；\n- 动态 OG 图片生成、View Transitions 主题切换动画、Lighthouse 90+ 性能得分。\n- 整套系统通过 @astro-minimax/cli 提供博客创建、AI 内容处理、画像构建、质量评估等开发者工具链，实现从内容创作到智能交互的完整闭环。\n\n欢迎大家多多提出意见，以及使用：[示例站](https://astro-minimax.pages.dev/zh/)\n\n",
+    "created_at": "2026-03-18T05:11:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9290"
+  },
+  {
+    "id": 9289,
+    "title": "【开源自荐】claude-rules：AI 编码助手的编码规范模板库，自动检测技术栈生成规则文件",
+    "content": "项目地址：https://github.com/lifedever/claude-rules\n\n## 简介\n\n用 AI 写代码时，AI 会模仿项目里已有的代码风格——包括坏习惯。claude-rules 给 AI 一套可执行的编码规范，核心原则：**不要模仿旧代码，按规范重构**。\n\n和市面上那些\"使用适当的错误处理\"之类的空话规范不同，每条规则都具体到 AI 能直接执行，比如\"函数不超过 30 行\"、\"基本类型用 ref，对象用 reactive，禁止解构 reactive\"。\n\n## 特点\n\n- **base + language + framework 三层组合**，按需拼装\n- 支持 10 种语言（TypeScript、Java、Go、Rust、Kotlin、Swift、Python 等）和 5 个框架（Vue、React、SwiftUI、Spring Boot、Tauri）\n- 每条规则都有**禁止/正确的代码对比示例**\n- Claude Code 用户可通过插件一键初始化，自动检测技术栈生成规范文件\n- 同样适用于 Cursor、Windsurf、GitHub Copilot，规范是纯 Markdown 通用格式",
+    "created_at": "2026-03-18T04:49:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9289"
+  },
+  {
+    "id": 9288,
+    "title": "【网站自荐】快速找到期望通勤时间内的最优租房区域",
+    "content": "## 租房助手 / 通勤时间助手\n\n**网址**： https://zufang.atoe.top/\n\n**租房痛点**：租房最难的不是找房, 而是不知道该租哪, 因为每个地方都有好房子, 但要花时间找, 如果分散时间到多个区域，往往会因时间不够而租到不满意的房子。\n\n**网站功能**：\n- 输入地点和期望通勤时间,  快速找到通勤时间内所有可达的地铁站点,  结合租金信息找到最优租房区域\n- 该网站不是租房软件，而是租房辅助网站，在一定程度上，帮助大家快速找到期望通勤时间内的最优租房区域。\n\n**截图**：\n<img width=\"903\" height=\"829\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5962d656-c80b-44ac-bee4-2540f462489e\" />",
+    "created_at": "2026-03-18T04:44:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9288"
+  },
+  {
+    "id": 9287,
+    "title": "【工具推荐】科技周刊技术热词可视化 (Weekly Tech Hotwords)",
+    "content": "**工具推荐：科技周刊技术热词可视化 (Weekly Tech Hotwords)**\n\n**网址：** [https://www.yingzitingge.xyz/weekly](https://www.yingzitingge.xyz/weekly)\n\n**简介：**\n这是一个专门针对《科技爱好者周刊》（`ruanyf/weekly`）制作的词频可视化分析工具。它可以直观地呈现近期周刊中高频出现的技术关键词，帮助读者一目了然地把握当下的技术热点和开源趋势。\n\n**主要特点：**\n* **专属数据源：** 直接分析本周刊 GitHub 仓库的 `docs/` 目录，精准提取近期发布的文章内容。\n* **直观可视化展示：** 采用错落有致的视觉排版，字体越大代表该技术词汇在近期周刊中出现的频次越高。鼠标悬停在关键词上，即可查看具体的出现次数详情。\n* **自动化追踪：** 后台每天凌晨 2:00 (UTC) 会自动同步仓库数据并更新分析结果，确保大家看到的是最新一期的技术风向标。\n* **极简体验：** 页面设计干净聚焦，无广告干扰，开箱即用。\n\n**截图：**\n\n<img width=\"1920\" height=\"1032\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3a99e3d-023a-4ae2-b6dd-eaa61a9fc6b0\" />\n",
+    "created_at": "2026-03-18T04:15:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9287"
+  },
+  {
+    "id": 9286,
+    "title": "【网站自荐】快速找到期望通勤时间内的最优租房区域",
+    "content": "网址： https://zufang.atoe.top/\n\n特点：输入地点和期望通勤时间，快速找到通勤时间内所有可达的地铁站点， 结合租金信息找到最优租房区域。\n\n<img width=\"907\" height=\"815\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a3daf436-c581-4119-bbf3-05569ffc4e63\" />",
+    "created_at": "2026-03-18T02:58:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9286"
+  },
+  {
     "id": 9285,
     "title": "【工具推荐】在线简历生成器 (Resume Builder)",
     "content": "**工具推荐：AI 实验室 - 在线简历生成器 (Resume Builder)**\n\n**网址：** [https://www.yingzitingge.xyz/resume](https://www.yingzitingge.xyz/resume)\n\n**简介：**\n这是一个极简高效的在线简历生成与排版工具，主打海量精美模板与“开箱即用”，帮助求职者快速制作出排版专业的简历。\n\n**主要特点：**\n- **100 套精美模板：** 内置了多达 100 套风格各异的简历模板，涵盖极简白、商务蓝、极客暗色代码风、艺术渐变、学术绿等各种视觉风格。无论是程序员、设计师，还是金融、医疗从业者，都能找到匹配所在行业调性的模板。\n- **所见即所得：** 挑选好心仪的模板后，点击即可直接在网页上进行可视化编辑，免去了使用 Word 调排版的痛苦。\n- **一键导出 PDF：** 简历编辑完成后，可以完美保留原版式，一键导出为高清 PDF 格式，方便直接投递，不用担心格式错乱。\n- **界面克制清爽：** 整体设计干净纯粹，无冗余干扰，专注于让用户以最高效的方式输出一份高颜值的求职简历。\n\n**截图：**\n\n<img width=\"1920\" height=\"1032\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/503c2561-8985-4f48-8e45-349faad4e60e\" />\n\n<img width=\"1920\" height=\"1032\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a9e9a3c-69ea-470e-aa11-5537b0befa2a\" />",
@@ -778,53 +826,5 @@
     "created_at": "2026-03-09T08:31:30Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9188"
-  },
-  {
-    "id": 9187,
-    "title": "【工具自荐】keepmot.com：一站式图片裁剪/拼图/照片墙/海报制作  免费在线工具网站",
-    "content": "网址：https://ps.keepmot.com\n\n### 工具简介\n\n免费的在线拼图工具，不用登录，完全免费，用完即走，纯前端实现，数据绝对隐私，图片安全无忧，高清无水印下载，作品纯净专业的工具网站\n\n### 功能特性\n\n🖼️ 网格拼图 - 内置了1到15张图片组合的上百种布局模板，无论是展示产品、分享生活瞬间还是制作相册，总有一款适合您\n\n🧱 照片墙拼图- 内置了专业设计模板。无论是爆款产品陈列、旅行故事板还是家庭年度相册，都能到完美构图，让每一组照片都成为值得珍藏的艺术拼图\n\n📏 长图拼接 - 支持垂直/水平拼接，无论是聊天记录、网页截图还是教程步骤图，无缝垂直拼接成一张完整的长图\n\n✂️ 图片裁剪 - 支持自由裁剪、比例裁剪、内置了各种证件照和社交媒体的尺寸，一键完成\n\n👨‍🎨 图片特效 - 内置了几十种图片特效（素描、黑白照、彩虹、鱼眼、胶片、人像、美食、老电影等风格）\n\n\n### 工具截图\n\n<img width=\"1582\" height=\"883\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad3139b9-0ae6-409c-9159-65cd0dc6d922\" />\n\n<img width=\"1586\" height=\"882\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad0d63a8-1efc-4d43-80e2-6d9f1200a90f\" />\n\n<img width=\"1585\" height=\"886\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/efc7f987-2412-46ce-ada5-33c3b75dd9e5\" />\n\n<img width=\"1584\" height=\"880\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/87a809e6-90aa-49a8-96f8-c43ec94d5e72\" />\n\n<img width=\"1583\" height=\"874\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c1160b96-8b75-4cf8-b8f5-7222b48f4ec0\" />\n\n<img width=\"1744\" height=\"847\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3eb79293-3fc5-44d6-9dc4-3f7ab6f951f3\" />\n\n",
-    "created_at": "2026-03-09T07:19:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9187"
-  },
-  {
-    "id": 9186,
-    "title": "【开源自荐】Price Memory-一款记住商品价格，知道优惠是否真划算的 Chrome 扩展",
-    "content": " https://github.com/feiyang-xiaofei/price-memory\n一个 Chrome 浏览器扩展，在你正常网购时自动记录每个商品的价格。下次再看到同一个商品时，它会告诉你价格是涨了、跌了还是没变。\n\n不需要注册账号，不需要连接云端，所有数据存在浏览器本地。\n\n**主要特点：**\n\n- 完全被动追踪 — 不需要点击任何按钮，浏览商品页面自动记录\n- 页面上显示浮动价格徽章（最低价/好价/均价/偏高）\n- 支持 Amazon、Walmart、Target、Best Buy、eBay、Nordstrom，以及大多数其他购物网站\n- 内置 Dashboard：价格趋势图、商品表格、降价分析、分类统计\n- 100% 本地存储，零数据上传，没有服务器\n- 基于 Chrome Manifest V3，轻量安全\n- MIT 开源协议\n\n<img width=\"1871\" height=\"780\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2a4f6670-8794-47da-96e3-b7a1a45a6cb4\" />\n**补充说明：**\n\n对于经常网购但总记不住之前看到的价格是多少的人来说很实用。和 Keepa/CamelCamelCamel 不同，它不依赖第三方数据库，而是基于你自己的浏览历史建立个人价格档案。",
-    "created_at": "2026-03-09T07:03:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9186"
-  },
-  {
-    "id": 9185,
-    "title": "【开源自荐】一个根据当前出口IP自动同步多云安全组白名单的 Go 工具",
-    "content": "开源地址：https://github.com/zhongjidalao/whitelist-manager\n\nWhitelist Manager 是一个用 Go 开发的多云白名单自动化工具，专门解决动态公网IP 场景下“每次换网都要手动改安全组”的痛点。\n\n它会定时检测当前出口 IP，并自动同步更新 Volcengine、AWS Lightsail/EC2、腾讯云 CVM、阿里云 ECS 的入站规则。\n\n项目提供可视化 Web 配置页、按云厂商独立端口策略、实时日志与手动触发能力，单二进制即可部署，适合个人开发者和小团队低成本实现更安全、更省心的远程访问管理。\n\n<img width=\"1374\" height=\"856\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1958a3cb-3da1-4fb7-acbd-ceb3ddeb8f37\" />\n<img width=\"1344\" height=\"1177\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a9a7e6e-b808-4ffe-abc8-ad5cc62acaa8\" />",
-    "created_at": "2026-03-09T06:33:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9185"
-  },
-  {
-    "id": 9183,
-    "title": "【开源自荐】阮一峰周刊 · Issue 浏览器 —— 一个静态网站，用于分类浏览阮一峰科技爱好者周刊的 GitHub Issues（自荐/投稿区）。",
-    "content": "\n## 📎 项目地址\n\nhttps://github.com/shaozhengmao/ruanyf-weekly-issue-browser\n\n## 🌐 在线演示\n\nhttps://shaozhengmao.github.io/ruanyf-weekly-issue-browser/\n\n<img width=\"1049\" height=\"796\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca9832c4-d4f6-45c6-a036-7d9aa8f73247\" />\n\n## 💡 背景与痛点\n\n阮一峰老师的科技爱好者周刊是很多开发者每周必读的内容。周刊的 GitHub 仓库有一个 Issues 区，大家会在里面自荐开源项目、工具、文章等。\n\n但是，GitHub Issues 的浏览体验并不友好：\n- 只能按时间顺序查看，历史数据不方便搜索\n- 无法按分类查看内容\n\n本项目就是为了解决这些痛点。\n\n## ✨ 核心功能\n\n1. **两级分类**：一级按标题前缀（开源项目/工具/产品/投稿推荐/讨论反馈），二级按内容关键词（AI、前端、后端、DevOps 等 9 个类别）\n2. **全文搜索**：前端构建倒排索引，支持中英文混合搜索，毫秒级响应\n3. **已收录标记**：有 `weekly` 标签的 issue 会标记为 ⭐，方便识别\n4. **时间筛选**：按年月过滤，快速定位特定时期的内容\n5. **自动更新**：每天自动抓取最新数据，无需手动维护\n\n## 🏗️ 技术亮点\n\n- **零依赖前端**：纯 HTML/CSS/JS，无框架，加载极快\n- **倒排索引**：前端实现的全文搜索引擎\n- **GitHub Actions**：自动化 CI/CD，每天更新数据并部署\n- **响应式设计**：完美适配手机端\n\n## 📊 数据范围\n\n2024年1月至今的所有 open issues，约 4300+ 条数据。\n\n## 🔧 本地运行\n\n```bash\ngit clone https://github.com/shaozhengmao/ruanyf-weekly-issue-browser.git\ncd ruanyf-weekly-issue-browser\npython -m http.server 8000\n# 访问 http://localhost:8000\n```\n\n\n",
-    "created_at": "2026-03-09T02:40:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9183"
-  },
-  {
-    "id": 9182,
-    "title": "【开源自荐】AI 赋能数据库设计",
-    "content": "项目地址：https://github.com/dddcp/db-designer\n\n一款**跨平台**的、**轻量级**的**智能**数据库设计工具。\n\n## 功能特性\n\n| 功能 | 说明 |\n|------|------|\n| 表结构设计 | 可视化设计表、列、索引，支持拖拽排序 |\n| AI 智能建表 | 接入 AI 大模型，自然语言描述即可生成表结构 |\n| 初始数据管理 | 为表配置初始数据，支持导出 INSERT 语句 |\n| 版本管理 | 对项目结构打快照，支持版本间差异对比和 SQL 导出 |\n| 数据库比对 | 连接远程 MySQL / PostgreSQL，对比本地设计与线上结构差异 |\n| 数据库同步 | 对比线上，生成增量脚本；一键同步线上到模型库 |\n| SQL 导出 | 一键导出完整 SQL（表结构 + 索引 + 初始数据），支持 MySQL / PostgreSQL |\n| Git 数据同步 | 通过 Git 管理设计数据，适配 GitHub / GitLab / Gitee |\n| 本地存储 | 基于 SQLite 本地存储，无需联网、无需服务端 |\n\n## 截图预览\n\n### AI 设计表结构\n\n![1](https://github.com/dddcp/db-designer/raw/main/doc/images/setting_ai.png)\n![1](https://github.com/dddcp/db-designer/raw/main/doc/images/ai_design.png)\n\n### SQL 导出\n![2](https://github.com/dddcp/db-designer/raw/main/doc/images/export_sql.png)\n\n### 数据库对比与同步\n![3](https://github.com/dddcp/db-designer/blob/main/doc/images/sync_db.png)",
-    "created_at": "2026-03-09T00:53:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9182"
-  },
-  {
-    "id": 9181,
-    "title": "【工具自荐】Lucent - 现已支持自动匹配像素对Apple设备截图套壳",
-    "content": "[Lucent](https://apps.apple.com/us/app/lucent-clipboard-history/id6757361230?mt=12) 是一款功能更加强大的剪切板app, 在基础的剪切板历史功能上增加了许多便捷工具.\n\n针对图片数据: \n- 支持一键转换格式;\n- 调用tinypng进行压缩;\n- 上传到imgbb图床;\n- 根据分辨率匹配Apple设备进行截图套壳美化;\n<img width=\"300\" height=\"513\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a32b28ea-1cd7-4556-b86c-7699ab708b86\" />\n\n<img width=\"300\" height=\"2660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/24c7dd98-08b5-43c6-83c0-c73254cb47bf\" />\n\n视频:\n- 一键转换格式/ 压缩;\n- 制作GIF;\n<img width=\"300\" height=\"610\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/627c1961-f16e-4c1f-b75f-6994ef601fad\" />\n\n<img width=\"180\" height=\"714\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bcf24c3c-1db8-44c5-9f2d-05e3451f83c0\" />\n\n由于App Store审核原因, 自动粘贴功能需要下载一个额外的[工具](https://lucentapp.cc/integration);",
-    "created_at": "2026-03-08T16:37:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9181"
   }
 ]
