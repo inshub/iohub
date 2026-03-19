@@ -1,5 +1,21 @@
 [
   {
+    "id": 9311,
+    "title": "【开源自荐】antd-overlay（Ant Design 弹层命令式调用方案）",
+    "content": "### antd-overlay\n[https://github.com/RaineySpace/antd-overlay](https://github.com/RaineySpace/antd-overlay)\n\n一个基于 Ant Design 的弹层（Modal / Drawer）命令式调用方案，让弹窗可以像 message 一样通过函数直接调用，无需在业务中维护 open 状态。\n\n该项目解决了 Antd 弹层在复杂场景下的几个常见问题：\n\n- 支持函数式调用（类似 message / notification）\n\n- 统一管理多弹层，支持跨组件全局调用\n\n- 正确处理关闭动画（避免动画未完成就卸载）\n\n- 提供类型安全的 update / close 控制能力\n\n- 支持自定义 Overlay 组件扩展（useOverlay）\n\n适用于中后台复杂交互场景（多弹窗、流程型 UI 等）。\n\n## Demo\n```tsx\nimport { Modal, Input } from 'antd';\nimport { CustomModalProps } from 'antd-overlay';\nimport { useState } from 'react';\n\ninterface MyModalProps extends CustomModalProps<{ result: string }> {\n  initialValue?: string;\n}\n\nconst MyModal: React.FC<MyModalProps> = ({\n  open,\n  customClose,\n  customOk,\n  initialValue,\n  ...props\n}) => {\n  const [value, setValue] = useState(initialValue || '');\n\n  return (\n    <Modal\n      open={open}\n      title=\"输入内容\"\n      onCancel={customClose}\n      onOk={() => customOk?.({ result: value })}\n      {...props}\n    >\n      <Input value={value} onChange={(e) => setValue(e.target.value)} />\n    </Modal>\n  );\n};\n```\n```tsx\nimport { useModal, useGlobalModal } from 'antd-overlay';\n\n// 局部使用（需要渲染 holder）\nfunction LocalUsage() {\n  const [openModal, holder] = useModal(MyModal);\n\n  const handleOpen = () => {\n    const controller = openModal({ initialValue: 'hello' });\n    // controller.update({ initialValue: 'updated' });\n    // controller.close();\n  };\n\n  return (\n    <>\n      <button onClick={handleOpen}>打开 Modal</button>\n      {holder}\n    </>\n  );\n}\n\n// 全局使用（无需渲染 holder，但需要 AntdOverlayProvider）\nfunction GlobalUsage() {\n  const openModal = useGlobalModal(MyModal);\n\n  return (\n    <button onClick={() => openModal({ initialValue: 'world' })}>\n      打开全局 Modal\n    </button>\n  );\n}\n```",
+    "created_at": "2026-03-19T14:33:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9311"
+  },
+  {
+    "id": 9310,
+    "title": "【开源自荐】AI Battle MCP - 多用户 AI 群聊 — 为那些让 AI 替自己吵架的团队而生",
+    "content": "开源地址：https://github.com/vmos-dev/ai-battle-mcp\n\n\n<p align=\"center\">\n  <h1 align=\"center\">AI Battle MCP（掰投）</h1>\n  <p align=\"center\">为那些让 AI 替自己吵架的团队而生。</p>\n  <p align=\"center\">\n    <strong>多用户 AI 群聊 — 让你们的 AI 直接对话。</strong>\n  </p>\n</p>\n\n---\n\n## 为什么做这个？\n\n每个团队成员都在用自己的 AI 出方案。你和 Claude 聊出了微服务，同事和 GPT 聊出了单体。然后你们互发聊天记录，让各自 AI 互评——结果各说各好，因为**它们根本看不到彼此的上下文**。\n\n**AI Battle 把所有人的 AI 拉到一个群聊里。** 完整上下文、真实讨论、靠论据而非嗓门达成共识。\n\n<p align=\"center\">\n  <img src=\"https://github.com/vmos-dev/ai-battle-mcp/raw/main/docs/pain-point.zh-CN.svg\" alt=\"AI 时代的多人协作困境\" width=\"800\">\n</p>\n\n> 现有多智能体框架（AutoGen、CrewAI 等）都是\"单用户编排多模型\"。\n> AI Battle 解决的是另一个问题：**多个用户，各自带着自己的 AI 工具，进入一个共享空间讨论。**\n\n### 适用场景\n\n| 场景 | 你说 | AI 做 |\n|------|------|-------|\n| 方案 PK | \"我支持微服务，帮我跟李四的 GPT 辩一下\" | 两个 AI 带着各自方案当面辩，辩到收敛出结论 |\n| 知识交接 | \"把我们项目的架构教给新同事的 AI\" | 你的 AI 当老师，新人的 AI 当学生，一问一答直到学会 |\n| 代码评审 | \"大家一起看看这个 PR\" | 多个 AI 从不同角度审查，互相补充彼此的盲区 |\n| 技术选型 | \"React 还是 Vue？大家讨论下\" | 各方 AI 带着团队真实约束来讨论，不是空对空 |\n| 需求对齐 | \"产品、前端、后端碰一下这个需求\" | 三方 AI 在一个房间里对齐，人类喝咖啡等结论 |\n\n---\n\n## 特性\n\n- **零安装** — `npx -y ai-battle-mcp@latest` 直接用，AI 客户端自动拉起服务\n- **跨工具** — Claude Code、Cursor、ChatGPT、Gemini CLI，任何 MCP 客户端或 HTTP API\n- **全自动** — AI 自己讨论，人类可以观战和插话\n- **智能收敛** — 检测各方观点趋于一致时，提示用户决定是否结束\n- **实时观战** — 浏览器聊天室界面，创建房间时自动打开\n- **多语言** — 界面和消息跟随系统语言（中文、英文、日文、韩文、繁体中文）\n- **历史记录** — 聊天记录持久化，可通过历史页面查看\n\n---\n\n### 创建房间\n\n对你的 AI 说：\n\n> \"创建一个讨论房间，主题是'后端架构选型：微服务 vs 单体'\"\n\nAI 会返回房间 ID、加入链接和吃瓜链接。**把加入链接分享给队友。**\n\n<p align=\"center\">\n  <img src=\"https://github.com/vmos-dev/ai-battle-mcp/raw/main/docs/demo-create-room.zh-CN.svg\" alt=\"创建房间效果\" width=\"680\">\n</p>\n\n---\n\n### 加入房间\n\n**方式 A：对你的 AI 说**\n\n> \"加入房间 http://192.168.1.2:19820/battle/a1b2c3，代表我参与讨论。\"\n\n**方式 B：纯观战（吃瓜）**\n\n浏览器打开 `http://{群主IP}:19820/battle/{roomId}/eatmelon`\n\n> **提示：** 加入即自动开始讨论，观战页面也会自动打开。**去喝咖啡吧。** ☕\n\n<p align=\"center\">\n  <img src=\"https://github.com/vmos-dev/ai-battle-mcp/raw/main/docs/demo-join-room.zh-CN.svg\" alt=\"加入房间效果\" width=\"680\">\n</p>\n\n---\n",
+    "created_at": "2026-03-19T13:28:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9310"
+  },
+  {
     "id": 9309,
     "title": "【开源自荐】OpenCLI - 把任何网站变成你的命令行工具，AI 原生的浏览器自动化框架",
     "content": "# 【开源自荐】OpenCLI - 把任何网站变成你的命令行工具，AI 原生的浏览器自动化框架\n\n**开源地址**：https://github.com/jackwener/opencli\n\n**2.2k Stars** | **202 Forks** | **npm: @jackwener/opencli**\n\n## 项目简介\n\nOpenCLI 是一个 AI 原生的 CLI 运行时框架，能把**任何网站**或 **Electron 桌面应用**变成你的命令行工具。复用 Chrome 登录态，零风控、零凭证存储，一条命令搞定 B站、知乎、Twitter、Reddit、小红书、YouTube 等 30+ 平台的数据获取与操作。\n\n## 核心特性\n\n- **CLI All The Things** — 30+ 平台开箱即用，涵盖 Twitter、Reddit、B站、知乎、小红书等\n- **CLI All Electron** — 把 Cursor、Codex、ChatGPT、Notion、Discord 等桌面应用变成 CLI，让 AI 控制 AI\n- **零风控** — 复用 Chrome 登录态，不存储任何 token 或密码，告别封号焦虑\n- **AI 原生** — `explore` 自动发现 API，`synthesize` 生成适配器，`cascade` 智能探测认证策略\n- **声明式引擎** — 写一个 `.yaml` 文件即可注册新命令，5 分钟接入新网站\n- **多平台下载** — 支持小红书、B站、Twitter、知乎的图片/视频/文章下载\n- **自修复配置** — `opencli doctor` 一键诊断，`--fix` 自动修复\n\n## 技术亮点\n\n- **Browser Bridge 架构**：轻量 Chrome 扩展 + 微型 daemon，纯 Polling 模式，无需公网暴露\n- **声明式 YAML Pipeline**：`fetch -> extract -> transform -> output`，零代码实现复杂数据管线\n- **AI 探索引擎**：网络拦截 -> 响应分析 -> 能力推理 -> 框架检测，全自动发现网站 API\n- **5 级认证策略**：PUBLIC -> COOKIE -> HEADER -> SESSION -> OAUTH，自动级联探测\n- **多格式输出**：table / json / yaml / md / csv，完美适配人类阅读和 AI Agent 消费\n\n## 使用示例\n\n```bash\n# 安装\nnpm install -g @jackwener/opencli\n\n# 数据获取\nopencli bilibili hot --limit 10          # B站热门\nopencli zhihu hot -f json                # 知乎热榜（JSON 输出）\nopencli twitter trending                  # Twitter 趋势\nopencli hackernews top --limit 5          # HN 热帖\n\n# 媒体下载\nopencli xiaohongshu download --note-id abc123\nopencli twitter download --username elonmusk --limit 20\n\n# 桌面应用 CLI 化\nopencli cursor send \"帮我重构这个函数\"     # 用 CLI 控制 Cursor\nopencli chatgpt ask \"解释量子计算\"         # 用 CLI 控制 ChatGPT\n\n# AI 驱动探索新网站\nopencli explore https://example.com --site mysite\nopencli synthesize mysite                  # 自动生成适配器\n```\n\n## 适用场景\n\n- **AI Agent 工具链** — 让 Claude Code / Cursor 等 AI 直接调用网站能力\n- **数据分析** — 批量获取社交媒体数据，输出 JSON/CSV 供分析\n- **自动化工作流** — 结合 cron/脚本实现定时监控和自动操作\n- **碎片时间** — 终端一条命令，快速浏览各平台热门内容\n- **快速开发** — 5 分钟用 YAML 接入新网站，AI 辅助自动生成\n\n## 与同类工具对比\n\n| 特性 | OpenCLI | 传统爬虫 | 浏览器自动化 |\n|------|---------|----------|-------------|\n| 复用登录态 | 支持 | 不支持 | 需配置 |\n| 被风控风险 | 极低 | 高 | 中 |\n| 接入新站点 | 5分钟 YAML | 数小时 | 数小时 |\n| AI Agent 友好 | 原生支持 | 不支持 | 部分 |\n| 桌面应用支持 | 支持 | 不支持 | 部分 |\n\n**开源协议**：Apache-2.0\n",
@@ -108,7 +124,9 @@
     "title": "【文章推荐】2016 年，我做过一次 AI 写代码创业",
     "content": "文章 [2016 年，我做过一次 AI 写代码创业](https://blog.youxu.info/2026/01/14/ai-codes-retrospective/)\n\n博客[4G Spaces](https://blog.youxu.info/)上的一篇文章，作者徐宥 (Eric Xu)之前在 Fitbit (领导机器学习团队) 和 Google (广告和无人驾驶) 干活。曾创建AI自动生成代码公司[ai.codes](https://www.ai.codes/)。文章回顾了10年前的一次关于AI的创业，讲述了其中的曲折和无奈。时过境迁，现在回头看确实有些天时地利的因素，而且作者当时还和但是名不见经传的OpenAI有过接触，但是最后却选择了加入了Reddit，也会让人感觉有些遗憾。对此作者有自己的一些看法，对我们可能也会有一些启发。",
     "created_at": "2026-03-19T01:21:10Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9296"
   },
   {
@@ -116,7 +134,9 @@
     "title": "【开源自荐】 微信公众号文章转RSS订阅",
     "content": "开源版地址：https://github.com/tmwgsicp/wechat-download-api\nsaas版地址：https://wechatrss.waytomaster.com\n核心功能：RSS订阅任意公众号，自动定时拉取新文章（包含完整文章内容和图片），生成标准 RSS 2.0 源，接入 FreshRSS / Feedly 等阅读器即可使用\n核心特点：完全开源、源码可审计、支持IP代理池反风控\n项目截图：\n\n![Image](https://github.com/user-attachments/assets/f5718bdd-fc1a-42e7-9fc9-2e220ccdd4e5)\n\n![Image](https://github.com/user-attachments/assets/177e6cfd-8df4-4564-9929-a3c0335a8ef4)\n\n项目效果视频：\n【开源的微信公众号rss订阅工具来啦！】 https://www.bilibili.com/video/BV1bYNcz7EFh/?share_source=copy_web&vd_source=5e500baa960bb2ba100ef087f49bca8a",
     "created_at": "2026-03-18T14:44:03Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9295"
   },
   {
@@ -808,21 +828,5 @@
     "created_at": "2026-03-11T11:33:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9210"
-  },
-  {
-    "id": 9209,
-    "title": "【网站自荐】招聘快页-1分钟生成招聘页面的工具",
-    "content": "做了一个小工具：\n\n招聘快页\nhttps://csnd.cn\n\n很多小团队没有招聘官网。\n\n但想发招聘信息。\n\n于是做了一个：\n\n1分钟生成招聘页面的工具。\n\n填几个信息：\n\n公司\n\n岗位\n\n描述\n\n系统自动生成一个 可分享的招聘链接。\n\n可以直接发：\n\n社群\n\n朋友圈\n\n小红书\n\nTwitter\n\n就能开始收简历。\n\n适合：\n\n独立开发者\n\n小团队\n\n创业公司\n\n如果你也遇到过这个问题，可以试试。\n\n![Image](https://github.com/user-attachments/assets/602bd513-88a4-49dc-8fb0-6b6b8f498a89)",
-    "created_at": "2026-03-11T10:21:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9209"
-  },
-  {
-    "id": 9208,
-    "title": "【网站自荐】小白清单-记录每天的工作，自动生成日报",
-    "content": "最近做了一个很小的工具，想发出来给大家看看。\n\n起因很简单：\n\n很多公司每天都要写 工作日报 / 周报，但现实情况是：\n\n每天都要凑几句话 周报要把一周内容重新整理 写得太简单怕领导觉得没干活 写太多又很浪费时间\n\n所以我就想： 能不能用 AI 把这件事自动化？\n\n于是做了一个小工具： https://io5.cn/\n\n![Image](https://github.com/user-attachments/assets/38082fd6-23d2-4be2-988f-17d7842e42fb)\n\n![Image](https://github.com/user-attachments/assets/5f2f93cc-d10d-436e-b2d3-fc97bdff9a09)\n\n![Image](https://github.com/user-attachments/assets/f28f6399-f7fe-4d60-a28f-6e00c5fdeb20)\n\n![Image](https://github.com/user-attachments/assets/60683346-04f6-4ea2-9a98-9614bf3f10ec)\n\n![Image](https://github.com/user-attachments/assets/631b56f1-cef5-4c81-a039-6dc4a664dc60)",
-    "created_at": "2026-03-11T10:17:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9208"
   }
 ]
