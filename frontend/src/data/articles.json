@@ -1,5 +1,21 @@
 [
   {
+    "id": 9309,
+    "title": "【开源自荐】OpenCLI - 把任何网站变成你的命令行工具，AI 原生的浏览器自动化框架",
+    "content": "# 【开源自荐】OpenCLI - 把任何网站变成你的命令行工具，AI 原生的浏览器自动化框架\n\n**开源地址**：https://github.com/jackwener/opencli\n\n**2.2k Stars** | **202 Forks** | **npm: @jackwener/opencli**\n\n## 项目简介\n\nOpenCLI 是一个 AI 原生的 CLI 运行时框架，能把**任何网站**或 **Electron 桌面应用**变成你的命令行工具。复用 Chrome 登录态，零风控、零凭证存储，一条命令搞定 B站、知乎、Twitter、Reddit、小红书、YouTube 等 30+ 平台的数据获取与操作。\n\n## 核心特性\n\n- **CLI All The Things** — 30+ 平台开箱即用，涵盖 Twitter、Reddit、B站、知乎、小红书等\n- **CLI All Electron** — 把 Cursor、Codex、ChatGPT、Notion、Discord 等桌面应用变成 CLI，让 AI 控制 AI\n- **零风控** — 复用 Chrome 登录态，不存储任何 token 或密码，告别封号焦虑\n- **AI 原生** — `explore` 自动发现 API，`synthesize` 生成适配器，`cascade` 智能探测认证策略\n- **声明式引擎** — 写一个 `.yaml` 文件即可注册新命令，5 分钟接入新网站\n- **多平台下载** — 支持小红书、B站、Twitter、知乎的图片/视频/文章下载\n- **自修复配置** — `opencli doctor` 一键诊断，`--fix` 自动修复\n\n## 技术亮点\n\n- **Browser Bridge 架构**：轻量 Chrome 扩展 + 微型 daemon，纯 Polling 模式，无需公网暴露\n- **声明式 YAML Pipeline**：`fetch -> extract -> transform -> output`，零代码实现复杂数据管线\n- **AI 探索引擎**：网络拦截 -> 响应分析 -> 能力推理 -> 框架检测，全自动发现网站 API\n- **5 级认证策略**：PUBLIC -> COOKIE -> HEADER -> SESSION -> OAUTH，自动级联探测\n- **多格式输出**：table / json / yaml / md / csv，完美适配人类阅读和 AI Agent 消费\n\n## 使用示例\n\n```bash\n# 安装\nnpm install -g @jackwener/opencli\n\n# 数据获取\nopencli bilibili hot --limit 10          # B站热门\nopencli zhihu hot -f json                # 知乎热榜（JSON 输出）\nopencli twitter trending                  # Twitter 趋势\nopencli hackernews top --limit 5          # HN 热帖\n\n# 媒体下载\nopencli xiaohongshu download --note-id abc123\nopencli twitter download --username elonmusk --limit 20\n\n# 桌面应用 CLI 化\nopencli cursor send \"帮我重构这个函数\"     # 用 CLI 控制 Cursor\nopencli chatgpt ask \"解释量子计算\"         # 用 CLI 控制 ChatGPT\n\n# AI 驱动探索新网站\nopencli explore https://example.com --site mysite\nopencli synthesize mysite                  # 自动生成适配器\n```\n\n## 适用场景\n\n- **AI Agent 工具链** — 让 Claude Code / Cursor 等 AI 直接调用网站能力\n- **数据分析** — 批量获取社交媒体数据，输出 JSON/CSV 供分析\n- **自动化工作流** — 结合 cron/脚本实现定时监控和自动操作\n- **碎片时间** — 终端一条命令，快速浏览各平台热门内容\n- **快速开发** — 5 分钟用 YAML 接入新网站，AI 辅助自动生成\n\n## 与同类工具对比\n\n| 特性 | OpenCLI | 传统爬虫 | 浏览器自动化 |\n|------|---------|----------|-------------|\n| 复用登录态 | 支持 | 不支持 | 需配置 |\n| 被风控风险 | 极低 | 高 | 中 |\n| 接入新站点 | 5分钟 YAML | 数小时 | 数小时 |\n| AI Agent 友好 | 原生支持 | 不支持 | 部分 |\n| 桌面应用支持 | 支持 | 不支持 | 部分 |\n\n**开源协议**：Apache-2.0\n",
+    "created_at": "2026-03-19T12:52:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9309"
+  },
+  {
+    "id": 9308,
+    "title": "【开源自荐】FlowPacket - 可以自定义协议帧的画布测试工具",
+    "content": "仓库地址：https://github.com/guowei-gong/flow-packet\n\n阮一峰老师，你好：我是一名游戏后端工程师。对于游戏后端来说，功能自测困难，让我开始编写这款工具，它可以像 UE5 蓝图一样，构建测试用例。\n\n## 🤔 为什么需要 FlowPacket\n\n游戏服的特性，导致使用常见的测试工具时存在一些障碍：\n\n- **自定义长连接协议**\n\n  为了让玩家获得更好的游戏体验，游戏服通常采用 TCP、WebSocket、KCP 等长连接通信。大多数 API 测试工具围绕 HTTP 设计，无法直接对接这些协议和自定义的二进制协议帧\n\n- **测试用例难以管理**\n\n  以往测试通常是手写一个 `Client.go`，在里面编写发送和监听逻辑。随着测试场景越来越多，文件不断膨胀，需要频繁地新增函数、注释掉暂时不用的用例，再取消注释来切换测试目标。而游戏业务往往是多步骤且有序的（如先创建角色，再进入游戏），每次只想验证流程中的某几步时，就得反复注释和恢复前置步骤——管理成本远大于编写成本\n\n- **Proto 编码支持缺失**\n\n  游戏服普遍使用 Protobuf 作为序列化方案，但常见的 API 测试工具对 Proto 编码的支持非常有限，往往需要额外的插件或手动转换，流程繁琐\n\n- **需要面向网关获取真实结果**\n\n  游戏服不仅需要测试请求-响应的业务逻辑，还需要验证服务端主动推送的通知是否正常。这些通知能力由网关提供，如果直接连接游戏节点，只能拿到一对一的响应，无法验证通知推送是否正确到达\n\nFlowPacket 通过**可视化画布**解决以上问题——将协议消息建模为节点，用连线定义执行顺序，所见即所得地编排和运行完整的基本测试流程。\n\n## 👀 预览\n\n![运行结果](https://github.com/guowei-gong/flow-packet/blob/main/docs/image/review.png?raw=true)\n\n\n<details>\n<summary>自定义协议帧</summary>\n\n![自定义协议帧](https://github.com/guowei-gong/flow-packet/blob/main/docs/image/custom_head_frame.png?raw=true)\n</details>",
+    "created_at": "2026-03-19T11:54:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9308"
+  },
+  {
     "id": 9307,
     "title": "【工具自荐】Widgetify - macOS 实用桌面小组件 & 效率助手",
     "content": "##### Widgetify 是一款 macOS 专用的桌面小组件工具，把各种实用信息和快捷操作直接变成可拖拽、悬浮、任意组合的桌面 widget，非常适合想要把 macOS 桌面打造成生产力中枢的用户。\n\n**核心功能亮点**\n - 提供 20+ 种实用 widget：世界时钟、迷你日历、CPU/RAM/硬盘/网速监控、待办事项 & 系统提醒同步、计时器、音乐播放器（支持 Apple Music / Spotify 歌词显示）、即时翻译（基于苹果大模型）、相册快速预览、文档整理挂件、霓虹灯风格时钟等\n - 支持任意位置拖拽、悬浮置顶、分组管理、自定义大小和透明度\n - 与 macOS Sonoma / 系统提醒 / 日历深度整合，几乎零学习成本\n - 完全原生实现，性能轻快，不吃资源\n\n**一句话定位**\n\n把原本零散的系统信息、任务、媒体控制都“摆”到桌面上，一眼掌控时间、任务和机器状态，减少来回切换 App 的干扰。\n\n目前**免费**下载，支持内购解锁全部 widget（月卡 ¥8 / 年卡 ¥68 / 终身 ¥128），开发者更新很勤快，近期还在持续加新挂件（比如重复待办、邮箱小组件等）。\n\n[App Store 链接](https://apps.apple.com/cn/app/widgetify-实用桌面小组件-效率助手/id6479962405?mt=12)：\n如果你也觉得 macOS 原生桌面 widget 功能太少、太鸡肋，欢迎试试这个工具，个人用了之后桌面整洁度和信息获取效率提升非常明显。欢迎大家体验 & 反馈～\n\n<img width=\"2800\" height=\"2100\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/105acae4-aa26-48bb-afa3-c5e1deebe838\" />",
@@ -808,23 +824,5 @@
     "created_at": "2026-03-11T10:17:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9208"
-  },
-  {
-    "id": 9207,
-    "title": "【开源自荐】Flux Monitor - 专为作为服务器运行的 Mac 设计的监控与管理面板",
-    "content": "【开源自荐】Flux Monitor - 专为作为服务器运行的 Mac 设计的监控与管理面板\n\n开源地址：https://github.com/chentao1006/FluxMonitor\n\n项目简介：\n一款专为**作为服务器运行的 Mac** 设计的监控与服务管理面板。\n\n![Screenshot 1](https://raw.githubusercontent.com/chentao1006/FluxMonitor/main/screenshots/iScreen%20Shoter%20-%20Safari%E6%B5%8F%E8%A7%88%E5%99%A8%20-%20260311163944.jpg)\n\n### 功能\n\n- **系统概览**: 显示 CPU、内存、磁盘使用率及网络流量，运行终端命令。\n- **进程管理**: 展示运行进程及其资源消耗。\n- **日志分析**: 查看系统日志。\n- **配置文件管理**: 编辑并管理系统配置文件。\n- **自启服务管理**: 管理 macOS 的 LaunchAgents 与 LaunchDaemons 服务。\n- **Docker**: 管理容器与镜像。\n- **Nginx**: 管理站点及全局配置。\n- **OpenClaw**: 查看进程及内存统计信息。\n- **选配 AI 助手**: 绑定 OpenAI API 密钥后，可使用日志诊断、参数配置审查及故障排查辅助功能。\n",
-    "created_at": "2026-03-11T09:46:15Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9207"
-  },
-  {
-    "id": 9205,
-    "title": "【网站推荐】纯手工代码编辑者的末日，https://no-ai-code.com/",
-    "content": "一个AI使用代码统计的署名网站，看起来真的正在变为另外的恐龙。\n\n[https://no-ai-code.com/](https://no-ai-code.com/)\n\n<img width=\"983\" height=\"821\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9aebc00f-1a19-47d6-a847-12bbde5440f4\" />",
-    "created_at": "2026-03-11T07:33:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9205"
   }
 ]
