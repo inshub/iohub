@@ -1,5 +1,13 @@
 [
   {
+    "id": 9330,
+    "title": "[投稿] OpenCMO — 开源 AI CMO，10 个 AI 专家智能体组成的营销团队",
+    "content": "## 推荐语\n\nOpenCMO 是一个开源的多智能体 AI 营销系统。输入一个 URL，3 个 AI 角色（产品分析师、SEO 专家、社区运营）会进行 3 轮辩论式讨论来分析你的产品，然后 10 个 AI 专家自动帮你做 SEO 审计、AI 搜索可见度分析、社区监控等。\n\n亮点：\n- 多智能体辩论而非单次 LLM 调用，产出质量显著更高\n- 知识图谱可视化品牌-关键词-竞品关系\n- 支持 OpenAI/DeepSeek/Ollama 等任意 LLM\n- Apache 2.0 开源\n\n链接：https://github.com/study8677/OpenCMO\n",
+    "created_at": "2026-03-20T17:41:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9330"
+  },
+  {
     "id": 9329,
     "title": "【开源自荐】Patternia — 为现代 C++ 提供模式匹配",
     "content": "**Patternia** 致力于为 C++ 提供一种更自然的 match-style 表达方式，同时尽量避免隐式绑定、隐藏规则这类容易让人困惑的设计。\n\n目前支持：\n- 字面量匹配\n- 显式绑定（且只允许显式绑定）\n- `has<>` 解构\n- `std::variant` 匹配\n- 多分支下的快速分发路径\n- 守卫谓词 `[]`\n\n语法示例如下：\n\n```cpp\nint x = 42;\n\n// 基本的字面量匹配\n\nauto res = match(x) | on (\n  lit(1) >> \"One\",\n  lit(2) >> \"Two\",\n  _ >> \"Other\"\n);\n```\n\n```cpp\nstruct Point {\n  int x;\n  int y;\n};\n\nPoint p {0, 0};\n\n// 结构体解构并绑定解构的值\n\nmatch(p) | on (\n  $(has<&Point::x, &Point::y>) >> [](int x, int y]{ std::cout << \"x: \" << x << \" y: \" << y << '\\n'; },\n  ...\n  ...\n);\n```\n\n更多代码示例可以前往 [Show Patternia](https://show.patternia.tech) 查看并运行；\n[官方文档](https://patternia.tech)\n[GitHub](https://github.com/sentomk/patternia)",
@@ -818,13 +826,5 @@
     "created_at": "2026-03-13T05:10:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9228"
-  },
-  {
-    "id": 9227,
-    "title": "【APP自荐】AI克隆父母声音定制化讲故事的APP",
-    "content": "大家好！给大家分享一款我做的克隆父母声音讲故事的APP\n\n做这个的原因和背景：\n我现在每天都要给儿子讲绘本、讲故事，有时候有点累，突然想到一个idea，就是克隆一下我的声音给他讲，然后就开始网上搜这个idea相关的产品，发现很少，然后还跟ai交流发现了这个产品受众的其他痛点，比如，父母出差，或者想要留住爷爷奶奶的声音等等，然后一想就是一大连篇，还可以做成长记录，语音生日信，时光胶囊等等。\n\n产品名称：\n生声念念，大概意思就是克隆父母声音，ai生成故事，给小朋友念\n\n官网：\nhttps://www.shengshengniannian.com/  \n（内有APP下载地址）\n\n核心功能：\n- 克隆声音\n- 定制故事 、寓教故事\n- 故事合成音频\n- 播放故事\n- 订阅、内购\n\n未来功能：\n- 成长记录\n- 语音生日信\n- 时间胶囊\n- 故事共创分享社区\n\n目前Android的话，大家可以免费下载，也可以暂时免费使用，有孩子的爸妈可以去试试，这个产品分享给了身边的有孩子的朋友，他们还是觉得挺好，愿意尝试。请大家可以多多提意见和建议，我也会不断迭代升级！",
-    "created_at": "2026-03-13T02:13:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9227"
   }
 ]
