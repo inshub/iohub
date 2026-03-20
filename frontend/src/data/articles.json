@@ -1,5 +1,13 @@
 [
   {
+    "id": 9329,
+    "title": "【开源自荐】Patternia — 为现代 C++ 提供模式匹配",
+    "content": "**Patternia** 致力于为 C++ 提供一种更自然的 match-style 表达方式，同时尽量避免隐式绑定、隐藏规则这类容易让人困惑的设计。\n\n目前支持：\n- 字面量匹配\n- 显式绑定（且只允许显式绑定）\n- `has<>` 解构\n- `std::variant` 匹配\n- 多分支下的快速分发路径\n- 守卫谓词 `[]`\n\n语法示例如下：\n\n```cpp\nint x = 42;\n\n// 基本的字面量匹配\n\nauto res = match(x) | on (\n  lit(1) >> \"One\",\n  lit(2) >> \"Two\",\n  _ >> \"Other\"\n);\n```\n\n```cpp\nstruct Point {\n  int x;\n  int y;\n};\n\nPoint p {0, 0};\n\n// 结构体解构并绑定解构的值\n\nmatch(p) | on (\n  $(has<&Point::x, &Point::y>) >> [](int x, int y]{ std::cout << \"x: \" << x << \" y: \" << y << '\\n'; },\n  ...\n  ...\n);\n```\n\n更多代码示例可以前往 [Show Patternia](https://show.patternia.tech) 查看并运行；\n[官方文档](https://patternia.tech)\n[GitHub](https://github.com/sentomk/patternia)",
+    "created_at": "2026-03-20T14:57:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9329"
+  },
+  {
     "id": 9328,
     "title": "[投稿] Tunelo - 一行命令将本地服务暴露到公网（Rust, QUIC）",
     "content": "## Tunelo\n\n一个用 Rust 写的隧道工具，一行命令将本地端口或文件暴露到公网，类似 ngrok 但完全开源、可自建。\n\n```bash\n# 暴露本地端口\ntunelo http 3000\n# ✔ Public URL: https://abc123.tunelo.net\n\n# 共享文件夹（带 Web 文件浏览器）\ntunelo serve .\n\n# 自建服务端\ntunelo relay --domain yourdomain.com\n```\n\n**特点：**\n- 单个二进制文件（~4 MB），客户端和服务端合一\n- QUIC 隧道传输（比 ngrok 的 HTTP/2 更先进）\n- 零拷贝数据转发，8 MB 内存\n- 内置 Web 文件浏览器：代码高亮、Markdown 渲染、PDF/视频/音频预览、CSV 表格\n- 断线自动重连\n- 无需注册，完全免费，可自建\n\n**与同类工具对比：**\n| | ngrok | bore | tunelo |\n|---|---|---|---|\n| 开源 | 否 | 是 | 是 |\n| 需要账号 | 是 | 否 | 否 |\n| 传输协议 | HTTP/2 | TCP | QUIC |\n| 可自建 | 否 | 是 | 是 |\n| 文件浏览 | 否 | 否 | 是 |\n\n安装：`curl -fsSL https://tunelo.net/install.sh | sh`\n\n- GitHub: https://github.com/jiweiyuan/tunelo\n- 网站: https://tunelo.net",
@@ -818,13 +826,5 @@
     "created_at": "2026-03-13T02:13:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9227"
-  },
-  {
-    "id": 9226,
-    "title": "【开源自荐】InsForge - 为 AI 编程 Agent 打造的后端即服务平台（Supabase 开源替代）",
-    "content": "https://github.com/InsForge/InsForge\n\nInsForge 是一个为 AI 编程 Agent 设计的开源 Backend-as-a-Service (BaaS) 平台。它在后端基础设施（数据库、认证、存储、边缘函数等）之上构建了一层语义层，让 Cursor、Claude Code、Windsurf 等 AI 编程工具能够通过 MCP 协议直接理解、操作和管理整个后端，实现从需求到上线的全流程自动化。\n\n## 演示视频\n\n[![InsForge Demo](https://img.youtube.com/vi/Ze_Co2zbnxE/maxresdefault.jpg)](https://www.youtube.com/watch?v=Ze_Co2zbnxE)\n\n## 核心能力\n\n- **数据库**：内置 PostgreSQL，AI Agent 可直接建表、写 SQL、管理 Schema，支持行级安全策略（RLS）\n- **认证系统**：用户注册/登录、JWT、OAuth、OTP，开箱即用\n- **文件存储**：S3 兼容的对象存储，支持 Bucket 管理和文件上传\n- **实时通信**：基于 WebSocket 的实时数据推送，支持频道订阅和消息广播\n- **边缘函数**：基于 Deno Subhosting 的 Serverless 函数，代码即部署\n- **模型网关**：OpenAI 兼容的统一 API，聚合多家 LLM 提供商\n- **站点部署**：前端静态站点的构建与部署\n\n## Agent 工具链\n\nInsForge 围绕 AI Agent 的工作方式提供了完整的工具链：\n\n- **MCP Server**（[mcp.insforge.dev/mcp](https://mcp.insforge.dev/mcp)）：遵循 Model Context Protocol 标准，AI Agent 通过结构化的工具调用直接操作后端，无需人工介入\n- **Agent Skills**（[insforge/agent-skills](https://github.com/insforge/agent-skills)）：预置的技能包，Agent 可以按需加载数据库建模、认证配置、存储管理等领域知识，降低 prompt 工程成本\n- **CLI**（`@insforge/cli`）：命令行工具，一条 `npx @insforge/cli create` 即可创建项目并自动配置 InsForge Skills 和项目连接\n\n三者配合，让 AI Agent 从「只能写代码」进化为「能写代码、能管后端、能部署上线」的全栈开发角色。\n\n## 与 Supabase 的区别\n\nInsForge 和 Supabase 提供类似的后端原语，但核心差异在于 **AI-Native 的设计理念**：\n\n| | Supabase | InsForge |\n|---|---|---|\n| 交互方式 | 人通过 Dashboard 操作 | AI Agent 通过 MCP 协议操作 |\n| 核心用户 | 开发者 | AI 编程 Agent + 开发者 |\n| 上下文工程 | 无 | 内置语义层，为 Agent 提供结构化文档和操作指令 |\n\nAI Agent 可以通过一句自然语言指令完成「建表 → 写接口 → 配认证 → 部署」的完整流程，无需人工切换 Dashboard。\n\n## 快速开始\n\n### **Cloud（推荐）**：\n\n```bash\nnpx @insforge/cli create\n```\n一条命令即可创建云端项目，无需安装 Docker，直接开始开发。\n\n### Self-hosted：\n\n```bash\ngit clone https://github.com/insforge/insforge.git\ncd insforge\ncp .env.example .env\ndocker compose up -d\n```\n\n启动后访问 http://localhost:7130 ，按引导连接你的 AI 编程工具即可。也支持一键部署到 Railway / Zeabur / Sealos 等云平台。\n\n## 已支持的 AI 编程工具\nCursor、Claude Code、Windsurf、Cline、Trae、Roo Code、GitHub Copilot、Kiro 等 12+ 款主流 AI 编程工具，均可通过 InsForge CLI 或者 MCP 协议一键接入。\n\n## 技术栈\nTypeScript / Node.js / PostgreSQL / PostgREST / React / Vite / Docker\n\n## 相关链接\n官网：[insforge.dev](https://insforge.dev/)\n文档：[docs.insforge.dev](https://docs.insforge.dev/introduction)\nDiscord：[加入社区](https://discord.gg/DvBtaEc9Jz)\n\n## 开源协议\n- Apache-2.0",
-    "created_at": "2026-03-12T21:46:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9226"
   }
 ]
