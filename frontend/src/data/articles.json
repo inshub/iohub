@@ -1,5 +1,13 @@
 [
   {
+    "id": 9328,
+    "title": "[投稿] Tunelo - 一行命令将本地服务暴露到公网（Rust, QUIC）",
+    "content": "## Tunelo\n\n一个用 Rust 写的隧道工具，一行命令将本地端口或文件暴露到公网，类似 ngrok 但完全开源、可自建。\n\n```bash\n# 暴露本地端口\ntunelo http 3000\n# ✔ Public URL: https://abc123.tunelo.net\n\n# 共享文件夹（带 Web 文件浏览器）\ntunelo serve .\n\n# 自建服务端\ntunelo relay --domain yourdomain.com\n```\n\n**特点：**\n- 单个二进制文件（~4 MB），客户端和服务端合一\n- QUIC 隧道传输（比 ngrok 的 HTTP/2 更先进）\n- 零拷贝数据转发，8 MB 内存\n- 内置 Web 文件浏览器：代码高亮、Markdown 渲染、PDF/视频/音频预览、CSV 表格\n- 断线自动重连\n- 无需注册，完全免费，可自建\n\n**与同类工具对比：**\n| | ngrok | bore | tunelo |\n|---|---|---|---|\n| 开源 | 否 | 是 | 是 |\n| 需要账号 | 是 | 否 | 否 |\n| 传输协议 | HTTP/2 | TCP | QUIC |\n| 可自建 | 否 | 是 | 是 |\n| 文件浏览 | 否 | 否 | 是 |\n\n安装：`curl -fsSL https://tunelo.net/install.sh | sh`\n\n- GitHub: https://github.com/jiweiyuan/tunelo\n- 网站: https://tunelo.net",
+    "created_at": "2026-03-20T14:15:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9328"
+  },
+  {
     "id": 9327,
     "title": "【开源自荐】AgentBrief —— AI 编程 Agent 的职业技能包管理器",
     "content": "阮老师好！\n\n推荐一个我做的开源 CLI 工具：[AgentBrief](https://github.com/0xranx/agentbrief)\n\n**痛点：**\n\n现在用 Claude Code、Cursor 这些 AI 编程 Agent 的人越来越多，但每开一个新项目都要手写 CLAUDE.md 来告诉 Agent 怎么做事——团队规范、领域知识、安全约束……换个项目又要重来一遍。\n\n同时，Agent Skills 生态正在爆发（skills.sh 上有 89,000+ 个 skill），但太分散了，用户需要一个一个手动安装配置。\n\n**AgentBrief 的解决思路：**\n\n把 Agent 的\"职业技能包\"（角色定义 + 领域知识 + 行为约束 + 可触发技能）打包成可复用的模块，一条命令安装：\n\n```bash\nnpx agentbrief use startup-founder\n```\n\n**装 brief 前后对比 — 同样的问题，完全不同的回答：**\n\n![before-after](https://raw.githubusercontent.com/0xranx/agentbrief/main/docs/images/before-after.jpg)\n\n**核心设计亮点：**\n\n1. **eslint-config 模式**：eslint-config-airbnb 管代码规范，AgentBrief 管 Agent 行为规范\n2. **引擎无关**：同一个 brief 自动适配 Claude Code / Cursor / OpenCode / Codex\n3. **可继承组合**：extends 机制让你继承社区 brief 后叠加团队定制\n4. **去中心化分发**：GitHub 仓库就是 brief 包，git tag 就是版本\n5. **17 个官方职能包**：全栈工程师、安全审计、产品经理、创业者、DevOps、数据分析等\n\n**17 个官方 brief，覆盖开发 / 产品 / 增长 / 运维：**\n\n![catalog](https://raw.githubusercontent.com/0xranx/agentbrief/main/docs/images/engines.jpg)\n\n**Brief 详情页 — startup-founder 组合了 5 个 brief、13 个技能：**\n\n![brief-detail](https://raw.githubusercontent.com/0xranx/agentbrief/main/docs/images/brief-detail.jpg)\n\n项目用 TypeScript 构建，MIT 协议，有中英文网站和完整文档。\n\nGitHub：https://github.com/0xranx/agentbrief\n网站：https://0xranx.github.io/agentbrief",
@@ -56,14 +64,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/9321"
   },
   {
-    "id": 9320,
-    "title": "【网站推荐】Convert YouTube videos to WAV online for free.",
-    "content": "Convert YouTube videos to WAV online for free. Fast conversion, audio preview, and direct WAV download with no signup required.\n\nsitte: [https://youtubetowav.io/](https://youtubetowav.io/)",
-    "created_at": "2026-03-20T07:31:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9320"
-  },
-  {
     "id": 9319,
     "title": "【工具自荐】JobMirror — AI 求职决策平台，简历匹配 + Offer 对比 + 职业报告一站搞定",
     "content": "## 我在找工作时遇到的问题\n\n同时拿到3个 offer，薪资差不多，但公司文化、成长空间、福利完全不同。我花了两周时间做表格、问朋友、反复纠结，最后还是没有底气——因为没有一个系统的方法帮我量化这些因素。\n\n这就是我做 **JobMirror** 的原因。\n\n## 它能做什么\n\n### 🎯 JD 匹配分析\n上传简历 + 粘贴职位描述，AI 秒出匹配分（0-100）、技能差距清单、针对性改进建议。投简历前先知道自己有几成把握。\n\n### 📝 简历优化\n不是泛泛的「用数字量化成果」，而是针对你投的这个具体岗位，告诉你哪句话要改、怎么改、为什么改。\n\n### 🧠 大五人格测评\n30分钟测评，输出你的职业优势、适合的工作环境、潜在的职场风险。不是算命，是有数据支撑的自我认知。\n\n### ⚖️ Offer 对比（我最喜欢的功能）\n把多个 offer 的薪资、福利、成长空间、通勤、文化匹配度全部录入，设置你自己的权重，AI 生成加权评分和对比雷达图。选哪个一目了然。\n\n### 📊 综合职业报告\n整合所有分析，生成一份完整的职业决策报告，可以导出分享给家人或职业顾问。\n\n## 真实使用场景\n\n- 投了50份简历只有2个回音 → 用 JD 匹配发现简历和岗位匹配度只有40%，针对性修改后回复率提升\n- 拿到 BAT 和创业公司两个 offer → Offer 对比功能帮你把「感觉」变成数字\n- 想转行但不知道差距在哪 → 技能差距分析给出具体的学习路径\n\n## 免费使用\n\n免费版每月有基础次数，够用来体验核心功能。Pro 版 .9/月，无限使用所有功能。\n\n🔗 **https://jobmirror.app**\n\n---\n\n*如果你也曾在 offer 之间纠结过，欢迎试试。有任何反馈欢迎留言。*",
@@ -92,7 +92,9 @@
     "title": "【开源自荐】proxychains-rs —— 跨平台的 proxychains4（支持按配置分组指定代理）",
     "content": "项目地址：https://github.com/tianrking/proxychains-rs\n\nproxychains-rs 是一个 Rust 实现的 proxychains4，目标是让“指定程序走代理链”在 Linux / macOS / Windows 都可用。\n\n当前已支持：\n- 协议：socks5、socks4/socks4a、http、raw\n- 链路模式：dynamic/strict/random/load_balance/failover\n- 指定配置文件：-f\n- 指定代理分组：[ProxyList:<group>] + --group\n- 配置工具：--list-groups、--check\n- DNS：proxy_dns（兼容 proxy_dns_old / proxy_dns_daemon / round_robin_chain 语义）\n\n适用场景：\n- 多地区线路切换（如 jp/us/hk 分组）\n- 指定命令临时走代理，不改系统全局代理\n- 排查网络连通性与代理链故障\n\n示例：\nproxychains4 -f ./proxychains.conf --group jp -v curl https://ifconfig.me\n\n<img width=\"1471\" height=\"738\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cc62197e-1a44-4ffb-bc1f-9d303350eed9\" />\n\n欢迎大家试用，尤其欢迎 Linux 发行版兼容性和 Windows 目标程序兼容性的反馈。",
     "created_at": "2026-03-20T05:48:32Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9316"
   },
   {
@@ -124,7 +126,9 @@
     "title": "【开源自荐】Flare Stack Blog —— 基于 Cloudflare 全家桶的全栈博客 CMS，内置 MCP Server",
     "content": "开源地址：https://github.com/du2333/flare-stack-blog\n演示站：https://blog.dukda.com\n\n市面上大多数博客方案是静态站点生成器，如果想要评论、搜索、后台管理等动态功能，往往需要自己拼凑多个第三方服务。Flare Stack Blog 是一个跑在 Cloudflare Workers 上的全栈博客 CMS，集成 D1、R2、KV、Durable Objects、Workflows、Queues、Workers AI、Images 共 9 项 Cloudflare 服务，依托免费额度，个人使用基本没有费用。\n\n技术栈：React 19 + TanStack Start（SSR）+ Hono + Drizzle ORM + TipTap 编辑器 + TailwindCSS 4\n\n### 界面预览\n\n<table>\n  <tr>\n    <td><strong>Default 主题</strong></td>\n    <td><strong>Fuwari 主题</strong></td>\n  </tr>\n  <tr>\n    <td><img src=\"https://github.com/user-attachments/assets/5625bac0-0f30-4822-9505-cf34d86459a4\" alt=\"Default 主题首页\" /></td>\n    <td><img src=\"https://github.com/user-attachments/assets/30676ee6-0e7a-4842-b595-47b373e8c91d\" alt=\"Fuwari 主题首页\" /></td>\n  </tr>\n  <tr>\n    <td><strong>后台编辑器</strong></td>\n    <td><strong>MCP 客户端管理</strong></td>\n  </tr>\n  <tr>\n    <td><img src=\"https://github.com/user-attachments/assets/e7e17029-f3bc-4e9b-a44b-33886655027a\" alt=\"后台编辑器\" /></td>\n    <td><img src=\"https://github.com/user-attachments/assets/2056a086-780e-4992-b883-b2c20d5448b9\" alt=\"MCP 客户端管理\" /></td>\n  </tr>\n</table>\n\n### 主要功能\n\n- **内置 MCP Server**：通过 OAuth 鉴权连接 Claude Code 等 AI 客户端，用自然语言管理文章、评论、标签、媒体库\n- **AI 辅助**：基于 Workers AI 的评论自动审核、文章摘要生成、标签推荐\n- **主题系统**：TypeScript 接口定义主题契约，业务与视觉层解耦，通过构建时环境变量切换主题，目前内置 2 套主题\n- **异步工作流**：6 个 Cloudflare Workflows 处理文章发布、编辑器自动快照、评论审核、定时发布、导入导出\n- **评论 & 通知**：嵌套回复，邮件 / Webhook 双通道通知，按事件类型订阅\n- **其他**：Orama 全文搜索（支持中文分词）、版本历史回溯、Markdown 导入导出、RSS / Sitemap / Schema.org\n",
     "created_at": "2026-03-19T22:44:50Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9312"
   },
   {
