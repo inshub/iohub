@@ -1,5 +1,37 @@
 [
   {
+    "id": 9319,
+    "title": "【工具自荐】JobMirror — AI 求职决策平台，简历匹配 + Offer 对比 + 职业报告一站搞定",
+    "content": "## 我在找工作时遇到的问题\n\n同时拿到3个 offer，薪资差不多，但公司文化、成长空间、福利完全不同。我花了两周时间做表格、问朋友、反复纠结，最后还是没有底气——因为没有一个系统的方法帮我量化这些因素。\n\n这就是我做 **JobMirror** 的原因。\n\n## 它能做什么\n\n### 🎯 JD 匹配分析\n上传简历 + 粘贴职位描述，AI 秒出匹配分（0-100）、技能差距清单、针对性改进建议。投简历前先知道自己有几成把握。\n\n### 📝 简历优化\n不是泛泛的「用数字量化成果」，而是针对你投的这个具体岗位，告诉你哪句话要改、怎么改、为什么改。\n\n### 🧠 大五人格测评\n30分钟测评，输出你的职业优势、适合的工作环境、潜在的职场风险。不是算命，是有数据支撑的自我认知。\n\n### ⚖️ Offer 对比（我最喜欢的功能）\n把多个 offer 的薪资、福利、成长空间、通勤、文化匹配度全部录入，设置你自己的权重，AI 生成加权评分和对比雷达图。选哪个一目了然。\n\n### 📊 综合职业报告\n整合所有分析，生成一份完整的职业决策报告，可以导出分享给家人或职业顾问。\n\n## 真实使用场景\n\n- 投了50份简历只有2个回音 → 用 JD 匹配发现简历和岗位匹配度只有40%，针对性修改后回复率提升\n- 拿到 BAT 和创业公司两个 offer → Offer 对比功能帮你把「感觉」变成数字\n- 想转行但不知道差距在哪 → 技能差距分析给出具体的学习路径\n\n## 免费使用\n\n免费版每月有基础次数，够用来体验核心功能。Pro 版 .9/月，无限使用所有功能。\n\n🔗 **https://jobmirror.app**\n\n---\n\n*如果你也曾在 offer 之间纠结过，欢迎试试。有任何反馈欢迎留言。*",
+    "created_at": "2026-03-20T06:39:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9319"
+  },
+  {
+    "id": 9318,
+    "title": "【工具自荐】RexCLI — 你的 AI Agent   有了记忆，跨会话接着干",
+    "content": "# 【工具自荐】RexCLI — 你的 AI Agent 有了记忆，跨会话接着干\n\n---\n\n<img width=\"723\" height=\"797\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ece0dec4-76ac-4481-a3f3-58c652f99c63\" />\n\n**核心震惊点：**\n\n> Claude Code / Codex CLI / Gemini CLI 重开一个会话，之前的工作全丢了。RexCLI 用一个本地文件系统 Context DB，让 AI Agent 真正记住了上下文，下次启动从断点继续。\n\n---\n\n## 正文\n\n用 Claude Code 干活，开了十几个会话，每个会话都是从零开始。\n\n好不容易在 Session A 里完成了一半的需求，切到 Session B 想接着干——AI 完全不记得你在做什么。上下文丢失、任务重复、进度反复。这是所有 AI CLI 工具的通病。\n\n**RexCLI（AIOS）** 解决了这个问题。\n\n### 它做了什么\n\nRexCLI 是一个本地优先的 Agent 工作流增强层，支持 Claude Code、Codex CLI 和 Gemini CLI。它为这些 AI CLI 添加了三个核心能力：\n\n**1. 可恢复的任务记忆（Context DB）**\n\n每个项目有独立的 SQLite 数据库，记录会话历史、事件、检查点。Agent 每次启动自动注入上下文包，上次做到哪、卡在哪、下一步是什么，一清二楚。\n\n**2. 统一浏览器自动化（Playwright MCP）**\n\nAI 不仅能写代码，还能操作网页。通过 `browser_*` 工具组，Agent 可以点击、填表、截图、导航——在真实浏览器里完成端到端任务。内置隐身指纹浏览器，防止被检测。\n\n**3. 隐私保护（Privacy Guard）**\n\n严格模式下，AI 读取配置文件前自动脱敏，API Key、Token、Cookie 全部过滤，本地跑不过第三方。\n\n### 震惊点：30秒装完，不需要改任何习惯\n\n安装完以后，你还是用 `codex`、`claude`、`gemini` 这几个命令。RexCLI 通过 zsh 透明包装（transparent wrapper），自动在后台注入上下文。**零学习成本，零工作流改变。**\n\n```bash\ncurl -fsSL https://github.com/rexleimo/rex-cli/releases/latest/download/aios-install.sh | bash\nsource ~/.zshrc\naios\n# 选 Setup -> all -> Doctor，完成\n```\n\nWindows 同样一行命令搞定。\n\n### 架构长什么样\n\n```\n用户 → codex / claude / gemini\n     → zsh wrapper（透明注入）\n     → ContextDB CLI（记忆层：init/session/checkpoint/pack）\n     → Playwright Browser MCP（browser_* 工具）\n     → 本地浏览器 / 真实网页\n```\n\n所有数据留在本地 `memory/context-db/`，不上传到任何服务器。\n\n### 具体能干什么\n\n- **长任务分阶段执行**：做到一半可以退出，下次从检查点继续，不丢进度\n- **浏览器自动化**：网页操作类任务（数据采集、表单填写、UI 测试）直接用自然语言驱动\n- **团队上下文共享**：Context Pack 可以导出，丢给队友的 AI 直接续上\n- **隐私优先**：严格模式下配置文件脱敏，AI 看不见你的密钥\n\n### 为什么是开发者利器\n\n对个人开发者：不再为\"上次做到哪了\"烦恼，Session 就是真正的任务单元，而不是每次都重建。\n\n对团队：Skill 系统（技能库）可以积累操作规范，新项目开箱即用，不需要反复 prompt。\n\n对任何 AI CLI 用户：透明包装意味着不需要改变任何使用习惯，装完就生效。\n\n### 开源地址\n\n- GitHub: https://github.com/rexleimo/rex-cli\n- 文档: https://cli.rexai.top\n- 博客: https://cli.rexai.top/blog/\n- 案例库: https://cli.rexai.top/case-library/\n",
+    "created_at": "2026-03-20T05:53:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9318"
+  },
+  {
+    "id": 9317,
+    "title": "【开源自荐】Memind - 首个 Java 原生的 AI Agent 认知记忆系统，让 Agent 的记忆像人一样进化",
+    "content": " ### 项目地址                                                                                                                                                                                                        \n                                                                                                                                                                                                                      \n  https://github.com/openmemind/memind                                       \n                                                                                                                                                                                                                      \n  ### 类别                                                                                                                                                                                                            \n                       \n  Java / AI / Spring 生态 / 基础设施\n\n  ### 项目简介\n\n  这是一个为 AI Agent 设计的认知记忆系统，后端完全使用 Java 开发，深度集成 Spring Boot 4.0 + Spring AI 2.0。\n\n  目前主流的 AI 记忆方案大多把记忆当成\"搜索问题\"——对话内容切片后丢进向量数据库，检索时做相似度匹配就完事了。但人类的记忆不是这样工作的：我们不只是记住事实，还会归纳模式、形成认知、建立对一个人的整体理解。\n\n  Memind 试图模拟这个认知进化过程：\n\n  - **🍃 事实提取**：从单次对话中提取具体信息，比如\"用户有 8 年后端经验，在阿里待过 3 年\"\n  - **🌿 模式归纳**：跨多次对话自动归纳规律，比如\"资深后端架构师，分布式系统专家\"\n  - **🌳 认知形成**：进一步抽象出深层理解，比如\"偏好长期代码可维护性，技术选型偏保守\"\n\n  记忆不再是一堆碎片化的向量片段，而是一个不断进化、层层深入的认知体系。\n\n  ### 主要功能\n\n  - **三层认知进化**：事实 → 模式 → 认知，记忆会自动\"思考\"和\"成长\"\n  - **双作用域记忆**：USER 作用域（画像/偏好/经历）+ AGENT 作用域（工具模式/可复用流程）\n  - **双重检索策略**：Simple（向量 + BM25 融合）和 Deep（LLM 辅助扩展 + 重排序）\n  - **全链路可观测**：内置 OpenTelemetry + Micrometer，记忆提取和检索过程透明可追踪\n\n  ### 技术栈\n\n  Java 21 + Spring Boot 4.0 + Spring AI 2.0 + SQLite/MySQL + Qdrant + OpenTelemetry\n\n  ### 项目状态\n\n  - ✅ LoCoMo 基准测试 **86.88% 整体准确率**（仅用 gpt-4o-mini）\n  - ✅ 82 个测试文件，JaCoCo + Checkstyle + Spotless 代码规范\n  - ✅ GitHub Actions CI/CD\n  - ⚠️  当前版本 0.0.1-SNAPSHOT，尚未发布到 Maven Central\n  - ⚠️  距离大规模生产部署还需要更多实战验证\n\n  对于想用 Java 构建 AI Agent、或者不满于现有记忆方案只做\"向量搜索\"的开发者，Memind 提供了一个不同的思路。",
+    "created_at": "2026-03-20T05:51:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9317"
+  },
+  {
+    "id": 9316,
+    "title": "【开源自荐】proxychains-rs —— 跨平台的 proxychains4（支持按配置分组指定代理）",
+    "content": "项目地址：https://github.com/tianrking/proxychains-rs\n\nproxychains-rs 是一个 Rust 实现的 proxychains4，目标是让“指定程序走代理链”在 Linux / macOS / Windows 都可用。\n\n当前已支持：\n- 协议：socks5、socks4/socks4a、http、raw\n- 链路模式：dynamic/strict/random/load_balance/failover\n- 指定配置文件：-f\n- 指定代理分组：[ProxyList:<group>] + --group\n- 配置工具：--list-groups、--check\n- DNS：proxy_dns（兼容 proxy_dns_old / proxy_dns_daemon / round_robin_chain 语义）\n\n适用场景：\n- 多地区线路切换（如 jp/us/hk 分组）\n- 指定命令临时走代理，不改系统全局代理\n- 排查网络连通性与代理链故障\n\n示例：\nproxychains4 -f ./proxychains.conf --group jp -v curl https://ifconfig.me\n\n<img width=\"1471\" height=\"738\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cc62197e-1a44-4ffb-bc1f-9d303350eed9\" />\n\n欢迎大家试用，尤其欢迎 Linux 发行版兼容性和 Windows 目标程序兼容性的反馈。",
+    "created_at": "2026-03-20T05:48:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9316"
+  },
+  {
     "id": 9315,
     "title": "【网站推荐】零手续费、直接到账的数字商品市场",
     "content": "MySell 提供从店铺搭建到订单交付的完整数字商品交易流程\n买家无需注册，仅需邮箱即可购买并通过 PayPal 或多种加密货币付款。\n平台不收取任何交易手续费，卖家直接收到付款；支持订单邮件通知与多语言界面，适合独立创作者、社群与小型数字商品商店自托管运营。\n\n[https://mysell.me](https://mysell.me)",
@@ -794,39 +826,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9218"
-  },
-  {
-    "id": 9217,
-    "title": "【网站自荐】用玄学来判断金融市场走势的网站",
-    "content": "https://github.com/Olcmyk/xuanshare\n\n<img width=\"1440\" height=\"826\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca171892-31dc-479a-b22c-8046d4bfcc85\" />\n\n<img width=\"1439\" height=\"789\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/45962b34-6285-488e-b8db-09536f897ccf\" />",
-    "created_at": "2026-03-12T07:40:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9217"
-  },
-  {
-    "id": 9216,
-    "title": "【文章自荐】拒绝 AI 焦虑！一个普通程序员的真实 AI 工作流（附成本账单）",
-    "content": "文章：[拒绝 AI 焦虑！一个普通程序员的真实 AI 工作流（附成本账单）](https://mp.weixin.qq.com/s/i8x_Nx5caleF0_RZWriNmg)\n\n推荐理由：\n分享了我自己作为一个普通开发者工作和非工作时的 AI 工作流和工具的使用。以及思考 AI 在提升效率的同时是否让人更累了。",
-    "created_at": "2026-03-12T05:43:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9216"
-  },
-  {
-    "id": 9215,
-    "title": "【开源自荐】利用字节seadream系列模型一键复刻小红书爆款。",
-    "content": "只需输入小红书图文链接，使用字节seedream系列模型一键复刻爆款。\ngithub: [https://github.com/zhanchey/MimicThem](url)\n\n功能特点\n一键操作：粘贴小红书链接，点击按钮即可开始复刻\n智能分析：自动反推图片提示词\n图片复刻：利用seedream文生图，按照反推提示词生成 1 张图片->利用seed大模型生成N个变体提示词->使用变体提示词+文生图结果，利用图生图模型再生成N张变体图片，丰富你的图文！\n诗意文案：自动生成适合小红书风格的文案和标签\n实时反馈：SSE 实时推送处理进度，图片生成后立即展示\n并行优化：图片下载和变体生成采用并行处理，大幅提升效率\n\n<img width=\"1770\" height=\"5838\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8cb4f96f-3b09-47ec-8487-1977fabefad7\" />\n\n",
-    "created_at": "2026-03-12T04:52:17Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9215"
-  },
-  {
-    "id": 9214,
-    "title": "【开源自荐】AI 优先的任务管理系统 —— 专为个人用户与 AI Agent设计，自部署。",
-    "content": "# Claw Owner Task\n\n**AI 优先的任务管理系统** —— 专为个人用户与 AI Agent (ClaudeCode / GeminiCLI / OpenCode / OpenCLaw / NanoClaw 等) 设计。  \n依托 Cloudflare 生态提供全球加速的 API 服务，通过高性能 Rust CLI 和 Telegram/飞书 机器人实现无缝的任务管控。\n\ngithub：[https://github.com/gray0128/claw-owner-task](https://github.com/gray0128/claw-owner-task)\n\n---\n\n## 核心特性\n\n*   **高性能 CLI**：基于 Rust 编写，支持全平台（macOS/Linux/Windows），极速启动，内置自动升级。\n*   **AI 友好架构**：全局支持 `--json` 输出结构化数据；提供 `/api/info` 自发现接口，避免 Agent 产生参数幻觉。\n*   **AI 语义解析**：集成 Cloudflare Workers AI，支持自然语言创建任务（例如：“帮我记录明天下午三点的会议”），支持云端定时推送 AI 任务总结。\n*   **多重提醒机制**：支持云端主动推送（Bark / Telegram / 飞书）。\n*   **Telegram/飞书深度交互**：支持对话式智能任务管理，以及精准斜杠命令。\n*   **精准时区管理**：采用“后端 UTC 存储 + 动态时区渲染”方案，彻底解决跨时区偏差。\n*   **极致 Serverless**：基于 Cloudflare Workers + D1 数据库，零成本部署。\n\n<img width=\"1248\" height=\"906\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/875e3d48-2f5c-446c-9e13-edbf102b9cf9\" />\n\n<img width=\"1526\" height=\"2022\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/46594f66-7795-4690-83b7-e80e4f6b1b5d\" />",
-    "created_at": "2026-03-12T03:04:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9214"
   }
 ]
