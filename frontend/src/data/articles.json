@@ -1,5 +1,13 @@
 [
   {
+    "id": 9338,
+    "title": "自荐：Rapid-MLX — Apple Silicon 最快的本地 AI 推理引擎",
+    "content": "## Rapid-MLX\n\nApple Silicon 上最快的本地 AI 推理引擎，完全兼容 OpenAI API。\n\n**GitHub**: https://github.com/raullenchai/Rapid-MLX\n\n### 项目简介\n\nRapid-MLX 是一个基于 MLX 框架的高性能本地大语言模型推理服务器，专为 Apple Silicon Mac 优化。提供与 OpenAI 完全兼容的 API 接口，可直接替代云端 API，所有数据留在本地。\n\n### 核心特性\n\n- **高性能推理**：比 Ollama 快 2-4 倍（实测数据见下方）\n- **OpenAI API 兼容**：`/v1/chat/completions`、`/v1/completions` 等标准接口，可直接对接现有工具链\n- **17 种工具调用解析器**：支持 Qwen、Hermes、MiniMax、GLM 等主流模型的 function calling\n- **推理分离（Reasoning）**：支持 thinking/reasoning 模型的结构化输出\n- **DeltaNet 状态快照**：针对 Qwen3.5 等 RNN-Attention 混合架构，TTFT 提速 1.5-4.8x\n- **提示缓存（Prompt Cache）**：跨请求 KV 缓存复用，多轮对话加速\n- **视觉模型支持**：支持 Qwen-VL、Gemma 等多模态模型\n- **音频 STT/TTS**：内置语音转文字和文字转语音\n\n### 性能对比（M3 Ultra, Qwen3.5-9B）\n\n| 引擎 | 生成速度 (tok/s) | TTFT (ms) |\n|------|-----------------|-----------|\n| **Rapid-MLX** | **108** | **180** |\n| Ollama | 46 | 320 |\n| mlx-lm (上游) | 62 | 250 |\n\nRapid-MLX 在 Qwen3.5-9B 上比 Ollama 快 2.3 倍，比上游 mlx-lm 快 1.7 倍。在更大模型（GPT-OSS-20B）上优势更明显，达到 4.2 倍。\n\n### 安装与使用\n\n```bash\n# 一键安装\ncurl -fsSL https://raw.githubusercontent.com/raullenchai/Rapid-MLX/main/install.sh | bash\n\n# 启动服务\nrapid-mlx serve qwen3.5-9b\n\n# 使用（兼容任何 OpenAI 客户端）\ncurl http://localhost:8000/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\": \"qwen3.5-9b\", \"messages\": [{\"role\": \"user\", \"content\": \"你好\"}]}'\n```\n\n### 适用场景\n\n- 本地开发调试 AI 应用，替代付费 API\n- 隐私敏感场景，数据不离开本机\n- 需要 function calling 能力的本地 Agent 开发\n- Apple Silicon Mac 用户追求极致推理速度\n\n开源协议：MIT",
+    "created_at": "2026-03-21T21:42:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9338"
+  },
+  {
     "id": 9337,
     "title": "JEPA是什么？Yann LeCun力推的AI新架构全面解析",
     "content": "https://www.betteryeah.com/blog/jepa-joint-embedding-predictive-architecture-lecun-ai-guide\n\n\n一、JEPA的理论基础与核心思想\n联合嵌入预测架构（Joint Embedding Predictive Architecture，简称JEPA）的提出源于LeCun对当前AI发展路径的深刻反思。2022年6月，他发表了影响深远的立场论文《A Path Towards Autonomous Machine Intelligence》，系统性地阐述了这一全新的机器学习范式。\n\nJEPA的核心思想可以用一句话概括：在抽象的表征空间中预测缺失信息，而非在像素或token空间中重建细节。这种设计哲学源于认知科学中的预测编码理论，该理论认为生物神经系统的学习本质是通过预测感官输入来构建对世界的内部表征。\n\n传统的生成式模型试图在像素级别重建图像或在词汇级别生成文本，这种方法虽然能产生逼真的输出，但存在致命缺陷：模型必须花费大量计算资源去建模那些难以预测且与任务无关的低层细节，比如图像中的噪声、纹理变化，或文本中的语法细节。JEPA通过将预测任务转移到抽象的表征空间，使模型能够专注于捕捉数据中可预测的、具有语义意义的规律。\n\n这种方法带来了三个关键优势：首先，模型无需依赖手工设计的数据增强，因为学习信号完全来源于数据内部的结构预测任务；其次，由于预测在表征空间进行，模型不必建模像素级噪声，可以专注于语义特征；第三，这种架构天然具备构建世界模型的能力，为实现真正的机器智能奠定基础。\n\nJEPA的理论基础还体现在对\"表征坍塌\"问题的根本性解决方案上。在传统的自监督学习中，模型容易陷入\"表征坍塌\"的困境——即对所有输入都输出相同的表征向量，从而轻松最小化损失函数但学不到任何有用信息。[LeCun团队通过引入各向同性高斯分布作为表征的最优分布目标，配合创新的SIGReg正则化技术，从数学层面彻底解决了这一难题](https://zhuanlan.zhihu.com/p/1973669047590740733)。\n\n自监督学习经历了从对比学习到掩码重建的演进过程，每种方法都有其局限性。对比学习需要大量负样本和复杂的数据增强策略，计算成本高昂；掩码重建虽然简单有效，但容易过度关注低层细节而忽视高层语义。JEPA通过在表征空间进行预测，巧妙地规避了这两种方法的缺陷，为自监督学习开辟了第三条道路。",
@@ -818,13 +826,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9236"
-  },
-  {
-    "id": 9235,
-    "title": "【开源自荐】opendisc - 让codex 和 claudecode自动辩论，生成更优答案的高效率 CLI 工具",
-    "content": "地址：https://github.com/jiangz222/opendisc\n--- \n# opendisc\n\n让多智能体自动辩论，生成更优答案的高效率 CLI 工具（目前支持 Codex 与 Claude Code）。[使用示例](https://github.com/jiangz222/opendisc/blob/main/README.zh-CN.md#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B)\n\n## 功能\n\n- 多智能体协作讨论，支持不同模型顺序、同模型互辩（如 `claude vs codex`、`codex vs codex`、`claude vs claude`）。\n- 多轮迭代，默认 2 轮（可配置）。\n- 自带历史管理：可发起讨论、列出记录、查看完整记录或仅查看最终结论。\n\n## 安装\n\n### 1) 安装并认证基础 CLI\n\n```bash\nnpm install -g @anthropic-ai/claude-code\nnpm install -g @openai/codex\n```\n\n请确保 `claude` 与 `codex` 均已完成认证，且在终端可直接运行。\n\n### 2) 安装 opendisc\n\n```bash\nnpm install -g @jiangz222/opendisc\nopendisc --help\n```\n\n## 使用\n\n### 基本用法\n\n```bash\nopendisc \"实现一个 AI 智能助手的 MVP 版本，需要哪些功能模块？\"\n```\n\n### 配置文件\n\n`~/.opendisc/config.json`\n\n示例：\n\n```json\n{\n  \"maxRounds\": 3,\n  \"agentOrder\": [\"claude\", \"codex\"]\n}\n```\n\n可配置字段：\n\n- `maxRounds`: 正整数\n- `saveDir`: 讨论记录保存目录(可选)\n- `agentOrder`: `claude`/`codex` 的任意两位组合（如 `[\"claude\",\"codex\"]`、`[\"codex\",\"codex\"]`）\n  - 推荐  `[\"claude\",\"codex\"]`\n- `outputLanguage`: 输出语言（可选），支持 `zh-CN` 或 `en-US`\n\nCLI 参数会覆盖配置文件（如 `--max-rounds`、`--save-dir`、`--agent-order`、`--output-language`）。  \n优先级：CLI 参数 > 配置文件 > 自动判定（基于 topic 文本）。\n\n### 常用命令\n\n```bash\n# 指定轮数\nopendisc \"实现一个 AI 智能助手的 MVP 版本，需要哪些功能模块？\" --max-rounds 3\n\n# 指定模型顺序\nopendisc \"设计鉴权方案\" --agent-order codex,claude\n\n# 同模型互辩\nopendisc \"评审这个迁移方案\" --agent-order codex,codex\n\n# 指定输出语言（高于自动判定）\nopendisc \"设计数据库索引策略\" --output-language zh-CN\n\n# 列出讨论记录（默认目录：~/.opendisc/discussions）\nopendisc list\n\n# 查看完整记录\nopendisc load 2026-02-28T10-00-00-000Z_topic.json\n\n# 只看最终结论\nopendisc show 2026-02-28T10-00-00-000Z_topic.json\n```\n\n`show` 输出固定为两部分：\n\n1. `1 最终结论`：对原始问题的直接、可执行、唯一答案（不是仅总结分歧）。\n2. `2 主要分歧点（供参考）`：简要列出关键分歧；若无关键分歧会明确标注。\n\n## 依赖说明\n\n- 核心依赖：\n  - [`@anthropic-ai/claude-code`](https://github.com/anthropics/claude-code) 用于 Claude CLI/SDK 集成\n  - [`@modelcontextprotocol/sdk`](https://github.com/modelcontextprotocol/typescript-sdk) 用于 Codex MCP 集成\n  - [`commander`](https://github.com/tj/commander.js) 用于命令行参数解析\n  - [`chalk`](https://github.com/chalk/chalk) 用于终端样式输出\n- 实现参考：\n  - `src/vendor/claude/sdk/*` 与 `src/vendor/codex/*` 参考了 [slopus/happy](https://github.com/slopus/happy) 的实现思路，并针对 opendisc 场景做了简化适配。\n\n## License\n\nMIT",
-    "created_at": "2026-03-14T05:16:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9235"
   }
 ]
