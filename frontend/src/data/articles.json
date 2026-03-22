@@ -1,5 +1,21 @@
 [
   {
+    "id": 9344,
+    "title": "【工具自荐】全局搜索 claude code session 内容，快速 resume",
+    "content": "claude code 的/resume 命令，只能搜索每个 session 的 title，也就是第一条输入，而后续的对话内容，则无法搜索。最近做了一个工具解决这个问题，一个支持全局搜索 session 的工具，可以全局搜索所有 session 的所有对话内容。\n\nhttps://github.com/Leaking/smart-session-search\n\n<img width=\"1090\" height=\"920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/10fd3207-b901-4bf5-8442-a099f7d3c9ed\" />",
+    "created_at": "2026-03-22T17:27:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9344"
+  },
+  {
+    "id": 9343,
+    "title": "【开源自荐】weixin-agent-rs：基于开放接口二次开发的 Rust 版 WeChat Agent SDK/CLI",
+    "content": "大家好，我基于开放接口 https://www.npmjs.com/package/@tencent-weixin/openclaw-weixin 做了二次开发，实现了一个 Rust 版本项目：  \n**weixin-agent-rs**  \nhttps://github.com/tianrking/weixin-agent-rs\n\n项目定位：把 WeChat iLink 消息通道和本地/云端 Agent 做成可维护、可观测、可跨平台分发的工程化方案。如果你在做 Bot、Agent 网关、或 WeChat 侧接入，欢迎试用和提建议；也欢迎 Issue / PR 一起完善。\n\n主要功能：\n- 扫码登录 + 多账号支持（可 `--account` 固定账号）\n- 长轮询收发消息（支持断点续拉）\n- Agent 适配：OpenClaw、Claude/Codex（ACP）、OpenAI、Anthropic\n- 运行日志可观测（入站/出站日志，空响应兜底）\n- 跨平台发布包：macOS、Windows、Ubuntu `.deb`、Linux portable `tar.gz`（gnu/musl）\n\n快速体验：\n```bash\nwechat-agent --login --agent codex\n```\n\n1. 扫码登录（终端二维码）\n\n<img width=\"1207\" height=\"688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/83ed0a27-bddb-4110-ad6e-074ad1a377a2\" />\n\n2. 聊天时候终端显示（入站/出站日志）\n<img width=\"1190\" height=\"488\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cfe1d8f0-b6f3-4d93-bc2f-b659aa5d8908\" />\n\n3. 手机聊天体验（可控制 Claude/Codex/OpenClaw，后续将支持 NanoBot/PicoClaw）\n\n<img width=\"1290\" height=\"2796\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd3d758c-ce60-4d1c-870f-eea3398f6b0b\" />\n",
+    "created_at": "2026-03-22T16:54:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9343"
+  },
+  {
     "id": 9342,
     "title": "【开源自荐】ReadAny：一款与AI 深度结合的开源跨端电子书阅读器",
     "content": "# 项目名称：ReadAny\n\n## 📝 简介\n\nReadAny 是一款 AI 驱动的跨端电子书阅读器，支持 EPUB、PDF、MOBI 等常见格式。📖 它的独特之处在于：AI 能理解你的阅读上下文，不是简单的问答，而是真正\"读过这本书\"的阅读伙伴。🤖\n\n<img width=\"2584\" height=\"1626\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8568c8f8-4196-406c-849b-6319682d4750\" />\n\n## 🤖 AI 核心功能\n\n**上下文感知对话**\n\n- AI 知道你在读哪一页、选中了什么内容、处于哪个章节\n- 无需复制粘贴，直接提问就能获得精准回答 💬\n- 比如：\"这段话是什么意思？\"\"这个角色之前出现过吗？\"\n\n**语义搜索（RAG）**\n\n- 超越关键词匹配，用自然语言描述想找的内容\n- \"主角第一次遇到反派是哪一章？\"——直接定位 🎯\n- 向量检索 + BM25 混合搜索，精准又快速\n\n**即时翻译与解释**\n\n- 选中段落一键翻译，支持 19 种语言 🌍\n- 生词即时解释，结合上下文理解更准确\n- 适合外文书阅读和语言学习\n\n**技能系统**\n\n- 内置摘要生成、概念解释、角色追踪等技能 ✨\n- 可自定义创建专属技能，比如\"提取代码示例\"\n\n## 🛠️ 阅读与管理\n\n- 📚 8 种格式支持：EPUB、PDF、MOBI、AZW、AZW3、FB2、FBZ、CBZ\n- 📝 5 色高亮 + Markdown 笔记，导出到 Obsidian、Notion\n- 🔊 TTS 语音朗读，100+ 音色可选\n- 📊 阅读统计热力图，追踪阅读习惯\n- ☁️ WebDAV / S3 / 局域网同步，多端无缝衔接\n\n## 📱 全平台覆盖\n\n- 🖥️ 桌面端：macOS、Windows、Linux\n- 📲 移动端：iOS、Android\n- 🔁 阅读进度、标注笔记自动同步，在哪读都能接上\n\n## 💡 为什么推荐它？\n\n传统阅读器只能\"读\"，ReadAny 能帮你\"理解\"。\n\n遇到不懂的段落？问 AI。想不起某个情节？语义搜索。读完想整理笔记？一键导出。它把 AI 能力真正融入了阅读流程，而不是简单加个聊天窗口。\n\n## 🧭 官网地址\n\nhttps://codedogqby.github.io/ReadAny/\n\n## 🔗 项目地址\n\nhttps://github.com/codedogQBY/ReadAny",
@@ -804,23 +820,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9242"
-  },
-  {
-    "id": 9241,
-    "title": "【工具自荐】安装包大小不到8兆的Mac抠图软件",
-    "content": "【Apple Matting】\n一款安装包大小不到8兆的本地抠图软件，软件是基于rust tauri2 和vue3开发，基于Mac 系统自带的Apple vision模型实现的抠图软件\n## 网站地址\nhttps://matting.lingxiangtools.top/\n\n## 特性\n- 安装包大小不到8兆，非常的轻便\n- 基于rust开发，软件无感秒打开\n- 完全本地处理，秒级抠图\n- 无需注册登录、不联网、完全免费\n- 无任何扰乱弹窗等问题，页面干净、纯粹\n- 支持单张和批量抠图\n- 单张抠图支持编辑\n- 支持M芯片和intel芯片\n\n## 限制\n只支持Mac系统，且系统要求14+\n\n\n![Image](https://github.com/user-attachments/assets/f48dc697-ace6-4bab-8c4e-2f92e35f804c)\n\n<img width=\"1920\" height=\"1256\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5bce6658-d0ef-4938-8625-a00a804cf2d3\" />\n\nhttps://github.com/user-attachments/assets/745e4e5e-a576-43a9-9e2c-1053c2dfb85c",
-    "created_at": "2026-03-14T09:48:13Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9241"
-  },
-  {
-    "id": 9240,
-    "title": "【工具自荐】一站式AI视频或者图片的生成平台",
-    "content": "Elivo是一个一站式AI生成视频或者图片生成平台，把市面上主流的视频和图像生成模型都接进来\n用一个账户、一个积分钱包就能跑：\n\n支持的功能：\n- 文生视频、图生视频、文生图、图生图、文生音乐\n- 首帧/尾帧控制、多帧转视频\n- 接入模型：Sora 2、Kling AI、Seedance、Veo 3、Wan AI、Hailuo AI、\n  Seedream、GPT-4o Image、Flux 等\n\n计费方式：按积分消耗，不需要为每个模型单独订阅。\n注册送 20 积分，每天签到再送 10 积分，可以直接体验。\n\n技术栈：Next.js App Router、PostgreSQL + Drizzle ORM、Stripe、S3、Better Auth，\n支持中英文双语。我是做后端的（Java，六年），这是第一次独立做全栈产品，\nStripe webhook、S3 预签名 URL、Next.js Server Action 这些全是现学的。\n\n欢迎试用和提意见：https://elivo.app\n\n<img width=\"2696\" height=\"1198\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cbe6347e-60c5-47a6-9a57-87aa1581ea25\" />\n\n\n【核心卖点】\n\n一站式流程：输入文字或图片，选择多种模型，快速生成图片或者视频\n\n多视频模型支持：Veo 3.1、Sora 2、Seedance、Kling 3.0、Wan 2.6、Grok Imagine\n\n使用网址： https://elivo.app",
-    "created_at": "2026-03-14T08:45:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9240"
   }
 ]
