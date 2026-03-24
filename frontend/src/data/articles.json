@@ -1,5 +1,13 @@
 [
   {
+    "id": 9363,
+    "title": "【网站自荐】一个图片清晰化网站：适用于多张场景的模糊图片",
+    "content": "[Unblur Image](https://unblur-image.co/) With AI.\n里面有各种功能（免登录，每天就可以使用Unblur Image Lite 若干次）：\n\n- Unblur Image Lite / Pro （通用场景的去模糊功能）\n- Portrait Enhancer （人像增强）\n- Restore Old Photo （恢复老图片，基于Nano Banana Pro，比以前的旧技术效果更好）\n- Unblur Product Photos （电商产品去模糊功能）\n- Sharpen Logos & Text （Logo和文字增强）\n\n<img width=\"1812\" height=\"1110\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3c1518a4-9d03-4acc-88a1-ee44878ae6bb\" />\n\n",
+    "created_at": "2026-03-24T02:30:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9363"
+  },
+  {
     "id": 9362,
     "title": "【开源自荐】告别手写文档！ShowDoc 接入 MCP，AI 自动帮你生成文档",
     "content": "\nshowdoc是一个开源文档工具，主要用于写接口文档，技术文档  。开源地址 https://github.com/star7th/showdoc\n\n近期推出MCP功能，方便对接AI编辑器。 https://mp.weixin.qq.com/s/Tyl4smPmPEjwF7pFVw9UwA\n\n后面的开发流可以变成这样：\n\n\n┌─────────────────────────────────────────────────────────────┐\n│                                                             │\n│   1️⃣ AI 帮你写后端代码                                      │\n│      ↓                                                      │\n│   2️⃣ 顺手让 AI 把接口文档写入 ShowDoc                       │\n│      ↓                                                      │\n│   3️⃣ 前端同学直接看文档，让 AI 根据文档生成网络请求代码       │\n│                                                             │\n└─────────────────────────────────────────────────────────────┘\n一气呵成，全程不用手动写文档！",
@@ -44,7 +52,9 @@
     "title": "【开源自荐】WeChat-Channel，让微信的ClawBot 接入任意应用",
     "content": "微信的 openclaw-weixin 开放的是一个接入 ClawBot 的实现，在此基础上移除了对 OpenClaw 的依赖，改造为了一个独立的，连接 ClawBot 的消息通道。\n\n## 功能特性\n\n- **QR码登录** - 终端扫码即可登录微信机器人\n- **消息接收** - 长轮询方式实时接收消息\n- **消息发送** - 支持文本、图片、视频、文件\n- **多账户** - 支持同时管理多个机器人账户\n- **独立运行** - 无需依赖其他框架，开箱即用\n\n## 安装\n```bash\nnpm install wechat-channel\n# 或\npnpm add wechat-channel\n```\n\n## 示例\n### 1. 创建客户端\n\n```typescript\nimport { WeixinClient } from 'wechannel';\n\nconst client = new WeixinClient({\n  stateDir: './data',           // 数据存储目录\n  log: console.log,             // 日志输出\n  errorLog: console.error,      // 错误日志\n});\n\nawait client.init();\n```\n\n### 2. 处理消息\n\n```typescript\nclient.on('message', async (msg) => {\n  console.log(`收到消息: ${msg.text}`);\n  console.log(`来自: ${msg.from}`);\n\n  // 回复消息\n  await client.sendText(msg.accountId, msg.from, '收到！', {\n    contextToken: msg.contextToken,\n  });\n});\n```\n\n### 3. 登录并启动\n\n```typescript\n// 登录（会显示二维码）\nconst result = await client.login();\n\nif (result.success && result.account) {\n  console.log('登录成功！');\n  await client.start(result.account.id);\n}\n```\n\n项目地址：https://github.com/nanbingxyz/wechat-channel",
     "created_at": "2026-03-23T11:24:24Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9357"
   },
   {
@@ -100,7 +110,9 @@
     "title": "【开源自荐】 RaTeX —— Rust 原生解析、排版 LaTeX 数学公式，让 AI 应用快一点。支持 iOS、android、flutter、RN。",
     "content": "在移动端渲染 LaTeX 数学公式，长期以来几乎只有三条路：\n\n1. 内嵌一个 WebView，跑 KaTeX 或 MathJax。代价是 50–150 MB 的隐藏内存开销，以及等 JavaScript 启动的延迟。 （360 纳米 AI 的做法）\n2. iOS Math 以及衍生的 swiftMath、AndroidMath，所支持的公式为 KaTeX 的有限子集，例如缺少 \\ce 和 \\pu 化学和物理公式的支持。\\middle 语法不支持等。 （阿里千问的做法： 不支持 \\ce、\\pu 或者 \\left( \\frac{a}{b} \\middle| \\frac{c}{d} \\right) 公式）\n3. 使用 KaTeX 做服务端渲染，移动端直接加载图片。 （腾讯元宝的做法）\n\n要么接受低性能，要么接受少功能。                                      \n                                                                                \nRaTeX 把 Web 栈整个去掉了。用纯 Rust 实现了一套 LaTeX 的解析与排版引擎，\n产出一份「显示列表」——一组带坐标的绘图指令——然后交给各平台原生渲染：\n1. iOS 的 CoreGraphics、\n2. Android 的 Canvas、\n3. Flutter 的 Dart FFI、\n4. React Native 的 Native  模块，\n5. 或者直接在服务端用 tiny-skia 光栅化成 PNG。\n\n实现各平台的高性能统一渲染。\n\n项目覆盖约 99% 的 KaTeX 公式语法（内置对 \\ce、\\pu 的支持，仅有部分 \\image 之类和 web 强绑定的语法不支持），各平台胶水层已就绪，可以直接集成。在线 Demo 可以实时对比 RaTeX 与 KaTeX 的渲染结果。\n\n\n仓库地址： https://github.com/erweixin/RaTeX\n\nlive: https://erweixin.github.io/RaTeX/demo/index.html\n\nsupport table: https://erweixin.github.io/RaTeX/demo/support-table.html\n\n\n\n## 架构\n\n<img width=\"1467\" height=\"359\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/da20880d-3445-45ec-a9f5-c566554f64a5\" />\n\n## 各端 demo\n\n<img width=\"2400\" height=\"1371\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/29049ee8-3ada-4ef4-bdb8-3fb905646e66\" />",
     "created_at": "2026-03-23T07:32:41Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9350"
   },
   {
@@ -818,13 +830,5 @@
     "created_at": "2026-03-16T01:41:30Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9262"
-  },
-  {
-    "id": 9260,
-    "title": "Tired of sketchy online tools uploading your data? I built a 100% client-side alternative.",
-    "content": "Hey everyone,\n\nWorking with sensitive documents and code daily, I got incredibly frustrated with \"free\" online converters. Whether it's a PDF-to-Image tool, a JSON formatter, or a password generator, almost all of them secretly upload your files to a remote server.\n\nTo solve this, I spent the last few weeks building [Mini-Tools.uk](https://mini-tools.uk/).\n\nIt’s a minimalist suite of 20+ everyday web utilities designed with a strict privacy-first approach. By using modern browser APIs, everything processes 100% locally on your machine. ✨ Core Features:\n\nZero Server Uploads: Your files and data never leave your browser. You can literally load the page, disconnect from the Wi-Fi, and it still works perfectly.\n\nDeveloper & Everyday Tools: Includes PDF extractors, JSON auto-fix formatters, secure password generators, and AI Prompt helpers.\n\nNo-BS Experience: No ads, no sign-ups, and completely free.\n\nI built this to scratch my own itch, but I’m sharing it in hopes it helps others who care about digital privacy. Would love to hear your feedback or requests for new tools!\n\nCheck it out: https://mini-tools.uk/",
-    "created_at": "2026-03-16T01:39:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9260"
   }
 ]
