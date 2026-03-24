@@ -1,5 +1,13 @@
 [
   {
+    "id": 9371,
+    "title": "【开源自荐】流光 PrismFlowAgent —— 全链路自动化资讯聚合 + AI 深度总结 + 多端分发系统，可接入openclaw",
+    "content": "阮老师好，自荐一个我开发的全栈自动化资讯处理系统。\n\n### 项目简介\n\n**流光 PrismFlowAgent** 是一个开源的全栈资讯处理与 AI Agent 系统。它能从 GitHub Trending、RSS、Twitter/Reddit 等多源渠道自动抓取高质量资讯，利用 Gemini / Claude / GPT / Ollama 等大语言模型进行深度总结，并一键分发到微信公众号、GitHub 仓库或 RSS 订阅源。\n\n### 为什么做这个？\n\n作为技术内容创作者，每天要在多个平台之间切换，手动筛选、阅读、总结、排版、发布，整个流程繁琐且重复。我希望有一个工具能把**从信息抓取到内容分发的全链路自动化**，人只需要做决策——选什么源、定什么风格、审什么稿——剩下的交给系统。\n\n### ✨ 核心特性\n\n- 🔍 **多源深度聚合**：插件化架构，实时监控 GitHub Trending、学术论文、RSS 等数据源，几分钟即可接入新源\n- 🤖 **全模型 AI 适配**：原生支持 Gemini、Claude、GPT 和本地 Ollama，通过预设 Prompt 模板输出结构化深度总结\n- 📡 **一键多端分发**：一键推送到微信公众号、GitHub 归档或 RSS，自动压缩图片 (AVIF) 和处理视频 (FFmpeg)\n- ⏰ **24h 无人值守**：健壮的任务调度 + SQLite 本地存储，从抓取到发布全流程稳定可靠\n- 🔗 **AI Agent 互操作**：提供 API 接口，外部 AI Agent（如 openclaw）可直接接管系统，实现人机协作闭环\n- 🧠 **层级记忆系统**：内置知识库与记忆管理，支持语义检索和自动去重\n- 🐳 **Docker 一键部署**：提供 Docker 镜像和 docker-compose，开箱即用\n\n### 🛠️ 技术栈\n\n| 模块 | 技术 |\n|------|------|\n| 后端 | Node.js 20+, Fastify, TypeScript 5 |\n| 前端 | React 19, Vite, Tailwind CSS |\n| 数据库 | SQLite |\n| 存储 | Cloudflare R2 / GitHub / 本地 |\n\n### 截图\n\n![首页截图](https://github.com/justlovemaki/PrismFlowAgent/raw/main/static/home.png)\n\n### 接入 OpenClaw 效果\n\n系统已成功接入 OpenClaw，外部 AI Agent 可通过 API 调用 24 个内置智能体，实现全自动化的资讯抓取、处理与发布：\n\n![接入 OpenClaw 截图](https://github.com/justlovemaki/PrismFlowAgent/raw/main/static/openclaw-integration.jpg)\n\n### 链接\n\n- 🏠 GitHub：https://github.com/justlovemaki/PrismFlowAgent\n- 📰 已生成内容效果：https://ai.hubtoday.app/\n- 📜 协议：GPL-3.0",
+    "created_at": "2026-03-24T17:03:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9371"
+  },
+  {
     "id": 9370,
     "title": "【开源自荐】一款macos下的Claude资源(Skills,MCP,Agent)管理工具",
     "content": "## 项目地址\nhttps://github.com/Daydayoneup/ccm\n## 痛点\n如果你在多个项目中使用 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)，你一定会遇到这些问题： \n- 配置散落各处 — Skills、Agents、Rules、Hooks、Commands 分散在每个项目的 .claude/ 目录中，没有统一的地方查看和管理。\n- 无法复用 — 你在 A 项目写了一个好用的 Skill，想在 B 项目用只能手动复制，之后两份文件各自演化，再也无法同步。\n- 缺乏全局视角 — 哪些项目配了 Claude？全局有哪些资源？MCP Server 跑了几个？你只能一个一个目录翻。\n- 重复劳动 — 每个新项目都要重新配置环境变量、复制常用规则、设置权限，周而复始。\n- 团队无法共享 — 没有机制在团队内分发 Claude 配置，每个开发者各自维护一套。\n## 解决方案\nCCM 为你提供一个 中央控制台，统管所有项目的 Claude Code 配置，支持共享资源库、远程注册表和跨项目资源管理。\n一目了然。 一个仪表盘展示所有项目、资源、插件和 MCP Server，全局搜索即刻找到。\n一次编写，处处使用。 将资源存入中央库（~/.claude-manager/library/），通过符号链接安装到任意项目。更新库中的版本，所有链接的项目自动同步。\n团队共享。 基于 Git 的注册表让团队发布、版本管理和分发 Claude 配置 —— Skills、Agents、Rules 以及完整的插件包。\n自动化集成。 本地 HTTP API 让你可以与 Raycast、Alfred、Shell 脚本或任何 HTTP 工具集成。\n## 项目截图\n### dashboard\n<img width=\"1184\" height=\"763\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1bc11b68-fcfa-41d4-b722-2abae3b17c64\" />\n\n<img width=\"1186\" height=\"766\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5039c164-757b-410b-a6bf-6e7db132c48c\" />\n\n### 可视化的项目资源管理\n\n<img width=\"1177\" height=\"763\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/34ee08c3-15b9-4a22-98a8-38c6fb7deee9\" />\n\n### ccm软件内快速查找项目\n<img width=\"1194\" height=\"401\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f271c0a1-1bc7-475e-97d2-7eea0a31eda2\" />\n\n### 借助raycast快速启动项目\n \n<img width=\"745\" height=\"469\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a11daaf-043d-44b2-9d95-56e4f4188ff9\" />",
@@ -822,13 +830,5 @@
     "created_at": "2026-03-16T12:23:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9271"
-  },
-  {
-    "id": 9270,
-    "title": "【网站自荐】基于AI自动化生成数据图表，关键支持可视化编辑",
-    "content": "得刻图表（DKChart），网址是https://dkchart.com\n可以用自然语言描述数据需求，直接根据Excel生成图表，关键支持强大的可视化编辑。\n整体用下来感觉还是很不错的。",
-    "created_at": "2026-03-16T10:44:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9270"
   }
 ]
