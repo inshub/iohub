@@ -20,7 +20,9 @@
     "title": "【开源自荐】微信正式开放 AI Agent 接入，开源 SDK 支持 Node.js / Python / Go / Rust",
     "content": "可能很多人还不知道——微信已经通过 iLink Bot API 正式开放了 AI Agent 的接入能力。\n\n简单说：你现在可以让你的 AI Agent，在微信里直接跟用户对话了。扫码登录，收发消息，图片、文件、语音、视频都支持。这是微信官方开放的接口，不是基于逆向的协议。\n\n因为微信只开放了协议，没有提供 SDK，我花了点时间为这个协议做了一套开源 SDK，四种语言全覆盖：\n\n- **Node.js** — `npm install @wechatbot/wechatbot`\n- **Python** — `pip install wechatbot-sdk`\n- **Go** — `go get github.com/corespeed-io/wechatbot/golang`\n- **Rust** — `cargo add wechatbot`\n\n5 分钟接入，以 Python 为例，核心代码就几行：\n\n```python\nfrom wechatbot import WeChatBot\n\nbot = WeChatBot()\n\n@bot.on_message\nasync def handle(msg):\n    await bot.reply(msg, f\"你好：{msg.text}\")\n\nbot.run()  # 扫码登录，开始监听\n```\n\n该有的都有：扫码登录、凭证持久化、长轮询消息、富媒体收发、CDN 加密解密、会话恢复、输入状态模拟、智能文本分片……生产级可用，不是玩具。\n\n- GitHub：https://github.com/corespeed-io/wechatbot\n- 网站：https://wechatbot.dev",
     "created_at": "2026-03-24T14:09:30Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9369"
   },
   {
