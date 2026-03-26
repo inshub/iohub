@@ -1,5 +1,29 @@
 [
   {
+    "id": 9390,
+    "title": "【网站自荐】METAR 解码器：将航空气象报文转换为人类可读描述的工具",
+    "content": "项目名称：METAR – 航空气象报文一键转人类可读\n项目地址：https://metar.jiucheng-zang.ca/\n开源地址：https://github.com/zangjiucheng/METAR\n\n项目简介：\nMETAR 是航空领域常用的气象报文格式，信息密度高但可读性较差，普通用户甚至初学飞行员往往难以快速理解。\n\n这个项目提供一个简单直观的网页工具，可以将原始 METAR 报文自动解析为人类可读的自然语言描述，降低理解门槛，方便学习和日常使用。\n\n✨ 核心亮点：\n1. 一键解析 METAR 报文，自动转换为清晰的自然语言描述；\n2. 无需安装、无需注册，打开网页即可使用；\n3. 适合飞行学员、航空爱好者以及气象学习者；\n4. 相比传统解析库，更注重“可读性”和用户体验；\n5. 开源实现，方便二次开发或集成到其他系统中；\n6. 可作为学习 METAR 编码规则的辅助工具。\n\n<img width=\"1009\" height=\"1032\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/09c8d247-6cce-4415-9c6c-41479b460b88\" />\n\n补充说明：\n目前很多 METAR 解析工具偏向“结构化数据输出”，但对人类阅读并不友好。本项目更关注最终表达，让用户能直接理解天气状况，而不需要熟悉复杂编码规则。\n\n欢迎大家体验，也欢迎提出建议或贡献代码。",
+    "created_at": "2026-03-26T05:04:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9390"
+  },
+  {
+    "id": 9389,
+    "title": "AI Watermark Remover – Free online tool to remove watermarks from images",
+    "content": "Hi HN! I just built an AI-powered watermark remover that runs entirely on Cloudflare Workers.\n\n🔗 Try it: https://watermark-remover-cf.shop\n\n**What it does:**\n- Upload an image with watermarks/text overlays\n- AI automatically detects and removes them\n- Download the clean result (up to 10MB, supports JPG/PNG/WebP/GIF)\n\n**Tech stack:**\n- Cloudflare Workers (single-file architecture)\n- Vanilla JavaScript + HTML5/CSS3\n- WaveSpeed AI API for watermark detection\n- Google OAuth for user authentication\n- PayPal for payments (Pro/Unlimited plans)\n\n**Why I built this:**\nI wanted to create a privacy-focused alternative to existing tools. Images are processed in-memory and never stored on servers. The entire backend is a single Worker file (~2000 lines) that handles frontend, API routes, OAuth, and payments.\n\n**Cost structure:**\n- Free tier available\n- Pro: $9.9/month (50 images/day)\n- Unlimited: $29.9/month\n\n**GitHub:** https://github.com/zhuwei290/watermark-remover-cf\n\nWould love feedback on:\n1. UX/UI improvements\n2. Pricing thoughts\n3. Any security concerns I might have missed\n\nThanks!",
+    "created_at": "2026-03-26T03:54:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9389"
+  },
+  {
+    "id": 9388,
+    "title": "【网站自荐】RGB to CMYK 转换器：将 RGB 转换为打印机文件 CMYK，并带有 ICC 配置文件和预览功能的工具",
+    "content": "项目名称：[RGB to CMYK Converter](https://rgbtocmyk.net/)\n项目地址：[https://rgbtocmyk.net/](https://rgbtocmyk.net/)\n\n项目简介：\n平常在印刷过程中，如果没有做好CMYK文件处理，会导致电脑上色彩鲜艳的图像在传输到印刷机后会损失色彩精度，超出色域的屏幕颜色没有在印刷文件上得到很好的表达，比如红色变得暗淡，蓝色变得浑浊，渐变也失去了层次感，这是因为没有做好RGB转换CMYK这个过程的色彩管理。\n\n市面上的工具往往只是做一个简单的RGB to CMYK 转换，采用统一的转换公式，而没有考虑到印刷执行标准、印刷机配置、印刷纸类型、墨量比例等具体问题。要实现专业转化需要安装好庞大的Adobe InDesign/Adobe Illustrator/Adobe Photoshop等专业软件，这对于临时进行转化的人而言非常不友好，因为我做了这么一个效果和专业软件一致的RGB to CMYK在线转换器工具。\n\n✨ 核心亮点：\n1. 工具使用印刷行业专业色彩管理引擎，实现和专业软件一致的转换效果；\n2. 工具预装了广泛使用的国际 ICC 配置文件和source RGB 配置文件，也支持用户自定义上传ICC配置文件和source RGB配置文件，这对于某些特殊印刷机而言非常友好；\n3. 工具提供了一些通常在专业色彩管理工具中才能找到的高级控制功能：\n● 四种行业标准的渲染意图，用于在 CMYK 转换过程中管理超出色域的 RGB 颜色。\n● 支持抖动技术，以产生更平滑的渐变并减少条带状伪影\n● 自动黑点补偿，以保留阴影深度并保持色调平衡\n这些功能共同确保转换后的图像在准备打印时能够保留细节和色彩保真度。\n4. 工具支持实时预览，在下载最终文件前可以立即预览转换后的CMYK图像效果，底层算法是直接在浏览器中模拟 CMYK 色彩空间，提供真正的“所见即所得”预览。以方便用户在最终印刷前验证颜色准确性并进行调整。\n5. 注重隐私\n隐私也是我在设计这套工具时坚持的一项核心设计原则。上传的图片仅用户本人可访问，处理完成后会在 10 分钟内自动从服务器删除，确保文件安全和保密。任何人都无法访问用户上传、下载的任何文件。\n6. 基于浏览器运行，无需安装、注册。\n\n<img width=\"1418\" height=\"1064\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2def4a89-057c-44ce-a3d5-e398bc84f416\" />\n\n![Image](https://github.com/user-attachments/assets/5aa1df77-3889-4aa4-b4f7-5319386e4e77)\n\n<img width=\"1895\" height=\"1056\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/32285b25-557f-4525-82bc-a235b5e96b2c\" />\n",
+    "created_at": "2026-03-26T03:46:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9388"
+  },
+  {
     "id": 9387,
     "title": "【开源自荐】Codex Guide: 覆盖从常用命令到工程级落地的 Codex 实战经验",
     "content": "## 项目名称\nCodex Guide\n\n<img width=\"680\" height=\"679\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/54c9af97-4f8b-4bcc-94ca-4a29f6905027\" />\n\n## 项目链接🔗\nGithub: https://github.com/TickHaiJun/CodexGuide\n演示链接: https://tickhaijun.github.io/CodexGuide/\n\n## 项目简介\n一个聚焦 ChatGPT Codex 实战落地 的开源知识页，覆盖从核心命令到工程协作交付的完整路径。\n页面支持关键词搜索、Tag 多维筛选、分区导航与高质感 Footer 入口，适合团队内部沉淀经验或外部分享。\n\nAn open-source practical playbook for ChatGPT Codex, covering command usage, engineering workflow, review strategy, and delivery loop.\n\n\n## 项目亮点\n- 四大核心命令体系完整展开\n  - 模型与性能控制：`/model`、`/fast`\n  - 权限与执行控制：`/permissions`、`/sandbox-add-read-dir`\n  - 工程能力增强：`/skills`、`/review`、`/experimental`\n  - 会话与上下文管理：`/rename`\n- 保留实战流程模块\n  - Prompt 与任务定义\n  - 检索定位与上下文构建\n  - 修改、重构与测试闭环\n  - Review、协作与高阶玩法\n- 交互能力\n  - 实时关键词搜索\n  - 动态 Tag 筛选\n  - 分区级可见性联动\n- UI 亮点\n  - Landing + 卡片化知识结构\n  - 渐变氛围背景与高可读信息层次\n  - Icon 化 Footer 外链入口\n",
@@ -802,29 +826,5 @@
     "created_at": "2026-03-18T05:11:40Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9290"
-  },
-  {
-    "id": 9289,
-    "title": "【开源自荐】claude-rules：AI 编码助手的编码规范模板库，自动检测技术栈生成规则文件",
-    "content": "项目地址：https://github.com/lifedever/claude-rules\n\n## 简介\n\n用 AI 写代码时，AI 会模仿项目里已有的代码风格——包括坏习惯。claude-rules 给 AI 一套可执行的编码规范，核心原则：**不要模仿旧代码，按规范重构**。\n\n和市面上那些\"使用适当的错误处理\"之类的空话规范不同，每条规则都具体到 AI 能直接执行，比如\"函数不超过 30 行\"、\"基本类型用 ref，对象用 reactive，禁止解构 reactive\"。\n\n## 特点\n\n- **base + language + framework 三层组合**，按需拼装\n- 支持 10 种语言（TypeScript、Java、Go、Rust、Kotlin、Swift、Python 等）和 5 个框架（Vue、React、SwiftUI、Spring Boot、Tauri）\n- 每条规则都有**禁止/正确的代码对比示例**\n- Claude Code 用户可通过插件一键初始化，自动检测技术栈生成规范文件\n- 同样适用于 Cursor、Windsurf、GitHub Copilot，规范是纯 Markdown 通用格式",
-    "created_at": "2026-03-18T04:49:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9289"
-  },
-  {
-    "id": 9288,
-    "title": "【网站自荐】快速找到期望通勤时间内的最优租房区域",
-    "content": "## 租房助手 / 通勤时间助手\n\n**网址**： https://zufang.atoe.top/\n\n**租房痛点**：租房最难的不是找房, 而是不知道该租哪, 因为每个地方都有好房子, 但要花时间找, 如果分散时间到多个区域，往往会因时间不够而租到不满意的房子。\n\n**网站功能**：\n- 输入地点和期望通勤时间,  快速找到通勤时间内所有可达的地铁站点,  结合租金信息找到最优租房区域\n- 该网站不是租房软件，而是租房辅助网站，在一定程度上，帮助大家快速找到期望通勤时间内的最优租房区域。\n\n**截图**：\n<img width=\"903\" height=\"829\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5962d656-c80b-44ac-bee4-2540f462489e\" />",
-    "created_at": "2026-03-18T04:44:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9288"
-  },
-  {
-    "id": 9287,
-    "title": "【工具推荐】科技周刊技术热词可视化 (Weekly Tech Hotwords)",
-    "content": "**工具推荐：科技周刊技术热词可视化 (Weekly Tech Hotwords)**\n\n**网址：** [https://www.yingzitingge.xyz/weekly](https://www.yingzitingge.xyz/weekly)\n\n**简介：**\n这是一个专门针对《科技爱好者周刊》（`ruanyf/weekly`）制作的词频可视化分析工具。它可以直观地呈现近期周刊中高频出现的技术关键词，帮助读者一目了然地把握当下的技术热点和开源趋势。\n\n**主要特点：**\n* **专属数据源：** 直接分析本周刊 GitHub 仓库的 `docs/` 目录，精准提取近期发布的文章内容。\n* **直观可视化展示：** 采用错落有致的视觉排版，字体越大代表该技术词汇在近期周刊中出现的频次越高。鼠标悬停在关键词上，即可查看具体的出现次数详情。\n* **自动化追踪：** 后台每天凌晨 2:00 (UTC) 会自动同步仓库数据并更新分析结果，确保大家看到的是最新一期的技术风向标。\n* **极简体验：** 页面设计干净聚焦，无广告干扰，开箱即用。\n\n**截图：**\n\n<img width=\"1920\" height=\"1032\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3a99e3d-023a-4ae2-b6dd-eaa61a9fc6b0\" />\n",
-    "created_at": "2026-03-18T04:15:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9287"
   }
 ]
