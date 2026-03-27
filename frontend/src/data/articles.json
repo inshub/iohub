@@ -1,5 +1,29 @@
 [
   {
+    "id": 9412,
+    "title": "【开源自荐】wxWebHook：轻量级消息推送服务，通过微信接口快速推送关键信息至微信端",
+    "content": "## 项目名称\n\nwxWebHook\n\n## 项目简介\n\n本项目是一个轻量级的消息通知服务。通过封装微信官方接口，帮助开发者将关键信息快速推送至微信端。用户只需通过简单的 HTTP 请求或命令行调用即可将内容实时推送到自己的微信上，实现随时随地接收提醒。\n\n## 类似的产品有：\n\nServer酱、Bark、Gotify、ntfy.sh\n\n## 相比以上产品的亮点在：\n\n- 专注于微信消息的推送\n- 无需公网IP，可以在无公网IP的机器上本地部署\n- 使用微信官方接口推送消息到微信，封号概率低\n- 没有消息收发条数限制（但不建议高频发送消息）\n\n## 项目地址\nhttps://github.com/aristorechina/wxWebHook\n\n## 项目截图\n\n<img width=\"2547\" height=\"1371\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f9e0d546-ef0e-48e4-ae9c-b7a1f2f47cfd\" />\n\n<img width=\"2547\" height=\"1371\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0005e041-a275-4e92-8c6f-7a43ad8ed58b\" />\n\n<img width=\"2547\" height=\"1371\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/58c8aaf8-5192-411a-b74c-93597d873ed5\" />\n\n<img width=\"630\" height=\"629\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68a3ce4a-625f-4386-a3b9-16c829494d34\" />",
+    "created_at": "2026-03-27T12:46:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9412"
+  },
+  {
+    "id": 9411,
+    "title": "【网站自荐】SubsTracker 订阅管理与提醒系统",
+    "content": "基于 Cloudflare Workers 的轻量级订阅管理系统，帮助你轻松跟踪各类订阅服务的到期时间，并通过 Telegram、Webhook 等多渠道发送及时提醒。\n\n核心功能\n订阅管理：添加、编辑、删除各类订阅服务\n智能提醒：自定义提前提醒天数，自动续订计算\n农历显示：支持农历日期显示，可控制开关\n状态管理：订阅启用/停用，过期状态自动识别\n财务追踪：记录订阅费用，完整的支付历史和统计分析\n手动续订：支持自定义金额、周期和备注\n仪表盘：可视化展示月度/年度支出，支出趋势和分类统计\n多渠道通知\nTelegram：支持 Telegram Bot 通知\nNotifyX：集成 NotifyX 推送服务\nWebhook 通知：支持自定义 Webhook 推送\n企业微信机器人：支持企业微信群机器人通知\n邮件通知：基于 Resend 的邮件服务\nBark：支持 iOS Bark 推送\n\n地址: https://github.com/wangwangit/SubsTracker",
+    "created_at": "2026-03-27T12:17:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9411"
+  },
+  {
+    "id": 9410,
+    "title": "Building Personal AI-Powered Tools with OpenClaw: A Developer's Journe",
+    "content": "# Building Personal AI-Powered Tools with OpenClaw: A Developer's Journey\n\nAs developers, we often find ourselves needing quick utilities—image processors, text converters, API wrappers—but don't want the overhead of managing servers or complex deployments. What if you could build these tools conversationally with an AI agent that handles the entire stack?\n\nEnter **OpenClaw**: an open-source AI agent framework that lets you build, deploy, and manage web tools through natural conversation.\n\n## What is OpenClaw?\n\nOpenClaw is more than a chatbot—it's an autonomous AI assistant that can:\n\n- 🛠️ Write and deploy full-stack applications\n- 🌐 Manage cloud infrastructure (Cloudflare, AWS, etc.)\n- 🔄 Handle CI/CD pipelines\n- 📦 Integrate with external APIs\n- 🧠 Remember context across sessions\n\nThink of it as having a senior developer on call 24/7, except it never gets tired and works at the speed of thought.\n\n## Real-World Example: Building an AI Background Remover\n\nLet me show you how I built a production-ready image background removal tool in under an hour using OpenClaw.\n\n### The Problem\n\nI needed a simple web app where users could:\n- Upload images\n- Remove backgrounds using AI\n- Download processed results\n- No signup required for basic use\n### The Solution\n\nInstead of scaffolding a React app, configuring build tools, and wrestling with deployment configs, I just told OpenClaw:\n\n> \"Build me an image background remover using Remove.bg API, deploy it to Cloudflare Pages\"\n\nOpenClaw handled:\n1. **Frontend**: Clean React UI with drag-and-drop upload\n2. **Backend**: Cloudflare Pages Functions for API proxying\n3. **Authentication**: Optional Google OAuth for power users\n4. **Storage**: Cloudflare KV for user data\n5. **Deployment**: Automated GitHub → Cloudflare Pages pipeline\n\n**Result**: [https://image-background-remover-baq.pages.dev/](https://image-background-remover-baq.pages.dev/)\n\nTry it yourself—upload any image and watch the AI strip the background in seconds. No watermarks, no signup walls (for basic use).\n\n## How OpenClaw Works\n\n### 1. Conversational Development\n### 2. Infrastructure as Conversation\nNo YAML files. No Terraform. Just:\n### 3. Persistent Memory\nOpenClaw maintains context in markdown files:\n- `MEMORY.md` - Long-term project knowledge\n- `memory/YYYY-MM-DD.md` - Daily logs\n- `TOOLS.md` - Your specific configurations\nIt remembers your API keys, deployment preferences, and coding style across sessions.\n## Getting Started\n\n### Installation\n\n```bash\nnpm install -g openclaw\nopenclaw gateway start\nYou: \"I want to build a tool that converts images to WebP format\"\nOpenClaw: \"I'll create a web app with drag-and-drop upload, \n          conversion using sharp library, and deploy to Cloudflare Pages.\n          Should I use React or vanilla JS?\"",
+    "created_at": "2026-03-27T12:11:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9410"
+  },
+  {
     "id": 9409,
     "title": "【开源自荐】微信机器人wechatbot Springboot版本",
     "content": "当前 wechatbot 主要面向 openclaw 场景。\n我基于 Java 参考实现了 wechatbot，可在任意 Spring Boot 项目中快速接入微信机器人能力（扫码登录、会话恢复、消息收发、业务回调）。\n已在 tradingAgents-ashare 项目完成落地接入，验证可用于真实业务链路。\nGitHub: [frankenchine/wechatbot](https://github.com/frankenchine/wechatbot)",
@@ -108,7 +132,9 @@
     "title": "【开源推荐】一个优秀的产品大佬没做过开发两天使用antigravity做了一个产品，非常棒的创意，通过飞书 管理antigravity项目，远程遥控指定项目和做项目开发",
     "content": "开源地址：https://github.com/Truthan49/Antigravity-Everywhere\n\n基本上可以通过飞书去和 antigravity 具体项目进行沟通，指定飞书机器人进行项目开发，项目内上下文同步",
     "created_at": "2026-03-26T10:59:55Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9395"
   },
   {
@@ -124,7 +150,9 @@
     "title": "【开源自荐】ArcReel — 开源 AI 视频工作台，把小说丢进去就能出短视频",
     "content": "## 项目地址\n\nhttps://github.com/ArcReel/ArcReel\n\n## 项目简介\n\nArcReel 是一个开源的 AI 视频生成工作台，解决的核心问题是：**把一篇小说变成可发布的短视频，全程由 AI Agent 自动驱动**。\n\n现有的 AI 视频工具大多是\"给一段 prompt 生成一个视频片段\"，但从一篇完整小说到一个有人物、有剧情、有连贯画面的短视频，中间需要大量人工编排——拆剧本、设计角色、保持画面一致性、拼接视频。ArcReel 用多智能体架构把这些步骤串起来，自动完成整条流水线。\n\n## 核心亮点\n\n- **完整流水线** — 上传小说 → AI 拆分剧本 → 生成人物设计图 → 生成分镜图片 → 生成视频片段 → FFmpeg 合成成片，一次对话搞定\n- **多智能体协作** — 基于 Claude Agent SDK，编排 Skill 检测项目状态，自动 dispatch 专职 Subagent（角色提取、剧本生成、资产生成），每个 Subagent 只干一件事后返回摘要\n- **多供应商可切换** — 图片支持 Gemini / Seedream / Grok，视频支持 Veo 3.1 / Seedance / Grok，不锁定单一供应商\n- **角色一致性** — AI 先生成人物设计图，后续所有分镜和视频均参考该设计，跨镜头保持角色外观统一\n- **剪映草稿导出** — 按集导出为剪映 ZIP，在剪映桌面版里二次编辑（调节奏、加字幕、配音）\n- **Docker 一键部署** — `docker compose up -d` 即可使用\n\n## 技术栈\n\nReact 19 + FastAPI + Claude Agent SDK + Gemini / Seedream / Grok + SQLAlchemy 2.0 + FFmpeg\n\n## 截图\n\n![ArcReel 工作台](https://raw.githubusercontent.com/ArcReel/ArcReel/main/docs/assets/hero-screenshot.png)",
     "created_at": "2026-03-26T10:14:49Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9393"
   },
   {
@@ -798,29 +826,5 @@
     "created_at": "2026-03-19T14:33:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9311"
-  },
-  {
-    "id": 9310,
-    "title": "【开源自荐】AI Battle MCP - 多用户 AI 群聊 — 为那些让 AI 替自己吵架的团队而生",
-    "content": "开源地址：https://github.com/vmos-dev/ai-battle-mcp\n\n\n<p align=\"center\">\n  <h1 align=\"center\">AI Battle MCP（掰投）</h1>\n  <p align=\"center\">为那些让 AI 替自己吵架的团队而生。</p>\n  <p align=\"center\">\n    <strong>多用户 AI 群聊 — 让你们的 AI 直接对话。</strong>\n  </p>\n</p>\n\n---\n\n## 为什么做这个？\n\n每个团队成员都在用自己的 AI 出方案。你和 Claude 聊出了微服务，同事和 GPT 聊出了单体。然后你们互发聊天记录，让各自 AI 互评——结果各说各好，因为**它们根本看不到彼此的上下文**。\n\n**AI Battle 把所有人的 AI 拉到一个群聊里。** 完整上下文、真实讨论、靠论据而非嗓门达成共识。\n\n<p align=\"center\">\n  <img src=\"https://github.com/vmos-dev/ai-battle-mcp/raw/main/docs/pain-point.zh-CN.svg\" alt=\"AI 时代的多人协作困境\" width=\"800\">\n</p>\n\n> 现有多智能体框架（AutoGen、CrewAI 等）都是\"单用户编排多模型\"。\n> AI Battle 解决的是另一个问题：**多个用户，各自带着自己的 AI 工具，进入一个共享空间讨论。**\n\n### 适用场景\n\n| 场景 | 你说 | AI 做 |\n|------|------|-------|\n| 方案 PK | \"我支持微服务，帮我跟李四的 GPT 辩一下\" | 两个 AI 带着各自方案当面辩，辩到收敛出结论 |\n| 知识交接 | \"把我们项目的架构教给新同事的 AI\" | 你的 AI 当老师，新人的 AI 当学生，一问一答直到学会 |\n| 代码评审 | \"大家一起看看这个 PR\" | 多个 AI 从不同角度审查，互相补充彼此的盲区 |\n| 技术选型 | \"React 还是 Vue？大家讨论下\" | 各方 AI 带着团队真实约束来讨论，不是空对空 |\n| 需求对齐 | \"产品、前端、后端碰一下这个需求\" | 三方 AI 在一个房间里对齐，人类喝咖啡等结论 |\n\n---\n\n## 特性\n\n- **零安装** — `npx -y ai-battle-mcp@latest` 直接用，AI 客户端自动拉起服务\n- **跨工具** — Claude Code、Cursor、ChatGPT、Gemini CLI，任何 MCP 客户端或 HTTP API\n- **全自动** — AI 自己讨论，人类可以观战和插话\n- **智能收敛** — 检测各方观点趋于一致时，提示用户决定是否结束\n- **实时观战** — 浏览器聊天室界面，创建房间时自动打开\n- **多语言** — 界面和消息跟随系统语言（中文、英文、日文、韩文、繁体中文）\n- **历史记录** — 聊天记录持久化，可通过历史页面查看\n\n---\n\n### 创建房间\n\n对你的 AI 说：\n\n> \"创建一个讨论房间，主题是'后端架构选型：微服务 vs 单体'\"\n\nAI 会返回房间 ID、加入链接和吃瓜链接。**把加入链接分享给队友。**\n\n<p align=\"center\">\n  <img src=\"https://github.com/vmos-dev/ai-battle-mcp/raw/main/docs/demo-create-room.zh-CN.svg\" alt=\"创建房间效果\" width=\"680\">\n</p>\n\n---\n\n### 加入房间\n\n**方式 A：对你的 AI 说**\n\n> \"加入房间 http://192.168.1.2:19820/battle/a1b2c3，代表我参与讨论。\"\n\n**方式 B：纯观战（吃瓜）**\n\n浏览器打开 `http://{群主IP}:19820/battle/{roomId}/eatmelon`\n\n> **提示：** 加入即自动开始讨论，观战页面也会自动打开。**去喝咖啡吧。** ☕\n\n<p align=\"center\">\n  <img src=\"https://github.com/vmos-dev/ai-battle-mcp/raw/main/docs/demo-join-room.zh-CN.svg\" alt=\"加入房间效果\" width=\"680\">\n</p>\n\n---\n",
-    "created_at": "2026-03-19T13:28:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9310"
-  },
-  {
-    "id": 9309,
-    "title": "【开源自荐】OpenCLI - 把任何网站变成你的命令行工具，AI 原生的浏览器自动化框架",
-    "content": "# 【开源自荐】OpenCLI - 把任何网站变成你的命令行工具，AI 原生的浏览器自动化框架\n\n**开源地址**：https://github.com/jackwener/opencli\n\n**2.2k Stars** | **202 Forks** | **npm: @jackwener/opencli**\n\n## 项目简介\n\nOpenCLI 是一个 AI 原生的 CLI 运行时框架，能把**任何网站**或 **Electron 桌面应用**变成你的命令行工具。复用 Chrome 登录态，零风控、零凭证存储，一条命令搞定 B站、知乎、Twitter、Reddit、小红书、YouTube 等 30+ 平台的数据获取与操作。\n\n## 核心特性\n\n- **CLI All The Things** — 30+ 平台开箱即用，涵盖 Twitter、Reddit、B站、知乎、小红书等\n- **CLI All Electron** — 把 Cursor、Codex、ChatGPT、Notion、Discord 等桌面应用变成 CLI，让 AI 控制 AI\n- **零风控** — 复用 Chrome 登录态，不存储任何 token 或密码，告别封号焦虑\n- **AI 原生** — `explore` 自动发现 API，`synthesize` 生成适配器，`cascade` 智能探测认证策略\n- **声明式引擎** — 写一个 `.yaml` 文件即可注册新命令，5 分钟接入新网站\n- **多平台下载** — 支持小红书、B站、Twitter、知乎的图片/视频/文章下载\n- **自修复配置** — `opencli doctor` 一键诊断，`--fix` 自动修复\n\n## 技术亮点\n\n- **Browser Bridge 架构**：轻量 Chrome 扩展 + 微型 daemon，纯 Polling 模式，无需公网暴露\n- **声明式 YAML Pipeline**：`fetch -> extract -> transform -> output`，零代码实现复杂数据管线\n- **AI 探索引擎**：网络拦截 -> 响应分析 -> 能力推理 -> 框架检测，全自动发现网站 API\n- **5 级认证策略**：PUBLIC -> COOKIE -> HEADER -> SESSION -> OAUTH，自动级联探测\n- **多格式输出**：table / json / yaml / md / csv，完美适配人类阅读和 AI Agent 消费\n\n## 使用示例\n\n```bash\n# 安装\nnpm install -g @jackwener/opencli\n\n# 数据获取\nopencli bilibili hot --limit 10          # B站热门\nopencli zhihu hot -f json                # 知乎热榜（JSON 输出）\nopencli twitter trending                  # Twitter 趋势\nopencli hackernews top --limit 5          # HN 热帖\n\n# 媒体下载\nopencli xiaohongshu download --note-id abc123\nopencli twitter download --username elonmusk --limit 20\n\n# 桌面应用 CLI 化\nopencli cursor send \"帮我重构这个函数\"     # 用 CLI 控制 Cursor\nopencli chatgpt ask \"解释量子计算\"         # 用 CLI 控制 ChatGPT\n\n# AI 驱动探索新网站\nopencli explore https://example.com --site mysite\nopencli synthesize mysite                  # 自动生成适配器\n```\n\n## 适用场景\n\n- **AI Agent 工具链** — 让 Claude Code / Cursor 等 AI 直接调用网站能力\n- **数据分析** — 批量获取社交媒体数据，输出 JSON/CSV 供分析\n- **自动化工作流** — 结合 cron/脚本实现定时监控和自动操作\n- **碎片时间** — 终端一条命令，快速浏览各平台热门内容\n- **快速开发** — 5 分钟用 YAML 接入新网站，AI 辅助自动生成\n\n## 与同类工具对比\n\n| 特性 | OpenCLI | 传统爬虫 | 浏览器自动化 |\n|------|---------|----------|-------------|\n| 复用登录态 | 支持 | 不支持 | 需配置 |\n| 被风控风险 | 极低 | 高 | 中 |\n| 接入新站点 | 5分钟 YAML | 数小时 | 数小时 |\n| AI Agent 友好 | 原生支持 | 不支持 | 部分 |\n| 桌面应用支持 | 支持 | 不支持 | 部分 |\n\n**开源协议**：Apache-2.0\n",
-    "created_at": "2026-03-19T12:52:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9309"
-  },
-  {
-    "id": 9308,
-    "title": "【开源自荐】FlowPacket - 可以自定义协议帧的画布测试工具",
-    "content": "仓库地址：https://github.com/guowei-gong/flow-packet\n\n阮一峰老师，你好：我是一名游戏后端工程师。对于游戏后端来说，功能自测困难，让我开始编写这款工具，它可以像 UE5 蓝图一样，构建测试用例。\n\n## 🤔 为什么需要 FlowPacket\n\n游戏服的特性，导致使用常见的测试工具时存在一些障碍：\n\n- **自定义长连接协议**\n\n  为了让玩家获得更好的游戏体验，游戏服通常采用 TCP、WebSocket、KCP 等长连接通信。大多数 API 测试工具围绕 HTTP 设计，无法直接对接这些协议和自定义的二进制协议帧\n\n- **测试用例难以管理**\n\n  以往测试通常是手写一个 `Client.go`，在里面编写发送和监听逻辑。随着测试场景越来越多，文件不断膨胀，需要频繁地新增函数、注释掉暂时不用的用例，再取消注释来切换测试目标。而游戏业务往往是多步骤且有序的（如先创建角色，再进入游戏），每次只想验证流程中的某几步时，就得反复注释和恢复前置步骤——管理成本远大于编写成本\n\n- **Proto 编码支持缺失**\n\n  游戏服普遍使用 Protobuf 作为序列化方案，但常见的 API 测试工具对 Proto 编码的支持非常有限，往往需要额外的插件或手动转换，流程繁琐\n\n- **需要面向网关获取真实结果**\n\n  游戏服不仅需要测试请求-响应的业务逻辑，还需要验证服务端主动推送的通知是否正常。这些通知能力由网关提供，如果直接连接游戏节点，只能拿到一对一的响应，无法验证通知推送是否正确到达\n\nFlowPacket 通过**可视化画布**解决以上问题——将协议消息建模为节点，用连线定义执行顺序，所见即所得地编排和运行完整的基本测试流程。\n\n## 👀 预览\n\n![运行结果](https://github.com/guowei-gong/flow-packet/blob/main/docs/image/review.png?raw=true)\n\n\n<details>\n<summary>自定义协议帧</summary>\n\n![自定义协议帧](https://github.com/guowei-gong/flow-packet/blob/main/docs/image/custom_head_frame.png?raw=true)\n</details>",
-    "created_at": "2026-03-19T11:54:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9308"
   }
 ]
