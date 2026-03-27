@@ -1,10 +1,20 @@
 [
   {
+    "id": 9413,
+    "title": "[自荐网站]💊 你今天吃药了吗？我用纯前端做了一款用药提醒小程序",
+    "content": "> 一款轻量级、无需注册、开箱即用的每日用药提醒工具\n\n---\n\n## 🎯 缘起\n\n作为一个经常忘记吃维生素的打工人，我意识到需要一个小工具来提醒自己按时服药。 市面上的医疗类应用太重、太复杂，还要注册登录 —— 我只是想简单地记录\"今天有没有吃药\"而已。\n\n于是有了这个项目：**「你今天吃药了吗？」**\n\n**核心理念：**\n- ✅ 打开即用，无需注册\n- ✅ 数据存在本地，保护隐私  \n- ✅ 界面简洁，一键打卡\n- ✅ 浏览器通知提醒\n\n---\n\n## 🛠️ 技术栈\n\n| 层级 | 技术 |\n|------|------|\n| 前端 | HTML5 + CSS3 + Vanilla JS |\n| 存储 | LocalStorage |\n| 提醒 | Web Notification API |\n| 部署 | 静态文件（部署在 Cloudflare Pages） |\n\n**为什么选择纯前端？**\n- 零后端依赖，成本最低\n- 无需处理服务器安全和数据合规\n- 用户数据完全私有，不上传任何服务器\n\n---\n\n## 📱 功能一览\n\n### 核心功能\n\n1. **每日打卡** — 一键标记\"今天已服药\"，再也不会忘记\n2. **药物管理** — 添加/编辑/删除药物，设置提醒时间和剂量\n3. **浏览器通知** — 定时推送服药提醒\n4. **今日状态** — 打开页面就知道今天有没有服药\n\n### 辅助功能\n\n- 7天服药历史记录\n- 服药依从性统计\n- 响应式设计，支持移动端\n\n---\n\n## 🎨 界面设计\n\n采用了**紫色渐变**为主色调，配合绿色（成功）和红色（未完成）的对比：\n\n```css\n/* 主色调 */\nbackground: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n\n/* 成功/已服用 */\nbackground: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);\n\n/* 未完成 */\nbackground: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);\n```\n\n**设计原则：**\n- 大按钮、高对比度，适合老年人\n- 卡片式布局，层次分明\n- 最大宽度 480px，移动端优先\n\n---\n\n## 💾 数据结构\n\n```json\n{\n  \"medicines\": [\n    { \"name\": \"维生素C\", \"time\": \"09:00\", \"dose\": \"1片\" },\n    { \"name\": \"钙片\", \"time\": \"21:00\", \"dose\": \"2粒\" }\n  ],\n  \"records\": {\n    \"2026-03-27\": [\"维生素C\", \"钙片\"],\n    \"2026-03-26\": [\"维生素C\"]\n  }\n}\n```\n\n所有数据保存在用户浏览器的 LocalStorage 中，**永不上传**。\n\n---\n\n## 🤔 遇到的技术挑战\n\n### 1. 浏览器通知权限\n\n很多用户首次使用时，会拒绝通知权限。需要优雅地处理降级场景：\n\n```javascript\n// 请求通知权限\nNotification.requestPermission().then(permission => {\n  if (permission === 'granted') {\n    // 可以发送通知了\n  } else {\n    // 显示提示，引导用户手动开启\n  }\n});\n```\n\n### 2. 跨日期的数据同步\n\n用户可能在晚上 23:59 添加明天的药物，需要确保日期切换时数据一致。\n\n### 3. LocalStorage 容量限制\n\n虽然 LocalStorage 有 5-10MB 的限制，但对于纯文本的服药记录来说已经绑绑有余。\n\n---\n\n## 📂 项目结构\n\n```\nmedicine-reminder/\n├── medicine-reminder.html   # 主页面\n├── user.html               # 用户页面\n├── login.html              # 登录页面\n├── donation.html           # 捐赠页面\n├── MVP-需求文档.md          # 需求文档\n└── _headers                # Cloudflare 部署配置\n```\n\n---\n\n## 🚀 部署\n\n项目已部署在 Cloudflare Pages，绑定域名后即可访问。\n\n**部署方式：**\n```bash\n# 安装 wrangler CLI\nnpm install -g wrangler\n\n# 部署\nwrangler pages deploy .\n```\n\n---\n\n## 📈 后续规划\n\n| 版本 | 功能 |\n|------|------|\n| V1.1 | 7天历史记录、依从性统计、数据导出 |\n| V2.0 | 用户体系、多设备同步、家人提醒 |\n\n---\n\n## 💡 总结\n\n这款小工具虽然功能简单，但解决了一个真实的问题：帮助养成按时服药的习惯。\n\n**技术选型上**，纯前端方案牺牲了一些\"高级功能\"（如多设备同步），换来了极低的开发和维护成本，以及用户对数据的完全掌控。这是一个典型的\"够用就好\"的产品决策。\n\n如果你也有类似需求，欢迎直接使用或 Fork 二次开发！\n\n---\n\n*项目地址：[https://github.com/qinyanbo/medicine-reminder.git]*  \n*在线体验：[https://medicine-reminder.shop]*\n\n---\n\n**#javascript #webdev #sideproject #productivity #health**\n",
+    "created_at": "2026-03-27T14:26:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9413"
+  },
+  {
     "id": 9412,
     "title": "【开源自荐】wxWebHook：轻量级消息推送服务，通过微信接口快速推送关键信息至微信端",
     "content": "## 项目名称\n\nwxWebHook\n\n## 项目简介\n\n本项目是一个轻量级的消息通知服务。通过封装微信官方接口，帮助开发者将关键信息快速推送至微信端。用户只需通过简单的 HTTP 请求或命令行调用即可将内容实时推送到自己的微信上，实现随时随地接收提醒。\n\n## 类似的产品有：\n\nServer酱、Bark、Gotify、ntfy.sh\n\n## 相比以上产品的亮点在：\n\n- 专注于微信消息的推送\n- 无需公网IP，可以在无公网IP的机器上本地部署\n- 使用微信官方接口推送消息到微信，封号概率低\n- 没有消息收发条数限制（但不建议高频发送消息）\n\n## 项目地址\nhttps://github.com/aristorechina/wxWebHook\n\n## 项目截图\n\n<img width=\"2547\" height=\"1371\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f9e0d546-ef0e-48e4-ae9c-b7a1f2f47cfd\" />\n\n<img width=\"2547\" height=\"1371\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0005e041-a275-4e92-8c6f-7a43ad8ed58b\" />\n\n<img width=\"2547\" height=\"1371\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/58c8aaf8-5192-411a-b74c-93597d873ed5\" />\n\n<img width=\"630\" height=\"629\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68a3ce4a-625f-4386-a3b9-16c829494d34\" />",
     "created_at": "2026-03-27T12:46:04Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9412"
   },
   {
@@ -12,7 +22,9 @@
     "title": "【网站自荐】SubsTracker 订阅管理与提醒系统",
     "content": "基于 Cloudflare Workers 的轻量级订阅管理系统，帮助你轻松跟踪各类订阅服务的到期时间，并通过 Telegram、Webhook 等多渠道发送及时提醒。\n\n核心功能\n订阅管理：添加、编辑、删除各类订阅服务\n智能提醒：自定义提前提醒天数，自动续订计算\n农历显示：支持农历日期显示，可控制开关\n状态管理：订阅启用/停用，过期状态自动识别\n财务追踪：记录订阅费用，完整的支付历史和统计分析\n手动续订：支持自定义金额、周期和备注\n仪表盘：可视化展示月度/年度支出，支出趋势和分类统计\n多渠道通知\nTelegram：支持 Telegram Bot 通知\nNotifyX：集成 NotifyX 推送服务\nWebhook 通知：支持自定义 Webhook 推送\n企业微信机器人：支持企业微信群机器人通知\n邮件通知：基于 Resend 的邮件服务\nBark：支持 iOS Bark 推送\n\n地址: https://github.com/wangwangit/SubsTracker",
     "created_at": "2026-03-27T12:17:20Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9411"
   },
   {
@@ -68,7 +80,9 @@
     "title": "【开源自荐】OpeniLink Hub — 微信 Bot 也有应用市场了，装个 App 就能查股票、生图、接入 Claude、OpenClaw",
     "content": "## OpeniLink Hub\n\n微信 3 月开放了 ClawBot 插件（iLink 协议），第一次官方允许用程序收发个人号消息。但 iLink 本身只是个原始通道，很难直接用。\n\n我做了 OpeniLink Hub，一个开源的微信 Bot 消息管理平台，最大的特点是**带应用市场**——不写代码，装个 App 就能给你的微信 Bot 加功能。\n\n## 应用市场能装什么？\n\n**Command Service（20+ 命令，装了就能用）：**\n\n| 命令 | 效果 |\n|------|------|\n| `/s 600519` | 查贵州茅台实时股价 |\n| `/sus` | 查美股三大指数 |\n| `/shk` | 查港股指数 |\n| `/b btc` | 查比特币价格 |\n| `/gi 赛博朋克城市夜景` | AI 生成图片，直接发回微信 |\n| `/a 帮我写一封请假邮件` | AI 对话 |\n| `/dp` | 查大盘市场概况 |\n\n**Bridge（消息转发）：** 微信消息自动同步到飞书 / Slack / 你自己的服务器\n\n**OpenClaw App：** 一键装上后，你的 OpenClaw Agent 就能通过微信聊天了 —— OpenClaw 能干的事（写代码、操作文件、调用工具），都可以在微信里触发\n\n## 除了应用市场\n\n- **AI 自动回复**：接 Claude / GPT / DeepSeek / Ollama，微信变 AI 助手\n- **自动续期**：iLink 有 24h 窗口限制，Hub 自动续约不掉线\n- **消息追踪**：每条消息的完整链路，哪步耗时多少一目了然\n- **多 Bot 管理**：同时绑定多个微信号，Web 后台统一管理\n- **7 种语言 SDK**：Go / Node.js / Python / PHP / Java / C# / Lua\n\n## 一行命令安装\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/openilink/openilink-hub/main/install.sh | sh\n```\n\n内置 SQLite，零配置启动。MIT 开源，不限商用。\n\nGitHub：https://github.com/openilink/openilink-hub\n官网：https://openilink.com\n在线体验：https://hub.openilink.com",
     "created_at": "2026-03-27T07:03:05Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9404"
   },
   {
@@ -818,13 +832,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9312"
-  },
-  {
-    "id": 9311,
-    "title": "【开源自荐】antd-overlay（Ant Design 弹层命令式调用方案）",
-    "content": "### antd-overlay\n[https://github.com/RaineySpace/antd-overlay](https://github.com/RaineySpace/antd-overlay)\n\n一个基于 Ant Design 的弹层（Modal / Drawer）命令式调用方案，让弹窗可以像 message 一样通过函数直接调用，无需在业务中维护 open 状态。\n\n该项目解决了 Antd 弹层在复杂场景下的几个常见问题：\n\n- 支持函数式调用（类似 message / notification）\n\n- 统一管理多弹层，支持跨组件全局调用\n\n- 正确处理关闭动画（避免动画未完成就卸载）\n\n- 提供类型安全的 update / close 控制能力\n\n- 支持自定义 Overlay 组件扩展（useOverlay）\n\n适用于中后台复杂交互场景（多弹窗、流程型 UI 等）。\n\n## Demo\n```tsx\nimport { Modal, Input } from 'antd';\nimport { CustomModalProps } from 'antd-overlay';\nimport { useState } from 'react';\n\ninterface MyModalProps extends CustomModalProps<{ result: string }> {\n  initialValue?: string;\n}\n\nconst MyModal: React.FC<MyModalProps> = ({\n  open,\n  customClose,\n  customOk,\n  initialValue,\n  ...props\n}) => {\n  const [value, setValue] = useState(initialValue || '');\n\n  return (\n    <Modal\n      open={open}\n      title=\"输入内容\"\n      onCancel={customClose}\n      onOk={() => customOk?.({ result: value })}\n      {...props}\n    >\n      <Input value={value} onChange={(e) => setValue(e.target.value)} />\n    </Modal>\n  );\n};\n```\n```tsx\nimport { useModal, useGlobalModal } from 'antd-overlay';\n\n// 局部使用（需要渲染 holder）\nfunction LocalUsage() {\n  const [openModal, holder] = useModal(MyModal);\n\n  const handleOpen = () => {\n    const controller = openModal({ initialValue: 'hello' });\n    // controller.update({ initialValue: 'updated' });\n    // controller.close();\n  };\n\n  return (\n    <>\n      <button onClick={handleOpen}>打开 Modal</button>\n      {holder}\n    </>\n  );\n}\n\n// 全局使用（无需渲染 holder，但需要 AntdOverlayProvider）\nfunction GlobalUsage() {\n  const openModal = useGlobalModal(MyModal);\n\n  return (\n    <button onClick={() => openModal({ initialValue: 'world' })}>\n      打开全局 Modal\n    </button>\n  );\n}\n```",
-    "created_at": "2026-03-19T14:33:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9311"
   }
 ]
