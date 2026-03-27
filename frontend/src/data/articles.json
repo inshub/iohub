@@ -1,5 +1,13 @@
 [
   {
+    "id": 9414,
+    "title": "【工具自荐】MouseCombo：macOS 将鼠标组合映射为键盘快捷键，实现单手完成高频操作",
+    "content": "# 项目介绍\n\n将鼠标组合映射为键盘快捷键，单手完成高频操作👋。\n\n全局助记浮窗 + 触发音效，提供游戏金手指版的使用体验。\n\n> 项目平台：macOS 13+\n> **项目地址**：https://github.com/WooHooDai/MouseCombo\n\n## 核心特点\n\n- 🧙 **无限按键组合**：支持任意的鼠标组合序列，全部快捷键集于一手。\n- 🧠 **全局助记浮窗**：照着点、不用记。动态呈现，可自定义展示位置/跟随鼠标\n- ⛔️ **生效应用限定**：支持 `所有/包含/排除` 三类限定模式，相同组合不同映射。\n- 🎵 **乐趣触发音效**：支持自定义触发音效，强化肌肉记忆。\n- 👀 **可视化配置**：鼠标组合、键盘快捷键、应用限定、助记浮窗位置，全部可视化配置。\n\n## 截图\n\n![Image](https://github.com/user-attachments/assets/f04d8579-18b4-41f7-9803-79c7c3d9bbe0)\n\n| 主界面 | 助记浮窗 | 设置界面 |\n| :---: | :---: | :---: |\n| <img width=\"823\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f87b6f2d-37c0-4fdd-81d5-de01599077cf\" /> | <img width=\"823\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/878b4577-6a13-46bc-9cc0-6584e11d4d38\" />  | <img width=\"823\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/523b91d5-6b6a-48ed-9ec2-449bff3113fd\" /> |",
+    "created_at": "2026-03-27T17:09:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9414"
+  },
+  {
     "id": 9413,
     "title": "[自荐网站]💊 你今天吃药了吗？我用纯前端做了一款用药提醒小程序",
     "content": "> 一款轻量级、无需注册、开箱即用的每日用药提醒工具\n\n---\n\n## 🎯 缘起\n\n作为一个经常忘记吃维生素的打工人，我意识到需要一个小工具来提醒自己按时服药。 市面上的医疗类应用太重、太复杂，还要注册登录 —— 我只是想简单地记录\"今天有没有吃药\"而已。\n\n于是有了这个项目：**「你今天吃药了吗？」**\n\n**核心理念：**\n- ✅ 打开即用，无需注册\n- ✅ 数据存在本地，保护隐私  \n- ✅ 界面简洁，一键打卡\n- ✅ 浏览器通知提醒\n\n---\n\n## 🛠️ 技术栈\n\n| 层级 | 技术 |\n|------|------|\n| 前端 | HTML5 + CSS3 + Vanilla JS |\n| 存储 | LocalStorage |\n| 提醒 | Web Notification API |\n| 部署 | 静态文件（部署在 Cloudflare Pages） |\n\n**为什么选择纯前端？**\n- 零后端依赖，成本最低\n- 无需处理服务器安全和数据合规\n- 用户数据完全私有，不上传任何服务器\n\n---\n\n## 📱 功能一览\n\n### 核心功能\n\n1. **每日打卡** — 一键标记\"今天已服药\"，再也不会忘记\n2. **药物管理** — 添加/编辑/删除药物，设置提醒时间和剂量\n3. **浏览器通知** — 定时推送服药提醒\n4. **今日状态** — 打开页面就知道今天有没有服药\n\n### 辅助功能\n\n- 7天服药历史记录\n- 服药依从性统计\n- 响应式设计，支持移动端\n\n---\n\n## 🎨 界面设计\n\n采用了**紫色渐变**为主色调，配合绿色（成功）和红色（未完成）的对比：\n\n```css\n/* 主色调 */\nbackground: linear-gradient(135deg, #667eea 0%, #764ba2 100%);\n\n/* 成功/已服用 */\nbackground: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);\n\n/* 未完成 */\nbackground: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);\n```\n\n**设计原则：**\n- 大按钮、高对比度，适合老年人\n- 卡片式布局，层次分明\n- 最大宽度 480px，移动端优先\n\n---\n\n## 💾 数据结构\n\n```json\n{\n  \"medicines\": [\n    { \"name\": \"维生素C\", \"time\": \"09:00\", \"dose\": \"1片\" },\n    { \"name\": \"钙片\", \"time\": \"21:00\", \"dose\": \"2粒\" }\n  ],\n  \"records\": {\n    \"2026-03-27\": [\"维生素C\", \"钙片\"],\n    \"2026-03-26\": [\"维生素C\"]\n  }\n}\n```\n\n所有数据保存在用户浏览器的 LocalStorage 中，**永不上传**。\n\n---\n\n## 🤔 遇到的技术挑战\n\n### 1. 浏览器通知权限\n\n很多用户首次使用时，会拒绝通知权限。需要优雅地处理降级场景：\n\n```javascript\n// 请求通知权限\nNotification.requestPermission().then(permission => {\n  if (permission === 'granted') {\n    // 可以发送通知了\n  } else {\n    // 显示提示，引导用户手动开启\n  }\n});\n```\n\n### 2. 跨日期的数据同步\n\n用户可能在晚上 23:59 添加明天的药物，需要确保日期切换时数据一致。\n\n### 3. LocalStorage 容量限制\n\n虽然 LocalStorage 有 5-10MB 的限制，但对于纯文本的服药记录来说已经绑绑有余。\n\n---\n\n## 📂 项目结构\n\n```\nmedicine-reminder/\n├── medicine-reminder.html   # 主页面\n├── user.html               # 用户页面\n├── login.html              # 登录页面\n├── donation.html           # 捐赠页面\n├── MVP-需求文档.md          # 需求文档\n└── _headers                # Cloudflare 部署配置\n```\n\n---\n\n## 🚀 部署\n\n项目已部署在 Cloudflare Pages，绑定域名后即可访问。\n\n**部署方式：**\n```bash\n# 安装 wrangler CLI\nnpm install -g wrangler\n\n# 部署\nwrangler pages deploy .\n```\n\n---\n\n## 📈 后续规划\n\n| 版本 | 功能 |\n|------|------|\n| V1.1 | 7天历史记录、依从性统计、数据导出 |\n| V2.0 | 用户体系、多设备同步、家人提醒 |\n\n---\n\n## 💡 总结\n\n这款小工具虽然功能简单，但解决了一个真实的问题：帮助养成按时服药的习惯。\n\n**技术选型上**，纯前端方案牺牲了一些\"高级功能\"（如多设备同步），换来了极低的开发和维护成本，以及用户对数据的完全掌控。这是一个典型的\"够用就好\"的产品决策。\n\n如果你也有类似需求，欢迎直接使用或 Fork 二次开发！\n\n---\n\n*项目地址：[https://github.com/qinyanbo/medicine-reminder.git]*  \n*在线体验：[https://medicine-reminder.shop]*\n\n---\n\n**#javascript #webdev #sideproject #productivity #health**\n",
@@ -822,15 +830,5 @@
     "created_at": "2026-03-20T00:59:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9313"
-  },
-  {
-    "id": 9312,
-    "title": "【开源自荐】Flare Stack Blog —— 基于 Cloudflare 全家桶的全栈博客 CMS，内置 MCP Server",
-    "content": "开源地址：https://github.com/du2333/flare-stack-blog\n演示站：https://blog.dukda.com\n\n市面上大多数博客方案是静态站点生成器，如果想要评论、搜索、后台管理等动态功能，往往需要自己拼凑多个第三方服务。Flare Stack Blog 是一个跑在 Cloudflare Workers 上的全栈博客 CMS，集成 D1、R2、KV、Durable Objects、Workflows、Queues、Workers AI、Images 共 9 项 Cloudflare 服务，依托免费额度，个人使用基本没有费用。\n\n技术栈：React 19 + TanStack Start（SSR）+ Hono + Drizzle ORM + TipTap 编辑器 + TailwindCSS 4\n\n### 界面预览\n\n<table>\n  <tr>\n    <td><strong>Default 主题</strong></td>\n    <td><strong>Fuwari 主题</strong></td>\n  </tr>\n  <tr>\n    <td><img src=\"https://github.com/user-attachments/assets/5625bac0-0f30-4822-9505-cf34d86459a4\" alt=\"Default 主题首页\" /></td>\n    <td><img src=\"https://github.com/user-attachments/assets/30676ee6-0e7a-4842-b595-47b373e8c91d\" alt=\"Fuwari 主题首页\" /></td>\n  </tr>\n  <tr>\n    <td><strong>后台编辑器</strong></td>\n    <td><strong>MCP 客户端管理</strong></td>\n  </tr>\n  <tr>\n    <td><img src=\"https://github.com/user-attachments/assets/e7e17029-f3bc-4e9b-a44b-33886655027a\" alt=\"后台编辑器\" /></td>\n    <td><img src=\"https://github.com/user-attachments/assets/2056a086-780e-4992-b883-b2c20d5448b9\" alt=\"MCP 客户端管理\" /></td>\n  </tr>\n</table>\n\n### 主要功能\n\n- **内置 MCP Server**：通过 OAuth 鉴权连接 Claude Code 等 AI 客户端，用自然语言管理文章、评论、标签、媒体库\n- **AI 辅助**：基于 Workers AI 的评论自动审核、文章摘要生成、标签推荐\n- **主题系统**：TypeScript 接口定义主题契约，业务与视觉层解耦，通过构建时环境变量切换主题，目前内置 2 套主题\n- **异步工作流**：6 个 Cloudflare Workflows 处理文章发布、编辑器自动快照、评论审核、定时发布、导入导出\n- **评论 & 通知**：嵌套回复，邮件 / Webhook 双通道通知，按事件类型订阅\n- **其他**：Orama 全文搜索（支持中文分词）、版本历史回溯、Markdown 导入导出、RSS / Sitemap / Schema.org\n",
-    "created_at": "2026-03-19T22:44:50Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9312"
   }
 ]
