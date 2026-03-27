@@ -1,5 +1,29 @@
 [
   {
+    "id": 9404,
+    "title": "【开源自荐】OpeniLink Hub — 微信 Bot 也有应用市场了，装个 App 就能查股票、生图、接入 Claude、OpenClaw",
+    "content": "## OpeniLink Hub\n\n微信 3 月开放了 ClawBot 插件（iLink 协议），第一次官方允许用程序收发个人号消息。但 iLink 本身只是个原始通道，很难直接用。\n\n我做了 OpeniLink Hub，一个开源的微信 Bot 消息管理平台，最大的特点是**带应用市场**——不写代码，装个 App 就能给你的微信 Bot 加功能。\n\n## 应用市场能装什么？\n\n**Command Service（20+ 命令，装了就能用）：**\n\n| 命令 | 效果 |\n|------|------|\n| `/s 600519` | 查贵州茅台实时股价 |\n| `/sus` | 查美股三大指数 |\n| `/shk` | 查港股指数 |\n| `/b btc` | 查比特币价格 |\n| `/gi 赛博朋克城市夜景` | AI 生成图片，直接发回微信 |\n| `/a 帮我写一封请假邮件` | AI 对话 |\n| `/dp` | 查大盘市场概况 |\n\n**Bridge（消息转发）：** 微信消息自动同步到飞书 / Slack / 你自己的服务器\n\n**OpenClaw App：** 一键装上后，你的 OpenClaw Agent 就能通过微信聊天了 —— OpenClaw 能干的事（写代码、操作文件、调用工具），都可以在微信里触发\n\n## 除了应用市场\n\n- **AI 自动回复**：接 Claude / GPT / DeepSeek / Ollama，微信变 AI 助手\n- **自动续期**：iLink 有 24h 窗口限制，Hub 自动续约不掉线\n- **消息追踪**：每条消息的完整链路，哪步耗时多少一目了然\n- **多 Bot 管理**：同时绑定多个微信号，Web 后台统一管理\n- **7 种语言 SDK**：Go / Node.js / Python / PHP / Java / C# / Lua\n\n## 一行命令安装\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/openilink/openilink-hub/main/install.sh | sh\n```\n\n内置 SQLite，零配置启动。MIT 开源，不限商用。\n\nGitHub：https://github.com/openilink/openilink-hub\n官网：https://openilink.com\n在线体验：https://hub.openilink.com",
+    "created_at": "2026-03-27T07:03:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9404"
+  },
+  {
+    "id": 9403,
+    "title": "【开源自荐】一个 AI 优先的运维工具，可以管理 SSH、数据库、Redis 等资产",
+    "content": "\nhttps://github.com/user-attachments/assets/035fc0df-230c-456b-87bd-8a4a125feaec\n\n平时操作服务器环境，经常要打开好几个工具来回切换，想着能不能直接跟 AI 说一句话就搞定，于是做了 OpsKat ，就算不使用 AI 功能，常用的资产操作都集成在一起，也不用再在好几个工具之间跳了。\n\n## 它是什么\n一个 AI 优先的开源桌面运维工具。核心思路是：你描述需求，AI Agent 帮你执行，但每一步都有策略管控和审计日志。\n\n目前支持管理 SSH 服务器、MySQL/PostgreSQL 数据库、Redis ，后面还会考虑使用插件的模式继续集成其它常用运维资产。\n\n## 举几个实际使用场景\n- \"帮我看一下 web-01 上 nginx 最近的错误日志\" → AI 自动 SSH 上去执行命令并返回结果\n- \"统计一下 db-prod 上 users 表各 status 的数量\" → AI 通过 SSH 隧道连数据库执行 SQL\n- \"检查一下 k3s 集群的健康状况\" → AI 自动跑 kubectl 相关命令，汇总节点和 Pod 状态\n\n## 安全审计\n给 AI 操作服务器的权限，怎么保证安全？\n\n- 操作策略：SSH 命令、SQL 语句、Redis 操作都支持白名单/黑名单，SQL 还会基于 Parser 自动拦截无 WHERE 的 DELETE/UPDATE 等危险操作\n- 策略组：内置常用模板（ Linux 只读、危险命令拒绝等），也可以自定义\n- 预申请权限：AI 或 opsctl 可以提前申请一批命令的执行权限，用户一次审批后，后续匹配的命令自动放行，不用每条都确认\n- 审计日志：所有操作自动记录，谁在什么时候对哪台服务器执行了什么命令，决策来源全部可追溯\n- 也是个好用的 SSH 客户端、资产管理工具\n\n## 抛开 AI 部分，本身也是一个功能完整的终端和资产管理工具：\n\n- 树形分组管理 SSH 服务器、数据库、Redis\n- 分屏、自定义主题\n- SFTP 文件浏览器\n- 跳板机链式连接\n- 数据库查询编辑器\n- 端口转发、SOCKS 代理\n- 凭据加密存储\n- 从 SSH config / Tabby 导入\n...\n\n## opsctl CLI + AI 编程工具集成\n还提供了一个独立命令行工具 opsctl ，主要给 Claude Code 、Codex 这类 AI 编程助手用。桌面端一键安装 Skill ，AI 编程助手就能通过 opsctl 直接管理服务器、查日志、查数据库、排查线上问题。\n\n桌面端运行时，opsctl 会复用桌面端的连接池和审批流程，操作同样受策略管控和审计。\n\n当然也可以自己手动用：\n\n```\nopsctl exec web-01 -- tail -n 100 /var/log/nginx/error.log\nopsctl sql db-prod \"SELECT status, COUNT(*) FROM users GROUP BY status\"\nopsctl ssh web-01\n```\n\nGitHub: https://github.com/opskat/opskat\n\n官网: https://opskat.github.io/\n\n下载: https://github.com/opskat/opskat/releases\n\n跨平台 macOS / Linux / Window ，如果觉得有用，求个 Star 🙏",
+    "created_at": "2026-03-27T06:38:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9403"
+  },
+  {
+    "id": 9402,
+    "title": "【网站自荐】Booklet AI：通过对话自动搜索资料并生成可分享、可导出的 A4 小册子",
+    "content": "网站名称：Booklet AI\n网站地址：https://bookletai.org/\n产品定位：一个通过对话创建专业小册子的 AI 工具。\n\n核心功能：\n- AI 会先确认主题、受众、用途和风格，再开始生成\n- 自动搜索和抓取 3-5 个高质量网页资料，不只依赖模型记忆\n- 先给出完整大纲，再逐页生成图文混排的 A4 版式内容\n- 支持单页编辑、分享链接、HTML 下载和 PDF 导出\n\n适合场景：产品介绍册、培训手册、研究摘要、方案提案、课程材料。\n\n和普通 AI 写作工具的区别：它不是只输出文字，而是直接生成可预览、可分享、可导出的完整小册子页面。\n\n如果你在做产品介绍、培训资料或研究型内容整理，欢迎试用并给出反馈。谢谢。",
+    "created_at": "2026-03-27T06:30:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9402"
+  },
+  {
     "id": 9401,
     "title": "【开源自荐】FastClaw - 做更好的 OpenClaw 发行版",
     "content": "FastClaw 发布了，这是一个 OpenClaw-Like 的 Agent 基础框架，参考 OpenClaw 的设计，使用 Go 语言完全重写，在架构方面做了很多优化，重点支持多租户，云原生部署友好。\n\n1. 使用 Go 开发，3000 行代码实现 OpenClaw 核心功能\n2. 单二进制（ 5MB ）分发，轻量级安装，无环境依赖\n3. 秒级启动，资源占用小（内存占用约为 OpenClaw 的 1/7 ）\n4. 支持可视化安装，上手门槛很低\n5. 支持个人本地使用，原生支持云端多租户场景\n6. 支持 OpenClaw 90% 功能，兼容 OpenClaw 生态。\n\n如何使用？\n\n1. 在项目主页复制 FastClaw 一键安装命令\n2. 在电脑运行安装命令，自动打开可视化配置界面\n3. 按照步骤，配置接入的模型和消息渠道\n4. 安装完自动进入 FastClaw 管理面板，查看网关运行情况\n5. 在接入的消息渠道开始对话\n\n跟 OpenClaw 有什么区别？\n\n1. 使用方式上没太大区别，都是命令行安装，配置各种功能，在自己习惯的消息渠道对话\n2. 第一次配置，比 OpenClaw 简单，上手门槛更低\n3. 运行过程中，比 OpenClaw 资源占用小，对电脑配置要求更低\n4. 如果你想二次开发，代码量更少，改起来更轻松\n5. 如果你要部署到云端，让多个用户接入使用，FastClaw 更适合，天然支持云端多租户\n6. FastClaw 支持了 OpenClaw 大部分功能：多模型、多渠道、多 Agent 等，添加了额外的特性：沙盒、并发控制、数据库配置、消息持久化等\n7. FastClaw 兼容 OpenClaw 的生态，比如 clawhub 安装 skills 等，配置参数跟使用习惯也尽量跟 OpenClaw 保持一致，减少用户切换成本\n8. FastClaw 是 OpenClaw-Like 的 Agent 底层框架，不是 OpenClaw fork 版本，而是从底层重构的全新版本\n9. 如果把 OpenClaw 比作 Linux ，那么 FastClaw 想做的就是 Centos ，面向企业场景、云部署场景、智能终端而设计的 Agent OS\n\n为什么做？\n\n1. 我做了一个月 OpenClaw 云托管服务，得出的结论是 OpenClaw 不适合云端多租户场景，主要是 OpenClaw 的架构是为本地使用场景而设计的，定位是个人 Agent\n\n- OpenClaw 在云端多租户场景需要每个用户一个隔离的 Pod ，开销很大，成本很高\n- OpenClaw 通过子进程完成复杂任务，多个任务串行排队，效率不高\n- OpenClaw 的对话和记忆内容是存储在本地文件的，容易丢失，配置容易搞崩\n\n我需要一个更好的方案来降低云端部署的成本，让更多人拥有自己的龙虾。\n\n2. 随着微信 ClawBot 等入口的开放，使用 Agent 的用户会越来越多，不太可能每个用户都在自己的电脑部署一个 Agent ，云端多租户是刚需。企业需要给员工分配 Agent ，挂载知识库，统一管理。这些场景 OpenClaw 都不适合。\n\n3. 要建摩天大楼，需要先打地基。OpenClaw 有很多优秀的设计可以参考，但是代码太臃肿，没办法在此基础上改架构，所以只能自己写。\n\n------\n\nFastClaw 还在初期阶段，堆了很多功能，还没来得及完整测试，需要点时间完善。期待有更多的朋友参与共建，做一个更好的 OpenClaw-Like 的 Agent OS 发行版。\n\nMIT 协议开源，欢迎使用，感谢支持。\n\nhttps://github.com/fastclaw-ai/fastclaw\n\n![]( https://pbs.twimg.com/media/HETlYsGbcAACF8F?format=jpg&name=4096x4096)\n\n![]( https://pbs.twimg.com/media/HETll2vbYAIJxBo?format=jpg&name=large)",
@@ -798,29 +822,5 @@
     "created_at": "2026-03-19T08:01:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9303"
-  },
-  {
-    "id": 9302,
-    "title": "【开源自荐】SkillHub —— 企业内部的技能注册中心",
-    "content": "### 介绍\n\n`SkillHub` 是科大讯飞开源的一个企业级技能注册中心，用来发布、发现和管理可复用的技能包。它支持私有部署，适合在团队或公司内部统一管理各种技能。项目地址：  \nhttps://github.com/iflytek/skillhub\n\n### 背景\n\n现在很多团队都会把常用能力封装成技能包，用在内部工具、自动化流程或者智能体系统里。技能一多，就会碰到一些很实际的问题：怎么发布、怎么做版本管理、谁可以看、谁可以用、怎么搜索、怎么安装。\n\n`SkillHub` 做的就是这部分基础设施。它把技能包当成一种可以统一管理的资源，提供注册、检索、版本控制和权限治理，比较适合有私有化部署需求的团队。\n\n### 特点\n\n* 私有部署：支持部署在自己的基础设施中，适合内网和权限要求较高的场景。\n* 技能发布与版本管理：支持语义化版本、标签和 `latest` 跟踪。\n* 搜索与发现：支持全文搜索，可以按命名空间、下载量、评分和时间筛选。\n* 权限控制：支持 RBAC 和可见性控制，不同用户只能看到自己有权限访问的技能。\n* 审计与令牌管理：支持 API Token 和审计日志，方便内部使用和治理。\n* CLI 友好：除了 Web 界面，也支持通过 CLI 搜索、安装和发布技能。\n* 技术栈清晰：后端是 Java / Spring Boot，前端是 React / TypeScript，协议为 Apache-2.0。\n\n### 适用场景\n\n* 企业内部技能市场\n* 团队共享和复用技能包\n* 私有化部署的工具平台\n* 需要权限控制和审计能力的内部系统",
-    "created_at": "2026-03-19T07:32:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9302"
-  },
-  {
-    "id": 9301,
-    "title": "【文章推荐】一个 GitHub Issue 标题如何让 4000 台电脑沦陷？",
-    "content": "[一个 GitHub Issue 标题如何让 4000 台电脑沦陷？](https://mp.weixin.qq.com/s/LjAcvkSkSd57deDm3zx2_w)\n\n关于 Cline 被 Github Issue 提示词注入攻击总结和提取，梳理了流程加入一些自己的理解和看法。\n\n原文地址：\n1. A GitHub Issue Title Compromised 4,000 Developer Machines\n2. How to steal npm publish tokens by opening GitHub issues",
-    "created_at": "2026-03-19T07:21:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9301"
-  },
-  {
-    "id": 9300,
-    "title": "【开源自荐】three-player-controller —— 基于 Three.js 的 3D 人物控制器插件",
-    "content": "### 介绍\n\n`three-player-controller` 是一款基于 [Three.js](https://threejs.org/) 的开源人物控制器插件，旨在帮助开发者快速在 Three.js 项目中实现 3D 人物的移动、动画与交互控制，告别繁琐的底层实现，专注于场景创作本身。\n\n开源地址：https://github.com/hh-hang/three-player-controller\n\n![Image](https://github.com/user-attachments/assets/eb903110-cf4d-453f-b060-e62c8080c2f6)\n\n![Image](https://github.com/user-attachments/assets/5023cf21-4c6c-4e93-a1cf-0baac4e77b05)\n\n### 背景\n\n在使用 Three.js 开发 3D 场景时，实现一个完整的人物控制器往往需要处理大量细节：角色动画状态、碰撞检测、相机跟随、键盘/手柄输入映射……这些重复性工作消耗了开发者大量精力。`three-player-controller` 将这些能力封装成即插即用的插件，让你几行代码就能拥有一个可交互的 3D 人物。\n\n### 特点\n\n- **开箱即用**：引入插件后无需大量配置，快速集成到现有 Three.js 项目。\n- **动画状态管理**：内置常见的人物动画状态切换（站立、行走、跑步、跳跃等），支持自定义扩展。\n- **相机跟随**：提供第三人称相机跟随逻辑，支持平滑过渡与视角调整，以及第一人称切换。\n- **键盘输入支持**：内置 WASD / 方向键等常用键盘映射，轻松实现人物移动控制。\n- **碰撞与物理兼容**：可与主流物理引擎（如 Cannon.js、Rapier）配合使用。\n- **车辆控制切换**：支持人物与车辆控制模式的无缝切换，可在步行与驾驶状态之间自由切换，轻松实现开放世界式的交互体验。\n- **轻量无依赖**：仅依赖 Three.js 本身，无其他额外依赖。\n\n### 适用场景\n\n- Three.js 3D 场景漫游\n- Web 端游戏/互动体验开发\n- 数字孪生、虚拟展厅中的角色控制\n- Three.js 学习项目与 Demo 原型\n\n",
-    "created_at": "2026-03-19T07:04:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9300"
   }
 ]
