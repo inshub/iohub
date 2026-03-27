@@ -1,5 +1,13 @@
 [
   {
+    "id": 9401,
+    "title": "【开源自荐】FastClaw - 做更好的 OpenClaw 发行版",
+    "content": "FastClaw 发布了，这是一个 OpenClaw-Like 的 Agent 基础框架，参考 OpenClaw 的设计，使用 Go 语言完全重写，在架构方面做了很多优化，重点支持多租户，云原生部署友好。\n\n1. 使用 Go 开发，3000 行代码实现 OpenClaw 核心功能\n2. 单二进制（ 5MB ）分发，轻量级安装，无环境依赖\n3. 秒级启动，资源占用小（内存占用约为 OpenClaw 的 1/7 ）\n4. 支持可视化安装，上手门槛很低\n5. 支持个人本地使用，原生支持云端多租户场景\n6. 支持 OpenClaw 90% 功能，兼容 OpenClaw 生态。\n\n如何使用？\n\n1. 在项目主页复制 FastClaw 一键安装命令\n2. 在电脑运行安装命令，自动打开可视化配置界面\n3. 按照步骤，配置接入的模型和消息渠道\n4. 安装完自动进入 FastClaw 管理面板，查看网关运行情况\n5. 在接入的消息渠道开始对话\n\n跟 OpenClaw 有什么区别？\n\n1. 使用方式上没太大区别，都是命令行安装，配置各种功能，在自己习惯的消息渠道对话\n2. 第一次配置，比 OpenClaw 简单，上手门槛更低\n3. 运行过程中，比 OpenClaw 资源占用小，对电脑配置要求更低\n4. 如果你想二次开发，代码量更少，改起来更轻松\n5. 如果你要部署到云端，让多个用户接入使用，FastClaw 更适合，天然支持云端多租户\n6. FastClaw 支持了 OpenClaw 大部分功能：多模型、多渠道、多 Agent 等，添加了额外的特性：沙盒、并发控制、数据库配置、消息持久化等\n7. FastClaw 兼容 OpenClaw 的生态，比如 clawhub 安装 skills 等，配置参数跟使用习惯也尽量跟 OpenClaw 保持一致，减少用户切换成本\n8. FastClaw 是 OpenClaw-Like 的 Agent 底层框架，不是 OpenClaw fork 版本，而是从底层重构的全新版本\n9. 如果把 OpenClaw 比作 Linux ，那么 FastClaw 想做的就是 Centos ，面向企业场景、云部署场景、智能终端而设计的 Agent OS\n\n为什么做？\n\n1. 我做了一个月 OpenClaw 云托管服务，得出的结论是 OpenClaw 不适合云端多租户场景，主要是 OpenClaw 的架构是为本地使用场景而设计的，定位是个人 Agent\n\n- OpenClaw 在云端多租户场景需要每个用户一个隔离的 Pod ，开销很大，成本很高\n- OpenClaw 通过子进程完成复杂任务，多个任务串行排队，效率不高\n- OpenClaw 的对话和记忆内容是存储在本地文件的，容易丢失，配置容易搞崩\n\n我需要一个更好的方案来降低云端部署的成本，让更多人拥有自己的龙虾。\n\n2. 随着微信 ClawBot 等入口的开放，使用 Agent 的用户会越来越多，不太可能每个用户都在自己的电脑部署一个 Agent ，云端多租户是刚需。企业需要给员工分配 Agent ，挂载知识库，统一管理。这些场景 OpenClaw 都不适合。\n\n3. 要建摩天大楼，需要先打地基。OpenClaw 有很多优秀的设计可以参考，但是代码太臃肿，没办法在此基础上改架构，所以只能自己写。\n\n------\n\nFastClaw 还在初期阶段，堆了很多功能，还没来得及完整测试，需要点时间完善。期待有更多的朋友参与共建，做一个更好的 OpenClaw-Like 的 Agent OS 发行版。\n\nMIT 协议开源，欢迎使用，感谢支持。\n\nhttps://github.com/fastclaw-ai/fastclaw\n\n![]( https://pbs.twimg.com/media/HETlYsGbcAACF8F?format=jpg&name=4096x4096)\n\n![]( https://pbs.twimg.com/media/HETll2vbYAIJxBo?format=jpg&name=large)",
+    "created_at": "2026-03-27T02:35:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9401"
+  },
+  {
     "id": 9400,
     "title": "docs(issue-390): fix typo",
     "content": null,
@@ -814,13 +822,5 @@
     "created_at": "2026-03-19T07:04:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9300"
-  },
-  {
-    "id": 9299,
-    "title": "【工具自荐】宝可梦图鉴工具站",
-    "content": "最近玩《宝可梦 ZA》的时候，有个很明显的体验问题：\n查资料太麻烦了。\n有时候想看一个宝可梦的技能、特性、进化链，结果要在好几个网站之间来回切，而且很多网站不是太乱就是广告太多。\n所以我干脆自己做了一个图鉴网站：\n👉 [NationalDex](https://nationaldex.io)\n初衷其实很简单：\n做一个“查东西很快”的 Pokédex，而不是内容堆砌的网站。\n目前做了一些基础功能：\n简洁快速的图鉴浏览\n技能 / 特性 / 进化链 / 获取方式\n尽量减少层级，少点跳转\n手机和电脑都比较顺畅\n现在还在持续优化中，不过核心思路不会变：\n更像工具，而不是资讯站。\n想听听大家的建议：\n你平时查图鉴最常用什么网站？\n有没有你觉得“必须要有”的功能？\n使用上有没有哪里不顺手？\n如果你也刚好在玩 ZA，应该会用得上 😄",
-    "created_at": "2026-03-19T06:50:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9299"
   }
 ]
