@@ -1,5 +1,13 @@
 [
   {
+    "id": 9417,
+    "title": "[项目推荐] ApologyLetter.Online - 一个基于 GPT-4o-mini 的免费道歉信生成器（含极简出海与微变现实践）",
+    "content": "<img width=\"1274\" height=\"686\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad55e2e4-b90d-4f1a-9e46-d259831dc5df\" />\n\n各位周刊读者好：\n\n推荐一个我自己最近开发的业余小项目：ApologyLetter.Online。\n\n项目地址： https://apologyletter.online/\n\n主要功能： 一个免登录、免费使用的 AI 情感辅助工具，帮助用户在几秒钟内生成一封真诚、具体且高度个性化的英文道歉信。\n\n开发初衷：\n在人际关系中，搞砸事情后不知道“该怎么开口”是很多人的痛点。干巴巴的“I'm sorry”往往无济于事，而深刻的道歉需要具体的情境和情绪价值。我本身是一个 19 岁的在校生，专业是跨境电商，平时对 AI 应用出海非常感兴趣。为了把想法快速落地，我把这个项目当成了一次“AI + 极简出海变现”的完整微实操，跑通了从 Prompt 调优到全球支付的整个流程。\n\n技术与产品亮点：\n\n极简技术栈与“粗暴”的频率限制：\n使用 Next.js 15 (App Router) + Tailwind CSS + Vercel 部署。为了极致追求轻量化，我没有引入任何数据库。为了防止 API 被滥用，我直接在 Serverless 实例中用 Map 写了一个基于内存的 IP 频率限制器。虽然冷启动会重置，但对于验证期的 V1 版本完全够用。\n\n反套路化的 Prompt 工程：\n为了避免 AI 写出浓浓“机翻味”或假大空的信件，我在系统提示词中强制加入了“不找借口、承诺具体改变、不要有任何 AI 痕迹的废话前缀”等指令，并让用户自选语气（真诚、浪漫、谦卑等），大幅提升了文本的“人情味”。\n\n“免费 + $0.99 微支付”的商业闭环：\n核心的生成和文本复制功能完全免费（有利于 SEO 和口碑传播）。但我接入了 PayPal（@paypal/react-paypal-js），如果用户想要下载一份排版精美、可直接打印的 PDF 版本，需要支付 0.99 美元。这算是我将跨境电商思维用在数字产品上的一次有趣尝试。\n\n总结：\n这是一个非常典型的“用最无聊的栈，做最实在的工具”的 Build in Public 实践。代码不复杂，但完整经历了一个独立开发产品从构思、防刷、SEO 配置（Sitemap/结构化数据）到支付变现的全过程。\n\n希望能给想要尝试独立开发或微型出海项目的同学提供一点参考！\n\nEnlish:\nHi everyone,\n\nI'd like to share a side project I recently shipped: ApologyLetter.Online.\n\nURL: https://apologyletter.online/\n\nWhat it does: A free, no-login AI tool that helps people generate sincere, specific, and highly personalized apology letters in seconds.\n\nWhy I built it:\nKnowing what to say when you've messed up is a universal struggle. A generic \"I'm sorry\" rarely fixes things; a real apology needs context and emotional intelligence. As a 19-year-old student majoring in cross-border e-commerce, I wanted to combine this everyday problem with a hands-on experiment in global micro-monetization, taking a product from prompt tuning all the way to international payments.\n\nTech & Product Highlights:\n\nMinimalist Stack & \"Brute Force\" Rate Limiting:\nBuilt with Next.js 15 (App Router), Tailwind CSS, and hosted on Vercel. To keep it as lightweight as possible, I didn't use a database. To prevent API abuse, I just wrote an in-memory IP rate limiter using a Map within the Serverless instance. It resets on cold starts, but it’s completely sufficient for a V1 validation phase.\n\nAnti-Robotic Prompt Engineering:\nTo prevent the AI from sounding like a generic corporate bot, I engineered the system prompt with strict constraints: \"take full responsibility, no excuses, promise concrete change, and NO robotic AI preambles.\" Letting users select the tone (Sincere, Romantic, Humble, Gentle) drastically improved the \"human touch.\"\n\nThe \"Free + $0.99\" Monetization Loop:\nGenerating and copying the text is 100% free (which is great for SEO and word-of-mouth). However, I integrated PayPal (@paypal/react-paypal-js), so if a user wants to download a beautifully formatted, print-ready PDF, it costs $0.99. It’s a fun way to apply e-commerce thinking to a digital micro-tool.\n\nTakeaway:\nThis is a classic example of using a \"boring\" tech stack to solve a real human problem. The code isn't overly complex, but it completes the full indie hacking cycle: ideation, prompt engineering, anti-abuse measures, SEO setup, and payment integration.\n\nHopefully, this provides some inspiration for anyone looking to build and monetize a lightweight micro-SaaS!",
+    "created_at": "2026-03-28T06:59:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9417"
+  },
+  {
     "id": 9416,
     "title": "【网站自荐】aidiagram.org：用 AI 直接生成流程图、架构图和示意图",
     "content": "\n<img width=\"1600\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/21eea7e8-bde8-4255-8812-b0fce5ed1d27\" />\n\n===================================================\n\n项目名称：aidiagram.org\n网址：https://aidiagram.org/\n这是一个用 AI 生成图表的网站，主要想解决“有想法，但画图太麻烦”的问题。\n\n===================================================\n\n用户只需要输入自然语言，AI 就可以生成流程图、架构图、结构图等内容，也支持继续通过对话修改。\n目前支持的场景包括：\n- 一句话生成流程图、示意图、结构图\n- 生成 AWS / GCP / Azure 等云架构图\n- 上传图片后复刻成可编辑图表\n- 上传 PDF / 文本后提取内容并自动成图\n- 对生成结果继续对话修改、补充和优化\n比较适合产品设计、系统设计、技术方案整理、学习笔记可视化这些场景。\n如果你也经常需要画图，欢迎体验，也欢迎提建议。\n网站：https://aidiagram.org/",
@@ -822,13 +830,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9316"
-  },
-  {
-    "id": 9315,
-    "title": "【网站推荐】零手续费、直接到账的数字商品市场",
-    "content": "MySell 提供从店铺搭建到订单交付的完整数字商品交易流程\n买家无需注册，仅需邮箱即可购买并通过 PayPal 或多种加密货币付款。\n平台不收取任何交易手续费，卖家直接收到付款；支持订单邮件通知与多语言界面，适合独立创作者、社群与小型数字商品商店自托管运营。\n\n[https://mysell.me](https://mysell.me)",
-    "created_at": "2026-03-20T01:47:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9315"
   }
 ]
