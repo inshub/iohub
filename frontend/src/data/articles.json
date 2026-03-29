@@ -1,5 +1,29 @@
 [
   {
+    "id": 9428,
+    "title": "【开源推荐】Light-Whisper 轻语：本地 & 在线语音转文字 · Windows 桌面应用",
+    "content": "项目地址 https://github.com/sypsyp97/light-whisper\n## 功能亮点\n\n<table>\n<tr>\n<td width=\"50%\">\n\n**一键听写**<br>\n按住 <kbd>F2</kbd>（可自定义）录音，松开自动转写并输入到当前活动窗口。\n\n**三大 ASR 引擎**<br>\nSenseVoice（中/英/日/韩/粤，内置标点恢复）、Faster Whisper（99+ 语言）或 GLM-ASR（在线，无需显卡，支持中文方言）。\n\n**离线在线随心切**<br>\nSenseVoice 和 Whisper 完全本地运行；GLM-ASR 调用云端 API——只需填入 API Key，无需 Python 和显卡。\n\n**GPU 加速**<br>\n本地引擎自动检测 NVIDIA GPU 启用 CUDA 推理，无 GPU 则回退 CPU。\n\n**字幕悬浮窗**<br>\n透明浮窗实时显示听写状态，也可承载助手结果。\n\n**语音助手模式**<br>\n支持单独热键：说出任务后生成一个悬浮答案卡，手动复制即可。\n\n**屏幕感知助手**<br>\n可选功能：自动截取全屏画面作为助手的视觉上下文。自动检测模型是否支持图片输入，不支持时自动回退。\n\n**按住 / 切换**<br>\n录音模式：按住说话 或 按一下开始/再按一下结束。\n\n</td>\n<td width=\"50%\">\n\n**AI 润色**<br>\n可选 LLM 后处理：修正同音字、标点、口头禅；自动检测前台应用适配语气。\n\n**多 LLM 后端**<br>\n内置 OpenAI、DeepSeek、Cerebras、SiliconFlow 预设，也可接入任意 OpenAI 兼容端点。\n\n**自适应学习**<br>\n只学习结构化纠错和术语；手动删除的脏热词会进入黑名单，不再自动长回来。\n\n**编辑选中文本**<br>\n选中文字后按热键，说出指令（\"翻译成英文\"、\"改成正式语气\"），原地改写。\n\n**上下文感知助手**<br>\n助手模式会读取选中文本和当前前台应用，把它们作为生成上下文。\n\n**实时翻译**<br>\n设置目标语言（8 种预设 + 自定义），转写结果自动翻译后输出。\n\n**输入队列**<br>\n连续快速说多段，结果按顺序输入，不会丢字。\n\n</td>\n</tr>\n</table>\n\n## Light-Whisper vs Typeless\n\n| 功能 | Light-Whisper | Typeless |\n|:-----|:---:|:---:|\n| **价格** | 免费开源 | 30 天免费试用；免费版 (4k 词/周)；$12–30/月 |\n| **隐私** | 完全离线，数据不出本机 | 云端处理，零数据留存 |\n| **开源** | ✅ | ❌ |\n| **平台** | Windows | Windows、Mac、iOS、Android；定价页还列出 Web |\n| **需要联网** | ❌ 本地引擎离线；GLM-ASR 和 AI 润色需 API | 云服务；官网未公开说明离线模式 |\n| **ASR 引擎** | SenseVoice + Faster Whisper + GLM-ASR（可切换） | 云端专有服务 |\n| **语言数** | 5 (SenseVoice) / 99+ (Whisper) / 中文方言 (GLM-ASR) | 100+ |\n| **GPU 加速** | 本地 NVIDIA CUDA；GLM-ASR 无需显卡 | 不适用（云端） |\n| **AI 润色** | 多 LLM 后端，自带 key | 内置自动编辑 |\n| **去口头禅** | ✅ 通过 AI 润色 | ✅ 内置 |\n| **应用感知语气** | ✅ 检测前台应用 | ✅ 根据上下文调整 |\n| **自适应学习** | ✅ 学习结构化纠错，并支持热词黑名单 | ✅ |\n| **编辑选中文本** | ✅ 语音指令改写 | ✅ |\n| **语音助手模式** | ✅ 独立热键 + 悬浮答案卡 | ✅ Ask anything / Quick answers |\n| **实时翻译** | ✅ 8 种预设 + 自定义 | ✅ |\n| **屏幕感知助手** | ✅ 自动截屏作为视觉上下文 | ❌ |\n| **字幕悬浮窗** | ✅ | ❌ |\n| **输入队列** | ✅ | 未知 |\n\n## 引擎对比\n\n| | SenseVoice（默认） | Faster Whisper | GLM-ASR（在线） |\n|:--|:---:|:---:|:---:|\n| **中文 CER** | 2.96 %（AISHELL-1） | 5.14 % | 7.17 % |\n| **英文 WER** | 3.15 %（LibriSpeech） | 1.82 % | — |\n| **语言数** | 5（中/英/日/韩/粤） | 99+ | 中文 + 方言 |\n| **标点** | 内置 ITN | initial_prompt 引导 | 内置 |\n| **热词** | ✅ | ✅ | ✅（最多 100 个） |\n| **模型大小** | ~938 MB | ~1.5 GB | 云端（无需下载） |\n| **依赖** | GPU/CPU（已内置） | GPU/CPU（已内置） | 仅需 API Key |\n| **费用** | 免费（本地） | 免费（本地） | ¥0.06/分钟 |\n\n",
+    "created_at": "2026-03-29T14:01:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9428"
+  },
+  {
+    "id": 9427,
+    "title": "【网站自荐】专为一人公司(Solopreneur)打造的网站：盘点10个带真实收入数据的「一人企业」商业模式",
+    "content": "### [网站自荐] 专为一人公司(Solopreneur)打造的网站：盘点10个带真实收入数据的「一人企业」商业模式\n\n**网站名称：** Solo Business\n**网站链接：** [https://solo-business.com/](https://solo-business.com/)\n\n---\n\n#### 📝 网站简介\n\n这是一个专门为渴望自由、不想卷入大公司内耗的独立创业者（Solopreneur）准备的英文资源集锦。\n\n网站摆脱了空洞的理论，直接提炼了 **10 个目前最行之有效、适合单枪匹马操作的「一人企业」商业模式**，并配有详实的数据和真实的起步建议。\n\n#### 💡 推荐理由与核心亮点\n\n* **极度务实与数据支撑：** 每一个模式都从“无投资、无雇员、无内耗”的角度出发。网站不只是罗列模式，还给出了令人信服的真实 revenue 数据和真实案例（例如 Pieter Levels 的 NomadList、Photopea 等），给迷茫的开发者提供直接的灵感。\n* **结构化呈现：** 简明扼要地对比了每个模式的优缺点（如利润率、启动成本、经常性收入潜力），并提供了 3 步起步指南和 FAQ。\n* **持续更新的 Case Study：** 网站不仅仅是一个静态的盘点。接下来，我计划每 **[周 / 两周 / 月]** 更新 1-2 个深度的 Solo Business 真实案例分析 (Case Studies)，深挖这些独立开发者是如何获取第一批用户以及如何实现商业变现的。*(注：发布前请将括号内替换为你实际计划的更新频率)*\n\n> **💡 总结：**\n> 虽然网站是全英文的，但内容通俗易懂，全篇都是干货。对于想在这个 AI 时代寻找“睡后收入”或实现财务自由的技术人来说，这是一个完美的灵感库。\n> PS：网站目前还在起步阶段，非常欢迎大家多提宝贵建议！",
+    "created_at": "2026-03-29T13:57:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9427"
+  },
+  {
+    "id": 9426,
+    "title": "【工具自荐】Web Harmonium：极简网页风琴，支持 MIDI 协议、实时混响与多簧片模拟",
+    "content": "#### **功能特性**\n\n* **即开即弹** — 基于浏览器原生 Web Audio 技术，无需安装、无需注册、零广告加载。\n* **高保真采样** — 采用真实簧片风琴（Reed Organ）多级采样，还原乐器特有的物理震荡感。\n* **MIDI 支持** — 完整支持 **Web MIDI API**，接入外部 MIDI 控制器即可实现专业级演奏。\n* **簧片叠加 (Add Reeds)** — 模拟传统手风琴的多排簧片结构，开启后可获得深厚、神圣的谐波效果。\n* **实时混响** — 内置高质量混响（Reverb）算法，轻松营造从琴房到大教堂的沉浸式空间感。\n* **键盘映射** — 针对 QWERTY 键盘深度优化，按键跨度合理，无需钢琴基础即可轻松上手。\n* **移调与音区** — 支持一键 **Transpose（转调）** 与 **Octave（八度切换）**，满足不同曲目与音域需求。\n* **极致轻量** — 零框架依赖、零追踪脚本，极致追求“首音符加载时间（Time to First Note）”。\n* **数字避难所** — 极简 UI 设计，专为工作间隙的冥想、解压及环境音乐灵感捕捉而生。\n\n---\n\n#### **开发初衷**\n\n在这个信息过载、工具越做越重的时代，我想要一个足够纯粹、足够简单的乐器。它不应该有繁琐的配置或账户体系，而应该像真正的乐器一样：**打开它，按下键，声音就流淌出来。** 无论是为了 5 分钟的心理降噪，还是为了寻找一段 Ambient 音乐的灵感，**Web Harmonium** 都是你的最佳选择。\n\n**页面地址：** [https://webharmonium.io/](https://webharmonium.io/)\n\n欢迎大家体验、反馈交流 🎹✨\n\n<img width=\"1204\" height=\"611\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/16e12875-d1da-4a7d-894c-99f4eab75e18\" />",
+    "created_at": "2026-03-29T13:50:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9426"
+  },
+  {
     "id": 9425,
     "title": "【工具自荐】ShowCV：基于 Markdown 的在线简历编辑器，支持实时预览、多种模板、PDF 导出和链接分享",
     "content": "## 功能特性\n\n- **Markdown 编辑** — 使用 CodeMirror 6 打造的编辑器，支持语法高亮和右对齐语法\n- **实时预览** — A4 尺寸实时渲染，支持平铺 / 分页两种预览模式\n- **多份简历** — 侧边栏管理多份简历，支持重命名、复制、删除，独立保存、随时切换\n- **四种模板** — T1 经典 / T2 现代 / T3 创意 / T4 活力，多种风格满足不同岗位需求\n- **头像上传** — 支持上传头像，可调节大小和圆角\n- **主题切换** — 浅色 / 深色两套编辑器主题\n- **样式定制** — 自由调节各级字号、行高、主题色、标题间距、页面边距、字体等参数\n- **PDF 导出** — 基于浏览器打印，打印样式与预览保持一致\n- **复制为图片** — 一键将简历复制为 PNG 图片\n- **链接分享** — 生成分享链接，对方打开后自动导入简历内容（标记为\"来自分享\"）\n- **标题双栏** — 支持 `||` 语法在标题中分隔左右两栏（如 `公司名称 || 2021.07 - 至今`）\n\n页面地址：[https://showlotus.github.io/ShowCV/](https://showlotus.github.io/ShowCV/)\n\nGitHub 地址：[https://github.com/showlotus/ShowCV](https://github.com/showlotus/ShowCV)\n\n欢迎 Star 🌟 交流讨论 👇\n\n<img width=\"2628\" height=\"1483\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e2986756-3a77-4935-8c8b-fefd24a879df\" />\n\n<img width=\"2628\" height=\"1483\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/23bd3c30-1e9d-4e09-97b2-e5a376f34d56\" />\n\n",
@@ -804,29 +828,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9328"
-  },
-  {
-    "id": 9327,
-    "title": "【开源自荐】AgentBrief —— AI 编程 Agent 的职业技能包管理器",
-    "content": "阮老师好！\n\n推荐一个我做的开源 CLI 工具：[AgentBrief](https://github.com/0xranx/agentbrief)\n\n**痛点：**\n\n现在用 Claude Code、Cursor 这些 AI 编程 Agent 的人越来越多，但每开一个新项目都要手写 CLAUDE.md 来告诉 Agent 怎么做事——团队规范、领域知识、安全约束……换个项目又要重来一遍。\n\n同时，Agent Skills 生态正在爆发（skills.sh 上有 89,000+ 个 skill），但太分散了，用户需要一个一个手动安装配置。\n\n**AgentBrief 的解决思路：**\n\n把 Agent 的\"职业技能包\"（角色定义 + 领域知识 + 行为约束 + 可触发技能）打包成可复用的模块，一条命令安装：\n\n```bash\nnpx agentbrief use startup-founder\n```\n\n**装 brief 前后对比 — 同样的问题，完全不同的回答：**\n\n![before-after](https://raw.githubusercontent.com/0xranx/agentbrief/main/docs/images/before-after.jpg)\n\n**核心设计亮点：**\n\n1. **eslint-config 模式**：eslint-config-airbnb 管代码规范，AgentBrief 管 Agent 行为规范\n2. **引擎无关**：同一个 brief 自动适配 Claude Code / Cursor / OpenCode / Codex\n3. **可继承组合**：extends 机制让你继承社区 brief 后叠加团队定制\n4. **去中心化分发**：GitHub 仓库就是 brief 包，git tag 就是版本\n5. **17 个官方职能包**：全栈工程师、安全审计、产品经理、创业者、DevOps、数据分析等\n\n**17 个官方 brief，覆盖开发 / 产品 / 增长 / 运维：**\n\n![catalog](https://raw.githubusercontent.com/0xranx/agentbrief/main/docs/images/engines.jpg)\n\n**Brief 详情页 — startup-founder 组合了 5 个 brief、13 个技能：**\n\n![brief-detail](https://raw.githubusercontent.com/0xranx/agentbrief/main/docs/images/brief-detail.jpg)\n\n项目用 TypeScript 构建，MIT 协议，有中英文网站和完整文档。\n\nGitHub：https://github.com/0xranx/agentbrief\n网站：https://0xranx.github.io/agentbrief",
-    "created_at": "2026-03-20T12:39:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9327"
-  },
-  {
-    "id": 9326,
-    "title": "【开源自荐】voro —— 用 Rust 实现的命令管理与执行工具",
-    "content": "# voro\n快速、极简的命令行工具，让常用命令随手可用。基于 Rust，几乎零延迟。\n\n---\n\n日常工作中，我们经常需要反复输入很长的命令：\n\n```bash\nNODE_ENV=production API_URL=... pnpm build && pnpm deploy\n```\n\n用 voro：\n```bash\nvo add deploy_prod \"NODE_ENV=production API_URL=... pnpm build && pnpm deploy\"\nvo deploy_prod\n✔\n```\n\n更多示例和用法\n```bash\n# Add commands\nvo add <name> <command> [options]\n\n  Options:\n    --desc <text>         Description\n    --cat <category>      Category for organization\n    --tags <t1,t2>        Comma-separated tags\n    --confirm             Require confirmation before execution\n    --passthrough         Allow argument passthrough with --\n\n# Examples\nvo add g \"git\"\nvo add gs \"git status\" --cat git --tags \"quick,status\"\nvo add deploy \"npm run deploy\" --desc \"Deploy to production\" --confirm\nvo add serve \"python -m http.server\" --passthrough\nvo serve -- 8080                    # Runs: python -m http.server 8080\n\n# Edit commands\nvo edit <name> [--command <cmd>] [--desc <text>] [--cat <cat>] [--tags <tags>]\nvo edit <name> --editor             # Open in $EDITOR\n\n# Delete commands\nvo del <name>                       # Alias: vo rm\n\n# View command details\nvo get <name>\n```\n\n\n## 核心能力\n- 保存并复用命令（替代零散 alias）\n- 参数透传：vo serve -- 8000\n- 模板参数：自动提示输入\n- 执行确认（适合危险命令）\n- 搜索 / 分类 / 标签 / 最近使用\n- 支持 TUI 管理\n\n\n## 项目地址\n👉 https://github.com/nanbingxyz/voro\n👉 https://voro.sh",
-    "created_at": "2026-03-20T11:22:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9326"
-  },
-  {
-    "id": 9325,
-    "title": "【字节】【杭州】高级研发工程师（金融产品方向）-国际支付",
-    "content": "**职位描述**\n1. 构建贴合消费者的海外数字钱包和支付产品，以支持海内外生态业务和海内外用户；参与国际支付金融产品团队工作，包括需求分析、技术方案产出、研发和稳定性建设等；\n2. 面向未来进行复杂支付、金融业务相关系统的架构设计，掌握大型分布式系统的设计能力，确保系统的设计质量并考虑整体技术成本(开发、运行、维护、可靠性)；\n3. 思考现有业务和系统的不足及瓶颈点，提出优化方案以优化客户体验及提升系统性能和稳定性；\n4. 参与技术项目的方案设计和评审，对项目进行质量评估及把控，思考系统迭代过程中的各类问题，促进团队工作效率和研发质量的提升。\n\n**职位要求**\n1. 3年及以上高可用、分布式大型系统设计和研发经验，扎实的编程基础，良好的编程习惯，对于Java/Python/Golang/C++/PHP至少精通其中一种；\n2. 深入理解分布式、缓存、消息、搜索、推荐等机制，能对分布式常用技术进行合理应用，解决实际问题；出色的线上定位及解决问题经验；\n3. 掌握系统设计和分析的核心技能，深入并能把握关键细节，有较强的项目管理能力，能够主动进行跨团队的沟通、协调和方案执行，以结果为导向；\n4. 对于建设高可用、资金安全的分布式系统有实践经验，对于线上业务安全有专业的态度和敬畏之心；\n5. 有支付、金融产品、BNPL、花呗、借呗、电子钱包、国内或国际线上支付工作经验者优先；\n6. 有国际化团队工作经验者优先。\n\n有意向直接留言即可。",
-    "created_at": "2026-03-20T11:22:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9325"
   }
 ]
