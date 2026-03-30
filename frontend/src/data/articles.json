@@ -1,5 +1,29 @@
 [
   {
+    "id": 9438,
+    "title": "〖工具推荐〗一个把飞书文档一键发布到微信公众号草稿箱的 CLI",
+    "content": "# 1. 自我介绍\n\n大家好，我最近开源了一个小工具 [feishu-wechat-cli](https://github.com/shing19/feishu-wechat-cli)。\n\n它做的事情很简单：把飞书文档一键发布到微信公众号草稿箱。\n\n如果你平时是在飞书里写文章，定稿后还要手工导出、处理图片、再进公众号后台发文，这个工具就是为这条链路准备的。\n\n仓库地址：\nhttps://github.com/shing19/feishu-wechat-cli\n\n![OpenClaw 调用 skill 发布成功](https://i0.hdslb.com/bfs/new_dyn/a52dfb1d72a90f3fad0c798b91e85a5d1492418935.png@.avif)\n\n# 2. 开发背景\n\n我做它的原因很直接：现在很多内容都是在飞书里写和协作的，但真正发到公众号时，中间还是有不少重复劳动。\n\n通常要经历这几步：\n\n1. 从飞书把内容导出来\n2. 重新处理正文图片\n3. 在公众号后台重新上传素材\n4. 再补作者、来源、封面这些信息\n\n这些步骤本身不复杂，但很碎，也不适合反复手工操作。\n\n所以我想做一个尽量克制的 CLI，不去做大而全的编辑器，只把“飞书 / Markdown -> 微信公众号草稿箱”这一步做好。\n\n# 3. 实际效果\n\n我最近用 OpenClaw 装了这个 skill 做了一次真实测试：直接把飞书文章链接发给它，它就自动调用这个 CLI，把文章送进了微信公众号草稿箱。\n\n整个流程实际跑下来，不到一分钟。\n\n更有意思的是，文章原本的作者字段里写的是“一作”，结果 OpenClaw 在发送时把它改成了 `🦞`，最后公众号草稿里显示成了“原创：🦞”。\n\n这种小插曲很有意思。一方面说明这条自动化链路已经能跑通，另一方面也能看到，当文档、Agent、CLI 和发布渠道串起来以后，会出现一些非常鲜活的工作流细节。\n\n![公众号草稿箱里的最终效果](https://i0.hdslb.com/bfs/new_dyn/c8314b991d6090c1cf0388dceca58f2d1492418935.png@.avif)\n\n# 4. 核心功能\n\n目前已经支持：\n\n1. 从飞书 `wiki/docx` 抓取 Markdown\n2. 自动下载飞书正文图片并上传到微信素材库\n3. 直接发布到微信公众号草稿箱\n4. 支持本地 Markdown 发布，不强依赖飞书\n5. 缺封面时可选自动生成封面图\n6. 提供 `serve` 模式，可以作为 HTTP 服务接入自己的自动化流程\n\n# 5. 使用方式\n\n例如，直接发布飞书文档：\n\n```bash\nfeishu-wechat publish \\\n  --feishu \"https://xxx.feishu.cn/wiki/xxxx\" \\\n  --article-author \"Your Name\"\n```\n\n如果想连封面一起处理：\n\n```bash\nfeishu-wechat publish \\\n  --feishu \"https://xxx.feishu.cn/wiki/xxxx\" \\\n  --auto-cover\n```\n\n如果阮老师觉得这个工具对“飞书写作 + 公众号发布”这个场景有帮助，欢迎收录。\n",
+    "created_at": "2026-03-30T09:15:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9438"
+  },
+  {
+    "id": 9437,
+    "title": "【开源自荐】desktop-app-build-by：一个用来检测桌面应用构建技术栈的 CLI 工具",
+    "content": "检测 macOS 与 Windows 上桌面应用所使用的技术栈。\n\n可以快速看出一个应用是使用 原生技术（Swift、Objective‑C、Win32 等），还是使用 跨平台框架（Electron、Flutter、Tauri、Qt、JVM、CEF、NW.js、React Native、wxWidgets 等）构建的。\n\n#### 扫描所有已安装应用\n\n```bash\nbuildby --scan\n```\n\n会扫描 `/Applications`（macOS）或 `Program Files`（Windows）等目录下的所有桌面应用，按技术栈分组，并展示“技术栈分布”统计条形图。\n\n#### 按技术栈过滤\n\n```bash\nbuildby --electron      # 所有 Electron 应用\nbuildby --flutter       # 所有 Flutter 应用\nbuildby --tauri         # 所有 Tauri 应用\nbuildby --qt            # 所有 Qt 应用\nbuildby --wxwidgets     # 所有 wxWidgets/wxPython 应用\nbuildby --jvm           # 所有 JVM 应用（Java/Kotlin/Scala）\nbuildby --cef           # 所有 CEF (Chromium Embedded Framework) 应用\nbuildby --dotnet        # 所有 .NET / MAUI / WPF 应用\nbuildby --nwjs          # 所有 NW.js 应用\nbuildby --reactnative   # 所有 React Native 桌面应用\nbuildby --native        # 所有原生应用（Swift/ObjC/Win32）\n```\n\n#### 指定自定义路径\n\n```bash\nbuildby --path /Applications/SomeApp.app\nbuildby --path \"C:\\Program Files\\SomeApp\"\n```\n\n### 支持检测的技术栈\n\n| 栈 | 说明 | 主要检测方式 |\n|----|------|--------------|\n| ⚡ **Electron** | Node.js + Chromium | `Electron Framework.framework`、`app.asar` |\n| 🐦 **Flutter** | Google 跨平台 UI 工具包 | `FlutterMacOS.framework`、`flutter_windows.dll` |\n| 🌐 **CEF** | Chromium Embedded Framework | `Chromium Embedded Framework.framework`、`libcef.dll` |\n| 🦀 **Tauri** | Rust + 系统 WebView | `otool -L` 检测 `WebKit.framework` + 资源目录 / Windows 上 `WebView2Loader.dll` |\n| 🔷 **Qt** | C++ 跨平台框架 | `Qt*.framework`、`Qt5Core.dll` / `Qt6Core.dll` |\n| 🧩 **wxWidgets** | C++ 跨平台 GUI 库 | macOS 上 `libwx*.dylib`，Windows 上 `wxmswXXu_*.dll` 等 |\n| ☕ **JVM** | Java/Kotlin/Scala | `jbr/`、`libjvm.dylib`、大量 `.jar` 文件 |\n| 🔵 **.NET** | Microsoft .NET / MAUI / WPF | `MonoBundle/`、`coreclr.dll`、`.dll` 组合特征 |\n| 🟩 **NW.js** | Node.js + Chromium（原 node‑webkit） | `nwjs Framework.framework`、`app.nw` |\n| ⚛️ **React Native** | React Native 桌面端实现 | `React.framework`、`Hermes.framework` / `hermes.dll` |\n| 🖥️ **Native** | 平台原生技术 | 未命中任何跨平台特征时的兜底分类 |\n\n### 平台支持\n\n| 平台 | 应用发现位置 | 检测方式 |\n|------|--------------|----------|\n| macOS | `/Applications`、`~/Applications` | `Contents/Frameworks`、`Contents/Resources`、`otool -L`、`Info.plist` 元数据 |\n| Windows | `Program Files`、`Program Files (x86)`、`AppData/Local/Programs` | 扫描 `.exe` / `.dll`、特定框架文件与目录结构 |\n\n### 工作原理（简要）\n\n检测完全基于 **文件系统**，不会做反汇编，也不需要管理员权限：\n\n1. **扫描框架目录**：读取 `Contents/Frameworks/` 或应用目录下的 DLL，匹配各类已知框架的特征文件。  \n2. **资源文件模式**：查找 `app.asar`、`flutter_assets`、`app.nw` 等典型文件。  \n3. **JVM / .NET / 其他运行时检测**：识别打包的 JRE/JBR、.NET 运行时以及关联目录结构。  \n4. **Tauri / wxWidgets 等特定栈**：结合 `otool -L` / DLL 名称 + 资源分布做多信号判断。  \n5. **元数据提取**：从 `Info.plist` 解析 Bundle ID、版本号和展示名称。  \n6. **兜底策略**：如果未匹配到任何跨平台特征，则将应用归类为原生技术栈。\n\n检测按照优先级顺序依次执行，特征越独特的框架越先匹配，以减少误报和重复分类。",
+    "created_at": "2026-03-30T08:21:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9437"
+  },
+  {
+    "id": 9436,
+    "title": "【插件自推】免费沉浸式外语学习插件，将Youtube和b站视频变为学习资源深入练习达到学习目的",
+    "content": "拒绝被动观看，开启互动练习，\n如果你平时经常打开youtube和B站并在学习一门外语，\n那么这个插件将让你体验沉浸式的学习体验，\n5种不同模式，\n对接AI用户可以自行配置\n官网：https://langkey.win\n\n[谷歌Chrome插件下载](https://chromewebstore.google.com/detail/langkey-ai-%E8%A7%86%E9%A2%91%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E5%8A%A9%E6%89%8B-youtu/chhjnodmnfbljoindmeeafjiepfjpamn#)\n[微软Edge插件下载](https://microsoftedge.microsoft.com/addons/detail/langkey-ai-%E8%A7%86%E9%A2%91%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0%E5%8A%A9%E6%89%8B-yo/pfamchnplpbecklooemkedlmccegkbkk)\n[火狐Firefox插件下载](https://addons.mozilla.org/zh-CN/firefox/addon/langkey/)\n\n<img width=\"1208\" height=\"914\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/043ce9c7-cfc9-4c26-9fb2-30fdf92a0e34\" />\n\n<img width=\"1221\" height=\"876\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c1c93f43-e96e-44be-b440-a7f1038a3bb3\" />",
+    "created_at": "2026-03-30T07:59:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9436"
+  },
+  {
     "id": 9435,
     "title": "【开源自荐】Enia Code（PriCoder）——面向真实开发场景的 AI 代码可靠性优化方案",
     "content": "### 项目地址\nhttps://github.com/EniaCode/PriCoder\n\n### 一句话介绍\n针对 LLM 在调用 API 时容易出错的问题的一种修复思路及实现\n\n###  背景\n在使用 AI 编程工具时，即使模型能够读取完整的 API 文档，生成的代码仍然经常无法运行。\n\n### 常见问题包括\n- 调用错误的函数或参数\n- 缺少必要的包装（如类型转换、asarray 等）\n- 代码看起来正确，但在运行时失败\n  \n这些问题在使用私有 API 或内部 SDK 时更加明显。\n\n### 说明\n类似问题在当前 LLM 代码生成中较为普遍，但多数工具仍主要依赖 prompt 约束。\nPriCoder 这篇论文主要分析了上述问题产生的原因，并提出了一种在代码执行前进行修复的思路。\n在实际工程中，该思路已在 Enia Code 中工程化实现，用于提升 AI 生成代码在真实开发中的可运行性。\n\n### 实现方式\n- 在生成代码后，对 API 调用进行结构校正\n- 补全必要的调用步骤\n- 减少 runtime error\n  \n### 适用场景\n- 内部 API / 私有 SDK\n- AI 辅助编程\n- 对代码正确性要求较高的项目",
@@ -804,29 +828,5 @@
     "created_at": "2026-03-21T12:59:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9337"
-  },
-  {
-    "id": 9336,
-    "title": "【自荐产品】InkerSpeak - 以真实内容驱动的智能语言学习平台",
-    "content": "## 产品简介\n\n**InkerSpeak**（「造句说」）是一款以真实内容驱动的智能语言学习平台，支持多语言学习（英、日、韩、德、西班牙语等）。\n\n网站：https://inkerspeak.com/\n\n## 核心特色\n\n### 1. 真实内容学习\n- 通过播客、视频、文章等真实语料进行学习\n- 沉浸式语言环境，帮助学习者获得真实语感和文化理解\n- 按主题与难度等级组织内容\n\n### 2. 结构化练习链路\n- **听力练习**：通过真实材料与问题训练，强化理解能力\n- **口语练习**：跟读评测与语音反馈，提升发音流畅度\n- **拼写练习**：逐词输入与智能纠错，加强词汇掌握\n- **造句练习**：引导围绕特定词汇/语法结构构造句子，获得AI反馈与优化建议\n\n### 3. 个性化学习体验\n- 专注值系统：通过学习配额与节奏控制，鼓励规律学习\n- 连击奖励与星瓶反馈：即时可视化激励\n- 排行榜：社交竞争驱动学习动力\n- 最近学习记录：快速恢复学习上下文\n\n### 4. 多端适配\n- 支持 iPhone 与 iPad\n- 适应碎片化学习与系统化进阶的多种学习场景\n\n## 适用人群\n\n- 对真实语料学习感兴趣的外语学习者\n- 希望通过内容 + 练习结合提升听说读写能力的学习者\n- 偏好个性化激励与进度追踪的学习者\n\n## 技术亮点\n\n- AI 驱动的语音评测与纠错系统\n- 智能句子分析与优化建议引擎\n- 多语言数据支持与国际化完整方案\n\n---\n\n欢迎大家体验，期待宝贵的反馈与建议！🚀",
-    "created_at": "2026-03-21T10:40:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9336"
-  },
-  {
-    "id": 9335,
-    "title": "【开源自荐】TapBuddy🐾 —— 一款充满趣味的 macOS 桌面宠物应用",
-    "content": "# TapBuddy 🐾\n\n一只陪你敲代码的桌面宠物。随着你敲键盘，它会实时做出反应。\n\n---\n\n## 功能\n\n- **跟手输入** — 敲左侧按键左爪抬起，敲右侧按键右爪抬起，松手自动回到待机\n- **点击反应** — 鼠标点击时嘴巴张开\n- **多套皮肤** — 内置橘猫、柴犬、毛驴，支持用户添加自定义皮肤\n- **常驻状态栏** — 不占 Dock，右键菜单控制一切\n\n---\n\n## 截图\n\n| 狗 | 猫 | 驴 |\n|---|---|---|\n| <img width=\"229\" height=\"164\" alt=\"狗\" src=\"https://github.com/user-attachments/assets/71ad0198-1110-4a5d-9dd3-4ebb80efc140\" /> | <img width=\"207\" height=\"157\" alt=\"猫\" src=\"https://github.com/user-attachments/assets/baff329a-0ec9-4447-ba90-0225072ffc93\" /> | <img width=\"219\" height=\"194\" alt=\"驴\" src=\"https://github.com/user-attachments/assets/851ebf55-655c-41d3-aa74-a78913b2a73b\" /> |\n\n---\n\n## 项目地址\nhttps://github.com/shaozhengmao/TapBuddy\n\n---",
-    "created_at": "2026-03-21T08:56:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9335"
-  },
-  {
-    "id": 9334,
-    "title": "【文章推荐】38 个小游戏、0 团队、1 个域名，月访问量 800 万",
-    "content": "投稿一篇案例分析文章[《独立开发者的天花板：neal.fun 如何实现月 800 万访问量》](https://stackzeng.github.io/posts/2026/solo-developer-38-games-traffic-ceiling/)。\n\n文章深入拆解了开发者 Neal Agarwal 如何通过 38 个小游戏、零团队、零融资，打造出一个月访问量 800 万的网站。\n\n内容涵盖流量数据、商业模式（广告+打赏+订阅）、创作方法论四个维度，对独立创作者具有很强的参考价值。",
-    "created_at": "2026-03-21T06:56:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9334"
   }
 ]
