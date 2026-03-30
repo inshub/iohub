@@ -1,5 +1,13 @@
 [
   {
+    "id": 9449,
+    "title": "【开源自荐】Legend Talk：AI 圆桌会议",
+    "content": "把苏格拉底、尼采、芒格、马斯克这些大佬拉到一张桌子上，让他们围绕你的问题互相辩论。\n\n内置了 100 多位历史和当代思想家，覆盖哲学、商业、科学、心理学等 12 个领域。你选 2-5 个人，抛出一个话题，他们就会展开多轮讨论——不是各说各的，而是真的互相质疑互相反驳。\n\n🔗 在线体验： https://talk.newzone.top/\n📦 GitHub： https://github.com/rockbenben/legend-talk\n\n<img width=\"1396\" height=\"1023\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/95653b21-2501-4759-8562-78d1dbd7dc83\" />\n\n<img width=\"1296\" height=\"977\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a2d1405e-49fb-4132-9f9c-31775d96d682\" />",
+    "created_at": "2026-03-30T21:41:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9449"
+  },
+  {
     "id": 9448,
     "title": "【开源自荐】Agent CPU：用 JS 控制流约束 Agent 规划，缓解 ReAct 式发散",
     "content": "阮老师好，\n\n冒昧自荐一个小项目，还在持续打磨，若有不当之处还请多指正。\n\n**Agent CPU**（仓库：https://github.com/MaskePRC/agent-cpu ）是一个 AI Agent 执行框架。和常见的 ReAct「一步步想、一步步动」不同，这里尝试让 **LLM 直接产出可执行的 JavaScript 作为任务规划**：框架负责依赖分析/安装、在沙箱里跑这段代码、出错时把反馈丢回给模型再规划一轮。\n\n我们想多强调一层动机：**大模型在预训练里见过大量代码，对 JavaScript 里的顺序、分支、循环等控制结构，本身就有很强的「语感」和遵循能力。** 把规划写成 JS，相当于用 **程序语言自带的结构** 去约束 Agent 的推理路径——先做什么、再分支、循环到哪一步停，都落在熟悉的语法里，更容易 **收敛到一条可执行、可检查的流程**，而不是在纯自然语言步骤里越滚越长、越跑越散。这也是我们想和 ReAct 类方案区的一点：**尽量缓解「发散」**（步骤堆砌、偏离主线），用代码里的流程结构换一点 **可预期的收敛**。\n\n同时，规划落到真实代码上，也比纯文本步骤更好复用和组合；调试 Agent 往往像在猜黑盒，所以用 Acorn 做了代码插桩，支持断点、步进（F10）、监视变量等，方便自己查问题。\n\n技术栈：Node（Express + Socket.io）+ Vue 3，LLM 走 OpenAI 兼容接口；内建 `llmcall`、`agentcall`、`gencall` 等。水平有限，文档和边界情况都还在补。\n\n若周刊读者里有做 Agent 或调试工具的朋友，欢迎试用、提 issue。也感谢阮老师长期整理周刊，让我们这些后来者能少走一点弯路。\n",
@@ -814,13 +822,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9347"
-  },
-  {
-    "id": 9346,
-    "title": "〖网站自荐〗AI 生成的网页小游戏合集",
-    "content": "我做了一个小实验：把小游戏的设计和实现交给 AI，看看它能做到什么程度。\n\n结果是一个网页小游戏集合站，所有游戏都可以直接在浏览器中运行。\n\n👉 [https://www.yingzitingge.xyz/games](https://www.yingzitingge.xyz/games)\n\n这些游戏整体都比较简单，主要是一些基础玩法（点击、反应、逻辑等）。重点不在游戏本身，而在于：AI 是否可以独立完成从“想法”到“实现”的过程。\n\n目前来看，AI 可以生成完整可运行的小游戏，但在玩法深度和细节打磨上还比较有限。不过，用来快速验证创意是可行的。\n\n技术上，主要是用大模型生成代码，前端原生实现（HTML / CSS / JavaScript），不依赖复杂框架。\n\n截图：\n\n<img width=\"1899\" height=\"2899\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5f72ca29-7441-4890-9cc7-1ccde641ebf7\" />\n\n<img width=\"1908\" height=\"882\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a62b1e5c-c98e-4152-9f32-aebf7b96f06c\" />",
-    "created_at": "2026-03-23T03:04:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9346"
   }
 ]
