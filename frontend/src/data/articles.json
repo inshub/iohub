@@ -1,5 +1,21 @@
 [
   {
+    "id": 9440,
+    "title": "TesLyr - a web-based real-time synchronized lyrics on your Tesla's touchscreen",
+    "content": "**TesLyr** brings real-time, line-by-line synchronized lyrics to your Tesla's touchscreen — no phone app, no sideloading, no extra hardware required.\n\nTesla doesn't reliably deliver universal synced lyrics across all music sources and regions. TesLyr fills that gap by running directly inside the Tesla browser. Open [teslyr.com](https://teslyr.com) , sign in through Tesla's official third-party authentication flow, start your music, and the lyrics just show up — synchronized to the beat, scrolling automatically on the screen you're already looking at.\n\n## How it works in 3 steps\n\n1. Open [teslyr.com](https://teslyr.com)  in your Tesla's browser\n2. Sign in via Tesla's official OAuth flow (your Tesla password is never shared with TesLyr)\n3. Play any song — TesLyr detects the track and loads synced lyrics instantly\n\n## Works with every major music source\n\n- Spotify (native in-car)\n- Apple Music (native in-car)\n- Tidal (native in-car)\n- Bluetooth audio from any phone app\n- USB music from a local drive\n\n## Why Tesla owners love it\n\n- **Zero install** — no companion app on your phone, nothing to sideload in the car\n- **Lyrics on the right screen** — not on your phone, not on a mount — right on the Tesla display\n- **Privacy-first design** — read-only access to the minimum data needed; no location, no driving data, no vehicle controls\n- **Broad source compatibility** — Bluetooth audio doesn't carry lyric data by default; TesLyr bypasses that entirely by querying the Tesla API directly\n- **MCU2+ compatible** — supports Model 3, Model Y, Model S, Model X, and Cybertruck (2018 and newer)",
+    "created_at": "2026-03-30T13:00:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9440"
+  },
+  {
+    "id": 9439,
+    "title": "SheetViz（在线表格可视化工具）",
+    "content": "工具名称：SheetViz\n链接：https://sheetviz.shop/\n简介：\n一个在线表格可视化工具，上传 CSV/Excel 后可直接生成图表，用于快速数据展示。\n功能：\n支持 CSV/Excel 导入\n支持折线图、柱状图等常见图表\n浏览器内使用，无需安装\n适用场景：\n轻量数据分析、周报配图、运营数据展示。",
+    "created_at": "2026-03-30T12:54:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9439"
+  },
+  {
     "id": 9438,
     "title": "〖工具推荐〗一个把飞书文档一键发布到微信公众号草稿箱的 CLI",
     "content": "# 1. 自我介绍\n\n大家好，我最近开源了一个小工具 [feishu-wechat-cli](https://github.com/shing19/feishu-wechat-cli)。\n\n它做的事情很简单：把飞书文档一键发布到微信公众号草稿箱。\n\n如果你平时是在飞书里写文章，定稿后还要手工导出、处理图片、再进公众号后台发文，这个工具就是为这条链路准备的。\n\n仓库地址：\nhttps://github.com/shing19/feishu-wechat-cli\n\n![OpenClaw 调用 skill 发布成功](https://i0.hdslb.com/bfs/new_dyn/a52dfb1d72a90f3fad0c798b91e85a5d1492418935.png@.avif)\n\n# 2. 开发背景\n\n我做它的原因很直接：现在很多内容都是在飞书里写和协作的，但真正发到公众号时，中间还是有不少重复劳动。\n\n通常要经历这几步：\n\n1. 从飞书把内容导出来\n2. 重新处理正文图片\n3. 在公众号后台重新上传素材\n4. 再补作者、来源、封面这些信息\n\n这些步骤本身不复杂，但很碎，也不适合反复手工操作。\n\n所以我想做一个尽量克制的 CLI，不去做大而全的编辑器，只把“飞书 / Markdown -> 微信公众号草稿箱”这一步做好。\n\n# 3. 实际效果\n\n我最近用 OpenClaw 装了这个 skill 做了一次真实测试：直接把飞书文章链接发给它，它就自动调用这个 CLI，把文章送进了微信公众号草稿箱。\n\n整个流程实际跑下来，不到一分钟。\n\n更有意思的是，文章原本的作者字段里写的是“一作”，结果 OpenClaw 在发送时把它改成了 `🦞`，最后公众号草稿里显示成了“原创：🦞”。\n\n这种小插曲很有意思。一方面说明这条自动化链路已经能跑通，另一方面也能看到，当文档、Agent、CLI 和发布渠道串起来以后，会出现一些非常鲜活的工作流细节。\n\n![公众号草稿箱里的最终效果](https://i0.hdslb.com/bfs/new_dyn/c8314b991d6090c1cf0388dceca58f2d1492418935.png@.avif)\n\n# 4. 核心功能\n\n目前已经支持：\n\n1. 从飞书 `wiki/docx` 抓取 Markdown\n2. 自动下载飞书正文图片并上传到微信素材库\n3. 直接发布到微信公众号草稿箱\n4. 支持本地 Markdown 发布，不强依赖飞书\n5. 缺封面时可选自动生成封面图\n6. 提供 `serve` 模式，可以作为 HTTP 服务接入自己的自动化流程\n\n# 5. 使用方式\n\n例如，直接发布飞书文档：\n\n```bash\nfeishu-wechat publish \\\n  --feishu \"https://xxx.feishu.cn/wiki/xxxx\" \\\n  --article-author \"Your Name\"\n```\n\n如果想连封面一起处理：\n\n```bash\nfeishu-wechat publish \\\n  --feishu \"https://xxx.feishu.cn/wiki/xxxx\" \\\n  --auto-cover\n```\n\n如果阮老师觉得这个工具对“飞书写作 + 公众号发布”这个场景有帮助，欢迎收录。\n",
@@ -812,21 +828,5 @@
     "created_at": "2026-03-22T03:34:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9339"
-  },
-  {
-    "id": 9338,
-    "title": "自荐：Rapid-MLX — Apple Silicon 最快的本地 AI 推理引擎",
-    "content": "## Rapid-MLX\n\nApple Silicon 上最快的本地 AI 推理引擎，完全兼容 OpenAI API。\n\n**GitHub**: https://github.com/raullenchai/Rapid-MLX\n\n### 项目简介\n\nRapid-MLX 是一个基于 MLX 框架的高性能本地大语言模型推理服务器，专为 Apple Silicon Mac 优化。提供与 OpenAI 完全兼容的 API 接口，可直接替代云端 API，所有数据留在本地。\n\n### 核心特性\n\n- **高性能推理**：比 Ollama 快 2-4 倍（实测数据见下方）\n- **OpenAI API 兼容**：`/v1/chat/completions`、`/v1/completions` 等标准接口，可直接对接现有工具链\n- **17 种工具调用解析器**：支持 Qwen、Hermes、MiniMax、GLM 等主流模型的 function calling\n- **推理分离（Reasoning）**：支持 thinking/reasoning 模型的结构化输出\n- **DeltaNet 状态快照**：针对 Qwen3.5 等 RNN-Attention 混合架构，TTFT 提速 1.5-4.8x\n- **提示缓存（Prompt Cache）**：跨请求 KV 缓存复用，多轮对话加速\n- **视觉模型支持**：支持 Qwen-VL、Gemma 等多模态模型\n- **音频 STT/TTS**：内置语音转文字和文字转语音\n\n### 性能对比（M3 Ultra, Qwen3.5-9B）\n\n| 引擎 | 生成速度 (tok/s) | TTFT (ms) |\n|------|-----------------|-----------|\n| **Rapid-MLX** | **108** | **180** |\n| Ollama | 46 | 320 |\n| mlx-lm (上游) | 62 | 250 |\n\nRapid-MLX 在 Qwen3.5-9B 上比 Ollama 快 2.3 倍，比上游 mlx-lm 快 1.7 倍。在更大模型（GPT-OSS-20B）上优势更明显，达到 4.2 倍。\n\n### 安装与使用\n\n```bash\n# 一键安装\ncurl -fsSL https://raw.githubusercontent.com/raullenchai/Rapid-MLX/main/install.sh | bash\n\n# 启动服务\nrapid-mlx serve qwen3.5-9b\n\n# 使用（兼容任何 OpenAI 客户端）\ncurl http://localhost:8000/v1/chat/completions \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\": \"qwen3.5-9b\", \"messages\": [{\"role\": \"user\", \"content\": \"你好\"}]}'\n```\n\n### 适用场景\n\n- 本地开发调试 AI 应用，替代付费 API\n- 隐私敏感场景，数据不离开本机\n- 需要 function calling 能力的本地 Agent 开发\n- Apple Silicon Mac 用户追求极致推理速度\n\n开源协议：MIT",
-    "created_at": "2026-03-21T21:42:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9338"
-  },
-  {
-    "id": 9337,
-    "title": "JEPA是什么？Yann LeCun力推的AI新架构全面解析",
-    "content": "https://www.betteryeah.com/blog/jepa-joint-embedding-predictive-architecture-lecun-ai-guide\n\n\n一、JEPA的理论基础与核心思想\n联合嵌入预测架构（Joint Embedding Predictive Architecture，简称JEPA）的提出源于LeCun对当前AI发展路径的深刻反思。2022年6月，他发表了影响深远的立场论文《A Path Towards Autonomous Machine Intelligence》，系统性地阐述了这一全新的机器学习范式。\n\nJEPA的核心思想可以用一句话概括：在抽象的表征空间中预测缺失信息，而非在像素或token空间中重建细节。这种设计哲学源于认知科学中的预测编码理论，该理论认为生物神经系统的学习本质是通过预测感官输入来构建对世界的内部表征。\n\n传统的生成式模型试图在像素级别重建图像或在词汇级别生成文本，这种方法虽然能产生逼真的输出，但存在致命缺陷：模型必须花费大量计算资源去建模那些难以预测且与任务无关的低层细节，比如图像中的噪声、纹理变化，或文本中的语法细节。JEPA通过将预测任务转移到抽象的表征空间，使模型能够专注于捕捉数据中可预测的、具有语义意义的规律。\n\n这种方法带来了三个关键优势：首先，模型无需依赖手工设计的数据增强，因为学习信号完全来源于数据内部的结构预测任务；其次，由于预测在表征空间进行，模型不必建模像素级噪声，可以专注于语义特征；第三，这种架构天然具备构建世界模型的能力，为实现真正的机器智能奠定基础。\n\nJEPA的理论基础还体现在对\"表征坍塌\"问题的根本性解决方案上。在传统的自监督学习中，模型容易陷入\"表征坍塌\"的困境——即对所有输入都输出相同的表征向量，从而轻松最小化损失函数但学不到任何有用信息。[LeCun团队通过引入各向同性高斯分布作为表征的最优分布目标，配合创新的SIGReg正则化技术，从数学层面彻底解决了这一难题](https://zhuanlan.zhihu.com/p/1973669047590740733)。\n\n自监督学习经历了从对比学习到掩码重建的演进过程，每种方法都有其局限性。对比学习需要大量负样本和复杂的数据增强策略，计算成本高昂；掩码重建虽然简单有效，但容易过度关注低层细节而忽视高层语义。JEPA通过在表征空间进行预测，巧妙地规避了这两种方法的缺陷，为自监督学习开辟了第三条道路。",
-    "created_at": "2026-03-21T12:59:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9337"
   }
 ]
