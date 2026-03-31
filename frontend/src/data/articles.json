@@ -1,5 +1,45 @@
 [
   {
+    "id": 9474,
+    "title": "【开源自荐】OxideTerm：纯 Rust SSH 终端，25MB Tauri 替代 Electron 全家桶",
+    "content": "阮老师好，自荐一个自己做的开源项目。\n\n**[OxideTerm](https://github.com/AnalyseDeCircuit/oxideterm)** —— 跨平台 SSH 终端客户端 + 本地终端，Tauri 2（Rust）+ React 19（TypeScript），GPL-3.0，免费。\n\n[OxideSens演示](https://github.com/user-attachments/assets/4ba033aa-94b5-4ed4-980c-5c3f9f21db7e)\n\n日常连服务器要同时开终端、SFTP、端口转发好几个窗口，市面上的工具要么重（Electron）、要么缺功能、要么要订阅，就自己做了一个。下面说几个我觉得比较有意思的设计：\n\n### 一条 SSH 连接复用所有功能\n\n连上之后，终端、SFTP 文件管理、内建代码编辑器、端口转发全部复用**同一条 SSH 连接**。不需要为每个功能单独认证和建连。改个 nginx 配置不用开 VS Code Remote，直接在内建编辑器里改完保存。\n\n### 纯 Rust SSH 协议栈，零 C 依赖\n\nSSH 实现用的 [russh](https://github.com/Eugeny/russh)，**没有 OpenSSL、没有 libssh2、没有任何 C FFI**。终端数据走自研的二进制线协议（Type-Length-Payload），热路径上没有 JSON 序列化开销。整个应用 Tauri 2 打包，安装包 **25–40 MB**（同类 Electron 应用通常 150 MB+）。\n\n### 断线重连 30 秒宽限期\n\n这个功能我自己很喜欢。断网后**不会立刻杀掉连接**，而是先花 30 秒去探测旧连接能否恢复。如果你只是切了个 WiFi 热点，网络闪了一下，vim 里编辑到一半的内容不会丢。确认连不上了才重建新连接，端口转发和 SFTP 传输队列会自动接上。\n\n### 深度 AI 集成，不只是聊天框\n\n内建的 AI 助手叫 OxideSens，它不是挂个对话框就完事了：\n\n- **自动感知上下文**：连上服务器后自动检测 OS、发行版、shell 类型，作为上下文喂给模型\n- **Sidebar 模式**：40 多个内建工具（function calling），可以看到你终端屏幕上的内容，也可以直接在服务器上执行命令、读写文件、管端口转发\n- **Agent 模式**：AI 自主规划和执行多步任务，三档权限——全监督 / 半自动 / 全自动，你来决定它能做多少事\n- **本地 RAG 知识库**：导入自己的运维文档，针对你自己的手册提问\n- 支持多 Provider，用自己的 API Key，数据不经过第三方\n\n### 其他\n\n- 31 个终端主题 + **可视化主题编辑器**（实时预览调色）\n- 广播输入（同时操作多台服务器）\n- 终端录屏回放\n- 运行时插件系统（ESM 插件，8 个 API 命名空间）\n- 11 种语言国际化\n- 密码和密钥存系统 Keychain，配置导出用 ChaCha20-Poly1305 + Argon2id 加密\n- 支持 macOS / Windows / Linux，arm64 / x64\n- 本地终端也能用（zsh / bash / fish / PowerShell / WSL2）\n\n官网：https://oxideterm.app\n\n个人项目，测试场景有限，肯定还有不完善的地方，欢迎提 Issue。感谢阮老师的时间。",
+    "created_at": "2026-03-31T16:25:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9474"
+  },
+  {
+    "id": 9473,
+    "title": "【开源自荐】open-agent-sdk，基于 claude code 源码构建",
+    "content": "让 Claude Code 分析了一遍  claude-code-sourcemap 源码，把逻辑全部抽离出来，写了个 open-agent-sdk，用于替代 claude-agent-sdk\n\n使用 claude-agent-sdk 做过 Agent 产品的都知道，其本质是在 claude code 的基础上套了一层壳，做成 sdk 给第三方接入，可以加速 Agent 产品的开发，但是弊端也很明显：\n\n1. claude-agent-sdk 依赖 claude code，而 claude code 是不开源的，一切都是黑盒调用，出了问题你没法修\n\n2. claude-agent-sdk 接到的 query，需要创建 claude code 进程去处理，开销很大，不适合云端 Agent 使用\n\n在 Claude Code 源码基础上实现的 open-agent-sdk\n\n1. 完全兼容 claude-agent-sdk 的接口形式，只需换个包名即可快速替换\n\n2. 完全开源，你可以接入到你的 Agent 后做定制化修改，不再是黑盒调用\n\n3. 函数调用，不依赖本地 cli 进程，没有额外的开销，意味着你可以在云端 Agent 规模化调用\n\n想到一个有意思的比方不知道合不合适😄\n\nClaude Code 家后院起火，我让 Claude Code 把家里的桌椅板凳、锅碗瓢盆都搬出来，盖了一座新房子，让大家都可以免费住。🐶\n\nMIT 协议开源，欢迎使用。👇\n\nhttps://github.com/shipany-ai/open-agent-sdk\n\n![](https://pbs.twimg.com/media/HEv8MurbIAAigbG?format=jpg&name=large)",
+    "created_at": "2026-03-31T16:18:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9473"
+  },
+  {
+    "id": 9472,
+    "title": "【开源自荐】pretext.video：基于 Pretext 文字排版工具，用文字实时呈现你的摄像头画面",
+    "content": "## 项目名称\n\n  pretext.video\n\n  ## 项目简介\n\n  [Pretext](https://github.com/chenglou/pretext)\n  是最近开源的一个文字排版引擎，把测量和排版分离，测一次之后排版只做加法。它有个很有意思的 API\n  `layoutNextLine()`，可以让每行文字宽度不同，实现围绕任意形状的排版。\n\n  我拿这个能力做了 pretext.video——打开摄像头，文字跟着你的身体轮廓实时排版：\n\n  - **Text Face**：文字填满你的轮廓，颜色来自摄像头画面\n  - **Cutout in Text**：人从文字中走出来，文字自动绕开你\n\n  纯浏览器跑，不需要装东西，可以录屏导出 MP4。\n\n  ## 技术栈\n\n  - [Pretext](https://github.com/chenglou/pretext) — 文字排版\n  - [MediaPipe](https://developers.google.com/mediapipe) — 实时人像分割\n  - [mediabunny](https://github.com/nickslevine/mediabunny) — MP4 录制导出\n\n  ## 在线体验\n\n  https://pretext.video\n\n  ## 项目地址\n\n  https://github.com/fifteen42/pretext-video\n\n  ## 项目截图\n\n  ![screenshot](https://pretext.video/screenshot.png)",
+    "created_at": "2026-03-31T16:05:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9472"
+  },
+  {
+    "id": 9471,
+    "title": "全球真实地址生成器！🌍覆盖全球30+核心国家：不仅有美国/英国/加拿大/澳大利亚/日本/韩国/还有东南亚国家",
+    "content": "🔥彻底告别假地址封号危机！全网唯一带谷歌实景定位的真实地址库！\n\n👉立即免费体验工具：https://www.zhenshidizhi.com/\n\n很多朋友在做跨境电商、注册美股账户（如券商、银行）或申请海外各类服务时，往往卡在“居住地址”这一关。恐99%的地址生成器都是用随机单词拼凑的语义坐标，极易触发平台的KYC风控导致系统封号。\n\n为了解决这个痛点，我开发了这款【全球高保真地址生成器】。它的所有门牌号均清洗自各地真实的物理测绘数据（非AI瞎编），邮编与街道100%匹配，助你轻松绕过严苛审核！\n\n✨ 核心功能亮点：\n\n🌍覆盖全球30+核心国家：不仅有美/英/加/澳/日，还独家支持吉尔吉斯斯坦、不丹等冷门内陆国家真实数据！\n\n🗺️谷歌地图实景联动：拒绝“查无此地”，生成的每一条地址都可以在谷歌地图上精准扎下红色大头针。\n\n📋绝妙舒爽的一键复制：省、市、街道、门牌号无需拆分，点一下直接粘贴，填表效率拉满。",
+    "created_at": "2026-03-31T15:33:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9471"
+  },
+  {
+    "id": 9470,
+    "title": "【工具自荐】美国真实地址生成器 - 美国地址随机生成器 全球热门国家地址生成器",
+    "content": "🔥 彻底告别假地址封号危机！全网唯一带谷歌实景定位的真实地址库！\n\n👉 立即免费体验工具： https://www.zhenshidizhi.com\n\n很多朋友在做跨境电商、注册美股账户（如券商、银行）或申请海外各类服务时，往往卡在“居住地址”这一关。市面上 99% 的地址生成器都是用随机单词拼凑的虚假坐标，极易触发平台的 KYC 风控系统导致封号。\n\n为了解决这个痛点，我开发了这款【全球高保真地址生成器】。它的所有门牌号均清洗自各国真实的物理测绘数据（非 AI 瞎编），邮编与街道 100% 匹配，助你轻松绕过严苛审核！\n\n✨ 核心功能亮点：\n\n🌍 覆盖全球 30+ 核心国家：不仅有美/英/加/澳/日，还独家支持吉尔吉斯斯坦、不丹等冷门内陆国真实数据！\n\n🗺️ 谷歌地图实景联动：拒绝“查无此地”，生成的每一条地址都能在 Google Maps 上精准扎下红色大头针。\n\n📋 极其舒爽的一键复制：省、市、街道、门牌号全自动拆分，点一下直接粘贴，填表效率拉满。\n\n",
+    "created_at": "2026-03-31T15:31:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9470"
+  },
+  {
     "id": 9469,
     "title": "【开源自荐】easy-claude-code：Claude Code 源码学习教程（中英双语）",
     "content": "项目地址：\nhttps://github.com/study8677/easy-claude-code\n\n这是一个面向 Claude Code 源码学习的教程仓库，目标不是复刻产品，而是帮助读者系统理解它的架构设计、关键调用链和工程取舍。\n\n目前内容包括：\n\n- 9 个可运行的 Python 示例，对应启动、Agent Loop、工具系统、权限、streaming、context 管理等主题\n- 中英双语 README\n- 中英双语设计哲学文档\n- 中英双语源码导图（source map）\n- 每一层对应的双语 deep-dive 文档\n\n适合的人：\n\n- 想快速理解 Claude Code 核心机制的人\n- 想顺着 `query.ts`、`Tool.ts`、`bashSecurity.ts`、`constants/prompts.ts` 深入源码的人\n\n如果你最近也在研究 agentic coding、CLI agent、tool use、prompt cache、多 Agent 这类主题，欢迎看看，也欢迎提建议。",
@@ -560,7 +600,7 @@
   {
     "id": 9397,
     "title": "【APP自荐】2D照片转裸眼3D照片",
-    "content": "大家好！\n\n前几周在社交平台看到其他用户分享的鲜花的伪 3D 照片之后让我眼前一亮，所以开发了这款 app 效果图:\n\n<img width=\"748\" height=\"934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cc59a327-89ae-43f8-8b6a-8d85306cc038\" />\n\nApp Store链接: https://apps.apple.com/cn/app/ioutbox-%E4%BC%AA3d%E7%85%A7%E7%89%87%E5%88%B6%E4%BD%9C/id6760662310\n\n原理是通过抠出照片中的主体，然后放置到相框的图层上，这种处理方式打破了二维平面的束缚，利用遮挡关系欺骗大脑，产生一种物体正向观众“跃出”屏幕的 3D 空间感。\n\n制作起来也很简单，上传一张照片即可\n\n<img width=\"430\" height=\"934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/66f28d93-0283-4bf0-bbc8-a8a8ecb8aa5b\" />\n\n除了鲜花的照片，意外的发现在宠物和 cos 场照上效果也很好\n\n<img width=\"430\" height=\"934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7d9cc83e-da62-4630-a6e7-43d8afd27809\" />\n</br>\n<img width=\"430\" height=\"934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/410fbc15-eb95-44ff-88d8-f05cbdfe4f10\" />\n\n同时为方便摄影师方便让别人知道自己用的是单反，不是手机\n\napp 内置了对相机的 EXIF 信息的支持，可以展示对应相机的 logo\n\nApple\n\nCanon\n\nDJI\n\nFujifilm\n\nHasselblad\n\nLeica\n\nNikon\n\nPanasonic\n\nPentax\n\nRicoh\n\nSigma\n\nSony",
+    "content": "大家好！\n\n前几周在社交平台看到其他用户分享的鲜花的伪 3D 照片之后让我眼前一亮，所以开发了这款 app 效果图:\n\n<img width=\"1396\" height=\"922\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e27432bc-e537-4043-9abe-90a2e9e424c8\" />\n\napp介绍: https://hx-std.com/app/ioutbox/\n\nApp Store链接: https://apps.apple.com/cn/app/ioutbox-%E4%BC%AA3d%E7%85%A7%E7%89%87%E5%88%B6%E4%BD%9C/id6760662310\n\n原理是通过抠出照片中的主体，然后放置到相框的图层上，这种处理方式打破了二维平面的束缚，利用遮挡关系欺骗大脑，产生一种物体正向观众“跃出”屏幕的 3D 空间感。\n\n制作起来也很简单，上传一张照片即可\n\n<img width=\"430\" height=\"934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/66f28d93-0283-4bf0-bbc8-a8a8ecb8aa5b\" />\n\n除了鲜花的照片，意外的发现在宠物和 cos 场照上效果也很好\n\n<img width=\"430\" height=\"934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7d9cc83e-da62-4630-a6e7-43d8afd27809\" />\n</br>\n<img width=\"430\" height=\"934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/410fbc15-eb95-44ff-88d8-f05cbdfe4f10\" />\n\n同时为方便摄影师方便让别人知道自己用的是单反，不是手机\n\napp 内置了对相机的 EXIF 信息的支持，可以展示对应相机的 logo\n\nApple\n\nCanon\n\nDJI\n\nFujifilm\n\nHasselblad\n\nLeica\n\nNikon\n\nPanasonic\n\nPentax\n\nRicoh\n\nSigma\n\nSony",
     "created_at": "2026-03-26T13:08:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9397"
@@ -778,47 +818,5 @@
     "created_at": "2026-03-24T17:03:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9371"
-  },
-  {
-    "id": 9370,
-    "title": "【开源自荐】一款macos下的Claude资源(Skills,MCP,Agent)管理工具",
-    "content": "## 项目地址\nhttps://github.com/Daydayoneup/ccm\n## 痛点\n如果你在多个项目中使用 [Claude Code](https://docs.anthropic.com/en/docs/claude-code)，你一定会遇到这些问题： \n- 配置散落各处 — Skills、Agents、Rules、Hooks、Commands 分散在每个项目的 .claude/ 目录中，没有统一的地方查看和管理。\n- 无法复用 — 你在 A 项目写了一个好用的 Skill，想在 B 项目用只能手动复制，之后两份文件各自演化，再也无法同步。\n- 缺乏全局视角 — 哪些项目配了 Claude？全局有哪些资源？MCP Server 跑了几个？你只能一个一个目录翻。\n- 重复劳动 — 每个新项目都要重新配置环境变量、复制常用规则、设置权限，周而复始。\n- 团队无法共享 — 没有机制在团队内分发 Claude 配置，每个开发者各自维护一套。\n## 解决方案\nCCM 为你提供一个 中央控制台，统管所有项目的 Claude Code 配置，支持共享资源库、远程注册表和跨项目资源管理。\n一目了然。 一个仪表盘展示所有项目、资源、插件和 MCP Server，全局搜索即刻找到。\n一次编写，处处使用。 将资源存入中央库（~/.claude-manager/library/），通过符号链接安装到任意项目。更新库中的版本，所有链接的项目自动同步。\n团队共享。 基于 Git 的注册表让团队发布、版本管理和分发 Claude 配置 —— Skills、Agents、Rules 以及完整的插件包。\n自动化集成。 本地 HTTP API 让你可以与 Raycast、Alfred、Shell 脚本或任何 HTTP 工具集成。\n## 项目截图\n### dashboard\n<img width=\"1184\" height=\"763\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1bc11b68-fcfa-41d4-b722-2abae3b17c64\" />\n\n<img width=\"1186\" height=\"766\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5039c164-757b-410b-a6bf-6e7db132c48c\" />\n\n### 可视化的项目资源管理\n\n<img width=\"1177\" height=\"763\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/34ee08c3-15b9-4a22-98a8-38c6fb7deee9\" />\n\n### ccm软件内快速查找项目\n<img width=\"1194\" height=\"401\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f271c0a1-1bc7-475e-97d2-7eea0a31eda2\" />\n\n### 借助raycast快速启动项目\n \n<img width=\"745\" height=\"469\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a11daaf-043d-44b2-9d95-56e4f4188ff9\" />",
-    "created_at": "2026-03-24T15:38:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9370"
-  },
-  {
-    "id": 9369,
-    "title": "【开源自荐】微信正式开放 AI Agent 接入，开源 SDK 支持 Node.js / Python / Go / Rust",
-    "content": "可能很多人还不知道——微信已经通过 iLink Bot API 正式开放了 AI Agent 的接入能力。\n\n简单说：你现在可以让你的 AI Agent，在微信里直接跟用户对话了。扫码登录，收发消息，图片、文件、语音、视频都支持。这是微信官方开放的接口，不是基于逆向的协议。\n\n因为微信只开放了协议，没有提供 SDK，我花了点时间为这个协议做了一套开源 SDK，四种语言全覆盖：\n\n- **Node.js** — `npm install @wechatbot/wechatbot`\n- **Python** — `pip install wechatbot-sdk`\n- **Go** — `go get github.com/corespeed-io/wechatbot/golang`\n- **Rust** — `cargo add wechatbot`\n\n5 分钟接入，以 Python 为例，核心代码就几行：\n\n```python\nfrom wechatbot import WeChatBot\n\nbot = WeChatBot()\n\n@bot.on_message\nasync def handle(msg):\n    await bot.reply(msg, f\"你好：{msg.text}\")\n\nbot.run()  # 扫码登录，开始监听\n```\n\n该有的都有：扫码登录、凭证持久化、长轮询消息、富媒体收发、CDN 加密解密、会话恢复、输入状态模拟、智能文本分片……生产级可用，不是玩具。\n\n- GitHub：https://github.com/corespeed-io/wechatbot\n- 网站：https://wechatbot.dev",
-    "created_at": "2026-03-24T14:09:30Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9369"
-  },
-  {
-    "id": 9368,
-    "title": "推荐一个帮助外国朋友取中文名的小工具：Chinese Names",
-    "content": "阮老师好，推荐一个我最近开发的独立出海小工具：\n\n- **项目名称**：Chinese Names\n- **项目地址**：https://get-chinesename.shop/\n\n**项目简介**：\n这是一个面向英语母语者、海外华裔以及中文学习者的 AI 中文起名工具。\n\n**为什么做这个？**\n很多外国朋友如果依赖机翻或者随便查字典来取中文名，经常会闹笑话（比如名字听起来像一道菜名、某个朝代的年号，或者极其不符合现代人的起名习惯）。\n\n**功能特点**：\n1. **AI 智能起名**：用户输入自己的英文名或性格描述，选择性别、年龄段以及偏好风格（如：Modern 现代、Poetic 诗意、Scholarly 书卷气等），AI 会结合音译和意译，生成自然、有文化底蕴且符合中国人习惯的名字。\n2. **百家姓英文科普**：除了工具属性，网站还收录了 100 多个常见中文姓氏的英文百科（包含姓氏起源、汉字含义、历史名人等），为对中国文化感兴趣的用户提供深度阅读，同时也作为网站的 SEO 流量池。\n\n刚上线不久，希望能给有这方面需求的朋友带来一点帮助。谢谢阮老师！",
-    "created_at": "2026-03-24T13:58:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9368"
-  },
-  {
-    "id": 9367,
-    "title": "Image Background Remover，一个在线图片去背景工具",
-    "content": "老师好，\n\n投稿一个我最近上线并开源的小项目：Image Background Remover。\n\n项目地址：\nhttps://imagebackgroundremover.xyz\n\nGitHub：\nhttps://github.com/RequiemCat/image-background-remover\n\n这是一个在线图片去背景工具，支持上传 JPG / PNG / WEBP 图片，自动去除背景并导出透明 PNG，适合商品图、头像、Logo 等常见场景。\n\n项目技术栈主要是：\n- Next.js\n- Cloudflare Pages\n- Cloudflare D1\n- PayPal\n\n如果你觉得合适，欢迎收录。谢谢。",
-    "created_at": "2026-03-24T11:13:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9367"
-  },
-  {
-    "id": 9366,
-    "title": "【文章自荐】Kagi Translate 使用分享",
-    "content": "文章：[Kagi Translate 使用分享](https://taxodium.ink/my-experience-with-kagi-translate.html)\n\n用了一段时间的 Kagi Translate，觉得还不错，在我的使用场景下，可以替换 Immersive Translate，\n文章分享了 Kagi Translate 的功能以及我自己使用上的一些技巧。",
-    "created_at": "2026-03-24T09:03:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9366"
   }
 ]
