@@ -1,5 +1,45 @@
 [
   {
+    "id": 9467,
+    "title": "【开源自荐】ccg-workflow：Claude 编排 + Gemini 前端 + Codex 后端的多模型协作开发 CLI",
+    "content": "大家好，推荐一个我开发的开源项目：ccg-workflow。\n这个项目从0开始，全靠 L站（linux.do） 佬友们的真实反馈和使用迭代才走到今天（目前 4.6k+ star）。特别感谢 L站 每一位佬友的支持！❤️\n项目简介\nccg-workflow 是一个基于 Claude Code 的多模型协作开发 CLI 工具：\n\nClaude 负责整体编排、代码审查和流程控制\n前端任务自动路由给 Gemini（UI/组件/样式超强）\n后端任务自动路由给 Codex（逻辑/算法/调试更稳）\n一共 29 条 slash 命令，覆盖需求拆解 → 编码 → Git → Review → 优化的完整开发链路\n\n核心亮点\n\n一键零配置：npx ccg-workflow 即可运行\n安全机制：外部模型只返回 patch，Claude 审核后才应用\n支持 Agent Teams 并行 + OPSX 规约驱动，完全本地运行\n\nGitHub 地址：https://github.com/fengshao1227/ccg-workflow\n感兴趣的开发者可以直接试用，README 有中英文完整命令列表和使用示例。欢迎大家反馈或提 Issue，我会第一时间跟进～",
+    "created_at": "2026-03-31T12:52:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9467"
+  },
+  {
+    "id": 9466,
+    "title": "【工具推荐】在线字幕子集化处理 https://font.anibt.net",
+    "content": "告别本地字体管理烦恼，在线直接处理字幕进行子集化。\n\n地址   [font.anibt.net](https://font.anibt.net)\n\n开源地址 ：https://github.com/Yuri-NagaSaki/FontInAss\n\n## 什么是字体子集化？\n\n字体子集化（Font Subsetting）的核心思想非常简单：\n\n> 字幕里只用了 200 个汉字，为什么要嵌入包含 30000+ 字形的完整字体？\n\n子集化就是从完整字体中**只提取字幕实际用到的字形**，重新打包为一个精简的字体文件。\n\n一个实际的例子：\n\n| | 完整字体 | 子集化后 |\n|---|---|---|\n| 思源黑体 | 16.4 MB | ~200 KB |\n| 方正FW筑紫A丸ゴシック | 8.7 MB | ~150 KB |\n| 总计 6 个字体 | **70 MB** | **~2 MB** |\n\n没错，**70MB 的字体可以压缩到 2MB**，而视觉效果完全不变——因为字幕需要的每一个字形都完整保留了。\n\n```mermaid\nflowchart LR\n    A[\"ASS 字幕文件\"] --> B[\"解析用到的字符\"]\n    B --> C[\"从字体中\\n提取对应字形\"]\n    C --> D[\"生成子集字体\"]\n    D --> E{\"输出方式\"}\n    E --> F[\"嵌入 ASS\\n（UUEncode 附件）\"]\n    E --> G[\"打包进 MKV\\n（附件形式）\"]\n```\n\n## 效果对比\n\n| 原效果                        | 子集化嵌入字体后                        |\n|----------------------------|---------------------------------|\n| ![原效果](https://s3.catcat.blog/images/2026/03/20260320142306271.avif) | ![子集化嵌入字体后](https://s3.catcat.blog/images/2026/03/20260320142310331.avif) |\n\n# 博文阅读\n[ASS 字幕字体子集化：从原理到实践](https://catcat.blog/2026/03/ass-font-subsetting-fontinass)\n",
+    "created_at": "2026-03-31T12:18:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9466"
+  },
+  {
+    "id": 9465,
+    "title": "【工具推荐】在线网站构建器 (Website Builder)",
+    "content": "**网址：** https://www.yingzitingge.xyz/builder\n\n**简介：**\n这是一个面向独立开发者和初创企业的轻量级、可视化网站构建工具。它预设了多种由 AI 优化的专业模板（涵盖 SaaS 启动页、餐厅美食、创意工作室、个人品牌、电商等领域），旨在让用户通过简单的拖拽和内容替换，在几分钟内构建出具备现代审美、适配多端的官方网站。\n\n**主要特点：**\n\n行业化模板库： 针对不同行业痛点提供针对性布局，如 SaaS 类强调功能展示，个人品牌强调履历与作品集，减少了从零开始设计的构思成本。\n\n可视化组件编辑： 采用“所见即所得”的编辑模式，支持实时预览。用户可以轻松修改文本、图片及组件排列，无需接触繁琐的 HTML/CSS 代码。\n\n响应式设计： 所有生成的页面均原生适配桌面端与移动端，确保在不同屏幕下都有良好的视觉表现。\n\n极速部署思路： 该工具的核心逻辑在于将 AI 生成的创意快速转化为可发布的静态页面结构，极大缩短了“想法”到“上线”的距离。\n\n**截图：**\n\n<img width=\"832\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5939e23c-2ab2-4790-b011-9647a7687f3d\" />",
+    "created_at": "2026-03-31T12:09:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9465"
+  },
+  {
+    "id": 9464,
+    "title": "【开源自荐】Android AI Agent = VLM 视觉任务 + Cli 完整的终端工具 = omnibot",
+    "content": "https://github.com/omnimind-ai/OpenOmniBot\n## 项目简介\nOpenOmniBot是一个安卓原生开发的手机AI Agent软件，他是手机上的Claw，但是远比openclaw强大。\n它能够获取手机侧的上下文信息，配备了记忆、workspace、terminal、browser_use、subagent、vlm_task 、mcp等丰富的强大的工具。\n它能给 vlm 进行任务指派，在 Android 软件生态内完成任务（类似豆包手机），它还内置了完整的 alpine 系统，可以安装 skills 等等。\n总之，你可以在电脑上实现的，都可以在手机上实现且更顺手更轻便！\n\n## case 截图\n\n<img width=\"448\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56ad0184-3346-4177-a94c-e6ec94fb89d7\" />\n\n<img width=\"448\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f17ebca7-bf9b-486e-9b59-2204a546db85\" />\n\n<img width=\"448\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/33a2bb11-cd30-46de-8db1-bd4b4cb10675\" />\n\n<img width=\"454\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/de09d593-f0f4-4a3b-bf6f-e5a4297603f4\" />\n\n<img width=\"454\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9ced103a-86e0-45b8-8f9a-0e5ee3e1011e\" />",
+    "created_at": "2026-03-31T11:52:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9464"
+  },
+  {
+    "id": 9463,
+    "title": "【工具自荐】多问 AI：一次提问多个 AI，分屏对比答案的浏览器插件",
+    "content": "已上线Chrome、Edge、360安全浏览器，支持 23 个国内外主流 AI\n\n![Image](https://github.com/user-attachments/assets/7e497f84-ff75-432b-b38e-61190078ab72)\n\n![Image](https://github.com/user-attachments/assets/76c0031c-b6f0-40e7-82ae-f99b224f33b6)\n\n",
+    "created_at": "2026-03-31T11:21:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9463"
+  },
+  {
     "id": 9462,
     "title": "【工具自荐】AI 全能翻译助手：基于大模型的深度语境翻译工具",
     "content": "「AI 全能翻译助手」是一款集成多种主流大语言模型的微信小程序。它不仅能进行基础的词句翻译，面对面翻译，拍照翻译，作文修改，更擅长长文本的润色。好用无广告。\n\n<img width=\"368\" height=\"728\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3c50b918-9b5e-4fe3-b565-cad8d64ec6dc\" />\n\n<img width=\"378\" height=\"726\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4414219a-8d56-417e-924f-1ef68479aa60\" />\n\n<img width=\"369\" height=\"726\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2da752df-b3f5-4fdf-b75d-c44dd513e7a4\" />",
@@ -60,7 +100,9 @@
     "title": "【开源自荐】lixian.online —— 在线下载VSCode 插件、Chrome 拓展、Docker 镜像离线包",
     "content": "# Lixian.Online\n\n## 需求背景\n\n笔者所在的公司网络环境特殊。每次安装 VSCode 插件、Chrome 拓展、Docker 镜像都是非常糟糕的体验。\n\n于是用 Vercel+Cloudflare 套了一层离线包下载的服务，希望能帮到有同样需求的朋友。\n\n\n## 功能\n\n此工具帮助开发者获取 VSCode 插件、Chrome 扩展（需翻墙）和 Docker 镜像的离线安装包，并在受限网络环境下安装。\n\n**在线体验：** [lixian.online](https://lixian.online)\n\n**仓库链接：** [lixian.online - GitHub](https://github.com/LiaoGuoYin/lixian.online)\n\n**另外整理了 [lixian.online docs/spec](https://github.com/LiaoGuoYin/lixian.online/blob/main/docs/spec.md)，这个比较有价值，里面有三种插件解析的原理，LLM仅凭此文档（不看源代码），应能从零实现出功能等价的代码。**  \n\n| 功能 | 输入 | 输出 |\n|------|------|------|\n| VSCode 插件 | Marketplace 页面 URL | `.vsix` 离线安装包直链 |\n| Chrome 扩展 | 扩展名称 / 32 位 ID | `.crx` + `.zip` 文件 |\n| Docker 镜像 | 镜像名称（如 `nginx:latest`） | `docker load` 兼容的 `.tar` 文件 |\n\n所有文件下载均在浏览器端完成，部署在 [Vercel](https://vercel.com/liaoguoyins-projects)+[Cloudflare](https://www.cloudflare.com/)，服务端仅作 API 代理（绕 CORS）。\n\n## 效果预览\n\n<img width=\"1570\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/218b0c7d-3a29-40c6-a977-7eba3faff6a6\" />\n\n<img width=\"1570\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bda83d3d-7615-477a-9163-1a04711ed9da\" />\n\n<img width=\"1570\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/616110d5-15a6-49ef-83bc-33194f267931\" />",
     "created_at": "2026-03-31T05:04:51Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9455"
   },
   {
@@ -774,45 +816,5 @@
     "created_at": "2026-03-24T06:21:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9364"
-  },
-  {
-    "id": 9363,
-    "title": "【网站自荐】一个图片清晰化网站：适用于多张场景的模糊图片",
-    "content": "[Unblur Image](https://unblur-image.co/) With AI.\n里面有各种功能（免登录，每天就可以使用Unblur Image Lite 若干次）：\n\n- Unblur Image Lite / Pro （通用场景的去模糊功能）\n- Portrait Enhancer （人像增强）\n- Restore Old Photo （恢复老图片，基于Nano Banana Pro，比以前的旧技术效果更好）\n- Unblur Product Photos （电商产品去模糊功能）\n- Sharpen Logos & Text （Logo和文字增强）\n\n<img width=\"1812\" height=\"1110\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3c1518a4-9d03-4acc-88a1-ee44878ae6bb\" />\n\n",
-    "created_at": "2026-03-24T02:30:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9363"
-  },
-  {
-    "id": 9362,
-    "title": "【开源自荐】告别手写文档！ShowDoc 接入 MCP，AI 自动帮你生成文档",
-    "content": "\nshowdoc是一个开源文档工具，主要用于写接口文档，技术文档  。开源地址 https://github.com/star7th/showdoc\n\n近期推出MCP功能，方便对接AI编辑器。 https://mp.weixin.qq.com/s/Tyl4smPmPEjwF7pFVw9UwA\n\n后面的开发流可以变成这样：\n\n\n┌─────────────────────────────────────────────────────────────┐\n│                                                             │\n│   1️⃣ AI 帮你写后端代码                                      │\n│      ↓                                                      │\n│   2️⃣ 顺手让 AI 把接口文档写入 ShowDoc                       │\n│      ↓                                                      │\n│   3️⃣ 前端同学直接看文档，让 AI 根据文档生成网络请求代码       │\n│                                                             │\n└─────────────────────────────────────────────────────────────┘\n一气呵成，全程不用手动写文档！",
-    "created_at": "2026-03-24T01:09:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9362"
-  },
-  {
-    "id": 9361,
-    "title": "【开源自荐】Vibe Research Guide：LLM Agent 科研自动化与 Claw 生态导航",
-    "content": "项目名称：Vibe Research Guide\n\n项目地址：\n- GitHub: https://github.com/SpectrAI-Initiative/Vibe-Research-Guide\n- 在线预览: https://htmlpreview.github.io/?https://raw.githubusercontent.com/SpectrAI-Initiative/Vibe-Research-Guide/main/index.html\n\n一句话介绍：\n\n这是一个面向 LLM Agent 科研自动化的开源导航项目，系统整理了 Vibe Research、AI Scientist、Claw 生态、Vibe Coding，以及研究场景里越来越重要的 MCP / plugin / connector 工具层。\n\n它主要总结了什么：\n\n1. 研究型 Agent 的主线问题：文献综述、idea generation、实验执行、论文写作、评测与 benchmark。\n2. 当前比较有代表性的研究系统与平台：InnoClaw、ResearchClaw、OpenClaw、ScienceClaw、MetaClaw、AutoResearchClaw、FARS、AI Scientist、EvoScientist、Agent Laboratory 等。\n3. 新一层工具基础设施：Deep Research、Prism、Claude Code、Codex、Cursor Background Agents、cc-connect、OpenAlex Research MCP、PapersWithCode MCP 等。\n4. 我们对 Claw 生态专门做了一个 `Claw Park`，解释每个 Claw 在做什么、它属于哪一层、适合什么场景。\n\n它具体做了什么：\n\n1. 把这个方向的资料整理成一个结构化 guide，而不是单纯堆链接。\n2. 把内容拆成了多个主题页，包括 tools、systems、ideation、synthesis、experiment、writing & review、benchmarks、vibe coding、vibe anything 等。\n3. 提供了中英文可切换的交互式首页，方便快速浏览整个生态。\n4. 新增了插件 / 桥接层 / 注册表这一层内容，用来解释 research agent 之外的 skill、MCP、plugin、chat bridge 生态是怎么长出来的。\n\n适合谁：\n\n- 对 AI for Science、科研自动化、研究型 Agent 感兴趣的人\n- 想快速了解 Claw / AI Scientist / Vibe Research 生态的开发者和研究者\n- 想给自己的研究工作流接入 coding agent、research MCP、文献 connector 的用户\n\nEnglish summary:\n\nVibe Research Guide is an open-source map of the emerging LLM-agent-driven research automation stack. Instead of being a single agent product, it curates and organizes the field around the full research loop: literature review, ideation, experiment execution, writing, and evaluation.\n\nIt covers:\n\n1. Research copilots and AI scientist systems such as InnoClaw, ResearchClaw, OpenClaw, ScienceClaw, MetaClaw, AutoResearchClaw, FARS, AI Scientist, EvoScientist, and Agent Laboratory.\n2. The execution layer behind modern research workflows, including Claude Code, Codex, Cursor Background Agents, and other vibe coding tools.\n3. The new plugin / bridge / registry layer, including cc-connect, OpenAlex Research MCP, PapersWithCode MCP, and related MCP / connector infrastructure.\n4. A dedicated `Claw Park` section that explains what each new Claw project is building, where it fits in the stack, and how the ecosystem is diverging.\n\nThe project is designed for researchers, builders, and AI-for-science practitioners who want a clearer overview of the current agentic research ecosystem.\n",
-    "created_at": "2026-03-23T16:10:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9361"
-  },
-  {
-    "id": 9360,
-    "title": "【工具】SnapVee – 一款强大的视频下载器",
-    "content": "SnapVee 是一款强大的视频下载工具，无需登录，无需安装插件。即刻从 Youtube、Ins、推特、哔哩哔哩等 50 多个平台获取视频内容，最高支持 4k 清晰度！并且具有简洁美观的操作界面，此外，完全免费且无广告，提供方便、快速的视频下载体验。\n\n主要功能：\n\n- 闪电般视频提取。先进的 AI 解析引擎瞬间分析链接，秒级提取视频流，提供高质量下载。无需等待，无需缓冲，纯粹的速度体验。\n- 支持 50+ 平台。从 YouTube 到 TikTok，从 Instagram 到 B站 - 我们支持所有主流社媒平台。一个工具，为内容创作者和营销人员提供无限可能。\n- 批量提取，效率翻倍。一次最多提取 3 个视频，无需逐个等待。批量处理让您的工作流程更加高效，节省宝贵时间。无论是内容创作还是营销素材收集，都能事半功倍。\n- YouTube 4K 提取。支持 YouTube 4K/2K/1080p 高清视频下载，AV1/VP9/H.264 多种编码格式任选，配合音频分离功能，满足专业创作需求。\n- 抖音图文提取。智能识别抖音图文笔记，一键提取所有高清图片及背景音乐，同时生成带音乐的幻灯片视频，完美还原原作。\n- 小红书 Live Photo。独家支持小红书 Live Photo 实况照片提取，保留动态效果，批量下载所有图片和视频，无水印原图直出。\n- YouTube 多音轨支持。支持 YouTube 视频与音频独立提取，可分别选择画质和音质，多音轨任选搭配，满足专业剪辑和混音需求。\n- 哔哩哔哩大会员视频支持。支持 B站大会员专享视频下载，无需登录大会员账号，即可提取高清画质，畅享番剧、纪录片等付费内容。\n- 还有桌面版支持！\n\n<img width=\"2522\" height=\"1464\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b8741a5e-93ba-4c33-9fec-002c10a5cd31\" />\n\n<img width=\"3024\" height=\"1464\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a9164ec2-a250-42be-8682-93d37c8b41e1\" />\n\n<img width=\"2200\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2b93ad32-355d-49f9-a1d1-dcf62c2ea365\" />\n\n产品访问地址：https://snapvee.com\n\n求上周报，感恩！\n\n\n",
-    "created_at": "2026-03-23T12:36:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9360"
-  },
-  {
-    "id": 9359,
-    "title": "【开源自荐】 Agent-IM - 给 CodingAgent 使用的极简聊天室系统",
-    "content": "## 简介\n- 类似 Claude Code、Codex 这样 Coding Agent 很适合多任务并行，比如解决一个疑难问题，我们常会在Claude Code 和 Codex进行交叉debug。\n- Claude Code 编码会高效一些，所以一般我们也会选择多开窗口进行并行编写，榨干它的配额。\n\n这就带来一个问题：需要频繁的在多个 Agent 之间同步上下文，比如 bug 的描述、每个 Agent review 的结论等等。一般有两个办法：\n1. 拷贝粘贴\n2. 创建一些md 文档，共享信息\n\n其实还有第三条路，就是能让agent 之间直接通信。\n\n于是我们开发了一个极简的工具，**Agent-IM** 。通过一组简单的MCP 工具，让 Agent 可以以任务为单元创建聊天室，并将多个 Agent 加入进去，并定义角色，互相发送和阅读消息，极大减轻 Agent 之间同步信息的摩擦。\n\n也可以作为 openclaw 实例之间的轻量对话工具使用。\n\n## 仓库地址\n[github.com/LinklyAI/agent-im](https://github.com/LinklyAI/agent-im)\n\n\n## 核心功能\n\n- **极简**：整个代码库仅包含约 500 行代码\n- **双协议**：提供完整的 HTTP API 与原生的 MCP（Media Center Protocol）支持\n- **3 个命令完成启动**：`install → db:init → dev`\n- **内置的 Web 用户界面**：简单的linear 风聊天界面；可以通过浏览器随时监控聊天进程并参与对话。\n- **部署到Cloudflare**：基于 Cloudflare Workers 和 D1 ，聊天室永远在线。\n- **主题式对话**：按主题进行组织，明确参与者的角色，并提供回复功能以支持对话的顺利进行。\n\n## 截图和演示\n\n<img width=\"2932\" height=\"2726\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9c7d8d79-6e07-4738-8265-9497031cef74\" />\n\nhttps://github.com/user-attachments/assets/0370e851-e348-4f1a-b393-d08c989f9b08\n\n",
-    "created_at": "2026-03-23T12:15:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9359"
   }
 ]
