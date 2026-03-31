@@ -1,8 +1,32 @@
 [
   {
+    "id": 9460,
+    "title": "Smart Resume - AI 驱动的 ATS 简历优化器",
+    "content": "## 工具名称\nSmart Resume\n\n## 链接\nhttps://smart-resume-now.top\n\n## 简介\n一个 AI 驱动的简历优化工具，帮助求职者通过 ATS（招聘管理系统）筛选。\n\n主要功能：\n- 简历与职位描述关键词匹配分析\n- 动作词检测，识别被动表达\n- 量化成就检测，提醒添加数字\n- 9 款 ATS 友好的简历模板\n- 实时编辑器，支持 PDF/DOCX 导出\n\n## 开源/免费\n基础功能免费使用，无需注册。\n\n## 技术栈\nCloudflare Workers + Vue 3\n\n---\n感谢阮老师的周刊，每周必读！",
+    "created_at": "2026-03-31T08:57:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9460"
+  },
+  {
+    "id": 9459,
+    "title": "【开源自荐】Chrome脚本Agent",
+    "content": "https://github.com/zhuweileo/Monkey\n\nMonkey 是一个 Chrome 扩展，让你通过自然语言描述来生成用户脚本并自动注入到任意网页中。你不需要会写代码——只需告诉 Monkey 你想在这个页面做什么，它会：\n\n- 实时抓取当前页面的 DOM 结构\n\n- 将 DOM 信息注入 prompt，让 AI 写出精准匹配页面元素的脚本\n\n- 一键保存并立即执行，下次访问同域名自动生效\n\n使用你自己的 API Key（BYOK），支持 OpenAI、Claude 以及任何兼容 OpenAI Chat Completions 格式的接口。\n\n",
+    "created_at": "2026-03-31T08:21:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9459"
+  },
+  {
+    "id": 9458,
+    "title": "【工具自荐】TextRepeater - 免费在线文本重复工具，支持 WhatsApp 表情场景模式",
+    "content": "TextRepeater 是一个免费的在线文本重复工具，专为 WhatsApp、SMS 和社交媒体设计。\n\n**网站地址：** https://textrepeater.top\n\n**主要功能：**\n\n- 将任意文本重复 1-1000 次，支持自定义分隔符（空格、换行、自定义）\n- **场景模式（Scene Mode）**：根据场景自动插入对应表情符号，目前支持道歉模式（🙏😔💦），Birthday、Anger、Heart 模式陆续上线\n- 15 种视觉效果（彩虹、故障风、霓虹、矩阵等），浏览器内显示，复制时自动还原为纯文本\n- 一键分享到 WhatsApp\n- 无需注册，无需登录，无后端，所有功能在浏览器本地运行\n\n**技术栈：**\n\nNext.js 静态导出 + Cloudflare Pages 部署，零服务端成本。\n\n**截图：**\n\n<img width=\"1545\" height=\"810\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/49b953ac-b4f2-48ad-8252-ee04d521687d\" />\n",
+    "created_at": "2026-03-31T07:38:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9458"
+  },
+  {
     "id": 9457,
-    "title": "【开源自荐】AgHub - 实现跨 Agent 工具的 MCP 与 Skill 统一管理",
-    "content": "**开源地址：** https://github.com/AkaraChen/aghub\n**官网：** https://aghub.akr.moe/\n\n\n**One hub for every AI coding agent.**\n\n## 项目简介\n\nAgHub 是一款基于 Tauri 2 构建的开源跨平台桌面应用，解决 AI 编程工具碎片化带来的配置管理难题。现在大多数开发者同时使用多个agent，每个工具都有独立的 MCP 配置文件，Skill 也各自为政，互不互通。AgHub 的理念是：**配置一次，部署到任意 Agent。**\n\n<img width=\"1280\" height=\"471\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8e1db08d-6215-41f2-8c34-4ffa99437c7e\" />\n\n<img width=\"1280\" height=\"839\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b490b55-473c-4cb4-9497-d86daa421d8a\" />\n\n## 核心功能\n\n🔧 **统一 MCP 管理**\n- 支持 22+ 款主流 AI 编程工具\n- 兼容 Stdio、SSE、StreamableHttp 三种传输协议\n- 跨 Agent 审计视图，一眼看清所有工具里装了哪些 MCP Server\n- 一键启用/禁用，无需删除配置\n\n📦 **可移植的 Skill 体系**\n- 支持导入 `.skill` 包或以 `SKILL.md` frontmatter 格式编写\n- 写入通用 Skill 目录后，所有支持该标准的 Agent 工具均可调用\n- SHA-256 内容校验 + 来源追踪，保障 Skill 可信\n- 内置接入 skills.sh 市场，可直接浏览安装社区 Skill\n\n⚙️ **灵活的作用域控制**\n- 支持全局、项目、合并三种配置视图\n- 完整审计记录，适合多项目、多人协作场景\n\n## 适用人群\n\n- 同时使用多款 AI 编程工具的开发者\n- 需要在团队间共享 MCP 配置和 Skill 的工程团队\n- Agent Skills 体系的深度用户\n- 觉得自己 MCP 配置越来越乱、不知道哪个在生效的人\n\n## 技术栈\n\nTauri 2 + Rust，MIT 协议\n\n**支持平台：** Windows 10+ / macOS 12+ / Linux（Ubuntu",
+    "title": "【开源自荐】AgHub - 实现跨 Agent 的 MCP 与 Skill 统一管理,内置skills.sh市场",
+    "content": "**开源地址：** https://github.com/AkaraChen/aghub\n**官网：** https://aghub.akr.moe/\n\n\n**One hub for every AI coding agent.**\n\n还在为多agent的skill管理和mcp烦恼吗， 基于tauri2的开源项目aghub，内置skills.sh市场，一键移植skill，配置一次部署到任意agent，跨 Agent 审计视图，一眼看清所有agent里装了哪些 MCP Server，官网链接和github仓库在简介。\n\n\n## 技术栈\n\nTauri 2 + Rust，MIT 协议\n\n**支持平台：** Windows 10+ / macOS 12+ / Linux（Ubuntu\n<img width=\"1280\" height=\"471\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8e1db08d-6215-41f2-8c34-4ffa99437c7e\" />\n\n<img width=\"1280\" height=\"839\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b490b55-473c-4cb4-9497-d86daa421d8a\" />\n\n",
     "created_at": "2026-03-31T06:56:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9457"
@@ -792,29 +816,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9357"
-  },
-  {
-    "id": 9356,
-    "title": "【开源自荐】SkillSkr 是一款用于浏览、编辑和组织本地多来源 Agent Skills 的桌面端管理应用。",
-    "content": "**项目地址**\n[https://github.com/wildematt/skillskr](https://github.com/wildematt/skillskr)\n\n**简介**\nSkillSkr 是一个用于浏览、编辑和组织本地多来源 Agent Skills 的桌面端管理应用，支持 Codex、Claude、Cursor、Windsurf、Agents 等来源，以及项目内的 Skills 目录。\n\n**推荐理由：**\n- 美观的 UI 与良好的交互体验\n- 多来源 Skills 自动发现\n- Skills 搜索与筛选（Library / Tools / Collections）\n- 收藏（Favorites）与自定义分类（Collections）\n- 分类管理（新建、重命名、删除、归类）\n- Markdown 编辑与预览",
-    "created_at": "2026-03-23T11:11:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9356"
-  },
-  {
-    "id": 9355,
-    "title": "ACPlugin: 将Claude Code Plugin(Skills/ Agents) 转换为 Codex/OpenCode/Cursor/Antigravity可用格式",
-    "content": "[Repo](https://github.com/tokenRollAI/acplugin)\n\n# 是什么?\n一个将 claude code 的 plugin / skill / agents 转换为 codex / opencode / cursor / antigravity 支持的格式\n\n让你的项目可以在任何 AI Coding 工具中使用你熟悉的 Skills / Agents, 一键迁移\n\n# 为什么?\nClaude Code的 Plugin 生态非常丰富, 过去囿于其他 AI Coding 的生态不够丰富, 但是随着 codex subagent 的发布, 一些最核心的能力已经健全, 一些生态有了共享的技术支持\n\nAgents Skills / Agents 的定义大同小异, 本质上只是一些字段的同步和修改\n\n# 效果\n这里以 [cc-plugin](https://github.com/TokenRollAI/cc-plugin) 为例\n\n<img width=\"1402\" height=\"858\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/82f3b2fd-0507-4d2b-8044-2c276b4519f8\" />\n\n```\n> acplugin\n\n  acplugin — Claude Code Plugin Converter\n\n✔ What do you want to do? Convert — Convert plugins to other platforms\n✔ Where are the plugins? Local  — Current directory or local path\n✔ Local path: .\n✔ Select target platforms Codex CLI, OpenCode, Cursor, Antigravity (Google)\n✔ Use custom output directory? No\n✔ Dry run (preview only, no files written)? Yes\n✔ Found 1 plugin(s)\n✔ Select plugins to convert tr (13 resources) — TokenRoll custom commands and agents for \nClaude Code\n✔ Output to subdirectory \"tr/\"? No\nℹ Converting 1 plugin(s) to codex, opencode, cursor, antigravity...\n\ntr\n  Resources: 13\n  Codex: 21 file(s)\n  .agents/skills/commit/SKILL.md\n  .agents/skills/commit/agents/openai.yaml\n  .agents/skills/deep-dive/SKILL.md\n  .agents/skills/deep-dive/references/mermaid-patterns.md\n  .agents/skills/deep-dive/references/stack-detection.md\n  .agents/skills/doc-workflow/SKILL.md\n  .agents/skills/doc-workflow/references/doc-conventions.md\n  .agents/skills/doc-workflow/references/llmdoc-structure.md\n  .agents/skills/investigate/SKILL.md\n  .agents/skills/investigate/references/investigation-guide.md\n  .agents/skills/read-doc/SKILL.md\n  .agents/skills/read-doc/agents/openai.yaml\n  .agents/skills/update-doc/SKILL.md\n  .agents/skills/update-doc/agents/openai.yaml\n  .codex/agents/investigator.toml\n  .codex/agents/recorder.toml\n  .codex/agents/scout.toml\n  .codex/agents/worker.toml\n  .agents/skills/cmd-initDoc/SKILL.md\n  .agents/skills/cmd-what/SKILL.md\n  .agents/skills/cmd-withScout/SKILL.md\n  Opencode: 18 file(s)\n  .opencode/skills/commit/SKILL.md\n  .opencode/skills/deep-dive/SKILL.md\n  .opencode/skills/deep-dive/references/mermaid-patterns.md\n  .opencode/skills/deep-dive/references/stack-detection.md\n  .opencode/skills/doc-workflow/SKILL.md\n  .opencode/skills/doc-workflow/references/doc-conventions.md\n  .opencode/skills/doc-workflow/references/llmdoc-structure.md\n  .opencode/skills/investigate/SKILL.md\n  .opencode/skills/investigate/references/investigation-guide.md\n  .opencode/skills/read-doc/SKILL.md\n  .opencode/skills/update-doc/SKILL.md\n  .opencode/agents/investigator.md\n  .opencode/agents/recorder.md\n  .opencode/agents/scout.md\n  .opencode/agents/worker.md\n  .opencode/commands/initDoc.md\n  .opencode/commands/what.md\n  .opencode/commands/withScout.md\n  Cursor: 19 file(s)\n  skills/commit/SKILL.md\n  skills/deep-dive/SKILL.md\n  skills/deep-dive/references/mermaid-patterns.md\n  skills/deep-dive/references/stack-detection.md\n  skills/doc-workflow/SKILL.md\n  skills/doc-workflow/references/doc-conventions.md\n  skills/doc-workflow/references/llmdoc-structure.md\n  skills/investigate/SKILL.md\n  skills/investigate/references/investigation-guide.md\n  skills/read-doc/SKILL.md\n  skills/update-doc/SKILL.md\n  agents/investigator.md\n  agents/recorder.md\n  agents/scout.md\n  agents/worker.md\n  commands/initDoc.md\n  commands/what.md\n  commands/withScout.md\n  .cursor-plugin/plugin.json\n  Antigravity: 18 file(s)\n  .agent/skills/commit/SKILL.md\n  .agent/skills/deep-dive/SKILL.md\n  .agent/skills/deep-dive/references/mermaid-patterns.md\n  .agent/skills/deep-dive/references/stack-detection.md\n  .agent/skills/doc-workflow/SKILL.md\n  .agent/skills/doc-workflow/references/doc-conventions.md\n  .agent/skills/doc-workflow/references/llmdoc-structure.md\n  .agent/skills/investigate/SKILL.md\n  .agent/skills/investigate/references/investigation-guide.md\n  .agent/skills/read-doc/SKILL.md\n  .agent/skills/update-doc/SKILL.md\n  .gemini/agents/investigator.md\n  .gemini/agents/recorder.md\n  .gemini/agents/scout.md\n  .gemini/agents/worker.md\n  .agent/skills/cmd-initDoc/SKILL.md\n  .agent/skills/cmd-what/SKILL.md\n  .agent/skills/cmd-withScout/SKILL.md\n\n✔ Would generate 76 file(s) for 1 plugin(s)\n\n```\n\n# 使用\n\n```\n// 安装\nnpm install -g @disdjj/acplugin\n\n// 使用\nacplugin\n```",
-    "created_at": "2026-03-23T10:16:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9355"
-  },
-  {
-    "id": 9354,
-    "title": "【工具】Resume Tailor – 粘贴 JD 和简历，一分钟生成定制版",
-    "content": "网站：https://resumetailor.website\nResume Tailor 是一个 AI 简历优化工具，帮助求职者把现有简历快速匹配到目标岗位的 JD。\n使用方式：\n1. 粘贴目标岗位的 JD\n2. 粘贴当前简历\n3. 得到：定制化职业摘要、优化后的经历要点、缺失关键词、改进建议\n核心原则：只优化表达，不虚构经历。\n支持中英文双语，免注册可免费试用一次，登录后每月 5 次免费额度。",
-    "created_at": "2026-03-23T09:18:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9354"
   }
 ]
