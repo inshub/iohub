@@ -1,5 +1,13 @@
 [
   {
+    "id": 9475,
+    "title": "[推荐项目] dexfinder：纯 Go 极速 Android 逆向与隐私调用溯源工具。",
+    "content": "<img width=\"1200\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ea5fb544-f7ef-4b73-9df6-67c6192e6945\" />",
+    "created_at": "2026-03-31T17:28:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9475"
+  },
+  {
     "id": 9474,
     "title": "【开源自荐】OxideTerm：纯 Rust SSH 终端，25MB Tauri 替代 Electron 全家桶",
     "content": "阮老师好，自荐一个自己做的开源项目。\n\n**[OxideTerm](https://github.com/AnalyseDeCircuit/oxideterm)** —— 跨平台 SSH 终端客户端 + 本地终端，Tauri 2（Rust）+ React 19（TypeScript），GPL-3.0，免费。\n\n[OxideSens演示](https://github.com/user-attachments/assets/4ba033aa-94b5-4ed4-980c-5c3f9f21db7e)\n\n日常连服务器要同时开终端、SFTP、端口转发好几个窗口，市面上的工具要么重（Electron）、要么缺功能、要么要订阅，就自己做了一个。下面说几个我觉得比较有意思的设计：\n\n### 一条 SSH 连接复用所有功能\n\n连上之后，终端、SFTP 文件管理、内建代码编辑器、端口转发全部复用**同一条 SSH 连接**。不需要为每个功能单独认证和建连。改个 nginx 配置不用开 VS Code Remote，直接在内建编辑器里改完保存。\n\n### 纯 Rust SSH 协议栈，零 C 依赖\n\nSSH 实现用的 [russh](https://github.com/Eugeny/russh)，**没有 OpenSSL、没有 libssh2、没有任何 C FFI**。终端数据走自研的二进制线协议（Type-Length-Payload），热路径上没有 JSON 序列化开销。整个应用 Tauri 2 打包，安装包 **25–40 MB**（同类 Electron 应用通常 150 MB+）。\n\n### 断线重连 30 秒宽限期\n\n这个功能我自己很喜欢。断网后**不会立刻杀掉连接**，而是先花 30 秒去探测旧连接能否恢复。如果你只是切了个 WiFi 热点，网络闪了一下，vim 里编辑到一半的内容不会丢。确认连不上了才重建新连接，端口转发和 SFTP 传输队列会自动接上。\n\n### 深度 AI 集成，不只是聊天框\n\n内建的 AI 助手叫 OxideSens，它不是挂个对话框就完事了：\n\n- **自动感知上下文**：连上服务器后自动检测 OS、发行版、shell 类型，作为上下文喂给模型\n- **Sidebar 模式**：40 多个内建工具（function calling），可以看到你终端屏幕上的内容，也可以直接在服务器上执行命令、读写文件、管端口转发\n- **Agent 模式**：AI 自主规划和执行多步任务，三档权限——全监督 / 半自动 / 全自动，你来决定它能做多少事\n- **本地 RAG 知识库**：导入自己的运维文档，针对你自己的手册提问\n- 支持多 Provider，用自己的 API Key，数据不经过第三方\n\n### 其他\n\n- 31 个终端主题 + **可视化主题编辑器**（实时预览调色）\n- 广播输入（同时操作多台服务器）\n- 终端录屏回放\n- 运行时插件系统（ESM 插件，8 个 API 命名空间）\n- 11 种语言国际化\n- 密码和密钥存系统 Keychain，配置导出用 ChaCha20-Poly1305 + Argon2id 加密\n- 支持 macOS / Windows / Linux，arm64 / x64\n- 本地终端也能用（zsh / bash / fish / PowerShell / WSL2）\n\n官网：https://oxideterm.app\n\n个人项目，测试场景有限，肯定还有不完善的地方，欢迎提 Issue。感谢阮老师的时间。",
@@ -810,13 +818,5 @@
     "created_at": "2026-03-25T02:46:04Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9372"
-  },
-  {
-    "id": 9371,
-    "title": "【开源自荐】流光 PrismFlowAgent —— 全链路自动化资讯聚合 + AI 深度总结 + 多端分发系统，可接入openclaw",
-    "content": "阮老师好，自荐一个我开发的全栈自动化资讯处理系统。\n\n### 项目简介\n\n**流光 PrismFlowAgent** 是一个开源的全栈资讯处理与 AI Agent 系统。它能从 GitHub Trending、RSS、Twitter/Reddit 等多源渠道自动抓取高质量资讯，利用 Gemini / Claude / GPT / Ollama 等大语言模型进行深度总结，并一键分发到微信公众号、GitHub 仓库或 RSS 订阅源。\n\n### 为什么做这个？\n\n作为技术内容创作者，每天要在多个平台之间切换，手动筛选、阅读、总结、排版、发布，整个流程繁琐且重复。我希望有一个工具能把**从信息抓取到内容分发的全链路自动化**，人只需要做决策——选什么源、定什么风格、审什么稿——剩下的交给系统。\n\n### ✨ 核心特性\n\n- 🔍 **多源深度聚合**：插件化架构，实时监控 GitHub Trending、学术论文、RSS 等数据源，几分钟即可接入新源\n- 🤖 **全模型 AI 适配**：原生支持 Gemini、Claude、GPT 和本地 Ollama，通过预设 Prompt 模板输出结构化深度总结\n- 📡 **一键多端分发**：一键推送到微信公众号、GitHub 归档或 RSS，自动压缩图片 (AVIF) 和处理视频 (FFmpeg)\n- ⏰ **24h 无人值守**：健壮的任务调度 + SQLite 本地存储，从抓取到发布全流程稳定可靠\n- 🔗 **AI Agent 互操作**：提供 API 接口，外部 AI Agent（如 openclaw）可直接接管系统，实现人机协作闭环\n- 🧠 **层级记忆系统**：内置知识库与记忆管理，支持语义检索和自动去重\n- 🐳 **Docker 一键部署**：提供 Docker 镜像和 docker-compose，开箱即用\n\n### 🛠️ 技术栈\n\n| 模块 | 技术 |\n|------|------|\n| 后端 | Node.js 20+, Fastify, TypeScript 5 |\n| 前端 | React 19, Vite, Tailwind CSS |\n| 数据库 | SQLite |\n| 存储 | Cloudflare R2 / GitHub / 本地 |\n\n### 截图\n\n![首页截图](https://github.com/justlovemaki/PrismFlowAgent/raw/main/static/home.png)\n\n### 接入 OpenClaw 效果\n\n系统已成功接入 OpenClaw，外部 AI Agent 可通过 API 调用智能体，实现全自动化的资讯抓取、处理与发布：\n\n![接入 OpenClaw 截图](https://github.com/justlovemaki/PrismFlowAgent/raw/main/static/openclaw-integration.jpg)\n\n### 链接\n\n- 🏠 GitHub：https://github.com/justlovemaki/PrismFlowAgent\n- 📰 已生成内容效果：https://ai.hubtoday.app/\n- 📜 协议：GPL-3.0",
-    "created_at": "2026-03-24T17:03:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9371"
   }
 ]
