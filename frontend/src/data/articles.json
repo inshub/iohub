@@ -1,5 +1,21 @@
 [
   {
+    "id": 9488,
+    "title": "【开源自荐】 0.17MB 的 macOS 离线抠图工具",
+    "content": "基于 Apple VisionKit 的命令行抠图工具，支持单张图像处理和批量处理，可自定义背景颜色，速度非常快，适用于 macOS 14及更新的系统，编译后仅 171kB，便于嵌入或被其它工具调用\n\n### 项目链接\n[https://github.com/94xy/xykt](https://github.com/94xy/xykt)\n\n<img width=\"852\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5f6922ca-f936-47c1-ad8b-ae06adaa0b83\" />",
+    "created_at": "2026-04-01T11:33:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9488"
+  },
+  {
+    "id": 9487,
+    "title": "【开源自荐】VanityH：前端链式编写UI语法工具，告别嵌套地狱，让 hyperscript 编写变得优雅",
+    "content": "### 项目简介\n\n#### VanityH: 让 hyperscript 编写变得优雅\n告别嵌套地狱，拥抱流式开发体验\n\nVanityH 并不是另一个复杂的 UI 框架，它是一个极简的 DSL (领域特定语言) 构造器。通过 Proxy 与闭包逻辑，它将繁琐的 h(tag, props, children) 调用转换为类似 SwiftUI 或 Flutter 的链式语法。\n\n### VanityH 解决的核心痛点\n在非 JSX 环境（原生 JS/TS、脚本工具、低代码引擎）中，开发者面临这些困境：\n\n嵌套地狱：传统 h 函数需要大量对象嵌套，视觉噪音极大\n属性污染：组件复用时意外污染原始定义\n心智负担：属性、事件、子节点混杂，难以理解 DOM 结构\n环境依赖：JSX 需要编译配置，无法在轻量级脚本或原生浏览器环境中开箱即用\nVanityH 通过\"链式配置 + 终结符渲染\"完美解决这些问题。\n\n\n\n#### 项目地址\nhttps://github.com/VanityH/vanityh\n\n#### Playground\nhttps://stackblitz.com/edit/vitejs-vite-bujruupx",
+    "created_at": "2026-04-01T11:11:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9487"
+  },
+  {
     "id": 9486,
     "title": "【开源自荐】markdown-it-vue3",
     "content": "#### 项目简介\n`markdown-it-vue3` 是专为 Vue3 打造的 Markdown 流式解析渲染组件，基于 `markdown-it` 核心，AI会话场景轻量易用。\n\n#### 核心亮点\n1. 🚀 纯 Vue3 适配，兼容 Vite，性能优、体积小；\n2. 🛠️ 内置公式、流程图、echart等常用功能，支持自定义扩展；\n3. 🎨 样式可定制，提供 TypeScript 类型定义。\n\n#### 项目地址\nhttps://github.com/niyongsheng/markdown-it-vue3\n\n#### 演示地址\nhttps://niyongsheng.github.io/markdown-it-vue3/",
@@ -808,21 +824,5 @@
     "created_at": "2026-03-25T17:25:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9385"
-  },
-  {
-    "id": 9384,
-    "title": "【开源自荐】mimic-shrimp-rs：搞了一个基于 Rust 的英语学习助手龙虾，每日英语学习卡片，可接入飞书开始每天的英语学习",
-    "content": "仿照龙虾，搞了一个基于 Rust 的英语学习助手服务，当前重点是把“每日英语学习卡片 + 飞书互动”\n\n## 演示\n\n![Image](https://github.com/user-attachments/assets/ab5d33a7-a0ac-46e4-8156-b04f45435c7b)\n\n\n## 交互式学习的有意思的地方\n\n- 它不是一次性丢给你一大段材料，而是先给你一张当天的学习卡片，再按会话一步步往下练。\n- “这句话什么意思”和“再出一道题”这种短口令就能继续推进，不需要每次都重新解释上下文。\n- 文本和语音可以混着用：你可以先看摘要和重点句，再直接发一段英语语音做跟读。\n- 跟读反馈不是只说“对/不对”，而是会结合重点句子给出匹配度、漏读词和可能多读的词，便于继续修正。\n- 如果这轮互动本身就是英文问答，系统还能顺手补一条英语语音回复，形成“看文本 + 听语音 + 自己跟读”的闭环。\n\n## 交互流程\n\n1. 用户在飞书发送文本或语音消息。\n2. 如果是语音消息，服务会先下载音频并转写成文本；如果当前会话已经进入“今天的英语学习”，会优先按英文语音场景做转写。\n3. 转写后的文本会先判断是不是学习口令，例如 `开始今天的英语学习`、`这句话什么意思`、`再出一道题`。\n4. 如果不是口令，但当前会话已经进入当天学习上下文，系统会继续尝试把这段转写文本当作跟读内容，对照当天重点句子给出反馈。\n5. 如果既不是学习口令，也不是可判定的跟读文本，就回退到普通对话链路生成文本回复。\n6. 文本回复发回飞书后，如果“用户这段语音像英文”且“系统生成的回复也像英文”，并且已经配置好语音合成能力，系统还会再附加回送一条英语语音回复，方便用户直接听和模仿。\n\n\n## 现在能做什么\n\n- 每天抓取固定 RSS 新闻源，生成一份“今日英语学习卡片”。\n- 学习卡片包含中英摘要、重点词汇、重点句子、理解问题、跟读练习和翻译练习。\n- 支持在同一会话里继续追问重点句、继续做下一题，以及对英语跟读文本给出反馈。\n- 飞书里除了文本交互，也支持语音输入；在合适条件下会附加回送一条英语语音回复。\n- 学习内容默认落盘保存，便于按天复用和追踪。\n\n\n## 项目地址\nhttps://github.com/847850277/mimic-shrimp-rs",
-    "created_at": "2026-03-25T13:46:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9384"
-  },
-  {
-    "id": 9383,
-    "title": "【开源自荐】Hello-AI：智能更新的 AI 项目全景地图，让 AI 自动收集与评估全球开源AI项目",
-    "content": "### 1. 项目名称\n**Hello-AI** - 一个基于 AI 代理自动化维护的开源 AI 项目全景地图。\n\n- **项目源码**：[https://github.com/xxxily/hello-ai](https://github.com/xxxily/hello-ai)\n- **在线预览**：[https://hello-ai.anzz.top](https://hello-ai.anzz.top) (国际站)\n- **在线预览**：[https://hello-ai.anzz.site](https://hello-ai.anzz.site) (国内站)\n\n---\n\n### 2. 项目简介\n在 AI 爆发的当下，GitHub 上的相关开源项目多如牛毛，单靠人工整理已经完全跟不上时代的节奏。**Hello-AI** 的核心理念是 **“用 AI 帮助人类连接 AI”**。\n\n它不再是一个死板的 Markdown 列表，而是一个**全自动运行的发现与评价引擎**。项目通过 AI 代理自动在 GitHub 发现、评估、分类并追踪全球最新、最热的 AI 项目（涵盖基础模型、RAG、Agent、多模态、机器人等）。\n\n目前已收录超过 **13,400+** 个优质 AI 项目，并保持每日动态增长。\n\n### 3. 核心特色\n- 🤖 **AI 全流程自动化**：项目的收录、短评生成、多级打标、分类路由，全部由 AI 代理完成，实现“无人值守”的知识库更新。\n- 🔍 **动态知识挖掘**：系统会自动从抓取的项目中提取新 Topic，反向扩充主题池，像滚雪球一样探索 GitHub 上的 AI 绿洲。\n- 📊 **架构清晰透明**：采用 VitePress 构建前端，数据层与展现层完全解耦，支持 Mermaid 流水线展示。\n- 🛠️ **可私有化部署**：支持 OpenAI、DeepSeek、MiniMax 等多种主流模型，任何人都可以基于这套脚本运行自己的 AI 导航站。\n\n### 4. 界面预览\n\n<img width=\"2228\" height=\"1840\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aadb1bd9-b3c6-49ae-a3f0-19a129da0d83\" />\n\n<img width=\"2220\" height=\"2110\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6260bfd9-df22-4a79-baa4-55f2c6b07cb5\" />\n\n<img width=\"2222\" height=\"1938\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1cf2afdc-ca56-4dfb-9faa-5cf8a05dba8d\" />",
-    "created_at": "2026-03-25T11:46:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9383"
   }
 ]
