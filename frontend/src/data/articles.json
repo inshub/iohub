@@ -1,5 +1,21 @@
 [
   {
+    "id": 9490,
+    "title": "【开源自荐】为你的AI生成简历",
+    "content": "`wingman` 自动扫描本地 AI Agent 的使用数据，生成可视化统计卡片和 AI 自己的简历。\n\n核心功能\n\n- SVG 统计卡片 — token 用量、花费、模型分布、活跃热力图、Sankey 流向图、MCP Server / Skill / 插件一览\n- YAML 简历 — 生成 rendercv 兼容的 YAML 简历，可直接渲染为 PDF\n- 自动检测 — 无需配置，自动识别已安装的 AI 助手并读取本地数据\n- 完全本地 — 不需要 API Key，不上传任何数据\n\n支持的 AI Agent: Claude Code、Gemini CLI、GitHub Copilot、OpenCode、Codex\n\n使用方式\n\n```shell\nnpx @eat-pray-ai/wingman card\nnpx @eat-pray-ai/wingman resume\n```\n\n效果展示\n\n<table>\n  <tr>\n    <th align=\"center\">SVG Card</th>\n    <th align=\"center\">Resume (<a href=\"docs/wingman.pdf\">PDF</a>)</th>\n  </tr>\n  <tr>\n    <td align=\"center\"><img src=\"https://raw.githubusercontent.com/eat-pray-ai/wingman/main/docs/wingman.svg\" width=\"400\" alt=\"SVG Card\"/></td>\n    <td align=\"center\"><img src=\"https://raw.githubusercontent.com/eat-pray-ai/wingman/main/docs/wingman.png\" width=\"400\" alt=\"Resume\"/></td>\n  </tr>\n</table>\n\n项目地址: https://github.com/eat-pray-ai/wingman",
+    "created_at": "2026-04-01T14:53:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9490"
+  },
+  {
+    "id": 9489,
+    "title": "【开源自荐】一套全新的Transmission Web UI",
+    "content": "## 背景\nTransmission 是一个主流的种子下载工具，但是长时间以来一直没有现代化的Web UI界面，缺少在移动端和电脑端通过网页便捷管理种子的面板。 \n\n## 项目概况\n\nTransmission Next UI 是一个Transmission的第三方Web UI，使用shadcn/ui和Vite构建。拥有以下特性：\n\n- 现代化 UI 设计\n- 响应式布局，适配所有设备\n- 适配 Transmission 4.0+ 版本\n - 种子管理，信息查看\n - 配置设置\n - 拖拽/粘贴添加种子\n-  深色模式支持\n-  Tracker 过滤\n - 支持种子标签\n - 批量替换 Tracker\n\n## 效果展示\n\n在线Demo: [Live Demo](https://transmission-next-ui-demo.pages.dev/)\n\n![](https://media.githubusercontent.com/media/hisproc/transmission-next-ui/refs/heads/main/pic/dashboard_light.png)\n\n![](https://media.githubusercontent.com/media/hisproc/transmission-next-ui/refs/heads/main/pic/dashboard_dark.png)\n\n![](https://media.githubusercontent.com/media/hisproc/transmission-next-ui/refs/heads/main/pic/torrent_details.png)\n",
+    "created_at": "2026-04-01T13:35:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9489"
+  },
+  {
     "id": 9488,
     "title": "【开源自荐】 0.17MB 的 macOS 离线抠图工具",
     "content": "基于 Apple VisionKit 的命令行抠图工具，支持单张图像处理和批量处理，可自定义背景颜色，速度非常快，适用于 macOS 14及更新的系统，编译后仅 171kB，便于嵌入或被其它工具调用\n\n### 项目链接\n[https://github.com/94xy/xykt](https://github.com/94xy/xykt)\n\n<img width=\"852\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5f6922ca-f936-47c1-ad8b-ae06adaa0b83\" />",
@@ -808,21 +824,5 @@
     "created_at": "2026-03-26T01:21:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9387"
-  },
-  {
-    "id": 9386,
-    "title": "【开源自荐】v2s — MacOS实时翻译字幕小工具，利用本地API识别、翻译、总结",
-    "content": "## 概述\n\nv2s 是一款专为 macOS 打造的开源菜单栏应用，可实时生成双语字幕。它将麦克风或应用音频转化为简洁的双行字幕浮窗，让你在开会、看视频、看直播时，同时看到原文和译文，无需切换窗口。\n\n所有语音识别和翻译均在本地设备上完成，基于 Apple Speech 和 Apple Translation 框架，音频和字幕文本不会离开你的 Mac，零账号、零云端、零遥测。\n\n## 核心功能\n\n- **实时双语字幕浮窗** 第一行显示翻译文本，第二行显示原始语言，两种语言同屏对照，快速理解上下文。\n\n- **灵活的音频源选择** 支持从麦克风或任意正在运行的 macOS 应用捕获音频，无需录制整个系统声音。\n\n- **全程本地处理** 语音识别由 Apple Speech 驱动，翻译由 Apple Translation 驱动，隐私优先，数据不出本机。\n\n- **Apple Intelligence 摘要** 对话结束后可一键生成转录摘要，快速回顾会议要点。\n\n- **菜单栏常驻** 轻量级菜单栏应用，随时启用，不占用 Dock 栏，不干扰当前工作流。\n\n- **字幕样式可调** 浮窗外观支持自定义，确保在任何背景上都清晰可读。\n\n## 应用场景\n\n- **跨语言会议** 参加英语/日语/韩语等会议时，实时查看母语翻译字幕，不遗漏关键信息。\n\n- **外语视频学习** 看 YouTube 教程或公开课时，原文+译文双行对照，既练听力又不影响理解。\n\n- **直播与流媒体** 观看外语直播时开启字幕浮窗，无需等待平台提供字幕。\n\n- **日常沟通辅助** 与外语客户通话或面试时，翻译字幕作为辅助参考，提升沟通效率。\n\n## 系统要求\n\n- 翻译功能需要 macOS 26 或更高版本\n\n## 了解更多\n\n访问 GitHub 仓库获取安装指南与更多信息：[https://github.com/franklioxygen/v2s](https://github.com/franklioxygen/v2s)\n\n\n<p align=\"center\">\n  <img src=\"https://github.com/user-attachments/assets/b65167ee-ae7e-4e37-8316-ebd200ae89a7\" alt=\"Mar-20-2026 11-08-59\">\n</p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/user-attachments/assets/449039ee-c329-426e-a55b-ab6660c56ca7\" alt=\"Screenshot 2026-03-25 at 1 10 39 PM\" width=\"500\">\n</p>\n",
-    "created_at": "2026-03-25T17:31:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9386"
-  },
-  {
-    "id": 9385,
-    "title": "【工具自荐】StoryComic AI —— 让角色始终如一的人工智能漫画生成器",
-    "content": "# StoryComic AI —— 让角色始终如一的人工智能漫画生成器\n\n## 核心价值主张\n\n**StoryComic AI 是唯一一款能让你的漫画角色在每一个分镜中都保持完全一致的人工智能工具。**\n\n## 是否似曾相识？\n\n当你使用 Midjourney 或 DALL-E 制作连贯的系列漫画时，你的角色在每个分镜中看起来都不一样——发型变了，眼睛颜色变了，看起来完全像另一个人。这是 AI 图像生成的根本缺陷：**每一次生成都是独立的，对之前的分镜没有任何记忆。**\n\nStoryComic AI 通过**角色表技术**彻底解决了这一问题。\n\n## 主要功能\n\n| 功能 | 描述 |\n|------|------|\n| **角色一致性** | 你的角色在所有分镜中保持相同的外观——无需再与提示词较劲 |\n| **5 种艺术风格** | 漫画、写实、水墨笔触、粉笔、清线画风 |\n| **免费脚本生成** | 撰写故事不消耗积分——仅在生成图像时付费 |\n| **平台就绪导出** | 一键导出适配 Instagram（1:1、4:5）、TikTok（9:16）和 Webtoon 竖版格式 |\n| **对话气泡** | 内置多分镜布局与对话气泡——无需 Photoshop |\n\n## 适用人群\n\n- 在 Instagram 或 TikTok 上打造原创漫画 IP 的内容创作者\n- 将漫画作为内容营销形式的品牌\n- 希望降低制作成本、提高发布频率的独立漫画创作者\n- 探索 AI 辅助创作的设计师和插画师\n\n## 定价方案\n\n- **免费起步**：注册即送 100 积分，无需绑定信用卡\n- 付费方案从入门版到企业版（最高 $129.9/月，含 API 访问权限）\n- 积分永不过期\n\n## 对比分析\n\n| | StoryComic AI | Midjourney | DALL-E / ChatGPT |\n|---|---|---|---|\n| 跨分镜角色一致性 | ✅ 原生支持 | ❌ 需复杂的种子技巧 | ❌ 基本不可控 |\n| 漫画分镜布局 | ✅ 内置功能 | ❌ 无 | ❌ 无 |\n| 平台就绪导出 | ✅ 一键完成 | ❌ 需后期处理 | ❌ 需后期处理 |\n| 免费版本 | ✅ 100 积分 | ❌ 无 | ✅ 有限制 |\n\n## 立即体验\n\n**https://storycomicai.com**\n\n免费注册，立即使用 100 积分。在 5 分钟内生成你的第一个 AI 漫画故事。\n\n> *“标准 AI 图像生成器独立生成每张图像。当你提示‘一位留着黑色短发、戴着眼镜的年轻女子在煮咖啡’时，AI 每次对这个描述的解读都会略有不同。”*\n> —— StoryComic AI 官方博客\n\n**标签/关键词：** AI 漫画生成器、角色一致性、角色表技术、AI 漫画、AI 艺术工具、漫画创作、TikTok 漫画、Instagram 漫画 IP、AI 故事讲述",
-    "created_at": "2026-03-25T17:25:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9385"
   }
 ]
