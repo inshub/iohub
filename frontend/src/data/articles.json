@@ -1,5 +1,29 @@
 [
   {
+    "id": 9478,
+    "title": "Avelia (艾薇莉亚)",
+    "content": "# Avelia (艾薇莉亚) // v0.3 - 来自 2063 的 AI 时间信使\n\n[![Website](https://img.shields.io/badge/Official-Website-00d1ff?style=flat-square)](https://www.avelia.chat/)\n[![Status](https://img.shields.io/badge/Timeline-Stable-green?style=flat-square)](https://www.avelia.chat/)\n[![Mission](https://img.shields.io/badge/Mission-Active-orange?style=flat-square)](https://www.avelia.chat/features)\n\n> **“来自 2063 的时间信使，助你重塑未来的愿景。”**\n> \n> Avelia 是一款全能型本地 AI Agent 平台，它通过强大的系统级驱动与双 Agent 协作架构，将云端大模型的智慧转化为真实的生产力执行力。\n\n---\n\n## ✨ 核心能力\n\n### 🤖 智能化执行与自进化\n* **多 Agent 协同**：多Agent协同闭环机制，任务完成后自动评估优化，实现能力的持续迭代。\n* **长期记忆与经验池**：支持对话历史、重要信息沉淀及云端经验库同步，让 AI 越用越懂你。\n\n### ⚙️ 极致的系统级控制 (100+ Tool Drivers)\n* **全方位管理**：深度接管进程、服务、窗口及注册表，实现真正的系统级自动化。\n* **文件与网络专家**：内置完善的文件系统操作、文档解析（PDF/Word/Excel）及复杂的 HTTP/浏览器自动化能力。\n\n### 🎬 强大的多模态处理 (50+ Media Features)\n* **视频/图像大师**：支持剪辑、合并、变速、水印、滤镜及格式转换，甚至涵盖 OCR 识别与 ChatTTS 语音合成。\n* **批量处理流**：专为高效办公设计，一键处理海量多媒体文件。\n\n### 🔒 安全与灵活扩展\n* **多模型自由切换**：原生支持 OpenAI、DeepSeek 以及本地部署的 Ollama。\n* **权限与审计**：提供工具级的精细化权限管理，所有操作日志可追溯，确保执行过程安全透明。\n\n---\n\n## 🚀 快速开始\n\n### 1. 下载与安装\n访问 [Avelia 官方下载页面](https://www.avelia.chat/) 获取适用于 Windows 10/11 (64-bit) 的安装程序。\n\n### 2. 环境配置\n首次启动 Avelia 将自动完成本地执行环境的初始化。\n\n### 3. 开启任务\n你可以直接通过自然语言下达指令，例如：\n> “帮我把这个文件夹里的所有视频加上水印，并转成 MP4 格式。”\n\n---\n\n## 📖 开发者与用户指南\n\n获取详细的安装步骤、功能指南及更新日志：\n👉 **[查看 Avelia 官方文档](https://www.avelia.chat/docs)**\n\n---\n\n## 🌐 官方通道\n\n* **官网**: [https://www.avelia.chat/](https://www.avelia.chat/)\n* **特性说明**: [https://www.avelia.chat/features](https://www.avelia.chat/features)\n\n---\n\n<img width=\"1376\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1be879a5-af05-482e-9905-dc8a1f45ab39\" />\n\n**© 2026 Anhui Lingyuan Robot Technology Co., Ltd. All rights reserved.**\n**Timeline Status: Stable // Mission: Active**\n",
+    "created_at": "2026-04-01T01:48:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9478"
+  },
+  {
+    "id": 9477,
+    "title": "【开源自荐】FakeKey - Rust 开发的 API 密钥安全工具，用假钥替换真钥，无惧Agent环境频发投毒泄露",
+    "content": "## 背景\n\nHi, 这几天看到 LiteLLM Axios 等各种被投毒， 这种亿级别的库，被植入后直接开始扫 API Key， 而我们在使用龙虾 Claude Code 过程在环境文件暴露了大量的 API KEY，有绑定了信用卡的 LLM KEY, 也有涉及隐私的飞书KEY。\n\n其实很难保证使用的软件，NPM包依赖那些都是安全的，这些事件都是后发的。所以就换了个思路，不去“防投毒”，而是让泄露变得没意义，于是就做了这个 [FakeKey](https://github.com/happyvibing/fakekey) - 用假KEY替换真KEY，agent / 依赖永远看到的都是 fake key，真钥加密存储在系统自带的安全密钥管理器中，只有在发出HTTP/S请求的时候，再把这个真KEY替换进去，就算哪天某个依赖再被投毒，它最多只能偷走一堆没用的字符串。\n\n\nGitHub: https://github.com/happyvibing/fakekey - 基于 Rust 开发的 API 密钥安全代理工具\n\n## 如何工作\n\n```\n┌─────────────────┐         ┌──────────────────────────┐         ┌─────────────────┐\n│   Client Agent  │ HTTP/S  │       FakeKey Proxy      │ HTTP/S  │  External API   │\n│                 │────────▶│  1. TLS Decryption       │────────▶│                 │\n│  Uses fake key  │         │  2. Identify replace key │         │  Get real key   │\n│  sk-xxx_fk      │         │  3. Forward request      │         │  sk-xxx         │\n└─────────────────┘         └──────────────────────────┘         └─────────────────┘\n```\n\n## 快速开始\n\n```bash\n##一键安装 \ncurl -fsSL https://raw.githubusercontent.com/happyvibing/fakekey/main/install.sh | bash\n```\n\n```bash\n##初始化引导\nfakekey onboard\n\n##启动喜爱的工具\nfakekey run claude\nfakekey run pi\n```\n\n",
+    "created_at": "2026-04-01T01:00:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9477"
+  },
+  {
+    "id": 9476,
+    "title": "用 AI 把任意想法变成可打印的填色页",
+    "content": "给大家推荐一个我最近做的小工具：\n[ https://coloringpage.live/](url)\n只要输入一段文字描述（比如\"一只骑自行车的恐龙\"、\"独角兽城堡\"），AI 就会生成一张黑白线稿，可以直接下载打印出来给孩子涂色。\n解决什么问题？\n家长不需要再 Pinterest 上翻很久找素材，可以按孩子喜好定制\n老师可以生成特定主题的涂色页（节日、课程相关）\n成人减压用户可以生成复杂的曼陀罗图案\n\n<img width=\"893\" height=\"1256\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/536a6b52-d2de-4940-92b6-04f9d880614c\" />\n\n使用方法：\n访问 https://coloringpage.live/\n输入想要的图案描述\n下载 PNG 图片，打印即可",
+    "created_at": "2026-04-01T00:37:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9476"
+  },
+  {
     "id": 9475,
     "title": "[推荐项目] dexfinder：纯 Go 极速 Android 逆向与隐私调用溯源工具。",
     "content": "<img width=\"1200\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ea5fb544-f7ef-4b73-9df6-67c6192e6945\" />",
@@ -794,29 +818,5 @@
     "created_at": "2026-03-25T04:04:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9375"
-  },
-  {
-    "id": 9374,
-    "title": "【自荐】NomNom - 像仓鼠囤粮一样囤链接的 Chrome 扩展",
-    "content": "<p align=\"center\">\n<img width=\"128\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92e8bb42-4d19-41a4-8fb8-09f0edd3a802\" />\n</p>\n\n<h1 align=\"center\">NomNom</h1>\n\n<p align=\"center\">\n  <b>批量链接收集器 | Chrome 扩展</b><br>\n  像仓鼠一样把链接统统吃掉\n</p>\n\n---\n\n## 它能做什么？\n\n在任意网页右键点击一个链接，NomNom 自动收集页面中所有相似链接，打包成标签组，分批打开、逐个浏览。\n\n![动图演示 - 右键收集链接并分批打开](https://github.com/user-attachments/assets/44020c43-0846-464b-8ca7-46775df1b016)\n<p align=\"center\"><sub>👆 动图演示</sub></p>\n\n## 核心功能\n\n- **一键收集** - 右键点击，自动识别页面中的同类链接\n- **分批打开** - 按设定数量分批打开，不会卡死浏览器\n- **快捷键切换** - `Shift + →` 快速跳到下一个\n- **进度追踪** - 标签组标题实时显示 `已读/总数`\n- **过滤已访问** - 只收集没看过的链接\n\n## 适用场景\n\n- 批量阅读搜索结果\n- 逐页浏览论坛/新闻列表\n- 顺序阅读多章节教程\n- 批量查看商品详情\n\n## 安装\n\n[GitHub Releases](https://github.com/3N26/nomnom/releases) 下载 → 解压 → `chrome://extensions` 开发者模式 → 加载已解压的扩展\n\n---\n\n**开源地址**: [GitHub](https://github.com/3N26/nomnom)\n\nMIT License\n",
-    "created_at": "2026-03-25T03:56:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9374"
-  },
-  {
-    "id": 9373,
-    "title": "【开源自荐】OpResume: 高颜值、免费、数据安全的在线简历制作工具",
-    "content": "<div align=\"center\">\n\n# OpResume\n\n**免登录、高颜值的在线简历生成器** — 数据仅本地存储，无泄漏风险，随时导出\n\n**[👉 即刻开始](https://opresume.pages.dev)**\n\n<img width=\"793\" height=\"522\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/70189e78-aa92-40ae-a70c-26558dfa5819\" />\n\n</div>\n\n## ✨ 核心特性\n\n### 🎨 专业的排版引擎\n- **多维度外观控制**：页边距、模块间距、行间距自由滑动调节，告别 Word 排版地狱。\n- **多套经典模板**：内置 4+ 套经过严格筛选的行业经典模板（涵盖大厂 ATS 风格、外企单栏风等），一键无缝切换。\n- **主题配色定制**：8+ 款精心调配的预设主题色，适应不同行业的视觉调性。\n- **自动智能分页**：内容超出 A4 纸范围时自动视觉分页，并带有现代化的悬浮页码指示器。\n\n### 🚀 极致的用户体验\n- **所见即所得**：侧边栏抽屉式表单编辑，主画布实时渲染预览。\n- **隐私保护模式**：一键开启“打码模式”，自动隐藏姓名、手机、邮箱等敏感信息，方便简历在社区分享与 Review。\n- **丝滑拖拽排序**：基于 `@dnd-kit`，工作经历、项目描述等模块内的条目均可自由拖拽调整顺序。\n- **富文本与智能推算**：基于 Tiptap 的富文本编辑器支持加粗、列表与链接；系统还会根据生日和入职时间自动推算年龄与工作年限。\n\n### 🔒 数据安全与导出\n- **免登录零上传**：所有数据仅存储在浏览器 `localStorage` 中，无后端、无数据库，隐私完全由你掌控。\n- **JSON 导入/导出**：一键导出完整简历配置为 JSON 文件，方便备份、迁移或跨设备使用；支持导入已有配置快速恢复。\n- **原生 PDF 导出**：基于浏览器原生 `window.print()` 实现高保真导出，文字可选中复制，**ATS 友好**。\n\n---\n\n## 🏗️ 技术栈\n\n| 类别 | 选型 |\n|------|------|\n| **基础框架** | React 18 + Vite 5 + TS 5 |\n| **UI 与样式** | Tailwind CSS 3 + shadcn/ui |\n| **状态管理** | Zustand 5 |\n| **富文本编辑** | Tiptap 3 |\n| **拖拽交互** | @dnd-kit |\n| **国际化** | react-i18next |\n\n## 💼 项目截图\n\n<img width=\"983\" height=\"1117\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/96a2af5a-7c34-48fd-a78d-e5acffc73987\" />\n\n<img width=\"375\" height=\"902\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f7f06545-f8a4-4200-97cb-9c14bfc25ed9\" />\n\n<img width=\"369\" height=\"1209\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b2aa11fb-0862-48f0-9c51-ef0859b13dd9\" />\n",
-    "created_at": "2026-03-25T03:20:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9373"
-  },
-  {
-    "id": 9372,
-    "title": "【文章自荐+工具开源】个人信息处理实践：打通 RSS 聚类降噪、图片音视频本地自动化转录与复盘（附开源代码）",
-    "content": "过去一年多，我用 AI 给自己写了不少工具。从一开始只是想解决某个具体的小问题，到后来不知不觉搭出了一套还算完整的信息处理体系。\n\n文章中记录了完整的系统架构设计与部分踩坑经验，主要技术点包括：\n\n1. **统一的信息流 Pipeline**：将图文、音视频、社交媒体短文本统一转录提取,AI 打分提取关键信息，并通过 embedding API 实现事件聚类与去重降噪。\n2. **多模态与双引擎处理**：结合消费级 CPU 可运行的本地 ASR 、OCR、图片理解服务和云端大模型，平衡处理速度、准确率与 API 成本。\n3. **开源组件**：为了支撑该系统，我开发并开源了部分底层服务，例如：\n    - [FunASR_spk_server](https://github.com/zj1123581321/funasr_spk_server)：支持多说话人的本地分角色音频转录服务。\n    - [YouTube Download API](https://github.com/zj1123581321/youtube_download_api)：基于 CDP 绕过风控的视频下载自动化接口。\n    - [MacOcrAPI](https://github.com/zj1123581321/MacOcrAPI)：基于 Mac 原生能力封装的本地 OCR 接口。\n    - [VideoTranscriptAPI](https://github.com/zj1123581321/VideoTranscriptAPI)：基于 Python 3.11+ FastAPI 的异步音视频转录服务，支持 YouTube、小宇宙、Bilibili 等多平台解析，本地部署可实现说话人区分转录，调用 LLM 完成文本智能校对与内容总结，配套网页端查看 / 导出功能，支持企业微信消息推送\n\n[从采集到回顾，我用 AI 搭建了一套个人信息处理系统 - 少数派](https://sspai.com/post/106477)\n\n软件层：\n\n<img width=\"1120\" height=\"386\" alt=\"信息流主线（采集 → 处理 → 存储 → 回顾\" src=\"https://github.com/user-attachments/assets/642a898b-c572-4549-aab9-16e5282c49df\" />\n\n硬件层：\n\n<img width=\"1120\" height=\"515\" alt=\"基础组件与硬件（谁跑在哪，谁调用谁）\" src=\"https://github.com/user-attachments/assets/973fb11d-4db3-4ff1-97ff-f72a1c67087d\" />",
-    "created_at": "2026-03-25T02:46:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9372"
   }
 ]
