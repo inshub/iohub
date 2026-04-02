@@ -1,5 +1,13 @@
 [
   {
+    "id": 9502,
+    "title": "推荐一个解决“面试穿什么”问题的小工具",
+    "content": "老师好，\n\n想推荐一个我最近做的小网站：\n\nhttps://www.outfitguide.online/\n\n<img width=\"2560\" height=\"1229\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c6342153-4096-4a33-ae90-d0249a3f79b8\" />\n\n\n\n起因是我在准备面试时，经常会反复纠结“到底穿什么合适”，查了很多资料，但大多数内容都比较零散，而且缺少具体的搭配方案。\n\n于是我做了一个简单的工具，把不同面试场景对应的穿搭方案整理出来，用户可以直接获得一套完整建议，而不是自己再去拼凑信息。\n\n目前功能还比较基础，主要是文本推荐，但已经可以解决“快速决策”的问题。\n\n如果您觉得合适，期待能被周刊收录。",
+    "created_at": "2026-04-02T11:43:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9502"
+  },
+  {
     "id": 9501,
     "title": "【开源自荐】HardwareExporterWindows - 基于 LibreHardwareMonitor 的 Windows 硬件 Prometheus 监控导出器",
     "content": "HardwareExporterWindows 是一个基于 LibreHardwareMonitor 的 Windows 硬件指标 Prometheus 导出器，弥补了 windows_exporter 温度数据不准确的不足。\n\n**项目地址：** https://github.com/naughtyGitCat/HardwareExporterWindows\n\n## 解决的痛点\n\nWindows 生态中缺少准确且全面的硬件监控方案。windows_exporter 的温度区域数据经常不准确，且缺少 GPU、风扇转速等关键指标。本项目通过直接调用 LibreHardwareMonitor 库，提供精确到每个传感器的硬件数据。\n\n## 主要特性\n\n- 📊 全面的硬件指标：CPU（负载/频率/温度/功率/电压）、GPU（温度/负载/显存/频率/功率）、内存、磁盘（温度/IO/健康度）、网络、风扇、主板\n- 🖥️ 作为 Windows 服务运行，开机自启，无需人工干预\n- 📈 附带开箱即用的 Grafana 仪表板（JSON 直接导入）\n- 🔧 可配置的硬件监控组件，按需启用/禁用\n- 📦 提供 MSI 安装包和 zip 便携版，支持 Prometheus http_sd 自动发现\n- 🛠️ 基于 .NET 9.0 + LibreHardwareMonitor，Prometheus 标准指标格式\n\n## Grafana 仪表板效果\n\n![Grafana Dashboard](https://raw.githubusercontent.com/naughtyGitCat/HardwareExporterWindows/main/docs/images/grafana-dashboard.png)\n\n仪表板涵盖：CPU 概览、CPU 温度、CPU 功率与电压、风扇、内存、GPU 全方位监控、磁盘健康与 IO、网络吞吐量等。\n\n## 快速开始\n\n下载 MSI 安装包一键安装，或 zip 解压后注册为 Windows 服务：\n\n```powershell\nsc.exe create HardwareExporter binPath=\"C:\\path\\to\\HardwareExporterWindows.exe\" start=auto\nsc.exe start HardwareExporter\n# 访问 http://localhost:9888/metrics 查看指标\n```\n\n适合 HomeLab 玩家、运维工程师，以及所有需要精确监控 Windows 硬件状态的场景。",
@@ -26,7 +34,7 @@
   {
     "id": 9498,
     "title": "【开源自荐】Weacpx：用微信 claw 与 acpx 遥控你的 Claude Code / Codex",
-    "content": "![weacpx](https://raw.githubusercontent.com/gadzan/weacpx/refs/heads/main/assets/weacpx.jpg)\n\n🙅‍♀️不要通过 openclaw 去开发，现在有一个更好的方案。Weacpx 通过微信提供一个轻量化的远程入口，随时随地通过手机驱动你的顶级 Agents。\n\nWeacpx 的核心价值主张很简单：\n\n**随时随地访问** — 只要你有微信，就能控制你的 Agent。无需 VPN、Web 界面或复杂的云服务配置。\n\n**统一的会话管理** — 通过 acpx 协议，weacpx 让你在微信里管理多个 Agent 会话（Codex、Claude Code 等），就像在本地终端一样。创建、切换、查询状态，全部通过简单的斜杠命令完成，这是其它简单基于 ACP 实现的远控 agent 所不具备的。\n\n**轻量守护进程** — weacpx 作为后台守护进程运行，资源占用极低。不用启动一个臃肿 openclaw，不用担心在工作机器上使用会占用资源。启动、停止、查看状态都通过简单的 CLI 命令完成。\n\n**权限可控** — 可以即时通过微信修改 agent 的权限，无论是 YOLO 还是只读。\n\n## 快速开始\n\n```bash\n# 使用 NPM 全局安装\nnpm install -g weacpx\n```\n\n第一次使用建议按这个顺序：\n\n登录微信 `weacpx login`\n启动服务 `weacpx start`\n在微信里创建会话并开始对话\nweacpx login 会在终端里显示二维码，使用微信扫描登录。weacpx start 启动后，在微信里发：\n```\n/ss codex -d /path/to/your/repo\n/help\n```\n看见 help 说明返回后你就能通过微信与顶级 Agents 协作了。",
+    "content": "![weacpx](https://raw.githubusercontent.com/gadzan/weacpx/refs/heads/main/assets/weacpx.jpg)\n\n🙅‍♀️不要通过 openclaw 去开发，现在有一个更好的方案。Weacpx 通过微信提供一个轻量化的远程入口，随时随地通过手机驱动你的顶级 Agents。\n\nWeacpx 的核心价值主张很简单：\n\n**随时随地访问** — 只要你有微信，就能控制你的 Agent。无需 VPN、Web 界面或复杂的云服务配置。\n\n**统一的会话管理** — 通过 acpx 协议，weacpx 让你在微信里管理多个 Agent 会话（Codex、Claude Code 等），就像在本地终端一样。创建、切换、查询状态，全部通过简单的斜杠命令完成，这是其它简单基于 ACP 实现的远控 agent 所不具备的。\n\n**轻量守护进程** — weacpx 作为后台守护进程运行，资源占用极低。不用启动一个臃肿 openclaw，不用担心在工作机器上使用会占用资源。启动、停止、查看状态都通过简单的 CLI 命令完成。\n\n**权限可控** — 可以即时通过微信修改 agent 的权限，无论是 YOLO 还是只读。\n\n## 快速开始\n\n```bash\n# 使用 NPM 全局安装\nnpm install -g weacpx\n```\n\n第一次使用建议按这个顺序：\n\n登录微信 `weacpx login`\n启动服务 `weacpx start`\n在微信里创建会话并开始对话\nweacpx login 会在终端里显示二维码，使用微信扫描登录。weacpx start 启动后，在微信里发：\n```\n/ss codex -d /path/to/your/repo\n/help\n```\n看见 help 说明返回后你就能通过微信与顶级 Agents 协作了。\n\nRepo: https://github.com/gadzan/weacpx",
     "created_at": "2026-04-02T08:08:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9498"
@@ -814,13 +822,5 @@
     "created_at": "2026-03-27T01:17:23Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/pull/9400"
-  },
-  {
-    "id": 9399,
-    "title": "【开源自荐】DeepTime Sauropsida，交互式蜥形纲演化树",
-    "content": "  老师好。\n \n之前我投稿过哺乳纲项目 DeepTime Mammalia，并被周刊收录。这次想再自荐一个姊妹项目：DeepTime Sauropsida。\n  \n这是一个纯前端的交互式可视化项目，尝试把现生蜥形纲重新放回约 3 亿年的演化时间轴中展示。项目主要包含 3D 螺旋序幕、可缩放拖拽的时间树、节点资料卡，以及一个展示更多灭绝旁支的“溯源”彩蛋视图。\n  \n当前版本主要覆盖鸟类、鳄类、龟鳖类、喙头类和有鳞类，展示粒度是“鸟类到目，其余现生主线到科”，共整理了 126 个末级节点和 64 个内部分类节点。支持中英文切换、搜索、高亮定位和移动端交互。\n## 项目地址：\n  https://github.com/SeanWong17/Sauropsida-tree\n## Live Demo：\n  https://seanwong17.github.io/Sauropsida-tree/\n## 配图：\n  ![3D螺旋画廊](https://raw.githubusercontent.com/SeanWong17/Sauropsida-tree/main/examples/gallery.png)\n  ![演化树概览](https://raw.githubusercontent.com/SeanWong17/Sauropsida-tree/main/examples/tree.png)\n  ![资料卡片](https://raw.githubusercontent.com/SeanWong17/Sauropsida-tree/main/examples/card.png)\n",
-    "created_at": "2026-03-26T14:44:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9399"
   }
 ]
