@@ -1,8 +1,32 @@
 [
   {
+    "id": 9500,
+    "title": "【开源自荐】TermiGotchi：把 Claude Code Buddy 带到浏览器",
+    "content": "大家好，我来凑个热闹，推荐一下我基于 Claude Code Buddy 复刻的复古终端风格的 ASCII 电子宠物\n\n项目地址：https://github.com/ireflux/TermiGotchi\n效果预览：https://ireflux.github.io/TermiGotchi/\n\n这两天 Claude Code 源代码泄露，被发现里面藏着一个从今年愚人节计划上线的彩蛋——一个终端的电子宠物。本项目基于此复刻，又对原版功能做了一些取舍。\n\n**因此这是一个部署在 GitHub Pages 上的纯静态网页项目，目标不是复刻 buddy 的“账户绑定宠物”，而是做一个高还原 TUI 风格的“电子宠物搭配器 + 图鉴浏览器 + 分享玩具”。**\n\n### 目标用户\n\n- 喜欢 ASCII / terminal aesthetics 的用户\n- 喜欢 pet generator / avatar maker / 图鉴浏览的人\n- 想快速生成一只“终端宠物”并分享的人\n- 原 buddy 风格的爱好者\n\n### 项目保留 buddy 的核心审美与结构语言：\n\n- ASCII/TUI 视觉\n- rarity 体系与星级语义\n- species / eye / hat / shiny / stats / soul 的组合模型\n- 宠物 idle/fidget/blink/pet 等轻状态机\n\n以下是效果预览：\n\n<img width=\"2880\" height=\"1462\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60c15b46-20f5-4770-bf02-668054b73ef2\" />",
+    "created_at": "2026-04-02T08:17:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9500"
+  },
+  {
+    "id": 9499,
+    "title": "【工具自荐】PixelSwift - 纯本地运行的无限制图片压缩与格式转换工具",
+    "content": "**项目名称**：PixelSwift - 浏览器端纯本地运作的图片优化工具\n**网址**：https://pixelswift.site\n**项目介绍**：\n大家平时写博客、做前端切图，多半都用过 TinyPNG。但它“每次最多 20 张、单张不超过 5MB”的限制实在太恶心了。只要涉及到传服务器，人家有成本，这种限制就永远存在。\n被限制弹窗搞烦了之后，我干脆自己搓了一个没限制的替代品。\n**核心思路其实很简单**：不走服务器，直接在浏览器端解决。\n我利用 WebAssembly 把 MozJPEG 和 OxiPNG 压缩引擎搬到了浏览器本地运行。\n因为是纯本地处理，带来几个很爽的点：\n- **完全没有数量限制**：100 张、200 张拖进去直接开压，不用再分批搞。\n- **随便压大图**：50MB 的高清原图丢进去也能秒压，压根不用等上传和下载的进度条。\n- **支持 WebP 和 AVIF**：支持旧格式转 AVIF，能比常规 JPEG 再小一半体积，很适合现在的网站优化。\n- **绝对隐私和免费**：毕竟断网都能用，图片不离开本地，所以我也没什么服务器维系成本，可以说是真正的白嫖且无限制。\n技术栈用的是 Nuxt 4，部署在 Cloudflare Pages。如果你也经常被在线压缩工具的配额卡脖子，欢迎来试用一下这个“本地无限版”。",
+    "created_at": "2026-04-02T08:14:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9499"
+  },
+  {
+    "id": 9498,
+    "title": "【开源自荐】Weacpx：用微信 claw 与 acpx 遥控你的 Claude Code / Codex",
+    "content": "![weacpx](https://raw.githubusercontent.com/gadzan/weacpx/refs/heads/main/assets/weacpx.jpg)\n\n🙅‍♀️不要通过 openclaw 去开发，现在有一个更好的方案。Weacpx 通过微信提供一个轻量化的远程入口，随时随地通过手机驱动你的顶级 Agents。\n\nWeacpx 的核心价值主张很简单：\n\n**随时随地访问** — 只要你有微信，就能控制你的 Agent。无需 VPN、Web 界面或复杂的云服务配置。\n\n**统一的会话管理** — 通过 acpx 协议，weacpx 让你在微信里管理多个 Agent 会话（Codex、Claude Code 等），就像在本地终端一样。创建、切换、查询状态，全部通过简单的斜杠命令完成，这是其它简单基于 ACP 实现的远控 agent 所不具备的。\n\n**轻量守护进程** — weacpx 作为后台守护进程运行，资源占用极低。不用启动一个臃肿 openclaw，不用担心在工作机器上使用会占用资源。启动、停止、查看状态都通过简单的 CLI 命令完成。\n\n**权限可控** — 可以即时通过微信修改 agent 的权限，无论是 YOLO 还是只读。\n\n## 快速开始\n\n```bash\n# 使用 NPM 全局安装\nnpm install -g weacpx\n```\n\n第一次使用建议按这个顺序：\n\n登录微信 `weacpx login`\n启动服务 `weacpx start`\n在微信里创建会话并开始对话\nweacpx login 会在终端里显示二维码，使用微信扫描登录。weacpx start 启动后，在微信里发：\n```\n/ss codex -d /path/to/your/repo\n/help\n```\n看见 help 说明返回后你就能通过微信与顶级 Agents 协作了。",
+    "created_at": "2026-04-02T08:08:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9498"
+  },
+  {
     "id": 9497,
     "title": "【开源自荐】OpenCove：把 AI Agent、终端、笔记和文档放到同一个无限画布里",
-    "content": "大家好，推荐一下我们做的开源项目 **OpenCove**：  \nhttps://github.com/DeadWaveWave/opencove\n\n现在很多 AI 编程工作流还是线性的：Agent 在聊天窗口里，终端在另一个窗口里，任务拆解、笔记和文档又散落在别处。只要同时推进几件事，上下文就很容易丢。\n\nOpenCove 想解决这个问题。它是一个面向 AI Coding 的无限画布工作区，可以把 **AI Agent、终端、笔记和文档** 放到同一个空间里，让规划、执行和结果保持同时可见。\n\n它支持多个 Agent 并行运行，也支持把工作区状态保存下来，方便中断后快速恢复现场。相比传统 IDE 或聊天式 AI 工具，它更强调 **空间化组织** 和 **并行可见性**。\n\n如果你平时会同时使用 Claude Code、Codex 等工具处理开发任务，可能会对这种工作方式感兴趣。项目已经开源，欢迎体验和反馈。\n\n![OpenCove screenshot](https://raw.githubusercontent.com/DeadWaveWave/opencove/main/assets/images/opencove_app_preview_readme.jpg)",
+    "content": "大家好，推荐一下我们做的开源项目 **OpenCove**：  \nhttps://github.com/DeadWaveWave/opencove\n\n现在很多 AI 编程工作流还是线性的：Agent 在聊天窗口里，终端在另一个窗口里，任务拆解、笔记和文档又散落在别处。只要同时推进几件事，上下文就很容易丢。\n\nOpenCove 想解决这个问题。它是一个面向 AI Coding 的无限画布工作区，可以把 **AI Agent、终端、笔记和文档** 放到同一个空间里，让规划、执行和结果保持同时可见。\n\n它支持多个 Agent 并行运行，也支持把工作区状态保存下来，方便中断后快速恢复现场。不同 space 还可以结合目录和 git worktree 做隔离，适合在多个任务、分支或项目之间并行切换。 相比传统 IDE 或聊天式 AI 工具，它更强调 **空间化组织、并行可见性** 和 **工作区隔离**。\n\n如果你平时会同时使用 Claude Code、Codex 等工具处理开发任务，可能会对这种工作方式感兴趣。项目已经开源，欢迎体验和反馈。\n\n![OpenCove screenshot](https://raw.githubusercontent.com/DeadWaveWave/opencove/main/assets/images/opencove_app_preview_readme.jpg)",
     "created_at": "2026-04-02T07:13:16Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9497"
@@ -796,31 +820,5 @@
     "created_at": "2026-03-26T13:08:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9397"
-  },
-  {
-    "id": 9396,
-    "title": "[网站自荐] VideoFlux：支持文生视频、图生视频与 AI 出图的一站式创作平台",
-    "content": "  **VideoFlux** 是一个 AI 视频生成平台，支持文本生成视频、图片生成视频和 AI 图像生成，帮助创作者、营销团队和品牌用户更快\n  地完成视觉内容生产。用户可以把文字想法、静态图片和创意概念快速转化为更具表现力的视频或图像内容，适合社媒内容、产品宣\n  传、广告素材和日常创意创作。\n\n  👉 [🔗 立即访问 https://videoflux.video →](https://videoflux.video)\n\n<img width=\"1200\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/106b58eb-a791-4460-b2bc-7083718029d0\" />\n\n  ## 🧠 核心功能\n\n  ### 🎬 AI 视频生成\n  * **文本生成视频**：输入一段描述，即可生成对应的视频内容，适合短视频创意、营销展示和品牌传播。\n  * **图片生成视频**：上传图片后生成动态视频，让静态视觉内容更具吸引力。\n  * **参考图控制**：支持参考图输入，帮助用户更好地控制视频画面风格和方向。\n  * **多模型支持**：适配不同视频生成模型，满足从快速出片到高质量创作的不同需求。\n\n  ### 🖼️ AI 图像生成\n  * **文本生成图像**：通过自然语言生成图片，用于封面、海报、配图和创意概念展示。\n  * **图生图工作流**：上传已有图片进行风格变化、重绘和优化，提升创作灵活性。\n  * **多尺寸输出**：支持不同比例和质量选项，适配多种内容发布场景。\n\n  ### ⚙️ 创作与管理体验\n  * **简洁的操作流程**：界面直观，降低使用门槛，适合非专业用户快速上手。\n  * **历史结果管理**：生成过的视频和图片可以集中查看、回顾和下载。\n  * **积分机制**：不同模型和不同生成方式对应清晰的积分消耗，便于理解使用成本。\n\n  ## 💎 核心价值\n\n  * **降低视频创作门槛**：不需要复杂剪辑技能，也能快速生成可用的视觉内容。\n  * **提升内容生产效率**：缩短从灵感到成品的时间，适合高频创作场景。\n  * **同时覆盖图像与视频创作**：适合需要多模态内容生成的用户。\n  * **更适合实际使用场景**：不仅适合尝鲜，也适合营销、运营和内容团队持续使用。\n\n  ## 👥 适用人群\n\n  * **内容创作者**：需要持续产出短视频和视觉素材的个人用户。\n  * **营销团队**：用于广告创意、活动宣传和社媒内容制作。\n  * **品牌与创业团队**：低成本快速制作产品展示和品牌内容。\n  * **设计与视觉从业者**：用于创意草图、风格探索和视觉方案扩展。\n\n  ## 🌐 网站预览\n\n  立即访问 [🌍 videoflux.video](https://videoflux.video)，体验从文字和图片到视频内容生成的高效 AI 创作流程。\n",
-    "created_at": "2026-03-26T11:04:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9396"
-  },
-  {
-    "id": 9395,
-    "title": "【开源推荐】一个优秀的产品大佬没做过开发两天使用antigravity做了一个产品，非常棒的创意，通过飞书 管理antigravity项目，远程遥控指定项目和做项目开发",
-    "content": "开源地址：https://github.com/Truthan49/Antigravity-Everywhere\n\n基本上可以通过飞书去和 antigravity 具体项目进行沟通，指定飞书机器人进行项目开发，项目内上下文同步",
-    "created_at": "2026-03-26T10:59:55Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9395"
-  },
-  {
-    "id": 9394,
-    "title": "[网站自荐] PhWalls：小米，Samsung、Xiaomi、Vivo、OPPO、Huawei、Pixel 内置壁纸，网站： https://phwalls.com",
-    "content": "1. Apple 内置壁纸：[applewalls](https://www.applewalls.com)\n2. Samsung、小米、vivo、OPPO、华为、荣耀、一加、Google Pixel等主流手机内置壁纸：[phwalls](http://phwalls.com)\n![applewalls](https://picui.ogmua.cn/s1/2026/03/26/69c50d3bf4224.webp)\n![phwalls](https://picui.ogmua.cn/s1/2026/03/26/69c50d3bb7c5a.webp)",
-    "created_at": "2026-03-26T10:33:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9394"
   }
 ]
