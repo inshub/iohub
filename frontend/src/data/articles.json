@@ -1,5 +1,13 @@
 [
   {
+    "id": 9513,
+    "title": "【开源自荐】ReadYourUsers：把 GitHub Issues 这座需求宝藏挖出来，自动生成用户需求地图",
+    "content": "## ReadYourUsers\n\n一个 TypeScript CLI + 静态站点工具，自动抓取 GitHub 公开 Issues，通过 LLM 分析聚类，生成排名化的用户需求地图。\n\n**项目地址：** https://github.com/study8677/ReadYourUsers\n**在线演示：** https://study8677.github.io/ReadYourUsers/\n\n### 为什么做这个\n\nGitHub Issues 本身就是一座用户需求的宝藏——真实用户主动提出的痛点、期望和建议，全都沉淀在里面。但逐条阅读根本看不过来，标题五花八门、重复需求散落各处、趋势变化更是无从感知。ReadYourUsers 就是帮你把这座宝藏挖出来，自动整理成一张清晰的需求地图。\n\n### 核心功能\n\n- **需求排名**：将相似的请求聚类，计算需求评分并排序\n- **趋势信号**：识别正在快速上升的需求方向\n- **可追溯**：每条洞察都链接回原始 Issue\n- **双语输出**：自动生成中英文报告和站点页面\n- **一条命令跑完**：fetch → analyze → aggregate → generate，完整可重复流程\n\n### 实际效果\n\n目前已分析了 [anthropics/claude-code](https://github.com/anthropics/claude-code) 的 326 个 Issues，聚类出 33 个需求方向。你可以在线查看完整的分析结果：\n\n- 英文站点：https://study8677.github.io/ReadYourUsers/en/index.html\n- 中文站点：https://study8677.github.io/ReadYourUsers/zh/index.html\n\n### 技术栈\n\nTypeScript、Node.js 18+、GitHub API、LLM（支持 Anthropic / OpenAI）、GitHub Actions 自动更新\n\n",
+    "created_at": "2026-04-03T07:16:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9513"
+  },
+  {
     "id": 9512,
     "title": "[开源自荐]coredb：兼容 Redis 协议的强一致性持久化 KV 数据库（基于 Raft + RocksDB），及底层框架 rockraft",
     "content": "近期我正在开发的两个开源项目：rockraft（https://github.com/lichuang/rockraft） 和 coredb（https://github.com/lichuang/coredb）。\n\n其中，coredb 是一个基于 openraft（https://github.com/databendlabs/openraft） 和 RocksDB 构建的强一致性 KV 数据库，且完全兼容 Redis 协议。在我看来，Redis 协议目前已经成为 KV 存储领域的事实标准，它的生态价值不应仅仅局限于传统的内存缓存。通过为其引入强一致性的持久化存储，我们可以赋予它全新的生命力和应用场景——正如 HTTP 协议从早期的网页传输协议，最终演变为无处不在的通信基石一样。\n\n最初，我的构想中只有 coredb。但在开发过程中我意识到，“Raft + RocksDB” 的架构组合具有极高的通用价值。考虑到许多开发者可能也需要这样一套可靠的底层基座，去构建他们自己专属的强一致性存储系统，我便将这部分核心逻辑进行了解耦，单独抽离出了 rockraft 这个基础框架项目。",
@@ -44,7 +52,9 @@
     "title": "【开源自荐】FoJin 佛津：全球首个百科式佛教数字文本平台，AI问答+知识图谱+语义搜索",
     "content": "## 项目名称\n\nFoJin 佛津\n\n## 项目简介\n\n全球首个百科式佛教数字文本聚合平台。汇集 500+ 数据源、覆盖 30 种语言，提供全文阅读、AI 智能问答、知识图谱、平行阅读器、语义搜索等功能。\n\n面向佛学研究者、数字人文学者和佛教爱好者，让古代文献对现代研究者触手可及。\n\n## 技术栈\n\n- [FastAPI](https://fastapi.tiangolo.com/) — 后端 API\n- [React](https://react.dev/) + [Vite](https://vitejs.dev/) — 前端\n- [Elasticsearch](https://www.elastic.co/) — 全文搜索 + 语义搜索\n- [PostgreSQL](https://www.postgresql.org/) + pgvector — 知识图谱 + 向量检索\n- RAG（检索增强生成）— AI 问答\n\n## 在线体验\n\nhttps://fojin.app\n\n## 项目地址\n\nhttps://github.com/xr843/fojin\n\n## 项目截图\n\n![FoJin 首页](https://raw.githubusercontent.com/xr843/fojin/master/docs/screenshots/hero.png)\n\n![AI 问答](https://raw.githubusercontent.com/xr843/fojin/master/docs/screenshots/ai-chat-answer.png)\n\n![语义搜索](https://raw.githubusercontent.com/xr843/fojin/master/docs/screenshots/search.png)",
     "created_at": "2026-04-03T01:38:21Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9507"
   },
   {
@@ -812,13 +822,5 @@
     "created_at": "2026-03-27T12:11:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9410"
-  },
-  {
-    "id": 9409,
-    "title": "【开源自荐】微信机器人wechatbot Springboot版本",
-    "content": "当前 wechatbot 主要面向 openclaw 场景。\n我基于 Java 参考实现了 wechatbot，可在任意 Spring Boot 项目中快速接入微信机器人能力（扫码登录、会话恢复、消息收发、业务回调）。\n已在 tradingAgents-ashare 项目完成落地接入，验证可用于真实业务链路。\nGitHub: [frankenchine/wechatbot](https://github.com/frankenchine/wechatbot)",
-    "created_at": "2026-03-27T09:42:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9409"
   }
 ]
