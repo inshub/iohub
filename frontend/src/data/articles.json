@@ -1,5 +1,21 @@
 [
   {
+    "id": 9507,
+    "title": "【开源自荐】FoJin 佛津：全球首个百科式佛教数字文本平台，AI问答+知识图谱+语义搜索",
+    "content": "## 项目名称\n\nFoJin 佛津\n\n## 项目简介\n\n全球首个百科式佛教数字文本聚合平台。汇集 500+ 数据源、覆盖 30 种语言，提供全文阅读、AI 智能问答、知识图谱、平行阅读器、语义搜索等功能。\n\n面向佛学研究者、数字人文学者和佛教爱好者，让古代文献对现代研究者触手可及。\n\n## 技术栈\n\n- [FastAPI](https://fastapi.tiangolo.com/) — 后端 API\n- [React](https://react.dev/) + [Vite](https://vitejs.dev/) — 前端\n- [Elasticsearch](https://www.elastic.co/) — 全文搜索 + 语义搜索\n- [PostgreSQL](https://www.postgresql.org/) + pgvector — 知识图谱 + 向量检索\n- RAG（检索增强生成）— AI 问答\n\n## 在线体验\n\nhttps://fojin.app\n\n## 项目地址\n\nhttps://github.com/xr843/fojin\n\n## 项目截图\n\n![FoJin 首页](https://raw.githubusercontent.com/xr843/fojin/master/docs/screenshots/hero.png)\n\n![AI 问答](https://raw.githubusercontent.com/xr843/fojin/master/docs/screenshots/ai-chat-answer.png)\n\n![语义搜索](https://raw.githubusercontent.com/xr843/fojin/master/docs/screenshots/search.png)",
+    "created_at": "2026-04-03T01:38:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9507"
+  },
+  {
+    "id": 9506,
+    "title": "docs(issue-391): fix typo",
+    "content": null,
+    "created_at": "2026-04-03T00:37:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/9506"
+  },
+  {
     "id": 9505,
     "title": "【工具自荐】ValiRef：开源学术引用幻觉检测工具",
     "content": "# 一句话描述\n上传论文PDF，自动检测引用条目是否是大模型生成的幻觉引用。\n\n# 介绍\n大模型在论文写作中的应用越来越广泛，但有很多论文投稿后因为引用条目中存在由大模型生成的幻觉引用而被直接拒稿。我曾经在投稿之前一条一条地手动搜索，检查自己的参考文献部分写得是否真实，这样机械重复的事情应该交给Agent来干。\n\n所以我开发了ValiRef。只需要上传论文的PDF，ValiRef会自动提取里面的参考文献部分，并交给多个并行的Agent进行验证。不仅可以检测引用的论文是否存在，还可以验证论文实际上的内容和文中引用时的描述是否一致。\n\n# 项目链接\nhttps://github.com/Gianthard-cyh/ValiRef\n\n# 在线体验\nhttp://valiref.com/\n\n# 演示截图\n<img width=\"1904\" height=\"891\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/512d2487-7cf6-484a-bfc4-fa1f0b07c4e2\" />",
@@ -806,21 +822,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9404"
-  },
-  {
-    "id": 9403,
-    "title": "【开源自荐】一个 AI 优先的运维工具，可以管理 SSH、数据库、Redis 等资产",
-    "content": "\nhttps://github.com/user-attachments/assets/035fc0df-230c-456b-87bd-8a4a125feaec\n\n平时操作服务器环境，经常要打开好几个工具来回切换，想着能不能直接跟 AI 说一句话就搞定，于是做了 OpsKat ，就算不使用 AI 功能，常用的资产操作都集成在一起，也不用再在好几个工具之间跳了。\n\n## 它是什么\n一个 AI 优先的开源桌面运维工具。核心思路是：你描述需求，AI Agent 帮你执行，但每一步都有策略管控和审计日志。\n\n目前支持管理 SSH 服务器、MySQL/PostgreSQL 数据库、Redis ，后面还会考虑使用插件的模式继续集成其它常用运维资产。\n\n## 举几个实际使用场景\n- \"帮我看一下 web-01 上 nginx 最近的错误日志\" → AI 自动 SSH 上去执行命令并返回结果\n- \"统计一下 db-prod 上 users 表各 status 的数量\" → AI 通过 SSH 隧道连数据库执行 SQL\n- \"检查一下 k3s 集群的健康状况\" → AI 自动跑 kubectl 相关命令，汇总节点和 Pod 状态\n\n## 安全审计\n给 AI 操作服务器的权限，怎么保证安全？\n\n- 操作策略：SSH 命令、SQL 语句、Redis 操作都支持白名单/黑名单，SQL 还会基于 Parser 自动拦截无 WHERE 的 DELETE/UPDATE 等危险操作\n- 策略组：内置常用模板（ Linux 只读、危险命令拒绝等），也可以自定义\n- 预申请权限：AI 或 opsctl 可以提前申请一批命令的执行权限，用户一次审批后，后续匹配的命令自动放行，不用每条都确认\n- 审计日志：所有操作自动记录，谁在什么时候对哪台服务器执行了什么命令，决策来源全部可追溯\n- 也是个好用的 SSH 客户端、资产管理工具\n\n## 抛开 AI 部分，本身也是一个功能完整的终端和资产管理工具：\n\n- 树形分组管理 SSH 服务器、数据库、Redis\n- 分屏、自定义主题\n- SFTP 文件浏览器\n- 跳板机链式连接\n- 数据库查询编辑器\n- 端口转发、SOCKS 代理\n- 凭据加密存储\n- 从 SSH config / Tabby 导入\n...\n\n## opsctl CLI + AI 编程工具集成\n还提供了一个独立命令行工具 opsctl ，主要给 Claude Code 、Codex 这类 AI 编程助手用。桌面端一键安装 Skill ，AI 编程助手就能通过 opsctl 直接管理服务器、查日志、查数据库、排查线上问题。\n\n桌面端运行时，opsctl 会复用桌面端的连接池和审批流程，操作同样受策略管控和审计。\n\n当然也可以自己手动用：\n\n```\nopsctl exec web-01 -- tail -n 100 /var/log/nginx/error.log\nopsctl sql db-prod \"SELECT status, COUNT(*) FROM users GROUP BY status\"\nopsctl ssh web-01\n```\n\nGitHub: https://github.com/opskat/opskat\n\n官网: https://opskat.github.io/\n\n下载: https://github.com/opskat/opskat/releases\n\n跨平台 macOS / Linux / Window ，如果觉得有用，求个 Star 🙏",
-    "created_at": "2026-03-27T06:38:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9403"
-  },
-  {
-    "id": 9402,
-    "title": "【网站自荐】Booklet AI：通过对话自动搜索资料并生成可分享、可导出的 A4 小册子",
-    "content": "网站名称：Booklet AI\n网站地址：https://bookletai.org/\n产品定位：一个通过对话创建专业小册子的 AI 工具。\n\n核心功能：\n- AI 会先确认主题、受众、用途和风格，再开始生成\n- 自动搜索和抓取 3-5 个高质量网页资料，不只依赖模型记忆\n- 先给出完整大纲，再逐页生成图文混排的 A4 版式内容\n- 支持单页编辑、分享链接、HTML 下载和 PDF 导出\n\n适合场景：产品介绍册、培训手册、研究摘要、方案提案、课程材料。\n\n和普通 AI 写作工具的区别：它不是只输出文字，而是直接生成可预览、可分享、可导出的完整小册子页面。\n\n如果你在做产品介绍、培训资料或研究型内容整理，欢迎试用并给出反馈。谢谢。",
-    "created_at": "2026-03-27T06:30:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9402"
   }
 ]
