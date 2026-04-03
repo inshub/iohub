@@ -1,5 +1,13 @@
 [
   {
+    "id": 9512,
+    "title": "[开源自荐]coredb：兼容 Redis 协议的强一致性持久化 KV 数据库（基于 Raft + RocksDB），及底层框架 rockraft",
+    "content": "近期我正在开发的两个开源项目：rockraft（https://github.com/lichuang/rockraft） 和 coredb（https://github.com/lichuang/coredb）。\n\n其中，coredb 是一个基于 openraft（https://github.com/databendlabs/openraft） 和 RocksDB 构建的强一致性 KV 数据库，且完全兼容 Redis 协议。在我看来，Redis 协议目前已经成为 KV 存储领域的事实标准，它的生态价值不应仅仅局限于传统的内存缓存。通过为其引入强一致性的持久化存储，我们可以赋予它全新的生命力和应用场景——正如 HTTP 协议从早期的网页传输协议，最终演变为无处不在的通信基石一样。\n\n最初，我的构想中只有 coredb。但在开发过程中我意识到，“Raft + RocksDB” 的架构组合具有极高的通用价值。考虑到许多开发者可能也需要这样一套可靠的底层基座，去构建他们自己专属的强一致性存储系统，我便将这部分核心逻辑进行了解耦，单独抽离出了 rockraft 这个基础框架项目。",
+    "created_at": "2026-04-03T06:28:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9512"
+  },
+  {
     "id": 9511,
     "title": "【开源自荐】iFly-Skills：科大讯飞官方 AI 技能库（语音、OCR、翻译与多模态）",
     "content": "**项目名称**\niFly-Skills\n\n**项目简介**\n科大讯飞官方出品的 AI 技能集合（Skill Collection），专为智能体（Agent）生态和开发者工作流打造。\n目前汇聚了语音识别、OCR、机器翻译、文本校对及多模态理解等核心原子能力，未来将持续扩展至文档处理、内容生产等 Workflow 级商业场景技能，致力于让讯飞强大的 AI 能力在各类 Agent 平台与工作流中实现“即插即用”。\n\n**技术栈**\n- Python / JSON — 技能逻辑实现与配置定义\n- 讯飞开放平台 — 底层 AI 核心能力支撑\n- Agent 生态 / MCP — 标准化技能调用协议\n\n**项目地址**\nhttps://github.com/iflytek/iFly-Skills\n",
@@ -98,7 +106,7 @@
   {
     "id": 9499,
     "title": "【工具自荐】PixelSwift - 纯本地运行的无限制图片压缩与格式转换工具",
-    "content": "**项目名称**：PixelSwift - 浏览器端纯本地运作的图片优化工具\n**网址**：https://pixelswift.site\n**项目介绍**：\n大家平时写博客、做前端切图，多半都用过 TinyPNG。但它“每次最多 20 张、单张不超过 5MB”的限制实在太恶心了。只要涉及到传服务器，人家有成本，这种限制就永远存在。\n被限制弹窗搞烦了之后，我干脆自己搓了一个没限制的替代品。\n**核心思路其实很简单**：不走服务器，直接在浏览器端解决。\n我利用 WebAssembly 把 MozJPEG 和 OxiPNG 压缩引擎搬到了浏览器本地运行。\n因为是纯本地处理，带来几个很爽的点：\n- **完全没有数量限制**：100 张、200 张拖进去直接开压，不用再分批搞。\n- **随便压大图**：50MB 的高清原图丢进去也能秒压，压根不用等上传和下载的进度条。\n- **支持 WebP 和 AVIF**：支持旧格式转 AVIF，能比常规 JPEG 再小一半体积，很适合现在的网站优化。\n- **绝对隐私和免费**：毕竟断网都能用，图片不离开本地，所以我也没什么服务器维系成本，可以说是真正的白嫖且无限制。\n技术栈用的是 Nuxt 4，部署在 Cloudflare Pages。如果你也经常被在线压缩工具的配额卡脖子，欢迎来试用一下这个“本地无限版”。",
+    "content": "**项目名称**：PixelSwift - 浏览器端纯本地运作的图片优化工具\n**网址**：https://pixelswift.site\n**页面展示**：\n<img width=\"1262\" height=\"752\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/221ba75f-76d2-4df6-be93-64229a13c8c3\" />\n<img width=\"1268\" height=\"755\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ac59ea29-d7c8-4cfa-84d5-99eefde4732e\" />\n<img width=\"1270\" height=\"756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/71324ca4-9752-4801-98d4-025dc9f6df97\" />\n**项目介绍**：\n大家平时写博客、做前端切图，多半都用过 TinyPNG。但它“每次最多 20 张、单张不超过 5MB”的限制实在太恶心了。只要涉及到传服务器，人家有成本，这种限制就永远存在。\n被限制弹窗搞烦了之后，我干脆自己搓了一个没限制的替代品。\n**核心思路其实很简单**：不走服务器，直接在浏览器端解决。\n我利用 WebAssembly 把 MozJPEG 和 OxiPNG 压缩引擎搬到了浏览器本地运行。\n因为是纯本地处理，带来几个很爽的点：\n- **完全没有数量限制**：100 张、200 张拖进去直接开压，不用再分批搞。\n- **随便压大图**：50MB 的高清原图丢进去也能秒压，压根不用等上传和下载的进度条。\n- **支持 WebP 和 AVIF**：支持旧格式转 AVIF，能比常规 JPEG 再小一半体积，很适合现在的网站优化。\n- **绝对隐私和免费**：毕竟断网都能用，图片不离开本地，所以我也没什么服务器维系成本，可以说是真正的白嫖且无限制。\n技术栈用的是 Nuxt 4，部署在 Cloudflare Pages。如果你也经常被在线压缩工具的配额卡脖子，欢迎来试用一下这个“本地无限版”。\n\n",
     "created_at": "2026-04-02T08:14:53Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9499"
@@ -812,13 +820,5 @@
     "created_at": "2026-03-27T09:42:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9409"
-  },
-  {
-    "id": 9408,
-    "title": "推荐 Qwen Image Edit",
-    "content": "## 推荐添加: Qwen Image Edit\n\n**链接:** https://qwen-image-edit.com\n\n**描述:** AI 驱动的图像编辑工具，支持文本指令编辑、照片修复、去水印、专业头像生成和多图像处理。\n\n**类别:** AI, image-editing, productivity, design-tools\n\n**为什么推荐:**\nQwen Image Edit 是一个面向普通用户和创作者的 AI 图像编辑平台，支持通过自然语言对图片进行修改和增强。\n它提供照片修复、去水印、职业头像生成、卡通化、发型变化和多图像处理等能力，适合内容创作、设计和日常图片处理场景。\n\n---\n希望这个项目能对大家有帮助！\n",
-    "created_at": "2026-03-27T08:39:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9408"
   }
 ]
