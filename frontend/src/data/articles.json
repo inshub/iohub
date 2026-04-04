@@ -1,5 +1,13 @@
 [
   {
+    "id": 9519,
+    "title": "AI Workspace Template — 别让 AI 翻字典了，给它一个 ChatGPT",
+    "content": "现在的 AI 编程助手理解代码库的方式，本质上是在**翻字典**——Claude Code 用 grep 搜关键词，Cursor 把文件塞进上下文，碰运气看能不能找到相关的代码。找不到就开始幻觉。\n\n这就好比你问一个人\"公司的审批流程是怎样的\"，他不去问负责人，而是翻公司通讯录一个个名字找线索。\n\n[AI Workspace Template](https://github.com/study8677/antigravity-workspace-template) 的思路是：**别让 AI 翻字典了，给它一个专属的 ChatGPT。**\n\n`ag-refresh` 扫描你的代码库，基于 import 依赖关系自动分组，每组分配一个 Agent 深度阅读源码、生成知识文档。Router 知道\"数据库的问题找 storage，审批流程找 services\"——不靠搜索碰运气，靠理解做路由。\n\n`ag-ask \"数据库有哪些表\"` → 直接列出 34 张表，带源文件和行号。\n`ag-ask \"支持 GraphQL 吗\"` → 正确回答\"不支持\"，给出 4 条证据。不幻觉。\n\n在 374 文件的真实项目上实测，基础问答 9/10，幻觉抵抗 9/10。\n\n- 支持任意 OpenAI 兼容模型（MiniMax、DeepSeek、Ollama、GPT 等免费或付费模型都行）\n- 兼容所有 AI IDE（Cursor、Claude Code、Windsurf、Gemini CLI）\n- Python 3.10+，MIT 开源",
+    "created_at": "2026-04-04T15:09:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9519"
+  },
+  {
     "id": 9518,
     "title": "〖产品自荐〗TaroMind AI：一个结合西方原型与东方思路的 AI Tarot 产品",
     "content": "大家好，分享一下我最近做的一个产品：TaroMind AI\n\n体验地址：\nhttps://taromindai.com\n\n这是一个 AI 引导式塔罗产品，但我想做的不是常见那种“输入问题 -> 立刻得到一段神神叨叨答案”的算命工具，也不是简单给 LLM 套一个塔罗皮肤。\n\n我更想把它做成一种更慢、更有结构的反思体验。\n\n这个产品目前最核心的特点有两个：\n\n1. 同一个问题，可以通过两种不同的解释路径来阅读\n- 一条更偏西方原型 / Jungian archetypes\n- 一条更偏东方思路 / contemplative reflection\n\n我比较在意的是“同一个问题，换一个解释框架后，会不会得到不同的理解”，而不是单纯追求“算得准”。\n\n2. 整个流程是有节奏设计的\n不是聊天框直接吐结果，而是：\n- 先写下问题\n- 再选择解释引导\n- 再抽牌\n- 最后得到阅读结果\n\n我希望它更像一个带有仪式感的 reflection tool，而不是一个刺激式产品。\n\n目前版本包括：\n- 新用户 3 次免费阅读\n- 22 张 Major Arcana 牌义公开页\n- 两种解释视角\n- 私密 journal\n- PayPal 订阅\n\n技术上主要用了：\n- Next.js 14\n- Supabase\n- OpenAI\n- 本地 JSON 知识库做卡牌语义支撑\n\n如果从产品定位上说，我更希望它被理解成：\n- 一种 symbolic reflection tool\n- 一个 AI 产品实验\n- 一个把“塔罗结构”保留下来的交互产品\n\n而不是传统意义上的“在线算命网站”。\n\n如果大家愿意体验，我也很想听听几个方面的反馈：\n- 这种“东西方两种解释路径”的设计有没有意义\n- 节奏是不是太慢，还是刚好\n- 它是否真的和一般 AI 算命 / AI 聊天产品有区别\n\n欢迎拍砖。\n",
@@ -810,13 +818,5 @@
     "created_at": "2026-03-27T19:22:31Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9415"
-  },
-  {
-    "id": 9414,
-    "title": "【工具自荐】MouseCombo：macOS 将鼠标组合映射为键盘快捷键，实现单手完成高频操作",
-    "content": "# 项目介绍\n\n将鼠标组合映射为键盘快捷键，单手完成高频操作👋。\n\n全局助记浮窗 + 触发音效，提供游戏金手指版的使用体验。\n\n> 项目平台：macOS 13+\n> **项目地址**：https://github.com/WooHooDai/MouseCombo\n\n## 核心特点\n\n- 🧙 **无限按键组合**：支持任意的鼠标组合序列，全部快捷键集于一手。\n- 🧠 **全局助记浮窗**：照着点、不用记。动态呈现，可自定义展示位置/跟随鼠标\n- ⛔️ **生效应用限定**：支持 `所有/包含/排除` 三类限定模式，相同组合不同映射。\n- 🎵 **乐趣触发音效**：支持自定义触发音效，强化肌肉记忆。\n- 👀 **可视化配置**：鼠标组合、键盘快捷键、应用限定、助记浮窗位置，全部可视化配置。\n\n## 截图\n\n![Image](https://github.com/user-attachments/assets/f04d8579-18b4-41f7-9803-79c7c3d9bbe0)\n\n| 主界面 | 助记浮窗 | 设置界面 |\n| :---: | :---: | :---: |\n| <img width=\"823\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f87b6f2d-37c0-4fdd-81d5-de01599077cf\" /> | <img width=\"823\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/878b4577-6a13-46bc-9cc0-6584e11d4d38\" />  | <img width=\"823\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/523b91d5-6b6a-48ed-9ec2-449bff3113fd\" /> |",
-    "created_at": "2026-03-27T17:09:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9414"
   }
 ]
