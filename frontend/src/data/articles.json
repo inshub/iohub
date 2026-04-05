@@ -1,5 +1,13 @@
 [
   {
+    "id": 9521,
+    "title": "[开源自荐] Charming Pretext: 基于 Pretext 的JavaScript 扩展，方便在任何图形里面排版文字，可用于文本驱动的数据可视化和创意编程",
+    "content": "## 项目名称\n\nCharming Pretext\n\n## 项目简介\n\n[Charming Pretext](https://charmingjs.org/pretext) 是一个基于 [Pretext](https://github.com/chenglou/pretext) 的 JavaScript 扩展，提供一个简洁的 API 使得文本可以在任何图形里面排版。可以很方便的实现文字驱动的数据可视化和创意编程。这里是一个简单的 demo，展示如何把文字排版到一个圆形里面。\n\n<img width=\"698\" height=\"333\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/727e10f7-8312-45db-9bbf-4ed9f01e507e\" />\n\n```js\nconst layout = cm.layoutTextInPath({\n  text: \"Hello, Charming Pretext! I love generative art!\",\n  path: cm.pathCircle(160, 160, 150), // Builds a circle path string.\n  fontSize: 12,\n  fontFamily: \"Inter\",\n});\n\nconst context = cm.context2d({width: 400, height: 300});\ncontext.fillStyle = \"#222\";\ncontext.font = `${layout.fontSize}px ${layout.fontFamily}`;\ncontext.textAlign = \"center\";\ncontext.textBaseline = \"middle\";\n\nfor (const t of layout.texts) {\n  context.save();\n  context.translate(t.x, t.y);\n  context.rotate((t.angle * Math.PI) / 180);\n  context.fillText(t.text, 0, 0);\n  context.restore();\n}\n```\n\n## 案例\n\nhttps://pretext.charmingjs.org/\n\n## 代码仓库\n\nhttps://github.com/charming-art/api/\n\n## 项目截图\n\n<img width=\"1508\" height=\"853\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/de28cd01-c5a5-4c99-8981-c3ac2f500d86\" />\n\n<img width=\"1509\" height=\"855\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0cc6b9b2-5951-45a1-b506-1fc5c70c3e2d\" />\n\n<img width=\"1508\" height=\"844\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0cec6c7c-54bd-4724-9637-e7065d3361f0\" />\n\n\n",
+    "created_at": "2026-04-05T05:05:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9521"
+  },
+  {
     "id": 9520,
     "title": "【网站自荐】Claw4Science：科研 openclaw 生态精选目录",
     "content": "## 项目简介\n\n**Claw4Science** 是一个面向科研人员的 AI Agent 精选目录。\n\n**项目地址**: https://claw4science.org\n**API 文档**: https://claw4science.org/developers\n**文章地址**: https://www.biorxiv.org/content/10.64898/2026.03.30.715118v1\n\n## 做这个的背景\n\nOpenClaw 生态里科研方向的 AI Agent 项目爆发式增长，但是非常分散和无序, 光叫 \"ScienceClaw\" 的就有 4 个完全不同的项目，\"PaperClaw\" 有 6 个。想找一个合适的生信或药物发现的claw-like工具，得翻几十页 GitHub。而且容易“鸡同鸭讲”, 当在谈论 ScienceClaw 这个项目的时候, 我们可能说的是四个不同的项目 😿 \n\n作为生物信息学方向的博士生，我花了几周把这些项目全部整理了一遍。\n\n## 收录内容\n\n- **120 个科研 AI Agent 项目**，覆盖生信、药物发现、多组学、论文写作等\n- **24 个技能仓库**，2200+ 个技能的分类调研\n- **30+ 篇中英双语博文**（工具对比、教程、月度生态报告）\n- GitHub Stars 和更新时间每日自动刷新\n- 同名项目消歧义页（4 个 ScienceClaw、6 个 PaperClaw 的逐一对比）\n- 公开 REST API，免费无需认证\n\n## 一些有趣的发现\n- 有人用 1400 年前的**三省六部制**做了一套多 Agent 协同系统（Edict，12.8K stars）\n- 生信技能库里**基因组学占了 25%**（550/2203），而生态学只占 1.2%\n- 项目数量 30 天内从 54 涨到 120，还在持续增长\n\n## 技术栈\n\nNext.js + Cloudflare Workers，PageSpeed SEO 100 分",
@@ -810,13 +818,5 @@
     "created_at": "2026-03-28T06:59:04Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9417"
-  },
-  {
-    "id": 9416,
-    "title": "【网站自荐】aidiagram.org：用 AI 直接生成流程图、架构图和示意图",
-    "content": "\n<img width=\"1600\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/21eea7e8-bde8-4255-8812-b0fce5ed1d27\" />\n\n===================================================\n\n项目名称：aidiagram.org\n网址：https://aidiagram.org/\n这是一个用 AI 生成图表的网站，主要想解决“有想法，但画图太麻烦”的问题。\n\n===================================================\n\n用户只需要输入自然语言，AI 就可以生成流程图、架构图、结构图等内容，也支持继续通过对话修改。\n目前支持的场景包括：\n- 一句话生成流程图、示意图、结构图\n- 生成 AWS / GCP / Azure 等云架构图\n- 上传图片后复刻成可编辑图表\n- 上传 PDF / 文本后提取内容并自动成图\n- 对生成结果继续对话修改、补充和优化\n比较适合产品设计、系统设计、技术方案整理、学习笔记可视化这些场景。\n如果你也经常需要画图，欢迎体验，也欢迎提建议。\n网站：https://aidiagram.org/",
-    "created_at": "2026-03-28T02:32:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9416"
   }
 ]
