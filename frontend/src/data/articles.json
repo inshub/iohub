@@ -1,5 +1,21 @@
 [
   {
+    "id": 9552,
+    "title": "AnyIdPhoto",
+    "content": "AnyIdPhoto is an AI-powered passport photo studio for travelers, students, families, and visa applicants. Upload or take a selfie, and the tool automatically adjusts framing, cleans the background, and exports print-ready files such as US 2x2, 35x45 mm, and 4x6 layouts for online submission or local printing.https://www.anyidphoto.com/",
+    "created_at": "2026-04-08T15:10:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9552"
+  },
+  {
+    "id": 9551,
+    "title": "【网站自荐】Seedance 2.0 AI视频生成器 —— 导演级多模态AI视频创作神器",
+    "content": "Seedance 2.0 是字节跳动推出的新一代AI视频生成模型，采用统一的多模态音视频联合生成架构，支持文字、图片、音频、视频四种模态同时输入，真正实现“所想即所得”的导演级操控。\n核心亮点：\n使用入口：https://seedance2pro.pro/\n多模态参考输入：最多支持9张图片、3段视频、3条音频 + 文本提示词，精准控制角色、场景、动作、风格和声音。\n多镜头一致性：跨镜头生成时保持人物形象、画面风格和叙事节奏稳定，生成连贯的短视频故事，而非零散片段。\n原生音画同步：模型直接生成带同步音频的视频，支持语音口型匹配、音乐驱动画面，减少后期剪辑和配音成本。\n专业输出质量：支持1080p（最高2K）高清分辨率，运动平滑、物理规律真实，画质接近实拍，适配抖音、快手、小红书、YouTube等平台投放。\n高效迭代：分钟级出首版，支持结构化Prompt控制镜头语言、运镜和节奏，快速验证创意、AB测试或批量生产系列内容。\n\n适用场景：\n\n短视频创作者：快速制作讲解视频、故事短片、创意内容。\n营销团队：电商转化广告、品牌故事、效果广告、社媒素材。\n广告代理与企业：降低实拍和特效成本，实现从idea到交付的闭环。\n其他：AI短剧预览、产品演示、内容批量生产等。\n\n[Seedance 2.0](https://seedance2pro.pro/) 不是简单的“文生视频”工具，而是面向真实商业交付的视频工作流。凭借极强的可控性和一致性，大幅减少返工，让团队半天就能产出过去一周的素材量。",
+    "created_at": "2026-04-08T14:44:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9551"
+  },
+  {
     "id": 9550,
     "title": "【工具自荐】 GlowTTS  超好用的免费网页朗读chrome扩展，听任意网页（含本地网页），支持移动端，释放你的眼睛",
     "content": "\nhttps://chromewebstore.google.com/detail/glowtts/gfppgmgpehmgoigpkoffneghdicmjdkf\n\n\nGlowTTS 是一个轻量的网页文本朗读扩展，帮助你在浏览网页时快速将文本转换为语音播放，适合文章阅读、信息浏览和辅助理解。完全免费。\n\n## 主要功能\n- 在网页内快速触发文本朗读\n- 保留并同步本地配置，如偏好设置\n- 与常见网站兼容，尽量减少操作步骤\n- 语音顺序自定义 - 常用语音置顶，记忆偏好\n- 音调语速调节\n- PC/移动支持\n- 图标自由移动，吸附屏幕左侧/右侧\n\n\n## 适用场景\n- 长文阅读时减轻视觉疲劳\n- 多任务处理时通过语音获取信息\n- 辅助学习与信息复习\n\n## 隐私说明\n- 扩展仅在你访问网页时按功能需要运行\n- 不提供与功能无关的数据收集\n\n\n移动端可以使用 Kiwi、 Yandex Browser、Orion Browse等支持安装扩展的浏览器",
@@ -800,21 +816,5 @@
     "created_at": "2026-03-30T21:41:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9449"
-  },
-  {
-    "id": 9448,
-    "title": "【开源自荐】Agent CPU：用 JS 控制流约束 Agent 规划，缓解 ReAct 式发散",
-    "content": "阮老师好，\n\n冒昧自荐一个小项目，还在持续打磨，若有不当之处还请多指正。\n\n**Agent CPU**（仓库：https://github.com/MaskePRC/agent-cpu ）是一个 AI Agent 执行框架。和常见的 ReAct「一步步想、一步步动」不同，这里尝试让 **LLM 直接产出可执行的 JavaScript 作为任务规划**：框架负责依赖分析/安装、在沙箱里跑这段代码、出错时把反馈丢回给模型再规划一轮。\n\n我们想多强调一层动机：**大模型在预训练里见过大量代码，对 JavaScript 里的顺序、分支、循环等控制结构，本身就有很强的「语感」和遵循能力。** 把规划写成 JS，相当于用 **程序语言自带的结构** 去约束 Agent 的推理路径——先做什么、再分支、循环到哪一步停，都落在熟悉的语法里，更容易 **收敛到一条可执行、可检查的流程**，而不是在纯自然语言步骤里越滚越长、越跑越散。这也是我们想和 ReAct 类方案区的一点：**尽量缓解「发散」**（步骤堆砌、偏离主线），用代码里的流程结构换一点 **可预期的收敛**。\n\n同时，规划落到真实代码上，也比纯文本步骤更好复用和组合；调试 Agent 往往像在猜黑盒，所以用 Acorn 做了代码插桩，支持断点、步进（F10）、监视变量等，方便自己查问题。\n\n技术栈：Node（Express + Socket.io）+ Vue 3，LLM 走 OpenAI 兼容接口；内建 `llmcall`、`agentcall`、`gencall` 等。水平有限，文档和边界情况都还在补。\n\n若周刊读者里有做 Agent 或调试工具的朋友，欢迎试用、提 issue。也感谢阮老师长期整理周刊，让我们这些后来者能少走一点弯路。\n",
-    "created_at": "2026-03-30T17:37:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9448"
-  },
-  {
-    "id": 9447,
-    "title": "【开源自荐】ASR Live：离线实时语音转写 + 本地大模型摘要的桌面应用",
-    "content": "阮老师好，\n\n一直读您的周刊，受益很多。这次斗胆自荐一个小项目，算是把平时自己用得顺手的一套东西整理成了可安装、可分享的桌面应用，若您觉得对读者有参考价值，就十分荣幸；若暂时不合适入选，也完全理解。\n\n项目叫 **ASR Live**（仓库：[https://github.com/MaskerPRC/voice-aware-live](https://github.com/MaskerPRC/voice-aware-live)），定位是：**在本地完成实时语音转文字**，音频不上云；可选接入 **Qwen 3.5（GGUF）** 做段落摘要和自动命名，同样跑在机器上。\n\n技术上没有太多「从零造轮子」，主要是把成熟栈拼顺、把产品体验做完整：**Whisper.cpp**（CPU / CUDA / Vulkan）、**RMS 能量 VAD** 做断句、内置常见 **ASR 幻觉过滤**（如水印字幕、重复文本等），并提供 **模型与运行时的下载管理**、按日期的 **历史记录与检索**、多语言界面与识别。**Electron 33 + Vue 3 + electron-vite**，Windows / macOS / Linux 均可打包，**MIT** 协议。\n\n自知仍是个人向作品，文档和边界场景肯定还有欠缺；若周刊读者里有做会议记录、口述笔记、或关心隐私与离线 AI 的朋友，或许能省一点折腾。提前谢谢阮老师和编辑团队的时间。\n\n<img width=\"1487\" height=\"1222\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eca6d491-681d-472a-be58-a6d71114d650\" />",
-    "created_at": "2026-03-30T17:30:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9447"
   }
 ]
