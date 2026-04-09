@@ -1,5 +1,21 @@
 [
   {
+    "id": 9578,
+    "title": "【网站自荐】Chinese Name Generator：一个取中文名字的网站",
+    "content": "我开发了一个免费工具，帮助外国人取地道的中文名字：chinanam.online\n\n输入英文名、生日和性别，然后选择风格，它会生成几个地道的中文名字，每个名字包括：\n- 中文名字\n- 拼音发音\n- 生肖\n- 个性化幸运短语\n- 可下载的幸运卡",
+    "created_at": "2026-04-09T14:57:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9578"
+  },
+  {
+    "id": 9577,
+    "title": "【开源自荐】Rikune - 一个面向任意二进制逆向分析的 MCP Server",
+    "content": "仓库地址：[[GitHub - Last-emo-boy/rikune · GitHub](https://github.com/Last-emo-boy/rikune)](https://github.com/Last-emo-boy/rikune)\n\n最近在思考如何把逆向的工具集成到一个MCP中，集中调用，做了一会之后感觉目前的方向似乎会有点重。\n这是一个面向 **Windows 逆向分析** 的 **MCP Server**。想法是可以把一些常见的逆向分析流程整理成一组可以被 LLM 直接调用的能力，比如 PE 初步分析、Ghidra 辅助检查、DLL / COM profiling、运行时证据接入、Rust / .NET 恢复，以及偏源码级的重建和总结，其实一开始的诞生是想辅助我对一些crackme进行分析，还有一些恶意样本的分析，目前的能力是在接入codex的时候可以自主破解难度lvl4的crackme。\n\n做的时候主要想的有两点 ，首先是分析过程要可观察，不是黑箱跑完只吐一个结果，然后是大样本分析不能一上来就把 MCP 请求卡死，以Weixin.dll的分析为例子。\n所以 Rikune 现在做了一个分阶段、非阻塞的分析流水线，把流程拆成 `fast_profile`、`enrich_static`、`function_map`、`reconstruct`、`dynamic_plan`、`dynamic_execute`、`summarize` 等阶段，可以先给预览结果，再逐步深入。\n\n目前它除了 MCP 本体之外，也带了一套相对完整的运行时：\n\n* Docker 侧集成了 Ghidra、Rizin、YARA-X、UPX、Wine/winedbg、Frida CLI、Qiling、angr、RetDec 等工具链\n* 提供 HTTP File Server，方便样本上传和产物下载\n* 还做了一个Web Dashboard，可以实时看分析进度、样本状态、工具情况。\n\n![image|517x251](https://cdn3.linux.do/original/4X/f/6/7/f6722594e8b213c5b1f4164eb9d9668f51162c4d.png)\n![image|516x253](https://cdn3.linux.do/original/4X/2/5/6/2562b38144d8b789afe67fea3d42ea87de0cbb6a.png)\n\n这个项目还在持续迭代中。\n如果你对下面这些方向感兴趣，欢迎看看、提issue",
+    "created_at": "2026-04-09T13:50:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9577"
+  },
+  {
     "id": 9576,
     "title": "【网站自荐】GeminiWatermarkRemover：一件去除gemini生成图片右下角的水印",
     "content": "我做了一个免费去除 Gemini AI 水印的工具，纯浏览器本地运行\n\n最近用 Gemini 生成了不少图片，但每次导出都带着水印，放进 PPT、发社交媒体或者给客户看都很尴尬。\n\n于是我做了这个工具：Gemini Watermark Remover —— 专门针对 Google Gemini 生成图片的去水印工具，免费使用，无需注册，图片不上传服务器。\n\n✨ 核心功能亮点：\n\n🔒 完全本地处理 — 图片不离开你的设备，100% 隐私安全\n🎯 智能识别 — 自动精准定位 Gemini 水印位置\n🖼️ 无损修复 — 基于周围纹理和光线进行图像修复，无模糊、无痕迹\n⚡ 秒级处理 — 通常几秒内完成\n🌐 全平台可用 — 电脑、平板、手机浏览器均可，无需安装任何软件\n📁 支持 JPEG / PNG / WebP — 单图最大 20MB\n💰 定价：\n每天免费使用 3 次，无需注册。一次性支付 $6.99 解锁永久无限使用，无订阅、无续费。\n\n欢迎体验 👉 https://geminiwatermarkremover.cc/\n\n有任何问题或建议欢迎留言交流！\n\n<img width=\"2448\" height=\"988\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e448782b-0d00-4f17-a2a2-bb3e5eaea67b\" />",
@@ -41,7 +57,7 @@
   },
   {
     "id": 9571,
-    "title": "【开源推荐】Recordly：一款开源的录屏与编辑工具，适用于演示、产品展示、教程、讲解视频和社交短片",
+    "title": "【开源推荐】Recordly：一款开源的录屏与编辑工具，适用于演示、产品展示、教程、讲解视频和社交短片（16岁独立开发者）",
     "content": "**项目地址**\nhttps://github.com/webadderall/Recordly\n**核心功能**\n你可以录制整个屏幕或单个窗口，直接进入编辑器，并通过光标特效、缩放、背景、注释、摄像头叠加等功能导出更完整的成片。\n\n> 自动缩放、光标润色与样式化画面\n\n> 动态摄像头气泡叠加\n\n> 为演示设计的时间线编辑\n\n**跨平台支持：**\n1. macOS 12.3+\n2. Windows_ 10 Build 19041+\n3. Linux 现代发行版",
     "created_at": "2026-04-09T08:34:13Z",
     "labels": [],
@@ -796,25 +812,5 @@
     "created_at": "2026-03-31T17:28:37Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9475"
-  },
-  {
-    "id": 9474,
-    "title": "【开源自荐】OxideTerm：纯 Rust SSH 终端，25MB Tauri 替代 Electron 全家桶",
-    "content": "阮老师好，自荐一个自己做的开源项目。\n\n**[OxideTerm](https://github.com/AnalyseDeCircuit/oxideterm)** —— 跨平台 SSH 终端客户端 + 本地终端，Tauri 2（Rust）+ React 19（TypeScript），GPL-3.0，免费。\n\n[OxideSens演示](https://github.com/user-attachments/assets/4ba033aa-94b5-4ed4-980c-5c3f9f21db7e)\n\n日常连服务器要同时开终端、SFTP、端口转发好几个窗口，市面上的工具要么重（Electron）、要么缺功能、要么要订阅，就自己做了一个。下面说几个我觉得比较有意思的设计：\n\n### 一条 SSH 连接复用所有功能\n\n连上之后，终端、SFTP 文件管理、内建代码编辑器、端口转发全部复用**同一条 SSH 连接**。不需要为每个功能单独认证和建连。改个 nginx 配置不用开 VS Code Remote，直接在内建编辑器里改完保存。\n\n### 纯 Rust SSH 协议栈，零 C 依赖\n\nSSH 实现用的 [russh](https://github.com/Eugeny/russh)，**没有 OpenSSL、没有 libssh2、没有任何 C FFI**。终端数据走自研的二进制线协议（Type-Length-Payload），热路径上没有 JSON 序列化开销。整个应用 Tauri 2 打包，安装包 **25–40 MB**（同类 Electron 应用通常 150 MB+）。\n\n### 断线重连 30 秒宽限期\n\n这个功能我自己很喜欢。断网后**不会立刻杀掉连接**，而是先花 30 秒去探测旧连接能否恢复。如果你只是切了个 WiFi 热点，网络闪了一下，vim 里编辑到一半的内容不会丢。确认连不上了才重建新连接，端口转发和 SFTP 传输队列会自动接上。\n\n### 深度 AI 集成，不只是聊天框\n\n内建的 AI 助手叫 OxideSens，它不是挂个对话框就完事了：\n\n- **自动感知上下文**：连上服务器后自动检测 OS、发行版、shell 类型，作为上下文喂给模型\n- **Sidebar 模式**：40 多个内建工具（function calling），可以看到你终端屏幕上的内容，也可以直接在服务器上执行命令、读写文件、管端口转发\n- **Agent 模式**：AI 自主规划和执行多步任务，三档权限——全监督 / 半自动 / 全自动，你来决定它能做多少事\n- **本地 RAG 知识库**：导入自己的运维文档，针对你自己的手册提问\n- 支持多 Provider，用自己的 API Key，数据不经过第三方\n\n### 其他\n\n- 31 个终端主题 + **可视化主题编辑器**（实时预览调色）\n- 广播输入（同时操作多台服务器）\n- 终端录屏回放\n- 运行时插件系统（ESM 插件，8 个 API 命名空间）\n- 11 种语言国际化\n- 密码和密钥存系统 Keychain，配置导出用 ChaCha20-Poly1305 + Argon2id 加密\n- 支持 macOS / Windows / Linux，arm64 / x64\n- 本地终端也能用（zsh / bash / fish / PowerShell / WSL2）\n\n官网：https://oxideterm.app\n\n个人项目，测试场景有限，肯定还有不完善的地方，欢迎提 Issue。感谢阮老师的时间。",
-    "created_at": "2026-03-31T16:25:11Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9474"
-  },
-  {
-    "id": 9473,
-    "title": "【开源自荐】open-agent-sdk，基于 claude code 源码构建",
-    "content": "让 Claude Code 分析了一遍  claude-code-sourcemap 源码，把逻辑全部抽离出来，写了个 open-agent-sdk，用于替代 claude-agent-sdk\n\n使用 claude-agent-sdk 做过 Agent 产品的都知道，其本质是在 claude code 的基础上套了一层壳，做成 sdk 给第三方接入，可以加速 Agent 产品的开发，但是弊端也很明显：\n\n1. claude-agent-sdk 依赖 claude code，而 claude code 是不开源的，一切都是黑盒调用，出了问题你没法修\n\n2. claude-agent-sdk 接到的 query，需要创建 claude code 进程去处理，开销很大，不适合云端 Agent 使用\n\n在 Claude Code 源码基础上实现的 open-agent-sdk\n\n1. 完全兼容 claude-agent-sdk 的接口形式，只需换个包名即可快速替换\n\n2. 完全开源，你可以接入到你的 Agent 后做定制化修改，不再是黑盒调用\n\n3. 函数调用，不依赖本地 cli 进程，没有额外的开销，意味着你可以在云端 Agent 规模化调用\n\n想到一个有意思的比方不知道合不合适😄\n\nClaude Code 家后院起火，我让 Claude Code 把家里的桌椅板凳、锅碗瓢盆都搬出来，盖了一座新房子，让大家都可以免费住。🐶\n\nMIT 协议开源，欢迎使用。👇\n\nhttps://github.com/shipany-ai/open-agent-sdk\n\n![](https://pbs.twimg.com/media/HEv8MurbIAAigbG?format=jpg&name=large)",
-    "created_at": "2026-03-31T16:18:24Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9473"
   }
 ]
