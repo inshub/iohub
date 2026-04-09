@@ -1,5 +1,45 @@
 [
   {
+    "id": 9565,
+    "title": "【网站自荐】Gridea Pro ：静态博客写作客户端",
+    "content": "**项目地址**\nhttps://github.com/Gridea-Pro/gridea-pro\n**缘起**\n因为Gridea在 2022 年 5 月发布 v0.9.3 之后彻底沉寂，故此重写的Gridea Pro\n**亮点**\n\n> Go + Wails 替代 Electron（体积：约 35MB vs 100+MB，内存减少 80%）\n\n> 内置 Git 引擎（纯 Go 实现，go-git）—— 不需要安装系统 Git，不再有同步失败的问题\n\n> Vue 3 + Vite + Tailwind CSS 现代前端\n\n> 3 种模板引擎（EJS、Jinja2、Go Template）供各位主题开发者选择\n\n> 支持闪念 —— 带标签和热力图的速记功能\n\n> 支持主流 7 种评论系统 内置（Gitalk、Giscus、Valine、Waline、Twikoo、Disqus、Cusdis）\n\n> MCP 协议 —— 通过 AI 助手（Claude、Cursor 等）管理你的博客\n\n> 无缝迁移 —— 从 Gridea 迁移到 Gridea Pro，零风险丝滑迁移。\n",
+    "created_at": "2026-04-09T07:12:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9565"
+  },
+  {
+    "id": 9564,
+    "title": "【网站自荐】现代英语和古英语互译的在线翻译工具",
+    "content": "一个古英语在线翻译工具，支持将现代英语转换为 Old English。\n无需登录即可使用，适合语言研究学习、写作等。\n[Old English Translator](https://oldenglishtranslator.app/)\n\n<img width=\"1709\" height=\"1040\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a5390036-1b53-4850-8960-6f561c5baf5c\" />",
+    "created_at": "2026-04-09T06:53:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9564"
+  },
+  {
+    "id": 9563,
+    "title": "【开源自荐】RssReader:  LLM时代，像侦探一样解读RSS - 把新闻都连起来",
+    "content": "完整功能介绍网址：http://zanebono.top/rss-reader\nGithub: https://github.com/ZanebonoAlter/ZanebonoRssReader\n\n实际上传统的rss需求在folo、feedbro等工具上完全可以满足使用了， llm时代也引入了AI总结、对话来补全自动化机制的不足。\n\n但是实际使用过程中，我发现尽管有手动记录关注的新闻信息到logseq或obsidian，实际上对于事件的演变还是有点“鱼的记忆”，尤其是一年复一年，对之前发生了什么事、开始结束的报导，都是大脑里零零碎碎的片段，随着时间流逝慢慢地遗忘，直到许久以后彻底消失（如果不记录的话）\n\n因此这个项目的定位就是是发现新闻之间的关系，一目了然的看完事件的来龙去脉，并且把它记录下来；\n另外也是把每天热点题材推荐出来（事件、人物、关键词），快速浏览每天最热门的讨论\n\n其他相关功能说明都在介绍网址里了（其实就是rss阅读器基本的功能，这才是基础中的基础）。\n\n![主题图谱](https://github.com/ZanebonoAlter/ZanebonoRssReader/raw/master/img/image-topic.png)",
+    "created_at": "2026-04-09T06:36:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9563"
+  },
+  {
+    "id": 9562,
+    "title": "【开源自荐】XPouch AI：一个围绕真实任务执行设计的开源多专家 Agent Runtime",
+    "content": "<img width=\"3056\" height=\"1588\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3f55c6e-f790-40ff-9bca-5497573b496f\" />\n\n## 项目简介\n\nXPouch AI 是一个围绕真实任务执行设计的开源多专家 Agent Runtime。系统将规划、审批、执行、恢复和产物沉淀放在同一条可追踪主链中，而不是只提供一层聊天 UI。\n\n当前稳定基线包括：\n\n- simple / complex 双模式\n- complex 模式下的 HITL 审批与恢复\n- `Thread / AgentRun / ExecutionPlan` 三层运行时语义\n- artifact 持久化、恢复展示与多任务串行执行\n- 技能模板（Library 面板 + 内置模板 + 一键发起会话）\n- 模板导入导出（支持 override/clone/skip 策略的 JSON 导入导出）\n- 工具治理（可配置策略 + Library 管理面板，view_admin 只读）\n- SSE 驱动的 Server-Driven UI\n- MCP 动态工具接入\n\n## 核心能力\n\n### LangGraph 多专家主链\n\n- `Router -> Direct Reply`\n- `Router -> Commander -> HITL -> Dispatcher -> Generic -> Tools -> Aggregator`\n- simple / complex 自动分流\n\n### HITL 审批与恢复\n\n- Commander 生成计划后暂停\n- 用户可修改、删除、调整任务\n- `POST /api/chat/resume` 围绕 `run_id` 恢复执行\n\n### Run-based Runtime\n\n- `Thread` 表达会话容器\n- `AgentRun` 表达一次真实执行\n- `ExecutionPlan` 表达复杂任务计划\n- 支持 run 级 cancel / timeout / heartbeat / current node\n\n### Artifact 系统\n\n- 支持代码、Markdown、HTML、文本等 artifact\n- artifact 持久化到数据库\n- 历史复杂会话可恢复展示 artifact\n\n### MCP 动态工具接入\n\n- 支持 `sse` / `streamable_http`\n- Generic Worker 运行时绑定 `BASE_TOOLS + MCP_TOOLS`\n- 支持后台管理 MCP Server\n\n### 技能模板（Skill Templates）\n\n- 模板模型与 `GET/POST/PUT/DELETE /api/library/templates` 管理接口\n- 内置模板：出行路线简报、研究结论报告、写作大纲启动器\n- Library 页「Skill Templates」面板：浏览、管理、一键以 starter prompt 发起新会话\n\n### 工具治理（Tool Governance）\n\n- 统一治理层：`risk_tier`、`allow/deny/require_approval`，绑定与执行前双重校验\n- 可配置策略：`ToolPolicy` 持久化，`GET/PUT /api/tools/policies`，运行时合并数据库覆盖\n- Library 页「Tool Governance」面板：管理员查看/编辑策略（`view_admin` 只读）\n\n### Server-Driven UI\n\n- 后端是真相源\n- 前端通过 SSE 事件驱动 store 与 UI\n- 适合继续演进为可审计、可回放的 Agent 产品\n\n### Run Timeline（运行时间线）\n\n- 独立页面查看运行实例的完整事件时间线\n- 支持从对话页面和历史会话卡片跳转\n- 展示 16 种事件类型：run 创建、router 决策、HITL 中断/恢复、任务执行、artifact 生成、运行终态等\n- API：`GET /api/runs/{run_id}`、`GET /api/runs/{run_id}/timeline`、`GET /api/runs/thread/{thread_id}/timeline`\n\n### Admin Stats Dashboard（管理统计面板）\n\n- 运行统计概览：总运行数、成功率、HITL 使用率、平均耗时\n- 7 天趋势图表：按日期聚合的运行数据\n- 运行列表：带分页，显示状态、模式、时间、用户\n- 数据库层聚合：使用 `func.count` / `func.sum` / `func.avg` + `group_by`\n- API：`GET /api/admin/stats`、`GET /api/admin/stats/trends`、`GET /api/admin/stats/runs`",
+    "created_at": "2026-04-09T06:23:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9562"
+  },
+  {
+    "id": 9561,
+    "title": "【开源自荐】xpouch vault：本地客户端管理不同渠道的key，支持多openclaw接入进行健康监控",
+    "content": "<img width=\"1718\" height=\"1214\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/21eb77a8-c6f0-4270-b054-7d6558c46e4c\" />\n\n<img width=\"1718\" height=\"1214\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fc80092f-1a80-4c32-a799-369902519460\" />\n\n# XPouch Vault\n\n安全、优雅的桌面密钥保险箱，管理 AI API Key 并监控 OpenClaw 节点。基于 Tauri 2.x、React 19 和 Rust 构建。\n\n## 功能特性\n\n### 保险箱 — API Key 管理\n\n- **AES-256-GCM 加密** — API Key 字段级加密存储，密钥永不经过前端明文\n- **9 家 AI 服务商** — OpenAI、Anthropic、Google AI、DeepSeek、MiniMax、Kimi、Qwen、Doubao、GLM + 自定义\n- **品牌图标** — 通过 `@lobehub/icons` 展示服务商真实 Logo\n- **连通性测试** — Rust 后端异步验证 Key 有效性，结果持久化到数据库\n- **状态徽章** — 卡片显示 有效 / 失效 / 未测试 三种状态\n- **显示与复制** — 一键切换脱敏/明文显示，一键复制到剪贴板\n- **重命名** — 内联编辑弹窗，无需重建即可修改名称\n- **分类管理** — 按环境分类：生产环境、开发测试、个人项目、备用\n- **脱敏展示** — Key 以脱敏形式展示（如 `sk-...7xYz`）\n- **多语言** — 支持中文、英文、日文\n\n### 龙虾 — OpenClaw 节点监控\n\n- **WebSocket 实时监控** — 通过 WS 协议连接 OpenClaw（health + status 方法）\n- **节点增删改** — 添加、编辑、删除网关节点，Token 加密存储\n- **仪表盘** — 在线/离线状态、版本、运行时间、渠道、Agent、定时任务、在线设备、会话、技能、任务、心跳\n- **自动刷新** — 30 秒间隔自动刷新所有节点状态\n- **详情面板** — 完整信息：渠道（运行/错误）、Agent（模型/会话）、定时任务、在线设备\n\n### 通用\n\n- **本地优先** — 所有数据存储在本地 SQLite（WAL 模式），无云同步、无遥测",
+    "created_at": "2026-04-09T06:21:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9561"
+  },
+  {
     "id": 9560,
     "title": "【开源自建】单python文件、适用于Linux环境的agent智能体",
     "content": "EVA是个麻雀虽小、五脏俱全的Agent智能体，相当于低配版Claude Code，能帮你写脚本、写测试案例、执行shell、分析数据等。\n\n不想看鸟哥私房菜？ 不想记住各种shell命令？不想解决各种Linux配置？ 试试EVA\n\nGithub仓库： [https://github.com/usepr/eva](https://github.com/usepr/eva)\n\n# 核心特色\n-  本地化：可以接入本地部署的OpenAI接口模型，如vLLM，或者是外网模型\n-  极致轻量化：单文件，仅一个eva.py，有python就能运行\n-  目录级Session：下次同样目录启动会延续之前对话\n-  安全审查：默认只执行读命令，其他命令需要安全确认\n-  移植性：很容易将EVA接入你现有的自动化流程，例如：eva -a -u '计算100w以内所有素数和并写到/tmp/result.txt'",
@@ -780,47 +820,5 @@
     "created_at": "2026-03-31T10:08:11Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9462"
-  },
-  {
-    "id": 9461,
-    "title": "【开源自荐】Rename.Tools-浏览器端批量重命名工具，支持正则/规则链/撤销/脚本导出",
-    "content": "大家好,分享一个最近做的开源项目 - Rename.Tools\n\n🔗 在线体验:  [https://rename.tools](https://rename.tools/) \n\n📦 GitHub:  [https://github.com/chenz24/rename.tools](https://github.com/chenz24/rename.tools) \n\n## 为什么做这个?\n之前有次要重命名大量的图片文件。找了一些工具发现要么收费、要么不好用。后来发现浏览器已经支持重命名文件([File System Access API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_API))了。我感觉在浏览器端实现这个功能特别适合我这种偶尔需要批量重命名文件的情况。于是做了这个完全在浏览器运行的工具。\n\n## 核心特性\n### 🔒 隐私优先\n* 文件通过 File System Access API 直接操作,从不上传\n* 所有逻辑在浏览器运行,关闭标签页数据全清\n* 无需注册,无追踪\n### ⛓️ 规则链系统\n* 支持 7 种规则:查找替换、正则、序列号、大小写转换、插入文本、删除清理、自定义 JS\n* 可拖拽排序,多规则依次执行\n* 实时预览 + 冲突检测 + 自动修复建议\n### 🎯 高级功能\n* 元数据提取 - 照片 EXIF、音频标签,可用于智能重命名\n* TMDb 剧集刮削 - 自动匹配视频文件与剧集信息(需自备 API Key)\n* 高级过滤 - 按文件名/扩展名/大小/修改时间过滤\n* 预设系统 - 保存常用规则,支持导入/导出/URL 分享\n* 完整撤销 - 支持 Undo/Redo,还能导出撤销脚本\n### 💾 导出脚本\n* 可生成 bash/PowerShell 脚本离线执行\n* 不支持 File System Access API 的浏览器也能用\n\n\n![rename.tools](https://szditie.oss-cn-shanghai.aliyuncs.com/rename_screenshot.png)",
-    "created_at": "2026-03-31T09:13:35Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9461"
-  },
-  {
-    "id": 9460,
-    "title": "Smart Resume - AI 驱动的 ATS 简历优化器",
-    "content": "## 工具名称\nSmart Resume\n\n## 链接\nhttps://smart-resume-now.top\n\n## 简介\n一个 AI 驱动的简历优化工具，帮助求职者通过 ATS（招聘管理系统）筛选。\n\n主要功能：\n- 简历与职位描述关键词匹配分析\n- 动作词检测，识别被动表达\n- 量化成就检测，提醒添加数字\n- 9 款 ATS 友好的简历模板\n- 实时编辑器，支持 PDF/DOCX 导出\n\n## 开源/免费\n基础功能免费使用，无需注册。\n\n## 技术栈\nCloudflare Workers + Vue 3\n\n---\n感谢阮老师的周刊，每周必读！",
-    "created_at": "2026-03-31T08:57:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9460"
-  },
-  {
-    "id": 9459,
-    "title": "【开源自荐】Chrome脚本Agent",
-    "content": "https://github.com/zhuweileo/Monkey\n\nMonkey 是一个 Chrome 扩展，让你通过自然语言描述来生成用户脚本并自动注入到任意网页中。你不需要会写代码——只需告诉 Monkey 你想在这个页面做什么，它会：\n\n- 实时抓取当前页面的 DOM 结构\n\n- 将 DOM 信息注入 prompt，让 AI 写出精准匹配页面元素的脚本\n\n- 一键保存并立即执行，下次访问同域名自动生效\n\n使用你自己的 API Key（BYOK），支持 OpenAI、Claude 以及任何兼容 OpenAI Chat Completions 格式的接口。\n\n",
-    "created_at": "2026-03-31T08:21:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9459"
-  },
-  {
-    "id": 9458,
-    "title": "【工具自荐】TextRepeater - 免费在线文本重复工具，支持 WhatsApp 表情场景模式",
-    "content": "TextRepeater 是一个免费的在线文本重复工具，专为 WhatsApp、SMS 和社交媒体设计。\n\n**网站地址：** https://textrepeater.top\n\n**主要功能：**\n\n- 将任意文本重复 1-1000 次，支持自定义分隔符（空格、换行、自定义）\n- **场景模式（Scene Mode）**：根据场景自动插入对应表情符号，目前支持道歉模式（🙏😔💦），Birthday、Anger、Heart 模式陆续上线\n- 15 种视觉效果（彩虹、故障风、霓虹、矩阵等），浏览器内显示，复制时自动还原为纯文本\n- 一键分享到 WhatsApp\n- 无需注册，无需登录，无后端，所有功能在浏览器本地运行\n\n**技术栈：**\n\nNext.js 静态导出 + Cloudflare Pages 部署，零服务端成本。\n\n**截图：**\n\n<img width=\"1545\" height=\"810\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/49b953ac-b4f2-48ad-8252-ee04d521687d\" />\n",
-    "created_at": "2026-03-31T07:38:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9458"
-  },
-  {
-    "id": 9457,
-    "title": "【开源自荐】agHub - 实现跨 Agent 的 MCP 与 Skill 统一管理,内置skills.sh市场",
-    "content": "**开源地址：** https://github.com/AkaraChen/aghub\n**官网：** https://aghub.akr.moe/\n\n\n**One hub for every AI coding agent.**\n\n还在为多agent的skill管理和mcp烦恼吗， 基于tauri2的开源项目aghub，内置skills.sh市场，一键移植skill，配置一次部署到任意agent，跨 Agent 审计视图，一眼看清所有agent里装了哪些 MCP Server，官网链接和github仓库在简介。\n\n\n## 技术栈\n\nTauri 2 + Rust，MIT 协议\n\n**支持平台：** Windows 10+ / macOS 12+ / Linux（Ubuntu\n<img width=\"1280\" height=\"471\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8e1db08d-6215-41f2-8c34-4ffa99437c7e\" />\n\n<img width=\"1280\" height=\"839\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b490b55-473c-4cb4-9497-d86daa421d8a\" />\n\n",
-    "created_at": "2026-03-31T06:56:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9457"
   }
 ]
