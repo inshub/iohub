@@ -1,5 +1,37 @@
 [
   {
+    "id": 9576,
+    "title": "【网站自荐】GeminiWatermarkRemover：一件去除gemini生成图片右下角的水印",
+    "content": "我做了一个免费去除 Gemini AI 水印的工具，纯浏览器本地运行\n\n最近用 Gemini 生成了不少图片，但每次导出都带着水印，放进 PPT、发社交媒体或者给客户看都很尴尬。\n\n于是我做了这个工具：Gemini Watermark Remover —— 专门针对 Google Gemini 生成图片的去水印工具，免费使用，无需注册，图片不上传服务器。\n\n✨ 核心功能亮点：\n\n🔒 完全本地处理 — 图片不离开你的设备，100% 隐私安全\n🎯 智能识别 — 自动精准定位 Gemini 水印位置\n🖼️ 无损修复 — 基于周围纹理和光线进行图像修复，无模糊、无痕迹\n⚡ 秒级处理 — 通常几秒内完成\n🌐 全平台可用 — 电脑、平板、手机浏览器均可，无需安装任何软件\n📁 支持 JPEG / PNG / WebP — 单图最大 20MB\n💰 定价：\n每天免费使用 3 次，无需注册。一次性支付 $6.99 解锁永久无限使用，无订阅、无续费。\n\n欢迎体验 👉 https://geminiwatermarkremover.cc/\n\n有任何问题或建议欢迎留言交流！\n\n<img width=\"2448\" height=\"988\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e448782b-0d00-4f17-a2a2-bb3e5eaea67b\" />",
+    "created_at": "2026-04-09T13:17:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9576"
+  },
+  {
+    "id": 9575,
+    "title": "【网站自荐】AI 图片转视频工具，无需设计技能",
+    "content": "一个 AI 图片转视频的在线工具，上传静态图片即可生成动态视频。免费额度即可体验，操作简单，适合内容创作者、社交媒体运营等场景。\n技术栈：Next.js + Tailwind CSS + Supabase + Creem（支付）\n[AI Image to Video](https://www.aiimagetovideo.video/)",
+    "created_at": "2026-04-09T12:02:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9575"
+  },
+  {
+    "id": 9574,
+    "title": "【skill自荐】genstory ai story generator skills",
+    "content": "Connect your own workflow, skill, or agent to Genstory and generate hosted stories with your API key.\n\n# How it works\n\nCreate and manage your API keys in the user center.Set your key as GENSTORY_API_KEY in your skill or workflow.Submit story tasks through POST /api/v1/story-tasks.Poll GET /api/v1/story-tasks/{task_id} until the story is ready.Return the hosted story URL, cover image, title, and locale.\n\n# Skill details\n\nThe skill is built for Genstory-hosted story generation.\nFinal output is an online story URL and cover image.\nThe recommended first step for users is applying for a key at Genstory.\nYou can import the raw SKILL.md directly into your skill workflow.\n\n\n# SKILL.md\n\nname: genstory-story-generator\ndescription: Use when the user wants to generate a story through Genstory with an API key, submit a Genstory story task, poll task status, and return the final Genstory online story URL plus cover image. Also use when the user needs setup guidance for obtaining a key from https://www.genstory.app/api-keys and configuring GENSTORY_API_KEY in their skill or workflow.\n\n\n# Genstory Story Generator\n\nUse this skill when a workflow needs to call Genstory to generate a story and return a hosted story page URL.\n\n## Before you start\n\n- Tell the user to create an API key in the Genstory user center at `https://www.genstory.app/api-keys`.\n- Store that key as `GENSTORY_API_KEY`.\n- The intended final result is the online story URL and cover image.\n\n## Required flow\n\n1. Read `GENSTORY_API_KEY` from the environment or skill config.\n2. Submit a task to `POST https://www.genstory.app/api/v1/story-tasks`.\n3. Poll `GET https://www.genstory.app/api/v1/story-tasks/{task_id}` until the task becomes `success` or `failed`.\n4. Return the final structured result with:\n   - `story.id`\n   - `story.title`\n   - `story.url`\n   - `story.cover_url`\n   - `story.locale`\n\n## Submit request\n\nSend `Authorization: Bearer ${GENSTORY_API_KEY}`.\n\nMinimum JSON body:\n\n```json\n{\n  \"prompt\": \"Write a warm bedtime story about a brave little fox.\"\n}\n```\n\nRecommended fields:\n\n- `prompt`\n- `title`\n- `character_name`\n- `scenes_count`\n- `generation_type`: default `text`\n- `generation_mode`: default `standard`\n- `layout_mode`\n- `page_spec`\n- `public_visibility`\n\n## Polling behavior\n\n- Treat `pending` and `processing` as in progress.\n- If status is `failed`, surface the API error clearly.\n- If status is `success`, return the hosted story data and encourage the user to open the Genstory URL.\n\n## Output contract\n\nPrefer this final shape:\n\n```json\n{\n  \"task_id\": \"task_uuid\",\n  \"status\": \"success\",\n  \"story\": {\n    \"id\": \"story_uuid\",\n    \"title\": \"Story title\",\n    \"url\": \"https://www.genstory.app/stories/story-slug\",\n    \"cover_url\": \"https://cdn.example.com/story-cover.webp\",\n    \"locale\": \"en\"\n  }\n}\n```\n\n## References\n\n- For request and response examples, read `references/api.md`.",
+    "created_at": "2026-04-09T11:44:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9574"
+  },
+  {
+    "id": 9573,
+    "title": "【开源推荐】：OpenScreen 一个开源的 Screen Studio 替代工具",
+    "content": "项目地址：https://github.com/siddharthvaddem/openscreen\n\n这是一个最近在 GitHub 上很火的开源项目，定位是 Screen Studio 的免费替代品，用来制作产品演示、教程视频非常方便。\n\n它是一个桌面应用（基于 Electron），支持从录屏到简单剪辑的一整套流程，适合开发者、内容创作者做 demo 或讲解视频。\n\n主要特点：\n\n🎬 录制屏幕或指定窗口\n🔍 自动 / 手动缩放（类似 Screen Studio 的平滑 zoom）\n🎤 支持麦克风 + 系统音频\n✂️ 内置简单剪辑（裁剪、加速、裁切片段）\n📝 支持标注（文字、箭头、图片等）\n🎨 可自定义背景（纯色 / 渐变 / 图片）\n💨 支持 motion blur，让动画更丝滑\n📦 导出多种分辨率和比例（适合做短视频或教程）\n\n项目完全开源（MIT），免费商用、无水印、无订阅 ()\n\n相比同类工具：\n\nScreen Studio：体验更好但收费较贵\nLoom：免费版有水印和限制\nOpenScreen：功能够用 + 完全免费\n\n适合场景：\n\n产品演示视频\n教程录制\nbug 复现说明\n异步沟通（给同事录一段讲解）\n\n目前项目还在 beta 阶段，但功能已经比较完整",
+    "created_at": "2026-04-09T11:05:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9573"
+  },
+  {
     "id": 9572,
     "title": "【开源自荐】color-walk色彩漫游",
     "content": "**开源前后端**\n提供可以使用的网页端（已完成工信部备案和域名证书配置，可安全访问），**https://game1024.online**\n宣扬中国传统色彩（非简单的单一颜色）\n网页提供手机端浏览器适配（享受和手机app一样的使用体验）\n小红书目前的话题趋势（话题超3亿+）\n\n**主要功能**\n\n1. 支持700多中国风色卡\n2. 支持每日随机抽卡\n3. 支持色卡和打卡照片的管理（以及ai文案生成，小红书INS风格，利用QWEN3.5 0.8B多模态实现）\n4. 支持打卡照片识别颜色（多种方式识别），放宽打卡要\n\n手机端访问的页面截图：\n\n<img width=\"1080\" height=\"2347\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f3a2c2e1-0182-4796-81a2-006832d47982\" />\n\n<img width=\"1080\" height=\"2347\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5fcc8478-96d3-4ac3-a35d-0e16c964906f\" />\n\n<img width=\"1080\" height=\"2347\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6ca74002-95fc-4ccb-9922-9e680d668f66\" />\n\n<img width=\"1080\" height=\"2347\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/957738c7-01f4-4bc1-ad93-33ee5979bf08\" />\n",
@@ -784,39 +816,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9473"
-  },
-  {
-    "id": 9472,
-    "title": "【开源自荐】pretext.video：基于 Pretext 文字排版工具，用文字实时呈现你的摄像头画面",
-    "content": "## 项目名称\n\n  pretext.video\n\n  ## 项目简介\n\n  [Pretext](https://github.com/chenglou/pretext)\n  是最近开源的一个文字排版引擎，把测量和排版分离，测一次之后排版只做加法。它有个很有意思的 API\n  `layoutNextLine()`，可以让每行文字宽度不同，实现围绕任意形状的排版。\n\n  我拿这个能力做了 pretext.video——打开摄像头，文字跟着你的身体轮廓实时排版：\n\n  - **Text Face**：文字填满你的轮廓，颜色来自摄像头画面\n  - **Cutout in Text**：人从文字中走出来，文字自动绕开你\n\n  纯浏览器跑，不需要装东西，可以录屏导出 MP4。\n\n  ## 技术栈\n\n  - [Pretext](https://github.com/chenglou/pretext) — 文字排版\n  - [MediaPipe](https://developers.google.com/mediapipe) — 实时人像分割\n  - [mediabunny](https://github.com/nickslevine/mediabunny) — MP4 录制导出\n\n  ## 在线体验\n\n  https://pretext.video\n\n  ## 项目地址\n\n  https://github.com/fifteen42/pretext-video\n\n  ## 项目截图\n\n  ![screenshot](https://pretext.video/screenshot.png)",
-    "created_at": "2026-03-31T16:05:50Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9472"
-  },
-  {
-    "id": 9471,
-    "title": "全球真实地址生成器！🌍覆盖全球30+核心国家：不仅有美国/英国/加拿大/澳大利亚/日本/韩国/还有东南亚国家",
-    "content": "🔥彻底告别假地址封号危机！全网唯一带谷歌实景定位的真实地址库！\n\n👉立即免费体验工具：https://www.zhenshidizhi.com/\n\n很多朋友在做跨境电商、注册美股账户（如券商、银行）或申请海外各类服务时，往往卡在“居住地址”这一关。恐99%的地址生成器都是用随机单词拼凑的语义坐标，极易触发平台的KYC风控导致系统封号。\n\n为了解决这个痛点，我开发了这款【全球高保真地址生成器】。它的所有门牌号均清洗自各地真实的物理测绘数据（非AI瞎编），邮编与街道100%匹配，助你轻松绕过严苛审核！\n\n✨ 核心功能亮点：\n\n🌍覆盖全球30+核心国家：不仅有美/英/加/澳/日，还独家支持吉尔吉斯斯坦、不丹等冷门内陆国家真实数据！\n\n🗺️谷歌地图实景联动：拒绝“查无此地”，生成的每一条地址都可以在谷歌地图上精准扎下红色大头针。\n\n📋绝妙舒爽的一键复制：省、市、街道、门牌号无需拆分，点一下直接粘贴，填表效率拉满。",
-    "created_at": "2026-03-31T15:33:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9471"
-  },
-  {
-    "id": 9470,
-    "title": "【工具自荐】美国真实地址生成器 - 美国地址随机生成器 全球热门国家地址生成器",
-    "content": "🔥 彻底告别假地址封号危机！全网唯一带谷歌实景定位的真实地址库！\n\n👉 立即免费体验工具： https://www.zhenshidizhi.com\n\n很多朋友在做跨境电商、注册美股账户（如券商、银行）或申请海外各类服务时，往往卡在“居住地址”这一关。市面上 99% 的地址生成器都是用随机单词拼凑的虚假坐标，极易触发平台的 KYC 风控系统导致封号。\n\n为了解决这个痛点，我开发了这款【全球高保真地址生成器】。它的所有门牌号均清洗自各国真实的物理测绘数据（非 AI 瞎编），邮编与街道 100% 匹配，助你轻松绕过严苛审核！\n\n✨ 核心功能亮点：\n\n🌍 覆盖全球 30+ 核心国家：不仅有美/英/加/澳/日，还独家支持吉尔吉斯斯坦、不丹等冷门内陆国真实数据！\n\n🗺️ 谷歌地图实景联动：拒绝“查无此地”，生成的每一条地址都能在 Google Maps 上精准扎下红色大头针。\n\n📋 极其舒爽的一键复制：省、市、街道、门牌号全自动拆分，点一下直接粘贴，填表效率拉满。\n\n",
-    "created_at": "2026-03-31T15:31:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9470"
-  },
-  {
-    "id": 9469,
-    "title": "【开源自荐】easy-claude-code：Claude Code 源码学习教程（中英双语）",
-    "content": "项目地址：\nhttps://github.com/study8677/easy-claude-code\n\n这是一个面向 Claude Code 源码学习的教程仓库，目标不是复刻产品，而是帮助读者系统理解它的架构设计、关键调用链和工程取舍。\n\n目前内容包括：\n\n- 9 个可运行的 Python 示例，对应启动、Agent Loop、工具系统、权限、streaming、context 管理等主题\n- 中英双语 README\n- 中英双语设计哲学文档\n- 中英双语源码导图（source map）\n- 每一层对应的双语 deep-dive 文档\n\n适合的人：\n\n- 想快速理解 Claude Code 核心机制的人\n- 想顺着 `query.ts`、`Tool.ts`、`bashSecurity.ts`、`constants/prompts.ts` 深入源码的人\n\n如果你最近也在研究 agentic coding、CLI agent、tool use、prompt cache、多 Agent 这类主题，欢迎看看，也欢迎提建议。",
-    "created_at": "2026-03-31T14:13:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9469"
   }
 ]
