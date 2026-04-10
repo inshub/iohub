@@ -1,5 +1,29 @@
 [
   {
+    "id": 9590,
+    "title": "【工具自荐】AI Character Generator：一键生成角色设定与立绘",
+    "content": "<img width=\"916\" height=\"726\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe012cff-201e-4b8f-9b58-0fc75ee0ecde\" />\n\n访问地址 ： [aigenchar.com](https://aigenchar.com)\n## 项目简介\nAI Character Generator是一个为网文作者、RPG玩家和二次元爱好者打造的\"一键式\"角色设定与立绘生成工具。用户只需输入简单的关键词（如\"冷酷、魔法师、白发\"），即可获得完整的角色档案，包括姓名、性格、背景故事和AI生成的角色立绘。\n\n## 核心功能 \n- 智能文本生成：基于关键词生成详细的角色设定\n- AI立绘生成：自动创建9:16比例的角色人像\n- 用户积分系统：新用户赠送3次免费生成额度\n- 角色管理：保存、查看和删除角色（每用户最多20个）\n## 技术栈 \n- 前端：Next.js 15 + Tailwind CSS + Lucide Icons\n- 后端：Cloudflare Workers + Workers AI\n- 数据库：Cloudflare D1 (SQL)\n- 存储：Cloudflare R2\n- 支付：PayPal SDK\n## 应用场景 \n\n- 小说创作：快速生成角色设定，避免创作瓶颈\n- RPG游戏：为游戏角色创建详细背景和视觉参考\n- 动漫创作：生成独特的角色设计和故事背景\n- 创意写作：获取灵感，打破创作障碍",
+    "created_at": "2026-04-10T10:26:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9590"
+  },
+  {
+    "id": 9589,
+    "title": "【开源自荐】claude-msync : 向 claude.ai 同步本地 claude code 生成的记忆",
+    "content": "起因是发现claude客户端和claude code的记忆是独立的，就想写个工具同步一下，这样在平时和claude聊天的时候它也能知道我最近具体做了什么\n## 亮点：\n- **一键打通记忆孤岛** — Claude Code 的记忆散落在各个项目目录中，与 Claude 客户端完全隔离。`claude-msync` 一条命令扫描所有项目，将碎片化的记忆统一导出\n- **智能去重合并** — 跨项目的重复信息（身份、偏好、指令）由 Claude 自动识别并合并，不会产生冗余条目\n- **分类结构化输出** — 使用claude官方的[记忆迁移prompt](https://claude.com/import-memory)，把输出结果归类为 Instructions / Identity / Career / Projects / Preferences 五大类，清晰有序\n- **交互式多选** — 按项目分组浏览所有记忆，聚焦即预览完整内容，自由勾选需要导出的条目\n- **流式实时输出** — 生成过程流式打印，无需等待全部完成\n- **零配置即用** — `npx claude-msync` 直接运行，自动调用本地 Claude CLI，无需 API Key\n  \n开源地址：https://github.com/debugtheworldbot/msync",
+    "created_at": "2026-04-10T09:45:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9589"
+  },
+  {
+    "id": 9588,
+    "title": "【网站自荐】SBTI 人格测试",
+    "content": "推荐一个做的小网站：SBTI 人格测试  \n网站地址：https://sillybigpersonalitytest.com/\n\n这是一个娱乐向的人格测试网站。用户完成 31 道正式题后，系统会根据 15 个维度生成结果，共有 27 种人格类型，另外还设计了隐藏题和特殊结果。每种人格都有对应的海报、简介和详情页，适合轻松自测和社交分享。\n\n这个网站有几个特点：\n\n1. 结果页支持生成分享图，适合手机截图传播，也支持下载和复制图片。\n2. 提供简体、繁体和日语三个版本。\n3. 整体风格不是传统严肃测试，而是偏互联网语境和梗文化，娱乐性更强。\n\n技术上，这是一个静态网站，重点做了结果生成、分享图导出、移动端体验。\n\n",
+    "created_at": "2026-04-10T09:20:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9588"
+  },
+  {
     "id": 9587,
     "title": "【开源自荐】一个生成 coze，dify， comfyui 工作流的 AI skill",
     "content": "## 痛点\n\n在 Coze、Dify、ComfyUI 这些低代码平台上搭建复杂工作流，你是不是也经历过：\n\n- 20+ 个节点手动拖拽、连线、配置参数，搞了一下午\n- 节点间的数据引用一不小心接错，调试半天\n- 想复用一个成熟的业务流程模板，但平台之间格式不通用\n\n**现在，这些都不用了。**\n\n## Workflow Skill 是什么\n\n这是一套 Claude Code 的 Skills，支持三大平台：\n\n| 平台 | 输出格式 | 导入方式 |\n|------|---------|---------|\n| **Coze** (coze.cn) | ZIP 文件 | 拖入导入弹窗 |\n| **Dify** | YAML/JSON DSL | 导入 DSL |\n| **ComfyUI** | Litegraph JSON | 拖入 ComfyUI |\n\n一句话描述你的需求，自动生成**包含所有节点配置、连线、布局的完整工作流定义文件**——直接导入平台就能用。\n\n## 效果展示\n\n### Coze：跨境电商智能选品上架\n\n```\n/coze-workflow 创建一个跨境电商选品上架工作流：\n输入品类和预算 → 拉取1688 SKU → 循环评估打分 →\n类目分流生成详情页 → 多市场本地化翻译 → 多平台并行上架\n```\n\nAI 自动生成 Python 脚本，调用已验证的节点模板函数，产出可直接导入的 ZIP：\n\n![Coze 工作流生成](https://cdn.jsdelivr.net/gh/twwch/images/workflow-skill/images/2026/04/coze-workflow.png)\n\n导入 coze.cn 后的效果——22 个节点、27 条连线，自动布局：\n\n![跨境电商工作流](https://cdn.jsdelivr.net/gh/twwch/images/workflow-skill/images/2026/04/cross_border_ecommerce.png)\n\n![完整工作流视图](https://cdn.jsdelivr.net/gh/twwch/images/workflow-skill/images/2026/04/跨境电商智能选品上架工作流-whole-workflow.png)\n\n### Dify：财务分析工作流\n\n```\n/dify-workflow 创建一个财务分析工作流：\n用户上传财务文件 → 内容提取 → 大模型多维分析 → 模板汇总报告\n```\n\n![Dify 工作流生成](https://cdn.jsdelivr.net/gh/twwch/images/workflow-skill/images/2026/04/dify-workflow.png)\n\nDify 的工作流支持 14 种节点类型，包括 Code、HTTP、If/Else、Iteration、Knowledge Retrieval 等，生成的 YAML DSL 导入即可运行。\n\n### ComfyUI：文生图 + 图生视频\n\n```\n/comfyui-workflow 创建一个 Flux 文生图 + WAN2.1 图生视频工作流\n```\n\n![ComfyUI 工作流](https://cdn.jsdelivr.net/gh/twwch/images/workflow-skill/images/2026/04/生图转视频workflow.png)\n\n![运行结果](https://cdn.jsdelivr.net/gh/twwch/images/workflow-skill/images/2026/04/运行结果.png)\n\nComfyUI Skill 内置 34 个模板、360+ 节点定义，支持自动模型下载——导入后 ComfyUI 会自动检测缺失模型并弹窗下载。\n\n## 安装\n\n三步搞定：\n\n```bash\ngit clone https://github.com/twwch/workflow-skill.git /tmp/workflow-skill\ncp -r /tmp/workflow-skill/skills/coze-workflow ~/.claude/skills/\ncp -r /tmp/workflow-skill/skills/dify-workflow ~/.claude/skills/\ncp -r /tmp/workflow-skill/skills/comfyui-workflow ~/.claude/skills/\n```\n\n![安装](https://cdn.jsdelivr.net/gh/twwch/images/workflow-skill/images/2026/04/安装.png)\n\n",
@@ -786,29 +810,5 @@
     "created_at": "2026-04-01T11:11:57Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9487"
-  },
-  {
-    "id": 9486,
-    "title": "【开源自荐】markdown-it-vue3",
-    "content": "#### 项目简介\n`markdown-it-vue3` 是专为 Vue3 打造的 Markdown 流式解析渲染组件，基于 `markdown-it` 核心，AI会话场景轻量易用。\n\n#### 核心亮点\n1. 🚀 纯 Vue3 适配，兼容 Vite，性能优、体积小；\n2. 🛠️ 内置公式、流程图、echart等常用功能，支持自定义扩展；\n3. 🎨 样式可定制，提供 TypeScript 类型定义。\n\n#### 项目地址\nhttps://github.com/niyongsheng/markdown-it-vue3\n\n#### 演示地址\nhttps://niyongsheng.github.io/markdown-it-vue3/",
-    "created_at": "2026-04-01T09:55:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9486"
-  },
-  {
-    "id": 9485,
-    "title": "【实用工具】 视频文案提取工具,一键打包下载tiktok/抖音视频文案",
-    "content": "# 使用入口\nhttps://www.transcriptgenerate.com\n\n# 工具说明\nTranscriptGenerate 是一款免费的在线**抖音视频文案提取**工具，能够完成视频转文本流程；只需粘贴视频链接即可获取**视频逐字稿**。支持抖音、小红书、TikTok、YouTube、B站等20+平台，同时提供无水印视频下载、字幕导出、音频提取等功能。\n\n# 适用场景\n- 自媒体人做**抖音视频文案提取**，拆解同行爆款结构\n- 学生和研究者对教程类内容进行**视频文案提取**，生成文字笔记\n- 做短视频带货时，用**抖音文案提取**快速收集同类产品的卖点话术\n\n# 使用方式\n打开网站 → 粘贴链接 → 等待解析 → 复制文案或下载素材包\n\n# 工具特点\n- 免费、免注册、无广告弹窗\n- 支持50+内容平台的**视频文案提取**\n- AI语音识别，中文准确率95%以上\n- 一次提取即可获得文案全文 + 字幕 + 音频 + 无水印视频\n\n# 工具截图\n\n<img width=\"1917\" height=\"840\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/541f66e4-4d9d-4206-a6c6-7db430c6ea7f\" />\n\n<img width=\"1919\" height=\"872\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/949826c4-a212-4fb0-a6b7-79e913291f5d\" />\n\n<img width=\"1916\" height=\"871\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/08dd834a-8506-48fb-a18a-a94967c2a151\" />\n\n<img width=\"1919\" height=\"871\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/edbb640c-6b7c-4f22-b4ae-65a929d8887d\" />\n",
-    "created_at": "2026-04-01T08:07:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9485"
-  },
-  {
-    "id": 9484,
-    "title": "【工具推荐】AI自动追踪更新工具 (changPop)",
-    "content": "link: https://changep.dev\n\n用户创建github项目链接，在自己开发的项目引入changePop，即可实现AI自动根据git commit生成更新日志\n",
-    "created_at": "2026-04-01T06:37:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9484"
   }
 ]
