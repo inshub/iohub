@@ -1,5 +1,21 @@
 [
   {
+    "id": 9668,
+    "title": "【开源自荐】一款灵感源自《集合啦！动物森友会》的 UI 组件库",
+    "content": "风格软萌可爱，适配游戏动漫相关人员使用，开箱即用。\n基于 React + TypeScript 实现的轻量 UI 组件库，灵感来源于任天堂《集合啦！动物森友会》游戏界面。\n\n项目地址：\nhttps://github.com/guokaigdg/animal-island-ui\n\n项目官网：\nhttps://animal-island-ui.netlify.app/\n\n![animal.jpg](https://wx1.sinaimg.cn/mw2000/0079WNNOly1ic9x5hqdunj328417o48g.jpg)",
+    "created_at": "2026-04-17T09:40:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9668"
+  },
+  {
+    "id": 9667,
+    "title": "【工具自荐】Kaloclip-跨境电商高质量爆款带货视频制作工具",
+    "content": "工具介绍：\n基于全球领先的电商数据，生成并一键发布高转化率的商品图与带货视频\n\n工具地址：\nhttps://clip.kalowave.com/zh?tc=LNLN",
+    "created_at": "2026-04-17T07:14:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9667"
+  },
+  {
     "id": 9666,
     "title": "【工具推荐】Auxora - 聊几分钟自动生成广告投放方案，适合不懂投放的开发者",
     "content": "最近在折腾自己项目的推广，发现一个工具挺实用的，分享一下。\n\n做独立开发的应该都有这个感受：产品写完了，投放完全不会。Google Ads 后台像飞机驾驶舱，Meta Ads 的受众定向能纠结一下午，关键词不知道怎么选，Landing Page 文案写了删删了写。\n\nAuxora 的思路是用对话代替后台操作。打开直接聊，说一下你的产品和目标客户，AI 追问几轮之后会生成一份完整的投放方案，包括市场分析、关键词、广告素材和 Landing Page。\n\n免费 200 credits，够跑完一个项目的完整流程，不需要绑卡。\n\n网站：[app.auxora.ai](https://app.auxora.ai)\n\n![](https://i.imgur.com/ImNuEYa.png)",
@@ -794,21 +810,5 @@
     "created_at": "2026-04-09T08:14:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9568"
-  },
-  {
-    "id": 9567,
-    "title": "小红书去水印工具推荐",
-    "content": "推荐几个小红书去水印网站\n\nhttps://rednotevideodownload.org/\n\nhttps://rednote-downloader.online/\n\nhttps://www.xhs-download.online/\n\nhttps://www.xhs-download.org/",
-    "created_at": "2026-04-09T08:13:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9567"
-  },
-  {
-    "id": 9566,
-    "title": "How I Built an AI Tattoo Generator with Next.js, Cloudflare, Google OAuth, and PayPal",
-    "content": "\n# How I Built an AI Tattoo Generator with Next.js, Cloudflare, Google OAuth, and PayPal\n\nI recently shipped [**BodyInk.art**](https://bodyink.art/), an AI tattoo generator that helps users explore tattoo concepts before going to a studio.\n\nIn this post, I want to share the engineering side: what worked, what broke in production, and what I changed to make the app stable.\n\n## The Product Goal\n\nTattoo ideation is often slow:\n\n- users collect references from many places\n- style direction is unclear early on\n- multiple revision rounds happen before a final direction\n\nI wanted a workflow where users can type an idea, generate concepts quickly, and download results for discussion with tattoo artists.\n\n## Stack Choice\n\nI used:\n\n- **Next.js App Router** for pages and API routes\n- **Cloudflare Pages** for deployment\n- **Google OAuth (NextAuth)** for sign-in\n- **PayPal** for pay-per-generation\n- an AI image backend for tattoo image generation\n\nThis stack gave me fast iteration and global delivery, but it also exposed some runtime differences I had to handle.\n\n## The First Real Production Bug\n\nAfter deployment, image generation failed with:\n\n`Cannot read properties of null (reading 'has')`\n\nAt first it looked like a random null bug, but the root cause was runtime incompatibility. A dependency path assumed Node-like behavior, while the deployed environment executed in an Edge-like context.\n\n### What fixed it\n\nI replaced the problematic SDK-dependent path with a simpler fetch-based implementation and removed Node-only assumptions from the generation flow.\n\nResult:\n\n- no more random null access in the hot path\n- easier debugging because request/response behavior became explicit\n\n## Base64 and Edge Runtime Gotchas\n\nAnother source of 500 errors was image encoding. The naive conversion strategy caused performance and reliability issues under constrained runtime conditions.\n\nI switched to **chunked Uint8Array processing** instead of relying on heavier Node-oriented patterns. This reduced pressure on runtime limits and made generation responses stable.\n\nIf you process image buffers on serverless/edge platforms, don’t assume desktop Node behavior will hold.\n\n## Adding Google OAuth with NextAuth\n\nI integrated Google sign-in using NextAuth with callback route:\n\n`/api/auth/callback/google`\n\nImplementation notes:\n\n- keep OAuth credentials in environment variables\n- define the correct `NEXTAUTH_URL` per environment\n- verify provider callback settings match your production domain exactly\n\nThe biggest practical issue is usually config mismatch, not code.\n\n## Adding PayPal: Sandbox First, Then Live\n\nThe business rule is simple: **$1 per generation**.\n\nI implemented two endpoints:\n\n- create order\n- capture payment\n\nAnd I kept env-driven mode switching so I could test safely in Sandbox and then move to Live.\n\nImportant details:\n\n- lock amount/currency on the server side\n- never trust client-only payment state\n- return clear failure messages to avoid silent checkout errors\n\n## SEO and Analytics\n\nAfter core flows worked, I optimized discoverability:\n\n- improved page-level metadata\n- added sitemap and robots\n- integrated Google Analytics globally\n\nFor analytics in Next.js App Router, a framework-aligned integration keeps scripts cleaner and avoids layout-level duplication.\n\n## Lessons Learned\n\n1. Runtime differences matter more than local success.\n2. Keep payment logic server-authoritative.\n3. Integrations fail more from misconfiguration than code defects.\n4. Production debugging gets easier when dependencies are minimal in critical paths.\n\n## What I’d Improve Next\n\n- better prompt guidance for first-time users\n- stronger style consistency controls\n- smarter retry/fallback strategy for generation failures\n- clearer pricing and credit UX\n\n## Final Thoughts\n\nShipping AI features is not just model quality. It is mostly engineering reliability:\n\n- predictable runtime behavior\n- robust payment flow\n- traceable errors\n- fast iteration loop\n\nIf you’re building a similar AI product on Next.js + Cloudflare, I hope this saves you a few painful nights.\n\nIf you want, I can share a follow-up post with concrete route structure, env templates, and a deployment checklist.\n",
-    "created_at": "2026-04-09T07:53:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9566"
   }
 ]
