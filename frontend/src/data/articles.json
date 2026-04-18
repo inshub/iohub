@@ -1,5 +1,13 @@
 [
   {
+    "id": 9675,
+    "title": "【开源自荐】Svg Gallery: 批量预览常见的图片格式(png/svg/jpg)，支持批量压缩 svg 图片且同时支持 cursor/vscode",
+    "content": "项目地址：https://github.com/dwqs/svg-gallery\n\n# SVG Gallery\n\nBrowse SVG/PNG/JPEG/WebP images in a visual gallery with search, theme switching, size adjustment, and SVGO compression.\n\n![demo](https://static-app.bb-os.com/im_files/20260411/6dcb05e6059cfbfba69e12c6e5ec084e.gif)\n\n## Features\n\n- **Multi-format preview** — SVG, PNG, JPEG, WebP\n- **Search filter** — real-time filtering by file name\n- **Size adjustment** — slider to resize previews (24px–160px)\n- **Light / Dark theme** — toggle via toolbar button, defaults to dark\n- **SVGO compression** — compress single or batch SVG files with one click\n- **Quick actions** — copy name, copy path, view source / open file\n\n## Installation\n\n### Cursor\n\nSearch `SVG Gallery` in the Extensions Marketplace and click **Install**, or install from the command line:\n\n```bash\ncursor --install-extension dwqs.svg-gallery\n```\n\nYou can also install it from [Open VSX](https://open-vsx.org/extension/dwqs/svg-gallery):\n\n1. Click the **Download** button on the right side to download the .vsix file\n2. Open Cursor, press `Cmd+Shift+P` and run `Extensions: Install from VSIX...`\n3. Select the downloaded .vsix file to install\n\n### VS Code\n\nSearch `SVG Gallery Viewer` in the Extensions Marketplace and click **Install**, or install from the command line:\n\n```bash\ncode --install-extension dwqs.svg-gallery-viewer\n```\n\nYou can also install it from [VS Marketplace](https://marketplace.visualstudio.com/items?itemName=dwqs.svg-gallery-viewer).\n\n## Usage\n\n### Command Palette\n\n`Cmd+Shift+P` → `SVG Gallery: Open` → select a folder containing images.\n\n### Explorer Context Menu\n\nRight-click any folder in the Explorer sidebar → `SVG Gallery: Open`.\n\n",
+    "created_at": "2026-04-18T13:41:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9675"
+  },
+  {
     "id": 9674,
     "title": "Revert \"docs(issue-392): fix typo\"",
     "content": "Reverts ruanyf/weekly#9580",
@@ -810,13 +818,5 @@
     "created_at": "2026-04-09T12:02:57Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9575"
-  },
-  {
-    "id": 9574,
-    "title": "【skill自荐】genstory ai story generator skills",
-    "content": "Connect your own workflow, skill, or agent to Genstory and generate hosted stories with your API key.\n\n# How it works\n\nCreate and manage your API keys in the user center.Set your key as GENSTORY_API_KEY in your skill or workflow.Submit story tasks through POST /api/v1/story-tasks.Poll GET /api/v1/story-tasks/{task_id} until the story is ready.Return the hosted story URL, cover image, title, and locale.\n\n# Skill details\n\nThe skill is built for Genstory-hosted story generation.\nFinal output is an online story URL and cover image.\nThe recommended first step for users is applying for a key at Genstory.\nYou can import the raw SKILL.md directly into your skill workflow.\n\n\n# SKILL.md\n\nname: genstory-story-generator\ndescription: Use when the user wants to generate a story through Genstory with an API key, submit a Genstory story task, poll task status, and return the final Genstory online story URL plus cover image. Also use when the user needs setup guidance for obtaining a key from https://www.genstory.app/api-keys and configuring GENSTORY_API_KEY in their skill or workflow.\n\n\n# Genstory Story Generator\n\nUse this skill when a workflow needs to call Genstory to generate a story and return a hosted story page URL.\n\n## Before you start\n\n- Tell the user to create an API key in the Genstory user center at `https://www.genstory.app/api-keys`.\n- Store that key as `GENSTORY_API_KEY`.\n- The intended final result is the online story URL and cover image.\n\n## Required flow\n\n1. Read `GENSTORY_API_KEY` from the environment or skill config.\n2. Submit a task to `POST https://www.genstory.app/api/v1/story-tasks`.\n3. Poll `GET https://www.genstory.app/api/v1/story-tasks/{task_id}` until the task becomes `success` or `failed`.\n4. Return the final structured result with:\n   - `story.id`\n   - `story.title`\n   - `story.url`\n   - `story.cover_url`\n   - `story.locale`\n\n## Submit request\n\nSend `Authorization: Bearer ${GENSTORY_API_KEY}`.\n\nMinimum JSON body:\n\n```json\n{\n  \"prompt\": \"Write a warm bedtime story about a brave little fox.\"\n}\n```\n\nRecommended fields:\n\n- `prompt`\n- `title`\n- `character_name`\n- `scenes_count`\n- `generation_type`: default `text`\n- `generation_mode`: default `standard`\n- `layout_mode`\n- `page_spec`\n- `public_visibility`\n\n## Polling behavior\n\n- Treat `pending` and `processing` as in progress.\n- If status is `failed`, surface the API error clearly.\n- If status is `success`, return the hosted story data and encourage the user to open the Genstory URL.\n\n## Output contract\n\nPrefer this final shape:\n\n```json\n{\n  \"task_id\": \"task_uuid\",\n  \"status\": \"success\",\n  \"story\": {\n    \"id\": \"story_uuid\",\n    \"title\": \"Story title\",\n    \"url\": \"https://www.genstory.app/stories/story-slug\",\n    \"cover_url\": \"https://cdn.example.com/story-cover.webp\",\n    \"locale\": \"en\"\n  }\n}\n```\n\n## References\n\n- For request and response examples, read `references/api.md`.",
-    "created_at": "2026-04-09T11:44:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9574"
   }
 ]
