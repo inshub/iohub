@@ -1,10 +1,20 @@
 [
   {
+    "id": 9678,
+    "title": "〖工具自荐〗Destiny Matrix — 免费生成命运矩阵图表，并用 AI 帮你读懂结果",
+    "content": "## Destiny Matrix — 免费生成命运矩阵图表，并用 AI 帮你读懂结果\n\n你有没有遇到过这类命理 / 数字矩阵网站：图表能算出来，但页面里全是数字、线条和术语，第一次接触的人基本不知道该先看哪里，也很难把结果和自己的感情、工作、关系、状态联系起\n来。\n\n**Destiny Matrix** 是我做的一个在线工具，想解决的就是这个问题：不是“算不出来”，而是“算出来以后还是看不懂”。\n\n用户输入姓名和出生日期后，可以直接生成一张 Destiny Matrix 图表。基础图表可以免费使用，不需要登录；如果还想继续追问，也可以用 AI 把图表结果翻译成更容易理解的现实语言。\n\n### 它能做什么\n\n- 免费生成 Destiny Matrix 图表\n- 查看核心数字、重复模式和整体结构\n- 提供 love line、money line、compatibility、chakra view 等常见解读视角\n- 支持 AI 继续追问，比如感情模式、职业方向、内在冲突、下一步重点\n- 基础使用无需登录，门槛比较低\n\n### 这个工具和同类产品有什么不同\n\n- 很多同类网站重点是“生成图表”，但对新手不够友好\n- 很多结果是静态展示，用户看到一堆数字，还是不知道怎么理解\n- 这个工具更强调“把结果讲明白”，而不只是把图算出来\n- AI 部分不是泛泛而谈，而是围绕当前图表结果继续解释和追问\n\n### 适合什么场景\n\n- 第一次接触 Destiny Matrix，想先快速看懂自己图表的人\n- 想从感情、关系、工作、个人成长这些角度理解图表的人\n- 不想先学一堆术语，只想先得到一个可用结果的人\n\n> 产品地址：https://destinymatrixai.com",
+    "created_at": "2026-04-19T01:07:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9678"
+  },
+  {
     "id": 9677,
     "title": "【开源自荐】Blog Helper — 给静态博客加上「数据生命力」",
     "content": "## Blog Helper — 给静态博客加上「数据生命力」\n\n  你用 Jekyll、Hexo、Hugo、MWeb 或任何工具生成静态博客吗？部署到 GitHub Pages、VPS 或对象存储后，是不是完全不知道有没有人看？\n\n  **Blog Helper** 就是为了解决这个问题 — 一个轻量级的博客分析后端，专为静态博客设计。\n\n  ![Dashboard](https://raw.githubusercontent.com/thinkycx/blog-helper/main/dashboard.jpg)\n\n  ### 它能做什么\n\n  - **PV / UV 统计** — 每篇文章的阅读量和独立访客数，基于浏览器指纹去重，不依赖第三方服务\n  - **热门文章排行** — 自动生成 7 天 / 30 天 / 全部时间的热文榜，可嵌入侧边栏\n  - **内置 Dashboard** — 密码保护的分析面板，趋势图、来源分析、访客列表、原始访问记录一目了然\n  - **多站点支持** — 一个实例服务所有博客，按域名自动隔离数据\n  - **零依赖 SDK** — 一行 `<script>` 引入，零配置开箱即用，博客主题无需大改\n\n  ### 为什么不用 Google Analytics / Umami / ...\n\n  - GA 太重，隐私问题多，被 ad blocker 屏蔽\n  - Umami 功能强大但对个人博客来说过于复杂\n  - Blog Helper 只做静态博客需要的事：**轻、快、够用**。单个 Go 二进制 + SQLite，资源占用极低，部署在最便宜的 VPS 上也绑绰有余\n\n  ### 部署有多简单\n\n  Go 编译一个二进制，Docker Compose 一键启动，博客模板里加一行 JS。全程可以交给 AI（Claude / GPT）帮你完成，从配置到上线不超过 10 分钟。\n\n  ### 适用场景\n\n  任何能生成 HTML 的静态博客工具：Jekyll、Hexo、Hugo、MWeb、Zola、Pelican、VitePress……只要你的博客能加 `<script>` 标签，就能用。\n\n  > 项目地址：[github.com/thinkycx/blog-helper](https://github.com/thinkycx/blog-helper)\n  > 开发过程： https://thinkycx.me/2026-04-19-blog-helper-for-static-blog.html",
     "created_at": "2026-04-18T18:41:52Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9677"
   },
   {
@@ -810,13 +820,5 @@
     "created_at": "2026-04-09T14:57:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9578"
-  },
-  {
-    "id": 9577,
-    "title": "【开源自荐】Rikune - 一个面向任意二进制逆向分析的 MCP Server",
-    "content": "仓库地址：[[GitHub - Last-emo-boy/rikune · GitHub](https://github.com/Last-emo-boy/rikune)](https://github.com/Last-emo-boy/rikune)\n\n最近在思考如何把逆向的工具集成到一个MCP中，集中调用，做了一会之后感觉目前的方向似乎会有点重。\n这是一个面向 **Windows 逆向分析** 的 **MCP Server**。想法是可以把一些常见的逆向分析流程整理成一组可以被 LLM 直接调用的能力，比如 PE 初步分析、Ghidra 辅助检查、DLL / COM profiling、运行时证据接入、Rust / .NET 恢复，以及偏源码级的重建和总结，其实一开始的诞生是想辅助我对一些crackme进行分析，还有一些恶意样本的分析，目前的能力是在接入codex的时候可以自主破解难度lvl4的crackme。\n\n做的时候主要想的有两点 ，首先是分析过程要可观察，不是黑箱跑完只吐一个结果，然后是大样本分析不能一上来就把 MCP 请求卡死，以Weixin.dll的分析为例子。\n所以 Rikune 现在做了一个分阶段、非阻塞的分析流水线，把流程拆成 `fast_profile`、`enrich_static`、`function_map`、`reconstruct`、`dynamic_plan`、`dynamic_execute`、`summarize` 等阶段，可以先给预览结果，再逐步深入。\n\n目前它除了 MCP 本体之外，也带了一套相对完整的运行时：\n\n* Docker 侧集成了 Ghidra、Rizin、YARA-X、UPX、Wine/winedbg、Frida CLI、Qiling、angr、RetDec 等工具链\n* 提供 HTTP File Server，方便样本上传和产物下载\n* 还做了一个Web Dashboard，可以实时看分析进度、样本状态、工具情况。\n\n![image|517x251](https://cdn3.linux.do/original/4X/f/6/7/f6722594e8b213c5b1f4164eb9d9668f51162c4d.png)\n![image|516x253](https://cdn3.linux.do/original/4X/2/5/6/2562b38144d8b789afe67fea3d42ea87de0cbb6a.png)\n\n这个项目还在持续迭代中。\n如果你对下面这些方向感兴趣，欢迎看看、提issue",
-    "created_at": "2026-04-09T13:50:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9577"
   }
 ]
