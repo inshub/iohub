@@ -1,5 +1,13 @@
 [
   {
+    "id": 9707,
+    "title": "【开源自荐】SigCLI — AI Agent 认证代理工具，本地 MITM 代理实现零信任凭证注入",
+    "content": "[SigCLI](https://github.com/sigcli/sigcli) — AI Agent 的认证层。\n\n做 AI Agent 的都知道一个痛点——Agent 需要访问 Jira、Slack、Confluence、内部 API，但凭证怎么传？粘贴到 shell 历史里？写在 .env 里？直接丢给 Agent 的上下文窗口？每一种都是安全隐患。\n\nSigCLI 的核心思路：**在网络层解决认证问题，让凭证永远不暴露给 AI Agent。**\n\n一条命令启动本地 MITM 代理，AI Agent 只需设置 `HTTP_PROXY`，凭证在网络层透明注入——Agent 从头到尾不知道凭证的存在：\n\n```\n  AI Agent                  sig proxy (127.0.0.1)            Target API\n     |                             |                             |\n     |  GET /api/myself            |                             |\n     |  (no auth headers)     -->  |  + Cookie: SESSION=xxx      |\n     |                             |  + Authorization: Bearer yyy|\n     |                             |  ------------------------>  |\n     |                             |                             |\n     |       <-- 200 OK -----------|       <-- 200 OK -----------|\n```\n\n```bash\nnpm install -g @sigcli/cli\nsig init && sig login https://jira.example.com\nsig proxy start  # MITM 代理，AI Agent 设置 HTTP_PROXY 即可\n```\n\n核心特性：\n- **本地 MITM 代理** — 零信任凭证注入，凭证不进入 AI 进程内存\n- **浏览器 SSO** — 支持任何网站、任何登录流程，无头→可视自动切换\n- **AES-256-GCM 加密存储** — 凭证不出现在代码仓库或 shell 历史中\n- **4 种策略** — cookie、oauth2、api-token、basic\n- **SSH 同步** — 笔记本登录，`sig sync push` 到远程机器\n- 内置 Slack、Outlook、MS Teams 等 AI Agent Skills\n- TypeScript & Python SDK\n\n| 安全层级 | 机制 | 效果 |\n|------|------|------|\n| 加密存储 | AES-256-GCM | 凭证文件即使被读取也无法解密 |\n| 进程隔离 | `sig run` 环境变量注入 | 不出现在 shell 历史或 ps 输出 |\n| 输出脱敏 | stdout/stderr 自动替换 [REDACTED] | AI 上下文窗口看不到真实令牌 |\n| **零信任代理** | **MITM 代理在网络层注入** | **AI 进程内存中根本没有凭证** |\n\nGitHub: https://github.com/sigcli/sigcli\n网站: https://sigcli.ai\n\n<img src=\"https://sigcli.ai/demo.gif\" alt=\"SigCLI demo\" width=\"480\" />",
+    "created_at": "2026-04-21T13:51:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9707"
+  },
+  {
     "id": 9706,
     "title": "【工具自荐】Fullscreen Text - 1 秒把文字全屏显示在手机、平板或电脑上",
     "content": "大家好，我做了一个英文小工具网站：\n\n**Fullscreen Text**\nhttps://full-screen.app/\n\n它的功能很简单：输入一段文字，点击按钮后就可以立刻全屏显示，适合把手机、平板、电脑临时当作“文字展示牌”来用。\n\n<img width=\"2768\" height=\"1612\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f0cb9cb2-ed01-4585-9060-9cc6f3d2d674\" />\n\n### 这个工具适合什么场景\n\n- 会议、教室、活动现场临时展示一句话\n- 在嘈杂环境中快速给别人看一段文字\n- 展示 “Starting Soon / Be Right Back / Welcome / Break” 这类提示语\n- 没有必要专门做 PPT 或设计图时，快速把短文本放大展示\n\n### 目前特性\n\n- 无需登录，打开即用\n- 支持手机、平板、电脑\n- 输入文字后可一键全屏\n- 提供多种展示风格\n- 支持自定义背景色和文字色\n- 整体偏轻量，尽量减少复杂操作\n\n### 我为什么做这个\n\n有时候只是想快速展示一句话，比如“稍等一下”“马上开始”“欢迎光临”，如果为了这件事去开 PPT、做图或者找别的软件，操作会有点重。\n\n所以我做了这个尽量简单的版本：输入文字 -> 选择样式 -> 立即全屏。\n\n### 欢迎反馈\n\n如果你觉得这个工具有用，或者你有更实际的使用场景、改进建议，也欢迎告诉我。\n\n网站地址：\nhttps://full-screen.app/",
@@ -816,13 +824,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9607"
-  },
-  {
-    "id": 9606,
-    "title": "【工具自荐】MediaStudio - 利用notebooklm自动制作自媒体视频和音频的工具",
-    "content": "## 工具介绍\n\nMediaStudio 是一款收费的辅助自媒体博主处理媒体素材的工具，提供免费试用，主要的功能有\n\n视频处理\n\n- 利用 Google NotebookLM 生成音频和视频。按照既定的格式指定生成的音视频规格，本软件可以自动上传本地素材到NotebookLM，然后自动下载生成好的音视频，无人值守。\n- 能够去除 NotebookLM 视频的水印logo，并换成自己的logo。\n- 能够从任意视频文件中提取音频，做成播客节目。\n- 能够将多个短视频组装成长视频，适合做视频专辑。\n\n图片处理\n\n- 将PNG图片转换成苹果电脑的icns格式。\n- 图片缩放。便于将高清图片缩小后上传到各主流媒体平台。\n- 图片加水印。在图片的任意位置添加自定义文字作为水印。\n- 图片去水印。目前支持对豆包生成的图片去除水印。\n\n<img width=\"1332\" height=\"1071\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5e44bfa0-10b5-4a79-86e2-df9ffaeb31fd\" />\n\n- 详情介绍：https://wisdom-valley.net/guide/media-studio/index.html \n- 下载地址：https://wisdom-valley.net/get/index.html?product=media-studio\n\n\n## 适合的场景\n\n- 适合自媒体博主的日常工作，利用notebooklm自动生成视频和音频，就可以发布到各个自媒体平台。\n- 临时想要处理一下媒体素材，但是要到处去找小工具，比如刚想要发布一张图片到博客上，提示图片太大。想要发布一张豆包的图片到博客上，想要去个豆包的水印。诸如此类的场景中的小问题，手边有个瑞士军刀快速解决一下。\n\n## 核心价值\n\n- 给自媒体博主日常的音视频生成提供一种基于notebooklm的快速的解决方案，极大节省时间，适合批量，提升效率。\n- 图片处理的小工具，随手用，用完即毕，节省时间。",
-    "created_at": "2026-04-12T04:56:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9606"
   }
 ]
