@@ -1,5 +1,13 @@
 [
   {
+    "id": 9722,
+    "title": "【开源自荐】Project River — 将 Git 仓库贡献历史渲染为随时间流动的河流图",
+    "content": "⭐ 项目地址：https://github.com/Lionad-Morotar/project-river\n🌐 在线体验：https://lionad-morotar.github.io/project-river/\n\n一个 Git 历史可视化工具。输入一个 Git 仓库，它会分析完整的 commit 历史，将每位贡献者的活动量渲染为随时间流动的 Streamgraph（河流图）。\n\n支持多项目对比、缩放与刷选导航、贡献者高亮，以及项目健康度信号（贡献集中度、活跃度趋势等）。\n\n技术栈：Nuxt 4 + D3.js + PostgreSQL\n\n**项目首页**\n\n<img width=\"1684\" height=\"1363\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/807dc28b-63f7-4ff6-bef2-4746d5fa9788\" />\n\n**河流页面**\n\n<img width=\"1684\" height=\"1363\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/304bd03e-f94c-4f5a-a80d-0be8402634ca\" />\n\n**切换主题色等功能**\n\n<img width=\"1684\" height=\"1363\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7618ac18-6ed8-42cb-bab8-60947f14525d\" />",
+    "created_at": "2026-04-22T17:22:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9722"
+  },
+  {
     "id": 9721,
     "title": "【开源自荐】SkVM - 给 LLM Agent Skill 做 AOT/JIT 编译优化，让 Skill 在不同模型/Harness上能高效运行",
     "content": "- 项目名称：SkVM\n- 项目地址：https://github.com/SJTU-IPADS/SkVM\n- 官网：https://skillvm.ai\n- 论文：https://arxiv.org/abs/2604.03088\n\nSkVM 是上海交大 IPADS 实验室开源的 **LLM Agent Skill 编译器与运行时系统**——字面意义上的编译器，不是比喻。它把一个 Agent Skill 当成源码，针对具体的「模型 + Agent 框架」组合，做 AOT 编译和 JIT 优化，再交给运行时执行。\n\n### 为什么需要编译\n\n一个 Skill 从 OpenClaw 搬到 Hermes-agent、从 opus-4.6 搬到 qwen3.6-35b-a3b，往往就会失效——因为 Skill 隐含地假设了模型的能力和 harness 中设定的 context 以及 tool sets。但这个问题被大部分人忽视，甚至使用 Skill 之后效果反而会变差也不自知。现在要解决这个问题是靠手动一个个改，既不可复现也不可扩展。SkVM 把这件事形式化成编译问题：源码（Skill）→ 目标平台（模型 + harness）→ 编译后的 Skill 及相关产物。\n\n### 三个阶段，对应三种经典编译器技术\n\n- **Profiling** ——用 26 个原语微基准测出目标模型 + Harness 的真实能力画像，相当于编译器的目标机器描述（target description）\n- **AOT 编译** ——多 pass 重写 Skill：pass 1 能力补齐、pass 2 依赖声明、pass 3 工作流并行化（DLP/ILP/TLP），对应传统编译器的优化 pass\n- **JIT 优化** ——运行时做两件事：\n  - **JIT-boost**：识别重复出现的 LLM 调用，固化成模板直接旁路掉 LLM，类似 tracing JIT 对热路径的特化\n  - **JIT-optimize**：支持自动生成任务或者根据真实运行日志迭代改进 Skill 内容\n\n目前支持 Claude、OpenAI 兼容接口、OpenRouter；Agent 侧支持 bare-agent、OpenCode、OpenClaw、Hermes、pi 等 6 种 harness。\n\n### 安装\n\n```bash\ncurl -fsSL https://skillvm.ai/install.sh | sh\n# 或\nnpm i -g @ipads-skvm/skvm\n```\n\nDemo 视频(Skill 质量对比 / Agent 执行加速)见 https://github.com/SJTU-IPADS/SkVM#demo\n",
@@ -812,13 +820,5 @@
     "created_at": "2026-04-14T03:28:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9622"
-  },
-  {
-    "id": 9621,
-    "title": "【网站自荐】Floom —— AI 原生的原型设计协作平台",
-    "content": "# Floom — AI 驱动的原型协作平台\n\n## 官网：https://floom.pro\n\n## 一句话介绍\n\n**Floom 把 PRD 直接变成可交互的高保真原型，团队随时标注、评论、迭代。**\n\n---\n\n## 项目简介\n\nFloom 是一个面向产研团队的原型协作平台。不同于传统原型工具（Figma/Axure）需要手动拖拽每个组件，Floom 让你把需求文档（PRD）丢给 AI，几分钟内生成可运行的 HTML 原型，团队成员可以直接在原型上打标注、写评论、管理版本。\n\n整个工作流闭环覆盖：\n\n**PRD 撰写 → AI 生成原型 → 团队协作标注 → 版本迭代 → 一键分享 → 导出 Figma / 对接 MCP**\n\n---\n\n## 核心特点\n\n### 🤖 AI 原型生成\n\nPRD 直接驱动 — 写完需求文档，AI 自动生成可交互 HTML 原型，或自行上传 HTML原型\n\n### ✏️ 所见即所标\n\n所有标注直接打在原型上，不是另开一个\"评审文档\"。支持精准定位到任意元素、多人多角色评论、分类归档。\n\n### 🔖 版本管理\n\n每次保存自动生成版本快照，支持对比、回滚、在不同版本间迁移已有标注，迭代不丢上下文。\n\n### 🔗 分享即所得\n\n一个链接丢到飞书/微信，对方无需登录即可浏览。可设公开/私密，可限定访问版本。\n\n### 🧩 团队工作空间\n\n多团队工作空间管理，原型和 PRD 按团队隔离。\n\n### 🎨 Figma 一键导出\n\n通过官方 Figma MCP 把 HTML 原型反向输出成 Figma 设计稿，交付设计师继续打磨。\n\n### 🔌 MCP 协议\n\n内置 MCP Server，支持 Claude/Cursor 等 AI Agent 直接读写你的原型和 PRD，AI 工作流无缝接入。\n\n<img width=\"3448\" height=\"1872\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/96fe8413-569e-4760-9ff8-67eab030d5bb\" />\n\n<img width=\"3456\" height=\"1868\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5448e2ea-dfe8-4baf-a4f9-dab144e21433\" />\n",
-    "created_at": "2026-04-14T02:08:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9621"
   }
 ]
