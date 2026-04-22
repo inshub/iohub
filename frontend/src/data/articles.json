@@ -1,5 +1,13 @@
 [
   {
+    "id": 9721,
+    "title": "【开源自荐】SkVM - 给 LLM Agent Skill 做 AOT/JIT 编译优化，让 Skill 在不同模型/Harness上能高效运行",
+    "content": "- 项目名称：SkVM\n- 项目地址：https://github.com/SJTU-IPADS/SkVM\n- 官网：https://skillvm.ai\n- 论文：https://arxiv.org/abs/2604.03088\n\nSkVM 是上海交大 IPADS 实验室开源的 **LLM Agent Skill 编译器与运行时系统**——字面意义上的编译器，不是比喻。它把一个 Agent Skill 当成源码，针对具体的「模型 + Agent 框架」组合，做 AOT 编译和 JIT 优化，再交给运行时执行。\n\n### 为什么需要编译\n\n一个 Skill 从 OpenClaw 搬到 Hermes-agent、从 opus-4.6 搬到 qwen3.6-35b-a3b，往往就会失效——因为 Skill 隐含地假设了模型的能力和 harness 中设定的 context 以及 tool sets。但这个问题被大部分人忽视，甚至使用 Skill 之后效果反而会变差也不自知。现在要解决这个问题是靠手动一个个改，既不可复现也不可扩展。SkVM 把这件事形式化成编译问题：源码（Skill）→ 目标平台（模型 + harness）→ 编译后的 Skill 及相关产物。\n\n### 三个阶段，对应三种经典编译器技术\n\n- **Profiling** ——用 26 个原语微基准测出目标模型 + Harness 的真实能力画像，相当于编译器的目标机器描述（target description）\n- **AOT 编译** ——多 pass 重写 Skill：pass 1 能力补齐、pass 2 依赖声明、pass 3 工作流并行化（DLP/ILP/TLP），对应传统编译器的优化 pass\n- **JIT 优化** ——运行时做两件事：\n  - **JIT-boost**：识别重复出现的 LLM 调用，固化成模板直接旁路掉 LLM，类似 tracing JIT 对热路径的特化\n  - **JIT-optimize**：支持自动生成任务或者根据真实运行日志迭代改进 Skill 内容\n\n目前支持 Claude、OpenAI 兼容接口、OpenRouter；Agent 侧支持 bare-agent、OpenCode、OpenClaw、Hermes、pi 等 6 种 harness。\n\n### 安装\n\n```bash\ncurl -fsSL https://skillvm.ai/install.sh | sh\n# 或\nnpm i -g @ipads-skvm/skvm\n```\n\nDemo 视频(Skill 质量对比 / Agent 执行加速)见 https://github.com/SJTU-IPADS/SkVM#demo\n",
+    "created_at": "2026-04-22T16:57:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9721"
+  },
+  {
     "id": 9720,
     "title": "〖工具自荐〗ChatSend：一个面向开发者和运营团队的 WhatsApp API 与群发平台",
     "content": "## ChatSend\n\n  项目地址：https://chatsend.app/\n\n  ChatSend 是一个面向开发者和业务团队的 WhatsApp API 与群发平台，核心思路是把“号码管理、消息发送、群发活动、\n  Webhook 回调、送达追踪”放到同一个后台里完成。\n\n<img width=\"4558\" height=\"2602\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfa05592-1fe9-4201-9e7d-5555df7e836f\" />\n\n  它比较适合两类场景：\n\n  1. 开发者需要把 WhatsApp 消息能力接入自己的系统，比如通知、客服、线索跟进、自动化流程\n  2. 运营团队需要管理多个 WhatsApp 号码，做联系人导入、批量发送、个性化消息和活动跟踪\n\n  我觉得这个产品比较实用的点有这些：\n\n  - 提供 REST API，方便开发者直接集成到现有业务系统\n  - 支持多个 WhatsApp 号码统一管理\n  - 支持 CSV 联系人导入，适合批量触达场景\n  - 支持个性化消息、媒体消息和 Webhook 通知\n  - 可以查看送达、已读、回复等活动表现\n  - 文档和控制台是分开的，开发接入和业务使用都比较顺手\n\n  如果你在做出海业务、客户通知、客服自动化，或者希望低门槛接入 WhatsApp 能力，可以看一下这个产品。\n\n  项目地址：https://chatsend.app/\n  文档地址：https://chatsend.app/docs",
@@ -812,13 +820,5 @@
     "created_at": "2026-04-14T02:08:54Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9621"
-  },
-  {
-    "id": 9620,
-    "title": "自荐：随身 FM - 一款干净简洁无广告在线听广播电台的 APP",
-    "content": "APP名称\n随身FM\n\n官网\nhttps://suishenfm.com/\n\n项目简介\n喜欢听广播电台的老哥们看过来，习惯在地铁上听听音乐、新闻、广播。但来来回回换了七八个 App，不是这个要开会员，就是那个广告满天飞，要不就是内容分散在各个平台，每次找内容都要跳转好几次。 \"算了，自己写一个吧。\" \n\n核心特点\n随身 FM 做到了足够的干净简洁，不收集任何的用户隐私，就连收藏等功能，数据都是保存在了本地的 sqlite。\n\n技术选项：Flutter\n\nGoogle Play 商店： https://play.google.com/store/apps/details?id=com.suishenfm.app\n\n为什么推荐这个项目？\n广播电台内容全，APP干净简洁，无广告",
-    "created_at": "2026-04-14T01:41:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9620"
   }
 ]
