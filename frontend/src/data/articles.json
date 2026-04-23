@@ -1,5 +1,21 @@
 [
   {
+    "id": 9741,
+    "title": "【开源自荐】Readme.skill：把你的 Claude Code / Codex 使用记录变成一份可分享的 AI-Native 开发者 README",
+    "content": "- 项目地址：https://github.com/study8677/Readme.skill\n- 示例输出：https://github.com/study8677/Readme.skill/blob/main/examples/example_profile.md\n\n最近很多人会展示自己的 GitHub Profile、技术博客、开源项目，但对于“你是怎么和 AI 一起工作的”，其实还没有一个适合对外分享的标准画像。于是我做了这个 skill。\n\n`Readme.skill` 会在本地只读分析 Claude Code 和 Codex CLI 的使用数据，然后自动生成一份默认脱敏的 Markdown 档案，用来展示你的 AI 协作方式，而不是只晒几张聊天截图。\n\n它会综合这些信息：\n\n- `~/.claude` / `~/.codex` 的统计文件、SQLite、history JSONL\n- GitHub 贡献数据（通过 `gh`）\n- 本地 `git log`\n\n最后输出一份结构化 README，包含这些维度：\n\n- 一览：sessions、threads、活跃天数、commit/day 等\n- AI-Native 实践：多模型编排、prompt caching、reasoning effort\n- AI 基础设施：自己做过哪些 skills / hooks / automations\n- 协作风格：常用 slash commands、session 架构\n- 项目与领域分布：默认匿名成“项目 A/B/C”\n- Evolution 曲线：AI 使用方式是怎么演化的\n- 工作节奏、投入与产出\n\n我觉得这个项目比较有意思的点有三个：\n\n1. **它不是一个“读取聊天内容做总结”的工具**  \n   只读取统计字段、plan/thread 标题、首条用户消息，不读取完整对话正文；默认匿名项目名，还会清洗 token / webhook / 邮箱。\n\n2. **它本身就是一个 skill，而不是一段脚本**  \n   仓库里真正的交付物只有一个 `SKILL.md`。思路是把“怎么分析自己与 AI 的协作”写成 agent 可执行的 workflow，而不是做成一个黑盒程序。\n\n3. **它试图回答一个更有意思的问题**  \n   不是“你用了多少 token”，而是“AI 让你获得了怎样的交付速度、跨栈广度和工作流成熟度”。\n\n安装也很简单，把 `SKILL.md` 软链或复制到 `~/.claude/skills/readme-skill/` 或 `~/.codex/skills/readme-skill/`，然后在对话里说一句：\n\n- `生成我的 AI 档案`\n- `做一份 AI-native README`\n- `summarize my Claude / Codex history`\n\n如果周刊读者最近也在重度使用 Claude Code / Codex，应该会对这种“给 AI 编程习惯做体检和画像”的工具感兴趣。",
+    "created_at": "2026-04-23T17:19:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9741"
+  },
+  {
+    "id": 9740,
+    "title": "【工具自荐】基于 cc-switch 的共享 token 平台",
+    "content": "## 解决用户痛点\n\n1、code 订阅账号无法安全、方便的分享\n2、用不完的 code 订阅浪费，但直接将账号托管到”代卖“平台又有封号风险\n3、频繁在多个地区登陆 code 订阅账号会增加封号风险\n4、囊中羞涩，不想花钱，但想学习使用最前沿的模型\n\n## 相关网站\n\n* 官网：https://tokenswitch.org/\n* Japan Router: https://jptokenswitch.cc/\n* Singapore Router: https://sgptokenswitch.cc/\n* cc-switch: https://github.com/Xiechengqi/cc-switch\n* cc-switch router: https://github.com/Xiechengqi/portr-rs\n\n## 工作原理\n\n<img width=\"1132\" height=\"333\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6242c708-da69-479c-998d-a2ec8c178bbf\" />\n\n## 使用截图\n\n<img width=\"996\" height=\"940\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/279843b3-aebb-469c-8ff7-a058189e53bc\" />\n\n<img width=\"1527\" height=\"935\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aa38afda-47e4-41fa-b376-9489f967e2d0\" />",
+    "created_at": "2026-04-23T15:57:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9740"
+  },
+  {
     "id": 9739,
     "title": "【工具推荐】ASS字幕字体嵌入工具 - 智能子集化 浏览器本地处理 https://subs.js.org/ass-subset/",
     "content": "## 工具链接\n- **使用工具**：https://subs.js.org/ass-subset/\n- **源代码仓库**：https://github.com/MontageSubs/ass-subset\n- **开发记录**：https://montagesubs.substack.com/p/ass-subset-39476b0843e9\n\n\n## 核心痛点\n\nASS 字幕使用自定义字体时，直接嵌入会导致文件体积膨胀到 **15-50MB**。**字体子集化**通过只保留字幕实际用到的字符来解决这一问题。一个典型字幕只需约 2000 个字符，而中文字体包含数万个字，处理后文件体积可从 **25MB 压缩至 1MB**。\n\n这项技术虽然存在已久，但以往需要安装软件或使用命令行，门槛过高，难以推广。\n\n\n## 开发背景\n\n我是蒙太奇字幕组（@MontageSubs）的小p。我们是一个专注于精致排版和极致翻译的字幕社群。制作[《至尊马蒂》](https://github.com/MontageSubs/Marty_Supreme_2025)字幕时，为实现特效效果，我们的 NickCollect 大量使用了绘图指令，导致 ASS 文件膨胀至 **20MB+**。我随后编写的 [Python 脚本](https://github.com/MontageSubs/ass-tools)将 600 条重复指令优化为 12 个字体字符，**瞬间将文件缩减至 1MB**。\n\n但命令行工具使用门槛太高，基本只有我在使用。为了让更多人受益，我决定将脚本迁移到浏览器。在这个过程中，我意识到当时还没有基于浏览器的字体子集化方案，于是就把它做了出来。工具发布后收到了社群的宝贵反馈和鼓励，不断完善迭代，逐步演变为完整的**字幕字体嵌入一体化解决方案**。\n\n很高兴的是，社群朋友 Yuri-NagaSaki 也随后独立推出了类似的浏览器工具（#9466）。我们各自采用了不同的设计思路：本工具选择了**本地离线处理 + 丰富专业选项**的方案，无需后端服务，而对方的工具在易用性上有很好的优势。能够和 Yuri-NagaSaki 这样的开发者一起为字幕生态做贡献，是我们对字幕社群繁荣的共同期许。期待更多优秀的开源工具涌现，让字幕生态越来越丰富。\n\n<a href=\"https://subs.js.org/ass-subset/\">\n  <img alt=\"Image\" src=\"https://github.com/user-attachments/assets/d9bdd329-0cd9-4b19-853c-f3082b052bec\" width=\"100%\" />\n</a>\n\n## 功能特性\n\n### 字体优化\n- **图形指令子集化** — 将绘图指令转换为字体字符，显著减少文件体积\n- **灵活字体嵌入** — 提供丰富选项，精细控制嵌入方式\n- **智能自重处理** — 自动识别并优化字体粗细变体\n\n### 批处理能力\n- **批量导入** — 支持批量上传及文件夹导入，一次处理多个文件\n- **系统字体识别** — 在支持的浏览器上智能加载本地字体\n- **批量清理** — 快速移除多个文件中的冗余内嵌字体\n\n### 预览与管理\n- **实时预览** — 字体嵌入后即时查看最终效果\n- **字体提取** — 从已处理字幕中提取内嵌字体\n\n### 用户体验\n- **跨平台免安装** — 基于浏览器原生技术，无需安装任何软件，Windows、macOS、Linux、手机 一网打尽\n- **极简操作体验** — 几个点击完成所有功能，不需要任何技术基础\n- **原创设计** — 每行 CSS 均为原创开发，视觉和交互经过精心打磨\n- **本地离线处理** — 所有字幕和字体数据都在浏览器本地处理，永不上传服务器，完全支持离线使用\n\n\n## 立即试用\n\n想要体验这个工具吗？你可以前往 [MontageSubs 的 GitHub 组织](https://github.com/MontageSubs)下载我们的字幕作品，挑选其中的 ASS 字幕文件上传到工具中试试。我们期待听到你的反馈和建议！\n\n---\n\n<div align=\"center\">\n\n**蒙太奇字幕组 (MontageSubs)**  \n\"用爱发电 ❤️ Powered by Love\"\n\n</div>",
@@ -810,21 +826,5 @@
     "created_at": "2026-04-15T05:55:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9642"
-  },
-  {
-    "id": 9641,
-    "title": "【开源自荐】Lossless Memory — 让 Claude Code 拥有无损长期记忆",
-    "content": "  GitHub: https://github.com/winterfx/lossless-memory                                 \n                                          \nClaude Code 会话关了就忘，CLAUDE.md 不全。Lossless Memory 通过 Hooks全自动运行，把每次会话的原始消息存入SQLite，逐层压缩为层级摘要 DAG，下次开会话时自动注入上下文。所有摘要都能沿 DAG回溯到原始对话，真正无损。\n\n特性：零手动 | 层级摘要自动压缩 | FTS5    全文搜索（含 CJK） | /recall 随时检索历史\n\n内置 Skill：提供 /recall 斜杠命令，支持 search → describe → expand三步渐进式回溯，从关键词直达原始对话      \n                                          \n技术栈：Go + SQLite FTS5 + Claude Code Hooks & Skills\n\n\n<img width=\"1376\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f5a6a22f-783a-4f46-aaa1-4f3dbcc12d8d\" />",
-    "created_at": "2026-04-15T05:13:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9641"
-  },
-  {
-    "id": 9640,
-    "title": "【开源推荐】Resume Optimizer —— 面向求职者的 AI 简历审计与优化 Skill，适配 Claude Code / Codex",
-    "content": "\n项目地址：https://github.com/wyh0626/resume-optimizer\n\n**解决什么问题**\n\n求职者写简历最常见的毛病是\"写了做过什么，没写做成了什么\"。这个 Skill 让 AI 扮演一个严格的简历审计官，用\"所以呢？\"拷问法逐条审查你的简历，把职责描述改写成有说服力的成就描述，并根据目标岗位 JD 定向优化。\n\n**核心功能**\n\n* 五步深度审计：30秒初筛定论 → 地毯式逐项审查 → 战略修改蓝图 → 完整改写稿输出 → 行动清单\n* 影响力叙事改写：用 STAR/CAR 法则和决策-权衡模型，把\"负责XX系统\"变成\"解决了XX问题，带来XX结果\"\n* JD 匹配分析：根据目标岗位调整关键词、项目重点和职业叙事线\n* 风险识别：自动识别外包经历包装、玩具项目充数、量化缺失、技术表述失真等常见雷区\n* 一页简历压缩：两页以上简历可自动压缩为一页精华版\n\n**安装**\n\n```bash\n# Claude Code\nmkdir -p ~/.claude/skills\ngit clone https://github.com/wyh0626/resume-optimizer.git ~/.claude/skills/resume-optimizer\n\n# Codex\nmkdir -p ~/.codex/skills\ngit clone https://github.com/wyh0626/resume-optimizer.git ~/.codex/skills/resume-optimizer\n```\n\n**适用场景**\n\n社招/校招简历优化、投递前按 JD 定制、面试前自查漏洞、外包/转岗/空窗期叙事修复。开箱即用。",
-    "created_at": "2026-04-15T04:44:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9640"
   }
 ]
