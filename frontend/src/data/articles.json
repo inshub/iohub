@@ -1,5 +1,21 @@
 [
   {
+    "id": 9743,
+    "title": "【开源自荐】Learn Hermes Agent — 27 章图文并茂从零手写生产级 AI Agent 的 Python 教程",
+    "content": "项目简介\nLearn Hermes Agent 是一个代码优先的开源教程：用 27 章带你从零手写一个可跨平台、会持久化、能自我进化的自主 AI\nAgent。每章都有一个可运行的 Python 参考实现（agents/sNN_*.py），配套中英文讲解文档。灵感来自 Hermes\nAgent,但刻意砍掉了产品层细节，只保留\"真正决定一个 Agent 能不能自主工作\"的核心机制。\n\n<img width=\"1203\" height=\"559\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e35607af-59a2-4153-b4ee-aa5b217c8b24\" />\n\n核心亮点\n从最小对话循环 (s01) 一路到 RL 自进化 (s27)，每一步都是能跑的代码，不是只有图示。\n覆盖真实骨架：Agent Loop、工具系统、SQLite+FTS5 会话、Prompt 组装、上下文压缩、记忆与技能、权限、子 Agent、MCP、多平台网关（Telegram\n/ Discord / Slack / WeChat）、终端后端（Docker / SSH / Modal）、Cron、Browser、Voice、Hook、轨迹与 RL——一个不落。\n中文为主线，更新最快、最完整；英文同步；每章都有一张黑板风格示意图（如上）。\n教学原则明确：先讲\"没有这个机制会出什么问题\"，再讲\"最小正确实现\"，最后讲\"它如何插回主循环\"。\n适合谁\n会基本 Python、想真正理解一个自主 Agent 是怎么搭起来的读者——不想停留在\"套个框架跑起来\"的层面。\n\n项目地址\nhttps://github.com/longyunfeigu/learn-hermes-agent",
+    "created_at": "2026-04-24T01:45:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9743"
+  },
+  {
+    "id": 9742,
+    "title": "【开源自荐】MiroTalk SFU - 企业级、可扩展的实时视频平台，用于会议、网络研讨会和协作",
+    "content": "MiroTalk SFU 是一款基于选择性转发单元（SFU）架构的开源实时视频平台，提供可扩展、低延迟的浏览器端通信能力，支持会议、教育和直播等多种场景\n\n<img width=\"1108\" height=\"670\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/112c7164-29a0-4791-90db-d51059e32ce5\" />\n\n🔗 在线演示：https://sfu.mirotalk.com\n🔗 代码仓库：[GitHub 仓库](https://github.com/miroslavpejic85/mirotalksfu)",
+    "created_at": "2026-04-23T23:07:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9742"
+  },
+  {
     "id": 9741,
     "title": "【开源自荐】Readme.skill：把你的 Claude Code / Codex 使用记录变成一份可分享的 AI-Native 开发者 README",
     "content": "- 项目地址：https://github.com/study8677/Readme.skill\n- 示例输出：https://github.com/study8677/Readme.skill/blob/main/examples/example_profile.md\n\n最近很多人会展示自己的 GitHub Profile、技术博客、开源项目，但对于“你是怎么和 AI 一起工作的”，其实还没有一个适合对外分享的标准画像。于是我做了这个 skill。\n\n`Readme.skill` 会在本地只读分析 Claude Code 和 Codex CLI 的使用数据，然后自动生成一份默认脱敏的 Markdown 档案，用来展示你的 AI 协作方式，而不是只晒几张聊天截图。\n\n它会综合这些信息：\n\n- `~/.claude` / `~/.codex` 的统计文件、SQLite、history JSONL\n- GitHub 贡献数据（通过 `gh`）\n- 本地 `git log`\n\n最后输出一份结构化 README，包含这些维度：\n\n- 一览：sessions、threads、活跃天数、commit/day 等\n- AI-Native 实践：多模型编排、prompt caching、reasoning effort\n- AI 基础设施：自己做过哪些 skills / hooks / automations\n- 协作风格：常用 slash commands、session 架构\n- 项目与领域分布：默认匿名成“项目 A/B/C”\n- Evolution 曲线：AI 使用方式是怎么演化的\n- 工作节奏、投入与产出\n\n我觉得这个项目比较有意思的点有三个：\n\n1. **它不是一个“读取聊天内容做总结”的工具**  \n   只读取统计字段、plan/thread 标题、首条用户消息，不读取完整对话正文；默认匿名项目名，还会清洗 token / webhook / 邮箱。\n\n2. **它本身就是一个 skill，而不是一段脚本**  \n   仓库里真正的交付物只有一个 `SKILL.md`。思路是把“怎么分析自己与 AI 的协作”写成 agent 可执行的 workflow，而不是做成一个黑盒程序。\n\n3. **它试图回答一个更有意思的问题**  \n   不是“你用了多少 token”，而是“AI 让你获得了怎样的交付速度、跨栈广度和工作流成熟度”。\n\n安装也很简单，把 `SKILL.md` 软链或复制到 `~/.claude/skills/readme-skill/` 或 `~/.codex/skills/readme-skill/`，然后在对话里说一句：\n\n- `生成我的 AI 档案`\n- `做一份 AI-native README`\n- `summarize my Claude / Codex history`\n\n如果周刊读者最近也在重度使用 Claude Code / Codex，应该会对这种“给 AI 编程习惯做体检和画像”的工具感兴趣。",
@@ -810,21 +826,5 @@
     "created_at": "2026-04-15T16:58:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9644"
-  },
-  {
-    "id": 9643,
-    "title": "【工具自荐】- 免费的AI语音输入法-说话自动去口气词-自动翻译-工具调用-自动上写文聊天回复",
-    "content": "官网地址：https://spokentype.com\nSpokenType —— 让沟通回归自然，让输入触手可及。\n\n全场景 AI 智能语音协作专家\n—— 现已开启公测\n\n【核心功能：实时翻译与高效输入】\n即时同传级翻译： 支持母语实时转译，译文随语而至，实现无延迟、无停顿的地道表达。\n全场景跨语言输入： 无论是邮件撰写、即时通讯还是文档编辑，只需母语表达，即可实现目标语言的精准输出。\n极速语音转文字： 支持本地与云端双模驱动。本地响应极速，云端智能优化；效率较键盘提升 4 倍，录入速度达每分钟 220 字。\n智能口语优化： 内置自动结构化算法与口语过滤技术，自动移除“嗯”、“啊”等冗余词汇，智能添加标点并进行分段，让口语瞬间蜕变为高质量文章。\n\n【智能交互：深度上下文理解】\nAI 读屏与智能回复： 深度融合屏幕内容与个人记忆，精准捕捉上下文语义，仅需一句话即可生成符合个人习惯的得体回复。\n一键意图驱动编辑： 支持选中文字后通过语音下达指令。无论是精简、扩写、改变语气，还是生成创意回复，AI 均能精准理解并即刻执行。\n交互式文本问答： 选中任何网页或文档内容，即可通过语音进行摘要提取、深度解释或翻译，实现无缝的工作流体验。\n\n【个性化定制：精准与专业】\n智能场景适配： 根据应用环境自动切换语调——邮件场景专业严谨，聊天场景轻松自然，文档场景逻辑清晰。\n个性化词典： 深度学习并记忆用户的专属术语、特定名称与表达习惯，确保在各类应用中均能实现极高的识别准确率。\n多语言无缝切换： 支持 50+ 种语言，具备强大的语言自动检测能力，支持多语言混说，沟通无国界。\n\n【操作便捷】\n快捷键触发： 支持短按快捷键快速启动语音输入，随叫随用。\n\n\n\n<img width=\"1269\" height=\"1817\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aad1e538-cc23-4897-bfe2-66defc327571\" />\n\n<img width=\"1198\" height=\"1571\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2748bed2-02ac-4452-8c39-a5f58d91ae60\" />\n\n<img width=\"1194\" height=\"1351\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2002a4ee-1f1b-4e84-b9e0-750e4013204b\" />\n\n<img width=\"1195\" height=\"1365\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aac3cb20-a91a-427b-8e84-8d0f2f8342e6\" />\n\n<img width=\"1232\" height=\"1181\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/50094c36-1c35-48ea-b799-fdf48bc3d29e\" />",
-    "created_at": "2026-04-15T06:23:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9643"
-  },
-  {
-    "id": 9642,
-    "title": "DaBoss — 蒸馏你的老板，把高风险职场对话变成可重复的练习让 Claude Code 拥有无损长期记忆",
-    "content": "项目失败的头号原因不是技术，是沟通。DaBoss 让你粘贴真实聊天记录/邮件，AI自动生成一个有情绪、会打断、带隐藏议程的\"老板\"角色，在重要会议前反复过招。支持述职答辩、方案评审、模拟面试等 6 种场景，上传文档后 AI会从具体内容挑点追问，结束后给出六维度评估报告。核心是 5层结构化 Persona 建模（身份/表达/决策/人际/硬规则），每条性格特征都有原始素材溯源。支持语音和文字双通道。\n\nGitHub:  https://github.com/longyunfeigu/DaBoss",
-    "created_at": "2026-04-15T05:55:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9642"
   }
 ]
