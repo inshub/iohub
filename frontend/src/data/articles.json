@@ -1,5 +1,37 @@
 [
   {
+    "id": 9761,
+    "title": "【工具】pompelmi - 为 Node.js 开发者封装的 ClamAV 文件扫描库",
+    "content": "## 工具简介\n\npompelmi 是一个极简的 Node.js 开源库（ISC 协议），对 ClamAV 进行了封装。\n调用 `scan()` 扫描任意文件，返回一个类型化的 Symbol 结果：\n`Verdict.Clean`、`Verdict.Malicious` 或 `Verdict.ScanError`。\n\n无需守护进程，无需云服务，无需原生绑定，零运行时依赖。\n\n## 工作原理\n\n1. **验证** — 检查参数是否为字符串，文件是否存在\n2. **扫描** — 以子进程方式执行 `clamscan --no-summary <filePath>`，读取退出码\n3. **映射** — 将退出码直接映射为结果 Symbol\n\n不解析 stdout，不用正则，没有意外。\n\n## 基本用法\n\n```js\nconst { scan, Verdict } = require('pompelmi');\n\nconst result = await scan('/path/to/upload.zip');\n\nif (result === Verdict.Malicious) {\n  throw new Error('文件被拒绝：检测到恶意软件');\n}\n```\n\n## 扫描结果说明\n\n| 结果 | ClamAV 退出码 | 含义 |\n|---|:---:|---|\n| `Verdict.Clean` | 0 | 未发现威胁 |\n| `Verdict.Malicious` | 1 | 匹配到已知病毒或恶意软件签名 |\n| `Verdict.ScanError` | 2 | 扫描失败（I/O 错误、加密压缩包等），状态未知，建议视为不可信 |\n\n每个 Verdict Symbol 都有 `.description` 属性，方便日志输出：\n\n```js\nconsole.log(Verdict.Clean.description); // => 'Clean'\n```\n\n## 错误处理示例\n\n```js\nconst { scan, Verdict } = require('pompelmi');\nconst path = require('path');\n\nasync function safeScan(filePath) {\n  try {\n    const result = await scan(path.resolve(filePath));\n\n    if (result === Verdict.ScanError) {\n      console.warn('扫描未完成，作为预防措施拒绝该文件。');\n      return null;\n    }\n\n    return result; // Verdict.Clean 或 Verdict.Malicious\n  } catch (err) {\n    console.error('扫描失败：', err.message);\n    return null;\n  }\n}\n```\n\n## Docker / 远程扫描\n\n如果 ClamAV 运行在 Docker 容器或远程服务器上，只需传入 `host` 和 `port`，其他不变：\n\n```js\nconst result = await pompelmi.scan('/path/to/upload.zip', {\n  host: '127.0.0.1',\n  port: 3310,\n});\n```\n\n## 支持平台\n\n| 系统 | ClamAV 安装命令 |\n|---|---|\n| macOS | `brew install clamav && freshclam` |\n| Linux | `sudo apt-get install -y clamav clamav-daemon && sudo freshclam` |\n| Windows | `choco install clamav -y` |\n\n## 项目信息\n\n- GitHub：https://github.com/pompelmi/pompelmi\n- npm：https://www.npmjs.com/package/pompelmi\n- Stars：585+\n- 已被 Node Weekly、Stack Overflow Blog、Help Net Security 收录\n- 支持 Express、Fastify、Next.js、NestJS、Koa 等主流框架",
+    "created_at": "2026-04-25T16:03:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9761"
+  },
+  {
+    "id": 9760,
+    "title": "【开源自荐】适合 Claude Code、OpenCode、Codex 的终端 MUX0，侧边栏+tab栏+Code Agent状态显示+400多主题随意配置",
+    "content": "- 侧边栏管理、tab 项管理、终端内部分割\n- Claude Code 、OpenCode 、Codex 运行状态显示\n- 使用 libghostty 进行渲染，主题也继承了全部主题，随意控制\n\n官网落地页直接做了一个 mock 版本，可以直接在线体验，然后看自己喜欢下载。\n\n官网：[mux0.com](https://mux0.com/)\n\ngithub: [mux0](https://github.com/10xChengTu/MUX0)\n\n截图：\n\n<img width=\"2570\" height=\"1818\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f59057d6-7f67-43b2-a104-dd0e1be9a961\" />",
+    "created_at": "2026-04-25T15:17:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9760"
+  },
+  {
+    "id": 9759,
+    "title": "【工具自荐】gptimager.com — 基于 GPT Image 2 的 AI 图像生成平台，文字渲染准确，支持免水印商业授权",
+    "content": "做独立开发的时候，需要大量产品图、营销图和落地页素材，一直在找一个能稳定输出商业级质量的 AI 图像工具。GPT Image 2 出来之后，文字渲染准确率大幅提升，终于可以直接用在海报和产品包装上了，于是做了这个平台。\n\n**网址：https://gptimager.com**\n\n## 核心能力\n\n- **文字渲染准确**：海报标题、包装文字、Banner 文案可以直接用，不会出现乱码和拼错\n- **支持 GPT Image 1.5 & 2**：两代模型均可使用，按场景灵活切换\n- **图生图**：上传参考图辅助生成，保留构图、主体和风格方向\n- **免水印 + 商业授权**：所有付费套餐包含商业授权，可直接用于客户项目和商业发布\n\n## 适合的场景\n\n- 电商产品图、场景图、详情页素材\n- 营销海报、活动主视觉、社交媒体封面\n- 品牌视觉、包装设计草稿\n- SaaS 落地页配图、UI 线框图\n- 菜单、信息图、含文字的海报（这类场景其他模型基本拉垮）\n\n## 免费试用\n\n新用户注册赠送免费生成额度，无需绑卡，可以先测试效果再决定是否付费。\n\n付费套餐最低 $19.90/月（500 次/月），年付五折。所有套餐提供 7 天无理由退款。\n\n---\n\n关键词：GPT Image 2, AI 图像生成, 文生图, 图生图, AI 图片编辑, 海报生成, 商业授权",
+    "created_at": "2026-04-25T15:06:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9759"
+  },
+  {
+    "id": 9758,
+    "title": "〖工具自荐〗YouTube to WAV：把进度、预览和直接下载做顺的一页",
+    "content": "## 名称\n\nYouTube to WAV\n\n## 链接\n\nhttps://youtubetowav.io/\n\n## 一句话简介\n\n一个更聚焦的 YouTube to WAV 工具，重点不是“给一个下载按钮”，而是把进度、预览和直接下载这条路径做顺。\n\n## 推荐理由\n\n很多这类页面表面上都在解决“我要一个 WAV 文件”这个问题，但真正影响体验的，通常不是有没有下载按钮，而是这条路径到底靠不靠谱：\n\n- 任务有没有真的开始跑\n- 结果出来前能不能看到进度\n- 下载前能不能先预览\n- 最后拿到的 WAV 能不能直接进入下一步\n\n这也是我觉得这个页面值得单独推荐的原因。它没有把范围做得很大，而是先把一条高频工作流压缩成几步，让第一次进入的人可以快速判断这个工具是不是适合自己。\n\n## 当前路径\n\n1. 粘贴 YouTube URL 或直接输入视频 ID。\n2. 发起转换任务。\n3. 查看进度直到 WAV 准备完成。\n4. 先预览音频结果。\n5. 确认后直接下载 WAV。\n\n## 使用前说明\n\n这条 WAV 流程当前支持最长 120 分钟的视频，依赖第三方转换提供方，输出质量取决于源媒体本身，也只适用于用户拥有或获准下载的内容。",
+    "created_at": "2026-04-25T14:44:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9758"
+  },
+  {
     "id": 9757,
     "title": "【工具自荐】GPT Image 2 - AI 图像生成与编辑平台，面向营销、电商和品牌视觉",
     "content": "# GPT Image 2 - AI 图像生成与编辑平台\n\n> 一个面向营销、电商、社交媒体和品牌视觉的 AI 图像生成与编辑平台，基于最新 OpenAI GPT Image 能力构建，支持文生图、图生图、参考图生成、自然语言编辑和 AI 反推提示词。\n\n网址：https://gptimage2.asia/  \n提示词教程：https://awesome.gptimage2.asia/  \n\n## 它是什么\n\nGPT Image 2 是一个产品化的 AI 图片生成与编辑工具。它不是只展示模型能力的 Demo，而是把图片生成、图片编辑、参考图、提示词反推、下载和积分套餐整合成一套可直接使用的创作流程。\n\n官网当前的定位更偏实用创作场景：\n\n- 营销海报、活动主视觉、广告图\n- 电商产品图、场景图、详情页素材\n- 社交媒体封面、头像、帖子配图\n- 品牌视觉、包装图、信息图\n- AI 写真、人像图、参考图风格迁移\n\n## 主要功能\n\n### 1. 文生图与图生图\n\n用户可以输入提示词生成图片，也可以上传参考图片辅助生成。生成页支持上传参考图，并支持 PNG、JPG、WEBP 格式。\n\n### 2. 多模型选择\n\n生成页显示支持 Gemini、Grok、GPT Image 2 等多种 AI 模型，可以根据不同创作目标选择模型。\n\n### 3. AI 反推提示词\n\n上传照片后，系统可以自动分析人物特征、服装细节、光线、镜头、氛围等信息，并生成专业摄影提示词。这个功能适合把一张参考图转成可复用的创作提示词。\n\n### 4. 更适合商业视觉的生成能力\n\n官网重点强调以下能力：\n\n- 更好的文字渲染，适合海报标题、包装文字、Banner 文案和信息图\n- 更稳定的连续编辑，尽量保留主体、构图、光线、材质和品牌细节\n- 更真实的商业图像质量，适合产品、人像、广告和品牌素材\n- 支持多种画幅，适合横版 Banner、竖版海报、方图和社交媒体封面\n\n### 5. 免费试用与积分套餐\n\n游客可以先免费生成一次图片。后续使用积分套餐，官网展示的套餐包括：\n\n- Trial Pack：30 次 AI 图片生成\n- Value Pack：150 次 AI 图片生成，支持批量生成和优先队列\n- Unlimited Pack：500 次 AI 图片生成，包含更高优先级、API access、商业使用授权等\n\n## 使用流程\n\n1. 打开官网：https://gptimage2.asia/\n2. 点击 Start Free 或进入 Generate 页面\n3. 输入提示词，或上传参考图片\n4. 可选使用 AI 反推提示词，先从参考图生成专业提示词\n5. 选择模型、画幅和分辨率\n6. 生成图片后下载或继续编辑\n\n## 适合的用户\n\n- 自媒体作者：快速生成文章配图、封面图、社交媒体素材\n- 电商卖家：生成产品场景图、广告图、活动图\n- 设计师和运营：快速测试视觉方向，生成多个创意版本\n- 独立开发者和创业者：低成本制作落地页、产品图、宣传图\n- AI 图片爱好者：学习提示词写法，复用真实案例\n\n## 提示词教程\n\n项目还提供了一个 GPT Image 2 提示词实战手册：\n\nhttps://awesome.gptimage2.asia/\n\n里面整理了提示词框架、场景模板、避坑方法和案例归档，覆盖电商、海报、UI、角色、写实摄影、编辑修改等场景。适合新手快速上手，也适合长期积累可复用提示词。\n\n## 亮点\n\n- 不是单纯的模型介绍页，而是可直接生成和编辑图片的工具\n- 有免费试用入口，适合先验证效果\n- 支持参考图和 AI 反推提示词，降低提示词编写门槛\n- 场景聚焦营销、电商、品牌和社媒内容，商业用途比较明确\n- 配套教程站点整理了大量 GPT Image 2 提示词玩法\n\n## 链接\n\n- 官网：https://gptimage2.asia/\n- 生成页：https://gptimage2.asia/generate\n- 提示词教程：https://awesome.gptimage2.asia/\n\n---\n\n关键词：GPT Image 2, AI 图像生成, AI 图片编辑, 文生图, 图生图, AI 反推提示词, 营销视觉, 电商素材, 品牌图片\n",
@@ -802,37 +834,5 @@
     "created_at": "2026-04-17T02:57:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9662"
-  },
-  {
-    "id": 9661,
-    "title": "【开源自荐】Awesome-AIGC-Image-Video-Detection 全网最全AIGC检测相关资源仓库",
-    "content": "**项目名称**：Awesome-AIGC-Image-Video-Detection\n**仓库地址**：https://github.com/ant-research/Awesome-AIGC-Image-Video-Detection\n\n<img width=\"600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dbd04814-7783-45af-b66d-a3ee5b9eab16\" />\n\n### 项目简介\n这是一个由蚂蚁集团 AI 安全实验室整理开源的**全网最全 AIGC 图像/视频检测（Deepfake Detection）相关资源仓库**。随着生成式 AI 技术的飞速发展，Deepfake 与 AI 伪造内容的滥用风险日益加剧。本项目系统性地收集了该领域的最新前沿研究、基准测试集、开源模型以及实用的检测工具，是当前最全面的AI鉴真资源仓库，致力于为相关开发者和研究人员提供一站式的技术导航\n\n### 仓库亮点内容\n- 📰 **热点事件 (Hot Events)**：收录 AI 伪造技术在真实世界引发的典型安全及滥用事件 。\n- 📄 **前沿论文 (Research Papers)**：按技术流派细致分类，包含传统分类器方法以及目前前沿的基于多模态大模型（MLLM-Based，如 GPT-4V, LLaVA 辅助提供自然语言解释）的检测研究。\n- 📊 **基准与数据集 (Benchmarks & Datasets)**：汇总当前主流的 AIGC 检测数据集、评估基准及模型。\n- 🛠️ **实用工具与竞赛 (Practical Tools & Competitions)**：提供开箱即用的工业界检测工具链接，并跟踪各大顶会的重点竞赛信息。\n\n**参考文章与延伸阅读**：\n-[CVPR 2026 NTIRE 图像检测挑战赛冠军方案](https://mp.weixin.qq.com/s/xlvP_rkyaLD0Pfp4g3Jwdw)",
-    "created_at": "2026-04-17T02:20:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9661"
-  },
-  {
-    "id": 9660,
-    "title": "【开源自荐】WorldSeed — 给 AI agents一个世界",
-    "content": "GitHub：https://github.com/AIScientists-Dev/WorldSeed\n\nWorldSeed 是一个开源的 multi-agent 世界引擎。\n\n\n写一份场景配置：里面有哪些角色、能做什么、每个人看得到什么。跑起来，agent 就在你这个世界里活起来了。\n\n换一份配置就是另一个世界：\n\n- 茶馆里四个间谍互相试探\n- 黑暗森林里几个文明彼此猜忌\n- 后宫里嫔妃各自算计\n- 互联网公司裁员当天，八个人各怀心思\n- 一屋子 AI 合租，一起写代码\n\n每次跑都不一样。每个 agent 手上的信息不同、判断不同、动作也不同。故事是它们演出来的，不是你写的。\n\n https://github.com/user-attachments/assets/72f5ba7f-d505-4016-98ac-9e93878a1eba\n\n```bash\ngit clone https://github.com/AIScientists-Dev/WorldSeed && cd WorldSeed\nuv sync --extra dm\ncd frontend && npm install && npm run build && cd ..\nuv run worldseed play configs/teahouse.yaml\n```\n\n打开仪表板就是上帝视角——每个 agent 看到什么、在想什么、下一步打算干嘛，一览无余。\n\n<img width=\"720\" height=\"371\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0190df1-5050-4aa7-a935-6bc68c6e7152\" />\n\n想自己捏一个世界，可以写 YAML（`configs/` 里有现成例子），也可以直接用自带的 skill `/create-world`：\n\n```\n/create-world \"太空站真人秀，六个选手，每轮淘汰一人\"\n```\n\n另有个 `/asset-sourcing` skill，聚合 Met / V&A / Cleveland 等博物馆开放 API 找参考图。\n\n- 信息不对称是引擎内建的，每个 agent 只能看到属于自己的那份世界\n- 可预测的规则走 DSL，不确定的交给 LLM 当裁判（DM）\n\n\nMIT 协议开源。\n\nAgent 不该只有一个任务——它们该有一个世界。\n",
-    "created_at": "2026-04-17T02:02:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9660"
-  },
-  {
-    "id": 9659,
-    "title": "【开源自荐】text expander类工具，拓展键盘指令，将关键字转成快捷操作",
-    "content": "项目地址：https://github.com/errorzhu/shortcut\n\n一个基于 Windows 输入 Hook 的效率工具，通过自定义关键字触发操作，比如快速生成常用代码、打开网页等。\n\n主要用于提升个人工作效率，欢迎感兴趣的朋友试用反馈。",
-    "created_at": "2026-04-17T01:33:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9659"
-  },
-  {
-    "id": 9658,
-    "title": "【开源自荐】最快的 Wasm 解释器",
-    "content": "项目地址：https://github.com/Ray-D-Song/wasmz\n\n## Benchmark\n和 Wasm3、Wasmi、Wamr（解释器模式）三个主流解释器的性能对比：\n<img width=\"1330\" height=\"728\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ab24c810-d119-4a58-b8b5-9cea348c3a0d\" />\n\n## 介绍\nwasmz 是一个用 Zig 编写的 WebAssembly 运行时，旨在快速、紧凑且易于嵌入。它实现了一个功能齐全的解释器，支持现代 WebAssembly 提案和 WASI。\n同时我测试了的 Wasi 版 esbuild、quickjs、SQLite 运行，所以这并不是一个 Demo 项目。\n\n## 动机\n现有的主流 Wasm 解释器（不是像 wasmtime 这样包含 AOT 和 JIT 的重量级 Runtime，而是解释执行）缺乏对现代功能的支持（例如新版异常和 GC 提案），导致我另一个 Kotlin Wasm 的项目无法运行。\n\n我想也写一些东西来验证我从研究 Lua 和 mRuby 源代码中学到的东西，以下是我在 Parser 和 VM 中进行的主要优化：\n\n\n- 基于寄存器的 IR（栈到寄存器降级）\n- Direct Threaded Code Dispatch\n- r0 和 fp0 累加器寄存器及其变体\n- 指令融合 和 `call_leaf` 跳过结果槽设置和返回值复制\n- 槽回收\n- 惰性编译\n- 基于 mmap 的内存\n\n在这个页面我更详细的解释了相关优化内容：https://ray-d-song.github.io/wasmz/bench.html",
-    "created_at": "2026-04-17T01:23:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9658"
   }
 ]
