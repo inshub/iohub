@@ -1,5 +1,29 @@
 [
   {
+    "id": 9769,
+    "title": "〖工具自荐〗MeetBlog：志在汇聚多数独立开发者，自生长的独立博客交互星系",
+    "content": "## 在线体验\n\nhttps://meet-blog.buyixiao.xyz\n\n## 简介\n\nMeetBlog（中文博客星系）是一个用来发现中文独立博客的小工具。\n\n它从博客的友情链接出发，递归整理博客之间的连接关系，再把结果渲染成一张可交互的 3D 星图。目前已经整理出近万个博客的数据。\n\n星图里的每一个节点代表一个真实存在的博客，连线表示博客之间的友情链接。节点越靠近中心、越亮，通常表示它被更多博客推荐。整个网站更像一张“博客地图”，可以顺着友情链接不断发现新的博客。\n\n## 主要功能\n\n- 按探索深度加载博客网络，深度越大，收录范围越大，看到的博客越多\n- 支持拖拽旋转、滚轮缩放，从不同角度查看整张关系图\n- 支持悬浮查看、点击详情、双击直接访问原博客\n- 支持搜索博客名称，快速定位某个站点\n- 展示入度、出度、连接数等关系信息，方便观察博客之间的连接方式\n\n## 适用场景\n\n一是发现新的独立博客，二是从“谁链接了谁”的角度，观察中文博客圈的结构。相比内容平台的信息流，它更适合做探索和漫游。\n\n我做这个工具的原因也很简单：中文独立博客一直都在，只是分散在互联网的不同角落。友情链接是一种很有意思的推荐机制，把这些链接重新连起来，就能看到一张直观的中文博客关系图。\n\n## 截图\n\n<img width=\"2496\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c402d2d9-b7e8-4a57-a814-bac89c620be2\" />\n\n<img width=\"2728\" height=\"1494\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/66ce9ed9-55b0-4625-870b-d533e4ff8924\" />",
+    "created_at": "2026-04-26T16:17:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9769"
+  },
+  {
+    "id": 9768,
+    "title": "【开源工具自荐】FlowSound：自动管理 macOS 音频焦点，让音乐成为真正的“背景”",
+    "content": "## ✨ 我为什么做 FlowSound？\n\n日常使用 Mac 时，我一直被一个很小但反复出现的问题困扰：\n\n* 我希望 Apple Music / Spotify 一直作为背景音乐播放\n* 但当我打开视频（YouTube / Telegram / 浏览器）时\n    👉 不希望音乐和视频声音混在一起\n* 而当视频结束后\n    👉 又不想手动回去点播放\n\n这个“切换注意力”的过程，本质上是一个音频焦点（audio focus）问题。\n\n但 macOS 并没有提供一个统一、自动的机制来处理它。\n\n于是我做了 FlowSound —— 一个自动帮你管理音频注意力的工具。\n\n<img width=\"1194\" height=\"733\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/378e2739-7a00-48cf-881a-5601c6409a03\" />\n\n---\n\n## 🔧 FlowSound 是什么？\n\nFlowSound 是一个 macOS 菜单栏应用：\n\n* 🎵 保持 Apple Music / Spotify 作为背景音乐\n* 🔇 当其他 App 开始播放声音时：\n    * 自动淡出（fade out）\n    * 自动暂停音乐\n* 🔊 当环境安静后：\n    * 自动恢复播放\n    * 自动淡入回原音量\n\n👉 整个过程是连续、自然的，而不是突兀的 pause/play。\n\n---\n\n## 🧩 技术实现（给开发者的部分）\n\n这个项目的核心不是 UI，而是系统层协调：\n\n* 🎧 Core Audio process taps\n    * 实时监听系统中各进程的音频输出（RMS）\n* 🧠 状态机（state machine）\n    * 避免反复 pause / resume 抖动\n* 🎚️ 音量渐变控制（fade in/out）\n* 🍎 AppleScript 自动化\n    * 控制 Apple Music / Spotify\n* 🔍 Bundle ID 级别的进程识别\n    * macOS 26+ 支持更精确监听\n\n👉 本质是：\n**系统音频信号 + 进程识别 + 行为编排（orchestration）**\n\n<img width=\"737\" height=\"661\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f8fb61d7-7125-4e90-89cb-ec5e6a75f783\" />\n\n<img width=\"736\" height=\"633\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2f586bc8-ed39-4ff6-9b88-972443cc47b9\" />\n\n<img width=\"268\" height=\"247\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d05212d3-1fb4-4e3c-bd67-6b30af2309c2\" />\n\n\n⸻\n\n## 🔐 安全性与隐私（我最在意的一点）\n\nFlowSound 从一开始就是 local-first 设计：\n\n* ❌ 不联网\n* ❌ 没有 analytics\n* ❌ 没有广告\n* ❌ 不上传任何音频\n* ❌ 不保存捕获的音频数据\n\n它只做一件事：\n\n> 判断“是否有其他 App 在发声”，而不是“发了什么声音”。\n\n控制音乐也完全通过本地 Apple Events 完成。\n\n👉 你可以把它理解为一个：\n\n> 纯本地的系统自动化工具，而不是一个数据产品\n\n⸻\n\n## 📦 开源与可验证性\n\n* 所有代码完全开源\n* Release 由 GitHub Action 通过源码打包，提供 SHA256 校验\n* 可自行 build / audit\n\n👉 我希望这个项目是可以被信任的工具，而不是黑盒软件\n\n⸻\n\n## 🧪 当前状态\n\n* 已实现 MVP（稳定状态机 + 双音乐平台支持）\n* 支持 Apple Music / Spotify\n* macOS 15+\n\n后续方向：\n\n* 支持更多音频应用\n* 更细粒度的音频策略（如不同 App 不同行为）\n* 更好的权限与用户体验设计\n\n⸻\n\n## 🔗 项目地址\n\n* GitHub: https://github.com/mattwong05/FlowSound\n* 下载: https://github.com/mattwong05/FlowSound/releases\n* 网站: https://flowsound.youseminar.cn\n\n⸻\n\n🙋 想听听大家的想法\n\n## 我特别想知道：\n\n* 你有没有遇到类似的“音频冲突”问题？\n* 如果开放规则系统，你希望怎么定义？\n\n",
+    "created_at": "2026-04-26T15:44:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9768"
+  },
+  {
+    "id": 9767,
+    "title": "【开源自荐】SiftMarks：把混乱的 Chrome 书签变成本地 AI 记忆库",
+    "content": "**项目地址**：https://github.com/Lling0000/SiftMarks\n\n**一句话**：SiftMarks 是一个本地优先的 AI 书签管理工具，可以把混乱的 Chrome 书签导入、整理、搜索，并通过 MCP 交给 Claude、Cursor、Windsurf 等 AI 工具使用。\n\n**为什么做这个**：浏览器书签很容易保存，但时间久了会变成重复链接、空文件夹、含糊标题和找不到的资料。SiftMarks 想解决的是“收藏容易，找回困难”的问题，让书签更像一个可搜索的本地记忆库。\n\n**主要特点**：\n\n- **本地优先**：默认使用 SQLite，本地保存书签数据，不需要账号。\n- **Chrome 扩展导入和同步回写**：可以从 Chrome 导入书签，也可以把接受后的整理结果同步回 Chrome。\n- **像 Pull Request 一样整理书签**：重复链接、重命名、标签、失效链接等建议先审查，再决定是否应用。\n- **搜索书签记忆**：支持关键词搜索，后续可接入 AI Provider 做更接近“记忆”的搜索。\n- **MCP 支持**：可以让 Claude、Cursor、Windsurf 等 AI 客户端搜索和读取本地书签库。\n- **中英文 README + 演示视频**：仓库里包含截图和一个 20 秒左右的演示视频。\n\n**适合人群**：开发者、研究者、资料收集重度用户，以及任何 Chrome 书签栏已经变得难以维护的人。\n\n**演示视频**：https://github.com/Lling0000/SiftMarks/blob/main/docs/demo/siftmarks-demo.mp4\n\n**技术栈**：TypeScript monorepo、Next.js、Chrome Extension、SQLite、MCP Server。\n",
+    "created_at": "2026-04-26T14:51:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9767"
+  },
+  {
     "id": 9766,
     "title": "【开源自荐】让Claude Code有超越GPT Image 2的能力",
     "content": "开源地址：https://github.com/jiangmuran/claude-image\n\nclaude-image 是一个 drop-in 的 Claude Code / Codex skill 包，专门\n教 AI 编程 agent 真正用好 OpenAI 在 2026 年 4 月发布的 GPT Image 2。\n\n## 为什么需要它\n\nGPT Image 2 是这一代图像模型的分水岭：长指令式 prompt 不再丢细节，\n中日韩文字渲染终于正确，自定义分辨率最长 3840px，编辑端点支持\n\"change ONLY X / preserve Y exactly\" 的外科手术级局部修改。\n\n但 2026 年 4 月之前训练的 agent 完全不知道这些。它们仍然用老办法\n写 prompt——\"4K, ultra detailed, masterpiece, trending on\nartstation\"——这些咒语在 GPT Image 2 上要么被忽略，要么帮倒忙。\n它们粘 curl 命令而不存文件，生成完之后还会反过来问你\"这看着对吗？\"\n\n这个 skill 把这些全修了。\n\n## 三个让它真正起作用的设计\n\n1. **可发现的 description**：frontmatter 里列全了\"海报\"、\"图标\"、\n   \"ppt 素材\"、\"改图\"、\"draw me\"、\"make an image\" 等触发词，\n   agent 的 skill 选择器会真的命中，而不是回退去自己拼 curl。\n2. **一个 CLI，四种能力**：生成 / 编辑 / 局部重绘 / 并行批处理\n   都是同一个 Python 脚本的子命令，零依赖（只用 urllib）。\n3. **视觉自验证写进了工作流**：skill 明确要求 Claude 在交付前\n   `Read` 自己生成的 PNG，对照 prompt 检查文字、构图、约束。\n   有问题就一次只改一个维度重生成。再也不会出现\"图给你了，\n   你看对不对\"。\n\n## 它能做什么\n\n- Pitch-deck 幻灯片（像真正的 Series A 董事会幻灯片，不是\"画一张幻灯片的插图\"）\n- 中文海报（楷书 / 黑体 / 思源黑体，渲染干净，不出乱码字）\n- 写实 UI mockup（真实设备外框 + 合理的任务名 / 字体 / 配色）\n- 像素图、tileset、角色三视图、游戏物品图标\n- 信息图、logo 概念图、写实产品图\n- 外科手术级修图（\"change ONLY 天空 / preserve 其它一切\" 模式）\n\n装完下次有图像请求 Claude 自动发现 skill，不用重启。\n\nCodex 用户把路径换成 `~/.agents/skills/gpt-image-2` 即可。",
@@ -802,31 +826,5 @@
     "created_at": "2026-04-18T06:29:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9670"
-  },
-  {
-    "id": 9669,
-    "title": "【网站自荐】别再为画图发愁了！这款 AI 绘图神器能直接读懂你的“脑电波”-https://gptimg.app/",
-    "content": "<img width=\"1936\" height=\"1285\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0abb3832-c901-41f8-815a-d2f231f7bfbe\" />\n\n1. 消失的“真情实感”\n不知道从什么时候起，我们被包围在了一堆“敷衍”的东西里。\n\n<img width=\"1672\" height=\"941\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0aa2d50f-25c7-4a0f-9d6c-a3bd0ba07121\" />\n\n打开社交软件，是千篇一律的滤镜和网红打卡图；打开工作邮箱，是 AI 生成的、客套却毫无温度的回复；甚至打开很多所谓的“AI 绘图网站”，跳出来的也是简陋的 UI、满屏的广告，以及生成的那些塑料感十足、逻辑混乱的图片。\n\n<img width=\"1080\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/51cf6172-1c31-4501-bd04-44f284a6189a\" />\n\n我们生活在一个效率至上的时代，却也生活在一个**“情感荒漠”**的时代。很多时候，你真的想表达一点什么，想送给爱人一份独一无二的礼物，或者想记录下那个只存在于你梦境中、带有某种破碎感的午后，你却发现——找不到工具。\n\n如果一个工具无法承载你的情绪，它就只是一堆冷冰冰的代码，一个随时可以被丢弃的“垃圾网页”。\n\n02. [GPT Image2]：不只是生成，更是“看见”\n我们创立 [GPT Image2](https://gptimg.app/) 的初衷，其实非常感性。\n\n我们曾经遇到过一位用户，他想为去世的祖父写一首歌，却苦于找不到一张合适的封面。他形容那是“一种带有陈旧樟脑丸气味、伴随着弄堂里昏黄灯光的宁静”。这种极其私人化的感性体验，在主流的图库里是找不到的。\n\n但在 [GPT Image2](https://gptimg.app/)，通过对语义深度的极致打磨，我们帮他画了出来。当那张图片跳出来的一瞬间，他告诉我们：“那一刻，我觉得 AI 听懂了我的思念。”\n\n<img width=\"1080\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ddb9f982-6114-4686-b503-cf715880cebf\" />\n\n这就是我们坚持的价值。我们不仅仅是在提供一个生成图片的接口，我们是在通过 [GPT Image2](https://gptimg.app/) 的交互设计和算法优化，去翻译你的情绪，去具象化你的感性。\n\n03. 拒绝敷衍，是我们的底线\n为什么我们要在细节上死磕？\n\n交互的“呼吸感”： 真正的设计不应该是堆砌，而应该是留白。你会在 [GPT Image2](https://gptimg.app/) 感受到一种克制而优雅的交互，因为它不应该干扰你的创作，而应该像空气一样陪伴你。\n\n审美的“高级感”： 垃圾网页只会给你一堆杂乱的像素，而我们要给你的，是具有电影质感、构图平衡、能够直接触动灵魂的作品。\n\n情绪的“颗粒度”： 我们花费大量精力优化模型，是为了让它能读懂“孤独”、“治愈”、“怀旧”这些词汇背后细微的差别。\n\n04. 每一个灵魂，都值得一份专属的礼物\n我们卖的不是图片，是陪伴，是倾听，是那份**“懂你”的欣慰**。\n\n无论是你想为暗恋的人定制一张独一无二的告白卡片，还是想为自己的内心世界寻找一个出口，[GPT Image2](https://gptimg.app/) 都在这里。我们不希望你把它当作一个冷冰冰的生产工具，我们希望它是你表达爱、表达感性、表达真善美的画笔。\n\n在这个敷衍的世界里，总要有人坚持做一点有真情实感的事情。",
-    "created_at": "2026-04-17T12:55:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9669"
-  },
-  {
-    "id": 9668,
-    "title": "【开源自荐】一款灵感源自《集合啦！动物森友会》的 UI 组件库",
-    "content": "风格软萌可爱，适配游戏动漫相关人员使用，开箱即用。\n基于 React + TypeScript 实现的轻量 UI 组件库，灵感来源于任天堂《集合啦！动物森友会》游戏界面。\n\n项目地址：\nhttps://github.com/guokaigdg/animal-island-ui\n\n项目官网：\nhttps://guokaigdg.github.io/animal-island-ui/#/\n\n![animal.jpg](https://wx1.sinaimg.cn/mw2000/0079WNNOly1ic9x5hqdunj328417o48g.jpg)",
-    "created_at": "2026-04-17T09:40:47Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9668"
-  },
-  {
-    "id": 9667,
-    "title": "【工具自荐】Kaloclip-跨境电商高质量爆款带货视频制作工具",
-    "content": "工具介绍：\n基于全球领先的电商数据，生成并一键发布高转化率的商品图与带货视频\n\n工具地址：\nhttps://clip.kalowave.com/zh?tc=LNLN",
-    "created_at": "2026-04-17T07:14:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9667"
   }
 ]
