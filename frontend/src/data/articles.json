@@ -1,5 +1,13 @@
 [
   {
+    "id": 9765,
+    "title": "【开源自荐】ast-outline：AI的代码骨架阅读器，节省5–10倍Token",
+    "content": "**项目地址**：https://github.com/aeroxy/ast-outline\n\n**一句话**：给LLM Coding Agent准备的“代码骨架”提取工具——只看类/函数/签名，不看函数体，帮你省下5–10倍的上下文Token。\n\n**卖点**：用Rust编写，基于@HerringtonDarkholme的ast-grep和@maxbrunsfeld的tree-sitter，毫秒级并行扫描整个目录。输出结构清晰，包含精确的起止行号（例如 L42-L58），AI可以先看骨架，定位到具体方法后再读取完整代码段，不需要反复吞下整个文件。\n\n**典型场景**：\n- **AI 编程助手**：Claude Code、Cursor、Copilot Workspace 等 Agent 在理解陌生代码时，先用 `ast-outline digest src/` 拿到模块结构，再用 `ast-outline show Player.cs TakeDamage` 精准读取方法体。\n- **人类开发者**：快速浏览一个大型文件的结构（类似 `tree` 但针对源代码），搞清楚文件里有哪些类、哪些函数。\n- **代码审查**：只看“接口签名”，忽略实现细节，快速理解模块边界。\n\n**功能**：\n- `ast-outline path/to/file.rs` — 输出单个文件的结构轮廓\n- `ast-outline src/` — 并行递归扫描整个目录\n- `ast-outline show Player.cs TakeDamage` — 精确提取指定方法的完整代码\n- `ast-outline digest src/Services` — 输出整个模块的公共API一览\n- `ast-outline implements IDamageable src/` — 找出所有实现/继承某个类型的类\n\n**支持的语言**：Rust、Python、TypeScript/JavaScript、C#、Java、Kotlin、Scala、Go、Markdown。添加新语言只需要一个适配文件，利用ast-grep生态。\n\n**安装**：\n```bash\n# Homebrew (macOS)\nbrew install aeroxy/ast-outline/ast-outline\n\n# Cargo\ncargo install ast-outline\n```\n\n**和ast-grep的关系**：ast-outline依赖ast-grep作为底层语法解析引擎，但职责完全不同。ast-grep是通用的代码搜索/重构工具箱，ast-outline是为AI定制的“代码骨架提取器”。\n\n**附言**：代码完全开源，欢迎Star、提Issue、贡献新语言适配。",
+    "created_at": "2026-04-26T04:28:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9765"
+  },
+  {
     "id": 9764,
     "title": "【工具自荐】邻云 - 让局域网设备互联",
     "content": "## 介绍\n\n官网：https://xchongsu.com\n\n简介：为了更方便和同一局域网下的电脑交互，可以使用手机、电脑操控另一台电脑\n\n\n\n## 功能\n\n+ 🔎自动搜索设备，授权后下次自动连接\n+ 📁 上传、下载文件\n+ 📸  手机给电脑截图，一键存入相册\n+ ▶️ 直接播放电脑共享的视频\n+ 🖥️远程屏幕，直接控制电脑操作\n+ ⌨️终端输入，执行命令\n\n## 截图\n\n主界面，可通过左右↔️滑动快速切换连接的设备\n\n<img width=\"370\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8d2cb51d-0b8b-4aa6-b2b5-a295392cdea9\" />\n\n截图页面示意图\n\n<img width=\"2688\" height=\"1242\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f9345208-2b8a-43e0-96ac-bb49ac731723\" />",
@@ -33,7 +41,7 @@
   },
   {
     "id": 9760,
-    "title": "【开源自荐】适合 Claude Code、OpenCode、Codex 的终端 MUX0，侧边栏+tab栏+Code Agent状态显示+400多主题随意配置",
+    "title": "【开源自荐】适合 Claude Code、OpenCode、Codex 的终端 Mux0，侧边栏+tab栏+Code Agent状态显示+400多主题随意配置",
     "content": "- 侧边栏管理、tab 项管理、终端内部分割\n- Claude Code 、OpenCode 、Codex 运行状态显示\n- 使用 libghostty 进行渲染，主题也继承了全部主题，随意控制\n\n官网落地页直接做了一个 mock 版本，可以直接在线体验，然后看自己喜欢下载。\n\n官网：[mux0.com](https://mux0.com/)\n\ngithub: [mux0](https://github.com/10xChengTu/MUX0)\n\n截图：\n\n<img width=\"2570\" height=\"1818\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f59057d6-7f67-43b2-a104-dd0e1be9a961\" />",
     "created_at": "2026-04-25T15:17:57Z",
     "labels": [],
@@ -820,15 +828,5 @@
     "created_at": "2026-04-17T04:57:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9666"
-  },
-  {
-    "id": 9665,
-    "title": "【开源自荐】tab Harbor-一个更安静的新标签页工作台，把打开中的标签、快捷链接、待读和轻量待办收进同一个顺手的空间里",
-    "content": "仓库链接：https://github.com/V-IOLE-T/tab-harbor?tab=readme-ov-file\n\n## 主要功能\n\n1. **标签页统一管理**\nTab Harbor 会把标签页整理成更像工作区的结构：按域名自动分组、支持手动分组、保留快捷入口，并且能从顶部图标快速跳回对应区域；想把浏览器收拾利落一点时，也可以一键清理重复标签页。\n\n2. **待读处理**\n那些“现在先不看，但之后一定要回来”的页面，可以先收入右侧抽屉，之后再搜索、恢复或归档，而不是永远挂在浏览器顶部。\n\n3. **待办和跳转**\n除了整理标签页，你还可以在这里顺手记下待办、补一点简短说明、归档完成项，并从顶部图标快速回到当前任务相关的分组。\n\n4. **切换主题**\n想让它更像你自己的工作台时，可以切换主题、调透明度、换背景图。\n\n它尽量让工作台更安静，但不让系统更重。 你可以切换主题、调透明度、换背景图，也可以一键清理重复标签页；同时所有数据都还是保存在 chrome.storage.local，不需要服务器也不需要账号。\n\n<img width=\"1223\" height=\"695\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/14331d91-8ff0-46d0-9016-6b4bd62657af\" />\n\n<img width=\"2590\" height=\"1378\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/935ef6d6-c587-4dc0-9c8a-a9e986f95be2\" />",
-    "created_at": "2026-04-17T04:23:37Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9665"
   }
 ]
