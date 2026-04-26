@@ -1,5 +1,13 @@
 [
   {
+    "id": 9766,
+    "title": "【开源自荐】让Claude Code有超越GPT Image 2的能力",
+    "content": "开源地址：https://github.com/jiangmuran/claude-image\n\nclaude-image 是一个 drop-in 的 Claude Code / Codex skill 包，专门\n教 AI 编程 agent 真正用好 OpenAI 在 2026 年 4 月发布的 GPT Image 2。\n\n## 为什么需要它\n\nGPT Image 2 是这一代图像模型的分水岭：长指令式 prompt 不再丢细节，\n中日韩文字渲染终于正确，自定义分辨率最长 3840px，编辑端点支持\n\"change ONLY X / preserve Y exactly\" 的外科手术级局部修改。\n\n但 2026 年 4 月之前训练的 agent 完全不知道这些。它们仍然用老办法\n写 prompt——\"4K, ultra detailed, masterpiece, trending on\nartstation\"——这些咒语在 GPT Image 2 上要么被忽略，要么帮倒忙。\n它们粘 curl 命令而不存文件，生成完之后还会反过来问你\"这看着对吗？\"\n\n这个 skill 把这些全修了。\n\n## 三个让它真正起作用的设计\n\n1. **可发现的 description**：frontmatter 里列全了\"海报\"、\"图标\"、\n   \"ppt 素材\"、\"改图\"、\"draw me\"、\"make an image\" 等触发词，\n   agent 的 skill 选择器会真的命中，而不是回退去自己拼 curl。\n2. **一个 CLI，四种能力**：生成 / 编辑 / 局部重绘 / 并行批处理\n   都是同一个 Python 脚本的子命令，零依赖（只用 urllib）。\n3. **视觉自验证写进了工作流**：skill 明确要求 Claude 在交付前\n   `Read` 自己生成的 PNG，对照 prompt 检查文字、构图、约束。\n   有问题就一次只改一个维度重生成。再也不会出现\"图给你了，\n   你看对不对\"。\n\n## 它能做什么\n\n- Pitch-deck 幻灯片（像真正的 Series A 董事会幻灯片，不是\"画一张幻灯片的插图\"）\n- 中文海报（楷书 / 黑体 / 思源黑体，渲染干净，不出乱码字）\n- 写实 UI mockup（真实设备外框 + 合理的任务名 / 字体 / 配色）\n- 像素图、tileset、角色三视图、游戏物品图标\n- 信息图、logo 概念图、写实产品图\n- 外科手术级修图（\"change ONLY 天空 / preserve 其它一切\" 模式）\n\n装完下次有图像请求 Claude 自动发现 skill，不用重启。\n\nCodex 用户把路径换成 `~/.agents/skills/gpt-image-2` 即可。",
+    "created_at": "2026-04-26T06:12:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9766"
+  },
+  {
     "id": 9765,
     "title": "【开源自荐】ast-outline：AI的代码骨架阅读器，节省5–10倍Token",
     "content": "**项目地址**：https://github.com/aeroxy/ast-outline\n\n**一句话**：给LLM Coding Agent准备的“代码骨架”提取工具——只看类/函数/签名，不看函数体，帮你省下5–10倍的上下文Token。\n\n**卖点**：用Rust编写，基于@HerringtonDarkholme的ast-grep和@maxbrunsfeld的tree-sitter，毫秒级并行扫描整个目录。输出结构清晰，包含精确的起止行号（例如 L42-L58），AI可以先看骨架，定位到具体方法后再读取完整代码段，不需要反复吞下整个文件。\n\n**典型场景**：\n- **AI 编程助手**：Claude Code、Cursor、Copilot Workspace 等 Agent 在理解陌生代码时，先用 `ast-outline digest src/` 拿到模块结构，再用 `ast-outline show Player.cs TakeDamage` 精准读取方法体。\n- **人类开发者**：快速浏览一个大型文件的结构（类似 `tree` 但针对源代码），搞清楚文件里有哪些类、哪些函数。\n- **代码审查**：只看“接口签名”，忽略实现细节，快速理解模块边界。\n\n**功能**：\n- `ast-outline path/to/file.rs` — 输出单个文件的结构轮廓\n- `ast-outline src/` — 并行递归扫描整个目录\n- `ast-outline show Player.cs TakeDamage` — 精确提取指定方法的完整代码\n- `ast-outline digest src/Services` — 输出整个模块的公共API一览\n- `ast-outline implements IDamageable src/` — 找出所有实现/继承某个类型的类\n\n**支持的语言**：Rust、Python、TypeScript/JavaScript、C#、Java、Kotlin、Scala、Go、Markdown。添加新语言只需要一个适配文件，利用ast-grep生态。\n\n**安装**：\n```bash\n# Homebrew (macOS)\nbrew install aeroxy/ast-outline/ast-outline\n\n# Cargo\ncargo install ast-outline\n```\n\n**和ast-grep的关系**：ast-outline依赖ast-grep作为底层语法解析引擎，但职责完全不同。ast-grep是通用的代码搜索/重构工具箱，ast-outline是为AI定制的“代码骨架提取器”。\n\n**附言**：代码完全开源，欢迎Star、提Issue、贡献新语言适配。",
@@ -820,13 +828,5 @@
     "created_at": "2026-04-17T07:14:08Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9667"
-  },
-  {
-    "id": 9666,
-    "title": "【工具推荐】Auxora - 聊几分钟自动生成广告投放方案，适合不懂投放的开发者",
-    "content": "最近在折腾自己项目的推广，发现一个工具挺实用的，分享一下。\n\n做独立开发的应该都有这个感受：产品写完了，投放完全不会。Google Ads 后台像飞机驾驶舱，Meta Ads 的受众定向能纠结一下午，关键词不知道怎么选，Landing Page 文案写了删删了写。\n\nAuxora 的思路是用对话代替后台操作。打开直接聊，说一下你的产品和目标客户，AI 追问几轮之后会生成一份完整的投放方案，包括市场分析、关键词、广告素材和 Landing Page。\n\n免费 200 credits，够跑完一个项目的完整流程，不需要绑卡。\n\n网站：[app.auxora.ai](https://app.auxora.ai)\n\n![](https://i.imgur.com/ImNuEYa.png)",
-    "created_at": "2026-04-17T04:57:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9666"
   }
 ]
