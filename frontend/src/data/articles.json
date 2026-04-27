@@ -1,5 +1,21 @@
 [
   {
+    "id": 9780,
+    "title": "【开源自荐】OpenClip - AI 驱动的长视频精彩时刻提取工具",
+    "content": "仓库地址：https://github.com/linzzzzzz/openclip\n\n输入一个视频 URL 或本地文件，自动完成 下载 → 转录 → 分割 → AI 分析 → 剪辑生成 → 添加标题和封面 的全流程处理，输出最精彩片段。适合从长直播或视频中快速提取高光时刻。\n\n讲解视频：https://www.bilibili.com/video/BV1TwokB3Efh\n\n支持能力包括：\n\n- 支持 YouTube、B站视频链接和本地视频文件\n- 自动转录视频内容，并支持字幕生成和翻译\n- 使用 AI 分析视频内容，自动识别高光片段\n- 自动生成切片视频、标题、封面和字幕版本\n- 提供片段编辑器，可视化调整切片边界、字幕和封面标题\n- 支持深度优化模式，对候选片段进行复核并自动微调边界\n\n\n主页面：\n\n<img width=\"1535\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7764d01-5cb9-4c8e-916e-60a9e082811e\" />\n\n\n\n切片编辑器：\n\n<img width=\"1535\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d93ead78-f2ef-48b7-818d-295452fb0c7f\" />",
+    "created_at": "2026-04-27T14:48:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9780"
+  },
+  {
+    "id": 9779,
+    "title": "【工具自荐】tunnix：让Cloud Shell / Codespaces秒变加密代理通道",
+    "content": "**项目地址**：https://github.com/aeroxy/tunnix\n\n**一句话**：一个通过 HTTP/SSE 传输的加密 SOCKS5/HTTP 代理隧道 —— 专为 Cloud Shell、Codespaces、Gitpod 这类只允许 HTTP 出站的环境设计。\n\n**卖点**：\n- **端到端加密**：ChaCha20‑Poly1305 + Argon2id 密钥派生，中间人无法读取流量。\n- **HTTP/SSE 传输**：不需要 WebSocket，只要 HTTP 能通就能用。\n- **同一端口双协议**：自动识别 SOCKS5 和 HTTP 代理，客户端监听一个端口即可同时支持两种协议。\n- **连接复用**：多个代理连接共享同一个 SSE 流，资源开销极小。\n- **路径前缀支持**：可挂载在 `/tunnix` 等子路径下，方便与其它服务共用同一域名。\n- **单文件二进制**：`tunnix server` / `tunnix client`，部署简单。\n\n**典型场景**：\n- **云端开发环境**：Google Cloud Shell、GitHub Codespaces、Gitpod 通常只开放 HTTP/HTTPS 端口，且需要携带认证 Cookie。tunnix 在这些环境里启动 server，本地 client 通过 Web Preview 地址连接，瞬间拥有一个稳定的 SOCKS5 代理。\n- **反向代理后方的穿透**：公司 nginx 只暴露 443 端口，tunnix 加上 `path_prefix` 就能与现有服务共存，告别再开一台机器的烦恼。\n- **容器平台出口**：Railway / Render / Fly.io 等平台分配 HTTPS 域名但可能不保证 WebSocket 长连接，tunnix 的 SSE 方案更稳定。\n- **临时共享代理**：在任意有公网 HTTP 出口的机器上跑 `tunnix server`，本地用 client 连过去，立刻获得加密隧道。\n\n**功能**：\n- `tunnix server` — 启动服务端，监听本地端口，管理会话。\n- `tunnix client` — 启动客户端，连接远程 server，在本地暴露 SOCKS5/HTTP 代理端口。\n- 支持通过配置文件（`config.toml`）或命令行参数设置服务端地址、密码、自定义 HTTP 头（如 Cookie）。\n- 自动重连 + 过期会话清理（v0.1.4 新特性）：当服务端重启并丢失会话 ID 时，客户端自动生成新 ID 并重置状态，彻底告别“503 循环”。\n- 健康检查端点 `/health` 不受路径前缀影响，方便负载均衡探针。\n\n**支持的运行环境**：\n- 任何可以运行 Rust 二进制的地方（Windows / macOS / Linux / FreeBSD）。\n- 云开发环境：Cloud Shell、Codespaces、Gitpod。\n- 通用容器平台：Railway、Render、Fly.io（**Vercel 不适合**，函数超时太短）。\n\n**安装**：\n```bash\n# 使用 cargo\ncargo install tunnix\n\n# 或从 Releases 下载预编译二进制\n# https://github.com/aeroxy/tunnix/releases\n```\n\n**快速上手**：\n```bash\n# 服务端（比如跑在 Cloud Shell 里）\ntunnix server --listen 0.0.0.0:8080 --password \"你的强密码\"\n\n# 客户端（本地机器）\ntunnix client \\\n  --server \"https://8080-cs-xxxx.cloudshell.dev\" \\\n  --password \"你的强密码\" \\\n  --local-addr 127.0.0.1:7890\n```\n然后 `curl --socks5 127.0.0.1:7890 https://ifconfig.me` 即可测试。\n\n**架构简析**：\n```\n本地浏览器/APP → SOCKS5/HTTP → tunnix client ──(加密 HTTP/SSE)──> tunnix server ──> 目标网站\n```\nclient 用 `hyper` 做 HTTP/1.1 连接，server 用 SSE 下发下行数据。每个上行 POST 请求携带一个随机 nonce 和密文，下行通过 SSE 的 `data:` 事件推送。\n\n**附言**：项目完全开源（MIT），最近发布的 v0.1.4 修复了服务端重启后客户端无限重试的“过期会话”问题，现在无需任何手动干预即可恢复。如果你经常在受限网络环境里折腾代理，或者需要一个轻量、加密的 HTTP 穿透工具，欢迎试用和反馈。",
+    "created_at": "2026-04-27T14:02:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9779"
+  },
+  {
     "id": 9778,
     "title": "【工具自荐】软件开发报价计算器：软件定制开发多少钱？软件公司开发一个软件要多少钱？免费在线工具帮你回答这种问题",
     "content": "### 免费在线小工具\n\n[软件开发报价计算器](https://ruanjiankaifa.com/pricing-calculator/)：软件定制开发多少钱？软件公司开发一个软件要多少钱？开发一个app需要多少钱？ 开发一个微信小程序要多少钱？建网站一般需要多少钱？一个免费在线小工具帮你回答这种问题。不用再为无法安排开发预算发愁。\n\n\n\n### 官方网站\n [软件开发网](https://ruanjiankaifa.com/)：AI 时代的企业软件改造专家。帮助中小企业用 AI + 软件改造，把老系统跑顺、把业务流程做高效。\n\n### 主营业务\n- 老系统升级 / 技术接盘\n- AI 知识库 / 客服 / 助手落地\n- 业务系统定制与持续迭代\n- 企业官网开发\n- 小程序开发\n- App开发",
@@ -808,21 +824,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9681"
-  },
-  {
-    "id": 9680,
-    "title": "【工具推荐】WhatsTheWeb - 免费的网站访问量分析插件",
-    "content": "https://whatstheweb.com/ \n\n可以查看任意网站的访问量、停留时长、流量来源等信息，还可以获取同类网站的榜单排名和流量变动数据\n\n![](https://cdnv2.ruguoapp.com/FhixVUXtKQSLN8UnEnapSLwqgbs4v3.png?imageMogr2/meta-keep-list/ZXhpZixVc2VyQ29tbWVudA==/auto-orient)\n![](https://cdnv2.ruguoapp.com/Fm5_DDH4FtK-2RnRj-tJGM-2vmAtv3.png?imageMogr2/meta-keep-list/ZXhpZixVc2VyQ29tbWVudA==/auto-orient)\n![](https://cdnv2.ruguoapp.com/FlnBuv-V0QDVLU8EJIAasNx6jsR_v3.png?imageMogr2/meta-keep-list/ZXhpZixVc2VyQ29tbWVudA==/auto-orient)",
-    "created_at": "2026-04-19T07:36:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9680"
-  },
-  {
-    "id": 9679,
-    "title": "【开源自荐】@chromium-style-qrcode/mcp - 一个用于生成 Chromium 风格二维码的 MCP 服务",
-    "content": "仓库地址：https://github.com/chromium-style-qrcode/mcp\n\nchromium-style-qrcode/mcp 是一个用于生成 Chromium 风格二维码的 MCP（Model Context Protocol）服务，支持圆形模块、圆角定位器，以及可选的中心图片（Dino 恐龙或自定义图片）。\n\n特性：\n- Chromium 风格渲染 — 使用圆形点阵模块和圆角定位器，与 Google Chrome 生成的二维码完全一致\n- Dino 恐龙 Logo — 默认在二维码中心绘制经典的 Chrome 小恐龙\n- 自定义中心图片 — 传入 Base64 编码的图片以替换 Dino\n- 切换中心图片 — 设置 showLogo: false 可以生成纯净的二维码\n- MCP 原生支持 — 通过 stdio 通信，兼容任何 MCP 客户端",
-    "created_at": "2026-04-19T05:11:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9679"
   }
 ]
