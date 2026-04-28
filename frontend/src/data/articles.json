@@ -1,5 +1,53 @@
 [
   {
+    "id": 9795,
+    "title": "【工具自荐】ai image generator",
+    "content": "工具名称：hairaichanger\n网址链接：https://hairaichanger.com/\n工具页面截图：\n\n<img width=\"1466\" height=\"920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c2f79b95-c918-44e2-930b-0ceaf6675fbe\" />",
+    "created_at": "2026-04-28T09:28:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9795"
+  },
+  {
+    "id": 9794,
+    "title": "【网站自荐】ChatAppReviews：一个查询 App 官方下载路径和可用性的独立网站",
+    "content": "大家好，我做了一个网站 ChatAppReviews：\n\nhttps://chatappreviews.com/\n\n它是一个独立的 App 下载与可用性查询网站，主要解决一个常见问题：用户搜索某个新 App 或功能时，搜索结果里经常充满第三方下载站、APK 镜像站和真假难辨的介绍页。\n\n目前网站重点整理 XChat 相关信息，包括：\n\n是否有官方独立 App\nAndroid / iPhone / Web 是否可用\n是否存在可信的 APK 下载来源\n官方帮助文档和官方入口链接\n常见问题和安全下载建议\n网站不会托管 APK 文件，也不会把第三方镜像包装成官方下载。能找到官方来源时，会优先链接到官方页面；无法验证的内容会明确标注。\n\n技术上使用 Next.js 构建，主要是一个面向搜索意图的内容型工具站。",
+    "created_at": "2026-04-28T08:15:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9794"
+  },
+  {
+    "id": 9793,
+    "title": "【网页自荐】整理了一下目前支持 token plan 计划的模型，感觉未来是一个趋势",
+    "content": "使用 Toknary 更快速地比较 AI token plan 计划：\n\nhttps://ai-token-plan.com\n\nToknary 是一个以文档为先的 AI token plan 比较网站。它能帮助您在一个地方查看官方定价、支持的模型、支持的工具、使用限制、来源链接和最后验证日期。\n\n在订阅或选择提供商之前，请使用 Toknary 比较 AI token plan 的详细信息。\n\nToknary 可帮助您比较以下内容：\n\nMiniMax token plan 计划\n\ntoken plan 计划的月度和年度定价\n\n支持的文本、图像、音频、视频和音乐模型\n\n工具兼容性：Claude Code、Codex CLI、Cursor、Kilo Code、OpenCode、OpenClaw 等\n\n官方文档来源和最后验证日期\n\n腾讯云 token plan 计划\n\n个人 token plan 计划定价和每月 token plan 额度\n\n支持的模型：腾讯混元、MiniMax、Kimi、GLM 等\n\n工具兼容性：Claude Code、Cline、Codex CLI、Cursor、OpenCode、Roo Code 等\n\n官方文档来源和最后验证日期\n\nToknary 适用于：\n\n比较 AI  token plan 计划定价的开发者\n\n使用 Cursor、Claude Code 和 Codex CLI 等 AI 编码工具的用户\n\n评估 MiniMax、腾讯云和其他 AI 提供商的团队\n\n任何希望在订阅前获取有据可查的计划信息的用户\n\n访问Toknary：\n\nhttps://ai-token-plan.com\n\n相关页面：\n\nMiniMax Token Plan：\n\nhttps://ai-token-plan.com/minimax\n\n腾讯云 Token Plan：\n\nhttps://ai-token-plan.com/tencent-cloud\n\n免责声明：\n\nToknary 汇总了公开的官方文档。定价、使用限制、支持的模型和工具兼容性可能会随时间而变化。在做出购买或订阅决定之前，请务必在提供商的官方文档或计费页面上确认最新详情。",
+    "created_at": "2026-04-28T08:12:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9793"
+  },
+  {
+    "id": 9792,
+    "title": "【文章自荐】HTML in Canvas，下一代 Web 图形开发范式?",
+    "content": "**提案链接：** [HTML in Canvas](https://github.com/WICG/html-in-canvas)\n\n## 背景\nWeb 开发者在处理 Canvas 内容时长期面临一个尴尬的现实：Canvas 擅长像素级操作，但对 HTML 的布局能力一无所知。这导致了几个核心问题：\n\n* **可访问性的缺失**：当你用 Canvas 绘制复杂的文本或 UI 时，屏幕阅读器可能无能为力。传统的 fallback 内容往往与实际渲染内容不同步，开发者需要手动维护两套内容。\n* **国际化噩梦**：Canvas 没有内置的文本排版引擎。从右到左（RTL）的文本、垂直书写模式、多语言混排、表情符号，这些在 HTML 中现成的功能在 Canvas 里都需要从零实现。\n* **性能与质量的权衡**：许多应用选择用 Canvas 渲染 UI 以获得高性能，但不得不牺牲文本渲染的质量和交互性；或者用 DOM 渲染获得完美体验，但付出性能代价。\n* **无法组合现代 Web 技术**：你想在 WebGL 场景中显示精美的 HTML UI？想在 3D 立方体上贴上动态的 HTML 内容？现有的组合方式要么性能低下，要么实现极其复杂。\n* **媒体导出困难**：想将网页中的某个 HTML 区域导出为图片或视频？没有标准 API，开发者只能依赖各种 hack 或第三方库。\n\n## 核心提案介绍\n为了解决上述问题，社区提出了 HTML-in-Canvas 提案。它通过三个核心原语——`layoutsubtree` 属性、`drawElementImage` 方法和 `paint` 事件——**让 HTML 元素可以无缝地渲染到 2D 或 3D Canvas 中，同时保留其完整的语义和交互能力。**\n\n核心思想是：**让浏览器同时处理 HTML 布局和 Canvas 渲染，并保持两者同步**。\n\n## Demo 与使用场景\n你可以通过以下 Demo 直观感受它的能力：\n* [Arrival Space](https://arrival.space/htmlcanvas)\n* [html-in-canvas-cracks](https://felixturner.github.io/html-in-canvas-cracks/)\n\n**使用场景：**\n<img src=\"https://cdn.nlark.com/yuque/0/2026/png/236696/1777362023800-043eb4e6-edd9-4e4c-8234-96c0c135710e.png?x-oss-process=image%2Fcrop%2Cx_29%2Cy_0%2Cw_1897%2Ch_1104\" width=\"1897\" title=\"\" crop=\"0.0147,0,0.9826,1\" id=\"u6a219958\" class=\"ne-image\">\n\n<img src=\"https://cdn.nlark.com/yuque/0/2026/png/236696/1777362043799-55e59659-95b0-4c13-809a-b62d926319ae.png?x-oss-process=image%2Fcrop%2Cx_26%2Cy_0%2Cw_1900%2Ch_1104\" width=\"1900\" title=\"\" crop=\"0.0134,0,0.9826,1\" id=\"u3bf704db\" class=\"ne-image\">\n\n## 工作原理与 API 设计\n这个提案遵循了渐进增强、上下文无关（支持 2D/WebGL/WebGPU）和事件驱动的原则。核心实现依赖以下几点：\n\n### 1) `layoutsubtree` 属性\n```html\n<canvas layoutsubtree>\n  <div id=\"content\">这是要绘制的 HTML 内容</div>\n</canvas>\n```\n这个属性告诉浏览器：Canvas 的直接子元素应该参与正常的 DOM 布局流程（包括盒模型、点击测试等）。它们在视觉上是“隐藏”的，但布局信息会被保留。\n\n### 2) `drawElementImage` 方法与 DOM 同步\n```javascript\nconst ctx = canvas.getContext('2d');\n// 绘制元素并获取变换矩阵\nconst transform = ctx.drawElementImage(element, x, y, width, height);\n// 同步 DOM 位置，确保点击测试和无障碍功能正常\nelement.style.transform = transform.toString(); \n```\n这个方法将元素绘制到 Canvas 中。关键点在于：元素的 CSS 样式会被完整保留，同时返回的变换矩阵可以直接用于同步 DOM 位置。\n\n### 3) `paint` 事件驱动\n```javascript\ncanvas.onpaint = (event) => {\n  // 当 Canvas 子元素的渲染发生变化时自动触发\n  ctx.reset();\n  ctx.drawElementImage(element, 0, 0);\n};\ncanvas.requestPaint(); // 对于动画场景，可手动触发绘制\n```\n\n### 4) WebGL / OffscreenCanvas 支持\n* **3D 场景**：可以通过 `gl.texElementImage2D` 将 HTML 内容直接渲染为纹理，映射到 3D 物体上。\n* **Worker 线程**：支持通过 `captureElementImage` 结合 `OffscreenCanvas` 在后台线程进行高性能渲染。\n\n## 当前存在的挑战\n尽管提案已在 Chromium 中实现（需通过 `chrome://flags/#canvas-draw-flag` 启用），但走向生产环境仍需解决以下问题：\n\n1.  **浏览器支持有限**：目前仅 Chromium 实验性支持，Firefox、Safari 尚未表态。\n2.  **性能考量未完全明确**：高帧率动画中频繁同步变换是否会导致抖动？复杂 DOM 树的捕获成本有多高？还需要更多基准测试。\n3.  **隐私与安全边界**：可能被用于“截屏”攻击，具体的安全模型仍在讨论中。\n4.  **复合层管理**：涉及复杂 CSS 效果（如混合模式）时，需要浏览器引擎更深度的集成。\n5.  **可访问性工具适配**：屏幕阅读器等辅助技术需要更新规范，以理解“元素同时在 DOM 和 Canvas 中”的状态。\n\n## 总结\nHTML-in-Canvas 是一个有望改变 Web 图形开发范式的提案。它巧妙地解决了长期存在的“Canvas vs DOM”对立问题，让开发者可以“既要又要”——既享受 Canvas 的渲染控制力和性能，又保留 HTML 的语义、可访问性和排版能力。\n\n这绝不是让 Canvas 重新实现 HTML，而是让两者无缝协作，其**组合性**的价值与 Web 的开放本质一脉相承。对于游戏引擎、图表库、创意编码工具等领域，这是一个值得密切关注的基础设施级方向。\n\n---\n**相关链接：**\n* 文章地址：[https://shenn.xyz/posts/html_in_canvas](https://shenn.xyz/posts/html_in_canvas)\n* 视频版本：【HTML in Canvas — 下一代 Web 图形开发范式？-哔哩哔哩】 [https://b23.tv/Js1KDKp](https://b23.tv/Js1KDKp)\n",
+    "created_at": "2026-04-28T07:53:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9792"
+  },
+  {
+    "id": 9791,
+    "title": "【开源自荐】 企业级软件分发管理平台，支持AI自动审核应用来源",
+    "content": "> 一句话简介：一个让企业员工安全下载软件、让IT运维省心管理的开源平台。\n\n### 痛点\n\n企业在软件管理上常有三大难题：员工从网上下载软件容易中病毒、内部软件版本混乱难以追溯、安全漏洞无法及时通知。Software Guard 正是为解决这些问题而生。\n\n### 项目简介\n\n**Software Guard** 是一个基于 **FastAPI + Vue 3** 的开源企业内部软件分发管理平台。它相当于企业的\"官方应用商店\"——所有软件统一上架、统一管理、统一分发，从源头上杜绝非官方下载带来的安全风险。\n\n### 核心亮点\n\n- **🤖 AI 智能审核**：集成大语言模型，员工申请软件时自动评估风险并推荐审核决策，减少 70% 人工审核工作量\n- **🔒 安全闭环**：JWT 认证 + RBAC 权限控制 + 下载前漏洞检查 + 完整审计日志\n- **📊 全流程管理**：从软件上架、版本管理、下载统计到漏洞追踪通知，一站式搞定\n- **🐳 一键部署**：Docker Compose 一条命令启动全部服务，开箱即用\n- **📝 MIT 开源**：自由使用，社区友好\n\n\n### 开源地址\n\n🔗 **GitHub**：https://github.com/linfree/software_guard\n\n如果你所在的公司还在为内部软件分发头疼，不妨看看这个项目，也欢迎 Star 和贡献代码！\n",
+    "created_at": "2026-04-28T07:33:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9791"
+  },
+  {
+    "id": 9790,
+    "title": "【工具自荐】Scanned.to - AI驱动的OCR文档识别与翻译工具",
+    "content": "**工具名称：** Scanned.to\n**网址：** https://scanned.to\n**一句话介绍：** 将扫描PDF和图片智能转为可编辑Word/Text，保留原始排版，支持50+语言翻译\n\n**功能亮点：**\n1. AI OCR识别印刷体和手写文字，准确率99%+\n2. 文档翻译支持50+语言，针对证书、合同、菜单、技术文档优化\n3. 输出保留原始布局，可在Word中直接编辑\n4. 批量处理，支持多格式上传\n5. 隐私安全：SOC 2合规，文档30天自动删除\n6. 提供REST API供开发者集成\n\n**免费额度：** 免费2页体验\n**付费方案：** 从$5（按需付费）到$35/月（Pro版900页/月）\n**用户规模：** 25,000+活跃用户，10,000+文档已处理",
+    "created_at": "2026-04-28T06:30:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9790"
+  },
+  {
     "id": 9789,
     "title": "科技愛好者",
     "content": null,
@@ -770,53 +818,5 @@
     "created_at": "2026-04-20T13:52:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9696"
-  },
-  {
-    "id": 9695,
-    "title": "网站自荐：NewYouGo - 免费 AI 图片、视频和音乐生成平台",
-    "content": "- 网站名称：NewYouGo\n- 网站地址：https://newyougo.com/\n- 网站简介：一个面向创作者的 AI 生成 SaaS 平台，集合图片、视频、音乐三类模型，支持文本生图、图像编辑、LoRA 风格控制、短视频生成等。\n- 主要特点：\n  1. 提供图片、视频、音乐多模型入口，适合一站式创作。\n  2. 首页提供免费体验入口，适合先试用再决定是否深入使用。\n  3. 支持 FLUX、Kling、Seedance、Nano Banana 等多个热门模型。\n  4. 模型页和生成器入口整理得比较清晰，适合内容创作者和独立开发者快速上手。\n- 适合人群：内容创作者、营销团队、AI 设计探索者。\n\n如果选题方向合适，欢迎收录。",
-    "created_at": "2026-04-20T11:01:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9695"
-  },
-  {
-    "id": 9694,
-    "title": "【文章自荐】三省六部幻觉：为什么\"虚拟公司\"式多Agent架构在工程上不成立",
-    "content": "先说结论\n如果你正在考虑把多个AI Agent分别命名为\"产品经理\"、\"架构师\"、\"测试工程师\"，让它们像公司部门一样传递文档、协作完成任务——请停下来。\n\n这个模式看起来很直觉，逻辑上似乎很合理，但它在工程上有根本性的缺陷。更重要的是，Anthropic、OpenAI、Google三家厂商在构建自己的Agent系统时，没有一家采用这个模式。\n\n这不是巧合。\n\nhttps://quaily.com/sagasus-blog/p/three-ministries-six-departments-illusion-why-virtual-company-multi-agent-architecture-not-viable\n\n自己写的，期待点评",
-    "created_at": "2026-04-20T09:13:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9694"
-  },
-  {
-    "id": 9693,
-    "title": "【开源自荐】AskForPermission: Codex Computer Use的「权限申请」开源实现",
-    "content": "https://github.com/riko2chen/AskForPermission\n\n\nCodeX Computer Use 在首次安装时会出现权限申请，系统设置窗口弹出来，一张引导卡从按钮位置沿着抛物线飞出，贴在设置窗口旁边；卡上露出宿主 app 的图标，拖进去就完成了授权。整个过程非常丝滑。\n\n这个项目完全复刻了同样的效果：\n\nhttps://github.com/user-attachments/assets/8360c7a3-2546-4f8c-92d7-247ae460f5ce\n\n## 已支持\n\n- 点到点的模糊转场\n- 可以随着系统设置框任意拖动\n- 「上箭头」随着拖动的加速度弹性跳动\n- 在开启「台前调度」的情况下依然支持\n\n\n## 与 Computer Use 的不同之处：\n\n- 增加至6种权限申请\n- 动画转场用单个控件实现，Computer Use是两个控件在顶点切换透明度\n- 「上箭头」的弹性跳动时机、幅度是自定义的\n- 对系统设置框的位置判定是单独实现的，确保无论系统设置是「关闭」、「最小化」、「已开启」，都能正确计算终点位置。\n\n项目地址： https://github.com/riko2chen/AskForPermission\n开源协议： MIT",
-    "created_at": "2026-04-20T09:04:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9693"
-  },
-  {
-    "id": 9692,
-    "title": "【开源自荐】悠然标签页 - 一款自用开源浏览器新标签页插件",
-    "content": "仓库：https://github.com/dufu1991/youran-tab\n官网：https://youran-tab.du-fu.com\n\n这是一个开源的浏览器新标签页插件，支持 Chrome、Edge、Firefox 以及部分国产浏览器。它的目标不是做一个“功能堆满”的起始页，而是提供一个更干净、更耐看、同时又足够可定制的新标签页体验。\n\n这个项目最初的起点很简单。我因为对默认浏览器体验不满意，连续试用了多款 Chromium 浏览器，最后发现它们各有优缺点，但没有一个真正符合我自己的使用习惯。比如，Arc 的设计很惊艳，但停止维护后，未来的不确定性太高；Yandex Browser 的界面和动画都不错，但中文翻译质量很差；Edge 性能不错，不过默认新标签页和部分 UI 细节让我始终不适应，DevTools 还会偶发卡死；Vivaldi 自定义能力很强，但我遇到了和 Tampermonkey 相关的稳定性问题；Brave 很重视隐私，却对开发者不太友好，一些 Web API 默认受限，调试体验不佳；Helium 足够轻，也足够干净，但缺少浏览器级密码自动填充，这对多账号开发场景并不方便。\n\n折腾一圈后，我还是回到了 Chrome。但 Chrome 默认新标签页的站点图标在高分屏下显示比较糊，而且几乎没有什么可定制空间。与其继续忍受，不如自己做一个。\n\nYouran Tab 目前提供多种风格主题，比如经典、便当、终端、极简、玻璃、气泡、像素、便签等，也支持背景切换、深色模式、自定义图标、站点导入导出和多语言。所有数据都保存在本地，不需要登录，也不收集用户信息。\n\n最新版本还支持了直接将标签页组创建一个文件夹，这样就可以按照当前工作内容分类标签页，然后关闭标签页组，需要的时候一键打开，省内存也省了标签页区域的空间。\n\n我做这个插件的思路，不是去替代浏览器本身，而是把“新标签页”重新变成一个真正高频、顺手、符合个人审美的入口。",
-    "created_at": "2026-04-20T08:47:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9692"
-  },
-  {
-    "id": 9691,
-    "title": "【开源自荐】openbee - 让 AI Agent 成为你的 7x24 数字员工",
-    "content": "## 0x00 背景\n\nAI Agent 的生态已经非常繁荣，在 skills 的加持下当前 Agent 的能力得到了极大的拓展，可以做的事情非常多了，此种背景下已经完全可以让 Agent 作为数字员工去完成企业日常的一些任务。\n\n## 0x01 介绍\n\n<img width=\"2886\" height=\"1628\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/347f10ba-a202-4495-8f08-b51b7492b3d3\" />\n\nopenbee 是一款 golang 开发的 agents 驱动平台。目前支持 claude / codex / kimi / pi 四个 agent。支持通过微信、企业微信、飞书、钉钉、Telegram 五个 IM 平台通信，通过聊天完成任务分配和进度追踪。\n\n## 0x02 核心能力与亮点\n\n### 双层调度架构\n\nopenbee 引入双层调度架构，如下：\n\n```mermaid\ngraph TD\n    A[\"💬 IM Layer (Communication)\\nLark / DingTalk / WeCom / WeChat / Telegram\"] --> B[\"🧠 Scheduling Layer\\nAI Agent\"]\n    B --> C[\"🤖 Execution Layer\\nAI Agents\"]\n    C -. \"Reply Results\" .-> A\n    B -. \"Reply Results\" .-> A\n```\n\n通过中央大脑 + 员工描述 完成任务分配指派，提升工作效率。\n\n### 数字员工概念\n\nopenbee 引入数字员工概念，每个数字员工其实对应一个 agent 实例，每个数字员工可以自由设置 claude / codex / kimi / pi 作为底层驱动的 agent 且可以自由更换。按照少即是多的设计哲学，每个数字员工应当做最小集合的任务。\n\n### 多 agent 支持\n\n支持 claude / codex / kimi / pi 四个 agent 同时 agent 通过插件化拓展非常方便。\n\n### 部署简易\n\nopenbee 是由 golang 开发，可直接编译二进制运行文件，可以运行在 amd64 / arm64 等架构平台。\n\n## 项目地址\n\n仓库：https://github.com/theopenbee/openbee\n文档：https://docs.theopenbee.com\n\n通过下面命令一键安装：\n\n```\nnpm install -g @theopenbee/cli\n```",
-    "created_at": "2026-04-20T07:28:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9691"
-  },
-  {
-    "id": 9690,
-    "title": "【Skills自荐】claude MBTI skills：intj 去爹味，enfp 做设计",
-    "content": "https://github.com/guoriyue/mbti-skills\n\nOpus 4.7 的中文回答普遍被吐槽爹味重，我的 Claude Code 插件把 16 种 MBTI 人格打包成 16 个 skill。\n\n插件只改语气、推理习惯和决策默认值，不动 Claude 的工具、权限和安全行为。每个 skill 是一份 SKILL.md，结构公开。\n对比截图：\n\n同一个 AI 笔记 app 落地页 prompt，base 很朴素，ENTP 很显眼。\n\nbase:\n\n<img width=\"1191\" height=\"734\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3cb2ab8b-d7e6-4c00-9767-810ce861ba36\" />\n\nENTP:\n\n<img width=\"1247\" height=\"763\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7c8f2749-2ad3-4c41-8964-822b668ac382\" />\n\n\n\n同一个 RL debug 问题，base 废话一堆，INTJ 直接交货。\n\nbase:\n\n<img width=\"1131\" height=\"844\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c71a100a-d2cc-4be5-8c35-17e80828c28b\" />\n\nINTJ:\n\n<img width=\"1136\" height=\"426\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e5edf8bd-6530-497d-95a9-a3879540f5fb\" />\n\n\n\n\n",
-    "created_at": "2026-04-20T07:09:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9690"
   }
 ]
