@@ -1,5 +1,21 @@
 [
   {
+    "id": 9800,
+    "title": "【网站自荐】HEIC to PNG —— 纯浏览器本地运行的 HEIC 图片转换工具, 保护隐私安全",
+    "content": "### 项目地址\nhttps://heictopng.org\n\n### 介绍\n推荐一个我自己开发的开源思路 HEIC 转换工具：HEIC to PNG。\n\niPhone 从 iOS 11 起默认用 HEIC 格式存照片，这种格式压缩率高，但**Windows、Android、微信网页版、Gmail 等很多场景都打不开**，导致大量普通用户遇到「我从 iPhone 发出来的照片打不开」的问题。\n\n市面上的 HEIC 转换网站普遍存在两个问题：**要么把照片上传到服务器（隐私风险）**，**要么限制每天转换数量、加水印、收费**。\n\n我做这个产品的核心目标是：**所有转换都在浏览器本地完成，照片永远不离开用户设备**。\n\n### 主要特色\n\n1. **100% 客户端转换，零上传**\n   - 基于 libheif-js（WASM）在浏览器内直接解码 HEIC\n   - 在支持的浏览器（Chrome、新版 Safari、Edge）上优先调用原生解码器，速度更快\n   - 整个转换过程不向任何服务器发送图片数据，断网也能用\n2. **支持 4 种输出格式**，每种格式都有专门页面：\n   - **PNG**（无损）：`/heic-to-png`\n   - **JPG**（可调质量 1–100）：`/heic-to-jpg`\n   - **WebP**（基于 @jsquash/webp 实现真正的无损 WebP，浏览器自带的 canvas.toBlob 只能输出有损）：`/heic-to-webp`\n   - **PDF**（支持「合并模式」，把多张 HEIC 合并为一份多页 PDF，可选 A4 / Letter / 适配图片尺寸）：`/heic-to-pdf`\n3. **批量转换 + 一键打包**\n   - 拖拽多文件、批量转换、ZIP 打包下载\n   - PDF 模式可把整本相册合并成单个 PDF\n4. **专业级图像处理细节**\n   - 按 EXIF 方向自动旋转（解决老款 iPhone 横竖照片错乱问题）\n   - 可选择保留 / 抹除 EXIF 元数据（隐私保护：默认抹除 GPS 信息）\n   - 可限制输出最大边长（原图 / 4096 / 2048 / 1024）\n5. **完全免费、无注册、无水印、不限文件大小、不限张数**\n6. **多端覆盖**：支持 Windows / macOS / iOS / Android 主流浏览器，13 种语言界面（中、英、日、韩、德、法、西、葡、俄、越、印尼、繁中等）\n\n### 技术亮点\n- HEIC 解码采用「先尝试浏览器原生 → 失败回退到 WASM」的混合策略，兼顾速度与兼容性\n- WebP 走 WASM 编码器，提供浏览器原生不支持的「真无损 WebP」\n- PDF 由 jsPDF 在前端组装，多图合并不丢失分辨率\n\n### 适用场景\n- iPhone 用户把照片发到 Windows 电脑、安卓手机、Gmail、网站后台\n- 摄影爱好者批量处理 iPhone 拍的 RAW + HEIC 工作流\n- 在意隐私、不想上传家庭 / 证件照片的普通用户\n- 需要把多张证件照合并为一个 PDF 提交的场景\n\n### 截图\n<img width=\"2552\" height=\"1844\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9410ec99-6ba5-48b3-bc6b-87853f6a6f37\" />\n<img width=\"2540\" height=\"1836\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dc3d349-74be-4fe3-876d-41816c56cb95\" />\n<img width=\"2556\" height=\"1822\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/57d19236-f3a2-4fcf-af0b-364d939ef585\" />\n<img width=\"2550\" height=\"1726\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6fabf26a-2731-4b69-81dd-3885a50b6d28\" />\n",
+    "created_at": "2026-04-29T01:34:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9800"
+  },
+  {
+    "id": 9799,
+    "title": "【网站自荐】Markdown to Word Converter Pro —— 免费在线 Markdown 转 Word / PDF / HTML 工具，支持数学公式与 Mermaid 图表",
+    "content": "### 项目地址\nhttps://markdowntoword.pro\n\n### 介绍\n推荐一个我自己开发并日常使用的 Markdown 文档转换工具：Markdown to Word Converter Pro。\n\n它解决的是一个非常具体的痛点：把 Markdown 写好的文章或文档，**保留排版、表格、代码块、数学公式、流程图**，一键导出成 Word、PDF 或 HTML，发给不用 Markdown 的同事、客户或老师。\n\n市面上类似工具很多，但大部分要么只支持基础语法、要么需要登录付费、要么把 Mermaid 图表直接丢失。这个工具在以下几个方面做了认真打磨：\n\n### 主要特色\n\n1. **完全免费、无需注册**：粘贴文本或上传 .md 文件即可转换，不强制登录、无水印、不限文件大小。\n2. **三种导出格式**：\n   - Markdown → Word（.docx / .doc），保留标题层级、表格、列表、代码格式\n   - Markdown → PDF，可直接打印或归档\n   - Markdown → HTML，可直接嵌入博客或邮件\n3. **完整的 Markdown 扩展语法支持**：\n   - **数学公式**：基于 KaTeX 渲染 LaTeX 公式，导出后公式仍然清晰（适合写论文、技术笔记）\n   - **Mermaid 流程图**：自动渲染为 PNG 嵌入文档，这是大多数转换器都会丢失的部分\n   - **代码语法高亮**：highlight.js 着色后导出，Word 里也保留高亮\n   - **GFM 表格、任务列表、脚注、目录**全部支持\n4. **实时双栏预览**：左边写 Markdown，右边即时渲染，输出与最终文档一致。\n5. **多语言界面**：支持简体中文、繁体中文、英文、日文等 13 种语言，对中文标点和混排做了针对性优化。\n\n### 适用场景\n- 程序员把 GitHub README、技术文档发给非技术同事\n- 学生 / 研究者把 Markdown 笔记转成 Word 投稿或交作业\n- 写公众号、博客时需要在 Markdown 与富文本之间切换\n- 用 Mermaid 画了流程图，但需要交付 Word 版本评审\n\n### 截图\n<img width=\"2812\" height=\"1802\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a582e50a-4c27-4a6f-ad16-84c828abdb48\" />\n",
+    "created_at": "2026-04-29T01:25:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9799"
+  },
+  {
     "id": 9798,
     "title": "【开源自荐】开箱即用的轻量级PXE网络装机服务端，无需繁琐的环境配置，跨平台支持（Windows / Linux / macOS）",
     "content": "## netboot\n> 基于 Go + Vue 3 构建的**跨平台** PXE 网络启动管理服务，轻松实现多系统环境下的开箱即用，单二进制文件快速启动。\n\n### 项目地址：https://github.com/sky22333/netboot\n\n## ✨ 功能特点\n\n* 🖥️ **全平台支持**：采用 Go 语言开发，原生跨平台（Windows / Linux / macOS），无需繁琐的环境配置。\n* 📱 **Web 可视化管理**：现代化中文响应式界面，完美适配手机与电脑，支持登录认证与实时日志查看。\n* ⚙️ **服务一键管控**：在 Web 端即可启动、停止或重启 DHCP (含 ProxyDHCP)、TFTP、HTTP Boot、SMB 和 Torrent 服务。\n* 📡 **智能网络引导**：\n    * **完整 DHCP**：支持标准 DHCP 地址分配及 ProxyDHCP 模式（不影响现有路由）。\n    * **自动适配**：智能识别终端架构（BIOS / UEFI / iPXE）并下发引导文件。\n    * **内置 netboot.xyz**：支持官方源拉取，同时兼容自定义启动文件。\n* ⚡ **高效协议传输**：提供稳定且带重试机制的 TFTP，以及支持缓存和虚拟路径的 HTTP Boot 服务。\n* 🗂️ **在线文件管理**：内置文件浏览器，支持在线上传、多级目录管理。\n\n##  界面预览\n\n![1](https://cdn.jsdelivr.net/gh/sky22333/netboot@main/docs/images/demo1.png)\n\n---\n\n![2](https://cdn.jsdelivr.net/gh/sky22333/netboot@main/docs/images/demo2.png)\n\n---\n\n![3](https://cdn.jsdelivr.net/gh/sky22333/netboot@main/docs/images/demo3.png)\n\n---\n\n![4](https://cdn.jsdelivr.net/gh/sky22333/netboot@main/docs/images/demo4.png)\n\n---\n\n![5](https://cdn.jsdelivr.net/gh/sky22333/netboot@main/docs/images/demo5.png)\n",
@@ -70,14 +86,6 @@
     "created_at": "2026-04-28T06:30:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9790"
-  },
-  {
-    "id": 9789,
-    "title": "科技愛好者",
-    "content": null,
-    "created_at": "2026-04-28T04:57:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9789"
   },
   {
     "id": 9788,
@@ -810,13 +818,5 @@
     "created_at": "2026-04-20T15:45:16Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9700"
-  },
-  {
-    "id": 9699,
-    "title": "【工具自荐】EventPulse：Agent 把同一事件的新闻整理成一条时间线，帮你追新闻后续，新闻有进展直接推送邮箱",
-    "content": "在线体验：[https://event-pulse.buyixiao.xyz/](https://event-pulse.buyixiao.xyz/)\n\n完整介绍：[https://mp.weixin.qq.com/s/NE_nLNPrSSEWSRTBHcw1nA](https://mp.weixin.qq.com/s/NE_nLNPrSSEWSRTBHcw1nA)\n\n平时看新闻，经常会遇到一个问题：一件事刚发生的时候，到处都是报道；\n\n过了几天再想看后续，却很难把前因后果和最新进展串起来。\n\nEventPulse 就是为这个场景做的。\n\n它会持续收集同一事件的相关新闻，用 AI 做归类整理，再按时间顺序生成一条时间线。\n打开一个事件页面，看到的不是一堆零散标题，而是这件事从发生、发酵到后续进展的脉络。\n\n目前主要有 4 个功能：\n\n- 聚合多个新闻源，把同一事件的报道整理到一起\n- 用时间线展示事件发展过程，方便快速补全上下文\n- 支持邮箱订阅，不需要单独注册，事件有新进展时会自动提醒\n- 支持生成分享海报，别人扫码后可以直接查看完整脉络\n\n我做这个工具的出发点很简单：很多时候，我们不是想多看几条新闻，而是想把一件事真正跟完。\n现在的大多数新闻产品更擅长分发信息，但不太擅长持续追踪同一个事件。这个工具就是想补上这一步。\n\n如果你平时会持续关注新闻、行业动态，或者需要梳理某个议题的发展过程，这个工具应该会比较对路。\n\n## 截图\n\n<img width=\"1926\" height=\"1580\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d263ffc2-8f84-4e82-ba39-7f1dcb2b3f6b\" />\n\n<img width=\"1796\" height=\"1552\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/180a28f9-8b53-493a-9159-3250b7c78722\" />\n\n<img width=\"1440\" height=\"3168\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dc46bbbc-68f5-4ec2-8d58-23c07a390e3c\" />\n\n<img width=\"1104\" height=\"1360\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6a26fcde-224a-43df-af0d-85ebfb85826e\" />",
-    "created_at": "2026-04-20T15:15:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9699"
   }
 ]
