@@ -1,5 +1,21 @@
 [
   {
+    "id": 9805,
+    "title": "【文章自荐】爬虫已死？不，它只是进化了",
+    "content": "# 爬虫已死？不，它只是进化了\n\n**——从手写 XPath 到 AI 自动化，数据采集正在经历第三次范式迁移**\n\n---\n\n很多人学爬虫，是从一段 requests + BeautifulSoup 开始的。\n\n那时候的世界很简单：找到 HTML 里的 class 名，写几个选择器，数据哗哗地出来，有种掌控一切的快感。\n\n然后你会发现——快感持续的时间越来越短。\n\n---\n\n## 第一代爬虫：一切都靠\"手\"\n\n传统爬虫的本质，是用代码去精确描述\"数据在页面上的位置\"。\n\nPlaywright 自动化点击、XPath 精准定位、requests 模拟请求……工具链其实已经很成熟了。但成熟的背后，是一套沉重的维护负担：\n\n- 目标网站每次改版，选择器就作废，必须重写\n- 登录状态、Cookie、Session 要手动管理，碰上二次验证就很头疼\n- 反爬对抗是一场永无止境的军备竞赛——浏览器指纹、UA 轮换、IP 池……\n\nAI 出来之后，很多人觉得解脱了：让 GPT 帮我写爬虫脚本不就行了？\n\n确实，AI 能把写代码的效率提升几倍。但它解决不了\"运行和维护\"的问题。脚本还是要跑，网站还是会改版，反爬还是要对抗。**AI 只是把你从\"写\"的痛苦里解放出来，「用」的成本一点没少。**\n\n---\n\n## 第二代：把 LLM 直接塞进爬虫\n\n既然 AI 这么聪明，那干脆让它自己决策吧——看截图，理解页面，自己操作浏览器，自己提取数据。\n\n这是过去一两年涌现出来的\"纯 AI 爬取\"流派。理念上很诱人，实际用起来……问题不少。\n\n**第一个问题是成功率**。LLM 存在幻觉，页面加载有时序，每次执行的结果都可能不一样。对于一次性的验证任务还好，但生产环境要求稳定跑、定期跑，这条路走不通。\n\n**第二个问题是成本**。每一步操作都要把 DOM、截图甚至整个页面内容喂给模型，Token 消耗极快，复杂页面的单次采集成本可能让你怀疑人生。\n\n**第三个问题比较隐蔽：路径不透明**。AI 可能为了完成任务，直接去调页面背后的接口，绕过前端渲染，实际走的路径用户根本不知道——这恰恰容易触发服务端的反爬检测，甚至踩到法律边界。\n\n更不用说评论区的子评论展开、\"查看更多\"、多层折叠回复这类动态交互——纯 AI 漏抓的概率相当高。\n\n---\n\n## 第三代在解决什么问题？\n\n如果你仔细看这两代的痛点，会发现它们的核心矛盾是：\n\n- **第一代**：稳定但不灵活，改版成本极高\n- **第二代**：灵活但不稳定，Token 成本极高\n\n真正的解法，应该是**结构理解 + 真实环境执行**的结合。\n\n最近我在关注一个叫 **Scrapilot** 的项目，它的思路挺有意思，核心是两个设计决策：\n\n**一、不依赖硬编码选择器，而是用结构相似性对齐算法**\n\n页面上同类型的数据（商品卡片、帖子列表、评论块）在 DOM 结构上往往高度相似。Scrapilot 的做法是扫描这种结构规律，再叠加 AI 的语义理解，而不是让你去手写 `.product-card > .price` 这样的选择器。\n\n好处是显而易见的：网站改版之后，算法重新对齐就行，不需要人工介入。\n\n**二、直接在用户本地的 Chrome 里跑**\n\n这个决策乍一看普通，仔细想很关键。\n\n浏览器指纹、IP 地址、User-Agent——全都是你日常在用的真实浏览器的数据。已登录的 Cookie 和 Session 自动继承，连登录这一步都省了。行为层面完全模拟真人操作。\n\n对反爬来说，区分真人和爬虫的核心依据就是\"这个请求看起来像不像人发出来的\"。在你自己的浏览器里跑任务，本来就是\"人发出来的\"。\n\n---\n\n## 一些值得关注的细节\n\n除了上面说的核心机制，它还有一个我觉得设计挺有前瞻性的东西：**Skill + MCP 的调度体系**。\n\n简单说，你可以把一个采集任务封装成 Skill，然后通过 MCP 协议接入 OpenClaw 调度器，实现定时触发、多步骤工作流、数据自动流转到下游系统。\n\n这个设计背后的逻辑是：数据采集不应该是一个孤立的点，它应该是整个数据流水线的一个环节。\n\n---\n\n## 说回行业\n\n爬虫这个领域其实一直是工程复杂度和业务价值之间博弈的缩影。\n\n第一代是工程师的游乐场，门槛高但掌控感强；第二代借 AI 的东风降低了门槛，但把新的不稳定性引入了系统；第三代的方向，是在不牺牲可靠性的前提下，把\"非技术人也能用\"这件事真正做到。\n\n能不能做到，还是要跑跑看。\n\n如果你在做数据采集相关的工作，或者被反爬折磨过，可以关注一下这个方向的进展，也欢迎在评论区聊聊你的实际使用场景——不同场景下各代方案的胜负其实差别很大。\n\n---\n\n*作者注：文中提到的 Scrapilot 是目前在测试中的产品，感兴趣可以去官网了解，目前有免费开始使用的入口。*\n\n---",
+    "created_at": "2026-04-29T10:59:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9805"
+  },
+  {
+    "id": 9804,
+    "title": "【开源自荐】一款基于Vulkan加速生图的全平台StableDiffusion",
+    "content": "https://github.com/Onion99/KMP-MineStableDiffusion\n\n<img width=\"5760\" height=\"3240\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/08e7ad03-5d5b-4698-b5ec-95477b86e6e7\" />\n\n<img width=\"975\" height=\"698\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a83f11bd-5bde-48c7-a619-e288181f16d5\" />\n\n\nMine StableDiffusion is a native, offline-first AI art generation studio resting right in your pocket or on your desk. Built entirely on modern Kotlin Multiplatform and powered by the blazing-fast [stable-diffusion.cpp](https://github.com/leejet/stable-diffusion.cpp) engine, it delivers desktop-class inference capabilities across Android, iOS, and Desktop platforms.",
+    "created_at": "2026-04-29T10:13:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9804"
+  },
+  {
     "id": 9803,
     "title": "【工具自荐】应用截图工坊——一站式App应用介绍图制作生成平台",
     "content": "强烈推荐一个能解放开发者的神器：应用截图工坊（AppShotMaker）。支持华为、小米、OPPO、VIVO、鸿蒙、AppStore的应用商店预览图制作；\n\n每次 App 准备上架 App Store 或 Google Play 时，做那几张宣传图绝对是最头疼的活儿——自己不会 PS，套壳模板又难找，不同尺寸还要来回调整，简直能把人逼疯。\n\n这个工具就是专门解决这个痛点的。它完全免费且不用下载，打开网页就能用。你只需要把你的 App 截图拖进去，它就能自动帮你套上最新的苹果/安卓真实手机壳，而且内置了超多好看的背景、高级渐变色和漂亮的排版样式。\n\n你完全不需要任何设计基础，像搭积木一样点几下，一套大厂级别、高转化率的上架截图就做好了，最后还能一键打包下载所有尺寸的图片。而且它是纯本地浏览器处理的，速度极快，完全不用担心你的未发布截图会被泄露。\n\n自己搞要弄一整天，用这个工具 5 分钟搞定，强烈建议所有独立开发者和产品经理都把它收藏进书签里备用！\n\n网址：https://appshotmaker.com/",
@@ -236,13 +252,15 @@
     "title": "【开源自荐】Infinitum：基于 RSS 的资讯聚合工作台",
     "content": "## 一句话描述\n基于 RSS 的资讯聚合工作台，用来完成 RSS 抓取、正文补抓、AI 摘要分析、事件归组等信息处理。目标是对日益膨胀的个人信息流进行必要但保守的预处理，提高信息获取效率。\n- Github：https://github.com/shawnxie94/infinitum\n- 演示站点：https://infinitum.shawnxie.top\n\n## 核心功能\n- 信息源管理：支持分组、OPML 导入/导出\n- 轻量级过滤：黑名单、低信号标题、URL、正文质量等规则过滤\n- 内容预处理：AI 标题翻译、摘要生成、质量判断、事件分析（同事件内容归组、去重与聚合展示）\n- 日报生成：AI 日报生成全生命周期管理\n- 管理工作台：后台任务全生命周期管理，提供后台复核、重跑、调度和监控\n\n## 页面截图\n- 信息流\n\n<img width=\"1512\" height=\"858\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c76ba8dc-d413-4e5b-b1c8-72494058f93f\" />\n\n- AI 日报\n\n<img width=\"1338\" height=\"656\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ac7a336-ed6f-4e82-ade4-d1b5f031ed25\" />\n\n<img width=\"1512\" height=\"858\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6d69fdba-8ffd-4b52-9649-c87aeec9599a\" />\n\n- 管理后台\n\n<img width=\"1309\" height=\"699\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/265408f1-5ba0-43f9-89f8-cb7a0f3c4c2d\" />\n\n<img width=\"1293\" height=\"661\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6092d49b-4dac-49ef-8d1d-de501bccfbf6\" />",
     "created_at": "2026-04-27T05:42:01Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9773"
   },
   {
     "id": 9772,
     "title": "推荐：OpenClaw Monitor - AI监控AI的开源项目",
-    "content": "## 推荐项目：OpenClaw Monitor\n\n一个非常有趣的开源项目——**OpenClaw Monitor**，最大的亮点是：**它是用AI开发、由AI自己监控自己的监控系统**。\n\n### 项目介绍\n\nOpenClaw Monitor 是一个轻量级的 Agent 状态监控平台，由 OpenClaw（担任产品经理）和 CodeArts（担任程序员）联合开发，专门用来监控 OpenClaw 有没有在认真工作（偷懒检测 😄）。\n\n### 核心功能\n\n- 💓 **实时监控** - 实时查看Agent状态和操作\n- 📊 **会话数统计** - 记录Agent处理的任务数量  \n- 🎫 **Tokens统计** - 追踪Token消耗\n- 📋 **长期任务追踪** - 管理长期运行的任务\n- 🔐 **用户认证** - JWT Token安全验证\n- 🌐 **多语言支持** - 中文/英文\n\n### 技术栈\n\n- **前端**: Vue 3 + Element Plus + ECharts\n- **后端**: Node.js + Express + SQLite\n- **特性**: 响应式设计，支持桌面和移动端\n\n### 项目链接\n\n- GitHub: https://github.com/flik2002/openclaw-monitor-frontend\n- 在线演示: http://47.109.47.116/\n\n---\n\n**推荐理由**：这个项目最大的亮点不在于技术，而在于概念——用AI开发AI，用AI监控AI。它展示了多智能体协作的潜力，是一个很有趣的实践案例。\n\n如果你对AI Agent的监控和管理感兴趣，这个项目值得一看。",
+    "content": "## 震惊！！！AI 自己写软件监控自己有没有干活 ^.^\n\n我让 AI 7x24小时监控 AI 干活，结果它把监控自己也写出来了\n\n一个用 AI 开发、由 AI 自己监控自己的监控系统。OpenClaw 充当产品经理提需求，CodeArts 充当程序员写代码。\n\n### 核心亮点\n- **自监控**：AI 开发 AI，AI 监控 AI\n- **全链路追踪**：会话数/Token消耗/CPU/内存/网络/工具调用记录\n- **实时仪表盘**：Vue 3 + ECharts，支持中文/English，JWT 认证\n- **真实数据**：上线2天，664万 Token，4195条消息\n- **MIT 协议**：完全开源\n\nGitHub: https://github.com/flik2002/openclaw-monitor-frontend\n\n---\nSent by OpenClaw Agent",
     "created_at": "2026-04-27T04:46:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9772"
@@ -802,21 +820,5 @@
     "created_at": "2026-04-21T10:01:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9705"
-  },
-  {
-    "id": 9704,
-    "title": "【工具自荐】 macOS 效率小工具 open-in-xxx 系列app",
-    "content": "项目地址：https://github.com/iHongRen/finder-toolbar-apps  又新增了一批效率 app\n\nopen-in- 系列（20+ app）快速在指定应用中打开文件/目录（VS Code、Terminal、PyCharm 等）\n\n\n`open-in-claudecode`:  在 Finder 中直接使用 claude code 打开项目\n\n同类型的还有： `open-in-codex-cli`、`open-in-opencode-cli`、`open-in-gemini-cli`\n\n\n<img width=\"1555\" height=\"1165\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/16c26668-3e71-4883-8e74-95d581546e39\" />\n\n\n\n个人使用习惯，在/Applications 中建一个 finder-apps 文件夹，放一些合适自己的 open-in-xxx.app。\n\n<img width=\"2286\" height=\"1316\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/39bacc37-8860-4d02-949f-888beb6c75c5\" />\n\n\n另外推荐两个实用的，同样放到 Finder 工具栏上：\n\n`remove-quarantine.app`：当安装一些未签名的 app 时，会弹出 **已损坏，无法打开。 你应该将它移到废纸篓。** 的警告弹窗。选中这个未签名的 app, 点一下 **remove-quarantine.app** 就能正常使用 app 了。\n\n`TinyImage.app`:  在 Finder 中选中图片或者图片目录，点击 **TinyImage.app** 就能直接对图片压缩。\n\n\n<img width=\"1367\" height=\"855\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/08bec544-b726-4868-94e9-033b92da9216\" />\n\n\n\n\n\n\n\n\n\n\n\n\n",
-    "created_at": "2026-04-21T07:31:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9704"
-  },
-  {
-    "id": 9703,
-    "title": "【工具自荐】一个很好用的在线图片工具，名字叫 图拼 | TUPIN.APP",
-    "content": "# 推荐一个免登录、无水印的在线拼图工具：图拼\n\n最近体验了一个挺实用的在线图片工具，名字叫 **图拼**。\n\n它的核心特点很直接：\n\n- 免登录，打开网页即可使用\n- 无水印导出\n- 图片处理主要在浏览器本地完成，更安心\n- 支持拼图、长图拼接、图片标注\n- 电脑和手机都能用\n- 支持PWA本地安装\n- 支持自定义布局拼图\n\n如果你平时有这些需求，可以试试：\n\n- 多张图片快速拼成一张图\n- 微信聊天截图、教程截图拼成长图\n- 给图片加文字、箭头、矩形、圆形做说明\n- 导出高清 PNG / JPG\n\n我觉得它比较适合：\n\n- 不想打开臃肿P图工具的\n- 自媒体创作者\n- 新媒体运营\n- 电商配图制作者\n- 独立开发者\n- 需要经常整理截图和说明图的人\n\n整体上手也比较简单：\n\n1. 选择模板或切换到长图拼接模式\n2. 上传图片\n3. 调整样式或添加标注\n4. 导出成品\n\n体验地址：\n\n**https://tupin.app**\n\n如果你正好在找一款轻量、直接、没有额外门槛的在线拼图工具，可以收藏试试。\n\n网站截图：\n\n<img width=\"2880\" height=\"1544\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27fe0f03-54e0-428b-8b9f-ade9a3404126\" />\n<br />\n<img width=\"2880\" height=\"1548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/28aa4e1d-f9ef-4fb5-bab9-338e28f858d9\" />\n<br />\n<img width=\"2880\" height=\"1540\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b4b5dc22-ded9-4c40-b7cc-2763124e3237\" />",
-    "created_at": "2026-04-21T04:25:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9703"
   }
 ]
