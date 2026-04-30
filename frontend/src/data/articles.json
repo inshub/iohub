@@ -1,5 +1,21 @@
 [
   {
+    "id": 9820,
+    "title": "〖开源自荐〗Plexus：一键同步 Claude Code、Cursor、Codex 等 AI Agent 配置",
+    "content": "项目地址：https://github.com/miniLV/Plexus\n\nPlexus 是一个本地 AI Agent 配置控制台，用来统一管理 Claude Code、Cursor、Codex、Gemini CLI、Qwen Code 等工具的 Rules、MCP Servers 和 Skills。\n\n现在很多开发者会同时使用多个 AI 编程工具，但每个工具都有自己的 `CLAUDE.md` / `AGENTS.md`、MCP 配置文件和 skills 目录。Plexus 的作用是把这些配置整理成一份本地基线，放在 `~/.config/plexus/`，然后一键同步回每个 Agent 的原生路径。\n\n![Plexus Dashboard](https://raw.githubusercontent.com/miniLV/Plexus/master/docs/assets/readme/dashboard.png)\n\n主要特点：\n\n- 一键导入已有 Agent 配置\n- 一键同步 Rules、MCP Servers 和 Skills\n- 多个来源冲突时可以选择 Primary Agent\n- 写入原生文件前自动 snapshot，支持回滚\n- 支持团队配置 repo，例如把团队统一的 skills 和 MCP baseline 分发给所有成员\n- 对共享配置文件使用 partial-write，避免覆盖 auth、history、profile 等 Agent 自己管理的内容\n\n工作原理：\n\n![Plexus Architecture](https://raw.githubusercontent.com/miniLV/Plexus/master/docs/assets/readme/config-sharing-map.png)\n\n技术栈：TypeScript / Next.js / Node.js / 本地文件系统同步。\n",
+    "created_at": "2026-04-30T15:20:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9820"
+  },
+  {
+    "id": 9819,
+    "title": "【开源自荐】造梦工厂-基于火山引擎的全能视频工厂，萌宠、口播等爆火视频全流程制作",
+    "content": "造梦工厂开源版V1.0正式上线，朋友们，玩儿起来吧！\n\n造梦工厂是一个基于 Next.js 开发的 AI 多模态视频生成平台，专注于将创意转化为高质量的视频内容。全面接入火山引擎（Volcengine）的大模型能力，实现从文案分镜到图像生成，再到视频渲染的全链路自动化。\n\n核心功能\n\n萌宠视频生成 (AI Pet Video)\n智能分镜：输入故事主题，调用大语言模型自动生成详细的分镜脚本和运镜提示词。\n一致性生图：结合全局角色设定，使用 Seedream 生成各分镜的角色底图，保证长相和画风的一致性。\n多镜头叙事：串联 Seedance 2.0 图生视频能力，配合各分镜的运镜提示词，完成连贯的多镜头叙事视频。\n精细化控制：支持对单个分镜的图像或视频进行单独重新生成（Retry），拒绝“一子落错满盘皆输”，极大节省时间和成本。\n\n口播视频生成 (Oral Video)\n智能长文案切分：输入长篇口播文案，自动按字数和语义停顿切分为短视频脚本。\n固定人设：每段使用相同的 assetId、人设模板和镜头模板，保持口播人物形象绝对稳定。\n时长自适应：每段视频时长可单独控制（支持 4-15 秒）。\n\n自定义视频生成 (Custom Video)\n提供高级的视频生成沙盒，直接调用 Seedance 2.0。\n支持自由配置：提示词、首尾帧参考图、视频比例、分辨率和视频时长，满足专业创作者的定制化需求。\n\n任务历史与工作流\n历史记录：所有生成记录保存在浏览器 LocalStorage 中，随时回顾。\n一键复用：在历史记录中可以一键带入之前的配置参数，快速开始新的生成。\n无水印与带音频：底层 API 深度优化，生成的图像和视频均去除了官方的水印，并支持开启 TTS 音频合成功能。\n\n演示网站：https://zaomeng.91wink.com/\nGithub：https://github.com/ovelv/zaomeng\n\n<img width=\"1647\" height=\"1121\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd766075-1fc3-4338-bd4f-e57669bbdad1\" />\n\n<img width=\"1768\" height=\"1226\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/23e8caf3-a90d-4f48-b141-c7319d1c5b03\" />\n\n<img width=\"1684\" height=\"935\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad712735-7026-4d13-91f5-18c8041965b9\" />",
+    "created_at": "2026-04-30T14:45:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9819"
+  },
+  {
     "id": 9818,
     "title": "【开源自荐】linthis：一条命令搞定多语言 lint / format / 安全 / 复杂度检查的 Rust 工具",
     "content": "【开源自荐】linthis：一条命令搞定多语言 lint / format / 安全 / 复杂度检查的 Rust 工具\n---\n\n## 一句话介绍\n\n[linthis](https://github.com/zhlinh/linthis) 是一个用 Rust 写的跨平台多语言 Linter & Formatter，**一条命令同时跑 lint、format、安全扫描（SAST）、复杂度分析**，并且原生支持插件系统、git/agent hook、AI 代码评审。\n\n> 解决的问题：每个语言一套 linter（ruff / eslint / clippy / golangci-lint / clang-tidy / ktlint…），每个项目还要单独配 pre-commit、CI、编辑器格式化，配置散落、风格不统一、新人上手成本高。\n> linthis 把这些工具封在一个 CLI 后面，配置走 Git 仓库分发，团队成员一行命令拉取统一规范。\n\n仓库：https://github.com/zhlinh/linthis\n\n## 核心特性\n\n- 🚀 **单命令多任务**：`linthis` 一条命令完成 lint + format + security + complexity\n- 🌍 **多语言支持**：Rust / Python / TS / JS / Go / Java / C / C++ / Swift / Kotlin / Lua / Dart / Shell / Ruby / PHP / Scala / C# / Objective-C\n- 🎯 **自动识别语言**：无需手动指定，扫目录就知道项目用了哪些语言\n- 🔒 **内置 SAST 安全扫描**：集成 OpenGrep / Semgrep / Bandit / Gosec / Flawfinder + 自带密钥泄漏检测\n- 📊 **函数级复杂度分析**：圈复杂度 / 认知复杂度，可设阈值卡 CI\n- 📦 **基于 Git 的插件系统**：把团队规范打包成一个 Git 仓库，`linthis plugin add` 一行同步给所有人\n- 🎨 **预置代码风格**：Google / Airbnb / Standard 三套预设\n- 🤖 **AI Code Review**：`linthis review` 自动跑 diff、生成评审报告、创建 PR/MR（支持 GitHub / GitLab）\n- 🪝 **Git Hook + Agent Hook**：可同时安装 git pre-commit / pre-push / commit-msg，以及 Claude Code / Cursor / Codex / Gemini 的 agent hook，失败时还能让 AI 自动修\n- 💾 **备份与撤销**：format 后自动备份，`linthis backup undo` / `redo` 一键回滚\n- ⚡ **并行 + 单文件缓存**：多核 CPU 跑满，重复检查只跑变化文件\n- 🆙 **自更新**：`linthis update` 自动识别 cargo / pip / uv / pipx / brew 安装方式\n\n## 安装\n\n```bash\n# 推荐：uv\nuv tool install linthis\n\n# 或者 pip / brew / cargo\npip install linthis\nbrew tap zhlinh/linthis && brew install linthis\ncargo install linthis\n\n快速开始（不到一分钟）\n\n# 1. 添加团队插件（把规范沉淀在一个 Git 仓库里）\nlinthis plugin add -g sample https://github.com/zhlinh/linthis-plugin-template\n\n# 2. 安装 hook：传统 git hook，或者 git + AI 自动修复\nlinthis hook install -g\nlinthis hook install -g --type git-with-agent --provider claude\n\n# 3. 跑一次检查\nlinthis -i src/\n\n# 4. 提交前只检查 staged 文件\ngit add src/main.py\nlinthis -s\n```\n\n## 适合谁用\n\n- 多语言项目 / monorepo，不想给每种语言单独配 lint\n- 团队想把代码规范沉淀成一份可版本化、可继承的 Git 配置\n- 想在 pre-commit 里同时跑格式化 + 静态检查 + 安全扫描 + 复杂度门禁\n- 用 Claude Code / Cursor / Codex 的开发者，希望 AI 写完代码自动按团队规范修一遍\n\n## 编辑器插件\n\n- VSCode：Marketplace\n- JetBrains（IDEA / WebStorm / PyCharm 等）：插件市场搜 linthis\n- Neovim：lazy.nvim / packer.nvim / vim-plug 均支持\n\n均支持 Format on Save 与手动 Lint/Format。\n\n## 链接\n\n- GitHub：https://github.com/zhlinh/linthis\n- PyPI：https://pypi.org/project/linthis/\n- Crates.io：https://crates.io/crates/linthis\n- Homebrew：brew tap zhlinh/linthis\n- License：MIT\n\n",
@@ -800,23 +816,5 @@
     "created_at": "2026-04-22T14:52:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9720"
-  },
-  {
-    "id": 9719,
-    "title": "【开源自荐】🪁 kite-desktop：一个基于 Wails v3 打造、面向桌面端的 K8S 多集群管理工具",
-    "content": "仓库地址：https://github.com/eryajf/kite-desktop\n\n作为运维，我早已厌烦通过kubectl管理多个集群的各项操作，自己也一直想着做一个桌面端的集群管理工具。\n\n如果你一直在寻找一个本地化，轻量易用的K8S多集群管理软件，那么不用犹豫，这个软件就是为你准备的。\n\n支持能力包括但不限于：\n\n- 多集群一键切换，kubeconfig 自动发现\n- Pod/Deployment/Service 等全资源可视化管理\n- 内置 Monaco 编辑器直接编辑 YAML\n- Web 终端，Pod日志，尽在平台查看。\n- 内置 AI Sidecar ，你的智能助手，在你随时需要的时候出现。\n- 快捷键，高频操作支持快捷键，快人一步。\n\n还在持续迭代打磨中，有想法欢迎交流，主打一个运维友好。\n\n主页面：\n\n![](https://camo.githubusercontent.com/2ee85f9d5fae53993cecc369e59abbb821e7dba7b84d4367597a39d1f1cbd8f9/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f657279616a662f74752f696d672f696d6167655f32303236303431355f3232323931372e706e67)\n\n工作负载详情页面：\n\n<img width=\"4576\" height=\"5172\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4fb72acf-b5a4-46a8-baea-c9c457f08894\" />\n\n快捷键调出 AI 对话框：\n\n<img width=\"3534\" height=\"1848\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8a2a0fae-9898-442c-8007-b009d78a87f8\" />",
-    "created_at": "2026-04-22T12:32:34Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9719"
-  },
-  {
-    "id": 9718,
-    "title": "【开源自荐】hn-cli — 一个终端里看 Hacker News 的 TUI 客户端",
-    "content": "[![Repo](https://img.shields.io/badge/GitHub-heartleo%2Fhn--cli-181717?logo=github)](https://github.com/heartleo/hn-cli)\n\n## 动机\n每天刷 HN 要开浏览器、加载一堆前端资源，分神又卡。想要一个**纯终端、键盘操作、不离开当前工作区**就能快速扫标题、翻评论的工具，于是有了这个项目。\n\n## 简介\n`hn-cli` 是一个用 `Go` 写的 Hacker News 终端客户端，基于 `Bubble Tea` 构建 `TUI`。  \n日常在终端就能浏览 `HN`、读评论、开翻译，不用离开工作环境去开浏览器。  \n\n![demo](https://raw.githubusercontent.com/heartleo/hn-cli/main/docs/demo.gif)\n\n## 核心亮点\n1. 📰 **完整板块**：Top / New / Best / Ask HN / Show HN，`←/→` 切换\n2. 💬 **评论树浏览**：`j/k` 导航，`Space` 折叠，`Enter` 展开子树，`r` 跳回根评论\n3. 🌐 **内置翻译**：兼容任何 OpenAI 风格接口，`t` 翻译当前标题/评论，`T` 批量翻译整屏标题\n4. 🎨 **多主题**：hn / mocha / dracula / tokyo / nord / gruvbox\n5. ⚡ **渐进加载**：可见范围优先加载，滚动时按需拉取更多\n\n## 安装\n```bash\n# macOS / Linux\nbrew install heartleo/tap/hn\n\n# 一键脚本\ncurl -fsSL https://raw.githubusercontent.com/heartleo/hn-cli/main/install.sh | sh\n\n# Windows / 跨平台预编译包\n# https://github.com/heartleo/hn-cli/releases\n\n# Go 1.25+\ngo install github.com/heartleo/hn-cli/cmd/hn@latest\n```\n",
-    "created_at": "2026-04-22T12:09:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9718"
   }
 ]
