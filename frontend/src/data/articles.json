@@ -1,5 +1,13 @@
 [
   {
+    "id": 9822,
+    "title": "[工具自荐] RunAppHot - - AppScreenshot生成和 App 图标裁剪工具",
+    "content": "RunAppHot 是一款面向 App 开发者的应用商店素材生成工具，帮助开发者快速制作 iOS App Store 和 Google Play 所需的应用截图、宣传图和 App 图标资源。\n\n很多独立开发者在上架应用时，主要精力都花在产品开发上，但最后提交商店时，还要处理不同平台的截图尺寸、多语言版本、设备框展示、宣传文案排版，以及一堆 App Icon 尺寸。RunAppHot 希望把这些重复工作集中到一个在线工具里完成。\n\n网站\nhttps://app.runapphot.com/\n\n主要功能\n应用商店截图编辑：支持在线创建截图项目，上传应用截图后进行排版和编辑\n多平台支持：支持 iOS / App Store、Android / Google Play，也可以创建同时覆盖两个平台的项目\n多语言截图：同一个项目内可以添加不同语言版本，方便准备海外应用商店素材\n设备框与画布编辑：支持设备框、背景、文字、位置、颜色、字号、行高、字距等细节调整\n项目化管理：可以保存和管理多个截图项目，后续继续修改和导出\nApp Icon Generator：上传 1024×1024 图标后，批量生成 iPhone、iPad、watchOS、macOS、Android 所需尺寸\n\n使用场景\n独立开发者提交 App Store / Google Play 审核素材\n出海应用准备多语言商店截图\n产品发布前快速制作宣传截图\n小团队没有专职设计师时，快速生成规范的应用商店素材\n一次性生成多平台 App Icon 尺寸，减少手工裁剪和命名\n\n产品特色\n浏览器直接使用，不需要安装设计软件\n面向应用上架流程设计，重点解决截图和图标这类“提交前最后一公里”的问题\n同时覆盖截图设计和图标尺寸生成，减少在多个工具之间切换\n支持细粒度排版调整，适合既想快速生成、又希望保持一定设计质量的开发者",
+    "created_at": "2026-05-01T04:54:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9822"
+  },
+  {
     "id": 9821,
     "title": "【开源自荐】LynxDB - 单二进制日志分析引擎，读时模式，兼容 Splunk SPL",
     "content": "开源地址：https://github.com/lynxbase/lynxdb\n\nLynxDB 是用 Go 写的日志分析引擎，整个项目编译为一个二进制文件，无外部依赖，`curl` 一行安装。\n\n**为什么再造一个？** ELK / Splunk 类方案部署复杂、资源开销大（Elasticsearch 空闲约 1 GB+，Splunk 约 12 GB），自建小规模可观测性栈时往往显得过重。LynxDB 空闲内存约 50 MB，没有 JVM、没有外部存储、没有 sidecar。\n\n**核心是读时模式（schema-on-read）**：日志原样写入，结构在查询时通过 `parse json`、`parse combined` 等命令按需提取。日志格式变化时不需要重建索引或迁移历史数据。\n\n查询语言 Lynx Flow 是 SPL 风格的管道式语法，命令之间用 `|` 串联：\n\n​```\nfrom nginx\n| parse combined(_raw)\n| status >= 500\n| group by uri compute count() as hits\n| order by hits desc\n| take 10\n​```\n\n同时兼容 Splunk SPL2，已有的 SPL 查询可直接迁移。\n\n**也支持纯管道模式**，不启动服务直接当 grep / awk 用：\n\n​```\nkubectl logs deploy/api | lynxdb query '\n  | parse json(_raw)\n  | group by status compute count()'\n​```\n\n其他特性：\n- 列式存储（FST 倒排索引 + 布隆过滤器 + LZ4 压缩）\n- 物化视图（自动查询改写，热点查询提速可达 400x）\n- 兼容 Elasticsearch `_bulk`、OpenTelemetry OTLP、Splunk HEC 协议接入\n- 可选集群模式 + S3 共享存储\n\n项目目前还在早期阶段（v0.0.3），暂不建议在生产环境使用。适合想要轻量可观测性方案、不希望引入企业级系统运维负担的场景。欢迎反馈和 issue。\n\n开源协议：Apache 2.0",
@@ -89,7 +97,7 @@
   },
   {
     "id": 9810,
-    "title": "【开源自荐】TiyCode，Rust+Typescript 构建的轻量级跨平台桌面 Agent，Codex、ClaudeCode-Desktop 开源替代",
+    "title": "【开源自荐】TiyCode，Rust+Typescript 构建的轻量级跨平台桌面 Agent，Codex、ClaudeDesktop 开源替代",
     "content": "**TiyCode**(**钛可**) 是一款践行 AI First 理念的桌面版 Vibe-Coding Agent，采用 Rust + Typescript 构建，非常轻量（安装包仅 20M+）的跨平台桌面Agent，支持windowns、mac、linux(Beta)平台，自由开放，协议友好（Apache 2.0），可作为 Codex、ClaudeCode-desktop 的开源替代品。\n\n<img width=\"1888\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ebdc6fd9-2900-4b00-8e35-d899149df4a1\" />\n\n**功能特色：**\n- 多Profile：支持不同Provider的不同模型组成多种Profile\n- 三层模型：类CC三层模型（Primary、Auxiliary、Lightweight）组合运用\n- 多服务商：开箱即用的13+内置模型服务商，且支持多种协议自定义服务商\n- 良好的Coding体验设计：对话为主，搭配Git面板支持常用diff审阅等操作、Terminal\n- 内置Runtime：内置Runtime、搭配常用tools以及terminal联动工具\n- 扩展能力：Plugin、MCP、Skills\n- 多语言：i18n支持，目前覆盖中英文，随时切换\n\n**项目地址：**\n- https://github.com/TiyAgents/tiycode\n\n**产品截图：**\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cafefdb5-80fd-481d-8abb-dfa24e862b0f\" />\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ae10c6f9-e3a5-483a-88ef-f0a2803363bf\" />\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/da0fb2e7-6cf6-4cfa-9be3-222f2c984600\" />\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/af40ae6c-5900-4e4e-b34d-39b881aa5654\" />\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8248315c-e2cc-49cd-aab4-66f189ecc925\" />",
     "created_at": "2026-04-30T07:01:27Z",
     "labels": [],
@@ -164,7 +172,9 @@
     "title": "【工具自荐】弧线箭头小工具",
     "content": "可用于图表绘制 SDK，纯 ts 文件。\n\n也可用于设计素材，直接导出 SVG 文件。\n\n使用网站：https://currve-arrow.yysuni.com/\nGithub: https://github.com/YYsuni/curve-arrow\nNPM: https://www.npmjs.com/package/curve-arrow\n\n<img width=\"1694\" height=\"1260\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31d3b209-790c-44a2-b384-363c6e16cf85\" />",
     "created_at": "2026-04-29T07:28:32Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9801"
   },
   {
@@ -316,7 +326,9 @@
     "title": "【开源自荐】OpenClip - AI 驱动的长视频精彩时刻提取工具",
     "content": "仓库地址：https://github.com/linzzzzzz/openclip\n\n输入一个视频 URL 或本地文件，自动完成 下载 → 转录 → 分割 → AI 分析 → 剪辑生成 → 添加标题和封面 的全流程处理，输出最精彩片段。适合从长直播或视频中快速提取高光时刻。\n\n讲解视频：https://www.bilibili.com/video/BV1TwokB3Efh\n\n支持能力包括：\n\n- 支持 YouTube、B站视频链接和本地视频文件\n- 自动转录视频内容，并支持字幕生成和翻译\n- 使用 AI 分析视频内容，自动识别高光片段\n- 自动生成切片视频、标题、封面和字幕版本\n- 提供片段编辑器，可视化调整切片边界、字幕和封面标题\n- 支持深度优化模式，对候选片段进行复核并自动微调边界\n\n\n主页面：\n\n<img width=\"1535\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7764d01-5cb9-4c8e-916e-60a9e082811e\" />\n\n\n\n切片编辑器：\n\n<img width=\"1535\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d93ead78-f2ef-48b7-818d-295452fb0c7f\" />",
     "created_at": "2026-04-27T14:48:08Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9780"
   },
   {
@@ -810,13 +822,5 @@
     "created_at": "2026-04-22T16:57:38Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9721"
-  },
-  {
-    "id": 9720,
-    "title": "〖工具自荐〗ChatSend：一个面向开发者和运营团队的 WhatsApp API 与群发平台",
-    "content": "## ChatSend\n\n  项目地址：https://chatsend.app/\n\n  ChatSend 是一个面向开发者和业务团队的 WhatsApp API 与群发平台，核心思路是把“号码管理、消息发送、群发活动、\n  Webhook 回调、送达追踪”放到同一个后台里完成。\n\n<img width=\"4558\" height=\"2602\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfa05592-1fe9-4201-9e7d-5555df7e836f\" />\n\n  它比较适合两类场景：\n\n  1. 开发者需要把 WhatsApp 消息能力接入自己的系统，比如通知、客服、线索跟进、自动化流程\n  2. 运营团队需要管理多个 WhatsApp 号码，做联系人导入、批量发送、个性化消息和活动跟踪\n\n  我觉得这个产品比较实用的点有这些：\n\n  - 提供 REST API，方便开发者直接集成到现有业务系统\n  - 支持多个 WhatsApp 号码统一管理\n  - 支持 CSV 联系人导入，适合批量触达场景\n  - 支持个性化消息、媒体消息和 Webhook 通知\n  - 可以查看送达、已读、回复等活动表现\n  - 文档和控制台是分开的，开发接入和业务使用都比较顺手\n\n  如果你在做出海业务、客户通知、客服自动化，或者希望低门槛接入 WhatsApp 能力，可以看一下这个产品。\n\n  项目地址：https://chatsend.app/\n  文档地址：https://chatsend.app/docs",
-    "created_at": "2026-04-22T14:52:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9720"
   }
 ]
