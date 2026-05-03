@@ -1,5 +1,29 @@
 [
   {
+    "id": 9830,
+    "title": "【开源自荐】AKM：智能体在执行任务前先把用户画像挖出来（含 SSRN 论文与可复现实测）",
+    "content": "AKM (Active Knowledge Modeling) 是一套面向 AI 智能体的上游方法：在智能体执行任务之前，先主动挖掘用户的目标、约束、偏好、风险边界、决策风格，整理成结构化用户画像，再沉淀到智能体的上下文承载面（USER.md / SOUL.md / Custom Instructions / Memory）供任意下游智能体反复加载。\r\n\r\n项目地址：https://github.com/sirsws/akm\r\n中文 README：https://github.com/sirsws/akm/blob/main/README.zh-CN.md\r\n\r\n## 为什么做 AKM\r\n\r\n现在大多数智能体平台（GPTs、Gems、Claude Project、OpenClaw）都已经提供了上下文承载面——instructions、memory、profile、AGENTS.md。但用户面对一个空白的 instruction 框时，其实并不知道应该写什么。\r\n\r\n最后常见的结果是：写一堆性格描述、塞几条偏好、复制一段提示词模板，用了一阵发现智能体还是给\"提升核心竞争力\"\"注意基础款\"\"每周练五天加有氧\"这种正确但无用的建议。\r\n\r\n问题不是\"模型不强\"，也不是\"提示词不够长\"，而是**根本没人系统地把用户挖清楚过**。\r\n\r\nAKM 想补的是这一步：**承载面有了，方法论缺位**。\r\n\r\n## AKM 的两步架构\r\n\r\n第一步：画像挖掘\r\n一段标准化的挖掘对话，把用户的目标、硬约束、偏好、资产、风险边界、决策风格系统问清楚，产出结构化用户画像（不是建议）。\r\n\r\n第二步：画像复用\r\n画像写进 USER.md / SOUL.md / Custom Instructions / 自建智能体的 system prompt。之后任意下游智能体在执行具体任务前都会先加载这份画像。挖一次，多个智能体反复使用，跨会话有效。\r\n\r\n这是 AKM 和\"会先反问几句的 GPT\"的根本差别：后者每次新会话重问，画像不沉淀；前者画像作为基础设施被反复调用。\r\n\r\n## 三个落地分支\r\n\r\n- **DaE**（Dialogue-as-Elicitation）：个人顾问场景，AKM 的第一个完整实现。论文已在 SSRN 发表：《Reducing Alignment Debt in AI Advisory: The Dialogue-as-Elicitation Approach》https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5961054\r\n- **Fitness**：训练与恢复决策，处理伤病、可用时间、器械等真实约束\r\n- **Fashion**：衣橱、场景与采购决策，处理身材、资产、预算等真实约束\r\n\r\n每个分支都附 skill 包，可直接装到 Claude / OpenClaw。\r\n\r\n## 可复现实测工具包\r\n\r\n仓库内附 AKM-Benchmark-Toolkit，开源所有代码、提示词、合成画像、评分规则，本地可复现：\r\nhttps://github.com/sirsws/akm/tree/main/experiments/synthetic_profile_eval\r\n\r\n在 10 个合成用户画像上对比四组条件（无画像 / 自然语言碎片 / AKM 结构化画像 / AKM 挖掘后画像），AKM 组在约束命中、风险控制、取舍意识等维度稳定高于其他组。这不是临床实验，只说明在结构化输入条件下，智能体对硬约束和风险的处理显著改善。\r\n\r\n## 当前状态\r\n\r\n- 母方法、母论文、三个分支落地、可复现 benchmark 工具包、双语 README 全部就绪\r\n- 后续会扩到 30 个合成画像规模并加入第二个 judge 模型\r\n- 欢迎 builder 拿去做对比实验，或基于自己的场景建分支\r\n\r\nLicense: Apache 2.0\r\n",
+    "created_at": "2026-05-03T02:37:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9830"
+  },
+  {
+    "id": 9829,
+    "title": "【工具推荐】一个模拟真实日历的chrome插件",
+    "content": "# SeeDays\n一个模拟真实日历的日历工具，和其他日历应用不同的是，这个日历不会自动翻页更新，需要你每天打开亲手撕掉昨天（已经逝去的日子）。想让你在撕掉日历的时刻感受时间的流逝，而不用去买一个真实的日历（环保）。\n\n作为一个日历它还显示了年度和月度倒计时，如果你想设置一个人生倒计时的话，这个日历也提供了一个人生倒计时功能。\n\n另外，这个日历还可以让你快速记录自己今天要做的事，形成一个待办事项。\n\n最后，值得一提的是这个插件的界面非常简洁。（本来还想做一个撕掉日历，揉成一个纸团扔向屏幕的动画效果，但是AI目前实现的效果不好就去掉了，如果有大佬有兴趣可以一起完善）\n\nhttps://chromewebstore.google.com/detail/seedays/bfgmamhkpeeoaiknicdgombenfogjdjm?authuser=0&hl=en",
+    "created_at": "2026-05-03T00:55:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9829"
+  },
+  {
+    "id": 9828,
+    "title": "【工具推荐】一个可以播放微博视频的播放器",
+    "content": "# 微听\n\n偶然发现微博视频有一些有声书资源还挺不错的，但是睡觉的时候听微博视频，微博官方客户端有一个致命的缺点就是不能设置睡眠时间。常常半夜被吵醒，或者手机一直响到没电。\n\n于是，就做了一个可以解析微博视频的播放器，可以设置睡眠时间，还可以断点续播。使用方法很简单，复制微博视频链接，粘贴就能播放了。\n\n同时，也选了一些有声书推荐给大家。\n\nhttps://fm.showmyapps.cc/",
+    "created_at": "2026-05-03T00:44:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9828"
+  },
+  {
     "id": 9827,
     "title": "【网站自荐】ClipTrend.ai - 一键复刻爆款 AI 视频，TikTok / YouTube 趋势模板化",
     "content": "每周追踪 TikTok / YouTube 上正在爆的 AI 视频效果，把每一个爆款做成一键可用的模板。用户选模板 → 上传一张自拍（或粘贴一条 TikTok 链接）→ 30-60 秒出片。不用写 prompt、不用选模型。\n\n网站：https://cliptrend.ai/\n\n和其他 AI 视频生成工具的核心区别：\n\n-每张模板卡都带 3-5 个真实爆款源视频：点开任一卡片能看到 TikTok / YouTube 上同款效果的真实视频，每条附实时播放量。在花积分前可以验证这个 trend 是真的火。例：末日战士 280 万播放、怪物猎人 1100 万、毛绒动物跳舞 8180 万。 而且复刻视频可以有各式各样的变体，可以通过选择不同预设或是输入文字 prompt来生成类似但不完全相同的模板效果\n\n-10+ 顶级 AI 模型自动路由：底层接了 Seedance 2 / Kling 3 / Veo 3.1 / Wan 2.7 / Nano Banana Pro / GPT Image 2 等。用户不用选模型，系统按效果类型自动路由——舞蹈给 Veo，变身给 Seedance，角色给 Nano Banana。背后的工作流全都配好并且通过大量测试确保效果稳定。\n\n-粘贴 TikTok URL 直接复刻动作**：把任意 TikTok 视频链接粘进来，系统会从那条视频里提取动作（舞蹈、武打、运镜），套到你的角色上。链接进，动作出，不用描述、不用重新上传。\n\n-Seedance 2 真人脸 reference 全 plan 解锁：Seedance 2 是目前真人脸变换最强的模型，大多数消费级 AI 视频工具会屏蔽真人脸或悄悄换成 AI 生成的脸。ClipTrend 默认开放，包括 $14 入门档。\n\n-生成前可控：花积分前先看一张静态图（模型即将生成的画面），不满意可以现场改 variant 描述（\"更黑暗一点\"、\"把舞蹈换成慢慢走过来\"），预览满意再 generate。无水印，商业授权。\n\n-50+ 模板上线，累计追踪 trend 播放 1.2 亿+，每周更新新 trending。免费试用，无需信用卡。月付首月 $14（1400 积分约 60 个视频，正常 $27.99/月），年付 $13.99/月（16,800 积分一次发放），相同积分量下比同类竞品便宜 20% 以上。\n\n-也包含多种最新模型例如 gpt2, nanobanana2, seedance2, kling 3.0等，也包括各类常用能力包括角色替换、换脸、动作控制等\n\n\nyoutube介绍视频 https://www.youtube.com/watch?v=4S-S5WFW4sg\n\n<img width=\"3022\" height=\"1508\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/013807a4-0bbb-41cf-9efe-e228717cc609\" />\n\n/n\n\n<img width=\"3436\" height=\"1281\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ead99ff0-a1d4-446e-94c4-6856f4e5c392\" />\n\n/n\n\n<img width=\"3018\" height=\"1508\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/690e3e8f-a62e-4728-888e-5ec0d69b5ba9\" />",
@@ -106,7 +130,7 @@
   {
     "id": 9814,
     "title": "【开源自荐】Deep Code：开源的终端 AI 编程助手，专为 DeepSeek-V4 系列模型适配",
-    "content": "Deep Code 是一款开源的终端 AI 编程助手，专为 DeepSeek-V4 系列模型适配，支持深度思考、推理强度控制以及 Agent Skills。\n\n- **GitHub：** <https://github.com/lessweb/deepcode-cli>\n\n## 安装 Deep Code\n\n- 安装 [Node.js](https://nodejs.org/en/download/) 18+ 版本。\n- 在终端中运行以下命令：\n\n```sh\nnpm install -g @vegamo/deepcode-cli\n```\n\n然后就能在项目目录中运行deepcode命令：\n\n![intro1](https://raw.githubusercontent.com/lessweb/deepcode-cli/main/resources/intro1.png)\n\n## 配置 Deep Code\n\n创建 `~/.deepcode/settings.json` 文件，填入你的 DeepSeek API Key 和模型配置：\n\n```json\n{\n  \"env\": {\n    \"MODEL\": \"deepseek-v4-pro\",\n    \"BASE_URL\": \"https://api.deepseek.com\",\n    \"API_KEY\": \"sk-...\"\n  },\n  \"thinkingEnabled\": true,\n  \"reasoningEffort\": \"max\"\n}\n```\n\n从 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 获取你的 API Key。\n\n## 核心能力与亮点\n\n### 1.专为 DeepSeek-V4 系列模型适配🔥\n\n新的deepseek-v4-pro/flash模型在思考模式下，必须要求会话message传`reasoning_content`字段，但在之前返回的message中偶尔又不包含`reasoning_content`，多轮会话时原样组装历史消息就会报错。Deep Code第一时间就适配好这个问题了！\n\n![screenshot1](https://filelt.parsec.com.cn/vegamo-home/ScreenShot_deepcode_260430.png)\n\n### 2.多模型兼容\n\n虽然Deep Code的定位是专为 DeepSeek-V4 系列模型适配，但也能支持任何其他 OpenAI 兼容模型。各家国内厂商的Coding Plan都提供OpenAI兼容接口，因此都可以接入Deep Code正常使用。\n\n### 3.具备多模态能力\n\nDeep Code支持多模态，但目前deepseek-v4不支持多模态。目前多模态应用场景推荐用火山方舟的Doubao-Seed-2.0-pro模型，适配效果最好。\n\n![screenshot2](https://filelt.parsec.com.cn/vegamo-home/ScreenShot_deepcode_260430b.png)\n\n### 4.自带Web Search能力\n\n众所周知，DeepSeek并不提供原生的web search的能力，这大大限制了DeepSeek用于真实开发的场景。Deep Code在工具层面上为deepseek增加了web search的能力，提升了deepseek模型的能力上限。\n\n## 参考链接\n\n- Deep Code集成指南：https://github.com/deepseek-ai/awesome-deepseek-agent/blob/main/docs/deepcode.zh-CN.md\n- Github仓库：https://github.com/lessweb/deepcode-cli\n- Deep Code VSCode插件：https://marketplace.visualstudio.com/items?itemName=vegamo.deepcode-vscode\n",
+    "content": "Deep Code 是一款开源的终端 AI 编程助手，专为 DeepSeek-V4 系列模型适配，支持深度思考、推理强度控制以及 Agent Skills。\n\n- **GitHub：** <https://github.com/lessweb/deepcode-cli>\n\n## 安装 Deep Code\n\n- 安装 [Node.js](https://nodejs.org/en/download/) 18+ 版本。\n- 在终端中运行以下命令：\n\n```sh\nnpm install -g @vegamo/deepcode-cli\n```\n\n然后就能在项目目录中运行deepcode命令：\n\n![intro1](https://raw.githubusercontent.com/lessweb/deepcode-cli/main/resources/intro1.png)\n\n## 配置 Deep Code\n\n创建 `~/.deepcode/settings.json` 文件，填入你的 DeepSeek API Key 和模型配置：\n\n```json\n{\n  \"env\": {\n    \"MODEL\": \"deepseek-v4-pro\",\n    \"BASE_URL\": \"https://api.deepseek.com\",\n    \"API_KEY\": \"sk-...\"\n  },\n  \"thinkingEnabled\": true,\n  \"reasoningEffort\": \"max\"\n}\n```\n\n从 [DeepSeek 开放平台](https://platform.deepseek.com/api_keys) 获取你的 API Key。\n\n## 核心能力与亮点\n\n### 1.专为 DeepSeek-V4 系列模型适配🔥\n\n新的deepseek-v4-pro/flash模型在思考模式下，必须要求会话message传`reasoning_content`字段，但在之前返回的message中偶尔又不包含`reasoning_content`，多轮会话时原样组装历史消息就会报错。Deep Code第一时间就适配好这个问题了！\n\n![screenshot1](https://filelt.parsec.com.cn/vegamo-home/ScreenShot_deepcode_260430.png)\n\n### 2.多模型兼容\n\n虽然Deep Code的定位是专为 DeepSeek-V4 系列模型适配，但也能支持任何其他 OpenAI 兼容模型。各家国内厂商的Coding Plan都提供OpenAI兼容接口，因此都可以接入Deep Code正常使用。\n\n### 3.具备多模态能力\n\nDeep Code支持多模态，但目前deepseek-v4不支持多模态。目前多模态应用场景推荐用火山方舟的Doubao-Seed-2.0-pro模型，适配效果最好。\n\n![screenshot2](https://filelt.parsec.com.cn/vegamo-home/ScreenShot_deepcode_260430b.png)\n\n### 4.自带Web Search能力\n\n众所周知，DeepSeek并不提供原生的web search的能力，这大大限制了DeepSeek用于真实开发的场景。Deep Code在工具层面上为deepseek增加了web search的能力，提升了deepseek模型的能力上限。\n\n## 参考链接\n\n- Deep Code集成指南：https://api-docs.deepseek.com/zh-cn/quick_start/agent_integrations/deepcode\n- Github仓库：https://github.com/lessweb/deepcode-cli\n- Deep Code VSCode插件：https://marketplace.visualstudio.com/items?itemName=vegamo.deepcode-vscode\n",
     "created_at": "2026-04-30T09:55:24Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9814"
@@ -792,33 +816,5 @@
     "created_at": "2026-04-23T06:52:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9729"
-  },
-  {
-    "id": 9728,
-    "title": "【开源自荐】awesome-gpt-image-2：1123 条 GPT Image 2 提示词，配画廊、16 种语言和 Raycast 一键生成",
-    "content": "GPT Image 2 刚开放不久，网上多数资源还停留在 Twitter 截图合集。我们想做一个真正「能抄走就能复现」的提示词库，于是整理了这个仓库：\n\n- GitHub：https://github.com/YouMind-OpenLab/awesome-gpt-image-2\n\n## 为什么值得体验\n\n- 📚 **1123 条提示词**：每条都带完整的 JSON / 文本源码、生成结果图和作者出处，复制即可复现，不只是截图\n- 🗂️ **三维结构化分类**：按 Use Cases（海报、信息图、UI 稿、缩略图、漫画分镜、电商、游戏素材…）× Styles（摄影、电影感、动漫、3D、水彩、像素、赛博朋克、极简…）× Subjects（人像、角色、产品、建筑、食物、图表、排版…）交叉索引，按需检索\n- 🌐 **16 种语言 README + 画廊界面**：正好契合 GPT Image 2 真正的杀手级能力——**多语言平面设计**（中、日、韩、泰、越、印地、西、葡、德、法、意、土、繁中…）\n- ⚡ **Raycast Snippet 友好**：大量提示词已标注 `{argument name=\"主角\" default=\"…\"}` 参数，粘到 Raycast 里就能一键切换角色/配色/主题，批量出图\n- 🔍 **画廊支持瀑布流布局、全文搜索、分类筛选、移动端响应式、一键 AI 生成**，每日更新\n\n## 示例\n\n模拟 Claude Image 1.0 社媒发布帖，以假乱真：\n\n<img width=\"991\" height=\"1587\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/18bfd419-4c72-46f7-aa7c-415160e12f6b\" />\n\n桃太郎「霞関スライド」讲义 · 日文高信息密度 + いらすとや 风格融合：\n\n![Momotaro explainer slide](https://cms-assets.youmind.com/media/1776699414289_t6mebs_HGQQxukbUAA_qc0.jpg)",
-    "created_at": "2026-04-23T03:17:19Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9728"
-  },
-  {
-    "id": 9727,
-    "title": "【开源自荐】收录了全网热门GPT Image 2提示词的仓库",
-    "content": "# 仓库传送门👉 [github.com](https://github.com/ZeroLu/awesome-gpt-image)\n<img width=\"1738\" height=\"1246\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/38c02e95-75ec-404e-8b31-87499b8462c4\" />\n\n<img width=\"2060\" height=\"1444\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/938fad96-a762-4983-a830-ed80d68bf790\" />\n\n<img width=\"1714\" height=\"1066\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/45207c22-5983-446e-8052-48c8106ba938\" />\n\n<img width=\"1390\" height=\"1322\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d8ffedde-0e85-43fb-a19d-34352a3f1d0c\" />\n\n<img width=\"1386\" height=\"1124\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ce14d9a3-d651-42fc-9e87-2206dcea6992\" />\n\n里面收录了50+ X上创作者做的提示词，都是手工挑选的高质量提示词。\n每一个提示词要么很实用，要么体现了GPT Image 2.0的独特能力。\n很多对应的X帖子都有超过百万的浏览量！\n\n而且所有提示词都分门别类好了，包括下面的类别：\n1. 写实摄影\n2. 游戏\n3. UI UX\n4. 影视\n5. 信息图和文档\n6. 角色\n7. 图片编辑\n\n",
-    "created_at": "2026-04-23T03:16:12Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9727"
-  },
-  {
-    "id": 9726,
-    "title": "【工具自荐】GPT Image 2驱动的全景图生成器",
-    "content": "# 完全免费，点开就可以玩👉 [cyberbara.com](https://cyberbara.com/gpt-image-2/360-image)\n\nhttps://github.com/user-attachments/assets/5ca6191d-af76-4e3d-8e4e-655c8dd19259\n\n做了个好玩的玩具😄\n\n利用GPT Image 2.0，让你穿越到任何时间、任何地点\n\n比如：\n- 变成帝王，看大宴群臣、爱妃跳舞\n- 变成在斗兽场的古罗马贵族\n- 山姆奥特曼和库克在发布会上大打出手\n- ......\n\n还可以实时看到其他网友的脑洞创作！\n\n",
-    "created_at": "2026-04-23T03:12:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9726"
   }
 ]
