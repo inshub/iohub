@@ -1,5 +1,13 @@
 [
   {
+    "id": 9831,
+    "title": "【开源自荐】桌面端图片水印工具，支持平铺/居中/角落三种布局，拖拽调位，无损导出。",
+    "content": "- TraceMark（溯痕）—— 一个简单的桌面端图片水印工具，支持平铺/居中/角落三种布局，拖拽调位，无损导出。\n- AI生成的图片尤其是聊天记录截图等越来越逼真，所以用AI搞了一个加水印工具，在发布AI图片之前可以自己添加水印。\n- 大一学生刚刚入门计科，用opencode加deepseek v4模型全程体验了一次Vibe Coding，全程 AI 辅助完成。\nhttps://github.com/QuietRise/TraceMark\n<img width=\"1782\" height=\"1191\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b1dad439-3c01-4211-a777-d71117486ed6\" />",
+    "created_at": "2026-05-03T04:41:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9831"
+  },
+  {
     "id": 9830,
     "title": "【开源自荐】AKM：智能体在执行任务前先把用户画像挖出来（含 SSRN 论文与可复现实测）",
     "content": "AKM (Active Knowledge Modeling) 是一套面向 AI 智能体的上游方法：在智能体执行任务之前，先主动挖掘用户的目标、约束、偏好、风险边界、决策风格，整理成结构化用户画像，再沉淀到智能体的上下文承载面（USER.md / SOUL.md / Custom Instructions / Memory）供任意下游智能体反复加载。\r\n\r\n项目地址：https://github.com/sirsws/akm\r\n中文 README：https://github.com/sirsws/akm/blob/main/README.zh-CN.md\r\n\r\n## 为什么做 AKM\r\n\r\n现在大多数智能体平台（GPTs、Gems、Claude Project、OpenClaw）都已经提供了上下文承载面——instructions、memory、profile、AGENTS.md。但用户面对一个空白的 instruction 框时，其实并不知道应该写什么。\r\n\r\n最后常见的结果是：写一堆性格描述、塞几条偏好、复制一段提示词模板，用了一阵发现智能体还是给\"提升核心竞争力\"\"注意基础款\"\"每周练五天加有氧\"这种正确但无用的建议。\r\n\r\n问题不是\"模型不强\"，也不是\"提示词不够长\"，而是**根本没人系统地把用户挖清楚过**。\r\n\r\nAKM 想补的是这一步：**承载面有了，方法论缺位**。\r\n\r\n## AKM 的两步架构\r\n\r\n第一步：画像挖掘\r\n一段标准化的挖掘对话，把用户的目标、硬约束、偏好、资产、风险边界、决策风格系统问清楚，产出结构化用户画像（不是建议）。\r\n\r\n第二步：画像复用\r\n画像写进 USER.md / SOUL.md / Custom Instructions / 自建智能体的 system prompt。之后任意下游智能体在执行具体任务前都会先加载这份画像。挖一次，多个智能体反复使用，跨会话有效。\r\n\r\n这是 AKM 和\"会先反问几句的 GPT\"的根本差别：后者每次新会话重问，画像不沉淀；前者画像作为基础设施被反复调用。\r\n\r\n## 三个落地分支\r\n\r\n- **DaE**（Dialogue-as-Elicitation）：个人顾问场景，AKM 的第一个完整实现。论文已在 SSRN 发表：《Reducing Alignment Debt in AI Advisory: The Dialogue-as-Elicitation Approach》https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5961054\r\n- **Fitness**：训练与恢复决策，处理伤病、可用时间、器械等真实约束\r\n- **Fashion**：衣橱、场景与采购决策，处理身材、资产、预算等真实约束\r\n\r\n每个分支都附 skill 包，可直接装到 Claude / OpenClaw。\r\n\r\n## 可复现实测工具包\r\n\r\n仓库内附 AKM-Benchmark-Toolkit，开源所有代码、提示词、合成画像、评分规则，本地可复现：\r\nhttps://github.com/sirsws/akm/tree/main/experiments/synthetic_profile_eval\r\n\r\n在 10 个合成用户画像上对比四组条件（无画像 / 自然语言碎片 / AKM 结构化画像 / AKM 挖掘后画像），AKM 组在约束命中、风险控制、取舍意识等维度稳定高于其他组。这不是临床实验，只说明在结构化输入条件下，智能体对硬约束和风险的处理显著改善。\r\n\r\n## 当前状态\r\n\r\n- 母方法、母论文、三个分支落地、可复现 benchmark 工具包、双语 README 全部就绪\r\n- 后续会扩到 30 个合成画像规模并加入第二个 judge 模型\r\n- 欢迎 builder 拿去做对比实验，或基于自己的场景建分支\r\n\r\nLicense: Apache 2.0\r\n",
@@ -140,7 +148,9 @@
     "title": "【开源自荐】SpineDigest：把一本书读薄，同时保留它的骨架",
     "content": "## 简要\n\n项目名：SpineDigest\n\nGitHub：https://github.com/oomol-lab/spinedigest\n\n协议：Apache-2.0\n\nSpineDigest 是一个面向长篇书籍的命令行工具，可以把 EPUB、Markdown、TXT 交给 LLM 处理，生成压缩后的文本、EPUB，或者可复用的 `.sdpub` 归档。\n\n它的目标不是简单生成一段“读后感式摘要”，而是尽量保留一本书的骨架：章节结构、关键知识点、知识点之间的关系，以及最终可以阅读的压缩文本。\n\n![SpineDigest Terminal Demo](https://raw.githubusercontent.com/oomol-lab/spinedigest/main/docs/images/terminal-cn.png)\n\n## 为什么做这个项目\n\n现在很多人用 AI 总结文章，短文本效果很好，但一到整本书就容易出问题。\n\n常见问题不是上下文窗口不够大，而是 AI 不知道该怎么取舍。一本书里可以保留的东西太多了：论点、例子、人物变化、概念定义、证据链、章节关系。你不告诉它目的，它只能给出一个看起来面面俱到、实际没什么用的摘要。\n\n比如，同一本书可以有完全不同的摘要目标：\n\n- 只关心作者提出了哪些实用方法\n- 只关心核心论证链条是否成立\n- 只关心故事里人物关系和情绪变化\n- 只关心能不能快速复习考试重点\n\n这些目标对应的“重要内容”是不一样的。SpineDigest 解决的是这个问题：让你的阅读目的贯穿整个处理过程，而不是只在最后让模型随便概括一下。\n\n## 核心思路\n\nSpineDigest 不是把一本书一次性塞给模型，然后等一个摘要。\n\n它大致分成三步。\n\n第一步，逐段阅读原文，提取一个个独立的信息单元，可以理解成阅读时真正落到注意力里的知识点。\n\n第二步，用传统算法把这些知识点连成图。相关的知识点会被聚到一起，再按照原文顺序串成线索。项目里把这样的线索称为 `snake`，它像一条线一样穿过原文，把同一主题下的内容串起来。\n\n第三步，再交给 LLM 做压缩。但这里不是单个模型直接写完，而是一个类似答辩的过程：一个角色负责写摘要，多个“教授”分别拿着不同的线索去质询它。哪里漏了，哪里太轻，哪里偏离了用户给的目标，都会被反复指出。最后出来的摘要，是多轮压力下的折中结果。\n\n这个过程有一个好处：摘要不会只保留模型最容易注意到的开头和结尾，也不会把中间章节一笔带过。\n\n## 功能特性\n\n- 支持 EPUB、Markdown、TXT 输入\n- 支持输出 Markdown、TXT、EPUB\n- 支持生成 `.sdpub` 归档，后续可重复导出，不需要重新调用 LLM\n- 支持通过 `--prompt` 指定本次摘要目标\n- 支持 Anthropic、Google、OpenAI、OpenAI-compatible 等 LLM provider\n- 支持命令行和 Node / TypeScript 程序化调用\n- 支持从 stdin 读取文本，也可以输出到 stdout，方便放进脚本和自动化流程\n- `.sdpub` 可以用 Inkora 打开，查看章节拓扑和知识关系图\n\n![Inkora Open .sdpub](https://raw.githubusercontent.com/oomol-lab/spinedigest/main/docs/images/app-screenshot-cn.png)\n\n## 安装\n\n运行要求：\n\n- Node `>=22.12.0`\n- 如果要从 EPUB、Markdown、TXT 生成新的摘要，需要配置一个 LLM provider\n- 如果只是重新导出已有 `.sdpub`，不需要 LLM\n\n无需全局安装，可以直接试用：\n\n```bash\nnpx spinedigest --help\n```\n\n全局安装：\n\n```bash\nnpm install -g spinedigest\n```\n\n## 配置\n\n最小配置文件默认放在：\n\n```text\n~/.spinedigest/config.json\n```\n\n示例：\n\n```json\n{\n  \"llm\": {\n    \"provider\": \"openai\",\n    \"model\": \"<your-model>\"\n  }\n}\n```\n\nAPI key 建议通过环境变量提供：\n\n```bash\nexport SPINEDIGEST_LLM_API_KEY=\"<your-api-key>\"\n```\n\n如果使用 OpenAI 兼容接口，还需要提供 base URL：\n\n```bash\nexport SPINEDIGEST_LLM_BASE_URL=\"https://your-provider.example/v1\"\n```\n\n## 核心用法\n\n把一本 EPUB 压缩成 Markdown：\n\n```bash\nspinedigest --input ./book.epub --output ./digest.md\n```\n\n指定本次阅读目标：\n\n```bash\nspinedigest --input ./book.epub --output ./digest.md --prompt \"Preserve key arguments, named entities, and decisive transitions.\"\n```\n\n先保存成 `.sdpub` 归档，之后再导出：\n\n```bash\nspinedigest --input ./book.epub --output ./book.sdpub\nspinedigest --input ./book.sdpub --output ./digest.epub\nspinedigest --input ./book.sdpub --output ./digest.md\n```\n\n通过管道处理一段文本：\n\n```bash\ncat ./chapter.txt | spinedigest --input-format txt --output-format markdown\n```\n\n检查 `.sdpub` 内容：\n\n```bash\nspinedigest sdpub info --input ./book.sdpub\nspinedigest sdpub toc --input ./book.sdpub\nspinedigest sdpub list --input ./book.sdpub\nspinedigest sdpub cat --input ./book.sdpub --serial 12\n```\n\n## `.sdpub` 是什么\n\n`.sdpub` 可以理解成 SpineDigest 的中间归档格式。\n\n普通的 Markdown、TXT、EPUB 只能保存最终文本，而 `.sdpub` 会保存处理过程中的结构化结果，包括章节目录、分段摘要、知识点、线索和内部关系数据。\n\n这有两个实际用途。\n\n第一，后续可以重新导出，不需要重新花 token 跑一遍原书。\n\n第二，可以用专门的阅读工具打开，直接看一本书被压缩后的结构，而不是只看一段线性的摘要文本。\n\n目前可以用 Inkora 打开 `.sdpub` 文件：\n\nhttps://inkora.oomol.com/\n\n## 适用场景\n\n- 想快速读薄一本技术书或非虚构书\n- 想把长篇材料整理成可以复习的结构化笔记\n- 想为一本书生成不同目标下的摘要版本\n- 想把 EPUB 处理成更短的 EPUB，放到阅读器里继续看\n- 想把书籍处理流程接入脚本、工作流或 AI Agent\n- 想保留中间结构，之后继续导出、检查或可视化\n\n## 相关项目\n\n如果源材料是扫描版 PDF，可以先用 PDF Craft 转成 EPUB 或 Markdown，再交给 SpineDigest：\n\nhttps://github.com/oomol-lab/pdf-craft\n\n如果目标不是摘要，而是双语阅读，可以看 EPUB Translator：\n\nhttps://github.com/oomol-lab/epub-translator\n\n## 项目地址\n\nhttps://github.com/oomol-lab/spinedigest\n",
     "created_at": "2026-04-30T08:52:00Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9813"
   },
   {
@@ -808,13 +818,5 @@
     "created_at": "2026-04-23T07:15:26Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9730"
-  },
-  {
-    "id": 9729,
-    "title": "【开源自荐】Owl Dictionary",
-    "content": "Owl 是一个支持 MDX / MDD 词典文件的 Web 词典应用。当前架构为：Go 后端 + 嵌入式 React 前端 + 单二进制部署。\n\n技术栈\n后端：Go + Echo v5 + ent + SQLite（github.com/lib-x/entsqlite）\n词典解析引擎：github.com/lib-x/mdx v0.1.11\n前端：React + Vite + TypeScript + pnpm\n部署：单 Go 服务 / 单 Docker 镜像\n\n支持功能\n + mdx/mdd词典显示\n + mdd音频spx自动转码（docker，非docker需要自己安装ffmpeg）\n + 主题、多用户、自定义字体\n\n\n核心go类库 https://github.com/lib-x/mdx\n项目源码 https://github.com/ca-x/owl\n软件界面\n\n<img width=\"1050\" height=\"1344\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7f2a24d9-5550-44ed-8c38-4351aa6ec931\" />\n\n<img width=\"1251\" height=\"1190\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/23cbcd97-1bdb-43f2-b5dd-85eac4c00175\" />",
-    "created_at": "2026-04-23T06:52:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9729"
   }
 ]
