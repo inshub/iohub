@@ -1,5 +1,45 @@
 [
   {
+    "id": 9844,
+    "title": "〖文章自荐〗字节码到像素的一生——Chromium 渲染流水线全景",
+    "content": "## 标题\n字节码到像素的一生——Chromium 渲染流水线全景\n\n## 网址\nhttps://ursb.me/immersive/chromium-renderer/\n\n## 内容简介\n一篇讲 Chromium 渲染流水线的长文，主线就一句话：网络上下来的一串字节，怎么走完 13 个阶段、跨过 3 个进程、穿过 4 棵属性树，最后变成屏幕上的像素。\n\n文章拿\"一张名片\"当贯穿示例，从浏览器架构、进程模型（Site Isolation）讲起，再按顺序拆解加载、解析、样式计算、布局、绘制、合成、光栅化到最终上屏的每一步。读完会理解一些平时只能\"记结论\"的事情：为什么 transform 比改 top/left 快、为什么 CSS 是 render-blocking、DevTools Performance 面板里那些颜色块到底各自对应哪个阶段。\n\n适合想搞清楚浏览器内部到底在干什么的前端同学。",
+    "created_at": "2026-05-05T06:03:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9844"
+  },
+  {
+    "id": 9843,
+    "title": "〖文章自荐〗测量「流畅」——从 FrameTime 到 Stutter",
+    "content": "## 标题\n测量「流畅」——从 FrameTime 到 Stutter\n\n## 网址\nhttps://ursb.me/immersive/jank-stutter\n\n## 内容简介\n聊\"流畅\"的一篇长文，目的就是把这件平时只能靠手感说的事，变成一套能落到指标上的工程语言。\n\n从最基础的 FrameTime 讲起，一路串到 FPS、Jank、Stutter 这些常见但容易混着用的概念，顺便戳破\"高帧率 = 流畅\"这个常见误解；再借视觉惯性和电影帧率的生理学背景，给出判定卡顿的双条件判别式。后半部分按场景分开谈：游戏、应用、视频各自该看哪些指标侧重不一样，最后给出从诊断到修复的优化思路。\n\n适合做客户端、Web、游戏的同学，建立一套跨平台都通用的性能词汇表。",
+    "created_at": "2026-05-05T06:02:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9843"
+  },
+  {
+    "id": 9842,
+    "title": "〖文章自荐〗JS 极致性能优化 — V8 优化原理与一段热点函数的重生",
+    "content": "## 标题\nJS 极致性能优化 — V8 优化原理与一段热点函数的重生\n\n## 网址\nhttps://ursb.me/immersive/v8-fast-js/\n\n## 内容简介\n一篇讲 V8 的长文，作者拿一段真实的单位换算函数当案例，从 240ms 改到 24ms，顺着这个过程把 V8 的几条主线讲了一遍：Ignition、Sparkplug、Maglev、TurboFan 的分层编译，Hidden Class 和对象内存布局，还有内联缓存（IC）。\n\n平时大家会背一些\"性能优化经验\"，比如对象形状要稳定、别用 delete、单态比多态快——这篇把每条经验背后 V8 究竟在做什么解释清楚了，读完会知道是哪个机制在起作用，而不是\"听说这样写更快\"。\n\n页面排版也挺舒服，有交互演示，长归长，但不难读。",
+    "created_at": "2026-05-05T06:01:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9842"
+  },
+  {
+    "id": 9841,
+    "title": "【开源自荐】Sumeru写作——一套用于小说写作的Skill",
+    "content": "[Sumeru 须弥写作](https://github.com/xindoo/sumeru)一个面向长篇小说创作的 AI Skill 集合，其核心理念是将软件工程中的“模块化”与“可编排化”思想引入文本创作，通过流程与约束来完成复杂的长链路生成任务。\n\n## 背景与核心逻辑：\n长篇小说创作与大型软件项目的开发存在高度共性：两者最大的挑战往往并非初期的灵感，而是如何将宏大目标拆解、持续推进，并保持设定的全局一致性。Sumeru 借鉴了面向 Coding 的 AI Agent Skill架构，将“玄学式”的文学创作转化为“工程式”的系统推进。\n\n项目将创作流程拆解为 7 个边界清晰的独立模块（世界观构建、选题、大纲、章节写作、逻辑审查、润色、完稿），构建了一条可控的生产线。\n\n## 项目特点：\n\n**流程工程化：** 摆脱传统的“单次 Prompt 反复重试”模式，每个模块对应明确的产出与边界。\n**状态持久化：** 所有的中间状态（设定、大纲、细纲等）均沉淀至本地，支持断点续传、复用与回滚。\n**合理的任务调度：** 核心决策（如世界观设定、主线节奏）前置确认，重复性的体力活（如章节内容生产、一致性审查与修复）交由 AI 并行处理。\n\n## 实践验证：\n为了验证工具在长链路下的可靠性，我进行了一次压力测试：利用 Sumeru 完整跑通了从选题到完稿的全流程，成功生成了一部 320 章、超 100 万字的长篇小说《古物记》，验证了该架构能有效降低启动成本并管控批量生成的副作用。\n\n## 相关链接：\n\n开源项目地址：[https://github.com/xindoo/sumeru](https://github.com/xindoo/sumeru)\n演示效果（《古物记》阅读站点，当前还有其他两部AI生成的小说）：[http://opennovel.zxs.io/](http://opennovel.zxs.io/)\n项目设计思路与总结文章：[https://blog.csdn.net/xindoo/article/details/160780684](https://blog.csdn.net/xindoo/article/details/160780684) \n\n希望该项目能为关注 AI 文本生成、智能体工作流以及个人提效的开发者们提供一些新的思路与参考。\n\n非常感谢！",
+    "created_at": "2026-05-05T03:19:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9841"
+  },
+  {
+    "id": 9840,
+    "title": "推荐 OpenClaw Monitor：开源 AI Agent 实时监控面板",
+    "content": "## OpenClaw Monitor\n\n开源地址：https://github.com/flik2002/openclaw-monitor\n\n一款专为 OpenClaw AI Agent 设计的**实时监控面板**，类似 Claude Code 的后台仪表盘。\n\n### 核心功能\n\n- **Gateway 状态监控** — 实时健康检查\n- **Token 用量追踪** — 每个会话的 AI 消耗\n- **消息趋势图** — 对话量可视化\n- **会话指标** — Agent 活动实时统计\n\n### 技术栈\n\n- 前端：Vue 3 + Element Plus + ECharts\n- 后端：Express + SQLite\n- 纯自托管，不依赖云服务\n\n### 为什么值得推荐\n\n目前 OpenClaw 在国内有大量用户，但缺乏好用的监控工具。这个项目填补了这个空白，让用户可以直观看到 AI 消耗、Agent 运行状态，适合个人开发者和小团队自用。\n\n---\n\n开源项目，欢迎试用 ⭐",
+    "created_at": "2026-05-05T03:07:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9840"
+  },
+  {
     "id": 9839,
     "title": "〖工具自荐〗AI Vocal Remover：一个更聚焦的工作流工具",
     "content": "## 名称\n\nAI Vocal Remover\n\n## 链接\n\nhttps://ai-vocal-remover.com/\n\n## 一句话简介\n\n一个在线 AI 人声分离工具，支持上传本地音频，在浏览器里预览 vocal / instrumental 两路结果，再下载需要的 MP3/WAV 输出。\n\n## 详细介绍\n\nAI Vocal Remover 主要解决一个很具体的音频处理场景：想从歌曲或音频里快速分离人声和伴奏，但又不想在下载之后才发现结果不可用。\n\n当前页面把流程收得比较短：\n\n1. 上传本地音频文件；\n2. 等待 AI vocal separation 完成；\n3. 分别预览 vocal 和 instrumental；\n4. 确认结果可用后下载 MP3/WAV。\n\n这个工具更适合练歌、伴奏整理、翻唱练习、短视频剪辑前的快速预听等场景。它的重点不是承诺“完美去人声”，而是把上传、处理、预览和下载这几个步骤放在一个清楚的路径里。\n\n## 使用前说明\n\n音频分离质量会受源文件质量、混音方式、人声与伴奏重叠程度影响；用户也应该只上传自己有权处理的音频。",
@@ -776,49 +816,5 @@
     "created_at": "2026-04-24T01:45:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9743"
-  },
-  {
-    "id": 9742,
-    "title": "【开源自荐】MiroTalk SFU - 企业级、可扩展的实时视频平台，用于会议、网络研讨会和协作",
-    "content": "MiroTalk SFU 是一款基于选择性转发单元（SFU）架构的开源实时视频平台，提供可扩展、低延迟的浏览器端通信能力，支持会议、教育和直播等多种场景\n\n<img width=\"1108\" height=\"670\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/112c7164-29a0-4791-90db-d51059e32ce5\" />\n\n🔗 在线演示：https://sfu.mirotalk.com\n🔗 代码仓库：[GitHub 仓库](https://github.com/miroslavpejic85/mirotalksfu)",
-    "created_at": "2026-04-23T23:07:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9742"
-  },
-  {
-    "id": 9741,
-    "title": "【开源自荐】Readme.skill：把你的 Claude Code / Codex 使用记录变成一份可分享的 AI-Native 开发者 README",
-    "content": "- 项目地址：https://github.com/study8677/Readme.skill\n- 示例输出：https://github.com/study8677/Readme.skill/blob/main/examples/example_profile.md\n\n最近很多人会展示自己的 GitHub Profile、技术博客、开源项目，但对于“你是怎么和 AI 一起工作的”，其实还没有一个适合对外分享的标准画像。于是我做了这个 skill。\n\n`Readme.skill` 会在本地只读分析 Claude Code 和 Codex CLI 的使用数据，然后自动生成一份默认脱敏的 Markdown 档案，用来展示你的 AI 协作方式，而不是只晒几张聊天截图。\n\n它会综合这些信息：\n\n- `~/.claude` / `~/.codex` 的统计文件、SQLite、history JSONL\n- GitHub 贡献数据（通过 `gh`）\n- 本地 `git log`\n\n最后输出一份结构化 README，包含这些维度：\n\n- 一览：sessions、threads、活跃天数、commit/day 等\n- AI-Native 实践：多模型编排、prompt caching、reasoning effort\n- AI 基础设施：自己做过哪些 skills / hooks / automations\n- 协作风格：常用 slash commands、session 架构\n- 项目与领域分布：默认匿名成“项目 A/B/C”\n- Evolution 曲线：AI 使用方式是怎么演化的\n- 工作节奏、投入与产出\n\n我觉得这个项目比较有意思的点有三个：\n\n1. **它不是一个“读取聊天内容做总结”的工具**  \n   只读取统计字段、plan/thread 标题、首条用户消息，不读取完整对话正文；默认匿名项目名，还会清洗 token / webhook / 邮箱。\n\n2. **它本身就是一个 skill，而不是一段脚本**  \n   仓库里真正的交付物只有一个 `SKILL.md`。思路是把“怎么分析自己与 AI 的协作”写成 agent 可执行的 workflow，而不是做成一个黑盒程序。\n\n3. **它试图回答一个更有意思的问题**  \n   不是“你用了多少 token”，而是“AI 让你获得了怎样的交付速度、跨栈广度和工作流成熟度”。\n\n安装也很简单，把 `SKILL.md` 软链或复制到 `~/.claude/skills/readme-skill/` 或 `~/.codex/skills/readme-skill/`，然后在对话里说一句：\n\n- `生成我的 AI 档案`\n- `做一份 AI-native README`\n- `summarize my Claude / Codex history`\n\n如果周刊读者最近也在重度使用 Claude Code / Codex，应该会对这种“给 AI 编程习惯做体检和画像”的工具感兴趣。",
-    "created_at": "2026-04-23T17:19:02Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9741"
-  },
-  {
-    "id": 9740,
-    "title": "【工具自荐】基于 cc-switch 的共享 token 平台",
-    "content": "## 解决用户痛点\n\n1、code 订阅账号无法安全、方便的分享\n2、用不完的 code 订阅浪费，但直接将账号托管到”代卖“平台又有封号风险\n3、频繁在多个地区登陆 code 订阅账号会增加封号风险\n4、囊中羞涩，不想花钱，但想学习使用最前沿的模型\n\n## 相关网站\n\n* 官网：https://tokenswitch.org/\n* Japan Router: https://jptokenswitch.cc/\n* Singapore Router: https://sgptokenswitch.cc/\n* cc-switch: https://github.com/Xiechengqi/cc-switch\n* cc-switch router: https://github.com/Xiechengqi/portr-rs\n\n## 工作原理\n\n<img width=\"1132\" height=\"333\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6242c708-da69-479c-998d-a2ec8c178bbf\" />\n\n## 使用截图\n\n<img width=\"996\" height=\"940\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/279843b3-aebb-469c-8ff7-a058189e53bc\" />\n\n<img width=\"1527\" height=\"935\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aa38afda-47e4-41fa-b376-9489f967e2d0\" />",
-    "created_at": "2026-04-23T15:57:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9740"
-  },
-  {
-    "id": 9739,
-    "title": "【工具推荐】ASS字幕字体嵌入工具 - 智能子集化 浏览器本地处理 https://subs.js.org/ass-subset/",
-    "content": "## 工具链接\n- **使用工具**：https://subs.js.org/ass-subset/\n- **源代码仓库**：https://github.com/MontageSubs/ass-subset\n- **开发记录**：https://montagesubs.substack.com/p/ass-subset-39476b0843e9\n\n\n## 核心痛点\n\nASS 字幕使用自定义字体时，直接嵌入会导致文件体积膨胀到 **15-50MB**。**字体子集化**通过只保留字幕实际用到的字符来解决这一问题。一个典型字幕只需约 2000 个字符，而中文字体包含数万个字，处理后文件体积可从 **25MB 压缩至 1MB**。\n\n这项技术虽然存在已久，但以往需要安装软件或使用命令行，门槛过高，难以推广。\n\n\n## 开发背景\n\n我是蒙太奇字幕组（@MontageSubs）的小p。我们是一个专注于精致排版和极致翻译的字幕社群。制作[《至尊马蒂》](https://github.com/MontageSubs/Marty_Supreme_2025)字幕时，为实现特效效果，我们的 NickCollect 大量使用了绘图指令，导致 ASS 文件膨胀至 **20MB+**。我随后编写的 [Python 脚本](https://github.com/MontageSubs/ass-tools)将 600 条重复指令优化为 12 个字体字符，**瞬间将文件缩减至 1MB**。\n\n但命令行工具使用门槛太高，基本只有我在使用。为了让更多人受益，我决定将脚本迁移到浏览器。在这个过程中，我意识到当时还没有基于浏览器的字体子集化方案，于是就把它做了出来。工具发布后收到了社群的宝贵反馈和鼓励，不断完善迭代，逐步演变为完整的**字幕字体嵌入一体化解决方案**。\n\n很高兴的是，社群朋友 Yuri-NagaSaki 也随后独立推出了类似的浏览器工具（#9466）。我们各自采用了不同的设计思路：本工具选择了**本地离线处理 + 丰富专业选项**的方案，无需后端服务，而对方的工具在易用性上有很好的优势。能够和 Yuri-NagaSaki 这样的开发者一起为字幕生态做贡献，是我们对字幕社群繁荣的共同期许。期待更多优秀的开源工具涌现，让字幕生态越来越丰富。\n\n<a href=\"https://subs.js.org/ass-subset/\">\n  <img alt=\"Image\" src=\"https://github.com/user-attachments/assets/d9bdd329-0cd9-4b19-853c-f3082b052bec\" width=\"100%\" />\n</a>\n\n## 功能特性\n\n### 字体优化\n- **图形指令子集化** — 将绘图指令转换为字体字符，显著减少文件体积\n- **灵活字体嵌入** — 提供丰富选项，精细控制嵌入方式\n- **智能自重处理** — 自动识别并优化字体粗细变体\n\n### 批处理能力\n- **批量导入** — 支持批量上传及文件夹导入，一次处理多个文件\n- **系统字体识别** — 在支持的浏览器上智能加载本地字体\n- **批量清理** — 快速移除多个文件中的冗余内嵌字体\n\n### 预览与管理\n- **实时预览** — 字体嵌入后即时查看最终效果\n- **字体提取** — 从已处理字幕中提取内嵌字体\n\n### 用户体验\n- **跨平台免安装** — 基于浏览器原生技术，无需安装任何软件，Windows、macOS、Linux、手机 一网打尽\n- **极简操作体验** — 几个点击完成所有功能，不需要任何技术基础\n- **原创设计** — 每行 CSS 均为原创开发，视觉和交互经过精心打磨\n- **本地离线处理** — 所有字幕和字体数据都在浏览器本地处理，永不上传服务器，完全支持离线使用\n\n\n## 立即试用\n\n想要体验这个工具吗？你可以前往 [MontageSubs 的 GitHub 组织](https://github.com/MontageSubs)下载我们的字幕作品，挑选其中的 ASS 字幕文件上传到工具中试试。我们期待听到你的反馈和建议！\n\n---\n\n<div align=\"center\">\n\n**蒙太奇字幕组 (MontageSubs)**  \n\"用爱发电 ❤️ Powered by Love\"\n\n</div>",
-    "created_at": "2026-04-23T15:34:43Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9739"
-  },
-  {
-    "id": 9738,
-    "title": "【网站自荐】Square Face Generator - AI 方脸头像生成器 & 经典像素方块图标生成器",
-    "content": "做了一个 AI 方脸头像生成器，上传照片即可生成 Cartoon、Anime、3D、Video Game 等风格的方脸头像。\n另外还把经典的老版 Flash 像素方块头像生成器，12 个自定义类别，完全免费，无需注册。\n技术栈：Next.js，持续迭代中，欢迎反馈。\nAI 方脸头像生成器：https://www.squarefacegenerator.ai/\n经典像素方块图标生成器（免费）：https://www.squarefacegenerator.ai/square-face-icon-generator",
-    "created_at": "2026-04-23T15:27:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9738"
   }
 ]
