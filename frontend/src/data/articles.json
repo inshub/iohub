@@ -1,5 +1,21 @@
 [
   {
+    "id": 9855,
+    "title": "【开源自荐】ProfReach：专为学术套磁设计的防幻觉 AI copilot，全本地运行保护隐私",
+    "content": "项目地址\nhttps://github.com/Freyliu0516/ProfReach\n\n项目介绍\nProfReach 是一个专为申请海外博士、硕士，国内保研申博以及寻找科研暑研的学生打造的学术套磁信自动生成与管理框架。\n\n它的核心痛点解决在于“防幻觉（Anti-hallucination）”：市面上的通用大模型在撰写学术套磁信时，极易凭空捏造教授的论文和研究成果，这在学术圈是致命的。ProfReach 通过引入外部学术图谱（RAG），彻底解决了这一问题。\n\n核心特性：\n\n事实溯源（Fact-grounded）： 接入 OpenAlex / arXiv 接口，自动检索目标教授的最新真实代表作，并利用 LLM 进行同名作者消歧义，确保邮件引用的学术内容 100% 真实。\n\n本地优先（Local-first）与隐私保护： 用户的 PDF 简历、目标教授名单、API Keys 以及生成的邮件数据全量存储在本地 SQLite 数据库中，拒绝隐私泄露。\n\n人类在环（Human-in-the-loop）： 拒绝高风险的自动海投。采用 Draft-first（先草稿后审核）机制，用户可以在 UI 界面微调 AI 生成的定制化段落后，再通过内置 SMTP 队列批量发送。\n\n一键启动： 内置完整的 PDF 解析、数据流转与并发速率限制（Rate Limiting）机制，提供友好的 Streamlit 交互界面。\n\n适合人群：准备保研、出国留学、寻找实验室暑研，且需要高效联系导师的学生群体。\n\n技术栈： Python、Streamlit、SQLite、OpenAlex API、LangChain / 大模型 API (支持 OpenAI/Anthropic/国产大模型)、Jinja2。\n\n演示与使用\n本项目为主打隐私保护的本地工具，只需克隆仓库后运行以下脚本即可体验一站式 Web UI：\n\nBash\n# Windows小白一键启动\n.\\run_web.bat\n(可以在 README 中查看完整的系统架构图)\n\n",
+    "created_at": "2026-05-06T02:33:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9855"
+  },
+  {
+    "id": 9854,
+    "title": "https://howolddoilook.cv/",
+    "content": "Free AI age detection tool with an attractiveness test. Upload a photo and discover how old you look using advanced facial analysis AI.",
+    "created_at": "2026-05-06T02:19:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9854"
+  },
+  {
     "id": 9853,
     "title": "【开源自荐】HonoAdmin：基于 Hono / HonoX 的轻量中后台框架，支持 Bun 与 Cloudflare Workers 部署",
     "content": "## 项目地址\nhttps://github.com/fc221/HonoAdmin\n\n## 项目介绍\nHonoAdmin 是一个基于 Hono / HonoX 的轻量中后台框架，支持 Bun 本地开发和 Cloudflare Workers 部署。\n它的特点是运行时无关：数据库、缓存、文件存储、配置等能力通过 Runtime Adapter 注入到 Hono Context，业务代码不需要直接绑定 Bun、Workers 或某个特定平台。\n项目内置用户、角色、权限、菜单、配置、文件、操作日志、更新管理等后台基础功能；数据库层使用原生 SQL，不强绑定 ORM；API 使用 hono-openapi + zod；UI 使用 Tailwind CSS 和 daisyUI。\n适合用来开发 SaaS 后台、Cloudflare Workers 后台、内部管理系统、用户中心和轻量 CMS。\n技术栈：Hono、HonoX、Bun、TypeScript、SQLite / D1、Tailwind CSS、daisyUI。\n\n## 演示地址\nhttps://hono-admin-demo.wkuola.workers.dev/user/login\nadmin\n123123\n<img alt=\"Image\" src=\"https://nos.netease.com/ysf/19af9c31b6f5addffa8940d2b474ad50.png\" />",
@@ -796,23 +812,5 @@
     "created_at": "2026-04-25T05:17:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9754"
-  },
-  {
-    "id": 9753,
-    "title": "【开源自荐】PrivacyFilter.app - OpenAI Privacy Filter 实现的在线隐私数据检测和清除",
-    "content": "基于 OpenAI Privacy Filter 实现的在线隐私数据检测和清除，浏览器本地运行。\n另外在纯文本的基础上增加了图片支持。MIT 开源。\n\nSource (MIT): https://github.com/becoolme/privacyfilter.app\n\nLive: https://privacyfilter.app\n\n\n<img width=\"1186\" height=\"775\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c150d81f-6593-4ba6-815c-b01bdd292822\" />\n\n<img width=\"1173\" height=\"553\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f947a042-c7a7-4585-8104-1778527ba86c\" />\n\n",
-    "created_at": "2026-04-25T04:40:49Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9753"
-  },
-  {
-    "id": 9752,
-    "title": "〖工具自荐〗AI YouTube Transcript：支持搜索、时间戳和 TXT/SRT/VTT 导出的 YouTube transcript 工具",
-    "content": "## 名称\n\nAI YouTube Transcript\n\n## 链接\n\nhttps://aiyoutubetranscript.com/\n\n## 一句话简介\n\n一个更顺手的 YouTube transcript 工具，支持搜索、时间戳跳转，以及 TXT / SRT / VTT 导出。\n\n## 推荐理由\n\n很多人并不是只想“看到字幕”，而是拿到 transcript 之后还要继续做下一步，比如：\n\n- 搜索某一句话\n- 回到对应时间点确认上下文\n- 复制文本做笔记\n- 或导出成 TXT、SRT、VTT，继续进入下一段工作流\n\n所以这页现在优先解决的是一条更完整的 transcript 工作流，而不是只把字幕原样展示出来。\n\n## 当前能做什么\n\n- 粘贴 YouTube URL 或 video ID\n- 选择语言并读取 transcript\n- 搜索关键词\n- 点击时间戳回到对应片段\n- 复制文本\n- 导出 TXT、SRT、VTT\n\n## 使用前说明\n\n并不是所有视频都能成功读取 transcript。最终能否加载，取决于视频是否公开了可用字幕或 caption 轨道，文本质量也取决于原始轨道本身。",
-    "created_at": "2026-04-25T04:19:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9752"
   }
 ]
