@@ -1,5 +1,21 @@
 [
   {
+    "id": 9857,
+    "title": "【工具自荐】tmoreader 终端摸鱼阅读器",
+    "content": "**工具地址**：https://github.com/Folgerjun/tmoreader\n**一句话介绍**：在 PowerShell / Windows Terminal / Linux 终端中阅读 PDF / EPUB / TXT, 渲染成伪代码 / 伪日志 / 伪 git diff 三种风格,远看就像在认真工作 🥷。\n\n<img width=\"1463\" height=\"683\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cfdaea73-a6b3-45d7-8e44-d50063064e82\" />\n\n---\n\n# tmoreader 终端摸鱼阅读器\n\n在 PowerShell / Windows Terminal / Linux 终端中阅读 **PDF / EPUB / TXT**,\n渲染成**伪代码 / 伪日志 / 伪 git diff** 三种风格,远看就像在认真工作 🥷。\n\n---\n\n## ✨ 特性\n\n- 📖 支持 `PDF` / `EPUB` / `TXT` (自动识别编码)\n- 🎭 三种伪装风格,运行时一键切换\n  - `code`:Java / Kotlin / Python / Go / TypeScript / Rust 伪源码 + 行号 + 注释包裹\n  - `log` :SLF4J 风格日志,时间戳 / 级别 / 线程 / Logger 一应俱全\n  - `diff`:git diff 输出,`+` 新增、`-` 删除上下文\n- 🎨 多 syntax 主题 (`monokai` / `one-dark` / `dracula` / `nord` / ...) `t` 键切换\n- 🔥 **老板键**:按 `b` 立刻满屏 Maven / npm / docker / git log 假输出\n- 🔖 书签、阅读进度自动保存 (按文件 hash 跨 session 续读)\n- 🔎 搜索关键字、章节跳转 (基于 PDF TOC / EPUB 标题)\n- 📐 中英文混排折行 (CJK 全角宽度感知)\n- 💻 跨平台:Windows PowerShell / Windows Terminal / Linux / macOS\n\n",
+    "created_at": "2026-05-06T05:32:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9857"
+  },
+  {
+    "id": 9856,
+    "title": "【开源自荐】WorkPulse : 一款本地优先的工作日志 + AI 周报桌面工具",
+    "content": "很多人写周报时都会遇到同一个问题：这一周明明很忙，真要总结的时候，却只想得起几件大事，其他细碎但有价值的工作早就散落在聊天记录、commit 和会议纪要里。\n\nWorkPulse 想解决的就是这件小事。\n\n它是一个 Electron 桌面应用，做三件事：\n\n1. 快速记录：随时按全局快捷键（默认 Ctrl+Shift+L）弹出输入框，写一句话按回车就存下来。支持 #标签 自动分类。\n2. 看板任务：Todo / In Progress / Done 三列拖拽，任务完成时可以一键转成一条工作日志。\n3. AI 报告：选择时间范围，调用任何 OpenAI 兼容的接口（自带 key），从你的真实日志生成结构化周报/月报。\n\n设计上有几个比较克制的选择：\n\n- 本地优先：所有数据存在本地 SQLite，每天自动备份，没有账号、没有云、没有遥测。\n- API key 安全：通过 Electron safeStorage 加密存储，旧版本的明文 key 会自动迁移并清理。\n- 跨平台：macOS / Windows / Linux 都有打包，通过 GitHub Releases 自动更新。\n\n技术栈：Electron + React 18 + TypeScript + better-sqlite3 + Zustand + Tailwind。\n\n开源地址：https://github.com/dobest1024/WorkPulse\n下载地址：https://github.com/dobest1024/WorkPulse/releases\n\n适合独立开发者、远程工作者，以及任何经常被\"我这周到底干了什么\"卡住的人。",
+    "created_at": "2026-05-06T05:29:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9856"
+  },
+  {
     "id": 9855,
     "title": "【开源自荐】ProfReach：专为学术套磁设计的防幻觉 AI copilot，全本地运行保护隐私",
     "content": "项目地址\nhttps://github.com/Freyliu0516/ProfReach\n\n项目介绍\nProfReach 是一个专为申请海外博士、硕士，国内保研申博以及寻找科研暑研的学生打造的学术套磁信自动生成与管理框架。\n\n它的核心痛点解决在于“防幻觉（Anti-hallucination）”：市面上的通用大模型在撰写学术套磁信时，极易凭空捏造教授的论文和研究成果，这在学术圈是致命的。ProfReach 通过引入外部学术图谱（RAG），彻底解决了这一问题。\n\n核心特性：\n\n事实溯源（Fact-grounded）： 接入 OpenAlex / arXiv 接口，自动检索目标教授的最新真实代表作，并利用 LLM 进行同名作者消歧义，确保邮件引用的学术内容 100% 真实。\n\n本地优先（Local-first）与隐私保护： 用户的 PDF 简历、目标教授名单、API Keys 以及生成的邮件数据全量存储在本地 SQLite 数据库中，拒绝隐私泄露。\n\n人类在环（Human-in-the-loop）： 拒绝高风险的自动海投。采用 Draft-first（先草稿后审核）机制，用户可以在 UI 界面微调 AI 生成的定制化段落后，再通过内置 SMTP 队列批量发送。\n\n一键启动： 内置完整的 PDF 解析、数据流转与并发速率限制（Rate Limiting）机制，提供友好的 Streamlit 交互界面。\n\n适合人群：准备保研、出国留学、寻找实验室暑研，且需要高效联系导师的学生群体。\n\n技术栈： Python、Streamlit、SQLite、OpenAlex API、LangChain / 大模型 API (支持 OpenAI/Anthropic/国产大模型)、Jinja2。\n\n演示与使用\n本项目为主打隐私保护的本地工具，只需克隆仓库后运行以下脚本即可体验一站式 Web UI：\n\nBash\n# Windows小白一键启动\n.\\run_web.bat\n(可以在 README 中查看完整的系统架构图)\n\n",
@@ -796,21 +812,5 @@
     "created_at": "2026-04-25T12:06:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9756"
-  },
-  {
-    "id": 9755,
-    "title": "【网站自荐】IndexOf.AI：收录整理各类 AI 产品的分类导航站",
-    "content": "<img width=\"3104\" height=\"2112\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7703025e-7215-4211-967a-d953c1abc7b9\" />\n\nIndexOf.AI 是一个 AI 工具导航站，收录和整理各类 AI 产品，按照 AI 助手、开发工具、写作、设计、图像、视频、SEO、自动化、教育等分类展示。\n\n它主要解决两个问题：普通用户可以更快找到适合自己场景的 AI 工具；AI 工具开发者也可以提交自己的产品，获得一个可被搜索引擎收录的公开详情页。网站支持免费提交，也提供一次性付费的 Pro 收录，用于补充 SEO 描述、关键词和 DoFollow 外链。\n\n地址：https://indexof.ai/",
-    "created_at": "2026-04-25T08:15:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9755"
-  },
-  {
-    "id": 9754,
-    "title": "【更新！开源自荐】BB鸭，图片批量压缩SKILL，支持gif, png, webp, jpg，视觉无损",
-    "content": "BB鸭整合各类开源图片压缩算法，会自动根据图片特征自动选择压缩参数，使用 SSIM / PSNR 评估压缩前后的视觉差异。\n\n只需要将图片拖入PP鸭网页版，就能自动批量压缩，省时省心，而且支持SKILL调用，可以通过clawhub获取skill实现自动化部署。\n\nhttps://github.com/zhaoolee/bbduck\n\n![](https://github.com/zhaoolee/bbduck/raw/main/README.assets/683a5ce3156c65205d178cda15ae5ca687150eeded659aec5da22af2c2a74fbd.gif)\n\n![](https://github.com/zhaoolee/bbduck/raw/main/README.assets/a69790085cd22d8aac0cd11da718c4ec17bf731f6dc23f7639473b0068593cdb.png)\n\n![](https://github.com/zhaoolee/bbduck/raw/main/README.assets/64e37b20888cd9026f5eefaf51dc7d876146ac476e035c1d5122f10d20bddb3a.png)\n\n![](https://github.com/zhaoolee/bbduck/raw/main/README.assets/33378726b66cf41cf1bf43a5cd65125c632f90fd8e38e0523621f10bc3e57f75.png)\n\n",
-    "created_at": "2026-04-25T05:17:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9754"
   }
 ]
