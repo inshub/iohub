@@ -1,5 +1,29 @@
 [
   {
+    "id": 9881,
+    "title": "【开源自荐】OpenJobAutofill：AI 辅助、隐私优先的网申表单自动填写插件",
+    "content": "#  OpenJobAutofill：AI 辅助、隐私优先的网申表单自动填写插件\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/Br1an67/OpenJobAutofill/main/assets/openjobautofill-logo.png\" alt=\"OpenJobAutofill\" width=\"720\" />\n</p>\n\n## 链接\n开源仓库：https://github.com/Br1an67/OpenJobAutofill\n\n## 介绍\nOpenJobAutofill 是一个给网申表单用的浏览器插件，主要用来减少重复填写简历信息。\n\n不同公司的招聘系统界面差异很大，但要填的内容其实很重复，比如姓名、手机号、邮箱、教育经历、实习经历、项目经历、证书、奖项、家庭信息等。这个项目就是想把这部分重复劳动省掉。\n\n## 功能\n- 本机保存简历资料，不上传云端\n- AI 只看页面字段和本地资料目录，不看资料值\n- 支持 Brave / Chrome 开发者模式加载\n- 支持常见输入框、下拉框、单选、多选、日期等字段\n- 会先用本地规则匹配，再用 AI 辅助理解页面字段\n- 只自动填写高置信度内容，低置信度会留给用户确认\n- 支持 OpenAI 兼容 API 和自定义 API\n\n## 截图\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/Br1an67/OpenJobAutofill/main/assets/openjobautofill-popup.png\" alt=\"OpenJobAutofill popup\" width=\"420\" />\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/Br1an67/OpenJobAutofill/main/assets/openjobautofill-settings.png\" alt=\"OpenJobAutofill settings\" width=\"760\" />\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/Br1an67/OpenJobAutofill/main/assets/openjobautofill-progress.png\" alt=\"OpenJobAutofill progress\" width=\"520\" />\n</p>\n\n## 说明\n我自己用的时候比较在意隐私，所以这个项目一开始就按“本地优先”的方向做，不想把整份简历直接丢给 AI 或别人的网站。\n\n举个例子，AI 看到的是“页面上有联系电话，本地资料目录里有手机号”这种字段对应关系，不会拿到真实的手机号、身份证号、经历正文这些值。真正的取值和写入都在本机完成。\n\n## 结尾\n如果这个工具能帮你少填几次重复表单，欢迎试用和提 Issue，也欢迎顺手给个 Star。\n",
+    "created_at": "2026-05-08T05:50:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9881"
+  },
+  {
+    "id": 9880,
+    "title": "【开源自荐】MapPoster Online - 把你爱的城市搓成专业级艺术海报",
+    "content": "![Banner](https://imgf.0v0.one/landscape/webp/20260430_064848_2723.webp)\n\n## 项目地址\n\n* 在线体验：[https://maptoposter.0v0.one](https://maptoposter.0v0.one/)\n* GitHub：[https://github.com/ianho7/maptoposter-online](https://github.com/ianho7/maptoposter-online)\n* License：MIT\n\n## 背景\n\n我自己非常喜欢那种把城市路网做成装饰画的地图海报，不管是打印出来作为装饰，还是手机电脑壁纸，都有一种趣味。\n\n之前刷到过一个 Python 项目 [maptoposter](https://github.com/originalankur/maptoposter)，可以把城市地图生成海报，效果很有意思，但作为对 Python 了解不多的人，使用起来还是让我费了一点时间，转念多想一层，Python、命令行，对普通用户还是有**不低的门槛：要安装 Python、配置环境、运行命令，再去找输出文件。**\n\n所以我决定做一个网页版：MapToPoster Online。它是参考 maptoposter 思路的浏览器端实现，目标是让用户打开网页后，能直接选择城市、调整主题和字体，然后导出一张适合打印或做壁纸的城市地图海报，**所见即所得，不需要捣鼓任何技术相关的东西。**\n\n## 介绍\n\nMapPoster Online 是一个开源的在线地图海报生成工具，目标不是做一张普通地图截图，而是在 **0 门槛**的基础上，把 OpenStreetMap 的**多级道路、多种河流海洋湖泊、绿地公园山体、兴趣点（名胜、地标、商圈）**等数据重新渲染成适合展示和打印的**高精度海报**，目前支持：\n\n- 选择城市并生成地图海报\n- 调整地图半径、主题、颜色、字体和版式，支持自定义\n- 导出 A4 竖版、A4 横版、方形、手机壁纸、桌面等多种尺寸\n- 300 DPI 输出，方便打印\n- 20 种内置主题\n- 上传自定义 TTF/OTF 字体\n- 英文、中文、日文、韩文、德文、西班牙文、法文界面\n- 浏览器 IndexedDB 缓存，重复生成同一城市会更快\n\n## 效果图\n\n![地图海报-1](https://imgf.0v0.one/portrait/webp/20260430_070452_9509.webp)\n![地图海报-2](https://imgf.0v0.one/portrait/webp/20260430_070814_9963.webp)\n\n## 核心亮点\n\n- **降低浏览器压力**： 将传统的 GeoJSON 对象结构，转化为 Float64Array 扁平化结构，降低内存压力\n- **Web Worker 分片并行高效处理**：充分利用设备性能，按核心分片处理数据，提升数据处理速度\n- **竞速+分批获取 Overpass API**：因为数据量大，公共 API 不稳定，所以设计：\n  - 并发请求多个 Overpass 镜像节点，取最快响应\n  - 查询面积过大时自动切分成多次、小块请求\n  - 大半径场景下，降低低权重道路精度，减少难以察觉但消耗巨大的渲染\n- **数据缓存**：使用 IndexedDB 压缩缓存地图数据，再次生成时可以直接读取\n\n## 技术选型\n\n- React 19 + TypeScript + Vite\n- Tailwind CSS v4 + Radix UI\n- OpenStreetMap / Overpass API / Protomaps\n- Rust + WebAssembly + tiny-skia\n- Web Worker\n- IndexedDB\n- Paraglide JS 国际化\n\n## 特别感谢\n包括但不限于：\n- [maptoposter](https://github.com/originalankur/maptoposter)\n- [OpenStreetMap](https://openstreetmap.org)\n- [Overpass API](https://overpass-api.de)\n- [Protomaps](https://protomaps.com)\n- [tiny-skia](https://github.com/linebender/tiny-skia)",
+    "created_at": "2026-05-08T04:05:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9880"
+  },
+  {
+    "id": 9879,
+    "title": "【开源自荐】Typeflux - 一款开源免费的 macOS 语音输入法，给你 Typeless 般的使用体验",
+    "content": "Typeflux 是一款 macOS 上的开源语音输入工具。\n\n它解决的是一个很具体的问题：当你想写点东西时，不必先打开一个聊天窗口、不必复制粘贴，也不必在脑子里把口语整理成书面语。你只需要按住快捷键说话，松开后，Typeflux 会把你的表达整理成文字，直接插入当前 App 的光标位置。\n\n写邮件、发消息、记笔记、填表格、写文档，甚至写代码注释，都可以这样完成。\n\n## 它不只是语音转文字\n\n传统语音输入更像“把声音变成文字”。Typeflux 想往前多走一步：把你自然说出来的话，变成真正可用的内容。\n\n比如你可以直接说一段有点零散的话，Typeflux 会帮你整理成更清晰的句子。你也可以先选中一段文字，再按住快捷键说：\n\n- “改得更正式一点”\n- “翻译成英文”\n- “精简成三句话”\n- “整理成 Markdown 列表”\n\nTypeflux 会在当前 App 里直接替换选中的内容。你不需要把文字复制到 AI 聊天窗口，再把结果复制回来。\n\n## 为什么做它\n\n很多人已经习惯用 AI 写作、润色和翻译，但大多数流程仍然很割裂：输入在一个地方，AI 在另一个地方，最终使用场景又在第三个地方。\n\nTypeflux 希望把这些步骤合在一起。\n\n它不是一个新的编辑器，也不是又一个聊天机器人，而是一个贴在桌面工作流里的语音入口。你在哪里写东西，它就在哪里工作。\n\n## 开源、免费，也可以本地运行\n\nTypeflux 完全开源，核心功能免费。\n\n如果你在意隐私，可以使用本地语音模型和本地大语言模型，让数据留在自己的 Mac 上；如果你想开箱即用，也可以使用 Typeflux Cloud 或自己配置的云端模型服务。\n\n选择权在用户手里，这是 Typeflux 很重要的设计原则。\n\n## 我们想把它做成什么\n\n现阶段，Typeflux 是一款好用的 macOS 语音输入法。\n\n但更长期的方向，是成为桌面端的语音 Agent：不只帮你输入文字，还能理解当前上下文，帮你改写内容、回答问题，甚至通过语音完成更多电脑上的日常操作。\n\n## 项目地址\n\nhttps://github.com/mylxsw/typeflux\n\n<img width=\"1411\" height=\"1992\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c99ac48c-b99a-4e7e-a429-fca7337be77d\" />",
+    "created_at": "2026-05-08T03:28:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9879"
+  },
+  {
     "id": 9878,
     "title": "【工具自荐】SynoSync，给 iOS 平台一个现代化的群晖同步工具",
     "content": "SynoSync：打破 iOS 平台群晖同步的边界\n\n群晖官方 iOS 版 Drive 客户端目前无法自定义同步路径，导致用户难以将 NAS 文档直接同步至 Obsidian 等第三方 App 的工作空间。SynoSync 正是为了填补这一功能空白而生。\n\n尽管 SynoSync 的开发初衷是解决 Obsidian 在 iOS 上的多端同步问题，但它本质上支持任何基于文件系统的 App，为你提供真正自由的文件同步体验。\n\n深入了解： [SynoSync｜让群晖与 iOS 之间的文件同步真正「现代化」](https://blog.gadore.top/archives/synosync/)\n下载地址： [App Store](https://apps.apple.com/cn/app/synosync/id6762731663)\n\n![](https://halo.gadore.top/upload/ChatGPT%20Image%202026%E5%B9%B45%E6%9C%887%E6%97%A5%2013_29_47%20(1).png)",
@@ -544,14 +568,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/9812"
   },
   {
-    "id": 9811,
-    "title": "【开源自荐】KCase 测试用例AI助手平台（脑图，多人协作，AI用例生成），让用例管理更高效，更智能",
-    "content": "GitHub： https://github.com/thealert/KCase\n\n<img width=\"897\" height=\"853\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/23cf40f9-960b-46bb-9fea-167895f9ee3c\" />\n\n## ✨ 核心功能\n\n| 能力 | 说明 |\n| --- | --- |\n| 📋 **用例管理** | 列表视图支持状态流转、创建人筛选、快捷操作入口 |\n| 🌳 **脑图式编辑** | 节点拆分、标签、优先级标记，适合复杂场景的结构化设计 |\n| ▶️ **用例执行** | 实时跟踪通过率、执行进度、节点状态 |\n| 🤖 **AI 辅助生成** | 基于当前节点或业务场景自动补充测试点与用例内容 |\n| 🕓 **历史备份** | 版本回溯、审计、恢复 |\n| 🎨 **多主题** | 浅色 / 深色等多主题切换 |\n\n### 功能预览\n\n#### 1. 用例管理 — 状态流转与快捷操作\n\n<img width=\"1844\" height=\"853\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e9bf36a1-0d37-449b-af3e-636295fbf5e9\" />\n\n#### 2. 用例编辑 — 脑图式结构化设计\n\n<img width=\"2550\" height=\"1143\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11340140-e539-48d1-abd5-b1fc6695cdaa\" />\n\n#### 3. 用例执行 — 实时进度与通过率\n\n<img width=\"1910\" height=\"861\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c5f5e206-8085-421e-9037-73643812d7b2\" />\n\n#### 4. AI 生成用例 — 智能补全测试点\n\n<img width=\"1280\" height=\"591\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9c58d12d-3dd3-471d-acc7-7649947ffc9d\" />\n\n#### 5. 历史备份 — 版本追溯与恢复\n\n<img width=\"1865\" height=\"835\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3e9739d0-4d33-449a-bf75-ba1090629aa9\" />\n\n#### 6. 多主题支持 — 浅色 / 深色切换\n\n<img width=\"1898\" height=\"815\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6fc7c4b1-2480-4f44-9279-83f8bdd8cf77\" />\n",
-    "created_at": "2026-04-30T08:12:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9811"
-  },
-  {
     "id": 9810,
     "title": "【开源自荐】TiyCode，Rust+Typescript 构建的轻量级跨平台桌面 Agent，Codex、ClaudeDesktop 开源替代",
     "content": "**TiyCode**(**钛可**) 是一款践行 AI First 理念的桌面版 Vibe-Coding Agent，采用 Rust + Typescript 构建，非常轻量（安装包仅 20M+）的跨平台桌面Agent，支持windowns、mac、linux(Beta)平台，自由开放，协议友好（Apache 2.0），可作为 Codex、ClaudeCode-desktop 的开源替代品。\n\n<img width=\"1888\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ebdc6fd9-2900-4b00-8e35-d899149df4a1\" />\n\n**功能特色：**\n- 多Profile：支持不同Provider的不同模型组成多种Profile\n- 三层模型：类CC三层模型（Primary、Auxiliary、Lightweight）组合运用\n- 多服务商：开箱即用的13+内置模型服务商，且支持多种协议自定义服务商\n- 良好的Coding体验设计：对话为主，搭配Git面板支持常用diff审阅等操作、Terminal\n- 内置Runtime：内置Runtime、搭配常用tools以及terminal联动工具\n- 扩展能力：Plugin、MCP、Skills\n- 多语言：i18n支持，目前覆盖中英文，随时切换\n\n**项目地址：**\n- https://github.com/TiyAgents/tiycode\n\n**产品截图：**\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cafefdb5-80fd-481d-8abb-dfa24e862b0f\" />\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ae10c6f9-e3a5-483a-88ef-f0a2803363bf\" />\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/da0fb2e7-6cf6-4cfa-9be3-222f2c984600\" />\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/af40ae6c-5900-4e4e-b34d-39b881aa5654\" />\n\n<img width=\"1612\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8248315c-e2cc-49cd-aab4-66f189ecc925\" />",
@@ -796,21 +812,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9779"
-  },
-  {
-    "id": 9778,
-    "title": "【工具自荐】软件开发报价计算器：软件定制开发多少钱？软件公司开发一个软件要多少钱？免费在线工具帮你回答这种问题",
-    "content": "### 免费在线小工具\n\n[软件开发报价计算器](https://ruanjiankaifa.com/pricing-calculator/)：软件定制开发多少钱？软件公司开发一个软件要多少钱？开发一个app需要多少钱？ 开发一个微信小程序要多少钱？建网站一般需要多少钱？一个免费在线小工具帮你回答这种问题。不用再为无法安排开发预算发愁。\n\n\n\n### 官方网站\n [软件开发网](https://ruanjiankaifa.com/)：AI 时代的企业软件改造专家。帮助中小企业用 AI + 软件改造，把老系统跑顺、把业务流程做高效。\n\n### 主营业务\n- 老系统升级 / 技术接盘\n- AI 知识库 / 客服 / 助手落地\n- 业务系统定制与持续迭代\n- 企业官网开发\n- 小程序开发\n- App开发",
-    "created_at": "2026-04-27T13:17:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9778"
-  },
-  {
-    "id": 9777,
-    "title": "【开源自荐】AI 对撞机：把多个 AI 网页聚合到一个侧边栏，内置裁判自动归纳终极答案",
-    "content": "【项目名称】AI 对撞机 / AI Clash\n\n【项目地址】https://github.com/null-object-0000/ai-clash\n\n【在线体验】https://ai-clash.snewbie.site/\n\n【项目简介】\n\nAI 对撞机是一款开源浏览器插件，用来把多个 AI 网页聚合到同一个侧边栏里。用户只需输入一次问题，插件会自动唤醒多个 AI 网页，让它们同屏回答，并由内置的「AI 裁判」归纳共识、分歧和最终建议。\n\n它目前支持 DeepSeek、豆包、通义千问、腾讯元宝、文心一言、Xiaomi MIMO 等模型平台。\n\n这个项目的特点是没有采用常见的 API 聚合方式，而是基于本地 DOM Hook 操作各家官方网页版，因此可以继续使用网页版已有的上下文、联网、沙盒等能力，也避免额外的 API Token 成本。\n\n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/50aa7064-1993-4d3b-8625-672ba7ecf873\" />",
-    "created_at": "2026-04-27T09:30:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9777"
   }
 ]
