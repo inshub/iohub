@@ -1,5 +1,37 @@
 [
   {
+    "id": 9891,
+    "title": "[工具推荐] openvideo 一款开源的免费无广告的好看的本地视频播放器",
+    "content": "想推荐一下我做的开源 Android 本地播放器：OpenVideo。\n项目初衷很简单：很多播放器要么能用但界面不好看，要么好看但要付费或者很多广告，所以我想做一个好看、能用、可持续迭代的开源版本。\n这个项目能解决什么\n本地视频播放体验不统一、广告多、功能碎片化\n横屏播放时控件布局和手势体验差\n想要可控、可改、可二开的播放器基础工程\n目前已经有的能力（v0.0.1）\nKotlin + Media3（ExoPlayer）播放器内核\n横竖屏播放 UI，支持手势亮度/音量/快进快退\n播放列表弹层（缩略图 + 标题）\n播放设置、PiP、播放历史等基础能力\n已接入基础 CI（编译 + 单测 + lint）\n适合谁\n想自己掌控播放器体验的普通用户\n想二开播放器的 Android 开发者\n想找一个干净可读的 Media3 实战项目的人\n项目地址\nGitHub: [（仓库链接）](https://github.com/Xunzi229/openvideo)\n首发版本:[ v0.0.1](https://github.com/Xunzi229/openvideo/releases/tag/0.0.1)\n欢迎试用、提 Issue、提 PR。\n你提的每一个反馈，我都会认真看并尽快迭代。",
+    "created_at": "2026-05-09T07:44:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9891"
+  },
+  {
+    "id": 9890,
+    "title": "【开源自荐】drift v0.4.0 发布：加密文件传输，无需云、无需 SSH，一个二进制文件搞定",
+    "content": "<img width=\"930\" height=\"850\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a35da47-61d9-4d68-93e6-d2c35b212abd\" />\n\n**一句话**：\n> 给开发者准备的端到端加密文件传输工具 —— 通过 WebSocket 在任意两台机器间安全复制文件和文件夹，不依赖云服务，不配置 SSH，内置双栏 Web 文件管理器，v0.4.0 新增多文件批量传输和协议版本协商，兼容性拉满。\n\n**项目地址**：https://github.com/aeroxy/drift\n\n---\n\n## 亮点\n\n### 1. 开箱即用的跨机器文件交换\n\n```bash\n# 机器 A 启动服务\ndrift serve --port 8000\n\n# 机器 B 连接到 A，各自打开 localhost:9000/8000 的双栏 UI\ndrift serve --port 9000 --target 192.168.0.2:8000\n```\n\n两边浏览器直接拖拽、多选文件（Cmd/Ctrl‑click、Shift‑click），左右两栏分别是本地和远程文件系统，复制、移动一目了然。**无需配置防火墙、无需 SSH 密钥、无需注册任何云服务**。\n\n### 2. 端到端加密，零信任传输\n\n- X25519 密钥交换 + ChaCha20-Poly1305 加密，每条连接使用临时密钥，提供前向安全性。\n- 可选密码认证，防止未授权连接。\n- 路径穿越防护，所有文件操作限制在预设根目录内。\n\n### 3. v0.4.0 新突破：多文件批量传输 & 协议自动适配\n\n- **批量传输一轮搞定**：一次请求发送多个文件，V2 数据帧增加 `file_index` 字段，多文件分块可以在同一 WebSocket 连接上交错发送，接收端自动路由到对应文件。\n- **协议版本协商**：连接握手时交换 `protocol_version`，drift 0.4.0 默认使用 V2 协议，遇到旧版本节点自动回退 V1 帧格式，**完全向后兼容，无需手动切换**。\n- **CLI 工具不再掐断 Web 面板**：运行 `drift ls` 或 `drift pull` 时，服务端会保存并恢复持久连接，不再导致浏览器面板断连。\n- **修复关键竞态与资源泄漏**：接收器逻辑升级为 `HashMap` 管理多个 writer，测试中的断开重连竞态也已修正。\n\n### 4. 为 AI Agent 和受限环境而生\n\n许多文件传输工具依赖 UDP（WebRTC、QUIC 等），在云 GPU 服务器、Docker 容器、推理平台等仅允许 HTTP/WebSocket 的环境中往往无法使用。drift 走纯 WebSocket（TCP），**开箱即用**：\n\n| 环境 | SCP / rsync | magic‑wormhole | drift |\n|------|-------------|----------------|-------|\n| 云 GPU 实例（如 Lambda Labs） | 需额外开放端口 | 需 UDP | ✅ 无需任何配置 |\n| Docker / Kubernetes Pod | 需挂载 SSH 或端口转发 | 需 UDP | ✅ 只跑一个二进制 |\n| 仅允许 80/443 的严格防火墙 | ❌ | ❌ | ✅ WebSocket 通道 |\n| 零配置启动 | ❌ | 需安装 Python | ✅ 单二进制，brew install 即用 |\n\n### 5. 完整 CLI，不打开浏览器也能传文件\n\n```bash\n# 列出远程目录\ndrift ls --target 192.168.0.2:8000\n\n# 拉取远程文件/文件夹\ndrift pull --target 192.168.0.2:8000 report.pdf\n\n# 从本机直接发送（不启动 Web UI）\ndrift send --target 192.168.0.2:8000 video.mp4\n\n# 文件夹自动压缩传输\ndrift send --target 192.168.0.2:8000 ./my-project\n\n# 带密码\ndrift send --target 192.168.0.2:8000 data.zip --password secret\n```\n\n所有命令支持进度条，传输完成后进程退出，资源自动清理。\n\n---\n\n## 安装\n\n```bash\n# Homebrew (macOS / Linux)\nbrew install aeroxy/tap/drift\n\n# 源码编译（需 Rust 1.82+ 和 bun）\ngit clone https://github.com/aeroxy/drift.git\ncd drift\ncargo build --release\n```\n\n**唯一前提**：确保两台机器网络互通（可互相访问对方端口），或有配置端口穿透（如云服务商）。\n\n---\n\n## 🧠 典型场景\n\n1. **同事间快速分享大文件**  \n   A：`drift serve --port 8000`  \n   B：`drift serve --port 9000 --target 192.168.1.5:8000`  \n   浏览器里选中文件 → 点“复制”，无需 U 盘、无需上传第三方。\n\n2. **从远程服务器取日志或模型权重**  \n   `drift pull --target 10.0.0.1:8000 checkpoint.pt`  \n   不用 scp，不用输入 IP 和路径，脚本化非常方便。\n\n3. **AI 编程助手交换工件**  \n   在 agent 流程里用 `drift send` 发出代码/CSV/日志，下一节点用 `drift pull` 取回，全程加密，一条命令即走。\n\n---\n\n## 🔐 安全与协议细节\n\n- **密钥交换**：X25519 椭圆曲线 Diffie‑Hellman，每次连接生成临时密钥对。\n- **密钥派生**：HKDF‑SHA256 生成分别用于发送和接收的对称密钥。\n- **加密**：ChaCha20‑Poly1305 认证加密，使用单调递增 nonce 计数防重放。\n- **密码验证**：HMAC 挑战-应答，密码错误直接终止握手。\n- **文件流**：64KB 分块经加密二进制帧传输，接收方写入 `.part` 临时文件，传输完成重命名，保证原子性。\n\n协议帧简明设计：\n\n| 帧类型 | 内容 | 作用 |\n|--------|------|------|\n| 加密文本帧 | JSON `ControlMessage` | 浏览目录、传输控制、进度反馈 |\n| 加密二进制帧（V1） | `[UUID(16B)][offset(8B)][chunk]` | 单文件数据 |\n| 加密二进制帧（V2） | `[UUID(16B)][file_index(4B)][offset(8B)][chunk]` | 多文件复用同一传输 |\n\n---\n\n## 📌 开源地址\n\nhttps://github.com/aeroxy/drift\n\n欢迎 Star，更欢迎在实际环境中试用、反馈 issue。  \n让加密文件传输像 `curl` 一样随手可得。\n\n---\n\n<img width=\"4135\" height=\"4075\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e5d9f4b3-2d18-48d1-98ec-511f71d85a6e\" />\n\n*附：v0.4.0 完整 Changelog 可查看 [GitHub Releases](https://github.com/aeroxy/drift/releases/tag/v0.4.0)*",
+    "created_at": "2026-05-09T07:28:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9890"
+  },
+  {
+    "id": 9889,
+    "title": "【网站自荐】美联储新闻中文翻译站",
+    "content": "美联储（Federal Reserve）的每一次讲话、每一份声明，都可能影响全球市场和投资走向。但官网内容只有英文，阅读门槛高。\n\n这个网站提供美联储官方新闻的中文版本，涵盖：\n\n- 理事讲话：鲍威尔、沃勒、巴尔等美联储官员对利率、通胀、经济的观点\n- 货币政策：FOMC 会议声明、加息降息信号、经济预测\n- 监管动态：银行监管、金融稳定相关的公告和证词\n\n持续跟踪美联储官网，第一时间获取最新发布的内容并翻译，保持与官网同步更新。\n关注美联储，就是关注美国经济和世界资金的流向。对做投资、研究宏观的人来说，是一个省心的信息源。\n\n[https://fednews.cc](https://fednews.cc)\n\n<img width=\"640\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/762f09a7-ce48-414e-a6bf-52745cf33a1f\" />\n\n<br>\n<br>\n\n<img width=\"640\"  alt=\"Image\" src=\"https://github.com/user-attachments/assets/322c1179-98e5-40fa-b985-64c71965cc28\" />",
+    "created_at": "2026-05-09T06:52:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9889"
+  },
+  {
+    "id": 9888,
+    "title": "【开源自荐】feishu-user-plugin —— 84 工具的飞书 MCP 服务器，支持以用户身份发消息",
+    "content": "项目地址：https://github.com/EthanQC/feishu-user-plugin\n\n## 简介\n\n开源（MIT）的飞书 MCP 服务器，把三层鉴权（cookie + 官方 app token + 用户 OAuth UAT）整合在一个 Node.js 进程里给 Claude Code、Codex、Cursor 等 MCP 客户端使用。84 个工具，覆盖 IM、文档、多维表格、知识库、云空间、日历、任务 v2、OKR。\n\n## 主要差异点\n\n飞书官方开放 API 没有 `send_as_user` 权限点，机器人 token 发出的消息一律标 `sender_type: \"app\"`。本项目基于 cookie + protobuf 协议路径，支持以**用户本人身份**发消息。\n\n## 技术亮点\n\n- v1.3.9 起以用户身份发图片（cookie 通道）\n- 机器级 SSOT 实时事件架构：单进程持 WS owner 锁，全机所有 MCP 进程共享 events.jsonl，每条事件全机恰好一次送达\n- 多账号自动切换：按 chat / 资源归属选 profile，读路径失败自动 retry，写路径不切\n- 已上架 Official MCP Registry：`io.github.EthanQC/feishu-user-plugin`\n\n## 安装\n\n```bash\nnpx feishu-user-plugin setup --app-id <APP_ID> --app-secret <APP_SECRET>\nnpx feishu-user-plugin oauth\n```\n\n中文 README + GitHub Pages 中文 landing：https://ethanqc.github.io/feishu-user-plugin/\n\n兼容 Claude Code、Codex、Cursor、Windsurf、VS Code、OpenClaw 等 MCP 客户端。",
+    "created_at": "2026-05-09T06:45:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9888"
+  },
+  {
     "id": 9887,
     "title": "【工具推荐】cmux —— 为 AI 编程代理而生的 macOS 终端",
     "content": "如果你同时运行多个 AI 编程代理（如 Claude Code、Codex），并且厌倦了千篇一律的“等待输入”通知，那么 cmux 值得一试。\n\ncmux 基于 Ghostty 构建，原生 macOS 应用，启动快、内存低。它的侧边栏垂直标签页能清晰显示每个工作区的 git 分支、PR 状态、工作目录、监听端口和最新通知文本。当代理需要你时，窗格会显示蓝色光环，标签页高亮，让你在多个分割窗格和标签页中一眼定位。\n\n内置浏览器可以在终端旁分割出浏览器窗格，支持无障碍抓取、点击、填表和 JS 执行，代理可以直接与你的开发服务器交互。\n\n多任务方面，支持水平和垂直分割窗格，CLI 和 socket API 可编程控制工作区、标签页、按键和浏览器操作。cmux claude-teams 一条命令即可运行 Claude Code 的队友模式，所有代理以原生分割形式呈现，无需 tmux。\n\n一句话总结：cmux 提供终端、浏览器、通知、工作区等可组合的原语，让你以自己想要的方式与 AI 代理协作，而不是被工具锁死工作流。\n\n适合人群：同时运行多个 AI 代理的开发者，尤其是喜欢终端和原生 macOS 性能的用户。\n\n[github url](https://github.com/manaflow-ai/cmux)\n\n<img width=\"3840\" height=\"2224\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/758e0457-696a-41cd-9027-aa9edb2e57e1\" />",
@@ -778,37 +810,5 @@
     "created_at": "2026-04-28T04:05:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9788"
-  },
-  {
-    "id": 9786,
-    "title": "【开源自荐】墨探：把互联网每一篇好文章，变成 AI 与知识库通用的纯净 Markdown",
-    "content": "> \"让阅读止于理解，让知识始于结构化 Markdown。\"\n\n当下，AI 辅助学习、RAG 知识库、个人知识管理已经成为刚需。**结构化、干净简洁的 Markdown，是大模型理解内容、检索知识、拆解长文的最优格式**。杂乱网页文本会浪费大量 Token、干扰 AI 解析逻辑，而标准化 Markdown，才是高质量私有知识库的底层基石。\n\n墨探的诞生，就是为了解决这个长期痛点：**一键抓取全网正文，剥离冗余垃圾内容，输出纯净、标准、可直接入库的结构化 Markdown**。\n\n## 墨探：专为知识收纳而生的开源转换工具\n[墨探（Omni-Article-Markdown）](https://yuzhi.tech/amarkdown)，一款轻量化开源工具，核心目标简单且纯粹：**适配全网主流平台，精准提取文章正文，完成高质量 HTML 转 Markdown 转换**。\n\n项目开源地址：\nhttps://github.com/caol64/omni-article-markdown\n\n### 极简上手，开箱即用\n无需复杂配置，一行命令即可完成文章抓取与格式转换，零基础也能快速使用：\n\n```bash\npip install omni-article-markdown\n\n# 抓取任意网页文章，自动生成纯净 Markdown 并本地保存\nmdcli \"https://juejin.cn/post/xxx\" -s\n```\n复制链接、执行命令，一篇排版规整、无广告、无冗余的 Markdown 文件，自动保存至本地，可直接导入 Obsidian、Notion、语雀等所有笔记工具。\n\n## 三段式流水线架构：兼顾兼容性与转换精度\n墨探采用模块化流水线设计，分层解耦、职责清晰，兼顾轻量性能与复杂场景适配：\n\n```\nURL 链接 → Reader 网页抓取 → Extractor 正文提取 → Parser 格式转译\n```\n\n### Reader 智能抓取：适配全类型网页\n针对不同网站的渲染逻辑，做了分层适配，平衡速度与兼容性：\n- 静态网页：轻量请求快速抓取，低消耗、高效率；\n- SPA 动态页面（飞书文档、各类自研文档平台）：自动启用浏览器渲染引擎，模拟真实访问行为；\n- 高反爬平台（知乎、百家号等）：内置隐身访问策略，绕过基础限制，稳定获取完整内容。\n\n同时框架采用插件化自动发现机制，新增站点适配无需修改核心代码，拓展灵活度拉满。\n\n### Extractor 精准提纯：只保留核心正文\n网页中充斥导航、侧边栏、推荐广告、评论区等无效内容，Extractor 正是内容提纯的核心。\n\n目前已深度适配 **40+ 主流内容平台**，覆盖日常阅读全场景：\n| 海外技术社区 | 国内内容平台 | 企业&开发者文档 |\n| :--- | :--- | :--- |\n| Medium、Google 开发者博客 | 微信公众号、掘金、知乎 | 飞书文档、语雀 |\n| Anthropic、AI 行业专栏 | CSDN、博客园、少数派 | Cloudflare、JetBrains 官方文档 |\n\n每个平台独立定制解析规则，精准锁定正文容器，自动清理无效标签、重复标题、悬浮组件，从繁杂的网页代码中，只留存有价值的核心内容。小众站点也可通过极简代码快速适配，扩展性极强。\n\n### Parser 精细转译：还原原生排版结构\n区别于简单粗暴的标签替换，墨探的 Markdown 解析引擎，基于DOM树状态遍历解析，最大程度还原原文排版逻辑：\n- 智能识别 LaTeX 公式标签，自动转换为标准可渲染的多行公式格式；\n- 嵌入代码、Gist 资源自动拉取原始内容，保证代码完整性；\n- 自动识别代码块编程语言，保留语法标识，适配技术文档收纳；\n- 表格、有序/无序列表、引用、加粗等元素标准化转换；\n- 批量修正图片相对路径，自动补全绝对链接，避免图片失效；\n- 后置格式统一修复，规避特殊符号、嵌套标签导致的排版错乱。\n\n整套解析逻辑，兼顾美观与实用性，转换后的内容，完全满足阅读、归档、AI 解析三重需求。\n\n## 写在最后\n互联网从不缺少优质内容，但碎片化、私有化、杂乱化的格式，正在浪费大量有价值的知识。\n\n墨探的核心初衷，不止是简单的格式转换，更是**让知识自由流动**：\n\n打破平台壁垒、统一内容格式、沉淀个人资产，让每一篇你认真阅读过的好文，都能有序存入知识库，服务长期学习、思考与创作。\n\n**让收纳不再费力，让知识可以复用，让你的第二大脑，真正装满高质量内容。**\n\n\n\n",
-    "created_at": "2026-04-28T01:23:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9786"
-  },
-  {
-    "id": 9785,
-    "title": "【开源自荐】🦀Rust 八股文 -- 更适合中国人的 Rust 教程",
-    "content": "# Rust 八股文 -- 更适合中国人的 Rust 教程\n\n本教程是根据[官方 Rust 教程](https://doc.rust-lang.org/stable/book/index.html) 、视频资料和相关书籍 **整理** 而成，章节结构顺序基本参照官方教程，但融入了合理的调整和补充,以减轻学习难度。某些章节也加入了知识点的补充和个人理解。你可以独立阅读此教程，也可以配合官方教程使用。\n\n我的目标是让这个教程成为一个**更符合中国人学习习惯的 Rust 入门资源**，降低学习难度，提供更清晰的概念解释和逻辑顺序,也希望成为 Rust 学习者的枕边书,遇到概念上的问题随时查找.\n\n**此教程目前仍在持续更新、整理中...**\n\n目前对最后高级的几节整理的比较满意,知识点没有遗漏,主要是逻辑顺序整理的比较好\n\n[**在线阅读**](https://rust8.cn/)\n[**仓库地址**](https://github.com/georgetime1970/rust8.cn)\n\n## 学习前置条件\n\n本教程不要求你有 `C/C++` 等系统级语言基础，也不要求你深入理解内存堆栈。但完全零基础学习的难度会更高，某些知识点需要基础计算机科学知识作为前置知识。\n\n## 为什么要整理这个教程\n\n我本身喜欢做笔记,同时在学习的过程中发现了一些对初学者不友好的问题,本质原因是目前国内 Rust 的商业动力不够强,所以人们的动力也就不够强,但有些事情总需要有人去做.\n\n现有的 Rust 教程资源虽然众多，但存在几个问题：\n\n- 中文资源较少，多数是翻译作品，表达方式不符合中文学习逻辑\n- 大多教程默认读者有系统开发基础，缺乏必要的前置知识说明\n- Rust 学习曲线陡峭，现有教程在重难点讲解上不够充分,尤其是最后几章的高级部分,很不友好\n\n本教程采用**中国教科书式**的讲解方式：**先阐明概念本质，再举例说明**，同时根据知识点的逻辑关系重新梳理顺序，希望能降低学习难度。\n\n## 本教程的主要优势\n\n- **更易学**：遵循\"概念→原理→示例\"的教学逻辑，符合中文学习习惯\n- **更完整**：覆盖 Rust 核心知识点，对难点章节进行补充和详细讲解\n- **更清晰**：直接剖析概念本质，加入辅助理解和总结，帮助理解设计理念\n- **更逻辑**：按照知识逻辑重新梳理顺序，帮助理解和记忆\n\n## 学习方式\n\n本教程采用现代化的 [VitePress](https://vitepress.dev/zh/) 构建,页面**左边**是总的章节目录，**右边**是章节目录大纲。手机和 PC 端都做了适配,你可以点击目录中的章节标题来快速查看对应的内容。每个章节都包含了概念解释、原理分析和示例代码，帮助你更好地理解 Rust 的设计理念和使用方法。\n\n## 建议和修改\n\n个人难免有理解偏差和表达不清的地方，希望宽容.如果你发现了任何问题或者有更好的建议，欢迎提交 [issue](https://github.com/georgetime1970/rust8.cn/issues) 来改进这个教程。\n\n## 支持与贡献\n\n如果你觉得这个教程对你有帮助，欢迎给它一个 star ⭐，或者分享给更多的 Rust 学习者。如果你想参与改进这个教程，也欢迎提交 [pull request](https://github.com/georgetime1970/rust8.cn/pulls) 来贡献你的想法和修改,我比任何人都需要你。",
-    "created_at": "2026-04-27T17:27:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9785"
-  },
-  {
-    "id": 9784,
-    "title": "【开源自荐】🦀Rust 八股文 -- 更适合中国人的 Rust 教程",
-    "content": "# Rust 八股文 -- 更适合中国人的 Rust 教程\n\n本教程是根据[官方 Rust 教程](https://doc.rust-lang.org/stable/book/index.html) 、视频资料和相关书籍 **整理** 而成，章节结构顺序基本参照官方教程，但融入了合理的调整和补充,以减轻学习难度。某些章节也加入了知识点的补充和个人理解。你可以独立阅读此教程，也可以配合官方教程使用。\n\n我的目标是让这个教程成为一个**更符合中国人学习习惯的 Rust 入门资源**，降低学习难度，提供更清晰的概念解释和逻辑顺序,也希望成为 Rust 学习者的枕边书,遇到概念上的问题随时查找.\n\n**此教程目前仍在持续更新、整理中...**\n\n目前对最后高级的几节整理的比较满意,知识点没有遗漏,主要是逻辑顺序整理的比较好\n\n[**在线阅读**](https://rust8.cn/)\n[**仓库地址**](https://github.com/georgetime1970/rust8.cn)\n\n## 学习前置条件\n\n本教程不要求你有 `C/C++` 等系统级语言基础，也不要求你深入理解内存堆栈。但完全零基础学习的难度会更高，某些知识点需要基础计算机科学知识作为前置知识。\n\n## 为什么要整理这个教程\n\n我本身喜欢做笔记,同时在学习的过程中发现了一些对初学者不友好的问题,本质原因是目前国内 Rust 的商业动力不够强,所以人们的动力也就不够强,但有些事情总需要有人去做.\n\n现有的 Rust 教程资源虽然众多，但存在几个问题：\n\n- 中文资源较少，多数是翻译作品，表达方式不符合中文学习逻辑\n- 大多教程默认读者有系统开发基础，缺乏必要的前置知识说明\n- Rust 学习曲线陡峭，现有教程在重难点讲解上不够充分,尤其是最后几章的高级部分,很不友好\n\n本教程采用**中国教科书式**的讲解方式：**先阐明概念本质，再举例说明**，同时根据知识点的逻辑关系重新梳理顺序，希望能降低学习难度。\n\n## 本教程的主要优势\n\n- **更易学**：遵循\"概念→原理→示例\"的教学逻辑，符合中文学习习惯\n- **更完整**：覆盖 Rust 核心知识点，对难点章节进行补充和详细讲解\n- **更清晰**：直接剖析概念本质，加入辅助理解和总结，帮助理解设计理念\n- **更逻辑**：按照知识逻辑重新梳理顺序，帮助理解和记忆\n\n## 学习方式\n\n本教程采用现代化的 [VitePress](https://vitepress.dev/zh/) 构建,页面**左边**是总的章节目录，**右边**是章节目录大纲。手机和 PC 端都做了适配,你可以点击目录中的章节标题来快速查看对应的内容。每个章节都包含了概念解释、原理分析和示例代码，帮助你更好地理解 Rust 的设计理念和使用方法。\n\n## 建议和修改\n\n个人难免有理解偏差和表达不清的地方，希望宽容.如果你发现了任何问题或者有更好的建议，欢迎提交 [issue](https://github.com/georgetime1970/rust8.cn/issues) 来改进这个教程。\n\n## 支持与贡献\n\n如果你觉得这个教程对你有帮助，欢迎给它一个 star ⭐，或者分享给更多的 Rust 学习者。如果你想参与改进这个教程，也欢迎提交 [pull request](https://github.com/georgetime1970/rust8.cn/pulls) 来贡献你的想法和修改,我比任何人都需要你。",
-    "created_at": "2026-04-27T17:15:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9784"
-  },
-  {
-    "id": 9783,
-    "title": "【开源自荐】Cebian — 浏览器侧边栏 AI Agent 助手",
-    "content": "- 项目地址：https://github.com/maotoumao/cebian\n- 介绍站点：https://cebian.catcat.work\n\n一个住在浏览器侧边栏的 AI 助手。无需注册账号，填入自己的 API Key 即可使用，对话、提示词、附件全部留在本地浏览器，不经过任何中间服务器。\n\n支持多模型（OpenAI、Anthropic、Google 及任意兼容接口）、页面感知（读取当前页面内容、选中元素、截图、上传文件）、Slash 提示词模板、可复用的 Skills 工作流、MCP 外部工具接入，以及移动端设备模拟——无需切换标签页，直接在侧边栏完成所有 AI 交互。\n\n技术栈：WXT + React + TypeScript，支持 Chrome 与 Firefox，AGPL-3.0 开源\n\n### 背景\n做这个小项目大概的出发点是一系列在用浏览器的时候可以偷懒的场景：\n\n- 工作/生活中会涉及到一些英文场景（比如回复邮件，PR review 等等），之前需要先让 AI 翻译/润色，然后再填到输入框，如果直接润色好自己填进去- 会省点事\n- 对于网页总结/翻译 等这种需求，不想开其他软件的会员，想充分利用从各种渠道蹭到的 token plan\n- 希望 AI 能理解一些重复性的网页操作，然后能以 skill/memory 的形式学会，然后帮我自动操作浏览器\n- 打开 n 个 tab ，然后忘记自己刚才打开了哪个，只好一个一个点..\n\n### 示例\n<img width=\"2541\" height=\"1285\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9fef0e3e-1eb8-4b9d-9f3b-48c3dc232491\" />",
-    "created_at": "2026-04-27T16:47:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9783"
   }
 ]
