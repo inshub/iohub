@@ -1,5 +1,13 @@
 [
   {
+    "id": 9894,
+    "title": "[自荐工具]“码上云工”微信小程序 - 互联网垂直接单平台",
+    "content": "无论是开发者寻找机会，还是企业匹配技术力量，码上云工通过“任务-人才-交易-资产”四大核心闭环，构建可信赖的互联网技术协作生态，让每一份技能都被认可，让每一个需求都被高效实现。我们致力于打造最专业的程序员自由职业者平台，连接全球优秀开发者与高质量项目。\n\n1. 汇聚海量真实项目需求，涵盖开发、设计、测试、运维等多领域。 任务标价透明、要求清晰，助力技术人才快速匹配适合项目，灵活增收。\n2. 严格筛选认证的优质开发者库，覆盖全栈、UI/UX、产品、测试等技术角色。 支持企业按需精准雇佣，快速组建远程或线下团队，降低招聘与管理成本。\n3. 全程采用平台资金托管模式，按阶段验收付款，保障双方权益。 合同线上签署、进度可追踪，确保项目交付安全无忧。\n4. 为开发者提供已完结项目的源码寄售渠道，实现技术成果二次变现。 需求方可直接选购成熟源码，加速项目启动，降低开发成本。\n5. 企业级 AI API 聚合平台 稳定、高效、全面的AI接口服务，助力您的业务智能化飞跃 限时特惠：1.0元 ≈ 1美元额度 ⏱️ 99.9% 服务可用率 🌍 538天+ 稳定运行 🧠 300+ 支持模型 支持全球领先AI模型 OpenAI Gemini Claude\n6. 码上云工是一个连接企业与互联网技术人才的在线撮合与服务平台，平台已入驻超过1000名经过严格资质认证的技术专家，涵盖程序开发、UI设计、产品经理、软件测试、运维、游戏开发等多个领域。\n\n<img width=\"1621\" height=\"934\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/488774f3-25b4-471c-91f1-5407463b57a1\" />",
+    "created_at": "2026-05-09T16:20:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9894"
+  },
+  {
     "id": 9893,
     "title": "【工具自荐】CDP Bridge MCP - 一个连接 MCP 客户端与真实浏览器会话的桥接服务",
     "content": "<p align=\"center\">\nCDP Bridge MCP 是一个连接 MCP 客户端与真实浏览器会话的桥接服务。它通过配套的 Chromium 扩展接入浏览器页面，让大模型客户端可以读取标签页、扫描页面、执行 JavaScript、截图、导航和读取 Cookie。\n</p>\n\n## 演示视频\n\n| 查询小红书平台 Anthropic 最新动态 | 读取 CSDN 网站作者后台数据分析 |\n| --- | --- |\n| [观看视频](https://www.bilibili.com/video/BV1RDRQBrEY7/?p=2) | [观看视频](https://www.bilibili.com/video/BV1RDRQBrEY7/) |\n\n# 项目介绍\n\nCDP Bridge MCP 适合需要让大模型操作真实浏览器的场景。**和无状态 HTTP 抓取不同，它连接的是你已经登录、已经打开的浏览器页面，因此可以复用真实浏览器里的登录态、Cookie、页面状态和前端渲染结果。**\n\n代码仓库：<https://github.com/Unagi-cq/cdp-bridge-mcp>\n\n> 本项目以Python语言编写并发布。 \n\n## 为什么用 CDP Bridge MCP ?\n\n**为什么用 CDP Bridge MCP 而不是 playwright MCP 或者 chrome devtools MCP ？**\n\nPlaywright MCP 和 Chrome DevTools MCP 都很强，但它们更偏向“自动化测试 / 调试协议 / 新开浏览器实例”的工作流。CDP Bridge MCP 的目标不同：它更关注让 LLM 直接接管你正在使用的真实浏览器会话。\n\n- **复用真实登录态**：CDP Bridge MCP 连接的是你已经打开、已经登录的浏览器标签页，可以直接使用现有 Cookie、登录状态、页面上下文和前端渲染结果。很多需要账号态的网站，不需要重新登录或额外搬运 Cookie。\n- **更适合日常浏览器协作**：Playwright 更适合可重复、可脚本化的自动化流程，而 CDP Bridge MCP 更适合 LLM 在用户当前页面上做读取、分析、点击前判断、执行脚本、截图等交互式任务。\n- **页面内容更适合 LLM 消费**：`browser_scan` 会对页面 HTML 做简化，过滤脚本、样式和不可见元素，尽量保留对模型有用的正文、控件和结构信息，减少 token 浪费。\n- **启动链路轻量**：服务端发布到 PyPI 后可直接 `uvx cdp-bridge` 启动，浏览器端加载扩展即可连接，不需要编写 Playwright 脚本，也不需要为每个浏览器实例单独配置调试参数。\n\n如果你的目标是“让模型控制一个专门启动的自动化浏览器”，Playwright MCP 很合适；如果你的目标是“调试 Chrome 或精细操作 DevTools 协议”，Chrome DevTools MCP 很合适；如果你的目标是“让模型读取和操作我当前正在使用的真实浏览器页面”，CDP Bridge MCP 更贴近这个场景。\n\n## 可用工具\n\nMCP Server 当前暴露以下工具：\n\n| 工具名 | 说明 |\n| --- | --- |\n| `browser_get_tabs` | 获取已连接标签页列表 |\n| `browser_scan` | 扫描当前页面内容，可返回简化 HTML 或纯文本 |\n| `browser_execute_js` | 在当前标签页执行 JavaScript |\n| `browser_switch_tab` | 切换活动标签页 |\n| `browser_navigate` | 跳转当前标签页到指定 URL |\n| `browser_screenshot` | 获取页面截图 |\n| `browser_cookies` | 读取 Cookie |\n| `browser_get_sop` | 读取内置 SOP，支持 `tmwebdriver` 和 `vue3_component`。模型遇到 CDP、iframe、截图、Cookie、下载、autofill、文件上传或 Vue3 自定义组件等细节时应按需加载；同一任务中已加载过相关 SOP 时无需重复加载 |\n",
@@ -802,13 +810,5 @@
     "created_at": "2026-04-28T07:53:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9792"
-  },
-  {
-    "id": 9791,
-    "title": "【开源自荐】 企业级软件分发管理平台，支持AI自动审核应用来源",
-    "content": "> 一句话简介：一个让企业员工安全下载软件、让IT运维省心管理的开源平台。\n\n### 痛点\n\n企业在软件管理上常有三大难题：员工从网上下载软件容易中病毒、内部软件版本混乱难以追溯、安全漏洞无法及时通知。Software Guard 正是为解决这些问题而生。\n\n### 项目简介\n\n**Software Guard** 是一个基于 **FastAPI + Vue 3** 的开源企业内部软件分发管理平台。它相当于企业的\"官方应用商店\"——所有软件统一上架、统一管理、统一分发，从源头上杜绝非官方下载带来的安全风险。\n\n### 核心亮点\n\n- **🤖 AI 智能审核**：集成大语言模型，员工申请软件时自动评估风险并推荐审核决策，减少 70% 人工审核工作量\n- **🔒 安全闭环**：JWT 认证 + RBAC 权限控制 + 下载前漏洞检查 + 完整审计日志\n- **📊 全流程管理**：从软件上架、版本管理、下载统计到漏洞追踪通知，一站式搞定\n- **🐳 一键部署**：Docker Compose 一条命令启动全部服务，开箱即用\n- **📝 MIT 开源**：自由使用，社区友好\n\n\n### 开源地址\n\n🔗 **GitHub**：https://github.com/linfree/software_guard\n\n如果你所在的公司还在为内部软件分发头疼，不妨看看这个项目，也欢迎 Star 和贡献代码！\n",
-    "created_at": "2026-04-28T07:33:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9791"
   }
 ]
