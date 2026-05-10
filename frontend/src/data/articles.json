@@ -1,19 +1,19 @@
 [
   {
+    "id": 9901,
+    "title": "mirofish.fish",
+    "content": "Upload your material and describe the question you want to predict. mirofish ai extracts roles, relationships, motivations, and key variables from the text, builds a simulation with millions of agents involved, and uses a god's-eye view to observe how different paths move toward a dynamic local optimum.https://mirofish.fish",
+    "created_at": "2026-05-10T11:29:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9901"
+  },
+  {
     "id": 9900,
     "title": "【开源自荐】终端里的 Gemini 联网搜索：gsearch-cli",
     "content": "<img width=\"1006\" height=\"808\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4eaf76f2-cc37-4354-b4c4-1b75952f53be\" />\n\n> 一条命令完成 Google 搜索，结果包含了引用来源和终端 Markdown 渲染，与 Google 官方 Gemini CLI 共享 OAuth 登录，零额外配置。\n\n**项目地址**：https://github.com/aeroxy/gsearch-cli  \n\n**一句话**：  \n> 给命令行爱好者和 LLM Agent 准备的 Google 搜索 CLI —— 基于 Gemini API 的联网搜索，自带 OAuth 登录、自动刷新请求令牌、支持代理，搜索结果以渲染过的 Markdown 格式直接呈现在终端里。\n\n---\n\n## ✨ 亮点\n\n### 1. 零配置复用 Gemini CLI 的登录态  \n如果你已经安装过官方的 `gemini-cli`，那么 `gsearch` 会自动读取 `~/.gemini/oauth_creds.json`，**无需二次授权**。  \n即使没有安装过，它也内置了本地 OAuth 环回服务器，一条 `gsearch --login` 就能完成 Google 账号登录。\n\n### 2. 终端原生 Markdown 渲染  \n搜索结果中的标题、粗体、列表、代码块不再是裸露的 Markdown 源码，而是通过 `termimad` 渲染成带颜色、可读性极佳的终端输出。  \n- 管道/重定向：输出纯净 Markdown（如 `gsearch xxx > out.md`）\n\n### 3. 代理友好 + 自动刷新 Token  \n- 自动检测 `HTTPS_PROXY` 环境变量，支持企业级证书（Zscaler 等）  \n- Access Token 后台自动刷新，一次登录长期使用\n\n### 4. 与 Gemini CLI 流量特征一致  \n从 Google 服务端看，请求的 User-Agent、OAuth Client、API 端点与官方客户端完全相同，不存在被识别为第三方爬虫的风险。\n\n---\n\n## 📦 安装\n\n```bash\n# macOS (Homebrew)\nbrew install aeroxy/tap/gsearch\n\n# 或者通过 Cargo\ncargo install gsearch-cli\n```\n\n---\n\n## 💻 使用示例\n\n```bash\n# 直接搜索（不需要引号）\ngsearch grok got money stolen\n\n# 强制重新登录\ngsearch --login\n\n# 带代理运行\nexport HTTPS_PROXY=http://127.0.0.1:7890\ngsearch rust async runtime comparison\n```\n\n输出效果：  \n- 搜索结果会显示 **引用来源链接**（Gemini 的 grounding 数据）  \n- 正文以 Markdown 风格渲染，关键信息一目了然\n\n---\n\n## 🤖 Agent 友好\n\n项目内还附带了一个 Claude Code skill（`skill/gsearch/SKILL.md`），教会 Agent 如何使用该二进制进行搜索、处理代理、触发 OAuth 登录 —— 让你的 AI 编程助手低成本获取实时网络信息。\n\n---\n\n## 📜 开源协议\n\nMIT\n\n---\n\n> 如果你经常在终端里工作，又需要快速获取带引用的 Google 搜索结果，`gsearch-cli` 比打开浏览器再复制粘贴要快得多。尤其适合集成到 Shell 脚本或 AI Agent 的工作流中。",
     "created_at": "2026-05-10T08:17:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9900"
-  },
-  {
-    "id": 9899,
-    "title": "推荐：AI副业文案工具",
-    "content": "阮老师好，推荐一个实用工具。\n\n副业内容引擎：输入你要卖的东西，AI自动帮你写好闲鱼文案、小红书笔记、朋友圈话术、公众号推文。底层用DeepSeek，免费。\n\nhttp://bore.pub:48765\n\n适合科技爱好者周刊的「工具」板块。解决实实在在的副业文案需求。",
-    "created_at": "2026-05-10T08:08:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9899"
   },
   {
     "id": 9898,
