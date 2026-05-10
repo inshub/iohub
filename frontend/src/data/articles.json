@@ -1,5 +1,29 @@
 [
   {
+    "id": 9900,
+    "title": "【开源自荐】终端里的 Gemini 联网搜索：gsearch-cli",
+    "content": "<img width=\"1006\" height=\"808\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4eaf76f2-cc37-4354-b4c4-1b75952f53be\" />\n\n> 一条命令完成 Google 搜索，结果包含了引用来源和终端 Markdown 渲染，与 Google 官方 Gemini CLI 共享 OAuth 登录，零额外配置。\n\n**项目地址**：https://github.com/aeroxy/gsearch-cli  \n\n**一句话**：  \n> 给命令行爱好者和 LLM Agent 准备的 Google 搜索 CLI —— 基于 Gemini API 的联网搜索，自带 OAuth 登录、自动刷新请求令牌、支持代理，搜索结果以渲染过的 Markdown 格式直接呈现在终端里。\n\n---\n\n## ✨ 亮点\n\n### 1. 零配置复用 Gemini CLI 的登录态  \n如果你已经安装过官方的 `gemini-cli`，那么 `gsearch` 会自动读取 `~/.gemini/oauth_creds.json`，**无需二次授权**。  \n即使没有安装过，它也内置了本地 OAuth 环回服务器，一条 `gsearch --login` 就能完成 Google 账号登录。\n\n### 2. 终端原生 Markdown 渲染  \n搜索结果中的标题、粗体、列表、代码块不再是裸露的 Markdown 源码，而是通过 `termimad` 渲染成带颜色、可读性极佳的终端输出。  \n- 管道/重定向：输出纯净 Markdown（如 `gsearch xxx > out.md`）\n\n### 3. 代理友好 + 自动刷新 Token  \n- 自动检测 `HTTPS_PROXY` 环境变量，支持企业级证书（Zscaler 等）  \n- Access Token 后台自动刷新，一次登录长期使用\n\n### 4. 与 Gemini CLI 流量特征一致  \n从 Google 服务端看，请求的 User-Agent、OAuth Client、API 端点与官方客户端完全相同，不存在被识别为第三方爬虫的风险。\n\n---\n\n## 📦 安装\n\n```bash\n# macOS (Homebrew)\nbrew install aeroxy/tap/gsearch\n\n# 或者通过 Cargo\ncargo install gsearch-cli\n```\n\n---\n\n## 💻 使用示例\n\n```bash\n# 直接搜索（不需要引号）\ngsearch grok got money stolen\n\n# 强制重新登录\ngsearch --login\n\n# 带代理运行\nexport HTTPS_PROXY=http://127.0.0.1:7890\ngsearch rust async runtime comparison\n```\n\n输出效果：  \n- 搜索结果会显示 **引用来源链接**（Gemini 的 grounding 数据）  \n- 正文以 Markdown 风格渲染，关键信息一目了然\n\n---\n\n## 🤖 Agent 友好\n\n项目内还附带了一个 Claude Code skill（`skill/gsearch/SKILL.md`），教会 Agent 如何使用该二进制进行搜索、处理代理、触发 OAuth 登录 —— 让你的 AI 编程助手低成本获取实时网络信息。\n\n---\n\n## 📜 开源协议\n\nMIT\n\n---\n\n> 如果你经常在终端里工作，又需要快速获取带引用的 Google 搜索结果，`gsearch-cli` 比打开浏览器再复制粘贴要快得多。尤其适合集成到 Shell 脚本或 AI Agent 的工作流中。",
+    "created_at": "2026-05-10T08:17:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9900"
+  },
+  {
+    "id": 9899,
+    "title": "推荐：AI副业文案工具",
+    "content": "阮老师好，推荐一个实用工具。\n\n副业内容引擎：输入你要卖的东西，AI自动帮你写好闲鱼文案、小红书笔记、朋友圈话术、公众号推文。底层用DeepSeek，免费。\n\nhttp://bore.pub:48765\n\n适合科技爱好者周刊的「工具」板块。解决实实在在的副业文案需求。",
+    "created_at": "2026-05-10T08:08:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9899"
+  },
+  {
+    "id": 9898,
+    "title": "【开源自荐】VuReact - 写 Vue，生成可维护的 React",
+    "content": "*“如果你被 React Hooks 的依赖数组折磨过，不妨试试用你熟悉的 Vue 3 语法写 React，剩下的交给 VuReact。”*\n\n## 项目地址\n\n- GitHub: <https://github.com/vureact-js/core>\n- 官网: <https://vureact.top>\n- 在线演示：[客户支持后台](https://codesandbox.io/p/github/vureact-js/example-customer-support-hub/master?import=true) | [CRM 后台](https://codesandbox.io/p/github/vureact-js/example-crm-admin-backend/master) | [30秒演示视频](https://github.com/user-attachments/assets/ae3efac0-9576-42ea-8bbd-8dd5509947a8)\n- License: MIT\n\n## 介绍\n\n你可能遇到过：个人/团队习惯了 Vue 3 的 `<script setup>` 和 Composition API，但新项目或合作方要求必须用 React。手写迁移不仅要改语法，还要重建 hooks 依赖管理、响应式拆解、Props 映射等心智模型，成本高风险大。\n\nVuReact 是一个开源的 **Vue 转 React** 编译工具。它在编译阶段将 Vue 3 的 SFC、脚本和样式文件**完整编译为纯 React 18+ 代码**（不是运行时桥接），覆盖 `<script setup>` 核心全特性，针对性解决以下痛点：\n\n- **渐进迁移**：可分模块逐步替换，避免一次性重写的风险。\n- **语义保留**：`ref` / `watch` / `slot` 映射为 React 的 `useVRef` / `useWatch` / `props` 等，依赖自动分析。\n- **TypeScript 和样式完整支持**：保留并适配改写类型接口、`scoped` 样式、Less/Sass 等完整保留，无需额外处理。\n\n## 它能做什么：一个 SFC 编译示例\n\n输入（Vue 3 SFC）：\n\n```html\n<template>\n  <section class=\"counter-card\">\n    <h3>{{ props.title || title }}</h3>\n    <button @click=\"increment\">Count: {{ count }}</button>\n  </section>\n</template>\n\n<script setup lang=\"ts\">\n  import { computed, ref } from 'vue';\n\n  const props = defineProps<{ title?: string }>();\n  const emit = defineEmits<{\n    (e: 'update', value: number): void;\n  }>();\n\n  const count = ref(0);\n  const title = computed(() => `Counter x${count.value}`);\n\n  const increment = () => {\n    count.value += 1;\n    emit('update', count.value);\n  };\n</script>\n\n<style lang=\"less\" scoped>\n  .counter-card {\n    padding: 12px;\n    border: 1px solid #ddd;\n    border-radius: 8px;\n  }\n</style>\n```\n\n输出（React TSX）：\n\n```tsx\nimport { memo, useCallback } from 'react';\nimport { useComputed, useVRef } from '@vureact/runtime-core';\nimport './Counter-a1b2c3.css';\n\ntype CounterProps = {\n  title?: string;\n  onUpdate?: (value: number) => void;\n};\n\nconst Counter = memo((props: CounterProps) => {\n  const count = useVRef(0);\n  const title = useComputed(() => `Counter x${count.value}`);\n\n  const increment = useCallback(() => {\n    count.value += 1;\n    props.onUpdate?.(count.value);\n  }, [count.value, props.onUpdate]);\n\n  return (\n    <section className=\"counter-card\" data-css-a1b2c3>\n      <h3 data-css-a1b2c3>{props.title || title.value}</h3>\n      <button onClick={increment} data-css-a1b2c3>\n        Count: {count.value}\n      </button>\n    </section>\n  );\n});\n\nexport default Counter;\n```\n\n```css\n/* Counter-a1b2c3.css */\n.counter-card[data-css-a1b2c3] {\n  padding: 12px;\n  border: 1px solid #ddd;\n  border-radius: 8px;\n}\n```\n\n## 核心亮点\n\n- **语义级编译，不是字符替换**：分析模板、`<script setup>`、组合式 API、TS 类型等完整语义，再生成符合 React 习惯的代码。\n- **约定优先，可控可维护**：不追求\"什么都能转\"，基于明确的编译约定，确保转换结果可预测、可分析。\n- **渐进迁移**：从单文件到整个项目逐步推进，不需要一次性重写。\n- **完整特性适配**：响应式 API、生命周期、内置组件、路由等 Vue 核心特性完整适配到 React；`scoped`/`module` 样式和 Less/Sass 均在编译阶段处理，零运行时开销。\n- **自动依赖分析**：顶层函数自动注入 `useCallback`，变量声明自动注入 `useMemo`，hooks 依赖自动追踪。\n- **双模式 CLI**：`vureact build`（极速增量编译）+ `vureact watch`（文件监听），开发体验接近原生。\n\n## 与其他方案的区别\n\n| 其他方案 | VuReact |\n|----------|---------|\n| 运行时套壳（双框架，性能差） | 编译时，产物纯 React |\n| 半成品转换（复杂语法报错） | 完整覆盖 `scoped`、插槽、响应式、`v-model` 等 |\n| 依赖人工重写，成本高 | 可渐进迁移，逐模块编译 |\n\n## 快速尝试\n\n👉 **完整教程请访问：[VuReact - 快速开始](https://vureact.top/guide/quick-start.html)**\n\n```bash\nnpm i -D @vureact/compiler-core\nnpx vureact build ./src/component.vue\n```\n\n**项目现状**：已发布 1.8.0 版本，提供完整文档、在线示例和 CLI 工具（build/watch），支持插槽、scoped 样式、TypeScript 等核心特性。\n\n欢迎试用、反馈、贡献。\n",
+    "created_at": "2026-05-10T06:45:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9898"
+  },
+  {
     "id": 9897,
     "title": "【教程自荐】更友好更适合前端的 Python 教程",
     "content": "https://python-docs.yysuni.com/\nhttps://github.com/yysuni/frontend-python-docs\n\n最近在学习 Python，但是发现官方文档是面对新人，且文档形式过于陈旧。\n\n所以，我就利用 AI，边学，边记录了扼要的知识点，与前端需要注意的事项。文章也一一对照了官方文档，如有疑问，可以随时返回查看官方教程。\n\n<img width=\"2396\" height=\"1659\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c75e1798-1dba-479c-b98c-f3f8ef084fe9\" />\n\n> 后续我还会继续补充，会当作我学习 Python 的记录本。",
@@ -786,29 +810,5 @@
     "created_at": "2026-04-28T22:35:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9798"
-  },
-  {
-    "id": 9797,
-    "title": "【开源自荐】 一键下载Lovable项目源码 (chrome 插件)",
-    "content": "**插件地址**: https://chromewebstore.google.com/detail/lovable-downloader/cnemhgoighlimfpldmdiblekokblokho?authuser=0&hl=en\n**源码地址**: https://github.com/linkary/lovable-downloader\n**效果演示**: \n![](https://img.alicdn.com/imgextra/i1/O1CN01bPzMcU1XkBt6ZRgzh_!!6000000002961-1-tps-1248-664.gif)",
-    "created_at": "2026-04-28T14:44:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9797"
-  },
-  {
-    "id": 9796,
-    "title": "【开源推荐】Agent Mailer：让 AI Agent 像发邮件一样协同工作",
-    "content": "推荐一个开源项目：Agent Mailer Protocol。\n\n项目地址：https://github.com/stelee410/agent-mailer  \n在线演示：https://amp.linkyun.co\n\n演示站可以直接注册使用，注册后可以体验 Operator Console，查看收件箱、线程、API Key、团队记忆等功能，也可以按接入指南把自己的 Agent 接进来测试。\n\n现在很多人会同时使用多个 AI Agent，比如一个负责拆解需求，一个负责编码，一个负责 Review。但它们之间的协作通常还是靠复制粘贴上下文，或者全部塞进同一个聊天窗口，时间一长就很难追踪任务流转。\n\nAgent Mailer 的想法是：给每个 AI Agent 一个“邮箱地址”和“收件箱”，让 Agent 之间可以像发邮件一样，通过 send / reply / forward / inbox 进行异步协作。\n\n它主要提供：\n\n- Agent 身份注册和邮箱地址，例如 coder@example\n- 线程化消息，方便追踪任务上下文\n- Operator Console，可查看收件箱、线程、API Key 和团队记忆\n- 支持 Claude Code、Cursor、OpenClaw、DreamFactory、Linkyun Infiniti Agent 或自研 Agent 接入\n- 本地可用 SQLite 运行，生产环境可用 PostgreSQL + Docker Compose 部署\n\n适合正在尝试多 Agent 工作流的人：不需要先引入很重的框架，只需要一个轻量的消息 Broker，就可以把 Agent 之间的任务交接变得可见、可追踪、可回放。",
-    "created_at": "2026-04-28T12:31:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9796"
-  },
-  {
-    "id": 9795,
-    "title": "【工具自荐】ai image generator",
-    "content": "工具名称：hairaichanger\n网址链接：https://hairaichanger.com/\n工具页面截图：\n\n<img width=\"1466\" height=\"920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c2f79b95-c918-44e2-930b-0ceaf6675fbe\" />",
-    "created_at": "2026-04-28T09:28:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9795"
   }
 ]
