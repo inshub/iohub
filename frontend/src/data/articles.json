@@ -1,5 +1,13 @@
 [
   {
+    "id": 9904,
+    "title": "【工具自荐】Pkgdiff - 在线免费多平台包版本对比工具，一眼看清两个版本到底改了啥",
+    "content": "### 工具介绍\n\nPkgdiff（<https://pkgdiff.app>）是一个在线的包版本对比工具。你给它一个 Python 或 npm 的包名，再选两个版本号，它就会直接告诉你：这次升级到底改了哪些接口、加了哪些依赖、删了哪些功能，以及——**有没有不兼容的改动**会让你的代码挂掉。\n\n不像很多升级前要去翻 release notes、去 GitHub 看 diff、去 issue 区猜测的工具，Pkgdiff 会读真正发布出去的那个包本身。所以哪怕作者更新日志写得敷衍、根本没写、甚至项目就没开源，它都能给你一份靠谱的差异报告。\n\n最上面还会附一段 AI 写的\"人话版变更说明\"，用通顺的中文/英文告诉你这次升级该不该升、要注意什么。\n\n### 它想解决的问题\n\n- 想升级一个依赖，但不知道会不会踩坑，CHANGELOG 写得太简略甚至漏写\n- 跨好多个版本一次性升级，不想一个个翻 release notes\n- 装的包根本没有公开源码，作者也不维护更新日志，只能凭感觉升级\n- 公司里要审计三方包，想要一份能直接归档、发给老板的版本差异报告\n\n### 核心功能\n\n- **一眼看清接口变化**：哪些函数、哪些方法是新增的，哪些被删了，哪些参数偷偷改了 —— 凡是会让你代码报错的\"不兼容改动\"，都会被红色标记单独拎出来\n- **AI 写的人话版变更说明**：不用再去啃干巴巴的 diff，AI 会用一段话告诉你\"这次主要改了什么、值不值得升、要注意哪些坑\"，而且只基于真实差异生成，不会瞎编\n- **依赖变化一目了然**：新增了哪些依赖、移除了哪些、最低 Python / Node 版本有没有变、license 有没有换，全部并排展示\n- **跨多版本逐步对比**：从 1.0 直接升到 3.0？可以让它把中间每个版本之间的变化分别讲清楚，而不是糊成一团\n- **同时支持 Python 和 npm**：一个工具搞定两个生态，后续会扩展更多\n- **秒出结果**：别人分析过的版本组合，你再查直接秒出，连 AI 摘要都复用，不用等\n- **可导出可分享**：Markdown 一键导出，还能导 PDF，做汇报、写文档、贴 PR 都能直接用\n- **匿名免登录可用**：打开就能用，不需要注册，不需要装任何东西\n\n### 配图\n\n<img width=\"1322\" height=\"974\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7e3bc8d6-c205-48c9-b2ea-609c7a6f83d5\" />\n\n<img width=\"1769\" height=\"1258\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6f71089c-1a79-445d-8c6b-cf361644e30e\" />\n\n<img width=\"1293\" height=\"910\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b00e6e14-083d-4260-8249-7c7facd81f6a\" />\n\n### 适合谁\n\n- **后端 / 前端工程师**：升级 requests、pydantic、fastapi、react、axios 等这种核心依赖前，先看一眼会不会炸\n- **技术负责人 / SRE**：给团队定升级方案，需要一份靠谱的\"风险评估\"，而不是凭印象拍板\n- **安全 / 合规岗**：审计三方依赖，需要可归档、可对比、可导出的版本差异报告\n- **所有想搞清楚\"我装的这个包到底变了什么\"的开发者**\n\n### 地址\n\n- 官网：<https://pkgdiff.app>\n- 打开就能用，匿名额度够用，不用注册",
+    "created_at": "2026-05-11T03:09:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9904"
+  },
+  {
     "id": 9903,
     "title": "【工具自荐】Diablo4LootFilter：按职业和流派查找暗黑破坏神 IV 掉落过滤器代码",
     "content": "阮老师好，推荐一个最近做的小工具：Diablo4LootFilter。\n\n网站地址：https://diablo4lootfilter.com\n\n这是一个面向《暗黑破坏神 IV》玩家的英文工具站，用来查找和比较 Loot Filter（掉落过滤器）预设。玩家可以按职业、流派或刷装目标筛选，查看对应过滤器说明，并复制 import code 或按照导入指南在游戏里配置。\n\n工具截图：\n\n![Diablo4LootFilter homepage](https://diablo4lootfilter.com/og-image.png)\n\n![Diablo4LootFilter finder visual](https://diablo4lootfilter.com/hero-visual.png)\n\n主要功能：\n\n- 按职业 / build / farming goal 查找过滤器预设\n- 展示过滤规则、适用阶段和来源说明\n- 提供 import guide，降低新手配置门槛\n- 不需要注册，免费使用\n- 站点明确标注 fan-made，不使用官方素材，也不声称代码经过游戏内验证\n\n做这个站的原因是，Diablo IV 新版本加入 Loot Filter 后，玩家会搜索现成的配置代码，但很多信息分散在攻略、Discord、Reddit 或视频里。这个小站尝试把它整理成一个更轻量的查询入口。\n\n技术上是一个轻量 Web 工具站，重点验证的是：新游戏功能出来后，能否用低成本页面和结构化 preset 数据，快速承接长尾搜索需求。\n\n说明：该站是 fan-made 项目，与 Blizzard Entertainment 没有关联；过滤器代码可能会随游戏版本变化，使用前需要玩家自行确认。\n",
@@ -802,13 +810,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9801"
-  },
-  {
-    "id": 9800,
-    "title": "【网站自荐】HEIC to PNG —— 纯浏览器本地运行的 HEIC 图片转换工具, 保护隐私安全",
-    "content": "### 项目地址\nhttps://heictopng.org\n\n### 介绍\n推荐一个我自己开发的开源思路 HEIC 转换工具：HEIC to PNG。\n\niPhone 从 iOS 11 起默认用 HEIC 格式存照片，这种格式压缩率高，但**Windows、Android、微信网页版、Gmail 等很多场景都打不开**，导致大量普通用户遇到「我从 iPhone 发出来的照片打不开」的问题。\n\n市面上的 HEIC 转换网站普遍存在两个问题：**要么把照片上传到服务器（隐私风险）**，**要么限制每天转换数量、加水印、收费**。\n\n我做这个产品的核心目标是：**所有转换都在浏览器本地完成，照片永远不离开用户设备**。\n\n### 主要特色\n\n1. **100% 客户端转换，零上传**\n   - 基于 libheif-js（WASM）在浏览器内直接解码 HEIC\n   - 在支持的浏览器（Chrome、新版 Safari、Edge）上优先调用原生解码器，速度更快\n   - 整个转换过程不向任何服务器发送图片数据，断网也能用\n2. **支持 4 种输出格式**，每种格式都有专门页面：\n   - **PNG**（无损）：`/heic-to-png`\n   - **JPG**（可调质量 1–100）：`/heic-to-jpg`\n   - **WebP**（基于 @jsquash/webp 实现真正的无损 WebP，浏览器自带的 canvas.toBlob 只能输出有损）：`/heic-to-webp`\n   - **PDF**（支持「合并模式」，把多张 HEIC 合并为一份多页 PDF，可选 A4 / Letter / 适配图片尺寸）：`/heic-to-pdf`\n3. **批量转换 + 一键打包**\n   - 拖拽多文件、批量转换、ZIP 打包下载\n   - PDF 模式可把整本相册合并成单个 PDF\n4. **专业级图像处理细节**\n   - 按 EXIF 方向自动旋转（解决老款 iPhone 横竖照片错乱问题）\n   - 可选择保留 / 抹除 EXIF 元数据（隐私保护：默认抹除 GPS 信息）\n   - 可限制输出最大边长（原图 / 4096 / 2048 / 1024）\n5. **完全免费、无注册、无水印、不限文件大小、不限张数**\n6. **多端覆盖**：支持 Windows / macOS / iOS / Android 主流浏览器，13 种语言界面（中、英、日、韩、德、法、西、葡、俄、越、印尼、繁中等）\n\n### 技术亮点\n- HEIC 解码采用「先尝试浏览器原生 → 失败回退到 WASM」的混合策略，兼顾速度与兼容性\n- WebP 走 WASM 编码器，提供浏览器原生不支持的「真无损 WebP」\n- PDF 由 jsPDF 在前端组装，多图合并不丢失分辨率\n\n### 适用场景\n- iPhone 用户把照片发到 Windows 电脑、安卓手机、Gmail、网站后台\n- 摄影爱好者批量处理 iPhone 拍的 RAW + HEIC 工作流\n- 在意隐私、不想上传家庭 / 证件照片的普通用户\n- 需要把多张证件照合并为一个 PDF 提交的场景\n\n### 截图\n<img width=\"2552\" height=\"1844\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9410ec99-6ba5-48b3-bc6b-87853f6a6f37\" />\n<img width=\"2540\" height=\"1836\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dc3d349-74be-4fe3-876d-41816c56cb95\" />\n<img width=\"2556\" height=\"1822\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/57d19236-f3a2-4fcf-af0b-364d939ef585\" />\n<img width=\"2550\" height=\"1726\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6fabf26a-2731-4b69-81dd-3885a50b6d28\" />\n",
-    "created_at": "2026-04-29T01:34:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9800"
   }
 ]
