@@ -1,8 +1,32 @@
 [
   {
+    "id": 9928,
+    "title": "【开源自荐】BioinfoFlow：在个人电脑上运行 WGS 全基因组测序，亲手了解自己的基因组",
+    "content": "项目地址：https://github.com/lewismessthecode/BioinfoFlow  \n项目文档：https://deepwiki.com/lewismessthecode/BioinfoFlow  \n官网：https://bioinfoflow.com\n\nBioinfoFlow 一个现代的 Agentic 生物信息流程分析平台。\n\n**配一张 RTX 4080 16GB 显存以上的显卡，你就可以通过 BioinfoFlow 在个人电脑上运行 WGS 全基因组测序，亲手解读自己的基因组。**\n\n生物信息学的工具体验长期停在上个时代——界面陈旧、操作繁琐、学习曲线陡到劝退。\n\nBioinfoflow 把现代软件的优雅带进生物信息学，再让 Agent 填补生物学与计算机科之间的鸿沟。\n\nBioinfoflow 基于 Nextflow 与 WDL：生信流程注册一次，项目数据收进同一个 BIOINFOFLOW_HOME，运行交给统一调度，DAG、日志、资源压力与产出都在同一界面里。\n\n作为在计算层之上统一的产品界面，Bioinfoflow 的目标是让计算生物学人人可用 —— **用自然语言，进行生物信息学分析。**\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/lewismessthecode/BioinfoFlow/main/assets/product-preview.gif\" alt=\"BioinfoFlow product preview\" width=\"100%\" />\n</p>\n\n\n",
+    "created_at": "2026-05-13T14:25:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9928"
+  },
+  {
+    "id": 9927,
+    "title": "【开源自荐】ClueArk-线索方舟,面向个人与团队的 AI 情报系统",
+    "content": "\n线索方舟，围绕「话题监控」组织信息流：用户用一句话描述监控意图，系统结合 LLM 规划说明与信源绑定，再用 Embedding 做语义时间线与研判摘要。底层持续接入 RSS、网页爬虫与热点 API 等公开信源，并支持条目富化、语义匹配与相似报道聚类，帮助用户从高噪声信息中快速发现值得关注的线索。项目定位于轻量、可私有化部署的信息工作台，适用于行业研究、技术趋势追踪、公共事件观察与个人知识输入流管理。\n\n开源地址： [https://github.com/lqomg/ClueArk](https://github.com/lqomg/ClueArk)\n\n演示地址： [https://clueark.com](https://clueark.com)\n\n<img width=\"3408\" height=\"1716\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f69e6498-fe68-4929-97b3-f94a17407532\" />\n\n## 功能特性\n\n- **统一信源模型**：官方内置与用户自建共用同一套类型与指纹策略，便于扩展与运维。\n- **AI 辅助话题监控**：一句话描述监控意图即可创建；系统自动扩写监控说明、抽取关键词与实体，并从已启用的统一信源池中推荐绑定信源；支持在设置中调整绑定信源与相似度阈值（`minCosine`）。时间线与侧栏指标依赖 Embedding；研判摘要由后端定时任务异步生成（详见下文「话题监控」）。\n- **多类采集路径**：同一资源池内支持 **RSS/Atom**、**Web（含可选列表页爬虫）**、**JSON 热点 API（可配置字段映射）**，按需选用而非单一抓取方式。\n- **独立 Web 爬虫服务**：对无稳定 Feed 的站点，通过 **CSS 选择器** 解析列表页 HTML（NestJS + Cheerio），与主站 **契约对齐** 上报；爬虫侧不依赖 LLM。详见 [`crawler/README.md`](crawler/README.md)。\n- **可选智能化**：可按环境变量接入 DeepSeek、条目富化、Embedding 与聚类等（根目录与 `backend/.env.example`）；**创建监控**要求 Embedding 可用，且条目侧需具备与监控一致的语义向量字段，时间线才会有内容。\n- **Docker Compose 单机栈**：MongoDB、后端 API、前端（Nginx 反代）、爬虫默认同栈构建启动，适合快速部署。\n\n面向个人的情报采集与浏览：在统一信源池上订阅话题、浏览语义筛选后的时间线并查看研判摘要，减轻自行全网检索的负担。\n\n## 话题监控（机制说明）\n\n- **创建**：用户输入一句「监控意图」。后端调用 LLM 生成标题、正式说明、关键词与实体，并在当前**已启用**的信源目录中自动挑选一批绑定信源（数量与目录规模可通过 `MONITOR_MIN_SOURCES`、`MONITOR_MAX_SOURCES`、`MONITOR_LLM_SOURCE_CATALOG_CAP` 等调节，详见 `backend/.env.example`）。同时对正式说明做 Embedding，写入监控的描述向量。\n- **语义时间线**：只展示已绑定信源中、富化完成且具备全文语义向量的条目；按与监控说明向量的**余弦相似度**过滤，低于 `minCosine`（默认约 0.43）的不进入时间线。默认回溯窗口等见 `MONITOR_DEFAULT_RECENT_HOURS`、`MONITOR_TIMELINE_CANDIDATE_CAP`。\n- **情报卡片与趋势**：在通过阈值的条目集合上统计热度、近 7 日趋势（按用户资料中的 **IANA 时区**做日历日分桶）、标签分布与最新条目等。总览页提供合并接口，减少多次往返。\n- **研判摘要**：后端在进程启动完成后异步跑一轮，并**按小时**为所有有效监控生成摘要；结果写入 MongoDB，前端读取最近一次成功运行。摘要时间窗默认对应「近 N 小时滚动窗」（`MONITOR_BRIEF_WEEKLY_ROLLING_HOURS`，默认 168）；API 响应中字段名仍为 `weeklyBrief`，与历史命名并存。证据条数与截断等见 `MONITOR_BRIEF_*` 变量。\n\n## 多类信源支持\n\n| 类型 | 说明 | 典型用途 |\n|------|------|----------|\n| **RSS / Atom** | 标准订阅地址增量拉取 | 资讯站、博客等提供 Feed 的信源 |\n| **Web** | 站点 URL；可选 `crawlListUrl` + `crawlSelectors` 供爬虫解析列表页 | 仅有网页列表、需规则化抽取条目的场景 |\n| **热点 API（`hot_api`）** | JSON HTTP 接口 + 可配置 mapper（如条目数组路径与字段映射） | 结构化热点/排行榜类数据源 |\n\n内置种子见 **`data/built-in-catalog.json`**（含多条 RSS 示例）；部署时可通过 **`BUILTIN_CATALOG_PATH`** 指向自定义目录。\n",
+    "created_at": "2026-05-13T13:12:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9927"
+  },
+  {
+    "id": 9926,
+    "title": "【开源自荐】memo 是一个基于 CoALA 认知架构与最新现代认知科学实践的本地优先 AI Agent 记忆 SDK + CLI：原始对话可追溯，长期记忆可重建，Agent 可自动回忆，也可按需查证和迁移。",
+    "content": "> memo 是一个基于 CoALA 认知架构与最新现代认知科学实践的本地优先 AI Agent 记忆 SDK + CLI：原始对话可追溯，长期记忆可重建，Agent 可自动回忆，也可按需查证和迁移。\n\n### 项目地址\n[https://github.com/cosin2077/memo](https://github.com/cosin2077/memo)\n\n## 简介\n\nmemo 为 AI Agent 提供**可追溯**、**可重建**、**可检索**、**数据掌控**的长期记忆能力。它把原始对话保存为 `MessageLog`，再通过异步 造梦💤 流程提取**事件记忆**、**语义知识**、**冲突变化**、**信念修正**和可选知识图谱。\n\nSDK 提供极简 API：用 `addMessages` 写入单条/多条 message，用 `search/hydrate` 召回记忆；同时提供 `lookup_messages` / `query_knowledge_graph` tools，让 Agent 可以自主查证底层原文和知识关系。\n\nCLI 则提供本地记忆操作台：可以导入 Claude Code / OpenAI 风格历史对话、触发 Dream 生成长期记忆、查看 Episodes / Knowledge、导出原始 `MessageLog` 备份，也可以生成给人类和其他 Agent 直接阅读的 `MEMORY.md`。\n\n### Features\n\n- **极简接入** — `pnpm add @memo-labs/sdk`，一行代码即可接入，无需部署服务\n-  **认知科学驱动设计** — 基于 CoALA 认知架构与最新现代认知科学实践，将认知模型落地为可运行的 Agent 记忆系统\n- **CLI 本地记忆操作台** — `memo info/import/dream/memories/export` 覆盖导入、造梦、检查、备份和迁移\n- **Claude Code 开箱即用** — 一行导入 Claude 工程历史并生成长期记忆：`pnpm cli import --claude --all --user claude-code --dream`\n- **Agent-readable MEMORY.md** — `memo export memory --user claude-code --output MEMORY.md`，把长期记忆交给 OpenClaw、Codex、Claude Code 或其他 Agent\n- **五层记忆架构** — MessageLog 全量可审计、可溯源、可重建，异步造梦固化语义知识\n- **两层回忆** — hydrate 自动注入 + LLM Tools 按需深度检索\n- **唯一真理源 + 可重建** — MessageLog 保存全部原始对话，下游数据均可从中重建\n- **原始数据可迁移** — 导出 `MessageLog` JSON，导入新实例后通过 Dream 重建事件记忆、语义记忆和可选图谱索引\n- **近期情境与记忆卡片** — `<RECENT>` 总结当前专注事项，XML 记忆卡片描述用户/Agent 偏好、边界和上下文\n- **证据分离水合** — verify 模式下原始证据与语义事实分开注入，可验证\n- **Token 预算管理** — 贪婪装箱 + LLM 压缩，不浪费上下文窗口\n- **惊奇度驱动更新** — 事实变更自动触发再造梦，记忆持续保鲜\n\n### Example\n\n```Javascript\nimport { MemoSDK } from \"@memo-labs/sdk\";\nconst memo = await MemoSDK.create({ userId: \"user-demo-001\" });\nconst session = await memo.startSession({ title: \"技术学习会话\" });\nawait session.addMessages([\n    { content: \"我想学习 TypeScript 高级类型\", role: \"user\" },\n    { content: \"TypeScript 高级类型包括条件类型、映射类型、模板字面量类型等，建议从泛型开始学习。\", role: \"assistant\" },\n    { content: \"请推荐一些学习资源\", role: \"user\" },\n    { content: \"推荐《TypeScript 深入浅出》，重点掌握第 3-5 章的泛型和条件类型。\", role: \"assistant\" },\n    //...\n]);\nawait session.dream();\nconst memoryContext = await session.search({\n    query: \"TypeScript 学习资源\",\n});\n\n```\n\n### 项目地址\n\n[https://github.com/cosin2077/memo](https://github.com/cosin2077/memo)\n",
+    "created_at": "2026-05-13T12:29:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9926"
+  },
+  {
     "id": 9925,
     "title": "【开源自荐】Mico：Docker 容器跨服务器无痛迁移工具",
-    "content": "<div align=\"center\">\n  <img width=\"327\" height=\"138\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1d902602-cf2f-46ea-aa33-d0a4bc4e8df9\" />\n</div>\n\n> **Mi**grate **Co**ntainers —— Docker 容器跨服务器无痛迁移工具。\n\nMico 是一个 CLI 工具，在源服务器上将所有运行中的 Docker 容器（镜像、配置、数据卷、网络）打包为一个压缩文件，在目标服务器上一条命令即可完整恢复，支持增量备份和定时备份到 S3。\n\n## 示例\n```bash\n# 在源服务器 — 打包所有容器\nmico pack -o migration.zst\n\n# 在目标服务器 — 恢复所有容器\nmico unpack migration.zst\n\n# 备份到 S3\nmico backup\n\n# 从 S3 恢复\nmico unpack --s3\n```\n\n## 特性\n\n- **完整快照** — 捕获镜像、容器配置、命名卷、绑定挂载和网络\n- **增量模式** — 仅打包上次运行后有变更的容器\n- **选择性打包** — 按容器名称过滤\n- **依赖感知** — 通过拓扑排序遵循 Docker Compose `depends_on` 启动顺序\n- **并发操作** — 可配置并发数，加速打包/解包\n- **完整性校验** — 自动生成 SHA256 校验和，解包时验证\n- **S3 备份/恢复** — 备份上传至 S3 兼容存储，一条命令即可恢复\n- **多运行时** — 支持 Docker、OrbStack 和 Podman\n\n> [!NOTE]\n> Bind 挂载（`-v /host/path:/container/path`）在迁移后会转为命名卷，因为目标服务器上可能无法重现文件夹路径。",
+    "content": "项目地址：https://github.com/Ray-D-Song/mico\n\n<div align=\"center\">\n  <img width=\"327\" height=\"138\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1d902602-cf2f-46ea-aa33-d0a4bc4e8df9\" />\n</div>\n\n> **Mi**grate **Co**ntainers —— Docker 容器跨服务器无痛迁移工具。\n\nMico 是一个 CLI 工具，在源服务器上将所有运行中的 Docker 容器（镜像、配置、数据卷、网络）打包为一个压缩文件，在目标服务器上一条命令即可完整恢复，支持增量备份和定时备份到 S3。\n\n## 示例\n```bash\n# 在源服务器 — 打包所有容器\nmico pack -o migration.zst\n\n# 在目标服务器 — 恢复所有容器\nmico unpack migration.zst\n\n# 备份到 S3\nmico backup\n\n# 从 S3 恢复\nmico unpack --s3\n```\n\n## 特性\n\n- **完整快照** — 捕获镜像、容器配置、命名卷、绑定挂载和网络\n- **增量模式** — 仅打包上次运行后有变更的容器\n- **选择性打包** — 按容器名称过滤\n- **依赖感知** — 通过拓扑排序遵循 Docker Compose `depends_on` 启动顺序\n- **并发操作** — 可配置并发数，加速打包/解包\n- **完整性校验** — 自动生成 SHA256 校验和，解包时验证\n- **S3 备份/恢复** — 备份上传至 S3 兼容存储，一条命令即可恢复\n- **多运行时** — 支持 Docker、OrbStack 和 Podman\n\n> [!NOTE]\n> Bind 挂载（`-v /host/path:/container/path`）在迁移后会转为命名卷，因为目标服务器上可能无法重现文件夹路径。",
     "created_at": "2026-05-13T10:23:16Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9925"
@@ -36,7 +60,9 @@
     "title": "【开源自荐】Kooky：专为 AI coding 优化的极简 macOS 终端",
     "content": "项目地址：https://github.com/iAmCorey/kooky\n\n\n✅一键启动 Claude Code/Codex 等各种agent\n✅ Vertical tabs + split pane，多Workspace管理+分屏并行\n✅ Agent 状态展示\n✅ Git 分支/变化， Node/Python/Proxy 等各环境展示以及一键切换\n✅ 本地运行, 无云服务和功能\n✅基于 libghostty GPU 渲染，丝滑使用\n\n\n\n项目截图：![kooky](https://resources.coreychiu.com/kooky.png)",
     "created_at": "2026-05-13T01:50:49Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9921"
   },
   {
@@ -786,29 +812,5 @@
     "created_at": "2026-05-02T05:35:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9826"
-  },
-  {
-    "id": 9825,
-    "title": "〖开源自荐〗Mira：让 AI 直接进入 Android/iOS 真实运行时环境做防护分析",
-    "content": "Mira 是一个面向移动应用防护端的 Android/iOS 运行时防护分析工具，可集成到第三方待测 App 中分析业务中风险环境特征，进入第三方 App 权限范围内的真实运行时沙箱环境，检测环境风险并验证防护策略。\n\n支持 AI 直接在运行时动态调用宿主 App 侧任意代码 (调用 shell、Java、Native 和 Frida 能力)，直接完成防护验证、环境风险检测和证据收集。\n\n目前已经验证过一些典型场景，包括 Magisk 痕迹识别、Cydia 残留检测、LSPosed 注入特征定位等。\n\n<table>\n  <tr>\n    <th align=\"center\">Android 远程 Frida</th>\n    <th align=\"center\">iOS 远程 Frida</th>\n  </tr>\n  <tr>\n    <td>\n      <img src=\"https://github.com/vwww-droid/Mira/blob/main/docs/android-remote-frida.png?raw=1\" alt=\"Android Remote Frida\" />\n      <div align=\"center\"><sub>在第三方待测 App 权限范围内的 Android 真机上完成远程 shell、运行时检查与实时 Frida 执行。</sub></div>\n    </td>\n    <td>\n      <img src=\"https://github.com/vwww-droid/Mira/blob/main/docs/ios-remote-frida.png?raw=1\" alt=\"iOS Remote Frida\" />\n      <div align=\"center\"><sub>在第三方待测 App 权限范围内，通过 iOS 侧 iSH 兼容层复用等价的 PTY 与 Frida 分析链路。</sub></div>\n    </td>\n  </tr>\n  <tr>\n    <th align=\"center\">Android LSPosed 痕迹定位</th>\n    <th align=\"center\">iOS 越狱痕迹定位</th>\n  </tr>\n  <tr>\n    <td>\n      <img src=\"https://github.com/vwww-droid/Mira/blob/main/docs/Area.gif?raw=1\" alt=\"Android LSPosed Trace\" />\n      <div align=\"center\"><sub>围绕应用 classloader 构造 Frida 路径，并从第三方 App 运行时状态中定位 LSPosed 注入痕迹。</sub></div>\n    </td>\n    <td>\n      <img src=\"https://github.com/vwww-droid/Mira/blob/main/docs/cydia-ios.gif?raw=1\" alt=\"iOS Jailbreak Trace\" />\n      <div align=\"center\"><sub>让 AI 在第三方 App 权限侧的真实终端环境中游走，并自动收集越狱相关痕迹。</sub></div>\n    </td>\n  </tr>\n</table>\n\n项目地址：\nhttps://github.com/vwww-droid/Mira\n",
-    "created_at": "2026-05-01T18:17:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9825"
-  },
-  {
-    "id": 9824,
-    "title": "【网站自荐】Poster.sh - AI 生成可编辑海报 + 二维码，做线下扫码推广更顺手",
-    "content": "一个 AI 海报生成 + 编辑工具，主打\"从文字到可推广物料\"的完整工作流。\n                                                                                        \n  Live: https://poster.sh/zh\n                                                                                        \n  和其他 AI 生图站点的核心区别：                                                        \n   \n  - **内置可视化编辑器**：每张生成的海报都能在浏览器里继续编辑——改文字、换图、调布局，再导出 PNG。不用切到 Figma / Canva 二次加工。                     \n  - **海报上能直接生成二维码**：编辑器自带二维码工具，支持自定义颜色、6 种点样式（rounded / dots / classy 等），扫码跳转到任意                             URL。做活动海报、店铺宣传、公众号引流时省一步。（仅桌面端）\n  - **128 种视觉风格**：从液态金属、暗色主题、构成主义、孟菲斯，到双重曝光、电影感、雕刻版画……每种都有真实样图可预览，按\"商业营销 / 活动庆典 / 社交媒体 / 创意艺术 / 娱乐文化 / 教育信息\"六大场景分类。\n  - **底层模型用 Nano Banana 2（Gemini 3.1 Flash Image Preview）**，支持 14 种比例：1:1 / 2:3 / 9:16 / 16:9 / 4:5 等社媒尺寸，以及 21:9 / 1:8 / 8:1 等长图比例。              \n  - **智能提示词优化器**：随手写的中文一句话会被改写成模型友好的英文长prompt，新手也能出效果。                                                              \n                                                                  \n  注册送 5 积分（够生成 2–3 张试一下），无需信用卡。生成的海报享有商业使用权。          \n                                                                  \n  界面支持中 / 英 / 日 / 西四种语言。\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd8c30a7-b9b2-4900-a2ce-2f20d94bac40\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b35e0608-821f-44db-993b-03bc32385bb6\" />\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b886a120-977c-49b0-a3b1-a9e8d8fe1009\" />",
-    "created_at": "2026-05-01T13:57:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9824"
-  },
-  {
-    "id": 9823,
-    "title": "AnySave：网页端视频下载工具，支持 200+ 平台",
-    "content": "官网：https://any-save.com\n\n简介：\nAnySave 是一个网页端视频下载工具，粘贴公开视频链接即可开始保存，支持 TikTok、抖音、YouTube、Instagram、Facebook、X、B站、小红书等 200+ 平台。\n\n特点：\n- 网页端直接使用，无需安装\n- 支持 200+ 平台\n- 支持主流平台公开视频链接解析与保存\n\n如果合适，欢迎收录。",
-    "created_at": "2026-05-01T08:36:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9823"
   }
 ]
