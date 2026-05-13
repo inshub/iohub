@@ -1,5 +1,29 @@
 [
   {
+    "id": 9925,
+    "title": "【开源自荐】Mico：Docker 容器跨服务器无痛迁移工具",
+    "content": "<div align=\"center\">\n  <img width=\"327\" height=\"138\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1d902602-cf2f-46ea-aa33-d0a4bc4e8df9\" />\n</div>\n\n> **Mi**grate **Co**ntainers —— Docker 容器跨服务器无痛迁移工具。\n\nMico 是一个 CLI 工具，在源服务器上将所有运行中的 Docker 容器（镜像、配置、数据卷、网络）打包为一个压缩文件，在目标服务器上一条命令即可完整恢复，支持增量备份和定时备份到 S3。\n\n## 示例\n```bash\n# 在源服务器 — 打包所有容器\nmico pack -o migration.zst\n\n# 在目标服务器 — 恢复所有容器\nmico unpack migration.zst\n\n# 备份到 S3\nmico backup\n\n# 从 S3 恢复\nmico unpack --s3\n```\n\n## 特性\n\n- **完整快照** — 捕获镜像、容器配置、命名卷、绑定挂载和网络\n- **增量模式** — 仅打包上次运行后有变更的容器\n- **选择性打包** — 按容器名称过滤\n- **依赖感知** — 通过拓扑排序遵循 Docker Compose `depends_on` 启动顺序\n- **并发操作** — 可配置并发数，加速打包/解包\n- **完整性校验** — 自动生成 SHA256 校验和，解包时验证\n- **S3 备份/恢复** — 备份上传至 S3 兼容存储，一条命令即可恢复\n- **多运行时** — 支持 Docker、OrbStack 和 Podman\n\n> [!NOTE]\n> Bind 挂载（`-v /host/path:/container/path`）在迁移后会转为命名卷，因为目标服务器上可能无法重现文件夹路径。",
+    "created_at": "2026-05-13T10:23:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9925"
+  },
+  {
+    "id": 9924,
+    "title": "【开源自荐】midjourney-api：Midjourney 的非官方 API 服务部署",
+    "content": "\n### 项目地址\n\nhttps://github.com/ihmily/midjourney-api\n\n### 项目简介\n\nMidjourney 官方没有提供 API，只能通过 Discord 在界面上使用，给自动化和二次开发带来了不便。本项目基于逆向 和 Discord Bot 监听方案，把 Midjourney 的能力封装成了标准的 HTTP 接口，方便开发者集成到自己的应用中。\n\n### 主要特性\n\n- **标准 RESTful 接口**：支持图片生成（imagine）、图片描述（describe）、放大（upscale）、扩图（zoom out）等 Midjourney 操作\n- **多账户并发**：支持配置多个 Discord 账户，自动负载均衡\n- **异步任务队列**：基于 Redis 实现任务队列，多 Worker 并发消费，支持任务回调通知进度\n- **对象存储集成**：生成的图片可自动上传到阿里云 OSS 或 AWS S3\n- **开箱即用**：提供 Docker Compose 一键部署，内置 Swagger 文档\n\n### 适用场景\n\n- AI 绘画 SaaS 产品后端\n- 设计自动化工具\n- 个人批量创作脚本\n\n### 其他\n\n给需要调用midjourney生图的开发者提供一个成熟可用的路径和服务，直接部署，省时省力。",
+    "created_at": "2026-05-13T09:25:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9924"
+  },
+  {
+    "id": 9923,
+    "title": "【插件自荐】全屏守门员：全屏沉浸式休息提醒，萌宠/自定义互动接管屏幕，无 AI、无账号",
+    "content": "全屏守门员是一款浏览器扩展，专注时间一到，用铺满屏幕的沉浸式休息画面把你从当前页面里拉出来，提醒你休息一会\n\n互动有内置的萌宠风主题，也可以换成你本机元素；扩展无 AI、无账号，可以设白名单或排除名单；支持严格/宽松焦点模式等设置\n\n\n\n![图片说明文字](https://h2cdn.appinn.me/optimized/3X/5/b/5b8023bc6208a805216b40f49ea02199e1447311_2_1035x594.jpeg)\n![图片说明文字](https://h2cdn.appinn.me/optimized/3X/e/7/e7f616b7a7fa38b7294f00f0cb48362c4c821b63_2_1035x594.jpeg)\n![图片说明文字](https://h2cdn.appinn.me/optimized/3X/1/c/1cc40d7f3c33ce442aea5ecc9b1bdaf0ea8939cf_2_1035x594.jpeg)\n\n[插件地址](https://chromewebstore.google.com/detail/screen-break-keeper/mnmaobcpbjhbheefbgkomgflmgphbfne)",
+    "created_at": "2026-05-13T07:52:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9923"
+  },
+  {
     "id": 9922,
     "title": "【工具自荐】Reverse Image Location：根据照片线索推理拍摄地点",
     "content": "项目名称：Reverse Image Location (Geo Solver)\n\n项目地址：https://reverseimagelocation.com/tools/geo-location-ai\n\n一句话介绍：一个 AI 图片地点识别工具，在没有 EXIF 元数据的情况下，根据照片中的路牌、道路标线、建筑、植被、车辆等视觉线索推理拍摄地点，并给出推理过程。\n\n推荐理由：适合 GeoGuessr 练习、OSINT 调查、旅行照片核验和反向图片地点搜索。它不是只查找网上已有的相同图片，而是尝试解释“为什么这张照片像是在这个地方拍的”，对学习地理判断和公开信息分析比较有帮助。",
@@ -786,31 +810,5 @@
     "created_at": "2026-05-01T08:36:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9823"
-  },
-  {
-    "id": 9822,
-    "title": "[工具自荐] RunAppHot - - AppScreenshot生成和 App 图标裁剪工具",
-    "content": "RunAppHot 是一款面向 App 开发者的应用商店素材生成工具，帮助开发者快速制作 iOS App Store 和 Google Play 所需的应用截图、宣传图和 App 图标资源。\n\n很多独立开发者在上架应用时，主要精力都花在产品开发上，但最后提交商店时，还要处理不同平台的截图尺寸、多语言版本、设备框展示、宣传文案排版，以及一堆 App Icon 尺寸。RunAppHot 希望把这些重复工作集中到一个在线工具里完成。\n\n网站\nhttps://app.runapphot.com/\n\n主要功能\n应用商店截图编辑：支持在线创建截图项目，上传应用截图后进行排版和编辑\n多平台支持：支持 iOS / App Store、Android / Google Play，也可以创建同时覆盖两个平台的项目\n多语言截图：同一个项目内可以添加不同语言版本，方便准备海外应用商店素材\n设备框与画布编辑：支持设备框、背景、文字、位置、颜色、字号、行高、字距等细节调整\n项目化管理：可以保存和管理多个截图项目，后续继续修改和导出\nApp Icon Generator：上传 1024×1024 图标后，批量生成 iPhone、iPad、watchOS、macOS、Android 所需尺寸\n\n使用场景\n独立开发者提交 App Store / Google Play 审核素材\n出海应用准备多语言商店截图\n产品发布前快速制作宣传截图\n小团队没有专职设计师时，快速生成规范的应用商店素材\n一次性生成多平台 App Icon 尺寸，减少手工裁剪和命名\n\n产品特色\n浏览器直接使用，不需要安装设计软件\n面向应用上架流程设计，重点解决截图和图标这类“提交前最后一公里”的问题\n同时覆盖截图设计和图标尺寸生成，减少在多个工具之间切换\n支持细粒度排版调整，适合既想快速生成、又希望保持一定设计质量的开发者",
-    "created_at": "2026-05-01T04:54:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9822"
-  },
-  {
-    "id": 9821,
-    "title": "【开源自荐】LynxDB - 单二进制日志分析引擎，读时模式，兼容 Splunk SPL",
-    "content": "开源地址：https://github.com/lynxbase/lynxdb\n\nLynxDB 是用 Go 写的日志分析引擎，整个项目编译为一个二进制文件，无外部依赖，`curl` 一行安装。\n\n**为什么再造一个？** ELK / Splunk 类方案部署复杂、资源开销大（Elasticsearch 空闲约 1 GB+，Splunk 约 12 GB），自建小规模可观测性栈时往往显得过重。LynxDB 空闲内存约 50 MB，没有 JVM、没有外部存储、没有 sidecar。\n\n**核心是读时模式（schema-on-read）**：日志原样写入，结构在查询时通过 `parse json`、`parse combined` 等命令按需提取。日志格式变化时不需要重建索引或迁移历史数据。\n\n查询语言 Lynx Flow 是 SPL 风格的管道式语法，命令之间用 `|` 串联：\n\n​```\nfrom nginx\n| parse combined(_raw)\n| status >= 500\n| group by uri compute count() as hits\n| order by hits desc\n| take 10\n​```\n\n同时兼容 Splunk SPL2，已有的 SPL 查询可直接迁移。\n\n**也支持纯管道模式**，不启动服务直接当 grep / awk 用：\n\n​```\nkubectl logs deploy/api | lynxdb query '\n  | parse json(_raw)\n  | group by status compute count()'\n​```\n\n其他特性：\n- 列式存储（FST 倒排索引 + 布隆过滤器 + LZ4 压缩）\n- 物化视图（自动查询改写，热点查询提速可达 400x）\n- 兼容 Elasticsearch `_bulk`、OpenTelemetry OTLP、Splunk HEC 协议接入\n- 可选集群模式 + S3 共享存储\n\n项目目前还在早期阶段（v0.0.3），暂不建议在生产环境使用。适合想要轻量可观测性方案、不希望引入企业级系统运维负担的场景。欢迎反馈和 issue。\n\n开源协议：Apache 2.0",
-    "created_at": "2026-04-30T23:25:56Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9821"
-  },
-  {
-    "id": 9820,
-    "title": "〖开源自荐〗Plexus：一键同步 Claude Code、Cursor、Codex 等 AI Agent 配置",
-    "content": "项目地址：https://github.com/miniLV/Plexus\n\nPlexus 是一个本地 AI Agent 配置控制台，用来统一管理 Claude Code、Cursor、Codex、Gemini CLI、Qwen Code 等工具的 Rules、MCP Servers 和 Skills。\n\n现在很多开发者会同时使用多个 AI 编程工具，但每个工具都有自己的 `CLAUDE.md` / `AGENTS.md`、MCP 配置文件和 skills 目录。Plexus 的作用是把这些配置整理成一份本地基线，放在 `~/.config/plexus/`，然后一键同步回每个 Agent 的原生路径。\n\n![Plexus Dashboard](https://raw.githubusercontent.com/miniLV/Plexus/master/docs/assets/readme/dashboard.png)\n\n主要特点：\n\n- 一键导入已有 Agent 配置\n- 一键同步 Rules、MCP Servers 和 Skills\n- 多个来源冲突时可以选择 Primary Agent\n- 写入原生文件前自动 snapshot，支持回滚\n- 支持团队配置 repo，例如把团队统一的 skills 和 MCP baseline 分发给所有成员\n- 对共享配置文件使用 partial-write，避免覆盖 auth、history、profile 等 Agent 自己管理的内容\n\n工作原理：\n\n![Plexus Architecture](https://raw.githubusercontent.com/miniLV/Plexus/master/docs/assets/readme/config-sharing-map.png)\n\n技术栈：TypeScript / Next.js / Node.js / 本地文件系统同步。\n",
-    "created_at": "2026-04-30T15:20:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9820"
   }
 ]
