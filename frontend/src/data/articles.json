@@ -1,5 +1,13 @@
 [
   {
+    "id": 9921,
+    "title": "【开源自荐】Kooky：专为 AI coding 优化的极简 macOS 终端",
+    "content": "项目地址：https://github.com/iAmCorey/kooky\n\n\n✅一键启动 Claude Code/Codex 等各种agent\n✅ Vertical tabs + split pane，多Workspace管理+分屏并行\n✅ Agent 状态展示\n✅ Git 分支/变化， Node/Python/Proxy 等各环境展示以及一键切换\n✅ 本地运行, 无云服务和功能\n✅基于 libghostty GPU 渲染，丝滑使用\n\n\n\n项目截图：![kooky](https://resources.coreychiu.com/kooky.png)",
+    "created_at": "2026-05-13T01:50:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9921"
+  },
+  {
     "id": 9920,
     "title": "【AI应用】大模型简历优化工具， 提升简历通过率",
     "content": "### 网址：  https://haojianli.me/\n\n功能描述： 大模型优化简历， 通过简历分析结构化简历， 简历诊断发现简历中的可提升项， 询问用户问题补充简历素材， 最终改写简历，给出新版简历和对比版本。\n\n### 优势： \n\n1. 控制大模型幻觉， 有效改写简历， 提升简历质量\n2. 按岗位定制专家诊断：研发看技术深度与性能证据，产品看目标拆解与指标闭环，运营看增长方法与复用策略...\n3. 接入deepseek v4模型， 提升优化效率和有效性\n\n### 快照： \n\n#### 优化入口截屏\n\n![简历优化截屏](https://haojianli.me/snapshots/workspace.jpeg)\n\n#### 简历优化结果截屏\n\n![简历优化结果](https://haojianli.me/snapshots/resume.jpeg)\n\n#### 优化后的效果比较截屏\n\n![简历优化比较](https://haojianli.me/snapshots/diff.jpeg)\n\n#### 首页截屏\n\n![haojianli首页](https://haojianli.me/snapshots/homepage.jpeg)\n\n网址：  https://haojianli.me/\n",
@@ -804,13 +812,5 @@
     "created_at": "2026-04-30T14:45:25Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9819"
-  },
-  {
-    "id": 9818,
-    "title": "【开源自荐】linthis：一条命令搞定多语言 lint / format / 安全 / 复杂度检查的 Rust 工具",
-    "content": "【开源自荐】linthis：一条命令搞定多语言 lint / format / 安全 / 复杂度检查的 Rust 工具\n---\n\n## 一句话介绍\n\n[linthis](https://github.com/zhlinh/linthis) 是一个用 Rust 写的跨平台多语言 Linter & Formatter，**一条命令同时跑 lint、format、安全扫描（SAST）、复杂度分析**，并且原生支持插件系统、git/agent hook、AI 代码评审。\n\n> 解决的问题：每个语言一套 linter（ruff / eslint / clippy / golangci-lint / clang-tidy / ktlint…），每个项目还要单独配 pre-commit、CI、编辑器格式化，配置散落、风格不统一、新人上手成本高。\n> linthis 把这些工具封在一个 CLI 后面，配置走 Git 仓库分发，团队成员一行命令拉取统一规范。\n\n仓库：https://github.com/zhlinh/linthis\n\n## 核心特性\n\n- 🚀 **单命令多任务**：`linthis` 一条命令完成 lint + format + security + complexity\n- 🌍 **多语言支持**：Rust / Python / TS / JS / Go / Java / C / C++ / Swift / Kotlin / Lua / Dart / Shell / Ruby / PHP / Scala / C# / Objective-C\n- 🎯 **自动识别语言**：无需手动指定，扫目录就知道项目用了哪些语言\n- 🔒 **内置 SAST 安全扫描**：集成 OpenGrep / Semgrep / Bandit / Gosec / Flawfinder + 自带密钥泄漏检测\n- 📊 **函数级复杂度分析**：圈复杂度 / 认知复杂度，可设阈值卡 CI\n- 📦 **基于 Git 的插件系统**：把团队规范打包成一个 Git 仓库，`linthis plugin add` 一行同步给所有人\n- 🎨 **预置代码风格**：Google / Airbnb / Standard 三套预设\n- 🤖 **AI Code Review**：`linthis review` 自动跑 diff、生成评审报告、创建 PR/MR（支持 GitHub / GitLab）\n- 🪝 **Git Hook + Agent Hook**：可同时安装 git pre-commit / pre-push / commit-msg，以及 Claude Code / Cursor / Codex / Gemini 的 agent hook，失败时还能让 AI 自动修\n- 💾 **备份与撤销**：format 后自动备份，`linthis backup undo` / `redo` 一键回滚\n- ⚡ **并行 + 单文件缓存**：多核 CPU 跑满，重复检查只跑变化文件\n- 🆙 **自更新**：`linthis update` 自动识别 cargo / pip / uv / pipx / brew 安装方式\n\n## 安装\n\n```bash\n# 推荐：uv\nuv tool install linthis\n\n# 或者 pip / brew / cargo\npip install linthis\nbrew tap zhlinh/linthis && brew install linthis\ncargo install linthis\n\n快速开始（不到一分钟）\n\n# 1. 添加团队插件（把规范沉淀在一个 Git 仓库里）\nlinthis plugin add -g sample https://github.com/zhlinh/linthis-plugin-template\n\n# 2. 安装 hook：传统 git hook，或者 git + AI 自动修复\nlinthis hook install -g\nlinthis hook install -g --type git-with-agent --provider claude\n\n# 3. 跑一次检查\nlinthis -i src/\n\n# 4. 提交前只检查 staged 文件\ngit add src/main.py\nlinthis -s\n```\n\n## 适合谁用\n\n- 多语言项目 / monorepo，不想给每种语言单独配 lint\n- 团队想把代码规范沉淀成一份可版本化、可继承的 Git 配置\n- 想在 pre-commit 里同时跑格式化 + 静态检查 + 安全扫描 + 复杂度门禁\n- 用 Claude Code / Cursor / Codex 的开发者，希望 AI 写完代码自动按团队规范修一遍\n\n## 编辑器插件\n\n- VSCode：Marketplace\n- JetBrains（IDEA / WebStorm / PyCharm 等）：插件市场搜 linthis\n- Neovim：lazy.nvim / packer.nvim / vim-plug 均支持\n\n均支持 Format on Save 与手动 Lint/Format。\n\n## 链接\n\n- GitHub：https://github.com/zhlinh/linthis\n- PyPI：https://pypi.org/project/linthis/\n- Crates.io：https://crates.io/crates/linthis\n- Homebrew：brew tap zhlinh/linthis\n- License：MIT\n\n",
-    "created_at": "2026-04-30T13:37:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9818"
   }
 ]
