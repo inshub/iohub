@@ -1,5 +1,29 @@
 [
   {
+    "id": 9942,
+    "title": "【开源自荐】Job Bro - 基于 Chrome 内置 AI（Gemini Nano）的职位分析助手",
+    "content": "<img width=\"373\" height=\"458\" alt=\"setting\" src=\"https://github.com/user-attachments/assets/91d4ee3a-1c19-411d-ab0b-0089cfabe81c\" />\n\n**项目地址**：https://github.com/aeroxy/job-bro\n\n**一句话**：\n> Chrome 扩展，用 AI 分析 LinkedIn 职位描述 —— 五个维度评估（薪资匹配、技能匹配、成长潜力、偏好匹配、风险评估），支持 ChatGPT/Claude 云端推理与 Gemini Nano 本地推理双后端，智能对话追问。开启 Chrome AI 后无需 API Key、零网络请求、数据不出设备。\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4a9859d6-5053-48ed-980a-a3605bdff8e5\" />\n\n## 🚀 亮点\n\n### 1. Chrome 内置 AI（Gemini Nano）作为第二推理后端\n\n> **问题**：原版 Job Bro 仅支持 OpenAI 兼容的云端 API，每次分析职位都需要调用远程模型，有网络依赖和 Token 费用。\n> **解决**：新增 Chrome 内置的 Gemini Nano 作为第二推理后端。用户可以在设置中一键切换 Cloud / Chrome AI，无需任何配置。\n\n```\n设置 → 后端选择\n[Cloud (OpenAI)] ←→ [Chrome AI]\n```\n\n#### 为什么用 Chrome AI？\n\n| 方案         | API Key | 网络依赖 | 启动速度     | Token 费用 | 数据隐私     |\n|--------------|---------|----------|--------------|------------|--------------|\n| Cloud (OpenAI)| 需要    | 需要     | 无冷启动     | 按量付费   | 数据上云     |\n| Chrome AI    | 不需要  | 不需要   | 首次需下载 4GB | 免费       | 数据不出设备 |\n\n### 2. 五种 AI 评估 + 自动简历生成\n\n打开 LinkedIn 职位页面，在侧边栏一键分析，自动生成五个维度的评估报告：\n\n| 维度 | 说明 |\n|------|------|\n| **薪资评估** | 基于职位、地点、经验要求估算薪资范围，与用户期望对比 |\n| **技能评估** | 对比职位要求与用户技能栈，标注匹配 / 缺失 / 额外技能 |\n| **偏好评估** | 远程 / 混合 / 办公、行业、公司规模等偏好匹配度 |\n| **风险评估** | 裁员历史、招聘活跃度、职位稳定性等风险信号 |\n| **成长评估** | 技能提升空间、职业路径、学习资源等成长潜力 |\n\n完成后还可一键生成定制化的求职信 / 简历，或对报告内容进一步追问。\n\n### 3. 持久化对话会话\n\nChrome AI 的 API 是有状态的，利用这一特性实现了持久化会话：\n- 同一份报告内的多次追问复用同一个模型会话\n- 无需每次携带完整历史，只发送新问题，大幅减少延迟\n- 系统提示变更时自动重建会话\n\n### 4. 云端 + 本地自定义提示词\n\n由于 Gemini Nano 与 GPT-4o 能力差异较大，两个后端各自保存独立的自定义提示词。用户在设置中切换后端时，提示词编辑区会自动切换对应的内容。\n\n### 5. 零配置，开箱即用\n\n- Chrome Web Store 安装后直接使用（Cloud 后端需填 API Key）\n- Chrome AI 后端无需 API Key，下载模型即可\n- 分析结果保存到 IndexedDB，可随时回溯历史报告\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5c59b291-c23c-4bf4-9761-b1011b8bc42f\" />\n\n## 🧗 使用方式\n\n1. 安装 Chrome 扩展（或 `git clone` + `bun install && bun dev`）\n2. 打开任意 LinkedIn 职位页面\n3. 点击侧边栏 Job Bro 图标\n4. 点击「分析」，等待 AI 评估完成\n5. 查看报告，或进一步对话追问\n\n**源码**：https://github.com/aeroxy/job-bro\n\n**Chrome AI 前提**：Chrome 127+，启用 `chrome://flags/#prompt-api-for-gemini-nano`，下载模型（约 4GB，浏览器管理）\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/990f1c37-7254-4a9c-be84-51a3fe46304f\" />\n\n## 🙏 致谢\n\n- Chrome 生态的启发\n- 感谢社区反馈和贡献\n\n欢迎 Star、提 Issue、贡献新功能。让求职分析像打开一个网页一样简单。\n",
+    "created_at": "2026-05-14T17:38:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9942"
+  },
+  {
+    "id": 9941,
+    "title": "【开源自荐】Web Bro - 基于 Chrome 内置 AI（Gemini Nano）的工作智能体",
+    "content": "<img width=\"700\" height=\"394\" alt=\"demo\" src=\"https://github.com/user-attachments/assets/c63cf6cf-b69f-47e1-9434-f8887814de4b\" />\n\n**项目地址**：https://github.com/aeroxy/web-bro  \n\n**一句话**：\n> 纯浏览器运行的 AI 工作区 Agent —— Gemma 4 E2B-it ONNX 通过 WebGPU 在浏览器中完整推理，新增 Chrome Gemini Nano 作为轻量后端，一个命令即可切换，零服务端依赖，数据不出机器。\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/82c24ea4-9bca-48c9-b456-a11ff7de4db2\" />\n\n## 🚀 亮点\n\n### 1. Chrome 内置 AI（Gemini Nano）作为第二运行时\n\n> **问题**：Web Bro 原本只能通过 WebGPU 运行 Gemma 模型，依赖本地 GPU 硬件。\n> **解决**：现在支持 Chrome 内置的 Gemini Nano 作为第二执行后端。用户可以在侧边栏一键切换 \"Chrome AI\" 和 \"Local Gemma\"，无需重新加载页面。\n\n```\n# 首次加载自动检测可用后端\n# 也可以在侧边栏手动切换\n[Chrome AI] ←→ [Local Gemma]\n```\n\n#### 为什么用 Chrome AI？\n\n| 方案 | 依赖 | 启动速度 | 适用场景 |\n|------|------|----------|----------|\n| WebGPU Gemma | 需要 GPU + WebGPU 支持 | 较慢（需加载模型） | 高质量推理、离线可用 |\n| Chrome AI (Gemini Nano) | 仅需 Chrome 浏览器 | 极快（模型内置） | 快速响应、轻量任务 |\n\n### 2. 共享 Prompt 与工具定义\n\n将系统提示、工作区上下文构建和工具定义从 WebGPU Worker 提取到共享模块 `src/lib/agent-prompt.ts`，确保两个后端使用完全一致的指令和工具 schema。\n\n### 3. 智能能力检测与降级\n\n- 新增 `detectChromeAI()` 检查 `globalThis.LanguageModel`\n- 应用现在只要 **WebGPU 或 Chrome AI 任一可用** 即可运行\n- 无需 GPU 的设备也能通过 Chrome AI 使用完整功能\n\n### 4. 持久化运行时管理\n\n- 后端切换时自动释放前一个运行时（终止 Worker / 销毁 Nano 会话）\n- 重新挂载当前工作区到新运行时，不丢失上下文\n- 选择状态持久化在 `app_settings` 中\n\n### 5. 完整功能覆盖\n\n| 类别 | 能力 |\n|------|------|\n| **导航** | 列出目录、搜索文本、读文件、写文件 |\n| **运行时** | WebGPU Gemma / Chrome Gemini Nano 一键切换 |\n| **持久化** | IndexedDB 快照（撤销）、本地会话存储 |\n| **隐私** | 数据不出机器，零服务端依赖 |\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cadd04f3-d6ec-4b7f-bd6e-b2aaeaaab2c6\" />\n\n## 🧗 使用方式\n\n打开浏览器即可，无需安装、无需 API Key：\n\n**Demo**: https://aeroxy.github.io/web-bro  \n**源码**: https://github.com/aeroxy/web-bro\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1cbde2c0-496e-4fd1-8fa5-e509e5382111\" />\n\n## 🙏 致谢\n\n- Chrome 生态的启发\n- 感谢社区反馈和贡献\n\n欢迎 Star、提 Issue、贡献新功能。让 AI 工作区在浏览器里跑起来，像打开一个网页一样简单。",
+    "created_at": "2026-05-14T16:49:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9941"
+  },
+  {
+    "id": 9940,
+    "title": "【开源自荐】js-screen-shot — 使用原生JS写的全平台截图插件（NPM周下载量1000+）",
+    "content": "* GitHub地址：https://github.com/likaia\n* 产品官网：https://www.kaisir.cn/js-screen-shot/\n\n<img width=\"486\" height=\"598\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0c767a78-4b2d-42ce-85b6-68da7ff2e1ef\" />",
+    "created_at": "2026-05-14T16:04:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9940"
+  },
+  {
     "id": 9939,
     "title": "【开源自荐】：免费TTS，google/edge/openai",
     "content": "项目：https://github.com/lenML/oai-tts-router\n简介：一键部署，免费使用 google/edge/openai tts，满足基础TTS需求\n亮点：提供 openai tts api 入口，方便对接\n原理：逆向公开api",
@@ -786,29 +810,5 @@
     "created_at": "2026-05-05T03:07:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9840"
-  },
-  {
-    "id": 9839,
-    "title": "〖工具自荐〗AI Vocal Remover：一个更聚焦的工作流工具",
-    "content": "## 名称\n\nAI Vocal Remover\n\n## 链接\n\nhttps://ai-vocal-remover.com/\n\n## 一句话简介\n\n一个在线 AI 人声分离工具，支持上传本地音频，在浏览器里预览 vocal / instrumental 两路结果，再下载需要的 MP3/WAV 输出。\n\n## 详细介绍\n\nAI Vocal Remover 主要解决一个很具体的音频处理场景：想从歌曲或音频里快速分离人声和伴奏，但又不想在下载之后才发现结果不可用。\n\n当前页面把流程收得比较短：\n\n1. 上传本地音频文件；\n2. 等待 AI vocal separation 完成；\n3. 分别预览 vocal 和 instrumental；\n4. 确认结果可用后下载 MP3/WAV。\n\n这个工具更适合练歌、伴奏整理、翻唱练习、短视频剪辑前的快速预听等场景。它的重点不是承诺“完美去人声”，而是把上传、处理、预览和下载这几个步骤放在一个清楚的路径里。\n\n## 使用前说明\n\n音频分离质量会受源文件质量、混音方式、人声与伴奏重叠程度影响；用户也应该只上传自己有权处理的音频。",
-    "created_at": "2026-05-04T22:50:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9839"
-  },
-  {
-    "id": 9838,
-    "title": "【开源自荐】OctoCounts – fast SLOC reports for public GitHub repos",
-    "content": "一个可以快速帮你获取 public github repo SLOC （Source lines of code 源代码行数）的小工具\n\n背景：本来想要 vibe coding 一个 nes 模拟器，想先看下已有的开源项目代码什么规模，但 github 不能直接查看 SLOC，还得自己 clone repo 到本地用其它工具数，于是 vibe 了一个快速获取 SLOC 的小工具，直接粘贴 repo url 就可以快速获取 SLOC，也能生成 screenshot share SLOC 详情\n\n<img width=\"400\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6513c8ba-ffeb-4e63-889a-980289589c15\" />\n\nonline tool: https://octocounts.com/\nsource code: https://github.com/huanglizhuo/OctoCounts",
-    "created_at": "2026-05-04T17:22:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9838"
-  },
-  {
-    "id": 9837,
-    "title": "[工具推荐]Amytis —— 一个开源而优雅的博客/数字花园网站框架",
-    "content": "前段时间，完全使用 Claude Code + Gemini CLI + Codex 编程，提交了 800 多个 Commit ，打造了一个让自己较为满意的静态博客及数字花园框架 Amytis。这里推荐下自己的这个纯 AI 编程作品。\n\nAmytis 是一个功能强大、设计优雅、交互友好的开源数字花园框架，用于构建知识空间、博客、展示页面或企业知识库等。它基于 Next.js 16 、Tailwind CSS v4 和 Bun 构建，强调 Markdown 优先、文本优先，保障作者对内容的长期所有权，在不损失功能和性能的前提下追求极致简洁与优雅。\n\n[在线演示](https://amytis.vercel.app/)\n\n<img width=\"2910\" height=\"2130\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a6514691-745f-458d-bf82-f76c5536df37\" />\n\nAmytis 围绕一条从碎片想法到精炼知识的路径来帮助个人或组织构建完整的数字花园体系：\n\n- Flow （心流）：记录每日想法与头脑风暴的灵感碎片。\n- Articles （文章）：将单个想法打磨成清晰的文章。\n- Series （系列）：把相关文章串联为一条主题叙事。\n- Books （书籍）：将成熟知识沉淀为章节化结构的书籍。\n- 每个阶段都建立在上一阶段之上，数字花园会自然生长。\n\n### 设计理念\n\n- 简洁优雅：排版、间距、配色开箱即用，且遵循审美一致性。\n- 内容及文本优先：通过文本文件化写作与发布流程完成创作，不依赖重型 CMS ，内容存储于 Markdown/MDX 文本，结合 Git 进行版本管理，使作者拥有长期所有权并便于平台迁移。\n- Markdown 优先：默认支持 Markdown 及常用扩展语法，同时支持数学、图表、代码和双向链接。\n- 按需启用：site.config.ts 提供模块化开关，仅启用你需要的能力。\n\n### 链接：\n\n- GitHub 源码地址：[hutusi/amytis](https://github.com/hutusi/amytis)\n- 在线预览地址： https://amytis.vercel.app/",
-    "created_at": "2026-05-04T13:13:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9837"
   }
 ]
