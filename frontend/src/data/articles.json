@@ -1,5 +1,13 @@
 [
   {
+    "id": 9930,
+    "title": "【开源自荐】Katamino Tower 百变方块立体塔 3D 拼图求解器（MRV 回溯 + 3D 交互可视化）",
+    "content": "项目地址：https://github.com/niyongsheng/katamino-tower\n\n---\n\n玩过这款 Puzzle 的人都知道，包装上的「6岁+」多少有点挑衅的意味。\n\n15 块异形积木，绕中心立柱填满 5 层圆柱，每层 12 列。规则很简单，拼接过程就有多折磨人。\n\n**第一步，写 C 求解器。** 搜索空间约 250 万种环配置。用 MRV 回溯算法每次挑候选最少的格子下手，10~200 次尝试就能找到一个解。顺便加了 OpenMP 多线程，-a 参数一键穷举所有解。\n\n**第二步，做 3D 可视化。** 光有答案还不够直观，最好是能可视化拼接结果。用 Three.js 做了个交互页面，拖拽旋转视角、R 键翻转，自动求解。\n\n```bash\ngcc -o katamino_tower_solver katamino_tower_solver.c && ./katamino_tower_solver\nopen katamino_tower_solver.html\n```\n\n![katamino-tower](https://raw.githubusercontent.com/niyongsheng/katamino-tower/main/katamino-tower.png)\n",
+    "created_at": "2026-05-14T00:24:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9930"
+  },
+  {
     "id": 9929,
     "title": "【教程自荐】传统程序员转型 AI 工程师 教程｜帮你提升竞争力",
     "content": "地址：[专栏地址](https://xiaobot.net/p/earnByYourself)\n\n**一句话介绍**：一份面向想转型 AI 应用工程师的体系化教程，从提示词工程到 Multi-Agent 架构，把\"会调 API\"做成\"能交付可上线的 AI 产品\"，提供 24 讲硬核干货 + 配套社群与持续更新。\n\n# 这份教程在解决什么问题\n\nAI 应用开发岗位需求暴涨，难的是从\"跑通 Demo\"到\"做出能上线的 AI 产品\"之间的工程鸿沟。市面上要么是零散的 Prompt 技巧，要么是脱离实战的理论课。这份专栏把 AI 工程师能力当作一条完整路径来讲，读完之后会更像\"能独立设计和落地 AI 产品的工程负责人\"，而不只是\"用过 ChatGPT 的开发者\"。\n内容覆盖（共 24 讲 + 持续加餐）\n\n- 觉醒篇（1-4 讲）：AI 工程师职业全景、全栈思维、Vibe Coding 新范式、提示词工程进阶\n- 基础篇（5-8 讲）：API 调用避坑、多模态模型全览、多模态聊天应用实战、上下文工程\n- 进阶篇（9-13 讲）：RAG 全貌与语义搜索、数据切块与 Embedding、向量库与检索优化、电商智能客服从 0 到 1\n- 提效篇（14-18 讲）：Coze / Dify 选型对比、低代码工作流编排、Dify 企业级 LLMOps 与私有化部署\n- 高阶篇（19-23 讲）：34 行代码实现 ReAct Agent、用 LangChain 造精简版 Claude Code、LangGraph Multi-Agent 写作小组、深度研究助手大作业\n- 跨越篇（24 讲 + 加餐）：AI Agent 开发简历指导、面试经验、AI 工程师职业护城河\n\n每月持续更新最新 AI 技术与工具教程，包括 Claude Code 高效编程（Skills / SubAgent / hooks / plugin）、Harness Engineering 与 SDD 框架对比（SpecKit / BMAD / OpenSpec / Superpowers）、国内开通官方 Claude 会员实操步骤等。\n\n# 适合谁读\n\n- 想从传统开发转型 AI 应用工程师，但不知道从哪学起的开发者\n- 已经会调 API、但卡在\"做 Demo 容易、做产品难\"的工程师\n- 希望系统掌握 RAG、Agent、Multi-Agent 等企业最看重技能的求职者\n- 想了解 Coze / Dify / LangChain / LangGraph 主流框架实战用法的全栈开发者\n\n# 资源\n\n专栏目录：[目录地址](https://xiaobot.net/post/7c1ea78f-367b-4fdb-9c8b-8cda3a11eee0)\n\n加餐与最新工具教程持续更新中\n\n**希望对想认真做 AI 工程化的同学有帮助，欢迎交流和反馈**。",
@@ -804,13 +812,5 @@
     "created_at": "2026-05-03T00:44:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9828"
-  },
-  {
-    "id": 9827,
-    "title": "【网站自荐】ClipTrend.ai - 一键复刻爆款 AI 视频，TikTok / YouTube 趋势模板化",
-    "content": "每周追踪 TikTok / YouTube 上正在爆的 AI 视频效果，把每一个爆款做成一键可用的模板。用户选模板 → 上传一张自拍（或粘贴一条 TikTok 链接）→ 30-60 秒出片。不用写 prompt、不用选模型。\n\n网站：https://cliptrend.ai/\n\n和其他 AI 视频生成工具的核心区别：\n\n-每张模板卡都带 3-5 个真实爆款源视频：点开任一卡片能看到 TikTok / YouTube 上同款效果的真实视频，每条附实时播放量。在花积分前可以验证这个 trend 是真的火。例：末日战士 280 万播放、怪物猎人 1100 万、毛绒动物跳舞 8180 万。 而且复刻视频可以有各式各样的变体，可以通过选择不同预设或是输入文字 prompt来生成类似但不完全相同的模板效果\n\n-10+ 顶级 AI 模型自动路由：底层接了 Seedance 2 / Kling 3 / Veo 3.1 / Wan 2.7 / Nano Banana Pro / GPT Image 2 等。用户不用选模型，系统按效果类型自动路由——舞蹈给 Veo，变身给 Seedance，角色给 Nano Banana。背后的工作流全都配好并且通过大量测试确保效果稳定。\n\n-粘贴 TikTok URL 直接复刻动作**：把任意 TikTok 视频链接粘进来，系统会从那条视频里提取动作（舞蹈、武打、运镜），套到你的角色上。链接进，动作出，不用描述、不用重新上传。\n\n-Seedance 2 真人脸 reference 全 plan 解锁：Seedance 2 是目前真人脸变换最强的模型，大多数消费级 AI 视频工具会屏蔽真人脸或悄悄换成 AI 生成的脸。ClipTrend 默认开放，包括 $14 入门档。\n\n-生成前可控：花积分前先看一张静态图（模型即将生成的画面），不满意可以现场改 variant 描述（\"更黑暗一点\"、\"把舞蹈换成慢慢走过来\"），预览满意再 generate。无水印，商业授权。\n\n-50+ 模板上线，累计追踪 trend 播放 1.2 亿+，每周更新新 trending。免费试用，无需信用卡。月付首月 $14（1400 积分约 60 个视频，正常 $27.99/月），年付 $13.99/月（16,800 积分一次发放），相同积分量下比同类竞品便宜 20% 以上。\n\n-也包含多种最新模型例如 gpt2, nanobanana2, seedance2, kling 3.0等，也包括各类常用能力包括角色替换、换脸、动作控制等\n\n\nyoutube介绍视频 https://www.youtube.com/watch?v=4S-S5WFW4sg\n\n<img width=\"3022\" height=\"1508\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/013807a4-0bbb-41cf-9efe-e228717cc609\" />\n\n/n\n\n<img width=\"3436\" height=\"1281\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ead99ff0-a1d4-446e-94c4-6856f4e5c392\" />\n\n/n\n\n<img width=\"3018\" height=\"1508\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/690e3e8f-a62e-4728-888e-5ec0d69b5ba9\" />",
-    "created_at": "2026-05-02T10:40:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9827"
   }
 ]
