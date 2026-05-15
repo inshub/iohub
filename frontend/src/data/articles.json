@@ -1,5 +1,21 @@
 [
   {
+    "id": 9944,
+    "title": "【文章自荐】430MHz 频段：网红对讲机是如何给你埋陷阱的",
+    "content": "## 标题\n430MHz 频段：网红对讲机是如何给你埋陷阱的\n\n## 链接\nhttps://blog.mfwt.top/index.php/archives/1304/\n\n## 简介/概括\n你能看到的那些网红对讲机，究竟是怎么给你挖坑的？更具体的说，这些对讲机所使用的频段（430-440MHz，144-148MHz）并不是供普通用户使用的，普通用户直接上手的话，会引入很明显的合规性风险。\n\n出现这样的情况，原因有很多，包括设备原因，合规规定滞后等原因。文末我也给了一些合规替代品的建议，但老实说，恐怕终究很难撼动目前这些网红对讲机的统治地位。\n\n## 备注\n我不确定『无线电』这种与IT行业没什么关系的文章是否会有一点点偏题，但考虑到今天的周刊里提到了mesh Lora网络，个人认为应该也是可以的。\n\n本文无AI生成内容。\n\n谢谢。",
+    "created_at": "2026-05-15T01:32:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9944"
+  },
+  {
+    "id": 9943,
+    "title": "docs(issue-396): fix typo",
+    "content": null,
+    "created_at": "2026-05-15T00:32:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/9943"
+  },
+  {
     "id": 9942,
     "title": "【开源自荐】Job Bro - 基于 Chrome 内置 AI（Gemini Nano）的职位分析助手",
     "content": "<img width=\"373\" height=\"458\" alt=\"setting\" src=\"https://github.com/user-attachments/assets/91d4ee3a-1c19-411d-ab0b-0089cfabe81c\" />\n\n**项目地址**：https://github.com/aeroxy/job-bro\n\n**一句话**：\n> Chrome 扩展，用 AI 分析 LinkedIn 职位描述 —— 五个维度评估（薪资匹配、技能匹配、成长潜力、偏好匹配、风险评估），支持 ChatGPT/Claude 云端推理与 Gemini Nano 本地推理双后端，智能对话追问。开启 Chrome AI 后无需 API Key、零网络请求、数据不出设备。\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4a9859d6-5053-48ed-980a-a3605bdff8e5\" />\n\n## 🚀 亮点\n\n### 1. Chrome 内置 AI（Gemini Nano）作为第二推理后端\n\n> **问题**：原版 Job Bro 仅支持 OpenAI 兼容的云端 API，每次分析职位都需要调用远程模型，有网络依赖和 Token 费用。\n> **解决**：新增 Chrome 内置的 Gemini Nano 作为第二推理后端。用户可以在设置中一键切换 Cloud / Chrome AI，无需任何配置。\n\n```\n设置 → 后端选择\n[Cloud (OpenAI)] ←→ [Chrome AI]\n```\n\n#### 为什么用 Chrome AI？\n\n| 方案         | API Key | 网络依赖 | 启动速度     | Token 费用 | 数据隐私     |\n|--------------|---------|----------|--------------|------------|--------------|\n| Cloud (OpenAI)| 需要    | 需要     | 无冷启动     | 按量付费   | 数据上云     |\n| Chrome AI    | 不需要  | 不需要   | 首次需下载 4GB | 免费       | 数据不出设备 |\n\n### 2. 五种 AI 评估 + 自动简历生成\n\n打开 LinkedIn 职位页面，在侧边栏一键分析，自动生成五个维度的评估报告：\n\n| 维度 | 说明 |\n|------|------|\n| **薪资评估** | 基于职位、地点、经验要求估算薪资范围，与用户期望对比 |\n| **技能评估** | 对比职位要求与用户技能栈，标注匹配 / 缺失 / 额外技能 |\n| **偏好评估** | 远程 / 混合 / 办公、行业、公司规模等偏好匹配度 |\n| **风险评估** | 裁员历史、招聘活跃度、职位稳定性等风险信号 |\n| **成长评估** | 技能提升空间、职业路径、学习资源等成长潜力 |\n\n完成后还可一键生成定制化的求职信 / 简历，或对报告内容进一步追问。\n\n### 3. 持久化对话会话\n\nChrome AI 的 API 是有状态的，利用这一特性实现了持久化会话：\n- 同一份报告内的多次追问复用同一个模型会话\n- 无需每次携带完整历史，只发送新问题，大幅减少延迟\n- 系统提示变更时自动重建会话\n\n### 4. 云端 + 本地自定义提示词\n\n由于 Gemini Nano 与 GPT-4o 能力差异较大，两个后端各自保存独立的自定义提示词。用户在设置中切换后端时，提示词编辑区会自动切换对应的内容。\n\n### 5. 零配置，开箱即用\n\n- Chrome Web Store 安装后直接使用（Cloud 后端需填 API Key）\n- Chrome AI 后端无需 API Key，下载模型即可\n- 分析结果保存到 IndexedDB，可随时回溯历史报告\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5c59b291-c23c-4bf4-9761-b1011b8bc42f\" />\n\n## 🧗 使用方式\n\n1. 安装 Chrome 扩展（或 `git clone` + `bun install && bun dev`）\n2. 打开任意 LinkedIn 职位页面\n3. 点击侧边栏 Job Bro 图标\n4. 点击「分析」，等待 AI 评估完成\n5. 查看报告，或进一步对话追问\n\n**源码**：https://github.com/aeroxy/job-bro\n\n**Chrome AI 前提**：Chrome 127+，启用 `chrome://flags/#prompt-api-for-gemini-nano`，下载模型（约 4GB，浏览器管理）\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/990f1c37-7254-4a9c-be84-51a3fe46304f\" />\n\n## 🙏 致谢\n\n- Chrome 生态的启发\n- 感谢社区反馈和贡献\n\n欢迎 Star、提 Issue、贡献新功能。让求职分析像打开一个网页一样简单。\n",
@@ -114,7 +130,7 @@
   {
     "id": 9928,
     "title": "【开源自荐】BioinfoFlow：在个人电脑上运行 WGS 全基因组测序，亲手了解自己的基因组",
-    "content": "项目地址：https://github.com/lewismessthecode/BioinfoFlow  \n项目文档：https://deepwiki.com/lewismessthecode/BioinfoFlow  \n官网：https://bioinfoflow.com\n\nBioinfoFlow 一个现代的 Agentic 生物信息流程分析平台。\n\n**配一张 RTX 4080 16GB 显存以上的显卡，你就可以通过 BioinfoFlow 在个人电脑上运行 WGS 全基因组测序，亲手解读自己的基因组。**\n\n生物信息学的工具体验长期停在上个时代——界面陈旧、操作繁琐、学习曲线陡到劝退。\n\nBioinfoflow 把现代软件的优雅带进生物信息学，再让 Agent 填补生物学与计算机科之间的鸿沟。\n\nBioinfoflow 基于 Nextflow 与 WDL：生信流程注册一次，项目数据收进同一个 BIOINFOFLOW_HOME，运行交给统一调度，DAG、日志、资源压力与产出都在同一界面里。\n\n作为在计算层之上统一的产品界面，Bioinfoflow 的目标是让计算生物学人人可用 —— **用自然语言，进行生物信息学分析。**\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/lewismessthecode/BioinfoFlow/main/assets/product-preview.gif\" alt=\"BioinfoFlow product preview\" width=\"100%\" />\n</p>\n\n\n",
+    "content": "项目地址：https://github.com/lewismessthecode/BioinfoFlow  \n项目文档：https://deepwiki.com/lewismessthecode/BioinfoFlow  \n官网：https://bioinfoflow.com\n\nBioinfoFlow 一个现代的 Agentic 生物信息流程分析平台。\n\n**配一张 RTX 4080 16GB 显存以上的显卡，我们的目标是你可以通过 BioinfoFlow 在个人电脑上运行 WGS 全基因组测序，亲手解读自己的基因组。**\n\n生物信息学的工具体验长期停在上个时代——界面陈旧、操作繁琐、学习曲线陡到劝退。\n\nBioinfoflow 把现代软件的优雅带进生物信息学，再让 Agent 填补生物学与计算机科之间的鸿沟。\n\nBioinfoflow 基于 Nextflow 与 WDL：生信流程注册一次，项目数据收进同一个 BIOINFOFLOW_HOME，运行交给统一调度，DAG、日志、资源压力与产出都在同一界面里。\n\n作为在计算层之上统一的产品界面，Bioinfoflow 的目标是让计算生物学人人可用 —— **用自然语言，进行生物信息学分析。**\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/lewismessthecode/BioinfoFlow/main/assets/product-preview.gif\" alt=\"BioinfoFlow product preview\" width=\"100%\" />\n</p>\n\n\n",
     "created_at": "2026-05-13T14:25:31Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9928"
@@ -794,21 +810,5 @@
     "created_at": "2026-05-05T06:01:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9842"
-  },
-  {
-    "id": 9841,
-    "title": "【开源自荐】Sumeru写作——一套用于小说写作的Skill",
-    "content": "[Sumeru 须弥写作](https://github.com/xindoo/sumeru)一个面向长篇小说创作的 AI Skill 集合，其核心理念是将软件工程中的“模块化”与“可编排化”思想引入文本创作，通过流程与约束来完成复杂的长链路生成任务。\n\n## 背景与核心逻辑：\n长篇小说创作与大型软件项目的开发存在高度共性：两者最大的挑战往往并非初期的灵感，而是如何将宏大目标拆解、持续推进，并保持设定的全局一致性。Sumeru 借鉴了面向 Coding 的 AI Agent Skill架构，将“玄学式”的文学创作转化为“工程式”的系统推进。\n\n项目将创作流程拆解为 7 个边界清晰的独立模块（世界观构建、选题、大纲、章节写作、逻辑审查、润色、完稿），构建了一条可控的生产线。\n\n## 项目特点：\n\n**流程工程化：** 摆脱传统的“单次 Prompt 反复重试”模式，每个模块对应明确的产出与边界。\n**状态持久化：** 所有的中间状态（设定、大纲、细纲等）均沉淀至本地，支持断点续传、复用与回滚。\n**合理的任务调度：** 核心决策（如世界观设定、主线节奏）前置确认，重复性的体力活（如章节内容生产、一致性审查与修复）交由 AI 并行处理。\n\n## 实践验证：\n为了验证工具在长链路下的可靠性，我进行了一次压力测试：利用 Sumeru 完整跑通了从选题到完稿的全流程，成功生成了一部 320 章、超 100 万字的长篇小说《古物记》，验证了该架构能有效降低启动成本并管控批量生成的副作用。\n\n## 相关链接：\n\n开源项目地址：[https://github.com/xindoo/sumeru](https://github.com/xindoo/sumeru)\n演示效果（《古物记》阅读站点，当前还有其他两部AI生成的小说）：[http://opennovel.zxs.io/](http://opennovel.zxs.io/)\n项目设计思路与总结文章：[https://blog.csdn.net/xindoo/article/details/160780684](https://blog.csdn.net/xindoo/article/details/160780684) \n\n希望该项目能为关注 AI 文本生成、智能体工作流以及个人提效的开发者们提供一些新的思路与参考。\n\n非常感谢！",
-    "created_at": "2026-05-05T03:19:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9841"
-  },
-  {
-    "id": 9840,
-    "title": "推荐 OpenClaw Monitor：开源 AI Agent 实时监控面板",
-    "content": "## OpenClaw Monitor\n\n开源地址：https://github.com/flik2002/openclaw-monitor\n\n一款专为 OpenClaw AI Agent 设计的**实时监控面板**，类似 Claude Code 的后台仪表盘。\n\n### 核心功能\n\n- **Gateway 状态监控** — 实时健康检查\n- **Token 用量追踪** — 每个会话的 AI 消耗\n- **消息趋势图** — 对话量可视化\n- **会话指标** — Agent 活动实时统计\n\n### 技术栈\n\n- 前端：Vue 3 + Element Plus + ECharts\n- 后端：Express + SQLite\n- 纯自托管，不依赖云服务\n\n### 为什么值得推荐\n\n目前 OpenClaw 在国内有大量用户，但缺乏好用的监控工具。这个项目填补了这个空白，让用户可以直观看到 AI 消耗、Agent 运行状态，适合个人开发者和小团队自用。\n\n---\n\n开源项目，欢迎试用 ⭐",
-    "created_at": "2026-05-05T03:07:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9840"
   }
 ]
