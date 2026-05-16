@@ -1,5 +1,13 @@
 [
   {
+    "id": 9952,
+    "title": "〖工具自荐〗一款简约，纯粹的 AI 工具导航站",
+    "content": "专门收集和整理 常用 AI 工具的网站。现在市面上的 AI 工具越来越多，ChatGPT、Midjourney、Stable Diffusion 这些名字你可能都听过，但真要找一个适合自己的工具，往往要翻半天。\n\n这个网站就是帮你解决这个问题的——它把各种 AI 工具按类别整理好，你打开网站就能看到，点一下就能用。\n\n网站首页按分类展示工具，比如 AI 写作、AI 绘图、AI 编程、AI 视频等等。每个分类下面列出对应的工具，有工具名称、简介和图标，一目了然。看到感兴趣的工具，点进去就能看到详细介绍，包括这个工具能干什么、有什么特色、适合什么场景、常见问题怎么解决。\n\n工具地址：https://ai.fly63.com",
+    "created_at": "2026-05-16T03:30:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9952"
+  },
+  {
     "id": 9951,
     "title": "〖工具自荐〗EasyCodex：用 Android 手机远程控制本地 Codex 编程智能体",
     "content": "大家好，自荐一个开源工具：EasyCodex。\n\n项目地址：https://github.com/Ryan-Laws/easycodex  \n下载地址：https://github.com/Ryan-Laws/easycodex/releases/latest\n\nEasyCodex 是一个本地优先的 Codex 远程控制工具。它由桌面端中继和 Android 手机端组成：在电脑上运行 EasyCodex Relay，手机扫码连接后，就可以在手机上创建、恢复和控制 Codex 编程智能体会话。\n\n它解决的主要问题是：Codex 适合长时间运行编程任务，但人不一定一直坐在电脑前。EasyCodex 可以让用户在手机上查看 Codex 的实时输出、继续发送消息、处理审批提示、查看 Git 状态和 diff，甚至提交选中的文件。\n\n主要功能：\n\n- 用 Android 手机远程控制本地 Codex 会话。\n- 支持创建、恢复、中断、停止和归档任务。\n- 实时查看 Codex 的流式回复、计划、命令输出和文件变更。\n- 在手机上处理 Codex 的审批提示和用户输入请求。\n- 浏览工作区、查看 Git status/diff、预览文件，并提交选中的改动。\n- 支持二维码和 `easycodex://connect` 深链接配对。\n- Codex 和源码仍然运行在自己的电脑上，不需要把代码或凭据交给第三方服务。\n\n目前已经提供 Windows、macOS、Linux 桌面端中继，以及 Android APK。普通用户可以直接从 Release 页面下载安装，不需要克隆仓库。\n\n技术栈：\n\n- Android：Kotlin、Jetpack Compose、Material 3\n- 桌面端：Electron\n- 中继服务：Node.js、TypeScript、WebSocket、Codex app-server JSON-RPC\n\n这个工具比较适合经常使用 Codex / AI coding agent 的开发者：电脑负责执行任务，手机负责随时查看、接管和审批。希望能推荐给周刊读者，谢谢。",
@@ -124,7 +132,9 @@
     "title": "【开源自荐】Zephyr — 基于 Rust + Tauri v2 的安全 Mihomo 代理客户端",
     "content": "## 项目简介\n\n**Zephyr** 是一款以安全为第一设计原则的跨平台 Mihomo（Clash Meta）桌面代理客户端，采用 Rust 后端 + 原生 JavaScript 前端架构，基于 Tauri v2 框架构建。\n\n**GitHub 地址：** https://github.com/Juwan-Hwang/Zephyr\n\n## 为什么值得关注\n\n### 1. 安全架构（13 层纵深防御）\n\n这是 Zephyr 最大的差异化特点。项目实施了完整的纵深防御策略（Defense in Depth），覆盖全攻击面：\n\n- **CSP 内容安全策略**：前端禁止 eval 和内联脚本，网络连接严格限制为本地 Mihomo 内核通信，前端无法直连外网\n- **Tauri v2 最小权限模型**：明确拒绝授予文件系统、命令执行、网络请求、剪贴板等高危权限\n- **SSRF 完整防护链**：协议白名单 + DNS Pinning + 私有 IP 拦截（IPv4/IPv6）+ 重定向链全链路复检\n- **AES-256-GCM 加密存储**：敏感数据加密，密钥与机器指纹绑定\n- **CI/CD 安全流水线**：集成 cargo audit、semgrep、dependency-review 等 10 项自动化安全检查\n\n详细安全文档：https://github.com/Juwan-Hwang/Zephyr/wiki/Security\n\n### 2. 技术选型\n\n相比 Electron 方案，Zephyr 选择 Tauri v2 + Rust：\n\n- 不嵌入 Node.js 运行时，攻击面大幅缩小\n- 内存占用更低，安装包体积更小\n- Rust 后端提供编译期内存安全保证\n\n### 3. UI 设计\n\n极简设计理念，无边框窗口 + 系统托盘，界面清爽优雅。\n\n## 项目数据\n\n- ⭐ 200+ GitHub Stars\n- 📦 600+ 下载量\n- 🔧 10 个 Release 版本\n- 💻 支持 Windows / macOS（Intel & Apple Silicon）/ Linux\n- 📄 MIT 开源协议\n\n## 适合谁\n\n- 对代理客户端安全性有要求的用户\n- Rust / Tauri 技术栈的学习参考\n- 追求轻量、美观桌面工具的用户\n",
     "created_at": "2026-05-14T10:29:10Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9936"
   },
   {
@@ -148,7 +158,9 @@
     "title": "【开源自荐】stock-sdk：浏览器前端和 Node.js 都能直接调用的股票行情 SDK，零依赖、TypeScript 全类型、单测覆盖",
     "content": "项目地址：https://github.com/chengzuopeng/stock-sdk\n官方文档：https://stock-sdk.linkdiary.cn/\n在线 Playground：https://stock-sdk.linkdiary.cn/playground/\nNPM：https://www.npmjs.com/package/stock-sdk\n看板 Demo：https://chengzuopeng.github.io/stock-dashboard/\n\n> 一句话：**给前端工程师的股票行情 SDK** —— 不写 Python、不搭后端、不开代理，浏览器里就能直接拉 A 股 / 港股 / 美股 / 基金 / 期货 / 期权 的实时行情和 K 线。\n\n### 背景\n\n股票行情工具几乎都活在 Python 生态里（AkShare、tushare、baostock 一统天下）。前端做个看板、写个 Demo、跑个量化原型，要么得搭一层 Python 后端，要么得自己去戳腾讯/东方财富/雪球的接口、踩 GBK 编码、CORS、JSONP、并发限流的所有坑。\n\nstock-sdk 把这些活全干完了：浏览器端用 Script Tag Injection（JSONP）跨域，Node.js 端走标准 fetch，同一份 API 两端跑。\n\n### 亮点\n\n- 🌐 **浏览器 + Node.js 双端**：同一份代码，浏览器里靠 JSONP 直连数据源，没有 CORS，不用配代理\n- 📦 **零依赖、轻量**：发布包 gzip 后 ~27 KB，ESM + CJS 双格式\n- 🧠 **完整 TypeScript 类型**：所有接口、字段、错误码都有类型，IDE 自动补全\n- 📈 **覆盖面广**：A 股、港股、美股、公募基金的实时行情；日/周/月 K 线和 1/5/15/30/60 分钟 K 线；当日分时\n- 🔢 **14 个内置技术指标**：MA / MACD / BOLL / KDJ / RSI / WR / BIAS / CCI / ATR / OBV / ROC / DMI / SAR / KC\n- 🏛️ **专业数据**：龙虎榜、北向资金、资金流向、盘口大单、涨停池、大宗交易、融资融券、期货库存\n- 🛡️ **请求治理**：内置重试、限流、熔断、批量并发控制，可按 provider 维度覆盖\n- 🤖 **AI / MCP 就绪**：配套 [stock-sdk-mcp](https://www.npmjs.com/package/stock-sdk-mcp)，一行 `npx` 即可接入 Cursor / Claude Desktop / Gemini / Codex / OpenClaw，内置技术分析、智能选股、市场概览、实时监控 4 个 Skills\n\n### 使用示例\n```ts\nimport { StockSDK } from 'stock-sdk';\nconst sdk = new StockSDK();\n// 浏览器也可直接调用\nawait sdk.getSimpleQuotes(['sh600519']);    // A 股\nawait sdk.getHKQuotes(['hk00700']);          // 港股\nawait sdk.getUSQuotes(['usAAPL.O']);         // 美股\nawait sdk.getKLine('sh600519', 'day');       // K 线\nawait sdk.getNorthboundFlow();               // 北向资金\nawait sdk.getDragonTigerList();              // 龙虎榜\nawait sdk.getAllAShareQuotes();              // 全市场 5000+ 只一次拉\n```\n\n14 个技术指标（MA / MACD / BOLL / KDJ / RSI / ATR / DMI / SAR / KC …）和期货、期权、融资融券都有。完整 TypeScript 类型，发布包 gzip 27 KB。",
     "created_at": "2026-05-14T06:48:59Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9933"
   },
   {
@@ -802,13 +814,5 @@
     "created_at": "2026-05-05T14:22:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9850"
-  },
-  {
-    "id": 9849,
-    "title": "FlipFlow converts PDFs, Word documents, and images into flipbooks",
-    "content": "Software name: FlipFlow \nApplication platform: web \nA brief introduction: FlipFlow converts PDFs, Word documents, and images into flipbooks. \nCore Function: \nTurn your PDF, PowerPoint, and Word documents into\nstunning,interactive flipbooks with FlipFlow.No design skills needed.\nShare your digital publications online instantly. Engage your audience like never before!\n\nWhat is FlipFlow:\nFlipFlow is an AI-powered flipbook maker that instantly converts PDF, PPT, Word, and images into stunning interactive flipbooks and storybooks. No design skills needed — just upload, generate, and share.\n\nPDF to Flipbook & Storybook\nConvert any PDF, PPT, Word, or image into a beautiful page-flipping flipbook or storybook in seconds. Supports pdf to flipbook, ppt to flipbook, word to flipbook, and image to flipbook.\nAI Generate Flipbook & Storybook\nUse AI to auto-generate engaging storybooks and flipbooks from a text prompt. FlipFlow's AI storybook generator creates rich, illustrated digital publications instantly.\nPublish & Share Instantly\nShare your flipbook or storybook online with a single link, embed it on any website, or download it as a PDF. Reach your audience everywhere.\n\n\nFeature:\nPDF to Flipbook Converter\nInstantly convert any PDF into a stunning interactive flipbook with realistic page-turn animations. The fastest pdf to flipbook tool online.\n\nPPT & Word to Flipbook\nTransform PowerPoint presentations and Word documents into engaging flipbooks. Perfect for business reports, proposals, and educational materials.\n\nImage to Flipbook\nCombine multiple images into a beautiful flipbook or photo book with a few clicks. Ideal for portfolios, catalogs, and lookbooks.\n\nAI Generate Flipbook & Storybook\nUse AI to generate a complete storybook or flipbook from a text prompt. Our AI generate storybook engine creates illustrated, engaging digital books automatically.\n\nText to Flipbook & Storybook\nTurn raw text or a story idea into a polished flipbook or storybook. FlipFlow's text to storybook and text to flipbook features make content creation effortless.\n\nShare, Embed & Lead Generation\nPublish your flipbook with a shareable link, embed it on any site, collect leads with built-in forms, and track reader engagement with detailed analytics.\n\nOfficial website: https://flippingbooks.org",
-    "created_at": "2026-05-05T14:21:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9849"
   }
 ]
