@@ -1,5 +1,29 @@
 [
   {
+    "id": 9957,
+    "title": "【开源自荐】chinese-document-writing：让 AI 按中文技术文档规范写作和审校",
+    "content": "大家好，自荐一个开源 AI Skill：chinese-document-writing。\n\n项目地址：https://github.com/yuluo-yx/skills\n\n一句话介绍：\n\n> chinese-document-writing 是一个面向 Codex 和 Claude Code 的中文技术文档写作技能，用来让 AI 按统一规范撰写、改写、润色和审校 README、安装指南、FAQ、接口文档、发布说明和操作手册。\n\n它解决的问题很具体：AI 可以很快写出一段中文说明，但常见问题是标题层级跳跃、句子过长、标点混用、数字写法不统一、术语前后不一致，最后还需要人工重新整理一遍。这个 Skill 把中文技术文档的结构模板、风格规则和交付前自检清单放到一个可复用目录里，让 AI 在处理中文文档时先按文档类型组织内容，再统一表达和格式。\n\n目前仓库里收录的技能是 `chinese-document-writing`，包含：\n\n- `SKILL.md`：定义触发条件、工作流和输出要求。\n- `references/style-rules.md`：中文技术文档风格规则。\n- `references/templates.md`：README、教程、API 文档、发布说明等常见结构模板。\n- `references/checklist.md`：交付前自检清单。\n- `agents/openai.yaml`：客户端展示名称与默认提示词。\n- `scripts/install-chinese-document-writing.sh`：一键安装脚本。\n\n适合的场景：\n\n- 把杂乱的中文 README 改写成正式项目文档。\n- 统一团队文档里的标题层级、标点、数字和术语风格。\n- 把零散笔记整理成安装指南、操作手册或知识库文章。\n- 审校 FAQ、产品说明、接口文档和发布说明。\n\n安装方式：\n\n```bash\ngit clone https://github.com/yuluo-yx/skills.git\ncd skills\nbash scripts/install-chinese-document-writing.sh\n```\n\n默认会同时安装到：\n\n- Codex：`~/.codex/skills/chinese-document-writing`\n- Claude Code：`~/.claude/skills/chinese-document-writing`\n\n也可以只安装到其中一个客户端：\n\n```bash\nbash scripts/install-chinese-document-writing.sh --codex-only\n```\n\n```bash\nbash scripts/install-chinese-document-writing.sh --claude-only\n```\n\n安装后可以这样使用：\n\n```text\n使用 $chinese-document-writing 把这份安装指南改写成正式中文技术文档。\n```\n\n```text\n使用 $chinese-document-writing 审校这份 README，统一标题层级、标点和术语。\n```\n\n这个仓库本质上不是在线服务，也不绑定特定模型；它更像是一套可以放进本地 AI 编程助手里的中文技术写作规范包。当前 Skill 的中文技术文档规范整理参考了 ruanyf/document-style-guide，并针对 AI 写作流程补充了触发条件、模板选择、风格规则和最终自检步骤。\n\n项目许可证为 MIT。它比较适合经常维护中文 README、项目文档、内部知识库、接口文档和发布说明的开发者或团队。\n",
+    "created_at": "2026-05-16T11:31:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9957"
+  },
+  {
+    "id": 9956,
+    "title": "【工具自荐】免费在线去水印工具，不限次数，无广告",
+    "content": "【工具自荐】免费在线去水印工具，不限次数，无广告\n网址：https://jiandan.link/app/image-tools/editing-tools/remove-watermark\n自建模型实现，可以去除各种水印，无广告，无次数限制，去除效果好。",
+    "created_at": "2026-05-16T11:27:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9956"
+  },
+  {
+    "id": 9955,
+    "title": "【开源自荐】Typo：按两次 Esc，修正输错的终端命令",
+    "content": "大家好，自荐一个开源命令行工具：Typo。\n\n项目地址：https://github.com/yuluo-yx/typo\n\n一句话介绍：\n\n> Typo 是一个用 Go 编写的终端命令自动修正工具。输入错命令后，按两次 `Esc`，它会直接把当前命令行替换成更可能正确的命令。\n\n![Typo demo](https://raw.githubusercontent.com/yuluo-yx/typo/main/docs/typo-demo.gif)\n\n我平时在终端里经常遇到这种小问题：`gti status`、`dcoker ps`、`kubectl lgo`、`cd $HOEM/project`。这些错误不复杂，但会打断当前操作。Typo 想解决的就是这个场景：尽量不离开当前命令行，把明显输错的命令原地修好。\n\n例如：\n\n```shell\ngti stauts\n\n# 按两次 Esc 后\ngit status\n```\n\n它也能利用当前 shell 会话里的上下文，例如 alias 和环境变量：\n\n```shell\nalias k=kubectl\nk lgo\n\n# 按两次 Esc 后\nk logs\n```\n\n```shell\ncd $HOEM/project\n\n# 按两次 Esc 后\ncd $HOME/project\n```\n\n主要功能：\n\n- 支持 zsh、bash、fish 和 PowerShell，默认通过 `Esc` `Esc` 触发原地修正。\n- 支持修正主命令、子命令、复合命令、管道命令，以及结合真实运行时报错进行修正。\n- 支持读取当前 shell 会话里的 alias、简单包装函数和环境变量名，作为修正上下文。\n- 支持 `typo learn` 添加个人修正规则，常见习惯可以沉淀到本地。\n- 支持候选菜单：当存在多条有效修正时，可以用数字键或上下键选择。\n- 提供 macOS、Linux、WSL 和 Windows PowerShell 7+ 的原生二进制安装，不需要额外运行时。\n\n快速安装：\n\n```bash\nbrew tap yuluo-yx/typo https://github.com/yuluo-yx/typo\nbrew install typo\n```\n\nmacOS / Linux 也可以用安装脚本：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/yuluo-yx/typo/main/tools/scripts/install.sh | bash\n```\n\nWindows PowerShell 7+：\n\n```powershell\niwr -useb https://raw.githubusercontent.com/yuluo-yx/typo/main/tools/scripts/quick-install.ps1 | iex\n```\n\n安装后添加对应 shell 初始化命令，例如 zsh：\n\n```bash\neval \"$(typo init zsh)\"\n```\n\n然后运行：\n\n```bash\ntypo doctor\n```\n\n这个项目的出发点和 TheFuck 类似，都是减少终端里“输错一个字母就要重新输入”的摩擦。不过 Typo 是用 Go 从头实现的，目标是提供一个安装更轻、跨平台、可维护的原生二进制工具。\n\n目前项目已经发布到 `v1.4.0`，许可证为 MIT。它比较适合经常使用终端的开发者、运维同学，以及大量使用 git、docker、kubectl、npm、brew、terraform、cloud CLI 的用户。\n",
+    "created_at": "2026-05-16T11:25:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9955"
+  },
+  {
     "id": 9954,
     "title": "【工具自荐】PatentFig AI：面向专利代理人与 IP 团队的 AI 专利附图工作台",
     "content": "大家好，自荐一个由 TopLocalAI 做的垂直 AI 工具：PatentFig AI。\n\n官网：https://patentfig.ai\n\n在线使用：https://patentfig.ai/generate\n\nPatentFig AI 是面向专利代理人、企业 IP 团队和独立发明人的 AI 专利附图工作台。它把“技术描述/草图/产品照片 -> 专利线稿 -> 多视图 -> 合规检查 -> 导出”的流程放在同一个在线工具里，目标是减少和外部绘图师反复改图的时间。\n\n关键词：PatentFig AI、AI 专利图、AI 专利附图、专利附图软件、patent drawing AI、USPTO/CNIPA/EPO/JPO/KIPO/PCT drawing compliance。\n\n主要功能：\n\n- 从文字、草图、参考图生成黑白专利线稿。\n- 基于同一 anchor 图生成 front / side / top / perspective / exploded / cross-section 等多视图，尽量保持结构一致。\n- 生成流程图、系统框图、机械结构图，并辅助处理 reference numerals / lead lines。\n- 内置 Figure Checker，按 USPTO、CNIPA、EPO、JPO、KIPO、PCT 等常见局方要求做基础合规检查。\n- 支持 DPI Enhance、Vectorize，导出 SVG、TIFF、PDF、PNG 等提交/归档常用格式。\n- 支持用自然语言继续修改局部细节，方便多轮迭代。\n\n为什么做这个产品：专利图有很强的规则性和一致性要求，但传统流程常常要在手绘草图、CAD、绘图师、审稿意见之间来回切换。PatentFig AI 希望把这个流程变成一个可版本化的在线工作台，让小团队和个人发明人也能更快拿到可提交的专利附图初稿。\n\n适合人群：专利代理人、专利工程师、企业 IP / 法务团队、硬件 / 工业设计团队、独立发明人。\n\n希望能推荐给周刊读者，谢谢。\n",
@@ -790,29 +814,5 @@
     "created_at": "2026-05-06T02:33:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9855"
-  },
-  {
-    "id": 9854,
-    "title": "https://howolddoilook.cv/",
-    "content": "Free AI age detection tool with an attractiveness test. Upload a photo and discover how old you look using advanced facial analysis AI.",
-    "created_at": "2026-05-06T02:19:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9854"
-  },
-  {
-    "id": 9853,
-    "title": "【开源自荐】HonoAdmin：基于 Hono / HonoX 的轻量中后台框架，支持 Bun 与 Cloudflare Workers 部署",
-    "content": "## 项目地址\nhttps://github.com/fc221/HonoAdmin\n\n## 项目介绍\nHonoAdmin 是一个基于 Hono / HonoX 的轻量中后台框架，支持 Bun 本地开发和 Cloudflare Workers 部署。\n它的特点是运行时无关：数据库、缓存、文件存储、配置等能力通过 Runtime Adapter 注入到 Hono Context，业务代码不需要直接绑定 Bun、Workers 或某个特定平台。\n项目内置用户、角色、权限、菜单、配置、文件、操作日志、更新管理等后台基础功能；数据库层使用原生 SQL，不强绑定 ORM；API 使用 hono-openapi + zod；UI 使用 Tailwind CSS 和 daisyUI。\n适合用来开发 SaaS 后台、Cloudflare Workers 后台、内部管理系统、用户中心和轻量 CMS。\n技术栈：Hono、HonoX、Bun、TypeScript、SQLite / D1、Tailwind CSS、daisyUI。\n\n## 演示地址\nhttps://hono-admin-demo.wkuola.workers.dev/user/login\nadmin\n123123\n<img alt=\"Image\" src=\"https://nos.netease.com/ysf/19af9c31b6f5addffa8940d2b474ad50.png\" />",
-    "created_at": "2026-05-05T17:06:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9853"
-  },
-  {
-    "id": 9852,
-    "title": "【开源自荐】MiseGUI - 一个管理本地开发环境的软件",
-    "content": "一个面向开发者的 mise 可视化管理软件，通过图形化界面快速管理本地工具链版本以及项目内所依赖工具版本。\n\n<img width=\"1672\" height=\"941\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1fe2b1d6-1a6a-430c-a480-5988ce7ed8b3\" />\n\n<img width=\"905\" height=\"586\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a598c32d-ac69-4042-b5bb-5272d89fb46f\" />\n\n<img width=\"905\" height=\"586\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c81ff2d6-87ef-4613-b600-7d64b826dfc6\" />\n\n## 项目地址\n\n* GitHub地址：https://github.com/likaia/mise_gui/\n",
-    "created_at": "2026-05-05T16:14:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9852"
   }
 ]
