@@ -1,5 +1,29 @@
 [
   {
+    "id": 9964,
+    "title": "【工具自荐】微博克隆器：把个人微博内容备份到本地的 Windows 工具",
+    "content": "# 【工具自荐】微博克隆器：把个人微博内容备份到本地的 Windows 工具\n\n项目地址：https://weibocloner.bytefuse.cn/\n\n微博克隆器是一款面向个人微博资料归档的 Windows 桌面工具，主要用于把自己的微博内容系统备份到本地，方便后续检索、整理和长期保存。\n\n它适合这些场景：\n\n- 账号迁移或停用前，想保留自己的历史微博资料\n- 自媒体运营者需要沉淀历史素材\n- 长期使用微博后，想把图文、评论、转发等内容集中整理\n- 担心平台内容变化，希望先保留一份本地副本\n\n目前支持的内容包括：\n\n- 微博正文备份\n- 图片、视频保存\n- 评论及楼中楼回复备份\n- 转发内容保存\n- 任务管理与备份记录查看\n\n这个工具更偏个人数据归档，不是通用爬虫框架。建议使用时先小范围测试任务，再进行长期备份。\n\n截图：\n\n![创建备份任务](https://weibocloner.bytefuse.cn/images/weibo/home.png)\n",
+    "created_at": "2026-05-17T09:00:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9964"
+  },
+  {
+    "id": 9963,
+    "title": "【开源自荐】cage-bro 消耗不到100MB内存，启动速度1ms的智能体沙盒",
+    "content": "<img width=\"1111\" height=\"470\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe95c4a6-1d8d-4065-80d7-98e9b48cc1c8\" />\n\n一条命令启动 AI Agent 沙盒，内置终端、浏览器、代码执行、文件管理和 MCP 服务器，支持 LangChain / Claude / Codex / 自定义 Agent，不绑定任何厂商。\n\n**项目地址**：https://github.com/aeroxy/cage-bro\n**mock demo**：https://aeroxy.github.io/cage-bro\n\n**一句话**：\n> 给 AI Agent 准备的全功能执行环境 —— 单个 Rust 二进制，自带终端（PTY）、反检测浏览器（Obscura）、Python/Node/Jupyter 代码执行、文件操作、MCP 服务器和 Web Dashboard，REST API + SDK 开箱即用。\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9e384c62-cf10-480a-b441-1330105748f1\" />\n\n## ✨ 亮点\n\n### 1. 框架无关，一个沙盒适配所有 Agent\nClaude Desktop 的沙盒只能给 Claude 用。cage-bro 是通用的：LangChain、CrewAI、OpenAI、自研 Agent 都能通过 REST API 或 MCP 协议接入。一套 API，不挑框架。\n\n### 2. 反检测浏览器内置\n集成 Obscura 隐身浏览器，支持 CDP（Chrome DevTools Protocol）。Agent 可以导航网页、截图、点击元素、输入文本、执行 JavaScript —— 适合需要爬取或自动化网页交互的场景。User-Agent 和流量特征与真实浏览器一致。\n\n### 3. 多语言代码执行 + 完整终端\n- **Python / Node.js**：无状态执行，适合单次计算\n- **Jupyter**：有状态内核，适合需要持久变量的场景\n- **PTY 终端**：完整的 TTY 支持，通过 WebSocket 连接，和真实终端体验一致\n\n### 4. 内置 MCP 服务器，Claude Desktop / Cursor 直连\n```\ncage-bro mcp          # stdio 模式，给 Claude Desktop\ncage-bro mcp --http   # HTTP/SSE 模式，给 Cursor 和远程客户端\n```\n15 个 MCP 工具开箱可用，不需要额外配置。\n\n### 5. 自托管，你的数据你的基础设施\n没有云端依赖，没有账号体系，没有厂商锁定。跑在你自己的机器或服务器上，数据不出网络。\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f276f879-10e7-4543-ada5-ccef5f8bb1bf\" />\n\n## 📦 安装\n\n```bash\n# Rust（推荐）\ncargo install cage-bro\n\n# macOS (Homebrew)\nbrew install aeroxy/tap/cage-bro\n\n# Python CLI\npip install cage-bro-cli\n\n# Node.js CLI\nnpm install -g @cage-bro/cli\n```\n\n首次使用需要安装浏览器组件：\n```bash\ncage-bro setup\n```\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cddfb1d1-e647-48d7-93f5-743750055902\" />\n\n## 💻 使用示例\n\n```bash\n# 启动服务器\ncage-bro serve --port 8080\n\n# 通过 REST API 执行 Shell 命令\ncurl -X POST http://localhost:8080/v1/shell/exec \\\n  -d '{\"command\": \"ls -la\"}'\n\n# 执行 Python 代码\ncurl -X POST http://localhost:8080/v1/code/python \\\n  -d '{\"code\": \"print(2 + 2)\"}'\n\n# 启动浏览器并导航\ncurl -X POST http://localhost:8080/v1/browser/launch \\\n  -d '{\"stealth\": true}'\ncurl -X POST http://localhost:8080/v1/browser/navigate \\\n  -d '{\"url\": \"https://example.com\"}'\n\n# 读取文件\ncurl -X POST http://localhost:8080/v1/file/read \\\n  -d '{\"path\": \"test.txt\"}'\n```\n\nDashboard 在浏览器打开 `http://localhost:8080` 即可使用，包含终端、代码编辑器、文件浏览器和浏览器视图。\n\n---\n\n## 🤖 Agent 友好\n\n### Python SDK\n```python\nfrom cage_bro import CageBro\n\ncage = CageBro(\"http://localhost:8080\")\nresult = cage.shell_exec(\"ls -la\")\nprint(result[\"stdout\"])\n```\n\n### TypeScript SDK\n```typescript\nimport { CageBro } from \"@cage-bro/sdk\";\n\nconst cage = new CageBro({ baseUrl: \"http://localhost:8080\" });\nconst result = await cage.shellExec(\"ls -la\");\nconsole.log(result.stdout);\n```\n\n### MCP 集成（Claude Desktop）\n```json\n{\n  \"mcpServers\": {\n    \"cage-bro\": {\n      \"command\": \"cage-bro\",\n      \"args\": [\"mcp\"]\n    }\n  }\n}\n```\n\n---\n\n## 📜 开源协议\n\nApache-2.0\n\n---\n\n> AI Agent 需要一个安全、可控、功能完整的执行环境来和真实世界交互。cage-bro 把终端、浏览器、代码执行、文件管理打包成一个二进制，通过 REST API 和 MCP 暴露给任何 Agent 框架。不需要绑定 Claude，不需要云端服务，跑在你自己的基础设施上。\n",
+    "created_at": "2026-05-17T08:45:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9963"
+  },
+  {
+    "id": 9962,
+    "title": "【开源自荐】Open Browser Use 任何AI Agent可轻松接入Browser Use",
+    "content": "`open-browser-use` 是平台中立的浏览器操作方案，也是Codex.app最新发布的Chrome Browser Use的开源替代方案。背后的故事可以看这篇[Browser Use详解](https://www.ifuryst.com/blog/2026/open-browser-use/)文章。 技术方案采用的是浏览器插件和open-browser-use cli结合，可通过 JS/Python/Go SDK 或 CLI 的方式接入。\n\nhttps://github.com/user-attachments/assets/bcfba878-f6a8-44b9-b84b-29c7e0285687\n\n相关可见文章：[Browser Use详解](https://www.ifuryst.com/blog/2026/open-browser-use/)",
+    "created_at": "2026-05-17T07:30:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9962"
+  },
+  {
     "id": 9961,
     "title": "【工具自荐】ImageTrans：基于PaddleOCR的图片翻译浏览器插件",
     "content": "项目地址：https://github.com/xulihang/ImageTrans_chrome_extension\n\n项目介绍：\n\nChrome、Firefox的扩展程序，利用WebAssembly，在浏览器中直接运行PaddleOCR，识别图片中的文字进行翻译。可以使用屏幕截图翻译某个区域，也可以直接翻译某张图片，替换原图中的文字为译文。翻译支持接入大模型，可以使用自己的API Key，默认用的免费的GLM模型。\n\nPaddleOCR支持的语种很多，但对竖排文字的效果较差，插件就使用了YOLO模型，定位竖排文字后再调用PaddleOCR或者Tesseract.js进行文字识别。\n\n但浏览器的执行效率还是比较差，所以也支持通过HTTP接入原生桌面程序进行处理。可以批量下载图片到本地程序，支持后期编辑。\n\n",
@@ -790,29 +814,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9862"
-  },
-  {
-    "id": 9861,
-    "title": "【开源自荐】Filecat：最轻量功能又最全的 tcp 内网穿透工具",
-    "content": "项目地址：https://github.com/xiaobaidadada/filecat\n\nFileCat 是一个web文件服务器、也是一个轻量级的服务器管理工具，在文件管理的基础上，filecat集成了很多服务器运维与管理的功能，让你同时拥有一个轻量级的服务器管理工具。\n\n**内网穿透**可以帮助用户，实现多个没有公网的终端设备控制与数据访问。使用非常简单，客户端与服务器被完全集成在软件中，客户端还支持多个服务器的连接配置。\n\n截图\n<img src=\"/xiaobaidadada/filecat/raw/main/doc/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F.png\" alt=\"\" style=\"max-width: 100%;\">",
-    "created_at": "2026-05-06T09:11:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9861"
-  },
-  {
-    "id": 9860,
-    "title": "【开源自荐】PlainTab：把新标签页还给「留白」",
-    "content": "阮一峰老师您好，我是 PlainTab 的作者。这是一款极简的浏览器新标签页插件，支持Chrome/Edge，希望能为追求极简与隐私的开发者/用户提供一个新标签页替代方案。\n\n我自己有桌面洁癖，日常面对最多的除了桌面就是浏览器。但市面上的新标签页插件几乎都塞满了时间、天气、快捷入口和问候语。我常想：打开新标签页只是为了输入地址或搜索，这几秒的停留，为什么不能由我自己定义？\n\n这正是 PlainTab 的初衷：\n> **新标签页只该做好一件事：被打开 → 展示一张赏心悦目的壁纸 → 送你前往它该去的网页。**\n\n## 核心特性\n- **纯粹壁纸体验**：默认同步 Bing 每日壁纸，支持上传任意尺寸原图（基于 IndexedDB 本地存储，**无文件大小限制**）。\n- **零闪烁秒开**：v3 从零重写渲染逻辑，采用双层 DOM 合成架构（背层始终持图 + 前层新图解码后淡入），首帧同步写入缩略图，彻底消除 CSS 背景切换时的灰帧，加载瞬间完成。\n- **真正留白模式**：搜索框、设置图标等所有界面元素均可完全隐藏。提供 `鼠标触发 / 常驻 / 始终隐藏` 三种搜索栏模式，把屏幕彻底还给壁纸。\n- **绝对干净隐私**：纯原生 JavaScript 实现，零外部依赖、零构建步骤。不上传任何数据，不申请敏感权限，所有壁纸与配置仅保存在本地（`localStorage` + `IndexedDB`）。\n- **多语言自适应**：内置 **16 种语言**，自动跟随浏览器环境切换，也可随时手动切换。\n\n## 获取与使用\n| 入口 | 方式 | 推荐地址 |\n|:---|:---|:---|\n| **浏览器扩展** | Chrome / Edge 商店一键安装，自动接管新标签页 | [Chrome 商店](https://chromewebstore.google.com/detail/plaintab-%C2%B7-minimal-new-ta/jhpfjcefcmooplmaimgdafohdlhacjdo) |\n| **在线起始页** | 设为浏览器启动页，跟随 Bing 每日更新 | [plaintab.netlify.app](https://plaintab.netlify.app) |\n| **主页按钮** | 在浏览器外观设置中开启主页按钮并填入 | [kaininx.github.io/PlainTab](https://kaininx.github.io/PlainTab) |\n\n> **进阶玩法**：三个入口彼此隔离，可分别设置不同的本地壁纸或独立跟随 Bing 刷新。启动浏览器、点击主页按钮、打开新标签页，三处壁纸互不干扰，搭配桌面壁纸可实现四屏不重样。\n\n## 开源与共建\n项目完全开源，代码保持极简风格：原生 JS、无框架、无三方依赖、无构建步骤。如果你也受够了信息过载的新标签页，或有更顺手的交互想法，欢迎提交 Issue 或 Pull Request。\n\n **GitHub 仓库**：[https://github.com/kaininx/PlainTab](https://github.com/kaininx/PlainTab)  \n\n希望它能成为你浏览器里的一块「留白」之地。\n\n---\n\n<div align=\"center\">\n\n![PlainTab 预览 1](https://github.com/user-attachments/assets/ec899235-678d-4fcf-a492-2aecfce0c4fd)\n<br>\n![PlainTab 预览 2](https://github.com/user-attachments/assets/e69a7640-3066-491f-a6f0-018464977063)\n\n</div>\n\n---",
-    "created_at": "2026-05-06T09:04:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9860"
-  },
-  {
-    "id": 9859,
-    "title": "【工具自荐】把浏览器书签做成首页，和windows一样的操作体验",
-    "content": "**功能摘要**\n\n1. 可以在首页直接搜索书签\n2. 空间自定义：顶部，侧边栏可以关闭\n3. 内置浏览器：不用再打开多个标签页了\n4. 超干净主页：就一个搜索框，需要某个应用，点击侧边栏的收藏就能新增到首页\n5. 无广告，无需登录，无需关注公众号，开箱即用\n地址：\n[查看详情](https://home.mx2d.cn/)\n[edge安装地址](https://microsoftedge.microsoft.com/addons/detail/%E5%98%89%E7%9F%A5%E9%AB%98%E6%95%88%E9%A6%96%E9%A1%B5/pojlldmfheobpahbbbalcjilfbdbcjbm)\n\n**纯净首页**\n下面的应用都是自己新增的，并非自带\n<img width=\"2555\" height=\"1312\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a6cffd0a-d13a-43e3-be30-39be4b014fa1\" />\n\n\n**本地书签搜索**\n<img width=\"1647\" height=\"1103\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/98fede5b-819b-4dc1-9385-9bcb5fd9b11d\" />\n\n\n**展开侧边栏**\n侧边栏可独立展开或者收起\n<img width=\"2557\" height=\"1311\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/88a5d47a-7f6f-48d8-ac34-30a29e890686\" />\n\n\n**内置浏览器打开页面**\n由于部分页面设置，可能不能在内部打开，双击侧边栏的网页，则可以跳转到新标签\n<img width=\"2559\" height=\"1315\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/21469c64-533b-46c1-a000-7df38ac47bcf\" />\n\n",
-    "created_at": "2026-05-06T08:45:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9859"
   }
 ]
