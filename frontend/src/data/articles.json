@@ -1,5 +1,45 @@
 [
   {
+    "id": 9979,
+    "title": "【开源自荐】AVC：用一行 Unix 管道，把 AI Agent 的文字墙变成可交互弹窗",
+    "content": "AVC（Agent View Controller）是一个 3MB 的 Go 单二进制，给所有 CLI AI Agent（Codex CLI、Claude Code、Cursor、Gemini CLI）加上「视觉交互」的能力。\n\n## 解决什么痛点\n\nAI Agent 在终端里又快又强，但每次需要**人类拍板**——一个重构方案、一个数据库迁移计划、一个多步部署——它们只会甩出 50 行等宽文字让你逐行读，输入 yes/no。\n\n想把第 3 步和第 5 步换个顺序？想跳过第 6 步？想改第 4 步的描述？只能复制出来手改，再粘回去，或者放弃直接说 \"all good\"。\n\n**Agent 的输入是 JSON，Agent 的输出是 JSON，唯独让人审批的那一刻塌缩成了文字。**\n\n## 怎么用\n\n一行 Unix 管道：\n\n```bash\necho '{\"view\":\"plan\",\"title\":\"...\",\"data\":{\"steps\":[...]}}' | avc\n```\n\n读 stdin → 弹原生 WebView 窗口 → 人拖拽/编辑/勾选 → 修改后的 JSON 回到 stdout → Agent 继续按修改后的计划执行。\n\n像 `fzf` 给 CLI 用户带来了「交互式选择」，AVC 给所有 CLI Agent 带来了「交互式视觉审批」。\n\n## 主要特征\n\n- **Agent-agnostic**：不绑定任何 Agent，作为 skill 一键装到 Claude Code / Codex CLI / Gemini CLI / GitHub Copilot\n- **3 MB 单二进制**：启动 < 100ms，零运行时依赖。系统原生 WebView（macOS WKWebView / Linux WebKitGTK / Windows WebView2），当前 macOS 已 CI 验证，Linux/Windows 理论支持欢迎社区验证\n- **7 种 UI 语言**：JSON 里 `lang` 字段切换 en/zh/ja/ko/es/fr/de\n- **Smart Threshold**：内容短于 3000 tokens 自动透传不打断人；长内容才弹窗\n\n## 项目地址\n\nhttps://github.com/study8677/Agent_View_Controller-AVC\n\n## 安装\n\n```bash\nbrew install study8677/tap/avc\n\n# 或一键脚本（自动给所有检测到的 Agent 装上 skill）\ncurl -sSL https://raw.githubusercontent.com/study8677/Agent_View_Controller-AVC/main/install.sh | bash\n```\n\n![AVC plan view demo](https://raw.githubusercontent.com/study8677/Agent_View_Controller-AVC/main/docs/plan-view-demo-cn.png)\n",
+    "created_at": "2026-05-18T13:29:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9979"
+  },
+  {
+    "id": 9978,
+    "title": "【开源自荐】Dimcut 二维时间轴视频剪辑",
+    "content": "Dimcut 是一个探索新型剪辑交互设计的开源项目，非常适合知识类（如技术分享、演讲、播客类）音视频文件的剪辑。\n\n**主要特征和创新点**  \n\n - 二维时间轴；一眼看到更多信息\n - 将文字整合进音视频时间轴；能更快地定位时间点、选中片段，进行剪辑操作\n - 极简便捷；极简 UI 设计，直接在网页中剪辑视频\n\n项目地址：https://github.com/hughfenghen/dimcut\n体验地址：https://fenghen.me/dimcut\n\n<img width=\"2442\" height=\"2194\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/193cb9e0-507c-4e65-8f2e-d92221b3e0cf\" />",
+    "created_at": "2026-05-18T12:18:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9978"
+  },
+  {
+    "id": 9977,
+    "title": "【工具自荐】Yota：一款原生极速的 macOS 开发者 Menu Bar 工具箱",
+    "content": "项目介绍：\nYota 是一款常驻于 Menu Bar 的轻量级应用，主打“原生、极速、智能”。它的设计初衷是为了聚合开发者日常最高频却又最繁杂的微型需求，做到即用即走，不打断心流。\n\n项目地址：https://github.com/chengu61/Yota\n\n应用截图：\n\n<img width=\"1900\" height=\"1300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2dbf3668-c58a-420f-87d9-116bed6c2d49\" />",
+    "created_at": "2026-05-18T11:42:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9977"
+  },
+  {
+    "id": 9976,
+    "title": "【工具自荐】免费的香港驾驶/右舵驾驶规则模拟练习站",
+    "content": "适合哪些用户：想在香港自驾游的内地游客 / 已换香港驾照准备驾驶的人 / 粤车南下政策受益者 / 右舵驾驶国家\n落地页：https://www.person.hk/zh/driving-game\n\n可以在这里学习香港驾驶的道路规则、道路标志",
+    "created_at": "2026-05-18T10:31:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9976"
+  },
+  {
+    "id": 9974,
+    "title": "[开源自荐]: 基于 edge-tts 的语音合成服务，方便部署到 vercel 等 serverless。",
+    "content": "[项目地址](https://github.com/AAA-voc-pifa/edge-tts-server)\n\n上次看到周刊推荐的 edge-tts，感觉非常实用。\n但是作为 js 程序员，我不太熟悉 python 的生态、部署。\n于是，我让 cursor 做了一个 web 服务，可以部署到 vercel 上。\n我只是仔细检查了代码，并整理了文档。\n\n设置好密码，想用的时候，直接在 js 里调用 http api 就可以了。",
+    "created_at": "2026-05-18T08:06:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9974"
+  },
+  {
     "id": 9973,
     "title": "【工具自荐】憩连：用结构化方式整理需要记录的信息与事件",
     "content": "Hi 大家好，我是 Paul，憩连 的开发者。\n\n憩连是一款结构化信息管理工具，专为解决「信息散落各处、难以回溯」的问题而生。\n\n现代人的信息往往分散在手机备忘录、微信收藏、各种 App 之间，想找一条记录时总要翻来翻去。憩连用「空间 → 项目 → 时刻 → 事件 → 子事件」的层级结构，让每一条信息都有明确的归属，一眼看清上下文。\n\n**核心特点：**\n- **逻辑清晰**：层级结构让每件事都在它该在的位置，相关内容自然聚合\n- **灵活整理**：支持按重要性、类别或主题自由组织信息\n- **高效回溯**：查找任意记录，直达目标，不再遗漏\n\n目前我们已经上线 Web 端与 iOS 版本,欢迎大家进行体验。\n\nWeb：www.qliann.com\n\niOS：https://apps.apple.com/cn/app/%E6%86%A9%E8%BF%9E/id6767427321\n\n如有任何建议欢迎联系 hi@qliann.com ❤️\n\n\n",
@@ -772,45 +812,5 @@
     "created_at": "2026-05-07T16:20:54Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9876"
-  },
-  {
-    "id": 9875,
-    "title": "〖工具自荐〗ScoutBrief：社媒增强的 AI 事件搜索工具，生成可复核证据 brief 和 meme 图",
-    "content": "## 网站名称\n\nScoutBrief\n\n## 网址\n\nhttps://scoutbrief.net\n\n## 简介\n\nScoutBrief 是一个面向中文互联网的 AI 事件搜索工具。\n\n它不只是检索网页，而是把公开网页、新闻、微博、B站、抖音、小红书、评论区线索和视频字幕放进同一次事件调研里，自动追源、去重、分层和归因，最后生成可复核的事件 brief。\n\n## 想解决的问题\n\n现在用 AI 搜索一个热点事件，常见结果是把网页信息总结成一段答案。但中文互联网里，很多关键信息并不只在网页里：\n\n- 事件源头可能在微博原帖或短视频里；\n- 争议细节可能藏在评论区；\n- 视频里的关键信息需要看字幕；\n- 同一条信息会被大量搬运、改写和二次传播；\n- 官方回应、媒体报道、社媒讨论之间往往需要放到同一条时间线里判断。\n\nScoutBrief 想做的是“社媒增强的 AI 搜索”：用户输入一个品牌、人物、热点事件或争议说法，等待系统自动整理证据链，而不是自己打开多个平台刷信息流。\n\n## 主要功能\n\n1. 多源事件搜索  \n   综合公开网页、新闻、社媒原帖、评论区、视频字幕等信息源。\n\n2. 证据分层  \n   区分一手证据、关键旁证、舆情信号、重复转述、待核实信息和反证缺口。\n\n3. 事件时间线  \n   按“出现、扩散、回应、被验证”的过程整理事件脉络。\n\n4. 可复核 brief  \n   输出事件摘要、证据卡、来源分层和可继续追问的材料池。\n\n5. meme 图生成  \n   调研完成后，可以基于事件结论生成一张适合复盘、汇报或传播的 meme 图。\n\n## 适用场景\n\n- 内容创作者：快速判断热点是否值得写、从哪里切入；\n- 媒体/研究人员：整理事件背景、时间线和引用材料；\n- 品牌/公关团队：追踪舆情源头、扩散路径和回应窗口；\n- 商业研究/投研/BD：快速判断公司、人物、产品争议中的风险信号。\n\n## 当前状态\n\n目前产品还在内测中，感兴趣可以通过网站访问了解，试用需要邀请码。\n\n也欢迎对中文事件搜索、社媒信息检索、证据分层和 AI 调研工作流感兴趣的朋友一起交流。\n",
-    "created_at": "2026-05-07T13:42:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9875"
-  },
-  {
-    "id": 9874,
-    "title": "[网站推荐]小红书、b站、抖音视频下载网站",
-    "content": "https://www.xhs-download.online/\n\nhttps://rednote-downloader.online/zh\n\nhttps://rednotevideodownload.org/zh\n\nhttps://www.xhs-download.org/zh",
-    "created_at": "2026-05-07T10:08:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9874"
-  },
-  {
-    "id": 9873,
-    "title": "【开源自荐】超强16点vue3+ts拖拽旋转库",
-    "content": " 功能概览\n\n1. 16点位，上下左右+四角八个点位\n2. 边界检测：可以限制出界\n3. 圆角控制\n4. 动态位置指示器，动态显示：宽高，角度，位置\n5. 拖拽旋转无抖动\n6. 动态箭头：随着旋转角度修改箭头指向\n7. 完全开源：MIT协议\n8. 坐标精准，旋转后，坐标始终为左上角那个点\n\n官网：[点我直达](https://ddr.mx2d.cn/)\n开源地址：[点我直达](https://github.com/jazzteam-code/draggable-resizable-rotatable)\n\n### 融入画布\n\n<img width=\"2556\" height=\"1307\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1d12b617-4ddc-4848-90a0-6baec730e472\" />\n\n### 点位展示\n\n<img width=\"446\" height=\"433\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/be4e6883-9178-4ae4-a5ac-113b3b88eb2d\" />\n\n### 动态指示器\n当拖拽调整大小显示宽高，当移动时，显示坐标，当旋转时，显示角度\n<img width=\"1069\" height=\"628\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a20c7d2a-9e00-4352-8383-5f1fe3cf57f9\" />",
-    "created_at": "2026-05-07T08:56:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9873"
-  },
-  {
-    "id": 9872,
-    "title": "【工具自荐】WriteGIF.com：把文字变成手写动画 GIF",
-    "content": "做了个小工具：[WriteGIF](https://writegif.com/) —— 输入文字，一键生成\"一笔一画写出来\"的手写动画 GIF。\n\n特点：\n\n4 款手写字体，颜色 / 速度 / 字号可调\n基于真实字形数据逐笔书写，自然不机械\n浏览器本地渲染，不上传文字\n免注册、无水印、无限次、永久免费\n适合场景： 小红书配图、视频转场、PPT 点缀、电子贺卡、邮件 Newsletter。\n\n🔗 https://writegif.com/\n\n打开即用，欢迎试试 🙌\n<img width=\"496\" height=\"332\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/54d17b36-92e2-45c6-b62c-e3068def31bb\" />",
-    "created_at": "2026-05-07T08:54:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9872"
-  },
-  {
-    "id": 9871,
-    "title": "【开源自荐】vite-plugin-llm-friendly - 让 Vite 站点原生支持 LLM 友好内容输出",
-    "content": "【开源自荐】vite-plugin-llm-friendly - 让 Vite 站点原生支持 LLM 友好内容输出\n\n开源地址：https://github.com/codeusb/vite-plugin-llm-friendly\n\n项目简介：\n一个面向 Vite 的轻量插件，帮你在不改现有页面路由的前提下，为 AI/LLM 提供更易解析的 Markdown 内容和 llms.txt 索引入口，提升抓取质量并降低 token 消耗。\n\n[截图/GIF]\n\n<img width=\"1672\" height=\"941\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c2940ad0-bd74-4ca1-b7b4-f83a0ec5a2b7\" />\n\n\n核心特性：\n- 内容协商输出：同一路径下，浏览器访问返回 HTML，Accept: text/markdown 请求返回对应 .md\n- 内置 llms.txt 支持：兼容 /llms、/llms.txt、/llms-full、/llms-full.txt\n- 自动注入发现链接：可在首页注入 <link rel=\"index\" href=\"/llms.txt\">，便于 AI 工具自动发现站点索引\n\n技术亮点/适用场景：\n基于 Vite 中间件与流式响应实现，零侵入接入现有站点，适合文档站、博客、产品官网、知识库等希望被 AI 助手更准确理解和引用的项目。\n\n开源协议：MIT",
-    "created_at": "2026-05-07T08:23:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9871"
   }
 ]
