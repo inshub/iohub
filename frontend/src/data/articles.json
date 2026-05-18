@@ -1,5 +1,21 @@
 [
   {
+    "id": 9981,
+    "title": "【开源自荐】QUIT: A Human-in-the-Loop Platform for AI Research Automation",
+    "content": "## QUIT -- Quit the Old Way of Doing Research ✨ ##\n**Query · Understand · Implement · Tell** \n\n最近开源了一个项目 —— **QUIT**，做的事情是：给它一个研究方向，它自动完成文献检索、idea 生成、实验代码编写、实验运行，最后输出一篇完整的 LaTeX 论文。\n\nGitHub：https://github.com/Mr-XcHan/QUIT\n\n---\n\n## 它和其他「Auto Research」工具有什么不同？\n\n市面上已有一些类似的工作，但大多数是黑盒 End-to-End 流程——一键启动，等结果，中间不可干预。\n\nQUIT 的设计理念不同：**Human-in-the-Loop 优先**。\n\n\n![img](https://i-blog.csdnimg.cn/devpress/blog/f7ea1156777d47abb65e3e5affefb5ac.png \"#left\")\n\n你可以在任意阶段暂停，查看中间产物（证据卡片、Idea 列表、实验方案、生成代码），手动修改后再继续，之前的步骤不需要重新跑。当然，如果你想全自动跑完，End-to-End 模式也完全支持。\n\n---\n\n## 系统架构\n\n\n四个专职 Agent，由中央状态机协调：\n\n\n![img](https://i-blog.csdnimg.cn/devpress/blog/45e1078e3be84eed83380aea7fd06564.png \"#left\")\n\n\n| Agent | 职责 |\n|---|---|\n| 🗺️ **PlannerAgent** | 将用户的研究方向转化为结构化的 `ResearchBrief` |\n| 🔬 **ResearchAgent** | 检索论文、提取证据卡片、生成并排序 ideas |\n| 🏗️ **BuilderAgent** | 编写实验代码、运行实验、起草论文 |\n| 🔍 **ReviewerAgent** | 独立审查 idea、代码质量和论文草稿 |\n\nReviewerAgent 分离的设计是为了避免「自我确认偏差」——生成和评审不是同一个 Agent。\n\n\n**关键设计：Artifact 驱动**\n\n所有中间产物都是普通文件（JSON / JSONL / LaTeX），Agent 之间不共享对话上下文。这带来三个好处：\n\n- ✅ **可追溯**：每一步的输入输出都有记录\n- ✅ **可复现**：所有 LLM prompt 和原始回复均保存\n- ✅ **可恢复**：任意阶段崩溃或中断后可从断点继续\n\n---\n\n## 成本\n\n使用 DeepSeek-V4-Pro 跑完整个 workflow（检索 → 论文）：**约 10  RMB**。\n\n---\n\n## Pipeline 流程\nPLAN → VALIDATE → RETRIEVE → READ → IDEATE → IDEA_EVAL → BUILD_SPEC → CODE → CODE_EVAL → WRITE → WRITE_EVAL → EXTRACT\n\n支持任意阶段作为起点或终点，比如：\n\n- 只跑文献综述：`PLAN → READ`\n- 从已有结果重新写论文：`WRITE → WRITE_EVAL`\n- 修改 BuildSpec 后重跑实验：`CODE → CODE_EVAL`\n\n---\n\n## 已生成的 Demo 论文\n\n以下论文均由 QUIT 端到端生成：\n\n- *Trust-Region Rectified Flow Offline Actor for Low-Latency Generative Policy Learning*（Offline RL 方向）\n- *Online Pricing and Energy-Aware Dispatch for Mobile Charging Robot-Mediated V2G Services*（机器人 + 能源调度）\n- *Decoupled Macro–Micro Generation for Editable Large-Scale 3D Surface Patterns*（3D 生成方向）\n\n---\n\n\n欢迎大家来体验测试，也非常欢迎 Human-in-the-Loop 的使用反馈 —— 你在哪个阶段介入、怎么修改的、最终结果如何，这类经验对项目改进很有价值。\n\n有问题欢迎评论区讨论 🙌\n\n⭐ [GitHub：Mr-XcHan/QUIT](https://github.com/Mr-XcHan/QUIT)",
+    "created_at": "2026-05-18T15:13:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9981"
+  },
+  {
+    "id": 9980,
+    "title": "【开源自荐】codewiki-cli 无需浏览器即可查询 GitHub 仓库 Wiki",
+    "content": "一条命令查询任意 GitHub 仓库的 Wiki，输出 Markdown 格式，专为 LLM 编码 Agent 和人类设计。\n\n**项目地址**：https://github.com/aeroxy/codewiki-cli\n\n**一句话**：\n> 通过 Google Code Wiki 查询 GitHub 仓库 Wiki，无需打开浏览器。内置 6 小时磁盘缓存，支持 Claude Code 技能集成。\n\n---\n\n## ✨ 亮点\n\n### 1. 为 LLM Agent 优化\n输出干净的 Markdown 到 stdout，GitHub 源码引用自动转换为可点击 URL，架构图保留为 `dot` 代码块。可直接管道传输给任何 AI Agent。\n\n### 2. 无需认证，即装即用\n公共 GitHub 仓库无需任何认证或 API Key。安装后直接使用：\n```bash\ncodewiki read facebook/react\n```\n\n### 3. 智能缓存，高效查询\n6 小时磁盘缓存机制，连续查询同一仓库时跳过引导步骤。缓存位置可自定义：`$CODEWIKI_CACHE_DIR`。\n\n### 4. 多种查询模式\n- `structure`：列出 Wiki 章节标题\n- `read`：导出完整 Wiki 为 Markdown\n- `ask`：用 Gemini 回答关于仓库的问题\n\n### 5. Claude Code 技能集成\n内置 Claude Code 技能，Claude 可自动识别何时使用 `codewiki`：\n```bash\ncp -r skill/codewiki ~/.claude/skills/\n```\n\n---\n\n## 📦 安装\n\n### Homebrew (macOS arm64)\n\n```bash\nbrew install aeroxy/tap/codewiki-cli\n```\n\n### Cargo\n\n```bash\ncargo install codewiki-cli\n```\n\n---\n\n## 💻 使用示例\n\n```bash\n# 列出仓库 Wiki 结构\ncodewiki structure facebook/react\n\n# 导出完整 Wiki\ncodewiki read facebook/react\n\n# 提问关于仓库的问题\ncodewiki ask facebook/react \"How does useEffect work?\"\n\n# 管道传输给 AI Agent\ncodewiki read ast-grep/ast-grep | claude -p \"Summarise the rule engine\"\n```\n\n---\n\n## 🔧 工作原理\n\nCode Wiki 没有公开 API。`codewiki` 使用与 Google 网页前端相同的 `batchexecute` RPC 协议：\n\n- `VSX6ub`：返回仓库完整 Wiki 的结构化 JSON\n- `EgIxfe`：使用 Gemini 回答聊天问题\n\n无需认证。仅支持公共 GitHub 仓库（Code Wiki 本身暂不支持私有仓库）。\n\n---\n\n## 📜 开源协议\n\nMIT\n\n---\n\n> 专为 LLM 编码 Agent 设计的 GitHub Wiki 查询工具。无需浏览器，无需认证，输出干净 Markdown，支持 Claude Code 技能集成。\n",
+    "created_at": "2026-05-18T13:59:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/9980"
+  },
+  {
     "id": 9979,
     "title": "【开源自荐】AVC：用一行 Unix 管道，把 AI Agent 的文字墙变成可交互弹窗",
     "content": "AVC（Agent View Controller）是一个 3MB 的 Go 单二进制，给所有 CLI AI Agent（Codex CLI、Claude Code、Cursor、Gemini CLI）加上「视觉交互」的能力。\n\n## 解决什么痛点\n\nAI Agent 在终端里又快又强，但每次需要**人类拍板**——一个重构方案、一个数据库迁移计划、一个多步部署——它们只会甩出 50 行等宽文字让你逐行读，输入 yes/no。\n\n想把第 3 步和第 5 步换个顺序？想跳过第 6 步？想改第 4 步的描述？只能复制出来手改，再粘回去，或者放弃直接说 \"all good\"。\n\n**Agent 的输入是 JSON，Agent 的输出是 JSON，唯独让人审批的那一刻塌缩成了文字。**\n\n## 怎么用\n\n一行 Unix 管道：\n\n```bash\necho '{\"view\":\"plan\",\"title\":\"...\",\"data\":{\"steps\":[...]}}' | avc\n```\n\n读 stdin → 弹原生 WebView 窗口 → 人拖拽/编辑/勾选 → 修改后的 JSON 回到 stdout → Agent 继续按修改后的计划执行。\n\n像 `fzf` 给 CLI 用户带来了「交互式选择」，AVC 给所有 CLI Agent 带来了「交互式视觉审批」。\n\n## 主要特征\n\n- **Agent-agnostic**：不绑定任何 Agent，作为 skill 一键装到 Claude Code / Codex CLI / Gemini CLI / GitHub Copilot\n- **3 MB 单二进制**：启动 < 100ms，零运行时依赖。系统原生 WebView（macOS WKWebView / Linux WebKitGTK / Windows WebView2），当前 macOS 已 CI 验证，Linux/Windows 理论支持欢迎社区验证\n- **7 种 UI 语言**：JSON 里 `lang` 字段切换 en/zh/ja/ko/es/fr/de\n- **Smart Threshold**：内容短于 3000 tokens 自动透传不打断人；长内容才弹窗\n\n## 项目地址\n\nhttps://github.com/study8677/Agent_View_Controller-AVC\n\n## 安装\n\n```bash\nbrew install study8677/tap/avc\n\n# 或一键脚本（自动给所有检测到的 Agent 装上 skill）\ncurl -sSL https://raw.githubusercontent.com/study8677/Agent_View_Controller-AVC/main/install.sh | bash\n```\n\n![AVC plan view demo](https://raw.githubusercontent.com/study8677/Agent_View_Controller-AVC/main/docs/plan-view-demo-cn.png)\n",
@@ -796,21 +812,5 @@
     "created_at": "2026-05-08T02:15:08Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9878"
-  },
-  {
-    "id": 9877,
-    "title": "【开源自荐】基于OpenAI Privacy Filter的桌面客户端隐私保护应用",
-    "content": "**介绍：**\nKarma 是一款隐私优先的桌面应用，用于检测和脱敏个人身份信息（PII），基于 [OpenAI Privacy Filter](https://huggingface.co/openai-community/openai-privacy-filter) 模型。\nmacOS（Apple Silicon）：基于 MLX 框架实现原生高性能推理\nWindows / Linux：基于 ONNX Runtime，自动 GPU 加速（CUDA / DirectML / CPU 回退）\n\n**功能：**\n1. 支持对文本一键脱敏，支持自动复制结果到剪贴板。\n2. 支持作为网关服务开放HTTP服务给其他应用使用。\n\n<img width=\"1440\" height=\"1120\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/98c203e4-f9a8-4544-a761-5fac983fafb4\" />\n\n项目地址：https://github.com/gh0stkey/Karma",
-    "created_at": "2026-05-08T01:36:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9877"
-  },
-  {
-    "id": 9876,
-    "title": "【开源自荐】一个免费和开源软件列表网站",
-    "content": "行书指南是一个免费和开源软件列表，推荐高质量免费与开源软件，降低你寻找软件的时间成本。\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/53eb1c9d-153e-48b5-9392-a3b18eb0d1cd\" />\n\n挑选一款易用的、流行的普世产品，让生活、学习和工作也很有效率。\n\n网站：https://xszn.org/\n\nGitHub：https://github.com/xszn/xszn.github.io",
-    "created_at": "2026-05-07T16:20:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9876"
   }
 ]
