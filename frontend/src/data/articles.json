@@ -1,5 +1,13 @@
 [
   {
+    "id": 10009,
+    "title": "AI",
+    "content": null,
+    "created_at": "2026-05-20T22:01:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10009"
+  },
+  {
     "id": 10008,
     "title": "【skill自荐】Agent System Prompt Architect：帮助 AI Agent 编写更好的系统提示词",
     "content": "项目地址：https://github.com/CR-730/agent-system-prompt-architect-skill\n\n我开源了一个 Agent Skill：Agent System Prompt Architect。\n\n它的用途是：让 Codex、Claude Code 这类代码 Agent，在为另一个 Agent 项目编写 system prompt 时，生成更清晰、更紧凑、更可部署的提示词。\n\n我做这个项目的原因是，直接让 AI 写 system prompt 时，经常会出现一些问题：\n\n- 根据项目名乱推角色，比如项目叫 xxx，就写成你是 xxx 的审计人\n- 把可能有检索工具、保存工具写成不存在的 API 参数和返回字段\n- 为了显得完整，把提示词写得很长，重复堆安全规则、工具规则和输出格式\n- 把经验偏好写成固定执行路径，限制 Agent 自己选择更合适的方案\n- 中文需求里混入英文 section tag，导致最终提示词风格不统一\n- 生成的 prompt 不符合标准范式\n\n这个 Skill 主要做了几件事：\n\n1. 引导 Agent 先识别目标用户、任务边界、工具能力、资料来源、输出格式和安全边界。\n2. 默认生成可以直接放进 system message 的系统提示词，而不是 JSON 包、schema 包或说明文档。\n3. 区分语义工具能力和真实 runtime 工具规格，避免编造假工具名、假参数和假返回字段。\n4. 给出标准的提示词工程需具备的原则，并且给出在什么情景下需要使用思维链、自洽等高阶技术\n5. 鼓励少写抽象禁令，多写明确目标、判断标准、输出格式和替代行为。\n6. 初稿完成后，用 evaluation 清单做一次内部检查、去重、压缩和修正。\n\n仓库结构也比较简单：\n\n- `SKILL.md`：主技能说明\n- `references/prompt-engineering-principles.md`：提示词编写原则\n- `references/prompt-techniques.md`：Few-shot、CoT、ReAct、RAG 等技术的选择参考\n- `references/domain-adaptation.md`：领域适配清单\n- `references/evaluation.md`：生成后的检查清单\n\n这个项目更适合经常写 AI Agent、系统提示词、工具调用策略、多步骤工作流的人使用。\n\n欢迎试用，也欢迎在 issues 里提建议，我会继续跟进改进。",
@@ -812,15 +820,5 @@
     "created_at": "2026-05-11T08:54:51Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/pull/9909"
-  },
-  {
-    "id": 9908,
-    "title": "【开源自荐】boss-agent-cli：专为 AI Agent 设计的 BOSS 直聘双端 CLI 工具",
-    "content": "<img src=\"https://raw.githubusercontent.com/can4hou6joeng4/boss-agent-cli/master/demo/showcase/boss-agent-cli-showcase.gif\" alt=\"boss-agent-cli 项目展示\" width=\"100%\" />\n\n### 项目地址\n\n- 项目仓库：https://github.com/can4hou6joeng4/boss-agent-cli\n- PyPI：https://pypi.org/project/boss-agent-cli/\n- 文档站：https://can4hou6joeng4.github.io/boss-agent-cli/\n- License：MIT\n\n> 一句话：**让 AI Agent 替你跑完 BOSS 直聘的\"搜职位 → 看详情 → 打招呼 → 跟进 → 流水线\"全链路**，所有输出是结构化 JSON，一调用就能理解，一调用就能行动。\n\n### 背景\n\n传统求职是体力活：打开网页 → 翻几十页列表 → 逐个点详情 → 手动打招呼 → 忘了跟进过谁。市面上的招聘 CLI 大多还停留在\"人类用的命令行\"层面——彩色 ASCII 表格、交互式提问、人类视角的输出。\n\n但 2026 年，**真正在跑这些命令的是 AI Agent，不是人**。Agent 需要的是：稳定的 JSON 信封、可自检的能力描述（schema）、明确的错误码、可恢复的登录链路、明确区分 stdout/stderr。`boss-agent-cli` 就是按这个底层逻辑重新设计的——AI-Agent-first，而不是人类优先。\n\n同时它把\"求职者\"和\"招聘者\"两端做在同一套 CLI 里，并抽象出多平台注册表（目前 BOSS 直聘 + 智联招聘）。\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/can4hou6joeng4/boss-agent-cli/master/demo-zh.gif\" alt=\"终端交互演示\" width=\"100%\" />\n</p>\n\n### 亮点\n\n- **🤖 AI-Agent-first 设计**：stdout 只输出 JSON 信封（`ok` / `schema_version` / `data` / `pagination` / `error` / `hints.next_actions`），stderr 走日志，`exit code` 严格区分成败。Agent 一次调用就能拿到下一步建议。\n- **📋 Schema 驱动**：`boss schema` 一条命令吐出全部 34 个顶层命令 + HR 子命令组的能力描述，Agent 不用读 README 也能自洽地调用。\n- **🔐 4 级降级登录链路**：`Cookie 提取 → CDP → QR httpx → patchright`，登录态用 `Fernet + PBKDF2 机器绑定加密`存本地，登录稳定性是这类工具的真正命门。\n- **🎯 福利筛选真的能用**：`--welfare \"双休,五险一金\"` 不是简单看标签，而是先查福利标签、不匹配时拉职位描述全文检索、自动翻页，最后每条结果带 `welfare_match` 来源说明。\n- **👔 求职者 + 招聘者双端**：求职者侧有搜索/推荐/打招呼/流水线/增量监控；招聘者侧有候选人检索/简历查看/职位上下线/沟通回复。同一套 JSON 协议。\n- **🧩 4 种 Agent 接入方式**：Skill 安装、Bash subprocess、MCP、Python SDK（已发 `py.typed`，可直接当类型化库用）。\n- **🌐 多平台抽象**：`Platform` / `RecruiterPlatform` 双注册表，BOSS 直聘默认开箱即用，智联招聘求职者侧登录/读写链路已接通。\n- **🤖 AI 求职增强**：JD 分析、简历润色、定向优化、模拟面试、聊天教练，支持 Claude 4.7 / GPT-5 / DeepSeek-V3 / Qwen3。\n- **🧪 工程质量**：1119 个 pytest 用例、ruff/mypy 全打开、CI/Codecov/pre-commit 一应俱全。\n\n### 安装\n\n```bash\n# 推荐：uv（秒级安装、自动隔离）\nuv tool install boss-agent-cli\npatchright install chromium\n\n# 或者 pipx / pip\npipx install boss-agent-cli\n```\n\n### 使用示例\n\n```bash\n# 1. 环境自检 + 登录\nboss doctor\nboss login\n\n# 2. 搜索广州 Golang 职位，要求\"双休 + 五险一金\"\nboss search \"Golang\" --city 广州 --welfare \"双休,五险一金\"\n\n# 3. 看详情 → 打招呼 → 投递\nboss detail <security_id>\nboss greet <security_id> <job_id>\nboss apply <security_id> <job_id>\n\n# 4. 流水线 + 每日摘要\nboss pipeline\nboss digest\n\n# 5. 增量监控（保存搜索条件、定期跑、标出新职位）\nboss watch add my-golang \"Golang\" --city 广州 --welfare \"双休\"\nboss watch run my-golang\n\n# 6. 招聘者视角\nboss hr applications                  # 候选人投递申请\nboss hr candidates \"Golang\"           # 搜索候选人\nboss hr reply <friend_id> \"你好\"      # 回复消息\nboss hr jobs list                     # 我发布的职位\n```\n\n### Agent 接入（最快路径）\n\n```bash\n# Skill 安装：Agent 立即获得 boss 全部命令的能力\nnpx skills add can4hou6joeng4/boss-agent-cli\n```\n\n或者在 Claude Code / Cursor 的规则文件里写一条规则，让 Agent 在用户提到\"搜职位、打招呼、投递\"时自动调用 `boss` CLI 并解析 JSON。\n\n### 适合谁\n\n- **在找工作的程序员**：想用 AI Agent 帮你跑求职全链路，而不是自己点几百次鼠标\n- **在招人的小团队负责人 / HR**：想把候选人检索、消息回复、简历请求做成可脚本化的工作流\n- **Agent / MCP 开发者**：想接一套真实可跑、JSON 协议规整、有 schema 自描述的\"招聘领域工具集\"\n\n### License\n\nMIT，欢迎 Issue / PR / Star。\n\n> **免责声明**：项目仅用于学习交流，使用时请遵守相关法律法规及 BOSS 直聘平台用户协议。\n",
-    "created_at": "2026-05-11T08:07:42Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9908"
   }
 ]
