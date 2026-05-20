@@ -1,5 +1,47 @@
 [
   {
+    "id": 10008,
+    "title": "【skill自荐】Agent System Prompt Architect：帮助 AI Agent 编写更好的系统提示词",
+    "content": "项目地址：https://github.com/CR-730/agent-system-prompt-architect-skill\n\n我开源了一个 Agent Skill：Agent System Prompt Architect。\n\n它的用途是：让 Codex、Claude Code 这类代码 Agent，在为另一个 Agent 项目编写 system prompt 时，生成更清晰、更紧凑、更可部署的提示词。\n\n我做这个项目的原因是，直接让 AI 写 system prompt 时，经常会出现一些问题：\n\n- 根据项目名乱推角色，比如项目叫 xxx，就写成你是 xxx 的审计人\n- 把可能有检索工具、保存工具写成不存在的 API 参数和返回字段\n- 为了显得完整，把提示词写得很长，重复堆安全规则、工具规则和输出格式\n- 把经验偏好写成固定执行路径，限制 Agent 自己选择更合适的方案\n- 中文需求里混入英文 section tag，导致最终提示词风格不统一\n- 生成的 prompt 不符合标准范式\n\n这个 Skill 主要做了几件事：\n\n1. 引导 Agent 先识别目标用户、任务边界、工具能力、资料来源、输出格式和安全边界。\n2. 默认生成可以直接放进 system message 的系统提示词，而不是 JSON 包、schema 包或说明文档。\n3. 区分语义工具能力和真实 runtime 工具规格，避免编造假工具名、假参数和假返回字段。\n4. 给出标准的提示词工程需具备的原则，并且给出在什么情景下需要使用思维链、自洽等高阶技术\n5. 鼓励少写抽象禁令，多写明确目标、判断标准、输出格式和替代行为。\n6. 初稿完成后，用 evaluation 清单做一次内部检查、去重、压缩和修正。\n\n仓库结构也比较简单：\n\n- `SKILL.md`：主技能说明\n- `references/prompt-engineering-principles.md`：提示词编写原则\n- `references/prompt-techniques.md`：Few-shot、CoT、ReAct、RAG 等技术的选择参考\n- `references/domain-adaptation.md`：领域适配清单\n- `references/evaluation.md`：生成后的检查清单\n\n这个项目更适合经常写 AI Agent、系统提示词、工具调用策略、多步骤工作流的人使用。\n\n欢迎试用，也欢迎在 issues 里提建议，我会继续跟进改进。",
+    "created_at": "2026-05-20T14:22:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10008"
+  },
+  {
+    "id": 10007,
+    "title": "【工具自荐】ProductScenes AI：用一张产品图批量生成电商场景图",
+    "content": "项目地址：https://productscenes.net/\n\nProductScenes AI 是一个面向电商卖家的 AI 产品图生成工具。\n\n它的用法很简单：上传一张产品照片，选择预设的 Scene Pack，就可以生成一组适合商品详情页、店铺列表、广告和社交媒体使用的产品场景图，不需要自己写提示词。\n\n目前支持的场景包包括：\n\n- Etsy Listing Pack：适合 Etsy 商品列表、手作商品、礼品场景\n- Shopify Product Pack：适合品牌官网、商品详情页、社交素材\n- Jewelry Scene Pack：适合珠宝首饰的特写、礼盒、模特佩戴场景\n- Candle Scene Pack：适合香薰蜡烛、家居、节日和氛围图\n- Skincare Scene Pack：适合护肤品、美妆、浴室和台面场景\n- Social Ad Pack：适合新品发布、广告和社交媒体推广图\n\n我做这个工具的原因是，很多小型电商卖家、独立品牌和 Etsy/Shopify 店主没有预算经常拍摄产品场景图，而通用 AI 生图工具又需要反复写提示词、调风格、修产品一致性。ProductScenes AI 想把这个流程简化成“上传产品图 → 选择场景包 → 生成一组可用图片”。\n\n适合人群：\n\n- Etsy、Shopify、Amazon 等电商卖家\n- 独立品牌主\n- 做产品广告和社交媒体素材的人\n- 需要快速制作商品场景图的小团队\n\n欢迎大家试用和反馈。",
+    "created_at": "2026-05-20T12:12:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10007"
+  },
+  {
+    "id": 10006,
+    "title": "【工具自荐】模型翻译：无限多开应用的沉浸式翻译",
+    "content": "一款聚合了海外主流应用的聚合多开翻译器\n\n- 无限多开应用，一键帮你管理主流软件账号\n- 沉浸式翻译，无需来回粘贴，反复校对\n- 聚合主流翻译通道，包括有道、百度、google、deepl和chatgpt等主流翻译工具\n- 沉浸式翻译，无需来回粘贴，反复校对\n- AI智能回复，一键点击某条消息，生成AI智能回复\n- 快速发送文本、图片、音频、视频消息，帮你保存常用的发送消\n- 客户画像，帮你精准记录交流的客户画像\n- 代理设置，支持http和 socks5代理\n\n<img width=\"1380\" height=\"868\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fcd693cd-389d-490e-9b93-0584c81567de\" />\n\n<img width=\"1380\" height=\"868\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0d825114-4496-480b-a156-dd3fdea085b8\" />\n\n官网：https://tranai.app",
+    "created_at": "2026-05-20T12:04:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10006"
+  },
+  {
+    "id": 10005,
+    "title": "【工具自荐】AnimeGen.ai - 将照片转换成动漫风格头像和插画的 AI 工具",
+    "content": "项目地址：https://animegen.ai\n\nAnimeGen.ai 是一个在线 AI 图片工具，可以把自拍、人像、宠物、情侣照、旅行照片等转换成动漫风格图片。\n\n它的使用流程比较简单：上传照片，选择动漫风格，也可以补充提示词细节，然后生成并下载结果。比较适合制作社交媒体头像、Discord / 游戏社区头像、粉丝页配图、个人主页视觉素材等。\n\n主要特点：\n\n- 支持照片转动漫风格图片\n- 适合人像、自拍、宠物、情侣照、旅行照等场景\n- 可以选择不同动漫风格\n- 支持补充提示词来调整生成效果\n- 生成结果可用于头像、社交媒体内容和个人创作\n\n这是一个 freemium 的网页工具，打开浏览器即可使用。",
+    "created_at": "2026-05-20T11:59:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10005"
+  },
+  {
+    "id": 10004,
+    "title": "【开源自荐】彩读｜ColorTxt：一款会给内容上色的「本地 TXT 小说阅读器」，带给你不一样的阅读体验",
+    "content": "# 彩读｜ColorTxt\n\n> 项目地址：https://github.com/ssnangua/ColorTxt\n\n电脑上一直找不到一款很满意的 TXT 小说阅读器，就自己动手做了，功能很简单也很纯粹，就是用来看本地 TXT 小说的，没那么多花里胡哨，分享给大家。\n\n## 简介\n\n**一款会给内容上色的本地 TXT 小说阅读器，带给你不一样的阅读体验！**\n\n还有章节识别、空行压缩、行首缩进、语音朗读、AI 阅读助手等功能。\n\n支持 macOS、Windows 和 Linux。\n\n<img src=\"https://github.com/user-attachments/assets/c7e1eca9-e9c1-4eb7-8233-5ea9a50e1631\" />\n\n## 主要功能\n\n- **本地文件阅读**：可打开单个 `.txt`/`.md` 文件，也可以导入整个目录（会递归读取子目录）\n- **支持其他格式**：支持打开常见的电子书格式（如 `.epub`），打开时会转换为 `.txt` 进行加载\n- **自动编码识别**：`UTF-8` 和 `ANSI` 都能正常打开\n- **自动章节识别**：内置常用的章节匹配规则，也支持自定义匹配规则\n- **个性内容上色**：使用一套自定义的高亮规则对内容进行着色，带来 _独特的阅读体验！_\n- **自定义高亮词**：可选择任意词语进行高亮显示（可用于突出主要角色、关键词语等）\n- **支持定制配色**：可自定义阅读区和高亮词的配色\n- **支持空行压缩、行首缩进**\n- **阅读进度恢复**：自动记录阅读进度，下次打开可以继续阅读\n- **文件列表功能**：支持分类、排序、文件名过滤\n- **支持编辑模式**：方便对小说内容进行修改（_错别字坚决不能忍！_）\n- **语音朗读功能**：支持 EdgeTTS、系统语音和 DashScope 朗读\n- **AI阅读助手**：可以让 **AI** 帮忙分析剧情，或者回答小说的相关问题\n- **角色卡生成**：借助 **AI** 检索小说中角色的相关信息生成摘要，通过**文生图**生成角色立绘\n\n> **PS：** AI 功能只是简单尝试，和那些专门做这方面的肯定没法比，就当是玩一下。（抽「角色卡」还挺好玩的 ^_^）\n\n<img src=\"https://github.com/user-attachments/assets/9a8bb2c0-c451-4a1c-a2db-93340be74b81\" />\n",
+    "created_at": "2026-05-20T11:25:47Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/10004"
+  },
+  {
     "id": 10003,
     "title": "【工具自荐】Pet Gatekeeper：电脑玩太久，你家的宠物会让你强制休息",
     "content": "灵感来自推上爆火的 Cat Gatekeeper：刷 X / TikTok 刷得太久，一只猫会跳出来挡在屏幕上把你拽回来。原版只有一只固定的猫，家里有毛孩子的我就想——为什么不能换成我自己家那只？\n\n于是做了 Pet Gatekeeper：\n  - 全平台覆盖：支持桌面端 App（Mac / Windows）、浏览器扩展（Chrome / Firefox / Edge）同一个宠物，桌面端和扩展通用\n  - 支持 AI 生成自家宠物：上传一张正面照，产出可嵌入插件和客户端播放的视频。底层用了 GPT Image 2 + Seedance 2.0\n  - 社区生态：不想花钱也能玩——工具内置几只宠物，画廊里所有公开宠物也能凭兑换码白嫖，还能给自家宠物打榜\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c0a92c92-e805-4c66-8995-d7981387366f\" />\n\n🔗 工具官网：[https://petgatekeeper.com/](https://petgatekeeper.com/)\n🔗 客户端&插件下载：[https://petgatekeeper.com/download](https://petgatekeeper.com/download)\n🔗 关于 / 致谢原作者：[https://petgatekeeper.com/about](https://petgatekeeper.com/about)",
@@ -36,7 +78,9 @@
     "title": "【开源自荐】：针对 ai 吐出的 markdown 渲染库",
     "content": "<img width=\"218\" height=\"218\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e098110a-e475-4748-9469-3e202f14b914\" />\n\nhttps://github.com/Simon-He95/markstream-vue\n提供了 vue/vue2/react/svelte/nuxt/next 多个框架版本的实现，超简单的配置，注入自定义组件的，和超大体量markdown输入，场景下的优化，毫秒级渲染，以及针对 markdown parser 的增量解析优化和异常边界的预处理，减少渲染抖动等丝滑体验",
     "created_at": "2026-05-20T07:56:25Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9999"
   },
   {
@@ -68,7 +112,9 @@
     "title": "【开源自荐】Lucarne: agent太慢，盯电脑太累，放下电脑只需要微信就能和随时与本地多agent交互",
     "content": "###  Lucarne 把本地运行的 AI Agents 接到微信 / Telegram，让你离开电脑也能收到进展、审批权限、回复问题、接续会话。\n\n###  解决什么痛点\n\n\nagent跑得久、卡得突然、权限要你点、问题要你答。你一离开，它可能就停在那里，工作流碎片化严重，一天要花很多时间盯着电脑和agent大眼瞪小眼，\n\n去过你的生活，Agent 需要你时，手机/手环会叫你，让你不用盯屏，也不错过任何需要你介入的节点\n\n不需要安装app，不侵入任何agent流程（no skills/hooks/mcps)，安全通信\n\n### 怎么用\n\n1. 安装\n``` \nbrew tap tuchg/Lucarne https://github.com/tuchg/Lucarne\nbrew install lucarned\n```\n2. 微信扫码\n\n### 支持的agent\n\nclaude code、codex、pi、gemini、copilot\n\n### 项目地址\n\nhttps://github.com/tuchg/Lucarne\n\n### features\n\n- **无需在手机安装新的app，安全接收最及时的消息通知**\n- **0 侵入使用，无 hook、无 skills、无MCP，不动agent；扫码即可一键使用**\n- Agents 在本地电脑上跑，人可以放下电脑；微信 / Telegram 随时同步关键进展\n- 权限审批、问题确认、失败通知，都变成手机上的可处理事件\n- 微信扫码接收agents消息，引用消息即可自动接续对应上下文\n- Telegram 控制台查看所有 Agent、工作区、历史会话\n- 查看本机agents历史会话、本机当下正在运行的agent\n- 高性能低内存的轻量常驻进程，闲置agent自动释放\n\n<img width=\"1693\" height=\"929\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4d5ad9f5-7164-49a5-8091-4f5021e522e0\" />\n\n强控制用telegram，解决盯屏之苦 微信即可\n",
     "created_at": "2026-05-20T04:36:34Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/9995"
   },
   {
@@ -776,45 +822,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/9908"
-  },
-  {
-    "id": 9907,
-    "title": "〖工具自荐〗YouTube to MP3 converter：把进度、预览和下载做顺的一页",
-    "content": "## 名称\n\nYouTube to MP3 converter\n\n## 链接\n\nhttps://youtubetowav.io/youtube-to-mp3-converter\n\n## 一句话简介\n\n一个更聚焦的 YouTube 转 MP3 工具，重点不是只给下载按钮，而是把进度、预览和确认后下载这条路径做顺。\n\n## 详细介绍\n\n很多这类页面表面上都在解决“我要一个 MP3 文件”这个问题，但真正影响体验的，通常不是有没有下载按钮，而是这条路径到底靠不靠谱：\n\n- 链接有没有被正确识别\n- 转换任务有没有真的开始跑\n- 等待时能不能看到进度\n- 保存前能不能先听一下结果\n- 最后下载的 MP3 是否适合继续使用\n\n这也是我觉得这个页面值得单独推荐的原因。它没有把范围做成很大的下载器，而是先把一条常见的音频保存流程压缩成几步，让第一次进入的人可以快速判断这个工具是不是适合当前任务。\n\n## 当前路径\n\n1. 粘贴 YouTube URL、youtu.be 链接、Shorts 链接或 video ID。\n2. 启动 MP3 转换任务。\n3. 在等待时查看任务进度。\n4. 在浏览器里先预览生成的 MP3。\n5. 确认结果可用后再下载 MP3 文件。\n\n## 使用前说明\n\nMP3 转换依赖第三方转换服务，当前只适合 120 分钟以内的视频，并且只应该用于用户拥有版权或已获得下载权限的内容。",
-    "created_at": "2026-05-11T08:05:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9907"
-  },
-  {
-    "id": 9906,
-    "title": "【开源自荐】Note Agent：面向研究生及文字工作者的Agent",
-    "content": "<img width=\"2560\" height=\"1476\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3fcd77a9-5a57-42e3-be46-3e7b97729479\" />\n\n\n<img width=\"2560\" height=\"1476\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/729af1d0-3b13-4b65-8e50-c3f7cb6a85e5\" />\n\n### 项目地址\n\n- 项目仓库： https://github.com/5rexi/Note-Agent\n- Lisence：Apache-2.0\n\n### 背景\n当前主流 AI Agent 工具（如 Claude Code、Cursor Agent 等）主要面向程序员，其交互范式以代码仓库或AI 对话窗口为中心。这种设计对需要频繁编辑、预览、管理文档的非技术用户——如文字工作者、研究人员、学生——并不友好：他们更习惯以本地文件夹和具体任务来组织工作，而非围绕一个抽象的代码项目或聊天会话。与此同时，传统 Agent 往往配置繁复（模型选择、系统提示词、工具链编排等），使用门槛较高。\n\nNote Agent 的设计思路是：以本地文件夹为工作空间，以任务为单元，让 AI 辅助回归直觉化的文件操作。 用户无需手动配置复杂的 Agent 管线，系统内置的 LLM-based Task Planner 会自动完成意图理解、步骤拆解与工具调用，将认知负担降至最低。\n\n### 介绍\nNote Agent能读取你的 PDF，检索 arXiv，起草你的 .tex 和 .docx 文档，并且能够跨天记住整个项目——所有数据都保存在磁盘上的普通文件中，外加一个你可以控制的 SQLite 索引。\n\n它是为两类需要模型真正做点有用的事（而不仅仅是聊天）的工作而构建的：\n- 研究人员 —— 为一个论文文件夹建立索引，无需离开编辑器即可搜索 arXiv / Semantic Scholar / PubMed，当 API 不够用时浏览真实网页，让代理帮你起草一份文献综述，你可以在 Monaco 编辑器中直接修改。\n- 写作者 —— 在一个任务中写大纲，在另一个任务中打草稿，为每个章节维护持续更新的修改记录，完成后导出为 .docx / .tex / .pptx。模型给出建议，由你来确认采纳。\n\n一切以本地优先：你的笔记就是磁盘上的文件，任务历史存在 SQLite 中，API 密钥属于你自己——你可以接入 OpenAI、Anthropic，或者任何兼容 OpenAI 的端点（OpenRouter、Together、vLLM、本地的 Llama）。\n\n### 亮点\n\n- 任务会话工作区。一个工作区 = 一个文件夹。一个任务 = 一个具有自己的模式、模型覆盖设置和消息历史的持久化聊天会话。切换任务不会丢失上下文。\n- 三种权限模式。explore（只读），ask（任何写入或网络变更前提示确认），execute（自主执行）。每个任务单独设置，随时更改。\n- 多供应商、多层级路由。用 Opus 规划，用 Sonnet 执行，用 Haiku 起草——或者始终使用单一模型。配置好 ModelRouter，代理每轮自动选择。\n- 一流的 Web 支持。webSearch 可路由到 Wikipedia / Hacker News / Brave / 内置 Electron 浏览器；webFetch 在网站需要 JS 时自动从抓取升级为真实渲染页面；browse 工具通过 Chrome DevTools Protocol 提供 observe → click → type 基础操作。不需要 Puppeteer，不需要 Playwright。\n- 内置学术搜索。arXiv、Semantic Scholar、PubMed——无需额外插件，无需单独账号。\n- 本地知识库。指向一个文件夹，即可对 PDF、.docx 和笔记进行语义搜索。存储在工作区旁边的 SQLite 中。\n- 文档导出。一次起草，导出为 .docx、.tex 或 .pptx。如果还没有 LaTeX 或 Office 工具链，可以通过 UI 设置。\n- MCP 支持。接入 Model Context Protocol 服务器（stdio 或 SSE）——Linear、GitHub、Notion，任何你团队已经在用的工具。\n- 子代理和工作树。分支式工作：启动一个子代理进行调研，同时主任务进行起草；让代理操作 git worktree，不影响你的当前工作树。\n",
-    "created_at": "2026-05-11T06:31:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9906"
-  },
-  {
-    "id": 9905,
-    "title": "【教程自荐】Vibe Coding Guide：把 AI 编码从随意 prompt 变成工程化流程（中英双语 + PDF）",
-    "content": "## Vibe Coding Guide\n\n**仓库地址：** https://github.com/Lling0000/Vibe_coding_guide\n\n**一句话介绍：** 一份面向 Codex / Claude Code / Cursor 用户的实战教程，把 AI 编码从\"随意 prompt\"做成可审查、可复用的工程化流程，提供中文 / 英文双语版本与 PDF。\n\n### 这份教程在解决什么问题\n\nAI 编码工具能快速产出代码，难的是让产出可审查、可复用、能安全上线。这份教程把 Vibe Coding 当作工程实践来讲，而不是\"让 AI 替你写代码\"，读完之后会更像\"指挥 Agent 的工程负责人\"，而不只是\"对着对话框输 prompt 的人\"。\n\n### 内容覆盖（共 16 章）\n\n- **基础（1-5 章）：** 写 spec、维护 `AGENTS.md` / `CLAUDE.md`、管理上下文窗口、做 session 交接与清零\n- **多 Agent 协作（6-9 章）：** subagent 与上下文隔离、workflow 模式、`.gitignore` 卫生、git worktree 并行开发\n- **团队化沉淀（10-13 章）：** 把重复任务固化成 Skill、区分 system / user prompt、给 Agent 代码加 CI/CD 护栏、测试 Agent 行为本身\n- **判断力（14-16 章）：** 高阶心法、完整多天工作流示例、常见反模式速查\n\n### 适合谁读\n\n- 正在使用 Codex / Claude Code / Cursor / Aider 等 AI 编码工具的开发者\n- 想把 AI Agent 纳入真实开发流程的工程师\n- 正在搭建团队级 AI coding 规范、skill、CI 和 review 流程的人\n\n### 资源\n\n- 中文教程：[vibe-coding-guide-zh.md](https://github.com/Lling0000/Vibe_coding_guide/blob/main/vibe-coding-guide-zh.md) · [PDF](https://github.com/Lling0000/Vibe_coding_guide/blob/main/vibe-coding-guide-zh.pdf)\n- 英文教程：[vibe-coding-guide-en.md](https://github.com/Lling0000/Vibe_coding_guide/blob/main/vibe-coding-guide-en.md) · [PDF](https://github.com/Lling0000/Vibe_coding_guide/blob/main/vibe-coding-guide-en.pdf)\n\n希望对在用 AI 写代码的同学有帮助，欢迎反馈和 PR。\n",
-    "created_at": "2026-05-11T05:25:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9905"
-  },
-  {
-    "id": 9904,
-    "title": "【工具自荐】Pkgdiff - 在线免费多平台包版本对比工具，一眼看清两个版本到底改了啥",
-    "content": "### 工具介绍\n\nPkgdiff（<https://pkgdiff.app>）是一个在线的包版本对比工具。你给它一个 Python 或 npm 的包名，再选两个版本号，它就会直接告诉你：这次升级到底改了哪些接口、加了哪些依赖、删了哪些功能，以及——**有没有不兼容的改动**会让你的代码挂掉。\n\n不像很多升级前要去翻 release notes、去 GitHub 看 diff、去 issue 区猜测的工具，Pkgdiff 会读真正发布出去的那个包本身。所以哪怕作者更新日志写得敷衍、根本没写、甚至项目就没开源，它都能给你一份靠谱的差异报告。\n\n最上面还会附一段 AI 写的\"人话版变更说明\"，用通顺的中文/英文告诉你这次升级该不该升、要注意什么。\n\n### 它想解决的问题\n\n- 想升级一个依赖，但不知道会不会踩坑，CHANGELOG 写得太简略甚至漏写\n- 跨好多个版本一次性升级，不想一个个翻 release notes\n- 装的包根本没有公开源码，作者也不维护更新日志，只能凭感觉升级\n- 公司里要审计三方包，想要一份能直接归档、发给老板的版本差异报告\n\n### 核心功能\n\n- **一眼看清接口变化**：哪些函数、哪些方法是新增的，哪些被删了，哪些参数偷偷改了 —— 凡是会让你代码报错的\"不兼容改动\"，都会被红色标记单独拎出来\n- **AI 写的人话版变更说明**：不用再去啃干巴巴的 diff，AI 会用一段话告诉你\"这次主要改了什么、值不值得升、要注意哪些坑\"，而且只基于真实差异生成，不会瞎编\n- **依赖变化一目了然**：新增了哪些依赖、移除了哪些、最低 Python / Node 版本有没有变、license 有没有换，全部并排展示\n- **跨多版本逐步对比**：从 1.0 直接升到 3.0？可以让它把中间每个版本之间的变化分别讲清楚，而不是糊成一团\n- **同时支持 Python 和 npm**：一个工具搞定两个生态，后续会扩展更多\n- **秒出结果**：别人分析过的版本组合，你再查直接秒出，连 AI 摘要都复用，不用等\n- **可导出可分享**：Markdown 一键导出，还能导 PDF，做汇报、写文档、贴 PR 都能直接用\n- **匿名免登录可用**：打开就能用，不需要注册，不需要装任何东西\n\n### 配图\n\n<img width=\"1322\" height=\"974\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7e3bc8d6-c205-48c9-b2ea-609c7a6f83d5\" />\n\n<img width=\"1769\" height=\"1258\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6f71089c-1a79-445d-8c6b-cf361644e30e\" />\n\n<img width=\"1293\" height=\"910\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b00e6e14-083d-4260-8249-7c7facd81f6a\" />\n\n### 适合谁\n\n- **后端 / 前端工程师**：升级 requests、pydantic、fastapi、react、axios 等这种核心依赖前，先看一眼会不会炸\n- **技术负责人 / SRE**：给团队定升级方案，需要一份靠谱的\"风险评估\"，而不是凭印象拍板\n- **安全 / 合规岗**：审计三方依赖，需要可归档、可对比、可导出的版本差异报告\n- **所有想搞清楚\"我装的这个包到底变了什么\"的开发者**\n\n### 地址\n\n- 官网：<https://pkgdiff.app>\n- 打开就能用，匿名额度够用，不用注册",
-    "created_at": "2026-05-11T03:09:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9904"
-  },
-  {
-    "id": 9903,
-    "title": "【工具自荐】Diablo4LootFilter：按职业和流派查找暗黑破坏神 IV 掉落过滤器代码",
-    "content": "阮老师好，推荐一个最近做的小工具：Diablo4LootFilter。\n\n网站地址：https://diablo4lootfilter.com\n\n这是一个面向《暗黑破坏神 IV》玩家的英文工具站，用来查找和比较 Loot Filter（掉落过滤器）预设。玩家可以按职业、流派或刷装目标筛选，查看对应过滤器说明，并复制 import code 或按照导入指南在游戏里配置。\n\n工具截图：\n\n![Diablo4LootFilter homepage](https://diablo4lootfilter.com/og-image.png)\n\n![Diablo4LootFilter finder visual](https://diablo4lootfilter.com/hero-visual.png)\n\n主要功能：\n\n- 按职业 / build / farming goal 查找过滤器预设\n- 展示过滤规则、适用阶段和来源说明\n- 提供 import guide，降低新手配置门槛\n- 不需要注册，免费使用\n- 站点明确标注 fan-made，不使用官方素材，也不声称代码经过游戏内验证\n\n做这个站的原因是，Diablo IV 新版本加入 Loot Filter 后，玩家会搜索现成的配置代码，但很多信息分散在攻略、Discord、Reddit 或视频里。这个小站尝试把它整理成一个更轻量的查询入口。\n\n技术上是一个轻量 Web 工具站，重点验证的是：新游戏功能出来后，能否用低成本页面和结构化 preset 数据，快速承接长尾搜索需求。\n\n说明：该站是 fan-made 项目，与 Blizzard Entertainment 没有关联；过滤器代码可能会随游戏版本变化，使用前需要玩家自行确认。\n",
-    "created_at": "2026-05-10T16:00:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9903"
   }
 ]
