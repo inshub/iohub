@@ -1,5 +1,13 @@
 [
   {
+    "id": 10023,
+    "title": "【开源自荐】小马AI Hermes 中文增强包：让 Hermes Agent 界面和提示变成中文",
+    "content": "## 项目名称\n小马AI Hermes 中文增强包\n\n## 项目链接\nhttps://github.com/fresh-claw/hermes-zh-cn\n\n## 官网\nhttps://useai.live/hermes/\n\n## 一句话描述\n让 Hermes Agent 的启动页、TUI、快捷指令、网关提示和权限审批提示变成中文。\n\n## 详细介绍\nHermes Agent 默认界面和运行过程里有大量英文提示，新手在安装、审批命令、重启网关、使用快捷指令时容易卡住。这个中文增强包提供一条命令安装：未安装 Hermes 时先安装官方版，再应用中文补丁；已安装 Hermes 时自动识别版本并获取匹配补丁。\n\n目前覆盖 Hermes v0.14.x、v0.13.x 和 v0.12.x 等旧版，包含启动页标题与图形、工具分类、快捷指令说明、Telegram/网关消息、ACP 权限审批、安装过程和错误提示等内容。\n\n## 标签\nAI Agent, Hermes Agent, 中文补丁, 汉化, 新手教程\n",
+    "created_at": "2026-05-21T20:04:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10023"
+  },
+  {
     "id": 10022,
     "title": "【开源自荐】DApp Inspector：在 Chrome DevTools 里查看 DApp 与钱包之间的全部 RPC 通信",
     "content": "DApp Inspector 是一个 Chrome 扩展。装上之后 DevTools 里会多出一个面板，按时间顺序展示当前 tab 里 DApp 与 Web3 钱包（MetaMask、Rabby、OKX Wallet 等）之间所有的 JSON-RPC 调用 —— 包括完整入参、返回值、错误、时延分解、链 ID、calldata 自动解码，以及一套用于调试的 Block / Throttle / Mock / Replay 规则引擎。\n\n项目地址：https://github.com/beilunyang/dapp-inspector-extension\nChrome 商店：https://chromewebstore.google.com/detail/dapp-inspector/bcjlcalkhkfkcchgdokgngemjeemgmcj\n介绍页：https://dapp-inspector.chain.moe\n\n## 它解决什么问题？\n\nDApp 与钱包之间的 RPC 通信对开发者来说一直是个黑盒：\n\n- 网页点一个按钮，钱包跳出来要签什么、签名前后做了哪些 `eth_call` 探测、传了什么 calldata，从外面看不到。\n- MetaMask 自带的 activity log 只能看自己钱包发出去的请求，看不到 DApp 一侧的时延、参数处理、错误分支。\n- 调试 DApp 的异常路径（钱包拒绝、网络超时、合约 revert）需要手工构造各种边界条件。\n- 想复现用户反馈的奇怪 bug，需要还原他当时与钱包之间的完整调用序列。\n\n之前我一直靠在 `window.ethereum` 上手动打 monkey patch 加日志，每个项目都要重写一遍，效率很低。索性做成扩展，所有 DApp 通用。\n\n## 主要特性\n\n**全量捕获**\n\n- 拦截 `window.ethereum.request` 的所有调用，自动分类为 read / write / sign / subscribe\n- 兼容 EIP-6963 多钱包并存场景\n- 完整记录入参、返回值、错误对象，原始 JSON-RPC envelope 一键复制\n\n**时延分解**\n\n把一次调用拆成 6 段单独计时：DApp 发起 → 扩展排队 → throttle → 钱包审批 → RPC 往返 → 回到 DApp。可以一眼看出瓶颈是用户审批还是 RPC 节点。\n\n**Calldata 自动解码**\n\n- 内置 ERC-20 / 721 / 1155 / Permit2 的 ABI，命中即 0ms 解码\n- 命中不到时按 `chainId + 合约地址` 查 Sourcify，再降级到 4byte 选择器\n- 拉到的 ABI 本地缓存 7 天，跨页面复用\n- 对 `eth_sendTransaction` / `eth_signTransaction` 会额外做风险评分（无限授权、`setApprovalForAll` 等）\n\n**调试规则引擎**\n\n- **Block** —— 按方法名/origin 匹配，拒掉某些请求并返回自定义错误码，验证 DApp 的错误处理分支\n- **Throttle** —— 给匹配的请求加延迟，复现慢网络、loading state、超时分支\n- **Mock** —— 用预设结果短路掉某个调用，不真实上链\n- **Replay** —— 任何捕获到的调用都能重放一次，JSON 参数现场可编辑，钱包按原流程再次弹窗\n\n**隐私与本地化**\n\n- 全部在浏览器本地运行，没有 telemetry、没有账号、没有数据上传\n- ABI 解析的 Sourcify / 4byte 是按需才请求（和加载网页图片同一性质）\n- 简体中文 / English 双语界面\n\n## 适合谁使用？\n\n- DApp 前端开发者：调试合约调用、签名流程、错误分支\n- 钱包扩展开发者：观察 DApp 一侧的调用模式和兼容性问题\n- 安全审计 / 反钓鱼研究者：分析未知 DApp 调用了哪些方法、传了什么 calldata、有没有可疑的授权\n- 想了解某个 DApp \"幕后到底做了什么\" 的 Web3 用户\n\n## 技术栈\n\n- Chrome Manifest V3\n- TypeScript / React 18 / Zustand / Tailwind\n- Vite + `@crxjs/vite-plugin`\n- Vitest（单元）+ Playwright（端到端）\n- 协议：Apache-2.0\n\n## 截图\n\nDevTools 面板（捕获列表 + 详情）：\n\n![panel](https://github.com/beilunyang/dapp-inspector-extension/raw/main/docs/images/panel.png)\n\n调用详情（参数 / 返回值 / 时延 / Replay-Mock-Block）：\n\n![detail](https://github.com/beilunyang/dapp-inspector-extension/raw/main/docs/images/detail.png)\n\nOptions 页（规则管理）：\n\n![options](https://github.com/beilunyang/dapp-inspector-extension/raw/main/docs/images/options.png)\n\n\n目前只支持 EVM，Solana / Sui 等其他生态在规划中。欢迎试用、提 issue、贡献代码。另外 README 末尾写了一个 logo 招募说明 —— 如果有设计师朋友感兴趣，欢迎一起完善这个项目。",
@@ -808,13 +816,5 @@
     "created_at": "2026-05-12T14:52:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9920"
-  },
-  {
-    "id": 9919,
-    "title": "【工具自荐】domaindex.io——为独立开发者和初创团队设计的域名批量查询工具",
-    "content": "推荐一个自己做的工具：[domaindex.io](https://domaindex.io)\n\n起名灵感来自\"domain + index\"——像索引一样，一次扫完你关心的所有域名后缀。\n\n## 解决什么问题\n\n想好一个项目名，却要一个个去注册商查哪些后缀还没被注册——这个过程既低效又繁琐。domaindex.io 让你输入一个关键词，同时查询数十个后缀的可用状态，结果实时返回。\n\n**TLD 覆盖广，按场景分组**\n\n支持的域名后缀不止主流的 .com / .net / .org，还涵盖 .io、.ai、.app、.dev、.tech、.tools、.run、.cloud、.sh 等开发者偏好后缀，以及 .design、.studio、.art 等创意类后缀，.store、.shop、.market 等电商类后缀。\n\n后缀按使用场景分成「Startup Picks」「Create」「Sell」「Publish」「Regional」等分组，不用自己一个个勾选，选个分组就能批量查。\n\n## 适合哪些人\n\n- **独立开发者 / Indie Hacker**：上线新项目前快速确认域名还没被抢\n- **初创团队**：命名阶段对比多个后缀，找到兼顾品牌感和可注册性的组合\n- **内容创作者、设计师**：想注册个人品牌域名，需要在 .me、.art、.studio 等风格化后缀里挑选\n\n数据来自 RDAP 协议直查注册局，不经中间商，结果准确可靠。\n\n网址：https://domaindex.io\n\n<img width=\"1200\" height=\"630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f85180ec-5b14-4e8e-a837-16a1b2e1da4a\" />",
-    "created_at": "2026-05-12T14:47:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9919"
   }
 ]
