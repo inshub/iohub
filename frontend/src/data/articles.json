@@ -1,5 +1,29 @@
 [
   {
+    "id": 10017,
+    "title": "【文章推荐】为什么 AI 指令应该优先写“不该做什么”",
+    "content": "禁止项给的是框架，框架内部才是自由。正向清单给的是路径，路径之外全是禁区。\n\n指令设计的直觉往往导向“应该做什么”。产品经理、提示词工程师、普通用户，第一反应几乎都是描述期望：你应该礼貌、应该详细、应该主动追问。\n\n但正向清单存在一个无法解决的缺陷：它不可能穷举。没有设计者能遍历所有场景，而大模型作为概率系统，在未被明确指引的灰色地带会本能地选择“讨好”——帮用户合理化一个糟糕的决策，为明显错误的命题寻找论据支撑。这并非模型“坏”，而是“提供帮助”在训练信号里的权重天然高于“指出错误”。\n\n这正是禁止指令优先论的逻辑起点。禁止项的本质，不是束缚，而是重新定义什么叫“帮助”。\n\n摘自 - https://mp.weixin.qq.com/s/8fu20mGchBkBBYmdEpRTbQ",
+    "created_at": "2026-05-21T10:03:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10017"
+  },
+  {
+    "id": 10016,
+    "title": "【开源自荐】Coding Tools MCP：让任意 MCP 客户端获得写代码能力",
+    "content": "Coding Tools MCP 是一个基于 Model Context Protocol (MCP) 的本地代码仓库操作后端。它能让任何支持 MCP 的大语言模型客户端，直接与你的本地项目进行交互，实现“阅读代码、全局搜索、生成并应用 Patch、运行命令、审查 Git Diff”的全闭环工作流。\n\nGithub Repo 地址：https://github.com/xyTom/coding-tools-mcp\n\n通过Coding Tools MCP这个工具：\n\n能够给支持 MCP 的客户端接一个本地代码仓库操作后端，让它能读文件、搜代码、打 patch、跑命令、看 git diff。\n\n**大概流程是这样：**\n\nMCP 客户端 ↔ Coding Tools MCP ↔ 本地项目目录\n也就是说，只要你的客户端支持 MCP，就可以把它接到本地项目上，当成半个Codex/Claude Code去使用。\n\n**支持的工具列表：**\n\n> 文件访问：read_file, list_dir, list_files, view_image\n> 代码修改：search_text, apply_patch\n> 环境执行：exec_command, write_stdin, kill_session\n> 版本控制：git_status, git_diff, git_log, git_show, git_blame\n\n\n**严格的安全边界设计**\n在设计之初就充分考虑了本地执行的安全性（尽管它不是一个完整的虚拟化沙箱）：\n\n- 路径隔离：所有读写、搜索、Git 操作被严格限制在 Workspace 根目录内。拦截绝对路径、.. 穿越及 Symlink 逃逸。\n- 命令限制 (exec_command)：内置超时控制、输出截断、敏感环境变量过滤；自动拦截破坏性命令与未授权的网络操作请求。Linux 环境下尝试使用 Landlock 进行文件系统级沙盒限制。\n- 按需赋权 (Tool Profiles)：\n- full: 完整读写与执行权限。\n- read-only: 仅开放搜索、读取和 Git 只读操作，拒绝写入和命令执行。\n- compat-readonly-all: 针对特定客户端的只读暗示兼容模式。\n\n**实际使用体验**\n下面以ChatGPT网页版为例，详细说明一下Coding Tools MCP这个工具的具体使用方式，通过Coding Tools MCP能让本来没有Coding能力的ChatGPT摇身一变成为Codex\n\n1、首先Clone 仓库到本地或者任意的能够运行代码进行开发的机器上\n\n\n```\ngit clone https://github.com/xyTom/coding-tools-mcp\n```\n\n2、安装相关依赖\n\n\n```\ncd coding-tools-mcp\npython -m pip install -e \".[dev]\"\n```\n\n\n3、运行Coding Tools MCP服务\n\n\n```\ncoding-tools-mcp --workspace /path/to/repo\n/path/to/repo 这个路径替换为你实际需要开发的项目文件夹路径\n```\n\n\n4、运行内网穿透服务\n\n\n```\nscripts/tunnel.sh cloudflared /path/to/repo\n/path/to/repo 这个路径替换为你实际需要开发的项目文件夹路径\n```\n\n<img width=\"1380\" height=\"342\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3d487c45-7b5e-4870-9dea-ee6d025d0f85\" />\n\n\n记录下来终端当中输出的Authorization Token和Cloudflare Tunnel地址，示例：\n\n```\nBearer qQQJeOQov3cbexcVtc75OCB7TQKxMAOr1dk6mrBO7kA\nhttps://effects-sonic-meetings-example.trycloudflare.com   \n```\n \n5、配置ChatGPT网页版\n点击设置\n\n<img width=\"484\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4d394b02-ca78-4ba4-aebe-d256070fe08f\" />\n\n点击创建应用\n\n<img width=\"1140\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e42b5d39-15f7-4083-8f7d-aa250b5ce2ba\" />\n\n填写相关信息\n\n<img width=\"584\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/20dcd55e-a459-4d79-914f-3ff75803c327\" />\n\n:warning:注意：MCP 服务器 URL应该填写上一步获取到的Cloudflare Tunnel地址，并在最后加上/mcp，例如：\nhttps://effects-sonic-meetings-example.trycloudflare.com/mcp\n点击连接应用\n\n<img width=\"820\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5953127a-1a89-4e77-b878-cd1810dc023c\" />\n\n输入上一步获得的Token，记得包括Bearer\n\n<img width=\"686\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e30c19f-ba11-400b-82fa-4ee5cc0bbb40\" />\n\n配置成功之后需要返回应用详情页，点击刷新\n\n<img width=\"934\" height=\"628\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/99d4488b-784f-49e5-9dc0-3bf26cb31293\" />\n\n刷新之后滑倒页面底部出现相关工具之后即代表配置完成了\n\n<img width=\"800\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/242e51e3-febe-42da-8448-e24dd3c71f42\" />\n\n6、使用Coding Tools MCP通过网页版ChatGPT进行Vibe Coding\n如图所示，在开始新的对话之前选择启用Coding Tools MCP工具\n\n<img width=\"1380\" height=\"904\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/382e2f4b-6a24-420b-96d8-b212ce3fe59b\" />\n\n<img width=\"1380\" height=\"466\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/33b44f98-cf87-4dd3-8f1a-bb7e787477af\" />\n\nChatGPT正常调用Coding Tools MCP工具读取项目相关代码，可以正常进行开发\n\n<img width=\"1380\" height=\"810\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/20c617ab-dd27-41c3-b067-31e7fd70c5d9\" />",
+    "created_at": "2026-05-21T09:06:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10016"
+  },
+  {
+    "id": 10015,
+    "title": "【网站自荐】QuickBGCut：浏览器本地运行的免费 AI 抠图工具",
+    "content": "阮老师好，\n\n我做了一个在线 AI 抠图工具：QuickBGCut\nhttps://quickbgcut.com\n\n它的功能很简单：上传一张图片，自动去除背景，然后下载透明 PNG。\n\n我做它主要是为了解决几个常见痛点：\n\n1. 不需要注册账号\n2. 完全免费\n3. 下载结果没有水印\n4. 图片在浏览器本地处理，不上传服务器，隐私更可控\n\n目前支持 JPG、PNG、WebP 图片上传，适合处理商品图、头像、Logo、签名、证件照、社交媒体配图等场景。\n\n相比很多在线抠图工具，QuickBGCut 更适合“临时用一下”的需求：打开网页、上传图片、下载结果，不需要安装软件，也不用走复杂流程。\n\n网站地址：https://quickbgcut.com\n\n感谢阮老师维护周刊，也欢迎大家试用和反馈。",
+    "created_at": "2026-05-21T08:58:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10015"
+  },
+  {
     "id": 10014,
     "title": "【工具自荐】Lando 一款 AI LandingPage 生成器",
     "content": "Lando 地址：https://lando.lianggejia.cn/\n\nLando 是一款 **AI LandingPage 生成器**。\nLando is an AI landing page generator. \n\n你用一段话描述项目，**AI 自动生成官网**并**收集用户意向**。\nDescribe your project in plain text, and the AI creates a beautiful landing page in minutes—with lead collection built in. \n\n不会写代码也能在 5 分钟上线。\nNo coding required. \n\n适合**创业验证**、**个人项目展示**和**小微企业建站**。\nPerfect for validating ideas, personal projects, and small business websites.\n\n",
@@ -794,29 +818,5 @@
     "created_at": "2026-05-12T06:49:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9915"
-  },
-  {
-    "id": 9914,
-    "title": "【网站自荐】AgenTank - 和你的AI一起玩的坦克大战，赛博斗蛐蛐",
-    "content": "Hello！我自荐一个自己开发的网站：AgenTank。\n\n这是一个和 AI Agent 一起玩的坦克大战游戏。玩家不是手动操控坦克，而是观察自己的坦克在战场上的表现，然后告诉 AI 想要改进的策略方向，由 AI 去修改坦克的代码，再把坦克送回战场继续对战。\n\n它有点像“赛博斗蛐蛐”：你看着自己的坦克和别人的坦克战斗，观察它为什么赢、为什么输，比如走位不好、追错目标、撤退太晚、攻击太激进等等，然后不断调整策略，让 AI 帮你迭代坦克逻辑。\n\n我自己已经用它跑了 1000 多场战斗，也花了不少 Claude 额度来优化我的坦克 T55-620。这个过程最有意思的地方，不只是输赢，而是看着一个 AI 控制的坦克一点点变聪明。\n\n网站地址：\nhttps://agentank.ai\n\n视频：https://www.youtube.com/watch?v=qJ1x5rIKlto\n\n欢迎大家来挑战我的坦克 T55-620，也希望听到大家的反馈。\n\n\n",
-    "created_at": "2026-05-12T06:06:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9914"
-  },
-  {
-    "id": 9913,
-    "title": "【网站自荐】头部姿势背单词，学习的同时放松颈椎",
-    "content": "晃晃背单词（shakewords)  \n地址：https://shakewords.wyld.cc\n\n<img width=\"1950\" height=\"1252\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ce96742d-6736-45c0-b4c3-be6d59c48565\" />",
-    "created_at": "2026-05-12T05:54:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9913"
-  },
-  {
-    "id": 9912,
-    "title": "【开源自荐】优派简历-免费、高颜值、数据安全的AI 简历在线构建工具",
-    "content": "### 推荐一个纯本地运行、不碰数据的开源 AI 简历工具：优派简历 (OpResume)\n\n**💻 项目地址：** [GitHub](https://www.github.com/oopooa/opresume)  \n**✨ 在线体验：** [在线使用](https://opresume.pages.dev)  \n\n---\n\n#### 📖 项目简介\n市面上的在线简历生成器大多存在强制收费，或收集用户核心隐私（姓名、电话、履历）的风险。**优派简历（OpResume）** 是一个 100% 本地优先（Local-First）的开源前端工作台，没有任何后端数据库，彻底将数据主权还给用户。\n\n<img width=\"1920\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/948797e4-cfe1-44d7-923d-e8c4d54ae1e1\" />\n\n#### 🌟 核心亮点\n\n* **🔒 绝对的隐私安全**\n    无注册流程，无后端服务器。用户的每一次输入都仅保存在当前浏览器的 `localStorage` 中。数据可一键导出为通用的 JSON 标准格式保存在本地。\n\n* **🤖 自带密钥 (BYOK) 的 AI 体验**\n    内置 AI 简历解析与划词润色功能。为保障隐私不被云端记录，采用用户自带 API Key 的模式（目前深度适配硅基流动），平台不上传、不中转任何经历描述。\n\n* **🎨 原生排版与一键脱敏**\n    提供所见即所得的拖拽编辑。导出时调用浏览器原生 `print()` 引擎，生成的 PDF 矢量清晰，且 100% 兼容大厂 ATS 筛选系统。支持“一键隐私模式”，瞬间掩码敏感信息，方便在社区分享 Review。\n\n* **🛡️ 一键开启隐私模式**\n    考虑到用户在社区求职或请教大佬 Review 简历的需求，系统内置了一键脱敏功能。点击即可瞬间屏蔽姓名、电话、邮箱等敏感信息，让分享更安心。\n\n* **📈 规范维护与持续迭代**\n    项目目前已扎实迭代至 **v1.3.0** 版本，并且始终保持极其规范的 `CHANGELOG` 更新记录。我们积极响应社区反馈，致力于为开发者提供长线、可靠的工具支持。\n\n[更新日志](https://github.com/oopooa/opresume/releases)",
-    "created_at": "2026-05-12T04:06:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9912"
   }
 ]
