@@ -1,5 +1,21 @@
 [
   {
+    "id": 10040,
+    "title": "【网站自荐】像素风的aiyumk日卡，如果你想赶论文、快速做个MVP并且使用顶尖模型，又不想订阅，可以试试这个",
+    "content": "风靡流行的像素风日卡Vibe coding 网站 [AIyumk Coding像素世界](https://aiyumk.com)\n\n<img width=\"1920\" height=\"920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ffcce628-0c33-41fb-bc0c-fdb30af8ff6a\" />\n\n",
+    "created_at": "2026-05-23T03:31:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10040"
+  },
+  {
+    "id": 10039,
+    "title": "【工具自荐】QName(Query Name): 极速批量域名查询工具",
+    "content": "- 在线访问入口： https://qname.ai\n- 核心功能：多后缀批量查询、显示域名流量、域名过期删除监控、免费\n> 注：该方案借鉴了 https://query.domains/ 的优雅交互设计，补上这个功能主要是为了方便一键购买域名和域名监控，这是我日常找词上站中经常要用到的功能。\n\n<img width=\"2624\" height=\"1988\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/22fad686-73d6-47d0-b28f-b8301697d4bb\" />\n\n<img width=\"2298\" height=\"1876\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aab58459-0539-4903-b0f8-81680c5a2d8c\" />\n\n<img width=\"2876\" height=\"1462\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c339bd63-99f1-4eef-a9d1-03b5f36ee344\" />\n\n\n",
+    "created_at": "2026-05-23T03:30:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10039"
+  },
+  {
     "id": 10038,
     "title": "【网站自荐】WizardAlchemyCode.com：面向 Roblox 玩家的一页式 Wizard Alchemy 兑换码查询站",
     "content": "阮老师好，推荐一个刚上线的小工具站：\n\n[Wizard Alchemy Codes](https://wizardalchemycode.com/?utm_source=ruanyifeng&utm_medium=newsletter&utm_campaign=wizardalchemycode_cold_start_202605&utm_content=github_issue)\n\n这是一个面向 Roblox 游戏 Wizard Alchemy 玩家的一页式兑换码查询站。它不是官方站点，定位是 fan-made resource，主要解决玩家查兑换码时常见的几个问题：\n\n- 先显示当前列出的 working codes，减少在长文章里查找的成本；\n- 每个 code 旁边提供复制按钮；\n- 单独列出 needs-review code，避免把来源冲突的内容直接写成确定可用；\n- 保留 expired codes、redeem steps 和 update history；\n- 页面上明确写明 not affiliated with Roblox / Wizard Alchemy / developers。\n\n这个站点也是一个独立开发小实验：用 Next.js 15 + TypeScript + Tailwind 构建，部署在 Cloudflare Workers 上，不登录、不收费，主要观察长尾 SEO 内容站如何做 answer-first 信息结构和合规边界。\n\n如果适合周刊的工具/资源栏目，欢迎收录；不合适也没关系。",
@@ -796,23 +812,5 @@
     "created_at": "2026-05-14T11:21:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9937"
-  },
-  {
-    "id": 9936,
-    "title": "【开源自荐】Zephyr — 基于 Rust + Tauri v2 的安全 Mihomo 代理客户端",
-    "content": "## 项目简介\n\n**Zephyr** 是一款以安全为第一设计原则的跨平台 Mihomo（Clash Meta）桌面代理客户端，采用 Rust 后端 + 原生 JavaScript 前端架构，基于 Tauri v2 框架构建。\n\n**GitHub 地址：** https://github.com/Juwan-Hwang/Zephyr\n\n## 为什么值得关注\n\n### 1. 安全架构（13 层纵深防御）\n\n这是 Zephyr 最大的差异化特点。项目实施了完整的纵深防御策略（Defense in Depth），覆盖全攻击面：\n\n- **CSP 内容安全策略**：前端禁止 eval 和内联脚本，网络连接严格限制为本地 Mihomo 内核通信，前端无法直连外网\n- **Tauri v2 最小权限模型**：明确拒绝授予文件系统、命令执行、网络请求、剪贴板等高危权限\n- **SSRF 完整防护链**：协议白名单 + DNS Pinning + 私有 IP 拦截（IPv4/IPv6）+ 重定向链全链路复检\n- **AES-256-GCM 加密存储**：敏感数据加密，密钥与机器指纹绑定\n- **CI/CD 安全流水线**：集成 cargo audit、semgrep、dependency-review 等 10 项自动化安全检查\n\n详细安全文档：https://github.com/Juwan-Hwang/Zephyr/wiki/Security\n\n### 2. 技术选型\n\n相比 Electron 方案，Zephyr 选择 Tauri v2 + Rust：\n\n- 不嵌入 Node.js 运行时，攻击面大幅缩小\n- 内存占用更低，安装包体积更小\n- Rust 后端提供编译期内存安全保证\n\n### 3. UI 设计\n\n极简设计理念，无边框窗口 + 系统托盘，界面清爽优雅。\n\n## 项目数据\n\n- ⭐ 200+ GitHub Stars\n- 📦 600+ 下载量\n- 🔧 10 个 Release 版本\n- 💻 支持 Windows / macOS（Intel & Apple Silicon）/ Linux\n- 📄 MIT 开源协议\n\n## 适合谁\n\n- 对代理客户端安全性有要求的用户\n- Rust / Tauri 技术栈的学习参考\n- 追求轻量、美观桌面工具的用户\n",
-    "created_at": "2026-05-14T10:29:10Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9936"
-  },
-  {
-    "id": 9935,
-    "title": "【网站自荐】完全开源，去中心化的Holyshit期刊。",
-    "content": "网站地址：https://www.holyshitjournal.org/\n开源代码：https://github.com/Olcmyk/holyshit-journal\n## 我复活了shit期刊\n\n之前shit期刊火爆全网，但是因为种种原因停更了。我萌生了这个开发这个Holyshit期刊的想法，作为精神继承者。网站完全开源，而且无需注册登录，点击即可随时投稿投票。高度去中心化，没有评审团，ai打分和网友投票是入选的唯一标准。\n\n欢迎大家来投稿自己的论文\n\n<img width=\"1440\" height=\"823\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/83ba60bd-9a06-4ea8-a3fd-79df5d0bed7d\" />\n\n<img width=\"1440\" height=\"823\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c051cfc0-534f-421f-a0da-b674148876f7\" />",
-    "created_at": "2026-05-14T08:44:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9935"
   }
 ]
