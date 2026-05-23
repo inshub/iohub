@@ -1,5 +1,37 @@
 [
   {
+    "id": 10048,
+    "title": "【工具自建】词根词缀学习工具 - Prismise",
+    "content": "https://www.prismise.com/\n\n<img width=\"1200\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0f76ab45-1770-4513-9eef-f6bb228d737d\" />",
+    "created_at": "2026-05-23T14:02:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10048"
+  },
+  {
+    "id": 10047,
+    "title": "【工具自建】AI 图片编辑工具 PixelMax",
+    "content": "\n# AI 图片编辑工具 PixelMax\n\n[https://pixelmax.art](https://pixelmax.art)\n\n<img width=\"1434\" height=\"712\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2a5b2e30-5f76-464c-8c04-c9d5e01cdd50\" />\n\n<img width=\"1433\" height=\"776\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8baa090a-c49a-4029-9a94-813d1e340f37\" />\n\n<img width=\"1433\" height=\"787\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f1428efc-8f11-480f-a4a9-136ce43f671d\" />\n\n<img width=\"1436\" height=\"785\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ab3b0e6e-df00-41d4-a941-b7c7225a3ecc\" />\n\n主要包含如下AI工具：\n\n## 人像和主体拍摄工具\n  这些工具主要用于改善人像摄影或构建人物与产品构图：\n\n- 人像增强——提高人像照片的清晰度和细节。\n- 产品手持——将人物照片和产品图片结合起来，创建实物视觉效果。\n\n## 增强和修复\n当目标是提升质量而非替换场景时，用户通常会首先使用以下工具：\n\n- 照片增强器和放大器— 使用预设的增强方案锐化和放大图像。\n- 图像修复——通过简单的修复流程修复褪色或损坏的图像。\n- 重新照明— 应用预设的照明氛围，例如影棚、黄金时段或聚光灯。\n- 着色— 使用预设的颜色样式为黑白或褪色的照片添加颜色。\n\n## 背景和画布工作流程\n当您需要更清晰的构图或新的场景时，这些工具会很有帮助：\n\n- 去除背景——输出透明抠图。\n- 替换背景— 根据文本描述生成新的背景。\n- 扩展画布——可以扩展画布，并且可以选择使用提示来引导新区域。\n\n## 风格和外观的变化\n如果您想更改图像的视觉处理方式，PixelMax 目前提供以下功能：\n\n- 风格迁移— 应用内置的艺术和设计预设，例如印象派、动漫、赛博朋克或像素艺术。\n- 摄影特效——使用预设效果，例如胶片、复古胶片、散景效果、柔焦、暗角效果和双重曝光。\n- 纹理变换— 将可见表面更改为大理石、皮革、木材、金属或织物等材质。\n- 视角改变/季节重塑— 使用每个工具自身的控件来重塑视角或季节。\n\n## 使用文本或结构化输入进行创意编辑\n当您想要更改图像内容时，这些工具非常有用：\n\n- 高级编辑— 使用文本指令，并可选择使用遮罩进行更有针对性的编辑。\n- 添加对象/删除对象/替换对象— 根据每个工具中提供的指令字段添加、删除或交换内容。\n- 重写文本— 替换图像中可见的文本。\n- 草图转图像——将草图或线条图转换为渲染图像。\n",
+    "created_at": "2026-05-23T13:56:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10047"
+  },
+  {
+    "id": 10046,
+    "title": "【开源自荐】handsets - 高性能 Android 自动化控制 CLI",
+    "content": "> Drive Android from the shell, in milliseconds. One jar; no app, no root.\n\n## 项目地址\n\n- GitHub: <https://github.com/elliotgao2/handsets>\n- 文档站: <https://elliotgao2.github.io/handsets/>\n- PyPI: <https://pypi.org/project/handsets/>\n- License: MIT\n- 一键安装: `curl -fsSL https://raw.githubusercontent.com/elliotgao2/handsets/main/install.sh | bash`\n\n## 介绍\n\nhandsets（命令叫 `hs`）是一个用 Rust 写的 Android UI 自动化 CLI，专门为 LLM agent 设计了 verb-led 的输出格式。不需要 root、不需要装 APK，单二进制 + 一个 jar 通过 `adb forward` 跑在设备 shell UID 下即可工作。\n\n跟 adb shell / uiautomator2 / Appium 的区别：\n\n|                  | handsets       | adb shell  | uiautomator2 | Appium    |\n| ---------------- | -------------- | ---------- | ------------ | --------- |\n| 单次调用延迟     | 2–7ms          | 40–700ms   | 30–100ms     | 100–500ms |\n| 按 label 查找    | 是             | 否         | 是           | 是        |\n| 设备端安装       | 一个 ~几百 KB 的 jar | 无    | 两个 APK + atx-agent | driver APK + Node 服务 |\n\n## 它能做什么：典型用法\n\n驱动登录的完整流程：\n\n```bash\nhs use                              # 连设备、起 daemon\nhs ui                               # agent 看一眼当前屏幕\nhs fill 手机 13800138000            # 自动找到手机号 EditText\nhs tap 获取验证码                    # 自动走 ACTION_CLICK\nhs fill 验证码 123456\nhs tap 登录\n```\n\n`hs ui` 的输出是给 LLM 看的 verb-led 表格 —— 每一行直接告诉 agent 该用哪个动词、目标 selector 是什么、坐标在哪：\n\n```\ntap   ImageButton  \"返回\"   98,243\nfill  EditText     \"请输入手机号码\"  #aliuser_login_mobile_et  720,1059\ntap   Button       \"获取验证码\"  #aliuser_login_send_smscode_btn  1202,1255\ntap   Button       \"登录\"   #aliuser_login_login_btn  720,1521\n```\n\nClaude / GPT 直接读这张表，下一步发什么命令一目了然，token 占用比 XML accessibility dump 少一个数量级。\n\n## 特性\n\n- **给 LLM 看的输出**：`hs ui` 是 verb-led 表格，不是 XML dump，token 友好。\n- **CSS-like + Playwright 风格 selector**：`Button:has-text(\"Sign in\")` / `EditText:below(TextView[text=Email])` / `Button:near(ImageView, 200)`，习惯 web 自动化的人零成本迁移。\n- **毫秒级延迟**：单次 tap typical ~80ms。最近把 tap 从「注入 MotionEvent」改成走 `AccessibilityNodeInfo.ACTION_CLICK`，绕开 InputDispatcher，p99 从 600ms+ 压到 ~50ms。\n- **动作齐全**：tap、type、fill（atomic ACTION_SET_TEXT，绕过输入法）、swipe、wait、submit、paste、screenshot、screen mirror，还有 `hs run` 批处理脚本和 `hs act --tap … --until …` tap-then-assert 组合。\n- **Python 绑定**：`pip install handsets`，`from handsets import Session`。\n- **无 root、无 APK**：daemon 是个 jar 通过 `app_process` 跑在 shell UID 下，权限够用。",
+    "created_at": "2026-05-23T13:53:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10046"
+  },
+  {
+    "id": 10045,
+    "title": "【开源自荐】Awesome Architecture:专注「架构思维」的中文知识库(21 张真实系统架构地图 + 教程)",
+    "content": "# 一句话描述\n一个只讲「架构」、不讲代码的开源知识库:用 21 张真实系统的架构地图 + 一套教程,帮你在 AI 时代练成「动手前先想清楚系统该长什么样」的判断力。\n\n# 介绍\nAI 让写代码越来越廉价,但「在写第一行代码前想清楚系统怎么设计」的判断力反而越来越值钱。这个仓库就是用来练这个的,全中文(也有英文 README)。\n\n它分两部分:\n\n- **教程**:8 章,系统讲「怎么像架构师一样思考」——需求→约束→质量属性→取舍的拆解、用 C4 画架构图、十大核心架构模式、数据与状态、从 0 到 1 设计一个系统、用 ADR 记录决策与演进。\n- **模板**:21 个热门系统的「架构地图」,刻意不讲语言/框架,只讲它在解决什么问题、数据怎么流、关键决策怎么取舍、规模化时第一个会死在哪。既有电商、社交信息流、IM、视频流、支付、搜索引擎、网约车、协同文档等经典系统,也有 5 个 AI 原生系统:AI 网关/中转站、RAG 知识库、AI Agent、模型推理服务、向量数据库。\n\n每个模板用统一的 14 段结构(决策权衡 / 瓶颈 / 演进路线是重点),并在末尾附**真实开源项目与工程博客/论文链接**(如 vLLM、LiteLLM、TigerBeetle、Uber H3、Figma 工程博客等),可以顺藤摸瓜读源码。适合准备系统设计面试,或想从「会写代码」转向「会做架构判断」的人。\n\n欢迎拍砖。\n\n# 项目链接\nhttps://github.com/study8677/awesome-architecture\n",
+    "created_at": "2026-05-23T13:27:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10045"
+  },
+  {
     "id": 10044,
     "title": "【开源自荐】ast-bro v2.2.0 发布：更名 + run 子命令 + 库提取 + 全路径迁移",
     "content": "<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca78d602-6598-454e-a4bf-f7aecb88d3cb\" />\n\n**项目地址**：https://github.com/aeroxy/ast-bro\n**v2.0 自荐**：https://github.com/ruanyf/weekly/issues/9895\n\n**一句话**：\n> AI 编程助手的\"代码骨架\"工具包，只需一个命令就能看清一个包的**公共 API**、两个文件间的**依赖关系**、整个仓库的**循环引用**、以及按语义找到**相似代码段**。现在还能用 metavariable 做结构化搜索和代码重写。15 个 MCP 工具，1 个二进制文件。支持 **13 种语言**。\n\n---\n\n## v2.2.0 重大变更：ast-outline 更名为 ast-bro\n\n项目已从 `ast-outline` 更名为 `ast-bro`。原因是功能早已超出\"outline\"的范畴，现在涵盖依赖图、调用图、语义搜索、结构化搜索/重写引擎。旧名字还跟一个 vscode 插件和一个 npm 包撞名。\n\n升级很简单：跑一次 `ast-bro` 命令，缓存目录（`.ast-outline/` → `.ast-bro/`）、ignore 文件（`.ast-outline-ignore` → `.ast-bro-ignore`）、mcp 配置条目、模型缓存都会自动迁移。旧的 `ast-outline` 二进制仍以代理形式保留，现有脚本不受影响。\n\n新增 `sb` 短别名，少打几个字。\n\n---\n\n## 🚀 从 v2.0 到现在的变化\n\n### 1. `run` 子命令（v2.2.0 新增）—— AST 感知的结构化搜索和代码重写\n\n基于 ast-grep-core，支持 metavariable 模式匹配：\n\n```bash\n# 搜索所有函数调用\nast-bro run -p '$FUNC($$$)' -l rust\n\n# 重写 foo -> bar（先看 diff）\nast-bro run -p 'foo($A)' -r 'bar($A)' -l py\n\n# 确认无误后写入磁盘\nast-bro run -p 'foo($A)' -r 'bar($A)' --write\n```\n\nMCP 工具中同样可用，是第 15 个 MCP 工具。搜索上限 1000 条匹配，重写上限 50 个文件（dry-run + write 均受限制）。指定 `--lang` 时预编译模式，跨文件复用，性能更好。\n\n---\n\n### 2. 库提取与代理二进制\n\n核心逻辑提取到 `src/lib.rs`（1355 行），从 `src/main.rs`（3 行）调用。这使得下游项目可以直接依赖 ast-bro 库，也为代理二进制铺路。\n\n新增两个代理二进制：\n- `ast-outline` — 向后兼容，自动转发到 `ast-bro`\n- `sb` — 短别名，少打几个字\n\n两者都先在自身目录查找 `ast-bro`（适配 `./target/release/`），找不到再走 PATH。Windows 上自动处理 `.exe` 后缀。\n\n---\n\n### 3. Hook 重构\n\nClaude Code 和 Gemini 的 PreToolUse hook 提取了共享 I/O 模块（`src/hook/io.rs`），消除了两个 shim 之间的重复代码。emit 函数现在正确处理序列化和写入错误，不再 unwrap 或静默忽略。\n\nHook 的文件类型判断从硬编码扩展名列表改为 `SupportLang::from_path`，自动与适配器注册表同步。\n\n---\n\n### 4. 安全性改进\n\n- **原子写入** — `run --write` 使用 crash-safe 的原子替换：写临时文件、fsync、复制权限、rename 覆盖原文件。Unix 上还会 fsync 父目录，确保 rename 的目录条目在崩溃后存活。符号链接会被解析到真实文件，不会被普通文件替换。\n- **文件大小上限** — CLI 和 MCP 的 `run` 都拒绝读取超过 5 MiB 的文件，防止 minified bundle 或数据文件撑爆内存。\n- **MCP 安全上限** — 搜索上限 1000 条匹配，重写上限 50 个文件（dry-run + write 均受限制）。\n- **模式校验** — 无效的 `--lang` 或 pattern 在 MCP 和 CLI 中都会立即报错，不会静默返回空结果。\n\n---\n\n### 5. 其他改进\n\n- **CLI run 提示** — 当零文件被处理时（glob/--lang/路径配置错误），stderr 输出提示信息\n- **ignore 迁移保护** — `migrate_legacy_ignore_file` 在传入文件路径（而非目录）时跳过迁移尝试\n- **搜索 schema** — CLI 和 MCP 的 `run` JSON 输出都包含 `schema: \"ast-bro.run.v1\"` 字段\n- **Hook 硬化** — `emit_pass_through` 和 `emit_substitute` 不再 unwrap serde_json，序列化失败时返回非零退出码\n\n---\n\n## 📦 安装\n\n```bash\n# Homebrew (macOS)\nbrew install aeroxy/tap/ast-bro\n\n# Cargo\ncargo install ast-bro\n\n# npm\nnpm install -g ast-bro\n\n# pip\npip install ast-bro\n\n# Nix\nnix run github:aeroxy/ast-bro\n```\n\n---\n\n## 🧠 典型使用场景\n\n```bash\n# 1. 看包的真正公共 API（解析所有重导出链）\nast-bro surface . --tree\n\n# 2. 重构前看波及范围\nast-bro reverse-deps src/auth.rs\n\n# 3. 查找循环引用\nast-bro cycles\n\n# 4. 语义搜索（BM25 + 密集向量）\nast-bro search \"how does login work\"\n\n# 5. 只看结构不看函数体\nast-bro map src/game.rs\n\n# 6. 结构化搜索和重写\nast-bro run -p 'console.log($$$)' -l ts\n\n# 7. 配合 AI 编码工具\nast-bro install --all\n```\n\n---\n\n## 🙏 致谢\n\n- 基于 [ast-grep](https://github.com/ast-grep/ast-grep)（@HerringtonDarkholme）和 [tree-sitter](https://github.com/tree-sitter/tree-sitter)\n- 语义模型：`minishlab/potion-code-16M`\n\n欢迎 Star、Issue、PR。让 LLM 理解代码时更聪明，而不是更暴力。\n",
@@ -782,37 +814,5 @@
     "created_at": "2026-05-15T04:11:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9945"
-  },
-  {
-    "id": 9944,
-    "title": "【文章自荐】430MHz 频段：网红对讲机是如何给你埋陷阱的",
-    "content": "## 标题\n430MHz 频段：网红对讲机是如何给你埋陷阱的\n\n## 链接\nhttps://blog.mfwt.top/index.php/archives/1304/\n\n## 简介/概括\n你能看到的那些网红对讲机，究竟是怎么给你挖坑的？更具体的说，这些对讲机所使用的频段（430-440MHz，144-148MHz）并不是供普通用户使用的，普通用户直接上手的话，会引入很明显的合规性风险。\n\n出现这样的情况，原因有很多，包括设备原因，合规规定滞后等原因。文末我也给了一些合规替代品的建议，但老实说，恐怕终究很难撼动目前这些网红对讲机的统治地位。\n\n## 备注\n我不确定『无线电』这种与IT行业没什么关系的文章是否会有一点点偏题，但考虑到今天的周刊里提到了mesh Lora网络，个人认为应该也是可以的。\n\n本文无AI生成内容。\n\n谢谢。",
-    "created_at": "2026-05-15T01:32:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9944"
-  },
-  {
-    "id": 9943,
-    "title": "docs(issue-396): fix typo",
-    "content": null,
-    "created_at": "2026-05-15T00:32:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/9943"
-  },
-  {
-    "id": 9942,
-    "title": "【开源自荐】Job Bro - 基于 Chrome 内置 AI（Gemini Nano）的职位分析助手",
-    "content": "<img width=\"373\" height=\"458\" alt=\"setting\" src=\"https://github.com/user-attachments/assets/91d4ee3a-1c19-411d-ab0b-0089cfabe81c\" />\n\n**项目地址**：https://github.com/aeroxy/job-bro\n\n**一句话**：\n> Chrome 扩展，用 AI 分析 LinkedIn 职位描述 —— 五个维度评估（薪资匹配、技能匹配、成长潜力、偏好匹配、风险评估），支持 ChatGPT/Claude 云端推理与 Gemini Nano 本地推理双后端，智能对话追问。开启 Chrome AI 后无需 API Key、零网络请求、数据不出设备。\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4a9859d6-5053-48ed-980a-a3605bdff8e5\" />\n\n## 🚀 亮点\n\n### 1. Chrome 内置 AI（Gemini Nano）作为第二推理后端\n\n> **问题**：原版 Job Bro 仅支持 OpenAI 兼容的云端 API，每次分析职位都需要调用远程模型，有网络依赖和 Token 费用。\n> **解决**：新增 Chrome 内置的 Gemini Nano 作为第二推理后端。用户可以在设置中一键切换 Cloud / Chrome AI，无需任何配置。\n\n```\n设置 → 后端选择\n[Cloud (OpenAI)] ←→ [Chrome AI]\n```\n\n#### 为什么用 Chrome AI？\n\n| 方案         | API Key | 网络依赖 | 启动速度     | Token 费用 | 数据隐私     |\n|--------------|---------|----------|--------------|------------|--------------|\n| Cloud (OpenAI)| 需要    | 需要     | 无冷启动     | 按量付费   | 数据上云     |\n| Chrome AI    | 不需要  | 不需要   | 首次需下载 4GB | 免费       | 数据不出设备 |\n\n### 2. 五种 AI 评估 + 自动简历生成\n\n打开 LinkedIn 职位页面，在侧边栏一键分析，自动生成五个维度的评估报告：\n\n| 维度 | 说明 |\n|------|------|\n| **薪资评估** | 基于职位、地点、经验要求估算薪资范围，与用户期望对比 |\n| **技能评估** | 对比职位要求与用户技能栈，标注匹配 / 缺失 / 额外技能 |\n| **偏好评估** | 远程 / 混合 / 办公、行业、公司规模等偏好匹配度 |\n| **风险评估** | 裁员历史、招聘活跃度、职位稳定性等风险信号 |\n| **成长评估** | 技能提升空间、职业路径、学习资源等成长潜力 |\n\n完成后还可一键生成定制化的求职信 / 简历，或对报告内容进一步追问。\n\n### 3. 持久化对话会话\n\nChrome AI 的 API 是有状态的，利用这一特性实现了持久化会话：\n- 同一份报告内的多次追问复用同一个模型会话\n- 无需每次携带完整历史，只发送新问题，大幅减少延迟\n- 系统提示变更时自动重建会话\n\n### 4. 云端 + 本地自定义提示词\n\n由于 Gemini Nano 与 GPT-4o 能力差异较大，两个后端各自保存独立的自定义提示词。用户在设置中切换后端时，提示词编辑区会自动切换对应的内容。\n\n### 5. 零配置，开箱即用\n\n- Chrome Web Store 安装后直接使用（Cloud 后端需填 API Key）\n- Chrome AI 后端无需 API Key，下载模型即可\n- 分析结果保存到 IndexedDB，可随时回溯历史报告\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5c59b291-c23c-4bf4-9761-b1011b8bc42f\" />\n\n## 🧗 使用方式\n\n1. 安装 Chrome 扩展（或 `git clone` + `bun install && bun dev`）\n2. 打开任意 LinkedIn 职位页面\n3. 点击侧边栏 Job Bro 图标\n4. 点击「分析」，等待 AI 评估完成\n5. 查看报告，或进一步对话追问\n\n**源码**：https://github.com/aeroxy/job-bro\n\n**Chrome AI 前提**：Chrome 127+，启用 `chrome://flags/#prompt-api-for-gemini-nano`，下载模型（约 4GB，浏览器管理）\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/990f1c37-7254-4a9c-be84-51a3fe46304f\" />\n\n## 🙏 致谢\n\n- Chrome 生态的启发\n- 感谢社区反馈和贡献\n\n欢迎 Star、提 Issue、贡献新功能。让求职分析像打开一个网页一样简单。\n",
-    "created_at": "2026-05-14T17:38:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9942"
-  },
-  {
-    "id": 9941,
-    "title": "【开源自荐】Web Bro - 基于 Chrome 内置 AI（Gemini Nano）的工作智能体",
-    "content": "<img width=\"700\" height=\"394\" alt=\"demo\" src=\"https://github.com/user-attachments/assets/c63cf6cf-b69f-47e1-9434-f8887814de4b\" />\n\n**项目地址**：https://github.com/aeroxy/web-bro  \n\n**一句话**：\n> 纯浏览器运行的 AI 工作区 Agent —— Gemma 4 E2B-it ONNX 通过 WebGPU 在浏览器中完整推理，新增 Chrome Gemini Nano 作为轻量后端，一个命令即可切换，零服务端依赖，数据不出机器。\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/82c24ea4-9bca-48c9-b456-a11ff7de4db2\" />\n\n## 🚀 亮点\n\n### 1. Chrome 内置 AI（Gemini Nano）作为第二运行时\n\n> **问题**：Web Bro 原本只能通过 WebGPU 运行 Gemma 模型，依赖本地 GPU 硬件。\n> **解决**：现在支持 Chrome 内置的 Gemini Nano 作为第二执行后端。用户可以在侧边栏一键切换 \"Chrome AI\" 和 \"Local Gemma\"，无需重新加载页面。\n\n```\n# 首次加载自动检测可用后端\n# 也可以在侧边栏手动切换\n[Chrome AI] ←→ [Local Gemma]\n```\n\n#### 为什么用 Chrome AI？\n\n| 方案 | 依赖 | 启动速度 | 适用场景 |\n|------|------|----------|----------|\n| WebGPU Gemma | 需要 GPU + WebGPU 支持 | 较慢（需加载模型） | 高质量推理、离线可用 |\n| Chrome AI (Gemini Nano) | 仅需 Chrome 浏览器 | 极快（模型内置） | 快速响应、轻量任务 |\n\n### 2. 共享 Prompt 与工具定义\n\n将系统提示、工作区上下文构建和工具定义从 WebGPU Worker 提取到共享模块 `src/lib/agent-prompt.ts`，确保两个后端使用完全一致的指令和工具 schema。\n\n### 3. 智能能力检测与降级\n\n- 新增 `detectChromeAI()` 检查 `globalThis.LanguageModel`\n- 应用现在只要 **WebGPU 或 Chrome AI 任一可用** 即可运行\n- 无需 GPU 的设备也能通过 Chrome AI 使用完整功能\n\n### 4. 持久化运行时管理\n\n- 后端切换时自动释放前一个运行时（终止 Worker / 销毁 Nano 会话）\n- 重新挂载当前工作区到新运行时，不丢失上下文\n- 选择状态持久化在 `app_settings` 中\n\n### 5. 完整功能覆盖\n\n| 类别 | 能力 |\n|------|------|\n| **导航** | 列出目录、搜索文本、读文件、写文件 |\n| **运行时** | WebGPU Gemma / Chrome Gemini Nano 一键切换 |\n| **持久化** | IndexedDB 快照（撤销）、本地会话存储 |\n| **隐私** | 数据不出机器，零服务端依赖 |\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cadd04f3-d6ec-4b7f-bd6e-b2aaeaaab2c6\" />\n\n## 🧗 使用方式\n\n打开浏览器即可，无需安装、无需 API Key：\n\n**Demo**: https://aeroxy.github.io/web-bro  \n**源码**: https://github.com/aeroxy/web-bro\n\n---\n\n<img width=\"1024\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1cbde2c0-496e-4fd1-8fa5-e509e5382111\" />\n\n## 🙏 致谢\n\n- Chrome 生态的启发\n- 感谢社区反馈和贡献\n\n欢迎 Star、提 Issue、贡献新功能。让 AI 工作区在浏览器里跑起来，像打开一个网页一样简单。",
-    "created_at": "2026-05-14T16:49:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9941"
   }
 ]
