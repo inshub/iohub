@@ -1,5 +1,21 @@
 [
   {
+    "id": 10038,
+    "title": "【网站自荐】WizardAlchemyCode.com：面向 Roblox 玩家的一页式 Wizard Alchemy 兑换码查询站",
+    "content": "阮老师好，推荐一个刚上线的小工具站：\n\n[Wizard Alchemy Codes](https://wizardalchemycode.com/?utm_source=ruanyifeng&utm_medium=newsletter&utm_campaign=wizardalchemycode_cold_start_202605&utm_content=github_issue)\n\n这是一个面向 Roblox 游戏 Wizard Alchemy 玩家的一页式兑换码查询站。它不是官方站点，定位是 fan-made resource，主要解决玩家查兑换码时常见的几个问题：\n\n- 先显示当前列出的 working codes，减少在长文章里查找的成本；\n- 每个 code 旁边提供复制按钮；\n- 单独列出 needs-review code，避免把来源冲突的内容直接写成确定可用；\n- 保留 expired codes、redeem steps 和 update history；\n- 页面上明确写明 not affiliated with Roblox / Wizard Alchemy / developers。\n\n这个站点也是一个独立开发小实验：用 Next.js 15 + TypeScript + Tailwind 构建，部署在 Cloudflare Workers 上，不登录、不收费，主要观察长尾 SEO 内容站如何做 answer-first 信息结构和合规边界。\n\n如果适合周刊的工具/资源栏目，欢迎收录；不合适也没关系。",
+    "created_at": "2026-05-23T02:52:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10038"
+  },
+  {
+    "id": 10037,
+    "title": "【开源自荐】diving-rs —— Rust 编写的 Docker 镜像深度分析工具,无需 docker 客户端,跨 Linux / macOS / Windows 运行",
+    "content": "项目地址：https://github.com/vicanso/diving-rs\n\n# 项目简介\n\n- 分层文件树可视化,支持 TUI 与 Web 双模式\n- 跨层重复文件检测(blake3)+ 浪费空间识别\n- 智能优化建议:包管理器缓存、构建工具、敏感文件、版本劣化\n- OpenAI 兼容 AI 分析,带历史对比识别镜像膨胀\n- 支持 registry / 本地 docker / tar 文件三种数据源\n\n# 命令行模式\n\n```bash\ndiving redis \\\n  --lang=zh \\\n  --ai-base-url https://openrouter.ai/api/v1/chat/completions \\\n  --ai-model=anthropic/claude-opus-4.7\\\n  --ai-api-key sk-or-v1-***\n正在分析 redis…\n  > 正在向 https://index.docker.io/v2 认证…\n  > 正在获取 manifest…\n  > 7 层 | 50.9 MiB（压缩后）\n  > 已缓存 sha256:bba8bc9f2a56（826 B）\n  ...部分日志省略\n  > 正在请求 AI 分析优化要点…\n\nAI 优化分析报告：\n🚨 核心异常与劣化痛点\n以 root 运行：Dockerfile 已在 L2 创建 redis:999 用户却未设 USER redis，容器默认 root 启动，运行时提权风险。\nL7 残留运行时垃圾共 ~210 KiB：构建/编译阶段产生的 var/log/apt/*（term.log 47KB、history.log 11KB、eipp.log.xz 11KB）、var/log/dpkg.log 129.5KB、var/log/alternatives.log 5.1KB、tmp/rustix_test_can_compile、root/.wget-hsts、var/cache/ldconfig/aux-cache 未在同层清理，已固化进镜像。\n基础镜像固化冗余 1.7 MiB：var/cache/debconf/templates.dat (763KB)、templates.dat-old (724KB) 等浪费空间全部位于 L1 基础层（L7 仅是 whiteout 删除标记，无法回收），属 debian:13 基底原生冗余。\n/usr/local/bin/redis-check-aof、redis-check-rdb、redis-sentinel 权限异常：0:0 ?rwxrwxrwx 0B 文件（应为符号链接但 size 为 0 且 777 全开），world-writable 二进制路径存在风险。\n🛠️ 必须执行的修复代码\n# 1. 切换非 root（紧贴 CMD 前）\nUSER redis\n# 2. 在编译那条大 RUN 末尾追加清理（同层删除才有效）\nRUN ... \\\n && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \\\n && rm -rf /var/cache/debconf/* /var/lib/apt/lists/* /var/cache/apt/archives/* \\\n           /var/log/* /tmp/* /root/.wget-hsts /var/cache/ldconfig/aux-cache\n关于 L1 基础层 1.7 MiB debconf 冗余：源自 debian:13 基底，跨层 rm 无效，可接受或切换 debian:13-slim / alpine 基底（注意 jemalloc/glibc 依赖需重新验证）。\n关于 11 个 setuid 二进制：均来自基础镜像 util-linux/passwd 包，redis 运行时不需要 mount/passwd/chsh，建议同层追加 find / -xdev -perm /6000 -type f -exec chmod a-s {} +。\n```",
+    "created_at": "2026-05-23T02:12:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10037"
+  },
+  {
     "id": 10036,
     "title": "AI 音频降噪在线工具",
     "content": "- 100% 浏览器本地运行。\n- 支持视频直接提取降噪，除了 MP3/WAV 音频，还支持直接拖入 MP4/MOV 等视频。工具会自动在本地解码视频音轨并进行降噪。\n- 实时麦克风降噪。\n- 直观的视觉对比 内置了精心绘制的 Original / Denoised 双通道声谱图（ Spectrogram ）与波形图，降噪效果不仅能听到，还能直观看到。\n- 无额度限制、无需注册，打开即用。\n\n<img width=\"852\" height=\"664\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4630f7b3-8877-4334-8b6e-ae6d807d60d9\" />\n\n在线体验： https://arayofsunshine.dev/audio-noise-reducer",
@@ -798,23 +814,5 @@
     "created_at": "2026-05-14T08:44:25Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9935"
-  },
-  {
-    "id": 9934,
-    "title": "【开源自荐】：大模型30讲《Machine-Learning-Q-and-AI》中文翻译版、中文批注",
-    "content": "本项目是系统性学习大模型技术要点的教程，基于原始的 *《30 Essential Questions and Answers on Machine Learning and AI》* ，基于最先进的 AI 工具`翻译`，逐行校正添加`中文批注`，增强可读性。\n\n\n## 1.你将收获什么？\n\n1. 系统性学习：大模型技术要点的教程\n2. 熟悉核心的术语（英文 + 中文）\n3. 共同维护，中文批注，增强可读性，贡献给开源社区\n\n## 2.迭代计划\n\n1. 首版：中文批注: ✅\n2. 导出 pdf 文件: ✅\n3. 同步到多个开源社区: TODO\n\n\n\n## 3.在线阅读\n\n* 网址： [https://ningg.top/Machine-Learning-Q-and-AI/](https://ningg.top/Machine-Learning-Q-and-AI/)\n* gitHub 地址：[https://github.com/ningg/Machine-Learning-Q-and-AI](https://github.com/ningg/Machine-Learning-Q-and-AI)\n\n\n<div align=\"center\">\n  <p>\n    在线阅读：\n    <a href=\"https://ningg.top/Machine-Learning-Q-and-AI/\" target=\"_blank\">《大模型技术30讲》</a>\n    ，pdf 文件：\n    <a href=\"https://ningg.top/Machine-Learning-Q-and-AI/pdf/大模型技术30讲(英文&中文批注)_LLM_30_Essential_Lectures_AI.pdf\" target=\"_blank\">《大模型技术30讲-PDF版本》</a>\n  </p>\n</p> \n  <p><em>深入理解 LLM 核心原理，直击要点</em></p>\n</div>\n\n\n<div align='center'>\n\n<img width=\"30%\" height=\"1201\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/09e6c44d-7baa-4b1d-a8ca-6138e70d23f9\" />\n\n</div>\n\n\n\n## 4.如何贡献   \n\n我们欢迎任何形式的贡献！\n\n- 🐛 报告 Bug - 发现问题请提交 [Issue](https://github.com/ningg/Machine-Learning-Q-and-AI/issues)\n- 💡 功能建议 - 有好想法就告诉我们\n- 📝 内容完善 - 帮助改进教程内容\n\n> Note: 后续资料会附上贡献者名单.\n",
-    "created_at": "2026-05-14T08:39:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9934"
-  },
-  {
-    "id": 9933,
-    "title": "【开源自荐】stock-sdk：浏览器前端和 Node.js 都能直接调用的股票行情 SDK，零依赖、TypeScript 全类型、单测覆盖",
-    "content": "项目地址：https://github.com/chengzuopeng/stock-sdk\n官方文档：https://stock-sdk.linkdiary.cn/\n在线 Playground：https://stock-sdk.linkdiary.cn/playground/\nNPM：https://www.npmjs.com/package/stock-sdk\n看板 Demo：https://chengzuopeng.github.io/stock-dashboard/\n\n> 一句话：**给前端工程师的股票行情 SDK** —— 不写 Python、不搭后端、不开代理，浏览器里就能直接拉 A 股 / 港股 / 美股 / 基金 / 期货 / 期权 的实时行情和 K 线。\n\n### 背景\n\n股票行情工具几乎都活在 Python 生态里（AkShare、tushare、baostock 一统天下）。前端做个看板、写个 Demo、跑个量化原型，要么得搭一层 Python 后端，要么得自己去戳腾讯/东方财富/雪球的接口、踩 GBK 编码、CORS、JSONP、并发限流的所有坑。\n\nstock-sdk 把这些活全干完了：浏览器端用 Script Tag Injection（JSONP）跨域，Node.js 端走标准 fetch，同一份 API 两端跑。\n\n### 亮点\n\n- 🌐 **浏览器 + Node.js 双端**：同一份代码，浏览器里靠 JSONP 直连数据源，没有 CORS，不用配代理\n- 📦 **零依赖、轻量**：发布包 gzip 后 ~27 KB，ESM + CJS 双格式\n- 🧠 **完整 TypeScript 类型**：所有接口、字段、错误码都有类型，IDE 自动补全\n- 📈 **覆盖面广**：A 股、港股、美股、公募基金的实时行情；日/周/月 K 线和 1/5/15/30/60 分钟 K 线；当日分时\n- 🔢 **14 个内置技术指标**：MA / MACD / BOLL / KDJ / RSI / WR / BIAS / CCI / ATR / OBV / ROC / DMI / SAR / KC\n- 🏛️ **专业数据**：龙虎榜、北向资金、资金流向、盘口大单、涨停池、大宗交易、融资融券、期货库存\n- 🛡️ **请求治理**：内置重试、限流、熔断、批量并发控制，可按 provider 维度覆盖\n- 🤖 **AI / MCP 就绪**：配套 [stock-sdk-mcp](https://www.npmjs.com/package/stock-sdk-mcp)，一行 `npx` 即可接入 Cursor / Claude Desktop / Gemini / Codex / OpenClaw，内置技术分析、智能选股、市场概览、实时监控 4 个 Skills\n\n### 使用示例\n```ts\nimport { StockSDK } from 'stock-sdk';\nconst sdk = new StockSDK();\n// 浏览器也可直接调用\nawait sdk.getSimpleQuotes(['sh600519']);    // A 股\nawait sdk.getHKQuotes(['hk00700']);          // 港股\nawait sdk.getUSQuotes(['usAAPL.O']);         // 美股\nawait sdk.getKLine('sh600519', 'day');       // K 线\nawait sdk.getNorthboundFlow();               // 北向资金\nawait sdk.getDragonTigerList();              // 龙虎榜\nawait sdk.getAllAShareQuotes();              // 全市场 5000+ 只一次拉\n```\n\n14 个技术指标（MA / MACD / BOLL / KDJ / RSI / ATR / DMI / SAR / KC …）和期货、期权、融资融券都有。完整 TypeScript 类型，发布包 gzip 27 KB。",
-    "created_at": "2026-05-14T06:48:59Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9933"
   }
 ]
