@@ -1,10 +1,48 @@
 [
   {
+    "id": 10060,
+    "title": "【开源自荐】OpenChromeCLI：受够了浏览器插件连不上，我做了一个把 AI Agent 直接接到真实 Chrome 的工具",
+    "content": "项目地址：https://github.com/justlovemaki/OpenChromeCLI\n\n这是一个开源的浏览器桥接工具，用来把 Claude Code、Codex、Hermes 这类 AI Agent 接到你正在使用的真实 Chrome 浏览器上，而不是重新起一个沙盒实例。\n\n我做它的原因很简单：受够了 Codex 里面的 Chrome 插件老是连不上浏览器，估计很多时候就是中继程序端口对不上。\n所以我想做一个更直接的方案，让 Agent 能稳定接入本地真实浏览器，保留登录态、Cookie、扩展和现有会话。\n\n目前已经支持：\n\n- 直接接入真实 Chrome / Edge / Brave\n- 点击、输入、截图、执行脚本、读取控制台和网络请求\n- 通过 CLI / TCP 接入多种 AI Agent，并支持多实例并行调度\n- 抓取 Heap Snapshot，做更深的前端调试分析\n\n适合本地浏览器自动化、AI Agent 远程接管、前端调试、SEO 分析这类场景。\n\n补充：\n- 演示视频：https://www.bilibili.com/video/BV1kPGJ6sEjb/\n- 文档：https://github.com/justlovemaki/OpenChromeCLI\n- 平台：Chrome / Edge / Brave，Windows / macOS / Linux\n\n欢迎反馈。",
+    "created_at": "2026-05-24T12:56:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10060"
+  },
+  {
+    "id": 10059,
+    "title": "【开源自荐】OmniTrends — 98 个数据源的实时热点新闻聚合阅读器",
+    "content": "**项目地址**：https://github.com/TuTouPower/omni_trends\n\n**在线演示**：https://omni-trends.pages.dev\n\n## 简介\n\n基于 [NewsNow](https://github.com/ourongxing/newsnow) 二次开发，原项目已长期未更新。OmniTrends 将数据源从 40 个扩展到了 **98 个**，覆盖国内热榜、国际媒体、科技、财经四大分类。\n\n## 特点\n\n- **数据源丰富**：微博、知乎、百度、抖音、B站、今日头条等国内热榜 + BBC、Guardian、NHK、WSJ、Al Jazeera 等国际媒体 + Hacker News、GitHub Trending、Product Hunt、Huggingface Papers 等科技源\n- **代理支持**：`HTTPS_PROXY` 环境变量即可走代理，适合国内访问被墙的国外源\n- **暗色/亮色模式**\n- **部署简单**：一键部署到 Cloudflare Pages/Workers，免费额度足够个人使用\n\n## 技术栈\n\n- React 19 + TypeScript + Vite 7 + UnoCSS\n- Nitro (h3) 服务端，支持 Node / Cloudflare Workers / Bun\n- SQLite（本地）/ Cloudflare D1（线上）\n\n欢迎试用和反馈！",
+    "created_at": "2026-05-24T12:03:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10059"
+  },
+  {
+    "id": 10058,
+    "title": "【开源推荐】SenseVoice — 一个模型同时做语音识别+情感检测+声音事件分类",
+    "content": "## 项目介绍\n\n[SenseVoice](https://github.com/FunAudioLLM/SenseVoice)（8.2K Stars）是阿里通义实验室的多任务语音理解模型。\n\n**一个 234MB 模型同时完成：**\n- 语音识别（ASR）\n- 语种检测（中/英/日/韩/粤）\n- 情感识别（开心/悲伤/愤怒/中性）\n- 声音事件检测（笑声/掌声/音乐/哭泣）\n\n## 速度\n\n- GPU: **170 倍实时**（10 秒音频只需 70ms）\n- CPU: **17 倍实时**（无需 GPU 也能用）\n\n## 使用\n\n```python\npip install funasr\n\nfrom funasr import AutoModel\nmodel = AutoModel(model=\"iic/SenseVoiceSmall\", vad_model=\"fsmn-vad\", device=\"cuda\")\nresult = model.generate(input=\"audio.wav\")\n# 输出带情感标签: <|HAPPY|>今天天气真好<|NEUTRAL|>我们出去走走吧\n```\n\n## 应用场景\n\n- 客服质检（自动检测客户情绪）\n- 会议分析（识别氛围变化）\n- 内容审核（检测异常声音事件）\n- 语音助手（根据情绪调整回复）\n\n## 链接\n\n- GitHub: https://github.com/FunAudioLLM/SenseVoice\n- FunASR 工具包: https://github.com/modelscope/FunASR\n- 在线体验: https://www.funasr.com",
+    "created_at": "2026-05-24T11:28:15Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/10058"
+  },
+  {
+    "id": 10057,
+    "title": "【开源推荐】FunClip — 用文字搜索视频片段，一键裁剪导出",
+    "content": "## 项目介绍\n\n[FunClip](https://github.com/modelscope/FunClip)（5.6K Stars）是基于 FunASR 语音识别的智能视频裁剪工具。\n\n**核心功能：** 输入关键词或句子 → 自动定位视频中对应的片段 → 一键裁剪导出\n\n## 使用场景\n\n- 从 2 小时会议录像中快速找到某段发言\n- 从播客/采访视频中提取精彩片段\n- 根据字幕内容批量裁剪短视频\n- 视频内容搜索和索引\n\n## 安装使用\n\n```bash\npip install funclip\nfunclip\n# 打开 Gradio 界面，上传视频，输入关键词，自动裁剪\n```\n\n## 技术亮点\n\n- 基于 FunASR 语音识别（170 倍实时）\n- Gradio 可视化界面\n- 支持热词提升识别准确率\n- 自动生成字幕 + 裁剪\n\n## 链接\n\n- GitHub: https://github.com/modelscope/FunClip\n- FunASR: https://github.com/modelscope/FunASR",
+    "created_at": "2026-05-24T11:27:50Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/10057"
+  },
+  {
     "id": 10056,
     "title": "【开源推荐】FunASR 语音输入法 — 按快捷键说话，自动转文字粘贴到光标位置",
     "content": "## 项目介绍\n\n[FunASR](https://github.com/modelscope/FunASR)（16K+ Stars）是阿里通义实验室开源的工业级语音识别工具包。最近推出了桌面语音输入法工具：\n\n**按快捷键 → 说话 → 自动识别 → 粘贴到光标位置**\n\n支持中英日韩粤 5 种语言，GPU 170 倍实时 / CPU 17 倍实时，完全本地运行。\n\n## 使用方式\n\n```bash\npip install funasr sounddevice numpy pyperclip openai pynput\n\n# 启动语音服务\nfunasr-server --device cuda  # 或 cpu\n\n# 启动语音输入法\npython examples/voice_input/funasr_input.py\n```\n\n然后在任何应用中按 Ctrl+Shift+Space 开始录音。\n\n## 其他亮点\n\n- **OpenAI 兼容 API**：一行命令部署语音识别服务，任何 Agent 框架直接接入\n- **字幕生成**：音视频一键生成 SRT/VTT 字幕\n- **MCP 服务**：Claude/Cursor 等 AI 工具可直接转写音频\n- **50+ 语言**，说话人分离，情感检测\n\n## 链接\n\n- GitHub: https://github.com/modelscope/FunASR\n- 在线体验: https://www.funasr.com\n- 文档: https://modelscope.github.io/FunASR/zh/",
     "created_at": "2026-05-24T11:14:03Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10056"
   },
   {
@@ -59,7 +97,7 @@
   },
   {
     "id": 10049,
-    "title": "[开源自荐] NodeLite 由Rust构建的轻量化服务器探针面板",
+    "title": "【开源自荐】NodeLite 由Rust构建的轻量化服务器探针面板",
     "content": "项目地址：https://github.com/XiNian-dada/NodeLite\n项目文档: https://xinian-dada.github.io/NodeLite/\n\n# 项目简介\n一个用Rust 构建的轻量级服务器监控面板, 使用 Server-Agents 架构, 开箱即用, 安全程度高\n\n# 主要功能\n- 实时系统指标统计(包括但不限于 CPU 内存 磁盘 网络)\n- Web 仪表盘, 支持Basic Auth与 TOTP 双因子认证\n- Agent Token 生命周期管理(到期自动续期 自动轮换)\n- 审计日志 连接准入控制 全链路速率限制\n\n# 自认为的一些优势\n- 资源占用极低, 对低配机器友好\n- 安全机制完善, 双因子认证, 限流与 IP 封禁, 防爆破防重放\n- 单二进制部署\n\n# 截图\n\n<img width=\"3456\" height=\"1984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/47ca6152-aae2-4d12-a178-d6fce6a87bed\" />\n<img width=\"3454\" height=\"1912\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/133f7128-e610-4e0e-a363-821760af8c6b\" />\n<img width=\"3456\" height=\"1988\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/768d10dc-b74e-43d0-92ea-a78dcb332520\" />\n<img width=\"3470\" height=\"1656\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fc82ea39-a05a-44a1-bfb7-d3acb7e0056f\" />\n<img width=\"3446\" height=\"1994\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/29feb233-4b9d-470e-bdb4-b9b184fcec75\" />\n\n# 技术栈\nRust（tokio + axum + rusqlite + serde），前端原生 HTML + JavaScript，WebSocket 实时通信，rustls（无 OpenSSL 依赖）。",
     "created_at": "2026-05-23T15:38:56Z",
     "labels": [],
@@ -784,37 +822,5 @@
     "created_at": "2026-05-16T11:31:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9957"
-  },
-  {
-    "id": 9956,
-    "title": "【工具自荐】免费在线去水印工具，不限次数，无广告",
-    "content": "【工具自荐】免费在线去水印工具，不限次数，无广告\n网址：https://jiandan.link/app/image-tools/editing-tools/remove-watermark\n自建模型实现，可以去除各种水印，无广告，无次数限制，去除效果好。",
-    "created_at": "2026-05-16T11:27:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9956"
-  },
-  {
-    "id": 9955,
-    "title": "【开源自荐】Typo：按两次 Esc，修正输错的终端命令",
-    "content": "大家好，自荐一个开源命令行工具：Typo。\n\n项目地址：https://github.com/yuluo-yx/typo\n\n一句话介绍：\n\n> Typo 是一个用 Go 编写的终端命令自动修正工具。输入错命令后，按两次 `Esc`，它会直接把当前命令行替换成更可能正确的命令。\n\n![Typo demo](https://raw.githubusercontent.com/yuluo-yx/typo/main/docs/typo-demo.gif)\n\n我平时在终端里经常遇到这种小问题：`gti status`、`dcoker ps`、`kubectl lgo`、`cd $HOEM/project`。这些错误不复杂，但会打断当前操作。Typo 想解决的就是这个场景：尽量不离开当前命令行，把明显输错的命令原地修好。\n\n例如：\n\n```shell\ngti stauts\n\n# 按两次 Esc 后\ngit status\n```\n\n它也能利用当前 shell 会话里的上下文，例如 alias 和环境变量：\n\n```shell\nalias k=kubectl\nk lgo\n\n# 按两次 Esc 后\nk logs\n```\n\n```shell\ncd $HOEM/project\n\n# 按两次 Esc 后\ncd $HOME/project\n```\n\n主要功能：\n\n- 支持 zsh、bash、fish 和 PowerShell，默认通过 `Esc` `Esc` 触发原地修正。\n- 支持修正主命令、子命令、复合命令、管道命令，以及结合真实运行时报错进行修正。\n- 支持读取当前 shell 会话里的 alias、简单包装函数和环境变量名，作为修正上下文。\n- 支持 `typo learn` 添加个人修正规则，常见习惯可以沉淀到本地。\n- 支持候选菜单：当存在多条有效修正时，可以用数字键或上下键选择。\n- 提供 macOS、Linux、WSL 和 Windows PowerShell 7+ 的原生二进制安装，不需要额外运行时。\n\n快速安装：\n\n```bash\nbrew tap yuluo-yx/typo https://github.com/yuluo-yx/typo\nbrew install typo\n```\n\nmacOS / Linux 也可以用安装脚本：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/yuluo-yx/typo/main/tools/scripts/install.sh | bash\n```\n\nWindows PowerShell 7+：\n\n```powershell\niwr -useb https://raw.githubusercontent.com/yuluo-yx/typo/main/tools/scripts/quick-install.ps1 | iex\n```\n\n安装后添加对应 shell 初始化命令，例如 zsh：\n\n```bash\neval \"$(typo init zsh)\"\n```\n\n然后运行：\n\n```bash\ntypo doctor\n```\n\n这个项目的出发点和 TheFuck 类似，都是减少终端里“输错一个字母就要重新输入”的摩擦。不过 Typo 是用 Go 从头实现的，目标是提供一个安装更轻、跨平台、可维护的原生二进制工具。\n\n目前项目已经发布到 `v1.4.0`，许可证为 MIT。它比较适合经常使用终端的开发者、运维同学，以及大量使用 git、docker、kubectl、npm、brew、terraform、cloud CLI 的用户。\n",
-    "created_at": "2026-05-16T11:25:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9955"
-  },
-  {
-    "id": 9954,
-    "title": "【工具自荐】PatentFig AI：面向专利代理人与 IP 团队的 AI 专利附图工作台",
-    "content": "大家好，自荐一个由 TopLocalAI 做的垂直 AI 工具：PatentFig AI。\n\n官网：https://patentfig.ai\n\n在线使用：https://patentfig.ai/generate\n\nPatentFig AI 是面向专利代理人、企业 IP 团队和独立发明人的 AI 专利附图工作台。它把“技术描述/草图/产品照片 -> 专利线稿 -> 多视图 -> 合规检查 -> 导出”的流程放在同一个在线工具里，目标是减少和外部绘图师反复改图的时间。\n\n关键词：PatentFig AI、AI 专利图、AI 专利附图、专利附图软件、patent drawing AI、USPTO/CNIPA/EPO/JPO/KIPO/PCT drawing compliance。\n\n主要功能：\n\n- 从文字、草图、参考图生成黑白专利线稿。\n- 基于同一 anchor 图生成 front / side / top / perspective / exploded / cross-section 等多视图，尽量保持结构一致。\n- 生成流程图、系统框图、机械结构图，并辅助处理 reference numerals / lead lines。\n- 内置 Figure Checker，按 USPTO、CNIPA、EPO、JPO、KIPO、PCT 等常见局方要求做基础合规检查。\n- 支持 DPI Enhance、Vectorize，导出 SVG、TIFF、PDF、PNG 等提交/归档常用格式。\n- 支持用自然语言继续修改局部细节，方便多轮迭代。\n\n为什么做这个产品：专利图有很强的规则性和一致性要求，但传统流程常常要在手绘草图、CAD、绘图师、审稿意见之间来回切换。PatentFig AI 希望把这个流程变成一个可版本化的在线工作台，让小团队和个人发明人也能更快拿到可提交的专利附图初稿。\n\n适合人群：专利代理人、专利工程师、企业 IP / 法务团队、硬件 / 工业设计团队、独立发明人。\n\n希望能推荐给周刊读者，谢谢。\n",
-    "created_at": "2026-05-16T06:55:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9954"
-  },
-  {
-    "id": 9953,
-    "title": "〖工具自荐〗Kepo：用 AI 把常看的网页变成 Mac 桌面小组件",
-    "content": "\n\n大家好，自荐一个自己做的 Mac 桌面工具：Kepo。\n\n官网：[kepo.ai](https://kepo.ai)\n\n组件商店：[kepo store](https://kepo.ai/store)\n\n<img width=\"2376\" height=\"1698\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c2c62f8f-0913-4ea1-91e3-baebd8476f41\" />\n\nKepo 是一个 Mac 桌面信息面板。它解决的问题很简单：很多信息我们每天都会反复打开，比如 RSS、GitHub、社媒动态、新闻、价格、内部页面、服务器状态等。Kepo 可以把这些常看的信息整理成桌面小组件，用快捷键随时唤起查看。\n\n如果没有现成组件，也可以直接用 AI 创建。比如输入“帮我做一个监控某个 GitHub 仓库 release 的组件”“把这个 RSS 源做成桌面组件”“监控一个网站是否可访问”，Kepo 会生成对应的小组件，并保留在面板里长期使用。\n\nKepo 也支持 Skill。\n\n```bash\nnpx skills add Enivel/kepo-plugin-dev-skill\n```\n\n安装后，可以让 AI 按 Kepo 的插件结构、调试方式和发布流程来创建或修改桌面小组件。\n\n主要功能：\n\n- 快捷键唤起桌面信息面板，不用反复切浏览器标签页。\n- 支持 RSS、GitHub、b站、微博、行情、网站状态、系统监控等桌面小组件。\n- 支持用 AI 创建自定义组件，把每天重复查看的信息固定下来。\n- 支持 Skill，把某类组件的创建方法沉淀成可复用能力。\n- 支持组件商店，可以直接安装已有组件。\n- 当前提供 Mac 版，Windows 版在等待列表中。\n\n我做这个工具的出发点是：很多信息并不值得打开一个完整网站，只需要一个持续可见、随时能看一眼的小窗口。Kepo 希望把这些重复查看的信息，变成更轻量的桌面组件。\n\n它比较适合开发者、独立开发者、运营人员，以及每天需要追踪多个信息源的人。希望能推荐给周刊读者，谢谢。",
-    "created_at": "2026-05-16T06:44:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9953"
   }
 ]
