@@ -1,5 +1,13 @@
 [
   {
+    "id": 10064,
+    "title": "【开源自荐】QuotaBar - macOS 菜单栏 AI API 用量监控工具",
+    "content": "# QuotaBar - macOS 菜单栏 AI API 用量监控工具\n\n一款 macOS 菜单栏应用，支持多平台 API 用量查看（MiniMax、GLM、DeepSeek、Kimi）。\n\n## 核心功能\n\n- 多平台支持：MiniMax、GLM、DeepSeek、Kimi\n- 实时显示日/周使用量百分比\n- 动态图标颜色指示使用状态（绿/黄/红）\n- 左键弹窗看详情，右键呼出菜单\n- API Token 配置与管理\n- Sparkle 自动更新支持\n\n## 截图预览\n\n弹窗详情\n<img src=\"https://raw.githubusercontent.com/nmsn/quota-bar/main/screenshot/screenshot.png\" width=\"400\" />\n<img src=\"https://raw.githubusercontent.com/nmsn/quota-bar/main/screenshot/screenshot2.png\" width=\"400\" />\n\n状态栏截图\n<img src=\"https://raw.githubusercontent.com/nmsn/quota-bar/main/screenshot/screenshot-menu-bar.png\" width=\"400\" />\n<img src=\"https://raw.githubusercontent.com/nmsn/quota-bar/main/screenshot/screenshot-menu-bar2.png\" width=\"400\" />\n\n## 技术实现\n\n- SwiftUI + AppKit 混合架构\n- 协议驱动设计，新增平台只需实现 PlatformAPIService 协议\n- Sparkle 自动更新\n\n## 欢迎贡献\n\n项目采用 MIT 协议，欢迎提交 PR 添加更多 AI 平台支持。已支持 MiniMax、GLM、DeepSeek、Kimi，期待 Claude、Gemini、Ollama 等更多平台接入。\n\n详细接入文档：https://github.com/nmsn/quota-bar/blob/main/docs/platform-api-reference.md\n\nGitHub：https://github.com/nmsn/quota-bar",
+    "created_at": "2026-05-25T03:08:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10064"
+  },
+  {
     "id": 10063,
     "title": "【 steam 游戏自荐】Chromium Dino，一款使用现代 Web 技术构建的游戏，打包为桌面应用发布至 Steam",
     "content": "[steam 商店](https://store.steampowered.com/app/4475440/Chromium/)。灵感来源于经典的 Chrome 离线恐龙小游戏，Chromium Dino 在此基础上进行了全面重构——多生态关卡、技能道具、皮肤系统、幽灵竞速、每日挑战，以及商业级深色 UI，全部运行于 Electron 之上。\n\n---\n\n## 特性\n\n- **5 大关卡生态** — 沙漠、雪原、森林、城市、太空，各有独特障碍物与场景氛围\n- **道具系统** — 护盾、冲刺、慢动作、双倍积分、磁铁，5 种增益道具\n- **可解锁皮肤** — 经典、忍者、太空、骑士、机器人、黄金，用游戏内金币购买\n- **幽灵竞速** — 与自己的最佳录像赛跑\n- **本地双人** — 同一台机器上双人游玩\n- **每日挑战** — 每天生成相同种子关卡，全球玩家同台竞技\n- **昼夜循环** — 游戏过程中动态光照切换\n- **Steamworks 集成** — 成就、排行榜、统计数据（可选；无 SDK 时自动进入离线模式）\n- **手势模式（实验性）** — 通过摄像头手势控制恐龙：竖起大拇指跳跃，向下竖大拇指蹲下\n- **头控模式（实验性）** — 解放双手，通过头部姿态控制恐龙：抬头跳跃、低头蹲下、左右转头触发临时速度变化\n- **专业级深色 UI** — 动态渐变背景、毛玻璃 HUD、流畅过渡动画\n\n## 技术栈\n\n| 层级     | 技术                     |\n| -------- | ------------------------ |\n| 运行时   | Electron 28              |\n| 游戏引擎 | Phaser 3.90              |\n| UI 框架  | React 19                 |\n| 状态管理 | Zustand 5                |\n| 语言     | TypeScript 5.7           |\n| 构建工具 | Vite 6 + electron-vite 5 |\n| 打包发布 | electron-builder 24      |\n\n## 项目结构\n\n```\nsrc/\n├── main/                  # Electron 主进程\n│   ├── index.ts\n│   └── steam.ts           # Steamworks SDK 集成\n├── preload/               # 预加载脚本（Context Bridge）\n│   └── index.ts\n└── renderer/              # 渲染进程\n    └── src/\n        ├── App.tsx            # 根组件 & 事件绑定\n        ├── main.tsx           # React 入口\n        ├── phaser-game.tsx    # Phaser ↔ React 桥接\n        ├── components/        # React UI 组件\n        │   ├── main-menu.tsx\n        │   ├── game-overlay.tsx\n        │   ├── game-over.tsx\n        │   ├── skin-selector.tsx\n        │   ├── shop.tsx\n        │   ├── settings.tsx\n        │   └── daily-challenge.tsx\n        ├── stores/            # Zustand 状态仓库\n        │   ├── game-store.ts\n        │   ├── input-mode-store.ts\n        │   └── player-store.ts\n        ├── hooks/\n        │   └── use-game-events.ts  # Phaser ↔ React 事件钩子\n        ├── game/\n        │   ├── main.ts        # Phaser 游戏引导\n        │   ├── event-bus.ts   # 跨框架事件总线\n        │   ├── types/         # 共享 TypeScript 类型 & 枚举\n        │   ├── assets/        # Chrome 精灵图资源\n        │   ├── scenes/        # Phaser 场景\n        │   │   ├── boot.ts\n        │   │   ├── preloader.ts\n        │   │   └── game-scene.ts\n        │   ├── objects/       # 游戏对象\n        │   │   └── dino.ts\n        │   ├── managers/      # 游戏子系统管理器\n        │   │   ├── background-manager.ts\n        │   │   ├── camera-source.ts\n        │   │   ├── difficulty-manager.ts\n        │   │   ├── ghost-manager.ts\n        │   │   ├── head-pose-source.ts\n        │   │   ├── ground-manager.ts\n        │   │   ├── input-manager.ts\n        │   │   ├── level-manager.ts\n        │   │   ├── obstacle-manager.ts\n        │   │   ├── power-up-manager.ts\n        │   │   └── score-manager.ts\n        │   ├── sprites/       # 程序化精灵生成\n        │   └── audio/         # 程序化音频生成\n        └── styles/\n            ├── global.css     # 设计令牌 & 基础样式\n            └── components.css # 组件样式\n```",
@@ -814,13 +822,5 @@
     "created_at": "2026-05-17T04:34:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/9961"
-  },
-  {
-    "id": 9960,
-    "title": "【网站自荐】千章——AI网文创作助手",
-    "content": "https://www.qzwrite.com/\n\n千章网文创作系统覆盖从创意规划、章节生成到质量审校的完整工作流。 用户负责创意和决策，AI 负责执行和校验。\n\n<img width=\"1275\" height=\"865\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ef2cb2e3-d83a-4781-8b8c-d051e6519c6b\" />\n\n<img width=\"1278\" height=\"861\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc9217a2-2f72-4388-a3af-c736bddcc76e\" />\n\n<img width=\"1413\" height=\"863\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/afd6d949-d2fb-4a0f-9114-bcea6c5bccde\" />\n\n",
-    "created_at": "2026-05-17T01:18:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9960"
   }
 ]
