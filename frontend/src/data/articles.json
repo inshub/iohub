@@ -1,5 +1,29 @@
 [
   {
+    "id": 10105,
+    "title": "【开源自荐】pixtuoid：把 Claude Code 多个 Agent 变成像素艺术风格的小办公室",
+    "content": "仓库：https://github.com/IvanWng97/pixtuoid\ncrates.io：https://crates.io/crates/pixtuoid\n\n## 概况\n\n**pixtuoid** 是一款 Rust 写的终端像素艺术可视化工具，把你正在运行的多个 Claude Code Agent 显示成像素小人，在一个 ASCII 风格的办公室里\"上班\"。每个会话对应一个工位，写代码时显示器会根据当前调用的工具变色（Edit=蓝、Bash=橙、Read=青），idle 时小人会站起来去茶水间打杯咖啡，再走回工位继续工作。\n\n> 名字由来：**pix**el + **tu**i + (agent-)**oid**\n\n## 核心功能\n\n- 🏢 **多 Agent 办公室**：每个 CC 会话占一个工位，溢出自动开新楼层（最多 5 层）\n- 💡 **按工具调用染色**：监视器颜色随当前工具变化，扫一眼就知道谁在干什么\n- 🎭 **动画状态**：打字、思考（···）、等待（?）、睡觉（z's）、走路（A* 寻路）\n- 🌧️ **天气与昼夜**：雨/雪/雾/晴，黄昏自动加 golden hour 调色\n- 🐱 **办公室猫**：在工位间巡视，idle agent 旁边打盹，点击可以撸猫\n- ☕ **咖啡日常**：Agent idle 时去茶水间，端回杯子放在工位上\n- 🎨 **6 套主题**：cyberpunk / dracula / tokyo-night / catppuccin / gruvbox / normal，按 \\`t\\` 实时切换\n- 🛡️ **Hook 安全**：shim 始终 exit 0（200ms 超时），永远不会阻塞 Claude Code\n\n## 技术栈\n\n- Rust + ratatui + crossterm + tokio\n- 半字符（▀）渲染，垂直分辨率翻倍\n- 三个 crate：headless 的 core 库、TUI 二进制、超薄 hook shim\n\n## Demo\n\nREADME 顶部有一段 GIF，能直接看到多个 Agent 同时工作的画面：\nhttps://github.com/IvanWng97/pixtuoid#readme\n\n## 与同类项目的差异\n\nOpenClaw Monitor（曾在 #9840 推荐过）是网页仪表盘，偏数据指标。pixtuoid 是终端纯像素艺术，偏\"看一眼就懂谁在干啥\"的氛围感，terminal/tmux 里直接能用，不开浏览器。\n\n## 安装\n\n\\`\\`\\`bash\nbrew install IvanWng97/pixtuoid/pixtuoid\npixtuoid install-hooks\npixtuoid\n\\`\\`\\`\n\n或者 \\`cargo install pixtuoid pixtuoid-hook\\`。\n\nMIT 协议，欢迎试用 ⭐",
+    "created_at": "2026-05-28T10:53:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10105"
+  },
+  {
+    "id": 10104,
+    "title": "【工具自荐】一个免费无需注册登录的拼图和切图网站",
+    "content": "# 网站宣传图\n\n![宣传图-convert.jpeg](https://s3.bmp.ovh/2026/05/28/J3yLrh0V.jpg)\n\n# 羊咩工具箱\n一款注重隐私的专业在线图像处理与创作工具。专为社交媒体排版设计，支持强大的多功能拼图与智能网格分图（九宫格、AI对象分割）。所有操作均在您的浏览器本地安全运行，完全免费且无任何弹窗广告打扰，不仅仅支持拼接图，还支持切割图。\n\n# 网站地址：\n\nhttps://woollypix.cn/ \n\n拼图地址： https://woollypix.cn/tools/collage\n切图地址： https://woollypix.cn/tools/smart-slice \n\n# 网站特性\n-  所有操作均在本地完成\n-  无需注册登录\n- 简洁干净体验友好\n- 完全免费使用 \n- 拼图特性\n  - 支持常规的模版布局\n  - 支持自定义模版布局\n  - 支持贴纸、蒙版\n  - 支持水印\n  - 内置常用社交的画布尺寸\n  - 图片基础编辑，支持亮度、对比度、饱和度、透明度及旋转角度的实时调整。\n  - 布局把控：画布全局可调，图片间距、边框外距及圆角弧度均可精确把控，让构图疏密有致   \n - 切图特性\n   -  支持常规的等比例切割，比如9宫格\n   - 支持自动识别网格切割，且支持拖拽移动网格位置\n   - 支持智能对象识别切割，使用opencv识别切割对象，然后裁剪\n   - 支持切片实时预览\n\n# 一些操作截图\n![08.webp](https://s3.bmp.ovh/2026/05/28/79paXYF7.webp)\n\n![智能网格分割_02.webp](https://s3.bmp.ovh/2026/05/28/zyVAJiyy.webp)\n\n![智能网格分割_03.webp](https://s3.bmp.ovh/2026/05/28/wsiUhkci.webp)\n\n\n",
+    "created_at": "2026-05-28T08:40:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10104"
+  },
+  {
+    "id": 10103,
+    "title": "【开源自荐】Flipbook Canvas：AI 无穷画布，AI帮你画出内部图鉴",
+    "content": "\n仓库：https://github.com/imcuttle/flipbook-app\n\n一句话介绍：**在 AI 生成的图片上任意位置长按 2 秒，AI 会推断你点的是什么，必要时联网查资料，然后生成一张子图并把它链回来 —— 一本可以\"点出来\"的可探索画册。** 产品理念参考自 [Flipbook.page](https://flipbook.page) 的\"可探索画册\"思路，用一套自己的开源实现把它跑通。\n\n![Flipbook Canvas 演示](https://raw.githubusercontent.com/imcuttle/flipbook-app/main/docs/assets/demo.gif)\n\n### 它解决什么问题\n\n我自己用 AI 看科普 / 看架构图的时候，经常有这种感觉：图很漂亮，但**图里那个东西到底是什么、它内部又长什么样**，AI 不会主动告诉我，我也懒得复制粘贴去问下一轮。\n\nFlipbook Canvas 把这件事做成了一个动作：**长按图里你想知道的部位 2 秒**，剩下的它来 ——\n\n1. 后端先用一次大模型推断你点击的位置在语义上是什么（比如\"啄木鸟的舌部\"）；\n2. 判断这个主题需不需要联网搜资料，需要就跑一次 web search 把权威来源喂给 planner；\n3. 生成一张细致标注的子图（150–220 字图说 + 20–40 处图内文字注释，像儿童百科图鉴的风格）；\n4. 用钻入动画把你带进去，就像翻进画册的下一层；再次点击同一区域会直接跳进去（空间 + 语义双重去重）。\n\n下面是输入\"啄木鸟\"从零跑完整条流水线的样子：\n\n![从零生成一本\"啄木鸟\"画册](https://raw.githubusercontent.com/imcuttle/flipbook-app/main/docs/assets/woodpecker.gif)\n\n![画廊与画布](https://raw.githubusercontent.com/imcuttle/flipbook-app/main/docs/assets/screenshot.png)\n\n### 几个我自己挺喜欢的细节\n\n- **节点级并发**：同一张父图最多 4 个不同位置同时生成，每个进行中的点击会在热点上流式显示阶段：`推断标签…` → `搜索网络…` → `生成图像…`。达到上限后光标会变成 ⌛。\n- **联网搜索增强**：planner 之前先有一个\"决策再搜索\"的关卡，明显抽象 / 超时态的主题会跳过搜索，时效性强的主题才去查；查到的来源会以 📚 徽标的形式挂在面包屑旁边，鼠标移上去能看完整 source list。\n- **预览分享**：任意 canvas 可以一键生成只读 `?s=<token>` 链接，访客能浏览也能通过 SSE 实时看到作者还在生成的图片刷出来，但不能触发新的生成。\n- **全屏投屏 / 移动端**：⛶ 一键全屏，再切一下隐藏 UI 就剩一张图，适合投屏；移动端顶栏会自动收成图标、画廊变单列。\n- **磁盘格式与静态站兼容**：生成完的 canvas 可以直接喂给一个 skill 脚本导出成纯静态站，反过来把静态站文件夹丢回 `server/data/canvases/` 重启服务也能被自动识别。\n\n### 技术栈\n\nExpress + SSE + SQLite 后端，Vite + React + TS 前端。整条 AI 流水线（planner + 图像生成 + WebSearch）走 [CodeBuddy CLI](https://cnb.cool/codebuddy/codebuddy-code) 子进程驱动，图像 provider 可插拔（默认 CodeBuddy；OpenAI / Nano Banana / Seedream 留好接口位；svg 兜底）。所以这个 repo 顺便也是一份 \"把 CodeBuddy 当作运行时依赖\" 的参考实现。\n\n### 试用\n\n```bash\ngit clone https://github.com/imcuttle/flipbook-app && cd flipbook-app\nnpm install && npm run dev                # stub 模式，秒级响应、无大模型\nENABLE_CODEBUDDY=1 npm run dev:server     # 真实生成\n```\n\n打开 http://127.0.0.1:5173，顶栏输入一个主题就开始。README 中英双语，欢迎开 issue。\n",
+    "created_at": "2026-05-28T08:08:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10103"
+  },
+  {
     "id": 10102,
     "title": "【工具自荐】LinkPals：一个轻量级友链组件，让多个网站共享一份 friends.json",
     "content": "LinkPals 是一个面向个人网站、博客和独立项目的轻量级友链组件。\n网址：[https://linkpals.online/](https://linkpals.online/)\n\n它的想法很简单：一个小圈子的多个网站共用一份 friends.json，每个站点只嵌入一段 JS。页面底部默认只展示少量精选友链，完整网络则放在抽屉或 /friends 页面中，避免把每个网站的页脚变成很长的链接列表。\n\n## 想解决的问题\n\n友链和 blogroll 是个人网站时代很有代表性的网页元素，但是现在维护起来有几个麻烦：\n\n1. 每个网站各自维护一份友链，更新成本高，时间久了容易失效。\n2. 每个页脚都展示完整列表，会让页面变得很拥挤。\n3. 如果做成后台系统，又显得过重，不太符合小网站的使用场景。\n\nLinkPals 的目标是把这件事做轻：一份公开 JSON 数据，一个无框架嵌入脚本，一个克制的展示组件。\n\n## 主要功能\n\n- 共享友链列表：多个网站可以共用同一份 `friends.json`。\n- 轻量嵌入：站点只需要添加一段 script，不依赖 React/Vue。\n- 精选展示：页脚默认展示 4 到 8 个链接，而不是全部链接。\n- 完整网络：用户可以通过抽屉或 `/friends` 页面浏览全部站点。\n- 当前站点识别：组件可以避免推荐用户当前正在访问的网站。\n- 可解释排序：根据 featured、权重、标签、分类、相关站点等字段决定展示顺序。\n- 样式隔离：使用 Shadow DOM，减少组件 CSS 与宿主网站冲突。\n- 真实链接：渲染后是普通的 `<a href>` 链接。\n\n## 技术实现\n\n项目采用 Astro 搭建产品页和演示页，核心组件在 `src/widget` 中用 TypeScript 编写，编译后生成一个无框架的 `friends.js`。\n\n数据源是 JSON，基本结构如下：\n\n```json\n{\n  \"version\": 1,\n  \"title\": \"Friends\",\n  \"description\": \"A curated list of independent sites.\",\n  \"sites\": [\n    {\n      \"id\": \"example-site\",\n      \"title\": \"Example Site\",\n      \"url\": \"https://example.com\",\n      \"description\": \"A small independent website.\",\n      \"tags\": [\"Writing\", \"Tools\"],\n      \"category\": \"Knowledge\",\n      \"featured\": true,\n      \"weight\": 10\n    }\n  ]\n}\n```\n\n页面嵌入方式类似下面这样：\n\n```html\n<script\n  src=\"https://example.com/friends.js\"\n  data-src=\"https://example.com/friends.json\"\n  data-current=\"your-site-id\"\n  data-layout=\"featured\"\n  data-style=\"cards\"\n  async\n></script>\n```\n\n此外，项目也在尝试一个很轻的发布流程：用户粘贴一组 URL，服务端抓取页面标题、描述、favicon 等元信息，生成初始友链列表；发布后得到一个稳定的公开 JSON 地址，以及用于后续更新的 update key。\n\n## 适合场景\n\n- 个人博客之间互相推荐。\n- 独立开发者的多个小产品互相导流。\n- 小型创作者社区维护成员站点目录。\n- newsletter 或内容项目共享常读网站。\n- 开源项目生态推荐相关工具、文档和教程。\n\n## 设计取舍\n\n我不太想把它做成一个完整的友链后台，也不想做成站长社交网络或链接交易平台。它更像一个小组件：让仍然维护个人网站的人，可以用比较低的成本恢复一点“从一个网站发现另一个网站”的体验。\n\n\n<img width=\"2500\" height=\"1448\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6527a234-4329-46c7-a2f7-cdf6c86b3e1b\" />\n<img width=\"2422\" height=\"1746\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4af815d4-92ea-4652-8a2a-a4e9c71a4bba\" />\n<img width=\"3020\" height=\"1770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/85d615a6-ae46-42d2-adc1-8354783a19da\" />\n",
@@ -9,7 +33,7 @@
   },
   {
     "id": 10101,
-    "title": "【开源工具】Android端的ADB管理工具箱，多功能可视化管理安卓设备的APP",
+    "title": "【开源工具】Android端的ADB管理工具箱，多功能可视化管理安卓设备的APP 🎉🎉🎉",
     "content": "## sky adb\n\nsky adb 是一款运行在 Android 手机上的 ADB 管理工具，用于通过 WiFi ADB / Wireless Debugging 管理手机、平板、电视和盒子。\n\n**项目地址：https://github.com/sky22333/skyadb**\n\n## 功能特性\n\n- 无线调试配对、连接、断开和最近设备记录\n- 局域网自动发现和网段扫描，快速发现 adb 设备\n- 查看设备基础信息、连接状态和截图\n- 应用列表、分类筛选、搜索、启动、停止和卸载\n- 本地 APK 安装，在线下载 APK 后安装到目标设备\n- 本机用户应用导出并安装到目标设备\n- 在线下载文件并推送到目标设备\n- 目标设备文件管理、目录浏览、本地文件上传和设备文件下载\n- Shell 命令执行和输出查看\n- 默认端口、连接超时、命令超时和主题设置\n\n## 界面预览\n\n<div style=\"display:inline-block\">\n<img src=\"https://cdn.jsdelivr.net/gh/sky22333/skyadb@main/docs/img/demo1.jpg\" alt=\"demo1\" width=\"230\">\n<img src=\"https://cdn.jsdelivr.net/gh/sky22333/skyadb@main/docs/img/demo2.jpg\" alt=\"demo2\" width=\"230\">\n<img src=\"https://cdn.jsdelivr.net/gh/sky22333/skyadb@main/docs/img/demo3.jpg\" alt=\"demo2\" width=\"230\">\n</div>\n\n",
     "created_at": "2026-05-28T04:56:13Z",
     "labels": [],
@@ -796,31 +820,5 @@
     "created_at": "2026-05-20T09:10:38Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10001"
-  },
-  {
-    "id": 10000,
-    "title": "【开源自荐】GOD：一个可实时观察、提问、干预和回放 AI 小镇的开源控制台",
-    "content": "![](https://raw.githubusercontent.com/XiaoLuoLYG/GOD/main/docs/assets/screenshots/00-hero.png)\n\n项目地址：\nhttps://github.com/XiaoLuoLYG/GOD\n\n项目简介：\nGOD 是一个本地优先的 AI Agent 社会实验控制台。你可以在像素风地图里实时观察每个 Agent 的一举一动，包括生活、社交、日程执行；也可以向单个 Agent 或全镇提问，给整个世界注入干预指令，并完整回放、暂停和逐步运行实验过程。\n\n它内置零代码配置向导、两个默认实验和可插拔地图包，可用于各类可复现的社会学实验仿真，比如电车难题、谣言传播、记忆植入、公共事件响应等；也可以把它理解成一个更可控、更可复盘的 AI 版任天堂《朋友收集梦想生活》。\n\n主要特点：\n- 实时观察：在像素风地图上查看 Agent 的位置、行为、社交、状态和日程\n- 实时提问：可以向某个 Agent 或全镇提问，观察不同角色的即时回应\n- 实时干预：可以向世界注入事件或指令，观察 Agent 社会如何变化\n- 完整回放：支持暂停、继续、逐步运行和实验回放\n- 零代码配置：通过配置向导生成和发布新的实验草案\n- 本地优先：只需要外接一个 OpenAI 兼容模型端点\n\n技术栈：\n- Python / FastAPI\n- AgentSociety / OpenJiuwen agent runtime\n- React 18 + Vite\n- Phaser\n\n项目截图：\n\n![](https://raw.githubusercontent.com/XiaoLuoLYG/GOD/main/docs/assets/screenshots/01-control-room.png)\n",
-    "created_at": "2026-05-20T08:27:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10000"
-  },
-  {
-    "id": 9999,
-    "title": "【开源自荐】：针对 ai 吐出的 markdown 渲染库",
-    "content": "<img width=\"218\" height=\"218\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e098110a-e475-4748-9469-3e202f14b914\" />\n\nhttps://github.com/Simon-He95/markstream-vue\n提供了 vue/vue2/react/svelte/nuxt/next 多个框架版本的实现，超简单的配置，注入自定义组件的，和超大体量markdown输入，场景下的优化，毫秒级渲染，以及针对 markdown parser 的增量解析优化和异常边界的预处理，减少渲染抖动等丝滑体验",
-    "created_at": "2026-05-20T07:56:25Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/9999"
-  },
-  {
-    "id": 9998,
-    "title": "〖开源自荐〗ai-phone：一个用自然语言控制真机执行移动端测试的 AI 自动化项目",
-    "content": "项目地址：\nhttps://github.com/dongxinsuperman/ai-phone\n\n项目简介：\nai-phone 是一个面向移动端真机测试的 AI 自动化项目。它可以接收自然语言测试任务，通过视觉模型识别手机画面，并自动完成点击、输入、滑动等操作。\n\n解决的问题：\n很多中小团队没有专门测试岗位，或者测试资源比较基础，移动端回归测试、冒烟测试经常依赖人工重复操作。这个项目希望把一部分重复性的真机操作交给 AI 来完成。\n\n主要特点：\n- 支持真实手机执行，不只是模拟器\n- 通过视觉理解页面，不强依赖传统 UI 定位\n- 可以用自然语言描述测试步骤\n- 适合移动端冒烟、回归、基础流程验证\n- 已经在公司内部测试场景中落地使用\n\n适合人群：\n- 没有专职测试岗位的开发团队\n- 想补充移动端自动化能力的小团队\n- 对 AI + 手机自动化感兴趣的开发者\n\n\n项目截图：\n\nAI 判断系统：\n\n![](https://raw.githubusercontent.com/dongxinsuperman/ai-phone/next/server-brain/assets/screenshots/assist-judge-system.png)\n\n设备工作台：\n\n![](https://raw.githubusercontent.com/dongxinsuperman/ai-phone/next/server-brain/assets/screenshots/device-workbench-android.png)\n\n三端报告：\n\n![](https://raw.githubusercontent.com/dongxinsuperman/ai-phone/next/server-brain/assets/screenshots/report-three-platform.png)",
-    "created_at": "2026-05-20T07:31:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/9998"
   }
 ]
