@@ -1,5 +1,13 @@
 [
   {
+    "id": 10106,
+    "title": "【开源自荐】md2wechat：面向 AI Agent 的微信公众号发布 CLI",
+    "content": "# 项目地址\n\nhttps://github.com/geekjourneyx/md2wechat-skill\n\n# 项目简介\n\nmd2wechat 是一个面向 AI Agent 的微信公众号创作与发布 CLI。它可以把本地 Markdown 转成微信公众号可用的 HTML，支持本地预览、40 个专业主题、43 个结构化排版模块、AI 配图、图片上传，以及一键推送到微信公众号草稿箱。\n\n项目目前 2.5k+ stars，使用 Go 编写，支持 Homebrew、npm、go install、install.sh 等安装方式。\n\n# 解决的问题\n\n很多技术作者习惯用 Markdown 写文章，但是发布到微信公众号时，通常还需要手动处理排版、复制图片、调整样式、上传封面、创建草稿。\n\nmd2wechat 希望把这个流程变成一个可以自动化、可以脚本化、也可以交给 Claude Code / Codex / OpenClaw 等 Agent 执行的命令行工作流。\n\n# 主要功能\n\n- Markdown 转微信公众号 HTML\n- 本地预览，不触发上传或草稿副作用\n- 转换后直接推送到微信公众号草稿箱\n- 40 个专业主题\n- 43 个结构化排版模块\n- AI 封面图、配图、信息图生成\n- 图片上传到微信素材库\n- JSON 输出和 capability discovery，方便 Agent 自动调用\n\n# 使用示例\n\n```bash\n# 安装\nbrew install geekjourneyx/tap/md2wechat\n\n# 本地预览\nmd2wechat preview article.md\n\n# 转换并推送到微信公众号草稿箱\nmd2wechat convert article.md --draft --cover cover.jpg\n```\n\n# 演示图\n\n![md2wechat](https://raw.githubusercontent.com/geekjourneyx/md2wechat-skill/main/assets/readme-header.gif)\n\n![转换流程](https://raw.githubusercontent.com/geekjourneyx/md2wechat-skill/main/assets/transform.gif)\n\n# 关联说明\n\n之前提交过一个早期 Web 编辑器版本的投稿：#7513。\n\n这个 issue 是新的开源 CLI 版本投稿。两者解决的是同一个方向的问题，但现在的 md2wechat 已经从在线编辑器升级为面向 Agent 和自动化发布的命令行工具，能力边界和使用场景都有明显变化。\n",
+    "created_at": "2026-05-28T15:53:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10106"
+  },
+  {
     "id": 10105,
     "title": "【开源自荐】pixtuoid：把 Claude Code 多个 Agent 变成像素艺术风格的小办公室",
     "content": "仓库：https://github.com/IvanWng97/pixtuoid\ncrates.io：https://crates.io/crates/pixtuoid\n\n## 概况\n\n**pixtuoid** 是一款 Rust 写的终端像素艺术可视化工具，把你正在运行的多个 Claude Code Agent 显示成像素小人，在一个 ASCII 风格的办公室里\"上班\"。每个会话对应一个工位，写代码时显示器会根据当前调用的工具变色（Edit=蓝、Bash=橙、Read=青），idle 时小人会站起来去茶水间打杯咖啡，再走回工位继续工作。\n\n> 名字由来：**pix**el + **tu**i + (agent-)**oid**\n\n## 核心功能\n\n- 🏢 **多 Agent 办公室**：每个 CC 会话占一个工位，溢出自动开新楼层（最多 5 层）\n- 💡 **按工具调用染色**：监视器颜色随当前工具变化，扫一眼就知道谁在干什么\n- 🎭 **动画状态**：打字、思考（···）、等待（?）、睡觉（z's）、走路（A* 寻路）\n- 🌧️ **天气与昼夜**：雨/雪/雾/晴，黄昏自动加 golden hour 调色\n- 🐱 **办公室猫**：在工位间巡视，idle agent 旁边打盹，点击可以撸猫\n- ☕ **咖啡日常**：Agent idle 时去茶水间，端回杯子放在工位上\n- 🎨 **6 套主题**：cyberpunk / dracula / tokyo-night / catppuccin / gruvbox / normal，按 \\`t\\` 实时切换\n- 🛡️ **Hook 安全**：shim 始终 exit 0（200ms 超时），永远不会阻塞 Claude Code\n\n## 技术栈\n\n- Rust + ratatui + crossterm + tokio\n- 半字符（▀）渲染，垂直分辨率翻倍\n- 三个 crate：headless 的 core 库、TUI 二进制、超薄 hook shim\n\n## Demo\n\nREADME 顶部有一段 GIF，能直接看到多个 Agent 同时工作的画面：\nhttps://github.com/IvanWng97/pixtuoid#readme\n\n## 与同类项目的差异\n\nOpenClaw Monitor（曾在 #9840 推荐过）是网页仪表盘，偏数据指标。pixtuoid 是终端纯像素艺术，偏\"看一眼就懂谁在干啥\"的氛围感，terminal/tmux 里直接能用，不开浏览器。\n\n## 安装\n\n\\`\\`\\`bash\nbrew install IvanWng97/pixtuoid/pixtuoid\npixtuoid install-hooks\npixtuoid\n\\`\\`\\`\n\n或者 \\`cargo install pixtuoid pixtuoid-hook\\`。\n\nMIT 协议，欢迎试用 ⭐",
@@ -812,13 +820,5 @@
     "created_at": "2026-05-20T09:25:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10002"
-  },
-  {
-    "id": 10001,
-    "title": "【开源自荐】Fibofinance 轻量自部署的家庭资产管理网站",
-    "content": "<img width=\"1431\" height=\"955\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9b1d63a1-9283-4f75-a9ef-e4d836d9abf0\" />\n\n### 项目地址\nhttps://github.com/Emiyaaaaa/fibofinance\n\n### 项目简介\n轻量的自部署资产记录网站，通过记录资产当前值的方式来追踪资产变化，告别传统记账模式。\n\n### 项目亮点\n- 便捷部署、数据安全、密码保护\n- 个人/家庭财产分组管理、资产不混淆\n- 多币种支持、自定义汇率（白银、黄金等按克记录）\n- 资产趋势图、灵活对比资产变化\n- 配置 AI Key 后可提供资产配比建议\n\n\n",
-    "created_at": "2026-05-20T09:10:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10001"
   }
 ]
