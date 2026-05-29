@@ -1,11 +1,43 @@
 [
   {
-    "id": 10126,
-    "title": "【AI工具推荐】WeiClaw 是连接 Agent 与电脑的智能硬件",
-    "content": "WeiClaw 是连接 Agent 与电脑的智能硬件。通过实时监测 Agent 状态、智能接管消息通道，它让电脑无需长期高负载运行 —— 闲置时自动睡眠省电护机，有任务时即刻唤醒响应，实现高效节能的按需工作模式。\n\n- 智能按需工作，节能降耗\n- 微信账号共享，无需额外申请\n- 全自动消息唤醒，使用无缝感知\n- 超强兼容，适配主流智能代理\n\n网址 [weiclaw](https://git-hub-cloud.github.io/weiclaw)",
-    "created_at": "2026-05-29T11:25:29Z",
+    "id": 10131,
+    "title": "【开源自荐】Easydict for Windows：一个简洁优雅的词典翻译 Windows App",
+    "content": "## Easydict for Windows\n\nEasydict for Windows 是 macOS 上知名翻译词典工具 [Easydict](https://github.com/tisfeng/Easydict) 的 Windows 移植版，使用 .NET 8 + WinUI 3 重写。开箱即用，自动识别输入语言，支持划词翻译、截图 OCR 翻译、长文档翻译，并可同时调用多家翻译服务对比结果。\n\n完全免费、开源（GPL-3.0），无广告、无内购。\n\n![Overview](https://github.com/xiaocang/easydict_win32/raw/master/screenshot/overview.png)\n\n*主窗口 + 迷你窗口（快速翻译）*\n\n**主要特性：**\n\n- **多服务同时翻译** —— 内置 15+ 翻译服务：Google、DeepL、OpenAI、Gemini、DeepSeek、有道、彩云、火山等，一次查询并排对比。\n- **Copilot+ PC 本地 AI 翻译** —— 在支持的 Copilot+ PC（40+ TOPS NPU）上通过 Phi Silica 端侧运行，快速且隐私；普通电脑可用 Foundry Local，离线还有 OpenVINO NLLB-200 兜底。\n- **截图 OCR 翻译** —— `Ctrl+Alt+S` 仿 Snipaste 框选截图，自动识别窗口，OCR 后即时翻译，支持 26+ 语言。\n- **划词翻译** —— 在任意应用中拖选 / 双击 / 三击选中文本，点击悬浮图标即可在迷你窗口翻译。\n- **长文档翻译** —— 支持 PDF / TXT / Markdown，带 ML 版面检测、公式保护、并行翻译、双语对照输出与翻译缓存。\n- **词典模式** —— 单词释义、音标、例句；可导入 MDict（.mdx）离线词典。\n- **全局快捷键 + 系统托盘 + 剪贴板监听**，深色/浅色主题跟随系统。\n\n![Light & Dark Mode](https://github.com/xiaocang/easydict_win32/raw/master/screenshot/light-dark-mode.png)\n\n*深色 / 浅色模式 — 迷你窗口（快速翻译）*\n\n**下载地址（任选其一）：**\n\n- Microsoft Store：https://apps.microsoft.com/detail/9p7nqvxf9dzj\n- winget：`winget install xiaocang.EasydictforWindows`\n- GitHub Releases：https://github.com/xiaocang/easydict_win32/releases\n\n**项目地址：** https://github.com/xiaocang/easydict_win32\n\n（最新版 v0.8.0：内存占用降低约 50%，并修复了主题跟随系统切换的问题。）\n",
+    "created_at": "2026-05-29T15:18:19Z",
     "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10126"
+    "url": "https://github.com/ruanyf/weekly/issues/10131"
+  },
+  {
+    "id": 10130,
+    "title": "【工具自荐】一个免费无需注册登录的英语单词学习工具",
+    "content": "APP名称：Qwerty Learner\nAPP简介：一款专为程序员与英语学习者设计的单词记忆工具。 在高效练习打字的同时，通过肌肉记忆牢记词汇，让你的指尖成为学习的利器。\n网站地址：https://idoras.com/\n谷歌play地址：https://play.google.com/store/apps/details?id=qwerty.liusha.com\nappstroe 地址： https://apps.apple.com/us/app/qwerty-learner/id6766206222\n华为商店地址： https://appgallery.huawei.com/app/detail?id=qwerty.liusha.com\n微信小程序码：\n![](https://idoras.com/mini.png)",
+    "created_at": "2026-05-29T13:57:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10130"
+  },
+  {
+    "id": 10129,
+    "title": "【开源推荐】retitle：自动重命名空闲的 Claude Code / Codex / Cursor 会话",
+    "content": "Claude Code、Codex、Cursor 都只用**第一条消息**给会话命名，之后标题就再也不变了。聊了两个小时，侧边栏还写着最初那句话；几十个会话攒下来，根本没法靠标题找回记录。\n\n**retitle** 是一个后台小工具：当某个会话空闲约 5 分钟，就根据最新内容把它的标题重写一遍——Claude Code、Codex、Cursor 三个工具都支持。\n\n特点：\n\n- **纯 Python，零第三方依赖**；\n- 默认用**离线启发式**命名，不需要 API key、不产生费用；也可一行配置切到 `claude` / `codex` 命令行，或 Anthropic / OpenAI API 生成更精炼的标题；\n- **只在本地读写、只改标题字段**，不碰对话内容；**幂等**，且**尊重你手动改的标题**（除非对话又有新进展）；\n- 按每个工具的存储格式分别写回（Claude Code 追加 `ai-title` 行、Codex 改 SQLite、Cursor 改 `state.vscdb`）；\n- `retitle install` 一行装成后台服务（macOS launchd / Linux systemd），每分钟自动运行。\n\n仓库（MIT，含中英文 README）：https://github.com/study8677/retitle\n",
+    "created_at": "2026-05-29T13:02:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10129"
+  },
+  {
+    "id": 10128,
+    "title": "Claude Code Workflow 原理研究(抓包后分析) - Workwith GPT5.5",
+    "content": "https://github.com/TokenRollAI/claude-code-workflow-research\n\n# Claude Code Workflow 省流版\n\n一句话：Claude Code workflow 不是模型自己在一次请求里并发工作，而是主模型先写一段 JavaScript 编排脚本，Claude Code 本地 runtime 执行这段脚本，按脚本启动多个子代理，再把子代理的结构化 JSON 结果串起来。\n\n## 核心流程\n\n```text\n用户显式触发 workflow\n  -> 主模型看到 Workflow 本地工具\n  -> 主模型生成一段 JS workflow script\n  -> Claude Code 本地 runtime 执行 JS\n  -> JS 里的 agent() 启动多个普通子代理请求\n  -> 子代理通过 StructuredOutput 返回 JSON\n  -> runtime 把 JSON 当作 agent() 的返回值传给后续 JS\n  -> JS 最终 return 一个对象\n  -> Claude Code 用 <task-notification> 把结果回灌主会话\n```\n\n## 最重要的几个点\n\n1. `Workflow` 是本地工具，不是 Anthropic API 的一个特殊 endpoint。\n2. 主模型负责“写编排脚本”，本地 runtime 负责“执行脚本”。\n3. workflow 脚本是受限 JavaScript DSL，不是完整 Node.js。\n4. `agent(prompt, { schema })` 会启动一个子代理，并强制它调用 `StructuredOutput`。\n5. 子代理返回的是 schema 校验后的 JSON，不是父流程从自然语言里硬解析。\n6. agent 之间不直接聊天；交接由 JS 完成：上一个 agent 的 JSON -> `JSON.stringify(...)` -> 下一个 agent 的 prompt。\n7. `pipeline()` 默认没有阶段 barrier，某个 item 完成一阶段就能进入下一阶段。\n8. `parallel()` 是 barrier，只适合确实需要等全部结果时使用。\n9. workflow 完成后，最终结果通过 `<task-notification>` 注入回主会话。\n10. 支持 resume，因为脚本要求确定性，已完成且未变更的 agent 调用可以命中缓存。\n\n## Prompt 是怎么拼的\n\n一次 workflow 子代理请求不是一个巨大的纯文本 prompt，而是多个槽位组合：\n\n| 槽位 | 放什么 |\n|---|---|\n| `messages[0].content` | 子代理本轮 user 输入，包含系统提醒和 JS 生成的任务 prompt。 |\n| `system[]` | Claude Code 身份、workflow subagent 规则、环境信息。 |\n| `tools[]` | Bash/Read/Skill 等工具，以及动态生成的 `StructuredOutput`。 |\n| `StructuredOutput.input_schema` | JS 里传给 `agent(..., { schema })` 的 schema。 |\n\n本次例子里，judge prompt 是这样来的：\n\n```js\nagent(\n  `你是桌游评委，专门从这个维度评审：「${j.desc}」。\\n` +\n  `待评概念：\\n${JSON.stringify(concept, null, 2)}\\n` +\n  `请给出 1-10 分并简述理由。用中文作答。`,\n  { schema: JUDGE_SCHEMA }\n)\n```\n\n这里的 `concept` 是 invent agent 通过 `StructuredOutput` 返回的 JSON。也就是说，下游 prompt 看到什么，完全取决于 JS 作者显式拼进去什么。\n\n## 本次抓包里的例子\n\n这次 workflow 是一个“桌游设计锦标赛”：\n\n- 5 个 invent agent：分别从 5 个设计方向发明桌游。\n- 15 个 judge agent：每个概念由 3 个评委维度打分。\n- 1 个 synthesize agent：取冠军并嫁接落选概念优点，生成最终设计稿。\n- 合计 21 个逻辑 agent。\n\n最终通知里也记录了：\n\n```xml\n<agent_count>21</agent_count>\n<subagent_tokens>232900</subagent_tokens>\n<duration_ms>257654</duration_ms>\n```\n\n## 适合分享的一句话总结\n\nClaude Code workflow 把“多代理协作”从自然语言群聊变成了可执行的数据流程序：`agent()` 像异步函数，prompt 是输入，`StructuredOutput` JSON 是返回值，`pipeline()` 和 `parallel()` 是调度结构，最终 `return` 是结果。\n\n## 证据入口\n\n- 长版说明: [`README.md`](./README.md)\n- Workflow 工具 prompt: [`workflow-artifacts/workflow-tool-prompt.md`](./workflow-artifacts/workflow-tool-prompt.md)\n- 本次生成的 JS: [`workflow-artifacts/boardgame-tournament-wf_1b6a0439-04e.js`](./workflow-artifacts/boardgame-tournament-wf_1b6a0439-04e.js)\n- 子代理系统提示词: [`workflow-artifacts/subagent-system-prompt.md`](./workflow-artifacts/subagent-system-prompt.md)\n- 子代理 prompt 索引: [`workflow-artifacts/subagent-prompts/index.md`](./workflow-artifacts/subagent-prompts/index.md)\n- 最终回灌通知: [`workflow-artifacts/workflow-task-notification.md`](./workflow-artifacts/workflow-task-notification.md)\n\n",
+    "created_at": "2026-05-29T12:23:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10128"
+  },
+  {
+    "id": 10127,
+    "title": "[Tool Recommandation] Metadata Remover: Clean sensitive file metadata in your browser",
+    "content": "Name:\nMetadata Remover\n\n<img width=\"3322\" height=\"1828\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d34abe9f-ff1b-41c6-8597-d5f533439bc0\" />\n\nURL:\nhttps://metadataremove.app/\n\nDescription:\nMetadata Remover is a browser-based tool for cleaning hidden metadata before sharing files. It supports common formats such as photos, PDFs, Word/Excel/PowerPoint documents, videos, and audio files. It can remove metadata like EXIF/GPS data, author names, document titles, creation dates, editing software, and other hidden file properties.\n\nWhy it is useful:\n\n- Files are processed locally in the browser, without uploading them to a server.\n- Supports multiple file types, including images, PDFs, Office documents, videos, and audio files.\n- Useful before publishing photos, sending client files, uploading resumes/documents, or sharing screenshots.\n- Simple web interface, no command-line tools or ExifTool setup required.\n\nWho it is for:\nPhotographers, designers, content creators, freelancers, developers, and anyone who wants to reduce privacy leaks before sharing files publicly.",
+    "created_at": "2026-05-29T12:04:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10127"
   },
   {
     "id": 10125,
@@ -60,7 +92,9 @@
     "title": "【开源推荐】AppPotrs：一键将 mac 软件和数据迁移到外部存储中",
     "content": "\n### 1. 项目地址\n* GitHub: https://github.com/wzh4869/AppPorts\n\n### 2. 它解决了什么问题？\n随着 macOS 应用体积越来越大（尤其是各类大厂软件、IDE、专业剪辑工具和游戏），以及它们在 `~/Library/Application Support` 和 `~/Library/Caches` 中疯狂膨胀的缓存，原生 256G 或 512G 的 Mac 硬盘空间经常捉襟见肘。\n\n虽然市场上有一些外置存储方案，但手动迁移应用并软链接（Symlink）目录非常繁琐且容易出错。**AppPorts 就是为了实现“一键、安全地将应用及其所有关联数据迁移到外置硬盘/SSD”而生的。**\n\n### 3. 核心功能与特性\n* **完整迁移：** 不仅迁移 `.app` 本体，还能自动识别并迁移散落在系统各处的关联配置与缓存文件夹。\n* **无损软链接：** 自动创建精确的系统软链接，确保应用在迁移后仍能正常启动、更新，且系统逻辑完全不掉链。\n* **安全机制：** 迁移过程中带有校验机制，防止因意外断开或权限问题导致应用损坏。\n* **简洁易用：** 专为有大容量外置存储需求的 Mac 用户设计，极大降低了折腾成本。\n\n### 4. 推荐理由\n很多 Mac 用户的电脑性能依然过剩，但仅仅因为硬盘满了就不得不考虑换机。AppPorts 通过纯净、开源的方式，让外置 SSD 真正成为 Mac 内置存储的完美延伸，帮助大家低成本“给 Mac 扩容”，非常符合周刊读者对高效、实用工具的追求。\n\n",
     "created_at": "2026-05-29T07:29:48Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10119"
   },
   {
@@ -132,7 +166,9 @@
     "title": "【开源自荐】readNeo - 微信读书数据面板",
     "content": "# readNeo：把微信读书变成属于自己的阅读数据中心\n\n最近做了一个小工具：**[readNeo](https://readneo.vercel.app?ref=weekly)**。\n\n它基于微信读书 Skill API，可以把微信读书里的书架、阅读统计、笔记划线整理成一个更易浏览、更方便导出的个人阅读面板。\n\n## 为什么做这个产品\n\n微信读书积累了很多阅读数据：\n\n* 看过什么书\n* 每天读了多久\n* 划过哪些重点\n* 写过哪些笔记\n\n但这些内容大多散落在 App 内部。\n\n我希望能够：\n\n* 更方便地回顾自己的阅读历程\n* 统计长期阅读习惯\n* 管理所有划线和笔记\n* 导出到自己的知识库\n\n于是做了 readNeo。\n\n## 大图预览\n\n<img width=\"2626\" height=\"1966\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5aca5dfd-ec49-4d82-ac76-9e9bb1b08777\" />\n\n<img width=\"3576\" height=\"2016\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e08c098e-e465-412c-8d7c-c36523dbaef5\" />\n\n## 主要功能\n\n📚 **书架管理**\n\n同步微信读书书架，查看全部藏书与阅读进度。\n\n📊 **阅读统计**\n\n可视化阅读时长、阅读天数和趋势变化，更直观地了解自己的阅读习惯。\n\n✍️ **笔记与划线**\n\n按照书籍分类查看所有划线和笔记，支持快速复制和回顾。\n\n🔍 **书城搜索**\n\n直接搜索微信读书书城内容，支持电子书、网文、听书等分类。\n\n🎯 **个性化推荐**\n\n基于微信读书推荐体系获取适合自己的书籍推荐。\n\n📝 **数据导出**\n\n支持导出 Markdown ZIP，可同步到：\n\n* Flomo\n* Notion\n* Obsidian\n* 其他支持 Markdown 的知识库\n\n## 隐私说明\n\n所有数据仅保存在浏览器本地。\n\n不会上传阅读数据，不会建立用户数据库。\n\nAPI 请求通过服务端代理转发，仅用于访问微信读书开放的 Skill API。\n\n## 使用方法\n\n1. 打开微信读书\n2. 进入「我 → 设置 → 微信读书 Skill」\n3. 复制生成的 API Key\n4. 打开 readNeo\n5. 粘贴 API Key 即可开始使用\n\n## 技术栈\n\n* Next.js 16\n* Tailwind CSS v4\n* shadcn/ui\n* Recharts\n* SWR\n* Zustand\n\n如果你也是微信读书重度用户，希望更好地管理自己的阅读数据，欢迎体验并提出建议。\n",
     "created_at": "2026-05-29T02:09:23Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10110"
   },
   {
@@ -788,37 +824,5 @@
     "created_at": "2026-05-22T03:58:02Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10029"
-  },
-  {
-    "id": 10028,
-    "title": "【文章推荐】Claude Code 最佳实践指南（中文整理）",
-    "content": "把 Anthropic 官方的 Claude Code Best Practices 文档完整翻译整理成了中文操作手册，重点覆盖\"探索→计划→实现→验证\"工作流、CLAUDE.md 配置、Hooks/Subagents/Skills 等扩展能力，以及批量任务、并行会话、检查点恢复等实操细节。\n适合正在用 Claude Code、Cursor 等 Coding Agent 的开发者参考。\n链接：https://mp.weixin.qq.com/s/Te_UyGAZcC06jCgHA8YL4w\n原文出处：https://code.claude.com/docs/en/best-practices",
-    "created_at": "2026-05-22T03:49:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10028"
-  },
-  {
-    "id": 10027,
-    "title": "【开源自荐】TileLineBase：一款 Obsidian 插件，直接在 Markdown 笔记中构建多维表格，无需 Frontmatter，无需代码",
-    "content": "\n> Obsidian 页面：https://community.obsidian.md/plugins/tile-line-base\n> Github 页面：https://github.com/campfirium/obsidian-tile-line-base\n\n\n![TileLineBase hero banner](https://raw.githubusercontent.com/campfirium/obsidian-tile-line-base/main/docs/assets/hero-banner.jpg)\n\n直接在 Markdown 笔记中构建多维表格。无需 Frontmatter。无需代码。\n\n## 快速预览\n\n[![TileLineBase product overview](https://raw.githubusercontent.com/campfirium/obsidian-tile-line-base/main/docs/assets/hero-banner.gif)](https://youtu.be/8uoVBkD2--A)\n\n_点击上方预览，可在 YouTube 观看更高清的视频。_\n\n\n## 功能\n\n### 强大的表格系统\n\n直接在 Markdown 笔记中创建结构化数据表，灵活适应各种场景。\n\n#### 灵活视图：Table、Kanban、Gallery 与 Slides\n\n一套数据记录，四种交互方式：\n\n- 筛选表格视图：自由组合筛选与排序规则并保存为视图。按项目、状态或任意自定义条件呈现数据。\n\n![TileLineBase table mode view](https://raw.githubusercontent.com/campfirium/obsidian-tile-line-base/main/docs/assets/table-view.jpg)\n\n- Kanban Board：可将任意单选或列表字段映射为泳道，而不局限于状态。轻松按优先级、标签或作者重组数据，从不同维度查看数据。\n\n![TileLineBase kanban mode view](https://raw.githubusercontent.com/campfirium/obsidian-tile-line-base/main/docs/assets/kanban-view.jpg)\n\n- Gallery View：将笔记呈现为可完全自定义的卡片。使用模板引擎设计自定义布局，并通过 View Groups 与右键操作高效整理内容。\n\n![TileLineBase gallery mode view](https://raw.githubusercontent.com/campfirium/obsidian-tile-line-base/main/docs/assets/gallery-view.jpg)\n\n- Slide View：一行记录转化为一张幻灯片。适合深度思考和简易演示。支持自定义布局、内置支持行内图片。\n\n![TileLineBase slide mode view](https://raw.githubusercontent.com/campfirium/obsidian-tile-line-base/main/docs/assets/slides-view.jpg)\n\n#### 父子条目\n\n使用父子条目模式将相关记录组织为两级父子结构，同时仍能自然地配合筛选表格视图使用。\n\n#### 智能字段\n\n基础内联公式（简单算术）、智能日期/时间解析，以及笔记和引用的自动链接。\n\n#### 内置 GTD 工作流\n\n内置任务状态字段（待办、进行中、完成、暂停、将来、取消），默认提供对应的筛选视图组和看板视图，实现即开即用的任务管理。\n\n### 原生于文本的数据库\n\n完全基于文本，无需复杂数据格式或额外标记，更直观地支持结构化内容。\n\n![TileLineBase markdown mode view](https://raw.githubusercontent.com/campfirium/obsidian-tile-line-base/main/docs/assets/markdown-view.jpg)\n\n#### 单笔记即数据库\n\n将所有相关结构化记录集中组织在单个 `.md` 文件中。保持上下文的关联性，降低管理负担，有效促进整体回顾与思考。\n\n#### 隐式结构\n\n无 Frontmatter，无代码标记。数据结构隐式包含在纯文本中，提供对人类和机器都友好的数据表达，让你自然地读写。\n\n\n### 开放的数据交互\n\n支持数据在 Obsidian 内外灵活地交互和移动，让信息组织与利用更灵活。\n\n#### 文本导入助手\n\n快速将文本块转化为 TileLineBase 记录。简单定义提取模式，即可自动生成结构化信息。\n\n#### 无缝 Obsidian 集成\n\n记录可在多个表格笔记之间灵活迁移，也能快速转化为独立的 Obsidian 笔记。表格笔记也可在保留所有配置的情况下跨 Vault 迁移。\n\n#### 便捷的表格软件同步\n\n支持 CSV 文件导入/导出，兼容主流电子表格软件，便于批量编辑和数据整理。\n\n#### 高效的 LLM 对接能力\n\n使用清晰、自包含的纯文本格式，可与大语言模无缝交互，无需额外处理。\n\n## 安全与架构\n\n*   隔离性：插件只会处理你切换到 TileLineBase 视图的那个特定文件，绝不会扫描其他笔记。\n*   解耦性：你的数据保存在 `.md` 文件中，视图设置保存在插件中。即使卸载插件，你的笔记仍然是标准 Markdown。\n*   保护机制：内置自动备份会保留文件快照历史，帮助避免意外数据丢失。\n\n## 安装\n\n从 [Obsidian Community Plugins page](https://community.obsidian.md/plugins/tile-line-base) 安装 TileLineBase，或在 Obsidian 中通过 `obsidian://show-plugin?id=tile-line-base` 直接打开。\n\nTileLineBase 仅支持桌面端。\n\n## 开发\n\n本地开发时，使用 `npm ci` 安装依赖。\n\n只有在你有意新增、删除或升级依赖，并需要刷新 `package-lock.json` 时，才使用 `npm install <package>`。\n\n依赖变更后，请运行 `npm run deps:hardening:check`。\n\n## 提示与微调\n\n- [状态图标与行背景自定义](https://github.com/campfirium/obsidian-tile-line-base/blob/main/docs/status-snippet-guide.md)\n\n## 反馈与讨论\n\n欢迎反馈、建议、问题和 bug 报告，也欢迎在你偏好的地方展开讨论。\n\n你可以：\n\n* 加入或发起 [Obsidian Forum thread](https://forum.obsidian.md/t/tilelinebase-the-native-plain-text-database-for-obsidian/108734) 上的讨论。\n* 如果希望更正式地跟踪问题，可以在 [GitHub](https://github.com/campfirium/obsidian-tile-line-base/issues) 提交 Issue。\n* 也可以来我的个人论坛 [Campfirium](https://forum.campfirium.com/t/tilelinebase-v080-released-the-native-plain-text-database-for-obsidian/753) 坐坐，那里也欢迎更发散的想法和延伸讨论。\n\n请选择最适合你的交流空间。\n\n\n## 致谢\n\nTileLineBase 构建在这些优秀的开源项目之上：\n\n- [Obsidian](https://obsidian.md/) 以及 Obsidian plugin API。\n- [AG Grid](https://www.ag-grid.com/) 提供核心表格交互模型。\n- [Lucide](https://lucide.dev/) 提供 Obsidian 与 TileLineBase 图标工作流中使用的图标集。\n- [SortableJS](https://sortablejs.github.io/Sortable/) 提供拖放交互能力。\n- [monkey-around](https://github.com/pjeby/monkey-around) 为 Obsidian 插件生态提供运行时补丁支持。\n\n第三方组件与许可证说明请参见 [THIRD_PARTY_NOTICES.md](https://github.com/campfirium/obsidian-tile-line-base/blob/main/THIRD_PARTY_NOTICES.md)。\n\n## 许可证\n\nTileLineBase 基于 MIT License 发布。\n",
-    "created_at": "2026-05-22T03:43:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10027"
-  },
-  {
-    "id": 10026,
-    "title": "docs(issue-397): fix typo",
-    "content": null,
-    "created_at": "2026-05-22T02:39:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/10026"
-  },
-  {
-    "id": 10025,
-    "title": "【工具自荐】Z-Image AI:免费的在线 AI 图片生成器(文生图 / 图生图)",
-    "content": "**项目名称:** Z-Image AI\n\n**项目网址:** https://z-image-ai.run\n\n**项目类型:** 工具 / 在线服务\n\n**一句话介绍:** 一个在线的 AI 图片生成工具,支持「文字生成图片」和「图片生成图片」,打开即用,无需安装。\n\n---\n\n### 简介\n\nZ-Image AI 是我开发的一个在线 AI 图片生成器,主打开箱即用:在网页里输入一段提示词(prompt)就能出图,也可以上传一张参考图做图生图(image-to-image)。\n\n特点:\n\n- **两种模式**:文生图(text-to-image)、图生图(image-to-image),首页直接试用,不用反复跳转。\n- **多个模型可选**:内置 Z-Image Turbo、FLUX、Seedream 等多种模型,可按需要切换。\n- **常用参数齐全**:支持选择宽高比、输出格式、生成数量、随机种子(seed)等。\n- **免费额度**:注册后有免费额度可以体验,无需先付费。\n- **纯网页端**:无需下载客户端,手机和电脑浏览器都能用。\n\n适合需要快速生成插图、海报、头像、电商配图、社媒素材的人。\n\n欢迎体验并提出建议:https://z-image-ai.run",
-    "created_at": "2026-05-22T01:31:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10025"
   }
 ]
