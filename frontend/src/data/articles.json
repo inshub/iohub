@@ -1,5 +1,13 @@
 [
   {
+    "id": 10141,
+    "title": "项目自荐：SPNED-Preview (Static-Proof Native Execution of Decoders)",
+    "content": "### 项目名称\nSPNED-Preview (Static-Proof Native Execution of Decoders)\n\n### 项目地址\nhttps://github.com/creativitysurvey/SPNED-Preview\n\n### 项目简介\n一个基于“区间域抽象解释”的零开销安全 JIT 编译器架构，在绝对吞吐量上全面击败 WebAssembly 和 eBPF 沙箱。\n\n### 详细推荐理由\n\n现代分析型数据库在集成第三方数据解码器时，往往需要在原生的极致性能与动态沙箱（如 WebAssembly 或 eBPF）的安全性之间妥协。这种沙箱机制不仅会带来单核上下文切换的性能惩罚，更会在高并发下引发灾难性的系统级内存隔离锁竞争。\n\nSPNED 提出了一种全新的**“验证后编译 (Verify-then-Compile)”**架构：\n通过高度受限的领域特定语言 (DSL) 和纯 C++ 的区间抽象解释引擎，在微秒级（约 `17.1 μs`）内完成内存绝对安全性和程序终止的数学证明。验证通过后，直接通过 `LLVM ORC JIT` 将其降级为无限制的本地机器码。\n\n在 64 核物理硬件的严苛评估中，SPNED 展现了打破“沙箱税”的终极性能：\n- **逼近原生上限：** 在复杂的选择性分析负载中，吞吐量达到 `937.34 MT/s`，成功捕获了激进优化的不安全 C++ 代码 **97.9%** 的物理性能上限。\n- **亚纳秒级延迟：** 彻底剥离运行时边界检查后，单条元组处理延迟低至 `0.54 ns`，展现了完美的 CPU 缓存亲和性。\n- **无锁线性扩展：** 凭借无锁的 64 位寄存器传参 ABI，在 64 线程下实现了惊人的 `4396.95 MT/s` 近线性并发吞吐，并保持了 `0.0%` 的错误拒绝率 (FRR)。\n\n非常适合关注底层系统架构、编译器优化以及高性能数据库引擎的开发者参考交流。",
+    "created_at": "2026-05-30T14:41:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10141"
+  },
+  {
     "id": 10140,
     "title": "【开源自荐】album-assetizer：用大模型给本地相册生成结构化语义描述",
     "content": "链接： https://github.com/SeanWong17/album-assetizer\n\n  说明：\n\n  一个本地运行的命令行工具，扫描个人相册，调用 OpenAI 兼容 API（推荐小米 MiMo，可以将赠送的token转换为个人数据资产）为每张图片生成结构化描述，结果保存在本地 SQLite，可导出 JSONL / CSV。\n\n  输出字段包括：短描述、长描述、场景分类、语义标签、OCR 文字、人数、置信度等，同时生成 embedding_text 供后续向量检索使用。数据完全归用户本地所有，不依赖任何云服务。\n\n  支持 HEIC / DNG / CR3 / Apple Live Photo 等格式，断点续跑，并发处理。\n\n<img width=\"1486\" height=\"1243\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/02a4c4e6-4ceb-4ab8-8183-2c276264b654\" />",
@@ -814,13 +822,5 @@
     "created_at": "2026-05-23T03:30:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10039"
-  },
-  {
-    "id": 10038,
-    "title": "【网站自荐】WizardAlchemyCode.com：面向 Roblox 玩家的一页式 Wizard Alchemy 兑换码查询站",
-    "content": "阮老师好，推荐一个刚上线的小工具站：\n\n[Wizard Alchemy Codes](https://wizardalchemycode.com/?utm_source=ruanyifeng&utm_medium=newsletter&utm_campaign=wizardalchemycode_cold_start_202605&utm_content=github_issue)\n\n这是一个面向 Roblox 游戏 Wizard Alchemy 玩家的一页式兑换码查询站。它不是官方站点，定位是 fan-made resource，主要解决玩家查兑换码时常见的几个问题：\n\n- 先显示当前列出的 working codes，减少在长文章里查找的成本；\n- 每个 code 旁边提供复制按钮；\n- 单独列出 needs-review code，避免把来源冲突的内容直接写成确定可用；\n- 保留 expired codes、redeem steps 和 update history；\n- 页面上明确写明 not affiliated with Roblox / Wizard Alchemy / developers。\n\n这个站点也是一个独立开发小实验：用 Next.js 15 + TypeScript + Tailwind 构建，部署在 Cloudflare Workers 上，不登录、不收费，主要观察长尾 SEO 内容站如何做 answer-first 信息结构和合规边界。\n\n如果适合周刊的工具/资源栏目，欢迎收录；不合适也没关系。",
-    "created_at": "2026-05-23T02:52:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10038"
   }
 ]
