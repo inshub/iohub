@@ -1,5 +1,37 @@
 [
   {
+    "id": 10136,
+    "title": "WebAutoForm —— JSON驱动的浏览器自动化工具",
+    "content": "我是 WebAutoForm 的作者，这是一个轻量级的浏览器自动化工具，只需要写 JSON 配置就能完成填表、提交、数据提取等任务，完全不需要写代码。\n\n🔗 GitHub 地址： https://github.com/DUZ1287/WebAutoForm\n\n✨ 核心功能\n13 种动作类型 - 填写、点击、选择、数据提取等\n\n零代码 - 用 JSON 描述，引擎自动执行\n\n内置 PII 脱敏 - 自动屏蔽邮箱、手机号、身份证\n\n条件分支 - 支持 if/else，应对复杂场景\n\nAI Agent 友好 - 自带 JSON 工具格式\n\n选择器容错 - 主选择器 + 备选链，不怕页面变化\n\n💡 和同类工具有什么不同？\nPlaywright、Selenium 这类工具都需要编程基础。WebAutoForm 专注在 表单自动化 这一个场景上：批量填表、数据录入、测试、CI 流水线。100% 确定性执行（不会像 LLM 那样出现幻觉），本地运行完全免费。\n\n🚀 一行命令就能体验\nbash\npip install web-auto-form\nplaywright install chromium\n❤️ 需要大家的帮助\n⭐ 觉得有用的话，给个 Star 吧\n\n📣 推荐给 需要表单自动化的朋友或团队\n\n🐛 遇到问题随时提 Issue\n\n✏️ 欢迎对文档或功能提任何 建议",
+    "created_at": "2026-05-30T06:02:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10136"
+  },
+  {
+    "id": 10135,
+    "title": "【开源自荐】峰哥桌面宠物——二次元峰哥，常驻你的桌面。",
+    "content": "<div align=\"center\">\n<img width=\"400\" height=\"356\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6e932ea7-8e03-4a0e-b573-ab605aaef560\" />\n</div>\n\n项目地址:https://github.com/shaozhengmao/fengge-pet\n\n## ✨ 功能\n\n- 9 种动画状态随机轮播（站立 / 发呆 / 抱臂 / 摸胡子 / 自拍 / 投降 / 向左跑 / 向右跑 / 奔跑）\n- 点击角色触发反应动画，必出语录气泡\n- 空闲时随机冒语录，包含峰哥经典名言\n- 拖拽移动位置，自动记忆上次位置\n- 开机自启动\n- 右键菜单 → **编辑语录**，保存即生效，无需重启\n- 右键菜单 → **关闭宠物**\n\n---\n\n## 📦 安装\n\n### 下载 Release（推荐）\n\n前往项目主页下载对应版本的 `.zip`，解压后双击 `fengge-pet.app` 即可。\n\n| 文件 | 适用机型 |\n|---|---|\n| `fengge-pet-1.1.0-arm64-mac.zip` | Apple Silicon（M1 / M2 / M3 / M4） |\n| `fengge-pet-1.1.0-mac.zip` | Intel 芯片 |\n\n> **⚠️ 首次打开提示\"无法验证开发者\"？**\n>\n> 在终端执行以下命令后即可正常打开（每台 Mac 只需执行一次）：\n>\n> ```bash\n> xattr -cr fengge-pet.app\n> ```\n>\n\n### 本地运行\n\n```bash\ngit clone https://github.com/shaozhengmao/fengge-pet.git\ncd fengge-pet\nnpm install\nnpm start\n```\n\n---\n\n## 🖥️ 系统要求\n\n- macOS（Apple Silicon / Intel 均支持）\n- Node.js 18+（仅本地运行时需要）",
+    "created_at": "2026-05-30T05:57:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10135"
+  },
+  {
+    "id": 10134,
+    "title": "【开源自荐】TerAgent：一个编译器风格的AI Agent中间件",
+    "content": "AI Agent 是 2026 年的技术热点之一。当前的 Agent 框架普遍存在两个问题：一是每换一个模型就要重写一套 Prompt，二是安全机制往往后置。\n\nTerAgent 是我发布的一个开源库，核心定位是为 AI Agent 提供类似编译器的中间层。用一句话概括：用户只需要定义一个 5 字段的数据结构（TAPRequest），剩下的 Compiler 负责把它转成模型需要的 Prompt 格式，Adapter 负责发 HTTP 请求并收响应。\n\n\n**一、TAP IR**\n\nTAP 全称 TerAgent Protocol，定位是内存中的中间表示（IR），类似 LLVM IR。它只包含 5 个字段：meta（元信息）、context（上下文）、instruction（核心指令）、constraints（硬约束）、output_format_hint（输出提示）。描述的是“你想让 AI 做什么”，但不关心“怎么组织成 Prompt”。\n\nTAPRequest → Compiler → CompiledPrompt → Adapter → Model API，中间经过编译和发送两层解耦。\n\n\n**二、Compiler / Adapter 正交解耦**\n\n这是项目的核心设计。Compiler 管编译策略（例如 GLM 近因效应 / Claude XML / DeepSeek 极简），Adapter 管 HTTP 协议（OpenAI 兼容 / Anthropic 原生 / Mock）。\n\n4 个 Compiler 乘 3 个 Adapter，一共 12 种组合，零额外代码。新增一个 Compiler 只需要加一个文件一行注册，Adapter 同理。这个扩展能力在有多模型需求的场景下很实用。\n\n\n**三、安全与可靠性模块**\n\nAI 在幻觉状态下可能执行危险操作（例如说清理日志却执行了 rm -rf）。TerAgent 内置了多个防御机制：\n\n- 7 层权限解析：用户级规则优先级最高（100），系统级最低，同优先级下默认拒绝优先于允许。\n- 3 级沙箱隔离：依次为进程级（黑名单 + rlimit）、Docker 容器、Firecracker 微型 VM。\n- 2PC 原子文件写入：先验证写后读契约，再写临时文件，最后原子替换，失败则自动回滚并备份。\n- 4 种熔断器：Token 预算监控、连续失败冷却、延迟滚动告警、进度停滞检测。\n\nGLM-5.1 在独立评估中称其“本质是一个防 AI 自毁系统”。\n\n\n**四、开发方式**\n\nTerAgent 的设计是与 AI 协作完成的，代码不是手写的。整体流程是：设计（我与 AI 讨论）→ 规划（AI 拆解任务）→ 编码（AI 逐模块生成）→ 审查（AI 进行语法/依赖/可运行性检查），我在每一关做决策。\n\nGLM-5.1 对项目做了独立评估，给出综合评分 7.4/10（架构设计 9.0，防幻觉安全 7.5，工程规范 6.5）。评估报告存在仓库的 docs 目录下。\n\n\n**五、技术指标**\n\n- 源码约 22,207 行 Python（14 个子模块，83 个源文件）\n- 测试约 15,071 行（44 个测试文件），测试/源码比 67.9%\n- 0% 空壳（714 个函数全部实现）\n- 版本 0.0.1 Alpha，许可证 Apache 2.0\n\n\n**六、相关链接**\n\n- GitHub: http://github.com/TerAgent-Project/TerAgent\n- PyPI: `pip install teragent`\n- 开发者（GitHub）: @Kiruvex",
+    "created_at": "2026-05-30T05:03:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10134"
+  },
+  {
+    "id": 10133,
+    "title": "【开源推荐】AtomMQTT：Rust语言实现的轻量级高性能MQtt服务器",
+    "content": "AtomMQTT：Rust语言实现的轻量级高性能MQtt服务器\n\n**1. 项目地址 :**\n\n[ https://gitcode.com/qq8864/atomMqtt]( https://gitcode.com/qq8864/atomMqtt)\n\n**2. 它解决了什么问题？**\n\n目前流行的一些开源MQTT代理服务器如mosquitto,EMQX或rabbitMQ,要么功能简单，连Web管理界面都没有。要么功能复杂，安装部署繁琐。\n\n而AtomMQTT是一个使用Rust语言开发的轻量级高性能的MQTT服务器，充分利用了Rust语言的优势，单机支持1W+的并发连接，且通信延时在毫秒级别。且自带Web管理客户端，部署超级简单，一个二进制可执行文件+config.toml配置文件总共不到10M大小的体积。\n\n**3.核心功能与特性**\n\n\n- ✅ **SQLite 持久化存储** — 会话、订阅、保留消息、遗嘱消息自动持久化到本地数据库，重启后自动恢复\n- ✅ **双协议支持** — 同时支持 MQTT 3.1.1 和 MQTT 5.0\n- ✅ **主题订阅树** — 基于 Trie 树的高效主题匹配（支持 `+` / `#` 通配符）\n- ✅ **消息路由** — PUBLISH 消息自动转发给所有匹配订阅者\n- ✅ **QoS 0/1/2** — 完整的服务质量支持\n- ✅ **保留消息** — 支持 Retained Message 存储与分发\n- ✅ **遗嘱消息** — 支持 Will Message（异常断开时自动发布）\n- ✅ **Web 管理界面** — 内置 Actix-Web 仪表盘，实时监控 Broker 指标\n- ✅ **WebSocket 订阅** — 浏览器可直接订阅 MQTT 主题，接收实时消息\n- ✅ **REST API** — 提供完整的 HTTP API 用于发布消息、管理客户端\n- ✅ **匿名/文件认证** — 支持无认证和基于文件的密码认证\n- ✅ **ACL Topic 访问控制** — 基于文件的 publish/subscribe/readwrite 权限管理\n- ✅ **Web 管理界面认证** — HTTP Basic Auth + JSON 登录页面双重认证\n- ✅ **CLI 客户端** — 内置 `mqtt-client` 工具，支持发布/订阅/交互式 Shell\n- ✅ **性能指标** — 内置计数器（连接数、消息数、字节数、包数等）\n\n<img width=\"1355\" height=\"705\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7464a12d-9462-45b3-99bc-07371121694e\" />\n\n**4.推荐理由**\n\nAtomMQTT Broker 是一个纯 Rust 实现的 MQTT 3.1.1/5.0 消息代理，核心目标是在高性能与数据安全之间取得平衡。\n\n整个软件只有一个mqtt-web.exe二进制可执行程序，小巧但性能强大。所有消息路由、订阅匹配在内存中完成，无锁竞争，零拷贝与异步 I/O — 利用 Tokio 运行时和 BytesMut 实现高效网络处理。\n\n内存安全\n\n整个项目使用 #![deny(unsafe_code)] 确保零 unsafe Rust 代码。这意味着所有内存安全由 Rust 编译器保证——没有空指针解引用、缓冲区溢出或释放后使用。\n\n单元测试\n\n为了保证功能的稳定性，本项目已做了充分的单元测试。\n项目根目录 test/ 下提供了基于 Python 的集成测试脚本，覆盖认证、发布/订阅、保留消息、ACL 权限和离线消息队列等核心功能。\n\n在当下物联网时代，能有一个比肩mosquitto但功能更丰富的轻量级MQTT Broker,将极大的方便MQTT物联网设备的开发调试和使用。\n\n\n\n",
+    "created_at": "2026-05-30T03:31:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10133"
+  },
+  {
     "id": 10132,
     "title": "【开源自荐】awesome claude workflows：专收\"真在生产里跑过\"的 Claude Code Dynamic Workflows 精选目录",
     "content": "仓库：https://github.com/lxcong/awesome-claude-workflows\n\n## 概况\n\n**Awesome Claude Workflows** 是一个社区精选目录，专门收录基于 Claude Code **Dynamic Workflows** 的、真在生产里跑过的多 Agent 工作流。\n\nDynamic Workflows 是 Claude Code 在 2026-05-28 随 Claude Opus 4.8 一起发布的新功能（目前 research preview，需 Claude Code v2.1.154+）：用一段 JavaScript 脚本，把几十到上百个子 Agent 按确定性的控制流（并行 fan-out、顺序、循环、条件）编排成一条流水线，脚本由 Claude 自动写好、在后台运行，最后只把最终结果交回对话。脚本存进 `~/.claude/workflows/` 就自动变成一个 slash command——不用写 plugin、不用 manifest、不用注册。\n\n我的判断是：这之后会涌现一大批\"基于 Agent 之间互相协调\"的大规模工作流——研究合成、代码审查、500 文件迁移、bug 扫荡、风控分析……每一个都值得被复用，而不是各自从零再搭一遍。所以开了这个目录把它们收起来。\n\n## 旗舰范例：Trading Agents\n\n目录里第一个完整范例叫 Trading Agents。在 Claude Code 里敲一条命令：\n\n    /trading-agents 美光科技\n\n接下来：一组分析师 Agent 并行铺开各自取数 → 结果汇总后进入一场看多/看空的多轮 Debate → 再交给一个评审 Panel 独立打分 → 按风险分档给出仓位层面的建议。全程一条命令触发。（仅研究用途，不构成投资建议。）\n\n它是\"用 Dynamic Workflows 做 Agent 间协调\"的一个具体样例：并行分析、顺序辩论、独立评审这种结构，用 `parallel`（并行、等齐）和 `pipeline`（流水、不互相等）这两个原语表达起来很顺手；确定性控制流意味着流程可复现；还能结构化输出、断点续跑（改一处只重跑那一处，省 token）。\n\n<img width=\"1200\" height=\"675\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a67c4c3-de19-4813-b71e-551fc838d406\" />\n\n<img width=\"1283\" height=\"358\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b2dabb7c-84e7-4e88-ac62-567ebe2987bd\" />\n\n\n## 怎么用\n\n仓库 README 里有安装说明，把工作流脚本放到 `~/.claude/workflows/` 后即成 `/<name>` 命令，本地一条命令就能跑。\n\n## 现状\n\n还很早：完整旗舰就 Trading Agents 一个，其他分类基本还空着。我更想用\"真有人在用的\"工作流慢慢把它填厚，所以也欢迎来提 PR——你如果做过/在跑某个多 Agent 工作流，哪怕只是偶尔用一次的，都欢迎收录。\n\nMIT 协议，完全免费。欢迎拍砖 ⭐",
@@ -792,37 +824,5 @@
     "created_at": "2026-05-22T09:13:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10034"
-  },
-  {
-    "id": 10033,
-    "title": "【开源自荐】CodeRAG：让 AI 真正读懂你的大规模代码仓库",
-    "content": "CodeRAG 是一个基于 **Python、Tree-sitter、ChromaDB 与 HuggingFace Transformers** 构建的本地代码库 RAG（检索增强生成）工具，专为**大规模代码仓库**设计。它通过 MCP 协议对外暴露服务，让 Claude Code、OpenCode 等 AI 编程助手获得代码库级别的上下文理解能力，即使面对数十万行代码的项目也不在话下，全程代码不出本机。\n\n项目地址：https://github.com/NothingToSay0031/code-rag\n\n## 它解决什么问题？\n\n使用 AI 编程助手开发项目时，项目规模一旦大起来，问题就冒出来了：\n\n- 几十万行代码、上千个文件，问 AI \"这个项目的认证逻辑在哪\"，它不知道，因为模型没见过你的代码\n- 用自研框架或引擎开发，AI 完全不懂框架的 API 和约定，只能靠你自己翻源码\n- 每次提需求都得手动从项目里复制粘贴一大段代码作为上下文，效率极低——大项目尤其难受\n- 模型不清楚团队内部的编码约定和架构模式，生成的代码总对不上\n- 私有仓库、涉密项目，不可能把代码贴到云端 AI——这条路直接堵死\n\n根本原因不是模型能力不够，而是**模型缺少足够的代码库上下文**。项目越大，这个问题越严重。\n\nCodeRAG 的思路很简单：先把你的代码库\"读一遍\"建好索引，之后 AI 每次需要上下文时自动检索最相关的代码片段注入对话。无论仓库多大——几十万行代码、上千个文件——检索都在毫秒级完成。整个过程全部在本地完成，索引、推理、检索都在本机运行。\n\n## 主要特性\n\n- **一条命令开箱即用**：`code-rag init /path/to/repo` 自动完成全量索引，同时在项目内生成 MCP 配置文件。AI Agent 打开该项目时自动激活 CodeRAG，无需额外配置。\n- **语义 + 关键词混合检索**：既支持\"这个项目怎么处理认证回调？\"这类自然语言语义搜索，也支持 `handleAuthCallback` 这样的精确符号搜索。通过 RRF 算法融合 BM25 和向量检索的排序结果，兼顾语义理解和精确匹配。\n- **AST 感知分块**：通过 Tree-sitter 解析代码，以函数、类、方法、结构体为单元分块，而不是按固定行数暴力切分。每个代码块语义完整，不会被拦腰截断。\n- **多档次嵌入模型可选**：默认使用 bge-small-en-v1.5，在质量和速度上得到不错的权衡。无 GPU 时可切换 potion-code-16M（256 维，~100MB 内存，纯 CPU），2 万文件 ~15 分钟完成索引。追求极致质量可选 Qwen3-Embedding。安装脚本自动检测 GPU 并升级 PyTorch 至 CUDA 版本。\n- **增量更新**：基于文件内容 SHA-256 哈希追踪变更。`code-rag init` 是幂等的——未修改的文件直接跳过，只重建有变化的部分。改一行代码不会重建整个仓库。\n- **零配置启动**：大多数仓库不需要任何配置文件。`--include` / `--exclude` 选项和 `.coderagfilter` 文件用于需要自定义过滤规则的场景。\n\n## MCP 接口设计\n\nCodeRAG 不是让用户手动执行搜索命令，而是以 MCP Tools 的形式对外暴露服务，AI Agent 在需要时自动调用：\n\n| Tool | 用途 |\n|------|------|\n| `search_code` | 语义/关键词混合搜索代码，返回文件路径 + 行号 + 代码内容 |\n| `search_docs` | 搜索项目中的 Markdown、RST 等文档 |\n| `get_file_symbols` | 获取指定文件中所有符号（函数、类、变量等）的索引信息 |\n| `get_repo_structure` | 返回仓库目录树及各模块的简要描述 |\n| `get_symbol_info` | 查询某个符号的定义位置、引用位置和相关代码块 |\n| `read_code` | 按行号范围读取文件内容，用于展开搜索结果、查看更多上下文 |\n| `list_indices` | 列出所有已索引的代码库，支持多仓库场景 |\n\n每个返回结果都附带文件路径、行号范围和上下文窗口，方便 AI 准确引用出处。\n\n## 适合谁使用？\n\nCodeRAG 比较适合这些场景：\n\n- 接手大型代码库的开发者——几十万行代码、上百个模块，需要快速理解项目架构与约定\n- 维护超大规模自研框架/引擎的团队（如自研游戏引擎、自研中间件），框架文档少，AI 无法从公开数据学到相关知识\n- 对代码安全有严格要求的团队（金融、政务、军工等），代码不允许上传到第三方云端服务\n- 维护遗留代码库的开发者，代码库历史悠久，隐含大量领域知识，但几乎没有文档\n- 希望在 Claude Code、OpenCode 等工具中获得更精准的代码库上下文，减少手动贴代码的开发者\n- 基于AST获取代码结构较为困难/时间较长，比如UE5源码。\n\n## 安装方式\n\n**Windows（一行命令）：**\n\n```powershell\nirm https://raw.githubusercontent.com/NothingToSay0031/code-rag/master/install.ps1 | iex\n```\n\n**macOS / Linux：**\n\n```bash\ncurl -sSfL https://raw.githubusercontent.com/NothingToSay0031/code-rag/master/install.sh | bash\n```\n\n安装脚本自动检测 GPU 并将 PyTorch 升级为 CUDA 版本。\n\n## 技术栈\n\n- 检索与索引：Python + Tree-sitter + ChromaDB\n- 嵌入推理：HuggingFace Transformers / Optimum + Qwen3 / BGE / Potion 系列模型\n- MCP 服务框架：FastMCP\n- 关键词检索：BM25（内置实现）\n- 引用查找：ripgrep\n- CLI 入口：一行命令，底层由 uv 管理 Python 环境，自动安装依赖\n- 语言支持：Python、JavaScript、TypeScript (含 TSX)、C、C++、Java、C#、Rust、Go、Lua，以及 GLSL/HLSL/Metal 等着色器语言；同时支持 Markdown、RST、纯文本文档和 JSON/YAML/TOML 等配置文件\n- 跨平台：Windows、macOS、Linux\n- 许可证：MIT License\n\n## 模型选择\n\n| 模型 | 维度 | 速度 | 质量 | 硬件要求 | 内存占用 |\n|------|------|------|------|----------|----------|\n| **Qwen3-Embedding-0.6B** | 1024 | ★☆☆ | ★★★ | 推荐 CUDA GPU | ~2 GB |\n| BAAI/bge-small-en-v1.5（默认） | 384 | ★★☆ | ★★☆ | 自动检测 | ~1.3 GB |\n\n项目地址：https://github.com/NothingToSay0031/code-rag\n\n欢迎大家试用，也欢迎反馈和贡献。\n\n---\n\n*本项目参考了 [NVIDIA 与 EA 在大规模 C++ 代码库上的 RAG 实践经验](https://www.youtube.com/watch?v=jFFOC3UZTTk)，在其思路上进行了通用化设计，使任意语言、任意框架的仓库都能受益。*\n",
-    "created_at": "2026-05-22T08:51:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10033"
-  },
-  {
-    "id": 10032,
-    "title": "【工具自荐】AI Coding Pricing：AI 编程工具价格与限制对比站",
-    "content": "AI Coding Pricing：AI 编程工具价格与限制对比站\n\n链接：https://aicodingpricing.com/?utm_source=ruanyf_weekly&utm_medium=newsletter&utm_campaign=day0_cold_start\n\n简介：这是一个面向开发者的 AI 编程工具价格对比站，整理 Claude Code、OpenAI Codex、Cursor、GitHub Copilot 等工具的订阅价格、使用限制、套餐差异和价格变更，并提供一个成本计算器，帮助开发者在升级或切换工具前估算真实成本。\n\n推荐理由：AI 编程工具价格和限额变化很快，官方文档分散，开发者经常需要在多个页面之间对比。这个站把价格、限制、对比页和 changelog 放到一个入口，适合作为开发者选型前的快速参考。",
-    "created_at": "2026-05-22T06:04:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10032"
-  },
-  {
-    "id": 10031,
-    "title": "【开源自荐】轻量级Skills管理软件",
-    "content": "github：https://github.com/im-fan/skill-manage\nREADME：https://github.com/im-fan/skill-manage/blob/main/README-zh.md\n\n轻量级Agent Skills管理，提供可视化页面，支持单Skill、Skills目录维护、Skills扫描、Skills下发、Agent Skills管理能力\n方便快捷，使用简单，数据完全本地，支持npm快速安装维护\n\n<img width=\"2010\" height=\"1088\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d3e9062b-16ca-4e98-b530-89332ec949b6\" />\n",
-    "created_at": "2026-05-22T05:53:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10031"
-  },
-  {
-    "id": 10030,
-    "title": "【网站自荐】Subnautica2Tadpole：一个面向 Subnautica 2 玩家快速查 Tadpole 路线的轻量指南",
-    "content": "大家好，推荐一个我做的英文小站：\n\n[Subnautica 2 Tadpole guide](https://subnautica2tadpole.com/?utm_source=github_ruanyf_weekly&utm_medium=backlink&utm_campaign=subnautica2tadpole_cold_start_202605&utm_content=issue_self_recommendation)\n\n这是一个面向《Subnautica 2》Early Access 玩家做的 fan-made guide utility，主要解决玩家搜索 `subnautica 2 tadpole`、`tadpole fragments`、`tadpole upgrades` 之后，不想读很长攻略、只想快速知道 Tadpole 解锁路线和相关步骤的问题。\n\n主要特点：\n\n- 首屏先给 quick answer，不把玩家直接丢进长文章。\n- 用 checklist 承接解锁、碎片、升级、Tadpole Pens 等任务步骤。\n- 保留 spoiler-safe 的展示方式，避免一上来暴露所有细节。\n- 不做完整 interactive map，不复制官方素材或竞品点位库，只做 Tadpole-first 的轻量路线整理。\n- 技术上是 Next.js 15 + TypeScript + Tailwind + Cloudflare Workers 的静态内容工具。\n\n这个站点是非官方 fan-made project，不隶属于 Unknown Worlds、Krafton 或 Subnautica 官方；因为游戏还在 Early Access，内容也会保持 conservative wording 和后续更新。\n\n如果适合周刊的“工具/网站/独立开发实验”栏目，欢迎收录。\n\n![Subnautica2Tadpole preview](https://subnautica2tadpole.com/og-image.png)",
-    "created_at": "2026-05-22T05:15:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10030"
   }
 ]
