@@ -1,5 +1,93 @@
 [
   {
+    "id": 10162,
+    "title": "【开源自荐】乐高式组装 Harness , 可视化学习Harness，自定义tool、可选特性（记忆系统、上下文卸载......）",
+    "content": "[llm-space](https://github.com/mx2013713828/llm-space)\n\n推荐一下我的项目，主要是在学习agent和harness时，遇到太多不明觉厉的名词，什么context、memory、prompt、tool-use、re-act......他们到底是什么？有什么作用？在这个项目中可以自定义组装harness，你可以实验新的特性、工具，也可以对比是否勾选特性带来的区别，体验不同Harness下相同prompt带来的完全不同的结果。\n\n<img width=\"1080\" height=\"608\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b032c427-c937-40bb-a1cc-0097cb8d991d\" />",
+    "created_at": "2026-06-01T10:57:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10162"
+  },
+  {
+    "id": 10161,
+    "title": "分享一个自己做的AI网文写作开源框架（500 章实战提炼）",
+    "content": "用ai写网文，五百多章。一本废了，一本在写中。\n\n废掉的那本不是因为故事不好——纯粹是被 AI 味和中段疲软拖死的。回头看的时候发现光 \"不是 X 而是 Y\" 这个句式就出现了 663 次。读者说 \"像 AI 写的\"，我当时还不服——现在回头看，人家说得对。\n\n那本书死了之后，我把每次审稿发现的问题、每次改文总结的规则、每个平台的差异认知，全部沉淀成了一套方法论。不只是 \"写得更好\" 的文学建议——是能执行的、有硬指标的、可重复使用的写作流程。\n\n**GitHub 地址：https://github.com/LAY-lgtm/novel-writing-framework**\n\n---\n\n## 这套东西到底说了什么\n\n### 1. 番茄和起点是两种完全不同的写作\n\n这不是 \"番茄节奏更快\" 这种废话。是具体到：\n\n| 维度 | 番茄 | 起点 |\n|------|------|------|\n| 读者判断一本书的时间 | 3 秒 | 前 20-50 章 |\n| 爽点密度 | 3 章一爽 | 可以 10 章铺垫 |\n| 群像 | 主角视角为主 | 配角必须有独立高光 |\n| 读者考据能力 | 不会考据 | 会截图存档挑逻辑漏洞 |\n| 情感模式 | 撕裂式爆发 | 安静感动也可以 |\n| 变现方式 | 广告分成 + 全勤 | 章节订阅 |\n\n**如果你用写起点的方式去写番茄——开篇前 300 字没有物理事件，开头三章在铺垫世界观——读者 3 秒划走。验证期 3 天没数据直接断流。**\n\n反过来，如果你用写番茄的方式去写起点——全程主角碾压、配角全是工具人、世界观过于简化——起点读者会在养肥期默默弃书，你永远不知道他们什么时候走的。\n\n### 2. \"不是 X 而是 Y\" 是 AI 味的头号标志\n\n这个句式我统计了：AI 生成的文章里，\"不是 X 而是 Y\" 的自然出现频率远高于人类写作。\n\n我的做法：\n- 每写完 3 章 grep 扫描一次\n- 超过 2 次 / 章立刻改\n- 对话中的 \"不是\" 保留（口语自然），叙事中的砍\n\n从 663 次洗到 31 次的代价太大了——初稿控制住的成本是后期清洗的十分之一。\n\n### 3. 配角工具人的检测方法\n\n起点读者追群像文的核心心理是 \"这群人在一起才无敌\"。如果只有主角一个人在发光，配角就变成了跟班。\n\n我的检测方法：\n- 每 10 章查一次：每个配角有没有独立的、不依附主角的高光瞬间？\n- 有没有配角连续 10 章以上只是 \"站在那里\"？\n- 每个主要配角在每 20 章里有没有至少一个 \"和你无关但我想知道\" 的独立故事碎片？\n\n如果删掉一个配角这 10 章没有任何不同——这个配角没有存在的必要。\n\n### 4. 三章一轮制度\n\n以前我 10 章一查。问题发现太晚。\n\n现在：写 3 章 → 停笔 → 技术自检（CJK/破折号 / 动词 / 钩子）→ 平台质量自检 → AI 指纹扫描 → 不达标当场修。\n\n663 次 \"不是 X 是 Y\" 如果每 3 章扫一次，早就发现了。\n\n---\n\n## 项目包含什么\n\n```\n├── writing-novel.md      ← 基础层：14 阶段通用流程（500+ 章凝练）\n├── piqie-writing.md      ← 番茄专项 + 变现策略 + 算法适配\n├── qidian-writing.md     ← 起点专项 + 付费设计 + 群像规则\n├── zhi-dou-writing.md    ← 智斗类型专项\n└── novel-improver.md     ← 双平台改良诊断\n```\n\n193KB 文檔，MIT 开源。\n\n目前主要作者的实战经验集中在东方玄幻品类，其他品类（都市、历史、悬疑）的实战数据还比较少。如果论坛里有写其他品类的朋友，欢迎贡献。\n\n---\n\n## 论坛里如果有感兴趣的朋友\n\n- 觉得有什么用得上的部分，直接拿去用\n- 觉得哪些规则不对或者不适用于你的品类，提 Issue 或者直接回帖讨论\n- 有其他平台（七猫、纵横等）经验的朋友，欢迎贡献平台适配\n\n**链接：https://github.com/LAY-lgtm/novel-writing-framework**",
+    "created_at": "2026-06-01T10:02:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10161"
+  },
+  {
+    "id": 10160,
+    "title": "【开源自荐】X-POSE：赛博算命，AI 把你的推特扒得底裤都不剩",
+    "content": "项目简介：\n有时候，不是你想看清自己。\n是 AI 把你扒得太彻底了。\n\n我做了一个工具：X-POSE / 推特人格透视。\n它不会真去人肉你，但可以在几十秒内，把你（或任何人）的推特公开信息，变成一份犀利到让人脚趾抠地的“人格诊断书” + 无情毒舌吐槽。\n\n它能自动抓取头像、简介和近期推文，丢给 DeepSeek V4 Pro，生成 15 张报告卡片：关于你、毒舌吐槽、优点、缺点、感情生活、财运、健康、别人对你的秘密看法……还能一键下载高清截图，直接分享到 X。\n\n不用下载，不用配环境，浏览器打开就能玩。\n你只需要输入一个推特 ID，剩下的全自动。\n\n适用场景包括但不限于：\n\n朋友自恋到膨胀，急需 AI 帮忙“物理清醒”\n\n暗恋对象不敢搭话，先让 AI 替你摸摸底\n\n群聊冷场时，甩一张群友的毒舌报告，瞬间炸群\n\n会议摸鱼，顺手生成自己的报告发朋友圈\n\n推特运营者自检人设，看看 AI 眼里你是什么形象\n\n刚关注的博主，到底是宝藏还是“乐子人”，先测再说\n\n你负责输入 ID，AI 负责精准扎心。\n你负责截图，它负责金句。\n\n它不是真正的算命，而是一个有梗、有毒、懂分寸的社交玩具。\n娱乐为主，破防自理。\n\n运行截图：\n\n<img width=\"1341\" height=\"744\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ccaa10f4-3a14-4888-b7db-cc03d047a756\" />\n\n<img width=\"2054\" height=\"6104\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c1dcdb1e-fbd9-4063-a8bb-ddaabccb5ad6\" />\n\n项目地址：https://github.com/gokuscraper/x-pose\n在线体验：xpose7.streamlit.app",
+    "created_at": "2026-06-01T09:49:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10160"
+  },
+  {
+    "id": 10159,
+    "title": "【开源自荐】drift v0.5.0 发布：协议 v3 并发改造，路径补全 + 传输安全加固",
+    "content": "https://youtu.be/Ow0yK0ykFxY\n\n**一句话**：\n> 给开发者准备的端到端加密文件传输工具 —— 通过 WebSocket 在任意两台机器间安全复制文件和文件夹，不依赖云服务，不配置 SSH，内置双栏 Web 文件管理器，v0.5.0 升级协议到 v3 支持并发请求，新增路径自动补全与 `/api/browse-remote` 远程浏览接口，并进一步收紧路径穿越防护。\n\n**项目地址**：https://github.com/aeroxy/drift\n\n> 上一版自荐（drift v0.4.0）：[ruanyf/weekly#9890](https://github.com/ruanyf/weekly/issues/9890)\n\n---\n\n## 亮点\n\n### 1. 协议升级到 v3：真正的并发控制消息\n\nWebSocket 控制消息引入 `request_id` 关联字段，`Browse`、`Info`、`Ping`、`Error` 等请求/响应一一对应，**同一连接上多个并发请求不再串扰**。V2 多文件传输继续保留，新增的关联机制让浏览、远程信息查询、心跳都能并行进行。\n\n- `BrowseRequest/BrowseResponse`、`InfoRequest/InfoResponse`、`Ping/Pong`、`Error` 均携带 `request_id`。\n- 后端用 `tokio::sync::oneshot` 等待带 ID 的响应通道，超时自动清理，避免泄漏。\n- 旧版本（pre-v3）节点走 FIFO 回退队列，**握手时自动协商协议版本，完全向后兼容**。\n\n### 2. 新增 `/api/browse-remote` REST 接口\n\n远程目录拉取现在是一条干净的 REST 端点，不再依赖共享的 WebSocket 状态：\n\n- `GET /api/browse-remote?path=foo/bar` 直接返回远端目录条目，路径错误、连接未建立、远端超时分别返回 `400 / 502 / 504`。\n- 前端在地址栏补全时优先调用该接口，避免触发 WebSocket 副作用、污染远端面板的浏览上下文。\n- 远端连接使用唯一 `instance_id`，**重连/超时清理只影响旧实例，不会误伤新建立的连接**。\n\n### 3. 路径自动补全体验全面重做\n\n- 路径解析逻辑抽取到 `frontend/src/utils/pathAutocomplete.ts`，统一处理 `getRootRelativePath`、`resolveSuggestionBrowsePath` 等工具函数，根目录内外行为一致。\n- `PathBar` 组件：`Tab` 键在有建议时循环选中、在无建议时直接触发 `BrowseRequest` 拉取远端目录；激活项自动滚动到可视区域。\n- 远端补全严格限制在远端根目录下，越界路径直接拒绝，不会逃逸到本机。\n- 路径穿越防护在 UI 与 REST 两层都生效，恶意输入在到达后端前就被拦截。\n\n### 4. 传输安全加固\n\n- **拒绝绝对路径与父目录遍历**：`destination_path` 现在显式拦截 `/tmp/...` 这类绝对路径，与原有的 `..` 越界检查并列；Push 和 Pull 两条路径都覆盖。\n- **`.drift` 暂存目录落到目标目录下**：原逻辑把临时目录建在服务根目录，目标目录只读时整个传输会失败；现在暂存在 `root_dir/<destination_path>/.drift`，**即使服务根目录只读也能完成传输**。\n- **TransferError 全链路传播**：远端清理/解压失败时，`TransferError` 会带着正确的 ID 一路回到浏览器面板，UI 能展示真实失败原因而不是一句\"传输失败\"。\n- **文件收尾更稳**：分块写入用 `.part` 临时文件，传输完成原子重命名；解压失败会清理残留的 `.drift` 暂存目录，**不会留下半成品**。\n\n### 5. 文件列表体验优化（v0.4.1 起）\n\n- **列排序**：点击 `名称 / 大小 / 修改时间` 列头即可排序，再次点击切换升降序，**目录始终置顶**。\n- **列宽可调**：鼠标悬停在 `大小 / 日期` 列之间的分隔线上，拖拽即可调整宽度，带最小/最大约束保证布局可用。\n- 后端排序策略保留为兜底（目录优先 + 字母序），前端在此之上做客户端重排，体验更接近桌面文件管理器。\n\n---\n\n## 典型场景\n\n1. **同事间快速分享大文件**  \n   A：`drift serve --port 8000`  \n   B：`drift serve --port 9000 --target 192.168.1.5:8000`  \n   浏览器里选中文件 → 点\"复制\"，无需 U 盘、无需上传第三方。\n\n2. **从远程服务器取日志或模型权重**  \n   `drift pull --target 10.0.0.1:8000 checkpoint.pt`  \n   不用 scp，不用输入 IP 和路径，脚本化非常方便。\n\n3. **AI 编程助手交换工件**  \n   在 agent 流程里用 `drift send` 发出代码/CSV/日志，下一节点用 `drift pull` 取回，全程加密，一条命令即走。\n\n4. **跨云 GPU 平台搬运大文件**  \n   WebSocket 走 TCP，**在只放行 80/443 的严格防火墙下也能用**，比 SCP/rsync/magic-wormhole 都更省心。\n\n---\n\n## 安装\n\n```bash\n# Homebrew (macOS / Linux)\nbrew install aeroxy/tap/drift\n\n# 源码编译（需 Rust 1.82+ 和 bun）\ngit clone https://github.com/aeroxy/drift.git\ncd drift\ncargo build --release\n```\n\n**唯一前提**：确保两台机器网络互通（可互相访问对方端口），或有配置端口穿透（如云服务商）。\n\n---\n\n## 完整 CLI\n\n```bash\n# 列出远程目录\ndrift ls --target 192.168.0.2:8000\n\n# 拉取远程文件/文件夹\ndrift pull --target 192.168.0.2:8000 report.pdf\n\n# 从本机直接发送（不启动 Web UI）\ndrift send --target 192.168.0.2:8000 video.mp4\n\n# 文件夹自动压缩传输\ndrift send --target 192.168.0.2:8000 ./my-project\n\n# 带密码\ndrift send --target 192.168.0.2:8000 data.zip --password secret\n```\n\n所有命令支持进度条，传输完成后进程退出，资源自动清理。\n\n---\n\n## 🔐 安全与协议细节\n\n- **密钥交换**：X25519 椭圆曲线 Diffie-Hellman，每次连接生成临时密钥对。\n- **密钥派生**：HKDF-SHA256 生成分别用于发送和接收的对称密钥。\n- **加密**：ChaCha20-Poly1305 认证加密，使用单调递增 nonce 计数防重放。\n- **密码验证**：HMAC 挑战-应答，密码错误直接终止握手。\n- **路径安全**：所有用户输入路径都先 `canonicalize` 再校验是否在 `root_dir` 内；`destination_path` 额外检查是否绝对或含 `..`，在接收端入口 (`start_transfer` / `start_transfer_with_notify`) 处强制拦截。\n- **文件流**：64KB 分块经加密二进制帧传输，接收方写入 `.part` 临时文件，传输完成重命名，保证原子性。\n- **协议 v3 (新)**：所有控制消息可选携带 `request_id` (UUID)，并发请求/响应可正确关联；与 v2 旧节点通过握手时的 `protocol_version` 协商 + FIFO 回退队列保持兼容。\n\n协议帧简明设计：\n\n| 帧类型 | 内容 | 作用 |\n|--------|------|------|\n| 加密文本帧 | JSON `ControlMessage` (v3 含 `request_id`) | 浏览目录、传输控制、并发请求关联 |\n| 加密二进制帧（V1） | `[UUID(16B)][offset(8B)][chunk]` | 单文件数据 |\n| 加密二进制帧（V2） | `[UUID(16B)][file_index(4B)][offset(8B)][chunk]` | 多文件复用同一传输 |\n\n---\n\n## 📌 开源地址\n\nhttps://github.com/aeroxy/drift\n\n欢迎 Star，更欢迎在实际环境中试用、反馈 issue。  \n让加密文件传输像 `curl` 一样随手可得。\n",
+    "created_at": "2026-06-01T09:29:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10159"
+  },
+  {
+    "id": 10158,
+    "title": "【开源自荐】CronBox：本地优先的 macOS 菜单栏定时任务工具",
+    "content": "## 项目简介\n\nCronBox 是一个本地优先的 macOS 菜单栏定时任务工具，用来管理和调度本机脚本，以及一些 coding agent 任务。\n\n它适合这类场景：有一些只适合在本机运行的小脚本，比如清理、同步、备份、数据抓取、日报生成等，放到服务器太重，手写 cron / launchd 又不方便查看状态和日志。\n\n## 核心特性\n\n- 支持 Bash、Python、Bun、PostgreSQL、Codex、Claude Code 等任务脚本。\n- 支持 cron 表达式、一次性任务、时区、JSON 参数和环境变量。\n- 菜单栏后台运行，主窗口关闭后仍可继续调度任务。\n- 提供运行历史、实时 stdout/stderr 日志和任务状态。\n- 内置 CLI，可以用 `cronbox add`、`cronbox schedules add`、`cronbox run` 管理任务。\n- 使用 Tauri 2 + Vue 3 + TypeScript + Rust 开发，MIT 开源。\n\n## 快速开始\n\n目前主要支持 macOS：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/xiaoxiunique/cronbox/main/scripts/install-macos.sh | bash\n```\n\n添加一个脚本目录并创建定时任务：\n\n```bash\ncronbox add ~/scripts\ncronbox schedules add ~/scripts/daily-report.sh \"0 9 * * *\" --tz Asia/Shanghai\n```\n\n## 链接\n\n- 官网：https://cronbox.dev\n- GitHub：https://github.com/xiaoxiunique/cronbox\n",
+    "created_at": "2026-06-01T08:59:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10158"
+  },
+  {
+    "id": 10157,
+    "title": "【开源自荐】MarkBook · 文集 —— 散落文本聚合阅读器（纯本地 / 零上传）",
+    "content": "仓库：https://github.com/rockbenben/markbook\n在线体验：https://markbook.newzone.top/\n\n把一个文件夹或一个大文件里散落的 .md / .txt，自动聚合 / 拆分成一本可连续阅读、全文搜索、导出 EPUB 的书；纯本地、零上传。\n\n说明：\n本地优先的「文本聚合阅读器」。丢给它一个装满 .md / .txt 的文件夹（几百章的网文、一堆笔记、拆散的技术文档都行），或一个大文件，它会自动识别章节与卷（中文「第X章 / 卷一」、Markdown 标题、一、 / 1.1 编号、Setext 等都认）、按自然顺序拼成一本连续滚动的书，自动生成目录；支持中文分词全文搜索、护眼 / 夜间背景、按卷导出 TXT / Markdown / HTML / EPUB / PDF，读起来像翻电子书。读到错字想改、要统一称谓、或清理下载网文里的乱码？还能就地编辑、全局查找替换、一键整理。\n\n两种用法：\n① 服务端版当本地工具跑；\n② 纯静态网页版（PWA，可安装离线）直接在浏览器里打开你的本地文件夹，全程零上传。React + TypeScript，MIT。\n\n<img width=\"2569\" height=\"1424\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92ac84c5-0f8f-459c-bc83-916888a9fe31\" />\n\n<img width=\"2128\" height=\"1414\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e00a573b-1a94-4023-bd99-a195b15d649c\" />\n\n",
+    "created_at": "2026-06-01T08:47:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10157"
+  },
+  {
+    "id": 10156,
+    "title": "【开源自荐】ArgusMind：让 AI 像安全工程师一样做代码审计，自动发现 Sink 并追踪调用链",
+    "content": "项目地址：https://github.com/pulseio76/ArgusMind\n在线预览：https://argusmind.vercel.app/\nArgusMind 是一个开源的 AI 代码安全审计 Agent。\n\n它不是把代码丢给大模型，然后问一句“这里有没有漏洞”。它会像安全工程师一样，先理解项目结构，再制定审计计划，寻找危险 Sink，最后顺着调用链往上追，尝试还原一条风险路径。\n\n我做这个项目，是因为现在很多 AI 工具都在帮人写代码，但很少有工具能像安全工程师一样系统地审代码。真实的代码审计不是一次问答，而是一连串判断：哪些模块值得看？哪些函数可能是危险点？参数是怎么传进来的？有没有可利用路径？\n\nArgusMind 尝试把这个过程拆成多个 Agent 协作完成：\n\n- ProjectInfo Agent：理解项目语言、框架、入口和目录结构。\n- Plan Agent：根据项目信息生成审计计划，而不是盲扫整个仓库。\n- SinkFinder Agent：寻找危险函数、敏感 API 和潜在风险点。\n- ChainAnalyzer Agent：沿着调用链追踪数据流，分析风险路径是否成立。\n\n和普通扫描器相比，我更希望 ArgusMind 做到的是：不只是告诉你“这里可能有问题”，而是告诉你“它是怎么一路追到这里的”。\n\n所以项目里引入了 Neo4j，把语言、风险类型、Sink、调用链、分析结果都保存成审计图谱。审计结束后，可以在 Web 控制台里查看任务进度、漏洞详情和调用链图。\n\n目前支持：\n\n- 多 Agent 协作式代码审计\n- 自动生成审计计划\n- 自动发现危险 Sink\n- 调用链追踪与风险路径分析\n- Neo4j 审计图谱\n- Web 控制台查看任务、漏洞和链路图\n- 任务暂停、恢复、取消\n- Docker 本地部署\n- 通过 LiteLLM 接入不同大模型\n\n技术栈：Python / FastAPI / Neo4j / PostgreSQL / LiteLLM / Ant Design Pro。\n\n\n欢迎对 AI 安全、代码审计、多 Agent、DevSecOps 感兴趣的同学试用和提建议。\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/01-login.png\" alt=\"登录页\" width=\"48%\" />\n  &nbsp;\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/02-dashboard.png\" alt=\"控制台\" width=\"48%\" />\n</p>\n<p align=\"center\"><sub>登录 · 控制台（Dashboard）</sub></p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/03-projects.png\" alt=\"项目管理\" width=\"48%\" />\n  &nbsp;\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/05-tasks.png\" alt=\"任务管理\" width=\"48%\" />\n</p>\n<p align=\"center\"><sub>项目管理 · 任务管理</sub></p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/06-task-detail-1.png\" alt=\"任务详情 - 代码审计链路图\" width=\"96%\" />\n</p>\n<p align=\"center\"><sub>任务详情 · 代码审计链路图</sub></p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/06-task-detail.png\" alt=\"任务详情\" width=\"48%\" />\n  &nbsp;\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/07-vulnerabilities.png\" alt=\"漏洞管理\" width=\"48%\" />\n</p>\n<p align=\"center\"><sub>任务详情 · 漏洞管理</sub></p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/08-vulnerability-detail.png\" alt=\"漏洞详情\" width=\"48%\" />\n  &nbsp;\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/08-vulnerability-detail-1.png\" alt=\"漏洞详情\" width=\"48%\" />\n</p>\n<p align=\"center\"><sub>漏洞详情（报告与代码审计链路图）</sub></p>",
+    "created_at": "2026-06-01T06:41:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10156"
+  },
+  {
+    "id": 10155,
+    "title": "【开源自荐】gojaja（过家家）：一个本地多 AI Agent 协作的 CLI 工具，支持跨 Cursor / Claude Code / Codex 等客户端调用",
+    "content": "## 项目简介\n\n大家好，恰逢六一，我开源了 **gojaja（过家家）** —— 一个本地 CLI，让多个 AI Agent 窗口（Cursor、Claude Code、Codex CLI 等）在同一个项目里分工协作。\n\n名字来自小朋友「过家家」：每人扮演一个角色，一起演同一场戏。这个工具做的事类似：给每个 Agent 分配 PM、后端、Tech Lead 等**角色**，用共享任务板、RFC 拍板机制和定向收件箱让它们「说人话、留记录」，而不是各聊各的、重复干活、决策对不上。\n\n**没有服务端，没有数据库。** 所有状态写在项目目录 `.gojaja/` 下的普通文件里，可以 `git diff`，数据完全在你本地。\n\n## 核心特性\n\n- **实时看板** — `gojaja watch` 打开浏览器 Dashboard，看各角色 session、任务板、RFC、活动流\n- **RFC + ACK 闸门** — 跨角色决策有选项、投票、ack/object，避免「聊完就忘」\n- **任务板** — Backlog → Done 全流程，依赖、评审人、归档\n- **report / worklog** — 角色间定向消息 + 团队广播，全部进审计流\n- **运行时注入** — 一键给 Cursor / Claude / Codex 等写入规则文件，再 `activate` 绑定窗口与角色\n\n## 适用场景\n\n- 一个项目里同时开 **2 个以上** Agent 窗口，需要分工协作而不是各干各的\n- 多角色头脑风暴\n- 圆桌讨论\n- 需要**留痕**的拍板决策\n- 想用「一个强模型带队 + 若干普通模型执行」的低成本协作玩法\n\n## 快速开始\n\n```bash\nnpm install -g gojaja\n# 或 pnpm add -g gojaja\n\ncd your-project\ngojaja watch    # 浏览器里初始化、建角色、激活 Agent\n```\n\n要求 Node.js 20+，目前支持 Linux / macOS。\n\n## 链接\n\n- 项目地址：https://github.com/smilezheng/gojaja\n- npm：https://www.npmjs.com/package/gojaja\n- 中文 README：https://github.com/smilezheng/gojaja/blob/main/README.zh-CN.md\n\nMIT 协议。如果觉得有点意思，欢迎 Star ⭐\n",
+    "created_at": "2026-06-01T06:27:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10155"
+  },
+  {
+    "id": 10154,
+    "title": "【工具自荐】Veme.ai —— 让创意秒变大片的 AI 视频生成神器！",
+    "content": "各位开发者和创作者朋友们，大家好！👋\n今天向大家自荐我们团队开发的产品 —— [Veme.ai](https://www.veme.ai/)。这是一个致力于降低视频创作门槛、释放无限想象力的 AI 视频生成平台。无论你是想将一句话变成电影级画面，还是让一张静止图片动起来，Veme.ai 都能帮你轻松实现！\n## 🌟 核心功能亮点\n🎬 Text-to-Video（文生视频）： 输入你的文字脑洞，AI 即可高精度还原场景，生成分镜头画卷。\n🖼️ Image-to-Video（图生视频）： 告别静止！一键让二次元立绘、风景照、角色图动起来，画面自然不崩坏。\n⚡ 画面一贯性（Consistency）： 采用先进的控制技术，支持角色与场景的特征参考，视频生成不套娃、不穿帮。\n🎨 多风格渲染： 从写实电影、3D 动漫到国风水墨，海量视觉风格随心切换。\n## 🛠️ 如何开始使用？\n第一步： 访问官方网站 [Veme.ai](https://www.veme.ai/) 注册登录。\n第二步： 在创作面板选择 \"Text to Video\" 或 \"Image to Video\" 模式。\n第三步： 输入你的 Prompt 提示词（或上传你的参考图），选择喜欢的画风与比例。\n第四步： 点击 \"Generate\"，静候数秒，即可下载专属于你的 AI 视频大片！\n\n欢迎大家前来体验并留下你们宝贵的 Issue 和建议！💬 让我们一起用 AI 拓宽创作的边界！✨",
+    "created_at": "2026-06-01T05:59:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10154"
+  },
+  {
+    "id": 10153,
+    "title": "【工具自荐】🚀 Adsmaker.ai：一句话生成广告视频，让广告创意不再受制作门槛限制",
+    "content": "\n大家好，最近做独立产品时发现，很多创业者、电商卖家和内容创作者都面临同一个问题：有产品、有创意，但没有时间和专业能力制作广告视频。\n因此我们开发了 [Adsmaker.ai](https://www.adsmaker.ai/) —— 一个专注于 AI 广告视频生成的平台，希望帮助用户用更低的成本、更快的速度完成广告素材制作。\n\n## ✨ 核心功能亮点\n🎬 AI 一键生成广告视频\n输入产品信息、营销文案或简单描述，AI即可自动生成完整广告视频，大幅减少剪辑时间。\n\n🤖 AI 数字人讲解\n支持生成 AI Talking Avatar，让数字人自动介绍产品、服务或品牌内容，无需真人出镜。\n\n🌍 多语言广告制作\n支持多种语言输出，适合跨境电商、海外推广和国际化营销场景。\n\n🎨 丰富的视频模板\n内置多种广告风格模板，可快速生成适用于 TikTok、YouTube Shorts、Instagram Reels 等平台的视频内容。\n\n⚡ 快速迭代创意\n相比传统剪辑流程，可以快速测试多个广告版本，帮助团队更高效地验证创意方向。\n\n## 🛠️ 如何使用\n1️⃣ 进入 Adsmaker.ai\n2️⃣ 输入产品描述、营销文案或上传素材\n3️⃣ 选择视频风格、数字人形象或广告模板\n4️⃣ 点击生成，等待 AI 自动完成制作\n5️⃣ 导出视频并发布到广告平台或社交媒体\n\n整个过程无需专业视频编辑经验，新手也能快速上手。\n\n## 💡 适合哪些人？\n独立开发者\nSaaS 创业团队\n电商卖家\n内容创作者\n营销人员\n广告代理机构\n\n如果你经常需要制作产品宣传视频、广告素材或社交媒体推广内容，希望这个工具能帮你节省一些时间。\n欢迎大家体验，也非常欢迎提出建议和反馈！🙏",
+    "created_at": "2026-06-01T05:55:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10153"
+  },
+  {
+    "id": 10152,
+    "title": "〖开源自荐〗shajara：把 JavaScript 异步工作放进 scope tree 的结构化并发库",
+    "content": "## 项目简介\n\n大家好，我做了 **shajara**，一个 JavaScript/TypeScript 的结构化并发库。\n\n它不是 Promise 的替代品，而是给 Promise、回调、定时器、`fetch(...)`、WebSocket 等异步工作补上一层生命周期结构。\n\n很多异步代码的问题不在“怎么 `await` 一个结果”，而在旁边那些被启动的工作没人说得清：\n\n- 它属于哪个请求、页面、面板或任务？\n- 父流程失败时，它该不该被取消？\n- 回调晚到时，还能不能写入结果？\n- 外部资源应该什么时候清理？\n\n> shajara 关注的不是把异步调用写短，而是让异步工作有明确归属和可预期的收尾。\n\n## 核心模型\n\nshajara 用 JavaScript generator function 写 routine，用 `yield*` 标出 routine 把控制交给运行时的位置。运行时会把工作放进一棵 **scope tree**：\n\n- `spawn(...)` 在当前 scope 里启动 process。\n- `branch(...)` 创建 child scope。\n- future、channel、resource、`AbortSignal` 等句柄，都由创建它们的 scope 拥有。\n- scope 收敛时，会先收拢自己拥有的 child scope、process 和句柄，再把最终结果交给等待方。\n\n## 一个例子\n\n```ts\nimport { run, sleep } from \"@shajara/host\";\nimport { branch, spawn } from \"@shajara/host/primitives\";\n\nconst result = await run(function* saveProfile() {\n  return yield* branch(function* saveProfileScope() {\n    yield* spawn(function* writeAuditTrail() {\n      yield* sleep(30);\n\n      return \"audit written\";\n    });\n\n    yield* sleep(5);\n\n    return \"profile saved\";\n  }); // writeAuditTrail 结束后，才得到 \"profile saved\"。\n});\n```\n\n这里 `saveProfileScope` 这段入口 routine 很快就返回了，但 `branch(...)` 等待的是整个 child scope，不只是这一个 function 的返回值。因为 `writeAuditTrail` 也是这个 child scope 拥有的 process，所以调用方会在它结束后才拿到 `\"profile saved\"`。这就是 shajara 文档里说的结构化收敛：调用方不用手动追踪 child scope 里每个后台任务，scope 会把自己拥有的工作收拢到一个结果边界。\n\n## 失败与取消\n\n失败和取消也沿着同一套结构处理。如果 child scope 中某个 process 抛错，这个 scope 会先取消自己拥有的其余工作，再让调用方在 `branch(...)` 的位置收到 `ScopeError`。如果某段后台工作失败后不应该影响同一个 scope 里的其他工作，就在这个 process 边界内把错误转换成普通结果，而不是等到外层 `wait(...)` 再补救。\n\n## 和现有异步代码的关系\n\n它和现有 Promise/回调代码的关系更像“把异步边界放回结构里”：\n\n- `until(...)` 把已有 Promise 带入 routine 控制流。\n- `all(...)` / `race(...)` 表达常见并发组合，其中 `race(...)` 会在返回胜出值前取消未胜出的 routine。\n- `completer(...)` 和 `feed(...)` 分别把回调的一次结果和连续事件桥接成 future/channel。\n- `abortSignal(...)` 把原生 `fetch(...)` 这类 API 的取消绑定到当前 scope。\n- `resource(...)` 让 WebSocket 等外部资源在就绪后继续附着到所属 scope，并在 scope 释放时运行清理逻辑。\n\n## 文档与演示\n\n项目文档站有中文和英文文档，不只是 API 列表。文档按 Guides、Topics、Concepts 三层组织：先教怎么把 Promise、scope、外部句柄放进 routine，再解释 future、channel、context、recovery，最后展开 scope tree、句柄归属和 scope 退出语义。站内还有 Flow Explorer，可以用流程图回放 single spawn、future 完成、scope 拥有的工作、fork/join、失败触发取消、恢复边界、有界 channel 等场景。\n\n## 链接\n\n- 项目地址：[github.com/iplaylf2/shajara](https://github.com/iplaylf2/shajara)\n- 文档地址：[iplaylf2.github.io/shajara](https://iplaylf2.github.io/shajara/)\n- NPM：[@shajara/host](https://www.npmjs.com/package/@shajara/host)\n",
+    "created_at": "2026-06-01T02:33:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10152"
+  },
+  {
     "id": 10151,
     "title": "【开源自荐】Cate：把编辑器、终端、浏览器和 AI 智能体放到一块无限画布上的桌面 IDE",
     "content": "项目地址：https://github.com/0-AI-UG/cate\n\n![Cate](https://raw.githubusercontent.com/0-AI-UG/cate/main/assets/demo.gif)\n\n大部分 IDE 把所有东西都塞进固定的标签页和分栏。Cate 换了个思路：给你一块可以无限缩放的画布，编辑器、终端、浏览器、文档、Git 面板和 AI 智能体都是画布上的节点，可以随意拖动、缩放、并排摆放，把一个任务相关的东西放在一起看。类似 Figma 或 Miro，但用来写代码。\n\n几个我觉得有意思的点：\n\n- 终端、浏览器、PDF 都能直接开在画布上，不用切窗口\n- 内置 AI 智能体面板，可以在画布上同时跑多个 Claude Code 线程，看它们并行干活\n- 面板可以停靠成标签栈，也能拆成独立窗口\n- 一套主题同时控制应用界面、终端配色和编辑器语法高亮\n\n技术栈是 Electron、React、TypeScript。MIT 协议，支持 macOS、Windows、Linux，有简体中文界面和 README。\n",
@@ -20,7 +108,9 @@
     "title": "【开源自荐】终端斗地主游戏",
     "content": "## 项目介绍\nQQ斗地主通过控牌来影响玩家的胜率，新手和回归玩家牌面非常硬，而老玩家则经常拿到烂牌。为了让这个游戏重新回归本质，我用Go开发了终端斗地主，界面如下。\n\n<img width=\"1918\" height=\"1044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5d46ce37-c96b-42da-955c-691abfcb9da5\" />\n\n<img width=\"1178\" height=\"765\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2c669dfa-6c6f-4099-b2fa-b55ec3d457a9\" />\n\n## 快速开始\n\n客户端安装命令如下：\n\n- macOS/Linux：`curl -fsSL https://raw.githubusercontent.com/palemoky/fight-the-landlord/main/install.sh | bash`\n- Windows：`irm https://raw.githubusercontent.com/palemoky/fight-the-landlord/main/install.ps1 | iex`\n\n安装完成后使用 `ddz` 即可开玩！\n\n## 项目特色\n- [DouZero](https://github.com/kwai/DouZero)智能机器人：该模型相比LLM具有更好的表现，LLM经常会出非法牌型，而该模型则具有拆牌、顶牌、垫牌等高级出牌策略，在自由出牌时也可以打出顺子、飞机等复杂牌型，表现非常好。\n- 游戏音效：完备的经典斗地主音效，畅玩游戏体验\n- 大厅互动：游戏大厅可与玩家交流沟通\n\n## 项目地址\n\nhttps://github.com/palemoky/fight-the-landlord\n\n欢迎大家体验，也欢迎提交 Issue 和 PR，欢迎 Star~",
     "created_at": "2026-05-31T15:22:59Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10149"
   },
   {
@@ -236,7 +326,7 @@
   {
     "id": 10121,
     "title": "【开源推荐】MovableType：像活字印刷一样搭表单，配置驱动的 React 表单引擎",
-    "content": "## 1. 项目地址\n\nGitHub: https://github.com/zakihuang/MovableType\n\n## 2. 它解决了什么问题？\n\n前端表单开发是业务系统中最重复、最琐碎的工作。每新增一个表单，都要手写 JSX、校验规则、联动逻辑，改一个字段往往要动多个文件。更麻烦的是，编辑页和详情页长得几乎一样，却要写两套代码。\n\nMovableType 的核心思路是：**像活字印刷一样搭表单**——字段定义一次，表单配置百次复用。你只需写一份 JSON 配置，引擎自动生成带布局、校验、联动的完整表单，改需求时只改几行配置，而不是几十个组件文件。\n\n## 3. 核心功能与特性\n\n- **配置驱动渲染：** 基于 React + Ant Design 4，将字段池（FieldDescriptor）与表单配置（Config）解耦，同一份字段定义可被 N 个表单复用。\n- **声明式联动：** 内置 `watch`（字段级/区块级）和 `dataLoader`（异步选项加载），无需手写 `useEffect` 和 `onChange` 监听。\n- **灵活布局：** 直接复用 antd 24 栅格系统，支持 1/2/3 列布局、字段级 `colSpan` 覆盖、自定义区块组件接管。\n- **查看模式一键切换：** `mode=\"view\"` 时所有输入框自动变纯文本，编辑页和详情页共用一套配置。\n- **组件可扩展：** 支持同步渲染器和异步懒加载，自定义组件无需改引擎源码。\n- **为 AI 而生：** 极简三概念（字段池 / 配置 / 组件注册表），配置是纯结构化数据——大语言模型最擅长生成的格式。\n\n## 4. 推荐理由\n\n表单开发占据了中后台系统大量的重复劳动，市面上的表单方案要么过于重量级，要么自创一套 DSL 增加学习成本。MovableType 选择了最轻量的路径：不重新发明表单体系，只做 antd Form 的\"配置翻译层\"，三个核心概念覆盖绝大多数场景。更重要的是，它的配置天然适合 AI 生成——未来让 LLM 直接输出表单配置、而非手写 JSX，是完全可行的开发范式。对于有大量中后台表单需求的前端团队，这是一个值得关注的效率工具。\n\n<img src=\"https://blog.7hihi.com/MovableType/aiDrivenMovable.jpeg\" />\n\n详细教程：https://blog.7hihi.com/MovableType/\n演示项目：https://github.com/zakihuang/movableTypeDemo",
+    "content": "## 1. 项目地址\n\nGitHub: https://github.com/zakihuang/MovableType\n\n## 2. 它解决了什么问题？\n\n前端表单开发是业务系统中最重复、最琐碎的工作。每新增一个表单，都要手写 JSX、校验规则、联动逻辑，改一个字段往往要动多个文件。更麻烦的是，编辑页和详情页长得几乎一样，却要写两套代码。\n\nMovableType 的核心思路是：**像活字印刷一样搭表单**——字段定义一次，表单配置百次复用。你只需写一份 JSON 配置，引擎自动生成带布局、校验、联动的完整表单，改需求时只改几行配置，而不是几十个组件文件。\n\n## 3. 核心功能与特性\n\n- **配置驱动渲染：** 基于 React + Ant Design 4，将字段池（FieldDescriptor）与表单配置（Config）解耦，同一份字段定义可被 N 个表单复用。\n- **声明式联动：** 内置 `watch`（字段级/区块级）和 `dataLoader`（异步选项加载），无需手写 `useEffect` 和 `onChange` 监听。\n- **灵活布局：** 直接复用 antd 24 栅格系统，支持 1/2/3 列布局、字段级 `colSpan` 覆盖、自定义区块组件接管。\n- **查看模式一键切换：** `mode=\"view\"` 时所有输入框自动变纯文本，编辑页和详情页共用一套配置。\n- **组件可扩展：** 支持同步渲染器和异步懒加载，自定义组件无需改引擎源码。\n- **为 AI 而生：** 极简三概念（字段池 / 配置 / 组件注册表），配置是纯结构化数据——大语言模型最擅长生成的格式。\n\n## 4. 推荐理由\n\n表单开发占据了中后台系统大量的重复劳动，市面上的表单方案要么过于重量级，要么自创一套 DSL 增加学习成本。MovableType 选择了最轻量的路径：不重新发明表单体系，只做 antd Form 的\"配置翻译层\"，三个核心概念覆盖绝大多数场景。更重要的是，它的配置天然适合 AI 生成——未来让 LLM 直接输出表单配置、而非手写 JSX，是完全可行的开发范式。对于有大量中后台表单需求的前端团队，这是一个值得关注的效率工具。\n\n<img src=\"https://blog.7hihi.com/MovableType/aiDrivenMovable.jpeg\" />\n\n详细教程：https://blog.7hihi.com/MovableType/\n演示项目：https://github.com/zakihuang/movableTypeDemo\n",
     "created_at": "2026-05-29T09:22:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10121"
@@ -728,101 +818,5 @@
     "created_at": "2026-05-24T12:56:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10060"
-  },
-  {
-    "id": 10059,
-    "title": "【开源自荐】OmniTrends — 98 个数据源的实时热点新闻聚合阅读器",
-    "content": "**项目地址**：https://github.com/TuTouPower/omni_trends\n\n**在线演示**：https://omni-trends.pages.dev\n\n## 简介\n\n基于 [NewsNow](https://github.com/ourongxing/newsnow) 二次开发，原项目已长期未更新。OmniTrends 将数据源从 40 个扩展到了 **98 个**，覆盖国内热榜、国际媒体、科技、财经四大分类。\n\n## 特点\n\n- **数据源丰富**：微博、知乎、百度、抖音、B站、今日头条等国内热榜 + BBC、Guardian、NHK、WSJ、Al Jazeera 等国际媒体 + Hacker News、GitHub Trending、Product Hunt、Huggingface Papers 等科技源\n- **代理支持**：`HTTPS_PROXY` 环境变量即可走代理，适合国内访问被墙的国外源\n- **暗色/亮色模式**\n- **部署简单**：一键部署到 Cloudflare Pages/Workers，免费额度足够个人使用\n\n## 技术栈\n\n- React 19 + TypeScript + Vite 7 + UnoCSS\n- Nitro (h3) 服务端，支持 Node / Cloudflare Workers / Bun\n- SQLite（本地）/ Cloudflare D1（线上）\n\n欢迎试用和反馈！",
-    "created_at": "2026-05-24T12:03:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10059"
-  },
-  {
-    "id": 10058,
-    "title": "【开源推荐】SenseVoice — 一个模型同时做语音识别+情感检测+声音事件分类",
-    "content": "## 项目介绍\n\n[SenseVoice](https://github.com/FunAudioLLM/SenseVoice)（8.2K Stars）是阿里通义实验室的多任务语音理解模型。\n\n**一个 234MB 模型同时完成：**\n- 语音识别（ASR）\n- 语种检测（中/英/日/韩/粤）\n- 情感识别（开心/悲伤/愤怒/中性）\n- 声音事件检测（笑声/掌声/音乐/哭泣）\n\n## 速度\n\n- GPU: **170 倍实时**（10 秒音频只需 70ms）\n- CPU: **17 倍实时**（无需 GPU 也能用）\n\n## 使用\n\n```python\npip install funasr\n\nfrom funasr import AutoModel\nmodel = AutoModel(model=\"iic/SenseVoiceSmall\", vad_model=\"fsmn-vad\", device=\"cuda\")\nresult = model.generate(input=\"audio.wav\")\n# 输出带情感标签: <|HAPPY|>今天天气真好<|NEUTRAL|>我们出去走走吧\n```\n\n## 应用场景\n\n- 客服质检（自动检测客户情绪）\n- 会议分析（识别氛围变化）\n- 内容审核（检测异常声音事件）\n- 语音助手（根据情绪调整回复）\n\n## 链接\n\n- GitHub: https://github.com/FunAudioLLM/SenseVoice\n- FunASR 工具包: https://github.com/modelscope/FunASR\n- 在线体验: https://www.funasr.com",
-    "created_at": "2026-05-24T11:28:15Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10058"
-  },
-  {
-    "id": 10057,
-    "title": "【开源推荐】FunClip — 用文字搜索视频片段，一键裁剪导出",
-    "content": "## 项目介绍\n\n[FunClip](https://github.com/modelscope/FunClip)（5.6K Stars）是基于 FunASR 语音识别的智能视频裁剪工具。\n\n**核心功能：** 输入关键词或句子 → 自动定位视频中对应的片段 → 一键裁剪导出\n\n## 使用场景\n\n- 从 2 小时会议录像中快速找到某段发言\n- 从播客/采访视频中提取精彩片段\n- 根据字幕内容批量裁剪短视频\n- 视频内容搜索和索引\n\n## 安装使用\n\n```bash\npip install funclip\nfunclip\n# 打开 Gradio 界面，上传视频，输入关键词，自动裁剪\n```\n\n## 技术亮点\n\n- 基于 FunASR 语音识别（170 倍实时）\n- Gradio 可视化界面\n- 支持热词提升识别准确率\n- 自动生成字幕 + 裁剪\n\n## 链接\n\n- GitHub: https://github.com/modelscope/FunClip\n- FunASR: https://github.com/modelscope/FunASR",
-    "created_at": "2026-05-24T11:27:50Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10057"
-  },
-  {
-    "id": 10056,
-    "title": "【开源推荐】FunASR 语音输入法 — 按快捷键说话，自动转文字粘贴到光标位置",
-    "content": "## 项目介绍\n\n[FunASR](https://github.com/modelscope/FunASR)（16K+ Stars）是阿里通义实验室开源的工业级语音识别工具包。最近推出了桌面语音输入法工具：\n\n**按快捷键 → 说话 → 自动识别 → 粘贴到光标位置**\n\n支持中英日韩粤 5 种语言，GPU 170 倍实时 / CPU 17 倍实时，完全本地运行。\n\n## 使用方式\n\n```bash\npip install funasr sounddevice numpy pyperclip openai pynput\n\n# 启动语音服务\nfunasr-server --device cuda  # 或 cpu\n\n# 启动语音输入法\npython examples/voice_input/funasr_input.py\n```\n\n然后在任何应用中按 Ctrl+Shift+Space 开始录音。\n\n## 其他亮点\n\n- **OpenAI 兼容 API**：一行命令部署语音识别服务，任何 Agent 框架直接接入\n- **字幕生成**：音视频一键生成 SRT/VTT 字幕\n- **MCP 服务**：Claude/Cursor 等 AI 工具可直接转写音频\n- **50+ 语言**，说话人分离，情感检测\n\n## 链接\n\n- GitHub: https://github.com/modelscope/FunASR\n- 在线体验: https://www.funasr.com\n- 文档: https://modelscope.github.io/FunASR/zh/",
-    "created_at": "2026-05-24T11:14:03Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10056"
-  },
-  {
-    "id": 10055,
-    "title": "【开源推荐】 CanvasCast 是一个基于 React、TypeScript 和 Vite 构建的浏览器端白板录制工具",
-    "content": "项目地址：https://github.com/nine19een/CanvasCast\n在线体验：https://canvascast.nine19een.com/\n演示视频：[B站观看](https://www.bilibili.com/video/BV1EwRMBxEY7/)\n项目简介：\n> 项目灵感来自现代录屏软件和数字白板工具，重点围绕白板绘制、幻灯片式演示、录制设置、背景装饰、摄像头小窗、麦克风选择与提词器等功能，形成一套可以直接在浏览器中完成白板内容创作与录制导出的工作流。\n它适合算法讲解、课程演示、技术说明、可视化笔记、作品集 demo、产品流程说明等场景。CanvasCast 更关注轻量、直接、可操作的白板录制体验，而不是复杂的视频后期剪辑。\n\n操作界面：\n<img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://github.com/nine19een/CanvasCast/raw/main/docs/images/1.png\" />\n录制设置：\n<img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://github.com/nine19een/CanvasCast/raw/main/docs/images/3.png\" />\n\n支持本地运行开发\n\n\n\n",
-    "created_at": "2026-05-24T09:53:22Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10055"
-  },
-  {
-    "id": 10054,
-    "title": "【工具自荐】 幻彩拼豆：可以将任何图片转换为拼豆图纸的网站",
-    "content": "**内置了国内主流拼豆玩家最常用的品牌色卡库**\n\nMard、Coco、漫漫、盼盼、咪小窝 等全部一网打尽！\n\n**功能全部免费、无需登录即可使用、转换功能全部在本地浏览器处理**\n\n官网地址：[https://i2tools.com](https://i2tools.com/)\n\n<img width=\"1743\" height=\"1275\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/290e92ea-074e-45a9-8626-e1095247cacc\" />\n\n\n**内置专业级像素编辑器**\n\n如果你觉得自动生成的图纸还有瑕疵，不需要导出到电脑上用画图工具改，网站直接内置了一个极其强大的在线编辑器！\n\n<img width=\"2560\" height=\"1276\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ee21f91a-a359-4165-910a-46465575e503\" />\n\n\n**🌟 独家黑科技：沉浸式 3D 预览**\n\n<img width=\"1952\" height=\"1276\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/54cb9299-08f4-4594-96c6-6f12323c5f1a\" />\n\n\n**辅助拼豆模式，方便数豆，再也不怕找不到位置了**\n\n<img width=\"2560\" height=\"1277\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/10cdc017-94b7-4bb4-9830-e6d32b300f62\" />\n\n**导出图纸成品展示**\n\n<img width=\"1082\" height=\"924\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/991ce844-dd32-4e91-87f6-f3f03889f2d9\" />",
-    "created_at": "2026-05-24T08:51:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10054"
-  },
-  {
-    "id": 10053,
-    "title": "【工具自荐】- atst，mac 端超轻量划词翻译小工具",
-    "content": "痛点来自日常用 mac 碰到不熟悉的英文，总要复制粘贴到翻译软件里，就想做一个类似浏览器划词插件的菜单栏小工具。\n\nhttps://github.com/itaober/atst\n\n## 功能\n- ⌥D 划词翻译：选中英文按一下，结果浮窗弹出\n- ⌥S 截图翻译：框选屏幕区域，识别 + 翻译\n- 开箱即用：内置 Google + Microsoft ，免 API key\n- 可选 AI：OpenAI 兼容格式，自配置 Base URL / Key / Model ，支持智能解析（多义词、IPA 音标、技术名词解释）\n- macOS 26 Liquid Glass 适配\n- 纯 Swift 零依赖，DMG 5MB\n- 用你自己的 key ，免费、无订阅，Apache 2.0 开源\n\n## 首次使用\n- 绕过未知开发者警告（自签名应用）：右键 app → 打开 → 弹窗里再点一次「打开」。或在 Terminal 跑一句：xattr -d com.apple.quarantine /Applications/atst.app\n- 权限：⌥D 需要辅助功能权限（读选区），⌥S 需要屏幕录制权限。在「系统设置 → 隐私与安全性」里放行即可。\n\n![](https://raw.githubusercontent.com/itaober/atst/main/docs/screenshots/tooltip-1.png)\n\n![](https://raw.githubusercontent.com/itaober/atst/main/docs/screenshots/tooltip-2.png)\n\n![](https://raw.githubusercontent.com/itaober/atst/main/docs/screenshots/settings.png)",
-    "created_at": "2026-05-24T08:07:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10053"
-  },
-  {
-    "id": 10052,
-    "title": "Hermes Agent 飞书套件：让 AI Agent 在飞书里说中文",
-    "content": "## 项目名称\n\nHermes Agent 飞书套件\n\n## 一句话描述\n\n让 AI Agent 在飞书里说中文、看懂图片、状态一目了然。\n\n## 项目链接\n\n- https://github.com/OLDBAI213/hermes-feishu-zh\n- https://github.com/OLDBAI213/hermes-feishu-display-plus\n- https://github.com/OLDBAI213/hermes-feishu-adapter-optimization\n\n## 详细介绍\n\nHermes Agent 是一个开源 AI Agent 框架，支持飞书、Telegram 等平台。但默认在飞书里输出英文，中文用户体验很差。\n\n**飞书套件** 是三个独立的社区扩展包，解决这个问题：\n\n1. **hermes-feishu-zh**（中文化包）\n   - 114 条中文化规则，覆盖错误信息、界面元素、CLI 输出\n   - 一键安装，不改现有配置\n   - 自带 lark-cli 工具箱（飞书 API 命令行）\n\n2. **hermes-feishu-display-plus**（显示增强包）\n   - 收到消息显示\"已收到，正在思考...\"\n   - 工具调用记录聚合显示（不再碎片散落）\n   - 长时间任务显示进度（已用时间、轮次）\n   - 模型名显示为\"小米 MiMo\"而不是\"Xiaomi MiMo\"\n\n3. **hermes-feishu-adapter-optimization**（适配优化包）\n   - 发图片给 Hermes，能正确看到图片内容（不再是文本路径）\n   - 发文件，下载失败有明确中文提示（不再静默丢失）\n   - 忙碌时发消息，附件不会被丢掉\n\n**技术亮点：**\n- 每个包独立安装、验证、回滚\n- 自动备份，可随时恢复\n- 完整的测试套件和验证脚本\n\n**适用人群：**\n- 使用 Hermes Agent 的中文用户\n- 想要在飞书里用 AI Agent 的团队\n- 对 AI Agent 本地化感兴趣的开发者\n\n## 标签\n\nAI, Agent, Feishu, Lark, Chinese, Localization",
-    "created_at": "2026-05-24T07:45:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10052"
-  },
-  {
-    "id": 10051,
-    "title": "【开源自荐】无需后台服务的 Windows 极简防火墙 netblock",
-    "content": "https://github.com/ghking1/netblock\n\n# netblock\nWindows程序联网管理，直接基于底层 WFP（Windows Filtering Platform）实现，无需后台服务。\n\n# 特性介绍\n- AI 友好的命令行接口\n- 直接使用 Windows 底层接口，无需后台服务\n- 不依赖windows防火墙，即使防火墙是关的也能生效\n\n# 使用方法\nC:\\Windows\\System32>netblock.exe -h\n```\nnetblock <command> [options]\n\nCommands:\n  add    Add a blocking/filtering rule\n  del    Delete rule(s)\n  list   List all rules managed by netblock\n\nOptions for 'add':\n  -n <name>         Rule name (for later management; default: auto-generated UUID)\n  -p <path>         Program absolute path (include .exe; default: all programs)\n  -a <ip/cidr>      Remote IP address (IPv4/IPv6, e.g. 192.168.1.1 or 2001:db8::/32)\n  -l <port|range>   Local port (e.g. 80; 8000-9000; 81,82,83; 81,82-85; default: all)\n  -r <port|range>   Remote port (same format as -l; default: all)\n  -e <block|allow>  Action (default: block)\n  -d <in|out|both>  Traffic direction (default: both)\n  -t                Set as temporary rule (default: persistent)\n\nOptions for 'del':\n  -n <name>         Delete by rule name (recommended)\n  -p <path>         Delete all rules matching this program path (batch)\n\nNote: 'add' requires at least one filter condition (-p, -a, -l, or -r).\n```",
-    "created_at": "2026-05-24T04:28:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10051"
-  },
-  {
-    "id": 10050,
-    "title": " 【网站自荐】Gemini Omni Video Generator — 基于 Gemini Omni 和 Veo 的 AI 视频生成器",
-    "content": "大家好，我做了一个 AI 视频生成工具，想推荐给大家。\n\nGemini Omni Video Generator 基于谷歌最新的 Gemini Omni 和 Veo 模型，输入文字描述就能生成高质量视频。适合做内容创作、短视频素材、营销视频等场景。\n\n**主要特点：**\n\n- 集成 Gemini Omni + Veo 等多个先进视频生成模型\n- 文本到视频，操作简单，几秒出片\n- 支持多种风格：电影感、动画、写实等\n- 无需技术背景，输入提示词即可生成\n\n网站地址：https://www.geminiomnivideo.io\n\n欢迎大家试用，有反馈欢迎留言，谢谢！",
-    "created_at": "2026-05-24T01:49:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10050"
-  },
-  {
-    "id": 10049,
-    "title": "【开源自荐】NodeLite 由Rust构建的轻量化服务器探针面板",
-    "content": "项目地址：https://github.com/XiNian-dada/NodeLite\n项目文档: https://xinian-dada.github.io/NodeLite/\n\n# 项目简介\n一个用Rust 构建的轻量级服务器监控面板, 使用 Server-Agents 架构, 开箱即用, 安全程度高\n\n# 主要功能\n- 实时系统指标统计(包括但不限于 CPU 内存 磁盘 网络)\n- Web 仪表盘, 支持Basic Auth与 TOTP 双因子认证\n- Agent Token 生命周期管理(到期自动续期 自动轮换)\n- 审计日志 连接准入控制 全链路速率限制\n\n# 自认为的一些优势\n- 资源占用极低, 对低配机器友好\n- 安全机制完善, 双因子认证, 限流与 IP 封禁, 防爆破防重放\n- 单二进制部署\n\n# 截图\n\n<img width=\"3456\" height=\"1984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/47ca6152-aae2-4d12-a178-d6fce6a87bed\" />\n<img width=\"3454\" height=\"1912\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/133f7128-e610-4e0e-a363-821760af8c6b\" />\n<img width=\"3456\" height=\"1988\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/768d10dc-b74e-43d0-92ea-a78dcb332520\" />\n<img width=\"3470\" height=\"1656\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fc82ea39-a05a-44a1-bfb7-d3acb7e0056f\" />\n<img width=\"3446\" height=\"1994\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/29feb233-4b9d-470e-bdb4-b9b184fcec75\" />\n\n# 技术栈\nRust（tokio + axum + rusqlite + serde），前端原生 HTML + JavaScript，WebSocket 实时通信，rustls（无 OpenSSL 依赖）。",
-    "created_at": "2026-05-23T15:38:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10049"
   }
 ]
