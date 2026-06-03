@@ -1,5 +1,29 @@
 [
   {
+    "id": 10180,
+    "title": "阿里云-MuleRun团队岗位6月招聘",
+    "content": "**岗位详情**\n\n以下岗位工作地均为上海，具体岗位JD可在阿里云招聘官网 https://careers.aliyun.com/ 社招岗位中查询\n\n岗位一：AI全栈工程师\n\n岗位二：SRE工程师（AI Agent产品）\n\n岗位三：AI技术服务专家（TAM）- MuleRun企业版\n\n岗位四：AI Agent PDSA - MuleRun企业版\n\n岗位五：AI产品经理 - Agent协作平台\n\n岗位六：国际市场高级运营专家 - AI方向\n\n岗位七：AI应用产品运营专家\n\n**如何投递？**\n\n将简历发送至邮箱 huangchuhao01@gmail.com（请在邮件标题注明\"应聘岗位名称 + 姓名\"），简历中请附上电话与邮箱。",
+    "created_at": "2026-06-03T03:14:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10180"
+  },
+  {
+    "id": 10179,
+    "title": "【开源自荐】一个现代化的内网穿透工具，一键部署、开箱即用的一站式管理的隧道穿透平台。",
+    "content": "\n**NetsGo** 是一个开箱即用的内网穿透与节点管理平台。它将 Web 控制台、REST API、客户端接入和底层网络隧道整合进一个单文件二进制中，**让部署更简单、接入更统一、运维更省心**。你可以用它远程访问内网服务，也可以统一管理分散在各处的远程节点。\n\nNetsGo 以易用性和安全性为首要目标。期望投稿成功。\n\n<img width=\"2240\" height=\"1820\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5c773a00-b1f4-4705-819f-fa2f241663b5\" />\n",
+    "created_at": "2026-06-03T02:33:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10179"
+  },
+  {
+    "id": 10178,
+    "title": "【开源自荐】一个快速检测 macOS 与 Windows 上桌面应用的 CLI 工具",
+    "content": "<div align=\"center\">\n\n  <h1><a href=\"https://github.com/wavever/buildby\">buildby</a></h1>\n\n  <p><strong>识别桌面应用到底是用什么技术构建的。</strong></p>\n\n  <p>\n    <a href=\"https://www.npmjs.com/package/@wavever/buildby\"><img alt=\"npm version\" src=\"https://img.shields.io/npm/v/@wavever/buildby?color=CB3837&label=npm\"></a>\n    <a href=\"https://github.com/wavever/buildby/releases\"><img alt=\"GitHub release\" src=\"https://img.shields.io/github/v/release/wavever/buildby?label=release\"></a>\n    <a href=\"https://github.com/wavever/buildby/actions/workflows/release.yml\"><img alt=\"Release workflow\" src=\"https://github.com/wavever/buildby/actions/workflows/release.yml/badge.svg\"></a>\n    <a href=\"./LICENSE\"><img alt=\"License\" src=\"https://img.shields.io/github/license/wavever/buildby\"></a>\n    <img alt=\"Node.js 18\" src=\"https://img.shields.io/badge/Node.js-%3E%3D18-339933?logo=nodedotjs&amp;logoColor=white\">\n    <img alt=\"Platforms\" src=\"https://img.shields.io/badge/platform-macOS%20%7C%20Windows-555\">\n  </p>\n</div>\n\n`buildby` 可以检测 macOS 与 Windows 上桌面应用所使用的技术栈，快速看出一个应用是使用 **原生技术**（Swift、Objective-C、Win32 等），还是使用 **跨平台框架**（Electron、Flutter、Tauri、Qt、JVM、CEF、NW.js、React Native、wxWidgets、Unity、.NET 等）构建的。\n\n除了识别技术栈，`buildby` 还会在单应用检查时展示 **签名与公证** 信息，包括开发者名称、Team ID、签名状态、Apple 公证状态（macOS）或 Authenticode 状态（Windows），以及是否启用了强化运行时（Hardened Runtime）。\n\n## 亮点\n\n- 基于文件系统快速检测，不需要管理员权限。\n- 支持单应用查看、全量扫描、按技术栈过滤。\n- 展示 macOS 与 Windows 应用的签名、公证和信任状态。\n- 同时支持 npm 包、GitHub Release 构建包和 GitHub Packages 发布。\n- 安装后直接作为全局 CLI 使用：`buildby <应用名>`。\n\n### 安装\n\n```bash\n# 从 npm 安装\nnpm i -g @wavever/buildby\n```\n\n### 用法\n\n#### 查看单个应用\n\n```bash\nbuildby wechat\nbuildby discord\nbuildby \"visual studio code\"\n```\n\n输出示例：\n\n```text\n  Discord\n  /Applications/Discord.app\n\n   跨平台   ⚡ Electron\n\n  使用 Web 技术（HTML/CSS/JS）构建的跨平台桌面应用\n  https://www.electronjs.org\n\n  检测依据：\n    • Electron Framework.framework\n    • app.asar\n\n  Bundle ID： com.hnc.Discord\n  版本： 0.0.335\n  大小： 375.4 MB\n\n  签名与公证\n    开发者： Discord, Inc.\n    团队 ID： 53Q6R32WPB\n    签名： 已签名\n    公证： 已公证\n    强化运行时： ✓ 是\n```\n\n#### 扫描所有已安装应用\n\n```bash\nbuildby --all\nbuildby -a\n```\n\n会扫描 `/Applications`（macOS）或 `Program Files`（Windows）等目录下的所有桌面应用，按技术栈分组，并展示适合截图分享的“桌面应用技术栈画像”。\n\n#### 按技术栈过滤\n\n```bash\nbuildby -e     # 所有 Electron 应用（--electron）\nbuildby -f     # 所有 Flutter 应用（--flutter）\nbuildby -t     # 所有 Tauri 应用（--tauri）\nbuildby -q     # 所有 Qt 应用（--qt）\nbuildby -w     # 所有 wxWidgets/wxPython 应用（--wxwidgets）\nbuildby -j     # 所有 JVM 应用（--jvm）\nbuildby -c     # 所有 CEF 应用（--cef）\nbuildby -d     # 所有 .NET / MAUI / WPF 应用（--dotnet）\nbuildby -b     # 所有 Chromium 应用（--chromium）\nbuildby -W     # 所有 NW.js 应用（--nwjs）\nbuildby -r     # 所有 React Native 桌面应用（--reactnative）\nbuildby -u     # 所有 Unity 应用（--unity）\nbuildby -n     # 所有原生应用（--native）\n```\n\n### 支持检测的技术栈\n\n| 栈 | 说明 | 主要检测方式 |\n|----|------|--------------|\n| ⚡ **Electron** | Node.js + Chromium | `Electron Framework.framework`、`app.asar` |\n| 🐦 **Flutter** | Google 跨平台 UI 工具包 | `FlutterMacOS.framework`、`flutter_windows.dll` |\n| 🌐 **CEF** | Chromium Embedded Framework | `Chromium Embedded Framework.framework`、`libcef.dll` |\n| 🦀 **Tauri** | Rust + 系统 WebView | `otool -L` 检测 `WebKit.framework` + 资源目录 / Windows 上 `WebView2Loader.dll` |\n| 🔷 **Qt** | C++ 跨平台框架 | `Qt*.framework`、`Qt5Core.dll` / `Qt6Core.dll` |\n| 🧩 **wxWidgets** | C++ 跨平台 GUI 库 | macOS 上 `libwx*.dylib`，Windows 上 `wxmswXXu_*.dll` 等 |\n| ☕ **JVM** | Java/Kotlin/Scala | `jbr/`、`libjvm.dylib`、大量 `.jar` 文件 |\n| 🔵 **.NET** | Microsoft .NET / MAUI / WPF | `MonoBundle/`、`coreclr.dll`、`.dll` 组合特征 |\n| 🟩 **NW.js** | Node.js + Chromium（原 node‑webkit） | `nwjs Framework.framework`、`app.nw` |\n| ⚛️ **React Native** | React Native 桌面端实现 | `React.framework`、`Hermes.framework` / `hermes.dll` |\n| 🖥️ **Native** | 平台原生技术 | 未命中任何跨平台特征时的兜底分类 |\n\n### 平台支持\n\n| 平台 | 应用发现位置 | 检测方式 |\n|------|--------------|----------|\n| macOS | `/Applications`、`~/Applications` | `Contents/Frameworks`、`Contents/Resources`、`otool -L`、`Info.plist` 元数据 |\n| Windows | `Program Files`、`Program Files (x86)`、`AppData/Local/Programs` | 扫描 `.exe` / `.dll`、特定框架文件与目录结构 |\n\n### 工作原理（简要）\n\n检测完全基于 **文件系统**，不会做反汇编，也不需要管理员权限：\n\n1. **扫描框架目录**：读取 `Contents/Frameworks/` 或应用目录下的 DLL，匹配各类已知框架的特征文件。  \n2. **资源文件模式**：查找 `app.asar`、`flutter_assets`、`app.nw` 等典型文件。  \n3. **JVM / .NET / 其他运行时检测**：识别打包的 JRE/JBR、.NET 运行时以及关联目录结构。  \n4. **Tauri / wxWidgets 等特定栈**：结合 `otool -L` / DLL 名称 + 资源分布做多信号判断。  \n5. **元数据提取**：从 `Info.plist` 解析 Bundle ID、版本号和展示名称。  \n6. **签名与公证**：macOS 上调用 `codesign -dv` 与 `spctl --assess`，Windows 上调用 PowerShell `Get-AuthenticodeSignature`，提取开发者 / Team ID / 签发者，以及 Apple 公证或 Authenticode 信任状态。  \n7. **兜底策略**：如果未匹配到任何跨平台特征，则将应用归类为原生技术栈。\n\n检测按照优先级顺序依次执行，特征越独特的框架越先匹配，以减少误报和重复分类。\n\n### 环境要求\n\n- Node.js >= 18  \n- 当前系统为 macOS 或 Windows  \n- macOS 需要 `otool`、`codesign`、`spctl`（Xcode Command Line Tools 自带）  \n- Windows 需要 `powershell` 在 `PATH` 中（用于读取 Authenticode 签名）\n\n### 许可证\n\nMIT",
+    "created_at": "2026-06-03T00:48:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10178"
+  },
+  {
     "id": 10177,
     "title": "【文章自荐】17 年过去了，Go 语言实现了当初的理想吗？",
     "content": "<img width=\"628\" height=\"355\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/04b4aab4-eef2-480c-913b-37d1216ad76d\" />\n\n## 导语\n\n十几年前，作为编程语言界的后起之秀，Go 语言靠着简洁优雅、编译速度和性能速度互相妥协的 “中庸之道“，被大家视为明日之星，所有初出茅庐的菜鸟和希望弯道超车的老鸟都对它寄以厚望，彷佛脚踩 C++，拳打 Java 就在不远处。到今天，已经成熟的 Go 语言还在拖着缓慢的步伐持续迭代，然而它似乎很难突破天花板了，面对 C/C++, Java, 而且还有 “重建狂魔“ Rust 在后面试图不断蚕食已有的生态资源 ...\n\n\n[文章链接](https://mp.weixin.qq.com/s/ovwuqdlvWPBauQN6CfgYYg)",
@@ -794,29 +818,5 @@
     "created_at": "2026-05-26T09:07:10Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10078"
-  },
-  {
-    "id": 10077,
-    "title": "【网站自荐】飞源 AI：一个 API Key 接入 Claude、DeepSeek、出图，Anthropic 官方付费渠道",
-    "content": "网站：https://feiyuanapi.com\n\n飞源 AI 是面向开发者和 AI 工具团队的模型中转平台，基于 **Anthropic 官方付费 API** 提供服务（非逆向、非共享号），同时接入 DeepSeek、gpt-image-2 出图等模型，统一使用 OpenAI 兼容接口，一行代码完成迁移。\n\n**几个对开发者有用的细节：**\n\n- **Prompt Cache 完整透传**：缓存读取按官方 10% 计费、写入按 125% 计费，比例和官方一致。对高频调用长上下文的场景（Claude Code、AI Bot、内容自动化）成本节省明显，很多中转站关闭或修改了这个比例。\n- **账单透明**：只记录模型名 + Token 数 + 调用时间，不存对话内容，按需充值无订阅。\n- **价格**：Claude Sonnet 4.6 按官价 0.9× 计费（VIP 组），支持 Claude / DeepSeek / gpt-image-2 出图统一调用。\n- **新用户送 $5 额度**，可以先测 Cache 透传和模型效果再决定是否充值。\n\nTG 交流群：https://t.me/feiyuanapi_group",
-    "created_at": "2026-05-26T08:37:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10077"
-  },
-  {
-    "id": 10076,
-    "title": "【开源自荐】OpenAgent：一个二进制文件跑起来的 AI Agent 平台（4900+ Star）",
-    "content": "## 项目介绍\n**OpenAgent** 是由 [Apache Casbin](https://casbin.org/) 团队原班人马OpenAgent AI团队打造的开源 AI Agent 平台，基于 **Go 语言**实现，将 LLM 对话、自主 Agent 执行、RAG 知识库整合为**单一可执行文件**。目前已获得 **4900+ GitHub Stars**。\n\n欢迎大家下载使用（双击exe文件即运行，0依赖0配置），也欢迎大家issue、PR，这对我们非常有价值！\n\n- 项目地址：https://github.com/the-open-agent/openagent\n- 在线演示：https://demo.openagentai.org\n\n---\n\n## 核心特性\n\n🤖 **自主 Agent 循环**\n\n实现完整的 ReAct 推理循环，LLM 能自主决策并调用工具完成任务。驱动无头浏览器实现网页导航、点击、填表、截图；执行 Shell 命令并获取实时输出；直接读写 Word/Excel/PPT 文件，让 Agent 真正具备动手操作干活的能力。\n\n🔌 **国内首批原生 MCP 支持**\n\n支持 SSE / Stdio / StreamableHTTP 三种传输方式，自动扫描并发现 MCP 服务器工具集，工具调用与原生工具统一抽象，对 LLM 完全透明。\n\n📚 **非玩具级 RAG 知识库**\n\n支持 PDF（含扫描件 OCR）、Word、Excel、PPT、Markdown 解析，按段落、语义、问答对等多种策略分片，集成多种嵌入模型，支持本地嵌入和云端 API，存储后端可选 MySQL / SQLite / PostgreSQL。\n\n⚡ **单二进制部署**\n\n`go build` 编译为单个可执行文件（约 23MB），无 Python/Node 依赖，原生支持 Windows / Linux / macOS，Windows 下无需 WSL 或 Docker。\n\n🔄 **多工具并发执行**\n\n利用 Go 的 goroutine 调度，Agent 循环中的多工具调用可并行执行，而非串行等待，无 GIL 限制，长时运行任务内存占用可控。\n\n---\n\n## 技术亮点\n\n- **Go 语言实现 Agent 引擎**：不同于 Python 生态的框架型项目，OpenAgent 是一个完整的平台级产品，编译即运行\n- **Windows 原生运行**：无需 WSL、无需 Docker，直接在 Windows 上运行浏览器自动化、Shell 执行、Office 处理等全部功能\n- **透明工具调用链**：每步工具调用的输入输出均记录审计，可观测、可调试\n- **BPMN 工作流编排**：可视化编辑器构建复杂业务流程，支持条件分支和并行执行\n\n---\n\n## 项目展示\n\n- **单 exe 文件仅 23MB**：下载双击即用，做到真正的 0 依赖，0 配置，0 门槛\n\n<img width=\"1353\" height=\"603\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d9b8426b-e8ad-4c83-8a63-a1a56aad6ab9\" />\n\n- **多工具可用**：支持浏览器自动化、Shell 执行、Office 处理、PDF 解析、视频下载等多种工具\n\n<img width=\"2517\" height=\"1395\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd63f5db-c75d-4370-996b-1df195a5b963\" />\n\n\n- **原生支持 MCP 的强大能力**：直接内置 MCP 商店，无需额外配置，即可使用 MCP 服务器提供的工具\n\n<img width=\"2518\" height=\"1407\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/579ce58b-da2c-491f-8808-732ccfd27e49\" />\n\n- **完整的可追溯思维链**：同时拥有完整的思维链/日志/会话记录，每一步决策都有记录，可追溯、可调试\n\n<img width=\"2548\" height=\"1396\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/efdd5f83-fcbf-4ef5-a0a7-cc1122fc4172\" />\n\n---\n\n## 适用场景\n\n- **本地私有化 AI 助手**：数据不出内网，支持所有主流模型\n- **自动化运维**：Agent 定时登录后台、执行命令、导出报表\n- **企业知识库问答**：基于私有文档的 RAG 检索，替代传统搜索\n- **AI 工作流编排**：BPMN 可视化编辑器构建复杂业务流程\n\n---\n\n## 项目信息\n\n- 项目地址：https://github.com/the-open-agent/openagent\n- 在线演示：https://demo.openagentai.org\n- **Stars**：4900+\n- **许可证**：Apache 2.0\n\n欢迎大家试用、issue、PR，也非常感谢大家能提出宝贵意见🙏\n期待阮老师的推荐💗",
-    "created_at": "2026-05-26T07:41:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10076"
-  },
-  {
-    "id": 10075,
-    "title": "【开源自荐】OpenBidKit_Yibiao：一个基于AI的智能投标工具箱",
-    "content": "OpenBidKit_Yibiao 中文名“易标投标工具箱”，是一个完全开源的综合投标工具箱，包括AI生成技术方案、图文生成、商务标、企业知识库管理、标书查重、废标项检查、标讯等，更多功能还在开发中。\n支持OpenAI like模式的所有AI api，目前已深度适配DeepSeek、龙猫、火山方舟三个平台，也支持自定义BaseUrl接入本地模型等。\n\n项目地址：[https://github.com/FB208/OpenBidKit_Yibiao](https://github.com/FB208/OpenBidKit_Yibiao)\n\n# 它解决什么问题\n现在AI写标书的付费工具非常多，但是价格都超级高，一份标书几十块，除非企业给报销，小企业的牛马根本用不起。免费的工具质量又非常差，OpenBidkit力争做投标领域的OpenClaw，提供开箱即用的优质标书编写工具，亲测一份20万字的投标标书，用DeepSeek v4 flash 生成只需要9毛钱，还努力适配了完全免费的longcat-flash-lite，从此牛马不用自己买草料了。\n\n# 主要特性\n- [x] 技术方案生成\n- [x] AI生图、mermaid转图\n- [x] 知识库、知识条目\n- [x] 标书查重（元数据比对、目录、正文、内嵌图片比对）\n- [x] 标书检查（无效投标、废标项、错别字、逻辑谬误、前后文不一致等）\n- [ ] 商务标编写\n- [ ] 投标机会\n- [ ] 已有技术方案扩写\n- [ ] 插件系统\n- [ ] 更多功能还在挖掘和开发中... \n\n# 技术栈\nelectron+react+typescript\n是vibe coding的项目，但绝不是无脑跟AI提需求所生成的垃圾项目。每一个功能都经过需求分析、原型设计，源码架构是我指导AI搭建的，核心代码人工review。功能经过测试和大量用户反馈\n\n# 截图\n<img width=\"2559\" height=\"1335\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c892232d-286c-43cd-b4e7-ac761a86a7ad\" />\n\n<img width=\"1424\" height=\"881\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aa7d0dfa-ca93-4ffd-a6c5-88588abc1985\" />\n\n项目地址：[https://github.com/FB208/OpenBidKit_Yibiao](https://github.com/FB208/OpenBidKit_Yibiao)\n\n**欢迎大家试用、PR，也非常感谢大家能提出宝贵意见。**\n**期待阮一峰老师的推荐**",
-    "created_at": "2026-05-26T06:56:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10075"
   }
 ]
