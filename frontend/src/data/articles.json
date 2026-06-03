@@ -1,5 +1,31 @@
 [
   {
+    "id": 10191,
+    "title": "投稿：Heron —— 从网络流量被动重建 Agent 调用链的可观测性工具（Rust）",
+    "content": "推荐一个自己参与的开源项目 **Heron**（Apache-2.0，Rust）：\n\n- 仓库：https://github.com/Netis/heron\n- 主页：https://heron-ai.pages.dev\n\n它把 LLM / Agent 的可观测性做在**网络层**：不改 SDK、不做代理、不进请求路径，直接从 TLS 终结后的明文 HTTP 流量里，把多步 Agent 交互（planner → tool → planner …）**重建成一个完整的 turn**。支持 OpenAI / Anthropic / Gemini，自动折叠多级代理跳数，识别 vLLM / SGLang / Ollama 后端；对 Claude Code、Codex、Hermes 等 agent 有专门的 turn profile。单文件二进制、内置控制台，`--pcap-file capture.pcap` 回放 30 秒即可体验。",
+    "created_at": "2026-06-03T18:54:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10191"
+  },
+  {
+    "id": 10190,
+    "title": "推荐一个值得收藏的高考数学真题项目",
+    "content": "\n最近在整理高考真题资源的过程中，我发现了一个非常优秀的开源项目：\n\n 高考数学真题项目 [deekur/gaokaomath](https://github.com/deekur/gaokaomath)\n\n这是一个长期维护的高考数学真题整理项目，收录了 **1952—2025 年间绝大部分高考数学真题 PDF 文件**，覆盖范围广、资料丰富，是目前中文互联网中较为完整的高考数学资料仓库之一。\n\n为高考数学资料的保存与整理提供了重要价值。\n\n\n\n\n\n受到该项目启发，我利用业余时间开发了一个面向普通用户的高考真题检索网站：\n\n\n**[高考真题资源库](https://t.urongda.com)**\n\n主要希望解决「资料分散、查找困难、浏览不便」的问题，让高考真题能够更方便地被检索和使用。\n\n目前支持\n\n* 📖 按年份整理历年高考真题\n* 📝 按科目、地区、卷型分类浏览\n* 🔍 快速搜索和筛选资源\n* 📂 提供历年真题下载与索引\n* 📚 持续补充和校对历史试卷资料\n\n## 💌 欢迎交流与投稿\n\n如果你手中保存有：\n\n* 历年高考真题\n* 高考模拟试卷\n* 教辅资料\n* 老版试卷扫描件\n* 缺失年份或地区的试卷资源\n\n欢迎向网站投稿或提供线索，一起完善高考真题资料库。\n\n也欢迎对网站功能、资料整理方式提出建议。\n\n希望这些资料能够帮助更多学生、教师和高考研究爱好者更方便地获取和使用历年高考真题。 📚✨",
+    "created_at": "2026-06-03T11:34:31Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/10190"
+  },
+  {
+    "id": 10189,
+    "title": "【开源自荐】从源码静态分析出程序完整的数据流向图谱",
+    "content": "![dataflow-graph](https://github.com/user-attachments/assets/2e86312e-e9f9-43ef-9baf-7ff866ea101c)\n\n这个图谱表达了程序完整的功能/业务逻辑，它们都含在数据流向里面。\n\n在线预览 [imsure-analyzer](https://rainforesters.github.io/imsure-analyzer/)\n[imsure-analyzer](https://github.com/rainforesters/imsure-analyzer) 依赖于声明式语法库 [imsure](https://github.com/rainforesters/imsure)\n\n声明式语法为静态分析的可行性奠定了坚实基础，让一切都可以在静态分析阶段解读出来（否则毫无可能）。由其编写的程序如上图数据流动一般即为网状结构的自动状态机。程序从刚性结构变为柔性结构，其定义的所有数据流连线都韧性十足，可以任意拉扯，揉不烂、搓不坏。",
+    "created_at": "2026-06-03T11:27:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10189"
+  },
+  {
     "id": 10188,
     "title": "【工具自荐】Map of Us —— 本地优先的情侣 / 旅行记忆地图",
     "content": "![image](https://github.com/user-attachments/assets/bec87d28-2dbe-4eaf-a200-562b7be6c4d5)\n[https://github.com/zkeyoned/map-of-us-template]()\n\n一个开源的「记忆地图」桌面应用模板。在地图上点亮去过的城市，为每个地方添加照片、纪念日和小故事，把两个人（或一家人、一群朋友）的足迹都收进一张地图里。\n特点：\n\n- 本地优先：数据默认存在自己电脑上，不依赖云服务、无需联网登录，隐私自己掌握。\n- 可打包成桌面应用：基于 Next.js 16 + React 19 + Electron，可在浏览器开发，也能打包成 macOS / Windows 桌面版。\n- 高度可定制：登录页照片、城市地标、纪念日、文案、logo 都能在设置页里改，支持完整备份导出 / 导入迁移。\n- 适合改造成情侣地图、旅行足迹、家庭相册或朋友聚会回忆录。\n\n（自荐：作者本人开发，之前在社交平台发出来后很多人想要，于是整理开源。）\n![image](https://github.com/user-attachments/assets/844e559a-3061-4c20-bba9-275dca898576)",
@@ -36,7 +62,9 @@
     "title": "【工具自荐】fuckssh：SSH 配置不再翻教程，一行命令搞定 VPS 免密登录",
     "content": "仓库地址：https://github.com/hczs/fuckssh\n\n**fuckssh** 是一个跨平台 CLI 工具，把 SSH 密钥生成、公钥部署、config 写入三步合成一行命令，让新手不用再翻教程就能完成 VPS 免密登录。\n\n```bash\n# 交互式向导，跟着填就行\nfuckssh add\n\n# 非交互式，适合脚本和自动化\nfuckssh add -H 1.2.3.4 -u root -P mypass -a myserver\n```\n\n## 解决什么问题\n\n每次买新 VPS 都要重复同一套流程：查 `ssh-keygen` 参数、复制公钥到服务器、编辑 `~/.ssh/config`。步骤不多，但每次都得搜一遍，生怕哪个参数写错。机器多了管理混乱，跨平台路径还不一样。\n\n## 核心功能\n\n- **一站式添加** — `add` 命令引导完成密钥生成、公钥部署与 config 写入\n- **列表与搜索** — `list` 展示所有机器，`search` 支持关键词搜索和字段过滤\n- **编辑与删除** — 交互式修改或删除已有 Host 条目，改前自动备份\n- **只认标准文件** — 不引入私有格式，改的就是 `~/.ssh/config` 和 `~/.ssh` 下的密钥\n\n## 和 GUI 工具的区别\n\nMobaXterm、FinalShell 等 GUI 工具的配置锁在自己内部，不认标准 `~/.ssh/config`。fuckssh 只写标准 OpenSSH 配置，写完之后 `ssh` 命令、VS Code Remote SSH、Tabby、iTerm2 都能直接用。\n\n## 安装\n\n```bash\n# macOS / Linux\ncurl -fsSL https://raw.githubusercontent.com/hczs/fuckssh/master/scripts/install.sh | sh\n\n# Windows PowerShell\nirm https://raw.githubusercontent.com/hczs/fuckssh/master/scripts/install.ps1 | iex\n```\n\n跨平台：macOS、Linux、Windows。写 Go，用 Bubble Tea 做 TUI 向导。",
     "created_at": "2026-06-03T06:33:51Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10184"
   },
   {
@@ -788,31 +816,5 @@
     "created_at": "2026-05-27T08:29:02Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10089"
-  },
-  {
-    "id": 10088,
-    "title": "[开源自荐] Codex Mate — 本地AI编程工具统一管理面板",
-    "content": "## 项目简介\n\nCodex Mate 是一个本地优先的 CLI + Web UI，用于统一管理多个本地 AI 编程工具：\n\n- **多工具统一入口**：Codex / Claude Code / OpenClaw 配置切换\n- **会话管理**：统一浏览、过滤、导出会话记录，带使用统计\n  - 支持：Codex、Claude Code、Gemini CLI、CodeBuddy Code\n- **本地技能市场**：技能跨应用导入/导出，ZIP 分发\n- **提示词模板**：可复用的变量化模板，一键生成\n- **OpenAI 兼容桥接**：将 Codex 响应转为 OpenAI 格式\n- **MCP 支持**：stdio 协议集成（默认只读）\n\n## 与手动配置对比\n\n| 维度 | Codex Mate | 手动编辑 |\n|---|---|---|\n| 多工具管理 | 单入口统一管理 | 各工具分散配置 |\n| 会话操作 | 浏览/过滤/统计/批量清理 | 手动定位文件处理 |\n| 技能复用 | 本地市场+跨应用导入 | 手动复制文件夹 |\n| 可见性 | 统一视图+汇总 | 依赖手动检查 |\n\n## 快速开始\n\n``\nnpm install -g codexmate && codexmate run\n``\n\n默认监听 .0.0.0:3737，自动打开浏览器。\n\n## 技术栈\n\nNode.js + Vue 3，原生 HTTP 服务，零云依赖。\n\n## 链接\n\n- GitHub: https://github.com/SakuraByteCore/codexmate\n- 文档: https://sakurabytecore.github.io/codexmate/\n- 协议: Apache-2.0\n",
-    "created_at": "2026-05-27T07:20:36Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10088"
-  },
-  {
-    "id": 10087,
-    "title": "[开源推荐]Agent-HTML:抛弃对话框，用HTML和AI交互",
-    "content": "## 背景\n传统llm交互模式只能基于对话框，而html可以作为agent和人之间的画板，当我们想表达某个想法时可以直接选择页面的元素和agent对话，agent也不再需要返回冗长文字，而是生成可交互的组件，比如按钮/复选框等\n\n## 实现\n将组件作为积木一样封装好，agent不再需要写非常啰嗦且随机的html样式代码，而是像搭积木一样，只需要极少量的token就能生成一个样式和结构稳定的页面，让ai更专注于内容表达而不是冗长的样式\n\n<div align=\"center\">\n\n组件作为积木在页面可直接交互\n\n![Alt text](https://github.com/Sayhi-bzb/Agent-HTML/raw/main/public/block-dnd.gif)\n\n</div>\n\n## 丰富组件\n\n<div align=\"center\">\n\nagent生成面板，在页面做交互反馈\n\n支持表格及嵌入图片\n<img src=\"https://github.com/Sayhi-bzb/Agent-HTML/raw/main/public/components3-img%26table.gif\" width=\"500\" />\n\n支持丰富数据图表\n<img src=\"https://github.com/Sayhi-bzb/Agent-HTML/raw/main/public/components2-chart.gif\" width=\"500\" />\n</div>\n\n## Agent交互\n\n<div align=\"center\">\n\n本地agent交互，哪里有问题直接问\n\n<img src=\"https://github.com/Sayhi-bzb/Agent-HTML/raw/main/public/interact%20with%20agent.gif\" width=\"500\" />\n\n</div>\n\n## 个性化主题\n\n<div align=\"center\">\n<img src=\"https://github.com/Sayhi-bzb/Agent-HTML/raw/main/public/theme.gif\" width=\"500\" />\n\n</div>\n\nhttps://agent-html.org/\n\nhttps://github.com/Sayhi-bzb/Agent-HTML",
-    "created_at": "2026-05-27T06:50:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10087"
-  },
-  {
-    "id": 10086,
-    "title": "【开源自荐】一款声明式 Rust WebAssembly UI 框架 - Euv",
-    "content": "# 【开源自荐】一款声明式 Rust WebAssembly UI 框架 - Euv\n\n## 项目概述\n\n**Euv** 是一个基于 Rust 语言开发的声明式、跨平台 UI 框架，构建在 WebAssembly 之上，融合了虚拟 DOM、响应式 Signal 系统以及类 HTML 宏语法，为开发者提供现代、高效且符合人体工程学的前端开发体验。\n\n[![crates.io](https://img.shields.io/crates/v/euv.svg)](https://crates.io/crates/euv)\n[![downloads](https://img.shields.io/crates/d/euv.svg)](https://crates.io/crates/euv)\n[![docs.rs](https://docs.rs/euv/badge.svg)](https://docs.rs/euv)\n[![CI](https://github.com/euv-dev/euv/workflows/Rust/badge.svg)](https://github.com/euv-dev/euv/actions?query=workflow:Rust)\n[![license](https://img.shields.io/crates/l/euv.svg)](https://github.com/euv-dev/euv/blob/master/LICENSE)\n\n### 核心特性\n\n- **声明式 UI**：通过 `html!` 宏编写类 JSX 语法，编译期类型检查，零运行时开销\n- **响应式 Signal**：`use_signal` Hook 驱动的细粒度响应式系统，数据变更自动更新 DOM\n- **高性能虚拟 DOM**：Keyed Diff 算法 + 增量 Patch，最小化 DOM 操作\n- **全局事件委托**：基于事件冒泡的统一委托机制，减少事件监听器数量，降低内存占用\n- **CSS-in-Rust**：`class!` 宏 + `css_vars!` 宏，类型安全的样式定义，支持伪类、媒体查询\n- **组件系统**：`#[component]` 属性宏标注，Props 自动提取，组件组合零摩擦\n- **CLI 工具链**：内置 `euv-cli`，支持开发服务器、热更新、一键构建发布\n\n## 架构设计亮点\n\n### Monorepo 架构\n\n| Crate | 职责 | 说明 |\n|-------|------|------|\n| **euv-core** | 核心运行时 | 虚拟 DOM、响应式系统、渲染器、事件系统 |\n| **euv-macros** | 过程宏 | `html!`、`class!`、`css_vars!`、`watch!`、`var!`、`#[component]` |\n| **euv-cli** | CLI 工具 | dev/build/fmt 三种模式，热更新、wasm-pack 集成 |\n| **euv** | 统一入口 | 聚合 core + macros，对外提供完整 API |\n\n### 响应式系统架构\n\n```\nSignal (use_signal)\n   │\n   ├── .get() → 读取当前值\n   ├── .set() → 更新值 + 通知监听器 + 调度 DOM 更新\n   ├── .subscribe() / .replace_subscribe() → 注册变更回调\n   │\n   └── schedule_signal_update()\n         │\n         └── queueMicrotask → dispatch EuvSignalUpdate Event\n               │\n               └── DynamicNode 重新渲染 → 增量 Patch DOM\n```\n\n**核心优化**：\n\n1. **Microtask 批处理**：多次 `signal.set()` 在同一微任务中自动合并，仅触发一次 DOM 更新\n2. **`batch_updates` API**：手动批量更新，抑制中间调度，适合复杂状态变更场景\n3. **`set_silent` 静默更新**：仅触发监听器但不调度 DOM 更新，用于属性信号内部同步\n4. **`skip_equal` 优化**：`DynamicNode` 重新渲染前进行 `visual_eq` 比较，无视觉变化则跳过 Patch\n\n### 虚拟 DOM Diff 算法\n\n| 算法 | 适用场景 | 复杂度 |\n|------|----------|--------|\n| **Keyed Diff** | 所有子节点均带 `key` 属性 | O(N) 建映射 + 最小 DOM 移动 |\n| **Positional Diff** | 无 key 或部分子节点缺 key | O(min(M, N)) 逐位比较 |\n\n**Keyed Diff 特性**：\n- 构建 `old_key → old_index` 映射表\n- 复用已有 DOM 节点，仅 Patch 属性差异\n- 通过 `insert_before` 最小化 DOM 移动操作\n- 反向遍历移除废弃节点，避免索引偏移\n\n### 全局事件委托机制\n\n```\nDOM Element\n   │\n   └── data-euv-id=\"42\" (自动分配)\n         │\n         └── Event Bubble → window 委托监听器\n               │\n               └── HandlerRegistry[(42, \"click\")] → HandlerSlot → 用户回调\n```\n\n- 支持鼠标、键盘、焦点、表单、拖拽、触摸、滚轮、剪贴板、动画、过渡等 **60+ 种事件类型**\n- 每种事件类型仅注册一个全局监听器，通过 `data-euv-id` 精确路由\n- 组件卸载时自动清理事件处理器，杜绝内存泄漏\n\n## 开发便捷性\n\n### 1. 声明式 UI 编写\n\n```rust\n#[component]\nfn primary_button(props: VirtualNode) -> VirtualNode {\n    let PrimaryButtonProps { label, onclick, disabled } = props.into();\n    html! {\n        button {\n            class: if { disabled } { c_primary_button_disabled() } else { c_primary_button() }\n            onclick: onclick\n            label\n        }\n    }\n}\n```\n\n### 2. 响应式状态管理\n\n```rust\nfn page_conditional() -> VirtualNode {\n    let show_details: Signal<bool> = use_signal(|| false);\n    let user_type: Signal<String> = use_signal(|| \"guest\".to_string());\n    html! {\n        div {\n            class: c_page_container()\n            primary_button {\n                label: \"Toggle\"\n                onclick: use_toggle(show_details)\n                \"Toggle\"\n            }\n            if { show_details.get() } {\n                div { \"Hidden Details\" }\n            } else {\n                \"\"\n            }\n            match { user_type.get().as_str() } {\n                \"guest\" => { div { \"Welcome, guest!\" } }\n                \"user\"  => { div { \"Hello, user!\" } }\n                _       => { div { \"Welcome, admin!\" } }\n            }\n        }\n    }\n}\n```\n\n### 3. CSS-in-Rust 样式系统\n\n```rust\nclass! {\n    pub c_card {\n        background: var!(bg-card);\n        border-radius: \"12px\";\n        padding: \"24px\";\n        box-shadow: var!(shadow-card);\n        media(\"(max-width: 767px)\") {\n            padding: \"16px\";\n            border-radius: \"10px\";\n        }\n    }\n\n    pub c_nav_item_inactive {\n        color: var!(text-nav-item);\n        hover {\n            background: \"rgba(79, 70, 229, 0.04)\";\n            color: \"#4f46e5\";\n        }\n    }\n}\n\ncss_vars! {\n    pub c_theme_light {\n        bg-primary: \"#f8f9fb\";\n        text-primary: \"#1a1a2e\";\n    }\n}\n```\n\n### 4. 响应式副作用\n\n```rust\nlet count = use_signal(|| 0_i32);\nlet name = use_signal(|| String::from(\"euv\"));\n\nwatch!(count, name, |count_val, name_val| {\n    web_sys::console::log_1(\n        &format!(\"count={}, name={}\", count_val, name_val).into()\n    );\n});\n```\n\n### 5. CLI 开发工具链\n\n```bash\n# 开发模式（热更新 + Dev Server）\neuv-cli run --crate-path ./example\n\n# 构建发布\neuv-cli build --crate-path ./example --release\n\n# 格式化宏代码\neuv-cli fmt --path ./src\n```\n\n## 框架优势\n\n### 1. 零成本抽象设计\n\n- **编译期宏展开**：`html!`、`class!` 等宏在编译时生成 Rust 代码，运行时零解析开销\n- **类型安全**：Props 自动提取、事件类型强校验，编译时消除 UI 逻辑错误\n- **Signal Copy 语义**：`Signal<T>` 实现 `Copy` trait，仅复制指针地址，`Rc` 引用由全局注册表持有，无 GC 压力\n\n### 2. 精细 DOM 更新策略\n\n- **属性级 Patch**：新旧属性 HashMap 对比，仅更新变化的属性\n- **信号绑定属性**：`AttributeValue::Signal` 自动订阅变更，DOM 节点移除时自动清理监听器\n- **DynamicNode 独立渲染**：每个动态节点拥有独立的 `Renderer` 和 `HookContext`，实现局部更新\n- **arm 切换检测**：`match` 分支切换时自动执行 `render_full_replace`，避免错误复用\n\n### 3. 完善的生命周期管理\n\n- **DOM 子树清理**：`cleanup_dom_subtree` 递归清理事件处理器、动态节点监听器、信号监听器\n- **Hook 清理**：`match` 分支切换时执行 `cleanups` 队列，防止信号泄漏\n- **Signal 存活标记**：`alive` 标志位确保已清理的 Signal 不再触发无效更新\n\n### 4. 跨平台响应式布局\n\n- **`use_resize` Hook**：自动检测视口尺寸，防抖 150ms，桌面/移动端布局自适应切换\n- **CSS 媒体查询**：`class!` 宏原生支持 `media()` 语法\n- **主题系统**：`css_vars!` 实现明暗主题，一行代码切换\n\n## 技术栈对比\n\n| 特性 | Euv | Yew | Dioxus | Leptos |\n|------|-----|-----|--------|--------|\n| **虚拟 DOM** | ✅ Keyed + Positional Diff | ✅ | ✅ | ❌ (细粒度) |\n| **响应式系统** | ✅ Signal + Microtask 批处理 | ❌ (手动更新) | ✅ | ✅ |\n| **类 JSX 宏** | ✅ `html!` | ✅ `html!` | ✅ `rsx!` | ✅ `view!` |\n| **CSS-in-Rust** | ✅ `class!` + `css_vars!` | ❌ | ❌ | ❌ |\n| **全局事件委托** | ✅ 60+ 事件类型 | ❌ | ❌ | ❌ |\n| **CLI 工具链** | ✅ dev/build/fmt + 热更新 | ❌ | ✅ | ✅ |\n| **组件系统** | ✅ `#[component]` 宏 | ✅ | ✅ | ✅ |\n| **伪类/媒体查询** | ✅ 原生支持 | ❌ | ❌ | ❌ |\n| **WASM 目标** | ✅ | ✅ | ✅ | ✅ |\n| **Rust Edition** | 2024 | 2021 | 2021 | 2021 |\n\n## 生态系统与社区\n\n### 文档与学习资源\n\n- **官方文档**：https://docs.ltpp.vip/euv/\n- **API 文档**：https://docs.rs/euv/latest/\n- **仓库地址**：https://github.com/euv-dev/euv.git\n\n### 开源协议\n\n- **许可证**：MIT License\n\n## 适用场景\n\n### 推荐使用场景\n\n1. **Web 应用前端**：需要高性能、类型安全的现代 Web 应用\n2. **内部管理系统**：表单密集、条件渲染复杂的管理后台\n3. **交互式仪表盘**：实时数据更新、响应式布局的数据看板\n4. **组件库开发**：类型安全的 Props、CSS-in-Rust 样式隔离\n5. **WASM 原生应用**：追求极致性能的 WebAssembly 应用\n\n### 核心能力\n\n- **60+ 事件类型覆盖**：鼠标、键盘、焦点、表单、拖拽、触摸、剪贴板、动画等\n- **内置组件**：Button、Card、Modal、Select、FormInput、Textarea、Badge、PageHeader、VConsole\n- **示例页面**：Signals、Event、List、Conditional、Modal、Select、Async、Form、FileUpload、Timer、Animation、Browser、Lifecycle、Keep-Alive、ComponentBinding、CustomAttrs\n\n## 总结\n\nEuv 作为一款新兴的 Rust 声明式 UI 框架，在 WebAssembly 生态中独树一帜。通过创新的架构设计——**Signal + Microtask 批处理响应式系统**、**Keyed Diff 虚拟 DOM**、**全局事件委托机制**、**CSS-in-Rust 样式系统**——为 Rust 前端开发提供了完整且高效的解决方案。\n\n框架的核心优势在于：\n\n- **开发体验**：`html!` 宏 + `class!` 宏 + `use_signal` Hook，三位一体的声明式开发范式\n- **运行时性能**：Microtask 批处理 + Keyed Diff + 事件委托，多层级优化确保极致渲染效率\n- **类型安全**：编译期宏展开、Props 自动提取、事件类型强校验，将 UI 错误扼杀在编译阶段\n- **工程化支持**：CLI 工具链提供 dev/build/fmt 三种模式，内置热更新和代码格式化\n\n对于追求类型安全、高性能和开发效率的 Rust WebAssembly 项目，Euv 是一个值得考虑的优秀选择。随着 Rust 前端生态的不断发展，Euv 有望成为 WebAssembly UI 开发的重要工具。\n\n---",
-    "created_at": "2026-05-27T04:21:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10086"
   }
 ]
