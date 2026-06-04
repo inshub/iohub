@@ -1,5 +1,13 @@
 [
   {
+    "id": 10192,
+    "title": "【文章推荐】代码定义结构，权重存储知识：一个例子看懂大模型推理",
+    "content": "\n为什么模型代码只有几十 KB，权重却动辄几十 GB？\n\n这篇文章用一个只有 3 个参数的天气模型，把“模型结构、权重、加载、显存、推理”完整串起来。\n\n看完你会明白：代码只是蓝图，权重才是模型真正的记忆；\n\n推理也没有玄学，本质就是输入数据穿过这些被训练出来的数字。\n\n- https://mp.weixin.qq.com/s/TM9lv6b-9AH8O9ZiApgTBA",
+    "created_at": "2026-06-04T02:26:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10192"
+  },
+  {
     "id": 10191,
     "title": "投稿：Heron —— 从网络流量被动重建 Agent 调用链的可观测性工具（Rust）",
     "content": "推荐一个自己参与的开源项目 **Heron**（Apache-2.0，Rust）：\n\n- 仓库：https://github.com/Netis/heron\n- 主页：https://heron-ai.pages.dev\n\n它把 LLM / Agent 的可观测性做在**网络层**：不改 SDK、不做代理、不进请求路径，直接从 TLS 终结后的明文 HTTP 流量里，把多步 Agent 交互（planner → tool → planner …）**重建成一个完整的 turn**。支持 OpenAI / Anthropic / Gemini，自动折叠多级代理跳数，识别 vLLM / SGLang / Ollama 后端；对 Claude Code、Codex、Hermes 等 agent 有专门的 turn profile。单文件二进制、内置控制台，`--pcap-file capture.pcap` 回放 30 秒即可体验。",
@@ -808,13 +816,5 @@
     "created_at": "2026-05-27T08:31:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10090"
-  },
-  {
-    "id": 10089,
-    "title": "【开源自荐】Recall Inbox：自托管的 X 书签与 GitHub Stars 处理收件箱",
-    "content": "项目名称：Recall Inbox\n\n项目地址：https://github.com/dynchen/recall-inbox\n\n在线 Demo：https://recall-inbox-demo.kapler.workers.dev\n\n一句话介绍：\n\nRecall Inbox 是一个自托管的个人收藏收件箱，用来同步和整理 X 书签、GitHub Stars 等保存过但容易被遗忘的内容。\n\n项目简介：\n\n很多人会不断收藏帖子、文章和开源项目，但很少真正回看。Recall Inbox 试图把这些零散收藏变成一个可处理的工作流：同步 -> 回顾 -> 标记状态 -> 添加标签/笔记 -> 导出 Markdown。\n\n目前支持：\n\n- 同步 X 书签\n- 同步 GitHub Stars\n- 使用 inbox / keep / action / dismiss 管理收藏状态\n- 添加标签和笔记\n- 导出 Markdown\n- 本地运行，或部署到 Cloudflare Workers + D1 / Vercel + Postgres\n\n适合人群：\n\n- 经常收藏内容但缺少回顾流程的人\n- 想把 GitHub Stars 和 X 书签统一整理的开发者\n- 偏好自托管和 Markdown 工作流的个人知识管理用户\n\n推荐理由：\n\n它不是另一个完整的书签管理器，而是更偏向“收藏后的处理收件箱”。目标是帮助用户定期消化已有收藏，而不是继续堆积更多链接。",
-    "created_at": "2026-05-27T08:29:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10089"
   }
 ]
