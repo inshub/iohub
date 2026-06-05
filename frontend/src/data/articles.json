@@ -1,5 +1,13 @@
 [
   {
+    "id": 10214,
+    "title": "【开源推荐】OpenFiles 一个应用打开 350+ 种格式 — 图片、文档、代码、视频、音频、压缩包等，全部本地处理，保护隐私。",
+    "content": "项目地址：https://github.com/pansysoft/openfiles.desktop\n官网：https://openfiles.pansysoft.app/\n视频演示：https://www.bilibili.com/video/BV1jx9yBQEXz/\n作者记录：[从 Markdown 渲染到通用文件管理：OpenFiles 桌面端的演进之路\n](https://leungwensen.com/blog/the-desktop-evolution-of-openfiles)\n<img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://leungwensen.com/static/images/openfiles-desktop-screenshot.jpg\" />\n\n\n\n安装：跨平台支持\n- Microsoft Store: The easiest way to stay updated on Windows.\n微软商店：Windows 用户最简单的自动更新方式。\n[Get it from Microsoft Store](https://apps.microsoft.com/detail/9n34z0hxdtgk) (或在应用商店搜索 \"OpenFiles\")\n- Official Website: Download the latest installer directly.\n官网下载：直接获取最新版本的安装包。\n[Download from openfiles.pansysoft.app](https://openfiles.pansysoft.app/)\n- GitHub Releases: Download specific versions or portable builds.\nGitHub 发布页：下载特定版本或便携版。\n[View Releases on GitHub](https://github.com/pansysoft/openfiles.desktop/releases)",
+    "created_at": "2026-06-05T18:29:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10214"
+  },
+  {
     "id": 10213,
     "title": "〖开源自荐〗百灵音乐：面向个人音乐库的自托管 Web 音乐播放器",
     "content": "百灵是一个面向个人音乐库的自托管 Web 音乐播放器。它优先服务本地高清曲库，同时补上歌词、元信息修正、离线缓存、公开分享、在线电台、网络曲库和第三方客户端这些日常会用到的能力。\n\n## 百灵能做什么\n### 本地曲库与播放\n扫描一个或多个本地音乐目录，上传音频文件，并按歌曲、专辑、歌手、歌单、文件夹和来源浏览曲库。\n浏览器友好格式直接原样播放，包括 MP3、FLAC、WAV、M4A/AAC、OGG/Vorbis 和 OPUS。\nAIFF、APE、DSF、DFF、DST 等浏览器不一定能直放的格式也可以入库；直放不稳定时，可通过可选 ffmpeg 按需转码播放。\n后端使用 HTTP Range 流式传输，浏览器拖动进度条和跳播更稳定。\n元数据和内嵌封面使用 github.com/dhowden/tag 读取；可选 ffprobe 用于增强时长、采样率、位深和歌词识别。\n支持 CUE 整轨专辑解析，并能跳过异常的非音频 CUE，避免坏 CUE 拦截真实音频文件。\n自动归一部分异常歌手名，保存歌手首字母，并支持 A-Z / # 筛选。\n### 曲库整理\n歌曲、专辑、歌手和歌单列表都支持分页，适合较大的本地曲库。\n专辑、歌手和歌单详情页支持一键播放。\n专辑艺人筛选、歌手首字母筛选、文件夹浏览和来源标签页可以帮助整理不规则曲库。\n收藏按用户独立保存，覆盖歌曲、专辑、歌手和电台。\n歌单支持创建、添加歌曲和详情页播放。\n智能歌单可以自动整理最近播放、最近入库、收藏、未播放、Hi-Res 和待补歌词的歌曲。\n每日推荐会结合收藏、播放历史和当天种子生成。\n播放队列、最近播放来源、续播位置和播放历史可以跨会话保留；播放历史也可以按设备隔离。\n### 歌词与元信息\n优先读取音频文件内嵌歌词；缺少内嵌歌词时，再自动匹配在线歌词。\n自动匹配不准时，可以手动选择歌词候选。\nLRC 解析支持 offset 标签、一行多个时间戳、毫秒精度，以及同一时间戳下的原文/翻译分组。\n歌词支持偏移调整；开启后，在线匹配或手动选择的歌词可以自动保存为同名 .lrc 文件。\n单曲和专辑元信息编辑器支持在线候选、文件路径候选、手动输入、封面 URL 和上传封面。\n支持把修正后的 Tag 和封面直接回写到源音频文件；写入前有确认流程，写入后会显示逐文件结果。\n路径辅助元信息可以在扫描时修正坏 Tag；只有开启 Tag 回写时才会写回源文件。\n## 播放体验\n桌面首页播放样式包括黑胶唱机、磁带卡座、iPod、蓝调音箱、唱片封套和锤子唱机。\n移动端播放样式包括硬件控制台、独立蓝调、音乐编辑器、柔光唱片、舞台玻璃、蓝色光环和锤子经典。\n底部播放器提供播放队列、播放模式、音量、进度、收藏、定时关闭和全屏歌词入口。\n定时关闭支持按时长、按播放首数，或当前专辑结束后停止。\nEQ 预设适用于本地音乐、网络曲库和电台播放。\n可选界面音效会给播放、收藏和分享动作提供轻量反馈。\n布局适配桌面侧栏、Pad 图标侧栏和手机底部导航。\n### 离线、电台与网络曲库\n歌曲可以准备为浏览器侧离线缓存，百灵会显示缓存状态和占用空间。\n可以把听过的歌自动缓存到本机；断网或开启离线模式时优先播放缓存音频。\n在线电台包括内置 cliamp 播放源、自定义播放列表来源、Radio Browser 热门/搜索和电台收藏。\n网络曲库可以连接 Navidrome/Subsonic、Jellyfin 和 Plex，用于搜索和串流播放。\n转码策略和默认码率可以按本地网络、移动流量或低性能设备调整。\n### 分享与外部客户端\n可以为歌曲、专辑、歌手或歌单创建公开播放链接，访问者不需要登录。\n分享链接可以永久有效，也可以设置 1 小时、1 天、7 天或 30 天过期；用户可以管理自己创建的分享。\n可选 Subsonic 兼容服务提供 /rest/*.view 接口，供 Subsonic/Navidrome 客户端连接，并使用单独的 Subsonic 账户。\n百灵提供 MCP SSE 接口给 AI 客户端使用。可用工具包括列出歌手和专辑、搜索歌曲、查看收藏、切换收藏、获取歌词和准备播放 URL。\n播放记录可以同步到 ListenBrainz 或 Last.fm，并支持配置提交阈值。\n## 管理与个性化\n首次启动可创建第一个管理员账号；管理员也可以开启注册。\n设置项覆盖语言、主题、曲库路径、目录状态、目录监控、诊断开关、字体上传、歌词字体和转码策略。\n支持简体中文和英文。中文界面显示 百灵，英文界面显示 Lark。\n主题系统共 21 套：原创深色/浅色主题，Apple Music、Spotify、网易云、Winamp、Foobar2000 致敬深浅主题，以及锤子音乐经典主题。\n上传的 Web 字体可以应用到整个界面，也可以只用于歌词。\n健康信息会显示运行版本、提交、构建时间、Go 版本和媒体后端状态。\n\n软件截图\n\n<img width=\"2525\" height=\"1382\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/62208f7a-3fed-43c0-8023-0fe7b8044327\" />\n\n<img width=\"2537\" height=\"1370\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0460ea14-6921-4f0e-a8b9-ddeb479f407c\" />\n\n<img width=\"2523\" height=\"1382\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a25e21f-a7f1-4ee3-bc56-00b049c57ff2\" />\n\n<img width=\"2526\" height=\"1376\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8482febc-0e2b-4c22-aeaf-af15476dacac\" />\n\n\n<img width=\"2535\" height=\"1379\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/24990612-4457-4522-8643-f44275230583\" />\n\n项目地址  https://github.com/ca-x/lark\n\n",
@@ -804,13 +812,5 @@
     "created_at": "2026-05-29T03:10:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10114"
-  },
-  {
-    "id": 10113,
-    "title": "【网站自荐】 StarVeil AI（星河入梦）： 通过AI创造连载漫画的网站，可以让AI扩写剧情，保持剧情连贯和角色一致性",
-    "content": "StarVeil AI（星河入梦）是一款 AI 驱动的条漫、网漫创作工具。输入故事即可自动生成分镜、角色一致的高清漫画，支持一键导出与发布。\n\n项目地址：[https://starveilai.com/](https://starveilai.com/)\n作者微信：jiajiandu\n\n这是一个刚上线的AI网站，自己每天都在用它创作漫画，欢迎使用\n\n![StarVeil AI](https://starveilai.com/promo/exports/og-image.png?v=20260529-homepage-hero)",
-    "created_at": "2026-05-29T02:48:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10113"
   }
 ]
