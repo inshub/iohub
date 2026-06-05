@@ -1,5 +1,29 @@
 [
   {
+    "id": 10204,
+    "title": "【开源工具自荐】Adnify: 开源 AI 智能 IDE 软件自荐推荐",
+    "content": "# Adnify 开源AI智能IDE软件自荐推荐\n\n<div align=\"center\">\n  <img width=\"153\" height=\"153\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0415bc57-c11c-4c19-b9b7-9cb9fb737211\" />\n</div>\n\n\n## 一、仓库地址\n1. GitHub原版仓库：https://github.com/ad-naan/Adnify\n2. 国内Gitee加速镜像：https://gitee.com/adnaan/adnify\n3. 文档地址：https://github.com/ad-naan/Adnify/blob/master/README_CN.md\n\n<img width=\"800\" height=\"450\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b50f1626-3c53-47c9-80ce-4e5660aedab9\" />\n\n## 二、软件解决的痛点问题\n\n<img width=\"1536\" height=\"445\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e354047-1fdf-404b-828a-d6f717b04942\" />\n\nAdnify是一款AI原生集成的轻量化代码编辑器，针对性解决传统编程工具现存难题：\n1. **传统编辑器AI能力割裂**：VS Code、Cursor等工具AI仅做代码补全，无法自主操作本地文件、运行终端命令、完整落地项目需求，AI和本地环境隔离；\n2. **项目开发碎片化**：代码编写、需求拆解、BUG修复、项目规划分散在聊天软件、终端、编辑器多工具之间，来回切换效率低；\n3. **本地大模型接入繁琐**：现有IDE对接私有/本地LLM配置复杂，缺少原生桥接能力；\n4. **UI臃肿、资源占用高**：主流IDE体积大、启动慢，低配电脑运行卡顿；\n5. **AI无长期上下文记忆**：每次对话需要重复介绍项目结构与业务，沟通成本高。\n\n## 三、核心功能\n\n<img width=\"1920\" height=\"1040\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/64def1e8-a787-4c61-be97-cb6d76f71d9d\" />\n\n### （一）三层AI智能工作模式（项目核心）\n1. **Chat聊天模式**：纯代码问答、代码评审、疑难问题解析、技术方案讨论，AI只输出文字建议，不修改本地文件；\n2. **Agent任务执行模式**：AI获得文件读写、终端运行、代码修改全权限，一键完成功能开发、BUG修复、代码重构、批量文件处理；内置22款系统工具支撑自动化操作；\n3. **Plan项目规划模式**：大型项目分步拆解、任务拆分、进度自动追踪，AI分阶段迭代开发，适配全周期项目落地。\n\n### （二）编辑器基础能力\n1. **内核对标VS Code**：搭载Monaco编辑器内核，全语言语法高亮、LSP语言服务、代码Diff对比、多标签页管理，兼容绝大多数编程语言；\n2. **高颜值轻量化UI**：赛博朋克玻璃拟态设计，Electron+React架构，内存占用远低于VS Code，低配设备流畅运行；\n3. **原生Git集成**：内置版本管理、提交、拉取、合并功能，不用跳转终端。\n\n### （三）安全与扩展能力\n\n<img width=\"1920\" height=\"1040\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/74d04f76-14dc-496b-a70c-3d9f262453a9\" />\n\n1. **多层安全沙箱**：工作区隔离、命令白名单、敏感路径拦截、全操作审计日志，防止AI误删系统文件、执行高危指令；\n2. **多模型自由接入**：原生对接OpenAI、Claude、本地部署LLM，自定义API密钥，支持私有化大模型离线使用；\n3. **可深度二次开发**：全量源码开放，可自定义AI工作流、界面样式、新增工具插件。\n\n### （四）附加实用功能\nAI上下文记忆引擎（跨会话留存项目信息）、内置终端、代码全局索引检索、一键打包编译、自动更新组件。\n\n## 四、安装部署教程\n### 环境前置要求\nNode.js ≥ 18版本、Git；可选安装Python（部分依赖编译需要）\n\n### 方式1：源码编译安装（全平台：Windows/macOS/Linux）\n```bash\n#1. 克隆仓库（国内优先Gitee）\ngit clone https://gitee.com/adnaan/adnify.git\n#github源：git clone https://github.com/ad-naan/Adnify.git\ncd adnify\n\n#2. 安装项目依赖\nnpm install\n\n#3. 开发模式启动（热更新调试）\nnpm run dev\n\n#4. 打包生成桌面安装包（生成文件在release文件夹）\nnpm run dist\n#首次打包需执行：node scripts/generate-icons.js（生成程序图标）\n```\n\n### 方式2：直接使用预编译包\n前往项目Release页面下载对应系统安装包，双击安装后直接打开软件，启动后在设置页填入AI Key即可启用AI功能。\nhttps://github.com/ad-naan/Adnify/releases\n",
+    "created_at": "2026-06-05T03:14:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10204"
+  },
+  {
+    "id": 10203,
+    "title": "【开源自荐】oak-keyring：一个跑在终端里的本地优先密码管理器",
+    "content": "oak-keyring 是一个用 Rust 编写的全屏终端密码管理器（TUI）。数据默认存本地，SQLCipher 端到端加密，不依赖任何云服务，不需要注册账号。\n\n市面上的密码管理器几乎都要求注册云账号、把数据传到他们的服务器。对于每天泡在终端里的开发者，查个密码还得切出去打开浏览器或桌面应用。oak-keyring 让密码管理留在终端里——键盘驱动，搜索/浏览/编辑/生成一条龙。\n\n![demo](https://raw.githubusercontent.com/OpenKeyring/oak-keyring/refs/heads/master/examples/demo.gif)\n\n## 核心特性\n\n🔒 端到端加密 — Argon2id + XChaCha20-Poly1305，零知识架构，只有你持有主密钥\n💻 全屏 TUI — 键盘驱动，搜索/浏览/编辑一条龙，不离开终端\n🏠 本地优先 — 数据存本地 SQLCipher 数据库，无需注册，无需联网\n☁️ 可选云同步 — Google Drive 同步（预览功能），需要时才开启，同步数据同样加密\n🔑 BIP-39 恢复词 — 类似加密钱包的恢复机制，换设备不丢数据\n\n## 安装\n\n### Homebrew (macOS)\n\n```bash\nbrew tap openkeyring/oak-keyring\nbrew install ok\n```\n\n### npm\n\n```bash\nnpm install -g @openkeyring/ok\n```\n\n技术栈：Rust · Ratatui · SQLCipher · BIP-39\n开源协议：MIT\n项目地址：https://github.com/OpenKeyring/oak-keyring",
+    "created_at": "2026-06-05T03:03:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10203"
+  },
+  {
+    "id": 10202,
+    "title": "docs(issue-399): fix typo",
+    "content": null,
+    "created_at": "2026-06-05T00:30:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/10202"
+  },
+  {
     "id": 10201,
     "title": "我的人生进度条 (My Life Progress Bar)",
     "content": "### 项目名称\n我的人生进度条 (My Life Progress Bar)\n\n### 项目地址\nhttps://orara.github.io/lifebar/\n\n### 项目简介\n这是一款致力于帮助用户对抗拖延、提升时间管理意识的自律效率看板。\n\n### 核心功能\n1. **时间实时可视化**：根据出生日期与预期寿命，精确到小数点后四位实时展示“今天、本月、今年、整个人生”的已流逝比例。\n2. **习惯打卡与火苗徽章 (🔥)**：记录每日计划，连续达成可累积火苗徽章，激发自律动力。\n3. **100% 本地隐私安全**：所有日记与配置均保存在用户浏览器的 `localStorage` 中，绝不上传服务器，支持导出为本地 `.json` 备份。\n4. **纸质书籍排版导出**：支持将日常记录一键排版为极具古典书卷质感的 PDF 并直接打印，或导出为 CSV 文件。\n5. **白噪音多路混音器**：内置 Lofi 音乐、雨声、篝火声音量滑动条，可根据自身喜好调配专属的环境音。\n\n非常适合使用闲置的旧 Pad 或智能手机立在桌面上作为时间沙漏和日程看板使用，希望能为广大的效率工具爱好者带来帮助！",
@@ -788,33 +812,5 @@
     "created_at": "2026-05-28T08:40:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10104"
-  },
-  {
-    "id": 10103,
-    "title": "【开源自荐】Flipbook Canvas：AI 无穷画布，AI帮你画出内部图鉴",
-    "content": "\n仓库：https://github.com/imcuttle/flipbook-app\n\n一句话介绍：**在 AI 生成的图片上任意位置长按 2 秒，AI 会推断你点的是什么，必要时联网查资料，然后生成一张子图并把它链回来 —— 一本可以\"点出来\"的可探索画册。** 产品理念参考自 [Flipbook.page](https://flipbook.page) 的\"可探索画册\"思路，用一套自己的开源实现把它跑通。\n\n![Flipbook Canvas 演示](https://raw.githubusercontent.com/imcuttle/flipbook-app/main/docs/assets/demo.gif)\n\n### 它解决什么问题\n\n我自己用 AI 看科普 / 看架构图的时候，经常有这种感觉：图很漂亮，但**图里那个东西到底是什么、它内部又长什么样**，AI 不会主动告诉我，我也懒得复制粘贴去问下一轮。\n\nFlipbook Canvas 把这件事做成了一个动作：**长按图里你想知道的部位 2 秒**，剩下的它来 ——\n\n1. 后端先用一次大模型推断你点击的位置在语义上是什么（比如\"啄木鸟的舌部\"）；\n2. 判断这个主题需不需要联网搜资料，需要就跑一次 web search 把权威来源喂给 planner；\n3. 生成一张细致标注的子图（150–220 字图说 + 20–40 处图内文字注释，像儿童百科图鉴的风格）；\n4. 用钻入动画把你带进去，就像翻进画册的下一层；再次点击同一区域会直接跳进去（空间 + 语义双重去重）。\n\n下面是输入\"啄木鸟\"从零跑完整条流水线的样子：\n\n![从零生成一本\"啄木鸟\"画册](https://raw.githubusercontent.com/imcuttle/flipbook-app/main/docs/assets/woodpecker.gif)\n\n![画廊与画布](https://raw.githubusercontent.com/imcuttle/flipbook-app/main/docs/assets/screenshot.png)\n\n### 几个我自己挺喜欢的细节\n\n- **节点级并发**：同一张父图最多 4 个不同位置同时生成，每个进行中的点击会在热点上流式显示阶段：`推断标签…` → `搜索网络…` → `生成图像…`。达到上限后光标会变成 ⌛。\n- **联网搜索增强**：planner 之前先有一个\"决策再搜索\"的关卡，明显抽象 / 超时态的主题会跳过搜索，时效性强的主题才去查；查到的来源会以 📚 徽标的形式挂在面包屑旁边，鼠标移上去能看完整 source list。\n- **预览分享**：任意 canvas 可以一键生成只读 `?s=<token>` 链接，访客能浏览也能通过 SSE 实时看到作者还在生成的图片刷出来，但不能触发新的生成。\n- **全屏投屏 / 移动端**：⛶ 一键全屏，再切一下隐藏 UI 就剩一张图，适合投屏；移动端顶栏会自动收成图标、画廊变单列。\n- **磁盘格式与静态站兼容**：生成完的 canvas 可以直接喂给一个 skill 脚本导出成纯静态站，反过来把静态站文件夹丢回 `server/data/canvases/` 重启服务也能被自动识别。\n\n### 技术栈\n\nExpress + SSE + SQLite 后端，Vite + React + TS 前端。整条 AI 流水线（planner + 图像生成 + WebSearch）走 [CodeBuddy CLI](https://cnb.cool/codebuddy/codebuddy-code) 子进程驱动，图像 provider 可插拔（默认 CodeBuddy；OpenAI / Nano Banana / Seedream 留好接口位；svg 兜底）。所以这个 repo 顺便也是一份 \"把 CodeBuddy 当作运行时依赖\" 的参考实现。\n\n### 试用\n\n```bash\ngit clone https://github.com/imcuttle/flipbook-app && cd flipbook-app\nnpm install && npm run dev                # stub 模式，秒级响应、无大模型\nENABLE_CODEBUDDY=1 npm run dev:server     # 真实生成\n```\n\n打开 http://127.0.0.1:5173，顶栏输入一个主题就开始。README 中英双语，欢迎开 issue。\n",
-    "created_at": "2026-05-28T08:08:57Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10103"
-  },
-  {
-    "id": 10102,
-    "title": "【工具自荐】LinkPals：一个轻量级友链组件，让多个网站共享一份 friends.json",
-    "content": "LinkPals 是一个面向个人网站、博客和独立项目的轻量级友链组件。\n网址：[https://linkpals.online/](https://linkpals.online/)\n\n它的想法很简单：一个小圈子的多个网站共用一份 friends.json，每个站点只嵌入一段 JS。页面底部默认只展示少量精选友链，完整网络则放在抽屉或 /friends 页面中，避免把每个网站的页脚变成很长的链接列表。\n\n## 想解决的问题\n\n友链和 blogroll 是个人网站时代很有代表性的网页元素，但是现在维护起来有几个麻烦：\n\n1. 每个网站各自维护一份友链，更新成本高，时间久了容易失效。\n2. 每个页脚都展示完整列表，会让页面变得很拥挤。\n3. 如果做成后台系统，又显得过重，不太符合小网站的使用场景。\n\nLinkPals 的目标是把这件事做轻：一份公开 JSON 数据，一个无框架嵌入脚本，一个克制的展示组件。\n\n## 主要功能\n\n- 共享友链列表：多个网站可以共用同一份 `friends.json`。\n- 轻量嵌入：站点只需要添加一段 script，不依赖 React/Vue。\n- 精选展示：页脚默认展示 4 到 8 个链接，而不是全部链接。\n- 完整网络：用户可以通过抽屉或 `/friends` 页面浏览全部站点。\n- 当前站点识别：组件可以避免推荐用户当前正在访问的网站。\n- 可解释排序：根据 featured、权重、标签、分类、相关站点等字段决定展示顺序。\n- 样式隔离：使用 Shadow DOM，减少组件 CSS 与宿主网站冲突。\n- 真实链接：渲染后是普通的 `<a href>` 链接。\n\n## 技术实现\n\n项目采用 Astro 搭建产品页和演示页，核心组件在 `src/widget` 中用 TypeScript 编写，编译后生成一个无框架的 `friends.js`。\n\n数据源是 JSON，基本结构如下：\n\n```json\n{\n  \"version\": 1,\n  \"title\": \"Friends\",\n  \"description\": \"A curated list of independent sites.\",\n  \"sites\": [\n    {\n      \"id\": \"example-site\",\n      \"title\": \"Example Site\",\n      \"url\": \"https://example.com\",\n      \"description\": \"A small independent website.\",\n      \"tags\": [\"Writing\", \"Tools\"],\n      \"category\": \"Knowledge\",\n      \"featured\": true,\n      \"weight\": 10\n    }\n  ]\n}\n```\n\n页面嵌入方式类似下面这样：\n\n```html\n<script\n  src=\"https://example.com/friends.js\"\n  data-src=\"https://example.com/friends.json\"\n  data-current=\"your-site-id\"\n  data-layout=\"featured\"\n  data-style=\"cards\"\n  async\n></script>\n```\n\n此外，项目也在尝试一个很轻的发布流程：用户粘贴一组 URL，服务端抓取页面标题、描述、favicon 等元信息，生成初始友链列表；发布后得到一个稳定的公开 JSON 地址，以及用于后续更新的 update key。\n\n## 适合场景\n\n- 个人博客之间互相推荐。\n- 独立开发者的多个小产品互相导流。\n- 小型创作者社区维护成员站点目录。\n- newsletter 或内容项目共享常读网站。\n- 开源项目生态推荐相关工具、文档和教程。\n\n## 设计取舍\n\n我不太想把它做成一个完整的友链后台，也不想做成站长社交网络或链接交易平台。它更像一个小组件：让仍然维护个人网站的人，可以用比较低的成本恢复一点“从一个网站发现另一个网站”的体验。\n\n\n<img width=\"2500\" height=\"1448\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6527a234-4329-46c7-a2f7-cdf6c86b3e1b\" />\n<img width=\"2422\" height=\"1746\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4af815d4-92ea-4652-8a2a-a4e9c71a4bba\" />\n<img width=\"3020\" height=\"1770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/85d615a6-ae46-42d2-adc1-8354783a19da\" />\n",
-    "created_at": "2026-05-28T06:23:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10102"
-  },
-  {
-    "id": 10101,
-    "title": "【开源工具】Android端的ADB管理工具箱，多功能可视化管理安卓设备的APP 🎉🎉🎉",
-    "content": "## sky adb\n\nsky adb 是一款运行在 Android 手机上的 ADB 管理工具，用于通过 WiFi ADB / Wireless Debugging 管理手机、平板、电视和盒子。\n\n**项目地址：https://github.com/sky22333/skyadb**\n\n## 功能特性\n\n- 无线调试配对、连接、断开和最近设备记录\n- 局域网自动发现和网段扫描，快速发现 adb 设备\n- 查看设备基础信息、连接状态和截图\n- 应用列表、分类筛选、搜索、启动、停止和卸载\n- 本地 APK 安装，在线下载 APK 后安装到目标设备\n- 本机用户应用导出并安装到目标设备\n- 在线下载文件并推送到目标设备\n- 目标设备文件管理、目录浏览、本地文件上传和设备文件下载\n- 设备截图预览，需要时再保存到本机\n- 目标设备系统日志查看和复制\n- 模拟物理按键、虚拟遥控器和屏幕镜像\n- Shell 命令执行和输出查看\n- 诊断日志记录错误信息，便于排查连接和功能异常\n- scrcpy屏幕镜像\n\n## 界面预览\n\n<div style=\"display:inline-block\">\n<img src=\"https://cdn.jsdelivr.net/gh/sky22333/skyadb@main/docs/img/demo1.jpg\" alt=\"demo1\" width=\"230\">\n<img src=\"https://cdn.jsdelivr.net/gh/sky22333/skyadb@main/docs/img/demo2.jpg\" alt=\"demo2\" width=\"230\">\n<img src=\"https://cdn.jsdelivr.net/gh/sky22333/skyadb@main/docs/img/demo3.jpg\" alt=\"demo2\" width=\"230\">\n</div>\n\n",
-    "created_at": "2026-05-28T04:56:13Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10101"
   }
 ]
