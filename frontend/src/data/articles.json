@@ -1,5 +1,29 @@
 [
   {
+    "id": 10213,
+    "title": "〖开源自荐〗百灵音乐：面向个人音乐库的自托管 Web 音乐播放器",
+    "content": "百灵是一个面向个人音乐库的自托管 Web 音乐播放器。它优先服务本地高清曲库，同时补上歌词、元信息修正、离线缓存、公开分享、在线电台、网络曲库和第三方客户端这些日常会用到的能力。\n\n## 百灵能做什么\n### 本地曲库与播放\n扫描一个或多个本地音乐目录，上传音频文件，并按歌曲、专辑、歌手、歌单、文件夹和来源浏览曲库。\n浏览器友好格式直接原样播放，包括 MP3、FLAC、WAV、M4A/AAC、OGG/Vorbis 和 OPUS。\nAIFF、APE、DSF、DFF、DST 等浏览器不一定能直放的格式也可以入库；直放不稳定时，可通过可选 ffmpeg 按需转码播放。\n后端使用 HTTP Range 流式传输，浏览器拖动进度条和跳播更稳定。\n元数据和内嵌封面使用 github.com/dhowden/tag 读取；可选 ffprobe 用于增强时长、采样率、位深和歌词识别。\n支持 CUE 整轨专辑解析，并能跳过异常的非音频 CUE，避免坏 CUE 拦截真实音频文件。\n自动归一部分异常歌手名，保存歌手首字母，并支持 A-Z / # 筛选。\n### 曲库整理\n歌曲、专辑、歌手和歌单列表都支持分页，适合较大的本地曲库。\n专辑、歌手和歌单详情页支持一键播放。\n专辑艺人筛选、歌手首字母筛选、文件夹浏览和来源标签页可以帮助整理不规则曲库。\n收藏按用户独立保存，覆盖歌曲、专辑、歌手和电台。\n歌单支持创建、添加歌曲和详情页播放。\n智能歌单可以自动整理最近播放、最近入库、收藏、未播放、Hi-Res 和待补歌词的歌曲。\n每日推荐会结合收藏、播放历史和当天种子生成。\n播放队列、最近播放来源、续播位置和播放历史可以跨会话保留；播放历史也可以按设备隔离。\n### 歌词与元信息\n优先读取音频文件内嵌歌词；缺少内嵌歌词时，再自动匹配在线歌词。\n自动匹配不准时，可以手动选择歌词候选。\nLRC 解析支持 offset 标签、一行多个时间戳、毫秒精度，以及同一时间戳下的原文/翻译分组。\n歌词支持偏移调整；开启后，在线匹配或手动选择的歌词可以自动保存为同名 .lrc 文件。\n单曲和专辑元信息编辑器支持在线候选、文件路径候选、手动输入、封面 URL 和上传封面。\n支持把修正后的 Tag 和封面直接回写到源音频文件；写入前有确认流程，写入后会显示逐文件结果。\n路径辅助元信息可以在扫描时修正坏 Tag；只有开启 Tag 回写时才会写回源文件。\n## 播放体验\n桌面首页播放样式包括黑胶唱机、磁带卡座、iPod、蓝调音箱、唱片封套和锤子唱机。\n移动端播放样式包括硬件控制台、独立蓝调、音乐编辑器、柔光唱片、舞台玻璃、蓝色光环和锤子经典。\n底部播放器提供播放队列、播放模式、音量、进度、收藏、定时关闭和全屏歌词入口。\n定时关闭支持按时长、按播放首数，或当前专辑结束后停止。\nEQ 预设适用于本地音乐、网络曲库和电台播放。\n可选界面音效会给播放、收藏和分享动作提供轻量反馈。\n布局适配桌面侧栏、Pad 图标侧栏和手机底部导航。\n### 离线、电台与网络曲库\n歌曲可以准备为浏览器侧离线缓存，百灵会显示缓存状态和占用空间。\n可以把听过的歌自动缓存到本机；断网或开启离线模式时优先播放缓存音频。\n在线电台包括内置 cliamp 播放源、自定义播放列表来源、Radio Browser 热门/搜索和电台收藏。\n网络曲库可以连接 Navidrome/Subsonic、Jellyfin 和 Plex，用于搜索和串流播放。\n转码策略和默认码率可以按本地网络、移动流量或低性能设备调整。\n### 分享与外部客户端\n可以为歌曲、专辑、歌手或歌单创建公开播放链接，访问者不需要登录。\n分享链接可以永久有效，也可以设置 1 小时、1 天、7 天或 30 天过期；用户可以管理自己创建的分享。\n可选 Subsonic 兼容服务提供 /rest/*.view 接口，供 Subsonic/Navidrome 客户端连接，并使用单独的 Subsonic 账户。\n百灵提供 MCP SSE 接口给 AI 客户端使用。可用工具包括列出歌手和专辑、搜索歌曲、查看收藏、切换收藏、获取歌词和准备播放 URL。\n播放记录可以同步到 ListenBrainz 或 Last.fm，并支持配置提交阈值。\n## 管理与个性化\n首次启动可创建第一个管理员账号；管理员也可以开启注册。\n设置项覆盖语言、主题、曲库路径、目录状态、目录监控、诊断开关、字体上传、歌词字体和转码策略。\n支持简体中文和英文。中文界面显示 百灵，英文界面显示 Lark。\n主题系统共 21 套：原创深色/浅色主题，Apple Music、Spotify、网易云、Winamp、Foobar2000 致敬深浅主题，以及锤子音乐经典主题。\n上传的 Web 字体可以应用到整个界面，也可以只用于歌词。\n健康信息会显示运行版本、提交、构建时间、Go 版本和媒体后端状态。\n\n软件截图\n\n<img width=\"2525\" height=\"1382\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/62208f7a-3fed-43c0-8023-0fe7b8044327\" />\n\n<img width=\"2537\" height=\"1370\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0460ea14-6921-4f0e-a8b9-ddeb479f407c\" />\n\n<img width=\"2523\" height=\"1382\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a25e21f-a7f1-4ee3-bc56-00b049c57ff2\" />\n\n<img width=\"2526\" height=\"1376\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8482febc-0e2b-4c22-aeaf-af15476dacac\" />\n\n\n<img width=\"2535\" height=\"1379\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/24990612-4457-4522-8643-f44275230583\" />\n\n项目地址  https://github.com/ca-x/lark\n\n",
+    "created_at": "2026-06-05T15:51:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10213"
+  },
+  {
+    "id": 10212,
+    "title": "【开源自荐】Album Explorer：本地部署的 AI 智能相册系统，支持语义搜索、地图浏览、人脸识别、自动聚类",
+    "content": "  上周自荐了上游数据管线 album-assetizer（#10140），本项目是配套的可视化前端，将生成的图像语义数据变成可搜索、可探索的多维度智能相册系统。所有数据本地存储，无需云端依赖。\n项目链接：https://github.com/SeanWong17/album-explorer\n![screenshot](https://github.com/SeanWong17/album-explorer/blob/main/docs/images/screenshot.png?raw=true)\n![map](https://github.com/SeanWong17/album-explorer/blob/main/docs/images/screenshot-map.png?raw=true)\n![tags](https://github.com/SeanWong17/album-explorer/blob/main/docs/images/screenshot-tags.png?raw=true)\n\n  主要功能：\n\n  - 语义搜索：支持多关键词组合检索 + 子串模糊匹配\n  - 地图模式：基于 GPS 信息在地图上聚合展示照片，支持城市气泡和单点定位\n  - 时间线：按月分组浏览，懒加载，支持批量操作\n  - 自动聚类：基于图像 embedding 的 HDBSCAN 聚类，自动生成主题相册\n  - 人脸识别：InsightFace 检测 + 聚类，支持人物命名、合并、按人浏览\n  - 标签图谱：D3 力导向图可视化标签共现关系\n  - 相似推荐：预计算 Top-K 邻居，即时推荐相似照片\n\n  技术栈：FastAPI + Vue 3 + SQLite + TailwindCSS，支持 Docker 一键部署",
+    "created_at": "2026-06-05T14:52:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10212"
+  },
+  {
+    "id": 10211,
+    "title": "【工具自荐】Agenton v0.2.0 — Claude/Codex实时监控桌面悬浮窗",
+    "content": "## 介绍\n\n- 一个 Native 原生 App\n- 实时掌握 Claude 与 Codex 的状态\n- 在桌面实时观察你的 Agent\n  - Claude 与 Codex 的活动状态、活跃会话与用量限额\n  - 始终置顶的悬浮监控窗。\n- 官网: https://agenton.xmagicer.com/\n\n## 功能\n- 实时状态监控\n- 活跃会话监控\n- 优雅悬浮窗\n- 用量限额展示\n\n## 悬浮窗\nhttps://github.com/user-attachments/assets/4140f7e5-0602-4ece-8ad0-0569015be5fb\n## 截图\n\n<img width=\"680\" height=\"896\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5337c089-81ad-4274-a0cb-95faf9277041\" />\n<img width=\"680\" height=\"896\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b121095a-16ee-4dc3-8a15-7169bf707a6f\" />\n",
+    "created_at": "2026-06-05T13:31:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10211"
+  },
+  {
     "id": 10210,
     "title": "【开源自荐】Seedance 2.0 真人脸视频生成指南：官方分身、角色库和授权工作流",
     "content": "仓库地址： https://github.com/ZeroLu/seedance2.0-how-to\n\n最近给这个 Seedance 2.0 使用指南仓库新增了一篇真人脸视频生成专题：\n\nhttps://github.com/ZeroLu/seedance2.0-how-to/blob/main/how-to-use-real-face-in-Seedance2.0.md\n\n这篇主要整理了几条更稳定、也更适合长期使用的真人脸视频工作流：\n\n1. 即梦 App 的官方真人分身录入\n2. XYQ 的真人形象录入和角色库\n3. 面向海外用户的授权合作方工作流\n4. 做真人脸视频时需要注意的授权和合规风险\n\n## 这个网站支持真实人脸，无需任何预处理👉 https://cyberbara.com/zh/seedance2.0\n\n下面是文章里的一些实际操作和结果预览。\n\n## 即梦真人分身录入\n\n即梦可以把自己的脸录入成已验证资产，后续生成视频时直接引用这个分身。\n\n![](https://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/jimeng-scan-preview.gif)\n\n原始录入视频：\nhttps://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/jimeng-scan.mp4\n\n生成结果预览：\n\n![](https://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/jimeng-result-preview.gif)\n\n原始结果视频：\nhttps://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/jimeng-result.mp4\n\n## XYQ 真人形象录入\n\nXYQ 也支持录制真人形象，适合已经在使用字节系创作工具的用户。\n\n![](https://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/xyq-scan-preview.gif)\n\n原始录入视频：\nhttps://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/xyq-scan.mp4\n\n## Cyberbara 授权工作流\n\n对海外用户，或者不想折腾中文 App 和扫码录脸的人来说，Cyberbara 这条线更短：\n\n1. 打开 https://cyberbara.com/zh/seedance2.0\n2. 上传真人图\n3. 选择 Seedance 2.0 模型\n4. 写 prompt 后直接生成视频\n\nCanvas 入口：\n\n![](https://static.nanobananaproprompts.com/article_upload/cyberbara-canvas-entry.jpg)\n\n模型选择：\n\n![](https://static.nanobananaproprompts.com/article_upload/cyberbara-model-select.jpg)\n\n输入 prompt 并生成：\n\n![](https://static.nanobananaproprompts.com/article_upload/cyberbara-prompt-generate.jpg)\n\n生成结果预览：\n\n![](https://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/cyberbara-result-preview.gif)\n\n原始结果视频：\nhttps://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/cyberbara-result.mp4\n\n## 相关资源\n\n- Seedance 2.0 使用指南仓库：https://github.com/ZeroLu/seedance2.0-how-to\n- 真人脸专题指南：https://github.com/ZeroLu/seedance2.0-how-to/blob/main/how-to-use-real-face-in-Seedance2.0.md\n- Cyberbara 中文版 Seedance 2.0：https://cyberbara.com/zh/seedance2.0\n- Seedance 2.0 提示词仓库：https://github.com/ZeroLu/awesome-seedance\n\n这份指南会继续更新 Seedance 2.0 的访问方式、真人脸工作流、提示词案例和平台状态。",
@@ -60,7 +84,9 @@
     "title": "【开源自荐】oak-keyring：一个跑在终端里的本地优先密码管理器",
     "content": "oak-keyring 是一个用 Rust 编写的全屏终端密码管理器（TUI）。数据默认存本地，SQLCipher 端到端加密，不依赖任何云服务，不需要注册账号。\n\n市面上的密码管理器几乎都要求注册云账号、把数据传到他们的服务器。对于每天泡在终端里的开发者，查个密码还得切出去打开浏览器或桌面应用。oak-keyring 让密码管理留在终端里——键盘驱动，搜索/浏览/编辑/生成一条龙。\n\n![demo](https://raw.githubusercontent.com/OpenKeyring/oak-keyring/refs/heads/master/examples/demo.gif)\n\n## 核心特性\n\n🔒 端到端加密 — Argon2id + XChaCha20-Poly1305，零知识架构，只有你持有主密钥\n💻 全屏 TUI — 键盘驱动，搜索/浏览/编辑一条龙，不离开终端\n🏠 本地优先 — 数据存本地 SQLCipher 数据库，无需注册，无需联网\n☁️ 可选云同步 — Google Drive 同步（预览功能），需要时才开启，同步数据同样加密\n🔑 BIP-39 恢复词 — 类似加密钱包的恢复机制，换设备不丢数据\n\n## 安装\n\n### Homebrew (macOS)\n\n```bash\nbrew tap openkeyring/oak-keyring\nbrew install ok\n```\n\n### npm\n\n```bash\nnpm install -g @openkeyring/ok\n```\n\n技术栈：Rust · Ratatui · SQLCipher · BIP-39\n开源协议：MIT\n项目地址：https://github.com/OpenKeyring/oak-keyring",
     "created_at": "2026-06-05T03:03:56Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10203"
   },
   {
@@ -786,31 +812,5 @@
     "created_at": "2026-05-29T02:48:21Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10113"
-  },
-  {
-    "id": 10112,
-    "title": "【工具自荐】出海团队一站式查看全球200多个国家的法定假期",
-    "content": "产品名称：World Holidays\n\n产品地址：[https://worldholidays.me/](https://worldholidays.me/)\n\n一句话介绍：让出海团队、远程工作团队快速了解客户和团队的工作时间和假期。\n\n产品特性：\n- 免登录、完全免费\n- 支持查看全球200多个国家的法定假期\n- 支持多选国家对比假日，并生成分享链接，方便发给客户或同事\n- 额外提供了\"今日全球放假概览\"和世界时钟功能\n\n![](https://img.way2solo.com/photo/ChengPu/fcee314b-b860-40a5-8d53-d8aa8dc3ef0f.png?imageView2/2/w/1920/q/100)\n\n![](https://img.way2solo.com/photo/ChengPu/3f259b2c-3717-48cc-84f0-e16f89e7510e.png?imageView2/2/w/1920/q/100)\n\n![](https://img.way2solo.com/photo/ChengPu/79431cce-7d2d-496a-af27-383327dde837.png?imageView2/2/w/1920/q/100)\n\n![](https://img.way2solo.com/photo/ChengPu/a1f1aa37-0c2f-407b-9abc-5876ea5d7a04.png?imageView2/2/w/1920/q/100)\n",
-    "created_at": "2026-05-29T02:46:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10112"
-  },
-  {
-    "id": 10111,
-    "title": "【开源自荐】js-full-stack  全栈前端工程师培训教程",
-    "content": "- https://github.com/yanyue404/js-full-stack\n\n基于 王自如招聘 01 号员工，并给出岗位 JD 启发该教程\n\n## 全栈前端工程师培训教程\n\n帮助前端工程师系统性地掌握全栈开发能力，覆盖前端、后端、数据库、运维、AI 应用与混合开发全链路，成为能独立交付线上产品的全栈前端工程师。\n\n一共八讲，适合 4-6 周的系统学习。每讲包含知识讲解与课堂练习。\n\n## 课程目录\n\n第一讲：[前端基础与 React 技术栈](https://github.com/yanyue404/js-full-stack/blob/main/docs/01-react.md)\n第二讲：[TypeScript 深入与前端工程化](https://github.com/yanyue404/js-full-stack/blob/main/docs/02-typescript.md)\n第三讲：[Node.js 后端开发](https://github.com/yanyue404/js-full-stack/blob/main/docs/03-node.md)\n第四讲：[数据库与数据建模](https://github.com/yanyue404/js-full-stack/blob/main/docs/04-database.md)\n第五讲：[Docker 与部署运维](https://github.com/yanyue404/js-full-stack/blob/main/docs/05-docker.md)\n第六讲：[AI 应用工程](https://github.com/yanyue404/js-full-stack/blob/main/docs/06-ai.md)\n第七讲：[混合应用与 WebView](https://github.com/yanyue404/js-full-stack/blob/main/docs/07-hybrid.md)\n第八讲：[生产实战与可观测性](https://github.com/yanyue404/js-full-stack/blob/main/docs/08-production.md)",
-    "created_at": "2026-05-29T02:24:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10111"
-  },
-  {
-    "id": 10110,
-    "title": "【开源自荐】readNeo - 微信读书数据面板",
-    "content": "# readNeo：把微信读书变成属于自己的阅读数据中心\n\n最近做了一个小工具：**[readNeo](https://readneo.vercel.app?ref=weekly)**。\n\n它基于微信读书 Skill API，可以把微信读书里的书架、阅读统计、笔记划线整理成一个更易浏览、更方便导出的个人阅读面板。\n\n## 为什么做这个产品\n\n微信读书积累了很多阅读数据：\n\n* 看过什么书\n* 每天读了多久\n* 划过哪些重点\n* 写过哪些笔记\n\n但这些内容大多散落在 App 内部。\n\n我希望能够：\n\n* 更方便地回顾自己的阅读历程\n* 统计长期阅读习惯\n* 管理所有划线和笔记\n* 导出到自己的知识库\n\n于是做了 readNeo。\n\n## 大图预览\n\n<img width=\"2626\" height=\"1966\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5aca5dfd-ec49-4d82-ac76-9e9bb1b08777\" />\n\n<img width=\"3576\" height=\"2016\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e08c098e-e465-412c-8d7c-c36523dbaef5\" />\n\n## 主要功能\n\n📚 **书架管理**\n\n同步微信读书书架，查看全部藏书与阅读进度。\n\n📊 **阅读统计**\n\n可视化阅读时长、阅读天数和趋势变化，更直观地了解自己的阅读习惯。\n\n✍️ **笔记与划线**\n\n按照书籍分类查看所有划线和笔记，支持快速复制和回顾。\n\n🔍 **书城搜索**\n\n直接搜索微信读书书城内容，支持电子书、网文、听书等分类。\n\n🎯 **个性化推荐**\n\n基于微信读书推荐体系获取适合自己的书籍推荐。\n\n📝 **数据导出**\n\n支持导出 Markdown ZIP，可同步到：\n\n* Flomo\n* Notion\n* Obsidian\n* 其他支持 Markdown 的知识库\n\n## 隐私说明\n\n所有数据仅保存在浏览器本地。\n\n不会上传阅读数据，不会建立用户数据库。\n\nAPI 请求通过服务端代理转发，仅用于访问微信读书开放的 Skill API。\n\n## 使用方法\n\n1. 打开微信读书\n2. 进入「我 → 设置 → 微信读书 Skill」\n3. 复制生成的 API Key\n4. 打开 readNeo\n5. 粘贴 API Key 即可开始使用\n\n## 技术栈\n\n* Next.js 16\n* Tailwind CSS v4\n* shadcn/ui\n* Recharts\n* SWR\n* Zustand\n\n如果你也是微信读书重度用户，希望更好地管理自己的阅读数据，欢迎体验并提出建议。\n",
-    "created_at": "2026-05-29T02:09:23Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10110"
   }
 ]
