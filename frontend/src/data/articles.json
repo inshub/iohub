@@ -1,5 +1,21 @@
 [
   {
+    "id": 10231,
+    "title": "【开源自荐】Tutti 是一个 macOS 菜单栏小工具，让你的多个扬声器同时播放同一段声音。",
+    "content": "# Tutti\n\n**一个声音，响遍全场**\n\n<img width=\"1920\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a2924f7b-eb95-4e3d-9ee8-56e612e6ca05\" />\n\nTutti 是一个 macOS 菜单栏小工具，让同一份声音同时从多个输出设备播放。\nmacOS 的系统音频一次只能播放一个设备，想边外放边戴耳机、或者让客厅和卧室两组音箱一起响，系统自带的音量功能做不到，需要去 MIDI 里进行设置。\nTutti 补上了这个缺口。不用装任何虚拟音频驱动，也没有内核扩展，全部用苹果自带的 CoreAudio 框架实现。在菜单栏勾选多个输出，Tutti 会临时搭一个聚合设备，让每个设备同时发声；退出时原来的输出干净恢复，不留后台进程，也不留垃圾设备。\n\n## 使用场景\n\n- 家里多台蓝牙音响，同时播放一首歌曲，每个房间的音乐同步。\n- 一台 Mac 能同时连两副、甚至三副 AirPods。在咖啡馆不方便外放？你和朋友一人戴一副，一起看同一部电影、听同一首歌。\n- 老师上课时，可以通过耳机监听自己的声音，同时让现场的观众和学生听到功放的声音。直播、录课同理：自己戴耳机听，声音照常外放。\n- 任何\"想让同一份声音同时去几个地方\"的场景。\n\n## 核心功能\n\n**多设备同步输出**，在菜单栏勾选有线音箱、、蓝牙耳机、AirPods、显示器的任意组合，同一个声音同时播，完全同步。\n\n**音量控制**，一个主音量统一调全组，每个设备还能单独调音量和静音。\n\n**蓝牙电量**，连着的蓝牙耳机电量直接显示在面板里，不用再去系统里查。\n\n**替代系统音量图标**，可以把 Tutti 设成菜单栏那个音量图标，按音量键时弹的也是它自己的 OSD。\n\n**快捷键增强**，键盘音量键和滚轮直接控制整组输出，还能把常用的设备组合存成预设，一键切换。\n\n## 主要能力\n\n源码在 GitHub 上公开（PolyForm Noncommercial 许可）。支持 9 种语言，需要 macOS 13 及以上。\n\n官网：https://www.tutti.barrybarrywu.com\nGithub：https://github.com/BarryBarrywu/tutti\n",
+    "created_at": "2026-06-07T03:10:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10231"
+  },
+  {
+    "id": 10230,
+    "title": "[开源自荐] UpBrowser 基于.NET的跨平台浏览器引擎",
+    "content": "# UpBrowser\n\n一个用 C# 和 SkiaSharp 构建的现代浏览器引擎。\nhttps://github.com/AVBMaster/UpBrowser\n项目旨在帮助对浏览器底层原理感兴趣的开发者轻松学习（与庞大臃肿的chromium相比，UpBrowser更加轻量模块化，更易于学习）\n\n## 功能特性\n\n- **自制布局引擎**：支持 CSS Block、Inline、Flexbox、Grid、Table 等布局模式\n- **文本渲染**：使用 SkiaSharp 进行高质量文本渲染和测量\n- **DOM 解析**：基于 AngleSharp 的 HTML 解析器\n- **JavaScript 支持**：集成 Jint/v8 JavaScript 引擎\n- **硬件加速**：支持 OpenGL GPU 加速\n\n## 构建要求\n\n- .NET 10.0 SDK\n- Windows/macOS/Linux 操作系统（当前仅支持Windows系统）\n\n## 布局引擎特性\n\n### 已实现的布局模式\n\n1. **Block 布局**\n   - margin collapsing（外边距折叠）\n   - float 浮动元素\n   - clear 清除浮动\n\n2. **Inline 布局**\n   - 文本换行\n   - inline-block 元素\n   - 文本对齐\n\n3. **Flexbox 布局**\n   - flex-direction（主轴方向）\n   - flex-wrap（换行）\n   - justify-content（主轴对齐）\n   - align-items（交叉轴对齐）\n   - align-self（单个项目对齐）\n\n4. **绝对定位**\n   - containing block 计算\n   - auto margin 居中\n   - fixed/absolute 定位\n\n5. **表格布局**\n   - 多列宽度计算\n   - 表格单元格布局\n\n### 文本测量\n\n使用 SkiaSharp 进行精确的文本宽度测量，确保文本渲染的准确性。\n\n## 技术栈\n\n- **SkiaSharp**：2D 图形渲染\n- **AngleSharp**：HTML/CSS 解析\n- **ClearScript/Jint**：多种JavaScript 引擎无缝切换\n- **.NET 10**：运行时\n\n## 开发计划\n\n- [ ] 完善 CSS 布局\n- [ ] 支持更多 CSS 属性\n- [ ] 性能优化\n- [ ] DevTools 调试工具\n- [ ] 网络请求支持\n- [ ] JS功能完善\n- [ ] 跨平台支持\n\n## 贡献与建议\n\nUpBrowser浏览器还处于一个非常初期的阶段，很多浏览器的功能与特性需要逐步完善。\n浏览器引擎的开发是一个复杂且长期的过程，热烈欢迎社区贡献代码和提出建议！\n\n## 许可证\n\nMIT License\n",
+    "created_at": "2026-06-06T23:52:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10230"
+  },
+  {
     "id": 10229,
     "title": "【推荐工具】AI 编码 Agent 在会议室连续喊了三次「Mission Accomplished」",
     "content": "<img width=\"1536\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c104c770-0c02-437d-bd3f-8711b1d1d886\" />\n\n最近我开始大量使用 AI 编码工具处理一些重复性的开发工作。\n\n以前写代码的时候，人基本都坐在电脑前等结果。\n\n现在不一样了。\n\n很多任务交给 Agent 之后，我会直接让它在后台运行：\n\n* 修改代码\n* 修复问题\n* 编写测试\n* 重构模块\n\n然后去做别的事情。\n\n为了知道任务什么时候完成，我给完成通知设置了一个特别的声音。\n\n《红色警戒》里的经典语音：\n\n> Mission Accomplished.\n\n效果非常好。\n\n每次听到这个声音，我就知道 Agent 又干完了一件活。\n\n---\n\n直到有一天。\n\n我离开工位去参加一个会议。\n\n会议刚开始没多久。\n\n突然。\n\n会议室外面传来一声：\n\n> Mission Accomplished.\n\n我愣了一下。\n\n心想：\n\n谁还在玩《红色警戒》？\n\n过了几分钟。\n\n又来一次：\n\n> Mission Accomplished.\n\n这次我感觉有点不对劲。\n\n然后。\n\n第三次：\n\n> Mission Accomplished.\n\n这时候我终于意识到：\n\n那是我的电脑。\n\n---\n\n原来在我离开工位后，蓝牙耳机断开了连接。\n\n而 macOS 按照默认逻辑，自动把音频输出切换回了内置扬声器。\n\n与此同时，后台运行的几个 AI 编码任务陆续完成。\n\n于是电脑开始认真地向整个办公室汇报工作成果。\n\n> Mission Accomplished.\n\n> Mission Accomplished.\n\n> Mission Accomplished.\n\n那一刻，所有人都知道我的 Agent 今天工作很努力。\n\n---\n\n事后想想。\n\n问题其实不在通知音。\n\n也不在 AI Agent。\n\nmacOS 的行为完全符合预期。\n\n耳机断开了。\n\n系统总要找一个新的输出设备。\n\n大多数情况下，它会切换到内置扬声器。\n\n逻辑上没有任何问题。\n\n但现实里并不总是这样。\n\n很多时候，我们根本不希望声音继续播放。\n\n例如：\n\n* 在办公室\n* 在会议室\n* 在共享空间\n* 深夜工作\n* 离开工位时\n* 后台运行长时间任务时\n\n这些场景下。\n\n突然外放不是方便。\n\n而是尴尬。\n\n---\n\n于是我开始寻找解决方案。\n\n我找到了一些音频路由工具。\n\n找到了一些自动化工具。\n\n甚至找到了一些需要编写脚本的方案。\n\n但始终没有找到一个足够简单的工具。\n\n我真正想要的功能只有一句话：\n\n> 当耳机断开并切换到内置扬声器时，立即静音。\n\n仅此而已。\n\n---\n\n既然找不到。\n\n那就自己做一个。\n\n于是有了 QuietSwitch。\n\n它是一个运行在 macOS 菜单栏中的小工具。\n\n当检测到：\n\n耳机 → 内置扬声器\n\n这个切换发生时，\n\n立即自动静音。\n\n避免任何意外外放。\n\n没有账号。\n\n没有云服务。\n\n没有复杂配置。\n\n没有数据收集。\n\n只解决一个问题。\n\n---\n\n有趣的是。\n\n我觉得这个问题未来可能会越来越常见。\n\n随着 AI Agent 和自动化工具越来越普及。\n\n越来越多的人会把任务交给电脑，然后离开工位。\n\n而任务完成通知、语音提醒、自动播放内容，也会越来越频繁地出现在人不在电脑前的时候。\n\n软件变得越来越智能。\n\n但有时候。\n\n我们需要的并不是更智能的软件。\n\n而是一个简单的保险丝。\n\nQuietSwitch 就是这样一个小工具。\n\n它诞生于一次有点尴尬的会议事故。\n\n但我始终相信。\n\n很多好产品，最开始都只是开发者想解决自己的一个小麻烦。\n\n---\n\n<img width=\"1536\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/14593841-43c5-4dbb-929d-bf367703c7a4\" />\n\n项目地址：\n\nhttps://quietswitch.pages.dev\n\nApp Store：\n\nhttps://apps.apple.com/us/app/quietswitch/id6772697874?mt=12\n",
@@ -796,21 +812,5 @@
     "created_at": "2026-05-29T15:18:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10131"
-  },
-  {
-    "id": 10130,
-    "title": "【工具自荐】Qwerty Learner APP版本，一个免费无需注册登录的英语单词学习工具",
-    "content": "APP名称：[Qwerty Learner](https://idoras.com/)\nAPP简介：一款专为程序员与英语学习者设计的单词记忆工具。 在高效练习打字的同时，通过肌肉记忆牢记词汇，让你的指尖成为学习的利器。\n网站地址：https://idoras.com/\n谷歌play地址：https://play.google.com/store/apps/details?id=qwerty.liusha.com\nappstroe 地址： https://apps.apple.com/us/app/qwerty-learner/id6766206222\n华为商店地址： https://appgallery.huawei.com/app/detail?id=qwerty.liusha.com\n微信小程序码：\n![](https://idoras.com/mini.png)",
-    "created_at": "2026-05-29T13:57:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10130"
-  },
-  {
-    "id": 10129,
-    "title": "【开源推荐】retitle：自动重命名空闲的 Claude Code / Codex / Cursor 会话",
-    "content": "Claude Code、Codex、Cursor 都只用**第一条消息**给会话命名，之后标题就再也不变了。聊了两个小时，侧边栏还写着最初那句话；几十个会话攒下来，根本没法靠标题找回记录。\n\n**retitle** 是一个后台小工具：当某个会话空闲约 5 分钟，就根据最新内容把它的标题重写一遍——Claude Code、Codex、Cursor 三个工具都支持。\n\n特点：\n\n- **纯 Python，零第三方依赖**；\n- 默认用**离线启发式**命名，不需要 API key、不产生费用；也可一行配置切到 `claude` / `codex` 命令行，或 Anthropic / OpenAI API 生成更精炼的标题；\n- **只在本地读写、只改标题字段**，不碰对话内容；**幂等**，且**尊重你手动改的标题**（除非对话又有新进展）；\n- 按每个工具的存储格式分别写回（Claude Code 追加 `ai-title` 行、Codex 改 SQLite、Cursor 改 `state.vscdb`）；\n- `retitle install` 一行装成后台服务（macOS launchd / Linux systemd），每分钟自动运行。\n\n仓库（MIT，含中英文 README）：https://github.com/study8677/retitle\n",
-    "created_at": "2026-05-29T13:02:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10129"
   }
 ]
