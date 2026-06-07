@@ -1,5 +1,45 @@
 [
   {
+    "id": 10241,
+    "title": "【自荐】@webc.site/math - 全球最小最快的网页 Markdown 公式渲染器",
+    "content": "### 项目地址\n- GitHub：https://github.com/webc-site/math\n- 在线 Demo：https://math.webc.site\n\n---\n\n### 项目简介\n`@webc.site/math` 是一个**全球最小最快**的网页 Markdown 公式渲染器，用于在前端或后端快速将 TeX/LaTeX 数学公式编译为标准的 **MathML Core** 语义标签。\n\n### 为什么需要这个库？（痛点）\n传统的网页公式渲染通常依赖 **MathJax** 或 **KaTeX**。这类库的核心逻辑非常庞大：\n1. **体积巨大**：在前端需要加载数百 KB 甚至数 MB 的 JS 和 CSS 资源。\n2. **重复排版**：包含了一整套前端排版引擎（用于计算字符宽度、间距，并用绝对定位生成数以千计的 DOM 或 SVG 节点），这会消耗大量客户端 CPU，导致页面首屏白屏和卡顿。\n\n其实，自 **2023 年 1 月**（Chrome 109 启用 MathML Core）起，所有主流浏览器（Chromium/Blink、Gecko/Firefox、WebKit/Safari）都已经**原生支持 MathML**。这标志着我们不再需要在前端加载复杂的排版引擎。\n\n`@webc.site/math` 就是在这个背景下诞生的：它**只做“翻译”**（把 TeX 转成标准 MathML 标签），而把**排版布局完全托管给浏览器底层的 C++ 原生引擎**。这极大解放了浏览器的 JS 线程，并让包体积缩减到了极致。\n\n### 核心特性\n- ⚡️ **极致轻量**：原始体积仅 **7.78 KB**（Gzip 压缩后仅 **3.58 KB**）。体积仅为 KaTeX 的 1/21，MathJax 的 1/77。\n- 🚀 **编译极速**：运行速度飞快。基于经典公式循环编译测试，编译速度约 **329,000 ops/s**，是 KaTeX 的 3.6 倍，MathJax 的 48.8 倍。\n- 🛡️ **健壮容错**：在解析 Markdown 文本时，如果数学公式中有非法的 LaTeX 语法（如未闭合的 `\\left`），它会自动捕获错误并优雅退化为显示原始公式，绝不会抛出 JS 异常而导致页面崩溃。\n- 🎓 **功能完备**：覆盖最常用的数学公式语法，并通过了从 KaTeX 和 MathJax 官方用例库中抽取的数千个公式的测试。\n- 📦 **零运行依赖 & 前后端通用**：无任何第三方依赖，输出的是标准 MathML 标签。既可以用于前端实时预览，也完美契合 SSR/SSG 静态编译。\n\n### 性能对比\n\n#### 1. 体积对比（Gzip 压缩后）\n![体积对比](https://raw.githubusercontent.com/webc-site/math/dev/demo/size.svg)\n\n#### 2. 编译速度对比 (Ops/sec)\n![编译速度对比](https://raw.githubusercontent.com/webc-site/math/dev/demo/speed.svg)\n\n### 快速上手\n\n#### 1. 替换 Markdown 中的公式\n自动识别 Markdown 中的行内/块级公式并替换为 MathML。\n```javascript\nimport mdMath from \"@webc.site/math/md\";\n\nconst markdown = \"欧拉恒等式：$$e^{i\\\\pi} + 1 = 0$$\";\nconst html = mdMath(markdown);\n\nconsole.log(html);\n// 输出：欧拉恒等式：<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">...</math>\n```\n\n#### 2. 直接渲染 TeX 公式\n```javascript\nimport mathml from \"@webc.site/math\";\n\nconst tex = \"e^{i\\\\pi} + 1 = 0\";\nconst html = mathml(tex, true); // 第二个参数为 true 表示块级公式\n```\n\n#### 3. 字体配置推荐\n为了获得最完美的排版效果，建议在 CSS 中指定专为数学公式优化的字体（如 `Latin Modern Math`，可使用 `18s` 字体包）：\n```css\n/* 引入在线数学字体 */\n@import url(\"//registry.npmmirror.com/18s/0.2.24/files/m.css\");\n\nmath {\n  font-family: m, sans-serif;\n}\n```\n\n欢迎大家使用、反馈和 Star ⭐️！\n",
+    "created_at": "2026-06-07T13:48:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10241"
+  },
+  {
+    "id": 10240,
+    "title": "【开源自荐】PaperQuay：给桌面端文献阅读补上 AI 翻译、论文概览、内联笔记和 Agent 工作流",
+    "content": "PaperQuay是面向桌面端的覆盖 PDF 阅读、全文翻译、论文概览、富文本笔记和 Agent 工作流 AI 辅助文献管理阅读工具。\n\n解决的问题：\n\n常规文献管理工具如 Zotero 等，主要提供基础的文献管理和 PDF 阅读能力；许多 AI 插件与 Zotero 的集成度不够，阅读、翻译、总结、笔记和文献整理往往分散在多个工具里，集成度不够，同时相互之间无法联动。\n\n- PaperQuay 希望把这些操作放回同一个桌面工作区：导入 PDF 后，可以管理元数据、分类、标签和附件；阅读时支持 PDF 批注、MinerU 结构块视图、全文翻译、块级译文缓存和划词翻译；速读时可以生成论文概览，包含背景、研究问题、方法、实验设置、主要发现、结论和局限等字段。\n\n- 笔记方面，PaperQuay 内置富文本 Notes 工作区，支持 [[笔记]] 双向链接、#标签、@paper 文献引用、反向链接、本地自动保存和全文搜索，让论文笔记不再脱离文献上下文。\n\n- AI 工作流方面，PaperQuay 提供面向文献管理的 Agent 工作区，不只是普通聊天框。Agent 可以辅助批量重命名、元数据补全、智能标签、标签清洗、自动分类和论文总结，并展示工具调用过程和执行结果，方便用户确认后再执行。\n\n- 数据与隐私方面，PaperQuay 采用本地优先设计，文献库、笔记、批注、导入记录和 RAG 索引保存在本地 SQLite 数据库中，PDF 保存到用户配置的文献存储文件夹。Zotero 兼容是可选能力，可以从 zotero.sqlite 导入分类、标签和可用 PDF 附件，但不强依赖 Zotero。\n\n<div align=\"center\">\n  <img width=\"690\" height=\"370\" alt=\"PaperQuay Demo\" src=\"https://github.com/user-attachments/assets/b63d147e-a159-45a5-aa0a-d8774bd40fe4\" />\n  <br />\n  <sub>PaperQuay 文献阅读界面</sub>\n</div>\n\n<div align=\"center\">\n  <img width=\"690\" height=\"370\" alt=\"PaperQuay Demo\" src=\"https://github.com/user-attachments/assets/d6d4a719-8ab4-4dae-be03-2d02e58de3e9\" />\n  <br />\n  <sub>PaperQuay 管理文献界面</sub>\n</div>\n\n安全和隐私方面做了比较多的工作：PaperQuay 采用本地优先设计，文献库、笔记、批注、翻译缓存、导入记录和 RAG 索引都保存在本地 SQLite 数据库中，PDF 文件存放在用户配置的本地文献目录里；AI 能力由用户自行配置模型服务，不强绑定云端账号。Agent 在执行批量重命名、标签清洗、元数据补全等文献库操作时，会展示工具调用过程和执行结果，方便用户确认，避免黑箱式修改本地文献库。\n\n项目地址：https://github.com/WangQrkkk/PaperQuay",
+    "created_at": "2026-06-07T13:46:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10240"
+  },
+  {
+    "id": 10239,
+    "title": "【开源自荐】MuJoCo Skills：面向 Robotics 环境搭建和操控技能库",
+    "content": "我是这个仓库的作者：\n\nhttps://github.com/coolbeevip/mujoco-skills\n\n<img width=\"1400\" height=\"894\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a9a08acb-b272-4960-90d6-23515bf7c6b8\" />\n\n做这个项目的原因很简单：我自己还是机器人仿真的初学者，经常会用 AI 帮我创建 MuJoCo 仿真环境。\n\n这个过程一开始很有帮助。比如我可以让 AI 创建一个 Franka 机械臂抓取场景、UR5e 分拣场景、Go1 越障场景，或者 H1 人形机器人的行走布局。AI 很快能给出 MJCF 文件，也能帮我打开 viewer 检查。\n\n但问题也很明显：生成出来的场景经常“看起来像那么回事”，实际却不一定符合物理常识。\n\n我遇到过的问题包括：\n\n- 物体悬空\n- 机器人初始姿态不合理\n- 机械臂没有夹爪，却被要求做抓取\n- 末端执行器穿过桌面或传送带\n- 人形机器人一开始就倒下\n- 场景能加载，但不是一个可用的仿真环境\n\n所以我开始把这些经验沉淀成一个 MuJoCo Skill，让 AI Agent 在创建场景时不只是“写 XML”，而是按一个更可靠的流程工作。\n\n这个 Skill 目前主要帮助 AI 做这些事：\n\n- 构建 MJCF 场景\n- 做基础物理合理性检查\n- 启动 MuJoCo viewer\n- 检查 actuator\n- 做最小控制实验\n- 在不确定时询问用户，而不是猜测需求\n- 对常见场景进行更严格的验证\n\nREADME 中的示例和场景检查是在 Codex GPT-5.5 下验证的。\n\n我并不想把它包装成一个“自动生成完美仿真环境”的工具。它更像是一个给初学者和 AI Agent 使用的工作流约束：让 AI 在创建 MuJoCo 场景时少犯明显错误，也让使用者能更快得到一个可以继续学习和修改的起点。\n\n如果你也在用 AI 辅助机器人仿真，或者你对 MuJoCo、MJCF、机器人控制有经验，欢迎帮我看看这个仓库，也欢迎提建议：",
+    "created_at": "2026-06-07T13:24:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10239"
+  },
+  {
+    "id": 10238,
+    "title": "【好文推荐】我刚经历了3小时内增加500+用户的恐怖增长",
+    "content": "【我刚经历了3小时内增加500+用户的恐怖增长】\n\n过去3小时之内，我的产品新增了500+的注册用户\n\n考虑到之前我们的产品目前一个多月也才实现了2000+的注册用户，新增的500+的注册用户对我们而言是一次不小的爆发，相当于之前大半个月的工作量\n\n我们的产品为什么突然实现了用户数量上的爆发？很多人以为这会是一个励志的故事：长期坚持不断打磨产品、跟进用户需求改善体验、所做的一切在市场上有了反馈、从此产品步入正轨。\n\n但遗憾的是，都不是。\n\n真实的情况是：我们买量了。但在三个小时后，我们决定结束这场闹剧。\n\n1.预料之外的爆发\n\n我们在做的是一款叫“连连AI”的小程序，产品核心的功能在于让AI根据你的需求帮你找到合适的人并自动进行沟通。这样的话，当你有找人的需求时，无论是找程序员、设计师接单，还是找律师等，你都可以节省繁重的寻找和沟通过程。\n\n用户的爆发，始于一次偶然的提议。\n\n一个团队成员说，我们是不是可以在网上找一些人帮我们拉拉用户，我们按照注册用户数来付费。\n\n于是，我们在一个微信群里发了一条广告。一个小时内，新增的注册用户数就突破了100+，并在随后的一个小时内又突破了300+\n\n直接给钱的激励效果远超我们的想象，我们仅为一个注册用户支付2块钱左右，但大家仍然有充足的热情帮我们去做这些东西。\n\n即使我们完全有能力支付相应的费用，我们还是仅在三个小时内就决定停止这一切，停止所有“虚假的繁荣”。\n\n2.激烈的心理斗争\n\n关于是否停止这一切，我们经历了激烈的心理斗争。\n\n用户增长的太快了，几个小时内就超过了我们几周所做的工作，而付出的东西又都在我们的预算范围内，这一切都很难让人拒绝。这会不会是一次产品火起来的契机？放任大家增长下去，会不会有意外的收获？\n\n所有的东西在我脑海中萦绕。\n\n但我们还是决定停止这一切，是因为两个数据：\n\n1.绝大多数的注册用户并没有完成一次有效的行为。一个AI产品，用户只有完成对功能的体验和使用之后，用户才会有留存的可能。对“连连AI”这个产品而言，如果用户有需求并进行了发布，这时候能够体验到用AI帮你找人并自动沟通的过程，这个人才会具有后续留存的可能。\n但我们看到，绝大多数的用户只是注册了，并没有完成对功能的体验和使用，甚至连和Ai对话都没有，这意味着这部分用户以后是不可能再继续使用我们的产品的。\n当时我们为了修正这种情况，更改了规则，需要用户也完成一次找人功能的使用才算作有效用户，但很快我们又失望了。\n\n2.绝大多数用户只是发了一些无意义的内容。这是一个极为典型的有政策，也有对策的场景，在我们要求用户需要与AI对话，向AI下达任务让AI去帮你找人才算作是有效用户后，我们看到的结果是大部分用户只是发布了一些无意义的内容。这显然不是我们希望的结果，我们很快意识到引来的这部分用户的人群画像是过于宽泛的，他们不知道能用产品来做什么。我们并非挑选用户，但可能过于宽泛的用户群体对我们也并非什么好的事情。\n\n于是，我们做出了停止的决定。\n\n3.对初期产品最重要的是什么\n\n我们之前做的错误的一点，就是花了太多的时间和精力在用户增长上。\n\n因为“连连AI”的核心功能是根据你的需求帮你由AI自动进行匹配并沟通，我们需要不断扩大我们的用户池，否则便可能找不到相应的人。\n\n做用户增长没有错，但不应该将用户的增长情况作为初期最核心的指标。用户的增长情况这种规模性数据更多是金钱等资源投放之后的结果，但你还需要更多的其他数据来验证产品的PMF，例如留存、成功率和用户满意度等等。\n\n如果你初期花费了过多的精力在一个个地拉用户，而不是注重于收集用户的使用情况与反馈，那你可能将精力放错了地方。\n\n你只要能够在一个地方完成闭环即可，在一个场景中满足用户的需求。比如，我们能够专注把创业者找人、或程序员找外包这类场景做好的话，那会比漫无目的地拉用户来的快得多。程序员找外包这类场景中，最麻烦的就是去找订单和沟通需求的过程，如果能够有一个Agent 24小时帮助你在平台上搜集信息并自动沟通的话，会是一件很有价值的事情。\n\n但我们目前这个最基础的场景都没有做好，而是花费了过多的精力在用户增长上。完成一次功能的闭环，比用钱烧出来的用户增长数据的“虚假繁荣”重要的多。\n\n但用户的爆发也是有价值的。它让团队清醒过来，既然用户增长可以用钱解决，那自然应该花更多时间在其他方面，争取在其他方面构建起一定的壁垒。但我们之前不懂，对一个饥渴于流量的创业者而言，只有体会过一定的富足之后才会静下心来思考。就如同一个快要饿死的人，他只会一味地进食、进食、再进食。\n\n这便是我在本次用户增长后的思考，感谢你的阅读。",
+    "created_at": "2026-06-07T12:25:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10238"
+  },
+  {
+    "id": 10237,
+    "title": "【工具自荐】Pavemath - 关于道路数字计算的工具",
+    "content": "### 网址\nhttps://pavemath.com/\n### 介绍\n\n提供点开即用无需登录的各类道路数字计算相关的计算器,比如沥青计算器一类。",
+    "created_at": "2026-06-07T11:59:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10237"
+  },
+  {
     "id": 10236,
     "title": "【开源自荐】Job Bro v0.3.0 - AI Agent 架构升级：评估器可联网搜索，结果实时流式返回",
     "content": "**项目介绍**：https://job-bro.gitlawb.app/\n\n**项目地址**：https://github.com/aeroxy/job-bro\n\n**上一期**：[v0.2.0 - 基于 Chrome 内置 AI 的职位分析助手](https://github.com/ruanyf/weekly/issues/9942)\n\n**一句话**：\n\n> Chrome 扩展，用 AI 分析 LinkedIn 职位 —— 五个维度评估，支持 API 与 Gemini Nano 本地双后端。v0.3.0 引入 AI Agent 架构，评估器可联网搜索公司信息，结果实时流式返回，支持断点续跑。\n\n---\n\n## 🚀 v0.3.0 新特性\n\n### 1. AI Agent：评估器可调用搜索和网页工具\n\n**问题**：之前的评估器完全依赖 LLM 的预训练知识来评估公司风险、薪资水平等，对于新创公司、未公开信息只能猜测。\n\n**解决**：为风险、薪资、成长、偏好四个评估器配备 `web_search`（DuckDuckGo）和 `read_page` 工具。评估过程中，AI 会主动搜索公司裁员新闻、行业趋势、薪资数据等，并阅读实际网页获取真实信息。\n\n```\nsalary 评估器 → 搜索 \"senior frontend engineer salary Austin 2026\"\nrisk 评估器 → 搜索 \"company X layoffs 2026\" → 阅读相关文章\n```\n\n去重机制：同一个 run 内对同一 URL 只取一次结果，多个评估器共享缓存。\n\n### 2. 分阶段流水线 + 断点续跑\n\n旧的并行执行（`Promise.all`）改为 4 阶段流水线：\n\n| 阶段 | 评估器 | 依赖 |\n|------|--------|------|\n| Stage 1 | 偏好评估 | 无 |\n| Stage 2 | 技能匹配 + 薪资评估 | 无 |\n| Stage 3 | 风险评估 + 成长评估 | 依赖 Stage 2 结果 |\n| Stage 4 | 总结评估 | 依赖全部完成 |\n\n下游评估器可直接复用上游的研究成果。若中途失败（如网络超时），可点击「继续」从失败阶段重试，无需从头开始。\n\n### 3. 实时流式结果\n\n以前需要等全部 6 个评估器跑完才能看到报告。现在每个评估器做完立即显示结果，还能实时看到 AI 正在「搜索中...」「阅读中...」的进度状态。\n\n### 4. Offscreen Document + 结构化输出\n\n- 将 HTML 转 Markdown 的 DOM 解析移到 offscreen document，解决 MV3 Service Worker 无 DOM 访问的问题\n- 云端模型启用严格 JSON Schema 约束，输出更稳定\n- 推理模型（如 MiniMax）的 `think` 标签自动裁剪，`jsonrepair` 兜底解析\n- HTTP 504 自动重试\n\n---\n\n## 📦 历史功能回顾\n\n### 五种 AI 评估\n\n| 维度 | 说明 |\n|------|------|\n| **薪资评估** | 基于职位、地点、经验估算薪资范围，与期望对比 |\n| **技能匹配** | 对比职位要求与你的技能栈，标注匹配/缺失/额外技能 |\n| **偏好评估** | 远程/混合、行业、公司规模等偏好匹配度 |\n| **风险评估** | 裁员历史、招聘活跃度、职位稳定性 |\n| **成长评估** | 技能提升空间、职业路径、学习资源 |\n\n### 双后端：Cloud + Chrome AI\n\n| 方案 | API Key | 网络依赖 | Token 费用 | 数据隐私 |\n|------|---------|----------|------------|----------|\n| Cloud (OpenAI) | 需要 | 需要 | 按量付费 | 数据上云 |\n| Chrome AI | 不需要 | 不需要 | 免费 | 数据不出设备 |\n\nChrome AI 基于 Gemini Nano，开启后无需 API Key、零网络请求、数据完全本地处理，适合隐私敏感场景。\n\n### 智能对话追问\n\n对报告内容不满意？可直接追问，AI 会结合报告上下文进一步分析。Chrome AI 后端利用有状态 API 实现持久化会话，大幅减少延迟。\n\n---\n\n## 🧗 使用方式\n\n1. 从 Chrome Web Store 安装（或 `git clone` + `bun install && bun dev`）\n2. 打开任意 LinkedIn 职位页面\n3. 点击侧边栏 Job Bro 图标\n4. 点击「分析」，等待评估完成\n5. 查看报告，或进一步追问\n\n**Chrome AI 前提**：Chrome 127+，启用 `chrome://flags/#prompt-api-for-gemini-nano`，下载模型（约 4GB，浏览器自动管理）\n\n**源码**：https://github.com/aeroxy/job-bro\n\n---\n\n## 🙏 致谢\n\n- 感谢社区反馈和贡献\n\n欢迎 Star、提 Issue、贡献新功能。让求职分析像打开一个网页一样简单。\n",
@@ -772,47 +812,5 @@
     "created_at": "2026-05-30T14:41:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10141"
-  },
-  {
-    "id": 10140,
-    "title": "【开源自荐】album-assetizer：用大模型给本地相册生成结构化语义描述",
-    "content": "链接： https://github.com/SeanWong17/album-assetizer\n\n  说明：\n\n  一个本地运行的命令行工具，扫描个人相册，调用 OpenAI 兼容 API（推荐小米 MiMo，可以将赠送的token转换为个人数据资产）为每张图片生成结构化描述，结果保存在本地 SQLite，可导出 JSONL / CSV。\n\n  输出字段包括：短描述、长描述、场景分类、语义标签、OCR 文字、人数、置信度等，同时生成 embedding_text 供后续向量检索使用。数据完全归用户本地所有，不依赖任何云服务。\n\n  支持 HEIC / DNG / CR3 / Apple Live Photo 等格式，断点续跑，并发处理。\n\n<img width=\"1486\" height=\"1243\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/02a4c4e6-4ceb-4ab8-8183-2c276264b654\" />",
-    "created_at": "2026-05-30T12:18:24Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10140"
-  },
-  {
-    "id": 10139,
-    "title": "【开源自荐】Aura Tab - 高颜值新标签页扩展",
-    "content": "项目地址：\nhttps://github.com/nil-byte/aura-tab\n\nAura Tab 是一个面向 Chrome / Edge 的新标签页扩展，主打高颜值、低打扰和高可定制性。它把智能背景、macOS 风格 Dock / 启动台、快捷链接管理、书签导入、沉浸式图片查看、WebDAV 备份等能力整合到一个新标签页里。\n\n项目比较重视性能与隐私：支持首屏优化、背景缓存、多语言、自定义搜索引擎，不采集用户数据。\n\nChrome 商店：\nhttps://chromewebstore.google.com/detail/adeamimoopnlcflnpjgcfmebboajlkja\n\n截图：\n\n![Desktop](https://raw.githubusercontent.com/nil-byte/aura-tab/main/assets/other/desktop.png)\n\n![Launchpad](https://raw.githubusercontent.com/nil-byte/aura-tab/main/assets/other/launchpad.png)\n\nREADME 里有更多截图和功能说明，欢迎试用并提出反馈。",
-    "created_at": "2026-05-30T11:21:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10139"
-  },
-  {
-    "id": 10138,
-    "title": "【网站自荐】arrow game：免费在线玩解谜箭头小游戏",
-    "content": "大家好，我是一名独立开发者，最近做了一个浏览器小游戏：Arrows escape。\n游戏地址：https://arrowgame.app/zh\n这是一个规则简单的小游戏,用户需要点击没有被其他线阻拦的箭头从而通关至下一关,总共有100关可玩。\n搭配上魔性的8-bit音乐,不用复杂的学习、注册登录点开即玩,闲暇之余来上一两盘解解压是很好的。\n推荐使用手机浏览器打开 体验会比较好。\n\n<img width=\"378\" height=\"837\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/054fc4ad-e142-47b3-bcb1-3049b29e5969\" />\n\n欢迎试玩，也欢迎反馈何处需要修正。",
-    "created_at": "2026-05-30T10:37:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10138"
-  },
-  {
-    "id": 10137,
-    "title": "Iris —— 开源 Chrome 隐私检测插件，实时显示追踪器 + AI 引用可信度",
-    "content": "网站名称：Iris\n\n网站链接：https://github.com/koni20/iris-extension\n\n介绍：开源 Chrome 浏览器扩展，帮助用户看清网页背后发生了什么。主要功能：\n\n1. 实时显示当前页面加载的第三方追踪器（广告、分析、指纹采集）\n2. 在 Perplexity / ChatGPT / Kimi 等 AI 搜索页面，自动分析引用来源是否来自内容农场、阴谋论站或假新闻站\n3. 检测订阅陷阱话术（支持中文和日文）\n4. 识别 Cookie 同意暗模式\n5. 本地历史记录，每周生成「追踪器最多的网站」「AI 引用质量最差的平台」等洞察\n\n所有检测本地完成，不上报任何数据，GPL-3.0 开源。已上架 Chrome Web Store，500+ 安装量。",
-    "created_at": "2026-05-30T10:07:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10137"
-  },
-  {
-    "id": 10136,
-    "title": "WebAutoForm —— JSON驱动的浏览器自动化工具",
-    "content": "我是 WebAutoForm 的作者，这是一个轻量级的浏览器自动化工具，只需要写 JSON 配置就能完成填表、提交、数据提取等任务，完全不需要写代码。\n\n🔗 GitHub 地址： https://github.com/DUZ1287/WebAutoForm\n\n✨ 核心功能\n13 种动作类型 - 填写、点击、选择、数据提取等\n\n零代码 - 用 JSON 描述，引擎自动执行\n\n内置 PII 脱敏 - 自动屏蔽邮箱、手机号、身份证\n\n条件分支 - 支持 if/else，应对复杂场景\n\nAI Agent 友好 - 自带 JSON 工具格式\n\n选择器容错 - 主选择器 + 备选链，不怕页面变化\n\n💡 和同类工具有什么不同？\nPlaywright、Selenium 这类工具都需要编程基础。WebAutoForm 专注在 表单自动化 这一个场景上：批量填表、数据录入、测试、CI 流水线。100% 确定性执行（不会像 LLM 那样出现幻觉），本地运行完全免费。\n\n🚀 一行命令就能体验\nbash\npip install web-auto-form\nplaywright install chromium\n❤️ 需要大家的帮助\n⭐ 觉得有用的话，给个 Star 吧\n\n📣 推荐给 需要表单自动化的朋友或团队\n\n🐛 遇到问题随时提 Issue\n\n✏️ 欢迎对文档或功能提任何 建议",
-    "created_at": "2026-05-30T06:02:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10136"
   }
 ]
