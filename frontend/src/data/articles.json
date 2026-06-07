@@ -28,7 +28,9 @@
     "title": "【开源自荐】smctl：给 Apple Silicon Mac 补上官方没有的风扇控制和电池限充（命令行工具）",
     "content": "smctl 是一个开源（MIT）命令行工具，给 Apple Silicon Mac 提供风扇曲线控制和电池充电限制——这两件事 macOS 官方都不开放：M 系列芯片没有任何风扇控制 API，电池也只有固定 80% 一档优化充电。\n\n![demo](https://raw.githubusercontent.com/leaperone/smctl/main/docs/assets/demo.gif)\n\n解决的问题：\n\n- 长期插电的 MacBook 想把电量维持在自定义区间（如 `smctl battery maintain 70-80`）延长电池寿命\n- Mac mini / Studio 当家用服务器时风扇策略不可控，smctl 支持手动转速和声明式风扇曲线（TOML 配置），所有命令可走 SSH，支持 `--json` 输出\n- `smctl sensors --watch` 实时查看全部温度传感器、风扇转速和封装功耗\n\n安全方面做了比较多的工作：daemon 被卸载或异常退出都会自动把硬件交还系统接管；带不可关闭的温度护栏，持续过热会强制风扇回到系统控制。所有 SMC 写入都有回读校验。\n\n安装：`brew install leaperone/smctl/smctl`\n\n项目地址：https://github.com/leaperone/smctl （[中文文档](https://github.com/leaperone/smctl/blob/main/docs/README.zh-CN.md)）",
     "created_at": "2026-06-07T07:32:27Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10233"
   },
   {
