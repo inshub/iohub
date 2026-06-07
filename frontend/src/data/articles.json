@@ -1,5 +1,45 @@
 [
   {
+    "id": 10236,
+    "title": "【开源自荐】Job Bro v0.3.0 - AI Agent 架构升级：评估器可联网搜索，结果实时流式返回",
+    "content": "**项目介绍**：https://job-bro.gitlawb.app/\n\n**项目地址**：https://github.com/aeroxy/job-bro\n\n**上一期**：[v0.2.0 - 基于 Chrome 内置 AI 的职位分析助手](https://github.com/ruanyf/weekly/issues/9942)\n\n**一句话**：\n\n> Chrome 扩展，用 AI 分析 LinkedIn 职位 —— 五个维度评估，支持 API 与 Gemini Nano 本地双后端。v0.3.0 引入 AI Agent 架构，评估器可联网搜索公司信息，结果实时流式返回，支持断点续跑。\n\n---\n\n## 🚀 v0.3.0 新特性\n\n### 1. AI Agent：评估器可调用搜索和网页工具\n\n**问题**：之前的评估器完全依赖 LLM 的预训练知识来评估公司风险、薪资水平等，对于新创公司、未公开信息只能猜测。\n\n**解决**：为风险、薪资、成长、偏好四个评估器配备 `web_search`（DuckDuckGo）和 `read_page` 工具。评估过程中，AI 会主动搜索公司裁员新闻、行业趋势、薪资数据等，并阅读实际网页获取真实信息。\n\n```\nsalary 评估器 → 搜索 \"senior frontend engineer salary Austin 2026\"\nrisk 评估器 → 搜索 \"company X layoffs 2026\" → 阅读相关文章\n```\n\n去重机制：同一个 run 内对同一 URL 只取一次结果，多个评估器共享缓存。\n\n### 2. 分阶段流水线 + 断点续跑\n\n旧的并行执行（`Promise.all`）改为 4 阶段流水线：\n\n| 阶段 | 评估器 | 依赖 |\n|------|--------|------|\n| Stage 1 | 偏好评估 | 无 |\n| Stage 2 | 技能匹配 + 薪资评估 | 无 |\n| Stage 3 | 风险评估 + 成长评估 | 依赖 Stage 2 结果 |\n| Stage 4 | 总结评估 | 依赖全部完成 |\n\n下游评估器可直接复用上游的研究成果。若中途失败（如网络超时），可点击「继续」从失败阶段重试，无需从头开始。\n\n### 3. 实时流式结果\n\n以前需要等全部 6 个评估器跑完才能看到报告。现在每个评估器做完立即显示结果，还能实时看到 AI 正在「搜索中...」「阅读中...」的进度状态。\n\n### 4. Offscreen Document + 结构化输出\n\n- 将 HTML 转 Markdown 的 DOM 解析移到 offscreen document，解决 MV3 Service Worker 无 DOM 访问的问题\n- 云端模型启用严格 JSON Schema 约束，输出更稳定\n- 推理模型（如 MiniMax）的 `think` 标签自动裁剪，`jsonrepair` 兜底解析\n- HTTP 504 自动重试\n\n---\n\n## 📦 历史功能回顾\n\n### 五种 AI 评估\n\n| 维度 | 说明 |\n|------|------|\n| **薪资评估** | 基于职位、地点、经验估算薪资范围，与期望对比 |\n| **技能匹配** | 对比职位要求与你的技能栈，标注匹配/缺失/额外技能 |\n| **偏好评估** | 远程/混合、行业、公司规模等偏好匹配度 |\n| **风险评估** | 裁员历史、招聘活跃度、职位稳定性 |\n| **成长评估** | 技能提升空间、职业路径、学习资源 |\n\n### 双后端：Cloud + Chrome AI\n\n| 方案 | API Key | 网络依赖 | Token 费用 | 数据隐私 |\n|------|---------|----------|------------|----------|\n| Cloud (OpenAI) | 需要 | 需要 | 按量付费 | 数据上云 |\n| Chrome AI | 不需要 | 不需要 | 免费 | 数据不出设备 |\n\nChrome AI 基于 Gemini Nano，开启后无需 API Key、零网络请求、数据完全本地处理，适合隐私敏感场景。\n\n### 智能对话追问\n\n对报告内容不满意？可直接追问，AI 会结合报告上下文进一步分析。Chrome AI 后端利用有状态 API 实现持久化会话，大幅减少延迟。\n\n---\n\n## 🧗 使用方式\n\n1. 从 Chrome Web Store 安装（或 `git clone` + `bun install && bun dev`）\n2. 打开任意 LinkedIn 职位页面\n3. 点击侧边栏 Job Bro 图标\n4. 点击「分析」，等待评估完成\n5. 查看报告，或进一步追问\n\n**Chrome AI 前提**：Chrome 127+，启用 `chrome://flags/#prompt-api-for-gemini-nano`，下载模型（约 4GB，浏览器自动管理）\n\n**源码**：https://github.com/aeroxy/job-bro\n\n---\n\n## 🙏 致谢\n\n- 感谢社区反馈和贡献\n\n欢迎 Star、提 Issue、贡献新功能。让求职分析像打开一个网页一样简单。\n",
+    "created_at": "2026-06-07T08:38:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10236"
+  },
+  {
+    "id": 10235,
+    "title": "【开源自荐】X照妖镜 — 输入 X/Twitter 用户名，AI 秒出毒舌人格分析报告",
+    "content": "\n# 【开源自荐】X照妖镜 — 输入 X/Twitter 用户名，AI 秒出毒舌人格分析报告\n\n项目地址：[https://github.com/gokuscraper/x-pose](https://github.com/gokuscraper/x-pose)\n\n在线体验：[https://xpose7.streamlit.app](https://xpose7.streamlit.app)\n\n---\n\n## 截图展示\n\n<p float=\"left\">\n  <img src=\"https://raw.githubusercontent.com/gokuscraper/x-pose/main/case/cn/luoyonghao_1_profile.png\" width=\"45%\">\n  <img src=\"https://raw.githubusercontent.com/gokuscraper/x-pose/main/case/cn/luoyonghao_2_analysis_a.png\" width=\"45%\">\n</p>\n\n> 中文报告 @罗永浩，更多示例见项目 README。\n\n---\n\n## 核心功能\n\n- **一键抓取** — 输入 @ 用户名，自动抓取个人资料 + 最新推文\n- **AI 人格分析** — DeepSeek V4 生成 15 维报告：吐槽、长处、弱点、爱情观、金钱观、健康、MBTI 等\n- **账号价值评估** — 加权公式估算账号市场价值（粉丝数 + 互动 + 认证状态）\n- **截图即分享** — 一键下载 PNG，预填推文分享到 X\n- **中英文切换** — UI 语言实时切换，报告语言自动跟随\n\n## 技术栈\n\n`Python` `Streamlit` `Playwright` `DeepSeek API` `OpenCode API` `html2canvas`\n",
+    "created_at": "2026-06-07T07:55:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10235"
+  },
+  {
+    "id": 10234,
+    "title": "【开源自荐】Github 照妖镜 — 输入 GitHub 用户名，AI 毒舌分析 + 给你的账号估个价",
+    "content": "# 【开源自荐】Github 照妖镜 — 输入 GitHub 用户名，AI 毒舌分析 + 给你的账号估个价\n\n**项目地址：** [https://github.com/gokuscraper/github-roast](https://github.com/gokuscraper/github-roast)\n**在线体验：** [https://groast.streamlit.app](https://groast.streamlit.app)\n\n---\n\n## 具体介绍\n\nGithub 照妖镜是一个 AI 驱动的 GitHub 开发者档案分析工具。输入 GitHub 用户名或仓库链接，自动抓取公开资料、仓库和动态，生成一份包含 13 个维度的毒舌分析报告——外加一个独家公式算出你的 GitHub 账号值多少钱。\n\n---\n\n## 预览\n\n![资料+统计+估值](https://raw.githubusercontent.com/gokuscraper/github-roast/main/case/cn/torvalds_1_profile.png)\n![Roast+技术栈+弱点](https://raw.githubusercontent.com/gokuscraper/github-roast/main/case/cn/torvalds_2_analysis_a.png)\n\n---\n\n## 核心功能\n\n- 🪞 **AI 毒舌分析** — 基于 DeepSeek，输出 Roast、技术栈、弱点、开源影响力、协作风格、活力指数等 13 张卡片\n- 💰 **账号估值** — 根据 Star、关注者、原创/Fork 仓库数量，用独家公式算出你的 GitHub 身价（¥/$）\n- 📸 **截图下载** — 支持按区段逐个下载 PNG，也支持一键全部下载\n- 𝕏 **分享到 X** — 预填好文案的一键分享\n- 🌐 **中英文切换** — 实时切换\n- 🏢 **支持个人和组织** — 自动检测账号类型，使用不同的分析提示词\n- 🆓 **免费使用** — 通过 OpenCode 免费通道调用，无需付费\n\n## 技术栈\n\nPython + Streamlit + DeepSeek + GitHub REST API",
+    "created_at": "2026-06-07T07:48:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10234"
+  },
+  {
+    "id": 10233,
+    "title": "【开源自荐】smctl：给 Apple Silicon Mac 补上官方没有的风扇控制和电池限充（命令行工具）",
+    "content": "smctl 是一个开源（MIT）命令行工具，给 Apple Silicon Mac 提供风扇曲线控制和电池充电限制——这两件事 macOS 官方都不开放：M 系列芯片没有任何风扇控制 API，电池也只有固定 80% 一档优化充电。\n\n![demo](https://raw.githubusercontent.com/leaperone/smctl/main/docs/assets/demo.gif)\n\n解决的问题：\n\n- 长期插电的 MacBook 想把电量维持在自定义区间（如 `smctl battery maintain 70-80`）延长电池寿命\n- Mac mini / Studio 当家用服务器时风扇策略不可控，smctl 支持手动转速和声明式风扇曲线（TOML 配置），所有命令可走 SSH，支持 `--json` 输出\n- `smctl sensors --watch` 实时查看全部温度传感器、风扇转速和封装功耗\n\n安全方面做了比较多的工作：daemon 被卸载或异常退出都会自动把硬件交还系统接管；带不可关闭的温度护栏，持续过热会强制风扇回到系统控制。所有 SMC 写入都有回读校验。\n\n安装：`brew install leaperone/smctl/smctl`\n\n项目地址：https://github.com/leaperone/smctl （[中文文档](https://github.com/leaperone/smctl/blob/main/docs/README.zh-CN.md)）",
+    "created_at": "2026-06-07T07:32:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10233"
+  },
+  {
+    "id": 10232,
+    "title": "【开源自荐】Scout4j：让 AI 编程助手先读懂 Java 后端项目，再动手改代码",
+    "content": "# Scout4j\n\nScout4j 是一个面向 Java 企业后端项目的 AgentSkill，用来约束 AI 编程助手在修改代码前，先调查项目结构、读取本地约定、参考相邻实现，再制定计划、修改代码和验证结果。\n\n项目地址：https://github.com/kyle641320/Scout4j\n\n现在很多人已经开始用 Claude Code、Cursor、Codex 等 AI 编程工具处理真实业务代码。但在 Java 后端项目里，AI 很容易犯一个问题：还没看懂项目，就直接开始改。\n\n比如：\n\n- 没看现有分层结构，就新建一套不一致的代码；\n- 没看 mapper / repository 写法，就乱补 SQL；\n- 没理解事务边界，就把逻辑拆错位置；\n- 没确认 RPC / MQ / CDC / 下游依赖，就只改了表面代码；\n- 没跑针对性测试，就给出“已完成”的结论。\n\nScout4j 想解决的就是这个问题：给 AI 编程助手一套 Java 企业后端工作的流程约束。\n\n它会引导 Agent 按下面顺序工作：\n\ninvestigate → plan → edit → verify → summarize\n\n也就是：\n\n1. 先调查仓库结构和本地约定；\n2. 再根据任务类型读取对应参考；\n3. 然后制定修改计划；\n4. 修改代码；\n5. 最后做针对性验证和总结。\n\n## 适用场景\n\nScout4j 覆盖了一些常见 Java 后端任务：\n\n- 新增字段 / API / 数据库 schema；\n- bug fix 和 code review；\n- 事务边界和一致性问题；\n- RPC / 下游依赖的超时、重试、失败传播；\n- MQ / CDC 消费和投影更新；\n- 数据修复 / backfill job；\n- 分页、性能和 SQL / mapper 一致性；\n- 单元测试、集成测试和验证策略。\n\n## 特点\n\n- 不绑定具体公司架构；\n- 不默认假设 Spring Boot、Maven、MyBatis、JPA、Kafka 或 DDD，除非目标仓库本身体现这些模式；\n- 重点不是“给出标准答案”，而是让 Agent 先读懂项目，再按项目已有风格改；\n- 提供了若干细分参考文档，例如 RPC、事务、数据修复、性能、测试等；\n- 包含一个轻量的 de-overfit 检查脚本，避免把私有 benchmark 或标准答案泄露进公开 skill；\n- 测试阶段已在 100+ 个 GitHub 开源企业级 Java 项目上验证，对 Agent 的代码修改质量、上下文遵循和验证完整性有明显提升。\n\n## 为什么做这个项目\n\nAI 编程工具越来越强，但在企业后端项目里，真正危险的地方往往不是“不会写代码”，而是“没理解上下文就开始写代码”。\n\nScout4j 更像是给 AI 编程助手的一套工作纪律：\n\n> 不要一上来就 patch，先 scout 一遍项目。\n\n项目开源，MIT License。\n\nGitHub：https://github.com/kyle641320/Scout4j",
+    "created_at": "2026-06-07T05:20:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10232"
+  },
+  {
     "id": 10231,
     "title": "【开源自荐】Tutti 是一个 macOS 菜单栏小工具，让你的多个扬声器同时播放同一段声音。",
     "content": "# Tutti\n\n**一个声音，响遍全场**\n\n<img width=\"1920\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a2924f7b-eb95-4e3d-9ee8-56e612e6ca05\" />\n\nTutti 是一个 macOS 菜单栏小工具，让同一份声音同时从多个输出设备播放。\nmacOS 的系统音频一次只能播放一个设备，想边外放边戴耳机、或者让客厅和卧室两组音箱一起响，系统自带的音量功能做不到，需要去 MIDI 里进行设置。\nTutti 补上了这个缺口。不用装任何虚拟音频驱动，也没有内核扩展，全部用苹果自带的 CoreAudio 框架实现。在菜单栏勾选多个输出，Tutti 会临时搭一个聚合设备，让每个设备同时发声；退出时原来的输出干净恢复，不留后台进程，也不留垃圾设备。\n\n## 使用场景\n\n- 家里多台蓝牙音响，同时播放一首歌曲，每个房间的音乐同步。\n- 一台 Mac 能同时连两副、甚至三副 AirPods。在咖啡馆不方便外放？你和朋友一人戴一副，一起看同一部电影、听同一首歌。\n- 老师上课时，可以通过耳机监听自己的声音，同时让现场的观众和学生听到功放的声音。直播、录课同理：自己戴耳机听，声音照常外放。\n- 任何\"想让同一份声音同时去几个地方\"的场景。\n\n## 核心功能\n\n**多设备同步输出**，在菜单栏勾选有线音箱、、蓝牙耳机、AirPods、显示器的任意组合，同一个声音同时播，完全同步。\n\n**音量控制**，一个主音量统一调全组，每个设备还能单独调音量和静音。\n\n**蓝牙电量**，连着的蓝牙耳机电量直接显示在面板里，不用再去系统里查。\n\n**替代系统音量图标**，可以把 Tutti 设成菜单栏那个音量图标，按音量键时弹的也是它自己的 OSD。\n\n**快捷键增强**，键盘音量键和滚轮直接控制整组输出，还能把常用的设备组合存成预设，一键切换。\n\n## 主要能力\n\n源码在 GitHub 上公开（PolyForm Noncommercial 许可）。支持 9 种语言，需要 macOS 13 及以上。\n\n官网：https://www.tutti.barrybarrywu.com\nGithub：https://github.com/BarryBarrywu/tutti\n",
@@ -772,45 +812,5 @@
     "created_at": "2026-05-30T06:02:13Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10136"
-  },
-  {
-    "id": 10135,
-    "title": "【开源自荐】峰哥桌面宠物——二次元峰哥，常驻你的桌面。",
-    "content": "<div align=\"center\">\n<img width=\"400\" height=\"356\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6e932ea7-8e03-4a0e-b573-ab605aaef560\" />\n</div>\n\n项目地址:https://github.com/shaozhengmao/fengge-pet\n\n## ✨ 功能\n\n- 9 种动画状态随机轮播（站立 / 发呆 / 抱臂 / 摸胡子 / 自拍 / 投降 / 向左跑 / 向右跑 / 奔跑）\n- 点击角色触发反应动画，必出语录气泡\n- 空闲时随机冒语录，包含峰哥经典名言\n- 拖拽移动位置，自动记忆上次位置\n- 开机自启动\n- 右键菜单 → **编辑语录**，保存即生效，无需重启\n- 右键菜单 → **关闭宠物**\n\n---\n\n## 📦 安装\n\n### 下载 Release（推荐）\n\n前往项目主页下载对应版本的 `.zip`，解压后双击 `fengge-pet.app` 即可。\n\n| 文件 | 适用机型 |\n|---|---|\n| `fengge-pet-1.1.0-arm64-mac.zip` | Apple Silicon（M1 / M2 / M3 / M4） |\n| `fengge-pet-1.1.0-mac.zip` | Intel 芯片 |\n\n> **⚠️ 首次打开提示\"无法验证开发者\"？**\n>\n> 在终端执行以下命令后即可正常打开（每台 Mac 只需执行一次）：\n>\n> ```bash\n> xattr -cr fengge-pet.app\n> ```\n>\n\n### 本地运行\n\n```bash\ngit clone https://github.com/shaozhengmao/fengge-pet.git\ncd fengge-pet\nnpm install\nnpm start\n```\n\n---\n\n## 🖥️ 系统要求\n\n- macOS（Apple Silicon / Intel 均支持）\n- Node.js 18+（仅本地运行时需要）",
-    "created_at": "2026-05-30T05:57:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10135"
-  },
-  {
-    "id": 10134,
-    "title": "【开源自荐】TerAgent：一个编译器风格的AI Agent中间件",
-    "content": "AI Agent 是 2026 年的技术热点之一。当前的 Agent 框架普遍存在两个问题：一是每换一个模型就要重写一套 Prompt，二是安全机制往往后置。\n\nTerAgent 是我发布的一个开源库，核心定位是为 AI Agent 提供类似编译器的中间层。用一句话概括：用户只需要定义一个 5 字段的数据结构（TAPRequest），剩下的 Compiler 负责把它转成模型需要的 Prompt 格式，Adapter 负责发 HTTP 请求并收响应。\n\n\n**一、TAP IR**\n\nTAP 全称 TerAgent Protocol，定位是内存中的中间表示（IR），类似 LLVM IR。它只包含 5 个字段：meta（元信息）、context（上下文）、instruction（核心指令）、constraints（硬约束）、output_format_hint（输出提示）。描述的是“你想让 AI 做什么”，但不关心“怎么组织成 Prompt”。\n\nTAPRequest → Compiler → CompiledPrompt → Adapter → Model API，中间经过编译和发送两层解耦。\n\n\n**二、Compiler / Adapter 正交解耦**\n\n这是项目的核心设计。Compiler 管编译策略（例如 GLM 近因效应 / Claude XML / DeepSeek 极简），Adapter 管 HTTP 协议（OpenAI 兼容 / Anthropic 原生 / Mock）。\n\n4 个 Compiler 乘 3 个 Adapter，一共 12 种组合，零额外代码。新增一个 Compiler 只需要加一个文件一行注册，Adapter 同理。这个扩展能力在有多模型需求的场景下很实用。\n\n\n**三、安全与可靠性模块**\n\nAI 在幻觉状态下可能执行危险操作（例如说清理日志却执行了 rm -rf）。TerAgent 内置了多个防御机制：\n\n- 7 层权限解析：用户级规则优先级最高（100），系统级最低，同优先级下默认拒绝优先于允许。\n- 3 级沙箱隔离：依次为进程级（黑名单 + rlimit）、Docker 容器、Firecracker 微型 VM。\n- 2PC 原子文件写入：先验证写后读契约，再写临时文件，最后原子替换，失败则自动回滚并备份。\n- 4 种熔断器：Token 预算监控、连续失败冷却、延迟滚动告警、进度停滞检测。\n\nGLM-5.1 在独立评估中称其“本质是一个防 AI 自毁系统”。\n\n\n**四、开发方式**\n\nTerAgent 的设计是与 AI 协作完成的，代码不是手写的。整体流程是：设计（我与 AI 讨论）→ 规划（AI 拆解任务）→ 编码（AI 逐模块生成）→ 审查（AI 进行语法/依赖/可运行性检查），我在每一关做决策。\n\nGLM-5.1 对项目做了独立评估，给出综合评分 7.4/10（架构设计 9.0，防幻觉安全 7.5，工程规范 6.5）。评估报告存在仓库的 docs 目录下。\n\n\n**五、技术指标**\n\n- 源码约 22,207 行 Python（14 个子模块，83 个源文件）\n- 测试约 15,071 行（44 个测试文件），测试/源码比 67.9%\n- 0% 空壳（714 个函数全部实现）\n- 版本 0.0.1 Alpha，许可证 Apache 2.0\n\n\n**六、相关链接**\n\n- GitHub: http://github.com/TerAgent-Project/TerAgent\n- PyPI: `pip install teragent`\n- 开发者（GitHub）: @Kiruvex",
-    "created_at": "2026-05-30T05:03:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10134"
-  },
-  {
-    "id": 10133,
-    "title": "【开源推荐】AtomMQTT：Rust语言实现的轻量级高性能MQtt服务器",
-    "content": "AtomMQTT：Rust语言实现的轻量级高性能MQtt服务器\n\n**1. 项目地址 :**\n\n[ https://gitcode.com/qq8864/atomMqtt]( https://gitcode.com/qq8864/atomMqtt)\n\n**2. 它解决了什么问题？**\n\n目前流行的一些开源MQTT代理服务器如mosquitto,EMQX或rabbitMQ,要么功能简单，连Web管理界面都没有。要么功能复杂，安装部署繁琐。\n\n而AtomMQTT是一个使用Rust语言开发的轻量级高性能的MQTT服务器，充分利用了Rust语言的优势，单机支持1W+的并发连接，且通信延时在毫秒级别。且自带Web管理客户端，部署超级简单，一个二进制可执行文件+config.toml配置文件总共不到10M大小的体积。\n\n**3.核心功能与特性**\n\n\n- ✅ **SQLite 持久化存储** — 会话、订阅、保留消息、遗嘱消息自动持久化到本地数据库，重启后自动恢复\n- ✅ **双协议支持** — 同时支持 MQTT 3.1.1 和 MQTT 5.0\n- ✅ **主题订阅树** — 基于 Trie 树的高效主题匹配（支持 `+` / `#` 通配符）\n- ✅ **消息路由** — PUBLISH 消息自动转发给所有匹配订阅者\n- ✅ **QoS 0/1/2** — 完整的服务质量支持\n- ✅ **保留消息** — 支持 Retained Message 存储与分发\n- ✅ **遗嘱消息** — 支持 Will Message（异常断开时自动发布）\n- ✅ **Web 管理界面** — 内置 Actix-Web 仪表盘，实时监控 Broker 指标\n- ✅ **WebSocket 订阅** — 浏览器可直接订阅 MQTT 主题，接收实时消息\n- ✅ **REST API** — 提供完整的 HTTP API 用于发布消息、管理客户端\n- ✅ **匿名/文件认证** — 支持无认证和基于文件的密码认证\n- ✅ **ACL Topic 访问控制** — 基于文件的 publish/subscribe/readwrite 权限管理\n- ✅ **Web 管理界面认证** — HTTP Basic Auth + JSON 登录页面双重认证\n- ✅ **CLI 客户端** — 内置 `mqtt-client` 工具，支持发布/订阅/交互式 Shell\n- ✅ **性能指标** — 内置计数器（连接数、消息数、字节数、包数等）\n\n<img width=\"1355\" height=\"705\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7464a12d-9462-45b3-99bc-07371121694e\" />\n\n**4.推荐理由**\n\nAtomMQTT Broker 是一个纯 Rust 实现的 MQTT 3.1.1/5.0 消息代理，核心目标是在高性能与数据安全之间取得平衡。\n\n整个软件只有一个mqtt-web.exe二进制可执行程序，小巧但性能强大。所有消息路由、订阅匹配在内存中完成，无锁竞争，零拷贝与异步 I/O — 利用 Tokio 运行时和 BytesMut 实现高效网络处理。\n\n内存安全\n\n整个项目使用 #![deny(unsafe_code)] 确保零 unsafe Rust 代码。这意味着所有内存安全由 Rust 编译器保证——没有空指针解引用、缓冲区溢出或释放后使用。\n\n单元测试\n\n为了保证功能的稳定性，本项目已做了充分的单元测试。\n项目根目录 test/ 下提供了基于 Python 的集成测试脚本，覆盖认证、发布/订阅、保留消息、ACL 权限和离线消息队列等核心功能。\n\n在当下物联网时代，能有一个比肩mosquitto但功能更丰富的轻量级MQTT Broker,将极大的方便MQTT物联网设备的开发调试和使用。\n\n\n\n",
-    "created_at": "2026-05-30T03:31:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10133"
-  },
-  {
-    "id": 10132,
-    "title": "【开源自荐】awesome claude workflows：专收\"真在生产里跑过\"的 Claude Code Dynamic Workflows 精选目录",
-    "content": "仓库：https://github.com/lxcong/awesome-claude-workflows\n\n## 概况\n\n**Awesome Claude Workflows** 是一个社区精选目录，专门收录基于 Claude Code **Dynamic Workflows** 的、真在生产里跑过的多 Agent 工作流。\n\nDynamic Workflows 是 Claude Code 在 2026-05-28 随 Claude Opus 4.8 一起发布的新功能（目前 research preview，需 Claude Code v2.1.154+）：用一段 JavaScript 脚本，把几十到上百个子 Agent 按确定性的控制流（并行 fan-out、顺序、循环、条件）编排成一条流水线，脚本由 Claude 自动写好、在后台运行，最后只把最终结果交回对话。脚本存进 `~/.claude/workflows/` 就自动变成一个 slash command——不用写 plugin、不用 manifest、不用注册。\n\n我的判断是：这之后会涌现一大批\"基于 Agent 之间互相协调\"的大规模工作流——研究合成、代码审查、500 文件迁移、bug 扫荡、风控分析……每一个都值得被复用，而不是各自从零再搭一遍。所以开了这个目录把它们收起来。\n\n## 旗舰范例：Trading Agents\n\n目录里第一个完整范例叫 Trading Agents。在 Claude Code 里敲一条命令：\n\n    /trading-agents 美光科技\n\n接下来：一组分析师 Agent 并行铺开各自取数 → 结果汇总后进入一场看多/看空的多轮 Debate → 再交给一个评审 Panel 独立打分 → 按风险分档给出仓位层面的建议。全程一条命令触发。（仅研究用途，不构成投资建议。）\n\n它是\"用 Dynamic Workflows 做 Agent 间协调\"的一个具体样例：并行分析、顺序辩论、独立评审这种结构，用 `parallel`（并行、等齐）和 `pipeline`（流水、不互相等）这两个原语表达起来很顺手；确定性控制流意味着流程可复现；还能结构化输出、断点续跑（改一处只重跑那一处，省 token）。\n\n<img width=\"1200\" height=\"675\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a67c4c3-de19-4813-b71e-551fc838d406\" />\n\n<img width=\"1283\" height=\"358\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b2dabb7c-84e7-4e88-ac62-567ebe2987bd\" />\n\n\n## 怎么用\n\n仓库 README 里有安装说明，把工作流脚本放到 `~/.claude/workflows/` 后即成 `/<name>` 命令，本地一条命令就能跑。\n\n## 现状\n\n还很早：完整旗舰就 Trading Agents 一个，其他分类基本还空着。我更想用\"真有人在用的\"工作流慢慢把它填厚，所以也欢迎来提 PR——你如果做过/在跑某个多 Agent 工作流，哪怕只是偶尔用一次的，都欢迎收录。\n\nMIT 协议，完全免费。欢迎拍砖 ⭐",
-    "created_at": "2026-05-30T03:05:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10132"
-  },
-  {
-    "id": 10131,
-    "title": "【开源自荐】Easydict for Windows：一个简洁优雅的词典翻译 Windows App",
-    "content": "## Easydict for Windows\n\nEasydict for Windows 是 macOS 上知名翻译词典工具 [Easydict](https://github.com/tisfeng/Easydict) 的 Windows 移植版，使用 .NET 8 + WinUI 3 重写。开箱即用，自动识别输入语言，支持划词翻译、截图 OCR 翻译、长文档翻译，并可同时调用多家翻译服务对比结果。\n\n完全免费、开源（GPL-3.0），无广告、无内购。\n\n![Overview](https://github.com/xiaocang/easydict_win32/raw/master/screenshot/overview.png)\n\n*主窗口 + 迷你窗口（快速翻译）*\n\n**主要特性：**\n\n- **多服务同时翻译** —— 内置 15+ 翻译服务：Google、DeepL、OpenAI、Gemini、DeepSeek、有道、彩云、火山等，一次查询并排对比。\n- **Copilot+ PC 本地 AI 翻译** —— 在支持的 Copilot+ PC（40+ TOPS NPU）上通过 Phi Silica 端侧运行，快速且隐私；普通电脑可用 Foundry Local，离线还有 OpenVINO NLLB-200 兜底。\n- **截图 OCR 翻译** —— `Ctrl+Alt+S` 仿 Snipaste 框选截图，自动识别窗口，OCR 后即时翻译，支持 26+ 语言。\n- **划词翻译** —— 在任意应用中拖选 / 双击 / 三击选中文本，点击悬浮图标即可在迷你窗口翻译。\n- **长文档翻译** —— 支持 PDF / TXT / Markdown，带 ML 版面检测、公式保护、并行翻译、双语对照输出与翻译缓存。\n- **词典模式** —— 单词释义、音标、例句；可导入 MDict（.mdx）离线词典。\n- **全局快捷键 + 系统托盘 + 剪贴板监听**，深色/浅色主题跟随系统。\n\n![Light & Dark Mode](https://github.com/xiaocang/easydict_win32/raw/master/screenshot/light-dark-mode.png)\n\n*深色 / 浅色模式 — 迷你窗口（快速翻译）*\n\n**下载地址（任选其一）：**\n\n- Microsoft Store：https://apps.microsoft.com/detail/9p7nqvxf9dzj\n- winget：`winget install xiaocang.EasydictforWindows`\n- GitHub Releases：https://github.com/xiaocang/easydict_win32/releases\n\n**项目地址：** https://github.com/xiaocang/easydict_win32\n\n（最新版 v0.8.0：内存占用降低约 50%，并修复了主题跟随系统切换的问题。）\n",
-    "created_at": "2026-05-29T15:18:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10131"
   }
 ]
