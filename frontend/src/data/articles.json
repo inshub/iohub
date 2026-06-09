@@ -1,5 +1,13 @@
 [
   {
+    "id": 10266,
+    "title": "【开源自荐】油猴脚本：B站网页端分享视频给站内好友",
+    "content": "## 功能简介\n\n在 Bilibili 视频播放页、番剧播放页的分享面板中新增“分享给 B站好友”入口，将当前视频以文本链接私信发送给最近聊天、关注或粉丝用户。\n\n相关视频：https://www.bilibili.com/video/BV1ff7C6YEwF/\n\n## 安装地址\n\n- [Greasy Fork](https://greasyfork.org/zh-CN/scripts/580430-b%E7%AB%99%E8%A7%86%E9%A2%91%E5%88%86%E4%BA%AB%E7%BB%99%E5%A5%BD%E5%8F%8B)\n- [GitHub](https://github.com/LiarCoder/TampermonkeyScripts/tree/main/scripts/bilibili-share-to-friends)\n\n## 预览\n\n<details open>\n<summary>原分享列表中追加一个“B站好友”分享方式（点击展开或收起）</summary>\n\n<img src=\"https://github.com/user-attachments/assets/fd5b090d-9ac7-4d2b-b9fe-f2c25c3c788a\" alt=\"增加分享入口\" style=\"max-width: 100%;\" />\n\n</details>\n\n<details>\n<summary>可以从最近聊天、我的关注或我的粉丝中选择接收人（点击展开或收起）</summary>\n\n<img src=\"https://github.com/user-attachments/assets/040ececb-5af2-4388-8d8d-015e5287d584\" alt=\"选择接收人\" style=\"max-width: 100%;\" />\n\n</details>\n\n<details>\n<summary>支持昵称搜索、滚动分页加载（点击展开或收起）</summary>\n\n<img src=\"https://github.com/user-attachments/assets/89cd35a0-3256-48f4-b8c7-df3e0a4cc43c\" alt=\"昵称搜索、滚动分页加载\" style=\"max-width: 100%;\" />\n\n</details>\n\n## 已知问题\n\n由于B站接口限制，目前只能将视频以文本形式分享出去，而不能以视频卡片的形式分享。\n- https://github.com/LiarCoder/TampermonkeyScripts/issues/42",
+    "created_at": "2026-06-09T16:47:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10266"
+  },
+  {
     "id": 10265,
     "title": "【开源自荐】ChatGPT Message Markdown Exporter",
     "content": "# ChatGPT Message Markdown Exporter\n\n为 ChatGPT 每条回复的操作栏添加 Markdown 导出按钮，一键将单条消息保存为 `.md` 文件。\n\n## 截图预览 \n\n<img width=\"2316\" height=\"1060\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/26711c19-ef5a-4087-a206-e8fac07f1016\" />\n\n## Repo\nhttps://github.com/extrastu/chatgpt-export-md\n\n## 功能\n\n- 在每条 ChatGPT 回复的操作栏中注入 Markdown 导出图标\n- 复用 ChatGPT 原生「复制」能力，导出内容与复制到剪贴板的内容一致\n- 自动以当前对话标题 + 时间戳命名文件\n- 支持中英文界面（`chatgpt.com` / `chat.openai.com`）\n\n## 安装\n\n1. 克隆或下载本项目\n2. 打开 Chrome / Edge / Arc 等 Chromium 浏览器，进入扩展管理页：\n   - Chrome: `chrome://extensions`\n   - Edge: `edge://extensions`\n3. 开启「开发者模式」\n4. 点击「加载已解压的扩展程序」，选择本项目根目录\n\n## 使用\n\n1. 打开 [ChatGPT](https://chatgpt.com) 并进入任意对话\n2. 在每条回复下方的操作栏中，找到 Markdown 图标按钮\n3. 点击按钮，浏览器会自动下载对应的 `.md` 文件\n\n悬停按钮可查看提示；导出成功、失败或未找到复制按钮时，会通过 tooltip 给出反馈。\n\n## 工作原理\n\n扩展通过 Content Script 监听页面 DOM 变化，在回复操作栏中插入导出按钮。点击后会：\n\n1. 触发 ChatGPT 自带的复制按钮\n2. 从剪贴板读取 Markdown 内容\n3. 生成 Blob 并触发本地下载\n\n## 项目结构\n\n```\nchatgpt-export-md/\n├── manifest.json          # 扩展配置\n├── content.js             # 注入按钮与导出逻辑\n├── style.css              # 按钮样式\n├── icons/                 # 扩展图标\n│   ├── icon.svg\n│   ├── icon16.png\n│   ├── icon32.png\n│   ├── icon48.png\n│   └── icon128.png\n└── scripts/\n    └── generate-icons.mjs # 从 SVG 生成 PNG 图标\n```\n\n## 开发\n\n重新生成图标（需先安装依赖）：\n\n```bash\nnpm install sharp\nnode scripts/generate-icons.mjs\n```\n\n修改代码后，在扩展管理页点击「重新加载」即可生效。\n\n## 权限说明\n\n| 权限 | 用途 |\n|------|------|\n| `clipboardWrite` | 配合复制流程读取剪贴板中的 Markdown 内容 |\n\n## 兼容性\n\n- Manifest V3\n- 支持 `https://chatgpt.com/*` 与 `https://chat.openai.com/*`\n\n## License\n\nISC\n\n\n\n\n",
@@ -808,13 +816,5 @@
     "created_at": "2026-06-02T01:30:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10166"
-  },
-  {
-    "id": 10165,
-    "title": "【开源自荐】awesome-ai-security-agents（每日自动更新的 AI Agent 安全知识库）",
-    "content": "阮老师，您好！\n\n我是 awesome-ai-security-agents 的作者。一直以来都是《科技爱好者周报》的忠实读者，从您的周报中获益良多。今天想向您自荐一个我近期维护的开源项目，希望能为关注 AI 与网络安全方向的开发者提供一些参考。\n\n### 🚀 项目简介\n\n随着大语言模型（LLM）和 AI Agent 的爆发，AI 自身的安全性以及利用 AI 进行安全防护（Dual-use 风险与机遇）成为了当下技术圈的热点。\n\n[awesome-ai-security-agents](https://github.com/sutaoyu/awesome-ai-security-agents)是一个专为 **AI 安全智能体（AI Security Agents）** 打造的精选资源导航库。我们同时关注两个核心方向：\n\n1. **Agents for Security**：如何利用 AI Agent 来增强网络安全防御（如自动化渗透测试、漏洞挖掘）。\n2. **Security for Agents**：如何保护 AI Agent 本身不受对抗性攻击（如间接提示词注入、内存劫持、多智能体合谋欺诈）。\n\n### 🌟 项目亮点\n\n* **每日自动化情报更新**：项目通过 GitHub Actions 调用 arXiv 和 GitHub API，每天自动抓取、筛选并由大模型总结最新的 AI Agent 安全论文与开源工具，确保开发者能追踪到最前沿的动态（例如近期关注度极高的 MCP 协议毒化、Sleeper Attack 等研究）。\n* **结构化分类**：严选业内高质量的学术论文（ICLR、NeurIPS、AAAI 等）、开源安全扫描工具（如 Agentic Security、promptfoo）、企业技术博客及评测基准（Benchmarks），方便检索。\n* **对开发者的价值**：无论你是想构建更安全的 AI 应用，还是想探索 AI 在网络安全中的落地场景，都能在这里快速找到开箱即用的工具和理论支撑。\n\n### 🔗 项目地址\n\n* GitHub 仓库：[sutaoyu/awesome-ai-security-agents](https://github.com/sutaoyu/awesome-ai-security-agents)\n非常感谢阮老师的时间，期待这个项目有机会能登上您的周报，也欢迎您和读者们提出宝贵的建议！",
-    "created_at": "2026-06-01T16:15:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10165"
   }
 ]
