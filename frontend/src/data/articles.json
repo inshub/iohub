@@ -1,5 +1,13 @@
 [
   {
+    "id": 10259,
+    "title": "【工具自荐】YiceKit：中文 AI 工具导航与在线工具箱",
+    "content": "项目名称：YiceKit\n\n项目地址：https://yicekit.com/\n\n项目简介：YiceKit 是一个中文 AI 工具导航与在线工具箱，目标不是简单堆工具链接，而是帮助用户按真实任务选择 AI 工具。站点目前整理了写作、绘画、视频、编程、办公、营销和 SEO 等场景的 AI 工具，并提供 AI 工具选择器、SEO 标题检查、Meta Description 检查、Slug 生成器、robots.txt 生成器等轻量小工具。\n\n主要特点：\n\n- 按使用场景整理 AI 工具，而不是只按品牌名罗列\n- 提供工具详情页、分类页、榜单页和替代品入口，方便对比选择\n- 有中文 AI 工具选择器，可以按任务快速找到合适工具\n- 内置多个 SEO/内容增长相关小工具，适合独立开发者和内容运营使用\n- 页面会补充适合谁、不适合谁、怎么用、替代品和相关工具，降低选择成本\n\n推荐理由：现在 AI 工具越来越多，但很多导航站只是链接集合。YiceKit 更想做成一个“选择工具的入口”，帮助中文用户判断某个任务该用什么工具、有什么替代方案，以及能不能直接用站内小工具完成轻量任务。\n",
+    "created_at": "2026-06-09T06:50:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10259"
+  },
+  {
     "id": 10258,
     "title": "【工具自荐】FlowSpeech：支持情感和停顿控制的文本转语音工具",
     "content": "项目名称：FlowSpeech\n\n项目地址：https://flowspeech.io/\n\n项目简介：FlowSpeech 是一个上下文感知的文本转语音工具，可以把文本转换为更自然的人声。它支持情感控制、停顿控制和 30+ 音色，适合用来制作课程旁白、产品演示、短视频配音和可访问性音频内容。\n\n主要特点：\n\n- 支持根据上下文生成更自然的语音\n- 可以控制情感表达和停顿节奏\n- 提供 30+ 种声音\n- 适合创作者、教育者、营销团队和产品团队制作旁白音频\n\n推荐理由：相比只做普通朗读的 TTS 工具，FlowSpeech 更强调语气、停顿和上下文效果，适合需要更像真人表达的中文/英文配音场景。",
@@ -12,7 +20,9 @@
     "title": "【开源自荐】Battle-Tested Patterns：从 React、Linux、Go 等源码中提取的 46 个编程模式，可交互定位到真实代码",
     "content": "大部分\"设计模式\"教程讲的是 GoF 23 种——工厂、单例、观察者。但打开 React Reconciler 的源码，你看到的是 Bitmask + Dirty Flag + Cooperative Scheduling + Double Buffering 四个模式联动；打开 PostgreSQL，是 WAL + Checkpointing + B+ Tree + MVCC + LRU Cache 组成的完整写入-恢复链路。\n\n这些才是真正在生产中反复出现的模式，但一直没人系统整理过。\n\n[Battle-Tested Patterns](https://totoro-jam.github.io/battle-tested-patterns/zh/) 做的就是这件事：从 React、Linux 内核、Go runtime、Redis、PostgreSQL、Kafka 等项目的源码中，提取出 46 个编程模式，每个都附带**精确到行号的 GitHub 源码链接**。\n\n项目地址：https://github.com/Totoro-jam/battle-tested-patterns\n\n在线文档（中英双语）：https://totoro-jam.github.io/battle-tested-patterns/zh/\n\n## 截图\n\n<img width=\"2560\" height=\"1190\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/71a4bbe7-f5ab-474d-85ed-ed286f114254\" />\n\n<img width=\"2560\" height=\"1189\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/93b6a5c3-d3f3-4de0-aa44-1915c6067c3b\" />\n\n## 和传统设计模式教程的区别\n\n- **精确源码链接**：不是\"React 用了观察者模式\"这种泛泛而谈，而是直接链到 `ReactFiberFlags.js#L18-L22` 这一行，每个模式至少 2 个生产项目佐证\n- **46 个交互式可视化**：SVG 组件可点击、可拖拽，比如亲手操作一个 LRU Cache 的淘汰过程、观察 B+ Tree 的分裂动画\n- **4 种语言地道实现**：TypeScript / Rust / Go / Python，不是伪代码，clone 下来直接 `pnpm test`、`cargo test`、`go test`、`pytest`，共 1,073 个测试用例\n- **系统级案例**：展示 React 如何用 6 个模式协同实现 Reconciler，Go runtime 如何用 Work Stealing + Semaphore + Free List 管理调度和内存\n- **中英双语文档**\n\n## 内容覆盖\n\n| 分类     | 模式示例                                                                   |\n| -------- | -------------------------------------------------------------------------- |\n| 数据结构 | Bitmask、LRU Cache、B+ Tree、Bloom Filter、Skip List、Merkle Tree 等 11 个 |\n| 并发     | Semaphore、Actor Model、Work Stealing、MVCC、Event Loop 等 9 个            |\n| 系统     | Circuit Breaker、Rate Limiter、WAL、LSM Tree、Consistent Hashing 等 12 个  |\n| 内存     | Object Pool、Arena Allocator、Copy-on-Write、Reference Counting 等 8 个    |\n| 行为     | State Machine、Iterator、Diff/Patch、Visitor 等 6 个                       |\n\n## 技术栈\n\nVitePress + Vue 3 + Vitest + Rust + Go + Python，MIT 开源。\n\n欢迎体验和反馈！\n",
     "created_at": "2026-06-09T01:53:18Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10257"
   },
   {
@@ -806,13 +816,5 @@
     "created_at": "2026-06-01T09:29:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10159"
-  },
-  {
-    "id": 10158,
-    "title": "【开源自荐】CronBox：本地优先的 macOS 菜单栏定时任务工具",
-    "content": "## 项目简介\n\nCronBox 是一个本地优先的 macOS 菜单栏定时任务工具，用来管理和调度本机脚本，以及一些 coding agent 任务。\n\n它适合这类场景：有一些只适合在本机运行的小脚本，比如清理、同步、备份、数据抓取、日报生成等，放到服务器太重，手写 cron / launchd 又不方便查看状态和日志。\n\n## 核心特性\n\n- 支持 Bash、Python、Bun、PostgreSQL、Codex、Claude Code 等任务脚本。\n- 支持 cron 表达式、一次性任务、时区、JSON 参数和环境变量。\n- 菜单栏后台运行，主窗口关闭后仍可继续调度任务。\n- 提供运行历史、实时 stdout/stderr 日志和任务状态。\n- 内置 CLI，可以用 `cronbox add`、`cronbox schedules add`、`cronbox run` 管理任务。\n- 使用 Tauri 2 + Vue 3 + TypeScript + Rust 开发，MIT 开源。\n\n## 快速开始\n\n目前主要支持 macOS：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/xiaoxiunique/cronbox/main/scripts/install-macos.sh | bash\n```\n\n添加一个脚本目录并创建定时任务：\n\n```bash\ncronbox add ~/scripts\ncronbox schedules add ~/scripts/daily-report.sh \"0 9 * * *\" --tz Asia/Shanghai\n```\n\n## 链接\n\n- 官网：https://cronbox.dev\n- GitHub：https://github.com/xiaoxiunique/cronbox\n",
-    "created_at": "2026-06-01T08:59:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10158"
   }
 ]
