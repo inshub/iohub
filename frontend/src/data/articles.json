@@ -1,5 +1,13 @@
 [
   {
+    "id": 10265,
+    "title": "【开源自荐】ChatGPT Message Markdown Exporter",
+    "content": "# ChatGPT Message Markdown Exporter\n\n为 ChatGPT 每条回复的操作栏添加 Markdown 导出按钮，一键将单条消息保存为 `.md` 文件。\n\n## 截图预览 \n\n<img width=\"2316\" height=\"1060\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/26711c19-ef5a-4087-a206-e8fac07f1016\" />\n\n## Repo\nhttps://github.com/extrastu/chatgpt-export-md\n\n## 功能\n\n- 在每条 ChatGPT 回复的操作栏中注入 Markdown 导出图标\n- 复用 ChatGPT 原生「复制」能力，导出内容与复制到剪贴板的内容一致\n- 自动以当前对话标题 + 时间戳命名文件\n- 支持中英文界面（`chatgpt.com` / `chat.openai.com`）\n\n## 安装\n\n1. 克隆或下载本项目\n2. 打开 Chrome / Edge / Arc 等 Chromium 浏览器，进入扩展管理页：\n   - Chrome: `chrome://extensions`\n   - Edge: `edge://extensions`\n3. 开启「开发者模式」\n4. 点击「加载已解压的扩展程序」，选择本项目根目录\n\n## 使用\n\n1. 打开 [ChatGPT](https://chatgpt.com) 并进入任意对话\n2. 在每条回复下方的操作栏中，找到 Markdown 图标按钮\n3. 点击按钮，浏览器会自动下载对应的 `.md` 文件\n\n悬停按钮可查看提示；导出成功、失败或未找到复制按钮时，会通过 tooltip 给出反馈。\n\n## 工作原理\n\n扩展通过 Content Script 监听页面 DOM 变化，在回复操作栏中插入导出按钮。点击后会：\n\n1. 触发 ChatGPT 自带的复制按钮\n2. 从剪贴板读取 Markdown 内容\n3. 生成 Blob 并触发本地下载\n\n## 项目结构\n\n```\nchatgpt-export-md/\n├── manifest.json          # 扩展配置\n├── content.js             # 注入按钮与导出逻辑\n├── style.css              # 按钮样式\n├── icons/                 # 扩展图标\n│   ├── icon.svg\n│   ├── icon16.png\n│   ├── icon32.png\n│   ├── icon48.png\n│   └── icon128.png\n└── scripts/\n    └── generate-icons.mjs # 从 SVG 生成 PNG 图标\n```\n\n## 开发\n\n重新生成图标（需先安装依赖）：\n\n```bash\nnpm install sharp\nnode scripts/generate-icons.mjs\n```\n\n修改代码后，在扩展管理页点击「重新加载」即可生效。\n\n## 权限说明\n\n| 权限 | 用途 |\n|------|------|\n| `clipboardWrite` | 配合复制流程读取剪贴板中的 Markdown 内容 |\n\n## 兼容性\n\n- Manifest V3\n- 支持 `https://chatgpt.com/*` 与 `https://chat.openai.com/*`\n\n## License\n\nISC\n\n\n\n\n",
+    "created_at": "2026-06-09T12:09:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10265"
+  },
+  {
     "id": 10264,
     "title": "【工具自荐】一款轻量、优雅的个人主页生成器",
     "content": "演示网站：<https://www.dwj601.cn/page-withu/>\n\n主页：\n\n<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/Explorer-Dong/page-withu/main/.github/assets/page-withu-dark.png\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/Explorer-Dong/page-withu/main/.github/assets/page-withu.png\">\n    <img alt=\"PageWithU\" src=\"https://raw.githubusercontent.com/Explorer-Dong/page-withu/main/.github/assets/page-withu.png\">\n  </picture>\n</p>\n\n项目页：\n\n<img width=\"1987\" height=\"669\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e474657b-774a-46f9-9bf1-cf195a7a8538\" />\n\n博客页：\n\n<img width=\"2020\" height=\"1142\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1e7fa62b-9a86-483f-ba8f-72a9fd2a0d33\" />\n\n快速上手：\n\n```bash\n# 安装 page-withu\nnpm install -g @x-withu/page-withu\n\n# 创建项目\npage-withu create my-homepage\n\n# 安装依赖\ncd my-homepage\nnpm install\n\n# 预览网站\nnpm run dev\n```",
@@ -808,13 +816,5 @@
     "created_at": "2026-06-01T16:15:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10165"
-  },
-  {
-    "id": 10164,
-    "title": "【工具自荐】给孩子准备的儿童节小游戏 ——「谁是卧底」",
-    "content": "这个工具最初是给家里的小朋友做的，孩子上学后认识了不少字，我想趁这个机会锻炼一下他的语言表达和想象能力。但市面上类似的谁是卧底 App，要么是给大人联机玩的，需要给孩子准备手机和账号；要么塞满了广告，交互体验很差。\n\n于是我干脆自己动手，做了一个纯粹辅助线下游戏的「发牌」工具——**不需要人人都拿手机，一部设备轮流传递，面对面玩就够了。**\n\n## 怎么玩\n\n1. 设置游戏人数，点击开始\n2. 手机依次传递给每个玩家，各自查看自己的词\n3. 看完后，大家按正常谁是卧底的规则线下进行\n4. 投票结束后，回到手机上查看每位玩家的词，看看谁是卧底\n\n游戏设置里还可以选择难度——难度越高，分配的词语越难分辨，甚至会出现一些抽象或生僻的词，挑战性拉满。\n\n## 亮点\n\n- 🎯 **交互极简** —— 小孩子也能独立操作\n- 📱 **支持小程序** —— 微信里点开即玩\n- 🏠 **支持 PWA 安装** —— 添加到桌面，跟原生 App 一样顺手\n- 🔒 **隐私安全** —— 所有数据仅存储在本地，不上传任何云端\n\n## 体验地址\n\n网页版 👉 https://undercover-family.github.io/\n\n小程序版本\n\n![undercover](https://i.imgur.com/fUz3fsM.jpeg)\n\n## 开发过程\n\n整个项目都是使用 vibe coding 完成的。\n\n1. 需求：使用 Superpower 技能帮我从一句话需求到完整的需求规格文档\n2. 设计：frontend-design + https://www.designprompts.dev/sketch + https://github.com/op7418/logo-generator-skill\n3. 开发：vite + react + zustand + tailwindcss + shadcn/ui + Hugeicons\n\n\n---\n\n> 六一快乐，祝大朋友小朋友都玩得开心 🎈\n\n",
-    "created_at": "2026-06-01T15:30:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10164"
   }
 ]
