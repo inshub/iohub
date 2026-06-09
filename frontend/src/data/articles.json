@@ -1,5 +1,29 @@
 [
   {
+    "id": 10258,
+    "title": "【工具自荐】FlowSpeech：支持情感和停顿控制的文本转语音工具",
+    "content": "项目名称：FlowSpeech\n\n项目地址：https://flowspeech.io/\n\n项目简介：FlowSpeech 是一个上下文感知的文本转语音工具，可以把文本转换为更自然的人声。它支持情感控制、停顿控制和 30+ 音色，适合用来制作课程旁白、产品演示、短视频配音和可访问性音频内容。\n\n主要特点：\n\n- 支持根据上下文生成更自然的语音\n- 可以控制情感表达和停顿节奏\n- 提供 30+ 种声音\n- 适合创作者、教育者、营销团队和产品团队制作旁白音频\n\n推荐理由：相比只做普通朗读的 TTS 工具，FlowSpeech 更强调语气、停顿和上下文效果，适合需要更像真人表达的中文/英文配音场景。",
+    "created_at": "2026-06-09T02:15:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10258"
+  },
+  {
+    "id": 10257,
+    "title": "【开源自荐】Battle-Tested Patterns：从 React、Linux、Go 等源码中提取的 46 个编程模式，可交互定位到真实代码",
+    "content": "大部分\"设计模式\"教程讲的是 GoF 23 种——工厂、单例、观察者。但打开 React Reconciler 的源码，你看到的是 Bitmask + Dirty Flag + Cooperative Scheduling + Double Buffering 四个模式联动；打开 PostgreSQL，是 WAL + Checkpointing + B+ Tree + MVCC + LRU Cache 组成的完整写入-恢复链路。\n\n这些才是真正在生产中反复出现的模式，但一直没人系统整理过。\n\n[Battle-Tested Patterns](https://totoro-jam.github.io/battle-tested-patterns/zh/) 做的就是这件事：从 React、Linux 内核、Go runtime、Redis、PostgreSQL、Kafka 等项目的源码中，提取出 46 个编程模式，每个都附带**精确到行号的 GitHub 源码链接**。\n\n项目地址：https://github.com/Totoro-jam/battle-tested-patterns\n\n在线文档（中英双语）：https://totoro-jam.github.io/battle-tested-patterns/zh/\n\n## 截图\n\n<img width=\"2560\" height=\"1190\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/71a4bbe7-f5ab-474d-85ed-ed286f114254\" />\n\n<img width=\"2560\" height=\"1189\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/93b6a5c3-d3f3-4de0-aa44-1915c6067c3b\" />\n\n## 和传统设计模式教程的区别\n\n- **精确源码链接**：不是\"React 用了观察者模式\"这种泛泛而谈，而是直接链到 `ReactFiberFlags.js#L18-L22` 这一行，每个模式至少 2 个生产项目佐证\n- **46 个交互式可视化**：SVG 组件可点击、可拖拽，比如亲手操作一个 LRU Cache 的淘汰过程、观察 B+ Tree 的分裂动画\n- **4 种语言地道实现**：TypeScript / Rust / Go / Python，不是伪代码，clone 下来直接 `pnpm test`、`cargo test`、`go test`、`pytest`，共 1,073 个测试用例\n- **系统级案例**：展示 React 如何用 6 个模式协同实现 Reconciler，Go runtime 如何用 Work Stealing + Semaphore + Free List 管理调度和内存\n- **中英双语文档**\n\n## 内容覆盖\n\n| 分类     | 模式示例                                                                   |\n| -------- | -------------------------------------------------------------------------- |\n| 数据结构 | Bitmask、LRU Cache、B+ Tree、Bloom Filter、Skip List、Merkle Tree 等 11 个 |\n| 并发     | Semaphore、Actor Model、Work Stealing、MVCC、Event Loop 等 9 个            |\n| 系统     | Circuit Breaker、Rate Limiter、WAL、LSM Tree、Consistent Hashing 等 12 个  |\n| 内存     | Object Pool、Arena Allocator、Copy-on-Write、Reference Counting 等 8 个    |\n| 行为     | State Machine、Iterator、Diff/Patch、Visitor 等 6 个                       |\n\n## 技术栈\n\nVitePress + Vue 3 + Vitest + Rust + Go + Python，MIT 开源。\n\n欢迎体验和反馈！\n",
+    "created_at": "2026-06-09T01:53:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10257"
+  },
+  {
+    "id": 10256,
+    "title": "【开源自荐】English Read：在线英语阅读 EPUB 电子书 划词查词 单词间隔重复复习和学习统计",
+    "content": "English Read 是一款面向英语学习者的在线阅读 + 间隔重复复习平台。\n\n解决的问题：\n\n常规英语阅读工具要么只提供阅读器，要么背单词 App 脱离真实阅读场景。读英文书时遇到生词，需要手动查词典再录入背词 App，阅读和记单词是割裂的两件事，很难坚持。\n\n- English Read 希望把阅读和背单词放回同一个工作流：导入 EPUB 电子书后可以直接在线阅读，选中生词一键保存，系统自动查询音标、释义和中文翻译，同时记录原文上下文。\n\n- 复习方面，English Read 内建基于艾宾浩斯遗忘曲线的间隔重复（SRS）算法，生词会自动排入复习计划，无需手动管理。复习分为两步：先看中文选择正确英文释义（翻面确认），再进行拼写还原（字母/字块点选或键盘输入），同时支持自动发音和提示逐步揭晓。\n\n- 学习统计方面，English Read 提供每日学习时长统计（阅读 + 复习双维度柱状图）、阅读速度估算（WPM 分档）、复习日历计划、生词本全景概览等，帮助用户量化学习进度。\n\n- 功能方面，支持多用户（NextAuth v5，邮箱/手机号/Google/GitHub 登录）、多语言界面（中/英切换）、公共书库与个人书架管理、阅读进度自动保存、独立复习设置面板等。\n\n- 数据与存储方面，用户 EPUB 文件存储在 Vercel Blob，阅读进度和生词数据存储在 Neon PostgreSQL（Drizzle ORM），词典数据通过 Free Dictionary API 和 MyMemory Translation API 实时查询（24h 缓存）。\n\n首页概览 — 统计卡片、复习时长图表、快捷添加生词\n\n<img width=\"2560\" height=\"1271\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cbbfabbf-da12-4d14-a24b-f5cf72ceb656\" />\n\n\n EPUB 在线阅读器 — 选择生词自动查询释义\n\n<img width=\"2560\" height=\"1271\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b838bfaa-80b8-4162-8e47-2e44e5a23ae6\" />\n\n间隔重复复习 — 释义选择 + 拼写还原\n\n<img width=\"2560\" height=\"1271\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/08cd0a12-013a-4c7a-b0a6-9e511bc66963\" />\n\n预览地址：https://english-read.bitbw.top/\n项目地址：https://github.com/bitbw/english-read",
+    "created_at": "2026-06-09T01:28:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10256"
+  },
+  {
     "id": 10255,
     "title": "【工具自荐】给朋友颁个奖小程序",
     "content": "做了一个小程序，给朋友颁个奖。\n为什么我会做这样一个小程序呢？因为我想在聊天的时候，可以给朋友创造一点点的情绪价值。\n在 AI 的变化越来越快的时候，人和人之间的链接将变得越来越难。\n因为很多时候，一个人可以搞定全部事情。但我觉得还是要更多的去关注线下，关注人和人之间的链接。因为用户的需求可能会不停的变，但是人类的情感需求是永远存在的。\n所以做了这样一个小程序，希望可以帮助到一些朋友，创造一点情绪价值。如果你和你的朋友好久没有聊天的话，可以给他颁个奖，或许你们就能打开话匣子。\n是不是也是很有趣的一种破冰的方式呢？\n接下来我也会做更多这种促进人和人之间弱连接的小工具。希望可以让很久没聊天的朋友，然后能够重新建立链接。能够让认识但没那么熟的朋友，可以有一个聊天的契机，等等。\n在 AI 的变化越来越快的时候，突然想做一些更多关注人文与情感的产品。\n\n<img width=\"258\" height=\"258\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2ce95ad9-5d01-4091-a926-5dd022f18dff\" />\n",
@@ -790,29 +814,5 @@
     "created_at": "2026-06-01T08:59:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10158"
-  },
-  {
-    "id": 10157,
-    "title": "【开源自荐】MarkBook · 文集 —— 散落文本聚合阅读器（纯本地 / 零上传）",
-    "content": "仓库：https://github.com/rockbenben/markbook\n在线体验：https://markbook.newzone.top/\n\n把一个文件夹或一个大文件里散落的 .md / .txt，自动聚合 / 拆分成一本可连续阅读、全文搜索、导出 EPUB 的书；纯本地、零上传。\n\n说明：\n本地优先的「文本聚合阅读器」。丢给它一个装满 .md / .txt 的文件夹（几百章的网文、一堆笔记、拆散的技术文档都行），或一个大文件，它会自动识别章节与卷（中文「第X章 / 卷一」、Markdown 标题、一、 / 1.1 编号、Setext 等都认）、按自然顺序拼成一本连续滚动的书，自动生成目录；支持中文分词全文搜索、护眼 / 夜间背景、按卷导出 TXT / Markdown / HTML / EPUB / PDF，读起来像翻电子书。读到错字想改、要统一称谓、或清理下载网文里的乱码？还能就地编辑、全局查找替换、一键整理。\n\n两种用法：\n① 服务端版当本地工具跑；\n② 纯静态网页版（PWA，可安装离线）直接在浏览器里打开你的本地文件夹，全程零上传。React + TypeScript，MIT。\n\n<img width=\"2569\" height=\"1424\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92ac84c5-0f8f-459c-bc83-916888a9fe31\" />\n\n<img width=\"2128\" height=\"1414\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e00a573b-1a94-4023-bd99-a195b15d649c\" />\n\n",
-    "created_at": "2026-06-01T08:47:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10157"
-  },
-  {
-    "id": 10156,
-    "title": "【开源自荐】ArgusMind：让 AI 像安全工程师一样做代码审计，自动发现 Sink 并追踪调用链",
-    "content": "项目地址：https://github.com/pulseio76/ArgusMind\n在线预览：https://argusmind.vercel.app/\nArgusMind 是一个开源的 AI 代码安全审计 Agent。\n\n它不是把代码丢给大模型，然后问一句“这里有没有漏洞”。它会像安全工程师一样，先理解项目结构，再制定审计计划，寻找危险 Sink，最后顺着调用链往上追，尝试还原一条风险路径。\n\n我做这个项目，是因为现在很多 AI 工具都在帮人写代码，但很少有工具能像安全工程师一样系统地审代码。真实的代码审计不是一次问答，而是一连串判断：哪些模块值得看？哪些函数可能是危险点？参数是怎么传进来的？有没有可利用路径？\n\nArgusMind 尝试把这个过程拆成多个 Agent 协作完成：\n\n- ProjectInfo Agent：理解项目语言、框架、入口和目录结构。\n- Plan Agent：根据项目信息生成审计计划，而不是盲扫整个仓库。\n- SinkFinder Agent：寻找危险函数、敏感 API 和潜在风险点。\n- ChainAnalyzer Agent：沿着调用链追踪数据流，分析风险路径是否成立。\n\n和普通扫描器相比，我更希望 ArgusMind 做到的是：不只是告诉你“这里可能有问题”，而是告诉你“它是怎么一路追到这里的”。\n\n所以项目里引入了 Neo4j，把语言、风险类型、Sink、调用链、分析结果都保存成审计图谱。审计结束后，可以在 Web 控制台里查看任务进度、漏洞详情和调用链图。\n\n目前支持：\n\n- 多 Agent 协作式代码审计\n- 自动生成审计计划\n- 自动发现危险 Sink\n- 调用链追踪与风险路径分析\n- Neo4j 审计图谱\n- Web 控制台查看任务、漏洞和链路图\n- 任务暂停、恢复、取消\n- Docker 本地部署\n- 通过 LiteLLM 接入不同大模型\n\n技术栈：Python / FastAPI / Neo4j / PostgreSQL / LiteLLM / Ant Design Pro。\n\n\n欢迎对 AI 安全、代码审计、多 Agent、DevSecOps 感兴趣的同学试用和提建议。\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/01-login.png\" alt=\"登录页\" width=\"48%\" />\n  &nbsp;\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/02-dashboard.png\" alt=\"控制台\" width=\"48%\" />\n</p>\n<p align=\"center\"><sub>登录 · 控制台（Dashboard）</sub></p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/03-projects.png\" alt=\"项目管理\" width=\"48%\" />\n  &nbsp;\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/05-tasks.png\" alt=\"任务管理\" width=\"48%\" />\n</p>\n<p align=\"center\"><sub>项目管理 · 任务管理</sub></p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/06-task-detail-1.png\" alt=\"任务详情 - 代码审计链路图\" width=\"96%\" />\n</p>\n<p align=\"center\"><sub>任务详情 · 代码审计链路图</sub></p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/06-task-detail.png\" alt=\"任务详情\" width=\"48%\" />\n  &nbsp;\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/07-vulnerabilities.png\" alt=\"漏洞管理\" width=\"48%\" />\n</p>\n<p align=\"center\"><sub>任务详情 · 漏洞管理</sub></p>\n\n<p align=\"center\">\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/08-vulnerability-detail.png\" alt=\"漏洞详情\" width=\"48%\" />\n  &nbsp;\n  <img src=\"https://github.com/pulseio76/ArgusMind/raw/main/docs/screenshots/08-vulnerability-detail-1.png\" alt=\"漏洞详情\" width=\"48%\" />\n</p>\n<p align=\"center\"><sub>漏洞详情（报告与代码审计链路图）</sub></p>",
-    "created_at": "2026-06-01T06:41:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10156"
-  },
-  {
-    "id": 10155,
-    "title": "【开源自荐】gojaja（过家家）：一个本地多 AI Agent 协作的 CLI 工具，支持跨 Cursor / Claude Code / Codex 等客户端调用",
-    "content": "## 项目简介\n\n大家好，恰逢六一，我开源了 **gojaja（过家家）** —— 一个本地 CLI，让多个 AI Agent 窗口（Cursor、Claude Code、Codex CLI 等）在同一个项目里分工协作。\n\n名字来自小朋友「过家家」：每人扮演一个角色，一起演同一场戏。这个工具做的事类似：给每个 Agent 分配 PM、后端、Tech Lead 等**角色**，用共享任务板、RFC 拍板机制和定向收件箱让它们「说人话、留记录」，而不是各聊各的、重复干活、决策对不上。\n\n**没有服务端，没有数据库。** 所有状态写在项目目录 `.gojaja/` 下的普通文件里，可以 `git diff`，数据完全在你本地。\n\n## 核心特性\n\n- **实时看板** — `gojaja watch` 打开浏览器 Dashboard，看各角色 session、任务板、RFC、活动流\n- **RFC + ACK 闸门** — 跨角色决策有选项、投票、ack/object，避免「聊完就忘」\n- **任务板** — Backlog → Done 全流程，依赖、评审人、归档\n- **report / worklog** — 角色间定向消息 + 团队广播，全部进审计流\n- **运行时注入** — 一键给 Cursor / Claude / Codex 等写入规则文件，再 `activate` 绑定窗口与角色\n\n## 适用场景\n\n- 一个项目里同时开 **2 个以上** Agent 窗口，需要分工协作而不是各干各的\n- 多角色头脑风暴\n- 圆桌讨论\n- 需要**留痕**的拍板决策\n- 想用「一个强模型带队 + 若干普通模型执行」的低成本协作玩法\n\n## 快速开始\n\n```bash\nnpm install -g gojaja\n# 或 pnpm add -g gojaja\n\ncd your-project\ngojaja watch    # 浏览器里初始化、建角色、激活 Agent\n```\n\n要求 Node.js 20+，目前支持 Linux / macOS。\n\n## 链接\n\n- 项目地址：https://github.com/smilezheng/gojaja\n- npm：https://www.npmjs.com/package/gojaja\n- 中文 README：https://github.com/smilezheng/gojaja/blob/main/README.zh-CN.md\n\nMIT 协议。如果觉得有点意思，欢迎 Star ⭐\n",
-    "created_at": "2026-06-01T06:27:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10155"
   }
 ]
