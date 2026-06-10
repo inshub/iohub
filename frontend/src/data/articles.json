@@ -1,5 +1,21 @@
 [
   {
+    "id": 10270,
+    "title": "Inspector —— 把 Claude API 的请求体和 SSE 响应流\"解剖\"给你看：context 由什么组成、token 花在哪、缓存省了多少钱，纯前端离线解析，粘贴即用。",
+    "content": "粘贴请求体 → 自动拆解 system / tools / messages 体量占比，把扁平消息流还原成 Turn → Step 的 agent loop 结构，一眼看清\"user 消息其实是工具回填\"、system-reminder\n\n注入、缓存断点在哪\n\n  粘贴 SSE 裸流 → delta 自动拼回完整 message，usage 算成 cache 命中率 + 实际成本（5m/1h 写入费率分开计），事件流可按类型过滤\n\n  纯前端、零依赖、单 HTML 文件——所有数据只在你的浏览器里，不上传一个字节\n\n  在线用：https://inspector.pdjjq.org\n  源码：https://github.com/TokenRollAI/Inspector\n\n  适合所有在做 Agent / Context Engineering / LLM 成本优化的人。理解一个 Agent，从解剖它的一次请求开始。",
+    "created_at": "2026-06-10T07:14:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10270"
+  },
+  {
+    "id": 10269,
+    "title": "工具推荐：ccline——在 zsh 命令行直接输入自然语言，获得答案并一键执行命令",
+    "content": "## 工具介绍\n\n**ccline** — 在 zsh 提示符直接输入一句话（不是命令），自动调用 Claude 或 Codex 获取回答。如果回答里包含 shell 命令，会弹出交互式菜单让你确认后直接执行。\n\n## 演示\n\n```\n$ how do I find files bigger than 100MB here\n\n    find . -maxdepth 1 -type f -size +100M       ← 渲染成 Markdown\n\nCommands found — ↑/↓ to choose, Enter to run, q to cancel:\n ❯ find . -maxdepth 1 -type f -size +100M\n   find . -type f -size +100M\n   ➤ Run all of them\n   ✗ Cancel\n$ find . -maxdepth 1 -type f -size +100M\n./big.iso\n```\n\n## 使用方式\n\n原理：劫持 zsh 的 `command_not_found_handler`。\n- 输入**一个单词**（比如打错命令）→ 当作普通 typo 处理，不触发 AI\n- 输入**两个及以上单词** → 当作问题，发给大模型\n\n一行安装：\n\n```sh\ncurl -fsSL https://raw.githubusercontent.com/jianshuo/ccline/v0.2.2/install.sh | bash\n```\n\n## 链接\n\n- GitHub: https://github.com/jianshuo/ccline\n- 主页: https://ccline.jianshuo.dev\n\n依赖：zsh + claude CLI（优先）或 codex CLI（备选），无需其他依赖。",
+    "created_at": "2026-06-10T04:28:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10269"
+  },
+  {
     "id": 10268,
     "title": "【开源自荐】Deep Agents 实战：基于 LangChain 生态的 AI Agent 开发开源课程",
     "content": "# Deep Agents 实战\n\n**基于 LangChain / LangGraph 生态，系统构建生产级 AI Agent 的完整中文开源课程。**\n\n## 项目地址\n\nhttps://github.com/webup/deepagents-course\n\n## 课程网站\n\nhttps://webup.github.io/deepagents-course/\n\n## 项目简介\n\n《Deep Agents 实战》是 LangChain 官方社区大使出品的开源课程，教授如何使用 LangChain Deep Agents SDK 从零构建生产级 AI Agent。课程涵盖从认知到实战的完整路径：\n\n- **认知篇**：Agent 三层架构、Context Engineering 核心理念\n- **核心篇**：虚拟文件系统、任务规划、子 Agent 编排、异步并行\n- **准备篇**：基于 [AgentSeek CLI](https://github.com/ob-labs/agentseek) 快速搭建模板应用、安装开发辅助技能\n- **进阶篇 & 实战篇**：持续更新中\n\n## 主要特点\n\n- **完全开源**：课程文字内容 CC BY-NC-SA 4.0，网站源码 MIT\n- **配套视频**：每章均有 B 站视频讲解\n- **可运行模板**：通过 `agentseek create` 一条命令获取可运行的 Agent 项目\n- **AI 开发辅助**：内置 Skills 技能包，让 Claude Code / Cursor 等编码助手具备 LangChain 工程经验\n- **持续迭代**：已发布 6 章 + 2 个准备篇，持续更新中\n\n## 技术栈\n\n- LangChain / LangGraph / Deep Agents SDK\n- AgentSeek CLI（项目脚手架 + 技能管理）\n- LangSmith（全链路 Tracing）\n- Astro 6 + Tailwind CSS 4（课程网站）\n\n## 适合人群\n\n想要系统学习 AI Agent 开发的工程师，特别是希望基于 LangChain 生态构建生产级应用的开发者。\n\n## 许可证\n\n内容：CC BY-NC-SA 4.0 | 代码：MIT",
@@ -800,21 +816,5 @@
     "created_at": "2026-06-02T07:33:13Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10170"
-  },
-  {
-    "id": 10169,
-    "title": "【开发者自荐】Chrome 扩展 DualPiP v1.7- 给任意网页视频加实时字幕 — 直播/网课/无字幕视频都能用",
-    "content": "很多时候想看的视频没有字幕：直播回放、没人翻译的网课、国外新闻直播、番剧。之前只能靠听。\n\nDualPiP 最近 v1.7 更新加了 ASR（自动语音识别）实时字幕功能。\n\n**原理**\n\n通过浏览器的音频捕获 API 获取视频音频流，发送到 Deepgram 云端通过 WebSocket 实时转写。也支持本地部署的 Whisper 服务器。预加载模式无延迟，实时字幕延迟大约 300ms。\n\nDeepgram 为新注册用户提供 **$200 免费额度**，注册全程无需绑定任何支付方式。按 nova-3 模型 $0.007/分钟计算，$200 额度足够转录约 **476 小时音频**——相当于看 238 部 2 小时电影\n\n**适用场景**\n\n1. **直播没字幕**：YouTube/Twitch 直播大多没有实时字幕，DualPiP 可以实时生成\n2. **网课录像**：大学网课很多没有字幕，开了 ASR 就有了\n3. **看生肉番**：为没有字幕的番剧，自动生成字幕，\n4. **学外语**：ASR 生成的字幕可以直接走 AI 翻译生成双语字幕，看英语直播时显示英文+中文字幕\n\n\n## ASR 实时流和预下载批量模式有什么区别？\n\nDualPiP ASR 提供两种音频捕获和识别模式，适应不同的观看场景：\n\n### 实时流模式（WebSocket Streaming）\n\n音频通过 WebSocket 实时发送到 Deepgram 服务器，字幕延迟低于 300ms，几乎和说话同步。Deepgram 的 Interim Results 功能还会在最终结果出来前提供临时识别结果，让字幕出现得更快。适合直播、视频会议、实时内容等需要即时反馈的场景。\n\n### 预下载批量模式（Pre-download + HTTP Batch）\n\nDualPiP 先将视频音频预下载并按时间段分割，然后通过 HTTP 请求批量发送到 ASR 服务进行离线识别。适合已发布的视频内容——可以在观看前提前生成完整字幕，播放时完全无延迟。预下载模式同时支持 Deepgram 云端和本地 Whisper 后端。\n\n| 对比 | 实时流模式 | 预下载批量模式 |\n|---|---|---|\n| 延迟 | < 300ms | 预下载完成后零延迟 |\n| 适合场景 | 直播、实时内容、会议 | 已发布的视频、需要完整字幕 |\n| 支持后端 | Deepgram（WebSocket） | Deepgram + 本地 Whisper |\n| 字幕完整性 | 实时生成，偶有遗漏 | 完整覆盖全部音频内容 |\n\n## 如何用 ASR 字幕配合 AI 翻译生成实时双语字幕？\n\nDualPiP 的 ASR 和AI 翻译可以配合使用，为任何语言的在线视频实时生成双语字幕。这解决了一个传统字幕无法覆盖的场景：**视频没有原生字幕，但你需要看双语字幕学外语**。\n\n### ASR + AI 翻译的工作流程\n\n1. **ASR 实时识别原文**：Deepgram 将视频音频转录为原语言文字字幕\n2. **AI 大模型实时翻译**：DualPiP 的 AI 翻译引擎将 ASR 生成的字幕翻译为目标语言\n3. **双语字幕同时显示**：原文和译文以双语字幕的形式叠加在视频上方\n\n### 为什么 ASR 字幕翻译强烈推荐使用 AI 大模型？\n\nASR 生成的字幕与传统字幕文件不同——ASR 字幕是实时识别的语音转录，可能存在断句不完整、口语化表达多、专有名词无上下文等问题。**AI 大模型翻译（DeepSeek、GPT、Claude 等）在翻译 ASR 字幕时显著优于传统机翻（Google、Microsoft）**，原因在于：\n\n| 对比维度 | 传统机翻（Google/Microsoft） | AI 大模型翻译（DeepSeek/GPT/Claude） |\n|---|---|---|\n| 上下文理解 | 逐句翻译，无前后文信息 | DualPiP 发送最近 N 条字幕作为上下文历史 |\n| 口语化处理 | 直译口语，生硬不通顺 | 理解口语语境，翻译自然流畅 |\n| 断句补全 | ASR 断句不完整时翻译错乱 | 能结合上下文补全语义，正确翻译 |\n| 专有名词 | 频繁翻错人名、术语 | 结合 DualPiP 的影片信息增强识别 |\n| 语气还原 | 机械直译 | 保留说话者语气和表达风格 |\n\nDualPiP 的 AI 翻译引擎使用**滑动窗口上下文**机制：每次翻译 ASR 字幕时，会将前面已翻译的字幕作为对话历史一起发送给 AI，让翻译结果前后一致、上下文连贯。这在 ASR 场景下尤其重要——因为语音识别的断句和传统字幕不同，AI 需要结合前文才能正确理解当前句子的含义。\n\n### 适合的使用场景\n\n| 场景 | 说明 |\n|---|---|\n| 看无字幕外语视频学语言 | ASR 识别原文 + AI 翻译为母语，双语对照学习 |\n| 看直播或实时内容 | 直播没有预制字幕，ASR 实时生成 + AI 实时翻译 |\n| 学术讲座和在线课程 | 部分课程无字幕或仅有英文字幕，ASR + AI 生成中文翻译 |\n| 播客和访谈节目 | 纯音频内容通过 ASR 可视化为文字，再翻译为目标语言 |\n\nDualPiP 支持30+ AI 翻译服务商，用户可以根据翻译质量和费用自由选择。推荐使用 **DeepSeek V4 Flash**（性价比高，翻译一部电影约 ¥0.2-0.5）。\n\n## 哪些视频网站可以用 DualPiP ASR 自动生成字幕？\n\nDualPiP ASR 基于浏览器的 Audio Capture API 捕获音频，**理论上可以为任何在 Chrome 中播放的视频自动生成字幕**。\n对于没有原生字幕的视频（如很多直播内容、小众平台视频、用户上传的无字幕视频），ASR 是获取字幕的唯一途径。\n\n\n## 常见问题\n\n**Q：ASR 实时语音识别的准确率怎么样？**\nDeepgram nova-3 模型在英语上的词错误率（WER）低于 8%，是 2026 年最准确的实时语音识别模型之一。中文、日语等语言的识别准确率同样出色。识别效果受音频质量、说话人口音和背景噪音影响，纯语音内容的识别效果最佳。\n\n**Q：ASR 是 DualPiP 的免费功能还是 PRO 功能？**\n\nDualPiP 基础功能免费，AI 翻译和 ASR 需要登录后开通 PRO后使用。\n\nASR 实时字幕是 PRO 功能。DualPiP 的 YouTube 网页内双语字幕和基础画中画播放器免费使用，ASR、 AI 翻译等高级功能需要 购买PRO。首次注册免费开通 7 天 PRO\n\n**Q：能识别视频中的多种语言混合吗？**\nDeepgram 的 Multilingual 模式支持在同一段音频中自动检测和切换语言，适合多语言混合的访谈、播客和教学内容。本地 Whisper 后端也支持语言自动检测，但切换精度低于 Deepgram。\n\n\n### 下载\n\nChrome Web Store: https://chromewebstore.google.com/detail/dualpip/ddkmobcljbfggkmibabekgpbighaogpn\n\n\n",
-    "created_at": "2026-06-02T06:12:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10169"
-  },
-  {
-    "id": 10168,
-    "title": "【工具自荐】 wayland-snip — GNOME Wayland 原生截图+贴图+标注工具",
-    "content": "## 🎯 为什么做这个？\n用 Ubuntu Wayland 的人都知道，截图工具是个老大难问题：\n\n- **Snipaste** — Wayland 下快捷键失效，截图位置偏移\n- **Flameshot** — GNOME Wayland 下直接报错 \"Unable to capture screen\"\n- **gnome-screenshot** — 已废弃，回退 X11 也超时\n- **Portal API** — 高分屏坐标偏移\n\n于是我写了一个完全基于 GNOME 原生截图 API 的工具，**从底层解决 Wayland 兼容性问题**。\n\n## ✨ 核心亮点\n\n### 1. 真正的 Wayland 原生\n不依赖 X11，不依赖 XWayland，直接调用 `xdg-desktop-portal` 的 Screenshot 接口。高分屏、多显示器、任何 Wayland 合成器都能用。\n### 2. 截图 + 贴图 + 标注 三合一\n- 按 F1 截图 → 自动贴在屏幕上\n- 画笔、矩形、箭头、直线、文字标注\n- 8 种预设颜色 + 自定义调色盘\n- 5 档线宽可选\n- 滚轮缩放、拖拽移动\n\n### 3. 现代化 UI\n- 深色半透明工具栏（Catppuccin 风格）\n- 圆角按钮、颜色圆点\n- 活跃工具蓝色高亮\n- 颜色选择弹窗（预设 + GtkColorButton）\n\n### 4. 系统级集成\n- 托盘图标（AppIndicator3 / StatusIcon 双方案）\n- 全局快捷键（可在设置中自定义）\n- 开机自启动\n## 开源地址： https://github.com/cyhuauin/WayLand-Snip",
-    "created_at": "2026-06-02T05:34:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10168"
   }
 ]
