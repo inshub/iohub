@@ -1,5 +1,21 @@
 [
   {
+    "id": 10291,
+    "title": "【开源自荐】spring-nacos-mcp —— 让 AI 直接回答\"这个配置 dev 和 test 一致吗\"",
+    "content": "**项目地址**：https://github.com/kestiny18/spring-nacos-mcp\n\n**一句话介绍**：面向 Spring Cloud 项目的零配置、只读 Nacos MCP server——把它指向你的项目仓库，自动从 `application-*` / `bootstrap-*` 文件发现所有环境（dev/test/pre/prod），AI 编程工具（Cursor / Claude Code 等）就能直接查询、搜索、跨环境对比 Nacos 配置。\n\n**解决的痛点**：维护微服务的同学每周都要回答\"这个配置在 dev 和 test 一致吗\"——开两个 Nacos 控制台、来回登录、肉眼 diff。现在直接问 AI 一句话，它会自动调工具完成跨环境 key 级对比并给出结论。\n\n**特点**：\n\n- **零配置**：不需要配任何 host/port/namespace/token，连接信息直接从项目自己的配置文件解析（支持 yml/yaml/properties、多文档 YAML、${} 占位符）\n- **跨环境 diff**：内置 `nacos_diff_config` 工具，一次调用返回两个环境的结构化差异\n- **只读设计**：代码里只有 GET 和登录请求，不存在写操作路径；可选敏感值脱敏\n- **单文件零依赖**：纯 Python 标准库实现，内网机器拷一个文件就能用\n- **AI 安装友好**：自带 llms-install.md，对 Cursor 说一句\"帮我装这个 MCP\"即可自动完成安装和验证\n\n和官方 nacos-mcp-server（单集群、手动配置）是互补关系：官方连集群，这个懂项目。\n\nApache-2.0，带完整测试和 CI，已在真实生产项目（6 模块、4 环境）上验证。",
+    "created_at": "2026-06-11T13:21:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10291"
+  },
+  {
+    "id": 10290,
+    "title": "【开源自荐】Awesome AI Gateway —— 按痛点分类的 AI 网关选型清单",
+    "content": "向周刊推荐我整理的一份开源资源：Awesome AI Gateway。\n\nAI 网关是位于应用和大模型厂商之间的中间层（LiteLLM、one-api、OpenRouter 这一类），负责统一接入、路由、计费和限流。现有的同类清单基本按厂商罗列，这份清单改为按使用者的真实诉求组织：性价比、企业合规、自托管开源、国产模型生态、智能路由、MCP/Agent 网关等，开头有一棵「我该用哪个网关」的决策树。\n\n项目地址：https://github.com/cuihuan/awesome-ai-gateway\n\n特点：\n\n- 中英双语，收录 50+ 项目，附 15 个主流网关的特性对比表\n- 所有项目的 star 数与最新版本由 GitHub Actions 每日自动刷新，数据不过期\n- 明确标注已停止维护的项目，并排除灰产逆向类「free-api」中转\n- 附选型安全清单（防偷偷降智的 canary 测试、零数据保留、开源协议坑）\n\n![预览](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/assets/social-preview.png)",
+    "created_at": "2026-06-11T13:05:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10290"
+  },
+  {
     "id": 10289,
     "title": "推荐:wcelo —— 把世界杯当成一次预注册实验",
     "content": "推荐项目：wcelo · 2026 世界杯概率预测  https://wcelo.com\n\n一个每天更新的世界杯夺冠/晋级/逐场胜平负概率站，但我真正想做的是背后的一次\n「预注册实验」：开赛前把三个可证伪的假设写死、用一个 git commit 冻结、锁定赛后\n评分口径，之后只许按这套规则结算，不许事后改口径。\n\n三个假设里我最好奇第三个——让大模型（Claude）在每个比赛日前联网去读伤病、停赛、\n预计首发、死亡之组放水这类「软信息」，折算成一个有界的实力修正，看它到底能不能\n赢过一个纯统计模型（Elo + Dixon-Coles 双泊松 + 10 万次蒙特卡洛）。另两个是\n「每日更新到底有没有增量」和「概率校不校准」。\n\n模型本身很常规、刻意不炫技；好玩的是这套不能反悔的实验设计。方法、假设、预注册\n全部公开在站内 /method 页。我的先验其实是「大模型多半只加噪声」，但我把它按最强\n形态实现，免得验证变成自我实现。",
@@ -796,23 +812,5 @@
     "created_at": "2026-06-03T18:54:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10191"
-  },
-  {
-    "id": 10190,
-    "title": "推荐一个值得收藏的高考数学真题项目",
-    "content": "\n最近在整理高考真题资源的过程中，我发现了一个非常优秀的开源项目：\n\n 高考数学真题项目 [deekur/gaokaomath](https://github.com/deekur/gaokaomath)\n\n这是一个长期维护的高考数学真题整理项目，收录了 **1952—2025 年间绝大部分高考数学真题 PDF 文件**，覆盖范围广、资料丰富，是目前中文互联网中较为完整的高考数学资料仓库之一。\n\n为高考数学资料的保存与整理提供了重要价值。\n\n\n\n\n\n受到该项目启发，我利用业余时间开发了一个面向普通用户的高考真题检索网站：\n\n\n**[高考真题资源库](https://t.urongda.com)**\n\n主要希望解决「资料分散、查找困难、浏览不便」的问题，让高考真题能够更方便地被检索和使用。\n\n目前支持\n\n* 📖 按年份整理历年高考真题\n* 📝 按科目、地区、卷型分类浏览\n* 🔍 快速搜索和筛选资源\n* 📂 提供历年真题下载与索引\n* 📚 持续补充和校对历史试卷资料\n\n## 💌 欢迎交流与投稿\n\n如果你手中保存有：\n\n* 历年高考真题\n* 高考模拟试卷\n* 教辅资料\n* 老版试卷扫描件\n* 缺失年份或地区的试卷资源\n\n欢迎向网站投稿或提供线索，一起完善高考真题资料库。\n\n也欢迎对网站功能、资料整理方式提出建议。\n\n希望这些资料能够帮助更多学生、教师和高考研究爱好者更方便地获取和使用历年高考真题。 📚✨",
-    "created_at": "2026-06-03T11:34:31Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10190"
-  },
-  {
-    "id": 10189,
-    "title": "【开源自荐】从源码静态分析出程序完整的数据流向图谱",
-    "content": "![dataflow-graph](https://github.com/user-attachments/assets/2e86312e-e9f9-43ef-9baf-7ff866ea101c)\n\n这个图谱表达了程序完整的功能/业务逻辑，它们都含在数据流向里面。\n\n在线预览 [imsure-analyzer](https://rainforesters.github.io/imsure-analyzer/)\n[imsure-analyzer](https://github.com/rainforesters/imsure-analyzer) 依赖于声明式语法库 [imsure](https://github.com/rainforesters/imsure)\n\n声明式语法为静态分析的可行性奠定了坚实基础，让一切都可以在静态分析阶段解读出来（否则毫无可能）。由其编写的程序如上图数据流动一般即为网状结构的自动状态机。程序从刚性结构变为柔性结构，其定义的所有数据流连线都韧性十足，可以任意拉扯，揉不烂、搓不坏。",
-    "created_at": "2026-06-03T11:27:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10189"
   }
 ]
