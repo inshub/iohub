@@ -48,14 +48,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/10288"
   },
   {
-    "id": 10287,
-    "title": "[投稿] Captions-first: getting YouTube transcripts without burning money on Whisper",
-    "content": "\"Paste a YouTube link, get a transcript\" sounds like a weekend project. It is — right up until you deploy it to a datacenter. The moment your request leaves a server IP instead of someone's home connection, YouTube starts answering with `LOGIN_REQUIRED` or just quietly returning nothing. Getting past that wall, cheaply, is most of the actual work. Here's what we learned building it.\n\n**There are only two ways to get text out of a video.** Either a caption track already exists — the uploader added one, or YouTube auto-generated one — and you can read it directly, with no transcription at all. Or there are no usable captions, and you have to pull the audio and run it through a speech-to-text model (we use a Whisper-family one). The first path is instant and essentially free. The second always works but costs real compute every time. So the single most important architectural decision is **captions-first**: always check for an existing caption track, and only fall back to audio + Whisper when there genuinely isn't one.\n\nThis matters more than it sounds. Most people pasting a link want a transcript of a talk, a tutorial, a lecture, a news clip — content that already has captions. If you naively transcribe everything, you pay the Whisper bill on the 80% of videos that didn't need it. Captions-first is basically the line between this being cheap to run and not.\n\n**The hard part is fetching those captions reliably.** Both the `watch` page and YouTube's InnerTube API return `LOGIN_REQUIRED` from a datacenter IP, and fetching the audio the naive way trips reCAPTCHA. We spent a long time self-hosting the workaround — routing the fetch through residential-style egress, babysitting IP reputation, adding fallbacks for when a path got throttled. It worked, but it was never set-and-forget: what succeeded this week could start failing next week, and the monitoring burden was constant.\n\nIn the end we moved the caption-fetch step to a **dedicated captions provider** whose whole job is staying on the right side of that wall, and kept the audio-fallback-plus-Whisper path in-house for the videos that need it. The lesson, if there is one: the YouTube-extraction problem looks like a coding problem but is really an IP-reputation arms race, and that arms race is somebody's full-time product. Renting it was cheaper than running it.\n\n**The rest of the pipeline.** A Cloudflare Worker takes the user's request and orchestrates everything; long jobs go on a queue (Cloudflare Queues) so the request returns immediately and the transcript fills in as it finishes. When captions exist we serve them straight through; when they don't, or when someone needs clean output, we pull audio and transcribe.\n\n**A few things are still genuinely annoying.** Auto-generated captions have no punctuation and no speaker labels, so when someone wants clean, readable output we re-transcribe even though a caption track exists — the \"free\" path isn't always the *good* path. Very long videos have to be chunked to stay inside memory and timeout limits. And non-English accuracy varies a lot by language, which is the part I'd most like outside eyes on.\n\nIf you want to watch the captions-first path do its thing, paste any public video into [the YouTube transcript generator](https://vidtranscriber.com/tools/youtube-transcript-generator) — 60 minutes free, no signup.",
-    "created_at": "2026-06-11T10:06:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10287"
-  },
-  {
     "id": 10286,
     "title": "【开源自荐】纯开源家庭账房(Family Ledger), 自托管家庭资产管理 · 每月10分钟,全家资产全局图 + 真实年化(XIRR/TWR)+ AI 资产体检 · 数据自托管, 不泄密",
     "content": "## 家庭账房(Family Ledger)\n\nhttps://github.com/LuoDi-Nate/financial-management\n\n家庭资产散在银行、支付宝、券商、房产和房贷里,很难回答\"我们家到底有多少钱、\n今年变富还是变穷了\"。这是一个为此而做的自托管 Web 应用:不记每日流水,\n每月全家花 10 分钟填一次各账户余额即可,数据只保存在自己的服务器上。\n\n![仪表盘 · 净资产趋势(CPI 购买力线 + M2 社会财富线)+ 资产配置](https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/pc_dashboard.jpg)\n\n核心能力:\n\n- **真实收益率**:靠恒等式「投资损益 = 期末 − 期初 − 净外部流入」,自动算\n  账户级 / 家庭级 XIRR 与 TWR,把「工资攒的」和「投资赚的」分开\n- **财富水位**:净资产趋势叠加 CPI 购买力线和 M2 社会财富线,看扣完通胀\n  后是否真的变富\n- **「戴着镣铐」的 AI 资产体检**:集中度 / 资产负债表 / 再平衡 / 低利率四个\n  视角。所有数字由程序预先算好,LLM 只负责解读;输出经合规校验——出现\n  \"保证收益\"、具体产品代码、\"会涨会跌\" 一类词直接拒绝;喂模型前家庭成员\n  真名自动脱敏\n- 股票录 ticker 自动估值(A/美/港)、多币种自动汇率、退休 FIRE 三情景\n  预测、iOS PWA 装到主屏\n\n![AI 资产体检 · 数字工程算,LLM 只解读,不荐产品不预测涨跌](https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/pc_ai_analysis.jpg)\n\n技术栈:Spring Boot 3 + MySQL + Thymeleaf + HTMX,无 SPA、无构建管线,\n最低配 VPS 一键部署(deploy.sh)。Apache 2.0。\n\n在线体验(合成数据):https://beta.dixi-token.top\n账号 `wangergou` / 密码 `demo1234`\n\n### 更多截图\n\n<table>\n  <tr>\n    <td width=\"50%\"><img src=\"https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/pc_account.jpg\" alt=\"账户簿\"><br><sub><b>账户簿</b> · 6 类账户 · 按成员归集\n  划转 / 体检 / 一键导出</sub></td>\n    <td width=\"50%\"><img src=\"https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/pc_setting.jpg\" alt=\"管理页\"><br><sub><b>可运营管理页</b> · 品牌 / 周期 / 提\n   / 汇率 / 阈值 共 14 项热改</sub></td>\n  </tr>\n</table>\n\n<table>\n  <tr>\n    <td width=\"20%\"><img src=\"https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/mobilez_dashboard.jpg\" alt=\"移动端仪表盘\"></td>\n    <td width=\"20%\"><img src=\"https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/mobile_account.jpg\" alt=\"移动端填报\"></td>\n    <td width=\"20%\"><img src=\"https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/mobile_analysis.jpg\" alt=\"移动端体检\"></td>\n    <td width=\"20%\"><img src=\"https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/mobile_ai_analysis.jpg\" alt=\"移动端 AI 调仓\"></td>\n    <td width=\"20%\"><img src=\"https://cdn.jsdelivr.net/gh/LuoDi-Nate/financial-management@master/docs/screenshots/mobile_ios_deck.jpg\" alt=\"iOS PWA\"></td>\n  </tr>\n  <tr>\n    <td align=\"center\"><sub>仪表盘</sub></td>\n    <td align=\"center\"><sub>每月填报</sub></td>\n    <td align=\"center\"><sub>资产体检</sub></td>\n    <td align=\"center\"><sub>AI 调仓</sub></td>\n    <td align=\"center\"><sub>装为 App</sub></td>\n  </tr>\n</table>",
@@ -76,7 +68,9 @@
     "title": "【开源自荐】PTP 时间同步技术书——从思想实验到动手实现",
     "content": "### 【开源自荐】PTP 时间同步技术书——从思想实验到动手实现\n\n**开源地址：**\nhttps://github.com/Lularible/ptp-book\n\n**项目简介：**\n\n一本开源技术书，从思想实验讲起，深入 PTP/IEEE 1588 协议机制和 LinuxPTP 源码分析，附带一套可运行的 ptp-lite 教学实现（约 1000 行 C），可在两台 Linux 机器上实际做主从时钟同步。\n\n**为什么这很重要？** \n自动驾驶需要多传感器（激光雷达、摄像头、IMU）在微秒级对齐时间戳——时间不同步等于传感器白装。PTP/gPTP（IEEE 1588 / 802.1AS）是实现车载时钟同步的核心标准，已广泛应用于主流自动驾驶平台。然而，**系统性、从零讲起的中文 PTP 技术资料几乎空白**。\n\n**运行效果：**\n\n<img width=\"1946\" height=\"1165\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/853dd7f6-21e3-44c5-a4f4-d55715b6b14f\" />\n\n**核心特性：**\n\n📖 **41 节** —— 4 个章节覆盖思想实验、协议机制、源码分析、动手实现\n🔬 **逐机制拆解** —— BMCA 选举、4 个时间戳的数学、透明时钟、PI 伺服控制器\n⚙️ **ptp-lite** —— 一个完整的主从时钟实现，可在真实网卡上运行做时间同步\n📊 **市场验证** —— CSDN **3 周 3 万阅读、1000+ 点赞收藏**\n\n开源协议：CC BY-NC-ND 4.0（内容） · MIT（代码）",
     "created_at": "2026-06-11T03:41:24Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10284"
   },
   {
@@ -116,7 +110,9 @@
     "title": "【开源自荐】原生的 macOS 菜单栏应用，锁定你的键盘输入法",
     "content": "因为 macOS 有的时候会自动切换到 ABC 输入法上，对于日常工作其实会有些困扰。\n\n目前市面上的锁定输入法软件，有的是收费，有的是功能缺失，所以自己做了一个。\n\nGithub: https://github.com/oomol-lab/LockIME\n\n### 支持的特性:\n\n* 实时锁定选择的输入法\n* 支持根据不同的 app 锁定不同的输入法\n* 全局切换快捷键(快速取消、激活锁定)\n* 可配置的登录启动(默认关闭)\n* 浅色 / 深色模式\n* 支持 9 种语言\n* 激活日志(保留 24 小时)\n* 核心锁定无需额外权限\n* 可根据 URL 切换锁定的输入法(需要额外的 Accessibility 权限)\n* 软件体积仅为 5M+ (DMG)\n* 支持 Arm64 / x64 架构\n* 最低版本支持至: 14.0\n* 已签名 + 公证\n\n### 截图\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/433d9d19-d2d0-47d5-b074-a193ad525260\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dde950c-4c07-47e1-90b6-35b9d7bcc812\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b4bc593-9194-41c2-826d-e5601e335162\" />",
     "created_at": "2026-06-10T14:41:48Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10279"
   },
   {
@@ -140,7 +136,9 @@
     "title": "【开源推荐】article-tools 一套封面制作和x、微信公众号排版工具",
     "content": "项目地址：https://github.com/eternityspring/article-tools\n在线预览：https://eternityspring.github.io/article-tools/\n\n下载使用：打开对应 HTML 文件即可，无需安装任何依赖\n- 封面生成 (cover.html) — 生成公众号封面图，支持多种配色方案、装饰风格、字体，可添加素材图片，支持导出 PNG / 复制图片\n- 二维码生成 (qrcode.html) — 生成带 Logo 的二维码\n- MD → 微信排版 (md-to-wechat.html) — Markdown 转微信公众号富文本格式\n- MD → X 排版 (md-to-x.html) — Markdown 转适合 X（Twitter）发布的格式\n\n<img width=\"1920\" height=\"922\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/55c17a40-42d1-4a40-be78-5fd052755a5c\" />",
     "created_at": "2026-06-10T13:46:27Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10276"
   },
   {
@@ -148,7 +146,9 @@
     "title": "推荐项目：SlopGuard，给 AI 灌水 PR/issue 打分并隔离的 GitHub App",
     "content": "推荐一个我做的开源项目 SlopGuard：https://slopguard.app\n\n最近不少维护者被 AI 生成的低质量 PR 和 issue 淹没，看起来像模像样，实际是模型随手生成、没人读过的内容，一个个甄别非常耗时。我自己的仓库也开始收到这种东西，就做了个自动分拣的工具。\n\nSlopGuard 是一个 GitHub App，从官网一键安装，不用写 Action YAML。它给每个进来的 PR/issue 打 0 到 100 的「灌水分」，标注来源特征，超过阈值就打上 slop-quarantine 标签并附上理由。它从不自动关闭任何东西，最终决定权始终在维护者手里（用 /slop approve 或 /slop reject 确认）。这样既能批量过滤灌水，又不会误伤真实的新贡献者。\n\n![隔离效果截图](https://raw.githubusercontent.com/Blue-B/slopguard/main/assets/demo-quarantine.png)\n\n免费版是纯启发式检测，不需要任何 API key，在公开的 25 条评测集上精确率 100%，召回率 92%。评测集还小，仅供参考。\n\n源码在 https://github.com/Blue-B/slopguard （MIT + Commons Clause，可自托管）。",
     "created_at": "2026-06-10T12:50:29Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10275"
   },
   {
@@ -810,5 +810,15 @@
     "created_at": "2026-06-04T06:22:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10193"
+  },
+  {
+    "id": 10192,
+    "title": "【文章推荐】代码定义结构，权重存储知识：一个例子看懂大模型推理",
+    "content": "\n为什么模型代码只有几十 KB，权重却动辄几十 GB？\n\n这篇文章用一个只有 3 个参数的天气模型，把“模型结构、权重、加载、显存、推理”完整串起来。\n\n看完你会明白：代码只是蓝图，权重才是模型真正的记忆；\n\n推理也没有玄学，本质就是输入数据穿过这些被训练出来的数字。\n\n- https://mp.weixin.qq.com/s/TM9lv6b-9AH8O9ZiApgTBA",
+    "created_at": "2026-06-04T02:26:46Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/10192"
   }
 ]
