@@ -1,5 +1,21 @@
 [
   {
+    "id": 10293,
+    "title": "【开源推荐】ui2v 将结构化动画 JSON 渲染成浏览器生成的 MP4 视频",
+    "content": "项目地址：https://github.com/illli-studio/ui2v\n官网：https://www.ui2v.com/\n视频演示：[B站](https://www.bilibili.com/video/BV1z7wEz6E2z/)\n它适合做可复现的动效项目：产品发布短片、AI 生成说明片、数据故事、UI 演示、本地媒体合成，以及可以放进 Git 反复生成的视觉实验。\n\n仓库内置了轻量 GIF，打开 README 就能直接看到输出风格：\n\n <img src=\"https://github.com/illli-studio/ui2v/blob/main/assets/showcase/hero-ai-launch.gif\" alt=\"ui2v logo\" width=\"760\">\n \n <img src=\"https://github.com/illli-studio/ui2v/blob/main/assets/showcase/one-minute-studio.gif\" alt=\"ui2v logo\" width=\"760\">\n\n <img src=\"https://github.com/illli-studio/ui2v/blob/main/assets/showcase/product-showcase.gif\" alt=\"ui2v logo\" width=\"760\">\n \n <img src=\"https://github.com/illli-studio/ui2v/blob/main/assets/showcase/render-lab.gif\" alt=\"ui2v logo\" width=\"760\">\n\n\n核心流程很直接：用 JSON 描述画面和时间线，在本地浏览器 Studio 里预览，再通过 Chrome/Edge 自动化、Canvas、WebCodecs 和 Node.js 导出同一条时间线的 MP4。\n\n客户端支持：Linux、macOS、Windows\n",
+    "created_at": "2026-06-11T18:36:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10293"
+  },
+  {
+    "id": 10292,
+    "title": "【开源推荐】Kirine (桐音) -大模型音频生成工作台",
+    "content": "项目地址：https://github.com/Sakuya200/kirine-client\n视频演示：[B站](https://www.bilibili.com/video/BV1MwLy6yEzU/)\n\n**快速上手**:\n- 启动后先打开**设置**页，确认数据、日志、模型目录是否符合当前机器的目录规划。\n- 打开**模型管理**页，安装要使用的模型。\n- **文本转语音**：选择模型、说话人、语言，输入文本后提交。\n- **声音克隆**：上传参考音频，填写目标台词后提交；参考音频支持 wav、mp3、flac、ogg。\n- **模型训练**：先导入样本（支持单样本和批量数据集两种方式），再填写说话人名称和参数后启动训练。\n- 所有任务的状态、结果和导出操作可以在**历史任务**页统一管理，也可以从历史记录直接回填参数重新提交。\n\n<img width=\"997\" height=\"783\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/85b21a8f-2acf-4a6f-bbd3-5cf3c9cf894e\" />\n\n<img width=\"995\" height=\"783\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed4491cd-c764-41bb-97f2-f76e909c0c05\" />\n\n<img width=\"997\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c629b890-e3b0-4ff9-949f-38cfb3bcaf4a\" />\n\n<img width=\"1000\" height=\"788\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e82411db-a534-43dd-a54f-9356a6af7067\" />\n\n开源竞品：OmniVoice Studio、VoiceBox\n客户端支持：[Windows](https://github.com/Sakuya200/kirine-client/releases).exe",
+    "created_at": "2026-06-11T18:21:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10292"
+  },
+  {
     "id": 10291,
     "title": "【开源自荐】spring-nacos-mcp —— 让 AI 直接回答\"这个配置 dev 和 test 一致吗\"",
     "content": "**项目地址**：https://github.com/kestiny18/spring-nacos-mcp\n\n**一句话介绍**：面向 Spring Cloud 项目的零配置、只读 Nacos MCP server——把它指向你的项目仓库，自动从 `application-*` / `bootstrap-*` 文件发现所有环境（dev/test/pre/prod），AI 编程工具（Cursor / Claude Code 等）就能直接查询、搜索、跨环境对比 Nacos 配置。\n\n**解决的痛点**：维护微服务的同学每周都要回答\"这个配置在 dev 和 test 一致吗\"——开两个 Nacos 控制台、来回登录、肉眼 diff。现在直接问 AI 一句话，它会自动调工具完成跨环境 key 级对比并给出结论。\n\n**特点**：\n\n- **零配置**：不需要配任何 host/port/namespace/token，连接信息直接从项目自己的配置文件解析（支持 yml/yaml/properties、多文档 YAML、${} 占位符）\n- **跨环境 diff**：内置 `nacos_diff_config` 工具，一次调用返回两个环境的结构化差异\n- **只读设计**：代码里只有 GET 和登录请求，不存在写操作路径；可选敏感值脱敏\n- **单文件零依赖**：纯 Python 标准库实现，内网机器拷一个文件就能用\n- **AI 安装友好**：自带 llms-install.md，对 Cursor 说一句\"帮我装这个 MCP\"即可自动完成安装和验证\n\n和官方 nacos-mcp-server（单集群、手动配置）是互补关系：官方连集群，这个懂项目。\n\nApache-2.0，带完整测试和 CI，已在真实生产项目（6 模块、4 环境）上验证。",
@@ -794,23 +810,5 @@
     "created_at": "2026-06-04T06:22:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10193"
-  },
-  {
-    "id": 10192,
-    "title": "【文章推荐】代码定义结构，权重存储知识：一个例子看懂大模型推理",
-    "content": "\n为什么模型代码只有几十 KB，权重却动辄几十 GB？\n\n这篇文章用一个只有 3 个参数的天气模型，把“模型结构、权重、加载、显存、推理”完整串起来。\n\n看完你会明白：代码只是蓝图，权重才是模型真正的记忆；\n\n推理也没有玄学，本质就是输入数据穿过这些被训练出来的数字。\n\n- https://mp.weixin.qq.com/s/TM9lv6b-9AH8O9ZiApgTBA",
-    "created_at": "2026-06-04T02:26:46Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10192"
-  },
-  {
-    "id": 10191,
-    "title": "投稿：Heron —— 从网络流量被动重建 Agent 调用链的可观测性工具（Rust）",
-    "content": "推荐一个自己参与的开源项目 **Heron**（Apache-2.0，Rust）：\n\n- 仓库：https://github.com/Netis/heron\n- 主页：https://heron-ai.pages.dev\n\n它把 LLM / Agent 的可观测性做在**网络层**：不改 SDK、不做代理、不进请求路径，直接从 TLS 终结后的明文 HTTP 流量里，把多步 Agent 交互（planner → tool → planner …）**重建成一个完整的 turn**。支持 OpenAI / Anthropic / Gemini，自动折叠多级代理跳数，识别 vLLM / SGLang / Ollama 后端；对 Claude Code、Codex、Hermes 等 agent 有专门的 turn profile。单文件二进制、内置控制台，`--pcap-file capture.pcap` 回放 30 秒即可体验。",
-    "created_at": "2026-06-03T18:54:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10191"
   }
 ]
