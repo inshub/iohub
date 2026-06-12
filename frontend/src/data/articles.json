@@ -1,5 +1,61 @@
 [
   {
+    "id": 10304,
+    "title": "【工具自荐】Mini Contract.Pro —— 免费的电子合同签署小程序，手机上发起、签署合同，全流程证据链留痕",
+    "content": "大家好，向大家自荐一个我自己开发的产品 **Mini Contract.Pro**（官网：<https://jingjingyeye.vip>），一个微信小程序上的电子合同签署平台。\n\n### 为什么做这个\n\n电子合同本身并没有多高的技术门槛，但市面上的某些电子签平台定价太贵了，签一份合同动辄几块到几十块，吃相实在有些难看。作为开发者，我并没有感觉这个难度有多大，所以自己做了一个：让普通人在微信里就能免费完成一份合同的发起和签署。\n\n整个流程很简单：**注册账号 → 创建合同 → 发送给签署方 → 对方注册/登录 → 查看合同 → 手绘签名签署 → 合同生效**。发起方用小程序操作，签署方在小程序里完成，双方都不需要安装任何额外软件。\n\n### 如何保障签署的公正性\n\n为了让线上签的合同“将来说得清”，我在技术上做了完整的留痕设计：\n\n- **手机号唯一身份**：每个账号必须以手机号注册，手机号是平台内唯一的身份标识，合同双方身份均锚定到具体手机号\n- **全流程证据链**：合同的创建、发起、查看、签署、拒签、完成，每个关键操作都记录操作时间戳、操作人、IP 地址和设备信息，独立存证\n- **文档防篡改**：合同文档生成 SHA-256 哈希校验，签署后内容一旦被改动即可发现\n- **手绘签名 + 个人印章**：签署人手绘签名生成专属印章，每次盖章都绑定经过认证的签署身份\n- **状态机管控**：合同严格按照“草稿 → 签署中 → 已完成”状态流转，支持取消、拒签，超期自动失效，不存在“签了一半不算数”的模糊状态\n\n### 核心功能\n\n- 选择模板创建合同，填入双方信息与核心条款\n- 手机号 + 密码登录，签署方登录后即可看到待签合同、查看并签署\n- 手绘签名一键盖章，合同状态全程可查\n- 合同完成后安全归档，随时可查\n\n### 隐私与安全\n\n- **明文访问留痕**：每一次查看都会写入审计日志，可追溯\n- **传输加密 + 越权防护**：数据经 HTTPS/TLS 传输，上传接口做了路径安全校验，防止越权读取他人文件\n- **最小够用**：仅采集合同签署必需的信息，不收集与签署无关的个人隐私\n- \n### 使用方式\n\n1. 微信扫码打开小程序，用**手机号 + 密码**注册账号（账号必须是手机号，它是平台内唯一的身份标识）\n2. 选择合同模板创建合同，填入双方信息，并指定签署方的手机号\n3. 签署方用自己的手机号注册/登录后，即可看到待签合同，手绘签名完成签署\n4. 双方签署完成后合同生效，自动归档，随时可查\n\n一点坦诚的说明：因为小程序目前是以**个人开发者**身份开发的，无法申请短信服务资质，所以暂时不支持短信验证码，注册只能采用手机号 + 密码的形式。待后续具备条件，会补上短信验证。\n\n也想借周刊向各位请教：如果大家对**个人身份认证**有更好的思路，或者知道**个人开发者也能接入的短信服务方案**，非常欢迎在评论区留言赐教，先谢过了。\n\n### 在线体验\n\n微信扫码即可打开小程序：\n\n<img width=\"1280\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9f5dea5a-d272-487d-875e-cd0a56f9ecba\" />\n\n### 适合谁\n\n适合所有有合同签署需求的人。目前对合同需求比较大、最适合上手的是**租房场景**——这是当前使用最多的场景，我也以租房为例内置了房屋租赁合同模板。后续会陆续上传借款、劳务、买卖等各种类型的模板，逐步覆盖更多日常签约场景。\n\n欢迎大家扫码体验，有任何问题和建议都欢迎反馈，谢谢！",
+    "created_at": "2026-06-12T09:46:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10304"
+  },
+  {
+    "id": 10303,
+    "title": "【开源自荐】GitPulse：把多个 Git 仓库的提交一键生成日报和月报",
+    "content": "# 【开源自荐】GitPulse：把多个 Git 仓库的提交一键生成日报和月报\n\n阮老师您好，\n\n自荐一个我做的开源桌面工具 **GitPulse**。\n\n- 项目地址：https://github.com/GoldenZqqq/GitPulse\n- 下载地址：https://github.com/GoldenZqqq/GitPulse/releases\n- 演示视频：https://github.com/GoldenZqqq/GitPulse/blob/main/docs/gitpulse-demo.mp4\n\nGitPulse 是一个本地优先的 Git 工作报告生成器，适合需要从多个代码仓库整理日报、阶段报告或绩效月报的开发者。\n\n它可以扫描本机工作区下的多个 Git 仓库，按作者、日期区间、分支范围汇总 commit，然后生成结构清晰的 Markdown 报告。报告可以直接复制到周报系统，也可以保存到本地。如果需要，还可以接入 OpenAI 兼容接口或 Anthropic 接口，把比较零散的 commit 摘要润色成更适合汇报的表达。\n\n![GitPulse 操作演示](https://raw.githubusercontent.com/GoldenZqqq/GitPulse/main/docs/gitpulse-demo.gif)\n\n主要特点：\n\n- **本地优先**：仓库扫描、commit 提取、报告生成都在本机完成，提交记录和 API Key 不上传服务器。\n- **多工作目录聚合**：可配置多个仓库根目录，自动发现散落在不同位置的 Git 仓库，并按作者和时间统一汇总。\n- **报告直接可用**：支持日报、自定义日期区间报告、上月绩效月报，输出为 Markdown。\n- **项目名映射**：可以把仓库名或分支名映射成更适合汇报的中文项目名。\n- **AI 润色可选**：支持 OpenAI Compatible 和 Anthropic Native；调用失败会自动回退到本地模板。\n- **跨平台桌面应用**：基于 Tauri 2、React 19 和 Rust，提供 Windows、macOS、Linux 安装包。\n\n最近发布的 v0.2.0 增加了多工作目录支持、设置即时自动保存、仓库选择性排除和项目映射行内编辑，并修复了 Windows 生产包在扫描仓库/生成报告时反复弹出 cmd 窗口的问题。\n\n做这个工具的原因是，很多开发者每到周五或月底都要翻多个仓库的 `git log`，再手动整理成“人能看懂”的工作报告。这件事重复、琐碎，而且涉及本地代码记录，不太适合上传到在线服务。所以我做了一个本地桌面版本，希望把这个流程尽量压缩到几次点击。\n\n目前已经发布 v0.2.0，欢迎试用和反馈。\n\n谢谢。\n",
+    "created_at": "2026-06-12T09:06:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10303"
+  },
+  {
+    "id": 10302,
+    "title": "【开源自荐】Coding Corgi Flow — 把 AI 编码助手变成有纪律的工程伙伴",
+    "content": "**项目地址：** https://github.com/ricoyudog/Coding_Corgi_flow  \n**许可证：** MIT  \n**一句话：** npm 安装、一套命令，让 AI 编码从混乱变得可控。\n\n---\n\n### 完整 Pipeline：5 步走，步步可追溯\n\n<img src=\"https://raw.githubusercontent.com/ricoyudog/Coding_Corgi_flow/master/docs/assets/corgi_journey_illustration.png\" alt=\"Corgi Pipeline\" width=\"100%\"/>\n\n每一步都产生结构化产物，状态自动同步到 Issue：\n\n| 阶段 | 做什么 | 产出 |\n|------|--------|------|\n| **Propose** | AI 根据你的需求生成 proposal、specs、design、tasks | 4 份规划文档 |\n| **Apply** | 一组一组执行 tasks，每完成一组暂停等你确认 | Issue 进度自动更新 |\n| **Verify** | lint / build / test / spec 覆盖率，全过才能继续 | 自动门禁 |\n| **Review** | 架构·安全·性能·质量·完整性 五轴审查 | approve/reject/discuss |\n| **Archive** | 增量合并 specs、关闭 Issues、提取记忆 | 知识沉淀 |\n\n---\n\n### 关键特性：看看实际效果\n\n**任务拆解 & 检查点控制** — 一组一组来，AI 不会失控：\n\n<img src=\"https://raw.githubusercontent.com/ricoyudog/Coding_Corgi_flow/master/docs/articles/images/task_list.png\" alt=\"任务拆解\" width=\"45%\"/>\n<img src=\"https://raw.githubusercontent.com/ricoyudog/Coding_Corgi_flow/master/docs/articles/images/group%20check%20point.png\" alt=\"检查点控制\" width=\"45%\"/>\n\n**Issue 自动追踪** — GitHub/GitLab board 自动同步状态，做了什么都看得见：\n\n<img src=\"https://raw.githubusercontent.com/ricoyudog/Coding_Corgi_flow/master/docs/articles/images/issue_board_example.png\" alt=\"Issue 看板\" width=\"80%\"/>\n\n**5 轴 Review** — 不是一个人看代码，是五维自动审查：\n\n<img src=\"https://raw.githubusercontent.com/ricoyudog/Coding_Corgi_flow/master/docs/articles/images/issue_card_example.png\" alt=\"Review 卡片\" width=\"80%\"/>\n\n**跨会话记忆** — AI 再也不会\"失忆\"，每次 session 都记得上次做了什么：\n\n<img src=\"https://raw.githubusercontent.com/ricoyudog/Coding_Corgi_flow/master/docs/assets/corgi_knowledge_vault.png\" alt=\"记忆系统\" width=\"60%\"/>\n\n---\n\n### 🔄 杀手功能：自动驾驶 Loop\n\n上面的流程每步都需要人驱动？用 `/corgi-loop` 一条命令，AI 自动跑完 apply → verify → review 全流程：\n\n- 验证失败自动修，最多重试 3 次\n- Review 不通过自动补强\n- Hook 驱动的熔断保护，不会无限循环\n- Session 断了自动恢复进度\n\n你只需要在开始和结束时看一眼。\n\n---\n\n### 和原生 OpenSpec 比多了什么\n\n| 能力 | OpenSpec | + Corgi Flow |\n|------|:---:|:---:|\n| Issue 追踪 | ❌ | ✅ |\n| 检查点执行 | ❌ | ✅ |\n| 自动驾驶 Loop | ❌ | ✅ |\n| 自动 Verify 门禁 | ❌ | ✅ |\n| 5 轴 Review | ❌ | ✅ |\n| 跨会话记忆 | ❌ | ✅ |\n| 生命周期钩子 | ❌ | ✅ |\n\n---\n\n### 一分钟上手\n\n```bash\nnpm install -g corgispec\ncorgispec bootstrap --target /path/to/your-project\n```\n\n```text\n/corgi-propose 加个用户登录功能    # AI 生成全套规划\n/corgi-loop 加个用户登录功能       # 或者直接自动驾驶\n```\n\n**项目地址：** https://github.com/ricoyudog/Coding_Corgi_flow\n\n欢迎 Star / Issue / PR。期待阮老师的推荐！",
+    "created_at": "2026-06-12T08:56:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10302"
+  },
+  {
+    "id": 10301,
+    "title": "【开源自荐】世界杯综合网站",
+    "content": "网址： https://cupgol.com/\n\n项目简介： 2026 年美加墨世界杯即将开赛，虽然官方和主流体育媒体都有数据，但页面往往过于臃肿，且在多时区转换（特别是换算成北京时间）上体验不佳。因此我开发了这个纯粹、极简的世界杯数据站。\n\n主要功能：\n\n全景赛程与多时区：完整收录 104 场比赛，支持一键切换当地时间、UTC 与北京时间。\n直观的对阵与积分：清晰的小组赛积分榜与淘汰赛（32强）晋级路线图。\nAI 赛事预测：结合 AI 数据模型，提供各场比赛的胜负概率与比分预测。\n极致加载体验：页面轻量化设计，没有弹窗广告和繁琐的注册流程，即开即用。\n\n![cupgol](https://public.yuisama.top/worldcup/ScreenShot_2026-06-12_135413_428.png)",
+    "created_at": "2026-06-12T08:41:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10301"
+  },
+  {
+    "id": 10300,
+    "title": "【开源自荐】Menuist Bookmarks 基于文件夹里的 webloc 书签文件，自动依据目录结构生成导航站点",
+    "content": "项目中的书签使用 macOS 和 iOS 系统的 `.webloc` 文件格式存储，每个 `.webloc` 文件都是一个指向特定 URL 的快捷方式。可以通过文件夹对网站进行分类，直接在 Menuist 中使用，也可以生成带图标的静态 HTML 导航页，并发布到 GitHub Pages。\n\n<img alt=\"Menuist Bookmarks\" src=\"https://github.com/user-attachments/assets/97f68f1f-5d2b-4b49-b55f-18e2256ae3bb\" />\n\n<img alt=\"Menuist Bookmarks\" src=\"https://github.com/user-attachments/assets/cd855913-ce79-46f4-a379-211cb1589ee0\" />\n\n## 目录结构\n\n```shell\n├── bookmarks/          # 存放 .webloc 文件（支持子文件夹）\n│   ├── menuist.ini     # ⚠️ Menuist 配置\n│   ├── GitHub.webloc\n│   ├── Gmail.webloc\n│   ├── AI/             # 支持子文件夹\n│   │   ├── ChatGPT.webloc\n│   │   ├── Claude.webloc\n│   │   └── ...\n│   └── ...\n├── icons/              # 存放图标文件\n│   ├── github.com.icns\n│   ├── google.com.icns\n│   ├── chatgpt.com.icns\n│   └── ...\n├── bkm.swift     # Swift 源码\n└── bkm           # 编译后的二进制文件\n```\n\n项目中自带开源 `bkm` 命令，运行它将 bookmarks 目录中的 `.webloc` 文件设置图标，图标根据网址存在 `icons/` 文件夹中\n\n```bash\n# 为 .webloc 文件设置图标，这是默认行为\n./bkm --set-icons\n\n# 根据 bookmarks 目录生成静态导航页到 .html/index.html\n# 网页图标会导出到 .html/icons/\n./bkm --generate-html\n\n# 生成静态导航页并显示当前 GitHub 仓库链接\n./bkm --generate-html --include-github-link\n\n# 将已有 .html 内容提交到 gh-pages 分支根目录\n# 命令也会在 gh-pages 分支写入 .nojekyll 以适配 GitHub Pages\n./bkm --publish-gh-pages\n```\n\n\nGitHub: https://github.com/jaywcjlove/bookmarks\n",
+    "created_at": "2026-06-12T07:48:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10300"
+  },
+  {
+    "id": 10299,
+    "title": "【开源推荐】MovableType：像活字印刷一样搭表单，配置驱动的 React 表单引擎",
+    "content": "## 1. 项目地址\n\nGitHub: https://github.com/zakihuang/MovableType\n\n<img src=\"https://blog.7hihi.com/MovableType/aiDrivenMovable.jpeg\" />\n\n## 2. 它解决了什么问题？\n\n前端表单开发是业务系统中最重复、最琐碎的工作。每新增一个表单，都要手写 JSX、校验规则、联动逻辑，改一个字段往往要动多个文件。更麻烦的是，编辑页和详情页长得几乎一样，却要写两套代码。\n\nMovableType 的核心思路是：**像活字印刷一样搭表单**——字段定义一次，表单配置百次复用。你只需写一份 JSON 配置，引擎自动生成带布局、校验、联动的完整表单，改需求时只改几行配置，而不是几十个组件文件。\n\n## 3. 核心功能与特性\n\n- **配置驱动渲染：** 基于 React + Ant Design 4，将字段池（FieldDescriptor）与表单配置（Config）解耦，同一份字段定义可被 N 个表单复用。\n- **声明式联动：** 内置 `watch`（字段级/区块级）和 `dataLoader`（异步选项加载），无需手写 `useEffect` 和 `onChange` 监听。\n- **灵活布局：** 直接复用 antd 24 栅格系统，支持 1/2/3 列布局、字段级 `colSpan` 覆盖、自定义区块组件接管。\n- **查看模式一键切换：** `mode=\"view\"` 时所有输入框自动变纯文本，编辑页和详情页共用一套配置。\n- **组件可扩展：** 支持同步渲染器和异步懒加载，自定义组件无需改引擎源码。\n- **为 AI 而生：** 极简三概念（字段池 / 配置 / 组件注册表），配置是纯结构化数据——大语言模型最擅长生成的格式。\n\n## 4. 推荐理由\n\n表单开发占据了中后台系统大量的重复劳动，市面上的表单方案要么过于重量级，要么自创一套 DSL 增加学习成本。MovableType 选择了最轻量的路径：不重新发明表单体系，只做 antd Form 的\"配置翻译层\"，三个核心概念覆盖绝大多数场景。更重要的是，它的配置天然适合 AI 生成——未来让 LLM 直接输出表单配置、而非手写 JSX，是完全可行的开发范式。对于有大量中后台表单需求的前端团队，这是一个值得关注的效率工具。\n\n详细教程：https://blog.7hihi.com/MovableType/\n演示项目：https://github.com/zakihuang/movableTypeDemo\n",
+    "created_at": "2026-06-12T07:26:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10299"
+  },
+  {
+    "id": 10298,
+    "title": "【开源自荐】YouTube照妖镜 — AI 毒舌频道人格分析器",
+    "content": "\n\n## 项目地址\n\n**GitHub：** [https://github.com/gokuscraper/youtube-roast](https://github.com/gokuscraper/youtube-roast)\n\n## 在线体验\n\n👉 **[youtube7.streamlit.app](https://youtube7.streamlit.app)**\n\n---\n\n## 具体介绍\n\n粘贴 YouTube 频道链接 → 自动抓取频道资料和最新 20 条视频 → AI 从 **18 个维度** 生成人格分析报告。毒舌吐槽、深层剖析、适合截图转发。\n\n基于 [X-POSE](https://github.com/gokuscraper/x-pose) 改造，适配 YouTube 平台，爬虫使用 **tutubo**（纯 Python，无需浏览器，无需登录）。\n\n## 截图展示\n\n| 资料与人格简介 | 吐槽卡片 | 分析卡片 |\n|---|---|---|\n| ![](https://raw.githubusercontent.com/gokuscraper/youtube-roast/main/case/cn/%40MrBeast_2_profile%20(1).png) | ![](https://raw.githubusercontent.com/gokuscraper/youtube-roast/main/case/cn/%40MrBeast_3_analysis_a%20(1).png) | ![](https://raw.githubusercontent.com/gokuscraper/youtube-roast/main/case/cn/%40MrBeast_4_analysis_b%20(1).png) |\n\n## 核心功能\n\n- **一键抓取** — 支持 `@handle`、完整 URL、Channel ID 三种格式，无需登录\n- **AI 人格分析** — 18 维深度报告：吐槽、长处、弱点、爱情观、金钱观、健康、职业、人生建议等\n- **频道价值评估** — 加权公式（订阅者 × 4.5 + 平均观看 × 3.0）估算频道估值，中英文按汇率换算\n- **截图下载** — 分段或一键打包 PNG（基于 html2canvas），发朋友圈/Twitter 专用\n- **中英文切换** — 实时切换界面语言\n- **并发限流** — 防止 Streamlit Cloud 单容器过载\n\n## 技术栈\n\n| 层 | 技术 |\n|---|---|\n| 前端 | [Streamlit](https://streamlit.io) |\n| AI 模型 | DeepSeek V4 Pro（通过 OpenCode / SiliconFlow） |\n| 爬虫 | [tutubo](https://github.com/pytube/tutubo)（纯 Python，无需浏览器） |\n| 部署 | Streamlit Cloud |\n| 协议 | Apache 2.0 |\n\n---\n\n> **在线体验：** [youtube7.streamlit.app](https://youtube7.streamlit.app)  \n> **GitHub：** [github.com/gokuscraper/youtube-roast](https://github.com/gokuscraper/youtube-roast)",
+    "created_at": "2026-06-12T06:36:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10298"
+  },
+  {
     "id": 10297,
     "title": "【工具自荐】挑个大西瓜 小程序",
     "content": "做了一个挑选西瓜的小程序。\n起因是有一天斥巨资买了一个生瓜蛋子回去，很生气😠。\n然后网上查阅如何分辨西瓜质量的时候发现除了看西瓜花纹，西瓜肚脐眼，更加准确是听拍打西瓜的声音；\n但是我实在分不清“咚咚” 和 “砰砰” 的声音，所以想着用手机麦克风听，然后和标准频谱对比，应该比人工要准确点吧，于是就有了这个小程序；\n结果仅供参考，不保熟哦😋\n<img width=\"430\" height=\"430\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/04174ade-80e6-429f-9c87-23dee7742207\" />",
@@ -140,7 +196,7 @@
   {
     "id": 10279,
     "title": "【开源自荐】原生的 macOS 菜单栏应用，锁定你的键盘输入法",
-    "content": "因为 macOS 有的时候会自动切换到 ABC 输入法上，对于日常工作其实会有些困扰。\n\n目前市面上的锁定输入法软件，有的是收费，有的是功能缺失，所以自己做了一个。\n\nGithub: https://github.com/oomol-lab/LockIME\n\n### 支持的特性:\n\n* 实时锁定选择的输入法\n* 支持根据不同的 app 锁定不同的输入法\n* 全局切换快捷键(快速取消、激活锁定)\n* 可配置的登录启动(默认关闭)\n* 浅色 / 深色模式\n* 支持 9 种语言\n* 激活日志(保留 24 小时)\n* 核心锁定无需额外权限\n* 可根据 URL 切换锁定的输入法(需要额外的 Accessibility 权限)\n* 软件体积仅为 5M+ (DMG)\n* 支持 Arm64 / x64 架构\n* 最低版本支持至: 14.0\n* 已签名 + 公证\n\n### 截图\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/433d9d19-d2d0-47d5-b074-a193ad525260\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dde950c-4c07-47e1-90b6-35b9d7bcc812\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b4bc593-9194-41c2-826d-e5601e335162\" />",
+    "content": "因为 macOS 有的时候会自动切换到 ABC 输入法上，对于日常工作其实会有些困扰。\n\n目前市面上的锁定输入法软件，有的是收费，有的是功能缺失，所以自己做了一个。\n\nGithub: https://github.com/oomol-lab/LockIME\n\n### 支持的特性:\n\n* 实时锁定选择的输入法\n* 支持根据不同的 app 锁定不同的输入法\n* 全局切换快捷键(快速取消、激活锁定)\n* 可配置的登录启动(默认关闭)\n* 浅色 / 深色模式\n* 支持 9 种语言\n* 激活日志(保留 24 小时)\n* 核心锁定无需额外权限\n* 可根据 URL 切换锁定的输入法(需要额外的 Accessibility 权限)\n* 软件体积仅为 3M+ (DMG)\n* 支持 Arm64 / x64 架构\n* 最低版本支持至: 14.0\n* 已签名 + 公证\n\n### 截图\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/433d9d19-d2d0-47d5-b074-a193ad525260\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dde950c-4c07-47e1-90b6-35b9d7bcc812\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b4bc593-9194-41c2-826d-e5601e335162\" />",
     "created_at": "2026-06-10T14:41:48Z",
     "labels": [
       "weekly"
@@ -202,7 +258,7 @@
   {
     "id": 10272,
     "title": "【工具自荐】  一个在微信内查看Markdown文件的小程序，为阅读体验做了大量优化，可能是微信生态内渲染效果最好的之一…",
-    "content": "支持几乎所有Markdown语法和部分HTML，对常见的README场景有针对性适配。\n采用服务端渲染方案，性能考虑，暂时还没支持mermaid。\n\n微信内访问下面链接或者搜索小程序「Markdown 快看」\n> #小程序://Markdown/U8vYz0rI1KMMsze\n\n欢迎体验\n\n![image](https://github.com/user-attachments/assets/6a48f35a-d84a-4665-a5b1-fffdc065c7b5)![image](https://github.com/user-attachments/assets/a491b16d-60b6-4a65-bf7f-98d74e3bf98b)",
+    "content": "支持几乎所有Markdown语法和部分HTML，对常见的README场景有针对性适配。\n采用服务端渲染方案，性能考虑，暂时还没支持mermaid。\n\n微信内访问下面链接或者搜索小程序「Markdown 快看」\n> #小程序://Markdown/U8vYz0rI1KMMsze\n\n欢迎体验\n\n![image](https://github.com/user-attachments/assets/6a48f35a-d84a-4665-a5b1-fffdc065c7b5)![image](https://github.com/user-attachments/assets/a491b16d-60b6-4a65-bf7f-98d74e3bf98b)\n\n补一个二维码\n\n![image](https://github.com/user-attachments/assets/826507fe-ed90-4744-a02e-9799cbd93275)",
     "created_at": "2026-06-10T11:53:11Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10272"
@@ -762,61 +818,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10203"
-  },
-  {
-    "id": 10202,
-    "title": "docs(issue-399): fix typo",
-    "content": null,
-    "created_at": "2026-06-05T00:30:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/10202"
-  },
-  {
-    "id": 10201,
-    "title": "我的人生进度条 (My Life Progress Bar)",
-    "content": "### 项目名称\n我的人生进度条 (My Life Progress Bar)\n\n### 项目地址\nhttps://orara.github.io/lifebar/\n\n### 项目简介\n这是一款致力于帮助用户对抗拖延、提升时间管理意识的自律效率看板。\n\n### 核心功能\n1. **时间实时可视化**：根据出生日期与预期寿命，精确到小数点后四位实时展示“今天、本月、今年、整个人生”的已流逝比例。\n2. **习惯打卡与火苗徽章 (🔥)**：记录每日计划，连续达成可累积火苗徽章，激发自律动力。\n3. **100% 本地隐私安全**：所有日记与配置均保存在用户浏览器的 `localStorage` 中，绝不上传服务器，支持导出为本地 `.json` 备份。\n4. **纸质书籍排版导出**：支持将日常记录一键排版为极具古典书卷质感的 PDF 并直接打印，或导出为 CSV 文件。\n5. **白噪音多路混音器**：内置 Lofi 音乐、雨声、篝火声音量滑动条，可根据自身喜好调配专属的环境音。\n\n非常适合使用闲置的旧 Pad 或智能手机立在桌面上作为时间沙漏和日程看板使用，希望能为广大的效率工具爱好者带来帮助！",
-    "created_at": "2026-06-04T18:39:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10201"
-  },
-  {
-    "id": 10200,
-    "title": "〖开源自荐〗lineage-skill：把你看不完的视频课，蒸馏成随叫随到的AI导师",
-    "content": "项目简介：最近做了一个能高浓度全方位蒸馏视频课程的skills，且还能用蒸馏出来的资料做一个导师skills，不仅能有依据的快速回答问题，能提供专业咨询服务，还能索引溯源到一些视频关键画面（比如板书，PPT等），超高价值，测试下来效果很好，开源分享一下。\n\n项目地址： https://github.com/JuneYaooo/lineage-skill\n\n核心方法架构：\n\n<img width=\"1536\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed3c4ac3-25a9-4b51-bddf-a2c7869c215b\" />\n\n用lineage-skill蒸馏出来的中医课：\n<img width=\"1275\" height=\"449\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/578fd5bc-8bf5-450f-84ce-f05261738645\" />\n\n项目详细介绍：\n\n<img width=\"749\" height=\"722\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/15858b07-304b-4bfb-a2b4-0f0dd8cdf04d\" />",
-    "created_at": "2026-06-04T16:00:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10200"
-  },
-  {
-    "id": 10199,
-    "title": "〖开源自荐〗Agent Beacon：macOS 菜单栏里的 AI 编程任务状态灯",
-    "content": "项目地址：https://github.com/XiaoLuoLYG/agent-beacon\n\n演示 GIF：\n\n![Agent Beacon demo](https://raw.githubusercontent.com/XiaoLuoLYG/agent-beacon/main/docs/assets/agent-beacon-demo.gif)\n\n\nAgent Beacon 是一个 macOS 菜单栏小工具，用来显示本地 AI 编程任务的状态。它适合同时使用 Codex、Claude Code、Cursor、Gemini CLI 或本地脚本的人：你不用反复切回不同窗口确认任务有没有跑完，只要看菜单栏里的四个状态灯。\n\n它目前区分四类状态：\n\n- completed：已完成\n- needs review：需要用户确认、输入或查看\n- failed：失败或阻塞\n- running：仍在运行\n\n主要特点：\n\n- 常驻 macOS 菜单栏，点击展开任务列表。\n- 通过本地 shim 追踪 CLI 启动的 Codex、Claude Code、Cursor、Gemini CLI 和普通命令。\n- 支持 Codex 本地 session 元数据、Cursor 本地 composer 元数据，以及 `~/.agent-beacon/status.json` 显式状态文件。\n- 点击任务行可以跳回对应应用。\n- 本地优先，不需要云服务；不展示聊天正文、源码、终端输出、prompt、模型回复或日志。\n\n最新版本是 v0.1.0，提供 DMG 预览包：\n\nhttps://github.com/XiaoLuoLYG/agent-beacon/releases/tag/v0.1.0",
-    "created_at": "2026-06-04T15:27:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10199"
-  },
-  {
-    "id": 10198,
-    "title": "推荐工具：VidCompress —— 便捷的视频压缩工具，浏览器本地视频压缩，无须上传",
-    "content": "  工具名称：VidCompress\n  网址：https://vidcompress.com\n\n<img width=\"1338\" height=\"598\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d44accd1-a252-4fc2-ba17-69f8dbd13d5c\" />\n\n  分类：工具\n\n  一句话描述：\n  一个免费的在线视频压缩工具，全部压缩都在浏览器本地完成，视频不上传服务器。\n\n  详细介绍：\n  VidCompress 最大的特点是「0 字节上传」——视频文件始终留在你的设备上，\n  压缩在浏览器里本地完成，服务器收不到任何内容，适合处理含隐私的视频。\n\n  可以按目标大小一键压缩，内置 Discord（10MB）、邮件附件（25MB）、\n  WhatsApp、社交平台等常用预设，也支持自定义目标体积。支持 MP4 / MOV /\n  WebM / AVI / MKV / WMV，单个文件最大 300MB。\n\n  技术上最近改用了 WebCodecs 做帧级转码，速度不再受视频时长限制\n  （不是过去那种「边播放边录制」的 1 倍速实时压缩），20 分钟的视频\n  几分钟就能压完。完全免费、无需注册、无水印。\n\n  （说明：本人开发，自荐投稿。）",
-    "created_at": "2026-06-04T15:11:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10198"
-  },
-  {
-    "id": 10197,
-    "title": "【工具自荐】ScrollShot - 滚动截长图 & 拼接长图",
-    "content": "## 软件名称\nScrollShot - 滚动截图 & 拼接长图\n\n<img width=\"500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/78fa4d38-6d17-47e4-8661-4933fa72e29f\" />\n\n## 应用平台\niOS 16或以上版本\n\n## 应用介绍\n- 大家好，我是ScrollShot的开发者。给大家带来了我新开发的app ScrollShot: 它采用先进的视频抽帧与视觉识别算法，为您带来 iOS 原生般的滚动截图体验。\n- 只需录制一段屏幕，剩下的交给 ScrollShot 自动完成，瞬间生成像素级完美的超长图。\n\n## 主要功能\n■ 核心功能：\n- 录屏即长图：无需手动截取数十张图片，通过系统录屏即可一键捕获完整页面。\n- 智能无缝缝合：自动识别重合部分，精准像素级对齐，生成的长图自然无痕。\n- 灵活截图拼接：除了录屏自动合成，也支持手动选择多张截图进行高精度拼接。\n- 全场景覆盖：完美支持微信聊天记录、网页、小红书、微博、知乎等长内容保存。\n- 极简审美：专为 iOS 设计，界面清新直观，没有任何上手门槛。\n- 隐私至上：所有图片处理均在设备本地完成，无需上传云端，严密保护您的隐私安全。\n\n■ 为什么选择 ScrollShot？\n- 不同于传统的图片拼接 App，ScrollShot 解决了“截图漏掉”或“位置对不准”的问题。利用视频捕捉的连贯性，确保每一帧画面都完美衔接，是您整理工作文档、保存重要回忆的得力助手。\n\n■ 隐私与使用条款：\n- 隐私政策：https://yongyuan.name/scrollshot/\n- 使用条款 (EULA)：https://yongyuan.name/scrollshot/tos/\n\n\n## App Store & 官方网站\n- App Store: [ScrollShot - 滚动截图 & 拼接长图](https://apps.apple.com/cn/app/scrollshot-%E6%BB%9A%E5%8A%A8%E6%88%AA%E5%9B%BE-%E6%8B%BC%E6%8E%A5%E9%95%BF%E5%9B%BE/id6760192003)\n- 官方网站：[scrollshot.work](https://scrollshot.work/zh)",
-    "created_at": "2026-06-04T14:03:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10197"
-  },
-  {
-    "id": 10196,
-    "title": "[招募] 七牛云 XEngineer 暑期实训营 · 真实开源项目 + CEO 带教 + 阶梯式津贴",
-    "content": "## 七牛云 XEngineer 暑期实训营 · 招募 2025–2029 届\n\n> 不是培训班，不是改 bug 打杂的实习。是把七牛云**正在跑的真实业务**拆给在校生从 0 到 1 做，过程全部走公开仓库、PR、commit。\n\n### 为什么发到 GitHub\n\n因为这个营本身就长在开源上。\n\n- 首期议题之一直接对接七牛云开源项目 **XBuilder**（AI 生图 / 2D 游戏素材生成方向）\n- 评审看的就是 GitHub 受众的语言：**公开仓库 + README + 持续 PR + commit 历史 + demo 视频**\n- 每个 PR 只做一件事，PR 描述要写清楚改了什么、为什么、怎么验证 —— 也就是说，结营后你简历上那行\"主导设计\"，面试官可以一行一行翻你的 commit 验证\n\n### 带教阵容\n\n- 总带教：**许式伟**（七牛云创始人 / CEO、Go 语言早期国内布道者、Go+ 作者）\n- 资深导师团 + 助教 1v1 带教\n\n### 议题方向（AI 应用，非纯算法）\n\n已发布 / 在发布中的议题包括：\n\n- AI 生图能力接入 **XBuilder**（2D 游戏素材生成）\n- 语音输入法（课堂录音 → 文字 → 要点 → 笔记）\n- 后续还有新批次议题滚动放出，错过首期不用慌\n\n### 阶梯式回报（不是\"干两个月赌一个 Offer\"）\n\n| 阶段 | 周期 | 你能拿到 |\n|---|---|---|\n| ① 72 小时议题挑战 | 3 天 | 一等奖 ¥2000 ×1 / 二等 ¥1000 ×5 / 三等 ¥800 ×10 / 优秀 ¥500 ×20 |\n| ② 入营实战 | 暑期 2 个月 | **日津贴 ¥300** + 七牛云官方实习证明 |\n| ③ 结营评优 | - | 共享 **20W+ 奖金池** + **100+ 张七牛云 2027 校招 Offer 直通卡**（绿色通道直通终面） |\n\n每一步都有真金白银落地，赌不赌 Offer 是最后一步才决定的事\n\n### 招谁\n\n- **2026–2029 届** 高校毕业生及在校生，不限学历、不限专业\n- 开放方向：\n  - **产品架构师向**：产品经理 / 后端 / 前端 / 全栈\n  - **商业架构师向**：技术销售 / 解决方案 / 交付 / 技术支持\n- 岗位地点：**上海**（请提前确认时间和地点能对上）\n\n### 怎么报名\n\n1. **报名入口**：[hr.qiniu.com](https://sensors.qiniu.com/t/qq8)\n2. 或者扫下方二维码直达报名页 ↓\n\n<p align=\"left\">\n<img width=\"200\"  alt=\"Image\" src=\"https://github.com/user-attachments/assets/9b4859e4-3954-4a3e-964c-f44eafbd0a5d\" />\n  <br/>\n  <sub>扫码报名 · 七牛云 × XEngineer 暑期实训营</sub>\n</p>\n\n3. 报名后，议题发布会通过短信 / 邮件 / 群消息通知\n4. 收到议题后 24 小时内提交代码仓库地址，72 小时内完成作品\n5. 提交三件套：**公开仓库 + README + demo 视频**\n\n> 报名全程免费，零费用。\n\n### 一句话\n\n不是 Coder，是 Builder。\n\n**Talk is cheap. Show me what you build.**\n",
-    "created_at": "2026-06-04T13:58:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10196"
   }
 ]
