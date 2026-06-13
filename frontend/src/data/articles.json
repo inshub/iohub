@@ -1,5 +1,21 @@
 [
   {
+    "id": 10324,
+    "title": "【开源自荐】WhYModem：一个简单易用的 Ymodem 文件传输工具",
+    "content": "- 项目名称：WhYModem\n- 项目地址：https://github.com/luhuadong/WhYModem\n- 安装包下载：https://github.com/luhuadong/WhYModem/releases\n\n## WhYModem 项目简介\n\nWhYModem 是一个轻量级、跨平台图形化文件传输工具，支持通过串口使用 XMODEM、YMODEM、ZMODEM 协议进行文件发送与接收。主要面向嵌入式开发者、硬件工程师、系统运维人员和现场技术支持人员，适用于设备无网络、串口调试、固件升级、生产测试、系统救援等场景。相比命令行工具，WhYModem 提供了更直观的图形界面，方便用户选择串口、配置波特率、选择文件并查看传输进度。\n\n典型使用场景包括：\n\n- 通过串口向嵌入式设备、Bootloader 或 RTOS 传输固件\n- 在无网络环境下向 Linux 单板机或工业设备传输文件\n- 客户现场、产线测试、维修维护时进行离线文件收发\n- 替代部分终端软件中不够直观的 XMODEM/YMODEM/ZMODEM 操作\n\n## WhYModem 软件界面\n\n<img width=\"1353\" height=\"887\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dd96f5e1-4773-4c57-8556-6800c34776ab\" />",
+    "created_at": "2026-06-13T17:06:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10324"
+  },
+  {
+    "id": 10323,
+    "title": "【开源自荐】ast-bro v3.0.0 发布：context + impact，给 agent 的代码上下文工具包",
+    "content": "**项目地址**：https://github.com/aeroxy/ast-bro\n**v2.2 自荐**：https://github.com/ruanyf/weekly/issues/10044\n\n**一句话**：\n> AI 编程助手的\"代码骨架\"工具包。新版本新增 token 预算的上下文打包和变更影响分析。\n\n---\n\n## v3.0.0 重大变更：context + impact\n\n### 1. context — token 预算的上下文打包\n\nagent 编码时最常见的问题之一：需要的上下文太多，context window 装不下。context 工具用贪心背包算法解决这个问题。\n\n给定一个 symbol 和 token 预算，它按优先级依次收集：目标函数体、直接调用方、直接被调用方、反向依赖，预算满了就停。一次调用就拿到 agent 需要的全部信息，不用再手动拼凑。\n\n```bash\n# 收集函数及其调用链，限制在 2000 token 内\nast-bro context main --budget 2000\n```\n\nMCP 工具中同样可用。\n\n### 2. impact — 变更影响分析\n\n改一行代码会波及哪里？impact 工具给出完整答案。\n\n它把 callers、callers 的 callers、reverse deps、测试文件合并成一个 blast radius 视图，支持四种模式：deps（依赖了什么）、dependents（谁依赖我）、tests（哪些测试会受影响）、all（全部）。\n\n```bash\n# 查看修改 auth::login 的完整影响范围\nast-bro impact auth::login\n\n# 只看测试文件\nast-bro impact auth::login --tests\n```\n\n### 3. 其他改进\n\n- **过滤增强**：callers 和 reverse-deps 新增 `--tests` 和 `--exclude-tests`，按路径过滤测试文件\n- **默认行为翻转**：外部调用和模糊匹配现在默认展示，新增 `--hide-external` 和 `--hide-ambiguous` 可以关掉\n- **Prompt 重构**：所有 installer 从 `skills/ast-bro/SKILL.md` 动态加载 prompt，不再硬编码\n- **性能优化**：home 路径缓存、文件解析缓存、BFS 遍历优化\n\n---\n\n## 📦 安装\n\n```bash\n# Homebrew (macOS)\nbrew install aeroxy/tap/ast-bro\n\n# Cargo\ncargo install ast-bro\n\n# npm\nnpm install -g ast-bro\n\n# pip\npip install ast-bro\n\n# Nix\nnix run github:aeroxy/ast-bro\n```\n\n---\n\n## 🧠 典型使用场景\n\n```bash\n# 1. agent 编码前收集上下文\nast-bro context refactor_target --budget 3000\n\n# 2. 重构前看波及范围\nast-bro impact src/auth.rs --all\n\n# 3. 只看测试文件的依赖\nast-bro callers login --tests\n\n# 4. 排除测试文件的反向依赖\nast-bro reverse-deps db::query --exclude-tests\n\n# 5. 语义搜索\nast-bro search \"how does login work\"\n\n# 6. 结构化搜索和重写\nast-bro run -p 'console.log($$$)' -l ts\n```\n\n---\n\n欢迎 Star、Issue、PR。让 LLM 理解代码时更聪明，而不是更暴力。",
+    "created_at": "2026-06-13T15:45:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10323"
+  },
+  {
     "id": 10322,
     "title": "【开源自荐】Driftone：让人保持专注的随机氛围音乐与白噪声生成器",
     "content": "**项目名称**：Driftone\n\n**项目地址**：https://github.com/Banana889/Driftone\n\n**项目 Demo**：https://banana889.github.io/Driftone/\n\n## 项目简介：\n\nDriftone 是一个浏览器里的“无限氛围音乐播放器”。它基于 Tone.js 实时生成旋律、和声、白噪声、雨声和雷声，每次播放都不完全相同，适合专注、放松和睡眠。项目使用 React、Vite、TypeScript 开发，并支持通过 Capacitor 打包成 Android 应用。\n\n我平时工作时喜欢放一些背景音乐来保持专注，但很多音乐听久了会分心，普通白噪声又有点单调，市面上也没有比较合我心意的产品。正好我对于乐理也有一定的兴趣，于是就现学现卖，开发了这款随机音乐生成器，遵循一定的乐理进行随机化生成。\n\n如果你常常在开始工作前，因为挑选播放列表而分心，或者音乐平台总是推荐一些不太符合你专注氛围的歌曲，不妨试试这个轻松的小网站。💙\n\n目前还在随着我们的乐理知识的增加积极迭代中。\n\n## 项目截图：\n\n<img width=\"640\" height=\"384\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/415c86fa-c12f-4b9c-bee8-52d1dd5af744\" />\n\n## 推荐理由：\n\n- **内容丰富**：Driftone 不只是一个白噪声播放器，它会实时生成旋律、和声、节奏，并叠加雨声、雷声等环境音，形成一段持续变化的氛围声景。\n- **配置自由度高**：生成音乐的节拍，鼓点，旋律还有音色等都可以轻松调节。\n- **音乐的可视化**：项目加入了旋律轨迹、鼓点轨迹、雨景动画等可视化效果，用户不只是听音乐，也能直观看到声景的变化。\n- **适合学习和参考**：项目中包含和弦进行、旋律生成、节奏填充、音色切换、环境音控制等模块，适合有乐理学习需求，或者对生成式音乐、Web Audio 感兴趣的人参考。\n- **技术实现轻量**：项目主要基于 React、Vite、TypeScript 和 Tone.js 实现，没有后端依赖，打开浏览器即可运行，也支持通过 Capacitor 打包为 Android 应用。\n\n希望分享给周刊的读者们，帮助大家在焦头烂额的工作中也能有音乐相伴，从从容容 :)",
@@ -800,21 +816,5 @@
     "created_at": "2026-06-05T14:52:16Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10212"
-  },
-  {
-    "id": 10211,
-    "title": "【工具自荐】Agenton v0.2.0 — Claude/Codex实时监控桌面悬浮窗",
-    "content": "## 介绍\n\n- 一个 Native 原生 App\n- 实时掌握 Claude 与 Codex 的状态\n- 在桌面实时观察你的 Agent\n  - Claude 与 Codex 的活动状态、活跃会话与用量限额\n  - 始终置顶的悬浮监控窗。\n- 官网: https://agenton.xmagicer.com/\n\n## 功能\n- 实时状态监控\n- 活跃会话监控\n- 优雅悬浮窗\n- 用量限额展示\n\n## 悬浮窗\nhttps://github.com/user-attachments/assets/4140f7e5-0602-4ece-8ad0-0569015be5fb\n## 截图\n\n<img width=\"680\" height=\"896\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5337c089-81ad-4274-a0cb-95faf9277041\" />\n<img width=\"680\" height=\"896\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b121095a-16ee-4dc3-8a15-7169bf707a6f\" />\n",
-    "created_at": "2026-06-05T13:31:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10211"
-  },
-  {
-    "id": 10210,
-    "title": "【开源自荐】Seedance 2.0 真人脸视频生成指南：官方分身、角色库和授权工作流",
-    "content": "仓库地址： https://github.com/ZeroLu/seedance2.0-how-to\n\n最近给这个 Seedance 2.0 使用指南仓库新增了一篇真人脸视频生成专题：\n\nhttps://github.com/ZeroLu/seedance2.0-how-to/blob/main/how-to-use-real-face-in-Seedance2.0.md\n\n这篇主要整理了几条更稳定、也更适合长期使用的真人脸视频工作流：\n\n1. 即梦 App 的官方真人分身录入\n2. XYQ 的真人形象录入和角色库\n3. 面向海外用户的授权合作方工作流\n4. 做真人脸视频时需要注意的授权和合规风险\n\n## 这个网站支持真实人脸，无需任何预处理👉 https://cyberbara.com/zh/seedance2.0\n\n下面是文章里的一些实际操作和结果预览。\n\n## 即梦真人分身录入\n\n即梦可以把自己的脸录入成已验证资产，后续生成视频时直接引用这个分身。\n\n![](https://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/jimeng-scan-preview.gif)\n\n原始录入视频：\nhttps://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/jimeng-scan.mp4\n\n生成结果预览：\n\n![](https://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/jimeng-result-preview.gif)\n\n原始结果视频：\nhttps://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/jimeng-result.mp4\n\n## XYQ 真人形象录入\n\nXYQ 也支持录制真人形象，适合已经在使用字节系创作工具的用户。\n\n![](https://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/xyq-scan-preview.gif)\n\n原始录入视频：\nhttps://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/xyq-scan.mp4\n\n## Cyberbara 授权工作流\n\n对海外用户，或者不想折腾中文 App 和扫码录脸的人来说，Cyberbara 这条线更短：\n\n1. 打开 https://cyberbara.com/zh/seedance2.0\n2. 上传真人图\n3. 选择 Seedance 2.0 模型\n4. 写 prompt 后直接生成视频\n\nCanvas 入口：\n\n![](https://static.nanobananaproprompts.com/article_upload/cyberbara-canvas-entry.jpg)\n\n模型选择：\n\n![](https://static.nanobananaproprompts.com/article_upload/cyberbara-model-select.jpg)\n\n输入 prompt 并生成：\n\n![](https://static.nanobananaproprompts.com/article_upload/cyberbara-prompt-generate.jpg)\n\n生成结果预览：\n\n![](https://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/cyberbara-result-preview.gif)\n\n原始结果视频：\nhttps://static.nanobananaproprompts.com/article_upload/seedance-real-face-zerojun-20260526/cyberbara-result.mp4\n\n## 相关资源\n\n- Seedance 2.0 使用指南仓库：https://github.com/ZeroLu/seedance2.0-how-to\n- 真人脸专题指南：https://github.com/ZeroLu/seedance2.0-how-to/blob/main/how-to-use-real-face-in-Seedance2.0.md\n- Cyberbara 中文版 Seedance 2.0：https://cyberbara.com/zh/seedance2.0\n- Seedance 2.0 提示词仓库：https://github.com/ZeroLu/awesome-seedance\n\n这份指南会继续更新 Seedance 2.0 的访问方式、真人脸工作流、提示词案例和平台状态。",
-    "created_at": "2026-06-05T10:14:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10210"
   }
 ]
