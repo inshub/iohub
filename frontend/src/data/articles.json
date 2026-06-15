@@ -1,8 +1,32 @@
 [
   {
+    "id": 10345,
+    "title": "[工具] PowerLens — 在 zsh 右提示符中实时展示 macOS 系统指标",
+    "content": "**PowerLens** 是一个 Oh-My-Zsh 插件，在 zsh 的 `RPROMPT` 中实时展示电源功率、电池、CPU、CPU 温度、风扇转速、内存和网络流量。\n\n**项目地址：** https://github.com/luyangkk/powerlens\n\n**特点：**\n- 7 项指标实时展示：⚡功率 🔋电池 ⚙CPU 🌡温度 🌀风扇 🧠内存 ↑↓网络\n- 颜色根据阈值自动变化，支持 compact / full 两种显示模式\n- 单例 Go 守护进程，N 个终端窗口共享一个进程，性能影响 < 5ms\n- 纯 macOS 原生 API（IOKit/SMC），无需 sudo，支持 Apple Silicon 和 Intel\n\n**安装（Oh-My-Zsh）：**\n```bash\ngit clone https://github.com/luyangkk/powerlens.git   ~/.oh-my-zsh/custom/plugins/powerlens\n```\n然后在 `~/.zshrc` 的 plugins 中加入 `powerlens`，source 即可。\n\n**截图：** https://github.com/luyangkk/powerlens#readme\n\n---\n\n- 项目语言：Go / Zsh\n- 开源协议：MIT\n- 目标平台：macOS 12+\n",
+    "created_at": "2026-06-15T11:25:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10345"
+  },
+  {
+    "id": 10344,
+    "title": "【开源自荐】一款使用c#写的Coding Agent 智能体，基于MAF框架",
+    "content": "# NarutoCode 项目介绍\n\nNarutoCode 是一款基于**Microsoft Agent Framework** 框架编写然后运行在终端中的智能体编程工具，面向真实工程开发场景设计。它不是一个简单的问答入口，而是把大模型能力、终端交互、文件系统、命令执行、会话管理和本地持久化组合在一起，让 Agent 可以直接围绕当前代码仓库完成分析、修改、验证和持续协作。\n\n在日常开发中，很多任务并不是单次回答可以解决的。比如排查一个构建错误，需要读取项目结构、搜索相关代码、理解调用链、修改文件、执行构建，再根据结果继续修正。NarutoCode 的目标就是把这类工程任务放到一个可持续执行的终端工作流中完成。\n\n## 核心定位\n\nNarutoCode 的定位是“终端里的 Agent 编程工作台”。\n\n它关注三件事：\n\n1. **让 Agent 理解真实工作区**  \n   Agent 基于当前目录读取文件、搜索代码、分析模块关系，而不是依赖用户手动复制代码片段。\n\n2. **让 Agent 执行工程动作**  \n   Agent 可以调用受控工具完成文件读取、内容搜索、代码编辑、命令执行、任务跟踪等操作。\n\n3. **让工程任务形成闭环**  \n   从需求理解、代码定位、修改实现到构建验证，都可以在同一个终端会话中连续完成。\n\n## 技术栈\n\n- C#/.NET\n- Microsoft Agent Framework\n- Spectre.Console\n- SQLite\n- Serilog\n\n## 核心能力\n\n### 工作区感知\n\nNarutoCode 以本地目录作为工作区运行。启动后，当前目录就是 Agent 的工程上下文。\n\nAgent 可以围绕工作区完成：\n\n- 读取源码、配置和文档；\n- 搜索类、方法、接口、配置项和调用点；\n- 理解项目分层、模块边界和依赖关系；\n- 在指定工作区内进行最小化文件修改；\n- 基于真实代码结构回答问题，而不是脱离上下文生成泛化建议。\n\n这让它更适合处理真实项目，而不是只处理孤立代码片段。\n\n### 工程任务闭环\n\nNarutoCode 支持完整的工程任务执行链路：\n\n```text\n理解需求\n  ↓\n定位相关文件\n  ↓\n阅读关键代码\n  ↓\n分析实现关系\n  ↓\n修改目标文件\n  ↓\n执行构建或测试\n  ↓\n根据结果继续修正\n```\n\n这个闭环覆盖了日常开发中的高频场景：\n\n- 项目结构分析；\n- 功能实现；\n- Bug 排查；\n- 构建失败修复；\n- 代码重构；\n- 文档整理；\n- 配置检查；\n- 运行结果验证。\n\n### 受控工具调用\n\nNarutoCode 不是只输出文本建议。Agent 可以根据任务需要调用工具完成实际操作。\n\n核心工具能力包括：\n\n- Skills：支持本地SKILLS\n- **文件搜索**：按路径、通配符查找文件；\n- **内容搜索**：按关键字或正则定位代码片段；\n- **文件读取**：读取源码、配置、文档内容；\n- **文件编辑**：在理解现有结构后进行精确修改；\n- **命令执行**：运行构建、测试、脚本等本地命令；\n- **任务管理**：拆解复杂任务并跟踪执行状态；\n- **上下文管理**：控制长会话中的历史消息和工具结果规模。\n- Plan-Execute:计划和执行\n- Todo:待办清单\n- Task:基于任务的执行\n\n命令执行支持审批控制，可以在需要更高安全性的环境中启用确认机制。\n\n### 会话持久化\n\nNarutoCode 会按工作区保存会话历史。再次进入同一个目录时，可以继续最近会话，也可以恢复历史会话。\n\n持久化内容包括：\n\n- 工作区会话；\n- 用户消息；\n- Agent 回复；\n- 工具调用记录；\n- 工具执行结果；\n- Token 使用信息；\n- 模型原始消息内容。\n\n这使得长期任务可以持续推进，不需要每次重新说明项目背景。\n\n### 会话记忆\n\nNarutoCode 会将用户的一些提示或者反馈的重要信息，存储到项目工作区的Memory.md 记忆文件中,可保证同一个工作区的会话记忆共享\n\n### 流式终端交互\n\nNarutoCode 使用终端作为主要交互界面，支持流式输出和实时状态展示。\n\n终端中可以看到：\n\n- Agent 的实时回复；\n- 工具调用状态；\n- 审批提示；\n- 构建或命令输出；\n- 错误信息；\n- Markdown 渲染内容。\n\n运行中的任务可以取消。取消后会清理未完成的工具调用状态，避免残留上下文影响后续会话。\n\n### 多模态输入\n\nNarutoCode 支持图片输入，可以把截图、错误弹窗、界面对比图等作为任务上下文提交给 Agent。\n\n典型场景包括：\n\n- 分析错误截图；\n- 识别 UI 异常；\n- 对比修改前后的界面效果；\n- 结合截图和代码一起定位问题。\n\n对于桌面应用、终端截图和前端界面问题，这可以减少大量文字描述成本。\n\n## 模型协议适配\n\nNarutoCode 通过统一抽象隔离模型接入，避免上层业务绑定某个模型厂商或 SDK。\n\n当前支持的协议形态包括：\n\n- OpenAI Chat 协议；\n- OpenAI Responses 协议；\n- Anthropic 协议；\n- 兼容 OpenAI 协议的第三方模型服务。\n\n## 架构设计\n\nNarutoCode 采用分层架构，将终端表现、应用编排、领域抽象和基础设施实现分离。\n\n### CLI 层\n\nCLI 层是终端入口和表现层。\n\n主要职责：\n\n- 解析启动参数；\n- 初始化依赖注入容器；\n- 承载终端 UI；\n- 处理键盘输入和取消信号；\n- 渲染聊天消息、工具状态和审批提示；\n- 处理图片输入和退出命令。\n\nCLI 层不直接实现核心对话逻辑，也不直接操作数据库细节。\n\n### Application 层\n\nApplication 层负责编排对话相关用例。\n\n主要职责：\n\n- 会话创建；\n- 会话恢复；\n- 历史列表查询；\n- 消息发送；\n- 工具审批转发；\n- 运行时会话重置。\n\nApplication 层依赖 Domain 中的模型和接口，负责流程组织，不承载基础设施实现。\n\n### Domain 层\n\nDomain 层是稳定的核心抽象层。\n\n主要内容包括：\n\n- 会话模型；\n- 消息模型；\n- 工作区上下文；\n- 配置模型；\n- 消息角色和类型枚举；\n- 会话服务接口；\n- 会话仓储接口；\n- Agent 客户端抽象。\n\nDomain 层不依赖终端 UI、数据库、模型 SDK 或 Agent 框架实现，是系统中最稳定的部分。\n\n### Infrastructure 层\n\nInfrastructure 层负责外部能力落地。\n\n主要职责：\n\n- Microsoft Agent Framework 集成；\n- 模型客户端创建；\n- 工具注册与执行；\n- Shell 命令执行；\n- 文件搜索和内容搜索；\n- SQLite 初始化和访问；\n- 会话历史持久化；\n- 上下文压缩；\n- JSON 序列化配置；\n- 日志系统接入。\n\n所有外部技术细节都集中在这一层，避免污染应用层和领域层。\n\n## 总结\n\nNarutoCode 是面向工程开发场景的终端 Agent 编程工具。它把本地工作区、模型推理、工具调用、会话持久化和终端交互整合成一个完整工作流，让 Agent 可以真正参与项目分析、代码修改、命令执行和结果验证\n\n**同时NarutoCode也是一个基于C# MAF组件的Code Agent智能体**\n\n\n\n## 项目地址\n- https://github.com/NarutoAI/NarutoCode",
+    "created_at": "2026-06-15T09:28:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10344"
+  },
+  {
+    "id": 10343,
+    "title": "中级全栈工程师（偏后端）",
+    "content": "全栈工程师 / Full-Stack Engineer\n关于 Pyxis\nPyxis 是一家总部位于新加坡的金融科技公司，正在构建面向非洲市场的支付基础设施。我们连接非洲本地支付网络、银行体系与全球结算通道，帮助企业和个人更安全、高效、低成本地完成收付款与跨境资金流转。\n我们相信，支付不应该是新兴市场贸易和商业增长的阻碍，而应该成为连接非洲与全球市场的基础设施。\nPyxis 的团队成员背景多元，来自非洲、中国、新加坡、澳大利亚等不同地区。我们是一支小而快的早期团队，既重视对真实业务的理解，也重视用技术和 AI 工具把复杂流程变得更清晰、更高效、更可规模化。\n工作类型\n全职固定期限合同 + 远程办公\n\n---\n我们在找什么样的人\n我们正在寻找一位 全栈工程师 / Full-Stack Engineer，一起搭建 Pyxis 面向新兴市场的支付产品、商户系统、API 服务和内部运营工具。\n这个岗位适合已经有完整项目经验、能独立负责模块交付的工程师。你不需要一开始就熟悉非洲支付或跨境金融，但需要对真实业务有好奇心，愿意理解商户、运营、合规、支付通道和结算流程背后的问题，再用工程能力把它们做成可靠的产品和系统。\n在 Pyxis，工程师不会只是“接需求、写页面、做接口”。你会参与真实支付业务的系统建设：商户入驻、订单流转、支付通道、结算对账、Partner API、内部运营后台，以及帮助团队提高效率的 AI Bot 和自动化工具。\n我们希望你既能写出稳定、可维护的代码，也愿意和产品、运营、合规一起把问题拆清楚。这里很多需求不会一开始就有完美规格，你需要能在不确定中判断优先级、快速验证方案，并对最终业务结果负责。\n这是一个适合 product-minded engineer 的位置：你会接触真实的新兴市场支付场景，也会有空间把 AI 工程工具融入日常开发流程。我们希望你能使用 Codex、Claude Code 等工具提升开发、调试、重构、文档和测试效率，而不是只按传统方式写代码。\n\n---\n你会负责\n1. 支付产品与平台开发\n- 负责 Pyxis 跨境支付相关系统的前后端开发和持续迭代；\n- 参与商户 Portal、API 服务、内部运营系统、AI Bot 等业务模块建设；\n- 从需求讨论、技术方案、开发联调到上线交付，独立负责模块级落地；\n- 在真实业务反馈中持续优化系统体验、稳定性和可维护性。\n2. 后端服务与 API 能力\n- 设计和实现业务接口、数据模型、权限控制和核心业务逻辑；\n- 参与订单、支付、结算、对账、商户管理等后端模块开发；\n- 处理事务一致性、异常重试、日志追踪、性能优化等工程问题；\n- 参与第三方 Partner、支付通道或外部系统对接，包括 API 接入、签名认证和异常处理。\n3. 前端与内部工具\n- 负责商户端和内部运营后台的页面功能、交互逻辑和接口联调；\n- 把复杂的支付、结算、对账和风控流程做成清晰可用的产品界面；\n- 和运营、合规、销售团队一起发现重复工作，并沉淀为工具和系统能力；\n- 持续提升内部工具的可用性，帮助团队更快处理真实业务问题。\n4. 稳定性与工程效率\n- 参与系统上线后的问题排查，包括日志分析、接口异常、性能瓶颈和稳定性改进；\n- 维护代码质量、工程规范和可测试性，让系统在业务增长中仍然可迭代；\n- 主动使用 AI 工具提升编码、调试、测试、重构和文档效率；\n- 把可复用的工程实践沉淀下来，帮助早期团队更快、更稳地交付。\n\n---\n我们希望你\n- 有 3 年以上软件开发经验，做过完整项目，能独立负责模块开发；\n- 熟悉至少一门后端技术栈，Java / Spring Boot 优先，Go、Node.js 等也欢迎；\n- 熟悉 Vue、React 或其他主流前端框架，能独立完成前端业务开发；\n- 理解 REST API、数据库、Web 系统架构和常见工程实践；\n- 可以英文沟通，能阅读资料、整理信息，并和海外伙伴进行基本沟通；\n- 对支付、金融科技、新兴市场或全球南方商业基础设施有兴趣；\n- 学习能力强，能适应早期团队节奏，在不确定中把问题拆清楚并做出来；\n- 会主动使用 AI 工程工具提升开发效率，而不是只按传统方式写代码。\n加分项\n- 有支付、金融科技、交易系统、SaaS 或 B 端平台项目经验；\n- 熟悉 Docker、云服务、CI/CD、监控告警或线上稳定性建设；\n- 做过外部 API、Partner 系统、支付通道或金融机构系统对接；\n- 熟悉 Golang、Node.js、Python 等其他语言；\n- 深度使用过 Codex、Claude Code 等工程型 AI 工具，并能把它们融入日常开发流程。\n\n---\n为什么加入 Pyxis\n- Global Exposure：你会和来自不同国家和地区的团队协作，接触真实的跨境支付和新兴市场业务；\n- Real Product Ownership：你会参与产品和系统从 0 到 1 的搭建，很多模块不是维护旧系统，而是直接决定未来怎么跑；\n- Close to the Business：你会离商户、运营、合规和支付通道很近，能看到自己写的系统如何影响真实交易和团队效率；\n- AI-native Engineering：我们鼓励工程师使用 AI 工具提升开发效率，也欢迎你把 AI 能力做进内部工具和业务流程里；\n- Cross-cultural Team：Pyxis 是一家总部位于新加坡、面向非洲市场的支付初创公司，团队成员背景多元，工作方式开放、直接、务实；\n- Flexible Work：远程办公友好，弹性工作时间；\n- Equity Upside：早期突出贡献成员可获得公司期权。\nHow to apply / 如何投递\n请将 application 发送至：crew@pyxis.money\n邮件标题请使用以下格式：[Pyxis Application] Full-Stack Engineer - 姓名\n邮件正文请包含：\n- 应聘岗位：Full-Stack Engineer / 全栈工程师\n- 姓名、邮箱、电话 / WhatsApp / Telegram\n- 当前所在地、时区、可远程工作时间\n- GitHub / LinkedIn / 作品集 / 技术博客 / 产品链接（如有）\n- 最早可开始时间，以及每周可投入时间\n- 2-3 句话说明你做过的相关项目，以及为什么适合这个岗位\n附件请包含简历，文件名建议使用：姓名 - Full-Stack Engineer - CV.pdf",
+    "created_at": "2026-06-15T09:08:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10343"
+  },
+  {
     "id": 10342,
     "title": "【文章推荐】从 AI Agent 的 BubbleWrap 沙箱，看“世界与地图”的隔离哲学",
-    "content": "地图并不等于真实世界。\n\n一张城市地图不会标出每棵树的位置，也不会记录每一块路边石。\n\n但我们不会因此认为地图是错误的。\n\n因为地图从来不是为了描述全部现实。\n\n它只是针对特定任务，对现实进行选择性的表达。\n\n导航地图关心道路。\n\n地铁图关心线路。\n\n物流地图关心运输网络。\n\n每一种地图都保留了自己需要的信息，同时忽略了大量无关细节。\n\n**Bubblewrap 做的事情与此非常相似。**\n\n它没有复制 Linux。\n\n没有创建新的操作系统。\n\n也没有构造一个真正独立的世界。\n\n它只是向进程展示了一张经过裁剪后的地图。\n\n例如：\n\n/\n├── usr\n├── bin\n└── workspace\n然后告诉进程：\n\n你的世界就是这些内容\n对于进程而言，这张地图就是现实。\n\n- 摘自 https://mp.weixin.qq.com/s/R2LIwpFxr_nMhwYCkbJLuQ",
+    "content": "地图从来不是为了描述全部现实。\n\n它只是针对特定任务，**对现实进行选择性的表达。**\n\n导航地图关心道路。\n\n地铁图关心线路。\n\n物流地图关心运输网络。\n\n每一种地图都保留了自己需要的信息，同时忽略了大量无关细节。\n\n**Bubblewrap 做的事情与此非常相似。**\n\n没有创建新的操作系统。\n\n也没有构造一个真正独立的世界。\n\n它只是向进程展示了一张**经过裁剪后的地图**。\n\n例如：\n\n/\n├── usr\n├── bin\n└── workspace\n然后告诉进程：\n\n你的世界就是这些内容\n对于 AI Agent 而言，这张地图就是现实。\n\n- 摘自 https://mp.weixin.qq.com/s/R2LIwpFxr_nMhwYCkbJLuQ",
     "created_at": "2026-06-15T03:25:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10342"
@@ -460,7 +484,7 @@
   {
     "id": 10279,
     "title": "【开源自荐】原生的 macOS 菜单栏应用，锁定你的键盘输入法",
-    "content": "因为 macOS 有的时候会自动切换到 ABC 输入法上，对于日常工作其实会有些困扰。\n\n目前市面上的锁定输入法软件，有的是收费，有的是功能缺失，所以自己做了一个。\n\nGithub: https://github.com/oomol-lab/LockIME\n\n### 支持的特性:\n\n* 实时锁定选择的输入法\n* 支持根据不同的 app 锁定不同的输入法\n* 全局切换快捷键(快速取消、激活锁定)\n* 可配置的登录启动(默认关闭)\n* 浅色 / 深色模式\n* 支持 9 种语言\n* 激活日志(保留 24 小时)\n* 核心锁定无需额外权限\n* 可根据 URL 切换锁定的输入法(需要额外的 Accessibility 权限)\n* 软件体积仅为 3M+ (DMG)\n* 支持 Arm64 / x64 架构\n* 最低版本支持至: 14.0\n* 已签名 + 公证\n\n### 截图\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/433d9d19-d2d0-47d5-b074-a193ad525260\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dde950c-4c07-47e1-90b6-35b9d7bcc812\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b4bc593-9194-41c2-826d-e5601e335162\" />",
+    "content": "因为 macOS 有的时候会自动切换到 ABC 输入法上，对于日常工作其实会有些困扰。\n\n目前市面上的锁定输入法软件，有的是收费，有的是功能缺失，所以自己做了一个。\n\nGithub: https://github.com/oomol-lab/LockIME\n\n### 支持的特性:\n\n* 实时锁定选择的输入法\n* 支持锁定和切换两种模式\n* 支持根据不同的 app 锁定不同的输入法\n* 全局切换快捷键(快速取消、激活锁定)\n* 可配置的登录启动(默认关闭)\n* 浅色 / 深色模式\n* 支持 9 种语言\n* 激活日志(保留 24 小时)\n* 核心锁定无需额外权限\n* 可根据 URL 切换锁定的输入法(需要额外的 Accessibility 权限)\n* 支持导入 / 导出配置\n* 软件体积仅为 2M+ (DMG)\n* 支持 Arm64 / x64 架构\n* 最低版本支持至: 14.0\n* 已签名 + 公证\n\n### 截图\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/433d9d19-d2d0-47d5-b074-a193ad525260\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dde950c-4c07-47e1-90b6-35b9d7bcc812\" />\n\n<img width=\"1012\" height=\"660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b4bc593-9194-41c2-826d-e5601e335162\" />",
     "created_at": "2026-06-10T14:41:48Z",
     "labels": [
       "weekly"
@@ -788,31 +812,5 @@
     "created_at": "2026-06-07T08:38:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10236"
-  },
-  {
-    "id": 10233,
-    "title": "【开源自荐】smctl：给 Apple Silicon Mac 补上官方没有的风扇控制和电池限充（命令行工具）",
-    "content": "smctl 是一个开源（MIT）命令行工具，给 Apple Silicon Mac 提供风扇曲线控制和电池充电限制——这两件事 macOS 官方都不开放：M 系列芯片没有任何风扇控制 API，电池也只有固定 80% 一档优化充电。\n\n![demo](https://raw.githubusercontent.com/leaperone/smctl/main/docs/assets/demo.gif)\n\n解决的问题：\n\n- 长期插电的 MacBook 想把电量维持在自定义区间（如 `smctl battery maintain 70-80`）延长电池寿命\n- Mac mini / Studio 当家用服务器时风扇策略不可控，smctl 支持手动转速和声明式风扇曲线（TOML 配置），所有命令可走 SSH，支持 `--json` 输出\n- `smctl sensors --watch` 实时查看全部温度传感器、风扇转速和封装功耗\n\n安全方面做了比较多的工作：daemon 被卸载或异常退出都会自动把硬件交还系统接管；带不可关闭的温度护栏，持续过热会强制风扇回到系统控制。所有 SMC 写入都有回读校验。\n\n安装：`brew install leaperone/smctl/smctl`\n\n项目地址：https://github.com/leaperone/smctl （[中文文档](https://github.com/leaperone/smctl/blob/main/docs/README.zh-CN.md)）",
-    "created_at": "2026-06-07T07:32:27Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10233"
-  },
-  {
-    "id": 10232,
-    "title": "【开源自荐】Scout4j：让 AI 编程助手先读懂 Java 后端项目，再动手改代码",
-    "content": "# Scout4j\n\nScout4j 是一个面向 Java 企业后端项目的 AgentSkill，用来约束 AI 编程助手在修改代码前，先调查项目结构、读取本地约定、参考相邻实现，再制定计划、修改代码和验证结果。\n\n项目地址：https://github.com/kyle641320/Scout4j\n\n现在很多人已经开始用 Claude Code、Cursor、Codex 等 AI 编程工具处理真实业务代码。但在 Java 后端项目里，AI 很容易犯一个问题：还没看懂项目，就直接开始改。\n\n比如：\n\n- 没看现有分层结构，就新建一套不一致的代码；\n- 没看 mapper / repository 写法，就乱补 SQL；\n- 没理解事务边界，就把逻辑拆错位置；\n- 没确认 RPC / MQ / CDC / 下游依赖，就只改了表面代码；\n- 没跑针对性测试，就给出“已完成”的结论。\n\nScout4j 想解决的就是这个问题：给 AI 编程助手一套 Java 企业后端工作的流程约束。\n\n它会引导 Agent 按下面顺序工作：\n\ninvestigate → plan → edit → verify → summarize\n\n也就是：\n\n1. 先调查仓库结构和本地约定；\n2. 再根据任务类型读取对应参考；\n3. 然后制定修改计划；\n4. 修改代码；\n5. 最后做针对性验证和总结。\n\n## 适用场景\n\nScout4j 覆盖了一些常见 Java 后端任务：\n\n- 新增字段 / API / 数据库 schema；\n- bug fix 和 code review；\n- 事务边界和一致性问题；\n- RPC / 下游依赖的超时、重试、失败传播；\n- MQ / CDC 消费和投影更新；\n- 数据修复 / backfill job；\n- 分页、性能和 SQL / mapper 一致性；\n- 单元测试、集成测试和验证策略。\n\n## 特点\n\n- 不绑定具体公司架构；\n- 不默认假设 Spring Boot、Maven、MyBatis、JPA、Kafka 或 DDD，除非目标仓库本身体现这些模式；\n- 重点不是“给出标准答案”，而是让 Agent 先读懂项目，再按项目已有风格改；\n- 提供了若干细分参考文档，例如 RPC、事务、数据修复、性能、测试等；\n- 包含一个轻量的 de-overfit 检查脚本，避免把私有 benchmark 或标准答案泄露进公开 skill；\n- 测试阶段已在 100+ 个 GitHub 开源企业级 Java 项目上验证，对 Agent 的代码修改质量、上下文遵循和验证完整性有明显提升。\n\n## 为什么做这个项目\n\nAI 编程工具越来越强，但在企业后端项目里，真正危险的地方往往不是“不会写代码”，而是“没理解上下文就开始写代码”。\n\nScout4j 更像是给 AI 编程助手的一套工作纪律：\n\n> 不要一上来就 patch，先 scout 一遍项目。\n\n项目开源，MIT License。\n\nGitHub：https://github.com/kyle641320/Scout4j",
-    "created_at": "2026-06-07T05:20:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10232"
-  },
-  {
-    "id": 10231,
-    "title": "【开源自荐】Tutti 是一个 macOS 菜单栏小工具，让你的多个扬声器同时播放同一段声音。",
-    "content": "# Tutti\n\n**一个声音，响遍全场**\n\n<img width=\"1920\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a2924f7b-eb95-4e3d-9ee8-56e612e6ca05\" />\n\nTutti 是一个 macOS 菜单栏小工具，让同一份声音同时从多个输出设备播放。\nmacOS 的系统音频一次只能播放一个设备，想边外放边戴耳机、或者让客厅和卧室两组音箱一起响，系统自带的音量功能做不到，需要去 MIDI 里进行设置。\nTutti 补上了这个缺口。不用装任何虚拟音频驱动，也没有内核扩展，全部用苹果自带的 CoreAudio 框架实现。在菜单栏勾选多个输出，Tutti 会临时搭一个聚合设备，让每个设备同时发声；退出时原来的输出干净恢复，不留后台进程，也不留垃圾设备。\n\n## 使用场景\n\n- 家里多台蓝牙音响，同时播放一首歌曲，每个房间的音乐同步。\n- 一台 Mac 能同时连两副、甚至三副 AirPods。在咖啡馆不方便外放？你和朋友一人戴一副，一起看同一部电影、听同一首歌。\n- 老师上课时，可以通过耳机监听自己的声音，同时让现场的观众和学生听到功放的声音。直播、录课同理：自己戴耳机听，声音照常外放。\n- 任何\"想让同一份声音同时去几个地方\"的场景。\n\n## 核心功能\n\n**多设备同步输出**，在菜单栏勾选有线音箱、、蓝牙耳机、AirPods、显示器的任意组合，同一个声音同时播，完全同步。\n\n**音量控制**，一个主音量统一调全组，每个设备还能单独调音量和静音。\n\n**蓝牙电量**，连着的蓝牙耳机电量直接显示在面板里，不用再去系统里查。\n\n**替代系统音量图标**，可以把 Tutti 设成菜单栏那个音量图标，按音量键时弹的也是它自己的 OSD。\n\n**快捷键增强**，键盘音量键和滚轮直接控制整组输出，还能把常用的设备组合存成预设，一键切换。\n\n## 主要能力\n\n源码在 GitHub 上公开（PolyForm Noncommercial 许可）。支持 9 种语言，需要 macOS 13 及以上。\n\n官网：https://www.tutti.barrybarrywu.com\nGithub：https://github.com/BarryBarrywu/tutti\n",
-    "created_at": "2026-06-07T03:10:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10231"
   }
 ]
