@@ -1,5 +1,37 @@
 [
   {
+    "id": 10356,
+    "title": "【开源自荐】Moler：NASA-Punk 风格的 macOS 磁盘清理工具",
+    "content": "![demo](https://github.com/user-attachments/assets/0669c787-92b9-48f9-94ff-726b17d3084b)\n\nNASA-Punk 风格的 macOS 磁盘清理工具，基于 tw93/Mole 引擎。\n\n- 深度扫描清理、项目残留清除、系统优化、磁盘分析\n- 实时系统监控面板（CPU/内存/网络）\n- i18n 中英文切换，暗色 NASA-Punk 设计\n- 支持手动检查 GitHub Release 更新\n\nhttps://github.com/niyongsheng/moler",
+    "created_at": "2026-06-16T09:42:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10356"
+  },
+  {
+    "id": 10355,
+    "title": "【开源自荐】cdp：为终端和 AI CLI 准备的快速项目目录切换工具",
+    "content": "阮老师您好，\n\n自荐一个我做的开源命令行工具 **cdp**。\n\n- 项目地址：https://github.com/GoldenZqqq/cdp\n- PowerShell Gallery：https://www.powershellgallery.com/packages/cdp\n- 最新版本：https://github.com/GoldenZqqq/cdp/releases/tag/v1.4.0\n- 演示视频：https://github.com/GoldenZqqq/cdp/blob/main/docs/assets/cdp-demo-short-zh.mp4\n\ncdp 是一个面向终端工作流的项目目录快速切换工具。它可以读取 VS Code / Cursor 的 Project Manager 配置，也可以使用自己的 JSON 项目列表，然后通过 `fzf` 模糊搜索，一键跳转到项目根目录。\n\n![cdp 操作演示](https://raw.githubusercontent.com/GoldenZqqq/cdp/main/docs/assets/cdp-demo-short-zh.gif)\n\n我做这个工具的原因是，现在越来越多开发者会在 Claude Code、Codex、Gemini CLI 这类终端 AI 工具里工作，但多项目切换仍然很笨重：要么记路径、要么反复 `cd`、要么在资源管理器和终端之间来回跳。尤其是同时维护多个仓库时，进入正确项目根目录是一件高频但不该占用注意力的事情。\n\ncdp 希望把这件事压缩成一个命令：\n\n```powershell\ncdp\ncdp api\ncdp-scan E:\\Projects\ncdp doctor\n```\n\n主要特点：\n\n- **模糊搜索切换项目**：输入 `cdp` 后用 `fzf` 搜索项目名，回车直接进入项目根目录。\n- **快速 query 跳转**：`cdp api` 只有一个匹配项时直接进入，多个匹配项时再进入筛选列表。\n- **兼容 VS Code / Cursor**：可以自动读取 Project Manager 扩展的项目配置，不需要重新维护一套列表。\n- **批量扫描 Git 仓库**：`cdp-scan E:\\Projects` 可以把目录下的 Git 仓库批量导入配置。\n- **Windows + WSL 支持**：PowerShell 和 bash/zsh 版本可以使用同类配置；PowerShell 下也可以通过 `cdp -WSL` 进入 WSL 路径。\n- **诊断命令**：`cdp doctor` 会检查 `fzf`、配置文件、JSON 格式、重复项目名和失效路径。\n- **终端标签同步**：切换项目后会把终端标签标题改成项目名，多个 AI CLI 会话并行时更容易识别当前上下文。\n\n安装方式：\n\n```powershell\nInstall-Module -Name cdp -Scope CurrentUser\nwinget install fzf\nImport-Module cdp\ncdp doctor\n```\n\n如果是首次配置，也可以从源码运行安装脚本，它会尝试自动安装 `fzf` 并写入 PowerShell profile。\n\n最近发布的 v1.4.0 增加了 `cdp <query>` 快速匹配、Git 仓库批量扫描导入，并完善了首次安装和诊断体验。\n\n谢谢。\r\n",
+    "created_at": "2026-06-16T05:30:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10355"
+  },
+  {
+    "id": 10354,
+    "title": "【开源自荐】同览—— macOS 多浏览器分流与同步中枢",
+    "content": "**同览 (BrowSync)** 是一款 macOS 原生的跨浏览器分流与同步中枢。它打通 Safari 与所有 Chromium 内核浏览器，智能分流链接并实时同步数据，为您统一浏览体验。\n\n应用官网：https://browsync.ct106.com\n项目源码：https://github.com/chentao1006/BrowSync\n\n## 🚀 主要功能\n\n- **URL 分流**：将同览设为 macOS 默认浏览器后，可根据域名、URL 规则、参数、来源应用或时间段，将链接自动定向到指定的浏览器。\n- **书签同步**：在 Safari 和所有 Chromium 内核浏览器之间实时同步书签。\n- **状态同步**：在各浏览器之间同步 Cookie、LocalStorage 和 sessionStorage，保持登录状态一致。\n- **标签页共享**：跨浏览器查看当前打开的标签页。自动过滤无痕模式及非 HTTP(S) 协议页面，并对重复的 URL 进行去重。\n- **同步策略**：支持单向同步（主从模式）、基于访问时间的最后写入者胜出、双向合并。\n- **站点控制**：通过白名单/黑名单管理同步范围，支持为特定网站设置独立策略。\n- **本地网络**：通信通过本地 WebSocket 守护进程 (`ws://127.0.0.1:62333`) 进行，不依赖外部服务器。\n- **原生 macOS 应用**：使用 SwiftUI 构建，支持深色/浅色主题、菜单栏集成和登录时启动。\n- **iCloud 同步**：通过 iCloud 在您的所有 Mac 设备之间自动同步分流规则、偏好设置和站点配置。\n\n## 📸 界面截图\n\n| | |\n|:---:|:---:|\n| ![截图 1](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000001.jpg) | ![截图 2](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000002.jpg) |\n| ![截图 3](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000003.jpg) | ![截图 4](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000004.jpg) |\n| ![截图 5](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000005.jpg) | ![截图 6](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000006.jpg) |\n| ![截图 7](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000007.jpg) | ![截图 8](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000008.jpg) |\n\n> [!IMPORTANT]\n> **隐私保护**\n> 同览 (BrowSync) 的同步和 URL 分流通过本地 WebSocket 守护进程进行。浏览数据（书签、Cookie、本地存储、活动标签页等）保存在本地设备，不涉及外部服务器。\n",
+    "created_at": "2026-06-16T05:00:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10354"
+  },
+  {
+    "id": 10353,
+    "title": "【开源自荐】pixtuoid：把正在运行的 AI agent 显示成像素办公室里的小人",
+    "content": "三周前投过一次,这段时间更到了 0.9.0，加了不少东西，想重新自荐一下。\n\nGitHub: https://github.com/IvanWng97/pixtuoid\n演示 + 文档: https://ivanwng97.github.io/pixtuoid\n\n概况\n每个正在运行的AI agent(Claude Code、Codex 等)会变成一个会走动的像素小人,坐进一间pixel办公室:打字、起身、开会、忙/闲、日夜光照、天气、宠物都有。纯终端、开源,而且永不阻塞你的 agent。\n\n这三周的更新(到 0.9.0)\n - 🦞 OpenClaw 显示成一只龙虾: 闲时四处溜达,跑任务时在工位间穿梭,gateway off就会走出门;它把活派给真正的AI agent(Claude Code/Codex…)时,旁边还会多冒出一个小人在打字。\n - 多楼层自动扩展:一层坐不下时自动加楼层,方向键或 j/k 在楼层间导航。\n- Tab 打开 agent 面板:列出所有在跑的 agent,选中谁、回车就自动跳到它所在的楼层。\n- s 打开 Sources 面板:列出每个 source(agent CLI),直接一键 install / uninstall——连上小人就走进办公室,断开就走出去。\n- 已支持 9 个 agent:Claude Code、Codex、Cursor CLI、Copilot CLI、CodeWhale、opencode、Reasonix、Antigravity、OpenClaw。\n\n安装\n``` bash\nnpm i -g pixtuoid        # 或 cargo install pixtuoid\n# brew install IvanWng97/pixtuoid/pixtuoid\npixtuoid run             # 然后按 s 连接你的 agent\n```\n\nhttps://github.com/user-attachments/assets/a6cbecfe-1d16-4a07-9570-184fe93ba423",
+    "created_at": "2026-06-16T04:32:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10353"
+  },
+  {
     "id": 10352,
     "title": "claude-f-me：用自然语言控制硬件的开源 MCP 服务器",
     "content": "链接：https://github.com/mana-am/claude-f-me\n\n一个开源的 MCP 服务器，让你在 Claude Code、Codex、Cursor 等 AI 客户端里用自然语言控制硬件设备。你输入一句话（如「按心跳节奏来 3 分钟」），模型会生成对应的控制指令并实时执行；同一个进程既是 AI 对话的 MCP server，又是一个实时响应的网页控制台，二者共享同一设备状态。\n\n它基于开源的 Buttplug/Intiface 生态，兼容 750+ 设备（属于情趣硬件领域），并内置一个模拟器后端 —— 无需任何硬件即可在浏览器中体验全部功能。还支持 funscript 视频同步、音频驱动、心率联动，以及一个通用的 POST /event webhook（可接 CI、Stream Deck、Home Assistant 等）。MIT 协议，全本地运行。",
@@ -10,7 +42,7 @@
   {
     "id": 10351,
     "title": "【工具自荐】vscode 沉浸式翻译插件",
-    "content": "\n# Translate Pro 是一款面向开发编码、技术阅读与问题排查场景的翻译插件，帮助程序员更高效地理解信息、定位问题并保持沉浸式开发体验。\n\n## 覆盖开发流程中的核心翻译场景\n- Hover 翻译\n   <img width=\"1394\" height=\"866\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5f74cb33-026b-4bc2-8ccc-e557b48516f1\" />\n- 插件详情沉浸式翻译\n   <img width=\"1592\" height=\"1076\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/50717bde-4c46-418d-8de3-82fbcd5aef4e\" />\n- markdown预览沉浸式翻译\n   <img width=\"2560\" height=\"1338\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cf515424-acea-47ff-a98e-8bf2b196054c\" />\n- 终端文本翻译\n   <img width=\"1598\" height=\"1078\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f46aa937-ed85-4721-8aa5-d5d87c92fcb0\" />\n- 选中文本翻译\n   <img width=\"1902\" height=\"997\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ee82c0d0-ca48-490a-92ca-a1aa87fce50f\" />\n- 支持多翻译 Engine 与自定义翻译API\n  <img width=\"1140\" height=\"804\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/46d2507a-0ec2-43d6-a028-2ca84542be21\" />  \n\n\n## 相关资料\n- 官网：[https://translate.yanxuewen.cn/](https://translate.yanxuewen.cn/)\n- 插件地址：https://marketplace.visualstudio.com/items?itemName=yxw007.vscode-translate-next\n- 视频教程：https://space.bilibili.com/3546754775517426",
+    "content": "\n### Translate Pro 是一款面向开发编码、技术阅读与问题排查场景的翻译插件，帮助程序员更高效地理解信息、定位问题并保持沉浸式开发体验。\n\n#### 覆盖开发流程中的核心翻译场景\n- Hover 翻译\n   <img width=\"1394\" height=\"866\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5f74cb33-026b-4bc2-8ccc-e557b48516f1\" />\n- 插件详情沉浸式翻译\n   <img width=\"1592\" height=\"1076\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/50717bde-4c46-418d-8de3-82fbcd5aef4e\" />\n- markdown预览沉浸式翻译\n   <img width=\"2560\" height=\"1338\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cf515424-acea-47ff-a98e-8bf2b196054c\" />\n- 终端文本翻译\n   <img width=\"1598\" height=\"1078\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f46aa937-ed85-4721-8aa5-d5d87c92fcb0\" />\n- 选中文本翻译\n   <img width=\"1902\" height=\"997\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ee82c0d0-ca48-490a-92ca-a1aa87fce50f\" />\n- 支持多翻译 Engine 与自定义翻译API\n  <img width=\"1140\" height=\"804\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/46d2507a-0ec2-43d6-a028-2ca84542be21\" />  \n\n\n#### 相关资料\n- 官网：[https://translate.yanxuewen.cn/](https://translate.yanxuewen.cn/)\n- 插件地址：https://marketplace.visualstudio.com/items?itemName=yxw007.vscode-translate-next\n- 视频教程：https://space.bilibili.com/3546754775517426",
     "created_at": "2026-06-16T01:50:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10351"
@@ -180,7 +212,9 @@
     "title": "【开源自荐】一个 SSH 密钥、主机和配置管理的桌面工具。",
     "content": "大家好，我最近开源了一个项目：[ssh-at](https://github.com/baerwang/ssh-at)\n\n一个 SSH 密钥、主机和配置管理的桌面工具。生成密钥、可视化编辑 `~/.ssh/config`、自动备份——都在一个应用里。\n\n### 🚀 特性\n\n- **📝 SSH 配置管理**\n  - `~/.ssh/config` 可视化编辑器\n  - 添加、编辑、删除和搜索 SSH 主机\n  - Monaco Editor 实时语法高亮\n  - 每次保存前自动备份\n\n- **🔑 SSH 密钥管理**\n  - 生成 SSH 密钥（RSA、Ed25519、ECDSA）\n  - 查看密钥指纹\n  - 一键复制公钥到剪贴板\n  - 带确认的密钥删除\n\n- **💾 备份与恢复**\n  - 自动时间戳备份\n  - 浏览和恢复历史配置\n  - 删除旧备份\n\n- **🌍 多语言支持**\n  - 英文 / 中文\n  - 自动检测系统语言\n\n- **🎨 现代化界面**\n  - Material Design（MUI）\n  - 明暗主题切换\n  - 系统托盘集成（最小化到托盘，不退出）\n  - macOS Dock 图标在最小化时自动隐藏\n\n更多功能和用法可以参考项目的 [README](https://github.com/baerwang/ssh-at/blob/main/README-zh.md)\n\n欢迎试用、Star 和提建议！",
     "created_at": "2026-06-14T09:21:32Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10330"
   },
   {
@@ -292,7 +326,9 @@
     "title": "【开源自荐】GitFolio: 一个轻量级的 Git 仓库管理系统",
     "content": "https://github.com/azhai/gitfolio\n\n**个人作品，未经严格测试，请不要用于公司的生产服务器管理代码。**\n\n一个轻量级的 Git 仓库管理系统，采用 Go + React 开发，支持从 GitHub 镜像同步仓库数据。\n\n- 可以从Web界面上完成常用的git操作，特别是删除中间几个提交这种。\n\n- 不仅可以同步代码，还可以拉取GitHub项目的Issue和PR。",
     "created_at": "2026-06-13T08:25:44Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10316"
   },
   {
@@ -316,7 +352,9 @@
     "title": "【开源自荐】DNS Pick - 结合延迟与成功率的智能 DNS 优选工具",
     "content": "## 项目简介\n**[DNS Pick](https://github.com/palemoky/dnspick)** 是一款轻量、高效的 DNS 优选工具。它打破了传统工具单纯依赖 Ping（延迟）测试的局限，采用**结合平均延迟与解析成功率的智能评分算法**，旨在为用户筛选出真正兼顾速度与稳定性的最优 DNS 服务器。\n\n软件默认内置了国内外主流网站及主流 DNS 服务器的评测数据集，开箱即用。\n\n## 核心特性\n* **智能算法评分**：综合评估特定网络环境下的「平均延迟」与「解析成功率」，避免误选延迟低但丢包率高的 DNS。\n* **全协议支持**：完美支持传统 **UDP**，以及更安全的 **DoH (DNS over HTTPS)** 和 **DoT (DNS over TLS)** 协议。\n* **多场景评测**：默认针对国内外主流网站进行交叉解析测试，确保优选结果在实际网页浏览中真实有效。\n* **可视化直观展示**：提供清晰的评测数据对比，助你一眼挑出最适合当前网络的 DNS。\n\n## 软件截图\n<img width=\"921\" height=\"928\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0893446a-fc65-43f7-8bb2-11aa53cb164d\" />\n\n## 项目地址\n👉 **GitHub 仓库**：[palemoky/dnspick](https://github.com/palemoky/dnspick)\n\n欢迎大家体验、提 Issue 或 Star 支持！\n\n",
     "created_at": "2026-06-13T01:40:42Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10311"
   },
   {
@@ -776,37 +814,5 @@
     "created_at": "2026-06-08T08:23:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10248"
-  },
-  {
-    "id": 10247,
-    "title": "工具推荐:DuckQ —— 能跨源 JOIN、用中文问数的 SQL 工作台",
-    "content": "**DuckQuery —— 一条 SQL 同时查本地文件和远程数据库**\n\n数据库 GUI(DBeaver)碰不了本地 CSV,BI 工具(Metabase)又要先建仓库、跑 ETL。DuckQuery 基于 DuckDB 补上中间这块:文件和数据库放一起查,免建仓、免 ETL。\n\n核心功能:\n\n🔗 跨源 JOIN —— 本地文件与远程MYSQL、PG等数据库跨源JOIN\n\n🧠 问数(Text-to-SQL) —— 中文提问,AI 写 SQL,你确认后再执行\n\n🩺 AI 报错医生 —— 报错时给中文诊断 + 改好的 SQL\n\n📈 AI 图表推荐 —— 结果一键变图(柱 / 折线 / 饼)\n\n🗄️ 连接外部库 —— MySQL / PostgreSQL,与本地文件一起查\n\n📂 查询任意文件 —— 拖入 CSV / Excel / Parquet / JSON 即刻成表\n\n📥 粘贴 / URL 导入 —— 复制单元格建表,或填链接自动导入\n\n📊 透视表 / JOIN 工作台 / 集合运算\n\n🌙 深色模式 · 中英双语\n\n源码:https://github.com/Chenkeliang/duckdb-query\n在线 Demo:https://chenkeliang.github.io/duckdb-query/",
-    "created_at": "2026-06-08T08:17:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10247"
-  },
-  {
-    "id": 10246,
-    "title": "【工具自荐】MGC：一个可以加密你的授权脚本，保证授权后可运行又不会被盗取的黑盒工具",
-    "content": "### 项目简介  \nAI直接参与开发和工作的越来越多，以往很多只能有开发者接触的信息也能被AI接触了，而且现在很多人都会把自己的skill贡献出来给其它人用，但未来会有两个核心问题：\n1、如何让自己的账户密码和token这类信息，在AI和脚本都不接触的情况下，就能让项目正确运行？\n2、自己的核心技能整理而成的脚本/skill，既可以跟人共享，又不会丧失自己的所有权？\n\n我做了 **MGC（MirginCipher Blackbox）** —— 一个 **运行层（execution‑layer）** 的本地黑盒工具，用来：\n\n- 存入你的敏感信息，脚本和AI只在运行时调用，平时加密存在黑盒里，不会被盗取，又不会泄露；\n- 密封你的脚本，然后把密封后的脚本（外面看上去就是一串乱码）给到别人，别人就能在自己的黑盒里运行，但完全看不懂你的脚本\n\n一句话总结：  \n**MGC 通过控制操作边界，让脚本和AI的执行力不降低的同时，还能让你的核心技能持续积累升值。**\n\n---\n\n### 适用场景  \n- 发布“不可复制”的能力脚本（例如数据处理、分析逻辑）  \n- 给他人授权运行你的脚本，但不暴露源码，也无法不通过你分发给别人  \n- 构建安全的本地自动化工作流  \n- 让开发者可以“授予能力”而不是“授予代码”  \n\n<img width=\"2621\" height=\"1734\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a659345-fd2f-45cd-a6b2-f18ea125954f\" />\n\n\n---\n\n### 项目亮点  \n- **sealed script 加密执行**：脚本在黑盒内运行，外部无法读取  \n- **授权后可运行**：可以给他人授权运行，但无法泄露内容  \n- **本地执行，不联网**：不上传、不托管、不依赖云  \n- **可与 AI/Agent 集成**：让 AI 只能调用能力，而不是接触源码  \n- **保护开发者的认知资产**：适合做“能力分发”或“付费脚本”  \n\n---\n\n### 项目地址  \nhttps://github.com/zkeviny/MGC-Blackbox\n\n### 使用门槛\n有完整的skill文档，并且接入了MCP，还有webui，直接把技能文档塞给你的AI就能用。\nskill文档地址：https://github.com/zkeviny/MGC-Blackbox/blob/main/docs/skill_spec.md\n\n---\n\n### 为什么值得推荐  \n随着 AI 自动化越来越强，提示词层面的控制越来越不可靠。  \nMGC 尝试把控制权从“语言层”迁移到“执行层”，让 AI 的行为变得可预测、可约束、可审计。\n\n如果你也在做 AI 自动化，担心信息泄露，并且想要把自己的工作流（脚本）授予给别人，却又不会被别人冒用，MGC 一定会对你有帮助。\n\n<img width=\"1098\" height=\"745\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4fc13952-0b98-4f19-8e5d-9a2e2473ec7f\" />\n\n<img width=\"1121\" height=\"1026\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/07b69b14-afe7-4f36-9156-9a608ed0bd21\" />\n\n<img width=\"1177\" height=\"844\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/25253c07-f21c-48b5-9ebc-39b9892bc3c4\" />\n\n---",
-    "created_at": "2026-06-08T07:27:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10246"
-  },
-  {
-    "id": 10245,
-    "title": "【开源自荐】Onin :  一个跨平台的键盘启动器，使用 Tauri + SvelteKit 构建，支持扩展和插件",
-    "content": "- GitHub: https://github.com/Onin-app/Onin\n- 官网: https://onin-app.github.io/Onin\n\n### 软件介绍\nOnin 是一款专为提升效率而生的现代化生产力工具。深受 Raycast 和 uTools 的启发，Onin 提供了一个极速、可扩展的界面，让你可以快速启动应用、搜索文件和执行命令，全程无需离开键盘。基于 Tauri 和 SvelteKit 构建，它完美融合了 Rust 的极致性能与现代 Web 技术的灵活性。\n\nOnin 不仅仅是一个启动器，更是一个平台。通过强大的 插件 SDK，开发者可以无限扩展其能力，打造最适合自己的工作流。\n\n### 截图\n\n<img width=\"1145\" height=\"698\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d77f18fb-f7a9-4437-a9cd-f6ac217b2e11\" />\n\n<img width=\"1141\" height=\"698\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/23883fd6-0e41-4652-a1ea-0e8003e89cbb\" />",
-    "created_at": "2026-06-08T04:09:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10245"
-  },
-  {
-    "id": 10244,
-    "title": "【工具自荐】OpenSeedance - 基于Seedance 2.0 驱动的一站式 AI视频图像生成器",
-    "content": "## 产品概况\n在 [OpenSeedance](https://openseedance.org/) 使用满血Seedance 2.0/GPT Image/NanoBanana 等顶尖 AI 模型，轻松实现AI视频生成、AI图像生成与编辑。\n\nSeedance 2.0 本身就是一个强大的多模态引擎，能够将文本、图片或视频片段转化为电影级输出，具备流畅的动作、逼真的物理效果、动态摄像机运动、多镜头叙事以及场景间角色的一致性。\n\n但 OpenSeedance 的做法远不止于此。我们已将多个主流 AI 模型——包括 GPT-IMAGE 2 和 Kling 3.0——整合进一个无缝的工作流程。你能拥有一个完整的 AI 制作工作室，无需在不同工具间切换。\n\n无论你是在制作 AI 电影、TikTok 视频、YouTube Shorts、动漫场景、产品广告、音乐可视化还是社交媒体广告，OpenSeedance 都能帮助你在几秒钟内生成专业级内容。\n\n## 主要特征\n- 支持文本、图像及视频间的多模态输入\n- 通过官方 API 直接访问 Seedance 2.0 引擎，实现高稳定性\n- 角色一致性工具，用于在不同场景中保持面部和服装\n- 包含Seedance 2.0、 Kling 3.0、Wan 2.7 和 GPT Image 2 的聚合模型库\n- 每日信用系统，连续签到可获得最多 20 个额外积分\n- 所有付费积分包中包含的商业使用许可\n\n## 使用场景\n- 广告主从一张高质量产品照片制作 10 秒的产品展示。\n- 讲故事者在五个不同的叙事场景中保持角色形象一致。\n- 社交媒体创作者利用视频对视频增强功能重新设计现有素材。\n- 电影制作人仅使用文字描述生成无人机风格的风景镜头，以节省制作成本。\n\n现在就免费试试[Seedance 2.0](https://openseedance.org/)\n",
-    "created_at": "2026-06-08T03:25:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10244"
   }
 ]
