@@ -1,5 +1,21 @@
 [
   {
+    "id": 10358,
+    "title": "【开源自荐】CoPet - 给 AI Agent 配一只会动的桌面宠物伙伴",
+    "content": "\n<img src=\"https://github.com/ChanceYu/CoPet/raw/main/public/pet.png\" alt=\"CoPet logo\" width=\"160\" />\n\n\n项目地址：https://github.com/ChanceYu/CoPet\n\nCoPet 是一个本地优先的**桌面宠物应用**，支持 Claude Code、Codex、Cursor、Gemini、Copilot CLI 等 AI Agent。\n\n它会实时感知 Agent 的状态，比如正在思考、调用工具、等待、完成、报错等，并在桌面上用动画、交互和音效做出反应。\n\n主要特点：\n\n  - 支持 Claude Code、Codex、Antigravity、OpenCode、Cursor、Copilot CLI、Pi、Gemini 等多个 Agent。\n  - 宠物会响应提示、工具调用、等待、完成和错误状态。\n  - 内置多款宠物，也支持导入兼容 Codex 的自定义宠物包。\n  - 支持悬停、点击、双击、拖拽、长按等桌面交互。\n  - 支持全局音效和宠物专属音效。\n  - 本地优先，无云服务依赖，数据默认保存在 ~/.copet。\n  - 基于 Tauri + Rust + React 构建，轻量跨平台。\n\n目前项目已经提供 macOS 和 Windows 安装包，欢迎大家试用、提 issue 或贡献新的宠物包。\n\n![CoPet](https://github.com/ChanceYu/CoPet/raw/main/public/banner.zh.png)\n",
+    "created_at": "2026-06-16T14:36:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10358"
+  },
+  {
+    "id": 10357,
+    "title": "【开源自荐】boss-zhipin-scraper —— 用 CDP 协议抓 BOSS直聘职位",
+    "content": "自荐一个开源小工具：boss-zhipin-scraper\nhttps://github.com/eatmoreduck/boss-zhipin-scraper\n\n它用 Chrome 的 DevTools Protocol（CDP）抓 BOSS直聘的职位数据。\n没用 Selenium 那一套，而是直接连本地 Chrome 的 9222 调试端口，\n通过页面内注入 JS 调搜索接口，拿到结构化的职位列表（含明文薪资），\n再抓详情页 JD 做技能词频分析。\n\n技术上有两个我觉得还算有意思的点：\n1. 不重新造浏览器自动化轮子，靠 CDP raw protocol 手写消息收发，\n   整个工具只依赖 requests 和 websocket-client。\n2. 用一个隔离的 Chrome profile 存登录态，专门给抓取用，\n   不软链接、不复制主 Chrome 数据，避免影响日常浏览器里的其他账号。\n\n用法很简单：\npython3 scripts/boss_cdp_raw.py --setup-chrome   # 启动隔离 Chrome，登录一次\npython3 scripts/boss_cdp_raw.py --check          # 自检环境\npython3 scripts/boss_cdp_raw.py --keyword \"AI Agent\" --city 上海 --pages 3 --analysis\n\n适合找工作时批量筛岗位、或者想学 CDP 协议怎么手撸的同学。",
+    "created_at": "2026-06-16T11:15:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10357"
+  },
+  {
     "id": 10356,
     "title": "【开源自荐】Moler：NASA-Punk 风格的 macOS 磁盘清理工具",
     "content": "![demo](https://github.com/user-attachments/assets/0669c787-92b9-48f9-94ff-726b17d3084b)\n\nNASA-Punk 风格的 macOS 磁盘清理工具，基于 tw93/Mole 引擎。\n\n- 深度扫描清理、项目残留清除、系统优化、磁盘分析\n- 实时系统监控面板（CPU/内存/网络）\n- i18n 中英文切换，暗色 NASA-Punk 设计\n- 支持手动检查 GitHub Release 更新\n\nhttps://github.com/niyongsheng/moler",
@@ -60,7 +76,9 @@
     "title": "[开源自荐] 遨游太阳系 / Solar Wanderer —— 浏览器里的 1:1 完整实时模拟整个太阳系，支持桌面端和手机端，手机双指即可降落月球",
     "content": "**在线体验（手机/电脑均可，无需安装）：https://sw.icodestar.net**\n源码（MIT）：https://github.com/hyqzz/Solar-Wanderer\n\n---\n\n## 它是什么\n\n一个完全跑在浏览器里的 **1:1 千米尺度真实太阳系**。\n\n打开即是此刻——行星位置由 NASA JPL 星历实时计算，与 JPL Horizons 官方数据误差 ≤0.074°，是它们**现在真实**所在的位置。手机双指捏合放大，你会穿越大气层、降落在月球表面，抬头就能看见地球挂在黑色天幕里。\n\n整段旅程——**轨道 → 大气 → 地表 → 行走 → 水下**——是一个连续的缩放，没有加载条，没有切换场景。\n\n## 主要内容\n\n- **8 颗行星、月球、21 颗卫星**（JPL 状态矢量拟合）、28 颗真实海外天体（TNO）、4 颗彗星（背日彗尾）、21 颗按真实 3D 距离摆放的亮星（移动时有视差）\n- **19 颗天体可登陆行走**，月球重力是地球的 1/6（跳跃高度 6 倍）；地球海洋有浮力可下潜\n- 渲染范围：**0.5 米地表细节 → 10 万 AU 奥尔特云**（约 1.6 光年）\n- 时间控制：1 秒 → 10 年/秒，可倒退、暂停、跳回此刻\n\n## 为什么技术上有意思\n\n太空渲染的头号难题是浮点精度。GPU 的 float32 只有约 7 位有效数字，在太阳系尺度下，绝对坐标会让地面顶点产生千米级量化抖动。\n\n这里用了两个关键手段：\n\n1. **浮动原点**：天文计算全程 Float64，送进 GPU 前先减去相机位置，场景永远以观察者为中心\n2. **对数深度缓冲**：`camera.far` 设到 1×10¹⁵ km（约 106 光年），让\"脚前半米\"和\"海王星轨道\"共存在同一个深度缓冲里，不 z-fighting\n\n这两点合在一起，才撑起了从 0.5 米到 10 万 AU 的无缝连续缩放。\n\n## 约 200 kB，纯静态\n\ngzip 后约 200 kB，无后端、无账号、无跟踪。本质上是一个静态网页，部署在国内服务器，可流畅打开。\n\n## 背景\n\n项目核心是在 Fable 5（6 月 9 日发布、6 月 12–13 日因美国出口管制全球下线）还可用的约两天里搭出来的——星历层、相机系统、渲染器、着陆机制，第一次提交约 12,000 行。模型下线后用 Claude Opus/Sonnet 完成了移动端改造和 v2.0.0 发布。\n\ndev.to 技术文章：https://dev.to/eric_he/i-built-a-11-solar-system-with-fable-5-in-the-days-before-it-was-pulled-offline-2kni\n\n验证星历精度：`npm run verify`（实时对照 JPL Horizons API）",
     "created_at": "2026-06-15T17:10:07Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10349"
   },
   {
@@ -92,7 +110,9 @@
     "title": "[工具] PowerLens — 在 zsh 右提示符中实时展示 macOS 系统指标",
     "content": "**PowerLens** 是一个 Oh-My-Zsh 插件，在 zsh 的 `RPROMPT` 中实时展示电源功率、电池、CPU、CPU 温度、风扇转速、内存和网络流量。\n\n**项目地址：** https://github.com/luyangkk/powerlens\n\n**特点：**\n- 7 项指标实时展示：⚡功率 🔋电池 ⚙CPU 🌡温度 🌀风扇 🧠内存 ↑↓网络\n- 颜色根据阈值自动变化，支持 compact / full 两种显示模式\n- 单例 Go 守护进程，N 个终端窗口共享一个进程，性能影响 < 5ms\n- 纯 macOS 原生 API（IOKit/SMC），无需 sudo，支持 Apple Silicon 和 Intel\n\n**安装（Oh-My-Zsh）：**\n```bash\ngit clone https://github.com/luyangkk/powerlens.git   ~/.oh-my-zsh/custom/plugins/powerlens\n```\n然后在 `~/.zshrc` 的 plugins 中加入 `powerlens`，source 即可。\n\n**截图：** https://github.com/luyangkk/powerlens#readme\n\n---\n\n- 项目语言：Go / Zsh\n- 开源协议：MIT\n- 目标平台：macOS 12+\n",
     "created_at": "2026-06-15T11:25:17Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10345"
   },
   {
@@ -148,7 +168,9 @@
     "title": "【工具自荐】老板以为我在 Vibe Coding，我：是的（顺便背了 30 个单词）",
     "content": "推荐一个我做的词汇学习工具：[Fishword](https://github.com/Chenggou1/fishword)\n\n**一句话定位**：代码让 AI 慢慢生成，单词我先偷偷记几个。\n\nFishword 面向 Vibe Coding 场景——当你在 Pi.dev 里等待 AI 回复、命令执行或测试完成时，可以直接在开发环境内顺手复习单词，零切换成本。\n\n**核心特点：**\n\n- 使用 [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Algorithm) 算法调度复习，根据记忆曲线动态安排复习时间\n- 数据全部存储在本地 SQLite，无需注册、无需联网\n- 内置三个词库（CET-4 / CET-6 / TOEFL），也支持导入自定义词汇（CSV / JSONL / Anki TSV）\n- 每个词库有独立的 FSRS 调度状态，多个备考目标互不干扰\n- 快捷键驱动（`Ctrl+Shift+V` 显示词卡，`G/H/A/E` 评分），不打断编码节奏\n\n**当前集成：Pi 编程助手**\n\n```\npi install npm:@fishword/pi-extension\n```\n\n安装后自动导入词库，无需任何配置，打开 Pi 即可开始复习。\n\n词卡界面：\n\n![词卡界面](https://raw.githubusercontent.com/Chenggou1/fishword/main/docs/images/screenshot-card.png)\n\n详情面板（音标 / 词性 / 释义 / 例句）：\n\n![详情面板](https://raw.githubusercontent.com/Chenggou1/fishword/main/docs/images/screenshot-detail.png)\n\n学习统计：\n\n![统计界面](https://raw.githubusercontent.com/Chenggou1/fishword/main/docs/images/screenshot-stats.png)\n\n词库切换：\n\n![词库选择器](https://raw.githubusercontent.com/Chenggou1/fishword/main/docs/images/screenshot-deck.png)\n\nGitHub 仓库：https://github.com/Chenggou1/fishword",
     "created_at": "2026-06-15T02:14:00Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10338"
   },
   {
@@ -703,7 +725,7 @@
   },
   {
     "id": 10264,
-    "title": "【工具自荐】一款轻量、优雅的个人主页生成器",
+    "title": "【工具自荐】一款轻量的个人主页生成器",
     "content": "演示网站：<https://www.dwj601.cn/page-withu/>\n\n主页：\n\n<p align=\"center\">\n  <picture>\n    <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/Explorer-Dong/page-withu/main/.github/assets/page-withu-dark.png\">\n    <source media=\"(prefers-color-scheme: light)\" srcset=\"https://raw.githubusercontent.com/Explorer-Dong/page-withu/main/.github/assets/page-withu.png\">\n    <img alt=\"PageWithU\" src=\"https://raw.githubusercontent.com/Explorer-Dong/page-withu/main/.github/assets/page-withu.png\">\n  </picture>\n</p>\n\n项目页：\n\n<img width=\"1987\" height=\"669\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e474657b-774a-46f9-9bf1-cf195a7a8538\" />\n\n博客页：\n\n<img width=\"2020\" height=\"1142\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1e7fa62b-9a86-483f-ba8f-72a9fd2a0d33\" />\n\n快速上手：\n\n```bash\n# 安装 page-withu\nnpm install -g @x-withu/page-withu\n\n# 创建项目\npage-withu create my-homepage\n\n# 安装依赖\ncd my-homepage\nnpm install\n\n# 预览网站\nnpm run dev\n```",
     "created_at": "2026-06-09T10:43:00Z",
     "labels": [],
@@ -798,21 +820,5 @@
     "created_at": "2026-06-08T12:21:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10251"
-  },
-  {
-    "id": 10249,
-    "title": "【工具自荐】灵计一动：把灵感拆成计划、AI 写代码时经 MCP 自动勾进度的工具",
-    "content": "推荐一个自己做的、也天天在用的免费工具:灵计一动 https://lingji1dong.com\n\n它把\"灵感 → 可勾选的计划 → AI 写代码时自动勾进度 → 归档成文章\"串成一条线:\n- 写一句话灵感,AI 拆成一条条可勾选的小任务;\n- 连上 Claude Code / Trae 等 AI 编码工具(经 MCP),AI 写代码时自动把完成的任务打钩,进度实时同步到网页;\n- 在网页改计划不会打断正在跑的 AI(靠带来源的版本号双向同步);\n- 项目做完,一键归档成复盘/教程文章草稿。\n\n不写代码的人也能用,手动勾选即可。免费,邮箱验证码登录。\n\n<img width=\"1536\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3362aae7-69b0-45e1-ab59-e50cf1cb38df\" />",
-    "created_at": "2026-06-08T09:59:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10249"
-  },
-  {
-    "id": 10248,
-    "title": "一句话视频生成工具，不是remotion、不是hyperframe",
-    "content": "- remotion、hyperframe 生成的视频还是PPT感很重，动效不够酷炫\n- 一大部分人还是不会深度使用AI来制作视频\n- TapVid 主打友好式对话方式把视频生成工作完成，目前还是MVP版本，免费试用阶段，快去使用\n- [TapVid](https://tapvid.ai/home)",
-    "created_at": "2026-06-08T08:23:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10248"
   }
 ]
