@@ -1,5 +1,13 @@
 [
   {
+    "id": 10359,
+    "title": "【工具自荐】Skill Zoo：一站式 Agent 技能管理工具",
+    "content": "\nSkill Zoo 是一款 Agent 技能管理工具，支持搜索、下载、更新、编辑、归档技能。它能跨多个编程工具管理技能，目前已经支持 Claude Code、Codex、TRAE、Hermes、OpenClaw 等主流 Coding Agent。\n\n- **Blog**: https://www.luochang.ink/posts/skill_zoo\n- **GitHub**: https://github.com/luochang212/skill-zoo\n\nSkill Zoo 着重打磨了搜索和下载功能。下载技能会定位到该技能所在的 GitHub 仓库，解析出仓库中的所有技能，提供给用户安装。如果跟 GitHub 之间网络畅通，应该有类似于苹果商店安装 App 的体验。\n\n页面设计也有一些小巧思。比如，打开仓库筛选页，默认在右侧弹起一个仓库面板，用来显示仓库的元数据和 README 信息。这样页面左侧是技能卡片，右侧是仓库信息，可以帮助用户理解这些技能的用途（见 App截图-3）。\n\n一致性校验也是一大特色，Skill Zoo 会自动扫描，发现不一致的地方。比如会对名字相同但内容不同的技能打标，提醒用户处理。\n\nSkill Zoo 还有编辑、收藏、归档、批量管理、安全审计、软链接等功能，可以下载体验。推荐下载 macOS 版（已获签名证书），Windows 版需要点击 \"更多信息\" → \"仍要运行\"才能运行。\n\n下载链接：[GitHub Releases](https://github.com/luochang212/skill-zoo/releases)\n\n## App 截图\n\n### 1）技能卡片\n\n<img width=\"2414\" height=\"1609\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8bca9638-aa74-4935-9c56-e028a4d0e686\" />\n\n### 2）搜索发现\n\n<img width=\"2424\" height=\"1616\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4298ba3a-23b3-4710-b2b2-393c90aaac3e\" />\n\n### 3）仓库面板\n\n<img width=\"2432\" height=\"1621\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4f18df76-122a-43e4-b44a-912681a1ff96\" />\n\n### 4）一致性校验\n\n<img width=\"2413\" height=\"1609\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aadf5024-f8df-4fa0-860a-77d195c79daf\" />\n\n### 5）技能详情\n\n<img width=\"2425\" height=\"1617\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0262a6d3-aa25-419c-85d3-595edf8722fa\" />",
+    "created_at": "2026-06-16T17:38:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10359"
+  },
+  {
     "id": 10358,
     "title": "【开源自荐】CoPet - 给 AI Agent 配一只会动的桌面宠物伙伴",
     "content": "\n<img src=\"https://github.com/ChanceYu/CoPet/raw/main/public/pet.png\" alt=\"CoPet logo\" width=\"160\" />\n\n\n项目地址：https://github.com/ChanceYu/CoPet\n\nCoPet 是一个本地优先的**桌面宠物应用**，支持 Claude Code、Codex、Cursor、Gemini、Copilot CLI 等 AI Agent。\n\n它会实时感知 Agent 的状态，比如正在思考、调用工具、等待、完成、报错等，并在桌面上用动画、交互和音效做出反应。\n\n主要特点：\n\n  - 支持 Claude Code、Codex、Antigravity、OpenCode、Cursor、Copilot CLI、Pi、Gemini 等多个 Agent。\n  - 宠物会响应提示、工具调用、等待、完成和错误状态。\n  - 内置多款宠物，也支持导入兼容 Codex 的自定义宠物包。\n  - 支持悬停、点击、双击、拖拽、长按等桌面交互。\n  - 支持全局音效和宠物专属音效。\n  - 本地优先，无云服务依赖，数据默认保存在 ~/.copet。\n  - 基于 Tauri + Rust + React 构建，轻量跨平台。\n\n目前项目已经提供 macOS 和 Windows 安装包，欢迎大家试用、提 issue 或贡献新的宠物包。\n\n![CoPet](https://github.com/ChanceYu/CoPet/raw/main/public/banner.zh.png)\n",
@@ -812,13 +820,5 @@
     "created_at": "2026-06-08T13:53:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10252"
-  },
-  {
-    "id": 10251,
-    "title": "【工具推荐】Bloom：用 AI 复刻 Benjamin Bloom 的「2 Sigma 私人家教」",
-    "content": "![Bloom](https://raw.githubusercontent.com/Li-Evan/Bloom/main/assets/hero.png)\n\n**是什么**：一个开源的「私人 AI 家教」。你告诉它想学什么，它先生成一份结构化大纲，然后一次只递给你一篇课文，读你的划线和反馈，再根据你真实的理解程度定制下一篇——像真人导师一样因材施教，而不是把整本书丢给你。\n\n**为什么有意思**：设计灵感来自教育心理学家 Benjamin Bloom 1984 年的「2 Sigma 问题」——接受一对一辅导的学生成绩比普通课堂高出 2 个标准差（跃升到前 2%），但真人家教无法规模化。Bloom 试图用 LLM 把这套「一对一 + 掌握学习」工程化。它有两种形态：一个可移植的 Claude Code Skill（零后端），以及一个可自部署的 React + FastAPI Web 应用（划线即时问答、学习日历、自适应课文）。MIT 协议，中文优先、全双语。\n\n仓库：https://github.com/Li-Evan/Bloom\n",
-    "created_at": "2026-06-08T12:21:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10251"
   }
 ]
