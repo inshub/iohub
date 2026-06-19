@@ -1,5 +1,21 @@
 [
   {
+    "id": 10395,
+    "title": "推荐项目:Throne — 在 microVM 里运行并验证 MCP 服务器",
+    "content": "分享一个我做的开源项目 Throne。它把 MCP 服务器放进一次性的 Firecracker microVM 里真实运行,按校准过的 Claude Code 和 Cursor 行为重放协议,判断它到底能不能用、安全不安全,并把结果封存成带哈希的公开记录。\n\n我用它跑了 74 个最热门的 MCP 服务器,发现 6 个在真实客户端下会失败,包括微软的 markitdown 和 Heroku 的官方服务器(有的进程会直接崩溃)。每个 MCP 目录都只是自我申报,没人真的运行过这些服务器,Throne 会真的运行。\n\n仓库(含中文 README):https://github.com/usethrone/throne-ci\n\n免费扫描,无需注册:https://usethrone.dev",
+    "created_at": "2026-06-19T18:25:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10395"
+  },
+  {
+    "id": 10394,
+    "title": "【开源自荐】social-account-doctor-skill：自媒体的账号体检 + 爆款拆解工具",
+    "content": "项目地址：https://github.com/JuneYaooo/social-account-doctor\n\n我前段时间做了个支持各种自媒体平台找对标，拆爆款的skills，效果真的很好，顺手分享一下，如果有用欢迎给我点个星星，谢谢~\n\n<img width=\"891\" height=\"849\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/144d18e0-54a4-4bb6-882c-e80236e169ae\" />\n\n能帮你找到对标的账号，分析他们的笔记，直接给你看内容，做对比，出一份详细的PDF报告。\n\n<img width=\"819\" height=\"746\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7157dcd0-6b10-422d-add6-215d42871163\" />\n\n<img width=\"770\" height=\"826\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1401f1d1-e985-4792-9ed4-7b7eb139fdd1\" />",
+    "created_at": "2026-06-19T18:05:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10394"
+  },
+  {
     "id": 10393,
     "title": "【工具自荐】TheNextCV —— 告别 Word 错乱，AI 时代的 Markdown 简历直转完美 PDF",
     "content": "### 项目名称\nTheNextCV (thenextcv.com)\n\n### 项目简介\n一个专为求职者打造的简历排版工具，支持将 AI 生成的 Markdown 文本一键转化为排版精美、适合打印的 PDF 简历，解决“AI 简历内容好写，但格式难调”的痛点。\n\n### 项目地址\n- 网站：https://thenextcv.com\n\n<img width=\"1523\" height=\"973\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e9b29a09-0fd9-4c69-abde-58e268e14b2f\" />\n\n\n### 核心功能与特点\n\n现在大家找工作，普遍会用 ChatGPT、Claude 等 AI 针对不同岗位定制简历。AI 输出的基本都是 Markdown 格式，但直接复制到 Word 或市面上的简历工具里，格式往往会乱掉，调整页边距和字体非常痛苦。\n\nTheNextCV 正是为了解决这个问题而生的：\n\n1. **Markdown 直出 PDF**：直接粘贴 AI 撰写的 Markdown 文本，一键生成符合 HR 审美的专业简历样式。\n2. **完美支持打印/导出**：针对 A4 纸张和打印场景进行了深度优化，自动处理分页断行，拒绝排版错位。\n3. **极速定制与调整**：支持快速调整字体、间距、主题色等排版要素，5 秒钟即可完成一份针对特定岗位的简历定制。\n4. **简洁无广告**：没有臃肿的社交功能，专注“输入文本 - 一键导出”的纯粹体验。\n\n### 为什么推荐它？\n在当前的求职环境下，针对不同岗位“一岗一策”地定制简历是刚需。AI 解决了内容的生产效率，而 TheNextCV 解决了最后的排版和交付效率。希望这个小工具能帮到正在找工作的朋友们。\n\n\n",
@@ -800,21 +816,5 @@
     "created_at": "2026-06-11T18:21:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10292"
-  },
-  {
-    "id": 10291,
-    "title": "【开源自荐】spring-nacos-mcp —— 让 AI 直接回答\"这个配置 dev 和 test 一致吗\"",
-    "content": "**项目地址**：https://github.com/kestiny18/spring-nacos-mcp\n\n**一句话介绍**：面向 Spring Cloud 项目的零配置、只读 Nacos MCP server——把它指向你的项目仓库，自动从 `application-*` / `bootstrap-*` 文件发现所有环境（dev/test/pre/prod），AI 编程工具（Cursor / Claude Code 等）就能直接查询、搜索、跨环境对比 Nacos 配置。\n\n**解决的痛点**：维护微服务的同学每周都要回答\"这个配置在 dev 和 test 一致吗\"——开两个 Nacos 控制台、来回登录、肉眼 diff。现在直接问 AI 一句话，它会自动调工具完成跨环境 key 级对比并给出结论。\n\n**特点**：\n\n- **零配置**：不需要配任何 host/port/namespace/token，连接信息直接从项目自己的配置文件解析（支持 yml/yaml/properties、多文档 YAML、${} 占位符）\n- **跨环境 diff**：内置 `nacos_diff_config` 工具，一次调用返回两个环境的结构化差异\n- **只读设计**：代码里只有 GET 和登录请求，不存在写操作路径；可选敏感值脱敏\n- **单文件零依赖**：纯 Python 标准库实现，内网机器拷一个文件就能用\n- **AI 安装友好**：自带 llms-install.md，对 Cursor 说一句\"帮我装这个 MCP\"即可自动完成安装和验证\n\n和官方 nacos-mcp-server（单集群、手动配置）是互补关系：官方连集群，这个懂项目。\n\nApache-2.0，带完整测试和 CI，已在真实生产项目（6 模块、4 环境）上验证。",
-    "created_at": "2026-06-11T13:21:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10291"
-  },
-  {
-    "id": 10290,
-    "title": "【开源自荐】Awesome AI Gateway —— 按痛点分类的 AI 网关选型清单",
-    "content": "向周刊推荐我整理的一份开源资源：Awesome AI Gateway。\n\nAI 网关是位于应用和大模型厂商之间的中间层（LiteLLM、one-api、OpenRouter 这一类），负责统一接入、路由、计费和限流。现有的同类清单基本按厂商罗列，这份清单改为按使用者的真实诉求组织：性价比、企业合规、自托管开源、国产模型生态、智能路由、MCP/Agent 网关等，开头有一棵「我该用哪个网关」的决策树。\n\n项目地址：https://github.com/cuihuan/awesome-ai-gateway\n\n特点：\n\n- 中英双语，收录 50+ 项目，附 15 个主流网关的特性对比表\n- 所有项目的 star 数与最新版本由 GitHub Actions 每日自动刷新，数据不过期\n- 明确标注已停止维护的项目，并排除灰产逆向类「free-api」中转\n- 附选型安全清单（防偷偷降智的 canary 测试、零数据保留、开源协议坑）\n\n![预览](https://raw.githubusercontent.com/cuihuan/awesome-ai-gateway/main/assets/social-preview.png)",
-    "created_at": "2026-06-11T13:05:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10290"
   }
 ]
