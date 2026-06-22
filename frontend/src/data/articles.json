@@ -1,5 +1,69 @@
 [
   {
+    "id": 10414,
+    "title": "【开源自荐】Vibe Creating：把字节官方文生视频提示词范式开源成可一键安装的 Agent Skill",
+    "content": "项目地址：https://github.com/Alisa0808/vibe-creating-skill\n\n把字节官方随 Seedance 2.0 发布的「Vibe Creating」范式开源整理 / 移植成了一个可一键安装的 Agent Skill。\n\n它做的事很简单：把你「粗糙的想法」或者「过度具体的分镜脚本」改写成模型友好的文生视频提示词。不是无脑堆词，而是 judgment-first —— 先判断你的输入到底适不适合这种风格，如果你本来就需要精确控制（逐帧调度、特定运镜参数），它不会把你的提示词「抹平」。\n\n特点：\n- 中英双语（EN / 中文）\n- 单个 `SKILL.md`，遵循开放的 Agent Skills 标准，可在 Claude Code / Codex / OpenClaw / Hermes 里用，也能直接当 system prompt\n- 支持任意文生视频模型：Seedance 2.0、Kling、Veo、Hailuo、Wan、Vidu\n- MIT 协议\n\n一行安装：\n\n```\nnpx github:Alisa0808/vibe-creating-skill\n```\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n",
+    "created_at": "2026-06-22T10:58:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10414"
+  },
+  {
+    "id": 10413,
+    "title": "千万不要相信",
+    "content": "大家千万不要相信，这个是一个陷进，你用Apple账号登录，他就会马上将手机丢失，然后让你去花钱解锁，妈的，畜生不如的东西。",
+    "created_at": "2026-06-22T10:54:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10413"
+  },
+  {
+    "id": 10412,
+    "title": "【开源自荐】Mediary Scout —— 自部署「媒体获取 agent」，LLM 自动找资源转存进你自己的 115/夸克网盘",
+    "content": "项目地址：https://github.com/fancydirty/mediary-scout\n\n> 一个自部署的「媒体获取 agent」：你说要某部剧 / 电影 / 番，一个 LLM agent 自动找资源、转存进你自己的 115 / 夸克网盘、回读验证落盘，并持续追踪还缺哪几集。\n\n![demo](https://raw.githubusercontent.com/fancydirty/mediary-scout/main/docs/images/demo.gif)\n\n**它想解决什么**：常见的媒体自动化要么「会搜但不知道你到底缺什么」，要么「会搬但从不验证落没落下」。Mediary Scout 把获取当成一个 **状态问题**，由 agent 基于「证据 → 事实 → 决策」自主判断，硬规则做成不可绕过的校验器：\n\n- **多网盘**：115 / 夸克，各自独立工作区（一账号多盘，切盘即切落盘目标）；转存走秒传 / 分享转存，不下载到本地。\n- **agent 选片**：读真实搜索结果，按画质、中文字幕需求、去重来挑，转存后回读验证。\n- **追踪 + 巡检**：季级状态机，每日巡检只回来补「还缺集」的剧。\n- **一键自部署**：`docker compose up -d`（web + Postgres + 自带 PanSou），软路由 / NAS / 小主机都能跑；外网访问走 Cloudflare Tunnel + Access（无需公网 IP、不开端口）。\n\n**免安装在线 demo**（只读，不连你网盘、不写任何东西）：https://mediary.dirtyfancy.sbs\n\n技术栈：Next.js（App Router + PPR）+ Postgres + 进程内队列 worker，TDD 700+ 测试 + CI。纯开源、自部署，自带网盘 / LLM / 元数据凭证，**不是托管服务** —— 做的就是你本可以在自己网盘里手动完成的那些文件操作。\n",
+    "created_at": "2026-06-22T08:27:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10412"
+  },
+  {
+    "id": 10411,
+    "title": "【开源自荐】agenthatch：把任意 skill 编译成独立可运行的 AI Agent",
+    "content": "大家都说 Agent + skill 是最佳实践。我把这个范式反过来了：skill 的最佳实践不是给 Agent 当参考书翻，而是作为超级输入源用来孵化 Agent。\n\nagenthatch 本质是一个超级智能体，吃进去 skill，吐出来新的 Agent。像编译器吃 .java 吐 .class 一样。\n\n三阶段编译管道：\n1. 确定性解析（不用 AI，直接拆 frontmatter/body/文件清单）\n2. 6 个 AI harness 并行推理（身份提取、意图推理、接口设计、基类检测、装配校验、MCP 检测），每个有自己的 temperature 和模型等级\n3. Jinja2 代码生成 → 带 pyproject.toml 的独立 Python 包\n\n编译出来的 Agent 是真正的 Python 包，不是 prompt wrapper。有 Typer CLI、类型安全工具、PlanLayer 六状态机运行时。不依赖任何 AI 平台。\n\npip install agenthatch\nagenthatch hatch your-skill\nagenthatch run your-skill\n\n三条命令从 markdown 到可运行 agent。\n\nGitHub: https://github.com/agenthatch/agenthatch\nPyPI: https://pypi.org/project/agenthatch/\n\n截图：\n\n<img width=\"4188\" height=\"3496\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/78fcb07b-d3ef-4dae-9112-f20a197dad83\" />\n\n<img width=\"3880\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2e3ec1cf-0a8a-409d-b617-47ffda80aa4c\" />",
+    "created_at": "2026-06-22T08:26:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10411"
+  },
+  {
+    "id": 10410,
+    "title": "【工具自荐】JSOS —— 在浏览器运行 NodeJs 应用",
+    "content": "项目地址：https://jsos.dev\n> JSOS — 浏览器中的全栈开发运行时，支持 Node.js / Python / WASM\n\n浏览器打开即用，支持手机、平板、电脑三端，web桌面交互，多窗口/工作区。\n可运行大部分原生 NodeJs 应用（如Astro、Hexo、Pi-Agent），可使用 npm、pnpm、yarn 等工具。\n\n<img width=\"1920\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e2882511-0494-46cf-8cc1-535141449f8a\" />\n\n内置所有应用均已开源：https://github.com/jsos-dev\n基于 [Webcontainer](https://webcontainer.io) 技术，这一切都运行在你的浏览器上，数据/代码均存储在浏览器本地中。\n> 目前使用的 nodejs 版本：v22.22.3\n\n应用场景：\n- 前端开发学习：在线搭建/开发/测试 `React+Vite 前端项目，无需本地搭建环境；\n- 自动化脚本：通过创建 CLI 应用，在终端环境中执行 js、python、wasm，实现快速运行自动化任务；\n- 私有化应用运行：比如博客、笔记、文档、TODO等应用，搭建在 JSOS 上，浏览器打开即用，用完即走\n- 在线小工具：加密解密处理、ffmpeg图像处理、服务器监控等定制化工具；\n- 等\n\n",
+    "created_at": "2026-06-22T08:01:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10410"
+  },
+  {
+    "id": 10409,
+    "title": "【开源自荐】ModelForge:小团队自己用的 NLP 模型平台，模型生产到 badcase 闭环训练",
+    "content": "# ModelForge:小团队自己用的 NLP 模型平台\n\n> 开源地址:<https://github.com/LingyiChen-AI/ModelForge> · 协议 Apache-2.0\n\n说实话,很多 NLP 活儿真用不着大模型。情感识别、意图分类、实体识别、句子相似度这些,拿个小 BERT 微调一下,又快又便宜,还能本地离线跑,效果还更稳。\n\n麻烦的是,自己从头搭一套「数据 → 训练 → 评估 → 上线」太碎了,每一步都得拼脚本。于是我做了 **ModelForge**,把这些揉进一个平台;顺手还加了条大模型 **Prompt 盲测评测**(这条线只评测、不微调大模型)。\n\n先用一张表看看它都包了啥:\n\n| 模块 | 它帮你干的事 | 一句话亮点 |\n| --- | --- | --- |\n| 数据集管理 | 上传即版本化,带 checksum | 训练随时能复现 |\n| 模型训练 | 4 种 NLP 任务一键微调 | 实时进度 + MLflow 看曲线 |\n| 模型测试 + 导出 | 测试集跑指标、出排行榜 | 每条预测一键导 Excel |\n| 在线部署 | 满意版本一键上线 | 自动给接口 + curl 示例 |\n| Badcase 闭环 | 线上坏例回收 → 标注 → 再训 | 自动算修复了多少条 |\n| Prompt 评测 | 大模型提示词盲测 | 人工 + AI 双指标 |\n| 权限与用户 | RBAC 多角色、API Key | 谁能干啥管得清 |\n\n进来先是张总览首页,整体长这样:\n\n| 系统首页 | 系统架构 |\n| --- | --- |\n| ![系统首页](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-home.png) | ![架构](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-architecture.png) |\n\n下面挨个看看。\n\n## 数据集管理\n\n传数据自动存成版本快照,带 checksum,训练随时能复现。CSV / JSONL / Excel 都能导,还能直接下模板。\n\n| 数据集列表 | 数据集详情 | 上传新版本 |\n| --- | --- | --- |\n| ![列表](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-datasets.png) | ![详情](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-dataset-detail.png) | ![上传](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-dataset-upload.png) |\n\n## 模型训练\n\n四种任务都支持,选基础模型和数据集是联动的,不会选错;训练有实时进度,想看 loss 曲线点一下跳 MLflow。\n\n| 任务类型 | 干啥用 | 典型场景 |\n| --- | --- | --- |\n| 文本分类 | 给一段文本打标签 | 情感识别、意图分类 |\n| NER | 抽出文本里的实体 | 抽人名、地点、订单号 |\n| 句对相似度 | 判断两句话像不像 | 问答匹配、去重 |\n| 向量检索 | 把文本变成向量 | 语义搜索、召回 |\n\n| 模型列表 | 新建训练 | 训练进度 |\n| --- | --- | --- |\n| ![模型列表](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-model-list.png) | ![新建训练](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-model-create.png) | ![训练](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-train.png) |\n\n## 模型测试 + 导出\n\n跑一遍测试集自动出指标,同一个测试集横着比就是排行榜。每条预测还能一键导成 Excel,对错一目了然。\n\n| 新建评估 | 测试结果(排行榜) | 导出表格 |\n| --- | --- | --- |\n| ![新建评估](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-eval-new.png) | ![测试结果](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-model-test.png) | ![导出](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-export.png) |\n\n## 在线部署\n\n满意的版本一键上线,自动给你 `/predict`、`/embed`、`/similarity` 接口,还附 curl 示例,复制就能调。\n\n| 部署列表 | 新建部署 | API 页面 | 接口测试 |\n| --- | --- | --- | --- |\n| ![部署列表](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-deploy-list.png) | ![新建部署](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-deploy.png) | ![API](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-api-page.png) | ![接口测试](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-api-test.png) |\n\n## Badcase 闭环\n\n线上踩的坑回传进来,在标注台标一标,一键生成训练集再训;再训的时候自动算修复了多少条。\n\n| Badcase 列表 | 数据标注工作台 | 上报规则文档 |\n| --- | --- | --- |\n| ![Badcase](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-badcase.png) | ![标注](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-annotate.png) | ![上报文档](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-report-doc.png) |\n\n## Prompt 评测(我自己最爱用的)\n\n接上大模型,把提示词做成带版本的模板,然后盲测——界面只给 A / B / C、藏掉版本,免得你先入为主。除了自己评,还能让另一个大模型当裁判自动打分,人工 + AI 两套指标一起看。\n\n| LLM 设置 | Prompt 管理 | 评测列表 |\n| --- | --- | --- |\n| ![LLM设置](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-llm-settings.png) | ![Prompt管理](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-prompt-manage.png) | ![评测列表](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-prompt-eval-list.png) |\n\n| 盲测工作台 | 评测统计(人工 + AI) |\n| --- | --- |\n| ![盲测](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/modelforge-prompt-blind-eval.png) | ![统计](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-eval-stats.png) |\n\n## 权限与用户\n\n多人用的平台,权限得管清楚。RBAC 多角色、细到权限码,还能签发 API Key 给上报这类机器调用走。\n\n| 登录 | 用户列表 | 角色列表 | 角色授权 |\n| --- | --- | --- | --- |\n| ![登录](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-login.png) | ![用户](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-user-list.png) | ![角色](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-role-list.png) | ![授权](https://cdn.jsdelivr.net/gh/LingyiChen-AI/images/ModelForge/images/2026/06/mf-role-perm.png) |\n\n## 技术栈\n\n| 层 | 选型 |\n| --- | --- |\n| 后端 | FastAPI + Celery |\n| 前端 | React |\n| 存储 / 中间件 | PostgreSQL · Redis · MinIO |\n| 实验追踪 | MLflow |\n| 协议 | Apache-2.0 |\n",
+    "created_at": "2026-06-22T03:32:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10409"
+  },
+  {
+    "id": 10408,
+    "title": "【工具自荐】庖丁.skill —— 你收藏了 100 个 AI Skill，说得出任何一个为什么好用吗？",
+    "content": "# 项目名称\n\n庖丁.skill\n\n# 项目简介\n\n庖丁.skill 是一个 Claude Code skill，用来把任何 AI skill 包（SKILL.md / prompt workflow / agent playbook）解成一本可以在浏览器里翻的解剖手册。\n\n你收藏了 100 个 skill，说不出其中任何一个为什么好用。软件工程时代你还能钻进源码——但 skill 没有源码可读。skill 的「源码」，是它对模型默认行为的改变。庖丁读的就是这个。\n\n# 为什么推荐它？\n\n现在 AI skill / prompt engineering 的生态有一个奇怪的现象：好的 skill 越来越多，但「学会写好 skill」的路径几乎不存在。你能找到几百个 awesome-prompts 列表，但没有一个能告诉你「这条规则为什么不能删」「这个中间产物选这个格式而不是那个格式，背后的洞察是什么」。\n\n传统软件有源码可读、有设计文档可查，但 skill 的核心是自然语言规则对模型行为的约束——它的「源码」不在代码里，在它对默认行为的改变里。这层东西，不拆开对比，看不见。\n\n庖丁的思路不是「给你一个功能清单」，而是「带你走一遍，让你自己看见」——先看没有这个 skill 时 AI 会怎么坏，再看它用什么机制防住，最后标出哪些招能搬进你自己的项目。每个论断标证据等级，是猜的标猜，不确定的标不确定。\n\n如果你在写自己的 AI skill、在学习别人的 prompt workflow、或者想搞懂「为什么这个 agent 的效果比默认好这么多」，庖丁能帮你把黑箱拆成白箱。\n\n# 项目地址\n\n- GitHub：https://github.com/longyunfeigu/paoding-skill\n\n\n\n<img width=\"1480\" height=\"868\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e8754cf-8bcc-4ab2-9d32-2ea3169db2a0\" />\n\n<img width=\"1196\" height=\"1585\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b84e7860-7703-47f2-ac07-8f2357b330e2\" />\n\n<img width=\"1480\" height=\"1450\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a7d2e0af-630b-4955-920f-f7ea3696af70\" />\n\n\n# 核心功能与特点\n\n现在越来越多人用 Claude Code skill、prompt workflow、agent playbook 来控制 AI 的行为。但 skill 的学习曲线很陡：一个好的 skill 包可能有几千行规则、十几个引用文件、自定义脚本——光读一遍都费劲，更别说搞懂「为什么这条规则不能删」「这个中间产物为什么要存成这个格式」。\n\n庖丁想解决的就是「看不懂好 skill 为什么好」的问题。\n\n主要特点：\n\n* 不读功能，读反事实\n对包里的每条规则、每个脚本、每个中间产物，过三问：去掉它第一个坏掉的产物是什么？这个坏结果对基线是默认发生还是小概率？凭什么相信？——每个论断都带证据等级（实测 / 作者证词 / 结构推断 / 假设），是猜的标猜。\n\n* 七维度难点扫描 + 六镜头带走点\n难点按来源分七个维度（任务难、执行者不可靠、规模超上下文、品味说不清、输入残缺、环境怪癖），归不进的进残渣清单。然后再换六个镜头（痛点 / 知识 / 概念 / 话术 / 验法 / 产物形状）扫一遍，把「读者明天干活就能直接拿走的东西」挑出来，在正文的机制现场用「📌 可带走」标注。\n\n* 手册不是摘要，是沉浸式走查\n手册主体以 AI 的第一人称带你把 skill 从头跑一遍——每一站先看拿到了什么、默认会怎么坏、让你先猜怎么防，然后才贴出 skill 的原文。猜错一次比听懂十次记得牢，这条是构建层硬约束，缺了直接构建失败。\n\n* 机器强制的质量门禁\n症状缺证据标记 → 构建拒绝；有难点的站缺预测点 → 拒绝；术语缺实例 → 拒绝；场景再现没有实物片段 → 拒绝。凡是只写在规格里、没进 gate 的教学规则，第二本手册就全丢了——没进 gate 的规则必然退化，这是庖丁自己的命题在自己身上的验证。\n\n* 三种输出模式，按需取用\n- 快速评审：直接给 keep/cut 建议，哪些该删该留\n- 模式提取：把可迁移的 skill 设计模式提出来\n- 完整手册：六章 + 三附录的 Web 解剖手册（Overview / 实战走查 / 中间产物与数据流 / 源包导读 / 难点档案 / Apply It + 术语表 / 带走工具箱 / 源码附录）\n\n* 脚本必跑铁律\n源包里的脚本，只要有合法输入，必须逐个真跑。解女娲 skill 时，跑它自带的 quality_check.py，发现出厂示例跑不过出厂检查器——光读代码只敢说「实现较脆」，跑两条命令之后，它成了整本手册里最硬的发现。\n\n\n\n",
+    "created_at": "2026-06-22T03:26:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10408"
+  },
+  {
+    "id": 10407,
+    "title": "【工具自荐】SmartAutoFill —— SmartAutoFill 是一个 AI 表单自动填写 Chrome 扩展, BYOK",
+    "content": "### 项目名称\n\nSmartAutoFill\n\n<img width=\"507\" height=\"697\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fa52ac5b-79ff-42f9-9c7c-abe2be78624d\" />\n\n### 项目简介\n\nSmartAutoFill 是一个 AI 表单自动填写 Chrome 扩展，用来辅助填写重复性的网页表单，比如求职申请、Google Forms、CRM 表单、问卷、内部工具表单等。\n\n它不是“自动提交机器人”，而是一个 review-first 的表单填写助手：先扫描页面上的可见字段、标签、选项和上下文，再根据用户保存的资料生成填写草稿，最后由用户自己检查、修改和提交。\n\n### 项目地址\n\n- 官网：https://smartautofill.com\n- Chrome 扩展：https://chromewebstore.google.com/detail/ai-autofill-plugin/nmjpobmlgegadadkmbkfhikhojflcmhh\n- 测试页面：https://smartautofill.com/ai-form-filler-test\n- GitHub：https://github.com/chasays/smartautofill.com\n\n### 核心功能与特点\n\n现在很多网页表单并不是简单的姓名、邮箱、电话，而是会问很多需要上下文的问题，比如：\n\n- 求职申请里的工作经历、项目经验、LinkedIn、GitHub、作品集链接\n- Google Forms 里的部门、角色、项目说明、常用问卷答案\n- CRM 或内部系统里的客户信息、公司简介、跟进备注\n- QA / 测试环境里需要反复填写的测试数据\n\nSmartAutoFill 想解决的就是这类“浏览器自带自动填充不够用”的场景。\n\n主要特点：\n\n1. AI 理解表单上下文  \n   会读取可见字段、label、placeholder、select 选项、页面标题和附近文本，尽量理解每个字段真正要填什么。\n\n2. 支持多种使用场景  \n   适合求职申请、Google Forms、CRM 数据录入、问卷、内部工具、QA 测试表单等重复填写场景。\n\n3. Review-first，不自动提交  \n   工具只负责生成和填写草稿，不会自动点击提交按钮。用户可以先检查、修改，再手动提交，避免误填重要表单。\n\n4. 对敏感字段更保守  \n   对密码、支付、验证码、身份信息、法律确认、同意勾选等敏感字段，会尽量避免自动填写或提醒用户人工处理。\n\n5. 提供测试页面  \n   官网有一个 AI form filler test page，可以先在模拟表单上测试扩展效果，再用于真实工作流。\n\n### 为什么推荐它？\n\n很多人现在已经习惯用 AI 写简历、整理资料、生成回答，但真正填网页表单时，还是要在不同页面之间反复复制粘贴。尤其是海外求职、CRM 录入、Google Forms、内部后台这些场景，字段很多、格式不统一，非常消耗时间。\n\nSmartAutoFill 的思路不是替用户“盲目自动提交”，而是把 AI 用在更安全的位置：理解表单、生成草稿、辅助填写，然后让用户自己最终确认。\n\n如果你经常填写求职申请、问卷、客户资料、内部系统表单，或者需要在测试环境反复填表，这个工具可以节省不少重复输入的时间。",
+    "created_at": "2026-06-22T03:03:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10407"
+  },
+  {
     "id": 10406,
     "title": "【开源自荐】JsonStudio：面向日常开发的本地 JSON 工作台",
     "content": "项目地址：https://github.com/sundegan/JsonStudio\n官网：https://jsonstudio.js.org/\n下载：https://github.com/sundegan/JsonStudio/releases\n\nJsonStudio 是一个开源的本地 JSON 桌面工作台，面向开发者日常处理接口响应、配置文件、嵌套 JSON、转义字符串和混合日志的场景。它使用 Rust + Tauri 2 + Svelte 构建，支持 macOS、Windows 和 Linux，所有数据都在本地处理，不上传服务器。\n\n![JsonStudio demo](https://raw.githubusercontent.com/sundegan/JsonStudio/main/docs/media/jsonstudio-demo.gif)\n\n主要功能：\n\n- JSON 美化、压缩、修复、转义和反转义\n- Tree View / Grid View 可视化查看和编辑 JSON\n- JSON Diff 并排对比\n- JSON 与 YAML、XML、TOML、CSV 互转\n- JSON Schema 生成与校验\n- 从真实日志文本里自动提取 JSON 片段\n- 根据 JSON 生成 TypeScript、Go、Python、Java、Rust 等类型代码\n- 多标签、拖拽打开、全局快捷键、窗口置顶、文件关联\n\n我做它的原因是，日常开发里经常需要处理 JSON，但在线工具往往有广告、隐私顾虑，并且对大文件、日志混合文本、转义 JSON 等场景支持不够稳定。JsonStudio 希望把这些高频 JSON 工作流集中到一个快速、离线、开源的桌面应用里。\n",
@@ -756,71 +820,5 @@
     "created_at": "2026-06-13T08:15:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10315"
-  },
-  {
-    "id": 10313,
-    "title": "【开源自荐】华典智谱 kb-forge：一个人 + AI 扮演 10 个角色,把\"造知识\"做成可审计的工程框架",
-    "content": "项目地址：https://github.com/lizhuojunx86/huadian\n\n**一句话**：一个用 AI agent 团队严谨、可审计地构建可信知识库的开源工程框架（kb-forge），附一个全程留痕的《史记》知识库参考实现。\n\n**它解决什么**：现在大多数 AI 工具解决的是\"用 LLM 做事\"（RAG、调工具、跑 agent）。但\"用一组 AI agent 严谨地**造**出可信知识\"——实体合并错了有人发现、质量约束不只停留在口头、每个决策可追溯——市场上没有通用方案。这个项目把这套工程实践抽象成了框架：实体消歧 guard chain、形式化数据不变量、人机协作审计追溯、多角色 Sprint 治理模板。框架核心是纯 Python，clone 后一条 `pytest` 即可验证（93 passed），不需要数据库或 Docker。\n\n**比较特别的一点**：整个项目是一个人 + AI 协作完成的，8 周、27 个 sprint、34 份 ADR 全过程公开留痕，还包含一份自我证伪的\"对外可验证判据真相表\"（连\"叙事注水\"都用 git 取证记录在案）。\n\n附三篇从这个项目里沉淀出来的实践文章：\n\n- 给 AI agent 团队设计\"硬中断\"：5 类 Stop Rule 与 4 个反模式\n  https://zhuanlan.zhihu.com/p/2049033957845607396\n- 一个人 + AI 扮演 10 个角色：8 周、27 个 sprint、34 份 ADR 全程留痕之后，我学到了什么\n  https://zhuanlan.zhihu.com/p/2049056588497940839\n- 另一个项目\"抄\"了我们的框架之后：4 条骨架活了下来，60% 的设计被扔掉\n  https://zhuanlan.zhihu.com/p/2049057076417126646\n\n许可证：代码 Apache 2.0 / 文档数据 CC BY 4.0。\n",
-    "created_at": "2026-06-13T05:06:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10313"
-  },
-  {
-    "id": 10311,
-    "title": "【开源自荐】DNS Pick - 结合延迟与成功率的智能 DNS 优选工具",
-    "content": "## 项目简介\n**[DNS Pick](https://github.com/palemoky/dnspick)** 是一款轻量、高效的 DNS 优选工具。它打破了传统工具单纯依赖 Ping（延迟）测试的局限，采用**结合平均延迟与解析成功率的智能评分算法**，旨在为用户筛选出真正兼顾速度与稳定性的最优 DNS 服务器。\n\n软件默认内置了国内外主流网站及主流 DNS 服务器的评测数据集，开箱即用。\n\n## 核心特性\n* **智能算法评分**：综合评估特定网络环境下的「平均延迟」与「解析成功率」，避免误选延迟低但丢包率高的 DNS。\n* **全协议支持**：完美支持传统 **UDP**，以及更安全的 **DoH (DNS over HTTPS)** 和 **DoT (DNS over TLS)** 协议。\n* **多场景评测**：默认针对国内外主流网站进行交叉解析测试，确保优选结果在实际网页浏览中真实有效。\n* **可视化直观展示**：提供清晰的评测数据对比，助你一眼挑出最适合当前网络的 DNS。\n\n## 软件截图\n<img width=\"921\" height=\"928\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0893446a-fc65-43f7-8bb2-11aa53cb164d\" />\n\n## 项目地址\n👉 **GitHub 仓库**：[palemoky/dnspick](https://github.com/palemoky/dnspick)\n\n欢迎大家体验、提 Issue 或 Star 支持！\n\n",
-    "created_at": "2026-06-13T01:40:42Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10311"
-  },
-  {
-    "id": 10310,
-    "title": "自荐：Family Organizer，for busy parents.",
-    "content": "\n## 🔗 GitHub Repo\nhttps://github.com/Rpeng666/family-organizer-all-in-one\n\n---\n\n## 🧠 What this project is\n\nThis is not a product or app.\n\nIt is a research + system design repo that:\n\n### 1. Breaks down existing tools\n- Cozi\n- TimeTree\n- Skylight Calendar\n- FamilyWall\n- Google Calendar\n\nand analyzes:\n- what they do well\n- where they fail\n- what they completely miss\n\n---\n\n### 2. Defines a “Family OS” model\n\nInstead of thinking in terms of “calendar apps”, I tried to structure family life as a system:\n\n- Scheduling layer\n- Task / responsibility layer\n- Routine layer\n- Event planning layer\n- Coordination layer (who does what, when)\n",
-    "created_at": "2026-06-12T18:03:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10310"
-  },
-  {
-    "id": 10309,
-    "title": "推荐：MACKey - 给任意 macOS 应用绑定全局快捷键的菜单栏工具（免费开源）",
-    "content": "MACKey 是一个 macOS 菜单栏工具：给任意 App 设全局快捷键一键唤起，快捷键分三类：读取速查系统快捷键；自定义快捷键；程序坞前 10 个应用自动绑 ⌃1…⌃0。纯本地不联网，中英双语，MIT 开源，原生 ARM。致敬经典的 Snap。\nGitHub：https://github.com/hunters1431/MACKey",
-    "created_at": "2026-06-12T15:35:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10309"
-  },
-  {
-    "id": 10308,
-    "title": "【工具自荐】YouTube/Coursera/Udemy/Bilibili/TikTok 视频/语音/字幕翻译与朗读：双语字幕、视频转文字、无字幕转录、AI 配音/视频配音",
-    "content": "LingTube 是面向 YouTube 的视频语音翻译、字幕翻译和 AI 配音扩展。打开视频后一键启动，它会把外语字幕或无字幕视频中的语音转成可理解的译文，并用自然语音朗读/配音，让你不用一直盯着字幕，也能快速理解 YouTube 外语视频。\n\n即刻享受 AI 配音和字幕翻译，适用于 YouTube、Coursera、Udemy、Bilibili.tv 和 TikTok——只需播放任意视频即可立即开始。\n\n适合语言学习、课程、技术教程、新闻、播客、动漫、电影片段和通勤观看。\n\n主要功能\n- YouTube 视频翻译：翻译字幕、语音和无字幕视频内容\n- 双语字幕：译文 + 原文同屏，也可只看译文或原文\n- AI 配音 / 字幕朗读：使用 Edge TTS 或浏览器语音读出译文\n- 无字幕处理：视频没有字幕时，可自动语音转文字再翻译朗读\n- 上下文翻译：支持 Google 翻译和 OpenAI 兼容接口，提升长句与专业内容理解\n- AI 学习：生成词汇、语法、练习、评分和复习内容\n- 混音控制：原视频声音和译文语音可同时播放，并分别调节音量\n- 一键启停，支持 Alt+Shift+V 快捷键\n- AI 视频摘要 / 总结工具：AI 启动完成后，可基于完整译文字幕与视频对话，快速总结 YouTube 视频内容、提炼关键观点、解释专业术语、查找相关时间点。适合长视频、课程视频、技术教程、新闻和播客的快速理解。\n\n隐私\n- 仅在 YouTube、Coursera、Udemy、Bilibili.tv 和 TikTok 页面上运行\n- 设置保存在本地浏览器\n- 字幕、翻译和语音请求只发送到你启用的服务\n\n扩展, 插件\n\nchrome 商店地址\nhttps://chromewebstore.google.com/detail/lingtube-youtube-subtitle/jjhplddhmkfngobhompljgnhbhkgilbi\n\n官网地址:\nhttps://lingtube.xyz\n",
-    "created_at": "2026-06-12T14:30:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10308"
-  },
-  {
-    "id": 10306,
-    "title": "自荐：Command Autopilot，给记不住 Claude Code 命令的人",
-    "content": "项目地址：https://github.com/WinterDDo/claude-code-command-autopilot\n\n我是个完全不会代码的小白，但每天都泡在 Claude Code 里干活。\n\n说个丢人的事：有次 AI 把我的文件改坏了，我就干瞪眼看着它一遍遍「修复」，越修越乱，急得不行。后来才知道，连按两次 Esc 就能回到改坏之前。这功能一直都在，叫 /rewind，可从来没人告诉我。\n\n那一刻我就在想，Claude Code 一百多个命令，像我这样的人一个都不认识，等于守着宝库要饭。于是我干脆让 Claude 给我写了个插件：\n\n- 能自动干的，它直接干。比如大改动之前，自动先列个计划让我点头，我不点头它一个文件都不能动；\n- 必须我亲手按的（比如那个救命的 Esc Esc），它会在出事的那一秒弹出来，告诉我按哪个、为什么按；\n- 我老是不理的建议，它自己就闭嘴了。用得越久，它越懂我。\n\n安装也是小白式的：复制一段话发给 Claude，剩下它自己搞定。开源免费，不联网、不收任何数据。仓库里还放了一份白话版的命令速查表，就算不装插件，存一份那个表也不亏。",
-    "created_at": "2026-06-12T12:26:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10306"
-  },
-  {
-    "id": 10305,
-    "title": "【开源自荐】ARCC — 三合一 AI Agent个人助手（TUI / CLI / Server）",
-    "content": "## 项目简介\n\n[ARCC](https://github.com/niyongsheng/arcc)（AI Rust Claude CLI）是一个基于 Rust 2024 的全能型 AI Agent，支持 **TUI 交互终端 / CLI 管道 / Server 守护** 三种运行模式。\n\n## 核心亮点\n\n- **三合一架构**：一个二进制 = 交互式终端（ratatui）+ 命令行工具 + 后台守护（支持飞书 Bot）\n- **DeepSeek-V4 驱动**：Pro/Flash 双模型分级调度，复杂推理用 Pro，高频对话用 Flash\n- **全量 MCP 协议**：可作为 Claude Code 插件，也支持 MCP stdio/SSE 通信\n- **零外部依赖**：嵌入式 SQLite + TOML 配置 + JSON Lines 审计，5 分钟即可部署\n- **安全三防线**：命令白名单 → 高危操作交互确认 → serde 强类型校验\n\n## 快速体验\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/niyongsheng/arcc/main/scripts/install.sh | bash\narcc tui\n```\n\n适合 DevOps、运维自动化、个人助手等场景。\n\n## 技术栈\n\nRust 2024 · tokio · axum · ratatui · DeepSeek-V4 · MCP\n\n---\n\n> 项目 MIT 协议开源，已发布 v0.6.6。欢迎 Star 和贡献 🤖",
-    "created_at": "2026-06-12T11:01:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10305"
-  },
-  {
-    "id": 10304,
-    "title": "【工具自荐】Mini Contract.Pro —— 免费的电子合同签署小程序，手机上发起、签署合同，全流程证据链留痕",
-    "content": "大家好，向大家自荐一个我自己开发的产品 **Mini Contract.Pro**（官网：<https://jingjingyeye.vip>），一个微信小程序上的电子合同签署平台。\n\n### 为什么做这个\n\n电子合同本身并没有多高的技术门槛，但市面上的某些电子签平台定价太贵了，签一份合同动辄几块到几十块，吃相实在有些难看。作为开发者，我并没有感觉这个难度有多大，所以自己做了一个：让普通人在微信里就能免费完成一份合同的发起和签署。\n\n整个流程很简单：**注册账号 → 创建合同 → 发送给签署方 → 对方注册/登录 → 查看合同 → 手绘签名签署 → 合同生效**。发起方用小程序操作，签署方在小程序里完成，双方都不需要安装任何额外软件。\n\n### 如何保障签署的公正性\n\n为了让线上签的合同“将来说得清”，我在技术上做了完整的留痕设计：\n\n- **手机号唯一身份**：每个账号必须以手机号注册，手机号是平台内唯一的身份标识，合同双方身份均锚定到具体手机号\n- **全流程证据链**：合同的创建、发起、查看、签署、拒签、完成，每个关键操作都记录操作时间戳、操作人、IP 地址和设备信息，独立存证\n- **文档防篡改**：合同文档生成 SHA-256 哈希校验，签署后内容一旦被改动即可发现\n- **手绘签名 + 个人印章**：签署人手绘签名生成专属印章，每次盖章都绑定经过认证的签署身份\n- **状态机管控**：合同严格按照“草稿 → 签署中 → 已完成”状态流转，支持取消、拒签，超期自动失效，不存在“签了一半不算数”的模糊状态\n\n### 核心功能\n\n- 选择模板创建合同，填入双方信息与核心条款\n- 手机号 + 密码登录，签署方登录后即可看到待签合同、查看并签署\n- 手绘签名一键盖章，合同状态全程可查\n- 合同完成后安全归档，随时可查\n\n### 隐私与安全\n\n- **明文访问留痕**：每一次查看都会写入审计日志，可追溯\n- **传输加密 + 越权防护**：数据经 HTTPS/TLS 传输，上传接口做了路径安全校验，防止越权读取他人文件\n- **最小够用**：仅采集合同签署必需的信息，不收集与签署无关的个人隐私\n- \n### 使用方式\n\n1. 微信扫码打开小程序，用**手机号 + 密码**注册账号（账号必须是手机号，它是平台内唯一的身份标识）\n2. 选择合同模板创建合同，填入双方信息，并指定签署方的手机号\n3. 签署方用自己的手机号注册/登录后，即可看到待签合同，手绘签名完成签署\n4. 双方签署完成后合同生效，自动归档，随时可查\n\n一点坦诚的说明：因为小程序目前是以**个人开发者**身份开发的，无法申请短信服务资质，所以暂时不支持短信验证码，注册只能采用手机号 + 密码的形式。待后续具备条件，会补上短信验证。\n\n也想借周刊向各位请教：如果大家对**个人身份认证**有更好的思路，或者知道**个人开发者也能接入的短信服务方案**，非常欢迎在评论区留言赐教，先谢过了。\n\n### 在线体验\n\n微信扫码即可打开小程序：\n\n<img width=\"1280\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9f5dea5a-d272-487d-875e-cd0a56f9ecba\" />\n\n### 适合谁\n\n适合所有有合同签署需求的人。目前对合同需求比较大、最适合上手的是**租房场景**——这是当前使用最多的场景，我也以租房为例内置了房屋租赁合同模板。后续会陆续上传借款、劳务、买卖等各种类型的模板，逐步覆盖更多日常签约场景。\n\n欢迎大家扫码体验，有任何问题和建议都欢迎反馈，谢谢！",
-    "created_at": "2026-06-12T09:46:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10304"
   }
 ]
