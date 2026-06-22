@@ -1,5 +1,29 @@
 [
   {
+    "id": 10417,
+    "title": "〖工具自荐〗ego lite：让 Codex/Claude Code 复用真实浏览器登录态跑网页任务",
+    "content": "项目地址：https://github.com/citrolabs/ego-lite  \n官网/下载：https://lite.ego.app/  \n使用文档：https://lite.ego.app/document/\n\nego lite 是一个给人类和 AI Agent 共用的的 Chromium 浏览器。\n\n我们做它的原因来源于自身的痛点：现在用 Codex、Claude Code、Cursor 这类 Agent 做网页任务时，经常会遇到几个麻烦：临时浏览器没有登录态、Cookie/插件/SSO 迁移麻烦，遇到验证码或后台系统时容易卡住；同时 Agent 操作浏览器时，也容易和我们正在使用的标签页互相打扰。\n\nego lite 想解决的是这个问题：让人和 Agent 使用同一个浏览器环境，但在不同的 Space 里工作。你可以继续正常浏览网页，Agent 则在自己的独立 Space 里打开网页、读取页面、点击、填写表单、抓取信息或完成重复性网页任务。\n\n几个特点：\n\n- 通过 `ego-browser` skill 接入 Codex、Claude Code、Cursor 等 Agent，不绑定特定模型或内置 Agent。\n- 可以迁移 Chrome 的登录态、Cookie、扩展、书签和 Profile，让 Agent 直接处理需要登录的网站。\n- 每个任务可以运行在独立 Space 中，适合并行处理多个网页任务，也不会抢走当前标签页。\n- 针对 Agent 提供语义化页面 Snapshot，并支持在页面内一次执行多步操作，减少传统「一步一工具调用」带来的等待和 token 消耗。\n- 适合处理邮箱、CRM、SaaS 后台、社媒、招聘、订票、表单填写、内部系统等 API 不完整但网页可操作的场景。\n- 浏览数据保留在本机，历史记录、Cookie、密码和页面内容不会上传云端。\n\n目前 ego lite 支持 macOS，Windows / Linux 正在路上，ego lite 浏览器可以免费下载使用。\n\n我自己最常用的场景是：让 Codex 打开多个网页做信息比对，进入已登录的 SaaS 后台拉取数据，或者批量处理一些原本只能手动点网页完成的流程。\n\n如果周刊读者正在尝试把 Codex、Claude Code 这类 Agent 用到真实网页工作流里，希望 ego lite 能省掉「登录态迁移」和「Agent 抢标签页」这两个很烦的小问题。",
+    "created_at": "2026-06-22T15:32:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10417"
+  },
+  {
+    "id": 10416,
+    "title": "【开源自荐】Irori：一个本地优先的桌面角色陪伴助手",
+    "content": "Irori 是一个本地优先的桌面角色陪伴应用，基于 [Pi coding-agent SDK](https://www.npmjs.com/package/@earendil-works/pi-coding-agent) 构建。它把 agent 会话包装成更有角色感的陪伴体验：每个角色都有自己的角色卡、人设、工作风格、记忆上下文、模型设置和协作能力，可以陪你聊天，也可以帮你写作、写代码、规划任务、整理结论。\n\n## 特色\n\n角色陪伴。 使用内置角色，或者创建你自己的角色卡。角色可以拥有不同的语气、人设、故事背景、头像和工作方式。\n专业协作能力。 角色能理解任务背景，拆解需求、跟进进度、整理结论，像专业搭档一样推进工作。\n本地记忆与上下文。 偏好、项目重点、协作习惯等信息可以保存在本地，后续沟通可持续引用，减少重复说明。\n模型供应商预设。 欢迎流程和设置页复用了模型供应商预设，也支持填写 OpenAI 兼容的 Base URL、模型名和 API Key。\n桌面优先体验。 使用 Tauri + React 构建，包含本地 sidecar runtime、安全确认门、角色 UI 和多语言欢迎流程。\n自由角色卡。 角色卡可以自由更换和创作：用你喜欢的角色、人物或原创设定，打造专属陪伴。\n\n网站： https://irori.homes/\n\nhttps://github.com/hikariming/irori/blob/main/README.zh-CN.md",
+    "created_at": "2026-06-22T15:31:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10416"
+  },
+  {
+    "id": 10415,
+    "title": "【开源自荐】Codex Quota：把 Codex 用量放到菜单栏",
+    "content": "项目地址：https://github.com/Sanjeever/codex-quota  \n介绍文章：https://sanjeev.top/posts/2026/06/22-codex-quota\n\n它是一个本地 Tauri 桌面应用，用来把 Codex 用量显示在 macOS 菜单栏或 Windows 系统托盘里。\n\nmacOS 上会显示类似：\n\n```text\nCodex 5h 96% | Weekly 36%\n```\n\n![Codex Quota macOS 菜单栏截图](https://raw.githubusercontent.com/Sanjeever/codex-quota/main/screenshot.png)\n\n## 为什么做\n\nCodex 已经越来越像一个长期挂在日常开发流程里的工具。用量状态也从“偶尔看一眼”，变成需要持续感知的信息。\n\n官方页面能看额度，但路径偏长：打开浏览器、进入设置页、等页面加载、再回到编辑器。\n\n我想要的是一个低摩擦的小工具：不打扰，需要时一眼看到。\n\n## 解决什么问题\n\n- 5 小时窗口还剩多少额度\n- 周额度还剩多少\n- 什么时候重置\n- 最近一次刷新是否成功\n- 当前显示是不是过期数据\n\n它解决的不是“看数据”，而是减少上下文切换。\n\n## 主要特点\n\n- macOS 菜单栏显示 quota 摘要\n- Windows 系统托盘显示状态，详情放在菜单和 tooltip\n- 支持后台刷新\n- 支持复制脱敏 summary\n- Debug details 可查看本地排查信息\n- 刷新失败时保留最后一次成功快照，并标记 stale\n- 无服务端，不上传使用量\n- MIT 协议开源\n\n## 安全边界\n\nCodex Quota 不需要 API key，不要求粘贴 cookie，不要求输入 bearer token，也不收集登录凭据。\n\n它打开本地 Tauri WebView，让用户在 ChatGPT 页面正常登录，然后在已认证的页面运行时里请求用量接口。\n\n访问令牌只用于当前请求：\n\n- 不返回给 Rust 侧\n- 不写入本地存储\n- 不显示在 Debug 窗口\n- 不记录日志\n\n复制 JSON 时会隐藏账号 ID，并遮罩邮箱。\n\n## 技术栈\n\n- Tauri v2\n- Rust\n- TypeScript\n- React\n- Vite\n- pnpm\n\n支持 macOS 和 Windows。构建产物目前未签名，无自动更新。\n\n## 适合谁\n\n适合高频使用 Codex，并且希望随时知道额度状态的人。\n\n我的目标很简单：把一个需要反复打开网页确认的状态，变成桌面上一眼能看到的信息。\n\n少一点切换，少一点打断。\n",
+    "created_at": "2026-06-22T13:31:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10415"
+  },
+  {
     "id": 10414,
     "title": "【开源自荐】Vibe Creating：把字节官方文生视频提示词范式开源成可一键安装的 Agent Skill",
     "content": "项目地址：https://github.com/Alisa0808/vibe-creating-skill\n\n把字节官方随 Seedance 2.0 发布的「Vibe Creating」范式开源整理 / 移植成了一个可一键安装的 Agent Skill。\n\n它做的事很简单：把你「粗糙的想法」或者「过度具体的分镜脚本」改写成模型友好的文生视频提示词。不是无脑堆词，而是 judgment-first —— 先判断你的输入到底适不适合这种风格，如果你本来就需要精确控制（逐帧调度、特定运镜参数），它不会把你的提示词「抹平」。\n\n特点：\n- 中英双语（EN / 中文）\n- 单个 `SKILL.md`，遵循开放的 Agent Skills 标准，可在 Claude Code / Codex / OpenClaw / Hermes 里用，也能直接当 system prompt\n- 支持任意文生视频模型：Seedance 2.0、Kling、Veo、Hailuo、Wan、Vidu\n- MIT 协议\n\n一行安装：\n\n```\nnpx github:Alisa0808/vibe-creating-skill\n```\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n",
@@ -794,31 +818,5 @@
     "created_at": "2026-06-13T08:55:40Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10318"
-  },
-  {
-    "id": 10317,
-    "title": "【开源自荐】AI-FRAM-NOVEL ：一部由 AI Agent 独立生成的 78 万字网络小说",
-    "content": "### 项目简介\n\n**[我在城市种田养鸡 / ai-farm-novel](https://github.com/wangshengithub/ai-farm-novel)**\n\n这是一个 AI 实验项目，我用 Claude Code，从大纲到正文，让 AI 独立生成了一部 78 万字的都市种田网络小说。\n\n项目的核心目的是通过一个真实的长程任务，展示当前顶级大语言模型的真实问题。即便是当前最强的模型，在几十万字的持续输出中，依然会翻车。\n\n项目结构完整，包含总纲、7 卷详细大纲、节拍表、时间线表和 320 章正文，共约 78 万字。\n\n### 项目意义\n\n我认为，长上下文和长程质量是两码事，78 万字跑下来暴露的问题，不是把模型做大就能解决的，是架构层面的瓶颈，值得思考。\n\n### 项目地址\n\nGitHub 仓库：[wangshengithub/ai-farm-novel](https://github.com/wangshengithub/ai-farm-novel)",
-    "created_at": "2026-06-13T08:51:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10317"
-  },
-  {
-    "id": 10316,
-    "title": "【开源自荐】GitFolio: 一个轻量级的 Git 仓库管理系统",
-    "content": "https://github.com/azhai/gitfolio\n\n**个人作品，未经严格测试，请不要用于公司的生产服务器管理代码。**\n\n一个轻量级的 Git 仓库管理系统，采用 Go + React 开发，支持从 GitHub 镜像同步仓库数据。\n\n- 可以从Web界面上完成常用的git操作，特别是删除中间几个提交这种。\n\n- 不仅可以同步代码，还可以拉取GitHub项目的Issue和PR。",
-    "created_at": "2026-06-13T08:25:44Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10316"
-  },
-  {
-    "id": 10315,
-    "title": "【工具自荐】ExtractKeywords - 免费 AI 关键词提取工具",
-    "content": "推荐一个免费的在线关键词提取工具：[ExtractKeywords](https://extractkeywords.com)\n\n**主要功能：**\n- 从任意文本中快速提取关键词\n- AI 驱动，提取准确\n- 支持中英文等多语言\n- 完全免费，无需注册\n\n**适用场景：**\n- SEO 关键词研究\n- 内容创作标签提取\n- 数据分析和文本处理\n- 学术论文关键词生成\n\n**技术特点：**\n- 纯前端实现，数据不上传服务器\n- 响应速度快，秒级出结果\n- 移动端适配良好\n\n希望对读者有帮助！欢迎试用反馈。",
-    "created_at": "2026-06-13T08:15:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10315"
   }
 ]
