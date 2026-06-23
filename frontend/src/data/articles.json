@@ -1,5 +1,21 @@
 [
   {
+    "id": 10427,
+    "title": "【开源推荐】 agilePool：Go 协程池的\"控制论\"方案——goroutine 不再干等，性能反超 ants 31%",
+    "content": "# 🚀 agilePool — 思路不一样的 Go 高性能协程池\n\n> 项目地址: https://github.com/Yiming1997/agilePool  \n> 测试地址: https://github.com/Yiming1997/agilePool-benchmark\n\n市面上大多数协程池（如 [ants](https://github.com/panjf2000/ants)）采用**常驻 goroutine 模式**——无论有没有任务，goroutine 都阻塞在 channel 上等待，以空间换时间。\n\n**agilePool 走了一条不同的路：goroutine 空闲即退，按需启动。**\n\n每个 goroutine 执行完任务就结束自己，只把轻量的 `worker` 结构体放回空闲池；需要时再从池中取出来启动新 goroutine。**无任务时系统里不残留任何多余 goroutine 栈内存。**\n\n---\n\n## ⚡ 性能表现（1000 万任务 / 20K 容量）\n\n| 库 | 耗时 | 内存 | 分配次数 |\n|---|---|---|---|\n| **agilePool** | **5.63s** | **502 MB** | 20,189K |\n| ants | 8.20s | 569 MB | 20,117K |\n| Pond | 10.10s | 681 MB | 20,542K |\n\n**比 ants 快 31%，内存低 12%。**\n\n> 原因很简单：省下的空闲 goroutine 栈内存大幅减少了 GC 压力，抵消了创建开销还有盈余。\n\n---\n\n## 🎯 自适应调度器（核心亮点）\n\n不像传统池子固定容量，agilePool 内置**自适应调度器**：\n\n- 每 10ms 采样提交速率和消费速率\n- 通过滑动窗口中位数计算所需并发数\n- 突发流量自动扩容，低谷自然缩容\n- 类似 PID 控制器，**无需用户预判负载**\n\n---\n\n## ✨ 特性一览\n\n- ♻️ **goroutine 空闲即退**：无任务时零 goroutine 栈占用\n- 📈 **自适应 Scaler**：自动感知负载，动态伸缩\n- 📦 **四种可插拔空闲容器**：LinkedList / MinHeap(LRU) / Slice / RingQueue\n- 🔓 **无界任务队列** + 背压支持\n- 🚦 **Block / NonBlock 提交**，支持 `Context` 取消 & 超时\n- 🔁 **指数退避重试**（`TaskWithRetry`）\n- 🛡️ **Panic 保护** + Graceful Shutdown\n- 🪵 可接入自定义 Logger\n\n---\n\n⭐ 如果对你有帮助，欢迎 Star / Fork / 提 Issue！\n",
+    "created_at": "2026-06-23T16:43:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10427"
+  },
+  {
+    "id": 10426,
+    "title": "【开源自荐】EdgeMirror：一个面向开发者源站的 CDN 边缘镜像网关",
+    "content": "大家好，我做了一个开源项目 **EdgeMirror**，\n\n项目地址：https://github.com/tianrking/EdgeMirror  \n在线体验：https://box.w0x7ce.eu\n\n<img width=\"1830\" height=\"887\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/452040e8-5b7d-4af5-9b5d-f45470a87ca6\" />\n\nEdgeMirror 是一个一站式开发资源加速网关，可以把常见的开发者源站统一接入到一个边缘代理入口中，用来加速包安装、模型下载、代码克隆、镜像拉取和各类文件下载。\n\n它主要可以做这些事情：\n\n- 加速 Python 包安装：PyPI、Python wheel、PyTorch wheel\n- 加速 AI 模型下载：Hugging Face 模型、数据集、LFS 大文件\n- 加速 GitHub 资源：`git clone`、raw 文件、release assets、GitHub Pages\n- 加速 Docker 镜像拉取：Docker Hub、GHCR、GCR、Quay、K8s、NVCR\n- 加速 Linux 软件源：APT、YUM、DNF、Pacman、wget、curl 镜像路径\n- 加速前端包安装：npm、pnpm、yarn registry\n- 加速 Go 依赖下载：兼容 GOPROXY\n- 加速 Java 依赖下载：Maven Central、Google Maven、Gradle Plugin Portal、JitPack\n- 加速 Rust crate 下载：crates.io sparse registry 和 `.crate` 包\n- 加速运行时和工具下载：Node.js、Python、Go、Rustup、Open VSX、SourceForge、GitLab、Gitea\n- 加速任意公开文件链接：通过通用 HTTP/HTTPS 文件代理下载\n\n简单来说，它把平时分散配置的各种开发源加速，收敛成一个统一入口。\n\n## 使用示例\n\n\n# 在线下载 \n\n<img width=\"1710\" height=\"883\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/43360537-b6f8-4d0d-8d34-28eccce9931a\" />\n\n# 加速 PyPI\npip install numpy -i https://edgemirror.w0x7ce.eu/pypi/simple/\n\n<img width=\"1732\" height=\"892\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6241bf41-f076-4b01-a4ac-aed8a708f168\" />\n\n# 加速 Hugging Face\nexport HF_ENDPOINT=https://edgemirror.w0x7ce.eu/hf\nhuggingface-cli download gpt2\n\n<img width=\"1665\" height=\"871\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dcca486-e85f-4650-8dea-b0dea72bee81\" />\n\n# 加速 GitHub clone\ngit clone https://edgemirror.w0x7ce.eu/github/vercel/next.js.git\n\n<img width=\"1647\" height=\"871\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27de1d70-6f8c-4d5e-9189-0f6787e944e2\" />\n\n# 加速 Docker pull\ndocker pull edgemirror.w0x7ce.eu/library/nginx:latest\n\n<img width=\"1622\" height=\"887\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5c18fc6c-055b-4cd6-87ab-656af42c61aa\" />\n\n# 加速 npm\nnpm install lodash --registry=https://edgemirror.w0x7ce.eu/npm/\n\n<img width=\"1655\" height=\"882\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/18e5213e-339f-4c59-b6ac-d7d064bd8338\" />\n\n",
+    "created_at": "2026-06-23T15:40:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10426"
+  },
+  {
     "id": 10425,
     "title": "【开源自荐】妙幕：本地媒体创作工作台，支持六大 ASR 模型的音视频字幕生成、翻译、校对、烧录工具",
     "content": "#### 项目地址： https://github.com/buxuku/SmartSub\n\n妙幕（SmartSub）是一款本地优先的桌面应用，帮你**一站式**完成「音视频转字幕 → 翻译 → 校对 → 合成」。所有转写都在本地完成，无需上传文件，隐私无忧；支持批量处理与 GPU 加速，可在 Windows / macOS / Linux 上运行。\n\n<img width=\"2560\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2a6209d3-b0de-4b2c-a07e-eae0e8718a13\" />\n\n## ✨ 核心看点\n\n\n- **🧠 多转写引擎**：**6 种可逐任务切换的引擎**——内置 `whisper.cpp`、`faster-whisper`、`FunASR`、`Qwen3-ASR`、`FireRedASR`、以及本地 `Whisper CLI`。中文场景可直接选用 FunASR / FireRedASR 等专长模型。\n- **⚡ GPU 加速全面支持**：支持 **Vulkan** 后端，**AMD / Intel 显卡**也能在 Windows/Linux 上加速，Nvida 显卡也支持 NVIDIA CUDA；\n- **🎬 视频合成（字幕烧录）**：把字幕**硬烧**进画面，或**软封装**为可切换字幕轨；所见即所得预览，支持字体、字号、颜色、描边、阴影、九宫格位置与多种预设样式。\n- **📝 字幕校对 + AI 润色**：内置校对台，逐句对照视频检查修改，支持撤销/重做与 AI 一键润色。\n- **🌐 17 个翻译服务**：覆盖主流机器翻译与大模型 API，并支持 OpenAI 风格自定义接入\n\n\n## 💥 功能特性\n\n### 🧠 字幕生成（转写）\n\n- 支持多种视频/音频格式批量生成字幕\n- **6 种转写引擎**，可针对每个任务单独选择\n- 完全本地处理，无需联网上传，保护隐私的同时拥有更快的速度\n- 支持简繁转换、自定义字幕文件名（方便不同播放器挂载识别）\n- 可选**中文字幕去标点**，让烧录效果更干净\n- 支持自定义并发任务数量，批量处理更高效\n\n### 🌐 字幕翻译\n\n- 对生成的字幕或导入的字幕进行翻译\n- **17 个翻译服务**：百度、谷歌、阿里云、火山引擎、豆包、小牛、腾讯、讯飞、DeepLX、Azure、Ollama（本地模型）、DeepSeek、Azure OpenAI、Gemini、SiliconFlow、通义千问等\n- 兼容任意 **OpenAI 风格 API**，可接入 deepseek / azure 等自有服务\n- 输出内容可选纯译文，或「原文 + 译文」双语字幕\n- **🎯 自定义参数配置**：无需改代码，直接在界面为每个 AI 服务配置请求头/请求体参数，并支持导出导入\n\n### 📝 字幕校对\n\n- 内置校对台，逐句检查与修改\n- 视频对照预览，定位更准\n- 支持撤销/重做与 **AI 一键润色**\n\n### 🎬 视频合成\n\n- **硬字幕烧录**：把字幕永久烧进画面，任何播放器都能显示\n- **软字幕封装**：以流复制方式无损嵌入可切换字幕轨\n- 丰富的样式控制：字体、字号、颜色、描边、阴影、九宫格位置，以及多种预设样式\n- 所见即所得实时预览\n\n### ⚡ 隐私与加速\n\n- 本地化处理，文件不出本机\n- GPU 加速：NVIDIA CUDA、AMD/Intel Vulkan、Apple Core ML / Metal\n- 内置加速包管理，无需手动安装 CUDA Toolkit\n\n## 📸 界面一览\n\n\n\n| 视频合成（字幕烧录）                    | 字幕校对                                       |\n| --------------------------------------- | ---------------------------------------------- |\n| ![merge](https://github.com/user-attachments/assets/a82d2f66-40f4-461b-a1e3-fe167b0d5ab6) | ![proofread](https://github.com/user-attachments/assets/81a45592-1e50-4297-8a4a-5c752efaf196) |\n",
@@ -802,21 +818,5 @@
     "created_at": "2026-06-14T07:19:52Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10328"
-  },
-  {
-    "id": 10327,
-    "title": "【工具自荐】TrySchedule - 免费在线日程规划工具",
-    "content": "推荐一个免费的在线日程规划工具：[TrySchedule](https://tryschedule.com)\n\n**主要功能：**\n- 拖拽式时间管理\n- 支持多种日程模板\n- 无需注册，即开即用\n\n**适用场景：**\n- 个人时间管理\n- 项目规划\n- 团队协作\n\n完全免费，欢迎试用反馈！",
-    "created_at": "2026-06-14T07:19:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10327"
-  },
-  {
-    "id": 10326,
-    "title": "【开源自荐】可视化，可交互，面向中文学习者设计的 AI 通识课",
-    "content": "中文介绍文档：https://github.com/buynao/aipath/blob/main/README.zh-CN.md\n\n项目地址：https://github.com/buynao/aipath\n\n课程地址：https://aipath.buynao.com\n\n背景：\n\n<img width=\"640\" height=\"355\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/03ac64a9-20b9-4f7f-8cac-55d063e056f3\" />\n\n这是一个免费的 HTML 互动课程，讲解人工智能的工作原理，面向没有技术背景的人群。\n\n课程共30节，核心理念是通过交互式网页而非大段文字或视频来解释概念。\n\n随着 AI 模型越来越强大，我相信更多学习材料会转向 HTML 这种形式—— 它能让你真正展示并操作一个概念（可视化、调整参数、观察变化），而文字或视频很难做到这一点。我想探索这种形式在解释 AI 原理本身时能达到什么程度。\n\n课程框架使用 Claude Fable 5 构建，无需注册，无付费墙，打开网页可以直接学习。\n",
-    "created_at": "2026-06-14T02:01:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10326"
   }
 ]
