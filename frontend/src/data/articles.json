@@ -1,5 +1,13 @@
 [
   {
+    "id": 10422,
+    "title": "【工具自荐】Selector：点一下网页元素，复制给 AI 编程助手的精准上下文",
+    "content": "项目地址：https://oil-oil.github.io/selector/\n\nGitHub：https://github.com/oil-oil/selector\n\n最近一直在用 Claude Code、Codex、Cursor 这类 AI 编程助手改页面，发现一个小问题：截图很直观，但经常缺少 DOM / React 上下文；直接复制 HTML 又太长，AI 容易被无关信息带偏。\n\n所以做了 Selector，一个很小的 bookmarklet。拖到书签栏后，在任意页面点选元素，就可以复制一段比较干净的上下文 prompt，包含页面路径、稳定 locator、可见文本、React 组件路径（如果能识别到），以及少量样式和布局信息。目标很简单：让 AI 编程助手更快理解“我要改的是这个具体元素”。\n\n它没有做成浏览器插件，也没有账号、后端和聊天界面。只是一个很轻的工具，适合在 localhost、React / Next.js 项目或线上页面上临时使用。\n\n我自己主要拿它辅助 Vibe coding：选中按钮、卡片、表格单元格这类 UI 后，复制给 AI，让它少猜一点上下文。项目完全开源，希望对也在用 AI coding agents 改界面的同学有帮助。\n\n![Selector screenshot](https://ph-files.imgix.net/90f32834-a664-4344-b7b3-e6002e192d90.png?auto=compress,format&codec=mozjpeg&cs=strip&fit=max&w=1270)",
+    "created_at": "2026-06-23T07:42:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10422"
+  },
+  {
     "id": 10421,
     "title": "【开源自荐】做了个延长寿命，增强运势 8MB 的赛博文玩（基于优雅 Rust tauri）",
     "content": "开源地址：[github.com/zhaoolee/fate](https://github.com/zhaoolee/fate)\n\nFate 是一个精力管理桌面应用。它通过读取键盘鼠标点击动作，判断用户是否过劳，提醒用户休息，做时间的朋友。\n\n朋友们，活着才能做时间的朋友！\n\nAI 软件希望你多工作，Fate会鼓励你多休息，希望你活得久一点。\n\n<img width=\"428\" height=\"683\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/84bd6ae5-3ce0-4a94-ada4-7cc3ff3aa423\" />\n\n<img width=\"1080\" height=\"699\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/76d2edb1-d024-4d11-b912-aef2ae9c989d\" />",
@@ -9,8 +17,8 @@
   },
   {
     "id": 10420,
-    "title": "【开源自荐】zshrc：一个极简 macOS App，只做一件事，打开查看、编辑 ~/.zshrc，保存自动 source",
-    "content": "# zshrc\n\n[zshrc](https://github.com/iHongRen/zshrc) 一个极简开源的 macOS App，打开就能查看、编辑 `~/.zshrc`，保存自动执行 `source ~/.zshrc`。\n\n<img width=\"2158\" height=\"2082\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6851caa0-f60f-4b58-b2de-29b3faac6b0c\" />\n\n### 安装\n\n1、推荐使用安装脚本：\n\n```sh\ncurl -fsSL https://raw.githubusercontent.com/iHongRen/zshrc/main/install.sh | sh\n```\n\n默认会安装到 `/Applications/zshrc.app`。\n\n\n\n2、手动安装：\n\n从 [GitHub Releases](https://github.com/iHongRen/zshrc/releases) 下载最新的 `zshrc.dmg` 后安装。终端执行命令，去除未签名应用的隔离属性：\n\n```sh\nxattr -dr com.apple.quarantine /Applications/zshrc.app\n```\n\n\n\n### 功能特性\n\n- 直接编辑 `~/.zshrc`\n- 行号显示与 Shell 语法高亮\n- 搜索栏、结果计数、上一个/下一个匹配跳转\n- 保存时执行语法检查\n- 保存成功后自动执行 `source ~/.zshrc`\n- 显示保存状态、语法状态、光标行列号\n- 支持放大、缩小、恢复默认字号\n- 支持浅色 / 深色 / 跟随系统\n- 支持英文 / 简体中文界面\n- 可以在 Finder 中定位 `.zshrc`",
+    "title": "【开源自荐】zshrc：一个极简 macOS App，只做一件事，打开查看、编辑 ~/.zshrc",
+    "content": "# zshrc\n\n[zshrc](https://github.com/iHongRen/zshrc) 一个极简开源的 macOS App，打开就能查看、编辑 `~/.zshrc`。\n\n<img width=\"2158\" height=\"2082\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6851caa0-f60f-4b58-b2de-29b3faac6b0c\" />\n\n### 安装\n\n1、推荐使用安装脚本：\n\n```sh\ncurl -fsSL https://raw.githubusercontent.com/iHongRen/zshrc/main/install.sh | sh\n```\n\n默认会安装到 `/Applications/zshrc.app`。\n\n\n\n2、手动安装：\n\n从 [GitHub Releases](https://github.com/iHongRen/zshrc/releases) 下载最新的 `zshrc.dmg` 后安装。终端执行命令，去除未签名应用的隔离属性：\n\n```sh\nxattr -dr com.apple.quarantine /Applications/zshrc.app\n```\n\n\n\n### 功能特性\n\n- 直接编辑 `~/.zshrc`\n- 行号显示与 Shell 语法高亮\n- 搜索栏、结果计数、上一个/下一个匹配跳转\n- 保存时执行语法检查\n- 显示保存状态、语法状态、光标行列号\n- 支持放大、缩小、恢复默认字号\n- 支持浅色 / 深色 / 跟随系统\n- 支持英文 / 简体中文界面\n- 可以在 Finder 中定位 `.zshrc`",
     "created_at": "2026-06-23T03:14:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10420"
@@ -810,13 +818,5 @@
     "created_at": "2026-06-13T15:45:51Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10323"
-  },
-  {
-    "id": 10322,
-    "title": "【开源自荐】Driftone：让人保持专注的随机氛围音乐与白噪声生成器",
-    "content": "**项目名称**：Driftone\n\n**项目地址**：https://github.com/Banana889/Driftone\n\n**项目 Demo**：https://banana889.github.io/Driftone/\n\n## 项目简介：\n\nDriftone 是一个浏览器里的“无限氛围音乐播放器”。它基于 Tone.js 实时生成旋律、和声、白噪声、雨声和雷声，每次播放都不完全相同，适合专注、放松和睡眠。项目使用 React、Vite、TypeScript 开发，并支持通过 Capacitor 打包成 Android 应用。\n\n我平时工作时喜欢放一些背景音乐来保持专注，但很多音乐听久了会分心，普通白噪声又有点单调，市面上也没有比较合我心意的产品。正好我对于乐理也有一定的兴趣，于是就现学现卖，开发了这款随机音乐生成器，遵循一定的乐理进行随机化生成。\n\n如果你常常在开始工作前，因为挑选播放列表而分心，或者音乐平台总是推荐一些不太符合你专注氛围的歌曲，不妨试试这个轻松的小网站。💙\n\n目前还在随着我们的乐理知识的增加积极迭代中。\n\n## 项目截图：\n\n<img width=\"640\" height=\"384\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/415c86fa-c12f-4b9c-bee8-52d1dd5af744\" />\n\n## 推荐理由：\n\n- **内容丰富**：Driftone 不只是一个白噪声播放器，它会实时生成旋律、和声、节奏，并叠加雨声、雷声等环境音，形成一段持续变化的氛围声景。\n- **配置自由度高**：生成音乐的节拍，鼓点，旋律还有音色等都可以轻松调节。\n- **音乐的可视化**：项目加入了旋律轨迹、鼓点轨迹、雨景动画等可视化效果，用户不只是听音乐，也能直观看到声景的变化。\n- **适合学习和参考**：项目中包含和弦进行、旋律生成、节奏填充、音色切换、环境音控制等模块，适合有乐理学习需求，或者对生成式音乐、Web Audio 感兴趣的人参考。\n- **技术实现轻量**：项目主要基于 React、Vite、TypeScript 和 Tone.js 实现，没有后端依赖，打开浏览器即可运行，也支持通过 Capacitor 打包为 Android 应用。\n\n希望分享给周刊的读者们，帮助大家在焦头烂额的工作中也能有音乐相伴，从从容容 :)",
-    "created_at": "2026-06-13T11:40:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10322"
   }
 ]
