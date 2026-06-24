@@ -1,5 +1,13 @@
 [
   {
+    "id": 10436,
+    "title": "【开源自荐】Skills Manager：统一管理 AI 编程助手 Skills 的桌面应用",
+    "content": "现在 AI 编程助手越来越多,Claude Code、Codex、Opencode、Cursor、Windsurf……每个工具都有自己的 Skills/Prompts 配置目录和格式。开发者要在不同工具间重复维护同一份技能,改一处就要同步好几处,既容易遗漏,又难做版本管理。\n\n于是我做了 **Skills Manager**,想把这些碎片收拢到一个中心化的枢纽里。\n\n<img width=\"2808\" height=\"1784\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cff44570-6af1-4960-9ccd-10834aa26923\" />\n\n## 核心思路\n\n通过**软链接同步机制**,Skills 只存一份在统一目录,再通过 symlink 分发给各个 AI 工具。改一处,所有工具即时生效,零文件复制。不用删除源文件,也能针对单个工具启用/禁用某个 Skill。\n\n## 主要特点\n\n- **🎯 统一管理**:集中管理所有 AI Skills,一处编写、多处生效\n- **🔄 智能同步**:自动 symlink 管理,工具始终使用最新版本,无需手动复制\n- **🎛️ 细粒度控制**:针对特定工具启用/禁用 Skill,不动源文件\n- **🔌 多工具支持**:开箱即用支持 Claude Code、Codex、Opencode,也支持自定义工具路径与图标\n- **⚡ 轻量快速**:Rust + Tauri 2.0 内核,启动秒开,资源占用低\n- **🛡️ 跨平台**:macOS / Windows / Linux 原生支持\n- **🧩 内置市场**:一键安装社区贡献的 Skills\n- **✏️ Monaco 编辑器**:应用内直接编辑 Skill 内容,无需切换 IDE\n\n## 技术栈\n\nTauri 2.0(Rust)+ React 19 + TypeScript + Tailwind CSS v4 + Radix UI,最新版本 2.1.2 采用了 Raycast 风格的 UI 设计语言。\n\n## 下载\n\n前往 [Releases 页面](https://github.com/jiweiyeah/Skills-Manager/releases) 下载对应平台的安装包:\n\n| 系统 | 安装包 |\n|---|---|\n| macOS | `.dmg`(通用架构) |\n| Windows | `.msi` / `.exe` |\n| Linux | `.deb` / `.AppImage` / `.rpm` |\n\n项目地址:https://github.com/jiweiyeah/Skills-Manager\n\n适合经常同时使用多个 AI 编程助手、或者积累了一批自定义 Skills/Prompts 想统一管理的开发者。欢迎大家试用、提 issue 和 Star。",
+    "created_at": "2026-06-24T11:23:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10436"
+  },
+  {
     "id": 10435,
     "title": "【开源自荐】Awesome AI Gateway:100+ AI 网关的可复现成本基准 + 评分卡",
     "content": "我做这个项目,是因为有一天在 AI 写代码上烧了 $788——一个旗舰模型吃掉了 78%,只因为我把所有请求都默认打给了最贵的那个。同一份 10 万 token 的报告,DeepSeek 上 $0.03,GPT-5.5 上 $3.01,差 106 倍;而你用哪个网关,决定了你能多容易地吃到这个价差。\n\n于是我把整个 AI 网关 / 中转生态摸了一遍(100+ 个,分 9 类),做成一个尽量\"反厂商软文\"的清单:\n\n- 每个成本数字都由一个**带单测的脚本从公开定价算出来**——可复现,而不是嘴说。\n- 一张 **4 维评分卡**(合规 / 价格 / 安全 / 稳定),如实披露 CVE。\n- 一个**基于证据的\"避雷观察名单\"**:点名被抓到偷换 / 降智模型的灰产中转,并附**可运行的 canary 对比脚本**,不靠传闻。\n- 刚加了个**交互式成本计算器**:输入你的 token 组合,实时看 16 个模型的成本和价差。\n- CC0 协议、无返利链接、中英双语、star 数每天 CI 自动刷新。\n\n在线站点:https://cuihuan.github.io/awesome-ai-gateway/\n成本计算器:https://cuihuan.github.io/awesome-ai-gateway/cost-calculator.html\n仓库:https://github.com/cuihuan/awesome-ai-gateway\n",
@@ -808,13 +816,5 @@
     "created_at": "2026-06-14T15:02:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10337"
-  },
-  {
-    "id": 10336,
-    "title": "【工具自荐】讲映 - PPT/PDF 一键转讲解视频的本地优先桌面工具",
-    "content": "推荐一个我做的 PPT/PDF 转讲解视频桌面工具：[讲映](https://jiangying.cloudlark.net/)\n\n讲映是一款本地优先的演示文稿视频生成工具。导入 PPT、PPTX 或 PDF 后，可以把文档整理成逐页讲稿、AI 配音、字幕时间轴、预览和可导出的视频素材，适合课程、培训、汇报、产品介绍等场景。\n\n**主要功能：**\n\n- 支持 PPT/PPTX/PDF 导入，并自动解析页面内容\n- 按页生成和编辑讲解脚本，支持 AI 优化讲稿\n- 支持语音合成、音色选择、字幕自动对齐\n- 可在桌面端预览页面、旁白和字幕效果\n- 支持导出视频、音频、字幕和讲稿\n- 本地优先，项目文件、缓存和导出内容主要保存在本机\n\n**适用场景：**\n\n- 把课程课件快速做成讲解视频\n- 把培训材料、汇报 PPT 转成带旁白和字幕的视频\n- 将产品手册、功能说明整理成演示视频\n- 复用已有 PPT/PDF 内容，生成视频初稿后再人工精修\n\n官网地址：[https://jiangying.cloudlark.net/](https://jiangying.cloudlark.net/)\n\n目前可以在官网免费下载使用，欢迎试用和反馈。",
-    "created_at": "2026-06-14T14:43:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10336"
   }
 ]
