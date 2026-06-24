@@ -1,5 +1,45 @@
 [
   {
+    "id": 10432,
+    "title": "【工具自荐】ImageToVideoAI：聚合 14 个视频模型的图生视频平台",
+    "content": "项目网址：[imagetovideoai.net](https://imagetovideoai.net/)\n\n现在好用的视频生成模型很多，但散在各家平台，来回切换很麻烦。[ImageToVideoAI](https://imagetovideoai.net/) 把它们收进一个工作室，专注「图片 → 视频」这件事。\n\n主要功能：\n\n图生视频 / 文生视频 / 视频改视频三条链路；\n聚合 14 个主流视频模型：Seedance 2.0、Kling 3.0、Veo 3.1、Wan 2.7 等，同一个界面里挑选多个模型一键批量生成；\n附带**图片编辑、放大、抠图（去背景）**等配套工具；\n批量处理 + 多任务并发，适合一次跑多条；\n每月赠送免费积分，适合需要把产品图、人像、素材快速变成短视频的场景。同样是我在做的独立项目，欢迎反馈哪个模型/功能还缺。\n\n<img width=\"1200\" height=\"630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f03d1e43-cf2e-459a-84c4-aef758c755b1\" />\n\n<img width=\"1465\" height=\"708\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/72650fbe-41e2-4004-8b41-c5d126148f01\" />",
+    "created_at": "2026-06-24T02:52:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10432"
+  },
+  {
+    "id": 10431,
+    "title": "【工具自荐】Inkfox AI：免注册无限生成的一站式 AI 图像 / 视频创作台",
+    "content": "项目网址：[Inkfox AI](https://inkfox.app/)\n\n看了刘小排大佬那篇 Raphael 的帖子， \"完全免费、无限制、无需注册\" 又是卖给老外赚美金，那套打法看得我手痒。正好我也想验证一件事：\n\n一个独立开发者，认认真真做个 AI 产品，到底能不能赚到钱？\n\n与其空想，不如下场。于是有了 Inkfox AI\n\n它是什么\nInkfox AI 是一个免注册、进去就能用的 AI 图像/视频创作台，主要功能：\n\n文生图，可切换多个模型：Nano Banana 2.0、GPT Image 2.0、Flux、Seedream，按需要的画风换引擎；\n参考图改图 / 局部重绘：上传一张图，只改其中一部分，其余保持不变；\n照片转视频、文生视频：把静图动起来，或直接用提示词生成短视频；\n一键虚拟试戴：墨镜、帽子、眼镜、项链、耳饰、手表、美瞳、衣服，传一张正脸照就能预览，不用写提示词；\n生成结果按 prompt 归到一条时间线，不再满文件夹乱翻。\n送免费额度、不登录也能生成；登录后去掉导出水印、放开更高额度。\n\n<img width=\"1200\" height=\"630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/51df0e49-d3ad-4531-a44b-a556bf50f819\" />\n\n<img width=\"1470\" height=\"686\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad178258-aed1-4842-8e30-18ebf9cbb51c\" />\n",
+    "created_at": "2026-06-24T02:44:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10431"
+  },
+  {
+    "id": 10430,
+    "title": "【开源自荐】知返：AI 写完代码你真的懂了吗？",
+    "content": "**项目地址**：https://github.com/AGI-is-going-to-arrive/ahadiff\n**PyPI**：https://pypi.org/project/ahadiff/\n**项目主页**：https://agi-is-going-to-arrive.github.io/ahadiff/\n**协议 / 版本**：MIT / v1.3.7\n\n### 它解决了什么问题\n\nAI 写代码虽然快，一次性帮你更新修改了很多文件，代码能正常运行，你随便看了几眼就继续了。\n但是这样真的对吗？隔两天回头看，说不清每处改动的逻辑，其中AI的改动为什么这样改，你一问三不知。\n**尤其是对于实习生、刚毕业的应届生，技术能力一般，想学习进步的，真正学到其中的知识点。一步步的构建自己的基础，而不只是无脑依赖AI。**\n\n知返读你的一次代码改动，生成一份学习笔记。学习笔记中每条结论对应到到具体文件的具体行号，AI 产生的幻觉会被标成 `contradicted`，和有据可查的结论区分开。按需选择精简/提示/完整版学习（**主要是详细程度的区分**） 这三种学习笔记之后，使用提供的**选择题测验和 FSRS 间隔复习卡片，进一步巩固此次改动对应知识点，同时复习之前不牢固的知识点。**\n\n```bash\npip install ahadiff\nahadiff learn HEAD~1..HEAD   # 学最近一次提交的改动\nahadiff serve                # 打开本地 WebUI\n```\n\n### 核心特点\n\n- **笔记带证据**：每条结论对应到 file:line，五种验证状态区分事实与幻觉，避免AI幻觉问题\n- **学习闭环**：每次改动生成课程 → 选择题测验 → FSRS 间隔复习（**避免改动的知识点遗忘**），可导出 Anki 卡片接入自己的知识软件\n- **BYOK**：自带 API key，支持 OpenAI / Claude / Gemini / DeepSeek / Azure 等 8 种格式\n- **10 种来源**：支持 git commit，暂存区、补丁文件、目录对比等十种来源\n- **概念图谱**：多次学习后，**重复出现的概念自动连成知识网络**\n- 还可扩展玩法，不一定局限于写的代码改动，能够进行各种知识点学习测验复习一条龙等\n\n### 界面截图\n\n![课程页：每条结论绑定具体代码行](https://agi-is-going-to-arrive.github.io/ahadiff/video/public/screenshots/zh/zh-lesson.png)\n\n<img width=\"3288\" height=\"1924\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cce07650-df2c-460a-bb24-8599ff208a5c\" />\n\n<img width=\"2512\" height=\"1928\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2694b589-e9a3-4a2a-87c4-43fb1c932d6c\" />\n\n<img width=\"2388\" height=\"1876\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/508d1b75-e213-4cc4-aa72-ed7d15805362\" />\n\n<img width=\"2674\" height=\"1904\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/82c661df-080d-44e4-87db-148a0a3388a0\" />",
+    "created_at": "2026-06-24T02:06:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10430"
+  },
+  {
+    "id": 10429,
+    "title": "【开源自荐】File Preview Web",
+    "content": "# File Preview Web\n\nA fast, privacy-first online file previewer that runs **entirely in your browser**. Drag a file into the window and instantly preview mind maps, documents, spreadsheets, slides, code, images, audio, and video — no upload, no sign-up, no server.\n\n> All parsing happens locally on your device. Your files never leave the browser.\n\n🔗 **Repository:** [github.com/extrastu/file-preview-web](https://github.com/extrastu/file-preview-web)\n🔗 **URL:** [https://fileline.vercel.app/](https://fileline.vercel.app/)\n\n## Preview\n\n<img width=\"3706\" height=\"2154\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dfeb7df1-97e2-4a99-84ba-74908b6e9e98\" />\n\n<img width=\"3706\" height=\"2154\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/42bef0e8-a4b3-4a73-aaf8-635a9048170d\" />\n\n<img width=\"3706\" height=\"2154\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a31afe57-462a-4fea-ba57-f5e596044767\" />\n\n## Features\n\n- **Drag & drop preview** — drop one or more files and parse them in parallel\n- **60+ formats** across many categories\n- **100% client-side** — files are never uploaded; parsing runs fully offline\n- **PWA** — installable to your home screen / desktop with offline support\n- **Internationalized** — English (default) and Chinese, switchable at runtime\n- **Built-in examples** — try the app instantly with sample documents\n\n## Supported formats\n\n| Category    | Formats                                    |\n| ----------- | ------------------------------------------ |\n| Mind maps   | `xmind` · `mm` · `opml`                    |\n| Documents   | `pdf` · `doc`/`docx` · `md` · `txt` · `rtf`|\n| Slides      | `ppt` · `pptx`                             |\n| Spreadsheets| `xls`/`xlsx` · `csv` · `tsv` · `ods`       |\n| Code        | `js`/`ts` · `py` · `json` · `yaml` · `sql` …|\n| Media       | `png` · `svg` · `webp` · `mp3` · `mp4` …   |\n\n> Legacy binary `.doc` and `.ppt` are not parsable in-browser — convert to `.docx` / `.pptx` first.\n\n## Tech stack\n\n- **Next.js (App Router)** + **React** + **TypeScript**\n- **Tailwind CSS** + **shadcn/ui** for styling and components\n- **pdfjs-dist** (PDF), **mammoth** (Word), **xlsx** (spreadsheets), **jszip** (pptx/xmind)\n- Custom parsers for FreeMind / XMind / OPML mind maps\n\n## Getting Started\n\nInstall dependencies and run the development server:\n\n```bash\npnpm install\npnpm dev\n```\n\nOpen [http://localhost:3000](http://localhost:3000) to see the app.\n\n### Other scripts\n\n```bash\npnpm build   # production build\npnpm start   # run the production server\npnpm lint    # lint the project\n```\n\n## How it works\n\nFiles are read with the browser `File` API and dispatched to a format-specific parser in `lib/parse-file.ts`. Each parser returns a normalized result that the matching viewer renders. Because everything runs client-side, there is no backend and no network transfer of file contents.\n\n## Contributing\n\nIssues and pull requests are welcome on [GitHub](https://github.com/extrastu/file-preview-web). To add a new format, extend `EXT_MAP` in `lib/preview-types.ts`, add a parser branch in `lib/parse-file.ts`, and create a viewer component.\n\n\n",
+    "created_at": "2026-06-24T01:54:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10429"
+  },
+  {
+    "id": 10428,
+    "title": "【工具自荐】Coday：用日均/次均成本看清每件物品的真实成本",
+    "content": "项目名称：Coday\n\n官网：https://coday.cc\n\n平台：iOS / Android / HarmonyOS\n\n下载：\n- iOS：https://apps.apple.com/cn/app/id6740018271\n- Android APK：https://r2.coday.cc/coday.apk\n- HarmonyOS：https://appgallery.huawei.com/app/detail?id=com.cxm.codayapp\n\nCoday 是一款多平台物品真实成本追踪工具。它不记录每一笔流水，而是围绕「物品」本身记录购买价格、购买日期、使用次数、分类、状态与售出信息，自动计算日均成本 / 次均成本，帮助用户判断一件东西是否真的被用起来、是否值得。\n\n如果你经常购买数码、家居、穿搭、运动、露营等长期使用物品，Coday 更像是一个「买完之后的成本仪表盘」：东西用了多久、平均每天多少钱、每次使用多少钱、离目标还差多少，都能持续看见。\n\n### 多彩桌面小组件：信息一目了然\n\n可以把日均成本、目标进度、总金额等信息放到桌面上，不用打开 App 也能看到物品的真实使用成本。Coday 也支持目标日均、目标日期、使用次数目标和定时提醒，适合提醒自己持续使用已经买下的物品。\n\n<img width=\"760\" height=\"1382\" alt=\"多彩桌面小组件 / 信息一目了然\" src=\"https://github.com/user-attachments/assets/dee7728c-33fa-419a-8017-43b7420e17d6\" />\n\n### AI 智能配色卡片：每件物品都独一无二\n\n物品卡片会根据内容生成更直观的视觉呈现，浏览列表时能快速区分不同物品，也比单纯的表格记录更有持续维护的动力。\n\n<img width=\"760\" height=\"1382\" alt=\"AI 智能配色卡片 / 每件物品都独一无二\" src=\"https://github.com/user-attachments/assets/ecc2ac06-6842-48b0-8386-a2c22feb7b0a\" />\n\n### 8000+ 3D 图标：涵盖生活中的所有物品\n\n内置 8000+ 3D 图标，覆盖数码、家居、穿搭、日常用品等常见物品。物品数量、8000+ 3D 图标、基础记录、成本计算、分类筛选都不限制；只有云同步和极少数高级小组件配置需要会员。\n\n<img width=\"760\" height=\"1382\" alt=\"8000+ 3D 图标 / 涵盖生活中的所有物品\" src=\"https://github.com/user-attachments/assets/63fa1cd6-f0ac-4f9d-84b4-134b9f069fb8\" />\n\n其他特点：\n\n- 日均成本 / 次均成本自动计算，把买完之后的真实成本可视化；\n- 支持 iOS / Android / HarmonyOS 三端互通，开启云同步后多设备数据保持一致；\n- 支持购买时间、使用次数、售出状态、分类筛选等维度，适合长期追踪一件物品是否真的「买得值」。",
+    "created_at": "2026-06-24T00:48:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10428"
+  },
+  {
     "id": 10427,
     "title": "【开源推荐】 agilePool：Go 协程池的\"控制论\"方案——goroutine 不再干等，性能反超 ants 31%",
     "content": "# 🚀 agilePool — 思路不一样的 Go 高性能协程池\n\n> 项目地址: https://github.com/Yiming1997/agilePool  \n> 测试地址: https://github.com/Yiming1997/agilePool-benchmark\n\n市面上大多数协程池（如 [ants](https://github.com/panjf2000/ants)）采用**常驻 goroutine 模式**——无论有没有任务，goroutine 都阻塞在 channel 上等待，以空间换时间。\n\n**agilePool 走了一条不同的路：goroutine 空闲即退，按需启动。**\n\n每个 goroutine 执行完任务就结束自己，只把轻量的 `worker` 结构体放回空闲池；需要时再从池中取出来启动新 goroutine。**无任务时系统里不残留任何多余 goroutine 栈内存。**\n\n---\n\n## ⚡ 性能表现（1000 万任务 / 20K 容量）\n\n| 库 | 耗时 | 内存 | 分配次数 |\n|---|---|---|---|\n| **agilePool** | **5.63s** | **502 MB** | 20,189K |\n| ants | 8.20s | 569 MB | 20,117K |\n| Pond | 10.10s | 681 MB | 20,542K |\n\n**比 ants 快 31%，内存低 12%。**\n\n> 原因很简单：省下的空闲 goroutine 栈内存大幅减少了 GC 压力，抵消了创建开销还有盈余。\n\n---\n\n## 🎯 自适应调度器（核心亮点）\n\n不像传统池子固定容量，agilePool 内置**自适应调度器**：\n\n- 每 10ms 采样提交速率和消费速率\n- 通过滑动窗口中位数计算所需并发数\n- 突发流量自动扩容，低谷自然缩容\n- 类似 PID 控制器，**无需用户预判负载**\n\n---\n\n## ✨ 特性一览\n\n- ♻️ **goroutine 空闲即退**：无任务时零 goroutine 栈占用\n- 📈 **自适应 Scaler**：自动感知负载，动态伸缩\n- 📦 **四种可插拔空闲容器**：LinkedList / MinHeap(LRU) / Slice / RingQueue\n- 🔓 **无界任务队列** + 背压支持\n- 🚦 **Block / NonBlock 提交**，支持 `Context` 取消 & 超时\n- 🔁 **指数退避重试**（`TaskWithRetry`）\n- 🛡️ **Panic 保护** + Graceful Shutdown\n- 🪵 可接入自定义 Logger\n\n---\n\n⭐ 如果对你有帮助，欢迎 Star / Fork / 提 Issue！\n",
@@ -776,47 +816,5 @@
     "created_at": "2026-06-14T12:24:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10333"
-  },
-  {
-    "id": 10332,
-    "title": "【好文推荐】众人拾柴火焰高：创业应该找什么样的人？",
-    "content": "# 众人拾柴火焰高：创业应该招什么样的人？\n\n目前创业也两个多月了，并且很多东西也在慢慢步入正轨，感谢团队的小伙伴。一方面是很感激能够遇到大家，另一方面也积累了自己做招聘的一些心得。\n\n简单介绍下项目，我们目前在做的是一个叫“连连AI”的小程序，核心功能是用AI来帮你找人并自动沟通，你只需要告诉AI你的需求，AI会自动帮你匹配合适的对象并进行沟通。\n\n## 1.合伙人\n项目是三个月前启动的，我遇到的第一个问题就是——我需要我的合伙人。我本人并非技术背景，因此一定需要一个人来进行研发等工作。很多人可能会倾向于找一些技术上很牛、很厉害的人来作为自己的合伙人，这当然也是一个选拔标准，因为合伙人之间会长期合作，你不能找一个显然不够合适的人。但我觉得，合伙人之间更为重要的是信任与相同的信仰，这不是你去参加一个饭局、两人相谈甚欢就能定下来的。你需要和他有共同的经历、共同的好友、共同信仰的东西，这才能成为你们长期合作的基础——因为一旦开始创业，你会发现遇到的困难总比想象中多得多。因此，我强烈推荐大家从自己身边熟识的比较优秀的人中进行选择，而不是选择一个仅有几面之缘的人。如果你只能从不太熟悉的人中进行选择，那你可以先和他通过几次小的项目进行合作。我的技术合伙人是我读研期间的室友，我觉得这避免了很多潜在的风险。\n\n另一点我认为很重要的东西在于，初期两个人可能不太稳定，三到四个人可能是比较合适的选择。一个创业团队中，一定会有人作为主导，如果你的团队中只有两个人的话，那似乎很容易像一个人在给另一个人发号施令、布置任务，这其实是不太利于团队的发展。所以可能有三到四个人在团队中会比较容易形成讨论、开放和一起做事的氛围，这对于团队的发展是很重要的。但我认为初创的团队也不应该有太多的人，你需要确保团队成员之间足够的紧密且不臃肿。\n\n另外，我觉得可能很多人没注意到的小细节是，我认为团队中的每个合伙人都需要出钱、都需要承担风险。很多技术合伙人可能会采取技术入股的方式，即不实际出资，而是通过劳动的方式换取相应的股份。但我认为，如果团队中有人没有在实际地承担风险的话，他就不会为了一件事情而拼尽全力，因此所有人都需要出钱、承担相应的风险。只有出了钱之后，大家某种程度上才会对一件事情真正地上心。\n\n## 2.你的员工\n一个问题：员工还是实习生？\n坦白而言，创业到现在我们没有招过一个正式员工，全部都是实习生。我的观点是：如果你已经很有钱了，那自然随便，但是如果你是真的开始从零开始创业的话，你需要先耗尽自己的全部，再考虑招实习生，实习生干不过来，再考虑招正式员工。\n\n招正式员工一定是你最后的选择，而不是第一选择。\n\n很多人低估了实习生能做的事情，但我觉得初创团队找实习生一定是性价比最高的选择。我之前发视频的时候，很多人说我是资本家、剥削别人，但学生实习薪资低不是我一个公司的问题，而是这个市场的问题。我也是去年刚毕业的大学生，念书的时候实习也是三四千块钱一个月。作为初创公司，不需要争对错，一定需要利用起这个实习的富矿。\n\n很多人不愿意招实习生的问题就在于，实习生还需要教，并且也时常干活不上心，拖拖拉拉，但问题的关键在于，如何找到靠谱的实习生。\n\n在招聘时，我最关注的便是两个因素：自驱和认同。首先，这个人一定要是一个自驱的人，不甘于现状的人，他的内心有渴望，这个渴望的火是所有一切的源头；其次，他一定需要认同你所在做的东西。我招每个人前，一定会让他试用我们的产品、看他对产品的反馈。我可以接受你很抨击我们的产品，我会和你解释一下或认真听取意见；但如果表现出无所谓的态度，那这会是首要的否决因素。\n\n我始终相信的一点是，你需要足够认同一件事情，你才能把这件事情做好。认同是你每天开始工作的最大动力，你需要首先相信你是一个伟大进程的一部分。\n\n虽然听起来很像老板pua的话术，但我认为团队的同学没有谁是因为钱而在这里的，因为我们已经一穷二白。\n\n## 3.凝聚力\n团队需要大家聚在一起，火焰需要众人拾柴。很多人以为团队凝聚力需要依靠谁的个人魅力或是金钱，但依靠个人魅力和金钱的凝聚是一种松散且不可靠的凝聚。\n\n我认为，凝聚一个团队最核心的是三个要素：\n（1）清晰的目标\n是的，清晰的目标是团队凝聚力的首要因素。很多团队分崩离析，最重要的问题便是目标不清晰，可能表现为多种情况：不知道未来的迭代方向、不知道哪里出了问题等。没有清晰的目标，只会让大家都陷入到怀疑与迷茫之中。虽然创业本来就是一个摸着石头过河的过程，但创始人的重要职责之一就是不要让迷茫的情绪在团队中蔓延。\n\n（2）制造出在赢的感觉\n团队需要在赢的感觉。有时候，哪怕其实很微不足道的一件事情，也值得在团队中大书特书——你需要让大家感受到自己在赢，没有人愿意长期呆在一个总是输的队伍里。\n\n（3）开放的氛围\n我觉得在初创工作，真的很有吸引力的一点就是，比起已经具有一定规模的公司，大部分的初创公司都还有不错的、比较开放的氛围。开放的氛围意味着你可以大胆提出自己的想法、你的建议通常会被得到尊重、你可以按照自己的想法开展工作。这对有自己想法、自驱的人会是很有吸引力的一个点，当一个人感觉被尊重、被需要，那你当然会具有很强的团队凝聚力。\n\n最后，还是欢迎大家使用、体验我们的产品“连连AI”，也欢迎持续关注我们。",
-    "created_at": "2026-06-14T11:27:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10332"
-  },
-  {
-    "id": 10331,
-    "title": "【开源自荐】Aedifex — 浏览器里的 AI 3D 建筑编辑器",
-    "content": "用自然语言画墙、开门窗、摆家具。和大多数「AI+3D」demo 的区别：**LLM 只负责想，几何引擎负责裁决**——AI 的每个操作都过一条确定性校验管线（碰撞 / 房间边界 / 墙体穿透 / 朝向），通不过就拒绝并把原因喂回去让它换方案。AI 说\"放好了\"，就是真放好了，不穿模、不悬空、不压在别的家具上。\n\n仓库：https://github.com/TangSY/aedifex · TypeScript 全栈 · WebGPU 渲染\n\n## 四个亮点\n\n- **AI Agentic Loop（45 个工具）** — 不是一问一答。LLM 提议 → 引擎校验 → 失败原因回灌 → AI 自己重试或反问用户。配合场景语义化序列化（墙带罗盘方位、象限占用分析）压制空间幻觉。\n\n- **MCP Server** — 一个能跑的非玩具级 Model Context Protocol 服务器（24+ 工具、281 测试）。Claude Desktop 等任意 MCP 客户端可直接当 CAD 操作员，实时同步进浏览器场景。「MCP × 参数化建模」的稀缺完整实现。\n\n- **Ghost Preview + 整批 Undo** — AI 改动先半透明预览、确认才落地；插入的整间房（墙+门窗+家具）可一键撤销，零悬挂引用。Zustand + Zundo 时间旅行。\n\n- **30+ 参数化构件** — schema 驱动，非 mesh 堆砌。墙/门窗/楼板/坡屋顶 + 11 种屋顶配件 / 楼梯 / 电梯 / 围栏。扁平场景图，序列化即 JSON。还带 IFC 导入、GLB/STL/OBJ 导出、街景漫游。\n",
-    "created_at": "2026-06-14T11:03:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10331"
-  },
-  {
-    "id": 10330,
-    "title": "【开源自荐】一个 SSH 密钥、主机和配置管理的桌面工具。",
-    "content": "大家好，我最近开源了一个项目：[ssh-at](https://github.com/baerwang/ssh-at)\n\n一个 SSH 密钥、主机和配置管理的桌面工具。生成密钥、可视化编辑 `~/.ssh/config`、自动备份——都在一个应用里。\n\n### 🚀 特性\n\n- **📝 SSH 配置管理**\n  - `~/.ssh/config` 可视化编辑器\n  - 添加、编辑、删除和搜索 SSH 主机\n  - Monaco Editor 实时语法高亮\n  - 每次保存前自动备份\n\n- **🔑 SSH 密钥管理**\n  - 生成 SSH 密钥（RSA、Ed25519、ECDSA）\n  - 查看密钥指纹\n  - 一键复制公钥到剪贴板\n  - 带确认的密钥删除\n\n- **💾 备份与恢复**\n  - 自动时间戳备份\n  - 浏览和恢复历史配置\n  - 删除旧备份\n\n- **🌍 多语言支持**\n  - 英文 / 中文\n  - 自动检测系统语言\n\n- **🎨 现代化界面**\n  - Material Design（MUI）\n  - 明暗主题切换\n  - 系统托盘集成（最小化到托盘，不退出）\n  - macOS Dock 图标在最小化时自动隐藏\n\n更多功能和用法可以参考项目的 [README](https://github.com/baerwang/ssh-at/blob/main/README-zh.md)\n\n欢迎试用、Star 和提建议！",
-    "created_at": "2026-06-14T09:21:32Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10330"
-  },
-  {
-    "id": 10329,
-    "title": "【开源自荐】用 tta 编排你的多 Agent 工作流",
-    "content": "链接：\nhttps://github.com/yanggggjie/terminal-tool-for-agents\n\nterminal-tool-for-agents（tta）可以让 Agent 操作终端里的交互式工具，比如 IPython、pdb、lazygit，甚至其他 Coding Agent。\n\n给 Claude Code 装上 tta 后，它可以自主使用 pdb 调试代码、调用 Codex 做 code review，甚至组织多个 Coding Agent 协作完成任务：比如 Claude Code 负责编码、Codex 负责 review、OpenCode 负责测试。https://www.youtube.com/watch?v=umV0VdJ9a8g",
-    "created_at": "2026-06-14T09:04:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10329"
-  },
-  {
-    "id": 10328,
-    "title": "【工具自荐】HEICPDF - 免费 HEIC 转 PDF 在线工具",
-    "content": "推荐一个免费的在线图片格式转换工具：[HEICPDF](https://heicpdf.to)\n\n**主要功能：**\n- 将 iPhone 的 HEIC/HEIF 照片转换为 PDF\n- 支持批量转换\n- 无需注册，隐私安全\n\n**适用场景：**\n- iPhone 用户处理照片格式\n- 文档分享和打印\n- 图片格式转换需求\n\n完全免费，欢迎试用反馈！",
-    "created_at": "2026-06-14T07:19:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10328"
   }
 ]
