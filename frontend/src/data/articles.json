@@ -1,5 +1,53 @@
 [
   {
+    "id": 10442,
+    "title": "【工具自荐】Show Me the Codes：给独立开发者展示产品的个人主页",
+    "content": "项目网址：[showmethe.codes](https://showmethe.codes)  \n示例主页：[showmethe.codes/corey](https://showmethe.codes/corey)\n\n很多独立开发者会同时做 SaaS、小工具、开源项目、newsletter、播客，但这些作品常常散在 X、GitHub、Product Hunt、个人博客和各种落地页里，很难用一个链接说清楚“我到底做了什么”。\n\n[Show Me the Codes](https://showmethe.codes) 想做 indie hackers 的 link-in-bio：每个 maker 可以认领一个用户名，得到 `showmethe.codes/<you>`，然后把自己做过的产品放在一个 bento 卡片墙里展示出来。\n\n主要功能：\n\n- 认领唯一 username，生成公开个人主页；\n- 用 bento 卡片展示产品、链接、地点和社交账号；\n- 每个 maker 都有连续会员编号，例如 `#0001`；\n- 支持产品状态标记，比如 building、live、for sale、acquired；\n- 支持中英文，深色 Tokyo Night 风格；\n- 免费使用，Pro 一次性解锁自定义域名、访问统计、主题和去品牌标识。\n\n这是我做的独立项目，面向 indie hacker、solopreneur 和 building in public 的开发者。欢迎大家认领自己的名字，也欢迎反馈还应该支持哪些展示方式。\n\n\n![Show Me the Codes OG](https://showmethe.codes/api/og/site?v=1)",
+    "created_at": "2026-06-25T01:33:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10442"
+  },
+  {
+    "id": 10441,
+    "title": "【文章自荐】夏至日测地球：利用太阳影子计算地球半径",
+    "content": "上周日是端午假期，也刚好是北半球的夏至日，在正午时做了一次日影实验，测量并计算地球大小\n\n[夏至日测地球：利用太阳影子计算地球半径](https://www.longluo.me/blog/summer-solstice-earth-radius-calculation/)",
+    "created_at": "2026-06-25T01:32:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10441"
+  },
+  {
+    "id": 10440,
+    "title": "「开源自荐」2026 世界杯实时战报 ⚽-worldcup-report",
+    "content": "**项目地址：**[https://github.com/dgjin/worldcup-report/](https://github.com/dgjin/worldcup-report/)\n# 2026 世界杯实时战报 ⚽\n\n一个数据可实时更新的 2026 世界杯（美/加/墨，48 队）战报应用。体育热血风，覆盖八大板块，含 AI 冠军预测与球迷投票。\n\n**线上地址**: [https://worldcup-report.pages.dev](https://worldcup-report.pages.dev)\n\n## 八大板块\n\n| Tab | 内容 |\n|---|---|\n| 积分榜 | 12 组小组赛积分榜，前二晋级（绿）/ 最佳第三 8 席（金）高亮，顶部今日速递含进球队员 |\n| 射手榜 | 进球排序，前三领奖台，含点球数，中文名 + 国旗展示 |\n| 淘汰赛 | 近期赛程（按日）+ 冠军之路漏斗 + 依当前积分推演的晋级席位 |\n| 预测 | 9 维加权冠军预测模型（FIFA 排名 / 阵容身价 / 状态 / 底蕴 / 攻防 / 伤病 / 大赛经验 / 势头）+ 球迷投票（冠军/亚军/季军） |\n| 球队 | 点选球队看积分、近期战绩、核心射手，按分组折叠呈现 |\n| 数据 | 各组进球、各轮进球、射手榜 Top10（recharts）+ 关键指标 |\n| 战报 | 由真实比分模板化生成的中文战报，可按\"爆冷/血洗/进球大战\"等标签筛选 |\n| 精彩瞬间 | ABC News 专业赛事图集，灯箱浏览 + 照片点赞 |\n\n## 数据架构\n\n三级数据回退，确保任何环境都有数据：\n\n```\n前端每 60s 自动轮询\n    ↓\n后端 /api/wc/*（Cloudflare Pages Functions）\n    ├─ 1. football-data.org 实时 API（收费版，含完整赛程/积分/射手）\n    ├─ 2. Supabase 数据库缓存（自动同步 + 进球数据注入）\n    └─ 3. data/snapshot.json 快照（离线兜底）\n```\n\n### Supabase 后端\n\n| 表 | 用途 |\n|---|---|\n| `wc_data` | 积分榜 / 射手榜 / 球队名单缓存 |\n| `wc_matches` | 比赛数据（含进球详情注入） |\n| `wc_sync_meta` | 同步元信息（时间戳 / 数据源） |\n| `gallery_likes` | 照片点赞 + 应用全局点赞 + 冠军投票（复用表，键前缀区分） |\n\n### 进球数据注入\n\nfootball-data.org API 的 matches 端点不返回 `goals` 字段。应用通过 Supabase 种子数据双策略注入进球信息：\n- **策略 1**：按 match ID 精确匹配\n- **策略 2**：按球队名对模糊匹配（种子数据 ID 1001-1072 vs live API ID 537xxx）\n\n### 自动同步\n\n通过 `/api/sync` 端点 + Cron Worker 定时拉取 football-data.org 最新数据并写入 Supabase，保证数据库缓存始终最新。\n\n## 冠军预测模型\n\n9 维加权评分 + softmax 概率归一化：\n\n| 维度 | 权重 | 数据来源 |\n|---|---|---|\n| FIFA 排名 | 18% | FIFA.com（2026.06.11） |\n| 阵容身价 | 16% | Transfermarkt（2026.06） |\n| 小组赛状态 | 14% | football-data.org 实时 API |\n| 世界杯底蕴 | 10% | FIFA 官方历史档案 |\n| 伤病跟踪 | 10% | ESPN / BBC / Sky Sports |\n| 攻击效率 | 8% | football-data.org 实时 API |\n| 防守稳固 | 8% | football-data.org 实时 API |\n| 大赛经验 | 8% | 世界杯冠军/决赛历史 |\n| 近 3 场势头 | 8% | football-data.org 实时 API |\n| 东道主加分 | +4 | — |\n\n> 所有知识库数据均来自公开可验证来源，未收录球队使用明确默认分，不做猜测。模型仅供参考娱乐。\n\n## 球迷投票\n\n预测页底部内置投票功能：\n- 选择冠军 / 亚军 / 季军（三个名次不可重复）\n- 提交后实时展示各名次 Top 5 球队得票分布\n- localStorage 防重复投票\n- 乐观更新 + 失败回滚\n\n## 快速开始\n\n```bash\nnpm install\nnpm run dev          # http://localhost:5273\n```\n\n### 环境变量\n\n复制 `.env.example` 为 `.env`，按需填写：\n\n```env\nFOOTBALL_DATA_TOKEN=xxx        # football-data.org API token（必填，实时数据）\nSUPABASE_URL=xxx               # Supabase 项目 URL（必填，数据库缓存）\nSUPABASE_SERVICE_ROLE_KEY=xxx  # Supabase service_role key（必填）\nSYNC_SECRET=xxx                # /api/sync 鉴权密钥（可选）\nNEWSAPI_KEY=xxx                # NewsAPI key（可选，精彩瞬间图集）\n```\n\n> 不配置也能跑 —— 自动回退到内置快照数据。\n\n## 脚本\n\n```bash\nnpm run dev        # 本地开发（Express + Vite 中间件）\nnpm run build      # 构建前端到 dist/client\nnpm start          # 运行生产构建\nnpm test           # 数据转换 / 战报生成单元测试\nnpm run lint       # tsc 类型检查\nnpm run snapshot   # 重新生成 data/snapshot.json 快照\nnpm run deploy     # 构建 + 部署到 Cloudflare Pages（Production）\nnpm run collect    # 收集精彩瞬间图集到本地缓存\n```\n\n## 部署\n\n项目部署在 **Cloudflare Pages**，使用 Pages Functions 提供 API：\n\n```\nwrangler pages deploy dist/client --project-name=worldcup-report --branch=main\n```\n\nPages Functions 路由：\n- `/api/wc/[type]` — 赛事数据（standings / scorers / matches / teams）\n- `/api/wc/gallery` — 精彩瞬间图集\n- `/api/wc/gallery/likes` — 照片点赞\n- `/api/app/likes` — 应用全局点赞\n- `/api/app/vote` — 冠军投票\n- `/api/sync` — 数据同步（Cron 触发）\n\n## 技术栈\n\nReact 19 · Vite 6 · Tailwind v4 · TypeScript · Cloudflare Pages Functions · Supabase · Express · recharts · motion · lucide-react\n\n## 说明\n\n数据仅供学习演示。国旗来自 [flagcdn](https://flagcdn.com/)。\n",
+    "created_at": "2026-06-25T01:15:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10440"
+  },
+  {
+    "id": 10439,
+    "title": "【开源自荐】TUI-easy-past：清理从终端 / TUI 复制出来的乱码式文本，一个指令让TUI文案粘贴更简单",
+    "content": "## 【开源自荐】tep：清理从终端 / TUI 复制出来的乱码式文本\n\n项目地址：<https://github.com/weijt606/TUI-easy-past>\n\n`tep` 是一个很小的命令行工具，用来清理从终端或 TUI 程序里复制出来的文本。\n\n现在很多开发者开始在 Claude Code、Codex CLI、lazygit、vim、fzf、htop 这类终端界面里工作。但从这些界面里复制内容时，经常会遇到一个很烦的问题：粘贴到 X、Reddit、GitHub Issue、文档或聊天窗口之后，文本格式全乱了。\n\n常见情况包括：\n\n- 每一行前面都带着 TUI 的缩进\n- 原本一段话被终端硬换行切成很多短行\n- 表格、边框、竖线、框线符号一起被复制出来\n- ANSI 颜色控制符混进文本\n- Markdown 结构被破坏\n- 代码块和普通段落混在一起，粘贴后很难读\n\n`tep` 解决的就是这个小痛点。\n\n它的使用方式很简单：在 TUI 里正常复制文本，然后运行 `tep`。它会读取系统剪贴板，自动清理内容，再把清理后的文本写回剪贴板。之后直接粘贴到任何地方即可。\n\n这个工具比较适合经常使用 Claude Code、Codex CLI 或各种终端工具的人。比如你在 Claude Code 里复制了一段回答，粘贴到 GitHub Issue、X、Reddit 或文档里，原本经常会出现一堆断行和缩进；现在只需要运行一次 `tep`，就可以得到干净的文本。\n\n它的一个特点是会自动区分 Markdown 和普通文本：\n\n- 普通文本：自动把终端硬换行重新合并成自然段落\n- Markdown：保留标题、列表、引用、表格、代码块等结构，只修复被终端折行打断的正文\n- 代码块：尽量原样保留，不随便重排\n- 边框和 TUI chrome：自动剥离\n- ANSI 转义符：默认清理掉\n\n它不是一个复杂的大工具，而是一个很典型的“每天可能用好几次”的开发者小工具。尤其是在 AI coding agent 变成日常开发入口之后，很多内容都从终端窗口里产生，再被复制到网页、文档和社交平台。`tep` 相当于给这个复制粘贴链路补了一层清理器。\n\n安装方式：\n\n    go install github.com/weijt606/TUI-easy-past/cmd/tep@latest\n\n常用方式：\n\n- `tep`：清理剪贴板并写回\n- `tep --dry-run`：只输出清理结果，不修改剪贴板\n- `tep --explain`：显示它检测到了什么、改了什么\n- `tep --markdown`：强制按 Markdown 处理\n- `tep --plain`：强制按普通文本处理\n- `tep --no-rejoin`：只清理边框和缩进，不合并换行\n\n项目使用 Go 编写，没有第三方依赖。macOS 可以直接使用系统自带的 `pbcopy` / `pbpaste`，Linux 支持 `wl-copy`、`xclip`、`xsel`，Windows 使用系统剪贴板命令。\n\n我做这个项目的原因是：TUI 工具越来越多，AI coding agent 也越来越多，但“从终端复制到外部世界”这个动作仍然很粗糙。`tep` 想把这个小摩擦磨平。\n\n项目采用 MIT 协议开源，欢迎试用和提建议。",
+    "created_at": "2026-06-25T00:47:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10439"
+  },
+  {
+    "id": 10438,
+    "title": "【开源自荐】anti-vibe-writing：去除 AI 写作味，让你的AI文案倍儿地道的 Agent Skill",
+    "content": "## 【开源自荐】anti-vibe-writing：去除 AI 写作味的 Agent 写作技能\n\n项目地址：<https://github.com/weijt606/anti-vibe-writing>\n\n`anti-vibe-writing` 是一个用于去除“AI 写作味”的开源 Agent 写作技能。\n\n现在很多人已经习惯用 AI 起草文章、帖子、README、产品文案、技术文档或内部报告。但 AI 生成的文字常常有一种很明显的模板感：过度分点、满屏 Markdown、空泛总结句、咨询腔、翻译腔、破折号滥用，以及那种“看起来很完整，但不像真人写的”的味道。\n\n这个项目想解决的就是这个问题。\n\n它不是一个单纯的 prompt 集，也不是所谓“AI 检测绕过工具”，而是一套可以接入 Agent 工作流的写作风格校正层。Claude Code、Codex 或其他 Agent 先完成初稿之后，再由它做最后一遍清理：在尽量不改变原意和事实的前提下，去掉明显的生成式痕迹，让文本更自然、更干净、更像人写的。\n\n项目目前支持中英文，并针对两种语言分别整理了常见的 AI 写作痕迹。\n\n中文部分重点处理：\n\n- “赋能、打通、沉淀、抓手”等模板化表达\n- “首先、其次、最后”式机械分层\n- “不是……而是……”式 AI 常用对仗\n- 欧化句式和翻译腔\n- 过度四字词、过度总结、过度升华\n- 明显不像真人会在社交平台上写出来的句子\n\n英文部分重点处理：\n\n- generic AI tone\n- templated phrasing\n- over-structured Markdown\n- fake balance\n- corporate / consulting voice\n- em dash overuse\n- Reddit / forum 场景里容易被看出 AI 痕迹的表达方式\n\n它的一个特点是：不只做“变口语化”，而是区分不同写作场景。\n\n目前内置了几类场景预设：\n\n- X / Twitter\n- 微博 / 中文短帖\n- Reddit / 英文论坛评论\n- 博客 / Newsletter / 公众号\n- 播客 show notes / 视频脚本\n- README / 产品文档\n- 技术备忘 / 内部报告 / 提案\n\n不同场景的目标不一样。社交媒体要像真人随手发，README 要清楚但不堆格式，技术备忘要保留判断和密度，Reddit 评论则要更像一个人在认真帮忙，而不是 AI 账号在回答问题。\n\n另一个比较有意思的点是，它提供了三种声音模式：\n\n1. 默认干净模式  \n   适合大多数文档，只做去模板、去冗余、去 AI 腔。\n\n2. 人味儿质感模式  \n   适合个人博客、创始人笔记、社交媒体。会在合适的位置保留一点真人写作的节奏，比如短句、残句、语气转折，但不会故意制造错误。\n\n3. 学习模式  \n   可以根据用户提供的真实写作样本，提取一份可复用的 host profile，让后续文本更接近某个具体作者的声音。\n\n我觉得这个项目的核心价值在于：AI 写作越来越普及之后，“会不会生成”已经不是问题，“生成之后像不像人写的”开始变成问题。尤其是中文内容里，AI 痕迹非常容易被看出来。很多时候不是观点不对，而是语言太像系统组装出来的。\n\n`anti-vibe-writing` 把这些经验整理成了一套可以复用、可以迭代、可以放进 Agent 工作流里的规则。\n\n它本质上是一套 Markdown 规则文件，不绑定具体平台。可以 clone 仓库使用，也可以直接把 `SKILL.md` 和相关 references 放进自己的 Agent 上下文、项目指令或自定义 prompt 里。\n\n项目采用 MIT 协议开源，欢迎试用和提建议。",
+    "created_at": "2026-06-25T00:44:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10438"
+  },
+  {
+    "id": 10437,
+    "title": "【开源自荐】AI Product Scout：AI 产品商业化案例库",
+    "content": "项目名称：AI Product Scout\n\n项目地址：https://product.ferryman.app/\n\n项目简介：AI Product Scout 是一个 AI 产品商业化案例库，整理 AI 产品、垂直行业、商业模式、增长路径和产品定位分析。站点把本地研究稿整理成公开文章库，支持中英文页面、搜索、标签过滤和稳定链接，适合关注 AI 产品、独立开发、SaaS 出海和商业化案例的读者参考。\n\n推荐理由：\n\n- 内容不是工具黄页，而是偏案例研究和产品拆解，覆盖医疗、法律、营销、开发者工具、企业效率、消费应用等方向。\n- 中英双语 SEO 和标签体系方便检索历史案例。\n- 对独立开发者和产品经理来说，可以作为观察 AI 产品商业化路径的资料库。\n\n作者：Alex Carter",
+    "created_at": "2026-06-25T00:27:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10437"
+  },
+  {
     "id": 10436,
     "title": "【开源自荐】Skills Manager：统一管理 AI 编程助手 Skills 的桌面应用",
     "content": "现在 AI 编程助手越来越多,Claude Code、Codex、Opencode、Cursor、Windsurf……每个工具都有自己的 Skills/Prompts 配置目录和格式。开发者要在不同工具间重复维护同一份技能,改一处就要同步好几处,既容易遗漏,又难做版本管理。\n\n于是我做了 **Skills Manager**,想把这些碎片收拢到一个中心化的枢纽里。\n\n<img width=\"2808\" height=\"1784\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cff44570-6af1-4960-9ccd-10834aa26923\" />\n\n## 核心思路\n\n通过**软链接同步机制**,Skills 只存一份在统一目录,再通过 symlink 分发给各个 AI 工具。改一处,所有工具即时生效,零文件复制。不用删除源文件,也能针对单个工具启用/禁用某个 Skill。\n\n## 主要特点\n\n- **🎯 统一管理**:集中管理所有 AI Skills,一处编写、多处生效\n- **🔄 智能同步**:自动 symlink 管理,工具始终使用最新版本,无需手动复制\n- **🎛️ 细粒度控制**:针对特定工具启用/禁用 Skill,不动源文件\n- **🔌 多工具支持**:开箱即用支持 Claude Code、Codex、Opencode,也支持自定义工具路径与图标\n- **⚡ 轻量快速**:Rust + Tauri 2.0 内核,启动秒开,资源占用低\n- **🛡️ 跨平台**:macOS / Windows / Linux 原生支持\n- **🧩 内置市场**:一键安装社区贡献的 Skills\n- **✏️ Monaco 编辑器**:应用内直接编辑 Skill 内容,无需切换 IDE\n\n## 技术栈\n\nTauri 2.0(Rust)+ React 19 + TypeScript + Tailwind CSS v4 + Radix UI,最新版本 2.1.2 采用了 Raycast 风格的 UI 设计语言。\n\n## 下载\n\n前往 [Releases 页面](https://github.com/jiweiyeah/Skills-Manager/releases) 下载对应平台的安装包:\n\n| 系统 | 安装包 |\n|---|---|\n| macOS | `.dmg`(通用架构) |\n| Windows | `.msi` / `.exe` |\n| Linux | `.deb` / `.AppImage` / `.rpm` |\n\n项目地址:https://github.com/jiweiyeah/Skills-Manager\n\n适合经常同时使用多个 AI 编程助手、或者积累了一批自定义 Skills/Prompts 想统一管理的开发者。欢迎大家试用、提 issue 和 Star。",
@@ -766,55 +814,5 @@
     "created_at": "2026-06-15T09:08:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10343"
-  },
-  {
-    "id": 10342,
-    "title": "【文章推荐】从 AI Agent 的 BubbleWrap 沙箱，看“世界与地图”的隔离哲学",
-    "content": "地图从来不是为了描述全部现实。\n\n它只是针对特定任务，**对现实进行选择性的表达。**\n\n导航地图关心道路。\n\n地铁图关心线路。\n\n物流地图关心运输网络。\n\n每一种地图都保留了自己需要的信息，同时忽略了大量无关细节。\n\n**Bubblewrap 做的事情与此非常相似。**\n\n没有创建新的操作系统。\n\n也没有构造一个真正独立的世界。\n\n它只是向进程展示了一张**经过裁剪后的地图**。\n\n例如：\n\n/\n├── usr\n├── bin\n└── workspace\n然后告诉进程：\n\n你的世界就是这些内容\n对于 AI Agent 而言，这张地图就是现实。\n\n- 摘自 https://mp.weixin.qq.com/s/R2LIwpFxr_nMhwYCkbJLuQ",
-    "created_at": "2026-06-15T03:25:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10342"
-  },
-  {
-    "id": 10341,
-    "title": "[工具自荐] 图片模糊工具：将图片模糊功能做细做全",
-    "content": "## 项目名称\n[Blur Image Online](https://blur-image.org/)\n\n## 项目简介\n这是一个功能强大齐全的在线图片模糊工具，用户无需下载安装即可使用更加专业的图片模糊功能。\n它支持：\n- 框选模糊功能/Selective Blur\n- 全局模糊再清晰功能/Full Image Blur\n- 马赛克模糊/Pixelate Image\n- 人脸模糊/Face Blur\n- 敏感信息模糊/Sensitive Information Blur\n- 文字模糊/Text Blur\n- 运动模糊/Motion Blur\n\n## 主要特点\n- 在线即可使用，无需下载安装任何软件，方便快捷\n- 免费，无需注册\n- 图片在本地处理，无需上传服务器，保障隐私安全。",
-    "created_at": "2026-06-15T02:59:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10341"
-  },
-  {
-    "id": 10340,
-    "title": "【开源自荐】每日AI前沿信息 —— 支持 GitHub Trending、Hacker News、OpenAI、Anthropic、InfoQ AI 等 AI 信息",
-    "content": "【开源自荐】每日AI前沿信息 —— 支持 GitHub Trending、Hacker News、OpenAI、Anthropic、InfoQ AI 等 AI 信息\n### **开源地址：**\nhttps://github.com/wenbochang888/github-trending-spider/\n\n###  **项目背景：**\n\nAI 圈每周都会出一些新的概念，根本来不及了解学习，而自己获取信息又比较散，因此有了这个[AI 前沿信息](https://www.gdufe888.top/ai/)\n\n1. 支持GitHub Trending、Hacker News、OpenAI、Anthropic、InfoQ AI、Linux Do、V2EX等信息\n2. 使用GPT4来整理理解关键信息、支持邮件系统\n3. 支持API、RSS、SKILL，可以支持不同阅读方式\n4. 市场验证：每日100左右独立IP地址，Github Star 118⭐️\n\n###  **项目效果：**\n\n<img width=\"1565\" height=\"784\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/97fb88b9-8f5a-4ecd-9ec1-0455e5de2322\" />\n\n<img width=\"1572\" height=\"806\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6d101ba7-1587-47ab-af73-e4130011fa4b\" />",
-    "created_at": "2026-06-15T02:55:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10340"
-  },
-  {
-    "id": 10339,
-    "title": "【开源自荐】QiLuo AI — AI Chat Platform",
-    "content": "## 📖 Introduction\n\n**QiLuo AI** is an AI chat management platform built on the [QiLuo](https://github.com/chelunfu/qiluo_admin) framework. It inherits QiLuo's enterprise-grade development capabilities (RBAC permission management, system monitoring, code generator, etc.) and deeply integrates multi-model AI conversation capabilities on top of that.\n\nQiLuo AI provides a complete AI chat system built from scratch, including:\n- **Multi AI Provider Integration** — Built-in adapters for OpenAI, Claude, Ollama, and more, easily extensible\n- **AI User Management** — Independent user registration/login system with SMS verification code support\n- **Session Management** — Create, edit, delete sessions; persistent message history with pagination\n- **VIP Plan System** — Tier-based model access control with usage statistics and daily limits\n- **OpenAI-Compatible API** — Accessible via standard OpenAI SDK, compatible with Cherry Studio and other clients\n- **Access Key Management** — Self-service API Key generation for secure AI interface calls\n- **Voice Input & Screenshot** — Browser-based speech recognition and screenshot-as-input\n- **Multimodal Conversations** — Support for image paste and camera photo upload\n\n---\n\n## 📸 Screenshots\n\n### AI Chat Interface (qiluo_aichat)\n> A modern, beautiful full-screen AI chat application with dark/light theme switching.\n\n| Feature | Screenshot |\n|---------|-----------|\n| Chat Interface | ![Chat](https://www.qiluo.vip/assets/qiluoai/front/f3.jpg) |\n| Model Selection | ![Models](https://www.qiluo.vip/assets/qiluoai/front/f7.jpg) |\n| Settings Panel | ![Settings](https://www.qiluo.vip/assets/qiluoai/front/f2.jpg) |\n| VIP Plans | ![Pricing](https://www.qiluo.vip/assets/qiluoai/front/f1.jpg) |\n\n### AI H5 Chat Interface\n> A lightweight, clean H5 chat interface for mobile and desktop.\n\n| Feature | Screenshot |\n|---------|-----------|\n| Chat Interface | ![Chat](https://www.qiluo.vip/assets/qiluoai/h5/h1.jpg) |\n| Model Selection | ![Models](https://www.qiluo.vip/assets/qiluoai/h5/h2.jpg) |\n\n### Admin Dashboard (qiluo_vue)\n| Feature | Screenshot |\n|---------|-----------|\n| AI Operation Statistics | ![Statistics](https://www.qiluo.vip/assets/qiluoai/bg/bg1.jpg) |\n| AI User Management | ![Users](https://www.qiluo.vip/assets/qiluoai/bg/bg7.jpg) |\n| AI Provider Configuration | ![Providers](https://www.qiluo.vip/assets/qiluoai/bg/bg3.jpg) |\n| Usage Logs | ![Usage](https://www.qiluo.vip/assets/qiluoai/bg/bg5.jpg) |\n\n---\n\n## ✨ Features\n\n### AI Platform Capabilities\n- **🧠 Multi-Model Support** — Supports GPT-4o, Claude, Gemini, and more LLMs via hot-pluggable Provider adapters\n- **🔌 Multi-Provider Adapters** — Built-in adapters for OpenAI, Claude, Ollama; standardized interfaces for quick integration\n- **💬 Real-time WebSocket Chat** — Streaming output with cancel generation, heartbeat keep-alive, and reconnection\n- **📜 History Session Management** — Auto-save chat history with rename, delete, and paginated review\n- **🔗 Session Sharing** — One-click share link generation\n- **📊 Usage Tracking** — Token consumption and request counts by user, model, and time period\n- **💎 VIP Plan System** — Multi-tier plans with daily/monthly message and token limits\n- **🔑 Access Key Management** — Self-service create/delete API Keys for OpenAI-compatible API access\n- **🔌 OpenAI-Compatible API** — Provides `/v1/chat/completions`, `/v1/models`, `/v1/audio/transcriptions` endpoints\n- **🎨 Deep Thinking Mode** — Supports reasoning content display\n- **📷 Multimodal Input** — Image paste/camera/screenshot upload with code highlighting\n- **🗣️ Voice Input** — Browser-based speech recognition, auto-transcribed to text\n- **🌙 Dark/Light Theme** — System-follow or manual toggle\n- **🌐 Multi-language** — Chinese/English/Japanese/Korean UI\n\n### Underlying Framework Capabilities (Inherited from QiLuo)\n- **🦀 Rust Ecosystem** — Rust + Axum + Sea-ORM + JWT, performance with memory safety\n- **🔐 RBAC Permission Management** — Multi-dimensional user, role, menu, and API permission control\n- **📱 WeChat Management** — Built-in WeChat Official Account management with menu config, message management, auto-reply\n- **⚡ High Performance** — Async architecture, high concurrency with fast response\n- **🌐 Distributed** — Supports cluster deployment, multiple data sources, distributed architecture\n- **📊 System Monitoring** — Real-time server status, online users, operation logs\n- **⏰ Scheduled Tasks** — Online Cron expression configuration\n- **🔀 Read/Write Splitting** — Auto-routing for master-slave database architecture\n- **🏢 Multi-Tenancy** — Logical or physical data isolation by tenant ID",
-    "created_at": "2026-06-15T02:27:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10339"
-  },
-  {
-    "id": 10338,
-    "title": "【工具自荐】老板以为我在 Vibe Coding，我：是的（顺便背了 30 个单词）",
-    "content": "推荐一个我做的词汇学习工具：[Fishword](https://github.com/Chenggou1/fishword)\n\n**一句话定位**：代码让 AI 慢慢生成，单词我先偷偷记几个。\n\nFishword 面向 Vibe Coding 场景——当你在 Pi.dev 里等待 AI 回复、命令执行或测试完成时，可以直接在开发环境内顺手复习单词，零切换成本。\n\n**核心特点：**\n\n- 使用 [FSRS](https://github.com/open-spaced-repetition/fsrs4anki/wiki/The-Algorithm) 算法调度复习，根据记忆曲线动态安排复习时间\n- 数据全部存储在本地 SQLite，无需注册、无需联网\n- 内置三个词库（CET-4 / CET-6 / TOEFL），也支持导入自定义词汇（JSONL 格式）\n- 每个词库有独立的 FSRS 调度状态，多个备考目标互不干扰\n- 快捷键驱动（`Ctrl+Shift+F` 显示词卡，`G/H/A/E` 评分），不打断编码节奏\n\n**当前集成：Pi 编程助手**\n\n```\npi install npm:@fishword/pi-extension\n```\n\n安装后自动导入词库，无需任何配置，打开 Pi 即可开始复习。\n\n词卡界面：\n\n![词卡界面](https://raw.githubusercontent.com/Chenggou1/fishword/main/docs/images/screenshot-card.png)\n\n详情面板（音标 / 词性 / 释义 / 例句）：\n\n![详情面板](https://raw.githubusercontent.com/Chenggou1/fishword/main/docs/images/screenshot-detail.gif)\n\n学习统计：\n\n![统计界面](https://raw.githubusercontent.com/Chenggou1/fishword/main/docs/images/screenshot-stats.gif)\n\n词库切换：\n\n![词库选择器](https://raw.githubusercontent.com/Chenggou1/fishword/main/docs/images/screenshot-deck.gif)\n\nGitHub 仓库：https://github.com/Chenggou1/fishword | 产品展示页：https://chenggou1.github.io/fishword/",
-    "created_at": "2026-06-15T02:14:00Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10338"
-  },
-  {
-    "id": 10337,
-    "title": "【文章自荐】如何用一根棍子测出地球有多大？复刻埃拉托色尼的春分实验",
-    "content": "在春分日如何仅用一根木棍就能测量出地球半径\n\n[如何用一根棍子测出地球有多大？复刻埃拉托色尼的春分实验](https://www.longluo.me/blog/measure-earth-circumference-shadow-eratosthenes/)",
-    "created_at": "2026-06-14T15:02:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10337"
   }
 ]
