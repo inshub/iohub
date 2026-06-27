@@ -1,5 +1,15 @@
 [
   {
+    "id": 10471,
+    "title": "【开源自荐】涟漪鱼缸 RippleAquarium — 浏览器里的实时 3D 水族箱",
+    "content": "涟漪鱼缸，一个纯前端、打开网页即玩的 3D 水族箱，用 Three.js / WebGL 实现。\n\n ![涟漪鱼缸演示](https://raw.githubusercontent.com/SeanWong17/RippleAquarium/main/assets/demo.webp)\n\n一整缸鱼用 boids 群体行为自主游动，会聚集、转向、互相避让；鱼游近水面或鼠标点击、拖动水面，都会荡开真实传播的水波；珊瑚在页面打开时从无到有慢慢生长。所有效果都是逐帧实时计算，而不是预录动画。\n\n技术上用均匀空间网格做邻居查询，把鱼群行为从 O(n²) 降到近 O(n)；主鱼群用实例化渲染；核心模拟逻辑带 Node 自带 test runner 的单元测试，无第三方依赖。项目静态部署在 GitHub Pages，开源（AGPL-3.0）。鱼群、水面涟漪等模块在多个开源项目基础上整合改造，来源已在 README 中标注。\n\n  - 在线演示：https://seanwong17.github.io/RippleAquarium/\n  - 仓库：https://github.com/SeanWong17/RippleAquarium",
+    "created_at": "2026-06-27T01:58:00Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/10471"
+  },
+  {
     "id": 10470,
     "title": "【开源自荐】Weft：一套可变架构的 AI 平台，每一层都能换",
     "content": "# Weft\n\n一套「可变架构」的开源 AI 平台：前端界面、Agent、工具、编排流，**每一层都是可热插拔的 package**，Rust 写的 core 只管能力调度、不写死任何功能。所以它不是某一个产品，而是一套能变成任何产品的底座——同一个 runtime 现在已经跑出聊天助手、AI 视频画布、RSS 阅读器、代码助手等完全不同的应用。\n\n🔗 **仓库：** [github.com/ailiheizi/weft](https://github.com/ailiheizi/weft)\n🔗 **站点：** [weft.alhz.org](https://weft.alhz.org)\n\n## 同一套底座，长出不同产品\n\n![AI Director](https://raw.githubusercontent.com/ailiheizi/weft/main/docs/images/ai-director.png)\n\n![RSS Reader](https://raw.githubusercontent.com/ailiheizi/weft/main/docs/images/rss-reader.png)\n\n## 技术栈\n\n- **core**：Rust，OpenAI 兼容 API + capability 注册表 + 包加载器\n- **客户端**：Flutter（跨端）\n- **插件**：WASM（Extism 沙箱）/ 原生 / 内嵌\n- **AI**：多 provider 路由、MCP 工具协议、本地语义工具选择器（ONNX）、多 Agent 团队编排\n\n诚实说明：项目还早期，在做包系统重构，当 preview 探索用。Apache-2.0 开源。\n\n（独立开发者，深圳，正在找工作）\n",
@@ -28,7 +38,9 @@
     "title": "推荐项目：WhisperSubTranslate，本地生成并翻译视频字幕的桌面应用",
     "content": "项目地址：\nhttps://github.com/Blue-B/WhisperSubTranslate\n\n这是一个 Windows 桌面应用，用来从视频音频生成 SRT 字幕，并把字幕翻译成其他语言。\n\n我做它的原因很简单：有些视频只有音频，没有字幕。在线转写服务虽然方便，但长视频上传很慢，也不太适合处理不想上传的素材。这个工具把识别和翻译尽量放在本地完成，适合自己整理视频、做字幕和处理多语言素材。\n\n主要功能：\n\n1. 直接放入视频，生成 SRT 字幕。\n2. 语音识别使用 whisper.cpp，模型按需下载，不需要手动配置 Python。\n3. 翻译可以使用本地 Hy-MT2 模型，API key 不是必需项。\n4. 也可以接入 DeepL、OpenAI、Gemini 等在线翻译。\n5. 对长视频和非英语视频，提供 large-v2 Sync 和 Sync Lite，用来修正普通模型可能出现的字幕时间漂移。\n\n截图：\n\n![WhisperSubTranslate](https://raw.githubusercontent.com/Blue-B/WhisperSubTranslate/main/assets/hero/hero.png)\n\n本地翻译模型的说明：\n\n![Hy-MT2 benchmark](https://raw.githubusercontent.com/Blue-B/WhisperSubTranslate/main/assets/hy-mt2-benchmark.zh.png)\n\n下载：\nhttps://github.com/Blue-B/WhisperSubTranslate/releases\n\n代码开源，许可证是 GPL-3.0。",
     "created_at": "2026-06-26T07:38:54Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10467"
   },
   {
@@ -356,7 +368,9 @@
     "title": "【开源自荐】EdgeMirror：一个面向开发者源站的 CDN 边缘镜像网关",
     "content": "大家好，我做了一个开源项目 **EdgeMirror**，\n\n项目地址：https://github.com/tianrking/EdgeMirror  \n在线体验：https://box.w0x7ce.eu\n\n<img width=\"1830\" height=\"887\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/452040e8-5b7d-4af5-9b5d-f45470a87ca6\" />\n\nEdgeMirror 是一个一站式开发资源加速网关，可以把常见的开发者源站统一接入到一个边缘代理入口中，用来加速包安装、模型下载、代码克隆、镜像拉取和各类文件下载。\n\n它主要可以做这些事情：\n\n- 加速 Python 包安装：PyPI、Python wheel、PyTorch wheel\n- 加速 AI 模型下载：Hugging Face 模型、数据集、LFS 大文件\n- 加速 GitHub 资源：`git clone`、raw 文件、release assets、GitHub Pages\n- 加速 Docker 镜像拉取：Docker Hub、GHCR、GCR、Quay、K8s、NVCR\n- 加速 Linux 软件源：APT、YUM、DNF、Pacman、wget、curl 镜像路径\n- 加速前端包安装：npm、pnpm、yarn registry\n- 加速 Go 依赖下载：兼容 GOPROXY\n- 加速 Java 依赖下载：Maven Central、Google Maven、Gradle Plugin Portal、JitPack\n- 加速 Rust crate 下载：crates.io sparse registry 和 `.crate` 包\n- 加速运行时和工具下载：Node.js、Python、Go、Rustup、Open VSX、SourceForge、GitLab、Gitea\n- 加速任意公开文件链接：通过通用 HTTP/HTTPS 文件代理下载\n\n简单来说，它把平时分散配置的各种开发源加速，收敛成一个统一入口。\n\n## 使用示例\n\n\n# 在线下载 \n\n<img width=\"1710\" height=\"883\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/43360537-b6f8-4d0d-8d34-28eccce9931a\" />\n\n# 加速 PyPI\npip install numpy -i https://edgemirror.w0x7ce.eu/pypi/simple/\n\n<img width=\"1732\" height=\"892\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6241bf41-f076-4b01-a4ac-aed8a708f168\" />\n\n# 加速 Hugging Face\nexport HF_ENDPOINT=https://edgemirror.w0x7ce.eu/hf\nhuggingface-cli download gpt2\n\n<img width=\"1665\" height=\"871\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1dcca486-e85f-4650-8dea-b0dea72bee81\" />\n\n# 加速 GitHub clone\ngit clone https://edgemirror.w0x7ce.eu/github/vercel/next.js.git\n\n<img width=\"1647\" height=\"871\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27de1d70-6f8c-4d5e-9189-0f6787e944e2\" />\n\n# 加速 Docker pull\ndocker pull edgemirror.w0x7ce.eu/library/nginx:latest\n\n<img width=\"1622\" height=\"887\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5c18fc6c-055b-4cd6-87ab-656af42c61aa\" />\n\n# 加速 npm\nnpm install lodash --registry=https://edgemirror.w0x7ce.eu/npm/\n\n<img width=\"1655\" height=\"882\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/18e5213e-339f-4c59-b6ac-d7d064bd8338\" />\n\n",
     "created_at": "2026-06-23T15:40:27Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10426"
   },
   {
@@ -380,7 +394,9 @@
     "title": "【开源自荐】Douzy：抖音批量下载app，粘贴链接即可去水印批量下载",
     "content": "Douzy 是一个抖音内容批量下载桌面应用，把命令行能力包装成了图形界面。粘贴一个链接就能开始下载，自动选择无水印、最高码率的源，并把整个下载过程可视化。\n\n**特色**\n\n- **粘贴即下载。** 支持单条视频、图文、合集、音乐，以及博主主页 / 喜欢 / 合集的批量下载，自动解析抖音短链。\n- **无水印 & 最高清。** 自动挑选无水印视频源，并按码率阶梯选取最高画质。\n- **关注同步 & 收藏夹。** 一键同步抖音关注列表，可视化勾选博主批量下载；支持登录态收藏夹下载。\n- **任务中心 & 实时进度。** 逐任务查看进度、状态与事件日志，批量下载一目了然。\n- **作品档案。** 下载记录存入 SQLite，可按作者 / 关键词 / 类型 / 时间筛选，支持批量导出与删除。\n- **去重 / 增量 / 完整性校验。** 数据库 + 本地文件双重去重，仅下载新增内容，并自动清理不完整文件。\n\n开源地址：https://github.com/jiji262/douyin-downloader\n\n<table>\n  <tr>\n    <td width=\"33%\"><img src=\"https://raw.githubusercontent.com/jiji262/douyin-downloader/main/img/desktop/001.png\" width=\"100%\" /><br/><sub>下载 · 粘贴链接即刻开始</sub></td>\n    <td width=\"33%\"><img src=\"https://raw.githubusercontent.com/jiji262/douyin-downloader/main/img/desktop/002.png\" width=\"100%\" /><br/><sub>关注 · 同步博主列表</sub></td>\n    <td width=\"33%\"><img src=\"https://raw.githubusercontent.com/jiji262/douyin-downloader/main/img/desktop/003.png\" width=\"100%\" /><br/><sub>任务中心 · 逐任务状态</sub></td>\n  </tr>\n  <tr>\n    <td width=\"33%\"><img src=\"https://raw.githubusercontent.com/jiji262/douyin-downloader/main/img/desktop/004.png\" width=\"100%\" /><br/><sub>作品档案 · SQLite 历史与筛选</sub></td>\n    <td width=\"33%\"><img src=\"https://raw.githubusercontent.com/jiji262/douyin-downloader/main/img/desktop/005.png\" width=\"100%\" /><br/><sub>设置 · 文件命名模板</sub></td>\n    <td width=\"33%\"><img src=\"https://raw.githubusercontent.com/jiji262/douyin-downloader/main/img/desktop/006.png\" width=\"100%\" /><br/><sub>实时进度 · 逐任务事件日志</sub></td>\n  </tr>\n</table>",
     "created_at": "2026-06-23T08:08:13Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10423"
   },
   {
@@ -804,13 +820,5 @@
     "created_at": "2026-06-17T15:23:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10372"
-  },
-  {
-    "id": 10371,
-    "title": "【文章推荐】AI 拿走一切之后，我们还剩下什么",
-    "content": "三封素未谋面的工程师来信，问的其实是同一个问题：当执行被 AI 全面接管，人还站在哪里？这篇长文试着给出一个完整的回答。\n\n文章先用珍妮纺纱机和卢德派起兴，点出一个冷峻的判断——「学会用新工具」从来不是赦免，只是缓刑；再用**终局思维**推到 **PRD is Code（意图即实现）**：意图与实现之间的中间环节，默认都会消失。于是瓶颈第一次从机器转移到人——人从生产者变成**把关者**（评审设计、验证结果），而在无限快的生产线上，唯一还能压缩的变量就是你自己的标准。作者的态度很硬：慢一点没关系，标准一寸不让。\n\n后半篇谈**护城河的消失**（做格式转换 / 信息搬运的岗位最先被淹没，前端只是最典型的例子），给出两条出路：**往深处走**（走向出错代价高的系统：架构、性能、稳定性）与**往新处走**（做能被别人工作流依赖的范式级东西，别造一把 token 就能换来的轮子）；最后落到 AI 拿不走的三样东西——**判断力、品味、推导**，以及更底层的**主体性**：你是否还在「房间里」，而不是沦为转发 AI 答案的一根网线。\n\n思考密度高、引经据典（辛弃疾、孙子、庄子、王阳明、柏拉图、Polanyi），适合所有正被「未来还需不需要人」困扰的工程师与创作者。\n\nhttps://ursb.me/en/posts/after-ai-takes-everything/\n",
-    "created_at": "2026-06-17T14:48:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10371"
   }
 ]
