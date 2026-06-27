@@ -1,5 +1,37 @@
 [
   {
+    "id": 10476,
+    "title": "【开源自荐】scrcpy 投屏助手：免安装、双击即用的 scrcpy 中文图形界面（Windows）",
+    "content": "**项目地址：** https://github.com/rockbenben/scrcpy-helper\n\nscrcpy 是优秀的安卓投屏工具，但它是命令行程序，对普通用户不友好。本项目用一个单文件 PowerShell 脚本给它套了一层 **免安装、双击即用、全中文** 的 Windows 图形界面：解压、双击，点按钮就能投屏，常用设置一键勾选，零基础也能上手。\n\n和其他投屏工具最大的不同：它 **不重新打包 scrcpy，而是直接调用官方原版二进制**。想升级时只需替换文件夹里的 scrcpy，助手本身一行都不用动，永远跟得上官方更新。\n\n<img width=\"702\" height=\"505\" alt=\"scrcpy 投屏助手界面\" src=\"https://github.com/user-attachments/assets/ccc4b3d5-96b2-4a32-915c-2c3063d66d30\" />\n\n特点：\n\n- 🟢 绿色单文件：一个 `.ps1` + 一个 `.bat`，零依赖、免安装，U 盘 / 受限电脑也能跑。\n- 🔄 直接调用官方原版 scrcpy，不二次打包；升级 scrcpy 只需替换文件，助手免维护。\n- 🇨🇳 全中文 + 人话提示：每个设置悬停都有大白话说明。\n- 🖥️ 有线 / 无线投屏、手机当摄像头、录屏、独立窗口（虚拟显示器），都是一个按钮。\n- 📶 无线两种方式：插一次线自动切无线（可拔线）；Android 11+ 还支持配对码连接，全程免插线。\n- ⌨️ 内置 scrcpy 常用快捷键速查表；投屏窗口可拖入文件传到手机、拖入 APK 一键安装。\n- 🔌 关窗口=停投屏，最小化=投屏继续；可选关闭时断开无线连接。\n\n如果你只是想简单投个屏、又偏爱绿色便携，可以试试它。封装脚本以 MIT 开源，scrcpy 本体遵循其 Apache-2.0 许可。",
+    "created_at": "2026-06-27T09:47:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10476"
+  },
+  {
+    "id": 10475,
+    "title": "【开源自荐】Flintmark ——  VS Code中的Obsidian 式的 Markdown 实时预览",
+    "content": "# Flintmark\n\n**VS Code 里的 Obsidian 风格 Markdown 实时预览。**\n没有源码/预览分屏，也不会生成额外文件，磁盘上仍然是\n普通 Markdown。\n\n链接：https://github.com/quboliu/flintmark\n\n\n<img width=\"2974\" height=\"1726\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0d9b1fb-bd0a-4ba1-b2e9-cb14be0922a2\" />\n\n<div align=\"center\">\n\n<img src=\"media/icon.png\" width=\"88\" alt=\"Flintmark\" />\n\n## 主要能力\n\n| 方面 | Flintmark 支持什么 |\n| --- | --- |\n| 实时预览 | 标题、强调、行内代码、引用、列表、任务、wikilink、标签、高亮、注释、脚注、表格、公式、图表和图片都在编辑器里原地渲染。 |\n| 写作手感 | 光标移到某一行时显示原始 Markdown，移开后恢复预览。加粗、斜体、行内代码、删除线和链接都有快捷键；选中文字后粘贴 URL 会自动变成 Markdown 链接。 |\n| Frontmatter | YAML frontmatter 会显示成 Properties 面板，列表和标签会变成 chips；解析不了的复杂 YAML 会退回为变暗的原始文本。 |\n| 代码块 | 30 多种 fenced code 语言高亮，包括 JS/TS、Python、Rust、Go、SQL、Shell、C/C++、C#、Java、PHP、Ruby、Kotlin、Swift、YAML、TOML、Dockerfile 等。渲染后的代码块自带 Copy 按钮。 |\n| 表格 | GFM 表格渲染为 HTML 表格，也可以直接点进单元格编辑。 |\n| 图片和附件 | 本地图片、Obsidian embed 都能原地显示。`![[image.png]]` 会在整个 vault 里解析；粘贴或拖入图片时，Flintmark 会保存文件并插入引用。 |\n| 导航 | `[[` 补全库内笔记，`#` 补全标签，`[[#` 补全当前笔记标题。由于 VS Code 自带 Outline 看不到 webview 编辑器，Flintmark 也提供了自己的大纲和反向链接视图。 |\n| 主题 | 跟随 VS Code 的深色、浅色和高对比主题。切换主题时不会重建编辑器，所以光标和滚动位置都能保住。 |\n\n## Obsidian 常用语法\n\nFlintmark 重点照顾 Obsidian 风格 vault 里最常见的写法：\n\n- `[[wikilinks]]`，包括点击未解析链接创建新笔记。\n- `#tags`、`==高亮==`、预览里隐藏的 `%% 注释 %%`。\n- `[!note]`、`[!tip]`、`[!warning]`、`[!important]`、`[!todo]` 等常见 callout。\n- GitHub Markdown 之外的任务状态：`[/]` 进行中、`[-]` 已取消、`[>]` 已转交、`[?]` 待确认。\n- 带尺寸的图片 embed：`![[image.png|200]]` 或 `![[image.png|200x120]]`。\n\n## 复用编辑器里的 AI\n\nFlintmark 自己不带 AI。问题在于：webview 编辑器里的选区，宿主编辑器通常看不见，所以\nCopilot、Cursor 这类工具没法直接拿到你在实时预览里选中的内容。Flintmark 做了一层桥接：\n\n- **Edit**：把选区搬回真实源码编辑器，并触发宿主的行内 AI 命令。\n- **Add to Chat**：把选区送进宿主的聊天或 composer。\n\n命令 ID 会按宿主自动探测，也可以在设置里覆盖。遇到某个宿主命令不匹配时，运行\n**Flintmark: Show AI Log** 可以看到每一步交接。",
+    "created_at": "2026-06-27T07:20:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10475"
+  },
+  {
+    "id": 10474,
+    "title": "【开源自荐】File Viewer：浏览器原生的文件预览组件",
+    "content": "阮老师好，推荐一个自己维护的开源项目：File Viewer。\n\n项目地址：https://github.com/flyfish-dev/file-viewer  \n在线演示：https://demo.file-viewer.app  \n文档：https://doc.file-viewer.app  \n官网：https://file-viewer.app  \n许可证：Apache-2.0\n\nFile Viewer 是一个面向企业后台、OA、知识库、工单系统和私有化项目的纯前端文件预览组件。它尽量不依赖服务端转码，在浏览器里直接预览常见业务附件，适合不方便把文件上传到第三方服务的内网、离线和私有化环境。\n\n和单纯的在线文件预览器不同，它更偏“可集成组件生态”：有 Vanilla JS、Web Component、Vue 3 / Vue 2、React、Svelte、jQuery 等标准组件包，也有 `@file-viewer/*-full` 一步接入包和 `preset` 按需组合包。\n\n主要特点：\n\n- 纯前端和离线优先：Worker、WASM、字体、vendor 资源都支持自托管，适合私有 CDN、Docker、内网部署。\n- 覆盖业务文件较多：内置 206+ 扩展名映射和 24 条预览链路，覆盖 Word、Excel、PPT、PDF、OFD、Typst、CAD、压缩包、邮件、图片、音视频、代码、Markdown、Patch、Git bundle、XMind、Draw.io、PSD、3D、Geo 等。\n- 按需加载：PDF、Office、CAD、Typst、压缩包、绘图等重型 renderer 只在打开对应格式时加载，避免把所有能力塞进首包。\n- 组件接入统一：各框架组件共用 core、options、事件和 controller API，可以做搜索、高亮、缩放、旋转、打印、下载、水印、主题切换和生命周期控制。\n- 适合企业附件中心：比较关注 Word / Excel / PDF / OFD 发票、DWG / DXF 图纸、压缩包内文件、EML / MSG 邮件附件这类真实业务场景。\n\n简单接入示例：\n\n```bash\nnpm i @file-viewer/vue3-full\n```\n\n```vue\n<file-viewer url=\"/files/report.docx\" />\n```\n\n演示图：\n\n![File Viewer demo](https://raw.githubusercontent.com/flyfish-dev/file-viewer/main/docs/public/_media/flyfish-viewer-demo.gif)\n\n项目还在持续打磨，欢迎大家用不涉密的真实文件测试兼容性和内网部署路径。\n",
+    "created_at": "2026-06-27T07:05:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10474"
+  },
+  {
+    "id": 10473,
+    "title": "【工具自荐】cocodot —— 国内用支付宝调用 Claude / GPT / Gemini API",
+    "content": "\n面向国内开发者的 OpenAI 兼容 AI API 接入:支付宝人民币充值、不用海外信用卡,改 base_url + key 就能调 Claude、GPT、Gemini、DeepSeek,一个余额切多模型。走正规云厂商渠道(非逆向),支持模型自测验真、先小额验证,按量计费、价格不超官网。\n接入地址:https://cocodot.co/api-access\n开源示例(Python / Node / LangChain / Cursor):https://github.com/oncesylvia/cocodot-api-examples",
+    "created_at": "2026-06-27T06:56:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10473"
+  },
+  {
     "id": 10472,
     "title": "【开源自荐】pptxtojson - 一个将 PPTX 转为结构化 JSON 的前端解析库",
     "content": "# ✨ 核心能力\n- **浏览器端解析**：直接读取 `.pptx` 文件，适合在前端处理用户本地文件，无需上传服务端转换。\n- **可读 JSON 输出**：按页面、元素、资源、主题等维度组织结果，而不是把 Office XML 原样翻译成低层结构。\n- **面向二次处理**：相比单纯转成 HTML 页面，更关注数据可读性和可编程性，方便接入后续业务流程。\n\n# 🚀 适用场景\n- **Web 编辑器导入**：将 PPTX 页面和元素转换为可编辑的数据模型。\n- **内容提取**：抽取文本、备注、媒体资源，用于搜索、归档、审核或数据分析。\n- **AI 文档理解**：把幻灯片内容整理为结构化输入，用于总结、问答、知识库入库等流程。\n- **自定义渲染**：基于 JSON 结果生成自己的预览、缩略图、编辑画布或转换流程。\n\n> 现在很多 AI 应用都需要处理 Office 文档，但 PPTX 的内部结构复杂，直接交给模型并不理想。pptxtojson 可以作为前置解析层，把 PPTX 转成更适合程序和大模型处理的数据格式。\n\n在线体验：https://pipipi-pikachu.github.io/pptxtojson/",
@@ -786,39 +818,5 @@
     "created_at": "2026-06-18T04:36:08Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10377"
-  },
-  {
-    "id": 10376,
-    "title": "【工具推荐】 短视频创作者都在用的扒文案工具，小红书/抖音视频文案提取+翻译+二创一条龙",
-    "content": "# 抖虫视频文案工具\n## 使用入口\nhttps://www.dousnap.com\n\n## 工具说明\n当刷到一条值得拆解的短视频，传统做法是反复暂停、听一句写一句，一条视频要耗掉十几分钟。抖虫文案提取把这个流程自动化：粘贴链接，整段口播文字稿几秒就摆在面前，无水印视频、封面、音频也能一起下载。需要二创时，它还能 AI 总结视频要点、重写开头钩子、基于原文生成新脚本；想跨语言搬运或对照学习，也可以指定目标语种，直接把口播文案翻译出来。从\"看懂别人怎么拍\"到\"自己也拍一条\"，一站搞定。\n\n## 支持平台\n抖音、小红书、B站、快手、X(推特)、TikTok等主流平台\n\n## 适用场景\n- 每天要拆十几条对标脚本的短视频运营，靠手抄跟不上节奏\n- 做跨境 / 跨语言内容的人，把口播文案按指定语种翻译出来，方便搬运和对照\n- 想给爆款换开头、改结构的文案与内容策划\n- 把网课、教程讲解词整理成文字笔记的学生和知识博主\n\n## 使用方式\n访问网站 → 输入作品分享链接（短链优先，效果稳定） → 等待解析完成 → 复制文字稿或下载素材 → 可选 AI 总结 / 钩子重写 / 脚本生成\n\n## 工具特点\n- 覆盖抖音、B站、小红书、快手等国内主流平台\n- 中文口播场景识别稳定，速度够快\n- 文案、视频、封面、音频一次解析全部到手\n- 支持多语言翻译，可按指定目标语种把文案提取并翻译出来\n- 一个工具完成提取到二创，减少工具切换\n\n## 工具界面\n## 小红书/抖音视频文案提取\n<img width=\"1771\" height=\"839\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/093b1fcf-1ebc-4675-874d-c019c1090d05\" />\n\n<img width=\"1637\" height=\"856\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fa82b8c9-430d-4e50-ad51-06008b91e4f7\" />\n\n<img width=\"1706\" height=\"865\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/58711af1-5fda-4e4d-b471-9d2604bdbc37\" />\n\n## 小红书/抖音图片文案提取\n\n<img width=\"1732\" height=\"864\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/898e2a56-48a2-4d36-9396-766f3d91a320\" />\n<img width=\"1716\" height=\"860\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c0f22db1-bb3f-414d-b743-429506ea10d3\" />\n\n## 黄金钩子文案/爆款拆解/视频总结\n\n<img width=\"1903\" height=\"859\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/41b7f428-172b-46e4-ab96-cd9816e754b9\" />\n<img width=\"1794\" height=\"857\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/edb92cb0-b91c-471e-a8b7-ac04db517377\" />\n\n<img width=\"1770\" height=\"861\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/db61ea35-5e83-4cb5-afff-58e08639238f\" />\n<img width=\"1773\" height=\"863\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d1120983-d2f9-4d89-8266-b25899789035\" />\n",
-    "created_at": "2026-06-18T03:37:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10376"
-  },
-  {
-    "id": 10375,
-    "title": "【开源自荐】AI-Infra-Guard —— 腾讯开源的 AI 红队安全工具，一键检测 Agent Skills/MCP/大模型/AI 基础设施安全漏洞",
-    "content": "AI Agent 生态正在爆炸式增长，但随之而来的安全问题几乎没有人在认真解决。腾讯的这款工具会以攻击者的视角去检测AI产品的安全性，在产品上线之前使用AI-Infra-Guard扫描，可以发现Agent的很多问题，并提供解决方案，目前是纯开源形式。\n\n工具覆盖四个维度：\n\n- **Agent 安全检测**：支持检测工具投毒、数据窃取、间接提示注入等 9 类风险\n- **MCP/Skill  安全扫描**：静态代码分析 + AI 智能体驱动，覆盖命令注入、SSRF、路径穿越等\n- **AI 基础设施漏洞检测**：支持 Ollama、ComfyUI、vLLM、LiteLLM 等 50+ 主流 AI 组件，覆盖 1200+ 漏洞CVE检测\n- **LLM 越狱评估**：对大模型进行越狱攻击测试\n\n其他几个值得一提的背景：入选 Black Hat Europe 2025（全球顶级安全会议）；被 DeepSeek 官方 README 的 Security 章节推荐；被 19 篇 arXiv 安全论文引用。\n\n**项目地址**：https://github.com/Tencent/AI-Infra-Guard",
-    "created_at": "2026-06-18T03:33:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10375"
-  },
-  {
-    "id": 10374,
-    "title": "【开源自荐 - OpenBidKit】一个基于AI的智能投标工具箱：v2.12.2更新",
-    "content": "## 关联原链接\n#10075 \n## 仓库地址\n[[FB208/OpenBidKit_Yibiao: 开箱即用的AI标书编写工具，标书AI生成工具，投标工具箱、知识库、标书查重、废标项检查，完全开源免费，欢迎使用](https://github.com/FB208/OpenBidKit_Yibiao)](https://github.com/FB208/OpenBidKit_Yibiao)\n\n## 最近新增功能\n- [x] 招标文件解析，新增采购清单、响应文件要求、交货和服务要求\n- [x] 已有方案扩写\n- [x] 方案编写支持多标段\n- [x] 废标项检查支持多阶段投标\n- [x] 导出格式设置\n- [x] 字数无上限（实测300万字上下文连贯）\n- [x] 全局事实设定+全文一致性检查\n\n## 更新内容截图\n![](https://oss.agnet.top/keep/2026/06/18/20260618101817670.png)\n\n![](https://oss.agnet.top/keep/2026/06/18/20260618101817671.png)\n\n![](https://oss.agnet.top/keep/2026/06/18/20260618101817672.png)\n\n![](https://oss.agnet.top/keep/2026/06/18/20260618101817673.png)\n\n![](https://oss.agnet.top/keep/2026/06/18/20260618101817674.png)\n\n![](https://oss.agnet.top/keep/2026/06/18/20260618101817675.png)",
-    "created_at": "2026-06-18T03:31:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10374"
-  },
-  {
-    "id": 10373,
-    "title": "开源项目自荐：MyKVM，用软件在多台电脑间共享键鼠和剪贴板",
-    "content": "项目名称：MyKVM\n\n项目地址：https://github.com/XxMinor/mykvm\n\n一句话介绍：MyKVM 是一个开源跨平台软件 KVM，可以在同一可信局域网内，让 macOS、Windows、Linux 共享一套键盘、鼠标和剪贴板。\n\n它的使用方式类似软件版 KVM：在一台机器上作为服务端，其他机器作为客户端；把光标推出屏幕边缘后，键盘和鼠标就会切换到另一台机器，复制粘贴也可以在两台机器之间同步。\n\n主要特点：\n\n- 支持 macOS、Windows、Linux。\n- 支持局域网自动发现，也可以手动输入 IP 连接。\n- 支持多显示器布局拖拽，按真实桌面位置排列屏幕。\n- 支持剪贴板文本和图片同步。\n- 输入和剪贴板走 QUIC/TLS 加密连接，并绑定对端广播的证书。\n- GitHub Releases 已提供 macOS DMG、Windows EXE/MSI、Linux AppImage/deb/rpm 安装包。\n\n适合场景：桌面上有多台电脑，但不想频繁切换键鼠、购买 KVM 硬件或依赖远程桌面。\n\n说明：MyKVM 目前仍是早期实验版本，面向可信局域网使用；暂未提供用户配对/PIN 和发现通道身份认证，请勿暴露到公网或不可信网络。\n\n演示 GIF：https://raw.githubusercontent.com/XxMinor/mykvm/main/docs/screenshots/tour.gif",
-    "created_at": "2026-06-17T15:30:13Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10373"
   }
 ]
