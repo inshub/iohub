@@ -1,5 +1,13 @@
 [
   {
+    "id": 10472,
+    "title": "【开源自荐】pptxtojson - 一个将 PPTX 转为结构化 JSON 的前端解析库",
+    "content": "# ✨ 核心能力\n- **浏览器端解析**：直接读取 `.pptx` 文件，适合在前端处理用户本地文件，无需上传服务端转换。\n- **可读 JSON 输出**：按页面、元素、资源、主题等维度组织结果，而不是把 Office XML 原样翻译成低层结构。\n- **面向二次处理**：相比单纯转成 HTML 页面，更关注数据可读性和可编程性，方便接入后续业务流程。\n\n# 🚀 适用场景\n- **Web 编辑器导入**：将 PPTX 页面和元素转换为可编辑的数据模型。\n- **内容提取**：抽取文本、备注、媒体资源，用于搜索、归档、审核或数据分析。\n- **AI 文档理解**：把幻灯片内容整理为结构化输入，用于总结、问答、知识库入库等流程。\n- **自定义渲染**：基于 JSON 结果生成自己的预览、缩略图、编辑画布或转换流程。\n\n> 现在很多 AI 应用都需要处理 Office 文档，但 PPTX 的内部结构复杂，直接交给模型并不理想。pptxtojson 可以作为前置解析层，把 PPTX 转成更适合程序和大模型处理的数据格式。\n\n在线体验：https://pipipi-pikachu.github.io/pptxtojson/",
+    "created_at": "2026-06-27T03:40:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10472"
+  },
+  {
     "id": 10471,
     "title": "【开源自荐】涟漪鱼缸 RippleAquarium — 浏览器里的实时 3D 水族箱",
     "content": "涟漪鱼缸，一个纯前端、打开网页即玩的 3D 水族箱，用 Three.js / WebGL 实现。\n\n ![涟漪鱼缸演示](https://raw.githubusercontent.com/SeanWong17/RippleAquarium/main/assets/demo.webp)\n\n一整缸鱼用 boids 群体行为自主游动，会聚集、转向、互相避让；鱼游近水面或鼠标点击、拖动水面，都会荡开真实传播的水波；珊瑚在页面打开时从无到有慢慢生长。所有效果都是逐帧实时计算，而不是预录动画。\n\n技术上用均匀空间网格做邻居查询，把鱼群行为从 O(n²) 降到近 O(n)；主鱼群用实例化渲染；核心模拟逻辑带 Node 自带 test runner 的单元测试，无第三方依赖。项目静态部署在 GitHub Pages，开源（AGPL-3.0）。鱼群、水面涟漪等模块在多个开源项目基础上整合改造，来源已在 README 中标注。\n\n  - 在线演示：https://seanwong17.github.io/RippleAquarium/\n  - 仓库：https://github.com/SeanWong17/RippleAquarium",
@@ -812,13 +820,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10373"
-  },
-  {
-    "id": 10372,
-    "title": "【工具自荐】IMG2Excel - 免费的图片转Excel表格工具，超高准确度，合并单元格都能识别",
-    "content": "# IMG2Excel 网站介绍\n\n[IMG2Excel](https://img2excel.net/) 是一个在线图片转 Excel 工具，用于将 JPG、PNG、截图、扫描表格和电子表格照片转换成可编辑的 XLSX 文件。它面向运营团队、财务人员、研究人员、学生、行政人员、分析师、小型企业和需要处理表格数据的用户，帮助他们从图片、扫描件、报表、发票、收据或截图中提取行列数据，减少手动录入和重新整理表格的时间。\n\n平台以图片表格识别和 Excel 转换为核心，支持用户上传包含表格、数字、文本和标签的图片，通过 AI OCR 提取表格结构，预览识别结果，并下载可在 Microsoft Excel、Google Sheets、Numbers 等工具中编辑的 `.xlsx` 文件。IMG2Excel 还提供转换历史、文件管理、积分计费和部分办公场景相关的 AI 工具，用于覆盖更完整的图片、文档和生产力工作流。\n\n## 核心产品\n\n[Image to Excel Converter](https://img2excel.net/)：将截图、扫描表格、JPG、PNG、表格照片、报表、发票和收据类图片转换成可编辑的 Excel 文件。\n\n[AI Image Generator](https://img2excel.net/ai-image-generator)：创建办公视觉、报告配图、产品概念图、文档插图和面向商业场景的图片资产。\n\n[AI Speech Generator](https://img2excel.net/ai-speech-generator)：将脚本转换为旁白、配音、培训音频和适合演示文稿使用的语音内容。\n\n[AI Tools Library](https://img2excel.net/apps)：提供聚焦型图片和生产力工具，帮助用户完成与文档、图片和办公素材相关的任务。\n\n[AI Background Remover](https://img2excel.net/apps/ai-background-remover)：为产品图、文档素材、头像和营销图片移除背景。\n\n[Pricing](https://img2excel.net/pricing)：提供图片转 Excel 和相关 AI 工具的积分与套餐信息。\n\n## 主要能力\n\nIMG2Excel 支持从图片中识别表格、行、列、数字和文本内容，适合 JPG to Excel、PNG to Excel、screenshot to Excel、scanned table to Excel 等常见转换场景。用户可以上传包含表格数据的图片，系统会自动检测表格结构并提取为可编辑单元格，而不是简单地把原图嵌入文件中。\n\n在转换过程中，IMG2Excel 提供结果预览能力，方便用户在下载前检查识别出的行列、缺失单元格、合并单元格或潜在 OCR 错误。转换完成后，用户可以下载 `.xlsx` 文件，并在常见电子表格软件中继续编辑、清洗、计算或共享数据。\n\n平台也支持批量或重复转换相关的积分使用方式，并在启用账号功能时提供上传文件、转换结果、下载记录和历史任务管理，方便用户回到过去的转换结果中继续查看、下载或复用。\n\n## 适合的使用场景\n\nIMG2Excel 适合需要从图片中恢复结构化表格数据的个人和团队，包括把电子表格截图转换成 Excel、从扫描报表中提取数据、整理照片里的库存或订单表、处理发票和收据中的表格信息、从论文或资料截图中收集数据，以及将无法复制文字的图片型文件转成可编辑表格。\n\n通过把图片表格识别、结果预览、XLSX 下载、历史记录和积分使用集中在一个在线工作流中，IMG2Excel 能帮助用户更快完成从图片到可编辑电子表格的转换过程，降低手动录入成本，提高财务、运营、研究、行政和数据整理工作的效率。",
-    "created_at": "2026-06-17T15:23:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10372"
   }
 ]
