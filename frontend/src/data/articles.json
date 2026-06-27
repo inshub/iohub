@@ -1,5 +1,13 @@
 [
   {
+    "id": 10477,
+    "title": "【开源推荐】AtlasOS：本地版无限画布开发工作台",
+    "content": "AtlasOS 是一个面向开发者的本地优先无限画布工作台。你可以把终端、项目文件、网页资料、Git 状态、远程服务器、任务看板和 AI Agent 会话放在同一张画布里，减少窗口切换，让复杂项目的上下文更加直观。\n\n项目地址：https://github.com/liaokongVFX/AtlasOS\n\n亮点：\n- 不是传统单窗口 IDE，而是用无限画布组织开发上下文：终端、文件、网页、Git、远程服务器、笔记和看板可以自由摆放、分组和保存。\n- 内置双 Ctrl 翻译与截图 OCR：选中文本后双击 Ctrl 翻译，没有选区时自动进入截图框选，适合阅读英文文档和处理不可复制文本。\n- 桌面浮球可以追踪 Codex / Claude Code 等 AI Agent 的运行、等待确认、完成和错误状态，也能提醒看板到期任务。\n- 支持可信本地插件系统，插件可以注册新的画布节点，也可以通过 native runtime 执行本地能力。\n- 本地优先保存画布和设置，AI key、远程服务器密码等敏感信息使用 Electron safeStorage 加密。\n\n<img width=\"1920\" height=\"1032\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c8c7e29f-1957-45d8-a1d1-28022e48b0e4\" />",
+    "created_at": "2026-06-27T11:25:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10477"
+  },
+  {
     "id": 10476,
     "title": "【开源自荐】scrcpy 投屏助手：免安装、双击即用的 scrcpy 中文图形界面（Windows）",
     "content": "**项目地址：** https://github.com/rockbenben/scrcpy-helper\n\nscrcpy 是优秀的安卓投屏工具，但它是命令行程序，对普通用户不友好。本项目用一个单文件 PowerShell 脚本给它套了一层 **免安装、双击即用、全中文** 的 Windows 图形界面：解压、双击，点按钮就能投屏，常用设置一键勾选，零基础也能上手。\n\n和其他投屏工具最大的不同：它 **不重新打包 scrcpy，而是直接调用官方原版二进制**。想升级时只需替换文件夹里的 scrcpy，助手本身一行都不用动，永远跟得上官方更新。\n\n<img width=\"702\" height=\"505\" alt=\"scrcpy 投屏助手界面\" src=\"https://github.com/user-attachments/assets/ccc4b3d5-96b2-4a32-915c-2c3063d66d30\" />\n\n特点：\n\n- 🟢 绿色单文件：一个 `.ps1` + 一个 `.bat`，零依赖、免安装，U 盘 / 受限电脑也能跑。\n- 🔄 直接调用官方原版 scrcpy，不二次打包；升级 scrcpy 只需替换文件，助手免维护。\n- 🇨🇳 全中文 + 人话提示：每个设置悬停都有大白话说明。\n- 🖥️ 有线 / 无线投屏、手机当摄像头、录屏、独立窗口（虚拟显示器），都是一个按钮。\n- 📶 无线两种方式：插一次线自动切无线（可拔线）；Android 11+ 还支持配对码连接，全程免插线。\n- ⌨️ 内置 scrcpy 常用快捷键速查表；投屏窗口可拖入文件传到手机、拖入 APK 一键安装。\n- 🔌 关窗口=停投屏，最小化=投屏继续；可选关闭时断开无线连接。\n\n如果你只是想简单投个屏、又偏爱绿色便携，可以试试它。封装脚本以 MIT 开源，scrcpy 本体遵循其 Apache-2.0 许可。",
@@ -810,13 +818,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10378"
-  },
-  {
-    "id": 10377,
-    "title": "【开源自荐】harmony-next.skills：给 AI 编程助手用的 HarmonyOS NEXT 开发者技能包",
-    "content": "项目地址：https://github.com/linhay/harmony-next.skills\n\nharmony-next.skills 是一个面向 AI 编程助手的 HarmonyOS NEXT 开发者技能包，适用于 Codex、Claude Code、Gemini CLI 等 Agent 工具。\n\n它解决的问题是：AI 在写 HarmonyOS NEXT / ArkTS / ArkUI 代码时，容易凭记忆猜 API、路径和工具链行为。这个项目把 HarmonyOS NEXT 参考文档、DevEco Studio 工具链、模拟器自动化、HDC 调试、UI/UX 审计和最小工程模板整理成本地可检索、可验证的工作流，让 Agent 先定位真实文档，再基于脚本和证据执行任务。\n\n主要特点：\n\n- 收录 3700+ 份本地 Markdown 参考文档，其中 JsEtsAPIReference 约 3678 份\n- 覆盖 ArkTS、ArkUI、Ability、NDK、发布、调试、性能和多端适配\n- 支持 DevEco Studio / HarmonyOS Emulator / HDC / uitest 等自动化诊断\n- 提供 Empty Ability 最小工程模板，可用于安装、启动、截图、layout dump 和 smoke test\n- 提供设备证据采集、离线 UI/UX 审计和 Profiler trace 审计脚本\n- 面向 Codex、Claude Code、Gemini CLI 等 Agent 工作流设计，减少 AI 编程幻觉\n\n适合正在做 HarmonyOS NEXT 开发，或者希望让 AI 编程助手更可靠地处理鸿蒙项目的开发者。",
-    "created_at": "2026-06-18T04:36:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10377"
   }
 ]
