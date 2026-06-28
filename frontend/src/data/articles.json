@@ -1,5 +1,29 @@
 [
   {
+    "id": 10486,
+    "title": "【开源自荐】10xagent 10行代码实现一个超级自进化 Agent Harness",
+    "content": "# 10xagent 10行代码实现一个超级自进化 Agent Harness\n\n\n### 项目地址\n[https://github.com/cosin2077/10xagent](https://github.com/cosin2077/10xagent)\n\n## 简介\n10行 JavaScript 代码实现的可自进化迭代的 Harness Agent。可用于展示 LLM 智能以及 Harness Agent 核心原理。  \n10行可读代码极简实现可运行、可迭代升级。\n\n## 实战\n需要先安装 [Bun](https://bun.sh/)：\n\n```bash\ncurl -fsSL https://bun.sh/install | bash\n```\n\n`.env`(bun 自动加载):\n\n```bash\nOPENAI_BASE_URL=https://api.openai.com/v1\nOPENAI_API_KEY=sk-xxx\nOPENAI_MODEL=gpt-5.5\n```\n\n```shell\nfor i in {1..30}; do echo \"=== 第 $i 次 ===\"; bun 10xagent.js \"你正在将 10xagent.js 从一个极简 Agent 原型，持续优化为一个更完整、更可靠、更安全、更智能的 AI Agent。当前是第 $i/30 轮。每轮只做一个独立、自洽、可独立验证的改进。修改后必须使用 bun 10xagent.js <prompt> 做一次真实端到端验证，验证 prompt 由你根据本轮改动自主设计，必须覆盖本轮改动影响的能力，并确认能正常调用 LLM、使用必要工具、及时返回结果；不要只验证语法或帮助信息，必须验证一个真实任务；如果端到端跑不通或明显卡住，必须回滚本轮改动。\"; done\n```\n\n- 稍微改动 for in 循环提示词将获得不一样的体验\n- 可以加提示词让 Agent 每轮提交 git 记录本轮改动以观察 LLM 的优化思路\n- 自进化水平、迭代轮次跟 LLM 智能直接挂钩\n\n> ⚠️ 只用于演示核心原理，权限全权交给LLM，确保 LLM provider 合法可靠，运行风险需要自己把握\n",
+    "created_at": "2026-06-28T09:16:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10486"
+  },
+  {
+    "id": 10485,
+    "title": "??:LivePhotoKit - ??????HEIC/Live Photo????(2026)",
+    "content": "**??**:LivePhotoKit\n\n**??**:https://livephotokit.com\n\n**??**:?????????????,??????????,???? iPhone HEIC/HEIF ??? Live Photo ????? HEIC ? JPG/PNG/PDF/WebP,Live Photo ????,??????\n\n**????**:\n1. ????--????????????,????????\n2. ????,???,????\n3. ??????\n4. 2026????,????\n\n?????????????,??!",
+    "created_at": "2026-06-28T09:06:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10485"
+  },
+  {
+    "id": 10484,
+    "title": "自荐：Goink - 中文长篇写作的自主 AI Agent",
+    "content": "项目地址：https://github.com/sigpanic/goink\n\nGoink 是一个真正自主的 AI 写作 Agent。采用 ReAct 循环架构，31 个工具全部由 AI 自主决策调用——你下指令，它自己查角色状态、搜全书伏笔、读前一章、生成正文、出 Diff 等你审批，写完自动检查角色变化、标记伏笔回收、推进弧线节点、刷新读者认知。整条链全自主跑通。\n\n底层是六维结构化记忆引擎：角色有向关系图、伏笔智能追踪、弧线泳道、地点层级拓扑、读者认知控制面板——全部持久化在 SQLite，Agent 自己查库而非靠上下文窗口硬背。12 个内置创作方法论 Skill 常驻注入，支持独立审稿子 Agent 二次审查。\n\nUI/UX：全链路实时流式渲染，工具调用具备 selected→executing→awaiting_approval→completed/failed/loop_detected 六阶段精细化状态渲染，G6 力导向图/拓扑图/泳道图六套可视化面板，Monaco Editor Diff 并排审批，深色模式。\n\n技术栈：Wails v2（Go + React 19）+ Tailwind CSS 4 + ONNX Runtime 本地语义搜索 + Git 全版本管理 + 7 个国产大模型开箱即用 + EPUB 一键导出。安装包 <60MB，零依赖，全平台，MIT 开源。\n\n<img width=\"2559\" height=\"1407\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5ee4c36d-723e-4dc4-8652-f4b77b939bd6\" />\n\n<img width=\"2510\" height=\"1389\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7049e454-26b6-4a81-92e0-f971fc30f8a7\" />",
+    "created_at": "2026-06-28T08:36:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10484"
+  },
+  {
     "id": 10483,
     "title": "【开源自荐】gsearch-cli v0.2.1 免 API Key 的终端谷歌搜索 CLI，基于 Gemini Grounding",
     "content": "**项目介绍**：https://gsearch-cli.gitlawb.app/\n\n**项目地址**：https://github.com/aeroxy/gsearch-cli\n\n**传送门**：[【开源自荐】终端里的 Gemini 联网搜索：gsearch-cli](https://github.com/ruanyf/weekly/issues/9900)\n\n**一句话介绍**：\n> 一个基于 Rust 的极速终端 Google 搜索工具，通过 Gemini API 的 Grounding 能力返回带有内联引用和来源链接的搜索结果。自带完整 OAuth 流程，零配置、即装即用。\n\n---\n\n## 🚀 v0.2.1 — 从逆向工程到独立的 Antigravity OAuth 客户端\n\n自 v0.1.0 初始版本以来，项目经历了一次完整的架构升级，从脆弱的凭据依赖方案演进为了一个具备完整 Antigravity 协议实现能力的独立 OAuth 客户端。\n\n### 1. 🔐 Antigravity OAuth 协议实现\n\n**问题**：v0.1.0 依赖于从 `gemini-cli` 的 `oauth_creds.json` 中直接读取现成的 Access Token。一旦用户先退出或令牌过期，搜索立即失效——而且无法自动刷新，用户需要手动重新登录 `gemini-cli` 才能恢复。\n\n**解决**：我逆向并完整实现了 Google **Antigravity** OAuth 协议：\n- **完整授权码流程**：内置基于 TCP Loopback 的本机 OAuth 服务器，自动打开浏览器完成 Google 授权，接收回调并交换令牌，全程无需用户手动复制粘贴任何东西。\n- **令牌自动刷新**：`TokenManager` 会检测令牌是否过期（含 60 秒缓冲窗口），自动通过 Refresh Token 获取新的 Access Token，用户无需关心底层认证状态。\n- **手动模式保底**：支持 `--no-browser` 手动登录模式，适用于服务器环境或没有图形浏览器的场景。\n- **项目自动预配**：通过 `loadCodeAssist` + `onboardUser` 两个 Antigravity 内部 RPC 自动发现或创建 Google Cloud Project，无需用户手动前往 GCP 控制台。\n\n### 2. 🏢 企业代理深度兼容\n\n**问题**：很多在企业网络（如 Zscaler）中的开发者在使用 CLI 工具时会遇到 SSL 证书拦截导致的 TLS 握手失败。大多数 Open Source CLI 完全不考虑这类场景。\n\n**解决**：所有 `reqwest` 客户端构建（包括 OAuth 流程和 API 调用）均检测 `HTTPS_PROXY` 环境变量并自动设置 `.danger_accept_invalid_certs(true)`，确保企业代理环境下也能正常完成认证和搜索。这是一行看似简单但在实际企业环境中救命的代码。\n\n### 3. 🧠 Grounded Search — 带引用的 AI 摘要搜索\n\n**问题**：传统 `grep` + 浏览器的工作流效率低下，而市面上很多 AI 搜索工具要么需要 API Key，要么不透明——你不知道结果是否被模型幻觉污染。\n\n**解决**：直接调用 Gemini API 的 `googleSearch` Grounding 能力：\n- 模型实时联网搜索，返回的结果附带精确到段落的 **Grounding Chunks** 引用标记。\n- `format_response` 将每个 `GroundingSupport` 映射为 `[1]`、`[2]` 等脚注标记，直接在文字段落中标注来源位置，末尾列出所有来源链接。\n- 终端渲染使用 `termimad` 库，在交互式终端下呈现丰富的 Markdown 格式化效果，同时管道输出时自动退化为纯文本。\n\n### 4. 📦 Homebrew + Cargo 双通道分发\n\n**问题**：Rust 项目分发门槛高，用户需要安装 Rust 工具链才能编译运行。\n\n**解决**：\n- **Homebrew Tap**：已发布至 `aeroxy/tap/gsearch`，macOS 用户可一键安装。\n- **crates.io**：`cargo install gsearch-cli` 全局安装，适合已有 Rust 环境的用户。\n- **Auto-update Formula**：发布流程已将 Homebrew Formula 的 SHA256 和 URL 更新集成进 Makefile，一次构建自动完成所有分发渠道的同步。\n\n---\n\n## 📦 核心功能一览\n\n### 1. 零配置即用\n安装后直接 `gsearch singapore weather` 即可搜索。如果尚未登录，自动触发 OAuth 流程并打开浏览器完成授权，全程不需要配置任何 API Key。\n\n### 2. Grounded 搜索结果\n每次搜索返回 AI 摘要 + 精确到段落的来源引用。文中以 `[1]`、`[2]` 标记标注来源，末尾列出所有来源的标题和链接，确保结果可溯源、可验证。\n\n### 3. 企业代理友好\n自动检测 `HTTPS_PROXY` / `https_proxy` 环境变量，跳过 SSL 证书验证以兼容 Zscaler 等企业 SSL 拦截代理。\n\n### 4. 令牌自动管理\nOAuth Token 持久化至 `~/.config/gsearch/antigravity.json`，自动刷新，永不过期（只要 Refresh Token 有效）。\n\n### 5. 即搜即得的终端体验\n交互式终端下使用 `termimad` 渲染 Markdown，结果一目了然；非交互式终端（管道输出）自动退化为纯文本，适合与 `grep`、`jq` 等工具链配合使用。\n\n---\n\n## 🧗 使用方式\n\n```bash\n# 安装（macOS）\nbrew install aeroxy/tap/gsearch\n\n# 或通过 Cargo\ncargo install gsearch-cli\n\n# 使用：直接输入搜索词\ngsearch singapore weather\n\n# 搜索更长的问题（无需引号）\ngsearch latest news about rust programming 2025\n\n# 手动触发登录\ngsearch --login\n```\n\n**源码**：https://github.com/aeroxy/gsearch-cli\n\n---\n\n## 🙏 致谢 & 交流\n\n项目完全开源 MIT 协议，欢迎 Star ⭐️、Issue 和 PR。如果你在公司网络下使用遇到问题，欢迎提 Issue 反馈你的代理环境，我会尽力兼容。",
@@ -792,29 +816,5 @@
     "created_at": "2026-06-18T09:37:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10387"
-  },
-  {
-    "id": 10386,
-    "title": "【工具自荐】自律打卡挑战赛：PinMe",
-    "content": "PinMe是一款自律打卡挑战的小程序!\n你可以创建挑战赛，邀请好友一起参与，看看谁是最终赢家！\n挑战赛都是限时的，通过3天7天21天的挑战赛，帮你养成好希望，完成自律，变成更好的自己！\n同时报名挑战赛以后，每天在微信会有打卡提醒。比赛结束后，就不会再有打扰。\n\n<img width=\"462\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1f6cc456-e0e0-4869-801b-3052740d2c1c\" />\n\n<img width=\"462\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5aff6c8a-a99e-4204-85e2-85e9a8a0f4f9\" />\n\n<img width=\"462\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6c483647-161f-443f-a66c-4efae7261962\" />\n\n<img width=\"462\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8852a679-092a-4d3d-91b7-ca73a19f1d3b\" />\n\n<img width=\"462\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a8033490-1197-4ceb-aa08-d1448d227b69\" />\n\n<img width=\"1380\" height=\"508\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/76fc46d6-1463-4d28-bf2c-7df3306cc8ce\" />\n\n欢迎各位朋友尝试，并且给出意见，感谢！\n感谢阮一峰！",
-    "created_at": "2026-06-18T09:30:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10386"
-  },
-  {
-    "id": 10385,
-    "title": "【开源自荐】saynow 一款真正懂你的语音输入法",
-    "content": "https://github.com/liujuntao123/saynow\n\n运行在 Windows 桌面端的语音输入助手，常驻托盘，服务于聊天、写代码、记笔记、写文档等高频输入场景。\n\n**把语音输入带到任意输入框。**  \n**把专有名词、表达习惯和输出风格变成你的个人配置。**  \n**让语音识别越用越像你。**\n\n## 重点亮点\n\n- 全局快捷键录音：在任意应用中按住快捷键开始说话，松开结束。\n- 自动写入文本：识别完成后写入当前聚焦输入框，并提供剪贴板备用路径。\n- 专属词库：维护术语、缩写、项目名、人名和固定表达，让模型优先识别你常用的词。\n- 风格提示词：用自然语言定义输出风格，让同一段语音适配聊天、会议纪要、工单描述或技术记录。\n- 自学习引擎：整理明确纠错和成功识别历史，把高频表达、数字格式、技术字段沉淀为个性化规则。\n- 模型配置：内置 MiMo-v2.5、MiMo ASR 和 Qwen3.5-Omni 模板，也支持自定义 OpenAI-compatible Base URL、模型和 API Key。\n- 历史与统计：查看最近识别记录、使用次数和输入效率数据。",
-    "created_at": "2026-06-18T09:15:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10385"
-  },
-  {
-    "id": 10384,
-    "title": "【开源自荐】LaunchFit AI：给跨境商品SKU生成上架前体检报告的 Agent Skill",
-    "content": "推荐一个刚开源的项目：LaunchFit AI / 出海体检官  \nGitHub: https://github.com/JuneYaooo/launchfit-ai\n\n它关注跨境电商里一个很现实的问题：商品还没真正开始卖，就可能因为平台准入、标签、证书、授权、物流或本地化问题被卡住。\n\nLaunchFit AI 是一个 Agent Skill。用户提供商品原产地、目标市场、平台/渠道、类目、包装文案、证书或竞品截图后，它会生成一份“卖前体检报告”，提前指出这个商品哪里可能不能卖、哪里需要补材料、包装和宣称应该怎么改、目标市场竞品是怎么定价和表达卖点的。\n\n它不是简单给建议，而是把“准入体检 + 目标市场对标 + 本地化建议”做成一个可复核的工作流。用户材料会被当作待核验证据，需要实时确认的平台政策、监管要求、竞品价格和物流信息会明确标记为 `needs_external_verification`。\n\n适合跨境卖家、品牌方、代运营、合规审核团队，也适合对垂直领域 Agent Workflow 感兴趣的开发者参考。\n\n示例输入\n<img width=\"885\" height=\"693\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cacaac91-abb6-4a27-b521-2c007646908d\" />\n\n体检速览卡片\n<img width=\"702\" height=\"750\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e8f3100d-d591-40bd-9cfb-739d1416a1e7\" />\n\n部分详细体检报告节选\n<img width=\"1230\" height=\"672\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b91e0956-0b56-4d75-b6ed-08c06c84a7b7\" />",
-    "created_at": "2026-06-18T09:14:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10384"
   }
 ]
