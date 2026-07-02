@@ -1,5 +1,29 @@
 [
   {
+    "id": 10534,
+    "title": "【开源自荐】CLI-Manager: 用于集中管理基于CLI 的多个开发项目，解决多窗口切换、重复输入命令的痛点，提升开发工作流效率。",
+    "content": "###  **CLI-Manager**\n静态网站：[网站地址](https://dark-hxx.github.io)\n仓库地址：[CLI-Manager](https://github.com/dark-hxx/CLI-Manager)\n### 项目目的\n1. 主要目的\n简化多项目CLI启动流程，在之前A/B/C项目，每天启动cli工具需要\ncd A claude \ncd B claude \ncd C claude\n在 **CLI-Manager** 中配置完成之后只需要点击即可自动启动\n 2. CLI工具增强\n-  CLI会话相关信息实时统计(token输入、输出、修改文件数量、修改文件内容)\n- 项目级claude/codex供应商自定义：定义项目级别的供应商跟全局的区分，方便A/B/C项目走不同的网站，使用不同 模型\n- 用量统计：按照多种维度：时间，模型，项目 来进行token用量统计，分析使用情况\n- 内置消息通知：应用级/系统级通知，告诉你claude/codex执行完毕，需要你审批，执行失败。点击对应的按钮即可跳转到对应的窗口进行操作\n- AI replay：AI对话重放 实验性功能，正在打磨，对一次AI对话可以进行重放，文件变更时记录文件快照，方便快速恢复\n\n**欢迎大家使用，体验，提出需求！！！**",
+    "created_at": "2026-07-02T02:17:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10534"
+  },
+  {
+    "id": 10533,
+    "title": "「工具自荐」Bailin—60 秒造人，请上桌面，开源本地 AI 桌宠，用 ta 的视角陪你看问题",
+    "content": "# 百灵 Bailin —— 开源本地 AI 像素桌宠，用 ta 的视角陪你看问题\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/WINDGAND/Bailin/main/assets/logo.png\" alt=\"百灵 Bailin\" width=\"100\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/WINDGAND/Bailin\"><img src=\"https://img.shields.io/badge/platform-Windows-0078D6.svg\" alt=\"Windows\" /></a>\n  <img src=\"https://img.shields.io/badge/node-%3E%3D20.10-brightgreen.svg\" alt=\"Node >= 20.10\" />\n  <img src=\"https://img.shields.io/badge/Electron-32-47848F.svg\" alt=\"Electron 32\" />\n  <a href=\"https://opensource.org/licenses/MIT\"><img src=\"https://img.shields.io/badge/license-MIT-blue.svg\" alt=\"MIT License\" /></a>\n</p>\n\n- **项目地址**：[https://github.com/WINDGAND/Bailin](https://github.com/WINDGAND/Bailin)\n- **项目类型**：开源 Windows 桌面 AI 角色伴侣（完全本地运行）\n\n---\n\n## 💡 项目初衷：受启发而非模仿\n\n市面上很多 AI 角色扮演只是单纯地塞一堆“XX 的常用台词”，越聊越像劣质的 cosplay。\n\n**百灵 Bailin** 的核心理念是**蒸馏思维骨架**：\n- **心智模型** — ta 看世界用的几把尺子\n- **决策启发式** — 岔路口的习惯判断\n- **表达 DNA** — 句子的节奏、标志性短语、回避的话题\n\n> **核心逻辑**：不是「让 AI 表演成 XX」，而是「让 AI 用 XX 的视角看你的问题」。\n\n---\n\n## 🌟 核心功能\n\n*   **⚡ 快速 / 深度造人**：输入名字，快速模式约 60s；深度模式调用多 Agent 调研、蒸馏并进行质量自检，一键组装出角色的心智。\n*   **👾 像素桌宠**：像素小人常驻屏幕右下角。支持透明置顶、可拖拽、透明区鼠标穿透，不影响你的日常办公。\n*   **🎹 随手唤起**：按下 `Ctrl + Shift + P` 即可在桌宠旁唤起极简聊天窗，支持流式 Markdown 回复。\n*   **🔒 隐私与本地优先**：\n    *   **零订阅**：自带任意兼容的 OpenAI / Anthropic API Key。\n    *   **完全本地**：角色、对话、用户画像全部存于本机 SQLite，不上报遥测数据。\n    *   **Key 加密**：采用 Windows DPAPI 加密，渲染进程绝不接触明文 Key。\n\n---\n\n## 📸 运行效果预览\n\n### 1. 创建角色（支持快速/深度两种模式）\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/WINDGAND/Bailin/main/assets/create.png\" alt=\"创建角色\" width=\"600\" />\n</p>\n\n### 2. 角色仓库（管理与切换）\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/WINDGAND/Bailin/main/assets/library.png\" alt=\"角色仓库\" width=\"600\" />\n</p>\n\n### 3. 桌宠上桌与随手对话\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/WINDGAND/Bailin/main/assets/chat.png\" alt=\"聊天窗与桌宠\" width=\"600\" />\n</p>\n\n---\n\n## 🛠️ 技术栈\n\n- **外壳与主进程**：Electron 32 + Node.js\n- **渲染端**：Vite + TypeScript\n- **本地存储**：SQLite (better-sqlite3)\n- **数据流与沙箱**：Sprite 渲染在 Worker 沙箱中执行，实现透明区域鼠标穿透与轻量渲染。\n\n项目目前处于早期 **v0.0.1** 阶段，欢迎大家下载体验、反馈 Bug，或提交 PR 共同完善这个好玩的桌面小玩具！",
+    "created_at": "2026-07-02T01:54:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10533"
+  },
+  {
+    "id": 10532,
+    "title": "【工具自荐】Tidy — 在 ChatGPT / Claude / Gemini 之间管理并搬运你的对话上下文，AI对话管理，批量删除",
+    "content": "- 官网：https://tidy.showmyapps.cc\n- 安装（Chrome 应用商店）：[Tidy](https://chromewebstore.google.com/detail/tidy-%E2%80%94-bulk-delete-export/bmfgpmojpofogmflfnfnkdbndnaffdpc?authuser=0&hl=en)\n- 平台：Chrome 扩展，支持 ChatGPT、Claude、Gemini\n\n---\n\n## 项目简介\n\nTidy 是一个 Chrome 扩展，用来统一管理你散落在 ChatGPT、Claude、Gemini 三家里的对话历史——批量清理、文件夹归类、收藏、导出备份，都在一个面板里完成。\n\n它更想解决的是\"上下文问题\"：你花一小时让一个模型真正理解了你的项目，换个模型又得从头解释一遍。Tidy 能把一段对话的上下文提取出来、裁剪到目标模型的窗口大小，然后在另一个 AI 里继续——不用再对每个 AI 重复自我介绍。\n\n所有数据只在你本地浏览器处理，不经过任何中间服务器，无需注册账号。\n\n## 主要功能\n\n- **批量清理**：一次删除 / 归档上百条陈旧对话（ChatGPT 归档可恢复）\n- **文件夹与收藏**：跨三家平台归类、置顶常用对话，快速检索（含正文搜索）\n- **导出备份**：把整段对话（每条消息、按顺序）导出为干净的 JSON\n- **跨 AI 搬运**：把一段对话的上下文提取出来，在另一个模型里接着聊\n- **诚实的能力边界**：各平台能力不同，界面里如实标注（如 Gemini 仅支持列表/删除）\n\n## 为什么做这个\n\n和AI聊多了就会产生很多对话记录，有时候想要去找某条记录，看到那些翻不到尽头的对话记录，就有点头大。所以，做了一个可以批量删除对话记录的插件，可以帮助我来管理对话记录。这样，就可以只保留重要的对话记录，找起来非常方便。还可以把常用的对话记录放在收藏文件夹中。\n另外，同时用几家 AI 已经是常态，但每家的历史都锁在各自的围墙花园里，既难搜索也难复用，上下文更是无法流动。Tidy 想先把\"整理\"这件事做扎实，再逐步把上下文在 AI 之间打通。",
+    "created_at": "2026-07-02T00:58:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10532"
+  },
+  {
     "id": 10531,
     "title": "【工具自荐】MacroAI 一款免费的Windows可视化编程的宏自动化工具，支持脚本创作与分发",
     "content": "官网： https://www.sowe.com/\n\nMacroAI 是一款支持脚本创作与分发的 Windows 宏自动化平台。\n\n通过可视化节点编辑器（20+ 种节点，树形容器架构）或 Lua 脚本搭建自动化流程，覆盖鼠标键盘、图像识别、OCR 文字识别、屏幕变化检测等操作。内置多分辨率适配机制，同一脚本可在不同屏幕和缩放比的设备上稳定运行——这是脚本可分发给他人使用的核心能力。\n\n支持后台输入模拟（不抢占焦点）、Windows OCR（零安装）、屏幕变化检测和多线程并发执行。基础功能永久免费，无广告。\n\n可视化节点编辑器 — 拖拽编排工作流，支持循环/条件判断\nLua 脚本引擎 — 完整的 Lua API，支持自定义代码块\n图像识别 — 基于 OpenCV 模板匹配，支持自定义区域和阈值\nOCR 文字识别 — 基于 Windows OCR，支持区域文字提取与比对\n背景输入模拟 — PostMessage 模拟，不干扰前台操作\n自定义变量 — 支持字符串/数字/布尔，本地/全局作用域\n函数与自定义动作 — 可复用子流程，一键绑定到浮动面板\n多分辨率适配 — 设计区域与运行区域独立，自动坐标缩放\n界面变化检测 — 网格比对捕捉屏幕变化，支持周期过滤\n条块变化检测 — 追踪血条、进度条的实时数值变化\n操作录制与回放 — 录制鼠标键盘操作，支持区域约束\n浮动控制面板 — 运行控制、动作按钮、音乐播放一键操作\n命名区域管理 — 自定义矩形区域，方便节点引用\n多语言界面 — 中文 / English 切换\n\n",
@@ -782,29 +806,5 @@
     "created_at": "2026-06-24T03:54:31Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10433"
-  },
-  {
-    "id": 10432,
-    "title": "【工具自荐】ImageToVideoAI：聚合 14 个视频模型的图生视频平台",
-    "content": "项目网址：[imagetovideoai.net](https://imagetovideoai.net/)\n\n现在好用的视频生成模型很多，但散在各家平台，来回切换很麻烦。[ImageToVideoAI](https://imagetovideoai.net/) 把它们收进一个工作室，专注「图片 → 视频」这件事。\n\n主要功能：\n\n图生视频 / 文生视频 / 视频改视频三条链路；\n聚合 14 个主流视频模型：Seedance 2.0、Kling 3.0、Veo 3.1、Wan 2.7 等，同一个界面里挑选多个模型一键批量生成；\n附带**图片编辑、放大、抠图（去背景）**等配套工具；\n批量处理 + 多任务并发，适合一次跑多条；\n每月赠送免费积分，适合需要把产品图、人像、素材快速变成短视频的场景。同样是我在做的独立项目，欢迎反馈哪个模型/功能还缺。\n\n<img width=\"1200\" height=\"630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f03d1e43-cf2e-459a-84c4-aef758c755b1\" />\n\n<img width=\"1465\" height=\"708\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/72650fbe-41e2-4004-8b41-c5d126148f01\" />",
-    "created_at": "2026-06-24T02:52:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10432"
-  },
-  {
-    "id": 10431,
-    "title": "【工具自荐】Inkfox AI：免注册无限生成的一站式 AI 图像 / 视频创作台",
-    "content": "项目网址：[Inkfox AI](https://inkfox.app/)\n\n看了刘小排大佬那篇 Raphael 的帖子， \"完全免费、无限制、无需注册\" 又是卖给老外赚美金，那套打法看得我手痒。正好我也想验证一件事：\n\n一个独立开发者，认认真真做个 AI 产品，到底能不能赚到钱？\n\n与其空想，不如下场。于是有了 Inkfox AI\n\n它是什么\nInkfox AI 是一个免注册、进去就能用的 AI 图像/视频创作台，主要功能：\n\n文生图，可切换多个模型：Nano Banana 2.0、GPT Image 2.0、Flux、Seedream，按需要的画风换引擎；\n参考图改图 / 局部重绘：上传一张图，只改其中一部分，其余保持不变；\n照片转视频、文生视频：把静图动起来，或直接用提示词生成短视频；\n一键虚拟试戴：墨镜、帽子、眼镜、项链、耳饰、手表、美瞳、衣服，传一张正脸照就能预览，不用写提示词；\n生成结果按 prompt 归到一条时间线，不再满文件夹乱翻。\n送免费额度、不登录也能生成；登录后去掉导出水印、放开更高额度。\n\n<img width=\"1200\" height=\"630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/51df0e49-d3ad-4531-a44b-a556bf50f819\" />\n\n<img width=\"1470\" height=\"686\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ad178258-aed1-4842-8e30-18ebf9cbb51c\" />\n",
-    "created_at": "2026-06-24T02:44:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10431"
-  },
-  {
-    "id": 10430,
-    "title": "【开源自荐】知返：AI 写完代码你真的懂了吗？",
-    "content": "**项目地址**：https://github.com/AGI-is-going-to-arrive/ahadiff\n**PyPI**：https://pypi.org/project/ahadiff/\n**项目主页**：https://agi-is-going-to-arrive.github.io/ahadiff/\n**协议 / 版本**：MIT / v1.3.7\n\n### 它解决了什么问题\n\nAI 写代码虽然快，一次性帮你更新修改了很多文件，代码能正常运行，你随便看了几眼就继续了。\n但是这样真的对吗？隔两天回头看，说不清每处改动的逻辑，其中AI的改动为什么这样改，你一问三不知。\n**尤其是对于实习生、刚毕业的应届生，技术能力一般，想学习进步的，真正学到其中的知识点。一步步的构建自己的基础，而不只是无脑依赖AI。**\n\n知返读你的一次代码改动，生成一份学习笔记。学习笔记中每条结论对应到到具体文件的具体行号，AI 产生的幻觉会被标成 `contradicted`，和有据可查的结论区分开。按需选择精简/提示/完整版学习（**主要是详细程度的区分**） 这三种学习笔记之后，使用提供的**选择题测验和 FSRS 间隔复习卡片，进一步巩固此次改动对应知识点，同时复习之前不牢固的知识点。**\n\n```bash\npip install ahadiff\nahadiff learn HEAD~1..HEAD   # 学最近一次提交的改动\nahadiff serve                # 打开本地 WebUI\n```\n\n### 核心特点\n\n- **笔记带证据**：每条结论对应到 file:line，五种验证状态区分事实与幻觉，避免AI幻觉问题\n- **学习闭环**：每次改动生成课程 → 选择题测验 → FSRS 间隔复习（**避免改动的知识点遗忘**），可导出 Anki 卡片接入自己的知识软件\n- **BYOK**：自带 API key，支持 OpenAI / Claude / Gemini / DeepSeek / Azure 等 8 种格式\n- **10 种来源**：支持 git commit，暂存区、补丁文件、目录对比等十种来源\n- **概念图谱**：多次学习后，**重复出现的概念自动连成知识网络**\n- 还可扩展玩法，不一定局限于写的代码改动，能够进行各种知识点学习测验复习一条龙等\n\n### 界面截图\n\n![课程页：每条结论绑定具体代码行](https://agi-is-going-to-arrive.github.io/ahadiff/video/public/screenshots/zh/zh-lesson.png)\n\n<img width=\"3288\" height=\"1924\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cce07650-df2c-460a-bb24-8599ff208a5c\" />\n\n<img width=\"2512\" height=\"1928\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2694b589-e9a3-4a2a-87c4-43fb1c932d6c\" />\n\n<img width=\"2388\" height=\"1876\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/508d1b75-e213-4cc4-aa72-ed7d15805362\" />\n\n<img width=\"2674\" height=\"1904\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/82c661df-080d-44e4-87db-148a0a3388a0\" />",
-    "created_at": "2026-06-24T02:06:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10430"
   }
 ]
