@@ -1,5 +1,13 @@
 [
   {
+    "id": 10546,
+    "title": "【开源自荐】qq-ai-bot：OneBot 11 + ACP 的 QQ ↔ AI 自托管脚手架",
+    "content": "- 项目地址：https://github.com/happysnaker/qq-ai-bot\n- 项目主页：https://happysnaker.github.io/qq-ai-bot/\n- Docker 演示：https://github.com/happysnaker/qq-ai-bot/blob/main/docs/docker-quickstart.md\n- 部署矩阵：https://github.com/happysnaker/qq-ai-bot/blob/main/docs/deployment-matrix.md\n- 许可证：MIT\n\n---\n\n## 项目简介\n\n`qq-ai-bot` 是一个把 **QQ / OneBot 11** 接到 **本地 AI agent** 的自托管脚手架。\n\n它前面兼容 **NapCat / LLOneBot** 这类 OneBot 11 实现，后面接 **ACP-compatible agent**。重点不是做一个新的聊天 UI，而是把消息入口、会话状态、进度回传、Docker 演示和部署文档整理成一个可以直接跑起来的 **QQ ↔ AI 基础设施仓库**。\n\n如果你已经有本地 agent，或者想验证一条完整的 **QQ -> OneBot -> bot bridge -> agent runtime** 链路，这个项目会比纯 demo 型聊天机器人更实用一些。\n\n---\n\n## 主要功能\n\n- 兼容 **OneBot 11 / NapCat / LLOneBot**\n- 私聊、群聊独立会话，群聊支持仅 `@机器人` 触发\n- **ACP session** 复用与持久化恢复\n- 把 agent 的处理中进度实时回传到 QQ\n- 图片可自动转给 agent\n- 对文件 / 语音 / 视频等暂未直传的 richer media，会显式告诉 agent “当前未读到附件”，避免静默丢失\n- 提供 `/metrics`、`/readyz`、`/status` 等偏运维能力\n- 内置轻量入站去重、correlation ID 等排障信号\n- 仓库自带 **NapCat + qq-ai-bot + mock ACP agent** 的最小 Docker demo\n\n---\n\n## 这个项目比较特别的地方\n\n1. **更像消息入口层 / bot 脚手架，而不是另一个聊天玩具。**\n   核心定位是 OneBot transport 和本地 agent runtime 之间的桥接层。\n\n2. **可以先用 mock agent 跑通全链路，再替换成自己的 agent。**\n   对想验证接线、WS 模式、会话状态和进度回传的人比较友好。\n\n3. **文档相对完整。**\n   项目介绍、特性、快速开始、Docker demo、FAQ、部署矩阵、架构说明、Roadmap、Contributing、Security 都已经补齐。\n\n4. **不是只会“能跑”，也补了一些工程化细节。**\n   比如 session persistence、progress streaming、observability、轻量去重、richer-media fallback 这些更接近真实部署痛点的部分。\n\n5. **已经进入 OneBot 生态页。**\n   所以它更像一个可复用的 bot 基础设施项目，而不是纯自娱自乐的小作品。\n\n---\n\n## 截图\n\n架构图：\n\n![qq-ai-bot architecture](https://raw.githubusercontent.com/happysnaker/qq-ai-bot/main/assets/architecture-overview.png)\n\n进度回传示意：\n\n![qq-ai-bot progress](https://raw.githubusercontent.com/happysnaker/qq-ai-bot/main/assets/progress-demo.png)\n\n---\n\n如果一句话概括，我会把它介绍成：\n\n> 一个基于 **OneBot 11 + ACP** 的 **QQ ↔ AI 自托管脚手架**，带 **persistent sessions、progress streaming、Docker demo**，更像 bot 基础设施而不是聊天玩具。\n",
+    "created_at": "2026-07-02T22:16:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10546"
+  },
+  {
     "id": 10545,
     "title": "【开源自荐】吆喝（yaohe）：把开源项目宣传变成一条命令，按各渠道规则合规投递（一个 agent skill）",
     "content": "吆喝是一个开源（MIT）的 skill，把「写完开源项目投哪儿、怎么投」这件事变成一条 `/promote` 命令，给你的项目吆喝一嗓子。\n\n项目地址：https://github.com/nmhjklnm/yaohe\n\n![yaohe](https://raw.githubusercontent.com/nmhjklnm/yaohe/main/docs/assets/banner.png)\n\n宣传渠道很多：阮一峰周刊自荐、HelloGitHub、GitHubDaily、Show HN、V2EX……每个渠道格式、规则各不相同，手动投一圈很花时间，还容易因为格式不对被无声淘汰或被判 spam。吆喝的做法：\n\n- 读你的仓库，提炼项目定位、目标人群和亮点\n- 每个渠道单独定制文案：内置 20 个渠道的实证规格，提交方式、格式要求、真实命中样例、社区红线都逐渠道核实过\n- 分三级自动化：issue/PR 型渠道确认后用 `gh` 直接提交；表单型给稿件和逐字段指引；社区发帖型（HN、V2EX、Reddit）只出稿不代发，机器代发社区帖等于 spam\n- 投递日志写入 `PROMO-LOG.md`，同渠道 30 天内不重复投\n\n渠道规格是独立的 markdown 文件，欢迎 PR 添加新渠道。\n\n安装：\n\n```\nclaude plugin marketplace add nmhjklnm/yaohe\nclaude plugin install yaohe\n```\n\n开源协议：MIT\n",
@@ -800,13 +808,5 @@
     "created_at": "2026-06-25T07:05:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10445"
-  },
-  {
-    "id": 10444,
-    "title": "【开源推荐】网站存档工具，扒掉js，把网站打包成一个可执行文件",
-    "content": "**kage**（日语影的意思）会将一个网站克隆到一个文件夹中，供你离线浏览，并剥离其中的所有脚本。它会用真实的无头 Chrome 打开每个页面，等待页面加载稳定，对人类所看到的 DOM 进行快照，然后删除所有 JavaScript，并将 CSS、图片和字体下载到本地路径。最终落在磁盘上的内容看起来和线上网站一模一样，却不会运行任何代码。\nhttps://github.com/tamnd/kage\n<img src=\"https://github.com/tamnd/kage/raw/main/docs/static/demo.gif\"/>\n有个问题你应该也遇到过。你在某个想保存的页面上点了\"另存为\"，半年后再打开，却发现屏幕一片空白、加载圈永远转个不停，又或者那份副本还在试图连接一个早已不存在的服务器。这个页面其实从来就不属于你——它不过是别人 JavaScript 的一个瘦客户端。\n**kage** 走的是另一条路。它驱动一个真实的浏览器，让页面完成它该做的一切，抓取最终结果，然后把所有脚本统统扒掉。没有追踪，没有网络请求，没有意外。剩下的只是 `.html` 文件——你可以直接从磁盘打开，发给朋友，或打包成一个文件，然后尘封十年。\n完整文档和指南位于 [kage.tamnd.com](https://kage.tamnd.com/)。",
-    "created_at": "2026-06-25T06:38:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10444"
   }
 ]
