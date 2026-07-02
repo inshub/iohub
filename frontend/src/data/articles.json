@@ -1,5 +1,37 @@
 [
   {
+    "id": 10545,
+    "title": "【开源自荐】吆喝（yaohe）：把开源项目宣传变成一条命令，按各渠道规则合规投递（Claude Code 插件）",
+    "content": "吆喝是一个开源（MIT）的 Claude Code 插件，把「写完开源项目投哪儿、怎么投」这件事变成一条 `/promote` 命令，给你的项目吆喝一嗓子。\n\n项目地址：https://github.com/nmhjklnm/yaohe\n\n![yaohe](https://raw.githubusercontent.com/nmhjklnm/yaohe/main/docs/assets/banner.png)\n\n宣传渠道很多：阮一峰周刊自荐、HelloGitHub、GitHubDaily、Show HN、V2EX……每个渠道格式、规则各不相同，手动投一圈很花时间，还容易因为格式不对被无声淘汰或被判 spam。吆喝的做法：\n\n- 读你的仓库，提炼项目定位、目标人群和亮点\n- 每个渠道单独定制文案：内置 20 个渠道的实证规格，提交方式、格式要求、真实命中样例、社区红线都逐渠道核实过\n- 分三级自动化：issue/PR 型渠道确认后用 `gh` 直接提交；表单型给稿件和逐字段指引；社区发帖型（HN、V2EX、Reddit）只出稿不代发，机器代发社区帖等于 spam\n- 投递日志写入 `PROMO-LOG.md`，同渠道 30 天内不重复投\n\n渠道规格是独立的 markdown 文件，欢迎 PR 添加新渠道。\n\n安装：\n\n```\nclaude plugin marketplace add nmhjklnm/yaohe\nclaude plugin install yaohe\n```\n\n开源协议：MIT\n",
+    "created_at": "2026-07-02T17:06:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10545"
+  },
+  {
+    "id": 10544,
+    "title": "【项目自荐】把飞书文档导出为 Markdown 的浏览器扩展",
+    "content": "larksnap 是一个开源的 Chrome 扩展(MV3),用来把飞书 / Lark 文档（私有化的飞书）导出成 Markdown,文档里的图片和附件会一并打包成 zip。它也支持导出 PDF 和 HTML,以及把任意网页转成 Markdown。\n\n它的做法是复用浏览器里已登录的会话和飞书网页的内部接口,在文档页的侧边栏直接导出,不需要后端服务,也不需要去开放平台申请 API 权限。全部处理在本地完成,文档内容不上传。兼容私有化部署的自建域名。\n\n常见用途是把飞书文档转成 Markdown 后交给大模型 / Claude Code 作为参考资料,省去\"先导出 PDF 或 Word、再手动转换格式、再单独整理图片\"的步骤。扩展还附带一个本地桥接,可以让 Claude Code 这类命令行工具直接调用它来完成导出。\n\n开源协议 Apache-2.0。\n项目地址:https://github.com/AmbroseX/larksnap\n\n",
+    "created_at": "2026-07-02T16:20:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10544"
+  },
+  {
+    "id": 10543,
+    "title": "【项目自荐】SharkTTY - 用手机远程控制 Mac 桌面的 SSH/Mosh 终端",
+    "content": "项目地址：https://apps.apple.com/app/id6774512379\n官网（含 Mac 端下载）：https://safafish.com/sharktty\n\n项目简介：\nSharkTTY 是一款 iPhone / iPad 上的 SSH/Mosh 终端，同时能把你的手机变成\nMac 的远程桌面遥控器：装一个 Mac 端 agent，就能在手机上看屏、用虚拟鼠标和\n悬浮键盘操控，甚至在 Mac 锁屏时也能控制。全部功能免费。\n\n![Demo](https://downloads.safafish.com/image/sharktty/shellandmouse.png)\n\n![Demo](https://downloads.safafish.com/image/sharktty/deskandkeyboard.PNG)\n\n![Demo](https://downloads.safafish.com/image/sharktty/sharktty-desk-multiscreen-ad.153ac1e5.png)\n\n\n核心特性：\n🖥️ 手机遥控 Mac 桌面：多屏同看（并排/堆叠/四宫格/画中画），带放大镜的虚拟\n  鼠标做像素级精准点击，可移动缩放的悬浮键盘（全符号 + ⌘⌥⌃ + F 键）\n🔌 完整 SSH/Mosh 终端：Mosh 让会话在切网络、断线、休眠后自动重连不掉线\n🔊 实时音频 + 反向麦克风：听得到 Mac 的声音，也能把手机当它的麦克风\n📁 SFTP 文件传输 + SSH 密钥管理（生成/导入 ed25519 等），tmux 友好\n🌍 支持 6 种语言，自适应画质（xHD/HD/SD，信号差时自动降档）\n\n技术亮点：\n- Mosh 漫游：基于 UDP 的状态同步，网络切换/丢包也不断会话（Rust 核心）\n- 直连优先、中继兜底：局域网内直连，出门走中继，支持局域网唤醒\n- 锁屏也能控制：通过登录窗口会话捕获，Mac 锁屏时远程桌面依然可用\n- 端到端配对加密，密钥存于 Keychain，不经服务器明文\n\n适用场景：\n- 出门在外用手机/iPad 临时救火：改配置、重启服务、看日志\n- 忘在公司/家里的 Mac，远程拿文件、跑任务、点两下 GUI\n- 通勤路上连 VPS 运维，切 Wi-Fi/蜂窝也不掉线\n\n价格：免费（仅有可选打赏内购）\n平台：iOS / iPadOS + macOS（Mac 端 agent）",
+    "created_at": "2026-07-02T14:49:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10543"
+  },
+  {
+    "id": 10542,
+    "title": "【网站推荐】思辨录：一部关于思维谬误与认知偏见的现代启示录",
+    "content": " 中文世界里关于逻辑谬误和认知偏见的内容，大多数落在两个极端：一头是学术论文，概念严谨但阅读门槛高；另一头是社交媒体上的「一张图教你识破 XX 偏见」，好读，却经不起推敲。\n\n思辨录就是为了填补这个空白。\n\n<img width=\"1394\" height=\"940\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3d2483f9-eaf7-4416-abdc-0f9ff9769432\" />\n\n 这是一个面向中文读者的批判性思维在线参考书，目前收录了 80 多个条目，覆盖逻辑谬误和认知偏见两大维度。每一个条目都遵循同样的构建方式：从一个切中日常生活的问题切入，用寓言故事建立平视的共鸣，再沉入认知科学的底层机制分析，最后给出可操作的识别信号和应对策略。\n\n<img width=\"1410\" height=\"1186\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a2a84ec5-874d-411b-bcf0-5df3e82e026a\" />\n\n这本「指南」有一条自己给自己划定的底线——逻辑在这里是工具，不是武器。它不教你如何在争论中压倒对方，也不给任何人群贴上「不够理性」的标签。它反复提醒读者的事情只有一件：\n\n> 每个人（包括作者）都会犯错，认知偏差和逻辑失误是人类共同的局限，不是某一类人的专属缺陷。识别它们的目的，是让讨论更接近真实，而不是让你在辩论中得分。\n\n<img width=\"1392\" height=\"1196\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4cdfeceb-163d-48ee-9804-f3b835e2215f\" />\n\n思辨录还有一个互动自测的功能，如果你想在噪音中找到一点结构，在站队之外找到一点清醒，不妨来看看。\n\n传送门：https://mind-guards.com/\n",
+    "created_at": "2026-07-02T14:39:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10542"
+  },
+  {
     "id": 10541,
     "title": "【工具自荐】YouThere：把一张自拍变成 AI 体育看台 Fan-Cam 照片或短视频",
     "content": "## YouThere：把一张自拍变成 AI 体育看台 Fan-Cam 照片或短视频\n\n网站： https://youthere.live/en?utm_source=github&utm_medium=issue&utm_campaign=tool_submission  \n视频生成入口： https://youthere.live/en/create/video?utm_source=github&utm_medium=issue&utm_campaign=tool_submission\n\nYouThere 是一个聚焦在特定社交媒体场景上的 AI 创作者工具：生成“像是被体育场看台镜头拍到”的 fan-cam 效果。\n\n用户上传一张自己有权使用的自拍或头像，先生成一张逼真的、fan-made 的体育场看台图片，再把选中的图片转成短视频，用于 TikTok、Reels、Shorts 或比赛日社交内容。\n\n它是为了做有趣的球迷内容，不是为了伪装成真实到场或官方转播画面。\n\n## 为什么做这个\n\n通用 AI 图片和视频工具也能生成体育主题画面，但通常需要反复写 Prompt、调参数、清理错误。\n\n而这个场景下，用户通常不想要海报、卡通头像或普通足球插画。他们想要的是一种像体育转播中快速扫到观众席的画面：\n\n- “你真的在看台上吗？”\n- “这看起来像直播镜头拍到的。”\n- “我能不能生成一个比赛日版本的自己？”\n\nYouThere 把这个流程做成一个聚焦产品，而不是让用户从零开始写提示词。\n\n## 它能做什么\n\n- 用一张用户上传的照片生成体育场 fan-cam 风格图片\n- 把生成的 fan-cam 图片继续转成短视频\n- 适合足球、世界杯风格内容和比赛日社交发布\n- 适合 TikTok、Reels、Shorts、Stories 等竖屏社交格式\n- 明确定位为 unofficial、fan-made AI content\n\n## 有什么不同\n\n大多数 AI 图片工具都很宽泛。YouThere 刻意做得很窄。\n\n目标不是“生成任意图片”。  \n目标是：用你的照片生成一张可信的体育场观众席抓拍感画面。\n\n所以产品重点放在：\n\n- 真实 fan-cam 构图\n- 人物身份一致性\n- 体育场和人群氛围\n- 短视频社交分享\n- 清晰的非官方安全边界\n\n## 安全边界\n\nYouThere 与 FIFA、任何赛事、球队、联赛、场馆、足协、赞助商或转播方都没有隶属、合作或背书关系。\n\n产品设计上会避免官方 logo、队徽、转播叠加层、奖杯复制品、真实球员肖像，以及误导别人认为用户真实到场的表达。\n\n## 适合谁\n\n- 想做比赛日社交内容的足球球迷\n- 需要体育主题 AI 内容的社交创作者\n- 关注 AI 图片和视频工具的人\n- 对 stadium fan-cam trend 感兴趣的人\n- 想测试 image-to-video 短视频工作流的创作者\n\n## 使用场景\n\n- 把自拍变成足球场看台 fan-cam 图片\n- 做一张“像是在观众席被拍到”的比赛日图片\n- 从 AI 图片生成短的球迷看台视频\n- 用个人化视觉参与世界杯或足球话题\n- 不学 Prompt，也能做一个有趣的 AI 球迷照片\n\n## 试用\n\n网站： https://youthere.live/en?utm_source=github&utm_medium=issue&utm_campaign=tool_submission  \n生成视频： https://youthere.live/en/create/video?utm_source=github&utm_medium=issue&utm_campaign=tool_submission  \n相关文章： https://youthere.live/en/blog/seedance-2-5-stadium-fan-cam-video?utm_source=github&utm_medium=issue&utm_campaign=tool_submission",
@@ -776,37 +808,5 @@
     "created_at": "2026-06-25T06:38:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10444"
-  },
-  {
-    "id": 10443,
-    "title": "【工具自荐】应时|赶集圩日通 一个知道赶集趁圩日历的微信小程序",
-    "content": "<img width=\"1536\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9c1b6858-8ed9-404d-a371-1945444b63b0\" />",
-    "created_at": "2026-06-25T05:15:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10443"
-  },
-  {
-    "id": 10442,
-    "title": "【工具自荐】Show Me the Codes：给独立开发者展示产品的个人主页",
-    "content": "项目网址：[showmethe.codes](https://showmethe.codes)  \n示例主页：[showmethe.codes/corey](https://showmethe.codes/corey)\n\n很多独立开发者会同时做 SaaS、小工具、开源项目、newsletter、播客，但这些作品常常散在 X、GitHub、Product Hunt、个人博客和各种落地页里，很难用一个链接说清楚“我到底做了什么”。\n\n[Show Me the Codes](https://showmethe.codes) 想做 indie hackers 的 link-in-bio：每个 maker 可以认领一个用户名，得到 `showmethe.codes/<you>`，然后把自己做过的产品放在一个 bento 卡片墙里展示出来。\n\n主要功能：\n\n- 认领唯一 username，生成公开个人主页；\n- 用 bento 卡片展示产品、链接、地点和社交账号；\n- 每个 maker 都有连续会员编号，例如 `#0001`；\n- 支持产品状态标记，比如 building、live、for sale、acquired；\n- 支持中英文，深色 Tokyo Night 风格；\n- 免费使用，Pro 一次性解锁自定义域名、访问统计、主题和去品牌标识。\n\n这是我做的独立项目，面向 indie hacker、solopreneur 和 building in public 的开发者。欢迎大家认领自己的名字，也欢迎反馈还应该支持哪些展示方式。\n\n\n![Show Me the Codes OG](https://showmethe.codes/api/og/site?v=1)",
-    "created_at": "2026-06-25T01:33:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10442"
-  },
-  {
-    "id": 10441,
-    "title": "【文章自荐】夏至日测地球：利用太阳影子计算地球半径",
-    "content": "上周日是端午假期，也刚好是北半球的夏至日，在正午时做了一次日影实验，测量并计算地球大小\n\n[夏至日测地球：利用太阳影子计算地球半径](https://www.longluo.me/blog/summer-solstice-earth-radius-calculation/)",
-    "created_at": "2026-06-25T01:32:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10441"
-  },
-  {
-    "id": 10440,
-    "title": "「开源自荐」2026 世界杯实时战报 ⚽-worldcup-report",
-    "content": "**项目地址：**[https://github.com/dgjin/worldcup-report/](https://github.com/dgjin/worldcup-report/)\n# 2026 世界杯实时战报 ⚽\n\n一个数据可实时更新的 2026 世界杯（美/加/墨，48 队）战报应用。体育热血风，覆盖八大板块，含 AI 冠军预测与球迷投票。\n\n**线上地址**: [https://worldcup-report.pages.dev](https://worldcup-report.pages.dev)\n\n## 八大板块\n\n| Tab | 内容 |\n|---|---|\n| 积分榜 | 12 组小组赛积分榜，前二晋级（绿）/ 最佳第三 8 席（金）高亮，顶部今日速递含进球队员 |\n| 射手榜 | 进球排序，前三领奖台，含点球数，中文名 + 国旗展示 |\n| 淘汰赛 | 近期赛程（按日）+ 冠军之路漏斗 + 依当前积分推演的晋级席位 |\n| 预测 | 9 维加权冠军预测模型（FIFA 排名 / 阵容身价 / 状态 / 底蕴 / 攻防 / 伤病 / 大赛经验 / 势头）+ 球迷投票（冠军/亚军/季军） |\n| 球队 | 点选球队看积分、近期战绩、核心射手，按分组折叠呈现 |\n| 数据 | 各组进球、各轮进球、射手榜 Top10（recharts）+ 关键指标 |\n| 战报 | 由真实比分模板化生成的中文战报，可按\"爆冷/血洗/进球大战\"等标签筛选 |\n| 精彩瞬间 | ABC News 专业赛事图集，灯箱浏览 + 照片点赞 |\n\n## 数据架构\n\n三级数据回退，确保任何环境都有数据：\n\n```\n前端每 60s 自动轮询\n    ↓\n后端 /api/wc/*（Cloudflare Pages Functions）\n    ├─ 1. football-data.org 实时 API（收费版，含完整赛程/积分/射手）\n    ├─ 2. Supabase 数据库缓存（自动同步 + 进球数据注入）\n    └─ 3. data/snapshot.json 快照（离线兜底）\n```\n\n### Supabase 后端\n\n| 表 | 用途 |\n|---|---|\n| `wc_data` | 积分榜 / 射手榜 / 球队名单缓存 |\n| `wc_matches` | 比赛数据（含进球详情注入） |\n| `wc_sync_meta` | 同步元信息（时间戳 / 数据源） |\n| `gallery_likes` | 照片点赞 + 应用全局点赞 + 冠军投票（复用表，键前缀区分） |\n\n### 进球数据注入\n\nfootball-data.org API 的 matches 端点不返回 `goals` 字段。应用通过 Supabase 种子数据双策略注入进球信息：\n- **策略 1**：按 match ID 精确匹配\n- **策略 2**：按球队名对模糊匹配（种子数据 ID 1001-1072 vs live API ID 537xxx）\n\n### 自动同步\n\n通过 `/api/sync` 端点 + Cron Worker 定时拉取 football-data.org 最新数据并写入 Supabase，保证数据库缓存始终最新。\n\n## 冠军预测模型\n\n9 维加权评分 + softmax 概率归一化：\n\n| 维度 | 权重 | 数据来源 |\n|---|---|---|\n| FIFA 排名 | 18% | FIFA.com（2026.06.11） |\n| 阵容身价 | 16% | Transfermarkt（2026.06） |\n| 小组赛状态 | 14% | football-data.org 实时 API |\n| 世界杯底蕴 | 10% | FIFA 官方历史档案 |\n| 伤病跟踪 | 10% | ESPN / BBC / Sky Sports |\n| 攻击效率 | 8% | football-data.org 实时 API |\n| 防守稳固 | 8% | football-data.org 实时 API |\n| 大赛经验 | 8% | 世界杯冠军/决赛历史 |\n| 近 3 场势头 | 8% | football-data.org 实时 API |\n| 东道主加分 | +4 | — |\n\n> 所有知识库数据均来自公开可验证来源，未收录球队使用明确默认分，不做猜测。模型仅供参考娱乐。\n\n## 球迷投票\n\n预测页底部内置投票功能：\n- 选择冠军 / 亚军 / 季军（三个名次不可重复）\n- 提交后实时展示各名次 Top 5 球队得票分布\n- localStorage 防重复投票\n- 乐观更新 + 失败回滚\n\n## 快速开始\n\n```bash\nnpm install\nnpm run dev          # http://localhost:5273\n```\n\n### 环境变量\n\n复制 `.env.example` 为 `.env`，按需填写：\n\n```env\nFOOTBALL_DATA_TOKEN=xxx        # football-data.org API token（必填，实时数据）\nSUPABASE_URL=xxx               # Supabase 项目 URL（必填，数据库缓存）\nSUPABASE_SERVICE_ROLE_KEY=xxx  # Supabase service_role key（必填）\nSYNC_SECRET=xxx                # /api/sync 鉴权密钥（可选）\nNEWSAPI_KEY=xxx                # NewsAPI key（可选，精彩瞬间图集）\n```\n\n> 不配置也能跑 —— 自动回退到内置快照数据。\n\n## 脚本\n\n```bash\nnpm run dev        # 本地开发（Express + Vite 中间件）\nnpm run build      # 构建前端到 dist/client\nnpm start          # 运行生产构建\nnpm test           # 数据转换 / 战报生成单元测试\nnpm run lint       # tsc 类型检查\nnpm run snapshot   # 重新生成 data/snapshot.json 快照\nnpm run deploy     # 构建 + 部署到 Cloudflare Pages（Production）\nnpm run collect    # 收集精彩瞬间图集到本地缓存\n```\n\n## 部署\n\n项目部署在 **Cloudflare Pages**，使用 Pages Functions 提供 API：\n\n```\nwrangler pages deploy dist/client --project-name=worldcup-report --branch=main\n```\n\nPages Functions 路由：\n- `/api/wc/[type]` — 赛事数据（standings / scorers / matches / teams）\n- `/api/wc/gallery` — 精彩瞬间图集\n- `/api/wc/gallery/likes` — 照片点赞\n- `/api/app/likes` — 应用全局点赞\n- `/api/app/vote` — 冠军投票\n- `/api/sync` — 数据同步（Cron 触发）\n\n## 技术栈\n\nReact 19 · Vite 6 · Tailwind v4 · TypeScript · Cloudflare Pages Functions · Supabase · Express · recharts · motion · lucide-react\n\n## 说明\n\n数据仅供学习演示。国旗来自 [flagcdn](https://flagcdn.com/)。\n",
-    "created_at": "2026-06-25T01:15:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10440"
   }
 ]
