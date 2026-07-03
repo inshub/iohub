@@ -1,5 +1,13 @@
 [
   {
+    "id": 10560,
+    "title": "【开源自荐】skx —— 一行命令审计你的 AI 每次会话在白付多少 token",
+    "content": "你好,自荐一个刚开源的小工具。\n\n**skx(Skill X-ray)**,给电脑上的 AI 编程环境\"拍片子\"的 CLI:一行 `skx audit`,告诉你 Claude Code / Codex / Cursor 每次开新会话时,到底有多少 token 被固定上下文悄悄吃掉。\n\n起因是我自己跑了一次,发现每次会话有 **5408 个 token** 属于固定成本:已装 skill 的描述约 4639,CLAUDE.md / AGENTS.md 及其 @import 链约 769。代码还没开始写,上下文窗口和钱已经先少了一截。\n\n它做的事:\n\n- 扫描 CLAUDE.md / AGENTS.md / GEMINI.md / .cursorrules / copilot-instructions 这些指令文件,自动跟随 @import 链\n- 统计各宿主已装 skill 的 description 固定开销,列出最贵的几个\n- 检测断掉的 @import、坏软链、同名冲突、npm 全局包 bin 遮蔽系统命令(真实案例:某包注册了 `make`)\n- 输出终端 / Markdown / JSON 三种格式的体检报告\n- 附带声明式管控:`profile.json` 定义每台宿主该装什么,`skx curate --apply` 一键对齐\n\n单文件 Python,零依赖,macOS/Linux 开箱即用,MIT。\n\n安装:\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/coikexxx/skx/main/install.sh | sh\n```\n\n仓库:https://github.com/coikexxx/skx\n\n谢谢!",
+    "created_at": "2026-07-03T18:10:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10560"
+  },
+  {
     "id": 10559,
     "title": "【开源自荐】Claude 中国用户检测工具 —— 一键识别你是否被 Claude Code 标记为中国用户",
     "content": "# 【开源自荐】Claude 中国用户检测工具 —— 一键识别你是否被 Claude Code 标记为中国用户\n\n**项目地址：** https://github.com/gokuscraper/claude-tester\n\n**在线体验：** https://claude-tester-six.vercel.app/\n\n---\n\n## 截图展示\n\n<img width=\"1920\" height=\"912\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a7b062aa-d164-4dc9-ae7a-c40057f27e2d\" />\n\n---\n\n## 具体介绍\n\n当 Claude Code 通过 `ANTHROPIC_BASE_URL` 指向中转/代理节点时，会读取系统时区与中转域名，通过 Unicode 隐写术编码到 system prompt 中，用于判断用户是否来自中国地区。\n\n本工具模拟其中部分检测逻辑（时区检测），并结合 5 项浏览器环境指纹，给出 **0–100 的加权评分**，帮助你了解自己的浏览器环境是否可能被判定为中国用户。\n\n---\n\n## 核心功能\n\n- **6 项检测信号**：系统时区 / 浏览器语言 / 中文字体 / Intl 区域 / 时区偏移 / Emoji 风格\n- **加权评分系统**：每项信号按命中强度 × 权重累加，满分 100\n- **多语言支持**：中文 / English 一键切换\n- **100% 本地运行**：所有检测在浏览器内完成，不上传任何数据\n- **Dario Amodei 表情反馈**：检测结果通过 Dario 真实照片生动展示\n\n---\n\n## 技术栈\n\n- **Vite** + 原生 TypeScript\n- 纯客户端，零服务端依赖\n- 部署于 Vercel",
@@ -800,13 +808,5 @@
     "created_at": "2026-06-25T15:47:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10458"
-  },
-  {
-    "id": 10457,
-    "title": "90+ 全屏免费在线全屏工具：恶搞全屏、时间全屏、OLED坏像素点测试全屏等等",
-    "content": "https://screentools.co\n\n<img width=\"2163\" height=\"1203\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ae0b33c1-7f2a-4b51-b1d1-12706c562057\" />",
-    "created_at": "2026-06-25T15:00:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10457"
   }
 ]
