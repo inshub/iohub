@@ -24,14 +24,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/10572"
   },
   {
-    "id": 10571,
-    "title": "【自荐】Inches to CM：英寸厘米换算、尺寸表和屏幕尺寸参考工具",
-    "content": "项目地址：[Inches to CM converter](https://inches-to-cm.net/?utm_source=github_ruanyf_weekly&utm_medium=backlink&utm_campaign=inches_to_cm_net_cold_start_202607&utm_content=weekly_issue)\n\n简介：一个面向日常尺寸、屏幕尺寸、打印和规格表场景的英寸厘米换算网站，提供常用换算、chart 页面和具体数值页面，方便英文用户快速查尺寸。\n\n适合场景：单位换算、制造/硬件尺寸核对、英文长尾 SEO 小工具。\n\n提交说明：独立开发的小工具网站，自荐给科技爱好者/独立开发者参考；链接带 UTM 仅用于区分来源统计。",
-    "created_at": "2026-07-04T10:20:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10571"
-  },
-  {
     "id": 10570,
     "title": "【自荐】Inches to MM：面向制造、五金和钻头尺寸的英寸毫米换算工具",
     "content": "项目地址：[Inches to MM converter](https://inches-to-mm.com/?utm_source=github_ruanyf_weekly&utm_medium=backlink&utm_campaign=inches_to_mm_com_cold_start_202607&utm_content=weekly_issue)\n\n简介：一个轻量的英寸到毫米换算工具，面向制造、五金、钻头尺寸、BOM 和公差检查场景。页面强调直接给出结果、常见尺寸和可打印参考，适合需要快速核对 inch / mm 的英文用户。\n\n适合场景：单位换算、制造/硬件尺寸核对、英文长尾 SEO 小工具。\n\n提交说明：独立开发的小工具网站，自荐给科技爱好者/独立开发者参考；链接带 UTM 仅用于区分来源统计。",
@@ -65,7 +57,7 @@
   },
   {
     "id": 10566,
-    "title": "【开源自荐】OpenConnector：让 AI Agent 接入 800+ SaaS 应用的开源连接层",
+    "title": "【开源自荐】OpenConnector：让 AI Agent 接入 900+ SaaS 应用的开源连接层",
     "content": "项目名：OpenConnector\nGitHub：https://github.com/oomol-lab/open-connector\n协议：Apache-2.0\n\nComposio / Nango 的开源替代方案，为 AI Agent 提供统一的鉴权和工具调用层，让 Agent 可靠地访问用户在外部应用中的账号。目前已收录 900+ 服务商、9000+ 预置 Action（GitHub、Gmail、Notion、Slack、Supabase 等），可本地运行或部署到 Cloudflare。\n\n功能特性\n\n- 现成目录：900+ 服务商、9000+ 预置 Action，覆盖办公、开发、数据、通讯、AI 等\n- 统一鉴权：一个运行时内支持 API Key、OAuth2、自定义凭证及免鉴权应用\n- 可审查：请求/响应 Schema、所需 scope、执行器都在源码里，可扩展\n- 多接口：Connector SDK、MCP、HTTP API、OpenAPI，以及本地 Web 控制台\n- 多部署：本地 Docker / Node.js，或 Cloudflare（Workers、D1、R2）\n- 运行时护栏：scope、运行时 token、Action 允许/拦截策略、脱敏运行日志\n\n用法示例\n\nDocker Compose 启动后，打开 http://localhost:3000 即可使用 Web 控制台。调用一个 Action：\n\n```bash\ncurl -s -X POST http://localhost:3000/v1/actions/github.get_current_user \\\n  -H 'content-type: application/json' \\\n  -d '{\"input\":{}}'\n```\n\n<img width=\"2504\" height=\"1996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/385a7c6d-cff4-42cb-81b8-f9e04eb55e27\" />",
     "created_at": "2026-07-04T08:36:26Z",
     "labels": [],
@@ -804,5 +796,15 @@
     "created_at": "2026-06-27T03:40:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10472"
+  },
+  {
+    "id": 10471,
+    "title": "【开源自荐】涟漪鱼缸 RippleAquarium — 浏览器里的实时 3D 水族箱",
+    "content": "涟漪鱼缸，一个纯前端、打开网页即玩的 3D 水族箱，用 Three.js / WebGL 实现。\n\n ![涟漪鱼缸演示](https://raw.githubusercontent.com/SeanWong17/RippleAquarium/main/assets/demo.webp)\n\n一整缸鱼用 boids 群体行为自主游动，会聚集、转向、互相避让；鱼游近水面或鼠标点击、拖动水面，都会荡开真实传播的水波；珊瑚在页面打开时从无到有慢慢生长。所有效果都是逐帧实时计算，而不是预录动画。\n\n技术上用均匀空间网格做邻居查询，把鱼群行为从 O(n²) 降到近 O(n)；主鱼群用实例化渲染；核心模拟逻辑带 Node 自带 test runner 的单元测试，无第三方依赖。项目静态部署在 GitHub Pages，开源（AGPL-3.0）。鱼群、水面涟漪等模块在多个开源项目基础上整合改造，来源已在 README 中标注。\n\n  - 在线演示：https://seanwong17.github.io/RippleAquarium/\n  - 仓库：https://github.com/SeanWong17/RippleAquarium",
+    "created_at": "2026-06-27T01:58:00Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/10471"
   }
 ]
