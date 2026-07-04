@@ -1,5 +1,45 @@
 [
   {
+    "id": 10569,
+    "title": "【开源自荐】增强 macOS 调度中心（Mission Control）- 在调度中心里直接关闭、退出窗口",
+    "content": "**项目名：** CloseUp\n**GitHub：** https://github.com/oomol-lab/CloseUp\n**协议：** GPL-3.0\n\n介绍：CloseUp 把窗口控制按钮**直接叠加到 macOS 原生调度中心**上——无需离开总览，就能关闭、最小化、最大化、隐藏或退出任意窗口，并且提供完整的键盘控制。免费、原生、开源。\n\n<p align=\"center\">\n  <img alt=\"叠加在调度中心缩略图上的窗口控制按钮\" src=\"https://raw.githubusercontent.com/oomol-lab/CloseUp/main/docs/images/overlay-light.png\" width=\"80%\">\n</p>\n\n## 功能特性\n\n- **在总览中关闭** —— 悬停到调度中心里的窗口缩略图上，点击红色的 × 即可立即关闭，无需先切换过去。\n- **覆盖每个窗口操作** —— 关闭、最小化、最大化、隐藏 App、退出 App。关闭 / 最小化 / 最大化是可以在设置里单独开关的按钮；隐藏和退出只要窗口支持就一直显示。\n- **完整键盘控制** —— 对指针所指的窗口执行原生操作：⌘W 关闭、⌘M 最小化、⌘F 最大化、⌘H 隐藏、⌘Q 退出，全部可重新映射。\n- **批量操作** —— ⌥⌘W 全部关闭、⌥⌘M 全部最小化、⌥⌘H 除指针所指窗口外全部隐藏。\n- **九种语言** —— English、简体中文、繁體中文、日本語、Français、Deutsch、Español、Português、Русский，App 内切换、即时生效。\n- **原生而不打扰** —— 一个被动式叠加层，绝不抢占调度中心自身的键盘处理；仅驻留菜单栏，无程序坞图标。\n- **隐私友好** —— 通过辅助功能（Accessibility）API 读取和操作窗口，**绝不录制屏幕**。\n- **自动更新** —— 通过 Sparkle 提供经签名、已公证的版本更新，另有可选的测试版通道。\n\n## 使用方法\n\n像往常一样打开调度中心（三指 / 四指上滑，或按调度中心键）。把指针悬停到任意窗口上就会显示控制按钮组，或者直接用键盘：\n\n| 操作 | 快捷键 | 作用对象 |\n|---|---|---|\n| 关闭窗口 | ⌘W | 指针所指的窗口 |\n| 最小化窗口 | ⌘M | 指针所指的窗口 |\n| 最大化窗口 | ⌘F | 指针所指的窗口 |\n| 隐藏 App | ⌘H | 指针所指的窗口 |\n| 退出 App | ⌘Q | 指针所指的窗口 |\n| 全部关闭 | ⌥⌘W | 所有窗口 |\n| 全部最小化 | ⌥⌘M | 所有窗口 |\n| 除此之外全部隐藏 | ⌥⌘H | 除指针所指窗口外的所有 App |\n\n每个快捷键都能在「设置 → 快捷键」里重新映射，也可以随时从菜单栏图标开关 CloseUp。\n\n<p align=\"center\">\n  <img alt=\"常规设置\" src=\"https://raw.githubusercontent.com/oomol-lab/CloseUp/main/docs/images/settings-general-zh-CN-light.png\" width=\"49%\">\n  <img alt=\"键盘快捷键设置\" src=\"https://raw.githubusercontent.com/oomol-lab/CloseUp/main/docs/images/settings-shortcuts-zh-CN-light.png\" width=\"49%\">\n</p>\n\n## 与同类产品对比\n\n\n| | CloseUp | Mission Control Close | Open Mission Control | Mission Control Plus |\n|---|---|---|---|---|\n| 价格 | 免费 | 一次性 £5 | 免费 | 付费（$8.99） |\n| 许可证 | 开源 GPL-3.0 | 闭源 | 开源 GPL-3.0 | 闭源 |\n| 窗口操作 | 关 / 最小化 / 最大化 / 隐藏 / 退出 | 仅关闭 | 关 / 最小化 / 最大化 | 关 / 最小化 / 退出 |\n| 批量操作 | 全部关闭 / 全部最小化 / 隐藏其余 | 全部关闭 | 未公开 | 未公开 |\n| 快捷键自定义 | 每个动作均可 | 未公开 | 固定 | 固定 |\n| 本地化 | 9 种语言，App 内切换 | 未公开 | 未公开 | 未公开 |",
+    "created_at": "2026-07-04T09:05:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10569"
+  },
+  {
+    "id": 10568,
+    "title": "【工具自荐】CADViewer—— 支持查看dwg、dxf和常用3d模型数据",
+    "content": "## 告别繁琐安装，浏览器里直接看 CAD\n\n在建筑设计、工程制图和 3D 建模领域，查看 DWG、DXF 或三维模型文件一直是件麻烦事。传统方案要么需要安装庞大的桌面软件（AutoCAD、SolidWorks），要么依赖付费的在线转换服务，不仅成本高，而且协作流程极其不畅。\n\n今天要介绍的 **CADViewer**，就是为解决这个问题而生的开源方案。它是一个基于 WebGL 和 Three.js 构建的纯前端 JavaScript SDK，让用户可以直接在浏览器中查看 2D 和 3D 模型文件，**无需安装任何插件，无需后端服务器**，所有解析和渲染都在浏览器本地完成。\n\n## 支持哪些格式？\n\nCADViewer 支持的格式覆盖了工程和设计领域的主流需求：\n\n- **DWG**：AutoCAD 原生格式，x-viewer 支持直接在浏览器中解析和渲染\n- **DXF**：AutoCAD 交换格式，支持包括对比功能在内的完整查看体验\n- **PDF**：工程图纸 PDF 文件的在线查看\n- **glTF**：三维模型的标准交换格式，支持建筑 BIM 模型和机械模型\n- **OBJ / FBX / STL**：通用的 3D 模型格式\n- **IFC**：建筑信息模型（BIM）标准格式\n- **BimTiles**：大规模 BIM 场景的分块加载格式\n- **STP / SETP**：STEP 三维模型格式\n\n无论你手头是二维的 CAD 图纸，还是三维的建筑信息模型，CADViewer 都能一站式搞定。\n\n## 技术亮点\n\n### 纯浏览器端运行\n所有文件解析和 3D 渲染完全在浏览器中完成，用户的图纸数据不会上传到任何服务器，**保证了数据安全**。这对于处理涉密图纸或敏感设计文件尤为重要。\n\n### 基于 Three.js\nx-viewer 构建在业界成熟的三维引擎 Three.js 之上，采用右手系 Y-Up 坐标系，与 glTF 标准保持一致，渲染性能出色。\n\n### 丰富的交互功能\n- 平移、旋转、缩放等基本视图操作\n- 图层管理、属性查看\n- DXF 文件双栏对比（支持一视口和两视口模式）\n- CAD 文件差异对比\n- 3D 模型的剖切、测量、标注\n- 内置编辑器功能，支持修改和重新导出\n\n\n## 在线体验\n\n想立刻体验 x-viewer 的强大功能？前往 **[cad.thingraph.site/home](https://cad.thingraph.site/home)** 即可在线查看和编辑你的 CAD 图纸与 3D 模型，完全免费，无需注册。\n\n",
+    "created_at": "2026-07-04T09:03:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10568"
+  },
+  {
+    "id": 10567,
+    "title": "【开源自荐】Continuum：一句话生成同一主角出演的连续 AI 短剧，跨集人物不漂移",
+    "content": "一句话介绍：给一个剧情设定和一个主角，它自动写剧本、拆分镜、用 AI 生成竖屏短剧，并且同一个主角在多集之间形象保持一致。\n\n做 AI 短剧最难的不是生成单个镜头，而是连续性——换一集、换一个镜头，主角的脸、发型、穿着就漂了。Continuum 的做法是让一个 agent 维护一份「剧集圣经」(Series Bible)，把主角的标准形象锁死，再注入到每一集、每一个镜头的生成里，所以跨集身份能对得上。\n\n![同一主角跨两集、四个差异很大的镜头](https://raw.githubusercontent.com/calderbuild/continuum/master/docs/assets/consistency.png)\n\n上图是同一个主角在两集、四个差异很大的镜头里的样子。用 Qwen-VL 当评委给一致性打分，在这条演示剧集上跨集身份一致性 0.98。\n\n一组 agent 沿流水线协作：编剧写本 → 拆分镜 → 摄影生成每个镜头 → 评委打分、不合格就进优化循环重渲染 → 剪辑拼接并烧录字幕。前端有一个实时「控制室」，把每个 agent 正在做的事流式展示出来。这些 agent 同时也暴露成了 MCP 工具，可以让别的 Agent 直接调用这套流水线。\n\n![流水线架构](https://raw.githubusercontent.com/calderbuild/continuum/master/docs/assets/architecture.png)\n\n- 技术栈：Qwen3 写剧本与优化提示词，Wan 生成 9:16 竖屏视频，Qwen-VL 做一致性评委；后端 Python + FastAPI（SSE 流式），剪辑用 ffmpeg。\n- 自部署，自带 DashScope API Key 即可运行，MIT 开源。\n- 仓库：https://github.com/calderbuild/continuum\n- 演示视频：https://youtu.be/L6g3dWjaJyA\n",
+    "created_at": "2026-07-04T08:49:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10567"
+  },
+  {
+    "id": 10566,
+    "title": "【开源自荐】OpenConnector：让 AI Agent 接入 800+ SaaS 应用的开源连接层",
+    "content": "项目名：OpenConnector\nGitHub：https://github.com/oomol-lab/open-connector\n协议：Apache-2.0\n\nComposio / Nango 的开源替代方案，为 AI Agent 提供统一的鉴权和工具调用层，让 Agent 可靠地访问用户在外部应用中的账号。目前已收录 900+ 服务商、9000+ 预置 Action（GitHub、Gmail、Notion、Slack、Supabase 等），可本地运行或部署到 Cloudflare。\n\n功能特性\n\n- 现成目录：900+ 服务商、9000+ 预置 Action，覆盖办公、开发、数据、通讯、AI 等\n- 统一鉴权：一个运行时内支持 API Key、OAuth2、自定义凭证及免鉴权应用\n- 可审查：请求/响应 Schema、所需 scope、执行器都在源码里，可扩展\n- 多接口：Connector SDK、MCP、HTTP API、OpenAPI，以及本地 Web 控制台\n- 多部署：本地 Docker / Node.js，或 Cloudflare（Workers、D1、R2）\n- 运行时护栏：scope、运行时 token、Action 允许/拦截策略、脱敏运行日志\n\n用法示例\n\nDocker Compose 启动后，打开 http://localhost:3000 即可使用 Web 控制台。调用一个 Action：\n\n```bash\ncurl -s -X POST http://localhost:3000/v1/actions/github.get_current_user \\\n  -H 'content-type: application/json' \\\n  -d '{\"input\":{}}'\n```\n\n<img width=\"2504\" height=\"1996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/385a7c6d-cff4-42cb-81b8-f9e04eb55e27\" />",
+    "created_at": "2026-07-04T08:36:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10566"
+  },
+  {
+    "id": 10565,
+    "title": "自荐：AI 工具导航站 — 只标免费额度，每天自动更新链接健康状态",
+    "content": "**网址**：https://sanhuang520-ship-it.github.io/awesome-chinese-ai-tools/\n\n**简介**：\n\n一个面向中文用户的 AI 工具导航站，收录 47 个国内外工具，已连续维护 34 天。和其他导航站的区别：\n\n1. **只关心免费额度**——每个工具标注具体免费情况（如\"网页免费，API 有额度\"），付费明确标出\n2. **链接不会死**——每天早上 9 点自动检测全部链接健康状态，最近先后发现并修复了 Cursor 换域名（cursor.sh → cursor.com）、Windsurf 并入 Devin Desktop、Flux 官网迁移（blackforestlabs.ai → bfl.ai）\n3. **3 秒选工具**——回答 3 个问题（做什么/预算/网络环境）直接推荐\n4. **每日 AI 日报**——记录模型发布和免费额度变化，比如 Claude Sonnet 5 发布后免费版默认可用\n5. 无广告无跟踪，纯静态开源，收藏数据只存在用户自己浏览器里\n\nGitHub：https://github.com/sanhuang520-ship-it/awesome-chinese-ai-tools",
+    "created_at": "2026-07-04T06:51:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10565"
+  },
+  {
     "id": 10564,
     "title": "【工具自荐】AIConfPaper —— 按语义（而不是关键词）搜索 AI 顶会录用论文，支持中文",
     "content": "AIConfPaper（https://aiconfpaper.com）是一个按“意思”而不是关键词来搜 AI 顶会论文的网站。只收录各大会议已录用的论文（NeurIPS、ICML、ICLR、CVPR、ECCV、ICCV、ACL、EMNLP、NAACL、COLING、AAAI、IJCAI、AISTATS、UAI、CoRL、ICRA、IROS、RSS、RA-L），年份 2015 到 2026。界面支持中文。\n\n## 为什么做这个\n\n我查文献时最常见的困境是：我记得一篇论文的想法，能用一句话说清它做了什么，却想不起标题和作者。而会议官网和多数检索都要你先猜中作者用的措辞，想法我记得，措辞我记不住，于是老是重复丢失自己明明知道的论文。为了自己用，就做了这个按语义来搜的工具。\n\n## 怎么用\n\n用一句话描述想找的方向（或者直接粘一段摘要），它按语义相近度排序返回论文；点开任意一篇能一键找“相似论文”，换个锚点继续往外找，梳理相关工作很快。想只看“确实中了这些会议”的工作时，用会议/年份筛选。留下的论文可以放进收藏夹，收藏夹能生成链接分享。\n\n另外有一套需要 API key 的 REST 接口（在 /developers，通过 /llms.txt 和 /openapi.json 可发现），agent 可以自己搜索、取元数据、找相似论文、建收藏夹，适合让做文献综述的 agent 去查真实的录用论文再引用。\n\n一个人做的业余项目，范围就是上面这些会议的录用论文，不会是“全世界所有论文”。如果搜出来的结果不对，欢迎把查询发给我，我去看看哪里没匹配上。\n",
@@ -768,45 +808,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10467"
-  },
-  {
-    "id": 10466,
-    "title": "【网站自荐】高考志愿决策报告：3 分钟生成一份可供家庭讨论的志愿建议 PDF",
-    "content": "<img width=\"1141\" height=\"696\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e980eb5e-5006-4134-b27d-95dfbeb52276\" />\n这是是一个面向高考考生和家长的工具。\n\n用户填写省份、分数、位次、选科、家庭情况、城市偏好和专业倾向后，可以先生成免费预览，查看核心判断、推荐方向和风险提醒；\n\n如果觉得有帮助，再解锁完整 PDF 报告，方便拿给家人一起讨论。\n\n站点地址：https://gaokao.lifemap.ren/\n\n  ## 主要特点\n\n  - 3 分钟填写：围绕分数、位次、选科、家庭资源、城市偏好、职业倾向等信息生成建议。\n  - 免费预览：先展示关键判断、推荐方向和主要风险，不用一上来付费。\n  - 就业倒推：不只看学校名气和热门专业名称，会结合就业路径、家庭试错成本、城市资源做取舍分析。\n  - PDF 报告：完整报告包含专业方向排序、城市与学校层级取舍、家庭资源匹配、深造建议、十年后压力测试和行动清单。\n  - 风险提示明确：不承诺录取结果，不生成最终志愿表，提醒用户以省考试院、招生章程和当年招生计划为准。\n\n  ## 适合人群\n\n  - 高考考生和家长：想快速获得一份结构化的志愿讨论材料。\n  - 普通家庭：不想一开始就购买高价一对一咨询，但希望先梳理专业、城市、学校之间的取舍。\n  - 对专业不了解的用户：想知道某些专业背后的就业路径、学习要求和潜在风险。\n\n  欢迎体验，也欢迎反馈。",
-    "created_at": "2026-06-26T07:02:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10466"
-  },
-  {
-    "id": 10465,
-    "title": "开源工具自荐  vault-engine：出云前的身份脱敏层",
-    "content": "https://github.com/fishonbike/vault-engine\n\n把文本发给 ChatGPT 等云端大模型之前，先用本地大模型（默认 Ollama + qwen3.6:27b）\n把人名、机构、地点、项目代号等身份信息替换成代号，云端只看到代号；它返回结果后，\n再用只存本地的映射把真实身份还原回来。纯 Python 标准库、零依赖，大模型可替换，\n对中文识别尤其好。作者给了可复现的 benchmark：同一数据集上纯正则召回 13%、\nMicrosoft Presidio 61%、本地大模型 100%。",
-    "created_at": "2026-06-26T05:44:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10465"
-  },
-  {
-    "id": 10464,
-    "title": "【网站自荐】集查分、预测、填志愿于一体的全国高考志愿服务网站--得刻高考，无任何广告，页面清爽",
-    "content": "### 得刻高考网站地址：https://gaokao.dktoolset.com/ \n- 有全国的高分历年分数线数据，可以进行一分一段表转化\n- 有各院校在各省的招生计划、各专业录取分数\n- 可根据考生分数推荐志愿院校，方便决策\n- 支持院校和志愿方案的差异对比\n- 整体网站风格简洁、移动端优化，无广告\n\n欢迎各位考生家长使用\n有任何意见和建议欢迎反馈\n网站地址：https://gaokao.dktoolset.com/\n\n<img width=\"1453\" height=\"879\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/94859377-3917-4f42-9704-b3cca556f420\" />\n\n<img width=\"445\" height=\"912\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/22de22b4-06d7-448b-8cc1-59090d35d5d0\" />\n\n<img width=\"1364\" height=\"871\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/601927b8-222a-4bb2-ad88-e48587158fc5\" />",
-    "created_at": "2026-06-26T05:42:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10464"
-  },
-  {
-    "id": 10463,
-    "title": "【ashell】一个用 Rust 编写的现代、快速、基于 GPUI 组件的桌面终端客户端。",
-    "content": "一个用 Rust 编写的现代、快速、基于 GPUI 组件的桌面终端客户端。\n简单，轻量，高效，美观，项目地址：https://github.com/rust-kotlin/ashell",
-    "created_at": "2026-06-26T03:25:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10463"
-  },
-  {
-    "id": 10462,
-    "title": "【网站自荐】Seedance 2.5 AI视频生成器 —— 一款先进的 AI 视频生成工具",
-    "content": "Seedance 2.5 AI 是基于最新 [seedance 2.5](https://seedance25ai.run/) 模型打造的在线视频生成平台，为创作者、设计师、自媒体运营者和营销人员提供高效便捷的 AI 视频创作能力。\n\n用户无需专业的视频制作经验，只需输入文字提示词（Text-to-Video）或上传参考图片（Image-to-Video），即可在几分钟内生成具有电影质感的高质量视频内容。相比上一代模型，Seedance 2.5 [https://seedance25ai.run/](https://seedance25ai.run/) 在画面细节、运动流畅度、角色一致性、镜头语言和场景连贯性方面均有显著提升。\n\n核心功能包括：\n\n• 文生视频：通过自然语言描述快速生成动态视频内容。\n\n• 图生视频：让静态图片动起来，生成自然流畅的动画效果。\n\n• 角色一致性：在多镜头场景中保持人物形象稳定统一。\n\n• 电影级画质：支持高质量视觉表现和丰富镜头效果。\n\n• 快速生成：无需下载安装软件，浏览器即可在线创作。\n\n• 多场景应用：适用于短视频创作、广告营销、产品展示、动画制作、内容运营等领域。\n\n无论是个人创作者、品牌营销团队还是 AI 内容爱好者，[seedance 2.5 AI](https://seedance25ai.run/) 都能帮助用户快速将创意转化为高质量视频内容，大幅提升视频制作效率，降低创作门槛。\n",
-    "created_at": "2026-06-26T02:33:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10462"
   }
 ]
