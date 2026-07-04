@@ -1,5 +1,21 @@
 [
   {
+    "id": 10562,
+    "title": "软件推荐",
+    "content": ".",
+    "created_at": "2026-07-04T02:51:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10562"
+  },
+  {
+    "id": 10561,
+    "title": "【开源自荐】PromptVersus —— 开源提示工程工作台：大型语言模型根据提示完成任务并评分结果，并通过问答周期自动迭代生成更高质量的提示。",
+    "content": "这是一款具备评测 - 优化完整闭环的自动化提示词打磨工具。针对人工调优提示词效率低、效果难量化的痛点，工具通过「目标评测 - 打分反馈 - 迭代重写」的自动循环，对提示词进行多轮优化并自动留存最优版本。支持自定义评测标准与测试题库，内置提示词仓库，适合 AI 应用开发者、提示词工程师高效打磨高质量系统提示词。\n项目地址：https://github.com/Nalnanananana/PromptVersus",
+    "created_at": "2026-07-04T02:45:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10561"
+  },
+  {
     "id": 10560,
     "title": "【开源自荐】skx —— 一行命令审计你的 AI 每次会话在白付多少 token",
     "content": "你好,自荐一个刚开源的小工具。\n\n**skx(Skill X-ray)**,给电脑上的 AI 编程环境\"拍片子\"的 CLI:一行 `skx audit`,告诉你 Claude Code / Codex / Cursor 每次开新会话时,到底有多少 token 被固定上下文悄悄吃掉。\n\n起因是我自己跑了一次,发现每次会话有 **5408 个 token** 属于固定成本:已装 skill 的描述约 4639,CLAUDE.md / AGENTS.md 及其 @import 链约 769。代码还没开始写,上下文窗口和钱已经先少了一截。\n\n它做的事:\n\n- 扫描 CLAUDE.md / AGENTS.md / GEMINI.md / .cursorrules / copilot-instructions 这些指令文件,自动跟随 @import 链\n- 统计各宿主已装 skill 的 description 固定开销,列出最贵的几个\n- 检测断掉的 @import、坏软链、同名冲突、npm 全局包 bin 遮蔽系统命令(真实案例:某包注册了 `make`)\n- 输出终端 / Markdown / JSON 三种格式的体检报告\n- 附带声明式管控:`profile.json` 定义每台宿主该装什么,`skx curate --apply` 一键对齐\n\n单文件 Python,零依赖,macOS/Linux 开箱即用,MIT。\n\n安装:\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/coikexxx/skx/main/install.sh | sh\n```\n\n仓库:https://github.com/coikexxx/skx\n\n谢谢!",
@@ -792,21 +808,5 @@
     "created_at": "2026-06-26T00:47:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/pull/10460"
-  },
-  {
-    "id": 10459,
-    "title": "第401期勘误：世纪错误",
-    "content": "第401期，第3点关于OpenCL的文章简介中：\n\n**错误内容：**\n> 一篇回忆文章。20世纪初，一些公司开始设想建立一个 GPU 操作的 C++ 通用框架...\n\n**正确内容：**\n> 一篇回忆文章。21世纪初，一些公司开始设想建立一个 GPU 操作的 C++ 通用框架...\n\n**理由：**\nOpenCL 项目启动于2008年左右，属于21世纪初。20世纪初（1900年代）还没有GPU和C++这个概念。NVIDIA的CUDA发布于2006年，也是21世纪。\n\n文件路径：docs/issue-401.md\n行号：185\n\n感谢！",
-    "created_at": "2026-06-26T00:45:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10459"
-  },
-  {
-    "id": 10458,
-    "title": "【工具自荐】Gitoza - 本地优先、Git 驱动的 Rust+Tauri 测试用例管理客户端",
-    "content": "项目官网（全球 CDN 直连）：https://gitoza.com/\n\nGitHub 仓库：https://github.com/gitoza-io/gitoza-community\n\n项目简介\nGitoza 是一款使用 Rust + Tauri + React 开发的本地优先（Local-first）测试用例管理客户端。\n\n时至今日，仍有很多团队使用 Excel 管理用例，存在版本控制差、同步困难等痛点；而传统的云端 SaaS 工具通常较为臃肿、响应慢且费用高昂。此外，在 AI 辅助开发的今天，开发者用 Copilot 生成了大量用例，却仍需繁琐地手动复制粘贴到各效能平台上，导致工作流脱节。\n\nGitoza 提倡用例资产回归本地，将用例以标准的 YAML 文件形式存储在用户自己的 Git 仓库中。\n\n核心特点\n完全的数据主权：用例随代码走，100% 留在本地 Git 仓库，无需担心数据泄露、断网或服务商跑路。\n\nAI 工作流无缝闭环：在 IDE 里打开用例项目，可直接利用现有的 GitHub Copilot 或其他 AI 插件批量生成 YAML 用例，文件即用例，无需手动复制搬运。\n\n基于 Git 的协同优化：借助 Git 的分布式特性解决多团队协同痛点，并在 UI 层面优化了冲突合并体验。\n\n万级用例流畅渲染：底层由 Rust 驱动，前端采用虚拟滚动（Virtual Scrolling）技术。即使面对上千、上万个 YAML 小文件的变态并发读取，依然能保持毫秒级流畅响应，绝不假死。\n\n本软件对国内的所有大小团队和同行完全免费开放，100% 纯净、无广告、无后门，仅在启动时检测并自动升级。欢迎大家提供压测。",
-    "created_at": "2026-06-25T15:47:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10458"
   }
 ]
