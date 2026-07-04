@@ -1,5 +1,45 @@
 [
   {
+    "id": 10574,
+    "title": "【开源自荐】Waveloom：开源终端 AI 编程助手，Claude Code 替代品",
+    "content": "开源终端 AI 编程助手（Terminal Code Agent），Go 单二进制 18MB，无 Node.js 依赖。操作体验贴近 Claude Code，`@` 引用文件、`/` 命令面板、Tab 段落导航、Plan Mode 先规划后执行，已有 Claude Code Skill 零迁移可直接使用。\n\n特点：\n- 开源零遥测，API Key 直连 DeepSeek/OpenAI，不经过第三方服务器\n- 为 DeepSeek 前缀缓存优化，System Prompt 固定、消息仅追加、四级原地压缩，缓存命中率远高于通用 Agent\n- Think-Act-Observe 循环，连接 LLM 与工具系统，每轮思考→执行→观察\n- 9 个内置工具：read_file / write_file / edit_file / shell / web_fetch / ask_user_question / enter_plan_mode / exit_plan_mode / skill\n- Plan Mode 先规划后执行，Guard 强制写保护，审批通过方可修改代码\n- 权限安全引擎，规则驱动的 allow/deny/ask 三级决策，每个写操作需用户确认\n- 会话持久化，`waveloom --continue` 恢复关闭前上下文\n- 后台任务管理，支持进程组 SIGKILL，流式输出实时推送 TUI\n- 完整中英双语 UI，System Prompt / TUI / CLI 输出根据 locale 自动切换\n- 兼容 Claude Code Skill，`~/.claude/skills/` 下已有技能直接使用\n- 三平台支持：macOS / Linux / Windows（Git Bash）\n\n安装：\n```sh\n# curl 一键安装（macOS / Linux）\ncurl -fsSL https://raw.githubusercontent.com/Menfre01/waveloom/main/install.sh | sh\n\n# Homebrew\nbrew trust menfre01/tap\nbrew install Menfre01/tap/waveloom\n\n# Windows（PowerShell）\npowershell -c \"irm https://raw.githubusercontent.com/Menfre01/waveloom/main/install.ps1 | iex\"\n```\n\nApache 2.0 开源。项目地址：https://github.com/Menfre01/waveloom\n",
+    "created_at": "2026-07-04T11:53:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10574"
+  },
+  {
+    "id": 10573,
+    "title": "【开源自荐】time-ledger（时间账本）—— 随口说一句干了啥，Claude 帮你记进自己的 Notion 时间账本",
+    "content": "**项目名：** time-ledger（时间账本）\n**GitHub：** https://github.com/cruisekkk/time-ledger\n**协议：** MIT\n\n介绍：time-ledger 是一个「Claude skill + Notion 模板」组合的个人时间记录工具。你随口说一句「今天下午看了俩小时论文」「刚撸铁一小时」，skill 把自然语言解析成 活动分类 + 时长 + 日期，写进你自己的 Notion 数据库；拿不准的地方它标成「待确认」反过来问你，而不是瞎编。数据真相源始终是你自己的 Notion，随时可导出、改字段、做透视。\n\n![demo](https://raw.githubusercontent.com/cruisekkk/time-ledger/main/assets/demo-web.gif)\n\n## 特点\n\n- **零表单**：口语随口一句（手机上也行），AI 当录入员；说「整理时间账本」还能批量补齐所有待确认行\n- **不编造**：skill 指令里写死「拿不准就问，绝不瞎猜时长/分类」——对账本来说，可信比全自动重要\n- **零配置**：不用贴任何 database id——skill 按库名（「时间账本」/「time-ledger」）自动找到你的库\n- **数据自持**：写进你自己的 Notion database，一键复制模板即可开始，不经过任何第三方服务器\n- **中英双语**：README、SKILL、Notion 模板都有 EN / 中文两版\n- **模式可复制**：本质是「LLM 当录入员、Notion 当真相源、拿不准就问」——同一模式的姊妹项目 [trading-ledger 交易账本](https://github.com/cruisekkk/trading-ledger)，逼你在入场那一刻把理由说出口，复盘只看决策质量不看盈亏\n\n## 安装\n\n复制 Notion 模板 → 在 Claude（Claude Code / Claude.ai / 手机 app）里装上 skill → 授权 Notion 连接器，就能用了。README 里有逐步截图。\n\n做这个的起因：所有时间跟踪 App 都败在「记录本身太费劲」，坚持不过三天。让 AI 做录入员、自己只负责随口汇报之后，才第一次坚持了下来（作者 6 月起每天在用）。欢迎试用和反馈！\n",
+    "created_at": "2026-07-04T11:16:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10573"
+  },
+  {
+    "id": 10572,
+    "title": "【自荐】MM to Inches：毫米转英寸与分数英寸参考工具",
+    "content": "项目地址：[MM to Inches converter](https://mm-to-inches.net/?utm_source=github_ruanyf_weekly&utm_medium=backlink&utm_campaign=mm_to_inches_net_cold_start_202607&utm_content=weekly_issue)\n\n简介：一个毫米到英寸换算工具，重点覆盖 decimal inches、fractional inches、常用换算表和可打印参考，适合木工、3D 打印、五金和工程尺寸核对。\n\n适合场景：单位换算、制造/硬件尺寸核对、英文长尾 SEO 小工具。\n\n提交说明：独立开发的小工具网站，自荐给科技爱好者/独立开发者参考；链接带 UTM 仅用于区分来源统计。",
+    "created_at": "2026-07-04T10:21:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10572"
+  },
+  {
+    "id": 10571,
+    "title": "【自荐】Inches to CM：英寸厘米换算、尺寸表和屏幕尺寸参考工具",
+    "content": "项目地址：[Inches to CM converter](https://inches-to-cm.net/?utm_source=github_ruanyf_weekly&utm_medium=backlink&utm_campaign=inches_to_cm_net_cold_start_202607&utm_content=weekly_issue)\n\n简介：一个面向日常尺寸、屏幕尺寸、打印和规格表场景的英寸厘米换算网站，提供常用换算、chart 页面和具体数值页面，方便英文用户快速查尺寸。\n\n适合场景：单位换算、制造/硬件尺寸核对、英文长尾 SEO 小工具。\n\n提交说明：独立开发的小工具网站，自荐给科技爱好者/独立开发者参考；链接带 UTM 仅用于区分来源统计。",
+    "created_at": "2026-07-04T10:20:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10571"
+  },
+  {
+    "id": 10570,
+    "title": "【自荐】Inches to MM：面向制造、五金和钻头尺寸的英寸毫米换算工具",
+    "content": "项目地址：[Inches to MM converter](https://inches-to-mm.com/?utm_source=github_ruanyf_weekly&utm_medium=backlink&utm_campaign=inches_to_mm_com_cold_start_202607&utm_content=weekly_issue)\n\n简介：一个轻量的英寸到毫米换算工具，面向制造、五金、钻头尺寸、BOM 和公差检查场景。页面强调直接给出结果、常见尺寸和可打印参考，适合需要快速核对 inch / mm 的英文用户。\n\n适合场景：单位换算、制造/硬件尺寸核对、英文长尾 SEO 小工具。\n\n提交说明：独立开发的小工具网站，自荐给科技爱好者/独立开发者参考；链接带 UTM 仅用于区分来源统计。",
+    "created_at": "2026-07-04T10:20:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10570"
+  },
+  {
     "id": 10569,
     "title": "【开源自荐】增强 macOS 调度中心（Mission Control）- 在调度中心里直接关闭、退出窗口",
     "content": "**项目名：** CloseUp\n**GitHub：** https://github.com/oomol-lab/CloseUp\n**协议：** GPL-3.0\n\n介绍：CloseUp 把窗口控制按钮**直接叠加到 macOS 原生调度中心**上——无需离开总览，就能关闭、最小化、最大化、隐藏或退出任意窗口，并且提供完整的键盘控制。免费、原生、开源。\n\n<p align=\"center\">\n  <img alt=\"叠加在调度中心缩略图上的窗口控制按钮\" src=\"https://raw.githubusercontent.com/oomol-lab/CloseUp/main/docs/images/overlay-light.png\" width=\"80%\">\n</p>\n\n## 功能特性\n\n- **在总览中关闭** —— 悬停到调度中心里的窗口缩略图上，点击红色的 × 即可立即关闭，无需先切换过去。\n- **覆盖每个窗口操作** —— 关闭、最小化、最大化、隐藏 App、退出 App。关闭 / 最小化 / 最大化是可以在设置里单独开关的按钮；隐藏和退出只要窗口支持就一直显示。\n- **完整键盘控制** —— 对指针所指的窗口执行原生操作：⌘W 关闭、⌘M 最小化、⌘F 最大化、⌘H 隐藏、⌘Q 退出，全部可重新映射。\n- **批量操作** —— ⌥⌘W 全部关闭、⌥⌘M 全部最小化、⌥⌘H 除指针所指窗口外全部隐藏。\n- **九种语言** —— English、简体中文、繁體中文、日本語、Français、Deutsch、Español、Português、Русский，App 内切换、即时生效。\n- **原生而不打扰** —— 一个被动式叠加层，绝不抢占调度中心自身的键盘处理；仅驻留菜单栏，无程序坞图标。\n- **隐私友好** —— 通过辅助功能（Accessibility）API 读取和操作窗口，**绝不录制屏幕**。\n- **自动更新** —— 通过 Sparkle 提供经签名、已公证的版本更新，另有可选的测试版通道。\n\n## 使用方法\n\n像往常一样打开调度中心（三指 / 四指上滑，或按调度中心键）。把指针悬停到任意窗口上就会显示控制按钮组，或者直接用键盘：\n\n| 操作 | 快捷键 | 作用对象 |\n|---|---|---|\n| 关闭窗口 | ⌘W | 指针所指的窗口 |\n| 最小化窗口 | ⌘M | 指针所指的窗口 |\n| 最大化窗口 | ⌘F | 指针所指的窗口 |\n| 隐藏 App | ⌘H | 指针所指的窗口 |\n| 退出 App | ⌘Q | 指针所指的窗口 |\n| 全部关闭 | ⌥⌘W | 所有窗口 |\n| 全部最小化 | ⌥⌘M | 所有窗口 |\n| 除此之外全部隐藏 | ⌥⌘H | 除指针所指窗口外的所有 App |\n\n每个快捷键都能在「设置 → 快捷键」里重新映射，也可以随时从菜单栏图标开关 CloseUp。\n\n<p align=\"center\">\n  <img alt=\"常规设置\" src=\"https://raw.githubusercontent.com/oomol-lab/CloseUp/main/docs/images/settings-general-zh-CN-light.png\" width=\"49%\">\n  <img alt=\"键盘快捷键设置\" src=\"https://raw.githubusercontent.com/oomol-lab/CloseUp/main/docs/images/settings-shortcuts-zh-CN-light.png\" width=\"49%\">\n</p>\n\n## 与同类产品对比\n\n\n| | CloseUp | Mission Control Close | Open Mission Control | Mission Control Plus |\n|---|---|---|---|---|\n| 价格 | 免费 | 一次性 £5 | 免费 | 付费（$8.99） |\n| 许可证 | 开源 GPL-3.0 | 闭源 | 开源 GPL-3.0 | 闭源 |\n| 窗口操作 | 关 / 最小化 / 最大化 / 隐藏 / 退出 | 仅关闭 | 关 / 最小化 / 最大化 | 关 / 最小化 / 退出 |\n| 批量操作 | 全部关闭 / 全部最小化 / 隐藏其余 | 全部关闭 | 未公开 | 未公开 |\n| 快捷键自定义 | 每个动作均可 | 未公开 | 固定 | 固定 |\n| 本地化 | 9 种语言，App 内切换 | 未公开 | 未公开 | 未公开 |",
@@ -764,49 +804,5 @@
     "created_at": "2026-06-27T03:40:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10472"
-  },
-  {
-    "id": 10471,
-    "title": "【开源自荐】涟漪鱼缸 RippleAquarium — 浏览器里的实时 3D 水族箱",
-    "content": "涟漪鱼缸，一个纯前端、打开网页即玩的 3D 水族箱，用 Three.js / WebGL 实现。\n\n ![涟漪鱼缸演示](https://raw.githubusercontent.com/SeanWong17/RippleAquarium/main/assets/demo.webp)\n\n一整缸鱼用 boids 群体行为自主游动，会聚集、转向、互相避让；鱼游近水面或鼠标点击、拖动水面，都会荡开真实传播的水波；珊瑚在页面打开时从无到有慢慢生长。所有效果都是逐帧实时计算，而不是预录动画。\n\n技术上用均匀空间网格做邻居查询，把鱼群行为从 O(n²) 降到近 O(n)；主鱼群用实例化渲染；核心模拟逻辑带 Node 自带 test runner 的单元测试，无第三方依赖。项目静态部署在 GitHub Pages，开源（AGPL-3.0）。鱼群、水面涟漪等模块在多个开源项目基础上整合改造，来源已在 README 中标注。\n\n  - 在线演示：https://seanwong17.github.io/RippleAquarium/\n  - 仓库：https://github.com/SeanWong17/RippleAquarium",
-    "created_at": "2026-06-27T01:58:00Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10471"
-  },
-  {
-    "id": 10470,
-    "title": "【开源自荐】Weft：一套可变架构的 AI 平台，每一层都能换",
-    "content": "# Weft\n\n一套「可变架构」的开源 AI 平台：前端界面、Agent、工具、编排流，**每一层都是可热插拔的 package**，Rust 写的 core 只管能力调度、不写死任何功能。所以它不是某一个产品，而是一套能变成任何产品的底座——同一个 runtime 现在已经跑出聊天助手、AI 视频画布、RSS 阅读器、代码助手等完全不同的应用。\n\n🔗 **仓库：** [github.com/ailiheizi/weft](https://github.com/ailiheizi/weft)\n🔗 **站点：** [weft.alhz.org](https://weft.alhz.org)\n\n## 同一套底座，长出不同产品\n\n![AI Director](https://raw.githubusercontent.com/ailiheizi/weft/main/docs/images/ai-director.png)\n\n![RSS Reader](https://raw.githubusercontent.com/ailiheizi/weft/main/docs/images/rss-reader.png)\n\n## 技术栈\n\n- **core**：Rust，OpenAI 兼容 API + capability 注册表 + 包加载器\n- **客户端**：Flutter（跨端）\n- **插件**：WASM（Extism 沙箱）/ 原生 / 内嵌\n- **AI**：多 provider 路由、MCP 工具协议、本地语义工具选择器（ONNX）、多 Agent 团队编排\n\n诚实说明：项目还早期，在做包系统重构，当 preview 探索用。Apache-2.0 开源。\n\n（独立开发者，深圳，正在找工作）\n",
-    "created_at": "2026-06-26T19:10:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10470"
-  },
-  {
-    "id": 10469,
-    "title": "【网站自荐】一个发现和分享优质产品的创意社区，目前社区已有超400+优质的个人独立开发者/企业的产品",
-    "content": "「产品派」是一个发现和分享优质产品的创意社区。 无论你是热衷探索新奇产品的用户，还是正在打磨产品的独立开发者或创业者，都可以在这里更方便地找到好产品、分享好产品，同时也让自己的作品被更多人看见。\n\n项目网站：chanpinpai.com\n\n![](https://static.chanpinpai.cn/uploads/img-1781530437557-923361432.webp)\n![](https://static.chanpinpai.cn/uploads/img-1781531023697-29716140.webp)\n![](https://static.chanpinpai.cn/uploads/img-1781533889628-403382212.webp)\n![](https://static.chanpinpai.cn/uploads/img-1781531054726-250994518.webp)\n![](https://static.chanpinpai.cn/uploads/img-1781531062303-25956329.webp)\n![](https://static.chanpinpai.cn/uploads/img-1781531067905-72710113.webp)\n\n\n**最近的更新记录：https://chanpinpai.com/topic/TSPkDues**\n- 界面风格全新升级\n- 深色模式\n- 创作者中心\n- 团队成员\n- 鸣谢产品\n- 表情表达\n- 开发者个人认证/企业认证\n- 反馈\n··· 长期更新迭代中\n\n\n\n\n**🎯 社区核心玩法**\n\n目前，产品派已开放以下核心功能：\n\n**产品发布与展示**\n\n你可以提交自己的产品，完善介绍、分类、标签等信息，构建一个精美的展示页，让他人快速了解其价值。\n\n**产品发现与榜单**\n\n浏览最新产品、热门产品和产品榜单，通过社区的力量高效筛选，不错过任何值得关注的新鲜事物。\n\n**丰富的社区互动**\n\n这里不只是普通的发帖讨论，还支持多种趣味互动功能，让交流更有深度和乐趣：\n\n投票：适合发起选择题，快速收集用户意见与产品反馈。\n\n抽奖：支持定时开奖与自动派发奖品，是举办互动活动的利器。\n\n优惠码：非常适合分发邀请码、限时福利或专属折扣。\n\n盲盒：与抽奖不同，这是即时开奖，惊喜（或“空盒”）即刻揭晓。\n\n",
-    "created_at": "2026-06-26T12:53:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10469"
-  },
-  {
-    "id": 10468,
-    "title": "【开源自荐】Snaptium - AI 驱动的智能笔记与知识管理工具",
-    "content": "# Snaptium\n\nSnaptium 是一款 AI 驱动的智能笔记与知识管理工具，让零散的信息真正沉淀为可随时调用的个人知识。\n\n你可以用它记录灵感、整理资料、管理笔记，并直接向自己的知识库提问。Snaptium 能够理解笔记内容，快速查找相关信息、提炼重点、辅助写作，还可以通过智能任务助手完成总结、整理与内容处理。\n\n结合大语言模型与 RAG 检索增强技术，Snaptium 让笔记不再只是被动存储，而是成为一个可理解、可检索、可对话、可执行的智能知识系统。\n\n从记录到思考，从查找资料到完成任务，让你的每一条笔记都真正发挥价值。\n\n---\n\n# Snaptium 是做什么的？\n\nSnaptium 是一个将以下能力整合在一起的**本地优先知识管理工具**：\n\n- Markdown 笔记\n- AI 写作助手\n- RAG 知识库问答\n- Agent 任务助手\n- WebDAV / S3 数据同步\n\n---\n\n我的目标不是做一个普通的笔记工具，而是让用户可以：\n\n> 直接和自己的笔记、资料以及知识库进行交互。\n\n---\n\n\n## 例如可以做到：\n\n- 根据已有笔记回答问题  \n- 对多个文档进行总结和归纳  \n- 改写、续写和翻译当前内容  \n- 根据知识库生成结构化 Markdown 文档  \n- 通过任务助手整理零散资料  \n\n---\n\n# 下载与项目地址\n\n- 官网：https://snaptium.com  \n- Microsoft Store：[已上架（可直接搜索 Snaptium）](https://apps.microsoft.com/detail/9P4HW1MDDGNN)  \n- GitHub：https://github.com/jetyu/Snaptium  \n\nSnaptium 是开源项目，欢迎查看源码、提交 Issue 或参与讨论。\n\n---\n\n# 界面预览\n\n ![Snaptium ](https://store-images.s-microsoft.com/image/apps.13396.14588591688094211.d58a2c01-1cae-4469-8b0b-0d0f9cd25e0f.40858a81-128a-4fda-a589-5949a1e6d865)\n---\n\n# 主要功能\n\n## 📝 Markdown 笔记\n\n- 本地优先存储\n- Markdown 编辑\n- 工作区和笔记管理\n- 全文搜索\n- 收藏\n- 历史版本\n- 自定义快捷键\n\n---\n\n## 🤖 AI 写作助手\n\n- AI 续写\n- AI 改写\n- 内容总结\n- 文本翻译\n- OpenAI-compatible API\n- 用户自行配置模型服务和 API Key\n\n---\n\n## 🧠 RAG 知识库\n\n- 将笔记和文档构建为个人知识库\n- 基于向量检索查找相关内容\n- 基于个人资料进行问答\n- 从多个笔记中提炼和归纳信息\n\n---\n\n## ⚙️ Agent 任务助手（Beta）\n\n目前已经支持一些内容处理类任务，例如：\n\n- 总结知识库相关内容\n- 整理零散资料\n- 生成结构化内容\n- 根据已有资料创建新的 Markdown 文档\n\n这一部分仍在持续完善中，后续会继续探索：\n\n- 工具调用（Tool Use）\n- 更完整的 ReAct 工作流\n\n---\n\n## ☁️ 数据同步\n\n- WebDAV\n- S3 兼容对象存储\n- 多设备同步\n- 同步数据加密\n- 不配置同步时也可以完全本地使用\n\n---\n\n\n# 🔑 关于激活码\n\n目前官方发行版仍处于早期测试阶段，需要使用免费的测试激活码。\n\n这样做主要不是为了限制使用，而是希望先控制测试范围，方便收集反馈和定位问题。\n\n---\n\n## 参与测试方式：\n\n- 在帖子下面留言 base64 邮箱\n- 或发送 主题为 参与Snaptium体验 邮件 至 hi [at] snaptium [dot] com\n \n",
-    "created_at": "2026-06-26T09:46:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10468"
-  },
-  {
-    "id": 10467,
-    "title": "推荐项目：WhisperSubTranslate，本地生成并翻译视频字幕的桌面应用",
-    "content": "项目地址：\nhttps://github.com/Blue-B/WhisperSubTranslate\n\n这是一个 Windows 桌面应用，用来从视频音频生成 SRT 字幕，并把字幕翻译成其他语言。\n\n我做它的原因很简单：有些视频只有音频，没有字幕。在线转写服务虽然方便，但长视频上传很慢，也不太适合处理不想上传的素材。这个工具把识别和翻译尽量放在本地完成，适合自己整理视频、做字幕和处理多语言素材。\n\n主要功能：\n\n1. 直接放入视频，生成 SRT 字幕。\n2. 语音识别使用 whisper.cpp，模型按需下载，不需要手动配置 Python。\n3. 翻译可以使用本地 Hy-MT2 模型，API key 不是必需项。\n4. 也可以接入 DeepL、OpenAI、Gemini 等在线翻译。\n5. 对长视频和非英语视频，提供 large-v2 Sync 和 Sync Lite，用来修正普通模型可能出现的字幕时间漂移。\n\n截图：\n\n![WhisperSubTranslate](https://raw.githubusercontent.com/Blue-B/WhisperSubTranslate/main/assets/hero/hero.png)\n\n本地翻译模型的说明：\n\n![Hy-MT2 benchmark](https://raw.githubusercontent.com/Blue-B/WhisperSubTranslate/main/assets/hy-mt2-benchmark.zh.png)\n\n下载：\nhttps://github.com/Blue-B/WhisperSubTranslate/releases\n\n代码开源，许可证是 GPL-3.0。",
-    "created_at": "2026-06-26T07:38:54Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10467"
   }
 ]
