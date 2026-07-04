@@ -1,5 +1,13 @@
 [
   {
+    "id": 10575,
+    "title": "【网站推荐】-zwplayer",
+    "content": "[[官网](https://www.zwplayer.com/)]  一个免费的网页视频播放器，只需引入一个 JS 文件就能用，支持 HLS、DASH、FLV、WebRTC 甚至 RTSP（无需插件），也不依赖任何 CDN，内网环境可以直接部署。\n\n它最近更新到了 v3.3.0，比较有意思的一点是，它不只是一个播放器了——内置了标注系统，可以在视频的任意时间点上叠加交互元素（选择题、投票、热区跳转、表单等共 13 种类型），相当于在视频里做出类似 H5 互动页面的效果。这对在线教育和企业培训场景来说很实用，比如老师可以在讲课视频里嵌入课堂测验，学生答完才能继续看。\n\n另外还加了防录屏水印（支持在画面上随机游走，防止截屏）、hls字幕预下载、字幕搜索、播放列表等功能。每个功能都配了一个在线可视化编辑器，编辑完导出 JSON 丢给播放器就行，不用写代码。\n\n它还提供了 Vue、React 组件和 WordPress 插件，WordPress 用户可以在后台零代码配置这些功能。",
+    "created_at": "2026-07-04T15:27:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10575"
+  },
+  {
     "id": 10574,
     "title": "【开源自荐】Waveloom：开源终端 AI 编程助手，Claude Code 替代品",
     "content": "开源终端 AI 编程助手（Terminal Code Agent），Go 单二进制 18MB，无 Node.js 依赖。操作体验贴近 Claude Code，`@` 引用文件、`/` 命令面板、Tab 段落导航、Plan Mode 先规划后执行，已有 Claude Code Skill 零迁移可直接使用。\n\n特点：\n- 开源零遥测，API Key 直连 DeepSeek/OpenAI，不经过第三方服务器\n- 为 DeepSeek 前缀缓存优化，System Prompt 固定、消息仅追加、四级原地压缩，缓存命中率远高于通用 Agent\n- Think-Act-Observe 循环，连接 LLM 与工具系统，每轮思考→执行→观察\n- 9 个内置工具：read_file / write_file / edit_file / shell / web_fetch / ask_user_question / enter_plan_mode / exit_plan_mode / skill\n- Plan Mode 先规划后执行，Guard 强制写保护，审批通过方可修改代码\n- 权限安全引擎，规则驱动的 allow/deny/ask 三级决策，每个写操作需用户确认\n- 会话持久化，`waveloom --continue` 恢复关闭前上下文\n- 后台任务管理，支持进程组 SIGKILL，流式输出实时推送 TUI\n- 完整中英双语 UI，System Prompt / TUI / CLI 输出根据 locale 自动切换\n- 兼容 Claude Code Skill，`~/.claude/skills/` 下已有技能直接使用\n- 三平台支持：macOS / Linux / Windows（Git Bash）\n\n安装：\n```sh\n# curl 一键安装（macOS / Linux）\ncurl -fsSL https://raw.githubusercontent.com/Menfre01/waveloom/main/install.sh | sh\n\n# Homebrew\nbrew trust menfre01/tap\nbrew install Menfre01/tap/waveloom\n\n# Windows（PowerShell）\npowershell -c \"irm https://raw.githubusercontent.com/Menfre01/waveloom/main/install.ps1 | iex\"\n```\n\nApache 2.0 开源。项目地址：https://github.com/Menfre01/waveloom\n",
@@ -796,15 +804,5 @@
     "created_at": "2026-06-27T03:40:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10472"
-  },
-  {
-    "id": 10471,
-    "title": "【开源自荐】涟漪鱼缸 RippleAquarium — 浏览器里的实时 3D 水族箱",
-    "content": "涟漪鱼缸，一个纯前端、打开网页即玩的 3D 水族箱，用 Three.js / WebGL 实现。\n\n ![涟漪鱼缸演示](https://raw.githubusercontent.com/SeanWong17/RippleAquarium/main/assets/demo.webp)\n\n一整缸鱼用 boids 群体行为自主游动，会聚集、转向、互相避让；鱼游近水面或鼠标点击、拖动水面，都会荡开真实传播的水波；珊瑚在页面打开时从无到有慢慢生长。所有效果都是逐帧实时计算，而不是预录动画。\n\n技术上用均匀空间网格做邻居查询，把鱼群行为从 O(n²) 降到近 O(n)；主鱼群用实例化渲染；核心模拟逻辑带 Node 自带 test runner 的单元测试，无第三方依赖。项目静态部署在 GitHub Pages，开源（AGPL-3.0）。鱼群、水面涟漪等模块在多个开源项目基础上整合改造，来源已在 README 中标注。\n\n  - 在线演示：https://seanwong17.github.io/RippleAquarium/\n  - 仓库：https://github.com/SeanWong17/RippleAquarium",
-    "created_at": "2026-06-27T01:58:00Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10471"
   }
 ]
