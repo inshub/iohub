@@ -1,5 +1,21 @@
 [
   {
+    "id": 10591,
+    "title": "【开源自荐】EdgeEver：基于 Cloudflare 的自托管开源笔记应用",
+    "content": "自荐一个开源项目 EdgeEver：基于 Cloudflare Workers + D1 + R2 的自托管笔记工作区，定位是一个更轻量、开放数据、适合个人部署的 Evernote / 印象笔记替代品。\n\n项目地址：https://github.com/tianma-if/edgeever  \n在线演示：https://demo.edgeever.org\n\n主要特点：\n\n- 保留经典三栏笔记体验：笔记本树、笔记列表、编辑区\n- 支持无限级嵌套笔记本、富文本编辑、笔记历史版本\n- 图片和附件上传到 R2，前端本地压缩，降低存储占用\n- 支持 PWA，桌面和移动端浏览器都能用\n- 数据存储在 Cloudflare D1，基于 SQLite，便于迁移和导出\n- 提供 REST API、OpenAPI、CLI 和 Remote MCP endpoint\n- 可授权给 Codex、Claude Code 等 AI Agent 读取和整理笔记\n- 个人规模下可以利用 Cloudflare 免费额度接近零成本运行\n\n部署方式：\n\n```sh\nbun install\nEDGE_EVER_PASSWORD='<首次登录密码>' bun run deploy:setup\nbun run deploy:doctor\nbun run deploy\n```\n\n这个项目适合想自托管个人知识库、希望掌控数据，或者正在从 Evernote / 印象笔记迁移的用户。\n\n",
+    "created_at": "2026-07-05T16:49:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10591"
+  },
+  {
+    "id": 10590,
+    "title": "【工具自荐】Windwalker Qbitorrent/Tranmission/Aria2 手机管理App",
+    "content": "WindWalker 主要做远程管理。它连接你已经在用的下载器，把任务集中显示出来，并提供常用操作。\n\n它适合这些需求：\n- 在 Android 上管理 Aria2\n- 在 Android 上管理 qBittorrent\n- 在 Android 上管理 Transmission\n- 添加 Magnet、HTTP、HTTPS、FTP 或 .torrent 任务\n- 查看速度、进度和任务状态\n- 暂停、继续、删除下载任务\n\n网址：[https://play.google.com/store/apps/details?id=com.windwalker.download.manager](https://play.google.com/store/apps/details?id=com.windwalker.download.manager)\n价格：免费使用，免费下载\n\nindWalker is an Android remote manager for Aria2, qBittorrent, and Transmission.\n\nIt helps you connect to your existing downloaders, add new tasks, check speed and progress, and manage downloads from one app.\n\nThe app is built around a few common jobs:\n- Aria2 remote management on Android\n- qBittorrent management on Android\n- Transmission remote management on Android\n- Adding Magnet, HTTP, HTTPS, FTP, and .torrent tasks\n- Checking task status, speed, and progress\n- Pausing, resuming, and removing downloads\n- Managing multiple downloaders in one place\n\nWindWalker is designed for remote management. It does not try to replace your downloader, and it is not mainly for downloading files directly to your phone.\n\nIf you already use Aria2, qBittorrent, or Transmission and want a cleaner way to manage them from Android, WindWalker is built for that.\nsite：[https://play.google.com/store/apps/details?id=com.windwalker.download.manager](https://play.google.com/store/apps/details?id=com.windwalker.download.manager)\nprice：free",
+    "created_at": "2026-07-05T16:01:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10590"
+  },
+  {
     "id": 10589,
     "title": "【开源自荐】 FenyiDic 分义词典 释义级别的英语学习工具",
     "content": "项目地址：https://github.com/Bern3rsH/FenyiDic\n\n主要特色的功能有：\n- 围绕「释义」来管理学习内容，针对某个单词的某个释义来进行收藏/标签/笔记等操作\n- 支持多种复习模式，不认识/听不懂/不会读/不会拼/听写错走不同的模式，不仅仅是复习不认识词义的单词\n- 自动化使用「辅助精读法」帮助你精读\n\n\n<img width=\"2600\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/26401c23-0b2e-4cb6-8719-16c3f79deb7d\" />\n\n<img width=\"2000\" height=\"1760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a61306ef-e342-4107-9a43-85cc2fea1760\" />\n\n<img width=\"2600\" height=\"1920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c26a5a51-7f6d-4a8a-a4b1-8495ac9b4bcc\" />\n\n<img width=\"2600\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bcca2cd4-f0ee-4dff-bbc8-0b5540cb965e\" />",
@@ -784,21 +800,5 @@
     "created_at": "2026-06-28T14:55:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10489"
-  },
-  {
-    "id": 10488,
-    "title": "【开源自荐】TaiyiForge — 一个不让 AI 跳过设计文档的九阶段工作流引擎",
-    "content": "## 项目地址\n\nhttps://github.com/Dong90/oh-my-taiyiforge\n\n## 一句话介绍\n\n用状态机强制 AI 按九阶段工程流水线推进，不能跳过需求分析和方案设计直接写代码。\n\n## 核心功能\n\n- **九阶段硬约束**：change → requirement → design → task → dev → test → review → integration，AI 无法跳步\n- **人类门控**：change / design / review 三个阶段需人工审批（--approver）才能推进\n- **四端通用**：同一套 /taiyi: 命令在 Claude Code / Codex / Cursor / OpenCode 行为一致\n- **自动规划**：/taiyi:plan 读取 README → 拆模块 → 一键生成全栈骨架（FastAPI + 前端 + 测试 + Docker）\n- **8 种 profile**：nano(2 阶段) 到 full(9 阶段)，按需选择\n\n## 数据\n\nv1.0.0 正式版刚发布：151 测试文件 · 1,170 测试 · 0 失败 · 8 套示例项目 · MIT 开源",
-    "created_at": "2026-06-28T14:23:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10488"
-  },
-  {
-    "id": 10487,
-    "title": "【开源自荐】-AI 脉搏：每天 5 分钟，掌握 AI 全局动态",
-    "content": "AI 脉搏 是一款面向中国 AI 开发者的每日新闻智能聚合页，基于 [Claude Code](https://claude.ai/) 自动驱动。每天早中晚三次自动采集 30+ 平台和 11 位优秀 AI 博主，覆盖聚合平台、深度媒体、社区论坛、前沿研究、企业官方等七大维度，智能去重、交叉验证、分类、生成精美的 HTML 页面。无需 npm、无需 Python、无需任何外部服务，仅需 Claude Code 和一个终端。\n\n<img width=\"1274\" height=\"672\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ec5695e5-55d0-47b5-acd2-8facb2bdc5ec\" />\n\n## 🚀 快速体验\n\n1. **在线访问**：[https://daiowen.github.io/ai-pulse/](https://daiowen.github.io/ai-pulse/)\n2. **RSS 订阅**：[https://daiowen.github.io/ai-pulse/feed.xml](https://daiowen.github.io/ai-pulse/feed.xml)\n3. **GitHub 仓库**：[https://github.com/DaiOwen/ai-pulse](https://github.com/DaiOwen/ai-pulse)\n## 🎯 我们解决了什么问题？\n\nAI 行业每天产生数百条新闻：\n\n- 新模型发布（GPT-5、Claude 4、通义千问...）\n- 开源工具更新（LangChain、Ollama、vLLM...）\n- 政策法规（网信办新规、美国 AI 监管...）\n- 企业动态（融资、收购、合作...）\n\n**但开发者没有时间去逐一筛选。**\n\n刷朋友圈？全是营销号。刷 Twitter？时间线被算法操控。刷 36 氪？AI 内容淹没在其他新闻里。\n\n我们用 AI 技术帮你做这件事：从 30+ 平台智能采集、去重、评分、分类，生成一份 **5 分钟可读完的精华摘要**。\n\n## 🤖 AI 原生驱动，零人工干预\n\n整个项目基于 **Claude Code CLI** 构建：\n\n```\n定时触发 → Claude 搜索采集 → 智能去重评分 → 生成 HTML → Git 推送 → GitHub Pages 部署\n```\n\n**全程无人值守。** 没有编辑的主观偏好，没有算法的商业算计。\n\n### 智能评分机制\n\n每条新闻自动评分，高分优先展示：\n```\n总分 = 热度信号×0.4 + 时效信号×0.3 + 来源质量×0.3\n\n热度信号：多源交叉验证(+5) / 优先信源首发(+3) / 社区讨论热度高(+1)\n时效信号：6h内(+5) / 12h内(+3) / 24h内(+1)\n来源质量：36氪/VentureBeat/TheVerge(+3) / MIT Tech Review/人民网(+2) / 其他(+1)\n```\n\n### 自动去重\n\n标题相似度 > 80% 视为重复，保留评分高者。同一事件不同角度报道，合并为一条，标注多来源。\n\n## 七大板块，全覆盖\n\n<img width=\"1237\" height=\"410\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d605606d-7926-4100-82f5-e870f1b80399\" />\n\n## ⏰ 每日三版，时区友好\n\n```\n早间版 (08:00)  →  覆盖昨夜海外动态 + arXiv 论文\n午间版 (12:00)  →  增量更新，快速扫读\n晚间版 (20:00)  →  全天汇总 + GitHub 开源 Top 10\n```\n\n往期内容通过日历归档，点击即可回溯历史版本。\n\n---\n\n## 🔒 本地优先，隐私友好\n\n- **100% 本地运行**：数据不出户\n- **零外部依赖**：无需 npm、无需 Python、无需任何后端服务\n- **生成的 HTML 零外部请求**：无埋点、无追踪、无广告\n- **开源透明**：代码在 [GitHub](https://github.com/DaiOwen/ai-pulse)，MIT 协议\n\n---\n\n## 🇨🇳 中国视角\n\n优先覆盖：\n\n- 国产大模型动态（通义、豆包、GLM、DeepSeek...）\n- 网信办政策法规\n- 国内开源项目（魔搭社区、PaddlePaddle...）\n\n海外内容：\n\n- 保留关键数据原文（金额、百分比、版本号）\n- 2-3 句中文摘要\n- 标注来源，可追溯\n\n---\n\n## 📱 多端适配\n\n- **暗色/亮色双主题**：自动跟随系统，或手动切换\n- **PWA 支持**：可添加到手机主屏幕，像 App 一样使用\n- **RSS 订阅**：支持 feed.xml 订阅，接入你的阅读器\n- **响应式设计**：桌面/平板/手机全覆盖",
-    "created_at": "2026-06-28T11:21:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10487"
   }
 ]
