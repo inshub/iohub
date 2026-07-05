@@ -1,5 +1,21 @@
 [
   {
+    "id": 10585,
+    "title": "【工具自荐】里程碑庆祝视频生成器",
+    "content": "名称：里程碑庆祝视频生成器\n网址：https://video.mkdollar.com/\n功能：创建适合分享的里程碑庆祝视频，把你的成果展示给全世界。不论是粉丝数、收入、下载量，还是任何值得庆祝的数字。\n价格：免费使用，免费下载\n\n<img width=\"2934\" height=\"1752\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1acf9f8b-bb3d-4cbe-833b-00b31726dbfe\" />",
+    "created_at": "2026-07-05T08:52:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10585"
+  },
+  {
+    "id": 10584,
+    "title": "【好文推荐】读任何代码之前先跑这 5 条 git 命令：用提交历史快速判断代码库健康度",
+    "content": "推荐一篇英文好文：[Git commands I run before reading any code](https://piechowski.io/post/git-commands-before-reading-code/)（英文，作者 Ally Piechowski，2026 年 4 月）\n\n拿到一个陌生代码库，作者不一头扎进去读源码，而是先跑 5 条 `git log` 命令，用提交历史快速摸清项目状态：哪些文件改得最频繁（复杂度/风险集中处）、谁是主要作者（找谁问）、bug 修复集中在哪些文件（脆弱点）、项目节奏在加速还是停滞、有多少 revert / hotfix / rollback（救火频率）。\n\n一句话：提交历史往往比逐行读代码更快暴露一个代码库的真实状态。接手遗留项目、做 code review、评估开源项目都用得上，命令可直接复制。\n",
+    "created_at": "2026-07-05T07:40:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10584"
+  },
+  {
     "id": 10583,
     "title": "【开源自荐】OnlyOffice Web Comp - 纯前端 Office 文档编辑预览组件",
     "content": "## 简介\n\nOnlyOffice Web Comp 是一个基于 OnlyOffice 静态 SDK 的纯前端 Office 文档编辑组件，支持在浏览器里查看、编辑、导出 Word / Excel / PowerPoint 文档，并通过 x2t + WebAssembly 完成格式转换。\n\n它的核心目标是：让任何 Web 项目都能用很低的成本接入 Office 文档能力，不必自建 Document Server，也不必把 OnlyOffice 当成一个重型平台来集成。\n\n项目地址：https://github.com/electroluxcode/onlyoffice-web-comp\n\n在线演示：https://onlyoffice-web-comp.vercel.app/docs/demos\n\ndemo截图：\n\n<img width=\"2820\" height=\"1740\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a26a15b-6093-4568-b407-621ba5bbbe8c\" />\n\n## 为什么做这个\n\n在很多文件预览编辑的场景中，常见需求其实很简单：用户上传一个 docx / xlsx / pptx 文件，在线预览、简单编辑，然后导出结果。\n\nOnlyOffice 的完整 Document Server 很强大，但部署、运维、跨域配置和平台化改造成本，对小团队或纯前端集成场景来说偏重。很多 OnlyOffice 纯前端项目也会把编辑能力做成一个完整平台，业务耦合高，工程化封装不足，想迁移到另一个项目里并不轻松。\n\nOnlyOffice Web Comp 尝试把这部分能力拆成更轻的组件形态：只要拿到 `public` 静态资源和 `onlyoffice-web-comp` 文件夹，就可以接入到任意 Web 项目中。应用层不绑定 React、Vue、Next.js 或其他框架，业务只需要调用少量 API 创建编辑器实例。\n\n## 主要特点\n\n- 无需自建 Document Server：托管 OnlyOffice SDK 静态资源后，即可在前端页面中使用。\n- 完全解耦：拿到 `public` 静态资源和 `onlyoffice-web-comp` 文件夹，就可以迁移到任何 Web 项目。\n- 不绑定应用层技术栈：React、Vue、原生前端或其他 Web 应用都可以接入。\n- 接入简单：最低 6 行代码即可创建一个可用的 Office 编辑器。\n- CDN 友好：静态资源做了 CDN 与跨域兼容处理，方便把 SDK 资源独立部署。\n- 数据留在浏览器端：适合本地文件预览、编辑、导出等场景。\n- 支持常见 Office 格式：Word、Excel、PowerPoint、CSV、DOCM 等。\n- 提供工程化 API：封装 `OnlyOfficeManager` / `EditorManager`，支持创建、打开文件、导出、销毁、多实例管理。\n- 支持多实例：可以在 Tab 或多容器中同时维护多个文档编辑器。\n- 支持批注、修订和 Word API：方便接入公文审校、合同修订等业务流程。\n- 支持自定义字体：提供字体 catalog 生成与注册流程，适配公文字体等场景。\n- 测试覆盖更完整：作为纯前端组件库，项目配套了较完善的 e2e 测试，覆盖文件打开、编辑器加载、多实例等关键链路。\n- 带完整文档和在线示例：包含快速开始、核心 API、事件系统、完整示例和多实例 Demo。\n",
@@ -786,21 +802,5 @@
     "created_at": "2026-06-28T07:16:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10482"
-  },
-  {
-    "id": 10481,
-    "title": "【开源自荐】支持邮箱订阅，每日AI前沿信息。开源趋势、社区热议、AI 动态",
-    "content": "https://github.com/yunlongwen/agently.top\n\n# Agently.top\n\n每日 AI / 开源 / 科技信息聚合 · 中文智能摘要 · 卡片式资讯流 · 微信公众号自动发布\n\n线上地址：[https://agently.top](https://agently.top)\n\n---\n\n## 它是什么\n\nAgently.top 每天自动抓取 9 个信息源的中英文科技与 AI 资讯，通过 AI 生成中文摘要，以卡片流形式呈现，并支持邮件订阅与微信公众号自动发布。\n\n---\n\n## 主要特性\n\n- **每日自动采集**：9 大源独立容错，单一源失败不影响整体输出\n- **AI 中文摘要**：聚焦 AI / 软件工程师关注点\n- **邮件推送与订阅**：按调度时间自动发送每日摘要，访客可订阅\n- **微信公众号自动发布**：每日精选自动入库草稿箱\n- **Web + API**：Vue 3 卡片流前端，FastAPI 只读接口，RSS 输出\n- **访问统计**：内置轻量统计，UV/PV 自查\n\n---\n",
-    "created_at": "2026-06-28T06:36:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10481"
-  },
-  {
-    "id": 10480,
-    "title": "【工具自荐】WeRead Vault：微信读书的本地数据库 + 带 AI Skill 的 CLI",
-    "content": "WeRead Vault 把微信读书的书架、划线、想法、阅读统计一次性归档进本机的一个 SQLite 文件——可查询、可视化、可导出，AI 直接读，数据不上传。一句话：它是「微信读书的本地数据库」，外加一个带 Agent Skill 的命令行。\n\n- **GitHub**: https://github.com/dull-bird/weread-vault\n- **主页 / 下载**: https://dull-bird.github.io/weread-vault/ （macOS `.dmg`、Windows 安装包，或 `pipx install weread-vault`）\n\n**为什么做它**：微信读书官方的 Agent Skill 是 17 个无状态、「按单本书查」的接口，想搜遍所有划线、做跨书统计都得逐本调几百次。WeRead Vault 把数据归档进本地 SQLite，「按书查」变成「随便查」——一条 SQL 全文检索毫秒级搜遍全部划线，一条 `GROUP BY` 做跨书聚合。\n\n**几个特点**：\n\n- **本地优先**：数据只存本机一个 SQLite 文件，可备份、迁移、离线，永不上传；本地网页只监听 127.0.0.1。\n- **完整书架 + 阅读统计**：同步整个书架（含无笔记的书），周/月/年/全部切换的看板、GitHub 式划线热力图、读得最多排行等。\n- **AI 原生**：`query`（只读 SQL）/ `stats`（统计 JSON）/ `api`（直连微信读书接口）+ 自带 Skill，Claude Code、Codex、OpenClaw 一条命令就能查、能荐书；还能 `weread-vault open 三体` 直接唤起微信读书 App 打开某本书。\n- **导出到知识库**：Markdown（带封面、可合并他人热门划线去重）、Obsidian、flomo、Notion。\n- **每天自动同步**：一句命令注册系统定时器，到点自动同步，不常驻后台。\n\n纯 Python 标准库 + SQLite，零第三方依赖，MIT 开源。\n\n## 截图\n\n### Dashboard（本地书架）\n![dashboard](https://github.com/dull-bird/weread-vault/raw/main/docs/assets/dashboard.png)\n\n### 它是怎么工作的\n![how-it-works](https://github.com/dull-bird/weread-vault/raw/main/docs/assets/how-it-works.png)\n\n### 阅读统计\n![stats](https://github.com/dull-bird/weread-vault/raw/main/docs/assets/stats-all.png)\n\n### 书籍详情（含相关推荐）\n![book-detail](https://github.com/dull-bird/weread-vault/raw/main/docs/assets/book-detail.png)",
-    "created_at": "2026-06-28T02:39:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10480"
   }
 ]
