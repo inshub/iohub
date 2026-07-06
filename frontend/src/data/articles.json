@@ -1,5 +1,45 @@
 [
   {
+    "id": 10607,
+    "title": "[工具推荐] tokencost - LLM令牌成本计算器，一键对比20+模型API费用",
+    "content": "## 工具推荐\n\n**项目地址：** https://github.com/alvabillwu/tokencost\n\n**一句话介绍：** 命令行LLM令牌成本计算器，支持20+模型的token计数与费用对比。\n\n### 为什么值得推荐\n\n使用大模型API时，不同模型的定价差异很大（GPT-5 Nano每百万token不到$0.10，Claude Opus 4.6则超过$15）。开发者在选择模型时往往缺乏直观的成本对比工具。\n\ntokencost解决了这个问题：\n- 精确token计数（tiktoken for OpenAI）+ 智能估算（其他模型）\n- 覆盖OpenAI、Anthropic、Google、Meta、DeepSeek、阿里Qwen等主流厂商20+模型\n- 终端彩色对比表格，支持管道过滤\n- 一键推荐预算内最优模型\n- 支持大规模预估（--runs 1000）\n\n### 使用示例\n\n```bash\npip install tokencost\ntokencost compare --input-tokens 10000 --output-tokens 5000\n\n# Model                    Input    Output         Cost  Provider\n# gpt-5-nano              10,000      5,000    $0.0009  OpenAI\n# llama-4-scout           10,000      5,000    $0.0025  Meta\n# gpt-4o-mini             10,000      5,000    $0.0045  OpenAI\n# claude-opus-4-6         10,000      5,000    $0.5250  Anthropic\n\n# 在预算内推荐最便宜的模型\ntokencost suggest --file prompt.txt --budget 0.50\n```\n\n### 技术栈\nPython，MIT 开源协议\n",
+    "created_at": "2026-07-06T12:44:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10607"
+  },
+  {
+    "id": 10606,
+    "title": "[工具推荐] mcp-guard - MCP服务器安全扫描器，给AI Agent加上安全审核",
+    "content": "## 工具推荐\n\n**项目地址：** https://github.com/alvabillwu/mcp-guard\n\n**一句话介绍：** 给MCP（Model Context Protocol）生态加上安全审核，类似`npm audit`的体验。\n\n### 为什么值得推荐\n\n2026年MCP相关CVE已超过30个，包括一个9.6 CVSS评分的RCE漏洞。据统计，仅有12.9%的公开MCP服务器被评为\"高信任度\"。当AI Agent接入越来越多的MCP工具时，安全问题日益突出。\n\nmcp-guard解决了这个问题：\n- 扫描MCP服务器的`tools/list`返回结果，检测10种危险能力（Shell执行、文件写入、网络访问、凭证泄露、命令注入等）\n- 每个工具给出0-100风险评分，safe/caution/dangerous三级判定\n- 支持预设策略（default/strict/permissive）和自定义白名单\n- CI就绪，检测到危险工具时非零退出\n- 零运行时依赖，纯Node.js标准库\n\n### 使用示例\n\n```bash\nnpm install -g mcp-guard\nmcp-guard scan manifest.json\n# 输出：\n# mcp-guard — DANGEROUS  5 tools, 2 safe, 1 caution, 2 dangerous  risk: 52/100\n#   ✓ hello                       0\n#   ⚠ read_file                  10\n#   ✗ execute_command            35\n```\n\n### 技术栈\nNode.js，MIT 开源协议\n",
+    "created_at": "2026-07-06T12:44:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10606"
+  },
+  {
+    "id": 10605,
+    "title": "【工具自荐】一个 3D 抛骰子网站，支持多种类型骰子！",
+    "content": "网站地址：https://wheelpage.com/dice-roller/\n\n页面很简单，打开之后点一下，骰子滚动，然后给出结果。\n\n这是一个在线 3D 骰子工具，打开网页后可以直接掷骰子，不需要登录，也不需要安装 App。\n\n它主要适合一些临时需要骰子的场景，比如桌游、课堂小游戏、聚会互动，或者只是想随机决定一件事。\n\n一开始我觉得骰子只是 1 到 6 的随机数，应该很简单。但做的时候发现，如果只是直接显示数字，更像随机数生成器，不太像“掷骰子”。\n\n所以这个页面做成了 3D 骰子的形式。点击后骰子会滚动，再停到最终结果上，尽量保留一点真实掷骰子的感觉。\n\n<img width=\"2508\" height=\"1553\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5f399747-178e-413e-94f5-63d719ce8e9d\" />",
+    "created_at": "2026-07-06T10:20:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10605"
+  },
+  {
+    "id": 10604,
+    "title": "【开源推荐】开源 AI 实时世界杯解说，视障球迷可无障碍观赛",
+    "content": "WorldCupVoice 是一个开源的 AI 实时体育解说项目。在reddit、x、thread上累计超过 12k 浏览。\n\n通过让大语言模型直接观看实时视频流，像体育解说员一样，根据场上正在发生的内容实时生成语音解说。\n\n项目使用 Agora 搭建实时音视频链路：直播画面通过 RTMP 推流进入 RTC 频道，AI 在服务端实时获取并采样视频帧，通过 OpenAI 的视觉模型理解比赛内容、生成解说文本，再通过 TTS 合成语音并发布回 RTC 频道。观众在观看比赛的同时，也能听到 AI 生成的实时解说。\n\n支持 OpenAI TTS、ElevenLabs 和 Fish Audio，也可以配置不同语言和解说风格。\n\n视障球迷完全依赖声音看球，而真人解说习惯性省略很多视觉细节：球在哪、压力从哪侧来、谁在前插跑位。这些是 AI 能稳定补上的信息，无障碍观赛可能是这套技术眼下最实在的用途。\n\n项目目前 v0.1，还在持续迭代，计划中的方向包括：多人解说（两个 AI 搭档配合）、多语言覆盖、降低延迟，以及专门面向视障用户的解说模式。\n\nGitHub：https://github.com/zicojiao/worldcupvoice\n\nhttps://github.com/user-attachments/assets/727a038f-9a83-46d2-923f-8fc414aec6b3",
+    "created_at": "2026-07-06T09:44:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10604"
+  },
+  {
+    "id": 10603,
+    "title": "【项目自荐】Defficiency Skills - 让 AI Agent 不再高效，也许是一种行为艺术。目前支持 ADHD 和 ASD 两种模式。",
+    "content": "仓库地址：https://github.com/liigoQi/defficiency-skills/tree/main\n\n**Defficiency Skills** 是一组为 AI Agent 设计的**降效**Skills。它们的目的是 **降低** AI Agent 的工作效率，或者做些你没想到的事，制造不同于寻常AI的体验。\n\n（也许，有时却会**提效**……谁知道呢？）\n\n这不是 bug，是 **行为艺术（performance art）**。\n\n目前包含以下 skill：\n\n| Skill | 描述 |\n|-------|------|\n| **ADHD Mode** | 让 Agent 表现出 ADHD（注意缺陷多动障碍）特征：任务启动困难、思维跳跃、容易分心、时间感薄弱、冲动搜索等。 |\n| **ASD Mode** | 让 Agent 表现出 ASD（自闭症谱系障碍）特征：社交互动缺损、字面理解、刻板重复行为、坚持同一性、固着兴趣、感官敏感等。 |",
+    "created_at": "2026-07-06T09:36:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10603"
+  },
+  {
     "id": 10602,
     "title": "【工具自荐】Image Prompt Generator：免费 AI 图像提示词生成器和提示词库",
     "content": "项目地址：https://image-prompt-generator.com/\nGitHub：https://github.com/xianyu110/image-prompt-generator\n\n简介：Image Prompt Generator 是一个免费的 AI 图像提示词生成器和提示词库，支持按模型筛选、浏览提示词示例，并生成可直接复制使用的图片提示词。\n\n主要特点：\n\n- 多模型支持：覆盖 GPT Image、Seedream、Seedance、Grok Imagine、Gemini、Nano Banana Pro 等图像/视频生成模型。\n- 提示词生成：输入图片创意，选择模型和画幅比例，生成更完整的图像提示词。\n- 提示词库：提供热门提示词、示例卡片、图片预览、来源信息和一键复制。\n- 中英双语：支持英文和中文界面，适合 AI 绘图、内容创作和提示词学习。\n\n适合需要快速构思 AI 绘图提示词、整理图像生成灵感、学习不同模型提示词写法的用户。",
@@ -760,45 +800,5 @@
     "created_at": "2026-06-30T01:31:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10506"
-  },
-  {
-    "id": 10505,
-    "title": "【网站自荐】EMCCalc：电磁兼容与射频单位联动换算及限值速查网站",
-    "content": "### EMCCalc - 电磁兼容与射频单位联动换算及限值速查网站\n\nEMCCalc 是一个为硬件、射频及电磁兼容（EMC）工程师设计的单位联动换算与限制标准速查网站。\n\n- 网站地址：https://emccalc.com/zh/\n\n### 1. 解决的痛点\n在电磁兼容测试与整改中，测试读数和限制标准的单位经常不统一。工程师需要在不同维度的单位（如射频通路功率 dBm、端口输入电流 dBuA、空间磁参数 dBpT 等）之间进行复杂的换算。同时，CISPR 25、ECE R10、EN 55032 等标准的限值分布在不同规范的 PDF 里，翻阅和核对较为耗时。\n\nEMCCalc 将这些高频换算和主流限值整合到了一个静态网页中，提供一键换算与可视化速查。\n\n<img width=\"886\" height=\"655\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eb3c68d3-15bc-44a3-b776-f80cc3722f07\" />\n\n### 2. 网站核心功能\n- **RF 50Ω 系统单位联动换算**：支持电压（V, mV, dBuV, dBV, dBmV, uV）、电流（A, mA, dBuA, dBA, dBmA, uA）、功率（W, mW, dBm, dBW, dBuW, uW）的联动式矩阵互转。\n- **空间电磁场与天线计算**：\n  - **天线系数转换**：支持天线系数（AF, dB/m）与端口接收电压快速转换为空间电场强度（dBuV/m）。\n  - **距离外推换算**：支持不同测试距离（如 3米 与 10米）下电场场强值的外推折算。\n  - **自由空间场强互转**：支持自由空间平面波下，电场强度与磁场强度基于特征阻抗（377Ω）的远场换算。\n  - **磁场与磁感应强度互转**：支持磁场强度（A/m, dBuA/m）与磁感应强度（Tesla, dBpT, dBuT）在非磁性介质（如空气）中基于真空磁导率（1.9842 对数常数偏移）的互转。\n- **波长与天线效应计算器**：支持基于介质速度因子（VF）的自由空间波长、半波对称偶极子天线及 1/4 波长单极子天线谐振长度计算，并支持最大允许屏蔽孔缝泄漏尺寸换算（基于 1/20 波长等准则）。\n- **阻抗失配与反射计算**：支持电压驻波比（VSWR）、反射系数（Gamma）、回波损耗（RL, dB）与失配损耗（ML, dB）之间的闭环换算。\n- **EMC 标准限值数据与可视化**：收录了 CISPR 25（车载级）、ECE R10（整车级）、FCC Part 15（北美）以及 EN 55032（多媒体设备 Class A/B）的辐射发射（RE）和传导发射（CE）限值。提供直观的 ECharts 对数坐标曲线图以及对应的限值数据表，方便对比超标频点。\n- **动态 URL 状态同步**：所有换算子页面支持在免刷新计算的同时，自动通过 History API 将计算数值和单位同步至 URL，便于直接分享换算结果。\n\n<img width=\"942\" height=\"767\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a46dcbb3-beb8-4ca4-81c9-d46b6582e144\" />\n\n<img width=\"1266\" height=\"758\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c7fca725-28b1-467d-ad01-d03656c2ead1\" />",
-    "created_at": "2026-06-29T16:48:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10505"
-  },
-  {
-    "id": 10504,
-    "title": "【开源自荐】Reviva—AI 学习工作台，围绕你的资料完成问答、笔记、复习和创作输出。本地优先，多模型，Wiki 知识库，AI Agent，创作工具。",
-    "content": "仓库地址： [Reviva](https://github.com/mingchen666/Reviva)\n### 这是什么\nAI 学习工作台，围绕你的资料完成问答、笔记、复习和创作输出。本地优先，多模型，Wiki 知识库，AI Agent，创作工具。\n\n### 已包含的功能\n\n  - 学习台：与 AI Agent 对话、引用资料、触发创作任务\n  - 智能体：创建和配置专属 AI Agent，绑定 Skills、工具和知识库\n  - Wiki 知识库：组织资料，Agent 基于知识库检索回答\n  - Skills 能力模块：内置 + 自定义\n  - 创作工具：思维导图、知识图谱、闪卡、测验、图表（本地生成）；深度研究、PPT（本地生成）\n  - 工具系统：内置工具 + MCP 远程工具\n  - 多模型服务商：OpenAI-compatible、Ollama、自定义网关\n  - 笔记、文档管理、输出中心、回收站\n  - 本地优先：数据保存在本地 SQLite + 用户工作目录\n\n### 开源仓库\n\n仓库地址： [Reviva](https://github.com/mingchen666/Reviva)",
-    "created_at": "2026-06-29T16:48:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10504"
-  },
-  {
-    "id": 10503,
-    "title": "【开源自荐】Claude Code 官方在线中文文档 58篇翻译全集",
-    "content": "**Claude Code 中文文档翻译版**\n\n  Claude Code 是 Anthropic 推出的 AI 编程 CLI 工具，但官方文档只有英文版，且内容分散在 58 篇文档中，对中文开发者不太友好。\n  这个项目将全部 58 篇官方文档做了中文意译（非机翻），覆盖从快速上手、权限配置、MCP 扩展、Hooks 自动化到企业部署的完整知识体系。\n\n  **特点：**\n  - 意译而非直译，用中文思维重组，每段段首加粗一句话总结\n  - 对比/列举信息表格化，快速扫描\n  - 支持 giscus 评论，可以针对具体文档讨论\n  - 支持暗黑模式，阅读体验友好\n\n**参考：**\n- 在线阅读地址：https://docs.thinkycx.me/claude-code-cn/\n- github 地址：https://github.com/thinkycx/docs/tree/main/claude-code-cn\n\n<img width=\"1265\" height=\"619\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cec6aa8a-721c-42e2-b91d-3edb72eef025\" />",
-    "created_at": "2026-06-29T15:55:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10503"
-  },
-  {
-    "id": 10501,
-    "title": "【开源自荐】一款高颜值简约现代的桌面数据库管理工具",
-    "content": "支持 PostgreSQ、MySQL、SqLite 与 Redis。基于 Tauri 2 + React + TypeScript 构建，体积小、启动快。\n欢迎大家一起来 Vibe。\n\n[github](https://github.com/lvwxx/datum/blob/main/README.md)\n\n<img width=\"3504\" height=\"1960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1b2ca0fc-db61-4b36-a127-61bb44cc3fbb\" />\n\n<img width=\"3308\" height=\"2204\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/90fc4c80-569b-4cf0-8e30-5f406adb14cb\" />",
-    "created_at": "2026-06-29T12:05:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10501"
-  },
-  {
-    "id": 10500,
-    "title": "【工具自荐】像看股票一样看github commit记录",
-    "content": "gitstock是可以github commit可视化工具，可以将任意github公开仓库中的commit记录转变为下面这种K线图\n\n<img width=\"1417\" height=\"769\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f7fc548c-9c07-4848-91e6-123ed472cd0c\" />\n\n同时可以看到commit的相关信息，方便快速了解项目的代码行数和单个commit的行数变更数\n\n<img width=\"1417\" height=\"769\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6c9b9772-edac-4b9c-84c8-e43f31997013\" />\n\n同时可以将整个过程转变为视频来分享\n\nhttps://github.com/user-attachments/assets/d21b1336-f6cc-439a-9235-8afa8ff9a070\n\n\n工具地址: [gitstock](https://gitstock.org/)",
-    "created_at": "2026-06-29T09:36:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10500"
   }
 ]
