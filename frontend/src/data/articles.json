@@ -1,5 +1,13 @@
 [
   {
+    "id": 10608,
+    "title": "【开源自荐】Claude Science 开源替代 - 科研自动化AI Agent",
+    "content": "Runcell Science 是一个Claude Science的开源替代，它可以协助科研工作的自动化：自动调研、下载整理、阅读论文，进行编程、实验等。内部继承了数十个生物医药、化学、物理等科学类skills和数据库连接器。\n\n与claude science绑定claude官方生态不同，它可以切换到不同的code agent服务上，如openai codex与其他自定义的agent/模型。\n\n- 代码仓库: [Runcell Science](https://github.com/runcell-ai/runcell-science)\n\n<img width=\"2988\" height=\"1998\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/315d8490-440a-415f-8d18-17a66af4e7d0\" />\n\nhttps://github.com/user-attachments/assets/e969e690-790d-4685-9f7c-4b74f374907c",
+    "created_at": "2026-07-06T15:21:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10608"
+  },
+  {
     "id": 10607,
     "title": "[工具推荐] tokencost - LLM令牌成本计算器，一键对比20+模型API费用",
     "content": "## 工具推荐\n\n**项目地址：** https://github.com/alvabillwu/tokencost\n\n**一句话介绍：** 命令行LLM令牌成本计算器，支持20+模型的token计数与费用对比。\n\n### 为什么值得推荐\n\n使用大模型API时，不同模型的定价差异很大（GPT-5 Nano每百万token不到$0.10，Claude Opus 4.6则超过$15）。开发者在选择模型时往往缺乏直观的成本对比工具。\n\ntokencost解决了这个问题：\n- 精确token计数（tiktoken for OpenAI）+ 智能估算（其他模型）\n- 覆盖OpenAI、Anthropic、Google、Meta、DeepSeek、阿里Qwen等主流厂商20+模型\n- 终端彩色对比表格，支持管道过滤\n- 一键推荐预算内最优模型\n- 支持大规模预估（--runs 1000）\n\n### 使用示例\n\n```bash\npip install tokencost\ntokencost compare --input-tokens 10000 --output-tokens 5000\n\n# Model                    Input    Output         Cost  Provider\n# gpt-5-nano              10,000      5,000    $0.0009  OpenAI\n# llama-4-scout           10,000      5,000    $0.0025  Meta\n# gpt-4o-mini             10,000      5,000    $0.0045  OpenAI\n# claude-opus-4-6         10,000      5,000    $0.5250  Anthropic\n\n# 在预算内推荐最便宜的模型\ntokencost suggest --file prompt.txt --budget 0.50\n```\n\n### 技术栈\nPython，MIT 开源协议\n",
@@ -792,13 +800,5 @@
     "created_at": "2026-06-30T01:56:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10507"
-  },
-  {
-    "id": 10506,
-    "title": "TeamoRouter：国内开发者使用 Claude Code / Codex 的 API 路由方案与 ccswitch 迁移指南",
-    "content": "## TeamoRouter：LLM API 路由网关\n\n### 背景\n\n国内开发者用 Claude Code、Codex 做 AI 编程时，最头疼的几个问题：\n\n1. **账号难注册** — Anthropic/OpenAI 需要海外信用卡，绑卡经常被拒\n2. **容易被封号** — IP 不干净或支付信息被标记，账号说没就没了\n3. **中转不稳定** — 公共中转 API 延迟忽高忽低，Agent 协议经常缺功能\n4. **配置复杂** — 换个模型还得换 Key、改配置\n\n### 这个项目做了什么\n\n[TeamoRouter](https://teamorouter.com/?utm_source=github&utm_medium=social&utm_campaign=ruanyf-weekly) 是一个 LLM API 路由网关，把上面这些问题都封装到路由层解决。用户只需要一个 API Key，后端自动处理路由、负载均衡、协议兼容。\n\n### 技术亮点\n\n**1. 完整的 Agent 协议支持**\n\n与市面上常见的 HTTP-only 中转不同，TeamoRouter 完整支持 Anthropic 和 OpenAI 的 Agent 协议栈：\n\n- Tool Use / Function Calling\n- SSE Streaming\n- MCP (Model Context Protocol)\n- Beta Features（如 Claude 的 computer use）\n- 并行工具调用\n\n这意味着 Claude Code 的 \\`---dangerously-skip-permissions\\`、Codex 的 Agent 模式等高级功能都能正常工作。\n\n**2. 从 ccswitch 迁移只需改一个环境变量**\n\n```bash\n# Before（ccswitch）\nexport ANTHROPIC_BASE_URL=https://ccswitch.com/v1\n\n# After（TeamoRouter）\nexport ANTHROPIC_BASE_URL=https://api.teamorouter.com/v1\nexport ANTHROPIC_API_KEY=tr-xxxxxxxx\n```\n\n**3. 多模型统一路由**\n\n```bash\n# 同一个 Key，调不同模型\nexport ANTHROPIC_BASE_URL=https://api.teamorouter.com/v1\nexport OPENAI_BASE_URL=https://api.teamorouter.com/v1\n```\n\n### 定价模式\n\n按量后付费，约官方 API 价格的 10% 起，无月费无最低消费，支持国内支付渠道。适合个人开发者按需使用，也适合团队统一管理 API 支出。\n\n### Teamo Switch\n\n配套的桌面客户端（macOS/Windows），可一键安装 Codex Desktop + 配置路由，不需要手动设置环境变量和代理。\n\n> 官网: [https://teamorouter.com/?utm_source=github&utm_medium=social&utm_campaign=ruanyf-weekly](https://teamorouter.com/?utm_source=github&utm_medium=social&utm_campaign=ruanyf-weekly)",
-    "created_at": "2026-06-30T01:31:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10506"
   }
 ]
