@@ -1,5 +1,13 @@
 [
   {
+    "id": 10609,
+    "title": "【开源自荐】tty7：纯 Rust 编写的 GPU 渲染终端，快且提示符好用",
+    "content": "项目地址：https://github.com/l0ng-ai/tty7\n\n开源协议：Apache-2.0\n\n![tty7](https://raw.githubusercontent.com/l0ng-ai/tty7/main/docs/screenshot.jpg)\n\n## 简介\n\ntty7 是一个用纯 Rust 编写、GPU 渲染的终端，基于 Zed 的 gpui 框架和 Alacritty 的 VT 内核。目标很简单：渲染要快，提示符要真的帮上忙。\n\n它把内联补全、语法高亮、历史记录和终端内搜索都做进了提示符，还内置了约 100 个常用命令的参数签名（git、kubectl、npm 等，数据来自 Fig 的语料）——敲下 `git commit --`，就能在终端里直接列出每个 flag 及其说明，不用装插件，也不用额外的 shell 框架。\n\n## 性能实测\n\n同一台机器、同一 155×40 网格（Apple M1 Pro）：11 MB 的 `cat` 只要约 **95 ms**，Alacritty / Ghostty / Kitty 为 179–239 ms；DOOM-fire 跑到约 **888 fps**，它们在 485–617 之间。输出成批解析、脱离渲染路径，热路径全程无锁，所以大量输出不会卡在渲染上。基准脚本就在仓库里，欢迎自己复现、挑方法学的刺。\n\n## 主要特性\n\n- **增强提示符**：内联补全、语法高亮、历史、终端内搜索，以及约 100 个命令的参数/子命令签名。\n- **懂 shell**：新标签页和分屏都开在当前目录，路径补全相对当前目录；zsh / bash / fish / PowerShell 开箱即用。\n- 标签页（拖拽重排、双击重命名、数字键切换）、可拖动分屏、命令面板、点击打开链接、桌面通知、焦点随鼠标。\n- 内置 8 套主题（系统标题栏明暗跟随），支持 CJK 与输入法组合输入。\n- macOS（签名 + 公证 DMG）、Windows、Linux 三平台原生构建，每个 release 一起打出。\n\n## 使用场景\n\n- 想要一个渲染够快、日常又顺手的终端，替代现有的 GPU 终端。\n- 经常敲长命令、记不住 flag，希望在终端里直接看到参数说明。\n- 需要跨平台、开箱即用、零配置的终端体验。\n\n欢迎试用，也欢迎提 issue 和 PR。\n",
+    "created_at": "2026-07-07T02:42:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10609"
+  },
+  {
     "id": 10608,
     "title": "【开源自荐】Claude Science 开源替代 - 科研自动化AI Agent",
     "content": "Runcell Science 是一个Claude Science的开源替代，它可以协助科研工作的自动化：自动调研、下载整理、阅读论文，进行编程、实验等。内部继承了数十个生物医药、化学、物理等科学类skills和数据库连接器。\n\n与claude science绑定claude官方生态不同，它可以切换到不同的code agent服务上，如openai codex与其他自定义的agent/模型。\n\n- 代码仓库: [Runcell Science](https://github.com/runcell-ai/runcell-science)\n\n<img width=\"2988\" height=\"1998\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/315d8490-440a-415f-8d18-17a66af4e7d0\" />\n\nhttps://github.com/user-attachments/assets/e969e690-790d-4685-9f7c-4b74f374907c",
@@ -792,13 +800,5 @@
     "created_at": "2026-06-30T02:53:24Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10508"
-  },
-  {
-    "id": 10507,
-    "title": "【开源自荐】微信读书数据 web 看板",
-    "content": "## 基本介绍\n\n在国内，微信读书是最好的读书软件。但是，之前，微信读书是一套相对封闭的系统。我们无法向外部展示自己的书架，读书笔记。\n\n现在，微信读书官方提供了 skill，以便接入外部的 AI 。\n\n本项目由 AI 编码生成，用于每天自动拉取自己的微信读书数据，存进本地 SQLite，并以一个自托管的 Web 看板展示阅读时长曲线、书架、笔记/划线、个性化推荐。\n\ngithub 地址：https://github.com/da1234cao/weread-shelf\n\n<img width=\"1698\" height=\"1189\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e68b0730-2edb-4a63-a9c4-5baae2d7adec\" />\n\n## 其他\n\n微信读书官方于 2026 年 5 月 16 日开放了它的 Skill，本质上是一个 CLI 接口，让 AI Agent（如 Claude Code、Codex 等）可以连接用户的微信读书账号。一个多月的时间，已经有不少类似的软件出现了。比如：\n- https://github.com/ruanyf/weekly/issues/10480\n- https://github.com/BENZEMA216/awesome-weread\n\nAI 时代，实现一个软件很容易。即使别人已经更好的产品了，但是并不妨碍自己搓产品，给自己用（推荐给别人用），挺有趣的。",
-    "created_at": "2026-06-30T01:56:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10507"
   }
 ]
