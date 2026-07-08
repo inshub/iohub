@@ -1,65 +1,10 @@
 <template>
   <div class="max-w-full mx-auto bg-background h-full" :style="{minHeight:fullShow?'calc(100vh - 100px)':'auto'}">
-    <!-- 简化的搜索区域 -->
-    <section class="py-6 px-4 bg-background border-b border-border/50">
-      <div class="relative max-w-[600px] mx-auto flex items-center bg-card border border-border rounded-xl p-1 shadow-lg transition-all duration-300 focus-within:border-primary focus-within:shadow-primary/30">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <i data-lucide="search" class="w-5 h-5 text-muted-foreground"></i>
-        </div>
-        <input 
-          v-model="searchQuery" 
-          @focus="showSuggestions = true"
-          @blur="hideSuggestions"
-          @keydown="handleSearchKeydown"
-          placeholder="搜索技术、框架、工具..."
-          class="w-full pl-10 pr-10 py-2 border-none outline-none bg-transparent text-card-foreground text-base font-primary"
-          ref="searchInput"
-          role="searchbox"
-          aria-label="搜索文章"
-        >
-        <button 
-          v-if="searchQuery" 
-          @click="clearSearch"
-          class="absolute inset-y-0 right-0 pr-3 flex items-center justify-center w-8 h-8 bg-secondary border-none rounded-lg text-muted-foreground cursor-pointer transition-all duration-300 mr-1 hover:bg-primary/10 hover:text-primary"
-          aria-label="清除搜索"
-          title="清除搜索"
-        >
-          <i data-lucide="x" class="w-5 h-5 text-muted-foreground"></i>
-        </button>
-        
-        <!-- 搜索建议下拉框 -->
-        <div 
-          v-if="showSuggestions && searchSuggestions.length" 
-          class="absolute z-[1000] w-full mt-1 bg-card/90 backdrop-blur-xl border border-border/30 rounded-lg shadow-lg overflow-hidden animate-slide-in-down dark:bg-card/90 dark:border-border/10 dark:shadow-xl"
-          role="listbox"
-          aria-label="搜索建议"
-        >
-          <div 
-            v-for="(suggestion, index) in searchSuggestions" 
-            :key="suggestion"
-            @mousedown="selectSuggestion(suggestion)"
-            :class="['flex items-center gap-3 px-4 py-2 cursor-pointer transition-all duration-300 border-b border-border/50 relative overflow-hidden hover:bg-muted hover:translate-x-1 last:border-b-0', { 'bg-muted': selectedSuggestionIndex === index }]"
-            role="option"
-          >
-            <div class="flex items-center justify-center text-muted-foreground">
-              <i data-lucide="search" class="w-4 h-4 mr-2 text-muted-foreground"></i>
-              <span class="flex-1 text-sm text-foreground" v-html="highlightSuggestion(suggestion)"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- 重新设计的文章网格 -->
-    <section class="p-2 sm:p-3 md:p-4 lg:px-6 lg:py-4 max-w-7xl mx-auto">
+    <section class="io-content-section">
       <main 
         class="articles-main"
-        :class="{ 'hide-scrollbar': props.fullShow }"
-        :style="{
-          overflowY: props.fullShow ? 'auto' : 'hidden',
-          height: props.fullShow ? 'calc(100vh - 180px)' : 'auto'
-        }" 
-        v-on:scrollend="scorllEnd"
+        :class="{ 'is-flow-mode': props.fullShow }"
       >
         <!-- 骨架屏 - 初始加载时显示 -->
         <div v-if="isInitialLoading" class="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
@@ -115,7 +60,7 @@
               class="io-card-cover"
               :aria-label="`阅读 ${article.title}`"
             >
-              <span class="io-access">免费</span>
+              <span v-if="hasWeeklyLabel(article)" class="io-access">weekly</span>
               <span class="io-cover-dots" aria-hidden="true"></span>
               <span class="io-cover-cat">
                 <span class="io-cover-square" aria-hidden="true"></span>
@@ -156,29 +101,27 @@
         </div>
 
         <!-- 分页控制 -->
-        <div class="py-6 flex justify-center" v-if="totalPages > 1 && !fullShow && !isInitialLoading">
-          <nav class="flex justify-center items-center gap-3 px-6 py-3 bg-card/80 backdrop-blur-xl border border-border/30 rounded-xl shadow-md transition-all duration-300 hover:shadow-lg hover:bg-card/90">
+        <div class="io-pagination-wrap" v-if="totalPages > 1 && !fullShow && !isInitialLoading">
+          <nav class="io-pagination" aria-label="文章分页">
             <button
-              class="inline-flex items-center gap-2 px-5 py-2.5 border border-border/50 rounded-lg bg-card text-foreground no-underline font-medium text-sm transition-all duration-200 cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/5 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+              class="io-page-button"
               :disabled="currentPage === 1"
-              @click="currentPage--"
+              @click="goToPage(currentPage - 1)"
             >
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
               上一页
             </button>
             
-            <div class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border border-primary/20">
-              <span class="text-sm text-muted-foreground">第</span>
-              <span class="text-primary font-bold text-lg">{{ currentPage }}</span>
-              <span class="text-sm text-muted-foreground">/</span>
-              <span class="text-muted-foreground font-semibold">{{ totalPages }}</span>
-              <span class="text-sm text-muted-foreground">页</span>
+            <div class="io-page-indicator">
+              <span>PAGE</span>
+              <strong>{{ currentPage }}</strong>
+              <span>/ {{ totalPages }}</span>
             </div>
             
             <button
-              class="inline-flex items-center gap-2 px-5 py-2.5 border border-border/50 rounded-lg bg-card text-foreground no-underline font-medium text-sm transition-all duration-200 cursor-pointer shadow-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:text-muted-foreground hover:border-primary hover:text-primary hover:bg-primary/5 hover:shadow-md hover:-translate-y-0.5 active:translate-y-0"
+              class="io-page-button"
               :disabled="currentPage === totalPages"
-              @click="currentPage++"
+              @click="goToPage(currentPage + 1)"
             >
               下一页
               <i data-lucide="chevron-right" class="w-4 h-4"></i>
@@ -204,12 +147,22 @@
         </div>
       </main>
     </section>
+
+    <button
+      v-show="showBackTop"
+      class="io-back-top"
+      type="button"
+      aria-label="回到顶部"
+      title="回到顶部"
+      @click="scrollToTop"
+    >
+      <ArrowRight class="io-back-top-icon" aria-hidden="true" />
+    </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, inject, ref, watch, onMounted, onBeforeUnmount, nextTick, type Ref } from 'vue'
 import { ArrowRight } from 'lucide-vue-next'
 import articles from '../data/articles.json'
 
@@ -226,15 +179,11 @@ const props = defineProps<{
   fullShow: boolean
 }>()
 
-const emit = defineEmits(['update:fullShow'])
-
-// 初始化路由
-const router = useRouter()
-
-const searchQuery = ref('')
+const fallbackSearchQuery = ref('')
+const searchQuery = inject<Ref<string>>('iohubSearchQuery', fallbackSearchQuery)
 const currentPage = ref(1)
 const timeSeed = ref(null as NodeJS.Timeout | null)
-const pageSize = 6
+const pageSize = 9
 
 // 加载状态管理
 const isLoading = ref(false)
@@ -242,40 +191,7 @@ const isInitialLoading = ref(true)
 const hasError = ref(false)
 const errorMessage = ref('')
 const hasMoreData = ref(true)
-
-// 智能搜索相关状态
-const showSuggestions = ref(false)
-const selectedSuggestionIndex = ref(-1)
-const searchContainer = ref<HTMLElement | null>(null)
-const searchInput = ref<HTMLInputElement | null>(null)
-
-// 处理图片加载完成
-const handleImageLoad = (event: Event) => {
-  const img = event.target as HTMLImageElement;
-  img.classList.remove('skeleton');
-}
-
-const handleImageError = (event: Event) => {
-  const img = event.target as HTMLImageElement;
-  img.classList.remove('skeleton');
-  img.style.display = 'none'; 
-}
-
-// 更新搜索输入框的aria-expanded属性
-watch(showSuggestions, (newValue) => {
-  if (searchInput.value) {
-    searchInput.value.setAttribute('aria-expanded', newValue.toString())
-  }
-})
-
-// 跳过链接功能（可访问性）
-const skipToMain = () => {
-  const mainContent = document.querySelector('main')
-  if (mainContent) {
-    mainContent.focus()
-    mainContent.scrollIntoView()
-  }
-}
+const showBackTop = ref(false)
 
 const filteredArticles = computed(() => {
   if (!searchQuery.value) return articles
@@ -333,113 +249,6 @@ const initializeData = async () => {
   }
 }
 
-// 获取所有分类（用于搜索建议）
-const categories = computed(() => {
-  const allLabels = articles.flatMap(article => article.labels)
-  return [...new Set(allLabels)].sort()
-})
-
-// 搜索建议
-const searchSuggestions = computed(() => {
-  if (!searchQuery.value || searchQuery.value.length < 2) return []
-  
-  const query = searchQuery.value.toLowerCase()
-  const suggestions = new Set<string>()
-  
-  // 从标题中提取建议
-  articles.forEach(article => {
-    const title = article.title.toLowerCase()
-    if (title.includes(query)) {
-      // 提取匹配的关键词
-      const words = article.title.split(/[\s\-_\.]+/)
-      words.forEach(word => {
-        if (word.toLowerCase().includes(query) && word.length > 2) {
-          suggestions.add(word)
-        }
-      })
-    }
-  })
-  
-  // 从标签中提取建议
-  categories.value.forEach(category => {
-    if (category.toLowerCase().includes(query)) {
-      suggestions.add(category)
-    }
-  })
-  
-  // 预定义的热门搜索词
-  const popularTerms = ['Vue', 'React', 'JavaScript', 'Python', 'AI', 'Docker', 'Kubernetes', 'Node.js', 'TypeScript', 'Go']
-  popularTerms.forEach(term => {
-    if (term.toLowerCase().includes(query)) {
-      suggestions.add(term)
-    }
-  })
-  
-  return Array.from(suggestions).slice(0, 8)
-})
-
-// 高亮搜索建议
-const highlightSuggestion = (suggestion: string) => {
-  if (!searchQuery.value) return suggestion
-  
-  const query = searchQuery.value
-  const regex = new RegExp(`(${query})`, 'gi')
-  return suggestion.replace(regex, '<mark class="bg-primary/10 text-primary px-1 rounded-sm font-semibold">$1</mark>')
-}
-
-// 搜索相关方法
-const clearSearch = () => {
-  searchQuery.value = ''
-  showSuggestions.value = false
-  selectedSuggestionIndex.value = -1
-}
-
-const selectSuggestion = (suggestion: string) => {
-  searchQuery.value = suggestion
-  showSuggestions.value = false
-  selectedSuggestionIndex.value = -1
-}
-
-const hideSuggestions = () => {
-  setTimeout(() => {
-    showSuggestions.value = false
-    selectedSuggestionIndex.value = -1
-  }, 200) // 延迟以允许点击建议
-}
-
-const handleSearchKeydown = (event: KeyboardEvent) => {
-  if (!showSuggestions.value || !searchSuggestions.value.length) return
-  
-  switch (event.key) {
-    case 'ArrowDown':
-      event.preventDefault()
-      selectedSuggestionIndex.value = Math.min(
-        selectedSuggestionIndex.value + 1,
-        searchSuggestions.value.length - 1
-      )
-      break
-    case 'ArrowUp':
-      event.preventDefault()
-      selectedSuggestionIndex.value = Math.max(selectedSuggestionIndex.value - 1, -1)
-      break
-    case 'Enter':
-      if (selectedSuggestionIndex.value >= 0) {
-        event.preventDefault()
-        selectSuggestion(searchSuggestions.value[selectedSuggestionIndex.value])
-      }
-      break
-    case 'Escape':
-      showSuggestions.value = false
-      selectedSuggestionIndex.value = -1
-      break
-  }
-}
-
-// 特色文章（用于Hero区域展示）
-const featuredArticles = computed(() => {
-  return articles.slice(0, 6)
-})
-
 const totalPages = computed(() => 
   Math.ceil(filteredArticles.value.length / pageSize)
 )
@@ -456,28 +265,34 @@ const paginatedArticles = computed(() => {
   return filteredArticles.value.slice(start, end)
 })
 
-const scorllEnd = () => {
+const checkWindowLoadMore = async () => {
   if (!props.fullShow) return
   
-  // 防抖处理
   if (timeSeed.value) {
     clearTimeout(timeSeed.value)
   }
   
   timeSeed.value = setTimeout(async () => {
-    const container = document.querySelector('.articles-main') as HTMLElement
-    if (!container) return
-    
-    const scrollTop = container.scrollTop
-    const scrollHeight = container.scrollHeight
-    const clientHeight = container.clientHeight
-    
-    // 当滚动到底部附近时触发加载
-    const threshold = 200 // 提前200px开始加载
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+    const scrollHeight = document.documentElement.scrollHeight
+    const clientHeight = window.innerHeight
+    const threshold = 360
+
     if (scrollTop + clientHeight >= scrollHeight - threshold) {
       await loadMoreArticles()
     }
   }, 300)
+}
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+const goToPage = (page: number) => {
+  const nextPage = Math.min(Math.max(page, 1), totalPages.value)
+  if (nextPage === currentPage.value) return
+  currentPage.value = nextPage
+  scrollToTop()
 }
 
 // 重试加载函数
@@ -606,10 +421,10 @@ const getArticleExcerpt = (content: string) => {
 }
 
 const categoryRules = [
-  { name: 'AI 工具', code: 'TOOLS', tint: '#df5130', keywords: ['AI', 'Agent', '智能', '模型', 'Cursor', 'Claude', 'GPT'] },
+  { name: 'AI 工具', code: 'TOOLS', tint: '#cc785c', keywords: ['AI', 'Agent', '智能', '模型', 'Cursor', 'Claude', 'GPT'] },
   { name: '开源项目', code: 'OPEN', tint: '#2f7d57', keywords: ['开源', 'GitHub', 'MIT', '源码', '自荐'] },
-  { name: '产品发布', code: 'LAUNCH', tint: '#b07d22', keywords: ['发布', '上线', '版本', '工具', 'App', '网站'] },
-  { name: '工程实践', code: 'BUILD', tint: '#4b5bc4', keywords: ['工程', '框架', '架构', '代码', '开发', '课程'] }
+  { name: '产品发布', code: 'LAUNCH', tint: '#e8a55a', keywords: ['发布', '上线', '版本', '工具', 'App', '网站'] },
+  { name: '工程实践', code: 'BUILD', tint: '#5db8a6', keywords: ['工程', '框架', '架构', '代码', '开发', '课程'] }
 ]
 
 const getArticleCategoryMeta = (article: ArticleItem) => {
@@ -641,6 +456,10 @@ const getArticleTags = (article: ArticleItem) => {
   return Array.from(tags).slice(0, 2)
 }
 
+const hasWeeklyLabel = (article: ArticleItem) => {
+  return article.labels.some(label => label.toLowerCase() === 'weekly')
+}
+
 const getReadingMinutes = (content: string) => {
   const text = content
     .replace(/!\[.*?\]\(.*?\)/g, '')
@@ -670,31 +489,9 @@ const getCardStyle = (article: ArticleItem) => {
   return style
 }
 
-const formatDate = (dateStr: string) => {
-  return new Date(dateStr).toLocaleDateString('zh-CN', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
-
-// 滚动位置记忆功能
-const mainContainer = ref<HTMLElement | null>(null)
-
 // 保存滚动位置和当前页码
 const saveScrollState = () => {
-  let scrollPosition = 0
-  
-  if (props.fullShow) {
-    // 滚动模式下，获取正确的滚动容器 
-    const articlesMain = document.querySelector('.articles-main') as HTMLElement
-    if (articlesMain) {
-      scrollPosition = articlesMain.scrollTop
-    }
-  } else {
-    // 分页模式下，使用window滚动
-    scrollPosition = window.pageYOffset || document.documentElement.scrollTop
-  }
+  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop
   
   const state = {
     scrollPosition: scrollPosition,
@@ -729,22 +526,12 @@ const restoreScrollState = async () => {
         // 等待DOM更新和数据加载完成后恢复滚动位置
         await nextTick()
         
-        // 在滚动模式下，需要确保加载足够的内容来恢复位置
         if (props.fullShow && state.currentPage > 1) {
           console.log(`Need to load content up to page ${state.currentPage} for scroll position ${state.scrollPosition}`)
           
-          // 强制加载所有需要的内容，不依赖异步加载机制
           const forceLoadContent = async () => {
-            let loadAttempts = 0
-            const maxLoadAttempts = 20
-            
-            // 直接设置目标页码，让 paginatedArticles 计算显示所有需要的内容
-            const originalPage = currentPage.value
             currentPage.value = state.currentPage
-            
-            // 等待内容更新
             await nextTick()
-            
             console.log(`Content loading completed. Page set to: ${currentPage.value}, Articles count: ${paginatedArticles.value.length}`)
           }
           
@@ -761,59 +548,15 @@ const restoreScrollState = async () => {
           }
           
           if (state.scrollPosition > 0) {
-            if (props.fullShow) {
-              const mainContainer = document.querySelector('.articles-main') as HTMLElement
+            const maxScrollTop = Math.max(0, document.documentElement.scrollHeight - window.innerHeight)
+            const targetPosition = Math.min(state.scrollPosition, maxScrollTop)
+            
+            if (document.documentElement.scrollHeight >= targetPosition + window.innerHeight || targetPosition <= maxScrollTop) {
+              window.scrollTo(0, targetPosition)
               
-              if (mainContainer) {
-                const currentScrollHeight = mainContainer.scrollHeight
-                const clientHeight = mainContainer.clientHeight
-                const targetPosition = state.scrollPosition
-                
-                console.log(`Attempt ${attempts + 1}: Container height=${currentScrollHeight}, Target=${targetPosition}, Client=${clientHeight}`)
-                
-                // 检查是否有足够的内容来滚动
-                if (currentScrollHeight > clientHeight) {
-                  // 计算可滚动的最大位置
-                  const maxScrollTop = currentScrollHeight - clientHeight
-                  const scrollToPosition = Math.min(targetPosition, maxScrollTop)
-                  
-                  // 设置滚动位置
-                  mainContainer.scrollTop = scrollToPosition
-                  
-                  // 等待滚动完成
-                  await new Promise(resolve => setTimeout(resolve, 50))
-                  
-                  // 验证滚动是否成功 - 放宽验证条件
-                  const actualPosition = mainContainer.scrollTop
-                  const tolerance = Math.max(100, targetPosition * 0.05) // 5%容错或最小100px
-                  
-                  if (Math.abs(actualPosition - scrollToPosition) <= tolerance || 
-                      (scrollToPosition === maxScrollTop && actualPosition >= maxScrollTop - 50)) {
-                    console.log(`✅ Scroll position restored successfully: ${actualPosition} (target: ${targetPosition})`)
-                    return
-                  }
-                  
-                  console.log(`❌ Scroll verification failed: actual=${actualPosition}, expected=${scrollToPosition}, tolerance=${tolerance}`)
-                }
-                
-                // 如果内容高度不足，等待更多渲染
-                if (currentScrollHeight <= targetPosition + clientHeight) {
-                  console.log('Content height insufficient, waiting for more rendering...')
-                  // 给更多时间让内容渲染
-                  await new Promise(resolve => setTimeout(resolve, 200))
-                }
-              }
-            } else {
-              // 分页模式的滚动恢复
-              const targetPosition = Math.min(state.scrollPosition, document.body.scrollHeight - window.innerHeight)
-              
-              if (document.body.scrollHeight >= targetPosition + window.innerHeight) {
-                window.scrollTo(0, targetPosition)
-                
-                if (Math.abs(window.pageYOffset - targetPosition) < 50) {
-                  console.log('Window scroll position restored successfully:', targetPosition)
-                  return
-                }
+              if (Math.abs(window.pageYOffset - targetPosition) < 80) {
+                console.log('Window scroll position restored successfully:', targetPosition)
+                return
               }
             }
           }
@@ -848,16 +591,11 @@ const throttledSaveScroll = () => {
   saveScrollTimer = setTimeout(saveScrollState, 500)
 }
 
-// 监听滚动事件
-const handleScroll = () => {
-  throttledSaveScroll()
-}
-
-// 页面滚动事件处理（非fullShow模式）
 const handleWindowScroll = () => {
-  if (!props.fullShow) {
-    throttledSaveScroll()
-  }
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop
+  showBackTop.value = scrollTop > 520
+  throttledSaveScroll()
+  void checkWindowLoadMore()
 }
 
 // 页码变化时保存状态
@@ -874,14 +612,6 @@ watch(searchQuery, () => {
 onMounted(async () => {
   await nextTick()
   
-  // 滚动模式下监听 .articles-main，分页模式下监听 window
-  const articlesMain = document.querySelector('.articles-main') as HTMLElement
-  if (articlesMain) {
-    articlesMain.addEventListener('scroll', handleScroll, { passive: true })
-    console.log('📡 Added scroll listener to .articles-main')
-  }
-  
-  // 为非fullShow模式添加window滚动监听
   window.addEventListener('scroll', handleWindowScroll, { passive: true })
   
   // 先初始化数据加载
@@ -901,11 +631,6 @@ onMounted(async () => {
 
 // 组件卸载时清理事件监听
 onBeforeUnmount(() => {
-  // 清理滚动事件监听
-  const articlesMain = document.querySelector('.articles-main') as HTMLElement
-  if (articlesMain) {
-    articlesMain.removeEventListener('scroll', handleScroll)
-  }
   window.removeEventListener('scroll', handleWindowScroll)
   
   if (saveScrollTimer) {

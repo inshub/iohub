@@ -113,10 +113,10 @@ const formatShortDate = (dateStr: string) => {
 }
 
 const categoryRules = [
-  { name: 'AI 工具', code: 'TOOLS', tint: '#df5130', keywords: ['AI', 'Agent', '智能', '模型', 'Cursor', 'Claude', 'GPT'] },
+  { name: 'AI 工具', code: 'TOOLS', tint: '#cc785c', keywords: ['AI', 'Agent', '智能', '模型', 'Cursor', 'Claude', 'GPT'] },
   { name: '开源项目', code: 'OPEN', tint: '#2f7d57', keywords: ['开源', 'GitHub', 'MIT', '源码', '自荐'] },
-  { name: '产品发布', code: 'LAUNCH', tint: '#b07d22', keywords: ['发布', '上线', '版本', '工具', 'App', '网站'] },
-  { name: '工程实践', code: 'BUILD', tint: '#4b5bc4', keywords: ['工程', '框架', '架构', '代码', '开发', '课程'] }
+  { name: '产品发布', code: 'LAUNCH', tint: '#e8a55a', keywords: ['发布', '上线', '版本', '工具', 'App', '网站'] },
+  { name: '工程实践', code: 'BUILD', tint: '#5db8a6', keywords: ['工程', '框架', '架构', '代码', '开发', '课程'] }
 ]
 
 const getArticleCategoryMeta = (item: ArticleItem) => {

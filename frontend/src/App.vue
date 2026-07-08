@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { computed, nextTick, provide, ref, watch, onMounted } from 'vue'
 import {
   Sun,
   Moon,
@@ -10,13 +10,111 @@ import {
   Archive,
   BarChart2,
   Star,
+  Search,
+  X,
 } from 'lucide-vue-next';
+import articles from './data/articles.json'
 
 const fullShow = ref(true)
 const mobileMenuOpen = ref(false)
 const showArchive = ref(false)
 const showStats = ref(false)
 const isDark = ref(false)
+const searchQuery = ref('')
+const showSuggestions = ref(false)
+const selectedSuggestionIndex = ref(-1)
+const searchInput = ref<HTMLInputElement | null>(null)
+
+provide('iohubSearchQuery', searchQuery)
+
+const categories = computed(() => {
+  const allLabels = articles.flatMap(article => article.labels)
+  return [...new Set(allLabels)].sort()
+})
+
+const searchSuggestions = computed(() => {
+  if (!searchQuery.value || searchQuery.value.length < 2) return []
+  const query = searchQuery.value.toLowerCase()
+  const suggestions = new Set<string>()
+
+  articles.forEach(article => {
+    const title = article.title.toLowerCase()
+    if (title.includes(query)) {
+      article.title.split(/[\s\-_\.]+/).forEach(word => {
+        if (word.toLowerCase().includes(query) && word.length > 2) {
+          suggestions.add(word)
+        }
+      })
+    }
+  })
+
+  categories.value.forEach(category => {
+    if (category.toLowerCase().includes(query)) suggestions.add(category)
+  })
+
+  const popularTerms = ['Vue', 'React', 'JavaScript', 'Python', 'AI', 'Docker', 'Kubernetes', 'Node.js', 'TypeScript', 'Go']
+  popularTerms.forEach(term => {
+    if (term.toLowerCase().includes(query)) suggestions.add(term)
+  })
+
+  return Array.from(suggestions).slice(0, 8)
+})
+
+const clearSearch = () => {
+  searchQuery.value = ''
+  showSuggestions.value = false
+  selectedSuggestionIndex.value = -1
+}
+
+const selectSuggestion = (suggestion: string) => {
+  searchQuery.value = suggestion
+  showSuggestions.value = false
+  selectedSuggestionIndex.value = -1
+}
+
+const hideSuggestions = () => {
+  setTimeout(() => {
+    showSuggestions.value = false
+    selectedSuggestionIndex.value = -1
+  }, 160)
+}
+
+const highlightSuggestion = (suggestion: string) => {
+  if (!searchQuery.value) return suggestion
+  const escaped = searchQuery.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+  const regex = new RegExp(`(${escaped})`, 'gi')
+  return suggestion.replace(regex, '<mark class="io-search-mark">$1</mark>')
+}
+
+const handleSearchKeydown = (event: KeyboardEvent) => {
+  if (!showSuggestions.value || !searchSuggestions.value.length) return
+
+  switch (event.key) {
+    case 'ArrowDown':
+      event.preventDefault()
+      selectedSuggestionIndex.value = Math.min(selectedSuggestionIndex.value + 1, searchSuggestions.value.length - 1)
+      break
+    case 'ArrowUp':
+      event.preventDefault()
+      selectedSuggestionIndex.value = Math.max(selectedSuggestionIndex.value - 1, -1)
+      break
+    case 'Enter':
+      if (selectedSuggestionIndex.value >= 0) {
+        event.preventDefault()
+        selectSuggestion(searchSuggestions.value[selectedSuggestionIndex.value])
+      }
+      break
+    case 'Escape':
+      showSuggestions.value = false
+      selectedSuggestionIndex.value = -1
+      break
+  }
+}
+
+watch(showSuggestions, async (newValue) => {
+  await nextTick()
+  searchInput.value?.setAttribute('aria-expanded', newValue.toString())
+})
 
 // 主题切换功能
 const toggleTheme = () => {
@@ -61,9 +159,7 @@ onMounted(() => {
         <div class="io-brand-wrap">
           <router-link to="/" class="io-brand">
             <span class="io-logo-mark" aria-hidden="true">
-              <span class="io-logo-i"></span>
-              <span class="io-logo-o"></span>
-              <span class="io-logo-scan"></span>
+              <img src="/logo.png" alt="" width="42" height="42">
             </span>
             <span class="io-brand-copy">
               <span class="io-brand-main">IOHub</span>
@@ -72,8 +168,50 @@ onMounted(() => {
           </router-link>
         </div>
 
-        <!-- 中间空白区域，保持Logo和控制器平衡 -->
-        <div class="io-nav-spacer"></div>
+        <div class="io-nav-search" aria-label="站内搜索">
+        <div class="io-global-search" :class="{ active: showSuggestions && searchSuggestions.length }">
+          <Search class="io-search-icon" aria-hidden="true" />
+          <input
+            v-model="searchQuery"
+            @focus="showSuggestions = true"
+            @blur="hideSuggestions"
+            @keydown="handleSearchKeydown"
+            placeholder="搜索技术、框架、工具..."
+            ref="searchInput"
+            role="searchbox"
+            aria-label="搜索文章"
+            aria-autocomplete="list"
+          >
+          <button
+            v-if="searchQuery"
+            @click="clearSearch"
+            class="io-search-clear"
+            aria-label="清除搜索"
+            title="清除搜索"
+          >
+            <X :size="16" />
+          </button>
+
+          <div
+            v-if="showSuggestions && searchSuggestions.length"
+            class="io-search-suggestions"
+            role="listbox"
+            aria-label="搜索建议"
+          >
+            <button
+              v-for="(suggestion, index) in searchSuggestions"
+              :key="suggestion"
+              type="button"
+              :class="['io-search-option', { active: selectedSuggestionIndex === index }]"
+              @mousedown.prevent="selectSuggestion(suggestion)"
+              role="option"
+            >
+              <Search :size="15" aria-hidden="true" />
+              <span v-html="highlightSuggestion(suggestion)"></span>
+            </button>
+          </div>
+        </div>
+        </div>
 
         <!-- 控制区域 -->
         <div class="io-nav-actions">
