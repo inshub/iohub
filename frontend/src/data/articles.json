@@ -1,5 +1,21 @@
 [
   {
+    "id": 10627,
+    "title": "【开源自荐】slop-review：专治 AI slop 的本地代码评审",
+    "content": "> slop-review：一个本地代码评审工具。在 AI 刚交付的 feature 分支上运行 npx slop-review，即可像 GitHub PR 那样逐行评论；再借助配套 skill 把 AI 拉进针对具体代码的评审讨论，全程不污染主对话的上下文。零依赖，支持纯终端界面。\n\n一个本地 PR 评审工具，专门用来 review AI 生成的 slop 💩\n\n在 AI agent 刚交付的 feature 分支上运行 `npx slop-review`，就能像 GitHub PR 那样在 diff 上逐行留评论。它最大的特点是配套一个 skill：可以把 agent 拉进针对具体代码行的评审讨论，而这些针对性的来回都不会污染你和 agent 主对话的上下文。\n\n- **零运行时依赖**：仅用 `node:http` 加标准库，`npx` 不拉任何间接依赖包，Node ≥ 20 即可\n- **评论即本地 JSON**：所有线程存在 `<repo>/.reviews/`，agent 直接读写，无需服务器或 HTTP 集成\n- **纯终端 + Vim 键位**：`--carbonyl` 可把整个 diff 界面画进终端，全程键盘操作\n\n项目地址：https://github.com/genkio/slop-review\n网站演示：https://genkio.github.io/slop-review/",
+    "created_at": "2026-07-08T06:27:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10627"
+  },
+  {
+    "id": 10626,
+    "title": "【开源自荐】同览—— macOS 多浏览器分流与同步中枢",
+    "content": "**同览 (BrowSync)** 是一款 macOS 原生的跨浏览器分流与同步中枢。它打通 Safari 与所有 Chromium 内核浏览器，智能分流链接并实时同步数据，为您统一浏览体验。\n\n应用官网：https://browsync.ct106.com\n项目源码：https://github.com/chentao1006/BrowSync\n\n## 主要功能\n\n- **URL 分流**：将同览设为 macOS 默认浏览器后，可根据域名、URL 规则、参数、来源应用或时间段，将链接自动定向到指定的浏览器。\n- **书签同步**：在 Safari 和所有 Chromium 内核浏览器之间实时同步书签。\n- **状态同步**：在各浏览器之间同步 Cookie、LocalStorage 和 sessionStorage，保持登录状态一致。\n- **标签页共享**：跨浏览器查看当前打开的标签页。自动过滤无痕模式及非 HTTP(S) 协议页面，并对重复的 URL 进行去重。\n- **同步策略**：支持单向同步（主从模式）、基于访问时间的最后写入者胜出、双向合并。\n- **站点控制**：通过白名单/黑名单管理同步范围，支持为特定网站设置独立策略。\n- **原生 macOS 应用**：使用 SwiftUI 构建，支持深色/浅色主题、菜单栏集成和登录时启动。\n- **iCloud 同步**：通过 iCloud 在您的所有 Mac 设备之间自动同步分流规则、偏好设置和站点配置。\n\n## 界面截图\n\n| | |\n|:---:|:---:|\n| ![截图 1](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000001.jpg) | ![截图 2](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000002.jpg) |\n| ![截图 3](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000003.jpg) | ![截图 4](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000004.jpg) |\n| ![截图 5](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000005.jpg) | ![截图 6](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000006.jpg) |\n| ![截图 7](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000007.jpg) | ![截图 8](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000008.jpg) |\n\n> [!IMPORTANT]\n> **隐私保护**\n> 同览 (BrowSync) 的同步和 URL 分流通过本地 WebSocket 守护进程进行。浏览数据（书签、Cookie、本地存储、活动标签页等）保存在本地设备，不涉及外部服务器。\n",
+    "created_at": "2026-07-08T05:51:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10626"
+  },
+  {
     "id": 10625,
     "title": "Perks Reminder：开源信用卡权益提醒工具",
     "content": "项目名称：Perks Reminder\n\n项目地址：https://github.com/lifan-builds/perks-reminder\n\n在线体验：https://www.perks-reminder.com\n\nPerks Reminder 是一个免费的开源信用卡权益提醒工具，用来追踪信用卡周期性福利、开卡奖励 deadline、年费 ROI、里程积分过期和到期提醒。\n\n它不是自动抓取银行账户的工具，而是一个轻量、透明、用户自己可控的 tracker。用户可以添加自己持有的卡，自动生成每月 / 每季 / 每年的 benefit，设置邮件提醒，标记完成或部分完成，并导入 / 导出数据。\n\n2.1 版本重做了手机端 UI，并加入 Benefit 使用手册，帮助记录权益触发方式、常见坑和真实使用 DP。项目也支持 PWA 和自部署。",
@@ -36,7 +52,9 @@
     "title": "【开源自荐】Web Cursor：浏览器里的 Cursor + React Playground",
     "content": "Web Cursor 是一个浏览器里的 Cursor + React Playground。用户用自然语言描述页面或小应用，AI 会直接读写 React 项目文件；同时，项目会在浏览器中通过 WebContainer 安装依赖、启动开发服务器，并在 iframe 中实时预览。遇到安装、启动或运行时报错时，错误会回传给 AI，让它继续修改代码直到页面跑通。\n\n特色\n\n- AI 直接读写项目文件。支持列文件、读文件、写文件、删除文件、重命名文件，生成的不是代码片段，而是完整 React / TypeScript 多文件项目。\n- 浏览器内真实运行。使用 WebContainer 执行 `npm install` 和 `npm run dev`，iframe 加载真实 dev server 页面，不是静态截图或伪预览。\n- 报错回传 & 自动修复。install error、dev server error、browser runtime error 会作为工具结果回传给 AI，AI 根据真实错误继续修改项目。\n- Monaco 编辑器 & AI 代码补全。内置文件树和 Monaco 编辑器，支持手动编辑、保存、新建、重命名、删除文件，并支持 AI inline code completion。\n- 识图生成页面。支持上传图片附件，AI 可以识别图片中的布局、视觉元素和内容，并据此生成或修改 React 页面。\n- AI 生图并写入项目资产。AI 可以异步生成网页所需图片，例如 hero 图、产品图、场景图等，生成结果会保存为项目资产并可在页面中引用。\n- Figma 作为上下文。支持 Figma OAuth 读取指定 node，让 AI 参考设计稿生成或修改页面。\n- 项目持久化 & 多会话。项目、文件、会话和消息存入 Postgres；一个项目下可以有多条会话线索，多会话共享同一份代码。\n\n项目地址：https://github.com/siuming-qiu/web-cursor  \n在线体验：https://web-cursor-seven.vercel.app/\n\n| AI 直接读写项目文件 | Monaco 编辑器 + AI 补全 | WebContainer 真实运行 |\n|---|---|---|\n| ![AI 直接读写项目文件](https://github.com/user-attachments/assets/c4de8dcf-ccbd-410c-97dc-9ed7bbe5433b) | ![Monaco 编辑器和 AI 补全](https://github.com/user-attachments/assets/5fd548e8-25f7-4cf5-8b3c-d844abdab2bd) | ![WebContainer 真实运行](https://github.com/user-attachments/assets/f0bf6f8e-2900-4548-86dd-eda18664f7cc) |\n| AI 调用文件工具创建和修改 React / TypeScript 多文件项目 | 文件树、Monaco 编辑器、AI inline code completion | 浏览器内执行 `npm install` / `npm run dev`，展示运行日志和状态 |\n\n| Figma 上下文 | 识图 / 生图  | 项目持久化与多会话 |\n|---|---|---|\n| ![Figma 上下文](https://github.com/user-attachments/assets/06b9585b-7737-4963-9b46-d862b2ce048e) | ![识图、生图](https://github.com/user-attachments/assets/66a6f99b-6977-4197-bcb5-0c25df7271eb) | ![项目持久化与多会话](https://github.com/user-attachments/assets/d70af2b0-0501-442c-a381-0dc96635914e) |\n| 支持绑定Figma，读取Figma节点  | 上传图片识别视觉内容，异步生成图片资产| 最近项目、项目文件、历史会话和消息可恢复 |\n\n技术栈：Next.js App Router、React、TypeScript、Monaco Editor、WebContainer、Postgres / Neon、drizzle-orm、Vercel Blob、Zustand、next-intl、OpenAI SDK 兼容接口。\n\n这个项目的目标是验证一个浏览器内 AI coding agent 的最小闭环：AI 不只是生成代码，还要运行代码、观察结果，并根据真实错误继续修复。\n",
     "created_at": "2026-07-07T15:03:00Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10621"
   },
   {
@@ -44,7 +62,9 @@
     "title": "【开源自荐】FlareStarter - 基于 Cloudflare Workers 的开源全栈 SaaS 起步模板",
     "content": "**开源地址**：https://github.com/FlareStarter/flarestarter\n**在线 Demo**：https://flarestarter.com\n\n**项目简介**\n\nFlareStarter 是一个基于 TanStack Start + Cloudflare Workers 的开源全栈 SaaS 起步模板（Apache 2.0）。它把做 SaaS 常见的基础模块都接好了，clone 下来就能直接在上面开发自己的产品，省去从零搭建认证、支付、后台等基础设施的时间。\n\n![FlareStarter](https://raw.githubusercontent.com/FlareStarter/flarestarter/main/.github/assets/hero.png)\n\n**核心特性**\n\n1. **认证**：基于 better-auth，支持邮箱密码 + Google / GitHub OAuth，含邮箱验证、找回密码、注销。\n2. **计费**：Stripe 订阅（月付/年付）+ 一次性买断，webhook 幂等处理、按套餐路由守卫（`requirePlan`）。\n3. **运营后台**：用户管理、封禁、模拟登录、可搜索分页的用户表、数据看板，全部基于真实数据。\n4. **其他内置模块**：邮件（Resend）、对象存储（R2 头像上传）、等待列表、更新日志、赞助页、反馈箱、中英双语路由与完整 SEO。\n\n**技术亮点**\n\n- Cloudflare 全家桶：Workers + D1（SQLite）+ KV + R2 + Drizzle ORM，可利用免费额度实现极低成本起步（生产 worker gzip 后仅约 1.3MB，在免费档内）。\n- 端到端 TypeScript 类型安全；所有功能均为可运行的真实实现（无 mock、无占位），并带有测试。\n- 可选集成（Stripe / Resend / Turnstile / Sentry 等）在未配置环境变量时自动关闭，本地开发开箱即用。\n\n**界面预览**\n\n运营后台 · 数据看板\n![运营后台数据看板](https://raw.githubusercontent.com/FlareStarter/flarestarter/main/.github/assets/admin.png)\n\n用户管理（角色 / 封禁 / 模拟登录 / 分页搜索）\n![用户管理](https://raw.githubusercontent.com/FlareStarter/flarestarter/main/.github/assets/admin-users.png)\n\n**适用场景**\n\n想快速启动 SaaS / 出海产品、又不愿在基础设施上重复造轮子的独立开发者与小团队。\n",
     "created_at": "2026-07-07T14:21:35Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10620"
   },
   {
@@ -806,21 +826,5 @@
     "created_at": "2026-07-01T03:04:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10522"
-  },
-  {
-    "id": 10521,
-    "title": "〖网站自荐〗LitSource：面向医学论文写作的真实文献核验与论点溯源工具",
-    "content": "## 〖网站自荐〗LitSource：面向医学论文写作的真实文献核验与论点溯源工具\n\n大家好，我是 LitSource 的开发者。最近做了一个和医学论文写作有关的小工具，想推荐给周刊读者。\n\n网站地址：\n\n### https://litsource.net/zh\n\nLitSource 是一个面向医学与生命科学写作的文献核验工具。它主要做两件事：\n\n1. 根据一句医学论点，反查真实存在的相关论文；\n2. 检查参考文献是否真实、是否能支撑正文里的观点。\n\n\n\n<img width=\"1532\" height=\"870\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca0e1874-2051-4d63-9e02-fa0d849954cc\" />\n\n\n\n---\n\n## 为什么做这个工具？\n\n现在很多人都会用 AI 辅助写论文、综述、开题报告。\n\nAI 写正文的能力已经很强了，一段话看起来也很像论文。但是在医学写作里，最麻烦的问题不是“这句话写得像不像”，而是：\n\n> 这句话背后的文献到底是不是真的？\n> 这篇文献到底支不支持这个观点？\n> AI 给出的参考文献是不是编出来的？\n\n医学和生命科学对文献真实性要求很高。\n一篇不存在的论文、一个错配的 DOI，或者一条并不能支撑正文观点的引用，都可能带来很严重的问题。\n\n我最开始注意到这个需求，是因为看到很多人用 AI 写综述时，正文写得很快，但最后还要花大量时间一条条核对参考文献。尤其是 AI 生成的 Reference，有些看起来非常真实，但去 PubMed、Crossref 或期刊官网查时，发现标题、作者、DOI、年份并不匹配，甚至整篇文献根本不存在。\n\n所以我想做的不是另一个“AI 帮你写论文”的工具，而是一个更靠后的环节：\n\n> AI 可以辅助写作，但引用必须回到真实文献。\n\n---\n\n## 功能一：根据论点反查真实文献\n\n很多论文写作场景里，用户已经有了一个观点，但不知道该引用哪篇文献。\n\n比如你写了一句话：\n\n> 某种治疗方法可能改善某类患者的预后。\n\n这时候最需要的不是让 AI 随便编几篇参考文献，而是找到真实存在、可以被核验的论文。\n\nLitSource 支持输入一句中文或英文医学论点，系统会去匹配真实学术来源，并返回相关论文、DOI、PMID、期刊、年份等信息。\n\n<img width=\"2286\" height=\"1502\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/722c0046-a454-4791-aeb0-f28aa72095d8\" />\n\n\n\n<img width=\"2084\" height=\"1278\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc18661a-4341-4dcc-882a-10c96c3b1ca6\" />\n\n\n\n---\n\n## 功能二：区分支持、反对和相关论文\n\n我觉得这也是 LitSource 里比较重要的一个功能。\n\n医学论文写作不是只找“支持自己观点”的文献。很多时候，真正有价值的是知道：\n\n* 哪些论文支持这个观点；\n* 哪些论文可能反对这个观点；\n* 哪些论文只是背景相关，但不能直接当作证据引用。\n\n所以 LitSource 在返回结果时，会尽量把文献按照“支持 / 反对 / 相关”进行区分，帮助用户更快判断这些论文和当前论点之间的关系。\n\n\n\n<img width=\"2062\" height=\"1430\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a36c22c-cee2-44ba-81d9-e153301951d5\" />\n\n\n\n这个功能的目标不是替用户下最终结论，而是帮助用户更快建立证据链。\n尤其是在写综述、讨论部分、研究背景时，单纯堆文献不够，知道不同研究之间的证据方向更重要。\n\n---\n\n## 功能三：参考文献真实性核验\n\n另一个常见场景是：用户已经有了一份 Reference 列表，但不确定里面有没有 AI 幻觉文献。\n\nLitSource 支持把参考文献列表粘贴进去，系统会检查标题、作者、DOI、期刊、年份等信息是否匹配，并尽量返回可点击的原始来源。\n\n\n\n<img width=\"2332\" height=\"1312\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7d234bcf-d89f-4855-b4c6-b1094ad24f66\" />\n\n\n\n它适合在这些场景使用：\n\n* AI 生成论文草稿后，检查参考文献是否真实；\n* 投稿前核对 Reference 列表；\n* 导师或编辑审稿前，快速发现可疑引用；\n* 写综述时，避免把错配文献当作证据引用。\n\n---\n\n## 功能四：句子级证据定位\n\n很多搜索工具会返回一篇论文，但用户还要自己打开摘要、全文、结果部分慢慢找。\n\nLitSource 会尽量定位到和论点相关的证据句，让用户更快判断这篇文献是否真的有用。\n\n\n\n<img width=\"1982\" height=\"1010\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f85a0059-cabd-4024-9f93-7fb181ff2615\" />\n\n\n\n这样用户不是只知道“这篇论文相关”，而是能更快看到：\n\n> 它到底是哪句话、哪一段，可能支撑或反驳了当前论点。\n\n---\n\n## 和普通 AI 写作工具有什么不同？\n\nLitSource 不想替用户直接写论文，也不鼓励把论文完全交给 AI 生成。\n\n它更像是一个“文献真实性检查器”和“证据链辅助工具”。\n\n医学论文里的引用不是装饰。\n如果引用是假的，或者引用和观点不匹配，那么正文写得再漂亮也没有意义。\n\n所以 LitSource 更关注这些问题：\n\n* 文献是否真实存在；\n* 元数据是否匹配；\n* 这篇文献到底支持、反对，还是只是相关；\n* 论点背后有没有可追溯的真实来源；\n* 参考文献列表里有没有 AI 幻觉文献。\n\n---\n\n## 免费使用\n\n目前 LitSource 每个月都会提供一定的免费积分，普通用户可以直接试用基础功能，不需要一上来就付费。\n\n我希望先让更多医学、生命科学、科研写作相关的用户真实体验这个工具，再根据反馈继续优化。\n\n---\n\n## 适合哪些人？\n\n* 医学生、研究生、博士生；\n* 医学论文、综述、开题报告作者；\n* 使用 AI 写论文，但担心参考文献不可靠的人；\n* 需要根据一句论点快速找到真实文献的人；\n* 需要检查 Reference 是否存在伪引、错引的人；\n* 医学编辑、导师、科研团队。\n\n---\n\n## 最后\n\nAI 让论文写作变快了，但医学论文不能只追求“写得快”。\n\n真正重要的是：\n每一个关键论点背后，都应该有真实、可查、能支撑它的文献。\n\nLitSource 想做的就是这个中间环节：\n\n> 帮用户把 AI 写作和真实文献之间的证据链补上。\n\n网站地址：\n\n### https://litsource.net/zh\n\n欢迎大家试用，也欢迎医学、生命科学、科研写作方向的朋友给我反馈。\n",
-    "created_at": "2026-07-01T00:05:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10521"
-  },
-  {
-    "id": 10520,
-    "title": "【工具自荐】QRForge：面向批量打印场景的二维码生成器",
-    "content": "项目地址：https://qrcodegenerator.page\n\nQRForge 是一个面向打印工作流的二维码生成器。\n\n它跟常见的在线二维码工具不太一样，重点不是跳转统计或营销追踪，而是生成可以长期使用的静态直连二维码，适合产品标签、活动胸牌、包装插卡、菜单等打印场景。\n\n主要功能：\n\n- 无需登录即可生成静态 URL 二维码\n- 支持 CSV 批量生成二维码\n- 生成前可以预览前几行数据，减少打印错误\n- 导出 PNG / SVG 文件\n- 批量项目会生成 manifest、错误报告、PDF 摘要和 ZIP 包\n- 静态二维码不依赖平台跳转服务，打印后不会因为平台关闭而失效\n\n我做这个工具的原因是，很多二维码平台默认把链接变成自己的跳转地址，适合统计，但对于已经印刷出去的二维码来说，多了一层长期依赖。QRForge 更偏向“生成后可独立存在”的打印文件工作流。\n\n技术栈：Next.js、React、Cloudflare Workers、Stripe Checkout。\n\n希望对需要批量制作二维码标签、胸牌、包装二维码的人有帮助。\n\n<img width=\"2151\" height=\"1053\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0027318e-d3d3-4414-acc4-8e41034ecb6d\" />\n\n<img width=\"2112\" height=\"1191\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9a797276-22f4-4c0e-9ca4-0cd68bf0c448\" />\n\n<img width=\"2112\" height=\"1236\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60bcbe26-560d-4278-8cb2-249ebe590ed7\" />\n\n<img width=\"2112\" height=\"1200\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4fdb9627-cbf2-4089-86bb-d72ab5401b03\" />",
-    "created_at": "2026-06-30T16:33:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10520"
   }
 ]
