@@ -1,5 +1,29 @@
 [
   {
+    "id": 10638,
+    "title": "【开源自荐】Del or Keep：Chrome 书签拓展",
+    "content": "不是一个很常规的书签拓展，会把新标签页变成书签整理队列。\n每次打开新标签页时，它会显示一个保存超过 30 天的旧书签，你可以选择打开、保留或删除，适合慢慢清理长期积累的书签。\n\nidea 来自 Reddit 一位网友，他说很多书签其实后续都不会再看，不如删掉，\n其实我实际体验下来，更像是在回忆，因为很多书签的地址，已经无法再访问，感叹时间过得真快。\n\n<img width=\"1684\" height=\"1205\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0be90128-7142-4d2a-a649-463569c1d91c\" />\n\n项目开源、无广告，书签数据保存在本地不会有隐私问题。（还加个必应每日壁纸作为背景）\n\n- Chrome Web Store：https://chromewebstore.google.com/detail/del-or-keep/eggcocipdbghmkgaammakmffefdobbgn\n- GitHub：https://github.com/wuxiangcoding/del-or-keep\n\n",
+    "created_at": "2026-07-08T16:03:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10638"
+  },
+  {
+    "id": 10637,
+    "title": "[开源推荐] 使用RemindAI作为您的Agent助手",
+    "content": "\n\n## 💡 这是什么\n\nRemindAI 是一个**开源桌面 AI 助手**，核心理念是为大模型提供一层完整的**工具外壳 (ToolShell)**，让 AI 不仅能聊天，还能直接操作文件、执行代码、调用外部工具、管理记忆、自主规划任务——成为真正能「上手」干活的生产力工具。\n\n> 🎯 让 AI 走出对话框，真正「上手」你的工作。\n\n### 🆚 与普通 AI 客户端的区别\n\n| | 🔵 普通 AI 客户端 | 🟣 RemindAI |\n|---|---|---|\n| 📁 文件操作 | ❌ 不支持或需插件 | ✅ 内置沙盒文件系统 |\n| 💻 代码执行 | ❌ 不支持 | ✅ 内置 Python/Shell/JS 执行器 |\n| 🧠 记忆 | ❌ 无或仅上下文 | ✅ 向量语义记忆 + SQLite 持久化 + 软失效过滤 |\n| 🔌 工具扩展 | ⚠️ 有限 | ✅ MCP 协议 + 四层技能系统 + Capability 插件 |\n| 🤝 多 Agent | ⚠️ 多窗口并排 | ✅ 真协作：指挥部广播、权限隔离、自动路由 + 并行文档理解 |\n| 🌐 对外服务 | ❌ 不支持 | ✅ 内置 HTTP API 服务器，三种端点对外暴露 |\n| 🔄 AgentLoop | ❌ 无 | ✅ 可控循环流水线：思考→编写→测试→验证 |\n| 📦 技能导入 | ⚠️ 单个导入 | ✅ ZIP 一键导入 + 批量导入 |\n| 🐱 全局陪伴 | ❌ 无 | ✅ 像素宠物 + TTS 语音 + 商店经济 + 成就系统 |\n\n---\n\n## 🏗️ RemindAI 的 Skill 系统\n\nRemindAI 的 Skill 系统采用**四层架构**，每一层都有独立的存储目录和生命周期，互不干扰：\n\n| 层级 | 名称 | 存储位置 | 生命周期 | 说明 |\n|------|------|----------|----------|------|\n| **L1** | 默认元 Skill | `assets/default_skills/` | 全局，随应用发布 | ToolShell、Schedule、System 三个核心元技能，构成 AI 的基础操作能力：文件读写、命令执行、任务规划、环境探测 |\n| **L2** | 用户全局 Skill | `Skills/` | 全局，用户手动开关 | 用户通过 ZIP 导入或 `/skill-cti` 命令创建，可跨项目复用。格式为 `SKILL.md` + `tools.json` |\n| **L3** | 工作目录临时 Skill | `.toolshell/skills/` | 跟随工作目录，恒定激活 | AI 在指导用户时按需创建，固化当前项目的临时流程，切目录即消失，**绝不污染全局技能库** |\n| **L4** | AI 自生成 Skill 🧪 | （规划中） | 全局，出于安全性暂未实现 | AI 根据长期对话记忆自动总结用户偏好（例如你常请教运筹优化问题，AI 自动沉淀为一个运筹优化专属技能），并自行调用 |\n\n### 设计理念\n\n- **L1 元技能**：相当于 AI 的「操作系统内核」——文件读写、命令执行、环境探测、任务管理，是 ToolShell 的底层基础\n- **L2 全局技能**：用户的「工具箱」——可复用的专业能力，如特定领域代码生成、文档模板、工作流自动化\n- **L3 临时技能**：AI 的「便签纸」——在当前项目中临时固化一段流程，用完即弃，不留痕迹。例如 `memory.json` 中的 ToolShell/Schedule/System 元技能定义，就是通过 L3 机制注入的\n- **L4 自生成技能**（规划中）：AI 的「长期学习」——从多轮对话中提炼用户的领域偏好和工作模式，自动形成个性化技能。**考虑到自动生成代码执行的安全风险，该层暂未实现**\n\n### 技能工作流\n\n| 命令 | 用途 | 去向 |\n|------|------|------|\n| 直接要求创建技能 | 在当前工作目录创建项目级技能 | L3 `.toolshell/skills/`（默认） |\n| `/skill-temp` | 显式创建项目级临时技能 | L3 `.toolshell/skills/` |\n| `/skill-cti` | 创建 → 自测 → 安装为全局技能 | 先在 `.toolshell/_staging/` 搭建自测，通过后装到 L2 `Skills/` |\n\n---\n\n## 📊 功能完成度\n\n| 模块 | 状态 | 说明 |\n|---|---|---|\n| AI 对话核心 (LLM + tool calling) | ✅ | AgentLoop 流式循环 + 事件驱动 UI |\n| 可控 AgentLoop 流水线 | ✅ | 思考 → 编写 → 测试 → 验证 循环模式 |\n| 三端 LLM 适配 (OpenAI/Anthropic/Gemini) | ✅ | 各自独立客户端，流式+tool_call+多模态 |\n| ToolShell 元技能 | ✅ | 读/写/删/搜索/exec/python/js + rg/fd/rtk |\n| Schedule 元技能 | ✅ | 7 工具 CRUD + 审查 + 归档 |\n| System 元技能 | ✅ | 环境探测 + 环境变量脱敏 |\n| MCP 多传输 | ✅ | stdio / SSE / Streamable HTTP |\n| 向量记忆系统 | ✅ | Qdrant + SQLite 双写 + 自动容灾 + 软失效过滤 |\n| 可插拔 Capability | ✅ | 搜索能力已落地，框架可扩展 |\n| 四层技能系统 | ✅ | L1 默认元技能 + L2 用户全局 + L3 临时技能 + L4 规划中，支持批量导入 |\n| 模型 Card 管理 | ✅ | 增删改 + Logo + 拖拽排序 |\n| 多 Agent 协作 | ✅ | 框架搭建完成 + 并行文档理解编排 + 可控 AgentLoop 流水线 |\n| 领域专家系统 | ✅ | 预设/自定义角色 + 绑定技能 |\n| 对话导出 | ✅ | MD / PDF / Word / HTML |\n| 桌面体验 | ✅ | 托盘 / 通知 / 闪屏 / 主题动画 |\n| 全局宠物 Agent | ✅ | 像素猫 + TTS 语音 + 商店经济 + 成就系统 |\n| 对外 API 服务 | ✅ | 内置 HTTP 服务器，三种端点：OpenAI 聚合 / Claude Agent / Claude 代理 |\n| 在线访问 Agent | ✅ | 通过浏览器远程访问 RemindAI Agent |\n| 上下文压缩 | ✅ | RTK Token 压缩 60-90% + 上下文管理优化 |\n| Flowchart 总结 | ✅ | 使用 [archify](https://github.com/tt-a1i/archify) 对对话进行流程图总结 |\n\n---\n\n## 🌟 更多特性\n\n| 特性 | 说明 |\n|---|---|\n| 🐚 ToolShell | 文件沙盒 + Python/Shell/JS 执行 + rg/fd/rtk + RTK 压缩 60-90% token |\n| 🌐 对外 API 服务 | 内置 HTTP 服务器，三种端点：OpenAI 聚合、Claude Agent（运行 RemindAI 自身的 AgentLoop）、Claude 代理（纯透传） |\n| 🔌 MCP 协议 | stdio/SSE/Streamable HTTP 三传输 + 工具自动发现 + 拖拽管理 |\n| 🧠 向量记忆 | Qdrant 语义搜索 + SQLite 持久备份 + 自动运维 + 软失效过滤 + 记忆重建 |\n| 🤝 多 Agent | 指挥部/工作者/审查员角色 + 权限隔离 + 自动路由 + 并行文档理解编排 |\n| 🔄 可控 AgentLoop | 思考 → 编写 → 测试 → 验证 的循环流水线模式，长对话防卡顿优化 |\n| 🎨 多模型 | OpenAI/Anthropic/Gemini 原生适配 + 流式推理链 + 多模态 |\n| 🧩 Capability | 可插拔能力架构，Custom → MCP → ToolShell 三级路由 |\n| 📦 技能系统 | 四层架构 (L1 元技能 / L2 全局 / L3 临时 / L4 自生成规划中)，SKILL.md + tools.json 格式，ZIP 一键导入 + 批量导入，支持命令创建 |\n| 🔍 Web 搜索 | Tavily / Brave / 百度智能搜索，会话级开关 |\n| 📋 Schedule | SCHEDULE.md 驱动，P0/P1/P2 优先级，AI 主动回顾 |\n| 👤 领域专家 | 预设/自定义角色 + 独立 system prompt |\n| 🖼️ 内置工具 | Gemini 文生图 / 公式 OCR / PaddleOCR / 流程图 / 富文本 |\n| 📊 Flowchart | 使用 [archify](https://github.com/tt-a1i/archify) 对对话进行流程图总结输出 |\n| 📤 导出 | Markdown / PDF / Word / HTML |\n| 🌍 国际化 | 完整中英双语 |\n| 🎨 主题 | Material 3 亮/暗 + 涟漪切换动画 |\n| 🐱 全局宠物 Agent | 像素猫陪伴 + 右键智能问答 + 火山TTS语音 + 商店/背包/投喂 + 成就系统 |\n| 🗜️ 上下文压缩 | RTK 命令输出压缩 + 对话上下文智能裁剪 |\n| 🌐 在线访问 | 浏览器远程访问 Agent，在线会话管理 |\n\n\n\n\n",
+    "created_at": "2026-07-08T15:33:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10637"
+  },
+  {
+    "id": 10636,
+    "title": "【工具自荐】AI 知识管家：一键保存 AI 对话，构建个人知识库",
+    "content": "# 【工具自荐】AI 知识管家：一键保存 AI 对话，构建个人知识库\n\n[GitHub](https://github.com/aichatkeeper/ai-chat-keeper-extension) | [官网](https://aichatkeeper.com)\n\n**把 AI 对话变成个人知识库。**\n\n和 AI 聊完后，有些回答值得保存——技术方案、代码片段、研究资料、创作灵感。但这些对话散落在各个平台，难以统一管理和检索。\n\nAI 知识管家是一个浏览器插件，可以一键采集豆包、DeepSeek、Kimi、通义千问、元宝、文心一言、智谱清言、ChatGPT、Claude、Gemini 等 15+ AI 平台的对话。所有对话自动整理为标准 Markdown 格式，存储在本地浏览器中，支持智能标签、全文搜索、跨平台统一管理。\n\n![AI 知识管家界面截图](https://cdn.jsdelivr.net/gh/aichatkeeper/ai-chat-keeper-extension/images/1280x800-post1-zh.png)\n\n## 功能\n\n- **15+ AI 平台覆盖**：国内主流平台（豆包、DeepSeek、Kimi 等）+ 海外平台（ChatGPT、Claude、Gemini）\n- **智能标签**：自动打标签 + 自定义标签，多维度分类管理\n- **全文搜索**：本地索引毫秒级响应，快速定位代码片段、关键词、时间\n- **Markdown 格式化**：标准 Markdown 输出，代码高亮，与 Notion、Obsidian 无缝衔接\n- **本地存储**：数据存于浏览器 IndexedDB，不上传服务器，无需注册\n- **导出备份**：支持 Markdown / JSON 导出，ZIP 完整备份恢复\n\n### 安装\n\nChrome 、Edge 应用商店搜索\"AI 知识管家\"，或访问官网：https://aichatkeeper.com\n\n### 使用方法\n\n1. 在任意支持的 AI 平台对话页面，点击浏览器右上角的插件图标\n2. 插件自动识别当前页面的对话内容\n3. 点击\"一键采集\"，对话保存到本地知识库\n\n保存后可添加标签、全文搜索、导出 Markdown/JSON、备份为 ZIP 文件。\n\n## 适用场景\n\n- AI 学习者收藏高质量提示词和回答，建立个人知识体系\n- 开发者收集编程方案和调试经验，构建技术速查手册\n- 研究人员整理 AI 辅助研究资料，将对话转化为可复用的知识资产\n- 内容创作者归档创作灵感和 AI 协作内容，随时回溯",
+    "created_at": "2026-07-08T15:05:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10636"
+  },
+  {
     "id": 10635,
     "title": "【工具自荐】Lenormand.live - 纯前端+Wasm驱动的AI雷诺曼占卜平台，更全牌阵与丝滑交互的极客神秘学工具",
     "content": "项目简介\nLenormand.live是一个专为神秘学与雷诺曼（Lenormand）爱好者打造的在线占卜、自学与能量梳解平台。区别于市面上大多架构陈旧、交互生硬的同类工具，本项目采用极简的 纯前端处理 + WebAssembly (Wasm) + AI 动态解牌的硬核现代技术栈，在彻底免除后端服务器负担的同时，为用户提供极其丰富、丝滑且深度定制的交互体验。\n\n 🌐 官网地址：[https://lenormand.live](https://lenormand.live)\n\n\n\n🛠️ 网站技术特点\n作为一个纯技术驱动的独立开发项目，我们在工程实现和用户体验上做到了以下极致：\n极致性能与零开销：核心业务逻辑和算法全部引入 `WebAssembly (Wasm)` 跑在纯前端，不仅降低了服务端的计算开销，更让高并发下的响应速度达到毫秒级，实现真正的单页无缝切换。\n极其丝滑的现代动效：基于 `Next.js`、`Tailwind CSS` 与 `Framer Motion`，我们为传统的洗牌、抽牌、展牌和侧边交互面板定制了流畅的物理动画效果，体验完全不输原生 App。\n智能上下文解牌（AI-Powered）：结合大语言模型 API，针对用户输入的具体困惑和问题上下文进行动态、结构化的牌阵解读，告别市面上死板、千篇一律的固定文本拼接。\n\n\n\n\n\n 🔮 核心功能与对比优势\n对比目前网络上现有的基础同类占卜站点（如 lenormand.life 等），Lenormand.live 在功能丰富度上进行了全方位的深度优化，不仅支持全语种无缝切换，更一次性集成了 10 大核心牌阵与高频交互组件，全方位满足从“小白浅尝”到“核心极客”的各种测算需求：\n\n1. 高频互动与轻量决策（泛流量捕获利器）：\n   每日运势（Daily Guidance）：单牌流直观交互，提供每日能量指引。\n   是/否占卜（Yes/No Reading）：针对非黑即白的纠结问题，提供即时明晰的判定逻辑。\n   决策指引（Decision Making）：多路径对比交互，为用户的现实选择提供结构化参考。\n\n2. 多维深度经典牌阵（硬核占卜实力）：\n   线性牌阵（Linear Spread）：经典 3 牌/5 牌流，精准梳理事件的因果脉络。\n   十字牌阵（Cross Spread）：多轴向交织，深入解构现状核心、潜意识与外部阻碍。\n   九宫格牌阵（3x3 Block Spread）：提供九位一体的立体视角，全方位捕捉时间与空间交错的丰富信息。\n   大蓝图牌阵（Grand Tableau）：雷诺曼神秘学的“终极试金石”，全量卡牌悉数登场，考验纯前端在大数据图谱下的丝滑渲染与联动交互。\n   黄道十二宫牌阵（Astrological Houses Spread）：无缝融合古典占星体系，划分十二生活领域，提供跨度更长、宏观深度的年运/半年运势总览。\n\n3. 定制化场景与组合技术（AI 动态深度解牌）：\n   爱情占卜（Love & Relationships）：针对当代年轻群体的头号精神内耗场景（如断联、复联、复合、暧昧）进行专项文案和交互优化。\n   牌组合解读（Card Combinations）：雷诺曼的核心灵魂在于“两两成词”。我们基于 AI 建立了强大的多牌复合动态解牌引擎，彻底告别死板、千篇一律的固定文本拼接。\n\n\n\n\n⚙️ 后续矩阵规划\n目前我们已经打通了这套高效率、低成本的纯前端神秘学交互模版，后续会将该硬核架构克隆至更多垂直类神秘学项目中，构建完整的全量矩阵：\nlenormand.live（雷诺曼）\ngeomancy.live（极客地占术）\nmayakin.live（玛雅十三月亮历）\nitarot.live（AI 塔罗）\ntradastro.com（古典占星）\n\n\n\n💬 一句话推荐\n\"Lenormand.live 用最现代的前端技术和丝滑交互，为传统神秘学工具换上‘极客内核’。不仅牌阵更全、体验更佳，更是一次纯前端 Wasm 降本增效的极佳实战尝试，欢迎大家体验和交流探讨！\"",
@@ -20,7 +44,9 @@
     "title": "【开源自荐】存储技术书，从结绳记事到动手实现一个异步文件系统",
     "content": "### 【开源自荐】存储技术书，从结绳记事到动手实现一个异步文件系统\n**开源地址：**\nhttps://github.com/Lularible/storage-book\n\n**项目简介：**\n\n一本从存储的本质讲起，一路走到文件系统设计与实现的开源技术书。从结绳记事、泥板、纸张这些\"存储是什么\"的追问开始，到 Flash 物理（浮栅晶体管、擦写不对称、氧化层陷阱、掉电半成品），再到 LittleFS 源码分析，最后到 KnotFS 从零实现（约 840 行 C，可运行）。读完不仅知道\"文件系统怎么写\"，还知道\"存储为什么是这样的\"。\n\n本书是\"汽车电子知识体系\"开源系列的一部分。该系列共 7 册，覆盖芯片总纲、PTP 时间同步、HSM 安全、存储、UDS 诊断、功能安全、软件工程，从芯片物理一路讲到工程实践。本书为**存储卷**。\n\n**稀缺性：没有书这么写过。**\n\n大部分存储技术书分为两类：一类从文件系统 API 往下讲（VFS、ext4、FAT），不讲物理层；一类只讲 Flash 物理（浮栅、隧穿、SLC/MLC），不讲到文件系统。这本书从\"存储是什么\"的本质追问出发，经过物理层，再到实现层，三层打通了。\n\n**为什么这很重要？**\n\n你的行车记录仪断电后文件损坏、你的物联网设备日志突然消失、你的 ECU 标定参数被覆盖，这些问题根子在物理层。Flash 不能原地修改，有擦写寿命上限，掉电时会处于半成品状态。不懂这些物理约束，写出来的存储方案早晚会出问题。\n\n更关键的是：**几乎没有专门为异步模型设计的文件系统。** 主流的文件系统（ext4、FAT、LittleFS）都是同步阻塞模型——写入操作从头到尾不可拆分，CPU 必须等待 Flash 擦写完成才能返回。在需要非阻塞写入的场景下，只能靠应用层在同步文件系统外围包一层任务状态机来模拟异步。KnotFS 从设计之初就以异步状态机为核心，通过 `knotfs_run()` 将写操作拆解为可让出 CPU 的子步骤，每次调度只做一个子操作就主动返回。\n\n**这不是工业级产品，但填补了这个方向上的一块空白。**\n\n**运行效果：**\n\n<img width=\"910\" height=\"774\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1e28566d-1e55-434c-ad2b-630f1fb6e771\" />\n\n\n**核心特性：**\n\n📖 **39 节** —— 5 个章节：存储本质、Flash 物理（含浮栅晶体管时序图）、文件系统理论、LittleFS 源码分析、手写 KnotFS\n🔬 **物理层到底层** —— 浮栅陷阱机制、擦写不对称比例、掉电 200ms 窗口、CoW 四层防护\n⚙️ **KnotFS** —— 教学级异步文件系统（约 840 行 C），含异步状态机、双超级块、日志回放、孤儿块修复、磨损均衡，可在 Linux 上编译运行\n\n**关于作者**：目前正在系统化构建\"汽车电子知识体系\"开源系列——7 册从芯片物理写到工程实践，覆盖一个汽车电子软件工程师需要理解的全部知识链。本书是其中的存储卷，前作 PTP 时间同步卷已被阮一峰老师《科技爱好者周刊》第 401 期收录。\n\n开源协议：CC BY-NC-ND 4.0（内容） · MIT（代码）",
     "created_at": "2026-07-08T13:38:43Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10633"
   },
   {
@@ -800,29 +826,5 @@
     "created_at": "2026-07-02T01:54:13Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10533"
-  },
-  {
-    "id": 10532,
-    "title": "【工具自荐】Tidy — 在 ChatGPT / Claude / Gemini 之间管理并搬运你的对话上下文，AI对话管理，批量删除",
-    "content": "- 官网：https://tidy.showmyapps.cc\n- 安装（Chrome 应用商店）：[Tidy](https://chromewebstore.google.com/detail/tidy-%E2%80%94-bulk-delete-export/bmfgpmojpofogmflfnfnkdbndnaffdpc?authuser=0&hl=en)\n- 平台：Chrome 扩展，支持 ChatGPT、Claude、Gemini\n\n---\n\n## 项目简介\n\nTidy 是一个 Chrome 扩展，用来统一管理你散落在 ChatGPT、Claude、Gemini 三家里的对话历史——批量清理、文件夹归类、收藏、导出备份，都在一个面板里完成。\n\n它更想解决的是\"上下文问题\"：你花一小时让一个模型真正理解了你的项目，换个模型又得从头解释一遍。Tidy 能把一段对话的上下文提取出来、裁剪到目标模型的窗口大小，然后在另一个 AI 里继续——不用再对每个 AI 重复自我介绍。\n\n所有数据只在你本地浏览器处理，不经过任何中间服务器，无需注册账号。\n\n## 主要功能\n\n- **批量清理**：一次删除 / 归档上百条陈旧对话（ChatGPT 归档可恢复）\n- **文件夹与收藏**：跨三家平台归类、置顶常用对话，快速检索（含正文搜索）\n- **导出备份**：把整段对话（每条消息、按顺序）导出为干净的 JSON\n- **跨 AI 搬运**：把一段对话的上下文提取出来，在另一个模型里接着聊\n- **诚实的能力边界**：各平台能力不同，界面里如实标注（如 Gemini 仅支持列表/删除）\n\n## 为什么做这个\n\n和AI聊多了就会产生很多对话记录，有时候想要去找某条记录，看到那些翻不到尽头的对话记录，就有点头大。所以，做了一个可以批量删除对话记录的插件，可以帮助我来管理对话记录。这样，就可以只保留重要的对话记录，找起来非常方便。还可以把常用的对话记录放在收藏文件夹中。\n另外，同时用几家 AI 已经是常态，但每家的历史都锁在各自的围墙花园里，既难搜索也难复用，上下文更是无法流动。Tidy 想先把\"整理\"这件事做扎实，再逐步把上下文在 AI 之间打通。",
-    "created_at": "2026-07-02T00:58:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10532"
-  },
-  {
-    "id": 10531,
-    "title": "【工具自荐】MacroAI 一款免费的Windows可视化编程的宏自动化工具，支持脚本创作与分发",
-    "content": "官网： https://www.sowe.com/\n\nMacroAI 是一款支持脚本创作与分发的 Windows 宏自动化平台。\n\n通过可视化节点编辑器（20+ 种节点，树形容器架构）或 Lua 脚本搭建自动化流程，覆盖鼠标键盘、图像识别、OCR 文字识别、屏幕变化检测等操作。内置多分辨率适配机制，同一脚本可在不同屏幕和缩放比的设备上稳定运行——这是脚本可分发给他人使用的核心能力。\n\n支持后台输入模拟（不抢占焦点）、Windows OCR（零安装）、屏幕变化检测和多线程并发执行。基础功能永久免费，无广告。\n\n可视化节点编辑器 — 拖拽编排工作流，支持循环/条件判断\nLua 脚本引擎 — 完整的 Lua API，支持自定义代码块\n图像识别 — 基于 OpenCV 模板匹配，支持自定义区域和阈值\nOCR 文字识别 — 基于 Windows OCR，支持区域文字提取与比对\n背景输入模拟 — PostMessage 模拟，不干扰前台操作\n自定义变量 — 支持字符串/数字/布尔，本地/全局作用域\n函数与自定义动作 — 可复用子流程，一键绑定到浮动面板\n多分辨率适配 — 设计区域与运行区域独立，自动坐标缩放\n界面变化检测 — 网格比对捕捉屏幕变化，支持周期过滤\n条块变化检测 — 追踪血条、进度条的实时数值变化\n操作录制与回放 — 录制鼠标键盘操作，支持区域约束\n浮动控制面板 — 运行控制、动作按钮、音乐播放一键操作\n命名区域管理 — 自定义矩形区域，方便节点引用\n多语言界面 — 中文 / English 切换\n\n",
-    "created_at": "2026-07-01T15:39:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10531"
-  },
-  {
-    "id": 10530,
-    "title": "【工具自荐】paseo-notifier 完善 Paseo Agent 任务状态通知",
-    "content": "paseo-notifier  Paseo Agent 状态通知器。\nhttps://github.com/winezer0/paseo-notifier\n\nPaseo 是一款目前非常star的 多cli agent 的封装，主要提供在单一程序下调用多种agent和远程调用PC任意agent的能力。\n\n当前 paseo 由于 ts的二进制打包问题，导致电脑版本和手机版本无法正常播放通知提示。\n\n研究发现通过 MCP API 轮询 Paseo 守护进程中的 Agent 状态，在任务完成、出错或需要用户交互时通过配置的渠道发送通知。\n\n使用notify库，支持多种通知方式，当前支持 dingtalk feishu lark 格式的通知配置。\n\n<img width=\"464\" height=\"331\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/44876563-d274-4835-86b0-f5d87b9cc975\" />",
-    "created_at": "2026-07-01T15:19:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10530"
   }
 ]
