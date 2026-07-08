@@ -1,47 +1,61 @@
 <template>
-  <div class="max-w-4xl mx-auto px-4 py-8">
-    <div class="article-detail" v-if="article">
-      <!-- 返回按钮 -->
-      <div class="mb-8">
-        <button @click="goBack" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-          <i data-lucide="arrow-left" class="w-4 h-4 mr-2"></i>
+  <div class="io-article-page">
+    <div class="io-article-detail" v-if="article">
+      <div class="io-article-backbar">
+        <button @click="goBack" class="io-soft-button">
+          <ArrowLeft class="io-button-icon" aria-hidden="true" />
           返回首页
         </button>
       </div>
       
-      <header class="mb-8">
-        <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl mb-4">{{ article.title }}</h1>
-        <div class="flex items-center text-sm text-muted-foreground">
-          <span>{{ formatDate(article.created_at) }}</span>
-          <div v-if="article.labels.length" class="ml-4 flex gap-2">
-            <span v-for="label in article.labels" :key="label" class="inline-flex items-center gap-1 px-2 py-1 bg-secondary/10 text-secondary rounded-md text-xs font-semibold">
-              <Calendar v-if="label === 'weekly'" class="w-3 h-3" />
+      <header class="io-article-hero" :class="{ 'has-photo': firstImage }" :style="articleHeroStyle">
+        <div class="io-article-cover">
+          <span class="io-cover-dots" aria-hidden="true"></span>
+          <span class="io-cover-cat">
+            <span class="io-cover-square" aria-hidden="true"></span>
+            {{ articleCategory.name }}
+          </span>
+          <span class="io-cover-no mono">№ {{ articleNumber }}</span>
+          <span class="io-cover-code mono">{{ articleCategory.code }}</span>
+        </div>
+
+        <div class="io-article-head">
+          <div class="io-article-kicker mono">
+            {{ formatShortDate(article.created_at) }} · {{ readingMinutes }} 分钟阅读
+          </div>
+          <h1>{{ article.title }}</h1>
+          <p>{{ articleExcerpt }}</p>
+          <div class="io-article-meta">
+            <span>{{ formatDate(article.created_at) }}</span>
+            <span v-for="label in articleTags" :key="label" class="io-tag-chip">
               {{ label }}
             </span>
           </div>
         </div>
       </header>
-      <main class="bg-card text-card-foreground border rounded-lg overflow-hidden">
-        <div class="prose dark:prose-invert max-w-none p-6" v-html="markdownToHtml(article.content)"></div>
-        <div class="p-6 border-t border-border flex justify-end">
-          <a :href="article.url" target="_blank" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+
+      <main class="io-prose-card">
+        <div class="io-markdown" v-html="markdownToHtml(article.content)"></div>
+        <div class="io-article-source-actions">
+          <a :href="article.url" target="_blank" class="io-primary-button">
             查看原文
-            <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+            <ExternalLink class="io-button-icon" aria-hidden="true" />
           </a>
         </div>
       </main>
-      <div class="fixed inset-0 bg-background/90 flex justify-center items-center z-[1000] cursor-zoom-out backdrop-blur-sm" v-if="previewImage" @click="closePreview">
-        <img :src="previewImage" alt="🖼️ 预览图片" class="max-w-[90%] max-h-[90vh] object-contain rounded-lg shadow-2xl md:max-w-[95%] md:max-h-[95vh]">
+
+      <div class="io-lightbox" v-if="previewImage" @click="closePreview">
+        <img :src="previewImage" alt="预览图片">
       </div>
     </div>
     
     <!-- 文章不存在时的提示 -->
-    <div v-else class="text-center py-20">
-        <i data-lucide="file-question" class="w-16 h-16 mx-auto text-muted-foreground mb-4"></i>
-        <h2 class="text-2xl font-bold mb-2">文章未找到</h2>
-        <p class="text-muted-foreground mb-6">抱歉，您访问的文章不存在或已被移除。</p>
-        <router-link to="/" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-primary-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
-          <i data-lucide="home" class="w-4 h-4 mr-2"></i>
+    <div v-else class="io-empty-state">
+        <FileQuestion class="io-empty-icon" aria-hidden="true" />
+        <h2>文章未找到</h2>
+        <p>抱歉，您访问的文章不存在或已被移除。</p>
+        <router-link to="/" class="io-primary-button">
+          <Home class="io-button-icon" aria-hidden="true" />
           返回首页
         </router-link>
     </div>
@@ -52,8 +66,23 @@
 import { ref, computed } from 'vue'
 import { marked } from 'marked'
 import { useRouter } from 'vue-router'
-import { Calendar } from 'lucide-vue-next'
+import { ArrowLeft, ExternalLink, FileQuestion, Home } from 'lucide-vue-next'
 import articles from '../data/articles.json'
+
+type ArticleItem = {
+  id: number
+  title: string
+  content: string
+  created_at: string
+  labels: string[]
+  url: string
+}
+
+declare global {
+  interface Window {
+    handleImageClick: (event: MouseEvent) => void
+  }
+}
 
 const props = defineProps<{
   id: string
@@ -61,8 +90,8 @@ const props = defineProps<{
 
 const router = useRouter()
 
-const article = computed(() => 
-  articles.find(a => a.id === parseInt(props.id))
+const article = computed<ArticleItem | undefined>(() => 
+  articles.find(a => a.id === parseInt(props.id, 10))
 )
 
 const goBack = () => {
@@ -77,6 +106,101 @@ const formatDate = (dateStr: string) => {
     day: 'numeric'
   })
 }
+
+const formatShortDate = (dateStr: string) => {
+  const date = new Date(dateStr)
+  return `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
+
+const categoryRules = [
+  { name: 'AI 工具', code: 'TOOLS', tint: '#df5130', keywords: ['AI', 'Agent', '智能', '模型', 'Cursor', 'Claude', 'GPT'] },
+  { name: '开源项目', code: 'OPEN', tint: '#2f7d57', keywords: ['开源', 'GitHub', 'MIT', '源码', '自荐'] },
+  { name: '产品发布', code: 'LAUNCH', tint: '#b07d22', keywords: ['发布', '上线', '版本', '工具', 'App', '网站'] },
+  { name: '工程实践', code: 'BUILD', tint: '#4b5bc4', keywords: ['工程', '框架', '架构', '代码', '开发', '课程'] }
+]
+
+const getArticleCategoryMeta = (item: ArticleItem) => {
+  const text = `${item.title} ${item.content} ${item.labels.join(' ')}`
+  return categoryRules.find(rule => rule.keywords.some(keyword => text.includes(keyword))) || {
+    name: '技术观察',
+    code: 'INSIGHT',
+    tint: '#5f6f52'
+  }
+}
+
+const getFirstImage = (content: string) => {
+  const markdownImage = content.match(/!\[.*?\]\((.*?)\)/)
+  if (markdownImage?.[1]) return markdownImage[1]
+  const htmlImage = content.match(/<img[^>]+src="([^">]+)"/)
+  return htmlImage?.[1] || null
+}
+
+const cssUrl = (url: string) => `url("${url.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}")`
+
+const firstImage = computed(() => article.value ? getFirstImage(article.value.content) : null)
+
+const articleCategory = computed(() => article.value ? getArticleCategoryMeta(article.value) : {
+  name: '技术观察',
+  code: 'INSIGHT',
+  tint: '#5f6f52'
+})
+
+const articleHeroStyle = computed(() => {
+  const style: Record<string, string> = {
+    '--tint': articleCategory.value.tint
+  }
+
+  if (firstImage.value) {
+    style['--cover-img'] = cssUrl(firstImage.value)
+  }
+
+  return style
+})
+
+const articleNumber = computed(() => article.value ? String(article.value.id).slice(-3).padStart(3, '0') : '000')
+
+const readingMinutes = computed(() => {
+  if (!article.value) return 3
+  const text = article.value.content
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, '')
+  return Math.max(3, Math.ceil(text.length / 500))
+})
+
+const articleTags = computed(() => {
+  if (!article.value) return []
+  const tags = new Set<string>()
+  article.value.labels.slice(0, 3).forEach(label => tags.add(label))
+  const text = `${article.value.title} ${article.value.content}`
+  const candidates = ['AI', 'Agent', '开源', 'macOS', 'Vue', 'React', 'Python', 'Claude', 'GPT', '工具', '课程', 'PWA']
+  candidates.forEach(tag => {
+    if (tags.size < 3 && text.toLowerCase().includes(tag.toLowerCase())) {
+      tags.add(tag)
+    }
+  })
+  if (tags.size === 0) tags.add(articleCategory.value.name)
+  return Array.from(tags).slice(0, 3)
+})
+
+const articleExcerpt = computed(() => {
+  if (!article.value) return ''
+  const textContent = article.value.content
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\[.*?\]\(.*?\)/g, '')
+    .replace(/#+ /g, '')
+    .replace(/\*\*/g, '')
+    .trim()
+
+  const paragraph = textContent
+    .split('\n')
+    .map(item => item.trim())
+    .find(item => item.length > 30 && !item.includes('---')) || ''
+
+  return paragraph.length > 120 ? `${paragraph.slice(0, 120)}...` : paragraph
+})
 
 const previewImage = ref<string | null>(null)
 
@@ -102,10 +226,10 @@ const markdownToHtml = (content: string) => {
     sanitize: false,
   })
   
-  const html = marked(content)
+  const html = marked(content) as string
   return html.replace(
-    /<img\s+src="([^"]+)"/g, 
-    '<div class="article-img-wrapper"><div class="img-container"><img src="$1" loading="lazy" onclick="window.handleImageClick(event)"'
+    /<img\s+/g,
+    '<img class="io-markdown-image" loading="lazy" onclick="window.handleImageClick(event)" '
   )
 }
 

@@ -100,55 +100,56 @@
         </div>
 
         <!-- 文章列表 -->
-        <div v-else class="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
+        <div v-else class="io-card-grid">
           <article 
-            class="bg-card text-card-foreground border rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col mb-6 sm:rounded-lg sm:mb-3 md:hover:shadow-md md:mb-4 will-change-transform will-change-shadow"
+            :class="['io-article-card', { 'has-photo': getFirstImage(article.content) }]"
+            :style="getCardStyle(article)"
             v-for="article in paginatedArticles" 
             :key="article.id"
             role="article"
             :aria-labelledby="`article-title-${article.id}`"
           >
-            <router-link :to="{ name: 'article', params: { id: article.id }}" @click="saveScrollState" class="relative w-full h-56 block overflow-hidden rounded-lg bg-muted" v-if="getFirstImage(article.content)">
-              <img 
-                class="w-full h-48 object-cover transition-transform duration-300 hover:scale-105 skeleton"
-                :src="getFirstImage(article.content)"
-                :alt="article.title" 
-                @load="handleImageLoad"
-                @error="handleImageError"
-                role="img"
-              >
+            <router-link
+              :to="{ name: 'article', params: { id: article.id }}"
+              @click="saveScrollState"
+              class="io-card-cover"
+              :aria-label="`阅读 ${article.title}`"
+            >
+              <span class="io-access">免费</span>
+              <span class="io-cover-dots" aria-hidden="true"></span>
+              <span class="io-cover-cat">
+                <span class="io-cover-square" aria-hidden="true"></span>
+                {{ getArticleCategory(article) }}
+              </span>
+              <span class="io-cover-no mono">№ {{ getArticleNumber(article.id) }}</span>
+              <span class="io-cover-code mono">{{ getArticleCode(article) }}</span>
             </router-link>
             
-            <div class="p-6 flex-grow flex flex-col">
-                <div class="flex items-center justify-between text-xs text-muted-foreground mb-4">
-                    <span class="font-medium">{{ formatDate(article.created_at) }}</span>
-                    <div class="flex gap-2">
-                        <span v-for="label in article.labels.slice(0, 2)" :key="label" class="inline-flex items-center gap-1 px-2 py-1 bg-secondary/10 text-secondary rounded-md text-xs font-semibold">
-                            <Calendar v-if="label === 'weekly'" class="w-3 h-3" />
-                            {{ label }}
-                        </span>
-                    </div>
-                </div>
-                <h3 class="text-xl font-bold mb-4 leading-tight flex-grow">
-                    <router-link 
-                    :to="{ name: 'article', params: { id: article.id }}"
-                    class="hover:text-primary transition-colors text-foreground no-underline line-clamp-2"
-                    @click="saveScrollState"
-                    >
-                    {{ article.title }}
-                    </router-link>
-                </h3>
-                <p class="text-base text-muted-foreground leading-relaxed mt-2 line-clamp-3">{{ getArticleExcerpt(article.content) }}</p>
+            <div class="io-card-body">
+              <h3 :id="`article-title-${article.id}`">
+                <router-link 
+                  :to="{ name: 'article', params: { id: article.id }}"
+                  @click="saveScrollState"
+                >
+                  {{ article.title }}
+                </router-link>
+              </h3>
+              <p class="io-card-dek">{{ getArticleExcerpt(article.content) }}</p>
             </div>
             
-            <div class="px-6 pt-4 pb-6 border-t border-border/50">
+            <div class="io-card-foot">
+              <span class="io-foot-tags">
+                <span v-for="tag in getArticleTags(article)" :key="tag" class="io-tag-chip">
+                  {{ tag }}
+                </span>
+              </span>
               <router-link 
                 :to="{ name: 'article', params: { id: article.id }}" 
-                class="inline-flex items-center text-sm font-semibold text-primary hover:underline"
+                class="io-foot-right"
                 @click="saveScrollState"
               >
-                阅读全文
-                <i data-lucide="arrow-right" class="ml-1 w-4 h-4"></i>
+                <span class="mono">{{ formatShortDate(article.created_at) }} · {{ getReadingMinutes(article.content) }} 分钟</span>
+                <ArrowRight class="io-foot-arrow" aria-hidden="true" />
               </router-link>
             </div>
           </article>
@@ -209,8 +210,17 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
-import { Calendar } from 'lucide-vue-next'
+import { ArrowRight } from 'lucide-vue-next'
 import articles from '../data/articles.json'
+
+type ArticleItem = {
+  id: number
+  title: string
+  content: string
+  created_at: string
+  labels: string[]
+  url: string
+}
 
 const props = defineProps<{
   fullShow: boolean
@@ -595,6 +605,71 @@ const getArticleExcerpt = (content: string) => {
   }
 }
 
+const categoryRules = [
+  { name: 'AI 工具', code: 'TOOLS', tint: '#df5130', keywords: ['AI', 'Agent', '智能', '模型', 'Cursor', 'Claude', 'GPT'] },
+  { name: '开源项目', code: 'OPEN', tint: '#2f7d57', keywords: ['开源', 'GitHub', 'MIT', '源码', '自荐'] },
+  { name: '产品发布', code: 'LAUNCH', tint: '#b07d22', keywords: ['发布', '上线', '版本', '工具', 'App', '网站'] },
+  { name: '工程实践', code: 'BUILD', tint: '#4b5bc4', keywords: ['工程', '框架', '架构', '代码', '开发', '课程'] }
+]
+
+const getArticleCategoryMeta = (article: ArticleItem) => {
+  const text = `${article.title} ${article.content} ${article.labels.join(' ')}`
+  return categoryRules.find(rule => rule.keywords.some(keyword => text.includes(keyword))) || {
+    name: '技术观察',
+    code: 'INSIGHT',
+    tint: '#5f6f52'
+  }
+}
+
+const getArticleCategory = (article: ArticleItem) => getArticleCategoryMeta(article).name
+
+const getArticleCode = (article: ArticleItem) => getArticleCategoryMeta(article).code
+
+const getArticleNumber = (id: number) => String(id).slice(-3).padStart(3, '0')
+
+const getArticleTags = (article: ArticleItem) => {
+  const tags = new Set<string>()
+  article.labels.slice(0, 2).forEach(label => tags.add(label))
+  const text = `${article.title} ${article.content}`
+  const candidates = ['AI', 'Agent', '开源', 'macOS', 'Vue', 'React', 'Python', 'Claude', 'GPT', '工具', '课程', 'PWA']
+  candidates.forEach(tag => {
+    if (tags.size < 2 && text.toLowerCase().includes(tag.toLowerCase())) {
+      tags.add(tag)
+    }
+  })
+  if (tags.size === 0) tags.add(getArticleCategory(article))
+  return Array.from(tags).slice(0, 2)
+}
+
+const getReadingMinutes = (content: string) => {
+  const text = content
+    .replace(/!\[.*?\]\(.*?\)/g, '')
+    .replace(/<[^>]+>/g, '')
+    .replace(/\s+/g, '')
+  return Math.max(3, Math.ceil(text.length / 500))
+}
+
+const formatShortDate = (dateStr: string) => {
+  const date = new Date(dateStr)
+  return `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
+}
+
+const cssUrl = (url: string) => `url("${url.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}")`
+
+const getCardStyle = (article: ArticleItem) => {
+  const imageUrl = getFirstImage(article.content)
+  const meta = getArticleCategoryMeta(article)
+  const style: Record<string, string> = {
+    '--tint': meta.tint
+  }
+
+  if (imageUrl) {
+    style['--cover-img'] = cssUrl(imageUrl)
+  }
+
+  return style
+}
+
 const formatDate = (dateStr: string) => {
   return new Date(dateStr).toLocaleDateString('zh-CN', {
     year: 'numeric',
@@ -839,6 +914,3 @@ onBeforeUnmount(() => {
   saveScrollState() // 保存最终状态
 })
 </script>
-
-
-
