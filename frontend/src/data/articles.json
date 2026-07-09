@@ -1,5 +1,29 @@
 [
   {
+    "id": 10641,
+    "title": "【工具自荐】一个基于 Git 与大语言模型（LLM）的 CLI 工具，自动分析 git diff --staged 内容，生成高质量的 Commit Message",
+    "content": "项目地址：https://github.com/851235550/gita\n\n项目效果图：\n\n<img width=\"1196\" height=\"944\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/762cd8fd-795a-4152-a9b4-87e5596cab44\" />\n\n\n**项目优点**：\n✅ 不在代码中硬编码密钥 - API Key 完全通过环境变量读取（GITA_DEEPSEEK_API_KEY 等）\n✅ 不持久化到磁盘 - 密钥仅存于运行时内存，配置文件明确禁止写入 API Key\n✅ 三级优先级机制（按优先顺序）：\n          1. 命令行参数 --api-key （临时，不落盘）\n          2. 环境变量（由 api_key_env 指定）\n          3. 配置文件中的 api_key_env 指向具体的环境变量名\n✅ 仅依赖 gopkg.in/yaml.v3 v3.0.1（成熟稳定的 YAML 解析库）\n✅ 没有多层依赖链，降低了供应链风险\n✅ go.mod 和 go.sum 完整且一致\n✅ Git diff 数据基于本地 Git 命令执行，不接受不可信输入\n✅ JSON 响应完整校验，异常处理覆盖全面\n✅ 超大 diff（≥15000 行）时强制用户确认，防止无意中发送大量数据\n✅ 完整的单元测试和 E2E 测试覆盖",
+    "created_at": "2026-07-09T03:08:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10641"
+  },
+  {
+    "id": 10640,
+    "title": "[开源推荐]基于 Pi Agent 编写的 Agent 学习网站",
+    "content": "Pi Agent 是一个很优秀的开源 Agent 项目，简洁但是具备了 Coding Agent 所有必要的能力，又有非常强大的拓展能力。\n这个教程是基于 Pi Agent 的代码所编写，所以教程也比较简单，容易入门。\n\n网站： https://learn-agent-from-pi.buildwithais.com/\ngithub: https://github.com/BuildWithAIs/learn-agent-from-pi\n\n截图：\n\n<img width=\"3840\" height=\"4918\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/604b7e5e-9a57-42fa-8409-29274e9e38ae\" />",
+    "created_at": "2026-07-09T02:16:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10640"
+  },
+  {
+    "id": 10639,
+    "title": "【文章推荐】Claude Sonnet 5 的 Token 消耗更多了？一文看懂大模型 Token",
+    "content": "Anthropic 发布 Claude Sonnet 5 后，在更新说明里专门提到一件事：\n\n`Claude Sonnet 5 uses a new tokenizer. The same input text produces approximately 30% more tokens than on Claude Sonnet 4.6. The exact increase depends on the content.`\n\nSonnet 5 使用了新的 Tokenizer，同样的文本，大约会比之前的 Claude 模型多产生 30% 的 Token。 \n\n那么问题来了：\n\n- 同样一句话，为什么 Token 会变多？\n- Token 不应该是固定的吗？\n- 是不是 Anthropic 在变相涨价？\n\n...\n\nTokenizer 真正优化的是：**模型最终效果。**\n\n而不是：Token 数。\n\n举个例子。假设有一个函数：\n\n`calculate_total_price_after_discount()`\n\n一种 Tokenizer 切出来：\n\n`calculate_total_price_after_discount`\n\n整个就是一个 Token。\n\n模型看到：582931\n\n另一种切出来：\n\n`calculate  total  price  after  discount`\n\n虽然 Token 多了。但是模型可以分别理解：\n\n```\ncalculate  →  动作\ntotal      →  聚合\nprice      →  价格\ndiscount   →  折扣\nAttention 更容易建立语义联系。\n```\n\n模型反而可能更聪明。\n\n...\n\n- 摘自 https://mp.weixin.qq.com/s/pgP6PIAsi3svj7o8vBtTaw\n",
+    "created_at": "2026-07-09T01:42:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10639"
+  },
+  {
     "id": 10638,
     "title": "【开源自荐】Del or Keep：Chrome 书签拓展",
     "content": "不是一个很常规的书签拓展，会把新标签页变成书签整理队列。\n每次打开新标签页时，它会显示一个保存超过 30 天的旧书签，你可以选择打开、保留或删除，适合慢慢清理长期积累的书签。\n\nidea 来自 Reddit 一位网友，他说很多书签其实后续都不会再看，不如删掉，\n其实我实际体验下来，更像是在回忆，因为很多书签的地址，已经无法再访问，感叹时间过得真快。\n\n<img width=\"1684\" height=\"1205\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0be90128-7142-4d2a-a649-463569c1d91c\" />\n\n项目开源、无广告，书签数据保存在本地不会有隐私问题。（还加个必应每日壁纸作为背景）\n\n- Chrome Web Store：https://chromewebstore.google.com/detail/del-or-keep/eggcocipdbghmkgaammakmffefdobbgn\n- GitHub：https://github.com/wuxiangcoding/del-or-keep\n\n",
@@ -515,8 +539,8 @@
   },
   {
     "id": 10574,
-    "title": "【开源自荐】Waveloom：开源终端 AI 编程助手，Claude Code 替代品",
-    "content": "开源终端 AI 编程助手（Terminal Code Agent），Go 单二进制 18MB，无 Node.js 依赖。操作体验贴近 Claude Code，`@` 引用文件、`/` 命令面板、Tab 段落导航、Plan Mode 先规划后执行，已有 Claude Code Skill 零迁移可直接使用。\n\n特点：\n- 开源零遥测，API Key 直连 DeepSeek/OpenAI，不经过第三方服务器\n- 为 DeepSeek 前缀缓存优化，System Prompt 固定、消息仅追加、四级原地压缩，缓存命中率远高于通用 Agent\n- Think-Act-Observe 循环，连接 LLM 与工具系统，每轮思考→执行→观察\n- 9 个内置工具：read_file / write_file / edit_file / shell / web_fetch / ask_user_question / enter_plan_mode / exit_plan_mode / skill\n- Plan Mode 先规划后执行，Guard 强制写保护，审批通过方可修改代码\n- 权限安全引擎，规则驱动的 allow/deny/ask 三级决策，每个写操作需用户确认\n- 会话持久化，`waveloom --continue` 恢复关闭前上下文\n- 后台任务管理，支持进程组 SIGKILL，流式输出实时推送 TUI\n- 完整中英双语 UI，System Prompt / TUI / CLI 输出根据 locale 自动切换\n- 兼容 Claude Code Skill，`~/.claude/skills/` 下已有技能直接使用\n- 三平台支持：macOS / Linux / Windows（Git Bash）\n\n安装：\n```sh\n# curl 一键安装（macOS / Linux）\ncurl -fsSL https://raw.githubusercontent.com/Menfre01/waveloom/main/install.sh | sh\n\n# Homebrew\nbrew trust menfre01/tap\nbrew install Menfre01/tap/waveloom\n\n# Windows（PowerShell）\npowershell -c \"irm https://raw.githubusercontent.com/Menfre01/waveloom/main/install.ps1 | iex\"\n```\n\nApache 2.0 开源。项目地址：https://github.com/Menfre01/waveloom\n",
+    "title": "【开源自荐】Waveloom：DeepSeek 原生终端编码代理，单 Go 二进制 ~18MB",
+    "content": "一句话介绍：一个专门为 DeepSeek 前缀缓存设计的终端 AI 编程助手，缓存命中率 95%+，Claude Code 的 `.claude/skills/` 和 MCP 配置直接兼容。\n\n---\n\n## 为什么又造一个轮子\n\n市面上终端 AI 编程工具不少，但几乎都是为 Anthropic/OpenAI 的 API 设计的。DeepSeek 的定价模型不一样——它按前缀缓存命中计费，公共前缀越长越省钱。把 Claude Code 指向 DeepSeek 用，缓存命中率惨不忍睹，因为 Claude Code 的上下文压缩策略假设的是 Anthropic 的 `cache_control` API，不是 DeepSeek 的前缀匹配。\n\nWaveloom 从头就把缓存经济学当成一等设计约束：**固定 System Prompt + 只追加不修改的消息历史 + 四级水位线原地压缩（Snip → Prune → Summarize）**，确保跨轮次最长公共前缀始终命中缓存。实测日常使用缓存命中率 95–99%。\n\n## 技术亮点\n\n- **单 Go 二进制 ~18MB，零运行时依赖**——不需要 Node.js、Python 虚拟环境，`curl | sh` 或 `brew install` 即用。macOS / Linux / Windows 全平台支持（Windows Git Bash 兼容是踩坑踩出来的）\n- **子代理系统 + 模型自动切换**——`agent` 工具支持 fork（热启动，继承上下文）和 cold（冷启动，独立评审/对抗验证）。深推理任务自动用 deepseek-v4-pro，日常任务用 deepseek-v4-flash，同任务不同环节用不同模型\n- **权限安全管线**——三级决策引擎（allow/deny/ask）+ 模式匹配规则引擎 + 子代理事后安全分类器，检测危险命令（rm/chmod/sudo）和敏感文件写入（.env），生成 HIGH/MEDIUM/LOW 安全警告\n- **Claude Code 生态直接兼容**——`.claude/skills/` 目录的 SKILL.md 和 `.claude.json` 的 MCP 配置直接可用，零迁移成本\n- **Bubble Tea TUI**——流式推理带语法高亮、rich diff、`@` 模糊文件选择器、`/` 命令面板、明暗主题切换、中英双语界面，对标 Claude Code 的终端体验\n- **Plan Mode**——先探索设计、审批后再实现的二阶段工作流，计划阶段写入保护由 Guard 强制执行\n\n## 当前状态\n\nv0.1.0-beta，我日常用它开发它自己，但仍有粗糙边角。压缩系统、子代理隔离模型、Windows Git Bash 兼容层是最难的三块。\n\n在线体验需要自备 DeepSeek API Key（代码不经过第三方服务器）。\n\n- GitHub：https://github.com/Menfre01/waveloom\n- 安装：`curl -fsSL https://raw.githubusercontent.com/Menfre01/waveloom/main/install.sh | sh`\n",
     "created_at": "2026-07-04T11:53:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10574"
@@ -802,29 +826,5 @@
     "created_at": "2026-07-02T05:11:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10536"
-  },
-  {
-    "id": 10535,
-    "title": "「工具自荐」免手机eSIM在Mac下使用项目",
-    "content": "在 Mac（Apple Silicon / Intel）上用 UTM 跑 Linux 虚拟机，把大疆 4G 模块（EG25-G）伪装成移远 Quectel EC25 并部署 vohive 平台的完整步骤\n\n\n**这个仓库做什么**\n\n1. 给 Mac 用户提供一条从零到能访问 vohive 后台的可执行路径，无需另一台 Linux 真机。\n2. 解决大疆 4G 模块默认 VID/PID 是大疆私有、通用驱动不认的问题——通过发 AT 指令 AT+QCFG=\"usbcfg\",... 把模块内部 USB 身份永久改写为移远 EC25，改一次终身有效。\n3. 同时覆盖 Apple Silicon（arm64） 和 Intel（x86_64） 两种 Mac：两者只有 ISO 和 VM 架构不同，VM 内所有操作完全一致。\n4. 包含 USB 直通、改身份后重新枚举断直通的坑及处理、验证清单、维护命令、方案选型对比。\n\n\n\nhttps://github.com/wlzh/dji-4g-vohive-mac\n",
-    "created_at": "2026-07-02T03:48:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10535"
-  },
-  {
-    "id": 10534,
-    "title": "【开源自荐】CLI-Manager: 用于集中管理基于CLI 的多个开发项目，解决多窗口切换、重复输入命令的痛点，提升开发工作流效率。",
-    "content": "###  **CLI-Manager**\n静态网站：[网站地址](https://dark-hxx.github.io)\n仓库地址：[CLI-Manager](https://github.com/dark-hxx/CLI-Manager)\n### 项目目的\n1. 主要目的\n简化多项目CLI启动流程，在之前A/B/C项目，每天启动cli工具需要\ncd A claude \ncd B claude \ncd C claude\n在 **CLI-Manager** 中配置完成之后只需要点击即可自动启动\n 2. CLI工具增强\n-  CLI会话相关信息实时统计(token输入、输出、修改文件数量、修改文件内容)\n- 项目级claude/codex供应商自定义：定义项目级别的供应商跟全局的区分，方便A/B/C项目走不同的网站，使用不同 模型\n- 用量统计：按照多种维度：时间，模型，项目 来进行token用量统计，分析使用情况\n- 内置消息通知：应用级/系统级通知，告诉你claude/codex执行完毕，需要你审批，执行失败。点击对应的按钮即可跳转到对应的窗口进行操作\n- AI replay：AI对话重放 实验性功能，正在打磨，对一次AI对话可以进行重放，文件变更时记录文件快照，方便快速恢复\n\n**欢迎大家使用，体验，提出需求！！！**",
-    "created_at": "2026-07-02T02:17:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10534"
-  },
-  {
-    "id": 10533,
-    "title": "「工具自荐」Bailin—60 秒造人，请上桌面，开源本地 AI 桌宠，用 ta 的视角陪你看问题",
-    "content": "# 百灵 Bailin —— 开源本地 AI 像素桌宠，用 ta 的视角陪你看问题\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/WINDGAND/Bailin/main/assets/logo.png\" alt=\"百灵 Bailin\" width=\"100\" />\n</p>\n\n<p align=\"center\">\n  <a href=\"https://github.com/WINDGAND/Bailin\"><img src=\"https://img.shields.io/badge/platform-Windows-0078D6.svg\" alt=\"Windows\" /></a>\n  <img src=\"https://img.shields.io/badge/node-%3E%3D20.10-brightgreen.svg\" alt=\"Node >= 20.10\" />\n  <img src=\"https://img.shields.io/badge/Electron-32-47848F.svg\" alt=\"Electron 32\" />\n  <a href=\"https://opensource.org/licenses/MIT\"><img src=\"https://img.shields.io/badge/license-MIT-blue.svg\" alt=\"MIT License\" /></a>\n</p>\n\n- **项目地址**：[https://github.com/WINDGAND/Bailin](https://github.com/WINDGAND/Bailin)\n- **项目类型**：开源 Windows 桌面 AI 角色伴侣（完全本地运行）\n\n---\n\n## 💡 项目初衷：受启发而非模仿\n\n市面上很多 AI 角色扮演只是单纯地塞一堆“XX 的常用台词”，越聊越像劣质的 cosplay。\n\n**百灵 Bailin** 的核心理念是**蒸馏思维骨架**：\n- **心智模型** — ta 看世界用的几把尺子\n- **决策启发式** — 岔路口的习惯判断\n- **表达 DNA** — 句子的节奏、标志性短语、回避的话题\n\n> **核心逻辑**：不是「让 AI 表演成 XX」，而是「让 AI 用 XX 的视角看你的问题」。\n\n---\n\n## 🌟 核心功能\n\n*   **⚡ 快速 / 深度造人**：输入名字，快速模式约 60s；深度模式调用多 Agent 调研、蒸馏并进行质量自检，一键组装出角色的心智。\n*   **👾 像素桌宠**：像素小人常驻屏幕右下角。支持透明置顶、可拖拽、透明区鼠标穿透，不影响你的日常办公。\n*   **🎹 随手唤起**：按下 `Ctrl + Shift + P` 即可在桌宠旁唤起极简聊天窗，支持流式 Markdown 回复。\n*   **🔒 隐私与本地优先**：\n    *   **零订阅**：自带任意兼容的 OpenAI / Anthropic API Key。\n    *   **完全本地**：角色、对话、用户画像全部存于本机 SQLite，不上报遥测数据。\n    *   **Key 加密**：采用 Windows DPAPI 加密，渲染进程绝不接触明文 Key。\n\n---\n\n## 📸 运行效果预览\n\n### 1. 创建角色（支持快速/深度两种模式）\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/WINDGAND/Bailin/main/assets/create.png\" alt=\"创建角色\" width=\"600\" />\n</p>\n\n### 2. 角色仓库（管理与切换）\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/WINDGAND/Bailin/main/assets/library.png\" alt=\"角色仓库\" width=\"600\" />\n</p>\n\n### 3. 桌宠上桌与随手对话\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/WINDGAND/Bailin/main/assets/chat.png\" alt=\"聊天窗与桌宠\" width=\"600\" />\n</p>\n\n---\n\n## 🛠️ 技术栈\n\n- **外壳与主进程**：Electron 32 + Node.js\n- **渲染端**：Vite + TypeScript\n- **本地存储**：SQLite (better-sqlite3)\n- **数据流与沙箱**：Sprite 渲染在 Worker 沙箱中执行，实现透明区域鼠标穿透与轻量渲染。\n\n项目目前处于早期 **v0.0.1** 阶段，欢迎大家下载体验、反馈 Bug，或提交 PR 共同完善这个好玩的桌面小玩具！",
-    "created_at": "2026-07-02T01:54:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10533"
   }
 ]
