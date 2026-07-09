@@ -1,5 +1,45 @@
 [
   {
+    "id": 10647,
+    "title": "〖文章推荐〗在 Claude Code 里使用 OpenCode Go：两个容易踩的配置坑",
+    "content": "文章链接：https://sanjeev.top/posts/2026/07/09-opencode-go-in-claude-code\n\n这篇文章记录了把 OpenCode Go 接到 Claude Code 时遇到的两个配置坑：\n\n1. `ANTHROPIC_BASE_URL` 不能照搬官方 `/v1/messages` 端点，否则 Claude Code 会自动再拼一次 `/v1/messages`，最终请求变成 `/v1/v1/messages`。\n2. 鉴权变量要用 `ANTHROPIC_API_KEY`，因为 OpenCode Go 网关识别的是 `x-api-key`，不是 `Authorization: Bearer`。\n\n文章也写了如何用 `claude -p \"hi\" --debug` 抓真实请求，避免被“模型不存在”“Missing API key”这类笼统报错带偏。\n\n适合正在折腾 Claude Code 第三方后端、OpenCode Go，或者想排查 Anthropic 兼容接口问题的读者。\n\n如果有理解不准确的地方，也欢迎指正。",
+    "created_at": "2026-07-09T10:43:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10647"
+  },
+  {
+    "id": 10646,
+    "title": "【开源自荐】带有桌面端和移动端的中转站+Agent AI平台 Veloce",
+    "content": "项目地址（服务端）：https://github.com/WindyPear-Team/veloce\n\n桌面端：https://github.com/WindyPear-Team/veloce-desktop\n\n移动端：https://github.com/WindyPear-Team/veloce-mobile\n\nAgent CLI连接器：https://github.com/WindyPear-Team/veloce-app\n\nWeb前端：https://github.com/WindyPear-Team/veloce-web\n\n技术栈：Golang+React，\n\n大家好，这是我使用AI耗时30天左右开发的中转站与Agent代理的结合体：Veloce\n\nVeloce服务端提供后端服务和前端嵌入，桌面端可以连接后端也可以自动从Github下载最新服务端并内嵌启动，手机端仅能连接服务端。桌面端可以同时连接多个后端。\n\n用户在服务端上面可以进行AI对话与Agent使用，会话由服务端运行，可以实现跨设备流转。\n\n为了实现对本地文件的操作，可以在电脑上运行CLI连接器，由后端向连接器下发命令/文件修改操作。桌面端可以一键下载最新版本连接器并运行。\n\n支持连接器端启动MCP服务器，支持上传Skill到服务端，支持SSE与标准输入输出两种方式的MCP。\n\n支持将多个Agent一起组建“工作室”，每个agent拥有对应角色，由chief安排任务，worker进行执行，并且agent可以自我分裂。拥有沙箱功能与每个agent的更改提取，文件修改会产生Delta记录，由reviewer进行整合后落实。\n\n安装方式：在相应仓库Release下载最新版本对应架构的压缩包/exe，解压后运行即可。\n\n<img width=\"2880\" height=\"1630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e14efa4a-2680-4851-a941-82816b9e1a7d\" />\n\n<img width=\"2880\" height=\"1552\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cbcceb56-da80-4d70-855a-518e30eaf746\" />\n\n<img width=\"776\" height=\"716\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/67ae624b-b309-4ba4-94ef-bee4c50bb81f\" />\n\n<img width=\"778\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6751b2c9-9d9e-41fc-848a-1fda257703a1\" />",
+    "created_at": "2026-07-09T09:52:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10646"
+  },
+  {
+    "id": 10645,
+    "title": "ClaviSay：从真实网页阅读中学习语言",
+    "content": "项目名称：ClaviSay\n**项目链接**：\n- 官网：https://clavisay.ai\n- Chrome 扩展：https://chromewebstore.google.com/detail/dgopbpenohldokjmlbijimpkbommcbjg?utm_source=item-share-cb\n- 演示视频/截图：\n\n<img width=\"2938\" height=\"1520\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0ecbfa26-4cc2-47c1-a555-d7f4c7e3927d\" />\n\n**一句话介绍**：\nClaviSay 是一个面向英语学习者的浏览器扩展，把真实网页阅读过程中的生词、上下文和 AI 解释保存下来，之后可以复习，而不是脱离语境背单词。\n\n**主要特点**：\n1. 在真实网页中阅读，遇到不懂的词可以直接查询和保存。\n2. 保存的不只是单词，还有原文上下文，方便之后回到语境里复习。\n3. 支持 AI 解释，帮助理解词义、句子和用法。\n4. 更适合经常阅读英文技术文章、文档、博客的人，用日常阅读自然积累词汇。\n\n适合周刊读者的原因：\n很多科技爱好者每天都会读英文文档、论文、博客和产品资料。ClaviSay 想解决的是：阅读时查过的词很快忘掉，复制到单词本又太麻烦，普通背词工具又脱离真实语境。它把“阅读、理解、保存、复习”放在同一个流程里。\n\n目前状态：\n产品已上线，同时覆盖Web/Chrome插件/App Store/Google Play应用商店",
+    "created_at": "2026-07-09T09:42:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10645"
+  },
+  {
+    "id": 10644,
+    "title": "网站502了",
+    "content": null,
+    "created_at": "2026-07-09T08:22:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10644"
+  },
+  {
+    "id": 10643,
+    "title": "〖开源自荐〗zootree：面向多仓库开发的 Git Worktree 工作空间管理工具",
+    "content": "项目地址：https://github.com/weineel/zootree\n\n大家好，我自荐一个开源工具：zootree。\n\nzootree 是一个基于 Git Worktree 的多仓库工作空间管理工具，支持两种并行使用方式：\n\n1. 开发者手工使用：通过交互式命令创建、启动、打开、完成和取消 workspace。\n2. AI Agent 使用：通过 Agent Skill 学会非交互命令，自动创建、启动和管理 workspace。\n\n它解决的问题是：很多开发任务会同时涉及多个仓库，比如前端、后端、组件库、配置仓库等。人工操作时，需要分别创建分支、创建 worktree、打开终端、启动 lazygit 或 agent，完成后还要逐个合并和清理。zootree 把这些步骤抽象成一个 workspace，让人和 AI Agent 都能复用同一套工作空间管理方式。\n\nSkill 安装：\n\n```bash\nnpx skills install weineel/zootree\n```\n\n安装后，支持 Skill 机制的 AI Agent 可以根据说明调用 zootree，例如：\n\n```bash\nzootree create \\\n  --title \"Add user profile page\" \\\n  --name user-profile \\\n  --branch feature/user-profile \\\n  --repos frontend:main,backend:main \\\n  --run-agent my-agent\n```\n\n开发者也可以手工交互式创建：\n\n```bash\nzootree create\n```\n\n主要功能：\n\n- 多仓库 workspace：一次管理多个仓库的同一任务分支。\n- 人工 / Agent 并行使用：人可以交互式操作，AI Agent 可以通过 skill 使用非交互参数。\n- 基于 Git Worktree：每个任务有独立工作目录，不污染主 checkout。\n- 终端复用器集成：推荐 cmux，也支持 Zellij，自动打开布局好的开发环境。\n- LazyGit 集成：每个仓库可以直接进入对应 worktree 的 lazygit。\n- 生命周期 Hook：支持 create/start/done/cancel/remove 等阶段执行脚本。\n- 模板与文件复制：可保存常用多仓库组合，并自动复制 `.env` 等配置文件。\n\nCLI 安装方式：\n\n```bash\ncurl --proto '=https' --tlsv1.2 -LsSf https://github.com/weineel/zootree/releases/latest/download/zootree-installer.sh | sh\n```\n\n也可以使用 Homebrew 或 crates.io：\n\n```bash\nbrew install weineel/tap/zootree\ncargo install zootree --locked\n```\n\n适合场景：\n\n- 经常需要同时修改多个仓库。\n- 想为每个需求创建独立 worktree 工作区。\n- 希望人和 AI Agent 都用同一套 workspace 约定。\n- 想把 lazygit、终端布局、agent 执行环境绑定到同一个任务空间里。\n\n项目使用 Rust 实现，MIT 协议。\n",
+    "created_at": "2026-07-09T08:18:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10643"
+  },
+  {
     "id": 10642,
     "title": "【自荐】Image Clipboard：Discord emoji 和 sticker 图片链接剪贴板",
     "content": "项目名称：Image Clipboard\n\n项目链接：https://www.imageclipboard.xyz/\n\n项目简介：\nImage Clipboard 是一个免费的网页工具，用来搜索、保存、导入、导出和复制 Discord emoji / sticker 图片链接。它支持收藏、最近复制记录、JSON 导入/导出、内置 sticker packs 和多语言界面。\n\n适用场景：\n- Discord 社群整理自定义 emoji / sticker\n- 创作者保存常用图片链接\n- 快速复制 Discord CDN 图片链接\n- 用 JSON 迁移或备份表情集合\n\n特点：\n- 无需登录，打开即用\n- 纯网页工具，轻量快速\n- 支持多语言\n- 免费使用\n\n希望可以作为工具类项目推荐。",
@@ -10,7 +50,7 @@
   {
     "id": 10641,
     "title": "【开源自荐】一个基于 Git 与大语言模型（LLM）的 CLI 工具，自动分析 git diff --staged 内容，生成高质量的 Commit Message",
-    "content": "项目地址：https://github.com/851235550/gita\n\n\n**为什么有这个项目**：\n我一般开发都在 vscode 中，然后使用 Copilot + Deepseek， 但是每次提交代码都得想commit msg 如何写。之前安装过 千问 的 vscode 插件，一个插件 200多兆 大小，而我只用来生成 commit msg 感觉不划算。 所以自己写了一个编译完才不到 7 兆的小工具。效果也感觉还不错。\n\n**PS**: \n所有代码都是 AI 写的，我只是提供了下 /docs 目录下的需求和 AI Agent 执行规则。（其实连 /docs 下的文档都是我先描述一个初步想法，然后和 AI 探讨后，让他整理的结果\n\n\n项目效果图：\n\n<img width=\"1196\" height=\"944\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/762cd8fd-795a-4152-a9b4-87e5596cab44\" />\n\n\n**项目优点**：\n✅ 仅 ~ 7M 大小，完全开源免费（自备AI API Key)\n✅ 不在代码中硬编码密钥 - API Key 完全通过环境变量读取（GITA_DEEPSEEK_API_KEY 等）\n✅ 不持久化到磁盘 - 密钥仅存于运行时内存，配置文件明确禁止写入 API Key\n✅ 三级优先级机制（按优先顺序）：\n          1. 命令行参数 --api-key （临时，不落盘）\n          2. 环境变量（由 api_key_env 指定）\n          3. 配置文件中的 api_key_env 指向具体的环境变量名\n✅ 仅依赖 gopkg.in/yaml.v3 v3.0.1（成熟稳定的 YAML 解析库）\n✅ 没有多层依赖链，降低了供应链风险\n✅ go.mod 和 go.sum 完整且一致\n✅ Git diff 数据基于本地 Git 命令执行，不接受不可信输入\n✅ JSON 响应完整校验，异常处理覆盖全面\n✅ 超大 diff（≥15000 行）时强制用户确认，防止无意中发送大量数据\n✅ 完整的单元测试和 E2E 测试覆盖",
+    "content": "项目地址：https://github.com/851235550/gita\n\n\n**为什么有这个项目**：\n我一般开发都在 vscode 中，然后使用 Copilot + Deepseek， 但是每次提交代码都得想commit msg 如何写。之前安装过 千问 的 vscode 插件，一个插件 200多兆 大小，而我只用来生成 commit msg 感觉不划算。 所以自己写了一个编译完才不到 7 兆的小工具。效果也感觉还不错。\n\n**为什么不用 skill**：\nskill 是在对话框中调用，目前我试用下来的感觉是，生成的 commit msg 也还不错，但是如果想要调整 commit msg 的时候，就需要不停的在对话框中和 ai 交互🤣， 如果使用这个 gita 小工具就可以直接进入 vi 编辑器进行改动。\n\n**PS**: \n所有代码都是 AI 写的，我只是提供了下 /docs 目录下的需求和 AI Agent 执行规则。（其实连 /docs 下的文档都是我先描述一个初步想法，然后和 AI 探讨后，让他整理的结果\n\n\n\n\n项目效果图：\n\n<img width=\"1196\" height=\"944\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/762cd8fd-795a-4152-a9b4-87e5596cab44\" />\n\n\n**项目优点**：\n✅ 仅 ~ 7M 大小，完全开源免费（自备AI API Key)\n✅ 不在代码中硬编码密钥 - API Key 完全通过环境变量读取（GITA_DEEPSEEK_API_KEY 等）\n✅ 不持久化到磁盘 - 密钥仅存于运行时内存，配置文件明确禁止写入 API Key\n✅ 三级优先级机制（按优先顺序）：\n          1. 命令行参数 --api-key （临时，不落盘）\n          2. 环境变量（由 api_key_env 指定）\n          3. 配置文件中的 api_key_env 指向具体的环境变量名\n✅ 仅依赖 gopkg.in/yaml.v3 v3.0.1（成熟稳定的 YAML 解析库）\n✅ 没有多层依赖链，降低了供应链风险\n✅ go.mod 和 go.sum 完整且一致\n✅ Git diff 数据基于本地 Git 命令执行，不接受不可信输入\n✅ JSON 响应完整校验，异常处理覆盖全面\n✅ 超大 diff（≥15000 行）时强制用户确认，防止无意中发送大量数据\n✅ 完整的单元测试和 E2E 测试覆盖",
     "created_at": "2026-07-09T03:08:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10641"
@@ -25,8 +65,8 @@
   },
   {
     "id": 10639,
-    "title": "【文章推荐】Claude Sonnet 5 的 Token 消耗更多了？一文看懂大模型 Token",
-    "content": "Anthropic 发布 Claude Sonnet 5 后，在更新说明里专门提到一件事：\n\n`Claude Sonnet 5 uses a new tokenizer. The same input text produces approximately 30% more tokens than on Claude Sonnet 4.6. The exact increase depends on the content.`\n\nSonnet 5 使用了新的 Tokenizer，同样的文本，大约会比之前的 Claude 模型多产生 30% 的 Token。 \n\n那么问题来了：\n\n- 同样一句话，为什么 Token 会变多？\n- Token 不应该是固定的吗？\n- 是不是 Anthropic 在变相涨价？\n\n...\n\nTokenizer 真正优化的是：**模型最终效果。**\n\n而不是：Token 数。\n\n举个例子。假设有一个函数：\n\n`calculate_total_price_after_discount()`\n\n一种 Tokenizer 切出来：\n\n`calculate_total_price_after_discount`\n\n整个就是一个 Token。\n\n模型看到：582931\n\n另一种切出来：\n\n`calculate  total  price  after  discount`\n\n虽然 Token 多了。但是模型可以分别理解：\n\n```\ncalculate  →  动作\ntotal      →  聚合\nprice      →  价格\ndiscount   →  折扣\nAttention 更容易建立语义联系。\n```\n\n模型反而可能更聪明。\n\n...\n\n- 摘自 https://mp.weixin.qq.com/s/pgP6PIAsi3svj7o8vBtTaw\n",
+    "title": "【文章推荐】为什么 Claude Sonnet 5 Token 增加 30%？重新理解大模型 Token",
+    "content": "很多人看到 Claude Sonnet 5 Token 增加 30%，第一反应是：“是不是变相涨价？”\n\n但真正的问题不是 Token 变多，而是：为什么不同模型面对同一句话，会产生不同数量的 Token？\n\n这篇文章从 Token 的本质、Tokenizer 的演化、BPE 原理，到 Claude 新 Tokenizer 可能针对代码、Agent、结构化数据优化的原因，系统解释了大模型背后的“语言编码规则”。\n\n读完你会理解：\n\n* Token 为什么不是固定单位；\n* 为什么 Token 更多不一定代表模型更差；\n* 为什么比较大模型成本，不能只看每百万 Token 价格；\n* 未来 AI 竞争可能从“Token 单价”转向“完成任务成本”。\n\n适合 AI 开发者、产品经理、技术管理者，以及所有想真正理解大模型工作方式的人。",
     "created_at": "2026-07-09T01:42:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10639"
@@ -786,45 +826,5 @@
     "created_at": "2026-07-02T14:49:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10543"
-  },
-  {
-    "id": 10542,
-    "title": "【网站推荐】思辨录：一部关于思维谬误与认知偏见的现代启示录",
-    "content": " 中文世界里关于逻辑谬误和认知偏见的内容，大多数落在两个极端：一头是学术论文，概念严谨但阅读门槛高；另一头是社交媒体上的「一张图教你识破 XX 偏见」，好读，却经不起推敲。\n\n思辨录就是为了填补这个空白。\n\n<img width=\"1394\" height=\"940\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3d2483f9-eaf7-4416-abdc-0f9ff9769432\" />\n\n 这是一个面向中文读者的批判性思维在线参考书，目前收录了 80 多个条目，覆盖逻辑谬误和认知偏见两大维度。每一个条目都遵循同样的构建方式：从一个切中日常生活的问题切入，用寓言故事建立平视的共鸣，再沉入认知科学的底层机制分析，最后给出可操作的识别信号和应对策略。\n\n<img width=\"1410\" height=\"1186\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a2a84ec5-874d-411b-bcf0-5df3e82e026a\" />\n\n这本「指南」有一条自己给自己划定的底线——逻辑在这里是工具，不是武器。它不教你如何在争论中压倒对方，也不给任何人群贴上「不够理性」的标签。它反复提醒读者的事情只有一件：\n\n> 每个人（包括作者）都会犯错，认知偏差和逻辑失误是人类共同的局限，不是某一类人的专属缺陷。识别它们的目的，是让讨论更接近真实，而不是让你在辩论中得分。\n\n<img width=\"1392\" height=\"1196\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4cdfeceb-163d-48ee-9804-f3b835e2215f\" />\n\n思辨录还有一个互动自测的功能，如果你想在噪音中找到一点结构，在站队之外找到一点清醒，不妨来看看。\n\n传送门：https://mind-guards.com/\n",
-    "created_at": "2026-07-02T14:39:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10542"
-  },
-  {
-    "id": 10541,
-    "title": "【工具自荐】YouThere：把一张自拍变成 AI 体育看台 Fan-Cam 照片或短视频",
-    "content": "## YouThere：把一张自拍变成 AI 体育看台 Fan-Cam 照片或短视频\n\n网站： https://youthere.live/en?utm_source=github&utm_medium=issue&utm_campaign=tool_submission  \n视频生成入口： https://youthere.live/en/create/video?utm_source=github&utm_medium=issue&utm_campaign=tool_submission\n\nYouThere 是一个聚焦在特定社交媒体场景上的 AI 创作者工具：生成“像是被体育场看台镜头拍到”的 fan-cam 效果。\n\n用户上传一张自己有权使用的自拍或头像，先生成一张逼真的、fan-made 的体育场看台图片，再把选中的图片转成短视频，用于 TikTok、Reels、Shorts 或比赛日社交内容。\n\n它是为了做有趣的球迷内容，不是为了伪装成真实到场或官方转播画面。\n\n## 为什么做这个\n\n通用 AI 图片和视频工具也能生成体育主题画面，但通常需要反复写 Prompt、调参数、清理错误。\n\n而这个场景下，用户通常不想要海报、卡通头像或普通足球插画。他们想要的是一种像体育转播中快速扫到观众席的画面：\n\n- “你真的在看台上吗？”\n- “这看起来像直播镜头拍到的。”\n- “我能不能生成一个比赛日版本的自己？”\n\nYouThere 把这个流程做成一个聚焦产品，而不是让用户从零开始写提示词。\n\n## 它能做什么\n\n- 用一张用户上传的照片生成体育场 fan-cam 风格图片\n- 把生成的 fan-cam 图片继续转成短视频\n- 适合足球、世界杯风格内容和比赛日社交发布\n- 适合 TikTok、Reels、Shorts、Stories 等竖屏社交格式\n- 明确定位为 unofficial、fan-made AI content\n\n## 有什么不同\n\n大多数 AI 图片工具都很宽泛。YouThere 刻意做得很窄。\n\n目标不是“生成任意图片”。  \n目标是：用你的照片生成一张可信的体育场观众席抓拍感画面。\n\n所以产品重点放在：\n\n- 真实 fan-cam 构图\n- 人物身份一致性\n- 体育场和人群氛围\n- 短视频社交分享\n- 清晰的非官方安全边界\n\n## 安全边界\n\nYouThere 与 FIFA、任何赛事、球队、联赛、场馆、足协、赞助商或转播方都没有隶属、合作或背书关系。\n\n产品设计上会避免官方 logo、队徽、转播叠加层、奖杯复制品、真实球员肖像，以及误导别人认为用户真实到场的表达。\n\n## 适合谁\n\n- 想做比赛日社交内容的足球球迷\n- 需要体育主题 AI 内容的社交创作者\n- 关注 AI 图片和视频工具的人\n- 对 stadium fan-cam trend 感兴趣的人\n- 想测试 image-to-video 短视频工作流的创作者\n\n## 使用场景\n\n- 把自拍变成足球场看台 fan-cam 图片\n- 做一张“像是在观众席被拍到”的比赛日图片\n- 从 AI 图片生成短的球迷看台视频\n- 用个人化视觉参与世界杯或足球话题\n- 不学 Prompt，也能做一个有趣的 AI 球迷照片\n\n## 试用\n\n网站： https://youthere.live/en?utm_source=github&utm_medium=issue&utm_campaign=tool_submission  \n生成视频： https://youthere.live/en/create/video?utm_source=github&utm_medium=issue&utm_campaign=tool_submission  \n相关文章： https://youthere.live/en/blog/seedance-2-5-stadium-fan-cam-video?utm_source=github&utm_medium=issue&utm_campaign=tool_submission",
-    "created_at": "2026-07-02T13:54:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10541"
-  },
-  {
-    "id": 10540,
-    "title": "【工具自荐】b 站直播状态推送",
-    "content": "项目地址：https://github.com/tuisongji-app/tuisongji\n功能：定时请求订阅的直播间状态，mac 托盘处显示通知，伴有音效\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b6154c03-28a1-4ebd-95e6-def08425dc56\" />",
-    "created_at": "2026-07-02T11:53:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10540"
-  },
-  {
-    "id": 10539,
-    "title": "【开源自荐】一款完全开源的无限画布Open Canvas，支持用自己的API key生图生视频",
-    "content": "经常折腾 AI 的老玩家们可能还记得，前段时间社区里非常火的 **libtv**（或者 tapnow）这类工作流画布工具。它们用直观的连线、节点化操作，把“文本生成-图片生成-视频动画”串联在一起，体验确实非常惊艳：\n\n<img width=\"215\" height=\"117\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4a20e6da-ad6f-4d05-8c3a-3c828227e629\" />\n\n不过，惊艳归惊艳，每次玩这类工具时，我的钱包都在隐隐作痛。\n\n例如LibTV，以充一个高级会员699一万一积分算的话，你生成一个image2模型的2k图是60积分一张图，换成人民币大概3.5元一张图。 \n\n<img width=\"1356\" height=\"100\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f4d76ad9-2cef-47e9-84ff-c59ddecd1a6e\" />\n\n这个定价真是图片刺客！因为生成GPT Image 2的图片在Cyberbara只需要几毛钱。对于我们这种喜欢搞实验、天天高频测试的 AI 创作者和开发者来说，这种“高昂的过路费”实在是让人束手束脚，根本没办法放开手脚去创作。\n\n既然如此，为什么不自己做一个？\n\n于是，我花了两个礼拜，做了一个 **完全开源、本地优先（Local-first）、支持自带 Key（BYOK）** 的工作流画布项目——**Open Canvas**。\n\n<img width=\"2520\" height=\"940\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ec78844c-21c4-4b25-9abe-b3cdec06050f\" />\n\n今天，我把它分享出来，希望能给同样喜欢折腾的大家提供一个更自由、成本更低的创作解法。\n\n* **GitHub 仓库**：[https://github.com/ZeroLu/open-canvas/](https://github.com/ZeroLu/open-canvas/)\n* **开源项目官网**：[https://open-canvas.cyberbara.com/zh](https://open-canvas.cyberbara.com/zh)\n\n<img width=\"2586\" height=\"1290\" alt=\"image\" src=\"https://github.com/user-attachments/assets/aa3b0b86-18ea-436e-8541-224571f2f680\" />\n<img width=\"2340\" height=\"1398\" alt=\"image\" src=\"https://github.com/user-attachments/assets/96697e17-55cc-444b-8cba-708bd2c9a633\" />\n\n---\n\n### 为什么要做 Open Canvas？它有什么不一样？\n\n简单来说，Open Canvas 的目标很纯粹：**把主动权还给用户**。\n\n<img width=\"2560\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a87b713-2f52-4869-aeac-475cb3f12b2c\" />\n\n1. **本地优先，数据全在自己手里**  \n   它不需要你绑定任何云端大厂的账号，也不依赖复杂的数据库。你的所有画布、连线数据和运行记录，都会以 JSON 格式保存在本地（`open-canvas-db.json`），支持一键导入和导出。如果你有便宜的API，直接用就可以。\n2. **功能完善，模型齐全**  \n   目前支持 Note（便签）、Text（文本）、Image（图片）、Video（视频）和 Audio（音频）节点。支持市面上主流provider的各类模型的输入输出。\n3. **上游输出，下游自动注入**  \n   这是最爽的一点。你不需要手动复制上一节点的图片链接去喂给下一个视频节点。Open Canvas 会自动解析连线，把上游的图片或文本自动注入到下游的视频/图像生成模型中，实现无缝的工作流自动化。\n\n---\n\n### 核心亮点：把创作成本打到“几分钱”的 Cyberbara API\n\n既然是“自带 Key（BYOK）”，那么接入什么 API 决定了你的钱包厚度。\n\n我特别推荐大家配置 **Cyberbara API**（[https://cyberbara.com/zh/api](https://cyberbara.com/zh/api)），它的性价比和生态丰富度，能直接帮你把生成成本打下来：\n\n<img width=\"568\" height=\"468\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/04c8ff2b-25b1-4742-aef6-59d3b97c34df\" />\n\n* **GPT Image 2**：生图效果极其惊艳，但价格只要**几毛钱一张**！相比 libtv 动辄几块钱的单张生图成本，在这里你可以毫无压力地批量生图。\n* **Gemini Omni Video**：来自谷歌的高质量模型，同样只要**几毛钱一条**，生成流畅度和细节保留都处于第一梯队。\n* **Grok Imagine Video**：马斯克的“无限制”模型，不仅动力澎湃，更重要的是**支持 NSFW**，给前沿创作者提供了难得的无限制创作空间。\n\n最方便的是，**只需要一把 Cyberbara API Key，就能同时覆盖“生图 + 生视频 + 资源上传/对象存储”的全套流程**，免去了满世界找各种第三方 S3 存储和申请不同平台的痛苦。\n\n---\n\n### 跑个案例：如何用它串起一套完整工作流？\n\n为了让大家更直观地感受这套工作流的爽快感，我们用一个之前在X上爆火的手绘红线生成FPV穿越机运镜视频的案例来串一下。\n\n\n#### 1️⃣ 第一步：生成或准备一张高清底图 \n你可以直接上传一张自己的合照，或者在 Image 节点中输入以下这串Prompt 来生成底图：\n\n> **Prompt：**\n> *Photorealistic fashion shot of five diverse women in a luxury modern penthouse. Bright natural light from large windows, city view, dark wood floors, beige sofa, marble wall. Front left: redhead lying down in black top, plaid skirt, heels. Back left: black-haired woman on sofa arm in black top and shorts. Center: blonde on sofa in white shirt, beige shorts. Front right: Black woman sitting on rug in beige vest and shorts. Back right: Black woman in black top and long beige skirt. Cinematic, 8k, highly detailed.*\n\n点击运行，稍等片刻，一张超高画质、极具电影感的五人闺蜜合照就生成好了。\n\n<img width=\"1200\" height=\"991\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c598d416-5548-416a-b645-780bfa679a4f\" />\n\n---\n\n#### 2️⃣ 第二步：在画布上“手绘运镜轨迹” \n这步是灵魂！普通的图生视频工具，镜头往哪移全凭 AI 抽卡。而在 Open Canvas 里，你可以“画”出运镜轨迹。\n1. 点击图片下方的内置编辑工具（Edit Tool）。\n2. **直接在图片上用红色的导向线画一条你想要的运镜轨迹**。比如从左到右划过，或者从背景推向前景。\n3. 这条红线，就是等会儿摄像机的运动轨迹。\n\n<img width=\"1200\" height=\"649\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/108d1b61-1404-4f77-8668-b438fd6e12c4\" />\n\n---\n\n#### 3️⃣ 第三步：连线 Video 节点并完成生成 \n现在，拉出一条连线，将你的 Image 节点连到 **Video 节点**。\n\n<img width=\"1200\" height=\"713\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/afa9c72e-93c7-4fe5-b1a7-4f03cc28a701\" />\n\n为了达到完美的运镜效果，请进行以下关键设置：\n* **比例**：16:9\n* **分辨率**：720P\n* **时长**：15秒\n*  **注意**：由于图片中包含大量写实的人脸，为了防止转视频时脸部崩坏，请在模型选项中务必选择 **“Seedance 2.0 Stable”** 模型。\n\n在 Video 节点的 Prompt 框中，输入这行镜头控制指令：\n> **Video Prompt：**\n> *FPV shot. The camera follows the motion path of the red guide line, the red line must not be visible in the final footage.*\n\n运行！Open Canvas 会自动解析你的图片以及你在上面画的那条红线，并自动抹除画面中的红色参考线。\n\nhttps://github.com/user-attachments/assets/06cca0cc-0b2d-4d61-99ae-50cfe86e4b2b\n\n出来的视频效果会让你惊掉下巴：镜头顺着你手画的红色轨迹，极其丝滑、自然地游走在房间里，每个人物的面部和身体动态自然无崩坏，简直就像是一部精心调色后的电影预告片！\n。\n\n---\n\n### 如何开始使用？（提供 3 种姿势）\n\n为了照顾不同折腾程度的玩家，我准备了三种体验方式：\n\n<img width=\"2514\" height=\"1142\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9fb5df90-8fd5-4f14-9bfe-93042784a5a2\" />\n\n#### 姿势一：直接访问已部署的在线 BYOK 版（最推荐 ⚡️）\n如果你不想折腾本地环境，但想用自己的 API Key 体验低成本生成的快感：\n1. 电脑浏览器直接打开：[https://open-canvas.cyberbara.com/zh](https://open-canvas.cyberbara.com/zh)\n2. 点击右上角的 **Providers** 按钮。\n3. 填入你的 **Cyberbara API Key**（可在 [https://cyberbara.com/zh/api](https://cyberbara.com/zh/api) 注册后直接免费获取）。\n4. 新建画布，直接开玩！\n\n#### 姿势二：小白极简无脑版（免 Key、免配置 ☁️）\n如果你觉得配置 API Key 还是太麻烦，只想直接上手玩画布：\n* 直接访问：[https://cyberbara.com/zh/canvas](https://cyberbara.com/zh/canvas)\n* 这是 Cyberbara 官方托管的 Canvas 产品，**不需要生成和配置 API Key**，开箱即用，最适合不想折腾的小白用户。\n\n#### 姿势三：本地部署、完全自托管（开发者专属 🛠️）\n如果你是开发者，想本地运行、修改代码甚至贡献 feature：\n1. 克隆仓库：\n   ```bash\n   git clone https://github.com/ZeroLu/open-canvas.git\n   cd open-canvas\n   ```\n2. 安装依赖并启动：\n   ```bash\n   pnpm install\n   pnpm dev\n   ```\n3. 打开 `http://localhost:3000`，首屏即是你的本地画布列表页。\n4. 在页面里填入你的 Cyberbara API Key，或者参考 `.env.example` 配置你自己的本地 S3 兼容对象存储，即可实现完全的“本地自给自足”。\n\n---\n\n### 写在最后\n\n目前 Open Canvas 还处于 **alpha** 阶段，模型列表（model catalog）和模型 schema 的动态表单等功能还在路线图里逐步完善。它算不上十全十美，但它足够简单、轻量、且完全开源。\n\n我希望通过这个项目，能帮大家打破高昂的创作壁垒，用最低的成本（几毛钱生图、生视频）去拼装出属于自己的 AI 工作流。如果你也喜欢这个方向，欢迎来 GitHub 提 Issue 或 PR，我们一起把它变得更好玩。\n\n* **项目 GitHub 仓库**：[ZeroLu/open-canvas](https://github.com/ZeroLu/open-canvas/) （觉得不错的话，顺手给个 Star 支持一下，感激不尽！）\n* **在线试用**：[https://open-canvas.cyberbara.com/zh](https://open-canvas.cyberbara.com/zh)",
-    "created_at": "2026-07-02T10:10:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10539"
-  },
-  {
-    "id": 10538,
-    "title": "推荐一个工具：TokenMix - 一个 API 接入 170+ AI 模型",
-    "content": "TokenMix（https://tokenmix.ai）是一个统一 API 网关，一个接口即可调用 170+ 主流 AI 模型，包括 GPT、Claude、Gemini、DeepSeek、Qwen、Kimi 等。\n\n完全兼容 OpenAI 接口格式，现有基于 OpenAI SDK 的项目只需替换 base URL 和 key 即可切换，无需重写代码。按量计费，价格最高比官方直接调用低 80%，无需信用卡即可注册试用。\n\n适合需要在多个模型间自由切换、做成本对比，或者不想为每个模型厂商单独维护一套 SDK 和账单的开发者。",
-    "created_at": "2026-07-02T08:28:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10538"
   }
 ]
