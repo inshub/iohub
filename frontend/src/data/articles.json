@@ -1,5 +1,37 @@
 [
   {
+    "id": 10659,
+    "title": "做了一个让 AI 藏在 Ctrl+C 后面的工具",
+    "content": "写代码，看英文文档的时候，总会遇到这种情况。\n\n```rust\n嗯……认识。\n```\n但是它到底是干什么的来着？\n\n复制。\n\n切浏览器。\n\nGoogle。\n\n点开一篇博客。\n\n顺手又看了两篇相关文章。\n\n十分钟后……\n\n\"我刚才是要干什么来着？\"\n\n---\n\n还有：\n\n`useEffect`\n\n`debounce`\n\n`hydrate`\n\n`replicate`\n\n`SIGTERM`\n\n`OOMKilled`\n\n`panic!`\n\n这些词都见过。\n\n每次都感觉：\n\n> \"我知道它，但又没完全知道。\"\n\n于是又开始：\n\n选中 → 复制 → 浏览器 → 搜索 → AI → 回到编辑器。\n\n一天重复几十次。\n\n真正浪费的不是搜索那几秒，而是**思路被打断了**。\n\n---\n\n所以我写了一个小工具：\n\n**ah**\n\n它没有聊天窗口。\n\n没有侧边栏。\n\n也没有一堆 Agent。\n\n它只做一件事：\n\n**把你复制的内容，立刻变成可以理解的解释。**\n\n选中。\n\nCtrl + C。\n\n继续写代码，看文档。\n\n解释已经弹出来了。\n\n不用离开终端。\n\n不用切浏览器。\n\n不用打开 AI 网页。\n\n---\n\n<img width=\"1512\" height=\"932\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/32eec39c-6b87-4375-928e-6b235230a2df\" />\n\n支持：\n\n✅ 自动监听剪贴板\n\n✅ 鼠标选中即解释\n\n✅ 带源码上下文解释\n\n✅ Vim / Neovim\n\n✅ tmux\n\n✅ Kitty\n\n✅ WezTerm\n\n✅ Ollama / OpenAI / DeepSeek / Anthropic\n\n---\n\n它不会帮你写代码。\n\n它只是尽量减少一句：\n\n> \"等一下，我去搜一下。\"\n\n希望它能让开发过程中少一点上下文切换，多一点专注。\n\n目前还处于 MVP 阶段，已经支持 **macOS** 和 **Linux**。\n\n如果你也经常因为查一个词、一个 API、一个报错而打断思路，欢迎试试。\n\n觉得有帮助的话，给个 ⭐ Star 就是对这个项目最大的支持，也欢迎提 Issue 或 PR，一起把它做得更好。\n\nGitHub: https://github.com/kerwin2046/AHA\n\nStay in flow.\n\n",
+    "created_at": "2026-07-10T14:25:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10659"
+  },
+  {
+    "id": 10658,
+    "title": "【开源自荐】loop.js —— 让\"另一个 AI 当裁判\"的自主 agent 循环框架",
+    "content": "项目：https://github.com/loop-js/loop.js （文档 https://loop-js.mintlify.site/）\n\nloop.js 是一个 TypeScript 框架：你声明一个目标（Goal），引擎驱动 AI agent 一轮一轮干活，直到**另一个只读的怀疑派 Verify agent** 裁定达标才算完——干活的 agent 自己说\"做完了\"不算数。状态落盘，跨崩溃/重启/数周的定时任务可续跑；`loop cron` 直接装进 crontab / launchd / Windows 任务计划或 Modal 云端，不驻留任何 daemon。\n\nApache-2.0，`npm create @loop.js` 一分钟起步。",
+    "created_at": "2026-07-10T13:10:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10658"
+  },
+  {
+    "id": 10657,
+    "title": "【开源自荐】百灵中枢 BailingHub：让已有业务系统安全接入 Agent 操作能力",
+    "content": "这是一次开源项目自荐。\n\n百灵中枢（BailingHub）是一个面向已有业务系统的开源 Agent 控制面。它解决的不是“再做一个聊天机器人”，而是当 Agent 真正进入订单、库存、退款、员工、客户和工单等业务场景后，如何声明可用能力、传递操作主体、控制风险、处理审批并留下完整审计链路。\n\n它位于 Agent 与业务 API 之间：\n\n- 用 ACC（Agent Capability Contract）声明业务能力、主体、风险和审批意图；\n- 统一管理路由、模型、本地执行器、知识库和业务工具；\n- 支持参数级风险条件、人工审批、限流、签名、审计与 trace；\n- 业务系统继续负责身份、权限和最终授权，中枢不接管业务数据主权；\n- 支持网页嵌入聊天、消息渠道、云端或本地模型以及远程 Agent 执行器；\n- 提供 Docker Compose、一键安装、演示业务系统和在线体验。\n\n![百灵中枢架构概览](https://raw.githubusercontent.com/bailinghub/bailinghub/main/assets/architecture-overview.zh-CN.png)\n\n项目采用 Apache-2.0 协议，目前首个公开版本为 v0.1.0，主要面向自托管、单组织部署。\n\n- GitHub：https://github.com/bailinghub/bailinghub\n- 官网：https://www.bailinghub.com/\n- 在线体验：https://trial.bailinghub.com/console/login\n- ACC：https://www.agentcapability.org/",
+    "created_at": "2026-07-10T12:34:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10657"
+  },
+  {
+    "id": 10656,
+    "title": "Submit Tool: AI 信息差",
+    "content": "Name: AI 信息差\nWebsite: https://news.maynorai.asia/\nCategory: AI Image Generator, Creative AI, Design Tools, Marketing\nShort description: AI 信息差是 MaynorAI 的 AI 产品解读站，聚焦模型横测、AI 图片生成 SaaS、提示词工作流、Cloudflare 上站部署和会员深度文章。\nTags: AI 信息差, AI Image Generator, AI Image Editor, Text to Image, Creative AI, Design Tool, Marketing Design, AI Automation\nWhy it fits: 科技工具、网站、资源\nDisclosure: submitted by the project owner/operator. If this format does not match the repository guidelines, please let me know and I will adjust it.",
+    "created_at": "2026-07-10T12:22:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10656"
+  },
+  {
     "id": 10655,
     "title": "【工具推荐】Open Science Desktop —— 本地优先的 AI 科研工作台，一句话跑通探索→论文",
     "content": "Open Science Desktop 是一个本地优先、模型无关的 AI 科研桌面端应用，目前支持Win、Mac、Linux。工具的整体风格很像codex，它可以从研究方向一路跑到文献综述、实验代码、图表分析和论文草稿，并且所有产出都是落在本地的真实文件，且可溯源。\n\n项目特点：\n- 预置了整套的科研流程Skills，全科研流程跑通。\n- 预接了 arXiv、PubMed、Semantic Scholar 等文献搜索连接器，开箱即用。\n- 跨平台（macOS / Windows / Linux），界面自带简体中文。\n- 最近在 ResearchClawBench 自主科研智能体基准上拿了 Pass@1 第一。\n\n适合人群：\n- 想用 AI 把文献调研、实验、写作一次性串起来的科研工作者\n- 看重数据隐私和实验可复现的同学\n- 对开源科研工作台或agent感兴趣的开发者\n\n项目链接：https://github.com/ai4s-research/open-science",
@@ -794,37 +826,5 @@
     "created_at": "2026-07-03T13:44:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10556"
-  },
-  {
-    "id": 10555,
-    "title": "【工具自荐】mcp-ask-user-question —— 让 Codex 也拥有 AskUserQuestion 体验",
-    "content": "一个便携的 MCP 服务器，把 Claude Code / OpenCode 的 `AskUserQuestion` 工具以兼容形状暴露出来。Codex 接上后，Agent 提问就能弹原生表单、选项点一下就走，不再退化成纯文本对话。默认只走 MCP elicitation，兜底 provider 必须显式开启。\n\n## 为什么做这个项目？\n\n最近我越来越喜欢用 grilling 这条路子开发——Agent 在动手前，一件事一件事地逼我，把\"大概是这样\"逼成\"确定就是这样\"。\n\n这套体验在不同工具里落差很大：\n\n- 在 **Claude Code** 和 **OpenCode** 里，有内置的 `AskUserQuestion`：带标题、带选项、带推荐项，点一下就回去了。\n- 在 **Codex** 里没有这个工具。Agent 只能把问题打印成一坨文本，我再自己打字回答。对 grilling 这种高频追问的工作流，体验是断裂的——选项没法点、推荐项糊成一团、节奏退化为\"读—想—敲\"。\n\n差的不是\"能不能问\"，而是问与答之间的摩擦。一次问答没感觉，二十次下来就是舒服和难受的差别。\n\n于是我把这个工具以 MCP 服务器的方式补了回来，让两边行为对齐。\n\n## 核心亮点\n\n| 亮点 | 说明 |\n|------|------|\n| **与 Claude Code 形状兼容** | 输入/输出结构与原生 `AskUserQuestion` 一致：`questions` 1–4、`options` 2–4、含推荐项、支持 multiSelect。 |\n| **默认只走原生 elicitation** | `auto` provider 仅使用客户端本机的 MCP 表单 UI，不会偷偷开终端、弹浏览器或桌面框。 |\n| **兜底必须显式** | terminal provider 需在配置里点名启用；写提示时绕开 stdout，不污染 MCP 的 stdio。 |\n| **失败状态分得清** | `answered` / `cancelled` / `declined` 三态返回，多问题全有或全无，不给 Agent 留残留数据去猜。 |\n| **一行 npx 即用** | 无需装包，无需密钥，无需账号。 |\n\n## 一个必须说的坑\n\nCodex 需要显式放行 MCP elicitation，否则工具调用会直接拿到 `declined`，根本不弹窗。把 `mcp_elicitations` 在 granular `approval_policy` 里打开：\n\n```toml\napproval_policy = { granular = {\n  sandbox_approval = true,\n  rules = true,\n  mcp_elicitations = true,\n  request_permissions = true,\n  skill_approval = true\n} }\n```\n\n另外，**不要在需要提问的场景里用 `codex --yolo`**。`--yolo` 会绕过审批，而 Codex 把 MCP elicitation 当作需用户确认的提示——在这种模式下，表单出现之前就可能被自动拒绝。\n\n如果你要\"文件/命令随便跑，但用户提问还是要弹窗\"，应该只放宽沙盒、保留 elicitation：\n\n```bash\ncodex --sandbox danger-full-access -c 'approval_policy={granular={sandbox_approval=true,rules=true,mcp_elicitations=true,request_permissions=true,skill_approval=true}}'\n```\n\n## 使用场景\n\n- 在 **Codex** 里跑 grilling / grill-me 工作流，让 Agent 一项一项追问时，每问都能弹结构化表单。\n- 在不开 `--yolo`、又希望 Agent 在关键决策点先求证的协作流里。\n- 给其它不支持 `AskUserQuestion` 但支持 MCP elicitation 的客户端兜一个一致的提问工具。\n\n## 链接\n\n- GitHub: https://github.com/Sanjeever/mcp-ask-user-question\n- 作者博客: https://boundless.cn\n- 介绍文章: https://boundless.cn/posts/2026/07/03-mcp-ask-user-question\n\n## 作者自荐\n\n我是 Sanjeev，后端开发者，平时主要在 Codex / Claude Code / OpenCode 三个 CLI 之间来回切换。这个工具是我自己日常在用的，目的是把 grilling 这条路子从\"只能在 Claude Code / OpenCode 用\"扩到\"Codex 上也照样用\"。如果觉得有用，欢迎 Star 支持一下。",
-    "created_at": "2026-07-03T11:05:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10555"
-  },
-  {
-    "id": 10553,
-    "title": "【开源自荐】LocalMind —— 一个属于你自己的本地知识管家",
-    "content": "1. 项目简介：\nLocalMind 是一款专为个人知识管理打造的本地优先（Local-first）AI 知识管家。它旨在解决传统云端笔记在隐私安全和离线使用上的痛点，让用户在断网状态下也能拥有一个能读懂自己所有笔记的“第二大脑”。\n2. 核心亮点：\n绝对隐私： 文档解析、向量化检索、大模型推理全部在本地机器完成，数据物理隔离，永远不出本地硬盘。\n轻量零运维： 摒弃了沉重的独立向量数据库，采用传统的 SQLite FTS5 进行全文检索与存储，打包在 Electron 中，双击即用。\n双模式 AI： 默认使用 llama.cpp 加载本地小模型处理日常问答；支持一键无缝切换云端大模型 API，兼顾隐私与智商。\n精准溯源： 检索到的上下文片段会高亮显示并附带引用来源，告别大模型“幻觉”。\n3. 项目地址：\nhttps://github.com/YUN2023c/LocalMind\n4. 适合人群：\n对数据隐私有极高要求的用户、重度知识管理玩家（Obsidian/Logseq 用户）、以及喜欢折腾本地大模型和 RAG 技术的极客。\n5. 补充说明：\n目前项目处于 MVP 阶段，已开源，非常欢迎社区的朋友来试用、提 Issue 或贡献代码。感谢编辑审阅，期待能被收录！",
-    "created_at": "2026-07-03T10:05:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10553"
-  },
-  {
-    "id": 10552,
-    "title": "【开源自荐】走遍美国英文音频学习网站",
-    "content": "# 📖 走遍美国英文音频学习网站\n> 《走遍美国》(Family Album U.S.A.) 英语学习版：26 集完整台词、逐句中文翻译、音频播放、全局搜索，纯前端无后端，开箱即用。\n\n🔗 **在线体验：** https://shaozhengmao.github.io/family-album-usa-studied/\n🔗 **项目地址：** https://github.com/shaozhengmao/family-album-usa-studied\n\n*仅供个人学习与研究使用，请支持正版音频和图书。*\n---\n\n## 功能特性\n\n- **26 集 / 78 幕 / 6000+ 句台词**：完整覆盖《走遍美国》全剧集\n- **逐句中文翻译**：英文与中文对照显示，可一键切换显隐\n- **播放速度控制**：0.75× / 1× / 1.25× / 1.5× 四档可调\n- **全局搜索**：跨 26 集搜索英文台词、中文翻译或集名，点击跳转（`Ctrl/Cmd + K` 唤起）\n- **响应式设计**：桌面双栏、手机底部导航栏\n- **纯静态部署**：无需后端，可直接托管到 GitHub Pages\n\n---\n",
-    "created_at": "2026-07-03T06:40:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10552"
-  },
-  {
-    "id": 10551,
-    "title": "【工具自荐】PIC免费公益图床",
-    "content": "PIC公益图床免费提供高速图片托管服务，免费的公共图床以及图片存储服务。可以快速将图片转换为URL 链接，为您提供简单、稳定、可信赖的图片上传于外链分享服务,提供原图保护功能。\n\n天下苦“限时图床”与“防盗链”久矣！\n平时写 Markdown 博客、搞 GitHub README、或者分享设计图，最怕的就是过几个月图片全都变成了 404 裂图。\n\n为了解决这个痛点，我搓了一个极简、安全的图床工具：Mini-Tools Secure Image Hosting。没有满屏的广告，没有繁琐的注册流程，主打一个纯粹和稳定。\n\n✨ 核心特性：\n\n🔗 全球加速永久直链： 生成的标准图片直链（支持 HTTPS），无防盗链限制。完美适配 Markdown、Hexo、Hugo、VuePress 以及 GitHub 仓库。\n\n🆓 完全免费无门槛： 即开即用，无需繁琐的注册登录。\n\n💻 完美适配场景：\n技术博客配图 / GitHub 仓库 README 截图 / 独立开发者作品集展示 / 论坛高清图片分享。\n\n👉 立即体验： https://pic.zto58.com\n\n欢迎大家白嫖测试！你的支持是我持续维护的最大动力！",
-    "created_at": "2026-07-03T06:07:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10551"
   }
 ]
