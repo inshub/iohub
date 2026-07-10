@@ -1,5 +1,29 @@
 [
   {
+    "id": 10651,
+    "title": "[网站自荐] 全客搜 - 免费网盘资源搜索引擎",
+    "content": "网站名称：全客搜 - 免费网盘资源搜索引擎\n网站地址：https://www.quanks.cn\n网站简介：全客搜是一款高效的夸克网盘、百度网盘资源搜索引擎，页面清爽，资源全面，支持影视、短剧、综艺、动漫等全网优质网盘资源搜索。只需输入关键词，即可快速找到相关网盘资源。",
+    "created_at": "2026-07-10T01:46:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10651"
+  },
+  {
+    "id": 10650,
+    "title": "docs(issue 403): fix typo",
+    "content": null,
+    "created_at": "2026-07-10T01:11:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/10650"
+  },
+  {
+    "id": 10649,
+    "title": "[勘误] TypeScript 7.0 是使用 Golang 重构而不是 Rust",
+    "content": "https://github.com/ruanyf/weekly/blob/e7292b2d13fc2a7d645fe61b6fc8da58b16dac30/docs/issue-403.md?plain=1#L131\n\n我在全网都没有找到对应的 TypeScript 7.0 Rust 相关新闻, 官方博文也没有提到 Rust 这个单词\n\n<img width=\"883\" height=\"566\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ffd4e28-f147-4ec1-8181-7364d7962aa5\" />\n<img width=\"1611\" height=\"1098\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba22267e-876a-444e-bfba-1beacb15deb3\" />",
+    "created_at": "2026-07-10T00:40:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10649"
+  },
+  {
     "id": 10648,
     "title": "【开源自荐】WDL - 自托管的 Cloudflare Workers 平台",
     "content": "项目简介：\nWDL 是一个自托管、多租户的 Workers 平台，让你在自己的基础设施上运行 Cloudflare Workers 的编程模型——用标准 wrangler 配置和开源 CLI 部署 worker，全程不经过 Cloudflare。构建在其开源运行时 workerd 之上（不 fork），与 Cloudflare 无隶属关系。\n\n<img width=\"1796\" height=\"1074\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ab2ac35-0f0f-4e04-9bb4-8b7ee983e0e7\" />\n\n开源5个仓库:\n🏗️ [wdl](https://github.com/wdl-dev/wdl) —— 平台本身。从 Redis/Valkey 动态加载不可变 worker 版本,补齐 workerd 不提供的一切:多租户路由、控制平面、KV/R2/D1/DO/队列/cron/Workflows、密钥、可观测性。单区域多副本、真故障接管(owner-lease + generation fence)。Rust + JS。\n🧰 [cli](https://github.com/wdl-dev/cli)(@wdl-dev/cli)—— 部署工具。用标准 wrangler 配置把 worker 发到 WDL,顺带管 D1/R2/KV/密钥/Workflows 和 wdl tail 日志。凭据处理专门做过加固。\n🤖 [chat](https://github.com/wdl-dev/chat) —— 一个 AI 应用,作为普通租户跑在 WDL 上:把一句话变成上线的 worker(在 MicroVM 里写代码,再通过平台自己的控制面 API 部署回 WDL)。一个\"部署 worker 的 worker\"。\n🌐 [site](https://github.com/wdl-dev/site) —— wdl.dev 官网,本身就是一个 WDL worker,用 wdl deploy 部署。你打开官网时,看到的就是平台在服务它自己。\n🔐 [aws-sigv4](https://github.com/wdl-dev/aws-sigv4)(@wdl-dev/aws-sigv4)—— 一个零依赖的 AWS SigV4 签名库,给平台的 R2 / S3 存储用。小而专,只做一件事。\n\n核心特性：\n🚀 标准 wrangler 配置 + 开源 CLI 部署，nothing 发往 Cloudflare\n🧩 完整平台能力：KV、R2、D1、Durable Objects、队列、定时任务、Workflows、密钥、控制平面\n🏗️ 基于原版 workerd（不 fork），继承上游修复而非维护 runtime 分叉\n🔁 单区域多副本、真故障接管（owner-lease + generation fence，过期副本 fail closed）\n🐳 Docker Compose 一键起本地栈，另有 Kubernetes / Terraform 部署路径\n\n技术亮点：\n通过 workerd 的 workerLoader API 从 Redis/Valkey 动态加载不可变 worker 版本\nD1 / Durable Object 用 owner-lease + 单调 generation fence 做故障接管，用单区域换来强一致 KV 和 read-your-writes D1\nRust（redis-proxy / scheduler / workflows / 进程 supervisor）+ JS 实现\n官网 wdl.dev 本身就是跑在该平台上的一个 worker（自举）\n\n适用场景：\n想要 Workers 编程模型、但需要数据驻留 / 数据主权 / 私有化 / 内网隔离部署的团队\n想在自有基础设施上给内部开发者提供多租户 Workers 的平台团队\n开源协议：Apache-2.0",
@@ -802,29 +826,5 @@
     "created_at": "2026-07-03T02:24:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/pull/10547"
-  },
-  {
-    "id": 10546,
-    "title": "【开源自荐】qq-ai-bot：OneBot 11 + ACP 的 QQ ↔ AI 自托管脚手架",
-    "content": "- 项目地址：https://github.com/happysnaker/qq-ai-bot\n- 项目主页：https://happysnaker.github.io/qq-ai-bot/\n- Docker 演示：https://github.com/happysnaker/qq-ai-bot/blob/main/docs/docker-quickstart.md\n- 部署矩阵：https://github.com/happysnaker/qq-ai-bot/blob/main/docs/deployment-matrix.md\n- 许可证：MIT\n\n---\n\n## 项目简介\n\n`qq-ai-bot` 是一个把 **QQ / OneBot 11** 接到 **本地 AI agent** 的自托管脚手架。\n\n它前面兼容 **NapCat / LLOneBot** 这类 OneBot 11 实现，后面接 **ACP-compatible agent**。重点不是做一个新的聊天 UI，而是把消息入口、会话状态、进度回传、Docker 演示和部署文档整理成一个可以直接跑起来的 **QQ ↔ AI 基础设施仓库**。\n\n如果你已经有本地 agent，或者想验证一条完整的 **QQ -> OneBot -> bot bridge -> agent runtime** 链路，这个项目会比纯 demo 型聊天机器人更实用一些。\n\n---\n\n## 主要功能\n\n- 兼容 **OneBot 11 / NapCat / LLOneBot**\n- 私聊、群聊独立会话，群聊支持仅 `@机器人` 触发\n- **ACP session** 复用与持久化恢复\n- 把 agent 的处理中进度实时回传到 QQ\n- 图片可自动转给 agent\n- 对文件 / 语音 / 视频等暂未直传的 richer media，会显式告诉 agent “当前未读到附件”，避免静默丢失\n- 提供 `/metrics`、`/readyz`、`/status` 等偏运维能力\n- 内置轻量入站去重、correlation ID 等排障信号\n- 仓库自带 **NapCat + qq-ai-bot + mock ACP agent** 的最小 Docker demo\n\n---\n\n## 这个项目比较特别的地方\n\n1. **更像消息入口层 / bot 脚手架，而不是另一个聊天玩具。**\n   核心定位是 OneBot transport 和本地 agent runtime 之间的桥接层。\n\n2. **可以先用 mock agent 跑通全链路，再替换成自己的 agent。**\n   对想验证接线、WS 模式、会话状态和进度回传的人比较友好。\n\n3. **文档相对完整。**\n   项目介绍、特性、快速开始、Docker demo、FAQ、部署矩阵、架构说明、Roadmap、Contributing、Security 都已经补齐。\n\n4. **不是只会“能跑”，也补了一些工程化细节。**\n   比如 session persistence、progress streaming、observability、轻量去重、richer-media fallback 这些更接近真实部署痛点的部分。\n\n5. **已经进入 OneBot 生态页。**\n   所以它更像一个可复用的 bot 基础设施项目，而不是纯自娱自乐的小作品。\n\n---\n\n## 截图\n\n架构图：\n\n![qq-ai-bot architecture](https://raw.githubusercontent.com/happysnaker/qq-ai-bot/main/assets/architecture-overview.png)\n\n进度回传示意：\n\n![qq-ai-bot progress](https://raw.githubusercontent.com/happysnaker/qq-ai-bot/main/assets/progress-demo.png)\n\n---\n\n如果一句话概括，我会把它介绍成：\n\n> 一个基于 **OneBot 11 + ACP** 的 **QQ ↔ AI 自托管脚手架**，带 **persistent sessions、progress streaming、Docker demo**，更像 bot 基础设施而不是聊天玩具。\n",
-    "created_at": "2026-07-02T22:16:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10546"
-  },
-  {
-    "id": 10545,
-    "title": "【开源自荐】吆喝（yaohe）：把开源项目宣传变成一条命令，按各渠道规则合规投递（一个 agent skill）",
-    "content": "吆喝是一个开源（MIT）的 skill，把「写完开源项目投哪儿、怎么投」这件事变成一条 `/promote` 命令，给你的项目吆喝一嗓子。\n\n项目地址：https://github.com/nmhjklnm/yaohe\n\n![yaohe](https://raw.githubusercontent.com/nmhjklnm/yaohe/main/docs/assets/banner.png)\n\n宣传渠道很多：阮一峰周刊自荐、HelloGitHub、GitHubDaily、Show HN、V2EX……每个渠道格式、规则各不相同，手动投一圈很花时间，还容易因为格式不对被无声淘汰或被判 spam。吆喝的做法：\n\n- 读你的仓库，提炼项目定位、目标人群和亮点\n- 每个渠道单独定制文案：内置 20 个渠道的实证规格，提交方式、格式要求、真实命中样例、社区红线都逐渠道核实过\n- 分三级自动化：issue/PR 型渠道确认后用 `gh` 直接提交；表单型给稿件和逐字段指引；社区发帖型（HN、V2EX、Reddit）只出稿不代发，机器代发社区帖等于 spam\n- 投递日志写入 `PROMO-LOG.md`，同渠道 30 天内不重复投\n\n渠道规格是独立的 markdown 文件，欢迎 PR 添加新渠道。\n\n安装：\n\n```\nclaude plugin marketplace add nmhjklnm/yaohe\nclaude plugin install yaohe\n```\n\n开源协议：MIT\n",
-    "created_at": "2026-07-02T17:06:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10545"
-  },
-  {
-    "id": 10544,
-    "title": "【项目自荐】把飞书文档导出为 Markdown 的浏览器扩展",
-    "content": "larksnap 是一个开源的 Chrome 扩展(MV3),用来把飞书 / Lark 文档（私有化的飞书）导出成 Markdown,文档里的图片和附件会一并打包成 zip。它也支持导出 PDF 和 HTML,以及把任意网页转成 Markdown。\n\n它的做法是复用浏览器里已登录的会话和飞书网页的内部接口,在文档页的侧边栏直接导出,不需要后端服务,也不需要去开放平台申请 API 权限。全部处理在本地完成,文档内容不上传。兼容私有化部署的自建域名。\n\n常见用途是把飞书文档转成 Markdown 后交给大模型 / Claude Code 作为参考资料,省去\"先导出 PDF 或 Word、再手动转换格式、再单独整理图片\"的步骤。扩展还附带一个本地桥接,可以让 Claude Code 这类命令行工具直接调用它来完成导出。\n\n开源协议 Apache-2.0。\n项目地址:https://github.com/AmbroseX/larksnap\n\n",
-    "created_at": "2026-07-02T16:20:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10544"
   }
 ]
