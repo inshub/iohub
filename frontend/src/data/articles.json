@@ -1,5 +1,13 @@
 [
   {
+    "id": 10674,
+    "title": "【工具自荐】Agent Skills Finder：安装前先看懂 agent skills 的目录站",
+    "content": "最近 Claude Code、Codex、OpenClaw、Cursor 这类 agent 工具都开始支持可复用的 skills，但实际找 skill 还是比较分散：很多内容藏在 GitHub 仓库、README 或个人项目里，安装前也不容易快速判断它到底做什么。\n\n我做了一个目录站：Agent Skills Finder\n\nhttps://agentskillsfinder.com/\n\n它主要解决三个问题：\n\n1. 按任务、分类、标签和关键词搜索 agent skills，不只是搜仓库名。\n2. 进入详情页后，可以先看 SKILL.md、文件树、安装命令、作者、收藏、评分和评论，再决定要不要安装。\n3. 登录后可以收藏 skills、创建 workflow collections，也可以提交 GitHub 仓库、skill 目录或 SKILL.md URL。\n\n目前公开目录里已经有一批 Claude / Codex / OpenClaw / Cursor 等方向的 skills，首页、热门、新增、分类和合集都可以直接浏览。\n\n这个站不是官方 marketplace，也不替代安全审计；第三方 skill 仍然建议安装前自己检查源码和说明。它的定位更像是一个安装前的发现和评估层，帮用户少翻一些分散的 GitHub 页面。",
+    "created_at": "2026-07-11T19:48:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10674"
+  },
+  {
     "id": 10673,
     "title": "【开源自荐】nika — 把重复的 AI 任务写成可检查、可审计的 YAML 工作流（Rust · 本地优先）",
     "content": "**项目地址**：https://github.com/supernovae-st/nika\n\n**项目介绍**：\n\nnika 是一个用 Rust 写的 AI 工作流引擎：把重复的 AI 任务写成一个纯文本 `.nika.yaml` 文件（一个小型 DAG），像代码一样可以 review、diff、复用。\n\n它的特别之处在于「先检查、后执行、留凭证」：\n\n- `nika check` 在**花费任何 token 之前**静态审计整个工作流——DAG 结构、类型、哪个密钥流向哪一步、诚实的成本下限（无法定价的部分明确标注，绝不显示 $0）\n- 付费模型运行有硬性预算上限（`--max-cost-usd`）\n- 每次运行写入**哈希链审计日志**，`nika trace verify` 返回 0 或指出第一个被篡改的位置——凭证来自运行器，而不是模型的自述\n- **完全本地可用**：mock 和 Ollama 路径零 API key、零云依赖；llama.cpp / vLLM 走同样的 OpenAI 兼容路线\n\n单个静态二进制文件，同时内置 MCP 服务器（只读预检）、GitHub Action、VS Code 扩展（YAML 实时渲染为 DAG 图）。\n\n两条命令离线试用：\n\n```bash\nbrew install supernovae-st/tap/nika\nnika examples run 01-hello --model mock/echo\n```\n\n引擎 AGPL-3.0，语言规范 Apache-2.0。目前 0.9x（语言格式已冻结，周边仍在打磨），每周发版。\n\n**利益声明**：我是作者。\n",
@@ -816,13 +824,5 @@
     "created_at": "2026-07-04T10:21:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10572"
-  },
-  {
-    "id": 10570,
-    "title": "【自荐】Inches to MM：面向制造、五金和钻头尺寸的英寸毫米换算工具",
-    "content": "项目地址：[Inches to MM converter](https://inches-to-mm.com/?utm_source=github_ruanyf_weekly&utm_medium=backlink&utm_campaign=inches_to_mm_com_cold_start_202607&utm_content=weekly_issue)\n\n简介：一个轻量的英寸到毫米换算工具，面向制造、五金、钻头尺寸、BOM 和公差检查场景。页面强调直接给出结果、常见尺寸和可打印参考，适合需要快速核对 inch / mm 的英文用户。\n\n适合场景：单位换算、制造/硬件尺寸核对、英文长尾 SEO 小工具。\n\n提交说明：独立开发的小工具网站，自荐给科技爱好者/独立开发者参考；链接带 UTM 仅用于区分来源统计。",
-    "created_at": "2026-07-04T10:20:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10570"
   }
 ]
