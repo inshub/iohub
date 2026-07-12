@@ -1,5 +1,21 @@
 [
   {
+    "id": 10677,
+    "title": "【工具自荐】Social Text Tools：免费的 LinkedIn 文本格式化和预览工具",
+    "content": "项目地址： https://socialtexttools.net/?utm_source=github.com&utm_medium=referral&utm_campaign=promotion#tool\n\nSocial Text Tools 是一个免费的 LinkedIn 文本格式化工具，用来把帖子、个人简介、评论和私信草稿转成可复制的 Unicode 样式文本。\n\n主要功能：\n\n- 支持加粗、斜体、等宽、无衬线等常见 Unicode 文本样式\n- 提供桌面和手机两种 LinkedIn 预览，方便发布前检查可读性\n- 统计字符数、词数和阅读时间，适合写长帖或简介\n- 内置 hook 检查和 Safe mode，尽量避免太花哨、难读或兼容性差的样式\n- 不需要登录，直接在浏览器里使用\n\n适合场景：LinkedIn 创作者、个人品牌作者、B2B 内容运营，在发布前快速给重点句子加一点强调，同时检查格式和长度。",
+    "created_at": "2026-07-12T05:10:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10677"
+  },
+  {
+    "id": 10676,
+    "title": "【开源自荐】LLM Wiki Agent Memory：让 Codex / Claude Code 拥有本地工程记忆",
+    "content": "项目地址：https://github.com/miniLV/llm-wiki-agent-memory\n\n这是一个本地优先的 AI 编程记忆项目。它把 Codex 和 Claude Code 的本机会话整理成可查询、可审计的 Obsidian 风格 Markdown Wiki，让 Agent 在后续任务中找回历史决策、调试过程和防踩坑经验。\n\n项目不依赖向量数据库或云端记忆服务，采用 Capture → Daily → Reconcile → Retrieve 的分层流程：先保留原始证据，再生成每日整理，周期复核后才晋升为长期经验，从而减少 AI 对自身历史回答的重复强化和记忆污染。\n\n主要特点：\n\n- 同时支持 Codex 与 Claude Code 本地 session\n- 数据保留在本机，记忆是可以直接阅读、编辑和 Git 管理的 Markdown\n- 提供本地 Web 配置页，引导完成数据源和 Codex App Automations 配置\n- 可从其他工程通过只读 skill 查询旧决策和调试上下文\n- 无需向量数据库、账号或托管服务\n\n快速体验：\n\n```bash\ngit clone https://github.com/miniLV/llm-wiki-agent-memory.git\ncd llm-wiki-agent-memory\nbash scripts/config-ui.sh --open\n```\n\n![LLM Wiki Agent Memory 演示](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/assets/demo.gif)\n\n![LLM Wiki Agent Memory 架构图](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/agent-memory-arch-sketch.png)\n\nv0.1.0 Release：https://github.com/miniLV/llm-wiki-agent-memory/releases/tag/v0.1.0",
+    "created_at": "2026-07-12T03:08:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10676"
+  },
+  {
     "id": 10675,
     "title": "【开源自荐】 CC Lights：菜单栏上的 Claude Code 红绿灯 — 瞄一眼就知道每场会话是在工作、等你、还是报错，点一下直接跳过去。     ",
     "content": "\nCC Lights 免费开源 一款轻量的 macOS 状态栏 App \n\n**CC Lights**（Claude Code Status Light）是一款轻量的 macOS 状态栏 App，把一个或多个 Claude Code 会话的实时状态显示为状态栏上的红绿灯——工作/空闲为绿色，需要你操作时变黄，出错变红，无会话时为灰色。\n\n让 Claude Code 在终端或编辑器里跑着，不必再频繁切回去查看：扫一眼状态栏就知道每个会话是在工作中、等待决策、空闲、离线还是出错。\n\n**点击某个灯，即可立刻切到那个正等你处理的会话——精确定位到对应的 Terminal**\n\nTerminal.app、iTerm2、Ghostty 或 cmux 标签页 / 窗口 / 面板。状态由 Claude Code hooks 通过内置的 cc-lights 命令行工具驱动更新。\n\n\n\nGithub: [https://github.com/andyiac/cc-lights/](https://github.com/andyiac/cc-lights/)\n\n下载地址: [https://github.com/andyiac/cc-lights/releases](https://github.com/andyiac/cc-lights/releases)\n\n<p align=\"center\">\n  <a href=\"https://www.youtube.com/watch?v=yQwQsnS-PSc\">\n\n  <img width=\"800\" height=\"450\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/556f9fb2-14b1-4435-911c-88f48b4a2f24\" />\n  \n  </a>\n</p>\n\n",
@@ -808,21 +824,5 @@
     "created_at": "2026-07-04T15:27:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10575"
-  },
-  {
-    "id": 10574,
-    "title": "【开源自荐】Waveloom：DeepSeek 原生终端编码代理，单 Go 二进制 ~18MB",
-    "content": "一句话介绍：一个专门为 DeepSeek 前缀缓存设计的终端 AI 编程助手，缓存命中率 95%+，Claude Code 的 `.claude/skills/` 和 MCP 配置直接兼容。\n\n---\n\n## 为什么又造一个轮子\n\n市面上终端 AI 编程工具不少，但几乎都是为 Anthropic/OpenAI 的 API 设计的。DeepSeek 的定价模型不一样——它按前缀缓存命中计费，公共前缀越长越省钱。把 Claude Code 指向 DeepSeek 用，缓存命中率惨不忍睹，因为 Claude Code 的上下文压缩策略假设的是 Anthropic 的 `cache_control` API，不是 DeepSeek 的前缀匹配。\n\nWaveloom 从头就把缓存经济学当成一等设计约束：**固定 System Prompt + 只追加不修改的消息历史 + 四级水位线原地压缩（Snip → Prune → Summarize）**，确保跨轮次最长公共前缀始终命中缓存。实测日常使用缓存命中率 95–99%。\n\n## 技术亮点\n\n- **单 Go 二进制 ~18MB，零运行时依赖**——不需要 Node.js、Python 虚拟环境，`curl | sh` 或 `brew install` 即用。macOS / Linux / Windows 全平台支持（Windows Git Bash 兼容是踩坑踩出来的）\n- **子代理系统 + 模型自动切换**——`agent` 工具支持 fork（热启动，继承上下文）和 cold（冷启动，独立评审/对抗验证）。深推理任务自动用 deepseek-v4-pro，日常任务用 deepseek-v4-flash，同任务不同环节用不同模型\n- **权限安全管线**——三级决策引擎（allow/deny/ask）+ 模式匹配规则引擎 + 子代理事后安全分类器，检测危险命令（rm/chmod/sudo）和敏感文件写入（.env），生成 HIGH/MEDIUM/LOW 安全警告\n- **Claude Code 生态直接兼容**——`.claude/skills/` 目录的 SKILL.md 和 `.claude.json` 的 MCP 配置直接可用，零迁移成本\n- **Bubble Tea TUI**——流式推理带语法高亮、rich diff、`@` 模糊文件选择器、`/` 命令面板、明暗主题切换、中英双语界面，对标 Claude Code 的终端体验\n- **Plan Mode**——先探索设计、审批后再实现的二阶段工作流，计划阶段写入保护由 Guard 强制执行\n\n## 当前状态\n\nv0.1.0-beta，我日常用它开发它自己，但仍有粗糙边角。压缩系统、子代理隔离模型、Windows Git Bash 兼容层是最难的三块。\n\n在线体验需要自备 DeepSeek API Key（代码不经过第三方服务器）。\n\n- GitHub：https://github.com/Menfre01/waveloom\n- 安装：`curl -fsSL https://raw.githubusercontent.com/Menfre01/waveloom/main/install.sh | sh`\n",
-    "created_at": "2026-07-04T11:53:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10574"
-  },
-  {
-    "id": 10573,
-    "title": "【开源自荐】time-ledger（时间账本）—— 随口说一句干了啥，Claude 帮你记进自己的 Notion 时间账本",
-    "content": "**项目名：** time-ledger（时间账本）\n**GitHub：** https://github.com/cruisekkk/time-ledger\n**协议：** MIT\n\n介绍：time-ledger 是一个「Claude skill + Notion 模板」组合的个人时间记录工具。你随口说一句「今天下午看了俩小时论文」「刚撸铁一小时」，skill 把自然语言解析成 活动分类 + 时长 + 日期，写进你自己的 Notion 数据库；拿不准的地方它标成「待确认」反过来问你，而不是瞎编。数据真相源始终是你自己的 Notion，随时可导出、改字段、做透视。\n\n![demo](https://raw.githubusercontent.com/cruisekkk/time-ledger/main/assets/demo-web.gif)\n\n## 特点\n\n- **零表单**：口语随口一句（手机上也行），AI 当录入员；说「整理时间账本」还能批量补齐所有待确认行\n- **不编造**：skill 指令里写死「拿不准就问，绝不瞎猜时长/分类」——对账本来说，可信比全自动重要\n- **零配置**：不用贴任何 database id——skill 按库名（「时间账本」/「time-ledger」）自动找到你的库\n- **数据自持**：写进你自己的 Notion database，一键复制模板即可开始，不经过任何第三方服务器\n- **中英双语**：README、SKILL、Notion 模板都有 EN / 中文两版\n- **模式可复制**：本质是「LLM 当录入员、Notion 当真相源、拿不准就问」——同一模式的姊妹项目 [trading-ledger 交易账本](https://github.com/cruisekkk/trading-ledger)，逼你在入场那一刻把理由说出口，复盘只看决策质量不看盈亏\n\n## 安装\n\n复制 Notion 模板 → 在 Claude（Claude Code / Claude.ai / 手机 app）里装上 skill → 授权 Notion 连接器，就能用了。README 里有逐步截图。\n\n做这个的起因：所有时间跟踪 App 都败在「记录本身太费劲」，坚持不过三天。让 AI 做录入员、自己只负责随口汇报之后，才第一次坚持了下来（作者 6 月起每天在用）。欢迎试用和反馈！\n",
-    "created_at": "2026-07-04T11:16:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10573"
   }
 ]
