@@ -1,5 +1,61 @@
 [
   {
+    "id": 10702,
+    "title": "投稿（工具）：SaaSCity —— 把每个 SaaS 产品变成等距城市地图上的一栋建筑",
+    "content": "你好，投稿一个网站工具。\n\n**SaaSCity** —— https://saascity.io\n\n这是一个 SaaS 产品目录，但呈现方式不太一样：每个提交的产品会变成一栋建筑，出现在一张可交互的等距（isometric）城市地图上。产品越多，这座城市就越大。灵感来自 Million Dollar Homepage。\n\n- 免费提交，人工审核，通常 24 小时内上线\n- 地图用 Canvas 渲染，Next.js 实现\n\n利益相关：这是我自己做的项目，属于自荐。不合适请直接忽略，谢谢。",
+    "created_at": "2026-07-13T11:05:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10702"
+  },
+  {
+    "id": 10701,
+    "title": "〖开源自荐〗屏译（Screen Translator）Android 游戏 / 漫画实时屏幕翻译",
+    "content": "项目地址：https://github.com/ciddwd/overlay-translator  \n下载地址：https://github.com/ciddwd/overlay-translator/releases/tag/v0.3.8  \n开源协议：Apache-2.0\n\n# 屏译 · Screen Translator\n\n屏译是一款免费、无广告、无需 ROOT 的 Android 屏幕实时翻译工具，主要面向游戏、视觉小说、漫画和视频字幕等场景。\n\n使用时点击悬浮球，应用会完成：\n\n> 截取屏幕 → OCR 识别文字 → 调用翻译引擎 → 将译文叠加到原文附近\n\n不需要来回切换翻译软件，译文会直接显示在当前应用或游戏画面上。\n\n## 主要功能\n\n- **多种翻译方式**：支持全屏翻译、区域划词和自动循环翻译，也可以通过音量双键触发\n- **端侧 OCR**：支持 ML Kit、PaddleOCR 和日漫 OCR，图片无需上传，断网时也可以识别\n- **云端及本地 OCR**：支持 PP-OCRv6 在线、百度、腾讯、有道，以及局域网内的 Umi-OCR、LunaTranslator\n- **多种翻译引擎**：支持 DeepL、DeepLX、Google、有道、百度、腾讯，以及 OpenAI 兼容接口\n- **端侧翻译模型**：支持 Sakura 日译中模型和 Hy-MT2 多语种模型，模型下载完成后可以离线翻译\n- **横排和竖排识别**：可自动判断横排、竖排和旋转文字，针对日文竖排漫画做了专门处理\n- **漫画与视觉小说优化**：支持段落合并、振假名过滤、日漫气泡识别和竖排译文布局\n- **两种译文显示模式**：可以把译文贴在原文附近，也可以集中放入可拖动、缩放和锁定的悬浮窗口\n- **划词翻译卡片**：框选单词或短语后，可显示译文、音标、词性、释义、例句和难点说明\n- **外观自定义**：支持译文颜色、透明度、字体、字号、描边、阴影、间距和对齐方式\n- **配置迁移**：可导出和导入非敏感设置、预设及字体，API Key 和 Token 不会被写入配置包\n\n## 使用场景\n\n- 在手机上游玩没有中文的游戏或视觉小说\n- 阅读日文竖排漫画、韩漫或外文图片\n- 翻译视频字幕、应用界面和其它无法复制的屏幕文字\n- 使用自己的 OCR、LLM、DeepLX 或局域网翻译服务\n- 希望使用端侧 OCR 和本地模型，减少截图上传\n\n## 项目特点\n\n屏译并不绑定某一家 OCR 或翻译服务。用户可以根据设备性能、网络环境和隐私需求，自由组合端侧、云端或自托管引擎。\n\n项目目前支持 Android 8.0 及以上系统，APK 暂时只提供 `arm64-v8a` 版本。\n\n## 效果截图\n\n### 游戏画面译文叠加\n\n![游戏内译文叠加](https://raw.githubusercontent.com/ciddwd/overlay-translator/main/docs/screenshots/overlay-game.png)\n\n### 日文竖排漫画\n\n![日文竖排漫画翻译](https://raw.githubusercontent.com/ciddwd/overlay-translator/main/docs/screenshots/overlay-manga-jp.png)\n\n项目仍在持续开发，欢迎试用、提交 Issue 或参与贡献。",
+    "created_at": "2026-07-13T10:56:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10701"
+  },
+  {
+    "id": 10700,
+    "title": "【开源自荐】Orca — DeepSeek 原生终端 Coding Agent，支持持久 Goal 模式和 Workflow 编排",
+    "content": "## 项目简介\n\nOrca 是一个本地终端 Coding Agent，专为 DeepSeek 模型设计。它不是对通用 Agent 框架的包装，而是从提示词构造、SSE 流式解析、工具调用语义到上下文窗口管理，全链路围绕 DeepSeek 的行为特征构建。\n\n- 仓库地址：https://github.com/echoVic/blade-deepseek （产品名 Orca，仓库名 blade-deepseek）\n- 官网：https://orcaagent.dev\n\n## 解决什么问题\n\nClaude Code、Cursor 等 AI 编程工具很好用，但它们绑定特定模型和平台。Orca 想做的事很简单：**用你自己的 DeepSeek API Key，在终端里跑一个深谙 DeepSeek 脾气的 Coding Agent。**\n\n## 核心亮点\n\n1. **Persistent Goal 模式：设个目标，它自己一直干**——用 `/goal` 设定一个长期目标（比如\"把这个模块的测试覆盖率提上去\"），Agent 每轮成功后自动继续下一轮；重启终端、恢复会话都不会丢失进度，只有模型自己判定\"已完成\"或\"被阻塞\"才会停下来。\n2. **Workflow 多阶段编排 + 子 Agent**——Workflow 引擎支持多阶段并行任务编排（脚本可放在项目 `.orca/workflows/` 下随仓库共享），工具调用以后台任务运行，最终报告自动送回当前 TUI 会话；同步 subagent 共享 workspace 和审批策略。\n3. **DeepSeek 原生，不是通用壳**——默认 max reasoning effort、reasoning/content 双流 SSE 解析、空回复自动重试。这些不是配置项，是融在 Agent loop 里的行为。\n4. **为前缀缓存做的省钱设计**——DeepSeek 的上下文缓存按前缀命中计费，命中部分输入价格远低于未命中。Orca 为此把整条请求链做成字节级稳定：对话历史只追加、从不改写已有消息，工具 schema 序列化顺序完全确定（这两点都有测试锁定），保证多轮长任务的前缀持续命中缓存；每轮的缓存命中 token 数也会被解析并计入实时成本显示。\n5. **1M token 上下文，自动管理**——对话超过 80% 阈值自动压缩，保留 system prompt 和最近对话，长任务不断片。\n6. **按能力分级的审批策略**——每个工具声明自己的能力（读 / 写 / shell / 网络），审批按能力分类放行，不是简单的\"全部允许 / 全部拦截\"。\n\n## 快速上手\n\n单个二进制文件，macOS / Linux 通用，npm 或 curl 安装：\n\n```bash\n# npm 安装\nnpm install -g @blade-ai/orca\n\n# 或 curl 安装\ncurl -fsSL https://orcaagent.dev/install.sh | sh\n\n# 设置 API Key 即可使用\nexport DEEPSEEK_API_KEY=sk-...\norca exec \"fix this test\"\n```\n\n## 项目状态\n\n已迭代 200+ 个 release，当前 v0.2.21，npm 可直接安装。\n\n欢迎试用和反馈！QQ 群：472309526\n",
+    "created_at": "2026-07-13T09:40:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10700"
+  },
+  {
+    "id": 10699,
+    "title": "【开源自荐】R2 Manager — 基于 Cloudflare Workers 的 R2 可视化文件管理器",
+    "content": "# 【开源自荐】R2 Manager — 基于 Cloudflare Workers 的 R2 可视化文件管理器\n\n## 📌 项目简介\n\n**R2 Manager** 是一个部署在 Cloudflare Workers 上的单页应用，让你通过浏览器直接管理 Cloudflare R2 存储桶中的文件，无需安装任何客户端，也无需额外服务器。\n\nGitHub: https://github.com/HyperionD/R2-Manager\n\n## ✨ 功能特性\n\n- 📋 **存储桶管理** — 列出、切换多个 R2 存储桶\n- 📁 **文件夹操作** — 创建、浏览文件夹结构\n- 📤 **文件上传** — 支持拖拽上传，进度条显示，最大 100MB\n- ⬇️ **文件下载** — 单个文件直接下载\n- 👁️ **文件预览** — 图片预览、文本/代码文件查看\n- 📝 **创建记事** — 创建纯文本记事，支持可选密码保护\n- ⊞ **多视图** — 网格视图 / 列表视图切换\n- 📱 **响应式** — 桌面和移动端完美适配\n\n## 🛠️ 技术栈\n\n- **运行时**: Cloudflare Workers (JavaScript)\n- **存储 API**: R2 S3 兼容 API（AWS SigV4 签名）\n- **前端**: 纯 HTML + CSS + JavaScript（零外部依赖）\n- **部署**: Wrangler CLI\n\n## 💡 为什么做这个项目\n\nR2 是 Cloudflare 推出的对象存储服务，兼容 S3 API。虽然可以通过 wrangler 或 API 管理文件，但缺乏一个轻量、可直接部署在 Workers 上的可视化界面。R2 Manager 的目标就是填补这个空白——用 Workers 本身托管前端页面，零服务器成本，R2密钥存储于worker环境变量，一键部署即多端设备同时可用。\n\n## 🔗 相关链接\n\n- GitHub: https://github.com/HyperionD/R2-Manager\n- 在线 Demo: 部署在用户自己的 Cloudflare 账号上，部署方式见 README\n",
+    "created_at": "2026-07-13T07:55:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10699"
+  },
+  {
+    "id": 10698,
+    "title": "【开源自荐】Mythpen — AI 辅助小说创作桌面工具",
+    "content": "Mythpen 是一款 AI 辅助小说创作桌面应用，用 React 19 + Tauri v2 + Express 5 构建，开源免费。\n\n主页：https://niyongsheng.github.io/mythpen/index.html\nGitHub：https://github.com/niyongsheng/mythpen\n\n<img width=\"1426\" alt=\"截图\" src=\"https://github.com/user-attachments/assets/87ba980c-492b-4bd2-af75-e14faa3cec68\" />\n\n和通用 AI 聊天客户端的区别在于：AI 不只停留在对话框里，而是能直接读写你的创作项目——创建章节、管理人物档案、设定世界观、编排伏笔、维护时间线，全部通过 function calling 持久化到本地 SQLite 数据库。\n\n两大 AI 模式：\n- **写作模式**（六步工作流）：AI 先预览全章节状态，读前文再下笔，写完自动推进到下一章，可一键续写。\n- **共创模式**（四步工作流）：从选题、世界观设定、分卷规划到前三章交付，适合从零搭建故事框架。\n\n每章记录 5 个叙事维度（认知框架/情感锚点/世界质感/具体悬念/人际张力），帮助作者有意识地丰富层次。\n\n支持 OpenAI 兼容接口（可接国内大模型）和 Claude API，自动检测使用。\n\n技术栈：React 19 + TypeScript 6 + Tailwind CSS 4 + Zustand / Express 5 + SQLite / Tauri v2（macOS/Windows/Linux）\n开源协议：GPLv3",
+    "created_at": "2026-07-13T07:44:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10698"
+  },
+  {
+    "id": 10697,
+    "title": "【开源工具自荐】一个为逆向开发者服务的小工具",
+    "content": "项目地址： https://github.com/kekekezi/site-capture-analyzer\n\n**开发插件的初衷**\n因为最近个人对网站逆向比较感兴趣，当然需要借助ai去进行分析，也尝试了如 chromeMCP等一些工具，对我来说效果不是很好，经常达不到我的预期。因此我开发了这个工具，记录我访问整个网站的所有痕迹，包括 地址、请求、截图、html等一些资源，这样给ai进行分析，达成我最终的目的。\n\n**简介**\n\n网站记录器是一个本地 Chrome/Edge 浏览器扩展，用于记录一次网站分析过程。它可以采集页面状态、用户操作、地址变化、存储、Cookie、网络请求、页面可见的请求/响应体、截图，并导出为本地 ZIP 文件，方便后续分析和复盘。\n\n**功能**\n\n- 记录页面快照和 DOM 变化。\n- 记录用户操作，包括点击、输入、滚动、聚焦、粘贴、提交和按键事件。\n- 记录网络请求/响应元信息，以及页面 fetch/XHR 可读取的请求体和响应体。\n- 记录 localStorage、sessionStorage 和 Cookie。\n- 跟踪录制页面产生的地址变化和新标签页。\n- 在关键时刻自动截图。\n- 导出包含时间线、网络、DOM、存储、行为摘要、网站分析和截图的 ZIP 文件。\n- 内置导出查看器。\n- 支持完整保留和自动脱敏两种导出模式。\n- 支持自动停止保护：最长录制时长、最大事件数、最大截图数、空闲停止时间。\n- 录制中工具栏图标会切换到记录状态。\n\n欢迎试用，欢迎提意见。\n\n初次开源希望阮老师能采纳！谢谢！",
+    "created_at": "2026-07-13T07:04:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10697"
+  },
+  {
+    "id": 10696,
+    "title": "【工具自荐】Make Look Scanned：不用打印机，让数字 PDF 看起来像真实扫描件",
+    "content": "阮老师好，推荐一个我开发的在线 PDF 小工具：\n\n## Make Look Scanned\n\n网站地址：https://makelookscanned.com/\n\n它可以给数字生成的 PDF 添加自然的扫描效果，让文档看起来像经过打印和扫描，而不需要真的使用打印机或扫描仪。\n\n使用方式很简单：\n\n1. 上传 PDF\n2. 调整扫描效果\n3. 预览并下载处理后的 PDF\n\n可以调节的效果包括：\n\n* 页面轻微旋转\n* 纸张颜色\n* 模糊程度\n* 噪点和颗粒\n* 纸张边缘阴影\n* 灰度效果\n* 渲染 DPI\n* JPEG 导出质量\n\n工具支持多页 PDF，每一页都会转换为图片、应用扫描效果，再重新生成一个保留原页面尺寸的 PDF。\n\n一个比较重要的特点是，文件完全在浏览器本地处理，不会上传到服务器，适合处理合同、表格、签字文件等不方便上传到第三方服务器的文档。\n\n适用场景包括：\n\n* 让电子签字后的 PDF 更接近打印签字再扫描的效果\n* 制作带有纸张质感的扫描版文件\n* 将可编辑的数字 PDF 导出为扁平化的图片型 PDF\n* 不使用实体打印机和扫描仪完成扫描效果处理\n\n这是一个功能比较单一的小工具，只专注于“让 PDF 看起来像扫描件”这一件事。\n\n欢迎试用和提出建议。\n",
+    "created_at": "2026-07-13T06:59:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10696"
+  },
+  {
     "id": 10695,
     "title": "【开源自荐】终端新闻cli工具 - AI友好",
     "content": "最近开源了一个新闻cli工具，可以在终端通过命令抓取实时新闻。\n目前内置了17个新闻源，后续还将继续维护和扩展。\n如果内置新闻源不满足，还支持安装和自制plugin进行扩展。\n官网还提供了AI Skill用于生成AI日报，可以直接让自己的智能体安装skill，就能生成 **md/大字报html** 两种类型的日报\n- GitHub： https://github.com/xw-meow/news-cli\n- 官网： https://xw-meow.github.io/news-cli/\n\n<img width=\"1348\" height=\"642\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/98867e1b-507b-4d77-bedc-223fb8d85aea\" />\n\n<img width=\"1568\" height=\"460\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/74e15107-7a1d-45da-8b9f-f1bcb69f5dce\" />\n\n<img width=\"2538\" height=\"1926\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9fe80e48-bada-45be-94af-e73fd8df1b14\" />\n\n<img width=\"2542\" height=\"1838\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27bbecba-db96-43ff-9923-9002fd0b8d0b\" />",
@@ -758,69 +814,5 @@
     "created_at": "2026-07-05T14:00:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10588"
-  },
-  {
-    "id": 10587,
-    "title": "【开源自荐】Awesome Zhuiju Free：人工筛选并持续检测可用性的追剧资源导航",
-    "content": "项目地址：https://github.com/laoma2053/awesome-zhuiju-free  \n\n### 简介\n**Awesome Zhuiju Free** 是追剧党必备的开源资源导航项目，口号是「追剧不踩坑，资源有人测」。\n\n主要收录和整理追剧相关资源，包括**免费无广告**的**在线影视、网盘资源搜索、磁力与 BT、字幕资源、TVBox / 影视仓配置地址、IPTV 订阅源和开源影视工具**等。目前已结构化收录 59 个精选资源。\n\n这个项目和普通导航站**不太一样的地方是**：每条资源不仅有链接，还会记录推荐指数、最后检测时间、可访问状态等提示。\n\n每日可用性检测，展示「可访问 / 访问受限 / 无法访问」等状态，尽量减少用户点进去才发现失效、广告多、跳转多或风险不明的情况。\n\n项目也开放社区共建，可以通过 Issue 推荐新资源、报告失效链接、反馈风险或申请移除收录。\n\n需要说明的是，本项目只做资源索引、体验记录和风险提示，不托管影视文件、破解软件、账号密钥，也不收录单部影视作品的播放或下载链接。\n\n###  适合人群：\n\n- 想快速找相对干净、可用追剧入口的用户\n- 想找字幕、网盘搜索、TVBox / 影视仓配置地址的用户\n- 想自建或研究影视工具链的开发者\n- 愿意一起维护资源可用性和风险记录的社区用户\n\n欢迎试用，也欢迎提交资源推荐和失效反馈。",
-    "created_at": "2026-07-05T13:16:07Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10587"
-  },
-  {
-    "id": 10586,
-    "title": "[开源] 一条 ESP32 神龙,实时显示订阅剩余额度(5 小时 / 7 天),",
-    "content": "给 Claude Code 做了个桌面摆件 🐉\n\n一条 ESP32 神龙,实时显示订阅剩余额度(5 小时 / 7 天),\n还会跟着 Claude 的状态变表情:空闲睡觉、干活时三颗龙珠绕圈转、\n有权限弹窗就瞪眼冒问号。\n\n开源:github.com/seth-shi/claude-desktop-buddy\n\n<img width=\"288\" height=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b1eab5ec-d493-4f92-a8fa-a69a3cf43f81\" />\n<img width=\"810\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/179d8f75-9483-4e22-bf4d-792f80480981\" />\n\nhttps://github.com/seth-shi/claude-desktop-buddy",
-    "created_at": "2026-07-05T11:16:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10586"
-  },
-  {
-    "id": 10585,
-    "title": "【工具自荐】里程碑庆祝视频生成器",
-    "content": "名称：里程碑庆祝视频生成器\n网址：https://video.mkdollar.com/\n功能：创建适合分享的里程碑庆祝视频，把你的成果展示给全世界。不论是粉丝数、收入、下载量，还是任何值得庆祝的数字。\n价格：免费使用，免费下载\n\n<img width=\"2934\" height=\"1752\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1acf9f8b-bb3d-4cbe-833b-00b31726dbfe\" />",
-    "created_at": "2026-07-05T08:52:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10585"
-  },
-  {
-    "id": 10584,
-    "title": "【好文推荐】读任何代码之前先跑这 5 条 git 命令：用提交历史快速判断代码库健康度",
-    "content": "推荐一篇英文好文：[Git commands I run before reading any code](https://piechowski.io/post/git-commands-before-reading-code/)（英文，作者 Ally Piechowski，2026 年 4 月）\n\n拿到一个陌生代码库，作者不一头扎进去读源码，而是先跑 5 条 `git log` 命令，用提交历史快速摸清项目状态：哪些文件改得最频繁（复杂度/风险集中处）、谁是主要作者（找谁问）、bug 修复集中在哪些文件（脆弱点）、项目节奏在加速还是停滞、有多少 revert / hotfix / rollback（救火频率）。\n\n一句话：提交历史往往比逐行读代码更快暴露一个代码库的真实状态。接手遗留项目、做 code review、评估开源项目都用得上，命令可直接复制。\n",
-    "created_at": "2026-07-05T07:40:44Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10584"
-  },
-  {
-    "id": 10583,
-    "title": "【开源自荐】OnlyOffice Web Comp - 基于WASM的纯前端Office组件：权限切换/多实例/工程化封装",
-    "content": "## 简介\n\nOnlyOffice Web Comp 是一个基于 OnlyOffice 静态 SDK 的纯前端 Office 文档编辑组件，支持在浏览器里查看、编辑、导出 Word / Excel / PowerPoint 文档，并通过 x2t + WebAssembly 完成格式转换。\n\n它的核心目标是：让任何 Web 项目都能用很低的成本接入 Office 文档能力，不必自建 Document Server，也不必把 OnlyOffice 当成一个重型平台来集成。\n\n项目地址：https://github.com/electroluxcode/onlyoffice-web-comp\n\n在线演示：https://onlyoffice-web-comp.vercel.app/docs/demos\n\ndemo截图：\n\n<img width=\"2820\" height=\"1740\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a26a15b-6093-4568-b407-621ba5bbbe8c\" />\n\n## 为什么做这个\n\n在很多文件预览编辑的场景中，常见需求其实很简单：用户上传一个 docx / xlsx / pptx 文件，在线预览、简单编辑，然后导出结果。\n\nOnlyOffice 的完整 Document Server 很强大，但部署、运维、跨域配置和平台化改造成本，对小团队或纯前端集成场景来说偏重。很多 OnlyOffice 纯前端项目也会把编辑能力做成一个完整平台，业务耦合高，工程化封装不足，想迁移到另一个项目里并不轻松。\n\nOnlyOffice Web Comp 尝试把这部分能力拆成更轻的组件形态：只要拿到 `public` 静态资源和 `onlyoffice-web-comp` 文件夹，就可以接入到任意 Web 项目中。应用层不绑定 React、Vue、Next.js 或其他框架，业务只需要调用少量 API 创建编辑器实例。\n\n## 主要特点\n\n- 无需自建 Document Server：托管 OnlyOffice SDK 静态资源后，即可在前端页面中使用。\n- 完全解耦：拿到 `public` 静态资源和 `onlyoffice-web-comp` 文件夹，就可以迁移到任何 Web 项目。\n- 不绑定应用层技术栈：React、Vue、原生前端或其他 Web 应用都可以接入。\n- 接入简单：最低 6 行代码即可创建一个可用的 Office 编辑器。\n- CDN 友好：静态资源做了 CDN 与跨域兼容处理，方便把 SDK 资源独立部署。\n- 数据留在浏览器端：适合本地文件预览、编辑、导出等场景。\n- 支持常见 Office 格式：Word、Excel、PowerPoint、CSV、DOCM 等。\n- 提供工程化 API：封装 `OnlyOfficeManager` / `EditorManager`，支持创建、打开文件、导出、销毁、多实例管理。\n- 支持多实例：可以在 Tab 或多容器中同时维护多个文档编辑器。\n- 支持批注、修订和 Word API：方便接入公文审校、合同修订等业务流程。\n- 支持自定义字体：提供字体 catalog 生成与注册流程，适配公文字体等场景。\n- 测试覆盖更完整：作为纯前端组件库，项目配套了较完善的 e2e 测试，覆盖文件打开、编辑器加载、多实例等关键链路。\n- 带完整文档和在线示例：包含快速开始、核心 API、事件系统、完整示例和多实例 Demo。\n",
-    "created_at": "2026-07-05T05:00:27Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10583"
-  },
-  {
-    "id": 10582,
-    "title": "【开源自荐】LaTeXSnipper：开源全平台 LaTeX 公式识别器与 Office 插件，论文协作效率神器",
-    "content": "<img width=\"1165\" height=\"612\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d6545908-4912-480b-9bb1-9a1df440f87d\" />\n\nhttps://github.com/SakuraMathcraft/LaTeXSnipper/blob/main/docs/latexsnip_txstudio_intro.md 这里是详细介绍，现在已经400+star",
-    "created_at": "2026-07-05T04:19:36Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10582"
-  },
-  {
-    "id": 10581,
-    "title": "【开源自荐】Agent Island：Claude Code / Codex 的状态伴侣",
-    "content": "自荐一个开源 Mac 工具 Agent Island：给 Claude Code / Codex 重度用户的“状态伴侣”。顶部条实时显示两家 agent 状态、额度和重置倒计时；后台任务跑完秒级弹窗提醒；额度恢复后自动续跑指定会话。\n\n初心是让 AI coding 不占据生活——发完一轮就去做自己的事，该你了它会叫你。\n\nhttps://github.com/tristan666666/agent-island\n",
-    "created_at": "2026-07-05T02:20:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10581"
   }
 ]
