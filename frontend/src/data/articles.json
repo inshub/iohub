@@ -1,5 +1,21 @@
 [
   {
+    "id": 10704,
+    "title": "【开源自荐】GoodMemory：让 Codex / Claude Code 拥有可审计的跨会话记忆",
+    "content": "项目地址：https://github.com/hjqcan/GoodMemory\n\nGoodMemory 是一个面向 AI 产品和编程 Agent 的本地优先记忆层。它让 Codex、Claude Code 或其他 MCP 客户端把经过选择的项目事实和用户偏好持久化下来，在后续任务中按作用域召回相关上下文，并保留审计、修订和删除能力。\n\n它不是聊天记录归档工具，也不要求把整个历史会话重新塞进上下文。核心流程是：选择值得记忆的信号 → 按用户、工作区、会话和 Agent 隔离存储 → 在下一次任务前做相关性召回 → 对写入和遗忘保留可检查记录。\n\n主要特点：\n\n- 一条命令为 Codex / Claude Code 安装托管 hooks、上下文注入和只读 MCP\n- Bun 环境默认使用本地 SQLite，不需要云端账号或外部向量数据库\n- 写回默认受控，可选择关闭、审核或 selective 模式；写入可审计，也可以按事件撤销\n- 提供 standalone MCP，Cursor、Windsurf、Cline、Claude Desktop、Gemini CLI 和 OpenCode 等客户端也能接入\n- 同时提供 TypeScript API、HTTP bridge 和 Python client，便于集成到自己的 chatbox、copilot 或 Agent 服务\n- MIT 协议\n\n快速体验：\n\n```bash\nnpm install -g goodmemory@0.5.1\ngoodmemory setup\ngoodmemory status\n```\n\n中文说明：https://github.com/hjqcan/GoodMemory/blob/main/README.zh-CN.md\n\nv0.5.1 Release：https://github.com/hjqcan/GoodMemory/releases/tag/v0.5.1\n",
+    "created_at": "2026-07-13T15:18:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10704"
+  },
+  {
+    "id": 10703,
+    "title": "【工具自荐】Spanish TTS —— 免费的西班牙语文字转语音工具",
+    "content": "大家好,我正在自学西班牙语,想自荐一个学习过程中给自己做的小工具。\n\nhttps://spanishtts.app/\n\n起因是背单词和读课文时总想听标准发音,但通用 TTS 工具要么口音不对、要么要注册收费,于是干脆自己做了一个专注西语的:\n\n- 输入文字即可生成自然的西语 AI 语音,覆盖卡斯蒂利亚(西班牙本土)、墨西哥、哥伦比亚、拉美等主要口音,男声女声都有——学西语的同学应该懂,西班牙和拉美的发音差别不小,跟课程口音对不上很难受\n- 支持英文→西班牙语翻译后直接朗读,我平时拿它对照着练听力和发音\n- 生成的音频可以直接下载 MP3 / WAV,做成音频卡片循环听,或者拿去做视频配音、课件\n- 完全免费,无需注册,打开网页就能用\n\n现在它是我自己每天都在用的学习工具,也希望能帮到其他在学西语的朋友。欢迎试用,有任何建议都可以在评论里告诉我,谢谢!",
+    "created_at": "2026-07-13T14:59:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10703"
+  },
+  {
     "id": 10702,
     "title": "投稿（工具）：SaaSCity —— 把每个 SaaS 产品变成等距城市地图上的一栋建筑",
     "content": "你好，投稿一个网站工具。\n\n**SaaSCity** —— https://saascity.io\n\n这是一个 SaaS 产品目录，但呈现方式不太一样：每个提交的产品会变成一栋建筑，出现在一张可交互的等距（isometric）城市地图上。产品越多，这座城市就越大。灵感来自 Million Dollar Homepage。\n\n- 免费提交，人工审核，通常 24 小时内上线\n- 地图用 Canvas 渲染，Next.js 实现\n\n利益相关：这是我自己做的项目，属于自荐。不合适请直接忽略，谢谢。",
@@ -9,7 +25,7 @@
   },
   {
     "id": 10701,
-    "title": "〖开源自荐〗屏译（Screen Translator）Android 游戏 / 漫画实时屏幕翻译",
+    "title": "【开源自荐】屏译（Screen Translator）Android 游戏 / 漫画实时屏幕翻译",
     "content": "项目地址：https://github.com/ciddwd/overlay-translator  \n下载地址：https://github.com/ciddwd/overlay-translator/releases/tag/v0.3.8  \n开源协议：Apache-2.0\n\n# 屏译 · Screen Translator\n\n屏译是一款免费、无广告、无需 ROOT 的 Android 屏幕实时翻译工具，主要面向游戏、视觉小说、漫画和视频字幕等场景。\n\n使用时点击悬浮球，应用会完成：\n\n> 截取屏幕 → OCR 识别文字 → 调用翻译引擎 → 将译文叠加到原文附近\n\n不需要来回切换翻译软件，译文会直接显示在当前应用或游戏画面上。\n\n## 主要功能\n\n- **多种翻译方式**：支持全屏翻译、区域划词和自动循环翻译，也可以通过音量双键触发\n- **端侧 OCR**：支持 ML Kit、PaddleOCR 和日漫 OCR，图片无需上传，断网时也可以识别\n- **云端及本地 OCR**：支持 PP-OCRv6 在线、百度、腾讯、有道，以及局域网内的 Umi-OCR、LunaTranslator\n- **多种翻译引擎**：支持 DeepL、DeepLX、Google、有道、百度、腾讯，以及 OpenAI 兼容接口\n- **端侧翻译模型**：支持 Sakura 日译中模型和 Hy-MT2 多语种模型，模型下载完成后可以离线翻译\n- **横排和竖排识别**：可自动判断横排、竖排和旋转文字，针对日文竖排漫画做了专门处理\n- **漫画与视觉小说优化**：支持段落合并、振假名过滤、日漫气泡识别和竖排译文布局\n- **两种译文显示模式**：可以把译文贴在原文附近，也可以集中放入可拖动、缩放和锁定的悬浮窗口\n- **划词翻译卡片**：框选单词或短语后，可显示译文、音标、词性、释义、例句和难点说明\n- **外观自定义**：支持译文颜色、透明度、字体、字号、描边、阴影、间距和对齐方式\n- **配置迁移**：可导出和导入非敏感设置、预设及字体，API Key 和 Token 不会被写入配置包\n\n## 使用场景\n\n- 在手机上游玩没有中文的游戏或视觉小说\n- 阅读日文竖排漫画、韩漫或外文图片\n- 翻译视频字幕、应用界面和其它无法复制的屏幕文字\n- 使用自己的 OCR、LLM、DeepLX 或局域网翻译服务\n- 希望使用端侧 OCR 和本地模型，减少截图上传\n\n## 项目特点\n\n屏译并不绑定某一家 OCR 或翻译服务。用户可以根据设备性能、网络环境和隐私需求，自由组合端侧、云端或自托管引擎。\n\n项目目前支持 Android 8.0 及以上系统，APK 暂时只提供 `arm64-v8a` 版本。\n\n## 效果截图\n\n### 游戏画面译文叠加\n\n![游戏内译文叠加](https://raw.githubusercontent.com/ciddwd/overlay-translator/main/docs/screenshots/overlay-game.png)\n\n### 日文竖排漫画\n\n![日文竖排漫画翻译](https://raw.githubusercontent.com/ciddwd/overlay-translator/main/docs/screenshots/overlay-manga-jp.png)\n\n项目仍在持续开发，欢迎试用、提交 Issue 或参与贡献。",
     "created_at": "2026-07-13T10:56:28Z",
     "labels": [],
@@ -130,7 +146,7 @@
   {
     "id": 10676,
     "title": "【开源自荐】LLM Wiki Agent Memory：让 Codex / Claude Code 拥有本地工程记忆",
-    "content": "项目地址：https://github.com/miniLV/llm-wiki-agent-memory\n\n这是一个本地优先的 AI 编程记忆项目。它把 Codex 和 Claude Code 的本机会话整理成可查询、可审计的 Obsidian 风格 Markdown Wiki，让 Agent 在后续任务中找回历史决策、调试过程和防踩坑经验。\n\n项目不依赖向量数据库或云端记忆服务，采用 Capture → Daily → Reconcile → Retrieve 的分层流程：先保留原始证据，再生成每日整理，周期复核后才晋升为长期经验，从而减少 AI 对自身历史回答的重复强化和记忆污染。\n\n主要特点：\n\n- 同时支持 Codex 与 Claude Code 本地 session\n- 数据保留在本机，记忆是可以直接阅读、编辑和 Git 管理的 Markdown\n- 提供本地 Web 配置页，引导完成数据源和 Codex App Automations 配置\n- 可从其他工程通过只读 skill 查询旧决策和调试上下文\n- 无需向量数据库、账号或托管服务\n\n快速体验：\n\n```bash\ngit clone https://github.com/miniLV/llm-wiki-agent-memory.git\ncd llm-wiki-agent-memory\nbash scripts/config-ui.sh --open\n```\n\n![LLM Wiki Agent Memory 演示](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/assets/demo.gif)\n\n![LLM Wiki Agent Memory 架构图](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/agent-memory-arch-sketch.png)\n\nv0.1.0 Release：https://github.com/miniLV/llm-wiki-agent-memory/releases/tag/v0.1.0",
+    "content": "项目地址：https://github.com/miniLV/llm-wiki-agent-memory\n\n这是一个本地优先的 AI 编程记忆项目。它把 Codex 和 Claude Code 的本机会话整理成可查询、可审计的 Obsidian 风格 Markdown Wiki，让 Agent 在后续任务中找回历史决策、调试过程和防踩坑经验。\n\n项目不依赖向量数据库或云端记忆服务，采用 Capture → Daily → Reconcile → Retrieve 的分层流程：先保留原始证据，再生成每日整理，周期复核后才晋升为长期经验，从而减少 AI 对自身历史回答的重复强化和记忆污染。\n\n主要特点：\n\n- 同时支持 Codex 与 Claude Code 本地 session\n- 数据保留在本机，记忆是可以直接阅读、编辑和 Git 管理的 Markdown\n- 提供本地 Web 配置页，引导完成数据源和 Codex App Automations 配置\n- 可从其他工程通过只读 skill 查询旧决策和调试上下文\n- 无需向量数据库、账号或托管服务\n\n快速体验：\n\n```bash\ngit clone https://github.com/miniLV/llm-wiki-agent-memory.git\ncd llm-wiki-agent-memory\nbash scripts/config-ui.sh --open\n```\n\n### 如何使用\n\n配置完成后，在任意业务 repo 里直接对 Codex 说：\n\n```text\n使用 $engineering-memory-loader 查询：\n上次 config-ui 的 8765 端口冲突是怎么解决的？\n```\n\nCodex 会从本地 Markdown Wiki 返回相关日期、结论和关键证据；没有记录时明确返回 `NO_MATCH`。\n\n![在 Codex 中查询工程记忆](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/assets/codex-engineering-memory-example.png)\n\n![LLM Wiki Agent Memory 演示](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/assets/demo.gif)\n\n![LLM Wiki Agent Memory 架构图](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/agent-memory-arch-sketch.png)\n\nv0.1.0 Release：https://github.com/miniLV/llm-wiki-agent-memory/releases/tag/v0.1.0",
     "created_at": "2026-07-12T03:08:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10676"
@@ -798,21 +814,5 @@
     "created_at": "2026-07-05T16:01:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10590"
-  },
-  {
-    "id": 10589,
-    "title": "【开源自荐】 FenyiDic 分义词典 释义级别的英语学习工具",
-    "content": "项目地址：https://github.com/Bern3rsH/FenyiDic\n\n主要特色的功能有：\n- 围绕「释义」来管理学习内容，针对某个单词的某个释义来进行收藏/标签/笔记等操作\n- 支持多种复习模式，不认识/听不懂/不会读/不会拼/听写错走不同的模式，不仅仅是复习不认识词义的单词\n- 自动化使用「辅助精读法」帮助你精读\n\n\n<img width=\"2600\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/26401c23-0b2e-4cb6-8719-16c3f79deb7d\" />\n\n<img width=\"2000\" height=\"1760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a61306ef-e342-4107-9a43-85cc2fea1760\" />\n\n<img width=\"2600\" height=\"1920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c26a5a51-7f6d-4a8a-a4b1-8495ac9b4bcc\" />\n\n<img width=\"2600\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bcca2cd4-f0ee-4dff-bbc8-0b5540cb965e\" />",
-    "created_at": "2026-07-05T14:58:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10589"
-  },
-  {
-    "id": 10588,
-    "title": "【创业日记】创业三个月，我进入了创业的倦怠期",
-    "content": "开始创业前，看多了各种创业几个月就融了几千万，一个爆款视频涨了几万用户的鸡汤文，总对创业怀着不一样的憧憬和雄心壮志。\n\n我们的产品的产品叫“连连AI”，用AI帮你找人和自动沟通，适合程序员、创业者等群体之间进行连接。但也正是因为平台性产品的定位，我们需要很多很多的用户。\n\n但我显然低估了从0到1的漫长，也低估了从0到1的困难程度。\n\n因为你的生活大概率不是营销爽文。\n\n爽文有多爽，现实就有多残酷。\n\n爽文告诉你，靠一个什么东西就实现了用户疯狂的增长，实现了融资过亿的爽局。它掩饰了所有的泥泞，仿佛所有东西都轻而易举，但你很快会被现实狠狠打脸。\n\n你开始尝试各种渠道，各种方式，发现好像并没有一个特别好的反馈和结果。\n\n你以为是因为自己不够努力，于是加倍地、不敢休息地、没日没夜地狠狠地干。但数据依然在那里，令人尴尬的数据，涨不起来，要死不活。\n\n于是你开始怀疑、倦怠，失去方向，失去最开始的冲劲和激情，现实比你想象中还要残酷。\n\n有时候你根本都不知道问题出在了哪里，你甚至都不知道自己是哪里做错了。\n\n创业如何克服倦怠期？我不知道，或许因为我现在本来就深陷其中。\n\n或许有一天我知道了解决的方法，会再来与大家分享，又或者一直难以解决，直到失败。\n\n但是又是否后悔呢我？我不知道，应该是不后悔的吧，因为我觉得是正确的事情。并且，我始终会把创业排在我的人生清单的第一或者第二位。\n\n只是告诉所有想要创业的朋友，创业确实是一次心理的煎熬，你需要足够的热爱带你渡过这一切。\n\n加油吧！与君共勉！",
-    "created_at": "2026-07-05T14:00:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10588"
   }
 ]
