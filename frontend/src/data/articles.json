@@ -1,5 +1,13 @@
 [
   {
+    "id": 10690,
+    "title": "【项目自荐】CodexDog：Codex 额度用完后，自动换账号并接着跑未完成任务",
+    "content": "项目地址：https://github.com/forge-ui/codexdog\n\n我给自己的 Codex 工作流养了一只“看门狗”——**CodexDog**。\n\n起因很简单：一个账号额度见底以后，手动换账号、重开 ChatGPT，再把刚才做到一半的任务一个个找回来，实在太打断状态。我想要的也不只是一个额度看板，而是让这段交接尽量自动完成。\n\nCodexDog 是一个原生 macOS 菜单栏应用：\n\n- 管理任意数量、由你自己持有和管理的 ChatGPT Codex 账号；\n- 按 OpenAI 当前实际返回的额度窗口动态展示用量；\n- 活跃账号剩余 1% 时，自动切换到下一个可用账号；\n- 只重启一次 ChatGPT，并在同一个应用窗口里尽力接续最近未完成的任务；\n- 每个账号可以单独暂停调度或删除，凭据只保存在本机。\n\n它目前还是早期版本，需要在 macOS 14+ 从源码安装。跨账号任务恢复依赖本地任务历史和当前 app-server 行为，因此明确是 best effort，但我自己已经把多账号轮换、异常回滚和重复恢复这些最容易出问题的地方补了测试。\n\n如果你也经常在 Codex 工作到一半撞上额度，希望这只狗能替你守一下。欢迎试用、提 Issue，也欢迎直接告诉我哪里还不够稳。\n\n```bash\ngit clone https://github.com/forge-ui/codexdog.git\ncd codexdog\n./script/build_and_run.sh --install\n```\n\n<img src=\"https://raw.githubusercontent.com/forge-ui/codexdog/main/Support/CodexRelayDogTwoAccounts.png\" width=\"320\" alt=\"CodexDog icon\">\n\n> 非 OpenAI 官方项目。请只管理自己持有的账号，并遵守适用的服务条款。\n",
+    "created_at": "2026-07-13T02:39:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10690"
+  },
+  {
     "id": 10689,
     "title": "【工具自荐】GPT Image 2 中文站：中文提示词与场景模板图片生成器",
     "content": "项目名称：GPT Image 2 中文站\n\n项目地址：https://gptimage2.yfyyu.com/?utm_source=github.com&utm_medium=referral&utm_campaign=promotion\n\n这是一个面向中文用户的 AI 图片生成工具站，把 GPT Image 2 的常用场景做成中文入口、提示词图库和模板化工作流。用户可以从电商商品图、社交媒体配图、头像、海报、插画、角色图等场景进入，直接改中文描述生成图片。\n\n我做这个站的原因是，很多中文用户不是卡在“能不能生成图”，而是卡在如何把需求说清楚：画面主体、风格、构图、比例、用途和可复用提示词都需要整理。这个站把这些常见需求拆成模板，适合不想从英文 prompt 开始摸索的用户。\n\n主要特点：\n\n- 中文界面和中文提示词模板，适合中文用户快速上手。\n- 按使用场景组织模板，例如商品图、头像、社媒图、海报、插画等。\n- 提供提示词图库，可以参考已有 prompt 再改写。\n- 适合独立开发者、运营、设计辅助、内容创作者和电商卖家做快速视觉草图。\n\n如果周刊读者正在找中文 AI 图片生成入口，或者想看 GPT Image 2 在具体场景中的提示词组织方式，应该会有参考价值。",
@@ -816,13 +824,5 @@
     "created_at": "2026-07-04T23:50:52Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10576"
-  },
-  {
-    "id": 10575,
-    "title": "【网站推荐】-zwplayer",
-    "content": "[[官网](https://www.zwplayer.com/)]  一个免费的网页视频播放器，只需引入一个 JS 文件就能用，支持 HLS、DASH、FLV、WebRTC 甚至 RTSP（无需插件），也不依赖任何 CDN，内网环境可以直接部署。\n\n它最近更新到了 v3.3.0，比较有意思的一点是，它不只是一个播放器了——内置了标注系统，可以在视频的任意时间点上叠加交互元素（选择题、投票、热区跳转、表单等共 13 种类型），相当于在视频里做出类似 H5 互动页面的效果。这对在线教育和企业培训场景来说很实用，比如老师可以在讲课视频里嵌入课堂测验，学生答完才能继续看。\n\n另外还加了防录屏水印（支持在画面上随机游走，防止截屏）、hls字幕预下载、字幕搜索、播放列表等功能。每个功能都配了一个在线可视化编辑器，编辑完导出 JSON 丢给播放器就行，不用写代码。\n\n它还提供了 Vue、React 组件和 WordPress 插件，WordPress 用户可以在后台零代码配置这些功能。",
-    "created_at": "2026-07-04T15:27:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10575"
   }
 ]
