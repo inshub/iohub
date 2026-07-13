@@ -1,5 +1,45 @@
 [
   {
+    "id": 10695,
+    "title": "【开源自荐】终端新闻cli工具 - AI友好",
+    "content": "最近开源了一个新闻cli工具，可以在终端通过命令抓取实时新闻。\n目前内置了17个新闻源，后续还将继续维护和扩展。\n如果内置新闻源不满足，还支持安装和自制plugin进行扩展。\n官网还提供了AI Skill用于生成AI日报，可以直接让自己的智能体安装skill，就能生成 **md/大字报html** 两种类型的日报\n- GitHub： https://github.com/xw-meow/news-cli\n- 官网： https://xw-meow.github.io/news-cli/\n\n<img width=\"1348\" height=\"642\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/98867e1b-507b-4d77-bedc-223fb8d85aea\" />\n\n<img width=\"1568\" height=\"460\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/74e15107-7a1d-45da-8b9f-f1bcb69f5dce\" />\n\n<img width=\"2538\" height=\"1926\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9fe80e48-bada-45be-94af-e73fd8df1b14\" />\n\n<img width=\"2542\" height=\"1838\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27bbecba-db96-43ff-9923-9002fd0b8d0b\" />",
+    "created_at": "2026-07-13T06:23:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10695"
+  },
+  {
+    "id": 10694,
+    "title": "【开源自荐】Orbital：以本地文件夹为长期记忆的本地AI agent（支持 Claude Code / Codex）",
+    "content": "阮老师好，自荐一个业余时间做的开源项目。\n\nOrbital 是一个本地AI agent桌面应用：https://github.com/zqiren/Orbital\n\n想解决的问题：\nClaude Code、Codex 这类 agent 每开一个新会话都从零开始，用户要反复交代同样的上下文，上周定过的方案这周又要重新讨论一遍。\n\nOrbital 的思路是以“项目”而非”会话“为单位：agent 做完的每件事，不论是产出的文件、做过的决定、踩过的坑都会写回项目里（PROJECT_STATE / DECISIONS / LESSONS 等结构化文件），下次会话开始时自动读。子 agent（Claude Code、Codex、Gemini CLI 等任意 CLI agent）可以随时更换，项目记忆也不丢。\n\nOrbital的立意是：数据是用户自己的，所有transcript，记忆全部留在本地，agent只是基于本地知识长出的手，换手不换脑。\n\n其他功能：\n沙箱隔离（Windows sandbox user / macOS Seatbelt）+ 项目预算上限 + pre-tool call权限审批，能放心让agent自己跑\n任务队列：安排好任务后可以直接离开，让agent逐个执行，同时也适用于Claude code codex等子agent\n13 家模型接入（含 DeepSeek、Kimi、智谱、通义」\n\nb站demo：\nhttps://www.bilibili.com/video/BV14M7P6NED3/\n\n知道老师经常收到类似的自荐，现在 vibe coding 做一个agent demo确实很容易。但这个项目我自己每天 dogfood 了三个月，各种生产化的坑我都踩过并且修复了，我自己的日常工作也已经完全从 Claude Projects 迁到 Orbital 里了。欢迎老师反馈～\n\nx handle：@keane42443",
+    "created_at": "2026-07-13T05:05:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10694"
+  },
+  {
+    "id": 10693,
+    "title": "【 项目自荐】运比比： 适合独立站卖家的跨境物流比价平台",
+    "content": "名称：运比比\n网址：https://www.yunbibi.top/\n\n大家好，最近做了一个跨境物流运费查询和比价工具，名字叫“运比比”，想在这里分享给大家。\n<img width=\"1267\" height=\"597\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2351cadb-d493-4a39-8297-4b215c08febe\" />\n\n做这个网站的想法很简单。很多跨境卖家在发货前都会收到不同物流商的报价表，但这些报价表格式不统一，重量段、渠道限制、计费方式也不一样。真正要比较哪家更合适时，往往还要自己打开表格、手动计算体积重、对照目的地和货物类型，过程比较麻烦，也容易算错。\n\n所以我想做一个简单一点的工具，让卖家只需要输入目的国家、包裹重量、尺寸和货物类型，就能快速查看不同物流渠道的大致价格，方便在发货前做一个初步判断。\n<img width=\"2534\" height=\"1402\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/928b98cd-e358-4e99-8d18-30a5fe3a2e8a\" />\n\n目前网站已经接入了华瑞百川、深圳燕文、顺丰国际、云途、递四方、非凡鸿运等物流商的报价数据。用户可以按目的地和包裹信息进行试算，系统会根据重量、尺寸和货物类型匹配相应渠道，并展示可参考的物流价格。\n\n网站里也整理了一些跨境物流常见问题，比如体积重、泡货、关税、附加费用、渠道限制等。因为实际发货价格还会受到偏远地区、特殊申报、附加服务和服务商实时政策影响，所以目前结果主要用于发货前的价格参考，正式发货前仍建议和承运商或货代确认最终报价。\n\n“运比比”目前还在持续完善中，报价数据、物流商覆盖范围和查询体验都还会继续优化。后面也希望加入更多物流服务商，让跨境卖家可以更方便地比较不同渠道的价格和限制。\n\n如果你平时也会遇到跨境物流报价难比较、手动算运费麻烦的问题，欢迎来运比比试试看。也欢迎大家提出真实的使用建议，尤其是哪些字段不清楚、哪些物流渠道还需要补充、哪些比价场景还没有覆盖，这些反馈对我都很有帮助。",
+    "created_at": "2026-07-13T03:36:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10693"
+  },
+  {
+    "id": 10692,
+    "title": "[开源自荐] Vox Director:一句话生成 Vox 拼贴风讲解/广告视频的 agent skill",
+    "content": "**项目地址**:https://github.com/Alisa0808/vox-director\n\n一个开源(MIT)的 **agent skill**:给一句话选题,自动产出一条 **Vox 拼贴风格**的讲解 / 广告短视频 —— 脚本 → 拼贴关键帧 → 动效 → 旁白 → 配乐 → 字幕,全流程自动化,后端跑 Atlas Cloud API + 本地 ffmpeg。支持 Claude Code、Codex 等任意 SKILL.md agent。\n\n**亮点**\n- 一句话进,一条成片出;只有两个人工决策点(确认分镜、挑风格),其余全自动\n- 真·纸质拼贴视觉(撕纸/网点/剪纸标题),不是\"会动的 PPT\";风格随主题自适应\n- 一条 60 秒成片,几分钟、几美元;仓库内含中华文明、货币简史、墨西哥美食三条样片\n- 后端可插拔、跨 agent(Claude Code / Codex),不绑定单一产品",
+    "created_at": "2026-07-13T03:19:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10692"
+  },
+  {
+    "id": 10691,
+    "title": "【 项目自荐】 短篇小故事平台",
+    "content": "名称：小故事铺\n网址：https://storynook.cn/\ngithub：https://github.com/masterliangpeng/story\n\n大家好，最近做了一个短篇故事阅读网站，名字叫“小故事铺”，想在这里分享给大家。\n\n做这个网站的想法很简单。现在网上的内容很多，但有时候只是想安静地看一篇故事，却要面对复杂的页面、各种推荐和无关的信息。所以我想做一个简单、干净的故事网站，让大家打开以后就能直接找故事、看故事。\n\n目前网站收录了睡前故事、儿童故事、格林童话、民间故事、寓言故事、历史故事、经典故事、成语故事、恐怖故事、推理故事和《聊斋志异》等多个分类。大家可以根据自己的兴趣浏览，也可以直接搜索故事标题或关键词。\n\n网站里的故事大多篇幅不长，几分钟就能读完。无论是上下班通勤、午休、排队，还是晚上睡觉前，都可以随手打开一篇，不需要投入太多时间。\n\n“小故事铺”目前还在不断完善中，很多细节可能做得不够成熟。接下来我也会继续补充故事内容、优化阅读体验，并根据大家的建议调整功能。\n\n如果你平时喜欢看短篇故事，欢迎来小故事铺逛逛。也欢迎大家告诉我真实的使用感受，哪怕只是觉得某个地方不好用，对我来说也很有帮助。\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e6457607-84ce-4c0d-b1d0-693026776e6c\" />\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5471cd8e-a6e2-4418-aa85-87f693e32237\" />\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/02ba4672-db10-4d61-b63e-c81dbb3fc761\" />",
+    "created_at": "2026-07-13T02:57:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10691"
+  },
+  {
     "id": 10690,
     "title": "【项目自荐】CodexDog：Codex 额度用完后，自动换账号并接着跑未完成任务",
     "content": "项目地址：https://github.com/forge-ui/codexdog\n\n我给自己的 Codex 工作流养了一只“看门狗”——**CodexDog**。\n\n起因很简单：一个账号额度见底以后，手动换账号、重开 ChatGPT，再把刚才做到一半的任务一个个找回来，实在太打断状态。我想要的也不只是一个额度看板，而是让这段交接尽量自动完成。\n\nCodexDog 是一个原生 macOS 菜单栏应用：\n\n- 管理任意数量、由你自己持有和管理的 ChatGPT Codex 账号；\n- 按 OpenAI 当前实际返回的额度窗口动态展示用量；\n- 活跃账号剩余 1% 时，自动切换到下一个可用账号；\n- 只重启一次 ChatGPT，并在同一个应用窗口里尽力接续最近未完成的任务；\n- 每个账号可以单独暂停调度或删除，凭据只保存在本机。\n\n它目前还是早期版本，需要在 macOS 14+ 从源码安装。跨账号任务恢复依赖本地任务历史和当前 app-server 行为，因此明确是 best effort，但我自己已经把多账号轮换、异常回滚和重复恢复这些最容易出问题的地方补了测试。\n\n如果你也经常在 Codex 工作到一半撞上额度，希望这只狗能替你守一下。欢迎试用、提 Issue，也欢迎直接告诉我哪里还不够稳。\n\n```bash\ngit clone https://github.com/forge-ui/codexdog.git\ncd codexdog\n./script/build_and_run.sh --install\n```\n\n<img src=\"https://raw.githubusercontent.com/forge-ui/codexdog/main/Support/CodexRelayDogTwoAccounts.png\" width=\"320\" alt=\"CodexDog icon\">\n\n> 非 OpenAI 官方项目。请只管理自己持有的账号，并遵守适用的服务条款。\n",
@@ -782,47 +822,5 @@
     "created_at": "2026-07-05T02:20:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10581"
-  },
-  {
-    "id": 10580,
-    "title": "【工具自荐】Logo 图标生成器",
-    "content": "名称：Logo 图标生成器\n网址：https://logo.mkdollar.com/\n功能：内置10000+ Thiings图标，3000+ Tabler图标，选择图标，配置参数，即可生成好看的LOGO图标，适用于创建应用图标和网站图标等场景\n价格：免费使用，免费下载\n\n<img width=\"3026\" height=\"1752\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a6a8b118-61d9-4168-bd95-730f21f0f3c5\" />",
-    "created_at": "2026-07-05T02:03:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10580"
-  },
-  {
-    "id": 10579,
-    "title": "希望推荐项目：wechat-mac-rpa — 基于多模态视觉感知的 macOS 微信自动化框架",
-    "content": "## 项目信息\n\n- **项目名称**：wechat-mac-rpa\n- **GitHub 地址**：https://github.com/wq19901103wq/wechat-mac-rpa\n- **License**：MIT\n- **语言**：Python\n- **平台**：macOS\n\n## 项目简介\n\n一个基于多模态视觉感知与 LLM Agent 的 macOS 微信自动化框架。\n\n核心思路是不碰协议逆向、不读微信数据库、不注入代码——把微信当作纯黑盒 GUI 应用，用计算机视觉读取界面，用大语言模型理解对话，用系统级自动化操作界面。微信更新 UI 只是换了一套视觉输入，不需要追着协议跑。\n\n### 主要特性\n\n1. **视觉 RPA**：多模态 AI 看屏幕操作微信，不碰协议，封号风险极低\n2. **数字分身**：导入微信聊天记录构建个人记忆系统，用你的语气自动回复\n3. **多 Agent 架构**：支持 OpenClaw / Hermes 等多种推理后端\n4. **Skill 系统**：Markdown 卡片动态加载，内置涂鸦智能家居控制、3D 打印自动化\n5. **图灵测试**：在微信群自动回复，混了半天才被发现\n\n### 为什么值得关注\n\n- 微信自动化是普遍痛点，协议逆向封号风险高，商业 RPA 年费几万且 Mac 支持差\n- 用多模态 AI 做视觉 RPA 是一个差异化思路，微信更新不影响运行\n- 项目工程质量不错，有 9 个 benchmark 全覆盖，数据飞轮迭代机制\n\n感谢阮老师的周刊，一直是我每周必读的内容。希望这个项目能被收录推荐。",
-    "created_at": "2026-07-05T01:52:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10579"
-  },
-  {
-    "id": 10578,
-    "title": "【工具推荐】ClaudeFlag：检测 Claude Code 是否会将你识别为中国用户",
-    "content": "最近关于 Claude Code 是否会根据时区、语言和系统环境识别中国用户的讨论比较多，推荐一个本地检测工具：ClaudeFlag。\n\n它会检查时区、浏览器语言、locale、中文字体、代理环境和 `ANTHROPIC_BASE_URL` 等线索，并生成 0～100 的风险分数。\n\n主要特点：\n\n- 浏览器打开即可检测，无需登录 Claude 账号\n- 所有检测均在本地完成，不上传检测结果\n- 支持生成并下载检测结果图片\n- 支持中文和英文界面\n- 支持服务器 curl 诊断、CLI 和 Codex Skill\n- 提供每项检测线索及对应分值\n\n在线检测：\n\nhttps://claudeflag.com\n\n服务器直接运行：\n\n```bash\ncurl -fsSL https://claudeflag.com/check.sh | sh\n\n\nCLI 与 Skill 使用说明：\nCLI：https://claudeflag.com/zh/cli/\nSkill：https://claudeflag.com/zh/skill/\n```\n\n<img width=\"1884\" height=\"1814\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/91dd578a-3364-474a-8c01-1ce690371f24\" />",
-    "created_at": "2026-07-05T01:00:38Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10578"
-  },
-  {
-    "id": 10577,
-    "title": "【开源自荐】ArtPlayer Tools：一个浏览器本地运行的在线视频/音频工具箱",
-    "content": "项目地址：https://artplayer.org/tools/  \nGitHub：https://github.com/zhw2590582/ArtPlayer\n\nArtPlayer Tools 是我最近整理出来的一组浏览器端媒体工具，主要处理视频、音频、字幕和图片相关的小需求。\n\n大部分工具都在浏览器本地运行，文件不需要上传到服务器，适合处理一些临时但高频的媒体任务，比如：\n\n- 视频处理：[压缩视频](https://artplayer.org/compress-video/)、[调整尺寸](https://artplayer.org/resize-video/)、[裁剪视频](https://artplayer.org/crop-video/)、[合并视频](https://artplayer.org/merge-video/)、[旋转视频](https://artplayer.org/rotate-video/)、[视频变速](https://artplayer.org/speed-video/)、[视频静音](https://artplayer.org/mute-video/)、[调整音量](https://artplayer.org/change-volume/)、[循环视频](https://artplayer.org/loop-video/)、[翻转视频](https://artplayer.org/flip-video/)、[倒放视频](https://artplayer.org/reverse-video/)\n- 视频编辑：[添加文字](https://artplayer.org/add-text-to-video/)、[添加水印](https://artplayer.org/watermark-video/)、[添加字幕](https://artplayer.org/add-subtitles/)、[添加音频](https://artplayer.org/add-audio-to-video/)、[视频滤镜](https://artplayer.org/filter-video/)、[视频调色](https://artplayer.org/adjust-video/)、[淡入淡出](https://artplayer.org/fade-video/)、[定格动画](https://artplayer.org/stop-motion/)\n- 隐私处理：[模糊视频](https://artplayer.org/blur-video/)、[模糊人脸](https://artplayer.org/blur-face/)、[模糊背景](https://artplayer.org/blur-background/)、[像素化视频](https://artplayer.org/pixelate-video/)、[像素化人脸](https://artplayer.org/pixelate-face/)\n- 格式与媒体提取：[视频转换](https://artplayer.org/video-converter/)、[视频转 GIF](https://artplayer.org/gif-maker/)、[缩略图生成](https://artplayer.org/thumbnail-generator/)、[缩略图提取](https://artplayer.org/thumbnail-extractor/)、[提取音频](https://artplayer.org/extract-audio/)、[元数据提取](https://artplayer.org/metadata-extraction/)、[轨道提取](https://artplayer.org/track-extractor/)、[视频元数据编辑](https://artplayer.org/video-metadata-editor/)\n- 音频工具：[音频转换](https://artplayer.org/audio-converter/)、[音频裁剪](https://artplayer.org/audio-trimmer/)、[音频拼接](https://artplayer.org/audio-joiner/)、[音频可视化](https://artplayer.org/audio-visualizer/)、[人声分离](https://artplayer.org/vocal-separation/)\n- 录制工具：[屏幕录制](https://artplayer.org/screen-recorder/)、[摄像头录制](https://artplayer.org/camera-recorder/)、[语音录制](https://artplayer.org/voice-recorder/)\n- 字幕与转写：[字幕编辑器](https://artplayer.org/subtitle-editor/)、[视频转文字](https://artplayer.org/video-to-text/)、[语音转文字](https://artplayer.org/speech-to-text/)\n- HLS 与封装：[视频转 HLS](https://artplayer.org/hls-transcoding/)、[HLS 转 MP4](https://artplayer.org/hls-to-mp4/)、[视频标准化](https://artplayer.org/video-normalizer/)、[视频重封装](https://artplayer.org/video-remuxer/)\n- 其他：[视频超分](https://artplayer.org/upscaler/)、[图片超分](https://artplayer.org/image-upscaler/)、[程序化生成](https://artplayer.org/procedural-generation/)\n\n这个站点最早是 ArtPlayer 播放器的在线编辑器，后来慢慢把一些常用的媒体处理能力也放进来了。现在更像是一个“不用安装软件，也尽量不用上传文件”的轻量工具箱。\n\n技术上主要是 Nuxt/Vue，浏览器端媒体处理会按场景使用 FFmpeg.wasm、Mediabunny、WebCodecs、Canvas 等方案。有些较重的 AI/转写类功能会走服务端或第三方能力，但普通视频、音频处理尽量保持本地完成。\n\n目前还在持续补工具和打磨兼容性，长视频、大文件、移动端交互这些地方也还有不少可以优化的空间。欢迎试用和反馈。\n\n<img width=\"2706\" height=\"1502\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56863dbb-b4d5-49e6-bf54-e033a1290b77\" />\n",
-    "created_at": "2026-07-04T23:55:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10577"
-  },
-  {
-    "id": 10576,
-    "title": "【开源自荐】OpenBiliClaw —— 纯本地、开源的跨平台内容推荐 Agent，把推荐算法换成你自己的",
-    "content": "**项目地址**：https://github.com/whiteguo233/OpenBiliClaw\n**项目主页**：https://whiteguo233.github.io/OpenBiliClaw/\n\n## 一句话介绍\n\n一个跑在自己电脑上的开源内容推荐 Agent：先通过跨平台行为和对话理解你，再带着这份理解主动去 B 站、小红书、抖音、YouTube、X、知乎、Reddit 帮你找内容，并像朋友一样解释每条推荐的理由。\n\n![演示](https://raw.githubusercontent.com/whiteguo233/OpenBiliClaw/main/docs/images/hero-demo-zh.gif)\n\n## 为什么做它\n\n平台推荐系统优化的从来是平台的目标（完播率、留存、广告收入），用户满意只是留存的手段；而且每个平台都是孤岛——你在 B 站看了三年机械键盘，小红书一无所知。\n\nOpenBiliClaw 把这件事反过来：\n\n- **先懂你，再找内容**：通过行为分析构建五层心理画像（事件→偏好→觉察→洞察→灵魂），理解的是你这个人，不是点击记录；\n- **主动破茧**：基于对你的理解，主动猜测你从未接触但可能感兴趣的领域，猜对了升级为正式兴趣，猜错了安静退出；\n- **100% 本地**：所有数据留在本机的一个 SQLite 文件里，LLM 用你自己的 API Key（支持 DeepSeek / OpenAI / Claude / Gemini / Ollama 本地模型等），没有云端、没有账号；\n- **可调教**：喜欢、不感兴趣、直接聊天，都会改变后续推荐。\n\n## 安装\n\nChrome 商店装插件 + 下载桌面安装包（macOS / Windows，开箱即用）；也支持 Docker 部署。\n\nMIT 协议，Python + TypeScript，目前 1000+ star。欢迎试用和反馈！\n",
-    "created_at": "2026-07-04T23:50:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10576"
   }
 ]
