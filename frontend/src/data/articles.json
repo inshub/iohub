@@ -1,5 +1,21 @@
 [
   {
+    "id": 10716,
+    "title": "【开源自荐】ReadAware —— 免费开源且优雅的全平台阅读器，本地优先 + 阅读自进化 Agent + 优雅体验",
+    "content": "项目地址:https://github.com/ahpxex/read-aware\n官网:https://readaware.app\n\n## 这是什么\n\nReadAware 是一个免费开源(MIT)的跨平台阅读器,macOS / Windows / Linux / Android / iOS 都能用。做它的起因很简单:好看的阅读器没有 AI,带 AI 的阅读器又把数据锁在云端,我两边都不想妥协。\n\n主要特性:\n\n- **逐句阅读模式**:一次只聚焦一句话,注意力不容易跑,对 ADHD 用户很友好\n- **完整的标注体系**:下划线、高亮、边注,顺手就标,不打断心流;EPUB / MOBI / AZW3 / FB2 / PDF 五种格式共用同一套标注和进度模型,不需要转换\n- **AI 内建但完全可选**:选中一段就能问,它知道你在读哪本书哪一章,还会从你的书、划线和笔记里积累出持续记忆;模型端点自己配,不开 AI 它也是个完整的阅读器\n- **本地优先**:书、笔记、对话、记忆全部存在本地 SQLite,无需注册账号\n- **阅读时长统计**:每本书的时间、连续天数、一天中的阅读时段分布\n\n技术栈:Tauri(Rust 核心 + TypeScript UI)。\n\n## 截图\n\n书架:\n\n![书架](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/shelf.webp)\n\n阅读与标注:\n\n![阅读器](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/reader.webp)\n\n选中即问的上下文助手:\n\n![上下文助手](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/context.webp)\n\n跨设备同步在路线图上。欢迎反馈和 issue,尤其欢迎 Linux 用户帮忙多测。\n",
+    "created_at": "2026-07-14T10:58:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10716"
+  },
+  {
+    "id": 10715,
+    "title": "【开源自荐】飞鱼小铺：数字产品交易与自动交付系统",
+    "content": "阮老师好，推荐一个我们刚刚整理开源的项目：飞鱼小铺（Flyfish Shop）。\n\n项目地址：https://github.com/flyfish-dev/shop  \n在线预览：https://dev.flyfish.group/shop/item-list  \n开源协议：AGPL-3.0-only\n\n![飞鱼小铺中文界面演示](https://raw.githubusercontent.com/flyfish-dev/shop/main/docs/assets/flyfish-shop-overview.gif)\n\n飞鱼小铺是一个面向独立开发者、小团队和数字产品业务的开源交易与自动交付系统。它把商品展示、下单支付、交付履约和售后管理放在同一套可私有化部署的系统里，适合销售源码仓库、授权文件、数字资料和开发者服务。\n\n主要特点：\n\n- **完整交易闭环**：支持商品分组、SKU、多语言内容、人民币/美元定价、优惠券、合同确认、Stripe/H5 支付、订单、工单和 WebSocket 客服。\n- **自动交付与故障恢复**：可开通 GitHub、Gitea、Gitee 仓库，也可交付数字文件或接入自有授权系统；每个交付任务都有独立状态和失败原因，修复问题后可以按任务重试，成功后自动继续剩余流程。\n- **认证与业务解耦**：Auth、Shop 和低代码最小实例拆成三个独立 Spring Boot 应用，共用 JWT 登录态和一套 Vue 3 前端；支持邮箱 Magic Link、GitHub/Gitee/Gitea、Google、Microsoft 和微信公众号登录。\n- **Docker Native 一键体验**：提供 GraalVM Native + Docker Compose 部署模式，一条命令构建并启动 MySQL、三个 native 后端服务和 Nginx 前端，适合本地体验和轻量服务器部署。\n- **面向真实运营场景**：包含管理工作台、商品与订单管理、仓库配置、交付记录、失败重试、合同、通知和移动端适配，不只是一个商品展示页面。\n- **明确的开源边界**：公开通用交易和交付编排，商业授权签发通过扩展接口接入，不包含任何私有签发算法、根密钥或生产配置。\n\n一键启动：\n\n```bash\n./scripts/docker-native-up.sh\n```\n\n完成后访问 `http://127.0.0.1:9999`。项目基于 Java 21、Spring Boot 4、R2DBC、Vue 3、MySQL/H2 和 GraalVM Native，README 中整理了完整中文截图、架构说明、上线物料和部署指引。\n\n欢迎大家试用，也欢迎提交 issue 或 PR。",
+    "created_at": "2026-07-14T10:23:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10715"
+  },
+  {
     "id": 10714,
     "title": "〖开源自荐〗light-ocr：运行时无需 Python 的跨平台离线 OCR（Node.js / C++）",
     "content": "项目地址：https://github.com/arcships/light-ocr\n\nnpm：https://www.npmjs.com/package/@arcships/light-ocr\n\n![light-ocr](https://raw.githubusercontent.com/arcships/light-ocr/main/docs/assets/light-ocr-banner.png)\n\n### 一句话介绍\n\nlight-ocr 是一个面向 Node.js 和原生应用的跨平台离线 OCR 库，基于 PP-OCRv6 Small，直接在应用进程内完成文字识别，不需要上传图片，也不需要额外部署 Python 服务。\n\n### 为什么做这个项目\n\n云端 OCR 会带来图片上传、网络依赖、持续费用和隐私边界；PaddleOCR 的常见部署方式又需要维护 Python 环境或独立服务。\n\nlight-ocr 希望把 OCR 变成可以直接嵌入应用的本地能力：应用传入已经解码的图像像素，即可获得按阅读顺序排列的文字、置信度和四边形坐标。\n\n### 核心特点\n\n- 完全本地运行，识别过程不访问网络、不启动子进程\n- npm 包自带固定版本的 PP-OCRv6 Small 模型和预编译原生运行时\n- 安装时不需要现场编译，首次运行也不需要再下载模型\n- 支持中文、英文以及 CJK/拉丁字符混排识别\n- 返回文字、置信度和四点坐标，可保留旋转、透视文字的位置\n- 支持 `GRAY8`、`RGB8`、`BGR8` 和 `RGBA8` 像素输入\n- Node.js 推理不会阻塞 JavaScript 主线程，并支持有界队列、取消和生命周期管理\n- 针对大图控制检测尺寸，并逐批执行文字识别，减少内存峰值\n- macOS、Linux 和 Windows 使用同一套模型与结果格式\n- Apache License 2.0 开源\n\n### 快速使用\n\n```bash\nnpm install @arcships/light-ocr\n```\n\n```ts\nimport { createEngine } from \"@arcships/light-ocr\";\n\nconst engine = await createEngine();\n\nconst result = await engine.recognize({\n  data: pixels,\n  width,\n  height,\n  stride,\n  pixelFormat: \"rgba8\",\n});\n\nconsole.log(result.lines);\nawait engine.close();\n```\n\n### 适用场景\n\n- 桌面应用中的截图 OCR、框选识别和剪贴板文字提取\n- 本地优先、重视隐私的笔记和文档工具\n- 图片搜索、文字复制、画面标注和无障碍功能\n- 内网、边缘设备、自助终端等无法依赖云服务的环境\n- 希望集成 PaddleOCR，但不想单独维护 Python 服务的 Node.js 或 C++ 项目\n\n### 技术栈与平台\n\n- C++17、ONNX Runtime、CMake、Node-API\n- 模型：PP-OCRv6 Small\n- Node.js：22 / 24\n- 平台：macOS arm64/x64、Linux x64 glibc、Windows x64\n\n项目目前仍在积极开发，欢迎试用、反馈实际使用场景或参与贡献。",
@@ -166,14 +182,6 @@
     "created_at": "2026-07-13T05:05:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10694"
-  },
-  {
-    "id": 10693,
-    "title": "【 项目自荐】运比比： 适合独立站卖家的跨境物流比价平台",
-    "content": "名称：运比比\n网址：https://www.yunbibi.top/\n\n大家好，最近做了一个跨境物流运费查询和比价工具，名字叫“运比比”，想在这里分享给大家。\n<img width=\"1267\" height=\"597\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2351cadb-d493-4a39-8297-4b215c08febe\" />\n\n做这个网站的想法很简单。很多跨境卖家在发货前都会收到不同物流商的报价表，但这些报价表格式不统一，重量段、渠道限制、计费方式也不一样。真正要比较哪家更合适时，往往还要自己打开表格、手动计算体积重、对照目的地和货物类型，过程比较麻烦，也容易算错。\n\n所以我想做一个简单一点的工具，让卖家只需要输入目的国家、包裹重量、尺寸和货物类型，就能快速查看不同物流渠道的大致价格，方便在发货前做一个初步判断。\n<img width=\"2534\" height=\"1402\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/928b98cd-e358-4e99-8d18-30a5fe3a2e8a\" />\n\n目前网站已经接入了华瑞百川、深圳燕文、顺丰国际、云途、递四方、非凡鸿运等物流商的报价数据。用户可以按目的地和包裹信息进行试算，系统会根据重量、尺寸和货物类型匹配相应渠道，并展示可参考的物流价格。\n\n网站里也整理了一些跨境物流常见问题，比如体积重、泡货、关税、附加费用、渠道限制等。因为实际发货价格还会受到偏远地区、特殊申报、附加服务和服务商实时政策影响，所以目前结果主要用于发货前的价格参考，正式发货前仍建议和承运商或货代确认最终报价。\n\n“运比比”目前还在持续完善中，报价数据、物流商覆盖范围和查询体验都还会继续优化。后面也希望加入更多物流服务商，让跨境卖家可以更方便地比较不同渠道的价格和限制。\n\n如果你平时也会遇到跨境物流报价难比较、手动算运费麻烦的问题，欢迎来运比比试试看。也欢迎大家提出真实的使用建议，尤其是哪些字段不清楚、哪些物流渠道还需要补充、哪些比价场景还没有覆盖，这些反馈对我都很有帮助。",
-    "created_at": "2026-07-13T03:36:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10693"
   },
   {
     "id": 10692,
@@ -406,14 +414,6 @@
     "created_at": "2026-07-10T07:01:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10652"
-  },
-  {
-    "id": 10651,
-    "title": "[网站自荐] 全客搜 - 免费网盘资源搜索引擎",
-    "content": "网站名称：全客搜 - 免费网盘资源搜索引擎\n网站地址：https://www.quanks.cn\n网站简介：全客搜是一款高效的夸克网盘、百度网盘资源搜索引擎，页面清爽，资源全面，支持影视、短剧、综艺、动漫等全网优质网盘资源搜索。只需输入关键词，即可快速找到相关网盘资源。",
-    "created_at": "2026-07-10T01:46:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10651"
   },
   {
     "id": 10650,
