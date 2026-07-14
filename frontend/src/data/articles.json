@@ -1,5 +1,21 @@
 [
   {
+    "id": 10718,
+    "title": "【开源自荐】coding-discipline —— 给 Claude Code / Codex 的中文「编程纪律」插件",
+    "content": "项目地址：https://github.com/chipfighter/coding-discipline\n\nAI 编程助手（Claude Code / Codex）最大的问题往往不是能力，而是纪律：不问清需求直接开写、修 bug 靠瞎试、嘴上说\"测试通过了\"其实没跑过。\n\ncoding-discipline 是一套「瘦但有牙」的通用编程纪律 skill 集——装一次、全局生效、跨项目通用：\n\n- **8 条纪律 skill**：设计先行（brainstorming）、红绿重构（tdd）、先根因再修（systematic-debugging）、优先级评审（code-review）、拿证据再说\"做完了\"（verify-before-done）、git 流程、上下文防毒（context-hygiene）等。每条只保留 ~30 行「模型不知道的硬规矩」，删掉所有解释和废话。\n- **SessionStart 自动注入**：每个会话开场自动注入一段极短的纪律总纲，让 skill 被勤触发，不靠描述碰运气。\n- **首次进项目自动生成引导文档骨架**（CLAUDE.md / AGENTS.md，绝不覆盖已有的），随项目「每拍板一件事补一行」长大。\n- **跨平台**：Claude Code 和 Codex 都能用；hook 做了 Windows / git-bash 适配（纯 bash、无 jq 依赖）。\n- **全中文**：理念借鉴英文的 superpowers（MIT，已在 README 致谢），收敛成中文轻量版。\n\nMIT 协议。欢迎试用和提意见。\n",
+    "created_at": "2026-07-14T14:41:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10718"
+  },
+  {
+    "id": 10717,
+    "title": "【开源自荐】PickySteve：本地优先的编程 Agent Skill 路由器，内置 Prompt 注入防护网关",
+    "content": "**项目地址**：https://github.com/KernelLord/pickysteve\n\n**项目简介**：PickySteve 是一个面向编程 Agent 的 skill 路由器和上下文选择器。用一个便宜的本地小模型（默认 Ollama qwen3:8b，离线运行，无需云端 API key）通过混合检索（BM25 + 向量嵌入，RRF 融合）+ 交叉编码器重排 + LLM 裁判，把每条请求路由到合适的 skill，再拼装一个最小化、带 nonce 边界的上下文包交给执行模型。\n\n**安全设计**：内置 Prompt 注入检测网关（ONNX 分类器），对原始请求和每一条检索到的文档都做扫描，失败即拒绝（fail-closed）。在 180 条红队测试语料上做到 100% 检出、0 次绕过；在真实 skill 库上 0/43 误报。\n\n**集成方式**：提供 MCP stdio server 和 OpenAI 兼容代理（:8077/v1）两种接入方式，一条安装命令即可接入 Claude Code、Codex、Cursor、Windsurf、Cline、Roo Code、Gemini CLI 等 18 种编程 Agent。\n\n**现状**：MIT 协议开源，v0.1.0 已发布，仓库创建于 2026-07-06，目前约 6 星，欢迎试用和反馈。\n\n（说明：本 issue 由项目作者授权的 AI 助手代为提交，内容均为真实数据。）",
+    "created_at": "2026-07-14T14:14:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10717"
+  },
+  {
     "id": 10716,
     "title": "【开源自荐】ReadAware —— 免费开源且优雅的全平台阅读器，本地优先 + 阅读自进化 Agent + 优雅体验",
     "content": "项目地址:https://github.com/ahpxex/read-aware\n官网:https://readaware.app\n\n## 这是什么\n\nReadAware 是一个免费开源(MIT)的跨平台阅读器,macOS / Windows / Linux / Android / iOS 都能用。做它的起因很简单:好看的阅读器没有 AI,带 AI 的阅读器又把数据锁在云端,我两边都不想妥协。\n\n主要特性:\n\n- **逐句阅读模式**:一次只聚焦一句话,注意力不容易跑,对 ADHD 用户很友好\n- **完整的标注体系**:下划线、高亮、边注,顺手就标,不打断心流;EPUB / MOBI / AZW3 / FB2 / PDF 五种格式共用同一套标注和进度模型,不需要转换\n- **AI 内建但完全可选**:选中一段就能问,它知道你在读哪本书哪一章,还会从你的书、划线和笔记里积累出持续记忆;模型端点自己配,不开 AI 它也是个完整的阅读器\n- **本地优先**:书、笔记、对话、记忆全部存在本地 SQLite,无需注册账号\n- **阅读时长统计**:每本书的时间、连续天数、一天中的阅读时段分布\n\n技术栈:Tauri(Rust 核心 + TypeScript UI)。\n\n## 截图\n\n书架:\n\n![书架](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/shelf.webp)\n\n阅读与标注:\n\n![阅读器](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/reader.webp)\n\n选中即问的上下文助手:\n\n![上下文助手](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/context.webp)\n\n跨设备同步在路线图上。欢迎反馈和 issue,尤其欢迎 Linux 用户帮忙多测。\n",
@@ -794,21 +810,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10604"
-  },
-  {
-    "id": 10603,
-    "title": "【项目自荐】Defficiency Skills - 让 AI Agent 不再高效，也许是一种行为艺术。目前支持 ADHD 和 ASD 两种模式。",
-    "content": "仓库地址：https://github.com/liigoQi/defficiency-skills/tree/main\n\n**Defficiency Skills** 是一组为 AI Agent 设计的**降效**Skills。它们的目的是 **降低** AI Agent 的工作效率，或者做些你没想到的事，制造不同于寻常AI的体验。\n\n（也许，有时却会**提效**……谁知道呢？）\n\n这不是 bug，是 **行为艺术（performance art）**。\n\n目前包含以下 skill：\n\n| Skill | 描述 |\n|-------|------|\n| **ADHD Mode** | 让 Agent 表现出 ADHD（注意缺陷多动障碍）特征：任务启动困难、思维跳跃、容易分心、时间感薄弱、冲动搜索等。 |\n| **ASD Mode** | 让 Agent 表现出 ASD（自闭症谱系障碍）特征：社交互动缺损、字面理解、刻板重复行为、坚持同一性、固着兴趣、感官敏感等。 |",
-    "created_at": "2026-07-06T09:36:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10603"
-  },
-  {
-    "id": 10602,
-    "title": "【工具自荐】Image Prompt Generator：免费 AI 图像提示词生成器和提示词库",
-    "content": "项目地址：https://image-prompt-generator.com/\nGitHub：https://github.com/xianyu110/image-prompt-generator\n\n简介：Image Prompt Generator 是一个免费的 AI 图像提示词生成器和提示词库，支持按模型筛选、浏览提示词示例，并生成可直接复制使用的图片提示词。\n\n主要特点：\n\n- 多模型支持：覆盖 GPT Image、Seedream、Seedance、Grok Imagine、Gemini、Nano Banana Pro 等图像/视频生成模型。\n- 提示词生成：输入图片创意，选择模型和画幅比例，生成更完整的图像提示词。\n- 提示词库：提供热门提示词、示例卡片、图片预览、来源信息和一键复制。\n- 中英双语：支持英文和中文界面，适合 AI 绘图、内容创作和提示词学习。\n\n适合需要快速构思 AI 绘图提示词、整理图像生成灵感、学习不同模型提示词写法的用户。",
-    "created_at": "2026-07-06T07:39:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10602"
   }
 ]
