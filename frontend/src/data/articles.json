@@ -1,5 +1,29 @@
 [
   {
+    "id": 10709,
+    "title": "推荐一个免费音视频转文字工具：FreeAudioToText",
+    "content": "[FreeAudioToText](https://freeaudiototext.com/) — 免费的音视频转文字工具，无需注册账号。\n\n支持 MP3、M4A、WAV、MP4 等主流格式，由阿里达摩院开源的 FunASR（Paraformer 模型） 驱动，对中文和中英混合内容的识别准确率优于 Whisper，同时支持 90 多种语言自动检测。上传文件后，音频在 24 小时内从服务器删除，不留存。\n\n有趣的是，它的后台推理运行在作者自己的 Mac（Apple Silicon） 上——FunASR 跑在本地，任务队列通过 Cloudflare D1 调度，文件存在 R2。这种「本地 AI + 云端路由」的架构让推理成本接近于零，所以转写完全免费，没有时长限制。\n\n可选花 $1.99 升级，获得 AI 生成的结构化分析报告（摘要、大纲、可分享链接），适合播客、采访、会议录音等场景。",
+    "created_at": "2026-07-14T05:51:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10709"
+  },
+  {
+    "id": 10708,
+    "title": "【开源自荐】拉片笔记：把一部电影变成 AI 辅助的拉片笔记，本地抽帧 / 剧情泳道时间轴 / 情绪曲线",
+    "content": "项目地址：https://github.com/bkingfilm/lapian-notes\n\n「拉片」是影视行业逐段精读电影的学习方法。这个工具把一部电影变成一份可编辑的拉片笔记：\n\n1. 导入影片后本地抽帧（1 秒 1 帧），自动读取或搜索字幕，格式不兼容会自动本地转码\n2. 一键把截图、字幕、剧情资料打包成 ZIP，发给 ChatGPT 等任意 AI 分析，不绑定服务商，无需 API Key\n3. 把 AI 返回的 JSON 导回来，自动生成剧情泳道时间轴、结构树和观众情绪曲线\n4. 任意段落可单独打包深拆到场与镜头级，笔记里的时间点可一键跳转播放\n\n全程本地运行，影片和笔记数据不上传任何服务器。React + Vite，MIT 协议，Windows 和 macOS 双击脚本即可启动，无需配置环境。\n\n![界面截图](https://raw.githubusercontent.com/bkingfilm/lapian-notes/main/docs/screenshot.jpg)\n\n适合想系统学习电影叙事的创作者、影视专业学生和电影爱好者。\n",
+    "created_at": "2026-07-14T04:35:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10708"
+  },
+  {
+    "id": 10707,
+    "title": "【自荐】VThreads：基于 Next.js 的轻量、无广告全网视频解析与下载工具",
+    "content": "项目名称\nVThreads\n\n项目地址\n网站在线体验：[https://vthreads.top](https://vthreads.top)\n\n一句话简介\nVThreads 是一个主打清爽、免安装、用完即走的轻量化全网视频解析与下载工具，旨在为自媒体剪辑师、开发者和素材收集者提供最高清、最纯净的流媒体直链剥离服务。\n\n🚀 核心特性与支持平台\n项目采用 “专项优化 + 全网通” 双驱动引擎，完美应对各种流媒体防盗链与反爬机制：\n\n专项深度优化（极速、最高清原画）：\n\n国内平台：抖音、Bilibili (B站)、小红书、微博、快手。\n\n国际顶流：YouTube (支持 1080P 及以上高清音画分离视频在服务器端自动合成)、TikTok、X (Twitter)、Instagram、Facebook、Threads、Reddit 等。\n\n全网通用支持：内置通用的万能解析引擎，支持 AcFun、CCTV 等全球数千个大大小小的视频门户网站。只要是网页上能公开发布的视频链接，直接粘贴即可解析。\n\n🛠️ 技术栈与架构思考\n前端：采用 Next.js + Tailwind CSS，追求极简的 Dashboard 视觉风格，并利用 SSR/SSG 保证极致的首屏加载速度与 SEO 表现。\n\n后端部署：采用前后端解耦架构，前端托管于全局 CDN 平台确保海内外访问体验；后端解析引擎独立部署于多节点 VPS 集群，通过轻量级负载均衡动态分发流量，有效绕过部分海外平台的 IP 区域限制。\n\n用爱发电：为了保护用户体验，国内流量完全无广告，仅在海外结算页面低调接入了 Polar 的打赏卡片以补贴高昂的跨境服务器和带宽成本。\n\n💡 为什么做这个项目？\n市面上绝大多数视频下载工具套路太深，要么牛皮癣广告满天飞，要么强行要求关注公众号或下载全家桶客户端。作为一个独立开发者，我想做个纯粹、干净、用完即走的工具。\n\n欢迎大家体验，如果在 Next.js 建站、流媒体后端节点运维或者解析报错方面有任何问题，非常欢迎在评论区或邮件交流探讨！",
+    "created_at": "2026-07-14T03:50:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10707"
+  },
+  {
     "id": 10706,
     "title": "自荐开源项目：TurboOCR，用 C++ 和 TensorRT 写的 GPU 文档解析服务器",
     "content": "自荐一个自己写的开源项目：TurboOCR，一个 GPU 文档解析服务器。\n\n项目地址：https://github.com/aiptimizer/TurboOCR\n官网：https://turboocr.com\n\n整个流水线是 C++/CUDA/TensorRT 实现的，OCR、版面分析、表格转 HTML、公式转 LaTeX、PDF 转 Markdown 都在本地跑，不用调云 API，对外提供 HTTP 和 gRPC 接口，MIT 协议。\n\n做这个的原因是嫌现有方案太慢。VLM 类的文档解析大概每秒一页，传统引擎速度也一般。TurboOCR 在一张 5090 上整页 OCR 能跑到每秒五百多张，完整的结构化解析每秒二十页左右。识别用的是 PP-OCRv6，精度和 PaddleOCR 官方基本一致，中文日文拉丁文一个模型全包，中英混排文档开箱即用。除了中日英，还保留了阿拉伯文、西里尔文、韩文、泰文、希腊文的识别器，换个环境变量就能切。\n\n接口方面，除了基本的 /ocr 和 /ocr/raw，还有 /ocr/pdf（整本 PDF，加 ?markdown=1 直接出 Markdown）、/ocr/batch 批量、/infer 结构化输出。表格和公式是按请求开关的，加 ?tables=1&formulas=1 就行，不开不占资源。服务自带健康检查和 Prometheus 指标，放到 k8s 里也好管理。\n\n部署就一行 docker：\n\n```bash\ndocker run --gpus all -p 8000:8000 -p 50051:50051 \\\n  -v trt-cache:/home/ocr/.cache/turbo-ocr \\\n  ghcr.io/aiptimizer/turboocr:latest\n```\n\n需要 Linux 和 N 卡，20 系以上，纯文本 4G 显存左右，全流水线 8G。TensorRT 引擎第一次启动自动构建，之后有缓存就是秒起。第一次构建在 5090 上大概一分半钟，老卡会慢不少，可以设 TRT_OPT_LEVEL=3 把构建时间压下来。\n\n模型来自 PaddleOCR 全家桶，感谢百度开源，推理和服务层是我重新用 C++ 写的。适合要本地化、大批量处理、数据不能出内网的场景。后面还打算继续优化 CPU 推理和补充更多语言支持，想法都放在仓库的 issue 里了。\n\n欢迎试用，有问题提 issue。",
@@ -788,29 +812,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10595"
-  },
-  {
-    "id": 10594,
-    "title": "【开源推荐】Aeolian 一个主打轻量美观的纯净音乐播放器",
-    "content": "*（忘记了为什么要给一个html能解决的东西套一个go的壳子）*\n总而言之是做了一个仅有播放功能的音乐播放器\n---\n界面长这样：\n<img width=\"1919\" height=\"829\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/52a709c2-5f44-4c39-81b8-f7849dcc60aa\" />\n---\n按照个人审美设计的\n<img width=\"1919\" height=\"838\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/14be5ca2-5842-428c-b551-5f233f9f01fc\" />\n---\n总共的大小是4.7MB，单二进制文件，localhost:7070端口，没有运行时依赖项。\n\nGithub：[github](https://github.com/asong56/Aeolian)",
-    "created_at": "2026-07-05T17:50:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10594"
-  },
-  {
-    "id": 10593,
-    "title": "【开源推荐】Rhizome 小型友链工具",
-    "content": "Rhizome是一个用于做友链的工具，因为不是特别完善，所以个人认为这玩意适合拿来当朋友之间做个小型的朋友圈一样的东西。\n特点是它的核心js脚本只有600B，支持随机前往，是模仿‘开往’的功能。然后就是节点数据会在浏览器保存24小时，超过这个时间段会重新拉取。\n用的是原生js（不喜欢用成熟的js库）。\n大概就是这样。\nGithub：[Rhizome](https://github.com/asong56/Rhizome)\n示范：[Demo](https://asong56.github.io/Rhizome/)",
-    "created_at": "2026-07-05T17:44:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10593"
-  },
-  {
-    "id": 10592,
-    "title": "【工具自荐】AI 足迹 — 跨平台 AI 智能收藏管理工具",
-    "content": "## 简介\n\nAI 足迹是一款面向普通用户的智能收藏管理工具。不只是「存链接」——粘贴任意网页链接，AI 自动提取内容、分类、打标签。\n\n## 核心功能\n\n- **跨平台全收纳**：小红书攻略、大众点评餐厅、淘宝商品、B站视频……不管来自哪个平台，一个链接丢进来，AI 自动归类\n- **共享协作**：创建共享分类，支持共创模式（成员都可编辑）和订阅模式（只读分享）\n- **AI Agent 原生接入**：生成访问令牌，你的 AI 助手（如 Hermes、Claude）可以管理收藏——搜索、归类、整理、备份\n- **多端访问**：PC 端（可设浏览器首页）+ 手机 H5 + 浏览器扩展\n\n## 链接\n\n🌐 官网：https://ai.ocean94.com\n📦 GitHub：https://github.com/Piccolo123/ai-footprints\n🧩 浏览器扩展：https://github.com/Piccolo123/ai-footprints/raw/main/AI%E8%B6%B3%E8%BF%B9%E6%89%A9%E5%B1%95.zip",
-    "created_at": "2026-07-05T17:19:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10592"
   }
 ]
