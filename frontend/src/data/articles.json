@@ -1,5 +1,45 @@
 [
   {
+    "id": 10714,
+    "title": "〖开源自荐〗light-ocr：运行时无需 Python 的跨平台离线 OCR（Node.js / C++）",
+    "content": "项目地址：https://github.com/arcships/light-ocr\n\nnpm：https://www.npmjs.com/package/@arcships/light-ocr\n\n![light-ocr](https://raw.githubusercontent.com/arcships/light-ocr/main/docs/assets/light-ocr-banner.png)\n\n### 一句话介绍\n\nlight-ocr 是一个面向 Node.js 和原生应用的跨平台离线 OCR 库，基于 PP-OCRv6 Small，直接在应用进程内完成文字识别，不需要上传图片，也不需要额外部署 Python 服务。\n\n### 为什么做这个项目\n\n云端 OCR 会带来图片上传、网络依赖、持续费用和隐私边界；PaddleOCR 的常见部署方式又需要维护 Python 环境或独立服务。\n\nlight-ocr 希望把 OCR 变成可以直接嵌入应用的本地能力：应用传入已经解码的图像像素，即可获得按阅读顺序排列的文字、置信度和四边形坐标。\n\n### 核心特点\n\n- 完全本地运行，识别过程不访问网络、不启动子进程\n- npm 包自带固定版本的 PP-OCRv6 Small 模型和预编译原生运行时\n- 安装时不需要现场编译，首次运行也不需要再下载模型\n- 支持中文、英文以及 CJK/拉丁字符混排识别\n- 返回文字、置信度和四点坐标，可保留旋转、透视文字的位置\n- 支持 `GRAY8`、`RGB8`、`BGR8` 和 `RGBA8` 像素输入\n- Node.js 推理不会阻塞 JavaScript 主线程，并支持有界队列、取消和生命周期管理\n- 针对大图控制检测尺寸，并逐批执行文字识别，减少内存峰值\n- macOS、Linux 和 Windows 使用同一套模型与结果格式\n- Apache License 2.0 开源\n\n### 快速使用\n\n```bash\nnpm install @arcships/light-ocr\n```\n\n```ts\nimport { createEngine } from \"@arcships/light-ocr\";\n\nconst engine = await createEngine();\n\nconst result = await engine.recognize({\n  data: pixels,\n  width,\n  height,\n  stride,\n  pixelFormat: \"rgba8\",\n});\n\nconsole.log(result.lines);\nawait engine.close();\n```\n\n### 适用场景\n\n- 桌面应用中的截图 OCR、框选识别和剪贴板文字提取\n- 本地优先、重视隐私的笔记和文档工具\n- 图片搜索、文字复制、画面标注和无障碍功能\n- 内网、边缘设备、自助终端等无法依赖云服务的环境\n- 希望集成 PaddleOCR，但不想单独维护 Python 服务的 Node.js 或 C++ 项目\n\n### 技术栈与平台\n\n- C++17、ONNX Runtime、CMake、Node-API\n- 模型：PP-OCRv6 Small\n- Node.js：22 / 24\n- 平台：macOS arm64/x64、Linux x64 glibc、Windows x64\n\n项目目前仍在积极开发，欢迎试用、反馈实际使用场景或参与贡献。",
+    "created_at": "2026-07-14T09:51:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10714"
+  },
+  {
+    "id": 10713,
+    "title": "【开源自荐】jkey —— 纯 Python 密码管理与 TOTP 验证工具",
+    "content": "# jkey —— 纯 Python 密码管理与 TOTP 验证工具\n\n项目地址： https://github.com/imjiaoyuan/jkey\n\n它的定位不只是存密码，而是尝试做到：密码、2FA、恢复码一体化管理 + 全加密。\n\n比如：\n- 你可以用 `jkey 2fa add qrcode.png` 扫一张 GitHub 的 2FA 二维码，之后用 `jkey 2fa ls github` 随时查看 30 秒刷新的验证码——不需要掏出手机打开 Authenticator；\n- 用 `jkey pm get -L 24` 生成一个 24 位随机强密码，然后直接 `jkey pm add mysite` 存进去；\n- 用 `jkey pv encrypt secret.pdf` 加密任意文件，得到一个 `.jkey` 文件，用 `jkey pv decrypt` 还原；\n- 哪天想迁移数据，`jkey pv export all -o backup/` 一键导出所有 TOTP、密码、恢复码和二维码图片。\n\n## 📊 当前能力\n\n- **TOTP 两步验证**：从二维码图片导入、实时查看滚动验证码、删除管理\n- **密码管理**：随机密码生成（CSPRNG，可配置长度与字符集）、增删改查、浏览器 CSV 导入（自动编码检测 + 20+ 列名别名匹配 + 三种重名策略）\n- **恢复码管理**：从文件导入、列表检索、删除（删除 2FA 账户时联动提示删除匹配的恢复码）\n- **文件加解密**：任意文件加密为 `.jkey` 格式，或反向解密\n- **数据导出**：支持 TOTP → JSON、密码 → CSV、恢复码 → TXT、二维码 → 图片、全量一键导出\n- **Session 机制**：类似 `sudo` 的时间戳缓存，解锁后 5 分钟内无需重复输入主密码（超时可配）\n\n## 🔐 自研加密，零外部依赖\n\n这是 jkey 最特别的地方——它没有依赖 OpenSSL、libsodium 或任何第三方密码库。**AES-256-CBC + HMAC-SHA256 是用纯 Python 从头实现的**，包括 S-Box 查表、密钥扩展、GF(2⁸) 伽罗瓦域运算、PKCS7 填充、Encrypt-then-MAC 等全部手写。密钥派生使用 PBKDF2-HMAC-SHA256（60 万次迭代）。\n\n为什么这么做？一方面是为了零依赖安装（`uv tool install jkey` 即装即用，QR 码扫描是唯一的可选依赖）；另一方面，当你不知道一个二进制 crypto 库里到底做了什么时，自己写的 Python 代码每一行都可审计，反而更安心。\n\n数据存储在 `~/.config/jkey/` 下，每个数据类型（TOTP / 密码 / 恢复码）一个 `.jkey` 文件，文件写入采用原子替换（`os.replace`）+ `fcntl` 排他锁，文件权限 600。\n\n## 📦 轻量与兼容\n\n- **核心零依赖**，唯一可选依赖是 `opencv-python-headless`（QR 码扫描）\n- 支持 Python 3.10–3.14\n- 跨平台（Linux / macOS / Windows，Windows 下 `fcntl` 自动降级）\n- 约 4000 行 Python，31 个源文件，结构清晰\n- CI 自动 lint + 多版本测试，PyPI 一键发布\n\n## 💻 命令一览\n\n```bash\n# 初始化保险库\njkey pv init\n\n# 扫二维码添加 2FA\njkey 2fa add github-qr.png\n\n# 查看 TOTP 验证码（支持关键字过滤）\njkey 2fa ls          # 全部列出\njkey 2fa ls github   # 只看含 \"github\" 的\n\n# 生成随机密码\njkey pm get -L 24 --no-symbols\n\n# 存储 / 查看 / 编辑 / 删除密码\njkey pm add my-bank\njkey pm ls\njkey pm edit my-bank\njkey pm rm my-bank\n\n# 从浏览器导出的 CSV 导入密码\njkey pm import chrome-passwords.csv -d skip\n\n# 加密 / 解密任意文件\njkey pv encrypt report.pdf\njkey pv decrypt report.pdf.jkey -o report.pdf\n\n# 导出数据（会二次验证主密码）\njkey pv export all -o backup/\n\n# 修改主密码\njkey pv set-pw\n\n# 锁定保险库\njkey pv lock\n```\n\n环境变量 `JKEY_PASS` 可跳过交互式密码输入，适合脚本调用。Session 超时可通过 `JKEY_SESSION_TIMEOUT` 配置。\n\n## 🎯 适合谁\n\n- 习惯命令行操作、不想在多个 App 之间切换的开发者\n- 需要一个轻量、可审计、无后门的本地密码管理方案\n- 对加密实现感兴趣、想学习 AES 实际代码的读者（代码有清晰注释）\n- 想在脚本中集成密码管理和文件加解密能力的自动化场景\n\n## 🗺️ 未来方向\n\n- 支持更多 2FA 导入方式（截图、URI 字符串 `otpauth://`）\n- 密码强度审计（弱密码 / 重复密码检测）\n- 可选的 Git 备份集成\n- MCP Server 接口，让 AI Agent 可以安全查询 TOTP 码和密码",
+    "created_at": "2026-07-14T09:39:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10713"
+  },
+  {
+    "id": 10712,
+    "title": "【开源自荐 - OpenBidKit】v2.18.3发布：已有方案扩写、导出格式设置、多标段支持",
+    "content": "本帖使用社区开源推广，符合推广要求。我申明并遵循社区要求的以下内容：\n\n- 我的帖子已经打上 `开源推广` 标签：是\n- 我的开源项目完整开源，无未开源部分：是\n- 我的开源项目已链接认可 LINUX DO 社区：是\n- 我帖子内的项目介绍，AI生成、润色内容部分已截图发出：是\n- 以上选择我承诺是永久有效的，接受社区和佬友监督：是\n\n> 以下为项目介绍正文内容，AI生成、润色内容已使用截图方式发出\n\n---\n\n## 仓库地址\nhttps://github.com/FB208/OpenBidKit_Yibiao)](https://github.com/FB208/OpenBidKit_Yibiao\n\n## 最近新增功能\n- [x] 正式安装包内置智能任务运行组件，无需用户另行安装。\n- [x] 给智能体更高的权限，并内置常用工具。\n- [x] 目录生成接入智能修复能力，可在目录提取、评分项对齐或最终校验失败时自主分析并修复。\n- [x] 生图模型支持设置图片清晰度、尺寸和横竖比例。\n- [x] 全局支持超长内容分段处理。\n- [x] 多标段采用AI分析+正则辅助的模式实现，比之前更稳定\n- [x] 更强大的导出模板功能，几乎全覆盖word格式设置\n- [x] 智能任务执行时实时显示当前正在进行的操作和处理阶段。\n- [x] AI 服务返回 HTTP 错误时，可直接查看原始错误内容，便于识别额度、鉴权、限流和服务异常。\n- [x] Markdown 编辑器和内容预览器支持全屏查看与编辑。\n- [x] 标书查重升级，提供能多比对项。\n- [x] 新增html生成图片的能力。同时AI生图、mermaid图片也更可控。\n\n## 更新内容截图\n\n**html图片**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231324.png)\n\n**智能体及内置组件**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231325.png)\n\n**图像尺寸及清晰度设置**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231326.png)\n\n**多标段提取**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231327.png)\n\n**强大的导出样式模版**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231328.png)\n\n**markdown全屏预览**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231329.png)\n\n**新版查重**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231330.png)",
+    "created_at": "2026-07-14T07:12:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10712"
+  },
+  {
+    "id": 10711,
+    "title": "【开源自荐】### 🏛️ 华夏地名谱 TopoScholar：一个可溯源的中国地名知识库",
+    "content": "\n\n大家好，我做了一个中国地名知识库项目：**华夏地名谱 TopoScholar**。\n\n**项目地址：** [https://github.com/snailfrying/topo_scholar](https://github.com/snailfrying/topo_scholar)\n\n它的目标不仅仅是整理“有哪些地名、在哪里”，而是更进一步，尝试回答：**这个地名为什么这么叫？**\n\n比如：\n*   武汉为什么叫武汉，和武昌、汉口、汉阳是什么关系？\n*   全国有多少个“和平村”“团结村”，它们分别分布在哪里？\n*   一个地名经历过哪些合并、更名、撤销和重设？\n*   AI Agent 在回答地名问题时，如何避免同名误判和编造由来？\n\n目前，项目已经整理了一个覆盖**省、市、县、乡镇/街道、村/社区**的五级中国地名底座，并提供了别名索引、同名消歧、地名由来查询等能力。\n\n#### 📊 当前规模\n\n*   **基础地名：** 665,276 条\n*   **行政层级关系：** 665,245 条\n*   **别名索引：** 2,981,225 条\n*   **地名由来知识：** 3,158 条\n*   **采集进度：** 已补齐省级和可采集地级行政区的地名由来，县级也已完成大部分采集。\n\n#### 🔍 结构化与可溯源\n\n项目非常关注数据的结构化和可溯源性。每条地名由来都会尽量保存**来源标题、来源 URL、证据摘要和置信度**，旨在避免 AI 在没有来源时“编造”解释。\n\n#### 🤖 面向 Agent / RAG 的设计\n\n它也面向 Agent / RAG 使用场景，提供了 JSON CLI，并预留了 MCP Server 工具，例如：\n*   地名解析\n*   别名解析\n*   行政下级查询\n*   同名地名对比\n*   本地地名由来查询\n*   地名由来按需补齐\n*   已缓存知识全文检索\n\n#### 💻 示例命令\n\n```bash\n# 地名解析\npython topo_scholar_cli.py resolve 武汉市 --province 湖北省 --city 武汉市 --limit 1\n\n# 同名地名查询\npython topo_scholar_cli.py same-name 和平村委会 --limit 20\n\n# 地名由来查询\npython topo_scholar_cli.py origin 南高村 --province 山东省 --city 东营市 --county 广饶县 --limit 1\n```\n\n我希望它后续可以成为一个**可查询、可消歧、可溯源、可扩展**的中文地名知识系统，用于地名研究、地方文化整理、地理教育、文旅内容生成，以及中文 RAG / Agent 的知识底座。",
+    "created_at": "2026-07-14T07:11:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10711"
+  },
+  {
+    "id": 10710,
+    "title": "【开源自荐】copy-web-page 下载网页，完整复制网页样式",
+    "content": "## copy-web-page\n\n\n![](https://github.com/bojue/copy-web-page/blob/master/public/demo.png?raw=true)\n\n项目地址：https://github.com/bojue/copy-web-page\n\n在线官网：http://clone.nocokit.cn/\n\n该产品是我原本计划参考mintlify文档部分样式，手动获取dome样式非常低效，于是计划开发一款工具帮助我快速实现我的需求。\n\n## 产品特点\n\n1. 完整资源捕获 - HTML、CSS、JavaScript、图片、字体等所有静态资源\n2. 智能路径重写 - 自动转换为相对路径，确保离线可用\n3. 多级深度爬取 - 支持跟踪站内链接，批量克隆多个页面（为了控制线上环境的资源，只支持一层）\n4. 实时进度反馈 - 基于 SSE 的实时进度推送\n5. ZIP 打包下载 - 一键打包，可直接部署\n\n\n## 快速开始\n\n```\nnpm install \n\nnpm run dev // 启动\n\nnpm run build // 构建\n\n```\n\n## 产品演示\n\n![](https://github.com/bojue/copy-web-page/blob/master/public/demo.gif?raw=true)\n\n## DEMO效果\n\n<img width=\"2560\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92cb2cf4-edbf-4dd7-aad4-0905b5179fb9\" />\n\n仅供技术研究与授权测试使用",
+    "created_at": "2026-07-14T06:57:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10710"
+  },
+  {
     "id": 10709,
     "title": "推荐一个免费音视频转文字工具：FreeAudioToText",
     "content": "[FreeAudioToText](https://freeaudiototext.com/) — 免费的音视频转文字工具，无需注册账号。\n\n支持 MP3、M4A、WAV、MP4 等主流格式，由阿里达摩院开源的 FunASR（Paraformer 模型） 驱动，对中文和中英混合内容的识别准确率优于 Whisper，同时支持 90 多种语言自动检测。上传文件后，音频在 24 小时内从服务器删除，不留存。\n\n有趣的是，它的后台推理运行在作者自己的 Mac（Apple Silicon） 上——FunASR 跑在本地，任务队列通过 Cloudflare D1 调度，文件存在 R2。这种「本地 AI + 云端路由」的架构让推理成本接近于零，所以转写完全免费，没有时长限制。\n\n可选花 $1.99 升级，获得 AI 生成的结构化分析报告（摘要、大纲、可分享链接），适合播客、采访、会议录音等场景。",
@@ -768,49 +808,5 @@
     "created_at": "2026-07-06T07:39:02Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10602"
-  },
-  {
-    "id": 10601,
-    "title": "【网站自荐】attachmentstyletest.app 一个测试情感依恋关系的网站",
-    "content": "这个网站的诞生源于我自己在恋爱中的亲身经历——当意识到“依恋关系”对亲密行为模式的深刻影响后，便决定做一个简单、可靠、人人可用的测试工具。\n\n测试基于依恋理论框架设计，仅需约2分钟即可完成12道情景题。系统会从安全型、焦虑型、回避型、恐惧回避型四个维度分析你的依恋模式。与传统问卷不同，结果报告由AI模型根据你的答案个性化生成，包含关系模式解读、优势与触发点分析，以及可操作的成长建议 \n网站链接：[attachment style test](https://attachmentstyletest.app/)",
-    "created_at": "2026-07-06T06:22:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10601"
-  },
-  {
-    "id": 10600,
-    "title": "【工具自荐】GrokTask：基于 Grok AI 的智能定时任务自动化平台",
-    "content": "项目地址：https://trygroktask.asia/\n\n简介：GrokTask / Grok TaskPro 是一个基于 Grok AI 的智能任务自动化平台，支持定时任务、AI 自动执行、信息收集与分析、社交媒体监控、内容生成、数据分析、任务模板库和执行历史管理。\n\n主要特点：\n\n- Grok AI 自动化：用自然语言创建任务，并可让 Grok 优化提示词。\n- 定时执行：支持 Cron 表达式、每日、每周等周期任务，也可以手动实时执行。\n- 场景丰富：适合新闻监控、社媒追踪、内容生成、市场分析、数据整理等工作流。\n- 结果管理：支持执行历史、作品管理、公开展示和多语言页面。\n\n适合需要用 AI 自动完成周期性信息收集、分析和内容生产的用户。",
-    "created_at": "2026-07-06T04:55:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10600"
-  },
-  {
-    "id": 10599,
-    "title": "【工具自荐】handmux：移动Vibe Coding驾驶舱",
-    "content": "**官网**：[handmux.com](https://handmux.com)\n**项目地址**：[handmux/handmux](https://github.com/handmux/handmux)\n**NPM地址**：[handmux](https://www.npmjs.com/package/handmux)\n\n**项目简介**：handmux不只是把电脑的tmux终端搬上手机，还是一整套移动Vibe Coding驾驶舱：Claude Code/Codex需要你时推到手机、一点就批，动嘴发新指令，Git全屏看彩色diff，一键预览开发中的网站，文档逐句朗读，文件双向传。手机端零安装，点开链接就进，“添加到主屏”即成全屏PWA，和原生App无异。\n\n**解决痛点**：用AI写代码，任务一跑十几分钟甚至更久，人却被拴在电脑前看进度、审代码、验网站。市面方案要么装App、注册收费，要么只有终端，要么代码转经第三方。handmux却不一样：扫码即用、开源免费、Coding能力配套、数据只在你电脑和手机间直连，只为拥有纯粹、好用的移动编程体验。\n\n**联系方式**：yuanyuanzijin@gmail.com",
-    "created_at": "2026-07-06T04:25:25Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10599"
-  },
-  {
-    "id": 10598,
-    "title": "【网站自荐】Tat Ink：一个 AI 纹身设计工作台",
-    "content": "官方地址：https://tat.ink/\n\nTat Ink 是一个 AI 纹身设计平台，主要帮助用户在真正纹身前，把想法、图片、文字和身体位置预览整理成更清晰的设计参考。\n\n目前站点侧边栏包含几个主要功能：\n\n- AI Tattoo Generator：输入文字描述，生成纹身设计草图\n- Tattoo Font Creator：生成名字、日期、短句、坐标等文字纹身\n- Image to Tattoo：把宠物、人物、物品、风景等图片转成纹身风格参考\n- Tattoo to Stencil：将纹身图案转成更适合描线和参考的 stencil 效果\n- Try-On Tattoo：上传身体照片，预览纹身在手臂、肩膀、背部、腿部等位置的大致效果\n- AI Tattoo Idea Generator：帮助还没有明确想法的用户生成纹身创意\n- My Ink：保存和管理自己生成过的纹身设计\n\n它比较适合这些场景：\n\n1. 想纹身，但还没有明确图案方向  \n2. 想把宠物、照片、手写字、纪念物转成纹身参考  \n3. 想生成名字、日期、短句、坐标类文字纹身  \n4. 想把已有纹身图案转成 stencil 线稿参考  \n5. 想先看纹身放在身体上的效果，再决定是否继续修改  \n6. 想在找纹身师之前，准备一个更清晰的视觉参考  \n\nTat Ink 不是用来替代纹身师，而是帮助用户在纹身前更快整理想法、探索风格、比较不同方案，减少“只靠语言描述”的沟通成本。\n\n示意图如下：\n\n<img width=\"2000\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/58e61685-31e0-45bb-8cd3-6125cf7e7c63\" />\n\n<img width=\"2000\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0ae9a11a-afed-4914-ada6-4dfc6beb71e9\" />\n\n<img width=\"2000\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c59047d7-8e86-4e3e-8b61-57836123f818\" />\n\n<img width=\"1014\" height=\"759\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ea3bf4c9-f1d7-4f47-ba2f-1c09429e2bf8\" />\n\n<img width=\"1403\" height=\"1121\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a8cf0857-6f78-46d6-97e4-26ee651d703d\" />",
-    "created_at": "2026-07-06T02:51:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10598"
-  },
-  {
-    "id": 10595,
-    "title": "【开源自荐】AI Shortlink：轻量级短链与活码管理平台",
-    "content": "项目地址：https://github.com/flyfish-dev/shortlink\n\n开源协议：AGPL-3.0-only\n\n![AI Shortlink 功能录屏](https://raw.githubusercontent.com/flyfish-dev/shortlink/main/docs/assets/ai-shortlink-demo.gif)\n\n## 简介\n\nAI Shortlink 是一个轻量级、可私有化部署的短链与活码管理平台。它把短链生成、二维码定制、活码轮替、访问统计和审核发布放在一个 Go 单体服务里，默认使用内置 SQLite，适合个人、小团队和需要自主管理链接/二维码的运营场景。\n\n它的定位不是庞大的营销系统，而是一个可以很快跑起来、日常真正用得上的基础工具：发活动链接、临时替换落地页、维护长期不变的二维码入口、查看基础访问统计，都可以在同一个后台完成。\n\n## 轻量级特点\n\n- Go 单体应用，前端为内置 HTML/CSS/JavaScript，无 Node 构建链。\n- 默认内置 SQLite，首次启动进入安装向导即可完成配置；也支持 MySQL/MariaDB。\n- 支持 Docker / Docker Compose / Render / Linux amd64 单文件二进制部署。\n- 无 ORM，迁移 SQL 随程序内置，部署和维护成本比较低。\n\n## 主要功能\n\n- 短链：自定义短码、301/302/307/308 跳转、启停、过期时间、访问上限、备用链接。\n- 活码：固定入口二维码不变，后台维护多个二维码；支持轮询、权重随机、最少展示优先等策略。\n- 二维码定制：classic / rounded / dots 样式、品牌色、中心贴图，支持 SVG / PNG / WEBP 下载。\n- 统计：短链访问、活码展示、近 30 日趋势、设备/浏览器分布和最近访问明细。\n- 协作：Magic Link、GitHub OAuth、多用户、管理员角色，以及短链/活码/二维码项审核流程。\n\n## 使用场景\n\n- 个人或小团队想替代第三方短链服务，自己掌握数据和域名。\n- 线下海报、公众号、社群等需要“二维码入口不变，后台灵活换码”。\n- 临时活动链接需要过期、限量访问、备用跳转和基础统计。\n- 内网/私有化环境中需要一个简单可靠的链接和二维码管理后台。\n\n欢迎大家试用，也欢迎提 issue 或 PR。\n",
-    "created_at": "2026-07-06T01:22:51Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10595"
   }
 ]
