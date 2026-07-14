@@ -36,7 +36,9 @@
     "title": "〖开源自荐〗light-ocr：运行时无需 Python 的跨平台离线 OCR（Node.js / C++）",
     "content": "项目地址：https://github.com/arcships/light-ocr\n\nnpm：https://www.npmjs.com/package/@arcships/light-ocr\n\n![light-ocr](https://raw.githubusercontent.com/arcships/light-ocr/main/docs/assets/light-ocr-banner.png)\n\n### 一句话介绍\n\nlight-ocr 是一个面向 Node.js 和原生应用的跨平台离线 OCR 库，基于 PP-OCRv6 Small，直接在应用进程内完成文字识别，不需要上传图片，也不需要额外部署 Python 服务。\n\n### 为什么做这个项目\n\n云端 OCR 会带来图片上传、网络依赖、持续费用和隐私边界；PaddleOCR 的常见部署方式又需要维护 Python 环境或独立服务。\n\nlight-ocr 希望把 OCR 变成可以直接嵌入应用的本地能力：应用传入已经解码的图像像素，即可获得按阅读顺序排列的文字、置信度和四边形坐标。\n\n### 核心特点\n\n- 完全本地运行，识别过程不访问网络、不启动子进程\n- npm 包自带固定版本的 PP-OCRv6 Small 模型和预编译原生运行时\n- 安装时不需要现场编译，首次运行也不需要再下载模型\n- 支持中文、英文以及 CJK/拉丁字符混排识别\n- 返回文字、置信度和四点坐标，可保留旋转、透视文字的位置\n- 支持 `GRAY8`、`RGB8`、`BGR8` 和 `RGBA8` 像素输入\n- Node.js 推理不会阻塞 JavaScript 主线程，并支持有界队列、取消和生命周期管理\n- 针对大图控制检测尺寸，并逐批执行文字识别，减少内存峰值\n- macOS、Linux 和 Windows 使用同一套模型与结果格式\n- Apache License 2.0 开源\n\n### 快速使用\n\n```bash\nnpm install @arcships/light-ocr\n```\n\n```ts\nimport { createEngine } from \"@arcships/light-ocr\";\n\nconst engine = await createEngine();\n\nconst result = await engine.recognize({\n  data: pixels,\n  width,\n  height,\n  stride,\n  pixelFormat: \"rgba8\",\n});\n\nconsole.log(result.lines);\nawait engine.close();\n```\n\n### 适用场景\n\n- 桌面应用中的截图 OCR、框选识别和剪贴板文字提取\n- 本地优先、重视隐私的笔记和文档工具\n- 图片搜索、文字复制、画面标注和无障碍功能\n- 内网、边缘设备、自助终端等无法依赖云服务的环境\n- 希望集成 PaddleOCR，但不想单独维护 Python 服务的 Node.js 或 C++ 项目\n\n### 技术栈与平台\n\n- C++17、ONNX Runtime、CMake、Node-API\n- 模型：PP-OCRv6 Small\n- Node.js：22 / 24\n- 平台：macOS arm64/x64、Linux x64 glibc、Windows x64\n\n项目目前仍在积极开发，欢迎试用、反馈实际使用场景或参与贡献。",
     "created_at": "2026-07-14T09:51:14Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10714"
   },
   {
@@ -100,7 +102,9 @@
     "title": "自荐开源项目：TurboOCR，用 C++ 和 TensorRT 写的 GPU 文档解析服务器",
     "content": "自荐一个自己写的开源项目：TurboOCR，一个 GPU 文档解析服务器。\n\n项目地址：https://github.com/aiptimizer/TurboOCR\n官网：https://turboocr.com\n\n整个流水线是 C++/CUDA/TensorRT 实现的，OCR、版面分析、表格转 HTML、公式转 LaTeX、PDF 转 Markdown 都在本地跑，不用调云 API，对外提供 HTTP 和 gRPC 接口，MIT 协议。\n\n做这个的原因是嫌现有方案太慢。VLM 类的文档解析大概每秒一页，传统引擎速度也一般。TurboOCR 在一张 5090 上整页 OCR 能跑到每秒五百多张，完整的结构化解析每秒二十页左右。识别用的是 PP-OCRv6，精度和 PaddleOCR 官方基本一致，中文日文拉丁文一个模型全包，中英混排文档开箱即用。除了中日英，还保留了阿拉伯文、西里尔文、韩文、泰文、希腊文的识别器，换个环境变量就能切。\n\n接口方面，除了基本的 /ocr 和 /ocr/raw，还有 /ocr/pdf（整本 PDF，加 ?markdown=1 直接出 Markdown）、/ocr/batch 批量、/infer 结构化输出。表格和公式是按请求开关的，加 ?tables=1&formulas=1 就行，不开不占资源。服务自带健康检查和 Prometheus 指标，放到 k8s 里也好管理。\n\n部署就一行 docker：\n\n```bash\ndocker run --gpus all -p 8000:8000 -p 50051:50051 \\\n  -v trt-cache:/home/ocr/.cache/turbo-ocr \\\n  ghcr.io/aiptimizer/turboocr:latest\n```\n\n需要 Linux 和 N 卡，20 系以上，纯文本 4G 显存左右，全流水线 8G。TensorRT 引擎第一次启动自动构建，之后有缓存就是秒起。第一次构建在 5090 上大概一分半钟，老卡会慢不少，可以设 TRT_OPT_LEVEL=3 把构建时间压下来。\n\n模型来自 PaddleOCR 全家桶，感谢百度开源，推理和服务层是我重新用 C++ 写的。适合要本地化、大批量处理、数据不能出内网的场景。后面还打算继续优化 CPU 推理和补充更多语言支持，想法都放在仓库的 issue 里了。\n\n欢迎试用，有问题提 issue。",
     "created_at": "2026-07-14T01:14:23Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10706"
   },
   {
@@ -108,7 +112,9 @@
     "title": "【开源自荐】Oh My HuggingFace —— 支持断点续传、缓存管理的 Hugging Face 桌面客户端",
     "content": "项目地址：https://github.com/oh-my-hf/ohmyhf\n\nOh My HuggingFace 是一个非官方的开源桌面客户端，用来浏览、下载和管理 Hugging Face Hub 上的模型、数据集、Spaces 和 Daily Papers，支持 macOS / Windows / Linux。\n\n做这个的原因很直接：用浏览器下几十 GB 的模型权重体验很差——不支持断点续传、没有下载队列、不能限速；本地 HF 缓存目录会不知不觉吃掉几百 GB 硬盘却没地方查看和清理；关注的组织和 Daily Papers 更新也只能靠手动刷网页。\n\n主要特点：\n\n- 下载管理器：断点续传、多线程并行、队列、限速、SHA-256 校验，文件落在标准 HF 缓存目录结构里，和 transformers、huggingface-cli 等工具无缝兼容\n- 缓存可视化：按仓库查看磁盘占用，一键清理过期 revision\n- 三栏浏览：模型 / 数据集 / Spaces / Daily Papers，键盘优先（Cmd/Ctrl+K 命令面板），文件树 + 文件预览\n- 关注用户 / 组织 / 仓库 / 论文并接收系统通知\n- 一键导出模型到 Ollama、LM Studio、ComfyUI\n- 支持自定义 Hub 地址（如 hf-mirror.com）和代理设置\n- 零遥测，HF token 用系统钥匙串加密存储，应用数据全部保存在本地 SQLite\n\nApache-2.0 协议，目前是早期版本（v0.0.8），欢迎试用和反馈。\n",
     "created_at": "2026-07-13T19:49:07Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10705"
   },
   {
@@ -140,7 +146,9 @@
     "title": "【开源自荐】屏译（Screen Translator）Android 游戏 / 漫画实时屏幕翻译",
     "content": "项目地址：https://github.com/ciddwd/overlay-translator  \n下载地址：https://github.com/ciddwd/overlay-translator/releases/tag/v0.3.8  \n开源协议：Apache-2.0\n\n# 屏译 · Screen Translator\n\n屏译是一款免费、无广告、无需 ROOT 的 Android 屏幕实时翻译工具，主要面向游戏、视觉小说、漫画和视频字幕等场景。\n\n使用时点击悬浮球，应用会完成：\n\n> 截取屏幕 → OCR 识别文字 → 调用翻译引擎 → 将译文叠加到原文附近\n\n不需要来回切换翻译软件，译文会直接显示在当前应用或游戏画面上。\n\n## 主要功能\n\n- **多种翻译方式**：支持全屏翻译、区域划词和自动循环翻译，也可以通过音量双键触发\n- **端侧 OCR**：支持 ML Kit、PaddleOCR 和日漫 OCR，图片无需上传，断网时也可以识别\n- **云端及本地 OCR**：支持 PP-OCRv6 在线、百度、腾讯、有道，以及局域网内的 Umi-OCR、LunaTranslator\n- **多种翻译引擎**：支持 DeepL、DeepLX、Google、有道、百度、腾讯，以及 OpenAI 兼容接口\n- **端侧翻译模型**：支持 Sakura 日译中模型和 Hy-MT2 多语种模型，模型下载完成后可以离线翻译\n- **横排和竖排识别**：可自动判断横排、竖排和旋转文字，针对日文竖排漫画做了专门处理\n- **漫画与视觉小说优化**：支持段落合并、振假名过滤、日漫气泡识别和竖排译文布局\n- **两种译文显示模式**：可以把译文贴在原文附近，也可以集中放入可拖动、缩放和锁定的悬浮窗口\n- **划词翻译卡片**：框选单词或短语后，可显示译文、音标、词性、释义、例句和难点说明\n- **外观自定义**：支持译文颜色、透明度、字体、字号、描边、阴影、间距和对齐方式\n- **配置迁移**：可导出和导入非敏感设置、预设及字体，API Key 和 Token 不会被写入配置包\n\n## 使用场景\n\n- 在手机上游玩没有中文的游戏或视觉小说\n- 阅读日文竖排漫画、韩漫或外文图片\n- 翻译视频字幕、应用界面和其它无法复制的屏幕文字\n- 使用自己的 OCR、LLM、DeepLX 或局域网翻译服务\n- 希望使用端侧 OCR 和本地模型，减少截图上传\n\n## 项目特点\n\n屏译并不绑定某一家 OCR 或翻译服务。用户可以根据设备性能、网络环境和隐私需求，自由组合端侧、云端或自托管引擎。\n\n项目目前支持 Android 8.0 及以上系统，APK 暂时只提供 `arm64-v8a` 版本。\n\n## 效果截图\n\n### 游戏画面译文叠加\n\n![游戏内译文叠加](https://raw.githubusercontent.com/ciddwd/overlay-translator/main/docs/screenshots/overlay-game.png)\n\n### 日文竖排漫画\n\n![日文竖排漫画翻译](https://raw.githubusercontent.com/ciddwd/overlay-translator/main/docs/screenshots/overlay-manga-jp.png)\n\n项目仍在持续开发，欢迎试用、提交 Issue 或参与贡献。",
     "created_at": "2026-07-13T10:56:28Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10701"
   },
   {
