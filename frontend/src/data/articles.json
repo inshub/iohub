@@ -1,5 +1,53 @@
 [
   {
+    "id": 10724,
+    "title": "【开源自荐】静隐（Quitty） - 让指定 Mac 应用在关闭窗口后退出",
+    "content": "静隐（Quitty）是一款轻量、现代的 macOS 工具，可在应用程序关闭最后一个窗口时自动终止该程序。它旨在成为旧版工具（如 SwiftQuit）的稳健、高性能且兼容 macOS Tahoe 的替代品。\n\n因为在 Mac 上有部分应用关闭窗口后，还在后台运行，有些临时性的应用真的没必要常驻，比如“预览”、“文本编辑器”等等。之前用 SwiftQuit 可以解决这个问题，但升级 macOS 26 后就失效了，我就自己做了一个。\n自用了一段时间了，迭代了多次，基本可以满足需求。未来还会持续更新。\n\n开源地址：[https://github.com/chentao1006/Quitty](https://github.com/chentao1006/Quitty)\n\n### 核心功能\n\n- 自动终止：当您关闭最后一个窗口时，立即（或延迟）退出应用程序。\n- 适配 macOS Tahoe：使用原生辅助功能 API (AXObserver)，以实现与 macOS 16 的最大兼容性。\n- 智能过滤：\n- 包含模式：仅退出您指定列表中的应用程序。\n- 排除模式：退出除您希望保持运行的应用程序之外的所有程序。\n- 可配置延迟：设置应用程序终止前的自定义缓冲时间（0-5 秒）。\n- 登录时启动：与您的 Mac 无缝同步启动。\n- 自我学习引擎：静隐 会根据您的反馈进行学习。如果应用误退或无法退出，您可以点击反馈，系统将自动识别该应用的窗口特征并自我调整。\n- iCloud 云端同步：通过您的 iCloud 账号在多台 Mac 之间自动同步设置与已学习的退出规则，全程无感。\n\n### 截图\n\n![Image](https://github.com/user-attachments/assets/38e6146c-7be6-4e28-bf0d-cb0ed2197427)\n![Image](https://github.com/user-attachments/assets/b65c9b6f-5536-4292-afac-59706c4d4292)\n![Image](https://github.com/user-attachments/assets/cdb43430-0563-425e-8cef-e6c4e694653e)\n![Image](https://github.com/user-attachments/assets/42cbc24a-453d-42ef-9693-9dd8a1bb5d7f)\n![Image](https://github.com/user-attachments/assets/d8b67b5f-7852-4e82-89c3-d42489b90273)",
+    "created_at": "2026-07-15T02:17:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10724"
+  },
+  {
+    "id": 10723,
+    "title": "【开源自荐】同览 (BrowSync) —— macOS 多浏览器分流与同步中枢",
+    "content": "**同览 (BrowSync)** 是一款 macOS 原生的跨浏览器分流与同步中枢。它打通 Safari 与所有 Chromium 内核浏览器，智能分流链接并实时同步数据，为您统一浏览体验。\n\n应用官网：https://browsync.ct106.com\n项目源码：https://github.com/chentao1006/BrowSync\n\n## 主要功能\n\n- **URL 分流**：将同览设为 macOS 默认浏览器后，可根据域名、URL 规则、参数、来源应用或时间段，将链接自动定向到指定的浏览器。\n- **书签同步**：在 Safari 和所有 Chromium 内核浏览器之间实时同步书签。\n- **状态同步**：在各浏览器之间同步 Cookie、LocalStorage 和 sessionStorage，保持登录状态一致。\n- **标签页共享**：跨浏览器查看当前打开的标签页。自动过滤无痕模式及非 HTTP(S) 协议页面，并对重复的 URL 进行去重。\n- **同步策略**：支持单向同步（主从模式）、基于访问时间的最后写入者胜出、双向合并。\n- **站点控制**：通过白名单/黑名单管理同步范围，支持为特定网站设置独立策略。\n- **原生 macOS 应用**：使用 SwiftUI 构建，支持深色/浅色主题、菜单栏集成和登录时启动。\n- **iCloud 同步**：通过 iCloud 在您的所有 Mac 设备之间自动同步分流规则、偏好设置和站点配置。\n\n## 界面截图\n\n| | |\n|:---:|:---:|\n| ![截图 1](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000001.jpg) | ![截图 2](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000002.jpg) |\n| ![截图 3](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000003.jpg) | ![截图 4](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000004.jpg) |\n| ![截图 5](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000005.jpg) | ![截图 6](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000006.jpg) |\n| ![截图 7](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000007.jpg) | ![截图 8](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000008.jpg) |\n\n> [!IMPORTANT]\n> **隐私保护**\n> 同览 (BrowSync) 的同步和 URL 分流通过本地 WebSocket 守护进程进行。浏览数据（书签、Cookie、本地存储、活动标签页等）保存在本地设备，不涉及外部服务器。\n",
+    "created_at": "2026-07-15T02:15:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10723"
+  },
+  {
+    "id": 10722,
+    "title": "【工具自荐】CPS Test（Clicks Per Second Test，每秒点击次数测试）手速、反应力，专注力测试的小工具",
+    "content": "阮老师好，推荐一个手速、反应力，专注力测试的工具（后续会迭代更多功能页面）：\n\n**CPS Test（Clicks Per Second Test，每秒点击次数测试）**\n\n网站地址：https://cpstest.me\n\n**可以帮助到我们什么：**\n\n1、提升操作熟练度\n可以通过反复测试，练习点击速度、节奏控制和手眼协调能力。\n\n2、帮助游戏玩家训练\n在《Minecraft》PVP、射击游戏、即时战略游戏等需要频繁点击的场景中，玩家可以用它了解自己的点击速度。\n\n3、检测鼠标状态\n如果鼠标出现单击变双击、漏点、按键回弹异常等问题，CPS 测试可以作为初步检测工具。\n\n4、比较硬件体验\n可以比较不同鼠标、触控板、手机屏幕的点击响应和操作手感。\n\n5、缓解压力和提供娱乐\n短时间快速点击具有挑战性，适合排行榜、好友比赛和休闲小游戏。\n\n6、辅助交互研究\n在产品设计和人机交互研究中，可以用于观察用户的点击频率、疲劳程度和操作习惯。\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe79c067-36a5-4dcf-a0b7-8333d0dc452f\" />\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/276f1a71-062f-4373-b6a6-421133c806c1\" />\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1797cdc5-74a8-402f-982d-24edae4b0ff4\" />\n",
+    "created_at": "2026-07-15T02:09:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10722"
+  },
+  {
+    "id": 10721,
+    "title": "【开源自荐】Waveloom — DeepSeek 原生终端编码代理",
+    "content": "### 项目描述\n\nWaveloom 是一个 Go 实现的终端编码代理（AI Coding Agent）。核心卖点是针对 DeepSeek 的前缀匹配缓存机制做了工程化优化：固定 System Prompt + 只追加的消息历史 + 四级水位线压缩，让最长公共前缀跨 turn 保持 cache-hot，最大化缓存命中、最小化 token 成本。\n\n终端交互部分对标 Claude Code 的 TUI 体验：流式推理高亮、富 diff、权限确认弹框、`@` 模糊文件选择器、`/` 命令面板、light/dark/色盲主题、中英文双语切换。\n\n### 亮点\n\n特点：\n- **缓存优先**：四级水位线（Snip → Prune → Summarize），单调压缩，每消息只压缩一次\n- **双模自动路由**：Advisor 模式自动按任务选模型——pro 深度推理，flash 常规编码，token 成本降低约 50%\n- **`.claude/skills/` 开箱兼容**：9 个 frontmatter 字段、`$ARGUMENTS` 变量注入、`` !`cmd` `` 动态注入，从 Claude Code 零摩擦迁移\n- **子代理系统**：Fork（热启动继承上下文）/ Cold：Evaluate（代码审查）· Explore（只读探索）· Verification（对抗验证）· Advisor（深度分析）\n- **Plan Mode**：设计→审批两阶段，Guard 强制写保护，仅允许写入 plan 文件\n- **权限安全**：8 步规则引擎 + 3 级命令安全分级（RiskNone/RiskLow/RiskHigh）\n- **Checkpoint/Rewind**：回退到任意历史消息，文件状态完整恢复\n- **13 内置工具**：`read` / `write` / `edit`（hashline 编辑模型）/ `bash` / `web_fetch` / `web_search` / `ask_user_question` / `agent` / `skill` / `todo_write` / `kill_background_task` / `enter_plan_mode` / `exit_plan_mode`\n- **MCP 完整支持**：配置加载合并、Stdio/HTTP 传输、Claude Code `mcpServers` 配置兼容\n\n\n### 示例代码\n\n```sh\n# macOS / Linux\ncurl -fsSL https://raw.githubusercontent.com/Menfre01/waveloom/main/install.sh | sh\n\n# 或 Homebrew\nbrew install menfre01/tap/waveloom\n\n# Windows (PowerShell)\npowershell -c \"irm https://raw.githubusercontent.com/Menfre01/waveloom/main/install.ps1 | iex\"\n\n# 配置 API key 后运行：\nwaveloom setup\nwaveloom\n```\n\n### 截图或演示视频\n![Waveloom Demo](https://raw.githubusercontent.com/Menfre01/waveloom/main/assets/demo.gif)",
+    "created_at": "2026-07-15T01:58:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10721"
+  },
+  {
+    "id": 10720,
+    "title": "【开源插件自荐】Feedless - 屏蔽主页算法推荐，重新夺回注意力",
+    "content": "## 项目介绍\n\n现在的社交、视频、甚至搜索网站都采用了算法推荐，这经常会导致用户分散注意力，使用网站过程中忘记本来要做的事。Feedless 支持以下网站的主页内容推荐屏蔽，用户可手动关闭屏蔽或设置浏览提醒时间。\n\n| 视频    | 社交      | 购物 | 其他 |\n| -------- | ----------- | -------- | ----- |\n| YouTube  | X (Twitter) | 淘宝   | 百度 |\n| TikTok   | 小红书 | 京东   |       |\n| B站 | 微博       |          |       |\n| 抖音   | 知乎       |          |       |\n\n## 项目特色\n\n- 开源免费，后续会支持更多网站，项目地址：https://github.com/palemoky/feedless\n- 现已上架 [Chrome 插件商店](https://chromewebstore.google.com/detail/mkkdldcdmlfnodnlknphfffekdbmnnji) ，一键安装即可\n- 设置时间后，页面强提醒，保持专注\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8b5ead6c-f977-4383-bdc0-d90aaa0703f4\" />",
+    "created_at": "2026-07-14T23:51:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10720"
+  },
+  {
+    "id": 10719,
+    "title": "【开源自荐】🌻Workavera 是一个可自托管的 AI 团队工作台，在同一个应用中连接对话、知识、关系、项目、任务和时间承诺。",
+    "content": "项目地址：https://github.com/xusenlin/workavera\n官网地址：https://workavera.com/\n\nWorkavera 是一个自包含可自托管的 AI 团队工作台，在同一个应用中连接对话、知识、关系、项目、任务和时间承诺。\n也就是通过对话聊天，你可以管理你的工作看板，文档，团队联系人以及日历事件，一个二进制文件或者一句docker命令就能把服务跑起来。",
+    "created_at": "2026-07-14T23:48:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10719"
+  },
+  {
     "id": 10718,
     "title": "【开源自荐】coding-discipline —— 给 Claude Code / Codex 的中文「编程纪律」插件",
     "content": "项目地址：https://github.com/chipfighter/coding-discipline\n\nAI 编程助手（Claude Code / Codex）最大的问题往往不是能力，而是纪律：不问清需求直接开写、修 bug 靠瞎试、嘴上说\"测试通过了\"其实没跑过。\n\ncoding-discipline 是一套「瘦但有牙」的通用编程纪律 skill 集——装一次、全局生效、跨项目通用：\n\n- **8 条纪律 skill**：设计先行（brainstorming）、红绿重构（tdd）、先根因再修（systematic-debugging）、优先级评审（code-review）、拿证据再说\"做完了\"（verify-before-done）、git 流程、上下文防毒（context-hygiene）等。每条只保留 ~30 行「模型不知道的硬规矩」，删掉所有解释和废话。\n- **SessionStart 自动注入**：每个会话开场自动注入一段极短的纪律总纲，让 skill 被勤触发，不靠描述碰运气。\n- **首次进项目自动生成引导文档骨架**（CLAUDE.md / AGENTS.md，绝不覆盖已有的），随项目「每拍板一件事补一行」长大。\n- **跨平台**：Claude Code 和 Codex 都能用；hook 做了 Windows / git-bash 适配（纯 bash、无 jq 依赖）。\n- **全中文**：理念借鉴英文的 superpowers（MIT，已在 README 致谢），收敛成中文轻量版。\n\nMIT 协议。欢迎试用和提意见。\n",
@@ -768,55 +816,5 @@
     "created_at": "2026-07-07T05:50:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10610"
-  },
-  {
-    "id": 10609,
-    "title": "【开源自荐】tty7：纯 Rust 编写的 GPU 渲染终端，快且提示符好用",
-    "content": "项目地址：https://github.com/l0ng-ai/tty7\n\n开源协议：Apache-2.0\n\n![tty7](https://raw.githubusercontent.com/l0ng-ai/tty7/main/docs/screenshot.jpg)\n\n## 简介\n\ntty7 是一个用纯 Rust 编写、GPU 渲染的终端，基于 Zed 的 gpui 框架和 Alacritty 的 VT 内核。目标很简单：渲染要快，提示符要真的帮上忙。\n\n它把内联补全、语法高亮、历史记录和终端内搜索都做进了提示符，还内置了约 100 个常用命令的参数签名（git、kubectl、npm 等，数据来自 Fig 的语料）——敲下 `git commit --`，就能在终端里直接列出每个 flag 及其说明，不用装插件，也不用额外的 shell 框架。\n\n## 性能实测\n\n同一台机器、同一 155×40 网格（Apple M1 Pro）：11 MB 的 `cat` 只要约 **95 ms**，Alacritty / Ghostty / Kitty 为 179–239 ms；DOOM-fire 跑到约 **888 fps**，它们在 485–617 之间。输出成批解析、脱离渲染路径，热路径全程无锁，所以大量输出不会卡在渲染上。基准脚本就在仓库里，欢迎自己复现、挑方法学的刺。\n\n## 主要特性\n\n- **增强提示符**：内联补全、语法高亮、历史、终端内搜索，以及约 100 个命令的参数/子命令签名。\n- **懂 shell**：新标签页和分屏都开在当前目录，路径补全相对当前目录；zsh / bash / fish / PowerShell 开箱即用。\n- 标签页（拖拽重排、双击重命名、数字键切换）、可拖动分屏、命令面板、点击打开链接、桌面通知、焦点随鼠标。\n- 内置 8 套主题（系统标题栏明暗跟随），支持 CJK 与输入法组合输入。\n- macOS（签名 + 公证 DMG）、Windows、Linux 三平台原生构建，每个 release 一起打出。\n\n## 使用场景\n\n- 想要一个渲染够快、日常又顺手的终端，替代现有的 GPU 终端。\n- 经常敲长命令、记不住 flag，希望在终端里直接看到参数说明。\n- 需要跨平台、开箱即用、零配置的终端体验。\n\n欢迎试用，也欢迎提 issue 和 PR。\n",
-    "created_at": "2026-07-07T02:42:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10609"
-  },
-  {
-    "id": 10608,
-    "title": "【开源自荐】Claude Science 开源替代 - 科研自动化AI Agent",
-    "content": "Runcell Science 是一个Claude Science的开源替代，它可以协助科研工作的自动化：自动调研、下载整理、阅读论文，进行编程、实验等。内部继承了数十个生物医药、化学、物理等科学类skills和数据库连接器。\n\n与claude science绑定claude官方生态不同，它可以切换到不同的code agent服务上，如openai codex与其他自定义的agent/模型。\n\n- 代码仓库: [Runcell Science](https://github.com/runcell-ai/runcell-science)\n\n<img width=\"2988\" height=\"1998\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/315d8490-440a-415f-8d18-17a66af4e7d0\" />\n\nhttps://github.com/user-attachments/assets/e969e690-790d-4685-9f7c-4b74f374907c",
-    "created_at": "2026-07-06T15:21:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10608"
-  },
-  {
-    "id": 10607,
-    "title": "[工具推荐] tokencost - LLM令牌成本计算器，一键对比20+模型API费用",
-    "content": "## 工具推荐\n\n**项目地址：** https://github.com/alvabillwu/tokencost\n\n**一句话介绍：** 命令行LLM令牌成本计算器，支持20+模型的token计数与费用对比。\n\n### 为什么值得推荐\n\n使用大模型API时，不同模型的定价差异很大（GPT-5 Nano每百万token不到$0.10，Claude Opus 4.6则超过$15）。开发者在选择模型时往往缺乏直观的成本对比工具。\n\ntokencost解决了这个问题：\n- 精确token计数（tiktoken for OpenAI）+ 智能估算（其他模型）\n- 覆盖OpenAI、Anthropic、Google、Meta、DeepSeek、阿里Qwen等主流厂商20+模型\n- 终端彩色对比表格，支持管道过滤\n- 一键推荐预算内最优模型\n- 支持大规模预估（--runs 1000）\n\n### 使用示例\n\n```bash\npip install tokencost\ntokencost compare --input-tokens 10000 --output-tokens 5000\n\n# Model                    Input    Output         Cost  Provider\n# gpt-5-nano              10,000      5,000    $0.0009  OpenAI\n# llama-4-scout           10,000      5,000    $0.0025  Meta\n# gpt-4o-mini             10,000      5,000    $0.0045  OpenAI\n# claude-opus-4-6         10,000      5,000    $0.5250  Anthropic\n\n# 在预算内推荐最便宜的模型\ntokencost suggest --file prompt.txt --budget 0.50\n```\n\n### 技术栈\nPython，MIT 开源协议\n",
-    "created_at": "2026-07-06T12:44:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10607"
-  },
-  {
-    "id": 10606,
-    "title": "[工具推荐] mcp-guard - MCP服务器安全扫描器，给AI Agent加上安全审核",
-    "content": "## 工具推荐\n\n**项目地址：** https://github.com/alvabillwu/mcp-guard\n\n**一句话介绍：** 给MCP（Model Context Protocol）生态加上安全审核，类似`npm audit`的体验。\n\n### 为什么值得推荐\n\n2026年MCP相关CVE已超过30个，包括一个9.6 CVSS评分的RCE漏洞。据统计，仅有12.9%的公开MCP服务器被评为\"高信任度\"。当AI Agent接入越来越多的MCP工具时，安全问题日益突出。\n\nmcp-guard解决了这个问题：\n- 扫描MCP服务器的`tools/list`返回结果，检测10种危险能力（Shell执行、文件写入、网络访问、凭证泄露、命令注入等）\n- 每个工具给出0-100风险评分，safe/caution/dangerous三级判定\n- 支持预设策略（default/strict/permissive）和自定义白名单\n- CI就绪，检测到危险工具时非零退出\n- 零运行时依赖，纯Node.js标准库\n\n### 使用示例\n\n```bash\nnpm install -g mcp-guard\nmcp-guard scan manifest.json\n# 输出：\n# mcp-guard — DANGEROUS  5 tools, 2 safe, 1 caution, 2 dangerous  risk: 52/100\n#   ✓ hello                       0\n#   ⚠ read_file                  10\n#   ✗ execute_command            35\n```\n\n### 技术栈\nNode.js，MIT 开源协议\n",
-    "created_at": "2026-07-06T12:44:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10606"
-  },
-  {
-    "id": 10605,
-    "title": "【工具自荐】一个 3D 抛骰子网站，支持多种类型骰子！",
-    "content": "网站地址：https://wheelpage.com/dice-roller/\n\n页面很简单，打开之后点一下，骰子滚动，然后给出结果。\n\n这是一个在线 3D 骰子工具，打开网页后可以直接掷骰子，不需要登录，也不需要安装 App。\n\n它主要适合一些临时需要骰子的场景，比如桌游、课堂小游戏、聚会互动，或者只是想随机决定一件事。\n\n一开始我觉得骰子只是 1 到 6 的随机数，应该很简单。但做的时候发现，如果只是直接显示数字，更像随机数生成器，不太像“掷骰子”。\n\n所以这个页面做成了 3D 骰子的形式。点击后骰子会滚动，再停到最终结果上，尽量保留一点真实掷骰子的感觉。\n\n<img width=\"2508\" height=\"1553\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5f399747-178e-413e-94f5-63d719ce8e9d\" />",
-    "created_at": "2026-07-06T10:20:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10605"
-  },
-  {
-    "id": 10604,
-    "title": "【开源推荐】开源 AI 实时世界杯解说，视障球迷可无障碍观赛",
-    "content": "WorldCupVoice 是一个开源的 AI 实时体育解说项目。在reddit、x、thread上累计超过 12k 浏览。\n\n通过让大语言模型直接观看实时视频流，像体育解说员一样，根据场上正在发生的内容实时生成语音解说。\n\n项目使用 Agora 搭建实时音视频链路：直播画面通过 RTMP 推流进入 RTC 频道，AI 在服务端实时获取并采样视频帧，通过 OpenAI 的视觉模型理解比赛内容、生成解说文本，再通过 TTS 合成语音并发布回 RTC 频道。观众在观看比赛的同时，也能听到 AI 生成的实时解说。\n\n支持 OpenAI TTS、ElevenLabs 和 Fish Audio，也可以配置不同语言和解说风格。\n\n视障球迷完全依赖声音看球，而真人解说习惯性省略很多视觉细节：球在哪、压力从哪侧来、谁在前插跑位。这些是 AI 能稳定补上的信息，无障碍观赛可能是这套技术眼下最实在的用途。\n\n项目目前 v0.1，还在持续迭代，计划中的方向包括：多人解说（两个 AI 搭档配合）、多语言覆盖、降低延迟，以及专门面向视障用户的解说模式。\n\nGitHub：https://github.com/zicojiao/worldcupvoice\n\nhttps://github.com/user-attachments/assets/727a038f-9a83-46d2-923f-8fc414aec6b3",
-    "created_at": "2026-07-06T09:44:10Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10604"
   }
 ]
