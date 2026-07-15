@@ -1,5 +1,45 @@
 [
   {
+    "id": 10742,
+    "title": "【开源自荐】Lovia：看得懂，也改得动的 Python Agent 框架",
+    "content": "Lovia 是一个轻量、模型无关的 Python Agent 框架。\n\n仓库：<https://github.com/cymoo/lovia>，文档：<https://cymoo.github.io/lovia/>\n\n特点：\n- 极简依赖。 核心依赖只有 httpx、pydantic 和 pyyaml，其余按需安装即可。\n- 抽象很少。 Agent 是不可变配置，Runner 执行一次运行，@tool 就是带类型的函数；handoff 和 agent-as-tool 组合多个 agent；插件负责打包其余能力。\n- 读得懂。 关键流程集中，模型调用、工具执行、重试和持久化的顺序都很清楚。 遇到意外行为时，可以顺着同一条链路查下去。\n- 模型接入轻。 内置 OpenAI、Anthropic 及其兼容接口。 不堆厚重适配层；要接新模型，实现一个小 Protocol 就够了。\n- 缓存友好的上下文管理。 压缩只改变下一次模型调用能看到的内容， 保持提示词前缀稳定，同时完整记录始终保留。\n- 生产控制点清楚。 审批、预算、取消、运行中追加指令、重试、快照/恢复， 都是明确的开关，可以按你的应用需要接入。\n- 扩展方式统一。 Skills、MCP、Todo、Memory 都是插件；要加入自定义的能力， 也走同一套机制。\n\n简单示例：\n\n```python\nfrom lovia import Agent, Memory, Skills, tool\nfrom lovia.workspace import Workspace\nfrom lovia.web import serve\n\n\n@tool\ndef light_travel_time(distance_km: float) -> str:\n    \"\"\"计算光走完一段距离需要多久。\"\"\"\n    return f\"{distance_km / 299_792.458:.2f} 秒\"\n\n\nagent = Agent(\n    name=\"science-writer\",\n    instructions=\"你是一位科普作者，善于用生动的日常比喻讲清复杂的科学概念。\",\n    model=\"deepseek-v4-pro\",\n    tools=[light_travel_time],\n    workspace=Workspace.local(\".\", mode=\"readonly\"),\n    plugins=[\n        Skills(\"./skills\"),\n        Memory(),\n    ],\n)\n\n\nserve(agent, host=\"127.0.0.1\", port=8000)\n```",
+    "created_at": "2026-07-15T16:19:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10742"
+  },
+  {
+    "id": 10741,
+    "title": "5dive —— 自托管的 AI agent 团队（开源）",
+    "content": "**5dive** —— 在你自己的服务器上跑一整支 AI 智能体团队的开源工具。没有框架、没有协议：每个 agent 是一个独立的 Linux 用户，以 systemd 服务的形式运行官方 coding CLI（Claude Code、Codex 等），通过一条共享的 bash CLI 协作、从任务队列领活、只有需要人拍板时才通过 Telegram 提醒你。`claude` 类型可接 DeepSeek / Kimi / 智谱 GLM / OpenRouter，用你自己的 Key 和国产模型。MIT 协议。\n\nhttps://github.com/5dive-ai/5dive",
+    "created_at": "2026-07-15T15:46:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10741"
+  },
+  {
+    "id": 10740,
+    "title": "[工具自荐] Crosshair Maker：浏览器里的 VALORANT 准星生成器",
+    "content": "项目地址：https://crosshairmaker.com/zh?utm_source=github.com&utm_medium=referral&utm_campaign=promotion\n\nCrosshair Maker 是一个免费的浏览器端 VALORANT 准星生成器，适合在进入游戏前调整参数并比较可见性。\n\n主要特点：\n\n- 可以调整颜色、轮廓、中心点、内侧线、外侧线、移动误差和射击误差；\n- 参数变化会同步更新预览和 profile code；\n- 支持静止、移动、射击三种预览状态，以及训练场、庭院、深色网格三种背景；\n- 提供 5 个可继续编辑的 preset，可直接复制生成的代码；\n- 无需注册或付费，设置保存在浏览器本地。\n\n网页预览主要用于比较，最终效果仍建议在自己的 VALORANT 客户端和常用分辨率下确认。该项目是独立工具，与 Riot Games 无关联，也未获其背书。",
+    "created_at": "2026-07-15T14:58:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10740"
+  },
+  {
+    "id": 10739,
+    "title": "〖开源自荐〗Sprite Fusion AI Pixel Snapper：修复 AI 生成的像素画",
+    "content": "## 项目地址\n\nhttps://github.com/Hugo-Dz/spritefusion-pixel-snapper\n\n## 在线体验\n\nhttps://www.spritefusion.com/pixel-snapper\n\n## 项目简介\n\nGPT Image、Gemini 等图像生成模型无法准确理解像素画所需的规则网格间距，因此生成的通常只是“看起来像像素画”的大尺寸图片，例如 1024×1024，而不是真正对齐像素网格的图像。\n\nSprite Fusion AI Pixel Snapper 是一个开源工具，可以推测图像中隐含的网格尺寸，并修复 AI 生成图像中的 mixel 问题，例如非正方形的像素块、大小不均匀以及调色板漂移。\n\n该项目支持从源码构建 CLI 和 WebAssembly 版本，也可以直接通过在线版本使用。\n\n## 效果展示\n\n<img width=\"2360\" height=\"1294\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e3f887f2-8f76-49fe-91eb-59f8385b84af\" />",
+    "created_at": "2026-07-15T14:57:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10739"
+  },
+  {
+    "id": 10738,
+    "title": "【文章自荐】面对 300+ 仓库的重复劳动，我用 Guideline 优化了 Vibe Coding 工作流",
+    "content": "Guideline 是我在工作中总结出针对单次重复工作的 Vibe Coding 方式。可以简单理解为一种外置的临时 SKILL。\n\n这篇文章以我在工作中遇到的实际情况，介绍了 “单次重复性工作” 的定义；Guideline 的定义，并且以 Node.js 24 升级为例列举了实际用法和与 SKILL 的区别。\n\n文章地址：[面对 300+ 仓库的重复劳动，我用 Guideline 优化了 Vibe Coding 工作流](https://mp.weixin.qq.com/s/4vhbqifyRmh1NT6GpasLmA)",
+    "created_at": "2026-07-15T14:27:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10738"
+  },
+  {
     "id": 10737,
     "title": "【开源自荐】Seedance 2.5 API 适合中小团队的低成本接入方案",
     "content": "# https://github.com/ZeroLu/seedance2.5-API?utm_source=ruanyf_weekly_submission\n\n这是一个围绕 Seedance 2.5 的开源 API 接入仓库，适合想先把文生视频、图生视频和真人参考工作流跑通的开发者。\n\n它不是单纯放几张效果图，而是把实际接入会用到的模型调用、素材上传、任务轮询、Python 示例都整理好了。对个人开发者、小团队和做 Demo 验证的人会比较实用。\n\n如果你最近正好在看 Seedance 2.5，这个仓库可以帮你少走很多接入层的弯路。\n\n![](https://raw.githubusercontent.com/ZeroLu/seedance2.5-API/main/assets/seedance25-api-cover-16x9-cropped.png)\n\n![](https://raw.githubusercontent.com/ZeroLu/seedance2.5-API/main/assets/cyberbara_20260715_114320_d28075f0.png)\n\n- 支持文生视频、图生视频、真人参考图工作流\n- 提供标准化 API 调用示例和 Python 包装\n- 适合前期测试、工作流验证、原型接入\n\n相关链接：\n\n- 仓库地址：https://github.com/ZeroLu/seedance2.5-API?utm_source=ruanyf_weekly_submission\n",
@@ -770,45 +810,5 @@
     "created_at": "2026-07-08T10:01:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10629"
-  },
-  {
-    "id": 10628,
-    "title": "【开源自荐】静隐 - 让指定 Mac 应用在关闭窗口后退出",
-    "content": "静隐 是一款轻量、现代的 macOS 工具，可在应用程序关闭最后一个窗口时自动终止该程序。它旨在成为旧版工具（如 SwiftQuit）的稳健、高性能且兼容 macOS Tahoe 的替代品。\n\n因为在 Mac 上有部分应用关闭窗口后，还在后台运行，有些临时性的应用真的没必要常驻，比如“预览”、“文本编辑器”等等。之前用 SwiftQuit 可以解决这个问题，但升级 macOS 26 后就失效了，我就自己做了一个。\n自用了一段时间了，迭代了多次，基本可以满足需求。未来还会持续更新。\n\n开源地址：[https://github.com/chentao1006/Quitty](https://github.com/chentao1006/Quitty)\n\n### 核心功能\n\n- 自动终止：当您关闭最后一个窗口时，立即（或延迟）退出应用程序。\n- 适配 macOS Tahoe：使用原生辅助功能 API (AXObserver)，以实现与 macOS 16 的最大兼容性。\n- 智能过滤：\n- 包含模式：仅退出您指定列表中的应用程序。\n- 排除模式：退出除您希望保持运行的应用程序之外的所有程序。\n- 可配置延迟：设置应用程序终止前的自定义缓冲时间（0-5 秒）。\n- 登录时启动：与您的 Mac 无缝同步启动。\n- 自我学习引擎：静隐 会根据您的反馈进行学习。如果应用误退或无法退出，您可以点击反馈，系统将自动识别该应用的窗口特征并自我调整。\n- iCloud 云端同步：通过您的 iCloud 账号在多台 Mac 之间自动同步设置与已学习的退出规则，全程无感。\n\n### 截图\n\n![Image](https://github.com/user-attachments/assets/38e6146c-7be6-4e28-bf0d-cb0ed2197427)\n![Image](https://github.com/user-attachments/assets/b65c9b6f-5536-4292-afac-59706c4d4292)\n![Image](https://github.com/user-attachments/assets/cdb43430-0563-425e-8cef-e6c4e694653e)\n![Image](https://github.com/user-attachments/assets/42cbc24a-453d-42ef-9693-9dd8a1bb5d7f)\n![Image](https://github.com/user-attachments/assets/d8b67b5f-7852-4e82-89c3-d42489b90273)",
-    "created_at": "2026-07-08T09:01:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10628"
-  },
-  {
-    "id": 10627,
-    "title": "【开源自荐】slop-review：专治 AI slop 的本地代码评审",
-    "content": "> slop-review：一个本地代码评审工具。在 AI 刚交付的 feature 分支上运行 npx slop-review，即可像 GitHub PR 那样逐行评论；再借助配套 skill 把 AI 拉进针对具体代码的评审讨论，全程不污染主对话的上下文。零依赖，支持纯终端界面。\n\n一个本地 PR 评审工具，专门用来 review AI 生成的 slop 💩\n\n在 AI agent 刚交付的 feature 分支上运行 `npx slop-review`，就能像 GitHub PR 那样在 diff 上逐行留评论。它最大的特点是配套一个 skill：可以把 agent 拉进针对具体代码行的评审讨论，而这些针对性的来回都不会污染主对话的上下文。\n\n- **零运行时依赖**：仅用 `node:http` 加标准库，`npx` 不拉任何间接依赖包，Node ≥ 20 即可\n- **评论即本地 JSON**：所有线程存在 `<repo>/.reviews/`，agent 直接读写，无需服务器或 HTTP 集成\n- **纯终端 + Vim 键位**：`--carbonyl` 可把整个 diff 界面画进终端，全程键盘操作\n\n项目地址：https://github.com/genkio/slop-review\n网站演示：https://genkio.github.io/slop-review/",
-    "created_at": "2026-07-08T06:27:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10627"
-  },
-  {
-    "id": 10626,
-    "title": "【开源自荐】同览—— macOS 多浏览器分流与同步中枢",
-    "content": "**同览 (BrowSync)** 是一款 macOS 原生的跨浏览器分流与同步中枢。它打通 Safari 与所有 Chromium 内核浏览器，智能分流链接并实时同步数据，为您统一浏览体验。\n\n应用官网：https://browsync.ct106.com\n项目源码：https://github.com/chentao1006/BrowSync\n\n## 主要功能\n\n- **URL 分流**：将同览设为 macOS 默认浏览器后，可根据域名、URL 规则、参数、来源应用或时间段，将链接自动定向到指定的浏览器。\n- **书签同步**：在 Safari 和所有 Chromium 内核浏览器之间实时同步书签。\n- **状态同步**：在各浏览器之间同步 Cookie、LocalStorage 和 sessionStorage，保持登录状态一致。\n- **标签页共享**：跨浏览器查看当前打开的标签页。自动过滤无痕模式及非 HTTP(S) 协议页面，并对重复的 URL 进行去重。\n- **同步策略**：支持单向同步（主从模式）、基于访问时间的最后写入者胜出、双向合并。\n- **站点控制**：通过白名单/黑名单管理同步范围，支持为特定网站设置独立策略。\n- **原生 macOS 应用**：使用 SwiftUI 构建，支持深色/浅色主题、菜单栏集成和登录时启动。\n- **iCloud 同步**：通过 iCloud 在您的所有 Mac 设备之间自动同步分流规则、偏好设置和站点配置。\n\n## 界面截图\n\n| | |\n|:---:|:---:|\n| ![截图 1](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000001.jpg) | ![截图 2](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000002.jpg) |\n| ![截图 3](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000003.jpg) | ![截图 4](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000004.jpg) |\n| ![截图 5](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000005.jpg) | ![截图 6](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000006.jpg) |\n| ![截图 7](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000007.jpg) | ![截图 8](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000008.jpg) |\n\n> [!IMPORTANT]\n> **隐私保护**\n> 同览 (BrowSync) 的同步和 URL 分流通过本地 WebSocket 守护进程进行。浏览数据（书签、Cookie、本地存储、活动标签页等）保存在本地设备，不涉及外部服务器。\n",
-    "created_at": "2026-07-08T05:51:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10626"
-  },
-  {
-    "id": 10625,
-    "title": "Perks Reminder：开源信用卡权益提醒工具",
-    "content": "项目名称：Perks Reminder\n\n项目地址：https://github.com/lifan-builds/perks-reminder\n\n在线体验：https://www.perks-reminder.com\n\nPerks Reminder 是一个免费的开源信用卡权益提醒工具，用来追踪信用卡周期性福利、开卡奖励 deadline、年费 ROI、里程积分过期和到期提醒。\n\n它不是自动抓取银行账户的工具，而是一个轻量、透明、用户自己可控的 tracker。用户可以添加自己持有的卡，自动生成每月 / 每季 / 每年的 benefit，设置邮件提醒，标记完成或部分完成，并导入 / 导出数据。\n\n2.1 版本重做了手机端 UI，并加入 Benefit 使用手册，帮助记录权益触发方式、常见坑和真实使用 DP。项目也支持 PWA 和自部署。",
-    "created_at": "2026-07-07T23:51:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10625"
-  },
-  {
-    "id": 10624,
-    "title": "【开源课程】Deep Agents 实战：从零构建生产级 AI Agent 的中文开源课程",
-    "content": "# Deep Agents 实战：从零构建生产级 AI Agent 的中文开源课程\n\n项目地址：https://github.com/datawhalechina/deepagents-in-action\n\n课程网站：https://datawhalechina.github.io/deepagents-in-action/\n\n这是一个基于 LangChain / LangGraph / Deep Agents 生态的中文开源课程，系统讲解如何从零构建生产级 AI Agent。\n\n课程最近迁移到了 DatawhaleChina 组织下，GitHub Star 已超过 1k（当前 1070）。相比之前的早期版本，现在内容已经更新到 **9 章 + 2 个准备篇**，从入门逐步推进到更完整的 Agent 工程实践。\n\n已发布内容包括：\n\n- Agent Framework、Agent Harness 与 Context Engineering\n- 5 分钟构建第一个 Deep Agent\n- 虚拟文件系统与上下文管理\n- 任务规划与 TodoListMiddleware\n- 子 Agent 与上下文隔离\n- 异步子 Agent 与并行编排\n- Skills 可复用能力包\n- 长期记忆与 CompositeBackend\n- Human-in-the-Loop 人机协作流程\n\n配套资源也比较完整，每章有文字教程和视频讲解，适合想系统学习 LangChain 生态、Deep Agents、生产级 AI Agent 工程实践的开发者。\n\n许可证：课程内容 CC BY-NC-SA 4.0，网站源码 MIT。\n",
-    "created_at": "2026-07-07T15:22:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10624"
   }
 ]
