@@ -1,5 +1,21 @@
 [
   {
+    "id": 10744,
+    "title": "[工具自荐] lonlat: 在线地理编码-批量将地址转为坐标",
+    "content": "网站地址：[https://lonlat.giserlab.cn](https://lonlat.giserlab.cn)\n\n\n## 简介\n\n阮老师，这是一款完全运行在 浏览器端的免费在线地理编码工具，旨在帮助 GIS 从业者、数据分析师、开发者等快速、批量地将地址转换为经纬度坐标。只需要上传包含地址的 CSV 文件，选择想要使用的地图平台，几秒到几分钟后即可获得转换结果，并支持在地图上可视化检查转换结果。\n\n## 核心功能与亮点\n\n*   支持 五大主流地图平台 地理编码服务：\n    高德地图 百度地图 Mapbox HERE OpenStreetMap\n    \n*   支持拖拽上传CSV 文件批量导入地址\n*   转换结果实时地图可视化，便于检查偏差\n*   支持导出为 CSV 或 GeoJSON 格式\n*   纯前端运行，数据永不上传服务器 ，隐私更安全\n*   完全免费 ，无需注册、无需 Key\n*   无需安装任何软件，无需编写一行代码\n\n## 为什么要做这个工具？\n\n最早写了一个 [QGIS 插件](https://plugins.qgis.org/plugins/geocode_cn/) 来实现这个功能，但随着 QGIS 版本升级和依赖库的变化，插件逐渐无法使用。市面上的地理编码解决方案要么需要复杂的 API 调用、要么收费昂贵、要么要把敏感地址数据上传到云端……所以决定做一个 简单、免费、私密、可视化的纯浏览器端替代方案。\n\n## 效果截图\n\n<img width=\"2880\" height=\"1434\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/615dabc0-1173-46d3-a84c-de0b5fe4352b\" />\n\n<img width=\"2880\" height=\"1436\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a22bcae2-352f-450f-906a-8db556a4797f\" />\n\n<img width=\"2880\" height=\"1432\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b5e4d67c-94f7-43fc-9ea0-16c8178d9bba\" />",
+    "created_at": "2026-07-15T17:28:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10744"
+  },
+  {
+    "id": 10743,
+    "title": "[工具自荐] Polily TUI：一款真正有用的开源Polymarket  24/7 agentic 循环监控器",
+    "content": "<img width=\"896\" height=\"769\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/144a0757-8cc7-48f4-87f5-404310e26b00\" />\n\n我大概持续开发了这个产品 [Polily](https://github.com/ShiyuCheng2018/polily) 三个多月了, 原因是去年我机缘巧合写过一个预测市场项目, 然后自己上头玩了小半年. 目前产品13.0 拥有完整的作用闭环, 我个人觉得挺好用的哈. 欢迎加星星, 或者给我买份汉堡支持下我哈, 有问题 随时提issue.\n\n“粘贴 Polymarket 事件 URL，Polily 即可判断该事件是否值得您投入时间，评估其结构，查找定价错误，监控价格走势，并在市场结算时自动平仓。Polily 是一款监控代理，能够揭示 Polymarket 用户界面隐藏的信息——针对你正在考虑的每个事件。”\n\n\n\n<img width=\"1176\" height=\"956\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/16fa86fe-ede7-428b-bf82-153998600498\" />\n\n<img width=\"1172\" height=\"959\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1457972f-b745-4a39-903b-b92c76dafee3\" />\n\n<img width=\"1173\" height=\"955\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/30f834e4-5b99-4e5b-b2ff-7797d654eea0\" />\n\n<img width=\"1174\" height=\"1226\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/126f05ee-c12c-4dd5-8e79-4a8288c6a459\" />\n\n<img width=\"1179\" height=\"1224\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9562845f-104b-40af-8675-d086d41cc94e\" />",
+    "created_at": "2026-07-15T17:18:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10743"
+  },
+  {
     "id": 10742,
     "title": "【开源自荐】Lovia：看得懂，也改得动的 Python Agent 框架",
     "content": "Lovia 是一个轻量、模型无关的 Python Agent 框架。\n\n仓库：<https://github.com/cymoo/lovia>，文档：<https://cymoo.github.io/lovia/>\n\n特点：\n- 极简依赖。 核心依赖只有 httpx、pydantic 和 pyyaml，其余按需安装即可。\n- 抽象很少。 Agent 是不可变配置，Runner 执行一次运行，@tool 就是带类型的函数；handoff 和 agent-as-tool 组合多个 agent；插件负责打包其余能力。\n- 读得懂。 关键流程集中，模型调用、工具执行、重试和持久化的顺序都很清楚。 遇到意外行为时，可以顺着同一条链路查下去。\n- 模型接入轻。 内置 OpenAI、Anthropic 及其兼容接口。 不堆厚重适配层；要接新模型，实现一个小 Protocol 就够了。\n- 缓存友好的上下文管理。 压缩只改变下一次模型调用能看到的内容， 保持提示词前缀稳定，同时完整记录始终保留。\n- 生产控制点清楚。 审批、预算、取消、运行中追加指令、重试、快照/恢复， 都是明确的开关，可以按你的应用需要接入。\n- 扩展方式统一。 Skills、MCP、Todo、Memory 都是插件；要加入自定义的能力， 也走同一套机制。\n\n简单示例：\n\n```python\nfrom lovia import Agent, Memory, Skills, tool\nfrom lovia.workspace import Workspace\nfrom lovia.web import serve\n\n\n@tool\ndef light_travel_time(distance_km: float) -> str:\n    \"\"\"计算光走完一段距离需要多久。\"\"\"\n    return f\"{distance_km / 299_792.458:.2f} 秒\"\n\n\nagent = Agent(\n    name=\"science-writer\",\n    instructions=\"你是一位科普作者，善于用生动的日常比喻讲清复杂的科学概念。\",\n    model=\"deepseek-v4-pro\",\n    tools=[light_travel_time],\n    workspace=Workspace.local(\".\", mode=\"readonly\"),\n    plugins=[\n        Skills(\"./skills\"),\n        Memory(),\n    ],\n)\n\n\nserve(agent, host=\"127.0.0.1\", port=8000)\n```",
@@ -794,21 +810,5 @@
     "created_at": "2026-07-08T11:42:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10631"
-  },
-  {
-    "id": 10630,
-    "title": "当服务器、后台都没了，怎么备份一个网站？",
-    "content": "前段时间遇到一件很头疼的事情。\n\n一个企业官网还能正常访问，但是：\n\n没有服务器权限\n没有后台\n没有 FTP\n没有 Git\n没有数据库\n\n唯一剩下的，就是那个还能打开的网站。\n\n想备份一下，发现要么是几十年前的 HTTrack，要么就是记一长串 wget 参数：\n\nwget \\\n  --mirror \\\n  --convert-links \\\n  --adjust-extension \\\n  --page-requisites \\\n  --no-parent\n\n当时就在想：\n\n为什么 2026 年了，网站镜像还是这个体验？\n\n所以就用 Rust 写了一个 SiteGrab。\n\nsitegrab https://example.com\n\n就这一条命令。\n\n目前支持：\n\n🚀 整站镜像\n🔄 增量更新\n⏯️ 断点续传\n🔗 自动改写链接，可离线浏览\n📦 自动打包 ZIP\n🤖 可选遵守 robots.txt\n\n目前对 WordPress、静态站、传统 CMS 测试都没问题。\n\nReact/Vue 等 SPA 后续准备加入 Playwright 渲染模式。\n\nGitHub：https://github.com/kerwin2046/SiteGrab\n\n如果你也遇到过类似的问题，欢迎试用一下。\n\n有 Bug、功能建议或者想法，都欢迎提 Issue 或 PR。\n\n如果觉得有帮助，也欢迎点个 ⭐ 支持一下。",
-    "created_at": "2026-07-08T10:11:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10630"
-  },
-  {
-    "id": 10629,
-    "title": "Submit Tool: Gpt",
-    "content": "Name: Gpt\nWebsite: https://trygrokai.asia/\nCategory: AI Tools, Productivity\nShort description: Gpt is an AI tool for improving productivity, content workflows, research, and daily work.\nTags: Gpt, AI Tool\nWhy it fits: 科技工具、网站、资源\nDisclosure: submitted by the project owner/operator. If this format does not match the repository guidelines, please let me know and I will adjust it.",
-    "created_at": "2026-07-08T10:01:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10629"
   }
 ]
