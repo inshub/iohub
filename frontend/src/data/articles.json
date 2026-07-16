@@ -1,5 +1,37 @@
 [
   {
+    "id": 10760,
+    "title": "【开源自荐】Foursmith VR —— 换种方式打开 VR，不用头显，也不怕晕动症",
+    "content": "这是一个 VR 播放器，但不是为了 VR 眼镜所打造，Foursmith VR 为手机和平面显示器打造，带给你最优雅的观看体验。\n\n开源地址: [https://github.com/foursmith/vr](https://github.com/foursmith/vr)\n链接：[https://vr.foursmith.com](https://vr.foursmith.com)\n\n## DEMO Video（放心观看）\n\n[▶ Watch the demo video](https://cdn.jsdelivr.net/gh/foursmith/vr@main/doc/demo.mp4)\n\n## License\n\nFoursmith VR is licensed under the [Mozilla Public License 2.0](https://github.com/foursmith/vr/blob/main/LICENSE).\n\nCode by GPT 5.6 Sol. Taste by [ourongxing](https://github.com/ourongxing).\n\n---\n\n<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-reduced-motion: reduce)\" srcset=\"https://raw.githubusercontent.com/foursmith/vr/main/doc/banner.jpg\">\n    <img src=\"https://raw.githubusercontent.com/foursmith/vr/main/doc/banner.webp\" alt=\"Foursmith VR\" width=\"960\">\n  </picture>\n  <p><strong><em>像刷短视频一样看 VR</em></strong></p>\n  <p><em>不用头显，也不怕晕动症。坐下，打开视频，直接看。</em></p>\n  <p><a href=\"https://vr.foursmith.com/\"><strong>打开 Foursmith VR →</strong></a></p>\n</div>\n\n## 功能\n\n- **不用头显也能看 VR。** 把沉浸式视频转换成舒适、直观的 2D 画面。\n- **镜头自动跟人。** 自动构图并居中人脸，让人物一直待在舒服的观看位置。\n- **竖屏看人更清楚。** 把宽画面重复排成竖屏分栏，人物更大、更容易看清。\n- **常见格式都能播。** 浏览器直接打开 180°、360°、左右、上下、鱼眼和平面视频。\n- **本地片库直接用。** 支持选择文件或文件夹、运行自带媒体服务器，以及发现 DLNA 设备中的视频。\n- **看到什么就导出什么。** 选好 A–B 片段，即可导出当前画面的 WebM、MP4 或单文件 Motion Photo；浏览器支持时也会带上可见字幕。\n- **字幕自动跟上。** 自动匹配同名字幕文件，也支持基于浏览器的实时语音翻译方案。\n- **操作顺手。** 支持鼠标、键盘快捷键和屏幕控制栏；完全免费、开源。\n\n## 使用\n\n> [!IMPORTANT]\n> Safari 和 Firefox 通常无法流畅播放大多数 8K VR 视频。iOS 上的所有浏览器底层都是 Safari。\n\n推荐使用桌面版 Chrome、Edge 或其他 Chromium 浏览器。",
+    "created_at": "2026-07-16T13:12:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10760"
+  },
+  {
+    "id": 10759,
+    "title": "【网站自荐】AddressMock —— 美国测试地址生成器，城市/州/邮编严格匹配",
+    "content": "https://addressmock.com\n\n给开发和测试同学做的美国地址样例生成器。和常见的随机地址工具不同，它保证生成的 City、State、ZIP Code、电话区号来自同一地区数据集，不会出现「旧金山的邮编配纽约的城市」这种过不了表单校验的组合。\n\n主要功能：\n\n- 覆盖全部 50 个州 + DC，可按州、城市、姓名性别生成\n- 每个字段一键复制，也可按「结账页预设」整组复制\n- 纯前端生成，数据不上传；保存记录在浏览器本地，可导出 CSV / JSON\n- 附带地址格式指南（Address Line 2 怎么填、St/Ave/Blvd 区别、County 是什么等）\n\n适合注册/结账流程联调、地址校验组件测试、演示数据填充。生成的地址不做真实可投递验证，仅用于开发测试场景。",
+    "created_at": "2026-07-16T11:42:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10759"
+  },
+  {
+    "id": 10758,
+    "title": "【开源自荐】Coaction 3.0：无需手写 Selector、计算属性自动缓存，Action 还能运行在 Web Worker 中的 Zustand 风格状态库",
+    "content": "Repo：https://github.com/coactionjs/coaction\n\nCoaction 3.0 是一个开源的 JavaScript/TypeScript 状态管理库。它保留了 Zustand 风格简洁的 Store API，同时将自动渲染依赖追踪、缓存计算状态和“可变式写法、不可变结果”整合进同一套响应式模型。当应用需要扩展时，同一份 Store 还可以运行在 Web Worker 或\nSharedWorker 中，为页面和多标签页提供统一的状态与 Action 执行能力。\n\n## 核心要点\n\n- 无需手写 Selector：React 组件通过 observer() 自动追踪渲染期间实际读取的字段，只在相关状态变化时重新渲染。\n- 计算属性自动缓存：直接使用 Getter 定义派生状态，依赖未变化时不会重复计算，无需额外使用 useMemo 或 Reselect。\n- 可变式更新，不可变结果：在 set() 中直接修改草稿状态，最终仍生成不可变状态，兼顾开发体验与可预测性。\n- Action 可运行在 Worker 中：共享模式下，Action 在权威 Store 所在的 Worker 执行，页面端读取本地镜像，并自动等待状态同步完成。\n- 可靠的共享状态协议：3.0 使用版本化的 JSON 通信协议，通过 authority epoch、连续 sequence、断线重连和完整同步处理并发与状态缺口。\n- 按需选择运行时：提供 coaction/local、coaction/shared 和 coaction/adapter 独立入口，普通单线程应用无需引入完整的共享运行时。\n- 保留显式控制能力：仍支持传统 Selector、自动 Selector Map 和手动声明依赖的 computed API。\n- 覆盖主流前端生态：支持 React、Vue、Angular、Svelte 和 Solid，并提供 Zustand、Redux、MobX、Pinia、Jotai、Valtio、XState、Yjs 等集成。\n- 适合渐进式采用：可以先作为普通的本地状态库使用，之后再根据架构需要迁移到 Worker、SharedWorker或多标签页共享模式。",
+    "created_at": "2026-07-16T11:40:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10758"
+  },
+  {
+    "id": 10757,
+    "title": "【开源自荐】Véspero：可插拔的多出口策略控制器",
+    "content": "## Véspero\n\n> 连接留在原处，只让地平线移动。\n\n- 项目地址：https://github.com/tianrking/Vespero\n- 中文介绍：https://github.com/tianrking/Vespero/blob/main/README.zh-CN.md\n\nVéspero 是一个开源的**多出口策略控制器**。它不发明新的代理协议，而是在本机或 VPS 上提供一个稳定的 HTTP / SOCKS5 入口，把 Direct、Tor、VPN Gate 等出口收束到同一套 Web 控制台和 OpenAPI 下。\n\n一个典型用法是：让 Mihomo、sing-box 或 Hysteria2 保持原有客户端配置，只把服务端上游指向 Véspero。此后，用户可以在网页中按 Provider、国家和节点切换出口；脚本或 Agent 也可以通过 API 完成同样的操作。\n\n### 已经实现\n\n- Direct、Tor、VPN Gate 三类可插拔出口\n- 按国家约束 Tor 出口，并显示当前出口 IP、延迟和健康状态\n- Web 控制台一键切换；OpenAPI 3.1 与 Swagger UI 可供自动化调用\n- 一个稳定的 HTTP / SOCKS5 TCP 数据面，适合作为现有代理服务的上游\n- Linux 完整支持，Direct 与 Tor 也可运行于 Windows\n- Debian / Windows 构建，以及 Ubuntu 22.04、24.04、26.04 和 Windows 2022、2025 的安装启动测试\n\n![Véspero 控制台](https://raw.githubusercontent.com/tianrking/Vespero/main/assets/screenshots/control-deck.png)\n\n![出口目录与策略](https://raw.githubusercontent.com/tianrking/Vespero/main/assets/screenshots/route-catalog.png)\n\n项目目前以 TCP 出口编排为主，不承诺匿名性，也不重新实现 Tor 或 OpenVPN。它想解决的是更朴素的问题：**把散落在配置文件、脚本和多个进程里的出口选择，变成一个可观察、可切换、可编程的控制平面。**\n",
+    "created_at": "2026-07-16T11:29:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10757"
+  },
+  {
     "id": 10756,
     "title": "【自荐】CometAPI：一个统一的 AI 模型 API",
     "content": "网站：https://www.cometapi.com/\n\nCometAPI 是一个面向开发者的统一 AI 模型 API 平台，通过 OpenAI 兼容接口提供 500+ AI 模型的访问。\n\n它主要解决多模型开发中的集成问题：开发者可以使用相似的 API 调用方式测试和切换不同模型，而不需要分别维护多个模型提供商的接口。\n\n目前覆盖 LLM、图像、视频、音频、Coding 和 Reasoning 等类型的模型，适合 AI Agent、SaaS、自动化工作流以及需要进行多模型测试和路由的项目。\n\n我们也在 GitHub 上维护了开发者 Cookbook，提供 API 调用和模型使用示例：\n\nhttps://github.com/cometapi-dev/cometapi-cookbook\n\n欢迎体验和反馈。",
@@ -776,37 +808,5 @@
     "created_at": "2026-07-09T10:43:42Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10647"
-  },
-  {
-    "id": 10646,
-    "title": "【开源自荐】带有桌面端和移动端的中转站+Agent AI平台 Veloce",
-    "content": "项目地址（服务端）：https://github.com/WindyPear-Team/veloce\n\n桌面端：https://github.com/WindyPear-Team/veloce-desktop\n\n移动端：https://github.com/WindyPear-Team/veloce-mobile\n\nAgent CLI连接器：https://github.com/WindyPear-Team/veloce-app\n\nWeb前端：https://github.com/WindyPear-Team/veloce-web\n\n技术栈：Golang+React，\n\n大家好，这是我使用AI耗时30天左右开发的中转站与Agent代理的结合体：Veloce\n\nVeloce服务端提供后端服务和前端嵌入，桌面端可以连接后端也可以自动从Github下载最新服务端并内嵌启动，手机端仅能连接服务端。桌面端可以同时连接多个后端。\n\n用户在服务端上面可以进行AI对话与Agent使用，会话由服务端运行，可以实现跨设备流转。\n\n为了实现对本地文件的操作，可以在电脑上运行CLI连接器，由后端向连接器下发命令/文件修改操作。桌面端可以一键下载最新版本连接器并运行。\n\n支持连接器端启动MCP服务器，支持上传Skill到服务端，支持SSE与标准输入输出两种方式的MCP。\n\n支持将多个Agent一起组建“工作室”，每个agent拥有对应角色，由chief安排任务，worker进行执行，并且agent可以自我分裂。拥有沙箱功能与每个agent的更改提取，文件修改会产生Delta记录，由reviewer进行整合后落实。\n\n安装方式：在相应仓库Release下载最新版本对应架构的压缩包/exe，解压后运行即可。\n\n<img width=\"2880\" height=\"1630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e14efa4a-2680-4851-a941-82816b9e1a7d\" />\n\n<img width=\"2880\" height=\"1552\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cbcceb56-da80-4d70-855a-518e30eaf746\" />\n\n<img width=\"776\" height=\"716\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/67ae624b-b309-4ba4-94ef-bee4c50bb81f\" />\n\n<img width=\"778\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6751b2c9-9d9e-41fc-848a-1fda257703a1\" />",
-    "created_at": "2026-07-09T09:52:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10646"
-  },
-  {
-    "id": 10645,
-    "title": "ClaviSay：从真实网页阅读中学习语言",
-    "content": "项目名称：ClaviSay\n**项目链接**：\n- 官网：https://clavisay.ai\n- Chrome 扩展：https://chromewebstore.google.com/detail/dgopbpenohldokjmlbijimpkbommcbjg?utm_source=item-share-cb\n- 演示视频/截图：\n\n<img width=\"2938\" height=\"1520\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0ecbfa26-4cc2-47c1-a555-d7f4c7e3927d\" />\n\n**一句话介绍**：\nClaviSay 是一个面向英语学习者的浏览器扩展，把真实网页阅读过程中的生词、上下文和 AI 解释保存下来，之后可以复习，而不是脱离语境背单词。\n\n**主要特点**：\n1. 在真实网页中阅读，遇到不懂的词可以直接查询和保存。\n2. 保存的不只是单词，还有原文上下文，方便之后回到语境里复习。\n3. 支持 AI 解释，帮助理解词义、句子和用法。\n4. 更适合经常阅读英文技术文章、文档、博客的人，用日常阅读自然积累词汇。\n\n适合周刊读者的原因：\n很多科技爱好者每天都会读英文文档、论文、博客和产品资料。ClaviSay 想解决的是：阅读时查过的词很快忘掉，复制到单词本又太麻烦，普通背词工具又脱离真实语境。它把“阅读、理解、保存、复习”放在同一个流程里。\n\n目前状态：\n产品已上线，同时覆盖Web/Chrome插件/App Store/Google Play应用商店",
-    "created_at": "2026-07-09T09:42:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10645"
-  },
-  {
-    "id": 10644,
-    "title": "网站502了",
-    "content": null,
-    "created_at": "2026-07-09T08:22:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10644"
-  },
-  {
-    "id": 10643,
-    "title": "〖开源自荐〗zootree：面向多仓库开发的 Git Worktree 工作空间管理工具",
-    "content": "项目地址：https://github.com/weineel/zootree\n\n大家好，我自荐一个开源工具：zootree。\n\nzootree 是一个基于 Git Worktree 的多仓库工作空间管理工具，支持两种并行使用方式：\n\n1. 开发者手工使用：通过交互式命令创建、启动、打开、完成和取消 workspace。\n2. AI Agent 使用：通过 Agent Skill 学会非交互命令，自动创建、启动和管理 workspace。\n\n它解决的问题是：很多开发任务会同时涉及多个仓库，比如前端、后端、组件库、配置仓库等。人工操作时，需要分别创建分支、创建 worktree、打开终端、启动 lazygit 或 agent，完成后还要逐个合并和清理。zootree 把这些步骤抽象成一个 workspace，让人和 AI Agent 都能复用同一套工作空间管理方式。\n\nSkill 安装：\n\n```bash\nnpx skills install weineel/zootree\n```\n\n安装后，支持 Skill 机制的 AI Agent 可以根据说明调用 zootree，例如：\n\n```bash\nzootree create \\\n  --title \"Add user profile page\" \\\n  --name user-profile \\\n  --branch feature/user-profile \\\n  --repos frontend:main,backend:main \\\n  --run-agent my-agent\n```\n\n开发者也可以手工交互式创建：\n\n```bash\nzootree create\n```\n\n主要功能：\n\n- 多仓库 workspace：一次管理多个仓库的同一任务分支。\n- 人工 / Agent 并行使用：人可以交互式操作，AI Agent 可以通过 skill 使用非交互参数。\n- 基于 Git Worktree：每个任务有独立工作目录，不污染主 checkout。\n- 终端复用器集成：推荐 cmux，也支持 Zellij，自动打开布局好的开发环境。\n- LazyGit 集成：每个仓库可以直接进入对应 worktree 的 lazygit。\n- 生命周期 Hook：支持 create/start/done/cancel/remove 等阶段执行脚本。\n- 模板与文件复制：可保存常用多仓库组合，并自动复制 `.env` 等配置文件。\n\nCLI 安装方式：\n\n```bash\ncurl --proto '=https' --tlsv1.2 -LsSf https://github.com/weineel/zootree/releases/latest/download/zootree-installer.sh | sh\n```\n\n也可以使用 Homebrew 或 crates.io：\n\n```bash\nbrew install weineel/tap/zootree\ncargo install zootree --locked\n```\n\n适合场景：\n\n- 经常需要同时修改多个仓库。\n- 想为每个需求创建独立 worktree 工作区。\n- 希望人和 AI Agent 都用同一套 workspace 约定。\n- 想把 lazygit、终端布局、agent 执行环境绑定到同一个任务空间里。\n\n项目使用 Rust 实现，MIT 协议。\n",
-    "created_at": "2026-07-09T08:18:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10643"
   }
 ]
