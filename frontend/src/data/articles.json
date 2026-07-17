@@ -1,5 +1,13 @@
 [
   {
+    "id": 10780,
+    "title": "【开源自荐】Chaty：本地私有 AI 桌面应用（GGUF + 原生 MLX）",
+    "content": "# Chaty\n\nChaty 是一个开源（MIT）的本地 AI 桌面应用，让大模型完全在你自己的电脑上运行——无需 API Key、数据不联网。支持 GGUF 模型（Windows 走 Vulkan、macOS 走 Metal），以及 Apple Silicon 上的原生 MLX 模型。\n\n🔗 **代码仓库：** https://github.com/Fangyuan025/Chaty\n🔗 **官网：** https://chaty.ca\n\n## 主要功能\n\n- **模型商店** — 应用内搜索 Hugging Face，选量化档、看「能否装进你的内存」提示，一键下载；支持切换到镜像端点（hf-mirror.com），国内无需代理\n- **知识库 RAG** — 对本地文档问答，答案带可悬停溯源的引用，无依据时严格拒答\n- **识图 + 语音** — 视觉模型看图、免手操作的实时语音对话\n- **编程智能体** — 沙盒内的编码 agent，能规划、改代码、跑测试、自我纠错，用你本地加载的任意模型驱动\n- **双推理引擎** — Rust 写的 llama.cpp 常驻引擎（按显存自动调优 + OOM 回退不卡机）+ 原生 MLX Swift 侧车（进程隔离，弹出模型即释放全部内存）\n- **100% 本地** — 无云端、无遥测、无账号\n\n## 平台\n\nWindows / macOS（Apple Silicon 原生 MLX）；界面中英双语；开源 MIT。",
+    "created_at": "2026-07-17T20:43:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10780"
+  },
+  {
     "id": 10779,
     "title": "【开源自荐】Claude Pet — Claude Code 的桌面伙伴，本地图记忆 + 项目上下文注入 + GitHub 活动提醒",
     "content": "# Claude Pet\n\nClaude Pet 是一个开源（MIT 许可）的桌面伙伴，为 Claude Code 用户设计。它以卡通机器人形象浮现在屏幕右下角，实时响应 Claude Code 的每一个 hook 事件——11 种情绪 + 声音提示，让你在切换到浏览器或其他应用时也能一眼知道 Claude Code 正在做什么。\n\n🔗 **代码仓库：** https://github.com/nikhilagrima/claude-pet\n🔗 **官网：** https://nikhilagrima.github.io/claude-pet\n\n## 主要功能\n\n- **实时反馈** — 11 种情绪对应 Claude Code 的不同状态：阅读文件、编辑、bash 命令、成功、失败、等待输入等，每种都有专属动画和声音\n- **每项目本地图记忆** — 用 SQLite 存储每个项目的决策、约定、修复、坑点；新会话开始时通过 SessionStart hook 自动注入不超过 800 tokens 的精炼上下文，Claude 无需重新读文件、跑 git log 就能理解项目\n- **自动生成 SKILL.md** — 出现两次以上的模式会自动提升为 Claude Code 的技能文件（写入 `~/.claude/skills/`），跨项目共享经验\n- **人体工程学教练** — 根据实际编码时间（不是挂机时间）在合适时机提示护眼、颈部、腕部微休息，宠物本身会演示动作\n- **GitHub 仓库监听** — 监听任何仓库的新 commit、PR、code review、release、CI/deploy 状态，用 toast 弹窗即时提示，可直接点击跳转\n- **100% 本地运行** — 无云端、无遥测、无账号；所有数据保存在本机 `~/.claude/claude-pet/memory.sqlite`\n\n## 平台\n\nmacOS / Windows / Linux（PySide6 单代码库，二进制安装包已发布）\n\n## 技术栈\n\nPython 3.10+ · PySide6 (Qt) · SQLite (FTS5) · Flask · PyObjC (macOS 窗口置顶) · PyInstaller\n\n## 开源协议\n\nMIT",
@@ -798,15 +806,5 @@
     "created_at": "2026-07-11T08:24:31Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10670"
-  },
-  {
-    "id": 10669,
-    "title": "【开源自荐】pi-auto-approval：一个给 Pi Coding Agent 用的自动审批扩展",
-    "content": "### 项目简介\n\n使用 AI 编程助手时，每次执行命令、修改文件或调用工具都弹出确认，会频繁打断工作流；但如果直接放开权限，又可能让误操作、越权操作或风险命令在无人注意时执行。这个项目要解决的，就是这对效率与安全之间的矛盾。\n\n它借鉴了 Claude Code auto-mode 的设计思路：让低风险、明确可控的操作尽量自动通过，把需要谨慎判断的操作保留给更严格的审核或人工确认。与此同时，也参考了 Codex Auto-review 的审批边界理念，为 Pi 提供一层更细粒度的自动审批机制。\n\n当 Pi 请求调用工具时，pi-auto-approval 会结合当前任务和操作上下文进行判断。已知低风险的操作可快速放行；其他操作交给 AI 分类器审核。若分类器拒绝、超时、出错或无法明确判断，系统会根据当前模式回退到人工确认，或直接阻止执行，避免“判断不清也先放行”。\n\n项目地址：https://github.com/Europa2061/pi-auto-approval\n\n### 核心特点\n\n- 安全与效率兼顾：不是简单地“自动同意”或“全部确认”。项目只让已知低风险操作走快速通道，其余操作仍进入 AI 审核或人工确认，在减少打断的同时保留安全边界。\n- 分层审批机制：受信任的只读工具、工作区内写入、显式允许的安全命令，以及当前会话中已精确批准的操作，可减少重复确认；其他操作交由 AI 分类器结合任务上下文判断。\n- 默认拒绝，不确定不放行：分类器拒绝、超时、异常、无法判断，或命中必须人工处理的工具时，不会自动执行。fallback 模式交给用户确认；auto 模式则直接阻止。\n- 连续拒绝熔断：在自动拒绝路径中，连续多次被分类器拒绝后会触发熔断提示（默认阈值为 3 次），要求停下并向用户确认，避免 Agent 在同类风险操作上反复尝试。\n- 严格的本地安全边界：快速通道不会靠工具名称猜测安全性，而是依赖明确的只读元数据、严格解析的安全命令规则和工作区路径校验，降低误放行风险。\n- 模型可选、审计可追溯：可使用当前 Pi 会话模型，或从选择器指定审批模型；审批结果可写入本地 JSONL 日志，便于排查、复盘和调优。\n\n<img width=\"1685\" height=\"813\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/716af11d-f4b1-41b2-8801-7159d23cfd06\" />",
-    "created_at": "2026-07-11T08:18:53Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10669"
   }
 ]
