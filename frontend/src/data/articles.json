@@ -1,5 +1,13 @@
 [
   {
+    "id": 10779,
+    "title": "【开源自荐】Claude Pet — Claude Code 的桌面伙伴，本地图记忆 + 项目上下文注入 + GitHub 活动提醒",
+    "content": "# Claude Pet\n\nClaude Pet 是一个开源（MIT 许可）的桌面伙伴，为 Claude Code 用户设计。它以卡通机器人形象浮现在屏幕右下角，实时响应 Claude Code 的每一个 hook 事件——11 种情绪 + 声音提示，让你在切换到浏览器或其他应用时也能一眼知道 Claude Code 正在做什么。\n\n🔗 **代码仓库：** https://github.com/nikhilagrima/claude-pet\n🔗 **官网：** https://nikhilagrima.github.io/claude-pet\n\n## 主要功能\n\n- **实时反馈** — 11 种情绪对应 Claude Code 的不同状态：阅读文件、编辑、bash 命令、成功、失败、等待输入等，每种都有专属动画和声音\n- **每项目本地图记忆** — 用 SQLite 存储每个项目的决策、约定、修复、坑点；新会话开始时通过 SessionStart hook 自动注入不超过 800 tokens 的精炼上下文，Claude 无需重新读文件、跑 git log 就能理解项目\n- **自动生成 SKILL.md** — 出现两次以上的模式会自动提升为 Claude Code 的技能文件（写入 `~/.claude/skills/`），跨项目共享经验\n- **人体工程学教练** — 根据实际编码时间（不是挂机时间）在合适时机提示护眼、颈部、腕部微休息，宠物本身会演示动作\n- **GitHub 仓库监听** — 监听任何仓库的新 commit、PR、code review、release、CI/deploy 状态，用 toast 弹窗即时提示，可直接点击跳转\n- **100% 本地运行** — 无云端、无遥测、无账号；所有数据保存在本机 `~/.claude/claude-pet/memory.sqlite`\n\n## 平台\n\nmacOS / Windows / Linux（PySide6 单代码库，二进制安装包已发布）\n\n## 技术栈\n\nPython 3.10+ · PySide6 (Qt) · SQLite (FTS5) · Flask · PyObjC (macOS 窗口置顶) · PyInstaller\n\n## 开源协议\n\nMIT",
+    "created_at": "2026-07-17T18:28:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10779"
+  },
+  {
     "id": 10778,
     "title": "【开源自荐】BokeBox：把各种内容变成私人 AI 播客（MCP + 插件式内容源）",
     "content": "<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/vastsa/BokeBox/main/docs/img/banner_zh.webp\" width=\"100%\" alt=\"BokeBox\" />\n</p>\n\n推荐一个我做的开源项目 **BokeBox（播匣）**。\n\n技术分享、课程、会议纪要、长文、播客笔记……收藏了很多，却总没时间「正经消化」。  \nBokeBox 的思路不是「某一种格式转音频」，而是把 **多种输入** 重写成**可听完的口播节目**：\n\n1. 理解视频 / 网页链接 / 文稿 / 会议与课程等内容  \n2. 按主播人设重写成口播脚本  \n3. 用你指定的音色说出来  \n4. 生成封面、闪卡和听播进度，变成私人播客  \n\n（内容源还可通过 **Source 插件**继续扩展。）\n\n### 为什么值得看一眼\n\n- **真的能听完**：有开场、重点、收尾，不是干巴巴念字幕  \n- **人设和音色可自定义**：像老师、产品经理，还是朋友聊天，你说了算  \n- **听完还能带走闪卡**：重点不会听过就忘  \n- **MCP 原生**：内置 Model Context Protocol，Cursor / Claude 等可直接 `create_podcast_from_url` 创建节目、查任务  \n- **插件式自定义源**：Source 插件扩展内容获取（echo / Firecrawl 等示例），默认不捆绑高风险抓取，扫描即用  \n- **单用户私有部署**：Docker 一键启动，任务与进度落本地\n\n### 链接\n\n- GitHub：https://github.com/vastsa/BokeBox  \n- 协议：LGPL-3.0  \n- 启动：`cp .env.example .env && ./start.sh`  \n- Docker：`docker pull ghcr.io/vastsa/bokebox:latest && ./start.sh docker`\n\n### 界面\n\n**首页播客库**\n\n![BokeBox 首页](https://raw.githubusercontent.com/vastsa/BokeBox/main/docs/img/home_zh.webp)\n\n**沉浸播放页**\n\n![BokeBox 播放页](https://raw.githubusercontent.com/vastsa/BokeBox/main/docs/img/lis_zh.webp)\n\n一句话：\n\n> 内容进匣，AI 成播。把「看不完 / 读不完」变成「听得进」。\n\n欢迎体验和反馈。",
@@ -800,13 +808,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10669"
-  },
-  {
-    "id": 10668,
-    "title": "【开源自荐】recording-inbox：录音上传后自动生成飞书智能纪要",
-    "content": "项目名称：recording-inbox\n\n项目地址：https://github.com/chenmozhe008/recording-inbox\n\n项目简介：一套开源、可自部署的 AI 录音工作流。用户把 iPhone、Android 或电脑录音上传到飞书云盘，Mac/Windows 自动用 FunASR / SenseVoice 在本地转写，再生成带摘要、待办、章节和文字记录的智能会议纪要，归档到飞书并发送通知。\n\n它主要解决大量长录音的持续整理问题：本地转写不消耗飞书妙记分钟数；每条录音有独立状态，电脑关机或处理中断后可以继续；会议、访谈、课程、项目沟通模板和提示词都能自行修改。\n\n仓库提供 macOS、Windows 10/11 安装向导、AI Agent 部署手册、脱敏结果示例、验证矩阵和跨平台 CI。\n\n项目页：https://chenmozhe008.github.io/recording-inbox/\n\n![脱敏智能纪要示例](https://raw.githubusercontent.com/chenmozhe008/recording-inbox/master/docs/assets/sample-minutes-preview.jpg)\n",
-    "created_at": "2026-07-11T07:25:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10668"
   }
 ]
