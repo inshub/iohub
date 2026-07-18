@@ -1,5 +1,13 @@
 [
   {
+    "id": 10787,
+    "title": "【开源自荐】Linglens：每个字都认识、放一起却看不懂的术语，划词就地用你的语言解释（BYOK、开源）",
+    "content": "# Linglens\n\n读技术文档时，字都认识，但一个术语放在**这篇文档的语境**里到底指什么，经常懵——哪怕是母语内容也一样。比如 \"runner\"，在 GitHub Actions 的 README 里其实是\"执行 job 的那台机器\"——查词典只给通用释义，用全页翻译又只翻字面、还把代码块搞烂。\n\nLinglens 是一个开源（MIT）的 Chrome 扩展：在任意网页选中一个术语，点旁边冒出的小图标，它就**用你的语言、贴着当前页面的语境**解释这个词（中文 / 日本語 / English…）。它读页面 DOM，抽出\"标题 + 大纲 + 你选中所在的段落\"（排除代码块）做一份精简语境发给大模型——不是全页翻译，是\"解释这个词在这里的意思\"。\n\n🔗 **Chrome 应用店：** https://chromewebstore.google.com/detail/linglens/fcababcnfnoibpmfcbghdkogfofkmejo\n🔗 **代码仓库：** https://github.com/ZGhey/linglens\n\n## 主要功能\n\n- **BYOK，用你自己的 key**：OpenAI / Anthropic / Gemini / DeepSeek / 任意 OpenAI 兼容端点，也包括本地模型（数据不出机器）。key 存在本地，只在你触发的那次请求里发给你选的服务商——没有后端，不经过作者的服务器。\n- **点了图标才调用模型**：误划词零成本，不偷偷烧 token；每次解释还显示真实的 token 消耗。\n- **能追问**：同一个弹窗里接着问\"举个例子\"\"跟 X 有什么区别\"，是对话不是一次性查询。\n- **本地历史**：解释过的词本地可搜，回看不再重新调用模型。\n- **无账号、无遥测**：装上填个 key 就能用。\n\n## 技术\n\nManifest V3 + TypeScript，流式 SSE，弹窗用 Shadow DOM（页面 CSS 干扰不到）。约 100 个单测 + Playwright e2e，开源 MIT。\n",
+    "created_at": "2026-07-18T15:20:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10787"
+  },
+  {
     "id": 10786,
     "title": "【开源自荐】METRO TYPING：沿着真实地铁线路玩站名打字游戏",
     "content": "想自荐一个我最近做的开源小游戏：**METRO TYPING**。\n\nMETRO TYPING 是一个沿着真实地铁线路练习站名输入的打字游戏。选择城市和线路后，按照真实站序输入英文或拼音站名；每打对一个字符，地图上的列车就会继续向下一站前进。\n\n玩起来有点像小时候《金山打字通》里的“警察抓小偷”。\n\n- 在线体验：https://metro-typing.fun/\n- GitHub：https://github.com/Evenss/metro-typing\n\n![METRO TYPING](https://raw.githubusercontent.com/Evenss/metro-typing/main/public/og.png)\n\n## 主要功能\n\n- 支持杭州、上海、北京、深圳和成都地铁\n- 可以从地图或线路列表中选择线路\n- 可以选择行驶区间和方向\n- 支持英文站名和拼音站名\n- 提供「30 秒」和「全线」两种游戏模式\n- 实时显示列车位置、打字速度、正确率和完成进度\n\n## 技术与开源\n\n项目使用 Next.js、React、TypeScript 和 Tailwind CSS 开发。\n\n源代码基于 MIT License 开源。地铁线路、站点及行政区边界等数据不在 MIT 授权范围内，仍遵循各自数据来源及权利方的使用条款。\n\n项目的创意、玩法和界面设计参考了 [TAIWAN METRO TYPING｜台灣站名打字練習](https://tw-metro-typing.yencheng.dev/)，并在此基础上增加了更多城市。\n\n欢迎体验和提出建议。",
@@ -798,13 +806,5 @@
     "created_at": "2026-07-12T05:10:10Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10677"
-  },
-  {
-    "id": 10676,
-    "title": "【开源自荐】LLM Wiki Agent Memory：让 Codex / Claude Code 拥有本地工程记忆",
-    "content": "项目地址：https://github.com/miniLV/llm-wiki-agent-memory\n\n这是一个本地优先的 AI 编程记忆项目。它把 Codex 和 Claude Code 的本机会话整理成可查询、可审计的 Obsidian 风格 Markdown Wiki，让 Agent 在后续任务中找回历史决策、调试过程和防踩坑经验。\n\n项目不依赖向量数据库或云端记忆服务，采用 Capture → Daily → Reconcile → Retrieve 的分层流程：先保留原始证据，再生成每日整理，周期复核后才晋升为长期经验，从而减少 AI 对自身历史回答的重复强化和记忆污染。\n\n主要特点：\n\n- 同时支持 Codex 与 Claude Code 本地 session\n- 数据保留在本机，记忆是可以直接阅读、编辑和 Git 管理的 Markdown\n- 提供本地 Web 配置页，引导完成数据源和 Codex App Automations 配置\n- 可从其他工程通过只读 skill 查询旧决策和调试上下文\n- 无需向量数据库、账号或托管服务\n\n快速体验：\n\n```bash\ngit clone https://github.com/miniLV/llm-wiki-agent-memory.git\ncd llm-wiki-agent-memory\nbash scripts/config-ui.sh --open\n```\n\n### 如何使用\n\n配置完成后，在任意业务 repo 里直接对 Codex 说：\n\n```text\n使用 $engineering-memory-loader 查询：\n上次 config-ui 的 8765 端口冲突是怎么解决的？\n```\n\nCodex 会从本地 Markdown Wiki 返回相关日期、结论和关键证据；没有记录时明确返回 `NO_MATCH`。\n\n![在 Codex 中查询工程记忆](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/assets/codex-engineering-memory-example.png)\n\n![LLM Wiki Agent Memory 演示](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/assets/demo.gif)\n\n![LLM Wiki Agent Memory 架构图](https://raw.githubusercontent.com/miniLV/llm-wiki-agent-memory/master/docs/agent-memory-arch-sketch.png)\n\nv0.1.0 Release：https://github.com/miniLV/llm-wiki-agent-memory/releases/tag/v0.1.0",
-    "created_at": "2026-07-12T03:08:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10676"
   }
 ]
