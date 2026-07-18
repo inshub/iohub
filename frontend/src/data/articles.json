@@ -537,8 +537,8 @@
   },
   {
     "id": 10718,
-    "title": "【开源自荐】coding-discipline —— 给 Claude Code / Codex 的中文「编程纪律」插件",
-    "content": "项目地址：https://github.com/chipfighter/coding-discipline\n\nAI 编程助手（Claude Code / Codex）最大的问题往往不是能力，而是纪律：不问清需求直接开写、修 bug 靠瞎试、嘴上说\"测试通过了\"其实没跑过。\n\ncoding-discipline 是一套「瘦但有牙」的通用编程纪律 skill 集——装一次、全局生效、跨项目通用：\n\n- **8 条纪律 skill**：设计先行（brainstorming）、红绿重构（tdd）、先根因再修（systematic-debugging）、优先级评审（code-review）、拿证据再说\"做完了\"（verify-before-done）、git 流程、上下文防毒（context-hygiene）等。每条只保留 ~30 行「模型不知道的硬规矩」，删掉所有解释和废话。\n- **SessionStart 自动注入**：每个会话开场自动注入一段极短的纪律总纲，让 skill 被勤触发，不靠描述碰运气。\n- **首次进项目自动生成引导文档骨架**（CLAUDE.md / AGENTS.md，绝不覆盖已有的），随项目「每拍板一件事补一行」长大。\n- **跨平台**：Claude Code 和 Codex 都能用；hook 做了 Windows / git-bash 适配（纯 bash、无 jq 依赖）。\n- **全中文**：理念借鉴英文的 superpowers（MIT，已在 README 致谢），收敛成中文轻量版。\n\nMIT 协议。欢迎试用和提意见。\n",
+    "title": "【开源自荐】coding-discipline —— Claude Code / Codex 的「编程纪律」护栏插件",
+    "content": "项目地址：https://github.com/chipfighter/coding-discipline\n中文说明：https://github.com/chipfighter/coding-discipline/blob/main/README.zh-CN.md\n\nAI 编程助手（Claude Code / Codex）最大的问题往往不是能力，而是纪律：不问清需求直接开写、修 bug 靠瞎试、嘴上说\"测试通过了\"其实没跑过、上个会话拍板的目标下个会话就忘。\n\ncoding-discipline 是一个「护栏」插件——不接管工作流，平时安静，具名失败模式临近才介入：\n\n- **按需触发的 8 条纪律 skill**：设计先行（brainstorming）、红绿重构（tdd）、先根因再修（systematic-debugging）、优先级评审（code-review）、拿证据再说\"做完了\"（verify-before-done）、git 流程（git-flow）、上下文卫生（context-hygiene）、spec 同步（spec-sync）。日常小改动零打扰。\n- **spec-sync（这个项目自有的一层）**：把对话里已确认的目标 / 非目标 / 硬约束 / 验收标准写回项目已有文档，不新增任何制品，下个会话不再把否掉的方案重做一遍。\n- **固定注入被 CI 冻结**：每会话固定上下文约 1.2k tokens，文案变大直接挂 CI——「轻」是一条会失败的测试，不是口号。\n- **跨平台**：同一份 SKILL.md 同时服务 Claude Code 和 Codex；hook 纯 bash 无 jq 依赖，Windows / Git Bash 有独立测试。\n- **英文为主 + 完整中文 README**：v0.8.1 起产品面英文优先（便于全球分发），README.zh-CN.md 全文维护。理念致谢英文的 superpowers（MIT）。\n\nMIT 协议。欢迎试用和提 issue——尤其欢迎「该触发没触发 / 不该触发触发了」的反馈。",
     "created_at": "2026-07-14T14:41:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10718"
