@@ -540,7 +540,9 @@
     "title": "【开源自荐】Timeline Studio —— 在浏览器本地运行 AI 的开源视频编辑器",
     "content": "**项目地址**：https://github.com/MartinDelophy/ai-video-editor  \n**在线体验**：https://video-editor.ai-creator.top/  \n**Hugging Face Space**：https://huggingface.co/spaces/haixin/timeline-studio\n\n## 一句话介绍\n\nTimeline Studio 是一个 MIT 协议的开源浏览器 AI 视频编辑器：多轨时间线、自动字幕、多语言配音、人声与伴奏分离、背景移除、智能裁剪和数字人等核心工作流直接在用户设备上运行，不需要为了处理素材而上传到编辑后端。\n\n![Timeline Studio 时间线与 AI 配音工作区](https://raw.githubusercontent.com/MartinDelophy/ai-video-editor/main/docs/screenshots/editor-timeline.png)\n\n## 主要特点\n\n- **本地优先**：基于 ONNX Runtime Web、WebGPU、WebAssembly、WebCodecs 和 Web Audio API，核心 AI 推理与媒体处理在浏览器完成；\n- **完整编辑工作区**：支持图片、视频、音频导入，多轨时间线编辑、预览，以及 MP4/WebM 导出；\n- **自动字幕**：使用 Whisper small q8 ONNX，并根据源音频能量微调字幕片段边界，让字幕条更贴近波形；\n- **多语言配音**：中文及多语种使用浏览器 Piper/VITS，英文支持 Kokoro 82M ONNX；\n- **音频处理**：可从当前源音频中分离人声与伴奏，人声替换原片段，伴奏自动进入音乐轨；\n- **视觉分析**：使用 YOLOS tiny 与 MODNet 生成带时间戳的视频分析轨道，用于主体检测、背景移除、智能裁剪和字幕避让；\n- **数字人**：浏览器端运行 JoyVASA + LivePortrait；针对不兼容的 5D GridSample，将其改写为批量 4D GridSample 加线性深度插值，完整输出最大绝对误差为 7.90e-6；\n- **PWA 与缓存**：通过 Service Worker 缓存应用外壳、ONNX 模型和运行时资源，减少重复下载。\n\n## 当前限制\n\n首次使用部分 AI 功能需要下载较大的模型；浏览器内存与 WebGPU 支持因设备而异；Chrome / Edge 当前体验最好；512×512 数字人神经渲染在消费级浏览器 GPU 上仍然较慢。\n\n项目代码、Hugging Face 模型和展示 Space 均已公开，欢迎试用、提交 Issue 或参与贡献。",
     "created_at": "2026-07-15T05:06:02Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10726"
   },
   {
