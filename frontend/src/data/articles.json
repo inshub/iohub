@@ -1,5 +1,13 @@
 [
   {
+    "id": 10788,
+    "title": "【工具自荐】医迹——个人及家庭成员的医学检查记录与用药管理工具",
+    "content": "阮老师好，自荐自己做的Android 原生应用-医迹，Jetpack Compose + Room 构建。\n\n下载地址：https://github.com/adra2n/product\n\n### 主要功能：\n医迹帮助你把分散在各处的就诊记录、检查报告、用药方案集中管理，并通过 AI 分析把非结构化的病历文本 / 照片转化为结构化数据，方便长期追踪与复诊参考。\n\n### 功能特性：\n- 家庭成员管理：维护成员档案（关系、性别、生日、血型、过敏史、慢性病、用药备注等），可设默认成员。\n- 病历记录：记录诊断、发病时间、就诊医院、用药项、剂量、频次与备注；支持从文本 / 图片经 AI 解析自动填充。\n- AI 分析：接入大模型（LLM）对病历文本或检查报告照片进行结构化分析（data/llm）。\n\n### 数据安全：\n- 应用锁：生物识别（指纹 / 人脸）+ 6 位 PIN 备用密码，支持自动锁定（立即 / 1 分钟 / 5 分钟）与阻止截屏录屏。\n- 数据备份与恢复：通过系统文件选择器（SAF，无需存储权限）导出 / 导入 JSON 备份。\n- AES-256-GCM 加密导出：备份可设密码加密（PBKDF2 派生密钥）。\n- GitHub Gist 同步：加密备份可同步到私有 Gist，并支持从 Gist 恢复。\n- 本地敏感数据（Token、加密密码、PIN 哈希）使用 EncryptedSharedPreferences 存储；allowBackup=false 防止 adb 备份提取。\n\n![](https://raw.githubusercontent.com/adra2n/product/refs/heads/master/MedTrace/screenshots/01_home.png)\n",
+    "created_at": "2026-07-19T01:41:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10788"
+  },
+  {
     "id": 10787,
     "title": "【开源自荐】Linglens：每个字都认识、放一起却看不懂的术语，划词就地用你的语言解释（BYOK、开源）",
     "content": "# Linglens\n\n读技术文档时，字都认识，但一个术语放在**这篇文档的语境**里到底指什么，经常懵——哪怕是母语内容也一样。比如 \"runner\"，在 GitHub Actions 的 README 里其实是\"执行 job 的那台机器\"——查词典只给通用释义，用全页翻译又只翻字面、还把代码块搞烂。\n\nLinglens 是一个开源（MIT）的 Chrome 扩展：在任意网页选中一个术语，点旁边冒出的小图标，它就**用你的语言、贴着当前页面的语境**解释这个词（中文 / 日本語 / English…）。它读页面 DOM，抽出\"标题 + 大纲 + 你选中所在的段落\"（排除代码块）做一份精简语境发给大模型——不是全页翻译，是\"解释这个词在这里的意思\"。\n\n🔗 **Chrome 应用店：** https://chromewebstore.google.com/detail/linglens/fcababcnfnoibpmfcbghdkogfofkmejo\n🔗 **代码仓库：** https://github.com/ZGhey/linglens\n\n## 主要功能\n\n- **BYOK，用你自己的 key**：OpenAI / Anthropic / Gemini / DeepSeek / 任意 OpenAI 兼容端点，也包括本地模型（数据不出机器）。key 存在本地，只在你触发的那次请求里发给你选的服务商——没有后端，不经过作者的服务器。\n- **点了图标才调用模型**：误划词零成本，不偷偷烧 token；每次解释还显示真实的 token 消耗。\n- **能追问**：同一个弹窗里接着问\"举个例子\"\"跟 X 有什么区别\"，是对话不是一次性查询。\n- **本地历史**：解释过的词本地可搜，回看不再重新调用模型。\n- **无账号、无遥测**：装上填个 key 就能用。\n\n## 技术\n\nManifest V3 + TypeScript，流式 SSE，弹窗用 Shadow DOM（页面 CSS 干扰不到）。约 100 个单测 + Playwright e2e，开源 MIT。\n",
@@ -798,13 +806,5 @@
     "created_at": "2026-07-12T07:38:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10678"
-  },
-  {
-    "id": 10677,
-    "title": "【工具自荐】Social Text Tools：免费的 LinkedIn 文本格式化和预览工具",
-    "content": "项目地址： https://socialtexttools.net/?utm_source=github.com&utm_medium=referral&utm_campaign=promotion#tool\n\nSocial Text Tools 是一个免费的 LinkedIn 文本格式化工具，用来把帖子、个人简介、评论和私信草稿转成可复制的 Unicode 样式文本。\n\n主要功能：\n\n- 支持加粗、斜体、等宽、无衬线等常见 Unicode 文本样式\n- 提供桌面和手机两种 LinkedIn 预览，方便发布前检查可读性\n- 统计字符数、词数和阅读时间，适合写长帖或简介\n- 内置 hook 检查和 Safe mode，尽量避免太花哨、难读或兼容性差的样式\n- 不需要登录，直接在浏览器里使用\n\n适合场景：LinkedIn 创作者、个人品牌作者、B2B 内容运营，在发布前快速给重点句子加一点强调，同时检查格式和长度。",
-    "created_at": "2026-07-12T05:10:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10677"
   }
 ]
