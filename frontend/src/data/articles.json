@@ -1,5 +1,13 @@
 [
   {
+    "id": 10794,
+    "title": "Subnautica 2 Wiki：交互地图与低剧透玩家查询工具",
+    "content": "## Subnautica 2 Wiki\n\n网址：https://subnautica2wiki.net/\n\n这是一个非官方的 Subnautica 2 Early Access 玩家资源站，把交互地图、低剧透攻略、FAQ、补丁更新说明，以及物品、蓝图和生物查询放在一起。首页可以搜索资源、生物、蓝图、地点和补丁信息；地图页支持按分类与坐标查找当前标记。\n\n适合遇到资源位置、制作关系、载具路线或版本变化问题的玩家。站点明确区分查表信息、路线建议和 Early Access 更新边界。\n\n限制：它不是官方 Wiki，Early Access 补丁可能改变地点、配方或行为，具体结论仍需结合页面日期与官方更新复查。",
+    "created_at": "2026-07-19T18:27:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10794"
+  },
+  {
     "id": 10793,
     "title": "【开源自荐】给 Claude Code / Codex 的 skill 大扫除工具。我自己扫完吓一跳：165 个 skill 里 108 个从未用过，还有 12 个功能重复的 PPT 生成器……",
     "content": "<img width=\"1038\" height=\"757\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ea623580-0e39-4369-bdf4-418ae3311ffa\" />\n\n盘点了一下自己的 Claude Code + Codex：\n· 装了 165 个 skill，65% 从未用过\n· 40 个两边重复装\n· 12 个都是做 PPT 的\n· 1.8GB 会话日志躺在硬盘里\n\n写了个开源 CLI 把这些全揪出来了：分类清单、查重、使用审计、僵尸识别、一键（确认式）清理。零依赖，npm 就能装。\n[项目地址](https://github.com/GrubbyLee/skill-manager) https://github.com/GrubbyLee/skill-manager",
@@ -800,13 +808,5 @@
     "created_at": "2026-07-13T06:23:42Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10695"
-  },
-  {
-    "id": 10694,
-    "title": "【开源自荐】Orbital：以本地文件夹为长期记忆的本地AI agent（支持 Claude Code / Codex）",
-    "content": "阮老师好，自荐一个业余时间做的开源项目。\n\nOrbital 是一个本地AI agent桌面应用：https://github.com/zqiren/Orbital\n\n想解决的问题：\nClaude Code、Codex 这类 agent 每开一个新会话都从零开始，用户要反复交代同样的上下文，上周定过的方案这周又要重新讨论一遍。\n\nOrbital 的思路是以“项目”而非”会话“为单位：agent 做完的每件事，不论是产出的文件、做过的决定、踩过的坑都会写回项目里（PROJECT_STATE / DECISIONS / LESSONS 等结构化文件），下次会话开始时自动读。子 agent（Claude Code、Codex、Gemini CLI 等任意 CLI agent）可以随时更换，项目记忆也不丢。\n\nOrbital的立意是：数据是用户自己的，所有transcript，记忆全部留在本地，agent只是基于本地知识长出的手，换手不换脑。\n\n其他功能：\n沙箱隔离（Windows sandbox user / macOS Seatbelt）+ 项目预算上限 + pre-tool call权限审批，能放心让agent自己跑\n任务队列：安排好任务后可以直接离开，让agent逐个执行，同时也适用于Claude code codex等子agent\n13 家模型接入（含 DeepSeek、Kimi、智谱、通义」\n\nb站demo：\nhttps://www.bilibili.com/video/BV14M7P6NED3/\n\n知道老师经常收到类似的自荐，现在 vibe coding 做一个agent demo确实很容易。但这个项目我自己每天 dogfood 了三个月，各种生产化的坑我都踩过并且修复了，我自己的日常工作也已经完全从 Claude Projects 迁到 Orbital 里了。欢迎老师反馈～\n\nx handle：@keane42443",
-    "created_at": "2026-07-13T05:05:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10694"
   }
 ]
