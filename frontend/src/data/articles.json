@@ -1,5 +1,21 @@
 [
   {
+    "id": 10799,
+    "title": "【开源自荐】dompdf.js，用rust+wasm重构后，web端轻松生成超10000页的矢量PDF文件",
+    "content": "dompdf.js是一个开源的js库，不需要服务器，只需要前端一行代码就可以将html页面转成矢量PDF文件。\n### rust+wasn 重构\n\n第一个版本后，我用rust+wasn对它进行了重构，重写了 PDF 分页、渲染引擎，性能得到了非常大的提升。应该是**第一个可以生成超10000页pdf的前端js库** \n### 主要功能和提升\n\n- 生成速度快，实测 1000 页 PDF 只要 5 秒,老版本生成 1000 页非常勉强\n\n- 生成的是矢量的 PDF ，可以对 PDF 的文本进行搜索，选中，编辑。\n\n- PDF 文件体积非常小\n\n- 生成 10000 页以上的 PDF 毫无压力\n\n- 使用简单，一行代码即可将 html 页面转成 pdf\n\n- 精准的分页，避免元素，文字被切割\n\n- 代码体积减少到了老版本的 35%\n### 在线体验\nhttps://dompdfjs.lisky.com.cn/\n\n### Git 仓库地址 (欢迎 Star⭐⭐⭐)\nhttps://github.com/lmn1919/dompdf.js\n\n### 生成示例\n<img width=\"4514\" height=\"4175\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/abd3e3d0-1e53-46ae-9367-0359d22c2aec\" />",
+    "created_at": "2026-07-20T09:35:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10799"
+  },
+  {
+    "id": 10798,
+    "title": "【开源自荐】：派 agent 去解决开放数学问题 - mission.land",
+    "content": "- 网站：https://mission.land/zh\n- GitHub: https://github.com/timqian/mission.land\n- 截图:\n\n<img width=\"1183\" height=\"751\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/caeac622-bf3e-4de3-aebc-aa7b4312b7f4\" />",
+    "created_at": "2026-07-20T08:05:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10798"
+  },
+  {
     "id": 10797,
     "title": "【开源推荐】AgentConfig 原生 macOS App，集中管理 Codex、Claude Code 等 AI 编程工具的配置文件和 API Key，多套配置快速切换。",
     "content": "\n原生 macOS App，集中管理 Codex、Claude Code 等 AI 编程工具的配置文件和 API Key，支持多套配置快速切换。\n适合多账号，中转站用户。\n\n[https://github.com/iHongRen/AgentConfig\n](https://github.com/iHongRen/AgentConfig\n)\n<img width=\"2494\" height=\"2024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31f0ab34-06b3-4b49-8395-f91861413ade\" />\n\n<img width=\"2494\" height=\"2024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b8c85a3-ddba-4459-8d1c-d5927e96bb46\" />\n\n## 功能\n\n- 多账号 API Key 一键切换\n- Profile 独立分区管理\n- 可视化增删环境变量\n- 多格式语法高亮编辑\n- Cmd+F 搜索与格式化\n- 外部变更自动检测\n- 侧边栏右键快捷操作\n- 拖拽文件快速收录\n\n## 安装\n\n```sh\ncurl -fsSL https://raw.githubusercontent.com/iHongRen/AgentConfig/main/install.sh | sh\n```\n\n或从 [GitHub Releases](https://github.com/iHongRen/AgentConfig/releases) 下载 `AgentConfig.dmg`。如遇安全提示：\n\n```sh\nxattr -dr com.apple.quarantine /Applications/AgentConfig.app\n```",
@@ -792,21 +808,5 @@
     "created_at": "2026-07-13T09:40:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10700"
-  },
-  {
-    "id": 10699,
-    "title": "【开源自荐】R2 Manager — 基于 Cloudflare Workers 的 R2 可视化文件管理器",
-    "content": "# 【开源自荐】R2 Manager — 基于 Cloudflare Workers 的 R2 可视化文件管理器\n\n## 📌 项目简介\n\n**R2 Manager** 是一个部署在 Cloudflare Workers 上的单页应用，让你通过浏览器直接管理 Cloudflare R2 存储桶中的文件，无需安装任何客户端，也无需额外服务器。\n\nGitHub: https://github.com/HyperionD/R2-Manager\n\n## ✨ 功能特性\n\n- 📋 **存储桶管理** — 列出、切换多个 R2 存储桶\n- 📁 **文件夹操作** — 创建、浏览文件夹结构\n- 📤 **文件上传** — 支持拖拽上传，进度条显示，最大 100MB\n- ⬇️ **文件下载** — 单个文件直接下载\n- 👁️ **文件预览** — 图片预览、文本/代码文件查看\n- 📝 **创建记事** — 创建纯文本记事，支持可选密码保护\n- ⊞ **多视图** — 网格视图 / 列表视图切换\n- 📱 **响应式** — 桌面和移动端完美适配\n\n## 🛠️ 技术栈\n\n- **运行时**: Cloudflare Workers (JavaScript)\n- **存储 API**: R2 S3 兼容 API（AWS SigV4 签名）\n- **前端**: 纯 HTML + CSS + JavaScript（零外部依赖）\n- **部署**: Wrangler CLI\n\n## 💡 为什么做这个项目\n\nR2 是 Cloudflare 推出的对象存储服务，兼容 S3 API。虽然可以通过 wrangler 或 API 管理文件，但缺乏一个轻量、可直接部署在 Workers 上的可视化界面。R2 Manager 的目标就是填补这个空白——用 Workers 本身托管前端页面，零服务器成本，R2密钥存储于worker环境变量，一键部署即多端设备同时可用。\n\n## 🔗 相关链接\n\n- GitHub: https://github.com/HyperionD/R2-Manager\n- 在线 Demo: 部署在用户自己的 Cloudflare 账号上，部署方式见 README\n",
-    "created_at": "2026-07-13T07:55:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10699"
-  },
-  {
-    "id": 10698,
-    "title": "【开源自荐】Mythpen — AI 辅助小说创作桌面工具",
-    "content": "Mythpen 是一款 AI 辅助小说创作桌面应用，用 React 19 + Tauri v2 + Express 5 构建，开源免费。\n\n主页：https://niyongsheng.github.io/mythpen/index.html\nGitHub：https://github.com/niyongsheng/mythpen\n\n<img width=\"1426\" alt=\"截图\" src=\"https://github.com/user-attachments/assets/87ba980c-492b-4bd2-af75-e14faa3cec68\" />\n\n和通用 AI 聊天客户端的区别在于：AI 不只停留在对话框里，而是能直接读写你的创作项目——创建章节、管理人物档案、设定世界观、编排伏笔、维护时间线，全部通过 function calling 持久化到本地 SQLite 数据库。\n\n两大 AI 模式：\n- **写作模式**（六步工作流）：AI 先预览全章节状态，读前文再下笔，写完自动推进到下一章，可一键续写。\n- **共创模式**（四步工作流）：从选题、世界观设定、分卷规划到前三章交付，适合从零搭建故事框架。\n\n每章记录 5 个叙事维度（认知框架/情感锚点/世界质感/具体悬念/人际张力），帮助作者有意识地丰富层次。\n\n支持 OpenAI 兼容接口（可接国内大模型）和 Claude API，自动检测使用。\n\n技术栈：React 19 + TypeScript 6 + Tailwind CSS 4 + Zustand / Express 5 + SQLite / Tauri v2（macOS/Windows/Linux）\n开源协议：GPLv3",
-    "created_at": "2026-07-13T07:44:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10698"
   }
 ]
