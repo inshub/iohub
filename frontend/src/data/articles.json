@@ -1,5 +1,29 @@
 [
   {
+    "id": 10802,
+    "title": "【工具自荐】text2mermaid：用自然语言生成 Mermaid 图",
+    "content": "### 简介\n\n[[text2mermaid](https://text2everything.vip/)](https://text2everything.vip/) 是一个用自然语言生成 Mermaid 图的工具。用中文或英文描述一个流程、一段接口时序、一组表关系，AI 生成对应的 Mermaid 代码，实时预览，可直接编辑代码，一键复制或导出为 SVG / PNG。免注册,免费用。\n\n做这个的动机：我写技术文档默认走 Mermaid（代码即图、可 diff、进 git、GitHub / Notion / Obsidian 原生渲染）。但 flowchart、sequence、ERD、状态图、类图……七种图七套语法，每次动笔都要停下来查文档，五分钟没了，节奏也断了。于是做了一个专门解决这一件事的入口——打开就用，光标已经在输入框里，`⌘/Ctrl + Enter` 出预览，改代码实时刷新。\n\n![截图](https://xilidou.com/images/text2mermaid-hero.png)\n\n### 功能\n\n- **支持 7 种 Mermaid 图类型**：flowchart、sequence diagram、ERD、state diagram、class diagram、mindmap、gantt。每种都有独立 landing 页（如 `/erd-from-text`），能规避 AI 猜错图类型\n- **实时预览 + 可编辑代码**：左侧代码 / 右侧渲染，可切换 Text / Preview / Split 三种视图。AI 生成的代码不满意时，直接改左边即可\n- **免注册、无付费墙**：不需要账号，直接用\n- **代码在你手上**：生成结果是纯 Mermaid 文本 / 纯 SVG，可以直接 Copy / Export 到你的 markdown 或 git 仓库，不锁定\n- **对国内友好**：域名可直连，不需要梯子\n- **四个内置示例**：Login flow with 2FA / OAuth sequence / Blog schema ERD / CI/CD pipeline，一键从示例开始改\n\n### 地址\n\n- 主页：https://text2everything.vip/\n- 各图类型直达页：`/flowchart-from-text`、`/sequence-diagram-from-text`、`/erd-from-text`、`/state-diagram-from-text`、`/class-diagram-from-text`、`/mindmap-from-text`、`/gantt-from-text`\n\n### 使用方式\n\n1. 打开 https://text2everything.vip/ ，光标已定位在输入框\n2. 输入描述，例如「用户下单接口时序：Client 请求 API Gateway，Gateway 校验鉴权后调 Order Service，Order Service 扣库存并写 DB，异步发 Kafka 通知履约」\n3. `⌘/Ctrl + Enter` 生成 Mermaid 代码 + 预览图\n4. 不满意直接改左侧代码，右侧预览实时刷新\n5. Copy code 贴回 markdown，或 Export SVG / PNG\n",
+    "created_at": "2026-07-20T14:05:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10802"
+  },
+  {
+    "id": 10801,
+    "title": "【开源自荐】Orkas：本地优先的多智能体 AI 桌面客户端",
+    "content": "项目地址：https://github.com/Orkas-AI/Orkas\n\n项目官网：https://orkas.ai?source=github_ruanyf_weekly\n\nOrkas 是一款 MIT 协议开源、本地优先的多智能体 AI 桌面客户端。用户只需把目标交给 Commander，它会拆解任务，并协调多个拥有独立技能、记忆和工作上下文的专职 Agent 并行或串行执行，无需手写工作流和编排代码。\n\n项目支持 OpenAI、Anthropic、DeepSeek、Gemini、OpenRouter 等模型提供商，也可以连接本地模型端点；能够调度 Claude Code、Codex、OpenCode、Cline 等本地 CLI Agent，适用于研究、开发、数据分析、视频和幻灯片等复杂工作。对话、文件、Agent 配置和用户自带的模型密钥默认保存在本机。\n\n目前提供 macOS 和 Windows 安装包，Linux 可从源码运行。仓库内包含完整快速开始、架构说明、截图和演示。",
+    "created_at": "2026-07-20T13:07:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10801"
+  },
+  {
+    "id": 10800,
+    "title": "【开源自荐】OGee：一键预览网页在多平台的链接分享卡片",
+    "content": "https://github.com/user-attachments/assets/f6de9ba2-556a-4b12-b351-2754d98a3c49\n\n### 简介\n\nOGee 是一款 Chrome 扩展。在任意网页点击扩展图标，即可直观预览该页在 Twitter、Facebook、LinkedIn、Slack、Google 及 Telegram 等平台的分享卡片——无需粘贴 URL 跳转三方网站，也不需等待服务器抓取。开发者可使用它快速核对排错，而对设计师而言，那些精美的 OG Image 本身就是不错的参考素材。\n\n### 功能\n\n- 点击工具栏扩展图标，或使用快捷键 Alt + Shift + O 一键呼出\n- 多平台并排展示，模拟不同平台的裁图、截断与域名等展示习惯\n- 完全本地运行，免注册登陆，零数据追踪，不上传任何数据\n- 支持一键下载当前网页的 OG 图片，或直接复制图片地址\n- 支持深浅色模式切换、平台显隐与拖拽排序等\n\n### 地址\n\n- Chrome Web Store: https://chromewebstore.google.com/detail/glncpeolnemlkojegffjlaccbcdpmnfe\n- GitHub: https://github.com/heyshigeru/ogee\n\n### 限制\n\n出于最小化权限，OGee 目前仅在本地读取你当前打开的页面。若平台用爬虫抓取、有缓存，或对爬虫返回不同 HTML，真实分享卡片仍可能与预览有差别。",
+    "created_at": "2026-07-20T11:12:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10800"
+  },
+  {
     "id": 10799,
     "title": "【开源自荐】dompdf.js，用rust+wasm重构后，web端轻松生成超10000页的矢量PDF文件",
     "content": "dompdf.js是一个开源的js库，不需要服务器，只需要前端一行代码就可以将html页面转成矢量PDF文件。\n### rust+wasn 重构\n\n第一个版本后，我用rust+wasn对它进行了重构，重写了 PDF 分页、渲染引擎，性能得到了非常大的提升。应该是**第一个可以生成超10000页pdf的前端js库** \n### 主要功能和提升\n\n- 生成速度快，实测 1000 页 PDF 只要 5 秒,老版本生成 1000 页非常勉强\n\n- 生成的是矢量的 PDF ，可以对 PDF 的文本进行搜索，选中，编辑。\n\n- PDF 文件体积非常小\n\n- 生成 10000 页以上的 PDF 毫无压力\n\n- 使用简单，一行代码即可将 html 页面转成 pdf\n\n- 精准的分页，避免元素，文字被切割\n\n- 代码体积减少到了老版本的 35%\n### 在线体验\nhttps://dompdfjs.lisky.com.cn/\n\n### Git 仓库地址 (欢迎 Star⭐⭐⭐)\nhttps://github.com/lmn1919/dompdf.js\n\n### 生成示例\n<img width=\"4514\" height=\"4175\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/abd3e3d0-1e53-46ae-9367-0359d22c2aec\" />",
@@ -17,7 +41,7 @@
   },
   {
     "id": 10797,
-    "title": "【开源推荐】AgentConfig 原生 macOS App，集中管理 Codex、Claude Code 等 AI 编程工具的配置文件和 API Key，多套配置快速切换。",
+    "title": "【开源推荐】AgentConfig 原生 macOS App，集中管理 Codex、Claude Code 等 AI 编程工具的配置文件和 API Key，多账号配置快速切换",
     "content": "\n原生 macOS App，集中管理 Codex、Claude Code 等 AI 编程工具的配置文件和 API Key，支持多套配置快速切换。\n适合多账号，中转站用户。\n\n[https://github.com/iHongRen/AgentConfig\n](https://github.com/iHongRen/AgentConfig\n)\n<img width=\"2494\" height=\"2024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31f0ab34-06b3-4b49-8395-f91861413ade\" />\n\n<img width=\"2494\" height=\"2024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b8c85a3-ddba-4459-8d1c-d5927e96bb46\" />\n\n## 功能\n\n- 多账号 API Key 一键切换\n- Profile 独立分区管理\n- 可视化增删环境变量\n- 多格式语法高亮编辑\n- Cmd+F 搜索与格式化\n- 外部变更自动检测\n- 侧边栏右键快捷操作\n- 拖拽文件快速收录\n\n## 安装\n\n```sh\ncurl -fsSL https://raw.githubusercontent.com/iHongRen/AgentConfig/main/install.sh | sh\n```\n\n或从 [GitHub Releases](https://github.com/iHongRen/AgentConfig/releases) 下载 `AgentConfig.dmg`。如遇安全提示：\n\n```sh\nxattr -dr com.apple.quarantine /Applications/AgentConfig.app\n```",
     "created_at": "2026-07-20T06:36:29Z",
     "labels": [],
@@ -782,31 +806,5 @@
     "created_at": "2026-07-13T14:59:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10703"
-  },
-  {
-    "id": 10702,
-    "title": "投稿（工具）：SaaSCity —— 把每个 SaaS 产品变成等距城市地图上的一栋建筑",
-    "content": "你好，投稿一个网站工具。\n\n**SaaSCity** —— https://saascity.io\n\n这是一个 SaaS 产品目录，但呈现方式不太一样：每个提交的产品会变成一栋建筑，出现在一张可交互的等距（isometric）城市地图上。产品越多，这座城市就越大。灵感来自 Million Dollar Homepage。\n\n- 免费提交，人工审核，通常 24 小时内上线\n- 地图用 Canvas 渲染，Next.js 实现\n\n利益相关：这是我自己做的项目，属于自荐。不合适请直接忽略，谢谢。",
-    "created_at": "2026-07-13T11:05:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10702"
-  },
-  {
-    "id": 10701,
-    "title": "【开源自荐】屏译（Screen Translator）Android 游戏 / 漫画实时屏幕翻译",
-    "content": "项目地址：https://github.com/ciddwd/overlay-translator  \n下载地址：https://github.com/ciddwd/overlay-translator/releases/tag/v0.3.8  \n开源协议：Apache-2.0\n\n# 屏译 · Screen Translator\n\n屏译是一款免费、无广告、无需 ROOT 的 Android 屏幕实时翻译工具，主要面向游戏、视觉小说、漫画和视频字幕等场景。\n\n使用时点击悬浮球，应用会完成：\n\n> 截取屏幕 → OCR 识别文字 → 调用翻译引擎 → 将译文叠加到原文附近\n\n不需要来回切换翻译软件，译文会直接显示在当前应用或游戏画面上。\n\n## 主要功能\n\n- **多种翻译方式**：支持全屏翻译、区域划词和自动循环翻译，也可以通过音量双键触发\n- **端侧 OCR**：支持 ML Kit、PaddleOCR 和日漫 OCR，图片无需上传，断网时也可以识别\n- **云端及本地 OCR**：支持 PP-OCRv6 在线、百度、腾讯、有道，以及局域网内的 Umi-OCR、LunaTranslator\n- **多种翻译引擎**：支持 DeepL、DeepLX、Google、有道、百度、腾讯，以及 OpenAI 兼容接口\n- **端侧翻译模型**：支持 Sakura 日译中模型和 Hy-MT2 多语种模型，模型下载完成后可以离线翻译\n- **横排和竖排识别**：可自动判断横排、竖排和旋转文字，针对日文竖排漫画做了专门处理\n- **漫画与视觉小说优化**：支持段落合并、振假名过滤、日漫气泡识别和竖排译文布局\n- **两种译文显示模式**：可以把译文贴在原文附近，也可以集中放入可拖动、缩放和锁定的悬浮窗口\n- **划词翻译卡片**：框选单词或短语后，可显示译文、音标、词性、释义、例句和难点说明\n- **外观自定义**：支持译文颜色、透明度、字体、字号、描边、阴影、间距和对齐方式\n- **配置迁移**：可导出和导入非敏感设置、预设及字体，API Key 和 Token 不会被写入配置包\n\n## 使用场景\n\n- 在手机上游玩没有中文的游戏或视觉小说\n- 阅读日文竖排漫画、韩漫或外文图片\n- 翻译视频字幕、应用界面和其它无法复制的屏幕文字\n- 使用自己的 OCR、LLM、DeepLX 或局域网翻译服务\n- 希望使用端侧 OCR 和本地模型，减少截图上传\n\n## 项目特点\n\n屏译并不绑定某一家 OCR 或翻译服务。用户可以根据设备性能、网络环境和隐私需求，自由组合端侧、云端或自托管引擎。\n\n项目目前支持 Android 8.0 及以上系统，APK 暂时只提供 `arm64-v8a` 版本。\n\n## 效果截图\n\n### 游戏画面译文叠加\n\n![游戏内译文叠加](https://raw.githubusercontent.com/ciddwd/overlay-translator/main/docs/screenshots/overlay-game.png)\n\n### 日文竖排漫画\n\n![日文竖排漫画翻译](https://raw.githubusercontent.com/ciddwd/overlay-translator/main/docs/screenshots/overlay-manga-jp.png)\n\n项目仍在持续开发，欢迎试用、提交 Issue 或参与贡献。",
-    "created_at": "2026-07-13T10:56:28Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10701"
-  },
-  {
-    "id": 10700,
-    "title": "【开源自荐】Orca — DeepSeek 原生终端 Coding Agent，支持持久 Goal 模式和 Workflow 编排",
-    "content": "## 项目简介\n\nOrca 是一个本地终端 Coding Agent，专为 DeepSeek 模型设计。它不是对通用 Agent 框架的包装，而是从提示词构造、SSE 流式解析、工具调用语义到上下文窗口管理，全链路围绕 DeepSeek 的行为特征构建。\n\n- 仓库地址：https://github.com/echoVic/blade-deepseek （产品名 Orca，仓库名 blade-deepseek）\n- 官网：https://orcaagent.dev\n\n## 解决什么问题\n\nClaude Code、Cursor 等 AI 编程工具很好用，但它们绑定特定模型和平台。Orca 想做的事很简单：**用你自己的 DeepSeek API Key，在终端里跑一个深谙 DeepSeek 脾气的 Coding Agent。**\n\n## 核心亮点\n\n1. **Persistent Goal 模式：设个目标，它自己一直干**——用 `/goal` 设定一个长期目标（比如\"把这个模块的测试覆盖率提上去\"），Agent 每轮成功后自动继续下一轮；重启终端、恢复会话都不会丢失进度，只有模型自己判定\"已完成\"或\"被阻塞\"才会停下来。\n2. **Workflow 多阶段编排 + 子 Agent**——Workflow 引擎支持多阶段并行任务编排（脚本可放在项目 `.orca/workflows/` 下随仓库共享），工具调用以后台任务运行，最终报告自动送回当前 TUI 会话；同步 subagent 共享 workspace 和审批策略。\n3. **DeepSeek 原生，不是通用壳**——默认 max reasoning effort、reasoning/content 双流 SSE 解析、空回复自动重试。这些不是配置项，是融在 Agent loop 里的行为。\n4. **为前缀缓存做的省钱设计**——DeepSeek 的上下文缓存按前缀命中计费，命中部分输入价格远低于未命中。Orca 为此把整条请求链做成字节级稳定：对话历史只追加、从不改写已有消息，工具 schema 序列化顺序完全确定（这两点都有测试锁定），保证多轮长任务的前缀持续命中缓存；每轮的缓存命中 token 数也会被解析并计入实时成本显示。\n5. **1M token 上下文，自动管理**——对话超过 80% 阈值自动压缩，保留 system prompt 和最近对话，长任务不断片。\n6. **按能力分级的审批策略**——每个工具声明自己的能力（读 / 写 / shell / 网络），审批按能力分类放行，不是简单的\"全部允许 / 全部拦截\"。\n\n## 快速上手\n\n单个二进制文件，macOS / Linux 通用，npm 或 curl 安装：\n\n```bash\n# npm 安装\nnpm install -g @blade-ai/orca\n\n# 或 curl 安装\ncurl -fsSL https://orcaagent.dev/install.sh | sh\n\n# 设置 API Key 即可使用\nexport DEEPSEEK_API_KEY=sk-...\norca exec \"fix this test\"\n```\n\n## 项目状态\n\n已迭代 200+ 个 release，当前 v0.2.21，npm 可直接安装。\n\n欢迎试用和反馈！QQ 群：472309526\n",
-    "created_at": "2026-07-13T09:40:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10700"
   }
 ]
