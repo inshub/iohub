@@ -1,5 +1,53 @@
 [
   {
+    "id": 10812,
+    "title": "【开源自荐】Atlas Marketing Studio：开源 AI 电商广告工作流",
+    "content": "Atlas Marketing Studio 开源了。它是一个面向电商广告的 AI 创意工作流项目，不是只生成一段视频的 demo，而是把“产品素材 -> 广告角度 -> 脚本/镜头 -> 最终视频”这条路串起来。\n\n项目地址：\nhttps://github.com/AtlasCloudAI/atlas-marketing-studio\n\n在线 demo：\nhttps://atlas-saas-starter.atlascloudai.workers.dev/\n\n主要特点：\n\n1. 面向电商广告，而不是泛泛的 AI 视频生成\n2. 支持 UGC 产品广告：产品图 + 人物图 -> UGC 风格广告\n3. 支持参考广告改写：参考广告 -> 换成自己的产品和人物\n4. 支持短剧广告：一个话题 -> 脚本、角色、分镜、视频\n5. 支持双人广告 skit：一句产品描述 -> 短广告场景\n6. 项目可运行、可自部署，适合开发者 fork 和改 workflow\n7. 包含登录、积分、支付/兑换码、部署说明等完整 SaaS 基础功能\n\n适合两类人：\n\n- 电商团队、小生意和创作者：更快测试不同广告素材方向\n- 开发者：参考一个完整的 AI 视频 SaaS / AI ad workflow 开源项目\n\nREADME 中标注 MIT。自荐说明：提交前搜索了本仓库 issue，没有发现同名项目提交。\n",
+    "created_at": "2026-07-21T08:55:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10812"
+  },
+  {
+    "id": 10811,
+    "title": "【工具自荐】Paraphraser AI：尽量保留原意和关键词的英文改写工具",
+    "content": "简介\n\n[Paraphraser AI](https://tryparaphraser.com/) 是一个在线英文改写工具，目标不是简单地替换同义词，而是在调整句式和表达方式时，尽量保留原文的含义、事实和指定关键词。\n\n做这个工具的原因是，很多 AI 改写结果虽然读起来更流畅，却可能遗漏限定词、改变原句语气，或者删除产品名、专业术语和 SEO 关键词。Paraphraser AI 因此增加了改写强度、写作模式和关键词保护等控制项，让用户可以更明确地约束输出。\n\n## 主要功能\n\n- **六种改写模式**：Standard、Natural、Formal、Academic、SEO 和 Humanize。\n- **三级改写强度**：可选择轻度修改、常规重写或较大幅度调整句式。\n- **关键词保护**：指定必须保留的单词或短语，生成后还会检查这些词是否出现在结果中。\n- **多版本输出**：一次生成最多三个不同版本，方便对比选择。\n- **左右对照工作区**：原文和改写结果并排显示，便于检查原意是否发生变化。\n- **历史和项目管理**：登录后可以保存改写记录并整理到不同项目。\n\n核心改写功能无需注册即可直接试用，免费额度为每天 500 个英文单词；SEO 模式、更多额度和项目功能属于付费版本。\n\n## 适用场景\n\n- 非英语母语用户修改英文表达\n- 工作邮件和正式文本润色\n- 文章、介绍文案和旧内容更新\n- 保留关键词的 SEO 内容改写\n- 学术草稿的语言调整\n\n工具定位是写作和编辑辅助，不承诺规避 AI 检测，也不鼓励用改写替代引用。对于来自外部资料的观点，即使换了表达方式，仍然需要保留正确的引用。\n\n## 技术实现\n\n前端使用 Astro 和 React，部署在 Cloudflare Workers。改写请求经过 Zod 校验后发送给 Cloudflare Workers AI 或 OpenAI 兼容接口；返回结果会进行 JSON 解析、关键词检查和文本相似度检查。如果模型漏掉保护词、直接返回原文，或者只在原文前增加“改写版本”等标签，结果会被拒绝或进入降级流程。\n\n目前仍在继续改进“语义漂移”的评估，尤其是数字、否定词、程度词和不确定性表达在改写前后是否保持一致。\n\n## 地址\n\n- 在线使用：https://tryparaphraser.com/\n- 无需注册即可体验基础改写\n\n![Paraphraser AI 改写工作区](https://tryparaphraser.com/rewrite-workflow.webp)",
+    "created_at": "2026-07-21T08:30:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10811"
+  },
+  {
+    "id": 10810,
+    "title": "【开源自荐】cutmap：长视频速读工具,像读文章一样扫读、搜索视频内容",
+    "content": "项目地址：https://github.com/xykong36/cutmap\n\ncutmap 是一个命令行工具，专门用来速读长视频。它把视频转成一张能滚动、能搜索\n的网页：先密集抽帧，再用感知哈希去重，只留下画面真正变化的那些帧，按时间顺序\n铺开，并对齐字幕。这样你就能像读文章一样扫读一个长视频，点某张画面播放器就跳\n过去，搜字幕就能定位到那一刻，不用再从头一路看到尾。\n\n它有两个常见用法：一是几分钟速读一小时的演讲或教程来学东西；二是逐帧拉片，看清\n一个视频到底是怎么剪的。全程在本地跑，底层是 ffmpeg 和 Pillow，不用大模型，也不\n需要 API Key 和联网。支持 Python 3.9 以上，MIT 协议。\n\n<img width=\"1800\" height=\"1250\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9fd5d888-e028-4ebf-aa97-6b4b0bfaebcb\" />\n<img width=\"640\" height=\"454\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7fcf154f-19cb-44f4-8fc8-a714ca0ca3bb\" />",
+    "created_at": "2026-07-21T08:10:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10810"
+  },
+  {
+    "id": 10809,
+    "title": "【开源自荐】D-NET 一款轻量级动态网络管理工具，自动同步 CDN 与 DNS 配置的动态网络管理工具。",
+    "content": "## 开发背景\n\n家庭宽带大多使用动态公网 IP，每次 IP 变化后都需要重新更新 DNS 解析；而越来越多地区仅提供 IPv6 公网地址，即使配置了 DDNS，IPv4 用户仍然无法直接访问家庭服务器。\n\n为了减少这些重复操作，我开发了 D-NET。它能够持续监听公网 IP（IPv4/IPv6）的变化，并自动同步到 CDN、DNS 等云服务，让家庭服务器能够稳定对外提供访问，同时解决动态公网 IP 和单协议栈网络带来的运维问题。\n\n## 项目简介\n\nD-NET 是一款轻量级动态网络管理工具，用于自动管理 CDN 源站和 DNS 解析。\n\n它支持自动监听公网 IP（IPv4/IPv6）变化，并同步更新到各云厂商的 CDN、DNS 服务，无需手动修改配置，适用于家庭服务器、自建服务以及动态公网 IP 等场景。\n\n**项目地址：** https://github.com/cxbdasheng/dnet\n\n## 主要功能\n\n### DCDN\n\n公网 IP 发生变化时，自动更新 CDN 源站配置。\n\n对于仅拥有 IPv6（或仅 IPv4）公网地址的家庭服务器，可结合 CDN 为外部用户提供 IPv4/IPv6 双协议栈访问能力，解决单协议栈公网环境下的访问限制。\n\n### DDNS\n\n公网 IP 发生变化时，自动更新云厂商 DNS 解析记录，使域名始终指向最新公网 IP，无需手动维护解析配置。\n\n## 产品截图\n\n![D-NET 管理界面](https://raw.githubusercontent.com/cxbdasheng/dnet/refs/heads/main/dnet.png)\n\n\n## 适用场景\n\n- 家庭 NAS、影音服务器、自建博客\n- IPv6 家庭宽带对外提供 IPv4/IPv6 双协议栈访问\n- 动态公网 IP 的远程访问\n- 小型办公网络动态域名管理\n- 私人游戏服务器、视频监控等长期在线服务\n\n## 技术特点\n\n- **轻量部署**：单一二进制程序，无需复杂依赖，资源占用低。\n- **跨平台支持**：支持 Linux、Windows、macOS 等主流操作系统。\n- **多云兼容**：支持多家云厂商的 CDN 与 DNS 服务。\n- **自动同步**：实时检测公网 IP 变化，并自动更新配置。\n- **可视化管理**：提供 Web 管理界面，便于统一管理。\n- **稳定可靠**：内置自动重试机制，提高配置同步成功率。",
+    "created_at": "2026-07-21T07:46:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10809"
+  },
+  {
+    "id": 10808,
+    "title": "xiaoshuo",
+    "content": "xiaoshuo",
+    "created_at": "2026-07-21T06:31:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10808"
+  },
+  {
+    "id": 10807,
+    "title": "【开源自荐】可拖拽邮件编辑器monto-email-builder",
+    "content": "# Monto Email Builder：简单、灵活、现代化的 React 邮件拖拽编辑器：\ngithub地址：https://github.com/heiheihoho1213/monto-email-builder\n预览：https://heiheihoho1213.github.io/monto-email-builder/\n\n## 特性\n✅ 可视化邮件模板编辑器\n✅ 支持多种邮件块类型（文本、图片、按钮、容器等）\n✅ 实时预览\n✅ 导出 HTML 和 JSON\n✅ 国际化支持（中文/英文）\n✅ 图片上传支持\n✅ 完全可定制\n\n## 1. 可视化拖拽编辑\n\nMonto 提供类似页面搭建工具的体验。\n\n用户可以：\n- 添加文本模块\n- 插入图片\n- 创建按钮\n- 调整布局\n- 修改颜色和样式\n- 组合不同内容区域\n\n不用编写 HTML，也可以快速制作一封完整营销邮件。\n\n## 2. 丰富的邮件 Block 组件\n\n邮件编辑器最核心的组件系统，Monto将邮件拆分成不同 Block：\n\n- Text\n- Image\n- Button\n- Container\n- Columns\n- Divider\n- HTML\n- Video\n- Social 等\n\n不同模块可以组合成复杂邮件模板。设计方式类似低代码平台，相比直接编辑 HTML，这种结构更容易保存、修改和二次编辑。",
+    "created_at": "2026-07-21T06:30:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10807"
+  },
+  {
     "id": 10806,
     "title": "【开源自荐】Termany：Agent-Native 终端",
     "content": "Agent-Native 终端 Termany 开源了。🎉\n\n主要特点：\n\n1. 基于页面的多层级 filetree，管理项目更方便\n2. workspace + page + tab + pane 的组合，无限多开 Agent 工作窗口\n3. 搜索面板快速定位窗格、内置快捷键与快捷操作\n4. 多类型窗口切换：终端、文件、Git 差异、对话、浏览器\n5. 多 Agent 管理，cli 快捷命令，acp 对话，自定义模型\n6. Agent 状态显示、Token 统计、Session 检索，系统负载监控\n7. 多语言、多主题，兼容 codex 的自定义主题\n8. 其他更多 Agent 相关特性\n\n欢迎体验，感谢 Star👇\n\nhttps://github.com/thinkany-ai/termany\n\n官网地址：https://termany.sh\n\n![](https://pbs.twimg.com/media/HNuc9pWbcAAepxT?format=jpg&name=4096x4096)",
@@ -754,53 +802,5 @@
     "created_at": "2026-07-14T09:39:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10713"
-  },
-  {
-    "id": 10712,
-    "title": "【开源自荐 - OpenBidKit】v2.18.3发布：已有方案扩写、导出格式设置、多标段支持",
-    "content": "本帖使用社区开源推广，符合推广要求。我申明并遵循社区要求的以下内容：\n\n- 我的帖子已经打上 `开源推广` 标签：是\n- 我的开源项目完整开源，无未开源部分：是\n- 我的开源项目已链接认可 LINUX DO 社区：是\n- 我帖子内的项目介绍，AI生成、润色内容部分已截图发出：是\n- 以上选择我承诺是永久有效的，接受社区和佬友监督：是\n\n> 以下为项目介绍正文内容，AI生成、润色内容已使用截图方式发出\n\n---\n\n## 仓库地址\nhttps://github.com/FB208/OpenBidKit_Yibiao)](https://github.com/FB208/OpenBidKit_Yibiao\n\n## 最近新增功能\n- [x] 正式安装包内置智能任务运行组件，无需用户另行安装。\n- [x] 给智能体更高的权限，并内置常用工具。\n- [x] 目录生成接入智能修复能力，可在目录提取、评分项对齐或最终校验失败时自主分析并修复。\n- [x] 生图模型支持设置图片清晰度、尺寸和横竖比例。\n- [x] 全局支持超长内容分段处理。\n- [x] 多标段采用AI分析+正则辅助的模式实现，比之前更稳定\n- [x] 更强大的导出模板功能，几乎全覆盖word格式设置\n- [x] 智能任务执行时实时显示当前正在进行的操作和处理阶段。\n- [x] AI 服务返回 HTTP 错误时，可直接查看原始错误内容，便于识别额度、鉴权、限流和服务异常。\n- [x] Markdown 编辑器和内容预览器支持全屏查看与编辑。\n- [x] 标书查重升级，提供能多比对项。\n- [x] 新增html生成图片的能力。同时AI生图、mermaid图片也更可控。\n\n## 更新内容截图\n\n**html图片**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231324.png)\n\n**智能体及内置组件**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231325.png)\n\n**图像尺寸及清晰度设置**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231326.png)\n\n**多标段提取**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231327.png)\n\n**强大的导出样式模版**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231328.png)\n\n**markdown全屏预览**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231329.png)\n\n**新版查重**\n![](https://oss.agnet.top/keep/2026/07/14/20260714150231330.png)",
-    "created_at": "2026-07-14T07:12:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10712"
-  },
-  {
-    "id": 10711,
-    "title": "【开源自荐】### 🏛️ 华夏地名谱 TopoScholar：一个可溯源的中国地名知识库",
-    "content": "\n\n大家好，我做了一个中国地名知识库项目：**华夏地名谱 TopoScholar**。\n\n**项目地址：** [https://github.com/snailfrying/topo_scholar](https://github.com/snailfrying/topo_scholar)\n\n它的目标不仅仅是整理“有哪些地名、在哪里”，而是更进一步，尝试回答：**这个地名为什么这么叫？**\n\n比如：\n*   武汉为什么叫武汉，和武昌、汉口、汉阳是什么关系？\n*   全国有多少个“和平村”“团结村”，它们分别分布在哪里？\n*   一个地名经历过哪些合并、更名、撤销和重设？\n*   AI Agent 在回答地名问题时，如何避免同名误判和编造由来？\n\n目前，项目已经整理了一个覆盖**省、市、县、乡镇/街道、村/社区**的五级中国地名底座，并提供了别名索引、同名消歧、地名由来查询等能力。\n\n#### 📊 当前规模\n\n*   **基础地名：** 665,276 条\n*   **行政层级关系：** 665,245 条\n*   **别名索引：** 2,981,225 条\n*   **地名由来知识：** 3,158 条\n*   **采集进度：** 已补齐省级和可采集地级行政区的地名由来，县级也已完成大部分采集。\n\n#### 🔍 结构化与可溯源\n\n项目非常关注数据的结构化和可溯源性。每条地名由来都会尽量保存**来源标题、来源 URL、证据摘要和置信度**，旨在避免 AI 在没有来源时“编造”解释。\n\n#### 🤖 面向 Agent / RAG 的设计\n\n它也面向 Agent / RAG 使用场景，提供了 JSON CLI，并预留了 MCP Server 工具，例如：\n*   地名解析\n*   别名解析\n*   行政下级查询\n*   同名地名对比\n*   本地地名由来查询\n*   地名由来按需补齐\n*   已缓存知识全文检索\n\n#### 💻 示例命令\n\n```bash\n# 地名解析\npython topo_scholar_cli.py resolve 武汉市 --province 湖北省 --city 武汉市 --limit 1\n\n# 同名地名查询\npython topo_scholar_cli.py same-name 和平村委会 --limit 20\n\n# 地名由来查询\npython topo_scholar_cli.py origin 南高村 --province 山东省 --city 东营市 --county 广饶县 --limit 1\n```\n\n我希望它后续可以成为一个**可查询、可消歧、可溯源、可扩展**的中文地名知识系统，用于地名研究、地方文化整理、地理教育、文旅内容生成，以及中文 RAG / Agent 的知识底座。",
-    "created_at": "2026-07-14T07:11:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10711"
-  },
-  {
-    "id": 10710,
-    "title": "【开源自荐】copy-web-page 下载网页，完整复制网页样式",
-    "content": "## copy-web-page\n\n\n![](https://github.com/bojue/copy-web-page/blob/master/public/demo.png?raw=true)\n\n项目地址：https://github.com/bojue/copy-web-page\n\n在线官网：http://clone.nocokit.cn/\n\n该产品是我原本计划参考mintlify文档部分样式，手动获取dome样式非常低效，于是计划开发一款工具帮助我快速实现我的需求。\n\n## 产品特点\n\n1. 完整资源捕获 - HTML、CSS、JavaScript、图片、字体等所有静态资源\n2. 智能路径重写 - 自动转换为相对路径，确保离线可用\n3. 多级深度爬取 - 支持跟踪站内链接，批量克隆多个页面（为了控制线上环境的资源，只支持一层）\n4. 实时进度反馈 - 基于 SSE 的实时进度推送\n5. ZIP 打包下载 - 一键打包，可直接部署\n\n\n## 快速开始\n\n```\nnpm install \n\nnpm run dev // 启动\n\nnpm run build // 构建\n\n```\n\n## 产品演示\n\n![](https://github.com/bojue/copy-web-page/blob/master/public/demo.gif?raw=true)\n\n## DEMO效果\n\n<img width=\"2560\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92cb2cf4-edbf-4dd7-aad4-0905b5179fb9\" />\n\n仅供技术研究与授权测试使用",
-    "created_at": "2026-07-14T06:57:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10710"
-  },
-  {
-    "id": 10709,
-    "title": "推荐一个免费音视频转文字工具：FreeAudioToText",
-    "content": "[FreeAudioToText](https://freeaudiototext.com/) — 免费的音视频转文字工具，无需注册账号。\n\n支持 MP3、M4A、WAV、MP4 等主流格式，由阿里达摩院开源的 FunASR（Paraformer 模型） 驱动，对中文和中英混合内容的识别准确率优于 Whisper，同时支持 90 多种语言自动检测。上传文件后，音频在 24 小时内从服务器删除，不留存。\n\n有趣的是，它的后台推理运行在作者自己的 Mac（Apple Silicon） 上——FunASR 跑在本地，任务队列通过 Cloudflare D1 调度，文件存在 R2。这种「本地 AI + 云端路由」的架构让推理成本接近于零，所以转写完全免费，没有时长限制。\n\n可选花 $1.99 升级，获得 AI 生成的结构化分析报告（摘要、大纲、可分享链接），适合播客、采访、会议录音等场景。",
-    "created_at": "2026-07-14T05:51:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10709"
-  },
-  {
-    "id": 10708,
-    "title": "【开源自荐】拉片笔记：把一部电影变成 AI 辅助的拉片笔记，本地抽帧 / 剧情泳道时间轴 / 情绪曲线",
-    "content": "项目地址：https://github.com/bkingfilm/lapian-notes\n\n「拉片」是影视行业逐段精读电影的学习方法。这个工具把一部电影变成一份可编辑的拉片笔记：\n\n1. 导入影片后本地抽帧（1 秒 1 帧），自动读取或搜索字幕，格式不兼容会自动本地转码\n2. 一键把截图、字幕、剧情资料打包成 ZIP，发给 ChatGPT 等任意 AI 分析，不绑定服务商，无需 API Key\n3. 把 AI 返回的 JSON 导回来，自动生成剧情泳道时间轴、结构树和观众情绪曲线\n4. 任意段落可单独打包深拆到场与镜头级，笔记里的时间点可一键跳转播放\n\n全程本地运行，影片和笔记数据不上传任何服务器。React + Vite，MIT 协议，Windows 和 macOS 双击脚本即可启动，无需配置环境。\n\n![界面截图](https://raw.githubusercontent.com/bkingfilm/lapian-notes/main/docs/screenshot.jpg)\n\n适合想系统学习电影叙事的创作者、影视专业学生和电影爱好者。\n",
-    "created_at": "2026-07-14T04:35:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10708"
-  },
-  {
-    "id": 10707,
-    "title": "【自荐】VThreads：基于 Next.js 的轻量、无广告全网视频解析与下载工具",
-    "content": "项目名称\nVThreads\n\n项目地址\n网站在线体验：[https://vthreads.top](https://vthreads.top)\n\n一句话简介\nVThreads 是一个主打清爽、免安装、用完即走的轻量化全网视频解析与下载工具，旨在为自媒体剪辑师、开发者和素材收集者提供最高清、最纯净的流媒体直链剥离服务。\n\n🚀 核心特性与支持平台\n项目采用 “专项优化 + 全网通” 双驱动引擎，完美应对各种流媒体防盗链与反爬机制：\n\n专项深度优化（极速、最高清原画）：\n\n国内平台：抖音、Bilibili (B站)、小红书、微博、快手。\n\n国际顶流：YouTube (支持 1080P 及以上高清音画分离视频在服务器端自动合成)、TikTok、X (Twitter)、Instagram、Facebook、Threads、Reddit 等。\n\n全网通用支持：内置通用的万能解析引擎，支持 AcFun、CCTV 等全球数千个大大小小的视频门户网站。只要是网页上能公开发布的视频链接，直接粘贴即可解析。\n\n🛠️ 技术栈与架构思考\n前端：采用 Next.js + Tailwind CSS，追求极简的 Dashboard 视觉风格，并利用 SSR/SSG 保证极致的首屏加载速度与 SEO 表现。\n\n后端部署：采用前后端解耦架构，前端托管于全局 CDN 平台确保海内外访问体验；后端解析引擎独立部署于多节点 VPS 集群，通过轻量级负载均衡动态分发流量，有效绕过部分海外平台的 IP 区域限制。\n\n用爱发电：为了保护用户体验，国内流量完全无广告，仅在海外结算页面低调接入了 Polar 的打赏卡片以补贴高昂的跨境服务器和带宽成本。\n\n💡 为什么做这个项目？\n市面上绝大多数视频下载工具套路太深，要么牛皮癣广告满天飞，要么强行要求关注公众号或下载全家桶客户端。作为一个独立开发者，我想做个纯粹、干净、用完即走的工具。\n\n欢迎大家体验，如果在 Next.js 建站、流媒体后端节点运维或者解析报错方面有任何问题，非常欢迎在评论区或邮件交流探讨！",
-    "created_at": "2026-07-14T03:50:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10707"
   }
 ]
