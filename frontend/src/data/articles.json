@@ -1,5 +1,13 @@
 [
   {
+    "id": 10806,
+    "title": "【开源自荐】Termany：Agent-Native 终端",
+    "content": "Agent-Native 终端 Termany 开源了。🎉\n\n主要特点：\n\n1. 基于页面的多层级 filetree，管理项目更方便\n2. workspace + page + tab + pane 的组合，无限多开 Agent 工作窗口\n3. 搜索面板快速定位窗格、内置快捷键与快捷操作\n4. 多类型窗口切换：终端、文件、Git 差异、对话、浏览器\n5. 多 Agent 管理，cli 快捷命令，acp 对话，自定义模型\n6. Agent 状态显示、Token 统计、Session 检索，系统负载监控\n7. 多语言、多主题，兼容 codex 的自定义主题\n8. 其他更多 Agent 相关特性\n\n欢迎体验，感谢 Star👇\n\nhttps://github.com/thinkany-ai/termany\n\n官网地址：https://termany.sh\n\n![](https://pbs.twimg.com/media/HNuc9pWbcAAepxT?format=jpg&name=4096x4096)",
+    "created_at": "2026-07-21T05:33:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10806"
+  },
+  {
     "id": 10805,
     "title": "全球广播",
     "content": "https://radio.garden",
@@ -794,15 +802,5 @@
     "created_at": "2026-07-14T03:50:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10707"
-  },
-  {
-    "id": 10706,
-    "title": "自荐开源项目：TurboOCR，用 C++ 和 TensorRT 写的 GPU 文档解析服务器",
-    "content": "自荐一个自己写的开源项目：TurboOCR，一个 GPU 文档解析服务器。\n\n项目地址：https://github.com/aiptimizer/TurboOCR\n官网：https://turboocr.com\n\n整个流水线是 C++/CUDA/TensorRT 实现的，OCR、版面分析、表格转 HTML、公式转 LaTeX、PDF 转 Markdown 都在本地跑，不用调云 API，对外提供 HTTP 和 gRPC 接口，MIT 协议。\n\n做这个的原因是嫌现有方案太慢。VLM 类的文档解析大概每秒一页，传统引擎速度也一般。TurboOCR 在一张 5090 上整页 OCR 能跑到每秒五百多张，完整的结构化解析每秒二十页左右。识别用的是 PP-OCRv6，精度和 PaddleOCR 官方基本一致，中文日文拉丁文一个模型全包，中英混排文档开箱即用。除了中日英，还保留了阿拉伯文、西里尔文、韩文、泰文、希腊文的识别器，换个环境变量就能切。\n\n接口方面，除了基本的 /ocr 和 /ocr/raw，还有 /ocr/pdf（整本 PDF，加 ?markdown=1 直接出 Markdown）、/ocr/batch 批量、/infer 结构化输出。表格和公式是按请求开关的，加 ?tables=1&formulas=1 就行，不开不占资源。服务自带健康检查和 Prometheus 指标，放到 k8s 里也好管理。\n\n部署就一行 docker：\n\n```bash\ndocker run --gpus all -p 8000:8000 -p 50051:50051 \\\n  -v trt-cache:/home/ocr/.cache/turbo-ocr \\\n  ghcr.io/aiptimizer/turboocr:latest\n```\n\n需要 Linux 和 N 卡，20 系以上，纯文本 4G 显存左右，全流水线 8G。TensorRT 引擎第一次启动自动构建，之后有缓存就是秒起。第一次构建在 5090 上大概一分半钟，老卡会慢不少，可以设 TRT_OPT_LEVEL=3 把构建时间压下来。\n\n模型来自 PaddleOCR 全家桶，感谢百度开源，推理和服务层是我重新用 C++ 写的。适合要本地化、大批量处理、数据不能出内网的场景。后面还打算继续优化 CPU 推理和补充更多语言支持，想法都放在仓库的 issue 里了。\n\n欢迎试用，有问题提 issue。",
-    "created_at": "2026-07-14T01:14:23Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10706"
   }
 ]
