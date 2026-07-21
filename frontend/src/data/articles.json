@@ -1,5 +1,13 @@
 [
   {
+    "id": 10819,
+    "title": "【开源自荐】OpenTaint：让 AI 智能体驱动的开源污点分析（SAST）引擎",
+    "content": "最近我们开源了 **OpenTaint**，一款面向 AI 智能体设计的污点分析（SAST）引擎，想在这里做个自荐，也很想听听大家的意见。\n\n![OpenTaint 演示](https://raw.githubusercontent.com/seqra/opentaint/main/public/opentaint-demo-light.gif)\n\n在一次安全审计中，AI 智能体会把它学到的东西「落实」下来：把漏洞模式沉淀为污点规则，用于禁止某一类数据流路径；把代码行为沉淀为摘要，让引擎得以「看穿」那些它从未真正分析过的代码（比如外部依赖）。\n\n引擎本身被设计成同时守住经典「三难」的三个角——扫描时间、误报、漏报——在大规模代码上跨过程、字段与别名追踪数据流路径。\n\n关键在于：学习昂贵且不可预测，搜索廉价且确定。所以让智能体按需学习代码，让引擎在每次扫描时去搜索——安全审计因此变得精简而持续，而不必每次扫描都重新跑一遍昂贵的大模型分析。\n\n一句话：OpenTaint 是 Semgrep Pro 与 CodeQL 的 AI-ready 开源替代品。\n\n**怎么用。** 安装 agent 技能包只需一行：`npx skills add https://github.com/seqra/opentaint`，让 AI 智能体端到端跑一遍——构建项目、扫描、为缺失的库方法建模、triage，必要时生成 PoC 验证真实漏洞；也可以直接用 CLI 扫描，或用规则 DSL 自己写规则。开源协议 Apache-2.0，可自托管、可定制。当前分析 Java 与 Kotlin 代码，Go 与 Python 在路线图上。\n\n项目地址：https://github.com/seqra/opentaint\n\n**接下来。** 我们会继续打磨规则质量、扩展语言支持，并让 agent 与引擎的配合更顺畅。如果你在做应用安全 / 代码审计，欢迎试用后告诉我们：上手是否顺畅、误报漏报的实际情况、以及 agent 自动生成规则的效果如何。技术实现和使用体验上的建议我们都很想听。\n",
+    "created_at": "2026-07-21T22:11:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10819"
+  },
+  {
     "id": 10818,
     "title": "【开源自荐】《Codex 设计原理》：讲解 Codex 工程背后的 15 个核心设计决策",
     "content": "<img width=\"2106\" height=\"1275\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/40607056-e4af-44cd-8c25-efc0a7ba00f7\" />\n\n> 《Codex 设计原理》：讲解 Codex 工程背后的 15 个核心设计决策。\n\n- 项目地址：https://github.com/luochang212/codex-notebook\n- 在线阅读：https://www.luochang.ink/codex-notebook/\n\n一直好奇 Codex 是如何工作的。不是“它能干嘛”那种好奇，是“它内部到底怎么转的”那种。模型调用失败了怎么重试？上下文 128K 装不下了怎么压缩？模型要跑 `rm -rf /`，系统在哪一层拦住它？\n\nOpenAI 开源了代码，但 10 万行 TypeScript 没人替你读。于是我让 Qwen 3.8 替我读，然后写成一本能看懂的书。\n\n最初写出来的效果很差。我修了两轮：一轮修语言风格，一轮修正确性。但都不是提升洞察深度的修法。能挖多深，还是要靠模型自身的功力。所以这本书同时也是 Qwen 3.8 能力的一个真实参考：它到底能把一个 10 万行代码库理解到什么程度，翻开就知道。\n\n全书 15 章，按七篇组织：\n\n- **循环引擎**：谁拥有一次对话的生命周期？模型调用失败了怎么办？\n- **上下文工程**：上下文是怎么拼出来的？200 轮对话装不下了怎么办？\n- **工具与执行**：为什么不给一个万能 bash 就够了？\n- **安全与审批**：沙箱管不了的事谁来管？\n- **多 Agent**：子 agent 的角色为什么没有权限边界？\n- **扩展与配置**：为什么 skill 是 markdown 文件而不是插件代码？\n- **设计哲学**：14 章背后只有一条线\n\n每章的写法不是“文件索引 + 代码贴脸”。前半段用场景和类比建立直觉，后半段才上源码。代码只出现在需要证明承重逻辑的地方，出场前告诉你为什么要看这段，出场后告诉你看完意味着什么。\n\n这本书重视的不是 Codex 做了什么，而是这么做背后的工程取舍。",
@@ -792,13 +800,5 @@
     "created_at": "2026-07-14T23:51:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10720"
-  },
-  {
-    "id": 10719,
-    "title": "【开源自荐】🌻Workavera 是一个可自托管的 AI 团队工作台，在同一个应用中连接对话、知识、关系、项目、任务和时间承诺。",
-    "content": "项目地址：https://github.com/xusenlin/workavera\n官网地址：https://workavera.com/\n\nWorkavera 是一个自包含可自托管的 AI 团队工作台，在同一个应用中连接对话、知识、关系、项目、任务和时间承诺。\n也就是通过对话聊天，你可以管理你的工作看板，文档，团队联系人以及日历事件，一个二进制文件或者一句docker命令就能把服务跑起来。",
-    "created_at": "2026-07-14T23:48:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10719"
   }
 ]
