@@ -1,5 +1,21 @@
 [
   {
+    "id": 10818,
+    "title": "【开源自荐】《Codex 设计原理》：讲解 Codex 工程背后的 15 个核心设计决策",
+    "content": "<img width=\"2106\" height=\"1275\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/40607056-e4af-44cd-8c25-efc0a7ba00f7\" />\n\n> 《Codex 设计原理》：讲解 Codex 工程背后的 15 个核心设计决策。\n\n- 项目地址：https://github.com/luochang212/codex-notebook\n- 在线阅读：https://www.luochang.ink/codex-notebook/\n\n一直好奇 Codex 是如何工作的。不是“它能干嘛”那种好奇，是“它内部到底怎么转的”那种。模型调用失败了怎么重试？上下文 128K 装不下了怎么压缩？模型要跑 `rm -rf /`，系统在哪一层拦住它？\n\nOpenAI 开源了代码，但 10 万行 TypeScript 没人替你读。于是我让 Qwen 3.8 替我读，然后写成一本能看懂的书。\n\n最初写出来的效果很差。我修了两轮：一轮修语言风格，一轮修正确性。但都不是提升洞察深度的修法。能挖多深，还是要靠模型自身的功力。所以这本书同时也是 Qwen 3.8 能力的一个真实参考：它到底能把一个 10 万行代码库理解到什么程度，翻开就知道。\n\n全书 15 章，按七篇组织：\n\n- **循环引擎**：谁拥有一次对话的生命周期？模型调用失败了怎么办？\n- **上下文工程**：上下文是怎么拼出来的？200 轮对话装不下了怎么办？\n- **工具与执行**：为什么不给一个万能 bash 就够了？\n- **安全与审批**：沙箱管不了的事谁来管？\n- **多 Agent**：子 agent 的角色为什么没有权限边界？\n- **扩展与配置**：为什么 skill 是 markdown 文件而不是插件代码？\n- **设计哲学**：14 章背后只有一条线\n\n每章的写法不是“文件索引 + 代码贴脸”。前半段用场景和类比建立直觉，后半段才上源码。代码只出现在需要证明承重逻辑的地方，出场前告诉你为什么要看这段，出场后告诉你看完意味着什么。\n\n这本书重视的不是 Codex 做了什么，而是这么做背后的工程取舍。",
+    "created_at": "2026-07-21T19:16:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10818"
+  },
+  {
+    "id": 10817,
+    "title": "【开源自荐】Semaphore:纯浏览器本地的图片转 ASCII 工作台,盲文点阵模式 8 倍细节",
+    "content": "![Semaphore hero](https://raw.githubusercontent.com/can4hou6joeng4/Semaphore/main/docs/images/hero.gif)\n\n### 项目地址\n\n- 在线体验:https://semaphore.bobochang.cn (免费 · 无上传 · 无账号)\n- 项目仓库:https://github.com/can4hou6joeng4/Semaphore\n- License:MIT\n\n> 一句话:**把任何图片拖进浏览器,几秒变成一幅能去任何地方的 ASCII 字符画** —— 终端、代码注释、README、聊天窗口,纯文本能到的地方,它都能到。\n\n### 为什么叫 Semaphore(旗语)\n\n旗语是水手隔着海面说话的方式:不用电报、不用网络,两面旗子把消息一个字符一个字符拍给远方。这个工具对图片做同样的事:把图像拆成字符,让它能在任何纯文本环境里旅行。\n\n它不是一次性玩具,而是一个专注的图片转 ASCII「工作台」:\n\n### 亮点\n\n- **六种字符集,六种质感**:从经典 ` .:-=+*#%@`、70 级灰阶、`░▒▓█` 块字符,到**盲文 2×4 点阵 + 抖动算法** —— 同样宽度下 8 倍像素密度,人像照片也能保住细节\n- **实时调参**:列数、亮度、对比度、反相、绿磷光 / 灰度 / 原彩,拖动滑块即时重渲染\n- **导出方式齐全**:一键复制纯文本、下载 `.txt` / `.png`,或生成一张带转换参数的分享卡片\n- **真·本地运行**:canvas 逐像素采样,整站没有后端 API、没有统计脚本、没有 cookie,关掉标签页什么都不留\n- **整站 CRT 绿磷光终端风格**:扫描线 + 辉光,首页是一段逐字符擦除的字符画动画\n- **技术**:Vite + TypeScript strict,零框架,部署在 Cloudflare Pages\n\n![工具页](https://raw.githubusercontent.com/can4hou6joeng4/Semaphore/main/docs/images/tool.png)\n\n### 试玩\n\n打开 https://semaphore.bobochang.cn/tool ,拖一张图进去就行 —— 无需注册、没有排队、没有水印。支持 PNG / JPG / WebP / GIF。\n\n欢迎大家试用和反馈。感谢阮老师长期维护周刊。\n",
+    "created_at": "2026-07-21T18:17:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10817"
+  },
+  {
     "id": 10816,
     "title": "【开源自荐】looperators：把 AI Agent 铺在画布上，连成会自己跑的 loop",
     "content": "> **Looperators**是一个loop-native的Agent Workspace\n\n+ 项目地址：https://github.com/ObservedObserver/looperators\n+ 下载：https://github.com/ObservedObserver/looperators/releases/latest\n\n在让 AI 处理复杂的编程任务时，很多人已经在同时用多个 AI Agent：让不同的模型各自出方案、互相讨论，或者让一个 Agent 写代码、另一个做多轮 Code Review。但这些 Agent 各自活在独立的窗口里，**中间来回传话的是人——把 A 的输出贴给 B，把 B 的意见带回 A，每一轮都要人来跑腿**。Agent 越多、轮次越多，人就越像一个疲于复制粘贴的中间件。\n\n**looperators** 的解法是把传话这件事交给图。Agent 铺在一张画布上，Agent 之间可以连线——这些线不是示意图，是真的会执行：上游 Agent 跑完，输出沿着线自动交给下游；下游的结论自动送回上游，并把它唤醒继续干活。谁触发谁、传什么、什么时候停，都定义在线上。人不用再守在中间传话，只需要在开局把关系和停止条件定好。\n\n而这张图不需要人拖拽搭建——looperators 不是一个低代码工具。你还是像平时一样跟 Agent 自然对话，对话中 Agent 用到的任何 loop 结构，都会自动在右侧生成对应的图；生成之后可以随意编辑。想自己设计 loop 的重度用户也一样轻：用对话把你要的结构说出来就行，不用在图纸上一笔一笔画。\n\n<img width=\"3140\" height=\"1532\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92f4e4b2-08e7-40da-b360-72fc802d1368\" />\n\n第一个常用玩法是多方案讨论：把同一个问题同时抛给几个模型——比如 Codex、Claude Code、Grok Build 各开一个 Agent，各自独立生成方案，然后互相阅读、互相挑战，指出对方的漏洞后再各自修订，直到讨论收敛、达成共识，综合出一份最终方案。整个过程没有人在中间搬运：谁读谁的方案、什么时候进入下一轮、到什么程度算达成共识，都由图来驱动。想跑这样一个 loop，直接在对话里提要求就行，右侧会自动生成并维护它；也可以选内置模板，一键搭出来。\n\n\nCode Review 是另一个常用的环：写代码的 Agent 和做 review 的 Agent 连起来，停止条件写一句\"直到 review 干净，最多 6 圈\"——写完自动送审，审出问题自动打回去修，修完再送审，环上的徽章实时显示跑到第几圈。中途随时可以点开任何一个 Agent 插话，它就是一个普通的聊天窗口：跟 reviewer 说一句\"风格忽略，只看逻辑\"，loop 接着跑。这类环也都有内置模板，比如把当前会话一次性交接给另一个 Agent 继续，或者给干活的 Agent 配一个独立的裁判、跑到目标真正完成为止。\n\n<img width=\"3126\" height=\"1528\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e71d29f8-8c9b-43cd-bc19-2e41a6555d16\" />\n\n- 桌面应用，本地运行，Apache-2.0 开源\n- 支持 Claude Code、Codex 和 Grok Build\n- 每一圈谁触发、结论是什么，都留在图上，随时可以人工接管\n\n感谢阮老师长期整理周刊，也欢迎大家试用并提出建议。",
@@ -784,21 +800,5 @@
     "created_at": "2026-07-14T23:48:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10719"
-  },
-  {
-    "id": 10718,
-    "title": "【开源自荐】coding-discipline —— Claude Code / Codex 的「编程纪律」护栏插件",
-    "content": "项目地址：https://github.com/chipfighter/coding-discipline\n中文说明：https://github.com/chipfighter/coding-discipline/blob/main/README.zh-CN.md\n\nAI 编程助手（Claude Code / Codex）最大的问题往往不是能力，而是纪律：不问清需求直接开写、修 bug 靠瞎试、嘴上说\"测试通过了\"其实没跑过、上个会话拍板的目标下个会话就忘。\n\ncoding-discipline 是一个「护栏」插件——不接管工作流，平时安静，具名失败模式临近才介入：\n\n- **按需触发的 8 条纪律 skill**：设计先行（brainstorming）、红绿重构（tdd）、先根因再修（systematic-debugging）、优先级评审（code-review）、拿证据再说\"做完了\"（verify-before-done）、git 流程（git-flow）、上下文卫生（context-hygiene）、spec 同步（spec-sync）。日常小改动零打扰。\n- **spec-sync（这个项目自有的一层）**：把对话里已确认的目标 / 非目标 / 硬约束 / 验收标准写回项目已有文档，不新增任何制品，下个会话不再把否掉的方案重做一遍。\n- **固定注入被 CI 冻结**：每会话固定上下文约 1.2k tokens，文案变大直接挂 CI——「轻」是一条会失败的测试，不是口号。\n- **跨平台**：同一份 SKILL.md 同时服务 Claude Code 和 Codex；hook 纯 bash 无 jq 依赖，Windows / Git Bash 有独立测试。\n- **英文为主 + 完整中文 README**：v0.8.1 起产品面英文优先（便于全球分发），README.zh-CN.md 全文维护。理念致谢英文的 superpowers（MIT）。\n\nMIT 协议。欢迎试用和提 issue——尤其欢迎「该触发没触发 / 不该触发触发了」的反馈。",
-    "created_at": "2026-07-14T14:41:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10718"
-  },
-  {
-    "id": 10717,
-    "title": "【开源自荐】PickySteve：本地优先的编程 Agent Skill 路由器，内置 Prompt 注入防护网关",
-    "content": "**项目地址**：https://github.com/KernelLord/pickysteve\n\n**项目简介**：PickySteve 是一个面向编程 Agent 的 skill 路由器和上下文选择器。用一个便宜的本地小模型（默认 Ollama qwen3:8b，离线运行，无需云端 API key）通过混合检索（BM25 + 向量嵌入，RRF 融合）+ 交叉编码器重排 + LLM 裁判，把每条请求路由到合适的 skill，再拼装一个最小化、带 nonce 边界的上下文包交给执行模型。\n\n**安全设计**：内置 Prompt 注入检测网关（ONNX 分类器），对原始请求和每一条检索到的文档都做扫描，失败即拒绝（fail-closed）。在 180 条红队测试语料上做到 100% 检出、0 次绕过；在真实 skill 库上 0/43 误报。\n\n**集成方式**：提供 MCP stdio server 和 OpenAI 兼容代理（:8077/v1）两种接入方式，一条安装命令即可接入 Claude Code、Codex、Cursor、Windsurf、Cline、Roo Code、Gemini CLI 等 18 种编程 Agent。\n\n**现状**：MIT 协议开源，v0.1.0 已发布，仓库创建于 2026-07-06，目前约 6 星，欢迎试用和反馈。\n\n（说明：本 issue 由项目作者授权的 AI 助手代为提交，内容均为真实数据。）",
-    "created_at": "2026-07-14T14:14:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10717"
   }
 ]
