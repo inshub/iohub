@@ -1,5 +1,13 @@
 [
   {
+    "id": 10816,
+    "title": "【开源自荐】looperators：把 AI Agent 铺在画布上，连成会自己跑的 loop",
+    "content": "> **Looperators**是一个loop-native的Agent Workspace\n\n+ 项目地址：https://github.com/ObservedObserver/looperators\n+ 下载：https://github.com/ObservedObserver/looperators/releases/latest\n\n在让 AI 处理复杂的编程任务时，很多人已经在同时用多个 AI Agent：让不同的模型各自出方案、互相讨论，或者让一个 Agent 写代码、另一个做多轮 Code Review。但这些 Agent 各自活在独立的窗口里，**中间来回传话的是人——把 A 的输出贴给 B，把 B 的意见带回 A，每一轮都要人来跑腿**。Agent 越多、轮次越多，人就越像一个疲于复制粘贴的中间件。\n\n**looperators** 的解法是把传话这件事交给图。Agent 铺在一张画布上，Agent 之间可以连线——这些线不是示意图，是真的会执行：上游 Agent 跑完，输出沿着线自动交给下游；下游的结论自动送回上游，并把它唤醒继续干活。谁触发谁、传什么、什么时候停，都定义在线上。人不用再守在中间传话，只需要在开局把关系和停止条件定好。\n\n而这张图不需要人拖拽搭建——looperators 不是一个低代码工具。你还是像平时一样跟 Agent 自然对话，对话中 Agent 用到的任何 loop 结构，都会自动在右侧生成对应的图；生成之后可以随意编辑。想自己设计 loop 的重度用户也一样轻：用对话把你要的结构说出来就行，不用在图纸上一笔一笔画。\n\n<img width=\"3140\" height=\"1532\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92f4e4b2-08e7-40da-b360-72fc802d1368\" />\n\n第一个常用玩法是多方案讨论：把同一个问题同时抛给几个模型——比如 Codex、Claude Code、Grok Build 各开一个 Agent，各自独立生成方案，然后互相阅读、互相挑战，指出对方的漏洞后再各自修订，直到讨论收敛、达成共识，综合出一份最终方案。整个过程没有人在中间搬运：谁读谁的方案、什么时候进入下一轮、到什么程度算达成共识，都由图来驱动。想跑这样一个 loop，直接在对话里提要求就行，右侧会自动生成并维护它；也可以选内置模板，一键搭出来。\n\n\nCode Review 是另一个常用的环：写代码的 Agent 和做 review 的 Agent 连起来，停止条件写一句\"直到 review 干净，最多 6 圈\"——写完自动送审，审出问题自动打回去修，修完再送审，环上的徽章实时显示跑到第几圈。中途随时可以点开任何一个 Agent 插话，它就是一个普通的聊天窗口：跟 reviewer 说一句\"风格忽略，只看逻辑\"，loop 接着跑。这类环也都有内置模板，比如把当前会话一次性交接给另一个 Agent 继续，或者给干活的 Agent 配一个独立的裁判、跑到目标真正完成为止。\n\n<img width=\"3126\" height=\"1528\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e71d29f8-8c9b-43cd-bc19-2e41a6555d16\" />\n\n- 桌面应用，本地运行，Apache-2.0 开源\n- 支持 Claude Code、Codex 和 Grok Build\n- 每一圈谁触发、结论是什么，都留在图上，随时可以人工接管\n\n感谢阮老师长期整理周刊，也欢迎大家试用并提出建议。",
+    "created_at": "2026-07-21T15:31:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10816"
+  },
+  {
     "id": 10815,
     "title": "【开源自荐】—— 推荐一个高性能代码验证引擎：CodeScope（支持 MCP 协议）",
     "content": "大家好，推荐一个我最近在用的开源项目 —— CodeScope。\n\n### 简介\nCodeScope 是一个高性能代码图引擎 + MCP 协议工具链，专为 AI Agent 设计，让 AI 不再“幻觉理解代码”，而是真正能验证代码是否符合声明。\n核心亮点：\n\n- 支持 8 种主流语言（C/C++、Rust、Python、Go、JS/TS、Java 等）\n- 使用 tree-sitter + C++23 核心 + LadybugDB（高效图数据库）构建调用图、引用关系、模型层\n- 提供 40+ 个 MCP 工具，可直接接入 Claude Desktop / Cursor 等 AI 客户端\n- 智能过滤 + 并行索引，处理大型项目（如 Linux kernel）也能保持高效\n- 支持声明验证、死代码检测、架构分析等实用功能\n\n适合：\n\n- AI 代码生成后的验证场景\n- 大型代码库的架构理解和重构\n- 开发者想让 AI 真正“看懂”项目的调用关系\n\n\n\ngithub：https://github.com/Timwood0x10/CodeScope\nrelease:  https://github.com/Timwood0x10/CodeScope/releases/tag/v0.2.3\n\n",
@@ -792,13 +800,5 @@
     "created_at": "2026-07-14T14:14:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10717"
-  },
-  {
-    "id": 10716,
-    "title": "【开源自荐】ReadAware —— 免费开源且优雅的全平台阅读器，本地优先 + 阅读自进化 Agent + 优雅体验",
-    "content": "项目地址:https://github.com/ahpxex/read-aware\n官网:https://readaware.app\n\n## 这是什么\n\nReadAware 是一个免费开源(MIT)的跨平台阅读器,macOS / Windows / Linux / Android / iOS 都能用。做它的起因很简单:好看的阅读器没有 AI,带 AI 的阅读器又把数据锁在云端,我两边都不想妥协。\n\n主要特性:\n\n- **逐句阅读模式**:一次只聚焦一句话,注意力不容易跑,对 ADHD 用户很友好\n- **完整的标注体系**:下划线、高亮、边注,顺手就标,不打断心流;EPUB / MOBI / AZW3 / FB2 / PDF 五种格式共用同一套标注和进度模型,不需要转换\n- **AI 内建但完全可选**:选中一段就能问,它知道你在读哪本书哪一章,还会从你的书、划线和笔记里积累出持续记忆;模型端点自己配,不开 AI 它也是个完整的阅读器\n- **本地优先**:书、笔记、对话、记忆全部存在本地 SQLite,无需注册账号\n- **阅读时长统计**:每本书的时间、连续天数、一天中的阅读时段分布\n\n技术栈:Tauri(Rust 核心 + TypeScript UI)。\n\n## 截图\n\n书架:\n\n![书架](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/shelf.webp)\n\n阅读与标注:\n\n![阅读器](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/reader.webp)\n\n选中即问的上下文助手:\n\n![上下文助手](https://raw.githubusercontent.com/ahpxex/read-aware/main/apps/landing/public/screenshots/context.webp)\n\n跨设备同步在路线图上。欢迎反馈和 issue,尤其欢迎 Linux 用户帮忙多测。\n",
-    "created_at": "2026-07-14T10:58:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10716"
   }
 ]
