@@ -1,5 +1,47 @@
 [
   {
+    "id": 10828,
+    "title": "【网站自荐】还在把网站流量白白送给第三方？这款免费视频托管工具，想把访客留在你自己的网站里",
+    "content": "# [Cyberbara Video Hosting - 网站视频托管页面](https://cyberbara.com/zh/features/video-hosting?utm_source=ruanyf_weekly_submission&utm_medium=github_issue)\n\n还在把网站流量白白送给第三方？\n\n很多人做产品演示、客户案例或者课程视频时，图省事会把视频传到 YouTube、B 站这类平台，再嵌回自己的网站。问题是，播放器往往带着第三方品牌，播完还会继续推荐别的视频，访客很容易就被带走了。\n\n如果自己搭视频服务器，又会碰到带宽、播放器适配、权限控制、统计分析这些维护问题。对大多数独立开发者、小团队和内容网站来说，这套东西并不轻。\n\nCyberbara 这个 Video Hosting 页面，想解决的就是中间这块空白：  \n上传一次视频，生成干净的 iframe 嵌入代码，再把播放器放回你自己的网站、落地页或 CMS 页面里。\n\n![](https://cyberbara.com/preview.jpg)\n\n它目前主打这几类能力：\n\n- 自定义更干净的播放器，不叠第三方 Logo\n- 支持 MP4 / MOV 上传，适合直接嵌入官网和产品页\n- 支持 iframe 嵌入代码和直链复制\n- 支持密码保护、域名限制、私密链接\n- 支持视频播放、观看时长、完播率等分析\n\n我觉得它比较适合下面几类场景：\n\n- 产品营销页放演示视频\n- 销售提案里放客户案例\n- 课程内容或知识付费内容托管\n- 官网里放 testimonial 和案例视频\n\n免费计划也比较直接：\n\n- 最长支持 5 分钟\n- 最高 1080p\n- 单个视频最大 200MB\n- 免费用户最多可嵌入 20 个视频\n\n如果你最近正好在做产品官网、落地页或者内容站，这类“把视频留在自己站内”的方案可能会比直接嵌第三方平台更实用。\n\n相关链接：\n\n- Video Hosting 页面：https://cyberbara.com/zh/features/video-hosting?utm_source=ruanyf_weekly_submission&utm_medium=github_issue\n- Cyberbara 首页：https://cyberbara.com/zh?utm_source=ruanyf_weekly_submission&utm_medium=github_issue\n",
+    "created_at": "2026-07-22T09:42:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10828"
+  },
+  {
+    "id": 10827,
+    "title": "【开源自荐】GPT-5.6 攻破 Hugging Face 之后，你的AI应用该做一次安全体检了",
+    "content": "今天凌晨 OpenAI 披露：GPT-5.6 Sol 在沙盒测试中自主发现0day漏洞、突破隔离环境入侵了 Hugging Face 生产服务器，这是已知首起前沿大模型自主完成真实网络攻击的事件。\n\n这说明 AI 应用的安全风险已经不只是理论推演了。大多数团队的 AI 应用从模型服务、MCP 工具到 Agent 工作流，几乎处于危险的状态。\n\n推荐一个开源工具 AI-Infra-Guard（腾讯朱雀实验室出品），它是一个基于 Agent 驱动的 AI 应用全链路安全检测平台，可以一键扫描 AI 应用的完整攻击面：\n\n- 模型层：LLM 越狱风险评估，内置 9 种攻击算子，支持跨模型对比\n- 基础设施层：覆盖 Ollama、vLLM、ComfyUI、n8n 等 100+ 组件，1900+ CVE 漏洞检测\n- 工具链层：MCP 服务器安全扫描，检测工具投毒、凭证泄露、命令注入\n- Agent 层：多 Agent 自动化红队，评估 Dify / Coze 等平台的工作流安全\n- 供应链层：Agent Skill 安全审计，覆盖 SkillTrustBench T01-T09 九大风险分类\n\n与传统静态扫描工具不同，AI-Infra-Guard 用 ReAct Agent 自主推理来审计代码和工具行为——模型会读代码、调命令、访问网络，像一个真实的红队安全工程师一样工作。工具已被 Black Hat Europe 2025入选，被 19 篇 arXiv 论文引用，帮助 NVIDIA、Google、Microsoft 修复过高危漏洞。\n\n<img width=\"1445\" height=\"876\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2b80ceab-42b6-4911-ad5e-59cc0928fd2f\" />\n\n项目地址：https://github.com/Tencent/AI-Infra-Guard",
+    "created_at": "2026-07-22T08:19:27Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/10827"
+  },
+  {
+    "id": 10826,
+    "title": "【开发自荐】Moeli 阅读：为漫画小说打造的全功能阅读器",
+    "content": "软件名称：Moeli 阅读\n软件平台：Android / iOS\n软件官网：https://reader.moeli.top/\n\nMoeli 阅读是我基于 Flutter 开发的一款跨平台电子书与漫画阅读器。项目围绕“本地书籍管理、云端流式阅读、专业阅读体验”三个方向展开，既适合日常阅读，也面向拥有 NAS、云盘和大量数字藏书的深度用户。\n\n## 一、核心能力：本地与云端统一书库\n\nMoeli 阅读支持本地书籍与云端资源统一管理，可挂载 WebDAV、OPDS、Komga、百度网盘以及本地文件夹，并允许为不同路径建立多个独立书库。\n\n核心的流式阅读功能可通过 HTTP Range 按需读取云端内容。对于支持分段访问的服务，无需预先下载整本书即可开始阅读 EPUB、PDF 和漫画；同时提供缓存容量、图片预加载、封面缓存、元数据扫描等设置。对于不支持流式读取的服务，则可自动切换到完整下载兼容模式。\n\n流式书籍并不是简单的文件浏览：阅读进度、书签、批注、独立样式、系列、标签和阅读统计均可正常保存，整体体验与本地书籍保持一致。\n\n## 二、格式能力：覆盖小说、漫画与 PDF\n\n小说阅读支持：\n\n- EPUB、MOBI、AZW3、AZW4、TXT、PDF\n\n漫画阅读支持：\n\n- EPUB、MOBI、AZW3、AZW4、CBZ、ZIP、7Z、PDF\n- 云端图片文件夹自动识别为漫画\n\nTXT 文件可自动转换为 EPUB；EPUB、MOBI 和 PDF 也可以按照漫画模式导入。应用针对小说、漫画和 PDF 分别提供独立阅读引擎，让不同类型的内容获得更合适的排版与操作方式。\n\n## 三、阅读体验：从翻页到排版全面可调\n\n小说阅读器提供平滑翻页、仿真翻页和无动画模式；漫画与 PDF 阅读器支持平移、覆盖和无动画效果。\n\n同时支持：\n\n- 点击区域、滑动及音量键翻页\n- 自定义点击区域与音量键方向\n- 自动翻页及速度调节\n- 自定义翻页声音\n- 阅读亮度和系统界面控制\n- 阅读进度、页码及章节跳转\n- 连续阅读与系列接续阅读\n\n小说排版支持字体、字号、行距、段距、首行缩进、页面边距、分页与滚动、横排与竖排、繁简转换、自定义主题及日夜模式自动切换。\n\n每本书都可以启用独立样式，也可以为小说、漫画和 PDF 分别保存样式预设，甚至将预设直接关联到整个系列。\n\n## 四、图像阅读：为漫画与扫描书优化\n\n漫画和 PDF 阅读器提供单页、双页、纵向滚动、横向滚动以及左右阅读方向，可适配日漫、国漫、条漫和扫描版书籍。\n\n图像增强功能包括：\n\n- 智能切页与长图分段\n- 白边、黑边自动裁剪\n- 双线性、双三次及 Lanczos 重采样\n- Waifu2x 风格画质增强\n- 图片增强与流式页面预加载\n- PDF 双击缩放及页面模式切换\n- 智能背景色与图片参数显示\n\n这些能力重点改善低清漫画、超长图片、双页扫描和大尺寸 PDF 的实际阅读体验。\n\n## 五、书库管理：系列、标签与分组体系\n\nMoeli 阅读采用“系列、标签、标签分组”三层分类方式，既能整理单册书籍，也适合管理长篇套装和连载漫画。\n\n系列功能支持：\n\n- 创建、编辑和解散系列\n- 自定义系列名称、简介和封面\n- 拖动调整书籍顺序\n- 按名称、作者、序号或最近阅读排序\n- 连续阅读系列内书籍\n- 为系列关联阅读样式预设\n- 自动为系列内书籍添加标签\n- 统一覆盖系列内书籍标签\n\n标签支持颜色、说明和分组管理，并可按标签筛选系列与单册书籍。本地书库与流式书库均可使用这一分类体系。\n\n书库还提供封面展示、阅读进度标识、书籍搜索、排序筛选、元数据编辑、批量操作、最近阅读和文件分享等常用能力。\n\n## 六、阅读记录：让积累清晰可见\n\n应用会统一记录本地与流式阅读数据，包括：\n\n- 书籍总数与已读数量\n- 总阅读时长与日均时长\n- 每日阅读目标及完成进度\n- 近七日阅读趋势\n- 阅读日历与年度热力图\n- 单本书阅读时长排行\n- 每日阅读书籍、时长和阅读次数\n\n阅读统计不仅展示一个总时长，还能回顾具体日期的阅读明细，帮助用户直观看到长期阅读习惯。\n\n## 七、阅读辅助\n\n小说阅读器提供书内搜索、书签、高亮、下划线和批注功能，并支持百度、必应、谷歌翻译。\n\n语音朗读支持：\n\n- 系统 TTS\n- 阿里云智能语音\n- Azure 语音朗读\n- 音色和语速选择\n- 逐句前进、后退、暂停与继续\n\n这些功能让 Moeli 阅读可以同时覆盖精读、外文阅读、听书和资料查阅等场景。\n\n## 八、同步、隐私与多平台支持\n\n书库数据和阅读记录可通过 WebDAV 或百度网盘进行同步，支持自动同步、多线程同步及同步状态查看。\n\n应用还提供隐私书籍与隐私系列，可通过密码或设备生物识别进入隐私模式。API 密钥、云盘密码和同步凭证均使用安全存储，并支持加密同步云盘凭证。\n\nMoeli 阅读目前面向 Android、iOS，内置简体中文、繁体中文、英文与日文界面。\n\n## 开发者自荐\n\n我希望 Moeli 阅读不只是一款“可以打开很多格式”的阅读器，而是一套真正服务个人数字藏书的完整工具：本地文件可以精细整理，NAS 和云盘资源可以直接流式阅读，小说、漫画和 PDF 都拥有针对性的阅读体验，所有进度、分类与统计又能在同一个书库体系中持续沉淀。\n\n无论是偶尔读一本电子书，还是长期维护自己的数字图书馆，Moeli 阅读都希望提供一个自由、完整且可控的选择。\n\n<img width=\"2732\" height=\"2048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11d5f520-4f38-48a1-9ec5-267ccb4c964f\" />\n<img width=\"2732\" height=\"2048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/17d44e2b-22d0-4a60-9386-2acc068a7eb7\" />\n<img width=\"1366\" height=\"1024\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dfb26071-f34b-4817-964d-44bf23ccd81b\" />\n<img width=\"2732\" height=\"2048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/81d374f7-2701-4cca-9a86-1bc251abc589\" />",
+    "created_at": "2026-07-22T08:14:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10826"
+  },
+  {
+    "id": 10824,
+    "title": "【开源自荐】GitPulse v0.7：把多个 Git 仓库一键整理成日报、周报和绩效月报",
+    "content": "阮老师您好，自荐一个我做的开源桌面工具 **GitPulse**。\n\nGitPulse 是一个本地优先的 Git 工作报告生成器，当前版本为 **v0.7.0**。它面向需要同时维护多个代码仓库的开发者，在本机扫描 Git 提交，按作者、日期和分支归集内容，然后一键生成可直接交付的日报、周报、自定义区间报告和绩效月报。\n\n- 项目地址：https://github.com/GoldenZqqq/GitPulse\n- 官网：https://goldenzqqq.github.io/GitPulse/\n- v0.7.0：https://github.com/GoldenZqqq/GitPulse/releases/tag/v0.7.0\n- 下载页面：https://github.com/GoldenZqqq/GitPulse/releases\n- 高清演示：https://github.com/GoldenZqqq/GitPulse/blob/main/docs/gitpulse-demo.mp4\n\n![GitPulse v0.7.0 操作演示](https://raw.githubusercontent.com/GoldenZqqq/GitPulse/main/docs/gitpulse-demo.gif)\n\n主要特点：\n\n- **统一报告工作台**：四种报告在一个流程中完成范围确认、生成、复制、AI 润色和导出，最近报告与当前状态集中展示。\n- **稳定的多仓库任务反馈**：扫描和提取提交时持续更新同一个进度窗口，可以看到当前仓库和完成数量。\n- **工作区健康检查**：自动识别失效目录、重复仓库和异常索引，可确认后一键清理并重新扫描。\n- **本地优先且可审计**：Git 扫描和报告生成默认完全在本机完成；AI 润色可选，支持原稿/润色稿对照，失败时自动回退本地模板。\n- **直接交付**：报告可复制，也可导出 Markdown、Word 和 PDF；支持补充会议、联调、上线支持等非 Git 工作事项。\n- **完整跨平台发布**：提供 Windows 安装包与应用内更新、macOS Universal DMG / App ZIP，以及 Linux AppImage。\n\n项目基于 **Tauri 2 + React 19 + Rust**，采用 MIT License。API Key 与登录态保存在系统凭据库，不写入普通配置文件。\n\n做这个工具的原因很直接：每到周五或月底，很多开发者都要翻多个仓库的 `git log`，再手动整理成别人能看懂的工作报告。这件事重复、琐碎，又涉及本地代码记录，所以更适合由一个本地桌面工具完成。\n\n谢谢。",
+    "created_at": "2026-07-22T07:31:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10824"
+  },
+  {
+    "id": 10823,
+    "title": "【开源自荐】WeChat FastBridge：让 Codex 秒级、低 token 读写微信",
+    "content": "## 项目简介\n\nWeChat FastBridge 是一个免费、MIT 开源、仅在本机运行的 macOS 微信桥接器，让 Codex 不依赖截图或完整辅助功能树，就能秒级读取、监听并发送微信消息。\n\n项目地址：https://github.com/huj28-creator/wechat-fastbridge\n中文说明：https://github.com/huj28-creator/wechat-fastbridge/blob/main/README.zh-CN.md\n\n## 主要特点\n\n- 自动搜索聊天并验证标题，允许少量错字，发送后恢复原来的前台应用\n- 六个紧凑 MCP 工具：状态、读取、文字发送、文件/表情发送、单聊等待、允许列表监听\n- 重复读取只返回新增消息；无变化时不重复传输聊天正文\n- v1.6 会按中文词组、英文词、数字、概念、稀有度和时间找回相关事实，而不是只截取最近几行\n- 工具定义由 5,624 缩至 2,849 字符（约减少 49%），技能说明 3,472 字节\n- 不用微信私有协议，不读聊天数据库，无云端中转，不需要付费 Apple 开发者账号\n- 29 项自动测试通过，支持 Apple Silicon 与 Intel Mac\n\n## 安装\n\n```bash\ngit clone https://github.com/huj28-creator/wechat-fastbridge.git\ncd wechat-fastbridge\nnpm install\nnpm run setup\n```\n\n适合希望让 Codex 处理微信客服、持续回复或日常自动化，同时又在意发错聊天、延迟、隐私和 token 开销的 macOS 用户。",
+    "created_at": "2026-07-22T06:37:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10823"
+  },
+  {
     "id": 10822,
     "title": "【工具自荐】免费qq价格评估网站",
     "content": "<img width=\"1089\" height=\"901\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/edf9e527-e196-47d6-b359-dc98f9d98bec\" />\n\n只需要输入qq号,就会从多维度分析qq价格。\n\n跟抖音和哔哩哔哩直播的估价软件功能差不多。\n\n网站地址:https://qq.lkmerchant.online/",
@@ -116,7 +158,9 @@
     "title": "【开源自荐】可拖拽邮件编辑器monto-email-builder",
     "content": "# Monto Email Builder：简单、灵活、现代化的 React 邮件拖拽编辑器：\ngithub地址：https://github.com/heiheihoho1213/monto-email-builder\n预览：https://heiheihoho1213.github.io/monto-email-builder/\n\n## 特性\n✅ 可视化邮件模板编辑器\n✅ 支持多种邮件块类型（文本、图片、按钮、容器等）\n✅ 实时预览\n✅ 导出 HTML 和 JSON\n✅ 国际化支持（中文/英文）\n✅ 图片上传支持\n✅ 完全可定制\n\n## 1. 可视化拖拽编辑\n\nMonto 提供类似页面搭建工具的体验。\n\n用户可以：\n- 添加文本模块\n- 插入图片\n- 创建按钮\n- 调整布局\n- 修改颜色和样式\n- 组合不同内容区域\n\n不用编写 HTML，也可以快速制作一封完整营销邮件。\n\n## 2. 丰富的邮件 Block 组件\n\n邮件编辑器最核心的组件系统，Monto将邮件拆分成不同 Block：\n\n- Text\n- Image\n- Button\n- Container\n- Columns\n- Divider\n- HTML\n- Video\n- Social 等\n\n不同模块可以组合成复杂邮件模板。设计方式类似低代码平台，相比直接编辑 HTML，这种结构更容易保存、修改和二次编辑。",
     "created_at": "2026-07-21T06:30:14Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10807"
   },
   {
@@ -236,7 +280,9 @@
     "title": "【文章推荐】美国政府是如何没收大量比特币的",
     "content": "#### 这篇文章介绍了美国政府有一个技术团队，至少从2020年开始，就不间断的寻找比特币的所有薄弱环节来打捞比特币\n\n每隔一段时间，就会有新闻，说美国政府没收了xxx的大量加密货币；而此类新闻对于如何没收的语焉不详；让很多不明真相的群众，认为比特币又又又被攻破了，什么去中心化并非真正的去中心化，美国政府想没收谁就没收谁……\n\n这里面最大的一个事件，应该是2025年10月，美国司法部以“打击跨国电诈洗钱”为名义，对柬埔寨太子集团创始人陈志发起刑事指控，罪名涉及电信网络诈骗、洗钱等，同时高调宣布没收其控制的约12.7万枚比特币，按当时市场价格计算价值约150亿美元，创下美国司法部门历史上最大规模的虚拟资产没收纪录。\n\n那么，这12.7万枚比特币，究竟是如何被没收的呢？难道是刑讯逼供出来的私钥？还是真的美国政府握有比特币的某个不为人知的漏洞？\n\n我仔细研究了一番，发现这是一个非常有意思的故事；\n\n* https://brainz.fun/blog/2026/06/01/mei-guo-zheng-fu-shi-ru-he-mei-shou-da-liang-bi-te-bi-de/",
     "created_at": "2026-07-19T13:27:09Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10792"
   },
   {
@@ -770,47 +816,5 @@
     "created_at": "2026-07-15T05:12:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10727"
-  },
-  {
-    "id": 10726,
-    "title": "【开源自荐】Timeline Studio —— 在浏览器本地运行 AI 的开源视频编辑器",
-    "content": "**项目地址**：https://github.com/MartinDelophy/ai-video-editor  \n**在线体验**：https://video-editor.ai-creator.top/  \n**Hugging Face Space**：https://huggingface.co/spaces/haixin/timeline-studio\n\n## 一句话介绍\n\nTimeline Studio 是一个 MIT 协议的开源浏览器 AI 视频编辑器：多轨时间线、自动字幕、多语言配音、人声与伴奏分离、背景移除、智能裁剪和数字人等核心工作流直接在用户设备上运行，不需要为了处理素材而上传到编辑后端。\n\n![Timeline Studio 时间线与 AI 配音工作区](https://raw.githubusercontent.com/MartinDelophy/ai-video-editor/main/docs/screenshots/editor-timeline.png)\n\n## 主要特点\n\n- **本地优先**：基于 ONNX Runtime Web、WebGPU、WebAssembly、WebCodecs 和 Web Audio API，核心 AI 推理与媒体处理在浏览器完成；\n- **完整编辑工作区**：支持图片、视频、音频导入，多轨时间线编辑、预览，以及 MP4/WebM 导出；\n- **自动字幕**：使用 Whisper small q8 ONNX，并根据源音频能量微调字幕片段边界，让字幕条更贴近波形；\n- **多语言配音**：中文及多语种使用浏览器 Piper/VITS，英文支持 Kokoro 82M ONNX；\n- **音频处理**：可从当前源音频中分离人声与伴奏，人声替换原片段，伴奏自动进入音乐轨；\n- **视觉分析**：使用 YOLOS tiny 与 MODNet 生成带时间戳的视频分析轨道，用于主体检测、背景移除、智能裁剪和字幕避让；\n- **数字人**：浏览器端运行 JoyVASA + LivePortrait；针对不兼容的 5D GridSample，将其改写为批量 4D GridSample 加线性深度插值，完整输出最大绝对误差为 7.90e-6；\n- **PWA 与缓存**：通过 Service Worker 缓存应用外壳、ONNX 模型和运行时资源，减少重复下载。\n\n## 当前限制\n\n首次使用部分 AI 功能需要下载较大的模型；浏览器内存与 WebGPU 支持因设备而异；Chrome / Edge 当前体验最好；512×512 数字人神经渲染在消费级浏览器 GPU 上仍然较慢。\n\n项目代码、Hugging Face 模型和展示 Space 均已公开，欢迎试用、提交 Issue 或参与贡献。",
-    "created_at": "2026-07-15T05:06:02Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10726"
-  },
-  {
-    "id": 10725,
-    "title": "【工具自荐】微信工具箱小程序-工具枢",
-    "content": "# 欢迎体验\n\n<img width=\"344\" height=\"344\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1fc1d0f3-f7ee-45ce-906b-239093bb5ee7\" />\n\n## 一个入口，多个操作\n- MFA 工具令牌管理\n- 随机生成器【随机密码、UUID】\n- 二维码生成器\n- 条形码生成器\n- 子网计算器\n- 时间戳转换\n- 折扣计算器\n- json工具\n- 编码转换\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9594bf3a-f0cc-476a-892f-9f9efabab33a\" />\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/870ad953-f1ad-483d-8dc4-50369eb28d91\" />\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/85b83a07-8aae-486e-9171-7e40c61388d5\" />\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4c284925-dfa1-4798-b642-6bcb8594b6b7\" />\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/398fd0ae-493a-4ec9-8e98-a23a80a245ed\" />\n\n## 高效TODO待办工具，上传附件归档、工时登记\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/833b7763-7059-4cf3-8e0b-301a91412e8d\" />\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3a40a76d-9df4-4801-90e9-f59110506b46\" />\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b4373f2e-1013-46ea-95f8-1cdd677bb067\" />\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8936e66c-a255-4438-9c79-d713e439fb52\" />\n\n<img width=\"416\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e942b263-f082-4917-93a9-458ca9e60393\" />",
-    "created_at": "2026-07-15T02:32:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10725"
-  },
-  {
-    "id": 10724,
-    "title": "【开源自荐】静隐（Quitty） - 让指定 Mac 应用在关闭窗口后退出",
-    "content": "静隐（Quitty）是一款轻量、现代的 macOS 工具，可在应用程序关闭最后一个窗口时自动终止该程序。它旨在成为旧版工具（如 SwiftQuit）的稳健、高性能且兼容 macOS Tahoe 的替代品。\n\n因为在 Mac 上有部分应用关闭窗口后，还在后台运行，有些临时性的应用真的没必要常驻，比如“预览”、“文本编辑器”等等。之前用 SwiftQuit 可以解决这个问题，但升级 macOS 26 后就失效了，我就自己做了一个。\n自用了一段时间了，迭代了多次，基本可以满足需求。未来还会持续更新。\n\n开源地址：[https://github.com/chentao1006/Quitty](https://github.com/chentao1006/Quitty)\n\n### 核心功能\n\n- 自动终止：当您关闭最后一个窗口时，立即（或延迟）退出应用程序。\n- 适配 macOS Tahoe：使用原生辅助功能 API (AXObserver)，以实现与 macOS 16 的最大兼容性。\n- 智能过滤：\n- 包含模式：仅退出您指定列表中的应用程序。\n- 排除模式：退出除您希望保持运行的应用程序之外的所有程序。\n- 可配置延迟：设置应用程序终止前的自定义缓冲时间（0-5 秒）。\n- 登录时启动：与您的 Mac 无缝同步启动。\n- 自我学习引擎：静隐 会根据您的反馈进行学习。如果应用误退或无法退出，您可以点击反馈，系统将自动识别该应用的窗口特征并自我调整。\n- iCloud 云端同步：通过您的 iCloud 账号在多台 Mac 之间自动同步设置与已学习的退出规则，全程无感。\n\n### 截图\n\n![Image](https://github.com/user-attachments/assets/38e6146c-7be6-4e28-bf0d-cb0ed2197427)\n![Image](https://github.com/user-attachments/assets/b65c9b6f-5536-4292-afac-59706c4d4292)\n![Image](https://github.com/user-attachments/assets/cdb43430-0563-425e-8cef-e6c4e694653e)\n![Image](https://github.com/user-attachments/assets/42cbc24a-453d-42ef-9693-9dd8a1bb5d7f)\n![Image](https://github.com/user-attachments/assets/d8b67b5f-7852-4e82-89c3-d42489b90273)",
-    "created_at": "2026-07-15T02:17:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10724"
-  },
-  {
-    "id": 10723,
-    "title": "【开源自荐】同览 (BrowSync) —— macOS 多浏览器分流与同步中枢",
-    "content": "**同览 (BrowSync)** 是一款 macOS 原生的跨浏览器分流与同步中枢。它打通 Safari 与所有 Chromium 内核浏览器，智能分流链接并实时同步数据，为您统一浏览体验。\n\n应用官网：https://browsync.ct106.com\n项目源码：https://github.com/chentao1006/BrowSync\n\n## 主要功能\n\n- **URL 分流**：将同览设为 macOS 默认浏览器后，可根据域名、URL 规则、参数、来源应用或时间段，将链接自动定向到指定的浏览器。\n- **书签同步**：在 Safari 和所有 Chromium 内核浏览器之间实时同步书签。\n- **状态同步**：在各浏览器之间同步 Cookie、LocalStorage 和 sessionStorage，保持登录状态一致。\n- **标签页共享**：跨浏览器查看当前打开的标签页。自动过滤无痕模式及非 HTTP(S) 协议页面，并对重复的 URL 进行去重。\n- **同步策略**：支持单向同步（主从模式）、基于访问时间的最后写入者胜出、双向合并。\n- **站点控制**：通过白名单/黑名单管理同步范围，支持为特定网站设置独立策略。\n- **原生 macOS 应用**：使用 SwiftUI 构建，支持深色/浅色主题、菜单栏集成和登录时启动。\n- **iCloud 同步**：通过 iCloud 在您的所有 Mac 设备之间自动同步分流规则、偏好设置和站点配置。\n\n## 界面截图\n\n| | |\n|:---:|:---:|\n| ![截图 1](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000001.jpg) | ![截图 2](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000002.jpg) |\n| ![截图 3](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000003.jpg) | ![截图 4](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000004.jpg) |\n| ![截图 5](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000005.jpg) | ![截图 6](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000006.jpg) |\n| ![截图 7](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000007.jpg) | ![截图 8](https://github.com/chentao1006/BrowSync/raw/main/screenshots/zh/000008.jpg) |\n\n> [!IMPORTANT]\n> **隐私保护**\n> 同览 (BrowSync) 的同步和 URL 分流通过本地 WebSocket 守护进程进行。浏览数据（书签、Cookie、本地存储、活动标签页等）保存在本地设备，不涉及外部服务器。\n",
-    "created_at": "2026-07-15T02:15:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10723"
-  },
-  {
-    "id": 10722,
-    "title": "【工具自荐】CPS Test（Clicks Per Second Test，每秒点击次数测试）手速、反应力，专注力测试的小工具",
-    "content": "阮老师好，推荐一个手速、反应力，专注力测试的工具（后续会迭代更多功能页面）：\n\n**CPS Test（Clicks Per Second Test，每秒点击次数测试）**\n\n网站地址：https://cpstest.me\n\n**可以帮助到我们什么：**\n\n1、提升操作熟练度\n可以通过反复测试，练习点击速度、节奏控制和手眼协调能力。\n\n2、帮助游戏玩家训练\n在《Minecraft》PVP、射击游戏、即时战略游戏等需要频繁点击的场景中，玩家可以用它了解自己的点击速度。\n\n3、检测鼠标状态\n如果鼠标出现单击变双击、漏点、按键回弹异常等问题，CPS 测试可以作为初步检测工具。\n\n4、比较硬件体验\n可以比较不同鼠标、触控板、手机屏幕的点击响应和操作手感。\n\n5、缓解压力和提供娱乐\n短时间快速点击具有挑战性，适合排行榜、好友比赛和休闲小游戏。\n\n6、辅助交互研究\n在产品设计和人机交互研究中，可以用于观察用户的点击频率、疲劳程度和操作习惯。\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe79c067-36a5-4dcf-a0b7-8333d0dc452f\" />\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/276f1a71-062f-4373-b6a6-421133c806c1\" />\n\n<img width=\"1910\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1797cdc5-74a8-402f-982d-24edae4b0ff4\" />\n",
-    "created_at": "2026-07-15T02:09:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10722"
   }
 ]
