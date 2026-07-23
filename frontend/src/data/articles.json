@@ -1,5 +1,13 @@
 [
   {
+    "id": 10849,
+    "title": "【工具自荐】8码快传：无需注册，电脑和手机打开网页即可传大文件",
+    "content": "## 8码快传\n\n网站：https://t.8ma.co/\n\n8码快传是一款免费、无需注册登录、无需安装软件的浏览器大文件传输工具。选择文件后会生成分享链接、二维码和 8 位取件码，对方打开网页即可接收。\n\n它主要解决两个常见场景：\n\n- **同一 WiFi 跨设备传文件**：电脑传电脑、电脑传手机，只需两台设备同时打开网站，不用安装聊天软件或数据线。\n- **远程发送大文件**：把链接或取件码发给对方即可，桌面版 Chrome / Edge 支持最高 100GB 文件。\n\n传输会尽可能利用当前网络带宽；实际速度取决于双方设备和网络状况。网站支持中文、英文、西班牙语、法语、阿拉伯语、印地语、日语和韩语，并会根据浏览器语言自动选择。\n\n![8码快传中文界面](https://raw.githubusercontent.com/geklabs/8ma-quick-transfer/main/assets/screenshots/product-home-zh.png)\n\n这是我们团队开发和运营的产品，欢迎试用和反馈。",
+    "created_at": "2026-07-23T16:56:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10849"
+  },
+  {
     "id": 10848,
     "title": "【工具自荐】Explyt：能直接使用 JetBrains 调试器和重构工具的 AI 编程代理",
     "content": "## Explyt\r\n\r\nExplyt 是一款面向 JetBrains IDE 的 AI 编程代理。它不只是将聊天窗口放进 IDE，而是可以直接使用 IDE 已掌握的项目信息和开发工具。\r\n\r\n项目地址：https://github.com/explyt/explyt  \r\nJetBrains Marketplace：https://plugins.jetbrains.com/plugin/27979-explyt-ai-agent\r\n\r\n![Explyt 演示](https://raw.githubusercontent.com/explyt/explyt/main/assets/hero-feature-to-code-review-flow-preview.gif)\r\n\r\n例如，Explyt 可以运行 IDE 中已经配置好的测试和调试任务，通过调试器查看变量值、调用栈和实际执行路径，定位问题后再使用 IDE 的重构工具修改代码并验证结果。\r\n\r\n主要特点：\r\n\r\n- 直接使用 JetBrains 调试器，而不是要求开发者添加临时日志；\r\n- 通过符号导航查找引用，并读取项目实际连接版本的依赖库源码；\r\n- 调用 IDE 重构、静态分析、测试和构建配置，而不只是执行终端命令；\r\n- 支持 IntelliJ IDEA、Android Studio、Rider、PyCharm、WebStorm、GoLand 和 PhpStorm。\r\n\r\nExplyt 适合处理大型项目、遗留代码，以及仅靠文本搜索和长终端日志难以准确理解的代码库。",
@@ -804,13 +812,5 @@
     "created_at": "2026-07-16T03:43:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10748"
-  },
-  {
-    "id": 10747,
-    "title": "【开源自荐】MarcDown - 极简，上下分栏的md编辑器",
-    "content": "## 软件名称\nMarcDown - 上下分栏的md编辑器\n## 应用平台\n* Windows\n* MacOS\n* Linux\n## 是否收费\n开源免费\n## 软件截图\n\n<img width=\"800\" height=\"600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/64455934-183e-4530-a463-09c52e50db8a\" />\n\n<img width=\"800\" height=\"600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/538cb253-10ba-4d66-85c8-1a52fadc8227\" />\n\n## 应用简介\nMarcDown是一款独特的上下分栏的Markdown编辑器，所谓上下分栏，就是源码在上面，渲染结果放在下面，支持表格，图片，公式，流程图，HTML的上源码下渲染，源码还可以一键折叠，从而使整个页面尽可能的“所见即所得”，同时也能很方便地查看/修改源码。\n\nMarcDown并不是纯粹的“所见即所得”，而是将样式与源码渲染在一起的“实时渲染”，例如“---”分割线，其背景是一整条编辑器宽度的线，但仔细看分割线的左端仍然还有“---”的源码。\n\nMarcDown的目标就是作为系统默认的md查看器，点击md文件，然后触发MarcDown，在替换掉默认的txt记事本的同时，有着跟txt记事本一样的简洁/快速，而且还有txt记事本没有的实时渲染能力，可以在同一个上下文中方便浏览图片，公式，流程图等渲染结果。\n\nMarcDown的所有功能都是手工实现的，理论上实现一个md编辑器挺简单，只需要以CodeMirror库之类的为核心包一层即可。但MarcDown这里相当于实现了一遍CodeMirror，MarcDown的主打特性是上下分栏，对页面高度的控制有更精细的要求，用CodeMirror不太能满足需求，因此我手撕了从源码解析到排版渲染的整体流程，当然我在开发过程中大量使用了AI，AI确实提高了我的能力上限。\n\n我借鉴React的原理，将MarcDown的排版渲染分为reconcile调和过程和commit提交过程，调和过程只处理js逻辑，将新旧虚拟节点进行diff，在commit提交过程根据diff做真实Dom的最小改动，听起来性能不错，但实际上目前仍有不少逻辑还未做性能优化，普通的readme.md文件可以轻松打开，md文件超过一万行编辑就比较卡了。如果把可优化项做完的话，实时编辑一万行的md文件应该能达到流畅水准。\n\n官网：[MarcDown](https://marcdown-page.vercel.app)\n\ngithub: [Github](https://github.com/xopenbeta/marc-down)\n",
-    "created_at": "2026-07-16T01:55:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10747"
   }
 ]
