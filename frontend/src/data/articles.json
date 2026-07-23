@@ -1,5 +1,21 @@
 [
   {
+    "id": 10851,
+    "title": "【开源自荐】RepoMirror，将 GitHub 仓库同步至本地文件夹树的 macOS 桌面应用",
+    "content": "项目地址：https://github.com/wutongyuonce/RepoMirror\n\nRepoMirror 是一款专注于将 GitHub 仓库或其中指定目录镜像同步至本地文件夹树的 macOS 桌面应用。它基于 Tauri 2、React、TypeScript 与精简的 Rust 后端构建。\n\n它特别适合正在本地积累 AI Agent Skills、提示词、扩展与开源工具的人：把真正会使用的项目保留在磁盘上，按自己的方式归组，不必再手动逐个检查几十个 GitHub 项目有没有更新。\n\n<img width=\"2360\" height=\"1520\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a53f64b4-a5cd-48bb-83b2-e3d91bdf442e\" />\n\n\n## 功能\n\n- 选择一个默认根目录。\n- 可展开的路径型文件夹组，例如 `tools/browser`。\n- 支持 GitHub 仓库链接与 `tree/<branch>/<path>` 目录链接。\n- 批量添加来源，并可自定义目标文件夹名称。\n- 每个条目独立设置镜像模式；每次写入前提供逐文件预览。\n- 手动同步单个条目，或按顺序同步全部条目。\n- 配置导入与导出、持久化浅色/深色外观；不存储账号或令牌。\n\nRepoMirror 使用 Mac 上已有的 `git` 可执行文件与凭据。只要 Git 已能在此机器上认证，私有仓库也可正常使用。",
+    "created_at": "2026-07-23T19:16:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10851"
+  },
+  {
+    "id": 10850,
+    "title": "【开源工具自荐】Figwright:免费的双向 Figma MCP,让 AI 读设计稿也能反过来画设计稿",
+    "content": "做了个开源工具 **Figwright**,一个免费、双向的 Figma MCP server,想来分享一下,顺便听听大家的意见。\n\n起因是这样:现在用 AI 把 Figma 设计稿转成代码已经很常见,但官方的 Figma Dev Mode MCP 要付费席位才能用,而且基本只能「读」——把设计稿吐成代码,单向的。我想要的是两件事:一是免费,二是**反过来也能用**,让 AI 直接在 Figma 画布上画东西,而不只是看它。\n\nFigwright 由一个 MCP server 和一个 Figma 插件组成,两者通过本机 WebSocket 通信,让 Claude Code、Cursor、Codex 等任何 MCP 客户端直接操作 Figma。全部跑在本机,不需要 Figma 付费席位。\n\n它是**真双向**的:\n\n- **读**:把选中的设计稿转成贴合你现有技术栈的代码。它会先探测你项目真实的框架和样式方案(React / Vue / Svelte / Angular + Tailwind / CSS Modules 等),把 Figma 里的组件、设计变量、图标映射到你代码库里已有的东西上,让 AI 复用而不是重造一堆要你回头重写的通用代码。\n- **写**:反过来在画布上创建和修改——frame、自动布局、文字、组件、变量,甚至整屏页面。目前 112 个工具,读和写都覆盖。\n\n几个我自己比较在意的点:\n\n- **免费**:官方 Dev Mode MCP 要付费席位,Figwright 走插件通道,免费账号就能用。\n- **插件不是黑盒**:插件面板能看到每一次工具调用及耗时、发给模型的原始 payload、连接健康状态,出问题时不用靠猜。\n- **全本地、无遥测**:设计数据只在插件、本机中继、你的 MCP 客户端之间流动,不上传到任何地方,也不需要 Figma Dev Mode 席位。\n\n用起来就是在 MCP 客户端配置里加一段 `npx` 命令,再在 Figma 里打开插件,然后对 AI 说人话:「把选中的这块做成 React 组件」,或者反过来「按这个规格在 Figma 里画一个定价区块」。\n\n项目地址:https://github.com/awdr74100/figwright\n\nMIT 协议,欢迎试用和拍砖。\n",
+    "created_at": "2026-07-23T18:04:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10850"
+  },
+  {
     "id": 10849,
     "title": "【工具自荐】8码快传：无需注册，电脑和手机打开网页即可传大文件",
     "content": "## 8码快传\n\n网站：https://t.8ma.co/\n\n8码快传是一款免费、无需注册登录、无需安装软件的浏览器大文件传输工具。选择文件后会生成分享链接、二维码和 8 位取件码，对方打开网页即可接收。\n\n它主要解决两个常见场景：\n\n- **同一 WiFi 跨设备传文件**：电脑传电脑、电脑传手机，只需两台设备同时打开网站，不用安装聊天软件或数据线。\n- **远程发送大文件**：把链接或取件码发给对方即可，桌面版 Chrome / Edge 支持最高 100GB 文件。\n\n传输会尽可能利用当前网络带宽；实际速度取决于双方设备和网络状况。网站支持中文、英文、西班牙语、法语、阿拉伯语、印地语、日语和韩语，并会根据浏览器语言自动选择。\n\n![8码快传中文界面](https://raw.githubusercontent.com/geklabs/8ma-quick-transfer/main/assets/screenshots/product-home-zh.png)\n\n这是我们团队开发和运营的产品，欢迎试用和反馈。",
@@ -796,21 +812,5 @@
     "created_at": "2026-07-16T04:23:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10750"
-  },
-  {
-    "id": 10749,
-    "title": "【文章推荐】Claude Dreaming vs Hermes Skill：帮你重新认识 Agent Memory",
-    "content": "**Agent 最难的不是记住过去，而是判断过去应该变成什么。**\n\nClaude Dreaming 选择把经验压缩成更干净的事实，Hermes Skill 选择把经验固化成可复用的能力。\n一个偏保守，一个更激进。它们真正揭开的，是长期 Agent 的核心难题：什么应该被记住，什么应该被写成规则，什么又必须保持开放，留给下一次重新判断。\n \n- https://mp.weixin.qq.com/s/Yr8bQknEQTex9C_5rmoQvA",
-    "created_at": "2026-07-16T03:47:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10749"
-  },
-  {
-    "id": 10748,
-    "title": "【开源自荐】Kite CLI - 快速的将本地项目部署到服务器上",
-    "content": "文档介绍：https://docs.kite.sugarat.top/\nnpm: [@kitecd/cli](https://www.npmjs.com/package/@kitecd/cli)\n\nKite CLI - 快速的将本地项目部署到服务器上\n\n搭配 Vibe Coding 快速在服务器上进行部署验证👍🏻\n\n服务端&本地都只需安装同一CLI即可\n\n```sh\nnpm install -g @kitecd/cli\n\n\n# 启动服务\nkite serve\n\n# 本地推送项目\nkite push\n```\n\n支持在面板上查看日志，执行回滚等\n\n<img width=\"2048\" height=\"1127\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7fdc1643-7a6e-4cc4-abd0-797b3258650e\" />\n\n项目管理\n\n<img width=\"2048\" height=\"1127\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ac6e7efd-bfc7-49d0-8bac-e9ed3848e66d\" />\n\n项目详情，支持快速一键的完成回滚\n\n<img width=\"2048\" height=\"1127\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd79abb6-4e56-497f-9bfc-3f70cbf630d6\" />\n\n绑定日志查看 \n\n<img width=\"1024\" height=\"564\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d2c60def-e0fb-4097-b5d2-1373c587f636\" />",
-    "created_at": "2026-07-16T03:43:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10748"
   }
 ]
