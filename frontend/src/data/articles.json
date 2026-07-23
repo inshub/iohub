@@ -1,5 +1,53 @@
 [
   {
+    "id": 10845,
+    "title": "【自荐】JetBrains 插件，在 AI 回复你的时候学点单词",
+    "content": "AI Vocabulary Overlay 是一个 JetBrains 的插件。\n\n它可以让你在 AI 回复你的同时，学点单词～\n\n使用方法如下：\n\n1.安装 JetBrains AI Assistant 插件\n\n2.登录自己的 AI 账号或者配置自己的中转站以及 API Key 或者连上本地的 Codex 等工具，这一步参考 JetBrains AI Assistant 插件的文档即可\n\n3.正常在 AI Assistant 窗口发送消息\n\nhttps://i.imgur.com/YbZuNkX.png\n\n在你发出消息之后，就会在 IDE 界面居中弹出一个单词窗口，每个单词默认显示 5 秒钟，然后随机出现下一个单词。\n\n当检测到 AI 回复完成之后，单词窗口会自动消失。\n\n你还可以在设置里选择英语四级、六级、雅思、托福的词库。\n\n直接在插件市场搜索 AI Vocabulary Overlay 安装即可。\n\n插件地址： https://plugins.jetbrains.com/plugin/32801-ai-vocabulary-overlay\n\n<img width=\"2940\" height=\"1912\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fca538b5-8bf4-4f1e-98d3-91a39c662f07\" />",
+    "created_at": "2026-07-23T09:49:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10845"
+  },
+  {
+    "id": 10844,
+    "title": "【开源自荐】AOHP：让 Android 通过 Agent 主动适应用户（开源 OS-level Agent Harness）",
+    "content": "## 项目信息\n\n- **项目名称**：AOHP（Android Open Harness Project）\n- **GitHub**：https://github.com/aohp-os/aohp\n- **论文**：https://arxiv.org/abs/2606.23449\n- **中文文档**：https://github.com/aohp-os/aohp/blob/main/docs/README.zh-CN.md\n- **开发指南**：https://github.com/aohp-os/aohp/blob/main/docs/DEVELOPMENT.zh-CN.md\n- **微信公众号推文**：https://mp.weixin.qq.com/s/7E-LWv8bdKr8dG81xBl7yQ\n- **许可证**：Apache License 2.0\n- **一句话**：让操作系统借助智能体式 AI（agentic AI）主动适应用户——引入用户定义应用（user-defined apps），由 OS 级 Agent Harness 实现个性化、高效且安全的交互。\n\n---\n\n## 项目简介\n\n传统操作系统以应用为中心：用户必须在**开发者定义的应用界面**里完成所有操作，过程繁琐且容易分心。\n\n**AOHP** 把操作系统推向更深的个性化。它引入**用户定义应用（user-defined apps）**：根据用户真实需求生成，底层由 AI 智能体支撑；智能体在后台调用系统 **API、CLI 与 GUI 应用**，组合出真正可用的服务。\n\n为了让这种体验**可行、高效且安全**，系统层与框架层需要重新设计——但并非全部重写。因此我们推出 **AOHP：一个操作系统级智能体承载框架（OS-level agent harness）**。\n\n![传统 Android 与 AOHP 架构对比](https://raw.githubusercontent.com/aohp-os/aohp/main/images/comparison.png)\n\n| 维度 | 原生 Android | AOHP |\n| --- | --- | --- |\n| **交互模型** | 用户直接操作应用定义的工作流 | 智能体作为 OS 原生执行主体，按用户意图行动 |\n| **交互界面** | 开发者定义的固定应用 GUI | 由智能体协调的个性化服务入口 |\n| **进程执行** | 受物理屏幕约束的单租户前台执行 | 与屏幕解耦的并行后台交互 |\n| **系统记忆** | 碎片化、封闭在各个应用内部 | OS 管理的跨应用记忆，服务任务个性化 |\n| **安全与隐私** | 粗粒度应用权限与不透明数据流 | 细粒度数据流追踪与敏感值沙箱化 |\n\n![AOHP 系统架构](https://raw.githubusercontent.com/aohp-os/aohp/main/images/overview.png)\n\n---\n\n## 演示：用户定义应用\n\n给定自然语言提示，AOHP 即可生成功能完整的应用（前端 UI + 由智能体支撑的后台逻辑）。录屏来自编译后的 AOSP 系统镜像。\n\n| Health Hub | Gift Picker | Python Learning Assistant |\n| --- | --- | --- |\n| ![Health Hub](https://raw.githubusercontent.com/aohp-os/aohp/main/demos/uda/health_hub_demo.gif) | ![Gift Picker](https://raw.githubusercontent.com/aohp-os/aohp/main/demos/uda/gift_picker_demo.gif) | ![Python Learning Assistant](https://raw.githubusercontent.com/aohp-os/aohp/main/demos/uda/python_learning_assistant_demo.gif) |\n| 聚合多 App 的健身、睡眠与体重记录 | 纪念日礼物挑选，跨购物 App 检索 | 儿童 Python 学习：课程、练习、每日汇报 |\n\n### 智能体执行能力\n\n| UI 微操作 | 文件处理 | 事件捕获 |\n| --- | --- | --- |\n| ![UI](https://raw.githubusercontent.com/aohp-os/aohp/main/demos/agent/gallery_brightness.gif) | ![文件](https://raw.githubusercontent.com/aohp-os/aohp/main/demos/agent/cloud_file_markor.gif) | ![事件](https://raw.githubusercontent.com/aohp-os/aohp/main/demos/agent/event_capture.gif) |\n\n---\n\n## 评测亮点\n\n使用 [OpenClaw](https://github.com/openclaw/openclaw) 在 AOHP 与原生 Android 上评测，基准含 **30 项真实移动端任务**。\n\n| 配置 | 完成率 | 完全解决 |\n| --- | --- | --- |\n| 原生 Android 上的 OpenClaw | 54.44% | 13 / 30 |\n| **AOHP 上的 OpenClaw** | **75.56%** | **20 / 30** |\n| 提升 | **+21.12%** | **+7 项任务** |\n\n双方都能完整完成的 11 项任务上：工具调用 **-44.64%**、耗时 **-44.21%**、Token **-51.55%**、LLM 请求 **-47.62%**。信息流安全五项策略用例全部通过。\n\n---\n\n## 快速上手\n\n```bash\ngit clone https://github.com/aohp-os/aohp.git\ncd aohp\n# 完整构建与 Cuttlefish 启动见开发指南\n```\n\n开发指南：https://github.com/aohp-os/aohp/blob/main/docs/DEVELOPMENT.zh-CN.md\n\n适合关注 **Mobile Agent / Agent OS / AOSP / Agent 安全** 的同学。欢迎 Star、提 Issue，或加入 [微信交流群](https://github.com/MobileLLM/lab-contact) / [Discord](https://discord.gg/3bhPrAarW)。\n\n感谢阮老师与周刊读者们！\n",
+    "created_at": "2026-07-23T09:34:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10844"
+  },
+  {
+    "id": 10843,
+    "title": "【工具自荐】🎬 TubeRepeat：让 YouTube 视频学习、复盘与内容创作更高效的 AI 工具",
+    "content": "在观看 YouTube 视频时，你是否遇到过这样的情况：想反复研究某个片段，却需要手动拖动进度条；想学习视频中的表达方式、剪辑节奏或者知识内容，却很难快速定位重点？📺\n\nTubeRepeat 正是针对这类使用场景打造的一款智能视频工具，它帮助用户更方便地重复观看、分析和利用 YouTube 内容，让视频学习和内容研究变得更加简单。\n\n### 🔁 核心功能：轻松循环播放 YouTube 视频\n\n[TubeRepeat](https://www.tuberepeat.ai/) 的核心功能是帮助用户快速循环播放 YouTube 视频中的指定内容。\n\n无论是学习语言时反复听一句发音、分析音乐作品中的某个片段，还是研究创作者的视频节奏，都可以通过重复播放功能减少手动操作，让观看过程更加专注。\n\n相比传统 YouTube 播放方式需要不断拖动进度条，TubeRepeat 更适合需要精细观察视频细节的用户。用户可以针对特定片段进行多次观看，加深理解和记忆。\n\n### 🧠 不只是播放，更适合内容研究\n\n对于内容创作者来说，观看优秀视频并进行拆解是提升创作能力的重要方式。\n\nTubeRepeat 可以帮助创作者：\n\n✨ 分析热门视频的开场设计\n✨ 观察优秀创作者的剪辑节奏\n✨ 学习镜头切换和叙事方式\n✨ 反复研究某个精彩片段的制作逻辑\n\n例如，一个视频博主可能会重复观看某个高互动视频的前30秒，分析它如何快速吸引观众；一名剪辑师也可以循环播放某个转场片段，研究其中的视觉效果。\n\n### 🎯 适合哪些人使用？\n\n[TubeRepeat](https://www.tuberepeat.ai/) 适用于多种用户群体：\n\n📚 语言学习者\n通过重复播放练习听力、模仿语音语调，提高学习效率。\n\n🎥 视频创作者\n研究 YouTube 上优秀内容的结构、节奏和表达方式，为自己的创作寻找灵感。\n\n🎵 音乐爱好者\n循环欣赏喜欢的音乐片段，分析旋律、编曲或演奏细节。\n\n💻 知识学习者\n对于课程、教程、访谈类视频，可以更专注地理解关键内容。\n\n### 🚀 TubeRepeat 的优势\n\n相比普通视频观看方式，TubeRepeat 最大的价值在于减少重复操作，让用户把更多时间放在内容本身。\n\n它不是简单地提供播放功能，而是改变了用户与视频互动的方式：\n\n✅ 更专注：减少寻找片段的时间\n✅ 更高效：适合重复学习和研究\n✅ 更灵活：满足不同类型视频分析需求\n\n在如今视频内容越来越丰富的时代，很多有价值的信息隐藏在几个关键瞬间里。无论是学习技能、提升创作能力，还是深入研究喜欢的视频内容，能够快速回看和分析这些片段，都能带来更好的体验。\n\nTubeRepeat 就像一个专注于视频探索的小助手，让 YouTube 不再只是“一次性观看”的内容平台，而成为一个可以反复研究、学习和创造灵感的工具库。✨",
+    "created_at": "2026-07-23T08:11:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10843"
+  },
+  {
+    "id": 10842,
+    "title": "【开源自荐】Birth: 开源 macOS 启动项管理器,看清每个自启项是谁装的",
+    "content": "Birth 是一款免费开源的 macOS 启动项管理工具。macOS 把启动项分散在至少四套机制里(用户/全局 LaunchAgents、LaunchDaemons、登录项),系统设置里只显示为语焉不详的\"后台项目\"——不告诉你 plist 在哪、指向哪个可执行文件、由谁签名,第三方的更新器、辅助进程和赖着不走的卸载残留,正是仰仗这种不透明。Birth 把它们收进同一个窗口:每一项标出开发者签名身份(经证书链锚点验证)和实时运行状态,支持一键启停和安全删除(先停止任务,plist 移入废纸篓并自动保留备份)。\n\n一个值得一提的功能是伪装检测:恶意软件最常用的持久化伪装手法,是把标识符起成 `com.apple.*` 混进系统项里。Birth 对每一项做签名验证,标识符冒充 Apple 但证书链对不上的,会被红色\"伪装系统项\"直接标出。\n\n权限设计是\"用到才要,要一次就够\":查看列表零授权,打开即用;添加/移除登录 App 首次操作才弹一次\"自动化\"授权;只有涉及守护进程的操作才需要管理员密码(macOS 安全模型强制)。\n\n![Birth 主界面](https://raw.githubusercontent.com/iAmCorey/birth/main/pic/1.webp)\n\n- 仓库:https://github.com/iAmCorey/birth\n- 安装:[Releases](https://github.com/iAmCorey/birth/releases) 下载 DMG,macOS 14+(个人项目暂未做 Apple 公证,首次打开需在\"系统设置 → 隐私与安全性\"点一次\"仍要打开\")\n- SwiftUI 原生,零第三方依赖,MIT 协议",
+    "created_at": "2026-07-23T07:57:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10842"
+  },
+  {
+    "id": 10841,
+    "title": "【网站自荐】VibeHub 帮助用户更好的向 AI 表达需求，用可视化的方式学习 Vibe Coding 术语",
+    "content": "网站地址：[https://vibe-hub.org](https://vibe-hub.org)\n\nVibe Coding 让越来越多不同专业背景的人开始直接参与产品创作。但当一个人跨出自己的专业范围时，往往会遇到一个问题：知道自己想做什么，却不知道应该怎样准确地表达。\n\n一个后端开发者想做前端页面时，可能只能说“这里再高级一点”“交互更顺滑一些”，却不知道自己需要的是卡片网格、抽屉、悬浮导航、骨架屏还是页面转场。设计师和产品经理在实现数据功能时，也可能不知道怎样描述接口、鉴权、数据库和部署流程。表达越模糊，AI 就越需要猜测，做出来的结果也越难接近最初的想法。\n\n因此我做了 VibeHub，一份面向 Vibe Coding 创作者的可视化术语图鉴。它按照前端组件、页面布局、视觉与交互、CSS 与网页基础、后端与网络、数据与账号、部署排错、Git 和设计风格等领域整理常用概念。每个概念都有对应的界面示例、使用场景和常见边界，帮助用户从“我想要这种感觉”，逐渐说清楚“我具体需要什么”。\n\n<img width=\"70%\" height=\"807\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/25400106-6844-4340-a815-f9a5441bf0f5\" />\n\n<img width=\"70%\" height=\"813\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f559bd63-7f3d-408d-919d-964f50003fd6\" />\n\n<img width=\"70%\" height=\"810\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dd107e10-55ca-4526-993b-31af847099af\" />\n\n",
+    "created_at": "2026-07-23T07:33:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10841"
+  },
+  {
+    "id": 10840,
+    "title": "【开源自荐】whatbroke：给 AI Agent 行为做 git diff 的命令行工具",
+    "content": "whatbroke 是一个开源 CLI，用来对比 AI Agent 两次运行之间的行为差异：哪些工具调用被新增、丢弃或重排，以及参数、成本、延迟的变化。每个版本跑多次采样后，结果以比率呈现（如 6/9 的运行对比中出现），基线本身就不稳定的行为会被自动降级为噪音，避免把原有的抖动误判为回归。\n\n换模型或改提示词之前跑一次 diff，就能看到\"回复文本看起来没变，但行为已经变了\"的部分。仓库里有一个可以在笔记本上免费复现的案例：把 llama3.2:3b 换成 1b 之后，小模型在 6/9 的运行对比中把工具的 JSON schema 原样当作参数传给了工具，而回复文本依然是一段正常的客服话术。\n\n- 仓库：https://github.com/arthi-arumugam-git/whatbroke\n- 安装：`npm install -g whatbroke-cli`\n- MIT 协议，TypeScript，本地运行，trace 不离开你的机器\n\n（中文由机器翻译润色，欢迎指正。English: whatbroke is an open source CLI that diffs an AI agent's behavior between two runs: tool calls added, dropped or reordered, plus argument, cost and latency changes, with multi-sample flake detection. A reproducible case study is in the repo.）",
+    "created_at": "2026-07-23T07:10:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10840"
+  },
+  {
     "id": 10839,
     "title": "【工具自荐】StoreFrame：用 Codex / Cursor 对话生成 App Store 五帧截图，浏览器导出 PNG ZIP",
     "content": "大家好，我做了一个面向独立开发者和产品团队的 App Store / Google Play 截图工具：**StoreFrame**。\n\n<img width=\"3024\" height=\"1654\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fad69fad-15dd-4861-9aab-e3ec66395e86\" />\n\n项目地址：https://aistoreframe.shop  \n文档：https://aistoreframe.shop/docs  \nSkill 安装包：https://aistoreframe.shop/skills/storeframe-agent.zip\n\n做这个产品的原因很直接：每次发版都要在设计工具里重做五帧商店图——换真机截图、改标题、再导出——很耗时间。StoreFrame 把流程收成「五帧编辑器 + 模板库 + 高清 PNG ZIP」。\n\n免费即可试用：编辑器预览带轻量品牌签名；每月有额度的**导出是干净 PNG**（可直接上架验证）。Pro/Max 主要买更多导出次数、全模板和 **AI Connect**。\n\n和同类工具相比，我更想解决「已经在用 AI 编程代理」的场景：\n\n1. 在网站复制 **AI Connect** 提示词，装一个 `SKILL.md` 技能包（兼容 Claude / Cursor / **Codex**）\n2. 用对话搜模板、写 YAML 五帧文案、导入云端项目\n3. 把桌面真机截图挂到各帧，在聊天里预览，再到浏览器导出 ZIP\n\n典型循环：\n\n> brief → 搜模板 / 写 YAML → 贴截图 → 改文案再导入 → Export PNG ZIP\n\n适合：独立开发者、小团队、做 ASO 的同学，以及已经在用 Codex / Cursor 的人。\n\n欢迎试用和提反馈（站内有 Feedback）。谢谢！\n\n---\n\n**English summary:** StoreFrame is a five-frame App Store / Play screenshot editor with templates, Custom Studio, and PNG ZIP export. Free: preview signature in the editor only; clean exports within the monthly quota. Pro/Max unlock higher volume and AI Connect — a SKILL.md pack so Codex/Cursor/Claude can search templates, author YAML packs, attach screenshots, and guide export from chat. https://aistoreframe.shop",
@@ -628,7 +676,7 @@
   {
     "id": 10760,
     "title": "【开源自荐】Foursmith VR —— 换种方式打开 VR，不用头显，也不怕晕动症",
-    "content": "<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-reduced-motion: reduce)\" srcset=\"https://raw.githubusercontent.com/foursmith/vr/main/doc/banner.jpg\">\n    <img src=\"https://raw.githubusercontent.com/foursmith/vr/main/doc/banner.webp\" alt=\"Foursmith VR\" width=\"960\">\n  </picture>\n</div>\n\n\n偶然间我发现竖屏最适合预览 VR 内容，没有畸变，聚焦人脸，只要镜头一直跟随人脸，其实和抖音差不多，也就有了这个项目。Foursmith VR 为手机和平面显示器打造，不需要 VR 眼镜，人脸始终居中，保持最佳构图和最佳视角。\n\n如果你还没有看过 VR 影片，或者不适应佩戴 VR 眼镜，尽情享受吧。\n\n开源地址: [https://github.com/foursmith/vr](https://github.com/foursmith/vr)\n链接：[https://vr.foursmith.com](https://vr.foursmith.com)\n\n## DEMO Video（放心观看）\n\n[▶ Watch the demo video](https://cdn.jsdelivr.net/gh/foursmith/vr@main/doc/demo.mp4)\n\n## License\n\nFoursmith VR is licensed under the [Mozilla Public License 2.0](https://github.com/foursmith/vr/blob/main/LICENSE).\n\nCode by GPT 5.6 Sol. Taste by [ourongxing](https://github.com/ourongxing).\n\n---\n\n",
+    "content": "<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-reduced-motion: reduce)\" srcset=\"https://raw.githubusercontent.com/foursmith/vr/main/doc/banner.jpg\">\n    <img src=\"https://raw.githubusercontent.com/foursmith/vr/main/doc/banner.webp\" alt=\"Foursmith VR\" width=\"960\">\n  </picture>\n</div>\n\n\n偶然间我发现竖屏最适合预览 VR 内容，没有畸变，聚焦人脸，只要镜头一直跟随人脸，其实和抖音差不多，也就有了这个项目。Foursmith VR 为手机和平面显示器打造，不需要 VR 眼镜，人脸始终居中，保持最佳构图和最佳视角。\n\n如果你还没有看过 VR 影片，或者不适应佩戴 VR 眼镜，尽情享受吧。\n\n开源地址: [https://github.com/foursmith/vr](https://github.com/foursmith/vr)\n链接：[https://vr.foursmith.com](https://vr.foursmith.com)\n\n## DEMO Video（放心观看）\n\n[▶ Watch the demo video](https://www.youtube.com/watch?v=TxfZAjrw_Q8)\n\n## License\n\nFoursmith VR is licensed under the [Mozilla Public License 2.0](https://github.com/foursmith/vr/blob/main/LICENSE).\n\nCode by GPT 5.6 Sol. Taste by [ourongxing](https://github.com/ourongxing).\n\n---\n\n",
     "created_at": "2026-07-16T13:12:35Z",
     "labels": [
       "weekly"
@@ -766,53 +814,5 @@
     "created_at": "2026-07-15T17:28:53Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10744"
-  },
-  {
-    "id": 10743,
-    "title": "[工具自荐] Polily TUI：一款真正有用的开源Polymarket  24/7 agentic 循环监控器",
-    "content": "<img width=\"896\" height=\"769\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/144a0757-8cc7-48f4-87f5-404310e26b00\" />\n\n我大概持续开发了这个产品 [Polily](https://github.com/ShiyuCheng2018/polily) 三个多月了, 原因是去年我机缘巧合写过一个预测市场项目, 然后自己上头玩了小半年. 目前产品13.0 拥有完整的作用闭环, 我个人觉得挺好用的哈. 欢迎加星星, 或者给我买份汉堡支持下我哈, 有问题 随时提issue.\n\n“粘贴 Polymarket 事件 URL，Polily 即可判断该事件是否值得您投入时间，评估其结构，查找定价错误，监控价格走势，并在市场结算时自动平仓。Polily 是一款监控代理，能够揭示 Polymarket 用户界面隐藏的信息——针对你正在考虑的每个事件。”\n\n\n\n<img width=\"1176\" height=\"956\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/16fa86fe-ede7-428b-bf82-153998600498\" />\n\n<img width=\"1172\" height=\"959\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1457972f-b745-4a39-903b-b92c76dafee3\" />\n\n<img width=\"1173\" height=\"955\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/30f834e4-5b99-4e5b-b2ff-7797d654eea0\" />\n\n<img width=\"1174\" height=\"1226\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/126f05ee-c12c-4dd5-8e79-4a8288c6a459\" />\n\n<img width=\"1179\" height=\"1224\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9562845f-104b-40af-8675-d086d41cc94e\" />",
-    "created_at": "2026-07-15T17:18:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10743"
-  },
-  {
-    "id": 10742,
-    "title": "【开源自荐】Lovia：看得懂，也改得动的 Python Agent 框架",
-    "content": "Lovia 是一个轻量、模型无关的 Python Agent 框架。\n\n仓库：<https://github.com/cymoo/lovia>，文档：<https://cymoo.github.io/lovia/>\n\n特点：\n- 极简依赖。 核心依赖只有 httpx、pydantic 和 pyyaml，其余按需安装即可。\n- 抽象很少。 Agent 是不可变配置，Runner 执行一次运行，@tool 就是带类型的函数；handoff 和 agent-as-tool 组合多个 agent；插件负责打包其余能力。\n- 读得懂。 关键流程集中，模型调用、工具执行、重试和持久化的顺序都很清楚。 遇到意外行为时，可以顺着同一条链路查下去。\n- 模型接入轻。 内置 OpenAI、Anthropic 及其兼容接口。 不堆厚重适配层；要接新模型，实现一个小 Protocol 就够了。\n- 缓存友好的上下文管理。 压缩只改变下一次模型调用能看到的内容， 保持提示词前缀稳定，同时完整记录始终保留。\n- 生产控制点清楚。 审批、预算、取消、运行中追加指令、重试、快照/恢复， 都是明确的开关，可以按你的应用需要接入。\n- 扩展方式统一。 Skills、MCP、Todo、Memory 都是插件；要加入自定义的能力， 也走同一套机制。\n\n简单示例：\n\n```python\nfrom lovia import Agent, Memory, Skills, tool\nfrom lovia.workspace import Workspace\nfrom lovia.web import serve\n\n\n@tool\ndef light_travel_time(distance_km: float) -> str:\n    \"\"\"计算光走完一段距离需要多久。\"\"\"\n    return f\"{distance_km / 299_792.458:.2f} 秒\"\n\n\nagent = Agent(\n    name=\"science-writer\",\n    instructions=\"你是一位科普作者，善于用生动的日常比喻讲清复杂的科学概念。\",\n    model=\"deepseek-v4-pro\",\n    tools=[light_travel_time],\n    workspace=Workspace.local(\".\", mode=\"readonly\"),\n    plugins=[\n        Skills(\"./skills\"),\n        Memory(),\n    ],\n)\n\n\nserve(agent, host=\"127.0.0.1\", port=8000)\n```",
-    "created_at": "2026-07-15T16:19:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10742"
-  },
-  {
-    "id": 10741,
-    "title": "5dive —— 自托管的 AI agent 团队（开源）",
-    "content": "**5dive** —— 在你自己的服务器上跑一整支 AI 智能体团队的开源工具。没有框架、没有协议：每个 agent 是一个独立的 Linux 用户，以 systemd 服务的形式运行官方 coding CLI（Claude Code、Codex 等），通过一条共享的 bash CLI 协作、从任务队列领活、只有需要人拍板时才通过 Telegram 提醒你。`claude` 类型可接 DeepSeek / Kimi / 智谱 GLM / OpenRouter，用你自己的 Key 和国产模型。MIT 协议。\n\nhttps://github.com/5dive-ai/5dive",
-    "created_at": "2026-07-15T15:46:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10741"
-  },
-  {
-    "id": 10740,
-    "title": "[工具自荐] Crosshair Maker：浏览器里的 VALORANT 准星生成器",
-    "content": "项目地址：https://crosshairmaker.com/zh?utm_source=github.com&utm_medium=referral&utm_campaign=promotion\n\nCrosshair Maker 是一个免费的浏览器端 VALORANT 准星生成器，适合在进入游戏前调整参数并比较可见性。\n\n主要特点：\n\n- 可以调整颜色、轮廓、中心点、内侧线、外侧线、移动误差和射击误差；\n- 参数变化会同步更新预览和 profile code；\n- 支持静止、移动、射击三种预览状态，以及训练场、庭院、深色网格三种背景；\n- 提供 5 个可继续编辑的 preset，可直接复制生成的代码；\n- 无需注册或付费，设置保存在浏览器本地。\n\n网页预览主要用于比较，最终效果仍建议在自己的 VALORANT 客户端和常用分辨率下确认。该项目是独立工具，与 Riot Games 无关联，也未获其背书。",
-    "created_at": "2026-07-15T14:58:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10740"
-  },
-  {
-    "id": 10739,
-    "title": "〖开源自荐〗Sprite Fusion AI Pixel Snapper：修复 AI 生成的像素画",
-    "content": "## 项目地址\n\nhttps://github.com/Hugo-Dz/spritefusion-pixel-snapper\n\n## 在线体验\n\nhttps://www.spritefusion.com/pixel-snapper\n\n## 项目简介\n\nGPT Image、Gemini 等图像生成模型无法准确理解像素画所需的规则网格间距，因此生成的通常只是“看起来像像素画”的大尺寸图片，例如 1024×1024，而不是真正对齐像素网格的图像。\n\nSprite Fusion AI Pixel Snapper 是一个开源工具，可以推测图像中隐含的网格尺寸，并修复 AI 生成图像中的 mixel 问题，例如非正方形的像素块、大小不均匀以及调色板漂移。\n\n该项目支持从源码构建 CLI 和 WebAssembly 版本，也可以直接通过在线版本使用。\n\n## 效果展示\n\n<img width=\"2360\" height=\"1294\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e3f887f2-8f76-49fe-91eb-59f8385b84af\" />",
-    "created_at": "2026-07-15T14:57:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10739"
-  },
-  {
-    "id": 10738,
-    "title": "【文章自荐】面对 300+ 仓库的重复劳动，我用 Guideline 优化了 Vibe Coding 工作流",
-    "content": "Guideline 是我在工作中总结出针对单次重复工作的 Vibe Coding 方式。可以简单理解为一种外置的临时 SKILL。\n\n这篇文章以我在工作中遇到的实际情况，介绍了 “单次重复性工作” 的定义；Guideline 的定义，并且以 Node.js 24 升级为例列举了实际用法和与 SKILL 的区别。\n\n文章地址：[面对 300+ 仓库的重复劳动，我用 Guideline 优化了 Vibe Coding 工作流](https://mp.weixin.qq.com/s/4vhbqifyRmh1NT6GpasLmA)",
-    "created_at": "2026-07-15T14:27:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10738"
   }
 ]
