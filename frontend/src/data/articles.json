@@ -1,5 +1,85 @@
 [
   {
+    "id": 10869,
+    "title": "【工具自荐】SMTP Probe：免费在线邮箱验证工具，一键检查邮箱是否真实可用",
+    "content": "[SMTP Probe](https://probe.uspeedo.online/) 是一款免费的在线邮箱验证工具，无需注册即可在浏览器中即时验证任意邮箱地址是否真实可用。\n\n## 它能做什么\n\n1. **邮箱真实性验证** — 通过 SMTP RCPT TO 协议直接连接目标邮件服务器，确认邮箱是否存在，不会实际发送任何邮件。\n2. **Catch-All 域名识别** — 自动检测目标域名是否配置为接收所有地址的邮件（Accept-All），这类域名无法验证具体邮箱。\n3. **一次性邮箱检测** — 识别临时邮箱服务商（如 Mailinator、10minutemail 等），帮助过滤垃圾注册。\n4. **黑名单 / 风险评估** — 检查域名是否出现在已知垃圾黑名单中，辅助判断发送风险。\n\n## 适用场景\n\n- 营销团队在发信前清洗邮箱列表，降低退信率\n- 开发者在用户注册或导入数据时校验邮箱格式与可用性\n- 运维人员排查某个域名/邮箱的投递问题\n\n## 使用方式\n\n打开 [probe.uspeedo.online](https://probe.uspeedo.online/)，输入邮箱地址，点击验证即可，无需登录、无需安装任何软件。每天免费 100 次验证。\n\n## 批量验证 & API\n\n如果需要大批量验证（单次最多 10,000 个），可以通过 [uSpeedo API](https://uspeedo.com/docs/products/email/api/BatchVerifyEmail) 接入：\n\n```bash\ncurl -X POST \"https://api.uspeedo.com/api/v1/email/BatchVerifyEmail\" \\\n  -H \"Authorization: Basic \\$(echo -n 'key:secret' | base64)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"Emails\": [\"test@example.com\"]}'\n```\n\n## 技术实现\n\nSMTP Probe 的验证引擎已开源：[github.com/monto-fe/smtp-probe](https://github.com/monto-fe/smtp-probe)，用 Go 实现，支持 CLI 和 HTTP API 两种模式。\n\n验证流程：DNS MX 记录查询 → 连接目标 SMTP 服务器 → RCPT TO 校验 → 断开连接（不发信）。",
+    "created_at": "2026-07-24T10:04:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10869"
+  },
+  {
+    "id": 10868,
+    "title": "🚀 酷睿程 (CARIZON) 急招！内推直通，加急打捞～（智驾）",
+    "content": "**【关于我们】**\n\n酷睿程（CARIZON）是大众集团与地平线成立的合资公司，是大众集团在中国的核心ADAS供应商。公司主要分布在北京和上海，团队超70%拥有硕博学历，超90%为研发人员。此外，搭载酷睿程一段式端到端智驾方案的与众06、07双上市。\n\n📍 **地点**： 北京 / 上海\n🎓 **团队**： 硕博比例 70%+，研发人员 90%+\n🚘 **亮点**： 搭载公司一段式端到端智驾方案的“与众06、07”已双双上市，发展迅猛！\n\n**各类福利**\n超多年假（入职10天福利年假）\n支持远程办公 \n近距离住房补贴\n商业医疗保险 \n体育活动 （健身社、网球社、羽毛球社、攀岩社、搏击社、舞蹈社等）\n更多惊喜可具体咨询\n\n**【核心热招岗位】**\n🔹 算法/数据类： 算法与数据 SE（数据/模型方向）、数据挖掘工程师/专家、自动驾驶数据挖掘算法工程师\n🔹 研发/硬件类： 智驾车辆集成方案工程师、现场应用工程师（底层软件&硬件）、芯片 SE（量产方向）\n🔹 产品/PM类： 产品经理（主动安全方向）、数据 PM-产线、工具平台项目经理\n(更多研发、产品、工程岗位同步热招中)\n\n**【内推优势】**\n✅ 简历直达 HR/面试官，优先评估，快速反馈！\n✅ 全程帮查面试进度，避免简历石沉大海。\n\n**📩投递方式**\n请发送简历至：gaochao.zhu@carizon.com\n邮件标题建议：岗位 - 姓名 - 来自阮一峰周刊",
+    "created_at": "2026-07-24T09:27:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10868"
+  },
+  {
+    "id": 10867,
+    "title": "CLI Schema：命令行程序的开放描述规范（“CLI 的 OpenAPI”）",
+    "content": "**一句话定位**：[CLI Schema](https://cli-schema.org/) 是一个开放的 JSON 规范，用一份机器可读的文档完整描述一个命令行程序——可以理解为“CLI 的 OpenAPI”。\n\n**解决什么问题**：命令行是最常见的可编程接口，但对工具完全透明——help 文本是写给人看的，自动补全要逐 shell 手写，AI agent 调用 CLI 时只能靠猜参数。CLI Schema 让 CLI 作者随二进制发布一份 schema 文档，消费者（AI agent、IDE、shell 补全、文档生成器）解析一次即可完整理解这个工具：有哪些命令和参数、哪些命令有破坏性、哪些需要人工确认、如何要求机器可读的输出。\n\n**设计亮点**：\n- 双发现机制：`mytool __schema` meta-command 直接输出文档；或随二进制附带 `<binary>.cli-schema.json` sidecar 文件，不启动进程即可读取（对沙箱/不可信环境很重要）。\n- 安全语义是一等公民：`intent.destructive`、`requiresConfirmation`、`requiresAuth`，以及 `confirmationSkip`/`dryRun` 参数角色，让 agent 在执行前就知道命令的危险性，而不是事后猜。\n- 规范本身 CC0（公共领域），实现库 MIT。\n\n**和 MCP 的区别**：MCP 是让 agent 调用*新*工具服务的协议；CLI Schema 是让 agent 理解*现存几十万个* CLI 的描述格式。两者不冲突，互补。\n\n**现状**：规范处于 Draft 阶段（v1 未冻结），由 Elastic 的 .NET 客户端负责人 Martijn Laarman 发起。官方已有 TypeScript SDK（Commander 集成），Python（Typer/Click）集成也在进行中。非常早期，用的人还很少，但问题真实、设计认真，值得关注与参与。\n\n- 官网：https://cli-schema.org/\n- 规范仓库：https://github.com/cli-schema/cli-schema\n- JS SDK：https://github.com/cli-schema/cli-schema-js",
+    "created_at": "2026-07-24T09:25:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10867"
+  },
+  {
+    "id": 10866,
+    "title": "ImgFast：保留任务上下文的 AI 图片工作台",
+    "content": "项目地址：https://imgfast.org/?utm_source=github.com&utm_medium=referral&utm_campaign=promotion\n\nImgFast 是一个以结果交付为核心的 AI 图片工作台。用户可以从文字需求或现有图片开始，进行图片生成、编辑、增强、扩图、背景处理和多图合成。\n\n它与单次生成工具的区别是，会把参考图、Prompt、设置和结果保留在同一条工作记录中，方便继续编辑、标记最终版本并下载，减少每一步都从头开始。\n\n当前限制：结果仍需用户检查；不同模型、分辨率和积分成本以实时工作台为准。项目由独立开发者维护。",
+    "created_at": "2026-07-24T09:07:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10866"
+  },
+  {
+    "id": 10865,
+    "title": "【开源自荐】smtp-probe：开源邮件送达率诊断工具（SPF/DKIM/DMARC/SMTP验证/黑名单扫描）",
+    "content": "# smtp-probe：开源邮件送达率诊断工具\n\ngithub地址：https://github.com/monto-fe/smtp-probe\n在线体验：https://monto-fe.github.io/smtp-probe/\n\n## 简介\n\nsmtp-probe 是一款用 Go 编写的开源邮件送达率诊断工具，可以在一个命令中完成域名邮件配置检查、邮箱真实性验证、IP 黑名单扫描等全流程排查。\n\n## 特性\n\n- **域名健康检查** — SPF、DKIM、DMARC、MX、PTR 记录解析 + 百分制评分\n- **SMTP 邮箱验证** — 通过 MX 服务器进行 RCPT TO 校验，支持绑定 IP 出站\n- **IP 池管理与自动故障转移** — 支持多个绑定 IP，自动检测健康状态，黑名单 IP 自动替换\n- **多节点协调** — 基于 GeoIP 的分布式节点路由，支持跨区域部署\n- **一次性邮箱检测** — 4 个上游数据源（~8k–74k 域名），自动下载更新\n- **RBL 黑名单扫描** — 29 个黑名单（Spamhaus、Barracuda、SpamCop 等）\n- **延迟探测** — 测量从池 IP 到目标域的连接延迟\n- **HTTP API** — RESTful JSON API，方便集成\n- **多种输出格式** — CLI 表格、JSON、Markdown\n\n## 快速使用\n\n```bash\n# 一键安装\nbash <(curl -fsSL https://raw.githubusercontent.com/monto-fe/smtp-probe/main/install.sh)\n\n# 检查域名邮件配置\nsmtp-probe check gmail.com\n\n# 验证邮箱地址\nsmtp-probe verify user@example.com\n\n# 扫描 IP 黑名单\nsmtp-probe blacklist 1.2.3.4\n\n# 生成完整报告\nsmtp-probe report example.com --format md > report.md\n\n# 启动 HTTP API 服务\nsmtp-probe serve --port 8080\n```\n\n## 适用场景\n\n适合邮件服务商运维、EDM 营销开发、邮件开发者自查发送问题，也可以作为独立检测工具嵌入到现有邮件平台中。\n\n## 架构\n\n```\nsmtp-probe/\n├── cmd/            # Cobra CLI 命令\n├── pkg/            # 核心包\n│   ├── probe/      # 编排与评分\n│   ├── dnscheck/   # DNS 记录检查 (SPF/DKIM/DMARC/MX/PTR)\n│   ├── disposable/ # 一次性邮箱检测\n│   ├── pool/       # IP 池管理与健康检查\n│   ├── node/       # 多节点协调 (GeoIP, 路由, 心跳)\n│   ├── rbl/        # RBL 黑名单查询\n│   └── smtpclient/ # SMTP RCPT TO 验证\n└── server/         # HTTP API (Gin)\n```\n\nMIT 开源协议，欢迎 Star 和 PR！",
+    "created_at": "2026-07-24T09:01:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10865"
+  },
+  {
+    "id": 10864,
+    "title": "【开源自荐】Wink：给 Mac 上每个应用一个专属快捷键，按一下唤起、再按一下让开",
+    "content": "项目地址：https://github.com/xrf9268-hue/Wink\n官网：https://wink.aixie.de （中文手册：[wink.aixie.de/guide/zh](https://wink.aixie.de/guide/zh)）\n\nWink 是一款 macOS 菜单栏应用：给常用应用各绑一个全局快捷键，按一下把它带到最前面，再按一下把它藏起来。灵感来自 Thor，Swift 6 原生实现，免费开源，macOS 15+。\n\n日常体验是：Caps Lock 按住变成 Hyper 键，⇪S 唤出 Safari、⇪T 唤出终端——手不离开键盘完成应用切换，比 Cmd-Tab 少一步\"找\"的过程。\n\n<img src=\"https://raw.githubusercontent.com/xrf9268-hue/Wink/main/docs/screenshot-dark.png\" width=\"720\" alt=\"Wink 设置界面\">\n\n## 功能\n\n- 字母、F 键、方向键、空格都可绑定；支持普通修饰键组合，或把 Caps Lock 变成 Hyper 键\n- Thor 式切换语义：应用没开就启动、开着就聚焦、已在最前就隐藏\n- 可选窗口轮换：重复按键在目标应用的多个窗口间循环（含最小化窗口），HUD 实时显示位置；也可设为长按弹出窗口选择器\n- \"当前应用\"伪目标：一个键轮换手头应用的窗口，无需逐个绑定\n- 搜索面板：触发键 + 几个字母，跳转到任意已安装应用\n- 按住 Hyper 键显示全部快捷键速查表\n- 洞察面板：使用趋势、热力图，以及\"经常切换却还没绑键\"的应用建议——数据全部保存在本地\n- 虚拟机 / 远程桌面在前台时自动暂停捕获；Secure Input 受限会在菜单栏明示而不是静默失效\n- 快捷键方案可导出 / 导入（.winkrecipe），也提供 wink:// URL scheme 供 Raycast、Stream Deck 等脚本调用\n- 中英双语界面\n\n## 一点技术细节\n\nmacOS 14 之后，让一个无 Dock 图标的辅助应用可靠地把别的应用带到前台并不容易（`NSRunningApplication.activate` 只是一个系统可拒绝的协作请求），Wink 为此做了不少平台层面的功课，取舍都记录在仓库的 docs/architecture.md 里。标准快捷键走 Carbon 热键、Hyper 路由走主动事件 tap（带自动恢复），按键到切换的热路径是 O(1) 预编译索引。\n",
+    "created_at": "2026-07-24T08:12:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10864"
+  },
+  {
+    "id": 10863,
+    "title": "【工具自荐】ASMRHookLab：用 AI 模板批量生成带原生音频的 ASMR 短视频",
+    "content": "大家好，我想自荐一下我们正在做的 AI ASMR 视频生成工具 ASMRHookLab（ai-asmr.co），主要解决「做 ASMR 视频太耗时间、太依赖设备和剪辑」的问题。\n\n一、这是个什么工具？ ￼\n\nASMRHookLab 是一个专门做 AI ASMR 短视频 的在线生成平台，帮你在浏览器里一键生成带「画面 + 原生同步音频」的 ASMR 内容，面向 TikTok / 抖音海外 / YouTube Shorts / Reels 这类竖版短视频场景。\n\n它不是通用视频模型的简单封装，而是围绕 ASMR 玩法做了一整套模板和工作流：从水果切割、键盘敲击，到吐司抹酱、水晶生长、纸巾拉扯等，都有预置模板可以直接改参数生成。\n\n二、适合谁用？ ￼\n\n- 想做 ASMR / 放松类账号、但不想搭麦克风和灯光的 个人创作者\n\n- 想在 TikTok / Shorts 上测试新频道或副频道的 内容创业者\n\n- 想要大批量生成「有质感但不露脸」素材的 MCN / 内容工作室\n\n- 做冥想、助眠、放松相关产品，需要大量 B-roll / 背景画面的 产品团队\n\n三、核心特点和功能亮点 ￼\n\n1. 模板驱动：不用写 Prompt 也能出片\n\n网站内置了多种「已经验证好玩、好看的 ASMR 模板」，比如：\n\n - AI Fruit Cutting ASMR（玻璃质感水果切割）\n\n - AI Keyboard ASMR（键盘敲击 + 食物/材质键帽）\n\n - Toast Spread ASMR（吐司抹酱 / 星系纹理）\n\n - Petri Dish Crystal ASMR（水晶生长）\n\n - Toilet Paper ASMR（不寻常材质的纸巾拉扯）\n\n你只需要选模板、改几个变量（材质、物体、风格），就能生成一条完整视频。\n\n2. 原生音频 + 画面同步\n\n跟很多「先出画面再配音效」的方案不同，ASMRHookLab 的工作流是 画面和声音一起生成：\n\n - 切割、敲击、拉扯、挤压等动作的声音会跟画面节奏对上\n\n - 不需要自己找音效、对齐节奏、反复调时间轴\n\n适合追求「看着爽、听着也爽」的一体化 ASMR 短视频。\n\n3. 为竖版短视频优化的时长和构图\n\n默认支持 9:16 竖屏，也可选 16:9，输出时长短、节奏集中，直接对标：\n\n - TikTok / 抖音海外\n\n - YouTube Shorts\n\n - Instagram Reels\n\n模板本身就是按「可循环、可当素材池」来设计的，方便批量生产内容。\n\n4. 按信用点计费，支持 Fast / High 双质量模式\n\n - Fast：消耗少量 credits，2 分钟左右出片，适合快速试想法、刷模板\n\n - High：消耗更多 credits，画质和细节更高，适合作为最终发布版本\n\n年付方案里会按档位给到不同的月度 credits，可以大致估算每月可产出的 Fast / High 质量视频数量。\n\n5. 内置免费试用 + 水印策略\n\n - 新用户有免费 credits，可以先用模板生成几条视频感受效果\n\n - 免费用户导出会带 ai-asmr.co 水印\n\n - 付费计划支持无水印导出，方便直接发到各平台作为正式内容或商业项目\n\n四、简单的使用流程 ￼\n\n1. 打开网站，选择一个 ASMR 模板（比如：Fruit Cutting、Keyboard、Toast Spread）\n\n2. 在表单里填入你想要的 材质 / 对象 / 场景关键词\n\n3. 选择 画质（Fast / High） 和 比例（9:16 或 16:9）\n\n4. 点击生成，等待出片，满意后直接下载视频文件\n\n整个过程不需要自己写长 prompt，也不需要会剪辑，更多是在调模板和变量。\n\n五、定价与计划（简要） ￼\n\n目前提供几档按年计费的订阅，都会在每个月发放固定 credits，例如：\n\n- Starter：适合偶尔更新的创作者，每月大约可生成几十条视频\n\n- Creator：适合持续运营账号的人，每月上百条视频额度\n\n- Pro：适合机构、工作室或内容团队，大量批量生产 ASMR 素材\n\n所有付费档都包含：访问全部模板、无水印导出、商用授权（具体受条款约束）、多种分辨率和纵横比支持。\n\n六、网站和体验入口 ￼\n\n- 官网 & 产品介绍：\n\n[ASMRHookLab - AI ASMR Video Generator](https://www.ai-asmr.co/)\n\n欢迎大家用它来：\n\n- 尝试从零启动一个 ASMR / 放松类短视频账号；\n\n- 给现有频道增加一条「不露脸、轻制作」的内容线；\n\n- 当作冥想、白噪音、助眠内容的「背景视频工厂」。\n\n如果你在实际生成中遇到任何模板想法、画面/声音细节需求，也非常欢迎在 Issue 里留言反馈，我们会按创作者场景优先迭代。",
+    "created_at": "2026-07-24T06:47:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10863"
+  },
+  {
+    "id": 10862,
+    "title": "【工具自荐】PeekTok，免费匿名浏览TikTok个人主页，播放/下载无水印视频",
+    "content": "[Peektok](https://peektok.net/) 是一款免费的 Web 工具，无需登录 TikTok 账号即可浏览公开的 TikTok 用户主页和视频。\n\n你可以查看用户头像、个人简介、粉丝数量以及最新发布的视频；支持直接在网页中播放任意公开视频，并查看完整的互动数据，包括播放量、点赞数、评论数和分享数。\n\n无需安装 App、无需登录、无水印播放。Peektok 不会存储用户搜索内容——搜索词在记录日志前会先进行哈希处理，同时也不会向被查看的用户发送任何浏览通知。\n\n仅支持浏览公开账号，可在任意浏览器中使用，目前支持 5 种语言。",
+    "created_at": "2026-07-24T06:39:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10862"
+  },
+  {
+    "id": 10861,
+    "title": "【工具自荐】Seedream 5.0 Pro：面向创作者和团队的专业级 AI 图像生成器",
+    "content": "大家好，我想自荐一下我们最近在打磨的 AI 图像生成工具 Seedream 5.0 Pro，主要面向内容团队、设计师、电商卖家和需要高质量视觉素材的个人创作者。\n\n一、这是个什么工具？ ￼\n\nSeedream 5.0 Pro 是一个基于多模态大模型的在线 AI 图像生成平台，更偏向「能直接用于工作」的专业视觉生产，而不是随便玩玩的图片生成器。它擅长理解复杂的文字描述和参考图，输出可直接用于广告、信息图、产品图、电商详情页、Pitch Deck、社媒素材等场景的成品图片。\n\n简单理解：你给它一段接近「设计 Brief」的描述，它给你一张尽量能直接拿去用的图。\n\n二、适合谁用？ ￼\n\n- 需要大量制作 Banner / 海报 / 详情页的 运营、市场、电商团队\n\n- 需要快速出概念图、分镜、排版示意的 设计师和创意团队\n\n- 需要讲复杂内容、做教程或报告的 教育工作者、自媒体、B2B 团队\n\n- 想用 AI 改图、抠图、做风格统一视觉的 个人创作者、自由职业者\n\n三、主要功能亮点 ￼\n\n1. 高密度信息图 & 教学图\n\n支持生成时间轴、流程图、示意图、竖版科普海报等高信息量排版，能比较好地组织标题、小节、图标和说明文字，适合做教程、课程、知识卡片。\n\n2. 标注驱动的「精修级」改图\n\n可以上传原图，然后在图上画框、打点、画箭头做标注，再在文案里用 @ 引用这些标注，精确描述「这一块要改」「那一块保持不变」，做局部替换、构图微调、风格统一、人物/产品细节修改等。\n\n3. 更接近实拍质感的照片风格\n\n对光影、材质、皮肤、金属、玻璃、水滴等细节有比较强的还原能力，可以做产品广告图、人物写真风格图、电影感场景等，更适合「真的要给客户看」的场景。\n\n4. 原生多语言生成\n\n支持多语言文案和排版，比如英文、中文、日文、西班牙文等，可以直接做本地化海报、社媒图、活动 KV，再人工校对文字。\n\n5. 更偏「一张打磨好的图」的工作流\n\nPro 模型一次只出 1 张图，更适合把一张图反复打磨到可用，而不是一次性刷很多随机候选。\n\n四、计费和使用方式 ￼\n\n我们目前提供几档方案，适合不同强度的使用频率：\n\n- Free 免费试用：注册即可得到一次性试用积分，用来体验 Seedream 4.5、5.0 Lite 和 5.0 Pro，适合先感受一下质量和工作流。\n\n- Starter：面向低频个人创作者，每月固定积分，用来稳定输出少量高质量图片。\n\n- Creator / Studio：面向内容团队、电商店铺和代运营公司，每月更多积分，方便支撑活动期的大批量制作。\n\n所有付费计划都支持访问 Seedream 5.0 Pro / 5.0 Lite / 4.5，且可下载生成历史，不额外加平台水印。\n\n五、和「一般 AI 画图网站」的差异 ￼\n\n- 更强调「排版结构」和「信息密度」，适合信息图 / 教学内容 / B2B 内容营销；\n\n- 对参考图和标注的支持更细：可以指定哪些元素必须保留，哪些允许替换；\n\n- 支持多语言本地化布局，方便做一份设计、多语言版本；\n\n- 重点优化了「一张能用于投放或提案的图」，而不是海量随机风格探索。\n\n六、使用链接和体验入口 ￼\n\n- 在线体验 Seedream 5.0 Pro：\n\n[在线生成与试用入口](https://seedream-5-pro.com/) （进入后选择 5.0 Pro 模型即可）\n\n非常欢迎大家用真实的工作流来「虐一虐」它，比如：\n\n- 把你现有的一张海报或产品图上传进去，用标注+文案的方式改版；\n\n- 试着用一段接近 Brief 的长 prompt 让它生成信息图或竖版科普海报；\n\n- 用不同语言做同一个活动的多语版本，再对比版式和可读性。\n\n如果你在使用过程中遇到任何问题，或者有希望优先优化的场景，也欢迎随时反馈，我们会根据真实用例持续迭代。",
+    "created_at": "2026-07-24T06:38:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10861"
+  },
+  {
+    "id": 10860,
+    "title": "【自荐】日本地铁主题日语打字游戏、支持在线实时对战-「免费」",
+    "content": "## 地址：https://railtyping.com\n\n<img width=\"1187\" height=\"821\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e3f8af6c-e1c5-439d-9242-2aedfa21f3f7\" />\n<img width=\"1118\" height=\"805\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a0e1254a-d732-435a-a075-4f9508d83f1f\" />\n<img width=\"1343\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/484b7fac-a774-4cd6-bd93-ff4623370804\" />\n\n",
+    "created_at": "2026-07-24T06:30:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10860"
+  },
+  {
     "id": 10859,
     "title": "【开源自荐】linqq-handwritten annotation：给 Obsidian 笔记添加手写风格批注",
     "content": "\nlinqq-handwritten annotation，一个给 Obsidian 添加彩色手写风格批注的开源插件，还原在纸质书上写批注的感觉，，能让md变得更加生动。\n\n适合经常使用 Obsidian 阅读资料、整理研究笔记、修改文章、提炼观点的用户。\n\n插件实现的效果：\n\n<img width=\"676\" height=\"832\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/660416ea-b362-45b6-816d-82fe0d01a168\" />",
@@ -724,91 +804,5 @@
     "created_at": "2026-07-17T02:39:51Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/pull/10768"
-  },
-  {
-    "id": 10767,
-    "title": "【开源自荐】md查看器 - 可以简单定制UI+AI生成主题的轻量MarkDown文档查看编辑小工具",
-    "content": "开源地址：https://github.com/qizhenghai2020/mdview\n\n项目简介：\n一款轻量级的带AI智能排版和智能主题的 Markdown 与纯文本查看编辑器，基于 Wails (Go + Vue 3) 构建。\n\n[截图]\n![主界面](https://github.com/qizhenghai2020/mdview/raw/master/screenshots/task.png)\n![AI生成主题](https://github.com/qizhenghai2020/mdview/raw/master/screenshots/theme_ai.png)\n![主题1](https://github.com/qizhenghai2020/mdview/raw/master/screenshots/theme1.png)\n![主题2](https://github.com/qizhenghai2020/mdview/raw/master/screenshots/theme2.png)\n![主题3](https://github.com/qizhenghai2020/mdview/raw/master/screenshots/theme3.png)\n\n核心特性：\n- **三种工作模式** - 支持 `预览 / 编辑 / 分栏` 三种模式，可按文档场景自由切换阅读、纯源码编辑与对照编辑体验\n- **所见即所得编辑** - 提供可视化实时编辑能力，编辑内容可直接同步回 Markdown 源码，适合日常笔记、计划清单与文档整理\n- **分栏同步预览** - 编辑与预览同屏显示，支持滚动同步、可拖动分割线调节宽度，并保持 Mermaid、代码块等内容实时渲染\n- **多文件与文件夹工作区** - 可打开单文件、多个文件或整个文件夹，支持多层目录展开、收起与快速切换\n- **文档大纲与文件树导航** - 左侧同时支持文件树和 Markdown 大纲导航，点击标题或文件即可快速定位和切换\n- **广泛文本格式支持** - 除 Markdown 外，也支持 TXT、日志、配置、代码等常见文本文件，并兼容多种中文编码\n- **外部文件自动同步** - 当文件被记事本或其他编辑器修改后，可自动同步最新内容；若本地与外部同时修改，会触发冲突保护\n- **任务清单增强** - 对任务计划、待办清单等 Markdown 内容提供更醒目的样式表达，便于区分已完成与未完成事项\n- **AI 智能排版** - 可调用已配置模型对当前 Markdown 进行智能重排版，在保留原始语义的前提下优化标题层级、列表、代码块与任务结构\n- **模型管理与测试** - 内置模型配置面板，支持启用状态控制、连接测试、自定义请求头与失败后切换其他模型\n- **AI 智能主题** - 可通过输入需求生成整套界面主题，覆盖配色、按钮、滚动条、面板等 UI 细节，并支持主题历史、切换与删除\n- **样式配置面板** - 提供独立样式配置能力，可调整主题、排版、字号、元素覆盖、任务样式等，且采用可拆卸式配置模块设计\n- **多主题与字体系统** - 内置亮色、暗色、雅致三种默认主题，集成阿里巴巴普惠体 3.0、思源黑体风格、思源宋体风格及 Windows 常用字体\n- **Markdown 渲染增强** - 支持代码高亮、Mermaid 流程图/时序图等图表渲染，以及相对路径图片解析\n- **界面缩放与状态记忆** - 支持 50%-200% 内容缩放，也支持 `Ctrl + 鼠标滚轮` 整体界面缩放，并可保存主题、模式、导航栏宽度等常用状态\n- **桌面应用体验优化** - 基于 Wails 构建，支持拖拽打开、快捷键操作、窗口控制及更贴近原生桌面应用的阅读与编辑体验\n\n技术亮点/适用场景\n- 不想写复杂markdown文档的场景，可以简单写普通文档后，使用智能排版一键自动排版\n- webcoding ai编码定制计划任务场景，清晰明了查看ai完成任务进度\n- 想要不同字体、色调主题的md或文本查看器，可以自定义或AI一键生成主题\n- 想要全宽度查看md文档，很多市面上文档都会把内容居中固定区域显示，本软件可以自由缩放和定制\n- 想要修改md字体的，内置几种开源字体，定制好字体、大小和颜色，整个文档会很好看\n- \n\n开源协议： Apache-2.0 license",
-    "created_at": "2026-07-17T01:58:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10767"
-  },
-  {
-    "id": 10766,
-    "title": "【开源自荐】Matrix —— ETF / A 股 / 美股多策略选股，每天收盘自动把结果推送到飞书",
-    "content": "推荐一个自己写的量化选股工具：Matrix。\n\n它面向个人投资研究，每天收盘后自动从行情数据源同步 ETF、A 股、美股的日线数据，\n跑一批内置的技术型选股策略，再把当天选出的候选标的以卡片形式推送到飞书群——\n不用盯盘，收盘后打开飞书就能看到当日各策略的选股结果。\n\n项目地址：\n\n- GitHub：https://github.com/zongyangbigpolo/Matrix\n\n主要特点：\n\n- 覆盖三个市场、共 17 套技术策略：ETF 7 套（相对强度动量、均线趋势、放量突破、\n  强势回踩，以及 Mega7 风格的风险调整动量等）、A 股 6 套（均线放量、海龟突破、\n  高旗形整理、涨停洗盘、RPS 动量突破等）、美股 4 套（相对强度动量、均线趋势、\n  均线放量、放量突破）\n- ETF / A 股 / 美股三条流水线**完全隔离**：各自独立的数据库、标的池、策略集与\n  运行入口，互不影响，可单独部署与定时\n- 数据源使用 tickflow 免费档，无需注册、无需 API key；本地用 SQLite 存储，三库物理隔离\n- 飞书推送支持按策略路由到不同机器人，卡片标题与策略名均为中文\n- 内置「优雅降级」：当天数据同步被限流/失败时，自动退回用本地历史数据继续跑策略，\n  并在卡片上如实标注数据日期，不会因为一次网络抖动就漏掉信号\n- 提供阿里云 Linux 的运行脚本与 systemd 定时任务模板，三条线错峰调度（19:15 / 20:30 / 21:45）\n- Python 实现，含 pytest 测试；策略筛选依据、数据源说明、部署步骤都有对应文档\n- MIT 开源\n\n适合想用一套可自托管、可扩展的框架做每日选股研究、并把结果自动送到手机上的人。\n项目仅用于量化研究与学习，不构成任何投资建议。欢迎有兴趣的人一起加入开发和提issue",
-    "created_at": "2026-07-17T01:49:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10766"
-  },
-  {
-    "id": 10765,
-    "title": "【文章推荐】什么是 ReAct？一个例子读懂 Agent 原理",
-    "content": "为什么 Agent 框架看起来很复杂，Cursor、Codex、Claude Code 又像真的会自己干活？\n\n这篇文章用一个天气查询的小例子，把“LLM、工具调用、状态回填、循环执行”完整串起来。\n\n看完你会明白：Agent 不是一种新模型，而是在 LLM 外面包了一层持续决策和执行的循环；\n\nLangGraph、AutoGen、CrewAI 是对这个循环的框架化封装，Cursor、Codex、Claude Code、Trae 这些编程工具，本质上也是把这个循环接到了文件系统、终端、搜索和代码编辑器上。\n\nReAct 没有玄学，核心就是让模型反复经历“思考、行动、观察”，直到任务完成。\n\n- https://mp.weixin.qq.com/s/xScGO9bmL8H3IOjEUDTnuA",
-    "created_at": "2026-07-17T01:46:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10765"
-  },
-  {
-    "id": 10764,
-    "title": "【开源自荐】ruanyf-weekly-contributor：用 gh 安全投稿阮一峰周刊 Issue 的 Skill",
-    "content": "推荐一个用于给阮一峰周刊投稿的 Skill：ruanyf-weekly-contributor。\n\n它把“准备投稿文案”和“公开创建 Issue”拆成两个阶段，先参考 `ruanyf/weekly` 的近期标题格式，生成结构清晰的中文 Markdown 投稿稿件；用户审核确认后，再使用客户端上的 `gh` 创建公开 Issue。\n\n项目地址：\n\n- GitHub：https://github.com/AaronConlon/ruanyf-weekly-contributor\n\n主要特点：\n\n- 使用 `gh issue list` 读取近期 Issue，参考真实标题风格\n- 提供开源项目、工具、网站、文章等投稿模板\n- 明确区分草稿审核和公开发布两个阶段\n- 只有用户明确确认后才执行 `gh issue create`\n- 投稿脚本限制目标仓库为 `ruanyf/weekly`\n- 提供 `--dry-run` 和 `--confirm` 安全机制\n- 失败时不自动重试，避免重复投稿\n- 适用于 Codex 和 Claude 等 AI 客户端\n\n如果你也经常需要给阮一峰周刊投稿，这个 Skill 可以减少整理标题、编写格式和手动创建 Issue 的重复工作。\n",
-    "created_at": "2026-07-17T01:17:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10764"
-  },
-  {
-    "id": 10763,
-    "title": "【开源自荐】Codia：面向人类与 AI 的美观代码图片生成工具，支持 llms.txt 指南",
-    "content": "推荐一个我开源的项目：Codia。\n\nCodia 不只是把代码生成图片的工具，它还针对 AI 使用场景提供了良好的 `llms.txt` 指南，非常适合让 AI 快速生成格式规范、样式美观的代码分享图片。\n\n<img width=\"1770\" height=\"808\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ec816b4c-a45b-4e2a-ba97-767bf31e192c\" />\n\n项目地址：\n\n- GitHub：https://github.com/AaronConlon/codia\n- 在线体验：https://codia.i5lin.top/\n- AI 使用指南：https://codia.i5lin.top/llms.txt\n\n主要特点：\n\n- 提供浏览器端 `/try-it` 代码图片生成 playground\n- 支持语言、主题、图片格式、背景、边距、宽度、行号等配置\n- 提供 `POST /v1/code/render` API，方便程序化生成代码图片\n- 提供 `/docs` OpenAPI 文档和 `/llms.txt` AI-friendly 指南\n- 支持 Docker Compose 自托管部署\n- 基于 TypeScript、Hono、Shiki 和 SQLite 构建\n\n如果你经常需要把代码发布到博客、文档、社交媒体，或者希望通过 AI 自动生成好看的代码截图，可以试试 Codia。",
-    "created_at": "2026-07-17T00:35:42Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10763"
-  },
-  {
-    "id": 10762,
-    "title": "【浏览器插件自荐】puzzledict —— 附带词根拆解的划词翻译插件",
-    "content": "GitHub 仓库：https://github.com/zhongyangxun/puzzledict\n\nChrome 商店地址：https://chromewebstore.google.com/detail/puzzledict/fjnbhpmpglmpaaehjpjajflmhnifjjoi\n\n---\n\npuzzledict 是一款划词翻译插件，帮助中文用户在网页上阅读英文。\n\n选中单词或句子，点击弹出图标，即可查看翻译、发音和词根拆解。\n\n## 核心功能与特性\n\n### 亮点\n\n- 常见词支持词根拆解（前缀、词根、后缀），例如 access = `ac-`(向) + `cess`(走) → 接近\n\n### 查词与翻译\n\n- 查词结果展示音标、释义，支持发音\n- 翻译结果支持发音、复制\n- 内置高频词本地词典，常用词查询更快\n\n### 其它特性\n\n- 完全免费\n- 无需登录或注册\n- 界面随浏览器或站点切换浅色 / 深色模式\n\n## 功能演示\n\n**使用示例**\n\n<img width=\"80%\" alt=\"使用示例\" src=\"https://github.com/user-attachments/assets/6aca4fab-ca45-4b3c-8d76-6576b124a49d\" />\n\n**词根拆解**\n\n<img width=\"80%\" alt=\"词根拆解\" src=\"https://github.com/user-attachments/assets/ce66c338-7a34-4fcb-a3b2-24473f3ce45b\" />\n\n**句子翻译**\n\n<img width=\"80%\" alt=\"句子翻译\" src=\"https://github.com/user-attachments/assets/05b16d9e-f710-46dd-a73c-00ccae497c46\" />\n\n**夜间模式 - 查词**\n\n  <img width=\"80%\" alt=\"夜间模式 - 查词\" src=\"https://github.com/user-attachments/assets/c155ca37-b249-42a8-bdd2-b8891e8bcf42\" />\n\n**夜间模式 - 翻译**\n\n  <img width=\"80%\" alt=\"夜间模式 - 翻译\" src=\"https://github.com/user-attachments/assets/66d67c13-102e-40d0-b9fa-7e92aa0cce4e\" />\n\n## 结语\n\n我自己一直在使用、优化这个插件，如果各位有兴趣，欢迎试试。\n\n使用过程中，如有任何问题，可[提交 Issue](https://github.com/zhongyangxun/puzzledict/issues)。\n\n",
-    "created_at": "2026-07-16T19:37:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10762"
-  },
-  {
-    "id": 10761,
-    "title": "【开源自荐】Gaia —— 可视化 AI 工作流编辑器，像画图一样构建 AI 应用",
-    "content": "偶然发现字节开源的 [flowgram.ai](https://github.com/bytedance/flowgram.ai) 框架能力很强，但缺少一个开箱即用、面向普通用户的产品形态。于是我在它之上做了一层产品化封装，加上 Java 后端和 SQLite 存储，让任何人都能在无限画布上拖拽节点、设计 AI 流程，无需写一行代码。这就是 Gaia。\n\n开源地址: https://github.com/boommanpro/gaia-workflow-engine\n\n在线 Demo: https://boommanpro.github.io/gaia-workflow-engine/\n\n## License\n\nGaia is licensed under the [MIT License](https://github.com/boommanpro/gaia-workflow-engine/blob/main/LICENSE).\n\nBuilt with [flowgram.ai](https://github.com/bytedance/flowgram.ai) · Spring Boot · React.\n\n---\n\n***像画图一样构建 AI 工作流***\n\n*拖拽节点，连接边，一键运行。无需代码，所见即所得。*\n\n[**打开 Gaia →**](https://boommanpro.github.io/gaia-workflow-engine/)\n\n## 功能\n\n- **无限画布，自由编排。**  基于 flowgram.ai 的自由布局编辑器，支持拖拽、缩放、自动布局、小地图，在无限画布上设计任意复杂的 AI 工作流。\n\n- **丰富的 AI 节点。**  内置 LLM 调用、代码执行、HTTP 请求、字符串格式化、变量管理、条件分支、循环等节点类型，覆盖常见 AI 编排场景。\n\n- **实时预览与调试。**  单步执行单个节点，或运行整个工作流，实时查看每个节点的输入输出和执行历史，快速定位问题。\n\n- **版本管理，随时回滚。**  每次保存自动创建版本，支持版本切换和一键回滚，像 Git 一样管理工作流的演进历史。\n\n- **模板系统，复用提效。**  把常用流程沉淀为模板，一键创建新工作流；模板也支持可视化编辑和保存更新。\n\n- **多条件节点，复杂分支。**  同步官方 flowgram.ai 的多条件节点实现，支持 if/elif/else 等复杂分支逻辑。\n\n- **管理后台，开箱即用。**  自带工作流管理、模板管理、执行日志控制台，搭配 Spring Boot 后端 + SQLite 存储，开箱即用，零配置启动。\n\n- **国际化，自适应部署。**  前端支持中英文，可独立部署前后端，也可一体化打包，甚至直接托管到 GitHub Pages。\n\n## 使用\n\n> Note\n>\n> 推荐使用桌面版 Chrome、Edge 或其他 Chromium 浏览器获得最佳体验。\n\n### 环境准备\n\n| 要求 | 版本 |\n|------|------|\n| Node.js | >= 18 |\n| Java | >= 17 |\n| Maven | 3.x |\n\n### 前端启动\n\n```bash\ngit clone https://github.com/boommanpro/gaia-workflow-engine.git\ncd gaia-workflow-engine/apps/console\nnpm install\nnpm run dev\n```\n\n访问 http://localhost:3000\n\n### 后端启动\n\n```bash\ncd apps/api/gaia-workflow\nmvn spring-boot:run\n```\n\nAPI 服务运行在 48080 端口。",
-    "created_at": "2026-07-16T15:16:27Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10761"
-  },
-  {
-    "id": 10760,
-    "title": "【开源自荐】Foursmith VR —— 换种方式打开 VR，不用头显，也不怕晕动症",
-    "content": "<div align=\"center\">\n  <picture>\n    <source media=\"(prefers-reduced-motion: reduce)\" srcset=\"https://raw.githubusercontent.com/foursmith/vr/main/doc/banner.jpg\">\n    <img src=\"https://raw.githubusercontent.com/foursmith/vr/main/doc/banner.webp\" alt=\"Foursmith VR\" width=\"960\">\n  </picture>\n</div>\n\n\n偶然间我发现竖屏最适合预览 VR 内容，没有畸变，聚焦人脸，只要镜头一直跟随人脸，其实和抖音差不多，也就有了这个项目。Foursmith VR 为手机和平面显示器打造，不需要 VR 眼镜，人脸始终居中，保持最佳构图和最佳视角。\n\n如果你还没有看过 VR 影片，或者不适应佩戴 VR 眼镜，尽情享受吧。\n\n开源地址: [https://github.com/foursmith/vr](https://github.com/foursmith/vr)\n链接：[https://vr.foursmith.com](https://vr.foursmith.com)\n\n## DEMO Video（放心观看）\n\n[▶ Watch the demo video](https://www.youtube.com/watch?v=TxfZAjrw_Q8)\n\n## License\n\nFoursmith VR is licensed under the [Mozilla Public License 2.0](https://github.com/foursmith/vr/blob/main/LICENSE).\n\nCode by GPT 5.6 Sol. Taste by [ourongxing](https://github.com/ourongxing).\n\n---\n\n",
-    "created_at": "2026-07-16T13:12:35Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10760"
-  },
-  {
-    "id": 10759,
-    "title": "【网站自荐】AddressMock —— 美国测试地址生成器，城市/州/邮编严格匹配",
-    "content": "https://addressmock.com\n\n给开发和测试同学做的美国地址样例生成器。和常见的随机地址工具不同，它保证生成的 City、State、ZIP Code、电话区号来自同一地区数据集，不会出现「旧金山的邮编配纽约的城市」这种过不了表单校验的组合。\n\n主要功能：\n\n- 覆盖全部 50 个州 + DC，可按州、城市、姓名性别生成\n- 每个字段一键复制，也可按「结账页预设」整组复制\n- 纯前端生成，数据不上传；保存记录在浏览器本地，可导出 CSV / JSON\n- 附带地址格式指南（Address Line 2 怎么填、St/Ave/Blvd 区别、County 是什么等）\n\n适合注册/结账流程联调、地址校验组件测试、演示数据填充。生成的地址不做真实可投递验证，仅用于开发测试场景。",
-    "created_at": "2026-07-16T11:42:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10759"
-  },
-  {
-    "id": 10758,
-    "title": "【开源自荐】Coaction 3.0：无需手写 Selector、计算属性自动缓存，Action 还能运行在 Web Worker 中的 Zustand 风格状态库",
-    "content": "Repo：https://github.com/coactionjs/coaction\n\nCoaction 3.0 是一个开源的 JavaScript/TypeScript 状态管理库。它保留了 Zustand 风格简洁的 Store API，同时将自动渲染依赖追踪、缓存计算状态和“可变式写法、不可变结果”整合进同一套响应式模型。当应用需要扩展时，同一份 Store 还可以运行在 Web Worker 或\nSharedWorker 中，为页面和多标签页提供统一的状态与 Action 执行能力。\n\n## 核心要点\n\n- 无需手写 Selector：React 组件通过 observer() 自动追踪渲染期间实际读取的字段，只在相关状态变化时重新渲染。\n- 计算属性自动缓存：直接使用 Getter 定义派生状态，依赖未变化时不会重复计算，无需额外使用 useMemo 或 Reselect。\n- 可变式更新，不可变结果：在 set() 中直接修改草稿状态，最终仍生成不可变状态，兼顾开发体验与可预测性。\n- Action 可运行在 Worker 中：共享模式下，Action 在权威 Store 所在的 Worker 执行，页面端读取本地镜像，并自动等待状态同步完成。\n- 可靠的共享状态协议：3.0 使用版本化的 JSON 通信协议，通过 authority epoch、连续 sequence、断线重连和完整同步处理并发与状态缺口。\n- 按需选择运行时：提供 coaction/local、coaction/shared 和 coaction/adapter 独立入口，普通单线程应用无需引入完整的共享运行时。\n- 保留显式控制能力：仍支持传统 Selector、自动 Selector Map 和手动声明依赖的 computed API。\n- 覆盖主流前端生态：支持 React、Vue、Angular、Svelte 和 Solid，并提供 Zustand、Redux、MobX、Pinia、Jotai、Valtio、XState、Yjs 等集成。\n- 适合渐进式采用：可以先作为普通的本地状态库使用，之后再根据架构需要迁移到 Worker、SharedWorker或多标签页共享模式。",
-    "created_at": "2026-07-16T11:40:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10758"
   }
 ]
