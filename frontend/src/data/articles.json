@@ -1,5 +1,13 @@
 [
   {
+    "id": 10881,
+    "title": "【开源自荐】MergeWarden：给 AI 智能体的 PR 加一道变更管控门禁",
+    "content": "**项目地址**：https://github.com/sjh9714/mergewarden\n**中文说明**：https://github.com/sjh9714/mergewarden/blob/main/README.zh-CN.md\n\n编码智能体现在整天都在提 PR，但审这些 PR 的方式基本还停留在人眼看 diff。MergeWarden 是一道加在合并之前的变更管控门禁，它检查的不是代码写得好不好，而是这个 PR 有没有越过仓库自己划定的边界：有没有超出它在 PR 正文里声明的改动范围；有没有顺手改了 `AGENTS.md`、`CLAUDE.md`、`.mcp.json` 这类会左右此后每一次智能体运行的文件；有没有把 PR 评论之类的不可信文本，接进某个 agentic 工作流的提示词里（也就是提示词注入）。\n\n写这个东西之前，我先扫了公开仓库上 2,204 个已合并的 AI 智能体 PR（Devin、Copilot、Codex、Claude Code、Cursor）。其中改动了工作流或包清单的有 349 个，这里面 12.9% 提升了工作流权限，17.5% 引入了未按 SHA 固定的 action；全部 PR 里有 3.9% 动过上面说的那类智能体指令文件。默认规则就是照着这些数据定的，所有数字都能从公开查询复现。\n\n两个刻意的设计：**运行时不调用大模型**，判定是确定性的、可以在本地原样复现；**从不检出、也不执行 PR 里的代码**，只通过 GitHub API 读，策略从基线 commit 加载，所以一个 PR 没法通过改自己分支里的配置，来放宽审判它自己的那套规则。\n\n不需要令牌、不需要仓库，一条命令就能看到它会抓到什么：\n\n```bash\nnpx --yes mergewarden@0.5.0 demo\n```\n\nMIT 协议，TypeScript 编写，零运行时依赖。\n",
+    "created_at": "2026-07-25T14:08:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10881"
+  },
+  {
     "id": 10880,
     "title": "ClearPNG - Online image background remover",
     "content": "Tool recommendation\n\nName: ClearPNG\n\nWebsite: https://clearpng.shop\n\nDescription:\n\nClearPNG is an online image background remover that helps users export clean transparent PNG files.\n\nIt is mainly useful for:\n\n- removing white backgrounds from logos\n- making signature images transparent\n- removing backgrounds from product photos\n- creating transparent PNGs from everyday images\n\nThe workflow is simple: upload an image, remove the background, preview the result, and download the transparent PNG.\n\nThe site is built with Next.js and Cloudflare Pages. The current version uses the remove.bg API for background removal.\n\nScreenshot:\n\nYou can attach a screenshot of the homepage or a before/after result here.",
@@ -796,13 +804,5 @@
     "created_at": "2026-07-17T20:43:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10780"
-  },
-  {
-    "id": 10779,
-    "title": "【开源自荐】Claude Pet — Claude Code 的桌面伙伴，本地图记忆 + 项目上下文注入 + GitHub 活动提醒",
-    "content": "# Claude Pet\n\nClaude Pet 是一个开源（MIT 许可）的桌面伙伴，为 Claude Code 用户设计。它以卡通机器人形象浮现在屏幕右下角，实时响应 Claude Code 的每一个 hook 事件——11 种情绪 + 声音提示，让你在切换到浏览器或其他应用时也能一眼知道 Claude Code 正在做什么。\n\n🔗 **代码仓库：** https://github.com/nikhilagrima/claude-pet\n🔗 **官网：** https://nikhilagrima.github.io/claude-pet\n\n## 主要功能\n\n- **实时反馈** — 11 种情绪对应 Claude Code 的不同状态：阅读文件、编辑、bash 命令、成功、失败、等待输入等，每种都有专属动画和声音\n- **每项目本地图记忆** — 用 SQLite 存储每个项目的决策、约定、修复、坑点；新会话开始时通过 SessionStart hook 自动注入不超过 800 tokens 的精炼上下文，Claude 无需重新读文件、跑 git log 就能理解项目\n- **自动生成 SKILL.md** — 出现两次以上的模式会自动提升为 Claude Code 的技能文件（写入 `~/.claude/skills/`），跨项目共享经验\n- **人体工程学教练** — 根据实际编码时间（不是挂机时间）在合适时机提示护眼、颈部、腕部微休息，宠物本身会演示动作\n- **GitHub 仓库监听** — 监听任何仓库的新 commit、PR、code review、release、CI/deploy 状态，用 toast 弹窗即时提示，可直接点击跳转\n- **100% 本地运行** — 无云端、无遥测、无账号；所有数据保存在本机 `~/.claude/claude-pet/memory.sqlite`\n\n## 平台\n\nmacOS / Windows / Linux（PySide6 单代码库，二进制安装包已发布）\n\n## 技术栈\n\nPython 3.10+ · PySide6 (Qt) · SQLite (FTS5) · Flask · PyObjC (macOS 窗口置顶) · PyInstaller\n\n## 开源协议\n\nMIT",
-    "created_at": "2026-07-17T18:28:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10779"
   }
 ]
