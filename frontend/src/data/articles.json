@@ -1,5 +1,21 @@
 [
   {
+    "id": 10883,
+    "title": "【开源自荐】Tunlease：保留 Webhook 原 URL，把指定路径临时转发到本机",
+    "content": "## Tunlease\n\n> 一个面向 Webhook 开发场景的开源反向隧道工具：保留第三方服务正在使用的 callback URL，只把其中一条指定路径的实时流量临时转发到开发者本机。\n\n- 项目地址：https://github.com/iml885203/tunlease\n- 项目网站：https://tunlease.dotw.me\n- 开源协议：MIT\n\n开发 Webhook 时，ngrok、localtunnel 一类工具通常会产生一个新的公开 URL。但是在团队环境中，第三方平台的 callback URL 可能由管理员统一配置，开发者不能随时修改；多人共用 staging 入口时，也不能把整个 host 都转发到自己的电脑。\n\nTunlease 解决的是这个问题。\n\n团队先将现有 callback host 路由到自行部署的 Tunlease gateway，第三方服务保存的 URL 不需要改变。开发者连接后，只有自己 claim 的 path 会通过 WebSocket 隧道到达本机，其他所有 path 仍然由原来的应用处理。\n\n安装 CLI 后，可以使用公共测试 relay 体验：\n\n```bash\ntul claim '/demo/my-tunnel/' -p 8080 -g tunlease-relay.dotw.me\n```\n\n连接期间，该路径的请求会进入本机 `8080` 端口；按下 Ctrl+C 后自动释放。未被 claim 的路径仍会交给原服务处理。\n\n![Tunlease demo](https://raw.githubusercontent.com/iml885203/tunlease/main/assets/demo.gif)\n\n项目使用 Go 开发，提供 macOS、Linux 和 Windows 安装方式，也包含 Helm Chart，方便团队自行部署到 Kubernetes。公共 relay 不需要注册，但仅用于测试流量。\n",
+    "created_at": "2026-07-25T16:21:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10883"
+  },
+  {
+    "id": 10882,
+    "title": "【开源自荐】SubTap · 字幕点读器 —— 点读式英语视频学习工具",
+    "content": "在线使用：https://haujetzhao.github.io/SubTap/\n介绍视频：https://www.bilibili.com/video/BV1jsK86FErV\n仓库地址：https://github.com/HaujetZhao/SubTap\n\n读式英语学习工具 —— 载入字幕 + 音视频，点任意句子播放对应片段，内置分级词库给生词按难度着色。先读句、再点听，主动学英语。\n\n静态前端实现，PWA 应用，访问过后，即可离线使用。Release 有单 HTML 文件。\n\n市面上的英语听力软件和方法，大多是「听课式」：播放一大段音频，配上译文和单词解释，让学生被动地听。可一旦被动连听几分钟，大脑几乎不可避免地走神——甚至只要连续出现两三句有难度的句子、中间又没留思考时间，注意力就会涣散、打起瞌睡，学习效果很差。\n\nSubTap 想换一种方式：主动点读。每一句都要你主动点一下才会读，句与句之间留出充足的思考时间；遇到生词、难句，旁边就有释义。把被动听变成 主动读、主动听 ，让注意力始终在线。\n\n学习材料也不挑：美剧、演讲、YouTuber 的视频，从网上下载到本地就行；字幕可以下载现成的，也可以用同属作者开发的 [CapsWriter-Offline](https://github.com/HaujetZhao/CapsWriter-Offline) 离线转录出高质量、带时间戳的字幕。\n\n\n",
+    "created_at": "2026-07-25T15:28:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10882"
+  },
+  {
     "id": 10881,
     "title": "【开源自荐】MergeWarden：给 AI 智能体的 PR 加一道变更管控门禁",
     "content": "**项目地址**：https://github.com/sjh9714/mergewarden\n**中文说明**：https://github.com/sjh9714/mergewarden/blob/main/README.zh-CN.md\n\n编码智能体现在整天都在提 PR，但审这些 PR 的方式基本还停留在人眼看 diff。MergeWarden 是一道加在合并之前的变更管控门禁，它检查的不是代码写得好不好，而是这个 PR 有没有越过仓库自己划定的边界：有没有超出它在 PR 正文里声明的改动范围；有没有顺手改了 `AGENTS.md`、`CLAUDE.md`、`.mcp.json` 这类会左右此后每一次智能体运行的文件；有没有把 PR 评论之类的不可信文本，接进某个 agentic 工作流的提示词里（也就是提示词注入）。\n\n写这个东西之前，我先扫了公开仓库上 2,204 个已合并的 AI 智能体 PR（Devin、Copilot、Codex、Claude Code、Cursor）。其中改动了工作流或包清单的有 349 个，这里面 12.9% 提升了工作流权限，17.5% 引入了未按 SHA 固定的 action；全部 PR 里有 3.9% 动过上面说的那类智能体指令文件。默认规则就是照着这些数据定的，所有数字都能从公开查询复现。\n\n两个刻意的设计：**运行时不调用大模型**，判定是确定性的、可以在本地原样复现；**从不检出、也不执行 PR 里的代码**，只通过 GitHub API 读，策略从基线 commit 加载，所以一个 PR 没法通过改自己分支里的配置，来放宽审判它自己的那套规则。\n\n不需要令牌、不需要仓库，一条命令就能看到它会抓到什么：\n\n```bash\nnpx --yes mergewarden@0.5.0 demo\n```\n\nMIT 协议，TypeScript 编写，零运行时依赖。\n",
@@ -788,21 +804,5 @@
     "created_at": "2026-07-18T07:00:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10782"
-  },
-  {
-    "id": 10781,
-    "title": "【工具自荐】AI ASMR视频生成器，创建专属你的解压视频",
-    "content": "# 一键式生成专属于你的ASMR视频\n\n<img width=\"2990\" height=\"1588\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/95956492-8a81-4911-b903-66cfe60c4b1d\" />\n\n我发现抖音、小红书、tiktok上有很多人都喜欢看解压视频，所以我做了个ASMR AI生成器\n想制作治愈、解压的 ASMR 视频，却没有专业麦克风、摄影设备和安静的录音环境？\n\nASMR-AI.art 是一款专注于 ASMR 内容创作的 AI 视频生成工具。你只需要输入一段文字，描述想要的画面和声音；也可以上传参考图片，AI 就能自动生成带有同步音效的 ASMR 视频。\n\n它可以制作粘液揉捏、肥皂切割、动力沙、手指敲击、轻声耳语、雨滴、水流以及自然环境等多种类型的内容。画面中的动作会与声音同步，让视频更有沉浸感和真实感。\n\n平台支持文生视频和图生视频，可选择适合 TikTok、Instagram Reels 的 9:16 竖屏比例，也可以生成适合 YouTube 的 16:9 横屏内容。视频完成后可直接下载为 MP4 文件，方便发布到各类社交媒体平台。\n\n对于短视频创作者来说，ASMR-AI.art 可以快速验证不同的创意和视觉风格；对于睡眠、冥想、放松类产品或品牌，它也能用于批量制作治愈系素材。整个过程不需要拍摄、录音和复杂剪辑，让一个简单的灵感更快变成完整视频。\n\n如果你也想尝试创作 AI ASMR 内容，欢迎访问：\n\n**产品地址：[https://asmr-ai.art](https://asmr-ai.art)**",
-    "created_at": "2026-07-18T05:30:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10781"
-  },
-  {
-    "id": 10780,
-    "title": "【开源自荐】Chaty：本地私有 AI 桌面应用（GGUF + 原生 MLX）",
-    "content": "# Chaty\n\nChaty 是一个开源（MIT）的本地 AI 桌面应用，让大模型完全在你自己的电脑上运行——无需 API Key、数据不联网。支持 GGUF 模型（Windows 走 Vulkan、macOS 走 Metal），以及 Apple Silicon 上的原生 MLX 模型。\n\n🔗 **代码仓库：** https://github.com/Fangyuan025/Chaty\n🔗 **官网：** https://chaty.ca\n\n## 主要功能\n\n- **模型商店** — 应用内搜索 Hugging Face，选量化档、看「能否装进你的内存」提示，一键下载；支持切换到镜像端点（hf-mirror.com），国内无需代理\n- **知识库 RAG** — 对本地文档问答，答案带可悬停溯源的引用，无依据时严格拒答\n- **识图 + 语音** — 视觉模型看图、免手操作的实时语音对话\n- **编程智能体** — 沙盒内的编码 agent，能规划、改代码、跑测试、自我纠错，用你本地加载的任意模型驱动\n- **双推理引擎** — Rust 写的 llama.cpp 常驻引擎（按显存自动调优 + OOM 回退不卡机）+ 原生 MLX Swift 侧车（进程隔离，弹出模型即释放全部内存）\n- **100% 本地** — 无云端、无遥测、无账号\n\n## 平台\n\nWindows / macOS（Apple Silicon 原生 MLX）；界面中英双语；开源 MIT。",
-    "created_at": "2026-07-17T20:43:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10780"
   }
 ]
