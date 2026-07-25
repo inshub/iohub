@@ -1,5 +1,13 @@
 [
   {
+    "id": 10884,
+    "title": "【开源自荐】Navidash：你的下一个浏览器开屏主页！",
+    "content": "[在线体验](https://navidash.vercel.app/zh) · [开始部署](https://github.com/wtfllix/navidash/blob/master/docs/DEPLOY.md)\n\n在尝试过大部分自部署首页之后，基于我本人使用习惯开发的一款首页应用。尽量做到美观，简洁！\n\n- 少找一步：输入一个字母，就能快速命中经常打开的网站。\n- 越用越顺手：主页会在当前浏览器中记住你的使用习惯，把更可能需要的入口排在前面。\n- 信息刚刚好：时间、天气和临时内容随手可见，但不会把首页变成拥挤的信息面板。\n- 布置自己的空间：像整理一面墙一样摆放入口、便签和海报，桌面与手机各有自己的布局。\n- 数据留在手中：可以部署在自己的电脑、NAS 或服务器上，也可以随时备份和迁移。\n\n欢迎移步demo体验！",
+    "created_at": "2026-07-25T18:41:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10884"
+  },
+  {
     "id": 10883,
     "title": "【开源自荐】Tunlease：保留 Webhook 原 URL，把指定路径临时转发到本机",
     "content": "## Tunlease\n\n> 一个面向 Webhook 开发场景的开源反向隧道工具：保留第三方服务正在使用的 callback URL，只把其中一条指定路径的实时流量临时转发到开发者本机。\n\n- 项目地址：https://github.com/iml885203/tunlease\n- 项目网站：https://tunlease.dotw.me\n- 开源协议：MIT\n\n开发 Webhook 时，ngrok、localtunnel 一类工具通常会产生一个新的公开 URL。但是在团队环境中，第三方平台的 callback URL 可能由管理员统一配置，开发者不能随时修改；多人共用 staging 入口时，也不能把整个 host 都转发到自己的电脑。\n\nTunlease 解决的是这个问题。\n\n团队先将现有 callback host 路由到自行部署的 Tunlease gateway，第三方服务保存的 URL 不需要改变。开发者连接后，只有自己 claim 的 path 会通过 WebSocket 隧道到达本机，其他所有 path 仍然由原来的应用处理。\n\n安装 CLI 后，可以使用公共测试 relay 体验：\n\n```bash\ntul claim '/demo/my-tunnel/' -p 8080 -g tunlease-relay.dotw.me\n```\n\n连接期间，该路径的请求会进入本机 `8080` 端口；按下 Ctrl+C 后自动释放。未被 claim 的路径仍会交给原服务处理。\n\n![Tunlease demo](https://raw.githubusercontent.com/iml885203/tunlease/main/assets/demo.gif)\n\n项目使用 Go 开发，提供 macOS、Linux 和 Windows 安装方式，也包含 Helm Chart，方便团队自行部署到 Kubernetes。公共 relay 不需要注册，但仅用于测试流量。\n",
@@ -796,13 +804,5 @@
     "created_at": "2026-07-18T08:40:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10783"
-  },
-  {
-    "id": 10782,
-    "title": "【工具自荐】CodexThemes 主题站，创建、分享、查找、安装 Codex 主题",
-    "content": "我做了一个 CodexThemes 主题站，把创建、分享、查找、安装、启用 Codex 主题的流程闭环了，网站非常 Agent-Native ，复制提示词发给 Codex ，就能让 Codex 自己管理主题。\n\n欢迎来创建和分享你自己的 Codex 主题。👇\n\nhttp://codexthemes.ai\n\n![]( https://pbs.twimg.com/media/HNfZFtCboAAGfNV?format=jpg&name=4096x4096)\n\n![]( https://pbs.twimg.com/media/HNfeEWYbMAAhKPj?format=jpg&name=4096x4096)",
-    "created_at": "2026-07-18T07:00:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10782"
   }
 ]
