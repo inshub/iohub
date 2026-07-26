@@ -1,8 +1,16 @@
 [
   {
+    "id": 10897,
+    "title": "【开源自荐】liuyao-tool:一个 HTML 文件实现六爻排盘 + AI 解卦",
+    "content": "https://github.com/1eakkkk/liuyao-tool\n\n一个 HTML 文件实现的六爻排盘 + AI 解卦工具,基于传统火珠林纳甲法。写下问题点一下,自动摇卦、按古法排盘(六亲/六神/世应/纳甲/空亡自动推算)、AI 生成白话解读;内置从零开始的六爻基础教学,不懂六爻也能对照着学。\n\n零依赖、零构建、单文件,下载即用;AI 部分用户自备 DeepSeek Key,只存本地浏览器,不经过任何中转服务器。网页/安卓/Windows 三端可用,MIT 开源免费,仅作传统文化学习参考。\n\n在线体验:https://liuyao.1eak.cool\n\n![起卦排盘](https://github.com/1eakkkk/liuyao-tool/raw/main/assets/screenshot-plate.png)\n![AI 解读](https://github.com/1eakkkk/liuyao-tool/raw/main/assets/screenshot-ai.png)",
+    "created_at": "2026-07-26T11:31:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10897"
+  },
+  {
     "id": 10896,
     "title": "【工具自荐】aic：让 AI 帮你写 git commit，顺便把一堆散改动自动拆成几个干净的提交",
-    "content": "各位大佬好，自荐一个自己写的小工具 —— **aic**，一个让 AI 帮你生成 git commit message 的命令行工具。\n\n> 仓库：https://github.com/CaicoLeung/aic\n> 主页：https://caicoleung.github.io/aic-web/\n\n### 先说痛点\n\n写代码一时爽，写 commit message 火葬场。一天改完一堆文件，`git add .` 之后盯着 diff 发呆：到底写 `update` 还是 `fix bug`？最后大概率 `chore: update` 一把梭，两个月后自己翻 log 都想骂人。\n\naic 想干的就是这件事：**你只管改代码，commit message 交给它**。输出严格遵循 [Conventional Commits](https://www.conventionalcommits.org/)（`feat:` / `fix:` / `docs:` 那一套）。\n\n### 我自己最得意的功能：自动拆分提交\n\n市面上的同类工具基本只处理你已经 `git add` 的内容。aic 多走了一步——**啥都没暂存也行**。它会扫一遍工作区，把一坨乱七八糟的改动按语义自动拆成几个独立的 commit，每个都配好 message：\n\n![aic 自动拆分提交演示](https://vhs.charm.sh/vhs-2oUKaA31eFdTgzLqxEQFHu.gif)\n\n上面这个例子里我什么都没 `add`，直接敲 `aic`。它自己识别出「给除法加了零除保护」「新增了乘法函数」「补了安装说明」三件不相干的事，拆成了 `fix` / `feat` / `docs` 三个提交，互不污染。\n\n### 其他几个点\n\n- **Rust 写的，单二进制**。`brew install` 或者一行 `curl` 就装好，不用先 `npm install` 半天，也不用折腾 Python 环境。\n- **不绑死某一家模型**。支持 OpenAI / Claude / Gemini / DeepSeek / Groq / Mistral / Ollama 等十几个 provider，也支持任意 OpenAI 兼容服务。**接 DeepSeek 或本地 Ollama，不翻墙、不用海外卡也能跑**，这点对国内同学比较友好。\n- `aic setup` 一个交互式向导选 provider、填 key、挑模型，配置门槛很低。\n\n### 上手\n\n```sh\n# macOS / Linux\ncurl --proto '=https' --tlsv1.2 -sSfL https://github.com/CaicoLeung/aic/releases/latest/download/aic-installer.sh | sh\n\n# 或者 Homebrew\nbrew tap CaicoLeung/aic\nbrew install aic\n\n# 配一次（选模型、填 key）\naic setup\n\n# 随便改点东西，然后直接\naic\n```\n\n纯个人项目，MIT 协议，代码量不大。如果觉得有点用，求个 ⭐️ 鼓励一下，也欢迎来提 issue / PR：https://github.com/CaicoLeung/aic\n",
+    "content": "各位大佬好，自荐一个自己写的小工具 —— **aic**，一个让 AI 帮你生成 git commit message 的命令行工具。\n\n> 仓库：https://github.com/CaicoLeung/aic\n> 主页：https://caicoleung.github.io/aic-web/\n\n### 先说痛点\n\n写代码一时爽，写 commit message 火葬场。一天改完一堆文件，`git add .` 之后盯着 diff 发呆：到底写 `update` 还是 `fix bug`？最后大概率 `chore: update` 一把梭，两个月后自己翻 log 都想骂人。\n\naic 想干的就是这件事：**你只管改代码，commit message 交给它**。输出严格遵循 [Conventional Commits](https://www.conventionalcommits.org/)（`feat:` / `fix:` / `docs:` 那一套）。\n\n### 我自己最得意的功能：自动拆分提交\n\n市面上的同类工具基本只处理你已经 `git add` 的内容。aic 多走了一步——**啥都没暂存也行**。它会扫一遍工作区，把一坨乱七八糟的改动按语义自动拆成几个独立的 commit，每个都配好 message：\n![aic 自动拆分提交演示](https://vhs.charm.sh/vhs-2O5r9udAPDt7UEvfM9j3rB.gif)\n\n上面这个例子里我什么都没 `add`，直接敲 `aic`。它自己识别出「给除法加了零除保护」「新增了乘法函数」「补了安装说明」三件不相干的事，拆成了 `fix` / `feat` / `docs` 三个提交，互不污染。\n\n### 其他几个点\n\n- **Rust 写的，单二进制**。`brew install` 或者一行 `curl` 就装好，不用先 `npm install` 半天，也不用折腾 Python 环境。\n- **不绑死某一家模型**。支持 OpenAI / Claude / Gemini / DeepSeek / Groq / Mistral / Ollama 等十几个 provider，也支持任意 OpenAI 兼容服务。**接 DeepSeek 或本地 Ollama，不翻墙、不用海外卡也能跑**，这点对国内同学比较友好。\n- `aic setup` 一个交互式向导选 provider、填 key、挑模型，配置门槛很低。\n\n### 上手\n\n```sh\n# macOS / Linux\ncurl --proto '=https' --tlsv1.2 -sSfL https://github.com/CaicoLeung/aic/releases/latest/download/aic-installer.sh | sh\n\n# 或者 Homebrew\nbrew tap CaicoLeung/aic\nbrew install aic\n\n# 配一次（选模型、填 key）\naic setup\n\n# 随便改点东西，然后直接\naic\n```\n\n纯个人项目，MIT 协议，代码量不大。如果觉得有点用，求个 ⭐️ 鼓励一下，也欢迎来提 issue / PR：https://github.com/CaicoLeung/aic\n",
     "created_at": "2026-07-26T11:20:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10896"
@@ -340,7 +348,9 @@
     "title": "【开源工具自荐】Figwright:免费的双向 Figma MCP,让 AI 读设计稿也能反过来画设计稿",
     "content": "做了个开源工具 **Figwright**,一个免费、双向的 Figma MCP server,想来分享一下,顺便听听大家的意见。\n\n起因是这样:现在用 AI 把 Figma 设计稿转成代码已经很常见,但官方的 Figma Dev Mode MCP 要付费席位才能用,而且基本只能「读」——把设计稿吐成代码,单向的。我想要的是两件事:一是免费,二是**反过来也能用**,让 AI 直接在 Figma 画布上画东西,而不只是看它。\n\nFigwright 由一个 MCP server 和一个 Figma 插件组成,两者通过本机 WebSocket 通信,让 Claude Code、Cursor、Codex 等任何 MCP 客户端直接操作 Figma。全部跑在本机,不需要 Figma 付费席位。\n\n它是**真双向**的:\n\n- **读**:把选中的设计稿转成贴合你现有技术栈的代码。它会先探测你项目真实的框架和样式方案(React / Vue / Svelte / Angular + Tailwind / CSS Modules 等),把 Figma 里的组件、设计变量、图标映射到你代码库里已有的东西上,让 AI 复用而不是重造一堆要你回头重写的通用代码。\n- **写**:反过来在画布上创建和修改——frame、自动布局、文字、组件、变量,甚至整屏页面。目前 112 个工具,读和写都覆盖。\n\n几个我自己比较在意的点:\n\n- **免费**:官方 Dev Mode MCP 要付费席位,Figwright 走插件通道,免费账号就能用。\n- **插件不是黑盒**:插件面板能看到每一次工具调用及耗时、发给模型的原始 payload、连接健康状态,出问题时不用靠猜。\n- **全本地、无遥测**:设计数据只在插件、本机中继、你的 MCP 客户端之间流动,不上传到任何地方,也不需要 Figma Dev Mode 席位。\n\n用起来就是在 MCP 客户端配置里加一段 `npx` 命令,再在 Figma 里打开插件,然后对 AI 说人话:「把选中的这块做成 React 组件」,或者反过来「按这个规格在 Figma 里画一个定价区块」。\n\n项目地址:https://github.com/awdr74100/figwright\n\nMIT 协议,欢迎试用和拍砖。\n",
     "created_at": "2026-07-23T18:04:15Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10850"
   },
   {
@@ -364,7 +374,9 @@
     "title": "【开源自荐】Linux-Router，把你的 Linux 设备变成路由器",
     "content": "## 简介\nLinux Router 可以将 Debian 或 Armbian 设备变成路由器，并提供一个清晰的 Web 控制台，用于查看系统状态、管理有线网络和 Wi-Fi、开启热点共享、查看接入设备以及执行维护操作\n\n适用于各种开发板、电视盒子、小主机等等（下图是基于 Nanopi Zero2 + Linux Router 的随身小路由）\n\n<img width=\"3072\" height=\"2304\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b6aed664-e0c9-4dad-85ea-fed36f167c73\" />\n\n\n\n## 项目地址\n- https://linuxrouter.dev\n- https://github.com/Jaksay/Linux-Router\n\n## 核心功能\n- 系统概览：查看硬件信息、IP 地址、活动连接、存储、内存和运行状态\n- 依赖检查与修复：检查 NetworkManager、dnsmasq、iptables、iw 等运行环境\n- 有线和 Wi-Fi 管理：扫描、连接、断开、配置绑定和忘记网络\n- 热点创建：支持独占 AP，以及网卡能力允许时的 AP+STA 并发模式\n- 热点设备：查看客户端、DHCP 租约、无线信号和 LAN 网段配置\n- 热点保活：热点异常断线后自动尝试恢复\n- 辅助工具：Tailscale 可视化管理，进程可视化管理等\n\n## 界面截图\n\n<img width=\"2926\" height=\"1893\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5bff52e3-01f4-4fb5-9b79-a5e5b005905f\" />",
     "created_at": "2026-07-23T11:43:22Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10847"
   },
   {
@@ -404,7 +416,9 @@
     "title": "【开源自荐】Birth: 开源 macOS 启动项管理器,看清每个自启项是谁装的",
     "content": "Birth 是一款免费开源的 macOS 启动项管理工具。macOS 把启动项分散在至少四套机制里(用户/全局 LaunchAgents、LaunchDaemons、登录项),系统设置里只显示为语焉不详的\"后台项目\"——不告诉你 plist 在哪、指向哪个可执行文件、由谁签名,第三方的更新器、辅助进程和赖着不走的卸载残留,正是仰仗这种不透明。Birth 把它们收进同一个窗口:每一项标出开发者签名身份(经证书链锚点验证)和实时运行状态,支持一键启停和安全删除(先停止任务,plist 移入废纸篓并自动保留备份)。\n\n一个值得一提的功能是伪装检测:恶意软件最常用的持久化伪装手法,是把标识符起成 `com.apple.*` 混进系统项里。Birth 对每一项做签名验证,标识符冒充 Apple 但证书链对不上的,会被红色\"伪装系统项\"直接标出。\n\n权限设计是\"用到才要,要一次就够\":查看列表零授权,打开即用;添加/移除登录 App 首次操作才弹一次\"自动化\"授权;只有涉及守护进程的操作才需要管理员密码(macOS 安全模型强制)。\n\n![Birth 主界面](https://raw.githubusercontent.com/iAmCorey/birth/main/pic/1.webp)\n\n- 仓库:https://github.com/iAmCorey/birth\n- 安装:[Releases](https://github.com/iAmCorey/birth/releases) 下载 DMG,macOS 14+(个人项目暂未做 Apple 公证,首次打开需在\"系统设置 → 隐私与安全性\"点一次\"仍要打开\")\n- SwiftUI 原生,零第三方依赖,MIT 协议",
     "created_at": "2026-07-23T07:57:27Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10842"
   },
   {
@@ -798,13 +812,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10792"
-  },
-  {
-    "id": 10791,
-    "title": "【项目自荐】为 Codex 扩展一个 API，用于外部系统集成。",
-    "content": "**项目名称**：codex-remote-connection-adapter\n**🌍 Github**：https://github.com/stevenleep/codex-remote-connection-adapter.git\n\n## 场景介绍\n最初为了让飞书自动化能调用 Codex，给 Codex 加了个 HTTP 接口。\n\n在我们工作流程中，有个需要让飞书来调用 Codex 自动整理个博主名单的任务（安装Codex的设备在远程）。Codex 整理好后会通过我们定义的方式同步到（项目的多维表格）。\n\n我们希望很简单的方式就能解决，不用像 cc-connect 那样需要管理授权 / 创建应用等等。可以在自动化里面可以发起 HTTP Request、可以在任何调用等等\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/19650cd5-5270-4bde-aee0-a886b1b69f48\" />\n\n<img width=\"1350\" height=\"975\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ecf84958-b207-4be4-b29d-b89cc5f300dd\" />\n\n<img width=\"998\" height=\"2052\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/844611d6-6b89-47fa-943d-1924ae6fd557\" />",
-    "created_at": "2026-07-19T09:41:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10791"
   }
 ]
