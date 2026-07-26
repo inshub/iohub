@@ -1,5 +1,13 @@
 [
   {
+    "id": 10898,
+    "title": "【工具自荐】TalkIME：Windows 语音输入，易混同音词、罕见专业词统统搞定",
+    "content": "推荐一个小工具：TalkIME，Windows 上的 AI 语音输入。在任意输入框里按住 `Alt+Z` 说话，松开出字。\n\n下载页：https://yanayuan.github.io/TalkIME-releases/\n\n### 先说痛点\n\n我现在每天花很多时间跟 AI 对话，描述需求、纠正问题等等，这些内容非常长，打字打得手酸，而且我的手跟不上脑子，错误率很高。\n\n试过现成的语音输入，最烦的是**改错字**。尤其人名和专业词，识别错了就得停下来，鼠标点过去，退格，重打——语音省下的那点时间全还回去了。\n\n### 一、说错了不用键盘改，开口纠正就行\n\n用 TalkIME 就很简单，不用碰键盘，也不用重新说一遍，直接说话纠正它就行了。\n\n比如它第一次把我的话识别成了“我的名字叫元音”，我纠正它“是袁隆平的袁，草字头加个因为所以的因”，它就很聪明地改过来了，其他的字没动。\n\nhttps://github.com/user-attachments/assets/b7f6e884-fbbd-4a69-aa50-d69cf983b5bd\n\n### 二、改过一次，它就记住了\n\n光能改还不够——同一个名字每次都要改一遍，那也烦。\n\n所以它会把你的纠错记录攒起来。你确认之后，这个词就进了你的**个人词库**，下次再说到，它直接就是对的，不用再改第二遍。\n\n### 三、没改过的生词，靠屏幕上下文提前避坑\n\n词库能解决改过的词，那**第一次遇到**的呢？\n\nTalkIME 在识别时会读当前窗口上正在显示的文字，用它判断你在说哪个词。比如下面这段，我说的是 `Orama`（一个 JS 搜索库），原始转写听成了 `Orora`，但屏幕上开着它的文档，纠错稿就把它改回来了：\n\nhttps://github.com/user-attachments/assets/d4dbd0ae-3d67-4cd9-9ac3-8cc6fe0d31d0\n\n### 四、要原话还是要润色，你说了算\n\n每次识别完，它会同时给你三个版本：**原始转写、纠错稿、润色稿**。\n\nAI 润色有时候会把话改得太“书面”，丢掉你原本的语气。所以原话一直留着，按 Tab 切换，你要哪个拿哪个。\n\n### 几个要说在前面的事\n\n- **只有 Windows 版**\n- **安装包还没做代码签名**，360、Defender 有一定概率拦截甚至直接删掉文件。没钱买证书，这是我目前最头疼的问题，正在推进，暂时无解。\n- **beta 期间完全免费**，无次数限制\n",
+    "created_at": "2026-07-26T16:47:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10898"
+  },
+  {
     "id": 10897,
     "title": "【开源自荐】liuyao-tool:一个 HTML 文件实现六爻排盘 + AI 解卦",
     "content": "https://github.com/1eakkkk/liuyao-tool\n\n一个 HTML 文件实现的六爻排盘 + AI 解卦工具,基于传统火珠林纳甲法。写下问题点一下,自动摇卦、按古法排盘(六亲/六神/世应/纳甲/空亡自动推算)、AI 生成白话解读;内置从零开始的六爻基础教学,不懂六爻也能对照着学。\n\n零依赖、零构建、单文件,下载即用;AI 部分用户自备 DeepSeek Key,只存本地浏览器,不经过任何中转服务器。网页/安卓/Windows 三端可用,MIT 开源免费,仅作传统文化学习参考。\n\n在线体验:https://liuyao.1eak.cool\n\n![起卦排盘](https://github.com/1eakkkk/liuyao-tool/raw/main/assets/screenshot-plate.png)\n![AI 解读](https://github.com/1eakkkk/liuyao-tool/raw/main/assets/screenshot-ai.png)",
@@ -36,7 +44,9 @@
     "title": "【开源自荐】PhysiClaw: 可以直接物理操作 iPhone 的 AI 智能体",
     "content": "项目地址：https://github.com/physiclaw/PhysiClaw\n\n官网：https://physiclaw.ai/\n\n演示视频（淘宝自主购物）：https://b23.tv/jnegfgC\n\n### 一句话介绍\n\n像人一样操作iPhone的开源 AI 智能体，用摄像头观察屏幕，机械臂操作手机，对操作系统零侵入。\n\n### 为什么做这个项目\n\n我们即将跨入个人助理时代，AI助理应该处理我们日常大部分事务，然而网购、外卖、挂号、叫车等这些服务都没有开放 API，Agent难以直接调用。ADB 软件模拟容易触发风控，豆包手机通过系统底层事件注入引发大规模抵制。PhysiClaw通过物理层托管手机，用摄像头观察屏幕、触控笔进行点击，纯物理操作，实现对系统零侵入，在手机看来与真人无异，从而绕开反自动化检测，相当于把手机屏幕本身当作 API。\n\n### 核心特点\n\n\n- 摄像头看屏幕，触控笔点屏幕，像人一样用iPhone\n- 手机不预装任何软件，不接 ADB，零侵入\n- 无需设置skill，可操作大部分常用app\n- 用微信直接和Agent聊天，交代任务\n- MIT 协议，硬件 CAD as code 和软件全部开源\n\n\n项目目前仍在积极开发，欢迎试用、反馈或参与贡献。",
     "created_at": "2026-07-26T09:16:02Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10893"
   },
   {
@@ -804,15 +814,5 @@
     "created_at": "2026-07-19T14:42:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10793"
-  },
-  {
-    "id": 10792,
-    "title": "【文章推荐】美国政府是如何没收大量比特币的",
-    "content": "#### 这篇文章介绍了美国政府有一个技术团队，至少从2020年开始，就不间断的寻找比特币的所有薄弱环节来打捞比特币\n\n每隔一段时间，就会有新闻，说美国政府没收了xxx的大量加密货币；而此类新闻对于如何没收的语焉不详；让很多不明真相的群众，认为比特币又又又被攻破了，什么去中心化并非真正的去中心化，美国政府想没收谁就没收谁……\n\n这里面最大的一个事件，应该是2025年10月，美国司法部以“打击跨国电诈洗钱”为名义，对柬埔寨太子集团创始人陈志发起刑事指控，罪名涉及电信网络诈骗、洗钱等，同时高调宣布没收其控制的约12.7万枚比特币，按当时市场价格计算价值约150亿美元，创下美国司法部门历史上最大规模的虚拟资产没收纪录。\n\n那么，这12.7万枚比特币，究竟是如何被没收的呢？难道是刑讯逼供出来的私钥？还是真的美国政府握有比特币的某个不为人知的漏洞？\n\n我仔细研究了一番，发现这是一个非常有意思的故事；\n\n* https://brainz.fun/blog/2026/06/01/mei-guo-zheng-fu-shi-ru-he-mei-shou-da-liang-bi-te-bi-de/",
-    "created_at": "2026-07-19T13:27:09Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10792"
   }
 ]
