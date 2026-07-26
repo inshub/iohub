@@ -1,5 +1,13 @@
 [
   {
+    "id": 10899,
+    "title": "【工具自荐】Vibe Roaster：分析本地 AI 编程记录，生成编程人格",
+    "content": "Vibe Roaster 是一个本地运行的 AI 编程记录分析工具。\n\n![Vibe Roaster 运行结果](https://raw.githubusercontent.com/PinkR1ver/vibe-roast/main/assests/screenshots/roast-result-hero.jpg)\n\n它会读取 Codex、Claude Code、Cursor 等工具留在电脑上的会话记录，分析平时写代码、调试、测试和规划的习惯，然后生成一个四字母类型、对应角色和一段吐槽。\n\n原始提示词留在本机。不注册账号、不提供 API Key 也可以使用。\n\n运行方式：\n\n```bash\nnpx vibe-roast\n```\n\n[![15 秒动态演示](https://raw.githubusercontent.com/PinkR1ver/vibe-roast/main/assests/readme/vibe-roast-promo-landscape.gif)](https://github.com/PinkR1ver/vibe-roast/blob/main/media/promo/masters/landscape.mp4)\n\n[观看 15 秒 MP4 视频](https://github.com/PinkR1ver/vibe-roast/blob/main/media/promo/masters/landscape.mp4)\n\n项目地址：https://github.com/PinkR1ver/vibe-roast",
+    "created_at": "2026-07-26T18:09:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10899"
+  },
+  {
     "id": 10898,
     "title": "【工具自荐】TalkIME：Windows 语音输入，易混同音词、罕见专业词统统搞定",
     "content": "推荐一个小工具：TalkIME，Windows 上的 AI 语音输入。在任意输入框里按住 `Alt+Z` 说话，松开出字。\n\n下载页：https://yanayuan.github.io/TalkIME-releases/\n\n### 先说痛点\n\n我现在每天花很多时间跟 AI 对话，描述需求、纠正问题等等，这些内容非常长，打字打得手酸，而且我的手跟不上脑子，错误率很高。\n\n试过现成的语音输入，最烦的是**改错字**。尤其人名和专业词，识别错了就得停下来，鼠标点过去，退格，重打——语音省下的那点时间全还回去了。\n\n### 一、说错了不用键盘改，开口纠正就行\n\n用 TalkIME 就很简单，不用碰键盘，也不用重新说一遍，直接说话纠正它就行了。\n\n比如它第一次把我的话识别成了“我的名字叫元音”，我纠正它“是袁隆平的袁，草字头加个因为所以的因”，它就很聪明地改过来了，其他的字没动。\n\nhttps://github.com/user-attachments/assets/b7f6e884-fbbd-4a69-aa50-d69cf983b5bd\n\n### 二、改过一次，它就记住了\n\n光能改还不够——同一个名字每次都要改一遍，那也烦。\n\n所以它会把你的纠错记录攒起来。你确认之后，这个词就进了你的**个人词库**，下次再说到，它直接就是对的，不用再改第二遍。\n\n### 三、没改过的生词，靠屏幕上下文提前避坑\n\n词库能解决改过的词，那**第一次遇到**的呢？\n\nTalkIME 在识别时会读当前窗口上正在显示的文字，用它判断你在说哪个词。比如下面这段，我说的是 `Orama`（一个 JS 搜索库），原始转写听成了 `Orora`，但屏幕上开着它的文档，纠错稿就把它改回来了：\n\nhttps://github.com/user-attachments/assets/d4dbd0ae-3d67-4cd9-9ac3-8cc6fe0d31d0\n\n### 四、要原话还是要润色，你说了算\n\n每次识别完，它会同时给你三个版本：**原始转写、纠错稿、润色稿**。\n\nAI 润色有时候会把话改得太“书面”，丢掉你原本的语气。所以原话一直留着，按 Tab 切换，你要哪个拿哪个。\n\n### 几个要说在前面的事\n\n- **只有 Windows 版**\n- **安装包还没做代码签名**，360、Defender 有一定概率拦截甚至直接删掉文件。没钱买证书，这是我目前最头疼的问题，正在推进，暂时无解。\n- **beta 期间完全免费**，无次数限制\n",
@@ -806,13 +814,5 @@
     "created_at": "2026-07-19T18:27:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10794"
-  },
-  {
-    "id": 10793,
-    "title": "【开源自荐】给 Claude Code / Codex 的 skill 大扫除工具。我自己扫完吓一跳：165 个 skill 里 108 个从未用过，还有 12 个功能重复的 PPT 生成器……",
-    "content": "<img width=\"1038\" height=\"757\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ea623580-0e39-4369-bdf4-418ae3311ffa\" />\n\n盘点了一下自己的 Claude Code + Codex：\n· 装了 165 个 skill，65% 从未用过\n· 40 个两边重复装\n· 12 个都是做 PPT 的\n· 1.8GB 会话日志躺在硬盘里\n\n写了个开源 CLI 把这些全揪出来了：分类清单、查重、使用审计、僵尸识别、一键（确认式）清理。零依赖，npm 就能装。\n[项目地址](https://github.com/GrubbyLee/skill-manager) https://github.com/GrubbyLee/skill-manager",
-    "created_at": "2026-07-19T14:42:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10793"
   }
 ]
