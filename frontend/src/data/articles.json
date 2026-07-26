@@ -1,5 +1,29 @@
 [
   {
+    "id": 10896,
+    "title": "【工具自荐】aic：让 AI 帮你写 git commit，顺便把一堆散改动自动拆成几个干净的提交",
+    "content": "各位大佬好，自荐一个自己写的小工具 —— **aic**，一个让 AI 帮你生成 git commit message 的命令行工具。\n\n> 仓库：https://github.com/CaicoLeung/aic\n> 主页：https://caicoleung.github.io/aic-web/\n\n### 先说痛点\n\n写代码一时爽，写 commit message 火葬场。一天改完一堆文件，`git add .` 之后盯着 diff 发呆：到底写 `update` 还是 `fix bug`？最后大概率 `chore: update` 一把梭，两个月后自己翻 log 都想骂人。\n\naic 想干的就是这件事：**你只管改代码，commit message 交给它**。输出严格遵循 [Conventional Commits](https://www.conventionalcommits.org/)（`feat:` / `fix:` / `docs:` 那一套）。\n\n### 我自己最得意的功能：自动拆分提交\n\n市面上的同类工具基本只处理你已经 `git add` 的内容。aic 多走了一步——**啥都没暂存也行**。它会扫一遍工作区，把一坨乱七八糟的改动按语义自动拆成几个独立的 commit，每个都配好 message：\n\n![aic 自动拆分提交演示](https://vhs.charm.sh/vhs-2oUKaA31eFdTgzLqxEQFHu.gif)\n\n上面这个例子里我什么都没 `add`，直接敲 `aic`。它自己识别出「给除法加了零除保护」「新增了乘法函数」「补了安装说明」三件不相干的事，拆成了 `fix` / `feat` / `docs` 三个提交，互不污染。\n\n### 其他几个点\n\n- **Rust 写的，单二进制**。`brew install` 或者一行 `curl` 就装好，不用先 `npm install` 半天，也不用折腾 Python 环境。\n- **不绑死某一家模型**。支持 OpenAI / Claude / Gemini / DeepSeek / Groq / Mistral / Ollama 等十几个 provider，也支持任意 OpenAI 兼容服务。**接 DeepSeek 或本地 Ollama，不翻墙、不用海外卡也能跑**，这点对国内同学比较友好。\n- `aic setup` 一个交互式向导选 provider、填 key、挑模型，配置门槛很低。\n\n### 上手\n\n```sh\n# macOS / Linux\ncurl --proto '=https' --tlsv1.2 -sSfL https://github.com/CaicoLeung/aic/releases/latest/download/aic-installer.sh | sh\n\n# 或者 Homebrew\nbrew tap CaicoLeung/aic\nbrew install aic\n\n# 配一次（选模型、填 key）\naic setup\n\n# 随便改点东西，然后直接\naic\n```\n\n纯个人项目，MIT 协议，代码量不大。如果觉得有点用，求个 ⭐️ 鼓励一下，也欢迎来提 issue / PR：https://github.com/CaicoLeung/aic\n",
+    "created_at": "2026-07-26T11:20:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10896"
+  },
+  {
+    "id": 10895,
+    "title": "【工具自荐】Skills for Real Teams：让 AI 编程从一次性对话变成可接力的团队交付流程",
+    "content": "Skills for Real Teams 是一套面向产品负责人、研发负责人、开发者和项目管理者的开源 AI 技能库。\n\n<img width=\"1238\" height=\"571\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3459a362-c2c3-48eb-9090-539c8fd61c9d\" />\n\n它不是一次性提示词合集，而是把产品定义、代码库理解、任务拆解、代码实现、独立验证和技术债治理组织成可以接力执行的 Skills。每个 Skill 都有明确的职责、输入和输出，并通过项目中的文件化产物传递上下文。\n\n例如，一个模糊需求可以经过下面的流程逐步落地：\n\n```text\n需求细化\n  → 规格评审\n  → 生成 PRD\n  → 拆解工程 Issue\n  → 实现 Issue\n  → 独立验证\n  → 创建 Pull Request\n```\n\n目前主要覆盖四类场景：\n\n* **产品定义**：从产品概念、需求细化和风险评审，到结构化 PRD。\n* **代码库理解**：分析现有项目，生成架构说明、模块地图、接手知识库和业务能力说明。\n* **交付执行**：把 PRD 拆成有依赖关系、可领取、可验证的工程 Issue，并推动实现、验证和 PR/MR 交付。\n* **技术债治理**：从代码事实中识别维护性、稳定性、测试和架构风险，再转换成有优先级和验收标准的工程任务。\n\n执行过程中产生的规格、决策、PRD、Issue 和验证结果都会保存在项目的 `team-spec/` 工作区中。这样，即使更换 AI 客户端或开启新的对话，也可以继续沿用之前已经确认的项目上下文和决策。\n\n可以通过一条命令安装全部 Skills：\n\n```bash\nnpx skills@latest add coolbeevip/team-ai-skills --all\n```\n\n项目使用 MIT License，Skills 正文以中文为主。\n\n项目网站：https://coolbeevip.github.io/team-ai-skills/\n\nGitHub：https://github.com/coolbeevip/team-ai-skills\n",
+    "created_at": "2026-07-26T10:34:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10895"
+  },
+  {
+    "id": 10894,
+    "title": "【工具自荐】Git Assistant：把 Git 提交历史导出成可分享的 HTML 分析报告",
+    "content": "Git Assistant 是一款适用于 IntelliJ IDEA、PyCharm、Android Studio 等 JetBrains IDE 的 Git 辅助插件。之前曾在科技爱好者周刊介绍过，最近更新到了 2.4.0。\n\n这次比较大的变化是新增了 **Commit Insights HTML 报告导出**。插件可以分析 Git 仓库的提交历史，并生成一份完整的 HTML 报告，包括：\n\n* 项目提交与代码变更概览\n* 贡献者排名及个人贡献情况\n* 按小时、星期、月份统计的提交活跃度\n* 团队成员的时区分布\n* 文件和目录的变更热点\n* 当前项目及多个已打开项目的汇总分析\n\n报告是一个独立的 HTML 文件，可以直接在浏览器打开，也方便保存、归档或分享给团队成员。\n\n此外，新版本还改进了 AI Commit 功能。现在可以配置多个 AI Provider 及其调用顺序；当当前服务出现网络连接失败或超时时，插件会按照设定顺序自动尝试下一个 Provider，减少生成提交信息时因为单个服务不可用而中断的情况。\n\n<img width=\"3024\" height=\"1890\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/82755923-d028-4718-8351-1d4eb5a50e7a\" />\n\n项目主页：https://gitassistant.pages.dev/\n\nJetBrains Marketplace：https://plugins.jetbrains.com/plugin/24154-git-assistant\n",
+    "created_at": "2026-07-26T10:30:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10894"
+  },
+  {
     "id": 10893,
     "title": "【开源自荐】PhysiClaw: 可以直接物理操作 iPhone 的 AI 智能体",
     "content": "项目地址：https://github.com/physiclaw/PhysiClaw\n\n官网：https://physiclaw.ai/\n\n演示视频（淘宝自主购物）：https://b23.tv/jnegfgC\n\n### 一句话介绍\n\n像人一样操作iPhone的开源 AI 智能体，用摄像头观察屏幕，机械臂操作手机，对操作系统零侵入。\n\n### 为什么做这个项目\n\n我们即将跨入个人助理时代，AI助理应该处理我们日常大部分事务，然而网购、外卖、挂号、叫车等这些服务都没有开放 API，Agent难以直接调用。ADB 软件模拟容易触发风控，豆包手机通过系统底层事件注入引发大规模抵制。PhysiClaw通过物理层托管手机，用摄像头观察屏幕、触控笔进行点击，纯物理操作，实现对系统零侵入，在手机看来与真人无异，从而绕开反自动化检测，相当于把手机屏幕本身当作 API。\n\n### 核心特点\n\n\n- 摄像头看屏幕，触控笔点屏幕，像人一样用iPhone\n- 手机不预装任何软件，不接 ADB，零侵入\n- 无需设置skill，可操作大部分常用app\n- 用微信直接和Agent聊天，交代任务\n- MIT 协议，硬件 CAD as code 和软件全部开源\n\n\n项目目前仍在积极开发，欢迎试用、反馈或参与贡献。",
@@ -782,29 +806,5 @@
     "created_at": "2026-07-19T09:41:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10791"
-  },
-  {
-    "id": 10790,
-    "title": "【开源自荐】llm-tap：只改 Base URL，把真实 LLM 调用导出为 SFT 训练数据",
-    "content": "推荐一个我开发的本地工具 **llm-tap**。\n\n项目地址：https://github.com/luckfu/llm-tap\n\n## 一句话介绍\n\nllm-tap 是一个本地 LLM 透明代理：只需修改客户端的 Base URL，就能采集真实的请求、响应、Reasoning、工具调用与工具结果，再在 Web 界面筛选记录并导出训练数据。\n\n## 为什么做这个项目\n\n在做 Agent、代码模型或 SFT 微调时，难点往往不是启动训练，而是获得真实、完整、可控的交互轨迹。手动整理 Claude Code、Codex 等客户端的调用既麻烦，也容易丢失工具调用上下文。\n\nllm-tap 位于客户端和模型服务商之间，正常透传请求和流式响应，同时把一次完整调用保存在本地。客户端的 API Key 仍然用于真实上游，不需要把模型服务商逐个配置进代理。\n\n## 主要特点\n\n- **接入简单：** 把 `https://api.xxx.com/v1` 改为 `http://127.0.0.1:12345/api.xxx.com/v1`，其余使用方式不变。\n- **支持多种协议：** 自动识别 OpenAI Chat、OpenAI Responses 和 Anthropic Messages。\n- **保留 Agent 轨迹：** 保存消息、Reasoning、工具定义、工具调用和工具结果，流式响应会合并成完整结构。\n- **显式选择数据：** Web 界面支持按 Host、模型、协议、状态和时间范围筛选，可逐条、按页或选择全部筛选结果；不会默认导出整个数据库。\n- **多种训练格式：** 可导出 Canonical、OpenAI Messages、Tool SFT 和 ShareGPT 等格式。\n- **控制单条上下文：** 长轨迹可按 Assistant 目标拆分，并限制每条记录的估算长度，同时保持工具调用与结果成组。\n- **本地优先：** 数据默认保存在本机，认证头会脱敏；Web 数据接口默认只允许本机访问。\n- **桌面与命令行：** 提供 macOS Apple Silicon、Windows x64 发布包，也可以直接从源码运行。\n\n## 使用流程\n\n```text\n启动 llm-tap\n  -> 把 Claude Code / Codex / OpenAI 兼容客户端指向本地代理\n  -> 正常使用客户端\n  -> 在 Web 界面筛选并选择调用\n  -> 检查数据质量和上下文预算\n  -> 导出目标训练格式\n```\n\n## 界面截图\n\n筛选并显式选择调用：\n\n![llm-tap 调用列表](https://raw.githubusercontent.com/luckfu/llm-tap/main/docs/screenshots/overview-en.png)\n\n只导出所选记录：\n\n![llm-tap 训练数据导出](https://raw.githubusercontent.com/luckfu/llm-tap/main/docs/screenshots/export-en.png)\n\n这个项目适合正在构建 Agent、代码模型训练集，或希望把日常真实 LLM 使用轨迹沉淀为可审核 SFT 数据的开发者。欢迎试用并反馈不同客户端、协议和训练框架的兼容需求。",
-    "created_at": "2026-07-19T09:41:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10790"
-  },
-  {
-    "id": 10789,
-    "title": "[开源自荐] MineOps: Minecraft 服务器管理工具",
-    "content": "# MineOps 项目自荐：用桌面图形界面管理 Minecraft 服务器\n\n## 项目基本信息\n\n- **项目名称：** MineOps\n- **项目地址：** <https://github.com/Cail-Gainey/MineOps>\n- **项目类型：** Minecraft 服务器桌面管理工具\n- **目标平台：** Windows、macOS、Linux\n- **远程服务器：** Linux\n\n## 一句话介绍\n\nMineOps 是一款本地优先的 Minecraft 服务器桌面管理工具，帮助服主通过图形界面完成远程连接、服务端安装、文件管理、控制台操作、运行监控和性能排查，减少对 Linux、Java 与 Shell 命令的长期依赖。\n\n<img width=\"1192\" height=\"742\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/32e2beb6-ee3c-4e33-a1d2-f2943e1d2e37\" />\n\n## 为什么开发 MineOps\n\n搭建一台 Minecraft 服务器并不是最困难的部分，真正消耗时间的是之后的维护。\n\n服主经常需要在 SSH 终端、文件传输工具、文本编辑器、监控面板和各种教程之间来回切换。服务端数量增加后，Java 版本、启动参数、文件目录和运行状态也更容易混乱。对刚接触开服的用户来说，这些操作还会形成较高的入门门槛。\n\nMineOps 希望把常见的服务器管理流程整理到一个统一的桌面工作台中，让用户可以更直观地了解服务器正在做什么、操作进行到了哪一步，以及出现问题后应该从哪里开始排查。\n\n## 核心功能\n\n### 1. 统一管理远程主机\n\n用户可以保存多个 SSH 连接，查看网络、认证和主机身份状态，并在不同服务器之间快速切换。首次连接和主机指纹发生变化时，MineOps 会要求用户核对远程主机身份，避免静默连接到错误的设备。\n\n<img width=\"1192\" height=\"533\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3be2952c-845b-4ee2-a914-d3a28b6210cb\" />\n\n### 2. 通过向导创建或导入服务器\n\n创建服务器时，用户可以选择服务端类型、Minecraft 版本、Java、内存、远程目录和启动参数。MineOps 会在安装前检查远程环境，并根据游戏版本和服务端类型提示合适的 Java 版本。\n\n项目当前覆盖 Vanilla、Paper、Folia、Purpur、Spigot、Fabric、Quilt、Forge、NeoForge、Velocity、Waterfall 和 BungeeCord 等常见服务端。\n\n已有服务器也可以直接导入。导入过程会检查关键文件和版本线索，但不会主动改写原服务器目录。\n\n<img width=\"1192\" height=\"1041\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/59a816cf-5636-4081-b717-dae0dc230eff\" />\n\n<img width=\"1192\" height=\"1052\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9afae5d0-7318-48cb-a5e8-db7c85ec0d6a\" />\n\n### 3. 集成实时控制台与远程文件管理\n\n服务器详情页提供实时控制台，可以查看日志、发送游戏命令、搜索输出并在连接中断后重新连接。\n\n文件工作区支持浏览、编辑、上传、下载和安全解压远程文件。常用的 `server.properties` 既可以通过结构化表单修改，也可以直接编辑原文；保存时会尽量保留原有注释、顺序和未知配置项。\n\n<img width=\"1192\" height=\"670\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3f917c03-148c-45b9-ac77-55bc65389c28\" />\n\n<img width=\"1192\" height=\"733\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2219af7e-baf2-4bb6-afcd-1f58af27b592\" />\n\n<img width=\"1192\" height=\"816\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60698680-ce11-40e4-9216-581f4d446502\" />\n\n### 4. 查看运行状态与性能表现\n\nMineOps 可以展示远程主机和 Java 进程的 CPU、内存、磁盘与网络状态，无需用户长期维护额外的监控平台。\n\n对于安装了 Minecraft spark 的服务器，还可以进一步查看 TPS、MSPT、健康报告和 Profiler 结果，帮助服主排查卡顿、掉速和资源占用异常。\n\n<img width=\"1192\" height=\"828\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/826e87f4-380a-4283-8e40-79e7563b1f79\" />\n\n<img width=\"1192\" height=\"794\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/befa9a73-4179-49c1-b627-ca6c312d0c19\" />\n\n### 5. 跟踪长时间操作\n\n安装、下载、上传、启动、停止、重启和备份等操作会统一显示在操作中心中。用户可以查看当前阶段、进度、错误原因和重试信息，关闭操作窗口也不会直接取消后台任务。\n\n应用异常退出后，MineOps 会尝试恢复任务记录，并重新确认安装步骤和远程进程状态。\n\n\n### 6. 本地优先的数据与安全设计\n\nMineOps 将主要数据保存在用户自己的电脑中。项目提供数据库加密、系统安全存储、远程主机指纹校验、敏感日志过滤和备份完整性检查等保护。\n\nSSH 密码、私钥口令和代理凭据不会作为普通配置写入明文文件。项目仍建议使用专用 SSH 账号、限制远程权限，并在非生产环境中完成首次验证。\n\n## 项目适合哪些用户\n\nMineOps 主要面向以下人群：\n\n- 想自己开服，但不希望长期依赖命令行的玩家；\n- 需要同时管理多台 Minecraft 服务器的服主；\n- 经常修改配置、上传插件或模组的管理者；\n- 希望直观查看服务器状态与性能表现的用户；\n\n## 项目特色\n\n- **面向完整管理流程：** 不只是启动器，而是覆盖连接、安装、配置、文件、控制台、监控和备份等日常工作。\n- **兼顾新建与已有服务器：** 可以创建新服务端，也可以导入现有目录。\n- **本地优先：** 管理数据主要保存在用户自己的设备中。\n- **支持多种服务端生态：** 同时覆盖原版、插件端、模组端和代理端的常见选择。\n\n## 如何参与\n\n欢迎对 Minecraft 开服感兴趣的用户关注项目。现阶段尤其需要以下类型的反馈：\n\n- 不同 Linux 发行版和 SSH 环境的兼容性反馈；\n- 不同 Minecraft 版本与服务端类型的安装体验；\n- Windows、macOS、Linux 桌面端的界面和交互建议；\n- 文件管理、控制台和服务器配置流程中的易用性问题；\n- 监控指标、性能分析和故障恢复场景的实际需求；\n- 文档、界面文案和错误提示的改进建议。\n\n提交问题时，请提供 MineOps 版本、桌面操作系统、远程 Linux 发行版、Minecraft 服务端类型以及可重复的操作步骤。请勿公开上传 SSH 密码、私钥、Token、完整数据库或未经脱敏的日志。\n\n\n## 自荐摘要\n\nMineOps 关注的是一个真实但容易被忽略的问题：Minecraft 服务器可以通过教程搭建起来，但长期维护仍然需要服主在大量工具和命令之间切换。\n\n项目尝试用一个统一的桌面工作台连接远程主机，将服务器创建、文件编辑、控制台操作、状态监控、性能分析和任务恢复串联起来。它既希望降低新服主的入门成本，也希望帮助有经验的管理者减少重复操作，把更多时间留给玩法设计、内容建设和玩家社区。\n\n如果你也希望 Minecraft 服务器管理可以更直观、更安全、更容易恢复，欢迎关注 MineOps，并提出你的使用场景和改进建议。",
-    "created_at": "2026-07-19T08:36:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10789"
-  },
-  {
-    "id": 10788,
-    "title": "【工具自荐】医迹——个人及家庭成员的医学检查记录与用药管理工具",
-    "content": "阮老师好，自荐自己做的Android 原生应用-医迹，Jetpack Compose + Room 构建。\n\n下载地址：https://github.com/adra2n/product\n\n### 主要功能：\n医迹帮助你把分散在各处的就诊记录、检查报告、用药方案集中管理，并通过 AI 分析把非结构化的病历文本 / 照片转化为结构化数据，方便长期追踪与复诊参考。\n\n### 功能特性：\n- 家庭成员管理：维护成员档案（关系、性别、生日、血型、过敏史、慢性病、用药备注等），可设默认成员。\n- 病历记录：记录诊断、发病时间、就诊医院、用药项、剂量、频次与备注；支持从文本 / 图片经 AI 解析自动填充。\n- AI 分析：接入大模型（LLM）对病历文本或检查报告照片进行结构化分析（data/llm）。\n\n### 数据安全：\n- 应用锁：生物识别（指纹 / 人脸）+ 6 位 PIN 备用密码，支持自动锁定（立即 / 1 分钟 / 5 分钟）与阻止截屏录屏。\n- 数据备份与恢复：通过系统文件选择器（SAF，无需存储权限）导出 / 导入 JSON 备份。\n- AES-256-GCM 加密导出：备份可设密码加密（PBKDF2 派生密钥）。\n- GitHub Gist 同步：加密备份可同步到私有 Gist，并支持从 Gist 恢复。\n- 本地敏感数据（Token、加密密码、PIN 哈希）使用 EncryptedSharedPreferences 存储；allowBackup=false 防止 adb 备份提取。\n\n![](https://raw.githubusercontent.com/adra2n/product/refs/heads/master/MedTrace/screenshots/01_home.png)\n",
-    "created_at": "2026-07-19T01:41:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10788"
   }
 ]
