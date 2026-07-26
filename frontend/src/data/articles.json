@@ -1,5 +1,21 @@
 [
   {
+    "id": 10893,
+    "title": "【开源自荐】PhysiClaw: 可以直接物理操作 iPhone 的 AI 智能体",
+    "content": "项目地址：https://github.com/physiclaw/PhysiClaw\n\n官网：https://physiclaw.ai/\n\n演示视频（淘宝自主购物）：https://b23.tv/jnegfgC\n\n### 一句话介绍\n\n像人一样操作iPhone的开源 AI 智能体，用摄像头观察屏幕，机械臂操作手机，对操作系统零侵入。\n\n### 为什么做这个项目\n\n我们即将跨入个人助理时代，AI助理应该处理我们日常大部分事务，然而网购、外卖、挂号、叫车等这些服务都没有开放 API，Agent难以直接调用。ADB 软件模拟容易触发风控，豆包手机通过系统底层事件注入引发大规模抵制。PhysiClaw通过物理层托管手机，用摄像头观察屏幕、触控笔进行点击，纯物理操作，实现对系统零侵入，在手机看来与真人无异，从而绕开反自动化检测，相当于把手机屏幕本身当作 API。\n\n### 核心特点\n\n\n- 摄像头看屏幕，触控笔点屏幕，像人一样用iPhone\n- 手机不预装任何软件，不接 ADB，零侵入\n- 无需设置skill，可操作大部分常用app\n- 用微信直接和Agent聊天，交代任务\n- MIT 协议，硬件 CAD as code 和软件全部开源\n\n\n项目目前仍在积极开发，欢迎试用、反馈或参与贡献。",
+    "created_at": "2026-07-26T09:16:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10893"
+  },
+  {
+    "id": 10891,
+    "title": "【开源自荐】Illustrator：让普通代码 LLM 本地生成设计图片，无需生图模型",
+    "content": "## Illustrator\n\n- 项目地址：https://github.com/Visualizeit/illustrator\n- 中文介绍：https://mp.weixin.qq.com/s/Wi4zC5eW3RerVuToagChwQ\n- 开源协议：Apache License 2.0\n\n<p align=\"center\">\n  <a href=\"https://github.com/Visualizeit/illustrator\">\n    <img\n      src=\"https://github.com/user-attachments/assets/ed5e3031-5c18-4844-b712-861cd78c748a\"\n      alt=\"Illustrator 示例\"\n      width=\"860\"\n    />\n  </a>\n</p>\n\nIllustrator 是一个轻量、无需浏览器的 Agent Skill。它让具备代码执行能力的普通 LLM 根据自然语言描述、内容、代码和用户提供的图片，生成任务特定的渲染代码，并在本地输出经过设计的视觉作品，不需要调用生图模型。\n\n主要特点：\n\n- **无需生图模型**：普通代码型 LLM 可以通过生成本地渲染代码创建图片。\n- **轻量、无需浏览器**：不依赖 Chromium、Puppeteer 或浏览器运行时。\n- **用途广泛**：支持编辑插画、文章和社交媒体配图、照片编排、数据报告、信息图，以及代码窗口和 Diff 图片。\n- **风格不受预设限制**：可以参考内置示例，也可以完全定义自己的视觉方向。\n- **示例可以再次渲染**：内置示例保留渲染源码、素材和输出预览，方便检查、学习和修改。\n\n安装命令：\n\n```sh\nnpx skills add Visualizeit/illustrator --skill illustrator\n````\n\n需要 Node.js 20 或更高版本，以及兼容 Agent Skills 的代码 Agent。\n\n项目目前处于公开 Alpha 阶段，Skill 接口和运行时打包方式在 v1.0 前可能继续调整。\n",
+    "created_at": "2026-07-26T06:45:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10891"
+  },
+  {
     "id": 10888,
     "title": "自荐软件：whatbroke — 对比 AI Agent 两次运行的行为差异",
     "content": "你好，自荐一个开源命令行工具。\n\nwhatbroke 用来对比 AI Agent 在两次运行之间的行为变化。换了模型、改了提示词、升级了框架之后，Agent 的回复看起来往往还是正常的，但底层行为可能已经变了：某个工具调用悄悄消失、参数发生漂移、成本和延迟上涨。文本 diff 看不出这些——Agent 可以嘴上说\"订阅已取消\"，实际却没有调用 cancel_subscription。\n\n用法：把两次运行各记录成一份 JSONL trace（提供零改动的抓取代理、Node SDK、Python 记录器三种方式，也可以导入现有的 OpenTelemetry / Langfuse / LangSmith trace），然后 `whatbroke diff before.jsonl after.jsonl`，它会报告消失的工具调用、参数变化、调用顺序变化、成本和延迟回归。有破坏性变化时退出码为 1，可以直接放进 CI。\n\n- 仓库：https://github.com/arthi-arumugam-git/whatbroke\n- MIT 协议，输出确定性，完全离线，不需要账号和 API key\n- 安装：`npm install -g whatbroke-cli`；Python 记录器：`pip install whatbroke-recorder`\n- 附带简体中文 README\n\nREADME 里有一段真实录制的演示：换成小 3 倍的模型后，回复依然通顺，但取消订阅的工具调用悄悄消失了。\n\n谢谢！",
@@ -460,7 +476,9 @@
     "title": "【开源推荐】lazyrsync 基于TUI的终端文件传输工具，很实用",
     "content": "https://github.com/westpoint-io/lazyrsync\n![](https://github.com/westpoint-io/lazyrsync/raw/main/assets/demo.gif)",
     "created_at": "2026-07-22T11:57:13Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10830"
   },
   {
@@ -788,21 +806,5 @@
     "created_at": "2026-07-19T01:41:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10788"
-  },
-  {
-    "id": 10787,
-    "title": "【开源自荐】Linglens：每个字都认识、放一起却看不懂的术语，划词就地用你的语言解释（BYOK、开源）",
-    "content": "# Linglens\n\n读技术文档时，字都认识，但一个术语放在**这篇文档的语境**里到底指什么，经常懵——哪怕是母语内容也一样。比如 \"runner\"，在 GitHub Actions 的 README 里其实是\"执行 job 的那台机器\"——查词典只给通用释义，用全页翻译又只翻字面、还把代码块搞烂。\n\nLinglens 是一个开源（MIT）的 Chrome 扩展：在任意网页选中一个术语，点旁边冒出的小图标，它就**用你的语言、贴着当前页面的语境**解释这个词（中文 / 日本語 / English…）。它读页面 DOM，抽出\"标题 + 大纲 + 你选中所在的段落\"（排除代码块）做一份精简语境发给大模型——不是全页翻译，是\"解释这个词在这里的意思\"。\n\n🔗 **Chrome 应用店：** https://chromewebstore.google.com/detail/linglens/fcababcnfnoibpmfcbghdkogfofkmejo\n🔗 **代码仓库：** https://github.com/ZGhey/linglens\n\n## 主要功能\n\n- **BYOK，用你自己的 key**：OpenAI / Anthropic / Gemini / DeepSeek / 任意 OpenAI 兼容端点，也包括本地模型（数据不出机器）。key 存在本地，只在你触发的那次请求里发给你选的服务商——没有后端，不经过作者的服务器。\n- **点了图标才调用模型**：误划词零成本，不偷偷烧 token；每次解释还显示真实的 token 消耗。\n- **能追问**：同一个弹窗里接着问\"举个例子\"\"跟 X 有什么区别\"，是对话不是一次性查询。\n- **本地历史**：解释过的词本地可搜，回看不再重新调用模型。\n- **无账号、无遥测**：装上填个 key 就能用。\n\n## 技术\n\nManifest V3 + TypeScript，流式 SSE，弹窗用 Shadow DOM（页面 CSS 干扰不到）。约 100 个单测 + Playwright e2e，开源 MIT。\n",
-    "created_at": "2026-07-18T15:20:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10787"
-  },
-  {
-    "id": 10786,
-    "title": "【开源自荐】METRO TYPING：沿着真实地铁线路玩站名打字游戏",
-    "content": "想自荐一个我最近做的开源小游戏：**METRO TYPING**。\n\nMETRO TYPING 是一个沿着真实地铁线路练习站名输入的打字游戏。选择城市和线路后，按照真实站序输入英文或拼音站名；每打对一个字符，地图上的列车就会继续向下一站前进。\n\n玩起来有点像小时候《金山打字通》里的“警察抓小偷”。\n\n- 在线体验：https://metro-typing.fun/\n- GitHub：https://github.com/Evenss/metro-typing\n\n![METRO TYPING](https://raw.githubusercontent.com/Evenss/metro-typing/main/public/og.png)\n\n## 主要功能\n\n- 支持杭州、上海、北京、深圳和成都地铁\n- 可以从地图或线路列表中选择线路\n- 可以选择行驶区间和方向\n- 支持英文站名和拼音站名\n- 提供「30 秒」和「全线」两种游戏模式\n- 实时显示列车位置、打字速度、正确率和完成进度\n\n## 技术与开源\n\n项目使用 Next.js、React、TypeScript 和 Tailwind CSS 开发。\n\n源代码基于 MIT License 开源。地铁线路、站点及行政区边界等数据不在 MIT 授权范围内，仍遵循各自数据来源及权利方的使用条款。\n\n项目的创意、玩法和界面设计参考了 [TAIWAN METRO TYPING｜台灣站名打字練習](https://tw-metro-typing.yencheng.dev/)，并在此基础上增加了更多城市。\n\n欢迎体验和提出建议。",
-    "created_at": "2026-07-18T13:35:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10786"
   }
 ]
