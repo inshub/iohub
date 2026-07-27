@@ -1,5 +1,29 @@
 [
   {
+    "id": 10911,
+    "title": "【工具自荐】ARTEX — AI 自主渗透测试系统",
+    "content": "# ARTEX — AI 自主渗透测试系统\n\n> 项目地址：https://github.com/Autumn-27/ARTEX\n> 在线 Demo：https://artex-demo.vercel.app/\n\n<img width=\"2516\" height=\"1222\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4b3cda81-16b5-4da2-bc1d-3ac19840a740\" />\n\n**ARTEX** 是一个开源的 **AI 自主渗透测试系统**：给它一个目标和授权范围，它会像真实红队一样自己规划、派发子任务实际执行渗透、逐步逼近目标，全程可视化、可人工介入。\n\n它区别于“给渗透工具接个 LLM”的地方，在于下面几个设计：\n\n## 目标驱动的任务闭环\n\n任务从**「任务描述 + 目标」**开始：\n\n1. **Plan（规划者）** 根据任务描述和目标，生成探索**方案**（拆成一条条具体的探索意图）；\n2. **Work（执行者）** 领取意图、独立执行，把结果**写回图中**；\n3. Plan 再基于图里的新信息**重新规划**，一步步向目标收敛。\n\n规划 → 执行 → 回写 → 再规划，如此循环，直到目标达成。整个过程是**自我驱动**的，不需要人来一步步喂指令。\n\n## 任务与资产绑定 → 可量化的测试覆盖度\n\n任务和资产是**绑定**的，因此可以直接衡量一个任务对目标的**测试覆盖度**——哪些资产测了、测到什么程度、还有哪些没覆盖，一目了然。\n\n这解决了实战中的一个真痛点：**目标定义往往是模糊的**。很多时候你说不清“测到什么算完成”，于是可以**反过来把覆盖度本身设成测试目标**——比如“覆盖全部子域 / 全部开放端口 / 某类资产 100%”，让 AI 以达成覆盖度为收敛条件去自主推进。目标从“说不清”变成“可量化、可验收”。\n\n## 一切都在一张图里，而不是塞进上下文\n\n任务的**资产、流量、探索意图、事实、漏洞发现**统一组织成一张**探索图谱**，节点之间带父子/派生关系，资产与流量直接绑定到对应任务上下文。\n\n好处是**极大节省 LLM 上下文**：Plan 看到的是这张图的结构化摘要，而不是把海量原始执行日志堆进 prompt。当它确实需要某个子任务的执行细节时，再**通过工具按需拉取指定 work 的完整执行链路**（命令、输出、每一步工具调用都在）。该省时省，该细时细。\n\n## 流量录制：让 Agent 像人一样翻流量找问题\n\n内置**流量录制代理**，把测试过程中的 HTTP 流量完整捕获下来——既包括 agent 自己发出的**测试流量**，也包括**浏览器自动化操作**产生的流量，全部落库并绑定到对应任务。\n\n关键在于：这些流量不是只给人看的日志，而是**开放给 agent 的一等数据**。agent 可以像人工渗透时那样，**搜索、筛选、逐条查看所有历史流量**——翻参数、比对响应、串联跨请求的线索，从已有流量里**挖出更多潜在问题**（隐藏参数、越权、信息泄露、被忽略的接口……），而不是只盯着自己当前这一步。相当于给 AI 配了一个可随时检索的“全量流量记忆”。\n\n## 两层 Agent：规划与执行分离\n\n- **Plan** 负责读图、判断攻击面、保持多条路线并行、避免过早收敛，还能对关键漏洞派专门的**对抗式复现验证**；\n- **Work** 每个只领**一条意图**，聚焦执行真实工具（nmap/curl/ripgrep…），只把**增量事实**写回图谱，做完即停。\n\n多个 work 可并发，天然并行探索。\n\n## 自定义 Agent、自定义 LLM\n\n- **自定义 LLM**：支持 Anthropic / OpenAI 及兼容接口，provider、model、base_url、代理均可在 UI 配置，私有模型或中转皆可；\n- **自定义 Agent**：可在界面里自定义 agent 的能力与工具集，按需裁剪或扩展。\n\n## 拦截审批：给自主 Agent 装一道人工闸门\n\nARTEX 内置一套**基于规则的工具调用拦截层**：可按工具名、命令内容等自定义匹配规则，按优先级命中后执行三种动作之一——\n\n- **allow**：放行；\n- **deny**：直接拦下并把原因反馈给模型，让它换条路；\n- **ask**：**暂停执行、推送给你人工审批**，你批准才继续，可设超时与超时默认动作。\n\n「AI 全自动跑」和「关键动作人工确认」不再二选一：日常探索让它自己飞，危险或不可逆的操作(如对生产目标的写操作)自动卡住等你放行，安全与效率兼得。\n\n## 全程可视 + 人在环路\n\nToken 消耗与活动流、任务执行过程与探索链路、漏洞与资产归档、**流量录制**、**拦截审批**（关键操作前人工放行）、随时**对话介入**纠偏。\n",
+    "created_at": "2026-07-27T16:36:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10911"
+  },
+  {
+    "id": 10910,
+    "title": "【开源自荐】HimitsuShell: Shell 脚本保护工具 (混淆, 内置解释器, DRM) - linux, IoT",
+    "content": "### 项目地址\nhttps://github.com/HimitsuShell/HimitsuShell\n\n### 项目标题\n将 Shell 脚本转换为内置解释器的二进制文件, 具备混淆和反调试保护功能 (shc 的替代方案).\n\n### 项目描述\n保护 Shell 脚本免受泄露, 篡改和未经授权的使用。\n\n- **操作系统级日志记录与 Hook 防护**\n内置自己的 Shell 解释器，无需依赖系统 Shell，从而降低暴露于操作系统级日志记录和 Hook 的风险 (例如: auditd, bpftrace).\n\n- **字符串与常量加密**\n二进制文件中的所有字符串和常量都会被加密，使静态分析更加困难 (例如: IDA, Ghidra).\n\n- **调试器检测**\n在运行过程中持续检测调试器，使动态分析更加困难 (例如: gdb, ptrace, strace).\n\n- **高级混淆技术**\n包含指令替换, 间接调用, 间接跳转, 基本块拆分以及伪控制流等混淆技术.\n\n- **许可证验证 (计划中)**\n仅允许持有有效许可证密钥的用户执行 Shell 脚本.\n\n### 亮点\n#### 与 shc (shell 脚本编译器) 的对比\n| | HimitsuShell | shc |\n|-|-|-|\n| 操作系统级日志记录与 Hook 防护 | ✓ | |\n| 动态库 Hook 防护 | ✓ | |\n| 字符串与常量加密 | ✓ | |\n| 调试器检测 | ✓ | ✓ |\n| 高级混淆技术 | ✓ | |\n\n### 示例代码\n```\n# 1. 下载 Docker 镜像\ncurl -LO https://github.com/HimitsuShell/Himitsu/releases/download/v1.2.0/himitsu_core_v1.2.0.tar.gz\n\n# 2. 加载 Docker 镜像\ndocker load -i himitsu_core_v1.2.0.tar.gz\n\n# 3. 启动容器\ndocker run --name himitsu_core -d -it himitsu_core:v1.2.0\n\n# 4. 上传你的 Shell 脚本(文件名必须为 launcher.sh)\ndocker cp launcher.sh himitsu_core:/var/work/\n\n# 5. 编译生成二进制文件(大约需要 10–20 秒)\ndocker exec himitsu_core /var/work/compile.sh\n\n# 6. 下载生成的二进制文件\ndocker cp himitsu_core:/var/work/safeLauncher .\n```\n\n### 截图或演示视频\n<img width=\"789\" height=\"852\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/34d48716-36b3-4196-a437-b3505914dbe0\" />",
+    "created_at": "2026-07-27T15:43:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10910"
+  },
+  {
+    "id": 10909,
+    "title": "【工具自荐】跑在浏览器里的游戏音频转换管线：vgmstream → DSPTool → Nintendo BRSTM 编码",
+    "content": "工具名称：BGM Box\n\n工具地址：https://bgmbox.com/\n\n一句话简介：在浏览器里把任意音频转成 Nintendo 游戏机（Wii / 3DS / Wii U）能直接用的 BRSTM 格式，支持循环点编辑。\n\n特点：\n\n输入 100+ 格式、输出 Nintendo 原生容器。ADX、HCA、FSB、WEM、XMA 等游戏提取出来的音频格式都能吃，你不需要先用别的工具解码再用 BrawlBox 编码——一个页面走完全流程。\n循环点编辑器。BRSTM / BCSTM / BFSTM 不只是音频，还内嵌了循环起点/终点的 metadata。游戏里的背景音乐能无缝循环靠的就是这个。通用转换器不认识这些 metadata，转出来的文件播一遍就静音。BGM Box 会在编码时正确写入循环点信息。\n纯浏览器本地处理。文件不离开你的电脑，不上传服务器，处理速度取决于本机 CPU。\n内置播放器。转之前可以先试听、调整循环点位置，确认无误再下载。\n适合谁用：Mario Kart Wii 自定义赛道制作者、Super Smash Bros Brawl 音乐 Modder、3DS 主题制作者、模拟器玩家。\n\n技术栈：Astro + vgmstream WASM（解码） + DSPTool（循环点处理） + sound.wasm（Nintendo 编码），播放器用 SharedArrayBuffer + AudioWorklet 做流式解码。\n\n技术细节：[How I Built a BRSTM Converter with WebAssembly](https://dev.to/junyiz/how-i-built-a-brstm-converter-with-webassembly-technical-deep-dive-17jf)",
+    "created_at": "2026-07-27T14:46:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10909"
+  },
+  {
     "id": 10908,
     "title": "【开源自荐】: hushsnap--静默截图与本地ocr",
     "content": "# HushSnap\n\n无需联网的截图 OCR 工具，轻量、本地、不传数据。快捷键（默认 `Alt+Q`）→ 框选 → 完成。\n\n截图后不会立刻弹出一堆标注工具，而是先在角落滑出一张缩略图：**单击 OCR 识别，拖拽存图，一步钉图**，需要标注时再打开内置编辑器。OCR 尽量保留原文排版（换行、段落、缩进、间距），支持中/日文竖排自动识别。\n\n无主窗口常驻任务栏、支持多屏混合分辨率、免登录免联网，一切在本地完成。\n\n## 效果展示\n\n<table>\n<tr>\n<td><img width=\"400\" alt=\"横排中文 OCR\" src=\"https://github.com/user-attachments/assets/770dbfc5-1aed-4fc4-bce1-b87a52031a2d\" /><br><sub>横排中文 OCR</sub></td>\n<td><img width=\"400\" alt=\"竖排日文 OCR\" src=\"https://github.com/user-attachments/assets/8c8fbe2d-099b-42d7-ac9c-69a7e702cd1b\" /><br><sub>竖排日文 OCR</sub></td>\n</tr>\n<tr>\n<td><img width=\"400\" alt=\"拖拽缩略图进文件夹保存\" src=\"https://github.com/user-attachments/assets/e7c33723-be41-4633-b481-2490cc0c20a9\" /><br><sub>拖拽缩略图进文件夹保存</sub></td>\n<td><img width=\"400\" alt=\"内置编辑器快速编辑\" src=\"https://github.com/user-attachments/assets/4ae0bdea-6eca-4417-9071-b91ecae80d21\" /><br><sub>内置编辑器快速编辑</sub></td>\n</tr>\n</table>\n\n## 语言支持\n\n简体中文 / 繁体中文 / 英文 / 日文（中日支持竖排识别）。其他语言效果不作保证。\n\n常驻系统托盘，快捷键与超时时长均可自定义。\n\n## 开源协议\n\nGPL-3.0，源码见 [[github.com/tcita/HushSnap](https://github.com/tcita/HushSnap)](https://github.com/tcita/HushSnap)。",
@@ -794,29 +818,5 @@
     "created_at": "2026-07-21T02:19:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10805"
-  },
-  {
-    "id": 10804,
-    "title": "【工具自荐】AI Router：面向开发者和 Coding Agent 的 OpenAI 兼容 API 中继",
-    "content": "官网：[AI Router（OpenAI 兼容 API 中继）](https://ai-router.dev/cn)\n\nAI Router 是独立运营的 OpenAI 兼容 API 中继，面向开发者、Coding Agent 和自动化工作流。对于支持自定义 Base URL 的客户端，可将接口地址配置为：\n\n`https://api.ai-router.dev/v1`\n\n实际使用中，用户可以：\n\n- 使用个人 API Key，并按 Key 查看使用情况，便于测试、分环境和排查；\n- 在完成鉴权后通过 `/v1/models` 发现当前可用模型；\n- 让已有 OpenAI SDK 或兼容客户端通过统一接口进行配置与联调。\n\n项目方身份说明：我是 AI Router 团队成员。欢迎开发者按自己的工具链实测，并反馈兼容性体验。",
-    "created_at": "2026-07-20T21:54:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10804"
-  },
-  {
-    "id": 10803,
-    "title": "【工具自荐】在线 AI 音乐生成器",
-    "content": "最近做了一个面向巴西市场的 AI 音乐生成网站，叫 **Criar Música IA**。产品已经可以正常使用，想在 V2EX 分享一下，也希望听听大家对产品定位、用户体验和商业化方向的建议。\n\n<img width=\"2782\" height=\"1548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d4445d07-1006-469e-b8dc-e1a337f52218\" />\n\n做这个网站的原因，是我发现现在虽然有不少 AI 音乐工具，但大多数产品主要面向英语用户，在语言习惯、音乐分类和使用场景上，对巴西用户并不算特别友好。巴西本身有非常丰富的本土音乐文化，除了大家熟悉的桑巴，还有 Sertanejo、巴西放克、Pagode、Forró、Piseiro、MPB 和福音音乐等风格。因此，我尝试做一个葡萄牙语优先、更加贴近巴西用户的音乐生成产品。\n\n使用方式比较简单：用户可以用葡萄牙语描述想要的歌曲，比如主题、情绪、人声、节奏和乐器，系统会根据这些信息生成一首包含旋律、编曲、伴奏和人声的完整音乐。如果已经写好了歌词，也可以直接输入歌词，再指定标题和音乐风格；如果只需要视频背景音乐、播客片头或者游戏配乐，也可以开启纯音乐模式，不生成人声。\n\n目前比较适合的使用场景包括：给 YouTube、TikTok 或短视频制作背景音乐，为播客生成片头和过渡音乐，给小商家制作简单的广告歌或品牌 Jingle，以及生成生日、婚礼、纪念日和朋友聚会等场景的个性化歌曲。对于不会作曲、不会演奏乐器，也没有专业录音设备的人来说，只要能把想法描述清楚，就可以快速得到一个可以试听和继续调整的音乐版本。\n\n网站目前已经支持多种巴西常见音乐风格，也提供不同的 AI 音乐模型。用户可以先免费体验，不需要绑定信用卡。生成完成后可以在线试听和下载 MP3，音乐默认保持私密，不会直接公开到其他用户可见的作品广场。\n\n项目地址：\n\n[https://criarmusicaia.com/](https://criarmusicaia.com/)\n\n现在这个项目还处在持续打磨阶段，接下来会重点优化葡萄牙语提示词的理解、歌曲生成质量、移动端体验、生成等待过程，以及更多巴西细分音乐风格。我也在思考，产品应该更偏向普通用户的娱乐和礼物场景，还是重点服务短视频创作者、播客和小商家。\n\n如果大家愿意体验一下，非常欢迎告诉我：第一次进入网站时是否能快速理解产品用途，生成流程有没有不顺畅的地方，生成结果是否符合描述，以及免费额度和付费方案是否容易理解。技术实现、SEO、本地化和巴西市场推广方面的建议也都欢迎交流。",
-    "created_at": "2026-07-20T16:02:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10803"
-  },
-  {
-    "id": 10802,
-    "title": "【工具自荐】text2mermaid：用自然语言生成 Mermaid 图",
-    "content": "### 简介\n\n[[text2mermaid](https://text2everything.vip/)](https://text2everything.vip/) 是一个用自然语言生成 Mermaid 图的工具。用中文或英文描述一个流程、一段接口时序、一组表关系，AI 生成对应的 Mermaid 代码，实时预览，可直接编辑代码，一键复制或导出为 SVG / PNG。免注册,免费用。\n\n做这个的动机：我写技术文档默认走 Mermaid（代码即图、可 diff、进 git、GitHub / Notion / Obsidian 原生渲染）。但 flowchart、sequence、ERD、状态图、类图……七种图七套语法，每次动笔都要停下来查文档，五分钟没了，节奏也断了。于是做了一个专门解决这一件事的入口——打开就用，光标已经在输入框里，`⌘/Ctrl + Enter` 出预览，改代码实时刷新。\n\n![截图](https://xilidou.com/images/text2mermaid-hero.png)\n\n### 功能\n\n- **支持 7 种 Mermaid 图类型**：flowchart、sequence diagram、ERD、state diagram、class diagram、mindmap、gantt。每种都有独立 landing 页（如 `/erd-from-text`），能规避 AI 猜错图类型\n- **实时预览 + 可编辑代码**：左侧代码 / 右侧渲染，可切换 Text / Preview / Split 三种视图。AI 生成的代码不满意时，直接改左边即可\n- **免注册、无付费墙**：不需要账号，直接用\n- **代码在你手上**：生成结果是纯 Mermaid 文本 / 纯 SVG，可以直接 Copy / Export 到你的 markdown 或 git 仓库，不锁定\n- **对国内友好**：域名可直连，不需要梯子\n- **四个内置示例**：Login flow with 2FA / OAuth sequence / Blog schema ERD / CI/CD pipeline，一键从示例开始改\n\n### 地址\n\n- 主页：https://text2everything.vip/\n- 各图类型直达页：`/flowchart-from-text`、`/sequence-diagram-from-text`、`/erd-from-text`、`/state-diagram-from-text`、`/class-diagram-from-text`、`/mindmap-from-text`、`/gantt-from-text`\n\n### 使用方式\n\n1. 打开 https://text2everything.vip/ ，光标已定位在输入框\n2. 输入描述，例如「用户下单接口时序：Client 请求 API Gateway，Gateway 校验鉴权后调 Order Service，Order Service 扣库存并写 DB，异步发 Kafka 通知履约」\n3. `⌘/Ctrl + Enter` 生成 Mermaid 代码 + 预览图\n4. 不满意直接改左侧代码，右侧预览实时刷新\n5. Copy code 贴回 markdown，或 Export SVG / PNG\n",
-    "created_at": "2026-07-20T14:05:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10802"
   }
 ]
