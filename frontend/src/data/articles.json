@@ -1,5 +1,21 @@
 [
   {
+    "id": 10901,
+    "title": "【开源自荐】FluxDown：Rust 引擎的多协议下载器，IDM 式动态分段 + 兼容 aria2 RPC",
+    "content": "仓库：https://github.com/zerx-lab/FluxDown\n官网：https://fluxdown.zerx.dev\n协议：AGPL-3.0\n\nFluxDown 是一个多协议下载管理器，Rust + Tokio 写引擎、Flutter 做界面，目标是做 IDM 的开源替代。\n\n**和常见下载器不一样的地方：**\n\n- **分段是运行时切的**。不是启动时按 `-x 16` 开固定连接，而是在下载过程中把剩余区间继续切开丢给空闲连接——这是 IDM 的做法，效果是单个慢节点不会拖住整条任务的收尾。\n- **协议摊得比较开**：HTTP/HTTPS、FTP、BitTorrent（DHT/磁力）、eD2K/Kad、HLS（含 AES 解密）、DASH，都在同一个任务队列里，不用换软件。\n- **兼容 aria2 JSON-RPC，可直连 AriaNg**。覆盖 aria2 官方 36 个方法全集，其中 27 个是真实映射到引擎的实现（另有 4 个降级返回、5 个明确拒绝，比如 changePosition 和 shutdown，这两个引擎侧确实没有对应能力）。所以 AriaNg 和各种「发送到 aria2」的油猴脚本可以直接把 FluxDown 当后端用。\n- **内置 MCP server**（Streamable HTTP，`POST /mcp`，12 个工具），Claude Desktop / Cursor 这类 AI 客户端可以直接管理下载任务。默认只监听 127.0.0.1 并要求管理 token。\n- **断点续传落在 SQLite WAL 上**，进程被杀也不丢进度。\n- 浏览器扩展（Chrome / Edge / Firefox）接管网页下载。\n\n**平台**：Windows (x64/ARM64)、macOS (Intel/Apple Silicon)、Linux (AppImage/deb/Arch/tar.gz)、Android（按 ABI 分包）。\n\n另有 headless 服务端 `fluxdown_server`（自带 Web UI，端口 17800，镜像 `ghcr.io/zerx-lab/fluxdown-server`，amd64 + arm64 多架构），支持群晖 spk / QNAP qpkg / OpenWrt ipk / Unraid / CasaOS。\n",
+    "created_at": "2026-07-27T02:32:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10901"
+  },
+  {
+    "id": 10900,
+    "title": "【开源自荐】ai-disk-cleaner: C 盘又爆红了？试试这款 AI 磁盘清理助手",
+    "content": "[项目链接](https://github.com/vudsen/ai-disk-cleaner)\n\n相信大家都碰到过 C 盘爆红的情况吧，明明啥都没干，C 盘自己却偷偷爆红。\n\n而在之前我们清理 C 盘主要有这么几个方法：\n\n- 新手：直接电脑管家、360管家啥的一通扫。确实有效，但不多。因为这些软件几乎都是偏保守型的，它不会给出激进的清理方案，而我们的垃圾非常大一部分都是应用的缓存，这些是基本覆盖不到的。\n- 高手：安装 TreeSize 等磁盘扫描工具，凭借自己的经验删除不需要的文件\n\n但对 TreeSize 这些工具来说，**最大的问题就是信息过于密集，通过人来搜查垃圾，效率非常低效**。\n\n---\n\n但在 AI 时代，我们可以直接将这些脏活累活全部丢给 AI 来做：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3d8d8b23-a9c5-42a0-bea3-9aa70b22d9c9\" />\n\n看文字还是太麻烦了，AI 会直接输出一个垃圾统计表格，可以直接在表格上操作来删除垃圾：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d21d9e1c-9259-4750-9ca5-eeaf4991f045\" />\n\n在 AI 分析完后，还会给出完整的占用统计：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/80e90e4c-573e-4ea3-b9c0-26d926678608\" />\n\n**大文件删不了？没事，还有一键迁移**：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8d2f5a5b-442a-4d26-961a-f6e59f7c8051\" />\n\n例如这里直接将微信聊天文件迁移到 D 盘，并且不会影响正常使用！\n\n迁移的文件也有统一的管理，可以随时复原：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed2cd083-f6c7-4b26-af86-c07f96de37d7\" />",
+    "created_at": "2026-07-27T02:19:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10900"
+  },
+  {
     "id": 10899,
     "title": "【工具自荐】Vibe Roaster：分析本地 AI 编程记录，生成编程人格",
     "content": "Vibe Roaster 是一个本地运行的 AI 编程记录分析工具。\n\n![Vibe Roaster 运行结果](https://raw.githubusercontent.com/PinkR1ver/vibe-roast/main/assests/screenshots/roast-result-hero.jpg)\n\n它会读取 Codex、Claude Code、Cursor 等工具留在电脑上的会话记录，分析平时写代码、调试、测试和规划的习惯，然后生成一个四字母类型、对应角色和一段吐槽。\n\n原始提示词留在本机。不注册账号、不提供 API Key 也可以使用。\n\n运行方式：\n\n```bash\nnpx vibe-roast\n```\n\n[![15 秒动态演示](https://raw.githubusercontent.com/PinkR1ver/vibe-roast/main/assests/readme/vibe-roast-promo-landscape.gif)](https://github.com/PinkR1ver/vibe-roast/blob/main/media/promo/masters/landscape.mp4)\n\n[观看 15 秒 MP4 视频](https://github.com/PinkR1ver/vibe-roast/blob/main/media/promo/masters/landscape.mp4)\n\n项目地址：https://github.com/PinkR1ver/vibe-roast",
@@ -798,21 +814,5 @@
     "created_at": "2026-07-20T06:20:42Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10796"
-  },
-  {
-    "id": 10795,
-    "title": "【项目自荐】一款抗阻运动小程序",
-    "content": "## 一句话介绍\n这不是一款通用的健身或者运动APP，而是专门针对上班族开发的一款随时随地记录抗阻运动的小程序。\n\n## 为什么会有这个项目\n能规律去健身房锻炼的人毕竟是极少数，但是上班族仍然需要运动来**减脂**和**保存肌肉**，那么随时随地（居家、办公室、公交车上）能进行的**碎片化**运动就变得很有价值了，于是就有了这一款名为【轻阻】的微信小程序，为自己开发，也为程序员和非程序员开发，毕竟，不管任何时候，运动的终极目的都是为了健康，为了高质量的生存。\n\n## 入口\n一进来就可以直接开练，如果你不想定计划，就切到**自由**模式，根据自己的状态和喜好，想做什么动作就做什么动作\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c6941a53-cabf-44e8-a8d6-de1acfddb2b3\" />\n\n\n## 计划\n如果你想制定计划，可以随意定制周一到周日每天的动作和运动量\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b72bdd4b-e9f6-4d8a-a813-c8c9426dcb77\" />\n\n\n## 数据\n当然，还可以随时查看自己的运动数据和最近的运动状态\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/85524746-0484-4f11-8ee0-a0d656e8dad8\" />\n",
-    "created_at": "2026-07-20T03:11:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10795"
-  },
-  {
-    "id": 10794,
-    "title": "Subnautica 2 Wiki：交互地图与低剧透玩家查询工具",
-    "content": "## Subnautica 2 Wiki\n\n网址：https://subnautica2wiki.net/\n\n这是一个非官方的 Subnautica 2 Early Access 玩家资源站，把交互地图、低剧透攻略、FAQ、补丁更新说明，以及物品、蓝图和生物查询放在一起。首页可以搜索资源、生物、蓝图、地点和补丁信息；地图页支持按分类与坐标查找当前标记。\n\n适合遇到资源位置、制作关系、载具路线或版本变化问题的玩家。站点明确区分查表信息、路线建议和 Early Access 更新边界。\n\n限制：它不是官方 Wiki，Early Access 补丁可能改变地点、配方或行为，具体结论仍需结合页面日期与官方更新复查。",
-    "created_at": "2026-07-19T18:27:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10794"
   }
 ]
