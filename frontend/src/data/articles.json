@@ -32,14 +32,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/10905"
   },
   {
-    "id": 10904,
-    "title": "UPSSSC Photo Resizer – 免费在线工具，一键调整印度政府考试报名照",
-    "content": "一个完全在浏览器端运行的免费工具，专为 UPSSSC 考试报名设计。\n\n✅ 浏览器本地处理，不上传服务器\n✅ 裁剪 + 旋转 + 微调\n✅ 输出 4.5×3.5cm、20-50KB\n\n地址：https://pixbox.work/\n\n希望能收录到本周刊，帮助更多考生。谢谢！",
-    "created_at": "2026-07-27T06:37:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10904"
-  },
-  {
     "id": 10903,
     "title": "【开源自荐】RustFS：世界上增长最快的分布式对象存储，MinIO 的开源替代",
     "content": "开源项目 RustFS——一个用 Rust 编写的高性能、分布式、S3 兼容对象存储系统，可作为 MinIO 的平替；同时原生支持 S3 Tables / Iceberg，在 AI 训练与数据湖场景表现突出。\n\n仓库：https://github.com/rustfs/rustfs\n官网：https://rustfs.com/\n协议：Apache 2.0\n\n**为什么值得关注：**\n\n**完全 S3 兼容，迁移无感：**\n可从 MinIO、Ceph 等 S3 兼容平台平滑迁移，现有 S3 工具链（SDK、客户端、网关）无需改动即可接入。\n**Apache 2.0，无商业锁定：**\n相比 MinIO 转向更严格的 AGPL 协议，RustFS 采用对商业更友好的 Apache 2.0，可自由嵌入产品与服务。\n**Rust 编写，性能更优：**\n用 Rust 实现，享受内存安全与单二进制部署；称4KB 小对象吞吐约为 MinIO 的 2.3 倍，单二进制小于 100MB，可从边缘设备一路跑到公有云。\n**面向 AI 与数据湖：**\n已原生支持 S3 Tables（基于 Apache Iceberg 的表格式存储，ICE 架构、存算分离）；并推进 DPU（NVIDIA BlueField / AMD Pensando / Intel IPU）与 RDMA 的 CPU 旁路低延迟数据路径，项目已于 2026 年 4 月加入 NVIDIA Inception 加速器。\n**部署形态丰富：**\n支持二进制、Docker、Helm Chart、Kubernetes Operator，覆盖 Linux / macOS / Windows。\n\n现状： 开源约一年，全球部署实例约 150 万，GitHub 30K+ stars，累计 Docker 拉取超 500 万。\n\n\n<img width=\"2088\" height=\"1320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b2ab5be8-18e8-456f-a7d4-cacb0a2591c8\" />\n\n<img width=\"2559\" height=\"1361\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/47d7a688-034a-4d99-b837-205bbea924bb\" />\n\n<img width=\"2559\" height=\"1361\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b16562ec-c920-4c0d-95bf-e29268776e1d\" />\n\n<img width=\"2559\" height=\"1361\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/993b2128-0ea4-4afe-9a77-9e7d0551fa02\" />",
@@ -60,7 +52,9 @@
     "title": "【开源自荐】FluxDown：Rust 引擎的多协议下载器，IDM 式动态分段 + 兼容 aria2 RPC",
     "content": "仓库：https://github.com/zerx-lab/FluxDown\n官网：https://fluxdown.zerx.dev\n协议：AGPL-3.0\n\nFluxDown 是一个多协议下载管理器，Rust + Tokio 写引擎、Flutter 做界面，目标是做 IDM 的开源替代。\n\n**和常见下载器不一样的地方：**\n\n- **分段是运行时切的**。不是启动时按 `-x 16` 开固定连接，而是在下载过程中把剩余区间继续切开丢给空闲连接——这是 IDM 的做法，效果是单个慢节点不会拖住整条任务的收尾。\n- **协议摊得比较开**：HTTP/HTTPS、FTP、BitTorrent（DHT/磁力）、eD2K/Kad、HLS（含 AES 解密）、DASH，都在同一个任务队列里，不用换软件。\n- **兼容 aria2 JSON-RPC，可直连 AriaNg**。覆盖 aria2 官方 36 个方法全集，其中 27 个是真实映射到引擎的实现（另有 4 个降级返回、5 个明确拒绝，比如 changePosition 和 shutdown，这两个引擎侧确实没有对应能力）。所以 AriaNg 和各种「发送到 aria2」的油猴脚本可以直接把 FluxDown 当后端用。\n- **内置 MCP server**（Streamable HTTP，`POST /mcp`，12 个工具），Claude Desktop / Cursor 这类 AI 客户端可以直接管理下载任务。默认只监听 127.0.0.1 并要求管理 token。\n- **断点续传落在 SQLite WAL 上**，进程被杀也不丢进度。\n- 浏览器扩展（Chrome / Edge / Firefox）接管网页下载。\n\n**平台**：Windows (x64/ARM64)、macOS (Intel/Apple Silicon)、Linux (AppImage/deb/Arch/tar.gz)、Android（按 ABI 分包）。\n\n另有 headless 服务端 `fluxdown_server`（自带 Web UI，端口 17800，镜像 `ghcr.io/zerx-lab/fluxdown-server`，amd64 + arm64 多架构），支持群晖 spk / QNAP qpkg / OpenWrt ipk / Unraid / CasaOS。\n",
     "created_at": "2026-07-27T02:32:17Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10901"
   },
   {
@@ -68,7 +62,9 @@
     "title": "【开源自荐】ai-disk-cleaner: C 盘又爆红了？试试这款 AI 磁盘清理助手",
     "content": "[项目链接](https://github.com/vudsen/ai-disk-cleaner)\n\n相信大家都碰到过 C 盘爆红的情况吧，明明啥都没干，C 盘自己却偷偷爆红。\n\n而在之前我们清理 C 盘主要有这么几个方法：\n\n- 新手：直接电脑管家、360管家啥的一通扫。确实有效，但不多。因为这些软件几乎都是偏保守型的，它不会给出激进的清理方案，而我们的垃圾非常大一部分都是应用的缓存，这些是基本覆盖不到的。\n- 高手：安装 TreeSize 等磁盘扫描工具，凭借自己的经验删除不需要的文件\n\n但对 TreeSize 这些工具来说，**最大的问题就是信息过于密集，通过人来搜查垃圾，效率非常低效**。\n\n---\n\n但在 AI 时代，我们可以直接将这些脏活累活全部丢给 AI 来做：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3d8d8b23-a9c5-42a0-bea3-9aa70b22d9c9\" />\n\n看文字还是太麻烦了，AI 会直接输出一个垃圾统计表格，可以直接在表格上操作来删除垃圾：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d21d9e1c-9259-4750-9ca5-eeaf4991f045\" />\n\n在 AI 分析完后，还会给出完整的占用统计：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/80e90e4c-573e-4ea3-b9c0-26d926678608\" />\n\n**大文件删不了？没事，还有一键迁移**：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8d2f5a5b-442a-4d26-961a-f6e59f7c8051\" />\n\n例如这里直接将微信聊天文件迁移到 D 盘，并且不会影响正常使用！\n\n迁移的文件也有统一的管理，可以随时复原：\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed2cd083-f6c7-4b26-af86-c07f96de37d7\" />",
     "created_at": "2026-07-27T02:19:30Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10900"
   },
   {
@@ -814,5 +810,13 @@
     "created_at": "2026-07-20T16:02:53Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10803"
+  },
+  {
+    "id": 10802,
+    "title": "【工具自荐】text2mermaid：用自然语言生成 Mermaid 图",
+    "content": "### 简介\n\n[[text2mermaid](https://text2everything.vip/)](https://text2everything.vip/) 是一个用自然语言生成 Mermaid 图的工具。用中文或英文描述一个流程、一段接口时序、一组表关系，AI 生成对应的 Mermaid 代码，实时预览，可直接编辑代码，一键复制或导出为 SVG / PNG。免注册,免费用。\n\n做这个的动机：我写技术文档默认走 Mermaid（代码即图、可 diff、进 git、GitHub / Notion / Obsidian 原生渲染）。但 flowchart、sequence、ERD、状态图、类图……七种图七套语法，每次动笔都要停下来查文档，五分钟没了，节奏也断了。于是做了一个专门解决这一件事的入口——打开就用，光标已经在输入框里，`⌘/Ctrl + Enter` 出预览，改代码实时刷新。\n\n![截图](https://xilidou.com/images/text2mermaid-hero.png)\n\n### 功能\n\n- **支持 7 种 Mermaid 图类型**：flowchart、sequence diagram、ERD、state diagram、class diagram、mindmap、gantt。每种都有独立 landing 页（如 `/erd-from-text`），能规避 AI 猜错图类型\n- **实时预览 + 可编辑代码**：左侧代码 / 右侧渲染，可切换 Text / Preview / Split 三种视图。AI 生成的代码不满意时，直接改左边即可\n- **免注册、无付费墙**：不需要账号，直接用\n- **代码在你手上**：生成结果是纯 Mermaid 文本 / 纯 SVG，可以直接 Copy / Export 到你的 markdown 或 git 仓库，不锁定\n- **对国内友好**：域名可直连，不需要梯子\n- **四个内置示例**：Login flow with 2FA / OAuth sequence / Blog schema ERD / CI/CD pipeline，一键从示例开始改\n\n### 地址\n\n- 主页：https://text2everything.vip/\n- 各图类型直达页：`/flowchart-from-text`、`/sequence-diagram-from-text`、`/erd-from-text`、`/state-diagram-from-text`、`/class-diagram-from-text`、`/mindmap-from-text`、`/gantt-from-text`\n\n### 使用方式\n\n1. 打开 https://text2everything.vip/ ，光标已定位在输入框\n2. 输入描述，例如「用户下单接口时序：Client 请求 API Gateway，Gateway 校验鉴权后调 Order Service，Order Service 扣库存并写 DB，异步发 Kafka 通知履约」\n3. `⌘/Ctrl + Enter` 生成 Mermaid 代码 + 预览图\n4. 不满意直接改左侧代码，右侧预览实时刷新\n5. Copy code 贴回 markdown，或 Export SVG / PNG\n",
+    "created_at": "2026-07-20T14:05:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10802"
   }
 ]
