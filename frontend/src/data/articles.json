@@ -1,5 +1,21 @@
 [
   {
+    "id": 10913,
+    "title": "【工具自荐】为爱发电，免费的AI桌面端产品，AI+本地知识库+自研办公工具设计（编写docx,ppt等）",
+    "content": "github地址:https://github.com/Yoan98/Ncurator\n介绍网址:https://www.ncurator.com\n\n工具介绍：\n与codex一样的用法，内置了本地知识库，让AI可以自行查询知识库的内容，然后编写办公三件套，docx,ppt,excel（开发中，快上线了）\n\n\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e469abc8-c7d2-4ee5-876b-d4b4dc722146\" />",
+    "created_at": "2026-07-28T02:29:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10913"
+  },
+  {
+    "id": 10912,
+    "title": "【文章推荐】从 Prompt 到 Loop Engineering：一个例子看懂 AI 工程的四次升级",
+    "content": "为什么只写一条不超过 100 字的活动文案，也要从 Prompt 一路升级到 Loop？\n这篇文章用“夏日读书会”文案，把 Prompt Engineering、Context Engineering、Harness Engineering 和 Loop Engineering 放进同一条执行链：先说清要求，再补齐资料，接上工具与权限，最后让系统负责验收、反馈、重试和停止。\n看完你会明白：Prompt 只解决“这次怎么说”。Agent 能不能把任务真正做完，还取决于模型看见什么、允许做什么，以及做完后由谁判断它真的完成了。\n下次 Agent 出问题时，你会知道该改 Prompt、Context、Harness，还是外层 Loop，而不是继续往提示词里加规则。\n \n- https://mp.weixin.qq.com/s/r_lEHm98NXyZO7-CC6_yEA",
+    "created_at": "2026-07-28T01:59:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10912"
+  },
+  {
     "id": 10911,
     "title": "【工具自荐】ARTEX — AI 自主渗透测试系统",
     "content": "# ARTEX — AI 自主渗透测试系统\n\n> 项目地址：https://github.com/Autumn-27/ARTEX\n> 在线 Demo：https://artex-demo.vercel.app/\n\n<img width=\"2516\" height=\"1222\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4b3cda81-16b5-4da2-bc1d-3ac19840a740\" />\n\n**ARTEX** 是一个开源的 **AI 自主渗透测试系统**：给它一个目标和授权范围，它会像真实红队一样自己规划、派发子任务实际执行渗透、逐步逼近目标，全程可视化、可人工介入。\n\n它区别于“给渗透工具接个 LLM”的地方，在于下面几个设计：\n\n## 目标驱动的任务闭环\n\n任务从**「任务描述 + 目标」**开始：\n\n1. **Plan（规划者）** 根据任务描述和目标，生成探索**方案**（拆成一条条具体的探索意图）；\n2. **Work（执行者）** 领取意图、独立执行，把结果**写回图中**；\n3. Plan 再基于图里的新信息**重新规划**，一步步向目标收敛。\n\n规划 → 执行 → 回写 → 再规划，如此循环，直到目标达成。整个过程是**自我驱动**的，不需要人来一步步喂指令。\n\n## 任务与资产绑定 → 可量化的测试覆盖度\n\n任务和资产是**绑定**的，因此可以直接衡量一个任务对目标的**测试覆盖度**——哪些资产测了、测到什么程度、还有哪些没覆盖，一目了然。\n\n这解决了实战中的一个真痛点：**目标定义往往是模糊的**。很多时候你说不清“测到什么算完成”，于是可以**反过来把覆盖度本身设成测试目标**——比如“覆盖全部子域 / 全部开放端口 / 某类资产 100%”，让 AI 以达成覆盖度为收敛条件去自主推进。目标从“说不清”变成“可量化、可验收”。\n\n## 一切都在一张图里，而不是塞进上下文\n\n任务的**资产、流量、探索意图、事实、漏洞发现**统一组织成一张**探索图谱**，节点之间带父子/派生关系，资产与流量直接绑定到对应任务上下文。\n\n好处是**极大节省 LLM 上下文**：Plan 看到的是这张图的结构化摘要，而不是把海量原始执行日志堆进 prompt。当它确实需要某个子任务的执行细节时，再**通过工具按需拉取指定 work 的完整执行链路**（命令、输出、每一步工具调用都在）。该省时省，该细时细。\n\n## 流量录制：让 Agent 像人一样翻流量找问题\n\n内置**流量录制代理**，把测试过程中的 HTTP 流量完整捕获下来——既包括 agent 自己发出的**测试流量**，也包括**浏览器自动化操作**产生的流量，全部落库并绑定到对应任务。\n\n关键在于：这些流量不是只给人看的日志，而是**开放给 agent 的一等数据**。agent 可以像人工渗透时那样，**搜索、筛选、逐条查看所有历史流量**——翻参数、比对响应、串联跨请求的线索，从已有流量里**挖出更多潜在问题**（隐藏参数、越权、信息泄露、被忽略的接口……），而不是只盯着自己当前这一步。相当于给 AI 配了一个可随时检索的“全量流量记忆”。\n\n## 两层 Agent：规划与执行分离\n\n- **Plan** 负责读图、判断攻击面、保持多条路线并行、避免过早收敛，还能对关键漏洞派专门的**对抗式复现验证**；\n- **Work** 每个只领**一条意图**，聚焦执行真实工具（nmap/curl/ripgrep…），只把**增量事实**写回图谱，做完即停。\n\n多个 work 可并发，天然并行探索。\n\n## 自定义 Agent、自定义 LLM\n\n- **自定义 LLM**：支持 Anthropic / OpenAI 及兼容接口，provider、model、base_url、代理均可在 UI 配置，私有模型或中转皆可；\n- **自定义 Agent**：可在界面里自定义 agent 的能力与工具集，按需裁剪或扩展。\n\n## 拦截审批：给自主 Agent 装一道人工闸门\n\nARTEX 内置一套**基于规则的工具调用拦截层**：可按工具名、命令内容等自定义匹配规则，按优先级命中后执行三种动作之一——\n\n- **allow**：放行；\n- **deny**：直接拦下并把原因反馈给模型，让它换条路；\n- **ask**：**暂停执行、推送给你人工审批**，你批准才继续，可设超时与超时默认动作。\n\n「AI 全自动跑」和「关键动作人工确认」不再二选一：日常探索让它自己飞，危险或不可逆的操作(如对生产目标的写操作)自动卡住等你放行，安全与效率兼得。\n\n## 全程可视 + 人在环路\n\nToken 消耗与活动流、任务执行过程与探索链路、漏洞与资产归档、**流量录制**、**拦截审批**（关键操作前人工放行）、随时**对话介入**纠偏。\n",
@@ -802,21 +818,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10807"
-  },
-  {
-    "id": 10806,
-    "title": "【开源自荐】Termany：Agent-Native 终端",
-    "content": "Agent-Native 终端 Termany 开源了。🎉\n\n主要特点：\n\n1. 基于页面的多层级 filetree，管理项目更方便\n2. workspace + page + tab + pane 的组合，无限多开 Agent 工作窗口\n3. 搜索面板快速定位窗格、内置快捷键与快捷操作\n4. 多类型窗口切换：终端、文件、Git 差异、对话、浏览器\n5. 多 Agent 管理，cli 快捷命令，acp 对话，自定义模型\n6. Agent 状态显示、Token 统计、Session 检索，系统负载监控\n7. 多语言、多主题，兼容 codex 的自定义主题\n8. 其他更多 Agent 相关特性\n\n欢迎体验，感谢 Star👇\n\nhttps://github.com/thinkany-ai/termany\n\n官网地址：https://termany.sh\n\n![](https://pbs.twimg.com/media/HNuc9pWbcAAepxT?format=jpg&name=4096x4096)",
-    "created_at": "2026-07-21T05:33:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10806"
-  },
-  {
-    "id": 10805,
-    "title": "全球广播",
-    "content": "https://radio.garden",
-    "created_at": "2026-07-21T02:19:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10805"
   }
 ]
