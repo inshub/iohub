@@ -8,41 +8,35 @@
         </button>
       </div>
       
-      <header class="io-article-hero" :class="{ 'has-photo': firstImage }" :style="articleHeroStyle">
-        <div class="io-article-cover">
-          <span class="io-cover-dots" aria-hidden="true"></span>
-          <span class="io-cover-cat">
-            <span class="io-cover-square" aria-hidden="true"></span>
-            {{ articleCategory.name }}
-          </span>
-          <span class="io-cover-no mono">№ {{ articleNumber }}</span>
-          <span class="io-cover-code mono">{{ articleCategory.code }}</span>
-        </div>
+      <article class="io-article-frame" :style="articleFrameStyle">
+        <div class="io-article-main">
+          <header class="io-article-hero">
+            <div class="io-article-head">
+              <div class="io-article-kicker mono">
+                № {{ articleNumber }} · {{ articleCategory.code }} · {{ readingMinutes }} 分钟阅读
+              </div>
+              <h1>{{ article.title }}</h1>
+              <p v-if="articleExcerpt">{{ articleExcerpt }}</p>
+              <div class="io-article-meta-row">
+                <div class="io-article-meta">
+                  <span>{{ formatDate(article.created_at) }}</span>
+                  <span v-for="label in articleTags" :key="label" class="io-tag-chip">
+                    {{ label }}
+                  </span>
+                </div>
+                <a :href="article.url" target="_blank" rel="noopener noreferrer" class="io-source-link">
+                  查看原文
+                  <ExternalLink class="io-button-icon" aria-hidden="true" />
+                </a>
+              </div>
+            </div>
+          </header>
 
-        <div class="io-article-head">
-          <div class="io-article-kicker mono">
-            {{ formatShortDate(article.created_at) }} · {{ readingMinutes }} 分钟阅读
-          </div>
-          <h1>{{ article.title }}</h1>
-          <p>{{ articleExcerpt }}</p>
-          <div class="io-article-meta">
-            <span>{{ formatDate(article.created_at) }}</span>
-            <span v-for="label in articleTags" :key="label" class="io-tag-chip">
-              {{ label }}
-            </span>
-          </div>
+          <main class="io-prose-card">
+            <div class="io-markdown" v-html="markdownToHtml(article.content)"></div>
+          </main>
         </div>
-      </header>
-
-      <main class="io-prose-card">
-        <div class="io-markdown" v-html="markdownToHtml(article.content)"></div>
-        <div class="io-article-source-actions">
-          <a :href="article.url" target="_blank" class="io-primary-button">
-            查看原文
-            <ExternalLink class="io-button-icon" aria-hidden="true" />
-          </a>
-        </div>
-      </main>
+      </article>
 
       <div class="io-lightbox" v-if="previewImage" @click="closePreview">
         <img :src="previewImage" alt="预览图片">
@@ -107,11 +101,6 @@ const formatDate = (dateStr: string) => {
   })
 }
 
-const formatShortDate = (dateStr: string) => {
-  const date = new Date(dateStr)
-  return `${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`
-}
-
 const categoryRules = [
   { name: 'AI 工具', code: 'TOOLS', tint: '#cc785c', keywords: ['AI', 'Agent', '智能', '模型', 'Cursor', 'Claude', 'GPT'] },
   { name: '开源项目', code: 'OPEN', tint: '#2f7d57', keywords: ['开源', 'GitHub', 'MIT', '源码', '自荐'] },
@@ -128,30 +117,15 @@ const getArticleCategoryMeta = (item: ArticleItem) => {
   }
 }
 
-const getFirstImage = (content: string) => {
-  const markdownImage = content.match(/!\[.*?\]\((.*?)\)/)
-  if (markdownImage?.[1]) return markdownImage[1]
-  const htmlImage = content.match(/<img[^>]+src="([^">]+)"/)
-  return htmlImage?.[1] || null
-}
-
-const cssUrl = (url: string) => `url("${url.replace(/\\/g, '\\\\').replace(/"/g, '\\"')}")`
-
-const firstImage = computed(() => article.value ? getFirstImage(article.value.content) : null)
-
 const articleCategory = computed(() => article.value ? getArticleCategoryMeta(article.value) : {
   name: '技术观察',
   code: 'INSIGHT',
   tint: '#5f6f52'
 })
 
-const articleHeroStyle = computed(() => {
+const articleFrameStyle = computed(() => {
   const style: Record<string, string> = {
     '--tint': articleCategory.value.tint
-  }
-
-  if (firstImage.value) {
-    style['--cover-img'] = cssUrl(firstImage.value)
   }
 
   return style
@@ -204,11 +178,15 @@ const articleExcerpt = computed(() => {
 
 const previewImage = ref<string | null>(null)
 
+const openPreview = (src: string) => {
+  previewImage.value = src
+  document.body.style.overflow = 'hidden'
+}
+
 const handleImageClick = (event: MouseEvent) => {
   const target = event.target as HTMLImageElement
   if (target.tagName === 'IMG') {
-    previewImage.value = target.src
-    document.body.style.overflow = 'hidden'
+    openPreview(target.src)
   }
 }
 

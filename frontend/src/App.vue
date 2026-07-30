@@ -3,8 +3,6 @@ import { computed, nextTick, provide, ref, watch, onMounted } from 'vue'
 import {
   Sun,
   Moon,
-  Columns,
-  LayoutGrid,
   Menu,
   House,
   Archive,
@@ -15,7 +13,6 @@ import {
 } from 'lucide-vue-next';
 import articles from './data/articles.json'
 
-const fullShow = ref(true)
 const mobileMenuOpen = ref(false)
 const showArchive = ref(false)
 const showStats = ref(false)
@@ -227,19 +224,6 @@ onMounted(() => {
             </button>
           </div>
 
-          <!-- 视图切换器 -->
-          <div class="io-action-group">
-            <button 
-              @click="fullShow = !fullShow"
-              :class="['io-segment-button', { active: fullShow }]"
-              :title="fullShow ? '切换到分页模式' : '切换到滚动模式'"
-            >
-              <Columns v-if="fullShow" :size="16" />
-              <LayoutGrid v-else :size="16" />
-              <span>{{ fullShow ? '滚动' : '分页' }}</span>
-            </button>
-          </div>
-
           <!-- GitHub链接 -->
           <a 
             href="https://github.com/inshub/iohub" 
@@ -290,7 +274,7 @@ onMounted(() => {
 
     <!-- 主要内容 -->
     <main class="io-main-shell">
-      <router-view v-model:fullShow="fullShow"></router-view>
+      <router-view></router-view>
     </main>
   </div>
 </template>

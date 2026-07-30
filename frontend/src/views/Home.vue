@@ -1,11 +1,7 @@
 <template>
-  <div class="max-w-full mx-auto bg-background h-full" :style="{minHeight:fullShow?'calc(100vh - 100px)':'auto'}">
-    <!-- 重新设计的文章网格 -->
+  <div class="max-w-full mx-auto bg-background h-full">
     <section class="io-content-section">
-      <main 
-        class="articles-main"
-        :class="{ 'is-flow-mode': props.fullShow }"
-      >
+      <main class="articles-main">
         <!-- 骨架屏 - 初始加载时显示 -->
         <div v-if="isInitialLoading" class="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-3 lg:gap-8">
           <div 
@@ -44,19 +40,24 @@
             </button>
         </div>
 
+        <div v-else-if="filteredArticles.length === 0" class="io-empty-state io-home-empty">
+          <SearchX class="io-empty-icon" aria-hidden="true" />
+          <h2>没有找到匹配内容</h2>
+          <p>换一个关键词，或清空搜索查看全部精选内容。</p>
+        </div>
+
         <!-- 文章列表 -->
         <div v-else class="io-card-grid">
           <article 
             :class="['io-article-card', { 'has-photo': getFirstImage(article.content) }]"
             :style="getCardStyle(article)"
-            v-for="article in paginatedArticles" 
+            v-for="article in visibleArticles" 
             :key="article.id"
             role="article"
             :aria-labelledby="`article-title-${article.id}`"
           >
             <router-link
               :to="{ name: 'article', params: { id: article.id }}"
-              @click="saveScrollState"
               class="io-card-cover"
               :aria-label="`阅读 ${article.title}`"
             >
@@ -74,7 +75,6 @@
               <h3 :id="`article-title-${article.id}`">
                 <router-link 
                   :to="{ name: 'article', params: { id: article.id }}"
-                  @click="saveScrollState"
                 >
                   {{ article.title }}
                 </router-link>
@@ -91,7 +91,6 @@
               <router-link 
                 :to="{ name: 'article', params: { id: article.id }}" 
                 class="io-foot-right"
-                @click="saveScrollState"
               >
                 <span class="mono">{{ formatShortDate(article.created_at) }} · {{ getReadingMinutes(article.content) }} 分钟</span>
                 <ArrowRight class="io-foot-arrow" aria-hidden="true" />
@@ -100,50 +99,8 @@
           </article>
         </div>
 
-        <!-- 分页控制 -->
-        <div class="io-pagination-wrap" v-if="totalPages > 1 && !fullShow && !isInitialLoading">
-          <nav class="io-pagination" aria-label="文章分页">
-            <button
-              class="io-page-button"
-              :disabled="currentPage === 1"
-              @click="goToPage(currentPage - 1)"
-            >
-              <i data-lucide="chevron-left" class="w-4 h-4"></i>
-              上一页
-            </button>
-            
-            <div class="io-page-indicator">
-              <span>PAGE</span>
-              <strong>{{ currentPage }}</strong>
-              <span>/ {{ totalPages }}</span>
-            </div>
-            
-            <button
-              class="io-page-button"
-              :disabled="currentPage === totalPages"
-              @click="goToPage(currentPage + 1)"
-            >
-              下一页
-              <i data-lucide="chevron-right" class="w-4 h-4"></i>
-            </button>
-          </nav>
-        </div>
-        
-        <!-- 无限滚动加载状态 -->
-        <div v-if="props.fullShow && !isInitialLoading" class="py-12 text-center">
-          <div v-if="isLoading" class="flex flex-col items-center gap-4 text-muted-foreground">
-            <i data-lucide="loader" class="w-8 h-8 border-3 border-border border-t-primary rounded-full animate-spin"></i>
-            <span class="text-base font-medium">加载更多...</span>
-          </div>
-          
-          <div v-else-if="hasError" class="text-destructive">
-            <span class="text-base font-medium">加载失败</span>
-            <button @click="retryLoad" class="ml-2 underline text-base font-medium">重试</button>
-          </div>
-          
-          <div v-else-if="!hasMoreData && paginatedArticles.length > 0" class="flex flex-col items-center gap-3 py-8 text-muted-foreground text-sm font-medium">
-            已经到底了
-          </div>
+        <div v-if="!isInitialLoading && !hasError && visibleArticles.length > 0" class="io-feed-complete mono">
+          已展示全部 {{ visibleArticles.length }} 篇内容
         </div>
       </main>
     </section>
@@ -162,35 +119,26 @@
 </template>
 
 <script setup lang="ts">
-import { computed, inject, ref, watch, onMounted, onBeforeUnmount, nextTick, type Ref } from 'vue'
-import { ArrowRight } from 'lucide-vue-next'
+import { computed, inject, ref, onMounted, onBeforeUnmount, nextTick, type Ref } from 'vue'
+import { ArrowRight, SearchX } from 'lucide-vue-next'
 import articles from '../data/articles.json'
 
 type ArticleItem = {
   id: number
   title: string
-  content: string
+  content: string | null
   created_at: string
   labels: string[]
   url: string
 }
 
-const props = defineProps<{
-  fullShow: boolean
-}>()
-
 const fallbackSearchQuery = ref('')
 const searchQuery = inject<Ref<string>>('iohubSearchQuery', fallbackSearchQuery)
-const currentPage = ref(1)
-const timeSeed = ref(null as NodeJS.Timeout | null)
-const pageSize = 9
 
 // 加载状态管理
-const isLoading = ref(false)
 const isInitialLoading = ref(true)
 const hasError = ref(false)
 const errorMessage = ref('')
-const hasMoreData = ref(true)
 const showBackTop = ref(false)
 
 const filteredArticles = computed(() => {
@@ -204,43 +152,11 @@ const filteredArticles = computed(() => {
   })
 })
 
-// 模拟数据加载
-const loadMoreArticles = async () => {
-  if (isLoading.value || !hasMoreData.value) return
-  
-  isLoading.value = true
-  hasError.value = false
-  
-  try {
-    // 模拟API调用延迟
-    await new Promise(resolve => setTimeout(resolve, 800))
-    
-    // 检查是否还有更多数据
-    const totalAvailable = filteredArticles.value.length
-    const currentLoaded = pageSize * currentPage.value
-    
-    if (currentLoaded >= totalAvailable) {
-      hasMoreData.value = false
-    } else {
-      currentPage.value++
-    }
-    
-  } catch (error) {
-    hasError.value = true
-    errorMessage.value = '加载失败，请重试'
-    console.error('加载文章失败:', error)
-  } finally {
-    isLoading.value = false
-  }
-}
-
 // 初始化数据加载
 const initializeData = async () => {
   isInitialLoading.value = true
   try {
-    // 模拟初始加载延迟
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    hasMoreData.value = filteredArticles.value.length > pageSize
+    await nextTick()
   } catch (error) {
     hasError.value = true
     errorMessage.value = '数据加载失败'
@@ -249,62 +165,22 @@ const initializeData = async () => {
   }
 }
 
-const totalPages = computed(() => 
-  Math.ceil(filteredArticles.value.length / pageSize)
-)
-
-const paginatedArticles = computed(() => {
-  let [start,end] = [0,0];
-  if(props.fullShow) {
-    end = pageSize + (currentPage.value - 1) * pageSize
-  } else {
-    start = (currentPage.value - 1) * pageSize
-    end = start + pageSize
-  }
-  
-  return filteredArticles.value.slice(start, end)
-})
-
-const checkWindowLoadMore = async () => {
-  if (!props.fullShow) return
-  
-  if (timeSeed.value) {
-    clearTimeout(timeSeed.value)
-  }
-  
-  timeSeed.value = setTimeout(async () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop
-    const scrollHeight = document.documentElement.scrollHeight
-    const clientHeight = window.innerHeight
-    const threshold = 360
-
-    if (scrollTop + clientHeight >= scrollHeight - threshold) {
-      await loadMoreArticles()
-    }
-  }, 300)
-}
+const visibleArticles = computed(() => filteredArticles.value)
 
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
 
-const goToPage = (page: number) => {
-  const nextPage = Math.min(Math.max(page, 1), totalPages.value)
-  if (nextPage === currentPage.value) return
-  currentPage.value = nextPage
-  scrollToTop()
-}
-
 // 重试加载函数
 const retryLoad = () => {
   hasError.value = false
-  loadMoreArticles()
+  void initializeData()
 }
 
 // 预加载关键图片
 const preloadCriticalImages = () => {
   // 预加载前6张图片
-  paginatedArticles.value.slice(0, 6).forEach(article => {
+  visibleArticles.value.slice(0, 6).forEach(article => {
     const imageUrl = getFirstImage(article.content)
     if (imageUrl) {
       const link = document.createElement('link')
@@ -316,18 +192,7 @@ const preloadCriticalImages = () => {
   })
 }
 
-// 监听文章变化，设置图片懒加载
-watch(paginatedArticles, async () => {
-  await nextTick()
-}, { flush: 'post', immediate: true })
-
-watch(searchQuery, () => {
-  currentPage.value = 1
-  hasMoreData.value = true
-  hasError.value = false
-})
-
-const getFirstImage = (content: string) => {
+const getFirstImage = (content: string | null) => {
   try {
     // 确保 content 存在且为字符串
     if (!content || typeof content !== 'string') {
@@ -379,7 +244,7 @@ const getFirstImage = (content: string) => {
   }
 }
 
-const getArticleExcerpt = (content: string) => {
+const getArticleExcerpt = (content: string | null) => {
   try {
     if (!content) return ''
     
@@ -460,8 +325,8 @@ const hasWeeklyLabel = (article: ArticleItem) => {
   return article.labels.some(label => label.toLowerCase() === 'weekly')
 }
 
-const getReadingMinutes = (content: string) => {
-  const text = content
+const getReadingMinutes = (content: string | null) => {
+  const text = (content || '')
     .replace(/!\[.*?\]\(.*?\)/g, '')
     .replace(/<[^>]+>/g, '')
     .replace(/\s+/g, '')
@@ -489,124 +354,10 @@ const getCardStyle = (article: ArticleItem) => {
   return style
 }
 
-// 保存滚动位置和当前页码
-const saveScrollState = () => {
-  const scrollPosition = window.pageYOffset || document.documentElement.scrollTop
-  
-  const state = {
-    scrollPosition: scrollPosition,
-    currentPage: currentPage.value,
-    searchQuery: searchQuery.value,
-    timestamp: Date.now(),
-    fullShow: props.fullShow
-  }
-  console.log('💾 Saving scroll state:', state)
-  sessionStorage.setItem('iohub-scroll-state', JSON.stringify(state))
-}
-
-// 恢复滚动位置和当前页码
-const restoreScrollState = async () => {
-  const savedState = sessionStorage.getItem('iohub-scroll-state')
-  if (savedState) {
-    try {
-      const state = JSON.parse(savedState)
-      const isRecent = (Date.now() - state.timestamp) < 30 * 60 * 1000 // 30分钟内
-      
-      if (isRecent) {
-        // 恢复搜索查询
-        if (state.searchQuery) {
-          searchQuery.value = state.searchQuery
-        }
-        
-        // 恢复页码
-        if (state.currentPage && state.currentPage > 0) {
-          currentPage.value = state.currentPage
-        }
-        
-        // 等待DOM更新和数据加载完成后恢复滚动位置
-        await nextTick()
-        
-        if (props.fullShow && state.currentPage > 1) {
-          console.log(`Need to load content up to page ${state.currentPage} for scroll position ${state.scrollPosition}`)
-          
-          const forceLoadContent = async () => {
-            currentPage.value = state.currentPage
-            await nextTick()
-            console.log(`Content loading completed. Page set to: ${currentPage.value}, Articles count: ${paginatedArticles.value.length}`)
-          }
-          
-          await forceLoadContent()
-        }
-        
-        // 改进的滚动位置恢复算法
-        const attemptScrollRestore = async (attempts = 0) => {
-          const maxAttempts = 40
-          
-          if (attempts >= maxAttempts) {
-            console.warn(`Failed to restore scroll position after ${maxAttempts} attempts`)
-            return
-          }
-          
-          if (state.scrollPosition > 0) {
-            const maxScrollTop = Math.max(0, document.documentElement.scrollHeight - window.innerHeight)
-            const targetPosition = Math.min(state.scrollPosition, maxScrollTop)
-            
-            if (document.documentElement.scrollHeight >= targetPosition + window.innerHeight || targetPosition <= maxScrollTop) {
-              window.scrollTo(0, targetPosition)
-              
-              if (Math.abs(window.pageYOffset - targetPosition) < 80) {
-                console.log('Window scroll position restored successfully:', targetPosition)
-                return
-              }
-            }
-          }
-          
-          // 使用渐进式延迟重试
-          const delay = attempts < 5 ? 50 : attempts < 15 ? 100 : attempts < 25 ? 200 : 300
-          setTimeout(() => attemptScrollRestore(attempts + 1), delay)
-        }
-        
-        // 延迟开始尝试，确保DOM完全渲染
-        setTimeout(() => {
-          console.log('🔄 Starting scroll position restoration attempts...')
-          attemptScrollRestore()
-        }, 150) // 减少延迟，让恢复更快
-      } else {
-        console.log('❌ Saved state is too old, ignoring')
-      }
-    } catch (error) {
-      console.error('❌ Failed to restore scroll state:', error)
-    }
-  } else {
-    console.log('ℹ️ No saved scroll state found')
-  }
-}
-
-// 定期保存滚动位置
-let saveScrollTimer: NodeJS.Timeout | null = null
-const throttledSaveScroll = () => {
-  if (saveScrollTimer) {
-    clearTimeout(saveScrollTimer)
-  }
-  saveScrollTimer = setTimeout(saveScrollState, 500)
-}
-
 const handleWindowScroll = () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop
   showBackTop.value = scrollTop > 520
-  throttledSaveScroll()
-  void checkWindowLoadMore()
 }
-
-// 页码变化时保存状态
-watch(currentPage, () => {
-  saveScrollState()
-})
-
-// 搜索变化时清除状态
-watch(searchQuery, () => {
-  sessionStorage.removeItem('iohub-scroll-state')
-})
 
 // 组件挂载时设置事件监听和恢复状态
 onMounted(async () => {
@@ -617,25 +368,12 @@ onMounted(async () => {
   // 先初始化数据加载
   await initializeData()
   
-  // 等待DOM完全更新后恢复滚动状态 - 增加更多延迟确保内容渲染完成
-  await nextTick()
-  // 使用更长的延迟确保所有内容都已渲染
-  setTimeout(async () => {
-    await restoreScrollState()
-  }, 100)
-  
   // 预加载关键图片
   await nextTick()
   preloadCriticalImages()
 })
 
-// 组件卸载时清理事件监听
 onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleWindowScroll)
-  
-  if (saveScrollTimer) {
-    clearTimeout(saveScrollTimer)
-  }
-  saveScrollState() // 保存最终状态
 })
 </script>
