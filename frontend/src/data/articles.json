@@ -1,5 +1,13 @@
 [
   {
+    "id": 10958,
+    "title": "【开源自荐】Panerelay：让 AI Agent 通过 agent-browser 操作你正在使用的 Chrome",
+    "content": "项目地址：https://github.com/F-loat/panerelay\n\n最新版本：https://github.com/F-loat/panerelay/releases/tag/v0.1.0\n\n开源协议：MIT\n\n让 AI Agent 操作网页时，一个常见问题是：自动化工具通常会启动一个新的浏览器，现有 Chrome 里的登录态、页面状态和标签页无法直接复用；而直接接管日常浏览器时，用户又需要清楚知道 Agent 能操作哪些页面，并且能随时收回控制。\n\nPanerelay 是一个连接 AI Agent 与用户现有 Chrome 会话的开源本地桥梁。任何能通过 CLI 或 MCP 使用 [agent-browser](https://github.com/vercel-labs/agent-browser) 的 Agent，都可以操作用户明确授权的标签页，直接复用当前 Chrome Profile 和登录态，无需启动独立浏览器、重复登录或导出 Cookie。\n\n![Panerelay](https://github.com/user-attachments/assets/a54dfbaa-1c9f-45a3-b3ab-aa2e6ec4a5f6)\n\n### 主要特点\n\n- **继续使用 agent-browser**：snapshot、定位、输入、等待、标签页、截图、网络检查和请求 Mock 等自动化能力仍由 agent-browser 提供，不需要为 Panerelay 学习另一套 Browser MCP。\n- **复用正在使用的 Chrome**：Agent 在现有浏览器的已授权标签页中工作，可以使用当前登录态和页面上下文；操作后台标签页时不会切走用户正在查看的页面。\n- **授权明确、随时可撤销**：网站权限、标签页授权和自动化控制相互独立；受控状态始终可见，用户可以立即释放控制。\n- **把本地 Agent 带进 Chrome 侧边栏**：v0.1.0 支持 Codex 和 Qoder，提供对话历史、审批、运行状态和中断操作。\n- **本地优先**：不依赖 Panerelay 云服务。登录凭证始终留在 Chrome 中，默认不导出或记录 Cookie、凭证、页面内容、截图和请求体。\n- **跨平台**：支持 macOS、Linux 和 Windows。\n\n工作链路如下：\n\n```text\n任意 AI Agent → agent-browser CLI / MCP → Panerelay Bridge\n                                             ↕ Native Messaging\n本地 Agent ← Chrome 侧边栏 ← Panerelay 扩展 ↔ 已授权标签页\n```\n\n### 快速体验\n\n1. 从 [Releases](https://github.com/F-loat/panerelay/releases) 下载并加载 Chrome 扩展。\n2. 安装本地集成：\n\n   ```bash\n   npx --yes @panerelay/setup\n   ```\n\n3. 在扩展中授权当前网页标签页。\n4. 通过 agent-browser 查看并操作已授权标签页：\n\n   ```bash\n   agent-browser --provider panerelay tab list\n   ```\n\nPanerelay 当前为首个稳定版本，欢迎试用和反馈。\n",
+    "created_at": "2026-07-30T12:25:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10958"
+  },
+  {
     "id": 10957,
     "title": "【开源自荐】一个小巧的打印助手，各类文件拖入直接打印，不用打开各类软件",
     "content": "<img width=\"548\" height=\"354\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/894eac63-53a0-47be-a469-0b6dc293e7d3\" />\n一个小而美的桌面打印工具，把图片、Office 文档、PDF 等文件直接拖进去一键打印，省去逐个打开各类软件再点打印的麻烦（跨平台 mac/windows）",
@@ -808,15 +816,5 @@
     "created_at": "2026-07-23T13:51:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10848"
-  },
-  {
-    "id": 10847,
-    "title": "【开源自荐】Linux-Router，把你的 Linux 设备变成路由器",
-    "content": "## 简介\nLinux Router 可以将 Debian 或 Armbian 设备变成路由器，并提供一个清晰的 Web 控制台，用于查看系统状态、管理有线网络和 Wi-Fi、开启热点共享、查看接入设备以及执行维护操作\n\n适用于各种开发板、电视盒子、小主机等等（下图是基于 Nanopi Zero2 + Linux Router 的随身小路由）\n\n<img width=\"3072\" height=\"2304\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b6aed664-e0c9-4dad-85ea-fed36f167c73\" />\n\n\n\n## 项目地址\n- https://linuxrouter.dev\n- https://github.com/Jaksay/Linux-Router\n\n## 核心功能\n- 系统概览：查看硬件信息、IP 地址、活动连接、存储、内存和运行状态\n- 依赖检查与修复：检查 NetworkManager、dnsmasq、iptables、iw 等运行环境\n- 有线和 Wi-Fi 管理：扫描、连接、断开、配置绑定和忘记网络\n- 热点创建：支持独占 AP，以及网卡能力允许时的 AP+STA 并发模式\n- 热点设备：查看客户端、DHCP 租约、无线信号和 LAN 网段配置\n- 热点保活：热点异常断线后自动尝试恢复\n- 辅助工具：Tailscale 可视化管理，进程可视化管理等\n\n## 界面截图\n\n<img width=\"2926\" height=\"1893\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5bff52e3-01f4-4fb5-9b79-a5e5b005905f\" />",
-    "created_at": "2026-07-23T11:43:22Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10847"
   }
 ]
