@@ -1,5 +1,13 @@
 [
   {
+    "id": 10959,
+    "title": "【开源自荐】475 条 Krea 2 提示词，每条都带产出它的 seed；另有 65 次失败连同原因一并保留",
+    "content": "做了一个 Krea 2 Turbo 的提示词目录。和常见的提示词合集不同的地方有两个：\n\n一是每条都记了产出它的 seed 和参数，475 条全部有，可以逐条复现；二是把 65 次失败的生成连同**失败原因**一起保留了下来——大部分合集只收好看的结果，而实际写提示词时真正需要知道的是\"这个做不到\"。全部图片提交在仓库里，不是外链。\n\n所有结论都是在这些图上实测的，不是抄模型卡。其中有一条是仓库公开两小时后被读者推翻的：我写过\"手基本没问题，八张里七张解剖正常\"，两位读者数了手指，发现三张有六指或四指，于是整个类别连同 seed 移进了失败项。总共 561 次生成，花费 $4.54。\n\n链接：https://github.com/sjh9714/awesome-krea-2\n画廊：https://sjh9714.github.io/awesome-krea-2/\n\n<img width=\"912\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/hero.webp\" alt=\"成功与失败各三例\" />\n\n**保留下来的失败，每条都写明为什么被砍：**\n\n| | | | |\n|---|---|---|---|\n| <img width=\"200\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/images/failures/hands-8.webp\" /> | <img width=\"200\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/images/failures/fail-menu.webp\" /> | <img width=\"200\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/images/failures/aerial-007.webp\" /> | <img width=\"200\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/images/failures/hangul-003.webp\" /> |\n| `hands-8` 要求竖三根手指：数量对了，但这只手有六根 | `fail-menu` 没写死的菜单行变成了 CATEPe、MILTERS | `aerial-007` 要求垂直俯拍，回来的是高空斜视角 | `hangul-003` 韩文\"정직한\"错成\"정적한\"，换 seed 仍然错在同一处 |\n",
+    "created_at": "2026-07-30T20:21:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10959"
+  },
+  {
     "id": 10958,
     "title": "【开源自荐】Panerelay：让 AI Agent 通过 agent-browser 操作你正在使用的 Chrome",
     "content": "项目地址：https://github.com/F-loat/panerelay\n\n最新版本：https://github.com/F-loat/panerelay/releases/tag/v0.1.0\n\n开源协议：MIT\n\n让 AI Agent 操作网页时，一个常见问题是：自动化工具通常会启动一个新的浏览器，现有 Chrome 里的登录态、页面状态和标签页无法直接复用；而直接接管日常浏览器时，用户又需要清楚知道 Agent 能操作哪些页面，并且能随时收回控制。\n\nPanerelay 是一个连接 AI Agent 与用户现有 Chrome 会话的开源本地桥梁。任何能通过 CLI 或 MCP 使用 [agent-browser](https://github.com/vercel-labs/agent-browser) 的 Agent，都可以操作用户明确授权的标签页，直接复用当前 Chrome Profile 和登录态，无需启动独立浏览器、重复登录或导出 Cookie。\n\n![Panerelay](https://github.com/user-attachments/assets/a54dfbaa-1c9f-45a3-b3ab-aa2e6ec4a5f6)\n\n### 主要特点\n\n- **继续使用 agent-browser**：snapshot、定位、输入、等待、标签页、截图、网络检查和请求 Mock 等自动化能力仍由 agent-browser 提供，不需要为 Panerelay 学习另一套 Browser MCP。\n- **复用正在使用的 Chrome**：Agent 在现有浏览器的已授权标签页中工作，可以使用当前登录态和页面上下文；操作后台标签页时不会切走用户正在查看的页面。\n- **授权明确、随时可撤销**：网站权限、标签页授权和自动化控制相互独立；受控状态始终可见，用户可以立即释放控制。\n- **把本地 Agent 带进 Chrome 侧边栏**：v0.1.0 支持 Codex 和 Qoder，提供对话历史、审批、运行状态和中断操作。\n- **本地优先**：不依赖 Panerelay 云服务。登录凭证始终留在 Chrome 中，默认不导出或记录 Cookie、凭证、页面内容、截图和请求体。\n- **跨平台**：支持 macOS、Linux 和 Windows。\n\n工作链路如下：\n\n```text\n任意 AI Agent → agent-browser CLI / MCP → Panerelay Bridge\n                                             ↕ Native Messaging\n本地 Agent ← Chrome 侧边栏 ← Panerelay 扩展 ↔ 已授权标签页\n```\n\n### 快速体验\n\n1. 从 [Releases](https://github.com/F-loat/panerelay/releases) 下载并加载 Chrome 扩展。\n2. 安装本地集成：\n\n   ```bash\n   npx --yes @panerelay/setup\n   ```\n\n3. 在扩展中授权当前网页标签页。\n4. 通过 agent-browser 查看并操作已授权标签页：\n\n   ```bash\n   agent-browser --provider panerelay tab list\n   ```\n\nPanerelay 当前为首个稳定版本，欢迎试用和反馈。\n",
@@ -808,13 +816,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10850"
-  },
-  {
-    "id": 10848,
-    "title": "【工具自荐】Explyt：能直接使用 JetBrains 调试器和重构工具的 AI 编程代理",
-    "content": "## Explyt\r\n\r\nExplyt 是一款面向 JetBrains IDE 的 AI 编程代理。它不只是将聊天窗口放进 IDE，而是可以直接使用 IDE 已掌握的项目信息和开发工具。\r\n\r\n项目地址：https://github.com/explyt/explyt  \r\nJetBrains Marketplace：https://plugins.jetbrains.com/plugin/27979-explyt-ai-agent\r\n\r\n![Explyt 演示](https://raw.githubusercontent.com/explyt/explyt/main/assets/hero-feature-to-code-review-flow-preview.gif)\r\n\r\n例如，Explyt 可以运行 IDE 中已经配置好的测试和调试任务，通过调试器查看变量值、调用栈和实际执行路径，定位问题后再使用 IDE 的重构工具修改代码并验证结果。\r\n\r\n主要特点：\r\n\r\n- 直接使用 JetBrains 调试器，而不是要求开发者添加临时日志；\r\n- 通过符号导航查找引用，并读取项目实际连接版本的依赖库源码；\r\n- 调用 IDE 重构、静态分析、测试和构建配置，而不只是执行终端命令；\r\n- 支持 IntelliJ IDEA、Android Studio、Rider、PyCharm、WebStorm、GoLand 和 PhpStorm。\r\n\r\nExplyt 适合处理大型项目、遗留代码，以及仅靠文本搜索和长终端日志难以准确理解的代码库。",
-    "created_at": "2026-07-23T13:51:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10848"
   }
 ]
