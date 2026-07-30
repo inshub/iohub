@@ -1,5 +1,13 @@
 [
   {
+    "id": 10945,
+    "title": "【工具自荐】开源的 Markdown 编辑器 chrome 扩展应用",
+    "content": "## 项目地址：\nhttps://github.com/wood3n/md-editor-extension\n\n## 项目技术栈：\n基于 monaco 编辑器和 shadcn ui，shiki 等开源工具，功能如下：\n\n- 编辑器支持 markdown 语法高亮和提示\n- 支持常用 markdown 语法渲染，[GFM](https://github.github.com/gfm/) 语法，以及 mermaid 渲染等功能；支持 `:::note` / `:::tip` / `:::info` / `:::warning` / `:::danger` 五种语法高亮提示框\n- 内置 11 套预设主题（GitHub Light/Dark、One Dark、Monokai、Dracula、Solarized、Catppuccin 等），一键切换编辑器、预览区和代码高亮\n- 支持载入远程或者本地打开的 markdown 网页内容\n- 支持 markdown 源码下载和 PDF 导出\n\n<img width=\"2825\" height=\"1677\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6f786ea7-b73b-4115-b4db-51bf002dee63\" />\n\n<img width=\"2823\" height=\"1680\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2ff44404-0dad-43cc-8496-3d37a9831aed\" />",
+    "created_at": "2026-07-30T01:53:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10945"
+  },
+  {
     "id": 10944,
     "title": "【开源自荐】首个 AI 可靠读写数据 Agent 开源，腾讯 APIJSON 生态协议",
     "content": "# A2API - 一次 AI，次次 API 安全、快速、稳定读写数据\n\n用 A2UI 聊天即兴生成 UI 来安全、快速、稳定调用 HTTP API 增删改查表格、表单、图表等数据。\n**AI 生成一次 UI，API 每次都安全、快速、稳定执行。**\n\nAgent-to-API 协议、引擎与 Demo：生成任务 UI，之后改筛选/排序/分页直接调用 HTTP API，\n**不再调用大语言模型，不费任何 Token**。\n\n不走 SQL 执行路径，**写操作或敏感读操作**自动申请权限，管理员审批通过后才能调通。\n\n![](https://github.com/user-attachments/assets/81bc1f4b-dce1-489f-8e14-718871c91312)\n![](https://github.com/user-attachments/assets/d1edc623-350a-4ee4-a951-1db3c615f457)\n![](https://github.com/user-attachments/assets/2b85a3c3-9f43-45b8-948e-99d87d5a5dfe)\n![](https://github.com/user-attachments/assets/31b9b341-c775-47ef-b2ad-d217a28fff08)\n![](https://github.com/user-attachments/assets/9c7138e6-0906-4117-8020-86452ddfaf04)\n\n## 仓库结构\n\n| 路径 | 作用 |\n|------|------|\n| `packages/protocol` | A2API 0.1 信封、JSON Pointer、校验器、CRUD 夹具测试 |\n| `packages/runtime` | `ApiJsonClient`、`HitlController`、`BoundExecutor` |\n| `apps/chat-demo` | 编排器 + 聊天 UI（生成）+ 绑定筛选（稳态） |\n| `apps/admin` | 配置申请审批：批准后写入 Access / Request / Document |\n\n【GitHub 地址】\nhttps://github.com/TommyLemon/A2API\n\n",
@@ -36,16 +44,10 @@
     "title": "【开源自荐】StaticShield - 军工级的网页加密工具",
     "content": "开源地址：[https://github.com/wangshengithub/staticshield](https://github.com/wangshengithub/staticshield)\n\nhttps://github.com/user-attachments/assets/fab6794c-2f36-4494-bcc0-d00058ef1b33\n\n项目简介：\nStaticShield 是一个零依赖的静态网页加密工具。采用与 NSA 绝密级文件保护同源的 AES-256 + PBKDF2 百万次迭代 + HMAC-SHA256 加密体系，一键将 HTML（含 CSS / JS / 图片）加密为单个「自解密页面」，部署到任意静态托管，访客输入密码后在浏览器本地解密还原，全程无需服务器参与。\n\n在线演示：\n我用它给自己的纯前端小游戏「奉国牧马」（1 个 HTML + 1 个 CSS + 16 个 JS）一键加密，可以直接体验效果：\n- 加密站：https://horseempire-staticshield.pages.dev/ （密码：`horseempire-staticshield`）\n- 原站：https://horseempire.pages.dev/\n\n打开加密站看到门禁页面，输入密码，整个游戏瞬间还原，体验与原站一致。\n\nhttps://github.com/user-attachments/assets/5ff99b44-96f2-4cf9-ad4c-4aeb3ebb7162\n\n核心特性：\n🔐 军工级安全：AES-256-CBC + PBKDF2（1,000,000 次迭代，超 OWASP 建议值 67%）+ HMAC-SHA256 验签（Encrypt-then-MAC），与 NIST / NSA 认证的绝密级加密标准同源\n⚡ 一键加密：一条命令完成打包 + 加密 + 输出，18 个文件 → 1 个加密文件，全程不到 1 秒\n🖥️ 双模式操作：CLI 命令行批量处理，或 `node encrypt.js --gui` 启动 Web 图形界面，拖文件、设密码、点加密、下载，零门槛上手\n📦 整站打包：`--bundle` 自动将外部 CSS / JS / 图片内联为单文件后整体加密\n🚫 零依赖：无需 `npm install`，Node.js ≥ 18 开箱即用\n\n技术亮点：\n- 加密核心基于 WebCrypto API，Node 与浏览器同构，一份代码两端复用\n- 浏览器端解密由操作系统底层加密库执行（非 JS 手写算法），密钥不可被 JS 读取\n- 分享链接密码写入 URL Hash，不经过服务器，日志中无痕迹\n- 支持重叠加密（多层密码）、CSPRNG 随机强密码生成、记住我等实用功能\n\n适用场景：\n- 内部文档 / 付费内容的轻量级访问保护\n- 小圈子分享游戏、工具，防搜索引擎收录\n- 临时私密页面，不想搭后端、不想用第三方 SaaS\n\n```bash\n# 一键加密整个多文件项目\nnode encrypt.js index.html --bundle -p MyPwd123 -d ./dist\n\n# 或者打开图形界面，拖文件操作\nnode encrypt.js --gui\n```\n\n开源协议：MIT",
     "created_at": "2026-07-29T11:12:42Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10940"
-  },
-  {
-    "id": 10939,
-    "title": "【网站自荐】V2Code - Claude中转站与Codex中转站 | AI编程API按量付费平台",
-    "content": "V2Code 是一个专业的 AI 编程模型 API 中转站，为开发者提供 Claude、Codex 等主流 AI 编程模型的统一 API 接入服务。\n\n国内开发者在使用 AI 编程工具（Claude Code、Codex CLI、Cursor、Cline、Continue 等）时，经常会遇到官方 API 访问限制、海外支付困难、订阅成本较高等问题。\n\nV2Code 提供稳定的 API 接入服务，通过统一 API 端点连接 AI 编程模型，支持人民币充值、按量付费，无需海外信用卡即可开始使用。\n\n网站地址：\n\nhttps://v2code.ai\n\nAPI 端点：\n\nhttps://jp.v2code.ai\n\n\n## 适用场景\n\n- 使用 Claude Code、Codex CLI、Cursor、Cline、Continue 等 AI 编程工具的开发者\n- 希望降低 Claude、Codex 等 AI 编程模型使用成本的个人开发者\n- 需要统一管理多个 AI 模型 API 接口的团队\n- 需要根据不同任务灵活切换 AI 模型的开发场景\n\n\n## 核心特性\n\n\n### Claude中转站\n\nV2Code 提供 Claude 中转站服务，支持 Anthropic Claude API 接入。\n\n支持 Claude 系列模型：\n\n- Claude Sonnet\n- Claude Opus\n- Claude Haiku\n\n适用于：\n\n- 代码生成\n- 项目开发\n- Bug 修复\n- 代码审查\n- 架构设计\n- 技术方案分析\n\n\n### Codex中转站\n\nV2Code 提供 Codex 中转站服务，支持 OpenAI Codex API 接入。\n\n适用于：\n\n- AI 代码生成\n- 代码重构\n- 项目分析\n- 自动化开发任务\n- 智能编程辅助\n\n\n### API 兼容\n\nV2Code 提供兼容 OpenAI / Anthropic API 的统一接口：\n\n- 支持 OpenAI API 格式\n- 支持 Anthropic API 格式\n- 修改 Base URL 即可接入\n- 无需修改现有代码\n\n\n### 支持工具\n\nV2Code 支持主流 AI 编程工具和开发框架：\n\n- Claude Code\n- Codex CLI\n- Cursor\n- Cline\n- Continue\n- LangChain\n- Vercel AI SDK\n- AutoGPT\n- CrewAI\n\n\n## 访问与支付\n\nV2Code 针对国内开发者使用 AI 编程工具的需求：\n\n- 直接访问\n- 无需复杂配置\n- 支持按量付费\n- 无需海外信用卡\n\n\n## 按量付费\n\nV2Code 采用 API 使用量计费模式：\n\n- 用多少付多少\n- 无固定订阅限制\n- 灵活控制开发成本\n- 适合个人开发者和团队\n\n\n## 快速开始\n\n\n### Claude Code 配置\n\n修改 API 地址即可使用：\n\n```json\n{\n  \"ANTHROPIC_API_KEY\": \"你的API密钥\",\n  \"ANTHROPIC_BASE_URL\": \"https://jp.v2code.ai\"\n}\n```\n\n\n### Codex / OpenAI 兼容工具配置\n\n修改 OpenAI base_url：\n\n```bash\nexport OPENAI_API_KEY=\"你的API密钥\"\nexport OPENAI_BASE_URL=\"https://jp.v2code.ai\"\n```\n\n\n配置完成后，即可在 Claude Code、Codex CLI、OpenAI SDK 等兼容工具中调用对应模型服务。\n\n\n## 支持模型\n\nV2Code 支持多种 AI 编程模型：\n\n- Claude 系列模型\n- OpenAI Codex 模型\n- GPT 系列模型\n- 其他兼容 API 的 AI 模型\n\n\n## 为什么选择 V2Code\n\n- 一个 API 入口管理多个 AI 编程模型\n- 支持 Claude中转站和 Codex中转站\n- 兼容 OpenAI / Anthropic API\n- 修改 Base URL 即可快速接入\n- 支持人民币支付\n- 按量付费降低 AI 编程成本\n- 适合个人开发者和团队使用",
-    "created_at": "2026-07-29T10:29:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10939"
   },
   {
     "id": 10937,
@@ -60,7 +62,9 @@
     "title": "【开源工具自荐】米饭云盘 - 基于 Telegram 无限数量的自建图床与小文件存储",
     "content": "开源地址：https://github.com/AndySkaura/mifun-storage\n在线demo：https://p.kuraa.cc\n\n项目简介：\n利用 Telegram Channel 存储文件，适合搭建个人图床和小文件云盘，无需占用服务器本地磁盘。\n\n<img width=\"2552\" height=\"1548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d4fc39f2-f32f-4404-a07b-b4f548f9afe2\" />\n\n核心特性：\nmac Finder 风格文件管理，支持预览、搜索、标签和拖拽上传，支持管理员区域划分（类似Windows磁盘）\n提供完整 API，方便爬虫、截图及自动化脚本上传文件。(开发初衷就是为了找地方存放大量图片)\n全程流式上传和下载，不写本地临时文件\n支持 SQLite、MySQL 及 Docker 部署",
     "created_at": "2026-07-29T08:44:15Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10936"
   },
   {
@@ -76,7 +80,9 @@
     "title": "【工具自荐】HowtoDraw：零门槛的互动式分步绘画学习助手",
     "content": "大家好！我是[HowtoDraw](https://www.howtodraw.ai/)团队的成员。对于许多绘画初学者、儿童或者家长来说，面对一张白纸时常常会感到无从下手，甚至因为复杂的线条而产生挫败感。为了让绘画学习变得更轻松、更有趣，我们开发了HowtoDraw——一个专注于将复杂图形进行几何拆解的互动式分步绘画引导平台。\n### 一、 核心功能\n\n- 图形的几何化结构拆解\n我们将复杂的动物、卡通角色、植物等形象拆解为圆形、三角形、椭圆等基础几何体。通过极简的分步指引，让用户看清线条的来龙去脉。这种渐进式的引导有助于降低学习门槛，培养结构思维。\n- 丰富的创意练习库\n平台涵盖了各种不同风格和难度的分类，包括生动的动物、简笔画角色等，满足不同阶段、不同兴趣用户的练习需求。\n- 多终端友好与互动\n用户可以非常方便地在手机、平板或电脑浏览器中直接打开网页使用。你可以选择直接在屏幕上跟着线稿描摹，也可以将它作为身边的“数码画册”，在真实的纸张上同步练习。\n\n### 二、 适用人群与场景\n\n- 零基础成人与绘画初学者：通过反复的分步临摹，逐步建立线条控制能力与空间结构感，摆脱不知如何落笔的困境。\n- 家长与亲子育儿家庭：作为高质量的亲子互动工具，它可以将数字屏幕转化为主动的创作工具，在涂鸦中锻炼手眼协调与专注力。\n- 美育爱好者及启蒙工作者：在日常美术启蒙或小练习中，老师和爱好者可以利用平台的结构化案例，作为直观的线条拆解教学参考。\n\n### 三、 结语\n我们深知，艺术的灵魂在于自由表达，而分步临摹只是掌握基础工具与基本功的第一步。HowtoDraw致力于帮助用户轻松跨越“开始画”的第一道门槛，建立初步的结构感和创作信心。\n如果您对学习简笔画或者亲子美术互动感兴趣，欢迎访问HowtoDraw亲自体验，并与我们分享您的使用反馈。",
     "created_at": "2026-07-29T07:35:57Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10934"
   },
   {
