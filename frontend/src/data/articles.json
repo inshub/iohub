@@ -1,5 +1,37 @@
 [
   {
+    "id": 10949,
+    "title": "【开源SaaS自荐】每次做新 SaaS 都在重复造轮子？我把登录、Stripe、返利系统抽成开源模板了",
+    "content": "做独立产品和出海 SaaS 的时候，最让我头疼的从来不是核心业务，而是那些“必须有但又特别耗时间”的基础设施——登录注册、邮箱验证、Stripe 订阅、积分流水、推广返利、推荐奖励、管理后台、中英双语、SEO……每一块单独拿出来都不难，但拼在一起，调试 Webhook、处理过期积分、防滥用推荐码、写各种邮件模板，很容易就把两三个星期耗掉。\n\n所以我干脆把这些东西抽出来，做成了一个比较完整的启动模板，叫 MokerSaaS，现在正式开源。\n\n 仓库地址：[https://github.com/ItusiAI/MokerSaaS](https://github.com/ItusiAI/MokerSaaS)\n\n 线上演示：https://mokersaas.com\n\n目标很明确：让出海小团队或者独立开发者，能在几小时内把一个能注册、能收款、能推广、有后台的 SaaS 骨架跑起来，然后把时间真正花在产品本身。\n\n<!-- Failed to upload \"recording_2026-07-29_下午6-58-06.mp4\" -->\n\n我集成了哪些功能\n\n完整的用户认证\n\n 邮箱密码登录（带邮箱验证和密码重置）、Google / GitHub OAuth 自动绑定。基于 NextAuth.js + JWT，密码用 bcryptjs，输入校验用 Zod。角色分普通用户和管理员，管理员路由有专门的守卫。\n\nStripe 支付 + 积分系统\n 订阅支持 Trial、Pro 月付、年付。积分可以单独一次性购买，走 Stripe Checkout，Webhook 自动入账。用户能进客户门户自己管理订阅和发票。积分的消费、退还、过期我统一写在 points-manager 里处理。\n\n推广返利（Affiliate）\n 用户可以生成专属推广码，佣金比例支持 1%–20% 多档。流水有冻结 / 释放 / 取消三态，提现有审核流程。后台能看到推广关系和统计数据。\n\n推荐奖励（Referral）\n 注册时带 ?ref=CODE 就能绑定推荐关系，双方可以拿积分或者延长订阅天数。推荐码允许自定义一次，加了防滥用过期机制。\n\n管理后台\n 六个模块：概览、流量、用户、邮件订阅、推荐、返利。流量部分接了 Umami Analytics。管理员可以直接调整用户积分、管理订阅。\n\n邮件与 Newsletter\n 用 Resend 发验证、重置、支付成功、订阅确认这些邮件。网站底部有订阅入口，支持退订，数据会同步到数据库。\n\n中英双语 + SEO\n 用 next-intl 做了完整的中英双语，URL 走 /zh/... 和 /en/...。元数据、hreflang、sitemap、JSON-LD、Open Graph、Twitter Card 都配好了。\n\n技术栈选择\n\n我选的都是目前比较主流、也好维护的方案：\n- 前端：Next.js 16（App Router）+ React 19 + TypeScript 5\n- 样式：Tailwind CSS 3 + Radix UI + shadcn/ui 风格组件\n- 表单：React Hook Form + Zod\n- 国际化：next-intl\n- 数据库：PostgreSQL + Drizzle ORM\n- 认证：NextAuth.js v4\n- 支付：Stripe\n- 邮件：Resend\n- 图表：Recharts\n- 部署：主要面向 Vercel，也兼容 Railway、Netlify\n- \n数据库迁移已经准备好了，开发时用 db:push，生产环境建议走 generate + migrate。项目结构按功能拆得比较清楚，app/[locale]/ 放页面，api/ 放接口，lib/ 里是认证、支付、积分、推荐、邮件这些核心逻辑。",
+    "created_at": "2026-07-30T05:55:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10949"
+  },
+  {
+    "id": 10948,
+    "title": "【工具自荐】降低退信率，守护发信信誉：专业邮件地址清洗工具Email Verifier",
+    "content": "对于从事外贸、B2B销售、EDM（邮件营销）或网站运营的人来说，有一件事十分让人头疼：辛辛苦苦收集或整理的客户邮箱列表，群发后却遭遇大量退信（Bounce）。\n\n频繁的退信不仅会浪费群发工具的付费额度，更糟糕的是，它会严重拉低发信域名和IP的信誉度，导致以后的正规邮件直接被各家邮件服务商判定为垃圾邮件。\n\n为了帮助大家快速、低成本地过滤无效和高风险的邮箱地址，今天向大家自荐一款实用的在线清洗与检测工具——[Email Verifier](https://www.emailverifier.ai/)。\n\n---\n\n### 💡 核心功能介绍\n\nEmail Verifier采用多重网络验证技术，旨在不用发送真实邮件的前提下，对邮件地址的有效性进行深度体检：\n\n1. **SMTP 实时连接探测 (SMTP Handshake Verification)**：这是最核心的技术。工具通过向目标邮件服务器发起安全的实时握手请求，模拟发信过程，从而准确探知该邮箱账号是否真实存在、是否能够正常接收邮件，且对方不会收到任何骚扰信。\n2. **临时/一次性邮箱识别 (Disposable Email Detection)**：很多用户在注册网站或下载资料时会使用一次性临时邮箱。工具能智能识别并标记此类地址，确保您的邮件列表保持高含金量。\n3. **全收（Catch-All）与角色邮箱筛查 (Catch-all & Role-based Detection)**：识别类似info@、support@、sales@等非个人角色邮箱，以及那些会强行接收所有未定义地址的Catch-all域名，帮助您做出更精准的发送策略。\n4. **语法与域名DNS验证 (Syntax & MX Record Check)**：自动检测拼写格式错误（如拼错的domain后缀），并查询该域名是否配置了有效的邮件交换记录（MX Record），在本地端即完成第一轮过滤。\n5. **高效的批量处理能力 (Bulk Verification)**：支持直接导入包含大量邮箱的CSV/TXT列表，后台自动进行多线程体检，并在检测完成后提供清晰的数据分类导出。\n\n---\n\n### 👨‍💻 适用人群与应用场景\n\n* **外贸开发信与B2B拓客团队**：在进行大范围Outbound（主动开发）前，先用Email Verifier清理挖掘到的线索列表，避免发信域名因“无效地址过多”而被网关拦截，保障正常的商业沟通渠道。\n* **EDM（邮件营销）从业者**：在准备活动大促、日常Newsletter推送前，定期清理历史订阅列表，去除无效和不活跃邮箱。这不仅能显著提高邮件的送达率（Deliverability），还能有效降低在第三方发信平台上产生的账单费用。\n* **独立站及SaaS开发者**：在用户注册、留资表单提交环节提供底层技术验证，从源头上阻止虚假注册与垃圾账号占用数据库资源。\n\n---\n\n### 📌 结语与说明\n\n诚然，由于全球各家邮件服务器的隐私与安全防护策略千差万别，没有任何一款工具能够做到 100% 绝对无差错（有些高度安全的服务器会拒绝任何形式的外界探测）。但我们始终致力于通过多维度验证算法，提供尽可能准确、稳定的筛查结果。\n\n如果您正面临邮件送达率下滑的烦恼，或希望提升客户列表中数据的真实度，欢迎前往[Email Verifier](https://www.emailverifier.ai/)进行试用，为您的邮件营销通道提供一份可靠的保障。",
+    "created_at": "2026-07-30T03:58:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10948"
+  },
+  {
+    "id": 10947,
+    "title": "【工具自荐】ShortsMonkey：Youtube发现小频道爆款 Shorts 和长视频",
+    "content": "## ShortsMonkey\n\n网址：https://www.shortsmonkey.com\n\nShortsMonkey 是一个 YouTube 异常表现视频（outlier）发现工具，面向创作者、内容团队和视频营销人员。它每天扫描 50 万+ 低订阅频道，按“观看量/订阅者”比例筛选表现异常的 Shorts 和长视频，帮助用户发现值得参考的选题和内容方向。\n\n主要功能：\n\n- 近 3 天突破 500 万播放的 Shorts 实时榜单\n- 发现订阅少于 1.5 万、观看/订阅比超过 10 倍的长视频机会\n- S–C 分级和 55+ 细分领域\n- 免费版可用",
+    "created_at": "2026-07-30T03:53:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10947"
+  },
+  {
+    "id": 10946,
+    "title": "【工具自荐】AI 智能预测宝宝长相工具 Baby Generator 自荐",
+    "content": "每当情侣讨论起未来，或者准爸爸妈妈在备孕时，总会有一个充满温情又让人好奇的话题：“我们的孩子以后会长得更像谁？” \n\n虽然真实的遗传学充满了随机性与大自然的奥秘，但现代AI技术的进步，让我们能够提前一窥那个充满想象力的“数字预览”。今天，向大家自荐一款简单、有趣且主打细节还原度的AI预测工具——[Baby Generator](https://www.babygenerator.ai/)。\n\n---\n\n### 💡 核心功能介绍\n\nBaby Generator并非简单地将两张人脸进行生硬的拼接，而是通过面部识别算法，提取并融合两位家长眼部、鼻梁、脸型等核心五官特征，生成极具真实感的未来宝宝画像。\n\n1. **双人/单人模式灵活上传**：你可以上传父亲和母亲的两张清晰正脸照片；即使只有单人照片，AI也能基于单张脸部的遗传特征进行合理的延伸预测。\n2. **基因相似度调节**：如果你好奇“孩子如果更像爸爸会怎样”或“像妈妈多一点会怎样”，可以通过滑块手动调节相似比例（如更偏向父亲或更偏向母亲），看一看不同基因组合的可能性。\n3. **年龄段与性别切换**：支持生成不同年龄段（如婴儿、幼儿、儿童等）的肖像。不仅能看到宝宝时期的样子，还能预估孩子稍微长大后的面貌，并支持性别（男孩/女孩）选择。\n4. **高清晰度的细节处理**：有别于普通的卡通化滤镜，该工具更侧重于还原皮肤质感、光影对比以及眼神细节，生成的预览图更接近真实的肖像照片。\n\n---\n\n### 👨‍👩‍👧 适用人群与场景\n\n* **备孕期或已怀孕的准父母**：在迎接新生命到来的漫长等待中，生成一张宝宝预览图，可以为这段温馨的旅程增添一份小小的仪式感与期待，也适合用作Baby Shower（迎新生儿派对）或性别揭晓派对上的趣味互动。\n* **热恋中的情侣**：用彼此的照片做一次充满趣味的未来模拟，探讨“孩子到底会继承谁的眼睛”，是恋爱日常里一个非常温馨、解压的互动话题。\n* **家庭聚会与社交分享**：适合在家庭聚会时与长辈、朋友一起测试，生成的有趣图片可以直接下载并分享到社交平台，作为日常生活的趣味谈资。\n\n---\n\n### 🛠️ 简单的使用步骤\n\n为了不给用户增加多余的操作负担，Baby Generator的界面设计得直截了当：\n1. **第一步**：进入网站，上传一张或两张清晰、无遮挡的正脸照片（光线均匀、直视镜头的照片效果最佳）。\n2. **第二步**：选择你想要预测的性别、年龄，并调整相似度偏好。\n3. **第三步**：点击生成，稍等片刻即可获得一张高画质的宝宝肖像预览。\n\n---\n\n### 📌 结语与温情提示\n\n真实的基因重组是人类繁衍中最精妙的艺术，没有任何算法能够100%预测出生命的奇迹。因此，我们打造Baby Generator的初衷并非提供一份绝对精准的遗传学报告，而是希望用科技作为桥梁，为大家的日常生活、亲密关系和家庭时光带来一份小小的欢笑、温馨与美好憧憬。\n\n如果您对这个充满未知与期待的小测试感兴趣，欢迎前往 [Baby Generator](https://www.babygenerator.ai/) 尝试，看看 AI 会为您勾勒出怎样的一幅未来画面。",
+    "created_at": "2026-07-30T03:52:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10946"
+  },
+  {
     "id": 10945,
     "title": "【工具自荐】开源的 Markdown 编辑器 chrome 扩展应用",
     "content": "## 项目地址：\nhttps://github.com/wood3n/md-editor-extension\n\n## 项目技术栈：\n基于 monaco 编辑器和 shadcn ui，shiki 等开源工具，功能如下：\n\n- 编辑器支持 markdown 语法高亮和提示\n- 支持常用 markdown 语法渲染，[GFM](https://github.github.com/gfm/) 语法，以及 mermaid 渲染等功能；支持 `:::note` / `:::tip` / `:::info` / `:::warning` / `:::danger` 五种语法高亮提示框\n- 内置 11 套预设主题（GitHub Light/Dark、One Dark、Monokai、Dracula、Solarized、Catppuccin 等），一键切换编辑器、预览区和代码高亮\n- 支持载入远程或者本地打开的 markdown 网页内容\n- 支持 markdown 源码下载和 PDF 导出\n\n<img width=\"2825\" height=\"1677\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6f786ea7-b73b-4115-b4db-51bf002dee63\" />\n\n<img width=\"2823\" height=\"1680\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2ff44404-0dad-43cc-8496-3d37a9831aed\" />",
@@ -788,37 +820,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10842"
-  },
-  {
-    "id": 10841,
-    "title": "【网站自荐】VibeHub 帮助用户更好的向 AI 表达需求，用可视化的方式学习 Vibe Coding 术语",
-    "content": "网站地址：[https://vibe-hub.org](https://vibe-hub.org)\n\nVibe Coding 让越来越多不同专业背景的人开始直接参与产品创作。但当一个人跨出自己的专业范围时，往往会遇到一个问题：知道自己想做什么，却不知道应该怎样准确地表达。\n\n一个后端开发者想做前端页面时，可能只能说“这里再高级一点”“交互更顺滑一些”，却不知道自己需要的是卡片网格、抽屉、悬浮导航、骨架屏还是页面转场。设计师和产品经理在实现数据功能时，也可能不知道怎样描述接口、鉴权、数据库和部署流程。表达越模糊，AI 就越需要猜测，做出来的结果也越难接近最初的想法。\n\n因此我做了 VibeHub，一份面向 Vibe Coding 创作者的可视化术语图鉴。它按照前端组件、页面布局、视觉与交互、CSS 与网页基础、后端与网络、数据与账号、部署排错、Git 和设计风格等领域整理常用概念。每个概念都有对应的界面示例、使用场景和常见边界，帮助用户从“我想要这种感觉”，逐渐说清楚“我具体需要什么”。\n\n<img width=\"1449\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/86e22839-58d8-4840-958f-10902ba4d4eb\" />\n\n<img width=\"1449\" height=\"763\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/373c7c5f-5f0b-4f57-86d9-caa14c722703\" />\n\n<img width=\"1448\" height=\"753\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cbe39f60-ac98-44d6-b8e5-298b2d88f045\" />\n\n",
-    "created_at": "2026-07-23T07:33:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10841"
-  },
-  {
-    "id": 10840,
-    "title": "【开源自荐】whatbroke：给 AI Agent 行为做 git diff 的命令行工具",
-    "content": "whatbroke 是一个开源 CLI，用来对比 AI Agent 两次运行之间的行为差异：哪些工具调用被新增、丢弃或重排，以及参数、成本、延迟的变化。每个版本跑多次采样后，结果以比率呈现（如 6/9 的运行对比中出现），基线本身就不稳定的行为会被自动降级为噪音，避免把原有的抖动误判为回归。\n\n换模型或改提示词之前跑一次 diff，就能看到\"回复文本看起来没变，但行为已经变了\"的部分。仓库里有一个可以在笔记本上免费复现的案例：把 llama3.2:3b 换成 1b 之后，小模型在 6/9 的运行对比中把工具的 JSON schema 原样当作参数传给了工具，而回复文本依然是一段正常的客服话术。\n\n- 仓库：https://github.com/arthi-arumugam-git/whatbroke\n- 安装：`npm install -g whatbroke-cli`\n- MIT 协议，TypeScript，本地运行，trace 不离开你的机器\n\n（中文由机器翻译润色，欢迎指正。English: whatbroke is an open source CLI that diffs an AI agent's behavior between two runs: tool calls added, dropped or reordered, plus argument, cost and latency changes, with multi-sample flake detection. A reproducible case study is in the repo.）",
-    "created_at": "2026-07-23T07:10:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10840"
-  },
-  {
-    "id": 10839,
-    "title": "【工具自荐】StoreFrame：用 Codex / Cursor 对话生成 App Store 五帧截图，浏览器导出 PNG ZIP",
-    "content": "大家好，我做了一个面向独立开发者和产品团队的 App Store / Google Play 截图工具：**StoreFrame**。\n\n<img width=\"3024\" height=\"1654\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fad69fad-15dd-4861-9aab-e3ec66395e86\" />\n\n项目地址：https://aistoreframe.shop  \n文档：https://aistoreframe.shop/docs  \nSkill 安装包：https://aistoreframe.shop/skills/storeframe-agent.zip\n\n做这个产品的原因很直接：每次发版都要在设计工具里重做五帧商店图——换真机截图、改标题、再导出——很耗时间。StoreFrame 把流程收成「五帧编辑器 + 模板库 + 高清 PNG ZIP」。\n\n免费即可试用：编辑器预览带轻量品牌签名；每月有额度的**导出是干净 PNG**（可直接上架验证）。Pro/Max 主要买更多导出次数、全模板和 **AI Connect**。\n\n和同类工具相比，我更想解决「已经在用 AI 编程代理」的场景：\n\n1. 在网站复制 **AI Connect** 提示词，装一个 `SKILL.md` 技能包（兼容 Claude / Cursor / **Codex**）\n2. 用对话搜模板、写 YAML 五帧文案、导入云端项目\n3. 把桌面真机截图挂到各帧，在聊天里预览，再到浏览器导出 ZIP\n\n典型循环：\n\n> brief → 搜模板 / 写 YAML → 贴截图 → 改文案再导入 → Export PNG ZIP\n\n适合：独立开发者、小团队、做 ASO 的同学，以及已经在用 Codex / Cursor 的人。\n\n欢迎试用和提反馈（站内有 Feedback）。谢谢！\n\n---\n\n**English summary:** StoreFrame is a five-frame App Store / Play screenshot editor with templates, Custom Studio, and PNG ZIP export. Free: preview signature in the editor only; clean exports within the monthly quota. Pro/Max unlock higher volume and AI Connect — a SKILL.md pack so Codex/Cursor/Claude can search templates, author YAML packs, attach screenshots, and guide export from chat. https://aistoreframe.shop",
-    "created_at": "2026-07-23T05:06:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10839"
-  },
-  {
-    "id": 10838,
-    "title": "【工具自荐】把研究思路变成图：Scientific Figure Generator 一句话生成论文配图和图形摘要",
-    "content": "大家好，我做了一个面向科研人员的 AI 科学插图生成工具：**Scientific Figure Generator**。\n\n项目地址：https://scientificfiguregenerator.com/\n\n做这个产品的原因很直接：科研配图往往需要从空白画布开始，既费时间，也容易卡在表达方式上。使用时只需用自然语言描述一个机制、实验流程或图形摘要，工具就会生成相应的科学示意图。\n\n目前支持线稿、扁平插画和 3D 三种风格，可用于论文配图、学术海报和 graphical abstract 等场景。现在可以免费试用，不需要注册，生成后可以下载高分辨率图片。\n\n我希望它能帮助研究者更快完成“从研究思路到可视化初稿”这一步，把更多时间留给研究本身。\n\n欢迎大家试用，谢谢！\n\n---\n\n**English summary:** Scientific Figure Generator turns plain-language descriptions into scientific diagrams, research illustrations, and graphical abstracts. It supports line art, flat illustration, and 3D styles. Free to try, with no sign-up required.",
-    "created_at": "2026-07-23T03:18:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10838"
   }
 ]
