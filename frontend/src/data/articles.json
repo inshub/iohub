@@ -1,5 +1,29 @@
 [
   {
+    "id": 10976,
+    "title": "工具自荐】MathLite —— 打开即用的纯前端数学工具箱",
+    "content": "地址：\n[https://mathlite.dpdns.org/](mathlite)\n\n33 个工具覆盖科学计算、矩阵、概率分布、回归拟合、FFT、函数绘图与开发者常用计算。无后端、无注册，所有计算在浏览器本地完成。\n\n<img width=\"2560\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0dd601c4-400c-47eb-819b-b8d261d7246b\" />",
+    "created_at": "2026-07-31T14:44:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10976"
+  },
+  {
+    "id": 10975,
+    "title": "【工具自荐】Soloop：给一人公司创业者的 AI CEO+CTO+CMO",
+    "content": "### **产品地址**\nhttps://www.soloop.io/\n\n\n### **为什么做Soloop？**\nSam Altman说他跟人打赌，哪一年OPC（一人公司）里会跑出来估值10亿美金的独角兽。我们离这一年越来越近了。\n\n如今，借助 AI Vibe Coding，用户已经可以快速完成 Demo、落地页乃至早期产品的搭建。但是，产品原型开发完，用户增长、开发迭代与商业闭环，往往仍然完全靠人类创业者继续往下摸索，各种环节的上下文也分散在各类工具中，OPC创业者往往也就卡在这里。\n\nSoloop是第一个敢于挑战闭环交付的AI OPC基建产品。产品打磨、用户增长、商业化，都在这里一站完成，Idea In. Revenue Out. 我们和所有创业者一样，认为能赚钱的产品才是好产品。\n\n\n### **产品简介**\nSoloop 是一款面向OPC（一人公司）的 AI 操作系统。它将 CEO、CMO、CTO、Analyst 等 AI Agents 整合在同一个工作空间，帮助OPC创业者将重点环节打通，形成一个持续运转的完整闭环：\n\n- CEO Agent：负责理解公司和产品目标，管理当前进度，判断下一步方向，并将任务分配给对应C-level Agent来执行。\n- CTO Agent：处理产品开发、bugs修复、代码优化与功能迭代，负责交付鲁棒性好、审美不错的可用产品。\n- CMO Agent：负责社媒运营、营销推广与用户增长工作，会收集市场反馈并同步回工作区，变成产品迭代的决策信号。\n- AI Analyst：调研竞品动态、用户需求及潜在用户聚集地，实时、主动地提供决策上下文。\n- 共享项目上下文：所有智能体基于统一的项目背景协作，无需创业者反复说明。\n- 掌控决策权：关键操作仍然由OPC创业者确认，再交由智能体自动化地执行。\n\nSoloop 并非创业教练，也不是vibe coding工具，而是打造「想法 - 调研 - 行动 - 增长 - 反馈 - 迭代 - 再决策」的连续闭环，真正交付产品营收的AI基建平台。\n产品迭代和商业化是loop，而OPC创业是solo，solo+loop=Soloop。\n我们相信，伟大的公司也可以是由一个人创建出来的。\n\n\n\n\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fc44e581-2474-48b9-a86e-7cfe46535817\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0ee1b534-7faf-4d22-a95f-b8dbe861c1f5\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d65bab99-9bd6-43cd-a862-06dc808ea151\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c2510271-cb19-4db8-8217-a47d99a56907\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0fe988a-4478-4b33-8abe-0af8eba5cfd9\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/46929eff-f2fa-42fe-8c7c-b62745e53791\" />",
+    "created_at": "2026-07-31T14:31:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10975"
+  },
+  {
+    "id": 10974,
+    "title": "【文章自荐】在 Cloudflare 上构建 AI 图片去背景工具：架构与踩坑总结",
+    "content": "文章地址：\nhttps://dev.to/fu_bront_a2bc935343b8b06e/what-i-learned-building-an-ai-background-remover-on-cloudflare-2l74\n\n项目地址：\nhttps://imagebackground.site/\n\n这篇文章复盘了一个 AI 图片去背景网站从 MVP 到上线的完整工程过程。核心功能使用 remove.bg API，但文章重点不是模型本身，而是围绕第三方 API 构建产品时容易被忽略的生产问题。\n\n主要内容包括：\n\n- 使用 Next.js 和 Cloudflare Pages 构建前端与边缘端接口\n- 将第三方 API Key 放在服务端，并校验文件类型、大小、来源和请求频率\n- 图片只在请求过程中传递，应用本身不做持久化存储\n- 使用 Google OAuth 和 Cloudflare D1 管理用户、会话与使用额度\n- 通过“预占额度、成功确认、失败释放”解决并发请求与计费一致性问题\n- 同时接入 PayPal 与 Creem，并通过签名校验和事件去重实现幂等 Webhook\n- 统一正式域名、OAuth 回调、Cookie、支付返回地址与 SEO canonical\n\n文章还总结了七条适用于 API 型 SaaS 的实践经验，包括隐私边界、用量状态机、支付 Webhook 幂等性和失败路径测试。原文为英文，阅读时间约 6 分钟。",
+    "created_at": "2026-07-31T14:09:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10974"
+  },
+  {
     "id": 10973,
     "title": "[软件自荐]mac残留文件清洁App",
     "content": "LittleClean 是一款强大而智能的 macOS 系统清理及开发者工具管理软件。它能帮助您轻松彻底地卸载应用程序、安全地清理缓存与日志，并移除残留文件以释放宝贵的磁盘空间，同时提供对已安装的开发环境及全局包的深度透视功能。\n\n<img width=\"1664\" height=\"1248\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cb2c8bd6-1722-488a-86ed-078d96868c5d\" />\n\nhttps://github.com/leibnizli/LittleClean",
@@ -788,29 +812,5 @@
     "created_at": "2026-07-24T09:25:26Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10867"
-  },
-  {
-    "id": 10866,
-    "title": "ImgFast：保留任务上下文的 AI 图片工作台",
-    "content": "项目地址：https://imgfast.org/?utm_source=github.com&utm_medium=referral&utm_campaign=promotion\n\nImgFast 是一个以结果交付为核心的 AI 图片工作台。用户可以从文字需求或现有图片开始，进行图片生成、编辑、增强、扩图、背景处理和多图合成。\n\n它与单次生成工具的区别是，会把参考图、Prompt、设置和结果保留在同一条工作记录中，方便继续编辑、标记最终版本并下载，减少每一步都从头开始。\n\n当前限制：结果仍需用户检查；不同模型、分辨率和积分成本以实时工作台为准。项目由独立开发者维护。",
-    "created_at": "2026-07-24T09:07:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10866"
-  },
-  {
-    "id": 10865,
-    "title": "【开源自荐】smtp-probe：开源邮件送达率诊断工具（SPF/DKIM/DMARC/SMTP验证/黑名单扫描）",
-    "content": "# smtp-probe：开源邮件送达率诊断工具\n\ngithub地址：https://github.com/monto-fe/smtp-probe\n在线体验：https://monto-fe.github.io/smtp-probe/\n\n## 简介\n\nsmtp-probe 是一款用 Go 编写的开源邮件送达率诊断工具，可以在一个命令中完成域名邮件配置检查、邮箱真实性验证、IP 黑名单扫描等全流程排查。\n\n## 特性\n\n- **域名健康检查** — SPF、DKIM、DMARC、MX、PTR 记录解析 + 百分制评分\n- **SMTP 邮箱验证** — 通过 MX 服务器进行 RCPT TO 校验，支持绑定 IP 出站\n- **IP 池管理与自动故障转移** — 支持多个绑定 IP，自动检测健康状态，黑名单 IP 自动替换\n- **多节点协调** — 基于 GeoIP 的分布式节点路由，支持跨区域部署\n- **一次性邮箱检测** — 4 个上游数据源（~8k–74k 域名），自动下载更新\n- **RBL 黑名单扫描** — 29 个黑名单（Spamhaus、Barracuda、SpamCop 等）\n- **延迟探测** — 测量从池 IP 到目标域的连接延迟\n- **HTTP API** — RESTful JSON API，方便集成\n- **多种输出格式** — CLI 表格、JSON、Markdown\n\n## 快速使用\n\n```bash\n# 一键安装\nbash <(curl -fsSL https://raw.githubusercontent.com/monto-fe/smtp-probe/main/install.sh)\n\n# 检查域名邮件配置\nsmtp-probe check gmail.com\n\n# 验证邮箱地址\nsmtp-probe verify user@example.com\n\n# 扫描 IP 黑名单\nsmtp-probe blacklist 1.2.3.4\n\n# 生成完整报告\nsmtp-probe report example.com --format md > report.md\n\n# 启动 HTTP API 服务\nsmtp-probe serve --port 8080\n```\n\n## 适用场景\n\n适合邮件服务商运维、EDM 营销开发、邮件开发者自查发送问题，也可以作为独立检测工具嵌入到现有邮件平台中。\n\n## 架构\n\n```\nsmtp-probe/\n├── cmd/            # Cobra CLI 命令\n├── pkg/            # 核心包\n│   ├── probe/      # 编排与评分\n│   ├── dnscheck/   # DNS 记录检查 (SPF/DKIM/DMARC/MX/PTR)\n│   ├── disposable/ # 一次性邮箱检测\n│   ├── pool/       # IP 池管理与健康检查\n│   ├── node/       # 多节点协调 (GeoIP, 路由, 心跳)\n│   ├── rbl/        # RBL 黑名单查询\n│   └── smtpclient/ # SMTP RCPT TO 验证\n└── server/         # HTTP API (Gin)\n```\n\nMIT 开源协议，欢迎 Star 和 PR！",
-    "created_at": "2026-07-24T09:01:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10865"
-  },
-  {
-    "id": 10864,
-    "title": "【开源自荐】Wink：给 Mac 上每个应用一个专属快捷键，按一下唤起、再按一下让开",
-    "content": "项目地址：https://github.com/xrf9268-hue/Wink\n官网：https://wink.aixie.de （中文手册：[wink.aixie.de/guide/zh](https://wink.aixie.de/guide/zh)）\n\nWink 是一款 macOS 菜单栏应用：给常用应用各绑一个全局快捷键，按一下把它带到最前面，再按一下把它藏起来。灵感来自 Thor，Swift 6 原生实现，免费开源，macOS 15+。\n\n日常体验是：Caps Lock 按住变成 Hyper 键，⇪S 唤出 Safari、⇪T 唤出终端——手不离开键盘完成应用切换，比 Cmd-Tab 少一步\"找\"的过程。\n\n<img src=\"https://raw.githubusercontent.com/xrf9268-hue/Wink/main/docs/screenshot-dark.png\" width=\"720\" alt=\"Wink 设置界面\">\n\n## 功能\n\n- 字母、F 键、方向键、空格都可绑定；支持普通修饰键组合，或把 Caps Lock 变成 Hyper 键\n- Thor 式切换语义：应用没开就启动、开着就聚焦、已在最前就隐藏\n- 可选窗口轮换：重复按键在目标应用的多个窗口间循环（含最小化窗口），HUD 实时显示位置；也可设为长按弹出窗口选择器\n- \"当前应用\"伪目标：一个键轮换手头应用的窗口，无需逐个绑定\n- 搜索面板：触发键 + 几个字母，跳转到任意已安装应用\n- 按住 Hyper 键显示全部快捷键速查表\n- 洞察面板：使用趋势、热力图，以及\"经常切换却还没绑键\"的应用建议——数据全部保存在本地\n- 虚拟机 / 远程桌面在前台时自动暂停捕获；Secure Input 受限会在菜单栏明示而不是静默失效\n- 快捷键方案可导出 / 导入（.winkrecipe），也提供 wink:// URL scheme 供 Raycast、Stream Deck 等脚本调用\n- 中英双语界面\n\n## 一点技术细节\n\nmacOS 14 之后，让一个无 Dock 图标的辅助应用可靠地把别的应用带到前台并不容易（`NSRunningApplication.activate` 只是一个系统可拒绝的协作请求），Wink 为此做了不少平台层面的功课，取舍都记录在仓库的 docs/architecture.md 里。标准快捷键走 Carbon 热键、Hyper 路由走主动事件 tap（带自动恢复），按键到切换的热路径是 O(1) 预编译索引。\n",
-    "created_at": "2026-07-24T08:12:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10864"
   }
 ]
