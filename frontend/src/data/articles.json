@@ -1,5 +1,21 @@
 [
   {
+    "id": 10961,
+    "title": "fix: phrasing and improve clarity in issue-406.md",
+    "content": "Corrected the phrasing of '韬（τ）定律' and added '并且' for clarity.",
+    "created_at": "2026-07-31T02:17:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/10961"
+  },
+  {
+    "id": 10960,
+    "title": "【开源自荐】通过算力共享消耗订阅Token",
+    "content": "FastenShare 是一个 AI 模型能力共享与调用平台，连接两类用户：\n\n- **生产者**：将自己有权共享的本地模型、私有部署模型或第三方模型 API 接入平台，利用闲置能力获得生产积分；\n- **消费者**：通过统一接口发现并调用在线模型节点，用积分支付实际产生的调用费用。\n\n一次完整调用大致会经过下面这条路径：\n\n```text\n消费者发起模型请求\n        ↓\nFastenShare 匹配并转发请求\n        ↓\n生产者设备上的客户端接收请求\n        ↓\n本地模型或第三方模型 API 完成推理\n        ↓\n结果流式返回给消费者\n        ↓\n平台按实际用量结算积分\n```\nFastenShare 不把你的账号或密钥公开给别人。生产者使用的上游 API Key 保存在自己的设备上，消费者拿到的是 FastenShare 提供的调用入口，而不是你的原始密钥。\n开源地址：https://github.com/fasten-share/fasten-share-client\n界面截图：\n\n<img width=\"1085\" height=\"749\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/78948479-5262-4c3c-ae0a-0f2cf0fab426\" />",
+    "created_at": "2026-07-31T02:04:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10960"
+  },
+  {
     "id": 10959,
     "title": "【开源自荐】475 条 Krea 2 提示词，每条都带产出它的 seed；另有 65 次失败连同原因一并保留",
     "content": "做了一个 Krea 2 Turbo 的提示词目录。和常见的提示词合集不同的地方有两个：\n\n一是每条都记了产出它的 seed 和参数，475 条全部有，可以逐条复现；二是把 65 次失败的生成连同**失败原因**一起保留了下来——大部分合集只收好看的结果，而实际写提示词时真正需要知道的是\"这个做不到\"。全部图片提交在仓库里，不是外链。\n\n所有结论都是在这些图上实测的，不是抄模型卡。其中有一条是仓库公开两小时后被读者推翻的：我写过\"手基本没问题，八张里七张解剖正常\"，两位读者数了手指，发现三张有六指或四指，于是整个类别连同 seed 移进了失败项。总共 561 次生成，花费 $4.54。\n\n链接：https://github.com/sjh9714/awesome-krea-2\n画廊：https://sjh9714.github.io/awesome-krea-2/\n\n<img width=\"912\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/hero.webp\" alt=\"成功与失败各三例\" />\n\n**保留下来的失败，每条都写明为什么被砍：**\n\n| | | | |\n|---|---|---|---|\n| <img width=\"200\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/images/failures/hands-8.webp\" /> | <img width=\"200\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/images/failures/fail-menu.webp\" /> | <img width=\"200\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/images/failures/aerial-007.webp\" /> | <img width=\"200\" src=\"https://raw.githubusercontent.com/sjh9714/awesome-krea-2/main/images/failures/hangul-003.webp\" /> |\n| `hands-8` 要求竖三根手指：数量对了，但这只手有六根 | `fail-menu` 没写死的菜单行变成了 CATEPe、MILTERS | `aerial-007` 要求垂直俯拍，回来的是高空斜视角 | `hangul-003` 韩文\"정직한\"错成\"정적한\"，换 seed 仍然错在同一处 |\n",
@@ -10,7 +26,7 @@
   {
     "id": 10958,
     "title": "【开源自荐】Panerelay：让 AI Agent 通过 agent-browser 操作你正在使用的 Chrome",
-    "content": "项目地址：https://github.com/F-loat/panerelay\n\n最新版本：https://github.com/F-loat/panerelay/releases/tag/v0.1.0\n\n开源协议：MIT\n\n让 AI Agent 操作网页时，一个常见问题是：自动化工具通常会启动一个新的浏览器，现有 Chrome 里的登录态、页面状态和标签页无法直接复用；而直接接管日常浏览器时，用户又需要清楚知道 Agent 能操作哪些页面，并且能随时收回控制。\n\nPanerelay 是一个连接 AI Agent 与用户现有 Chrome 会话的开源本地桥梁。任何能通过 CLI 或 MCP 使用 [agent-browser](https://github.com/vercel-labs/agent-browser) 的 Agent，都可以操作用户明确授权的标签页，直接复用当前 Chrome Profile 和登录态，无需启动独立浏览器、重复登录或导出 Cookie。\n\n![Panerelay](https://github.com/user-attachments/assets/a54dfbaa-1c9f-45a3-b3ab-aa2e6ec4a5f6)\n\n### 主要特点\n\n- **继续使用 agent-browser**：snapshot、定位、输入、等待、标签页、截图、网络检查和请求 Mock 等自动化能力仍由 agent-browser 提供，不需要为 Panerelay 学习另一套 Browser MCP。\n- **复用正在使用的 Chrome**：Agent 在现有浏览器的已授权标签页中工作，可以使用当前登录态和页面上下文；操作后台标签页时不会切走用户正在查看的页面。\n- **授权明确、随时可撤销**：网站权限、标签页授权和自动化控制相互独立；受控状态始终可见，用户可以立即释放控制。\n- **把本地 Agent 带进 Chrome 侧边栏**：v0.1.0 支持 Codex 和 Qoder，提供对话历史、审批、运行状态和中断操作。\n- **本地优先**：不依赖 Panerelay 云服务。登录凭证始终留在 Chrome 中，默认不导出或记录 Cookie、凭证、页面内容、截图和请求体。\n- **跨平台**：支持 macOS、Linux 和 Windows。\n\n工作链路如下：\n\n```text\n任意 AI Agent → agent-browser CLI / MCP → Panerelay Bridge\n                                             ↕ Native Messaging\n本地 Agent ← Chrome 侧边栏 ← Panerelay 扩展 ↔ 已授权标签页\n```\n\n### 快速体验\n\n1. 从 [Releases](https://github.com/F-loat/panerelay/releases) 下载并加载 Chrome 扩展。\n2. 安装本地集成：\n\n   ```bash\n   npx --yes @panerelay/setup\n   ```\n\n3. 在扩展中授权当前网页标签页。\n4. 通过 agent-browser 查看并操作已授权标签页：\n\n   ```bash\n   agent-browser --provider panerelay tab list\n   ```\n\nPanerelay 当前为首个稳定版本，欢迎试用和反馈。\n",
+    "content": "项目地址：https://github.com/F-loat/panerelay\n\n开源协议：MIT\n\n让 AI Agent 操作网页时，一个常见问题是：自动化工具通常会启动一个新的浏览器，现有 Chrome 里的登录态、页面状态和标签页无法直接复用；而直接接管日常浏览器时，用户又需要清楚知道 Agent 能操作哪些页面，并且能随时收回控制。\n\nPanerelay 是一个连接 AI Agent 与用户现有 Chrome 会话的开源本地桥梁。任何能通过 CLI 或 MCP 使用 [agent-browser](https://github.com/vercel-labs/agent-browser) 的 Agent，都可以操作用户明确授权的标签页，直接复用当前 Chrome Profile 和登录态，无需启动独立浏览器、重复登录或导出 Cookie。\n\n![Panerelay](https://github.com/user-attachments/assets/a54dfbaa-1c9f-45a3-b3ab-aa2e6ec4a5f6)\n\n### 主要特点\n\n- **继续使用 agent-browser**：snapshot、定位、输入、等待、标签页、截图、网络检查和请求 Mock 等自动化能力仍由 agent-browser 提供，不需要为 Panerelay 学习另一套 Browser MCP。\n- **复用正在使用的 Chrome**：Agent 在现有浏览器的已授权标签页中工作，可以使用当前登录态和页面上下文；操作后台标签页时不会切走用户正在查看的页面。\n- **授权明确、随时可撤销**：网站权限、标签页授权和自动化控制相互独立；受控状态始终可见，用户可以立即释放控制。\n- **把本地 Agent 带进 Chrome 侧边栏**：v0.1.0 支持 Codex 和 Qoder，提供对话历史、审批、运行状态和中断操作。\n- **本地优先**：不依赖 Panerelay 云服务。登录凭证始终留在 Chrome 中，默认不导出或记录 Cookie、凭证、页面内容、截图和请求体。\n- **跨平台**：支持 macOS、Linux 和 Windows。\n\n工作链路如下：\n\n```text\n任意 AI Agent → agent-browser CLI / MCP → Panerelay Bridge\n                                             ↕ Native Messaging\n本地 Agent ← Chrome 侧边栏 ← Panerelay 扩展 ↔ 已授权标签页\n```\n\n### 快速体验\n\n1. 从 [Releases](https://github.com/F-loat/panerelay/releases) 或 [Chrome商店](https://chromewebstore.google.com/detail/panerelay/panplnkjlkoceaonlmpdekjphgmbggmi) 下载安装 Chrome 扩展。\n2. 安装本地集成：\n\n   ```bash\n   npx --yes @panerelay/setup\n   ```\n\n3. 在扩展中授权当前网页标签页。\n4. 通过 agent-browser 查看并操作已授权标签页：\n\n   ```bash\n   agent-browser --provider panerelay tab list\n   ```\n\nPanerelay 当前为首个稳定版本，欢迎试用和反馈。\n",
     "created_at": "2026-07-30T12:25:04Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10958"
@@ -796,25 +812,5 @@
     "created_at": "2026-07-23T23:27:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10852"
-  },
-  {
-    "id": 10851,
-    "title": "【开源自荐】RepoMirror，将 GitHub 仓库同步至本地文件夹树的 macOS 桌面应用",
-    "content": "项目地址：https://github.com/wutongyuonce/RepoMirror\n\nRepoMirror 是一款专注于将 GitHub 仓库或其中指定目录镜像同步至本地文件夹树的 macOS 桌面应用。它基于 Tauri 2、React、TypeScript 与精简的 Rust 后端构建。\n\n它特别适合正在本地积累 AI Agent Skills、提示词、扩展与开源工具的人：把真正会使用的项目保留在磁盘上，按自己的方式归组，不必再手动逐个检查几十个 GitHub 项目有没有更新。\n\n<img width=\"2360\" height=\"1520\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a53f64b4-a5cd-48bb-83b2-e3d91bdf442e\" />\n\n\n## 功能\n\n- 选择一个默认根目录。\n- 可展开的路径型文件夹组，例如 `tools/browser`。\n- 支持 GitHub 仓库链接与 `tree/<branch>/<path>` 目录链接。\n- 批量添加来源，并可自定义目标文件夹名称。\n- 每个条目独立设置镜像模式；每次写入前提供逐文件预览。\n- 手动同步单个条目，或按顺序同步全部条目。\n- 配置导入与导出、持久化浅色/深色外观；不存储账号或令牌。\n\nRepoMirror 使用 Mac 上已有的 `git` 可执行文件与凭据。只要 Git 已能在此机器上认证，私有仓库也可正常使用。",
-    "created_at": "2026-07-23T19:16:44Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10851"
-  },
-  {
-    "id": 10850,
-    "title": "【开源工具自荐】Figwright:免费的双向 Figma MCP,让 AI 读设计稿也能反过来画设计稿",
-    "content": "做了个开源工具 **Figwright**,一个免费、双向的 Figma MCP server,想来分享一下,顺便听听大家的意见。\n\n起因是这样:现在用 AI 把 Figma 设计稿转成代码已经很常见,但官方的 Figma Dev Mode MCP 要付费席位才能用,而且基本只能「读」——把设计稿吐成代码,单向的。我想要的是两件事:一是免费,二是**反过来也能用**,让 AI 直接在 Figma 画布上画东西,而不只是看它。\n\nFigwright 由一个 MCP server 和一个 Figma 插件组成,两者通过本机 WebSocket 通信,让 Claude Code、Cursor、Codex 等任何 MCP 客户端直接操作 Figma。全部跑在本机,不需要 Figma 付费席位。\n\n它是**真双向**的:\n\n- **读**:把选中的设计稿转成贴合你现有技术栈的代码。它会先探测你项目真实的框架和样式方案(React / Vue / Svelte / Angular + Tailwind / CSS Modules 等),把 Figma 里的组件、设计变量、图标映射到你代码库里已有的东西上,让 AI 复用而不是重造一堆要你回头重写的通用代码。\n- **写**:反过来在画布上创建和修改——frame、自动布局、文字、组件、变量,甚至整屏页面。目前 112 个工具,读和写都覆盖。\n\n几个我自己比较在意的点:\n\n- **免费**:官方 Dev Mode MCP 要付费席位,Figwright 走插件通道,免费账号就能用。\n- **插件不是黑盒**:插件面板能看到每一次工具调用及耗时、发给模型的原始 payload、连接健康状态,出问题时不用靠猜。\n- **全本地、无遥测**:设计数据只在插件、本机中继、你的 MCP 客户端之间流动,不上传到任何地方,也不需要 Figma Dev Mode 席位。\n\n用起来就是在 MCP 客户端配置里加一段 `npx` 命令,再在 Figma 里打开插件,然后对 AI 说人话:「把选中的这块做成 React 组件」,或者反过来「按这个规格在 Figma 里画一个定价区块」。\n\n项目地址:https://github.com/awdr74100/figwright\n\nMIT 协议,欢迎试用和拍砖。\n",
-    "created_at": "2026-07-23T18:04:15Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10850"
   }
 ]
