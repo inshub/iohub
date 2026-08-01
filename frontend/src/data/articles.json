@@ -1,5 +1,29 @@
 [
   {
+    "id": 10982,
+    "title": "自荐软件:hevc.js — 236KB 的 WASM HEVC 解码器,让不支持 H.265 的浏览器也能播放",
+    "content": "**项目地址**:https://github.com/privaloops/hevc.js(含中文 README)\n**在线演示**:https://hevcjs.dev/demo/dash.html\n\nhevc.js 是一个完全从 ITU-T H.265 规范(716 页)从零写起的 HEVC 解码器,\nC++17 实现,编译为 WebAssembly 后只有 236KB(约为 libde265 WASM 版的 1/8),\nMIT 协议,零依赖。\n\n它解决的问题:Windows 上的 Chrome 没有 HEVC 软解回退(旧显卡直接放不出来),\nEdge/Firefox 需要微软商店的付费扩展,Linux 看运气。hevc.js 通过拦截\nMediaSource,在 Web Worker 里把 HEVC 实时转码为 H.264(WASM 解码 +\nWebCodecs 编码),让 dash.js 和 Shaka Player 在这些环境下正常播放 HEVC\n流 —— 播放器完全无感知,一行 `attachHevcSupport()` 接入,不需要\nCOOP/COEP 响应头。\n\n几个数字:1080p 解码 60fps(单线程),转码约 2.5 倍实时,与 ffmpeg 在\n128 个测试码流上逐像素比对验证。已被 dash.js 官方收录为 playback\nsample(5.2.1+)。\n\n比较特别的一点:它带有\"算力感知 ABR\"—— 弱 CPU 上转码跟不上实时时,\n自动通过播放器自己的公开配置降低码率档位,避免缓冲区被掏空(带宽型\nABR 看不到 CPU 瓶颈)。\n",
+    "created_at": "2026-08-01T14:43:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10982"
+  },
+  {
+    "id": 10981,
+    "title": "【网站自荐】Anyvids，All-in-one AI Video & Image Platform",
+    "content": "推荐一个项目：Anyvids AI\n网站：https://anyvids.ai/\n中文版：https://anyvids.ai/zh\n\n\n这是什么\n\nAnyvids 是一站式 AI 视频与图像平台，将各大顶尖模型汇聚于一处 —— 面向内容创作者、设计师以及更广泛用户群的完整创意工具箱。\n\n支持的模式\n- 各种方式的视频生成&编辑，支持多模型调用；\n- 各种方式的图片生成&编辑，支持多模型调用；\n- 数字人；\n\n亮点\nAI 产品摄影\n[用场景模板一键生成影棚级 AI 产品摄影图](https://anyvids.ai/zh/product-photography)\n\nAI 产品视频\n[把产品图变成适合广告与电商的 AI 产品视频](https://anyvids.ai/zh/ai-product-video)。\n\nAI 虚拟试穿图\n[一键生成可用于商品页、广告与社媒所需的产品效果图](https://anyvids.ai/zh/ai-virtual-try-on-photo)\n\nAI 虚拟试穿视频\n[用产品图与模特参考生成真实感 AI 虚拟试穿视频](https://anyvids.ai/zh/ai-virtual-try-on-video)。",
+    "created_at": "2026-08-01T14:39:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10981"
+  },
+  {
+    "id": 10980,
+    "title": "【开源自荐】murPick（知选）——把 AI 产品调研变成可勾选的\"点菜菜单\"",
+    "content": "## 项目介绍\n\nmurPick 是一个开源 Agent Skill（MIT），解决 AI 辅助产品调研的两个真实痛点：\n\n1. **长报告信息过载**——AI 调研动辄五千字，读到后面忘前面；\n2. **决策被悄悄代做**——在无 skill 的基线测试里，AI 会在报告中直接写出\"V1 = 一个骨架 + 三个模块\"和\"明确不做清单\"，用户还没选，范围已被替定。\n\nmurPick 让 AI 把调研结果生成一份**交互式\"功能点菜菜单\"**（自包含单文件 HTML，手机可用）：每个候选功能一个勾选框，像点菜一样勾选，勾选状态可一键烧录进文件回传，AI 据此产出带架构图的选型报告。**未勾选项会被整理成明确的\"不做\"边界清单**——是\"决定不做\"，而不是\"被遗忘\"。\n\n## 特点\n\n- 单文件 HTML 菜单：localStorage 自动保存、勾选烧录回传、导出 JSON，无需服务器\n- 用文档 TDD（RED-GREEN-REFACTOR）方式开发：仓库内附无 skill 基线的逐字失败证据、压力测试记录\n- 12 项硬约束由验证脚本把关（checkbox id 唯一性、烧录逻辑、自包含性等）\n- examples/ 内含一次完整回路演示（调研摘要 → 60 项菜单 → 勾选回传 → 全量回溯报告）\n- 遵循开放的 Agent Skills 规范；国内可通过 Anthropic 兼容端点（GLM/Kimi/DeepSeek）低门槛使用\n\n## 链接\n\n- GitHub：https://github.com/ymustc/murPick\n- 中文说明：https://github.com/ymustc/murPick/blob/main/README.zh-CN.md",
+    "created_at": "2026-08-01T13:43:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10980"
+  },
+  {
     "id": 10979,
     "title": "【工具自荐】Dopastep：把想拖的任务拆成小步，然后进直播专注房和别人一起做",
     "content": "https://dopastep.com\n\n一个对付拖延的网页工具，两件事：\n\n1. 把你一直不想动的那件事拆成足够小的步骤，小到\"开始\"不再需要下决心。\n2. 拆完直接进一个直播专注房，和房里的其他人按同一个节奏做事——也就是所谓的\n   body doubling（有人在旁边，就更容易开始）。\n\n房间是刻意做简陋的：不用开摄像头、没有聊天、不用预约、不用配对。打开就能看到\n房里有几个人、当前是专注段还是休息段，然后开始做。专注和休息的节奏是全房同步的。\n不注册也能先进去看。\n\n不想和陌生人一起的话，也可以把拆好的步骤分享给一个朋友，互相看对方勾掉了几步。\n\n免费额度：10 次任务拆解 + 公共专注房。Pro 每月 $10。\n\n界面目前只有英文。一个人做的，7 月上线。\n",
@@ -788,29 +812,5 @@
     "created_at": "2026-07-24T14:28:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10873"
-  },
-  {
-    "id": 10872,
-    "title": "[项目推荐] Snake PC Info - 开源的 Windows 硬件信息检测工具",
-    "content": "## 🐍 Snake PC Info\n\n一个开源的 Windows 硬件信息检测工具，基于 Python + PyQt5 开发。\n\n### ✨ 功能特点\n- CPU / 内存 / 磁盘 / S.M.A.R.T. / GPU / 网络 全面检测\n- 硬件日志分析（扫描 Windows 系统事件日志）\n- 中英文切换 + 暗色/亮色主题\n- 导出报告为 TXT 格式\n- 内置 Python 环境，无需额外安装\n\n### 🔗 链接\n- GitHub: https://github.com/WindowSSnake/Snake-PC-Info\n- 下载: https://github.com/WindowSSnake/Snake-PC-Info/releases\n\n### 📷 截图\n\n<img width=\"1154\" height=\"953\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b0cdaeba-7de6-4144-81bf-83597c50bdfc\" />",
-    "created_at": "2026-07-24T14:28:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10872"
-  },
-  {
-    "id": 10871,
-    "title": "【工具自荐】GitZip Pro：GitZip for GitHub，但是 Pro 版本，只下载你真正需要的内容",
-    "content": "GitZip Pro 是一款开源的浏览器扩展，用于从 GitHub 仓库中选择并下载指定的文件和文件夹。\n\n项目地址：https://github.com/fthux/GitZipPro\n官方网站：https://gitzippro.fthux.com/zh/\n\n已上架三大浏览器应用商店：\nChrome Web Store: https://chromewebstore.google.com/detail/gitzip-pro/lpjpkopdlnpgcifigibaelbbkmigjjnp\nEdge Add-ons: https://microsoftedge.microsoft.com/addons/detail/gitzip-pro/nhhmnccepdfgnekfhhchnbagljpifikg\nFirefox Add-ons: https://addons.mozilla.org/en-US/firefox/addon/gitzip-pro/\n\n# 简介\n\nGitZip Pro 的开发灵感来自 GitZip for GitHub，并向它最初提出的优秀理念致敬：让用户可以轻松下载 GitHub 仓库中真正需要的部分。\n\n在此基础上，GitZip Pro 提供了更加完整的“Pro”级下载体验，包括私有仓库支持、浏览器本地 ZIP 打包、下载历史与统计、<del>智能忽略规则、</del>文件大小显示、自定义文件名、界面个性化以及更多工作流程增强功能。\n\n# 功能\n\nGitZip Pro 会在 GitHub 仓库文件列表中添加选择框。选择一个或多个文件和文件夹后，即可将它们下载为 ZIP 压缩包，同时保留仓库原有的目录结构。\n\n你也可以通过浏览器右键菜单快速下载单个文件或文件夹，无需克隆或下载整个仓库。\n\n功能：\n\n- 直接在 GitHub 页面选择多个文件和文件夹\n- 将选中的内容下载为 ZIP 压缩包\n- 保留仓库原有的目录结构\n- 通过右键菜单下载单个文件或文件夹\n- 直接在浏览器本地创建 ZIP 压缩包\n- 匿名访问和下载公开仓库\n- 可选择连接 GitHub，以提高 API 限额并访问私有仓库\n- 使用仓库名、分支、路径和日期等变量自定义 ZIP 文件名\n- <del>使用内置预设或自定义忽略规则排除不需要的文件</del>\n- 可选择在仓库页面显示文件大小\n- 查看存储在本地的下载历史和统计信息\n- 配置下载完成通知和可选提示音\n- 自定义主题、强调色和下载按钮位置\n- 遇到临时网络错误或 GitHub API 限流时自动重试\n- 自动适配 GitHub 页面导航，无需手动刷新页面\n- 其他\n\n开源并上架三大浏览器应用商店，欢迎试用~\n\n",
-    "created_at": "2026-07-24T13:39:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10871"
-  },
-  {
-    "id": 10870,
-    "title": "【开源自荐】hekouwang-terminal-kit：一套配色同时刷 iTerm2 / Ghostty / Warp / 系统终端",
-    "content": "项目地址：https://github.com/huiyonghkw/hekouwang-terminal-kit\n\n我每换一台 Mac，最不想重来一遍的就是终端配置。更烦的是 iTerm2、bat、fzf、eza、git diff 各存各的配色，换个主题总会漏掉一两个，过几个月才发现某个工具还是旧色。\n\n所以这套东西只做一件核心的事：**一份配色源，同时生成 iTerm2、Ghostty、Warp 和 macOS 自带终端的主题，外加 bat / fzf / eza / git diff(delta) / tmux 的配置**。一条命令，四个终端加一整套 CLI 工具全部对齐同一套颜色。\n\n<img src=\"https://raw.githubusercontent.com/huiyonghkw/hekouwang-terminal-kit/main/docs/images/cmp-iterm2-free.png\" width=\"720\" alt=\"各工具各说各的颜色\"> <img src=\"https://raw.githubusercontent.com/huiyonghkw/hekouwang-terminal-kit/main/docs/images/cmp-iterm2-paid.png\" width=\"720\" alt=\"统一到同一色系\">\n\n几个我自己踩过坑才特意做的取舍：\n\n## 功能\n\n- **一色刷全链**：iTerm2 / Ghostty / Warp / 系统终端 + bat / fzf / eza / git diff / tmux / VS Code，同一份 palette 生成，换肤一条命令\n- **接管而非覆盖**：已有的 `.zshrc` 会被迁移接管，运行时只往里加一行 `source`，卸载后能完全还原\n- **不塞字体**：本仓不分发任何字体文件，按优先级识别你机器上已装的（Operator Mono → Maple Mono NF CN → JetBrains Mono）\n- **敢装也敢卸**：`./uninstall.sh --dry-run` 先把要删的东西列给你看，再决定动不动手\n- **现代 CLI 全家桶**：eza / bat / fzf / fd / zoxide / ripgrep / atuin / delta 开箱即用\n- **顺手的小配置**：Shift+Enter 多行输入（喂 AI CLI 很关键）、ERROR/WARN/SUCCESS 日志自动上色、毛玻璃 + 透明\n- **中英双语**：默认英文，`--lang zh` 或 `HKW_LANG=zh` 切中文\n- 3 套社区主题免费、MIT 开源；另有付费主题包（¥19.9）加 4 套品牌主题和浅色版，但整套生成器不买也完整可用\n",
-    "created_at": "2026-07-24T10:25:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10870"
   }
 ]
