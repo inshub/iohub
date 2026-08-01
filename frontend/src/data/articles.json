@@ -1,5 +1,13 @@
 [
   {
+    "id": 10977,
+    "title": "自荐产品：Quickdraw — MIT 协议的开源无限画布白板 SDK（tldraw 免费替代品）",
+    "content": "**产品名称**：Quickdraw\n\n**网址**：https://tryquickdraw.com （在线免费白板，无需注册：https://app.tryquickdraw.com ）\n\n**GitHub**：https://github.com/nmndwivedi/quickdraw\n\n**简介**：MIT 协议的无限画布白板 SDK，支持 React、React Native 和原生 JS。tldraw 自 SDK 4.0 起生产环境需要付费许可证密钥，Excalidraw 没有官方 React Native 支持——Quickdraw 填补了这个空缺：压感笔迹、手掌防误触、手绘风格图形、便签、激光笔、撤销/重做、PNG 导出、明暗主题。核心零依赖、纯 ESM、无需构建步骤，数据模型基于 JSON diff，天然支持实时协作同步。完全免费，商用无限制。\n\n（作者自荐，感谢考虑！）",
+    "created_at": "2026-08-01T01:34:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10977"
+  },
+  {
     "id": 10976,
     "title": "工具自荐】MathLite —— 打开即用的纯前端数学工具箱",
     "content": "地址：\n[https://mathlite.dpdns.org/](mathlite)\n\n33 个工具覆盖科学计算、矩阵、概率分布、回归拟合、FFT、函数绘图与开发者常用计算。无后端、无注册，所有计算在浏览器本地完成。\n\n<img width=\"2560\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0dd601c4-400c-47eb-819b-b8d261d7246b\" />",
@@ -804,13 +812,5 @@
     "created_at": "2026-07-24T09:27:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10868"
-  },
-  {
-    "id": 10867,
-    "title": "CLI Schema：命令行程序的开放描述规范（“CLI 的 OpenAPI”）",
-    "content": "**一句话定位**：[CLI Schema](https://cli-schema.org/) 是一个开放的 JSON 规范，用一份机器可读的文档完整描述一个命令行程序——可以理解为“CLI 的 OpenAPI”。\n\n**解决什么问题**：命令行是最常见的可编程接口，但对工具完全透明——help 文本是写给人看的，自动补全要逐 shell 手写，AI agent 调用 CLI 时只能靠猜参数。CLI Schema 让 CLI 作者随二进制发布一份 schema 文档，消费者（AI agent、IDE、shell 补全、文档生成器）解析一次即可完整理解这个工具：有哪些命令和参数、哪些命令有破坏性、哪些需要人工确认、如何要求机器可读的输出。\n\n**设计亮点**：\n- 双发现机制：`mytool __schema` meta-command 直接输出文档；或随二进制附带 `<binary>.cli-schema.json` sidecar 文件，不启动进程即可读取（对沙箱/不可信环境很重要）。\n- 安全语义是一等公民：`intent.destructive`、`requiresConfirmation`、`requiresAuth`，以及 `confirmationSkip`/`dryRun` 参数角色，让 agent 在执行前就知道命令的危险性，而不是事后猜。\n- 规范本身 CC0（公共领域），实现库 MIT。\n\n**和 MCP 的区别**：MCP 是让 agent 调用*新*工具服务的协议；CLI Schema 是让 agent 理解*现存几十万个* CLI 的描述格式。两者不冲突，互补。\n\n**现状**：规范处于 Draft 阶段（v1 未冻结），由 Elastic 的 .NET 客户端负责人 Martijn Laarman 发起。官方已有 TypeScript SDK（Commander 集成），Python（Typer/Click）集成也在进行中。非常早期，用的人还很少，但问题真实、设计认真，值得关注与参与。\n\n- 官网：https://cli-schema.org/\n- 规范仓库：https://github.com/cli-schema/cli-schema\n- JS SDK：https://github.com/cli-schema/cli-schema-js",
-    "created_at": "2026-07-24T09:25:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10867"
   }
 ]
