@@ -1,5 +1,13 @@
 [
   {
+    "id": 10978,
+    "title": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑",
+    "content": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑\n\n**项目名称**：Rclaude（flyingEirc/Rclaude）\n\n**项目简介**：一套\"远程文件访问 + 远程 agent 终端\"系统。它不是把某个 agent 的 API 包装后转卖，而是共享 agent 的**使用本身**：一个已登录的编码 agent（Claude Code、Codex 等）跑在远端机器上，你在本地把工作区和终端接上去，直接驱动它——而你的代码始终留在自己机器上，不上传。\n\n**项目地址**：https://github.com/flyingEirc/Rclaude\n\n**分类**：AI Agent / 开发工具\n\n**核心亮点**：\n\n- **共享的是\"使用\"不是 API**：终端直连真实 agent 二进制的完整 TUI 与 agentic loop。你共享出去的是\"用这个 agent 这件事\"。\n- **代码不出本地**：通过 FUSE 把本地工作区映射到远端，agent 用普通路径（cat/grep/ls/sed）读写你的项目；源文件始终在你机器上，server 只持有缓存与元数据，不保存完整副本。\n- **daemon 主动外连**：连接从你的机器发起到 server，server 无需反向拨回你的内网。\n- **会话被收口到单一 agent**：落点直接是命令行声明的 agent——整个会话离不开 agent 界面，也无法在 server 上乱逛。共享的是\"这个 agent\"，\n  不是\"一台 Linux\"。\n- **可选增强**：前置 Caddy 终止 TLS（server 二进制保持明文 h2c），以及可选的 SQLite/MySQL/PostgreSQL 文件操作审计日志。\n\n**推荐理由**：现在要么是分发 API key（拿到的是原始接口，不是 agent 的交互式使用），要么是把代码传到一台共享云机器上（代码交了出去）。Rclaude反过来：共享的是**一个已登录 agent 的交互式使用，代码留在本地**，适合小团队想摊薄一个订阅席位、又不愿把代码交出去的场景。Go 实现，server 端需 Linux + FUSE；目前 Codex  / Claude Code/ Cursor Agent的 TUI attach 与远端执行全链路已跑通。仍是最小可用路径、非生产发行版，处于迭代中。",
+    "created_at": "2026-08-01T09:55:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10978"
+  },
+  {
     "id": 10977,
     "title": "自荐产品：Quickdraw — MIT 协议的开源无限画布白板 SDK（tldraw 免费替代品）",
     "content": "**产品名称**：Quickdraw\n\n**网址**：https://tryquickdraw.com （在线免费白板，无需注册：https://app.tryquickdraw.com ）\n\n**GitHub**：https://github.com/nmndwivedi/quickdraw\n\n**简介**：MIT 协议的无限画布白板 SDK，支持 React、React Native 和原生 JS。tldraw 自 SDK 4.0 起生产环境需要付费许可证密钥，Excalidraw 没有官方 React Native 支持——Quickdraw 填补了这个空缺：压感笔迹、手掌防误触、手绘风格图形、便签、激光笔、撤销/重做、PNG 导出、明暗主题。核心零依赖、纯 ESM、无需构建步骤，数据模型基于 JSON diff，天然支持实时协作同步。完全免费，商用无限制。\n\n（作者自荐，感谢考虑！）",
@@ -804,13 +812,5 @@
     "created_at": "2026-07-24T10:04:23Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10869"
-  },
-  {
-    "id": 10868,
-    "title": "🚀 酷睿程 (CARIZON) 急招！内推直通，加急打捞～（智驾）",
-    "content": "**【关于我们】**\n\n酷睿程（CARIZON）是大众集团与地平线成立的合资公司，是大众集团在中国的核心ADAS供应商。公司主要分布在北京和上海，团队超70%拥有硕博学历，超90%为研发人员。此外，搭载酷睿程一段式端到端智驾方案的与众06、07双上市。\n\n📍 **地点**： 北京 / 上海\n🎓 **团队**： 硕博比例 70%+，研发人员 90%+\n🚘 **亮点**： 搭载公司一段式端到端智驾方案的“与众06、07”已双双上市，发展迅猛！\n\n**各类福利**\n超多年假（入职10天福利年假）\n支持远程办公 \n近距离住房补贴\n商业医疗保险 \n体育活动 （健身社、网球社、羽毛球社、攀岩社、搏击社、舞蹈社等）\n更多惊喜可具体咨询\n\n**【核心热招岗位】**\n🔹 算法/数据类： 算法与数据 SE（数据/模型方向）、数据挖掘工程师/专家、自动驾驶数据挖掘算法工程师\n🔹 研发/硬件类： 智驾车辆集成方案工程师、现场应用工程师（底层软件&硬件）、芯片 SE（量产方向）\n🔹 产品/PM类： 产品经理（主动安全方向）、数据 PM-产线、工具平台项目经理\n(更多研发、产品、工程岗位同步热招中)\n\n**【内推优势】**\n✅ 简历直达 HR/面试官，优先评估，快速反馈！\n✅ 全程帮查面试进度，避免简历石沉大海。\n\n**📩投递方式**\n请发送简历至：gaochao.zhu@carizon.com\n邮件标题建议：岗位 - 姓名 - 来自阮一峰周刊",
-    "created_at": "2026-07-24T09:27:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10868"
   }
 ]
