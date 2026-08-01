@@ -1,5 +1,13 @@
 [
   {
+    "id": 10979,
+    "title": "【工具自荐】Dopastep：把想拖的任务拆成小步，然后进直播专注房和别人一起做",
+    "content": "https://dopastep.com\n\n一个对付拖延的网页工具，两件事：\n\n1. 把你一直不想动的那件事拆成足够小的步骤，小到\"开始\"不再需要下决心。\n2. 拆完直接进一个直播专注房，和房里的其他人按同一个节奏做事——也就是所谓的\n   body doubling（有人在旁边，就更容易开始）。\n\n房间是刻意做简陋的：不用开摄像头、没有聊天、不用预约、不用配对。打开就能看到\n房里有几个人、当前是专注段还是休息段，然后开始做。专注和休息的节奏是全房同步的。\n不注册也能先进去看。\n\n不想和陌生人一起的话，也可以把拆好的步骤分享给一个朋友，互相看对方勾掉了几步。\n\n免费额度：10 次任务拆解 + 公共专注房。Pro 每月 $10。\n\n界面目前只有英文。一个人做的，7 月上线。\n",
+    "created_at": "2026-08-01T10:43:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10979"
+  },
+  {
     "id": 10978,
     "title": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑",
     "content": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑\n\n**项目名称**：Rclaude（flyingEirc/Rclaude）\n\n**项目简介**：一套\"远程文件访问 + 远程 agent 终端\"系统。它不是把某个 agent 的 API 包装后转卖，而是共享 agent 的**使用本身**：一个已登录的编码 agent（Claude Code、Codex 等）跑在远端机器上，你在本地把工作区和终端接上去，直接驱动它——而你的代码始终留在自己机器上，不上传。\n\n**项目地址**：https://github.com/flyingEirc/Rclaude\n\n**分类**：AI Agent / 开发工具\n\n**核心亮点**：\n\n- **共享的是\"使用\"不是 API**：终端直连真实 agent 二进制的完整 TUI 与 agentic loop。你共享出去的是\"用这个 agent 这件事\"。\n- **代码不出本地**：通过 FUSE 把本地工作区映射到远端，agent 用普通路径（cat/grep/ls/sed）读写你的项目；源文件始终在你机器上，server 只持有缓存与元数据，不保存完整副本。\n- **daemon 主动外连**：连接从你的机器发起到 server，server 无需反向拨回你的内网。\n- **会话被收口到单一 agent**：落点直接是命令行声明的 agent——整个会话离不开 agent 界面，也无法在 server 上乱逛。共享的是\"这个 agent\"，\n  不是\"一台 Linux\"。\n- **可选增强**：前置 Caddy 终止 TLS（server 二进制保持明文 h2c），以及可选的 SQLite/MySQL/PostgreSQL 文件操作审计日志。\n\n**推荐理由**：现在要么是分发 API key（拿到的是原始接口，不是 agent 的交互式使用），要么是把代码传到一台共享云机器上（代码交了出去）。Rclaude反过来：共享的是**一个已登录 agent 的交互式使用，代码留在本地**，适合小团队想摊薄一个订阅席位、又不愿把代码交出去的场景。Go 实现，server 端需 Linux + FUSE；目前 Codex  / Claude Code/ Cursor Agent的 TUI attach 与远端执行全链路已跑通。仍是最小可用路径、非生产发行版，处于迭代中。",
@@ -804,13 +812,5 @@
     "created_at": "2026-07-24T10:25:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10870"
-  },
-  {
-    "id": 10869,
-    "title": "【工具自荐】SMTP Probe：免费在线邮箱验证工具，一键检查邮箱是否真实可用",
-    "content": "[SMTP Probe](https://probe.uspeedo.online/) 是一款免费的在线邮箱验证工具，无需注册即可在浏览器中即时验证任意邮箱地址是否真实可用。\n\n## 它能做什么\n\n1. **邮箱真实性验证** — 通过 SMTP RCPT TO 协议直接连接目标邮件服务器，确认邮箱是否存在，不会实际发送任何邮件。\n2. **Catch-All 域名识别** — 自动检测目标域名是否配置为接收所有地址的邮件（Accept-All），这类域名无法验证具体邮箱。\n3. **一次性邮箱检测** — 识别临时邮箱服务商（如 Mailinator、10minutemail 等），帮助过滤垃圾注册。\n4. **黑名单 / 风险评估** — 检查域名是否出现在已知垃圾黑名单中，辅助判断发送风险。\n\n## 适用场景\n\n- 营销团队在发信前清洗邮箱列表，降低退信率\n- 开发者在用户注册或导入数据时校验邮箱格式与可用性\n- 运维人员排查某个域名/邮箱的投递问题\n\n## 使用方式\n\n打开 [probe.uspeedo.online](https://probe.uspeedo.online/)，输入邮箱地址，点击验证即可，无需登录、无需安装任何软件。每天免费 100 次验证。\n\n## 批量验证 & API\n\n如果需要大批量验证（单次最多 10,000 个），可以通过 [uSpeedo API](https://uspeedo.com/docs/products/email/api/BatchVerifyEmail) 接入：\n\n```bash\ncurl -X POST \"https://api.uspeedo.com/api/v1/email/BatchVerifyEmail\" \\\n  -H \"Authorization: Basic \\$(echo -n 'key:secret' | base64)\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"Emails\": [\"test@example.com\"]}'\n```\n\n## 技术实现\n\nSMTP Probe 的验证引擎已开源：[github.com/monto-fe/smtp-probe](https://github.com/monto-fe/smtp-probe)，用 Go 实现，支持 CLI 和 HTTP API 两种模式。\n\n验证流程：DNS MX 记录查询 → 连接目标 SMTP 服务器 → RCPT TO 校验 → 断开连接（不发信）。",
-    "created_at": "2026-07-24T10:04:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10869"
   }
 ]
