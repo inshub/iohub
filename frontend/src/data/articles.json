@@ -1,5 +1,13 @@
 [
   {
+    "id": 10992,
+    "title": "【工具推荐】查看被删除的 reddit 帖子或者评论",
+    "content": "# how to view deleted reddit posts \n\n逛 Reddit 应该都遇到过：搜到一个帖子，点进去——[deleted]。 Google 缓存偶尔能救，但大多数时候什么都看不到。\n\n于是做了这个：[View Deleted Reddit Posts & Comments](https://viewdeletedreddit.com/)\n\n怎么用： \n• 贴一个 Reddit 帖子链接 → 看到删除前的内容 \n• 输入用户名 → 找到这个人删过的所有帖子和评论 \n• 搜 subreddit 名 → 看到被版主移除的帖子\n\n几个实际能用的场景： \n• 收藏的技术帖被 OP 删了 → 贴链接找回来 \n• 想看看某个用户的历史发言（包括删掉的）→ 搜用户名 \n• 帖子被版主 [removed] 了但好奇写了什么 → 搜 subreddit\n\n有需要的试试，反馈直接说",
+    "created_at": "2026-08-02T15:29:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10992"
+  },
+  {
     "id": 10991,
     "title": "【开源自荐】NetAge Badge：把你的 X / Reddit \"账号年龄\" 变成复古 QQ 等级太阳月亮星星",
     "content": "# NetAge Badge · 把你的 X / Reddit \"账号年龄\" 变成复古 QQ 等级太阳月亮星星\n\n> 一个纯本地运行、零上传、零埋点、零 API 的 Chrome 小插件。打开个人主页，自动挂上一枚怀旧 QQ 等级徽章，一键生成 4:5 分享卡片。\n\n---\n仓库地址：https://github.com/shaozhengmao/netage-badge\n应用店安装：https://chromewebstore.google.com/detail/hnliioagephoofbafgdedpbologbcajn\n\n## 是什么\n\nNetAge Badge 是一个极小的 Chrome 扩展：它读取个人主页上**公开的注册时间**，估算你的\"账号年龄等级\"，然后在头像旁边挂上一枚熟悉的 `☀️🌙⭐` 等级徽章。点一下相机按钮，就能生成一张干净的 4:5 分享卡片，发朋友圈、发推、发帖都行。\n\n- 5922 天 → `LEVEL 76`\n- `LEVEL 76` → `☀️☀️☀️☀️🌙🌙🌙`\n- 一条无聊的元数据 → 一个可以比拼、复制、晒出来的\"身份标签\"\n---\n\n## 支持页面\n\n| 平台 | 读取的公开字段 | 示例主页 |\n| --- | --- | --- |\n| X / Twitter | `Joined <月份> <年份>` | `https://x.com/username` |\n| Reddit | `Cake day` | `https://www.reddit.com/user/username/` |\n\n打开或刷新对应主页时会自动出现徽章。如果你的 Chrome 站点权限设成了\"点击时运行\"，请改成允许在 X/Twitter 和 Reddit 上自动注入。\n\n---\n\n## 等级怎么算\n\n完全复刻 QQ 的等级换算思路：\n\n```\nLevel = floor(sqrt(注册至今的天数))\n\n4 ⭐ = 1 🌙\n4 🌙 = 1 ☀️\n```\n\n也就是：\n\n- 1 级 = ⭐\n- 4 级 = 🌙\n- 16 级 = ☀️\n\nQQ 统计的是累计活跃天数；NetAge Badge 只看页面上公开的注册日期，所以等级是基于\"注册至今自然日\"的估算值——情怀向，不正经较真 😄\n\n---\n\n## 分享示例\n\n<img width=\"600\" height=\"752\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b03857ee-2f4d-420f-b670-2955375827f2\" />\n\n---\n\n\n\n",
@@ -804,13 +812,5 @@
     "created_at": "2026-07-25T15:28:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10882"
-  },
-  {
-    "id": 10881,
-    "title": "【开源自荐】MergeWarden：给 AI 智能体的 PR 加一道变更管控门禁",
-    "content": "**项目地址**：https://github.com/sjh9714/mergewarden\n**中文说明**：https://github.com/sjh9714/mergewarden/blob/main/README.zh-CN.md\n\n编码智能体现在整天都在提 PR，但审这些 PR 的方式基本还停留在人眼看 diff。MergeWarden 是一道加在合并之前的变更管控门禁，它检查的不是代码写得好不好，而是这个 PR 有没有越过仓库自己划定的边界：有没有超出它在 PR 正文里声明的改动范围；有没有顺手改了 `AGENTS.md`、`CLAUDE.md`、`.mcp.json` 这类会左右此后每一次智能体运行的文件；有没有把 PR 评论之类的不可信文本，接进某个 agentic 工作流的提示词里（也就是提示词注入）。\n\n写这个东西之前，我先扫了公开仓库上 2,204 个已合并的 AI 智能体 PR（Devin、Copilot、Codex、Claude Code、Cursor）。其中改动了工作流或包清单的有 349 个，这里面 12.9% 提升了工作流权限，17.5% 引入了未按 SHA 固定的 action；全部 PR 里有 3.9% 动过上面说的那类智能体指令文件。默认规则就是照着这些数据定的，所有数字都能从公开查询复现。\n\n两个刻意的设计：**运行时不调用大模型**，判定是确定性的、可以在本地原样复现；**从不检出、也不执行 PR 里的代码**，只通过 GitHub API 读，策略从基线 commit 加载，所以一个 PR 没法通过改自己分支里的配置，来放宽审判它自己的那套规则。\n\n不需要令牌、不需要仓库，一条命令就能看到它会抓到什么：\n\n```bash\nnpx --yes mergewarden@0.5.0 demo\n```\n\nMIT 协议，TypeScript 编写，零运行时依赖。\n",
-    "created_at": "2026-07-25T14:08:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10881"
   }
 ]
