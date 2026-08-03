@@ -1,5 +1,29 @@
 [
   {
+    "id": 10995,
+    "title": "【开源项目推荐】starfolio-worker：Cloudflare Worker 搭建 GitHub 星标曲线图，替代 star-history",
+    "content": "GitHub近期收紧Stargazer API权限，star-history 现在需要拥有仓库**写入权限**的Token，存在密钥泄露风险。\n\nstarfolio-worker 部署于 Cloudflare Worker + KV，定时抓取仓库星标数据、生成SVG曲线图并缓存。\n✅ 使用Cloudflare免费额度即可运行\n✅ 无需提供高权限GitHub Token\n✅ 对外直接输出缓存好的星标历史SVG图表\n\n仓库地址：https://github.com/yuhp/starfolio-worker\n配套介绍文章：https://yuhp.dev/zh/posts/starfolio-worker/",
+    "created_at": "2026-08-03T02:41:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10995"
+  },
+  {
+    "id": 10994,
+    "title": "【APP自荐】vPlayer HiFi — 把 iOS 设备化身准专业 HiFi 播放器",
+    "content": "\n**缘起**\n\n记得准备高考的那段时间，每天除了必要的锻炼，其他精力基本全都用来复习，唯一的放松，就是在晚饭时刻，当母亲把做好的饭菜端到我的书桌上后，我便合上书本，一边吃饭，一边打开练习英语听力的磁带机，随手放一盘自己喜欢的磁带。也许是唐朝的《梦回唐朝》，也许是黑豹的《无地自容》（《黑豹I》），或者是郑钧的《回到拉萨》，还有老狼的《恋恋风尘》。在那个白衣飘飘的年代，同学们会互相借磁带听，女生还会把喜欢的歌词手抄到带着花边的本子上，叫做歌词本。上了大学，在1999年的某一天，我在校门口斜对面的汉唐书店偶然买了盘一个叫做朴树的年轻人发行的专辑《我去2000年》，回到宿舍，同学们还都不知道这人是谁呢。后来他发行了第二张专辑《生如夏花》，我依然记得曾给某人在电话里清唱这张专辑里的《我爱你，再见》，而她人在电话那头早已哭的稀里哗啦。大学四年一晃而过，毕业季的旧货市场上，有个低年级的漂亮女生要打包全收我的那些旧磁带和杂志，我仔细地挑出了这盘《我去2000年》，连同在音乐学院、外语学院外打卡带地摊收的一套红、蓝、黑封面的披头士和当年一本叫做 Music Heaven 音乐期刊里带的那些极具风格化的欧美乐队歌手合集的磁带一起背回了家，直到现在，它们还安静的躺在我书柜的角落里，嗯，丢不走的行李，是我不变的心。上班后第一个月工资，我拿出大部分买了台蓝色的 Sony CD 便携播放器和森海塞尔 PX500 耳机，认认真真的煲够了一百小时，那时候经常光顾本地一家特色 CD 小卖店，店里全是复刻的国外经典 CD，平克弗洛伊德、披头士、大门、皇后、老鹰、恐怖海峡、涅槃等等，于此同时，互联网 P2P 开始有了萌芽，于是各种音乐专辑下载了一堆一堆，而电脑上的音乐播放器用过不少，比如 Winamp、Foobar2000、Audivana、HQplayer，还有特别小众的 BugHead。就这样，一转眼好多年过去了，现在的我更多是用手机听歌，不知不觉也已经成为 Apple Music  订阅用户好多年。就在最近，我开始学习 iOS应用开发，涌入脑海的第一个想法，就是开发一款能够运行在新老 iPhone、iPad 上的 HiFi 播放器，让家中 NAS、移动硬盘上那些之前认真下载、分门别类整理却沉默无言了许久的音频文件再次复活起来，于是，vPlayer HiFi，一款 iOS 上追求纯粹音质的 HiFi 播放器就这样诞生了。\n\n**命名**\n\nvPlayer 便是 Very Pure Layer 的简写，但这也的确反应了这款 App 的设计理念，就是希望把音频处理过程用分层方式直观的展现出来，让用户能够清楚的看到0、1组成的数字文件是怎么一步步转化成最终能够听到的波形数据，同时每一层又都可以单独启停或调整参数，可以方便地对比听感带来的轻微差别，从而找到那组最讨好自己耳朵的组合。巧合的是，我平时喜欢听古典弦乐，所以给它选了张小提琴作为 App 图标，而小提琴的英文也恰是字母 v 打头。\n\n**优缺点**\n\n在进行功能性介绍之前，先说说它优点和短板。优点包括：\n\n- 它采用 Apple iOS 开发框架，能够同时支持 iPhone 和 iPad，未来还可以很方便的向MacOS、tvOS 平台移植。在用户管理方面，一个 Apple ID 账号的一次订购就能实现跨设备的统一认证和鉴权。\n- 现代 iPhone 的硬件处理能力已经非常强大，拿两三年前的 iPhone15Promax 来说，它拥有 8G 统一内存（实测单一应用最多可用到 3G 左右）和最低 256G 存储容量（一张 CD 按照 500MB 计算，也可以轻松存储几十张），即便是运行本地离线量化 AI 模型也完全没有问题（详见我另一个App—锦囊AI ）。单从音频解码角度看，其实并不需要太大处理能力，实践证明，只要做好精细的资源分配回收，即便是2014年左右的 iPhone7，照样可以轻松实现 DSD 解码重播。\n- 它可以通过 Airplay 协议方便的连接苹果生态，比如 Studio Display、AppleTV 等。\n- 它能让你淘汰的老旧 iPhone、iPad 变废为宝。vPlayer HiFi 还有一个未上架的仅保留核心功能的版本，能够支持 iPhone7~X 的老iPhone，甚至我还为乔布斯时代的 iPhone4 移植了一个自用的 Jailbreak 版本，当 3.5mm 耳机口外接上更加古早的电子管收音机，听张人声爵士或者小提琴奏鸣曲，那情绪价值绝对是满满的。\n\n相对的，它的短板也是明显的：\n\n- iPhone、iPad 自带的 DAC 只支持44.1kHz和48kHz 解码率，这对于 HiFi 显然是不够的。如果音频原始码率是 96kHz 或是经 DSD2PCM 后的 176.4kHz 和 352.8kHz，又或者原始的44.1kHz 经软件 SRC、FIR 重采样至更高采样率后，一旦选择经过 iPhone、iPad 自身 DAC 解码重播，依然会重采样回落到 44.1kHz 或 48kHz。\n- 这正是 vPlayer HiFi  App与专业 HiFi 硬件播放器的最大区别，它只是一款运行在 iOS 上的应用软件，虽然 iPhone、iPad 的软件运行环境、CPU内存等基础硬件能力足够胜任对音源的处理，但其内置 DAC 解码重播的确是 HiFi 的短板。解决方案其实也很简单，连接外置 DAC 作为纯粹数播节点就可以了。然而，即便是使用 iPhone、iPad 的内置 DAC 播放，你也能清晰感受到 vPlayer HiFi 带来听感的明显提升。\n\n**主要功能**\n\n- 可视化信号链：信号处理以节点路径方式呈现DSD · MEM · SRC ⊕ FIR · EQ · DITH。点任意节点即可进入对应设置面板——切换 DSD 滤波器、设置 MEM 内存预分配空间、选择 SRC 算法、调整 FIR 参数、微调 EQ等。\n- Bit‑Perfect：采用定制化的 AudioUnit 音频处理管线与内、外部 DAC 对接，精确匹配音源原始采样率，确保 iOS 系统不介入、不重采样、零染指。\n- Native DSD Playback：支持常见音源格式 MP3 、AIFF、M4A（AAC）、WAV、FLAC外，还支持 DSD（DSF、DFF） 解码，提供多种 DSD FIR 降采样滤波器（陡峭 / 平缓 / 宽带宽），输出采样率包括 176.4kHz  和 352.8kHz，保留 DSD 原生特质。更支持SACD‑R ISO 镜像解析，内置原生 Scarlet Book TOC 解析器可直接解析 SACD‑R 的 ISO 镜像文件，形成音轨目录，并自动提取单音轨独立 DSD 文件点播。\n- Memory Playback：得益于 iPhone、iPad 的大内存，可将整首曲目一次全部载入预热后的专属内存缓冲区再重播，足以容纳一整张 CD Wav 文件或一首高码率 DSD 文件，从而彻底消除实时文件读写 I/O 带来的时基抖动（Jitter），让声音背景更纯净。虽然技术上有玄学成分在里面，但实际听感确有比较明显的改善。\n- 多相 SRC + FIR 升频：提供 6 种采样率转换算法（从线性到 Sinc‑512 抽头），均采用 Kaiser 窗多相重采样。独立 FIR 升频支持 2× / 4× / 8× 倍率，抽头数可选（31 / 63 / 127），并可切换为同态最小相位模式。\n- 10 段图形均衡器EQ：每段 ±12 dB 手动调节，并配有频段参考指南。响应瞬时、零延迟，可从信号链工具栏一键开启或关闭。内置 638 款 AutoEq 耳机预设，直接加载来自 oratory1990 测量数据库的固定频段 EQ 校正曲线，选择耳机品牌与型号后，即可一键应用，同时自动计算前置增益（Preamp），防止削波失真。\n- 本地文件播放：通过 Finder 或 iTunes 将专辑文件夹拖放至 App 的共享目录，下拉即可刷新，左滑也可删除。\n- 网络文件播放：支持局域网内 Samba 网络存储服务接入，采用边下载、边缓存、再播放的保守策略，完全避免网络抖动对播放质量的影响。特别针对 SACD-R ISO 大型文件（一般在 3G 左右），实现了单音轨 DSD 文件提取，从而大大缩短网络下载等待时长。对于喜欢的专辑，又可以左滑下载到 iPhone 本地。\n- 双主题：提供“暗色”与“银色”两套界面风格，点击 vPlayer 标题即可轻松切换。\n- Lab 音频实验室：简易Room EQ 测量流程：两部 iPhone 协同开展，一部连接到房间音响系统并运行本 App 播放一段 20Hz 至 20kHz 的内置测量文件（务必提前带好耳塞），同时在听位头部位置，用另一部 iPhone 自带的录音 App 进行记录（提前打开高保真录音选项），最后将这段录音 Airdrop 到前一部 iPhone，App 加载后会自动对照原始测量文件，针对性的计算当前房间的 EQ 参数建议并可在 EQ 面板选择性启用。其精准度取决于第二台 iPhone 的录音精度，如换作高质量的便携录音设备参照性会更强。它主要是提供一种折衷的测量方法，在不改变现实听音环境基础上，可以明显改善低频污染。Shazam 歌曲识别：集成 Apple ShazamKit，轻点即可识别正在播放的音乐，获取专辑封面、风格、歌手信息。音乐绘画（Music Painting）：内置生成式艺术引擎，每首曲目都会绘制出独特的视觉画面，可选择“星座”或“印象”两种风格。画作可保存至画廊，随时浏览回味。\n\n**获取方式**\n\n希望喜欢音乐的你能够喜欢这款纯粹但绝不简单的 HiFi 播放器，它的特点正如老狼《恋恋风尘》专辑插页里的一句话：一杯清水，一种声音。\n**使用 iOS 设备登录 Apple App Store，搜索 vPlayer HiFi 即可。**\n[vPlayer HiFi App](https://apps.apple.com/cn/app/vplayer-hifi/id6783141736)\n\n<img width=\"642\" height=\"1389\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f6b39d99-d3ac-41f9-9184-11f1a471121c\" />\n",
+    "created_at": "2026-08-03T02:38:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10994"
+  },
+  {
+    "id": 10993,
+    "title": "【开源自荐】LLM Wiki CLI - 基于 Karpathy 提出的 LLM Wiki 概念实现的 Agent 本地持久化记忆空间",
+    "content": "项目地址：https://github.com/JanYork/llm-wiki-cli\n  中文文档：https://github.com/JanYork/llm-wiki-cli/blob/main/README.zh-CN.md\n  最新版本：v0.3.0\n  开源协议：Apache-2.0\n\n  ## 项目介绍\n\n  AI Agent 很擅长阅读文档和解决当前问题，但会话结束后，已经完成的调查和整理往往也随之消失。下次遇到相似任务时，它又要重新搜索、重新阅读、重新建立上下文。\n\n  LLM Wiki CLI（命令名为 `lwc`）尝试解决这个问题：让 Agent 把经过筛选的本地文档整理成一份能够长期维护、来源可追溯的 Wiki。\n\n  Agent 负责理解、综合和修订知识，LWC 负责保存原始来源、Wiki 页面、引用关系、页面链接、检索索引和修改历史。这样，Agent 完成的有效工作可以跨会话继续积累，而不是每次都从原始资料重新开始。\n\n  ## 思想来源\n\n  项目基于 Andrej Karpathy 提出的 [LLM Wiki](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) 概念：\n\n  > 让 LLM 增量构建并持续维护一份互相关联的 Wiki，而不是每次查询时重新从原始文档拼装答案。\n\n  LWC 将这个概念实现为一个基于 Rust 和 SQLite 的本地命令行工具，并提供配套的 Agent Skill。\n\n  ## 与普通 RAG 的区别\n\n  典型的 RAG 工作方式是：\n\n  ```text\n  查询 → 检索原始片段 → 生成一次性答案\n  ```\n\n  LWC 的工作方式是：\n\n  ```text\n  任务 → 读取已有 Wiki 和原始来源 → Agent 完成推理\n       → 将值得复用的结论写回 Wiki\n  ```\n\n  检索只是 LWC 的一项能力，它的核心产物是一份持续修订的 Wiki。来源、引用、页面关系、矛盾和历史都会被保留下来。\n\n  LWC 可以与 RAG 配合，但它本身不依赖 embedding 或向量数据库。\n\n  ## 主要特点\n\n  - **本地优先**：使用 Rust 和 SQLite，日常存储与检索不依赖云端服务、后台守护进程或数据库服务器。\n  - **来源可追溯**：原始资料保存为不可变快照，Wiki 页面可以明确引用对应来源。\n  - **知识持续写回**：Agent 可以在完成任务后创建或修订页面，让有效结论跨会话复用。\n  - **项目与全局记忆分离**：支持项目级 `.lwc/` 和用户级 `~/.lwc/`，避免不同项目的知识混在一起。\n  - **中英文词法检索**：基于 SQLite FTS5/BM25，支持中文、英文和混合技术术语。\n  - **Wiki 关系图**：保存页面之间的链接和引用关系，可以查询相关页面及结构化证据。\n  - **Markdown 投影**：SQLite 是规范数据源，同时可以生成供人工审阅或 Obsidian 使用的 Markdown Wiki。\n  - **安全维护**：提供 lint、索引重建、压缩、检查点和恢复等命令。\n  - **面向 Agent 的接口**：命令以结构化 JSON 返回结果，仓库还提供配套的 `using-lwc` Skill。\n\n  ## 安装\n\n  ```bash\n  curl --proto '=https' --tlsv1.2 -fsSL \\\n    https://github.com/JanYork/llm-wiki-cli/releases/latest/download/install.sh | sh\n  ```\n\n  也可以通过 Cargo 从源码安装：\n\n  ```bash\n  cargo install --locked --git https://github.com/JanYork/llm-wiki-cli\n  ```\n\n  README 中还提供了一段完整配置提示词，可以直接交给 Agent，由它完成 CLI、Skill 和全局记忆的安装配置。\n\n  ## 适用场景\n\n  LWC 目前定位为单机、单用户的 Agent 知识库，适合长期软件项目、技术文档整理、研究资料维护，以及任何需要让 AI Agent 跨会话保留项目知识的工作流。",
+    "created_at": "2026-08-03T01:47:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/10993"
+  },
+  {
     "id": 10992,
     "title": "【工具推荐】查看被删除的 reddit 帖子或者评论",
     "content": "# how to view deleted reddit posts \n\n逛 Reddit 应该都遇到过：搜到一个帖子，点进去——[deleted]。 Google 缓存偶尔能救，但大多数时候什么都看不到。\n\n于是做了这个：[View Deleted Reddit Posts & Comments](https://viewdeletedreddit.com/)\n\n怎么用： \n• 贴一个 Reddit 帖子链接 → 看到删除前的内容 \n• 输入用户名 → 找到这个人删过的所有帖子和评论 \n• 搜 subreddit 名 → 看到被版主移除的帖子\n\n几个实际能用的场景： \n• 收藏的技术帖被 OP 删了 → 贴链接找回来 \n• 想看看某个用户的历史发言（包括删掉的）→ 搜用户名 \n• 帖子被版主 [removed] 了但好奇写了什么 → 搜 subreddit\n\n有需要的试试，反馈直接说",
@@ -788,29 +812,5 @@
     "created_at": "2026-07-25T21:16:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10885"
-  },
-  {
-    "id": 10884,
-    "title": "【开源自荐】Navidash：你的下一个浏览器开屏主页！",
-    "content": "[在线体验](https://navidash.vercel.app/zh) · [开始部署](https://github.com/wtfllix/navidash/blob/master/docs/DEPLOY.md)\n\n在尝试过大部分自部署首页之后，基于我本人使用习惯开发的一款首页应用。尽量做到美观，简洁！\n\n- 少找一步：输入一个字母，就能快速命中经常打开的网站。\n- 越用越顺手：主页会在当前浏览器中记住你的使用习惯，把更可能需要的入口排在前面。\n- 信息刚刚好：时间、天气和临时内容随手可见，但不会把首页变成拥挤的信息面板。\n- 布置自己的空间：像整理一面墙一样摆放入口、便签和海报，桌面与手机各有自己的布局。\n- 数据留在手中：可以部署在自己的电脑、NAS 或服务器上，也可以随时备份和迁移。\n\n欢迎移步demo体验！",
-    "created_at": "2026-07-25T18:41:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10884"
-  },
-  {
-    "id": 10883,
-    "title": "【开源自荐】Tunlease：保留 Webhook 原 URL，把指定路径临时转发到本机",
-    "content": "## Tunlease\n\n> 一个面向 Webhook 开发场景的开源反向隧道工具：保留第三方服务正在使用的 callback URL，只把其中一条指定路径的实时流量临时转发到开发者本机。\n\n- 项目地址：https://github.com/iml885203/tunlease\n- 项目网站：https://tunlease.dotw.me\n- 开源协议：MIT\n\n开发 Webhook 时，ngrok、localtunnel 一类工具通常会产生一个新的公开 URL。但是在团队环境中，第三方平台的 callback URL 可能由管理员统一配置，开发者不能随时修改；多人共用 staging 入口时，也不能把整个 host 都转发到自己的电脑。\n\nTunlease 解决的是这个问题。\n\n团队先将现有 callback host 路由到自行部署的 Tunlease gateway，第三方服务保存的 URL 不需要改变。开发者连接后，只有自己 claim 的 path 会通过 WebSocket 隧道到达本机，其他所有 path 仍然由原来的应用处理。\n\n安装 CLI 后，可以使用公共测试 relay 体验：\n\n```bash\ntul claim '/demo/my-tunnel/' -p 8080 -g tunlease-relay.dotw.me\n```\n\n连接期间，该路径的请求会进入本机 `8080` 端口；按下 Ctrl+C 后自动释放。未被 claim 的路径仍会交给原服务处理。\n\n![Tunlease demo](https://raw.githubusercontent.com/iml885203/tunlease/main/assets/demo.gif)\n\n项目使用 Go 开发，提供 macOS、Linux 和 Windows 安装方式，也包含 Helm Chart，方便团队自行部署到 Kubernetes。公共 relay 不需要注册，但仅用于测试流量。\n",
-    "created_at": "2026-07-25T16:21:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10883"
-  },
-  {
-    "id": 10882,
-    "title": "【开源自荐】SubTap · 字幕点读器 —— 点读式英语视频学习工具",
-    "content": "在线使用：https://haujetzhao.github.io/SubTap/\n介绍视频：https://www.bilibili.com/video/BV1jsK86FErV\n仓库地址：https://github.com/HaujetZhao/SubTap\n\n读式英语学习工具 —— 载入字幕 + 音视频，点任意句子播放对应片段，内置分级词库给生词按难度着色。先读句、再点听，主动学英语。\n\n静态前端实现，PWA 应用，访问过后，即可离线使用。Release 有单 HTML 文件。\n\n市面上的英语听力软件和方法，大多是「听课式」：播放一大段音频，配上译文和单词解释，让学生被动地听。可一旦被动连听几分钟，大脑几乎不可避免地走神——甚至只要连续出现两三句有难度的句子、中间又没留思考时间，注意力就会涣散、打起瞌睡，学习效果很差。\n\nSubTap 想换一种方式：主动点读。每一句都要你主动点一下才会读，句与句之间留出充足的思考时间；遇到生词、难句，旁边就有释义。把被动听变成 主动读、主动听 ，让注意力始终在线。\n\n学习材料也不挑：美剧、演讲、YouTuber 的视频，从网上下载到本地就行；字幕可以下载现成的，也可以用同属作者开发的 [CapsWriter-Offline](https://github.com/HaujetZhao/CapsWriter-Offline) 离线转录出高质量、带时间戳的字幕。\n\n\n",
-    "created_at": "2026-07-25T15:28:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10882"
   }
 ]
