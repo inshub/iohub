@@ -1,5 +1,29 @@
 [
   {
+    "id": 11017,
+    "title": "DeepSeek 不会识图画图？我给它装上了眼睛 👀",
+    "content": "DeepSeek文本推理、代码、逻辑拆解能力确实拉满，但原生存在两大短板：既看不懂图片，也没办法直接生成图像，面对截图解读、配图创作场景完全束手无策。\n\n针对这两个痛点，我独立开发了两套配套工具，直接补齐视觉全链路能力：\n### 1. glm4v-vision-mcp 识图MCP插件\n专门解决DeepSeek“看不见图”的问题，原本丢截图、照片它完全无法解析，接入这个MCP后，模型能精准识别画面内容、解读截图信息、分析图片里的文字与画面细节，相当于给DeepSeek装上一双看懂万物的眼睛。\n\n地址：https://github.com/dqtx760/glm4v-vision-mcp\n\n![](https://raw.githubusercontent.com/dqtx760/deepseek-imagegen/main/docs/images/20260804170620217.webp)\n\n### 2. deepseek-imagegen 开源生图项目\n\n解决模型不能画图的难题，内置配套Agent技能+Python运行脚本。只需要简单一句话需求，DeepSeek会自主梳理画面构图、完善专业绘图提示词，自动调用绘图接口生成海报、文章封面、插画、配图，支持自定义画面比例、风格，生成原图本地自动保存，提示词同步存档方便复用修改，小白也能一键上手。\n\n地址：https://github.com/dqtx760/deepseek-imagegen\n\n\n![](https://raw.githubusercontent.com/dqtx760/deepseek-imagegen/main/docs/images/20260804183004577.webp)\n\n\n不用复杂二次开发，简单配置就能打通“识图理解+自动出图”完整工作流，不管是做自媒体配图、运营封面、截图分析都非常实用。\nAI时代人人都能高效创作，项目已开源放GitHub，欢迎大家下载体验，顺手点个Star支持一下⭐\n\n",
+    "created_at": "2026-08-04T13:58:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11017"
+  },
+  {
+    "id": 11016,
+    "title": "【网站推荐】阮一峰周刊关键字快速检索查找需要的工具",
+    "content": "\n网站地址：[https://weekly.jiaxiaojiaolian.com](https://weekly.jiaxiaojiaolian.com)\n\n之前周刊介绍过一个用来检索周刊历史内容的网站，但试用了一下实在不符合程序员的心意，一言难尽，检索结果不准确、排版混乱、数据不全。\n\n于是自己做了一个。\n\n实现关键字检索，结果按期刊倒序排序，匹配字符突出显示，分为精确搜索和模糊（断字符）搜索。\n\nGPT是2022年底对大众全面发布的，周刊AI相关内容也是之后开始，在此之前的工具或许已经过时，于是只收录了2023年及其之后的历史周刊。\n\n废话不多说，看图。\n\n<img width=\"1001\" height=\"379\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7fdff56e-ac22-41ed-9a9d-848399d8e496\" />\n\n搜索结果：\n\n<img width=\"872\" height=\"689\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed853095-9ea4-4cdd-b2ef-635b003b96e5\" />\n",
+    "created_at": "2026-08-04T13:10:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11016"
+  },
+  {
+    "id": 11015,
+    "title": "【开源自荐】ClipForge：一张商品图，30 秒自动生成带货短视频（0 API Key 也能出片）",
+    "content": "**项目地址**：https://github.com/xixihhhh/clipforge\n**官网 / 成片演示**：https://xixihhhh.github.io/clipforge/ （三条演示视频均由本工具真实产出）\n**许可证**：AGPL-3.0，可自部署，成片无水印，数据不出本机\n\n<img width=\"820\" alt=\"ClipForge 带货工作流：商品图 → AI 提炼卖点写脚本 → 商品保真配画面 → 免费配音字幕 → 抖音/快手/小红书/TikTok 卖货短视频\" src=\"https://raw.githubusercontent.com/xixihhhh/clipforge/main/docs/hero.png\" />\n\n### 项目背景\n\n做一条带货短视频的传统流程是：编导写脚本 1-2 小时 → 拍摄修图 1-3 天 → 剪辑 2-4 小时 → 手动适配各平台比例，外包价格几千元一条，一个人一天最多出 3-5 条。\n\nClipForge 把这条路压成一步：**上传一张商品图（或直接粘贴商品链接自动抓标题/价/图）→ AI 提炼卖点、写种草脚本 → 商品原图保真出镜 → 配音 + 字幕 + BGM → 几十秒产出一条能直接发抖音小店 / 快手 / 小红书 / 视频号 / TikTok Shop 的竖屏视频。** 不用出镜、不用拍摄、不用剪辑。\n\n不卖货也能用：输入一句话主题就能出片，也支持导入自己写好的整段稿子。\n\n### 30 秒跑起来（不需要任何 API Key）\n\n```bash\ndocker run -d -p 3000:3000 -v clipforge-data:/data ghcr.io/xixihhhh/clipforge\n```\n\n打开 `http://localhost:3000` 就能出第一条片。另有 Electron 桌面版和本地开发两种跑法。\n\n### 核心能力\n\n1. **0 API Key 也能出整片**：素材用免费可商用 CC 库（Openverse 图片 + Wikimedia 实拍视频），配音用 Edge TTS（中英日韩西多音色），合成用本地 FFmpeg——免费路径成本真的是 0。想要更高画质再接自己的 Key，一个接口聚合 7 个平台 30+ 模型（GPT Image 2 / Seedance 2.0 / Kling 3.0 等）。\n2. **商品原图保真**：带货场景的命门。用 image-to-image 锁住商品本体，AI 只换背景和打光，产品一个像素不改，不会出现「货不对板」的变形图。\n3. **真动态镜头，不是静图 PPT**：配了视频模型后自动图生视频（i2v）——18 款命名运镜预设每镜可选（急速推近 / 环绕展示 / 转台展示 / 希区柯克变焦…，可 Mix 双预设叠加）、上一镜尾帧钉住下一镜首帧做无缝转场、8 款画面风格 Look 全局统一光线、单镜不满意可只重跑这一镜而不推翻全片。\n4. **391 款成片模板 + 爆款复刻**：转台大片 / 工厂溯源 / 开蚌取珠 / 无缝循环片等电商配方一键套用（脚本风格 + 运镜编排 + 画面 Look + 字幕 BGM 全链路预填），按商品自动推荐；也可上传一条参考爆款，用 ffmpeg 真实解析它的镜头切点生成骨架，脚本逐镜对齐节奏，把主体换成你的商品。\n5. **剧情短剧 + 多角色配音**：情景短剧 / 反转剧场 / 街头采访 / 开箱测评等十种脚本风格，对话类自动分配角色和不同音色；内置 6 款素人主播预设 + 「反网红脸」真实感约束，真人出镜不出一眼假的磨皮脸。\n6. **国内平台合规默认开**：对齐国标 GB 45438-2025 烧录 AIGC 角标 + 写入隐式元数据；广告法违禁词扫描（绝对化用语 / 虚假功效 / 虚假紧迫等四类）；发布前「限流自检」按钩子、时长、字幕可读性、CTA 逐项给具体改法。不标 AI 会被限流这件事，工具替你兜住。\n7. **批量 + A/B**：10 个商品一键批量出片；钩子文案 × 字幕样式 × 配乐情绪交叉出多条带标签成片做 A/B，只重跑合成、零 AI 生成费。发布后还能回填播放/点赞/成交数据，按品类聚合出哪种脚本风格更能卖，直接回灌下一次生成。\n8. **Agent 友好**：内置 MCP Server + CLI + Agent Skill，在 Claude Code / Cursor 里说一句「用这个链接出条 9:16」就出片；`npx skills add xixihhhh/clipforge` 一条命令装好。\n\n### 和同类工具的差异\n\n| 你在意的 | **ClipForge** | 开源同类（MoneyPrinterTurbo 等） | 商业 AI 视频 SaaS（Creatify / Topview 等） | 剪映等剪辑软件 |\n|---|:---:|:---:|:---:|:---:|\n| 商品保真（原图不变形出镜） | ✅ image-to-image 锁定 | ❌ 关键词配库存素材，商品不出镜 | ⚠️ 部分支持，效果看模型 | ➖ 手动贴原图 |\n| 动态镜头质量 | ✅ i2v + 链式无缝转场 + 运镜可控可重跑 | ❌ 静图 / 库存视频拼接 | ✅ 多为 i2v | ➖ 取决于你拍的素材 |\n| 剧情短剧 + 多角色配音 | ✅ 十种风格，每角色专属音色 | ❌ 单旁白朗读 | ⚠️ 数字人口播为主 | ❌ 全手工 |\n| 国内平台合规（AIGC 标识 / 广告法词 / 发布门禁） | ✅ 默认开 | ❌ | ❌（多面向海外） | ⚠️ 部分标识 |\n| 0 成本出整片 | ✅ 免 Key 免费素材 + 免费配音 | ✅ 也有免费路径 | ❌ 按条 / 订阅付费 | ⚠️ 基础免费，高级付费 |\n| 无水印 + 数据在本机 | ✅ 开源自部署全本地 | ✅ | ❌ 素材上传云端，免费档常带水印 | ❌ 云端处理 |\n| Agent / 自动化（MCP · CLI · 批量） | ✅ MCP + CLI + Skill + 批量出片 | ⚠️ 部分有 API | ⚠️ 部分有 API | ❌ |\n\n> 以各产品公开资料为准（2026-07），功能随版本演进；ClipForge 与上述产品均无关联，仅作选型参考。\n\n### 适合谁\n\n- **抖音小店 / 淘宝 / 拼多多的中小卖家**：没有拍摄和剪辑团队，但要天天上新片测品。\n- **带货达人 / 内容创作者**：一天要出几十条测钩子、测标题、测转化。\n- **跨境卖家**：一条片一键换语种重新配音，中文版发抖音、英文版发 TikTok，同源同画面。\n- **开发者**：AGPL 开源，Next.js 16 + React 19 + TypeScript + FFmpeg，可以 fork 改自己的出片工作流，或直接把 MCP 接进自己的 Agent。\n\n",
+    "created_at": "2026-08-04T10:46:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11015"
+  },
+  {
     "id": 11014,
     "title": "【开源自荐】Context2Anki：把英语阅读中的可理解输入沉淀到 Anki",
     "content": "项目地址：https://github.com/zhouchangju/context2anki\n\n对程序员和软件工程师来说，英语越来越像一项基础工具。大量一手技术资料、官方文档和研究论文都是以英文发布的，英语能力会直接影响获取信息的速度和深度。\n\n提高英语能力离不开大量的可理解输入。但在阅读英文网页时，我们经常遇到一种情况：每个单词似乎都认识，词典释义也看得懂，放回原句后却仍然不能准确理解；即使当时查懂了，过几天也可能忘记。\n\nContext2Anki 是一个开源 Chrome 扩展，希望把“网页阅读 → 结合上下文理解 → 编辑确认 → 写入 Anki → 后续复习”连接起来，让阅读中真正有价值的生词、短语和句子，逐渐变成自己能够长期掌握的表达。\n\n<img width=\"2400\" height=\"1320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e09c4b7d-11a2-456b-bde0-d3a5b6e0187d\" />",
@@ -782,29 +806,5 @@
     "created_at": "2026-07-28T01:59:16Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10912"
-  },
-  {
-    "id": 10911,
-    "title": "【开源自荐】ARTEX — AI 自主渗透测试系统",
-    "content": "# ARTEX — AI 自主渗透测试系统\n\n> 项目地址：https://github.com/Autumn-27/ARTEX\n> 在线 Demo：https://artex-demo.vercel.app/\n\n<img width=\"2516\" height=\"1222\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4b3cda81-16b5-4da2-bc1d-3ac19840a740\" />\n\n**ARTEX** 是一个开源的 **AI 自主渗透测试系统**：给它一个目标和授权范围，它会像真实红队一样自己规划、派发子任务实际执行渗透、逐步逼近目标，全程可视化、可人工介入。\n\n它区别于“给渗透工具接个 LLM”的地方，在于下面几个设计：\n\n## 目标驱动的任务闭环\n\n任务从**「任务描述 + 目标」**开始：\n\n1. **Plan（规划者）** 根据任务描述和目标，生成探索**方案**（拆成一条条具体的探索意图）；\n2. **Work（执行者）** 领取意图、独立执行，把结果**写回图中**；\n3. Plan 再基于图里的新信息**重新规划**，一步步向目标收敛。\n\n规划 → 执行 → 回写 → 再规划，如此循环，直到目标达成。整个过程是**自我驱动**的，不需要人来一步步喂指令。\n\n## 任务与资产绑定 → 可量化的测试覆盖度\n\n任务和资产是**绑定**的，因此可以直接衡量一个任务对目标的**测试覆盖度**——哪些资产测了、测到什么程度、还有哪些没覆盖，一目了然。\n\n这解决了实战中的一个真痛点：**目标定义往往是模糊的**。很多时候你说不清“测到什么算完成”，于是可以**反过来把覆盖度本身设成测试目标**——比如“覆盖全部子域 / 全部开放端口 / 某类资产 100%”，让 AI 以达成覆盖度为收敛条件去自主推进。目标从“说不清”变成“可量化、可验收”。\n\n## 一切都在一张图里，而不是塞进上下文\n\n任务的**资产、流量、探索意图、事实、漏洞发现**统一组织成一张**探索图谱**，节点之间带父子/派生关系，资产与流量直接绑定到对应任务上下文。\n\n好处是**极大节省 LLM 上下文**：Plan 看到的是这张图的结构化摘要，而不是把海量原始执行日志堆进 prompt。当它确实需要某个子任务的执行细节时，再**通过工具按需拉取指定 work 的完整执行链路**（命令、输出、每一步工具调用都在）。该省时省，该细时细。\n\n## 流量录制：让 Agent 像人一样翻流量找问题\n\n内置**流量录制代理**，把测试过程中的 HTTP 流量完整捕获下来——既包括 agent 自己发出的**测试流量**，也包括**浏览器自动化操作**产生的流量，全部落库并绑定到对应任务。\n\n关键在于：这些流量不是只给人看的日志，而是**开放给 agent 的一等数据**。agent 可以像人工渗透时那样，**搜索、筛选、逐条查看所有历史流量**——翻参数、比对响应、串联跨请求的线索，从已有流量里**挖出更多潜在问题**（隐藏参数、越权、信息泄露、被忽略的接口……），而不是只盯着自己当前这一步。相当于给 AI 配了一个可随时检索的“全量流量记忆”。\n\n## 两层 Agent：规划与执行分离\n\n- **Plan** 负责读图、判断攻击面、保持多条路线并行、避免过早收敛，还能对关键漏洞派专门的**对抗式复现验证**；\n- **Work** 每个只领**一条意图**，聚焦执行真实工具（nmap/curl/ripgrep…），只把**增量事实**写回图谱，做完即停。\n\n多个 work 可并发，天然并行探索。\n\n## 自定义 Agent、自定义 LLM\n\n- **自定义 LLM**：支持 Anthropic / OpenAI 及兼容接口，provider、model、base_url、代理均可在 UI 配置，私有模型或中转皆可；\n- **自定义 Agent**：可在界面里自定义 agent 的能力与工具集，按需裁剪或扩展。\n\n## 拦截审批：给自主 Agent 装一道人工闸门\n\nARTEX 内置一套**基于规则的工具调用拦截层**：可按工具名、命令内容等自定义匹配规则，按优先级命中后执行三种动作之一——\n\n- **allow**：放行；\n- **deny**：直接拦下并把原因反馈给模型，让它换条路；\n- **ask**：**暂停执行、推送给你人工审批**，你批准才继续，可设超时与超时默认动作。\n\n「AI 全自动跑」和「关键动作人工确认」不再二选一：日常探索让它自己飞，危险或不可逆的操作(如对生产目标的写操作)自动卡住等你放行，安全与效率兼得。\n\n## 全程可视 + 人在环路\n\nToken 消耗与活动流、任务执行过程与探索链路、漏洞与资产归档、**流量录制**、**拦截审批**（关键操作前人工放行）、随时**对话介入**纠偏。\n",
-    "created_at": "2026-07-27T16:36:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10911"
-  },
-  {
-    "id": 10910,
-    "title": "【开源自荐】HimitsuShell: Shell 脚本保护工具 (混淆, 内置解释器, DRM) - linux, IoT",
-    "content": "### 项目地址\nhttps://github.com/HimitsuShell/HimitsuShell\n\n### 项目标题\n将 Shell 脚本转换为内置解释器的二进制文件, 具备混淆和反调试保护功能 (shc 的替代方案).\n\n### 项目描述\n保护 Shell 脚本免受泄露, 篡改和未经授权的使用。\n\n- **操作系统级日志记录与 Hook 防护**\n内置自己的 Shell 解释器，无需依赖系统 Shell，从而降低暴露于操作系统级日志记录和 Hook 的风险 (例如: auditd, bpftrace).\n\n- **字符串与常量加密**\n二进制文件中的所有字符串和常量都会被加密，使静态分析更加困难 (例如: IDA, Ghidra).\n\n- **调试器检测**\n在运行过程中持续检测调试器，使动态分析更加困难 (例如: gdb, ptrace, strace).\n\n- **高级混淆技术**\n包含指令替换, 间接调用, 间接跳转, 基本块拆分以及伪控制流等混淆技术.\n\n- **许可证验证 (计划中)**\n仅允许持有有效许可证密钥的用户执行 Shell 脚本.\n\n### 亮点\n#### 与 shc (shell 脚本编译器) 的对比\n| | HimitsuShell | shc |\n|-|-|-|\n| 操作系统级日志记录与 Hook 防护 | ✓ | |\n| 动态库 Hook 防护 | ✓ | |\n| 字符串与常量加密 | ✓ | |\n| 调试器检测 | ✓ | ✓ |\n| 高级混淆技术 | ✓ | |\n\n### 示例代码\n```\n# 1. 下载 Docker 镜像\ncurl -LO https://github.com/HimitsuShell/Himitsu/releases/download/v1.2.0/himitsu_core_v1.2.0.tar.gz\n\n# 2. 加载 Docker 镜像\ndocker load -i himitsu_core_v1.2.0.tar.gz\n\n# 3. 启动容器\ndocker run --name himitsu_core -d -it himitsu_core:v1.2.0\n\n# 4. 上传你的 Shell 脚本(文件名必须为 launcher.sh)\ndocker cp launcher.sh himitsu_core:/var/work/\n\n# 5. 编译生成二进制文件(大约需要 10–20 秒)\ndocker exec himitsu_core /var/work/compile.sh\n\n# 6. 下载生成的二进制文件\ndocker cp himitsu_core:/var/work/safeLauncher .\n```\n\n### 截图或演示视频\n<img width=\"789\" height=\"852\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/34d48716-36b3-4196-a437-b3505914dbe0\" />",
-    "created_at": "2026-07-27T15:43:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10910"
-  },
-  {
-    "id": 10909,
-    "title": "【工具自荐】跑在浏览器里的游戏音频转换管线：vgmstream → DSPTool → Nintendo BRSTM 编码",
-    "content": "工具名称：BGM Box\n\n工具地址：https://bgmbox.com/\n\n一句话简介：在浏览器里把任意音频转成 Nintendo 游戏机（Wii / 3DS / Wii U）能直接用的 BRSTM 格式，支持循环点编辑。\n\n特点：\n\n输入 100+ 格式、输出 Nintendo 原生容器。ADX、HCA、FSB、WEM、XMA 等游戏提取出来的音频格式都能吃，你不需要先用别的工具解码再用 BrawlBox 编码——一个页面走完全流程。\n循环点编辑器。BRSTM / BCSTM / BFSTM 不只是音频，还内嵌了循环起点/终点的 metadata。游戏里的背景音乐能无缝循环靠的就是这个。通用转换器不认识这些 metadata，转出来的文件播一遍就静音。BGM Box 会在编码时正确写入循环点信息。\n纯浏览器本地处理。文件不离开你的电脑，不上传服务器，处理速度取决于本机 CPU。\n内置播放器。转之前可以先试听、调整循环点位置，确认无误再下载。\n适合谁用：Mario Kart Wii 自定义赛道制作者、Super Smash Bros Brawl 音乐 Modder、3DS 主题制作者、模拟器玩家。\n\n技术栈：Astro + vgmstream WASM（解码） + DSPTool（循环点处理） + sound.wasm（Nintendo 编码），播放器用 SharedArrayBuffer + AudioWorklet 做流式解码。\n\n技术细节：[How I Built a BRSTM Converter with WebAssembly](https://dev.to/junyiz/how-i-built-a-brstm-converter-with-webassembly-technical-deep-dive-17jf)",
-    "created_at": "2026-07-27T14:46:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10909"
   }
 ]
