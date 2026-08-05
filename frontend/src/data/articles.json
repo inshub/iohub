@@ -1,5 +1,37 @@
 [
   {
+    "id": 11040,
+    "title": "【开源自荐】水杉输入法：一款完全开源的Windows输入法",
+    "content": "仓库：<https://github.com/metasequoiaime/MetasequoiaImeTsf>\n\n## 背景\n\n一直以来都想要做一款开源的同时兼顾易用性、美观性的 Windows 端的输入法，在 Coding Agent 的辅助下，项目越来越完善了。\n\n## 简介\n\n一款开源的自由 Windows 输入法：水杉输入法。\n\n## 功能简介\n\n- 代码 100% 开源。\n- 开箱即用。\n- 支持全拼、双拼、五笔86。\n- 拼音方案支持辅助码。\n- 支持谷歌云联想。\n- 支持 DeepSeek AI 联想。\n- 支持词库管理、批量导入、导出。\n- 支持手写识别。\n- 支持快捷短语。\n\n## 软件截图\n\n<img src=\"https://i.imgur.com/1gDQFix.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/MxRcKYT.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/5MG33lH.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/gnJwoVa.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/wBwpuUT.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/VcjIaeV.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/YgxjjEz.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/dkXHbPm.png\" width=\"750\">",
+    "created_at": "2026-08-05T16:40:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11040"
+  },
+  {
+    "id": 11039,
+    "title": "【开源自荐】PocketShell：在手机上跑 Claude Code —— 断网任务不停，重连自动补齐输出",
+    "content": "项目地址：https://github.com/Big-Pony/pocketshell\n\n在线体验（无需安装，手机打开最佳）：https://demo.pocketshell.net\n\n![发起任务](https://raw.githubusercontent.com/Big-Pony/pocketshell/main/assets/screenshots/01-launch-task.jpg)\n\n自荐一个开源项目。我平时用 Claude Code 跑一些耗时较长的任务，经常想在通勤路上发起或盯着它，但手机上用 ssh 客户端跑全屏 TUI 有两个硬伤：网一断进程就没了，以及触屏根本敲不出 F 键和修饰键。PocketShell 是我为解决这两件事做的自托管移动终端。\n\n几个特点：\n\n- **断网任务不停、重连补齐**：tmux 会话是任务真身，手机断开只是「窗口断」。按会话记录输出序号，重连后自动补发断线期间的缺口，缺口过大则整屏 resync\n- **跑完主动推送通知**：接 Claude Code / Codex / opencode / kimi-cli 的原生完成 hook，锁屏或看别的会话也能收到；也可出站 Webhook 到企微 / 飞书 / Slack / Discord\n- **为手机 TUI 适配的键盘**：自定义全键盘（F 键 / 修饰键 / Fn 应用层）、命令提示条、系统输入法整段发送\n- **端到端加密**：每次连接做完整 Noise IK 握手（双向身份认证 + 前向保密），未登记的设备握手就过不去；一次性配对码，设备可命名、可一键吊销\n- **单二进制下载即用**：前端内嵌、同端口 serve，加密走纯 JS 无原生 addon；提供 linux-x64/arm64、darwin-arm64/x64 四个平台\n- 附带文件 + Git 面板（惰性目录树、代码编辑、diff、图片 / Markdown / 视频预览）\n\n安装：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/Big-Pony/pocketshell/main/install.sh | bash\n```\n\n需要开发机上有 tmux 和 git。自托管本身有一定门槛，文件面板不做沙箱隔离（安全边界等同于登录边界），这两点先说清楚。\n\nApache-2.0 协议，欢迎试用和提 issue。\n",
+    "created_at": "2026-08-05T16:37:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11039"
+  },
+  {
+    "id": 11038,
+    "title": "【开源自荐】qwen-audio-agent：像打电话一样，用语音指挥 Claude Code 等 AI 编程智能体",
+    "content": "项目地址：https://github.com/QwenAudio/qwen-audio-agent\n\n![桌面端思考动画](https://raw.githubusercontent.com/QwenAudio/qwen-audio-agent/main/docs/desktop-fluid-orb-thinking.gif)\n\n自荐一个开源项目。平时用 Claude Code、Codex、OpenCode 这类 AI 编程智能体，只能靠键盘打字交互；qwen-audio-agent 给它们加了一层实时全双工语音，让你像打电话一样跟智能体对话。\n\n几个特点：\n\n- **全双工可打断**：说话随时打断智能体的回答，不是按住说话，也不是语音听写\n- **长任务不阻塞对话**：重活自动委派为后台任务，跑完后结果读回同一场语音对话\n- **本地唤醒词**：基于 sherpa-onnx 的 3M 参数模型，空闲时休眠、喊唤醒词唤醒，音频不出设备\n- **ACP 原生接入**：支持 Claude Code、Codex、OpenCode、Kimi Code、OpenClaw 等 9 种主流编程智能体，权限请求会变成语音确认\n- **三种界面**：macOS 桌面应用（流体声波球）、终端 TUI、网页\n\n安装：\n\n```bash\nnpm install -g qwen-audio-agent\n```\n\n语音链路基于 Qwen-Audio-3.0-Realtime 模型（需 DashScope API Key）。Apache-2.0 协议，欢迎试用和提 issue。\n",
+    "created_at": "2026-08-05T15:04:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11038"
+  },
+  {
+    "id": 11037,
+    "title": "【开源自荐】一键给 macOS 文件夹换皮肤｜小羊贴纸铺",
+    "content": "## 背景\n平时桌面和项目目录里文件夹数量一多，Finder 默认的蓝色文件夹在视觉上完全不可区分，找文件基本靠读文字，效率不高。想给文件夹换图标，macOS 原生支持但操作繁琐（复制粘贴图标、调整尺寸等），也没有一个轻量化的集中管理工具。\n\n## 解决思路\n做了一个小工具，核心逻辑是把「给文件夹贴图标」这件事流程化：选择文件夹 → 选择图标 → 一键应用。支持批量操作和一键还原。\n\n## 功能\n- 系统预设图标库，按场景分类\n- 支持自定义图片作为图标源\n- 一键应用 / 一键还原，不常驻后台\n- 轻量，纯 swift 原生开发\n\n## 站点\n- 官网：https://xw-meow.github.io/mie-iconner/#top\n- github （欢迎给小星星）：https://github.com/xw-meow/mie-iconner\n\n## 示例图\n<img width=\"2424\" height=\"1654\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a60b6085-860c-4cab-994c-96e2916a099f\" />\n<img width=\"2010\" height=\"1368\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4f28eb20-35b8-472f-a9e3-2c5614b418ce\" />\n<img width=\"1992\" height=\"1352\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/312f0289-fa0e-4218-a752-31aad6497802\" />\n<img width=\"1992\" height=\"1352\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2be45c08-a632-42ad-990e-45e256af1db3\" />\n\n## 小红书的宣传图（哈哈哈，发出来给大家欣赏一下= =）\n<img width=\"1728\" height=\"2304\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/89f2b102-e0d0-46eb-9a2d-67b94b04e81c\" />\n<img width=\"1728\" height=\"2304\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3fbc63c2-a6bc-46ae-ab55-de0152f6a7e7\" />",
+    "created_at": "2026-08-05T14:36:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11037"
+  },
+  {
     "id": 11036,
     "title": "【工具自荐】TinytoVast天文模拟器 - 把月球替换为其他星球会发生什么",
     "content": "如果把月球替换为其他星球、如火星、木星，在地球上看起来会怎么样？[TinytoVast模拟器](https://tinytovast.com/moon-replaced-by-planets) 可以在线模拟将月球进行替换、来直观感受太阳系天体的大小情况。你或许曾经刷到过一些视频，而***TinytoVast模拟器***可以让你直接自己在线进行模拟控制，并调整各种参数。\n\n在线地址：[TinytoVast模拟器](https://tinytovast.com/moon-replaced-by-planets)\n\nDemo:\n\n<img width=\"2556\" height=\"1970\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b9d111b-eb41-406b-a8b5-786e41c311dc\" />\n\n<img width=\"2612\" height=\"1718\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/222947bb-5ae8-4607-aa93-1c182ad1b24d\" />",
@@ -352,14 +384,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/10993"
   },
   {
-    "id": 10992,
-    "title": "【工具推荐】查看被删除的 reddit 帖子或者评论",
-    "content": "# how to view deleted reddit posts \n\n逛 Reddit 应该都遇到过：搜到一个帖子，点进去——[deleted]。 Google 缓存偶尔能救，但大多数时候什么都看不到。\n\n于是做了这个：[View Deleted Reddit Posts & Comments](https://viewdeletedreddit.com/)\n\n怎么用： \n• 贴一个 Reddit 帖子链接 → 看到删除前的内容 \n• 输入用户名 → 找到这个人删过的所有帖子和评论 \n• 搜 subreddit 名 → 看到被版主移除的帖子\n\n几个实际能用的场景： \n• 收藏的技术帖被 OP 删了 → 贴链接找回来 \n• 想看看某个用户的历史发言（包括删掉的）→ 搜用户名 \n• 帖子被版主 [removed] 了但好奇写了什么 → 搜 subreddit\n\n有需要的试试，反馈直接说",
-    "created_at": "2026-08-02T15:29:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10992"
-  },
-  {
     "id": 10991,
     "title": "【开源自荐】NetAge Badge：把你的 X / Reddit \"账号年龄\" 变成复古 QQ 等级太阳月亮星星",
     "content": "# NetAge Badge · 把你的 X / Reddit \"账号年龄\" 变成复古 QQ 等级太阳月亮星星\n\n> 一个纯本地运行、零上传、零埋点、零 API 的 Chrome 小插件。打开个人主页，自动挂上一枚怀旧 QQ 等级徽章，一键生成 4:5 分享卡片。\n\n---\n仓库地址：https://github.com/shaozhengmao/netage-badge\n应用店安装：https://chromewebstore.google.com/detail/hnliioagephoofbafgdedpbologbcajn\n\n## 是什么\n\nNetAge Badge 是一个极小的 Chrome 扩展：它读取个人主页上**公开的注册时间**，估算你的\"账号年龄等级\"，然后在头像旁边挂上一枚熟悉的 `☀️🌙⭐` 等级徽章。点一下相机按钮，就能生成一张干净的 4:5 分享卡片，发朋友圈、发推、发帖都行。\n\n- 5922 天 → `LEVEL 76`\n- `LEVEL 76` → `☀️☀️☀️☀️🌙🌙🌙`\n- 一条无聊的元数据 → 一个可以比拼、复制、晒出来的\"身份标签\"\n---\n\n## 支持页面\n\n| 平台 | 读取的公开字段 | 示例主页 |\n| --- | --- | --- |\n| X / Twitter | `Joined <月份> <年份>` | `https://x.com/username` |\n| Reddit | `Cake day` | `https://www.reddit.com/user/username/` |\n\n打开或刷新对应主页时会自动出现徽章。如果你的 Chrome 站点权限设成了\"点击时运行\"，请改成允许在 X/Twitter 和 Reddit 上自动注入。\n\n---\n\n## 等级怎么算\n\n完全复刻 QQ 的等级换算思路：\n\n```\nLevel = floor(sqrt(注册至今的天数))\n\n4 ⭐ = 1 🌙\n4 🌙 = 1 ☀️\n```\n\n也就是：\n\n- 1 级 = ⭐\n- 4 级 = 🌙\n- 16 级 = ☀️\n\nQQ 统计的是累计活跃天数；NetAge Badge 只看页面上公开的注册日期，所以等级是基于\"注册至今自然日\"的估算值——情怀向，不正经较真 😄\n\n---\n\n## 分享示例\n\n<img width=\"600\" height=\"752\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b03857ee-2f4d-420f-b670-2955375827f2\" />\n\n---\n\n\n\n",
@@ -458,7 +482,7 @@
   {
     "id": 10978,
     "title": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑",
-    "content": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑\n\n**项目名称**：Rclaude（flyingEirc/Rclaude）\n\n**项目简介**：一套\"远程文件访问 + 远程 agent 终端\"系统。它不是把某个 agent 的 API 包装后转卖，而是共享 agent 的**使用本身**：一个已登录的编码 agent（Claude Code、Codex 等）跑在远端机器上，你在本地把工作区和终端接上去，直接驱动它——而你的代码始终留在自己机器上，不上传。\n\n**项目地址**：https://github.com/flyingEirc/Rclaude\n\n**分类**：AI Agent / 开发工具\n\n**核心亮点**：\n\n- **共享的是\"使用\"不是 API**：终端直连真实 agent 二进制的完整 TUI 与 agentic loop。你共享出去的是\"用这个 agent 这件事\"。\n- **代码不出本地**：通过 FUSE 把本地工作区映射到远端，agent 用普通路径（cat/grep/ls/sed）读写你的项目；源文件始终在你机器上，server 只持有缓存与元数据，不保存完整副本。\n- **daemon 主动外连**：连接从你的机器发起到 server，server 无需反向拨回你的内网。\n- **会话被收口到单一 agent**：落点直接是命令行声明的 agent——整个会话离不开 agent 界面，也无法在 server 上乱逛。共享的是\"这个 agent\"，\n  不是\"一台 Linux\"。\n- **可选增强**：前置 Caddy 终止 TLS（server 二进制保持明文 h2c），以及可选的 SQLite/MySQL/PostgreSQL 文件操作审计日志。\n\n**推荐理由**：现在要么是分发 API key（拿到的是原始接口，不是 agent 的交互式使用），要么是把代码传到一台共享云机器上（代码交了出去）。Rclaude反过来：共享的是**一个已登录 agent 的交互式使用，代码留在本地**，适合小团队想摊薄一个订阅席位、又不愿把代码交出去的场景。Go 实现，server 端需 Linux + FUSE；目前 Codex  / Claude Code/ Cursor Agent的 TUI attach 与远端执行全链路已跑通。仍是最小可用路径、非生产发行版，处于迭代中。",
+    "content": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑\n\n**项目名称**：Rclaude（flyingEirc/Rclaude）\n\n**项目简介**：一套\"远程文件访问 + 远程 agent 终端\"系统。它不是把某个 agent 的 API 包装后转卖，而是共享 agent 的**使用本身**：一个已登录的编码 agent（Claude Code、Codex 等）跑在远端机器上，你在本地把工作区和终端接上去，直接驱动它——而你的代码始终留在自己机器上，不上传。\n\n**项目地址**：https://github.com/flyingEirc/Rclaude\n\n**分类**：AI Agent / 开发工具\n\n**核心亮点**：\n\n- **共享的是\"使用\"不是 API**：终端直连真实 agent 二进制的完整 TUI 与 agentic loop。你共享出去的是\"用这个 agent 这件事\"。\n- **代码不出本地**：通过 FUSE 把本地工作区映射到远端，agent 用普通路径（cat/grep/ls/sed）读写你的项目；源文件始终在你机器上，server 只持有缓存与元数据，不保存完整副本。\n- **daemon 主动外连**：连接从你的机器发起到 server，server 无需反向拨回你的内网。\n- **会话被收口到单一 agent**：落点直接是命令行声明的 agent——整个会话离不开 agent 界面，也无法在 server 上乱逛。共享的是\"这个 agent\"，不是\"一台 Linux\"。\n- **可选增强**：前置 Caddy 终止 TLS（server 二进制保持明文 h2c）。\n\n**推荐理由**：现在要么是分发 API key（拿到的是原始接口，不是 agent 的交互式使用），要么是把代码传到一台共享云机器上（代码交了出去）。Rclaude反过来：共享的是**一个已登录 agent 的交互式使用，代码留在本地**，适合小团队想摊薄一个订阅席位、又不愿把代码交出去的场景。Go 实现，server 端需 Linux + FUSE；目前 Codex  / Claude Code/ Cursor Agent的 TUI attach 与远端执行全链路已跑通。仍是最小可用路径、非生产发行版，处于迭代中。",
     "created_at": "2026-08-01T09:55:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10978"
@@ -468,7 +492,9 @@
     "title": "自荐产品：Quickdraw — MIT 协议的开源无限画布白板 SDK（tldraw 免费替代品）",
     "content": "**产品名称**：Quickdraw\n\n**网址**：https://tryquickdraw.com （在线免费白板，无需注册：https://app.tryquickdraw.com ）\n\n**GitHub**：https://github.com/nmndwivedi/quickdraw\n\n**简介**：MIT 协议的无限画布白板 SDK，支持 React、React Native 和原生 JS。tldraw 自 SDK 4.0 起生产环境需要付费许可证密钥，Excalidraw 没有官方 React Native 支持——Quickdraw 填补了这个空缺：压感笔迹、手掌防误触、手绘风格图形、便签、激光笔、撤销/重做、PNG 导出、明暗主题。核心零依赖、纯 ESM、无需构建步骤，数据模型基于 JSON diff，天然支持实时协作同步。完全免费，商用无限制。\n\n（作者自荐，感谢考虑！）",
     "created_at": "2026-08-01T01:34:22Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/10977"
   },
   {
@@ -780,31 +806,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10934"
-  },
-  {
-    "id": 10933,
-    "title": "【开源自荐】Folder Theme Studio [轻松重塑你的Windows文件夹]",
-    "content": "**这是一个可以轻松修改Windows文件夹图标的小型软件项目。**\n[仓库](https://github.com/OnstarKevin/Folder-Theme-Studio-For-Windows/)\n### 它会修改什么？\n\nFolder Theme Studio 面向 **Windows 10/11 x64**，只定制普通文件夹图标。它不会替换文件资源管理器本身，不会修改文件类型图标，也不会把系统特殊文件夹、受保护路径或不可写位置当作普通目录强行处理。\n\n这种边界让它更适合以下场景：\n\n- 为不同项目、客户或工作区建立清晰的视觉分类；\n- 统一摄影、设计、视频或开发素材库的文件夹风格；\n- 为归档目录、课程资料或个人知识库制作长期一致的图标；\n- 在不替换文件资源管理器的情况下改善 Windows 桌面观感。\n\n### 用眼睛选颜色，而不是猜参数\n\n内置样式编辑器提供真正的二维可视化调色板。用户可以直接选择色相、饱和度和亮度，并分别控制渐变起始色、渐变结束色、描边与发光颜色。16、32、64、256 px 多尺寸预览会同步更新，方便在应用前检查小图标和大图标下的实际效果。\n\n如果不想使用内置文件夹造型，也可以切换到独立的图片图标模式，导入 PNG、JPG、JPEG 或 BMP。软件会保持图片比例、自动居中，并使用透明边距补成适合生成 Windows 图标的画布。图片导入与内置样式编辑相互独立，不会混淆当前选择的图标来源。\n\n### 先计算，再应用；需要时可以恢复\n\nFolder Theme Studio 不要求用户直接执行不可见的批量修改。完整流程是：\n\n1. 选择或设计图标；\n2. 选择全局模式，或添加明确的兼容模式根目录；\n3. 计算方案，查看允许、跳过与失败项目；\n4. 确认后应用；\n5. 需要撤销时恢复最近备份。\n\n全局模式用于修改当前用户普通文件夹的默认图标映射，不会扫描整个磁盘。兼容模式则限制在用户明确添加的目录中，并跳过已知特殊目录、网络路径、重解析点和不可写位置。\n\nBeta 6 取消了对“已有自定义文件夹”的一刀切跳过。现在再次修改这类文件夹时，软件只合并 `Desktop.ini` 中与图标有关的字段，保留其他设置、注释、编码和换行格式。应用前还会记录原配置；满足恢复条件时，可以精确还原原始内容和文件属性。\n\n### 新文件夹也能持续保持同一风格\n\n一次应用并不能解决之后不断新增目录的问题。Beta 6 可以为兼容模式中的指定根目录启用递归持久监控：当其中出现新文件夹时，软件会自动应用已经保存的图标。\n\n关闭主窗口后，程序默认收起到系统托盘继续工作。托盘菜单可以重新打开窗口、暂停或恢复监控，也可以彻底退出。登录 Windows 后自动在后台启动和关闭到托盘都是可选设置，用户可以按自己的工作方式关闭它们。\n\n希望您可以体验一下这个小小的软件！",
-    "created_at": "2026-07-29T07:27:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10933"
-  },
-  {
-    "id": 10932,
-    "title": "【工具自荐】PictureMaker：多模态AI图像与视频创作助手",
-    "content": "大家好！我是PictureMaker的团队成员。在日常的内容创作、自媒体和设计工作中，许多创作者都会面临一个痛点：既需要用AI生成高质量插图，又需要制作短视频、调整头像，甚至是给视频配音、做降噪。为了解决这些零散而繁琐的创作步骤，我们开发了PictureMaker，一个将图像、视频和音频处理能力整合在一起的一站式AI创作平台。\n### 一、 核心功能\n\n- 多维度可控图像生成与精修 (Controlled Visual Drafts)\n\n平台除了提供常规的文本生成图像（Text-to-Image）外，更为重要的是引入了“Text With Reference（带参考图生成）”和“Style Transfer（风格转换）”模块。创作者可以上传特定的构图或风格参考，使生成的视觉草图更贴近预期。此外，内置的Image Upscaler支持对图片进行无损放大，确保输出满足高分辨率展示的需求。\n\n- 头像与设计应用 (Profile Picture & Art Transfer)\n\nPictureMaker 支持快捷制作个人专业头像（Profile Picture Maker）、艺术化滤镜转换及背景去除[2][5]。用户只需上传一张个人照，就能快速生成适合不同社交或商务平台的高质感头像。\n\n- 脚本化视频制作与剪辑 (AI Movie & Video Editor)\n\n除了静态图像，PictureMaker还集成了视频生成与编辑工具。用户输入提示词或脚本，系统便能自动生成带有配音、字幕和配乐的短视频。同时，剪辑版块提供AI配音生成、自动字幕提取以及音频噪音清理（Audio Cleanup）等实用功能。\n### 二、 适用人群与场景\n\n- 内容创作者与自媒体人：可以在极短时间内为文章、社交媒体帖子生成高度契合的主题插图，或者快速将文字稿件转化为短视频，省去繁琐的后期剪辑和配音时间。\n- 商务人士与独立创业者：当需要制作一张专业商务头像、或者为产品制作简单的演示与宣传视频时，无需掌握复杂的专业设计软件，即可在浏览器中自助完成。\n- 视觉设计师与企划人员：在项目立项阶段，利用PictureMaker快速产出概念草图和故事板，借此提高与团队或客户沟通方案的效率。\n\n### 三、 结语\n我们在设计PictureMaker时，初衷是让“想法到视觉”的过程更加顺畅。我们深知，目前的 AI 仍存在局限性，在处理极其复杂的精细排版或专业电影级调色时，依然需要创作者进行后期人工精修。但这并不妨碍它成为一个高效的“灵感草稿纸”与“效率放大器”。\n如果您对AI图像或视频创作感兴趣，欢迎访问[PictureMaker](https://www.picturemaker.ai/)亲自体验，并留下您的宝贵意见。我们期待听到您的反馈！",
-    "created_at": "2026-07-29T07:17:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10932"
-  },
-  {
-    "id": 10931,
-    "title": "【文章推荐】为什么 Emoji 来自日本？",
-    "content": "Emoji 能够诞生并统治世界，纯粹是因为日本在 90 年代末极其特殊的移动网络资费结构，以及三家互不兼容的运营商之间，一场关于“私有扩展字符”的冷战。\n\n原文地址：\nhttps://mp.weixin.qq.com/s/TyVxvHtTyDjmR2L8IXZCdw",
-    "created_at": "2026-07-29T07:08:23Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10931"
   }
 ]
