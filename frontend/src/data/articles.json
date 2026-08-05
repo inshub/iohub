@@ -1,5 +1,37 @@
 [
   {
+    "id": 11036,
+    "title": "【工具自荐】TinytoVast天文模拟器 - 把月球替换为其他星球会发生什么",
+    "content": "如果把月球替换为其他星球、如火星、木星，在地球上看起来会怎么样？[TinytoVast模拟器](https://tinytovast.com/moon-replaced-by-planets) 可以在线模拟将月球进行替换、来直观感受太阳系天体的大小情况。你或许曾经刷到过一些视频，而***TinytoVast模拟器***可以让你直接自己在线进行模拟控制，并调整各种参数。\n\n在线地址：[TinytoVast模拟器](https://tinytovast.com/moon-replaced-by-planets)\n\nDemo:\n\n<img width=\"2556\" height=\"1970\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b9d111b-eb41-406b-a8b5-786e41c311dc\" />\n\n<img width=\"2612\" height=\"1718\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/222947bb-5ae8-4607-aa93-1c182ad1b24d\" />",
+    "created_at": "2026-08-05T13:15:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11036"
+  },
+  {
+    "id": 11035,
+    "title": "【工具自荐】 法线贴图生成器：浏览器本地生成 Normal Map 和 PBR 贴图",
+    "content": "自荐一个工具网站：[Normal Map Generator - 法线贴图生成器](https://normalmapgenerator.net/)\n\n这是一个面向 3D 美术、游戏开发和材质制作的法线贴图生成器工具，可以将普通纹理图片或 Height Map 转换为 Normal Map，并直接在浏览器中调整和预览结果。\n\n### 主要功能：\n\n* 从图片或灰度 Height Map 生成 Normal Map\n* 实时调整强度、平滑度、细节和凹凸方向\n* 支持 OpenGL（Y+）与 DirectX（Y−）法线方向\n* 实时 3D 材质和光照预览\n* 可生成 Height、Displacement、AO、Roughness 等相关 PBR 贴图\n* 支持 PNG 等常用格式导出\n* 无需注册，打开即可使用\n\n所有图片处理都在用户浏览器本地完成，源图片不需要上传到应用服务器，比较适合处理尚未公开的游戏纹理和项目素材。\n\n工具可适用于 Blender、Unity、Unreal Engine 等常见 3D 工作流。\n### 项目地址：\n\nhttps://normalmapgenerator.net/\n\n### 项目截图\n\n<img width=\"1229\" height=\"844\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0d6575bd-a0a5-4b66-b8bc-5c08e4f9aab2\" />\n\n\n\n> 欢迎体验，也欢迎反馈生成效果、浏览器兼容性和工作流方面的问题。",
+    "created_at": "2026-08-05T11:59:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11035"
+  },
+  {
+    "id": 11034,
+    "title": "【开源自荐】model-verity：审计第三方 AI 服务声明真伪的 CLI + Web 工具（行为指纹验证）",
+    "content": "项目地址：https://github.com/JESVN/model-verity\n\n![](https://github.com/JESVN/model-verity/raw/main/docs/images/%E9%AA%8C%E8%AF%81%E9%A1%B5%E9%9D%A2.png)\n\n自荐一个开源项目。现在不少第三方 / 中转 AI 供应商会声称自己跑的是某个模型，但用户其实没法验证「到底是不是、稳不稳定」。model-verity 用行为指纹的方式做验证：对目标服务跑一组固定的 challenge，把它的 PAMELA 单 token 输出分布和版本化参考样本比对，给出一个 0–100 的综合可信评分（注意：这不是模型为真的概率、厂商认证或密码学来源证明）。\n\n它同时提供 CLI 和本地 Web 界面，可以管理供应商、自建参考样本、查看历史验证记录并导出报告。\n\n几个特点：\n\n- **行为指纹验证**：基于 PAMELA 单 token 输出分布，按行为一致性 / 请求质量 / 短时稳定性 / 可比性 / 参考强度五维加权，输出 0–100 综合可信评分\n- **CLI + Web 双形态**：一条命令起本地服务，浏览器里完成验证、比对、查看历史；也支持纯命令行 `status --json` 取结果\n- **协议覆盖广**：支持 OpenAI Chat Completions / Responses、Anthropic Messages 三种协议，不会在同一次运行中静默切换 adapter\n- **内置研究参考库**：随仓库附带 33 个主流厂商当前代模型参考（claude、openai、gemini、deepseek、kimi、qwen、glm、grok），数据来自 Zenodo（CC BY 4.0）\n- **安全为本**：供应商 Key 经 AES-256-GCM 加密保存、界面只显示掩码；默认只监听 127.0.0.1，公网部署建议走反向代理启用 HTTPS + 认证，默认拒绝私网 SSRF\n\n安装：\n```bash\nnpm install -g model-verity\nmodel-verity start\n# http://127.0.0.1:8787\n```\n\n也支持 Docker Compose 部署（镜像基于 Node 22，仓库自带 Dockerfile 与 docker-compose.yml）。\n\nMIT 协议，欢迎提 issue / PR。",
+    "created_at": "2026-08-05T11:22:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11034"
+  },
+  {
+    "id": 11033,
+    "title": "【工具自荐】结合暗棋机制的在线象棋小游戏",
+    "content": "<img width=\"1041\" height=\"858\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6161ed6e-55c7-4786-a050-a40b530f0834\" />\n\n技术栈: html+ webrtc\n\n可基于webrtc和好友进行在线对战，支持pc、iphone、安卓\n\n游戏规则:\n\n胜利条件和普通象棋一样：将死对方的帅或将就算赢。\n开局时，帅、将和双方的仕、士都是明棋。其余13枚棋子盖住并重新打乱，其中混入3枚对方棋子作为卧底。\n暗子还没翻开时，先听从它所在的一方，棋子底色会显示当前由红方还是黑方控制。轮到你时，可以移动一枚已经翻开的己方棋子，也可以用这一回合翻开棋盘上的任意一枚暗子。\n所有暗子在翻开前都不能移动、吃子、攻击或将军。\n暗子被吃或由玩家主动翻开时，才会露出真正的棋子和颜色。\n如果翻出来的是对方棋子，它会立刻归对方控制。\n翻开以后，棋子恢复原本的走法。象在敌方半场翻开后可以走田并退回己方半场；一旦回来，就不能再次过河。\n被将军时，暗子不能移动，也不能原地翻开。\n单人模式可以选择简单、普通或困难电脑；双人模式可以把房间链接发给朋友直接开局。\n双人联机每回合限时60秒。超时会跳过这一回合；同一方累计超时3次，直接判负。\n\n游戏地址: [https://gameplayer2.com/xiangqi](https://gameplayer2.com/xiangqi)",
+    "created_at": "2026-08-05T10:58:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11033"
+  },
+  {
     "id": 11032,
     "title": "【开源自荐】Easy Complete：macOS 终端的 IDE 风格自动补全（Fig 的本地替代品）",
     "content": "项目地址：https://github.com/chen86860/easy-complete\n\n![](https://github.com/chen86860/easy-complete/raw/main/.github/media/screenshot.png)\n\n自荐一个自己写的开源项目。Fig 被 AWS 收购后，Amazon Q CLI 又在今年停掉了独立的补全体验，我把它 fork 出来，砍掉账号、云端和 AI 的部分，只保留「终端自动补全」这一件事。\n\n在 zsh / bash / fish 里输入 `git`、`npm`、`docker`、`cargo` 等数百种命令行工具时，会有一个跟随光标的原生浮层给出子命令、参数、选项和文件路径的建议，边打边补，回车即用。\n\n几个特点：\n\n- **完全本地**：补全规则打包在 App 内，不联网、不需要账号、没有 AI 请求，命令内容不会离开本机\n- **原生实现**：Rust + 原生浮层窗口，不是 shell 插件，不会拖慢你的 shell 启动\n- **终端覆盖广**：iTerm2、Ghostty、kitty、WezTerm、Alacritty、Zed、VS Code 内置终端等都能用\n- **不抢别人的活**：App 没运行时补全会完全停用，VS Code Terminal Suggest 之类的原有补全照常工作\n\n安装：\n>（仅支持 macOS，目前只发布 Apple Silicon 版本）\n```bash\nbrew install --cask chen86860/tap/easy-complete\n```\n\n官网和文档：https://easy-complete.emmmm.dev \nMIT 协议，欢迎提 issue。",
@@ -774,37 +806,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/10931"
-  },
-  {
-    "id": 10930,
-    "title": "【工具自荐】网页视频港：面向普通用户的 macOS 网页媒体保存工具",
-    "content": "## 工具简介\n\n网页中看到自己有权保存的视频时，普通用户往往不知道如何找到真实媒体地址，也不熟悉 M3U8 分片合并等操作。\n\n网页视频港 WebVideoHarbor 是一款免费开源的 macOS 网页媒体保存工具。它通过 Chrome 扩展识别当前页面中的媒体资源，再交给本地助手下载和处理。项目提供完整 macOS 安装包，普通用户不需要安装 Go 或自行编译源码。\n\n## 主要功能\n\n- 识别并下载网页直接提供的 MP4 和 WebM。\n- 下载并合并非加密、非 DRM 的 M3U8/HLS 分片视频。\n- 支持单画质和多画质 HLS 清单。\n- 显示下载进度，支持取消、重试及在 Finder 中定位文件。\n- 同时支持 Apple Silicon 和 Intel Mac。\n- 完全免费并采用 MIT 许可证开源。\n\n## 项目地址\n\n- 项目官网：https://phpfrank.github.io/web-video-harbor/\n- GitHub：https://github.com/PHPfrank/web-video-harbor\n- macOS 安装包：https://github.com/PHPfrank/web-video-harbor/releases/tag/v1.0.0\n\n## 使用边界\n\n项目面向自己创作、已获授权、已进入公有领域或法律允许保存的媒体，不绕过登录、付费、加密或 DRM 保护。",
-    "created_at": "2026-07-29T06:41:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10930"
-  },
-  {
-    "id": 10929,
-    "title": "【网站自荐】Shift At Midnight Guide —— 午夜行动游戏攻略站",
-    "content": "推荐一个优质游戏攻略网站：**Shift At Midnight Guide**\n\n这是一个专注于《Shift At Midnight》游戏的全面攻略和指南网站，提供详细的游戏内容解析、策略建议和隐藏要素指南。\n\n网站名称：Shift At Midnight Guide\n网站地址：https://shift-at-midnight.com/\n语言：英文\n类型：游戏攻略/指南\n\n希望站长能将其收录到下周的周刊中，谢谢！",
-    "created_at": "2026-07-29T05:51:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10929"
-  },
-  {
-    "id": 10928,
-    "title": "【开源自荐】Duckly：萌系卡通四象限任务看板 PWA，纯前端离线可用",
-    "content": "Duckly 是一个卡通风格的 Eisenhower Matrix（四象限）任务管理工具，全 PWA 架构，纯前端离线可用。\n\n![日历视图](https://github.com/user-attachments/assets/283b0db3-17e2-4de8-9e11-00b067e15fd1)\n![四象限看板](https://github.com/user-attachments/assets/50892228-a811-48c3-bfac-b98e7c840296)\n\n**设计亮点：**\n\n- **Eisenhower Matrix 时间管理** — 按「紧急 × 重要」四象限组织任务，优先级一目了然\n- **PWA 离线优先** — 数据存于浏览器 OPFS（Origin Private File System），通过 SQLite WASM 持久化，完全无后端\n- **可安装到桌面 / 手机** — Service Worker + manifest，完善的离线策略，像原生 App 一样使用\n- **三种视图** — 日历（周 / 月）、四象限看板、列表，支持拖拽分类和多日跨天任务\n- **AI 接口** — 内置 JSON-RPC 2.0 通道，浏览器扩展或自动化脚本可直接调用\n- **Webhook 推送** — 任务到期 / 创建 / 完成 / 删除时自动推送到外部服务\n- **Excel 导入导出** — 支持 CSV / Excel 模板，方便数据迁移\n- **中英文双语 + 暗色模式**\n\n技术栈：React 19 + TypeScript 6 + Vite 8 + Zustand 5 + SQLite WASM + Tailwind CSS 4\n\n在线体验：https://niyongsheng.github.io/duckly/\n开源仓库：https://github.com/niyongsheng/duckly",
-    "created_at": "2026-07-29T05:27:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10928"
-  },
-  {
-    "id": 10927,
-    "title": "【开源自荐】Conopt4j:Java控制台优化代码库",
-    "content": "* 项目名称：Conopt4j\n* 项目地址：https://github.com/Enderman-TPing/Conopt4j 文档：https://enderman-tping.github.io/Conopt4j/\n> 注：Enderman-Teleporting（当前发Issue账号）和Enderman-TPing（提及的项目的拥有者）是同一个人\n* 项目简介：Conopt4j是一个Java控制台优化代码库， 支持彩色日志输出，`System.out.println()`或`System.err.println()`可直接输出日志；解决用户在控制台输入时会被新输出截断问题；支持进度条，支持实时显示当前程序运行状态（如系统架构，占用资源情况等等）；优化控制台指令构建方式，使你的代码更为优雅\n\n你只需要调用`Launcher.init()`就可以一键初始化Logger并且运行Monitor和指令监听等等功能，调用便利。\n\n下载：只需在你的Maven/Gradle或其他构建方式的配置文件中按照文档中加入依赖即可",
-    "created_at": "2026-07-29T04:06:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10927"
   }
 ]
