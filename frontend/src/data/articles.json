@@ -1,5 +1,23 @@
 [
   {
+    "id": 11053,
+    "title": "【开源自荐】rime.vim：同时支持 Vim 与 Neovim 的 Rime 中文输入插件",
+    "content": "仓库：<https://github.com/TSalmon3/rime.vim>\n\n## 背景\n\nVim / Neovim 用户想在编辑器里直接输入中文，通常依赖系统输入法的弹窗，候选词和补全插件没法配合。现有方案要么只支持 Neovim（如 rime.nvim），要么依赖 LSP 这类较重的基础设施（如 rime-ls）。一直想做一款 Vim 和 Neovim 都能用、真正在编辑器内完成组词的中文输入插件，于是有了这个项目。\n\n## 功能简介\n- 支持简繁切换、中英文标点切换、emoji 切换。\n- 候选词浮窗 / 下划线渲染，状态栏可实时显示输入状态（%{IM_Status()}）。\n- 提供 RimeIMEnable / RimeIMDisable autocmd，自动与 coc / Codeium / blink-cmp 等补全插件配合。\n- 默认按键映射（;; 开关等）可完全自定义或关闭。\n- 跨平台：macOS、Linux、Windows 均有完整构建说明。\n- 附带 rime-ice 的配置示例（小鹤双拼 + 模糊音 + emoji）。\n\n## 效果演示\n\n<img src=\"https://github.com/user-attachments/assets/20978d66-c198-426f-97f1-0ba7322cf656\" width=\"750\">\n<img src=\"https://github.com/user-attachments/assets/93d255dd-a9e4-4612-905a-bea1bf0a5501\" width=\"750\">",
+    "created_at": "2026-08-06T11:59:58Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/11053"
+  },
+  {
+    "id": 11052,
+    "title": "【开源自荐】正音：逐音素指出美式发音错在哪，支持AI沉淀笔记",
+    "content": "美式发音练习工具。把录音逐个音素跟标准音对齐，指出第几个音发成了哪个音，并给出该音的舌位、气流路径和唇形。41 个美式音素各有一页；音素表按发音部位和发音方式排成格子，同一列的音舌位相同、只差气流走向。\n\n录音和发言判定在本机处理，无需账号。判定结果可供本机的 AI 编程工具(非必需)读取，自动补写讲解。\n\n仓库：https://github.com/rockbenben/zhengyin\n\n![演示](https://github.com/rockbenben/zhengyin/raw/main/screenshots/demo.webp)\n\n<img width=\"1180\" height=\"995\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e6f6540a-3204-41df-8812-518d6ee09d87\" />",
+    "created_at": "2026-08-06T11:12:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11052"
+  },
+  {
     "id": 11051,
     "title": "【开源自荐】hekouwang Typora 主题：给中文长文用的阅读指标",
     "content": "项目地址：https://github.com/huiyonghkw/hekouwang-typora-theme\n\n体验站：https://huiyonghkw.github.io/hekouwang-typora-theme/\n\n我一天要在 Typora 里盯 Markdown 好几个小时。Gallery 上不少主题看着干净，中文一长就像聊天气泡：行高偏紧、行宽乱跑，盯两三个小时就累。\n\n所以做了 **hekouwang**：先钉死三项阅读指标（正文 `1rem`、行高 `1.65`、行宽 `52em`），再在这套指标上换皮肤。免费档 MIT，菜单里叫 **Hekouwang / Hekouwang Dark**（暖米白纸感）；另有六套付费皮肤（科技 / 财经 / 玻璃 / 紫青 / 焰彩），同一指标换气质，细节写在体验站。\n\n<img src=\"https://raw.githubusercontent.com/huiyonghkw/hekouwang-typora-theme/main/docs/screenshot-zh.png\" width=\"720\" alt=\"中文长文验收样张\">\n\n和 Gallery 里已有的 [Claude Theme](https://theme.typora.io/theme/Claude-Theme/) 目标相近，但是独立实现。我对照过公开仓库：对方手写三千多行、397 处 `!important`、字体包约 24MB（含 Noto 宋体）；我这边用 token 生成 CSS、构建强制 **0 个 `!important`**、随包字体约 **100KB**（Inter latin），中文走系统无衬线。\n\n## 功能\n\n- **阅读指标固定**：`1rem` · `1.65` · `52em` · 纸感画在 `#write` 上；浅/深共用指标，深色只改色值\n- **token 驱动**：改 `scripts/tokens.json` → `python3 scripts/build.py` → 安装；手改 CSS 下次构建会被覆盖\n- **中英混排**：Anthropic Sans 实测 581 字符、CJK 0 个；不打包中文字体，西文 Inter 可变字重 300–800\n- **主题工程 Skill 随仓**：clone 后 Claude Code / Cursor 可直接加载，改配色、采样、字体探针不用另装\n- **免费 MIT 可 Gallery 安装**；付费包另售六套皮肤（¥9.9），色板不进公开仓\n\n```bash\ngit clone https://github.com/huiyonghkw/hekouwang-typora-theme.git\ncd hekouwang-typora-theme && ./scripts/install.sh\n# 完全退出 Typora（Cmd+Q）再开，主题菜单选 Hekouwang\n```\n",
@@ -96,7 +114,9 @@
     "title": "【开源自荐】水杉输入法：一款完全开源的Windows输入法",
     "content": "仓库：<https://github.com/metasequoiaime/MetasequoiaImeTsf>\n\n## 背景\n\n一直以来都想要做一款开源的同时兼顾易用性、美观性的 Windows 端的输入法，在 Coding Agent 的辅助下，项目越来越完善了。\n\n## 简介\n\n一款开源的自由 Windows 输入法：水杉输入法。\n\n## 功能简介\n\n- 代码 100% 开源。\n- 开箱即用。\n- 支持全拼、双拼、五笔86。\n- 拼音方案支持辅助码。\n- 支持谷歌云联想。\n- 支持 DeepSeek AI 联想。\n- 支持词库管理、批量导入、导出。\n- 支持手写识别。\n- 支持快捷短语。\n\n## 软件截图\n\n<img src=\"https://i.imgur.com/1gDQFix.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/MxRcKYT.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/5MG33lH.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/gnJwoVa.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/wBwpuUT.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/VcjIaeV.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/YgxjjEz.png\" width=\"750\">\n\n---\n\n<img src=\"https://i.imgur.com/dkXHbPm.png\" width=\"750\">",
     "created_at": "2026-08-05T16:40:29Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11040"
   },
   {
@@ -319,8 +339,8 @@
   },
   {
     "id": 11012,
-    "title": "【开源自荐】BitFun：开源桌面 AI Agent，Rust 运行时，能在真实仓库干活也能操作桌面",
-    "content": "地址：https://github.com/GCWing/BitFun\n\nBitFun 是一个开源的桌面端 AI Agent 应用（MIT）。Agent 运行时用 Rust 编写，界面基于 Tauri，支持 Windows / macOS / Linux。\n\n它能在真实的 Git 仓库里干活——规划、改代码、跑测试、提交；也能操作浏览器、终端和桌面软件，完成调研、写文档、做 PPT 这类办公任务。可以通过 MCP、Skills 和自定义 Agent 扩展，模型自选。\n\n一个可能有意思的工程细节：Agent 在一个任务里会反复搜索同一个仓库，冷启动 grep 会成为瓶颈。项目做了一个跨轮次常驻的代码索引 flashgrep，在 Chromium 这类千万行级仓库上，搜索耗时最高降低 94.6%，平均快约 36 倍。\n\n另外，项目 97% 以上的代码由 AI 写成，包括用 BitFun 开发 BitFun 自己。\n\n![截图](https://raw.githubusercontent.com/GCWing/BitFun/main/png/first_screen_screenshot.png)\n\n---\n\n说明：项目在 2026 年 2 月由作者自荐过一次（#9004），当时定位是\"对标 Cursor 的 AI IDE\"。半年过去产品形态变化比较大——从 IDE 转向了桌面 Agent 应用，版本从 v0.2.1 到了 v0.2.15，所以按现在的样子重新投一次，之前那条可以忽略。我是该项目的协作者。\n",
+    "title": "【开源自荐】BitFun：Agent 跑完以后，不只剩一段聊天",
+    "content": "项目：https://github.com/GCWing/BitFun\n官网：https://openbitfun.com\n\n我是 BitFun 的开发者。平时用 coding agent，最烦的一件事是：任务跑完，最后往往只剩下一长串聊天。第二天想继续，先得重新捋一遍“它改了什么，现在做到哪”。\n\n所以 BitFun 除了在真实 Git 仓库里读代码、改文件、跑命令，还能让任务长出自己的小界面：看板、图表、表单，或者别的 Mini App。界面状态跟对话连在一起，下次打开还能接着用。\n\n底层 Agent Runtime 用 Rust 写。我们用同一个 DeepSeek-V4-Pro，把 SWE-Bench-Pro 每个 case 各跑了一次：BitFun 52%，OpenCode 51%，Claude Code 50%。桌面壳下面这套 runtime，是真在干活的。\n\n![Mini Apps](https://raw.githubusercontent.com/GCWing/BitFun/main/png/miniapps_gallery.png)\n\n补一句：2 月份在 #9004 投过早期版，那时还是 AI IDE；这半年产品已经转成桌面 Agent，这条按现在的样子重新介绍。",
     "created_at": "2026-08-04T08:04:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11012"
@@ -790,21 +810,5 @@
     "created_at": "2026-07-30T05:55:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10949"
-  },
-  {
-    "id": 10948,
-    "title": "【工具自荐】降低退信率，守护发信信誉：专业邮件地址清洗工具Email Verifier",
-    "content": "对于从事外贸、B2B销售、EDM（邮件营销）或网站运营的人来说，有一件事十分让人头疼：辛辛苦苦收集或整理的客户邮箱列表，群发后却遭遇大量退信（Bounce）。\n\n频繁的退信不仅会浪费群发工具的付费额度，更糟糕的是，它会严重拉低发信域名和IP的信誉度，导致以后的正规邮件直接被各家邮件服务商判定为垃圾邮件。\n\n为了帮助大家快速、低成本地过滤无效和高风险的邮箱地址，今天向大家自荐一款实用的在线清洗与检测工具——[Email Verifier](https://www.emailverifier.ai/)。\n\n---\n\n### 💡 核心功能介绍\n\nEmail Verifier采用多重网络验证技术，旨在不用发送真实邮件的前提下，对邮件地址的有效性进行深度体检：\n\n1. **SMTP 实时连接探测 (SMTP Handshake Verification)**：这是最核心的技术。工具通过向目标邮件服务器发起安全的实时握手请求，模拟发信过程，从而准确探知该邮箱账号是否真实存在、是否能够正常接收邮件，且对方不会收到任何骚扰信。\n2. **临时/一次性邮箱识别 (Disposable Email Detection)**：很多用户在注册网站或下载资料时会使用一次性临时邮箱。工具能智能识别并标记此类地址，确保您的邮件列表保持高含金量。\n3. **全收（Catch-All）与角色邮箱筛查 (Catch-all & Role-based Detection)**：识别类似info@、support@、sales@等非个人角色邮箱，以及那些会强行接收所有未定义地址的Catch-all域名，帮助您做出更精准的发送策略。\n4. **语法与域名DNS验证 (Syntax & MX Record Check)**：自动检测拼写格式错误（如拼错的domain后缀），并查询该域名是否配置了有效的邮件交换记录（MX Record），在本地端即完成第一轮过滤。\n5. **高效的批量处理能力 (Bulk Verification)**：支持直接导入包含大量邮箱的CSV/TXT列表，后台自动进行多线程体检，并在检测完成后提供清晰的数据分类导出。\n\n---\n\n### 👨‍💻 适用人群与应用场景\n\n* **外贸开发信与B2B拓客团队**：在进行大范围Outbound（主动开发）前，先用Email Verifier清理挖掘到的线索列表，避免发信域名因“无效地址过多”而被网关拦截，保障正常的商业沟通渠道。\n* **EDM（邮件营销）从业者**：在准备活动大促、日常Newsletter推送前，定期清理历史订阅列表，去除无效和不活跃邮箱。这不仅能显著提高邮件的送达率（Deliverability），还能有效降低在第三方发信平台上产生的账单费用。\n* **独立站及SaaS开发者**：在用户注册、留资表单提交环节提供底层技术验证，从源头上阻止虚假注册与垃圾账号占用数据库资源。\n\n---\n\n### 📌 结语与说明\n\n诚然，由于全球各家邮件服务器的隐私与安全防护策略千差万别，没有任何一款工具能够做到 100% 绝对无差错（有些高度安全的服务器会拒绝任何形式的外界探测）。但我们始终致力于通过多维度验证算法，提供尽可能准确、稳定的筛查结果。\n\n如果您正面临邮件送达率下滑的烦恼，或希望提升客户列表中数据的真实度，欢迎前往[Email Verifier](https://www.emailverifier.ai/)进行试用，为您的邮件营销通道提供一份可靠的保障。",
-    "created_at": "2026-07-30T03:58:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10948"
-  },
-  {
-    "id": 10947,
-    "title": "【工具自荐】ShortsMonkey：Youtube发现小频道爆款 Shorts 和长视频",
-    "content": "## ShortsMonkey\n\n网址：https://www.shortsmonkey.com\n\nShortsMonkey 是一个 YouTube 异常表现视频（outlier）发现工具，面向创作者、内容团队和视频营销人员。它每天扫描 50 万+ 低订阅频道，按“观看量/订阅者”比例筛选表现异常的 Shorts 和长视频，帮助用户发现值得参考的选题和内容方向。\n\n主要功能：\n\n- 近 3 天突破 500 万播放的 Shorts 实时榜单\n- 发现订阅少于 1.5 万、观看/订阅比超过 10 倍的长视频机会\n- S–C 分级和 55+ 细分领域\n- 免费版可用",
-    "created_at": "2026-07-30T03:53:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10947"
   }
 ]
