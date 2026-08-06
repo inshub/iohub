@@ -1,5 +1,47 @@
 [
   {
+    "id": 11051,
+    "title": "【开源自荐】hekouwang Typora 主题：给中文长文用的阅读指标",
+    "content": "项目地址：https://github.com/huiyonghkw/hekouwang-typora-theme\n\n体验站：https://huiyonghkw.github.io/hekouwang-typora-theme/\n\n我一天要在 Typora 里盯 Markdown 好几个小时。Gallery 上不少主题看着干净，中文一长就像聊天气泡：行高偏紧、行宽乱跑，盯两三个小时就累。\n\n所以做了 **hekouwang**：先钉死三项阅读指标（正文 `1rem`、行高 `1.65`、行宽 `52em`），再在这套指标上换皮肤。免费档 MIT，菜单里叫 **Hekouwang / Hekouwang Dark**（暖米白纸感）；另有六套付费皮肤（科技 / 财经 / 玻璃 / 紫青 / 焰彩），同一指标换气质，细节写在体验站。\n\n<img src=\"https://raw.githubusercontent.com/huiyonghkw/hekouwang-typora-theme/main/docs/screenshot-zh.png\" width=\"720\" alt=\"中文长文验收样张\">\n\n和 Gallery 里已有的 [Claude Theme](https://theme.typora.io/theme/Claude-Theme/) 目标相近，但是独立实现。我对照过公开仓库：对方手写三千多行、397 处 `!important`、字体包约 24MB（含 Noto 宋体）；我这边用 token 生成 CSS、构建强制 **0 个 `!important`**、随包字体约 **100KB**（Inter latin），中文走系统无衬线。\n\n## 功能\n\n- **阅读指标固定**：`1rem` · `1.65` · `52em` · 纸感画在 `#write` 上；浅/深共用指标，深色只改色值\n- **token 驱动**：改 `scripts/tokens.json` → `python3 scripts/build.py` → 安装；手改 CSS 下次构建会被覆盖\n- **中英混排**：Anthropic Sans 实测 581 字符、CJK 0 个；不打包中文字体，西文 Inter 可变字重 300–800\n- **主题工程 Skill 随仓**：clone 后 Claude Code / Cursor 可直接加载，改配色、采样、字体探针不用另装\n- **免费 MIT 可 Gallery 安装**；付费包另售六套皮肤（¥9.9），色板不进公开仓\n\n```bash\ngit clone https://github.com/huiyonghkw/hekouwang-typora-theme.git\ncd hekouwang-typora-theme && ./scripts/install.sh\n# 完全退出 Typora（Cmd+Q）再开，主题菜单选 Hekouwang\n```\n",
+    "created_at": "2026-08-06T10:12:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11051"
+  },
+  {
+    "id": 11050,
+    "title": "【开源自荐】HackerBa - Hacker贴吧：把 Hacker News 改造成百度贴吧式阅读界面",
+    "content": "HackerBa 是一个 Chrome 扩展，把 Hacker News 的列表和看帖页改造成贴吧式界面：楼层、分区、搜索和页内弹层都在，内容与账号仍走 HN，支持中英双语和浅色/深色主题。\n\n<img width=\"2642\" height=\"1448\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/262d1ef7-d3e5-428a-bf8b-c45ec9e800a4\" />\n<img width=\"2660\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f123852d-f39c-4c10-bbb8-f22c663e79b9\" />",
+    "created_at": "2026-08-06T08:40:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11050"
+  },
+  {
+    "id": 11049,
+    "title": "【工具自荐】一个自动打新/逆回购的工具",
+    "content": "有时候会忘了打新和搞逆回购，所以做了个自动工具。\n\n新股、新债自动申购，国债逆回购在收盘后至15:30随机时间点执行，信用账户在收盘集合竞价期间购买货币基金, 可设置执行时间区间.\n目前只适用于东财。\n\n地址：[https://ailyf.cn/daxin](https://ailyf.cn/daxin)\n源码地址：[https://github.com/JumuFENG/yfdaxin](https://github.com/JumuFENG/yfdaxin)\n\n",
+    "created_at": "2026-08-06T08:36:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11049"
+  },
+  {
+    "id": 11048,
+    "title": "【开源工具自荐】因为不想在公司电脑登录微信，搓了一个 Windows 截图工具 LiteSnap",
+    "content": "最近自己也做了一个 Windows 截图工具 LiteSnap，最初是因为公司电脑不能（或者不方便）登录微信，而 Windows 自带截图工具在我的环境里标注功能又不太方便，Snipaste的截图好用，但是其画笔画图用不太习惯\n\n所以干脆自己vibe coding搓了一个自己玩儿\n\n目前支持：\n🚀 快速截图\n✏️ 内置标注（箭头、文字、画笔、高亮等）\n📌 截图置顶（Pin 到桌面）\n📜 长截图\n🪶 轻量、开源\n\n项目刚开源不久，还在持续迭代中。如果大家有兴趣，欢迎体验和提出建议，也欢迎提 Issue 或 PR 😊\n\nGitHub：\nhttps://github.com/HuibingLin/LiteSnap",
+    "created_at": "2026-08-06T06:38:35Z",
+    "labels": [
+      "weekly"
+    ],
+    "url": "https://github.com/ruanyf/weekly/issues/11048"
+  },
+  {
+    "id": 11047,
+    "title": "Permission request for attributed collection page",
+    "content": "Hi ruanyf/weekly maintainers,\n\nWe are evaluating an attributed third-party collection page based on this public repository.\nThe page keeps source attribution and links back to the original repository.\nCould you confirm whether this kind of indexed directory reuse is acceptable?\n\nSource repository: https://github.com/ruanyf/weekly",
+    "created_at": "2026-08-06T06:30:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11047"
+  },
+  {
     "id": 11046,
     "title": "【开源自荐】中国互联网裁员应对卡：帮被裁员工梳理协议、金额和下一步行动",
     "content": "# 中国互联网裁员应对卡\n\n项目地址：<https://github.com/shaozhengmao/get-my-fucking-money>  \n在线体验：<https://get-my-fucking-money.vercel.app>\n\n这是一个面向中国大陆互联网员工的裁员应对工具。\n\n很多人在被 HR 谈裁员、要求签协商解除协议、拿到 N+1 方案时，最难的不是“算不算得出数字”，而是压力很大时很难判断：\n\n- 现在该不该签\n- 协议里哪些条款要确认\n- 公司方案是否明显偏低\n- 今天应该先做什么\n- 哪些行为不要踩线\n\n这个项目把这些问题收敛成一张“裁员应对卡”。用户回答 7 个问题后，页面会生成三部分内容：\n\n1. 当前状态和行动建议：已签字 / 未签字、特别保护、通知期、金额参考、特殊情况等。\n2. 可复制给 HR 的沟通话术：用于索要书面依据、补偿明细、付款日期、离职证明、社保公积金等信息。\n3. 常见问题：N+1、2N、制式协议、地区差异、12333 / 12348 等。\n\n它不是法律决策工具，也不会替用户判断是否仲裁。定位是帮助被裁员工在最慌的时候，把协议、金额、事实和合规留痕先整理清楚，再决定下一步。涉及签字、单方解除、特别保护或争议较大时，仍然建议咨询当地劳动法律师、人社部门或公共法律服务热线。\n\n技术上这是一个纯静态 Web 应用，没有后端、没有数据库，也不收集个人信息。项目同时包含一个 Codex skill，可以在对话中按同样的问题顺序补齐事实，输出同结构的文字版应对卡。\n",
@@ -44,7 +86,9 @@
     "title": "【文章推荐】为什么坦克几乎不用 Windows？",
     "content": "早期刚入行那几年，我和不少同行一样，有个挺幼稚的偏见。\n\n每次在新闻里看到某个军用装备、ATM 机或者地铁闸机弹出一个 Windows 蓝屏，大家就会在群里嘲笑一番：“这都什么时代了，怎么还在用 Windows？”“这种要命的系统，用 Windows 简直是开玩笑。”\n\n后来我读到过一个真实的军工事故。1997 年，美国海军的“约克城号”导弹巡洋舰在海上试验时，因为一名船员在一个跑着 Windows NT 4.0 的终端里输入了一个“0”，导致了除以零错误（Divide-by-zero）。这个未被捕获的异常一路向上穿透，把整个数据库给搞崩溃了，最终导致整艘巡洋舰的推进系统停摆，在海上漂了四个多小时。\n\n这个例子后来被各种技术文章引用，用来证明“微软的系统不能用于严肃的军用场景”。\n\n但我后来去查现代主战坦克的火控和战术终端资料，发现事情根本没那么简单。\n\n原文地址\n[https://mp.weixin.qq.com/s/Y9nx1HJL5KWXdOHc0ucyLA](url)",
     "created_at": "2026-08-06T01:50:19Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11041"
   },
   {
@@ -129,8 +173,8 @@
   },
   {
     "id": 11030,
-    "title": "【网站自荐】TimeLink——把故事写成时间的形状,一个美感优先的中文时间线编辑器",
-    "content": "**网址**:<https://timelink.me>\n**作品墙**(先看效果):<https://timelink.me/board>\n\n我做了一个中文优先的时间线编辑器 TimeLink。它赌一件事:**打开就能写,写下来的东西天然好看,翻到预览就是一篇成品**——不用先学怎么排版、怎么整理。\n\n适合记录一切随时间展开的内容:个人年表、项目历程、孩子成长、读书观影、一段旅行、一家公司的历史。\n\n三张导出长图的例子(点开看原图):\n\n| 苏东坡·一蓑烟雨任平生 | 二十四節氣·一年如何流動(繁体) | AI 七十年 |\n| --- | --- | --- |\n| [![苏东坡·一蓑烟雨任平生](https://raw.githubusercontent.com/timelink-me/assets/main/su-dongpo-thumb.jpg)](https://raw.githubusercontent.com/timelink-me/assets/main/su-dongpo.png) | [![二十四節氣·一年如何流動](https://raw.githubusercontent.com/timelink-me/assets/main/solar-terms-thumb.jpg)](https://raw.githubusercontent.com/timelink-me/assets/main/solar-terms.png) | [![AI 七十年](https://raw.githubusercontent.com/timelink-me/assets/main/ai-70-years-thumb.jpg)](https://raw.githubusercontent.com/timelink-me/assets/main/ai-70-years.png) |\n\n几个设计上的坚持:\n\n- 移动优先,打开即写,零上手成本\n- 排版为中文打磨:内置手写字体(简体马善政楷体、繁体霞鹜文楷),多主题 + 暗色模式\n- 时间线主干是手绘感的有机曲线,不是刻板的直线\n- 一键导出高清长图,可直接分享到朋友圈/社交平台\n- 每条时间线可生成公开链接,别人无需注册即可阅读\n- 简体/繁体/英文三语\n\n免费即可使用(10 条时间线、每条 100 个节点),无需绑卡。欢迎试用,也欢迎去[作品墙](https://timelink.me/board)看看别人写了什么。\n",
+    "title": "【网站自荐】TimeLink 一个美感至上的时间线编辑器",
+    "content": "**网址**：<https://timelink.me/?from=ruanyf-weekly>\n**作品墙**(先看效果)：<https://timelink.me/board?from=ruanyf-weekly>\n\n用 TimeLink 可以创作漂亮的时间线，整理历史、旅行、成长、项目、人物、产品故事，以及一切随着时间展开的内容。\n\n三张导出长图的例子(点开看原图)：\n\n| 苏东坡：一蓑烟雨任平生 | 二十四節氣：一年如何流動(繁体) | AI 七十年 |\n| --- | --- | --- |\n| [![苏东坡：一蓑烟雨任平生](https://raw.githubusercontent.com/timelink-me/assets/main/su-dongpo-thumb.jpg)](https://raw.githubusercontent.com/timelink-me/assets/main/su-dongpo.png) | [![二十四節氣：一年如何流動](https://raw.githubusercontent.com/timelink-me/assets/main/solar-terms-thumb.jpg)](https://raw.githubusercontent.com/timelink-me/assets/main/solar-terms.png) | [![AI 七十年](https://raw.githubusercontent.com/timelink-me/assets/main/ai-70-years-thumb.jpg)](https://raw.githubusercontent.com/timelink-me/assets/main/ai-70-years.png) |\n\n几个设计上的坚持：\n\n- 桌面优先，打开即写，零上手成本\n- 排版为中文打磨：内置手写字体（简体马善政楷体、繁体霞鹜文楷），多主题 + 暗色模式\n- 一键导出高清长图，可直接分享到朋友圈/社交平台\n- 每条时间线可生成公开链接，别人无需注册即可阅读\n- 简体/繁体/英文三语\n\n欢迎使用，也欢迎去[作品墙](https://timelink.me/board?from=ruanyf-weekly)看看别人写了什么。\n",
     "created_at": "2026-08-05T08:36:26Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11030"
@@ -228,7 +272,9 @@
     "title": "【工具自荐】一个可交互设计和分享魔尺造型的 3D 工具",
     "content": "  项目地址：https://regomne.github.io/magic-snake/\n\n  源码地址：https://github.com/regomne/magic-snake\n\n  这是一个开源的在线魔尺（Rubik's Snake）3D 造型设计工具，无需安装或注册，所有功能都在浏览器本地运行。\n\n  用户可以直接点击 3D 魔尺并旋转关节，自由设计造型，也可以选择球形、小鸟、五角星等预置造型，逐步播放折叠过程。\n\n  主要功能：\n\n  - 支持 24、36、48 和 72 段魔尺\n  - 在 3D 模型上直接选择方块、旋转关节\n  - 支持 0123 姿态编码、标准速拧格式和括号格式，并可相互转换\n  - 内置多种常见造型，可逐步播放折叠过程\n  - 自动检测最终造型中的方块重叠\n  - 支持经典白蓝、彩虹及自定义循环配色\n  - 每次修改都会同步到 URL，可以直接分享具体造型\n  - 支持中文和英文界面\n\n  这个项目最初是为了更直观地设计魔尺造型，也方便把一个造型的折叠步骤分享给其他人。\n\n<img width=\"1727\" height=\"901\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7bbe64ce-e0a8-4416-a0c2-70579d92c657\" />",
     "created_at": "2026-08-04T16:32:46Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11018"
   },
   {
@@ -760,45 +806,5 @@
     "created_at": "2026-07-30T03:53:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10947"
-  },
-  {
-    "id": 10946,
-    "title": "【工具自荐】AI 智能预测宝宝长相工具 Baby Generator 自荐",
-    "content": "每当情侣讨论起未来，或者准爸爸妈妈在备孕时，总会有一个充满温情又让人好奇的话题：“我们的孩子以后会长得更像谁？” \n\n虽然真实的遗传学充满了随机性与大自然的奥秘，但现代AI技术的进步，让我们能够提前一窥那个充满想象力的“数字预览”。今天，向大家自荐一款简单、有趣且主打细节还原度的AI预测工具——[Baby Generator](https://www.babygenerator.ai/)。\n\n---\n\n### 💡 核心功能介绍\n\nBaby Generator并非简单地将两张人脸进行生硬的拼接，而是通过面部识别算法，提取并融合两位家长眼部、鼻梁、脸型等核心五官特征，生成极具真实感的未来宝宝画像。\n\n1. **双人/单人模式灵活上传**：你可以上传父亲和母亲的两张清晰正脸照片；即使只有单人照片，AI也能基于单张脸部的遗传特征进行合理的延伸预测。\n2. **基因相似度调节**：如果你好奇“孩子如果更像爸爸会怎样”或“像妈妈多一点会怎样”，可以通过滑块手动调节相似比例（如更偏向父亲或更偏向母亲），看一看不同基因组合的可能性。\n3. **年龄段与性别切换**：支持生成不同年龄段（如婴儿、幼儿、儿童等）的肖像。不仅能看到宝宝时期的样子，还能预估孩子稍微长大后的面貌，并支持性别（男孩/女孩）选择。\n4. **高清晰度的细节处理**：有别于普通的卡通化滤镜，该工具更侧重于还原皮肤质感、光影对比以及眼神细节，生成的预览图更接近真实的肖像照片。\n\n---\n\n### 👨‍👩‍👧 适用人群与场景\n\n* **备孕期或已怀孕的准父母**：在迎接新生命到来的漫长等待中，生成一张宝宝预览图，可以为这段温馨的旅程增添一份小小的仪式感与期待，也适合用作Baby Shower（迎新生儿派对）或性别揭晓派对上的趣味互动。\n* **热恋中的情侣**：用彼此的照片做一次充满趣味的未来模拟，探讨“孩子到底会继承谁的眼睛”，是恋爱日常里一个非常温馨、解压的互动话题。\n* **家庭聚会与社交分享**：适合在家庭聚会时与长辈、朋友一起测试，生成的有趣图片可以直接下载并分享到社交平台，作为日常生活的趣味谈资。\n\n---\n\n### 🛠️ 简单的使用步骤\n\n为了不给用户增加多余的操作负担，Baby Generator的界面设计得直截了当：\n1. **第一步**：进入网站，上传一张或两张清晰、无遮挡的正脸照片（光线均匀、直视镜头的照片效果最佳）。\n2. **第二步**：选择你想要预测的性别、年龄，并调整相似度偏好。\n3. **第三步**：点击生成，稍等片刻即可获得一张高画质的宝宝肖像预览。\n\n---\n\n### 📌 结语与温情提示\n\n真实的基因重组是人类繁衍中最精妙的艺术，没有任何算法能够100%预测出生命的奇迹。因此，我们打造Baby Generator的初衷并非提供一份绝对精准的遗传学报告，而是希望用科技作为桥梁，为大家的日常生活、亲密关系和家庭时光带来一份小小的欢笑、温馨与美好憧憬。\n\n如果您对这个充满未知与期待的小测试感兴趣，欢迎前往 [Baby Generator](https://www.babygenerator.ai/) 尝试，看看 AI 会为您勾勒出怎样的一幅未来画面。",
-    "created_at": "2026-07-30T03:52:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10946"
-  },
-  {
-    "id": 10945,
-    "title": "【工具自荐】开源的 Markdown 编辑器 chrome 扩展应用",
-    "content": "## 项目地址：\nhttps://github.com/wood3n/md-editor-extension\n\n## 项目技术栈：\n基于 monaco 编辑器和 shadcn ui，shiki 等开源工具，功能如下：\n\n- 编辑器支持 markdown 语法高亮和提示\n- 支持常用 markdown 语法渲染，[GFM](https://github.github.com/gfm/) 语法，以及 mermaid 渲染等功能；支持 `:::note` / `:::tip` / `:::info` / `:::warning` / `:::danger` 五种语法高亮提示框\n- 内置 11 套预设主题（GitHub Light/Dark、One Dark、Monokai、Dracula、Solarized、Catppuccin 等），一键切换编辑器、预览区和代码高亮\n- 支持载入远程或者本地打开的 markdown 网页内容\n- 支持 markdown 源码下载和 PDF 导出\n\n<img width=\"2825\" height=\"1677\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6f786ea7-b73b-4115-b4db-51bf002dee63\" />\n\n<img width=\"2823\" height=\"1680\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2ff44404-0dad-43cc-8496-3d37a9831aed\" />",
-    "created_at": "2026-07-30T01:53:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10945"
-  },
-  {
-    "id": 10944,
-    "title": "【开源自荐】首个 AI 可靠读写数据 Agent 开源，腾讯 APIJSON 生态协议",
-    "content": "# A2API - 一次 AI，次次 API 安全、快速、稳定读写数据\n\n用 A2UI 聊天即兴生成 UI 来安全、快速、稳定调用 HTTP API 增删改查表格、表单、图表等数据。\n**AI 生成一次 UI，API 每次都安全、快速、稳定执行。**\n\nAgent-to-API 协议、引擎与 Demo：生成任务 UI，之后改筛选/排序/分页直接调用 HTTP API，\n**不再调用大语言模型，不费任何 Token**。\n\n不走 SQL 执行路径，**写操作或敏感读操作**自动申请权限，管理员审批通过后才能调通。\n\n![](https://github.com/user-attachments/assets/81bc1f4b-dce1-489f-8e14-718871c91312)\n![](https://github.com/user-attachments/assets/d1edc623-350a-4ee4-a951-1db3c615f457)\n![](https://github.com/user-attachments/assets/2b85a3c3-9f43-45b8-948e-99d87d5a5dfe)\n![](https://github.com/user-attachments/assets/31b9b341-c775-47ef-b2ad-d217a28fff08)\n![](https://github.com/user-attachments/assets/9c7138e6-0906-4117-8020-86452ddfaf04)\n\n## 仓库结构\n\n| 路径 | 作用 |\n|------|------|\n| `packages/protocol` | A2API 0.1 信封、JSON Pointer、校验器、CRUD 夹具测试 |\n| `packages/runtime` | `ApiJsonClient`、`HitlController`、`BoundExecutor` |\n| `apps/chat-demo` | 编排器 + 聊天 UI（生成）+ 绑定筛选（稳态） |\n| `apps/admin` | 配置申请审批：批准后写入 Access / Request / Document |\n\n【GitHub 地址】\nhttps://github.com/TommyLemon/A2API\n\n",
-    "created_at": "2026-07-29T16:37:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10944"
-  },
-  {
-    "id": 10943,
-    "title": "【开源自荐】pi-language-tutor：在 AI Coding 时顺便学外语",
-    "content": "项目地址：https://github.com/mackt/pi-language-tutor\n安装：`pi install npm:pi-language-tutor`\n\n一边 coding 一边学外语的 [pi](https://pi.dev) 扩展。\n\n- 用英语写 prompt → 后台用母语批改语法与地道表达（Writing check）\n- 用中文写 prompt → 教你怎么用英语自然整句说出来（Writing tutor）\n- agent 回复后 `Alt+T` → 沉浸式双语对照，不污染对话上下文\n\n检查过程不会阻塞 agent 工作，也不会占用 agent 的上下文空间。学习语言、母语和模型都可以自行配置。\n\n<img width=\"1146\" height=\"718\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/78214e3f-34b3-47e6-8b1b-fc533d895d66\" />\n<img width=\"1511\" height=\"876\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b1678818-a0d1-49a2-b5b5-dadc00ed3227\" />\n<img width=\"1158\" height=\"997\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bdd00e44-afd3-4591-8f20-9b215ac80284\" />",
-    "created_at": "2026-07-29T16:11:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10943"
-  },
-  {
-    "id": 10942,
-    "title": "【工具自荐】revoice-asr-tts：一个面向 Windows 的实时语音变声工具",
-    "content": "`revoice-asr-tts` 是一个面向 Windows 桌面场景的实时语音变声工具，核心目标是把“说话 -> 识别 -> 生成目标语音 -> 实时播放”串成一条尽量低延迟、可以直接落地使用的链路。\n\n它既支持麦克风实时输入，也支持文本直接合成，适合用于实时变声、参考音色复刻、多语言语音输出，以及直播、配音、互动演示等场景。\n\n它的一大优势是：**不需要为了使用先单独训练一个声音模型**。只要准备参考音频，就可以更快进入实际体验和调试阶段，这对想直接上手的人会友好很多。\n\n另外，如果你之前接触过 `RVC` 一类方案，这个工具还有一个很直观的特点：**在当前这类实时使用场景里，输出会更偏清晰、直接，整体更适合拿来做实时说话和即时播放。**\n\n## 这个工具是什么\n\n它可以把用户输入的语音或文本，转换成目标声音风格的语音输出。相比只关注单点功能的工具，它更强调一整条桌面实时使用链路，而不是单纯做一个离线合成器。\n\n当前支持两种主要使用方式：\n\n- 麦克风实时模式：用户直接对着麦克风说话，系统识别后快速生成并播放目标语音\n- 文本模式：直接输入文本，流式生成语音\n\n除了基本的语音输入输出，它还支持参考音频音色克隆、输出语言切换、情感风格控制，以及在需要时先把输入内容自动翻译成目标输出语言，再进入语音合成。\n\n## 产品亮点\n\n- 实时链路完整：支持从麦克风输入到语音输出的一体化桌面体验\n- 双输入模式：既能实时说话，也能直接输入文本生成语音\n- 无需预训练个人声音：不需要先准备一整套训练流程，就能基于参考音频快速开始使用\n- 输出更清晰：相比常见的实时变声思路，在当前场景里更偏清晰、直接，适合连续说话和实时播放\n- 参考音频复刻：可以基于参考音频快速贴近目标说话风格\n- 多语言输出：支持中文、英文、日语三种输出语言\n- 可指定输出风格：可以按需要选择目标输出语言，并指定情感表现\n- 按需翻译：当输入语言与输出语言一致时自动跳过翻译，减少不必要处理\n- 翻译节点可配置：可以接入兼容接口的翻译服务，方便按自己的使用习惯切换节点\n- 更适合本地实时场景：强调桌面端可操作性、反馈速度和连续使用体验\n\n##运行截图\n\n<img width=\"1565\" height=\"1130\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3b82c94-49e7-4b07-b41b-890c58664d06\" />\n<img width=\"1567\" height=\"1144\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7dd2e9e4-155d-46a3-a01b-53b5f709763e\" />\n<img width=\"1565\" height=\"1133\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d02edd27-4264-4975-8358-4a4f506a59d5\" />\n\n## GitHub 地址\n\n- 项目地址：https://github.com/aklws/revoice-asr-tts\n\n## B 站宣传视频\n\n- 视频地址：https://www.bilibili.com/video/BV1f8326tEDQ/?spm_id_from=333.1387.homepage.video_card.click\n\n\n## 简单总结\n\n如果你想找一个更偏本地实时使用体验的语音工具，既支持麦克风输入，也支持文本转语音，还能结合参考音频、清晰输出、多语言和情感控制、以及按需翻译，那么 `revoice-asr-tts` 是一个值得尝试的方向。\n",
-    "created_at": "2026-07-29T15:54:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10942"
   }
 ]
