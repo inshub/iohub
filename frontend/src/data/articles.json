@@ -1,5 +1,37 @@
 [
   {
+    "id": 11046,
+    "title": "【开源自荐】中国互联网裁员应对卡：帮被裁员工梳理协议、金额和下一步行动",
+    "content": "# 中国互联网裁员应对卡\n\n项目地址：<https://github.com/shaozhengmao/get-my-fucking-money>  \n在线体验：<https://get-my-fucking-money.vercel.app>\n\n这是一个面向中国大陆互联网员工的裁员应对工具。\n\n很多人在被 HR 谈裁员、要求签协商解除协议、拿到 N+1 方案时，最难的不是“算不算得出数字”，而是压力很大时很难判断：\n\n- 现在该不该签\n- 协议里哪些条款要确认\n- 公司方案是否明显偏低\n- 今天应该先做什么\n- 哪些行为不要踩线\n\n这个项目把这些问题收敛成一张“裁员应对卡”。用户回答 7 个问题后，页面会生成三部分内容：\n\n1. 当前状态和行动建议：已签字 / 未签字、特别保护、通知期、金额参考、特殊情况等。\n2. 可复制给 HR 的沟通话术：用于索要书面依据、补偿明细、付款日期、离职证明、社保公积金等信息。\n3. 常见问题：N+1、2N、制式协议、地区差异、12333 / 12348 等。\n\n它不是法律决策工具，也不会替用户判断是否仲裁。定位是帮助被裁员工在最慌的时候，把协议、金额、事实和合规留痕先整理清楚，再决定下一步。涉及签字、单方解除、特别保护或争议较大时，仍然建议咨询当地劳动法律师、人社部门或公共法律服务热线。\n\n技术上这是一个纯静态 Web 应用，没有后端、没有数据库，也不收集个人信息。项目同时包含一个 Codex skill，可以在对话中按同样的问题顺序补齐事实，输出同结构的文字版应对卡。\n",
+    "created_at": "2026-08-06T03:40:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11046"
+  },
+  {
+    "id": 11045,
+    "title": "【开源自荐】系统架构图绘制 Skill",
+    "content": "\n**仓库**：https://github.com/Andy1314Chen/architecture-drawer\n\n**背景**：\n\n偶尔汇报或者技术分享，需要绘制一些架构图或者流程图，现有 PPT Skill 或 Agent，以及 Nano Banana 、GPT-Image2 等也能够方便的出图，但是存在几个问题：\n\n- 不可调整：给出一版就是图片格式，很难再做调整，只能不断改 prompt，不可控\n- 技术性不够：很多 PPT Agent 缺少技术性，或者专业性作图能力不足，稍微有些花里胡哨，偏重配色、设计等元素，一眼 AI\n- 穷：没有 Nano Banana 和 GPT-Image2 的额度 :joy:\n\n**用法**：\n\n1. 用文字描述清楚系统架构图，例如包含多少层、各层次之间的结构关系等；对于开源项目，可利用 deepwiki 进行沟通；\n2. 系统架构文字描述提交给 skill，让它生成初始 gen.py 和 SVG，并能够自动检测重叠、连接错位、交叉、文本显示等问题，可以自动打分迭代；\n3. 输出 PNG、SVG、PPTX 等格式文件，用户可以基于 PPTX 进一步调整；\n\n*上述使用过程中不要求模型具备多模态能力*\n\n示例（开源项目 vLLM deepwiki 的介绍作为输入，调用该 Skill 后绘制的系统架构图）：\n\n<img width=\"1000\" height=\"783\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/408eb09e-6a0a-4139-b3b3-5f7f20360f17\" />",
+    "created_at": "2026-08-06T03:25:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11045"
+  },
+  {
+    "id": 11044,
+    "title": "【工具自荐】一款旅游拍照AI生成朋友圈文案的小程序",
+    "content": "### 背景\n每次出去玩拍的美美的照片，想发朋友圈，又不知道发啥\n\n于是此小程序由此诞生，\n微信搜索小程序\n名字：**顺拍记**\n\n它可以根据照片自动生成 文案\n还有很多图片处理工具 帮助你发朋友圈\n\n<img width=\"414\" height=\"780\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cd530fde-29a1-4266-b1d2-2eab2d7c4333\" />\n\n<img width=\"414\" height=\"780\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b18b66db-83ae-4f6f-80c3-89eb1bb273e7\" />\n\n<img width=\"414\" height=\"780\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b32d9ce1-d63e-4816-b9a2-496b7c69b58c\" />",
+    "created_at": "2026-08-06T03:15:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11044"
+  },
+  {
+    "id": 11043,
+    "title": "【开源自荐】Agent 使用分析：把本地编码 Agent 历史变成可核对的复盘",
+    "content": "项目地址：https://github.com/zm2529/agent-usage-analyze\n\nnpm：https://www.npmjs.com/package/agent-usage-analyze\n\n自荐一个本地优先的开源工具：**Agent 使用分析**。它面向使用 Codex、Claude Code、Cursor、GitHub Copilot CLI / Copilot 的开发者，把散落在本机的 Agent 历史整理成可回溯的使用数据、行为分析和持续改进追踪。\n\n我做它是因为，编码 Agent 用久了很容易只凭印象判断“这次用得好不好”。这个工具尝试把复盘落到能核对的证据上：会话、主任务和子 Agent、工具 / Skill、Token 构成、持续时间，以及提示词质量等确定性事实；模型生成的解释、建议与后续观察则和这些事实分层展示。\n\n主要特点：\n\n- **本地优先**：Dashboard、SQLite 数据和日志都留在本机，服务仅监听 `127.0.0.1`，默认关闭遥测。\n- **从历史到改进闭环**：导入历史、生成单会话与跨会话报告、关联公开实践资料，并观察改进计划是否在后续任务中起作用。\n- **明确证据边界**：统计数据与模型判断分开展示；公开实践研究只接收经过本地隐私检查的抽象主题，不上传原始提示词、代码、日志、仓库名或本地路径。\n- **开箱即用**：Node.js 18+ 环境可一条命令启动，并会引导完成本地历史导入和 Codex 采集配置。\n\n安装：\n\n```sh\nnpx --yes agent-usage-analyze start\n```\n\n项目使用 MIT 协议，欢迎试用、反馈或参与贡献。",
+    "created_at": "2026-08-06T03:12:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11043"
+  },
+  {
     "id": 11042,
     "title": "【工具自荐】AI办公桌面端应用，类似于workbuddy",
     "content": "介绍：\n与workbuddy一样的需求思路，面对办公用户场景\n区别点在于做了很多本地优化，如本地知识库，ai能够精细编辑本地办公三件套，docx,ppt,excel，不依赖于任何mcp 如wps的mcp服务，同时支持了专门针对办公三件套的diff预览效果，专门做的ui优化；\n重点是免费使用的，用户只需要配置自己的ai key即可\n\n\ngithub地址:https://github.com/Yoan98/Ncurator\n介绍网址:https://www.ncurator.com\n\n",
@@ -768,41 +800,5 @@
     "created_at": "2026-07-29T15:54:04Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10942"
-  },
-  {
-    "id": 10941,
-    "title": "【网站自荐】AI 周榜 —— 每周用大白话讲清 GitHub 涨星最快的 12 个项目",
-    "content": "自荐一个每周更新的小站:AI 周榜(https://aizhoubang.com)\n\n每周整理 GitHub 一周涨星最快的 12 个项目 + 常用 AI 工具合集,特点是每个项目都配中文大白话简介,面向不想啃英文文档的读者。\n\n- 数据真实抓取,排序标准公开写在页面上\n- 有 RSS 订阅与往期归档\n- 站点和内容全部开源:https://github.com/1246958874xie-debug/weekly (README 即周刊)\n\n谢谢阮老师,周刊常读者,受益很多。",
-    "created_at": "2026-07-29T13:33:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10941"
-  },
-  {
-    "id": 10940,
-    "title": "【开源自荐】StaticShield - 军工级的网页加密工具",
-    "content": "开源地址：[https://github.com/wangshengithub/staticshield](https://github.com/wangshengithub/staticshield)\n\nhttps://github.com/user-attachments/assets/fab6794c-2f36-4494-bcc0-d00058ef1b33\n\n项目简介：\nStaticShield 是一个零依赖的静态网页加密工具。采用与 NSA 绝密级文件保护同源的 AES-256 + PBKDF2 百万次迭代 + HMAC-SHA256 加密体系，一键将 HTML（含 CSS / JS / 图片）加密为单个「自解密页面」，部署到任意静态托管，访客输入密码后在浏览器本地解密还原，全程无需服务器参与。\n\n在线演示：\n我用它给自己的纯前端小游戏「奉国牧马」（1 个 HTML + 1 个 CSS + 16 个 JS）一键加密，可以直接体验效果：\n- 加密站：https://horseempire-staticshield.pages.dev/ （密码：`horseempire-staticshield`）\n- 原站：https://horseempire.pages.dev/\n\n打开加密站看到门禁页面，输入密码，整个游戏瞬间还原，体验与原站一致。\n\nhttps://github.com/user-attachments/assets/5ff99b44-96f2-4cf9-ad4c-4aeb3ebb7162\n\n核心特性：\n🔐 军工级安全：AES-256-CBC + PBKDF2（1,000,000 次迭代，超 OWASP 建议值 67%）+ HMAC-SHA256 验签（Encrypt-then-MAC），与 NIST / NSA 认证的绝密级加密标准同源\n⚡ 一键加密：一条命令完成打包 + 加密 + 输出，18 个文件 → 1 个加密文件，全程不到 1 秒\n🖥️ 双模式操作：CLI 命令行批量处理，或 `node encrypt.js --gui` 启动 Web 图形界面，拖文件、设密码、点加密、下载，零门槛上手\n📦 整站打包：`--bundle` 自动将外部 CSS / JS / 图片内联为单文件后整体加密\n🚫 零依赖：无需 `npm install`，Node.js ≥ 18 开箱即用\n\n技术亮点：\n- 加密核心基于 WebCrypto API，Node 与浏览器同构，一份代码两端复用\n- 浏览器端解密由操作系统底层加密库执行（非 JS 手写算法），密钥不可被 JS 读取\n- 分享链接密码写入 URL Hash，不经过服务器，日志中无痕迹\n- 支持重叠加密（多层密码）、CSPRNG 随机强密码生成、记住我等实用功能\n\n适用场景：\n- 内部文档 / 付费内容的轻量级访问保护\n- 小圈子分享游戏、工具，防搜索引擎收录\n- 临时私密页面，不想搭后端、不想用第三方 SaaS\n\n```bash\n# 一键加密整个多文件项目\nnode encrypt.js index.html --bundle -p MyPwd123 -d ./dist\n\n# 或者打开图形界面，拖文件操作\nnode encrypt.js --gui\n```\n\n开源协议：MIT",
-    "created_at": "2026-07-29T11:12:42Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10940"
-  },
-  {
-    "id": 10937,
-    "title": "【工具自荐】Meet妙记：不留存原始录音的 AI 会议秘书",
-    "content": "大家好，我们是 Meet妙记团队，想向《科技爱好者周刊》的读者自荐一款 AI 会议工具。\n\n## Meet妙记是什么\n\nMeet妙记是一款 AI 会议秘书，覆盖会前、会中、会后全场景。支持实时语音转写、说话人精准区分、会议笔记随手记、AI 智能纪要一键生成，并支持将历史会议按主题归类，随时回看结论与待办。\n\n产品已上线各大应用市场，支持中英文混合识别，单次录音最长 4 小时。Meet妙记内置 19 种行业会议纪要模板，按场景匹配模板自动生成结构化纪要。最关键的是——Meet妙记不留存原始录音，从源头保障信息安全，尤其适合金融、政务、医疗等对数据安全高度敏感的行业使用。\n\n## 产品亮点\n\n### 1. 不留存录音，安全至上\n\n会议结束后原始音频即处理，不留存、不上传，从源头守护信息安全，央国企、金融机构放心用。\n\n### 2. 一键启动，4 小时超长记录\n\n无需复杂操作，点击即录；切换其他 APP 或锁屏后台照常运行，单次持续 4 小时不中断。\n\n### 3. 精准区分人声\n\n自动识别音色，区分不同发言人，会议内容一目了然，谁说了什么清清楚楚。\n\n### 4. AI 智能纪要，30 倍提速\n\n只需记录要点，AI 帮你完善全文；传统 30 分钟的纪要，妙记 1 分钟生成，含摘要、核心内容、待办事项。\n\n### 5. 19 种行业模板\n\n覆盖金融审贷/风险评审、互联网产品/技术评审、政府工作部署/纪检谈话等场景，AI 自动匹配模板，专业纪要开箱即用。\n\n### 6. 会中名词即时搜索\n\n遇到不懂的术语，长按关键词一键搜索，快速补齐认知短板，高效参与会议。\n\n### 7. 四端覆盖，多端同步\n\niOS、Android、Mac、Windows 全平台支持，随时随地查看和编辑会议纪要。\n\n## 产品官网\n\nhttps://www.mionote.com.cn/\n\n欢迎大家体验并提出建议。",
-    "created_at": "2026-07-29T08:46:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10937"
-  },
-  {
-    "id": 10936,
-    "title": "【开源工具自荐】米饭云盘 - 基于 Telegram 无限数量的自建图床与小文件存储",
-    "content": "开源地址：https://github.com/AndySkaura/mifun-storage\n在线demo：https://p.kuraa.cc\n\n项目简介：\n利用 Telegram Channel 存储文件，适合搭建个人图床和小文件云盘，无需占用服务器本地磁盘。\n\n<img width=\"2552\" height=\"1548\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d4fc39f2-f32f-4404-a07b-b4f548f9afe2\" />\n\n核心特性：\nmac Finder 风格文件管理，支持预览、搜索、标签和拖拽上传，支持管理员区域划分（类似Windows磁盘）\n提供完整 API，方便爬虫、截图及自动化脚本上传文件。(开发初衷就是为了找地方存放大量图片)\n全程流式上传和下载，不写本地临时文件\n支持 SQLite、MySQL 及 Docker 部署",
-    "created_at": "2026-07-29T08:44:15Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10936"
   }
 ]
