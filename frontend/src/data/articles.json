@@ -1,5 +1,45 @@
 [
   {
+    "id": 11066,
+    "title": "【开源自荐】BlackGit：在巨型仓库(over 1T)中使用Git的一种解决方案",
+    "content": "仓库：<https://github.com/zhuzhonghua/blackgit>\n\n## 背景\n\n游戏公司通常在大型二进制文件、文件锁定、细粒度权限上依赖 Perforce（一个集中式版本控制系统）。而 Git 是分布式的、强大的，但管理巨型仓库时痛点明显：\n\n- **克隆慢**：一个 2 GB 的资源就让 `git clone` 变成灾难。\n- **大文件入库**：二进制文件体积大、不可合并，会让仓库无限膨胀。\n- **没有文件锁定**：美术、策划并发编辑同一份二进制资源时无从保护。\n- **缺少集中控制**：服务器无法决定谁能获取什么、何时获取。\n\n\n## 简介\n\nBlackGit —— 一个基于 Git remote-helper 协议的集中式后端，让 Git 原生化解决巨型仓库问题，无需 Git LFS\n\n核心思路：不另起炉灶，而是站在 Git 的 **remote-helper** 协议之上，加一个自定义后端服务器。用户依然用 `git pull`、`git checkout`、`git merge`，底层由服务器控制\"获取什么、何时、由谁\"。\n\n## 功能简介\n\n- **原生大文件按需下载**：采用 partial clone 策略（`blob:none+tree:0`），初始只拉取元数据，checkout 时按需获取对象。2 GB 资源只是一个 blob，用户完全无感。\n- **零额外组件**：纯 Python remote helper + 后端。\n- **文件锁定**（规划中）：`git blackw lock <path>` 防止二进制或关键文件并发编辑，服务端强制。\n- **细粒度权限**（规划中）：文件/目录级读写 ACL，由服务器管理。\n- **单一事实来源**：服务器控制对象可用性与访问权限，客户端只见授权内容。\n- **分布式与集中式兼得**：每个克隆都是真正的 Git 仓库，离线提交/分支/合并完全正常\n\n## 架构\n\n```\nUser / Git Client\n    │\n    ▼\ngit-blackw(git-remote-blackw) ──(Unix Socket / Named Pipe)──▶ blackgit.py ──(TCP :1666)──▶ Java Server(JGit)\n                                                                                    │\n                                                                               JGit .git repo\n```\n\n三层设计：Git remote helper（Python）↔ IPC 桥（Python）↔ 后端服务器（Java 21 + JGit）。协议为长度前缀 + Protobuf。\n\n## 状态\n\n已实现 fetch 与按需对象获取；push 支持为当前优先事项，随后是文件锁定、权限、多线程服务器与 GUI。",
+    "created_at": "2026-08-07T08:40:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11066"
+  },
+  {
+    "id": 11065,
+    "title": "【工具自荐】Image Text Editor：替换图片里已经存在的文字",
+    "content": "开发者自荐。\n\nImage Text Editor 是一个在线图片文字替换工具，用来修改已经压平成图片的文字内容。它不是在图片上“加字”，而是针对 JPG、PNG、WebP 里已经存在的文字，先识别文字区域，再让用户选择要替换的文字，并生成保留原背景的新图片。\n\n官网：https://imagetexteditor.dev/\n\n适合的场景：\n\n- 海报日期、活动标题写错了，但没有设计源文件\n- App 截图、教程截图里的按钮文案或示例文字需要更新\n- 商品图里的价格、促销语、标签文字过期\n- 营销图、封面图只想改一两行文字，不想重新做整张图\n\n主要特点：\n\n- 支持 JPG、PNG、WebP 图片上传\n- 可以选择图片中已有文字区域再替换\n- 尽量保留原背景、排版和周围视觉元素\n- 提供免登录演示，可以先用预置样例体验完整流程\n\n这个工具解决的是一个很小但常见的问题：很多时候图片本身是对的，只是其中一行文字需要改。如果没有 PSD、Figma 或原始设计文件，重新做图成本很高；这个工具希望把这类“小文字修正”变成一个更轻量的在线流程。",
+    "created_at": "2026-08-07T08:38:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11065"
+  },
+  {
+    "id": 11064,
+    "title": "[AI相关] 新OCR模型发展的真快啊",
+    "content": "我最近在关注RAG,接触到很多OCR相关的小模型,现在的模型已经可以直接输出格式化的文本了,相当方便\n\n模型 | 出品方 | 发布时间 | 参数量 | 核心亮点 | 中文支持\n-- | -- | -- | -- | -- | --\nMonkeyOCR | 华中科技大学 & 金山办公 | 2026年1月 (首次发布)2026年7月 (中文优化更新) | 未明确 | 复杂表格解析 (精度超90%) | 原生支持\nGLM-OCR | 智谱AI | 2026年2月3日 | 0.9B | 极致轻量高效，支持多令牌预测，SOTA性能 | 原生支持\nHunyuanOCR | 腾讯 | 2025年11月25日 | 1.0B | 端到端专家模型，推理速度快，支持14种语言 | 原生支持\nQianfan-OCR | 百度 | 2026年3月19日 | 4B | 端到端统一模型，Layout-as-Thought机制，长上下文 | 原生支持\nMinerU | 上海AI Lab | 2024年7月5日 (首次开源) | 1.2B | 一站式工具链，生态成熟，可集成第三方OCR引擎 | 原生支持\nHiro-MOSS-OCR | PatSnap (智慧芽) | 2026年5月26日 | 0.3B | 超轻量，面向块级文档理解，结构化输出 | 原生支持\n\n\n这是我最近测试的中文ocr,百度千帆效果比较好,但是比较大,日常用GLM-OCR 效果算是比较好的了,minerU本机部署去年要20GB,现在大概1G的量化模型都可以达到去年的效果了,直接输出markdown table用html输出,效果还不错,发展神速\n\n当然  ,闭源的Mistral OCR 3 效果也很牛逼,但是如果不是复杂的表格,这些小模型够用了",
+    "created_at": "2026-08-07T08:18:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11064"
+  },
+  {
+    "id": 11063,
+    "title": "[开源自荐]基于VeOps CMDB二开集成Ansible+Jumpserve+Agent的CMDB",
+    "content": "1).项目名称：基于VeOps CMDB二开集成Ansible+Jumpserve+Agent的CMDB\n\n2).项目地址： https://github.com/advwei/JW-CMDB\n\n3).项目简介：\n本项目是用AI agent基于维易CMDB开源项目进行二开，增加了以下功能：\n1、新增Jumpserve资产同步\n2、新增IPAM Agent 及同步服务\n3、新增Ansible对接中间件及playbooks\n4、新增Ansible执行日志板块\n5、新增两个固定资产模型\n6、新增回收资源显示板块\n7、新增配置中心\n\n4).推荐原因:\n1、集成Jumpserve：支持将记录的资产单独或批量推送到Jumpserve堡垒机，回收时自动删除Jumpserve对应资产。\n2、集成Ansible：支持动态生成inventory，自定义选择执行playbook，前端自定义输入额外参数。\n3、新增IPAM Agent：支持子网单次全量扫描（UI 右键触发），Agent增加HTTP服务与docker后端交互。\n4、Ansible执行日志：前端可视化查看Ansible任务的成功/失败执行情况，详细查看具体主机信息及Ansible执行的标准及错误输出。\n5、支持一键批量回收资源，支持三维度统计回收资源概览视图（CPU、内存、硬盘）。\n6、配置中心：集中管理，集成Jumpserve、ansible、agent、资产模型IP配置页面。\n7、资产模型：增加vmserver模型记录资产，delserver模型用于记录回收资产，其他模型依旧支持自定义。\n\n5)项目图片：\n\n<img width=\"1879\" height=\"879\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e4a3389b-8fd9-4a1b-bf64-305829614dd9\" />\n<img width=\"1877\" height=\"813\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31564a11-405b-4d64-b760-4d3f952fcec6\" />\n<img width=\"1846\" height=\"910\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2f3e0543-09b1-42f7-8708-fbeb087ee748\" />\n<img width=\"1863\" height=\"743\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/45ccae09-ba0c-4be4-bd0c-387fc7e5e482\" />\n<img width=\"1515\" height=\"727\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/33f2b979-3873-44ab-b6d4-e9b6ff1641d2\" />\n<img width=\"1654\" height=\"694\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/34793a30-a927-440f-a128-1962a137260b\" />\n<img width=\"1646\" height=\"836\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0a4fc23a-b61f-4f62-b094-c60adc8e1e1b\" />\n<img width=\"1852\" height=\"674\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eb5acb47-d65e-4f7d-afc3-df9135094b98\" />",
+    "created_at": "2026-08-07T07:54:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11063"
+  },
+  {
+    "id": 11062,
+    "title": "【APP自荐】锦囊AI - 完全在您手机本地离线运行的 AI 助手",
+    "content": "\n## 为什么你需要一个本地 AI\n\n2026 年了，AI 助手已经无处不在。但你有没有想过——你在 ChatGPT、Claude 里输入的每一条对话，都会被传送到远端的服务器。你的隐私、你的偏好、你随手吐露的碎碎念——都成了云端的一行行数据，你虽然享受了AI 带来的智能化、便利性，但同时这些数据也在无偿帮助 AI 进化。如果你的手机里有一个完全离线运行的 AI 助手，会怎样？不需要网络，不需要账号，不需要付费订阅，你的对话永远不会离开你的 iPhone。亦或你现在身处一个没有网络信号的野外、海上，遇到突发紧急状况时，手边仍能有一个 AI 可以帮你出出主意。这就是我开发“锦囊AI” App 的初衷，它可以完全运行在你 iPhone 本地，不需要联网，更不会有任何数据上传，是不是很 Cool！既然 Apple 智能无法使用，干脆就让 AI 直接入住进来！\n\n<img width=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e00ccf93-f9db-4104-bc8b-46d111b7777c\" />\n\n<img width=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8c11ffb7-0c56-4dc2-9451-313851758f83\" />\n\n## 为什么现在可以了\n\n过去，跑本地 LLM 需要一台性能不错的电脑或服务器。如今几件事变了：\n\n- 模型量化：把 32 位浮点参数压到 4、6 位，精度损失极小，体积却缩到 1/8。一个 4B 参数的模型，量化后只有约 2GB，iPhone 完全能跑。\n- 手机性能：以 iPhone15Promax 为例，它拥有过 8G 内存空间，17Pro 以上甚至拥有 12G 内存。\n- Apple MLX 框架：Apple 在 2024 年开源的机器学习框架，专为 Apple Silicon 优化，能高效利用 M 系列和 A 系列芯片的统一内存架构。\n\n## 功能简介\n\n- 内置模型：Lite 版内置 Qen3-0.6B 4bit模型，开箱即用，也支持 Qwen3-1.7B 4bit 模型。Pro 版解锁 Qwen3-4B 4bit、Qwen3-4B 6bit、Qwen3.5-4B 4bit、VibeThinker-3B 4bit模型，提供 /downloader 指令，联网自动下载，也可以手动下载后传到锦囊 AI 共享目录。\n- 内置场景（Prompt）：Chat（P01）：轻松闲聊，温暖自然；Coding（P02）：技术专家，直接给代码；Writing（P03）：专业编辑，润色翻译总结；Reasoning （P04）：推理专家，适用 VibeThinker 这样的纯推理模型，完成复杂科学问题推理演算，如：解释欧拉方程及其应用。支持自定义提示词，当创意的提示词结合特定的模型，也许会给你带来眼前一亮的惊喜，如角色扮演对话：你是贾维斯，我是斯塔克。\n\n<img width=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a66fde7-983d-4855-b49a-28be333e6ff3\" />\n\n- Tools 显式调用：包括计算器、日期时间、文件读写（在 App 沙盒内）、设备信息（查存储容量、内存、机型）、电池电量、Safari 浏览器打开网页、剪贴板、提醒事项、GPS 定位、联系人搜索。坦诚地讲，这些 Tools 调用的直接意义似乎并不大，但这些工具可以让 AI 真正了解它所运行的实际环境，如提示词预注入当前手机型号、日期和时间。应用场景举例：把一个不能上网的文件内容（纯文本）导入锦囊 AI 的共享目录，然后第一步：/tools 读取1.txt文件内容；第二步：研读上面的文字，帮我写一篇300字的学习心得。\n- 对弈模式：支持与内置游戏引擎进行五子棋和国际象棋对弈，然后 AI 模型在一边观战评棋，其中国际象棋使用专门的 Chess Coach 量化模型。\n- 知识库：同 tools 显式调用的思路，后续将建立起本地知识库，内置一些结构化的知识库，通过 /kb 指令显式调用，比如野外救助技巧、康熙字典查询等等。\n\n## 如何使用\n\n- 在 Apple App Store 搜索「锦囊AI」。\n- 在对话框输入 “**/cheat 烟花三月下扬州**”，即可解锁 Pro，有效期到 9 月底，到期后我会继续延长。\n-  使用 /downloader 指令自动下载所需模型，8G 内存的 iPhone 建议使用 4bit，12G 内存的 iPhone 可以尝试 6bit。\n- 观察下载进度，完成后 /model 切换到对应的模型，即可对话和游戏。\n\n下载地址：[Apple App Store](https://apps.apple.com/cn/app/%E9%94%A6%E5%9B%8Aai/id6780184415)\n\n<img width=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0588bb2-0793-4db3-a61c-127648956a2f\" />\n\n",
+    "created_at": "2026-08-07T07:34:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11062"
+  },
+  {
     "id": 11061,
     "title": "【开源自荐】Awesome Seedance 2.5 AI 视频提示词精选库",
     "content": "# [Awesome Seedance 2.5](https://github.com/ZeroLu/awesome-seedance-2.5?utm_source=awesome_seedance25&utm_medium=ruanyf_weekly)\n\n这是一个专门整理 Seedance 2.5 高质量视频提示词的开源仓库，适合想提升 AI 视频质感、运镜和稳定性的创作者直接参考。\n\n目前仓库已经按 7 大风格分类，包含电影感、商业广告、UGC、动漫、短剧、Meme、视觉特效等案例；每个案例都附带原始提示词、示例视频和对应说明，拿来就能试。\n\n这类资料现在比较分散，这个仓库的价值主要是把社区里已经验证过的优质提示词集中整理成一个可检索、可复用的 prompt 库，适合收藏和持续更新。\n\n![](https://static.nanobananaproprompts.com/cyberbara_uploads/web/image/d375b1de-7af1-4787-baf6-2371557339b3.gif)\n\n![](https://static.nanobananaproprompts.com/cyberbara_uploads/web/image/f053c7cc-de6e-4c39-ab81-b25e39072abb.gif)\n\n![](https://static.nanobananaproprompts.com/cyberbara_uploads/web/image/cfcd7b64-ddbe-4dca-9943-0cdb5cd2f5f8.gif)\n\n- 仓库地址：https://github.com/ZeroLu/awesome-seedance-2.5?utm_source=awesome_seedance25&utm_medium=ruanyf_weekly\n- 内容形式：提示词原文 + 示例视频/GIF + 分类整理\n- 适用人群：AI 视频创作者、Prompt 工程爱好者、短视频团队\n- 后续会继续补充新的 Seedance 2.5 案例和高质量提示词\n",
@@ -770,45 +810,5 @@
     "created_at": "2026-07-31T04:59:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10965"
-  },
-  {
-    "id": 10964,
-    "title": "【开源自荐】Voxt 本地私有化语音转文本 App，转录、翻译、转写、笔记、会议 全场景支持",
-    "content": "Voxt\n面向Mac的本地优先语音输入——清理、重写、翻译和按应用设置，只需一次掌握说话的习惯。\n\n- 转录，语音转文本后，可以经过模型增强，实现文本清理，格式优化等效果（支持自定义），结果自动插入到输入框\n- 翻译，在转录的结果后，将文本翻译为目标语言，支持选中文本翻译\n- 转写，可选中文本或直接唤醒转写模式，实现语音模型对话，对话结果可以复制或插入到输入框\n- 笔记，可全局唤醒，快速记录语音文本笔记，笔记支持待办状态，全局浮窗快速管理笔记，笔记项可直接拖拽到输入框，快速插入\n- 应用增强，可针对不同的 App 和网页 来设定不同的模型增强规则，及自动按键，例如（在 SQLEditor 中，模型规则设置，将文本转为 SQL 查询语句， “查询所有用户的数据” -> \"select * from 'user'\", 自动按键，可以在文本插入到输入框后，触发按键，自动发送）\n- 会议，分为会议，字幕，录音 模式，分别是录制系统音频+麦克风，仅系统音频，仅麦克风 来实时转文本，还支持实时的翻译。会议结束后详情可查看发言人，时间戳等内容，支持会议结果摘要分析及追问。\n\n<img width=\"2664\" height=\"1752\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/509552b4-1b4d-49fb-86ff-07c7faa98c9f\" />\n\n网站：https://voxt.actnow.dev/\nGithub：https://github.com/hehehai/voxt",
-    "created_at": "2026-07-31T04:20:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10964"
-  },
-  {
-    "id": 10963,
-    "title": "【开源自荐】Council Lab - 本地优先的多席位 AI 审议工具（人类可全程参与）",
-    "content": "【开源自荐】Council Lab - 本地优先的多席位 AI 审议工具\n\n项目地址：https://github.com/loveramarois-byte/council-lab\n\n一句话介绍：\n不是让四个模型各说各的，而是让它们按顺序互相回应、质疑、补充，形成可见的讨论过程，用户还可以随时插话影响结果。\n\n核心特点：\n- 四个固定席位依次发言：析理 → 诘问 → 构策 → 观澜，最后总结席输出最终答案\n- 全程人类可参与，中途可以补充事实、反驳或引导方向\n- 本地优先，数据默认存在本地，支持 macOS / Windows 桌面端一键启动\n- 支持国内主流模型（DeepSeek、智谱 GLM、Kimi、硅基流动等）以及 OpenAI 兼容接口\n- 有高风险决策模式（医疗、法律、投资等场景可开启人工复核门控）\n- 支持讨论过程导出 Markdown / HTML 报告\n\n适合场景：方案讨论、风险评估、需要多角度思考的非约束性决策。\n\n开源协议：Apache 2.0",
-    "created_at": "2026-07-31T04:01:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10963"
-  },
-  {
-    "id": 10962,
-    "title": "docs(issue 406): fix typo",
-    "content": null,
-    "created_at": "2026-07-31T02:55:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/10962"
-  },
-  {
-    "id": 10961,
-    "title": "fix: phrasing and improve clarity in issue-406.md",
-    "content": "Corrected the phrasing of '韬（τ）定律' and added '并且' for clarity.",
-    "created_at": "2026-07-31T02:17:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/10961"
-  },
-  {
-    "id": 10960,
-    "title": "【开源自荐】通过算力共享消耗订阅Token",
-    "content": "FastenShare 是一个 AI 模型能力共享与调用平台，连接两类用户：\n\n- **生产者**：将自己有权共享的本地模型、私有部署模型或第三方模型 API 接入平台，利用闲置能力获得生产积分；\n- **消费者**：通过统一接口发现并调用在线模型节点，用积分支付实际产生的调用费用。\n\n一次完整调用大致会经过下面这条路径：\n\n```text\n消费者发起模型请求\n        ↓\nFastenShare 匹配并转发请求\n        ↓\n生产者设备上的客户端接收请求\n        ↓\n本地模型或第三方模型 API 完成推理\n        ↓\n结果流式返回给消费者\n        ↓\n平台按实际用量结算积分\n```\nFastenShare 不把你的账号或密钥公开给别人。生产者使用的上游 API Key 保存在自己的设备上，消费者拿到的是 FastenShare 提供的调用入口，而不是你的原始密钥。\n开源地址：https://github.com/fasten-share/fasten-share-client\n界面截图：\n\n<img width=\"1085\" height=\"749\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/78948479-5262-4c3c-ae0a-0f2cf0fab426\" />",
-    "created_at": "2026-07-31T02:04:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10960"
   }
 ]
