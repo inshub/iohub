@@ -1,5 +1,13 @@
 [
   {
+    "id": 11083,
+    "title": "【开源自荐】LeePanel 一个零残留的 Linux 服务器管理面板软件",
+    "content": "开发缘由\n用面板管理服务器的朋友应该都有过这样的纠结：装宝塔、1Panel、cPanel 这类面板，确实省事，但你得在服务器上安装一整套面板程序——它以 root 权限常驻运行、还要开放一个公网端口、留下一堆配置文件和数据库。\n\n等哪天想卸载，往往还得 SSH 上去跑卸载脚本，残留清不干净。\n\n面板本来是来帮你管服务器的，结果它自己成了服务器上最大的\"外来物\"和攻击面。\n\n最近发现了一个思路完全不同的开源项目 LeePanel，用了之后觉得值得推荐给各位。\n\n核心思路：面板不装在服务器上\n\nLeePanel 是一个桌面客户端（Windows / macOS / Linux 都支持），**它不在服务器上安装任何东西——所有操作都通过 SSH 执行命令完成**。也就是说：\n\n**零服务端代码**：服务器上没有任何 LeePanel 的进程、文件\n**零额外端口**：只用你已有的 SSH 端口，不开 8888/8080\n**零资源占用**：面板运行在你的电脑上，服务器 CPU/内存一分不占\n**零残留**：关掉软件就是卸载，服务器保持你配置时的原样'\n\n传统面板的安全风险不是被\"缓解\"了，而是从架构上就不存在。\n功能：麻雀虽小，五脏俱全\n安装包只有 6 MB +左右，但功能覆盖面相当完整：\n\n\nSSH 终端 + SFTP 文件管理（拖拽上传下载、大文件分块传输）\nLNMP 一键部署：Nginx / MySQL / MariaDB / PHP-FPM，版本可选，PHP 多版本切换\n站点管理：虚拟主机、Let's Encrypt SSL、反向代理（支持 WebSocket）、伪静态\nMySQL 数据库管理：增删改查、用户权限、备份恢复\nRedis 管理：键值浏览、TTL、DB0–DB15 切换\nDocker：容器/镜像生命周期管理、日志、镜像源\n系统监控：CPU / 内存 / 磁盘 / 网络实时图表\n防火墙规则、BBR 加速、软件源管理\n多服务器管理，侧边栏一键切换\n\n技术栈\nTauri 2.x + React 19 + TypeScript，SSH/SFTP 底层用的是 Rust 的 russh，本地数据存 SQLite。MIT 协议开源。目前对 Ubuntu / Debian 支持最完善，CentOS/RHEL 等发行版适配也在推进中。\n\n**适合谁**\n洁癖党：不希望面板污染服务器环境\n安全敏感场景：不想为了方便多开一个公网端口\n低配 VPS：不占服务器一分资源\n多服务器运维：一个客户端统一管理，随时切换\n\n链接\nGitHub：https://github.com/gna1280072/LeePanel\n官网：https://www.leepanel.com\n",
+    "created_at": "2026-08-08T10:12:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11083"
+  },
+  {
     "id": 11082,
     "title": "【网站自荐】98 风格音乐分享网站",
     "content": "这是一个 Windows 98 风格的音乐分享网站，可以在线搜索、挑选音乐，然后模拟烧录成一张 CD，可以署名，然后分享给朋友。\n朋友收到后可以看到是谁分享给 TA 的，可以把音乐添加到 Apple Music、Spotify 中。\n适合平时、或特殊日子以略带个性化的形式分享音乐给朋友。\n\n网站网址： https://burnacd.com",
@@ -800,13 +808,5 @@
     "created_at": "2026-08-01T16:21:05Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10983"
-  },
-  {
-    "id": 10981,
-    "title": "【网站自荐】Anyvids，All-in-one AI Video & Image Platform",
-    "content": "推荐一个项目：Anyvids AI\n网站：https://anyvids.ai/\n中文版：https://anyvids.ai/zh\n\n\n这是什么\n\nAnyvids 是一站式 AI 视频与图像平台，将各大顶尖模型汇聚于一处 —— 面向内容创作者、设计师以及更广泛用户群的完整创意工具箱。\n\n支持的模式\n- 各种方式的视频生成&编辑，支持多模型调用；\n- 各种方式的图片生成&编辑，支持多模型调用；\n- 数字人；\n\n亮点\nAI 产品摄影\n[用场景模板一键生成影棚级 AI 产品摄影图](https://anyvids.ai/zh/product-photography)\n\nAI 产品视频\n[把产品图变成适合广告与电商的 AI 产品视频](https://anyvids.ai/zh/ai-product-video)。\n\nAI 虚拟试穿图\n[一键生成可用于商品页、广告与社媒所需的产品效果图](https://anyvids.ai/zh/ai-virtual-try-on-photo)\n\nAI 虚拟试穿视频\n[用产品图与模特参考生成真实感 AI 虚拟试穿视频](https://anyvids.ai/zh/ai-virtual-try-on-video)。",
-    "created_at": "2026-08-01T14:39:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10981"
   }
 ]
