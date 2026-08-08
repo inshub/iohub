@@ -1,5 +1,13 @@
 [
   {
+    "id": 11080,
+    "title": "【开源自荐】OpenQuota：统一查看 Claude Code、Codex、Cursor、Copilot 等 AI 编程工具的使用额度",
+    "content": "项目地址：https://github.com/deviffyy/OpenQuota\n\n## 一句话介绍\n\nOpenQuota 是一个开源、跨平台的桌面应用，可以在一个面板中查看多个 AI 编程工具的使用额度、重置时间、Token 用量和预估费用。\n\n<img width=\"700\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/62af2516-7f78-422a-b20d-1c936053a418\" />\n\n## 为什么做这个项目\n\n现在很多开发者同时使用 Claude Code、Codex、Cursor、GitHub Copilot 等多个 AI 编程工具，但每个平台的额度、重置时间和使用情况都分散在不同的地方。\n\nOpenQuota 希望把这些信息集中到一个简单的桌面面板中，让开发者可以快速知道：\n\n- 当前用了多少额度\n- 还剩多少额度\n- 额度什么时候重置\n- Token 使用情况\n- 预估费用\n\n## 目前支持\n\n- Claude Code\n- Codex\n- Cursor\n- GitHub Copilot\n- Antigravity\n- Devin\n- Grok\n- OpenCode\n- OpenRouter\n- Z.ai / GLM Coding Plan\n\n## 主要特点\n\n- Windows / macOS / Linux 跨平台支持\n- 系统托盘和悬浮面板\n- 查看 Session / Weekly 等额度和重置时间\n- Token 使用历史和预估费用\n- 可自定义 Provider 和指标布局\n- 使用节奏提醒（Pacing Alerts）\n- 支持多个 Claude Code 账号\n- 完全本地运行\n\nOpenQuota 本身不需要注册账号，也没有云端后端、Analytics 或使用数据遥测。\n\n大部分 Provider 会直接使用电脑上已有的登录凭据；需要 API Key 的服务会通过操作系统的安全凭据存储保存。\n\n## 技术栈\n\n- Tauri 2\n- Rust\n- Svelte\n- TypeScript\n\n## License\n\nMIT",
+    "created_at": "2026-08-08T02:03:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11080"
+  },
+  {
     "id": 11079,
     "title": "[开源自荐] cf-speedtest：找到真正跑得快的 Cloudflare IP",
     "content": "cf-speedtest 是一个轻量、跨平台的命令行测速工具，用来从大量 Cloudflare IP 中筛选出**低延迟、低丢包且实际下载速度快**的 IP，也可以用于其他 CDN。\n\n它采用两阶段测速：先用 TCP、ICMP 或 HTTP 快速测试延迟、丢包率和抖动，只对表现较好的 IP 进行多线程 HTTP 下载测试，从而避免对整个 IP 列表进行昂贵的下载测速。\n\n```bash\ncf-speedtest -tl 150 -sl 5 -p 20\ncf-speedtest -m http -colo HKG,NRT,LAX\ncf-speedtest -tl 200 -dd\n```\n\n支持 IPv4 / IPv6、CIDR 扫描、Cloudflare Colo 检测、ASN 查询、延迟/速度/丢包过滤，以及 CSV 导出。整个项目只使用 Go 标准库，无第三方依赖，可直接编译为单个跨平台二进制。\n\nGitHub：[asong56/cf-speedtest](https://github.com/asong56/cf-speedtest)",
@@ -800,13 +808,5 @@
     "created_at": "2026-08-01T10:43:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10979"
-  },
-  {
-    "id": 10978,
-    "title": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑",
-    "content": "【开源自荐】Rclaude：共享 agent 的\"使用\"而不是 API —— 代码留本地，agent 在远端跑\n\n**项目名称**：Rclaude（flyingEirc/Rclaude）\n\n**项目简介**：一套\"远程文件访问 + 远程 agent 终端\"系统。它不是把某个 agent 的 API 包装后转卖，而是共享 agent 的**使用本身**：一个已登录的编码 agent（Claude Code、Codex 等）跑在远端机器上，你在本地把工作区和终端接上去，直接驱动它——而你的代码始终留在自己机器上，不上传。\n\n**项目地址**：https://github.com/flyingEirc/Rclaude\n\n**分类**：AI Agent / 开发工具\n\n**核心亮点**：\n\n- **共享的是\"使用\"不是 API**：终端直连真实 agent 二进制的完整 TUI 与 agentic loop。你共享出去的是\"用这个 agent 这件事\"。\n- **代码不出本地**：通过 FUSE 把本地工作区映射到远端，agent 用普通路径（cat/grep/ls/sed）读写你的项目；源文件始终在你机器上，server 只持有缓存与元数据，不保存完整副本。\n- **daemon 主动外连**：连接从你的机器发起到 server，server 无需反向拨回你的内网。\n- **会话被收口到单一 agent**：落点直接是命令行声明的 agent——整个会话离不开 agent 界面，也无法在 server 上乱逛。共享的是\"这个 agent\"，不是\"一台 Linux\"。\n- **可选增强**：前置 Caddy 终止 TLS（server 二进制保持明文 h2c）。\n\n**推荐理由**：现在要么是分发 API key（拿到的是原始接口，不是 agent 的交互式使用），要么是把代码传到一台共享云机器上（代码交了出去）。Rclaude反过来：共享的是**一个已登录 agent 的交互式使用，代码留在本地**，适合小团队想摊薄一个订阅席位、又不愿把代码交出去的场景。Go 实现，server 端需 Linux + FUSE；目前 Codex  / Claude Code/ Cursor Agent的 TUI attach 与远端执行全链路已跑通。仍是最小可用路径、非生产发行版，处于迭代中。",
-    "created_at": "2026-08-01T09:55:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10978"
   }
 ]
