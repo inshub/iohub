@@ -1,5 +1,37 @@
 [
   {
+    "id": 11079,
+    "title": "[开源自荐] cf-speedtest：找到真正跑得快的 Cloudflare IP",
+    "content": "cf-speedtest 是一个轻量、跨平台的命令行测速工具，用来从大量 Cloudflare IP 中筛选出**低延迟、低丢包且实际下载速度快**的 IP，也可以用于其他 CDN。\n\n它采用两阶段测速：先用 TCP、ICMP 或 HTTP 快速测试延迟、丢包率和抖动，只对表现较好的 IP 进行多线程 HTTP 下载测试，从而避免对整个 IP 列表进行昂贵的下载测速。\n\n```bash\ncf-speedtest -tl 150 -sl 5 -p 20\ncf-speedtest -m http -colo HKG,NRT,LAX\ncf-speedtest -tl 200 -dd\n```\n\n支持 IPv4 / IPv6、CIDR 扫描、Cloudflare Colo 检测、ASN 查询、延迟/速度/丢包过滤，以及 CSV 导出。整个项目只使用 Go 标准库，无第三方依赖，可直接编译为单个跨平台二进制。\n\nGitHub：[asong56/cf-speedtest](https://github.com/asong56/cf-speedtest)",
+    "created_at": "2026-08-07T22:48:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11079"
+  },
+  {
+    "id": 11078,
+    "title": "[开源自荐] hats：一个 YAML 驱动的命令行 Hosts 管理器",
+    "content": "hats 是一个跨平台的 CLI Hosts 管理工具，可以把常用的 hosts 配置组织成 YAML profiles，并通过命令行快速切换。\n\n它可以创建多个配置 profile，通过 `enable` / `disable` 控制状态，再用 `apply` 一次性写入系统 hosts 文件。Profile 支持 `include` 继承，适合管理开发环境、本地域名、测试环境以及广告屏蔽等不同场景。\n\n```bash\nhats list\nhats enable dev-suite\nsudo hats apply\nhats status\n```\n\nhats 不会覆盖用户手动维护的 hosts 内容，只修改明确标记的 managed block，并在首次修改前自动备份原始 hosts 文件；同时支持配置校验、dry-run、恢复和 DNS cache flush。\n\n相比图形化的 Hosts 管理工具，hats 更适合喜欢 **终端、键盘操作和自动化脚本** 的开发者。\n\nGitHub：[asong56/hats](https://github.com/asong56/hats)",
+    "created_at": "2026-08-07T22:47:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11078"
+  },
+  {
+    "id": 11077,
+    "title": "[开源自荐] Devia：一个零依赖的命令行开发者工具箱",
+    "content": "devia 是一个单文件、零依赖的开发者 CLI，把开发过程中经常需要临时寻找工具或写脚本完成的小任务集中到一个命令里。\n\n提供哈希、Checksum、Base64、JSON 格式化、编码转义、UUID、文本转换、时间戳、进制转换、Cron 解析、正则测试、Diff、证书信息查看等功能，也可以通过 `devia serve` 暴露为本地 JSON API。\n\n例如：\n\n```bash\necho -n hello | devia hash --algo=sha256\ndevia json format data.json\ndevia uuid\ndevia cron \"*/5 * * * *\"\ndevia cert decode certificate.pem\ndevia diff old.txt new.txt\n```\n\ndevia 只有 Go 标准库依赖，编译为静态二进制，下载后直接放进 `PATH` 即可使用。所有命令都支持干净的 stdout、明确的 exit code，以及 `--json` 输出，方便脚本和其他程序调用。\n\n它的目标很简单：**少装一个包，少写一个 one-liner，少开一个浏览器标签页。**\n\nGitHub：[asong56/devia](https://github.com/asong56/devia)",
+    "created_at": "2026-08-07T22:45:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11077"
+  },
+  {
+    "id": 11076,
+    "title": "[开源自荐] OhPDF：不用上传文件的本地 PDF 工具",
+    "content": "OhPDF 是一个轻量的桌面 PDF 工具，不需要账号、不需要上传文件，也没有订阅。\n\n它提供合并、拆分、压缩、加密、删除和提取页面、旋转和重排页面、PDF 与图片互转、添加水印等常用功能，同时支持直接阅读和简单标注 PDF。\n\n使用方式也很简单：**下载 → 双击 → 拖入 PDF → 完成**。\n\n```text\nMerge       合并 PDF\nSplit       拆分页面\nCompress    压缩文件\nEncrypt     加密 / 解密\nReorder     调整页面顺序\nPDF ↔ Image 图片互转\nWatermark   添加水印\nRead        阅读与标注\n```\n\nOhPDF 使用 Rust + MuPDF 构建，前端没有 Node.js、npm 或构建流程，目标是保持单个可执行文件小于 15 MB。所有 PDF 操作都在本机完成，文件不会离开电脑。\n\nGitHub：[asong56/ohpdf](https://github.com/asong56/ohpdf)",
+    "created_at": "2026-08-07T22:37:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11076"
+  },
+  {
     "id": 11075,
     "title": "[开源自荐] onas：一个 CLI 搞定图片、音频和视频转换",
     "content": "onas 是一个快速的媒体转换 CLI，统一提供**图片转换、音频转码、视频转码、视频抽帧和媒体元数据处理**。\n\n它支持 JPEG、PNG、WebP、AVIF、JXL，以及 FLAC、Opus、MP3、AAC、H.264、H.265、VP9、AV1 等常见格式和编码器。图片可以直接调整尺寸和质量，音视频支持编码器、码率、CRF 等参数控制，还提供 `--json`、明确的退出码和 Rust library API，方便集成到脚本和其他程序中。\n\n例如：\n\n```bash\nonas image photo.jpg photo.avif --quality 85\nonas audio track.flac track.opus --bitrate 192\nonas video input.mp4 output.mkv --vcodec h265 --crf 22\nonas frame input.mkv thumbnail.png --at 5\nonas meta track.flac --set \"TrackTitle=My Song\"\n```\n\nonas 的目标不是庞大的媒体软件，而是提供一个**简单且适合命令行工作流的媒体处理工具**。\n\nGitHub：[asong56/onas](https://github.com/asong56/onas)",
@@ -776,39 +808,5 @@
     "created_at": "2026-08-01T09:55:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10978"
-  },
-  {
-    "id": 10977,
-    "title": "自荐产品：Quickdraw — MIT 协议的开源无限画布白板 SDK（tldraw 免费替代品）",
-    "content": "**产品名称**：Quickdraw\n\n**网址**：https://tryquickdraw.com （在线免费白板，无需注册：https://app.tryquickdraw.com ）\n\n**GitHub**：https://github.com/nmndwivedi/quickdraw\n\n**简介**：MIT 协议的无限画布白板 SDK，支持 React、React Native 和原生 JS。tldraw 自 SDK 4.0 起生产环境需要付费许可证密钥，Excalidraw 没有官方 React Native 支持——Quickdraw 填补了这个空缺：压感笔迹、手掌防误触、手绘风格图形、便签、激光笔、撤销/重做、PNG 导出、明暗主题。核心零依赖、纯 ESM、无需构建步骤，数据模型基于 JSON diff，天然支持实时协作同步。完全免费，商用无限制。\n\n（作者自荐，感谢考虑！）",
-    "created_at": "2026-08-01T01:34:22Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/10977"
-  },
-  {
-    "id": 10976,
-    "title": "工具自荐】MathLite —— 打开即用的纯前端数学工具箱",
-    "content": "地址：\n[https://mathlite.dpdns.org/](mathlite)\n\n33 个工具覆盖科学计算、矩阵、概率分布、回归拟合、FFT、函数绘图与开发者常用计算。无后端、无注册，所有计算在浏览器本地完成。\n\n<img width=\"2560\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0dd601c4-400c-47eb-819b-b8d261d7246b\" />",
-    "created_at": "2026-07-31T14:44:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10976"
-  },
-  {
-    "id": 10975,
-    "title": "【工具自荐】Soloop：给一人公司创业者的 AI CEO+CTO+CMO",
-    "content": "### **产品地址**\nhttps://www.soloop.io/\n\n\n### **为什么做Soloop？**\nSam Altman说他跟人打赌，哪一年OPC（一人公司）里会跑出来估值10亿美金的独角兽。我们离这一年越来越近了。\n\n如今，借助 AI Vibe Coding，用户已经可以快速完成 Demo、落地页乃至早期产品的搭建。但是，产品原型开发完，用户增长、开发迭代与商业闭环，往往仍然完全靠人类创业者继续往下摸索，各种环节的上下文也分散在各类工具中，OPC创业者往往也就卡在这里。\n\nSoloop是第一个敢于挑战闭环交付的AI OPC基建产品。产品打磨、用户增长、商业化，都在这里一站完成，Idea In. Revenue Out. 我们和所有创业者一样，认为能赚钱的产品才是好产品。\n\n\n### **产品简介**\nSoloop 是一款面向OPC（一人公司）的 AI 操作系统。它将 CEO、CMO、CTO、Analyst 等 AI Agents 整合在同一个工作空间，帮助OPC创业者将重点环节打通，形成一个持续运转的完整闭环：\n\n- CEO Agent：负责理解公司和产品目标，管理当前进度，判断下一步方向，并将任务分配给对应C-level Agent来执行。\n- CTO Agent：处理产品开发、bugs修复、代码优化与功能迭代，负责交付鲁棒性好、审美不错的可用产品。\n- CMO Agent：负责社媒运营、营销推广与用户增长工作，会收集市场反馈并同步回工作区，变成产品迭代的决策信号。\n- AI Analyst：调研竞品动态、用户需求及潜在用户聚集地，实时、主动地提供决策上下文。\n- 共享项目上下文：所有智能体基于统一的项目背景协作，无需创业者反复说明。\n- 掌控决策权：关键操作仍然由OPC创业者确认，再交由智能体自动化地执行。\n\nSoloop 并非创业教练，也不是vibe coding工具，而是打造「想法 - 调研 - 行动 - 增长 - 反馈 - 迭代 - 再决策」的连续闭环，真正交付产品营收的AI基建平台。\n产品迭代和商业化是loop，而OPC创业是solo，solo+loop=Soloop。\n我们相信，伟大的公司也可以是由一个人创建出来的。\n\n\n\n\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fc44e581-2474-48b9-a86e-7cfe46535817\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0ee1b534-7faf-4d22-a95f-b8dbe861c1f5\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d65bab99-9bd6-43cd-a862-06dc808ea151\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c2510271-cb19-4db8-8217-a47d99a56907\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0fe988a-4478-4b33-8abe-0af8eba5cfd9\" />\n<img width=\"7680\" height=\"4320\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/46929eff-f2fa-42fe-8c7c-b62745e53791\" />",
-    "created_at": "2026-07-31T14:31:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10975"
-  },
-  {
-    "id": 10974,
-    "title": "【文章自荐】在 Cloudflare 上构建 AI 图片去背景工具：架构与踩坑总结",
-    "content": "文章地址：\nhttps://dev.to/fu_bront_a2bc935343b8b06e/what-i-learned-building-an-ai-background-remover-on-cloudflare-2l74\n\n项目地址：\nhttps://imagebackground.site/\n\n这篇文章复盘了一个 AI 图片去背景网站从 MVP 到上线的完整工程过程。核心功能使用 remove.bg API，但文章重点不是模型本身，而是围绕第三方 API 构建产品时容易被忽略的生产问题。\n\n主要内容包括：\n\n- 使用 Next.js 和 Cloudflare Pages 构建前端与边缘端接口\n- 将第三方 API Key 放在服务端，并校验文件类型、大小、来源和请求频率\n- 图片只在请求过程中传递，应用本身不做持久化存储\n- 使用 Google OAuth 和 Cloudflare D1 管理用户、会话与使用额度\n- 通过“预占额度、成功确认、失败释放”解决并发请求与计费一致性问题\n- 同时接入 PayPal 与 Creem，并通过签名校验和事件去重实现幂等 Webhook\n- 统一正式域名、OAuth 回调、Cookie、支付返回地址与 SEO canonical\n\n文章还总结了七条适用于 API 型 SaaS 的实践经验，包括隐私边界、用量状态机、支付 Webhook 幂等性和失败路径测试。原文为英文，阅读时间约 6 分钟。",
-    "created_at": "2026-07-31T14:09:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10974"
   }
 ]
