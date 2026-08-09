@@ -1,5 +1,13 @@
 [
   {
+    "id": 11090,
+    "title": "自荐：Pixonara — AI 商品图与广告视频工作台",
+    "content": "网址：https://pixonara.com\n\n我做的 AI 图片/视频创作站，主要面向电商卖家和内容创作者：\n\n- 免费浏览 1500+ 提示词图库（GPT Image / Nano Banana / Midjourney），每条都带生成结果\n- 上传一张商品图，可以生成白底图、详情图、营销海报，或转成短广告视频\n- 支持中英日韩四语言\n\n顺便开源了一份整理好的商品摄影提示词精选集：\nhttps://github.com/JeremyGDM/awesome-ai-product-photography-prompts\n\n欢迎试用和反馈。",
+    "created_at": "2026-08-09T10:33:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11090"
+  },
+  {
     "id": 11089,
     "title": "【开源自荐】AVA：把多个 Steam 账户的令牌放进同一个列表，手机和桌面通用",
     "content": "AVA（AnotherVaporAuth）是一个开源的 Steam 令牌验证器，Flutter 写的，一套代码出 Android / Windows / Linux / macOS 四个平台。\n\n起因是官方 Steam App 一台手机只能装**一个**令牌。有小号、有区域账户、或者跑几个 ArchiSteamFarm 机器人的人，最后手里都是一堆 `.maFile` 备份加一个必须走到电脑前才能用的桌面工具。AVA 把这些账户放进同一个列表：验证码、交易确认、登录批准、交易报价、库存上架、远程注销其他设备，每个账户各自一份。\n\n它直接读写老工具 SDA（Steam Desktop Authenticator）的 `.maFile` 格式，也能导入 Steam++ / Watt Toolkit 的导出文件，随时可以把 maFile 导出带走。另外它能把令牌从官方 App 迁移过来——走的是官方 App 用的同一个接口，所以**不会触发 15 天交易冷却**，而从网页移除令牌会。\n\n密钥由 6 位 PIN 保护，存在设备硬件 Keystore 里，本地 AES-256-GCM 加密，验证码完全离线生成。MIT 协议。\n\n- 源码：https://github.com/freefrank/AnotherVaporAuth\n- 官网 / 桌面版下载：https://ava.dotslash.pro\n- Google Play：https://play.google.com/store/apps/details?id=pro.dotslash.ava\n\n![账户列表](https://ava.dotslash.pro/shots/home-neon.png)\n\n（利益相关：我是作者。Play 版有可选订阅解锁两套皮肤并去广告，免费版有横幅广告；验证码、交易确认、maFile 导入导出这些在所有版本里都免费，也可以自己编译一个完全不含广告与计费代码的版本。）\n",
@@ -800,13 +808,5 @@
     "created_at": "2026-08-02T14:10:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10990"
-  },
-  {
-    "id": 10989,
-    "title": "【开源自荐】MacPacker：不解压就能看的 macOS 压缩包管理器，41 种格式，原生中文界面",
-    "content": "仓库：https://github.com/sarensw/MacPacker\n官网：https://macpacker.app （有中文版）\n协议：GPL-3.0\n\nMacPacker 是一个免费开源的 macOS 压缩包管理器。macOS 自带的「归档实用工具」只有一种行为：双击，整包解压到一个新文件夹。MacPacker 换了个思路——把压缩包当成 Finder 窗口打开：直接浏览里面的目录结构，用空格键（Quick Look）预览单个文件，一层层钻进嵌套压缩包，最后只把真正需要的那个文件拖出来。\n\n**为什么做这个**\n\n2023 年我在处理构建产物（一堆 tar.lz4），每次只想取其中一个文件，却要把好几 GB 全解开。Windows 上有 7-Zip，Mac 上却找不到一个免费、原生、开源的对应物。于是自己写了一个。三年后它支持了 41 种格式，v0.18 起还能创建和编辑 zip。\n\n<img width=\"1720\" height=\"1120\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2799562c-9dda-42cf-a05e-58b30ee97044\" />\n\n**主要功能**\n\n- **先看后解** —— 一个字节都不解压，就能浏览整个压缩包的内容\n- **嵌套压缩包** —— ISO 里套 zip、zip 里再套 rar？直接钻进去，不产生中间解压文件\n- **按需取件** —— 为了一个配置文件不必解开 2 GB，选中直接拖到 Finder\n- **创建 / 编辑 zip** —— 新建 zip、在已有 zip 里增删文件后保存；也可以在 Finder 右键直接压缩\n- **Quick Look 集成** —— 在 Finder 里按空格，不开 App 也能看压缩包里有什么\n- **加密压缩包** —— 支持带密码的压缩包\n- **按文件头识别格式** —— 不看扩展名，后缀改错了也认得出来\n- **41 种格式**：zip / zipx / rar / 7z / tar / tar.gz / tar.xz / tar.bz2 / gz / bz2 / xz / lz4 / cab / arj / lha / lzh / lzx / sit / sitx / deb / rpm / msi / exe / pkg，以及 dmg / iso / vhd / vhdx / vmdk / qcow2 / squashfs / wim 等磁盘镜像\n- **原生简体中文界面**（共 13 种语言），翻译托管在 POEditor，欢迎纠错\n- **完全免费**：没有付费版、没有订阅、不需要账号，无广告、无捆绑、无遥测，压缩包不会离开你的电脑\n\n**安装**（macOS 14.6+，Apple Silicon 与 Intel 均支持）\n\n```bash\nbrew install --cask macpacker\n```\n\n也可以从 Mac App Store 安装，或在 [macpacker.app](https://macpacker.app) / [GitHub Releases](https://github.com/sarensw/MacPacker/releases) 下载 .dmg / .zip。所有构建均已沙盒化，并经过 Apple 签名与公证。\n\n技术栈：Swift + SwiftUI 原生开发，底层集成了 7-Zip 等多个归档引擎，GPL-3.0 开源。\n\n最后说明一下：我是德国的独立开发者，本人不懂中文。App 的中文界面是由真人译者通过 POEditor 完成的，但这篇自荐是用 AI 翻译的——所以如果这里哪句话读起来别扭，责任在 AI，不在译者。无论哪种情况都欢迎纠正：App 的翻译可以在 POEditor 上改，这篇帖子的问题直接提 issue 就行。",
-    "created_at": "2026-08-02T13:23:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10989"
   }
 ]
