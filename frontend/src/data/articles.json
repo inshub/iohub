@@ -1,5 +1,13 @@
 [
   {
+    "id": 11091,
+    "title": "自荐：ClipLumi — 用自然语言提示词编辑图片的 AI 图片工具",
+    "content": "网址：https://cliplumi.com/zh\n\n我做的 AI 图片编辑工具，主要面向内容创作者和不熟悉 Photoshop 的用户：\n\n- 可以直接用自然语言提示词修改图片，例如换背景、调整主体、改风格或重做局部内容\n- 最多可同时使用 3 张参考图，方便控制人物、商品或视觉方向\n- 支持多种图片生成/编辑模型，并在生成前显示对应积分成本\n- 提供中英文界面，可直接在线使用\n\n欢迎试用和反馈。",
+    "created_at": "2026-08-09T12:31:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11091"
+  },
+  {
     "id": 11090,
     "title": "自荐：Pixonara — AI 商品图与广告视频工作台",
     "content": "网址：https://pixonara.com\n\n我做的 AI 图片/视频创作站，主要面向电商卖家和内容创作者：\n\n- 免费浏览 1500+ 提示词图库（GPT Image / Nano Banana / Midjourney），每条都带生成结果\n- 上传一张商品图，可以生成白底图、详情图、营销海报，或转成短广告视频\n- 支持中英日韩四语言\n\n顺便开源了一份整理好的商品摄影提示词精选集：\nhttps://github.com/JeremyGDM/awesome-ai-product-photography-prompts\n\n欢迎试用和反馈。",
@@ -800,13 +808,5 @@
     "created_at": "2026-08-02T14:30:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/10991"
-  },
-  {
-    "id": 10990,
-    "title": "【开源自荐】Headless Guard：安全清理卡住 Mac 的遗留无头浏览器",
-    "content": "项目地址：https://github.com/study8677/HeadlessGuard  \n下载地址：https://github.com/study8677/HeadlessGuard/releases/latest\n\n![Headless Guard 检测界面](https://raw.githubusercontent.com/study8677/HeadlessGuard/main/docs/images/dashboard-detected.png)\n\nHeadless Guard 是一款原生 macOS 菜单栏工具，专门处理 Playwright、Puppeteer 等自动化任务异常退出后留下的无头浏览器。此类残留进程可能持续占用内存，也可能接走系统的浏览器打开请求，表现为“Chrome 明明在运行，却没有正常窗口”。\n\n## 为什么做这个项目\n\n项目来自一次真实故障排查：一组 Playwright daemon 和无头 Chrome 已脱离父任务、持续运行 2 天 8 小时。Headless Guard 在清理前识别到 1 个自动化会话、7 个相关进程；清理后释放约 365.3 MB，原本正在使用的普通 Chrome PID 保持不变，随后 15 秒持续复查也没有重新拉起。\n\n## 它怎样避免误伤正常浏览器\n\n- 不因进程名称里出现 `Chrome` 就结束它，而是组合判断 headless 参数、临时自动化 Profile、远程调试、启动器祖先关系、存活时间等证据。\n- 普通浏览器 Profile 和日常 Chrome 会话受到硬保护；只处理当前用户的进程。\n- 执行前重新扫描，只停止精确匹配的自动化进程树；先发 TERM，再校验仍存活进程的命令指纹，最后才对匹配者使用 KILL。\n- 默认仅观察，不会自动清理；自动清理和登录启动都需要用户主动开启。\n\n项目用 Swift / SwiftUI + AppKit 编写，不依赖 Electron，不需要管理员权限，没有遥测，也不上传进程信息。除了原生图形界面，还提供 `scan`、`rescue`、`watch`、`doctor` 等 CLI 命令，并包含针对普通 Chrome 保护、误报边界和进程复用的测试。\n\n当前 v0.1.0 支持 macOS 13+ 和 Apple Silicon。首版采用 ad-hoc 签名、尚未经过 Apple 公证，因此首次打开可能需要在 Finder 中右键选择“打开”；这一限制已在 Release 和 README 中明确说明。\n",
-    "created_at": "2026-08-02T14:10:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/10990"
   }
 ]
