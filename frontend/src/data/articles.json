@@ -1,5 +1,37 @@
 [
   {
+    "id": 11110,
+    "title": "【软件自荐】隐私中转站 Android：关闭购物 App 剪贴板权限后仍能打开分享链接",
+    "content": "## 隐私中转站 Android\n\n项目说明与下载：https://github.com/hzy7003-bit/PrivacyHub-Android-Preview\n\n最新版 APK：https://github.com/hzy7003-bit/PrivacyHub-Android-Preview/releases/latest\n\n这是一款由用户主动触发、默认离线运行的 Android 隐私分享中转工具。它解决的场景是：关闭淘宝、小红书、网盘等 App 的剪贴板读取能力后，用户仍能通过通知栏或系统分享，保存、识别并打开别人发来的链接或口令。\n\n主要特点：\n\n- 通知栏提供“保存到安全箱”和“保存并跳转”\n- 支持系统分享、长按文本、本地搜索、收藏和分类\n- 识别常见购物、内容平台及百度、夸克、迅雷等网盘链接\n- 本地安全箱使用 SQLCipher 加密，密钥由 Android Keystore 管理\n- Release APK 不声明网络权限\n- 无广告 SDK、无统计 SDK、无云同步，不申请 Root\n\n当前版本为 `v0.9.27-beta`，公开仓库提供签名 APK、SHA-256、签名证书摘要、权限清单和安装说明。公开仓库是下载、文档与反馈仓库，Android 源码暂不公开。\n\n我是该项目开发者，联系邮箱：hzy7003@gmail.com",
+    "created_at": "2026-08-10T10:08:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11110"
+  },
+  {
+    "id": 11109,
+    "title": "【开源自荐】数学基础：对话体开源数学教材，7 册 47 章从零推导",
+    "content": "项目名称：数学基础（Math Foundation）\n项目地址：https://github.com/lwq200/math-foundation\n在线阅读：https://lwq200.github.io/math-foundation/\n开源许可：CC BY 4.0\n\n一句话介绍：\n一套用\"苏格拉底问答\"写成的开源数学教材。读者（造物主）与毒舌导师（老谟）一问一答，从零亲手推导每个数学概念，而不是背结论。\n\n为什么值得一看：\n1. 传统教材直接给结论，它把\"怎么想到这一步\"完整演出来，每步推导都可复写。\n2. 覆盖 7 册 47 章：数/逻辑 → 极限 → 微积分 → 线性代数 → 多元微积分与凸优化 → 概率统计与信息 → 图论与可计算性。\n3. 每章标配：可复写证明（每步标依据）、计算训练场（动笔练习+分步解答）、学派中立（贝叶斯/频率等双轨并述）。\n4. 技术实现：VitePress + KaTeX 公式 + Mermaid 流程图 + 11 个 JSXGraph 交互演示——拖 δ 看 ε-δ 极限带、拖 h 看割线贴合切线、调学习率看梯度下降发散/收敛；全站深浅色适配，GitHub Actions 自动部署。\n\n适用人群：想补数学基础的开发者、自学者、教育工作者。\n",
+    "created_at": "2026-08-10T10:07:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11109"
+  },
+  {
+    "id": 11108,
+    "title": "[开源自荐] boss-crawler-skill: BOSS 直聘求职自动化工具skill,爬取岗位 → 解析简历 → 智能匹配 → 可视化报告 → 自动投递。",
+    "content": "一套完整的 BOSS 直聘求职自动化工具：爬取岗位 → 解析简历 → 智能匹配 → 可视化报告 → 自动投递。所有 LLM 分析由 Claude Code 自身模型能力完成，帮助你更好精投简历。\n源代码： https://github.com/zhansan379/boss-crawler-skill\n先由 Python 规则引擎对全部岗位做快速初筛（薪资、经验、学历、技能词边界匹配 + 别名归一化），再对候选岗位执行 Claude 语义深度分析（JD 职责与简历项目的实质匹配、技术栈契合度）。\n同时生成 Bauhaus 风格 HTML 可视化报告，包含所有岗位的匹配度卡片、分类统计图表和投递状态。\n\n<img width=\"1280\" height=\"685\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/955c5293-eb16-4911-b7b1-e6b368d7cacb\" />\n\n<img width=\"1278\" height=\"653\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/36ca60eb-cdf6-42f4-9940-e048040dce9b\" />\n\n<img width=\"1280\" height=\"685\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4f417708-f56b-4319-aec3-37d5a8261881\" />",
+    "created_at": "2026-08-10T09:46:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11108"
+  },
+  {
+    "id": 11107,
+    "title": "【开源自荐】Wangdefa.Memory — 本地存储优先的 Agent 五层记忆体组件",
+    "content": "Agent 的长期记忆一直是个难题。现有方案多数以 RAG模式为主（依赖向量库和云端），较少实现类人化的记忆检索模式，较少真正的\"记忆推演—提取—演化\"机制。\n\nWangdefa.Memory 是一个为 Agent 设计的五层记忆体组件，采用无向量设计，将记忆按人类思考模式的认知、特征推演、思考、阅历、传递五层，全部存储在本地 SQLite + JSON 中。核心机制是特征推演引擎（FeatureEngine），通过标签池、密码簿和特征统计三者的配合，通过实现精准匹配、近义扩展和多轮循环匹配，并配合时间衰减排序，目标是尽可能让Agent实现记忆个性化与自我沉淀，支撑Agent更懂用户、更理解需求、更知晓用户潜在意图。\n\n人类最需要的Agent不是理解明面上的叙述，而是能洞察未表达的需求。\n\n代码已开源，Apache 2.0 协议，支持 .NET 10。附带完整 README 和 ConsoleDemo，三分钟可跑通。\n\nGitHub：https://github.com/VinsonWild/Wangdefa.Memory",
+    "created_at": "2026-08-10T09:45:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11107"
+  },
+  {
     "id": 11106,
     "title": "CertHub：把 SSL 证书从签发管到真正上线",
     "content": "项目地址：https://github.com/huiyonghkw/CertHub\n在线文档：https://huiyonghkw.github.io/CertHub/\n\nCertHub 是一个 MIT 开源、自托管的 SSL 证书交付工具。\n\nacme.sh 已经很好地解决了“申请证书”；实际更麻烦的是后半程：多域名分散在服务器、CDN 和云控制台，有的能 SSH 自动部署，有的只能人工上传；只部署站点证书又可能因缺少中间证书而让客户端报错。\n\nCertHub 把这条链路收进 YAML + CLI：\n- ACME DNS-01 签发与续期\n- SSH/SCP 推送并执行 nginx reload\n- 控制台上传目标生成可直接使用的 ZIP\n- 探测线上主机并校验 fullchain\n\nCommunity 版为 MIT 开源，提供完整 CLI 基础闭环；可视化控制台与 REST 自动化属于独立的自托管 Pro 版本。开源版不含内置证书数量锁，5 张只是官方测试与文档支持范围。",
@@ -776,37 +808,5 @@
     "created_at": "2026-08-04T07:01:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11009"
-  },
-  {
-    "id": 11008,
-    "title": "【工具自荐】AI Tattoo Generator 免费AI 纹身生成器",
-    "content": "我自己做了一个小工具。\n\n🎨 **AI 纹身生成器**\nhttps://ai-tattoo-generator.net/\n\n💡 **一句话介绍**\n一个将“自然语言 → 可刺青草稿”做到极致的垂直领域 AI 绘图工具。\n\n✨ **核心亮点**\n- 🖌️ **垂直场景优化**：不同于通用绘图工具，专门针对纹身场景调校 Prompt，支持极简 (Minimalist)、传统 (Traditional)、日式 (Irezumi)、黑工 (Blackwork) 等十余种风格。\n- 🤖 **多模型路由**：同时集成 **ChatGPT Image** 与 **豆包 Seedream**，用户可按需切换，兼顾生成质量与成本。\n- 📍 **部位感知**：支持前臂、花臂、背部、手腕等特定身体部位生成，更符合落地需求。\n- 📁 **交付友好**：输出高分辨率 PNG 线条稿，纹身师可直接描摹，实现了从“AI 生成”到“物理刺青”的闭环。\n\n👨‍💻 **角度**\n- 典型的 **\"通用大模型 + 垂直场景封装\"** 落地案例。\n- 展示了如何通过精细化的 Prompt 工程，将通用文生图能力转化为特定行业（纹身）的生产力工具。\n- 注册即送 **10 免费积分**，无需配置环境，浏览器打开即可测试效果。\n",
-    "created_at": "2026-08-04T02:01:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11008"
-  },
-  {
-    "id": 11007,
-    "title": "【文章推荐】 一次服药，还是连吃五天：从两种流感药看 AI 系统设计",
-    "content": "作者从流感的“单次服药”和“连续服药”的差异切入，没有停留在药物知识科普，而是自然引出一个很好的 AI 系统设计问题：模型能力的提升，穿过真实业务流程后，还能剩下多少用户价值？  \n\n文章把药效、药代、耐药风险与成熟方案的适用边界，分别对应到 AI 产品中的一键体验、工具权限、指标失真和模型选型。类比克制、论证扎实，既不神化新技术，也不把“更强模型”当成万能答案。\n\n它提醒我们：好的系统，不是参数更漂亮，而是替用户少做了什么，又让系统多承担了什么。\n\n- https://mp.weixin.qq.com/s/3W3ybCXCAr0hD3YYzDwe0w",
-    "created_at": "2026-08-04T01:50:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11007"
-  },
-  {
-    "id": 11006,
-    "title": "为什么要转行搞AI",
-    "content": "https://blog.csdn.net/changtianshuiyue/article/details/163433023",
-    "created_at": "2026-08-04T01:25:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11006"
-  },
-  {
-    "id": 11005,
-    "title": "【开源自荐】evalint：审计你的 LLM 评测集，找出标准答案写错的题",
-    "content": "**项目地址：** https://github.com/CAOShurong/evalint\n\n所有评测框架都在帮你跑 LLM 测试用例，却没有一个会问：**这些用例本身出得好不好？**\n\n于是你得到一个排行榜：`claude-sonnet 0.729`、`gpt-4o 0.729`。两个数字、三位小数，但你没法知道这个差距有没有意义、240 道题里有多少道其实什么都测不出来，以及哪几道的标准答案本身就是错的。\n\nevalint 读你已经有的结果文件（CSV / JSONL / promptfoo / OpenAI evals 都能直接读），回答这三件事。\n\n**一、这个排行榜可信吗**\n\n它算 KR-20 信度，以及由此得出的「能分辨的最小分差」。示例数据里这个值是 0.026，所以上面那两个模型被判定为**并列**，而不是排出第一第二。\n\n**二、你有多少题在白烧钱**\n\n所有模型都答对的题，在数学上不可能改变排名——但每跑一次就要花一次 API 调用，永远花下去。示例的 240 道题里，58 道完全影响不了结果，151 道就能复现一模一样的排名，**每次跑省 37% 的调用**。\n\n**三、哪些题的标准答案是错的**\n\n如果一道题**越差的模型反而越容易答对**，那不存在「这题很难」的解释——只可能是答案写错了，而差模型恰好烂到能跟错答案对上。\n\n![item map](https://raw.githubusercontent.com/CAOShurong/evalint/main/docs/item-map.png)\n\n图里每个点是一道题，虚线以下就是这种反向题。那 10 道红点是我故意埋进去的错题，一道不多一道不少全被找出来。\n\n**最费劲的部分其实是「学会不下结论」。** 只有 5 个模型时，真正的坏题相关系数是 −0.60，而纯属运气的正常题能到 −0.71，两个分布完全重叠——**任何阈值都分不开**。一个据此报「发现 21 道坏题」的工具，会让人白白去查 13 道好题。所以现在每个指控都跑一次置换检验；只有 3 个模型时它直接说「证不了」，而不是编个自信的数字。一个总是误报的检查工具，第二次谎报之后就会被卸载，然后什么都查不到了。\n\n零运行时依赖，不用 numpy 也不用 pandas，Python 3.9+，Linux / Windows / macOS 都测过。\n\n```bash\npip install evalint\nevalint results.csv\n```\n",
-    "created_at": "2026-08-03T15:09:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11005"
   }
 ]
