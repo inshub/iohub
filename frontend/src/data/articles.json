@@ -1,5 +1,21 @@
 [
   {
+    "id": 11106,
+    "title": "CertHub：把 SSL 证书从签发管到真正上线",
+    "content": "项目地址：https://github.com/huiyonghkw/CertHub\n在线文档：https://huiyonghkw.github.io/CertHub/\n\nCertHub 是一个 MIT 开源、自托管的 SSL 证书交付工具。\n\nacme.sh 已经很好地解决了“申请证书”；实际更麻烦的是后半程：多域名分散在服务器、CDN 和云控制台，有的能 SSH 自动部署，有的只能人工上传；只部署站点证书又可能因缺少中间证书而让客户端报错。\n\nCertHub 把这条链路收进 YAML + CLI：\n- ACME DNS-01 签发与续期\n- SSH/SCP 推送并执行 nginx reload\n- 控制台上传目标生成可直接使用的 ZIP\n- 探测线上主机并校验 fullchain\n\nCommunity 版为 MIT 开源，提供完整 CLI 基础闭环；可视化控制台与 REST 自动化属于独立的自托管 Pro 版本。开源版不含内置证书数量锁，5 张只是官方测试与文档支持范围。",
+    "created_at": "2026-08-10T08:52:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11106"
+  },
+  {
+    "id": 11104,
+    "title": "【工具自荐】ShortsMonkey：按播放/订阅比发现 YouTube 异常爆款视频",
+    "content": "项目地址：[https://www.shortsmonkey.com](https://www.shortsmonkey.com)\n\nShortsMonkey 是一个 YouTube 视频研究工具，帮助创作者从小频道中发现“异常高表现”的 Shorts 和长视频。\n\n它不只按绝对播放量排序，而是关注播放量与频道订阅者规模之间的相对表现（view/subscriber ratio），更容易找出小频道突然跑出的题材和样本，适合选题研究、竞品观察和内容灵感搜集。\n\n提供免费版本；付费方案从 19 美元/月起。",
+    "created_at": "2026-08-10T07:54:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11104"
+  },
+  {
     "id": 11103,
     "title": "【开源自荐】「晷迹」：一款以 Trace 为核心的 macOS Todo && Memo",
     "content": "仍在开发初期，特点如下：\n\n1. 关注每一天：以每一天的任务状态集来记录过去、规划当天。\n2. Trace 优先：Trace 记录一条任务的完整生命周期，计划变更不覆盖历史：一条任务根据其状态可以分别出现在“任务池”，“未来计划”，“day todo”，“未完成”，“已完成”。\n3. 按照计划的状态进行功能分区：Day todo 汇总显示今日任务，任务池汇总显示所有未排期未开始的任务，未来计划汇总显示所有的未来排期，所有未完成的任务汇总到“未完成”。\n4. 本地优先：不联网也能完整使用，并支持 JSON 数据导出。\n5. AI 分类和标签：每条任务自动进行分组和打标签\n6. 做了简单的 Memo ，Memo 和计划后续会考虑打通 ai 的转化\n\n目前 iCloud 同步还有 bug ；纯本地使用和数据导出没有问题，后续会陆续支持其他同步和存储方案\n\n详情： https://github.com/quboliu/noonmark/blob/main/README.zh-CN.md\n\n![Day Todo](https://raw.githubusercontent.com/quboliu/noonmark/main/docs/assets/screenshots/readme/day-todo.png)\n\n![Calendar](https://raw.githubusercontent.com/quboliu/noonmark/main/docs/assets/screenshots/readme/calendar.png)\n\n![Flylight Inline Edit](https://raw.githubusercontent.com/quboliu/noonmark/main/docs/assets/screenshots/readme/flylight-inline-edit.png)\n\n![Sticky Notes Wall](https://raw.githubusercontent.com/quboliu/noonmark/main/docs/assets/screenshots/readme/sticky-notes-wall.png)",
@@ -30,14 +46,6 @@
     "created_at": "2026-08-10T03:54:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11100"
-  },
-  {
-    "id": 11099,
-    "title": "Add TANSHIP Template",
-    "content": "## 推荐添加: TANSHIP Template\n\n**链接:** https://tanship.app?utm_source=github&utm_medium=directory&utm_campaign=backlink\n\n**描述:** TanStack Start SaaS boilerplate: auth, payments, database, email, 8 AI modules (live workflows + extensible), 34 themes, EN/ZH. Built for Cloudflare Workers.\n\n**类别:** developer-tools\n\n**为什么推荐:**\nA TanStack Start SaaS boilerplate for indie developers and small teams — auth,\npayments, database, email, and AI workflows already wired in for Cloudflare Workers.\nIncludes Better Auth, Creem/Stripe/PayPal adapters, Drizzle ORM on D1, 8 AI modules\nrunning on Workers AI with credit metering, 34 theme presets, and EN/ZH routing.\nConfigure your keys and skip weeks of repetitive integration work.\n\n\n---\n希望这个项目能对大家有帮助！",
-    "created_at": "2026-08-10T02:29:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11099"
   },
   {
     "id": 11098,
@@ -800,13 +808,5 @@
     "created_at": "2026-08-03T15:09:24Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11005"
-  },
-  {
-    "id": 11004,
-    "title": "【开源自荐】跨 Agent、跨设备的一个记忆外挂（当 Claude 被封之后的记忆迁移工具",
-    "content": "memU 2.0 已上线。 这次最值得体验的是，memU 的个人记忆现在可以跨 Agent 、跨设备使用。\n\n无论你在 Codex 、Claude Code 、Cursor 、Openclaw 之间切换，还是换一台设备，都能继续使用同一份上下文和知识。\n\n接入也更简单：把 memU 的 Skill 链接交给常用 Agent 即可；之后记忆沉淀和检索会在后台自动进行，Dashboard 也能查看和管理自己的记忆。\n\n另外，memU 依然保持轻量、开源，核心记忆逻辑约 500 行代码，方便开发者按自己的工作流定制。\n\n欢迎现在试试新版本（完全免费）： [https://memu.so/（在](https://memu.so/%EF%BC%88%E5%9C%A8) Quick start 里面复制代码粘贴给 Agent 即可使用，非常丝滑～）\n\n开源版本本地部署也是完全没问题的呢，请到 readme 了解详情： https://github.com/NevaMind-AI/memU\n\n<img width=\"2208\" height=\"1436\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/67060ea3-7786-459a-a303-6cb801958a74\" />",
-    "created_at": "2026-08-03T13:53:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11004"
   }
 ]
