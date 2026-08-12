@@ -1,5 +1,45 @@
 [
   {
+    "id": 11133,
+    "title": "【工具自荐】AI办公桌面端应用，集成了本地知识库",
+    "content": "与workbuddy一样的需求思路，面对办公用户场景 区别点在于做了很多本地优化，如本地知识库，ai能够精细编辑本地办公三件套，docx,ppt,excel，不依赖于任何mcp 如wps的mcp服务，同时支持了专门针对办公三件套的diff预览效果，专门做的ui优化；\n免费使用的，用户只需要配置自己的ai key即可\n\ngithub地址:\nhttps://github.com/Yoan98/Ncurator \n\n下载网址:\nhttps://www.ncurator.com/",
+    "created_at": "2026-08-12T01:56:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11133"
+  },
+  {
+    "id": 11132,
+    "title": "【工具自荐】PastePaw： 拥有 28 个主题，AI Agent 友好 macOS  剪切板管理工具",
+    "content": "**PastePaw** 除了拥有一个剪贴板管理 app 该有的功能之外（省略 5 千字，可以参考 [官网](https://pastepaw.com/) 介绍），还有一些独特的功能：\n\n### 1. 多主题，拒绝审美疲劳\n横向主题 18， 竖向主题 10，未来还会增加\n\n### 2. AI 加持 + Agent 友好\n* 自定义 Action（翻译、汇总、润色，文本转换，动态分组 都 OK）\n* 本地 MCP，你的 Agent 也可以读/写你的剪贴板，非常细粒度的权限控制，不用担心权限失控。转身可以可以变成 【AI 工具箱】 和 【资料 RAG 汇集源】\n\n### 3. 加密分组\n（除了普通的分组、智能分组之外），你的 Key 、隐私、密码 等可以放在这里，必需 TouchID 才能解锁。\n\n### 4. 工具箱\n\n针对剪切板的类型，提供以下文本和图片的快捷处理工具：\n* 文本转换: Base64/URL/YAML/JSON/XML/JWT/Color/Hash 等\n* 预览：Markdown / HTML 等\n* 图片: 背景移除 / 文本提取 / 二维码扫描 等\n\n### 链接\n* [AppStore](https://apps.apple.com/app/pastepaw/id6759132043?mt=12)\n* [官网: pastepaw.com](https://pastepaw.com/)\n\n### 部分截图：\n\n<img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6360f0c9-c3a4-4daa-bb22-768f7ea78c61\" />\n<img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd9d5122-aeea-4d7c-b4e7-0356ba98d2cc\" />\n\n#### HTML 预览，内容是 Agent 通过 MCP 自动插入到分组里\n\n<img width=\"3296\" height=\"2178\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/97eb2688-eff7-410a-a1ba-e364add02491\" />",
+    "created_at": "2026-08-12T01:47:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11132"
+  },
+  {
+    "id": 11131,
+    "title": "【开源自荐】pi-langfuse：把 Pi Coding Agent 的完整运行链路接入 Langfuse",
+    "content": "大家好，分享一个刚开源的 Pi Coding Agent 扩展：**[pi-langfuse](https://github.com/hezhiqing/pi-langfuse)**。\n\n它解决的问题很直接：在使用 Pi Coding Agent 时，想知道一次任务到底调用了哪些模型和工具、花了多少 token/成本、哪里出错、最终输出是什么。安装扩展后，这些信息会以一条完整 trace 的形式出现在 Langfuse 中。\n\n## 能看到什么\n\n- 每个用户 prompt 对应一条 Langfuse trace，并保留 Pi session 关联；\n- agent、LLM generation、tool call、turn 按层级嵌套，便于回看执行过程；\n- 记录最终回复、用量、成本（Provider 提供时）、TTFT、工具错误和运行健康度；\n- 支持 Langfuse Cloud 与自托管实例，并为部分自托管场景提供 REST fallback；\n- 内置隐私预设、常见密钥脱敏和本地路径哈希；也可以关闭输入、输出、工具 I/O 或系统提示词的采集。\n\n## 安装\n\n前提：Node.js 22+、已安装 Pi Coding Agent、拥有 Langfuse Cloud 或自托管实例。\n\n```bash\npi install npm:pi-langfuse\n```\n\n首次运行时会在 Pi 中引导配置 Langfuse；也支持通过环境变量配置。\n\n```bash\npi \"Explain the architecture of Redis\"\n```\n\n随后打开 Langfuse，就能查看这次 Pi 运行的完整 trace。\n\n项目地址：<https://github.com/hezhiqing/pi-langfuse>  \nnpm：<https://www.npmjs.com/package/pi-langfuse>\n\n欢迎试用、提 issue，尤其欢迎反馈不同 Provider 或自托管 Langfuse 环境的兼容性问题。\n\n<img width=\"2662\" height=\"1558\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd0d4d63-18a7-49ee-a010-26c609995afa\" />",
+    "created_at": "2026-08-12T01:46:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11131"
+  },
+  {
+    "id": 11130,
+    "title": "【文章推荐】LangGraph 到底解决了什么问题？用一个查天气的简单例子看懂",
+    "content": "LangGraph 什么时候是必要的架构，什么时候只是多余的一层？这篇文章给一个查天气的 Agent 逐步加上追问、暂停、重试和人工审核，让 State、checkpoint、Node、Edge 为什么存在自然浮现，也讲清了它与 ReAct 的真正分界。\n\n- https://mp.weixin.qq.com/s/_MwRs6nL6lM3uPFLIZy8SQ",
+    "created_at": "2026-08-12T01:42:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11130"
+  },
+  {
+    "id": 11129,
+    "title": "【开源自荐】SpotAsk：原生 macOS 菜单栏轻量 AI 问答工具",
+    "content": "\n**项目开源地址**：<https://github.com/shiquda/SpotAsk>\n\nSpotAsk 是一款原生 macOS 菜单栏 AI 助手，按一个快捷键呼出、问完关闭，有意保持精简和快捷。\n\n<div align=\"center\">\n  <img src=\"https://shiquda.github.io/SpotAsk/images/spotask-chat.png\" alt=\"SpotAsk 主界面\" width=\"600\" />\n</div>\n\n如果你只是想知道一个概念、翻译一段话​，或总结一篇长文时，往往要先停下手头的工作，打开浏览器，进入 AI 网站，再切回原任务。一个轻量的问题，解决它的过程却并不轻松。\n\n我发现，很多轻量问题其实并不值得专门打开 ChatGPT 或 Codex 这类工具。\n\nSpotAsk 想缩短这条路径：平时安静地待在菜单栏，按默认快捷键 `Option + Space`（或其他你喜欢的快捷键） 呼出一个专注的提问窗口。输入问题、查看回答、需要时复制，再按 `Esc` 关闭，回到原本的工作。整个过程不离开当前场景，就像它没有出现过一样。\n\n## 主要特点\n\n- **使用自己的 AI 服务（BYOK）**：支持 OpenAI 兼容接口和 Anthropic，访问密钥保存在这台 Mac 上。\n- **轻量而实用**：内置常用提示词、支持自定义快捷键、粘贴截图或拖入文件作为上下文，也可以切换不同服务商的模型。\n- **划词即问**：在浏览器、备忘录等应用中选中文字，可一键翻译、解释、总结、润色或执行自定义提示词。\n\n## 演示\n\n快捷键呼出并提问\n![SpotAsk 快捷键呼出并提问](https://shiquda.github.io/SpotAsk/images/spotask-hotkey.gif)\n\n划词快捷操作\n![SpotAsk 划词快捷操作](https://shiquda.github.io/SpotAsk/images/spotask-selection.gif)\n\n更多功能与体验，欢迎[下载](https://github.com/shiquda/SpotAsk/releases)亲自试试。\n\n## 平台与许可\n\n- 支持 macOS 15 或更高版本，兼容 Apple silicon 和 Intel Mac。\n- 开源，使用 AGPL-3.0 许可证。\n- 官方发布版本已使用 Apple Developer ID 签名并通过公证。\n\n感兴趣的读者，可查看中文文档：<https://shiquda.github.io/SpotAsk/zh-CN/>\n\n下载地址：<https://github.com/shiquda/SpotAsk/releases>",
+    "created_at": "2026-08-11T23:58:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11129"
+  },
+  {
     "id": 11128,
     "title": "【网站自荐】跑通：只收「跑通过的经验」的中文 vibe coding 社区",
     "content": "网站：https://paotong.dev\n\n跑通是一个垂直于 AI 编程（vibe coding）的中文开发者社区，编辑立场只有一条：**只收跑通过的经验**——一线实战复盘、真实成本账单、翻车现场与修复过程，不收营销稿、不收官方文档复述。\n\n内容示例：\n- 《把密钥挪出进程，救不了被投毒的 CI》——LiteLLM CI 投毒事件复盘，恶意依赖在 CI 里实际能摸到什么：https://paotong.dev/a/9940b4ef9a101539\n- 《一觉醒来，成本列没了》——Cursor 移除成本明细后，个人用户如何核对真实用量：https://paotong.dev/a/f9a66738716a4390\n- 按主题浏览（Claude Code / 成本 / 安全 / 翻车复盘等 18 个标签）：https://paotong.dev/tags\n\n两个对开发者比较特别的能力：\n- **MCP 接入**：远程 HTTP 端点或 `npx paotong-mcp`，Claude Desktop / Cursor 等 agent 可以直接浏览和读取站内文章（https://paotong.dev/mcp）\n- **全文 RSS**（50 条 content:encoded）：https://paotong.dev/feed.xml\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
@@ -772,45 +812,5 @@
     "created_at": "2026-08-05T07:19:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11028"
-  },
-  {
-    "id": 11027,
-    "title": "推荐项目：rever-browser —— 一个用于 API 逆向的 AI 智能体浏览器",
-    "content": "链接：https://github.com/greekr4/rever-browser\n演示：https://greekr4.github.io/rever-browser/\n\nrever-browser 是一个由 AI 智能体驱动的桌面浏览器，专门用来逆向分析网站的 API。\n\n你像平时一样浏览目标网站，它会在后台记录所有网络请求；AI 智能体可以读取这些流量、用 webcrack 反混淆 JS 打包文件，并直接操作页面（点击、输入、滚动、快照）来验证接口——省去了在浏览器 DevTools 和 AI 对话框之间反复复制粘贴请求的过程。\n\n技术栈是 Electron + React，内置 MCP 服务器暴露约 46 个工具（重放器、intruder 爆破、HAR 导出、反混淆、WebSocket 检查等），通过 CDP 捕获流量。默认搭配 Claude Code，也支持 Codex。对做爬虫和接口逆向的开发者应该挺实用。\n\n开源，Apache-2.0，支持 macOS / Windows / Linux。",
-    "created_at": "2026-08-05T07:14:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11027"
-  },
-  {
-    "id": 11026,
-    "title": "【开源自荐】《从沙子到车辙》——一个工程师的理解",
-    "content": "\n【开源自荐】《从沙子到车辙》——一个工程师的理解\n\n### 开源地址：\nhttps://github.com/Lularible/from-sand-to-ruts\n\n### 项目简介：\n一本从芯片物理讲到整车电子架构的技术书。不是教材，是作者在面板厂和嵌入式开发里一点点攒下来的理解：半导体物理、处理器架构、车载通信、嵌入式软件、诊断协议、硬件安全、OTA 升级，一路串着讲。\n\n### 全书 33 节，分七部分\n1. **计算的本质**——从莱布尼茨到哥德尔到图灵，追问计算是什么\n2. **计算的物质基础**——从沙子到晶圆，从 MOSFET 到 CMOS，一颗芯片是怎么被造出来的\n3. **处理器内部**——组合逻辑、时序逻辑、流水线、存储层次，CPU 到底怎么跑起来的\n4. **芯片之间如何对话**——从片内总线到 CAN、车载以太网、PTP 时间同步，一辆车的通信协议栈\n5. **软件的三种组织方式**——裸机、RTOS、AUTOSAR，不是谁比谁高级，是取舍不同\n6. **诊断、安全与 OTA**——车出厂之后，自己诊断、自己防御、自己更新\n7. **工程师的精神内核**——两弹一星的工程哲学、匮乏中的创造力、王羲之对今天工程师的启示\n\n市面上讲汽车电子的书，大多只讲一层。这本书反过来，往下拆：从浮栅电子讲到 CAN 差分信号，从 ARM 流水线讲到 UDS 诊断会话。读完之后再看车上的模块，你会多一个习惯：先问一句，它底下压着的是什么物理。\n\n**它不只为汽车电子工程师而写。写过代码、修过电脑、或只是好奇手机里那块硅片为什么能算数的人，都能找到自己想看的部分。**\n\n\n**许可证**：CC BY-NC-ND 4.0（内容）· MIT（代码示例）\n\n---\n\n本书是汽车电子七部曲系列的总纲。前两册（ptp技术书、存储技术书）此前承蒙周刊收录，累计超过 700 星。陆续收到不少读者的留言，说读下来收获很大。也正因为有阮一峰老师的周刊，才让更多读者看到了这些书。感谢阮老师，也感谢一路读过的读者。\n\n",
-    "created_at": "2026-08-05T06:49:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11026"
-  },
-  {
-    "id": 11025,
-    "title": "【开源推荐】agent-compose：用一份 YAML 管起所有 AI agent，编排动态工作流",
-    "content": "# 【开源推荐】agent-compose：用一份 YAML 管起所有 AI agent，编排动态工作流\n\n**仓库**：https://github.com/chaitin/agent-compose\n**官网**：https://agent-compose.ai/zh/\n**Demo**：https://demo.agent-compose.ai\n\n如果你熟悉 Docker Compose，心智模型几乎一样——只是把\"容器\"换成\"agent\"。\n\n## 亮点\n\n- **一份 `agent-compose.yml` 声明一切**：provider、模型、sandbox、workspace、调度、MCP，写完 `up` 就绪\n- **多 provider 通吃**：Codex、Claude Code、Gemini、OpenCode、Pi CLI，同一个声明式文件随便切\n- **三种隔离 runtime**：默认 Docker，另有 BoxLite（microVM）和 Microsandbox，满足不同隔离强度\n- **动态工作流（Dynamic Workflow）**：内置调度器不止跑 cron，还支持事件触发、webhook，甚至内联 JavaScript 脚本编排跨 agent 的复杂工作流——run 之间能串联、分流、按结果决策\n- **workspace 即配即用**：本地目录或 Git 仓库直接挂进 sandbox\n- **每 agent 可配 MCP server、可复用 skill、具名 volume**\n\n## 快照\n\n```yaml\nname: demo\nagents:\n  reviewer:\n    provider: codex\n    scheduler:\n      enabled: true\n      triggers:\n        - name: hourly-review\n          cron: \"0 * * * *\"\n          prompt: \"Review the current project state and summarize changes.\"\n```\n\n```bash\ncurl -fsSL https://github.com/chaitin/agent-compose/releases/download/installer-latest/install.sh | bash\n```\n\nGo 编写，AGPL-3.0 开源，带 Web UI（独立仓库）。适合想把多 agent 跑批、定时巡检、事件驱动工作流管起来的人。\n",
-    "created_at": "2026-08-05T05:58:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11025"
-  },
-  {
-    "id": 11024,
-    "title": "【工具自荐】拒绝几万字的文本垃圾：这是一个能帮视频快速“榨出”知识脑图的极简工具",
-    "content": "相信许多人都经历过这种痛苦：为了在一期两小时的播客或公开课里找一个具体的知识点，不得不把进度条来回拉扯，拉得人心烦意乱；又或者开完漫长的视频会议，回头看着杂乱的笔记，完全抓不住重点。\n\n我也是在无数次被冗长的视频折磨之后，决定推荐这个专门用来治愈这种效率焦虑的工具——[**TranscriptVideo**](https://www.transcriptvideo.ai/)。它不只是一个机械吐字的转录器，而是致力于把无序的音视频，变成真正能被检索、学习和利用的“结构化知识库”。\n\n### 📌 基本功能\n*   **多源智能转录**：支持 YouTube 链接、视频或音频直传。一键生成带精确时间戳与发言人识别的文本，让你告别从头到尾重播视频的低效操作。\n*   **AI 深度提炼与再创作**：这是它最大的不同。不仅能转录，它还能一键将视频内容提炼为**思维导图（Mind Map）**、**内容摘要（Summary）**以及**核心章节划分（Chapters）**。\n*   **互动学习组件**：系统能自动将视频核心要点转化为可供复习的**闪卡（Flashcards）**和**自测测验（Quiz）**，直接在页面内检测自己的掌握情况。\n*   **双语对照翻译**：支持跨语言翻译，让你在阅读译文的同时，依然能对照原视频的语音和原始语境进行交叉比对。\n\n### ⚡ 核心优势\n*   **从“转录”到“消化”的闭环**：传统工具通常止步于生成一堆杂乱无章的文字块，让用户面对几万字依然无从下手。而它通过脑图和测验，帮你把碎片化的信息，真正沉淀到大脑里。\n*   **尊重上下文的“追溯感”**：所有的脑图节点、提纲摘要都与视频时间戳深度绑定。阅读摘要时，点击任意要点就能直接跳转定位到原视频的对应秒数，绝不会脱离语境。\n*   **轻量即开即用**：不需要你下载笨重的本地客户端，也不需要经历繁琐的注册流程，主打一个省心和效率。\n\n### 👥 适用人群\n*   **重度自主学习者与学生**：面对一两小时的线上讲座，无需重复观看。利用它生成的闪卡和脑图，能成倍缩短笔记整理和期末复习的时间。\n*   **独立内容创作者与播客主**：需要将已发布的视频内容快速二次提炼，转化为图文帖子、博客提纲或章节时间戳，告别手动对轨的痛苦。\n*   **科研及媒体工作者**：在需要对采访录音、长篇讨论进行内容检索与事实核对（Fact-checking）时，能通过关键词一键定位，快速获取关键素材。\n\n说实话，任何自动化转录工具都无法在面对极度嘈杂的背景音或方言时做到绝对的完美，但与其让那些有价值的视频在收藏夹里“吃灰”，不如用 [TranscriptVideo](https://www.transcriptvideo.ai/)帮我们建立一个高效过滤和吸收信息的漏斗。希望它能帮你从无尽的进度条拉扯中解放出来。",
-    "created_at": "2026-08-05T03:22:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11024"
-  },
-  {
-    "id": 11023,
-    "title": "【工具自荐】厌倦了繁杂的 App 套路？这是一个即开即用的极简睡眠时间计算器",
-    "content": "不知道你有没有过这种体验：明明睡足了八、九个小时，醒来整个人却像灌了铅一样沉重；反倒是有时候只睡了六个小时，睁眼时却莫名地清醒。\n\n这其实与睡眠周期有关。科学研究表明，人类的睡眠由大约 90 分钟为一个单位的周期循环构成。在周期交替的轻度睡眠阶段醒来，会比在深度睡眠阶段被闹钟硬生生拽醒要轻松得多。为了解决这个虽然微小但每天都在折磨人的痛点，我做了这款极简工具——[**SleepCalculator**](https://www.sleepcalculator.io/)。它没有任何花哨的监测硬件，也不推销付费课程，只做一件事：帮你算明白最合适的入睡和起床时间。\n\n### 📌 基本功能\n\n*   **计算“现在睡，几点起”**：当你熬完夜准备合上电脑时，点击即可。系统会自动加上平均 15 分钟的生理入睡缓冲，并列出 6 个契合完整睡眠周期的起床时间，供你定闹钟时参考。\n*   **计算“明天起，今晚几点睡”**：输入明早的目标起床时间（如 6:30），系统会自动逆向倒推多个建议的入睡时间，帮你规划作息。\n*   **多档周期弹性建议**：提供 3 到 6 个不同周期的选择（从短时间的临时小憩到 7.5 或 9 小时的完整睡眠），灵活适应不同时长的休息需求。\n\n### ⚡ 核心优势\n\n*   **零门槛，无干扰**：市面上很多同类工具在积累用户后，往往会塞满杂乱的弹窗广告，或者强迫你注册账号。SleepCalculator.io 保持了极简的单页设计，无须注册登录，没有多余的信息负荷，即开即用。\n*   **更符合真实的生理缓冲**：人不是机器，不可能躺下秒睡。工具在计算时特意预留了 15 分钟的入睡前置时间，让理论上的睡眠周期更贴合现实中人类的入睡习惯。\n*   **无焦虑的界面**：这里没有长篇累牍的“健康报告”来增加你的睡眠焦虑，只有你需要的时间数据，适合在睡前已经十分疲惫的状态下闭眼使用。\n\n### 👥 适用人群\n\n*   **作息不规律的独立创作者/程序员**：经常被迫熬夜赶工，需要用有限的碎片时间精准补觉，避免第二天出现“脑雾”。\n*   **固定早起的上班族与学生**：每天有固定的打卡时间，可以通过倒推入睡时刻，来降低每天早晨与闹钟纠缠的痛苦。\n*   **时差党或轮班工作者**：在作息被打乱时，用它来科学安排不规律的睡眠，减少身体的疲惫感。\n\n[SleepCalculator](https://www.sleepcalculator.io/)算不上什么“能彻底解决失眠”的神器，它只是一个基于常识和生理规律的辅助计算器。如果你和我一样，厌倦了繁杂的 App 和各种付费套路，只是想要一个干净、安静的小工具，或许它能成为你浏览器收藏夹里一个实用的小角落。",
-    "created_at": "2026-08-05T03:19:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11023"
   }
 ]
