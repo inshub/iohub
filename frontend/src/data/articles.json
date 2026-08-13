@@ -1,5 +1,13 @@
 [
   {
+    "id": 11169,
+    "title": "【开源自荐】dsh-handbook：DeepSeek Harness 从 0 到 1 中文深度手册（11 章 + 同模型多 Agent 实测 benchmark + 中英双语 PDF）",
+    "content": "项目地址：https://github.com/Electricitysheep/dsh-handbook\n\n## 项目介绍\n\ndsh-handbook 是 **DeepSeek Harness (dsh)** 的新手教程白皮书——从 0 到 1 深度手册，覆盖安装、插件开发、性能调优、同模型多 Agent 实测对比。中英双语 PDF + 在线 Markdown 双形态。\n\n不同于泛泛的官方文档复述，它解决了官方文档的最大痛点：**官方以架构为主、缺上手路径**——本手册给出 3 天学习路径 + 每天目标验收，照抄能跑。\n\n## 核心亮点\n\n1. **同模型 × 多 Agent 实测 benchmark**：同一个 DeepSeek 模型跑在 Claude Code / Codex / OpenCode / Gemini / Kimi 等 6 个 agent 上的实测对比——同模型下 agent 行为差异有多大，用数据说话\n2. **缓存命中率实测 97%**：对话缓存成本专题，实测缓存命中率 97%，给出省钱的推理档位策略（工具链任务 90% 时间在思考——降档是最高杠杆提速）\n3. **可克隆插件模板**：照抄就能跑的 host 插件骨架（含纯函数 + waterfall + 测试），2 步挂载\n4. **一页速查卡 + 配置参考大全 + FAQ**：打印/收藏即用，不翻书\n\n## 目录结构\n\n- 01-认识 dsh（能力矩阵）/ 02-安装与上手 / 03-Profile / 04-插件开发 / 05-实战案例\n- 06-进阶 / 07-生态 / 08-工具与上下文 / 09-MCP 与子代理 / 10-复杂案例 / 11-未来\n- 附录：benchmark（同模型多 Agent 实测）+ 快速上手资产（速查卡/插件模板/配置参考/FAQ）\n\n适合想用 DeepSeek 做 Agent 的开发者、插件开发者、做技术选型的团队。欢迎 Star 和提 Issue 共建。",
+    "created_at": "2026-08-13T17:23:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11169"
+  },
+  {
     "id": 11168,
     "title": "【开源自荐】Softmaple：下一代协同编辑算法 Eg-Walker 实践",
     "content": "项目地址：https://git.new/softmaple\nDemo: https://beta.softmaple.ink/\n\n**支持*富文本*编辑**\n\n<img width=\"432\" height=\"268\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/afd3296b-31f1-4dc8-a4e2-da6e15adc23e\" />\n\n目前处于**测试**阶段，支持自部署，两种托管方案可选：\n\n```txt\n                         apps/web\n                    Next.js / Vercel\n                          │\n                          │ WebSocket\n                          ▼\n              ┌───────────────────────┐\n              │ collaboration runtime │\n              │                       │\n              │    DocumentRoom       │\n              │    PresenceRoom       │\n              └───────────┬───────────┘\n                          │\n              runtime-independent core\n                          │\n             ┌────────────┴────────────┐\n             ▼                         ▼\n\n     Nitro / Node runtime       Cloudflare runtime\n     apps/collab-node           apps/collab-cloudflare\n\n     WebSocket                  Worker\n     Redis Pub/Sub              Durable Objects\n     Redis leases               Hibernatable WS\n             │                         │\n             └───────────┬─────────────┘\n                         ▼\n                Supabase Postgres\n               durable event history\n```",
@@ -806,13 +814,5 @@
     "created_at": "2026-08-07T08:18:08Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11064"
-  },
-  {
-    "id": 11063,
-    "title": "[开源自荐]基于VeOps CMDB二开集成Ansible+Jumpserve+Agent的CMDB",
-    "content": "1).项目名称：基于VeOps CMDB二开集成Ansible+Jumpserve+Agent的CMDB\n\n2).项目地址： https://github.com/advwei/JW-CMDB\n\n3).项目简介：\n本项目是用AI agent基于维易CMDB开源项目进行二开，增加了以下功能：\n1、新增Jumpserve资产同步\n2、新增IPAM Agent 及同步服务\n3、新增Ansible对接中间件及playbooks\n4、新增Ansible执行日志板块\n5、新增两个固定资产模型\n6、新增回收资源显示板块\n7、新增配置中心\n\n4).推荐原因:\n1、集成Jumpserve：支持将记录的资产单独或批量推送到Jumpserve堡垒机，回收时自动删除Jumpserve对应资产。\n2、集成Ansible：支持动态生成inventory，自定义选择执行playbook，前端自定义输入额外参数。\n3、新增IPAM Agent：支持子网单次全量扫描（UI 右键触发），Agent增加HTTP服务与docker后端交互。\n4、Ansible执行日志：前端可视化查看Ansible任务的成功/失败执行情况，详细查看具体主机信息及Ansible执行的标准及错误输出。\n5、支持一键批量回收资源，支持三维度统计回收资源概览视图（CPU、内存、硬盘）。\n6、配置中心：集中管理，集成Jumpserve、ansible、agent、资产模型IP配置页面。\n7、资产模型：增加vmserver模型记录资产，delserver模型用于记录回收资产，其他模型依旧支持自定义。\n\n5)项目图片：\n\n<img width=\"1879\" height=\"879\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e4a3389b-8fd9-4a1b-bf64-305829614dd9\" />\n<img width=\"1877\" height=\"813\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31564a11-405b-4d64-b760-4d3f952fcec6\" />\n<img width=\"1846\" height=\"910\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2f3e0543-09b1-42f7-8708-fbeb087ee748\" />\n<img width=\"1863\" height=\"743\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/45ccae09-ba0c-4be4-bd0c-387fc7e5e482\" />\n<img width=\"1515\" height=\"727\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/33f2b979-3873-44ab-b6d4-e9b6ff1641d2\" />\n<img width=\"1654\" height=\"694\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/34793a30-a927-440f-a128-1962a137260b\" />\n<img width=\"1646\" height=\"836\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0a4fc23a-b61f-4f62-b094-c60adc8e1e1b\" />\n<img width=\"1852\" height=\"674\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/eb5acb47-d65e-4f7d-afc3-df9135094b98\" />",
-    "created_at": "2026-08-07T07:54:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11063"
   }
 ]
