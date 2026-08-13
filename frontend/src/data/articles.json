@@ -1,5 +1,13 @@
 [
   {
+    "id": 11162,
+    "title": "[投稿] seo-geo-skill：为 AI 答案引擎做网站体检的 Agent 技能集（Rust）",
+    "content": "## seo-geo-skill\n\n仓库地址：https://github.com/asale-ai/seo-geo-skill\n\n搜索的入口正在从“十条蓝链”变成 ChatGPT、Perplexity、Google AI Overviews 直接给答案，站长因此多了两个旧 SEO 工具不回答的问题：AI 爬虫到底能不能抓到我的页面，以及我写的内容好不好被答案引擎引用。\n\n这个项目把传统 SEO 审计和面向答案引擎的 GEO 审计，做成了 48 个 agent 技能和 23 个子代理；真正执行的是一个 Rust 写的静态二进制，不需要 Python 环境，也没有 pip install。通过 `npx skills` 可以装进 Claude Code、Codex、Cursor、Cline、Copilot、Windsurf 等 75+ 个 agent，然后用自然语言提问即可，例如“审计 example.com 的 AI 搜索可见性”，会得到综合评分、逐段落可引用度分析、AI 爬虫可达性检查、llms.txt 生成与校验、结构化数据检测等结果。\n\n安装（macOS / Linux）：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/asale-ai/seo-geo-skill/main/install.sh | sh\n```\n\n大多数能力不需要注册和 API key；Search Console、PageSpeed、Moz、DataForSEO 是可选增强。技能分类与评分模型源于两个 MIT 项目 claude-seo 和 geo-seo-claude，仓库里保留了完整的署名链。\n\n许可证：MIT。",
+    "created_at": "2026-08-13T08:56:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11162"
+  },
+  {
     "id": 11161,
     "title": "【工具自荐】Markdown pro max：功能强大的 Markdown 阅读器（浏览器插件）",
     "content": "Markdown Pro Max 是一款功能强大的 Markdown 文件阅读器, 支持 Mermaid 图表、数学公式、代码高亮、智能表格、文件批注与多种格式导出等功能.\n\n**特色功能**\n\n- 支持表格排序, 复制 excel, markdown ,html \n- 支持批注\n- 支持导出为 png, pdf, html\n\nhttps://lyuangg.github.io/markdown-pro-max\n\n\n<img width=\"1288\" height=\"950\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/117d9e93-6f78-4256-a1f9-1d43fc8d09f5\" />",
@@ -806,13 +814,5 @@
     "created_at": "2026-08-07T04:42:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11057"
-  },
-  {
-    "id": 11056,
-    "title": "【开源自荐】Any TDF：共享底层逻辑，原生支持 Svelte、React 与 Vue 的组件系统",
-    "content": "项目地址：[GitHub](https://github.com/any-tdf/any-tdf)  \n统一入口：[Any TDF](https://any-tdf.dev)  \n框架站点：[STDF（Svelte）](https://stdf.dev)｜[RTDF（React）](https://rtdf.dev)｜[VTDF（Vue）](https://vtdf.dev)\n\nAny TDF 是一个基于 Tailwind CSS，面向移动 Web 的多框架组件系统，提供 60 个能力对齐的组件，由之前单一支持 Svelte 的 STDF 升级过来。项目将状态派生、行为规则、主题、语言包、SVG 数据和公共类型集中到 `@any-tdf/common`，Svelte、React 和 Vue 实现层只处理响应式、生命周期、DOM、事件、slots、children 等框架相关内容。\n\n它没有引入跨框架渲染器或 Web Components 包装层，因此三端仍然使用各自最自然的组件 API。共享逻辑的修复可以由三端共同受益，框架差异则留在各自实现层处理。这种“共享行为内核 + 框架原生渲染”的分层方式，可以作为兼容多框架组件库的一种实现方案。\n\n项目内置 42 套主题，支持亮暗模式、多主题共存、自定义主题和运行时切换。三端均提供独立的[主题生成器](https://stdf.dev/generator)，可以基于 OKLCH 自动生成完整色阶，配置语义色、背景层级、文字色、圆角和图标风格，并实时预览、检查对比度及复制配置。目前内置 Remix、Lucide、Phosphor、Tabler、Iconoir 和 Reicon 六套图标方案。\n\n此外，项目还内置 66 个地区语言包，支持 TypeScript、SSR 和按需引入，并提供统一脚手架、Tailwind CSS 与 UnoCSS 模板、VS Code 扩展、离线 AI Skills、Motion 扩展包，以及浏览器和视觉一致性检查。\n\n项目采用 MIT 协议，目前已通过 npm 的 `alpha` 标签发布，适合需要维护多个前端技术栈、进行框架迁移或建设跨框架设计系统的团队参考。",
-    "created_at": "2026-08-07T03:03:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11056"
   }
 ]
