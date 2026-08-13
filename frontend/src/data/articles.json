@@ -1,5 +1,21 @@
 [
   {
+    "id": 11168,
+    "title": "【开源自荐】Softmaple：下一代协同编辑算法 Eg-Walker 实践",
+    "content": "项目地址：https://git.new/softmaple\nDemo: https://beta.softmaple.ink/\n\n**支持*富文本*编辑**\n\n<img width=\"432\" height=\"268\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/afd3296b-31f1-4dc8-a4e2-da6e15adc23e\" />\n\n目前处于**测试**阶段，支持自部署，两种托管方案可选：\n\n```txt\n                         apps/web\n                    Next.js / Vercel\n                          │\n                          │ WebSocket\n                          ▼\n              ┌───────────────────────┐\n              │ collaboration runtime │\n              │                       │\n              │    DocumentRoom       │\n              │    PresenceRoom       │\n              └───────────┬───────────┘\n                          │\n              runtime-independent core\n                          │\n             ┌────────────┴────────────┐\n             ▼                         ▼\n\n     Nitro / Node runtime       Cloudflare runtime\n     apps/collab-node           apps/collab-cloudflare\n\n     WebSocket                  Worker\n     Redis Pub/Sub              Durable Objects\n     Redis leases               Hibernatable WS\n             │                         │\n             └───────────┬─────────────┘\n                         ▼\n                Supabase Postgres\n               durable event history\n```",
+    "created_at": "2026-08-13T11:38:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11168"
+  },
+  {
+    "id": 11167,
+    "title": "【工具自荐】一款真正有用的提示词诊断工具",
+    "content": "提示词诊断工具\n一次 AI 回答由四层结构构成，失败的回答病灶必然落在其中一层。\n\n把你要发给 AI 的提示词粘贴进来，工具会逐层检查：\n搜索初始化（背景给了吗）\n搜索目标（说清什么算好了吗）\n搜索空间（只走了最容易的路吗）\n搜索运行（过程有人检查吗）\n\n并给出一份修订后的提示词。\n体验地址：https://acs.contextoria.com/tool",
+    "created_at": "2026-08-13T11:20:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11167"
+  },
+  {
     "id": 11166,
     "title": "【工具自荐】Matcha Filter Remover：用 AI 重绘去除“抹茶滤镜”",
     "content": "项目地址：https://matchafilterremover.online\n\n## 是什么\n\nMatcha Filter Remover 是一个专门处理“抹茶滤镜”图片的 AI 在线工具。它针对强烈的橄榄绿、黄绿色偏色，以及浮雕描边、海报化、涂抹感等效果，将图片重新生成成更自然的照片风格。\n\n它并不是简单调色，也不会声称能够找回原始照片或丢失像素；输出是一张基于可见内容生成的自然化 AI 重绘图。\n\n## 主要功能\n\n- 上传 JPG、PNG 或 WEBP 图片，最大 20MB\n- 尽量保留原图的构图、人物姿势、场景布局和可见物体\n- 去除黄绿色偏色、锐化轮廓、海报化和块状伪影\n- 使用 Seedream 5 Pro 作为主模型，Nano Banana Pro 作为备用模型\n- 提供重绘前后的滑块对比和结果下载\n- Google 登录后赠送 1 次免费重绘额度\n- 一次性 Credits 付费，不订阅，购买的 Credits 长期有效\n\n## 为什么做这个\n\n这类滤镜不仅改变色彩，还会破坏纹理、边缘和细节。普通的色温、色相或曲线调整只能减轻绿色偏色，无法自然处理浮雕轮廓、色阶断层和涂抹纹理。\n\n因此这个工具采用“受约束的图像重绘”：提示模型尽量锁定构图和几何关系，只对被滤镜破坏的颜色、材质和照片细节进行保守重建。\n\n## 隐私与使用边界\n\n上传图片和生成结果会在 24 小时内自动删除。工具只用于自然化 AI 重绘，不恢复原始像素，也不用于查看隐藏内容；用户需要年满 18 岁，并拥有图片或获得处理授权。\n\n欢迎试用和反馈：  \nhttps://matchafilterremover.online\n\n<img width=\"2544\" height=\"1211\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/243360a5-eedf-4822-8fa5-625aa9f9ac8a\" />",
@@ -798,21 +814,5 @@
     "created_at": "2026-08-07T07:54:42Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11063"
-  },
-  {
-    "id": 11062,
-    "title": "【APP自荐】锦囊AI - 完全在您手机本地离线运行的 AI 助手",
-    "content": "\n## 为什么你需要一个本地 AI\n\n2026 年了，AI 助手已经无处不在。但你有没有想过——你在 ChatGPT、Claude 里输入的每一条对话，都会被传送到远端的服务器。你的隐私、你的偏好、你随手吐露的碎碎念——都成了云端的一行行数据，你虽然享受了AI 带来的智能化、便利性，但同时这些数据也在无偿帮助 AI 进化。如果你的手机里有一个完全离线运行的 AI 助手，会怎样？不需要网络，不需要账号，不需要付费订阅，你的对话永远不会离开你的 iPhone。亦或你现在身处一个没有网络信号的野外、海上，遇到突发紧急状况时，手边仍能有一个 AI 可以帮你出出主意。这就是我开发“锦囊AI” App 的初衷，它可以完全运行在你 iPhone 本地，不需要联网，更不会有任何数据上传，是不是很 Cool！既然 Apple 智能无法使用，干脆就让 AI 直接入住进来！\n\n<img width=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e00ccf93-f9db-4104-bc8b-46d111b7777c\" />\n\n<img width=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8c11ffb7-0c56-4dc2-9451-313851758f83\" />\n\n## 为什么现在可以了\n\n过去，跑本地 LLM 需要一台性能不错的电脑或服务器。如今几件事变了：\n\n- 模型量化：把 32 位浮点参数压到 4、6 位，精度损失极小，体积却缩到 1/8。一个 4B 参数的模型，量化后只有约 2GB，iPhone 完全能跑。\n- 手机性能：以 iPhone15Promax 为例，它拥有过 8G 内存空间，17Pro 以上甚至拥有 12G 内存。\n- Apple MLX 框架：Apple 在 2024 年开源的机器学习框架，专为 Apple Silicon 优化，能高效利用 M 系列和 A 系列芯片的统一内存架构。\n\n## 功能简介\n\n- 内置模型：Lite 版内置 Qen3-0.6B 4bit模型，开箱即用，也支持 Qwen3-1.7B 4bit 模型。Pro 版解锁 Qwen3-4B 4bit、Qwen3-4B 6bit、Qwen3.5-4B 4bit、VibeThinker-3B 4bit模型，提供 /downloader 指令，联网自动下载，也可以手动下载后传到锦囊 AI 共享目录。\n- 内置场景（Prompt）：Chat（P01）：轻松闲聊，温暖自然；Coding（P02）：技术专家，直接给代码；Writing（P03）：专业编辑，润色翻译总结；Reasoning （P04）：推理专家，适用 VibeThinker 这样的纯推理模型，完成复杂科学问题推理演算，如：解释欧拉方程及其应用。支持自定义提示词，当创意的提示词结合特定的模型，也许会给你带来眼前一亮的惊喜，如角色扮演对话：你是贾维斯，我是斯塔克。\n\n<img width=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a66fde7-983d-4855-b49a-28be333e6ff3\" />\n\n- Tools 显式调用：包括计算器、日期时间、文件读写（在 App 沙盒内）、设备信息（查存储容量、内存、机型）、电池电量、Safari 浏览器打开网页、剪贴板、提醒事项、GPS 定位、联系人搜索。坦诚地讲，这些 Tools 调用的直接意义似乎并不大，但这些工具可以让 AI 真正了解它所运行的实际环境，如提示词预注入当前手机型号、日期和时间。应用场景举例：把一个不能上网的文件内容（纯文本）导入锦囊 AI 的共享目录，然后第一步：/tools 读取1.txt文件内容；第二步：研读上面的文字，帮我写一篇300字的学习心得。\n- 对弈模式：支持与内置游戏引擎进行五子棋和国际象棋对弈，然后 AI 模型在一边观战评棋，其中国际象棋使用专门的 Chess Coach 量化模型。\n- 知识库：同 tools 显式调用的思路，后续将建立起本地知识库，内置一些结构化的知识库，通过 /kb 指令显式调用，比如野外救助技巧、康熙字典查询等等。\n\n## 如何使用\n\n- 在 Apple App Store 搜索「锦囊AI」。\n- 在对话框输入 “**/cheat 烟花三月下扬州**”，即可解锁 Pro，有效期到 9 月底，到期后我会继续延长。\n-  使用 /downloader 指令自动下载所需模型，8G 内存的 iPhone 建议使用 4bit，12G 内存的 iPhone 可以尝试 6bit。\n- 观察下载进度，完成后 /model 切换到对应的模型，即可对话和游戏。\n\n下载地址：[Apple App Store](https://apps.apple.com/cn/app/%E9%94%A6%E5%9B%8Aai/id6780184415)\n\n<img width=\"512\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0588bb2-0793-4db3-a61c-127648956a2f\" />\n\n",
-    "created_at": "2026-08-07T07:34:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11062"
-  },
-  {
-    "id": 11061,
-    "title": "【开源自荐】Awesome Seedance 2.5 AI 视频提示词精选库",
-    "content": "# [Awesome Seedance 2.5](https://github.com/ZeroLu/awesome-seedance-2.5?utm_source=awesome_seedance25&utm_medium=ruanyf_weekly)\n\n这是一个专门整理 Seedance 2.5 高质量视频提示词的开源仓库，适合想提升 AI 视频质感、运镜和稳定性的创作者直接参考。\n\n目前仓库已经按 7 大风格分类，包含电影感、商业广告、UGC、动漫、短剧、Meme、视觉特效等案例；每个案例都附带原始提示词、示例视频和对应说明，拿来就能试。\n\n这类资料现在比较分散，这个仓库的价值主要是把社区里已经验证过的优质提示词集中整理成一个可检索、可复用的 prompt 库，适合收藏和持续更新。\n\n![](https://static.nanobananaproprompts.com/cyberbara_uploads/web/image/d375b1de-7af1-4787-baf6-2371557339b3.gif)\n\n![](https://static.nanobananaproprompts.com/cyberbara_uploads/web/image/f053c7cc-de6e-4c39-ab81-b25e39072abb.gif)\n\n![](https://static.nanobananaproprompts.com/cyberbara_uploads/web/image/cfcd7b64-ddbe-4dca-9943-0cdb5cd2f5f8.gif)\n\n- 仓库地址：https://github.com/ZeroLu/awesome-seedance-2.5?utm_source=awesome_seedance25&utm_medium=ruanyf_weekly\n- 内容形式：提示词原文 + 示例视频/GIF + 分类整理\n- 适用人群：AI 视频创作者、Prompt 工程爱好者、短视频团队\n- 后续会继续补充新的 Seedance 2.5 案例和高质量提示词\n",
-    "created_at": "2026-08-07T06:58:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11061"
   }
 ]
