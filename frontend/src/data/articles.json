@@ -1,5 +1,21 @@
 [
   {
+    "id": 11161,
+    "title": "【工具自荐】Markdown pro max：功能强大的 Markdown 阅读器（浏览器插件）",
+    "content": "Markdown Pro Max 是一款功能强大的 Markdown 文件阅读器, 支持 Mermaid 图表、数学公式、代码高亮、智能表格、文件批注与多种格式导出等功能.\n\n**特色功能**\n\n- 支持表格排序, 复制 excel, markdown ,html \n- 支持批注\n- 支持导出为 png, pdf, html\n\nhttps://lyuangg.github.io/markdown-pro-max\n\n\n<img width=\"1288\" height=\"950\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/117d9e93-6f78-4256-a1f9-1d43fc8d09f5\" />",
+    "created_at": "2026-08-13T05:49:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11161"
+  },
+  {
+    "id": 11160,
+    "title": "【工具自荐】ISO 8583 银行卡报文解析器，纯浏览器本地运行，不注册不上传",
+    "content": "项目地址：https://iso8583parser.com/zh/\n\n## 背景\n\n我做银行卡支付系统，日常有一大块时间是盯着 ISO 8583 的原始报文看。这是 1987 年的协议，现在绝大多数刷卡授权还跑在它上面。一笔交易被拒了，手上只有一串十六进制，要么拿着字段表一个字节一个字节数，要么随便找个在线解析器贴进去。\n\n后者的问题是那些站基本都要注册，而且你没办法知道它拿你的报文干了什么。而报文里是有卡号和磁道数据的。\n\n所以自己写了一个：贴进去，逐域拆开，不注册，解析全在浏览器本地跑。\n\n## 在线报文解析\n\n- MTI（版本 / 类别 / 功能 / 来源）、主次位图、128 个数据域按 ISO 8583:1987 字典逐域解析，支持 LLVAR / LLLVAR 变长前缀\n- DE 55 按 BER-TLV 递归解析，带 EMV 标签名\n- 肉眼读不了的那几个位串字段单独做了解码器：TVR（tag 95）、AIP、TSI、CID、ATC、IAD、CVM List、CVM Results\n- 支持 ASCII / Hex(BCD) / EBCDIC 三种编码，可选卡号脱敏\n\n<img src=\"https://iso8583parser.com/screenshot-parser.png\" width=\"750\">\n\n## Mastercard IPM 清算文件解析（T112）\n\nhttps://iso8583parser.com/zh/tools/ipm-parser\n\n这块是我自己最想要的功能。在线报文的解析器网上还找得到几个，清算文件的基本没有。1014 字节分块、VBS 记录框、EBCDIC 解码都自动处理，PDS 子域直接展开，字段视图和 JSON 两种输出。\n\n它必须在本地跑，是因为 IPM 文件从来不是测试数据，里面每一条都是真实卡号和真实交易。那些要你把清算文件上传上去的工具，多数发卡行和处理商在合规上根本不允许用。这个页面没有上传接口，断网也能跑。\n\n<img src=\"https://iso8583parser.com/screenshot-ipm.png\" width=\"750\">\n\n## 码表速查\n\nDE 39 / DE 3 / DE 22 / MTI / MCC / 150 种货币 / EMV 标签 / AID，码表和对应的解码器互相链接，不用在表和报文之间来回跳。\n\n中英双语。\n\n## 关于数据\n\n解析是纯前端 JavaScript，报文和文件本身都不发往任何地方，network 面板里能自己验证。页面上有 Google 广告和统计。\n\n## 说明\n\n站上工具全部免费。另外有一个 39 美元的离线版，是同样这些工具打包成互不依赖的单个 HTML 文件，给规定「真实卡号不许碰网站」的团队用。只用测试数据的话，免费版就是同一个工具。\n",
+    "created_at": "2026-08-13T05:35:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11160"
+  },
+  {
     "id": 11159,
     "title": "【开源自荐】ZSvirt：一款轻量虚拟化平台，单台最高支持 768 vCPU",
     "content": "项目地址：[https://github.com/zsvirt/zsvirt/](https://github.com/zsvirt/zsvirt/)\n\n## 项目背景\n随着 Broadcom 收购 VMware 后调整许可模式，越来越多的组织开始围绕 TCO 重新评估虚拟化战略，希望在管理工作负载的方式上获得更大的灵活性、透明度和掌控力。\n\n由基础设施厂商 ZStack 发起的 ZSvirt，2026 年 8 月 12 日正式宣布以 GPL 3.0 协议开源。\n\n## 项目简介\nZSvirt 是一款专为可扩展企业基础设施打造的企业级轻量虚拟化平台，提供自动化能力，并实现零厂商锁定。\n\n作为一个轻量、可扩展的平台，它旨在让团队获得对基础设施的完全自主控制——从小规模部署到超大规模环境，无需供应商锁定。与需要团队接受全新运维模式的方案不同，ZSvirt 在集群、主机、虚拟机、存储和网络层面保留熟悉的以虚拟机为中心的工作流，同时让用户能够灵活地评估、部署并参与到平台的演进之中。\n\n## 核心亮点\n- 大规模虚拟化扩展：单一控制平面可管理超过 10,000 台主机，单台虚拟机最高支持 768 个 vCPU。\n- VMware 无缝迁移：100% 无代理迁移，内置 ZMigrate 工具集完全在虚拟化层运行，支持全盘块复制与后台增量同步，最快 5 分钟完成割接。\n- 内建安全：原生 VM SecureBoot、vTPM 2.0、虚拟机加密，以及安全组微隔离与不可变审计日志。\n- 开放集成：提供 2,000+ 生产可用的 RESTful/OpenAPI 接口，并原生支持 Terraform Provider 与 Go、Python、Java SDK。\n\n## 生产验证\nZSvirt 采用与 ZSphere 相同的企业级引擎，该核心能力此前已在包括 VMware 替代场景在内的 1,000 多个生产环境中经受验证，覆盖金融、医疗、教育、制造、交通等十余个行业。今天，ZStack 将这一引擎以 GPL 3.0 协议开放给社区，帮助各类组织在不中断业务的前提下完成虚拟化平台的迁移与升级。\n\n![](https://github.com/ZSvirt/.github/raw/main/assets/zsvirt-partner-en.png)",
@@ -798,21 +814,5 @@
     "created_at": "2026-08-07T03:03:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11056"
-  },
-  {
-    "id": 11055,
-    "title": "404 链接重复",
-    "content": "下面的链接错了，和上面的一样。\n\n[史蒂芬·霍金](https://geohot.github.io//blog/jekyll/update/2026/05/03/punk-or-why-i-dont-stream.html)\n[《奇点越来越近了》](https://geohot.github.io//blog/jekyll/update/2026/05/03/punk-or-why-i-dont-stream.html)\n\n[[@404](https://github.com/ruanyf/weekly/blob/master/docs/issue-404.md)](https://github.com/ruanyf/weekly/blob/master/docs/issue-404.md#%E8%A8%80%E8%AE%BA)\n\n<img width=\"733\" height=\"322\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3dc2a182-49e9-4add-8139-163fae9486e3\" />",
-    "created_at": "2026-08-07T02:52:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11055"
-  },
-  {
-    "id": 11054,
-    "title": "【开源自荐】推荐一个每日更新的Ai 知识库 skills 大全",
-    "content": "推荐一个每日更新的Ai 知识库 skills 大全 https://github.com/Awesome-AI-Pedia/Awesome-AI-Pedia",
-    "created_at": "2026-08-07T01:39:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11054"
   }
 ]
