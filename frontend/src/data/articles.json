@@ -1,5 +1,21 @@
 [
   {
+    "id": 11190,
+    "title": "【开源自荐】MCP Lens：让 DeepSeek Harness 的 1,000 个 MCP 工具只占两个模型入口",
+    "content": "## 【开源自荐】MCP Lens：让 DeepSeek Harness 的 1,000 个 MCP 工具只占两个模型入口\n\nDeepSeek Harness 可以连接很多 MCP Server，但当目录增长到几百、上千个工具时，把所有工具 Schema 每轮都交给模型，会让请求变得很重。\n\nMCP Lens 是一个 MIT 开源的 Harness 插件。它把远端目录放在本地可搜索目录后，只给模型两个稳定入口：\n\n- `mcp_search(query)`：找到候选工具，只返回命中项的准确 `inputSchema`\n- `mcp_call(server, tool, arguments)`：调用明确选中的原始工具\n\n在同一套 DeepSeek Harness 0.1.0-rc.6、同一 1,000 工具 fixture、同样三个任务的 V4 Flash 实测中：\n\n- 完整模型可见工具：1,025 → 27（双方共享 25 个非 MCP 工具，MCP 工具面实际为 1,000 → 2）\n- `request/header.tools` JSON：674,249 B → 27,401 B，减少 95.936%\n- 任务完成：3/3 → 3/3\n- 按 2026-08-14 抓取的价格估算：$0.0307204 → $0.0034707\n\n代价也公开：Lens 多一次搜索步骤，这组任务的输出 Token 从 491 增到 794；这不是通用延迟或质量结论。\n\n项目还提供了一个完全在浏览器本地运行的目录计算器。可以粘贴脱敏后的 MCP Tool JSON，查看自己的模型可见 Schema 数量和 UTF-8 字节；内容不会上传。\n\n- GitHub：https://github.com/labmimors/dsh-mcp-lens\n- 本地目录计算器：https://labmimors.github.io/dsh-mcp-lens/\n- 公开复现实验：https://github.com/labmimors/dsh-mcp-lens/blob/main/docs/LIVE_DEEPSEEK_PILOT.md\n\n![MCP Lens 对比图](https://raw.githubusercontent.com/labmimors/dsh-mcp-lens/main/assets/mcp-lens-comparison.zh-CN.svg)\n",
+    "created_at": "2026-08-14T21:02:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11190"
+  },
+  {
+    "id": 11189,
+    "title": "【开源自荐】kvcached:让多个大模型弹性共享一张 GPU 的显存",
+    "content": "kvcached 是给 vLLM / SGLang 用的 KV cache 库,让多个模型共享一张 GPU 的显存。\n\n一张 GPU 上想同时跑两个大模型,现在只能手动切显存，vLLM 的`--gpu-memory-utilization` 启动时就把显存占死,整晚没请求也不还,分多了 OOM,分少了浪费。\n\nkvcached 把 KV cache 的虚拟地址和物理显存拆开:启动只预留地址空间,真有请求写 KV 时才映射物理显存,用完归还。相当于给 GPU 显存加了一层操作系统式的虚拟内存,谁用谁占。\n\n一张 A100-80G 跑 3 个 Llama-3.1-8B,面对间歇峰值流量,首 token 延迟比静态切分低 2~28 倍。\n\n不用改引擎代码:\n\n    pip install kvcached --no-build-isolation\n    export ENABLE_KVCACHED=true KVCACHED_AUTOPATCH=1\n    # 照常 vllm serve / sglang.launch_server 即可\n\n支持 vLLM 和 SGLang,Apache 2.0。Red Hat 已基于它做了 K8s 上的多模型动态部署。\n\nhttps://github.com/ovg-project/kvcached\n\n![演示](https://raw.githubusercontent.com/ovg-project/kvcached/refs/heads/main/assets/kvcached-example.gif)",
+    "created_at": "2026-08-14T20:35:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11189"
+  },
+  {
     "id": 11188,
     "title": "【工具自荐】chinese-poetry-mcp，搜索中国诗词的 MCP",
     "content": "基于之前推荐的 https://github.com/ruanyf/weekly/issues/10216，搞了个 MCP。",
@@ -796,21 +812,5 @@
     "created_at": "2026-08-09T02:21:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11087"
-  },
-  {
-    "id": 11086,
-    "title": "【开源自荐】Ouroboros：先把需求问清楚再让 AI 写代码的 Agent OS，顺便不让它「刷分」",
-    "content": "项目地址：https://github.com/Q00/ouroboros\n\n**一句话（供周刊直接采用）**：开源的 AI 编程前置工具，先把模糊需求问清楚、生成规约再让 agent 动手，支持 Claude Code 等 13 个运行时。\n\n## 一句话介绍\n\nOuroboros 是一个开源的本地优先 Agent OS，核心主张是两件事：意图没想清楚之前，不让 AI 开始写代码；验收标准的判分断言不进交给执行 agent 的成功契约（success contract），让它没法看着答案刷分。它坐在 Claude Code、Codex CLI 等 13 个编码运行时前面，把「写一句话就让 AI 开干」换成可复现的五段循环：苏格拉底式访谈 → 不可变规约 → 执行 → 自动验收 → 演化。\n\n## 为什么做这个项目\n\nAI 写不好代码，很多时候不是模型不够聪明，而是需求本身就是模糊的。\n\n你说「做个任务管理 CLI」，它就自己猜数据模型、存储方式、优先级规则和 ID 生成策略。每一项都「不算错」，但都不是你想要的。等你 review 到第三个文件才发现方向不对，只能返工：写 prompt、被猜、返工，循环往复。\n\n所以这个项目动的是输入侧：**在意图足够清楚之前，不让它开始写代码。**\n\n## 和同类项目相比，最不一样的地方\n\n现在「AI 编程工作流」类的项目不少。Ouroboros 把「什么时候可以开始写」和「什么时候可以停」都变成了数字，而不是感觉，并且认真处理了一个很少有人处理的问题：**怎么防止 agent 学会刷分**。\n\n**1. 访谈不靠「差不多了」结束，靠一个阈值**\n\n模糊度被量化成加权清晰度的反值：\n\n```\nAmbiguity = 1 - Σ(clarity_i × weight_i)\n```\n\n模糊度高于 0.2 会挡住规约生成——是挡住，不是锁死；绕过它的办法是显式传入强制（force），屏幕上一直摆着这个选项。演化循环那头，最近两代的本体相似度 ≥ 0.95 会判定收敛，但那不是唯一的出口——停滞、反复出现的同类反馈、以及 30 代预算耗尽同样会让循环停下来。两道数学关卡，README 里把背后的想法写成一句话：没想清楚之前不要写，没稳定之前不要停。\n\n**2. 评估三阶段递进，先便宜后贵**\n\nMechanical（免费、确定性检查）→ Semantic → Multi-Model Consensus。能在第一层否掉的，绝不送去烧 LLM 判分的钱。\n\n**3. 不让 agent 看见判分标准**\n\n大多数框架会把验证命令和断言原样贴进 worker 的 prompt，动机很朴素：让它知道会被怎么检查。但 agent 一旦看得见断言，糊弄断言就永远比真正实现需求更省力。你以为在测能力，其实在测抄答案。\n\nOuroboros 的处理有两点：\n\n- 两条泄露路径一起堵。正向路径不再渲染 `verify_command` / `output_assertion`。反向路径（失败原因里的断言 `repr()` 顺着重试 prompt 流回去）也用一个断言安全的提示构造器过滤掉，**连命令输出那 2000 字符的尾巴都要过滤**。堵住主路径、忘了日志尾巴，泄露口还是开着的。\n- 不提供开关。「披露级别」的配置项被明确否决了。信息屏障一旦可以关掉，就会在某个赶进度的下午被关掉，而且没人会发现，因为分数看起来更好了。\n\n那 agent 卡住了怎么办？给提示，不给答案。下一轮的指令是从这次会话**实际做了什么**重建的（工具调用轨迹、证据清单、验证器结论），而不是从断言里抄的。\n\n**4. 失败不是终点，但循环必须能停**\n\n被评估拒绝的结果会自动进入有预算上限的演化循环，下一代的力气集中在没通过的验收标准上（代码里把标准切成 active 和 frozen 两组）。**但冻结是集中力气，不是保证已通过的不会再挂**——另有回归检测器专门盯上一代通过、这一代却挂掉的标准。不冻结的循环会反复把做对的东西改坏，表现为分数在两代之间来回跳。循环自带震荡检测和等级回退检测，专门识破这种假收敛；预算耗尽才报 BLOCKED。\n\n这部分的完整设计（含取舍和被否决的方案）写在 [RFC #1917](https://github.com/Q00/ouroboros/issues/1917) 里。\n\n## 其他\n\n- 支持 13 个运行时家族：Claude Code、Codex CLI、OpenCode、Gemini CLI、GitHub Copilot CLI、Kiro、Hermes、Pi、Zcode、Goose、GJC、Antigravity CLI、Grok Build CLI\n- 本地优先，MIT 协议\n- 中文 README：[README.zh-CN.md](https://github.com/Q00/ouroboros/blob/main/README.zh-CN.md)\n\n一行安装：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/Q00/ouroboros/main/scripts/install.sh | OUROBOROS_INSTALL_REF=ruanyf bash\n```\n\n装完后在你的 AI 编码 agent 里按顺序跑两条命令（`ooo setup` 只需一次）：\n\n```\n> ooo setup\n> ooo interview \"I want to build a task management CLI\"\n```\n\n它不会立刻写代码，而是先反问：数据存在哪里、命令边界到哪、任务 ID 怎么指定……这些答完了，才会生成规约并进入执行。\n\n### 中文逐章指南\n\nhttps://ouroboros.page/learn/zh/\n\n安装、访谈、规约、执行、评估、演化、现有项目、故障排查、术语表、架构，一共 13 页，和英文版章节齐平。里面的每个数字都注了出处文件，你可以直接对着源码核。其中「故障排查」那章有 `-32000` 启动失败的处理，英文版目前还没有。\n\n\n\n\n",
-    "created_at": "2026-08-09T01:37:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11086"
-  },
-  {
-    "id": 11085,
-    "title": "推荐一个面向 AI Coding 前需求交付的开源 Skill：ai-delivery-spec",
-    "content": "项目地址：https://github.com/franklinxkk/ai-delivery-spec\n\n做产品需求和 AI Coding 时，我反复碰到一个问题：一句话就能让大模型开始写 PRD、画原型甚至改代码，但需求里的边界、权限、状态、数据口径和异常还没有说清。产物看起来很完整，产品、前端、后端和测试却可能各自理解一套，最后还是要靠评审会反复补口径。\n\n所以我把真实需求工作中反复使用的方法整理成了开源 Skill **AI Delivery Spec**。它不是单纯的 PRD 生成器，而是需求进入编码前的交付层：可以从一个 Idea、业务问题或用户痛点开始，也可以直接读取会议纪要、竞品、旧 PRD、原型、存量系统、变更或缺陷；根据当前阶段补齐真正会影响实现和验收的事实，产出最小但完整的需求基线。\n\n![AI Delivery Spec 需求全生命周期](https://raw.githubusercontent.com/franklinxkk/ai-delivery-spec/main/.github/assets/lifecycle-bridge.svg)\n\n几个主要特点：\n\n- **任意阶段进入**：从问题定义、方案探索、需求澄清，到 PRD、工程原型、变更影响和验收，都可以从现有位置开始，不要求先补齐整套流程。\n- **按任务控制重量**：一个字段或页面小改只做必要约束；跨角色、跨模块或高风险需求才补流程、状态、数据流和追溯，不把每个小功能都写成厚文档。\n- **人和 Coding Agent 共用一套事实**：业务目标、角色权限、页面动作、字段口径、状态守卫、异常、副作用与验收可以相互追溯；不清楚的内容标为 GAP，不让模型自行编造一个“看起来合理”的实现。\n- **评审态按需生成**：客户确认默认使用可操作的产品态；只有明确要给前后端、测试评审时，才增加编号、核心流程和角色必需说明。\n- **中英文均可使用**：支持 Codex、Claude Code、Cursor、Trae、OpenClaw 等 Agent Skills 环境。\n\n一分钟安装：\n\n```bash\n# Codex / Claude Code / Cursor / Trae 等\nnpx skills add franklinxkk/ai-delivery-spec\n\n# OpenClaw\nopenclaw skills install @franklinxkk/ai-delivery-spec\n```\n\n安装后可以直接说：\n\n```text\n使用 $ai-delivery-spec。我现在有一段模糊需求，本次只需要收敛到可评审、可实施的需求基线。\n先复用已确认事实，只问会改变范围或结果的问题；不要自行猜测业务规则。\n```\n\n它与 Spec Kit、OpenSpec 这类工具不是替代关系：AI Delivery Spec 主要解决“需求还不完整、业务规则还不稳定”时如何收敛为可实施输入；下游工具再继续完成技术规格、任务拆分和代码实现。\n\n当前版本为 v5.4.4，采用 Apache-2.0 协议。截至 2026-08-08，ClawHub 已有 1.6k+ 下载，SkillHub AI 评分为 4.8/5.0。欢迎试用、提出问题或贡献真实但脱敏的使用反馈。",
-    "created_at": "2026-08-09T00:00:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11085"
   }
 ]
