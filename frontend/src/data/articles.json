@@ -1,5 +1,13 @@
 [
   {
+    "id": 11188,
+    "title": "【工具自荐】chinese-poetry-mcp，搜索中国诗词的 MCP",
+    "content": "基于之前推荐的 https://github.com/ruanyf/weekly/issues/10216，搞了个 MCP。",
+    "created_at": "2026-08-14T18:48:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11188"
+  },
+  {
     "id": 11187,
     "title": "【工具自荐】Blitz Capture 网页长截图扩展插件，10x速度丝滑滚动截图（录屏对比 GoFullPage）",
     "content": "最近 chrome 下架了 1000多万用户的长截图插件 GoFullPage，我借此机会给大家自荐一下 Blitz Capture 全页面截图插件。\n\nBlitz Capture 不是重复做了一个长截图插件，而是用完全不同的技术路线，将截图**速度提升了 10倍**左右，并且在截图效果上也更好一些。\n\n## 基本信息\n\n- 安装地址：[BlitzCapture - Chrome Web Store](https://chromewebstore.google.com/detail/full-page-screenshot-%E2%80%93-fa/nnhplomobinijgpongnbofokpibpbioa?hl=zh)\n- 评分：70个评分，4.9/5.0\n- 用户数：6000+\n- 大小：< 500KiB\n- 网站：[Blitz Capture - ZIZIYI](https://ziziyi.com/zh-cn/blitz-capture/)\n\n## 录屏视频 GoFullPage vs Blitz Capture\n\nhttps://github.com/user-attachments/assets/093c03fe-705a-49b9-b429-ed467c35a3e7\n\n## 视频截图\n\n<img width=\"1633\" height=\"846\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f857eb05-2b0e-4db1-b152-d1e4a59962ff\" />",
@@ -804,15 +812,5 @@
     "created_at": "2026-08-09T00:00:11Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11085"
-  },
-  {
-    "id": 11083,
-    "title": "【开源自荐】LeePanel 一个零残留的 Linux 服务器管理面板软件",
-    "content": "开发缘由\n用面板管理服务器的朋友应该都有过这样的纠结：装宝塔、1Panel、cPanel 这类面板，确实省事，但你得在服务器上安装一整套面板程序——它以 root 权限常驻运行、还要开放一个公网端口、留下一堆配置文件和数据库。\n\n等哪天想卸载，往往还得 SSH 上去跑卸载脚本，残留清不干净。\n\n面板本来是来帮你管服务器的，结果它自己成了服务器上最大的\"外来物\"和攻击面。\n\n最近发现了一个思路完全不同的开源项目 LeePanel，用了之后觉得值得推荐给各位。\n\n核心思路：面板不装在服务器上\n\nLeePanel 是一个桌面客户端（Windows / macOS / Linux 都支持），**它不在服务器上安装任何东西——所有操作都通过 SSH 执行命令完成**。也就是说：\n\n**零服务端代码**：服务器上没有任何 LeePanel 的进程、文件\n**零额外端口**：只用你已有的 SSH 端口，不开 8888/8080\n**零资源占用**：面板运行在你的电脑上，服务器 CPU/内存一分不占\n**零残留**：关掉软件就是卸载，服务器保持你配置时的原样'\n\n传统面板的安全风险不是被\"缓解\"了，而是从架构上就不存在。\n功能：麻雀虽小，五脏俱全\n安装包只有 6 MB +左右，但功能覆盖面相当完整：\n\n\nSSH 终端 + SFTP 文件管理（拖拽上传下载、大文件分块传输）\nLNMP 一键部署：Nginx / MySQL / MariaDB / PHP-FPM，版本可选，PHP 多版本切换\n站点管理：虚拟主机、Let's Encrypt SSL、反向代理（支持 WebSocket）、伪静态\nMySQL 数据库管理：增删改查、用户权限、备份恢复\nRedis 管理：键值浏览、TTL、DB0–DB15 切换\nDocker：容器/镜像生命周期管理、日志、镜像源\n系统监控：CPU / 内存 / 磁盘 / 网络实时图表\n防火墙规则、BBR 加速、软件源管理\n多服务器管理，侧边栏一键切换\n\n技术栈\nTauri 2.x + React 19 + TypeScript，SSH/SFTP 底层用的是 Rust 的 russh，本地数据存 SQLite。MIT 协议开源。目前对 Ubuntu / Debian 支持最完善，CentOS/RHEL 等发行版适配也在推进中。\n\n**适合谁**\n洁癖党：不希望面板污染服务器环境\n安全敏感场景：不想为了方便多开一个公网端口\n低配 VPS：不占服务器一分资源\n多服务器运维：一个客户端统一管理，随时切换\n\n链接\nGitHub：https://github.com/gna1280072/LeePanel\n官网：https://www.leepanel.com\n",
-    "created_at": "2026-08-08T10:12:25Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11083"
   }
 ]
