@@ -1,5 +1,21 @@
 [
   {
+    "id": 11203,
+    "title": "【开源自荐】Bilimuzhi:B 站视频 AI 字幕工作台浏览器插件",
+    "content": "  ![Bilimuzhi 项目头图](https://github.com/user-attachments/assets/c44fb2df-2269-4b10-9f6d-2531ea1b6212)\n\n   ## 简介\n\n   Bilimuzhi 是一款纯本地优先的 B 站视频 AI 字幕工作台浏览器插件(Chromium MV3,Chrome/Edge/Brave 均可)。围绕「看懂视频」设计:打开任意视频页即可获取官方/AI/多语言字幕,无字幕视频可调用语音转字幕生成;AI 一键分段\n 、三档总结、图文对话,把视频整理成可学习、可检索、可追问的笔记。\n\n   ## 项目地址\n\n   https://github.com/StaySound4/bilimuzhi\n\n   ## 主要功能\n\n   - **时间戳贯穿全链路**:分段、总结、对话结果均内嵌可点击时间戳,一键跳回视频对应位置\n   - **语音转字幕**:无字幕视频也能转字幕;Groq 两个转录模型每日免费额度互不占用,默认交叉调度最大化利用\n   - **智能广告识别**:分段模式下自动识别广告片段\n   - **批量六类来源**:单视频/分P/合集/收藏夹/UP 主页/搜索页统一批量获取,导出 TXT/SRT/Markdown/ZIP\n   - **双模式归档站与回收站**:会话/批量独立标签、置顶、拖拽排序;密码加密备份导出/导入\n   - **隐私优先**:无遥测、无云端账号,API Key 仅存本地,AI 对话直连你选择的服务商\n\n   ## 界面展示\n\n   ![深色与浅色主题](https://github.com/user-attachments/assets/dfa1b3c2-5455-4071-814c-205632d29510)\n\n   ![对话模式:图文输入+时间戳跳转](https://github.com/user-attachments/assets/51a68b84-8294-4993-b702-89f45f323251)\n\n   ![分段与时间轴双面板](https://github.com/user-attachments/assets/6d7492e4-85f7-4fb5-bff3-f8c0ebe98c97)",
+    "created_at": "2026-08-15T14:21:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11203"
+  },
+  {
+    "id": 11202,
+    "title": "【开源自荐】blink-installer：用 HTML/CSS/JS 写 Windows 安装包界面",
+    "content": "做过桌面应用的人大概都有过这个体验：产品本身打磨得挺好，一到打包出安装程序，界面就穿越回了 Windows XP 时代——蓝底白字、灰色按钮、方方正正的进度条，想改一下还得到 NSIS 那套脚本语言里翻文档。\n\nInno Setup 和 NSIS 本身没什么问题，它们把压缩、解压、注册表、卸载这些脏活干得很好。问题在于界面：它们提供的 UI 定制能力，基本上就是在\"换个背景图\"和\"硬写 Win32 API\"之间二选一。\n\n我想要的是：**能不能用前端的方式来写安装包界面？** 圆角、投影、渐变、全屏入场动画，这些在网页里稀松平常的东西，在安装包里却几乎做不到。\n\n于是做了 blink-installer。\n\n**GitHub**：https://github.com/MaskerPRC/blink-installer\n\n它做的事情很简单：不打包你的应用，只把已经打好包的目录（比如 electron-builder 的 win-unpacked 输出）套一层安装程序。压缩、解压、快捷方式、卸载注册交给 NSIS，界面交给 miniblink 渲染。\n\n关键点在于——窗口是透明分层窗口，所以能有圆角、投影，以及直接画在桌面上的全屏动画。而且入场动画和安装界面是同一个窗口：它播完动画后收缩成卡片，不是切到第二个进程，画面不跳。\n\n这些是普通 Win32 安装程序做不到的，而渲染引擎只带来几兆的体积开销。\n\n**主要能力：**\n\n- 用 HTML/CSS/JS 写安装界面，支持圆角、透明、投影、全屏动画\n- 基于 NSIS + miniblink，压缩解压卸载该有的都有\n- 每用户安装免 UAC，也支持全局安装\n- 安装和卸载共用一套 HTML 界面\n- 静默安装 `/S` 支持 CI/CD 场景\n- 代码签名钩子，和 electron-builder 的签名配置完全兼容\n- 内置 AI agent 集成提示语，丢给 Claude Code / Cursor 就能自动生成配套界面\n\n**安装：**\n\n```bash\nnpm i -D blink-installer\nnpx blink-installer init\nnpx blink-installer build\n```\n\n**两种构建模式：**\n\n- `--ui-only`：把应用换成占位文件，3 秒出包，专门用来调界面\n- 正式构建用 `--compression lzma`，和 electron-builder 自带的 NSIS 一样的压缩\n\n渲染引擎是 Chromium 57~60 时代的 Blink，比较老，所以有一些硬约束（比如不能用 flex gap、彩色 emoji 渲染为空白、帧率上限 33fps）。这些在文档里都写清楚了，还附了一份给 AI agent 的集成提示语——里面带了全部硬约束，免得 agent 写出在浏览器里好好的、到安装包里却白屏的界面。\n\n项目还在早期，欢迎试用和提 issue。",
+    "created_at": "2026-08-15T13:07:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11202"
+  },
+  {
     "id": 11201,
     "title": "【开源自荐】PasteClip：免费开源的 macOS 剪贴板管理器（Paste 替代品）",
     "content": "## 简介\n\nPasteClip 是一款免费开源（GPL-3.0）的 macOS 剪贴板管理器，用原生 Swift 6 + SwiftUI 编写，卡片式界面类似付费应用 Paste。数据完全本地存储，无账号、无服务器、无遥测。\n\nGitHub：https://github.com/minsang-alt/PasteClip\n\n## 截图\n\n![demo](https://raw.githubusercontent.com/minsang-alt/PasteClip/main/docs/assets/pasteclip-demo.gif)\n\n## 主要功能\n\n- 卡片式剪贴板历史：支持文本、富文本、HTML、图片、链接、文件、颜色和代码片段\n- `⌘⇧V` 唤出非激活面板，不打断当前应用的焦点；单击卡片即可直接粘贴到最前面的应用\n- Pinboards：把常用内容整理成命名收藏夹，支持拖拽\n- 按 `空格` 进行 Quick Look 预览，支持全键盘操作\n- 可排除指定应用（如密码管理器），历史上限可配置、自动清理\n- 对终端友好：图片以 PNG + file URL 方式写入剪贴板，可以可靠地粘贴到 Ghostty / iTerm2\n\n## 安装\n\n- Homebrew：`brew install --cask minsang-alt/tap/pasteclip`\n- 手动下载：https://github.com/minsang-alt/PasteClip/releases\n\n要求 macOS 14+。",
@@ -794,21 +810,5 @@
     "created_at": "2026-08-10T04:43:13Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11103"
-  },
-  {
-    "id": 11101,
-    "title": "[开源自荐]  AI 版百万像素 —— 让你的Agent 占领这个网站首页",
-    "content": "[项目地址](https://overwrite.place/) | [源代码](https://github.com/mazzzystar/overwrite.place)\n\n玩法是：让你的 Agent 画一幅你想要的像素画、提交，占领首页最大的那个区域（并且挤掉上一幅），你的画在首页停留时间越长，你被挤出去之后占领的面积越大，你的作品永久存在于首页。\n\n<img width=\"600\" height=\"601\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/64ffa650-fbc1-4d93-96ba-151ea9b999d6\" />\n\n",
-    "created_at": "2026-08-10T04:02:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11101"
-  },
-  {
-    "id": 11100,
-    "title": "【工具自荐】UpscaleAI：基于 AI 的图像增强工具，让低质量图片重新获得清晰细节",
-    "content": "在日常开发和创作过程中，图片质量问题经常会影响最终效果。无论是旧照片修复、网页素材优化，还是产品展示图制作，低分辨率、模糊、噪点等问题都会降低视觉表现。UpscaleAI 是一款基于 AI 技术的图像增强工具，旨在帮助开发者、设计师和内容创作者快速提升图片清晰度，并改善整体视觉质量。\n\n### 基本功能\n[UpscaleAI](https://www.upscaleai.ai/)主要围绕 AI 图像放大与质量优化展开。它可以通过智能算法提升图片分辨率，在放大图片尺寸的同时尽可能保留原始细节。相比传统图片放大方式只是简单拉伸像素，AI 图像增强技术能够分析图片中的边缘、纹理和结构信息，对细节进行优化处理。\n\n目前，UpscaleAI 支持多种常见图片格式，包括 JPEG、PNG、WebP 等，用户可以直接上传图片并获得增强后的版本。工具可以用于提升图片分辨率、减少视觉噪点、改善清晰度以及优化颜色表现。\n\n对于开发者来说，这类图像增强能力可以作为图片处理流程中的一个环节，例如在应用中集成图片优化功能，或者在项目展示中快速处理素材。\n\n### 核心优势\n1. AI 驱动的细节增强\n\n传统图片放大通常会导致边缘模糊和细节丢失，而 AI 图像增强会根据图片内容进行分析，对不同区域进行针对性处理。\n例如，人像照片中的脸部细节、产品图片中的纹理、插画中的线条，都可以通过智能处理获得更清晰的视觉效果。\n\n2. 简化图片处理流程\n\n过去，图片优化通常需要依赖 Photoshop 等专业软件，并需要手动调整锐化、对比度、颜色等参数。\nUpscaleAI 将这些步骤整合到自动化流程中，让没有专业图像处理经验的用户也能够快速完成图片质量提升。\n\n3. 适合多种创作场景\n\n图片增强并不仅仅适用于摄影领域。\n在 AI 创作、网页开发、电商设计、社交媒体运营等场景中，高质量图片都是重要需求。UpscaleAI 提供了一种更快捷的方式，让用户可以在短时间内获得适合展示和使用的高清图片。\n\n### 适用场景\n\n1. 旧照片修复\n\n很多家庭照片由于年代久远，可能存在分辨率低、细节模糊的问题。通过 AI 增强，可以改善照片清晰度，让旧图片更适合保存或分享。\n\n2. 电商产品图片优化\n\n电商平台通常需要清晰的产品展示图。如果原始图片尺寸不足，AI 增强可以帮助提升图片质量，使产品细节更加明显。\n\n3. 设计与开发项目\n\n对于网页、App 或游戏项目开发者来说，高质量视觉素材能够提升整体体验。UpscaleAI 可以用于优化项目中的图片资源，减少重新寻找素材的时间。\n\n4. AI 艺术作品处理\n\n随着 AI 图片生成工具的发展，越来越多创作者需要处理生成后的图片。图像增强工具可以帮助改善输出质量，使作品更适合发布或进一步编辑。\n\n### 总结\nUpscaleAI 提供了一种简单的 AI 图像增强方案，帮助用户解决图片分辨率不足、细节缺失和视觉质量下降等常见问题。它并不是替代专业设计软件，而是作为一个快速、高效的图片优化工具，适用于开发者、设计师、摄影爱好者以及内容创作者的日常工作流程。\n\n对于需要在项目中处理大量图片资源的开发者来说，AI 图像增强正在成为现代视觉工作流中的一个实用组成部分。",
-    "created_at": "2026-08-10T03:54:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11100"
   }
 ]
