@@ -1,5 +1,21 @@
 [
   {
+    "id": 11192,
+    "title": "【书籍自荐】《解构大语言模型：从线性回归到通用人工智能》",
+    "content": "<img width=\"800\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1771ecd-b441-457e-a766-91e662c6f5c6\" />\n\n线上地址：https://gentang.github.io/zh/books/deconstructing_LLM/",
+    "created_at": "2026-08-15T02:46:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11192"
+  },
+  {
+    "id": 11191,
+    "title": "【开源自荐】DeepSeek Harness Handbook：从 Agent Runtime 架构理解模型、工具、沙箱与会话",
+    "content": "项目地址：https://github.com/sandbaseai/deepseek-harness-handbook\n\n在线阅读：https://sandbaseai.github.io/deepseek-harness-handbook/\n\n## 项目介绍\n\nDeepSeek Harness Handbook 是一份英文为主、多语言导航的开源 Agent Runtime 实战手册。它不把 Harness 当作模型 API 包装器，而是从 Agent 构建与运维视角解释 Provider、插件图、Agent Loop、工具、审批、沙箱、Session、MCP 与子代理之间的边界。\n\n## 为什么值得关注\n\n- **源码可追溯**：版本敏感结论固定到 DeepSeek Harness 上游 commit，并链接到具体源码或官方文档，注明验证日期。\n- **从任务出发**：提供 Web、Headless、Python SDK、MCP、Skills、Subagents 和仓库研究 Agent 的可复现路径；每篇都有成功证据和失败分支。\n- **真实故障手册**：覆盖 Windows/MSYS2、远程 Web `crypto.randomUUID`、子代理 Provider 路由继承、会话回放、工具参数与沙箱边界等社区真实问题。\n- **架构图优先**：用流程图解释一次 Agent turn、工具执行管线、Session events 和插件组合，适合做 Agent 产品或平台的开发者快速建立系统模型。\n- **开放复用**：Apache-2.0 许可证，提供在线站点、Markdown、PDF Release，以及英/中/日/韩/西语导航。\n\n## 一个核心观点\n\nAgent 不只是提示词。一个可运营的 Agent 需要任务边界、允许的副作用、完成条件、模型路由、工具面、权限策略、Session 策略、失败行为和可供操作者验证的结果。该项目围绕这些工程职责组织 DeepSeek Harness 的学习资料。\n\n项目预览图：https://raw.githubusercontent.com/sandbaseai/deepseek-harness-handbook/main/assets/deepseek-harness-handbook-social-preview.png\n",
+    "created_at": "2026-08-15T02:43:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11191"
+  },
+  {
     "id": 11190,
     "title": "【开源自荐】MCP Lens：让 DeepSeek Harness 的 1,000 个 MCP 工具只占两个模型入口",
     "content": "## 【开源自荐】MCP Lens：让 DeepSeek Harness 的 1,000 个 MCP 工具只占两个模型入口\n\nDeepSeek Harness 可以连接很多 MCP Server，但当目录增长到几百、上千个工具时，把所有工具 Schema 每轮都交给模型，会让请求变得很重。\n\nMCP Lens 是一个 MIT 开源的 Harness 插件。它把远端目录放在本地可搜索目录后，只给模型两个稳定入口：\n\n- `mcp_search(query)`：找到候选工具，只返回命中项的准确 `inputSchema`\n- `mcp_call(server, tool, arguments)`：调用明确选中的原始工具\n\n在同一套 DeepSeek Harness 0.1.0-rc.6、同一 1,000 工具 fixture、同样三个任务的 V4 Flash 实测中：\n\n- 完整模型可见工具：1,025 → 27（双方共享 25 个非 MCP 工具，MCP 工具面实际为 1,000 → 2）\n- `request/header.tools` JSON：674,249 B → 27,401 B，减少 95.936%\n- 任务完成：3/3 → 3/3\n- 按 2026-08-14 抓取的价格估算：$0.0307204 → $0.0034707\n\n代价也公开：Lens 多一次搜索步骤，这组任务的输出 Token 从 491 增到 794；这不是通用延迟或质量结论。\n\n项目还提供了一个完全在浏览器本地运行的目录计算器。可以粘贴脱敏后的 MCP Tool JSON，查看自己的模型可见 Schema 数量和 UTF-8 字节；内容不会上传。\n\n- GitHub：https://github.com/labmimors/dsh-mcp-lens\n- 本地目录计算器：https://labmimors.github.io/dsh-mcp-lens/\n- 公开复现实验：https://github.com/labmimors/dsh-mcp-lens/blob/main/docs/LIVE_DEEPSEEK_PILOT.md\n\n![MCP Lens 对比图](https://raw.githubusercontent.com/labmimors/dsh-mcp-lens/main/assets/mcp-lens-comparison.zh-CN.svg)\n",
@@ -796,21 +812,5 @@
     "created_at": "2026-08-09T07:44:23Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11089"
-  },
-  {
-    "id": 11088,
-    "title": "Silence Remover：浏览器本地运行的音频去静音工具",
-    "content": "Silence Remover 是一个免费的在线音频去静音工具。音频解码、静音检测、裁剪和 MP3 编码都在浏览器本地完成，不上传文件，也不需要注册。\n\n它可以自动识别录音开头、结尾和中间的长静音，同时保留自然短停顿；支持调整静音阈值、最短静音时长和切口余量，并可对比试听处理前后的音频。适合播客、课程、访谈、会议和语音备忘录。\n\n工具地址：https://silenceremover.net/?utm_source=github.com&utm_medium=referral&utm_campaign=promotion",
-    "created_at": "2026-08-09T03:11:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11088"
-  },
-  {
-    "id": 11087,
-    "title": "【工具自荐】ArchVizr —— 上传 SketchUp/Revit/CAD 导出图,20 秒内生成写实建筑效果图",
-    "content": "https://www.archvizr.com\n\n# ArchVizr —— 面向建筑师的 AI 建筑效果图工具\n\n## 是什么\n\nArchVizr 能把你手头已有的线稿图——SketchUp 隐线导出图、Revit 立面图、Rhino 截图,甚至一张手绘草图——在最快 20 秒内转换成写实建筑效果图。不需要插件,不需要 CAD 授权,也不需要额外买渲染器订阅。\n\n网站入口:[ArchVizr](https://www.archvizr.com/zh)\n\n## 为什么做这个\n\n市面上大多数 AI 渲染工具追求的是生成一张惊艳的单图。但实际工作中,无论是客户汇报还是规划报建,需要的是**一整套互相一致的效果图**——同样的体量、同样的机位、同样的材质——而不是六张各自\"自由发挥\"了建筑结构的独立生成图。\n\n现有工具还有一个更明显的问题:不少工具会在渲染时悄悄挪动一扇窗户,或者改变屋顶线条,而这类改动很容易被忽略,一旦在客户面前被发现就很尴尬。\n\n## 能做什么\n\n- **草图转效果图**:上传隐线导出图、CAD 立面图或手绘草图,生成的效果图会保留原图的体量、层数、屋顶线和机位构图\n- **参考图风格迁移**:上传一张照片或情绪板(清水混凝土、红砖、雪松挂板、耐候钢、玻璃、石材),渲染结果会采用该图的材质配色\n- **光照控制**:黄金时刻、阴天、蓝调时刻、夜景——同一个几何结构,不同的时间氛围,无需重新渲染建筑本体\n- **景观渲染**:为建筑加上真实场地环境(绿化、铺装、周边关系),而不是漂浮在纯白背景上\n- **室内渲染**:把外立面的材质配色延续到室内,使大堂、室内空间与外观效果图风格统一\n- **一张图出全套**:所有后续渲染(昼夜切换、砖石/混凝土切换、室内外切换)都基于同一份源图生成,确保整套提案视觉统一\n\n## 有什么不同\n\n大多数 AI 建筑渲染工具把你的图纸当作\"灵感参考\"来自由发挥重绘。ArchVizr 把图纸当作**结构约束**来处理:只添加材质和光照,不会移动窗户、改变房间尺寸或调整屋顶形状。同一张源图纸可以用不同材质、季节、时段反复出图,而所有结果之间始终保持对齐一致。\n\n## 适合谁\n\n- **中小型独立事务所(1-10 人)**:无法为每个项目单独承担效果图外包预算\n- **建筑系学生**:需要写实效果图参加评图或竞赛,又不想付费请人渲染\n- **地产开发商**:在立面尚未最终定稿前就需要预售效果图\n- **自由职业渲染师**:需要快速出一版材质/光照基础图,再自己做后期调色\n- **室内设计师**:偶尔需要一张与室内风格匹配的外观效果图\n- **营销代理公司**:同时服务多个小型开发商客户,等不起每张图几周的外包周期\n\n## 定价\n\n免费版包含一定数量的生成额度可直接试用(无需绑卡)\n\n---\n\n欢迎试用交流,尤其是之前用过其他 AI 渲染工具、踩过\"它偷偷挪了我的窗户\"这个坑的朋友 🙏",
-    "created_at": "2026-08-09T02:21:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11087"
   }
 ]
