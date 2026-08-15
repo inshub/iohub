@@ -1,5 +1,21 @@
 [
   {
+    "id": 11200,
+    "title": "【开源自荐】Clip：简单好用的跨平台 RSS 阅读器",
+    "content": "## 简介\n\n**简单好用的跨平台 RSS 阅读器** —— 支持 macOS / Windows，专注于快速浏览与阅读。\n\n## 截图\n\n![screenshot1](https://raw.githubusercontent.com/clip-rss/clip/main/screenshot/screenshot_1.png)\n![screenshot2](https://raw.githubusercontent.com/clip-rss/clip/main/screenshot/screenshot_2.png)\n\n## 主要功能\n\n- **三栏布局**：左侧源/文件夹树 · 中间文章列表 · 右侧阅读视图\n- **订阅管理**：添加订阅源、分类整理、OPML 导入导出\n- **定时抓取**：RSS / Atom 解析，后台定时自动刷新\n- **专注阅读**：全文阅读视图 + 无干扰专注模式\n- **快速检索**：覆盖标题、摘要与笔记的全局全文搜索\n- **笔记记录**：为文章添加笔记，随时回顾\n- **桌面通知**：新文章到达提醒，支持 macOS Dock / Windows 任务栏角标\n- **键盘驱动**：完善的快捷键系统\n- **主题与国际化**：浅色 / 深色 / 跟随系统，中英双语\n- **性能与离线**：轻量列表查询、本地缓存、离线可读\n\n## 项目地址\n[github.com/clip-rss/clip](https://github.com/clip-rss/clip)\n\n",
+    "created_at": "2026-08-15T09:46:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11200"
+  },
+  {
+    "id": 11199,
+    "title": "[开源推荐] NextBand：探索融合健康传感、语音交互与 AI Agent 的下一代可穿戴设备",
+    "content": "NextBand 是面向下一代可穿戴智能设备的**开源项目**，探索健康传感、语音交互与 AI Agent 的新型可穿戴交互方案。  \n它可以通过手环/手表形态，将心率、血氧等传感能力与云端 AI Agent 连接，使设备能够感知用户状态、理解用户意图，并代用户采取行动。  \n\n它的硬件部分：主控 ESP32S3 + 屏幕 ST7735 + 心率血氧传感器 MAX30102 + 数字麦克风 INMP441\n它的云端部分：Ubuntu + Tornado + Docker + pi-mono\n\nCSDN介绍文章: [https://blog.csdn.net/huangmipi/article/details/163773486](https://blog.csdn.net/huangmipi/article/details/163773486)\n\n该项目方案可以延伸到更复杂的场景，比如：\n1. 健康与养老\n    - 老人心率异常、血氧异常时自动通知家人\n    - 根据用户预设条件自动联系紧急联系人\n2. 运动与健身\n    - “如果我的心率超过 160，提醒我降低运动强度”\n    - 根据心率、运动状态动态调整训练计划\n3. 睡眠与日常健康管理\n    - 根据心率、血氧等数据判断用户状态\n    - “如果连续几天晚上心率异常，提醒我预约检查”\n4. 独居人群 / 安全守护\n    - “如果我长时间没有活动，并且心率异常，就联系家人”\n    - 可进一步融合跌倒检测、GPS 等能力，自动触发安全守护\n5. 情绪与压力管理\n    - 结合心率变化和用户语音意图判断压力状态\n    - “如果我的心率持续偏高，提醒我休息”\n6. 个人 AI 助手\n    - 不再局限于健康数据，而是让手环成为 AI Agent 的入口\n    - 未来可以接入邮件、日历、智能家居、企业系统等，实现真正的“感知 + 决策 + 执行”。\n\nGithub: [https://github.com/amin2312/NextBand](https://github.com/amin2312/NextBand)\n",
+    "created_at": "2026-08-15T08:51:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11199"
+  },
+  {
     "id": 11198,
     "title": "【开源自荐】mac-storage-cleaner: 会先给你看清单再删的 macOS 磁盘清理工具",
     "content": "mac-storage-cleaner 是一个 macOS 磁盘清理工具，由五个 bash 脚本组成，MIT 协议开源。\n\n它和其他清理工具最大的区别不是能清出多少空间，而是**你可以确认它不会碰什么**：\n\n* **默认只预览，不删除**。`clean-safe.sh` 直接运行只会列出每一条待清理路径和大小，必须显式加 `--apply` 才真正删除。\n* **拒绝名单写在代码里，不是写在说明书里**。照片图库、iOS 备份、钥匙串、邮件、`~/.ssh`/`~/.aws`/`~/.gnupg` 由路径校验器强制拒绝，并有 47 条危险路径的测试用例保证每一条都必须被拒。\n* **只有纯缓存才会被真正删除**（npm、gradle、pip、Xcode DerivedData、Homebrew 等白名单内的目录，删了只是下次构建慢一点）；其余一律移到废纸篓，可以还原。\n* **每一次操作都写审计日志**，日志写不进去时直接拒绝执行。\n* **不联网、不需要 sudo、无任何遥测**。\n\n不需要 AI 工具也能直接用：\n\n```bash\ngit clone https://github.com/JubaKitiashvili/mac-storage-cleaner.git\ncd mac-storage-cleaner/skills/mac-storage-cleaner\nbash scripts/survey.sh              # 只读：看看磁盘被什么占满了\nbash scripts/clean-safe.sh          # 预览，不删任何东西\nbash scripts/clean-safe.sh --apply  # 确认后执行\n```\n\n同时它也是一个 Agent Skill，可以让 Claude Code、Codex、Cursor、Windsurf、opencode 等约 70 个 AI 编程工具直接调用（`npx skills add JubaKitiashvili/mac-storage-cleaner`）——由 AI 来读取扫描结果、判断哪些大文件对你有价值。\n\n131 个自动化测试，CI 在 macos-latest 上跑 bats + shellcheck。第三方安全扫描（Gen Agent Trust Hub / Socket / Snyk）均为 Pass。\n\nGitHub: https://github.com/JubaKitiashvili/mac-storage-cleaner",
@@ -794,23 +810,5 @@
     "created_at": "2026-08-10T02:06:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11098"
-  },
-  {
-    "id": 11097,
-    "title": "【开源自荐】Tauri2开发的一个markdown转card的桌面应用，支持多端",
-    "content": "# 项目截图\n![首页_ZH.webp](https://s3.bmp.ovh/2026/08/05/nutlWigF.webp)\n\n## 项目说明\nMarkCard Studio 是一款面向内容创作者和知识分享者的本地优先桌面创作工具。使用 Markdown 写作，由工作台自动分页、排版，再选择视觉主题和目标画布，一次导出整套图片，小红书、抖音、自定义等图片或 PDF。文档、本地图片、设置和渲染结果均保留在你的电脑上。主要解决在线的markdown转卡片无法识别本地路径图片的问题。\n\n## 功能亮点\n- **Markdown 卡片工作流**：左侧编辑源码，中间实时查看卡片，支持单页与总览两种预览模式。\n- **自动分页**：可按 `##`、按 `##` 与 `###`、自定义分隔符、字符数或智能自适应策略切页。\n- **16 套内置主题**：涵盖瑞士网格、包豪斯、苹果备忘录、复古报刊、暗黑极客、Y2K、蓝图、Riso 等风格。\n- **发布平台预设**：小红书 3:4、抖音 9:16、微博 6:7、通用方形 1:1，以及完全自定义尺寸。\n- **丰富的 Markdown 渲染**：支持标题、列表、任务列表、表格、引用、提示块、图片、代码高亮、KaTeX 公式、Mermaid 图表、脚注、Emoji 和行内样式。\n- **灵活的视觉设置**：可选择纯色、渐变、图案、内置壁纸、自定义背景图片、透明背景，并编辑页眉页脚信息。\n- **多格式导出**：整套导出 PNG 或 JPG，生成多页 PDF，或把全部页面拼接成长 PNG；输出会按文档自动整理到独立目录。\n- **本地文档能力**：通过系统对话框打开和保存 Markdown，解析相对路径本地图片，持久化用户设置，并恢复未保存草稿。\n- **响应式工作台**：宽屏停靠、窄屏抽屉、缩放、深色模式、撤销重做和页面排序一应俱全。\n- **跟随系统的界面**：支持 English 与简体中文，也可自动跟随操作系统语言和明暗外观。\n\n## 项目地址\n- 介绍页：https://markcard.woollypix.cn/\n- 开源地址： https://github.com/pangxiaobin/MarkCardStudio\n\n## 导出案例\n<table>\n  <tr>\n    <td><img src=\"https://s3.bmp.ovh/2026/08/05/plioi4je.webp\" alt=\"MarkCard 案例第 1 页\" /></td>\n    <td><img src=\"https://s3.bmp.ovh/2026/08/05/lFLHMUrQ.webp\" alt=\"MarkCard 案例第 2 页\" /></td>\n    <td><img src=\"https://s3.bmp.ovh/2026/08/05/4LEdQGNV.webp\" alt=\"MarkCard 案例第 3 页\" /></td>\n    <td><img src=\"https://s3.bmp.ovh/2026/08/05/M7p1Gwju.webp\" alt=\"MarkCard 案例第 4 页\" /></td>\n  </tr>\n<table/ >\n",
-    "created_at": "2026-08-10T00:28:49Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11097"
-  },
-  {
-    "id": 11096,
-    "title": "【开源】一个把手机变成Claude Code 监控的开源程序",
-    "content": "\n最近做了一个开源小工具 Clamicro，可以把手机变成 Claude Code 的移动监控器。通过扫码即可与 Mac 配对，在手机上查看 Claude Code 的任务状态、Usage 和操作记录，并直接处理权限审批。\n\n完全本地化，不依赖云服务器，手机和 Mac 之间使用局域网通信。\n[视频演示](https://x.com/laosji_fuli/status/2086651359537795379/video/1)\n\n\nGitHub：https://github.com/laosji/clamicro\n\n## 主要功能\n\n- 任务自动审批：可以配置哪些操作自动通过，减少无意义的人工确认\n- 手机审批：Claude Code 请求权限时，可以直接在手机上查看命令并批准 / 拒绝\n- Usage：查看 5 小时 / 7 天使用量、Context Window、Session Cost\n- 任务状态：查看 Claude 当前是在 Thinking、Searching 还是 Editing\n- 任务通知：任务完成或者失败时提醒\n- Pause / Resume / Cancel：从手机控制当前任务\n- Event Timeline：查看完整的 Agent 操作记录\n- 高风险操作保护：例如 rm -rf、git push --force、SSH Key 等，需要进入详情页才能审批",
-    "created_at": "2026-08-10T00:20:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11096"
   }
 ]
