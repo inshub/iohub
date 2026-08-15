@@ -1,5 +1,29 @@
 [
   {
+    "id": 11198,
+    "title": "【开源自荐】mac-storage-cleaner: 会先给你看清单再删的 macOS 磁盘清理工具",
+    "content": "mac-storage-cleaner 是一个 macOS 磁盘清理工具，由五个 bash 脚本组成，MIT 协议开源。\n\n它和其他清理工具最大的区别不是能清出多少空间，而是**你可以确认它不会碰什么**：\n\n* **默认只预览，不删除**。`clean-safe.sh` 直接运行只会列出每一条待清理路径和大小，必须显式加 `--apply` 才真正删除。\n* **拒绝名单写在代码里，不是写在说明书里**。照片图库、iOS 备份、钥匙串、邮件、`~/.ssh`/`~/.aws`/`~/.gnupg` 由路径校验器强制拒绝，并有 47 条危险路径的测试用例保证每一条都必须被拒。\n* **只有纯缓存才会被真正删除**（npm、gradle、pip、Xcode DerivedData、Homebrew 等白名单内的目录，删了只是下次构建慢一点）；其余一律移到废纸篓，可以还原。\n* **每一次操作都写审计日志**，日志写不进去时直接拒绝执行。\n* **不联网、不需要 sudo、无任何遥测**。\n\n不需要 AI 工具也能直接用：\n\n```bash\ngit clone https://github.com/JubaKitiashvili/mac-storage-cleaner.git\ncd mac-storage-cleaner/skills/mac-storage-cleaner\nbash scripts/survey.sh              # 只读：看看磁盘被什么占满了\nbash scripts/clean-safe.sh          # 预览，不删任何东西\nbash scripts/clean-safe.sh --apply  # 确认后执行\n```\n\n同时它也是一个 Agent Skill，可以让 Claude Code、Codex、Cursor、Windsurf、opencode 等约 70 个 AI 编程工具直接调用（`npx skills add JubaKitiashvili/mac-storage-cleaner`）——由 AI 来读取扫描结果、判断哪些大文件对你有价值。\n\n131 个自动化测试，CI 在 macos-latest 上跑 bats + shellcheck。第三方安全扫描（Gen Agent Trust Hub / Socket / Snyk）均为 Pass。\n\nGitHub: https://github.com/JubaKitiashvili/mac-storage-cleaner",
+    "created_at": "2026-08-15T08:02:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11198"
+  },
+  {
+    "id": 11197,
+    "title": "发现一个款手感不错的terminal",
+    "content": "https://github.com/l0ng-ai/tty7\n\n<img width=\"1459\" height=\"990\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2eb582eb-10f5-4e3d-b97a-a5bbe17a7606\" />",
+    "created_at": "2026-08-15T07:55:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11197"
+  },
+  {
+    "id": 11196,
+    "title": "【工具自荐】ATBCmder: macOS 上的硬核全能文件管理中枢",
+    "content": "如果你受够了在 Mac 上层层叠叠的 Finder 窗口中穿梭，或者怀念 Windows 上 Total Commander 那种行云流水的掌控感，ATBCmder 将是你的最终解。这是一款专为追求极致效率的专业用户打造的全键盘、双面板文件管理器。\n\n✨ 核心亮点：\n\n* 重塑屏幕空间：支持双栏/三栏/四栏及横纵向自由拆分，一键切换“经典三栏（目录树+工作区+预览区）”，甚至支持同屏平铺所有子目录文件。\n\n* 全键盘驱动：完美复刻 TC 快捷键，配有“快捷收藏夹”实现任意目录一键瞬移，真正做到双手不离键盘。\n\n* All-in-One 引擎：无需跳出软件，原生支持挂载 SMB/FTP/SFTP/WebDAV 远程系统；内置全能预览器，直接秒开 PDF、EPUB 及各类音视频素材。\n\n* 绝对安全的 AI 辅助：率先接入大语言模型（支持 Gemini、OpenAI 等），支持用自然语言（如“选中本周修改过的大于 10MB 的文档”）进行语义化搜索。AI 仅负责精准“高亮”，修改与删除权 100% 掌握在用户手中。\n\n* 极客工具箱：内置批量重命名、文件/文件夹对比同步、极速压缩解压等高阶功能。\n\n🔗 了解详情与下载：[cmder.aitobox.com](https://cmder.aitobox.com/)\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a056542d-3e3d-4a60-9a2d-17dc924900b4\" />",
+    "created_at": "2026-08-15T07:49:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11196"
+  },
+  {
     "id": 11195,
     "title": "[开源自荐] KubeVision: ai驱动的Kubernetes dashboard",
     "content": "KubeVision 是一个开源、AI 驱动的Kubernetes Dashboard，支持多集群管理、资源监控、Helm 应用部署、Pod 日志与终端、RBAC 及 AI 辅助运维。它不仅能查看集群状态，还可以通过自然语言 排查问题、生成变更方案，并在用户确认后执行操作, MIT开源协议。\n\nGitHub:https://github.com/gocronx/kubevision\n文档:https://kubevision-docs.pages.dev/\n\n<img width=\"3442\" height=\"1984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4fb2a678-435e-4d35-a24c-39c603fe5197\" />",
@@ -788,29 +812,5 @@
     "created_at": "2026-08-10T00:20:54Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11096"
-  },
-  {
-    "id": 11095,
-    "title": "【开源自荐】MkDocs - 基于 FumaPress 的文档站点模板",
-    "content": "名称：MkDocs\n仓库：https://github.com/MkThingsHQ/mkdocs\n描述：基于 FumaPress 的文档站点模板，支持一键部署到 Cloudflare Workers\nA fast documentation template powered by FumaPress and deployed on Cloudflare Workers.\n网址：https://docs.mksaas.link\n图片：\n\n<img width=\"2936\" height=\"1732\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/275a5ee4-e920-4c4d-b8b8-9043f31fece1\" />",
-    "created_at": "2026-08-09T23:12:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11095"
-  },
-  {
-    "id": 11094,
-    "title": "【开源自荐】Mkdirs - 基于 Next.js 且支持 AI 功能的导航站模板",
-    "content": "名称：Mkdirs\n仓库：https://github.com/MkThingsHQ/mkdirs\n描述：Mkdirs是一个导航站模板，可以帮你快速上线一个支持AI 提交、支付、身份验证、邮件订阅、CMS等功能的导航站。\nMkdirs helps you launch a directory website with listings, AI-assisted submissions, payments, authentication, CMS, blog, newsletter, SEO, themes, and more.\n网址：https://mkdirs.com\n文档：https://docs.mkdirs.com\n视频：https://www.youtube.com/@MkdirsHQ\n示例：https://mkdirs.com/showcase\n图片：\n\n<img width=\"1200\" height=\"630\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e9d315e-236f-4589-99af-b34932b4e096\" />",
-    "created_at": "2026-08-09T23:08:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11094"
-  },
-  {
-    "id": 11093,
-    "title": "【开源自荐】FormatBridge — JSON / YAML / CSV / TOML / INI 格式数据转换工具",
-    "content": "网址：https://github.com/luhuadong/FormatBridge\n\n开源的结构化数据小工具：在 JSON、YAML、CSV、TOML、INI 之间做校验、格式探测、美化/压缩和相互转换。同一套引擎同时提供 Dart 库、命令行 `fbridge`，以及 Linux / macOS / Windows 桌面 GUI，适合本地编辑或脚本流水线，不上传云端。\n\n功能特性：\n\n- 五种常见配置/数据格式一套搞定：校验合法性、自动探测格式、美化或压缩、格式互转（CSV 需表结构且首行为表头）\n- 命令行 `fbridge`：支持文件与管道，可编译成单文件可执行文件，方便接入 shell / CI\n- 桌面 GUI：双栏编辑与转换页，实时语法高亮、可选行号；打开文件时自动探测源格式；主题与字号等偏好本机保存\n- 纯本地运行，无账号、无订阅；Linux 提供 tar.gz / deb / AppImage，Windows 提供 zip\n\nApache-2.0，欢迎试用和反馈。\n\n<img width=\"1332\" height=\"909\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8b09b8e7-6dcd-4d7f-99df-017c91b2cb2c\" />\n\n<img width=\"1332\" height=\"909\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/da6dda54-1c6f-4579-b001-07b8bdbab752\" />",
-    "created_at": "2026-08-09T16:29:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11093"
   }
 ]
