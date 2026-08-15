@@ -1,5 +1,21 @@
 [
   {
+    "id": 11194,
+    "title": "【开源】VOZEB PRO 开源商业版：Agent、画布、短剧和 SaaS 运营后台、作品广场",
+    "content": "[VOZEB PRO](https://github.com/csyqlz/VOZEB-PRO)\nhttps://github.com/csyqlz/VOZEB-PRO\n\n统一创作代理：文字问答、图片、视频和音频在同一会话中完成，支持参考素材、首帧/首尾帧、技能、智能规划、手动逻辑模型、比例/画质/时长/数量、自定义像素、多结果、历史恢复、失败重试、WebP预览和原件下载。\n文本、图片、视频、音频与生成节点，支持拖拽、连线、缩放、撤销重做、导入导出和代理运行。\n短剧制作线：剧本、内容审核、角色/场景/道具、分镜、镜头视频、配音、字幕、版本和 FFmpeg 合成。\n作品广场：作品草稿、版本审核、发布分享、广场检索、作者主页、点赞关注、下架重发和内容治理。\n模型与协议：管理员维护通道、协议、真实模型、逻辑模型、能力、优先级和默认值，覆盖OpenAI、Gemini、Seedance 2.0、Stable Diffusion、A1111/Forge声明和式自定义协议。\n持久生成：独立Worker负责图片、视频、音频和代理任务续取，页面关闭或实例切换后继续查询原上游任务，并在生成运维中处理异常任务。\n商业后台：用户、套餐、促销账目、优惠券、邀请奖励、积分、CDK、订单、支付、退款、对账、流水、工作治理日志、公告、提示词和审计日志。\n存储与备份：本地媒体、S3兼容对象存储、引用保护、对象迁移和脱敏业务数据导入导出。",
+    "created_at": "2026-08-15T04:04:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11194"
+  },
+  {
+    "id": 11193,
+    "title": "【开源自荐】Oi：一门用于编写和运行 Agent Skill 的 Agent Language。",
+    "content": "昨晚在写自用的 Skills 时，被 Agent 的输出折磨得够呛：明明这些指令背后都有相对固定的工作流，但最终结果总是和预期有偏差。\n于是我开始想：能不能设计一门介于结构化语言和自然语言之间的“伪代码”？既把目标、约束、分支和停止条件表达清楚，又给 Agent 留出理解上下文、选择方法的空间。\n\n折腾了一晚上，最后做出了 Oi：\n\nhttps://github.com/oi-language/oi\n\n把 Oi 作为 marketplace 添加到 Codex、Claude、Cursor 等 harness 工具中，Agent 就可以使用 Oi 来编写和执行 Skill。\n\nOi 目前还处于非常早期的探索阶段，语言设计和实现都没有经过充分验证，第一版里也一定会存在不少不成熟、甚至糟糕的设计。\n如果你对 Agent、Skill、语言设计或开发工具感兴趣，欢迎来一起试用、验证、提 issue、提 PR，帮 Oi 找到真正有价值的方向。",
+    "created_at": "2026-08-15T03:56:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11193"
+  },
+  {
     "id": 11192,
     "title": "【书籍自荐】《解构大语言模型：从线性回归到通用人工智能》",
     "content": "<img width=\"800\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1771ecd-b441-457e-a766-91e662c6f5c6\" />\n\n线上地址：https://gentang.github.io/zh/books/deconstructing_LLM/",
@@ -796,21 +812,5 @@
     "created_at": "2026-08-09T14:54:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11092"
-  },
-  {
-    "id": 11091,
-    "title": "自荐：ClipLumi — 用自然语言提示词编辑图片的 AI 图片工具",
-    "content": "网址：https://cliplumi.com/zh\n\n我做的 AI 图片编辑工具，主要面向内容创作者和不熟悉 Photoshop 的用户：\n\n- 可以直接用自然语言提示词修改图片，例如换背景、调整主体、改风格或重做局部内容\n- 最多可同时使用 3 张参考图，方便控制人物、商品或视觉方向\n- 支持多种图片生成/编辑模型，并在生成前显示对应积分成本\n- 提供中英文界面，可直接在线使用\n\n欢迎试用和反馈。",
-    "created_at": "2026-08-09T12:31:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11091"
-  },
-  {
-    "id": 11089,
-    "title": "【开源自荐】AVA：把多个 Steam 账户的令牌放进同一个列表，手机和桌面通用",
-    "content": "AVA（AnotherVaporAuth）是一个开源的 Steam 令牌验证器，Flutter 写的，一套代码出 Android / Windows / Linux / macOS 四个平台。\n\n起因是官方 Steam App 一台手机只能装**一个**令牌。有小号、有区域账户、或者跑几个 ArchiSteamFarm 机器人的人，最后手里都是一堆 `.maFile` 备份加一个必须走到电脑前才能用的桌面工具。AVA 把这些账户放进同一个列表：验证码、交易确认、登录批准、交易报价、库存上架、远程注销其他设备，每个账户各自一份。\n\n它直接读写老工具 SDA（Steam Desktop Authenticator）的 `.maFile` 格式，也能导入 Steam++ / Watt Toolkit 的导出文件，随时可以把 maFile 导出带走。另外它能把令牌从官方 App 迁移过来——走的是官方 App 用的同一个接口，所以**不会触发 15 天交易冷却**，而从网页移除令牌会。\n\n密钥由 6 位 PIN 保护，存在设备硬件 Keystore 里，本地 AES-256-GCM 加密，验证码完全离线生成。MIT 协议。\n\n- 源码：https://github.com/freefrank/AnotherVaporAuth\n- 官网 / 桌面版下载：https://ava.dotslash.pro\n- Google Play：https://play.google.com/store/apps/details?id=pro.dotslash.ava\n\n![账户列表](https://ava.dotslash.pro/shots/home-neon.png)\n\n（利益相关：我是作者。Play 版有可选订阅解锁两套皮肤并去广告，免费版有横幅广告；验证码、交易确认、maFile 导入导出这些在所有版本里都免费，也可以自己编译一个完全不含广告与计费代码的版本。）\n",
-    "created_at": "2026-08-09T07:44:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11089"
   }
 ]
