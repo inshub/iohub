@@ -1,5 +1,45 @@
 [
   {
+    "id": 11229,
+    "title": "【开源自荐】万能翻译站：把文件拖进窗口，自动识别、提取、翻译、替换，一个平台搞定（文本翻译工具）",
+    "content": "﻿\n万能翻译站（Universal Translator）是一个开源的 Windows 桌面文本翻译工具。它的目标是让\"翻译文本\"这件事不再需要你在文件管理器和多种翻译软件之间来回挣扎：不管是文件、游戏还是图片，把内容拖进窗口，剩下的自动完成。当前已实现文本文件与游戏文本的完整链路，文档与图片翻译在规划中。项目地址：https://github.com/Match0121/universal-translator-desktop\n\n目前实际能做的，是解决一个很具体的痛点：玩日文游戏看不懂剧本，而游戏文本要么是 Shift-JIS 编码的明文，要么锁在吉里吉里 xp3 资源包里，手动转码、解包、逐句翻译非常折腾。把整个游戏文件夹拖进窗口，剩下的自动完成。\n\n![扫描界面](https://raw.githubusercontent.com/Match0121/universal-translator-desktop/main/docs/assets/screenshot-scan.png)\n\n![翻译对照](https://raw.githubusercontent.com/Match0121/universal-translator-desktop/main/docs/assets/screenshot-browse.png)\n\n核心特性：\n\n- 📁 拖入即译：文件或整个游戏文件夹拖进窗口，自动扫描文本文件并识别游戏引擎\n- 🔤 编码自动检测：UTF-8 / UTF-16 / Shift-JIS（日文）/ GBK（中文），日文剧本无需手动转码\n- 🎮 xp3 资源包解包：吉里吉里游戏的剧本锁在 .xp3 里也能翻，一键解包、翻译、封包回写\n- 📄 多格式提取：txt / json / ini / srt / ass / rpy（Ren'Py）/ ks（吉里吉里，含日文「」引号）\n- 💾 原编码写回：导出保持文件原编码，译文超出字符集时自动转存 UTF-8 并提示\n- 🔒 完全本地：翻译处理都在本机完成，文件不出电脑；单文件绿色 exe，无需安装任何依赖\n- 🌗 深浅双主题，使用说明内置\n\n安装（Windows 10/11）：\n\n```\n从 Releases 下载 UniversalTranslator.exe，双击运行\n```\n\n技术栈：Python + pywebview + PyInstaller，前端原生 ES Modules 无构建依赖。开源协议：MIT。\n",
+    "created_at": "2026-08-16T16:16:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11229"
+  },
+  {
+    "id": 11228,
+    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
+    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
+    "created_at": "2026-08-16T15:58:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11228"
+  },
+  {
+    "id": 11227,
+    "title": "【开源自荐】shotsync：部署在自己 Cloudflare 免费档的跨设备图片/文字中转池，替代微信文件传输助手",
+    "content": "自荐一个自用的开源小工具。\n\n**shotsync** —— 跨设备图片/文字中转池：Mac、手机任一设备丢进去，其他设备打开网页就能取走。定位是「中转」不是网盘，所有内容 30 天自动清理。\n\n- 在线演示（只读示例池，无需注册）：https://shotsync-demo.defiabell.workers.dev\n- 仓库（MIT，中英双 README）：https://github.com/Defiabell/shotsync\n\n特点：\n\n- 整个后端只是一个 Cloudflare Worker + 一个 R2 桶，部署到自己账户约 5 分钟，免费额度个人用绰绰有余，数据不经任何第三方图床\n- 手机端是 PWA，「添加到主屏幕」即用，不装 App、不上商店\n- 图片在浏览器端转 JPEG + 生成缩略图，Worker 只存字节不碰像素\n- 可给单张图生成带签名、7 天过期的公开链接，分享一张图不暴露整个池子\n\n![界面截图](https://raw.githubusercontent.com/Defiabell/shotsync/main/docs/screenshot.png)\n\n做它的起因是受够了用微信「文件传输助手」给自己传截图：图被压缩、要翻聊天记录、还得常开着微信。",
+    "created_at": "2026-08-16T15:16:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11227"
+  },
+  {
+    "id": 11226,
+    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
+    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
+    "created_at": "2026-08-16T14:57:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11226"
+  },
+  {
+    "id": 11225,
+    "title": "【网站自荐】midipiano.app：看谱练琴的网页应用（MIDI 键盘 + 实时反馈）",
+    "content": "# 项目地址\n\nhttps://midipiano.app/zh/\n\n# 项目简介\n\nmidipiano.app 是一个免费的网页版练琴应用。屏幕上显示的是真正的五线谱，不是 Synthesia 那种瀑布流。用 USB 或蓝牙接上 MIDI 键盘就能直接弹。弹对了、弹早了、弹晚了，还是没按够时值就松了键，都会实时标在谱面上，一目了然。\n\n内置分级练习曲库，从最基础的五指练习一直到布格缪勒、贝多芬的小品。也可以导入自己的 MusicXML/MXL 乐谱逐小节练，支持 A-B 循环、分手练习、等待模式（弹对了谱子才往前走）和变速播放。还有每日视奏挑战，每天生成一首新曲，所有人都弹同一首，分三个难度。\n\n# 为什么做这个工具\n\n自学钢琴的人大多有这个体会：老师一周只见一次，剩下六天弹错了没人指出来，只能凭感觉一遍遍过。市面上的学琴 App 大多要订阅，而且不少用瀑布流代替五线谱，练久了反而越来越不会看谱。我想要的是对着真正的乐谱练，每个音当场就有对错和节奏的反馈，练完知道下一遍该改哪里。\n\n# 主要特点\n\n- 完全免费，无需注册\n- 需要一台 USB 或蓝牙的 MIDI 键盘，浏览器建议用支持 Web MIDI 的 Chrome 或 Edge\n- 界面有完整的简体中文翻译，国内可直连（人机验证走的是 recaptcha.net）\n\n接上键盘打开网页，弹几个音就知道是怎么回事了。欢迎试用，有什么问题或建议都欢迎反馈。\n\n利益相关：我是 midipiano.app 的开发者，人在西班牙。中文界面和这篇介绍都是借助翻译完成的，有不地道的地方欢迎指正。\n\n# 界面截图\n\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c34c8c4b-ebe4-43cd-a11e-b104a13d699d\" />\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc22f666-bf97-4ba9-8011-75f22f978414\" />\n",
+    "created_at": "2026-08-16T14:52:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11225"
+  },
+  {
     "id": 11224,
     "title": "【开源自荐】claude-limit-relay：Claude Code 撞 5 小时限额自动续跑 + 定时预热额度窗口（Windows）",
     "content": "项目地址：https://github.com/MagicYangG/claude-limit-relay\n\nClaude 订阅的 5 小时用量窗口由「空窗期的第一条消息」锚定。这个纯 PowerShell 工具箱做两件事：预热——用任务计划在指定时刻发一条极小的 ping，把窗口边界平移到你的作息上，开工时可横跨两个窗口；接续——任务撞限被杀后自动站岗，额度恢复的瞬间在同一会话里挂载完整上下文续跑，最多链 4 个窗口约 20 小时，撞到模型周限还能自动降档换模型跑完。\n\n官方桌面版 8 月 13 日上线了 auto-continue 复选框，但 CLI 至今没有——这个工具补的就是 CLI 这一半。MIT 开源，无守护进程，本地 Web 面板中英双语。\n\n![面板截图](https://raw.githubusercontent.com/MagicYangG/claude-limit-relay/main/docs/panel.zh-CN.png)",
@@ -298,7 +338,7 @@
   {
     "id": 11187,
     "title": "【工具自荐】Blitz Capture 网页长截图扩展插件，10x速度丝滑滚动截图（录屏对比 GoFullPage）",
-    "content": "最近 chrome 下架了 1000多万用户的长截图插件 GoFullPage，我借此机会给大家自荐一下 Blitz Capture 全页面截图插件。\n\nBlitz Capture 不是重复做了一个长截图插件，而是用完全不同的技术路线，将截图**速度提升了 10倍**左右，并且在截图效果上也更好一些。\n\n## 基本信息\n\n- 安装地址：[BlitzCapture - Chrome Web Store](https://chromewebstore.google.com/detail/full-page-screenshot-%E2%80%93-fa/nnhplomobinijgpongnbofokpibpbioa?hl=zh)\n- 评分：70个评分，4.9/5.0\n- 用户数：6000+\n- 大小：< 500KiB\n- 网站：[Blitz Capture - ZIZIYI](https://ziziyi.com/zh-cn/blitz-capture/)\n\n## 录屏视频 GoFullPage vs Blitz Capture\n\nhttps://github.com/user-attachments/assets/093c03fe-705a-49b9-b429-ed467c35a3e7\n\n## 视频截图\n\n<img width=\"1633\" height=\"846\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f857eb05-2b0e-4db1-b152-d1e4a59962ff\" />",
+    "content": "最近 chrome 下架了 1000多万用户的长截图插件 GoFullPage，我借此机会给大家自荐一下 Blitz Capture 全页面截图插件。\n\nBlitz Capture 不是重复做了一个长截图插件，而是用完全不同的技术路线，将截图**速度提升了 10倍**左右，并且在截图效果上也更好一些。\n\n## 基本信息\n\n- 安装地址：[BlitzCapture - Chrome Web Store](https://chromewebstore.google.com/detail/full-page-screenshot-%E2%80%93-fa/nnhplomobinijgpongnbofokpibpbioa?hl=zh)\n- 评分：70个评分，4.9/5.0\n- 用户数：7000+\n- 大小：< 700KiB\n- 网站：[Blitz Capture - ZIZIYI](https://ziziyi.com/zh-cn/blitz-capture/)\n\n## 录屏视频 GoFullPage vs Blitz Capture\n\nhttps://github.com/user-attachments/assets/093c03fe-705a-49b9-b429-ed467c35a3e7\n\n## 视频截图\n\n<img width=\"1633\" height=\"846\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f857eb05-2b0e-4db1-b152-d1e4a59962ff\" />",
     "created_at": "2026-08-14T15:57:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11187"
@@ -764,47 +804,5 @@
     "created_at": "2026-08-12T01:42:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11130"
-  },
-  {
-    "id": 11129,
-    "title": "【开源自荐】SpotAsk：原生 macOS 菜单栏轻量 AI 问答工具",
-    "content": "\n**项目开源地址**：<https://github.com/shiquda/SpotAsk>\n\nSpotAsk 是一款原生 macOS 菜单栏 AI 助手，按一个快捷键呼出、问完关闭，有意保持精简和快捷。\n\n<div align=\"center\">\n  <img src=\"https://shiquda.github.io/SpotAsk/images/spotask-chat.png\" alt=\"SpotAsk 主界面\" width=\"600\" />\n</div>\n\n如果你只是想知道一个概念、翻译一段话​，或总结一篇长文时，往往要先停下手头的工作，打开浏览器，进入 AI 网站，再切回原任务。一个轻量的问题，解决它的过程却并不轻松。\n\n我发现，很多轻量问题其实并不值得专门打开 ChatGPT 或 Codex 这类工具。\n\nSpotAsk 想缩短这条路径：平时安静地待在菜单栏，按默认快捷键 `Option + Space`（或其他你喜欢的快捷键） 呼出一个专注的提问窗口。输入问题、查看回答、需要时复制，再按 `Esc` 关闭，回到原本的工作。整个过程不离开当前场景，就像它没有出现过一样。\n\n## 主要特点\n\n- **使用自己的 AI 服务（BYOK）**：支持 OpenAI 兼容接口和 Anthropic，访问密钥保存在这台 Mac 上。\n- **轻量而实用**：内置常用提示词、支持自定义快捷键、粘贴截图或拖入文件作为上下文，也可以切换不同服务商的模型。\n- **划词即问**：在浏览器、备忘录等应用中选中文字，可一键翻译、解释、总结、润色或执行自定义提示词。\n\n## 演示\n\n快捷键呼出并提问\n![SpotAsk 快捷键呼出并提问](https://shiquda.github.io/SpotAsk/images/spotask-hotkey.gif)\n\n划词快捷操作\n![SpotAsk 划词快捷操作](https://shiquda.github.io/SpotAsk/images/spotask-selection.gif)\n\n更多功能与体验，欢迎[下载](https://github.com/shiquda/SpotAsk/releases)亲自试试。\n\n## 平台与许可\n\n- 支持 macOS 15 或更高版本，兼容 Apple silicon 和 Intel Mac。\n- 开源，使用 AGPL-3.0 许可证。\n- 官方发布版本已使用 Apple Developer ID 签名并通过公证。\n\n感兴趣的读者，可查看中文文档：<https://shiquda.github.io/SpotAsk/zh-CN/>\n\n下载地址：<https://github.com/shiquda/SpotAsk/releases>",
-    "created_at": "2026-08-11T23:58:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11129"
-  },
-  {
-    "id": 11128,
-    "title": "【网站自荐】跑通：只收「跑通过的经验」的中文 vibe coding 社区",
-    "content": "网站：https://paotong.dev\n\n跑通是一个垂直于 AI 编程（vibe coding）的中文开发者社区，编辑立场只有一条：**只收跑通过的经验**——一线实战复盘、真实成本账单、翻车现场与修复过程，不收营销稿、不收官方文档复述。\n\n内容示例：\n- 《把密钥挪出进程，救不了被投毒的 CI》——LiteLLM CI 投毒事件复盘，恶意依赖在 CI 里实际能摸到什么：https://paotong.dev/a/9940b4ef9a101539\n- 《一觉醒来，成本列没了》——Cursor 移除成本明细后，个人用户如何核对真实用量：https://paotong.dev/a/f9a66738716a4390\n- 按主题浏览（Claude Code / 成本 / 安全 / 翻车复盘等 18 个标签）：https://paotong.dev/tags\n\n两个对开发者比较特别的能力：\n- **MCP 接入**：远程 HTTP 端点或 `npx paotong-mcp`，Claude Desktop / Cursor 等 agent 可以直接浏览和读取站内文章（https://paotong.dev/mcp）\n- **全文 RSS**（50 条 content:encoded）：https://paotong.dev/feed.xml\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-    "created_at": "2026-08-11T16:52:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11128"
-  },
-  {
-    "id": 11127,
-    "title": "【网站自荐】HowToWhistle：吹口哨练习器",
-    "content": "# 项目地址\n\n[https://howtowhistle.org/](https://howtowhistle.org/)\n\n# 项目简介\n\nHowToWhistle 是一个在浏览器里练习吹口哨的在线工具。\n\n打开页面授权麦克风后，它会实时检测你吹出的音高，就像在 KTV 里唱歌评分一样，页面会显示当前音符以及与目标音的偏差。练习内容从单音长音开始，逐步过渡到音阶和简单旋律，帮助完全不会吹口哨的人一步步吹出调子。\n\n# 为什么做这个工具\n\n网上的口哨教程基本都是文字和视频，最大的问题是练习时得不到反馈——你不知道自己吹得对不对、偏高还是偏低。\n希望把\"调音器 + 渐进式练习\"结合起来：每一次吹奏都有即时的可视化反馈，让练习从盲目模仿变成有目标的刻意练习。\n\n# 主要特点\n- 基于 Web Audio API 的实时音高检测，可视化显示音准偏差\n- 从单音、音阶到旋律的渐进式练习路径\n- 纯前端实现，声音不上传服务器，无需注册\n\n可以先从\"长音保持\"练习开始，看看自己能不能把一个音稳定吹够 3 秒。\n\n# 界面截图\n\n<img width=\"3456\" height=\"1986\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/76718aa0-1bc9-4109-80b0-d29485c4dd13\" />\n\n<img width=\"3456\" height=\"1982\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/311dc5f3-f302-4628-aeb2-6a9185866d7d\" />\n\n<img width=\"1080\" height=\"1920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/80200a13-e97a-4cca-b98a-a60b2dc2100f\" />\n",
-    "created_at": "2026-08-11T16:32:07Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11127"
-  },
-  {
-    "id": 11126,
-    "title": "【开源自荐】Panerelay：让 AI Agent 安全使用你已经登录的浏览器",
-    "content": "项目地址：https://github.com/F-loat/panerelay\n\n官网：https://f-loat.github.io/panerelay/\n\n开源协议：MIT\n\n让 Agent 处理 GitHub、邮箱、企业后台或内容平台时，真正麻烦的往往不是“它会不会操作网页”，而是“怎样安全使用用户已经登录的浏览器”：\n\n- 启动独立浏览器，需要重新登录，还会遇到验证码、双重验证和环境差异；\n- 复制 Profile 或导出 Cookie，会扩大凭证暴露范围；\n- 直接开放 Chrome 远程调试，权限通常过大，也缺少清晰的标签页授权和当前控制状态。\n\n**Panerelay 不是另一个 Browser Agent，而是 Agent 与日常浏览器之间缺失的本地权限和路由层。** 它让 Agent 复用现有 Chrome / Microsoft Edge 的登录态，同时由用户明确决定可以访问哪些域名、连接哪些标签页，并随时撤销控制。\n\n![Panerelay](https://github.com/user-attachments/assets/2eba77ae-5362-4803-9190-cf134dd2b8d7)\n\n### 它带来的实际变化\n\n- **需要数据时用 Fetch**：Agent 可以直接请求已登录接口，不必打开页面或运行 DOM 自动化。浏览器 Cookie 只在扩展内参与请求，不会返回给 Agent；权限按域名授予。\n- **需要操作页面时用 Connect**：agent-browser、Browser Use 和 Playwright CLI 可以连接用户明确授权的现有标签页，继续使用各自原生的导航、输入、截图和调试能力。\n- **不被某个 Agent 或自动化引擎绑定**：同一个本地 Bridge 和统一 Skill 同时服务 CLI、MCP 与多种自动化工具。\n- **权限始终可见、可撤销**：Fetch 域名授权、Connect 标签页授权和当前页面控制彼此独立；页面获得焦点不会自动获得权限。\n- **常用网站可以直接使用语义命令**：0.10 的内置目录覆盖 99 个 Fetch 站点适配器，可按需安装，例如用 `panerelay bilibili me` 读取当前登录账号，而不用让 Agent 自己研究接口和鉴权。\n\n因此，用户不必在“复用真实登录态”和“保留浏览器控制权”之间二选一。Panerelay 本地运行，不依赖 Panerelay 云服务，也不要求开启远程调试端口。\n\n### 快速开始\n\n先安装 [Chrome 扩展](https://chromewebstore.google.com/detail/panerelay/panplnkjlkoceaonlmpdekjphgmbggmi)，然后运行：\n\n```bash\nnpx --yes @panerelay/setup\nnpx skills add https://github.com/F-loat/panerelay --skill panerelay\n```\n\n随后直接告诉 Agent：“使用 `$panerelay` 获取我已登录网站的数据”，或“连接我当前授权的 Chrome 标签页”。\n\n支持 macOS、Linux、Windows，以及 Chrome 和 Microsoft Edge。扩展侧边栏还提供轻量的本地 Agent 入口，方便在当前页面旁启动或继续会话。\n\n此前投稿 #10958 介绍的是以 agent-browser 接入为主的 v0.5；0.10 已形成完整的 Fetch + Connect 双入口，因此提交本次重大更新。",
-    "created_at": "2026-08-11T15:42:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11126"
-  },
-  {
-    "id": 11125,
-    "title": "【网站自荐】BEANBASE 豆进制：一个完全免费的拼豆设计工具，从 AI 增强、图纸编辑，到拼豆模式和 3D 预览，一套工具完成整个制作流程。",
-    "content": "[BEANBASE 豆进制](https://beanbase.cn/)是一个免费的在线拼豆设计工具。\n\n除了把照片转成拼豆图纸，我们还做了一些自己觉得有意思、实际画图时也很顺手的小工具。\n\n生成图纸时，系统会根据画板尺寸、画面结构和所选色板处理颜色和轮廓，尽量减少不必要的碎色，让生成结果不只是看起来像原图，也更适合真正拿去拼。\n\n在画板模式里，可以上传一张参考图，用吸色画笔直接从参考图取色；打开镜像画笔，画一半就能自动补齐另一半。构图画错了，也可以把已经画好的部分整体移动，不用重新开始。\n\n图纸完成后，还可以进入拼豆模式，按颜色、按拼板或者按行照着制作，查看色号、坐标和制作进度。也可以切到 3D 预览，看看整张图纸拼出来大概是什么效果。\n\n网站免费使用，无需注册。普通图纸生成和编辑都在浏览器本地完成。\n\n我们目前也在小范围测试 AI 图片优化，主要用来处理光影、毛发或背景比较复杂的照片。如果想体验 AI 图片优化，欢迎添加我们的企业微信领取体验码，也欢迎反馈实际使用中的问题和效果。\n\nhttps://beanbase.cn/\n\n欢迎大家来玩。最后，感谢阮一峰老师提供这个平台。",
-    "created_at": "2026-08-11T14:32:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11125"
   }
 ]
