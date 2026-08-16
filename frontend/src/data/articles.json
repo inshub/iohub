@@ -1,5 +1,29 @@
 [
   {
+    "id": 11218,
+    "title": "【开源自荐】LTPP：学练一体的全栈在线开发学习平台，把 OJ 判题、在线 IDE、云端 Linux、内容社区、电商装进一个 Web 应用",
+    "content": "**利益相关：我是 LTPP 的作者。**\n\nLTPP（Learning · Teaching · Practice Platform，\"学 · 练 · 教\"一体的在线开发学习平台）是为编程学习这件事打造的一站式 Web 应用，目标是把\"学到 → 练会 → 教别人\"这条链路里需要的工具全部整合到同一套产品里：读文章、看短视频、刷 OJ 题、参加竞赛、在线写代码、提交到沙箱判题、和同学即时讨论、用云端 Linux 跑实际项目、攒作品、卖商品，全都在一起。MIT 开源，自托管，单机即可跑。\n\n🎯 **它解决什么**\n\n市面上的编程学习场景里，想做的事通常分散在五六个不同平台：OJ 在一个站，代码编辑器在另一个站，云服务器要再开一个，聊天用微信，讨论用 QQ，教学管理又用独立的 LMS。学生要切来切去，老师要管五六个账号，机构要付五六份订阅。LTPP 想做的事，是把\"学 + 练 + 教 + 管 + 社区 + 商业化\"收回到一个屋檐下，部署者只装一次，学生只用记一个网址。\n\n👤 **三类用户视角**\n\n**【学员视角】**\n- 早上 9 点，先看《每日一题》（系统定时推送，不是你刷的），3 分钟一道。\n- 不会做？在「Q&A」提问，24 小时内有人答，可以附代码片段。\n- 写代码：直接浏览器里打开 Monaco 编辑器（支持 C/C++/Java/Python/Go/PHP/JS/TS/Rust/C#/Ruby/Bash/CSS/HTML 14+ 语言），点提交。\n- 系统把代码扔进自建沙箱（Docker + cgroup/rlimit 隔离）判题，AC 就解锁下一题，WA 就回看「代码历史」找上次接近的版本。\n- 晚上 8 点的 ACM 训练赛：进入「竞赛」频道，ACM/OI/IOI 三种模式可选，实时排行榜，赛后看解析。\n- 课间：在「私聊」找同学讨论，或在「群聊」看班群消息。「班级消息」「全局通知」会自动推过来。\n- 周末：用「云盘」存笔记、用「应用市场」装别人写好的工具、在「应用商店」看看有没有想买的课程/书/硬件。\n\n**【开发者视角】**\n- 不想光刷题？想跑真实项目：用「Webcode」一键开一台云端 Linux 沙箱（SSH 端口 49999），浏览器内就是 terminal，可以装包、写脚本、跑服务。\n- 写完觉得不错：点「代码分享」生成短链接，扔到群里。点「代码历史」看历次提交，方便回滚、对比、查重。\n- 想学新技术栈：在「文章」读长文，在「短视频社区」看 3 分钟教程（抖音式信息流 + 创作者看板，自己也能上传）。\n- 想看排行榜：在「积分排名」看周榜 / 月榜 / 总榜。\n\n**【老师 / 管理员视角】**\n- 「管理员控制台」管用户、管题目、管竞赛、管商品、管应用、管视频、管通知……\n- 「Root 超级管理控制台」管全局配置、看系统监控实时仪表盘（CPU/内存/网络/在线人数/队列长度）、配短句（站点标语/公告）。\n- 9 个 Crontab 自动跑：每日一题刷新、抖音数据同步、竞赛排名计算、状态修正、Webcode 沙箱清理、文件表创建 …… 不用人手。\n- 「版本检查」接口给客户端做 OTA：三端（Web / Flutter / Windows）发新版本自动提醒。\n\n🏪 **还能顺便做\"小商业\"**\n\n- 「商品商店 / 我的商品」：卖课程、卖书、卖硬件、卖虚拟道具都行。\n- 「应用市场」：让用户上传自己写的工具/插件，互相装。\n- 「云盘」+「应用商店」+「商品商店」三件套，让平台不只是一个学习站，也是一个小型 SaaS / 社区电商。\n\n📱 **三端齐全**\n\n- Web：Vue 2.7.16 + Element UI 2.15 + Monaco Editor + ECharts。\n- 移动端：Flutter，iOS / Android 一套代码。\n- Windows 桌面：Electron + Tauri，离线也能看文档、看课程、看代码。\n\n🧰 **轻技术栈（自托管友好）**\n\n- 后端：PHP 8.2+ / Webman（Workerman 之上）/ GatewayWorker / Eloquent ORM。\n- 存储：MySQL 5.7+ + Redis 5+（39 个 logical DB 做模块隔离与限速，判题走异步消息队列不阻塞主流程）。\n- 部署：单台普通 Linux 服务器即可；进程自动扩到 min(cpu*2, 12)；HTTP 端口 48787、SSH 端口 49999。部署包仓库提供 install.sh，一行命令起步。\n\n💡 **目标场景**\n\n- 高校计算机系 / 中学信息课：自建 OJ + 教学管理 + 班级通知一站搞定。\n- 编程培训机构：OJ + 课程商店 + 学员社区 + 直播课。\n- 兴趣社区 / 开源社团：文章 + 短视频 + 群聊 + 活动公告 + 应用市场。\n- 个人开发者：自己学、自己教、自己卖，自己一个屋檐下管所有事。\n\nGitHub：https://github.com/eastspire/LTPP-CODE\n部署包：https://github.com/eastspire/LTPP\n",
+    "created_at": "2026-08-16T05:48:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11218"
+  },
+  {
+    "id": 11217,
+    "title": "【开源自荐】dsh-win32，补上 DeepSeek Harness 缺失的 Windows 进程检查器",
+    "content": "\n项目地址 https://github.com/sjh9714/dsh-win32\n\nDeepSeek Harness 在 Windows 上选极简模式会直接报错，terminal inspection is unsupported on platform win32。第一反应都是 node-pty 没装好，但重装、换 Node 版本、装 VS Build Tools 全没用，报错一个字都不变。\n\n顺着报错读源码才发现，问题不在 node-pty。官方 subprocess 运行时里有个 createProcessInspector，按平台分派进程检查器实现，Linux 一个 macOS 一个，win32 分支是直接 throw。而这次调用发生在起 PTY 之前，所以 Windows 上根本轮不到 node-pty 表演，前一步就抛了。少了这块，持久 shell 这个概念在 Windows 上就立不住，依赖它的极简模式整个不可用。\n\n这个项目就是通过官方留的注入座补上 win32 实现，核心一行不改。进程树用一次 CIM 快照，pid、ppid 和 CreationDate 三者构成进程身份防 pid 复用，信号走 taskkill，中途取消按 ConPTY 惯例把 Ctrl-C 作为 PTY 输入写进去。\n\n做的过程中还挖出两个更麻烦的东西。\n\n一个是沙箱。workspace-write 用的是受限令牌，Git Bash 这类 MSYS shell 会死在 cygheap 初始化，实测签名是 NtSetInformationToken 0xC0000022，后来有用户在自己机器上报告了同族的第二个签名 CreateFileMapping Win32 error 5。这是 MSYS 运行时模型和受限令牌的直接冲突，插件层修不了，也解释了为什么现有的 Windows 方案清一色要求 danger-full-access。换成纯 Win32 实现、没有 POSIX 模拟层的 busybox-w32 ash 就能活下来。据我所知这是目前唯一能在 DSH 沙箱内跑起来的 Windows 持久 shell。\n\n另一个是前台命令识别。Windows 上不能靠父进程链回答终端里现在跑着什么，MSYS 的 fork 模拟会切断链条。实测很直白，Git Bash 的 PTY 里跑 sleep 20，查它的直接子进程是空的，同一时刻查 ConPTY 的控制台进程列表，那个 sleep 清清楚楚在里面。控制台归属是控制台自己的属性，不靠父子关系维持，fork 模拟骗得过进程树，骗不过控制台附着。这块由外部贡献者实现并合并。\n\n顺带修了 GBK。官方 fs 对 GBK / UTF-16 文件返回 FS_NOT_TEXT 直接拒读，国内老项目里这种文件一大把，Agent 连读都读不了。\n\n所有主张都在 windows-latest CI 上每次推送复跑，41 个单测，3 系统矩阵。限制也全写在 README 里，比如 Git Bash 预设需要 danger-full-access，PTY 输出的旧代码页在插件层无解，isStdinWaiting 故意恒为 false。个人项目，MIT 协议。\n\n安装一条命令。\n\n```\nnpx dsh-win32 setup\n```\n",
+    "created_at": "2026-08-16T05:07:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11217"
+  },
+  {
+    "id": 11216,
+    "title": "【开源自荐】DeepSeekHarnessBox：把 DeepSeek Harness 打包成一个 EXE，免 Node、双击即用",
+    "content": "项目地址：https://github.com/BeyondXinXin/deepseek-harness-box\n\n最近 DeepSeek Harness（DSH）比较火，但 Windows 用户想体验，通常还需要安装 Node.js、npm/pnpm、配置环境，再通过命令行启动。\n\n所以我做了 DeepSeekHarnessBox，目标很简单：把这些步骤全部省掉。\n\n它把已经验证可运行的 DeepSeek Harness 环境和 Node.js 一起封装成一个 Windows x64 单文件启动器，下载 DeepSeekHarnessBox.exe 后直接双击即可使用。\n\n主要特点：\n\n单文件免安装：只有一个 EXE，无需安装 Node.js、npm 或 pnpm\n无需配置环境变量：不修改系统 PATH，不污染现有开发环境\n双击即用：自动启动 Harness Web 服务并打开默认浏览器\n托盘运行：可以随时重新打开页面或一键退出\n自动处理端口冲突：默认端口被占用时自动寻找可用端口\n退出干净：退出时自动结束由它启动的后台进程\n完全开源：MIT License\n\n这个项目主要面向只是想快速体验 DeepSeek Harness、不想先折腾一套 Node 环境的 Windows 用户。\n\n目前支持 Windows 10 / 11 x64。",
+    "created_at": "2026-08-16T04:54:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11216"
+  },
+  {
     "id": 11215,
     "title": "[开源自荐] Netra：一个基于 eBPF 的网络流量可视化与 AI 分析平台",
     "content": "Netra 是一个基于 eBPF/XDP 的旁路网络流量分析平台，通过交换机镜像流量即可观察整个网络，不侵入业务链路。项目采用单二进制部署，提供实时流量、SNI、拓扑、历史分析和异常告警等能力，并内置 AI Agent，可以通过自然语言分析真实网络流量；同时支持 MCP，可进一步接入威胁情报、SIEM、Kubernetes、CMDB 等外部能力。\n\nhttps://github.com/xxddpac/netra",
@@ -784,29 +808,5 @@
     "created_at": "2026-08-11T05:29:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11119"
-  },
-  {
-    "id": 11118,
-    "title": "【开源自荐】mychart-cli：在本机导出 MyChart 病历的命令行工具",
-    "content": "\n项目地址：\nhttps://github.com/lifan-builds/mychart-cli\n\nmychart-cli 是一个开源、本地优先的命令行工具。它通过独立的 Chrome 配置读取登录用户\n本来就有权限查看的 Epic MyChart 记录，保存在本机，并导出 Markdown 或分块 JSONL。\n\n项目没有云端后台、账号系统、遥测、云同步或内置大模型。它只负责提取和整理记录，不提供\n诊断、治疗建议或医疗解释。用户如果把导出文件交给其他程序，需要自行确认那个程序的隐私\n和数据保留规则。\n\n0.1.0 公开测试版支持 macOS、Node.js 20 以上版本和 Google Chrome。不同 MyChart\n门户的页面和登录流程有差异，因此目前属于测试阶段。\n\n可以先运行完全虚构、无需账号和网络的演示：\n\n```bash\nnpx @lifan-builds/mychart-cli demo\n```\n\n项目来自真实的家庭需求。作者在照顾一个情况复杂的 NICU 宝宝时，需要及时跟上不断变化的\n病历和检查结果，于是写了这个工具。公开介绍不包含宝宝姓名、医院、日期、诊断或治疗信息。\n",
-    "created_at": "2026-08-11T05:01:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11118"
-  },
-  {
-    "id": 11117,
-    "title": "【开源自荐】Shumai：AI-native 创意资产管理与协作平台",
-    "content": "## 项目地址\n\nhttps://github.com/shumaiOne/shumai\n\n## 项目简介\n\nShumai(烧卖) 是一个开源的AI-native创意资产管理与协作平台，类似于国内的分秒帧/阅流或国外的Frame.io。主要功能是帮助团队管理图片/视频/音频和文档等创意资产，支持在线预览、版本管理、时间轴评论、区域标注评论、分享链接和权限控制等功能。除了基础的媒体管理能力，Shumai 还内置 AI Agent 能力，让 AI 可以参与资产整理、元数据管理和创意协作流程。\n\n## 为什么做这个项目\n\n在创意协作和媒体资产管理领域，像分秒帧、阅流、Frame.io 这样的产品已经提供了成熟的解决方案，但目前还没有一个真正好用的开源替代方案。而且闭源 SaaS 往往难以进行深度定制或者需要支付昂贵的费用。\n\n另一方面，随着 AI Coding 能力快速发展，即使没有专职开发人员的小型创意工作室也可以基于开源项目进行深度定制。因此，Shumai 从一开始就重视代码质量和 Coding Agent 协作能力：拥有清晰的项目结构、完善的单元测试，以及详尽的AGENTS.md，让 AI 能够更可靠地参与项目开发和维护。\n\n同时，随着 AI 生成和编辑图片/视频的能力不断提升，过去需要在 Photoshop、Premiere 等专业软件中完成的一些操作，现在可能只需要一句提示词就能完成。这也是为什么Shumai 将 Agent 作为核心能力之一，让 AI 成为创意团队中的一员。Shumai 希望提供一个真正开源、自托管的创意协作平台。你可以将它部署在自己的服务器上，管理团队的创意资产，同时让 Agent 深度参与日常工作流，帮助团队减少重复劳动。\n\n## 主要特点\n\n* **支持 S3 和本地存储**：你可以把创意素材安全地存到本地文件系统，或者任意兼容 S3 的存储服务里，比如 AWS S3、Cloudflare R2、MinIO 等。\n* **逐帧标注和评论**：支持按帧进行精确反馈，可以直接在视频和图片素材上画重点、写评论，还能留下时间戳。\n* **安全分享和合集管理**：可以生成私密分享链接，也能整理成精选合集，方便给客户、同事和合作方查看。\n* **细粒度权限控制**：支持按团队、项目设置角色权限，方便管理不同成员的访问范围。\n* **自定义素材元数据**：可以按你的制作流程，自由定义动态元数据字段。\n* **分享链接水印**：通过可自定义的文字和图片水印保护共享媒体，并将水印配置保存为模板以便重复使用。\n* **丰富的文件格式支持**：支持预览常见创意文件格式，包括图片（支持 PSD）、视频、音频和文档，同时可上传和存储任意类型的文件。\n* **AI Agent 协作**：让 AI 深度参与团队的创意工作流。\n\n在线 Demo：\n\n> https://staging.shumai.one\n\n## 界面截图\n\n<img width=\"2880\" height=\"2160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfedc748-7a5b-4f37-aeb0-009b34489f3d\" />\n\n----\n\n<img width=\"2880\" height=\"2160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d137a66b-265b-4000-bd90-ef0bb58dddd8\" />",
-    "created_at": "2026-08-11T04:05:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11117"
-  },
-  {
-    "id": 11116,
-    "title": "【工具自荐】VideoTranscript：高效、可搜索的 AI 音视频转写与智能摘要工具",
-    "content": "在多媒体信息爆炸的时代，从海量视频和音频中高效提取核心价值变得越来越重要。为此，我们开发了 [**VideoTranscript**](https://www.videotranscript.ai/)，这是一款专注于为音视频提供高精度转写、便捷检索和智能化内容提炼的 AI 效率工具。\n\n### 核心功能\n* **多渠道便捷导入**：支持 YouTube 视频链接直接提取，同时兼容本地主流视频与音频格式的上传。\n* **带时间戳的检索文本**：转写生成的文本自带精准时间标签，用户可根据关键词一键搜索定位到具体的音视频片段。\n* **AI 智能提炼**：不仅可以输出文本，还能通过 AI 算法将冗长的转写内容自动转化为结构清晰的智能笔记与核心摘要。\n\n### 核心优势\n* **流程简单高效**：界面直观无繁琐步骤，帮助用户缩短从拿到文件到获得结构化文字之间的时间。\n* **优秀的语境适应力**：采用先进的语音识别模型，能够较好地应对不同语速、口音以及常见背景噪音。\n* **深度的内容结构化**：避免了单纯的“流水账听写”，通过 AI 辅助整理，直接帮助用户梳理音视频中的核心逻辑。\n\n### 使用场景\n* **自媒体与内容创作者**：快速将现有视频素材提取为文字脚本，便于二次创作或翻译。\n* **职场与商务人士**：一键将日常会议记录、客户电话转为可随时检索、导出的电子文档。\n* **学生、教师与研究员**：快速整理课堂讲座、研讨会或访谈录音，大幅缩减手动记笔记的时间。\n\n如果您也希望让音视频信息更加易读和好用，欢迎访问 [VideoTranscript](https://www.videotranscript.ai/) 进行试用体验。",
-    "created_at": "2026-08-11T03:58:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11116"
   }
 ]
