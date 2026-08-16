@@ -1,5 +1,13 @@
 [
   {
+    "id": 11230,
+    "title": "【开源自荐】Awesome Agentic Engineering：AI Agent 上线前的生产就绪评分卡与 CI 门禁",
+    "content": "## Awesome Agentic Engineering\n\n项目地址：https://github.com/lindixu6-hash/awesome-agentic-engineering\n\n在线评分器：https://lindixu6-hash.github.io/awesome-agentic-engineering/\n\n中文指南：https://lindixu6-hash.github.io/awesome-agentic-engineering/zh/guide/\n\n这是一套面向 AI Agent 上线阶段的开源生产就绪工具，当前版本为 v0.3.0。它不评模型跑分，而是检查真实用户进入后容易被忽略的 10 个工程维度：目标边界、工具权限、记忆、评估、失败恢复、安全、可观测性、成本、人工审核和文档，每项 0–2 分。\n\n评分结果可以导出为机器可读的 `agent-card.json`，也能通过零 API Key 的 Node 24 GitHub Action 接入 CI，低于自定义分数，或仍有显式上线阻塞项时就阻断发布：\n\n```yaml\n- uses: lindixu6-hash/awesome-agentic-engineering@v0\n  with:\n    card: agent-card.json\n    min-score: \"15\"\n    fail-below: \"true\"\n    fail-on-blockers: \"true\"\n```\n\n仓库还包含 Agent Card、Eval Plan、上线检查模板，以及 5 个带公开来源和 Given / When / Then 回归测试的 Agent 事故案例。当前有 46 项自动测试；首个真实采用项目 Content OS 得分为 12/20（原型阶段），CI 门槛为 10/20，没有将原型包装成生产级。项目采用 MIT License，并提供完整中英文入口。\n\n![AI Agent Production Readiness Scorecard](https://raw.githubusercontent.com/lindixu6-hash/awesome-agentic-engineering/main/assets/readiness-scorecard-demo.gif)",
+    "created_at": "2026-08-16T19:37:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11230"
+  },
+  {
     "id": 11229,
     "title": "【开源自荐】万能翻译站：把文件拖进窗口，自动识别、提取、翻译、替换，一个平台搞定（文本翻译工具）",
     "content": "﻿\n万能翻译站（Universal Translator）是一个开源的 Windows 桌面文本翻译工具。它的目标是让\"翻译文本\"这件事不再需要你在文件管理器和多种翻译软件之间来回挣扎：不管是文件、游戏还是图片，把内容拖进窗口，剩下的自动完成。当前已实现文本文件与游戏文本的完整链路，文档与图片翻译在规划中。项目地址：https://github.com/Match0121/universal-translator-desktop\n\n目前实际能做的，是解决一个很具体的痛点：玩日文游戏看不懂剧本，而游戏文本要么是 Shift-JIS 编码的明文，要么锁在吉里吉里 xp3 资源包里，手动转码、解包、逐句翻译非常折腾。把整个游戏文件夹拖进窗口，剩下的自动完成。\n\n![扫描界面](https://raw.githubusercontent.com/Match0121/universal-translator-desktop/main/docs/assets/screenshot-scan.png)\n\n![翻译对照](https://raw.githubusercontent.com/Match0121/universal-translator-desktop/main/docs/assets/screenshot-browse.png)\n\n核心特性：\n\n- 📁 拖入即译：文件或整个游戏文件夹拖进窗口，自动扫描文本文件并识别游戏引擎\n- 🔤 编码自动检测：UTF-8 / UTF-16 / Shift-JIS（日文）/ GBK（中文），日文剧本无需手动转码\n- 🎮 xp3 资源包解包：吉里吉里游戏的剧本锁在 .xp3 里也能翻，一键解包、翻译、封包回写\n- 📄 多格式提取：txt / json / ini / srt / ass / rpy（Ren'Py）/ ks（吉里吉里，含日文「」引号）\n- 💾 原编码写回：导出保持文件原编码，译文超出字符集时自动转存 UTF-8 并提示\n- 🔒 完全本地：翻译处理都在本机完成，文件不出电脑；单文件绿色 exe，无需安装任何依赖\n- 🌗 深浅双主题，使用说明内置\n\n安装（Windows 10/11）：\n\n```\n从 Releases 下载 UniversalTranslator.exe，双击运行\n```\n\n技术栈：Python + pywebview + PyInstaller，前端原生 ES Modules 无构建依赖。开源协议：MIT。\n",
@@ -796,13 +804,5 @@
     "created_at": "2026-08-12T01:46:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11131"
-  },
-  {
-    "id": 11130,
-    "title": "【文章推荐】LangGraph 到底解决了什么问题？用一个查天气的简单例子看懂",
-    "content": "LangGraph 什么时候是必要的架构，什么时候只是多余的一层？这篇文章给一个查天气的 Agent 逐步加上追问、暂停、重试和人工审核，让 State、checkpoint、Node、Edge 为什么存在自然浮现，也讲清了它与 ReAct 的真正分界。\n\n- https://mp.weixin.qq.com/s/_MwRs6nL6lM3uPFLIZy8SQ",
-    "created_at": "2026-08-12T01:42:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11130"
   }
 ]
