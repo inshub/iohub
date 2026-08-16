@@ -1,5 +1,13 @@
 [
   {
+    "id": 11212,
+    "title": "【开源自荐】LibreDB Studio：把数据库 IDE 部署到数据库旁边，MIT 开源，支持 10 种数据库",
+    "content": "利益相关：我是 LibreDB Studio 的作者之一。\n\n它是一个可自托管的 Web 数据库 IDE，把编辑器部署到数据库旁边、而不是装到每个人的笔记本上：用一个容器或一条 npm 命令就能起，浏览器里打开即可。单点登录、RBAC 和查询审计都在 MIT 开源版里，团队不必把线上库密码发给每个人。一套界面连 PostgreSQL、MySQL、MongoDB、Redis、ClickHouse 等十种数据库。\n\nGitHub：https://github.com/libredb/libredb-studio\n",
+    "created_at": "2026-08-16T00:01:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11212"
+  },
+  {
     "id": 11211,
     "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
     "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
@@ -800,13 +808,5 @@
     "created_at": "2026-08-11T02:31:07Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11113"
-  },
-  {
-    "id": 11112,
-    "title": "【开源自荐】SSE DevTools Panel：Chrome DevTools 里调试 SSE / NDJSON 流的专用面板",
-    "content": "\n# SSE DevTools Panel\n\n一个开源的 Chrome DevTools 扩展（MIT）。装上后 F12 多一个 **SSE DevTools** 面板，专门看网页里的 SSE / EventSource / NDJSON / Connect+JSON 流。\n\n- 仓库：https://github.com/FatMii/sse-devtools-panel  \n- Chrome 应用商店：https://chromewebstore.google.com/detail/sse-devtools-panel/kffpkefnkmabnkhklmnjkihiiclggnni  \n- 介绍文章：https://juejin.cn/post/7672224177785995298\n\n# 它解决什么问题\n\n做 AI 对话、通知推送、进度上报时，经常要盯流式接口。打开 Chrome Network，Response 往往是一整屏 `data: {...}`：想确认某一帧字段就靠滚和 Ctrl+F；思考、正文、工具调用搅在一起更难读。\n\nChrome 自带的 EventStream 能列出事件，但对联调常常不够：没有像样的 JSON 树，Time 列也只是时间戳，很难看卡顿、重连，更拼不出可读的对话视图。\n\n\n主要能力：\n\n- 自动捕获 `fetch` / `EventSource` / `XHR` 流式响应，普通 JSON、埋点默认不进侧栏\n- **Events**：事件表 + 可折叠 JSON 树，支持过滤；事件很多时有虚拟滚动\n- **Timeline**：按到达时间看节奏，间隔 ≥250ms 标红；EventSource 重连也可标出\n- **Request**：请求头/体收在一起，常见敏感头会脱敏\n- **Conversation**（附带）：对常见 AI 网页 / OpenAI 兼容流做协议识别，把正文 / 思考 / 工具拆开看\n- 另有 Raw、Stats、跨流 Search All，以及 JSON / CSV / `.sse` 导入导出\n\n不改变页面原有读流方式，只是多一个调试面板。\n\n# 截图\n\n\n## 面板总览：\n\n<img width=\"1383\" height=\"908\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60174a15-e0a6-48e4-94a0-30f9b86c4d54\" />\n\n## Events：\n\n<img width=\"1072\" height=\"804\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba421250-75e8-4020-ae66-5b35a5629ffa\" />\n\n## Conversation\n\n<img width=\"1244\" height=\"879\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e5bb725b-0e09-439e-a7f0-b4f1103ce624\" />\n\n# 怎么用\n\n1. 从 [Chrome 应用商店](https://chromewebstore.google.com/detail/sse-devtools-panel/kffpkefnkmabnkhklmnjkihiiclggnni) 安装\n2. 打开目标页 → F12 → **SSE DevTools**\n3. **先刷新页面**，再触发流式请求\n4. 在侧栏选中流，查看 Events / Timeline / Conversation / Raw\n\n本地源码与 Demo：仓库 README 有说明（`pnpm build` / `pnpm demo`）。\n\n\n\n",
-    "created_at": "2026-08-11T02:23:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11112"
   }
 ]
