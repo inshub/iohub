@@ -1,5 +1,13 @@
 [
   {
+    "id": 11239,
+    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
+    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
+    "created_at": "2026-08-17T17:04:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11239"
+  },
+  {
     "id": 11238,
     "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
     "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
@@ -792,13 +800,5 @@
     "created_at": "2026-08-12T03:23:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11140"
-  },
-  {
-    "id": 11139,
-    "title": "【开源自荐】模汇：面向个人私有部署的 AI 协议网关，统一 Codex、Claude Code 与 OpenAI 兼容客户端",
-    "content": "我经常在 Codex、Claude Code 和普通脚本之间切换：Codex 使用 OpenAI Responses，Claude Code 使用 Anthropic Messages，很多脚本还在使用 OpenAI Chat Completions；而不同供应商提供的协议也不统一。把多把 API Key 分别配置在不同客户端后，配置容易分散，Key 被限流或额度耗尽时还需要手动修改客户端配置，请求失败后也不容易判断实际使用了哪个上游。\n\n模汇把客户端入口、供应商、真实模型和 API Key 池集中到一个网关中。客户端只需要配置一个地址、一个访问密钥和一个虚拟模型，具体的供应商、协议和路由策略在后台统一管理。\n\n主要功能：\n\n- 提供 `/v1/chat/completions`、`/v1/responses`、`/v1/messages` 三种协议入口，以及 `/v1/models` 模型列表接口；\n- 支持三种协议之间的双向转换，同协议请求尽量保持原样转发；\n- 一个虚拟模型可以配置多个供应商、真实模型和协议入口，并按能力与顺序进行路由；\n- 支持配置多把上游 API Key，在鉴权失败、额度耗尽、限流、连接失败和上游错误时按规则切换；\n- 记录客户端请求、上游尝试、协议、Token 用量、首内容延迟、总耗时和原始载荷；\n- 流式响应详情支持“聚合内容”和“原文”两种视图，方便排查 SSE 请求；\n- 提供 React 管理后台、SQLite 持久化、Docker 镜像，以及 macOS、Windows、Linux 发布包。\n\n模汇不提供公共中转、充值、计费或多租户运营，定位是个人自部署的协议转换、模型路由和请求记录工具。\n\n项目地址：<https://github.com/Sanjeever/model-confluence>\n\n介绍文章：<https://sanjeev.top/posts/2026/08/12-model-confluence>\n\n欢迎试用、提 Issue 或贡献代码。\n",
-    "created_at": "2026-08-12T03:08:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11139"
   }
 ]
