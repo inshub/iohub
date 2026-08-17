@@ -1,5 +1,13 @@
 [
   {
+    "id": 11232,
+    "title": "【开源自荐】silkpulse：不仅仅为人使用而设计，更是为给人服务的 agent 而设计的前端远程调试工具",
+    "content": "\n**在线体验**： [打开 silkpulse 控制台]( https://silkpulse.heartstack.space/) （输入密钥或以访客身份进入）点\"➕ 接入新设备\"生成 iife 代码去其他网页控制台粘贴，30 秒把任意线上页面接入进来。\n\n**开源地址：**[https://github.com/2234839/silkpulse]( https://github.com/2234839/silkpulse)\n\n\n> 写的 H5 在用户手机上白屏了，但本地 DevTools 鞭长莫及。\n> 只能求着用户截屏、录屏，或者在 vConsole 那巴掌大的屏幕上艰难翻日志，或者和测试会议查看，手机端还不能通过会议的画笔工具指指点点 **。**\n>\n> 更绝望的是，现在 AI 都能帮你写代码了，但调试时它却帮不上忙——因为它“看”不到远程设备。\n> 于是你只能自己盯着控制台，做一个复制粘贴的人肉转发器。\n>\n> silkpulse 的出现，就是为了终结这种原始状态。\n\n和 vconsole 等方案不一样在哪里：\n\n1. 支持远程接入 vue devtools 和 react devtools\n\n   ![image]( https://shenzilong.cn/assets/image-20260817105139-qudlocc.webp)![image]( https://shenzilong.cn/assets/image-20260817105209-2sdwqic.webp)\n2. 支持 agent 使用 silkpulse 进行调试而无需人工参与，通过一个 skill + HTTP API 就能操作一切\n\n   ![image]( https://shenzilong.cn/assets/image-20260817104644-wv8gxjz.webp)\n3. 还支持许许多多的能力，例如 log/请求/element 的查看，还有 storage 的查看与修改，基于 snapDom 的截图能力，目标设备的特性支持检测\n\n## silkpulse 是什么\n\n我给他的定位是一个 AI 原生的远程设备调试器，让 AI Agent 像医生悬丝诊脉一样，直接查看、诊断、操作运行在任意远程设备上的网页（线上 H5 、移动端浏览器、WebView ），所有本地 DevTools 够不着的地方，它都能触达。\n\n\n## 为什么叫 silkpulse：悬丝诊脉\n\n> 《西游记》第六十九回，朱紫国国王染疾三年，悟空揭了皇榜。国王见这毛脸雷公嘴的和尚， 不敢让他当面诊脉，悟空便取出三条金线，让宫人系在国王腕上，自己捏住线头隔着帘幕诊脉这\n\n我觉得这个产品的形态非常符合悬丝诊脉这个意象，所以我将它命名为  silkpulse ！\n\n\n## 通过公网服务端连任意终端，不使用强大但受限的 CDP\n\n传统远程调试多基于 **CDP （ Chrome DevTools Protocol ）** ：需要设备开调试端口（ `--remote-debugging-port`）或走 adb/USB 转发，意味着你必须能\"碰到\"那台设备、 能控它的启动参数。别人的手机、客户环境里的 webview 、生产环境 App 内嵌页，这些都做不到\n\nsilkpulse 通过 ws 和设备建立链接，使用动态执行脚本来实现各项能力\n\n\n## 为什么现在需要它\n\nAI 编程正在逐步完全接手写代码这件事情，但前端项目的调试一直是一个难点：如果能够使用本地浏览器直接给 agent 调试则还算可以，例如 vscode 的 copilot 支持内嵌浏览器的调试\n\n但还有更多的场景是不支持直接被 copilot 进行操控的，silkpluse 就是为了将这个能力扩展到一切前端项目运行的终端设备。\n\n我相信调试工具的下个形态就是 **AI-native**：工具不仅仅为人使用而设计，还要为给人服务的 agent 使用而设计。silkpulse 是我这个信念的一次实践\n\n",
+    "created_at": "2026-08-17T04:17:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11232"
+  },
+  {
     "id": 11231,
     "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
     "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
@@ -796,13 +804,5 @@
     "created_at": "2026-08-12T01:56:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11133"
-  },
-  {
-    "id": 11132,
-    "title": "【工具自荐】PastePaw： 拥有 28 个主题，AI Agent 友好 macOS  剪切板管理工具",
-    "content": "\n\n**PastePaw** 除了拥有一个剪贴板管理 app 该有的功能之外（省略 5 千字，可以参考 [官网](https://pastepaw.com/) 介绍），还有一些独特的功能：\n\n### 1. 多主题，拒绝审美疲劳\n横版主题 18， 竖版主题 10，未来还会增加\n\n### 2. AI 加持 + Agent 友好\n* 自定义 Action（翻译、汇总、润色，文本转换，动态分组 都 OK）\n* 本地 MCP，你的 Agent 也可以读/写你的剪贴板，非常细粒度的权限控制，不用担心权限失控。转身可以可以变成 【AI 工具箱】 和 【资料 RAG 汇集源】\n\n### 3. 加密分组\n（除了普通的分组、智能分组之外），你的 Key 、隐私、密码 等可以放在这里，必需 TouchID 才能解锁。\n\n### 4. 工具箱\n\n针对剪切板的类型，提供以下文本和图片的快捷处理工具：\n* 文本转换: Base64/URL/YAML/JSON/XML/JWT/Color/Hash 等\n* 预览：Markdown / HTML 等\n* 图片: 背景移除 / 文本提取 / 二维码扫描 等\n\n### 链接\n* [AppStore 下载](https://apps.apple.com/app/pastepaw/id6759132043?mt=12)\n* [官网: pastepaw.com](https://pastepaw.com/)\n\n### 部分截图：\n\n#### 竖版主题 * 10 + 横版主题 * 18\n<img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dc6b134e-c706-4969-8b71-5f7d505467b5\" />\n<img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b73f8ecd-9fd1-4696-9515-2faccbc23d7c\" />\n\n#### HTML 预览，内容是 Agent 通过 MCP 自动插入到分组里\n\n<img width=\"3296\" height=\"2178\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/97eb2688-eff7-410a-a1ba-e364add02491\" />",
-    "created_at": "2026-08-12T01:47:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11132"
   }
 ]
