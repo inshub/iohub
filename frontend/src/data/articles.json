@@ -1,5 +1,13 @@
 [
   {
+    "id": 11231,
+    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
+    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
+    "created_at": "2026-08-17T02:31:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11231"
+  },
+  {
     "id": 11230,
     "title": "【开源自荐】Awesome Agentic Engineering：AI Agent 上线前的生产就绪评分卡与 CI 门禁",
     "content": "## Awesome Agentic Engineering\n\n项目地址：https://github.com/lindixu6-hash/awesome-agentic-engineering\n\n在线评分器：https://lindixu6-hash.github.io/awesome-agentic-engineering/\n\n中文指南：https://lindixu6-hash.github.io/awesome-agentic-engineering/zh/guide/\n\n这是一套面向 AI Agent 上线阶段的开源生产就绪工具，当前版本为 v0.11.0。它不评模型跑分，而是检查真实用户进入后容易被忽略的 10 个工程维度：目标边界、工具权限、记忆、评估、失败恢复、安全、可观测性、成本、人工审核和文档，每项 0–2 分。\n\n评分结果可以导出为机器可读的 `agent-card.json`，也能通过零 API Key 的 Node 24 GitHub Action 接入 CI，低于自定义分数，或仍有显式上线阻塞项时就阻断发布：\n\n```yaml\n- uses: lindixu6-hash/awesome-agentic-engineering@v0\n  with:\n    card: agent-card.json\n    min-score: \"15\"\n    fail-below: \"true\"\n    fail-on-blockers: \"true\"\n```\n\n新增的提示注入评估数据集包含 8 个 JSONL 用例、JSON Schema 和零依赖校验 CLI，覆盖直接/间接注入、工具输出、数据外泄与良性对照：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/evals/prompt-injection/README.zh-CN.md\n\n新增 [在线 LangGraph 提示注入 Eval](https://lindixu6-hash.github.io/awesome-agentic-engineering/zh/langgraph-eval/)：锁定 `@langchain/langgraph@1.4.10`，用真实双节点 `StateGraph` 执行 8 条 Fixture，并保留节点级 Result/Trace；干净 Runner CI 通过、依赖审计 0 漏洞、上传 34 个证据文件，根 CLI 仍零依赖。\n\n新增可执行提示注入参考 Eval：分离可信/不可信通道，真实执行 8 条 Fixture，生成 Eval Result、断言与工具/策略 Trace；CI 使用公开 `@v0` 校验并保留 34 个证据文件，同时明确它不是模型 Benchmark：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/adapters/reference-runtime/README.zh-CN.md\n\n新增风险分级上线门禁：只读、仅草稿和状态变更 Agent 分别使用不同的总分/分项门槛、工具影响、审批和阻塞项策略；显式启用，不影响旧配置：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/profiles/README.zh-CN.md\n\n新增机器可读 Eval Result 契约：框架适配器可把实际动作、禁止动作违规、证据及工具/策略 Trace 关联到已知 Fixture；零依赖 CLI 校验结构和引用，同时明确结构校验不等于 Agent 安全：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/evals/prompt-injection/results/README.zh-CN.md\n\n新增运维分诊 Agent Card：读写工具分离，外部消息、删除和生产变更强制人工审批；真实评分 15/20，并保留3个上线阻塞项：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/examples/operations-agent.card.json\n\n新增的 Gemini CLI CI 信任漏洞案例记录 CVE-2026-12537 的修复边界、检测信号与回归测试，并明确不声称存在在野利用：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/docs/production-incidents.zh-CN.md#6-gemini-cli-在-ci-中信任了不可信工作区配置\n\n新增 [五分钟 fail-closed Quickstart](https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/docs/quickstart.zh-CN.md)：公开 `agentic-init` CLI 一条命令生成 Agent Card 与 GitHub Actions 工作流；Starter 默认 0/20、10 项 TODO 和一个 blocker，补齐真实证据后才能变绿，并且默认拒绝覆盖已有文件。\n\n仓库还包含 Agent Card、Eval Plan、上线检查模板，以及 6 个带公开来源和 Given / When / Then 回归测试的 Agent 事故案例。当前有 113 项自动测试；首个真实采用项目 Content OS 得分为 12/20（原型阶段），CI 门槛为 10/20；[main CI](https://github.com/lindixu6-hash/ai-content-workflow-skills/actions/runs/31974318431) 同时让 `draft-only` Profile 如实暴露 12/14 总分、1/2 工具权限和 3 个阻塞项。项目采用 MIT License，并提供完整中英文入口。\n\n![AI Agent Production Readiness Scorecard](https://raw.githubusercontent.com/lindixu6-hash/awesome-agentic-engineering/main/assets/readiness-scorecard-demo.gif)",
@@ -796,13 +804,5 @@
     "created_at": "2026-08-12T01:47:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11132"
-  },
-  {
-    "id": 11131,
-    "title": "【开源自荐】pi-langfuse：把 Pi Coding Agent 的完整运行链路接入 Langfuse",
-    "content": "大家好，分享一个刚开源的 Pi Coding Agent 扩展：**[pi-langfuse](https://github.com/hezhiqing/pi-langfuse)**。\n\n它解决的问题很直接：在使用 Pi Coding Agent 时，想知道一次任务到底调用了哪些模型和工具、花了多少 token/成本、哪里出错、最终输出是什么。安装扩展后，这些信息会以一条完整 trace 的形式出现在 Langfuse 中。\n\n## 能看到什么\n\n- 每个用户 prompt 对应一条 Langfuse trace，并保留 Pi session 关联；\n- agent、LLM generation、tool call、turn 按层级嵌套，便于回看执行过程；\n- 记录最终回复、用量、成本（Provider 提供时）、TTFT、工具错误和运行健康度；\n- 支持 Langfuse Cloud 与自托管实例，并为部分自托管场景提供 REST fallback；\n- 内置隐私预设、常见密钥脱敏和本地路径哈希；也可以关闭输入、输出、工具 I/O 或系统提示词的采集。\n\n## 安装\n\n前提：Node.js 22+、已安装 Pi Coding Agent、拥有 Langfuse Cloud 或自托管实例。\n\n```bash\npi install npm:pi-langfuse\n```\n\n首次运行时会在 Pi 中引导配置 Langfuse；也支持通过环境变量配置。\n\n```bash\npi \"Explain the architecture of Redis\"\n```\n\n随后打开 Langfuse，就能查看这次 Pi 运行的完整 trace。\n\n项目地址：<https://github.com/hezhiqing/pi-langfuse>  \nnpm：<https://www.npmjs.com/package/pi-langfuse>\n\n欢迎试用、提 issue，尤其欢迎反馈不同 Provider 或自托管 Langfuse 环境的兼容性问题。\n\n<img width=\"2662\" height=\"1558\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd0d4d63-18a7-49ee-a010-26c609995afa\" />",
-    "created_at": "2026-08-12T01:46:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11131"
   }
 ]
