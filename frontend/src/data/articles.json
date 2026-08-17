@@ -1,5 +1,13 @@
 [
   {
+    "id": 11233,
+    "title": "【开源/工具推荐】A11yKit：100% 纯前端离线、零数据上传的 15 款 Web 无障碍与 WCAG 2.2 / EAA 合规工具箱",
+    "content": "## 项目介绍\n\n- **项目名称**：A11yKit\n- **项目地址**：https://a11ykit.site\n- **开源地址**：https://github.com/gstar-byte/a11ykit\n- **主要受众**：出海 Web 开发者、前端工程师、UI/UX 设计师、无障碍合规检测人员\n\n## 核心痛点与特点\n\n欧洲无障碍法案（European Accessibility Act, EAA）和 WCAG 2.2 标准日益严格，但目前市面上的大多数无障碍检测工具都需要将网页源码或私有 URL 上传到第三方服务器进行解析，存在数据安全与代码隐私隐患。\n\n**A11yKit** 是一个完全运行在浏览器端的开源无障碍工具箱：\n\n1. **100% 客户端本地运行**：基于 axe-core 与前端纯算法，所有 DOM 解析、对比度计算、色盲模拟和 ARIA 生成均在本地完成，**零数据上传，零 Tracking，无需注册**。\n2. **15 款开箱即用的专业工具**：\n   - 🔍 **URL Scanner**：直接本地扫描任意公开 URL 的 WCAG 2.2 违规项与修复建议。\n   - 🎨 **Contrast Checker**：支持 WCAG 2.1 AA/AAA 以及下一代 APCA 算法，实时智能提供色彩微调建议。\n   - 🌈 **Color Blind Simulator**：支持 8 种常见色盲类型模拟与 Daltonize 修正算法。\n   - 🏷️ **ARIA Pattern Generator**：提供 20+ 种常用无障碍组件模式的 HTML/JSX 代码预览。\n   - ✅ **WCAG 2.2 交互式清单** 与 **无障碍声明生成器 (Statement Generator)**。\n3. **PWA 支持**：支持离线安装与无网使用。\n4. **全球 Top 50 网站实测报告**：开源了对全球 52 个知名站点进行的 WCAG 2.2 合规实测审计数据与分析 (https://a11ykit.site/accessibility-report)。",
+    "created_at": "2026-08-17T08:40:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11233"
+  },
+  {
     "id": 11232,
     "title": "【开源自荐】silkpulse：不仅仅为人使用而设计，更是为给人服务的 agent 而设计的前端远程调试工具",
     "content": "\n**在线体验**： [打开 silkpulse 控制台]( https://silkpulse.heartstack.space/) （输入密钥或以访客身份进入）点\"➕ 接入新设备\"生成 iife 代码去其他网页控制台粘贴，30 秒把任意线上页面接入进来。\n\n**开源地址：**[https://github.com/2234839/silkpulse]( https://github.com/2234839/silkpulse)\n\n\n> 写的 H5 在用户手机上白屏了，但本地 DevTools 鞭长莫及。\n> 只能求着用户截屏、录屏，或者在 vConsole 那巴掌大的屏幕上艰难翻日志，或者和测试会议查看，手机端还不能通过会议的画笔工具指指点点 **。**\n>\n> 更绝望的是，现在 AI 都能帮你写代码了，但调试时它却帮不上忙——因为它“看”不到远程设备。\n> 于是你只能自己盯着控制台，做一个复制粘贴的人肉转发器。\n>\n> silkpulse 的出现，就是为了终结这种原始状态。\n\n和 vconsole 等方案不一样在哪里：\n\n1. 支持远程接入 vue devtools 和 react devtools\n\n   ![image]( https://shenzilong.cn/assets/image-20260817105139-qudlocc.webp)![image]( https://shenzilong.cn/assets/image-20260817105209-2sdwqic.webp)\n2. 支持 agent 使用 silkpulse 进行调试而无需人工参与，通过一个 skill + HTTP API 就能操作一切\n\n   ![image]( https://shenzilong.cn/assets/image-20260817104644-wv8gxjz.webp)\n3. 还支持许许多多的能力，例如 log/请求/element 的查看，还有 storage 的查看与修改，基于 snapDom 的截图能力，目标设备的特性支持检测\n\n## silkpulse 是什么\n\n我给他的定位是一个 AI 原生的远程设备调试器，让 AI Agent 像医生悬丝诊脉一样，直接查看、诊断、操作运行在任意远程设备上的网页（线上 H5 、移动端浏览器、WebView ），所有本地 DevTools 够不着的地方，它都能触达。\n\n\n## 为什么叫 silkpulse：悬丝诊脉\n\n> 《西游记》第六十九回，朱紫国国王染疾三年，悟空揭了皇榜。国王见这毛脸雷公嘴的和尚， 不敢让他当面诊脉，悟空便取出三条金线，让宫人系在国王腕上，自己捏住线头隔着帘幕诊脉这\n\n我觉得这个产品的形态非常符合悬丝诊脉这个意象，所以我将它命名为  silkpulse ！\n\n\n## 通过公网服务端连任意终端，不使用强大但受限的 CDP\n\n传统远程调试多基于 **CDP （ Chrome DevTools Protocol ）** ：需要设备开调试端口（ `--remote-debugging-port`）或走 adb/USB 转发，意味着你必须能\"碰到\"那台设备、 能控它的启动参数。别人的手机、客户环境里的 webview 、生产环境 App 内嵌页，这些都做不到\n\nsilkpulse 通过 ws 和设备建立链接，使用动态执行脚本来实现各项能力\n\n\n## 为什么现在需要它\n\nAI 编程正在逐步完全接手写代码这件事情，但前端项目的调试一直是一个难点：如果能够使用本地浏览器直接给 agent 调试则还算可以，例如 vscode 的 copilot 支持内嵌浏览器的调试\n\n但还有更多的场景是不支持直接被 copilot 进行操控的，silkpluse 就是为了将这个能力扩展到一切前端项目运行的终端设备。\n\n我相信调试工具的下个形态就是 **AI-native**：工具不仅仅为人使用而设计，还要为给人服务的 agent 使用而设计。silkpulse 是我这个信念的一次实践\n\n",
@@ -796,13 +804,5 @@
     "created_at": "2026-08-12T02:04:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11134"
-  },
-  {
-    "id": 11133,
-    "title": "【工具自荐】AI办公桌面端应用，集成了本地知识库",
-    "content": "与workbuddy一样的需求思路，面对办公用户场景 区别点在于做了很多本地优化，如本地知识库，ai能够精细编辑本地办公三件套，docx,ppt,excel，不依赖于任何mcp 如wps的mcp服务，同时支持了专门针对办公三件套的diff预览效果，专门做的ui优化；\n免费使用的，用户只需要配置自己的ai key即可\n\ngithub地址:\nhttps://github.com/Yoan98/Ncurator \n\n下载网址:\nhttps://www.ncurator.com/",
-    "created_at": "2026-08-12T01:56:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11133"
   }
 ]
