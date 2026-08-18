@@ -1,5 +1,13 @@
 [
   {
+    "id": 11246,
+    "title": "【工具自荐】Vokie：把语音输入、会议记录与 Agent 上下文连接起来",
+    "content": "## 项目地址\n\nhttps://vokie.com/\n\n## 一句话介绍\n\nVokie 是一款面向 macOS 和 Windows 的 AI 语音助手：它把自然口述整理成可直接使用的文字，也把线上线下会议、本地音视频变成转写、摘要和行动项，并让过去说过的话成为可以继续查询和调用的 Agent 上下文。\n\n<img width=\"1500\" height=\"500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/36c86b74-0699-4b3a-96e7-50fb4751344c\" />\n\n## 为什么做 Vokie\n\n在和 Codex、Claude Code 等 Agent 协作时，长段想法往往来得比打字更快。口头表达虽然不够整齐，却能一次性交付大量背景、约束和上下文。\n\n我们并不认为语音会替代键盘。更合适的分工是：语音负责展开想法，键盘负责精确收敛。Vokie 希望缩短从“脑子里有个想法”到“这段内容已经可以使用”之间的距离。\n\n现有工具大多停在语音转文字；Vokie 更关心转写之后的整理、记忆和再次使用。\n\n## 主要特点\n\n- **把口语整理成可用文字**：去掉口癖和重复，接住“周五，不对，改到下周一”这样的自我修正，并自动分段或整理成列表。\n- **记住专有词**：修正过的人名、产品名和行业术语会进入热词，下次识别更准确。\n- **适配不同表达场景**：给 Agent 补充上下文、写产品反馈或整理灵感时，可以选择不同的整理方式，而不是套用同一种润色风格。\n- **不依赖会议平台**：通过快捷键同时记录系统声音和麦克风，适用于腾讯会议、飞书、Zoom 以及线下面谈，会后生成完整转写、摘要和行动项。\n- **语音历史可以继续使用**：内置“拾忆”AI 对话；用户也可以主动安装 Vokie Skill，让 Agent 只读查询录音、转写和总结，或转写指定的本地音视频。\n- **支持记录与实时翻译**：把临时讨论、走路时的灵感或跨语言交流统一沉淀下来。\n- **跨平台**：支持 macOS Apple Silicon、macOS Intel 和 Windows x64。（移动端开发中）\n\n## 数据边界\n\nVokie 的历史记录主要保存在设备上。根据所用功能，部分转写、摘要或模型请求会调用云端服务；Vokie Skill 由用户主动安装或卸载，历史查询为只读。\n\n## 收费计划\n\nVokie 的语音输入功能计划永久免费。会议转写、摘要等会产生模型用量的功能，目前处于公测阶段；未来将推出相应的 Plan 套餐，以覆盖模型调用成本。\n\n## 适合谁\n\nVokie 更适合已经把语音当成工作方式的人：经常给 Agent 讲长上下文，需要随手记录会议、灵感和产品反馈，或者希望过去说过的话以后还能继续用得上。\n\nVokie 目前正在公测，欢迎下载体验并反馈具体问题。\n\n- 官网、下载与用户交流入口：https://vokie.com/\n",
+    "created_at": "2026-08-18T06:57:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11246"
+  },
+  {
     "id": 11245,
     "title": "【系列文自荐】 claude code 源码详细分析",
     "content": "共 13 篇，从循环到能够使用 Tool、MCP、Skill、Memory、权限、会话恢复和可观察状态，每篇通过一个例子的执行过程学习 claude code 源码，了解 Agent 开发的内部细节，[cc.windliang.wang](https://cc.windliang.wang/13-agent-system-summary-and-design-principles.html)",
@@ -790,13 +798,5 @@
     "created_at": "2026-08-12T06:28:05Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11147"
-  },
-  {
-    "id": 11146,
-    "title": "【网站自荐】Codex OSS Helper",
-    "content": "# Codex OSS Helper\n\n一个帮助开源维护者快速准备 **Codex for Open Source** 申请材料的小工具。\n\n只需输入你的 **GitHub 仓库地址、GitHub 用户名和维护者角色**，工具会自动读取仓库的公开信息，分析项目用途、功能、开源生态价值以及潜在的安全攻击面，并生成适合直接填写到申请表中的英文内容。\n\n## 能做什么\n\n* 自动读取 GitHub Stars、Forks、Contributors 等公开数据\n* 分析 README、项目结构和主要功能\n* 识别 CLI、Agent、MCP、Plugin、Skill、自动化等项目类型\n* 分析 Shell、文件系统、网络请求、凭证、第三方贡献等潜在安全攻击面\n* 使用 DeepSeek 生成 5 项申请表答案\n* 每项英文内容自动控制在 500 字符以内\n* 同时提供英文推荐版本和中文翻译\n* 基于真实 GitHub 数据生成，尽量避免 AI 虚构项目指标\n\n## 使用方式\n\n```text\nGitHub Repository\n        +\nGitHub Username\n        +\nMaintainer Role\n        ↓\nAnalyze Repository\n        ↓\nRepository & Security Analysis\n        ↓\nCodex for Open Source Application\n        ↓\nCopy & Submit\n```\n\n无需登录，只分析公开 GitHub 仓库。\n\n> Independent community tool. Not affiliated with or endorsed by OpenAI.\n\n\n## 截图预览\n\n<img width=\"1896\" height=\"1241\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f5386e7a-ddf6-47a0-bd3e-7cf74119717c\" />\n\n<img width=\"1896\" height=\"1241\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d5db4337-6fa8-4376-b72e-9fd7de28f71a\" />\n\n## 地址\n\nhttps://codex-oss-helper.com/\n",
-    "created_at": "2026-08-12T06:26:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11146"
   }
 ]
