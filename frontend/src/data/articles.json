@@ -1,5 +1,13 @@
 [
   {
+    "id": 11240,
+    "title": "【开源自荐】AgentPod：可自部署的多租户 AI Agent 服务，内置沙箱隔离与对话式 UI",
+    "content": "### AgentPod\n仓库地址：https://github.com/caicaicai/AgentPod\n一句话介绍：可自部署（self-hostable）的多租户 AI Agent(基于PI Agent) 服务，基于 Linux 命名空间实现沙箱代码执行隔离，附带完整的对话式 Web UI。\n\n**主要特性**\n- 多租户隔离 — 存储层强制用户级 session / memory / workspace 隔离，静态分析 + 运行时双重保障\n- 沙箱代码执行 — 每个执行槽位拥有独立 Linux 命名空间（PID / mount / network / uts / ipc）+ cgroup，租户之间零共享\n- 对话式 UI — 内置聊天界面，支持 SSE 流式输出、项目管理、会话历史、斜杠命令\n- Artifacts 系统 — 模型生成的代码/网页/文档保存为独立版本化文件集，浏览器端编译 Vue + mermaid，完全离线预览，CSP 沙箱隔离\n- 分享与市场 — 一键生成无需登录即可访问的分享链接；支持公开发布到 Artifact 市场\n- 长期记忆 — 跨会话事实以人类可读的 MEMORY.md 形式存储，用户和模型均可编辑\n- 定时任务 — 5 字段 cron 表达式 + IANA 时区支持，模型可在对话中直接创建\n- 零冷启动 — 固定沙箱槽位池预建命名空间，执行 = 在已运行的槽位中 spawn\n- Docker 一键部署 — PI Agent + Worker + Manager 三镜像，docker compose up -d 即可运行\n\n**技术栈**\nNode.js (ESM) · Vue 3 + Vite · Linux namespaces + cgroups · MySQL · Redis · Docker\n\n截图/演示\n\n<img width=\"1919\" height=\"946\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/30810639-0652-4550-9abc-f7e97b2162b7\" />\n\n<img width=\"1919\" height=\"945\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7a2d245-2571-409e-a251-073a113e6598\" />\n\n<img width=\"1918\" height=\"945\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2cf2085b-9c1b-47c1-9b4e-aa3a01cc9f94\" />\n\n**适用场景**\n\n- 团队/个人自建 AI 编程助手服务\n- 需要安全沙箱执行环境的 AI Agent 平台\n- 多用户共享的 AI 对话服务（支持用量统计、配额管理、模型分组）",
+    "created_at": "2026-08-17T22:55:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11240"
+  },
+  {
     "id": 11239,
     "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
     "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
@@ -792,13 +800,5 @@
     "created_at": "2026-08-12T03:29:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11141"
-  },
-  {
-    "id": 11140,
-    "title": "【工具自荐】AI Garden Design：让每个人都能轻松设计理想花园",
-    "content": "如果你曾经想改造自家的庭院、花园或露台，却苦于没有设计经验，那么[AI Garden Design](https://www.aigardendesign.io/)或许能够成为你的灵感助手。它是一款基于人工智能的园林景观设计工具，只需上传一张庭院照片，即可快速生成多种风格的花园设计方案，让花园规划变得更加简单高效。平台支持现代极简、英式花园、日式禅意、地中海等多种景观风格，并能够根据现有空间生成贴近实际的设计效果图。\n\nAI Garden Design 的核心功能十分直观。用户上传花园、庭院或露台的照片后，可以选择喜欢的设计风格，并输入希望添加的元素，例如花坛、步道、休闲区、水景或植物配置，AI 会在短时间内生成多套可视化设计方案。同时，系统支持多角度展示设计效果，并提供植物推荐与布局建议，帮助用户更全面地规划景观，而无需掌握专业的园林设计知识。\n\n相比传统景观设计方式，AI Garden Design的优势主要体现在效率和灵活性。过去，一个庭院设计方案可能需要设计师多次沟通和修改，而现在用户可以在几分钟内尝试不同风格，对比各种布局效果，并根据自己的喜好不断调整。真实感较高的效果图也能够帮助用户提前预览改造后的花园，减少实际施工中的试错成本。此外，平台采用按点数购买的方式，无需长期订阅，更适合偶尔有庭院设计需求的个人用户和小型设计团队。\n\n在适用场景方面，AI Garden Design 不仅适合家庭用户规划前院、后院、阳台或露台景观，也适用于园艺爱好者寻找植物搭配灵感、房地产从业者展示庭院改造效果，以及景观设计师快速生成设计概念和与客户沟通方案。对于准备翻新庭院、打造户外休闲空间或尝试不同景观风格的人来说，它能够提供丰富的创意参考，并显著缩短前期设计时间。\n\n总体来看，[AI Garden Design](https://www.aigardendesign.io/)将人工智能与景观设计相结合，让专业设计不再局限于设计师。无论是想获得装修灵感，还是希望快速生成多个花园方案，它都能帮助用户以更低的时间成本探索更多可能性，让花园设计变得更加高效、直观且富有创意。",
-    "created_at": "2026-08-12T03:23:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11140"
   }
 ]
