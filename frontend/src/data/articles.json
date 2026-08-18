@@ -1,5 +1,13 @@
 [
   {
+    "id": 11252,
+    "title": "【开源自荐】pets：给每个 AI Agent 会话一只终端宠物",
+    "content": "大家好，我是 pets 的作者，自荐一个终端状态栏的小工具。\n\n终端宠物大多属于「你」——一只宠物，慢慢养大。这个工具的宠物属于 **AI Agent**：每个 git worktree 是一个「巢穴」并分到一座城市，在里面干活的每个 Agent 会话各自得到一只生物，它的心情由那个 worktree 的整洁程度决定（未提交、未推送、落后于远端、测试状态）。同时开六个 Agent 就是六只生物，一眼能看出自己在看哪个会话、哪个出了问题。\n\n- 41 种生物、5 档稀有度、闪光变体，16 座城市给巢穴命名，`pets den` 看收集进度\n- 生物由会话哈希得出，不落盘，没有需要迁移或损坏的状态\n- 状态栏每秒执行一次，只读两个缓存文件，不跑 git、不联网；重活交给节流的后台探针\n- Claude Code 已端到端验证；Codex 的钩子已写好但未在真实 Codex 上验证过（README 里写明了）。tmux 和 shell 提示符两种模式不依赖 Agent，可以配合 Aider、Amp、Gemini CLI 等任意工具\n- Go 编写，单个静态二进制，MIT，无运行时依赖\n\n项目地址：https://github.com/TevvvB/parallel-harness-pets\n\n一句话介绍（可直接用）：一个 Go 编写的终端状态栏工具，为每个 AI Agent 会话生成一只宠物，每个 git worktree 是一个巢穴，宠物的心情反映该 worktree 的整洁程度，同时开多个 Agent 时可以一眼分清哪个会话出了问题。\n\n![](https://raw.githubusercontent.com/TevvvB/parallel-harness-pets/main/docs/demo.gif)",
+    "created_at": "2026-08-18T21:12:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11252"
+  },
+  {
     "id": 11251,
     "title": "【开源自荐】DeepSeek Harness GUI ：插件化实现在系统原生窗口中打开 DSH",
     "content": "项目地址：https://github.com/oodzchen/deepseek-harness-gui\n\n<img width=\"2011\" height=\"1367\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d446a733-d354-4aa6-8a17-46c4cfd0e144\" />",
@@ -790,13 +798,5 @@
     "created_at": "2026-08-12T12:28:08Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11153"
-  },
-  {
-    "id": 11152,
-    "title": "〖开源自荐〗awsui：让 AI 编程助手和 CLI 在正确的 AWS 账号中运行",
-    "content": "项目主页：https://junminhong.github.io/awsui/\n  GitHub：https://github.com/junminhong/awsui\n  PyPI：https://pypi.org/project/awsui/\n\n  ## 为什么开发这个工具？\n\n  使用 Claude Code、Codex、Terraform 或 AWS CLI 时，真正危险的事情往往不是命令写错，而是命令在错误的 AWS account 中执行。\n\n  开发者通常想的是 `dev`、`staging`、`prod`，但实际操作时却要记住每台电脑上不同的 AWS profile 名称，项目一多很容易在错误的账号或区域运行命令，尤其是让 AI agent 自动执行任务时。\n\n  因此我重新设计了开源工具 **awsui**：在启动任何工具之前，先验证它即将使用的 AWS context。\n\n  ![awsui CLI workflow](https://raw.githubusercontent.com/junminhong/awsui/main/docs/images/awsui-cli-promo-16x9.gif)\n\n  ## awsui 能做什么？\n\n  awsui 将项目环境映射到开发者本机的 AWS profile，并在启动命令前通过 AWS STS 验证实际登录的 account。\n\n  ```bash\n  awsui context prod\n\n  awsui prod -- codex\n  awsui prod -- claude\n  awsui prod -- terraform plan\n  awsui prod -- aws s3 ls\n  ```\n\n  如果实际登录的 account 与项目预期不一致，awsui 会立即停止，不启动后面的命令。\n\n  主要特点：\n\n  - 使用 `dev`、`staging`、`prod` 等项目环境名称，不必记住复杂的 profile 名称\n  - 启动工具前验证实际 AWS account\n  - 支持 Claude Code、Codex、Terraform、AWS CLI 以及任何 CLI\n  - 团队共享环境规则，但每位开发者保留自己的本机 profile binding\n  - 支持 IAM Identity Center（SSO）登录与重新认证\n  - 提供英文与繁体中文界面\n  - 完全开源，采用 MIT License\n\n  团队可以将环境预期写入 repository 内的 `.awsui.yaml`：\n\n  ```yaml\n  version: 1\n  project: payment-service\n  contexts:\n    dev:\n      account: \"111111111111\"\n      region: ap-northeast-1\n    prod:\n      account: \"999999999999\"\n      region: ap-northeast-1\n      protected: true\n  ```\n\n  本机 profile 名称不会写进 repository，而是由每位开发者自行绑定：\n\n  ```bash\n  awsui bind prod\n  awsui prod -- codex\n  ```\n\n  ## 安装\n\n  需要 Python 3.13 与 AWS CLI v2。\n\n  ```bash\n  uv tool install --python 3.13 awsui\n  ```\n\n  也可以使用 pip：\n\n  ```bash\n  pip install awsui\n  ```\n\n  awsui 验证的是工具启动时的 AWS context，并不是限制 child process 权限的安全沙箱，它的目标是在命令真正执行前，让 AWS account 与 region 清楚、可验证，并在不一致时及时阻止操作。\n\n  欢迎试用、提交 issue 或参与贡献。如果这个项目对你有帮助，也欢迎给一个 Star，谢谢！",
-    "created_at": "2026-08-12T12:16:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11152"
   }
 ]
