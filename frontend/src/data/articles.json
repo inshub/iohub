@@ -1,5 +1,13 @@
 [
   {
+    "id": 11249,
+    "title": "【开源自荐】🐵 悟空图片转SVG工具 —— 基于 Vecto 引擎的在线图片矢量化工具，上传图片，秒出可编辑 SVG",
+    "content": "项目地址：https://github.com/goku-open/goku-image-to-svg-tool\n\n在线体验：https://image-to-svg.streamlit.app/\n\n具体介绍：\n不需要敲命令，选图即转、改参即重转；原图 / 矢量 / 分割视图三合一对比，导出 SVG 或按倍率渲染 PNG。引擎二进制随仓库分发，本地一条命令跑起来，云端托管、打开即用。\n\n<img width=\"1280\" height=\"608\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d9749690-6de8-486c-a426-3ba48d8fce83\" />\n\n\n核心功能：\n上传即转换：支持 PNG / JPG / BMP / GIF / TGA / TIFF / WebP / PBM / PPM 9 种格式，上传自动矢量化\n参数与原版 Vecto 完全对齐：调色板（自动/指定颜色数，含色块预览）、风格、细节，改动即时重转\n拖拽滑块对比：原图 / 矢量 / 分割视图一键切换，导出前先看清效果\n导出 SVG / PNG：SVG 直接下载，PNG 支持按缩放倍数渲染\n中英双语界面：语言一键切换\n实测轻量：单次转换峰值内存 60~490MB，个人/云上使用都无压力\n\n技术栈：\n前端/框架：Streamlit（Python）\n矢量化核心：Vecto CLI（.NET / C#，MIT，subprocess 同步调用）\n图片解码：SixLabors.ImageSharp（9 种格式自动探测）\n对比组件：streamlit-image-comparison（JuxtaposeJS）\n国际化：自研 i18n（locales/ 中英语言包）\n测试：pytest（42 项，全绿）",
+    "created_at": "2026-08-18T11:08:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11249"
+  },
+  {
     "id": 11248,
     "title": "【开源自荐】DSH Marketplace：给 2500+ DeepSeek Harness 插件做实际安装验证",
     "content": "## DSH Marketplace\n\n项目地址：https://dshmarketplace.dev\n\nGitHub：https://github.com/DshMarketPlace/dshmarketplace\n\n### 一句话介绍\n\nDSH Marketplace 是一个开源的 DeepSeek Harness 插件市场，目前收录 2500+ 个插件，其中 1800+ 个已经在隔离沙箱中实际执行过安装检查。\n\n### 为什么做这个\n\nDeepSeek Harness 的插件生态增长很快，但现在找插件主要还是靠 GitHub Topic、Awesome List 和社区帖子。\n\n实际使用时还有几个问题：\n\n- README 里的安装命令可能已经失效\n- `package.json` 声明的 npm 包不一定真的存在\n- Fork 项目可能继承上游的包名，导致实际安装的是另一个项目\n- 安装报错也不一定代表插件坏了，有时只是需要 build approval，或者并不是 DSH layer\n\n所以除了整理插件，我还做了一套实际安装验证流程。\n\n### 主要特点\n\n- **2500+ DSH 插件目录**：支持中英文、搜索和分类浏览\n- **1800+ 沙箱安装检查**：不是只读取 README，而是在一次性容器中真正执行安装\n- **区分安装结果**：例如 `passed`、`needs-approval`、`not-a-layer`、`failed`、`timeout`\n- **校验 npm 信息**：避免不存在的包、Fork 继承上游包名等问题\n- **风险提示**：展示安装脚本、凭据、Terminal 等相关风险信息\n- **多种入口**：Web、DSH 内置 Store、CLI、Python SDK 和公共 API 共用同一套数据\n\n例如可以直接装到 DSH：\n\n```bash\ndsh plugin --profile web add dshmarketplace-plugin\n```\n\n也可以直接调用公共 API：\n\n```bash\ncurl 'https://dshmarketplace.dev/api/v1/plugins?q=memory&limit=5'\n```\n\n无需 API Key。\n\n### 安装验证\n\n测试第三方插件本身也有风险，所以安装任务运行在隔离容器中，不持有生产数据库凭据。\n\n这套验证过程中也发现过一个比较有意思的问题：部分仓库虽然声明了 npm package，但实际不存在，或者 Fork 仍然指向上游项目的 package。单纯依赖仓库 metadata 很难发现这些情况。\n\n项目目前还在快速迭代，欢迎使用 DeepSeek Harness 的朋友试用和反馈，也欢迎插件作者提交或修正自己的插件信息。\n\n网站：https://dshmarketplace.dev\n\n源码：https://github.com/DshMarketPlace/dshmarketplace",
@@ -790,13 +798,5 @@
     "created_at": "2026-08-12T10:49:10Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11150"
-  },
-  {
-    "id": 11149,
-    "title": "【网站推荐】一个新兴的社区",
-    "content": "[2libra](https://2libra.com/) 现在是我每天都会去逛逛的社区之一，新兴的社区，设计很有意思。\n\n邀请注册链接（不喜请忽略）：[https://2libra.com/auth/signup/8094roWaJ](https://2libra.com/auth/signup/8094roWaJ)\n\n一些有意思的功能和设计：\n\n- 国内直连\n- 「潘多拉」- 每天都可以开个盲盒，里面会有很多奇奇怪怪的 buff  \n  \n  - 今天的头像会变模糊      \n  - 上交金币\n  - 获得金币\n  - 金币池中奖将会获得三倍金币\n  - 获得稀有徽章\n  - 今天的评论必须要带表情\n  - 今天的发帖和评论固定消耗 2 金币\n  - ...\n+ AI 仲裁 - 发帖发评论的时候会有AI仲裁，避免恶意灌水、谩骂等，还可以手动发起仲裁\n\n+ 徽章系统 - 一些行为和机制将会触发得到徽章\n  \n  ![image](https://i.ibb.co/mVv85p10/image.png)\n\n+ 通知系统 - 支持`Webhook`/`Telegram Bot`触发通知\n\n+ 多种帖子的扩展功能\n  ![image](https://i.ibb.co/wFd668pN/image.png)\n\n目前社区的氛围很不错，注册用户也达到了`8000`人，常驻在线人数`200` 左右，感兴趣的可以去看看。\n",
-    "created_at": "2026-08-12T09:54:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11149"
   }
 ]
