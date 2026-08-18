@@ -1,5 +1,13 @@
 [
   {
+    "id": 11241,
+    "title": "【开源自荐】没有Harness才是Agent的终极目标？用SEED打造一个最小Agent",
+    "content": "众所周知，现在的 AI 技术概念名词层出不穷，从上下文管理到 Harness ，这些工程上的演变都只有一个目的，为了让 AI 更好地“工作”。然而，如果 AI 发展到了一定程度，是否还真的需要这么多花里胡哨的概念来约束呢？\n\nBash is all you need ，那么基于这个概念，SEED 出现了，只需要粘贴一段代码到终端中，你就能获得一个完全自由的“Agent”，没有权限控制，没有计划模式，没有花里胡哨的额外 harness 概念，AI 得到只有 bash 工具，想试试在这种情况下，AI 还能发挥出多少能力吗？\n\n打开 SEED ，输入你本来想在 Codex/Claude Code/Cursor 里想让 AI 做的事，然后你就得到了一个最小的 Agent 。我尝试使用 Deepseek Flash /GLM 5.2 api 进行了一些简单任务，它们都完成得很好，当然大型任务我还没有试过，我的想法是看看模型在执行过程中能否自发地实现子代理、记忆管理、上下文压缩这些东西，就像《疑犯追踪》里面的 The Machine ，管理员只给了一天的记忆，那它就能造个公司把自己每天的记忆一遍遍打印出来当作自己的硬盘一样。\n\n本项目受Deepseek Harness启发，在“一切皆插件”的理念上更激进了一点，如果AI能自行修改自己的Harness，那何必还需要给它规定一个“协议”，全部交给AI自己来写不是更符合这个理念吗？\n\n项目开源地址：[https://github.com/glink25/Seed](https://github.com/glink25/Seed)\n\n在线体验：[https://seed.linkai.work/](https://seed.linkai.work/)",
+    "created_at": "2026-08-18T02:25:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11241"
+  },
+  {
     "id": 11240,
     "title": "【开源自荐】AgentPod：可自部署的多租户 AI Agent 服务，内置沙箱隔离与对话式 UI",
     "content": "### AgentPod\n仓库地址：https://github.com/caicaicai/AgentPod\n一句话介绍：可自部署（self-hostable）的多租户 AI Agent(基于PI Agent) 服务，基于 Linux 命名空间实现沙箱代码执行隔离，附带完整的对话式 Web UI。\n\n**主要特性**\n- 多租户隔离 — 存储层强制用户级 session / memory / workspace 隔离，静态分析 + 运行时双重保障\n- 沙箱代码执行 — 每个执行槽位拥有独立 Linux 命名空间（PID / mount / network / uts / ipc）+ cgroup，租户之间零共享\n- 对话式 UI — 内置聊天界面，支持 SSE 流式输出、项目管理、会话历史、斜杠命令\n- Artifacts 系统 — 模型生成的代码/网页/文档保存为独立版本化文件集，浏览器端编译 Vue + mermaid，完全离线预览，CSP 沙箱隔离\n- 分享与市场 — 一键生成无需登录即可访问的分享链接；支持公开发布到 Artifact 市场\n- 长期记忆 — 跨会话事实以人类可读的 MEMORY.md 形式存储，用户和模型均可编辑\n- 定时任务 — 5 字段 cron 表达式 + IANA 时区支持，模型可在对话中直接创建\n- 零冷启动 — 固定沙箱槽位池预建命名空间，执行 = 在已运行的槽位中 spawn\n- Docker 一键部署 — PI Agent + Worker + Manager 三镜像，docker compose up -d 即可运行\n\n**技术栈**\nNode.js (ESM) · Vue 3 + Vite · Linux namespaces + cgroups · MySQL · Redis · Docker\n\n截图/演示\n\n<img width=\"1919\" height=\"946\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/30810639-0652-4550-9abc-f7e97b2162b7\" />\n\n<img width=\"1919\" height=\"945\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7a2d245-2571-409e-a251-073a113e6598\" />\n\n<img width=\"1918\" height=\"945\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2cf2085b-9c1b-47c1-9b4e-aa3a01cc9f94\" />\n\n**适用场景**\n\n- 团队/个人自建 AI 编程助手服务\n- 需要安全沙箱执行环境的 AI Agent 平台\n- 多用户共享的 AI 对话服务（支持用量统计、配额管理、模型分组）",
@@ -792,13 +800,5 @@
     "created_at": "2026-08-12T03:33:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11142"
-  },
-  {
-    "id": 11141,
-    "title": "LinkSense 寻找 DevRel / 开源社区合作伙伴",
-    "content": "**LinkSense，一个面向组织的开源 AI 平台。**\n\n现在很多人已经在用 Codex、Claude Code 等工具，并开始创建自己的 Skills 和 AI 工作流。但到了组织层面，一个很现实的问题是：这些个人积累下来的 AI 能力，怎么共享、复用、管理，并持续沉淀下来？\n\n**LinkSense 想解决的，就是如何把个人 AI 能力变成组织能力。**\n\nLinkSense 正在准备开源发布。我们希望找到一位真正懂开源、懂开发者的伙伴，有实战经验的人一起把这件事做好。\n\n你会参与：\n* 设计 OSS Launch 和 DevRel 策略\n* 打磨 GitHub、README、Docs 和开发者体验\n* 找到并连接早期用户、AI Builders 和 Contributors\n* 推动项目在国内外开发者社区的传播\n* 探索 Skills 生态和开发者激励机制\n\n我们不太在意标准的岗位背景，我们更看重你是否真正参与过开源项目、理解开发者社区，并对 AI Coding / Agent / Skills 生态有自己的判断。\n\n这不是一个单纯做内容或社区运营的岗位。我们希望找到一个愿意和我们一起思考、实验，并长期参与 LinkSense 开源生态建设的伙伴。\n\n合作方式：全职或远程均可，时间灵活\n\n_LinkSense 由 Infocare 发起并孵化。Infocare 是一家专注于教育数字化与 AI 的技术公司。\n联系方式： bozhang@linksense.org.cn\n邮件标题请注明「LinkSense DevRel」，简单介绍自己并附上 GitHub / LinkedIn / 参与过的开源项目即可，无需正式简历。\nInfocare： www.infocare.org.cn_",
-    "created_at": "2026-08-12T03:29:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11141"
   }
 ]
