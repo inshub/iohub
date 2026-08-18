@@ -1,5 +1,13 @@
 [
   {
+    "id": 11250,
+    "title": "【开源自荐】UDS 诊断技术书，从望闻问切到动手实现一个诊断协议栈",
+    "content": "### UDS 诊断技术书，从望闻问切到动手实现一个诊断协议栈\n\n**开源地址：**\nhttps://github.com/Lularible/uds-book\n\nOBD 盒子读出的故障码、4S 店刷的固件、售后远程诊断，背后都是同一个协议：UDS（ISO 14229-1）。这本书不翻译标准，而是把\"诊断\"从头讲一遍，然后带着读者亲手实现一个协议栈。\n\n全书 48 节分五章：\n\n- **第一章，诊断的起源**：从\"医生为什么要问诊\"这个元问题讲起，中医四诊、OBD-II 历史、KWP2000 到 UDS 的继承。\n- **第二章，26 个 SID 逐个拆**：会话控制、安全访问、读写 DID、读 DTC、上传下载。每个服务一节，写完一个就实现一次，附完整字节流实例和 NRC 分析。\n- **第三章，传输层**：CAN 多帧传输的流控状态机（ISO 15765-2），DoIP 封装与路由激活（ISO 13400）。\n- **第四章，生产级源码**：走进 Arctic Core 的 AUTOSAR DCM（约 1.3 万行 C），看 DSL/DSD/DSP/CanTp 在工业代码里怎么落地。\n- **第五章，从零实现**：手写 uds-lite（约 1200 行 C），ECU 模拟器、诊断仪客户端、交互式诊断 shell，一条命令跑通完整诊断闭环。\n\n市面上的 UDS 中文资料，大多是 ISO 14229 标准翻译或者零散博客。这本书把\"诊断的本质、协议、生产级源码、自己实现\"串成一条线，中间没有断层。\n\n**运行效果：**\n\n![uds-lite 交互式诊断演示](https://github.com/user-attachments/assets/5518ae1a-9abf-471c-bf2a-16bdd60f3a26)\n\n开源协议：CC BY-NC-ND 4.0（内容），MIT（代码）",
+    "created_at": "2026-08-18T13:30:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11250"
+  },
+  {
     "id": 11249,
     "title": "【开源自荐】🐵 悟空图片转SVG工具 —— 基于 Vecto 引擎的在线图片矢量化工具，上传图片，秒出可编辑 SVG",
     "content": "项目地址：https://github.com/goku-open/goku-image-to-svg-tool\n\n在线体验：https://image-to-svg.streamlit.app/\n\n具体介绍：\n不需要敲命令，选图即转、改参即重转；原图 / 矢量 / 分割视图三合一对比，导出 SVG 或按倍率渲染 PNG。引擎二进制随仓库分发，本地一条命令跑起来，云端托管、打开即用。\n\n<img width=\"1280\" height=\"608\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d9749690-6de8-486c-a426-3ba48d8fce83\" />\n\n\n核心功能：\n上传即转换：支持 PNG / JPG / BMP / GIF / TGA / TIFF / WebP / PBM / PPM 9 种格式，上传自动矢量化\n参数与原版 Vecto 完全对齐：调色板（自动/指定颜色数，含色块预览）、风格、细节，改动即时重转\n拖拽滑块对比：原图 / 矢量 / 分割视图一键切换，导出前先看清效果\n导出 SVG / PNG：SVG 直接下载，PNG 支持按缩放倍数渲染\n中英双语界面：语言一键切换\n实测轻量：单次转换峰值内存 60~490MB，个人/云上使用都无压力\n\n技术栈：\n前端/框架：Streamlit（Python）\n矢量化核心：Vecto CLI（.NET / C#，MIT，subprocess 同步调用）\n图片解码：SixLabors.ImageSharp（9 种格式自动探测）\n对比组件：streamlit-image-comparison（JuxtaposeJS）\n国际化：自研 i18n（locales/ 中英语言包）\n测试：pytest（42 项，全绿）",
@@ -790,13 +798,5 @@
     "created_at": "2026-08-12T11:55:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11151"
-  },
-  {
-    "id": 11150,
-    "title": "【开源自荐】牛牛1号：从市场监测到自主模拟交易的 A 股研究工作台",
-    "content": "项目地址：https://github.com/kunkundi/niuone  \n示例页面：https://niuone.cn\n\n> **牛牛1号是一套开源的 A 股市场研究工作台，集行情监测、题材分析、资金追踪、财经资讯和自动化报告于一体，可根据预设策略，自主完成市场扫描、模型选股、买卖决策和模拟交易。**\n\n## 项目介绍\n\n看盘和复盘所需的行情、题材、资金、新闻和账户数据，往往分散在不同平台。牛牛1号将这些信息汇集到同一个 Web 工作台，帮助用户快速了解市场状态、热门题材、资金动向、个股表现和模拟账户情况。\n\n项目以 A 股市场为核心，同时提供隔夜美股走势和美股机构评级，为市场研究增加海外信息参考。\n\n此外，牛牛1号将大模型接入模拟交易流程，系统会按交易时段扫描市场并筛选候选股，再由大模型结合行情表现、题材归因、资金动向、财经消息、账户状态和预设策略，形成买入、卖出或继续持有的判断，随后执行模拟成交并持续跟踪持仓，构成从市场研究到交易决策的自主闭环。\n\n## 主要亮点\n\n- **盘面监测总览**：集中展示指数、市场宽度、涨跌停、量能、热门题材、行业资金、财经快讯和模拟账户状态。\n- **题材强度雷达**：同时观察题材当日强度和跨日结构排名，并结合上涨广度、领涨股和即时板块排名进行交叉参考。\n- **资金与市场情绪**：展示个股和行业资金流向，以及红绿盘家数、涨跌停、炸板和日内量能变化。\n- **财经信息聚合**：集中展示财经快讯、龙虎榜、隔夜美股和美股机构评级，并将相关信息纳入大模型的候选股分析和模拟交易决策。\n- **自动化市场报告**：按交易时段整理竞价、午盘和盘后行情，汇总热门板块、资金动向、风险提示和后续关注项。\n- **大模型决策与模拟交易**：在预设策略和交易规则约束下，结合行情、题材、资金、消息及账户状态，对候选股和持仓形成买卖判断，并驱动模拟成交与持仓跟踪。\n- **账户复盘**：统一查看当前持仓、交易记录、持仓盈亏、收益曲线、交易日历和操作日志。\n\n## 效果展示\n\n### 盘面监测总览\n\n市场状态、量能、指数、主线机会、候选池、财经快讯和账户仓位集中展示。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/\">\n    <img width=\"1200\" alt=\"牛牛1号盘面监测总览\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/overview.gif\">\n  </a>\n</p>\n\n### 题材强度雷达\n\n对照题材今日强度与跨日结构排名，查看上涨广度、领涨股和题材覆盖原因。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/niuone-mainline\">\n    <img width=\"1200\" alt=\"牛牛1号题材强度雷达\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/theme-strength.gif\">\n  </a>\n</p>\n\n### 主力资金流向\n\n集中查看个股主力净流入、净流出榜单及行业资金变化。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/indices\">\n    <img width=\"1200\" alt=\"牛牛1号主力资金流向\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/capital-flow.gif\">\n  </a>\n</p>\n\n### 市场情绪与量能\n\n通过日内曲线联动观察涨跌停、炸板、红绿盘家数以及预测和实际量能。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/indices\">\n    <img width=\"1200\" alt=\"牛牛1号市场情绪与量能\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/market-breadth.gif\">\n  </a>\n</p>\n\n### 自动化盘面监控\n\n汇总竞价、午盘和盘后报告，整理市场判断、热门板块、资金动向与风险提示。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/market-monitor\">\n    <img width=\"1200\" alt=\"牛牛1号自动化盘面监控\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/market-monitor.gif\">\n  </a>\n</p>\n\n### 财经快讯聚合\n\n聚合多个财经信息源，支持按来源和重要程度筛选。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/realtime-news\">\n    <img width=\"1200\" alt=\"牛牛1号财经快讯聚合\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/realtime-news.gif\">\n  </a>\n</p>\n\n### 美股机构评级\n\n集中查看美股当前价格、机构目标价、潜在空间、看多逻辑和风险点。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/us-ratings\">\n    <img width=\"1200\" alt=\"牛牛1号美股机构评级\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/us-ratings.gif\">\n  </a>\n</p>\n\n### AI 模拟交易与账户复盘\n\n查看候选股票、模拟持仓、收益曲线、交易日历、操作日志和 AI 决策结果。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/practice\">\n    <img width=\"1200\" alt=\"牛牛1号 AI 模拟交易与账户复盘\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/practice-trading.gif\">\n  </a>\n</p>",
-    "created_at": "2026-08-12T10:49:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11150"
   }
 ]
