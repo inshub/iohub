@@ -1,5 +1,21 @@
 [
   {
+    "id": 11248,
+    "title": "【开源自荐】DSH Marketplace：给 2500+ DeepSeek Harness 插件做实际安装验证",
+    "content": "## DSH Marketplace\n\n项目地址：https://dshmarketplace.dev\n\nGitHub：https://github.com/DshMarketPlace/dshmarketplace\n\n### 一句话介绍\n\nDSH Marketplace 是一个开源的 DeepSeek Harness 插件市场，目前收录 2500+ 个插件，其中 1800+ 个已经在隔离沙箱中实际执行过安装检查。\n\n### 为什么做这个\n\nDeepSeek Harness 的插件生态增长很快，但现在找插件主要还是靠 GitHub Topic、Awesome List 和社区帖子。\n\n实际使用时还有几个问题：\n\n- README 里的安装命令可能已经失效\n- `package.json` 声明的 npm 包不一定真的存在\n- Fork 项目可能继承上游的包名，导致实际安装的是另一个项目\n- 安装报错也不一定代表插件坏了，有时只是需要 build approval，或者并不是 DSH layer\n\n所以除了整理插件，我还做了一套实际安装验证流程。\n\n### 主要特点\n\n- **2500+ DSH 插件目录**：支持中英文、搜索和分类浏览\n- **1800+ 沙箱安装检查**：不是只读取 README，而是在一次性容器中真正执行安装\n- **区分安装结果**：例如 `passed`、`needs-approval`、`not-a-layer`、`failed`、`timeout`\n- **校验 npm 信息**：避免不存在的包、Fork 继承上游包名等问题\n- **风险提示**：展示安装脚本、凭据、Terminal 等相关风险信息\n- **多种入口**：Web、DSH 内置 Store、CLI、Python SDK 和公共 API 共用同一套数据\n\n例如可以直接装到 DSH：\n\n```bash\ndsh plugin --profile web add dshmarketplace-plugin\n```\n\n也可以直接调用公共 API：\n\n```bash\ncurl 'https://dshmarketplace.dev/api/v1/plugins?q=memory&limit=5'\n```\n\n无需 API Key。\n\n### 安装验证\n\n测试第三方插件本身也有风险，所以安装任务运行在隔离容器中，不持有生产数据库凭据。\n\n这套验证过程中也发现过一个比较有意思的问题：部分仓库虽然声明了 npm package，但实际不存在，或者 Fork 仍然指向上游项目的 package。单纯依赖仓库 metadata 很难发现这些情况。\n\n项目目前还在快速迭代，欢迎使用 DeepSeek Harness 的朋友试用和反馈，也欢迎插件作者提交或修正自己的插件信息。\n\n网站：https://dshmarketplace.dev\n\n源码：https://github.com/DshMarketPlace/dshmarketplace",
+    "created_at": "2026-08-18T09:58:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11248"
+  },
+  {
+    "id": 11247,
+    "title": "【工具自荐】CreateForge AI：一个工作区使用 17 个 AI 图片与视频模型",
+    "content": "## 项目地址\n\nhttps://createforgeai.com/\n\n![CreateForge AI 首页](https://createforgeai.com/images/index.png)\n\n## 一句话介绍\n\nCreateForge AI 是一个面向图片与视频创作的多模型工作区，把 17 个已通过生产任务验证的 AI 模型、参数配置、任务状态和生成结果放在同一个界面中。\n\n## 为什么做 CreateForge\n\nAI 图片和视频模型更新很快，但不同模型往往分散在不同产品里，参数、计费方式和输入要求也不一致。实际创作时，用户不仅要写提示词，还要反复比较模型、切换工具、估算成本，并保存每次生成的结果。\n\nCreateForge 希望把这些步骤收拢成一套清晰的工作流：先根据任务选择模型，提交前确认参数和 credit 报价，生成后跟踪任务状态，并把完成的图片或视频保存在 Library 中。\n\n## 主要特点\n\n- **17 个图片与视频模型**：包括 GPT Image 2、FLUX 2 Pro、Seedream、Nano Banana、Veo 3.1、Seedance、Grok Imagine Video 和 MiniMax H3 等。\n- **三类统一入口**：支持 AI Image Generator、Image to Image 和 Image to Video，并根据所选模型展示兼容参数。\n- **提交前报价**：系统根据模型、分辨率、时长、输出数量和参考素材等参数生成 credit 报价，确认后再提交任务。\n- **任务状态与结果管理**：统一查看生成进度、失败状态和完成结果，成品可以保存在个人 Library 中继续使用。\n- **模型选择资料**：每个模型都有能力、限制、Prompt 示例、定价说明和相关指南，方便在生成前比较。\n- **生产验证**：公开模型均经过真实任务闭环验证，页面展示的参数和能力来自同一份模型 Catalog。\n\n## 适合谁\n\n适合需要同时使用多个图片或视频模型的创作者、独立开发者和小团队，尤其是希望减少工具切换，并在提交前看清模型能力、输入要求和生成成本的用户。\n\n## 收费与使用说明\n\n网站目前使用英文界面。模型目录、工具介绍和创作指南可以公开浏览；实际生成需要登录并购买 CreateForge credits，可选择永久积分包或月度计划。当前没有免费生成额度。\n\n项目已经上线，欢迎体验并反馈最希望补充的模型、参数或创作工作流。\n",
+    "created_at": "2026-08-18T08:43:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11247"
+  },
+  {
     "id": 11246,
     "title": "【工具自荐】Vokie：把语音输入、会议记录与 Agent 上下文连接起来",
     "content": "## 项目地址\n\nhttps://vokie.com/\n\n## 一句话介绍\n\nVokie 是一款面向 macOS 和 Windows 的 AI 语音助手：它把自然口述整理成可直接使用的文字，也把线上线下会议、本地音视频变成转写、摘要和行动项，并让过去说过的话成为可以继续查询和调用的 Agent 上下文。\n\n<img width=\"1500\" height=\"500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/36c86b74-0699-4b3a-96e7-50fb4751344c\" />\n\n## 为什么做 Vokie\n\n在和 Codex、Claude Code 等 Agent 协作时，长段想法往往来得比打字更快。口头表达虽然不够整齐，却能一次性交付大量背景、约束和上下文。\n\n我们并不认为语音会替代键盘。更合适的分工是：语音负责展开想法，键盘负责精确收敛。Vokie 希望缩短从“脑子里有个想法”到“这段内容已经可以使用”之间的距离。\n\n现有工具大多停在语音转文字；Vokie 更关心转写之后的整理、记忆和再次使用。\n\n## 主要特点\n\n- **把口语整理成可用文字**：去掉口癖和重复，接住“周五，不对，改到下周一”这样的自我修正，并自动分段或整理成列表。\n- **记住专有词**：修正过的人名、产品名和行业术语会进入热词，下次识别更准确。\n- **适配不同表达场景**：给 Agent 补充上下文、写产品反馈或整理灵感时，可以选择不同的整理方式，而不是套用同一种润色风格。\n- **不依赖会议平台**：通过快捷键同时记录系统声音和麦克风，适用于腾讯会议、飞书、Zoom 以及线下面谈，会后生成完整转写、摘要和行动项。\n- **语音历史可以继续使用**：内置“拾忆”AI 对话；用户也可以主动安装 Vokie Skill，让 Agent 只读查询录音、转写和总结，或转写指定的本地音视频。\n- **支持记录与实时翻译**：把临时讨论、走路时的灵感或跨语言交流统一沉淀下来。\n- **跨平台**：支持 macOS Apple Silicon、macOS Intel 和 Windows x64。（移动端开发中）\n\n## 数据边界\n\nVokie 的历史记录主要保存在设备上。根据所用功能，部分转写、摘要或模型请求会调用云端服务；Vokie Skill 由用户主动安装或卸载，历史查询为只读。\n\n## 收费计划\n\nVokie 的语音输入功能计划永久免费。会议转写、摘要等会产生模型用量的功能，目前处于公测阶段；未来将推出相应的 Plan 套餐，以覆盖模型调用成本。\n\n## 适合谁\n\nVokie 更适合已经把语音当成工作方式的人：经常给 Agent 讲长上下文，需要随手记录会议、灵感和产品反馈，或者希望过去说过的话以后还能继续用得上。\n\nVokie 目前正在公测，欢迎下载体验并反馈具体问题。\n\n- 官网、下载与用户交流入口：https://vokie.com/\n",
@@ -782,21 +798,5 @@
     "created_at": "2026-08-12T09:54:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11149"
-  },
-  {
-    "id": 11148,
-    "title": "【开源自荐】PinShell：把任意本地 HTML 钉成全局置顶的 macOS 悬浮窗，直播/录屏角标专用",
-    "content": "## 项目开源地址：https://github.com/niyongsheng/PinShell\n\nPinShell 是一个轻量级 macOS 悬浮窗工具：把任意本地 HTML 文件变成全局置顶、支持点击穿透的悬浮窗口，专为直播和录屏场景设计——在 OBS、Cap、QuickTime 录制时，把直播角标、水印时钟、状态提示钉在画面角落。\n\n所有 UI、轮播和动画都写在 HTML/CSS/JS 里，PinShell 只是一个极薄的本地外壳（NSPanel + WKWebView），不内置任何业务逻辑；改完 HTML 按 ⌘R 立即生效，无需重新编译。\n\n![PinShell 预览](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/preview.png)\n\n### 内置 4 个模板\n\n| 模板 | 说明 |\n|---|---|\n| 社交徽章轮播 | X / WeChat / Bilibili 徽章 5 秒轮播 |\n| LIVE 状态点 | 脉冲动画的录制状态胶囊 |\n| 社交胶囊栏 | 一排账号胶囊 |\n| 水印角标 | 低对比度时钟 + 日期 + 联系方式 |\n\n![Badge Carousel](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-badge-carousel.png) ![Social Rail](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-social-rail.png) ![Watermark](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-watermark.png)\n\n### 特点\n\n- **HTML 即产品**：模板 / 轮播 / 动效全在 HTML 里，编辑后 ⌘R 重载即可，不动原生代码\n- **点击穿透**：鼠标事件直接穿透到下层窗口，不遮挡操作\n- **CLI 加载**：`PinShell ./overlay.html` 或 `open -a PinShell examples/badge-carousel.html`\n- **跨桌面置顶**：所有桌面空间全局置顶，无 Dock 图标，常驻菜单栏\n- **自更新**：24h 静默检查 GitHub Releases 新版本\n\n### 适用场景\n\n- 直播 / OBS 角标：LIVE 状态点、社交账号胶囊、水印时钟\n- 录屏提示：快捷键说明、流程步骤贴在画面角落\n- 桌面小组件：倒计时、股价、天气——任意 HTML 都能钉上去\n\nApache 2.0 开源，macOS 13+。\n",
-    "created_at": "2026-08-12T08:32:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11148"
-  },
-  {
-    "id": 11147,
-    "title": "【工具自荐】国产大模型与 AI Agent比价工具",
-    "content": "网站地址：[https://ai-price-compare.konata9.cc/](https://ai-price-compare.konata9.cc/)\n\n最近在整理自己的 AI 成本，需要挑选国产大模型与国产 AI Agent，于是做了一个价格比较网站。\n\n表格部分列举了国内各家的大模型和AI Agent 价格。\n其中仿照了苹果的对比表格，可以对比多个大模型或者Agent，带来更直观地感受。\n网站部署在 CloudFlare 上，利用 GithubAction 每天从官方网站上获取数据进行更新。\n页面同时支持 PC 端与移动端。\n\n介绍文章：[国产大模型与 AI Agent 比价工具](https://mp.weixin.qq.com/s/jsvZ6JwxuMKoFFYtgjsEZQ)\n\n<img width=\"1292\" height=\"469\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1292c3b5-7dcc-4727-b28e-bd06b9caa30e\" />\n\n<img width=\"1305\" height=\"860\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5e3b314f-52a5-4cd7-be88-3cb8201b1d0a\" />\n\n<img width=\"1329\" height=\"1131\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd022d7f-9ca6-4802-b178-a1f8df133eb9\" />",
-    "created_at": "2026-08-12T06:28:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11147"
   }
 ]
