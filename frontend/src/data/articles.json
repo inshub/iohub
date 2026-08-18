@@ -1,5 +1,21 @@
 [
   {
+    "id": 11243,
+    "title": "【工具推荐】RenomeeAI：用 AI 根据文件内容批量重命名文件",
+    "content": "# 工具名称\n\nRenomeeAI\n\n# 网站\n\nhttps://renomeeai.com/\n\n# 工具简介\n\nRenomeeAI 是一个 AI 批量文件重命名工具，可以根据 PDF、图片、文档等文件的实际内容，自动生成更有意义的文件名。\n\n比如下载了一批电子书、论文、发票、课程资料或工作文档，文件名可能是：\n\n```text\ndownload_839201.pdf\nIMG_20260812_102938.jpg\nfinal_v3_2.pdf\ndocument_12345.pdf\n```\n\nRenomeeAI 可以读取文件内容，然后根据内容自动生成类似：\n\n```text\n《The Psychology of Money》.pdf\n2026-08-12_项目会议纪要.jpg\nQ2_市场分析报告.pdf\n```\n\n# 主要特点\n\n* **AI 内容识别**：根据文件内容，而不只是原来的文件名进行命名。\n* **批量处理**：可以一次处理大量文件，适合整理下载目录、资料库和工作文件。\n* **支持多种文件类型**：PDF、图片、文档、音频等。\n* **自然语言规则**：可以告诉 AI 希望文件名包含哪些信息，并按照规则批量生成。\n* **适合整理历史文件**：尤其适合已经积累了大量杂乱文件名的文件夹。\n\nWindows 版本目前支持高速批量处理，例如一次重命名 1000 个文件。\n\n# 适用场景\n\n比较适合这些场景：\n\n1. 下载了大量 PDF 电子书、论文或资料，需要按照标题重新命名。\n2. 手机/相机导出大量图片，希望根据图片内容自动生成文件名。\n3. 工作中积累了大量 `document.pdf`、`final_v2.pdf` 之类的文件。\n4. 整理长期积累的资料库，希望让文件名更容易搜索和管理。\n5. 有大量文件需要按照统一的命名规则重新整理。\n\n# 使用地址\n\nhttps://renomeeai.com/\n\n欢迎大家试用，也欢迎反馈 AI 自动命名在实际文件整理中的效果。\n",
+    "created_at": "2026-08-18T03:18:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11243"
+  },
+  {
+    "id": 11242,
+    "title": "【开源自荐】PortPilot：让 localhost 服务直接给其他设备访问",
+    "content": "自荐一个最近做的 Windows 开源小工具：**PortPilot**。\n\n项目地址：https://github.com/BeyondXinXin/PortPilot\n\n我最开始做它，是为了测试 **Godot Web 游戏**：构建后的网页文件在电脑上，希望直接用手机或另一台电脑访问，又不想每次单独搭 Web Server。\n\n后来类似需求越来越多，比如把本机的 **Ollama、ComfyUI** 提供给另一台电脑使用，但原服务继续保持 `localhost`；或者临时通过 IPv6、Tailscale、HTTPS、公网入口访问本地服务。\n\n所以做了 PortPilot。它的思路是：**原来的服务继续保持 `localhost`，由 PortPilot 负责创建合适的访问入口。**\n\n主要支持：\n\n* **直接发布静态网站目录**，适合 Godot Web、前端构建产物等，不需要额外启动 Web Server。\n* **代理已有 HTTP / HTTPS 服务**，例如 Ollama、ComfyUI 或其他本地 Web 服务，原服务继续监听 `localhost` 即可。\n* **IPv6 Direct**：有公网 IPv6 时直接访问，路径短、额外依赖少。\n* **Tailscale Direct**：通过 Tailnet 直接访问本机服务。\n* **Tailscale Serve**：把本地服务发布为 Tailnet 内可访问的 HTTPS 地址。\n* **Tailscale Funnel**：需要时临时把本地服务开放到互联网。\n* **Remote Bridge**：把远程电脑上的服务桥接成当前电脑自己的 `localhost`，适合依赖 `localhost`、`Host` 或 `Origin` 的 Web 应用。\n\nPortPilot 不替代 Tailscale，而是把 `Tailscale Direct / Serve / Funnel` 这些原本分散的访问方式统一到一个桌面界面里。已经安装 Tailscale 的用户，可以直接选择适合当前场景的方式；没有 Tailscale 时，也可以使用 IPv6 Direct。\n\nRemote Bridge 来自另一个实际需求：我把 **DeepSeek Harness** 跑在另一台电脑上，但希望当前电脑仍然能够通过真正的 `localhost` 使用它，而不是直接访问远端 IP。PortPilot 可以在两台机器之间建立桥接，最后在本机得到一个正常的 `localhost` 地址。\n\n多个服务可以放在一个界面中统一管理，分别启动、停止、重启，并直接复制对应的访问地址。\n\nPortPilot 是 Windows x64 单文件程序，无需安装。配置、日志等运行数据统一保存在：\n\n```text\n%LOCALAPPDATA%\\BeyondXinXin\\PortPilot\\\n```\n\n不会写入 EXE 所在目录。\n\n项目地址：\n\nhttps://github.com/BeyondXinXin/PortPilot\n",
+    "created_at": "2026-08-18T03:07:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11242"
+  },
+  {
     "id": 11241,
     "title": "【开源自荐】没有Harness才是Agent的终极目标？用SEED打造一个最小Agent",
     "content": "众所周知，现在的 AI 技术概念名词层出不穷，从上下文管理到 Harness ，这些工程上的演变都只有一个目的，为了让 AI 更好地“工作”。然而，如果 AI 发展到了一定程度，是否还真的需要这么多花里胡哨的概念来约束呢？\n\nBash is all you need ，那么基于这个概念，SEED 出现了，只需要粘贴一段代码到终端中，你就能获得一个完全自由的“Agent”，没有权限控制，没有计划模式，没有花里胡哨的额外 harness 概念，AI 得到只有 bash 工具，想试试在这种情况下，AI 还能发挥出多少能力吗？\n\n打开 SEED ，输入你本来想在 Codex/Claude Code/Cursor 里想让 AI 做的事，然后你就得到了一个最小的 Agent 。我尝试使用 Deepseek Flash /GLM 5.2 api 进行了一些简单任务，它们都完成得很好，当然大型任务我还没有试过，我的想法是看看模型在执行过程中能否自发地实现子代理、记忆管理、上下文压缩这些东西，就像《疑犯追踪》里面的 The Machine ，管理员只给了一天的记忆，那它就能造个公司把自己每天的记忆一遍遍打印出来当作自己的硬盘一样。\n\n本项目受Deepseek Harness启发，在“一切皆插件”的理念上更激进了一点，如果AI能自行修改自己的Harness，那何必还需要给它规定一个“协议”，全部交给AI自己来写不是更符合这个理念吗？\n\n项目开源地址：[https://github.com/glink25/Seed](https://github.com/glink25/Seed)\n\n在线体验：[https://seed.linkai.work/](https://seed.linkai.work/)",
@@ -782,23 +798,5 @@
     "created_at": "2026-08-12T04:05:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11144"
-  },
-  {
-    "id": 11143,
-    "title": "【开源自荐】DBX：1.4 万 Star、约 20 MB，支持 70+ 数据库的跨平台工具",
-    "content": "大家好，我是 t8y2，开源数据库工具 DBX 的作者，想在这里自荐一下这个持续维护中的项目。\n\n- 项目地址：https://github.com/t8y2/dbx\n- 官网：https://dbxio.com\n- 下载地址：https://github.com/t8y2/dbx/releases\n\n[![GitHub Stars](https://img.shields.io/github/stars/t8y2/dbx?style=flat-square&logo=github)](https://github.com/t8y2/dbx/stargazers)\n[![GitHub Forks](https://img.shields.io/github/forks/t8y2/dbx?style=flat-square&logo=github)](https://github.com/t8y2/dbx/forks)\n[![License](https://img.shields.io/github/license/t8y2/dbx?style=flat-square)](https://github.com/t8y2/dbx/blob/main/LICENSE)\n\n截至发帖时，DBX 在 GitHub 已经获得 **1.4 万+ Star 和 1400+ Fork**。非常感谢社区一直以来的关注、反馈和贡献，很多功能也是在大家提交的 Issue 和实际使用反馈中逐步完善的。\n\n<p align=\"center\">\n  <img src=\"https://dl.dbxio.com/assets/readme-hero-20260806.png\" alt=\"DBX 主界面\" width=\"900\" />\n</p>\n\n数据库客户端已经有很多了，我并不是想简单地再做一个类似工具。\n\n做 DBX 的起点，是因为我平时经常需要在不同数据库、操作系统和使用场景之间切换。我希望有一个工具，不需要安装庞大的运行环境，不需要因为换一种数据库就再换一套客户端，也能跟现在的 AI 编程工作流自然地连接起来。\n\n因此，我尝试把常见的数据库开发和管理能力，集中到一个尽可能轻量、跨平台的开源工具里。\n\n## DBX 有什么不同\n\n### 1. 约 20 MB，不捆绑 Chromium\n\nDBX 桌面端大约 20 MB，不需要 Java JRE 或 Python 环境，也不捆绑 Chromium。\n\n下载安装后即可连接数据库，支持 macOS、Windows 和 Linux。\n\n### 2. 支持 70+ 种数据库\n\n除了 MySQL、PostgreSQL、SQLite、Redis、MongoDB、ClickHouse、SQL Server、Oracle 等常见数据库，也支持 TiDB、OceanBase、openGauss、GaussDB、达梦、人大金仓、Doris、StarRocks、TDengine 等数据库。\n\n通过可选驱动，还可以连接 Hive、DB2、Snowflake、Trino、Databricks、SAP HANA、Teradata、GBase、崖山数据库以及自定义 JDBC 数据源。\n\n### 3. 不只是一个 SQL 编辑器\n\nDBX 提供了日常数据库开发和管理需要的主要能力：\n\n- SQL 编辑、元数据自动补全、格式化和执行历史\n- 数据编辑、分页、筛选以及保存前 SQL 预览\n- 表结构编辑、ER 关系图和执行计划\n- Schema 对比、数据对比和字段血缘\n- CSV / Excel 导入、数据迁移和数据库导出\n- Redis、MongoDB 以及消息队列管理\n- 从 DBeaver、Navicat 导入连接配置\n\n### 4. 桌面端、Docker、Web 和 CLI\n\n个人使用时，可以安装原生桌面客户端。\n\n团队或服务器环境可以通过 Docker 自托管，也提供 Web 版本、CLI 和 HTTP API，用于脚本及自动化场景。\n\n### 5. 内置 AI 助手，并提供 MCP Server\n\nDBX 内置 AI SQL 助手，可以生成、解释、优化和修复 SQL，并在执行 AI 生成的 SQL 前进行安全检查。\n\n支持接入自己的 Claude、OpenAI、OpenAI 兼容接口或 Ollama 本地模型。\n\nDBX 同时提供 MCP Server，让 Claude Code、Cursor、Windsurf 等 AI 编程工具，可以在连接白名单和权限控制下使用 DBX 中已经配置的数据库连接。\n\nAI 并不是使用 DBX 的前提。不配置任何 AI 服务，也可以把它作为普通数据库工具离线使用。\n\n## 部分界面\n\n<p align=\"center\">\n  <a href=\"https://dl.dbxio.com/assets/screenshot-light.png\">\n    <img src=\"https://dl.dbxio.com/assets/screenshot-light.png\" width=\"395\" alt=\"DBX 浅色界面\" />\n  </a>\n  <a href=\"https://dl.dbxio.com/assets/screenshot-dark.png\">\n    <img src=\"https://dl.dbxio.com/assets/screenshot-dark.png\" width=\"395\" alt=\"DBX 深色界面\" />\n  </a>\n</p>\n\n<p align=\"center\">\n  <a href=\"https://dl.dbxio.com/assets/screenshot-er.png\">\n    <img src=\"https://dl.dbxio.com/assets/screenshot-er.png\" width=\"395\" alt=\"DBX ER 关系图\" />\n  </a>\n  <a href=\"https://dl.dbxio.com/assets/screenshot-grid.png\">\n    <img src=\"https://dl.dbxio.com/assets/screenshot-grid.png\" width=\"395\" alt=\"DBX 数据表格\" />\n  </a>\n</p>\n\nDBX 采用 Apache-2.0 协议开源。\n\n如果周刊读者恰好在寻找一个轻量、跨平台，同时能够覆盖多种数据库，并且可以接入 AI 与 MCP 工作流的开源工具，欢迎试用 DBX。\n\n如果使用过程中遇到问题，也欢迎直接提交 Issue。无论是建议还是代码贡献，我都会认真看。\n",
-    "created_at": "2026-08-12T03:49:15Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11143"
-  },
-  {
-    "id": 11142,
-    "title": "LinkSense 寻找 DevRel / 开源社区合作伙伴",
-    "content": "**LinkSense，一个面向组织的开源 AI 平台。**\n\n现在很多人已经在用 Codex、Claude Code 等工具，并开始创建自己的 Skills 和 AI 工作流。但到了组织层面，一个很现实的问题是：这些个人积累下来的 AI 能力，怎么共享、复用、管理，并持续沉淀下来？\n\n**LinkSense 想解决的，就是如何把个人 AI 能力变成组织能力。**\n\nLinkSense 正在准备开源发布。我们希望找到一位真正懂开源、懂开发者的伙伴，有实战经验的人一起把这件事做好。\n\n你会参与：\n\n设计 OSS Launch 和 DevRel 策略\n打磨 GitHub、README、Docs 和开发者体验\n找到并连接早期用户、AI Builders 和 Contributors\n推动项目在国内外开发者社区的传播\n探索 Skills 生态和开发者激励机制\n我们不太在意标准的岗位背景，我们更看重你是否真正参与过开源项目、理解开发者社区，并对 AI Coding / Agent / Skills 生态有自己的判断。\n\n这不是一个单纯做内容或社区运营的岗位。我们希望找到一个愿意和我们一起思考、实验，并长期参与 LinkSense 开源生态建设的伙伴。\n\n合作方式：全职或远程均可，时间灵活\n\n_LinkSense 由 Infocare 发起并孵化。Infocare 是一家专注于教育数字化与 AI 的技术公司。\n联系方式： bozhang@linksense.org.cn\n邮件标题请注明「LinkSense DevRel」，简单介绍自己并附上 GitHub / LinkedIn / 参与过的开源项目即可，无需正式简历。\nInfocare： www.infocare.org.cn_",
-    "created_at": "2026-08-12T03:33:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11142"
   }
 ]
