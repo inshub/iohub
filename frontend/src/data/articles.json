@@ -1,5 +1,13 @@
 [
   {
+    "id": 11274,
+    "title": "【项目推荐】dsh-route-resilience 插件：DeepSeek Harness 多路由高可用与故障隔离",
+    "content": "### 项目名称：dsh-route-resilience\n\n- **项目地址**：https://github.com/lokic7123-star/dsh-route-resilience\n- **类别**：开源工具 / DeepSeek 开发者工具 / DSH 插件\n\n#### 项目简介\n\n在大模型与 Agent 编排频繁使用的场景下，开发者经常面临 DeepSeek 等 API 的高频限流（HTTP 429）、服务器繁忙（HTTP 503）以及网络超时等问题，这往往会导致正在运行的 Agent 任务彻底中断。\n\n`dsh-route-resilience` 是专门为 **DeepSeek Harness**（DSH，DeepSeek 官方开源的 Agent 编排与评估工具）开发的高可用与故障隔离插件。它允许开发者将多个 API Key 或不同的提供商路由（如 DeepSeek 官方、硅基流动 SiliconFlow、火山引擎等）聚合成一个虚拟路由，并自动进行智能调度与无感容灾。\n\n#### 核心功能\n\n1. **限流自动隔离（Quarantine）**：遇到 HTTP 429 或限流响应时，自动将当前路由隔离，根据 `Retry-After` 头或指数退避机制进行冷却，到期后自动恢复。\n2. **鉴权/额度异常拉黑（Disable）**：如果遇到欠费（402）或 Key 失效（401/403），插件会永久禁用该路由，防止失效密钥污染整个模型组。\n3. **保底复活机制（Fallback）**：在极端的全节点不可用状态下，自动强制复活最早冷却完毕的节点，避免任务发生无限等待或死锁。\n4. **可视化状态面板**：无需修改 DeepSeek Harness 核心源码，安装后直接在其 Models 设置页面底部注入直观的可视化 Web UI，用于实时监控路由健康状态（Active / Quarantined / Disabled）以及在线热更新 API 密钥。\n\n对于正在基于 DeepSeek 跑 Agent 任务、经常被限流困扰的开发者而言，这是一个非常实用的稳定性补丁。\n",
+    "created_at": "2026-08-19T18:59:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11274"
+  },
+  {
     "id": 11273,
     "title": "【开源自荐】Termio：原生 Mac 终端 ADE，为 AI 编程而造的开发环境",
     "content": "项目地址：https://github.com/termio-sh/termio\n开源协议：MIT\n\n2026 年，软件编程的范式已经彻底变化了。我们大部分时间已经不是敲键盘写代码，而是一个项目开着十几个 Agent 会话——Claude Code、Codex、OpenCode、Pi……给 Agent 描述编程意图，编排它们执行这些意图。传统为手写代码优化的 IDE，其布局和功能已经不再适合 AI 编程，这也是最近很多人在做 ADE（Agent Development Environment）的原因。\n\n我最近也开发了一个 ADE，Termio，一个原生 Mac 终端 ADE。内核用 libghostty（和 Ghostty 同款），Agent 的 TUI 渲染性能很强，使用极为流畅。更重要的是，产品设计是围绕 AI 编程做的：项目管理和 Session 管理的状态一目了然，文件树和 diff 直接显示在终端旁边，给 Agent 提供 context 十分方便。\n\n\n另外也开发了 iOS 端，随时随地通过手机进行 AI 编程。比如陪家人下楼散步时把想法告诉 Agent，让它立即开始执行；等散步回来，Agent 可能已经完成了任务，你再坐回电脑前检查和验收它的工作。\n\nTermio 应该是目前市面上最漂亮的 ADE 终端了，无论 Mac 客户端还是 iOS，设计都极为漂亮。\n\n\n<img src=\"https://www.termio.sh/screenshots/hero1.png\" width=\"100%\" alt=\"Termio：左侧项目与会话侧边栏，中间 Claude Code，右侧 Codex 分屏\" />\n\n<img src=\"https://www.termio.sh/screenshots/hero7.png\" width=\"100%\" alt=\"终端旁边的文件树与内置编辑器\" />\n",
@@ -798,13 +806,5 @@
     "created_at": "2026-08-13T00:47:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11156"
-  },
-  {
-    "id": 11155,
-    "title": "【文章推荐】再夯的机器人也学不会【手工缝线】",
-    "content": "缝纫，才是检验一个机器人系统是否真正理解物理世界的终极试金石。\n\n原文地址：\n[https://mp.weixin.qq.com/s/JLx0oHFqKly5NY8ABu3C5Q](url)",
-    "created_at": "2026-08-13T00:37:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11155"
   }
 ]
