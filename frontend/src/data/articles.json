@@ -1,5 +1,21 @@
 [
   {
+    "id": 11273,
+    "title": "【开源自荐】Termio：原生 Mac 终端 ADE，为 AI 编程而造的开发环境",
+    "content": "项目地址：https://github.com/termio-sh/termio\n开源协议：MIT\n\n2026 年，软件编程的范式已经彻底变化了。我们大部分时间已经不是敲键盘写代码，而是一个项目开着十几个 Agent 会话——Claude Code、Codex、OpenCode、Pi……给 Agent 描述编程意图，编排它们执行这些意图。传统为手写代码优化的 IDE，其布局和功能已经不再适合 AI 编程，这也是最近很多人在做 ADE（Agent Development Environment）的原因。\n\n我最近也开发了一个 ADE，Termio，一个原生 Mac 终端 ADE。内核用 libghostty（和 Ghostty 同款），Agent 的 TUI 渲染性能很强，使用极为流畅。更重要的是，产品设计是围绕 AI 编程做的：项目管理和 Session 管理的状态一目了然，文件树和 diff 直接显示在终端旁边，给 Agent 提供 context 十分方便。\n\n\n另外也开发了 iOS 端，随时随地通过手机进行 AI 编程。比如陪家人下楼散步时把想法告诉 Agent，让它立即开始执行；等散步回来，Agent 可能已经完成了任务，你再坐回电脑前检查和验收它的工作。\n\nTermio 应该是目前市面上最漂亮的 ADE 终端了，无论 Mac 客户端还是 iOS，设计都极为漂亮。\n\n\n<img src=\"https://www.termio.sh/screenshots/hero1.png\" width=\"100%\" alt=\"Termio：左侧项目与会话侧边栏，中间 Claude Code，右侧 Codex 分屏\" />\n\n<img src=\"https://www.termio.sh/screenshots/hero7.png\" width=\"100%\" alt=\"终端旁边的文件树与内置编辑器\" />\n",
+    "created_at": "2026-08-19T18:31:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11273"
+  },
+  {
+    "id": 11272,
+    "title": "【开源自荐】SandBase CLI：一条命令连接 25 个 AI 客户端与 2,000+ 模型/API",
+    "content": "项目地址：https://github.com/sandbaseai/cli\n\n## 项目介绍\n\nSandBase CLI 是一个 Apache-2.0 开源的命令行工具和本地 MCP 桥接器。它用一套命令自动检测并配置 Claude Desktop、Claude Code、Codex、Cursor、Gemini CLI、OpenCode、Windsurf 等 25 个 AI 客户端目标，让这些客户端通过统一入口发现和调用 2,000+ AI 模型与 API。\n\n![SandBase CLI](https://raw.githubusercontent.com/sandbaseai/cli/main/.github/assets/sandbase-cli-hero.webp)\n\n## 解决的问题\n\n不同 AI 客户端使用不同的 MCP 配置目录、字段格式和启动命令，手工配置很容易覆盖原文件或留下失效条目。SandBase CLI 提供 OAuth 登录引导、安全配置更新、配置备份、`doctor` 诊断与回滚，把这部分重复操作收敛到一个 CLI 中。\n\n它还提供只读的 25 客户端目录，用户可以在登录或修改文件之前检查兼容性：\n\n```bash\nnpx -y https://github.com/sandbaseai/cli/releases/download/v0.1.17/sandbaseai-cli-0.1.17.tgz catalog --json\n```\n\n连接已经检测到的客户端：\n\n```bash\nnpx -y https://github.com/sandbaseai/cli/releases/download/v0.1.17/sandbaseai-cli-0.1.17.tgz connect\n```\n\n## 主要特点\n\n- 支持 25 个 AI 客户端目标，目录由仓库中的 `src/catalog.ts` 统一维护。\n- 本地 MCP Bridge 提供模型发现、能力检查、任务运行和运行记录查询等 6 个工具。\n- 配置变更包含权限检查、备份和回滚，不需要常驻后台进程。\n- 提供中、英、日、韩、西、法、德等多语言 README。\n- GitHub Release 提供不可变安装包和 SHA-256 校验值。\n\n官网：https://www.sandbase.ai\n\n中文 README：https://github.com/sandbaseai/cli/blob/main/README.zh-CN.md\n\n说明：npm 的 `latest` 当前仍落后于 GitHub Release，因此示例暂时使用不可变的 v0.1.17 Release 安装包。\n",
+    "created_at": "2026-08-19T17:37:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11272"
+  },
+  {
     "id": 11271,
     "title": "自荐开源项目：wsl-command —— 专为 WSL2 打造的零依赖极简控制台与进程管理工具",
     "content": "### 项目名称\n**WSL Command (WSL 指挥中心)**\n\n### 项目地址\nhttps://github.com/kongaiyi917-source/wsl-command\n\n### 项目简介\n一个专为 Windows + WSL2 开发者打造的轻量级可视化控制台与进程编排工具。基于纯 Python 标准库与原生 ES Modules 开发，**零外部第三方依赖**，常驻内存仅约 20MB。\n\n### 解决的痛点\n在 WSL2 下做开发时，经常遇到以下烦恼：\n1. **Docker Desktop 过于笨重**：日常开发仅仅为了看几个容器或端口，却要承受动辄 2GB~4GB 的内存开销和卡顿。\n2. **多项目进程难以直观管理**：在终端里开多个 dev server，往往需要频繁 `ps -ef | grep` 或 `lsof -i` 查端口、杀僵尸进程。\n3. **WSL 与 Windows 切换繁琐**：缺少一个轻量快速的统一入口来监控系统负载、管理项目一键启停。\n\n### 核心亮点\n- **⚡ 极致轻量与零依赖**：后端纯 Python 标准库，前端原生现代 JS，无需 `pip install` 或 `npm install` 任何依赖，拉下来就能跑。\n- **📊 可视化仪表盘**：实时展示 WSL CPU/内存负载、网络状态、运行中项目与端口映射。\n- **🚀 进程智能识别与一键启停**：自动识别 npm / Python / Docker-compose 等服务，支持快捷卡片置顶与进程树级优雅管理。\n- **🌐 原生双语支持**：内置完善的中/英文动态切换。\n\n欢迎各位 WSL2 开发者试用和交流！如果觉得对你有帮助，欢迎在 GitHub 点个 Star 支持一下 ⭐",
@@ -790,21 +806,5 @@
     "created_at": "2026-08-13T00:37:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11155"
-  },
-  {
-    "id": 11154,
-    "title": "【开源自荐】ai-agent-playbook：AI Agent 工程 × 量化金融知识库（106 篇深度笔记 + 16 个可运行代码实验）",
-    "content": "项目地址：https://github.com/Electricitysheep/ai-agent-playbook\n\n## 项目介绍\n\nai-agent-playbook 是一个 **AI Agent 工程 × 量化金融** 的开源知识库，包含 106 篇原创深度笔记和 16 个可运行代码实验，Obsidian 克隆即用。\n\n不同于一般的笔记收藏，每篇深度调研都标注**证据来源分级**（官方文档 / 社区逆向 / 本机实测），拒绝二手转述。\n\n## 核心亮点\n\n1. **Agent 源码级拆解**：Claude Code Agent Teams（邮箱+flock 机制）、Devin 消息架构、omp hub IPC 并发模型——直接读源码得出\n2. **A2A 协议调研**：调研 14 家主流 agent，发现\"agent 间直接互发消息\"仅 4 家支持，附完整对比矩阵\n3. **AI × 量化全链路**：LLM 因子挖掘 → 时序模型选型 → RL 最优执行 → 生产风控，含 16 个可运行实验（walk-forward/多因子/风控模拟器）\n4. **行业深度观察**：国内大厂 Harness 开源版图、DeepSeek 团队分析、图工程范式演进\n\n## 目录结构\n\n- 01-AI工程（Agent 调研 / RAG / 提示工程 / Claude Code 实战）\n- 02-量化金融（高频教程 / AI×量化前沿 11 主题 + 9 论文精读 + 16 实验）\n- 03-行业观察（月报 / 趋势洞察 / 案例研究）\n- 04-编程基础 / 05-工程实践 / 06-原始文献\n\n适合 AI 工程师、量化研究员、想系统学习 AI Agent 的开发者。欢迎 Star 和提 Issue 共建。",
-    "created_at": "2026-08-12T23:58:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11154"
-  },
-  {
-    "id": 11153,
-    "title": "【开源自荐】forge-think，让模型进入“对齐真实世界”的思考和推理模式",
-    "content": "**项目地址**：https://github.com/halflifezyf2680/forge-think\n\n在重度依赖大模型辅助编程的过程中，我发现一个普遍的痛点：**在面对复杂的架构设计或真实的工程疑难时，模型往往倾向于输出最通用、最基础的模板代码。**\n\n各大模型厂商展示的新功能虽然强大，但在真实的业务开发中，如果模型不了解团队的历史约束和技术包袱，其推理过程不可避免地会向平庸退化。有观点认为“提示词不够长”，但在实际工程中，长提示词由于缺乏强制约束和门控机制，模型依然倾向于一次性输出，导致复杂任务的执行效果非常有限。\n\n为了解决这个问题，顺手写了 **forge-think**。它是一个极其轻量的 MCP 编排服务器，核心理念是：**通过外部状态机，强制模型按照人类踩坑沉淀的 SOP（标准作业程序）进行多步迭代思考。**\n\n### 核心亮点：\n\n1. **业务经验转化为强制 SOP**：\n   泛化的模型知识无法解决特定的业务约束。通过该引擎，你可以将团队的“真实决策树”编写为 SOP。例如，处理某类线上故障时，必须先按顺序收集证据，再评估下游影响。智能体必须严格遵循这条轨道，从而打破“通用范式输出”。\n\n2. **多视角对抗审查**：\n   在复杂决策中，你可以定义多个“虚拟专家”（如：安全审查员、性能架构师）。引擎会强制宿主智能体依次切换视角，对初始方案进行多轮自我攻击与重写（内部 Grill 机制），直至方案收敛且无懈可击。\n\n3. **纯粹的编排层设计**：\n   该服务器本质是一个状态机，**本身不产生任何 LLM API 调用**。所有的推理与生成工作仍由你现有的宿主（如 Claude Desktop 或 OpenCode）完成。\n\n### 核心理念：为什么要用 MCP 而不是直接写长 Prompt？\n\n在实操中，即使在提示词中明确要求“分5步执行，每步复盘”，模型也往往敷衍了事。核心原因在于：\n\n1. **打破“伪反思”幻觉**：在单一提示词中要求模型自我反思，本质上仍是自回归的文本接龙，极易沦为走过场。forge-think 通过强制打断，确保上一轮文本完全生成并“定型（commit）”后，下一轮的审查角色才能在物理层面将其作为上下文“看见”，从而产生真实的评估。\n2. **需要“门控”与强制状态机**：长提示词对模型仅是没有门控的“建议”，遇到复杂任务容易跳过中间步骤直达结论。forge-think 是一个强制状态机，模型必须通过工具交互获取下一步授权，从物理层面切断了“跳跃推理”的捷径。\n3. **收敛注意力 (Attention)**：长提示词容易导致注意力分散。将大任务强制拆分为多回合交互，保证了模型在每一步的 Attention 都高度集中。\n\n**🤔 补充：与官方 `sequentialthinking` 的区别**\n`sequentialthinking` 允许模型将自身的常识分步写出，但如果脱离业务上下文，容易导致冗长且无意义的过度思考。\n`forge-think` 的核心在于**强制注入外部约束**。它利用注意力机制和多步迭代，引导模型去寻找真实的业务边界，而非漫无目的地串行发散。简而言之：前者是让模型自由发散思考，后者是约束模型在既定规则下寻找真实解。\n\n这是一个实用的工具。求个 Star 鼓励，感谢！\n",
-    "created_at": "2026-08-12T12:28:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11153"
   }
 ]
