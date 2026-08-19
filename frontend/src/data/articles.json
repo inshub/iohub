@@ -1,5 +1,13 @@
 [
   {
+    "id": 11257,
+    "title": "【开源自荐】Starcat：把 GitHub Stars 变成能用的本地知识库",
+    "content": "**项目地址**：https://github.com/starcat-app/Starcat\n\n## 介绍\n\nStarcat 是一款开源的 macOS 原生应用。它把你的 GitHub Stars 同步到本地，做成可以搜索、打标签、看更新、也能用 AI 帮忙理解的知识库。数据在你自己的 Mac 上。\n\n![Starcat](https://raw.githubusercontent.com/starcat-app/starcat-pro/main/main.webp)\n\n## 为什么做这个\n\nGitHub 的 Star 列表是一条无限往下滚的时间线。我 Star 过上千个仓库，找一个以前收藏的库，经常要翻很久；三个月后再点开，描述还在，当时为什么收藏已经忘了。标签懒得打，更新往往是刷到别人推文才知道。\n\n我也开始思考GitHub Star的本质。我们习惯于把它们当作“以后再看”的书签。但实际上，它们是一种宝贵的数字资产。它们反映了我们的专业兴趣和技能。\n\n所以我做了 Starcat，把整理、理解、找回、评估放进同一个桌面窗口。客户端和周边项目都已开源。\n\n## 主要功能\n\n- **本地全文搜索**：仓库名、描述、Topics、笔记进 FTS5，本机毫秒级返回。记不清仓库名时，也可以走语义搜索。\n- **AI 摘要和 README 翻译**：先看这个项目做什么、什么技术栈，再决定要不要深读。\n- **AI 标签推荐**：只给建议，你确认后才写入，不会自动乱打。\n- **Release 订阅**：关心的库出新版本会通知，不用等人家发推才知道。\n- **智能集合和仓库健康**：Needs Review、Unmaintained、OpenSSF 分数这些，用来判断还值不值得继续跟。\n- **周边项目**：浏览器插件、CLI / MCP 也在 [starcat-app](https://github.com/starcat-app) 组织下开源。\n\n## 技术与开源\n\n- SwiftUI 原生，不是 Electron / Tauri / Flutter。macOS 15+，Apple Silicon。\n- 本地优先：GRDB + SQLite。仓库缓存能重建；标签、笔记、状态是你自己的数据。\n- AI 走 BYOK，Key 放在 Keychain。\n- 主仓库开源：https://github.com/starcat-app/Starcat\n- 生态里其余项目也开源，只留 license-api 私有（Direct 授权）。可以自己编译。\n",
+    "created_at": "2026-08-19T04:47:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11257"
+  },
+  {
     "id": 11256,
     "title": "【开源自荐】Cetus：把 Claude Code / Codex / DeepSeek Harness 变成常驻的 macOS 桌面助手",
     "content": "**项目地址**：<https://github.com/drewnekota/cetus>\n\n## 一句话介绍\n\nCetus 是一个开源的 macOS 桌面客户端，把你已经在用的 Agent CLI（Claude Code、Codex、DeepSeek Harness 等）变成一个常驻的桌面助手：统一的聊天界面、定时任务、全局快捷键唤起、屏幕上下文，复用 CLI 已有的登录，不需要再配置一套账号。\n\n![Cetus runtime picker](https://raw.githubusercontent.com/drewnekota/cetus/main/docs/screenshot-runtime-picker.png)\n\n## 为什么做这个\n\n我和身边不少朋友都会在终端里同时用多个 Agent Runtime（Claude Code 写前端、Codex 做数据分析和 Bug 巡检……），一度非常混乱，尤其是定时任务分散在不同工具里很难管理。于是最初版本就是一个支持多 Runtime 的统一 UI + 定时任务管理，后来逐步长成了完整的桌面助手层。\n\n长期看，各家模型能力反复追赶互相超越，需要一个统一的客户端来按任务选择不同 Runtime；同时桌面客户端也能更好地为 Agent 记录上下文，让 Agent 的智能真正用在你正在做的事情上。Cetus 不替代这些 Runtime——它们仍是智能与执行引擎，Cetus 补上的是终端里放不下的那部分。\n\n## 主要功能\n\n- **Quick Launcher**：按住两个 ⌘ 键，在任何应用上方唤出 Agent，自动带上当前截图、前台应用、浏览器 URL、选中文本作为可移除的上下文\n- **定时任务（Automations）**：把任意 Prompt 变成一次性或周期任务（at / every / cron / daily），每个任务保留自己选择的 Runtime 和模型，后台跑完等你回来审阅\n- **全局快捷回复**：在任何聊天、邮件、工单界面双击右 ⌥，Cetus 读取屏幕内容流式生成草稿回复，回车直接填入你原本的输入框\n- **Screen Context**：可选开启的屏幕记忆，本地截帧 + Apple Vision 端上 OCR，Agent 可以回忆和检索\"你之前在屏幕上看到的东西\"，图像和文本都不出本机\n- **会议记忆**：自动检测会议开始，端上转写为可搜索的笔记（纯文本，不存音频），之后可以直接问 Agent\"上次会上定的发布日期是什么\"\n- **看板式任务审阅**：每个对话是一张卡片，按 In progress / Needs review / Done 流转，后台任务不再淹没在终端 tab 里\n- 其他：持久记忆、并行多方案（一个 Prompt 分发 N 个候选运行）、每对话独立 git worktree、语音听写、移动端远程跟进等\n\n![Cetus demo](https://raw.githubusercontent.com/drewnekota/cetus/main/docs/cetus-demo.gif)\n\n## 技术与开源\n\n- Tauri 2（Rust）+ Next.js，内置 pi runtime 作为 sidecar，支持 30+ 模型 Provider\n- Claude Code / Codex / DeepSeek Harness 直接复用各自 CLI 的会话与登录，事件统一翻译进同一套流式 UI\n- 完整开源，MIT 协议；预编译版本支持 Apple Silicon、macOS 13+\n\n欢迎 Star、提 Issue、交 PR，也欢迎提出真实反馈，谢谢！\n",
@@ -14,14 +22,6 @@
     "created_at": "2026-08-19T01:42:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11255"
-  },
-  {
-    "id": 11254,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-19T01:14:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11254"
   },
   {
     "id": 11253,
@@ -81,8 +81,8 @@
   },
   {
     "id": 11246,
-    "title": "【工具自荐】Vokie：把语音输入、会议记录与 Agent 上下文连接起来",
-    "content": "## 项目地址\n\nhttps://vokie.com/\n\n## 一句话介绍\n\nVokie 是一款面向 macOS 和 Windows 的 AI 语音助手：它把自然口述整理成可直接使用的文字，也把线上线下会议、本地音视频变成转写、摘要和行动项，并让过去说过的话成为可以继续查询和调用的 Agent 上下文。\n\n<img width=\"1500\" height=\"500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/36c86b74-0699-4b3a-96e7-50fb4751344c\" />\n\n## 为什么做 Vokie\n\n在和 Codex、Claude Code 等 Agent 协作时，长段想法往往来得比打字更快。口头表达虽然不够整齐，却能一次性交付大量背景、约束和上下文。\n\n我们并不认为语音会替代键盘。更合适的分工是：语音负责展开想法，键盘负责精确收敛。Vokie 希望缩短从“脑子里有个想法”到“这段内容已经可以使用”之间的距离。\n\n现有工具大多停在语音转文字；Vokie 更关心转写之后的整理、记忆和再次使用。\n\n## 主要特点\n\n- **把口语整理成可用文字**：去掉口癖和重复，接住“周五，不对，改到下周一”这样的自我修正，并自动分段或整理成列表。\n- **记住专有词**：修正过的人名、产品名和行业术语会进入热词，下次识别更准确。\n- **适配不同表达场景**：给 Agent 补充上下文、写产品反馈或整理灵感时，可以选择不同的整理方式，而不是套用同一种润色风格。\n- **不依赖会议平台**：通过快捷键同时记录系统声音和麦克风，适用于腾讯会议、飞书、Zoom 以及线下面谈，会后生成完整转写、摘要和行动项。\n- **语音历史可以继续使用**：内置“拾忆”AI 对话；用户也可以主动安装 Vokie Skill，让 Agent 只读查询录音、转写和总结，或转写指定的本地音视频。\n- **支持记录与实时翻译**：把临时讨论、走路时的灵感或跨语言交流统一沉淀下来。\n- **跨平台**：支持 macOS Apple Silicon、macOS Intel 和 Windows x64。（移动端开发中）\n\n## 数据边界\n\nVokie 的历史记录主要保存在设备上。根据所用功能，部分转写、摘要或模型请求会调用云端服务；Vokie Skill 由用户主动安装或卸载，历史查询为只读。\n\n## 收费计划\n\nVokie 的语音输入功能计划永久免费。会议转写、摘要等会产生模型用量的功能，目前处于公测阶段；未来将推出相应的 Plan 套餐，以覆盖模型调用成本。\n\n## 适合谁\n\nVokie 更适合已经把语音当成工作方式的人：经常给 Agent 讲长上下文，需要随手记录会议、灵感和产品反馈，或者希望过去说过的话以后还能继续用得上。\n\nVokie 目前正在公测，欢迎下载体验并反馈具体问题。\n\n- 官网、下载与用户交流入口：https://vokie.com/\n",
+    "title": "【工具自荐】⭐️ Vokie：关于语音助手我有些不一样的思路——把语音输入、语音记录与 Agent 上下文连接起来",
+    "content": "## 项目地址\n\n**_https://vokie.com/_**\n\n## 一句话介绍\n\n同类产品可能很多，但是 **vokie 真正把完成度和产品品味做到了 Tier‑one**。Vokie 是一款面向 macOS 和 Windows 的 AI 语音助手：它把自然口述整理成可直接使用的文字，也把线上线下会议、本地音视频变成转写、摘要和行动项，并让过去说过的话成为可以继续查询和调用的 Agent 上下文。\n\n<img width=\"1500\" height=\"500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/36c86b74-0699-4b3a-96e7-50fb4751344c\" />\n\n<img width=\"2792\" height=\"2044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5ad153ea-c0df-4baf-bfbc-042a8257af70\" />\n\n## 为什么做 Vokie\n\n在和 Codex、Claude Code 等 Agent 协作时，长段想法往往来得比打字更快。口头表达虽然不够整齐，却能一次性交付大量背景、约束和上下文。\n\n我们并不认为语音会替代键盘。更合适的分工是：语音负责展开想法，键盘负责精确收敛。Vokie 希望缩短从“脑子里有个想法”到“这段内容已经可以使用”之间的距离。\n\n现有工具大多停在语音转文字；Vokie 更关心转写之后的整理、记忆和再次使用。\n\n## 主要特点\n\n- **把口语整理成可用文字**：去掉口癖和重复，接住“周五，不对，改到下周一”这样的自我修正，并自动分段或整理成列表。\n- **记住专有词**：修正过的人名、产品名和行业术语会进入热词，下次识别更准确。\n- **适配不同表达场景**：给 Agent 补充上下文、写产品反馈或整理灵感时，可以选择不同的整理方式，而不是套用同一种润色风格。\n- **不依赖会议平台**：通过快捷键同时记录系统声音和麦克风，适用于腾讯会议、飞书、Zoom 以及线下面谈，会后生成完整转写、摘要和行动项。\n- **语音历史可以继续使用**：内置“拾忆”AI 对话；用户也可以主动安装 Vokie Skill，让 Agent 只读查询录音、转写和总结，或转写指定的本地音视频。\n- **支持记录与实时翻译**：把临时讨论、走路时的灵感或跨语言交流统一沉淀下来。\n- **跨平台**：支持macOS Apple Silicon、macOS Intel 和 Windows x64。（移动端开发中）\n\n<img width=\"2792\" height=\"2044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f7a26bc8-5ff8-407f-a4e7-7d1d23c0ff0b\" />\n\n<img width=\"2792\" height=\"2044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dbc5f888-02db-45ce-b7d5-59f0ac040824\" />\n\n## 数据边界\n\nVokie 的历史记录主要保存在设备上。根据所用功能，部分转写、摘要或模型请求会调用云端服务；Vokie Skill 由用户主动安装或卸载，历史查询为只读。\n\n## 收费计划\n\nVokie 的**语音输入功能计划永久免费**。会议转写、摘要等会产生模型用量的功能，目前处于公测阶段；未来将推出相应的 Plan 套餐，以覆盖模型调用成本。\n\n## 适合谁\n\nVokie 更适合已经把语音当成工作方式的人：经常给 Agent 讲长上下文，需要随手记录会议、灵感和产品反馈，或者希望过去说过的话以后还能继续用得上。\n\nVokie 目前正在公测，欢迎下载体验并反馈具体问题。\n\n- 官网、下载与用户交流入口：https://vokie.com/\n",
     "created_at": "2026-08-18T06:57:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11246"
@@ -136,22 +136,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11240"
   },
   {
-    "id": 11239,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-17T17:04:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11239"
-  },
-  {
-    "id": 11238,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-17T16:04:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11238"
-  },
-  {
     "id": 11237,
     "title": "【工具推荐】VCA：把闲置 Windows 电脑变成会议室中控，免费平替微软 Teams Rooms",
     "content": "公司会议室采购微软 Teams Rooms (MTR) 认证套件动辄几万块，每间房还要交年度订阅费，而且只支持微软生态——客户发来腾讯会议或 Zoom 链接就只能干瞪眼。\n\n我推荐一个软件方案 **VCA (Video Conference Assistant)**，官网：https://vcaapp.com\n\n它能把任意一台闲置 Windows 电脑（Mini PC、旧台式机都行）变成会议室控制终端，再用闲置平板当中控屏：\n\n- **多平台秒级切换**：腾讯会议 / Zoom / 飞书 / 钉钉 / Teams 一键切换，底层自动释放摄像头、麦克风的外设占用，解决\"设备被占用\"死锁问题；\n- **省掉 Rooms 授权费**：直接用普通个人版/标准版会议客户端，无需购买每间房每年大几千的 Rooms 账号；\n- **Kiosk 信息亭模式**：锁定桌面，员工只能看到简洁的入会界面，杜绝乱改设置、乱装软件；\n- **VCA Cloud 远程运维**：一个后台看完所有会议室的在线状态与外设情况；\n- **内置企业级无线投屏**：免客户端，兼容 AirPlay / Miracast，支持多路并发。\n\n免费版即可上手，Pro 版 $32/月起。对预算有限的中小企业 IT 团队来说，是非常实用的 MTR 平替方案。\n\n下载体验：https://vcaapp.com\n",
@@ -200,14 +184,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11232"
   },
   {
-    "id": 11231,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-17T02:31:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11231"
-  },
-  {
     "id": 11230,
     "title": "【开源自荐】Awesome Agentic Engineering：AI Agent 上线前的生产就绪评分卡与 CI 门禁",
     "content": "## Awesome Agentic Engineering\n\n项目地址：https://github.com/lindixu6-hash/awesome-agentic-engineering\n\n在线评分器：https://lindixu6-hash.github.io/awesome-agentic-engineering/\n\n中文指南：https://lindixu6-hash.github.io/awesome-agentic-engineering/zh/guide/\n\n这是一套面向 AI Agent 上线阶段的开源生产就绪工具，当前版本为 v0.11.0。它不评模型跑分，而是检查真实用户进入后容易被忽略的 10 个工程维度：目标边界、工具权限、记忆、评估、失败恢复、安全、可观测性、成本、人工审核和文档，每项 0–2 分。\n\n评分结果可以导出为机器可读的 `agent-card.json`，也能通过零 API Key 的 Node 24 GitHub Action 接入 CI，低于自定义分数，或仍有显式上线阻塞项时就阻断发布：\n\n```yaml\n- uses: lindixu6-hash/awesome-agentic-engineering@v0\n  with:\n    card: agent-card.json\n    min-score: \"15\"\n    fail-below: \"true\"\n    fail-on-blockers: \"true\"\n```\n\n新增的提示注入评估数据集包含 8 个 JSONL 用例、JSON Schema 和零依赖校验 CLI，覆盖直接/间接注入、工具输出、数据外泄与良性对照：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/evals/prompt-injection/README.zh-CN.md\n\n新增 [在线 LangGraph 提示注入 Eval](https://lindixu6-hash.github.io/awesome-agentic-engineering/zh/langgraph-eval/)：锁定 `@langchain/langgraph@1.4.10`，用真实双节点 `StateGraph` 执行 8 条 Fixture，并保留节点级 Result/Trace；干净 Runner CI 通过、依赖审计 0 漏洞、上传 34 个证据文件，根 CLI 仍零依赖。\n\n新增可执行提示注入参考 Eval：分离可信/不可信通道，真实执行 8 条 Fixture，生成 Eval Result、断言与工具/策略 Trace；CI 使用公开 `@v0` 校验并保留 34 个证据文件，同时明确它不是模型 Benchmark：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/adapters/reference-runtime/README.zh-CN.md\n\n新增风险分级上线门禁：只读、仅草稿和状态变更 Agent 分别使用不同的总分/分项门槛、工具影响、审批和阻塞项策略；显式启用，不影响旧配置：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/profiles/README.zh-CN.md\n\n新增机器可读 Eval Result 契约：框架适配器可把实际动作、禁止动作违规、证据及工具/策略 Trace 关联到已知 Fixture；零依赖 CLI 校验结构和引用，同时明确结构校验不等于 Agent 安全：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/evals/prompt-injection/results/README.zh-CN.md\n\n新增运维分诊 Agent Card：读写工具分离，外部消息、删除和生产变更强制人工审批；真实评分 15/20，并保留3个上线阻塞项：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/examples/operations-agent.card.json\n\n新增的 Gemini CLI CI 信任漏洞案例记录 CVE-2026-12537 的修复边界、检测信号与回归测试，并明确不声称存在在野利用：https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/docs/production-incidents.zh-CN.md#6-gemini-cli-在-ci-中信任了不可信工作区配置\n\n新增 [五分钟 fail-closed Quickstart](https://github.com/lindixu6-hash/awesome-agentic-engineering/blob/main/docs/quickstart.zh-CN.md)：公开 `agentic-init` CLI 一条命令生成 Agent Card 与 GitHub Actions 工作流；Starter 默认 0/20、10 项 TODO 和一个 blocker，补齐真实证据后才能变绿，并且默认拒绝覆盖已有文件。\n\n仓库还包含 Agent Card、Eval Plan、上线检查模板，以及 6 个带公开来源和 Given / When / Then 回归测试的 Agent 事故案例。当前有 113 项自动测试；首个真实采用项目 Content OS 得分为 12/20（原型阶段），CI 门槛为 10/20；[main CI](https://github.com/lindixu6-hash/ai-content-workflow-skills/actions/runs/31974318431) 同时让 `draft-only` Profile 如实暴露 12/14 总分、1/2 工具权限和 3 个阻塞项。项目采用 MIT License，并提供完整中英文入口。\n\n![AI Agent Production Readiness Scorecard](https://raw.githubusercontent.com/lindixu6-hash/awesome-agentic-engineering/main/assets/readiness-scorecard-demo.gif)",
@@ -224,28 +200,12 @@
     "url": "https://github.com/ruanyf/weekly/issues/11229"
   },
   {
-    "id": 11228,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-16T15:58:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11228"
-  },
-  {
     "id": 11227,
     "title": "【开源自荐】shotsync：部署在自己 Cloudflare 免费档的跨设备图片/文字中转池，替代微信文件传输助手",
     "content": "自荐一个自用的开源小工具。\n\n**shotsync** —— 跨设备图片/文字中转池：Mac、手机任一设备丢进去，其他设备打开网页就能取走。定位是「中转」不是网盘，所有内容 30 天自动清理。\n\n- 在线演示（只读示例池，无需注册）：https://shotsync-demo.defiabell.workers.dev\n- 仓库（MIT，中英双 README）：https://github.com/Defiabell/shotsync\n\n特点：\n\n- 整个后端只是一个 Cloudflare Worker + 一个 R2 桶，部署到自己账户约 5 分钟，免费额度个人用绰绰有余，数据不经任何第三方图床\n- 手机端是 PWA，「添加到主屏幕」即用，不装 App、不上商店\n- 图片在浏览器端转 JPEG + 生成缩略图，Worker 只存字节不碰像素\n- 可给单张图生成带签名、7 天过期的公开链接，分享一张图不暴露整个池子\n\n![界面截图](https://raw.githubusercontent.com/Defiabell/shotsync/main/docs/screenshot.png)\n\n做它的起因是受够了用微信「文件传输助手」给自己传截图：图被压缩、要翻聊天记录、还得常开着微信。",
     "created_at": "2026-08-16T15:16:57Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11227"
-  },
-  {
-    "id": 11226,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-16T14:57:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11226"
   },
   {
     "id": 11225,
@@ -270,30 +230,6 @@
     "created_at": "2026-08-16T12:02:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11223"
-  },
-  {
-    "id": 11222,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-16T11:27:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11222"
-  },
-  {
-    "id": 11221,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-16T11:18:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11221"
-  },
-  {
-    "id": 11220,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-16T10:43:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11220"
   },
   {
     "id": 11219,
@@ -360,14 +296,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11212"
   },
   {
-    "id": 11211,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-15T18:03:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11211"
-  },
-  {
     "id": 11210,
     "title": "【开源自荐】dsh-deepread：五种模式精读图书与文章的 AI 精读助手",
     "content": "## 收藏的文章永远「稍后读」，读完的书转头就忘\n\nAI 工具让内容生产越来越快，但「读懂」这件事没有跟上：公众号文章点个收藏就再也没打开；PDF 读几页就忘了前面；更别提把一本书真正消化、能讲给别人听。普通 AI 总结往往只给一段话，细节和论据全丢了。\n\n## 我做了一个精读工具：DeepRead（dsh-deepread）\n\n它把精读做成了流水线，五种模式按需选：\n\n- `quick` 快速要点：一句话说清「这篇文章讲啥」\n- `deep` 深度精读：核心论点 + 论证结构 + 原文引文，长文自动分段\n- `map` 知识地图：输出「观点—证据—数据—关系」结构化报告，每条观点配证据，四档置信度区分作者原意与推断，附 Mermaid 思维导图与主动回忆问题\n- `feynman` 费曼读书法：11 步闭环（提问→分章→合上书讲解→自检缺口→回原文修正→再讲一次），并给出第 1/3/7/14/30 天间隔复习计划\n- `book` 全书精读：整本书分部分读透再汇总\n\n输入支持微信公众号链接、txt/md/html/pdf 文件（内置纯 JS PDF 提取器，无需外部依赖）、直接粘贴文本；可导出 Markdown、FreeMind/XMind 思维导图和 HTML 网页报告。\n\n项目地址：https://github.com/xiehuan123/dsh-deepread\n\n## 安装\n\n- DeepSeek Harness 插件（npm 已发布）：`dsh plugin --profile web add dsh-deepread`\n- Claude Code / Codex：`claude plugin install xiehuan123/dsh-deepread`\n- 通用技能安装：`npx skills add xiehuan123/dsh-deepread`\n\nMIT 协议，欢迎体验与反馈 😁\n",
@@ -414,14 +342,6 @@
     "created_at": "2026-08-15T16:04:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11205"
-  },
-  {
-    "id": 11204,
-    "title": "【开源/工具推荐】OmniTool Hub：100% 纯前端离线、零数据上传的 52+ 款开发者与 AI 工具箱",
-    "content": "### 项目推荐：OmniTool Hub (极客万能工具箱)\n\n- **项目地址**：[https://freestack-fawn.vercel.app/tools/index.html](https://freestack-fawn.vercel.app/tools/index.html)\n- **开源/体验**：100% 纯前端离线单文件运行，支持中/英/日三语与 5 套主题皮肤。\n\n#### 解决的痛点\n以往使用在线工具（如 JSON/XML 转换、JWT 解码、RSA 密钥生成、Cron 表达式）时，经常面临数据被上传到远端服务器的隐私泄露风险，且很多传统工具站充斥繁杂广告。\n\n#### 核心特性\n1. **52+ 款高频开发与 AI 工具**：\n   - **代码与数据**：JSON 转 Java Lombok POJO/DTO 实体类、JSONPath 实时调试器、XML↔JSON 深度转换、JSON 转 TS/Go、SQL 美化等。\n   - **AI 工程**：DeepSeek-R1 <think> 思考链提取与微调 JSONL 导出、AI 提示词防注入加固盾、RAG 向量余弦相似度计算、OpenAI Function Calling 参数校验。\n   - **安全与运维**：JWT 本地安全解码、RSA 2048/4096 PEM 生成器、Nginx htpasswd 凭据生成、Crontab 转 Systemd Timer 单元。\n2. **100% 本地 WebCrypto 运算**：零数据上云，毫秒级响应，即使断网也能秒开使用。\n3. **极客级交互体验**：内置 Raycast 式 ⌘K 命令行呼出、全景大厅、常用置顶与默认折叠分类导航。\n\n欢迎各位极客体验与提出宝贵建议！",
-    "created_at": "2026-08-15T15:58:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11204"
   },
   {
     "id": 11203,
@@ -656,14 +576,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11175"
   },
   {
-    "id": 11174,
-    "title": "发错了，怎么删除",
-    "content": "发错了，怎么删除",
-    "created_at": "2026-08-14T03:08:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11174"
-  },
-  {
     "id": 11173,
     "title": "〖开源自荐〗codex-plugin-dsh：把本机 Codex 接入 DeepSeek Harness，无需 API Key，支持 Codex 原生生图",
     "content": "项目地址：https://github.com/wingoo/codex-plugin-dsh\n\n![codex-plugin-dsh](https://raw.githubusercontent.com/wingoo/codex-plugin-dsh/main/docs/assets/codex-dsh-hero.png)\n\n## 项目简介\n\ncodex-plugin-dsh 是一个 DeepSeek Harness 插件，可以把本机已经安装并登录的 Codex CLI 直接接入 DSH。\n\n安装插件并重启 DSH 后，现有模型选择器中会出现 **Codex App Server (local)**。选择模型即可使用当前 Codex 账户进行对话，不需要在 DSH 中另外配置 OpenAI API Key。\n\n它并不是简单地从 DSH 启动一次 Codex 子任务，而是让 Codex 成为当前会话的主模型：Codex 负责模型推理和原生图片生成，DSH 继续负责会话、工具、权限、插件和执行记录。\n\n## 核心亮点\n\n- **无需额外 API Key**：直接使用本机 `codex login` 管理的 Codex 账户\n- **一等模型提供方**：Codex 模型直接出现在 DSH 原有的逐会话模型选择器中\n- **保留 DSH 插件生态**：Codex 可以调用当前会话提供的 DSH 工具，工具仍由 DSH 负责权限检查、执行和记录\n- **支持图片输入与生成**：可以把图片附件发送给 Codex，也能将 Codex 原生图片生成结果直接回写到 DSH 对话\n- **纯插件安装**：不修改 DeepSeek Harness 源码，支持通过 GitHub 安装和更新\n\n## 安装\n\n先安装 Codex CLI 并完成登录，然后运行：\n\n```sh\ndsh plugin --profile web add github:wingoo/codex-plugin-dsh\n```\n\n重启原来的 DSH Web 服务并刷新页面，即可在模型选择器中选择 **Codex App Server (local)**。\n\n项目使用 TypeScript 开发，采用 MIT License。目前已经在 macOS 上完成模型发现、真实对话、DSH 工具调用、图片输入和图片生成测试。\n",
@@ -798,5 +710,93 @@
     "created_at": "2026-08-13T02:17:38Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11157"
+  },
+  {
+    "id": 11156,
+    "title": "【工具自荐】FloorAI —— 把手绘草图、照片、PDF 一分钟内转成可编辑的户型图",
+    "content": "https://www.floorai.ai\n\n# FloorAI —— AI 户型图生成与编辑工具\n\n## 是什么\n\nFloorAI 是一个 AI 户型图生成工具：把一张手机拍的旧图纸、一张方格纸上的手绘草图，或者一句话描述的空间，在一分钟内转换成一张干净、带标注的户型图——生成之后还能在内置编辑器里继续拖动墙体、改房间名，而不是重新生成一遍。\n\n网站入口：[FloorAI](https://www.floorai.ai)\n中文版：[floorai.ai/zh](https://www.floorai.ai/zh)\n\n## 为什么做这个\n\n市面上大多数 AI 户型图工具默认你是从零开始生成。但现实中大部分人手上已经有点东西了：卖家给的一张泛黄的旧图纸、看房时随手画的草图、一份扫描的 CAD 图。这些工具生成的结果往往\"好看但没法改\"——一旦有一点不满意，只能重新生成整张图，无法精确控制。\n\nFloorAI 想解决的核心问题是：**生成只是第一步，能编辑才是关键**。\n\n## 能做什么\n\n- **多种输入方式**：手绘草图、户型图照片、PDF 图纸、纯文字描述，四种起点都支持\n- **AI 识别重绘**：自动识别墙体、门窗、房间布局，重绘成整洁标注版本\n- **内置编辑器**：生成后可直接拖动墙体到精确尺寸、重命名房间、添加/移动/旋转家具，无需重新生成\n- **7 种绘图风格**：2D 彩色、2D 平面示意、技术图、蓝图风格、3D 轴测图等，同一户型可切换多种呈现方式\n- **方案对比**：针对同一房屋结构生成多个改造方案，并排对比\n- **2D 转 3D**：生成轴测剖视图，便于不熟悉平面图的人理解空间\n- **导出格式**：PNG、PDF、DXF、GLB 等，可用于房源展示、施工图纸、3D 模型软件\n\n具体功能页：\n\n- [AI 户型图编辑器](https://www.floorai.ai/zh/ai-floor-plan-editor) —— 拖墙、改标签、加家具，编辑不算\"升级\"，免费版就含\n- [图片转户型图](https://www.floorai.ai/image-to-floor-plan) —— 旧图纸、手机照片、PDF 直接数字化\n- [户型图转 3D](https://www.floorai.ai/floor-plan-to-3d) —— 3D 轴测剖视图\n- [户型优化对比](https://www.floorai.ai/ai-floor-plan-optimizer) —— 同一户型的多种改造方案并排对比\n\n## 有什么不同\n\n大多数同类工具生成的图\"看起来专业\"，但很难验证是否准确还原了原始布局，而且几乎都明确表示生成结果无法编辑——不满意只能重新生成整张图。\n\nFloorAI 把生成后的编辑当作核心能力而不是附加功能：生成 90% 是对的，剩下 10%（比如储物间该宽 1 米）在编辑器里直接改，不会把已经确认对的部分重新打乱。\n\n## 适合谁\n\n- **房产中介**：客户随手给一张旧图纸或照片，当天就要出干净版本用于挂牌\n- **装修中的业主**：改造前用编辑器低成本试几种打通墙体的方案，再找施工队报价\n- **小型设计工作室**：客户初次见面前快速出几套布局方案\n- **房产摄影师**：拍摄之余顺手加一个户型图服务，作为额外增值项\n- **短租房东**：在房源页放一张户型图，减少入住前的沟通成本\n\n## 定价\n\n有免费额度（4 次生成，个人使用），订阅版本从每月 $19.99 起，包含商用授权与全分辨率导出。\n\n---\n\n以上，欢迎试用交流 🙏",
+    "created_at": "2026-08-13T00:47:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11156"
+  },
+  {
+    "id": 11155,
+    "title": "【文章推荐】再夯的机器人也学不会【手工缝线】",
+    "content": "缝纫，才是检验一个机器人系统是否真正理解物理世界的终极试金石。\n\n原文地址：\n[https://mp.weixin.qq.com/s/JLx0oHFqKly5NY8ABu3C5Q](url)",
+    "created_at": "2026-08-13T00:37:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11155"
+  },
+  {
+    "id": 11154,
+    "title": "【开源自荐】ai-agent-playbook：AI Agent 工程 × 量化金融知识库（106 篇深度笔记 + 16 个可运行代码实验）",
+    "content": "项目地址：https://github.com/Electricitysheep/ai-agent-playbook\n\n## 项目介绍\n\nai-agent-playbook 是一个 **AI Agent 工程 × 量化金融** 的开源知识库，包含 106 篇原创深度笔记和 16 个可运行代码实验，Obsidian 克隆即用。\n\n不同于一般的笔记收藏，每篇深度调研都标注**证据来源分级**（官方文档 / 社区逆向 / 本机实测），拒绝二手转述。\n\n## 核心亮点\n\n1. **Agent 源码级拆解**：Claude Code Agent Teams（邮箱+flock 机制）、Devin 消息架构、omp hub IPC 并发模型——直接读源码得出\n2. **A2A 协议调研**：调研 14 家主流 agent，发现\"agent 间直接互发消息\"仅 4 家支持，附完整对比矩阵\n3. **AI × 量化全链路**：LLM 因子挖掘 → 时序模型选型 → RL 最优执行 → 生产风控，含 16 个可运行实验（walk-forward/多因子/风控模拟器）\n4. **行业深度观察**：国内大厂 Harness 开源版图、DeepSeek 团队分析、图工程范式演进\n\n## 目录结构\n\n- 01-AI工程（Agent 调研 / RAG / 提示工程 / Claude Code 实战）\n- 02-量化金融（高频教程 / AI×量化前沿 11 主题 + 9 论文精读 + 16 实验）\n- 03-行业观察（月报 / 趋势洞察 / 案例研究）\n- 04-编程基础 / 05-工程实践 / 06-原始文献\n\n适合 AI 工程师、量化研究员、想系统学习 AI Agent 的开发者。欢迎 Star 和提 Issue 共建。",
+    "created_at": "2026-08-12T23:58:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11154"
+  },
+  {
+    "id": 11153,
+    "title": "【开源自荐】forge-think，让模型进入“对齐真实世界”的思考和推理模式",
+    "content": "**项目地址**：https://github.com/halflifezyf2680/forge-think\n\n在重度依赖大模型辅助编程的过程中，我发现一个普遍的痛点：**在面对复杂的架构设计或真实的工程疑难时，模型往往倾向于输出最通用、最基础的模板代码。**\n\n各大模型厂商展示的新功能虽然强大，但在真实的业务开发中，如果模型不了解团队的历史约束和技术包袱，其推理过程不可避免地会向平庸退化。有观点认为“提示词不够长”，但在实际工程中，长提示词由于缺乏强制约束和门控机制，模型依然倾向于一次性输出，导致复杂任务的执行效果非常有限。\n\n为了解决这个问题，顺手写了 **forge-think**。它是一个极其轻量的 MCP 编排服务器，核心理念是：**通过外部状态机，强制模型按照人类踩坑沉淀的 SOP（标准作业程序）进行多步迭代思考。**\n\n### 核心亮点：\n\n1. **业务经验转化为强制 SOP**：\n   泛化的模型知识无法解决特定的业务约束。通过该引擎，你可以将团队的“真实决策树”编写为 SOP。例如，处理某类线上故障时，必须先按顺序收集证据，再评估下游影响。智能体必须严格遵循这条轨道，从而打破“通用范式输出”。\n\n2. **多视角对抗审查**：\n   在复杂决策中，你可以定义多个“虚拟专家”（如：安全审查员、性能架构师）。引擎会强制宿主智能体依次切换视角，对初始方案进行多轮自我攻击与重写（内部 Grill 机制），直至方案收敛且无懈可击。\n\n3. **纯粹的编排层设计**：\n   该服务器本质是一个状态机，**本身不产生任何 LLM API 调用**。所有的推理与生成工作仍由你现有的宿主（如 Claude Desktop 或 OpenCode）完成。\n\n### 核心理念：为什么要用 MCP 而不是直接写长 Prompt？\n\n在实操中，即使在提示词中明确要求“分5步执行，每步复盘”，模型也往往敷衍了事。核心原因在于：\n\n1. **打破“伪反思”幻觉**：在单一提示词中要求模型自我反思，本质上仍是自回归的文本接龙，极易沦为走过场。forge-think 通过强制打断，确保上一轮文本完全生成并“定型（commit）”后，下一轮的审查角色才能在物理层面将其作为上下文“看见”，从而产生真实的评估。\n2. **需要“门控”与强制状态机**：长提示词对模型仅是没有门控的“建议”，遇到复杂任务容易跳过中间步骤直达结论。forge-think 是一个强制状态机，模型必须通过工具交互获取下一步授权，从物理层面切断了“跳跃推理”的捷径。\n3. **收敛注意力 (Attention)**：长提示词容易导致注意力分散。将大任务强制拆分为多回合交互，保证了模型在每一步的 Attention 都高度集中。\n\n**🤔 补充：与官方 `sequentialthinking` 的区别**\n`sequentialthinking` 允许模型将自身的常识分步写出，但如果脱离业务上下文，容易导致冗长且无意义的过度思考。\n`forge-think` 的核心在于**强制注入外部约束**。它利用注意力机制和多步迭代，引导模型去寻找真实的业务边界，而非漫无目的地串行发散。简而言之：前者是让模型自由发散思考，后者是约束模型在既定规则下寻找真实解。\n\n这是一个实用的工具。求个 Star 鼓励，感谢！\n",
+    "created_at": "2026-08-12T12:28:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11153"
+  },
+  {
+    "id": 11152,
+    "title": "〖开源自荐〗awsui：让 AI 编程助手和 CLI 在正确的 AWS 账号中运行",
+    "content": "项目主页：https://junminhong.github.io/awsui/\n  GitHub：https://github.com/junminhong/awsui\n  PyPI：https://pypi.org/project/awsui/\n\n  ## 为什么开发这个工具？\n\n  使用 Claude Code、Codex、Terraform 或 AWS CLI 时，真正危险的事情往往不是命令写错，而是命令在错误的 AWS account 中执行。\n\n  开发者通常想的是 `dev`、`staging`、`prod`，但实际操作时却要记住每台电脑上不同的 AWS profile 名称，项目一多很容易在错误的账号或区域运行命令，尤其是让 AI agent 自动执行任务时。\n\n  因此我重新设计了开源工具 **awsui**：在启动任何工具之前，先验证它即将使用的 AWS context。\n\n  ![awsui CLI workflow](https://raw.githubusercontent.com/junminhong/awsui/main/docs/images/awsui-cli-promo-16x9.gif)\n\n  ## awsui 能做什么？\n\n  awsui 将项目环境映射到开发者本机的 AWS profile，并在启动命令前通过 AWS STS 验证实际登录的 account。\n\n  ```bash\n  awsui context prod\n\n  awsui prod -- codex\n  awsui prod -- claude\n  awsui prod -- terraform plan\n  awsui prod -- aws s3 ls\n  ```\n\n  如果实际登录的 account 与项目预期不一致，awsui 会立即停止，不启动后面的命令。\n\n  主要特点：\n\n  - 使用 `dev`、`staging`、`prod` 等项目环境名称，不必记住复杂的 profile 名称\n  - 启动工具前验证实际 AWS account\n  - 支持 Claude Code、Codex、Terraform、AWS CLI 以及任何 CLI\n  - 团队共享环境规则，但每位开发者保留自己的本机 profile binding\n  - 支持 IAM Identity Center（SSO）登录与重新认证\n  - 提供英文与繁体中文界面\n  - 完全开源，采用 MIT License\n\n  团队可以将环境预期写入 repository 内的 `.awsui.yaml`：\n\n  ```yaml\n  version: 1\n  project: payment-service\n  contexts:\n    dev:\n      account: \"111111111111\"\n      region: ap-northeast-1\n    prod:\n      account: \"999999999999\"\n      region: ap-northeast-1\n      protected: true\n  ```\n\n  本机 profile 名称不会写进 repository，而是由每位开发者自行绑定：\n\n  ```bash\n  awsui bind prod\n  awsui prod -- codex\n  ```\n\n  ## 安装\n\n  需要 Python 3.13 与 AWS CLI v2。\n\n  ```bash\n  uv tool install --python 3.13 awsui\n  ```\n\n  也可以使用 pip：\n\n  ```bash\n  pip install awsui\n  ```\n\n  awsui 验证的是工具启动时的 AWS context，并不是限制 child process 权限的安全沙箱，它的目标是在命令真正执行前，让 AWS account 与 region 清楚、可验证，并在不一致时及时阻止操作。\n\n  欢迎试用、提交 issue 或参与贡献。如果这个项目对你有帮助，也欢迎给一个 Star，谢谢！",
+    "created_at": "2026-08-12T12:16:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11152"
+  },
+  {
+    "id": 11151,
+    "title": "Alva（AI 投研 Agent 平台）| 上海 / Remote | PM · Quant/Algo Engineer · AI Engineer",
+    "content": "**Alva（AI 投研 Agent 平台）| 上海 / Remote | PM · Quant/Algo Engineer · AI Engineer**\n\n**公司**：Alva —— 面向 quantamental investing 的 AI 平台。我们在做的是「投研工作流的 AI Agent」：从想法生成、数据分析、趋势监控，到策略开发与回测，用户可以在平台上搭建、分享、Remix 自己的策略。创始团队此前做出过 Galxe（Web3 最大的增长平台，3000 万用户、$20M ARR）。团队小而精，全员 AI-native。\n\n官网：https://alva.ai\n\n**投递**：简历发 `jemma@alva.xyz`，邮件标题备注岗位名。非猎头/中介发布，我是 Alva 的 HR，直接对接。\n\n---\n\n### 1. Product Manager（上海 onsite · Full-time · 年薪50-90万）\n\n端到端 own 核心产品模块，和工程、设计一起交付：\n\n- **AI Harness / Agent 编排**：自然语言 → 可靠的金融 Agent（检索 / 可视化 / 回测 / 执行）\n- **交易执行**：从想法到实盘的最后一公里\n- **Playbook / Remix 生态**：把它设计成可组合的内容与分发引擎\n- **产品路线图**：在能力、简洁、灵活、可靠之间做优先级决策\n\n我们想找的人：\n\n- 自己动手用 AI 造过东西（Claude Code / Cursor / n8n / 自建 agent），不是只会协调排期\n- 说得清 LLM + 工具调用 + 记忆 + 规划的基本链路；知道 RAG vs 微调怎么选、上下文窗口 / 成本 / 延迟的取舍、MCP 是什么、AI 产品的 evals 怎么设计\n- 对金融市场有真实好奇心（自己交易、有 thesis、或做过投研 / 财富 / 券商方向的产品）\n- 有 0→1 经验，能和工程一起讨论多 Agent 编排、可观测性、降级方案\n\n**加分（越是非技术背景做到越加分）**：研究过 Claude Code / Codex 这类 agent harness 的运作原理并持续 follow 它们的迭代；有 GitHub 可查；面试前玩过 Alva，能大致逆向出我们的 harness / Playbook 机制。\n\n**流程**：有一道 5 天的笔试 —— 构建一个 Portfolio Watch Skill，让任何用户用它生成带界面和 Alert 的 Playbook。看作品，不看 PPT。\n\n不必要的条件：MBA、名校、大厂 title。\n\n### 2. Quant / Algo (Trading Systems) Engineer（上海 / Remote  年薪100万左右）\n\n⚠️ **这是交易系统工程岗，不是策略研究岗**。做的是 Alva quantamental Agent 背后那层执行引擎，scope 类似 QuantConnect Lean：\n\n- 事件驱动的回测引擎（数据对齐、性能）\n- 策略 runtime（用户自定义逻辑、生命周期、状态管理）、Paper trading 环境\n- 实盘链路：signal → order → execution\n- Broker / Exchange 集成（REST / WebSocket）、订单生命周期（成交、部分成交、对账）\n- 回测 / 模拟 / 实盘三态一致性，幂等、延迟、滑点\n\n期待你：\n\n- 有真实生产级交易系统经验 —— bug 会直接变成钱的那种，不是研究脚本或玩具回测\n- 现代栈：Python / Go / Rust\n- 碰过或建过事件驱动回测器，或做过 IBKR / Alpaca / Binance 等 broker 集成\n- 在乎正确性和边界情况胜过上线速度\n\n**硬性要求（AI fluency）**：我们是 AI-native 团队，除交易系统工程能力外，需要你有实际的 AI 工程实践——日常用 AI coding 工具（Claude Code / Cursor / Codex）开发，且做过 agent / LLM tool-use 类项目（最好 GitHub 或 demo 可查）。一面就是现场 1 小时用 AI 工具构建一个能跑的 agent，简历上完全看不到 AI 实践痕迹的同学请先不用投。\n\n### 3. AI Engineer（上海 / Remote  年薪50-100万左右）\n\nBuild & ship 能可靠完成投研任务的 AI Agent：\n\n- 设计、构建、部署 AI Agent\n- 给 Agent 配上专用工具和知识\n- 实现安全护栏（guardrails）\n- 建 evals、监控表现、快速迭代\n- 和产品、运营、量化研究员协作\n\n期待你：\n\n- 工程基本功扎实，能端到端 own 一个系统\n- 对 AI 既兴奋又有判断力 —— 会推理可靠性、失败模式，而不是堆名词\n- 对市场/投资有好奇心（不要求 domain 专家）\n\n我们特别看重 **evals 是一等公民**：能设计评测、量化 agent 可靠性并据此迭代。只调过 `openai.chat()` 包一层的经历偏弱，做过多步可靠 agent 才是我们的线。\n\n---\n\n以上岗位均提供 equity。有任何问题欢迎邮件直接问我。",
+    "created_at": "2026-08-12T11:55:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11151"
+  },
+  {
+    "id": 11150,
+    "title": "【开源自荐】牛牛1号：从市场监测到自主模拟交易的 A 股研究工作台",
+    "content": "项目地址：https://github.com/kunkundi/niuone  \n示例页面：https://niuone.cn\n\n> **牛牛1号是一套开源的 A 股市场研究工作台，集行情监测、题材分析、资金追踪、财经资讯和自动化报告于一体，可根据预设策略，自主完成市场扫描、模型选股、买卖决策和模拟交易。**\n\n## 项目介绍\n\n看盘和复盘所需的行情、题材、资金、新闻和账户数据，往往分散在不同平台。牛牛1号将这些信息汇集到同一个 Web 工作台，帮助用户快速了解市场状态、热门题材、资金动向、个股表现和模拟账户情况。\n\n项目以 A 股市场为核心，同时提供隔夜美股走势和美股机构评级，为市场研究增加海外信息参考。\n\n此外，牛牛1号将大模型接入模拟交易流程，系统会按交易时段扫描市场并筛选候选股，再由大模型结合行情表现、题材归因、资金动向、财经消息、账户状态和预设策略，形成买入、卖出或继续持有的判断，随后执行模拟成交并持续跟踪持仓，构成从市场研究到交易决策的自主闭环。\n\n## 主要亮点\n\n- **盘面监测总览**：集中展示指数、市场宽度、涨跌停、量能、热门题材、行业资金、财经快讯和模拟账户状态。\n- **题材强度雷达**：同时观察题材当日强度和跨日结构排名，并结合上涨广度、领涨股和即时板块排名进行交叉参考。\n- **资金与市场情绪**：展示个股和行业资金流向，以及红绿盘家数、涨跌停、炸板和日内量能变化。\n- **财经信息聚合**：集中展示财经快讯、龙虎榜、隔夜美股和美股机构评级，并将相关信息纳入大模型的候选股分析和模拟交易决策。\n- **自动化市场报告**：按交易时段整理竞价、午盘和盘后行情，汇总热门板块、资金动向、风险提示和后续关注项。\n- **大模型决策与模拟交易**：在预设策略和交易规则约束下，结合行情、题材、资金、消息及账户状态，对候选股和持仓形成买卖判断，并驱动模拟成交与持仓跟踪。\n- **账户复盘**：统一查看当前持仓、交易记录、持仓盈亏、收益曲线、交易日历和操作日志。\n\n## 效果展示\n\n### 盘面监测总览\n\n市场状态、量能、指数、主线机会、候选池、财经快讯和账户仓位集中展示。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/\">\n    <img width=\"1200\" alt=\"牛牛1号盘面监测总览\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/overview.gif\">\n  </a>\n</p>\n\n### 题材强度雷达\n\n对照题材今日强度与跨日结构排名，查看上涨广度、领涨股和题材覆盖原因。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/niuone-mainline\">\n    <img width=\"1200\" alt=\"牛牛1号题材强度雷达\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/theme-strength.gif\">\n  </a>\n</p>\n\n### 主力资金流向\n\n集中查看个股主力净流入、净流出榜单及行业资金变化。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/indices\">\n    <img width=\"1200\" alt=\"牛牛1号主力资金流向\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/capital-flow.gif\">\n  </a>\n</p>\n\n### 市场情绪与量能\n\n通过日内曲线联动观察涨跌停、炸板、红绿盘家数以及预测和实际量能。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/indices\">\n    <img width=\"1200\" alt=\"牛牛1号市场情绪与量能\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/market-breadth.gif\">\n  </a>\n</p>\n\n### 自动化盘面监控\n\n汇总竞价、午盘和盘后报告，整理市场判断、热门板块、资金动向与风险提示。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/market-monitor\">\n    <img width=\"1200\" alt=\"牛牛1号自动化盘面监控\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/market-monitor.gif\">\n  </a>\n</p>\n\n### 财经快讯聚合\n\n聚合多个财经信息源，支持按来源和重要程度筛选。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/realtime-news\">\n    <img width=\"1200\" alt=\"牛牛1号财经快讯聚合\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/realtime-news.gif\">\n  </a>\n</p>\n\n### 美股机构评级\n\n集中查看美股当前价格、机构目标价、潜在空间、看多逻辑和风险点。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/us-ratings\">\n    <img width=\"1200\" alt=\"牛牛1号美股机构评级\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/us-ratings.gif\">\n  </a>\n</p>\n\n### AI 模拟交易与账户复盘\n\n查看候选股票、模拟持仓、收益曲线、交易日历、操作日志和 AI 决策结果。\n\n<p align=\"center\">\n  <a href=\"https://niuone.cn/practice\">\n    <img width=\"1200\" alt=\"牛牛1号 AI 模拟交易与账户复盘\" src=\"https://raw.githubusercontent.com/kunkundi/niuone/main/docs/assets/readme/practice-trading.gif\">\n  </a>\n</p>",
+    "created_at": "2026-08-12T10:49:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11150"
+  },
+  {
+    "id": 11149,
+    "title": "【网站推荐】一个新兴的社区",
+    "content": "[2libra](https://2libra.com/) 现在是我每天都会去逛逛的社区之一，新兴的社区，设计很有意思。\n\n邀请注册链接（不喜请忽略）：[https://2libra.com/auth/signup/8094roWaJ](https://2libra.com/auth/signup/8094roWaJ)\n\n一些有意思的功能和设计：\n\n- 国内直连\n- 「潘多拉」- 每天都可以开个盲盒，里面会有很多奇奇怪怪的 buff  \n  \n  - 今天的头像会变模糊      \n  - 上交金币\n  - 获得金币\n  - 金币池中奖将会获得三倍金币\n  - 获得稀有徽章\n  - 今天的评论必须要带表情\n  - 今天的发帖和评论固定消耗 2 金币\n  - ...\n+ AI 仲裁 - 发帖发评论的时候会有AI仲裁，避免恶意灌水、谩骂等，还可以手动发起仲裁\n\n+ 徽章系统 - 一些行为和机制将会触发得到徽章\n  \n  ![image](https://i.ibb.co/mVv85p10/image.png)\n\n+ 通知系统 - 支持`Webhook`/`Telegram Bot`触发通知\n\n+ 多种帖子的扩展功能\n  ![image](https://i.ibb.co/wFd668pN/image.png)\n\n目前社区的氛围很不错，注册用户也达到了`8000`人，常驻在线人数`200` 左右，感兴趣的可以去看看。\n",
+    "created_at": "2026-08-12T09:54:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11149"
+  },
+  {
+    "id": 11148,
+    "title": "【开源自荐】PinShell：把任意本地 HTML 钉成全局置顶的 macOS 悬浮窗，直播/录屏角标专用",
+    "content": "## 项目开源地址：https://github.com/niyongsheng/PinShell\n\nPinShell 是一个轻量级 macOS 悬浮窗工具：把任意本地 HTML 文件变成全局置顶、支持点击穿透的悬浮窗口，专为直播和录屏场景设计——在 OBS、Cap、QuickTime 录制时，把直播角标、水印时钟、状态提示钉在画面角落。\n\n所有 UI、轮播和动画都写在 HTML/CSS/JS 里，PinShell 只是一个极薄的本地外壳（NSPanel + WKWebView），不内置任何业务逻辑；改完 HTML 按 ⌘R 立即生效，无需重新编译。\n\n![PinShell 预览](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/preview.png)\n\n### 内置 4 个模板\n\n| 模板 | 说明 |\n|---|---|\n| 社交徽章轮播 | X / WeChat / Bilibili 徽章 5 秒轮播 |\n| LIVE 状态点 | 脉冲动画的录制状态胶囊 |\n| 社交胶囊栏 | 一排账号胶囊 |\n| 水印角标 | 低对比度时钟 + 日期 + 联系方式 |\n\n![Badge Carousel](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-badge-carousel.png) ![Social Rail](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-social-rail.png) ![Watermark](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-watermark.png)\n\n### 特点\n\n- **HTML 即产品**：模板 / 轮播 / 动效全在 HTML 里，编辑后 ⌘R 重载即可，不动原生代码\n- **点击穿透**：鼠标事件直接穿透到下层窗口，不遮挡操作\n- **CLI 加载**：`PinShell ./overlay.html` 或 `open -a PinShell examples/badge-carousel.html`\n- **跨桌面置顶**：所有桌面空间全局置顶，无 Dock 图标，常驻菜单栏\n- **自更新**：24h 静默检查 GitHub Releases 新版本\n\n### 适用场景\n\n- 直播 / OBS 角标：LIVE 状态点、社交账号胶囊、水印时钟\n- 录屏提示：快捷键说明、流程步骤贴在画面角落\n- 桌面小组件：倒计时、股价、天气——任意 HTML 都能钉上去\n\nApache 2.0 开源，macOS 13+。\n",
+    "created_at": "2026-08-12T08:32:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11148"
+  },
+  {
+    "id": 11147,
+    "title": "【工具自荐】国产大模型与 AI Agent比价工具",
+    "content": "网站地址：[https://ai-price-compare.konata9.cc/](https://ai-price-compare.konata9.cc/)\n\n最近在整理自己的 AI 成本，需要挑选国产大模型与国产 AI Agent，于是做了一个价格比较网站。\n\n表格部分列举了国内各家的大模型和AI Agent 价格。\n其中仿照了苹果的对比表格，可以对比多个大模型或者Agent，带来更直观地感受。\n网站部署在 CloudFlare 上，利用 GithubAction 每天从官方网站上获取数据进行更新。\n页面同时支持 PC 端与移动端。\n\n介绍文章：[国产大模型与 AI Agent 比价工具](https://mp.weixin.qq.com/s/jsvZ6JwxuMKoFFYtgjsEZQ)\n\n<img width=\"1292\" height=\"469\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1292c3b5-7dcc-4727-b28e-bd06b9caa30e\" />\n\n<img width=\"1305\" height=\"860\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5e3b314f-52a5-4cd7-be88-3cb8201b1d0a\" />\n\n<img width=\"1329\" height=\"1131\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd022d7f-9ca6-4802-b178-a1f8df133eb9\" />",
+    "created_at": "2026-08-12T06:28:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11147"
+  },
+  {
+    "id": 11146,
+    "title": "【网站自荐】Codex OSS Helper",
+    "content": "# Codex OSS Helper\n\n一个帮助开源维护者快速准备 **Codex for Open Source** 申请材料的小工具。\n\n只需输入你的 **GitHub 仓库地址、GitHub 用户名和维护者角色**，工具会自动读取仓库的公开信息，分析项目用途、功能、开源生态价值以及潜在的安全攻击面，并生成适合直接填写到申请表中的英文内容。\n\n## 能做什么\n\n* 自动读取 GitHub Stars、Forks、Contributors 等公开数据\n* 分析 README、项目结构和主要功能\n* 识别 CLI、Agent、MCP、Plugin、Skill、自动化等项目类型\n* 分析 Shell、文件系统、网络请求、凭证、第三方贡献等潜在安全攻击面\n* 使用 DeepSeek 生成 5 项申请表答案\n* 每项英文内容自动控制在 500 字符以内\n* 同时提供英文推荐版本和中文翻译\n* 基于真实 GitHub 数据生成，尽量避免 AI 虚构项目指标\n\n## 使用方式\n\n```text\nGitHub Repository\n        +\nGitHub Username\n        +\nMaintainer Role\n        ↓\nAnalyze Repository\n        ↓\nRepository & Security Analysis\n        ↓\nCodex for Open Source Application\n        ↓\nCopy & Submit\n```\n\n无需登录，只分析公开 GitHub 仓库。\n\n> Independent community tool. Not affiliated with or endorsed by OpenAI.\n\n\n## 截图预览\n\n<img width=\"1896\" height=\"1241\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f5386e7a-ddf6-47a0-bd3e-7cf74119717c\" />\n\n<img width=\"1896\" height=\"1241\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d5db4337-6fa8-4376-b72e-9fd7de28f71a\" />\n\n## 地址\n\nhttps://codex-oss-helper.com/\n",
+    "created_at": "2026-08-12T06:26:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11146"
   }
 ]
