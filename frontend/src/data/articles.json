@@ -1,5 +1,37 @@
 [
   {
+    "id": 11264,
+    "title": "【开源自荐】小红书时间线 — Chrome 扩展，把小红书个人主页按时间线模式排列",
+    "content": "### 它做什么\n把小红书个人主页默认的瀑布流网格，**按发布时间倒序重排成时间线**，自动按月分组（如 `2026年8月`、`2026年7月`），并支持「近 3 个月 / 近 6 个月 / 今年 / 自定义起止日期」等时间筛选。一眼看清自己（或关注的博主）这一年的内容节奏。\n\n### 为什么做\n小红书个人主页默认是推荐序，**自己发过什么、按什么节奏发，回看时基本看不见**。对内容创作者做复盘、对粉丝回溯某博主历史，网格视图都太碎。\n\n### 技术亮点\n- Chrome **MV3**，`content_scripts` + `world: \"MAIN\"` 双脚本协同：主线程注入 `inject.js` 拦截 `fetch` / `XMLHttpRequest`，隔离环境 `content.js` 渲染浮窗和重排 DOM，二者通过 `postMessage` 通信。\n- 首屏 SSR + 滚动分页数据自动合并；监听 `history.pushState` / `popstate`，页面切换自动清缓存、避免串号。\n- 时间字段多格式兼容：13 位毫秒戳 / 10 位秒戳 / `YYYY-MM-DD` / `MM-DD` / `X 天前`，解析失败归「未知时间」。\n- 纯本地，**不请求任何外部接口，不上传任何数据**。\n\n### 安装（未上架商店，「加载已解压」安装）\n1. `git clone https://github.com/shaozhengmao/xiaohongshu-timeline.git`\n2. 打开 `chrome://extensions/`，右上角打开 **开发者模式**\n3. 点击 **加载已解压的扩展程序**，选仓库根目录（含 `manifest.json` 的那个文件夹）\n4. 打开任意小红书个人主页（`xiaohongshu.com/user/profile/...`），右上角出现「小红书时间线」浮窗\n\n预览效果：\n<img width=\"743\" height=\"404\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7fac956a-0dd6-4b5c-814b-7bcd6212c0dc\" />\n\n### 链接\n- 仓库：https://github.com/shaozhengmao/xiaohongshu-timeline\n- License: MIT\n- 当前版本：v0.2.6\n\n> ⚠️ 本项目与小红书（RED）官方**无任何关联**，仅个人学习与研究用途；使用者需自行遵守小红书平台服务条款。\n",
+    "created_at": "2026-08-19T12:20:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11264"
+  },
+  {
+    "id": 11263,
+    "title": "【开源自荐】repo-cover：让编程智能体给仓库设计社交预览图，中文排版不再是豆腐",
+    "content": "项目地址：https://github.com/sjh9714/repo-cover\n\n## 介绍\n\nrepo-cover 是一个 Agent 技能（Claude Code、Codex、Cursor、opencode 都能用）。装上之后对智能体说一句\"给这个仓库做张社交预览卡片\"，它会读取仓库信息，把描述打磨成一行，写出一个自包含的 1280x640 HTML 文件，跑完检查后用本机 Chrome 导出 PNG，上传到 GitHub 的 Social preview 即可。\n\n![四种风格](https://raw.githubusercontent.com/sjh9714/repo-cover/main/docs/hero.png)\n\n## 为什么做这个\n\n每次把仓库链接发到群里，预览图要么是 GitHub 自动生成的灰色默认图，要么是生成器模板，谁的仓库都长一个样。中文描述更惨，很多生成器直接渲染成豆腐，或者在词中间断行。我不想为每个 side project 打开 Figma，所以让智能体来设计。\n\n## 主要功能\n\n- **不调用图像模型**。设计品味写成模型无法偏离的数字约束：4px 网格、每张卡片一个强调色（自动加深到 WCAG 对比度）、按名称长度分级的标题字号\n- **确定性检查**：纯标准库的 Python 检查器校验画布尺寸、自包含、对比度和中日韩换行。中文有专门的字符预算，排版坏了直接判 FAIL\n- **四种风格**（editorial、poster、blueprint、gallery）。强调色来自仓库主语言，同心圆和图号来自仓库名哈希，不会有两张相同的卡片\n- **保持新鲜**：附带一个 GitHub Action 在 CI 里重新渲染，避免字体没加载完就截图的事故\n- **在线画廊**可以直接查看每张卡片的源码：https://sjh9714.github.io/repo-cover/\n\n![中文示例](https://raw.githubusercontent.com/sjh9714/repo-cover/main/skills/repo-cover/assets/examples/editorial-chinese.png)\n\n## 诚实的数字\n\n- 8 个内置示例全部通过 CI 检查\n- 两个没有任何上下文的智能体冷启动运行这个技能，卡片都一次通过检查器；它们报告的 11 处文档问题已全部修复\n- 这个仓库自己的社交预览图，就是这个技能的输出\n\nMIT 协议。中文排版遇到坏例欢迎提 issue，会变成检查器的回归测试。\n",
+    "created_at": "2026-08-19T11:19:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11263"
+  },
+  {
+    "id": 11262,
+    "title": "【开源自荐】Open DeepSeek Harness Desktop：带插件隔离和 IM 机器人的 DSH 桌面发行版",
+    "content": "项目地址：https://github.com/flaqai/open-deepseek-harness-desktop\n\n## 项目介绍\n\nOpen DeepSeek Harness Desktop 是一个社区维护的 DeepSeek Harness 桌面发行版。它保留官方 Harness 的插件化运行时和 Web 客户端，在外层增加 Electron 本地宿主、桌面打包、首次启动配置和插件生命周期管理。\n\n它不只是把网页放进桌面窗口。客户端会启动并监管本机 Harness 服务，为页面提供受限制的系统集成，并负责普通插件无法介入的启动前检查。项目采用 MIT 许可证，不是 DeepSeek 官方产品，目前处于开发者预览阶段。\n\n## 主要功能\n\n- **完整桌面发行矩阵**：项目面向 macOS Apple Silicon、macOS Intel、Windows x64，以及 Linux DEB、RPM 五种安装包维护统一的打包流程。\n- **主题和聊天背景**：内置跟随系统、浅色、深色及八套产品主题，同时提供八张背景插画，也可以上传只保存在本机的 PNG、JPEG 或 WebP 图片。\n- **桌面复制支持**：Electron 只向受监管的 Harness 页面开放经过净化的剪贴板写入权限，让消息和代码复制在客户端中正常工作，不开放剪贴板读取权限。\n- **开箱即用的插件生态**：安装包预设插件市场、Skill 选择器和 IM 机器人插件。它们都是普通、可卸载的 Harness 插件；用户卸载后，客户端不会在下次启动时自动装回。\n- **微信、飞书等机器人连接**：可以在设置中通过扫码、应用清单或现有凭据连接微信、飞书、钉钉、企业微信、QQ、Slack、Telegram、Discord 和 WhatsApp，并切换机器人使用的工作区或绑定已有会话。\n- **依赖诊断与插件隔离**：客户端可以检查共享运行时冲突、残留 Loader 条目和插件挂载失败。无法安全修复的插件会退出当前 profile 的活动依赖和启动顺序，并留下可重试、可卸载的隔离记录，让其余功能继续启动。\n\n## 为什么依赖隔离必须由客户端完成\n\n插件系统在功能不断增多后会遇到一个容易被忽略的问题：两个插件可能各自带入不同版本或不同物理副本的共享 Host 包。它们的包名和 API 看起来相同，Node.js 实际加载的却是两套对象。这样会造成服务注册在一套运行时、消费方却在另一套运行时查找，最终表现为插件无法挂载、Loader 条目失管，甚至整个 profile 无法启动。残留的清单项目、锁文件记录和中断安装留下的目录，也可能让下一次更新继续复现同一个错误。\n\n普通诊断插件解决不了这个问题。插件代码只能在依赖解析、配置组合和运行时挂载成功后执行，而上述错误恰好发生在这些步骤之前。故障插件可能阻止诊断插件一起加载；诊断插件也不应该拥有修改其他插件清单、锁文件和启动顺序的权限。因此，这项能力必须放在掌握整个启动过程的客户端启动层。\n\n每次检查时，启动层会遍历 profile 中直接安装插件的依赖图，区分合法的 peer dependency 与真正的共享运行时冲突，并比较关键 Host 包最终解析到的实际位置。它还会核对 profile 清单、锁文件、组合包顺序和磁盘目录，找出已经不属于当前依赖、却仍可能被 Loader 发现的残留项目。设置页提供“立即检查”和“检查并修复”两个入口：前者只读取并展示问题、依赖链和兼容性，后者才会执行受保护的修复操作。\n\n修复会先尝试让插件统一使用桌面安装包提供的共享 Host 依赖，同时清理清单已经删除、锁文件却仍保留的根依赖记录。如果依赖关系能够安全收敛，插件可以继续留在当前 profile；如果插件版本确实不兼容，或者修复后仍存在两个共享运行时实例，客户端就不会带着不确定状态强行启动它。\n\n无法安全修复的根插件会从活动依赖和组合包启动顺序中移出，并写入持久的隔离记录。隔离只针对被确认有问题的插件，不会删除用户的会话、模型配置或其他插件。只有故障插件的活动引用和残留目录已经退出当前 profile，隔离才算完成；如果安装工具在中途崩溃，下一次检查还会根据清单、锁文件、目录和隔离记录之间的差异继续恢复，而不是假装修复成功。\n\n这种处理采用关闭式保护：只要客户端不能确认共享依赖已经统一，就不让故障插件进入当前运行时，但其余健康插件和核心功能仍可继续启动。用户可以在“设置 → 插件 → 诊断”中查看隔离原因，按原安装来源重试插件，或者在明确确认后卸载处于停用状态的残留。这样既避免一个扩展拖垮整个客户端，也保留了恢复插件和排查具体依赖链的机会。\n\n<img width=\"1400\" height=\"869\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/104ae33c-19f1-4d52-bb6d-898ac73c0a04\" />\n\n<img width=\"1411\" height=\"878\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e2673f1a-4dd3-4823-9c6d-976129dc0326\" />\n\n## 界面\n\n| 主题设置 | 聊天背景 |\n| --- | --- |\n| ![主题设置](https://raw.githubusercontent.com/flaqai/open-deepseek-harness-desktop/master/assets/readme/theme-settings-zh.png) | ![聊天背景](https://raw.githubusercontent.com/flaqai/open-deepseek-harness-desktop/master/assets/readme/background-settings-zh.png) |\n\n## 社区插件预设，降低入门配置难度\n支持包括微信、飞书等九种机器人连接deepseek harness：\n<img width=\"1134\" height=\"838\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e7f13bcf-3703-4fde-9b02-607e5b3402fb\" />\n预设插件市场，方便搜索插件、安装插件和管理插件，必备插件：\n预设skill调用插件，原版的\\看不见的skills可以通过小闪电选择并引用；\n桌面安装包预设并感谢以下开源插件：\n\n- [dsh-im](https://github.com/xmanrui/dsh-im)：微信、飞书等九种 IM 机器人连接。\n- [dsh-skill-picker](https://github.com/a735624258/dsh-skill-picker)：在输入区选择并调用 Skill。\n- [dsh-market](https://github.com/dsh-market/dsh-market)：在 Harness 内浏览、搜索和管理插件。\n\n项目仓库：https://github.com/flaqai/open-deepseek-harness-desktop\n\n上游 DeepSeek Harness：https://github.com/deepseek-ai/deepseek-harness",
+    "created_at": "2026-08-19T11:15:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11262"
+  },
+  {
+    "id": 11261,
+    "title": "【工具自荐】一个协作式像素艺术和动画编辑器，可以和AI agents共同创作和编辑。",
+    "content": "**Gridvana** 是一个用Rust 编写的协作式像素艺术和动画编辑器，可以和AI agent共同创作和编辑。\n\n项目地址：https://github.com/osdodo/gridvana\n\n网站：https://gridvana.imatrix.fun\n\n![Gridvana](https://raw.githubusercontent.com/osdodo/gridvana/refs/heads/main/screenshots/1.jpg)",
+    "created_at": "2026-08-19T10:51:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11261"
+  },
+  {
     "id": 11260,
     "title": "【工具自荐】免费的极简 chrome 新标签页 ZenPage 禅页",
     "content": "ZenPage 禅页是一个极简的 Chrome 新标签页, 功能极简只有:\n- 快捷入口（自定义图标 + 任意协议链接）\n- 时钟、搜索与书签。\n- 快捷键一键直达。\n\nhttps://chromewebstore.google.com/detail/%E7%A6%85%E9%A1%B5-zenpage/eeoglieochlkiieagkofojmhefbeeggj?authuser=0&hl=zh-CN\n\n\n<img width=\"1471\" height=\"733\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4af99705-0db0-4bb0-8c0c-7061fad69ca1\" />",
@@ -176,22 +208,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11236"
   },
   {
-    "id": 11235,
-    "title": "【网站自荐】taptopzone.com：免费在线摸鱼游戏平台",
-    "content": "[taptopzone.com](https://taptopzone.com) ：忙里偷闲，劳逸结合，休闲娱乐少不了\n\n这里游戏种类各种各样，总有一款适合你 ，赶快来玩吧。\n\n<a href=\"https://taptopzone.com\"> \n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/184b1ab5-f717-4b3a-8aa2-51a73eccb26b\" /></a>",
-    "created_at": "2026-08-17T10:12:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11235"
-  },
-  {
-    "id": 11234,
-    "title": "【网站自荐】shiflix.com：视飞影院 - 免费在线观看最新影视剧平台",
-    "content": "\n视飞影院官网：https://shiflix.com/\n\n<a href=\"https://shiflix.com/\">\n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0130be6-863c-4570-9742-5db570f19ad6\" /></a>",
-    "created_at": "2026-08-17T10:03:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11234"
-  },
-  {
     "id": 11233,
     "title": "【开源/工具推荐】A11yKit：100% 纯前端离线、零数据上传的 15 款 Web 无障碍与 WCAG 2.2 / EAA 合规工具箱",
     "content": "## 项目介绍\n\n- **项目名称**：A11yKit\n- **项目地址**：https://a11ykit.site\n- **开源地址**：https://github.com/gstar-byte/a11ykit\n- **主要受众**：出海 Web 开发者、前端工程师、UI/UX 设计师、无障碍合规检测人员\n\n## 核心痛点与特点\n\n欧洲无障碍法案（European Accessibility Act, EAA）和 WCAG 2.2 标准日益严格，但目前市面上的大多数无障碍检测工具都需要将网页源码或私有 URL 上传到第三方服务器进行解析，存在数据安全与代码隐私隐患。\n\n**A11yKit** 是一个完全运行在浏览器端的开源无障碍工具箱：\n\n1. **100% 客户端本地运行**：基于 axe-core 与前端纯算法，所有 DOM 解析、对比度计算、色盲模拟和 ARIA 生成均在本地完成，**零数据上传，零 Tracking，无需注册**。\n2. **15 款开箱即用的专业工具**：\n   - 🔍 **URL Scanner**：直接本地扫描任意公开 URL 的 WCAG 2.2 违规项与修复建议。\n   - 🎨 **Contrast Checker**：支持 WCAG 2.1 AA/AAA 以及下一代 APCA 算法，实时智能提供色彩微调建议。\n   - 🌈 **Color Blind Simulator**：支持 8 种常见色盲类型模拟与 Daltonize 修正算法。\n   - 🏷️ **ARIA Pattern Generator**：提供 20+ 种常用无障碍组件模式的 HTML/JSX 代码预览。\n   - ✅ **WCAG 2.2 交互式清单** 与 **无障碍声明生成器 (Statement Generator)**。\n3. **PWA 支持**：支持离线安装与无网使用。\n4. **全球 Top 50 网站实测报告**：开源了对全球 52 个知名站点进行的 WCAG 2.2 合规实测审计数据与分析 (https://a11ykit.site/accessibility-report)。",
@@ -228,7 +244,9 @@
     "title": "【开源自荐】shotsync：部署在自己 Cloudflare 免费档的跨设备图片/文字中转池，替代微信文件传输助手",
     "content": "自荐一个自用的开源小工具。\n\n**shotsync** —— 跨设备图片/文字中转池：Mac、手机任一设备丢进去，其他设备打开网页就能取走。定位是「中转」不是网盘，所有内容 30 天自动清理。\n\n- 在线演示（只读示例池，无需注册）：https://shotsync-demo.defiabell.workers.dev\n- 仓库（MIT，中英双 README）：https://github.com/Defiabell/shotsync\n\n特点：\n\n- 整个后端只是一个 Cloudflare Worker + 一个 R2 桶，部署到自己账户约 5 分钟，免费额度个人用绰绰有余，数据不经任何第三方图床\n- 手机端是 PWA，「添加到主屏幕」即用，不装 App、不上商店\n- 图片在浏览器端转 JPEG + 生成缩略图，Worker 只存字节不碰像素\n- 可给单张图生成带签名、7 天过期的公开链接，分享一张图不暴露整个池子\n\n![界面截图](https://raw.githubusercontent.com/Defiabell/shotsync/main/docs/screenshot.png)\n\n做它的起因是受够了用微信「文件传输助手」给自己传截图：图被压缩、要翻聊天记录、还得常开着微信。",
     "created_at": "2026-08-16T15:16:57Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11227"
   },
   {
@@ -236,7 +254,9 @@
     "title": "【网站自荐】midipiano.app：看谱练琴的网页应用（MIDI 键盘 + 实时反馈）",
     "content": "# 项目地址\n\nhttps://midipiano.app/zh/\n\n# 项目简介\n\nmidipiano.app 是一个免费的网页版练琴应用。屏幕上显示的是真正的五线谱，不是 Synthesia 那种瀑布流。用 USB 或蓝牙接上 MIDI 键盘就能直接弹。弹对了、弹早了、弹晚了，还是没按够时值就松了键，都会实时标在谱面上，一目了然。\n\n内置分级练习曲库，从最基础的五指练习一直到布格缪勒、贝多芬的小品。也可以导入自己的 MusicXML/MXL 乐谱逐小节练，支持 A-B 循环、分手练习、等待模式（弹对了谱子才往前走）和变速播放。还有每日视奏挑战，每天生成一首新曲，所有人都弹同一首，分三个难度。\n\n# 为什么做这个工具\n\n自学钢琴的人大多有这个体会：老师一周只见一次，剩下六天弹错了没人指出来，只能凭感觉一遍遍过。市面上的学琴 App 大多要订阅，而且不少用瀑布流代替五线谱，练久了反而越来越不会看谱。我想要的是对着真正的乐谱练，每个音当场就有对错和节奏的反馈，练完知道下一遍该改哪里。\n\n# 主要特点\n\n- 完全免费，无需注册\n- 需要一台 USB 或蓝牙的 MIDI 键盘，浏览器建议用支持 Web MIDI 的 Chrome 或 Edge\n- 界面有完整的简体中文翻译，国内可直连（人机验证走的是 recaptcha.net）\n\n接上键盘打开网页，弹几个音就知道是怎么回事了。欢迎试用，有什么问题或建议都欢迎反馈。\n\n利益相关：我是 midipiano.app 的开发者，人在西班牙。中文界面和这篇介绍都是借助翻译完成的，有不地道的地方欢迎指正。\n\n# 界面截图\n\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c34c8c4b-ebe4-43cd-a11e-b104a13d699d\" />\n<img width=\"2400\" height=\"1500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc22f666-bf97-4ba9-8011-75f22f978414\" />\n",
     "created_at": "2026-08-16T14:52:30Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11225"
   },
   {
@@ -316,7 +336,9 @@
     "title": "【开源自荐】LibreDB Studio：把数据库 IDE 部署到数据库旁边，MIT 开源，支持 10 种数据库",
     "content": "利益相关：我是 LibreDB Studio 的作者之一。\n\n它是一个可自托管的 Web 数据库 IDE，把编辑器部署到数据库旁边、而不是装到每个人的笔记本上：用一个容器或一条 npm 命令就能起，浏览器里打开即可。单点登录、RBAC 和查询审计都在 MIT 开源版里，团队不必把线上库密码发给每个人。一套界面连 PostgreSQL、MySQL、MongoDB、Redis、ClickHouse 等十种数据库。\n\nGitHub：https://github.com/libredb/libredb-studio\n",
     "created_at": "2026-08-16T00:01:26Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11212"
   },
   {
@@ -782,21 +804,5 @@
     "created_at": "2026-08-12T09:54:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11149"
-  },
-  {
-    "id": 11148,
-    "title": "【开源自荐】PinShell：把任意本地 HTML 钉成全局置顶的 macOS 悬浮窗，直播/录屏角标专用",
-    "content": "## 项目开源地址：https://github.com/niyongsheng/PinShell\n\nPinShell 是一个轻量级 macOS 悬浮窗工具：把任意本地 HTML 文件变成全局置顶、支持点击穿透的悬浮窗口，专为直播和录屏场景设计——在 OBS、Cap、QuickTime 录制时，把直播角标、水印时钟、状态提示钉在画面角落。\n\n所有 UI、轮播和动画都写在 HTML/CSS/JS 里，PinShell 只是一个极薄的本地外壳（NSPanel + WKWebView），不内置任何业务逻辑；改完 HTML 按 ⌘R 立即生效，无需重新编译。\n\n![PinShell 预览](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/preview.png)\n\n### 内置 4 个模板\n\n| 模板 | 说明 |\n|---|---|\n| 社交徽章轮播 | X / WeChat / Bilibili 徽章 5 秒轮播 |\n| LIVE 状态点 | 脉冲动画的录制状态胶囊 |\n| 社交胶囊栏 | 一排账号胶囊 |\n| 水印角标 | 低对比度时钟 + 日期 + 联系方式 |\n\n![Badge Carousel](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-badge-carousel.png) ![Social Rail](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-social-rail.png) ![Watermark](https://raw.githubusercontent.com/niyongsheng/PinShell/main/screenshots/template-watermark.png)\n\n### 特点\n\n- **HTML 即产品**：模板 / 轮播 / 动效全在 HTML 里，编辑后 ⌘R 重载即可，不动原生代码\n- **点击穿透**：鼠标事件直接穿透到下层窗口，不遮挡操作\n- **CLI 加载**：`PinShell ./overlay.html` 或 `open -a PinShell examples/badge-carousel.html`\n- **跨桌面置顶**：所有桌面空间全局置顶，无 Dock 图标，常驻菜单栏\n- **自更新**：24h 静默检查 GitHub Releases 新版本\n\n### 适用场景\n\n- 直播 / OBS 角标：LIVE 状态点、社交账号胶囊、水印时钟\n- 录屏提示：快捷键说明、流程步骤贴在画面角落\n- 桌面小组件：倒计时、股价、天气——任意 HTML 都能钉上去\n\nApache 2.0 开源，macOS 13+。\n",
-    "created_at": "2026-08-12T08:32:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11148"
-  },
-  {
-    "id": 11147,
-    "title": "【工具自荐】国产大模型与 AI Agent比价工具",
-    "content": "网站地址：[https://ai-price-compare.konata9.cc/](https://ai-price-compare.konata9.cc/)\n\n最近在整理自己的 AI 成本，需要挑选国产大模型与国产 AI Agent，于是做了一个价格比较网站。\n\n表格部分列举了国内各家的大模型和AI Agent 价格。\n其中仿照了苹果的对比表格，可以对比多个大模型或者Agent，带来更直观地感受。\n网站部署在 CloudFlare 上，利用 GithubAction 每天从官方网站上获取数据进行更新。\n页面同时支持 PC 端与移动端。\n\n介绍文章：[国产大模型与 AI Agent 比价工具](https://mp.weixin.qq.com/s/jsvZ6JwxuMKoFFYtgjsEZQ)\n\n<img width=\"1292\" height=\"469\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1292c3b5-7dcc-4727-b28e-bd06b9caa30e\" />\n\n<img width=\"1305\" height=\"860\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5e3b314f-52a5-4cd7-be88-3cb8201b1d0a\" />\n\n<img width=\"1329\" height=\"1131\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bd022d7f-9ca6-4802-b178-a1f8df133eb9\" />",
-    "created_at": "2026-08-12T06:28:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11147"
   }
 ]
