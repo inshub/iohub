@@ -1,5 +1,21 @@
 [
   {
+    "id": 11296,
+    "title": "【工具自荐】journal：一条 SSH 命令进德州扑克桌，摸鱼推荐",
+    "content": "使用命令行界面打无限注德州，摸鱼首选。连上就进当前没满的桌，空桌则等真人，大于等于两人即开桌。\n\n本机如果没用过 SSH ，先执行一次（一路回车）：\n`ssh-keygen -t ed25519`\n\n然后把「昵称」换成你想显示的名字：\n\n`ssh -p 2222 昵称 @riverjam.club`\n账号认本机 SSH 。\n\n说明（规则 + 界面）\n\n这是一个跑在 SSH 里的文字桌。界面像日志，没有牌桌图，也没有 fold / 黑桃 这类词。规则还是无限注德州。\n\n进入\n\nssh -p 2222 昵称 @riverjam.club（字母数字、下划线、短横，最多 16 个字符）。\n\n你会看到\n\n```\njournal 0.3\nattached\nid 你的昵称 bal=20000\nseated t=1 n=1/9\nstk=2000 bal=18000\nwait n=1/9 0m\n```\nbal 账户余额，stk 这桌带进来的筹码\nwait n=1/9 3m：人数，以及已等了几分钟\n少于 2 人不开始；第一手开始打前再等 20 秒\n当前进行中进来会看到 watch / wait next：能看公共牌和别人怎么动，看不到任何人的底牌；下一手自动入局\n第 10 人进新桌\n轮到你：act you … need=… minr=… stk=… t=60\n等别人：act 对方昵称 … t=60\n\nneed 是还差多少才能跟平。minr 是这条街最少加到多少。r 60 是当前这条街（翻/转/河各自单独算）加到 60 ，不含前面已经进池的。t 是剩余秒数。\n\n行动\n\nf 弃　c 跟　k 过　r 60 加到 60 　a 全下\nb 余额　l 排行　j 再入队　q 离开（桌上筹码回到自己账户）\nm 看花色对照（旁边有人时别敲）\n\n60 秒不行动：能过就自动 k，否则自动 f。\n\n牌\n\n点数：A K Q J T 9-2\n花色映射为数字，跟随在点后面：1 黑桃　2 红桃　3 方片　4 梅花\n例：A.1 黑桃 A ，K.2 红桃 K ，T.4 梅花 10\n\n筹码\n\n新号 20000 ，买入默认 2000 （ 1000–4000 ）。余额低于 2000 时，跨自然日补到 2000 。上限 500000 。破产离座。\n\n欢迎摸鱼的时候来玩。",
+    "created_at": "2026-08-21T05:44:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11296"
+  },
+  {
+    "id": 11295,
+    "title": "【开源自荐】国行手机 FCM 推送总延迟？这个开源工具用心跳广播把长连接续住",
+    "content": "很多用国行安卓手机的人会遇到一个说不清原因的毛病：手机装了 Google 服务（GMS）之后，Telegram、Gmail、WhatsApp 这些依赖 FCM（Firebase 云消息）的推送，经常延迟十几分钟，甚至干脆收不到。\n\n原因在于国产 ROM 会强制停止 FCM 的后台长连接，长连接一断，推送就只能等系统允许的时候才进来。\n\nHeartbeat Fixer for FCM 借鉴早年 GCM 时代的心跳保活思路，每隔几分钟向 Google Play 服务显式发送一次心跳广播，把 FCM 的长连接\"续\"住。它不是老项目的简单搬运，而是针对现代安卓重写：\n\n- Android 8+ 改用显式广播（系统从 8.0 起不再把隐式广播发给其他应用）\n- 用 setExactAndAllowWhileIdle 穿透 Doze 休眠，并适配 Android 12+ 的精确闹钟权限（没授权时自动降级）\n- 开机、应用更新后自动恢复心跳，不需要手动重开\n- Material 3 界面，内置\"关闭电池优化\"\"授予精确闹钟\"两个一键入口\n\n适用前提：设备装有 GMS（渠道机或自行刷入），且被系统激进杀后台。纯血无 GMS 的机型无效。\n\n需要说明：心跳广播是 Google 早期遗留的内部机制，当前 Play 服务是否仍响应没有官方保证，实际效果要看机型；另外如果应用被系统 force-stop，心跳会中断，直到下次重启或更新才恢复。这类工具的定位是\"能改善、不敢打包票\"。\n\nGitHub 主页和 Releases 都有详细说明，签名 APK 直接在 Releases 下载：\nhttps://github.com/grimseraph/HeartbeatFixerForFCM",
+    "created_at": "2026-08-21T04:56:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11295"
+  },
+  {
     "id": 11294,
     "title": "【工具自荐】还在为图片反色发愁？极简在线工具 Image Inverter 帮你一键搞定！",
     "content": "\n大家好！今天想向大家诚意推荐一款我自己开发的小工具——[Image Inverter](https://www.imageinverter.com/)。\n在这个数字时代，我们每天都在和图片打交道。有时候，我们需要将图片进行“反色”处理（即把颜色转换为其互补色）。你可能会问，这有什么用？其实，反色处理的应用场景非常广泛：\n\n1. UI/UX 设计师：在设计深色模式（Dark Mode）界面时，快速预览深色背景下的图标或插画效果。\n2. 摄影师与艺术家：通过反色查看照片的明暗对比细节，或者寻找独特的艺术创作灵感。\n3. 文档处理与打印：将白底黑字的扫描件或图表反转为黑底白字，不仅在阅读时更护眼，还能大幅节省打印时的墨水。\n4. 开发者与创作者：在处理某些特定图像资源或制作特殊视觉效果时需要用到负片效果。\n\n市面上虽然有很多复杂的图片编辑软件可以实现反色，但对于大多数只需要“一键反色”的用户来说，打开庞大的软件显得过于繁琐且浪费时间。\n\n## Image Inverter 应运而生。它的核心优势就是“简单、极速、专注”：\n\n- 即开即用：纯网页在线工具，无需下载安装任何插件，打开浏览器即可访问。\n- 操作极简：界面清爽无广告，拖拽上传图片，瞬间完成反色处理，支持即时预览。\n- 完全免费：目前所有核心功能均免费提供给用户使用。\n- 隐私安全：我们非常重视您的隐私。所有图像处理均在您的浏览器本地完成，图片不会上传到我们的服务器，您可以放心使用。\n\n无论你是需要紧急处理一份文档，还是想快速检查设计稿的深色模式效果，Image Inverter 都是你得力的助手。\n欢迎大家访问体验：[Image Inverter](https://www.imageinverter.com/)。如果你觉得好用，也请把它分享给身边有需要的朋友！谢谢支持！",
@@ -790,21 +806,5 @@
     "created_at": "2026-08-14T07:08:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11180"
-  },
-  {
-    "id": 11179,
-    "title": "【开源自荐】ProofTask：让 AI 编码任务必须通过测试才能交付",
-    "content": "项目地址：<https://github.com/1074739572/ProofTask.git>\n## 项目介绍\n\nProofTask 是一个面向真实代码仓库的自主编码执行器。我做它是因为发现，\n复杂 AI 编码任务最大的风险往往不是模型不工作，而是模型做了很多修改后，\n没有可靠地证明“需求真的完成了”。\n\nProofTask 把一个 Goal 拆成多个有依赖的 Task。每个 Task 都有\nGiven/When/Then 验收标准、真实 pytest selector、机器验证证据和错误记录。\n模型说完成、Todo 全部完成，都不会让 Task 完成；只有绑定测试实际通过，\n系统才会解锁下一个 Task。\n\n## 核心亮点\n\n1. **测试不能编造**：系统先收集仓库现有 pytest 节点，规划模型只能从中\n   选择 selector，不能凭空写测试文件路径或验证命令。\n2. **没有测试先补测试**：找不到能证明 Task 的测试时，进入专门的测试\n   生成阶段，重新收集 selector 并做基线执行后才允许实现。\n3. **Task 以证据完成**：验证会保存命令、退出码、selector、收集数量和\n   输出摘要；没有 `exit_code = 0` 的证据就无法完成 Task。\n4. **复杂任务可控**：Task 有显式依赖，失败固定回到当前 Task；Goal 和\n   Task 状态可持久化，支持暂停、恢复和取消。\n5. **评估器不抢裁决权**：独立 evaluator 可以检查覆盖和范围，但不能把\n   失败的机器验证改判为通过。\n\n## 使用方式\n\n```text\n/goal --verify \"python -m pytest -q\" -- 修复分页接口并补齐边界测试\n```\n\n`--verify` 是全部 Task 完成后的全局回归命令；每个 Task 在执行过程中都会\n运行自己的聚焦测试。\n\n项目目前的目标测试为 8 passed，内置评估为 81 passed、0 failed。\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/1074739572/ProofTask/main/docs/assets/goal-cli-preview.png\" alt=\"ProofTask Goal CLI: Task graph, test binding, and machine delivery gate\" width=\"100%\">\n</p>\n\n<p align=\"center\"><sub>Goal 执行时，模型的工作过程与机器是否允许推进会被明确分开。</sub></p>\n如果你也在尝试让 AI Agent 处理长链路代码任务，欢迎试用、提 Issue 或参与\n讨论。尤其欢迎关于“验收标准如何映射到测试”的反馈。\n```\n",
-    "created_at": "2026-08-14T06:22:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11179"
-  },
-  {
-    "id": 11178,
-    "title": "【工具自荐】抖音/小红书自媒体内容工作流插件",
-    "content": "从收集素材，到找到选题，再到完成创作。\n\nMediaClaw 社媒虾是一款面向内容创作者、内容运营、品牌和 MCN 团队的浏览器插件。它把小红书与抖音上的内容采集、筛选、关键词洞察、对标研究、AI 拆解与创作、竞品监控、导出和飞书协作放进同一套工作流。\n\n1、数据采集\n\n做小红书和抖音运营时，真正费时间的是把散落在搜索页、账号主页、详情页和评论区的信息整理成能继续使用的素材：标题、正文、互动数据、配图、视频、评论需求、账号表现、逐字稿，以及后续的复盘表格。\n\n![](https://pic3.zhimg.com/80/v2-f57a68773d86edcfaef0be29dfe4bf7a_1440w.jpg)\n\n在小红书搜索结果页打开 MediaClaw 侧边栏，可按关键词采集和整理高互动内容。\n\n除了附件本身，标题、正文、作者、标签和互动数据也会作为结构化记录保留下来。\n\n![](https://pic1.zhimg.com/80/v2-7854ef6ea205714c879fea2a45c80bc8_1440w.jpg)\n\n图文内容可以继续提取配图文字，视频内容可以补齐带时间戳的逐字稿，后续做拆解或创作时不必再反复打开原页面、截图和手工整理。\n\n![](https://pic2.zhimg.com/80/v2-ee0184d28e48e3f366f41c34695d5229_1440w.jpg)\n\n![](https://pica.zhimg.com/80/v2-8b28e990f846b4cedc965f70e77de766_1440w.jpg)\n\n\n### \n\n2. 对标爆款\n\n找到值得研究的内容之后，可以进入“对标爆款”。MediaClaw 支持对单篇内容做 AI 拆解，帮助梳理标题切入点、开头钩子、内容结构、表达节奏和视觉呈现；也可以根据关键词样本自动发现反复出现的对标账号。\n\n![](https://pic4.zhimg.com/80/v2-ee55baa62c58fc675f0ebecf12973f53_1440w.jpg)\n\n![](https://pic2.zhimg.com/80/v2-0ca9cb9860a7db71ba0978e7c859ef0b_1440w.jpg)\n\n对于需要持续研究的账号，还可以采集主页与代表作品，形成账号研究和风格分析资料，或订阅更新与互动变化。这里的重点不是“一键复制爆款”，而是保留样本依据，分清哪些结构和方法值得借鉴，再结合自己的产品、受众和表达完成创作。\n\n![](https://picx.zhimg.com/80/v2-956b50e63c31541e07a1f77d55582f6d_1440w.jpg)\n\n\n### \n\n3、找选题\n\n1）找低粉爆款\n\n![](https://pic3.zhimg.com/80/v2-045d41cf8f821f78fe6eea980b12fe34_1440w.jpg)\n  \n\n2）找长尾需求\n\n![](https://pic2.zhimg.com/80/v2-718344601eaa7962779cf55b3621419d_1440w.jpg)\n\n\n3）从拆解的爆款中发散选题\n\n![](https://picx.zhimg.com/80/v2-fa6330baa30db0bad4a6071173459cf3_1440w.jpg)\n\n\n### \n\n4. 账号更新监控\n\n对于需要长期观察的账号，还可以订阅竞品动态，跟踪新内容和互动变化。适合用来做竞品周报、内容选题库、账号研究和低粉爆款观察。\n\n![](https://pic1.zhimg.com/80/v2-440066b97e619d8db6ae19841ba63a44_1440w.jpg)\n\n5. Agent接管\n\n用顺手的 Agent随时做桌面调研和选题策划，与本地个人知识库结合，从调研到出稿，打造 DIY 个人社媒内容工作流。\n\n<img width=\"840\" height=\"974\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e27bb916-5c68-4f34-8092-bfd3d6526145\" />\n\n<img width=\"1940\" height=\"1922\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/adf2e8e9-2602-4c71-b29d-d5a7a6636f02\" />\n\n<img width=\"2892\" height=\"2140\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d6daea09-e2a1-46bb-bb80-9c5ad2b029b5\" />\n\n<img width=\"2908\" height=\"2112\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e7a16a17-4159-40b6-be1c-e0216e90c82f\" />\n\n<img width=\"2872\" height=\"2092\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7fcd0ec-a1ea-4fbb-bb66-8e830df4051c\" />\n\n\n\n### \n\n谁适合使用 MediaClaw\n\n- 内容创作者：建立选题库、拆解高表现内容、补齐图文与视频素材。\n\n- 内容运营：采集关键词内容、筛选评论需求、制作竞品和行业周报。\n\n- 品牌与 MCN 团队：研究对标账号、监控内容动态、多人同步飞书协作。\n\n- 研究与分析人员：保留结构化样本，导出 CSV/Markdown 做进一步分析。\n\n### \n\n五步开始使用\n\n1. 前往 MediaClaw 官网下载并安装浏览器插件。\n\n2. 打开小红书或抖音的内容详情页、账号主页或搜索结果页。\n\n3. 在浏览器侧边栏选择单篇、账号、搜索或评论采集。\n\n4. 按需要补齐详情、评论、配图文字或视频逐字稿，并进行关键词或账号研究。\n\n5. 将结果导出为 CSV/Markdown，或同步到飞书继续协作与创作。\n\n \n\n产品主页：https://mediaclaw.app\n下载体验：https://mediaclaw.app/download\n\nMediaClaw 提供免费版，可先安装插件跑通第一套内容采集与整理工作流。",
-    "created_at": "2026-08-14T05:56:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11178"
   }
 ]
