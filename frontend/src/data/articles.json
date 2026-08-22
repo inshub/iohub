@@ -1,5 +1,13 @@
 [
   {
+    "id": 11311,
+    "title": "【网站自荐】BK漂流瓶：和陌生人交换正在看的视频、正在玩的游戏",
+    "content": "**网址：** https://b.bking.film/?from=ruanyf\n**源码：** https://github.com/bkingfilm/bk-bottle （MIT）\n\n把你最近真的在看的视频装进瓶子扔进海里，再捞一个陌生人的瓶子上来。不用注册，不读浏览记录，没有算法推荐。\n\n2022 年 CHI 有篇论文 OtherTube，41 个人交换 YouTube 推荐 10 天，证明看陌生人在看什么确实能让人发现新兴趣。那批研究原型（OtherTube / TheirTube / FlipFeed）现在全下线了，这个是活的，2026 年 7 月上线，到现在真人扔了 270 多个瓶子。\n\n几条跟别的产品不一样的地方：\n\n- 不读浏览器历史。你自己挑 1 到 5 条链接贴进来，这就是全部的隐私模型。\n- 没有留言框。自由文本最后都会变成广告牌，瓶子里只有链接。\n- 永远不做「按你捞过的瓶子推荐相似的」。好评只会让一个瓶子更容易被所有人捞到，排序全站共用，跟你是谁无关。\n- 支持 YouTube、B站 和 Steam 游戏（装「最近在玩」），一个瓶子里可以混装。简体、繁体、英文三种界面。\n\n有 Chrome 插件，点工具栏就是一次捞瓶：https://chromewebstore.google.com/detail/ahbgoaaojaanogcampbekjmiocmnnbbk\n\n整个项目就是一个 HTML 加一个 Cloudflare Worker，没有构建步骤，`python server.py` 就能本地跑。\n",
+    "created_at": "2026-08-22T19:34:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11311"
+  },
+  {
     "id": 11310,
     "title": "【开源自荐】以多行平铺的方式展示当前窗口所有标签页的chrome 扩展",
     "content": "<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/hezhizheng/multi-row-tabs/master/icon128.png\" alt=\"Multi-Row Tabs Logo\" width=\"128\">\n</p>\n\n<h1 align=\"center\">Multi-Row Tabs（多行平铺标签栏）</h1>\n\n一个 Chrome 浏览器扩展（Manifest V3），以**多行平铺**的方式展示当前窗口的所有标签页，采用**零侵入浮动模式**：不修改页面任何样式，兼容所有网站。[github]( https://github.com/hezhizheng/multi-row-tabs) \n\n![](https://cdn.jsdmirror.com/gh/hezhizheng/static-image-hosting@main/image-hosting/20260823002124_PGLZRWFBYIPURPTW.png)\n## 视频演示\n\nhttps://github.com/user-attachments/assets/a6736d2c-746c-4b45-bb09-1fc7d6831068\n\n## 背景说明\n\nChrome 扩展**无法修改浏览器原生标签栏**（标签栏属于浏览器 UI 层，扩展无权注入样式或脚本）。因此本扩展采用「浮动覆盖栏」方案：页面上仅有一个可拖拽的悬浮按钮，点击或按快捷键时标签栏才浮现在页面顶部，**不改动页面任何样式**，对等任何网站零影响。\n\n## 功能特性\n\n- **零侵入浮动模式**：标签栏默认隐藏，不修改页面任何样式；展开时浮在页面上方，鼠标离开自动收起\n- **悬浮按钮可拖拽**：右上角小圆点按钮可拖拽到页面任意位置，位置自动记忆\n- **自定义快捷键**：默认 `Alt+Z`，可在弹出面板中录制任意组合键，随时展开 / 收起标签栏\n- **多行平铺展示**：标签以 favicon + 标题的形式自动换行平铺，当前活动标签白底高亮\n- **标签排序**：标签栏左侧提供排序下拉框，支持「默认」（与浏览器标签顺序一致）、「按名称」（中文拼音排序）、「按域名」（优先按一级域名排序，同站点不同子域名的标签自动聚在一起），选择后自动记忆\n- **一键切换 / 还原**：点击工具栏图标，在弹出面板中一键显示或隐藏整个功能\n- **标签操作**：\n  - 左键点击标签 → 切换到该标签\n  - 中键点击标签 → 关闭该标签（与原生标签栏行为一致）\n  - 点击标签上的 `×` → 关闭该标签\n- **键盘导航**：展开后用 `←` `→` `↑` `↓` 在标签间移动焦点（蓝色高亮），按 `Enter` 切换到对应标签页，按 `Delete` 关闭当前高亮标签，按 `Esc` 收起标签栏\n- **可选显示链接**：在弹出面板中勾选「显示链接」后，链接以小字显示在标签名称下方（默认不显示）\n- **实时同步**：标签的新建、关闭、切换、标题变化会自动刷新标签栏\n- **无 Mixed Content 警告**：favicon 由后台抓取并转为 data URL 下发，http 页面的图标在 https 页面中也不会触发混合内容警告\n\n## 安装方法\n\n1. 打开 `chrome://extensions/`\n2. 开启右上角「开发者模式」\n3. 下载 [最新压缩包](https://github.com/hezhizheng/multi-row-tabs/archive/refs/heads/master.zip) 解压\n4. 点击「加载已解压的扩展程序」，选择本目录（`multi-row-tabs`）\n5. 工具栏出现扩展图标即安装成功\n\n## 使用方法\n\n- 点击工具栏图标，弹出面板中点击「显示多行标签栏」→ 页面出现悬浮按钮 ≡；点击「隐藏多行标签栏」→ 还原\n- 点击悬浮按钮（或按自定义快捷键）→ 标签栏浮现在页面顶部；鼠标离开标签栏后自动收起\n- 展开标签栏后，通过左侧下拉框切换排序方式（默认 / 按名称 / 按域名），选择立即生效并自动记忆\n- 悬浮按钮可按住拖拽到页面任意位置，位置自动记忆（按窗口百分比保存）\n- 在弹出面板中点击「快捷键」输入框后按下组合键即可录制；「清除」可移除快捷键\n- 勾选 / 取消「显示链接」立即生效，无需刷新页面\n\n## 文件结构\n\n```\nchrome-multirow-tabs/\n├── manifest.json   # MV3 配置，声明 tabs / storage / scripting 权限\n├── background.js   # Service Worker：切换开关、标签查询、favicon 转换与缓存、事件广播\n├── content.js      # 渲染悬浮按钮与多行标签栏，处理拖拽 / 快捷键 / 点击 / 中键关闭等交互\n├── content.css     # 标签栏与悬浮按钮样式（flex-wrap 多行平铺）\n├── popup.html      # 工具栏弹出面板\n├── popup.js        # 面板逻辑：切换按钮 + 显示链接 + 快捷键录制\n├── icon16.png      # 扩展图标（16px）\n├── icon48.png      # 扩展图标（48px）\n├── icon128.png     # 扩展图标（128px）\n└── README.md\n```\n\n## 已知限制\n\n- `chrome://` 页面、Chrome 网上应用店等浏览器内部页面无法注入内容脚本，这些页面不会显示悬浮按钮\n- 标签栏展开时浮在页面上方，会临时遮挡顶部内容（鼠标离开即收起）\n- 自定义快捷键在页面自身捕获了同一组合键时可能被页面拦截（扩展在捕获阶段监听，绝大多数情况优先生效）\n- 重新加载扩展后，之前已打开的页面需要刷新一次才会加载新脚本\n\n## 权限说明\n\n| 权限 | 用途 |\n|---|---|\n| `tabs` | 查询 / 切换 / 关闭标签页，读取标题与 favicon |\n| `storage` | 保存开关状态、「显示链接」配置、排序方式、悬浮按钮位置与快捷键 |\n| `scripting` | 对已打开的标签页按需注入标签栏脚本 |\n| `<all_urls>`（host） | 允许在所有页面注入标签栏、后台抓取 favicon |\n\n## License\n[MIT](./LICENSE.txt)\n",
@@ -798,13 +806,5 @@
     "created_at": "2026-08-15T07:49:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11196"
-  },
-  {
-    "id": 11195,
-    "title": "[开源自荐] KubeVision: ai驱动的Kubernetes dashboard",
-    "content": "KubeVision 是一个开源、AI 驱动的Kubernetes Dashboard，支持多集群管理、资源监控、Helm 应用部署、Pod 日志与终端、RBAC 及 AI 辅助运维。它不仅能查看集群状态，还可以通过自然语言 排查问题、生成变更方案，并在用户确认后执行操作, MIT开源协议。\n\nGitHub:https://github.com/gocronx/kubevision\n文档:https://kubevision-docs.pages.dev/\n\n<img width=\"3442\" height=\"1984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4fb2a678-435e-4d35-a24c-39c603fe5197\" />",
-    "created_at": "2026-08-15T04:47:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11195"
   }
 ]
