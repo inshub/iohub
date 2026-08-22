@@ -1,5 +1,21 @@
 [
   {
+    "id": 11308,
+    "title": "【工具自荐】免费 HSK 水平测试：5 分钟测出你的中文等级",
+    "content": "Body大家好，我推荐一下自己做的工具：HSKtools。\n\n很多学中文的朋友一开始都不知道自己处在 HSK 哪个等级，而官方考试又贵又正式。于是我做了 [HSK level test](https://hsktools.com/)，一个完全免费的 HSK 学习工具站：\n\nHSK 水平测试：10 道题、约 5 分钟，测完直接给出 HSK 1-6 等级估计，无需注册、无需邮箱\n\nHSK 文本分析器：粘贴任意中文文本，自动按 HSK 等级拆解生词\n\nHSK 词汇测验：按等级快速练习词汇\n\nHSK 词汇测试：找出自己还没掌握的单词\n\nHSK 1-9 等级页和备考指南\n\n核心测试完全在浏览器里运行，不上传数据，也没有账号体系。测试结果是基于词汇识别的快速估算，不是官方认证，但用来确定学习起点和复习方向很够用。\n\n欢迎来体验：https://hsktools.com/\n\n如果有任何建议，比如题目难度、功能方向或者界面翻译，都欢迎告诉我，我会继续迭代。",
+    "created_at": "2026-08-22T13:57:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11308"
+  },
+  {
+    "id": 11307,
+    "title": "【开源自荐】pi-custom-packages：给 pi 编程 agent 的 10 个扩展，WSL 里操作 Windows 桌面 + 会话瘦身",
+    "content": "项目地址：https://github.com/Blue-B/pi-custom-packages\n\npi 是一个终端里的 AI 编程 agent（pi.dev）。这是我自己日常在 WSL 上用的 10 个扩展，攒到一个仓库里，MIT。\n\n一条命令装全部：\n\n```\npi install git:github.com/Blue-B/pi-custom-packages\n```\n\n也可以 clone 下来只装其中一个。\n\n大致分三类：\n\n- **会话守护**。pi 的 bash 超时单位是秒，模型却总是传毫秒，`120000` 就变成了 33 小时，这个扩展把它改回 120。另外模型切换之后，新模型会照着上下文里的旧名字自报家门，所以每次切换重新注入一次真实的模型 ID。\n- **上下文治理**。pi 每一轮都会把整个对话重发一遍，图片也不例外，截图攒到二十张就是二十份 base64。一个扩展负责把出站请求里的旧图片换成文字占位符，另一个负责给磁盘上已经撑大的会话文件瘦身。\n- **WSL 里操作 Windows 桌面**。pi 跑在 WSL 里看不到宿主机的桌面，所以补了截屏、鼠标键盘、录屏三件套。截屏用 PrintWindow，被别的窗口挡住也能抓到，发给模型之前可以把敏感区域打码。\n\n原本有 16 个，删掉了 6 个。其中 3 个是因为 pi 自己把功能做进去了，不再需要——比如给工具返回的图片做缩放这件事，起因是我提的一个 issue（[#5369](https://github.com/earendil-works/pi/issues/5369)），后来合并成了 [#7330](https://github.com/earendil-works/pi/pull/7330)。\n\n在 pi 0.84 上测试过，每个包都有各自的 README。",
+    "created_at": "2026-08-22T13:01:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11307"
+  },
+  {
     "id": 11306,
     "title": "【工具自荐】SSE DevTools Panel：AI 对话流式联调，把思考 / 正文 / 工具调用拆开看",
     "content": "# SSE DevTools Panel\n\n一个开源 Chrome 扩展（MIT，Manifest V3）。装上后 F12 多一个 **SSE DevTools** 面板——专门解决 **AI 对话 / Agent 流式接口联调** 时，Network 面板里 `data: {...}` 难以阅读的问题。\n\n- 仓库：https://github.com/FatMii/sse-devtools-panel\n- Chrome 应用商店：https://chromewebstore.google.com/detail/sse-devtools-panel/kffpkefnkmabnkhklmnjkihiiclggnni\n- 介绍文章：https://juejin.cn/post/7672224177785995298\n- 当前版本：**v1.2.0**（已上架 Chrome Web Store）\n\n\n# 它解决什么问题\n\n做 AI 网页、Copilot 侧边栏、Agent 工作流时，流式响应几乎成了默认形态。但 Chrome Network 对这类场景往往帮不上忙：\n\n- 接口走 `fetch` + 私有 SSE/NDJSON，Response 是一整屏碎片，**思考、正文、工具调用、搜索来源搅在一起**\n- 很多网关 **Content-Type 标错**（`application/json` 但实际是 SSE），Network 的 EventStream Tab 空白\n- 想确认 **首 token 延迟（TTFT）**、chunk 卡顿、EventSource 重连，只能自己算时间戳\n\nSSE DevTools Panel 不改变页面读流方式，只是在 DevTools 里多一个专用工作台，把流式对话 **拆成可读视图**。\n\n---\n\n# 核心能力：Conversation 对话视图\n\n自动识别常见 AI 协议 Profile，把一帧帧 chunk 合并成四个通道：\n\n| 通道 | 内容 |\n|------|------|\n| **Content** | 最终回答正文 |\n| **Thinking** | 思考 / 深度搜索过程 |\n| **Tools** | 函数调用；网页搜索归一成「查询词 + 来源卡片」 |\n| **Meta** | finish_reason、usage、model 等 |\n\n**已适配的 AI Web / API：**\n\nDeepSeek、豆包、Kimi、通义千问、智谱清言、腾讯元宝、OpenAI 兼容接口；各厂商有 CI 回归样本（`fixtures/vendors/`），协议变动时可快速跟进。\n\n其它协议仍可用 Events / Timeline / Raw 调试，Conversation 识别不到时会降级为 generic。\n\n---\n\n# 其它对 AI 联调有用的能力\n\n- **Timeline + Stats**：TTFT、chunk 间隔、≥250ms 卡顿标红、EventSource 重连标记\n- **智能捕获**：除 `text/event-stream` 外，支持 NDJSON、Connect+JSON；对 Content-Type 标错但 body 带 `stream: true` 的请求也能识别\n- **虚拟滚动**：Events / Conversation / Raw 长流不卡面板（v1.1+）\n- **导入导出**：JSON / CSV / `.sse`，可归档某次对话流离线复盘\n- **暗夜主题**：跟随 DevTools 或手动切换（v1.2.0）\n\n---\n\n# 截图\n\n## 面板总览\n\n![panel-overview](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/panel-overview.gif)\n\n## Conversation：正文 / 思考 / 工具调用\n\n![conversation-content](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/tab-conversation-content.png)\n\n![conversation-thinking](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/tab-conversation-think.png)\n\n![conversation-tools](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/tab-conversation-tools.png)\n\n## Timeline：流内节奏与卡顿\n\n![timeline](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/tab-timeline.png)\n\n## DeepSeek 联调示例（GIF）\n\n![deepseek-demo](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/deepseek-conversation.gif)\n\n---\n\n# 怎么用\n\n1. 从 [Chrome 应用商店](https://chromewebstore.google.com/detail/sse-devtools-panel/kffpkefnkmabnkhklmnjkihiiclggnni) 安装\n2. 打开目标页 → F12 → **SSE DevTools**\n3. **先刷新页面**，再触发 AI 对话 / 流式请求\n4. 侧栏选中流 → 切到 **Conversation** / **Timeline** 查看\n\n本地 Demo：`git clone` 后 `pnpm build && pnpm demo`，访问 `http://127.0.0.1:8765` 一键起流。\n\n---\n\n# 技术栈\n\nTypeScript · Manifest V3 · Vitest 单测 · GitHub Actions CI · 中英文 i18n\n\nMIT 协议，欢迎 Issue / PR（尤其各 AI 厂商协议样本）。",
@@ -790,21 +806,5 @@
     "created_at": "2026-08-15T03:56:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11193"
-  },
-  {
-    "id": 11192,
-    "title": "【书籍自荐】《解构大语言模型：从线性回归到通用人工智能》",
-    "content": "<img width=\"800\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1771ecd-b441-457e-a766-91e662c6f5c6\" />\n\n线上地址：https://gentang.github.io/zh/books/deconstructing_LLM/",
-    "created_at": "2026-08-15T02:46:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11192"
-  },
-  {
-    "id": 11191,
-    "title": "【开源自荐】DeepSeek Harness Handbook：从 Agent Runtime 架构理解模型、工具、沙箱与会话",
-    "content": "项目地址：https://github.com/sandbaseai/deepseek-harness-handbook\n\n在线阅读：https://sandbaseai.github.io/deepseek-harness-handbook/\n\n## 项目介绍\n\nDeepSeek Harness Handbook 是一份英文为主、多语言导航的开源 Agent Runtime 实战手册。它不把 Harness 当作模型 API 包装器，而是从 Agent 构建与运维视角解释 Provider、插件图、Agent Loop、工具、审批、沙箱、Session、MCP 与子代理之间的边界。\n\n## 为什么值得关注\n\n- **源码可追溯**：版本敏感结论固定到 DeepSeek Harness 上游 commit，并链接到具体源码或官方文档，注明验证日期。\n- **从任务出发**：提供 Web、Headless、Python SDK、MCP、Skills、Subagents 和仓库研究 Agent 的可复现路径；每篇都有成功证据和失败分支。\n- **真实故障手册**：覆盖 Windows/MSYS2、远程 Web `crypto.randomUUID`、子代理 Provider 路由继承、会话回放、工具参数与沙箱边界等社区真实问题。\n- **架构图优先**：用流程图解释一次 Agent turn、工具执行管线、Session events 和插件组合，适合做 Agent 产品或平台的开发者快速建立系统模型。\n- **开放复用**：Apache-2.0 许可证，提供在线站点、Markdown、PDF Release，以及英/中/日/韩/西语导航。\n\n## 一个核心观点\n\nAgent 不只是提示词。一个可运营的 Agent 需要任务边界、允许的副作用、完成条件、模型路由、工具面、权限策略、Session 策略、失败行为和可供操作者验证的结果。该项目围绕这些工程职责组织 DeepSeek Harness 的学习资料。\n\n项目预览图：https://raw.githubusercontent.com/sandbaseai/deepseek-harness-handbook/main/assets/deepseek-harness-handbook-social-preview.png\n",
-    "created_at": "2026-08-15T02:43:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11191"
   }
 ]
