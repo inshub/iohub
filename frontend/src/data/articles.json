@@ -1,5 +1,21 @@
 [
   {
+    "id": 11306,
+    "title": "【工具自荐】SSE DevTools Panel：AI 对话流式联调，把思考 / 正文 / 工具调用拆开看",
+    "content": "# SSE DevTools Panel\n\n一个开源 Chrome 扩展（MIT，Manifest V3）。装上后 F12 多一个 **SSE DevTools** 面板——专门解决 **AI 对话 / Agent 流式接口联调** 时，Network 面板里 `data: {...}` 难以阅读的问题。\n\n- 仓库：https://github.com/FatMii/sse-devtools-panel\n- Chrome 应用商店：https://chromewebstore.google.com/detail/sse-devtools-panel/kffpkefnkmabnkhklmnjkihiiclggnni\n- 介绍文章：https://juejin.cn/post/7672224177785995298\n- 当前版本：**v1.2.0**（已上架 Chrome Web Store）\n\n\n# 它解决什么问题\n\n做 AI 网页、Copilot 侧边栏、Agent 工作流时，流式响应几乎成了默认形态。但 Chrome Network 对这类场景往往帮不上忙：\n\n- 接口走 `fetch` + 私有 SSE/NDJSON，Response 是一整屏碎片，**思考、正文、工具调用、搜索来源搅在一起**\n- 很多网关 **Content-Type 标错**（`application/json` 但实际是 SSE），Network 的 EventStream Tab 空白\n- 想确认 **首 token 延迟（TTFT）**、chunk 卡顿、EventSource 重连，只能自己算时间戳\n\nSSE DevTools Panel 不改变页面读流方式，只是在 DevTools 里多一个专用工作台，把流式对话 **拆成可读视图**。\n\n---\n\n# 核心能力：Conversation 对话视图\n\n自动识别常见 AI 协议 Profile，把一帧帧 chunk 合并成四个通道：\n\n| 通道 | 内容 |\n|------|------|\n| **Content** | 最终回答正文 |\n| **Thinking** | 思考 / 深度搜索过程 |\n| **Tools** | 函数调用；网页搜索归一成「查询词 + 来源卡片」 |\n| **Meta** | finish_reason、usage、model 等 |\n\n**已适配的 AI Web / API：**\n\nDeepSeek、豆包、Kimi、通义千问、智谱清言、腾讯元宝、OpenAI 兼容接口；各厂商有 CI 回归样本（`fixtures/vendors/`），协议变动时可快速跟进。\n\n其它协议仍可用 Events / Timeline / Raw 调试，Conversation 识别不到时会降级为 generic。\n\n---\n\n# 其它对 AI 联调有用的能力\n\n- **Timeline + Stats**：TTFT、chunk 间隔、≥250ms 卡顿标红、EventSource 重连标记\n- **智能捕获**：除 `text/event-stream` 外，支持 NDJSON、Connect+JSON；对 Content-Type 标错但 body 带 `stream: true` 的请求也能识别\n- **虚拟滚动**：Events / Conversation / Raw 长流不卡面板（v1.1+）\n- **导入导出**：JSON / CSV / `.sse`，可归档某次对话流离线复盘\n- **暗夜主题**：跟随 DevTools 或手动切换（v1.2.0）\n\n---\n\n# 截图\n\n## 面板总览\n\n![panel-overview](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/panel-overview.gif)\n\n## Conversation：正文 / 思考 / 工具调用\n\n![conversation-content](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/tab-conversation-content.png)\n\n![conversation-thinking](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/tab-conversation-think.png)\n\n![conversation-tools](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/tab-conversation-tools.png)\n\n## Timeline：流内节奏与卡顿\n\n![timeline](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/tab-timeline.png)\n\n## DeepSeek 联调示例（GIF）\n\n![deepseek-demo](https://github.com/FatMii/sse-devtools-panel/raw/main/docs/assets/screenshots/deepseek-conversation.gif)\n\n---\n\n# 怎么用\n\n1. 从 [Chrome 应用商店](https://chromewebstore.google.com/detail/sse-devtools-panel/kffpkefnkmabnkhklmnjkihiiclggnni) 安装\n2. 打开目标页 → F12 → **SSE DevTools**\n3. **先刷新页面**，再触发 AI 对话 / 流式请求\n4. 侧栏选中流 → 切到 **Conversation** / **Timeline** 查看\n\n本地 Demo：`git clone` 后 `pnpm build && pnpm demo`，访问 `http://127.0.0.1:8765` 一键起流。\n\n---\n\n# 技术栈\n\nTypeScript · Manifest V3 · Vitest 单测 · GitHub Actions CI · 中英文 i18n\n\nMIT 协议，欢迎 Issue / PR（尤其各 AI 厂商协议样本）。",
+    "created_at": "2026-08-22T07:42:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11306"
+  },
+  {
+    "id": 11305,
+    "title": "【开源自荐】magpie：本地优先的 Spotlight 式启动器，找回 star 过就忘的项目、文件、图片和书签",
+    "content": "项目地址：https://github.com/newdee/magpie\n\nmagpie 是一个开源（MIT）的桌面启动器（Tauri + Rust），按下 Alt+Space 唤出一个 Spotlight 式搜索框，专门找回三类「存过就忘」的东西：\n\n- **GitHub Stars**：同步全部 star，连 README 全文一起分块嵌入——star 上千之后 GitHub 自带搜索只搜标题描述，magpie 用中文也能命中英文 README 里的内容，结果可按相关度 / 收藏时间 / 星数排序；\n- **本地文件**：只索引你显式添加的文件夹，近 80 种文本/代码格式全文检索，PDF / Word / Excel / PPT 解析成文本，命中段落高亮显示；图片经 SigLIP 2 嵌入，支持任何语言的文字搜图和以图搜图（拖拽 / 粘贴 / 选文件），并显示相似度百分比；\n- **浏览器书签**：任意 Chromium 内核浏览器（包括各种小众分支，按磁盘 profile 结构自动发现）外加 Firefox，直读本地存储，不走任何 API。\n\n检索是 SQLite FTS5（BM25）关键词 + 本地语义向量（multilingual-e5-small）的混合排名，中英跨语言。顺手还能当快捷浏览器入口：输入网址或搜索词按 Ctrl+Enter，直接交给默认浏览器。\n\n隐私靠架构保证：永不全盘扫描，只读显式添加的文件夹；嵌入模型经 ONNX 本地推理，首次下载后完全离线，数据不出本机。国内网络可在设置里一键切换 hf-mirror.com 镜像下载模型（断点续传、实时进度）。\n\n支持 Windows / macOS (Apple Silicon) / Linux。\n\n![检索 GitHub stars](https://raw.githubusercontent.com/newdee/magpie/main/docs/img/palette-stars.jpeg)\n\n![以图搜图](https://raw.githubusercontent.com/newdee/magpie/main/docs/img/image-similarity.jpeg)",
+    "created_at": "2026-08-22T07:35:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11305"
+  },
+  {
     "id": 11304,
     "title": "【工具推荐】贴纸喵MewSticker: 一句话一站式生成 (20 + 风格) 的全套贴纸素材, 自动切分描边加文字，手账素材表情包神器",
     "content": "大家好，我给大家推荐一下我自己做的小工具，是一个贴纸素材生成器，我自己是手账爱好者，所以优化了工作流体验，欢迎使用啊！\n\n贴纸喵MewSticker 是一款给数字手帐作者、笔记用户、内容创作者和手作爱好者使用的 AI 贴纸素材工作台。它不只是生成一张贴纸图，而是把创意、生成、切分、微调、排版和导出放进同一个工作流。输入文字描述，或者上传人物、宠物、物品等参考图片，选择喜欢的风格，就能制作单张贴纸、三视图或一整套贴纸合集。\n[官网地址](http://sticker.guantou.site/)\n\n<img width=\"1728\" height=\"996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cdbdc28b-47bb-40f0-8950-e23975b3ced7\" />\n<img width=\"1728\" height=\"996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0cabfba3-c88c-48c5-831a-931524cf0e7d\" />\n<img width=\"1728\" height=\"996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ec164bc-e483-4eb0-ac67-d5a5b0786699\" />\n<img width=\"1728\" height=\"996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/beade996-a77f-47ab-a3e6-6f43eb749b5e\" />\n<img width=\"1728\" height=\"996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9ae7dbd3-cb9b-4d59-b6a7-5e2d470f0d5d\" />\n<img width=\"1728\" height=\"996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7dc89bb4-ddcd-4ac6-ae1c-c62cafba9334\" />\n<img width=\"1728\" height=\"996\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9756bdd9-a5b8-407f-855d-5a78a42ff5a9\" />",
@@ -790,21 +806,5 @@
     "created_at": "2026-08-15T02:43:25Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11191"
-  },
-  {
-    "id": 11190,
-    "title": "【开源自荐】MCP Lens：让 DeepSeek Harness 的 1,000 个 MCP 工具只占两个模型入口",
-    "content": "## 【开源自荐】MCP Lens：让 DeepSeek Harness 的 1,000 个 MCP 工具只占两个模型入口\n\nDeepSeek Harness 可以连接很多 MCP Server，但当目录增长到几百、上千个工具时，把所有工具 Schema 每轮都交给模型，会让请求变得很重。\n\nMCP Lens 是一个 MIT 开源的 Harness 插件。它把远端目录放在本地可搜索目录后，只给模型两个稳定入口：\n\n- `mcp_search(query)`：找到候选工具，只返回命中项的准确 `inputSchema`\n- `mcp_call(server, tool, arguments)`：调用明确选中的原始工具\n\n在同一套 DeepSeek Harness 0.1.0-rc.6、同一 1,000 工具 fixture、同样三个任务的 V4 Flash 实测中：\n\n- 完整模型可见工具：1,025 → 27（双方共享 25 个非 MCP 工具，MCP 工具面实际为 1,000 → 2）\n- `request/header.tools` JSON：674,249 B → 27,401 B，减少 95.936%\n- 任务完成：3/3 → 3/3\n- 按 2026-08-14 抓取的价格估算：$0.0307204 → $0.0034707\n\n代价也公开：Lens 多一次搜索步骤，这组任务的输出 Token 从 491 增到 794；这不是通用延迟或质量结论。\n\n项目还提供了一个完全在浏览器本地运行的目录计算器。可以粘贴脱敏后的 MCP Tool JSON，查看自己的模型可见 Schema 数量和 UTF-8 字节；内容不会上传。\n\n- GitHub：https://github.com/labmimors/dsh-mcp-lens\n- 本地目录计算器：https://labmimors.github.io/dsh-mcp-lens/\n- 公开复现实验：https://github.com/labmimors/dsh-mcp-lens/blob/main/docs/LIVE_DEEPSEEK_PILOT.md\n\n![MCP Lens 对比图](https://raw.githubusercontent.com/labmimors/dsh-mcp-lens/main/assets/mcp-lens-comparison.zh-CN.svg)\n",
-    "created_at": "2026-08-14T21:02:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11190"
-  },
-  {
-    "id": 11189,
-    "title": "【开源自荐】kvcached:让多个大模型弹性共享一张 GPU 的显存",
-    "content": "kvcached 是给 vLLM / SGLang 用的 KV cache 库,让多个模型共享一张 GPU 的显存。\n\n一张 GPU 上想同时跑两个大模型,现在只能手动切显存，vLLM 的`--gpu-memory-utilization` 启动时就把显存占死,整晚没请求也不还,分多了 OOM,分少了浪费。\n\nkvcached 把 KV cache 的虚拟地址和物理显存拆开:启动只预留地址空间,真有请求写 KV 时才映射物理显存,用完归还。相当于给 GPU 显存加了一层操作系统式的虚拟内存,谁用谁占。\n\n一张 A100-80G 跑 3 个 Llama-3.1-8B,面对间歇峰值流量,首 token 延迟比静态切分低 2~28 倍。\n\n不用改引擎代码:\n\n    pip install kvcached --no-build-isolation\n    export ENABLE_KVCACHED=true KVCACHED_AUTOPATCH=1\n    # 照常 vllm serve / sglang.launch_server 即可\n\n支持 vLLM 和 SGLang,Apache 2.0。Red Hat 已基于它做了 K8s 上的多模型动态部署。\n\nhttps://github.com/ovg-project/kvcached\n\n![演示](https://raw.githubusercontent.com/ovg-project/kvcached/refs/heads/main/assets/kvcached-example.gif)",
-    "created_at": "2026-08-14T20:35:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11189"
   }
 ]
