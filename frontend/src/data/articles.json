@@ -1,5 +1,13 @@
 [
   {
+    "id": 11302,
+    "title": "【开源自荐】2019 年那一行 scan()，七年了还在跑",
+    "content": "2019 年这个插件上过[第 74 期](https://github.com/ruanyf/weekly/issues/766)。当时就是这一行：\n\n```dart\nString? code = await scanner.scan();\n```\n\n打开相机，扫到第一条码，返回字符串，关掉。没有预览窗，没有连续扫。\n\n七年了。359 个 star，pub.dev 391 个赞，中间停过很久。今年把它修到能在现在的 Flutter 上跑：Android CameraX，iOS Vision。那一行一个字没改。\n\n微信扫码也是打开、对准、关掉。大多数 App 要的就是这一下，不是在页面里嵌一个永远开着的相机。\n\n## 效果\n\n![qrscan](https://github.com/wechat-program/album/blob/master/pic/cons/qr_scan_demo.gif?raw=true)\n\n扫到返回字符串，取消是 `null`。只申请相机权限，不读相册。横屏跟着转。MIT。\n\n相册识码、本地图、生成二维码，另外四个函数。要嵌在页面里连续扫，用 [mobile_scanner](https://pub.dev/packages/mobile_scanner)。\n\n```yaml\ndependencies:\n  qrscan: ^1.1.1\n```\n\nhttps://github.com/wu9007/qrcode_scanner  \nhttps://pub.dev/packages/qrscan\n",
+    "created_at": "2026-08-22T00:23:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11302"
+  },
+  {
     "id": 11301,
     "title": "【开源自荐】Longshot：本地运行的 Chrome 长截图与标注扩展",
     "content": "项目地址：https://github.com/zluckyhou/longshot\n\nLongshot 是一个开源 Chrome 扩展，可以一键截取完整的滚动页面，并在浏览器内完成裁剪、画笔、箭头、形状、文字、马赛克、放大镜、缩放与复制/保存。\n\n它主要解决普通长截图工具容易出错的页面：\n\n- 能识别 SPA、邮箱、仪表盘中的内层滚动容器；\n- 按真实滚动位置拼接，自动处理最后一屏重叠；\n- 截图时只保留一次 fixed 顶栏，并临时解除 sticky 元素，避免重复出现。\n\n隐私方面，截图、拼接、编辑和导出全部在本地完成，不需要服务器、账户、统计代码或网站访问权限，只会读取用户主动触发的当前标签页。项目采用 MIT 许可证，界面支持简体中文和英文。\n\n目前需要 Chrome 116+，从仓库下载后通过「加载已解压的扩展程序」安装。\n\n![Longshot 标注编辑器](https://raw.githubusercontent.com/zluckyhou/longshot/main/store/assets/shot-2-annotate.png)",
@@ -798,13 +806,5 @@
     "created_at": "2026-08-14T15:57:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11187"
-  },
-  {
-    "id": 11186,
-    "title": "【工具自荐】SmartPlot：一个面向科研人的现代绘图与数据分析软件",
-    "content": "项目地址：**https://smartplot.app/**\n\n我们自己平时也需要处理不少科研数据和图。\n\n科研绘图软件其实已经很多了，但真正日常使用的时候，还是经常会遇到一些很细碎的问题：导入数据、调整样式、找合适的配色、统一字号、多图拼接、导出 SVG / PDF / PPTX……有时候一张图本身并不复杂，但为了把它整理得适合论文或者汇报，会花掉不少时间。\n\n尤其是在 Mac 上，我们一直觉得完整、现代，同时又比较容易上手且经济实惠的科研绘图工具选择并不算多。\n\n所以后来我们开始自己做 **SmartPlot**。\n\n<img width=\"2878\" height=\"1622\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/90a809e7-a555-473f-a8d1-21a6c7c34c78\" />\n\nSmartPlot 是一个面向科研用户的桌面绘图与数据分析软件，目前支持 **Windows 和 macOS，也提供 Linux**，并带有中英文界面。\n\n我们的想法不是把传统科研绘图软件的所有功能重新做一遍，而是先把科研中最常用的一部分工作流做得更简单一些。\n\n目前主要包括：\n\n- 折线图、散点图、柱状图、箱线图、热图、气泡图、雷达图等常见科研图形\n- 数据拟合、峰拟合等常用分析功能\n- 图形配色、坐标轴、图例、标注等可视化设置\n- 多图组合与紧凑拼接\n- SVG、PDF、PPTX、TIFF 等科研常用格式导出\n- Windows / macOS 跨平台使用\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dbdf9849-9514-4f6c-8da6-9d0319373bbd\" />\n\n<img width=\"420\" height=\"237\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e02e7847-9a08-4075-93b1-401bf70889e9\" />\n\n最近我们还在尝试一件自己觉得比较有意思的事情：**AI × 科研绘图**。\n\n<img width=\"1436\" height=\"1400\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2b32baf2-7166-48c0-9877-8658c5a41b33\" />\n\nSmartPlot 已经开始支持 MCP，可以让兼容的 AI 客户端读取当前工作区中的数据和图形结构，并根据自然语言生成绘图或修改方案，再交给用户确认执行。\n\n我们希望 AI 最后不是直接“生成一张看起来像科研图的图片”，而是真正参与到数据、图层、坐标轴和样式这些可编辑的科研绘图流程里。\n\n<img width=\"1262\" height=\"914\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ec2eaae-66b2-4c24-8380-e05046ba8ec7\" />\n\nSmartPlot 现在还在持续迭代中，很多功能也是根据科研用户的反馈一点点加进去的。\n\n如果你平时也经常需要画科研图，欢迎体验，也欢迎给我们提建议。\n\n官网：https://smartplot.app/",
-    "created_at": "2026-08-14T15:07:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11186"
   }
 ]
