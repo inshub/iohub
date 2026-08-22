@@ -1,5 +1,13 @@
 [
   {
+    "id": 11303,
+    "title": "【工具自荐】Codex Reset：把普通 reset、banked reset 和个人 /status 分开",
+    "content": "我用 Codex 时，经常碰到两个很像、其实不是一回事的问题：自己的 5 小时 / weekly window 什么时候恢复，以及 OpenAI 有没有发布面向所有人的 reset。现在又多了 banked reset——它只是存起来以后再用的额度，不能当成普通 reset 去移动时间线。\n\n所以我做了 Codex Reset：\n\nhttps://codex-reset.com\n\n网站把普通 reset、banked reset、boost 和预告分开记录，提供 24h / 48h outlook，也可以根据 `/status` 设置自己的倒计时。它不登录 OpenAI，也不读取账号；个人时间只保存在浏览器里。\n\n最近的 20M banked reset 正好检验了这套区分：最初公告、预计到账时间和最终到账确认都标成 `BANKED`，没有改动普通 reset 的节奏。\n\n技术上是静态前端加 Cloudflare Worker、KV 和 Workers AI。明确规则先判断，模型只处理剩下的模糊文本；无法确认的内容会留在 radar，但不会直接发 reset alert。\n\n[![Codex Reset](https://codex-reset.com/og-image.png?v=8)](https://codex-reset.com/timeline)\n",
+    "created_at": "2026-08-22T04:05:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11303"
+  },
+  {
     "id": 11302,
     "title": "【开源自荐】2019 年那一行 scan()，七年了还在跑",
     "content": "2019 年这个插件上过[第 74 期](https://github.com/ruanyf/weekly/issues/766)。当时就是这一行：\n\n```dart\nString? code = await scanner.scan();\n```\n\n打开相机，扫到第一条码，返回字符串，关掉。没有预览窗，没有连续扫。\n\n七年了。359 个 star，pub.dev 391 个赞，中间停过很久。今年把它修到能在现在的 Flutter 上跑：Android CameraX，iOS Vision。那一行一个字没改。\n\n微信扫码也是打开、对准、关掉。大多数 App 要的就是这一下，不是在页面里嵌一个永远开着的相机。\n\n## 效果\n\n![qrscan](https://github.com/wechat-program/album/blob/master/pic/cons/qr_scan_demo.gif?raw=true)\n\n扫到返回字符串，取消是 `null`。只申请相机权限，不读相册。横屏跟着转。MIT。\n\n相册识码、本地图、生成二维码，另外四个函数。要嵌在页面里连续扫，用 [mobile_scanner](https://pub.dev/packages/mobile_scanner)。\n\n```yaml\ndependencies:\n  qrscan: ^1.1.1\n```\n\nhttps://github.com/wu9007/qrcode_scanner  \nhttps://pub.dev/packages/qrscan\n",
@@ -798,13 +806,5 @@
     "created_at": "2026-08-14T18:48:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11188"
-  },
-  {
-    "id": 11187,
-    "title": "【工具自荐】Blitz Capture 网页长截图扩展插件，10x速度丝滑滚动截图（录屏对比 GoFullPage）",
-    "content": "最近 chrome 下架了 1000多万用户的长截图插件 GoFullPage，我借此机会给大家自荐一下 Blitz Capture 全页面截图插件。\n\nBlitz Capture 不是重复做了一个长截图插件，而是用完全不同的技术路线，将截图**速度提升了 10倍**左右，并且在截图效果上也更好一些。\n\n## 基本信息\n\n- 安装地址：[BlitzCapture - Chrome Web Store](https://chromewebstore.google.com/detail/full-page-screenshot-%E2%80%93-fa/nnhplomobinijgpongnbofokpibpbioa?hl=zh)\n- 评分：70个评分，4.9/5.0\n- 用户数：7000+\n- 大小：< 700KiB\n- 网站：[Blitz Capture - ZIZIYI](https://ziziyi.com/zh-cn/blitz-capture/)\n\n## 录屏视频 GoFullPage vs Blitz Capture\n\nhttps://github.com/user-attachments/assets/093c03fe-705a-49b9-b429-ed467c35a3e7\n\n## 视频截图\n\n<img width=\"1633\" height=\"846\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f857eb05-2b0e-4db1-b152-d1e4a59962ff\" />",
-    "created_at": "2026-08-14T15:57:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11187"
   }
 ]
