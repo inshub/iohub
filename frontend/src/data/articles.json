@@ -120,14 +120,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11297"
   },
   {
-    "id": 11296,
-    "title": "【工具自荐】journal：一条 SSH 命令进德州扑克桌，摸鱼推荐",
-    "content": "使用命令行界面打无限注德州，摸鱼首选。连上就进当前没满的桌，空桌则等真人，大于等于两人即开桌。\n\n本机如果没用过 SSH ，先执行一次（一路回车）：\n`ssh-keygen -t ed25519`\n\n然后把「昵称」换成你想显示的名字：\n\n`ssh -p 2222 昵称 @riverjam.club`\n账号认本机 SSH 。\n\n说明（规则 + 界面）\n\n这是一个跑在 SSH 里的文字桌。界面像日志，没有牌桌图，也没有 fold / 黑桃 这类词。规则还是无限注德州。\n\n进入\n\nssh -p 2222 昵称 @riverjam.club（字母数字、下划线、短横，最多 16 个字符）。\n\n你会看到\n\n```\njournal 0.3\nattached\nid 你的昵称 bal=20000\nseated t=1 n=1/9\nstk=2000 bal=18000\nwait n=1/9 0m\n```\nbal 账户余额，stk 这桌带进来的筹码\nwait n=1/9 3m：人数，以及已等了几分钟\n少于 2 人不开始；第一手开始打前再等 20 秒\n当前进行中进来会看到 watch / wait next：能看公共牌和别人怎么动，看不到任何人的底牌；下一手自动入局\n第 10 人进新桌\n轮到你：act you … need=… minr=… stk=… t=60\n等别人：act 对方昵称 … t=60\n\nneed 是还差多少才能跟平。minr 是这条街最少加到多少。r 60 是当前这条街（翻/转/河各自单独算）加到 60 ，不含前面已经进池的。t 是剩余秒数。\n\n行动\n\nf 弃　c 跟　k 过　r 60 加到 60 　a 全下\nb 余额　l 排行　j 再入队　q 离开（桌上筹码回到自己账户）\nm 看花色对照（旁边有人时别敲）\n\n60 秒不行动：能过就自动 k，否则自动 f。\n\n牌\n\n点数：A K Q J T 9-2\n花色映射为数字，跟随在点后面：1 黑桃　2 红桃　3 方片　4 梅花\n例：A.1 黑桃 A ，K.2 红桃 K ，T.4 梅花 10\n\n筹码\n\n新号 20000 ，买入默认 2000 （ 1000–4000 ）。余额低于 2000 时，跨自然日补到 2000 。上限 500000 。破产离座。\n\n欢迎摸鱼的时候来玩。",
-    "created_at": "2026-08-21T05:44:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11296"
-  },
-  {
     "id": 11295,
     "title": "【开源自荐】国行手机 FCM 推送总延迟？这个开源工具用心跳广播把长连接续住",
     "content": "很多用国行安卓手机的人会遇到一个说不清原因的毛病：手机装了 Google 服务（GMS）之后，Telegram、Gmail、WhatsApp 这些依赖 FCM（Firebase 云消息）的推送，经常延迟十几分钟，甚至干脆收不到。\n\n原因在于国产 ROM 会强制停止 FCM 的后台长连接，长连接一断，推送就只能等系统允许的时候才进来。\n\nHeartbeat Fixer for FCM 借鉴早年 GCM 时代的心跳保活思路，每隔几分钟向 Google Play 服务显式发送一次心跳广播，把 FCM 的长连接\"续\"住。它不是老项目的简单搬运，而是针对现代安卓重写：\n\n- Android 8+ 改用显式广播（系统从 8.0 起不再把隐式广播发给其他应用）\n- 用 setExactAndAllowWhileIdle 穿透 Doze 休眠，并适配 Android 12+ 的精确闹钟权限（没授权时自动降级）\n- 开机、应用更新后自动恢复心跳，不需要手动重开\n- Material 3 界面，内置\"关闭电池优化\"\"授予精确闹钟\"两个一键入口\n\n适用前提：设备装有 GMS（渠道机或自行刷入），且被系统激进杀后台。纯血无 GMS 的机型无效。\n\n需要说明：心跳广播是 Google 早期遗留的内部机制，当前 Play 服务是否仍响应没有官方保证，实际效果要看机型；另外如果应用被系统 force-stop，心跳会中断，直到下次重启或更新才恢复。这类工具的定位是\"能改善、不敢打包票\"。\n\nGitHub 主页和 Releases 都有详细说明，签名 APK 直接在 Releases 下载：\nhttps://github.com/grimseraph/HeartbeatFixerForFCM",
@@ -806,5 +798,13 @@
     "created_at": "2026-08-15T07:49:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11196"
+  },
+  {
+    "id": 11195,
+    "title": "[开源自荐] KubeVision: ai驱动的Kubernetes dashboard",
+    "content": "KubeVision 是一个开源、AI 驱动的Kubernetes Dashboard，支持多集群管理、资源监控、Helm 应用部署、Pod 日志与终端、RBAC 及 AI 辅助运维。它不仅能查看集群状态，还可以通过自然语言 排查问题、生成变更方案，并在用户确认后执行操作, MIT开源协议。\n\nGitHub:https://github.com/gocronx/kubevision\n文档:https://kubevision-docs.pages.dev/\n\n<img width=\"3442\" height=\"1984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4fb2a678-435e-4d35-a24c-39c603fe5197\" />",
+    "created_at": "2026-08-15T04:47:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11195"
   }
 ]
