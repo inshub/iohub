@@ -1,5 +1,37 @@
 [
   {
+    "id": 11319,
+    "title": "【开源自荐】FlowGuard：面向 AI / LLM 与微服务的高性能 Python 异步限流熔断库",
+    "content": "### 项目介绍\n- **项目名称**：FlowGuard（PyPI: `flowguard-core`）\n- **项目地址**：https://github.com/yangjinyu050618-hash/flowguard\n- **项目类别**：Python / 开发者工具 / 后端中间件 / AI 基础设施\n- **开源协议**：MIT\n\n### 为什么推荐这个项目？\n在调用 OpenAI、Anthropic、DeepSeek 等第三方大模型 API 或构建高并发微服务时，开发者经常面临频繁的 429 速率限制（RPM/TPM）、偶发 503 报错以及下游抖动导致的雪崩。\n\nFlowGuard 是一个**纯 Python 原生 asyncio 实现、零额外重依赖**的现代化弹性编排库：\n1. **严格 FIFO 令牌桶与滑动窗口**：基于 Future 队列实现，彻底消除轮询开销与竞争倒置，保证严格公平排队。\n2. **探针闸门熔断器**：状态机驱动（Closed / Open / Half-Open），引入半开探针并发硬上限，防止恢复瞬间积压流量砸向故障下游。\n3. **AWS 抖动退避重试**：内置 Full Jitter、Equal Jitter 与 Decorrelated Jitter 重试策略。\n4. **LLM Native 适配器**：针对 OpenAI 客户端提供 RPM/TPM 双轴限流保护与超时防挂死。\n5. **高工程化质量**：行测试覆盖率 92.76%，严格类型标注，内置 Prometheus / JSON 遥测监控。\n\n### 一行代码快速上手\n```bash\npip install flowguard-core\n\nfrom flowguard import guard\n\n@guard(\n    name=\"llm-service\",\n    rate_per_sec=20.0,       # 速率限制 20次/秒\n    burst_capacity=30.0,     # 突发容量 30次\n    max_retries=3,           # 自动重试\n    failure_threshold=5,     # 连续5次失败触发熔断\n    max_concurrent=10,       # 隔板并发限制 10\n)\nasync def call_llm(prompt: str):\n    return f\"Response: {prompt}\"",
+    "created_at": "2026-08-23T09:54:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11319"
+  },
+  {
+    "id": 11318,
+    "title": "【开源自荐】hermes-auto-titler：AI 会话标题自动维护插件，用户手改的标题永不覆盖",
+    "content": "仓库：https://github.com/Vocllum/hermes-auto-titler\n\nAI 会话的标题通常只用首条消息命名一次，之后就停在原地——对话往下走成了几天的部署项目，侧边栏里它还叫第一句话的样子。\n\n这个 Hermes Agent 插件用独立的廉价模型按轮数间隔评估标题是否仍反映对话主线，需要时重写。几个设计点：\n\n- 来源优先级 derived < llm < user：用户手改过的标题永不覆盖\n- 主线优先：评估读开头 + 最近消息 + 完整用户轨迹，小任务带不偏标题\n- 防震荡：改名需连续多次确认才落库\n- 后台线程执行不阻塞对话，每次调用独立记账\n\n125 个单元测试，Apache-2.0。",
+    "created_at": "2026-08-23T09:51:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11318"
+  },
+  {
+    "id": 11317,
+    "title": "【开源自荐】可跨站操作的网页ai代理",
+    "content": "# CAID-浏览器ai副驾\nChromium 扩展（MV3，Chrome + Edge 双发），**零构建**，**不接管**浏览器原生新标签页，在**任意网页**可唤出 AI 副驾；内置插件系统，**侧边栏区块 / 主面板 / 弹窗**，全部可由你手写 JavaScript 插件自由扩展。[仓库地址](https://github.com/CqwqY/CAID)   [官网](https://graduate.dpdns.org/)\n## 副驾侧边栏形态\n<img width=\"960\" height=\"489\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cd306fdd-e017-4e08-a8cd-0252b2eae5ff\" />\n\n## 副驾底部栏形态\n<img width=\"1916\" height=\"970\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d211719d-f5ad-4f7a-aa6f-1ca3d7a6abdb\" />\n\n## 运行示例\nhttps://github.com/user-attachments/assets/8610870a-0b86-47db-a97c-69a5cea6f340\n\n## 项目特性：\n**不占用新标签页**：保留浏览器原生新标签页，零侵入。右键点扩展图标 →「选项」即可打开工作台设置页。\n- **跨页 AI 副驾**：任意网页右下角浮球唤起副驾，MAIN world 运行、绕过页面脚本干扰；选中文本 → 右键 → 附带上文启动。支持 **AI 回答** 与 **Bing 搜索** 双模式、待办、长期记忆。\n- **第六感 · 主动协助**（测试版）：采集行为信号（停留、滚动、复制、搜索）在本地推断意图，弹一条轻量气泡建议，点击即唤醒副驾执行对应任务；内置 17 个场景 + 规则表化可扩展，触发场景逐项可开关。全程本机处理，不记录页面正文。\n- **轻量插件系统**：用 JavaScript 自制功能区块，零部署、代码存你自己浏览器本地。\n- **服务器监控卡片**：填一个可访问地址，零部署探测在线状态与响应速度。\n- **数据本地化**：设置、插件、副驾配置全部存于浏览器本地，不依赖任何后端。\n- **长期记忆**：副驾拥有长期记忆\n## 安装说明：\n1.进入发布链接：`https://github.com/CqwqY/CAID/releases/tag/v0.3.23` ，下载zip后解压 \n2.打开浏览器**开发者模式**\n3.**导入解压缩的拓展**导入即可\n\n## 使用 \n### 1.配置\n双击展开面板，点击上方设置，打开api配置，输入自己的LLM的api\n### 2.呼出\n单击右下角圆球呼出输入栏，双击打开面板。发送信息给副驾即可，运行时会有急停按钮，快捷键 `ctrl+L`\n### 状态解析：\n- **蓝色小球**：正常状态\n- **绿色小球**：运行中\n- **红色小球**：出错\n- **黄色小球**：运行完成\n### 3.拓展界面\n右击上方拓展图标进入拓展选项 _或_ 鼠标悬浮于小球后点击产物页\n插件，记录，以及拓展功能设置将会在此地显示\n## 特色功能使用\n### AI错题本功能\n往往**ai容易犯错**，总拿其没办法，现在你可以通过悬浮球向ai写错题本，ai将会在每次执行任务前查阅错题本，并遵守解决方案\n### AI第六感\n在你长时间浏览网页或者你滑动深度深的话，插件会认为你对此感兴趣，可能会在上方悬浮提示你是否要继续看\n或\n当你在AI所记录的网页浏览，ai则会对当前场景做出建议\n如：在电商网站，识别到电商元素或特定网站，将会询问是否需要总结\n在github等代码平台，会询问是否需要代码分析等等\n**打扰？**\n你可以进行屏蔽某些网站，甚至关闭智能推荐来，，免除打扰\n\n## 已知问题\n对于AI第六感，还在测试中，且目前使用的是代码逻辑判断，**无法对所有网站进行建议**\n对于副驾，副驾的识别能力是从内（源代码）层面看网页，容易**不认得一些图形化按钮**，目前修复方法是**识别css标签**，**但仍会有误**\n且操作由AI执行，一些模糊不清的语句容易使其摸不着头脑\n## License\nMIT",
+    "created_at": "2026-08-23T09:12:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11317"
+  },
+  {
+    "id": 11316,
+    "title": "wiwana-AI 获客智能体",
+    "content": "[wiwana-AI 获客智能体](https://wiwana.com)\n通过小红书的评论区关键词，获得精准意向客户。\n\n<img width=\"3006\" height=\"1756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1c222922-7dd1-469a-bc71-bb169ce2d75b\" />\n\n<img width=\"3006\" height=\"1756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2a5243aa-e096-4d9a-9810-8b1fc98899fe\" />",
+    "created_at": "2026-08-23T09:01:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11316"
+  },
+  {
     "id": 11315,
     "title": "【工具自荐】NowVoice：免费文字转语音工具，提供 400+ 自然、富有情感的 AI 声音，无需登录即可体验",
     "content": "# 项目地址\n\nhttps://nowvoice.ai\n\n# 项目简介\n\nNowVoice 是一个免费的在线 AI 文字转语音工具。打开网页，粘贴文字并选择声音，就能生成语音并下载为 MP3，无需安装软件，也无需登录即可体验。\n\n网站目前提供 400+ AI 声音，覆盖中文、英语、日语、西班牙语等 13 种语言和多种口音。声音可以调整语速、音量、音调和停顿，也支持自定义发音，方便处理人名、品牌名和专业词汇。\n\n生成的语音可以用于视频旁白、短视频解说、文章朗读、播客、有声内容和在线课程等场景。\n\n# 为什么做这个工具\n\n很多文字转语音工具需要安装软件，或者需要先注册才能试听。我希望做一个打开网页就能使用的工具，让用户可以先输入一段文字、选择声音并直接生成结果，不需要复杂的配置过程。\n\n除了使用方便，NowVoice 也希望给内容创作者提供更多声音和语言选择。用户可以不断试听和调整，找到适合当前内容的表达方式，而不需要重新录音。\n\n# 主要特点\n\n- 免费使用，无需登录即可体验\n- 提供 400+ 自然、富有情感的 AI 声音\n- 覆盖 13 种语言及多种口音\n- 支持调节语速、音量、音调、停顿和发音\n- 支持生成并下载 48kHz MP3 音频\n- 打开浏览器即可使用，无需下载安装\n\n欢迎大家体验，有任何问题或建议都可以反馈给我。\n\n# 界面截图\n\n<img width=\"1984\" height=\"1386\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8d3af1af-7da1-4cdc-aa34-f6db0e80f51c\" />",
@@ -774,37 +806,5 @@
     "created_at": "2026-08-15T14:21:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11203"
-  },
-  {
-    "id": 11202,
-    "title": "【开源自荐】blink-installer：用 HTML/CSS/JS 写 Windows 安装包界面",
-    "content": "做过桌面应用的人大概都有过这个体验：产品本身打磨得挺好，一到打包出安装程序，界面就穿越回了 Windows XP 时代——蓝底白字、灰色按钮、方方正正的进度条，想改一下还得到 NSIS 那套脚本语言里翻文档。\n\nInno Setup 和 NSIS 本身没什么问题，它们把压缩、解压、注册表、卸载这些脏活干得很好。问题在于界面：它们提供的 UI 定制能力，基本上就是在\"换个背景图\"和\"硬写 Win32 API\"之间二选一。\n\n我想要的是：**能不能用前端的方式来写安装包界面？** 圆角、投影、渐变、全屏入场动画，这些在网页里稀松平常的东西，在安装包里却几乎做不到。\n\n于是做了 blink-installer。\n\n**GitHub**：https://github.com/MaskerPRC/blink-installer\n\n它做的事情很简单：不打包你的应用，只把已经打好包的目录（比如 electron-builder 的 win-unpacked 输出）套一层安装程序。压缩、解压、快捷方式、卸载注册交给 NSIS，界面交给 miniblink 渲染。\n\n关键点在于——窗口是透明分层窗口，所以能有圆角、投影，以及直接画在桌面上的全屏动画。而且入场动画和安装界面是同一个窗口：它播完动画后收缩成卡片，不是切到第二个进程，画面不跳。\n\n这些是普通 Win32 安装程序做不到的，而渲染引擎只带来几兆的体积开销。\n\n**主要能力：**\n\n- 用 HTML/CSS/JS 写安装界面，支持圆角、透明、投影、全屏动画\n- 基于 NSIS + miniblink，压缩解压卸载该有的都有\n- 每用户安装免 UAC，也支持全局安装\n- 安装和卸载共用一套 HTML 界面\n- 静默安装 `/S` 支持 CI/CD 场景\n- 代码签名钩子，和 electron-builder 的签名配置完全兼容\n- 内置 AI agent 集成提示语，丢给 Claude Code / Cursor 就能自动生成配套界面\n\n**安装：**\n\n```bash\nnpm i -D blink-installer\nnpx blink-installer init\nnpx blink-installer build\n```\n\n**两种构建模式：**\n\n- `--ui-only`：把应用换成占位文件，3 秒出包，专门用来调界面\n- 正式构建用 `--compression lzma`，和 electron-builder 自带的 NSIS 一样的压缩\n\n渲染引擎是 Chromium 57~60 时代的 Blink，比较老，所以有一些硬约束（比如不能用 flex gap、彩色 emoji 渲染为空白、帧率上限 33fps）。这些在文档里都写清楚了，还附了一份给 AI agent 的集成提示语——里面带了全部硬约束，免得 agent 写出在浏览器里好好的、到安装包里却白屏的界面。\n\n项目还在早期，欢迎试用和提 issue。",
-    "created_at": "2026-08-15T13:07:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11202"
-  },
-  {
-    "id": 11201,
-    "title": "【开源自荐】Clipbara：免费开源的 macOS 剪贴板管理器（Paste 替代品）",
-    "content": "## 简介\n\nClipbara（原名 PasteClip，因与 Mac App Store 已有应用重名而改名）是一款免费开源（GPL-3.0）的 macOS 剪贴板管理器，用原生 Swift 6 + SwiftUI 编写，卡片式界面类似付费应用 Paste。数据完全本地存储，无账号、无服务器、无遥测。\n\nGitHub：https://github.com/mobrava/Clipbara\n\n## 截图\n\n![demo](https://raw.githubusercontent.com/mobrava/Clipbara/main/docs/assets/pasteclip-demo.gif)\n\n## 主要功能\n\n- 卡片式剪贴板历史：支持文本、富文本、HTML、图片、链接、文件、颜色和代码片段\n- `⌘⇧V` 唤出非激活面板，不打断当前应用的焦点；单击卡片即复制到剪贴板并自动收起面板，回到当前应用直接 `⌘V` 粘贴\n- Pinboards：把常用内容整理成命名收藏夹，支持拖拽\n- 按 `空格` 进行 Quick Look 预览，支持全键盘操作\n- 可排除指定应用（如密码管理器），历史上限可配置、自动清理\n- 对终端友好：图片以 PNG + file URL 方式写入剪贴板，可以可靠地粘贴到 Ghostty / iTerm2\n- 已通过 Apple 公证（notarized），无 Gatekeeper 警告\n\n## 安装\n\n- Homebrew：`brew install --cask mobrava/tap/clipbara`\n- 手动下载：https://github.com/mobrava/Clipbara/releases\n\n要求 macOS 14+。\n",
-    "created_at": "2026-08-15T12:05:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11201"
-  },
-  {
-    "id": 11200,
-    "title": "【开源自荐】Clip：简单好用的跨平台 RSS 阅读器",
-    "content": "## 简介\n\n**简单好用的跨平台 RSS 阅读器** —— 支持 macOS / Windows，专注于快速浏览与阅读。\n\n## 截图\n\n![screenshot1](https://raw.githubusercontent.com/clip-rss/clip/main/screenshot/screenshot_1.png)\n![screenshot2](https://raw.githubusercontent.com/clip-rss/clip/main/screenshot/screenshot_2.png)\n\n## 主要功能\n\n- **三栏布局**：左侧源/文件夹树 · 中间文章列表 · 右侧阅读视图\n- **订阅管理**：添加订阅源、分类整理、OPML 导入导出\n- **定时抓取**：RSS / Atom 解析，后台定时自动刷新\n- **专注阅读**：全文阅读视图 + 无干扰专注模式\n- **快速检索**：覆盖标题、摘要与笔记的全局全文搜索\n- **笔记记录**：为文章添加笔记，随时回顾\n- **桌面通知**：新文章到达提醒，支持 macOS Dock / Windows 任务栏角标\n- **键盘驱动**：完善的快捷键系统\n- **主题与国际化**：浅色 / 深色 / 跟随系统，中英双语\n- **性能与离线**：轻量列表查询、本地缓存、离线可读\n\n## 项目地址\n[github.com/clip-rss/clip](https://github.com/clip-rss/clip)\n\n",
-    "created_at": "2026-08-15T09:46:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11200"
-  },
-  {
-    "id": 11199,
-    "title": "[开源推荐] NextBand：探索融合健康传感、语音交互与 AI Agent 的下一代可穿戴设备",
-    "content": "NextBand 是面向下一代可穿戴智能设备的**开源项目**，探索健康传感、语音交互与 AI Agent 的新型可穿戴交互方案。  \n它可以通过手环/手表形态，将心率、血氧等传感能力与云端 AI Agent 连接，使设备能够感知用户状态、理解用户意图，并代用户采取行动。  \n\n它的硬件部分：主控 ESP32S3 + 屏幕 ST7735 + 心率血氧传感器 MAX30102 + 数字麦克风 INMP441\n它的云端部分：Ubuntu + Tornado + Docker + pi-mono\n\nCSDN介绍文章: [https://blog.csdn.net/huangmipi/article/details/163773486](https://blog.csdn.net/huangmipi/article/details/163773486)\n\n该项目方案可以延伸到更复杂的场景，比如：\n1. 健康与养老\n    - 老人心率异常、血氧异常时自动通知家人\n    - 根据用户预设条件自动联系紧急联系人\n2. 运动与健身\n    - “如果我的心率超过 160，提醒我降低运动强度”\n    - 根据心率、运动状态动态调整训练计划\n3. 睡眠与日常健康管理\n    - 根据心率、血氧等数据判断用户状态\n    - “如果连续几天晚上心率异常，提醒我预约检查”\n4. 独居人群 / 安全守护\n    - “如果我长时间没有活动，并且心率异常，就联系家人”\n    - 可进一步融合跌倒检测、GPS 等能力，自动触发安全守护\n5. 情绪与压力管理\n    - 结合心率变化和用户语音意图判断压力状态\n    - “如果我的心率持续偏高，提醒我休息”\n6. 个人 AI 助手\n    - 不再局限于健康数据，而是让手环成为 AI Agent 的入口\n    - 未来可以接入邮件、日历、智能家居、企业系统等，实现真正的“感知 + 决策 + 执行”。\n\nGithub: [https://github.com/amin2312/NextBand](https://github.com/amin2312/NextBand)\n",
-    "created_at": "2026-08-15T08:51:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11199"
   }
 ]
