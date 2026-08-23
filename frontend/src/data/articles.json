@@ -1,5 +1,13 @@
 [
   {
+    "id": 11320,
+    "title": "【开源自荐】RetroChat：让 10 年前的老设备也能流畅用 AI，一款极简复古的 AI 对话客户端",
+    "content": "**适用平台**：Web / PWA（兼容现代浏览器，以及 10 年前的老旧 Safari / iOS 12+）  \n**项目地址**：[https://github.com/anyuxurl/retro-chat](https://github.com/anyuxurl/retro-chat)  \n**在线体验**：[https://retro.134687.xyz](https://retro.134687.xyz)\n\n---\n\n做这个小工具，其实就两个很单纯的目的：\n\n1. **让老设备也能流畅聊天**：现在的 AI 网页动辄几兆依赖，随便打开就卡死闪退。我想让抽屉里吃灰的 iPhone 5s、老 iPad 或者低配旧电脑，也能毫无压力地与现代大模型流畅对话，真正把“电子垃圾”利用起来。\n2. **给喜欢极简、复古风的人一个纯粹的选择**：受够了现代软件花哨复杂的界面，如果你只想要一个安静、纯粹、打字机式流式输出的复古聊天窗口，它会很适合你。\n\n---\n\n### 核心特点\n\n- **极致轻量，老设备秒开**：\n  没有任何臃肿的现代前端框架包袱，连 10 年前的老设备（如 iOS 12 的 Safari）都能丝滑流式打字输出，不白屏、不卡顿。\n- **经典复古双主题**：\n  内置 **CRT 绿屏终端** 与 **老 Mac 经典灰白** 两套极简主题，低像素、纯文字，回归早期计算机的纯粹感。\n- **自由接入任意大模型**：\n  支持自定义接入任何兼容 OpenAI 格式的接口，包括 DeepSeek、通义千问、Kimi、Moonshot 以及本地运行的 Ollama。\n- **纯本地存储，尊重隐私**：\n  对话记录和你的 API Key 仅保存在当前浏览器的本地存储中，不设云端数据库，支持一键导出/导入 JSON 备份。\n- **支持 PWA“安装”到主屏幕**：\n  可以像原生 App 一样添加到手机桌面，离线资源缓存，二次打开几乎秒进。\n- **（即将）支持 Vercel 一键免费部署**：\n  自带轻量后端代理与防刷限流机制\n\n---\n\n### 截图预览\n\n<img width=\"2584\" height=\"1160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6d175789-289b-4a28-94ad-284fd49e5180\" />\n<img width=\"2620\" height=\"1160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/adf97eef-9636-43bb-9bae-e289a5bd01e3\" />\n\n---\n\n### 欢迎体验与交流\n\n无论是想给家里的老设备找点用处，还是想找个清爽不打扰的极简 AI 工具，都欢迎大家体验！\n\n项目已完全开源，欢迎大家来提建议或吐槽：  \n**GitHub**: [https://github.com/anyuxurl/retro-chat](https://github.com/anyuxurl/retro-chat)",
+    "created_at": "2026-08-23T11:48:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11320"
+  },
+  {
     "id": 11319,
     "title": "【开源自荐】FlowGuard：面向 AI / LLM 与微服务的高性能 Python 异步限流熔断库",
     "content": "### 项目介绍\n- **项目名称**：FlowGuard（PyPI: `flowguard-core`）\n- **项目地址**：https://github.com/yangjinyu050618-hash/flowguard\n- **项目类别**：Python / 开发者工具 / 后端中间件 / AI 基础设施\n- **开源协议**：MIT\n\n### 为什么推荐这个项目？\n在调用 OpenAI、Anthropic、DeepSeek 等第三方大模型 API 或构建高并发微服务时，开发者经常面临频繁的 429 速率限制（RPM/TPM）、偶发 503 报错以及下游抖动导致的雪崩。\n\nFlowGuard 是一个**纯 Python 原生 asyncio 实现、零额外重依赖**的现代化弹性编排库：\n1. **严格 FIFO 令牌桶与滑动窗口**：基于 Future 队列实现，彻底消除轮询开销与竞争倒置，保证严格公平排队。\n2. **探针闸门熔断器**：状态机驱动（Closed / Open / Half-Open），引入半开探针并发硬上限，防止恢复瞬间积压流量砸向故障下游。\n3. **AWS 抖动退避重试**：内置 Full Jitter、Equal Jitter 与 Decorrelated Jitter 重试策略。\n4. **LLM Native 适配器**：针对 OpenAI 客户端提供 RPM/TPM 双轴限流保护与超时防挂死。\n5. **高工程化质量**：行测试覆盖率 92.76%，严格类型标注，内置 Prometheus / JSON 遥测监控。\n\n### 一行代码快速上手\n```bash\npip install flowguard-core\n\nfrom flowguard import guard\n\n@guard(\n    name=\"llm-service\",\n    rate_per_sec=20.0,       # 速率限制 20次/秒\n    burst_capacity=30.0,     # 突发容量 30次\n    max_retries=3,           # 自动重试\n    failure_threshold=5,     # 连续5次失败触发熔断\n    max_concurrent=10,       # 隔板并发限制 10\n)\nasync def call_llm(prompt: str):\n    return f\"Response: {prompt}\"",
@@ -798,13 +806,5 @@
     "created_at": "2026-08-15T16:04:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11205"
-  },
-  {
-    "id": 11203,
-    "title": "【开源自荐】Bilimuzhi:B 站视频 AI 字幕工作台浏览器插件",
-    "content": "  ![Bilimuzhi 项目头图](https://github.com/user-attachments/assets/c44fb2df-2269-4b10-9f6d-2531ea1b6212)\n\n   ## 简介\n\n   Bilimuzhi 是一款纯本地优先的 B 站视频 AI 字幕工作台浏览器插件(Chromium MV3,Chrome/Edge/Brave 均可)。围绕「看懂视频」设计:打开任意视频页即可获取官方/AI/多语言字幕,无字幕视频可调用语音转字幕生成;AI 一键分段\n 、三档总结、图文对话,把视频整理成可学习、可检索、可追问的笔记。\n\n   ## 项目地址\n\n   https://github.com/StaySound4/bilimuzhi\n\n   ## 主要功能\n\n   - **时间戳贯穿全链路**:分段、总结、对话结果均内嵌可点击时间戳,一键跳回视频对应位置\n   - **语音转字幕**:无字幕视频也能转字幕;Groq 两个转录模型每日免费额度互不占用,默认交叉调度最大化利用\n   - **智能广告识别**:分段模式下自动识别广告片段\n   - **批量六类来源**:单视频/分P/合集/收藏夹/UP 主页/搜索页统一批量获取,导出 TXT/SRT/Markdown/ZIP\n   - **双模式归档站与回收站**:会话/批量独立标签、置顶、拖拽排序;密码加密备份导出/导入\n   - **隐私优先**:无遥测、无云端账号,API Key 仅存本地,AI 对话直连你选择的服务商\n\n   ## 界面展示\n\n   ![深色与浅色主题](https://github.com/user-attachments/assets/dfa1b3c2-5455-4071-814c-205632d29510)\n\n   ![对话模式:图文输入+时间戳跳转](https://github.com/user-attachments/assets/51a68b84-8294-4993-b702-89f45f323251)\n\n   ![分段与时间轴双面板](https://github.com/user-attachments/assets/6d7492e4-85f7-4fb5-bff3-f8c0ebe98c97)",
-    "created_at": "2026-08-15T14:21:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11203"
   }
 ]
