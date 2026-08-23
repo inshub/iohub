@@ -1,5 +1,13 @@
 [
   {
+    "id": 11315,
+    "title": "【工具自荐】NowVoice：免费文字转语音工具，提供 400+ 自然、富有情感的 AI 声音，无需登录即可体验",
+    "content": "# 项目地址\n\nhttps://nowvoice.ai\n\n# 项目简介\n\nNowVoice 是一个免费的在线 AI 文字转语音工具。打开网页，粘贴文字并选择声音，就能生成语音并下载为 MP3，无需安装软件，也无需登录即可体验。\n\n网站目前提供 400+ AI 声音，覆盖中文、英语、日语、西班牙语等 13 种语言和多种口音。声音可以调整语速、音量、音调和停顿，也支持自定义发音，方便处理人名、品牌名和专业词汇。\n\n生成的语音可以用于视频旁白、短视频解说、文章朗读、播客、有声内容和在线课程等场景。\n\n# 为什么做这个工具\n\n很多文字转语音工具需要安装软件，或者需要先注册才能试听。我希望做一个打开网页就能使用的工具，让用户可以先输入一段文字、选择声音并直接生成结果，不需要复杂的配置过程。\n\n除了使用方便，NowVoice 也希望给内容创作者提供更多声音和语言选择。用户可以不断试听和调整，找到适合当前内容的表达方式，而不需要重新录音。\n\n# 主要特点\n\n- 免费使用，无需登录即可体验\n- 提供 400+ 自然、富有情感的 AI 声音\n- 覆盖 13 种语言及多种口音\n- 支持调节语速、音量、音调、停顿和发音\n- 支持生成并下载 48kHz MP3 音频\n- 打开浏览器即可使用，无需下载安装\n\n欢迎大家体验，有任何问题或建议都可以反馈给我。\n\n# 界面截图\n\n<img width=\"1984\" height=\"1386\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8d3af1af-7da1-4cdc-aa34-f6db0e80f51c\" />",
+    "created_at": "2026-08-23T07:33:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11315"
+  },
+  {
     "id": 11314,
     "title": "【网站推荐】我把全网在赚钱的站点变成了一张榜单 https://buildorskip.dev/",
     "content": "以前找产品方向，我会在 Product Hunt 、X 、Reddit 收藏一大堆链接。\n\n但最后还是回答不了一个问题：\n\n这些产品只是有人讨论，还是真的在赚钱？\n\n所以我做了 Build or Skip （ https://buildorskip.dev/ )。\n\n现在站内收录了 14 万+ 在赚钱的产品，可以查看估算订单、增长状态、趋势、DR 、产品分类、定价、收入模式、广告平台和目标用户。\n\n现在我只需要看那个产品我能打得过，然后“先抄再超”就行了。\n\n<img width=\"2588\" height=\"1794\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3f37000-c4ad-4391-b847-0e5bdfd01f97\" />\n\n<img width=\"3574\" height=\"1812\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d88974c2-8073-4c42-8e2f-0aceb6ad5948\" />",
@@ -798,13 +806,5 @@
     "created_at": "2026-08-15T08:51:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11199"
-  },
-  {
-    "id": 11198,
-    "title": "【开源自荐】mac-storage-cleaner: 会先给你看清单再删的 macOS 磁盘清理工具",
-    "content": "mac-storage-cleaner 是一个 macOS 磁盘清理工具，由五个 bash 脚本组成，MIT 协议开源。\n\n它和其他清理工具最大的区别不是能清出多少空间，而是**你可以确认它不会碰什么**：\n\n* **默认只预览，不删除**。`clean-safe.sh` 直接运行只会列出每一条待清理路径和大小，必须显式加 `--apply` 才真正删除。\n* **拒绝名单写在代码里，不是写在说明书里**。照片图库、iOS 备份、钥匙串、邮件、`~/.ssh`/`~/.aws`/`~/.gnupg` 由路径校验器强制拒绝，并有 47 条危险路径的测试用例保证每一条都必须被拒。\n* **只有纯缓存才会被真正删除**（npm、gradle、pip、Xcode DerivedData、Homebrew 等白名单内的目录，删了只是下次构建慢一点）；其余一律移到废纸篓，可以还原。\n* **每一次操作都写审计日志**，日志写不进去时直接拒绝执行。\n* **不联网、不需要 sudo、无任何遥测**。\n\n不需要 AI 工具也能直接用：\n\n```bash\ngit clone https://github.com/JubaKitiashvili/mac-storage-cleaner.git\ncd mac-storage-cleaner/skills/mac-storage-cleaner\nbash scripts/survey.sh              # 只读：看看磁盘被什么占满了\nbash scripts/clean-safe.sh          # 预览，不删任何东西\nbash scripts/clean-safe.sh --apply  # 确认后执行\n```\n\n同时它也是一个 Agent Skill，可以让 Claude Code、Codex、Cursor、Windsurf、opencode 等约 70 个 AI 编程工具直接调用（`npx skills add JubaKitiashvili/mac-storage-cleaner`）——由 AI 来读取扫描结果、判断哪些大文件对你有价值。\n\n131 个自动化测试，CI 在 macos-latest 上跑 bats + shellcheck。第三方安全扫描（Gen Agent Trust Hub / Socket / Snyk）均为 Pass。\n\nGitHub: https://github.com/JubaKitiashvili/mac-storage-cleaner",
-    "created_at": "2026-08-15T08:02:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11198"
   }
 ]
