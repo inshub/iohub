@@ -1,5 +1,13 @@
 [
   {
+    "id": 11328,
+    "title": "【开源自荐】ZKE：AI 原生的 Kubernetes 云操作环境",
+    "content": "# 项目地址\n\nhttps://github.com/togettoyou/zke\n\n# 项目简介\n\nZKE（Z Kubernetes Engine）是一个 AI 原生的 Kubernetes 云操作环境，把分散在数据中心、私有云、公有云和边缘的 Kubernetes 集群，收敛成一个可以直接操作的云环境：Agent 从每个集群主动向 Server 建立 QUIC/mTLS 出向连接，Console 用桌面、窗口和 Dock 组织能力，AIOps 作为常驻其中的运维 Agent，与人共用同一套权限、同一条通道和同一份审计。\n\nZKE Console 采用了一套运行在浏览器中的桌面式交互界面。集群接入管理、组织与资源、访问与审计、容器服务、终端和 AIOps 都以独立应用存在。用户可以从桌面或 Dock 打开应用，在窗口之间切换、最小化、最大化，并保存自己的桌面布局和工作作用域。这种设计并不只是视觉模仿。多集群运维很少是一条从上到下的单页面流程。排查一个异常工作负载时，操作者可能同时需要资源详情、事件、Pod 日志和终端。多窗口让这些上下文保留在同一个工作空间中，最小化终端窗口也不会被当成关闭会话。\n\n# AI 原生意味着什么\n\n模型是这个环境里的一等操作者，用和人一样的通路做事：\n\n- **共用一套权限。** 模型不持有 kubeconfig，也不直连 Kubernetes API Server；每次工具调用重新校验发起用户当时的 RBAC，上限永远是发起人自己的权限，审批模式只决定谁来确认。\n- **共用一条通路。** 每次读写都由会话固定 Cluster 的 Agent 定域执行，和你在桌面上点出来的是同一套判权与审计。工具目录由 Server 维护，模型不能安装或定义新工具。\n- **先预演再提交。** 伸缩、回滚与 Manifest Apply/Delete 先做服务端 DryRun 并给出有界差异，提交只认预检返回的 `preview_id`，批准后重验权限、重跑 DryRun，幂等键防重复写入。\n- **每一步留痕。** 模型调用、工具参数与返回、授权判断、审批与压缩写入 append-only 轨迹，可筛选、回放和导出；结论里的每条证据都能在当前桌面打开对应窗口并定位到那个对象或那张图。\n- **是 Dock 上的一个 App。** 关掉应用窗口任务会继续跑，重开从上次位置接着继续。\n\n# 预览视频\n\nhttps://github.com/user-attachments/assets/f06f2229-48c2-4911-8e72-8cf60975d28f\n\n# 预览图\n\n| AIOps 对话 | AIOps 轨迹 |\n| --- | --- |\n| ![模型自主调用工具、敏感操作等待审批、结论携带证据引用](https://github.com/togettoyou/zke/raw/main/docs/images/product-preview/aiops-conversation.png) | ![输入 / 模型 / 工具三条时间轨与运行统计](https://github.com/togettoyou/zke/raw/main/docs/images/product-preview/aiops-trajectory.png) |",
+    "created_at": "2026-08-24T02:43:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11328"
+  },
+  {
     "id": 11327,
     "title": "【开源自荐】InvoiceFlowAI：邮件发票批量整理与 Excel 报销汇总",
     "content": "项目地址：https://github.com/EthanYoQ/Invoice-Downloader\n\nInvoiceFlowAI 是一个开源的电子发票整理与报销准备工具。连接用户自己的 QQ 或 163 邮箱后，它可以批量收集邮件中的 PDF、OFD、XML 发票和部分发票下载链接，完成 OCR 识别、分类归档，并生成 Excel 汇总。\n\n主要特点：\n\n- 提供 Windows x64 安装版、免安装版和 macOS Apple Silicon 安装包。\n- 邮件和发票文件在本地处理；启用 GLM OCR、视觉识别或 DSH 模型提取时，相应发票图片或 OCR 文本会发送给用户配置的模型服务商。\n- 识别置信度不足的结果进入人工检查目录，不把输出冒充财务、税务或会计结论。\n- 另有独立的 DeepSeek Harness 插件，可从侧边栏运行下载、OCR、归档和 Excel 汇总流程。\n\n流程图：https://raw.githubusercontent.com/EthanYoQ/Invoice-Downloader/main/docs/funnel.svg",
@@ -796,13 +804,5 @@
     "created_at": "2026-08-16T03:43:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11214"
-  },
-  {
-    "id": 11213,
-    "title": "【工具自荐】rainlane: 雨声伴读 · 专注助眠，沉浸式古典钢琴白",
-    "content": "- **🌧️ 极致雨声库：** 无需在户外淋雨，我们收录了**小雨、大雨、雷雨、溪流雨**四种纯享音轨，掩蔽掉办公室的键盘声或窗外的车流声，瞬间建立属于你的“专注屏障”。\n- **🎼 百万级古典乐章：** 精选**肖邦、巴赫、莫扎特、李斯特**经典钢琴曲目，经专业混音师调校，确保琴声清亮而不抢戏，与雨声完美融合。\n- **🎨 动态混音调节：** 想听故事感？推高钢琴音量。想大睡一觉？调大雨声比重。**自由调节的旋钮**，让你掌握情绪的平衡点。\n\n**适合谁？**\n失眠的夜猫子 | 在家办公的SOHO族 | 需要深度阅读的学生 | 高压下的职场人\n\n🔗 了解详情与下载：[https://rainlane.xinflow.cn](https://rainlane.xinflow.cn)",
-    "created_at": "2026-08-16T02:04:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11213"
   }
 ]
