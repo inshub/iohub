@@ -12,7 +12,9 @@
     "title": "【开源自荐】InvoiceFlowAI：邮件发票批量整理与 Excel 报销汇总",
     "content": "项目地址：https://github.com/EthanYoQ/Invoice-Downloader\n\nInvoiceFlowAI 是一个开源的电子发票整理与报销准备工具。连接用户自己的 QQ 或 163 邮箱后，它可以批量收集邮件中的 PDF、OFD、XML 发票和部分发票下载链接，完成 OCR 识别、分类归档，并生成 Excel 汇总。\n\n主要特点：\n\n- 提供 Windows x64 安装版、免安装版和 macOS Apple Silicon 安装包。\n- 邮件和发票文件在本地处理；启用 GLM OCR、视觉识别或 DSH 模型提取时，相应发票图片或 OCR 文本会发送给用户配置的模型服务商。\n- 识别置信度不足的结果进入人工检查目录，不把输出冒充财务、税务或会计结论。\n- 另有独立的 DeepSeek Harness 插件，可从侧边栏运行下载、OCR、归档和 Excel 汇总流程。\n\n流程图：https://raw.githubusercontent.com/EthanYoQ/Invoice-Downloader/main/docs/funnel.svg",
     "created_at": "2026-08-23T17:23:46Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11327"
   },
   {
@@ -148,7 +150,9 @@
     "title": "【开源自荐】以多行平铺的方式展示当前窗口所有标签页的chrome 扩展",
     "content": "<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/hezhizheng/multi-row-tabs/master/icon128.png\" alt=\"Multi-Row Tabs Logo\" width=\"128\">\n</p>\n\n<h1 align=\"center\">Multi-Row Tabs（多行平铺标签栏）</h1>\n\n一个 Chrome 浏览器扩展（Manifest V3），以**多行平铺**的方式展示当前窗口的所有标签页，采用**零侵入浮动模式**：不修改页面任何样式，兼容所有网站。[github]( https://github.com/hezhizheng/multi-row-tabs) \n\n![](https://cdn.jsdmirror.com/gh/hezhizheng/static-image-hosting@main/image-hosting/20260823002124_PGLZRWFBYIPURPTW.png)\n## 视频演示\n\nhttps://github.com/user-attachments/assets/a6736d2c-746c-4b45-bb09-1fc7d6831068\n\n## 背景说明\n\nChrome 扩展**无法修改浏览器原生标签栏**（标签栏属于浏览器 UI 层，扩展无权注入样式或脚本）。因此本扩展采用「浮动覆盖栏」方案：页面上仅有一个可拖拽的悬浮按钮，点击或按快捷键时标签栏才浮现在页面顶部，**不改动页面任何样式**，对等任何网站零影响。\n\n## 功能特性\n\n- **零侵入浮动模式**：标签栏默认隐藏，不修改页面任何样式；展开时浮在页面上方，鼠标离开自动收起\n- **悬浮按钮可拖拽**：右上角小圆点按钮可拖拽到页面任意位置，位置自动记忆\n- **自定义快捷键**：默认 `Alt+Z`，可在弹出面板中录制任意组合键，随时展开 / 收起标签栏\n- **多行平铺展示**：标签以 favicon + 标题的形式自动换行平铺，当前活动标签白底高亮\n- **标签排序**：标签栏左侧提供排序下拉框，支持「默认」（与浏览器标签顺序一致）、「按名称」（中文拼音排序）、「按域名」（优先按一级域名排序，同站点不同子域名的标签自动聚在一起），选择后自动记忆\n- **一键切换 / 还原**：点击工具栏图标，在弹出面板中一键显示或隐藏整个功能\n- **标签操作**：\n  - 左键点击标签 → 切换到该标签\n  - 中键点击标签 → 关闭该标签（与原生标签栏行为一致）\n  - 点击标签上的 `×` → 关闭该标签\n- **键盘导航**：展开后用 `←` `→` `↑` `↓` 在标签间移动焦点（蓝色高亮），按 `Enter` 切换到对应标签页，按 `Delete` 关闭当前高亮标签，按 `Esc` 收起标签栏\n- **可选显示链接**：在弹出面板中勾选「显示链接」后，链接以小字显示在标签名称下方（默认不显示）\n- **实时同步**：标签的新建、关闭、切换、标题变化会自动刷新标签栏\n- **无 Mixed Content 警告**：favicon 由后台抓取并转为 data URL 下发，http 页面的图标在 https 页面中也不会触发混合内容警告\n\n## 安装方法\n\n1. 打开 `chrome://extensions/`\n2. 开启右上角「开发者模式」\n3. 下载 [最新压缩包](https://github.com/hezhizheng/multi-row-tabs/archive/refs/heads/master.zip) 解压\n4. 点击「加载已解压的扩展程序」，选择本目录（`multi-row-tabs`）\n5. 工具栏出现扩展图标即安装成功\n\n## 使用方法\n\n- 点击工具栏图标，弹出面板中点击「显示多行标签栏」→ 页面出现悬浮按钮 ≡；点击「隐藏多行标签栏」→ 还原\n- 点击悬浮按钮（或按自定义快捷键）→ 标签栏浮现在页面顶部；鼠标离开标签栏后自动收起\n- 展开标签栏后，通过左侧下拉框切换排序方式（默认 / 按名称 / 按域名），选择立即生效并自动记忆\n- 悬浮按钮可按住拖拽到页面任意位置，位置自动记忆（按窗口百分比保存）\n- 在弹出面板中点击「快捷键」输入框后按下组合键即可录制；「清除」可移除快捷键\n- 勾选 / 取消「显示链接」立即生效，无需刷新页面\n\n## 文件结构\n\n```\nchrome-multirow-tabs/\n├── manifest.json   # MV3 配置，声明 tabs / storage / scripting 权限\n├── background.js   # Service Worker：切换开关、标签查询、favicon 转换与缓存、事件广播\n├── content.js      # 渲染悬浮按钮与多行标签栏，处理拖拽 / 快捷键 / 点击 / 中键关闭等交互\n├── content.css     # 标签栏与悬浮按钮样式（flex-wrap 多行平铺）\n├── popup.html      # 工具栏弹出面板\n├── popup.js        # 面板逻辑：切换按钮 + 显示链接 + 快捷键录制\n├── icon16.png      # 扩展图标（16px）\n├── icon48.png      # 扩展图标（48px）\n├── icon128.png     # 扩展图标（128px）\n└── README.md\n```\n\n## 已知限制\n\n- `chrome://` 页面、Chrome 网上应用店等浏览器内部页面无法注入内容脚本，这些页面不会显示悬浮按钮\n- 标签栏展开时浮在页面上方，会临时遮挡顶部内容（鼠标离开即收起）\n- 自定义快捷键在页面自身捕获了同一组合键时可能被页面拦截（扩展在捕获阶段监听，绝大多数情况优先生效）\n- 重新加载扩展后，之前已打开的页面需要刷新一次才会加载新脚本\n\n## 权限说明\n\n| 权限 | 用途 |\n|---|---|\n| `tabs` | 查询 / 切换 / 关闭标签页，读取标题与 favicon |\n| `storage` | 保存开关状态、「显示链接」配置、排序方式、悬浮按钮位置与快捷键 |\n| `scripting` | 对已打开的标签页按需注入标签栏脚本 |\n| `<all_urls>`（host） | 允许在所有页面注入标签栏、后台抓取 favicon |\n\n## License\n[MIT](./LICENSE.txt)\n",
     "created_at": "2026-08-22T17:00:22Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11310"
   },
   {
@@ -300,7 +304,9 @@
     "title": "【开源自荐】PicLite 图轻：开源跨平台本地图片动图压缩工具，智能择优压缩，本地文件夹监控，强大自定义悬浮窗",
     "content": "# PicLite 图轻\n\nPicLite 图轻：开源跨平台本地图片动图压缩工具，智能择优压缩，本地文件夹监控，强大自定义悬浮窗。自动图片格式转换，批量压缩，添加水印，上传图床。支持 Windows、macOS、Linux 与可自托管 Web 端。\n帮助自媒体工作人员和开发人员提升工作效率\n\n[English](README.en-US.md) · [下载桌面版](https://github.com/amiaoapp/PicLite/releases) · [Web 演示](https://piclite-image-optimiser.ritchiecessac4273.chatgpt.site) · [插件开发](docs/PLUGIN_DEVELOPMENT.md) · \n\n## 主要能力\n\n- JPEG、PNG、WebP、GIF 导入、转换、压缩与等比例缩放\n- 默认自动比较候选格式，在尽量保持观感的前提下选择更小结果\n- 原图/结果对比、实时体积、连续画质与尺寸控制、文字水印\n- 剪贴板监听、全局快捷键、文件夹监测与本地图库\n- 类 Clop 的桌面悬浮结果：复制、预览、撤销、继续缩小、切换格式\n- 结果数量上限、堆叠/展开两种悬浮布局、自动隐藏\n- 覆盖源文件、同目录重命名或固定目录输出，并支持定期清理\n- WebDAV、S3/R2、OSS、FTP、SFTP 图床上传\n- 可加载本地 HTML/JavaScript 或 URL 工作台插件；图库与文件夹监测也可独立启停\n- Tauri 2 + Rust 桌面端；图片默认只在本机处理\n\n## 截图\n\n<img width=\"2924\" height=\"1602\" alt=\"image\" src=\"https://github.com/user-attachments/assets/2379e6d7-e1ef-444d-890f-e2ea7942abe9\" />\n\n\n## 下载\n\n在 [Releases](https://github.com/amiaoapp/PicLite/releases) 下载：\n\n- Windows x64 / ARM64：`.exe` 或 `.msi`\n- macOS Apple Silicon / Intel：`.dmg`\n- Linux x64 / ARM64：`.AppImage` 或 `.deb`\n\nmacOS 构建目前为 ad-hoc 签名，首次运行可能需要在“系统设置 → 隐私与安全性”中允许打开。\n\n## Web 与 Docker\n\n```bash\ndocker run -d \\\n  --name piclite \\\n  -p 3000:3000 \\\n  --restart unless-stopped \\\n  ghcr.io/amiaoapp/piclite:latest\n```\n\n浏览器打开 `http://服务器IP:3000`。Web 端受浏览器权限限制，不提供系统托盘、全局快捷键和持续文件夹监测。\n\n\n持续优化了一个月。现在功能完全可以胜任 ”最好用的图片压缩工具“ 之列。悬浮窗十分强大",
     "created_at": "2026-08-20T11:02:38Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11290"
   },
   {
@@ -436,7 +442,9 @@
     "title": "【开源自荐】Termio：原生 Mac 终端 ADE，为 AI 编程而造的开发环境",
     "content": "项目地址：https://github.com/termio-sh/termio\n开源协议：MIT\n\n2026 年，软件编程的范式已经彻底变化了。我们大部分时间已经不是敲键盘写代码，而是一个项目开着十几个 Agent 会话——Claude Code、Codex、OpenCode、Pi……给 Agent 描述编程意图，编排它们执行这些意图。传统为手写代码优化的 IDE，其布局和功能已经不再适合 AI 编程，这也是最近很多人在做 ADE（Agent Development Environment）的原因。\n\n我最近也开发了一个 ADE，Termio，一个原生 Mac 终端 ADE。内核用 libghostty（和 Ghostty 同款），Agent 的 TUI 渲染性能很强，使用极为流畅。更重要的是，产品设计是围绕 AI 编程做的：项目管理和 Session 管理的状态一目了然，文件树和 diff 直接显示在终端旁边，给 Agent 提供 context 十分方便。\n\n\n另外也开发了 iOS 端，随时随地通过手机进行 AI 编程。比如陪家人下楼散步时把想法告诉 Agent，让它立即开始执行；等散步回来，Agent 可能已经完成了任务，你再坐回电脑前检查和验收它的工作。\n\nTermio 应该是目前市面上最漂亮的 ADE 终端了，无论 Mac 客户端还是 iOS，设计都极为漂亮。\n\n\n<img src=\"https://www.termio.sh/screenshots/hero1.png\" width=\"100%\" alt=\"Termio：左侧项目与会话侧边栏，中间 Claude Code，右侧 Codex 分屏\" />\n\n<img src=\"https://www.termio.sh/screenshots/hero7.png\" width=\"100%\" alt=\"终端旁边的文件树与内置编辑器\" />\n",
     "created_at": "2026-08-19T18:31:32Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11273"
   },
   {
