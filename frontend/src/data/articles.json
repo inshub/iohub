@@ -1,5 +1,21 @@
 [
   {
+    "id": 11345,
+    "title": "【工具自荐】Lumi：你的 B 站和 YouTube  AI 视频学习搭子",
+    "content": "自荐一个我做的浏览器扩展 **Lumi**。无需登录，安装即用\n\nLumi 是一款面向 B 站和 YouTube 的 AI 视频学习助手。它把双语字幕、视频总结、沉浸式阅读、内容问答和学习记录放到视频页面中，帮助用户更高效地学习课程、访谈、播客和技术分享等内容。\n\n项目链接：\n\n- 官网：https://islumi.com\n- Chrome 应用商店：https://chromewebstore.google.com/detail/ackkdapdaaemdljhmgpilbbbojmkmdad\n- Edge 加载项：https://microsoftedge.microsoft.com/addons/detail/mmdaplnonheeighjncdffkedmbmknbbn\n- 使用文档：https://islumi.com/docs\n\n主要功能：\n\n- **AI 双语字幕**：支持实时翻译、智能断句和字幕样式调整。**开启智能断句后会极大提示了油管阅读体验**\n- **无字幕视频转写**：B 站或 YouTube 视频没有字幕时，可以通过语音识别生成字幕。\n- **视频总结与阅读稿**：生成章节、摘要和阅读稿，点击内容可以跳转到对应时间点。\n- **视频内容问答**：围绕当前视频提问，回答会结合字幕并附带可点击的时间点。\n- **字幕搜索与导出**：搜索视频原话，并将字幕导出为 SRT 等格式。\n- **沉浸式学习**：隐藏推荐流等干扰内容，把视频和学习工具放在同一个界面。\n- **学习记录与知识库**：保存看过的视频、笔记和对话，方便之后检索和复习。\n\n字幕显示、搜索和样式调整无需登录。AI 功能支持配置 DeepSeek、OpenAI 兼容接口、Anthropic 或 Gemini Key。\n\n做 Lumi 的原因是，我经常在 B 站和 YouTube 上看技术课程和英文分享。平台字幕经常断句零碎，长视频也很难快速定位内容；遇到不懂的概念，还要不断切换页面搜索。于是我把字幕、总结、问答、笔记和检索整合进了视频学习流程。\n\n目前 Lumi 支持 Chrome、Edge 及其他 Chromium 浏览器，欢迎体验和反馈。\n更多可以看详细介绍：[做了一个插件，把 B 站和 YouTube 的学习体验拉满了](https://luckysnail.cn/zh/posts/122-%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6%E6%8A%8A-b-%E7%AB%99%E5%92%8C-youtube-%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%BD%93%E9%AA%8C%E6%8B%89%E6%BB%A1%E4%BA%86)",
+    "created_at": "2026-08-25T10:05:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11345"
+  },
+  {
+    "id": 11344,
+    "title": "【开源自荐】CosmoEdge：把 RTSP、CV/VLM 和告警编排成边缘视频 AI 应用",
+    "content": "项目地址：https://github.com/cosmo-wander-ai/cosmo-edge\n\nCosmoEdge 是一个面向生产部署的开源 C++ 边缘视频 AI 引擎。它不止提供模型推理，而是把 RTSP/本地视频接入、CV/VLM 推理、跟踪与规则、OSD、告警以及 MQTT/Webhook 输出串成可在浏览器编排和运行的完整应用。\n\nv1.1 支持 BM1688、CV186X、RK3576、RV1126B；各平台分别使用目标构建和模型产物，也提供无需 NPU 硬件的 x86 体验路径。项目公开四平台性能报告和 72 小时固定配置长稳记录，测试条件、适用边界与复现方法可核对。\n\n项目演示：https://github.com/user-attachments/assets/96eeba7e-5b00-4c54-97b3-3ee4571cd5a0\n\n![CosmoEdge 可视化业务编排](https://raw.githubusercontent.com/cosmo-wander-ai/cosmo-edge/main/docs/tutorials/04-pipeline-orchestration/images/img_04.webp)",
+    "created_at": "2026-08-25T09:21:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11344"
+  },
+  {
     "id": 11343,
     "title": "【开源自荐】markstream — 覆盖 Vue/React/Svelte/Angular/Vue2 的流式 Markdown 渲染库（2.x）",
     "content": "<img width=\"128\" height=\"128\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/69335ddc-bcae-4774-9f6f-9526582d4742\" />\n\n周刊第 397 期收录过 markstream-vue（当时只覆盖 Vue），半年后 2.x 大版本\n更新，角度不同，特此再次自荐。\n\n## 项目名称\nmarkstream — 专为 AI 聊天 / LLM token 流设计的流式 Markdown 渲染库\n\n## 项目地址\n- GitHub：https://github.com/Simon-He95/markstream-vue\n- 文档：https://markstream.simonhe.me/\n- 在线流式 demo：https://markstream-vue.simonhe.me/\n\n## 解决的问题\nAI 应用里 Markdown 是\"渲染到一半\"的状态：代码块没闭合、表格没写完，\n传统渲染器（marked / markdown-it）每帧全量重渲，闪烁、错乱、卡顿。\nmarkstream 把\"最终文档\"换成\"正在变化的文档\"来渲染。\n\n## 项目特点\n- 🧩 一个渲染内核，五个框架包：Vue 3 / React / Svelte / Angular / Vue 2\n  （配套 Nuxt、Next.js、VitePress 集成）\n- ⚡ 增量渲染低抖动，流的每一帧都是稳定状态\n- 🖥️ 流式代码块用 diff 渐进补全（独立包 stream-diffs），不整块重建\n- 📊 Mermaid / KaTeX 重块渐进渲染，不反复初始化\n- 🛡️ SSR 安全渲染；可选 Web Worker 不阻塞主线程\n\n## 数据\n- GitHub：2,961 星（2026-08-25）\n- npm：近 30 天下载 10.7 万次\n\n## 可采简介（一句话）\n专为 AI 聊天设计的流式 Markdown 渲染库，一个内核覆盖 Vue/React/\nSvelte/Angular/Vue2 五大框架，增量渲染 + 流式代码块 + Mermaid/KaTeX\n渐进渲染，2.x 已稳定。\n",
@@ -794,21 +810,5 @@
     "created_at": "2026-08-17T22:55:21Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11240"
-  },
-  {
-    "id": 11237,
-    "title": "【工具推荐】VCA：把闲置 Windows 电脑变成会议室中控，免费平替微软 Teams Rooms",
-    "content": "公司会议室采购微软 Teams Rooms (MTR) 认证套件动辄几万块，每间房还要交年度订阅费，而且只支持微软生态——客户发来腾讯会议或 Zoom 链接就只能干瞪眼。\n\n我推荐一个软件方案 **VCA (Video Conference Assistant)**，官网：https://vcaapp.com\n\n它能把任意一台闲置 Windows 电脑（Mini PC、旧台式机都行）变成会议室控制终端，再用闲置平板当中控屏：\n\n- **多平台秒级切换**：腾讯会议 / Zoom / 飞书 / 钉钉 / Teams 一键切换，底层自动释放摄像头、麦克风的外设占用，解决\"设备被占用\"死锁问题；\n- **省掉 Rooms 授权费**：直接用普通个人版/标准版会议客户端，无需购买每间房每年大几千的 Rooms 账号；\n- **Kiosk 信息亭模式**：锁定桌面，员工只能看到简洁的入会界面，杜绝乱改设置、乱装软件；\n- **VCA Cloud 远程运维**：一个后台看完所有会议室的在线状态与外设情况；\n- **内置企业级无线投屏**：免客户端，兼容 AirPlay / Miracast，支持多路并发。\n\n免费版即可上手，Pro 版 $32/月起。对预算有限的中小企业 IT 团队来说，是非常实用的 MTR 平替方案。\n\n下载体验：https://vcaapp.com\n",
-    "created_at": "2026-08-17T11:05:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11237"
-  },
-  {
-    "id": 11236,
-    "title": "【开源自荐】史前动物博物馆：给孩子的 3D 史前生物科普网站",
-    "content": "## [史前动物博物馆](https://leon-made-this.work/museum/zh-CN/)：给孩子的 3D 史前生物科普网站\n\n在线体验：[leon-made-this.work/museum](https://leon-made-this.work/museum/zh-CN/)\n\n开源仓库：[github.com/s010s/prehistoric-animal-museum](https://github.com/s010s/prehistoric-animal-museum)\n\n### 为什么做这个？\n\n女儿三岁时，看电视里的恐龙打斗追逐会吓得躲开，却又忍不住隔着老远探头偷看。我想做个小试验：**把追逐和战斗拿掉，只留下一只可以安静慢慢转着看的动物，她还会害怕吗？**\n\n于是有了这座浏览器里的 3D 史前动物博物馆。\n\n<img width=\"1440\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/274c9306-fec1-4edb-9235-2f9d589a6d17\" />\n\n### 产品特点\n\n- 18 个海陆空 3D 展项：支持自由旋转与缩放模型，自主触发中英文短旁白，无自动播放与打扰。\n\n- 极度克制的产品设计：完全免费、无需注册、零广告与追踪脚本，运行时不调用 AI 服务，没有打卡套路。\n\n- 配套家长拓展资料：包含生存时期、化石分布、体型食性、分类学信息与亲子探讨问题。\n\n<img width=\"1200\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/608e2b30-2c15-4a1d-a788-0013be02b33d\" />\n\n### 技术与工程实践\n\n基于 **React + TypeScript + Three.js + Vite** 构建。针对 Web 3D 常见的移动端加载痛点做了专项优化：\n\n- 加载优化：模型压缩与按需加载；首屏采用静态首帧预览过渡，闲时自动预取相邻展项，加载完成后原子切换避免闪烁。\n\n- AI 辅助制作：借助 Blender + MCP 驱动大模型为静态模型绑定骨骼并生成自然飞行动作，探索单人全流程开发。\n\n欢迎各位有小朋友的家庭体验反馈，也欢迎提交 PR 参与共建！",
-    "created_at": "2026-08-17T10:43:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11236"
   }
 ]
