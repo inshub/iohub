@@ -1,5 +1,13 @@
 [
   {
+    "id": 11340,
+    "title": "docs(issue 409): fix typo /var/ww/html -> /var/www/html",
+    "content": "## 描述\n\n修复第 409 期【言论】第 3 条中 Web 默认根目录的拼写笔误：`/var/ww/html` -> `/var/www/html`。",
+    "created_at": "2026-08-25T04:45:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/11340"
+  },
+  {
     "id": 11339,
     "title": "【开源自荐】游戏语音本地实时翻译悬浮字幕",
     "content": "推荐我自己AI的一个开源项目：\n\n游戏语音本地实时翻译悬浮字幕（game-subtitle-cpp）\nhttps://github.com/JFHSHX/game-subtitle-cpp\n\n这是一个游戏语音本地实时翻译悬浮字幕工具（C++ / Qt 6 版）。它捕获系统回环音频，通过本地语音识别 + 本地机器翻译，在桌面悬浮窗实时显示双语字幕。全程离线运行，音频不落盘，隐私数据不出本机。\n\n主要特点：\n\n1. 全程离线：语音识别与翻译都在本机完成，不依赖任何云端服务。\n2. 隐私优先：音频流仅用于实时识别，不写盘、不上传。\n3. 实时优先：「流式 + 精准」两遍识别，兼顾出字速度与翻译准确率。\n4. 低资源占用：原生 C++ / Qt，无 WebView 依赖，内存与 CPU 占用更低。\n5. GPU 加速：支持 DirectML（DX12）推理，可开关，失败自动回退 CPU。\n6. GTCRN 降噪：语音增强，降噪档位（关/低/高）可调。\n7. 进程联动：可指定目标游戏进程，自动开始/停止字幕。\n8. 术语表：支持自定义专有名词翻译（翻译前掩码、翻译后还原）。\n9. 历史记录：SQLite 持久化，支持查看、清空、导出 CSV。\n\n技术栈方面，采用 Qt 6.8 桌面 UI，sherpa-onnx 做语音识别（C++ API 直链），MTranServer（Bergamot） 做本地机器翻译。\n\n这是我之前 Rust/Tauri 版的 C++ 重写版，相比原版更轻量、性能更好。非常适合打外服游戏、看生放送、或者任何需要实时听懂外语语音的场景。\n\n项目地址：https://github.com/JFHSHX/game-subtitle-cpp\n\n欢迎感兴趣的朋友 Star、试用、提 Issue！",
@@ -802,13 +810,5 @@
     "created_at": "2026-08-16T19:37:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11230"
-  },
-  {
-    "id": 11229,
-    "title": "【开源自荐】万能翻译站：把文件拖进窗口，自动识别、提取、翻译、替换，一个平台搞定（文本翻译工具）",
-    "content": "﻿\n万能翻译站（Universal Translator）是一个开源的 Windows 桌面文本翻译工具。它的目标是让\"翻译文本\"这件事不再需要你在文件管理器和多种翻译软件之间来回挣扎：不管是文件、游戏还是图片，把内容拖进窗口，剩下的自动完成。当前已实现文本文件与游戏文本的完整链路，文档与图片翻译在规划中。项目地址：https://github.com/Match0121/universal-translator-desktop\n\n目前实际能做的，是解决一个很具体的痛点：玩日文游戏看不懂剧本，而游戏文本要么是 Shift-JIS 编码的明文，要么锁在吉里吉里 xp3 资源包里，手动转码、解包、逐句翻译非常折腾。把整个游戏文件夹拖进窗口，剩下的自动完成。\n\n![扫描界面](https://raw.githubusercontent.com/Match0121/universal-translator-desktop/main/docs/assets/screenshot-scan.png)\n\n![翻译对照](https://raw.githubusercontent.com/Match0121/universal-translator-desktop/main/docs/assets/screenshot-browse.png)\n\n核心特性：\n\n- 📁 拖入即译：文件或整个游戏文件夹拖进窗口，自动扫描文本文件并识别游戏引擎\n- 🔤 编码自动检测：UTF-8 / UTF-16 / Shift-JIS（日文）/ GBK（中文），日文剧本无需手动转码\n- 🎮 xp3 资源包解包：吉里吉里游戏的剧本锁在 .xp3 里也能翻，一键解包、翻译、封包回写\n- 📄 多格式提取：txt / json / ini / srt / ass / rpy（Ren'Py）/ ks（吉里吉里，含日文「」引号）\n- 💾 原编码写回：导出保持文件原编码，译文超出字符集时自动转存 UTF-8 并提示\n- 🔒 完全本地：翻译处理都在本机完成，文件不出电脑；单文件绿色 exe，无需安装任何依赖\n- 🌗 深浅双主题，使用说明内置\n\n安装（Windows 10/11）：\n\n```\n从 Releases 下载 UniversalTranslator.exe，双击运行\n```\n\n技术栈：Python + pywebview + PyInstaller，前端原生 ES Modules 无构建依赖。开源协议：MIT。\n",
-    "created_at": "2026-08-16T16:16:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11229"
   }
 ]
