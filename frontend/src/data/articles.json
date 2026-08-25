@@ -1,5 +1,13 @@
 [
   {
+    "id": 11339,
+    "title": "【开源自荐】游戏语音本地实时翻译悬浮字幕",
+    "content": "推荐我自己AI的一个开源项目：\n\n游戏语音本地实时翻译悬浮字幕（game-subtitle-cpp）\nhttps://github.com/JFHSHX/game-subtitle-cpp\n\n这是一个游戏语音本地实时翻译悬浮字幕工具（C++ / Qt 6 版）。它捕获系统回环音频，通过本地语音识别 + 本地机器翻译，在桌面悬浮窗实时显示双语字幕。全程离线运行，音频不落盘，隐私数据不出本机。\n\n主要特点：\n\n1. 全程离线：语音识别与翻译都在本机完成，不依赖任何云端服务。\n2. 隐私优先：音频流仅用于实时识别，不写盘、不上传。\n3. 实时优先：「流式 + 精准」两遍识别，兼顾出字速度与翻译准确率。\n4. 低资源占用：原生 C++ / Qt，无 WebView 依赖，内存与 CPU 占用更低。\n5. GPU 加速：支持 DirectML（DX12）推理，可开关，失败自动回退 CPU。\n6. GTCRN 降噪：语音增强，降噪档位（关/低/高）可调。\n7. 进程联动：可指定目标游戏进程，自动开始/停止字幕。\n8. 术语表：支持自定义专有名词翻译（翻译前掩码、翻译后还原）。\n9. 历史记录：SQLite 持久化，支持查看、清空、导出 CSV。\n\n技术栈方面，采用 Qt 6.8 桌面 UI，sherpa-onnx 做语音识别（C++ API 直链），MTranServer（Bergamot） 做本地机器翻译。\n\n这是我之前 Rust/Tauri 版的 C++ 重写版，相比原版更轻量、性能更好。非常适合打外服游戏、看生放送、或者任何需要实时听懂外语语音的场景。\n\n项目地址：https://github.com/JFHSHX/game-subtitle-cpp\n\n欢迎感兴趣的朋友 Star、试用、提 Issue！",
+    "created_at": "2026-08-25T04:30:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11339"
+  },
+  {
     "id": 11338,
     "title": "【工具自荐】chrome,edge 标签切换插件 3 种缩略图样式 拼音搜索 vim 模式",
     "content": "SwiftTab Pro 一个免费的浏览器标签切换插件. \n\n特色功能: \n- 3 种缩略图样式\n- 拼音搜索\n- 支持快捷键打开\n- vim 模式\n- 标签批量操作\n- 地址栏增强:  s 搜索历史记录和书签.\n\nChrome:  https://chromewebstore.google.com/detail/swifttab-pro/fdgbickfhnjefknaomamncmcjbfdijdd?authuser=0&hl=zh-CN\nEdge:    https://microsoftedge.microsoft.com/addons/detail/swifttab-pro/cgmnbmmmlaiojjmhgcfhpladmmgcpheg?hl=zh-CN\n\n截图\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fabbc5b8-2104-413e-b20f-7b9fa9816c8b\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/857fdd22-1e32-450e-8f71-224343078700\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e7374683-b019-4f2a-a952-ff2665b6ae44\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/043c690a-8184-44f2-a638-ba41d4fa016c\" />\n",
@@ -802,15 +810,5 @@
     "created_at": "2026-08-16T16:16:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11229"
-  },
-  {
-    "id": 11227,
-    "title": "【开源自荐】shotsync：部署在自己 Cloudflare 免费档的跨设备图片/文字中转池，替代微信文件传输助手",
-    "content": "自荐一个自用的开源小工具。\n\n**shotsync** —— 跨设备图片/文字中转池：Mac、手机任一设备丢进去，其他设备打开网页就能取走。定位是「中转」不是网盘，所有内容 30 天自动清理。\n\n- 在线演示（只读示例池，无需注册）：https://shotsync-demo.defiabell.workers.dev\n- 仓库（MIT，中英双 README）：https://github.com/Defiabell/shotsync\n\n特点：\n\n- 整个后端只是一个 Cloudflare Worker + 一个 R2 桶，部署到自己账户约 5 分钟，免费额度个人用绰绰有余，数据不经任何第三方图床\n- 手机端是 PWA，「添加到主屏幕」即用，不装 App、不上商店\n- 图片在浏览器端转 JPEG + 生成缩略图，Worker 只存字节不碰像素\n- 可给单张图生成带签名、7 天过期的公开链接，分享一张图不暴露整个池子\n\n![界面截图](https://raw.githubusercontent.com/Defiabell/shotsync/main/docs/screenshot.png)\n\n做它的起因是受够了用微信「文件传输助手」给自己传截图：图被压缩、要翻聊天记录、还得常开着微信。",
-    "created_at": "2026-08-16T15:16:57Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11227"
   }
 ]
