@@ -1,5 +1,21 @@
 [
   {
+    "id": 11356,
+    "title": "【开源自荐】Vanilla OS 3 Reunion：不可变、可重现的桌面操作系统",
+    "content": "本周我们正式发布了 Vanilla OS 3 Reunion，一款基于 Debian 的不可变 (immutable)、可重现 (reproducible) 的 Linux 操作系统发行版。Vanilla OS 3 带来了更广泛的硬件支持、更透明的系统构建、更本地化的社区镜像，我们希望借此实现一个零信任、不依赖科技巨头、人人皆可开箱即用的桌面 Linux 系统。\n\n项目网站（英文）：https://vanillaos.org\n更新博文（英文）：https://vanillaos.org/blog/article/2026-08-24/vanilla-os-3-reunion---stable-release\n中文专栏介绍：https://www.bilibili.com/opus/1240083970401501191\n演讲视频：https://www.bilibili.com/video/BV1nAoeBBEUr/",
+    "created_at": "2026-08-26T03:43:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11356"
+  },
+  {
+    "id": 11355,
+    "title": "【开源自荐】PE-SmartFixer: 颠覆传统的 WinPE   AI 视觉多模态智能修机工具",
+    "content": "阮老师您好，\n\n自荐一个专注于 Windows PE 脱机系统维护场景的硬核 AI Agent 开源项目：**PE-SmartFixer**。\n\n传统的 WinPE 维护极其依赖网管的人脑经验，遇到罕见蓝屏报错需要反复查资料、人手改脚本。本项目彻底颠覆了这种断裂体验，开创了 **\"AI视觉诊断 + 底层脱机手术\"** 的全新智能化运维赛道。\n\n### 🌟 项目核心亮点：\n1. **看图识病，一键直修**：用户只需在 WinPE 环境下将蓝屏或报错截图丢给工具，多模态大模型（VLM）会直接通过视觉进行泛化推理，精准诊断出系统死因。\n2. **纯原生 Win32，零外部依赖**：为了适配极度精简的 PE 内存盘（RAMDisk）环境，项目彻底抛弃了臃肿的 Python 库和重型框架。基于纯 Go 语言裸写 Win32 API 消息循环（wndProc）与 PostMessage 异步通信，编译成品仅数 MB，运行稳定丝滑。\n3. **硬核脱机注册表手术**：AI 负责出药方，Go 底层直接扮演杀手。它能自动寻找并强行挂载（reg load）离线目标系统的 SYSTEM 注册表 Hive 文件，动态拼接 ControlSet 活跃配置单元，直接修改底层服务启动项或补全驱动文件（如 iaStorV.sys）。\n4. **v2.0 路线图：阅后即焚（Zero Footprint）机制**：针对 PE 下“大模型太大，内存太小”的硬伤，我们设计了空间换时间方案。让 1.5B~3B 的轻量化模型常驻在 U 盘物理分区，按需异步拉起本地引擎并绑定回环地址（127.0.0.1:11434），在用户关闭软件的一瞬间通过 defer 发送 OS 强杀信号。**模型瞬间自毁抹去，达成绝对零内存残留，物理断网完美运行！**\n5. **满分防线**：项目由国家授时中心时间戳可信存证确权，采用 **GPLv3 强传染性开源协议**，严厉卡死任何未经授权的闭源流氓商业集成。\n\n目前项目已获得国外顶级 PE 工具组织（PE Tools / petoolse）核心 Collaborator 的高度关注与技术研读。\n\n- **GitHub 仓库**：https://github.com/ziyouzhiyi666888/PE_SmartFixer\n- **英文技术白皮书**：https://github.com/ziyouzhiyi666888/PE_SmartFixer/blob/main/README_EN.md\n\n这是一个非常典型的 AI 真正落地并降维打击传统底层运维的极客尝试，希望能有机会登上《科技爱好者周刊》，推荐给更多喜欢底层技术和 AI 智能体应用的开发者！谢谢阮老师！\n",
+    "created_at": "2026-08-26T03:35:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11355"
+  },
+  {
     "id": 11354,
     "title": "【工具自荐】stock-tui：在终端（PowerShell / Windows Terminal / Linux Shell）中查看 A 股 K 线图、市盈率、成交量等基本信息的小工具。",
     "content": "地址：https://github.com/Folgerjun/stock-tui\n\n# stock-tui\n\n在终端（PowerShell / Windows Terminal / Linux Shell）中查看 A 股 K 线图、市盈率、成交量等基本信息的小工具。\n\n数据来源：**AKShare**（免费、无需 API Key），底层接口为东方财富、雪球公开行情接口。\n\n## 效果\n\n- 基本信息面板：最新价、涨跌幅、今开/昨收/最高/最低、市盈率(动)、市净率、成交量、成交额、换手率、总市值/流通市值\n- 终端 ASCII K 线图（蜡烛图）+ 成交量柱状图（红涨绿跌）\n\n<img width=\"966\" height=\"919\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a7beacc6-cff1-46d8-a2b1-7236dbc084b4\" />",
@@ -792,23 +808,5 @@
     "created_at": "2026-08-18T13:30:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11250"
-  },
-  {
-    "id": 11249,
-    "title": "【开源自荐】🐵 悟空图片转SVG工具 —— 基于 Vecto 引擎的在线图片矢量化工具，上传图片，秒出可编辑 SVG",
-    "content": "项目地址：https://github.com/goku-open/goku-image-to-svg-tool\n\n在线体验：https://image-to-svg.streamlit.app/\n\n具体介绍：\n不需要敲命令，选图即转、改参即重转；原图 / 矢量 / 分割视图三合一对比，导出 SVG 或按倍率渲染 PNG。引擎二进制随仓库分发，本地一条命令跑起来，云端托管、打开即用。\n\n<img width=\"1280\" height=\"608\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d9749690-6de8-486c-a426-3ba48d8fce83\" />\n\n\n核心功能：\n上传即转换：支持 PNG / JPG / BMP / GIF / TGA / TIFF / WebP / PBM / PPM 9 种格式，上传自动矢量化\n参数与原版 Vecto 完全对齐：调色板（自动/指定颜色数，含色块预览）、风格、细节，改动即时重转\n拖拽滑块对比：原图 / 矢量 / 分割视图一键切换，导出前先看清效果\n导出 SVG / PNG：SVG 直接下载，PNG 支持按缩放倍数渲染\n中英双语界面：语言一键切换\n实测轻量：单次转换峰值内存 60~490MB，个人/云上使用都无压力\n\n技术栈：\n前端/框架：Streamlit（Python）\n矢量化核心：Vecto CLI（.NET / C#，MIT，subprocess 同步调用）\n图片解码：SixLabors.ImageSharp（9 种格式自动探测）\n对比组件：streamlit-image-comparison（JuxtaposeJS）\n国际化：自研 i18n（locales/ 中英语言包）\n测试：pytest（42 项，全绿）",
-    "created_at": "2026-08-18T11:08:38Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11249"
-  },
-  {
-    "id": 11248,
-    "title": "【开源自荐】DSH Marketplace：给 2500+ DeepSeek Harness 插件做实际安装验证",
-    "content": "## DSH Marketplace\n\n项目地址：https://dshmarketplace.dev\n\nGitHub：https://github.com/DshMarketPlace/dshmarketplace\n\n### 一句话介绍\n\nDSH Marketplace 是一个开源的 DeepSeek Harness 插件市场，目前收录 2500+ 个插件，其中 1800+ 个已经在隔离沙箱中实际执行过安装检查。\n\n### 为什么做这个\n\nDeepSeek Harness 的插件生态增长很快，但现在找插件主要还是靠 GitHub Topic、Awesome List 和社区帖子。\n\n实际使用时还有几个问题：\n\n- README 里的安装命令可能已经失效\n- `package.json` 声明的 npm 包不一定真的存在\n- Fork 项目可能继承上游的包名，导致实际安装的是另一个项目\n- 安装报错也不一定代表插件坏了，有时只是需要 build approval，或者并不是 DSH layer\n\n所以除了整理插件，我还做了一套实际安装验证流程。\n\n### 主要特点\n\n- **2500+ DSH 插件目录**：支持中英文、搜索和分类浏览\n- **1800+ 沙箱安装检查**：不是只读取 README，而是在一次性容器中真正执行安装\n- **区分安装结果**：例如 `passed`、`needs-approval`、`not-a-layer`、`failed`、`timeout`\n- **校验 npm 信息**：避免不存在的包、Fork 继承上游包名等问题\n- **风险提示**：展示安装脚本、凭据、Terminal 等相关风险信息\n- **多种入口**：Web、DSH 内置 Store、CLI、Python SDK 和公共 API 共用同一套数据\n\n例如可以直接装到 DSH：\n\n```bash\ndsh plugin --profile web add dshmarketplace-plugin\n```\n\n也可以直接调用公共 API：\n\n```bash\ncurl 'https://dshmarketplace.dev/api/v1/plugins?q=memory&limit=5'\n```\n\n无需 API Key。\n\n### 安装验证\n\n测试第三方插件本身也有风险，所以安装任务运行在隔离容器中，不持有生产数据库凭据。\n\n这套验证过程中也发现过一个比较有意思的问题：部分仓库虽然声明了 npm package，但实际不存在，或者 Fork 仍然指向上游项目的 package。单纯依赖仓库 metadata 很难发现这些情况。\n\n项目目前还在快速迭代，欢迎使用 DeepSeek Harness 的朋友试用和反馈，也欢迎插件作者提交或修正自己的插件信息。\n\n网站：https://dshmarketplace.dev\n\n源码：https://github.com/DshMarketPlace/dshmarketplace",
-    "created_at": "2026-08-18T09:58:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11248"
   }
 ]
