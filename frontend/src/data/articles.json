@@ -1,5 +1,37 @@
 [
   {
+    "id": 11354,
+    "title": "【工具自荐】stock-tui：在终端（PowerShell / Windows Terminal / Linux Shell）中查看 A 股 K 线图、市盈率、成交量等基本信息的小工具。",
+    "content": "地址：https://github.com/Folgerjun/stock-tui\n\n# stock-tui\n\n在终端（PowerShell / Windows Terminal / Linux Shell）中查看 A 股 K 线图、市盈率、成交量等基本信息的小工具。\n\n数据来源：**AKShare**（免费、无需 API Key），底层接口为东方财富、雪球公开行情接口。\n\n## 效果\n\n- 基本信息面板：最新价、涨跌幅、今开/昨收/最高/最低、市盈率(动)、市净率、成交量、成交额、换手率、总市值/流通市值\n- 终端 ASCII K 线图（蜡烛图）+ 成交量柱状图（红涨绿跌）\n\n<img width=\"966\" height=\"919\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a7beacc6-cff1-46d8-a2b1-7236dbc084b4\" />",
+    "created_at": "2026-08-26T03:01:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11354"
+  },
+  {
+    "id": 11353,
+    "title": "【开源自荐】轻阅 Markdown：本地文档阅读编辑，支持可视化图表与公式",
+    "content": "自荐我维护的开源项目「轻阅 Markdown / Quillite Markdown」，主要用于阅读本地 README、整理技术文档和学习笔记，MIT 许可证。\n\n- 源码：https://github.com/liuhang798/quillite-markdown\n- 官网及下载：https://qm.ssssa.cn/\n- 使用文档：https://qm.ssssa.cn/docs/\n- 平台：Windows、macOS、Linux；当前版本 v2.6.1。\n\n它的使用方式是先阅读、需要修改时再切换到分栏编辑，而不是要求用户先创建知识库或导入文件。基于 Go + Wails，不使用 Electron，当前 Windows 安装包约 12 MB。\n\n比较希望分享的几点：\n\n1. **图表可以直接改**：流程图、状态图和思维导图可在全屏画布上添加节点、连线、拖动、缩放及整体移动；已插入文档的图表也能重新打开并原位保存，底层仍是 Mermaid 源码。\n2. **表格与公式更易维护**：表格支持增删和拖动行列；内置 79 个学科公式模板，已有公式可从预览或源码位置重新进入编辑。\n3. **写完可以交付**：提供 Word、HTML、PDF、PNG/JPEG 导出，可选本机 Pandoc 扩展到 EPUB 等格式。\n4. **保持普通文件**：文档保存在本地，核心读写无需注册账号，支持中文与英文界面。\n\n目前是阅读页加源码分栏编辑，并非单栏所见即所得；图表高级语法保留源码编辑入口。欢迎试用和反馈问题。\n\n![轻阅 Markdown 分栏编辑](https://raw.githubusercontent.com/liuhang798/quillite-markdown/v2.6.1/screenshots/03-split-editor.png)\n",
+    "created_at": "2026-08-26T02:34:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11353"
+  },
+  {
+    "id": 11352,
+    "title": "【开源自荐】Wake: 开源 Coding Agent 会话管理器,找回散落在本机的每段对话",
+    "content": "Wake 是一款免费开源的 Coding Agent 本地会话管理器。Claude Code、Codex、OpenCode 等工具各自把会话存在不同目录里,工具用得越多,想翻出前几天讨论过的一段代码就越麻烦——先要记得当时用了哪个 Agent,再去它自己的历史记录里找。Wake 把这些会话收进同一个窗口:按 Agent 和项目浏览,全文搜索,命中后直接跳到对应消息,也可以回到原项目目录继续会话。目前支持 Claude Code、Codex、Copilot CLI、Cursor、OpenCode、Kiro、Gemini CLI 等 14 种 Agent。\n\n![Wake 会话列表与详情](https://raw.githubusercontent.com/iAmCorey/Wake/main/imgs/screenshot-1.webp)\n\n\n一个值得一提的功能是搜索:普通全文索引对中文和代码片段并不友好,Wake 使用 SQLite FTS5 的 trigram 索引,搜索中文、英文或者 `useEffect(` 这样的代码都可以。我的电脑上大约有 310 个会话、800MB JSONL,首次完整索引约 5 秒;之后只处理发生变化的文件,搜索通常不到 1 毫秒。\n\n![Wake 全文搜索](https://raw.githubusercontent.com/iAmCorey/Wake/main/imgs/screenshot-2.webp)\n\n\n隐私设计是\"本机数据只留在本机\":扫描时只读各个 Agent 的会话文件,不读取凭证,不修改它们的数据库,也没有任何网络请求。Wake 自己的索引可以随时删掉重建;收藏和置顶等状态单独保存在本地。\n\n* 仓库:https://github.com/iAmCorey/Wake\n* 安装:从 Releases 下载,macOS 14+;同时提供实验性的 Linux 和 Windows 版本\n* Rust + GPUI 原生桌面应用,MIT 协议",
+    "created_at": "2026-08-26T01:51:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11352"
+  },
+  {
+    "id": 11351,
+    "title": "【网站自荐】题多多，一句话生成练习题，直接导出打印",
+    "content": "做了一个给家长和老师用的出题小工具：https://www.yichengs.com/\n\n用一句话说清楚要什么题，比如\"三年级数学，图形与计算，15分钟，30分\"，AI 就能生成一份排好版的 A4 试卷，题号、分值都弄好了，直接导出 PDF/Word 或者打印。\n\n也可以按教材范围出题，保证不超纲。首页有几个现成场景可以直接看效果，比如口算、古诗词默写、初中物理力学之类的。\n\n免费版每 30 天能生成 8 次，登录后填一下要求就行，不用注册太复杂的东西。\n\n主要是自己家孩子要练习、又懒得手动排版试卷才做的，欢迎大家试试提意见。",
+    "created_at": "2026-08-26T01:20:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11351"
+  },
+  {
     "id": 11350,
     "title": "【工具自荐】Mask My File：分享文件前，把图片/PDF/JSON/CSV 里的隐私信息永久遮掉（iOS，全程本地处理）",
     "content": "自荐一个我自己做的 iOS/iPadOS 工具：[Mask My File](https://apps.apple.com/cn/app/mask-my-file/id6792850916)。我是它的开发者（独立开发，一个人在做）。\n\n它解决的是一个很具体的场景：**要把文件发给别人之前，先把里面的隐私信息永久遮掉，但保留其他有用的上下文**。比如把日志、CSV、JSON 发给同事排查问题，或者提交租房申请、分享医疗单据的时候。\n\n## 主要功能\n- **图片与 PDF**：满屏预览、最高 5× 缩放，可以手动框选要遮的区域；人脸与条码检测只标出区域供你复核，遮挡是永久实心遮挡或直接移除，不是可还原的滤镜。\n- **文本类文件**：文本、JSON、XML、HTML、CSV、TSV、RTF 可以逐项搜索每一个匹配结果，然后套用完整遮罩、部分遮罩、占位符、化名或直接移除。\n- **导出后自我核验**：遮挡完成后，它会重新打开导出的新文件再核对一遍，确认无误才显示 Private Ready。\n- 可选移除元数据；PDF 可逐页处理；批量一次最多 100 个文件，支持跨文件搜索文字。\n- 私密会话、项目工作区、占位符保管库。\n\n## 隐私\n全部在设备本地处理：没有账户、没有广告、没有跟踪和分析，不上传任何内容。OCR 用的是 Apple Vision 和内置的 Tesseract，都在本地跑。人脸检测只生成区域，不识别身份、不建立模板。原始文件永不被覆盖。\n\n## 价格\n免费下载，一次性内购买断解锁无限次核验输出与批量处理，没有订阅。界面支持简体中文、繁体中文等多种语言。\n\nApp Store：https://apps.apple.com/cn/app/mask-my-file/id6792850916\n\n做这个是因为自己经常要把截图和日志丢给别人看，每次都得先另存一份、手动涂掉，涂完还不放心导出的文件是不是真的干净。欢迎试用，也欢迎提问题和建议。\n",
@@ -778,37 +810,5 @@
     "created_at": "2026-08-18T09:58:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11248"
-  },
-  {
-    "id": 11247,
-    "title": "【工具自荐】CreateForge AI：一个工作区使用 17 个 AI 图片与视频模型",
-    "content": "## 项目地址\n\nhttps://createforgeai.com/\n\n![CreateForge AI 首页](https://createforgeai.com/images/index.png)\n\n## 一句话介绍\n\nCreateForge AI 是一个面向图片与视频创作的多模型工作区，把 17 个已通过生产任务验证的 AI 模型、参数配置、任务状态和生成结果放在同一个界面中。\n\n## 为什么做 CreateForge\n\nAI 图片和视频模型更新很快，但不同模型往往分散在不同产品里，参数、计费方式和输入要求也不一致。实际创作时，用户不仅要写提示词，还要反复比较模型、切换工具、估算成本，并保存每次生成的结果。\n\nCreateForge 希望把这些步骤收拢成一套清晰的工作流：先根据任务选择模型，提交前确认参数和 credit 报价，生成后跟踪任务状态，并把完成的图片或视频保存在 Library 中。\n\n## 主要特点\n\n- **17 个图片与视频模型**：包括 GPT Image 2、FLUX 2 Pro、Seedream、Nano Banana、Veo 3.1、Seedance、Grok Imagine Video 和 MiniMax H3 等。\n- **三类统一入口**：支持 AI Image Generator、Image to Image 和 Image to Video，并根据所选模型展示兼容参数。\n- **提交前报价**：系统根据模型、分辨率、时长、输出数量和参考素材等参数生成 credit 报价，确认后再提交任务。\n- **任务状态与结果管理**：统一查看生成进度、失败状态和完成结果，成品可以保存在个人 Library 中继续使用。\n- **模型选择资料**：每个模型都有能力、限制、Prompt 示例、定价说明和相关指南，方便在生成前比较。\n- **生产验证**：公开模型均经过真实任务闭环验证，页面展示的参数和能力来自同一份模型 Catalog。\n\n## 适合谁\n\n适合需要同时使用多个图片或视频模型的创作者、独立开发者和小团队，尤其是希望减少工具切换，并在提交前看清模型能力、输入要求和生成成本的用户。\n\n## 收费与使用说明\n\n网站目前使用英文界面。模型目录、工具介绍和创作指南可以公开浏览；实际生成需要登录并购买 CreateForge credits，可选择永久积分包或月度计划。当前没有免费生成额度。\n\n项目已经上线，欢迎体验并反馈最希望补充的模型、参数或创作工作流。\n",
-    "created_at": "2026-08-18T08:43:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11247"
-  },
-  {
-    "id": 11246,
-    "title": "【工具自荐】⭐️ Vokie：关于语音助手我有些不一样的思路——把语音输入、语音记录与 Agent 上下文连接起来",
-    "content": "## 项目地址\n\n**_https://vokie.com/_**\n\n## 一句话介绍\n\n同类产品可能很多，但是 **vokie 真正把完成度和产品品味做到了 Tier‑one**。Vokie 是一款面向 macOS 和 Windows 的 AI 语音助手：它把自然口述整理成可直接使用的文字，也把线上线下会议、本地音视频变成转写、摘要和行动项，并让过去说过的话成为可以继续查询和调用的 Agent 上下文。\n\n<img width=\"1500\" height=\"500\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/36c86b74-0699-4b3a-96e7-50fb4751344c\" />\n\n<img width=\"2792\" height=\"2044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5ad153ea-c0df-4baf-bfbc-042a8257af70\" />\n\n## 为什么做 Vokie\n\n在和 Codex、Claude Code 等 Agent 协作时，长段想法往往来得比打字更快。口头表达虽然不够整齐，却能一次性交付大量背景、约束和上下文。\n\n我们并不认为语音会替代键盘。更合适的分工是：语音负责展开想法，键盘负责精确收敛。Vokie 希望缩短从“脑子里有个想法”到“这段内容已经可以使用”之间的距离。\n\n现有工具大多停在语音转文字；Vokie 更关心转写之后的整理、记忆和再次使用。\n\n## 主要特点\n\n- **把口语整理成可用文字**：去掉口癖和重复，接住“周五，不对，改到下周一”这样的自我修正，并自动分段或整理成列表。\n- **记住专有词**：修正过的人名、产品名和行业术语会进入热词，下次识别更准确。\n- **适配不同表达场景**：给 Agent 补充上下文、写产品反馈或整理灵感时，可以选择不同的整理方式，而不是套用同一种润色风格。\n- **不依赖会议平台**：通过快捷键同时记录系统声音和麦克风，适用于腾讯会议、飞书、Zoom 以及线下面谈，会后生成完整转写、摘要和行动项。\n- **语音历史可以继续使用**：内置“拾忆”AI 对话；用户也可以主动安装 Vokie Skill，让 Agent 只读查询录音、转写和总结，或转写指定的本地音视频。\n- **支持记录与实时翻译**：把临时讨论、走路时的灵感或跨语言交流统一沉淀下来。\n- **跨平台**：支持macOS Apple Silicon、macOS Intel 和 Windows x64。（移动端开发中）\n\n<img width=\"2792\" height=\"2044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f7a26bc8-5ff8-407f-a4e7-7d1d23c0ff0b\" />\n\n<img width=\"2792\" height=\"2044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dbc5f888-02db-45ce-b7d5-59f0ac040824\" />\n\n## 数据边界\n\nVokie 的历史记录主要保存在设备上。根据所用功能，部分转写、摘要或模型请求会调用云端服务；Vokie Skill 由用户主动安装或卸载，历史查询为只读。\n\n## 收费计划\n\nVokie 的**语音输入功能计划永久免费**。会议转写、摘要等会产生模型用量的功能，目前处于公测阶段；未来将推出相应的 Plan 套餐，以覆盖模型调用成本。\n\n## 适合谁\n\nVokie 更适合已经把语音当成工作方式的人：经常给 Agent 讲长上下文，需要随手记录会议、灵感和产品反馈，或者希望过去说过的话以后还能继续用得上。\n\nVokie 目前正在公测，欢迎下载体验并反馈具体问题。\n\n- 官网、下载与用户交流入口：https://vokie.com/\n",
-    "created_at": "2026-08-18T06:57:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11246"
-  },
-  {
-    "id": 11245,
-    "title": "【系列文自荐】 claude code 源码详细分析",
-    "content": "共 13 篇，从循环到能够使用 Tool、MCP、Skill、Memory、权限、会话恢复和可观察状态，每篇通过一个例子的执行过程学习 claude code 源码，了解 Agent 开发的内部细节，[cc.windliang.wang](https://cc.windliang.wang/13-agent-system-summary-and-design-principles.html)",
-    "created_at": "2026-08-18T05:57:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11245"
-  },
-  {
-    "id": 11244,
-    "title": "GEOKit - 免费开源的生成式引擎优化 (GEO) 与 AI SEO 站长工具箱",
-    "content": "## 项目名称\n**GEOKit** - 免费、纯前端、免登录的 Generative Engine Optimization (GEO) 与 AI SEO 站长工具箱\n\n## 项目简介\n随着 ChatGPT Search、Perplexity、Claude 等生成式 AI 搜索逐步重塑流量分发，**GEO（生成式引擎优化 / AI 搜索优化）** 正在成为出海独立开发者和站长的核心技能。\n\n**[GEOKit](https://geokit.site)** 专为解决现代网站在 AI 时代的收录与引用痛点而生，提供 20+ 款完全免费、无广告、纯前端运行的极客工具：\n\n- 🤖 **llms.txt 生成与校验器**：一键生成规范的 \\/llms.txt\\ 格式，为 LLM 提供结构化 Markdown 索引；\n- 🛡️ **AI Robots.txt 生成器**：针对 GPTBot、PerplexityBot、ClaudeBot 等 15+ 国际 AI 爬虫精细化配置引流与训练权限；\n- 📊 **AI 搜索就绪度评分器 (AI Readiness Grader)**：自动检测网站语义标题、结构化数据和 AI 爬虫可达性并给出 0-100 分综合报告；\n- 🏷️ **AI 知识图谱 Schema 生成器**：可视化生成 FAQPage、SoftwareApplication 等大模型最爱的 JSON-LD 结构化数据；\n- ⚡ **开发者开源 CLI**：支持终端直接运行 \\\npx geokit-cli audit https://yoursite.com\\ 快速诊断。\n\n## 项目地址\n- 🌐 **官网**：https://geokit.site\n- 📦 **开源 CLI**：https://github.com/gstar-byte/geokit-cli (以及 npm 官方包: \\geokit-cli\\)\n- 📚 **开源 GEO 资源库**：https://github.com/gstar-byte/awesome-geo-tools",
-    "created_at": "2026-08-18T05:20:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11244"
   }
 ]
