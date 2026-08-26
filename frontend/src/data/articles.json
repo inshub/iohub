@@ -1,5 +1,21 @@
 [
   {
+    "id": 11364,
+    "title": "【开源自荐】CleanCode：把 Agent、终端和工作流留在一张可执行画布上",
+    "content": "项目地址：https://github.com/chen-985211/cleancode\n\n你会不会有这种感觉：一个需求开始以后，桌面上很快就会出现一个 Agent、几个终端、一条新分支和几个正在运行的服务。窗口越来越多，但过几个小时，我们反而很难说清楚，它们之间到底是什么关系。\n\n我做 CleanCode，并不是想再创造一个新的 Coding Agent。我们已经有 Claude Code、Codex 和 OpenCode 这些很好用的工具了。真正缺少的，是一个能把它们带回开发现场的地方。\n\nCleanCode 是一个开源、本地优先的画布式 ADE（Agentic Development Environment）。它把每个需求的 Git worktree、Agent 会话、终端、服务、端口和依赖关系，放进同一张可执行画布。\n\n这张画布不是静态流程图。终端节点会执行真实命令，连线表达真实的启动依赖：有限任务根据退出码继续执行，长驻服务等待就绪信号，上游失败会阻止后续节点。支持 CleanCode MCP 的 Agent 还可以读取项目，并在画布上搭建这些终端工作流。\n\n项目预置了 33 个 Coding Agent Provider，采用 MIT 协议，并提供 macOS、Windows 和 Linux Preview 安装包。\n\n代码会不断变化，需求也总会结束。\n\n**但一个已经跑通的开发现场，不应该在窗口关闭的那一刻消失。**\n\n65 秒演示：\n\nhttps://github.com/user-attachments/assets/a442211b-138a-4a05-9283-5d274e085bea",
+    "created_at": "2026-08-26T12:44:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11364"
+  },
+  {
+    "id": 11363,
+    "title": "【开源自荐】RK87 AIKey — RK R87 Pro AI 键盘的跨平台开源驱动：功能键映射 + 键盘麦克风桥接，无需官方软件",
+    "content": "**RK87 AIKey** — 给 RK R87 Pro AI 键盘写的开源替代驱动（Electron）。官方 RK-AI 软件只有 Windows 版、常驻后台、功能死板；本项目逆向了键盘通信协议后，让 AI 键和麦克风在 Windows / macOS 上完全自主可控，纯本地运行、不联网。\n\n**功能：**\n\n- ⌨️ **14 个 AI 模式键**（AI 键 + F1~F12 + PrtSc）自由映射：启动程序 / 打开网址 / 发送快捷键，支持「启动后延时补发快捷键」——一键唤起任意 AI 助手并聚焦输入框\n- 🎙️ **键盘麦克风 → 系统虚拟麦克风**：自主维持键盘会话开麦，解码音频经 AGC / 降噪（RNNoise 与 DeepFilterNet3 双引擎）后播到虚拟声卡（VB-Cable / BlackHole），微信语音输入、会议软件等任何应用都能用键盘麦\n- 📊 **打字统计**：纯本地只记按键次数，不记内容与顺序，不上传\n\n**技术点：**\n\n1. 协议逆向自官方 Electron 明文源码 + 三轮实机 HID 抓包标定，14 键键码全表实测\n2. 蓝牙（PID 8243，命令帧 0xF1）与有线/2.4G（PID 8102，帧 0xF0）双通道自动识别，多口并存轮询握手\n3. 音频为厂商私有 SBC 变种，基于官方 mi-sbc 库解码；有线口 16kHz PCM 直出\n4. 完整协议逆向文档开源（docs/protocol.md），方便适配其他 RK 系列键盘\n\nWin / macOS 双平台，免安装 portable，MIT 之外附完整免责声明（vendor 库提取自官方发行包）。\n\n链接：\n\n- 仓库：https://github.com/xiaoyuyu6420/rk87-aikey\n- 下载：https://github.com/xiaoyuyu6420/rk87-aikey/releases/latest\n- 协议文档：https://github.com/xiaoyuyu6420/rk87-aikey/blob/main/docs/protocol.md\n\n![界面截图](https://raw.githubusercontent.com/xiaoyuyu6420/rk87-aikey/main/docs/screenshot-ui.png)",
+    "created_at": "2026-08-26T12:13:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11363"
+  },
+  {
     "id": 11362,
     "title": "Modern Code Guidelines：面向 AI 编程工具的多语言现代开发规范",
     "content": "Modern Code Guidelines 是一个面向 Codex、Cursor 和 Claude Code 的开源 skill 包，支持 Java、JavaScript、TypeScript、Python 和 C#。\n\n它会读取项目实际声明的语言、编译器或运行时版本，再选择对应版本可用的现代开发规则，并为每种语言列出官方规范、版本说明和标准库文档来源。\n\n项目受到 modern-go-guidelines 和 modern-web-guidance 启发，但三者职责不同：前者专注 Go，后者专注浏览器和 Web 平台，本项目则专注其他五种语言的语言、编译器、运行时和标准库实践。\n\n欢迎大家通过 Issue 或 PR 贡献规则修正、版本更新、来源补充和使用示例。\n\n链接：\nhttps://github.com/zcyc/modern-code-guidelines",
@@ -796,21 +812,5 @@
     "created_at": "2026-08-19T09:53:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11259"
-  },
-  {
-    "id": 11258,
-    "title": "【工具自荐】睡眠岛：一款免戴手表、真正睡着才停的助眠与睡眠监测 App",
-    "content": "阮老师好，向周刊自荐一款我独立开发了一年多的 iOS 助眠与健康产品——**「睡眠岛」**。\n\n我自己睡觉必须听声音。但一直苦恼传统 App 的定时关闭太机械（设 30 分钟没睡着就停了，设一整夜又吵得慌），而且我非常讨厌戴着手表睡觉。\n\n找不到顺手的工具，我花了一年多时间打磨了这个 App，核心做好了三点：\n\n1. **真正睡着才停**：手机放床头，通过自研轻量感应算法识别真实入睡状态。检测到真正睡着后，声音会自动平滑淡出，不打扰深度睡眠。\n2. **免穿戴床头睡眠与鼾声监测**：不需要戴 Apple Watch 或手环，手机放床头即可分析深浅睡眠阶段，并自动截取夜间鼾声与梦话片段。\n3. **独立纯粹、零广告**：不接入任何第三方追踪 SDK，核心助眠与监测功能完全免费，不搞流氓诱导订阅。\n4. **沉浸式助眠资源**：自己制作了一批助眠资源，也接入了播客 rss 系统。丰富的试听内容。\n\n\n- **官网（可免安装直接在线试听）**：https://www.sleepisland.org\n- **App Store**：https://apps.apple.com/cn/app/id6747609991\n\n### 界面预览\n![睡眠岛实机界面](https://www.sleepisland.org/assets/screenshots/zh-Hans/screen_1.webp)",
-    "created_at": "2026-08-19T09:17:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11258"
-  },
-  {
-    "id": 11257,
-    "title": "【开源自荐】Starcat：把 GitHub Stars 变成能用的本地知识库",
-    "content": "**项目地址**：https://github.com/starcat-app/Starcat\n\n## 介绍\n\nStarcat 是一款开源的 macOS 原生应用。它把你的 GitHub Stars 同步到本地，做成可以搜索、打标签、看更新、也能用 AI 帮忙理解的知识库。数据在你自己的 Mac 上。\n\n![Starcat](https://raw.githubusercontent.com/starcat-app/starcat-pro/main/main.webp)\n\n## 为什么做这个\n\nGitHub 的 Star 列表是一条无限往下滚的时间线。我 Star 过上千个仓库，找一个以前收藏的库，经常要翻很久；三个月后再点开，描述还在，当时为什么收藏已经忘了。标签懒得打，更新往往是刷到别人推文才知道。\n\n我也开始思考GitHub Star的本质。我们习惯于把它们当作“以后再看”的书签。但实际上，它们是一种宝贵的数字资产。它们反映了我们的专业兴趣和技能。\n\n所以我做了 Starcat，把整理、理解、找回、评估放进同一个桌面窗口。客户端和周边项目都已开源。\n\n## 主要功能\n\n- **本地全文搜索**：仓库名、描述、Topics、笔记进 FTS5，本机毫秒级返回。记不清仓库名时，也可以走语义搜索。\n- **AI 摘要和 README 翻译**：先看这个项目做什么、什么技术栈，再决定要不要深读。\n- **AI 标签推荐**：只给建议，你确认后才写入，不会自动乱打。\n- **Release 订阅**：关心的库出新版本会通知，不用等人家发推才知道。\n- **智能集合和仓库健康**：Needs Review、Unmaintained、OpenSSF 分数这些，用来判断还值不值得继续跟。\n- **周边项目**：浏览器插件、CLI / MCP 也在 [starcat-app](https://github.com/starcat-app) 组织下开源。\n\n## 技术与开源\n\n- SwiftUI 原生，不是 Electron / Tauri / Flutter。macOS 15+，Apple Silicon。\n- 本地优先：GRDB + SQLite。仓库缓存能重建；标签、笔记、状态是你自己的数据。\n- AI 走 BYOK，Key 放在 Keychain。\n- 主仓库开源：https://github.com/starcat-app/Starcat\n- 生态里其余项目也开源，只留 license-api 私有（Direct 授权）。可以自己编译。\n",
-    "created_at": "2026-08-19T04:47:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11257"
   }
 ]
