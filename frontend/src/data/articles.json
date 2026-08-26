@@ -1,5 +1,13 @@
 [
   {
+    "id": 11365,
+    "title": "开放权重模型自荐】Breeze TTS 2：用自然语言设计音色、控制演绎的中英双语 TTS",
+    "content": "利益相关：我是 BreezeBlue 团队成员。\n\n我们最近公开了 Breeze TTS 2 的模型权重和 PyTorch 推理代码。它是一个面向实时语音交互的中英双语 TTS 模型，把以下几种能力放进了同一个模型：\n\n- 无需参考音频，用自然语言描述创建新音色（Voice Design）\n- 给定参考音频和准确文字稿后，在保留音色的同时，用文字指令控制情绪、语速、语气和表达方式（Voice Direction）\n- 支持流式生成，以及 `[笑]`、`[叹气]`、`[咳嗽]` 等正文内声音事件\n\n截至 2026 年 8 月 26 日，Artificial Analysis 的盲听偏好榜将 Breeze TTS 2 列为开放权重 TTS 模型第一名（Elo 1215）。\n\n相关链接：\n\n- 模型权重：https://huggingface.co/BreezeBlue/Breeze-TTS-2\n- PyTorch 推理代码与流式 API：https://github.com/breezeblue-ai/breeze-tts\n- 独立盲听榜单：https://artificialanalysis.ai/text-to-speech/leaderboard/provider-voice\n- 中文模型介绍和音频样例：https://breezeblue.ai/zh/breeze-tts-2\n- 在线产品入口：https://breezeblue.ai/\n\n本地运行需要 Linux 和 NVIDIA CUDA GPU，README 建议至少 12GB 显存。推理代码采用 Apache-2.0；模型权重、衍生模型和自托管输出仅限研究及非商用。没有合适 GPU 的读者也可以通过官网在线体验。\n\n下面是两条示例音频：\n\n[001.mp3](https://github.com/user-attachments/files/31472600/01-tech-enthusiast-host-submission-v2.mp3)\n[002.mp3](https://github.com/user-attachments/files/31472602/02-frontend-is-not-dead-submission-v3.mp3)",
+    "created_at": "2026-08-26T13:11:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11365"
+  },
+  {
     "id": 11364,
     "title": "【开源自荐】CleanCode：把 Agent、终端和工作流留在一张可执行画布上",
     "content": "项目地址：https://github.com/chen-985211/cleancode\n\n你会不会有这种感觉：一个需求开始以后，桌面上很快就会出现一个 Agent、几个终端、一条新分支和几个正在运行的服务。窗口越来越多，但过几个小时，我们反而很难说清楚，它们之间到底是什么关系。\n\n我做 CleanCode，并不是想再创造一个新的 Coding Agent。我们已经有 Claude Code、Codex 和 OpenCode 这些很好用的工具了。真正缺少的，是一个能把它们带回开发现场的地方。\n\nCleanCode 是一个开源、本地优先的画布式 ADE（Agentic Development Environment）。它把每个需求的 Git worktree、Agent 会话、终端、服务、端口和依赖关系，放进同一张可执行画布。\n\n这张画布不是静态流程图。终端节点会执行真实命令，连线表达真实的启动依赖：有限任务根据退出码继续执行，长驻服务等待就绪信号，上游失败会阻止后续节点。支持 CleanCode MCP 的 Agent 还可以读取项目，并在画布上搭建这些终端工作流。\n\n项目预置了 33 个 Coding Agent Provider，采用 MIT 协议，并提供 macOS、Windows 和 Linux Preview 安装包。\n\n代码会不断变化，需求也总会结束。\n\n**但一个已经跑通的开发现场，不应该在窗口关闭的那一刻消失。**\n\n65 秒演示：\n\nhttps://github.com/user-attachments/assets/a442211b-138a-4a05-9283-5d274e085bea",
@@ -804,13 +812,5 @@
     "created_at": "2026-08-19T09:55:53Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11260"
-  },
-  {
-    "id": 11259,
-    "title": "【开源自荐】BookMate / 泊舟：把私人图书馆变成一个能长期共读、深入交谈的本地 AI 书友",
-    "content": "\n# **BookMate（泊舟）**\n\n> **项目地址**：[https://github.com/snailfrying-sxy/bookmate-local](https://github.com/snailfrying-sxy/bookmate-local)\n\n想做一个不止会\"总结一本书\"的阅读工具。\n\n**BookMate（泊舟）** 是一个 local-first 的私人 AI 书友与个人图书馆。它希望解决的不是\"如何快速获得答案\"，而是很多读者更熟悉的另一件事：读完一本书后，心里留下了一个问题、一句话或一种说不清的感受，却很难找到愿意同频深入聊下去的人。\n\n在 BookMate 里，每本书都可以有一间长期存在的\"书房\"。即使没有 PDF、EPUB，也可以先从一本实体书、一句摘录、一段感想或一个问题开始；之后再逐步加入版本文件、阅读进度、剧透边界、摘录与读后感。AI 会围绕当前书房继续交流，而不是把所有文件混成一个泛知识库。\n\n---\n\n###  目前支持\n\n- **本书房间与广泛书友两种对话方式**\n- **TXT、Markdown、PDF、EPUB 导入与本地检索**\n- **摘录、读后感、问题等阅读痕迹**\n- **一书多版本、阅读进度、剧透边界与交流姿态**\n- **OpenAI 兼容、Responses、Ollama / 局域网模型等模型配置，并可按轮切换**\n- **本地 SQLite 与文件存储、会话恢复、用户确认后才生效的记忆**\n- **基于阅读共鸣的下一本书推荐**：推荐书也能直接建立书房，先聊聊是否适合自己\n\n---\n\n### ️ 核心边界\n\n1. **书不是文件**：一本书的书房可以先于电子版存在。\n2. **AI 不能假装懂你**：它不虚构经历、引文、页码或未使用的本地资料。\n3. **隐私与透明**：数据默认留在本地；若选择远程模型，相关摘录和笔记可能发送给该模型服务，界面会明确说明。\n\n---\n\n###  快速启动\n\n- **Windows 用户**：运行 `.\\start-local.ps1` 即可启动。\n- **Docker 部署**：支持 Docker 容器化部署。\n\n欢迎体验、提 Issue，或聊聊你觉得\"一个真正的 AI 书友\"应该如何陪人读书。\n\n---\n\n> **许可证说明**：项目采用 **PolyForm Noncommercial License 1.0.0**，适合个人、教育、研究等非商业使用；商业使用需另行授权。",
-    "created_at": "2026-08-19T09:53:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11259"
   }
 ]
