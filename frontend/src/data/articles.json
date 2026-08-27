@@ -1,5 +1,117 @@
 [
   {
+    "id": 11393,
+    "title": "【开源自荐】crypto-python-sdk：轻量、简洁的统一加解密 SDK（支持国密和国际主流算法）",
+    "content": "## crypto-python-sdk\n> GitHub：https://github.com/TencentBlueKing/crypto-python-sdk\n> \n> 简介：BlueKing crypto-python-sdk 是一个轻量级密码学工具包，为 Python 应用提供统一的加解密实现， 便于项目在不同的加密方式之间进行无侵入切换。\n\n## 🍃 灵感由来\n\nPython 加密库通常功能齐全，但上手并不轻松：开发者需要处理算法参数、密钥格式和数据分段等底层细节，业务代码很难保持简洁。项目进行国密改造时，还要同时兼容存量的 RSA、AES 和新增的 SM2、SM4，迁移成本会进一步上升。\n\ncrypto-python-sdk 为国密和国际主流算法提供风格统一的 API，常见场景只需调用 encrypt() 和 decrypt()。SDK 还提供分段加密、Django Model 字段集成等实用功能，可以直接接入现有项目。\n\n可放心食用，已长期在生产环境，多项目 & 跨语言加解密交叉验证，支持包括 ARM、Apple M1 在内各个架构。\n\n## 🚀 功能\n\n* 提供加密统一抽象层，对接 cryptography / tongsuopy 等加密库，提供统一的加解密实现\n* 支持国际主流密码学算法：AES、RSA\n* 支持中国商用密码学算法：SM2、SM4\n* 非对称加密支持 CBC、CTR、GCM、CFB 作为块密码模式\n* 提供 `iv`、`padding` 等丰富的[自定义加解密配置](https://github.com/TencentBlueKing/crypto-python-sdk/blob/main/docs/usage.md)\n* 集成 Django settings、ModelField\n\n## 🔰 安装\n\n```shell\n$ pip install bk-crypto-python-sdk\n```\n\n\n## ⚙️ 快速开始\n\n### 1）非对称加密\n\n```python\nfrom bkcrypto.asymmetric.ciphers import BaseAsymmetricCipher\nfrom bkcrypto.contrib.basic.ciphers import get_asymmetric_cipher\n\n# 初始化 cipher 并默认生成密钥对\ncipher: BaseAsymmetricCipher = get_asymmetric_cipher(\n    cipher_type=constants.AsymmetricCipherType.RSA.value # or SM2\n)\n\n# 获取密钥对\nprint(cipher.export_public_key(),  cipher.export_private_key(), sep=\"\\n\")\n\n# 加解密\nassert \"123\" == cipher.decrypt(cipher.encrypt(\"123\"))\n\n# 验签\nassert cipher.verify(plaintext=\"123\", signature=cipher.sign(\"123\"))\n```\n\n## 2）对称加密\n\n```python\nimport os\n\nfrom bkcrypto import constants\nfrom bkcrypto.symmetric.ciphers import BaseSymmetricCipher\nfrom bkcrypto.contrib.basic.ciphers import get_symmetric_cipher\n\n# 初始化 cipher\ncipher: BaseSymmetricCipher = get_symmetric_cipher(\n    cipher_type=constants.SymmetricCipherType.SM4.value, \n    # 随机生成 16 位密钥\n    common={\"key\": os.urandom(16)},\n)\n\n# 加解密\nassert \"123\" == cipher.decrypt(cipher.encrypt(\"123\"))\n```\n\n\n### 3）Django 集成\n\n在 Django Settings 维护 SDK 配置\n\n```python\nfrom bkcrypto import constants\nfrom bkcrypto.symmetric.options import AESSymmetricOptions, SM4SymmetricOptions\nfrom bkcrypto.asymmetric.options import RSAAsymmetricOptions, SM2AsymmetricOptions\n\nBKCRYPTO = {\n     # 算法类型选择\n    \"ASYMMETRIC_CIPHER_TYPE\": constants.AsymmetricCipherType.RSA.value,\n    \"SYMMETRIC_CIPHER_TYPE\": constants.SymmetricCipherType.SM4.value,\n    # 对称加密实例，根据项目需要可以配置多个\n    \"SYMMETRIC_CIPHERS\": {\n        \"default\": {\n            # 可选，用于远程、文件密钥拉取。\n            # \"get_key_config\": \"apps.utils.encrypt.key.get_key_config\",\n            # 公共参数配置，不同 cipher 初始化时共用这部分参数\n            \"common\": {\"key\": \"your key\"},\n            \"cipher_options\": {\n                constants.SymmetricCipherType.AES.value: AESSymmetricOptions(key_size=16),\n                constants.SymmetricCipherType.SM4.value: SM4SymmetricOptions(mode=constants.SymmetricMode.CTR),\n            },\n        },\n    },\n    # 非对称加密实例\n    \"ASYMMETRIC_CIPHERS\": {\"default\": {\"common\": {\"public_key_string\": \"your key\"}}},\n}\n```\n\n全局皆可 import 引入，无须重复配置：\n\n```python\nfrom bkcrypto.symmetric.ciphers import BaseSymmetricCipher\nfrom bkcrypto.contrib.django.ciphers import symmetric_cipher_manager\n\n# using - 指定对称加密实例，默认使用 `default`\ncipher: BaseSymmetricCipher = symmetric_cipher_manager.cipher(using=\"default\")\nassert \"123\" == cipher.decrypt(cipher.encrypt(\"123\"))\n```\n\n也可用于 DB 加密字段：\n\n```python\nfrom django.db import models\nfrom bkcrypto.contrib.django.fields import SymmetricTextField\n\nclass IdentityData(models.Model):\n    password = SymmetricTextField(\"密码\", blank=True, null=True)\n```\n",
+    "created_at": "2026-08-27T17:20:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11393"
+  },
+  {
+    "id": 11392,
+    "title": "【开源自荐】blob-downloader v0.1.0 一个能把网页里 blob 链接直接存下来的 chrome插件",
+    "content": "网页上的视频和导出文件经常藏在 blob 链接后面，右键另存为完全没用，所以我自己写了一个\n\t\n它在页面脚本跑起来之前就接住了 url.createobjecturl，自己留一份引用，所以就算网页已经 revoke 掉链接，文件还是存得下来，一次性导出、生成的图片、解密后的附件都算\n\t\n流媒体更麻烦，blob 链接后面根本没有数据，数据是边播边来的，所以它在播放器往 mediasource 里 append 的时候一段一段抄下来，把视频完整播一遍就能拿到文件，音轨和画面是两个文件，用 ffmpeg 合一下\n\t\n下载走的是 chrome.downloads，而不是在页面里点一个隐藏链接，后者只有第一次有效，之后 chrome 会静默丢掉，我实测过，存五次只落地一个文件\n\t\nManifestV3，只申请了 storage 和 downloads 两个权限，全程本地，一行联网代码都没有，代价是内存，它把媒体留在页面自己的堆里，每条轨道最多 512 mb，弹窗每一行都写清楚在留什么\n\t\n[Github: aeroxy/blob-downloader](https://github.com/aeroxy/blob-downloader)",
+    "created_at": "2026-08-27T15:28:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11392"
+  },
+  {
+    "id": 11391,
+    "title": "【开源自荐】Lody: 面向团队与 Coding Agent 的共享工作区",
+    "content": "项目地址： https://github.com/LodyAI/Lody\n官网地址：https://lody.ai\n\nLody 是 Coding Agent 协作工作空间。它把分散在不同成员、Agent 和机器里的会话、运行状态与代码改动放到同一个空间中。团队成员可以打开彼此的会话继续讨论，也可以从浏览器或手机向一台在线机器发起任务，并在任务运行时补充指令。\n\n但我们想解决的问题不止于此。\n\n软件系统的复杂度不只存在于代码里。一段代码可能来自某个业务规则、一次线上事故、一位重要客户的兼容要求，或者一个后来已经消失的技术限制。随着项目演进，这些决定一层层叠加，最终形成系统今天的样子。代码保留了结果，却不总能保留形成结果的理由。\n\n这些背景分散在设计文档、PR、Issue、会议、Agent 对话和团队成员的记忆中。当成员接手模块、审查改动或准备重构时，困难的往往不只是读懂代码，而是重新理解它背后的业务规则、领域概念、设计取舍和历史决策。\n\n我们希望 Lody 成为软件团队与 Coding Agent 共用的理解层：把对话、代码、任务、文档和历史决策联系起来，帮助团队追溯系统为什么成为今天这样，并判断新的改动会触及哪些既有约束。\n\n对话只是理解项目的起点。Lody 会围绕理解发展任务管理、文档和代码审查等能力。未来，我们希望探索通过插件让用户定义适合自己团队的工具，将其中的数据与项目的其他上下文连接起来，并在团队中同步。\n\n<img width=\"2560\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7dacc54-996c-434c-9da2-fc7751777773\" />\n\n<img width=\"3056\" height=\"2172\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc11543e-3d5e-47dd-ac21-d3799e85a5c2\" />\n\n<img width=\"852\" height=\"492\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/585603e9-851c-40db-b7ce-7dc4d0b2449e\" />",
+    "created_at": "2026-08-27T14:34:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11391"
+  },
+  {
+    "id": 11390,
+    "title": "〖开源自荐〗ASMR Dubber：为日语/英语音视频制作中文配音、字幕和双语音频",
+    "content": "项目地址：https://github.com/EveningStudy/asmr-dubber  \nB站介绍与效果演示：https://www.bilibili.com/video/BV1f43G6YEov\n\n自荐一个最近在做的开源工具 **ASMR Dubber**。\n\n它主要用来处理日语、英语音频和视频。可以先进行语音识别或者导入已有字幕/台本，再翻译成中文，最后生成中文字幕、中文配音或者双语音频。\n\n和普通字幕工具相比，我比较想解决的听同人音声的时候“听不懂原音声”的问题：程序会保留原声，再按照原来的时间轴把中文配音混入进去。这样既可以继续听原本的声音、语气和环境音，也能直接听懂内容。我觉得效果还是挺好的。\n\n配音支持 IndexTTS2、GPT-SoVITS、CosyVoice、Fish Speech / Fish Audio、Edge TTS 等本地或云端方案，可以根据使用的模型进行音色克隆；语音识别支持 Parakeet、Kotoba-Whisper、Faster-Whisper 和通用 ASR API；翻译可以接入 DeepSeek、OpenAI、Claude、Gemini、DeepL 等服务。\n\n目前还支持：\n\n- 导入 SRT、VTT、ASS/SSA、LRC 和纯文本台本\n- 导出中文或双语 SRT/LRC 字幕\n- 将中文配音和原声混合，也可以只导出中文音轨\n- 批量扫描和处理包含多个音轨的 DLsite 作品\n- 保存项目进度和已经生成的配音缓存，失败后可以继续处理\n- Windows 10/11 和 x86_64 Linux\n\nREADME 中也放了实际效果演示。\n\n如果平时会处理日语/英语音声、字幕或者配音，可以试试看。项目目前还在继续完善，也欢迎 Issue、反馈和 PR。",
+    "created_at": "2026-08-27T14:03:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11390"
+  },
+  {
+    "id": 11389,
+    "title": "【开源自荐】Orbit：让 Agent 跑起复杂项目的整套本地环境",
+    "content": "简单项目通常一条命令就能启动，Orbit 面向的是由前端、API、Worker、数据库和容器组成的复杂项目。\n\n它用 `orbit.yaml` 记录服务、依赖和健康检查，让 Coding Agent 按依赖启动主机进程与容器、定位失败，并验证真实的应用流程，而不只是看到端口打开或 HTTP 200。\n\n使用时，只需在项目目录把下面这段话交给 Agent：\n\n> Read https://orbit.dotw.me and help me get this project running with Orbit.  \n> You may install the official Orbit CLI and plugin. Ask before installing other software or making destructive changes.\n\nAgent 会先理解项目现有的开发方式，再建立或使用这份环境配置。\n\n- 官网：https://orbit.dotw.me\n- GitHub：https://github.com/iml885203/orbit\n- 开源协议：MIT\n\n![Orbit Dashboard](https://raw.githubusercontent.com/iml885203/orbit/main/docs/assets/orbit-demo-dashboard.jpg)",
+    "created_at": "2026-08-27T13:34:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11389"
+  },
+  {
+    "id": 11388,
+    "title": "【开源自荐】CSV Preflight Action：在 CI 中提前发现 CSV 结构问题",
+    "content": "项目地址：https://github.com/softpeanut/csv-preflight-action\n\nCSV Preflight Action 是一个免费、MIT 开源的 GitHub Action，用于在合并或发布前检查 CSV 文件的常见结构问题。它不上传数据，也不需要账号或 API 密钥。\n\n主要功能：\n\n- 检查空列名、重复列名、行列数不一致和完全重复行\n- 识别 UTF-8 BOM、无效 UTF-8 与常见分隔符\n- 在失败时生成 CSV 问题报告，并可作为 Actions artifact 保存\n- 支持单文件 10 MiB 上限和不同的退出码\n- 可使用完整 commit SHA 固定版本，降低供应链风险\n\n最小用法：\n\n```yaml\n- uses: softpeanut/csv-preflight-action@eb04c527a46ce3bc8bfc711fde8e93ca947597ae\n  with:\n    path: data/example.csv\n```\n\n项目包含中文文档、可直接复制的工作流示例和测试。适合维护数据集、静态站点数据文件或 CSV 导入流程的仓库。\n\n公开复现案例：一个 1.1 MB、1,583 行的自动生成 CSV 被检出 10 个完全重复行。案例明确说明上游 PR 仍在审核中，不是客户结果或已采用变更：https://softpeanut.github.io/csv-preflight/csv-ci-case-study.html\n\n说明：这是维护者本人自荐。核心 Action 完全免费；仓库文档另有可选的付费安装服务，但不影响免费功能。",
+    "created_at": "2026-08-27T13:31:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11388"
+  },
+  {
+    "id": 11387,
+    "title": "【开源自荐】Pixie - 一款面向 AI 时代的博客主题，内置防爬虫机制与深度移动端适配",
+    "content": "开源地址： [https://github.com/wangshengithub/pixie](https://github.com/wangshengithub/pixie)\n\n项目简介：\n\nPixie 是一款面向个人技术博客的 Hexo 主题。核心理念是在保留经典双栏布局的同时，针对当下独立博客的两大痛点提供解决方案：**构建针对 AI 爬虫的版权保护防线**，以及**提供不妥协的移动端深度适配**。\n\n它摒弃了繁琐的第三方插件拼凑，将现代 Web 的极客交互（如 `Cmd+K` 唤起搜索、智能 TOC、长代码折叠）全部内置，开箱即用，兼容 Hexo 5.x ~ 7.x。\n\n在线演示：\n\n我的个人博客已全面切换至该主题，可直接体验：\n- 演示站： [https://wangshenblog.pages.dev/](https://wangshenblog.pages.dev/)\n\n核心特性：\n\n🛡️ **AI 时代的版权防线**：在页面植入隐式 LLM 提示词，向大模型爬虫声明版权与署名要求；读者点击复制网页链接时，剪贴板会自动追加包含作者和原文链接的版权尾巴（类似知乎）。\n\n📱 **移动端深度适配**：拒绝简单的 CSS 暴力缩放，为移动端独立重构交互。包含侧滑抽屉导航、粒子背景自动降配保流畅、长代码/表格局部横滚、iOS 输入框防缩放等细节。\n\n⌨️ **现代极客交互**：内置 `Cmd+K` / `/` 快捷键唤起全局实时下拉搜索、滚动跟随高亮的智能 TOC、超 5 行自动折叠的优雅代码块。\n\n技术亮点：\n\n- 纯静态本地搜索，构建时生成索引，无需依赖服务器后端或第三方服务。\n- 基于 Stylus + EJS 构建，代码结构清晰，二次开发与自定义门槛极低。\n- 深度定制 Dracula 深色代码高亮，保障技术长文的阅读沉浸感。\n\n```bash\n# 1. 克隆主题\ngit clone https://github.com/wangshengithub/pixie.git themes/pixie\n\n# 2. 安装搜索依赖\nnpm install hexo-generator-search --save\n```\n\n开源协议：MIT",
+    "created_at": "2026-08-27T11:32:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11387"
+  },
+  {
+    "id": 11386,
+    "title": "【工具自荐】Redock：面向 Claude Code/Codex 的移动终端 APP",
+    "content": "Redock 是一款为 AI agent 设计的移动终端 app，可以在移动设备上通过 SSH / Mosh 连接到你的开发主机，随时使用 Claude Code、Codex 等终端 Agent。\n\n主要特点：\n\n- 支持 SSH、Mosh 和 tmux，断线后可以继续工作\n- 支持 Projects、Actions、Snippets，方便组织开发流程\n- 支持终端工作区、运行记录和 SFTP\n- 支持 Agent 工作状态通知，随时开工，让你不浪费任何 coding plan\n- 适合离开电脑后查看、干预或继续远程开发任务\n\nhttps://redock.dev\n\n<img width=\"1242\" height=\"520\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/618f530b-f1f0-4771-9315-a95c60943360\" />\n\n",
+    "created_at": "2026-08-27T11:23:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11386"
+  },
+  {
+    "id": 11385,
+    "title": "【工具自荐】基于 Three.js 和黏塑性模型的在线陶艺模拟器",
+    "content": "我做了一个[在线陶艺模拟器](https://tinytovast.com/pottery-wheel-simulator)，可以直接在网页里捏泥、做花瓶。打开页面后，选择挤压、开口、拉高或抹平，再用鼠标拖动旋转中的陶泥，就能慢慢做出花瓶、陶碗等形状。\n用户可以调整陶轮转速、含水量和操作力度，也可以给做好的陶器换上陶土、青瓷或钴蓝釉等外观，最后保存作品或导出图片甚至是3D模型文件。\n项目使用 Three.js 渲染，并用简化的黏塑性模型计算陶泥的形变。所有操作都在浏览器中完成，电脑和手机都可以使用。\n\n在线地址：https://tinytovast.com/pottery-wheel-simulator\n\n捏制：\n\nhttps://github.com/user-attachments/assets/792266ee-7515-47c7-b880-f0cb086c391c\n\n\n烧制成型：\n<img width=\"2590\" height=\"1572\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/09ed483a-b5df-4c34-8d4e-248d58fbef99\" />",
+    "created_at": "2026-08-27T10:15:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11385"
+  },
+  {
+    "id": 11384,
+    "title": "[文章合集自荐]系统梳理 AI Agent、MCP、Skill 与大模型应用工程",
+    "content": "https://blog.csdn.net/sinat_28228747/category_13187658.html\n系统梳理 AI Agent、MCP、Skill 与大模型应用工程，从第一性原理、架构范式、工具调用、记忆设计到落地实践，帮助开发者建立一套可理解、可设计、可实现、可评估的 AI 能力工程知识体系。\n\n<img width=\"439\" height=\"348\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7a08219b-d0bb-49a8-91cc-3ce545ab3c91\" />",
+    "created_at": "2026-08-27T10:10:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11384"
+  },
+  {
+    "id": 11383,
+    "title": "【开源自荐】Clip2File：把剪贴板或网页选区一键保存为正确格式的 Chrome 扩展",
+    "content": "<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/bk4ice/clip2file/main/assets/banner.png\" alt=\"Clip2File\" width=\"100%\" />\n</p>\n\n<h1 align=\"center\">Clip2File</h1>\n\n一个 Chrome 扩展（Manifest V3），把剪贴板或网页选区内容直接保存为正确的文件格式。复制文字、代码、图片或表格，按 Alt + S 或右键一下即可生成文件，无需手动建文件、改后缀。[github](https://github.com/bk4ice/clip2file)\n\n## 适合谁用\n\n- 从网页保存代码、JSON、Markdown 笔记的开发者\n- 复制文章段落、图片、资料归档的学生和研究者\n- 想把网页内容快速整理成本地文件的人\n\n## 主要功能\n\n- 一键保存：按 Alt + S、点扩展图标，或右键选区 -> 直接生成文件\n- 自动识别：文本、图片、代码、JSON、Markdown 等 15+ 种内容类型\n- 图片支持：剪贴板图片、网页图片、图文混合选区均可保存\n- 多文件打包：多个代码块自动解析，导出为项目 ZIP\n- 本地私密：不上传、不追踪、无广告，全部在浏览器本地处理\n- 快捷键：Alt + S 快速保存，Alt + Y 打开面板\n- 深色模式：界面支持浅色 / 深色模式\n\n## 效果示例\n\n- 复制网页中的 Python / JavaScript / JSON / Markdown 代码 -> 保存为 main.py / script.js / data.json / README.md\n- 选中网页里的文字 + 图片 -> 保存为自包含 .html 或 .zip\n- 复制多段代码的网页 -> 自动解析并导出为项目 ZIP\n\n## 安装方法\n\n1. 打开 chrome://extensions/\n2. 开启右上角「开发者模式」\n3. 下载 [最新压缩包](https://github.com/bk4ice/clip2file/archive/refs/heads/main.zip) 解压\n4. 点击「加载已解压的扩展程序」，选择 dist/ 目录\n\n## 项目结构\n\n```\nclip2file/\n├── src/\n│   ├── background  # Service worker\n│   ├── core        # 检测、解析、文件名构造、打包\n│   ├── popup       # 扩展面板\n│   ├── options     # 设置页面\n│   └── utils       # 工具函数\n├── public/         # 清单与图标\n├── tests/          # 单元测试\n├── docs/           # GitHub Pages 隐私政策\n├── assets/         # 宣传图\n└── README.md\n```\n\n## 隐私\n\n处理全在本地，不上传。隐私政策：https://bk4ice.github.io/clip2file/\n\n## License\n\n[MIT](https://github.com/bk4ice/clip2file/blob/main/LICENSE)\n",
+    "created_at": "2026-08-27T09:59:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11383"
+  },
+  {
+    "id": 11382,
+    "title": "【开源自荐】Clip2File：把剪贴板或网页选区一键保存为正确格式的 Chrome 扩展",
+    "content": "<p align=\"center\">\\n  <img src=\"https://raw.githubusercontent.com/bk4ice/clip2file/main/assets/banner.png\" alt=\"Clip2File\" width=\"100%\" />\\n</p>\\n\\n<h1 align=\"center\">Clip2File</h1>\\n\\n一个 Chrome 扩展（Manifest V3），把剪贴板或网页选区内容直接保存为正确的文件格式。复制文字、代码、图片或表格，按  或右键一下即可生成文件，无需手动建文件、改后缀。[github](https://github.com/bk4ice/clip2file)\\n\\n## 适合谁用\\n\\n- 从网页保存代码、JSON、Markdown 笔记的开发者\\n- 复制文章段落、图片、资料归档的学生和研究者\\n- 想把网页内容快速整理成本地文件的人\\n\\n## 主要功能\\n\\n- 一键保存：按 、点扩展图标，或右键选区 → 直接生成文件\\n- 自动识别：文本、图片、代码、JSON、Markdown 等 15+ 种内容类型\\n- 图片支持：剪贴板图片、网页图片、图文混合选区均可保存\\n- 多文件打包：多个代码块自动解析，导出为项目 ZIP\\n- 本地私密：不上传、不追踪、无广告，全部在浏览器本地处理\\n- 快捷键： 快速保存， 打开面板\\n- 深色模式：界面支持浅色 / 深色模式\\n\\n## 效果示例\\n\\n- 复制网页中的 Python / JavaScript / JSON / Markdown 代码 → 保存为  /  /  / \\n- 选中网页里的文字 + 图片 → 保存为自包含  或 \\n- 复制多段代码的网页 → 自动解析并导出为项目 ZIP\\n\\n## 安装方法\\n\\n1. 打开 \\n2. 开启右上角「开发者模式」\\n3. 下载 [最新压缩包](https://github.com/bk4ice/clip2file/archive/refs/heads/main.zip) 解压\\n4. 点击「加载已解压的扩展程序」，选择  目录\\n\\n## 项目结构\\n\\n\\n\\n## 隐私\\n\\n处理全在本地，不上传。隐私政策：https://bk4ice.github.io/clip2file/\\n\\n## License\\n\\n[MIT](https://github.com/bk4ice/clip2file/blob/main/LICENSE)\\n",
+    "created_at": "2026-08-27T09:59:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11382"
+  },
+  {
+    "id": 11381,
+    "title": "【开源】opencode 移动客户端，适配平板",
+    "content": "https://github.com/learning233/opencode_mobile\n\n使用 flutter、rust 开发\n\n1. 内置了离线语音输入。\n2、已打包 andorid\n\n<img width=\"1080\" height=\"2340\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/735eb013-c2a9-4b9a-80bd-cb8ce40b8a96\" />\n<img width=\"2800\" height=\"1968\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f523d7e4-e360-43cf-96fa-419734101b15\" />\n\n\n",
+    "created_at": "2026-08-27T09:00:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11381"
+  },
+  {
+    "id": 11380,
+    "title": "【开源自荐】mini-dsh：2000 行手写 DSH 最小运行时，学的是 Agent Harness 的架构，不只是那个 while 循环",
+    "content": "- 仓库：https://github.com/huangjunsen0406/mini-dsh\n- 许可证：MIT\n- 语言：Node.js，无构建步骤\n- 文档：README / ARCHITECTURE / LEARNING 各有中英两份\n\n**mini-dsh** 是按 DSH 概念手写的最小 Agent 运行时，建在官方的 [`@deepseek-ai/cordis`](https://www.npmjs.com/package/@deepseek-ai/cordis) 上。`src` 目录 22 个文件、2000 多行，一个下午能读完。\n\n## 和其他「手写 AI Agent」的区别\n\n网上多数手写 agent 教程，最后落在一个 while 循环加几个工具调用上。跑得起来，但它没回答真实 harness 里最难的那个问题：**这些东西是怎么被组织起来的**。\n\nmini-dsh 保留的是架构，不是循环：\n\n- Cordis Context / Plugin / Service —— 插件容器与依赖注入\n- Session Event Log -> `deriveMessages()` —— 历史是从事件日志推导出来的，不是往数组里 push\n- Tool Registry -> register / schemas / execute\n- LLM Provider Adapter\n- Agent Loop -> model -> tool -> model -> answer\n\nAgent Loop 不知道 Bash 是什么，也不知道 Context7 是什么，它只认识 `ctx.tools`。Agent 自己只是薄薄一层包装：sessionId + model + loop。这是整个项目里最值得学的一点。\n\n为了证明「Everything is a Plugin」不是口号，它接了官方的 `@deepseek-ai/dsh-mcp-client` + Context7：MCP 工具经由同一个 `ctx.tools.register` 进来，Agent Loop 一行不改。Context7 连不上时 CLI 照常启动，只是少了那几个工具。\n\n## 明确写了「没做什么」\n\nREADME 单开一节列出故意省略的东西：maxSteps、token/成本预算、compaction、无进展检测、stop hooks、steering 队列、完整权限系统、TUI/Web UI，并说明为什么理解 Agent Harness 的核心不需要它们。\n\n也包括那个后果：循环唯一的正常终止条件是模型不再请求工具，所以理论上坏的模型或工具链可以一直转下去。这个项目是拿来学的，不要当生产运行时用。\n\n说清楚边界，比假装完整有用。\n\n## 想自己写一遍\n\n不建议先通读仓库。先扫一遍 ARCHITECTURE.md 建立整体图景，然后新开一个空项目，跟着 LEARNING.md 一个里程碑一个里程碑自己写下来。\n\n`test/core.test.js` 当行为文档用，每个 runtime 配一个例子。其中一个用例是 agent 连续调用 20 次工具才结束，用来证明循环里确实没有步数上限。\n\n## 截图\n\n![mini-dsh CLI](https://raw.githubusercontent.com/huangjunsen0406/mini-dsh/main/images/demo.png)\n\n写文件和执行 bash 前会先问 `[Y/n]`；agent 运行时按 Esc 取消当前这一轮。\n",
+    "created_at": "2026-08-27T08:19:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11380"
+  },
+  {
     "id": 11379,
     "title": "【工具自荐】Mossglen — 一个AI陪练，学外语的插件，支持8种语言",
     "content": "**产品名称**：Mossglen\n\n**网址**：https://mossglen.app\n\n**Chrome 商店**：https://chromewebstore.google.com/detail/cofjpdekcclaniimffbbkonekpijpbdc\n\n**简介**：\n\n平时读外语文章很费劲，查词、翻译、记生词得开好几个工具来回切，索性自己写了个插件。\n\n在任何网页碰到外语文章（YouTube 视频也行），点一下插件，进一个干净的阅读页面。生词点一下出释义，自动记进生词本；整句看不懂就看母语对照，或者直接问 Pip——插件里住着的一只 AI 寒鸦。它记得你的水平、查过哪些词、在哪种句式上卡过，解释的时候会照着你的程度来，不会甩一堆术语。\n\n读完有几道小题，用来估你的阅读水平，之后内容难度会慢慢跟你对上。生词按 FSRS 排复习，到点提醒。\n\n目前支持英语、日语等 8 种语言，不用注册就能用。欢迎试试，有问题直接说。\n\n**截图**：\n\n<img width=\"1800\" height=\"1026\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31390719-f1e0-426f-868e-259a179c06d5\" />\n<img width=\"1800\" height=\"1026\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3f05a7ec-c041-409b-a799-8f1c26cf2729\" />\n<img width=\"1800\" height=\"1026\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/52f19f50-46b8-4eda-a588-8df0170726a9\" />\n\n希望能够在老师的周刊里出现，谢谢啦～",
@@ -692,123 +804,9 @@
   {
     "id": 11291,
     "title": "【工具自荐】OpenAI Codex VS Code 扩展的本地会话伴生管理器。它读取本机 .codex 数据目录，按会话中的 cwd 将历史会话归入项目文件夹。",
-    "content": "CodexChat 是 OpenAI Codex VS Code 扩展的本地会话伴生管理器。它读取本机 .codex 数据目录，按会话中的 cwd 将历史会话归入项目文件夹。\n\n项目地址：https://github.com/MathsionYang/CodexChat-/releases\n## 功能\n- 自动扫描 sessions 和 archived_sessions。\n- 按项目文件夹浏览本地 Codex 会话。\n- 查看用户消息、Codex 回复和工具调用摘要。\n- 监听本地会话变化并刷新。\n- 打开项目工作区并进入官方 Codex 扩展。\n- 在经过验证的 Codex 版本中恢复指定本地会话。\n- Codex 原始会话文件全程只读。\n\n## 界面预览\n\n### 项目会话\n![项目会话](https://raw.githubusercontent.com/MathsionYang/CodexChat-/main/img/Snipaste_2026-08-19_15-30-30.png)\n\n### 会话详情\n![会话详情](https://raw.githubusercontent.com/MathsionYang/CodexChat-/main/img/Snipaste_2026-08-19_15-31-07.png)\n\n\n",
+    "content": "CodexChat 是 OpenAI Codex VS Code 扩展的本地会话伴生管理器。它读取本机 .codex 数据目录，按会话中的 cwd 将历史会话归入项目文件夹。\n\n项目地址：https://github.com/MathsionYang/CodexChat-/releases\n## 功能\n- 自动扫描 sessions 和 archived_sessions。\n- 按项目文件夹浏览本地 Codex 会话。\n- 查看用户消息、Codex 回复和工具调用摘要。\n- 监听本地会话变化并刷新。\n- 打开项目工作区并进入官方 Codex 扩展。\n- 在经过验证的 Codex 版本中恢复指定本地会话。\n- Codex 原始会话文件全程只读。\n\n## 界面预览\n\n### 项目会话\n![项目会话](https://raw.githubusercontent.com/MathsionYang/CodexChat-/main/img/Snipaste_2026-08-19_15-30-30.png)\n\n### 会话详情\n![会话详情](https://raw.githubusercontent.com/MathsionYang/CodexChat-/main/img/Snipaste_2026-08-19_15-31-07.png)\n\n### token统计\n\n<img width=\"493\" height=\"655\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/513c65a6-d89b-4540-afc7-0c06462a9c43\" />\n\n\n",
     "created_at": "2026-08-20T11:54:07Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11291"
-  },
-  {
-    "id": 11290,
-    "title": "【开源自荐】PicLite 图轻：开源跨平台本地图片动图压缩工具，智能择优压缩，本地文件夹监控，强大自定义悬浮窗",
-    "content": "# PicLite 图轻\n\nPicLite 图轻：开源跨平台本地图片动图压缩工具，智能择优压缩，本地文件夹监控，强大自定义悬浮窗。自动图片格式转换，批量压缩，添加水印，上传图床。支持 Windows、macOS、Linux 与可自托管 Web 端。\n帮助自媒体工作人员和开发人员提升工作效率\n\n[English](README.en-US.md) · [下载桌面版](https://github.com/amiaoapp/PicLite/releases) · [Web 演示](https://piclite-image-optimiser.ritchiecessac4273.chatgpt.site) · [插件开发](docs/PLUGIN_DEVELOPMENT.md) · \n\n## 主要能力\n\n- JPEG、PNG、WebP、GIF 导入、转换、压缩与等比例缩放\n- 默认自动比较候选格式，在尽量保持观感的前提下选择更小结果\n- 原图/结果对比、实时体积、连续画质与尺寸控制、文字水印\n- 剪贴板监听、全局快捷键、文件夹监测与本地图库\n- 类 Clop 的桌面悬浮结果：复制、预览、撤销、继续缩小、切换格式\n- 结果数量上限、堆叠/展开两种悬浮布局、自动隐藏\n- 覆盖源文件、同目录重命名或固定目录输出，并支持定期清理\n- WebDAV、S3/R2、OSS、FTP、SFTP 图床上传\n- 可加载本地 HTML/JavaScript 或 URL 工作台插件；图库与文件夹监测也可独立启停\n- Tauri 2 + Rust 桌面端；图片默认只在本机处理\n\n## 截图\n\n<img width=\"2924\" height=\"1602\" alt=\"image\" src=\"https://github.com/user-attachments/assets/2379e6d7-e1ef-444d-890f-e2ea7942abe9\" />\n\n\n## 下载\n\n在 [Releases](https://github.com/amiaoapp/PicLite/releases) 下载：\n\n- Windows x64 / ARM64：`.exe` 或 `.msi`\n- macOS Apple Silicon / Intel：`.dmg`\n- Linux x64 / ARM64：`.AppImage` 或 `.deb`\n\nmacOS 构建目前为 ad-hoc 签名，首次运行可能需要在“系统设置 → 隐私与安全性”中允许打开。\n\n## Web 与 Docker\n\n```bash\ndocker run -d \\\n  --name piclite \\\n  -p 3000:3000 \\\n  --restart unless-stopped \\\n  ghcr.io/amiaoapp/piclite:latest\n```\n\n浏览器打开 `http://服务器IP:3000`。Web 端受浏览器权限限制，不提供系统托盘、全局快捷键和持续文件夹监测。\n\n\n持续优化了一个月。现在功能完全可以胜任 ”最好用的图片压缩工具“ 之列。悬浮窗十分强大",
-    "created_at": "2026-08-20T11:02:38Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11290"
-  },
-  {
-    "id": 11289,
-    "title": "【工具自荐】libcr 项目组发布免费的开发者工具箱 crRequest 1.9.3",
-    "content": "下载地址: https://github.com/libcr/crRequest/releases\n\n1.9.3 新增 blink 模块，支持 HTML Playground 和 增强的 SVG 渲染\ncrRequest 是一款 C++开发的跨平台工具客户端 基于源代码 chromium 150.0.7871.91\n1. 使用 chromium UI 框架设计跨平台应用界面，实现多平台一致的性能表现\n2. 基于 100% chromium 网络代码， 支持 QUIC, HTTP2 等浏览器网络协议 API 接口测试\n3. 基于 libssh2 实现的 SSH 客户端\n4. 支持 sqlite 和 pgSQL 的数据库操作\n5. Chromium 原生能力工具箱\n\nlibcr 项目组也提供 AI 驱动的原生应用开发包，轻松兼顾多平台开发效率和性能\n更多应用和信息访问 https://libcr.github.io/\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/939c4c22-28c7-4ff8-919c-0560959b9c82\" />\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c44c6406-5e34-465c-b831-4cf89dcb3b7e\" />",
-    "created_at": "2026-08-20T10:53:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11289"
-  },
-  {
-    "id": 11288,
-    "title": "【工具自荐】万物皆可排！我做了一个自带“社区讨论”的 Tier List 排名工具",
-    "content": "大家好！今天想给大家推荐一款我最近开发/发现的实用且好玩的工具：Tier List Maker Pro。\n🔗 传送门：[https://tierlistmaker.pro/]\n平时大家在各大论坛、贴吧或者社交媒体上，肯定没少见各种“节奏榜”、“天梯图”或者“梯度排行”（比如某款游戏的角色强度排行、动漫战力榜、甚至各品牌快餐的好吃程度等等）。\n传统的 Tier List 工具大多是纯“单机版”的——你排好名、截个图、发到别的平台，工具的使命就结束了。但很多时候，排名的灵魂不仅在于展示，更在“讨论（或者说对线）”！\n为此，我们在把基础做图体验打磨好的同时，给 Rankly注入了灵魂功能——社区交流。\n🌟 核心亮点：它不仅是个制图工具，更是一个讨论社区\n💬 一键发布，激情讨论：你做好的排名图不再只是一张死板的图片。你可以直接将其发布到网站的公共社区。其他用户看到后，可以在下方直接留言讨论（比如：“凭什么 XXX 只能排 T2？”、“排在 T0 的这个我完全赞同！”）。\n🔄 模板复用，一键 PK：看到别人发在社区的排名不服气？你可以直接一键复用他的素材库，拖拽出你心目中的完美榜单，用实力回应！\n🛠 当然，基础功能依然扎实好用：\n丝滑的拖拽体验：支持电脑和手机端，图片拖拽丝滑顺畅，哪里不爽拖哪里。\n高度自定义：随心所欲修改梯度等级的名称（如 T0, T1, T2 或者 神级, 优秀, 一般）、颜色以及行数。\n高清图一键导出：如果你还是想把图片分享到微信群、微博或推特，我们也提供了一键生成高清长图下载的功能，没有任何水印烦恼。\n💡 你可以用它来排什么？（万物皆可 Tier List）\n🎮 游戏电竞：《黑神话》Boss难度榜、APEX武器强度榜、原神/星铁角色节奏榜。\n🎬 影视动漫：漫威电影宇宙喜爱度排名、年度最佳新番大赏。\n💻 科技数码：前端框架鄙视链、各大手机品牌系统好用度排行。\n🍔 生活日常：各家奶茶品牌性价比排行、麦当劳单品红黑榜。\n目前 Tier List Maker Pro 已经上线，完全免费！非常欢迎大家来体验。\n大家可以直接去社区里发个榜单，或者找个感兴趣的榜单“锐评”一下。如果你对工具有任何建议或者吐槽，也随时在帖子里留言告诉我，我会认真看每一条反馈并持续迭代！\n欢迎来玩：👉 [Rankly] (https://tierlistmaker.pro/)",
-    "created_at": "2026-08-20T09:48:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11288"
-  },
-  {
-    "id": 11287,
-    "title": "【网站自荐】运营400多天的通辽宇宙知识库：小约翰可汗视频资料库",
-    "content": "网站地址：[通辽宇宙知识库](https://www.tongliaouniverse.cn/)\n\n各位周刊读者好，先说一个很多看视频的人都会得的病：小约翰可汗的视频，看的时候是真上头。可过一阵子你想回看某一段，完了——人物记得，国家记得，故事记得，连那句\"秦始皇吃花椒——赢麻了\"都记得，就是死活想不起是哪一期。\n\n这毛病吧，不痛不痒，就是磨人。翻收藏夹、划播放列表、对着进度条干瞪眼，最后只能自我安慰：算了，找不到就找不到吧。\n\n这个网站就是治这个病的。\n\n通辽宇宙知识库，运营到今天有 400多天，一个围着小约翰可汗公开视频做的民间资料索引。它不打算替代原视频，也不抢 B 站的播放量；它干的活就一件：把散在几十上百期视频里的人物、国家、组织、事件、配乐、经典语录重新串起来，你从哪头进去，都能顺着摸到出处，再顺着出处接着逛。\n\n一年前，我在周刊投过一版。当时项目还主要是奇葩小国、人物档案、语录和视频列表。这一年间网站大改了好几轮，现在是 v2.0。所以这期不是报旧闻，是想跟新老读者说一声：现在它比一年前能打的多了。\n\n## 现在可以怎么用\n\n就五件事。\n\n- **全站搜索与出处回查**：按人物、国家、组织、事件、曲名或语录关键词搜，定位到资料和来源视频。不说是过目不忘吧，至少也是随叫随到了。\n- **结构化资料库**：奇葩小国、硬核狠人、神奇组织、历史事件、视频资料、经典配乐、通辽国粹，词条之间留着关联入口，从一个人能追到国家、事件、视频。\n- **地图、图鉴与专题导读**：没有明确目标的时候，顺着地图、图鉴或专题路线，顺藤摸瓜地逛。\n- **视频档案补充**：详情页除了基本信息，还整理了有代表性的 B 站热评；配乐和可汗玉音档案，按曲名、标题或 BV 号都能回查。\n- **内容共建与反馈闭环**：反馈进展页、资料补充入口都在。你发现哪条不对、缺了哪段，直接提交线索，附上视频标题、链接或时间点，方便核对补全。\n\n![通辽宇宙知识库首页，视频资料库与全站搜索入口](https://hreshhao.com/own/homepage1.png)\n\n![通辽宇宙知识库首页，视频资料库与全站搜索入口](https://hreshhao.com/own/homepage2.png)\n\n## 这一年新增和重做了什么\n\n这一年的更新，主要是在治资料站的老毛病：看一页就断。查完一个人名，手一松，不知道该往哪点了。\n\n好，通辽档案局今日值班的仓鼠，给您汇报一下这一年干了啥：\n\n- 重做了页面视觉、导航和响应式布局，统一了国家、人物、组织、历史等详情页的信息结构。\n- 扩充了组织、历史、音乐、图鉴、专题、网络热评等内容维度，加强了资料之间的跳转关系。\n- 补齐了站内反馈、共建、更新日志与内容审核等持续维护能力。\n- 头像工坊：上传头像或选站内历史头像，浏览器本地就能生成 ASCII、像素风、掌机绿屏、VHS 效果，一键下载。\n- 3D 仓鼠档案员、每日档案签和\"随便翻一卷\"，给没有明确关键词、想随机进一条线索的人用的。\n- 新近还加了\"仓鼠快递站\"这个不影响资料检索的轻量小游戏，主打一个只进不出——进去的包裹，没几个能原样出来；旁边还配了台催更压力仪，专门用来展示更新空窗期。\n\n![硬核狠人人物库，提供 409 条人物资料及标签筛选](https://hreshhao.com/own/music.png)\n\n![仓鼠快递站，通辽宇宙知识库的轻量互动入口](https://hreshhao.com/own/game.png)\n\n有人要说了，又是仓鼠又是快递站的，这网站是不是跑偏去搞娱乐了？行啊，可问题是——这些互动真不是主角。核心一直是那件事：保留原视频入口，把零散内容整理成可查、可连、可持续补充的资料网络。互动功能顶多是查完资料、还想再逛一会儿的时候，给你递一杯水。\n\n## 项目说明\n\n非官方个人项目，索引以小约翰可汗公开发布的视频为准，页面会保留或链接回原视频。整理过程中可能还有遗漏或错误，欢迎通过站内反馈提交可核对的补充与修正线索。\n\n项目持续公开记录更新：\n\n- [网站首页](https://www.tongliaouniverse.cn/)\n- [更新日志](https://www.tongliaouniverse.cn/changelog/)\n- [反馈进展](https://www.tongliaouniverse.cn/feedback/)\n\n你要是也有过\"人物记得、国家记得、就是忘了哪期\"的瞬间，别对着进度条干瞪眼了，来搜一个名字试试，五分钟就走。不出意外的话，这一逛，今晚你就在通辽宇宙里过夜了。\n\n搜到了，说明你没记错；搜不到，正好来提交线索，帮值班仓鼠补一档。你负责记得片段，我负责把出处翻出来。\n",
-    "created_at": "2026-08-20T09:32:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11287"
-  },
-  {
-    "id": 11286,
-    "title": "【工具自荐】Jarvix：让多个 AI Agent 共享同一份上下文",
-    "content": "项目地址：[https://jarvix.live/?ref=weekly](https://jarvix.live/?ref=weekly)\n\nJarvix 是一款面向 macOS 的本地优先（local-first）、支持语音交互的 Context OS。它解决的不是“再多一个聊天窗口”，而是同时使用多个 AI 工具时，上下文散落在不同会话里、同一背景需要反复解释的问题。\n\n你可以把自己选择的 AI 对话和信息源交给 Jarvix。它会把这些内容组织成可持续的个人上下文，让不同 Agent 和新会话从已有背景继续工作，并从中发现关联、总结信号、建议下一步。涉及执行的动作仍然需要用户确认。\n\n比较有意思的几个功能：\n\n- **一份上下文，多 Agent 共用**：不必在每个会话里重新复制背景；Jarvix 让不同 Agent 围绕同一目标和上下文继续协作，并显示进度。\n- **Self Reflection 与 Next Move**：不只保存历史，还会从你选择的内容里梳理关系和模式，给出“下一步可以做什么”的建议。\n- **Jarvix Radio**：根据个人上下文发现值得看的视频，把被动刷推荐变成围绕当前兴趣和目标的探索。\n- **J-Card**：导入自己选择的 AI 对话，可以生成七种 J-Type 之一，并查看不同类型的协作匹配度。网页版支持免登录、一次性分析，适合先体验产品思路。\n\n目前官网可以直接下载 macOS 客户端；Windows 版本可登记候补。\n<img width=\"1810\" height=\"1112\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/59e2b750-f0fb-4f7a-a0ea-1e86e5f8c191\" />\n<img width=\"3840\" height=\"1982\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a9c5285a-05df-45f9-96d6-57aeed2a82db\" />\n<img width=\"3840\" height=\"1982\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56539453-53cd-4a34-ab6b-b2a81b1d4479\" />\n<img width=\"1920\" height=\"991\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4ca760b2-107a-4595-b3f7-13854ec29091\" />\n<img width=\"3840\" height=\"1982\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4e566804-034a-40be-9d6f-9bd49efa2714\" />\n",
-    "created_at": "2026-08-20T09:10:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11286"
-  },
-  {
-    "id": 11285,
-    "title": "【开源自荐】可作为 Typeless 平替的语音输入法 - Tyvox",
-    "content": "**项目名称：** Tyvox\n\n**项目简介：**\n打字是思考中最慢的部分。Tyvox 消除了这一部分：在桌面上按下一个热键，自然说话，经过润色的文本就会准确地出现在你即将打字的地方。语音识别默认在您的机器上运行，可选的 LLM 处理将漫谈变成整洁的散文 —— 或另一种语言。\n\n<img src=\"/luckrnx09/tyvox/raw/master/assets/demo/polish-demo.gif\" />\n\n**项目地址：** https://github.com/luckrnx09/tyvox\n\n**开源协议：** MIT\n\n",
-    "created_at": "2026-08-20T09:08:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11285"
-  },
-  {
-    "id": 11284,
-    "title": "【开源自荐】手机图案密码全库检索工具",
-    "content": "你好，我想自荐一个我最近开发的开源项目：**Graphic Cryptographic** —— 一个手机图案密码的全库检索与筛选工具。\n\n**项目链接**：https://github.com/narrastory/graphic-cryptographic\n\n**项目简介**：\n这是一个帮助用户设计更安全、更个性化手机图案密码的 Web 应用。它将 3×3 点阵上的图案密码转化为数字序列问题，通过算法遍历全部 **985,824** 种可能，并利用对称性去冗余，将有效图案缩减至约 **12.3 万** 个。用户可以按长度、对称类型、路径特征等条件筛选，找到既美观又不易被猜到的图案。\n\n**推荐理由**：\n1. **有趣且实用**：图案密码是很多人每天都在用的东西，但很少有人系统地想过“一共有多少种”“什么样的图案更安全”。这个项目用数学和算法给出了一个直观的答案。\n2. **AI 辅助开发的实践案例**：我在 README 中详细记录了如何借助 AI 在两天内完成从构思到开发的全过程——不依赖 AI 生成整块代码，而是将其作为“随时提问的助手”来加速学习 Vue3 和组件开发。这种“AI 辅助、人脑主导”的开发方式，对当下很多开发者都有参考价值。\n3. **技术实现有亮点**：项目涉及全排列生成、对称性去重、Canvas 图案绘制等，代码结构清晰，适合对算法或 Vue3 感兴趣的朋友学习。\n",
-    "created_at": "2026-08-20T08:16:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11284"
-  },
-  {
-    "id": 11283,
-    "title": "【开源自荐】Gitmous：可用鼠标操作的终端 Git 客户端",
-    "content": "\n项目地址：https://github.com/JackyWongX/gitmous\n\nGitmous 是一个运行在终端里的 Git 客户端。它把图形化源码管理面板中常见的点击式工作流带进终端：不必记忆 Git 命令，通过鼠标、按钮、菜单和对话框就能完成日常版本管理。完全由鼠标操作按钮和菜单完成日常git操作。\n\n它适合希望保留终端工作环境，但又想减少 Git 命令记忆和频繁切换工具的开发者。\n\n## 能做什么\n- 在当前目录下发现仓库，也可添加本地仓库、初始化仓库或从远程地址克隆\n- 点击文件即可暂存、取消暂存和查看工作区差异，支持一键暂存或取消暂存全部更改\n- 创建提交，查看提交详情及其中的文件，并可还原到指定提交\n- 创建、切换、发布、合并和删除本地或远程分支\n- 完成 `fetch`、`pull`、`push`、发布当前分支，以及管理远程仓库\n- 创建、应用、弹出、查看或删除储藏；创建和删除标签\n- 处理合并冲突：接受当前版本、接受传入版本、中止合并，或在手动编辑后标记为已解决\n- 支持简体中文和英文界面，以及主题强调色设置\n\n涉及丢弃本地更改或改写历史的操作都会先要求确认，再调用 Git。\n\n## 界面预览\n\n![Gitmous 终端界面](https://raw.githubusercontent.com/JackyWongX/gitmous/master/show.png)\n\n## 使用方式\n\n项目基于 Node.js 和 Git，支持 Windows、macOS、Linux，需要使用支持鼠标报告的终端。可通过 npm 全局安装：\n\n```bash\nnpm install --global gitmous\ngitmous\n```\n\n也可克隆源码后运行：\n\n```ba\ngit clone https://github.com/JackyWongX/gitmous.git\ncd gitmous\nnpm install\nnpm start -- /path/to/your-repository\n```\n\nWindows PowerShell 示例：\n\n```powershell\nnpm start -- D:\\github\\your-repository\n```\n\n欢迎试用并反馈问题或建议。",
-    "created_at": "2026-08-20T08:13:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11283"
-  },
-  {
-    "id": 11282,
-    "title": "【开源自荐】一个基于高德地图api的多人聚餐餐厅推荐工具",
-    "content": "## [Where to Eat](https://github.com/shaozhengmao/where-to-eat)\n\n一个多人聚餐餐厅推荐工具。\n\n用户输入每个人的出发地、口味和出行方式后，项目会调用高德地图计算所有人到候选餐厅的真实路线，并按照“最慢的人更快”“时间差最小”或“平均耗时最低”进行排序，给出一家推荐餐厅和备选方案。\n\n它不会只找一个地理中心点，而是以真正能去吃饭的餐厅作为最终目标；还会展示地点识别结果、每个人的耗时，以及公共交通的上车、换乘和下车说明。\n\n目前支持北京、上海、广州、深圳。Web 版部署在 Cloudflare Pages，使用者在页面填写自己的高德 Web 服务 Key，Key 仅用于当前请求，不保存。\n\n- 项目地址：https://github.com/shaozhengmao/where-to-eat\n- 在线体验：https://where-to-eat-8wr.pages.dev/\n\n效果图：\n<img width=\"929\" height=\"1002\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/daad3db3-3279-4931-97cb-9a79cec130d1\" />",
-    "created_at": "2026-08-20T07:49:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11282"
-  },
-  {
-    "id": 11281,
-    "title": "【开源自荐】Stamp Maker — 复古邮票生成器",
-    "content": "# 💌 Stamp Maker — 复古邮票生成器\n\n<div align=\"center\">\n\n![Stamp Maker Banner](https://github.com/extrastu/stamp-maker/raw/main/public/logo.png)\n\n### 把日常随手拍，一键变成专属复古齿孔小邮票\n\n🌐 **在线体验**: [https://stampmakers.pages.dev/](https://stampmakers.pages.dev/)  \n🐙 **GitHub 仓库**: [extrastu/stamp-maker](https://github.com/extrastu/stamp-maker)\n\n[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)\n[![Website](https://img.shields.io/badge/Website-stampmakers.pages.dev-blue.svg)](https://stampmakers.pages.dev/)\n[![Xiaohongshu](https://img.shields.io/badge/Xiaohongshu-关注作者-FF2442.svg)](https://xhslink.cn/m/lTR6WMDnhB)\n[![React](https://img.shields.io/badge/React-18.3-blue.svg)](https://react.dev/)\n[![TypeScript](https://img.shields.io/badge/TypeScript-5.6-blue.svg)](https://www.typescriptlang.org/)\n[![Vite](https://img.shields.io/badge/Vite-6.0-646CFF.svg)](https://vitejs.dev/)\n\n[在线体验](https://stampmakers.pages.dev/) • [功能特性](#-功能特性) • [快速开始](#-快速开始) • [关注作者](#-关注作者) • [开源协议](#-开源协议)\n\n</div>\n\n---\n\n## 📖 项目简介\n\n**Stamp Maker** 是一款轻量、优雅且功能强大的复古齿孔邮票图片制作工具。专为手账爱好者、摄影博主及小红书图文创作者打造。\n\n支持一键将日常照片转换为具有真实物理镂空齿孔的复古邮票，提供满幅直接打孔、经典留白、多种齿孔密度调节与高清透明 PNG 导出。**100% 浏览器纯本地 Canvas 离线渲染，无需上传任何服务器，极致保障用户照片隐私安全。**\n\n---\n\n## ✨ 功能特性\n\n- 📑 **批量选择多张照片制作**：支持一次性选取多张照片连续裁切，支持一键批量保存全部邮票，或一键将全部邮票打包发布为小红书图文笔记（2~9 张九宫格）。\n- ✂️ **真实物理齿孔镂空算法**：基于 HTML5 Canvas `destination-out` 复合图层运算，生成逼真的圆弧边缘镂空效果。\n- 🖼️ **满幅切图与留白自由调节**：\n  - **满幅打孔（0 留白）**：齿孔直接咬合在照片边缘，画面满幅呈现。\n  - **经典留白（14px+）**：模拟传统邮票与相框衬纸白边。\n- 📐 **多画幅智能裁剪**：支持 `1:1`、`3:4`、`4:3`、`2:3`、`9:16` 常见比例构图，支持画面缩放、平移与一键旋转/回正（`0°` / `90°` / `180°` / `270°`）。\n- 🎨 **多款经典齿孔预设**：\n  - **标准齿**：经典邮票齿孔比例，均衡耐看。\n  - **复古密齿**：高密度细密齿孔，精致复古。\n  - **艺术大齿**：现代几何大齿孔，张力十足。\n- 🌈 **个性化衬纸底色**：提供纯白、复古浅黄、薄荷青绿、柔粉、淡蓝、曜黑等多款高级纸张底衬。\n- 📕 **小红书图文一键发布**：原生集成小红书 JSBridge `postNote` 能力，一键将生成的邮票带入小红书发布器。\n- 💾 **高精度多格式导出**：支持 `1080p` 社交快传、`2160p` 超清手账级与 `3240p` 极清印刷级分辨率，支持透明 PNG、JPEG、WEBP 格式。\n- 🔒 **100% 离线与隐私安全**：纯客户端本地运行，无后端、无接口请求，零数据泄露风险。\n- 📱 **单屏零滚动自适应**：深度针对移动端与小红书 App 视口设计，操作一屏搞定。\n\n---\n\n## 🎨 设计语言\n\n本项目的 UI / UX 深度参考了 **Sticker-Sheet Neo-Brutalism（贴纸风新野兽派）** 现代设计语言：\n\n- **暖奶油纸质底色** (`#FFF4DD`)：还原复古纸张与手账本温润触感。\n- **纯正墨黑粗边框** (`2px solid #26201A`) 与 **实体下沉硬投影** (`shadow-neo`)。\n- **扎实的物理按压微交互**：所有按钮点击时实体投影瞬间压平（`.btn-neo`），提供极具质感的交互回弹反馈。\n\n---\n\n## 🛠️ 技术栈\n\n- **Core**: [React 18](https://reactjs.org/) + [TypeScript](https://www.typescriptlang.org/)\n- **Build Tool**: [Vite 6](https://vitejs.dev/)\n- **Styling**: [TailwindCSS 3](https://tailwindcss.com/)\n- **Image Cropper**: [react-easy-crop](https://github.com/ValentinH/react-easy-crop)\n- **Icons**: [Lucide React](https://lucide.dev/)\n- **Effects**: [canvas-confetti](https://github.com/catdad/canvas-confetti)\n\n---\n\n## 🚀 快速开始\n\n### 环境准备\n\n- Node.js >= 18.0.0\n- pnpm >= 8.0.0 (推荐) 或 npm / yarn\n\n### 1. 克隆代码仓库\n\n```bash\ngit clone https://github.com/extrastu/stamp-maker.git\ncd stamp-maker\n```\n\n### 2. 安装依赖\n\n```bash\npnpm install\n```\n\n### 3. 本地启动开发服务器\n\n```bash\npnpm run dev\n```\n\n打开浏览器访问 `http://localhost:5173` 即可开始体验。\n\n### 4. 生产环境构建\n\n```bash\npnpm run build\n```\n\n---\n\n## 📦 小红书离线小工具集成与打包\n\n本项目原生适配 **小红书离线小工具（XHS Mini-Tool）** 容器规范：\n\n- 内置经典脚本加载器格式转换（无外链跨域限制）。\n- 离线静态资源全部内联/本地打包（体积仅 ~600KB，远低于 10MB 规范限制）。\n- 原生支持 `window.xhs.miniTool.saveImageToPhotosAlbum` 与 `window.xhs.miniTool.postNote`。\n\n### 一键构建离线 ZIP 安装包\n\n```bash\npnpm run zip\n```\n\n构建完成后将在根目录生成 `stamp-maker-1.0.3.zip`，可直接上传至小红书小工具开放平台。\n\n---\n\n## 👤 关注作者\n\n如果你喜欢这个小工具，欢迎关注作者的小红书账号，获取更多好玩实用的创意小工具、前端开源项目与设计分享：\n\n- 📕 **小红书主页**：[点击关注作者小红书 extrastu](https://xhslink.cn/m/lTR6WMDnhB)\n- 💬 欢迎在小红书交流反馈、提出新功能需求，或带上 `#StampMaker` 标签分享你制作的专属邮票手账作品！\n\n---\n\n## 📄 开源协议\n\n本项目基于 [MIT License](./LICENSE) 开源协议分发与使用。\n欢迎自由使用、修改、分发与商业化，请保留原作者版权声明。\n\nCopyright (c) 2026 [extrastu](https://github.com/extrastu) · [小红书](https://xhslink.cn/m/lTR6WMDnhB)\n",
-    "created_at": "2026-08-20T07:10:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11281"
-  },
-  {
-    "id": 11280,
-    "title": "【开源自荐】TabFlick——给 Google Chrome 加上按最近使用顺序切换标签的能力。（仿Arc浏览器）",
-    "content": "## 介绍\nChrome 的 control + tab 是按标签栏顺序切换，不能按最近使用顺序进行切换，效率极低。TabFlick 把它改成按最近使用顺序切换，并在按住按键期间显示漂亮的切换器浮层，与 cmd+tab 切换应用的方式一致。\n\n![](https://cdn.jsdelivr.net/gh/lifedever/images@master/uPic/2026/08/tabflick-demo-full.gif)\n\n## 功能\n\n- ⌃⇥ 切换到上一个使用的标签\n- 再点一次 ⌃⇥ 回到出发的标签，A↔B 来回切换保持稳定\n- 列表中每个标签都带网页缩略图\n- 键盘（⌃⇥、⌃⇧⇥）、方向键、鼠标点击都可以操作切换器\n- 两种切换器布局：横向长条，或自适应宫格（尽量一屏放下全部标签）\n- 浮层显示在正在使用的 Chrome 窗口正中，支持多显示器\n- 深浅色外观跟随系统设置\n- 应用内自动更新 —— 按设定频率检查 GitHub Releases，确认后一键原地安装\n- helper 或扩展不可用时，⌃⇥ 回落到 Chrome 自带的切换行为\n\n## 工作原理\n\nTabFlick 由两部分组成，通过本地回环 WebSocket 通信：\n\n```\n┌─────────────────────────┐         ┌──────────────────────────┐\n│  Chrome 扩展 (MV3)      │  ws://  │  Swift helper            │\n│                         │◄───────►│                          │\n│  · tabs.onActivated     │  :41573 │  · CGEventTap  (拦 ⌃⇥)   │\n│    → 维护 MRU 顺序      │         │  · NSPanel     (浮层)    │\n│  · captureVisibleTab    │         │  · MRU 状态机            │\n│    → 采集缩略图         │         │                          │\n│  · tabs.update          │         │                          │\n│    → 执行切换           │         │                          │\n└─────────────────────────┘         └──────────────────────────┘\n```\n\n## 项目地址\n\n开源地址： https://github.com/lifedever/TabFlick \n开源协议：MIT",
-    "created_at": "2026-08-20T07:03:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11280"
-  },
-  {
-    "id": 11279,
-    "title": "【网站自荐】秒搜鸭 - 夸克网盘资源搜索平台附带其他网盘资源",
-    "content": "网站名称：秒搜鸭  \n网站地址：https://miosou.cc\n- 不需要注册不需要关注公众号等，直接可搜\n- 在播剧集持续更新，各种学习公考资源\n- 特色防夸克和谐资源（列如：色戒，斯巴达克斯全集），如果是通过挂载网盘（alist等）工具可直接观看\n",
-    "created_at": "2026-08-20T06:25:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11279"
-  },
-  {
-    "id": 11278,
-    "title": "【开源自荐】EasyChat - 专为无障碍沟通打造的翻译软件",
-    "content": "开源地址: https://github.com/SwaggyMacro/EasyChat\n使用说明及文档: https://easychat.ncii.cn/\n\n## 项目简介\nEasyChat 是一款开源翻译软件。它支持截图翻译、输入翻译、划词、图片 OCR、实时语音识别与同声传译，可接入 AI 大模型和主流机器翻译服务，帮助用户在聊天、办公、学习、浏览网页及观看视频时更高效地完成多语言理解与表达。\n\n## 核心特性\n- `截图翻译`：框选网页、视频或图片中的文字，OCR 识别后即时翻译\n- `输入翻译`：通过快捷键输入母语，自动翻译并写入当前应用\n- `划词工具栏`：支持翻译、解释、总结、润色、纠错和词典详情\n- `图片 OCR`：提取图片文字，支持复制、局部处理和图片翻译\n- `实时语音识别`：识别系统播放的音频或视频，并以字幕形式显示翻译结果\n- `同声传译`：识别麦克风语音并翻译、TTS后输出至虚拟麦克风，适用于跨语言沟通\n- `快捷翻译与纠错`：快速获取翻译、语法修正和写作建议\n- `全局快捷键`：在聊天、办公、浏览和学习场景中快速调用\n\n## 适用场景\n- 浏览外文网站、视频和软件界面\n- 与海外客户或团队进行聊天、邮件沟通\n- 阅读外文图片、漫画或技术资料\n- 观看课程、会议或视频时生成识别与翻译字幕\n- 日常英语学习、写作润色和语法纠错\n\n## 开源协议\nMIT\n\n## 相关演示\n### 截图与输入翻译\n![截图与输入翻译](https://raw.githubusercontent.com/SwaggyMacro/EasyChat/master/docs/screenshot/README/screenshot-translation.gif)\n\n### 划词工具栏\n![划词工具栏](https://raw.githubusercontent.com/SwaggyMacro/EasyChat/master/docs/screenshot/README/selection-toolbar.webp)\n\n### 快捷翻译演示\n![快捷翻译演示](https://raw.githubusercontent.com/SwaggyMacro/EasyChat/master/docs/screenshot/README/quick-translate.gif)\n\n### 实时语音识别\nhttps://github.com/user-attachments/assets/d17d6287-7cc4-40e4-a322-3c4fed615bda\n\n## 说明\n软件采用跨平台框架 `Avalonia` 开发，但手里没有 **macOS**，所以目前仅支持 **Windows**，**macOS** 会在后续兼容。",
-    "created_at": "2026-08-20T03:37:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11278"
-  },
-  {
-    "id": 11277,
-    "title": "【工具自荐】小分身：一个记住你写作风格的自进化 AI 应用",
-    "content": "一款 AI 写作产品：小分身，它能胜任以下工作（已经完成了**公众号**大部分功能打通）：\n\n1. 模仿写作风格：根据你不断提供的文本内容，以及每天的对话，公众号文章的数据表现等，形成独特的写作风格和专属记忆。\n2. 追踪热点：自动定时抓取热点、挖掘选题灵感，并搜索真实资料来源，按照你的写作风格完成文章编写。\n3. AI 写作编辑器：不仅支持 Agent 对话式生成文章内容，也支持精细化润色、搜图、插图等。\n4. 资产复利：通过不断地使用这款产品，你会沉淀文章、图片、对话、阅读数据等各类资产，Agent 可以更准确地自进化，从而更加懂你。\n\n欢迎通过我的分享链接使用，你将在免费的积分上额外获取 500 万积分。\n👉 [https://xiaofenshen.com/?ref=F1496394](https://t.co/pXJQldWEbW)\n\n<img width=\"3000\" height=\"1790\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b26f3e6e-9b3e-4a57-adda-2e34a583f096\" />\n<img width=\"2632\" height=\"1790\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9d5e405d-6d05-4b23-aee8-1aa6133530eb\" />\n<img width=\"2632\" height=\"1790\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a7c6fa89-12b1-4253-a27d-3eecf606e07b\" />\n<img width=\"3000\" height=\"1790\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c88ca1da-7755-46e2-b863-2d5250d0c667\" />\n<img width=\"3000\" height=\"1790\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8c75ede2-8e82-43c8-ad52-7b833d087748\" />",
-    "created_at": "2026-08-20T02:37:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11277"
   }
 ]
