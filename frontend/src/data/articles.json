@@ -1,5 +1,13 @@
 [
   {
+    "id": 11419,
+    "title": "自荐：ScholarSeed——AI 时代学术论文的确定性质检门禁（41 个工具，纯标准库，零依赖）",
+    "content": "向周刊推荐一个开源项目，供挑选。\n\n**ScholarSeed** —— AI 时代学术论文的确定性质检门禁\n\n- 仓库：https://github.com/Morningstar202604/ScholarSeed （GitCode: https://gitcode.com/badhope/ScholarSeed ）\n- 许可证：PolyForm Noncommercial 1.0.0（学习/研究/个人使用免费）\n- 安装：`npm i -g scholarseed` 或直接克隆使用，纯 Python 标准库，零依赖\n\n**它解决什么问题**：现在大量学生和研究者用 AI 辅助写论文，常见的翻车点很具体——编造的参考文献、`p=0.000` 这种统计错误、样本量前后矛盾、图表编号断层、\"研究表明/专家认为\"却不给出处。这些恰恰是编辑和审稿人一眼就抓的东西。\n\nScholarSeed 提供 41 个确定性检查工具（MCP 服务器 + CLI），全部规则可复现、带行号证据：\n\n- **引文核验**：逐条实时比对 Crossref / Semantic Scholar / OpenAlex，编造的 DOI 当场判 C 级，可作 CI 硬门禁\n- **统计红线**：p 值必须有检验方法名、显著结论必须配效应量、不可能值（|r|>1）直接报错\n- **数字一致性**：互斥分桶加和越界（\"300 人，其中 180…另外 200…\"）、摘要与正文样本数对不上\n- **文献质量**：完整性（缺来源/缺卷期页/GB-T 7714 类型标识）、时效性（全部早于 10 年）、链接可信（占位域名/可选联网验活）\n- **AI 腔自检**：51 条模板短语、模糊归因、句长突发性——定位是\"帮你把稿子改朴素\"，不做\"AI 率\"判决\n\n工程方面：237 个单元测试，阈值经 70 篇 arXiv 真实论文校准，另附一套 31 处埋雷的检测率评测（`benchmarks/persona_eval/`，可复现）。姊妹项目 [AgentSeed](https://github.com/Morningstar202604/AgentSeed) 做代码侧的同类防幻觉门禁。\n\n定位上它不替人写论文，只负责\"交得出去\"这一段。如果与周刊选题方向不合，无妨，感谢阅读。\n",
+    "created_at": "2026-08-29T21:00:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11419"
+  },
+  {
     "id": 11418,
     "title": "【项目自荐】BidYourStartup —— 花 $1.99，把你的 Startup 顶上网站首页第一名",
     "content": " 我是这个网站的作者，自荐一个小实验项目：BidYourStartup（bidyourstartup.com）。\n\n这个网站只卖一样东西——\"第一名\"。\n\n首页只有一个皇冠位置，任何人付 $1.99（约合十几元人民币），就可以让自己的 Startup 名称和链接戴上皇冠，挂在首页最顶部。没有竞价、没有订阅、没有加价抢拍，永远一口价 $1.99。\n\n规则只有一条：皇冠会一直属于你，直到下一个人也付 $1.99 接力。所以你可能是\"一日之君\"，也可能只当五分钟，取决于有没有人愿意把你顶下去。\n\n一些设计上的取舍：\n\n付费位诚实标注：皇冠明确标注为 Paid placement（付费推广位），不伪装成自然排名；\n链接安全筛查：所有提交的链接在付款前先过一道安全筛查（Google Safe Browsing 级别 + DNS 层校验），钓鱼和恶意网站直接拦截；\n钱包充值：$5 / $10 / $20 预充值，多次抢冠无需反复走结账流程；\n公开退款政策：站点上有明确的退款说明页。\n截至目前，第一顶皇冠还空着——现在付款的人将成为这个站的第一位\"开国\"第一名。\n\n适合刚发布产品、想要一个便宜又有仪式感的\"首发曝光\"的独立开发者，也适合单纯想整活的朋友。\n\n网站地址：https://bidyourstartup.com/ 定价说明：[Pricing — BidYourStartup](https://bidyourstartup.com/pricing)\n\n这个项目本质上是一个微支付实验：验证\"当一天第一名\"这种最便宜的仪式感，到底有没有人愿意买单。欢迎大家试用和拍砖。\n\n一个只卖\"第一名\"的网站：付 $1.99 让自己的 Startup 戴上首页皇冠，保留到下一位买家付款接力为止，付费位明确标注，无订阅无竞价。\n<img width=\"1512\" height=\"982\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b5244ab6-6602-444a-b4a4-1d3a24825a4e\" />\n\n<img width=\"1512\" height=\"982\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e88b2323-7b4a-4d70-965a-59802dbe1a31\" />\n",
@@ -808,13 +816,5 @@
     "created_at": "2026-08-23T09:12:52Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11317"
-  },
-  {
-    "id": 11316,
-    "title": "wiwana-AI 获客智能体",
-    "content": "[wiwana-AI 获客智能体](https://wiwana.com)\n通过小红书的评论区关键词，获得精准意向客户。\n\n<img width=\"3006\" height=\"1756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1c222922-7dd1-469a-bc71-bb169ce2d75b\" />\n\n<img width=\"3006\" height=\"1756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2a5243aa-e096-4d9a-9810-8b1fc98899fe\" />",
-    "created_at": "2026-08-23T09:01:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11316"
   }
 ]
