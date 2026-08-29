@@ -1,5 +1,29 @@
 [
   {
+    "id": 11414,
+    "title": "【文章自荐】《AI 原生组织》—— 免费开源书籍：把 AI 长进组织里，而不是贴在组织上",
+    "content": "**《AI 原生组织》（AI-Native Organization）**——免费开源书籍，中英双语，持续更新。\n\n在线阅读：https://github.com/Jweokk/ai-native-organization-book （附整书 PDF 下载）\n\n背景：MIT NANDA 研究显示 95% 的企业 AI 投入没有可衡量的回报，多数企业\"买了工具、做了培训、设了激励\"，年终采用率仍不足 15%。这本书研究那些反例——DeepSeek 的 160 人创新密度、Anthropic 六步转型框架、Transn\"能量金\"激励——它们是把 AI 长进组织 DNA，而不是把 AI 当创可贴贴在旧组织上。\n\n全书回答三个问题：\n- **是什么**：AI 原生组织与\"AI 转型\"的本质区别（创可贴式 AI vs 原生 DNA）\n- **证据**：HBS、INSEAD、WEF、腾讯研究院的实证研究到底说了什么\n- **怎么做**：组织形态重构、流程重设、激励重建，外加从零起步的行动手册\n\n特色：所有数据与案例来源收录附录；写作过程本身是案例——每日信息收集进知识库、每周自动合并、版本化发布（v1.0.0 → v2.0.0）；参考了 FDE 开源书模式（免费全文 + GitHub 阅读 + PDF 下载）。",
+    "created_at": "2026-08-29T02:18:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11414"
+  },
+  {
+    "id": 11413,
+    "title": "【开源工具自荐】Book2Advisor —— 把一个人的方法论，变成可以随时咨询的 AI 顾问",
+    "content": "**Book2Advisor**：把一个人的书、文章、演讲、访谈编译成结构化的「人物方法模型」，做成一个可以随时咨询的 AI 顾问（Web 应用）。\n\n开源地址：https://github.com/Jweokk/Book2Advisor\n\n与普通\"书籍问答\"（RAG）的区别：\n- **书外新问题也能答**：书里没有直接答案的问题（\"这位企业家会怎么看 AI 取代工人？\"），按方法论推演（Method Transfer），而不是拼凑原文\n- **引用可追溯**：每条原则绑定原文证据（E1-E5 分级），回答中\"他说过的\"与\"按他方法推演的\"严格分开标注，杜绝编造\n- **换人只换语料**：方法模型驱动，切换人物零代码改动——已用两位语料形态完全不同的人物（自传体 vs 内部讲话体）验证，同一问题两人的诊断路径显著不同\n\n技术栈：Python + FastAPI + 原生前端，LLM 推理（OpenAI 兼容接口，可换服务商），MIT 协议。",
+    "created_at": "2026-08-29T02:12:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11413"
+  },
+  {
+    "id": 11412,
+    "title": "【开源自荐】AI Art Engine：本地优先的开源 AI 艺术创作台，节点图串起图片，视频，3d模型，音频等艺术资产流水线",
+    "content": "我是这个项目的作者，自荐一下。\n\n现在的 AI 视频/图片创作大多是「网页抽卡」：提示词扔进网页会话，等结果、碰运气，素材散落在各家平台的对话框里，想拼成片子还得再拷去剪辑软件。做短剧、广告这类要批量出内容的活儿，这套流程撑不住。\n\nAI Art Engine 想把 AI 创作变成工程化生产：一个本地优先的桌面应用（Windows / macOS / Linux，GPL-3.0），工程、素材、模型配置全部留在本地，项目本身不设任何服务端。创作流程用节点图组织——文本、图片、视频、声音、3D 模型都是画布上的节点，连线即流水线，批量任务排队执行，共同上游自动复用，最后在内置成片时间线上编排导出（ffmpeg 合成 MP4）。\n\n几个我认为有意思的点：\n\n- **短剧 Agent 流水线**：单集剧本进去，Agent 依次完成节拍拆解、9 宫格分镜、4 宫格动态分镜（36 格），每一级产物都经过「导演审核」节点打分（PASS/FAIL，失败原因自动写入状态文件，重跑时自动带上），最终产出 36 条动态分镜视频。\n- **3D 导演台**：文生/图生 3D 模型（Meshy、Tripo、Rodin、Luma AI、Lux3D）连进节点即入 3D 舞台；也能丢参考图让 AI 用基础几何体搭出整座场景白模，摆机位、截站位图锁定构图，再喂给图生视频。\n- **一键工作流**：12 个行业模板（短剧分镜、游戏买量、电商带货、漫画出版、知识口播等），选模板 → 预览拓扑 → 落盘成宿主资产，也可以用自然语言让 AI 现场规划一张节点图。\n- **不绑厂商**：OpenAI、DeepSeek、智谱、Kimi、Google、可灵、MiniMax、火山方舟、ComfyUI 等 20+ 提供商，也支持 Ollama / vLLM / LM Studio 纯本地推理；模型 API Key 需自备（本地模型除外）。\n\n- GitHub：https://github.com/Justin-sky/ai-art-engine\n- 官网与使用手册：https://justin-sky.github.io/ai-art-engine/\n- 下载：Releases 提供 Windows / macOS / Linux 安装包\n\n<img width=\"1440\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f33f4dba-a252-4af6-892e-1d3c3736340e\" />\n\n<img width=\"1120\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3612061c-19ce-4de1-9faf-59475edbf570\" />\n\n<img width=\"1440\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dc7a1313-1445-41b8-bca7-0d033ad4bfd4\" />\n",
+    "created_at": "2026-08-29T01:48:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11412"
+  },
+  {
     "id": 11411,
     "title": "【工具自荐】我做了个 Codex 换皮肤工具，顺手把应用不生效和内存上涨修了",
     "content": "我自己用 Codex 写代码，换主题时总遇到两个小问题：点了应用，界面还是原样；皮肤一多，工坊和 Codex 一起开着，内存会慢慢往上走。\n\n于是做了一个给 macOS 上 Codex 换皮肤的小工具。现在只加载正在用的皮肤，其他的需要时再读；重复点应用不会把样式一层层叠起来；切换完成后还会检查 Codex 界面是不是真的变了。\n\n这几张是实际应用后的截图，画面里还能看到任务结果、改动文件、代码和测试：\n\n![额度提醒主题](https://raw.githubusercontent.com/mercedesbestsupplier-maker/bifang-codex-skins/main/assets/01-quota-reset.jpg)\n\n![绿色工作区主题](https://raw.githubusercontent.com/mercedesbestsupplier-maker/bifang-codex-skins/main/assets/02-romance-green.jpg)\n\n![Bug 回归主题](https://raw.githubusercontent.com/mercedesbestsupplier-maker/bifang-codex-skins/main/assets/03-bug-reproduce.jpg)\n\n项目页和使用记录：<https://github.com/mercedesbestsupplier-maker/bifang-codex-skins>\n\n演示页：<https://skindrop-codex.manonloki.chatgpt.site/>\n\n完整主题：<https://ifdian.net/a/lydiahub2026>\n\n完整主题和安装方式放在爱发电主页，具体方案以页面显示为准。\n",
@@ -782,31 +806,5 @@
     "created_at": "2026-08-23T03:04:40Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11313"
-  },
-  {
-    "id": 11312,
-    "title": "【工具自荐】Roomood：面向房产经纪人的 AI 虚拟布置工具",
-    "content": "## 产品名称\n\nRoomood\n\n## 产品网址\n\nhttps://roomood.com/\n\n## 一句话介绍\n\n一个面向房产经纪人和房产摄影师的 AI 虚拟布置工具，可以把空房或仍有家具的房间照片处理成适合房源展示的布置效果。\n\n## 为什么做这个\n\n我们最初做的是比较通用的 AI 房间设计，但后来发现，真正反复出现的需求来自房产经纪人和摄影师：空房照片很难让买家判断尺度和用途，而传统虚拟布置往往按张收费，还要来回沟通并等待一两天。于是我们重新收窄了产品方向，把重点放在真实房源的发布流程，而不是做一张好看的“灵感图”。\n\n## 目前的主要功能\n\n- 上传空房或带家具的房间照片\n- 自动替换画面中可移动的旧家具\n- 支持多种房间类型和 8 种家具风格\n- 保留原始墙面、门窗、地板、镜头角度和空间比例\n- 导出 4K 图片\n- 可在下载图中加入 MLS 虚拟布置披露标签\n- 支持一次处理整套房源照片\n\n## 适合的场景\n\n主要用于空置房源、新房、出租房、重新挂牌的房源，以及房产摄影师给客户增加虚拟布置服务。使用时仍然需要选择清晰、透视正常的原始照片，也需要按照当地 MLS 规则披露图片经过虚拟布置。\n\n这是自己在做的小产品，最近刚完成一次比较大的定位调整。欢迎大家试用并告诉我哪些房间或房源场景还不够自然。谢谢。 ",
-    "created_at": "2026-08-23T02:59:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11312"
-  },
-  {
-    "id": 11311,
-    "title": "【网站自荐】BK漂流瓶：和陌生人交换正在看的视频、正在玩的游戏",
-    "content": "**网址：** https://b.bking.film/?from=ruanyf\n**源码：** https://github.com/bkingfilm/bk-bottle （MIT）\n\n把你最近真的在看的视频装进瓶子扔进海里，再捞一个陌生人的瓶子上来。不用注册，不读浏览记录，没有算法推荐。\n\n2022 年 CHI 有篇论文 OtherTube，41 个人交换 YouTube 推荐 10 天，证明看陌生人在看什么确实能让人发现新兴趣。那批研究原型（OtherTube / TheirTube / FlipFeed）现在全下线了，这个是活的，2026 年 7 月上线，到现在真人扔了 270 多个瓶子。\n\n几条跟别的产品不一样的地方：\n\n- 不读浏览器历史。你自己挑 1 到 5 条链接贴进来，这就是全部的隐私模型。\n- 没有留言框。自由文本最后都会变成广告牌，瓶子里只有链接。\n- 永远不做「按你捞过的瓶子推荐相似的」。好评只会让一个瓶子更容易被所有人捞到，排序全站共用，跟你是谁无关。\n- 支持 YouTube、B站 和 Steam 游戏（装「最近在玩」），一个瓶子里可以混装。简体、繁体、英文三种界面。\n\n有 Chrome 插件，点工具栏就是一次捞瓶：https://chromewebstore.google.com/detail/ahbgoaaojaanogcampbekjmiocmnnbbk\n\n整个项目就是一个 HTML 加一个 Cloudflare Worker，没有构建步骤，`python server.py` 就能本地跑。\n",
-    "created_at": "2026-08-22T19:34:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11311"
-  },
-  {
-    "id": 11310,
-    "title": "【开源自荐】以多行平铺的方式展示当前窗口所有标签页的chrome 扩展",
-    "content": "<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/hezhizheng/multi-row-tabs/master/icon128.png\" alt=\"Multi-Row Tabs Logo\" width=\"128\">\n</p>\n\n<h1 align=\"center\">Multi-Row Tabs（多行平铺标签栏）</h1>\n\n一个 Chrome 浏览器扩展（Manifest V3），以**多行平铺**的方式展示当前窗口的所有标签页，采用**零侵入浮动模式**：不修改页面任何样式，兼容所有网站。[github]( https://github.com/hezhizheng/multi-row-tabs) \n\n![](https://cdn.jsdmirror.com/gh/hezhizheng/static-image-hosting@main/image-hosting/20260823002124_PGLZRWFBYIPURPTW.png)\n## 视频演示\n\nhttps://github.com/user-attachments/assets/a6736d2c-746c-4b45-bb09-1fc7d6831068\n\n## 背景说明\n\nChrome 扩展**无法修改浏览器原生标签栏**（标签栏属于浏览器 UI 层，扩展无权注入样式或脚本）。因此本扩展采用「浮动覆盖栏」方案：页面上仅有一个可拖拽的悬浮按钮，点击或按快捷键时标签栏才浮现在页面顶部，**不改动页面任何样式**，对等任何网站零影响。\n\n## 功能特性\n\n- **零侵入浮动模式**：标签栏默认隐藏，不修改页面任何样式；展开时浮在页面上方，鼠标离开自动收起\n- **悬浮按钮可拖拽**：右上角小圆点按钮可拖拽到页面任意位置，位置自动记忆\n- **自定义快捷键**：默认 `Alt+Z`，可在弹出面板中录制任意组合键，随时展开 / 收起标签栏\n- **多行平铺展示**：标签以 favicon + 标题的形式自动换行平铺，当前活动标签白底高亮\n- **标签排序**：标签栏左侧提供排序下拉框，支持「默认」（与浏览器标签顺序一致）、「按名称」（中文拼音排序）、「按域名」（优先按一级域名排序，同站点不同子域名的标签自动聚在一起），选择后自动记忆\n- **一键切换 / 还原**：点击工具栏图标，在弹出面板中一键显示或隐藏整个功能\n- **标签操作**：\n  - 左键点击标签 → 切换到该标签\n  - 中键点击标签 → 关闭该标签（与原生标签栏行为一致）\n  - 点击标签上的 `×` → 关闭该标签\n- **键盘导航**：展开后用 `←` `→` `↑` `↓` 在标签间移动焦点（蓝色高亮），按 `Enter` 切换到对应标签页，按 `Delete` 关闭当前高亮标签，按 `Esc` 收起标签栏\n- **可选显示链接**：在弹出面板中勾选「显示链接」后，链接以小字显示在标签名称下方（默认不显示）\n- **实时同步**：标签的新建、关闭、切换、标题变化会自动刷新标签栏\n- **无 Mixed Content 警告**：favicon 由后台抓取并转为 data URL 下发，http 页面的图标在 https 页面中也不会触发混合内容警告\n\n## 安装方法\n\n1. 打开 `chrome://extensions/`\n2. 开启右上角「开发者模式」\n3. 下载 [最新压缩包](https://github.com/hezhizheng/multi-row-tabs/archive/refs/heads/master.zip) 解压\n4. 点击「加载已解压的扩展程序」，选择本目录（`multi-row-tabs`）\n5. 工具栏出现扩展图标即安装成功\n\n## 使用方法\n\n- 点击工具栏图标，弹出面板中点击「显示多行标签栏」→ 页面出现悬浮按钮 ≡；点击「隐藏多行标签栏」→ 还原\n- 点击悬浮按钮（或按自定义快捷键）→ 标签栏浮现在页面顶部；鼠标离开标签栏后自动收起\n- 展开标签栏后，通过左侧下拉框切换排序方式（默认 / 按名称 / 按域名），选择立即生效并自动记忆\n- 悬浮按钮可按住拖拽到页面任意位置，位置自动记忆（按窗口百分比保存）\n- 在弹出面板中点击「快捷键」输入框后按下组合键即可录制；「清除」可移除快捷键\n- 勾选 / 取消「显示链接」立即生效，无需刷新页面\n\n## 文件结构\n\n```\nchrome-multirow-tabs/\n├── manifest.json   # MV3 配置，声明 tabs / storage / scripting 权限\n├── background.js   # Service Worker：切换开关、标签查询、favicon 转换与缓存、事件广播\n├── content.js      # 渲染悬浮按钮与多行标签栏，处理拖拽 / 快捷键 / 点击 / 中键关闭等交互\n├── content.css     # 标签栏与悬浮按钮样式（flex-wrap 多行平铺）\n├── popup.html      # 工具栏弹出面板\n├── popup.js        # 面板逻辑：切换按钮 + 显示链接 + 快捷键录制\n├── icon16.png      # 扩展图标（16px）\n├── icon48.png      # 扩展图标（48px）\n├── icon128.png     # 扩展图标（128px）\n└── README.md\n```\n\n## 已知限制\n\n- `chrome://` 页面、Chrome 网上应用店等浏览器内部页面无法注入内容脚本，这些页面不会显示悬浮按钮\n- 标签栏展开时浮在页面上方，会临时遮挡顶部内容（鼠标离开即收起）\n- 自定义快捷键在页面自身捕获了同一组合键时可能被页面拦截（扩展在捕获阶段监听，绝大多数情况优先生效）\n- 重新加载扩展后，之前已打开的页面需要刷新一次才会加载新脚本\n\n## 权限说明\n\n| 权限 | 用途 |\n|---|---|\n| `tabs` | 查询 / 切换 / 关闭标签页，读取标题与 favicon |\n| `storage` | 保存开关状态、「显示链接」配置、排序方式、悬浮按钮位置与快捷键 |\n| `scripting` | 对已打开的标签页按需注入标签栏脚本 |\n| `<all_urls>`（host） | 允许在所有页面注入标签栏、后台抓取 favicon |\n\n## License\n[MIT](./LICENSE.txt)\n",
-    "created_at": "2026-08-22T17:00:22Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11310"
   }
 ]
