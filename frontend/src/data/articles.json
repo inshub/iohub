@@ -1,5 +1,29 @@
 [
   {
+    "id": 11429,
+    "title": "【工具自荐】Apolu：追踪自己的 App 在 175 个 App Store 的榜单排名、评论与真实收入",
+    "content": "### 项目地址\n\n- 官网：https://apolu.app\n- App Store：https://apps.apple.com/app/apolu/id6796458283（iPhone / iPad / Mac，免费下载，含订阅）\n\n### 项目简介\n\nApolu 追踪你自己的 App 在全球 App Store 的榜单排名。\n\nApp Store 只让开发者看到自己所在的那一个国家/地区，而全世界有 175 个。三个平台、26 个分类、免费榜和付费榜加起来是两万多张实时榜单，Apple 没有任何接口能回答「我的 App 现在排第几」——只能有人一直抓、一直记着。Apolu 做的就是这件事：读 Apple 的榜单页面（每张 200 名），30 个大市场每小时一次，其余每四小时一次。\n\n- **排名**：175 个国家/地区 × iPhone/iPad/Mac × 免费榜/付费榜，带历史曲线\n- **提醒**：新进入一个国家、冲进前十、单次上升二十名这类值得看一眼的变化，不是每日流水账\n- **评论**：所有国家的新评论汇进一个收件箱，低分优先，可以直接在 App 内回复\n- **收入**：用你自己创建的 App Store Connect API 密钥读你自己的销售报表——真实的开发者分成，按日按国家，不是第三方估算模型\n- 界面 13 种语言，iPhone / iPad / Mac / Apple Watch / 小组件\n\n主屏小组件：在榜国家与各自名次、当日收入、待回复评论。\n\n![Apolu 的排名、收入、评论小组件](https://r2-orange-cloud.chatiro.app/IMG_0418.PNG)\n\n上榜之后可以生成一张战绩海报，图片或短视频，App 内所有语言都支持。\n\n![Apolu 生成的上榜海报](https://r2-orange-cloud.chatiro.app/apolu-achievement-6779323783-2.png)\n\n免费可以追踪任意数量的 App，看到所有市场的前 25 名，榜单随便浏览；PRO（$6.99/月、$39.99/年、$79.99 买断）解锁完整前 100 名、历史、提醒、评论回复和收入。排名数据完全不需要登录，只有评论和收入需要授权。\n\n顺便说个做的时候才发现的事：`apps.apple.com` 链接里的国家码只是提示，不是指令——Apple 按请求来源判定 storefront，所以你在自己电脑上打开「其他国家」的商品页，看到的其实还是本国的。想知道自己在别的市场排第几，靠手动查是查不出来的。\n\n先说清楚没有的：关键词排名和 ASO 建议都没做；也不估算任何 App（包括竞品）的下载量和收入。App 闭源。\n\n这是作者本人自荐。\n",
+    "created_at": "2026-08-30T18:44:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11429"
+  },
+  {
+    "id": 11428,
+    "title": "【开源自荐】Orange Cloud：iPhone / iPad / Apple Watch 上的 Cloudflare 客户端，OAuth 登录不用粘贴 API Token",
+    "content": "官网：https://o-c.do\nGitHub：https://github.com/chen2he/orange-cloud\nApp Store：https://apps.apple.com/app/id6779323783\n\n<img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/01_dashboard.jpg\" width=\"215\" alt=\"概览\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/02_analytics.jpg\" width=\"215\" alt=\"流量分析\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/06_workers_tail.jpg\" width=\"215\" alt=\"Workers 实时日志\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/05_daynight.jpg\" width=\"215\" alt=\"昼夜主题\" />\n\nOrange Cloud 是一款用 Swift / SwiftUI 写的 Cloudflare 第三方管理客户端，支持 iPhone、iPad 和 Apple Watch。和其他客户端不同的是，它走 Cloudflare 官方的 OAuth 2.0 + PKCE 登录，不用去后台建 API Token 再复制粘贴；授权时可以按 scope 勾选要给哪些权限，Token 只存在 Keychain 里，多个 Cloudflare 账号可以同时登录切换。\n\n功能大致覆盖了日常会用到的部分：域名与 DNS 记录增删改查、缓存规则、批量重定向、负载均衡、一键代理开关；Workers 与 Pages 的查看、创建部署和实时日志流（类似 wrangler tail，配合锁屏和灵动岛的实时活动）；R2 / D1 / KV（R2 还挂进了系统「文件」App，可以直接当网盘用）；WAF 自定义规则、Zero Trust、Tunnel 状态；流量分析走 GraphQL Analytics API，用 Swift Charts 画图。另外有主屏 / 锁屏小组件、控制中心控件、Siri 快捷指令和 Spotlight 索引，界面是自己做的一套「晨昏」设计（天色随本地时间变化，见上图第四张），本地化了 13 种语言。\n\n仓库是 AGPL-3.0 + Commons Clause。App Store 版本有 Pro 订阅（多账号、存储、实时日志、WAF 等），但自己克隆下来编译时加上 `OPENSOURCE_UNLOCKED` 编译条件就能零成本解锁全部功能，只是需要自建 OAuth Client。\n\nAndroid 版（Kotlin + Jetpack Compose）也在同一个仓库里，功能已经和 iOS 对齐，目前可以从官网直接下载 APK。\n",
+    "created_at": "2026-08-30T18:42:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11428"
+  },
+  {
+    "id": 11427,
+    "title": "【开源自荐】newtab01：基于书签目录的新标签页，允许以分组或者分屏的形式打开目录下的链接",
+    "content": "项目地址：https://github.com/lingyired/newtab01\nChrome store： https://chromewebstore.google.com/detail/newtab01-bookmark-driven/nlecfkdndodablijmfcjbnannkgmpegj\n\nnewtab01：基于书签目录的新标签页，允许以分组或者分屏的形式打开目录下的链接\n\n不是把完整的书签作为新标签的内容，而是维护几个 for 新标签页的书签目录即可。比如我在书签中自己定义了 start，work 等目录。\n\n然后拖拽到新标签页中的一列即可。\n\n\n![newtab01](https://github.com/lingyired/newtab01/raw/main/extension-previews/newtab.png)\n\n然后针对所有的目录，都可以以 chrome 分组的形式一键打开\n\n![newtab01 分组](https://github.com/lingyired/newtab01/raw/main/extension-previews/open%20as%20tab%20group.png)\n\n或者打开分屏（适用于 2-4 个链接的目录）\n\n![newtab01 分组](https://github.com/lingyired/newtab01/raw/main/extension-previews/open%20in%20split%20view.png)\n![newtab01 分组](https://github.com/lingyired/newtab01/raw/main/extension-previews/split%20view.png)\n\n内置 12 个高质量主题，均支持暗色和亮色模式\n\n![newtab01 主题](https://github.com/lingyired/newtab01/raw/main/extension-previews/change%20theme.png)\n\n支持导入 tweakcn 的主题\n\n![newtab01 导入主题](https://github.com/lingyired/newtab01/raw/main/extension-previews/install%20theme.png)\n\n最后：\n\n针对浏览器的新标签页，其实我个人最喜欢的就是简约的列表形式，同时支持鼠标中键快速批量打开多个链接，或者指定目录的链接。\n\n对于很多类似 app Launcher 那样的新标签页，其实不太适合，就好像我想要在新标签页中加入多个 github 项目的话，那么图标的形式就不太好满足了，因为链接的名字我觉得比图标重要。\n\n而且书签 x 新标签页我觉得天然很适合。当然也不能只是把书签直接都展开，有选择性的把部分目录展开是最好的方式。\n\n项目地址：https://github.com/lingyired/newtab01\nChrome store： https://chromewebstore.google.com/detail/newtab01-bookmark-driven/nlecfkdndodablijmfcjbnannkgmpegj\n",
+    "created_at": "2026-08-30T16:47:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11427"
+  },
+  {
     "id": 11426,
     "title": "【开源自荐】Portball",
     "content": "重制了这款我早年开发的游戏（我一直觉得这是个好主意）。一只兔子穿梭于自己不断制造的传送门之间。玩得开心。🐇\n\n直接玩：https://aero.oops.wtf/p/portball\n源码：https://github.com/aeroxy/Portball",
@@ -792,29 +816,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/11327"
-  },
-  {
-    "id": 11326,
-    "title": "【开源自荐】KimiCodeBar：Windows 托盘上的 Kimi Code 用量监控",
-    "content": "## 项目地址\n\nhttps://github.com/JYH1878/KimiCodeBar-Windows\n\n## 一句话介绍\n\nWindows 系统托盘上的 Kimi Code 用量监控：左键看额度，余量不足图标变红并推送系统通知。\n\n## 为什么做这个\n\nKimi Code 的额度是 7 天 + 5 小时双窗口限制，但没有桌面端查看入口，只能反复开网页查。macOS 上已有 KimiCodeBar 解决这个问题，Windows 用户一直没有对应工具，于是经原作者认可做了这个社区移植版。\n\n## 主要功能\n\n- 托盘常驻，左键弹出面板：双窗口已用百分比、剩余量、重置倒计时\n- 低额度红色告警（阈值可调）+ 系统通知\n- 多账号最多 10 个，支持 Kimi、DeepSeek 余额、GLM Coding Plan 三种账号\n- 本地 token 消耗统计，支持 Claude Code / Codex / OpenCode 日志归属\n- 离线缓存、自动更新、CLI 模式可接入 CI/CD\n\nTauri 2 + Rust 开发，安装包不到 5 MB，运行内存约 10–20 MB。MIT 开源。",
-    "created_at": "2026-08-23T16:42:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11326"
-  },
-  {
-    "id": 11325,
-    "title": "【创业日记】我们做了一个AI帮你找人的产品，最后却发现全靠人工",
-    "content": "我们做了一个 AI 帮你找人的产品，最后发现全靠人工\n我们做的是一款用 AI 帮人找人、匹配和自动沟通的产品“连连AI”。\n一开始，我们把希望全部寄托在 AI 身上。\n用户发布需求，AI 自动理解；理解完以后，AI 再从用户池里寻找合适的人，最后让双方的 Agent 自动沟通。\n但产品真正运行起来以后，我们发现了一件很尴尬的事情：只靠 AI，根本不行。根本没法实现功能的闭环。\nAI 可以完成匹配，但它不一定能完成一次真正有效的对接。\n所以最后，我们还是决定自己上。\n\n1.做了一个 AI 产品，我却开始干最脏最累的活\n现在只要有人发布需求，我就会自己去看他到底想找什么，再去用户池里寻找可能合适的人，一个个沟通、一个个对接。\n前段时间，有一个需求方想找 FDE。我人工了解他的需求，再去寻找合适的 FDE，最后把双方对接到了一起。\n如果这个事情很dirty，也很不AI，但后来我发现，这些事情目前还绕不过去。\n\n2.创始人必须先成为产品的人工版本\n用户说自己想找一个 FDE，看起来是一句非常清晰的需求。\nAI 不是不能做，但背后的卡点比我想象中会多得多。甚至我们最大的卡点是一个比较搞笑的东西：对方用户不上线。\n但就是这样一个小的卡点，我们却没法解决，所以我们只能一个个去推，一个个去触达\n要替产品理解需求，替产品判断谁更合适，也要自己看着一次匹配在哪一步成功、又在哪一步失败。\n\n3.创业早期最不应该追求的，可能就是效率\n创业者都喜欢讲效率和规模化。\n但如果你连一个用户的问题都没有真正解决，你即使有一万个用户，其实没有什么意义。\n一个错误的流程被自动化以后，并不会变成正确的流程，只会更快地生产错误结果。\n你需要真的搞清楚所有业务的流程后，自动化才有意义。\n但在 AI 真正学会这件事情之前，我可以先替它把这些脏活、累活全部干一遍。\n没办法，谁让我们是苦逼的OPC。\n\n在产品成为产品之前，创始人自己的人工就是产品。",
-    "created_at": "2026-08-23T15:25:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11325"
-  },
-  {
-    "id": 11324,
-    "title": "【开源自荐】pisesh：Pi coding agent 的会话收藏与搜索 TUI",
-    "content": "pisesh 是一个为 Pi coding agent 打造的终端会话管理 TUI：给会话加星收藏、全文搜索、自定义标题、按项目目录过滤，还支持用 AI 生成标题。单文件 Node 脚本，零依赖。安装 `pi install npm:pisesh` 后在 Pi 里输入 `/sesh` 即可打开。v0.3.0 起会话切换改用 Pi 官方的 ctx.switchSession()，不再嵌套启动第二个 Pi 进程。\n\n- GitHub：https://github.com/Blue-B/pisesh\n- npm：`pi install npm:pisesh`\n- 特性：星标收藏、全文搜索、自定义标题、按项目过滤、AI 标题生成、CJK 宽度对齐、零依赖\n\n![pisesh](https://raw.githubusercontent.com/Blue-B/pisesh/main/assets/screen-list.png)",
-    "created_at": "2026-08-23T14:40:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11324"
   }
 ]
