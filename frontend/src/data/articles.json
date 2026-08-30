@@ -1,5 +1,29 @@
 [
   {
+    "id": 11422,
+    "title": "【开源自荐】DanKS：金山开源的 SOTA 级掼蛋智能体，完整开放三代技术路线（AI/强化学习项目）",
+    "content": "\nDanKS 是金山 AI Product Center 发起的掼蛋 AI 项目，仓库公开了从结构化检索到 PPO 自博弈的完整三代技术路线，配套共享的 108 张牌掼蛋规则引擎和可在线对战的 Demo。\n\n项目地址：https://github.com/Calix-L/DanKS\n在线体验：https://calixlin.com/CardKS/\n\n![DanKS 宣传页](https://raw.githubusercontent.com/Calix-L/DanKS/main/assets/danks-promotional-hero-v2.png)\n\n![在线 Demo 对局预览](https://raw.githubusercontent.com/Calix-L/DanKS/main/assets/danks-online-demo.gif)\n\n## 核心特性\n\n- 三代路线完整可读：V1 结构化检索加 NumPy 选择器，V2 学习型选择加 ONNX 选择器，V3 记忆感知策略加 PPO，逐代可运行可比较\n- SOTA 实战实力：在完整掼蛋晋级赛协议下，面对多种学习型与规则型基线均取得领先结果，实验数据见 CardKS 仓库\n- 全链路实现：覆盖规则引擎、合法动作生成、结构化召回、状态与候选特征、策略与价值网络、PPO 训练、checkpoint 管理与原生 C++ 加速\n- 共享规则引擎可独立使用：`from guandan import Environment` 即可起一桌四人牌局\n- 在线 Demo 支持中英文界面，1 个人类座位对 3 个 Bot 座位\n- 支持 CPU、NVIDIA CUDA 12.8、昇腾 NPU 三类加速后端\n\n## 安装\n\n最短可运行路径（CPU 上跑 V3）：\n\n```bash\ngit clone https://github.com/Calix-L/DanKS.git\ncd DanKS\npython3.11 -m venv .venv\nsource .venv/bin/activate\npython -m pip install --upgrade pip\npython -m pip install -e versions/v3\npython -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu\npython examples/retrieval_quickstart.py --version v3\npython examples/v3_model_smoke.py\n```\n\nWindows PowerShell 请使用 `.venv\\Scripts\\Activate.ps1`。\n\n技术栈：Python 3.10+、PyTorch 2.8、ONNX Runtime、NumPy、pybind11；Apache-2.0 协议。",
+    "created_at": "2026-08-30T09:26:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11422"
+  },
+  {
+    "id": 11421,
+    "title": "【开源自荐】@do-md/core-react：从零写的 30KB Markdown 编辑器内核，不基于 ProseMirror / Slate / Lexical",
+    "content": "利益相关：我是作者。\n\n`@do-md/core-react` 是一个 Markdown 所见即所得编辑器内核，Brotli 压缩后 30 KB+，运行时零依赖（peer 只有 React、React DOM 和 Immer）。\n\n在线编辑demo：https://www.domd.app/editor\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9fb64b6e-5714-4a14-8bfc-215db03a5590\" />\n\n## 背景\n\nProseMirror、Slate、Lexical 这类通用富文本框架，Markdown 只是导入导出格式：编辑发生在各自的富文本模型上，进出都要过一层转换。这个内核反过来，Markdown 文本本身就是编辑时的模型，没有这层转换。\n\n代价是它只做 Markdown，做不了通用富文本。换来的是：\n\n- 20,000 行的 Markdown 文档可以顺滑编辑，不用退回纯文本视图\n- AI 逐 token 吐 Markdown 时，代码围栏没闭合、表格只写了一半，也能实时正确渲染；结束符到了不会闪一下重排\n- 同一段落里的离线并发修改可以合并，不是段落级的后写覆盖\n- 多个编辑器实时同步，带远端光标；远端变更只重放到受影响的节点，不替换整篇文档\n\n## 演示（无需注册）\n\n- 流式写入：https://www.domd.app/playground\n- 离线合并：https://www.domd.app/playground/crdt\n- 实时协同：https://www.domd.app/playground/live\n\n## 仓库\n\nhttps://github.com/do-md/domd\n\n内核源码在 `.packages/@do-md/core`，npm 包是 [@do-md/core-react](https://www.npmjs.com/package/@do-md/core-react)。同一仓库里还有用它做的 DOMD：原生 macOS 应用、Quick Look 预览和一个给 agent 用的 CLI。\n\n许可证分两层：应用层（macOS / Web 应用、插件）是 MIT；内核自 0.11.0 起是 GPL-3.0，并按 GPL 第 7 条附加「小型主体」和「FOSS 许可证」两条例外（0.10.0 及更早是 PolyForm Noncommercial）。",
+    "created_at": "2026-08-30T08:07:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11421"
+  },
+  {
+    "id": 11420,
+    "title": "【开源自荐】chrome-devtools-cli v2.0.0 支持 microsoft edge 了",
+    "content": "edge 本来就是 chromium，协议完全一样，加上 --browser edge 就能连 edge 的 profile，macos linux windows 都支持，channel 也能一起用\n\n不过真正的问题是加了第二个浏览器之后才暴露出来的，之前守护进程只按 uid 区分，第一条命令连上哪个浏览器就锁定哪个，后面再传 --browser 会被直接忽略，你要 edge，它给你 chrome 的结果，还不报错\n\n现在守护进程按 websocket 端点的哈希来区分，chrome、edge、每个 headless 实例各有各的，可以同时跑\n\n顺带加了 list-daemons，能看到每个守护进程的 pid、连的哪个浏览器、跑了多久，kill-daemon 现在只杀你参数指向的那个，杀 edge 不会顺手把 chrome 的干掉，要全清用 --all\n\n还修了个我自己最在意的安全问题，daemon 被 sigkill 之后 pid 文件会留下来，系统可能把这个 pid 分给别的进程，之前 kill-daemon 会直接发信号过去，现在会先确认 socket 上真的有 daemon 在监听，而且整个检查过程加了锁，避免中途有新 daemon 启动\n\n报错也会说清楚是哪个浏览器，不会连 edge 超时却让你去检查 chrome\n\n有一个破坏性改动，所以直接跳大版本，kill-daemon 从全局变成按端点，脚本里想全清的话记得改成 --all\n\n需要 rust 1.89 以上\n\nRepo: [aeroxy/chrome-devtools-cli](https://github.com/aeroxy/chrome-devtools-cli)",
+    "created_at": "2026-08-30T05:25:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11420"
+  },
+  {
     "id": 11419,
     "title": "自荐：ScholarSeed——AI 时代学术论文的确定性质检门禁（41 个工具，纯标准库，零依赖）",
     "content": "向周刊推荐一个开源项目，供挑选。\n\n**ScholarSeed** —— AI 时代学术论文的确定性质检门禁\n\n- 仓库：https://github.com/Morningstar202604/ScholarSeed （GitCode: https://gitcode.com/badhope/ScholarSeed ）\n- 许可证：PolyForm Noncommercial 1.0.0（学习/研究/个人使用免费）\n- 安装：`npm i -g scholarseed` 或直接克隆使用，纯 Python 标准库，零依赖\n\n**它解决什么问题**：现在大量学生和研究者用 AI 辅助写论文，常见的翻车点很具体——编造的参考文献、`p=0.000` 这种统计错误、样本量前后矛盾、图表编号断层、\"研究表明/专家认为\"却不给出处。这些恰恰是编辑和审稿人一眼就抓的东西。\n\nScholarSeed 提供 41 个确定性检查工具（MCP 服务器 + CLI），全部规则可复现、带行号证据：\n\n- **引文核验**：逐条实时比对 Crossref / Semantic Scholar / OpenAlex，编造的 DOI 当场判 C 级，可作 CI 硬门禁\n- **统计红线**：p 值必须有检验方法名、显著结论必须配效应量、不可能值（|r|>1）直接报错\n- **数字一致性**：互斥分桶加和越界（\"300 人，其中 180…另外 200…\"）、摘要与正文样本数对不上\n- **文献质量**：完整性（缺来源/缺卷期页/GB-T 7714 类型标识）、时效性（全部早于 10 年）、链接可信（占位域名/可选联网验活）\n- **AI 腔自检**：51 条模板短语、模糊归因、句长突发性——定位是\"帮你把稿子改朴素\"，不做\"AI 率\"判决\n\n工程方面：237 个单元测试，阈值经 70 篇 arXiv 真实论文校准，另附一套 31 处埋雷的检测率评测（`benchmarks/persona_eval/`，可复现）。姊妹项目 [AgentSeed](https://github.com/Morningstar202604/AgentSeed) 做代码侧的同类防幻觉门禁。\n\n定位上它不替人写论文，只负责\"交得出去\"这一段。如果与周刊选题方向不合，无妨，感谢阅读。\n",
@@ -792,29 +816,5 @@
     "created_at": "2026-08-23T11:48:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11320"
-  },
-  {
-    "id": 11319,
-    "title": "【开源自荐】FlowGuard：面向 AI / LLM 与微服务的高性能 Python 异步限流熔断库",
-    "content": "### 项目介绍\n- **项目名称**：FlowGuard（PyPI: `flowguard-core`）\n- **项目地址**：https://github.com/yangjinyu050618-hash/flowguard\n- **项目类别**：Python / 开发者工具 / 后端中间件 / AI 基础设施\n- **开源协议**：MIT\n\n### 为什么推荐这个项目？\n在调用 OpenAI、Anthropic、DeepSeek 等第三方大模型 API 或构建高并发微服务时，开发者经常面临频繁的 429 速率限制（RPM/TPM）、偶发 503 报错以及下游抖动导致的雪崩。\n\nFlowGuard 是一个**纯 Python 原生 asyncio 实现、零额外重依赖**的现代化弹性编排库：\n1. **严格 FIFO 令牌桶与滑动窗口**：基于 Future 队列实现，彻底消除轮询开销与竞争倒置，保证严格公平排队。\n2. **探针闸门熔断器**：状态机驱动（Closed / Open / Half-Open），引入半开探针并发硬上限，防止恢复瞬间积压流量砸向故障下游。\n3. **AWS 抖动退避重试**：内置 Full Jitter、Equal Jitter 与 Decorrelated Jitter 重试策略。\n4. **LLM Native 适配器**：针对 OpenAI 客户端提供 RPM/TPM 双轴限流保护与超时防挂死。\n5. **高工程化质量**：行测试覆盖率 92.76%，严格类型标注，内置 Prometheus / JSON 遥测监控。\n\n### 一行代码快速上手\n```bash\npip install flowguard-core\n\nfrom flowguard import guard\n\n@guard(\n    name=\"llm-service\",\n    rate_per_sec=20.0,       # 速率限制 20次/秒\n    burst_capacity=30.0,     # 突发容量 30次\n    max_retries=3,           # 自动重试\n    failure_threshold=5,     # 连续5次失败触发熔断\n    max_concurrent=10,       # 隔板并发限制 10\n)\nasync def call_llm(prompt: str):\n    return f\"Response: {prompt}\"",
-    "created_at": "2026-08-23T09:54:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11319"
-  },
-  {
-    "id": 11318,
-    "title": "【开源自荐】hermes-auto-titler：AI 会话标题自动维护插件，用户手改的标题永不覆盖",
-    "content": "仓库：https://github.com/Vocllum/hermes-auto-titler\n\nAI 会话的标题通常只用首条消息命名一次，之后就停在原地——对话往下走成了几天的部署项目，侧边栏里它还叫第一句话的样子。\n\n这个 Hermes Agent 插件用独立的廉价模型按轮数间隔评估标题是否仍反映对话主线，需要时重写。几个设计点：\n\n- 来源优先级 derived < llm < user：用户手改过的标题永不覆盖\n- 主线优先：评估读开头 + 最近消息 + 完整用户轨迹，小任务带不偏标题\n- 防震荡：改名需连续多次确认才落库\n- 后台线程执行不阻塞对话，每次调用独立记账\n\n125 个单元测试，Apache-2.0。",
-    "created_at": "2026-08-23T09:51:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11318"
-  },
-  {
-    "id": 11317,
-    "title": "【开源自荐】可跨站操作的网页ai代理",
-    "content": "# CAID-浏览器ai副驾\nChromium 扩展（MV3，Chrome + Edge 双发），**零构建**，**不接管**浏览器原生新标签页，在**任意网页**可唤出 AI 副驾；内置插件系统，**侧边栏区块 / 主面板 / 弹窗**，全部可由你手写 JavaScript 插件自由扩展。[仓库地址](https://github.com/CqwqY/CAID)   [官网](https://graduate.dpdns.org/)\n## 副驾侧边栏形态\n<img width=\"960\" height=\"489\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cd306fdd-e017-4e08-a8cd-0252b2eae5ff\" />\n\n## 副驾底部栏形态\n<img width=\"1916\" height=\"970\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d211719d-f5ad-4f7a-aa6f-1ca3d7a6abdb\" />\n\n## 运行示例\nhttps://github.com/user-attachments/assets/8610870a-0b86-47db-a97c-69a5cea6f340\n\n## 项目特性：\n**不占用新标签页**：保留浏览器原生新标签页，零侵入。右键点扩展图标 →「选项」即可打开工作台设置页。\n- **跨页 AI 副驾**：任意网页右下角浮球唤起副驾，MAIN world 运行、绕过页面脚本干扰；选中文本 → 右键 → 附带上文启动。支持 **AI 回答** 与 **Bing 搜索** 双模式、待办、长期记忆。\n- **第六感 · 主动协助**（测试版）：采集行为信号（停留、滚动、复制、搜索）在本地推断意图，弹一条轻量气泡建议，点击即唤醒副驾执行对应任务；内置 17 个场景 + 规则表化可扩展，触发场景逐项可开关。全程本机处理，不记录页面正文。\n- **轻量插件系统**：用 JavaScript 自制功能区块，零部署、代码存你自己浏览器本地。\n- **服务器监控卡片**：填一个可访问地址，零部署探测在线状态与响应速度。\n- **数据本地化**：设置、插件、副驾配置全部存于浏览器本地，不依赖任何后端。\n- **长期记忆**：副驾拥有长期记忆\n## 安装说明：\n1.进入发布链接：`https://github.com/CqwqY/CAID/releases/tag/v0.3.23` ，下载zip后解压 \n2.打开浏览器**开发者模式**\n3.**导入解压缩的拓展**导入即可\n\n## 使用 \n### 1.配置\n双击展开面板，点击上方设置，打开api配置，输入自己的LLM的api\n### 2.呼出\n单击右下角圆球呼出输入栏，双击打开面板。发送信息给副驾即可，运行时会有急停按钮，快捷键 `ctrl+L`\n### 状态解析：\n- **蓝色小球**：正常状态\n- **绿色小球**：运行中\n- **红色小球**：出错\n- **黄色小球**：运行完成\n### 3.拓展界面\n右击上方拓展图标进入拓展选项 _或_ 鼠标悬浮于小球后点击产物页\n插件，记录，以及拓展功能设置将会在此地显示\n## 特色功能使用\n### AI错题本功能\n往往**ai容易犯错**，总拿其没办法，现在你可以通过悬浮球向ai写错题本，ai将会在每次执行任务前查阅错题本，并遵守解决方案\n### AI第六感\n在你长时间浏览网页或者你滑动深度深的话，插件会认为你对此感兴趣，可能会在上方悬浮提示你是否要继续看\n或\n当你在AI所记录的网页浏览，ai则会对当前场景做出建议\n如：在电商网站，识别到电商元素或特定网站，将会询问是否需要总结\n在github等代码平台，会询问是否需要代码分析等等\n**打扰？**\n你可以进行屏蔽某些网站，甚至关闭智能推荐来，，免除打扰\n\n## 已知问题\n对于AI第六感，还在测试中，且目前使用的是代码逻辑判断，**无法对所有网站进行建议**\n对于副驾，副驾的识别能力是从内（源代码）层面看网页，容易**不认得一些图形化按钮**，目前修复方法是**识别css标签**，**但仍会有误**\n且操作由AI执行，一些模糊不清的语句容易使其摸不着头脑\n## License\nMIT",
-    "created_at": "2026-08-23T09:12:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11317"
   }
 ]
