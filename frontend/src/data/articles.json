@@ -1,10 +1,52 @@
 [
   {
+    "id": 11438,
+    "title": "Your AI Agent Doesn’t Need More Prompts. It Needs Skills!",
+    "content": "https://medium.com/gitconnected/your-ai-agent-doesnt-need-more-prompts-it-needs-skills-a5e681b8a020",
+    "created_at": "2026-08-31T15:11:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11438"
+  },
+  {
+    "id": 11437,
+    "title": "【开源自荐】TrustedAIProxy：给大模型 API 中转加一层“可验真的电子封条”",
+    "content": "项目地址：https://github.com/tokenevol/TrustedAIProxy\n项目主页：https://tokenevol.github.io/TrustedAIProxy/\n\n现在使用 OpenAI、Claude 等大模型 API 中转服务的人越来越多，但中转行业一直有一个很难解决的信任问题：\n\n你付钱买的是 GPT-5.6、Claude Opus，实际请求真的发给了这个模型吗？\n\n对于普通用户来说，这件事情实际上很难验证。HTTPS 只能证明“用户连接到了中转站”，却无法证明中转站后面到底连接了哪个模型厂商、有没有偷偷替换模型、修改 Prompt，甚至改写模型返回结果。\n\n所以大家使用中转服务时经常会有一种焦虑：这个模型怎么感觉变笨了？到底是模型的问题，还是中转站“掺假”了？\n\nTrustedAIProxy 就是尝试解决这个问题的一个开源项目。\n\n它的思路不是要求用户“相信中转站”，而是让中转站提供一份可以由用户独立验证的密码学证据，证明：\n\n* 请求实际发往了哪个上游域名；\n* 实际使用了哪个模型；\n* 中转站有没有修改用户的请求内容；\n* 模型厂商返回的内容有没有被中转站修改；\n* 这些证明是不是由预先审核过的可信程序生成，而不是中转站自己临时伪造的。\n\n技术上比较有意思的一点，是**项目创新性地把 HTTPS MITM 代理技术和 Google Confidential Space 可信执行环境结合了起来**。\n\nTrustedAIProxy 作为 HTTPS 代理部署在 New API / One API 等中转站与 OpenAI、Anthropic 等模型厂商之间，通过 MITM 在出口处看到真实的 HTTPS 请求和响应，对关键内容生成 Ed25519 签名；与此同时，签名程序和临时私钥运行在 Google Confidential Space 中，并通过 Remote Attestation 将签名公钥与指定的不可变容器镜像绑定。\n\n这样就可以解决了一个关键问题：如果只是普通代理自己签名，中转站完全可以自己生成一对密钥伪造证明；加入 Confidential Space 后，用户不仅可以验证“签名对不对”，还可以进一步找Google验证 **“这个签名是不是由指定版本的可信程序在可信执行环境里产生的”**，。\n\n另一个比较重要的特点是，它对现有中转系统侵入很小。\n\n对于 New API、One API 或自己开发的中转服务，原则上不需要修改原有业务代码，只需要把原本访问 OpenAI / Anthropic 的 HTTPS 出口流量通过 HTTP_PROXY / HTTPS_PROXY 指向 TrustedAIProxy，并安装对应的内部 CA，就可以在中转层之外增加这套可信验证能力。\n\n可以把它理解成安装在 AI 中转站出口处的一枚**“电子封条”**：\n\n中转站仍然负责转发 API，TrustedAIProxy 负责证明它到底转发了什么。\n\n项目目前已经支持 OpenAI Chat Completions、OpenAI Responses、Anthropic Messages、AWS Bedrock Invoke / Converse 等接口，并提供了客户端独立验签和 Google Confidential Space Attestation 验证流程。\n\n如果大模型 API 中转未来越来越像 CDN、支付网关一样成为基础设施，我觉得“中转是否可信、模型是否真实”可能也会逐渐从一个靠商家信誉解决的问题，变成一个可以通过密码学和可信计算直接验证的问题。\n\n<img width=\"1261\" height=\"739\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ae1f324b-b007-4cd4-8ea9-49762295ce25\" />",
+    "created_at": "2026-08-31T15:10:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11437"
+  },
+  {
+    "id": 11436,
+    "title": "【工具自荐】RemoveText.video：在线去除视频文字，保留完整画幅",
+    "content": "\n[RemoveText.video](https://removetext.video/) 是一个在线视频文字和硬字幕清理工具，可以框选要去除的区域，保留完整画幅，无需安装剪辑软件。\n\n<img width=\"1740\" height=\"971\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/454203ec-9c1a-40de-b182-60180a8721bd\" />\n\n视频已经导出，字幕、日期或宣传文字已经烧录进画面，但想重新使用素材时，原来的剪辑工程可能找不到了。直接裁掉字幕会损失画面，盖一块色块又比较突兀。这个工具主要就是为这类场景准备的。\n\n除了文字和硬字幕，也支持清理 Logo 和水印。\n\n### 使用方式\n\n1. 选择视频，先在浏览器本地预览。\n2. 框选要清理的文字或标记。\n3. 确认后上传并处理，完成后下载视频。\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a1f02314-6d70-43cf-a8d8-2f16c6367e68\" />\n\n### 特点\n\n- **保留完整画幅**：不靠裁剪去掉字幕，按原始画面尺寸处理，最高支持 4K。\n- **手动框选为主**：适合清理固定位置的文字、旧角标；也提供自动移除模式，文字自动模式主要面向画面底部的常规字幕。\n- **支持常见格式**：MP4、MOV、WebM，单个文件不超过 100 MB。\n\n效果会受背景细节和运动情况影响，复杂场景可能留下修补痕迹，自动模式也可能漏检，建议先用一小段素材试一下。\n\n欢迎试用，也欢迎反馈清理效果和操作流程中遇到的问题。",
+    "created_at": "2026-08-31T14:15:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11436"
+  },
+  {
+    "id": 11435,
+    "title": "【工具自荐】产品图抠背景太慢？我做了个工具",
+    "content": "周末折腾了一个小工具： https://bgly.net/\n\n# **bgly 是什么**\n----------\n\n主要是抠图用的，譬如说你上传一张产品图，可以给你扣得出透明背景色图，比较适合做 logo 设计、电商抠图用。\n\n目前支持的功能：\n- 一键抠图\n- 免登录使用\n- API （需付费）\n\n暂时只做了这么个 MVP ，其实还想加 **批量** 操作来着，但是周末时间有限就没做，想看看市场反馈。\n\n![bgly hero]( https://cdn.bgly.net/uploads/landing/bgly.net%20hero.jpeg)\n# **效果展示**\n\n**使用前**：\n![before]( https://cdn.bgly.net/uploads/landing/home/skincare-before.png)\n\n**使用后**：\n ![after]( https://cdn.bgly.net/uploads/landing/home/skincare-after.png)\n \n\n\n希望大家可以体验并给点意见～",
+    "created_at": "2026-08-31T11:39:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11435"
+  },
+  {
+    "id": 11434,
+    "title": "谁在招人？（2026年9月）",
+    "content": "这里是免费的程序员招聘服务。\n\n如果你们团队正在招人，欢迎把招聘信息发在这个帖子里面。请简要描述，岗位名称、工作地点、岗位要求、团队简介、联系方式等等。\n\n## 发帖规则\n\n请遵守以下规则，违者（很可能）被拉黑。\n\n1. 同一团队招聘多个岗位，请写在一起，不要分成多个部分张贴。\n\n2. **必须披露招聘公司的名称，禁止匿名招聘。**\n \n3. 谢绝中介和猎头发帖。\n \n4. 不得发布与招聘无关的内容，且不得对公司或岗位进行评论或抱怨。\n\n有意应聘的读者，请直接与发帖人联系。\n\n## 历史帖\n\n程序员的招聘往往长期有效，大家别忘了查看上月的岗位。\n\n- 2026年：[8月](https://github.com/ruanyf/weekly/issues/10950)， [7月](https://github.com/ruanyf/weekly/issues/10517)，[6月](https://github.com/ruanyf/weekly/issues/10147)，[5月](https://github.com/ruanyf/weekly/issues/9815)，[4月](https://github.com/ruanyf/weekly/issues/9454)，[3月](https://github.com/ruanyf/weekly/issues/9088)，[2月](https://github.com/ruanyf/weekly/issues/8882)，[1月](https://github.com/ruanyf/weekly/issues/8591)\n- 2025年：[12月](https://github.com/ruanyf/weekly/issues/8332)，[11月](https://github.com/ruanyf/weekly/issues/8003)，[10月](https://github.com/ruanyf/weekly/issues/7832)，[9月](https://github.com/ruanyf/weekly/issues/7674)，[8月](https://github.com/ruanyf/weekly/issues/7408)，[7月](https://github.com/ruanyf/weekly/issues/7169)，[6月](https://github.com/ruanyf/weekly/issues/6965)，[5月](https://github.com/ruanyf/weekly/issues/6771)，[4月](https://github.com/ruanyf/weekly/issues/6443)，[3月](https://github.com/ruanyf/weekly/issues/6189)，[2月](https://github.com/ruanyf/weekly/issues/6012)，[1月](https://github.com/ruanyf/weekly/issues/5830)\n- 2024年：[12月](https://github.com/ruanyf/weekly/issues/5610)，[11月](https://github.com/ruanyf/weekly/issues/5445)，[10月](https://github.com/ruanyf/weekly/issues/5253)，[9月](https://github.com/ruanyf/weekly/issues/5090)， [8月](https://github.com/ruanyf/weekly/issues/4911)，[7月](https://github.com/ruanyf/weekly/issues/4743)，[6月](https://github.com/ruanyf/weekly/issues/4550)，[5月](https://github.com/ruanyf/weekly/issues/4390)，[4月](https://github.com/ruanyf/weekly/issues/4204)，[3月](https://github.com/ruanyf/weekly/issues/4075)，[2月](https://github.com/ruanyf/weekly/issues/4002)，[1月](https://github.com/ruanyf/weekly/issues/3814)\n- 2023年：[12月](https://github.com/ruanyf/weekly/issues/3684)，[11月](https://github.com/ruanyf/weekly/issues/3599)，[10月](https://github.com/ruanyf/weekly/issues/3529)，[9月](https://github.com/ruanyf/weekly/issues/3425)，[8月](https://github.com/ruanyf/weekly/issues/3324)，[7月](https://github.com/ruanyf/weekly/issues/3222)，[6月](https://github.com/ruanyf/weekly/issues/3157)，[5月](https://github.com/ruanyf/weekly/issues/3091)，[4月](https://github.com/ruanyf/weekly/issues/3022)，[3月](https://github.com/ruanyf/weekly/issues/2960)，[1月～2月](https://github.com/ruanyf/weekly/issues/2827)\n- 2022年：[12月](https://github.com/ruanyf/weekly/issues/2771)，[11月](https://github.com/ruanyf/weekly/issues/2715)，[10月](https://github.com/ruanyf/weekly/issues/2666)，[9月](https://github.com/ruanyf/weekly/issues/2599)，[8月](https://github.com/ruanyf/weekly/issues/2542)，[7月](https://github.com/ruanyf/weekly/issues/2483)，[6月](https://github.com/ruanyf/weekly/issues/2426)，[5月](https://github.com/ruanyf/weekly/issues/2356)，[4月](https://github.com/ruanyf/weekly/issues/2309)，[3月](https://github.com/ruanyf/weekly/issues/2234)，[2月](https://github.com/ruanyf/weekly/issues/2188)，[1月](https://github.com/ruanyf/weekly/issues/2139)\n- 2021年：[12月](https://github.com/ruanyf/weekly/issues/2092)，[11月](https://github.com/ruanyf/weekly/issues/2032)，[10月](https://github.com/ruanyf/weekly/issues/1980)，[9月](https://github.com/ruanyf/weekly/issues/1913)，[8月](https://github.com/ruanyf/weekly/issues/1870)，[7月](https://github.com/ruanyf/weekly/issues/1826)，[6月](https://github.com/ruanyf/weekly/issues/1784)，[5月](https://github.com/ruanyf/weekly/issues/1747)，[4月](https://github.com/ruanyf/weekly/issues/1709)，[3月](https://github.com/ruanyf/weekly/issues/1652)，[2月](https://github.com/ruanyf/weekly/issues/1629)，[1月](https://github.com/ruanyf/weekly/issues/1580)\n- 2020年：[12月](https://github.com/ruanyf/weekly/issues/1520)，[11月](https://github.com/ruanyf/weekly/issues/1473)，[9月-10月](https://github.com/ruanyf/weekly/issues/1392)，[7月-8月](https://github.com/ruanyf/weekly/issues/1315)，[5月-6月](https://github.com/ruanyf/weekly/issues/1206)，[4月](https://github.com/ruanyf/weekly/issues/1148)，[3月](https://github.com/ruanyf/weekly/issues/1106)， [1月-2月](https://github.com/ruanyf/weekly/issues/983)\n- 2019年：[12月](https://github.com/ruanyf/weekly/issues/983)，[9月-11月](https://github.com/ruanyf/weekly/issues/798)，[8月](https://github.com/ruanyf/weekly/issues/692)",
+    "created_at": "2026-08-31T09:17:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11434"
+  },
+  {
     "id": 11433,
     "title": "【网站自荐】ScriptSpool — 把你的代码变成动态视频、GIF动图",
     "content": "**软件名称**\n\nScriptSpool\n\n**应用平台**\n\nWeb 端\n\n**推荐类型**\n\n开发者自荐\n\n**一句简介**\n\n一个在浏览器里把代码转换成动态视频和图片的小工具，粘贴代码、选择主题和动画，调整速度后即可导出 MP4、GIF、PNG 或 SVG。\n\n**应用简介**\n\n平时做开发教程或者录短视频，经常需要把一段代码做成动态效果。\n\n直接录屏不太好看，使用完整的视频剪辑软件又有点麻烦。\n\n我在网上也看了一些类似的工具和项目，有些做得还行，但用下来功能比较有限。\n\n所以就想着做一个自己真正会用的：\n\n**粘贴代码 → 选择样式 → 调整动画 → 导出。**\n\nScriptSpool 最开始只是一个很简单的代码打字动画工具，后来我又慢慢加入了逐字、逐行播放，以及主题、窗口样式、速度控制和多种导出格式。\n\n**主要特点：**\n\n* **代码动画**：支持逐字打字和逐行播放。\n\n* **速度控制**：可以调整打字速度、暂停和播放节奏。\n\n* **多种主题**：提供不同代码高亮主题、字体和背景。\n\n* **窗口样式**：可以模拟常见的代码编辑器窗口外观。\n\n* **视频导出**：支持 MP4、GIF。\n\n* **图片导出**：支持 PNG、SVG，也可以生成长截图。\n\n* **浏览器运行**：编辑、渲染和导出都在浏览器中完成。\n\n* **代码不上传**：代码不会上传到服务器进行处理。\n\n* **无需注册**：打开网页就可以直接使用。\n\n### 为什么做这个？\n\n其实就是做自己的视频演示时遇到的一个小问题。\n\n我只是想让一段代码【像正在被写出来】一样出现在视频里。\n\n结果发现，如果自己用剪辑软件做，调整动画、时间轴这些东西实在有点麻烦。\n\n后来又找了一些现成工具，发现很多功能比较简单。\n\n于是就想着：\n\n**能不能做一个专门解决这件小事的工具？**\n\n所以有了 ScriptSpool。\n\n还有一些辅助功能，比如，**结对房间**，基于 P2P 实时一起写代码。同步片段、聊天、冲刺计时 —— 无需账号。\n\n### 适合什么场景？\n\n* 制作开发教程\n\n* 制作抖音、小红书、 YouTube Shorts等短视频\n\n* 给代码演示增加动态效果\n\n* 制作技术分享配图\n\n* 制作课程中的代码动画\n\n* 给博客、文档制作代码截图\n\n* 不想打开复杂视频剪辑软件，只想快速做一段代码动画\n\n### 使用体验\n\n打开网页 → 粘贴代码 → 选择主题和动画 → 调整速度 → 预览 → 导出。\n\n整个过程都在浏览器完成，代码不会上传到服务器进行处理，所以你的代码是安全的。\n\n# 产品截图\n\n![首页截图](https://pichostimg.56mall.cn/2026/08/31/20260831112914_4d65f425.webp)\n![编辑器页面](https://pichostimg.56mall.cn/2026/08/31/20260831112916_2373f130.webp)\n\n逐字代码效果：https://screenapp.io/app/v/h60Zm5T7mX\n\n**在线使用：**  https://scriptspool.pixzens.com",
     "created_at": "2026-08-31T03:42:21Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11433"
   },
   {
@@ -12,7 +54,9 @@
     "title": "【开源自荐】ATBClone: macOS 应用多开引擎",
     "content": "### 项目地址： \nhttps://github.com/aitobox/ATBClone\n\n### DMG下载\nhttps://github.com/aitobox/ATBClone/releases\n\n### 介绍\n🚀 ATBClone 是一个专为 macOS 设计的现代化应用程序多开（Multi-Instancing）与分身管理引擎。可以实现诸如Chrome浏览器，微信，Codex等工具的应用分身多开；支持独立数据隔离、独立网络代理（HTTP / SOCKS5）、自动化规则匹配、重签名与沙盒解除\n\n### ✨ 核心特性\n\n- 📦 **双引擎克隆架构 (Dual-Engine Cloning Mechanism)**：\n  - **硬克隆 (Hard Clone)**：面向原生/社交与独立架构应用（微信、QQ、Telegram、AI 客户端、Chrome、Edge、Arc 等）。完整复制 App Bundle，修改 `Info.plist` 与 Bundle Identifier，通过二进制劫持启动脚本注入独立 `HOME` / `TMPDIR` 数据目录，支持按需剥离 App Sandbox 沙盒限制，并完成 Ad-hoc 重新签名。\n  - **软克隆 (Soft Clone)**：面向现代代码编辑器与浏览器（Cursor、VS Code、Firefox、Brave、Tor、Zed 等）。生成轻量级启动器包装（Wrapper Bundle），自动注入 `--user-data-dir` / `--profile` 参数与独立代理环境变量。\n- 🔍 **智能应用探测 (App Prober)**：遇到未预设规则的任意 macOS 应用程序时，自动分析其 Mach-O 架构、Frameworks 与代码签名沙盒权限，动态决定软/硬克隆策略并提取推荐规则。\n- 🌐 **独立网络代理 (Isolated Network Proxies)**：为每个分身实例配置独立的 HTTP 或 SOCKS5 代理（支持认证），与系统主网络及母体应用互不干扰。\n- 📑 **规则引擎 (Recipe Engine)**：内置 33+ 常用应用与 AI Agent 工具分身规则，支持通过 `~/ATBClone/recipes/` 本地优先级覆盖自定义规则。\n- 🪄 **交互式向导 (Interactive Wizard)**：全流程引导式 CLI，支持终端拖拽 `.app` 路径、自动命名递增、自定义数据目录与快捷代理配置。\n- 🔄 **生命周期管理**：查看已有分身（`list`）、主应用升级后一键重克隆并保留用户数据（`update`）、安全删除分身（`remove` 支持 `--with-data` / `--keep-data` 与交互确认）。\n- 🛡️ **安全与提权机制**：默认克隆至 `~/Applications` 无需 root/sudo 权限；如需写入系统级 `/Applications` 采用原生单次 `osascript` 授权提权；严格使用 `shlex.quote` 保证路径转义安全。\n\n### 截图\n\n<img width=\"2062\" height=\"1552\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f72b8f9f-4530-40c8-b101-d98a9af47c8f\" />",
     "created_at": "2026-08-31T03:25:12Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11432"
   },
   {
@@ -20,7 +64,9 @@
     "title": "【工具自荐】AutoPiano 3D钢琴网站：在AI加持下，一周实现了3D钢琴网站应用",
     "content": "## 背景\n之前在Bilibili网站看到up主“老师好，我是何同学”创作的魔法钢琴，钢琴机械结构喷出气泡，扰动蓝眼泪水藻生物，发出蓝色光芒，从而实现魔法可视化效果，实现了大自然和工程的巧妙结合，效果非常惊艳。\n\n于是乎就萌发了想法，想要把这种效果做成3D网页可视化版本，让大家都能亲自去体验感受下，让音乐净化心灵。\n\n在这个AI愈发发达的时代，AI似乎代替人类完成了太多事情，从文字、图片、代码，再到视频、游戏、音乐。人类剩余的想象和创作空间似乎被AI一步步压缩，所剩无几。也许我们要时不时停下来，在奋斗路途中小憩一下，聆听音乐，创造音乐，勿让AI的土壤覆灭生活的花朵。\n\n## 体验地址\nhttps://autopiano.cn/3d\n\n## 功能\n1、完整的three.js 三角钢琴场景，实现了键盘、键盘盖、钢琴盖板、箱体、琴弦、音板、踏板等各种部件。\n2、完整的发声效果，多种可选择乐器和音色，200多首音乐，实现midi解析及自动播放。\n3、环境光、氛围光、聚光灯等多种光照效果，支持光照跟随换肤功能变化。\n4、6种钢琴特效：红色眼泪、蓝色眼泪、音轨线、气泡、花瓣、音符。\n5、2种舞台特效：几何、烟花。\n6、钢琴键位修改 + 连接外部midi键盘。\n\n\n## 截图\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7be77a87-fc70-4136-9b6f-56bdeaae18be\" />\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a83e1047-1e1e-42ac-bb17-ea46599113a9\" />\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9cf194b2-92a7-422d-8d8b-5b71d165efae\" />\n",
     "created_at": "2026-08-31T03:20:23Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11431"
   },
   {
@@ -36,7 +82,9 @@
     "title": "【工具自荐】Apolu：追踪自己的 App 在 175 个 App Store 的榜单排名、评论与真实收入",
     "content": "### 项目地址\n\n- 官网：https://apolu.app\n- App Store：https://apps.apple.com/app/apolu/id6796458283（iPhone / iPad / Mac，免费下载，含订阅）\n\n### 项目简介\n\nApolu 追踪你自己的 App 在全球 App Store 的榜单排名。\n\nApp Store 只让开发者看到自己所在的那一个国家/地区，而全世界有 175 个。三个平台、26 个分类、免费榜和付费榜加起来是两万多张实时榜单，Apple 没有任何接口能回答「我的 App 现在排第几」——只能有人一直抓、一直记着。Apolu 做的就是这件事：读 Apple 的榜单页面（每张 200 名），30 个大市场每小时一次，其余每四小时一次。\n\n- **排名**：175 个国家/地区 × iPhone/iPad/Mac × 免费榜/付费榜，带历史曲线\n- **提醒**：新进入一个国家、冲进前十、单次上升二十名这类值得看一眼的变化，不是每日流水账\n- **评论**：所有国家的新评论汇进一个收件箱，低分优先，可以直接在 App 内回复\n- **收入**：用你自己创建的 App Store Connect API 密钥读你自己的销售报表——真实的开发者分成，按日按国家，不是第三方估算模型\n- 界面 13 种语言，iPhone / iPad / Mac / Apple Watch / 小组件\n\n主屏小组件：在榜国家与各自名次、当日收入、待回复评论。\n\n![Apolu 的排名、收入、评论小组件](https://r2-orange-cloud.chatiro.app/IMG_0418.PNG)\n\n上榜之后可以生成一张战绩海报，图片或短视频，App 内所有语言都支持。\n\n![Apolu 生成的上榜海报](https://r2-orange-cloud.chatiro.app/apolu-achievement-6779323783-2.png)\n\n免费可以追踪任意数量的 App，看到所有市场的前 25 名，榜单随便浏览；PRO（$6.99/月、$39.99/年、$79.99 买断）解锁完整前 100 名、历史、提醒、评论回复和收入。排名数据完全不需要登录，只有评论和收入需要授权。\n\n顺便说个做的时候才发现的事：`apps.apple.com` 链接里的国家码只是提示，不是指令——Apple 按请求来源判定 storefront，所以你在自己电脑上打开「其他国家」的商品页，看到的其实还是本国的。想知道自己在别的市场排第几，靠手动查是查不出来的。\n\n先说清楚没有的：关键词排名和 ASO 建议都没做；也不估算任何 App（包括竞品）的下载量和收入。App 闭源。\n\n这是作者本人自荐。\n",
     "created_at": "2026-08-30T18:44:03Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11429"
   },
   {
@@ -44,7 +92,9 @@
     "title": "【开源自荐】Orange Cloud：iPhone / iPad / Apple Watch 上的 Cloudflare 客户端，OAuth 登录不用粘贴 API Token",
     "content": "官网：https://o-c.do\nGitHub：https://github.com/chen2he/orange-cloud\nApp Store：https://apps.apple.com/app/id6779323783\n\n<img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/01_dashboard.jpg\" width=\"215\" alt=\"概览\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/02_analytics.jpg\" width=\"215\" alt=\"流量分析\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/06_workers_tail.jpg\" width=\"215\" alt=\"Workers 实时日志\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/05_daynight.jpg\" width=\"215\" alt=\"昼夜主题\" />\n\nOrange Cloud 是一款用 Swift / SwiftUI 写的 Cloudflare 第三方管理客户端，支持 iPhone、iPad 和 Apple Watch。和其他客户端不同的是，它走 Cloudflare 官方的 OAuth 2.0 + PKCE 登录，不用去后台建 API Token 再复制粘贴；授权时可以按 scope 勾选要给哪些权限，Token 只存在 Keychain 里，多个 Cloudflare 账号可以同时登录切换。\n\n功能大致覆盖了日常会用到的部分：域名与 DNS 记录增删改查、缓存规则、批量重定向、负载均衡、一键代理开关；Workers 与 Pages 的查看、创建部署和实时日志流（类似 wrangler tail，配合锁屏和灵动岛的实时活动）；R2 / D1 / KV（R2 还挂进了系统「文件」App，可以直接当网盘用）；WAF 自定义规则、Zero Trust、Tunnel 状态；流量分析走 GraphQL Analytics API，用 Swift Charts 画图。另外有主屏 / 锁屏小组件、控制中心控件、Siri 快捷指令和 Spotlight 索引，界面是自己做的一套「晨昏」设计（天色随本地时间变化，见上图第四张），本地化了 13 种语言。\n\n仓库是 AGPL-3.0 + Commons Clause。App Store 版本有 Pro 订阅（多账号、存储、实时日志、WAF 等），但自己克隆下来编译时加上 `OPENSOURCE_UNLOCKED` 编译条件就能零成本解锁全部功能，只是需要自建 OAuth Client。\n\nAndroid 版（Kotlin + Jetpack Compose）也在同一个仓库里，功能已经和 iOS 对齐，目前可以从官网直接下载 APK。\n",
     "created_at": "2026-08-30T18:42:56Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11428"
   },
   {
@@ -92,7 +142,9 @@
     "title": "【开源自荐】DanKS：金山开源的 SOTA 级掼蛋智能体，完整开放三代技术路线（AI/强化学习项目）",
     "content": "\nDanKS 是金山 AI Product Center 发起的掼蛋 AI 项目，仓库公开了从结构化检索到 PPO 自博弈的完整三代技术路线，配套共享的 108 张牌掼蛋规则引擎和可在线对战的 Demo。\n\n项目地址：https://github.com/Calix-L/DanKS\n在线体验：https://calixlin.com/CardKS/\n\n![DanKS 宣传页](https://raw.githubusercontent.com/Calix-L/DanKS/main/assets/danks-promotional-hero-v2.png)\n\n![在线 Demo 对局预览](https://raw.githubusercontent.com/Calix-L/DanKS/main/assets/danks-online-demo.gif)\n\n## 核心特性\n\n- 三代路线完整可读：V1 结构化检索加 NumPy 选择器，V2 学习型选择加 ONNX 选择器，V3 记忆感知策略加 PPO，逐代可运行可比较\n- SOTA 实战实力：在完整掼蛋晋级赛协议下，面对多种学习型与规则型基线均取得领先结果，实验数据见 CardKS 仓库\n- 全链路实现：覆盖规则引擎、合法动作生成、结构化召回、状态与候选特征、策略与价值网络、PPO 训练、checkpoint 管理与原生 C++ 加速\n- 共享规则引擎可独立使用：`from guandan import Environment` 即可起一桌四人牌局\n- 在线 Demo 支持中英文界面，1 个人类座位对 3 个 Bot 座位\n- 支持 CPU、NVIDIA CUDA 12.8、昇腾 NPU 三类加速后端\n\n## 安装\n\n最短可运行路径（CPU 上跑 V3）：\n\n```bash\ngit clone https://github.com/Calix-L/DanKS.git\ncd DanKS\npython3.11 -m venv .venv\nsource .venv/bin/activate\npython -m pip install --upgrade pip\npython -m pip install -e versions/v3\npython -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu\npython examples/retrieval_quickstart.py --version v3\npython examples/v3_model_smoke.py\n```\n\nWindows PowerShell 请使用 `.venv\\Scripts\\Activate.ps1`。\n\n技术栈：Python 3.10+、PyTorch 2.8、ONNX Runtime、NumPy、pybind11；Apache-2.0 协议。",
     "created_at": "2026-08-30T09:26:44Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11422"
   },
   {
@@ -772,45 +824,5 @@
     "created_at": "2026-08-25T01:50:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11337"
-  },
-  {
-    "id": 11336,
-    "title": "【文章自荐】为什么 Google 最后放弃了 TCP？",
-    "content": "TCP 越成功，越没人敢改它。\nTCP 真正“死掉”的，不是生命，而是它作为一个可以自由进化的协议，正在失去自由。\n而 QUIC 的意义，也不只是“比 TCP 更快”，它更像互联网对一个现实问题的回答：既然旧路越来越难走，那就换一条路。\n\n原文地址：\n[https://mp.weixin.qq.com/s/rMwzlgt7d1zCl4FSWjq6-w](url)",
-    "created_at": "2026-08-25T00:15:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11336"
-  },
-  {
-    "id": 11335,
-    "title": "开源项目推荐：CCTV Camera Database — 开源监控摄像头规格数据库",
-    "content": "推荐一个自己做的开源项目：CCTV Camera Database\n\n\n这是一个开源的监控摄像头规格数据库，目前收录 3400+ 个摄像头型号，包含：\n- 详细规格参数\n- 真实可用的 RTSP 地址\n- ONVIF 相关信息\n- 现成可直接复制的配置（JSON 格式，CC0 授权）\n\n<img width=\"1100\" height=\"747\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aa8ae12d-a511-4c73-8c15-4bee5190a0db\" />\n\n起因是给 Home Assistant / Frigate 配摄像头时，各家的参数、RTSP 地址、ONVIF 细节都很分散，也难以查证。\n于是整理成一个可以直接查询、直接复制配置的数据库，方便自建监控和智能家居用户选型与接入。\n\n数据开放（CC0），支持社区提交，并有验证流程保证准确性。\n\n网站：https://cctv-database.com\nGitHub：https://github.com/ch-bas/cctv-camera-database",
-    "created_at": "2026-08-24T19:20:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11335"
-  },
-  {
-    "id": 11334,
-    "title": "【项目自荐】zlogic：面向国产大模型优化的 AI Agent Harness",
-    "content": "# zlogic：面向国产大模型优化的 AI Agent Harness\n\nzlogic 是一个面向开发者的 **AI Agent Harness**，定位类似 Codex / Claude Code，但针对 **DeepSeek 等国产大模型进行了深度优化**。\n\n项目地址：https://github.com/zlogic-labs/zlogic\n官网：https://zlogic.run/\n\n## 预览\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9a27b0ae-9550-4afb-97d3-0dfabe7ed4c2\" />\n\n<img width=\"1920\" height=\"1009\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d12f02b5-a016-4b4d-aec3-7af09f68b79d\" />\n\n几个比较有意思的特点：\n\n* **DeepSeek 深度优化**：围绕 DeepSeek 的模型特性优化 Agent Loop、Context、Tool Calling 等核心流程，充分发挥国产模型能力。\n* **国产模型支持**：除 DeepSeek 外，也支持通义千问、智谱 GLM 等国内模型，同时支持 OpenAI、Anthropic、Gemini 以及自定义 Provider。\n* **Agent Harness**：提供完整的 Agent Runtime、Context 管理、Tool System、Skills、MCP、权限控制和自主任务执行能力。\n* **Codex 风格体验**：CLI 和桌面端都强调类似 Codex 的简洁交互体验，同时提供更完整的可视化 UI。\n* **速度快**：针对 Agent 高频调用场景进行了大量优化，减少不必要的 Context 和工具开销，让 Agent 执行更加流畅。\n* **透明 Reasoning**：可以实时查看模型 Think / Reasoning、Tool Call、执行过程以及最终结果。\n* **Token / Cost 统计**：实时统计 Token 使用量和 API 成本，方便比较不同模型和 Provider 的实际使用成本。\n* **MCP + Skills**：支持 MCP 协议和可扩展 Skills，让 Agent 可以快速接入外部工具和自定义能力。\n\nzlogic 使用 Rust 构建核心 Agent Runtime，并提供 CLI 和桌面端。\n\n如果你最近正在关注 **AI Agent、Agent Harness、DeepSeek Coding Agent、国产大模型应用**，可以试试 zlogic。\n\nGitHub：https://github.com/zlogic-labs/zlogic\n官网：https://zlogic.run/\n",
-    "created_at": "2026-08-24T12:22:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11334"
-  },
-  {
-    "id": 11333,
-    "title": "【项目自荐】Arrow Puzzle：我用 Vibe Coding 做的第一个小游戏",
-    "content": "大家好，这是我用 Vibe Coding 做的第一个小游戏。\n\n玩法是观察箭头之间的阻挡关系，按正确顺序把它们全部移走。目前有 50 关，还有每天更新的 Daily Challenge。\n\n不用下载和登录，电脑、手机都能直接玩：\n\nhttps://arrowpuzzle.app/\n\n第一次做小游戏，还有很多可以改进的地方，欢迎大家试玩和提建议。",
-    "created_at": "2026-08-24T10:42:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11333"
-  },
-  {
-    "id": 11332,
-    "title": "【工具自荐】告别一张张手动存！我做了一个支持「批量下载100个视频封面」的社媒缩略图神器",
-    "content": "大家好！今天想给大家自荐一款我最近开发的实用提效工具：TTThumbnail。\n🔗 传送门：[[https://www.ttthumbnail.pro/](https://www.ttthumbnail.pro/)]\n平时做自媒体运营、短视频剪辑、做爆款封面拆解或者竞品分析时，大家肯定经常需要保存各大平台的视频封面/缩略图来做参考或素材积累。\n但市面上传统的封面下载工具大多非常鸡肋——要么一次只能粘贴一个链接，几十个视频点到手抽筋；要么画质被严重压缩，根本拿不到高清原图，甚至文不对题塞满广告。\n为此，我把核心功能打磨到了极致，做了这款专注**“极致批量 & 超清提取”**的缩略图神器。\n🌟 核心亮点：真正的高效批量提取\n⚡ 支持单次批量下载 100 个视频封面：不用再一条条反复复制粘贴！直接把一堆视频链接批量粘贴进去，一键全部解析，省时省力到飞起。\n📐 全分辨率/尺寸自由可选：提供多种尺寸与画质选项（高清原图 HD、最高画质、标准尺寸等），满足不同设计和参考需求。\n📦 一键打包 ZIP 下载：解析完成直接一键打包下载全部封面图，告别逐张保存，自动规范命名。\n🌐 多平台主流社媒支持：支持各大主流社媒平台视频的封面与缩略图抓取。\n🛠 当然，基础体验依然纯粹好用：\n极简无广告干扰：界面干净清爽，即开即用，拒绝繁琐步骤与弹窗套路。\n跨设备免安装：纯网页端工具，电脑端、手机端浏览器都能丝滑使用。\n💡 你可以用它来做什么？\n🎬 自媒体/短视频创作者：批量抓取同行对标账号的封面，快速搭建爆款封面灵感库。\n📊 社媒运营/数据分析师：一键导出竞品近期所有视频封面，用于做视觉风格与排版拆解。\n🎨 UI / 平面设计师：快速获取高清封面参考图，分析爆款配图与文案构图。\n📦 素材收藏爱好者：高清无水印批量留存喜欢的博主或偶像的精美封面。\n目前 TTThumbnail 已经正式上线，完全免费！ 非常欢迎大家体验使用。\n大家可以去试试批量提取的效果。如果在使用中遇到任何 Bug、有不支持的链接格式，或者有想要增加的社媒平台与功能，随时在帖子下方留言告诉我，我会认真看每一条反馈并持续迭代优化！\n欢迎来玩：👉 [[TT Thumbnail Pro](https://www.ttthumbnail.pro/)]",
-    "created_at": "2026-08-24T09:13:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11332"
   }
 ]
