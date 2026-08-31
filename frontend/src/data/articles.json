@@ -1,5 +1,37 @@
 [
   {
+    "id": 11433,
+    "title": "【网站自荐】ScriptSpool — 把你的代码变成动态视频、GIF动图",
+    "content": "**软件名称**\n\nScriptSpool\n\n**应用平台**\n\nWeb 端\n\n**推荐类型**\n\n开发者自荐\n\n**一句简介**\n\n一个在浏览器里把代码转换成动态视频和图片的小工具，粘贴代码、选择主题和动画，调整速度后即可导出 MP4、GIF、PNG 或 SVG。\n\n**应用简介**\n\n平时做开发教程或者录短视频，经常需要把一段代码做成动态效果。\n\n直接录屏不太好看，使用完整的视频剪辑软件又有点麻烦。\n\n我在网上也看了一些类似的工具和项目，有些做得还行，但用下来功能比较有限。\n\n所以就想着做一个自己真正会用的：\n\n**粘贴代码 → 选择样式 → 调整动画 → 导出。**\n\nScriptSpool 最开始只是一个很简单的代码打字动画工具，后来我又慢慢加入了逐字、逐行播放，以及主题、窗口样式、速度控制和多种导出格式。\n\n**主要特点：**\n\n* **代码动画**：支持逐字打字和逐行播放。\n\n* **速度控制**：可以调整打字速度、暂停和播放节奏。\n\n* **多种主题**：提供不同代码高亮主题、字体和背景。\n\n* **窗口样式**：可以模拟常见的代码编辑器窗口外观。\n\n* **视频导出**：支持 MP4、GIF。\n\n* **图片导出**：支持 PNG、SVG，也可以生成长截图。\n\n* **浏览器运行**：编辑、渲染和导出都在浏览器中完成。\n\n* **代码不上传**：代码不会上传到服务器进行处理。\n\n* **无需注册**：打开网页就可以直接使用。\n\n### 为什么做这个？\n\n其实就是做自己的视频演示时遇到的一个小问题。\n\n我只是想让一段代码【像正在被写出来】一样出现在视频里。\n\n结果发现，如果自己用剪辑软件做，调整动画、时间轴这些东西实在有点麻烦。\n\n后来又找了一些现成工具，发现很多功能比较简单。\n\n于是就想着：\n\n**能不能做一个专门解决这件小事的工具？**\n\n所以有了 ScriptSpool。\n\n还有一些辅助功能，比如，**结对房间**，基于 P2P 实时一起写代码。同步片段、聊天、冲刺计时 —— 无需账号。\n\n### 适合什么场景？\n\n* 制作开发教程\n\n* 制作抖音、小红书、 YouTube Shorts等短视频\n\n* 给代码演示增加动态效果\n\n* 制作技术分享配图\n\n* 制作课程中的代码动画\n\n* 给博客、文档制作代码截图\n\n* 不想打开复杂视频剪辑软件，只想快速做一段代码动画\n\n### 使用体验\n\n打开网页 → 粘贴代码 → 选择主题和动画 → 调整速度 → 预览 → 导出。\n\n整个过程都在浏览器完成，代码不会上传到服务器进行处理，所以你的代码是安全的。\n\n# 产品截图\n\n![首页截图](https://pichostimg.56mall.cn/2026/08/31/20260831112914_4d65f425.webp)\n![编辑器页面](https://pichostimg.56mall.cn/2026/08/31/20260831112916_2373f130.webp)\n\n逐字代码效果：https://screenapp.io/app/v/h60Zm5T7mX\n\n**在线使用：**  https://scriptspool.pixzens.com",
+    "created_at": "2026-08-31T03:42:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11433"
+  },
+  {
+    "id": 11432,
+    "title": "【开源自荐】ATBClone: macOS 应用多开引擎",
+    "content": "### 项目地址： \nhttps://github.com/aitobox/ATBClone\n\n### DMG下载\nhttps://github.com/aitobox/ATBClone/releases\n\n### 介绍\n🚀 ATBClone 是一个专为 macOS 设计的现代化应用程序多开（Multi-Instancing）与分身管理引擎。可以实现诸如Chrome浏览器，微信，Codex等工具的应用分身多开；支持独立数据隔离、独立网络代理（HTTP / SOCKS5）、自动化规则匹配、重签名与沙盒解除\n\n### ✨ 核心特性\n\n- 📦 **双引擎克隆架构 (Dual-Engine Cloning Mechanism)**：\n  - **硬克隆 (Hard Clone)**：面向原生/社交与独立架构应用（微信、QQ、Telegram、AI 客户端、Chrome、Edge、Arc 等）。完整复制 App Bundle，修改 `Info.plist` 与 Bundle Identifier，通过二进制劫持启动脚本注入独立 `HOME` / `TMPDIR` 数据目录，支持按需剥离 App Sandbox 沙盒限制，并完成 Ad-hoc 重新签名。\n  - **软克隆 (Soft Clone)**：面向现代代码编辑器与浏览器（Cursor、VS Code、Firefox、Brave、Tor、Zed 等）。生成轻量级启动器包装（Wrapper Bundle），自动注入 `--user-data-dir` / `--profile` 参数与独立代理环境变量。\n- 🔍 **智能应用探测 (App Prober)**：遇到未预设规则的任意 macOS 应用程序时，自动分析其 Mach-O 架构、Frameworks 与代码签名沙盒权限，动态决定软/硬克隆策略并提取推荐规则。\n- 🌐 **独立网络代理 (Isolated Network Proxies)**：为每个分身实例配置独立的 HTTP 或 SOCKS5 代理（支持认证），与系统主网络及母体应用互不干扰。\n- 📑 **规则引擎 (Recipe Engine)**：内置 33+ 常用应用与 AI Agent 工具分身规则，支持通过 `~/ATBClone/recipes/` 本地优先级覆盖自定义规则。\n- 🪄 **交互式向导 (Interactive Wizard)**：全流程引导式 CLI，支持终端拖拽 `.app` 路径、自动命名递增、自定义数据目录与快捷代理配置。\n- 🔄 **生命周期管理**：查看已有分身（`list`）、主应用升级后一键重克隆并保留用户数据（`update`）、安全删除分身（`remove` 支持 `--with-data` / `--keep-data` 与交互确认）。\n- 🛡️ **安全与提权机制**：默认克隆至 `~/Applications` 无需 root/sudo 权限；如需写入系统级 `/Applications` 采用原生单次 `osascript` 授权提权；严格使用 `shlex.quote` 保证路径转义安全。\n\n### 截图\n\n<img width=\"2062\" height=\"1552\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f72b8f9f-4530-40c8-b101-d98a9af47c8f\" />",
+    "created_at": "2026-08-31T03:25:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11432"
+  },
+  {
+    "id": 11431,
+    "title": "【工具自荐】AutoPiano 3D钢琴网站：在AI加持下，一周实现了3D钢琴网站应用",
+    "content": "## 背景\n之前在Bilibili网站看到up主“老师好，我是何同学”创作的魔法钢琴，钢琴机械结构喷出气泡，扰动蓝眼泪水藻生物，发出蓝色光芒，从而实现魔法可视化效果，实现了大自然和工程的巧妙结合，效果非常惊艳。\n\n于是乎就萌发了想法，想要把这种效果做成3D网页可视化版本，让大家都能亲自去体验感受下，让音乐净化心灵。\n\n在这个AI愈发发达的时代，AI似乎代替人类完成了太多事情，从文字、图片、代码，再到视频、游戏、音乐。人类剩余的想象和创作空间似乎被AI一步步压缩，所剩无几。也许我们要时不时停下来，在奋斗路途中小憩一下，聆听音乐，创造音乐，勿让AI的土壤覆灭生活的花朵。\n\n## 体验地址\nhttps://autopiano.cn/3d\n\n## 功能\n1、完整的three.js 三角钢琴场景，实现了键盘、键盘盖、钢琴盖板、箱体、琴弦、音板、踏板等各种部件。\n2、完整的发声效果，多种可选择乐器和音色，200多首音乐，实现midi解析及自动播放。\n3、环境光、氛围光、聚光灯等多种光照效果，支持光照跟随换肤功能变化。\n4、6种钢琴特效：红色眼泪、蓝色眼泪、音轨线、气泡、花瓣、音符。\n5、2种舞台特效：几何、烟花。\n6、钢琴键位修改 + 连接外部midi键盘。\n\n\n## 截图\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7be77a87-fc70-4136-9b6f-56bdeaae18be\" />\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a83e1047-1e1e-42ac-bb17-ea46599113a9\" />\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9cf194b2-92a7-422d-8d8b-5b71d165efae\" />\n",
+    "created_at": "2026-08-31T03:20:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11431"
+  },
+  {
+    "id": 11430,
+    "title": "【开源自荐】EnvMate：给开发、测试和生产环境加上醒目标识的浏览器扩展",
+    "content": "**项目地址：** https://github.com/knktc/EnvMate\n\n**在线安装：**\n\n- Chrome：https://chromewebstore.google.com/detail/envmate/mccdmjfnlkkjmcioapnehkmpgkblhiei\n- Edge：https://microsoftedge.microsoft.com/addons/detail/enighdiiommdnommodoninagjanhiogb\n- Firefox：https://addons.mozilla.org/addon/envmate/\n\nEnvMate 是一款支持 Chrome、Edge 和 Firefox 的浏览器扩展，帮助开发者区分开发、测试、预发布和生产环境。\n\n很多内部系统的页面看起来非常相似，浏览器标签页也容易混在一起。EnvMate 会根据 URL 规则识别当前环境，并在页面上显示醒目的环境徽标、水印或标题前缀，降低误操作风险。\n\n**主要功能：**\n\n- 支持通配符、URL 前缀和正则表达式匹配环境\n- 支持角标、圆角标签、呼吸灯和水印等环境标记\n- 支持在浏览器标签页标题前添加环境名称\n- 支持按分组管理多个产品或业务线的环境\n- 支持为每个环境保存多个测试账号，并在用户主动操作后快速填充\n- 支持从文件或 URL 导入配置，也可以导出选中的环境配置\n\n**截图：**\n\n水印和徽标示例：\n<img width=\"3588\" height=\"1958\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b1cb67bc-1dff-4e89-88d3-f9350387a679\" />\n\n配置界面：\n<img width=\"1420\" height=\"1950\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/013ee37a-44ab-40e4-a599-7bdba6f64127\" />\n\n分组管理：\n<img width=\"866\" height=\"814\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e631f9f8-815b-4adb-9218-3187b0ccafd0\" />",
+    "created_at": "2026-08-31T01:05:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11430"
+  },
+  {
     "id": 11429,
     "title": "【工具自荐】Apolu：追踪自己的 App 在 175 个 App Store 的榜单排名、评论与真实收入",
     "content": "### 项目地址\n\n- 官网：https://apolu.app\n- App Store：https://apps.apple.com/app/apolu/id6796458283（iPhone / iPad / Mac，免费下载，含订阅）\n\n### 项目简介\n\nApolu 追踪你自己的 App 在全球 App Store 的榜单排名。\n\nApp Store 只让开发者看到自己所在的那一个国家/地区，而全世界有 175 个。三个平台、26 个分类、免费榜和付费榜加起来是两万多张实时榜单，Apple 没有任何接口能回答「我的 App 现在排第几」——只能有人一直抓、一直记着。Apolu 做的就是这件事：读 Apple 的榜单页面（每张 200 名），30 个大市场每小时一次，其余每四小时一次。\n\n- **排名**：175 个国家/地区 × iPhone/iPad/Mac × 免费榜/付费榜，带历史曲线\n- **提醒**：新进入一个国家、冲进前十、单次上升二十名这类值得看一眼的变化，不是每日流水账\n- **评论**：所有国家的新评论汇进一个收件箱，低分优先，可以直接在 App 内回复\n- **收入**：用你自己创建的 App Store Connect API 密钥读你自己的销售报表——真实的开发者分成，按日按国家，不是第三方估算模型\n- 界面 13 种语言，iPhone / iPad / Mac / Apple Watch / 小组件\n\n主屏小组件：在榜国家与各自名次、当日收入、待回复评论。\n\n![Apolu 的排名、收入、评论小组件](https://r2-orange-cloud.chatiro.app/IMG_0418.PNG)\n\n上榜之后可以生成一张战绩海报，图片或短视频，App 内所有语言都支持。\n\n![Apolu 生成的上榜海报](https://r2-orange-cloud.chatiro.app/apolu-achievement-6779323783-2.png)\n\n免费可以追踪任意数量的 App，看到所有市场的前 25 名，榜单随便浏览；PRO（$6.99/月、$39.99/年、$79.99 买断）解锁完整前 100 名、历史、提醒、评论回复和收入。排名数据完全不需要登录，只有评论和收入需要授权。\n\n顺便说个做的时候才发现的事：`apps.apple.com` 链接里的国家码只是提示，不是指令——Apple 按请求来源判定 storefront，所以你在自己电脑上打开「其他国家」的商品页，看到的其实还是本国的。想知道自己在别的市场排第几，靠手动查是查不出来的。\n\n先说清楚没有的：关键词排名和 ASO 建议都没做；也不估算任何 App（包括竞品）的下载量和收入。App 闭源。\n\n这是作者本人自荐。\n",
@@ -154,7 +186,7 @@
   {
     "id": 11410,
     "title": "【开源自荐】Ops Admin：基于 Go + Vue 3 的一体化运维管理平台",
-    "content": "- 项目地址：https://github.com/qishu321/go-devops-mimi\n- 语言类别：Go / Vue 3 / DevOps / Kubernetes\n- 项目标题：Ops Admin——面向中小型运维团队的一体化运维管理平台\n\n## 项目描述\nOps Admin 是一个基于 Go + Vue 3 开发的开源一体化运维管理平台，面向个人运维场景和中小型运维团队，围绕“资产、环境、应用、监控、执行”组织平台能力。\n\n平台将主机与数据库资产、Kubernetes 多集群管理、批量运维、作业编排、监控告警、消息通知以及 CI/CD 构建发布整合到统一工作台中，并支持通过 SSH 跳板网关访问隔离网络内的主机、数据库和 Kubernetes API，降低分散维护多个运维工具带来的使用与管理成本。\n\n- 截图\n<img width=\"2536\" height=\"1160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d8418287-6c6f-4aad-b065-f8eb6e095101\" />",
+    "content": "- 项目地址：https://github.com/qishu321/ops-admin\n- 语言类别：Go / Vue 3 / DevOps / Kubernetes\n- 项目标题：Ops Admin——面向中小型运维团队的一体化运维管理平台\n\n## 项目描述\nOps Admin 是一个基于 Go + Vue 3 开发的开源一体化运维管理平台，面向个人运维场景和中小型运维团队，围绕“资产、环境、应用、监控、执行”组织平台能力。\n\n平台将主机与数据库资产、Kubernetes 多集群管理、批量运维、作业编排、监控告警、消息通知以及 CI/CD 构建发布整合到统一工作台中，并支持通过 SSH 跳板网关访问隔离网络内的主机、数据库和 Kubernetes API，降低分散维护多个运维工具带来的使用与管理成本。\n\n- 截图\n<img width=\"2536\" height=\"1160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d8418287-6c6f-4aad-b065-f8eb6e095101\" />",
     "created_at": "2026-08-28T09:14:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11410"
@@ -780,41 +812,5 @@
     "created_at": "2026-08-24T09:13:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11332"
-  },
-  {
-    "id": 11330,
-    "title": "【开源自荐】TreeClip：一键识别、批量复制网页同类文本",
-    "content": "项目地址：https://github.com/bluishwu/TreeClip\n文档：https://treeclip.dev/docs\nChrome商店：https://chrome.google.com/webstore/detail/bipfdahpmodcpkfpmcjnpkmdjhffbnad\n自荐：\n1. 项目的思路新颖，网页具有结构，故利用结构特征识别同类元素，批量提取其中文本。\n2. 应用场景广泛：潜在场景有商品列表、搜索结果、文章目录、排行榜、下拉菜单和论坛帖子等。除批量复制外，还可快速统计同类元素的数量，例如通过批量选择帖子标题，查看论坛当前页面的帖子数。\n3. 功能完整，项目成熟度较高：项目于 2025 年 4 月发布初版，近期完成了代码重构、性能优化、UI 与 Logo 升级，并上线官网及完整文档。目前支持点选、框选、同类选择、层级切换、层级绑定、块内字段提取、文本清理、输出格式设置及多种面板形态。\n4. 前景广泛：网页结构复杂多样，同类元素识别的准确性和兼容性仍可持续改进。希望通过开源吸引更多用户和开发者参与，共同完善识别规则、适配更多网页场景。\n\n感谢！\n\n---\n\n# TreeClip 文本批量选择器\n\n<p align=\"center\">\n  <a href=\"https://treeclip.dev\"><img src=\"https://img.shields.io/badge/官网-treeclip.dev-2DA44E?style=flat-square&amp;labelColor=1F7A38&amp;logo=googlechrome&amp;logoColor=white\" alt=\"TreeClip 官网\"></a>\n  <a href=\"https://chrome.google.com/webstore/detail/bipfdahpmodcpkfpmcjnpkmdjhffbnad\"><img src=\"https://img.shields.io/badge/Chrome-插件-4285F4?style=flat-square&amp;labelColor=1E5FBA&amp;logo=googlechrome&amp;logoColor=white\" alt=\"Chrome 插件\"></a>\n  <a href=\"https://treeclip.dev/docs\"><img src=\"https://img.shields.io/badge/说明文档-D97706?style=flat-square&amp;logo=readthedocs&amp;logoColor=white\" alt=\"TreeClip 说明文档\"></a>\n  <a href=\"LICENSE\"><img src=\"https://img.shields.io/badge/MIT-6B7280?style=flat-square&amp;logo=readthedocs&amp;logoColor=white\" alt=\"MIT License\"></a>\n  <a href=\"#english\"><img src=\"https://img.shields.io/badge/English-0969DA?style=flat-square&amp;logo=googletranslate&amp;logoColor=white\" alt=\"Switch to English\"></a>\n</p>\n\nhttps://github.com/user-attachments/assets/4e84e613-b10f-49ac-8ec2-3f196cac0f7f\n\n<a id=\"中文\"></a>\n\n**TreeClip 是一款网页文本批量选择工具。点选、框选文字，一键扩展同类文本，批量复制到剪贴板。**\n\n难以选中结构相似却排版混乱的网页文本？厌倦了逐条复制？想一次提取网页中分散或同类的文字？\n\nTreeClip 提供了多种灵活的文本选择方式（同类选择、点选、框选），并结合层级切换、层级绑定、块内字段、自定义输出格式等功能，大幅提升您从网页复制信息的效率。网页表格、下拉菜单、商品列表、文章目录、排行榜……更多场景待您探索。\n\n## 快速开始\n\n1. 按住 <kbd>Shift</kbd>，点击目标文字，或者按住鼠标左键拖出选框。\n2. 选中一个文本块后按 <kbd>F</kbd>，批量加入网页中结构相同的文字。\n3. 按 <kbd>Ctrl</kbd> + <kbd>C</kbd>，按照当前输出设置复制所有已选文本。\n4. 按 <kbd>Esc</kbd>，清除全部选择并退出选择模式。\n\n## 基础选择\n\n### 同类选择\n\n选择一处文本，再按 <kbd>F</kbd> 快速选择页面中结构相同的内容。\n\n**适用场景：** 复制结构相同、类型一致的内容，例如搜索结果、商品标价、贴文标题等。\n\n#### 使用方法\n\n1. 按住 <kbd>Shift</kbd> 并点击任意一个目标文本。选中两个结构相同的文本时，TreeClip 也会主动提示。\n2. 按下键盘上的 <kbd>F</kbd>，或点击面板中的 **选择同类**。\n3. 工具会识别页面上结构相同的文本，并将它们添加到当前选择中。\n\n### 多点选择\n\n按住 <kbd>Shift</kbd> 连续点击，选择页面上不同位置的多段文字；再次点击可以取消选择。\n\n**适用场景：** 同时复制分散在页面不同位置、结构可能不同的多个文本块，类似在 Excel 中选择不相邻单元格。\n\n#### 使用方法\n\n1. 按住 <kbd>Shift</kbd>。\n2. 依次点击需要的每一个文本块，也可以结合 <kbd>F</kbd> 批量选择。\n3. 所有被点击的文本都会加入当前选择。\n\n### 区域框选\n\n按住 <kbd>Shift</kbd> 并拖动鼠标，一次选择矩形区域内的文字。\n\n**适用场景：** 快速选中一个可视化矩形区域内所有可见、有意义的文本。\n\n#### 使用方法\n\n1. 按住 <kbd>Shift</kbd>。\n2. 按住鼠标左键并拖动，绘制一个覆盖目标文字的矩形选框。\n3. 松开鼠标，选框内的有效文本会自动加入当前选择。\n\n## 进阶选择\n\n### 层级切换\n\n切换当前层级，扩大或缩小选取范围，精确控制最终复制的内容。\n\n**适用场景：** 选择结果包含多余文字，或没有包含完整内容。例如只选中了商品名称，但希望同时复制名称、价格和描述。\n\n#### 使用方法\n\n1. 点击操作面板中的 **更多**，展开 **文本所在层级**。\n2. 点击相应的层级标签（如 `div#main`），切换到该层级。\n\n### 层级绑定\n\n让同类识别同时参考文本自身层级和外层层级。\n\n**适用场景：** 只选择特定父层级下的同类文本，忽略页面上类型相同但父层级不同的内容。\n\n#### 使用方法\n\n1. 在操作面板中展开 **文本所在层级**。\n2. 按住 <kbd>Shift</kbd>，点击需要绑定的层级；绑定后会以橙色标记。\n3. 再次执行同类扩展，工具只会选择位于相同父层级下的匹配文本。\n4. 再次按住 <kbd>Shift</kbd> 点击该层级，即可取消绑定。\n\n### 块内字段\n\n从复合文本块中，进一步提取标题、价格、链接文字等特定字段。\n\n**适用场景：** 当前选中的内容包含多个字段，但只需要其中一部分。\n\n#### 使用方法\n\n1. 检测到可提取字段时，**块内字段**按钮会变为绿色高亮。\n2. 点击 **块内字段**，面板会展示可单独提取的字段和文本预览。\n3. 点击需要的字段，将当前选择切换到对应文本。\n\n## 输出设置\n\n设置文本的分隔方式和清理规则，也可以去除重复内容或开启实时复制。\n\n### 分隔方式\n\n- 换行\n- 空格\n- 逗号\n\n### 文本清理\n\n- **文本空格：** 移除每个文本片段内部的所有空白字符。\n- **代码：** 移除常见代码块模式，如 `{...}`、`(...)`、`<...>`、`[...]`。\n- **符号：** 移除常见的标点和数学符号。\n- **英文：** 移除英文字符。\n- **中文：** 移除中文字符。\n- **数字：** 移除数字字符。\n\n### 复制行为\n\n- **去除重复项：** 自动删除复制内容完全重复的条目。\n- **实时复制：** 选择内容发生变化时自动更新剪贴板，无需每次手动点击“复制”。\n\n## 快捷键配置\n\n文本选择、同类选择和复制的快捷键可以自定义。以下为默认设置。\n\n| 操作 | 快捷键 | 说明 |\n| --- | --- | --- |\n| 单点选择 | <kbd>Shift + 点击</kbd> | 选择或取消单个文本块，可连续选择 |\n| 区域框选 | <kbd>Shift + 拖拽</kbd> | 拖出矩形，一次选择区域内的多个文本块 |\n| 同类选择 | <kbd>F</kbd> | 按网页结构扩展当前选择 |\n| 复制 | <kbd>Ctrl + C</kbd> | 按照当前输出设置复制所有已选文本 |\n| 清除选择 | <kbd>Esc</kbd> | 清除所有选择并退出选择模式 |\n| 父层级 | <kbd>Shift + ↑</kbd> | 向上移动，选择父层级 |\n| 子层级 | <kbd>Shift + ↓</kbd> | 向下移动，选择子层级 |\n| 进入块内字段 | <kbd>Shift + →</kbd> | 进入块内字段并提取子文本 |\n| 退出块内字段 | <kbd>Shift + ←</kbd> | 退出块内字段 |\n| 层级绑定 | <kbd>Shift + 点击层级</kbd> | 开启或关闭父层级绑定 |\n\n## 文本分组\n\n1. **点击分组：** 切换当前正在操作的文本分组。\n2. **Shift + 点击分组：** 移除该分组中的全部文本。\n\n## 多形态面板\n\n面板支持详情、标准和极简三种形态。它可以自由拖动，也能吸附在页面边缘，避免遮挡正在查看的内容。\n\n### 切换面板形态\n\n- 轻点顶部短横线，在详情和当前 **收起态**（标准或极简）之间切换。\n- 上下拖动顶部短横，依次切换详情、标准和极简模式。\n- 轻点 **已选文本块**，切换 **收起态** 为标准或极简模式。\n\n### 移动面板\n\n- 拖动顶部短横两侧的空白区域，移动整个选择面板。\n- 靠近页面左侧、右侧或底部释放时，面板会自动吸附。\n\n## 安装\n\n### Chrome 应用商店\n\n从 [Chrome Web Store](https://chrome.google.com/webstore/detail/bipfdahpmodcpkfpmcjnpkmdjhffbnad) 安装 TreeClip。\n\n### 从源码加载\n\n1. 下载或克隆本仓库。\n2. 在 Chrome 中打开 `chrome://extensions/`。\n3. 开启页面右上角的“开发者模式”。\n4. 点击“加载已解压的扩展程序”，选择仓库根目录。\n\n完整说明请访问 [TreeClip 中文文档](https://treeclip.dev/docs)。如有问题，请联系 [contact@treeclip.dev](mailto:contact@treeclip.dev)。\n\n---",
-    "created_at": "2026-08-24T07:35:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11330"
-  },
-  {
-    "id": 11329,
-    "title": "【开源自荐】CozyClay：先在浏览器里把镜头定死，再拿去生成视频",
-    "content": "项目地址：https://github.com/NomaDamas/CozyClay\n\nSeedance 2.5 一条 1080p 30 秒大约 17 美元。镜头偏一点，整条作废，钱再付一次。提示词也装不下脑子里的场面。\n\n所以我做了个浏览器预演工具：灰模搭场景、摆角色、拉相机和剪辑点，确认后再交给视频模型。开源，本机一行 `npx cozyclay` 就能跑。\n\n想把拆散在好几个软件里的预演流程收进一个标签页。",
-    "created_at": "2026-08-24T07:35:33Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11329"
-  },
-  {
-    "id": 11328,
-    "title": "【开源自荐】ZKE：AI 原生的 Kubernetes 云操作环境",
-    "content": "# 项目地址\n\nhttps://github.com/togettoyou/zke\n\n# 项目简介\n\nZKE（Z Kubernetes Engine）是一个 AI 原生的 Kubernetes 云操作环境，把分散在数据中心、私有云、公有云和边缘的 Kubernetes 集群，收敛成一个可以直接操作的云环境：Agent 从每个集群主动向 Server 建立 QUIC/mTLS 出向连接，Console 用桌面、窗口和 Dock 组织能力，AIOps 作为常驻其中的运维 Agent，与人共用同一套权限、同一条通道和同一份审计。\n\nZKE Console 采用了一套运行在浏览器中的桌面式交互界面。集群接入管理、组织与资源、访问与审计、容器服务、终端和 AIOps 都以独立应用存在。用户可以从桌面或 Dock 打开应用，在窗口之间切换、最小化、最大化，并保存自己的桌面布局和工作作用域。这种设计并不只是视觉模仿。多集群运维很少是一条从上到下的单页面流程。排查一个异常工作负载时，操作者可能同时需要资源详情、事件、Pod 日志和终端。多窗口让这些上下文保留在同一个工作空间中，最小化终端窗口也不会被当成关闭会话。\n\n# AI 原生意味着什么\n\n模型是这个环境里的一等操作者，用和人一样的通路做事：\n\n- **共用一套权限。** 模型不持有 kubeconfig，也不直连 Kubernetes API Server；每次工具调用重新校验发起用户当时的 RBAC，上限永远是发起人自己的权限，审批模式只决定谁来确认。\n- **共用一条通路。** 每次读写都由会话固定 Cluster 的 Agent 定域执行，和你在桌面上点出来的是同一套判权与审计。工具目录由 Server 维护，模型不能安装或定义新工具。\n- **先预演再提交。** 伸缩、回滚与 Manifest Apply/Delete 先做服务端 DryRun 并给出有界差异，提交只认预检返回的 `preview_id`，批准后重验权限、重跑 DryRun，幂等键防重复写入。\n- **每一步留痕。** 模型调用、工具参数与返回、授权判断、审批与压缩写入 append-only 轨迹，可筛选、回放和导出；结论里的每条证据都能在当前桌面打开对应窗口并定位到那个对象或那张图。\n- **是 Dock 上的一个 App。** 关掉应用窗口任务会继续跑，重开从上次位置接着继续。\n\n# 预览视频\n\nhttps://github.com/user-attachments/assets/f06f2229-48c2-4911-8e72-8cf60975d28f\n\n# 预览图\n\n| AIOps 对话 | AIOps 轨迹 |\n| --- | --- |\n| ![模型自主调用工具、敏感操作等待审批、结论携带证据引用](https://github.com/togettoyou/zke/raw/main/docs/images/product-preview/aiops-conversation.png) | ![输入 / 模型 / 工具三条时间轨与运行统计](https://github.com/togettoyou/zke/raw/main/docs/images/product-preview/aiops-trajectory.png) |",
-    "created_at": "2026-08-24T02:43:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11328"
-  },
-  {
-    "id": 11327,
-    "title": "【开源自荐】InvoiceFlowAI：邮件发票批量整理与 Excel 报销汇总",
-    "content": "项目地址：https://github.com/EthanYoQ/Invoice-Downloader\n\nInvoiceFlowAI 是一个开源的电子发票整理与报销准备工具。连接用户自己的 QQ 或 163 邮箱后，它可以批量收集邮件中的 PDF、OFD、XML 发票和部分发票下载链接，完成 OCR 识别、分类归档，并生成 Excel 汇总。\n\n主要特点：\n\n- 提供 Windows x64 安装版、免安装版和 macOS Apple Silicon 安装包。\n- 邮件和发票文件在本地处理；启用 GLM OCR、视觉识别或 DSH 模型提取时，相应发票图片或 OCR 文本会发送给用户配置的模型服务商。\n- 识别置信度不足的结果进入人工检查目录，不把输出冒充财务、税务或会计结论。\n- 另有独立的 DeepSeek Harness 插件，可从侧边栏运行下载、OCR、归档和 Excel 汇总流程。\n\n流程图：https://raw.githubusercontent.com/EthanYoQ/Invoice-Downloader/main/docs/funnel.svg",
-    "created_at": "2026-08-23T17:23:46Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11327"
   }
 ]
