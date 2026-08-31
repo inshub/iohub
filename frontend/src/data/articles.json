@@ -1,5 +1,21 @@
 [
   {
+    "id": 11440,
+    "title": "# tinystruct framework",
+    "content": "# tinystruct framework\n\n> **版本：** 1.7.29\n> **语言：** Java  \n> **许可证：** Apache License 2.0  \n> **GitHub：** [tinystruct](https://github.com/tinystruct)\n\n\n\n## 简要说明\n\ntinystruct 是一个轻量级 Java 应用框架，支持命令行工具与 Web 接口的统一调用方式。其目标是通过最少的依赖、简洁的设计、模块化扩展，来降低开发复杂度。\n\n在 1.7.29 版本中，对 HTTP 模块（Tomcat / Netty）、模块化结构和上下文管理进行了优化以减轻核心负担。\n\n\n\n## 核心特性\n\n- **最少依赖**：核心库保持轻量，仅引入必要的组件  \n- **统一 `@Action` 调用机制**：命令行与 HTTP 接口共用调用方式  \n- **模块化 HTTP 支持**：可选集成 Tomcat / Netty 模块  \n- **低延迟调用**：方法内部调用减少中间开销  \n- **扩展能力**：支持构建插件 / 生态模块  \n- **适用场景广泛**：适合小型服务、CLI 工具、AI 应用等  \n\n<img width=\"1111\" height=\"757\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/57173ff0-a286-46ef-9000-51e1c53c11fe\" />\n\n\n\n## 生态模块 / 示例项目\n\n下面是一些已有的模块或实例，可作为参考或扩展：\n\n| 模块 / 项目 | 类型 | 功能 / 说明 |\n|--------------|------|----------------------------|\n| `tinystruct-mcp` | MCP 服务端模块 | 基于 tinystruct 实现的 MCP（Model Context Protocol）服务器 |\n| `tinystruct-tomcat-server` | HTTP 模块 | 提供 Tomcat 方式的 HTTP 支持 |\n| `tinystruct-netty-http-server` | HTTP 模块 | 提供 Netty 模式的 HTTP 支持 |\n| `smalltalk` | 应用示例 | 基于 tinystruct 的聊天系统，支持 CLI 与 Web 模式 |\n| `tinystruct-examples` | 示例项目 | 演示 CLI / Web 混合模式使用方法  |\n\n\n\n\n## 快速上手示例\nhttps://github.com/tinystruct/tinystruct\n### 引入依赖（Maven 示例）\n\n```xml\n<dependency>\n  <groupId>org.tinystruct</groupId>\n  <artifactId>tinystruct</artifactId>\n  <version>1.7.29</version>\n  <classifier>jar-with-dependencies</classifier>\n</dependency>\n",
+    "created_at": "2026-08-31T20:38:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11440"
+  },
+  {
+    "id": 11439,
+    "title": "【开源自部署】适合独立开发者，小型SaaS团队，代理运营团队的数据整合+AI情报系统，一键导入流量和收入数据，并让Agent分析数据和给出建议",
+    "content": "一个独立开发者，小型SaaS团队，或者代理运营团队可用的 AI情报系统。\n\n以上这些角色大部分应该都会开发和运营十几个甚至几十个产品。这些产品的各种数据分散在分析工具、支付平台、代码仓库和云基础设施中，每次要把所有数据整体过一次，要经历很长的时间，如果想让AI辅助帮忙把数据整理一遍，还得花时间花心思挨个导出再丢给AI做分析，非常麻烦。\n\n这就是我遇到的问题和痛点。于是我花了很长时间给自己搞了一个系统来解决这些问题，并且慢慢的打磨了很长时间，最近有朋友也有类似的痛点，于是我又花了一段时间，把这个项目开源了，并给这个项目命名为 Dashloom。\n\n<img width=\"2497\" height=\"1835\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/64d6ce8c-240d-4ff2-8e70-c11b0f2f595c\" />\n\n<img width=\"2327\" height=\"1306\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b05721e5-01a3-4847-b1b4-d0c61980f18e\" />\n\nDashloom 会把上述多个数据源的数据标准化到统一的证据层，然后 Dashloom Agent 先通过确定性指标和信号雷达找出值得关注的变化，再让你自己的 OpenAI 兼容模型进行分析，生成带证据引用的洞察、行动建议和定期报告。\n\n又可以作为统一的数据大盘查看和分析数据，又可以通过 Agent 的能力为数据提供分析洞察，行动建议，定期报告，并且还能通过安装各种skill来丰富agent的能力。\n\n<img width=\"2383\" height=\"1139\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/75378094-aa3c-4351-84b5-987ec62722e2\" />\n\n<img width=\"2267\" height=\"1845\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8109fd9c-b445-4e9d-93dc-703b721e46df\" />\n\n支持多个产品的数据隔离，并提供以下几种预设场景的 agent 能力：\n\n独立开发者\nSaaS 收入\nSEO 增长\nCloudflare 运维\n客户报告\n\nAgent 的结论需要引用实际证据，不会把相关性直接描述为因果关系。\n\n<img width=\"2177\" height=\"1546\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8381e744-bd47-4542-bc70-b8649b87f646\" />\n\n开源版本为完全自部署系统，自己部署，接入自己的数据，使用自己的API，没有任何隐私泄露问题。可以根据自己的实际需要来让codex或者cc code帮自己调整功能或者进行二次开发。\n\n<img width=\"2069\" height=\"1849\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/62f541e8-07a9-46b5-b7ca-0178b1896c09\" />\n\n\n\n目前支持的数据源包括：\n- 产品与增长： Google Analytics、Google Search Console、Bing Master\n- 收入与支付： Stripe、Lemon Squeezy、Creem、Polar、Paddle 或者导入自己数据库中的自定义收入数据（这样可以覆盖所有支付渠道）\n- 开发与部署： GitHub、Vercel\n- Cloudflare： Workers、Pages、Queues、R2\n- 数据库与后端： Supabase、Cloudflare D1\n- 自定义数据： Custom REST、手动指标导入、开放摄取 API、TypeScript SDK 和 Connector Worker\n\n<img width=\"2231\" height=\"1338\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bdad4756-95c5-415a-b4d4-f78cecbe5336\" />\n\n\n支持OAuth的平台可以简单配置一下一键接入，有些需要自己搞一下变量和密钥。\n\n开源项目地址和介绍  \n\nhttps://github.com/dashloom-dev/dashloom\nhttps://github.com/dashloom-dev/dashloom/blob/main/README.zh-CN.md\n\n在线cloud版本（还没完善好，免费试用，在关联Google数据提示未认证的位置点击高级，信任即可）：https://dashloom.dev/",
+    "created_at": "2026-08-31T18:21:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11439"
+  },
+  {
     "id": 11438,
     "title": "Your AI Agent Doesn’t Need More Prompts. It Needs Skills!",
     "content": "https://medium.com/gitconnected/your-ai-agent-doesnt-need-more-prompts-it-needs-skills-a5e681b8a020",
@@ -808,21 +824,5 @@
     "created_at": "2026-08-25T04:30:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11339"
-  },
-  {
-    "id": 11338,
-    "title": "【工具自荐】chrome,edge 标签切换插件 3 种缩略图样式 拼音搜索 vim 模式",
-    "content": "SwiftTab Pro 一个免费的浏览器标签切换插件. \n\n特色功能: \n- 3 种缩略图样式\n- 拼音搜索\n- 支持快捷键打开\n- vim 模式\n- 标签批量操作\n- 地址栏增强:  s 搜索历史记录和书签.\n\nChrome:  https://chromewebstore.google.com/detail/swifttab-pro/fdgbickfhnjefknaomamncmcjbfdijdd?authuser=0&hl=zh-CN\nEdge:    https://microsoftedge.microsoft.com/addons/detail/swifttab-pro/cgmnbmmmlaiojjmhgcfhpladmmgcpheg?hl=zh-CN\n\n截图\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fabbc5b8-2104-413e-b20f-7b9fa9816c8b\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/857fdd22-1e32-450e-8f71-224343078700\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e7374683-b019-4f2a-a952-ff2665b6ae44\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/043c690a-8184-44f2-a638-ba41d4fa016c\" />\n",
-    "created_at": "2026-08-25T02:49:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11338"
-  },
-  {
-    "id": 11337,
-    "title": "【开源自荐】Folyn——本地优先、多文件格式、AI Native、支持插件扩展的编辑器",
-    "content": "项目地址：https://linyimin0812.github.io/folyn/\n\ngithub地址：https://github.com/linyimin0812/folyn\n\n一款本地优先的知识管理桌面应用。以 Vault 隔离每一份数据，用一套编辑器容纳 markdown、白板、ER 图、思维导图、富文本编辑器，同时微内核+插件化实现，支持扩展插件实现接入新的文件类型、工具，再把 AI 代理直接接入工作流，编辑效率拉满，最后所有内容始终留本地设备上，安全感满满。\n\n主要特点：\n\n- 提供 Windows，MacOS 安装包。\n\n- 多格式同编辑器：Markdown （带 container 插件：Callout / Card / Tabs / Timeline / Steps / Grid 等）+ 富文本 + CSV/JSON + markmap 思维导 + dbml ER + drawio 架构图 + excalidraw 白板 + graphviz / mermaid / plantuml\n\n ![](https://i.imgur.com/qIz3vCw.png) \n\n- 桌面宠物：驻桌面桌宠，外部脚本/cron/CI 可通过本地 HTTP API 触发气泡通知；全局快捷键触发工作弹窗\n\n ![](https://i.imgur.com/boW3sor.png)\n\n- 全格式预览：Office 、音视频、压缩包、电子书、PPT 、工程图纸，内置预览不跳 App\n\n ![](https://i.imgur.com/CsscvvI.png) \n\n- AI 集成：适配了 6 个 CLI agent — Claude Code / Codex / Gemini CLI / Opencode / Pi Code Agent / Qoder\n\n ![](https://i.imgur.com/pE5JvsG.png)\n\n- 应用内终端：CLI agent 可直接读写当前文档，AI 编辑实时落到编辑器，\"编辑→调用→贴回\"一条流\n\n ![](https://i.imgur.com/ufgPxm2.png) \n\n- 微内核+插件机制：核心保持精简，翻译/日程/Wiki/剪藏/项目分析作为内置插件，支持第三方扩展\n\n ![](https://i.imgur.com/RGajHfO.png)\n\n- Vault 隔离：每个项目独立数据空间，附件/配置/插件全隔离，本地文件系统就是数据源，无云账号",
-    "created_at": "2026-08-25T01:50:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11337"
   }
 ]
