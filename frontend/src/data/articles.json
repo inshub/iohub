@@ -1,5 +1,93 @@
 [
   {
+    "id": 11451,
+    "title": "【开源自荐】英语学习者的网页阅读 AI 助手 ReMarker",
+    "content": "## ReMarker — 英语学习者的网页阅读 AI 助手\n\nReMarker 是一个 Chrome 浏览器扩展，面向网页深度阅读和外语学习的用户。在浏览文章时，可以随时选中文本后进行复制、搜索、发音、查词、翻译、记笔记或划线等操作，可以在管理页面统一管理由此产生的划线、笔记、生词、翻译和页面足迹数据，同时提供基于遗忘曲线的生词间隔复习功能。\n\n**项目仓库**：https://github.com/ex90rts/remarker\n**安装地址**：[Chrome Web Store](https://chromewebstore.google.com/detail/remarker/hdmpdmamklhjagiogicgcfcdpfiilecn)\n\n### 功能特性\n\n- 阅读工具栏：支持复制或使用 Google 搜索选中内容；对词语发音、查词；对长文本翻译或使用五种颜色划线。\n- 基于上下文的 AI 翻译：通过 OpenAI-compatible  LLM 模型，结合页面上下文解释词语或翻译文本；结果会以流式方式实时显示。\n- 划线与笔记：复访页面时恢复划线，可修改颜色、添加笔记，并在管理页集中查看和维护，划线会自动分析 Language Chunks 供学习使用。\n- 生词与翻译：查词结果自动进入生词本，翻译记录单独管理；复访页面时恢复生词下划线，并支持再次翻译。\n- 间隔复习：使用基于遗忘曲线的闪卡生词复习，按“生疏 / 犹豫 / 熟练”自评，自动安排下次复习；扩展角标和 Popup 会显示待复习数量。\n- 学习活动：查看最近六个月的划线、生词和翻译等学习活动，以及今日复习进度。\n- 页面足迹：集中管理划线过、查词过或手动加入的页面，支持筛选、星标、归档和重新打开，也可以作为网络文章收藏夹使用。\n- 导出与备份：划线、生词和翻译可导出为 Obsidian 或 Notion Markdown；支持导入完整 JSON 备份，以及全量和增量 JSON 导出。默认排除敏感配置。\n- 阅读控制：支持全局或按站点启用 ReMarker、控制复制后是否关闭查词面板；网页工具栏和面板会跟随系统深色模式。\n\n### 界面展示\n\n<img width=\"1561\" height=\"909\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/88a001f0-8f71-467f-8d1d-4b20a9efa0f5\" />\n<img width=\"1555\" height=\"988\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/214534be-4715-462b-b8ef-e8937cce7505\" />",
+    "created_at": "2026-09-01T08:42:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11451"
+  },
+  {
+    "id": 11450,
+    "title": "【开源自荐】douyin-account-analysis：抖音账号分析",
+    "content": "# 账号分析（抖音版）\n\n本机运行的开源 Web 工具：粘贴抖音账号链接，拉取公开作品元数据，用你自己的 DeepSeek API Key 生成账号报告和按需作品报告，并导出 PDF / 图片。\n\n使用前请阅读 [免责声明](DISCLAIMER.md) 和 [隐私说明](docs/privacy.md)。\n\n## 功能\n\n- 左侧维护多个账号卡片，点卡片查看报告；支持重新分析和删除\n- 输入抖音主页链接或短链，一次分析出账号报告\n- 拉取最近公开作品（默认 10 条，可输入 1–30，或快捷选 10 / 20 / 30；含标题、标签、点赞/评论/收藏/分享）\n- 点击某条作品，再单独生成该条解读\n- 顶部配置 DeepSeek Key 与抖音 Cookie，保存在浏览器 `localStorage`\n- 引导粘贴 Cookie，或打开本机登录窗口自动回填\n- 导出 PDF（浏览器打印）和 PNG\n\n不做的事：定时同步、SQLite、下载他人视频、点赞评论关注、绕过验证码或风控。\n\n## 界面预览\n\n以下截图使用虚构演示账号与示例数据，不对应真实个人。\n\n添加账号并生成分析报告：\n\n![添加账号并生成分析报告](https://github.com/yizhi-chengzi/douyin-account-analysis/raw/master/docs/images/analyze-progress.png)\n\n查看账号定位、内容支柱、选题策略和作品数据：\n\n![账号分析报告](https://github.com/yizhi-chengzi/douyin-account-analysis/raw/master/docs/images/account-report.png)\n\n## 系统支持\n\n**macOS、Windows、Linux 都可以在本机使用。** 三个系统用同一份代码，但安装方式不同，请只看你自己那一套。\n\n这是本机工具，请在有桌面的电脑上运行，不要部署到云服务器。电脑需要能访问 `douyin.com` 和 `api.deepseek.com`。\n\n不想记命令：先按下面装好 Node.js，再启动。\n\n| 系统 | 怎么启动 |\n|------|----------|\n| Windows | 双击项目里的 `start.cmd` |\n| macOS / Linux | 在项目目录执行 `bash start.sh` |\n\n第一次启动会自动安装依赖，成功后会打开 [http://127.0.0.1:5173](http://127.0.0.1:5173)。**弹出的窗口不要关**，停止时在窗口里按 `Ctrl+C`。\n\n克隆任选一个地址（国内网络优先码云）：\n\n```bash\ngit clone https://github.com/yizhi-chengzi/douyin-account-analysis.git\ngit clone https://gitee.com/yizhi-chengzi/douyin-account-analysis.git\n```\n\n---\n\n## macOS\n\n### 环境\n\n- macOS 13 Ventura 或更高\n- [Google Chrome](https://www.google.com/chrome/)（推荐）。分析账号时工具会在后台调用它，和你平时用 Safari 还是 Chrome 看网页无关\n- **macOS 13 必须安装本机 Chrome**，不能用 Playwright 自带浏览器\n- macOS 14 及以上也可以额外安装 Playwright 自带 Chromium（见下方可选步骤）\n\n### 安装 Node.js\n\n推荐用官网安装包（适合不想用命令行的人）：\n\n1. 打开 [https://nodejs.org/](https://nodejs.org/)\n2. 下载 macOS 的 **LTS** 安装包（20 或更高，当前常见是 22）\n3. 打开 `.pkg`，一路继续直到完成\n4. 打开「终端」（Spotlight 搜「终端」），输入下面这行并回车：\n\n```bash\nnode -v\n```\n\n看到 `v20` 或 `v22` 开头即成功。如果提示 `command not found`，关掉终端再开一次，或重新安装 Node.js。\n\n已经在用 Homebrew 的人也可以：\n\n```bash\nbrew install node\n```\n\n### 安装本工具\n\n先拿到项目文件夹，任选一种：\n\n- **Git：** 打开终端，进入你想放项目的目录后执行：\n\n```bash\ngit clone https://github.com/yizhi-chengzi/douyin-account-analysis.git\ncd douyin-account-analysis\n```\n\n- **ZIP：** 在 GitHub 或 [码云](https://gitee.com/yizhi-chengzi/douyin-account-analysis) 下载 ZIP，解压后，把文件夹拖进终端窗口（会自动填上路径），前面补 `cd ` 再回车。\n\n### 运行\n\n在项目目录执行：\n\n```bash\nbash start.sh\n```\n\n浏览器应自动打开 [http://127.0.0.1:5173](http://127.0.0.1:5173)。没有打开就自己访问这个地址。\n\n等价命令（给习惯 npm 的人）：\n\n```bash\nnpm install\nnpm run dev\n```\n\n可选：macOS 14+ 且没有安装 Chrome 时，再执行一次 `npx playwright install chromium`。**macOS 13 请跳过这一步，只装本机 Chrome。**\n\n---\n\n## Windows\n\n### 环境\n\n- Windows 10 或 Windows 11\n- **系统自带 Microsoft Edge 即可**，不必再装 Chrome；装了 Chrome 也可以\n- 请在 Windows 桌面直接运行。不要放到没有图形界面的 WSL / 服务器里\n\n### 安装 Node.js\n\n1. 打开 [https://nodejs.org/](https://nodejs.org/)\n2. 下载 Windows 的 **LTS** 安装包（`.msi`，20 或更高）\n3. 双击安装。**务必勾选 Add to PATH**\n4. 关掉所有黑色命令行窗口\n5. 按 `Win` 键，搜「cmd」或「命令提示符」，打开后输入：\n\n```bat\nnode -v\n```\n\n看到 `v20` 或 `v22` 开头即成功。如果提示不是内部或外部命令，说明没加入 PATH：重新运行安装包并勾选 Add to PATH，然后**重新打开**命令提示符再试。\n\nWindows 防火墙如果询问是否允许 Node.js 访问网络，选「允许」。\n\n### 安装本工具\n\n任选一种：\n\n- **ZIP（更省事）：** 在 [GitHub](https://github.com/yizhi-chengzi/douyin-account-analysis) 或 [码云](https://gitee.com/yizhi-chengzi/douyin-account-analysis) 下载 ZIP，解压到例如 `D:\\douyin-account-analysis`。不要解压到需要管理员权限的目录。\n- **Git：** 先安装 [Git for Windows](https://git-scm.com/download/win)，再在命令提示符里：\n\n```bat\ngit clone https://github.com/yizhi-chengzi/douyin-account-analysis.git\ncd douyin-account-analysis\n```\n\n### 运行\n\n打开解压后的项目文件夹，**双击 `start.cmd`**。\n\n- 会弹出一个黑色窗口，第一次可能要等一两分钟装依赖\n- 成功后自动打开浏览器访问 [http://127.0.0.1:5173](http://127.0.0.1:5173)\n- **不要关闭那个黑色窗口**；用完后在窗口里按 `Ctrl+C`，再按任意键关闭\n\n如果双击后窗口一闪而过：多半是还没装好 Node.js，或没勾选 Add to PATH。按上面步骤装完，**重新双击** `start.cmd`。\n\n等价命令（在项目目录的命令提示符里）：\n\n```bat\nnpm install\nnpm run dev\n```\n\n可选：没有 Edge / Chrome 时，再执行 `npx playwright install chromium`。一般不必做。\n\n---\n\n## Linux\n\n### 环境\n\n- 带图形界面的桌面发行版（Ubuntu、Fedora、Debian 桌面等）。纯 SSH 服务器跑不了登录窗口\n- [Google Chrome](https://www.google.com/chrome/) 推荐；也可以用 Playwright 自带 Chromium\n- x86_64 或常见 64 位环境\n\n### 安装 Node.js\n\n**不要只用** `sudo apt install nodejs`，很多发行版自带版本低于 20。\n\n任选一种：\n\n1. **官网二进制：** [https://nodejs.org/](https://nodejs.org/) 下载 Linux LTS，按页面说明解压并把 `bin` 加进 `PATH`。\n2. **nvm（推荐会用终端的人）：** 按 [nvm](https://github.com/nvm-sh/nvm) 的说明安装后执行：\n\n```bash\nnvm install 22\nnvm use 22\nnode -v\n```\n\n装好后 `node -v` 必须是 `v20` 或更高。\n\n### 安装本工具\n\n```bash\ngit clone https://github.com/yizhi-chengzi/douyin-account-analysis.git\ncd douyin-account-analysis\n```\n\n也可以从 [GitHub](https://github.com/yizhi-chengzi/douyin-account-analysis) 或 [码云](https://gitee.com/yizhi-chengzi/douyin-account-analysis) 下载 ZIP 后 `cd` 进解压目录。\n\n### 运行\n\n```bash\nbash start.sh\n```\n\n浏览器应打开 [http://127.0.0.1:5173](http://127.0.0.1:5173)。若没有自动打开，请自己访问。\n\n等价命令：\n\n```bash\nnpm install\nnpm run dev\n```\n\n没有安装 Chrome 时，再执行：\n\n```bash\nnpx playwright install chromium\nnpx playwright install-deps\n```\n\n`install-deps` 会安装系统图形库，可能要求 `sudo`。\n\n---\n\n## 进阶：生产构建\n\n三个系统都一样。先 `npm run build`，再 `npm start`，然后打开终端提示的地址（默认 API 和页面都在 [http://127.0.0.1:8787](http://127.0.0.1:8787)）。\n\n可选环境变量见 [`.env.example`](.env.example)，**不要写入 Cookie 或 API Key**。\n\n## 使用\n\n1. 在顶部配置填入 DeepSeek API Key。\n2. 填入抖音 Cookie：按「如何获取 Cookie」从浏览器复制，或点「打开抖音登录窗口」登录后自动回填。\n3. 点「保存配置」，需要时可「测试 DeepSeek 连接」。\n4. 点左侧「添加账号分析」，粘贴账号主页或短链后点「分析」。\n5. 完成后左侧出现卡片，刷新后仍在。点卡片查看报告，可重新分析或删除。\n\n配置只存在当前浏览器的 `localStorage`（键名 `daa.config`）。分析记录写在项目目录的 `data/`（不含密钥，已 gitignore）。清站点数据不会丢掉报告。\n\n## Cookie 与隐私\n\n- 只使用**你有权使用**的登录态，不要导入他人 Cookie。\n- Cookie 和 API Key 只在本机浏览器保存，分析时发给本机 `127.0.0.1` 服务，用完即弃。\n- 本工具只读取公开账号资料与作品元数据，不下载无水印视频。\n- 遇到登录、验证码或平台安全验证时，请在浏览器里按平台规则自行处理。本项目不提供绕过手段。\n- 详细说明见 [docs/privacy.md](docs/privacy.md)。\n\n## 免责声明\n\n本软件按「原样」提供，主要面向在自己设备上的个人学习与研究。无论使用场景如何，都只能分析**你有权查看**的公开信息。\n\n- 只使用你自己的抖音登录态，不要导入他人 Cookie。\n- 必须自行遵守抖音用户协议、当地法律以及 DeepSeek 使用条款。\n- 平台风控、登录和验证码须你按官方规则自行处理；本项目不提供绕过手段。\n- 分析由大模型生成，不保证准确，也不构成任何经营建议。\n- 「抖音」等名称、标识归其权利人所有，这里仅作指称。\n- 因使用本软件导致的账号限制、数据丢失、费用或其他损失，贡献者不承担责任。\n\n完整条款见 [DISCLAIMER.md](DISCLAIMER.md)。\n\n## 开发\n\n```bash\nnpm test\nnpm run typecheck\n```\n\n普通测试不访问抖音，也不消耗真实 API Key。贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。\n\n## 许可证\n\n软件代码按 [MIT](LICENSE) 许可证发布，Copyright (c) 2026 yizhi-chengzi。[免责声明](DISCLAIMER.md) 说明平台、数据与账号使用风险，不构成额外的软件许可限制。\n\n## 安全\n\n请勿在 Issue 或 PR 里粘贴 Cookie、API Key 或抓取结果。漏洞报告见 [SECURITY.md](SECURITY.md)。\n",
+    "created_at": "2026-09-01T07:47:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11450"
+  },
+  {
+    "id": 11449,
+    "title": "【开源自荐】video-ai-talking：AI真人口播视频生成",
+    "content": "# AI真人口播视频生成\n\n想做一条真人口播，又不必自己对着镜头念稿。\n\n把一段真人出镜的视频放进来（脸清楚就行，不用说话），写好要说的话，选一套字幕样子。本机先找火山引擎或阿里百炼配音，再把这段真人和配音交给百炼 VideoRetalk 对上口型，最后用 FFmpeg 合成一条竖屏 MP4。中间某几句想换画面，可以把视频素材整屏切进去。\n\n密钥只留在你的浏览器里；任务和成片写在本机 `data/`。没有云端服务器，也不会替你去调任何接口。这也不是抖音、字节跳动、火山引擎、阿里云或 DeepSeek 的官方产品。\n\n由 [yizhi-chengzi](https://github.com/yizhi-chengzi) 开源。仓库：[github.com/yizhi-chengzi/video-ai-talking](https://github.com/yizhi-chengzi/video-ai-talking)\n\n## 界面\n\n工作台：左侧口播真人视频和视频素材，中间配音、BGM 和文案，右侧选皮肤并预览。\n\n![工作台](https://github.com/yizhi-chengzi/video-ai-talking/raw/master/docs/screenshots/workbench.png)\n\n生成完成后，历史成片在「成片库」里预览、下载或删除。\n\n![成片库](https://github.com/yizhi-chengzi/video-ai-talking/raw/master/docs/screenshots/library.png)\n\n截图里的出镜和画面来自免费可商用素材库（如 [Pexels](https://www.pexels.com/license/)），只用来演示界面，**不是本工具的真实用户**，也不代表出镜人代言本项目。仓库自带的口播试用片及来源见 [demos/README.md](./demos/README.md)，截图说明见 [docs/screenshots/README.md](./docs/screenshots/README.md)。\n\n## 你需要准备什么\n\n1. [Node.js](https://nodejs.org/) 20 或更高\n2. 本机已安装 [FFmpeg](https://ffmpeg.org/) 和 ffprobe，并且能在终端里直接运行 `ffmpeg`、`ffprobe`\n3. 下面这些密钥。打开页面里的「配置」也能看到同样的申请入口。\n\n### 要申请什么 Key、去哪里申请\n\n| 用途 | 申请什么 | 去哪里申请 | 是否必填 |\n| --- | --- | --- | --- |\n| 对口型 | 阿里百炼 **VideoRetalk** 的 API Key（华北2 / 北京地域，以 `sk-` 开头） | [产品介绍](https://help.aliyun.com/zh/model-studio/videoretalk/) · [密钥管理](https://bailian.console.aliyun.com/?tab=model#/api-key) | 出片必填，填到「AI口播对口型配置」 |\n| 配音（百炼） | 阿里百炼 **CosyVoice** 的 API Key（以 `sk-` 开头） | [产品介绍](https://help.aliyun.com/zh/model-studio/tts-model/) · [密钥管理](https://bailian.console.aliyun.com/?tab=model#/api-key) | 配音两家选一家即可。填到「AI配音配置」 |\n| 配音（火山） | 火山引擎语音合成的 **App ID** 和 **Access Token** | [产品介绍](https://www.volcengine.com/product/tts) · [控制台申请](https://console.volcengine.com/speech/service/8) | 配音两家选一家即可。填到「AI配音配置」 |\n| 文案 | DeepSeek **API Key**（以 `sk-` 开头） | [开放平台](https://platform.deepseek.com/) · [创建 API Key](https://platform.deepseek.com/api_keys) | 可选。不填也可以手写口播文案 |\n\n百炼的配音 Key 和对口型 Key 分开填：可以用同一把，也可以用另一把。出片时在配音区选择用火山还是百炼。\n\n本机还需要能访问你实际用到的接口：\n\n- 阿里百炼：`https://dashscope.aliyuncs.com`（配音、临时上传、VideoRetalk）\n- 火山 TTS：`https://openspeech.bytedance.com`\n- DeepSeek：`https://api.deepseek.com`\n\nLinux 上若要用系统文件选择器，请先安装 [Zenity](https://gitlab.gnome.org/GNOME/zenity)（常见桌面环境一般已有）。没有的话，可以把文件从文件管理器拖进页面。\n\n## 启动\n\n```bash\ngit clone https://github.com/yizhi-chengzi/video-ai-talking.git\ncd video-ai-talking\ncp .env.example .env\nnpm install\nnpm run dev\n```\n\n浏览器打开 [http://127.0.0.1:5175](http://127.0.0.1:5175)。这是日常开发 / 本机使用的方式。\n\n已经构建过、只想起一个本机服务时：\n\n```bash\nnpm run build\nnpm start\n```\n\n然后打开 [http://127.0.0.1:8789](http://127.0.0.1:8789)。页面和 API 都由这个地址提供。没先 `build` 的话，打开页面会是 404。\n\n`.env` 只放端口，不要把 API Key 或 TTS Token 写进去。本地验证可以设 `VAT_MOCK=1`，配音 / 上传 / 对口型 / FFmpeg / DeepSeek 全部走 mock，不访问外网。\n\n## 怎么用\n\n1. 打开「配置」：在「AI口播对口型配置」填写百炼 VideoRetalk Key；要用百炼或火山配音、AI 写文案时再填对应凭证。每个卡片上有产品介绍和申请入口，点「测试」确认连通。\n2. 在 ①「口播真人视频」添加一段真人正面近景：脸清楚即可，不用念台词；不要侧脸、远景、多人或脸被挡住。没有现成片子时，可用仓库里的 [demos/talking-head-cn.mp4](./demos/talking-head-cn.mp4)。视频素材在独立面板里添加，某句要换画面时拖到④对应字幕右侧。工具引用本机原路径，不把文件复制进项目。可选在 ③ 添加一首 BGM。\n3. 在 ② 选择火山或百炼，再选音色。密钥在「配置」里填，这里只选音色。\n4. 在 ④ 选「AI 生成」或「手动填写」其中一种。AI 生成可先选成片时长（15 / 30 / 45 / 60 秒，也可自定义 10–60 秒），再填主题。某句要切画面时，点该句右侧画面格选素材，或把视频素材拖过去。\n5. 在 ⑤ 选一套皮肤。可用「显示标题 / 显示字幕」控制成片是否画出标题和字幕；关掉前会确认。口播仍按字幕生成。\n6. 点「开始生成」。一次只出 1 条成片，同时只能跑一个任务。链路是配音 → 对口型 → 成片。\n7. 在工作台看进度，预览或下载 MP4。点「重新生成」时，如果参考视频、口播正文和音色没变，会跳过对口型只重跑 FFmpeg。历史成片在「成片库」。\n\n## 本机数据\n\n| 位置 | 内容 |\n| --- | --- |\n| 浏览器 `localStorage` 的 `vat.config` | 你填的 Key 和 TTS 凭证 |\n| 项目下的 `data/` | 任务 JSON、配音音频、对口型中间片、成片 MP4；引用素材只记路径 |\n\n任务 JSON 里不会保存 API Key 或 TTS Token。\n\n关掉页面或停掉本机服务后，正在跑的任务会停。下次打开不会自动续跑。\n\n出片时，参考视频和配音会被上传到阿里百炼官方临时存储（`oss://`，约 48 小时），供 VideoRetalk 使用。详见 [docs/privacy.md](./docs/privacy.md)。\n\n## 常见问题\n\n**提示找不到 ffmpeg**  \n先在终端执行 `ffmpeg -version` 和 `ffprobe -version`。macOS 可用 `brew install ffmpeg`。\n\n**对口型失败**  \n确认已在「AI口播对口型配置」填写百炼 VideoRetalk API Key，本机可访问 `dashscope.aliyuncs.com`，参考视频是带人脸的近景片段。\n\n**TTS 测试失败**  \n核对当前选用的那一家凭证，以及本机能否访问对应域名。火山要核对 App ID 与 Access Token 是否来自同一语音合成应用。\n\n**画面没有中文标题**  \nFFmpeg 需要本机有可用中文字体。工具会按常见路径查找；找不到时成片仍会生成，但标题 / 字幕可能是方框。说明见 [templates/fonts.md](./templates/fonts.md)。\n\n**Linux 点「选择文件」没反应**  \n确认已安装 `zenity`，或改用拖入文件。\n\n## 开发\n\n```bash\nnpm test\nnpm run typecheck\n```\n\n测试默认不调用真实 DeepSeek / 火山 / 百炼接口，也不跑完整 VideoRetalk，不要求本机已安装 FFmpeg。\n\n不要从本目录 import 其他产品源码，也不要把本机 `data/`、密钥或人脸素材提交上去。\n\n## 免责、安全与行为\n\n使用前请阅读 [DISCLAIMER.md](./DISCLAIMER.md)、[SECURITY.md](./SECURITY.md)、[docs/privacy.md](./docs/privacy.md)。贡献见 [CONTRIBUTING.md](./CONTRIBUTING.md)。参与时请遵守 [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)。\n\n## License\n\n[MIT](./LICENSE)\n",
+    "created_at": "2026-09-01T07:45:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11449"
+  },
+  {
+    "id": 11448,
+    "title": "【开源自荐】video-quick-mashup：视频快速混剪",
+    "content": "# 视频快速混剪\n\n本机运行的视频混剪 Web 工具。你在浏览器里填自己的密钥、引用本机素材、写或生成文案、选模板，本机用火山引擎或阿里百炼 TTS，再交给 FFmpeg 合成 MP4。\n\n这不是抖音、字节跳动、火山引擎、阿里云或 DeepSeek 的官方产品。密钥只存在你的浏览器里。素材、任务和成片写在本机 `data/` 目录。本项目没有云端服务器，也不会代你调用第三方接口。\n\n## 界面\n\n| 编辑文案 | 工作台成片 |\n| --- | --- |\n| ![编辑文案](https://github.com/yizhi-chengzi/video-quick-mashup/raw/master/docs/screenshots/workbench-edit.png) | ![工作台成片](https://github.com/yizhi-chengzi/video-quick-mashup/raw/master/docs/screenshots/workbench-outputs.jpg) |\n| **成片库** | **成片预览** |\n| ![成片库](https://github.com/yizhi-chengzi/video-quick-mashup/raw/master/docs/screenshots/library.jpg) | ![成片预览](https://github.com/yizhi-chengzi/video-quick-mashup/raw/master/docs/screenshots/preview.jpg) |\n\n## 你需要准备什么\n\n1. [Node.js](https://nodejs.org/) 20 或更高\n2. 本机已安装 [FFmpeg](https://ffmpeg.org/) 和 ffprobe，并且能在终端里直接运行 `ffmpeg`、`ffprobe`\n3. 至少一家配音服务：\n   - [火山引擎](https://www.volcengine.com/) 语音合成的 App ID 和 Access Token\n   - 或 [阿里百炼](https://bailian.console.aliyun.com/) API Key（CosyVoice）\n   - 两家都可以填，出片时在配音区选择用哪一家\n4. （可选）[DeepSeek](https://platform.deepseek.com/) API Key，用来根据主题生成文案；不填也可以手写文案后出片\n\n本机还需要能访问你实际用到的接口：\n\n- 火山 TTS：`https://openspeech.bytedance.com`\n- 阿里百炼：`https://dashscope.aliyuncs.com`\n- DeepSeek：`https://api.deepseek.com`\n\nLinux 上若要用系统文件选择器，请先安装 [Zenity](https://gitlab.gnome.org/GNOME/zenity)（常见桌面环境一般已有）。没有的话，可以把文件从文件管理器拖进页面。\n\n## 启动\n\n进入本项目目录后：\n\n```bash\ncp .env.example .env\nnpm install\nnpm run dev\n```\n\n浏览器打开 [http://127.0.0.1:5174](http://127.0.0.1:5174)。这是日常开发 / 本机使用的方式。\n\n已经构建过、只想起一个本机服务时：\n\n```bash\nnpm run build\nnpm start\n```\n\n然后打开 [http://127.0.0.1:8788](http://127.0.0.1:8788)。页面和 API 都由这个地址提供。没先 `build` 的话，打开页面会是 404。\n\n`.env` 只放端口，不要把 API Key 或 TTS Token 写进去。\n\n## 怎么用\n\n1. 打开「配置」，填写至少一家 TTS 凭证；要用 AI 写文案时再填 DeepSeek API Key。点对应的「测试」确认连通。\n2. 在 ① 素材池选择或拖入竖屏图片 / 视频。工具会引用本机原路径，不把文件复制进项目。可选在 ③ 添加一首 BGM。\n3. 在 ② 选择火山或百炼，再选音色。密钥在「配置」里填，这里只选音色。\n4. 在 ④ 手写一条或多条文案（标题 + 字幕段），或填主题后让 DeepSeek 生成；表格里可以再改。\n5. 在 ⑤ 勾选一套或多套模板。可用「显示标题 / 显示字幕」控制成片是否画出标题和字幕；关掉前会确认。口播仍按字幕生成。\n6. 点「开始生成」。文案数 × 模板数不能超过 20，同时只能跑一个任务。\n7. 在工作台看配音 → 成片进度，预览或下载 MP4；失败后可以整单重新生成。历史成片在「成片库」。\n\n## 本机数据\n\n| 位置 | 内容 |\n| --- | --- |\n| 浏览器 `localStorage` 的 `qm.config` | 你填的 Key 和 TTS 凭证 |\n| 项目下的 `data/` | 任务 JSON、配音音频、成片 MP4；引用素材只记路径 |\n\n任务 JSON 里不会保存 API Key 或 TTS Token。\n\n关掉页面或停掉本机服务后，正在跑的任务会停。下次打开不会自动续跑。\n\n## 常见问题\n\n**提示找不到 ffmpeg**  \n先在终端执行 `ffmpeg -version` 和 `ffprobe -version`。macOS 可用 `brew install ffmpeg`。\n\n**TTS 测试失败**  \n核对当前选用的那一家凭证，以及本机能否访问对应域名。火山要核对 App ID 与 Access Token 是否来自同一语音合成应用。\n\n**画面没有中文标题**  \nFFmpeg 需要本机有可用中文字体。工具会按常见路径查找；找不到时成片仍会生成，但标题 / 字幕可能是方框。说明见 [templates/fonts.md](./templates/fonts.md)。\n\n**Linux 点「选择文件」没反应**  \n确认已安装 `zenity`，或改用拖入文件。\n\n## 开发\n\n```bash\nnpm test\nnpm run typecheck\n```\n\n测试默认不调用真实 DeepSeek / 火山 / 百炼接口，也不要求本机已安装 FFmpeg。\n\n## 免责与安全\n\n使用前请阅读 [DISCLAIMER.md](./DISCLAIMER.md)、[SECURITY.md](./SECURITY.md)、[docs/privacy.md](./docs/privacy.md)。贡献见 [CONTRIBUTING.md](./CONTRIBUTING.md)。\n\n## License\n\n[MIT](./LICENSE)\n",
+    "created_at": "2026-09-01T07:40:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11448"
+  },
+  {
+    "id": 11447,
+    "title": "易简历：免费在线简历制作工具，简历数据全程不上传服务器",
+    "content": "业余时间做了一个免费的在线简历制作网站：易简历\nhttps://toolxx.cn\n\n26 个模板，挑一个填经历就能导出 PDF/Word，不用注册账号。\n\n做的时候比较在意隐私这块：简历数据全程只存在你自己浏览器本地，导出 PDF/Word\n也是在浏览器里直接生成，不经过任何服务器，不上传不采集，不用 Cookie，也不接\n第三方统计和广告。\n\n另外支持把之前导出的 PDF/Word 简历重新导入回来接着改——很多同类工具做完导出\n就是终点，改一个字得从头填一遍，这个可以直接把老文件拖进来继续编辑。\n\n纯前端、免费、不用登录，欢迎大家试用挑错。",
+    "created_at": "2026-09-01T06:24:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11447"
+  },
+  {
+    "id": 11446,
+    "title": "【开源自荐】Archify：让 AI Coding Agent 生成可验证、可交互的架构图",
+    "content": "## 项目地址\n\nhttps://github.com/tt-a1i/archify\n\n## 在线演示\n\nhttps://tt-a1i.github.io/archify/gallery.html\n\n## 项目介绍\n\nArchify 是一个面向 Cursor、Claude Code、Codex CLI 和 OpenCode 的开源 Agent Skill，可以把代码库或自然语言描述转换成架构图、工作流图、时序图、数据流图和生命周期图。\n\n它不是直接让模型生成图片，而是由 Agent 先生成 typed JSON IR，再经过 schema、布局、路由和产物检查，最后输出自包含的交互式 HTML/SVG。生成结果可以继续在聊天里修改，也支持搜索节点、查看上下游关系、检查路径、演示以及导出 PNG、SVG 和 WebM。\n\n项目采用 MIT 协议，无需注册，也可以不提供代码仓库，直接描述系统开始使用。\n\n## 安装\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\n## 项目截图\n\n![Archify](https://raw.githubusercontent.com/tt-a1i/archify/main/docs/assets/archify-readme-hero.png)\n",
+    "created_at": "2026-09-01T06:17:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11446"
+  },
+  {
+    "id": 11445,
+    "title": "【开源自荐】ai-guide：Vibe Coding 中文系统教程，从零基础到把产品做上线",
+    "content": "## 项目介绍\n\n[ai-guide](https://github.com/liyupi/ai-guide) 是一套完全免费开源的中文 Vibe Coding 教程。\n\n现在讲 AI 编程的内容不少，但大多停在「某个工具怎么用」这一层——装个 Cursor、贴几条 prompt，然后就没有然后了。这套教程想解决的是后面那段：**从选工具、跟 AI 对话，到做出一个完整项目、部署上线、拿到用户，整条路怎么走完。**\n\n内容按学习主线编排，零基础的人第一天就能做出第一个能跑的作品，有编程基础的可以直接跳到进阶技巧和项目实战。\n\n## 核心特性\n\n- **工具选型**：AI IDE、命令行工具、IDE 插件、零代码平台、智能体平台的横向对比和适用场景\n- **项目实战**：几十个能跟着做完的完整案例，按 AI 创意应用 / 实用工具 / 智能体和平台 / 跨端应用四类划分，每个都含功能演示、技术选型、架构设计和开发流程\n- **进阶技巧**：对话工程、上下文管理、幻觉处理、代码质量保障、成本控制\n- **上线变现**：部署、SEO、数据分析、盈利模式\n- **模型动态**：用同一套真实项目对 DeepSeek、GPT、Claude、Gemini、GLM 等做编程能力实测和横评，持续更新\n- **三语版本**：简体中文之外，仓库内同时维护繁体中文和英文翻译\n\n全部内容免费，没有付费墙。目前 19000+ Star。\n\n## 软件截图\n\n![教程大纲](https://pic.yupi.icu/1/%E9%B1%BC%E7%9A%AE%E7%9A%84%20AI%20%E5%AF%BC%E8%88%AA-16%E6%AF%949%E5%A4%A7%E7%BA%B2_%E5%89%AF%E6%9C%AC.jpg)\n\n## 项目地址\n\n- GitHub：https://github.com/liyupi/ai-guide\n- 在线阅读：https://ai.codefather.cn/vibe",
+    "created_at": "2026-09-01T06:01:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11445"
+  },
+  {
+    "id": 11444,
+    "title": "【开源自荐】Unfour：把 API、SSH 和数据库排障放进同一个桌面工作区（开发者工具）",
+    "content": "标题：\n\n【开源自荐】Unfour：把 API、SSH 和数据库排障放进同一个桌面工作区（开发者工具）\n\n正文：\n\nUnfour 是一个本地优先的开源桌面开发工具，面向需要同时处理 API、服务器和数据库问题的后端开发者。\n\n很多后端问题的排查过程类似：先用 API 请求复现问题，再通过 SSH 查看服务器日志，然后打开数据库客户端检查数据状态，修改代码后重新请求验证结果。Unfour 希望把这条排障路径放进同一个工作区，减少在多个工具之间切换和重复寻找上下文。\n\n项目地址：\n\nhttps://github.com/zyqzyq/Unfour\n\n官网：\n\nhttps://unfour.dev/\n\n![Unfour](https://raw.githubusercontent.com/zyqzyq/Unfour/main/docs/screenshots/app-overview.png)\n\n目前主要包含：\n\n* API Client：发送和管理 HTTP 请求，支持环境变量、认证、Headers、Body、请求前脚本和响应测试。\n* SSH Terminal：SSH 终端、SFTP、命令历史，以及多步骤 SSH Tasks。\n* Database：管理数据库连接、浏览 Schema 和表数据、执行 SQL。\n* Workspace：把 API、SSH、数据库连接和环境配置保留在同一个本地工作区。\n* MCP：Codex 和 Cursor 可以通过本地 MCP Server 使用 Unfour 中保存的 API、SSH 和数据库连接，辅助检查运行中的后端系统并验证修改结果。\n\n一个典型的使用流程是：\n\n```text\nAPI 请求出现问题\n↓\n通过 SSH 查看服务器日志\n↓\n检查数据库状态\n↓\n定位并修改问题\n↓\n重新发送请求验证结果\n```\n\n核心桌面功能免费并采用 Apache License 2.0 开源。\n\n技术栈：Tauri 2 + React + TypeScript + Rust\n\n目前提供 Windows、macOS 和 Linux 安装包：\n\nhttps://github.com/zyqzyq/Unfour/releases/latest",
+    "created_at": "2026-09-01T05:56:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11444"
+  },
+  {
+    "id": 11443,
+    "title": "【文章自荐】俄乌战争：为什么前线最忙的是乌克兰程序员",
+    "content": "乌克兰前线最忙的其实是程序员，因为接收的武器越多，系统越容易崩溃。\n\n老飞机硬接新导弹：米格-29太老了，根本没法直接装北约导弹。最后只能靠挂架里的单片机当“翻译器”。飞行员甚至得绑个iPad在腿上发指令。蓝牙一断，几十万美元的导弹就成了废铁。\n\n各国火炮全靠代码粘合：十几个国家送了几十种重武器。每门炮的数据格式都不一样。每加一种新装备，就得跟现有的所有系统重新对接。代码越堆越多，维护接口成了最耗精力的事。\n\n\n原文：\n[https://mp.weixin.qq.com/s/KyRAvnPNanwy4K1lXzWgXA](url)",
+    "created_at": "2026-09-01T05:31:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11443"
+  },
+  {
+    "id": 11442,
+    "title": "【开源自荐】SystemPro：可独立演示的园区能源与设备运营管理端",
+    "content": "项目地址：https://github.com/leonlabs-dev/SystemPro\n\n在线体验：https://console.systempro.site\n\nSystemPro 是一个使用 Vue 3 + TypeScript 开发的园区能源与设备运营管理端。\n\n我做这个项目的原因，是常见的后台模板大多只展示用户、角色和表格增删改查，真正涉及设备资产、能源拓扑、总分表关系、损耗分析、空调集控和账单结算的开源界面相对少见。\n\n项目目前包含：\n\n- 设备资产、能源计量、空调集控、告警和账单等业务页面\n- 组织、项目、空间、角色和数据权限等企业管理入口\n- 无需后端即可运行的本地只读演示\n- 可在运行时切换 API 地址，不必重新构建前端\n- 亮色、暗色、色弱模式、多语言和响应式布局\n\n它可以用于了解能源管理类产品的页面组织方式，也可以作为 IoT、智慧园区和企业管理项目的前端参考。\n\n<img width=\"3072\" height=\"1650\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a102b302-ce73-4c67-bfa2-4fd463168f67\" />\n\n<img width=\"1672\" height=\"941\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d7392854-b53d-4dda-a4bd-918e92046f94\" />",
+    "created_at": "2026-09-01T02:16:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11442"
+  },
+  {
+    "id": 11441,
+    "title": "松鼠管家：把买房、交税、装修这些\"过日子的账\"算清楚",
+    "content": "最近业余时间做了一个免费的生活财务计算器网站：松鼠管家\nhttps://songshugj.cn\n\n现在有 50+ 个计算器，覆盖房贷、个税、五险一金、装修预算、购车落地价等生活财务场景。\n\n和市面上常见的\"裸计算器\"不太一样的地方是，做的时候想的是\"给一个决策，而不是给一个数字\"——比如房贷会自动对比等额本息和等额本金能省多少利息，个税会自动判断年终奖单独计税还是合并计税更划算，尽量减少用户自己再拿计算器算一遍的麻烦。每个工具也配了一篇讲清楚\"怎么算/怎么选\"的文章。\n\n纯前端、免费、不用登录，欢迎大家试用挑错。",
+    "created_at": "2026-09-01T02:10:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11441"
+  },
+  {
     "id": 11440,
     "title": "# tinystruct framework",
     "content": "# tinystruct framework\n\n> **版本：** 1.7.29\n> **语言：** Java  \n> **许可证：** Apache License 2.0  \n> **GitHub：** [tinystruct](https://github.com/tinystruct)\n\n\n\n## 简要说明\n\ntinystruct 是一个轻量级 Java 应用框架，支持命令行工具与 Web 接口的统一调用方式。其目标是通过最少的依赖、简洁的设计、模块化扩展，来降低开发复杂度。\n\n在 1.7.29 版本中，对 HTTP 模块（Tomcat / Netty）、模块化结构和上下文管理进行了优化以减轻核心负担。\n\n\n\n## 核心特性\n\n- **最少依赖**：核心库保持轻量，仅引入必要的组件  \n- **统一 `@Action` 调用机制**：命令行与 HTTP 接口共用调用方式  \n- **模块化 HTTP 支持**：可选集成 Tomcat / Netty 模块  \n- **低延迟调用**：方法内部调用减少中间开销  \n- **扩展能力**：支持构建插件 / 生态模块  \n- **适用场景广泛**：适合小型服务、CLI 工具、AI 应用等  \n\n<img width=\"1111\" height=\"757\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/57173ff0-a286-46ef-9000-51e1c53c11fe\" />\n\n\n\n## 生态模块 / 示例项目\n\n下面是一些已有的模块或实例，可作为参考或扩展：\n\n| 模块 / 项目 | 类型 | 功能 / 说明 |\n|--------------|------|----------------------------|\n| `tinystruct-mcp` | MCP 服务端模块 | 基于 tinystruct 实现的 MCP（Model Context Protocol）服务器 |\n| `tinystruct-tomcat-server` | HTTP 模块 | 提供 Tomcat 方式的 HTTP 支持 |\n| `tinystruct-netty-http-server` | HTTP 模块 | 提供 Netty 模式的 HTTP 支持 |\n| `smalltalk` | 应用示例 | 基于 tinystruct 的聊天系统，支持 CLI 与 Web 模式 |\n| `tinystruct-examples` | 示例项目 | 演示 CLI / Web 混合模式使用方法  |\n\n\n\n\n## 快速上手示例\nhttps://github.com/tinystruct/tinystruct\n### 引入依赖（Maven 示例）\n\n```xml\n<dependency>\n  <groupId>org.tinystruct</groupId>\n  <artifactId>tinystruct</artifactId>\n  <version>1.7.29</version>\n  <classifier>jar-with-dependencies</classifier>\n</dependency>\n",
@@ -14,14 +102,6 @@
     "created_at": "2026-08-31T18:21:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11439"
-  },
-  {
-    "id": 11438,
-    "title": "Your AI Agent Doesn’t Need More Prompts. It Needs Skills!",
-    "content": "https://medium.com/gitconnected/your-ai-agent-doesnt-need-more-prompts-it-needs-skills-a5e681b8a020",
-    "created_at": "2026-08-31T15:11:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11438"
   },
   {
     "id": 11437,
@@ -744,85 +824,5 @@
     "created_at": "2026-08-25T19:07:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11350"
-  },
-  {
-    "id": 11349,
-    "title": "【开源自荐】Luna Mux：支持 macOS、Windows 和 WSL 的 Coding Agent 终端工作台",
-    "content": "项目地址：https://github.com/rainj2013/luna-mux\n\n下载地址：https://github.com/rainj2013/luna-mux/releases/latest\n\nLuna Mux 是一个跨平台的开源 Coding Agent 终端工作台，同时提供 macOS 和 Windows 安装包，并支持 PowerShell、WSL、本地 Shell 和 SSH 远程终端。\n\n项目受到 [cmux](https://github.com/manaflow-ai/cmux) 的启发，重点补足跨平台和远程开发能力：Windows 用户可以直接使用 PowerShell 或 WSL，macOS 和 Windows 用户也可以在同一个工作区中管理本地终端与 SSH 远程终端。\n\n它以项目目录为单位管理会话和分屏终端。在终端中启动 Codex、Claude Code 等 Agent 后，Luna Mux 会自动注入 Hook 和 MCP：Hook 用来显示 Agent 正在工作、等待输入、等待授权或已经完成；MCP 则让 Agent 反过来操作工作台，例如创建终端窗格、调整分屏布局、读取其他窗格的有界输出、发送终端输入，以及操作浏览器。\n\n主要功能：\n\n- 跨平台：提供 Apple Silicon、Intel Mac 和 Windows x64 安装包\n- 多终端环境：支持 macOS Shell、PowerShell 5.1/7、WSL 和 SSH\n- 项目级会话：一个项目包含多个终端窗格，支持横向、纵向分屏和布局恢复\n- Agent 状态监控：通过窗格边框、侧边栏和桌面通知提示工作、等待和完成状态\n- Agent 控制工作台：通过 Luna Mux MCP 创建窗格、修改布局、操作终端和管理其他受管 Agent\n- 浏览器自动化：Agent 可以打开网页、点击、填表、截图，以及检查控制台和网络请求\n- 远程开发：内置 SSH、SFTP、跳板机及本地、远程和 SOCKS5 端口转发\n- 远程 Agent：SSH 服务器中的 Agent 也能通过安全代理操作本机浏览器\n- 安全确认：关闭终端、文件传输和启动隧道等操作需要用户确认，凭据和私钥不会通过 MCP 暴露\n\n项目使用 Tauri、Rust、React 和 xterm.js 开发，采用 MIT 许可证。目前处于早期开发阶段，最新版本为 v0.3.2。\n\n![Luna Mux 终端工作区](https://raw.githubusercontent.com/rainj2013/luna-mux/master/assets/screenshots/terminal.png)\n",
-    "created_at": "2026-08-25T16:36:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11349"
-  },
-  {
-    "id": 11348,
-    "title": "【开源自荐】OpenBaud：让 AI Agent 可审计地操作串口和 USB 硬件",
-    "content": "项目地址：https://github.com/Leonezz/openbaud\n\n在线演示：https://baud.zhuwenq.cc/\n\nOpenBaud 是一个 MIT 许可的 Rust MCP Server、CLI 与 Codex Plugin，面向需要让 AI Agent 调试真实串口和 USB 设备的开发者。\n\n它解决的问题是：Agent 可以写固件，却通常无法安全、可复现地检查桌上的真实硬件。OpenBaud 会保留原始 RX/TX 字节、验证帧与校验和、解析结构化字段、可视化遥测数据，并把已验证的交互沉淀为可复用的 YAML 命令。所有写操作都有审计记录，危险命令需要显式确认。\n\n仓库提供基于真实 ESP32-S3 的 CRC 二进制协议演示和逐字节 capture；即使没有开发板，也可以回放解析、时序分析和命令工作流。当前 release 提供 macOS arm64/x64、Linux arm64/x64、Windows x64 的预编译包。",
-    "created_at": "2026-08-25T16:23:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11348"
-  },
-  {
-    "id": 11346,
-    "title": "【工具自荐】POP CREATOR：无限免费 AI 抠图，新用户可免费生成 135 张 Nano Banana 图片",
-    "content": "自荐一个我们做的 AI 图片与视频创作平台：[POP CREATOR](https://popcreator.app/)。\n它主要面向内容创作者、电商卖家、营销人员和设计团队，可以通过文字描述或参考图片生成商品图、广告素材、社交媒体配图、YouTube 缩略图以及短视频。\n\n## 项目链接：\n- 官网：https://popcreator.app/\n- 无限免费背景移除：https://popcreator.app/apps/ai-background-remover\n- Nano Banana 图片生成器：https://popcreator.app/nano-banana-ai-image-generator\n目前比较值得体验的两个免费功能：\n- 无限免费 Background Remover：所有用户和套餐均可免费使用，不扣除积分，可以反复移除图片背景并下载透明 PNG。\n- 最多生成 135 张 Nano Banana 图片：新用户注册可获得 100 免费积分，连续签到 7 天还可领取 440 积分，合计 540 积分。目前通过 [Nano Banana 图片生成器](https://popcreator.app/nano-banana-ai-image-generator)，最多可以生成 135 张原创图片。\n\n## 主要功能：\n- AI 图片生成：通过文字提示词或参考图片，生成商品图、广告创意、社交媒体配图、缩略图和营销视觉素材。\n- AI 视频生成：支持从文字或参考图片生成产品广告、社交短片、故事板和动态创意。\n- 中文提示词优化：可以将中文想法翻译成英文，也可以使用 AI 将简单描述扩展成更完整的提示词。\n- 提示词预设：常用的提示词和创作方向可以保存为 Preset，之后直接复用。\n- 作品历史与素材管理：可以查看、对比、下载和复用之前生成的内容。\n- 提示词案例库：提供可直接参考和修改的图片、视频提示词及生成案例。\n\n我们做 POP CREATOR，是因为现在的 AI 图片和视频模型越来越多，但不同工具之间的提示词、参考图片、生成记录和素材管理通常比较分散。POP CREATOR 希望把模型选择、提示词辅助、预设复用、积分预估和作品管理放到同一个工作空间里，让创作者可以更顺畅地完成从想法到成品的过程。\n如果你只是需要日常抠商品图、头像或设计素材，可以直接使用无限免费的 Background Remover；如果想体验 Nano Banana，新用户通过注册和连续签到，目前最多可以获得生成 135 张图片的免费额度。\n欢迎体验，也欢迎提出建议和反馈。",
-    "created_at": "2026-08-25T13:09:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11346"
-  },
-  {
-    "id": 11345,
-    "title": "【工具自荐】Lumi：你的 B 站和 YouTube  AI 视频学习搭子",
-    "content": "自荐一个我做的浏览器扩展 **Lumi**。无需登录，安装即用\n\nLumi 是一款面向 B 站和 YouTube 的 AI 视频学习助手。它把双语字幕、视频总结、沉浸式阅读、内容问答和学习记录放到视频页面中，帮助用户更高效地学习课程、访谈、播客和技术分享等内容。\n\n项目链接：\n\n- 官网：https://islumi.com\n- Chrome 应用商店：https://chromewebstore.google.com/detail/ackkdapdaaemdljhmgpilbbbojmkmdad\n- Edge 加载项：https://microsoftedge.microsoft.com/addons/detail/mmdaplnonheeighjncdffkedmbmknbbn\n- 使用文档：https://islumi.com/docs\n\n主要功能：\n\n- **AI 双语字幕**：支持实时翻译、智能断句和字幕样式调整。**开启智能断句后会极大提示了油管阅读体验**\n- **无字幕视频转写**：B 站或 YouTube 视频没有字幕时，可以通过语音识别生成字幕。\n- **视频总结与阅读稿**：生成章节、摘要和阅读稿，点击内容可以跳转到对应时间点。\n- **视频内容问答**：围绕当前视频提问，回答会结合字幕并附带可点击的时间点。\n- **字幕搜索与导出**：搜索视频原话，并将字幕导出为 SRT 等格式。\n- **沉浸式学习**：隐藏推荐流等干扰内容，把视频和学习工具放在同一个界面。\n- **学习记录与知识库**：保存看过的视频、笔记和对话，方便之后检索和复习。\n\n字幕显示、搜索和样式调整无需登录。AI 功能支持配置 DeepSeek、OpenAI 兼容接口、Anthropic 或 Gemini Key。\n\n做 Lumi 的原因是，我经常在 B 站和 YouTube 上看技术课程和英文分享。平台字幕经常断句零碎，长视频也很难快速定位内容；遇到不懂的概念，还要不断切换页面搜索。于是我把字幕、总结、问答、笔记和检索整合进了视频学习流程。\n\n目前 Lumi 支持 Chrome、Edge 及其他 Chromium 浏览器，欢迎体验和反馈。\n更多可以看详细介绍：[做了一个插件，把 B 站和 YouTube 的学习体验拉满了](https://luckysnail.cn/zh/posts/122-%E5%81%9A%E4%BA%86%E4%B8%80%E4%B8%AA%E6%8F%92%E4%BB%B6%E6%8A%8A-b-%E7%AB%99%E5%92%8C-youtube-%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%BD%93%E9%AA%8C%E6%8B%89%E6%BB%A1%E4%BA%86)",
-    "created_at": "2026-08-25T10:05:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11345"
-  },
-  {
-    "id": 11344,
-    "title": "【开源自荐】CosmoEdge：把 RTSP、CV/VLM 和告警编排成边缘视频 AI 应用",
-    "content": "项目地址：https://github.com/cosmo-wander-ai/cosmo-edge\n\nCosmoEdge 是一个面向生产部署的开源 C++ 边缘视频 AI 引擎。它不止提供模型推理，而是把 RTSP/本地视频接入、CV/VLM 推理、跟踪与规则、OSD、告警以及 MQTT/Webhook 输出串成可在浏览器编排和运行的完整应用。\n\nv1.1 支持 BM1688、CV186X、RK3576、RV1126B；各平台分别使用目标构建和模型产物，也提供无需 NPU 硬件的 x86 体验路径。项目公开四平台性能报告和 72 小时固定配置长稳记录，测试条件、适用边界与复现方法可核对。\n\n项目演示：https://github.com/user-attachments/assets/96eeba7e-5b00-4c54-97b3-3ee4571cd5a0\n\n![CosmoEdge 可视化业务编排](https://raw.githubusercontent.com/cosmo-wander-ai/cosmo-edge/main/docs/tutorials/04-pipeline-orchestration/images/img_04.webp)",
-    "created_at": "2026-08-25T09:21:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11344"
-  },
-  {
-    "id": 11343,
-    "title": "【开源自荐】markstream — 覆盖 Vue/React/Svelte/Angular/Vue2 的流式 Markdown 渲染库（2.x）",
-    "content": "<img width=\"128\" height=\"128\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/69335ddc-bcae-4774-9f6f-9526582d4742\" />\n\n周刊第 397 期收录过 markstream-vue（当时只覆盖 Vue），半年后 2.x 大版本\n更新，角度不同，特此再次自荐。\n\n## 项目名称\nmarkstream — 专为 AI 聊天 / LLM token 流设计的流式 Markdown 渲染库\n\n## 项目地址\n- GitHub：https://github.com/Simon-He95/markstream-vue\n- 文档：https://markstream.simonhe.me/\n- 在线流式 demo：https://markstream-vue.simonhe.me/\n\n## 解决的问题\nAI 应用里 Markdown 是\"渲染到一半\"的状态：代码块没闭合、表格没写完，\n传统渲染器（marked / markdown-it）每帧全量重渲，闪烁、错乱、卡顿。\nmarkstream 把\"最终文档\"换成\"正在变化的文档\"来渲染。\n\n## 项目特点\n- 🧩 一个渲染内核，五个框架包：Vue 3 / React / Svelte / Angular / Vue 2\n  （配套 Nuxt、Next.js、VitePress 集成）\n- ⚡ 增量渲染低抖动，流的每一帧都是稳定状态\n- 🖥️ 流式代码块用 diff 渐进补全（独立包 stream-diffs），不整块重建\n- 📊 Mermaid / KaTeX 重块渐进渲染，不反复初始化\n- 🛡️ SSR 安全渲染；可选 Web Worker 不阻塞主线程\n\n## 数据\n- GitHub：2,961 星（2026-08-25）\n- npm：近 30 天下载 10.7 万次\n\n## 可采简介（一句话）\n专为 AI 聊天设计的流式 Markdown 渲染库，一个内核覆盖 Vue/React/\nSvelte/Angular/Vue2 五大框架，增量渲染 + 流式代码块 + Mermaid/KaTeX\n渐进渲染，2.x 已稳定。\n",
-    "created_at": "2026-08-25T08:16:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11343"
-  },
-  {
-    "id": 11342,
-    "title": "【网站自荐】Magazine Maker：输入主题或素材，AI 几分钟内自动生成一本可导出的杂志",
-    "content": "官网地址：https://magazinemaker.org\n\n产品定位：Magazine Maker 是一个 AI 杂志生成工具。给它一个主题、一批已有的文章/照片，或者一个 URL，它会在几分钟内自动排出一本带封面、多个跨页的完整杂志，输出效果接近编辑排版而不是简单的模板套用。\n\n核心功能：\n- 输入主题想法，或直接带入已有文章、数据、URL、文件，AI 据此设计整体排版\n- 每一页和封面自动配图，不用自己再找素材\n- 支持上传 Logo、照片，选择视觉风格，做出带品牌调性的成片\n- 全书统一编辑设计，不是零散模板拼接\n- 可导出印刷级 PDF，也可以发布成带分享链接的在线数字刊物\n\n使用场景：校园/社团杂志、品牌刊物、粉丝刊、个人纪念刊这类不想为了一本刊物单独雇设计师的场景。\n\n差异点：市面上多数\"杂志生成器\"是填空式模板，换内容不换版式；Magazine Maker 是整本统一设计，图文关系会根据内容重新编排，不是套壳。\n\n免费开始，注册送额度，无需信用卡即可先生成预览。\n",
-    "created_at": "2026-08-25T07:45:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11342"
-  },
-  {
-    "id": 11341,
-    "title": "开源推荐：Annolux —— 面向 AI Agent 的中英双语精选搜索 API 与 MCP（带时间戳与诚实计费）",
-    "content": "## 项目名称\nAnnolux\n\n## 项目地址\n- 官网：https://annolux.com\n- GitHub：https://github.com/eason4kim-rocket/annolux\n- NPM：https://www.npmjs.com/package/annolux-mcp\n\n## 解决的问题\n现在的 AI 搜索（如 Tavily / Google / Bing）用在 Agent 或 RAG 上普遍有 3 个痛点：\n1. **信噪比低**：抓取大量内容农场与垃圾 SEO，污染 LLM 上下文；\n2. **时序幻觉**：返回结果缺少抓取时间戳，LLM 无法判断文档是否最新；\n3. **计费黑盒**：网络超时或返回空也照常扣费。\n\n## 项目特点\n- 🛡️ **中英双语精选技术索引**：专注官方文档、RFC、GitHub、arXiv 及优质中英文技术内容；\n- 🕒 **显式 `fetched_at` 时间戳**：每个检索结果均带有确切秒级入库时间，杜绝时序幻觉；\n- 🎯 **只按成功 2xx 计费**：报错、429、超时扣 0 点；\n- 🧩 **即插即用 MCP**：支持 Claude Code (`claude mcp add annolux ...`)、Cursor 一键配置、n8n Community 节点等；\n- 🆓 **每月 1,000 次免费循环额度**，无需绑定信用卡。",
-    "created_at": "2026-08-25T07:11:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11341"
-  },
-  {
-    "id": 11340,
-    "title": "docs(issue 409): fix typo /var/ww/html -> /var/www/html",
-    "content": "## 描述\n\n修复第 409 期【言论】第 3 条中 Web 默认根目录的拼写笔误：`/var/ww/html` -> `/var/www/html`。",
-    "created_at": "2026-08-25T04:45:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11340"
-  },
-  {
-    "id": 11339,
-    "title": "【开源自荐】游戏语音本地实时翻译悬浮字幕",
-    "content": "推荐我自己AI的一个开源项目：\n\n游戏语音本地实时翻译悬浮字幕（game-subtitle-cpp）\nhttps://github.com/JFHSHX/game-subtitle-cpp\n\n这是一个游戏语音本地实时翻译悬浮字幕工具（C++ / Qt 6 版）。它捕获系统回环音频，通过本地语音识别 + 本地机器翻译，在桌面悬浮窗实时显示双语字幕。全程离线运行，音频不落盘，隐私数据不出本机。\n\n主要特点：\n\n1. 全程离线：语音识别与翻译都在本机完成，不依赖任何云端服务。\n2. 隐私优先：音频流仅用于实时识别，不写盘、不上传。\n3. 实时优先：「流式 + 精准」两遍识别，兼顾出字速度与翻译准确率。\n4. 低资源占用：原生 C++ / Qt，无 WebView 依赖，内存与 CPU 占用更低。\n5. GPU 加速：支持 DirectML（DX12）推理，可开关，失败自动回退 CPU。\n6. GTCRN 降噪：语音增强，降噪档位（关/低/高）可调。\n7. 进程联动：可指定目标游戏进程，自动开始/停止字幕。\n8. 术语表：支持自定义专有名词翻译（翻译前掩码、翻译后还原）。\n9. 历史记录：SQLite 持久化，支持查看、清空、导出 CSV。\n\n技术栈方面，采用 Qt 6.8 桌面 UI，sherpa-onnx 做语音识别（C++ API 直链），MTranServer（Bergamot） 做本地机器翻译。\n\n这是我之前 Rust/Tauri 版的 C++ 重写版，相比原版更轻量、性能更好。非常适合打外服游戏、看生放送、或者任何需要实时听懂外语语音的场景。\n\n项目地址：https://github.com/JFHSHX/game-subtitle-cpp\n\n欢迎感兴趣的朋友 Star、试用、提 Issue！",
-    "created_at": "2026-08-25T04:30:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11339"
   }
 ]
