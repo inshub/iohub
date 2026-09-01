@@ -1,5 +1,29 @@
 [
   {
+    "id": 11454,
+    "title": "〖网站自荐〗Calculator Toolkit：本地运行的小费与餐厅账单分摊计算器",
+    "content": "## 项目地址\n\nhttps://calculator-toolkit.com/\n\n## 项目介绍\n\nCalculator Toolkit 是一个面向餐厅消费场景的浏览器小工具：输入账单金额、税费和小费比例，即可查看小费、应付总额，以及多人均摊后的每人金额。\n\n它特别适合结账前快速核对两件容易混淆的事：小费是按税前还是税后金额计算，以及把含税、含小费的总额平均分给多人后，每个人应付多少。\n\n所有计算都在浏览器本地完成，不需要注册账号，也不会上传账单数据。\n\n## 为什么做它\n\n餐厅结账时，支付终端常常会直接给出建议小费，但小费基数、税费和多人分摊混在一起时，很难一眼判断总额。这个工具希望把计算过程和结果放在同一处，让用户在付款前能快速核对。\n\n## 使用方式\n\n打开网站后，填写账单金额、税费和小费比例；如需分摊，再填写人数即可。工具会同步显示小费、总额和每人金额。\n\n## 补充说明\n\n我是项目作者 Leon Reed。这是一个免费网页工具，当前不提供开源仓库。",
+    "created_at": "2026-09-01T13:48:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11454"
+  },
+  {
+    "id": 11453,
+    "title": "【项目自荐】sofagent —— 给 AI 编程助手加一层审计约束，每次 commit 自动检查密钥泄漏 / 越界改文件",
+    "content": "自荐一下我的开源项目：https://github.com/KongFangXun/sofagent\n\n# sofagent 是什么\n\n开源的 FDE Harness 层（TypeScript / MIT）：给 AI 编程助手（Claude Code、Codex、DSH 等）加一层**审计约束**。核心场景：AI 改了不该改的文件、commit 里带出密钥、提示注入攻击——当场拦截，全程留痕，出事一键回滚。\n\n# 一行命令体验\n\n```bash\nnpx -y -p @sofagent/audit sofagent-audit\n```\n\n任何 git 仓库秒级审计最近一次 commit（实测 quick 模式约 1 秒，5 万行 diff 约 6 秒），无需配置、无需联网。\n\n# 主要能力\n\n- **24 条审计规则**：密钥泄漏（AWS/OpenAI/GitHub 等已知格式）、越界编辑、提示注入防御、权限红线——基于 git diff 硬证据判定，违规当场拦截 commit\n- **HMAC 链审计留痕**：每次审计记录防篡改，可追溯\n- **自动快照回滚**：每次审计后自动存档，出事一键回到任意快照\n- **79 个 MCP tool**：审计能力可接进任意 MCP 宿主（Claude Code / Codex / DSH / OpenClaw）\n- **约束注入**：规则通过 git hook 注入 Agent 行为，平台无关\n\n# 适用场景\n\n用 AI 写代码但担心它\"自由发挥\"的个人开发者和小团队：装上后 AI 每次提交都过一遍审计，密钥泄漏、越界改文件这类事故在 commit 前就被拦住。\n\n项目 3600+ 测试，README 双语，文档齐全。如果觉得有意思欢迎看看：https://github.com/KongFangXun/sofagent",
+    "created_at": "2026-09-01T12:24:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11453"
+  },
+  {
+    "id": 11452,
+    "title": "【开源项目】会和你说活的数字人：能听、能想、能答、能打岔，看得懂你在干嘛，还能接外部工具箱。在原版 LiveTalking 上做了 TTS/ASR 熔断降级、长期记忆、全链路观测等加固。",
+    "content": "\n起因是我最近喜欢和豆包聊天，但经常聊到一半就发现额度不足......\n希望大家给我点点star并提出issue\nzhansan379/Livetalking_Chat: 会和你说活的数字人：能听、能想、能答、能打岔，看得懂你在干嘛，还能接外部工具箱。在原版 LiveTalking 上做了 TTS/ASR 熔断降级、长期记忆、全链路观测等加固。An interactive digital-human avatar app: it hears, thinks, answers, and can be interrupted — plus camera awareness, pluggable MCP tools, and hardened TTS/ASR failover.\n\n这套系统来自开源的 [lipku/LiveTalking](https://github.com/lipku/LiveTalking)，我们在它的基础上加了很多实用功能（说话能随时被打断、看得见你在干嘛、能连各种 AI 对话和工具箱等，见下方「它能做什么」）。\n\n演示视频：https://www.bilibili.com/video/BV1xMt36yEGe/?vd_source=51dc853233c8dd59fedc993c62da85d1\n\n<img width=\"2549\" height=\"1191\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/76b1678c-5d52-4ff9-8c2d-f870df681b1e\" />",
+    "created_at": "2026-09-01T10:37:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11452"
+  },
+  {
     "id": 11451,
     "title": "【开源自荐】英语学习者的网页阅读 AI 助手 ReMarker",
     "content": "## ReMarker — 英语学习者的网页阅读 AI 助手\n\nReMarker 是一个 Chrome 浏览器扩展，面向网页深度阅读和外语学习的用户。在浏览文章时，可以随时选中文本后进行复制、搜索、发音、查词、翻译、记笔记或划线等操作，可以在管理页面统一管理由此产生的划线、笔记、生词、翻译和页面足迹数据，同时提供基于遗忘曲线的生词间隔复习功能。\n\n**项目仓库**：https://github.com/ex90rts/remarker\n**安装地址**：[Chrome Web Store](https://chromewebstore.google.com/detail/remarker/hdmpdmamklhjagiogicgcfcdpfiilecn)\n\n### 功能特性\n\n- 阅读工具栏：支持复制或使用 Google 搜索选中内容；对词语发音、查词；对长文本翻译或使用五种颜色划线。\n- 基于上下文的 AI 翻译：通过 OpenAI-compatible  LLM 模型，结合页面上下文解释词语或翻译文本；结果会以流式方式实时显示。\n- 划线与笔记：复访页面时恢复划线，可修改颜色、添加笔记，并在管理页集中查看和维护，划线会自动分析 Language Chunks 供学习使用。\n- 生词与翻译：查词结果自动进入生词本，翻译记录单独管理；复访页面时恢复生词下划线，并支持再次翻译。\n- 间隔复习：使用基于遗忘曲线的闪卡生词复习，按“生疏 / 犹豫 / 熟练”自评，自动安排下次复习；扩展角标和 Popup 会显示待复习数量。\n- 学习活动：查看最近六个月的划线、生词和翻译等学习活动，以及今日复习进度。\n- 页面足迹：集中管理划线过、查词过或手动加入的页面，支持筛选、星标、归档和重新打开，也可以作为网络文章收藏夹使用。\n- 导出与备份：划线、生词和翻译可导出为 Obsidian 或 Notion Markdown；支持导入完整 JSON 备份，以及全量和增量 JSON 导出。默认排除敏感配置。\n- 阅读控制：支持全局或按站点启用 ReMarker、控制复制后是否关闭查词面板；网页工具栏和面板会跟随系统深色模式。\n\n### 界面展示\n\n<img width=\"1561\" height=\"909\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/88a001f0-8f71-467f-8d1d-4b20a9efa0f5\" />\n<img width=\"1555\" height=\"988\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/214534be-4715-462b-b8ef-e8937cce7505\" />",
@@ -310,7 +334,7 @@
   {
     "id": 11413,
     "title": "【开源工具自荐】Book2Advisor —— 把一个人的方法论，变成可以随时咨询的 AI 顾问",
-    "content": "**Book2Advisor**：把一个人的书、文章、演讲、访谈编译成结构化的「人物方法模型」，做成一个可以随时咨询的 AI 顾问（Web 应用）。\n\n开源地址：https://github.com/Jweokk/Book2Advisor\n\n与普通\"书籍问答\"（RAG）的区别：\n- **书外新问题也能答**：书里没有直接答案的问题（\"这位企业家会怎么看 AI 取代工人？\"），按方法论推演（Method Transfer），而不是拼凑原文\n- **引用可追溯**：每条原则绑定原文证据（E1-E5 分级），回答中\"他说过的\"与\"按他方法推演的\"严格分开标注，杜绝编造\n- **换人只换语料**：方法模型驱动，切换人物零代码改动——已用两位语料形态完全不同的人物（自传体 vs 内部讲话体）验证，同一问题两人的诊断路径显著不同\n\n技术栈：Python + FastAPI + 原生前端，LLM 推理（OpenAI 兼容接口，可换服务商），MIT 协议。",
+    "content": "**Book2Advisor**：把一个人的书、文章、演讲、访谈编译成结构化的「人物方法模型」，做成一个可以随时咨询的 AI 顾问（**Web / CLI / API / Agent Skill 四种形态**）。\n\n开源地址：https://github.com/Jweokk/Book2Advisor\n\n与普通\"书籍问答\"（RAG）的区别：\n- **书外新问题也能答**：书里没有直接答案的问题（\"这位企业家会怎么看 AI 取代工人？\"），按方法论推演（Method Transfer），而不是拼凑原文\n- **引用可追溯**：每条原则绑定原文证据（E1-E5 分级），回答中\"他说过的\"与\"按他方法推演的\"严格分开标注，杜绝编造\n- **换人只换语料**：方法模型驱动，切换人物零代码改动——已用两位语料形态完全不同的人物（自传体 vs 内部讲话体）验证，同一问题两人的诊断路径显著不同\n- **可导出为 Agent Skill**：一条命令把方法模型导出为 Claude Code / Hermes / Copilot 可加载的人物咨询 skill；仓库自带生成器 skill，agent 可用自己的模型从语料蒸馏\n\n技术栈：Python + FastAPI + 原生前端，LLM 推理（OpenAI 兼容接口，默认 DeepSeek，可换任意服务商），MIT 协议。",
     "created_at": "2026-08-29T02:12:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11413"
@@ -800,29 +824,5 @@
     "created_at": "2026-08-26T02:34:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11353"
-  },
-  {
-    "id": 11352,
-    "title": "【开源自荐】Wake: 开源 Coding Agent 会话管理器,找回散落在本机的每段对话",
-    "content": "Wake 是一款免费开源的 Coding Agent 本地会话管理器。Claude Code、Codex、OpenCode 等工具各自把会话存在不同目录里,工具用得越多,想翻出前几天讨论过的一段代码就越麻烦——先要记得当时用了哪个 Agent,再去它自己的历史记录里找。Wake 把这些会话收进同一个窗口:按 Agent 和项目浏览,全文搜索,命中后直接跳到对应消息,也可以回到原项目目录继续会话。目前支持 Claude Code、Codex、Copilot CLI、Cursor、OpenCode、Kiro、Gemini CLI 等 14 种 Agent。\n\n![Wake 会话列表与详情](https://raw.githubusercontent.com/iAmCorey/Wake/main/imgs/screenshot-1.webp)\n\n\n一个值得一提的功能是搜索:普通全文索引对中文和代码片段并不友好,Wake 使用 SQLite FTS5 的 trigram 索引,搜索中文、英文或者 `useEffect(` 这样的代码都可以。我的电脑上大约有 310 个会话、800MB JSONL,首次完整索引约 5 秒;之后只处理发生变化的文件,搜索通常不到 1 毫秒。\n\n![Wake 全文搜索](https://raw.githubusercontent.com/iAmCorey/Wake/main/imgs/screenshot-2.webp)\n\n\n隐私设计是\"本机数据只留在本机\":扫描时只读各个 Agent 的会话文件,不读取凭证,不修改它们的数据库,也没有任何网络请求。Wake 自己的索引可以随时删掉重建;收藏和置顶等状态单独保存在本地。\n\n* 仓库:https://github.com/iAmCorey/Wake\n* 安装:从 Releases 下载,macOS 14+;同时提供实验性的 Linux 和 Windows 版本\n* Rust + GPUI 原生桌面应用,MIT 协议",
-    "created_at": "2026-08-26T01:51:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11352"
-  },
-  {
-    "id": 11351,
-    "title": "【网站自荐】题多多，一句话生成练习题，直接导出打印",
-    "content": "做了一个给家长和老师用的出题小工具：https://www.yichengs.com/\n\n用一句话说清楚要什么题，比如\"三年级数学，图形与计算，15分钟，30分\"，AI 就能生成一份排好版的 A4 试卷，题号、分值都弄好了，直接导出 PDF/Word 或者打印。\n\n也可以按教材范围出题，保证不超纲。首页有几个现成场景可以直接看效果，比如口算、古诗词默写、初中物理力学之类的。\n\n免费版每 30 天能生成 8 次，登录后填一下要求就行，不用注册太复杂的东西。\n\n主要是自己家孩子要练习、又懒得手动排版试卷才做的，欢迎大家试试提意见。",
-    "created_at": "2026-08-26T01:20:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11351"
-  },
-  {
-    "id": 11350,
-    "title": "【工具自荐】Mask My File：分享文件前，把图片/PDF/JSON/CSV 里的隐私信息永久遮掉（iOS，全程本地处理）",
-    "content": "自荐一个我自己做的 iOS/iPadOS 工具：[Mask My File](https://apps.apple.com/cn/app/mask-my-file/id6792850916)。我是它的开发者（独立开发，一个人在做）。\n\n它解决的是一个很具体的场景：**要把文件发给别人之前，先把里面的隐私信息永久遮掉，但保留其他有用的上下文**。比如把日志、CSV、JSON 发给同事排查问题，或者提交租房申请、分享医疗单据的时候。\n\n## 主要功能\n- **图片与 PDF**：满屏预览、最高 5× 缩放，可以手动框选要遮的区域；人脸与条码检测只标出区域供你复核，遮挡是永久实心遮挡或直接移除，不是可还原的滤镜。\n- **文本类文件**：文本、JSON、XML、HTML、CSV、TSV、RTF 可以逐项搜索每一个匹配结果，然后套用完整遮罩、部分遮罩、占位符、化名或直接移除。\n- **导出后自我核验**：遮挡完成后，它会重新打开导出的新文件再核对一遍，确认无误才显示 Private Ready。\n- 可选移除元数据；PDF 可逐页处理；批量一次最多 100 个文件，支持跨文件搜索文字。\n- 私密会话、项目工作区、占位符保管库。\n\n## 隐私\n全部在设备本地处理：没有账户、没有广告、没有跟踪和分析，不上传任何内容。OCR 用的是 Apple Vision 和内置的 Tesseract，都在本地跑。人脸检测只生成区域，不识别身份、不建立模板。原始文件永不被覆盖。\n\n## 价格\n免费下载，一次性内购买断解锁无限次核验输出与批量处理，没有订阅。界面支持简体中文、繁体中文等多种语言。\n\nApp Store：https://apps.apple.com/cn/app/mask-my-file/id6792850916\n\n做这个是因为自己经常要把截图和日志丢给别人看，每次都得先另存一份、手动涂掉，涂完还不放心导出的文件是不是真的干净。欢迎试用，也欢迎提问题和建议。\n",
-    "created_at": "2026-08-25T19:07:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11350"
   }
 ]
