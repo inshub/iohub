@@ -1,5 +1,29 @@
 [
   {
+    "id": 11458,
+    "title": "〖工具自荐〗Check Domain：查域名时，一键查询可用性、WHOIS 和续费价格",
+    "content": "大家好，想分享一个我最近做的小工具：Check Domain。\n\n找域名的时候，我经常会在几个页面之间来回切换：先查某个名字有没有被注册，再看 WHOIS 记录，最后还要去注册商页面确认首年价格和续费价格。只看“可用”这一个结果，很多时候还不足以帮助我们做决定。\n\n所以我做了 Check Domain，想把这几步放到一个比较短的流程里。输入一个品牌名或完整域名后，可以同时查看选中的多个后缀，再点开具体结果查看域名记录和价格信息。\n\n地址：https://www.checkdomain.ai/\n\n目前主要能看到这些信息：\n\n- 通过注册局的 RDAP 服务检查域名状态，而不是只根据 DNS 结果猜测可用性；\n- 对已注册的域名查看公开的 WHOIS / RDAP 信息，例如注册商、日期、名称服务器和记录来源（具体取决于返回的数据）；\n- 把注册价格和续费价格放在一起比较，避免只看到第一年的优惠价；\n- 同一个页面里比较 .com、.net、.org、.io、.ai 等多个相关后缀。\n\n它不负责替用户完成购买，最终是否可注册仍然要以注册商结账页面的检查结果为准。现在也不要求创建账号，搜索是按需处理的，不保存搜索历史。\n\n如果你平时会先做域名调研，再决定注册哪个后缀，欢迎试试看。也想听听大家在选域名时最在意的是可用性、续费成本、WHOIS 信息，还是其他信号。",
+    "created_at": "2026-09-02T01:55:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11458"
+  },
+  {
+    "id": 11457,
+    "title": "【项目自荐】炼丹炉 Alchemy Furnace —— 让 Agent 不止会回答，也像一个正在与你共同生活的人",
+    "content": "炼丹炉 Alchemy Furnace ——  让 Agent 不止会回答，也像一个正在与你共同生活的人\n\n自荐一个正在开发的开源项目：[炼丹炉 · Alchemy Furnace](https://github.com/yusanwen-code/alchemy-furnace)\n\n很多 AI Agent 很能完成任务，但很难形成稳定、可辨认的表达习惯与相处方式。炼丹炉想探索的是：怎样让 Agent 不只是一张静态人设卡，而是能在对话中持续呈现性格、价值取向、知识偏好和情绪节奏的个体。\n\n项目把这些语言模式和人格特质抽象成可组合的「金丹」：可以创建道人、让道人服用不同金丹，并观察它们在对话中如何协调、冲突与涌现。\n\n## 主要能力\n\n- **金丹炼制**：把表达方式、思考习惯、技能倾向或人格特质沉淀成结构化配方；也支持从已有材料中智能蒸馏候选草稿。\n- **道人塑造**：为 Agent 配置身份、基础性格、头像、模型与所服金丹，形成可持续演化的对话角色。\n- **人格融合**：按权重和顺序组合多枚金丹，不只是拼接提示词，而是尝试生成新的行为规则与人格特征。\n- **对谈与围炉论道**：支持一对一持续对话，也支持多个道人围绕同一主题交流，直观看见不同人格之间的互动。\n- **可追溯的演化过程**：金丹、丹方版本、服用记录和融合来源均可追溯；金丹可以作为消耗品使用，并保留已吸收的能力记录。\n- **本地优先桌面应用**：基于 Wails，运行在 macOS 和 Windows 本机；数据默认保存在本地 SQLite，模型调用使用用户配置的 OpenAI 兼容接口，API Key 加密保存。\n\n技术上，它由 Go 负责桌面端与业务编排，Python 负责语言模式合成与模型调用，Next.js 提供界面。当前提供 macOS Apple Silicon、macOS Intel 与 Windows x64 的桌面安装包。\n\n项目地址：[https://github.com/yusanwen-code/alchemy-furnace](https://github.com/yusanwen-code/alchemy-furnace)\n\n欢迎对 AI 人格、Agent 交互、Prompt/Skill 组合感兴趣的朋友试用、提 Issue 或交流想法。",
+    "created_at": "2026-09-02T01:45:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11457"
+  },
+  {
+    "id": 11456,
+    "title": "〖工具自荐〗Wikis.ai：把同一个问题交给多个模型，再并排看答案",
+    "content": "大家好，想分享一个我们正在做的小工具：Wikis.ai。\n\n我平时查资料、做方案时，经常会把同一个问题同时问几个模型。以前的流程是开好几个网页、来回复制；答案一多，反而很难判断它们到底在哪些地方给出了不同的思路。\n\n所以我们想试着把这件事放到同一个页面里：同一个问题可以交给多个模型回答，再并排比较；如果某个回答值得继续追问，也可以沿着那一个继续聊，而不是先把所有答案硬凑成一个“标准答案”。\n\n地址：https://www.wikis.ai/\n\n现在主要适合这些场景：\n\n- 做调研或技术选型前，先看不同模型各自关注什么；\n- 遇到有分歧的说法时，想保留差异再判断，而不是只看第一个答案；\n- 对陌生的 AI 概念先读一段整理过的说明，再顺着问题继续聊。\n\n我们也在做 AI Wiki 页面，想把“先看一个清楚的概览”和“继续针对细节提问”接在一起。\n\n如果你也有同时用多个模型的习惯，欢迎试试。更想听听大家会拿它比较哪一类问题，或者哪些地方会让这种工作流变得更顺手。",
+    "created_at": "2026-09-02T01:44:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11456"
+  },
+  {
     "id": 11455,
     "title": "【网站自荐】Voice the Line：一个电影感的配音练习网页游戏",
     "content": "## 项目地址\n\nhttps://voicetheline.live/\n\n## 项目介绍\n\nVoice the Line 是一个面向配音练习、旁白练习和角色表演的浏览器小游戏。\n\n用户可以选择不同的电影感场景，进入角色并朗读台词。项目希望把传统的配音练习变成更轻量、更有沉浸感的互动体验。\n\n目前网站包含 8 个原创场景：\n\n- Last Train Home\n- Rainy Confession\n- The Big Pitch\n- Planet Nine\n- Between Floors\n- The Last Signal\n- Magic Mistake\n- Rooftop After Hours\n\n## 使用方式\n\n打开网站后选择一个场景，阅读屏幕上的角色台词并进行朗读。整个过程无需注册，也不需要安装软件。\n\n## 适合人群\n\n- 想练习英语配音和旁白的人\n- 配音演员和内容创作者\n- 想练习情绪表达、语速和停顿的人\n- 对互动叙事和浏览器小游戏感兴趣的人\n\n## 项目特点\n\n- 浏览器直接运行\n- 无需注册\n- 原创场景图片\n- 适合短时间练习\n- 支持不同情绪和叙事场景\n\n这是一个个人独立制作的免费项目，欢迎大家体验并提出建议。",
@@ -796,33 +820,5 @@
     "created_at": "2026-08-26T04:41:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11357"
-  },
-  {
-    "id": 11356,
-    "title": "【开源自荐】Vanilla OS 3 Reunion：不可变、可重现的桌面操作系统",
-    "content": "本周我们正式发布了 Vanilla OS 3 Reunion，一款基于 Debian 的不可变 (immutable)、可重现 (reproducible) 的 Linux 操作系统发行版。Vanilla OS 3 带来了更广泛的硬件支持、更透明的系统构建、更本地化的社区镜像，我们希望借此实现一个零信任、不依赖科技巨头、人人皆可开箱即用的桌面 Linux 系统。\n\n项目网站（英文）：https://vanillaos.org\n更新博文（英文）：https://vanillaos.org/blog/article/2026-08-24/vanilla-os-3-reunion---stable-release\n中文专栏介绍：https://www.bilibili.com/opus/1240083970401501191\n演讲视频：https://www.bilibili.com/video/BV1nAoeBBEUr/",
-    "created_at": "2026-08-26T03:43:40Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11356"
-  },
-  {
-    "id": 11355,
-    "title": "【开源自荐】PE-SmartFixer: 颠覆传统的 WinPE   AI 视觉多模态智能修机工具",
-    "content": "阮老师您好，\n\n自荐一个专注于 Windows PE 脱机系统维护场景的硬核 AI Agent 开源项目：**PE-SmartFixer**。\n\n传统的 WinPE 维护极其依赖网管的人脑经验，遇到罕见蓝屏报错需要反复查资料、人手改脚本。本项目彻底颠覆了这种断裂体验，开创了 **\"AI视觉诊断 + 底层脱机手术\"** 的全新智能化运维赛道。\n\n### 🌟 项目核心亮点：\n1. **看图识病，一键直修**：用户只需在 WinPE 环境下将蓝屏或报错截图丢给工具，多模态大模型（VLM）会直接通过视觉进行泛化推理，精准诊断出系统死因。\n2. **纯原生 Win32，零外部依赖**：为了适配极度精简的 PE 内存盘（RAMDisk）环境，项目彻底抛弃了臃肿的 Python 库和重型框架。基于纯 Go 语言裸写 Win32 API 消息循环（wndProc）与 PostMessage 异步通信，编译成品仅数 MB，运行稳定丝滑。\n3. **硬核脱机注册表手术**：AI 负责出药方，Go 底层直接扮演杀手。它能自动寻找并强行挂载（reg load）离线目标系统的 SYSTEM 注册表 Hive 文件，动态拼接 ControlSet 活跃配置单元，直接修改底层服务启动项或补全驱动文件（如 iaStorV.sys）。\n4. **v2.0 路线图：阅后即焚（Zero Footprint）机制**：针对 PE 下“大模型太大，内存太小”的硬伤，我们设计了空间换时间方案。让 1.5B~3B 的轻量化模型常驻在 U 盘物理分区，按需异步拉起本地引擎并绑定回环地址（127.0.0.1:11434），在用户关闭软件的一瞬间通过 defer 发送 OS 强杀信号。**模型瞬间自毁抹去，达成绝对零内存残留，物理断网完美运行！**\n5. **满分防线**：项目由国家授时中心时间戳可信存证确权，采用 **GPLv3 强传染性开源协议**，严厉卡死任何未经授权的闭源流氓商业集成。\n\n目前项目已获得国外顶级 PE 工具组织（PE Tools / petoolse）核心 Collaborator 的高度关注与技术研读。\n\n- **GitHub 仓库**：https://github.com/ziyouzhiyi666888/PE_SmartFixer\n- **英文技术白皮书**：https://github.com/ziyouzhiyi666888/PE_SmartFixer/blob/main/README_EN.md\n\n这是一个非常典型的 AI 真正落地并降维打击传统底层运维的极客尝试，希望能有机会登上《科技爱好者周刊》，推荐给更多喜欢底层技术和 AI 智能体应用的开发者！谢谢阮老师！\n",
-    "created_at": "2026-08-26T03:35:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11355"
-  },
-  {
-    "id": 11354,
-    "title": "【工具自荐】stock-tui：在终端（PowerShell / Windows Terminal / Linux Shell）中查看 A 股 K 线图、市盈率、成交量等基本信息的小工具。",
-    "content": "地址：https://github.com/Folgerjun/stock-tui\n\n# stock-tui\n\n在终端（PowerShell / Windows Terminal / Linux Shell）中查看 A 股 K 线图、市盈率、成交量等基本信息的小工具。\n\n数据来源：**AKShare**（免费、无需 API Key），底层接口为东方财富、雪球公开行情接口。\n\n## 效果\n\n- 基本信息面板：最新价、涨跌幅、今开/昨收/最高/最低、市盈率(动)、市净率、成交量、成交额、换手率、总市值/流通市值\n- 终端 ASCII K 线图（蜡烛图）+ 成交量柱状图（红涨绿跌）\n\n<img width=\"966\" height=\"919\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a7beacc6-cff1-46d8-a2b1-7236dbc084b4\" />",
-    "created_at": "2026-08-26T03:01:36Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11354"
   }
 ]
