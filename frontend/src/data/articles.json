@@ -1,5 +1,53 @@
 [
   {
+    "id": 11464,
+    "title": "【工具自荐】Git Agent：跨平台原生 Git 客户端，支持三方合并与可撤销的 AI 合并建议",
+    "content": "自荐一个我开发的桌面 Git 客户端 **Git Agent**，基于 Rust 和 egui，支持 Windows、macOS 和 Linux。它把工作区、提交历史、差异审查和三方合并放在同一个工具中，AI 合并建议是可选辅助功能，不配置模型也能使用日常 Git 功能。\n\n- 项目仓库：[adoin/git-Agent](https://github.com/adoin/git-Agent)\n- 官网与真实截图：[git-agent.emssion.com](https://git-agent.emssion.com/)\n- 安装包：[GitHub Releases](https://github.com/adoin/git-Agent/releases/latest)\n- 中文文档：[README.zh-CN.md](https://github.com/adoin/git-Agent/blob/main/README.zh-CN.md)\n\n### 主要功能\n\n- **工作区与历史**：多仓库标签、批量暂存和取消暂存、提交图、按文件查找提交、双栏差异与语法高亮。\n- **三方合并编辑器**：同时查看两侧内容与合并结果，逐个跳转冲突、手动编辑，并支持撤销和重做。\n- **可审查的 AI 合并建议**：查看建议及解释，逐条采用；也可一次应用全部可执行建议，并通过一次撤销恢复。建议失效或改动相互冲突时，整批不应用。应用建议不会自动保存，最终结果仍由用户检查、保存和测试。\n- **其他 Git 工作流**：分支、标签、储藏、交互式变基、Git Flow、Git LFS、子模块和子树，以及中英文、深浅色外观。\n\n### 实际截图\n\n提交历史与差异视图：\n\n![Git Agent 实际运行截图：test-repo 提交历史与代码差异](https://git-agent.emssion.com/assets/history.png)\n\n深色模式的三方合并与 AI 建议：\n\n![Git Agent 实际运行截图：三方合并、AI 建议及应用所有建议入口](https://git-agent.emssion.com/assets/merge-dark.png)\n\n以上都是应用在测试仓库中的实际截图；AI 输出只代表此次测试，不保证其他冲突得到相同结果。\n\n### 使用与许可说明\n\n目前发布的 v1.4.0 提供 Windows x64 安装程序、macOS 通用架构安装包和 Linux Debian/Ubuntu amd64 包。使用前需要安装系统 Git；macOS 安装包目前使用临时签名，尚未经过 Apple 公证，具体说明见文档。\n\n应用可免费下载使用。AI 功能需要用户自行配置兼容的模型服务，服务商可能收取调用费用；发起分析时，代码和冲突上下文等内容可能发送给所配置的服务商，请先确认仓库规范与隐私政策。\n\n项目当前采用 **Apache License 2.0，附加 Commons Clause 1.0**，属于**源码可见**，不是未附加限制的 Apache 开源项目。允许公司内部使用；对主要依靠本软件功能向第三方收费的行为有限制，完整条款见 [LICENSE](https://github.com/adoin/git-Agent/blob/main/LICENSE)。\n\n项目仍在持续开发，欢迎试用并通过 [Issue](https://github.com/adoin/git-Agent/issues) 反馈实际使用中的问题，尤其是跨平台体验和复杂合并场景。\n",
+    "created_at": "2026-09-02T07:53:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11464"
+  },
+  {
+    "id": 11463,
+    "title": "【文章推荐】你的语法高亮是错误的（Your syntax highlighter is wrong）",
+    "content": "文章：Your syntax highlighter is wrong （你的语法高亮是错误的）\n\n几乎所有语法高亮方案都把注释标记为不显眼的浅色，背后实际上是代码比注释更重要的价值判断。\n但作者认为注释的正确用法是用来弥补代码表达能力的不足，注释应该比代码本身更重要，因此注释反而应该高亮显示，同时应该将没有意义的注释都删除。\n文章探讨了几个语法高亮的不合理之处，同时也包含了对于代码应该如何编写和阅读的感悟。\n\nHN链接：https://news.ycombinator.com/item?id=49508284\n原文链接：https://jameshfisher.com/2014/05/11/your-syntax-highlighter-is-wrong/",
+    "created_at": "2026-09-02T07:04:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11463"
+  },
+  {
+    "id": 11462,
+    "title": "【工具自荐】最夯的浏览器标签切换插件 SwiftTab Pro",
+    "content": "浏览器标签切换插件基本分为两种实现:\n\n一种是在页面注入脚本, 然后弹层显示标签, 这种体验最好, 但是有致命问题,就是一些标签页面不允许注入,比如设置页面,新标签页等, 注入的脚本还可能会被已有的页面样式或者插件影响, 体验会非常割裂;\n\n另外一种就是弹窗, 在工具栏弹出一个列表, 这种就非常简单可靠, 但是不能做太多丰富的界面效果, 比如显示缩略图;\n\nSwiftTab Pro 采用了第三种方式: 在新标签页打开, 这种方式避免了前面两种方式带来的问题, 同时又可以做出很多非常丰富的功能效果, 比如缩略图, vim 键位等.\n\nSwiftTab Pro 做了很多丰富的功能, 欢迎体验!\n\nchrome: https://chromewebstore.google.com/detail/fdgbickfhnjefknaomamncmcjbfdijdd?authuser=0&hl=zh-CN\n\nedge: https://microsoftedge.microsoft.com/addons/detail/cgmnbmmmlaiojjmhgcfhpladmmgcpheg\n\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f3e9f457-ac23-4730-9161-5b59505abb85\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/19316747-c1ce-4d6b-91c0-7da479229a70\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f6aa9e4a-32b6-4d25-93aa-d01929503553\" />",
+    "created_at": "2026-09-02T06:07:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11462"
+  },
+  {
+    "id": 11461,
+    "title": "【开源工具自荐】Whisper Web：浏览器本地运行的免费语音转文字工具",
+    "content": "网址：https://whisperwebfree.com/\n\n源码：https://github.com/whisper-web-online/whisper-web\n\nWhisper Web 是一个免费、开源的浏览器本地语音转文字工具。媒体解码、Whisper 推理、文本编辑和历史记录都在用户设备上完成，不需要注册账号，选择的本地音视频也不会上传到 Whisper Web 服务器。\n\n### 1. 浏览器本地运行，兼顾隐私与兼容性\n\n支持 Whisper Tiny、Base、Small 模型，可选 WebGPU 加速或 WebAssembly 兼容模式。第一次使用需要联网下载页面资源和所选模型，之后模型会缓存在浏览器中；本地媒体和转录文本不会发送给应用服务器。\n\n### 2. 从导入到字幕导出的完整流程\n\n支持 MP3、MP4、M4A、WAV、WebM、FLAC 等常见音视频格式，也可以使用麦克风录音或允许跨域访问的媒体直链。可识别 99 种语言，也能将非英语语音翻译为英语。完成后可以直接编辑、搜索和回放，并导出 TXT、JSON、SRT、VTT。\n\n### 3. 普通文件、大文件和本地 MP3 转换\n\n标准转录支持不超过 300 MB、20 分钟的文件；独立的大文件入口支持不超过 1 GB、1 小时的本地媒体，并按片段顺序转录。站内还提供本地 MP4 / MOV / WebM 转 MP3 工具，源视频和输出文件同样不会上传到应用服务器。\n\n项目采用 MIT License，网站目前免费使用，无需登录。界面提供英语、西班牙语和阿拉伯语版本。",
+    "created_at": "2026-09-02T05:43:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11461"
+  },
+  {
+    "id": 11460,
+    "title": "【开源自荐】Every QR Code：让每个 URL 长成可扫描的 3D 世界",
+    "content": "项目地址：https://every-qrcode.com/\n\n开源仓库：https://github.com/AlbertAZ1992/every-qrcode\n\nEvery QR Code 是一个开源的 3D 二维码项目：输入任意 URL，会根据网址生成一个确定性的 3D 世界，并最终变回真正可扫描的标准二维码。\n\n目前支持两种模型：\n\n- 🌳 Tree：二维码生长成一棵树\n- ⛰️ Terrain：二维码形成一片 3D 地形\n\n相同的 URL、模型和 generator version 会产生相同的视觉结果，因此它不只是随机动画，也可以看作 URL 的一种可复现视觉身份。\n\n![Tree QR](https://raw.githubusercontent.com/AlbertAZ1992/every-qrcode/main/docs/every-qrcode-core-tree.gif)\n\n![Terrain QR](https://raw.githubusercontent.com/AlbertAZ1992/every-qrcode/main/docs/every-qrcode-core-terrain.gif)\n\n### Gallery\n\n网站还做了一个公开 Gallery，可以浏览不同 URL 生成出来的 3D QR 世界，也可以提交自己的网站加入 Gallery。\n\n每个世界都可以在 3D 形态和标准二维码之间切换。\n\n### 开源组件\n\n除了在线体验，渲染器也已经作为组件开源并发布到 npm：\n\n- `@every-qrcode/react`\n- `@every-qrcode/web-component`\n\n因此开发者可以直接把这种 3D QR Code 嵌入自己的 React 项目或其他网站。\n\n3D 渲染使用 TypeScript + WebGPU，在浏览器本地运行；不支持 WebGPU 时会自动降级成静态、仍然可扫描的 SVG QR Code。\n\n项目目前是 MIT License，后续还计划增加 Hokusai Waves、Crystalline、Mechanical 等更多 3D 模型。",
+    "created_at": "2026-09-02T05:17:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11460"
+  },
+  {
+    "id": 11459,
+    "title": "【工具自荐】StitchCraft：照片几秒变可绣十字绣图纸，免费不限次无需注册",
+    "content": "网址：https://crossstitchpatternmaker.app\n\n一个免费的在线十字绣图纸生成器，把照片变成能真的一针一针绣出来的图纸。说三个和同类不太一样的地方。\n\n### 1. 核心功能真免费：不限次、不注册、照片不上传\n\n拖一张照片进浏览器，几秒转成十字绣图纸，不限次数，也不用注册账号。转换在浏览器本地完成，照片不会上传到服务器。PDF 导出和商用授权都免费，不是「免费 N 次再引导付费」那种。\n\n### 2. 454 色 DMC 感知匹配，导出即开工的 PDF\n\n色号匹配用感知色差模型（Delta-E / CIELAB），覆盖全部 454 种正品 DMC 绣线，不是简单取最近色导致绣出来偏色。实时调格数、颜色上限和平滑度（一键去掉难绣的碎点针），带可绣性评分。导出的 PDF 除了符号图纸，连每种线要买几绞、Aida 布要多大都算好了，打印出来直接开工。\n\n### 3. AI 是可选项，不是付费墙\n\n棘手照片（宠物、人像这类渐变多的）可以先用 AI 重绘成平整插画再转图纸，也支持文字描述直接生成原创图案，接了 GPT Image 2、Nano Banana 2 等 3 个模型。AI 按次计积分，点之前明确显示消耗几个积分，新账号送 10 积分；不充值完全不影响上面两条核心功能。\n\n### 收费\n\n照片转图纸永久免费：不限次、无注册、带商用授权。收费的只有 AI 处理，按积分计费（4–10 积分/次），积分包 6 个月有效；订阅只面向重度 AI 用户。",
+    "created_at": "2026-09-02T03:42:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11459"
+  },
+  {
     "id": 11458,
     "title": "〖工具自荐〗Check Domain：查域名时，一键查询可用性、WHOIS 和续费价格",
     "content": "大家好，想分享一个我最近做的小工具：Check Domain。\n\n找域名的时候，我经常会在几个页面之间来回切换：先查某个名字有没有被注册，再看 WHOIS 记录，最后还要去注册商页面确认首年价格和续费价格。只看“可用”这一个结果，很多时候还不足以帮助我们做决定。\n\n所以我做了 Check Domain，想把这几步放到一个比较短的流程里。输入一个品牌名或完整域名后，可以同时查看选中的多个后缀，再点开具体结果查看域名记录和价格信息。\n\n地址：https://www.checkdomain.ai/\n\n目前主要能看到这些信息：\n\n- 通过注册局的 RDAP 服务检查域名状态，而不是只根据 DNS 结果猜测可用性；\n- 对已注册的域名查看公开的 WHOIS / RDAP 信息，例如注册商、日期、名称服务器和记录来源（具体取决于返回的数据）；\n- 把注册价格和续费价格放在一起比较，避免只看到第一年的优惠价；\n- 同一个页面里比较 .com、.net、.org、.io、.ai 等多个相关后缀。\n\n它不负责替用户完成购买，最终是否可注册仍然要以注册商结账页面的检查结果为准。现在也不要求创建账号，搜索是按需处理的，不保存搜索历史。\n\n如果你平时会先做域名调研，再决定注册哪个后缀，欢迎试试看。也想听听大家在选域名时最在意的是可用性、续费成本、WHOIS 信息，还是其他信号。",
@@ -76,7 +124,9 @@
     "title": "【开源自荐】video-ai-talking：AI真人口播视频生成",
     "content": "# AI真人口播视频生成\n\n想做一条真人口播，又不必自己对着镜头念稿。\n\n把一段真人出镜的视频放进来（脸清楚就行，不用说话），写好要说的话，选一套字幕样子。本机先找火山引擎或阿里百炼配音，再把这段真人和配音交给百炼 VideoRetalk 对上口型，最后用 FFmpeg 合成一条竖屏 MP4。中间某几句想换画面，可以把视频素材整屏切进去。\n\n密钥只留在你的浏览器里；任务和成片写在本机 `data/`。没有云端服务器，也不会替你去调任何接口。这也不是抖音、字节跳动、火山引擎、阿里云或 DeepSeek 的官方产品。\n\n由 [yizhi-chengzi](https://github.com/yizhi-chengzi) 开源。仓库：[github.com/yizhi-chengzi/video-ai-talking](https://github.com/yizhi-chengzi/video-ai-talking)\n\n## 界面\n\n工作台：左侧口播真人视频和视频素材，中间配音、BGM 和文案，右侧选皮肤并预览。\n\n![工作台](https://github.com/yizhi-chengzi/video-ai-talking/raw/master/docs/screenshots/workbench.png)\n\n生成完成后，历史成片在「成片库」里预览、下载或删除。\n\n![成片库](https://github.com/yizhi-chengzi/video-ai-talking/raw/master/docs/screenshots/library.png)\n\n截图里的出镜和画面来自免费可商用素材库（如 [Pexels](https://www.pexels.com/license/)），只用来演示界面，**不是本工具的真实用户**，也不代表出镜人代言本项目。仓库自带的口播试用片及来源见 [demos/README.md](./demos/README.md)，截图说明见 [docs/screenshots/README.md](./docs/screenshots/README.md)。\n\n## 你需要准备什么\n\n1. [Node.js](https://nodejs.org/) 20 或更高\n2. 本机已安装 [FFmpeg](https://ffmpeg.org/) 和 ffprobe，并且能在终端里直接运行 `ffmpeg`、`ffprobe`\n3. 下面这些密钥。打开页面里的「配置」也能看到同样的申请入口。\n\n### 要申请什么 Key、去哪里申请\n\n| 用途 | 申请什么 | 去哪里申请 | 是否必填 |\n| --- | --- | --- | --- |\n| 对口型 | 阿里百炼 **VideoRetalk** 的 API Key（华北2 / 北京地域，以 `sk-` 开头） | [产品介绍](https://help.aliyun.com/zh/model-studio/videoretalk/) · [密钥管理](https://bailian.console.aliyun.com/?tab=model#/api-key) | 出片必填，填到「AI口播对口型配置」 |\n| 配音（百炼） | 阿里百炼 **CosyVoice** 的 API Key（以 `sk-` 开头） | [产品介绍](https://help.aliyun.com/zh/model-studio/tts-model/) · [密钥管理](https://bailian.console.aliyun.com/?tab=model#/api-key) | 配音两家选一家即可。填到「AI配音配置」 |\n| 配音（火山） | 火山引擎语音合成的 **App ID** 和 **Access Token** | [产品介绍](https://www.volcengine.com/product/tts) · [控制台申请](https://console.volcengine.com/speech/service/8) | 配音两家选一家即可。填到「AI配音配置」 |\n| 文案 | DeepSeek **API Key**（以 `sk-` 开头） | [开放平台](https://platform.deepseek.com/) · [创建 API Key](https://platform.deepseek.com/api_keys) | 可选。不填也可以手写口播文案 |\n\n百炼的配音 Key 和对口型 Key 分开填：可以用同一把，也可以用另一把。出片时在配音区选择用火山还是百炼。\n\n本机还需要能访问你实际用到的接口：\n\n- 阿里百炼：`https://dashscope.aliyuncs.com`（配音、临时上传、VideoRetalk）\n- 火山 TTS：`https://openspeech.bytedance.com`\n- DeepSeek：`https://api.deepseek.com`\n\nLinux 上若要用系统文件选择器，请先安装 [Zenity](https://gitlab.gnome.org/GNOME/zenity)（常见桌面环境一般已有）。没有的话，可以把文件从文件管理器拖进页面。\n\n## 启动\n\n```bash\ngit clone https://github.com/yizhi-chengzi/video-ai-talking.git\ncd video-ai-talking\ncp .env.example .env\nnpm install\nnpm run dev\n```\n\n浏览器打开 [http://127.0.0.1:5175](http://127.0.0.1:5175)。这是日常开发 / 本机使用的方式。\n\n已经构建过、只想起一个本机服务时：\n\n```bash\nnpm run build\nnpm start\n```\n\n然后打开 [http://127.0.0.1:8789](http://127.0.0.1:8789)。页面和 API 都由这个地址提供。没先 `build` 的话，打开页面会是 404。\n\n`.env` 只放端口，不要把 API Key 或 TTS Token 写进去。本地验证可以设 `VAT_MOCK=1`，配音 / 上传 / 对口型 / FFmpeg / DeepSeek 全部走 mock，不访问外网。\n\n## 怎么用\n\n1. 打开「配置」：在「AI口播对口型配置」填写百炼 VideoRetalk Key；要用百炼或火山配音、AI 写文案时再填对应凭证。每个卡片上有产品介绍和申请入口，点「测试」确认连通。\n2. 在 ①「口播真人视频」添加一段真人正面近景：脸清楚即可，不用念台词；不要侧脸、远景、多人或脸被挡住。没有现成片子时，可用仓库里的 [demos/talking-head-cn.mp4](./demos/talking-head-cn.mp4)。视频素材在独立面板里添加，某句要换画面时拖到④对应字幕右侧。工具引用本机原路径，不把文件复制进项目。可选在 ③ 添加一首 BGM。\n3. 在 ② 选择火山或百炼，再选音色。密钥在「配置」里填，这里只选音色。\n4. 在 ④ 选「AI 生成」或「手动填写」其中一种。AI 生成可先选成片时长（15 / 30 / 45 / 60 秒，也可自定义 10–60 秒），再填主题。某句要切画面时，点该句右侧画面格选素材，或把视频素材拖过去。\n5. 在 ⑤ 选一套皮肤。可用「显示标题 / 显示字幕」控制成片是否画出标题和字幕；关掉前会确认。口播仍按字幕生成。\n6. 点「开始生成」。一次只出 1 条成片，同时只能跑一个任务。链路是配音 → 对口型 → 成片。\n7. 在工作台看进度，预览或下载 MP4。点「重新生成」时，如果参考视频、口播正文和音色没变，会跳过对口型只重跑 FFmpeg。历史成片在「成片库」。\n\n## 本机数据\n\n| 位置 | 内容 |\n| --- | --- |\n| 浏览器 `localStorage` 的 `vat.config` | 你填的 Key 和 TTS 凭证 |\n| 项目下的 `data/` | 任务 JSON、配音音频、对口型中间片、成片 MP4；引用素材只记路径 |\n\n任务 JSON 里不会保存 API Key 或 TTS Token。\n\n关掉页面或停掉本机服务后，正在跑的任务会停。下次打开不会自动续跑。\n\n出片时，参考视频和配音会被上传到阿里百炼官方临时存储（`oss://`，约 48 小时），供 VideoRetalk 使用。详见 [docs/privacy.md](./docs/privacy.md)。\n\n## 常见问题\n\n**提示找不到 ffmpeg**  \n先在终端执行 `ffmpeg -version` 和 `ffprobe -version`。macOS 可用 `brew install ffmpeg`。\n\n**对口型失败**  \n确认已在「AI口播对口型配置」填写百炼 VideoRetalk API Key，本机可访问 `dashscope.aliyuncs.com`，参考视频是带人脸的近景片段。\n\n**TTS 测试失败**  \n核对当前选用的那一家凭证，以及本机能否访问对应域名。火山要核对 App ID 与 Access Token 是否来自同一语音合成应用。\n\n**画面没有中文标题**  \nFFmpeg 需要本机有可用中文字体。工具会按常见路径查找；找不到时成片仍会生成，但标题 / 字幕可能是方框。说明见 [templates/fonts.md](./templates/fonts.md)。\n\n**Linux 点「选择文件」没反应**  \n确认已安装 `zenity`，或改用拖入文件。\n\n## 开发\n\n```bash\nnpm test\nnpm run typecheck\n```\n\n测试默认不调用真实 DeepSeek / 火山 / 百炼接口，也不跑完整 VideoRetalk，不要求本机已安装 FFmpeg。\n\n不要从本目录 import 其他产品源码，也不要把本机 `data/`、密钥或人脸素材提交上去。\n\n## 免责、安全与行为\n\n使用前请阅读 [DISCLAIMER.md](./DISCLAIMER.md)、[SECURITY.md](./SECURITY.md)、[docs/privacy.md](./docs/privacy.md)。贡献见 [CONTRIBUTING.md](./CONTRIBUTING.md)。参与时请遵守 [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md)。\n\n## License\n\n[MIT](./LICENSE)\n",
     "created_at": "2026-09-01T07:45:38Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11449"
   },
   {
@@ -124,7 +174,9 @@
     "title": "【文章自荐】俄乌战争：为什么前线最忙的是乌克兰程序员",
     "content": "乌克兰前线最忙的其实是程序员，因为接收的武器越多，系统越容易崩溃。\n\n老飞机硬接新导弹：米格-29太老了，根本没法直接装北约导弹。最后只能靠挂架里的单片机当“翻译器”。飞行员甚至得绑个iPad在腿上发指令。蓝牙一断，几十万美元的导弹就成了废铁。\n\n各国火炮全靠代码粘合：十几个国家送了几十种重武器。每门炮的数据格式都不一样。每加一种新装备，就得跟现有的所有系统重新对接。代码越堆越多，维护接口成了最耗精力的事。\n\n\n原文：\n[https://mp.weixin.qq.com/s/KyRAvnPNanwy4K1lXzWgXA](url)",
     "created_at": "2026-09-01T05:31:54Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11443"
   },
   {
@@ -770,55 +822,5 @@
     "created_at": "2026-08-26T12:13:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11363"
-  },
-  {
-    "id": 11362,
-    "title": "Modern Code Guidelines：面向 AI 编程工具的多语言现代开发规范",
-    "content": "Modern Code Guidelines 是一个面向 Codex、Cursor 和 Claude Code 的开源 skill 包，支持 Java、JavaScript、TypeScript、Python 和 C#。\n\n它会读取项目实际声明的语言、编译器或运行时版本，再选择对应版本可用的现代开发规则，并为每种语言列出官方规范、版本说明和标准库文档来源。\n\n项目受到 modern-go-guidelines 和 modern-web-guidance 启发，但三者职责不同：前者专注 Go，后者专注浏览器和 Web 平台，本项目则专注其他五种语言的语言、编译器、运行时和标准库实践。\n\n欢迎大家通过 Issue 或 PR 贡献规则修正、版本更新、来源补充和使用示例。\n\n链接：\nhttps://github.com/zcyc/modern-code-guidelines",
-    "created_at": "2026-08-26T08:35:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11362"
-  },
-  {
-    "id": 11361,
-    "title": "【开源自荐】优载 BestLoad — 多箱体 3D 装箱规划桌面应用(配套 SmartPacker 算法库)",
-    "content": "<img alt=\"SmartPacker logo\" src=\"https://github.com/user-attachments/assets/238d8f44-4011-4f69-85ec-ba6e8c44973b\" width=\"200\" />\n\n**优载 BestLoad** — 多箱体、多货物 3D 装箱规划桌面应用。给实际装柜出的活:选择箱型(20GP 标准柜、40HQ 高柜、台架箱)与货物(纸箱、托盘、重型设备、钢卷、超长木箱等),配置装箱策略后一键计算,立即输出每件货物的摆放箱体、位置与朝向,以及体积利用率、重量利用率和未装箱清单;3D 预览支持透视/俯视/正视/右视、标尺与截图。技术栈 Tauri 2(Rust + TypeScript)+ react-three-fiber,SQLite 本地存储,离线可用,支持中英文界面与亮暗主题。GPLv3。\n\n装箱算法来自同作者的开源库 **SmartPacker**:Rust 3D 装箱算法 crate,零运行时依赖(核心仅 `std`,可选 serde / PNG 渲染)。与常见装箱库只保证\"投影不重叠\"不同,它要求货物底面被支撑物顶面恰好托住(`y1 == y0`),不得悬空;每件货物可声明允许悬空比例(`allowed_float_ratio`,0 = 底面必须完全被支撑,1 = 可完全悬空,默认 0.25),并内置重力修正、缝隙吸附、绑定组、多箱分配与重心均衡。配套 proptest 不变式测试与\"任何产出不得违反支撑规则\"的门禁测试,技术文档(`smartpacker/doc.md`)完整。Apache-2.0。\n\n截图:\n\n<img width=\"1712\" height=\"1112\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3c37fecc-8b36-403d-a911-9951bf1c15b3\" />\n<img width=\"1712\" height=\"1112\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/635daf42-45f9-4380-912f-22048638fa26\" />\n<img width=\"1712\" height=\"1112\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e4c70404-dc15-4397-87d3-aad94b22e96d\" />\n\n链接:\n\n- 应用:https://github.com/niyongsheng/best-load\n- 算法库:https://github.com/niyongsheng/SmartPacker",
-    "created_at": "2026-08-26T07:16:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11361"
-  },
-  {
-    "id": 11360,
-    "title": "【开源自荐】Ad Astra：纯前端实时星空 Web 应用",
-    "content": "Ad Astra 是一款可交互、可离线使用的实时星空 Web 应用。能够还原地球上的任意观测地点和时刻的天空：主要亮星、星座、太阳、月亮、行星、银河。用户可以操作视角转换，也能够通过slide滑动时间，观察星空随时间的变化。\n\n项目定位是科普级星空模拟：让画面与肉眼所见大致相符，用来认识星座、理解自转公转、黄道赤道、全天恒星等等。因为实现了岁差等功能，前后几百年的星空都是相对准确的。\n\n项目使用three.js+webGL2+React完成。\n\n预览：https://adastra.zhangzhicheng.info/\n源码：https://github.com/gunerguner/AdAstra\n\n源码里有项目的天文背景知识和技术方案的详细介绍，感兴趣的可以阅读。\n\n![夜晚](https://raw.githubusercontent.com/gunerguner/AdAstra/refs/heads/main/docs/assets/night.jpg)\n![黎明](https://raw.githubusercontent.com/gunerguner/AdAstra/refs/heads/main/docs/assets/dawn.jpg)\n![白天](https://raw.githubusercontent.com/gunerguner/AdAstra/refs/heads/main/docs/assets/day.jpg)\n\n\n\n",
-    "created_at": "2026-08-26T07:06:11Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11360"
-  },
-  {
-    "id": 11359,
-    "title": "【工具自荐】FastAPI 风格的接口自动化测试 Python 库",
-    "content": "项目地址：[Stoma](https://github.com/dengmingcong/stoma)\n\n一个接口自动化测试 Python 库，支持 IDE 自动联想接口参数和响应参数。\n\n<img width=\"1018\" height=\"510\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/72a8a3ad-17a5-4927-8251-4b56d3d07a50\" />\n\n提供了 CLI 命令基于 OpenAPI 协议自动生成接口。\n\n<img width=\"1200\" height=\"750\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b76c7a5e-11cf-4643-a008-6282a2001646\" />",
-    "created_at": "2026-08-26T06:57:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11359"
-  },
-  {
-    "id": 11358,
-    "title": "【开源自荐】医学计算器/相似病例/去隐私化skills:开源3个医学相关的skills, 欢迎医学佬试用",
-    "content": "AI医疗方向很多年经验了，开源几个相关方向的skills，欢迎交流\n\n项目一：医学计算器skills\n\n<img width=\"999\" height=\"830\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/541a1c7c-e649-41b4-9a4c-d60e98ea9619\" />\n\n<img width=\"975\" height=\"729\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/75845ff8-896c-4c11-99e9-b27269c5864a\" />\n\n项目链接：https://github.com/JuneYaooo/clinical-calculator\n\n项目二：相似病例skills\n\n<img width=\"996\" height=\"845\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/44742c02-1400-4212-ac8a-acbee35e55a3\" />\n\n项目链接：https://github.com/JuneYaooo/find-similar-medical-cases\n\n项目三：医疗文档去隐私化skills\n\n<img width=\"979\" height=\"745\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8b80c3f3-fb64-4d7f-98f0-e6c2331cbb67\" />\n\n项目链接：https://github.com/JuneYaooo/phi-pii-medical-deidentify",
-    "created_at": "2026-08-26T06:32:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11358"
-  },
-  {
-    "id": 11357,
-    "title": "【开源自建】best-skills：9 个开源的 Agent Skills 榜单数据",
-    "content": "## 简介\nAgent Skills 已经非常多了，如何选择和过滤是个问题。\n每个 Skills 市场只能看到部分数据，best-skills 收集了 主流 Skills 市场的数据、社交媒体声量数据，然后制作了 9 张榜单，每日更新，CC BY 4.0 协议。\n数据以 CSV 格式存放，适合进一步分析，甚至直接使用。\n\n仓库地址：[github.com/LinklyAI/best-skills/](https://github.com/LinklyAI/best-skills/)\n\n## 榜单\n\n<img width=\"1440\" height=\"675\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/180c4f87-8809-4fa8-9395-badfb6c71d09\" />\n\n## 数据来源\n- Skills 市场：skills.sh、ClawHub、腾讯 SkillHub\n- 社交平台：X、bluesky、hacknews、github\n\n",
-    "created_at": "2026-08-26T04:41:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11357"
   }
 ]
