@@ -1,5 +1,13 @@
 [
   {
+    "id": 11476,
+    "title": "【网站自荐】淘项有术 Hub AI工具箱 —— 合集了去水印、字幕提取、违禁词检测等实用工具",
+    "content": "给大家推荐一个 AI 工具箱导航站 —— **淘项有术 Hub**。\n\n它把各种 AI 应用、在线小工具和实用资源汇总到一个站，主打「即开即用、免费」。目前主要板块：\n\n- **AI 应用工具包**：视频去水印、视频文案提取、音频转文字、字幕提取、AI 证件照、二维码生成、短链接、文件格式/压缩、违禁词检测等\n- **在线视频工具**：M3U8/HLS 流媒体播放、视频格式转换、TS 合并，浏览器本地运行\n- **在线图片工具**：裁剪拼接、长图、马赛克打码、复古邮票、证件照，本地处理不上传\n- **AIGC 写作 & 视频创作**：论文初稿、查重、降重降 AI、AI 生成视频、图转视频、带货口播\n- **会员福利专区**：各类学习资源与技巧合集（登录可获取）\n\n很多工具无需安装、浏览器即可用，对经常做内容、做运营、需要随手处理文件的朋友比较实用。这是我个人长期维护的导航站，欢迎逛逛、提建议。\n\n**地址**：https://tx3242.t.taoxiangyoushu.com/",
+    "created_at": "2026-09-03T03:04:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11476"
+  },
+  {
     "id": 11474,
     "title": "【网站自荐】SiteHunter: 监控独立开发者正在做什么赚钱的产品？发现经过验证的流量市场",
     "content": "SiteHunter ( https://sitehunter.org )\n\n一个针对独立开发者的创业机会发现网站，站里维护了四张公开榜单：\n\n- AI 网站流量榜：数千个 AI 站点按访问量与增速排名\n- Micro SaaS 点子榜：按各产品送进 Stripe 收银台的流量排名，看哪些小产品有真实付费用户\n- AI 目录站提交清单：按真实流量排序的建外链清单\n- 新 AI 模型发布时间线：各大厂商的模型发布动态\n\n数据来自公开信号估算，每月整体刷新一次，看趋势和相对位置够用。适合找创业点子、做竞品调研的独立开发者。\n\n<img width=\"2654\" height=\"3714\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f3ecc92c-28c6-4e0a-bd2e-e2d363f6edbd\" />",
@@ -52,7 +60,9 @@
     "title": "【开源自荐】Subtitle Scout —— 自托管「字幕获取 agent」，LLM 逐条甄别候选字幕，只装最合适的那条",
     "content": "项目地址：https://github.com/fancydirty/subtitle-scout\n\n> 一个自托管的「字幕获取 agent」：盯着你的媒体库，搜五个字幕源、拿每条候选和视频本身对照校验、由 LLM 判断哪条最合适再落盘——宁缺毋滥，没有够好的就不装。不依赖 Jellyfin/Emby/Plex，直接扫文件系统。\n\n**它想解决什么**：常见的字幕自动化要么「按文件名硬匹配、装上一条对不上轴的」，要么「一部剧到底缺哪几集根本不告诉你」。Subtitle Scout 把字幕获取当成一个**证据问题**——由 agent 基于「搜索结果 → 校验事实 → 决策」自主判断，装不上就如实说「暂时没找到合适的」，绝不用一条烂字幕充数：\n\n- **五个源 + LLM 甄别**：ASSRT、OpenSubtitles、SubDL、r3sub、Jimaku（另有 SubHD/Zimuku 开关），读真实搜索结果按语言/版本/轴挑，装前对照视频校验。\n- **多语言分层**：中文源覆盖最厚；英、日、韩正式支持；西法德葡俄意可配置。缺中文字幕时可选让 LLM 从日文源翻译。\n- **季级追踪 + 每日巡检**：只回来补「还缺集」的剧；可选按 TMDB 反查整理目录（可逆）。\n- **一键自部署**：`docker compose up -d`，NAS/软路由/小主机都能跑；凭证只存在你自己的部署里（走数据库，不写进任何托管服务）。\n- **让你的 AI agent 替你装**：仓库自带 Agent Skill，Claude Code / Codex / Cursor 读了就能全程部署。\n\n字幕流——搜源、校验、逐格装上（覆盖格实时刷新）：\n\n![字幕流](https://raw.githubusercontent.com/fancydirty/subtitle-scout/main/docs/brand/lane-subtitle.gif)\n\n翻译流——缺中文时从日文源逐句翻译，四步进度 + 并发计数：\n\n![翻译流](https://raw.githubusercontent.com/fancydirty/subtitle-scout/main/docs/brand/lane-translate.gif)\n\n**免安装在线 demo**（只读，示例库，不碰你的任何东西）：https://demo.subtitlescout.com\n\n技术栈：单包 Node + better-sqlite3 + 进程内队列 worker，前端 React + Tailwind v4，3600+ 后端 / 1200+ 前端测试 + CI。AGPL-3.0、纯自托管，自带 LLM/TMDB/字幕源凭证——**不是托管服务**。\n",
     "created_at": "2026-09-02T10:52:13Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11468"
   },
   {
@@ -76,7 +86,9 @@
     "title": "【工具自荐】Git Agent：跨平台原生 Git 客户端，支持三方合并与可撤销的 AI 合并建议",
     "content": "自荐一个我开发的桌面 Git 客户端 **Git Agent**，基于 Rust 和 egui，支持 Windows、macOS 和 Linux。它把工作区、提交历史、差异审查和三方合并放在同一个工具中，AI 合并建议是可选辅助功能，不配置模型也能使用日常 Git 功能。\n\n- 项目仓库：[adoin/git-Agent](https://github.com/adoin/git-Agent)\n- 官网与真实截图：[git-agent.emssion.com](https://git-agent.emssion.com/)\n- 安装包：[GitHub Releases](https://github.com/adoin/git-Agent/releases/latest)\n- 中文文档：[README.zh-CN.md](https://github.com/adoin/git-Agent/blob/main/README.zh-CN.md)\n\n### 主要功能\n\n- **工作区与历史**：多仓库标签、批量暂存和取消暂存、提交图、按文件查找提交、双栏差异与语法高亮。\n- **三方合并编辑器**：同时查看两侧内容与合并结果，逐个跳转冲突、手动编辑，并支持撤销和重做。\n- **可审查的 AI 合并建议**：查看建议及解释，逐条采用；也可一次应用全部可执行建议，并通过一次撤销恢复。建议失效或改动相互冲突时，整批不应用。应用建议不会自动保存，最终结果仍由用户检查、保存和测试。\n- **其他 Git 工作流**：分支、标签、储藏、交互式变基、Git Flow、Git LFS、子模块和子树，以及中英文、深浅色外观。\n\n### 实际截图\n\n提交历史与差异视图：\n\n![Git Agent 实际运行截图：test-repo 提交历史与代码差异](https://git-agent.emssion.com/assets/history.png)\n\n深色模式的三方合并与 AI 建议：\n\n![Git Agent 实际运行截图：三方合并、AI 建议及应用所有建议入口](https://git-agent.emssion.com/assets/merge-dark.png)\n\n以上都是应用在测试仓库中的实际截图；AI 输出只代表此次测试，不保证其他冲突得到相同结果。\n\n### 使用与许可说明\n\n目前发布的 v1.4.0 提供 Windows x64 安装程序、macOS 通用架构安装包和 Linux Debian/Ubuntu amd64 包。使用前需要安装系统 Git；macOS 安装包目前使用临时签名，尚未经过 Apple 公证，具体说明见文档。\n\n应用可免费下载使用。AI 功能需要用户自行配置兼容的模型服务，服务商可能收取调用费用；发起分析时，代码和冲突上下文等内容可能发送给所配置的服务商，请先确认仓库规范与隐私政策。\n\n项目当前采用 **Apache License 2.0，附加 Commons Clause 1.0**，属于**源码可见**，不是未附加限制的 Apache 开源项目。允许公司内部使用；对主要依靠本软件功能向第三方收费的行为有限制，完整条款见 [LICENSE](https://github.com/adoin/git-Agent/blob/main/LICENSE)。\n\n项目仍在持续开发，欢迎试用并通过 [Issue](https://github.com/adoin/git-Agent/issues) 反馈实际使用中的问题，尤其是跨平台体验和复杂合并场景。\n",
     "created_at": "2026-09-02T07:53:35Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11464"
   },
   {
@@ -812,13 +824,5 @@
     "created_at": "2026-08-27T04:38:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11373"
-  },
-  {
-    "id": 11372,
-    "title": "【工具自荐】BenchSelf：19 个浏览器自测，给出的是百分位而不是一个分数",
-    "content": "链接：https://benchself.com/\n\n反应时间 240ms 算快还是算慢，取决于你用的是鼠标、触控板还是手机，但大部分自测站只丢给你一个数字。\n\nBenchSelf 是 19 个跑在浏览器里的自测：反应/反射、F1 起步灯、点击速度、鼠标硬件（回报率、抖动、双击、滚轮）、记忆（视觉/词语/序列/数字）、高频听力、周边视觉、色觉筛查。其中 17 个会把结果换算成百分位，并标出这个百分位是在哪个设备类别里算的、对照人群是谁。\n\n它跟同类站不一样的地方在于把「拿什么跟你比」摊开写了：新站没有自己的样本，所以每条基线曲线的来源都写在 methodology 页上，17 条里 3 条拟合自别人公开发表的数据，其余 14 条明确标着「估计值」。某个设备类别攒够 5000 次真实首测之后，基线撤掉，换成实测曲线。\n\n免费、无需注册、无广告、无联盟链接，测试页里不加载任何第三方脚本 —— 一个中途要去拉广告的测试，量到的是广告网络的延迟。\n\n界面目前只有英文。",
-    "created_at": "2026-08-27T03:59:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11372"
   }
 ]
