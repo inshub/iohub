@@ -1,5 +1,13 @@
 [
   {
+    "id": 11491,
+    "title": "【开源自荐】deja-vu：把 Claude Code、Codex、Cursor 等 22 个编码代理留在本机的会话记录变成可检索的记忆，装上就能用，不需要模型和 API key",
+    "content": "**项目地址：** https://github.com/vshulcz/deja-vu\n**中文说明：** https://github.com/vshulcz/deja-vu/blob/main/README.zh.md\n\n**项目介绍：**\n\nClaude Code、Codex、Cursor、OpenCode 这些工具每次会话都会把完整记录写到本机（~/.claude/projects、~/.codex/sessions 等）。deja-vu 直接索引这些文件，让代理拥有\"记忆\"——包括安装之前几个月的历史。别的记忆插件都是从安装那天开始记录，deja-vu 装上第一分钟就是满的。\n\n- 单个 Go 二进制，18 MB，没有守护进程，不调用模型，不需要 API key，数据不出本机\n- 支持 22 个编码代理的会话格式，一个工具的记忆可以被另一个工具用上\n- 代理自己会问：会话开始时得到本项目之前的结论；改文件前得到碰过这个文件的会话；命令报错后得到上次同样报错的解法\n- 命令行直接搜：`deja \"connection pool exhausted\"`，几 GB 的会话记录毫秒级返回\n- 索引时会把 key、token 之类的凭证去掉\n- 1.9 万个会话建索引 29 秒；同一台机器上和 agentmemory、MemPalace、CASS、claude-mem 的对比：https://vshulcz.github.io/deja-vu/guide/day-zero.html\n\n安装：`brew install deja-vu`，或 `go install github.com/vshulcz/deja-vu/cmd/deja@latest`，或 `npx @vshulcz/deja-vu`。MIT 协议。\n\n**项目截图：**\n\n![deja-vu 在 Claude Code 里召回三个月前 Codex 会话中的修复](https://raw.githubusercontent.com/vshulcz/deja-vu/assets/listings/recall-card.png)\n\n",
+    "created_at": "2026-09-03T16:16:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11491"
+  },
+  {
     "id": 11490,
     "title": "【工具自荐】AIGatehub —— 面向 Codex 的接入与用量管理平台，人民币套餐透明计价",
     "content": "【工具自荐】AIGatehub —— 面向 Codex 的 API 接入与用量管理平台\n\n如果你在用 Codex App / Codex CLI / CCSwitch，并且想要一个人民币充值的接入渠道，可以看看 AIGatehub（https://www.aigatehub.xyz ）：\n\n- 面向 Codex 的 API Key、Base URL 与用量管理，官方客户端改 base_url 即用\n- 人民币充值，套餐按 ¥1 = $1 额度口径明码标价：33 刀周卡 ¥29.9（约 9.1 折）、10 刀天卡 ¥9（约 9 折）、企业套餐 ¥1199 起（最高约 8.6 折）\n- 价格、套餐内容、额度变化、订单记录都展示在页面上，便于对账\n- 个人试用、团队协作都有对应档位，售后有技术交流群\n\n有任何问题欢迎在下面讨论。",
@@ -814,13 +822,5 @@
     "created_at": "2026-08-27T13:34:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11389"
-  },
-  {
-    "id": 11388,
-    "title": "【开源自荐】CSV Preflight Action：在 CI 中提前发现 CSV 结构问题",
-    "content": "项目地址：https://github.com/softpeanut/csv-preflight-action\n\nCSV Preflight Action 是一个免费、MIT 开源的 GitHub Action，用于在合并或发布前检查 CSV 文件的常见结构问题。它不上传数据，也不需要账号或 API 密钥。\n\n主要功能：\n\n- 检查空列名、重复列名、行列数不一致和完全重复行\n- 识别 UTF-8 BOM、无效 UTF-8 与常见分隔符\n- 在失败时生成 CSV 问题报告，并可作为 Actions artifact 保存\n- 支持单文件 10 MiB 上限和不同的退出码\n- 可使用完整 commit SHA 固定版本，降低供应链风险\n\n最小用法：\n\n```yaml\n- uses: softpeanut/csv-preflight-action@eb04c527a46ce3bc8bfc711fde8e93ca947597ae\n  with:\n    path: data/example.csv\n```\n\n项目包含中文文档、可直接复制的工作流示例和测试。适合维护数据集、静态站点数据文件或 CSV 导入流程的仓库。\n\n公开复现案例：一个 1.1 MB、1,583 行的自动生成 CSV 被检出 10 个完全重复行。案例明确说明上游 PR 仍在审核中，不是客户结果或已采用变更：https://softpeanut.github.io/csv-preflight/csv-ci-case-study.html\n\n说明：这是维护者本人自荐。核心 Action 完全免费；仓库文档另有可选的付费安装服务，但不影响免费功能。",
-    "created_at": "2026-08-27T13:31:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11388"
   }
 ]
