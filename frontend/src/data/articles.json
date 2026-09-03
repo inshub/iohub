@@ -1,8 +1,72 @@
 [
   {
+    "id": 11484,
+    "title": "【开源自荐】TextToTalk：一段文案或一个链接，自动变成一集 PPT 式科普讲解视频",
+    "content": "TextToTalk 是一个「文案 → 讲解视频」的自动化工具：粘贴一段文案或一个 URL，AI 先规划出可编辑的分镜大纲，再逐页展开成 PPT 式页面，配上解说、字幕和背景音乐，最后无头渲染导出 MP4。做一集 3 分钟的科普视频通常要过「写稿 → 做 PPT → 配图 → 录音 → 剪辑」五关，它把中间三步压缩成一次回车。\n\n几个设计上的取舍：\n\n- **大纲先行，而不是黑盒直出。** 先流式流出全局大纲，每页的核心信息、版式、角色、节奏都可以增删、上下移、逐页修改；确认之后才展开分镜——在花时间渲染之前先把方向定对。\n- **逐页重做，而不是整片重抽。** 第 5 页不满意，可以单独重新生成，或就地编辑标题 / 解说 / 要点 / 时长 / 版式；改完自动作废旧成片，状态回到可再渲染。\n- **零素材依赖，纯代码画一切。** 背景音乐是纯 Node 数学生成的 WAV（琶音 + 低音 + 包络），没有任何音频素材；地图是结构化 SVG（标记点 / 航线 / 区域多边形），不调用任何在线地图服务；图表、图示、图标全是矢量绘制。\n- **预览即成片。** 分镜缩略图不是示意图，而是直接用服务端真实的 Remotion 场景组件渲染出来的，1920 设计宽等比缩放，看到什么就导出什么。\n- **链接直接进，公众号也能抓。** 贴 URL 自动抓正文，静态页走内置 fetch，JS 动态渲染的页面（公众号 / 知乎等）自动回退 Playwright 真浏览器。\n- **桌面版开箱即用。** Electron 封装、内置 ffmpeg，设置面板配好 Key 就能用；也提供免安装包，整个文件夹拷进 U 盘带走。\n\n画面侧由 16 个场景组件 + 26 条分发规则组成，根据页面字段自动匹配模板，不需要手动挑。三种运行方式：Docker 一键起、本地开发跑源码、Windows 免安装包解压即用（无需 Node、无需 Docker）。\n\n已知限制：目前只支持 1920×1080 横屏；任务状态存在内存里，TTL 24 小时；渲染是逐帧 CPU 密集任务，长视频需要一点耐心。\n\nMIT 协议，欢迎 Issue 和 PR。\n\n仓库：https://github.com/chenwr727/TextToTalk",
+    "created_at": "2026-09-03T07:26:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11484"
+  },
+  {
+    "id": 11483,
+    "title": "【开源自荐】余生账单：把上班、通勤和睡眠换算成你真正付出的时间",
+    "content": "项目地址：https://github.com/YPYT1/sun-to-spark\n预览地址：https://sun-to-spark.pages.dev\n\n余生账单是一个纯前端的人生时间账单工具。\n\n它想回答一个很简单的问题：\n\n一份工作，你真正付出的到底是多少时间？\n\n我们通常只计算每天的 8 小时工作时间，却很少把通勤、加班、调休、睡眠，以及因为工作而被占用的其他时间算进去。\n\n所以我做了这个小工具，把这些时间放进同一张「账单」里，让你直观看到：\n\n每周、每月、每年到底有多少时间花在工作相关的事情上\n通勤一年会消耗多少时间\n睡眠占掉人生之后，还剩多少真正可以自由支配的时间\n调休、加班等因素加入后，一份工作实际占用了多少人生\n从现在开始计算，到退休之前，还剩多少可以自由支配的时间\n\n它不是一个职业规划工具，也不是为了劝你辞职。\n\n只是想把平时很难感知的「时间成本」，变成一个可以看到的数字。\n\n特点\n纯前端运行：不需要后端服务，数据直接在浏览器中计算\n配置可分享：配置变化会实时写入 URL，可以直接把结果分享给别人\n海报导出：可以直接在浏览器中生成结果海报\n隐私友好：没有后端，不需要上传个人信息\n开源：代码完全公开，可以自行部署和修改\n技术栈\n\nReact 19 + Vite + TypeScript + Tailwind CSS\n\n本地运行\npnpm install\npnpm dev\n\n测试：\n\npnpm test\n\n构建：\n\npnpm build\n\n如果你也好奇，一份工作到底从人生里拿走了多少时间，可以试试看。\n\n项目地址：https://github.com/YPYT1/sun-to-spark",
+    "created_at": "2026-09-03T07:24:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11483"
+  },
+  {
+    "id": 11482,
+    "title": "【开源自荐】AI WorkDeck：律师写的开源「律师 IDE」，把整个案子装进一个窗口",
+    "content": "**AI WorkDeck**：一位执业律师写的开源「律师 IDE」——把整个案子装进一个窗口。\n\n- 文件、AI 对话、依据窗格、浏览器、版本记录在同一个工作台里，工作单位是案件而不是一次提问\n- 编辑器是编译成 WebAssembly 的 LibreOffice，真 .docx；AI 的每处修改都以字符级修订留痕，由人逐条接受或拒绝\n- 桌面端本地存储；另有 Office/WPS 加载项、iOS 取证同步、插件市场\n- AGPL-3.0，macOS / Windows 安装包可直接下载\n\n仓库：https://github.com/zeweihan/aiworkdeck\n官网：https://www.aiworkdeck.com\n\n![工作台截图](https://raw.githubusercontent.com/zeweihan/aiworkdeck/master/.github/assets/workspace-ai.png)",
+    "created_at": "2026-09-03T07:16:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11482"
+  },
+  {
+    "id": 11481,
+    "title": "【开源自荐】EO2Weave：跑在浏览器里的 AI agent，能改本地文件，也能调用网站工具（WebMCP）",
+    "content": "**项目地址**：https://github.com/nutstore/eo2weave\n**在线体验**：https://weave.eo2suite.cn （推荐 Chrome / Edge）\n**开源协议**：MIT\n\n**一句话介绍**：EO2Weave 是一个完全跑在浏览器里的 AI agent 平台——授权本地文件夹后，agent 直接在浏览器内读写你的文件、执行 Python；装上配套 Chrome 扩展，还能按 WebMCP 标准调用网站暴露的工具。我们不收集任何数据（数据流向详见下方说明）。\n\n**为什么值得一试**\n\n现在的 AI 编程工具要么是 IDE 插件（得先装环境），要么要把代码传到云端。我们的思路是：浏览器本身已经是个足够强的 agent 运行时。\n\n- **AI agent 直接读写本地文件夹**：基于 File System Access API 显式授权，不装任何东西，打开网页就能让它改你的项目\n- **支持 WebMCP 标准**：配套 Chrome 扩展提供 WebMCP 工具发现——任何网站都能通过标准 API 把能力暴露成 agent 可调用的工具（「网站即 MCP server」），agent 自动发现并调用\n- **agent 自带联网**：扩展内置 web_search / web_fetch，浏览器内 agent 也能查资料、抓网页；另有 Rust native host 提供本机磁盘与命令执行桥（可选安装）\n- **本地优先存储**：SQLite WASM + OPFS；Pyodide 在浏览器里跑 Python（pandas / numpy / matplotlib），数据分析全程本地\n- **每次改动可回滚**：agent 的每一步文件修改都有 inline diff、快照和一键回滚，敢让 AI 大胆改\n- **Rust + WASM 加速**文件操作；**多代理协作**早期探索中\n\n**数据与隐私（提前说清楚）**\n\n- **平台本身没有后端**：你的文件、对话、配置全部存在浏览器本地（OPFS），我们没有服务器存储这些数据，也没有埋点上报\n- **模型自带（BYOK）**：在设置里填自己的 API key，支持 DeepSeek / GLM / Qwen / Kimi / MiniMax / 火山引擎，以及任意 OpenAI 兼容接口\n- **需要如实说明**：AI 请求由你的浏览器**直连**所选模型服务商，agent 读取的文件内容会经过该服务商的服务器、受其隐私政策约束——这点与所有云端 AI 工具相同；区别在于这些请求不经手我们的服务器，我们无法也无需接触\n- **本地 Python（Pyodide）执行的数据完全不出浏览器**\n\n**文档**（双语文档，这里列中文入口）：\n\n- 用户指南：https://github.com/nutstore/eo2weave/blob/main/USER_GUIDE.md\n- 快速上手（5 分钟本地跑起来）：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/guides/quick-start.md\n- 架构总览：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/architecture/overview.md\n- OPFS + SQLite WASM 存储方案：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/architecture/opfs-guide.md\n- Rust + WASM 工作流：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/architecture/rust-wasm-flow.md\n- WebMCP 与页面外 MCP 服务接入（Figma / 插件 bridge）：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/guides/mcp-page-outside-services.md\n- 浏览器扩展（WebMCP / web_search / native host）：https://github.com/nutstore/eo2weave/blob/main/browser-extension/README.md\n\n**适合谁**\n\n- 想让 AI 直接读写本地文件干活，但希望文件与工作数据默认留在自己电脑里、处理过程透明可回滚的人\n- 关注 agent 与浏览器结合、WebMCP 生态的工程师——我们在 SQLite WASM + OPFS、Pyodide、Rust WASM、浏览器扩展三层桥接上踩了不少坑，架构文档全部开源，欢迎交流\n\n站点打开即用。欢迎试用、提 issue、点个 star ⭐\n\n\n以下是浏览器扩展提供的侧边栏运行模式的相关截图：\n\n<img width=\"640\" height=\"400\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5d081627-ee7f-46c4-a28f-d58b9fd312ff\" />\n\n<img width=\"640\" height=\"400\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5020f36c-300f-4cb6-bd6b-0b82ddb59424\" />\n\n<img width=\"640\" height=\"400\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b2a11591-4bd1-4b75-b490-79efbc0fb5cc\" />\n",
+    "created_at": "2026-09-03T06:55:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11481"
+  },
+  {
+    "id": 11480,
+    "title": "【开源自荐】BongoCat  -  开源桌宠实时响应鼠标和键盘事件，使用纯C彻底重新实现",
+    "content": "<img width=\"800\" height=\"450\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cdcb5375-27c0-4799-8c04-87fad4a7d1c1\" />\n\n<img  height=\"580\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a94c9d2a-e054-4fb1-85e8-8692d7febd16\" />\n\n开源地址： https://github.com/vladelaina/BongoCat\n\n所有的**UI**，**交互**都使用**纯C + SDL3 + OpenGL** 实现，C++仅作为live2d的 Cubism Native Framework的桥接\n\n<img width=\"339\" height=\"154\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5e9f5771-85ca-4f02-acff-8fe76de05f21\" />\n\n得益于原生实现提交只有6mb，同时跨平台，运行时资源占用远低于同类型软件\n\n<img width=\"404\" height=\"103\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/73c28760-d029-41a0-b18c-ed628541ee6f\" />\n\n<img width=\"932\" height=\"511\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d7197905-3bae-4e30-b5e8-2134a402bb87\" />\n\n\n如果佬感兴趣这里还有一篇详细的介绍帖子 [Linux.do](https://linux.do/t/topic/2845597)",
+    "created_at": "2026-09-03T05:46:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11480"
+  },
+  {
+    "id": 11479,
+    "title": "［文章推荐］图片里没有文字，AI 是怎么凭一句话把它搜出来的？",
+    "content": "像素和Token，本是两个世界。但AI凭什么把撑伞的人和“雨天走在街上”精准配对？文章不甩术语，不堆公式，而是从三张图片三句话开始，像破案一样一步步拆解：怎么变成卡片？怎么打分数？怎么拉近正确、推开错误？直到最后你发现，AI对齐的不是单词，而是关系。这是那种读完会让你“哦——原来如此”的硬核科普。\n\n- [原文链接](https://mp.weixin.qq.com/s?__biz=MzY4OTMxODkyNQ==&mid=2247484065&idx=1&sn=c3797c398d187b89df4f353b76b0d50c&chksm=f2264033c4e500601f6e4adeb105402ca4ceecc17a462ee580de776fa4ca830f0b6a9ca960a5&sessionid=1788405393&scene=340&subscene=93&clicktime=1788406397&enterid=1788406397&jumppath=1003_1788405392039%2C1002_1788405392267%2C1001_1788405392578%2C50094_1788405393438&jumppathdepth=4&ascene=56&fasttmpl_type=0&fasttmpl_fullversion=8417261-zh_CN-zip&fasttmpl_flag=0&realreporttime=1788406397185&devicetype=android-35&version=28004d35&nettype=WIFI&abtest_cookie=AAACAA%3D%3D&lang=zh_CN&countrycode=CN&exportkey=n_ChQIAhIQzCjlWaAx1SPI4c1gqCYPbBLiAQIE97dBBAEAAAAAAFsKFEpZ2jsAAAAOpnltbLcz9gKNyK89dVj0PjCMmxhyxyqg9Oc5bcyXWve%2B%2FKX03YEDbt%2FwkD46pvTuBifq2r6CeIE%2FB8pl0LKPT9%2BKBsi%2FGEpllpJgGTFAY73Nb6xIOT3d%2BrxVqMhyBvSBfjUK8n7MkGboPIUj4OIfWfQ9CMDuds7y5QbvspHGsP%2BwoeONrE874jA%2BRKUAnr4tYHrBA4hE5jltRBu48B0i8WzoOjXdAphOnLS%2FcAxIfCzlMMDMJgvkDQo86koS0J6zMuHYeGvGg1B6xDY%3D&pass_ticket=so3MvIk0qToiPKJb4csaFFTGTFc6wskUVY%2F16Qg%2B5KBulO6QAM%2Be9b66px9d4%2Fkf&wx_header=3)",
+    "created_at": "2026-09-03T03:34:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11479"
+  },
+  {
+    "id": 11478,
+    "title": "〖网站自荐〗AiTop10.ai：用价格、功能和实际场景比较 AI 工具",
+    "content": "大家好，想分享一个我们最近在做的网站：AiTop10.ai。\n\n我自己找 AI 工具时，最容易卡在“看起来都不错”这一步。很多产品的介绍很漂亮，但真正决定要不要继续试，通常是几个更具体的问题：价格怎么算，免费版能做什么，核心功能是否真的对应自己的工作流，以及同类产品之间到底差在哪里。\n\nAiTop10.ai 是我们对这个问题的一次整理。网站按主题汇总 AI 网站和工具，对候选产品做分类比较，并把价格核对、关键功能、产品截图、适用场景和限制放到同一篇指南里，方便先看短名单，再决定要不要打开产品试用。\n\n地址：https://www.aitop10.ai/\n\n我们现在会重点整理这些信息：\n\n- 产品更适合哪种工作、创作或商业场景；\n- 它的核心功能和使用门槛；\n- 免费访问、起始价格和额度限制；\n- 实际选择时容易忽略的限制条件；\n- 为什么它会被放进某个类别的重点名单。\n\n排名不是为了给所有人找一个唯一答案。不同用户的预算、技术能力和工作流程不一样，所以我们更希望把比较依据写清楚，让读者可以自己判断一个工具是否适合。\n\n如果你最近在比较一组 AI 工具，欢迎来看看。也欢迎反馈：在选择工具时，什么信息最容易被现有榜单遗漏？",
+    "created_at": "2026-09-03T03:22:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11478"
+  },
+  {
+    "id": 11477,
+    "title": "〖工具自荐〗Best10.ai：先按使用场景筛出值得试的 AI 工具",
+    "content": "大家好，想分享一个我们正在做的网站：Best10.ai。\n\n找 AI 工具时，我经常遇到一个问题：搜索结果里有很多产品，但只看首页介绍，很难判断它到底适合什么工作。一个工具可能适合做视频，另一个更适合写作或开发；如果没有一个清楚的筛选过程，最后往往还是要打开很多页面逐个试。\n\n我们做 Best10.ai，起点就是想把“先建立一个靠谱的候选名单”这一步做得更简单一些。网站按具体类别整理 AI 工具，先从较大的候选范围里筛选，再给出不同使用场景下的重点推荐，而不是只做一个不加说明的工具链接列表。\n\n地址：https://www.best10.ai/\n\n每篇指南会尽量说明：\n\n- 这个工具主要解决什么问题；\n- 更适合哪类用户或工作流；\n- 它和同类产品相比有什么明显侧重点；\n- 免费使用、起始价格和功能限制需要注意什么。\n\n我觉得它更像是选工具前的第一轮过滤，而不是替用户直接做购买决定。AI 产品更新很快，价格、额度和功能也可能变化，所以这些信息仍然值得在正式使用前回到产品官网确认。\n\n如果你最近也在为某个具体任务找 AI 工具，欢迎看看。也想听听大家更希望先按什么维度筛选：工作场景、价格、上手难度，还是功能限制？",
+    "created_at": "2026-09-03T03:20:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11477"
+  },
+  {
     "id": 11476,
     "title": "【网站自荐】淘项有术 Hub AI工具箱 —— 合集了去水印、字幕提取、违禁词检测等实用工具",
-    "content": "给大家推荐一个 AI 工具箱导航站 —— **淘项有术 Hub**。\n\n它把各种 AI 应用、在线小工具和实用资源汇总到一个站，主打「即开即用、免费」。目前主要板块：\n\n- **AI 应用工具包**：视频去水印、视频文案提取、音频转文字、字幕提取、AI 证件照、二维码生成、短链接、文件格式/压缩、违禁词检测等\n- **在线视频工具**：M3U8/HLS 流媒体播放、视频格式转换、TS 合并，浏览器本地运行\n- **在线图片工具**：裁剪拼接、长图、马赛克打码、复古邮票、证件照，本地处理不上传\n- **AIGC 写作 & 视频创作**：论文初稿、查重、降重降 AI、AI 生成视频、图转视频、带货口播\n- **会员福利专区**：各类学习资源与技巧合集（登录可获取）\n\n很多工具无需安装、浏览器即可用，对经常做内容、做运营、需要随手处理文件的朋友比较实用。这是我个人长期维护的导航站，欢迎逛逛、提建议。\n\n**地址**：https://tx3242.t.taoxiangyoushu.com/",
+    "content": "给大家推荐一个 AI 工具箱导航站 —— **淘项有术 Hub**。\n\n它把各种 AI 应用、在线小工具和实用资源汇总到一个站，主打「即开即用、免费」。目前主要板块：\n\n- **AI 应用工具包**：视频去水印、视频文案提取、音频转文字、字幕提取、AI 证件照、二维码生成、短链接、文件格式/压缩、违禁词检测等\n- **在线视频工具**：M3U8/HLS 流媒体播放、视频格式转换、TS 合并，浏览器本地运行\n- **在线图片工具**：裁剪拼接、长图、马赛克打码、复古邮票、证件照，本地处理不上传\n- **AIGC 写作 & 视频创作**：论文初稿、查重、降重降 AI、AI 生成视频、图转视频、带货口播\n- **会员福利专区**：各类学习资源与技巧合集（登录可获取）\n\n很多工具无需安装、浏览器即可用，对经常做内容、做运营、需要随手处理文件的朋友比较实用。\n\n**地址**：https://tx3242.t.taoxiangyoushu.com/",
     "created_at": "2026-09-03T03:04:16Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11476"
@@ -760,69 +824,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/11381"
-  },
-  {
-    "id": 11380,
-    "title": "【开源自荐】mini-dsh：2000 行手写 DSH 最小运行时，学的是 Agent Harness 的架构，不只是那个 while 循环",
-    "content": "- 仓库：https://github.com/huangjunsen0406/mini-dsh\n- 许可证：MIT\n- 语言：Node.js，无构建步骤\n- 文档：README / ARCHITECTURE / LEARNING 各有中英两份\n\n**mini-dsh** 是按 DSH 概念手写的最小 Agent 运行时，建在官方的 [`@deepseek-ai/cordis`](https://www.npmjs.com/package/@deepseek-ai/cordis) 上。`src` 目录 22 个文件、2000 多行，一个下午能读完。\n\n## 和其他「手写 AI Agent」的区别\n\n网上多数手写 agent 教程，最后落在一个 while 循环加几个工具调用上。跑得起来，但它没回答真实 harness 里最难的那个问题：**这些东西是怎么被组织起来的**。\n\nmini-dsh 保留的是架构，不是循环：\n\n- Cordis Context / Plugin / Service —— 插件容器与依赖注入\n- Session Event Log -> `deriveMessages()` —— 历史是从事件日志推导出来的，不是往数组里 push\n- Tool Registry -> register / schemas / execute\n- LLM Provider Adapter\n- Agent Loop -> model -> tool -> model -> answer\n\nAgent Loop 不知道 Bash 是什么，也不知道 Context7 是什么，它只认识 `ctx.tools`。Agent 自己只是薄薄一层包装：sessionId + model + loop。这是整个项目里最值得学的一点。\n\n为了证明「Everything is a Plugin」不是口号，它接了官方的 `@deepseek-ai/dsh-mcp-client` + Context7：MCP 工具经由同一个 `ctx.tools.register` 进来，Agent Loop 一行不改。Context7 连不上时 CLI 照常启动，只是少了那几个工具。\n\n## 明确写了「没做什么」\n\nREADME 单开一节列出故意省略的东西：maxSteps、token/成本预算、compaction、无进展检测、stop hooks、steering 队列、完整权限系统、TUI/Web UI，并说明为什么理解 Agent Harness 的核心不需要它们。\n\n也包括那个后果：循环唯一的正常终止条件是模型不再请求工具，所以理论上坏的模型或工具链可以一直转下去。这个项目是拿来学的，不要当生产运行时用。\n\n说清楚边界，比假装完整有用。\n\n## 想自己写一遍\n\n不建议先通读仓库。先扫一遍 ARCHITECTURE.md 建立整体图景，然后新开一个空项目，跟着 LEARNING.md 一个里程碑一个里程碑自己写下来。\n\n`test/core.test.js` 当行为文档用，每个 runtime 配一个例子。其中一个用例是 agent 连续调用 20 次工具才结束，用来证明循环里确实没有步数上限。\n\n## 截图\n\n![mini-dsh CLI](https://raw.githubusercontent.com/huangjunsen0406/mini-dsh/main/images/demo.png)\n\n写文件和执行 bash 前会先问 `[Y/n]`；agent 运行时按 Esc 取消当前这一轮。\n",
-    "created_at": "2026-08-27T08:19:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11380"
-  },
-  {
-    "id": 11379,
-    "title": "【工具自荐】Mossglen — 一个AI陪练，学外语的插件，支持8种语言",
-    "content": "**产品名称**：Mossglen\n\n**网址**：https://mossglen.app\n\n**Chrome 商店**：https://chromewebstore.google.com/detail/cofjpdekcclaniimffbbkonekpijpbdc\n\n**简介**：\n\n平时读外语文章很费劲，查词、翻译、记生词得开好几个工具来回切，索性自己写了个插件。\n\n在任何网页碰到外语文章（YouTube 视频也行），点一下插件，进一个干净的阅读页面。生词点一下出释义，自动记进生词本；整句看不懂就看母语对照，或者直接问 Pip——插件里住着的一只 AI 寒鸦。它记得你的水平、查过哪些词、在哪种句式上卡过，解释的时候会照着你的程度来，不会甩一堆术语。\n\n读完有几道小题，用来估你的阅读水平，之后内容难度会慢慢跟你对上。生词按 FSRS 排复习，到点提醒。\n\n目前支持英语、日语等 8 种语言，不用注册就能用。欢迎试试，有问题直接说。\n\n**截图**：\n\n<img width=\"1800\" height=\"1026\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31390719-f1e0-426f-868e-259a179c06d5\" />\n<img width=\"1800\" height=\"1026\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3f05a7ec-c041-409b-a799-8f1c26cf2729\" />\n<img width=\"1800\" height=\"1026\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/52f19f50-46b8-4eda-a588-8df0170726a9\" />\n\n希望能够在老师的周刊里出现，谢谢啦～",
-    "created_at": "2026-08-27T07:44:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11379"
-  },
-  {
-    "id": 11378,
-    "title": "投稿：WorkGround2 —— 本地优先的 AI 工程工作台（开源 · Go）",
-    "content": "软件名称：WorkGround2\n项目地址：https://github.com/KiddPhenix/WorkGround2\n许可证：MIT\n类别：AI 开发工具 / Agent 工作台\n\n简介：\nWorkGround2 是一个本地优先（local-first）的 AI 工程工作台，用 Go 写的一个二进制，把 CLI/TUI、桌面端和飞书/微信/QQ 机器人接到同一套 agent 内核上。\n\n几个特点：\n- 多模型：DeepSeek、OpenAI 兼容、Anthropic、本地 CLI provider 统一配置，不同任务可路由不同模型。\n- 省钱：长会话缓存命中 90%+，输入 token 成本约 1/5（呼应周刊第 408 期《你需要知道的 AI 缓存知识》）。\n- 安全：写操作可批准、可限制、可回滚（checkpoint + /rewind），适合直接在真实仓库里跑。\n- 不用盯屏：会话挂桌面小组件，任务完成弹「完成通知 + 几十字摘要」，不用守着终端等它跑完。\n\n安装：从 Releases 页下载对应平台构建；一次性任务 `WorkGround2 run \"...\"`。\n\n希望能在周刊里推荐，谢谢。\n",
-    "created_at": "2026-08-27T07:28:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11378"
-  },
-  {
-    "id": 11377,
-    "title": "【工具自荐】Webfem 拼豆图纸生成器：照片转品牌色号、颗数清单和可打印图纸",
-    "content": "我做了一个免费的在线拼豆图纸生成器，可以把普通照片、头像、宠物照片或动漫图片，转换成真正能够照着制作的拼豆图纸。\n\n工具地址：https://webfem.com/tools/pindou/\n\n做拼豆时，图片像素化只是第一步。真正制作还需要确定格数、匹配手头的拼豆品牌色号、统计每种颜色的数量，并处理转换后产生的杂色。\n\n这个工具把这些步骤整合到了一起：\n\n- 上传 JPG、PNG 图片，自动生成拼豆图纸\n- 支持 MARD、COCO、漫漫、盼盼、咪小窝等品牌色号\n- 自动统计每种颜色以及整张图纸需要的拼豆颗数\n- 支持调整格数、合并相近颜色和排除杂色\n- 可以放大图纸逐格改色、擦除或批量替换颜色\n- 导出带网格、坐标、色号和用量统计的高清 PNG\n- 支持导出 CSV，方便保存和继续编辑\n- 手机和电脑浏览器都可以使用\n- 免费、无需注册\n\n图片转换和颜色计算都在当前浏览器中完成，原图不会上传到服务器，比较适合处理头像、家庭照片等不方便上传的图片。\n\n支持在线编辑\n\n<img width=\"2648\" height=\"1820\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1c879328-6ded-4026-b51b-e8863f1a5af9\" />\n\n\n这个工具更关注“生成后能不能真正照着拼”：除了转换效果，还提供品牌色号、颗数清单、网格坐标和逐格精修功能。\n\n欢迎拼豆爱好者试用，也欢迎提出改进建议。\n\n项目地址：https://webfem.com/tools/pindou/",
-    "created_at": "2026-08-27T07:23:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11377"
-  },
-  {
-    "id": 11376,
-    "title": "【开源自荐】Agentero：Agent友好的文献阅读器",
-    "content": "<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/16a86a8c-0f76-4fcf-9f9f-e02e9f592a8d\" />\n\n**Context is everything**。\n\n如果说今天的模型是 $f$，越来越聪明，也越来越像。同一个 $f$，决定输出 $y$ 的，是输入 $x$，也就是 context。\n\n但科研的 context 今天是碎裂的：PDF 和高亮批注可能在 Zotero 里，笔记在 Obsidian 里，你和 AI 的讨论、提问、方案留在对话框里。三者互不相通，再聪明的 Agent 也只能读到碎片。\n\n所以我们做了 Agentero，旨在构建 Agent 友好、Agent 原生的文献管理方式，探索人与 Agent 在文献管理中的协作方式。\n\nAgentero 是一个 Agent 时代的本地优先科研工作台，让输入、处理、输出三个环节都有 AI 参与。它不锁定具体 Agent 或模型——通过 ACP 接上你自己的本地 Agent（BYOA），工作上下文留在本地 Vault。\n\n网站下载地址: https://agentero.app\n开源仓库地址：https://github.com/poco-ai/Agentero\n\n## 功能\n\n- **Agent 原生体验**\n  - 通过 **ACP** 连接本机 Agent，Agentero 不锁定具体 Agent 或模型，工作上下文留在本地 Vault\n  - 支持快速安装、配置、卸载 Agent\n  - 支持划词对话、论文导入与 Skill 导入，让 Agent 参与检索、阅读与整理工作流\n  - 内置 CLI，支持导入论文、获取论文metadata、写入笔记、高亮等操作\n  - 内置 MCP，可以链接 ChatGPT web 等\n- **衔接 Zotero 生态**：兼容 Zotero 生态的导入方式，支持从标识符、链接或浏览器插件保存论文。一键导入 Zotero 书库，保留标签、笔记和附件。随时导出 BibTeX / BibLaTeX，衔接 LaTeX 写作流程\n- **论文导入**\n  - 支持软件内浏览 [Cool Papers](https://papers.cool/) 网站并导入文献\n  - 支持魔搭网站导入文献\n  - 支持 RSS 订阅\n  - 支持根据已有文献库推荐arXiv今日文献\n  - 支持搜索论文名字导入\n  - 支持 Zotero 浏览器插件导入文献\n- **文献管理**\n  - 支持获取库中文献的出版商，支持一键查找引用库中文献的新文献\n  - 解析论文的参考文献，并支持一键导入\n  - 论文标签、筛选\n  - 快速跳转对应 arXiv、alphaXiv 链接\n- **文献阅读与记录**\n  - 所见即所得的Markdown笔记编辑\n  - Markdown 双链语法与 `/` 快捷提示语法\n  - 支持一键翻译、按页翻译、划词翻译，支持多种免费 API 以及 BYOK 的 API 翻译服务\n  - 支持页码导航、适应宽/整页、大纲、⌘F 查找、平滑划词、高亮、批注、提问与翻译\n  - 解析论文中的图、表、公式与算法，并结合上下文理解\n- **云同步**：支持 S3 兼容的云同步服务。\n- **远程访问**：通过 SSH 隧道浏览远程知识库，数据保留在用户自己的服务器上。\n- **多系统兼容**：Mac、Windows、Linux，快捷键与常用软件保持对齐，不改变使用习惯。\n- **多种主题风格**： 支持多种主题风格，满足不同用户需求。\n\n## 界面预览\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/coolpaper.png\" alt=\"Cool Papers 浏览与导入\" width=\"90%\" />\n  <br/>\n  <sub>在应用内浏览 Cool Papers 并一键导入文献</sub>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/agent.png\" alt=\"Agent 伴读\" width=\"90%\" />\n  <br/>\n  <sub>分屏阅读 PDF，右侧 Agent 随时总结、提问与翻译</sub>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/translate.png\" alt=\"翻译与笔记\" width=\"90%\" />\n  <br/>\n  <sub>划词翻译、按页翻译，结合 Markdown 笔记整理要点</sub>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/rss.png\" alt=\"RSS 订阅\" width=\"90%\" />\n  <br/>\n  <sub>订阅 RSS 源，追踪最新论文与博客动态</sub>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/skill-import.png\" alt=\"Skill 推荐\" width=\"90%\" />\n  <br/>\n  <sub>浏览并安装社区 Skill，扩展 Agent 的论文阅读与写作能力</sub>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/agent-setting.png\" alt=\"Agent 设置\" width=\"90%\" />\n  <br/>\n  <sub>通过 ACP 连接本机 Agent，安装、升级与切换默认 Agent</sub>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/image.png\" alt=\"MCP 连接\" width=\"90%\" />\n  <br/>\n  <sub>内置 MCP，可将 Agentero 能力接入 ChatGPT 等外部客户端</sub>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/s3-sync.png\" alt=\"S3 云同步\" width=\"90%\" />\n  <br/>\n  <sub>配置 S3 兼容存储，实现 Vault 云同步</sub>\n</p>\n\n<p align=\"center\">\n  <img src=\"https://raw.githubusercontent.com/poco-ai/Agentero/main/docs/assets/theme.png\" alt=\"主题风格\" width=\"90%\" />\n  <br/>\n  <sub>多种配色主题，支持跟随系统与界面缩放</sub>\n</p>\n",
-    "created_at": "2026-08-27T06:59:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11376"
-  },
-  {
-    "id": 11375,
-    "title": "【开源自荐】Clean My Codex：查看和清理 Codex 占用的磁盘空间",
-    "content": "\n仓库：[https://github.com/FinnaXxx/CleanMyCodex](https://github.com/FinnaXxx/CleanMyCodex)\n\nClean My Codex 是一款开源桌面工具，用来查看 Codex 在本机占用了多少磁盘空间，以及这些空间分别被什么占用。它也把会话、会话资产、Worktree、工作区和插件放到一个界面里管理。扫描和清理都在本机完成，不会上传会话内容或文件元数据。\n\n![Clean My Codex 总览](https://raw.githubusercontent.com/FinnaXxx/CleanMyCodex/main/docs/images/overview-zh-light.png)\n\n## 为什么做这个\n\n用 Codex 久了，本机会慢慢积累不少文件：会话记录、为任务创建的 Worktree、Worktree 里的依赖和构建产物、生成的图片与可视化、Plan、插件旧版本，以及安装或更新中断后留下的临时目录。\n\n这些文件分散在不同位置。只看 `~/.codex` 的总大小，很难知道磁盘空间用到了哪里；直接进目录手动删除，也可能漏掉会话的数据库记录，或者让 Git 留下失效的 Worktree 记录。Clean My Codex 就是为了解决这个问题，把扫描、查看和删除放到一个界面里。\n\n## 支持的功能\n\n- 扫描 Codex 数据目录、会话、会话资产、插件、Worktree 和工作区，并按类别显示文件数量与磁盘占用。\n- 统一管理未归档和已归档会话。一个会话即使有多个续写文件或多层子代理，也会合并成一项；删除时会一并清理关联资产、索引和数据库记录。\n- 单独查看和删除会话资产，包括 ImageGen 生成的图片、Visualization 及其查看器、Plan 文档，并显示来源会话、文件数量和占用。\n- 查看 Codex 创建的 Worktree、Git 状态、构建产物占比和关联会话。删除时使用 `git worktree remove`；用户自己创建的 Worktree 只统计，不提供删除。\n- 查看 Codex 在用户文档目录中创建的工作区，标出未提交、未推送或状态未知的 Git 仓库，避免误删仍在使用的文件。\n- 管理插件版本，区分当前版本、旧版本和卸载残留；还可以设置定时清理，定期处理确认安全的临时目录、插件旧版本和过期会话。\n\n只有存在明确证据时，项目才会进入“建议清理”。配置、凭据、运行期数据库、桌面端登录数据和缓存等内容会计入总占用，但不提供删除；当前插件只通过 Codex 自己的卸载接口处理，不会被当成普通目录直接删除。\n\n## 支持平台\n\n- macOS 12 及以上，提供 Apple Silicon 和 Intel 安装包。\n- Windows 10 及以上，目前提供 x64 安装包，属于实验性支持。\n\n## 安装与提醒\n\n可以从 [GitHub Releases](https://github.com/FinnaXxx/CleanMyCodex/releases/latest) 下载。项目使用 MIT 许可证。\n\n目前仍在测试阶段，清理属于永久删除。第一次使用前建议先备份 Codex 数据，并在清理前退出 ChatGPT/Codex。macOS 安装包尚未公证，Windows 安装程序也还没有签名，首次打开时可能需要手动确认。\n",
-    "created_at": "2026-08-27T06:28:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11375"
-  },
-  {
-    "id": 11374,
-    "title": "【开源自荐】Day Monitor：不用手动开始/停止的 macOS 时间记录器，AI 看屏幕自动写日报、截图不落盘",
-    "content": "自荐一个自用的 macOS 菜单栏小工具。\n\n**Day Monitor** —— 不需要手动开始/停止：它每 ~20 秒截一次屏，交给 Claude Haiku 判断「你现在在干什么」，只把识别结果写进本地 SQLite，最后生成带时间轴、分类占比、跨日趋势和 AI 日报的仪表板。\n\n- 在线 Demo（浏览器直接打开，示例数据，无需安装和 key）：https://defiabell.github.io/day-monitor/\n- 仓库（MIT，中英双 README）：https://github.com/Defiabell/day-monitor\n\n先说最容易被误会的一点：**截图从不落盘**。每次截屏在内存里交给模型，拿回一行描述（比如「在 Cursor 写 React 组件」）之后图像本身就丢弃了。数据库里存的是时间戳、这行描述、分类、应用名，外加一串用来判断「画面有没有变」的感知哈希（perceptual hash，还原不成图片）。全部留在自己机器上，不上传任何服务器。\n\n其他几点：\n\n- 六个视图：全天时间轴、分类环形图、跨日趋势、应用排行、事件列表、Claude 写的当日复盘\n- 内置 token / 花费统计和月度预算上限，超了自动暂停，不会悄悄烧钱\n- 采集间隔可调，20 秒是默认值；调长省钱，调短更细\n- Tauri + Rust 打的 universal 包，`brew tap defiabell/tap && brew install --cask day-monitor`，或到 Releases 直接下 dmg\n- 需要自己的 Anthropic API Key；没有 key 也可以先点上面的在线 Demo 看效果\n\n![Day Monitor 仪表板](https://raw.githubusercontent.com/Defiabell/day-monitor/main/docs/demo.gif)\n\n做它的起因是：我想知道一天到底花在哪了，但所有需要「手动开始/停止计时」的工具我都坚持不过三天——忘了开、忘了停，最后数据全是错的。这个东西的设计前提就是「不需要我记得它存在」。\n",
-    "created_at": "2026-08-27T06:13:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11374"
-  },
-  {
-    "id": 11373,
-    "title": "【开源自荐】nanopi - 4MB 单文件的终端 AI 编程助手，十年前的老 Linux 也能跑",
-    "content": "仓库：https://github.com/ChrisZhangJin/nanopi\n\nnanopi 是 [Pi](https://github.com/earendil-works/pi) 的 Rust 移植 —— 一个跑在终端里的\nAI 编程助手（coding agent），编译产物是 ~4MB 的单文件静态二进制。\n\n## 为什么做这个\n\n现在的终端 AI 编程工具几乎都依赖 Node 运行时，老系统和精简容器装不上。上游有人提过\n要 musl 构建（[pi#8591](https://github.com/earendil-works/pi/issues/8591)），也有人提交过\n修复老 Linux glibc 版本不匹配的补丁（[pi#6546](https://github.com/earendil-works/pi/issues/6546)），\n都被关闭为 not planned。我自己就卡在这上面，所以用 Rust 重写了一版。\n\n## 特点\n\n- 单文件 ~4MB，静态 musl 链接，零运行时依赖，scp 上去就能用\n- glibc 2.12（CentOS 6）以上即可运行，Alpine 直接跑静态版\n- 支持任意 OpenAI 兼容接口，配 ollama / vLLM 就是完全离线的本地方案，代码不出机器\n- ratatui 写的终端界面，读文件、改代码、执行命令的过程流式渲染\n- 兼容 Pi 的 JSONL 会话、hooks、Agent Skills、`/fork`、`/resume`\n- MIT 协议\n\n## 安装\n\n```bash\nVERSION=v0.10.0\ncurl -L -o nanopi \\\n  \"https://github.com/ChrisZhangJin/nanopi/releases/download/${VERSION}/nanopi-${VERSION}-linux-x86_64-musl\"\nchmod +x nanopi && ./nanopi --version\n```\n\n预编译覆盖 Linux x86_64（glibc / musl）、macOS Apple Silicon、Windows；\nLinux ARM 目前需要自行从源码编译。\n\n项目还很新，star 不多，主要想找有类似场景的人试用一下、提提意见。\n\n![TUI 截图](https://raw.githubusercontent.com/ChrisZhangJin/nanopi/main/img/tui.png)\n",
-    "created_at": "2026-08-27T04:38:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11373"
   }
 ]
