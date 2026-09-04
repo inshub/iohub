@@ -1,5 +1,29 @@
 [
   {
+    "id": 11495,
+    "title": "Fix formatting in issue-411.md",
+    "content": null,
+    "created_at": "2026-09-04T02:46:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/11495"
+  },
+  {
+    "id": 11494,
+    "title": "自荐项目：Qirabot —— AI 视觉驱动的跨平台 GUI 自动化框架，无需 DOM 和选择器",
+    "content": "项目地址：https://github.com/qirabot/qirabot\n\nQirabot 是一个开源（MIT）的 Python GUI 自动化框架，由多模态 AI 视觉驱动：AI 像人一样\"看\"屏幕截图，决定下一步操作，直到完成任务。全程只靠像素，无需 DOM、无需选择器，因此浏览器、Android/iOS 真机、Windows 桌面和 Unity/Unreal 游戏都能用同一套 API 驱动，覆盖 Playwright / Selenium / Appium 无法触及的场景。\n\n一句话就能下达任务，比如让它在 iOS 真机上玩《梦幻西游》手游，从创号自动玩到 15 级（[完整未剪辑视频](https://qirabot.com/docs/zh/demos.html#mhxy_zero_to_15)）：\n\n```bash\nqirabot browser \"搜索 SpaceX，返回词条的第一句话\" --url wikipedia.org\n```\n\n![](https://assets.qirabot.com/demos/afk_journey_tutorial.poster.webp)\n\n主要特点：\n\n- **零门槛安装**：一行命令装好全部依赖，无需预装 Python；`qirabot doctor` 自动诊断环境。\n- **接入现有测试**：可直接传入已有的 Playwright / Selenium / Appium 会话，在 pytest 里混用 AI 步骤和传统选择器，一行 `bot.verify(page, \"商品网格正常显示且无报错横幅\")` 就是一个抗改版的视觉断言。\n- **隐私可控**：决策引擎在你自己的进程内运行，截图直接发往你自己配置的 Google Vertex AI / Gemini 模型，用你自己的凭据计费。\n- **可扩展**：支持挂载领域知识文件（教 AI 你的业务规则），支持注册自定义 Python 函数让 AI 中途调用（查数据库、取验证码、人工接管等）。\n- 每次运行生成带逐步截图的 HTML 报告，可录制视频；驱动真实鼠标键盘时有屏幕光晕提示，长按 ESC 一键中止。\n\n完整文档（中英文）：https://qirabot.com/docs/zh/\n",
+    "created_at": "2026-09-04T02:02:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11494"
+  },
+  {
+    "id": 11493,
+    "title": "【开源自荐】Nova-TradingAgent：自托管 A 股多智能体投研台（十五人辩论，默认可关下单）",
+    "content": "**项目地址：** https://github.com/rufeng0411/Nova-TradingAgent  \n**文档：** https://rufeng0411.github.io/Nova-TradingAgent/  \n**许可：** AGPL-3.0\n\n**项目介绍：**\n\nNova-TradingAgent 是可自托管的 A 股投研台。上游 TradingAgents 那条多智能体辩论图还在，外面加了能登录的 Web（FastAPI，端口 8000）、专业 K 线、数据翻译层，以及按需打开的 Tushare L2 和 Qlib 桥。十五个角色吵完有一份能翻的研报。默认不连券商、不下单，输出不是投资建议。\n\n适合自己电脑上跑 LLM 投研、又不想把数据和报告交给别人的人。安装按仓库 `docs/zh-CN/install.md`，健康检查是 `GET /healthz`。\n",
+    "created_at": "2026-09-04T00:40:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11493"
+  },
+  {
     "id": 11492,
     "title": "【开源项目自荐】Footprint - 高颜值旅行与美食足迹记录平台（支持 3D 地球与通关护照）",
     "content": "介绍产品定位（旅行+美食）、核心亮点（1/4/9多图排版、3D点亮地球、通关护照复古入境印章、双人情侣空间、离线桌面双模）、附上 GitHub 链接与 GitHub Pages 免装体验链接。\nhttps://github.com/linkingoscar/footprint",
@@ -270,7 +294,7 @@
   {
     "id": 11457,
     "title": "【项目自荐】炼丹炉 Alchemy Furnace —— 让 Agent 不止会回答，也像一个正在与你共同生活的人",
-    "content": "炼丹炉 Alchemy Furnace ——  让 Agent 不止会回答，也像一个正在与你共同生活的人\n\n自荐一个正在开发的开源项目：[炼丹炉 · Alchemy Furnace](https://github.com/yusanwen-code/alchemy-furnace)\n\n很多 AI Agent 很能完成任务，但很难形成稳定、可辨认的表达习惯与相处方式。炼丹炉想探索的是：怎样让 Agent 不只是一张静态人设卡，而是能在对话中持续呈现性格、价值取向、知识偏好和情绪节奏的个体。\n\n项目把这些语言模式和人格特质抽象成可组合的「金丹」：可以创建道人、让道人服用不同金丹，并观察它们在对话中如何协调、冲突与涌现。\n\n## 主要能力\n\n- **金丹炼制**：把表达方式、思考习惯、技能倾向或人格特质沉淀成结构化配方；也支持从已有材料中智能蒸馏候选草稿。\n- **道人塑造**：为 Agent 配置身份、基础性格、头像、模型与所服金丹，形成可持续演化的对话角色。\n- **人格融合**：按权重和顺序组合多枚金丹，不只是拼接提示词，而是尝试生成新的行为规则与人格特征。\n- **对谈与围炉论道**：支持一对一持续对话，也支持多个道人围绕同一主题交流，直观看见不同人格之间的互动。\n- **可追溯的演化过程**：金丹、丹方版本、服用记录和融合来源均可追溯；金丹可以作为消耗品使用，并保留已吸收的能力记录。\n- **本地优先桌面应用**：基于 Wails，运行在 macOS 和 Windows 本机；数据默认保存在本地 SQLite，模型调用使用用户配置的 OpenAI 兼容接口，API Key 加密保存。\n\n技术上，它由 Go 负责桌面端与业务编排，Python 负责语言模式合成与模型调用，Next.js 提供界面。当前提供 macOS Apple Silicon、macOS Intel 与 Windows x64 的桌面安装包。\n\n项目地址：[https://github.com/yusanwen-code/alchemy-furnace](https://github.com/yusanwen-code/alchemy-furnace)\n\n欢迎对 AI 人格、Agent 交互、Prompt/Skill 组合感兴趣的朋友试用、提 Issue 或交流想法。",
+    "content": "炼丹炉 Alchemy Furnace ——  让 Agent 不止会回答，也像一个正在与你共同生活的人\n\n自荐一个正在开发的开源项目：[炼丹炉 · Alchemy Furnace](https://github.com/yusanwen-code/alchemy-furnace)\n\n很多 AI Agent 很能完成任务，但很难形成稳定、可辨认的表达习惯与相处方式。炼丹炉想探索的是：怎样让 Agent 不只是一张静态人设卡，而是能在对话中持续呈现性格、价值取向、知识偏好和情绪节奏的个体。\n\n项目把这些语言模式和人格特质抽象成可组合的「金丹」：可以创建道人、让道人服用不同金丹，并观察它们在对话中如何协调、冲突与涌现。\n\n## 主要能力\n\n- **金丹炼制**：把表达方式、思考习惯、技能倾向或人格特质沉淀成结构化配方；也支持从已有材料中智能蒸馏候选草稿。\n- **道人塑造**：为 Agent 配置身份、基础性格、头像、模型与所服金丹，形成可持续演化的对话角色。\n- **人格融合**：按权重和顺序组合多枚金丹，不只是拼接提示词，而是尝试生成新的行为规则与人格特征。\n- **对谈与围炉论道**：支持一对一持续对话，也支持多个道人围绕同一主题交流，直观看见不同人格之间的互动。\n- **可追溯的演化过程**：金丹、丹方版本、服用记录和融合来源均可追溯；金丹可以作为消耗品使用，并保留已吸收的能力记录。\n- **本地优先桌面应用**：基于 Wails，运行在 macOS 和 Windows 本机；数据默认保存在本地 SQLite，模型调用使用用户配置的 OpenAI 兼容接口，API Key 加密保存。\n\n技术上，它由 Go 负责桌面端与业务编排，Python 负责语言模式合成与模型调用，Next.js 提供界面。当前提供 macOS Apple Silicon、macOS Intel 与 Windows x64 的桌面安装包。\n\n项目地址：[https://github.com/mindaxis-ai/alchemy-furnace](https://github.com/mindaxis-ai/alchemy-furnace)\n\n欢迎对 AI 人格、Agent 交互、Prompt/Skill 组合感兴趣的朋友试用、提 Issue 或交流想法。",
     "created_at": "2026-09-02T01:45:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11457"
@@ -796,31 +820,5 @@
     "created_at": "2026-08-27T17:20:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11393"
-  },
-  {
-    "id": 11392,
-    "title": "【开源自荐】blob-downloader v0.1.0 一个能把网页里 blob 链接直接存下来的 chrome插件",
-    "content": "网页上的视频和导出文件经常藏在 blob 链接后面，右键另存为完全没用，所以我自己写了一个\n\t\n它在页面脚本跑起来之前就接住了 url.createobjecturl，自己留一份引用，所以就算网页已经 revoke 掉链接，文件还是存得下来，一次性导出、生成的图片、解密后的附件都算\n\t\n流媒体更麻烦，blob 链接后面根本没有数据，数据是边播边来的，所以它在播放器往 mediasource 里 append 的时候一段一段抄下来，把视频完整播一遍就能拿到文件，音轨和画面是两个文件，用 ffmpeg 合一下\n\t\n下载走的是 chrome.downloads，而不是在页面里点一个隐藏链接，后者只有第一次有效，之后 chrome 会静默丢掉，我实测过，存五次只落地一个文件\n\t\nManifestV3，只申请了 storage 和 downloads 两个权限，全程本地，一行联网代码都没有，代价是内存，它把媒体留在页面自己的堆里，每条轨道最多 512 mb，弹窗每一行都写清楚在留什么\n\t\n[Github: aeroxy/blob-downloader](https://github.com/aeroxy/blob-downloader)",
-    "created_at": "2026-08-27T15:28:16Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11392"
-  },
-  {
-    "id": 11391,
-    "title": "【开源自荐】Lody: 面向团队与 Coding Agent 的共享工作区",
-    "content": "项目地址： https://github.com/LodyAI/Lody\n官网地址：https://lody.ai\n\nLody 是 Coding Agent 协作工作空间。它把分散在不同成员、Agent 和机器里的会话、运行状态与代码改动放到同一个空间中。团队成员可以打开彼此的会话继续讨论，也可以从浏览器或手机向一台在线机器发起任务，并在任务运行时补充指令。\n\n但我们想解决的问题不止于此。\n\n软件系统的复杂度不只存在于代码里。一段代码可能来自某个业务规则、一次线上事故、一位重要客户的兼容要求，或者一个后来已经消失的技术限制。随着项目演进，这些决定一层层叠加，最终形成系统今天的样子。代码保留了结果，却不总能保留形成结果的理由。\n\n这些背景分散在设计文档、PR、Issue、会议、Agent 对话和团队成员的记忆中。当成员接手模块、审查改动或准备重构时，困难的往往不只是读懂代码，而是重新理解它背后的业务规则、领域概念、设计取舍和历史决策。\n\n我们希望 Lody 成为软件团队与 Coding Agent 共用的理解层：把对话、代码、任务、文档和历史决策联系起来，帮助团队追溯系统为什么成为今天这样，并判断新的改动会触及哪些既有约束。\n\n对话只是理解项目的起点。Lody 会围绕理解发展任务管理、文档和代码审查等能力。未来，我们希望探索通过插件让用户定义适合自己团队的工具，将其中的数据与项目的其他上下文连接起来，并在团队中同步。\n\n<img width=\"2560\" height=\"1280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b7dacc54-996c-434c-9da2-fc7751777773\" />\n\n<img width=\"3056\" height=\"2172\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bc11543e-3d5e-47dd-ac21-d3799e85a5c2\" />\n\n<img width=\"852\" height=\"492\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/585603e9-851c-40db-b7ce-7dc4d0b2449e\" />",
-    "created_at": "2026-08-27T14:34:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11391"
-  },
-  {
-    "id": 11390,
-    "title": "〖开源自荐〗ASMR Dubber：为日语/英语音视频制作中文配音、字幕和双语音频",
-    "content": "项目地址：https://github.com/EveningStudy/asmr-dubber  \nB站介绍与效果演示：https://www.bilibili.com/video/BV1f43G6YEov\n\n自荐一个最近在做的开源工具 **ASMR Dubber**。\n\n它主要用来处理日语、英语音频和视频。可以先进行语音识别或者导入已有字幕/台本，再翻译成中文，最后生成中文字幕、中文配音或者双语音频。\n\n和普通字幕工具相比，我比较想解决的听同人音声的时候“听不懂原音声”的问题：程序会保留原声，再按照原来的时间轴把中文配音混入进去。这样既可以继续听原本的声音、语气和环境音，也能直接听懂内容。我觉得效果还是挺好的。\n\n配音支持 IndexTTS2、GPT-SoVITS、CosyVoice、Fish Speech / Fish Audio、Edge TTS 等本地或云端方案，可以根据使用的模型进行音色克隆；语音识别支持 Parakeet、Kotoba-Whisper、Faster-Whisper 和通用 ASR API；翻译可以接入 DeepSeek、OpenAI、Claude、Gemini、DeepL 等服务。\n\n目前还支持：\n\n- 导入 SRT、VTT、ASS/SSA、LRC 和纯文本台本\n- 导出中文或双语 SRT/LRC 字幕\n- 将中文配音和原声混合，也可以只导出中文音轨\n- 批量扫描和处理包含多个音轨的 DLsite 作品\n- 保存项目进度和已经生成的配音缓存，失败后可以继续处理\n- Windows 10/11 和 x86_64 Linux\n\nREADME 中也放了实际效果演示。\n\n如果平时会处理日语/英语音声、字幕或者配音，可以试试看。项目目前还在继续完善，也欢迎 Issue、反馈和 PR。",
-    "created_at": "2026-08-27T14:03:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11390"
   }
 ]
