@@ -1,5 +1,37 @@
 [
   {
+    "id": 11499,
+    "title": "【开源自荐】一份能帮你通过AI面试的路线图",
+    "content": "一份能帮你通过AI面试的路线图\n\nhttps://zongyangbigpolo.github.io/awesome-ai-roadmap/\n\n市面上AI学习资料多如牛毛，但大多要么是零散的产品教程，要么是过于理论化的论文解读。这个仓库不一样——它按抽象层次组织知识，从模型原理一直讲到生产交付。\n\n九个主题，覆盖AI面试几乎全部考点：\n\nLLM（23章）：Transformer、训练对齐、解码量化、MoE、部署评测——面试必问的底层原理\n\n多模态AI（10章）：VLM、文档AI、语音、图像视频生成\n\nTools（15章）：Function Calling、MCP、A2A、LLM网关——工具调用是现在面试高频题\n\nAgent（23章）：架构、记忆、规划、反思、多Agent——今年最火的方向，面试几乎必考\n\nRAG（21章）：Embedding、向量检索、重排、多模态RAG——企业落地最广泛的技术\n\n框架与编排（23章）：LangChain、LangGraph、LlamaIndex、DSPy\n\nAI Engineering（13章）：LLMOps、评测、可观测性、成本优化——面试常问的工程落地\n\nAI安全与治理（10章）：Prompt攻击、红队、审计\n\nFDE（1章）：现场交付与方案选型",
+    "created_at": "2026-09-04T08:05:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11499"
+  },
+  {
+    "id": 11498,
+    "title": "【开源项目自荐】RoadTrip 让ai帮你规划自驾行程的一个skill｜在官网即可体验和使用",
+    "content": "# 出发前，先让 AI 把你的自驾行程\"找茬\"一遍——RoadTrip Navigator\n\n如果你用过 AI 帮忙规划自驾游，大概率遇到过这种情况：行程单看着挺美，图文并茂、景点选得也不错,可真开上路才发现——第三天要开5.5个小时山路还带着孩子、抵达时公园大门已经关了、某个山口这个季节根本不通、电车到目的地时电量已经低于安全线。AI很会\"编故事\"，却常常漏掉这些决定一趟自驾能不能顺利落地的细节。\n\n**[[RoadTrip Navigator](https://roadtripskill.dev/)](https://roadtripskill.dev)** 想解决的正是这个问题：不只是帮你\"想\",而是帮你在出发前把行程\"查一遍\"。\n\n## 它到底做什么\n\n两种用法都支持：\n\n- **从零规划**：一句话描述需求（比如\"从拉斯维加斯出发,7天西南国家公园环线,2名成人,燃油SUV,9月\"），它会给出两条可行路线,并围绕真实的每日驾驶时长、过夜点、预订、天气、加油/充电、季节性道路通行情况把行程搭起来。\n- **检查现成行程**：把你已经写好的日程贴进去,它会保留你的路线框架,逐项压力测试,标出哪里不现实、哪里有风险、哪里信息缺失，并直接给出修改建议(比如\"第4天缩短车程,建议提前90分钟出发\"或者\"这段山口这个季节通常封闭,建议走冬季线路,多绕42英里\")。\n\n它检查的维度覆盖了大多数通用AI行程规划工具会忽略的部分：**每日驾驶强度、地名与路线校验、实时天气与季节性关闭、预订提醒、燃油/电车续航模拟、跨境与时区、以及价格的可信度分级**(明确标注\"已验证/参考值/估算值\"，不会用看起来很精确的数字糊弄你)。\n\n## 一份能带上车的行程\n\n最终产出是一个独立的 `trip.html` 文件——手机上打开、发给副驾、打印、离线都能用。里面包含地图路线、每日时间线、天气/餐饮/住宿安排、预订清单、路线对比、预算，以及电车充电和跨境资料（如适用）。行程有变化时,用大白话描述修改意见（\"第4天缩短\"\"去掉蒙特雷\"\"在班夫住两晚\"）,它会更新受影响的部分,并自动刷新里程、天气、预算等衍生信息。\n\n北美地区支持最完善;国内自驾行程也有本地化输出,包括人民币预算和携程住宿链接。\n\n## 怎么用\n\n**Claude Code：**\n```\n/plugin marketplace add Waybox-AI/roadtrip-skill\n/plugin install roadtrip-navigator@roadtrip-skill\n```\n之后直接用日常语言提自驾需求即可自动触发,也可以用 `/roadtrip` 显式调用。\n\n**Codex / Cursor 等支持 SKILL.md 的 Agent：**\n```bash\nnpx skills add Waybox-AI/roadtrip-skill\n```\n\n**MCP Server**（14个可复用工具:路线规划、天气、公园信息、充电、边境、住宿、地名校验、页面渲染等）：\n```bash\nclaude mcp add roadtrip -- uvx --from git+https://github.com/Waybox-AI/roadtrip-skill roadtrip-mcp\n```\n\n不想装东西的话,也可以直接在网页版 [[roadtripskill.dev](https://roadtripskill.dev/)](https://roadtripskill.dev) 里免费体验，或者先看几个现成样例：[[西南7日环线](https://roadtripskill.dev/api/sample?name=sw)](https://roadtripskill.dev/api/sample?name=sw)、[[Sunnyvale→太浩湖3日](https://roadtripskill.dev/api/sample?name=tahoe)](https://roadtripskill.dev/api/sample?name=tahoe)、[[西雅图→温哥华电车4日](https://roadtripskill.dev/api/sample?name=pnw)](https://roadtripskill.dev/api/sample?name=pnw)、[[芝加哥5日环线](https://roadtripskill.dev/api/sample?name=chicago)](https://roadtripskill.dev/api/sample?name=chicago)。\n\n## 值得一提的是\n\n项目开源、MIT 协议，代码仓库在 [[Waybox-AI/roadtrip-skill](https://github.com/Waybox-AI/roadtrip-skill)](https://github.com/Waybox-AI/roadtrip-skill)，不需要额外的API key。它也很坦诚地列出了自己**不做**什么——不承诺实时油价/电价、不查实时车位/房间余量、不做逐向导航、不做整段GPX/KML导出（因为批量路径点容易把人导到季节性封路的道路上）。这种\"明确边界\"的态度，对一个要为真实自驾负责的工具来说,是加分项。\n\n如果你也在用 AI 规划自驾游,又受够了\"看起来很好、开起来翻车\"的行程,这个项目值得一试。\n\n---\n项目主页：https://roadtripskill.dev\nGitHub：https://github.com/Waybox-AI/roadtrip-skill",
+    "created_at": "2026-09-04T08:00:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11498"
+  },
+  {
+    "id": 11497,
+    "title": "【开源自荐】Catrace：桌面小窗系统",
+    "content": "### 项目地址\nhttps://github.com/lanxiuyun/Catrace  \n\n### 项目介绍\n#### 桌面端的小窗功能\n<img width=\"487\" height=\"681\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0fdee54c-b2f7-49b5-89fd-de1296cfe54b\" />\n\nCatrace 管这些小窗的生命周期：谁来弹、弹在哪、点击按钮反馈。小窗里显示什么、能怎么交互，由插件决定，就像 VS Code 那样。\n我的设想是：任何东西都可以写成插件，接入一个小窗窗口。\n现在这个期待基本满足了——只需要写一个插件，就能在右下角玩德州。\n我希望这块窗口是一块画布，任何人，甚至玩家，都可以在上面画画。\n\n我觉得未来应该有些窗口，小窗就够了。先做出来看看，试试这种小窗交互的感觉，会不会是桌面的一种方向。这也是我这个项目的灵魂。\n\n<img width=\"603\" height=\"777\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/392385bb-7758-4d9e-91c1-7be8290a84d7\" />\n\n#### 目前内置插件\n\n- **久坐提醒**：盯键鼠和前台软件，连续忙满一个工作窗口休息提醒。\n- **定时提醒**：喝水、护眼、固定时刻打卡，间隔或整点执行。\n- **AI 编程助手**：Claude Code、Codex 在终端里跑，小窗提醒进度和授权。\n- **手机消息**：短信和 App 通知弹到电脑上，验证码一键复制。\n- **GitHub 动态**：第一颗 star、第一个 issue，不用刷网页。\n- **PasteDrop**：直接将剪贴板里的图片，通过 ctrl+v 粘贴到桌面以及文件资源管理器。\n- **统计图**：今天坐了多久、这周哪天最狠，用来复盘。\n\n全都是插件，插件中心随开随关。也可以自己写。\n\n<img width=\"1640\" height=\"1094\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/26959803-8769-42d3-9b27-575a140649d7\" />\n",
+    "created_at": "2026-09-04T06:35:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11497"
+  },
+  {
+    "id": 11496,
+    "title": "【开源自荐】Mini MTR：香港地铁 3D 实时运行可视化",
+    "content": "<img width=\"3840\" height=\"1860\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ee8fd08c-54da-457a-b2ef-e3917e7d8a7b\" />\n\n## 项目信息\n\n- 项目地址：[https://github.com/7gugu/mini-mtr-3d](https://github.com/7gugu/mini-mtr-3d)\n- 在线体验：[https://7gugu.github.io/mini-mtr-3d/](https://7gugu.github.io/mini-mtr-3d/)\n- 许可：Apache-2.0 \n\n## 项目介绍\n\nMini MTR 是一个基于高德地图和 Three.js 实现的香港地铁 3D 可视化项目。目前覆盖 10 条港铁线路和 4,000 多个计划车次，支持实时模式、时间轴拖动、暂停及倍速播放，并提供天气、线路状态、事故提示和多语言界面。\n项目每 30 秒获取一次港铁 Next Train API 数据，将实时到站信息与计划时刻表进行匹配，再根据线路和运行时间推算列车位置。由于公开接口不提供列车 GPS 坐标，所以它更接近实时数据驱动的运行模拟，并非官方调度数据。\n创意最早来自 Mini Tokyo 3D。之前碍于自己的技术实力和数据匮乏，一直没能做成；最近用 GLM 5.3 Flash 重新把这个坑捡了起来，最后的完成度有些出乎意料。适合对港铁、地图可视化、Three.js 或 AI 辅助开发感兴趣的朋友体验和折腾。",
+    "created_at": "2026-09-04T03:58:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11496"
+  },
+  {
     "id": 11495,
     "title": "Fix formatting in issue-411.md",
     "content": null,
@@ -40,14 +72,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11491"
   },
   {
-    "id": 11490,
-    "title": "【工具自荐】AIGatehub —— 面向 Codex 的接入与用量管理平台，人民币套餐透明计价",
-    "content": "【工具自荐】AIGatehub —— 面向 Codex 的 API 接入与用量管理平台\n\n如果你在用 Codex App / Codex CLI / CCSwitch，并且想要一个人民币充值的接入渠道，可以看看 AIGatehub（https://www.aigatehub.xyz ）：\n\n- 面向 Codex 的 API Key、Base URL 与用量管理，官方客户端改 base_url 即用\n- 人民币充值，套餐按 ¥1 = $1 额度口径明码标价：33 刀周卡 ¥29.9（约 9.1 折）、10 刀天卡 ¥9（约 9 折）、企业套餐 ¥1199 起（最高约 8.6 折）\n- 价格、套餐内容、额度变化、订单记录都展示在页面上，便于对账\n- 个人试用、团队协作都有对应档位，售后有技术交流群\n\n有任何问题欢迎在下面讨论。",
-    "created_at": "2026-09-03T13:28:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11490"
-  },
-  {
     "id": 11489,
     "title": "【开源自荐】Subpool: 轻量级的团队AI订阅账号池化管理",
     "content": "\n自荐一个我们开发的开源项目 **Subpool**，它是一个面向团队的自托管 AI 订阅账号池化管理工具。\n\n很多团队购买了多个 AI 订阅账号，但在实际使用中容易遇到账号分配不透明、额度闲置、员工共用密钥、无法统一审计等问题。Subpool 将团队有权使用的订阅账号和 API 账号组成资源池，再为每位员工分配独立 API Key，通过统一接口进行调用。\n\n- 项目仓库：[gesta-run/subpool](https://github.com/gesta-run/subpool)\n- 快速开始：[README](https://github.com/gesta-run/subpool#quick-start)\n- 开源许可：[Apache License 2.0](https://github.com/gesta-run/subpool/blob/main/LICENSE)\n\n### 主要功能\n\n- **账号池化**：将多个 Codex 订阅账号或 OpenAI-compatible API 账号组合为资源池，未来将支持更多。\n- **员工独立 Key**：每位员工使用自己的 API Key，不需要接触上游账号凭据。\n- **自动分配与故障切换**：在健康账号之间分配请求，订阅额度不可用时可以切换到其他账号或付费 API。\n- **额度与健康监控**：查看账号剩余额度、重置时间、健康状态和分配情况。\n- **访问治理**：可以分别限制、过期或撤销员工 Key。\n- **统一 API**：提供 OpenAI-compatible Responses、Chat Completions 和 Responses WebSocket 接口。\n- **使用审计**：统计每个员工 Key 的输入、输出用量，并保留可见的账号分配关系。\n- **隐私保护**：上游凭据加密保存，不持久化提示词、模型回复或源代码。\n\n### 实际截图\n\n账号池与订阅额度管理：\n\n<img width=\"1773\" height=\"641\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/846e795a-6701-4c4d-88f9-d20868c1a7c0\" />\n\n### 部署与使用\n\nSubpool 由一个 Go 服务、内嵌的 React 管理界面和 PostgreSQL 组成，支持通过 Docker Compose 自托管部署。\n\n```bash\ngit clone https://github.com/gesta-run/subpool.git\ncd subpool\ncp .env.example .env\ndocker compose up -d --build\n```\n\n部署后，管理员连接团队已获授权的上游账号、创建资源池，再为员工生成独立 API Key。Codex 订阅账号通过官方 Device Code 流程授权，也支持添加 OpenAI-compatible API 服务。\n\nSubpool 当前仍在持续开发，欢迎试用，Star是最好的动力。\n\n项目采用 **Apache License 2.0**。Subpool 面向组织内部自托管和授权账号管理；使用时仍需遵守相应上游服务商的账号、订阅和 API 使用条款。",
@@ -76,7 +100,9 @@
     "title": "投稿：caddy-waf —— 给 Caddy 的 Web 应用防火墙（开源 · Go）",
     "content": "软件名称：caddy-waf\n项目地址：https://github.com/fabriziosalmi/caddy-waf\n文档：https://www.caddy-waf.com\n许可证：AGPL-3.0\n类别：Web 安全 / WAF / Caddy 模块\n\n简介：\ncaddy-waf 是一个用 Go 写的 Caddy Web 应用防火墙中间件，已注册为 Caddy 模块 `http.handlers.waf`，一行配置即可挂到现有站点前面。\n\n几个特点：\n- 规则引擎：正则规则 + 异常评分（anomaly scoring），可加载 OWASP CRS 风格规则。\n- 多维封禁：IP / DNS / ASN / 国家 黑名单，支持从文件热加载并每日更新。\n- 限流 + 可观测：内置速率限制和 JSON 指标端点（可对接 Prometheus/Grafana、ELK）。\n- 已上线：注册在 Caddy 官方模块目录，最新版本 v0.4.2。\n\n安装：`xcaddy build --with github.com/fabriziosalmi/caddy-waf`，或用 `caddy add-package`；详见文档。\n\n希望能在周刊里推荐，谢谢。\n",
     "created_at": "2026-09-03T09:28:16Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11486"
   },
   {
@@ -134,14 +160,6 @@
     "created_at": "2026-09-03T03:34:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11479"
-  },
-  {
-    "id": 11478,
-    "title": "〖网站自荐〗AiTop10.ai：用价格、功能和实际场景比较 AI 工具",
-    "content": "大家好，想分享一个我们最近在做的网站：AiTop10.ai。\n\n我自己找 AI 工具时，最容易卡在“看起来都不错”这一步。很多产品的介绍很漂亮，但真正决定要不要继续试，通常是几个更具体的问题：价格怎么算，免费版能做什么，核心功能是否真的对应自己的工作流，以及同类产品之间到底差在哪里。\n\nAiTop10.ai 是我们对这个问题的一次整理。网站按主题汇总 AI 网站和工具，对候选产品做分类比较，并把价格核对、关键功能、产品截图、适用场景和限制放到同一篇指南里，方便先看短名单，再决定要不要打开产品试用。\n\n地址：https://www.aitop10.ai/\n\n我们现在会重点整理这些信息：\n\n- 产品更适合哪种工作、创作或商业场景；\n- 它的核心功能和使用门槛；\n- 免费访问、起始价格和额度限制；\n- 实际选择时容易忽略的限制条件；\n- 为什么它会被放进某个类别的重点名单。\n\n排名不是为了给所有人找一个唯一答案。不同用户的预算、技术能力和工作流程不一样，所以我们更希望把比较依据写清楚，让读者可以自己判断一个工具是否适合。\n\n如果你最近在比较一组 AI 工具，欢迎来看看。也欢迎反馈：在选择工具时，什么信息最容易被现有榜单遗漏？",
-    "created_at": "2026-09-03T03:22:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11478"
   },
   {
     "id": 11477,
@@ -804,21 +822,5 @@
     "created_at": "2026-08-28T00:39:30Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11395"
-  },
-  {
-    "id": 11394,
-    "title": "自荐开源项目：GigaMail —— 给 AI 代理一个真实邮箱，\"发送\"键在人手里",
-    "content": "自荐一个开源项目。\n\nGigaMail（https://github.com/adecubed/gigamail）是一个本地运行的 MCP 服务器，让 Claude、Codex、OpenClaw、Hermes 等任何兼容 MCP 的 AI 代理访问用户的真实邮箱（Microsoft 365/IMAP）和日历。它只有一条核心规则：代理永远无法批准自己的发送——发送、删除等危险操作只返回一个惰性的请求 id，由人在 Windows Hello / Touch ID 背后带外批准后才执行，执行的是人当时看到的那份参数。\n\n0.2 版加入了\"带栅栏的自动回复\"：回复规则只能由人创建（不存在能触碰规则的 MCP 工具，邮件里的提示注入无法打开自动驾驶）；回复只发给通过验证的发件人；DMARC 未通过永不自动；规则必有过期时间、每日上限和突发自动暂停。草稿可以在 Telegram 或桌面通知里一键批准、拒绝或要求修改。\n\n项目不内置任何 LLM，起草由用户自己的代理完成，数据全部留在本机。AGPL 开源，安全模型和已知边界写在 SECURITY.md——此前的几个设计漏洞都是 Reddit 社区找到的，均在 changelog 中署名致谢。README 与控制台界面均提供中文（界面为作者初翻，欢迎帮我们打磨：console/i18n.js，PR welcome）。\n\n配图（人工控制台，代理起草、人批准）：\nhttps://raw.githubusercontent.com/adecubed/gigamail/main/docs/console-draft.png",
-    "created_at": "2026-08-27T20:40:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11394"
-  },
-  {
-    "id": 11393,
-    "title": "【开源自荐】crypto-python-sdk：轻量、简洁的统一加解密 SDK（支持国密和国际主流算法）",
-    "content": "## crypto-python-sdk\n> GitHub：https://github.com/TencentBlueKing/crypto-python-sdk\n> \n> 简介：BlueKing crypto-python-sdk 是一个轻量级密码学工具包，为 Python 应用提供统一的加解密实现， 便于项目在不同的加密方式之间进行无侵入切换。\n\n## 🍃 灵感由来\n\nPython 加密库通常功能齐全，但上手并不轻松：开发者需要处理算法参数、密钥格式和数据分段等底层细节，业务代码很难保持简洁。项目进行国密改造时，还要同时兼容存量的 RSA、AES 和新增的 SM2、SM4，迁移成本会进一步上升。\n\ncrypto-python-sdk 为国密和国际主流算法提供风格统一的 API，常见场景只需调用 encrypt() 和 decrypt()。SDK 还提供分段加密、Django Model 字段集成等实用功能，可以直接接入现有项目。\n\n可放心食用，已长期在生产环境，多项目 & 跨语言加解密交叉验证，支持包括 ARM、Apple M1 在内各个架构。\n\n## 🚀 功能\n\n* 提供加密统一抽象层，对接 cryptography / tongsuopy 等加密库，提供统一的加解密实现\n* 支持国际主流密码学算法：AES、RSA\n* 支持中国商用密码学算法：SM2、SM4\n* 非对称加密支持 CBC、CTR、GCM、CFB 作为块密码模式\n* 提供 `iv`、`padding` 等丰富的[自定义加解密配置](https://github.com/TencentBlueKing/crypto-python-sdk/blob/main/docs/usage.md)\n* 集成 Django settings、ModelField\n\n## 🔰 安装\n\n```shell\n$ pip install bk-crypto-python-sdk\n```\n\n\n## ⚙️ 快速开始\n\n### 1）非对称加密\n\n```python\nfrom bkcrypto.asymmetric.ciphers import BaseAsymmetricCipher\nfrom bkcrypto.contrib.basic.ciphers import get_asymmetric_cipher\n\n# 初始化 cipher 并默认生成密钥对\ncipher: BaseAsymmetricCipher = get_asymmetric_cipher(\n    cipher_type=constants.AsymmetricCipherType.RSA.value # or SM2\n)\n\n# 获取密钥对\nprint(cipher.export_public_key(),  cipher.export_private_key(), sep=\"\\n\")\n\n# 加解密\nassert \"123\" == cipher.decrypt(cipher.encrypt(\"123\"))\n\n# 验签\nassert cipher.verify(plaintext=\"123\", signature=cipher.sign(\"123\"))\n```\n\n## 2）对称加密\n\n```python\nimport os\n\nfrom bkcrypto import constants\nfrom bkcrypto.symmetric.ciphers import BaseSymmetricCipher\nfrom bkcrypto.contrib.basic.ciphers import get_symmetric_cipher\n\n# 初始化 cipher\ncipher: BaseSymmetricCipher = get_symmetric_cipher(\n    cipher_type=constants.SymmetricCipherType.SM4.value, \n    # 随机生成 16 位密钥\n    common={\"key\": os.urandom(16)},\n)\n\n# 加解密\nassert \"123\" == cipher.decrypt(cipher.encrypt(\"123\"))\n```\n\n\n### 3）Django 集成\n\n在 Django Settings 维护 SDK 配置\n\n```python\nfrom bkcrypto import constants\nfrom bkcrypto.symmetric.options import AESSymmetricOptions, SM4SymmetricOptions\nfrom bkcrypto.asymmetric.options import RSAAsymmetricOptions, SM2AsymmetricOptions\n\nBKCRYPTO = {\n     # 算法类型选择\n    \"ASYMMETRIC_CIPHER_TYPE\": constants.AsymmetricCipherType.RSA.value,\n    \"SYMMETRIC_CIPHER_TYPE\": constants.SymmetricCipherType.SM4.value,\n    # 对称加密实例，根据项目需要可以配置多个\n    \"SYMMETRIC_CIPHERS\": {\n        \"default\": {\n            # 可选，用于远程、文件密钥拉取。\n            # \"get_key_config\": \"apps.utils.encrypt.key.get_key_config\",\n            # 公共参数配置，不同 cipher 初始化时共用这部分参数\n            \"common\": {\"key\": \"your key\"},\n            \"cipher_options\": {\n                constants.SymmetricCipherType.AES.value: AESSymmetricOptions(key_size=16),\n                constants.SymmetricCipherType.SM4.value: SM4SymmetricOptions(mode=constants.SymmetricMode.CTR),\n            },\n        },\n    },\n    # 非对称加密实例\n    \"ASYMMETRIC_CIPHERS\": {\"default\": {\"common\": {\"public_key_string\": \"your key\"}}},\n}\n```\n\n全局皆可 import 引入，无须重复配置：\n\n```python\nfrom bkcrypto.symmetric.ciphers import BaseSymmetricCipher\nfrom bkcrypto.contrib.django.ciphers import symmetric_cipher_manager\n\n# using - 指定对称加密实例，默认使用 `default`\ncipher: BaseSymmetricCipher = symmetric_cipher_manager.cipher(using=\"default\")\nassert \"123\" == cipher.decrypt(cipher.encrypt(\"123\"))\n```\n\n也可用于 DB 加密字段：\n\n```python\nfrom django.db import models\nfrom bkcrypto.contrib.django.fields import SymmetricTextField\n\nclass IdentityData(models.Model):\n    password = SymmetricTextField(\"密码\", blank=True, null=True)\n```\n",
-    "created_at": "2026-08-27T17:20:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11393"
   }
 ]
