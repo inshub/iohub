@@ -1,5 +1,21 @@
 [
   {
+    "id": 11503,
+    "title": "【开源自荐】Seahelm：macOS 原生的 coding agent 控制台，一个窗口管多个 Claude Code / Codex",
+    "content": "## 项目信息\n\n- 项目地址：https://github.com/BetaYao/seahelm\n- 官网：https://seahelm.dev\n- 平台：macOS 14+（Apple Silicon / Intel）\n- 安装：`curl -fsSL https://seahelm.dev/install.sh | sh`\n\n## 项目介绍\n\n![Seahelm](https://raw.githubusercontent.com/BetaYao/seahelm/main/assets/tour.gif)\n\n同时开五六个 Claude Code / Codex 在不同 git worktree 里干活的时候，最大的问题不是工具不好用，而是不知道该看哪个窗口。终端长得都一样，只能一个个切过去看最后一行输出。tmux 能管窗口，但它不知道「agent 在等你确认」这件事，对 tmux 来说卡在权限询问的 Claude 和正在写代码的 Claude 没有区别。\n\nSeahelm 把这件事变成一眼可见：每个 repo 一个 tab，每个 git worktree 一张卡片，卡片上只显示 running / waiting / broken 三种状态。\n\n技术上有两点可能值得一提。\n\n一是终端渲染直接嵌了 libghostty（Ghostty 的 C 接口），Swift + AppKit，不是 Electron，延迟和渲染是原生终端的水平。会话持久化用 zmx，退出 App 或者重启电脑之后 agent 还在原地。\n\n二是状态判断做成了一个优先级梯子：进程退出状态 > OSC 133 shell 集成标记 > 文本正则匹配。正则那一层是数据驱动的，每个 agent 一份 JSON manifest，可以在 `~/.config/seahelm/agents/` 下覆盖。Claude Code 和 Codex 接了原生 hook，所以「在等你」是一个真实事件，不是从屏幕文字猜出来的。目前 12 个 agent 有状态识别：claude、codex、opencode、gemini、cursor、aider、amp、cline、goose、kiro、pi、agent。\n\n另外 agent 可以反过来操作它。每个 pane 都有 `SEAHELM_PANE_ID`，配一个控制 socket 和 CLI：\n\n```\nseahelm pane split <pane> --direction right\nseahelm pane run <pane> \"npm test\"\nseahelm wait agent-status <pane> --status Idle\n```\n\n所以一个 agent 能自己开一个兄弟 pane、把活派过去、然后等它做完。\n\n![工作区](https://raw.githubusercontent.com/BetaYao/seahelm/main/assets/screenshots/workspace.png)\n",
+    "created_at": "2026-09-04T12:29:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11503"
+  },
+  {
+    "id": 11502,
+    "title": "【独立工具推荐】Darktu 图像工坊 —— 纯浏览器本地离线计算的现代化图片批量处理网站",
+    "content": "### 1. 工具介绍\n- **名称**: Darktu 图像工坊 (Darktu Image)\n- **官网**: https://darktu.com\n- **核心定位**: 100% 浏览器客户端原生的批量图片处理工坊。纯前端本地离线计算，零服务端存储，数据物理绝缘不出本地。\n\n### 2. 为什么做这个产品？\n日常工作中经常需要批量调整尺寸、转 WebP/AVIF、压缩体积、清除照片隐私 EXIF 或打水印。市面上多数在线工具强制将图片上传至云端服务器，既有隐私泄露顾虑（如合同、证件照），处理大文件时又受限于上传带宽与等待队列。\n\nDarktu 采用纯前端架构，直接调用浏览器内存、Canvas 与 WebAssembly 进行本地多核并行处理，即便断网也能流畅运行，做到了真正的数据绝对私密与毫秒级即时响应。\n\n### 3. 核心特性\n1. **纯本地安全 (Airgap Private)**: 处理全程在本地内存完成，零服务器交互，断网可用；\n2. **多核并行极限压缩**: 支持 WebP、AVIF、MozJPEG，自动逼近最佳画质体积比；\n3. **高精尺寸缩放**: 双三次插值算法，支持 300 / 600 DPI 印刷级高精缩放与批量锁定长宽；\n4. **频域隐形水印 (2D-DCT)**: 支持明水印印章，以及基于离散余弦变换的防盗图隐形盲水印；\n5. **EXIF 隐私洗发水**: 批量一键抹除照片内的 GPS 经纬度、拍摄设备型号与时间；\n6. **无缝剪贴板体验**: 支持网页内直接 `Ctrl + V` 粘贴系统截图，处理完一键拷回剪贴板。\n\n### 4. 体验地址\nhttps://darktu.com\n",
+    "created_at": "2026-09-04T10:45:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11502"
+  },
+  {
     "id": 11499,
     "title": "【开源自荐】一份能帮你通过AI面试的路线图",
     "content": "一份能帮你通过AI面试的路线图\n\nhttps://zongyangbigpolo.github.io/awesome-ai-roadmap/\n\n市面上AI学习资料多如牛毛，但大多要么是零散的产品教程，要么是过于理论化的论文解读。这个仓库不一样——它按抽象层次组织知识，从模型原理一直讲到生产交付。\n\n九个主题，覆盖AI面试几乎全部考点：\n\nLLM（23章）：Transformer、训练对齐、解码量化、MoE、部署评测——面试必问的底层原理\n\n多模态AI（10章）：VLM、文档AI、语音、图像视频生成\n\nTools（15章）：Function Calling、MCP、A2A、LLM网关——工具调用是现在面试高频题\n\nAgent（23章）：架构、记忆、规划、反思、多Agent——今年最火的方向，面试几乎必考\n\nRAG（21章）：Embedding、向量检索、重排、多模态RAG——企业落地最广泛的技术\n\n框架与编排（23章）：LangChain、LangGraph、LlamaIndex、DSPy\n\nAI Engineering（13章）：LLMOps、评测、可观测性、成本优化——面试常问的工程落地\n\nAI安全与治理（10章）：Prompt攻击、红队、审计\n\nFDE（1章）：现场交付与方案选型",
@@ -806,21 +822,5 @@
     "created_at": "2026-08-28T00:59:31Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11397"
-  },
-  {
-    "id": 11396,
-    "title": "Update issue 410 title in README.md",
-    "content": null,
-    "created_at": "2026-08-28T00:55:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11396"
-  },
-  {
-    "id": 11395,
-    "title": "【工具】解忧工具箱：130+ 款纯前端本地运行的免费实用工具集",
-    "content": "### 项目名称\n解忧工具箱\n\n### 项目地址\nhttps://www.cqqzx.com/\n\n\n### 项目简介\n一个轻量、无需注册、完全免费的在线工具箱，包含 **开发辅助、跨境电商、日常办公、游戏辅助** 等 12 大分类、130+ 款实用小工具。\n\n### 核心特色\n1. **100% 前端本地运行**：所有数据转换与计算均在浏览器本地完成，不上传服务器，极大保护用户与开发者的数据隐私。\n2. **轻量极速**：秒级加载，无任何强制登录或付费墙限制。\n3. **覆盖垂直刚需场景**：\n   - **开发工具**：JSON 转 Dart/C# 强类型 Model、Robots.txt 生成、正则测试等\n   - **跨境与商业**：国际快递 DHL 计费重测算、亚马逊 FBA 尺寸分段与运费预估、全球 VAT 税率查询等\n   - **游戏与新媒体**：跨游戏鼠标灵敏度 1:1 换算（CS2/Valorant/Apex）、敏感词检测等\n\n欢迎大家体验并提出改进建议！\n\n<img width=\"1163\" height=\"922\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3a352b4a-a4bc-47e4-b415-e80e73698fc4\" />",
-    "created_at": "2026-08-28T00:39:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11395"
   }
 ]
