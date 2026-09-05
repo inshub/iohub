@@ -1,5 +1,53 @@
 [
   {
+    "id": 11512,
+    "title": "【工具自荐】Soul Color Test：一个完全在浏览器本地运行的灵魂颜色测试",
+    "content": "我是这个工具的开发者，想自荐一个完全在浏览器本地运行的英文测试网站。\n\n- [在线体验](https://soulcolortest.online/?utm_source=ruanyf_weekly&utm_medium=referral&utm_campaign=soul_color_launch)\n- [项目源码](https://github.com/joanjiaocn-rgb/soul-trait-extractor)\n\nSoul Color Test 提供 7 道题的快速测试和 16 道题的深度测试，根据用户在日常情境中的选择，生成主色、辅助色，以及深度、清晰度、连接和行动力四个维度的结果。\n\n它没有接入 AI API，也不需要注册账号。答题、评分和报告生成都在浏览器中完成，测试进度只保存在本地。项目使用 Next.js 和 TypeScript 开发，通过静态导出部署在 Cloudflare Pages。\n\n结果包含优势、成长方向、关系模式、工作倾向和一个短期反思计划。它定位为娱乐和自我反思工具，不是心理诊断或科学人格测量。\n\n欢迎体验并提出改进意见。\n\n<img width=\"1162\" height=\"1284\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b386d39e-93c1-42dc-96bb-a4beb2b61982\" />",
+    "created_at": "2026-09-05T12:04:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11512"
+  },
+  {
+    "id": 11511,
+    "title": "【开源自荐】keyboard-tester：开源的在线键盘测试器，支持 Windows / Mac / Chromebook",
+    "content": "### 项目地址\n\nhttps://github.com/binarytree/keyboard-tester\n\n### 在线试用\n\nhttps://keyboardtestonline.com （浏览器直接打开就能用，无需安装）\n\n### 介绍\n\n一个开源的在线键盘测试器。打开网页，按真实键盘上的任意键，屏幕上的键盘会同步亮起，用来检查按键是否正常、有没有卡键或失灵。代码是 TypeScript + Svelte 写的，零运行时依赖，全部逻辑都在浏览器本地运行。\n\n这个项目同时提供了两种使用方式：\n\n- **直接试用**：keyboardtestonline.com 是一个完整的在线工具站，除了基本按键测试，还有 Ghosting、Polling Rate、Latency、Chatter、CPS 等专项测试，全部免费、无广告。\n- **自行集成**：GitHub 仓库里除了核心逻辑，还提供了完整的 Svelte 5 组件和可运行 demo，`npm install && npm run dev` 就能跑起来，方便嵌入到自己的应用里。\n\n### 核心功能\n\n- **多键盘布局**：Windows、Mac、ChromeOS 三种系统布局，ANSI / ISO 两种格式，5 种尺寸（full 到 60%）\n- **按键状态检测**：能区分正常按键、卡键（按下没松开）、失灵（按键没反应），支持点击标记有问题的键，方便汇报给维修\n- **可复制的测试报告**：测完能生成一份文本报告，列出哪些键卡住、哪些没反应，方便发给售后或归档\n- **本地运行**：所有按键事件都在浏览器内处理，核心代码零网络调用，不上传任何输入内容\n- **42 个单元测试**覆盖状态机、布局结构、按键映射等核心逻辑\n\n### 特色说明\n\n如果你用的是 Chromebook，这个工具可能是目前唯一能正确显示其键盘布局的在线测试器。大多数同类工具只是把 Windows 键盘换几个键帽，而这里的 ChromeOS 布局是真实还原的：Search 键在 Caps Lock 的位置，顶行是 Chromebook 实际的返回、刷新、亮度、音量等功能键，而不是伪装成 F1-F12。对学校 IT 检查设备、或买二手 Chromebook 前验机的人来说，这能省不少事。\n\n### 截图\n\n![keyboard-tester](https://raw.githubusercontent.com/binarytree/keyboard-tester/main/images/chromeos-layout.png)\n",
+    "created_at": "2026-09-05T11:38:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11511"
+  },
+  {
+    "id": 11510,
+    "title": "【开源自荐】Casbin Gateway：花几分钱验一验，你买的「Opus 无限量」到底是不是 Opus",
+    "content": "项目地址：https://github.com/apache/casbin-gateway\n\n**Casbin Gateway** 是一个本地的 AI 编程 Agent 管理台，把机器上装的 Claude Code、Codex CLI、Cursor、Gemini CLI、opencode 全收进一个面板。Apache 2.0 开源，一条命令装完，Windows / macOS / Linux 都有。\n\n**最想安利的是验真功能。** 从中转站买的「Claude Opus 无限量」，卖给你的到底是不是 Opus，光看流量是看不出来的。Gateway 会自动向上游发一组探针问它：回答的模型是不是你点的那个？它自己说是谁训练的？前面有没有被人塞私货？同一个问题连问几遍是不是同一个模型答的？文档里写支持的参数（`logprobs`、`n`、停止词）是老实执行了、明确拒绝了，还是收了个 200 然后偷偷丢掉？没命中的缓存有没有被算成命中？两次一模一样的请求收费一不一样？最后给一个 0~100 的分和 A~F 的等级。\n\n每条测试用例的提问、发出去的原始请求、怎么判分、占多少权重，全都摊在页面上——你可以改权重、关掉某条、改问法，也可以自己加题。**一次探针花几分钱**，用的是那个 provider 自己的额度，报告里会写清花了多少。\n\n其他每天都在用的：\n\n- **换中转商点一下就换完**：不用再挨个去开 `~/.claude/settings.json`、`~/.codex/config.toml`、`~/.gemini/settings.json`。绑好之后所有 Agent 一起换，写进配置前能 Preview，写坏了能 Restore。\n- **混搭**：Codex 跑 DeepSeek、Claude Code 跑 Kimi 都可以，Gateway 在中间把协议翻译掉。\n- **这个月花了多少钱**：按天、按模型、按 Agent 拆开。数据是从 Agent 自己留在磁盘上的会话记录里读的，所以**没走网关的那部分也算得进来**。\n- **技能、MCP、提示词一张表看全**：从一个 Agent 复制到另一个，不用同一个 MCP Server 装五遍。\n- **给每个 Agent 定规矩**：约 40 个开关——不许开终端、不许联网、只许用这几个模型、贵的 opus 一律拒绝。关掉的工具在请求离开本机前就被摘掉，模型根本看不到。\n- **版本管理**：哪个 Agent 有新版一目了然，一键升级；升完发现坏了，一键回到旧版本。\n- **多开**：同一个 Agent 开好几个实例，各登各的账号。\n\n演示动图：https://cdn.casbin.org/img/casbin-gateway.gif\n",
+    "created_at": "2026-09-05T10:35:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11510"
+  },
+  {
+    "id": 11509,
+    "title": "【开源自荐】一息：iPhone 打开小红书之前先呼吸十秒，自建的 One Sec 替代品，一个 Worker 跑在 Cloudflare 免费额度里",
+    "content": "自荐一个自己在用的小东西。\n\n**一息** —— 你在 iPhone 上点开小红书（或者 Instagram、Reddit），App 打开之前，手机先跳到一个网页让你看着一团墨呼吸十秒。十秒后你可以「继续」进去，也可以「算了」放下手机。它把每一次都记下来，过一阵你能看到自己一周被拦了多少次、其中多少次真的忍住了。\n\n- 直接用（公开实例，免费，什么都不用部署）：https://yixi-app.pages.dev\n- 仓库（MIT，中英双 README）：https://github.com/Defiabell/yixi\n\n<img src=\"https://raw.githubusercontent.com/Defiabell/yixi/main/docs/images/breathing-paper.png\" width=\"280\"> <img src=\"https://raw.githubusercontent.com/Defiabell/yixi/main/docs/images/breathing-ink.png\" width=\"280\">\n\n**它是网页，不是 App。** 靠 iOS 自带的「快捷指令」——「打开 App 时」自动化先来问一句该不该拦，该拦就跳到呼吸页。所以不用装任何东西，也不用越狱或者 MDM 描述文件。整个后端是**一个 Cloudflare Worker 加一个 D1**，跑在免费额度里，成本约等于零；自己部署一份大概十五分钟，和公开实例是同一份代码。\n\n几个刻意的设计：\n\n- **「算了」是实心按钮，「继续」是一行小号下划线文字，而且晚 800 毫秒才出现。** 倒计时期间一个按钮都没有。默认路径应该是放下手机，不该做成两个等价选项。\n- **坏了就放行。** 服务挂了、网断了，快捷指令拿不到回应就直接开 App。一个自律工具最不该干的事是在自己宕机的时候把用户锁在手机外面。\n- **放行后有一分半的免打扰窗口。** 不然跳回 App 的那一刻自动化会再次触发，把自己关进死循环——这一条是整个项目里最不显然的部分，也是它比五十行代码多出来的理由。\n- 它是摩擦，不是墙。自动化随时两下就能关掉，这是刻意的。\n\n**关于隐私**：只记时间、哪个 App、你那次是继续了还是放下了；不记内容、不记位置。不愿意把「几点几分没忍住打开了哪个 App」放在别人服务器上的话，自己部署一份就是了。\n\n做它的起因很朴素：One Sec 我用过，有效，但它是订阅制的 iPhone App，而我想知道这件事能不能用一个网页加十五分钟部署解决。结论是能。\n",
+    "created_at": "2026-09-05T09:35:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11509"
+  },
+  {
+    "id": 11508,
+    "title": "【开源自荐】Day Monitor：自动记录你一天在干什么的 macOS 工具，现在可以完全本地跑，截图一个字节都不出机器",
+    "content": "上次投过一版（https://github.com/ruanyf/weekly/issues/11374 ），这次是 v0.3.0 带着一个新能力再来一次。\n\n**Day Monitor** —— macOS 菜单栏工具，不需要手动开始/停止。每 ~20 秒截一次屏，交给视觉模型判断「你现在在干什么」，只把识别结果写进本地 SQLite，生成带时间轴、分类占比、跨日趋势和 AI 日报的仪表板。\n\n- 在线 Demo（浏览器直接打开，示例数据，不用装也不用 key）：https://defiabell.github.io/day-monitor/\n- 仓库（MIT，中英双 README）：https://github.com/Defiabell/day-monitor\n\n**这次新增的是：可以完全本地跑。** 上一版只能发给 Anthropic 识别——这也是上次投稿后被问得最多的一点。v0.3.0 的设置里多了「模型端点」：填上任何兼容 Anthropic Messages API 的地址就行，本机 ollama（v0.14 起原生支持）配一个视觉模型，截图就一个字节都不出机器，也一分钱不花。填了自定义端点会**完全跳过内置的 claude CLI 路径**，不存在悄悄回落到官方 API 的可能。留空则行为和以前一样。\n\n其余没变，但值得说清楚的：\n\n- **截图从不落盘**。图片只在内存里待到识别完就丢弃，SQLite 里只有时间戳、一句话描述、分类、应用名，外加一串判断画面有没有变的感知哈希（还原不成图片）。\n- **黑名单的判定发生在截屏之前**，命中的应用根本不会被拍，所以不存在「拍了但没发」的数据。默认就带 1Password 和 Keychain Access。\n- 六个视图：全天时间轴、分类环形图、跨日趋势、应用排行、事件列表、AI 写的当日复盘。\n- 内置 token / 花费统计和月度预算上限，超了硬停。用官方 Haiku 一个工作日几毛钱，用本地模型免费。\n- Tauri + Rust 打的 universal 包：`brew tap defiabell/tap && brew install --cask day-monitor`，或到 Releases 下 dmg。\n\n![Day Monitor 仪表板](https://raw.githubusercontent.com/Defiabell/day-monitor/main/docs/demo.gif)\n\n做它的起因是：我想知道一天到底花在哪了，但所有需要「手动开始/停止计时」的工具我都坚持不过三天——忘了开、忘了停，数据全是错的。它的设计前提就是「不需要我记得它存在」。\n",
+    "created_at": "2026-09-05T09:25:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11508"
+  },
+  {
+    "id": 11507,
+    "title": "【开源自荐】SubnetDesk：无需公网服务器的局域网 / VPN 远程桌面",
+    "content": "## 项目地址\n\nhttps://github.com/zibo-chen/SubnetDesk\n\n## 项目简介\n\n我是 SubnetDesk 的作者。SubnetDesk 是一个基于 RustDesk 独立维护的开源远程桌面项目，专门服务于“设备已经网络互通”的场景：同一局域网、可路由私网，或者通过 WireGuard、Tailscale、OpenVPN 等 VPN 连接的网络。\n\n它去掉了公网设备 ID、信令、中继、云账号和代理等路径，改为直接连接 IP 地址或主机名；局域网内还可以通过 mDNS 自动发现设备。比较适合家庭实验室、办公室、教室和现场运维，希望把远程控制链路留在现有私有网络中的用户。\n\n主要特点：\n\n- 直接连接 IP 地址或主机名，TCP 端口可配置\n- mDNS 自动发现局域网设备，也支持手动输入地址\n- 用户名和密码认证，密码以 Argon2id 哈希保存\n- 首次连接核对并保存设备指纹，并支持 CIDR 来源网段白名单\n- 保留远程控制、剪贴板、音频和文件传输等 RustDesk 核心体验\n- 提供 Windows、macOS、Linux 和 Android 安装包\n\n当前稳定版是 v1.3.0，采用 AGPL-3.0 许可证。需要说明的是，它不提供公网信令或中继能力，两台设备必须已经可以通过 LAN、私网路由或 VPN 互相访问。\n\n![SubnetDesk 局域网设备发现](https://raw.githubusercontent.com/zibo-chen/SubnetDesk/master/assets/screenshots/device-discovery.png)",
+    "created_at": "2026-09-05T09:05:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11507"
+  },
+  {
     "id": 11506,
     "title": "【开源自荐】MPUp：从本地音乐文件生成带同步歌词的 MP4 视频",
     "content": "项目地址：https://github.com/HUGHNew/mpup\n\nMPUp 是一个面向本地 MP3 / M4A 文件的命令行工具：读取歌曲元数据、封面和同步歌词，生成适合分享的 1080p MP4 音乐视频。\n\n它不依赖文件名猜歌名和歌手，而是直接读取音频文件头中的 `title`、`artist` 等元数据。生成过程中会优先复用音频内嵌封面；没有封面时也支持从 iTunes artwork 回退获取。同步歌词会在画面右侧按时间逐句高亮展示，没有歌词时则显示静态提示。\n\n主要特点：\n\n- 支持 MP3、M4A，以及目录批量处理\n- 自动提取或补全封面，并将封面写入生成的 MP3 元数据\n- 支持同步歌词，当前句高亮、相邻句淡出，并带平滑切换动画\n- 使用 Remotion 生成 1920×1080、30fps 视频\n- 最终通过 FFmpeg 做 fast-start 封装，并用 FFprobe 校验视频参数后原子发布\n- 中间文件和批次工作区会在成功或失败后清理，已有输出默认不覆盖\n\n环境需要 Python 3.11+、uv、Node.js 22+、FFmpeg/FFprobe，以及一款可显示中文的字体。\n\n安装：\n\n```bash\nuv sync\ncd renderer && npm ci && cd ..\n```\n\n使用示例：\n\n```bash\nuv run mpup assets/春.m4a --output-dir output\n```\n\n欢迎试用和反馈。",
@@ -772,55 +820,5 @@
     "created_at": "2026-08-28T06:01:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11406"
-  },
-  {
-    "id": 11405,
-    "title": "〖开源自荐〗zlib：可供 AI Agent 调用的 Z-Library 命令行工具",
-    "content": "项目地址：https://github.com/heartleo/zlib\n\nzlib 是一个用 Go 编写的 Z-Library 命令行工具。\n它支持交互式操作，也支持命令行参数和 JSON 输出。\n项目还提供 Claude Code 插件。\nAI Agent 可以按书名搜索和下载。\n\n目前支持：\n\n- 交互式搜索：用方向键浏览和翻页，按回车下载\n- 按书籍 ID 或搜索结果下载，实时显示进度\n- 查看下载历史和每日用量\n- 通过 SMTP 把文件发送到 Kindle\n- 支持 EAPI、代理和自定义域名\n- 支持 macOS、Linux 和 Windows\n\n安装：\n\n```bash\n# macOS / Linux\nbrew install heartleo/tap/zlib\n\n# Windows\nwinget install heartleo.zlib\n\n# 或使用 Go\ngo install github.com/heartleo/zlib/cmd/zlib@latest\n```\n\n快速开始：\n\n先运行 `doctor` 检查域名。\n登录时，请从结果中选择状态为 `healthy` 的域名。\n\n```bash\nzlib doctor --eapi\nzlib login --eapi --domain https://z-lib.gd\nzlib search \"dune\"\n```\n\n![zlib 搜索演示](https://raw.githubusercontent.com/heartleo/zlib/main/docs/demo-search-static.gif)\n",
-    "created_at": "2026-08-28T05:05:54Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11405"
-  },
-  {
-    "id": 11404,
-    "title": "Fix date in issue-410.md",
-    "content": "Corrected the year from 20023 to 2023 in the article reference.",
-    "created_at": "2026-08-28T03:27:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11404"
-  },
-  {
-    "id": 11403,
-    "title": "【开源自荐】一句话，给喜欢的网站定制UI主题",
-    "content": "您好，阮老师。\n这是一个专做网站UI主题的Coding Agent浏览器插件。非常简单，你可以跟它说换一个奥特曼风格主题或者修改指定UI组件的样式，它都能很好的完成目标任务，遇到复杂任务人工调整平均不会超过3轮。\n\n开源地址：https://github.com/StyleSwift/StyleSwift\n体验地址：https://chromewebstore.google.com/detail/styleswift/llchggmimjgnbjlcgpkjmplhfbkjjcli\n\n如下是历史生成的效果：\n\n<img width=\"3120\" height=\"1904\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/66256576-c9db-4779-ada5-a8632eefeae5\" />\n\n<img width=\"3120\" height=\"1904\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/752254ba-2561-4529-921c-7c348d71b3ea\" />\n\n<img width=\"3120\" height=\"1904\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/87d1e046-07d5-4d9b-917c-1d4f34878703\" />\n\n<img width=\"3096\" height=\"1889\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca8dc80e-3e84-4ae2-9ef4-51663da0b220\" />",
-    "created_at": "2026-08-28T02:46:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11403"
-  },
-  {
-    "id": 11402,
-    "title": "Update README and fix year typo in issue-410.md",
-    "content": null,
-    "created_at": "2026-08-28T02:42:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11402"
-  },
-  {
-    "id": 11401,
-    "title": "Update issue 410 title in README",
-    "content": null,
-    "created_at": "2026-08-28T02:22:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11401"
-  },
-  {
-    "id": 11400,
-    "title": "更新一些信息错误",
-    "content": "- 410 issue 修正内容上的日期错误\r\n- README.md 修正410 issue的标题错误",
-    "created_at": "2026-08-28T02:11:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11400"
   }
 ]
