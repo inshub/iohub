@@ -1,5 +1,13 @@
 [
   {
+    "id": 11513,
+    "title": "投稿：猫砂 CatLitter —— 可恢复的冗余代码清理工具",
+    "content": "## 投稿：猫砂 CatLitter —— 一个\"删错能反悔\"的冗余代码清理工具\n\n**项目地址**：https://github.com/mamaruinvnv-creator/catlitter\n**语言/协议**：Python（零运行时依赖，3.11+）/ MIT / 跨平台\n\n### 一句话介绍\n像铲猫砂一样清理项目里的冗余/死代码：先扫出来、铲进可恢复的\"垃圾袋\"封存并记录清单，观察几天没问题再永久删除，后悔了可以字节级还原。\n\n### 为什么值得分享\n1. **思路有意思**：传统工具只有\"删/不删\"，它在中间加了一个\"隔离观察态\"——默认所有操作可逆，只有显式 `empty` 才不可逆，并给每处删除记录规则、原因和 SHA256，恢复时逐字节校验。\n2. **自动适配项目**：读 pyproject/package.json/go.mod 等标志文件，按语言和框架（React/Vue/Django/Flask 等）自动选择检测器；Python 走标准库 AST 精确分析，JS/TS 带字符串与注释掩码的词法分析，另有全语言通用规则（空文件、字节级重复文件、.bak 残留、注释代码块）。\n3. **保守优先**：装饰器注册、`__all__`、`if __name__ == \"__main__\"`、测试文件、re-export 等自动豁免，压低误报；三档置信度可选。\n4. **附带系统垃圾清理**（janitor）：同一套安全模型清理临时文件与包管理器缓存，白名单制、只清 7 天前旧文件、不跟随符号链接，可注册系统定时任务。\n5. 37 个单元测试全绿，GitHub Actions 在 Windows/macOS/Linux × Python 3.11/3.12/3.13 矩阵下通过。\n\n谢谢阮老师和编辑，期待能被周刊收录。\n",
+    "created_at": "2026-09-05T18:37:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11513"
+  },
+  {
     "id": 11512,
     "title": "【工具自荐】Soul Color Test：一个完全在浏览器本地运行的灵魂颜色测试",
     "content": "我是这个工具的开发者，想自荐一个完全在浏览器本地运行的英文测试网站。\n\n- [在线体验](https://soulcolortest.online/?utm_source=ruanyf_weekly&utm_medium=referral&utm_campaign=soul_color_launch)\n- [项目源码](https://github.com/joanjiaocn-rgb/soul-trait-extractor)\n\nSoul Color Test 提供 7 道题的快速测试和 16 道题的深度测试，根据用户在日常情境中的选择，生成主色、辅助色，以及深度、清晰度、连接和行动力四个维度的结果。\n\n它没有接入 AI API，也不需要注册账号。答题、评分和报告生成都在浏览器中完成，测试进度只保存在本地。项目使用 Next.js 和 TypeScript 开发，通过静态导出部署在 Cloudflare Pages。\n\n结果包含优势、成长方向、关系模式、工作倾向和一个短期反思计划。它定位为娱乐和自我反思工具，不是心理诊断或科学人格测量。\n\n欢迎体验并提出改进意见。\n\n<img width=\"1162\" height=\"1284\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b386d39e-93c1-42dc-96bb-a4beb2b61982\" />",
@@ -28,7 +36,9 @@
     "title": "【开源自荐】一息：iPhone 打开小红书之前先呼吸十秒，自建的 One Sec 替代品，一个 Worker 跑在 Cloudflare 免费额度里",
     "content": "自荐一个自己在用的小东西。\n\n**一息** —— 你在 iPhone 上点开小红书（或者 Instagram、Reddit），App 打开之前，手机先跳到一个网页让你看着一团墨呼吸十秒。十秒后你可以「继续」进去，也可以「算了」放下手机。它把每一次都记下来，过一阵你能看到自己一周被拦了多少次、其中多少次真的忍住了。\n\n- 直接用（公开实例，免费，什么都不用部署）：https://yixi-app.pages.dev\n- 仓库（MIT，中英双 README）：https://github.com/Defiabell/yixi\n\n<img src=\"https://raw.githubusercontent.com/Defiabell/yixi/main/docs/images/breathing-paper.png\" width=\"280\"> <img src=\"https://raw.githubusercontent.com/Defiabell/yixi/main/docs/images/breathing-ink.png\" width=\"280\">\n\n**它是网页，不是 App。** 靠 iOS 自带的「快捷指令」——「打开 App 时」自动化先来问一句该不该拦，该拦就跳到呼吸页。所以不用装任何东西，也不用越狱或者 MDM 描述文件。整个后端是**一个 Cloudflare Worker 加一个 D1**，跑在免费额度里，成本约等于零；自己部署一份大概十五分钟，和公开实例是同一份代码。\n\n几个刻意的设计：\n\n- **「算了」是实心按钮，「继续」是一行小号下划线文字，而且晚 800 毫秒才出现。** 倒计时期间一个按钮都没有。默认路径应该是放下手机，不该做成两个等价选项。\n- **坏了就放行。** 服务挂了、网断了，快捷指令拿不到回应就直接开 App。一个自律工具最不该干的事是在自己宕机的时候把用户锁在手机外面。\n- **放行后有一分半的免打扰窗口。** 不然跳回 App 的那一刻自动化会再次触发，把自己关进死循环——这一条是整个项目里最不显然的部分，也是它比五十行代码多出来的理由。\n- 它是摩擦，不是墙。自动化随时两下就能关掉，这是刻意的。\n\n**关于隐私**：只记时间、哪个 App、你那次是继续了还是放下了；不记内容、不记位置。不愿意把「几点几分没忍住打开了哪个 App」放在别人服务器上的话，自己部署一份就是了。\n\n做它的起因很朴素：One Sec 我用过，有效，但它是订阅制的 iPhone App，而我想知道这件事能不能用一个网页加十五分钟部署解决。结论是能。\n",
     "created_at": "2026-09-05T09:35:09Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11509"
   },
   {
@@ -812,13 +822,5 @@
     "created_at": "2026-08-28T06:07:05Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11407"
-  },
-  {
-    "id": 11406,
-    "title": "【开源自荐】AsterVec：面向本地 AI 的嵌入式向量数据库，百万向量只需要几百 MB 内存",
-    "content": "我是 AsterVec 的作者，自荐一下这个项目。\n\n现在常用的向量库（hnswlib、Chroma 这类）都是围绕内存设计的，整个索引放在 RAM 里，数据增长，内存也会跟着增长。AsterVec 反过来围绕磁盘设计：索引主体存放在磁盘上，内存里只保留导航所需要的最小部分。百万级的向量检索只需要几百 MB 内存，适合本地 AI 助手、Agent 记忆、桌面 RAG 这些要和模型放在同一台机器上的场景。\n\n它是一个嵌入式引擎，pip 安装完就能使用，Python 和 C++ 库直接运行在你的进程里，不需要部署服务（也附带一个可选的 HTTP server）。索引结构对更新非常友好，新数据来了就能直接写入，更新和删除也是一样，不需要大规模重建。\n\n和同类嵌入式引擎在同一台机器上做过对比：10 万向量的规模下，查询比 Chroma 快 2.4 倍，写入快 7 倍，内存占用不到一半，精度基本持平。完整的对比数据和测试方法在这里：https://github.com/NTU-Siqiang-Group/AsterVec/blob/main/docs/BENCHMARKS.md\n\n- GitHub：https://github.com/NTU-Siqiang-Group/AsterVec\n- 安装：pip install aster-vec\n\n<img width=\"2552\" height=\"649\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9a339140-dcd4-4704-9869-7a5e7d818d80\" />",
-    "created_at": "2026-08-28T06:01:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11406"
   }
 ]
