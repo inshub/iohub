@@ -1,5 +1,53 @@
 [
   {
+    "id": 11522,
+    "title": "【开源自荐】ctty：轻量级一体化连接管理器，SSH / 串口 / SFTP / Telnet 一个 TUI 搞定",
+    "content": "### 项目地址\nhttps://github.com/zsuroy/ctty\n\n### 背景\n我以前是 Tabby 重度用户，好看、开箱即用，SSH / 串口 / SFTP 都顺手。后来 Harness 工具用的越多，上下文越来越长，Electron 那一套直接失控——光终端就吃将近 1.5G 内存，摸上去烫手～\n\n切到 Ghostty 之后真香，但痛苦也来了：它只是终端模拟器，Tabby 里那些连接管理全没了。市面上又找不到一个既原生轻量、又能在任意终端里跑的全能连接管理工具，干脆自己写一个。于是有了 ctty。\n\n### 它是什么\n纯 Go 写的 TUI 连接管理器，单个二进制大概 5MB，0 Electron。把 Tabby / Termius / Xshell 里最常用的那部分搬进终端：\n\n- SSH 主机看板（复用 ~/.ssh/config，支持 #tag、搜索、实时连通性）\n- 串口设备自动识别与调试\n- 内置 SFTP 文件浏览器\n- 原生 Telnet（不用系统 telnet）\n- 端口转发（-L / -R / -D）带历史复用\n- 中英文设置可切换，Linux / macOS / Windows / Termux(Android) 都能用\n- 小分屏友好：VS Code / JetBrains / tmux / Zellij 里 8~10 行高也能正常填表单\n\n### 效果\n![ctty demo](https://raw.githubusercontent.com/zsuroy/ctty/master/images/ctty.gif)\n\n### 安装\nmacOS：\n```shell\nbrew install zsuroy/ctty/ctty\n```\n\nLinux / macOS / Termux：\n```shell\ncurl -sSL https://raw.githubusercontent.com/zsuroy/ctty/master/install/unix.sh | bash\n```\n\nWindows（PowerShell）：\n```shell\nirm https://raw.githubusercontent.com/zsuroy/ctty/master/install/windows.ps1 | iex\n```\n\nMIT 开源。欢迎试用，有问题建议直接提 Issue / Pr~😋",
+    "created_at": "2026-09-06T05:28:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11522"
+  },
+  {
+    "id": 11521,
+    "title": "【开源自荐】patent-compose-skill: 一个从项目文件到专利布局的全流程工作流",
+    "content": "## 项目地址\nhttps://github.com/yizchu/patent-compose-skill\nhttps://www.skillhub.cn/skills/user_b190b8c5/patent-compose-skill\n\n## 项目描述\n在技术创新落地的过程中，专利申请始终是很多团队的卡点：研发人员懂技术却不懂专利撰写逻辑，IP 从业者想高效挖掘创新点却受限于项目材料的零散，企业要做专利布局却缺乏系统化的评估方法，要么保护范围过窄容易被规避，要么过宽缺乏创新高度。\n\npatent-compose-skill是一款AI驱动专利撰写工具，通过引入权利要求树拆解技术方案，辅助专利布局，并自动多源检索，经六轮攻防对抗优化组合方案，适用于交底书撰写、专利申请材料撰写、创业公司布局及批量挖掘创新点。\n\n工作流最核心的设计是「权利要求树」体系。不同于传统的文字交底，工具会自动遍历源代码、架构文档、设计稿等项目文件，将技术方案拆解为层次清晰的树状结构：每个节点对应一项技术特征，节点间的包含关系直接匹配权利要求书的撰写逻辑，同时支持标注特殊设计点，让独立权利要求与从属权利要求的布局一目了然。\n\n在此基础上，工具实现了专利组合的智能化优化。它支持多源并行查新，同步对接 CNKI、FreePatentsOnline 等数据库，自动生成检索词并输出结构化的三性评估报告，精准定位区别技术特征。随后通过六轮攻防对抗模拟 —— 从审查员的新颖性检验，到竞争对手的规避路径测试，再到等效侵权验证和最终合规审计 —— 逐层打磨权利要求的保护范围，最终输出平衡了保护宽度与稳定性的专利组合方案。\n\n这款工具既可以帮助研发人员快速输出规范的技术交底书，也能辅助创业公司完成初步专利布局，还能为大型企业的批量创新点挖掘提效。需要说明的是，它目前定位为专业辅助工具，最终申请文件建议由专利代理人审核把关。\n\n## 亮点\n1. **权利要求树结构化转译，打通技术到专利的语言壁垒**\n自动解析源码、技术文档、设计稿等多类项目文件，将零散的技术方案拆解为层级清晰的树状特征结构，节点间的包含关系直接匹配权利要求书的撰写逻辑，替代传统人工梳理，解决了技术人员不懂如何从自己做的项目中提炼创新点、交底书表述不规范的痛点。\n2. **多源联合智能查新，输出结构化三性评估报告**\n自动基于技术特征生成中英文多组检索词，并行检索 CNKI、全球专利数据库，还可补充非专利文献检索；自动逐一比对技术特征，明确独有创新点，输出包含新颖性、创造性、实用性评估的专业查新报告，同时给出授权风险点与应对建议。\n3. **六轮攻防对抗机制，迭代优化专利保护范围**\n突破 “一次性出初稿” 的传统模式，模拟审查员、竞争对手法务、专利律师等多角色视角，通过新颖性筛查、规避路径测试、等效侵权验证等六轮攻防迭代，动态调整权利要求的宽窄与表述，平衡 “保护范围” 与 “授权稳定性”，同时支持多专利的组合布局规划。",
+    "created_at": "2026-09-06T04:08:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11521"
+  },
+  {
+    "id": 11520,
+    "title": "【开源自荐】RunWhale：基于 DeepSeek Harness，在手机上用 AI 开发和预览应用",
+    "content": "你好，我是 RunWhale 的开发者，想自荐一个基于 DeepSeek Harness 的开源手机编程工具。\n\n**项目地址：** https://github.com/zhiqingchen/RunWhale\n\nRunWhale 让你在只有手机的时候，也能把想法做成可以试用的应用：描述需求，让 AI 帮忙修改代码，再直接在同一台手机上预览结果，无需电脑参与编辑和预览。\n\n可以新建项目或导入已有仓库，查看和修改文件、检查 Git 变更，并继续之前的对话。目前主要面向 Web 和 Expo / React Native 项目。\n\n它的一个特点是，项目文件、编程助手的工具和预览环境运行在手机上，模型推理使用用户配置的远程服务。它不是远程控制电脑，也不是完全离线运行的 AI。\n\n项目基于 Expo、React Native 和 DeepSeek Harness，原创代码采用 Apache-2.0 协议开源。\n\n**演示视频：**\n\nhttps://github.com/user-attachments/assets/b8b7d184-8d6b-4fc0-b954-c159c02aa1b4\n\n欢迎试用和交流，感谢考虑收录！\n",
+    "created_at": "2026-09-06T03:03:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11520"
+  },
+  {
+    "id": 11517,
+    "title": "Correct description from '家庭卫生间' to '公共卫生间'",
+    "content": "https://restroomarchive.com/about 这个页面中有说明，是公共卫生间“publicly accessible restrooms”。",
+    "created_at": "2026-09-06T01:42:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/11517"
+  },
+  {
+    "id": 11516,
+    "title": "〖独立工具推荐〗SeatingKit：把婚礼宾客名单、桌位和座位安排放进同一个可视化工作区",
+    "content": "我是 SeatingKit 的开发者，想自荐一个面向婚礼宴会座位安排的网页工具。\n\n网站：https://seatingkit.com/\n\n很多婚礼座位安排会在宾客名单、场地草图和多份表格之间来回。SeatingKit 把这些步骤放在一个可视化工作区：导入宾客、摆放桌子、分配精确座位；需要改动时，可以先查看剩余宾客的座位建议，或交换两张已占用的座位。完成后可导出按桌分组的 PDF 和 PNG 文件。\n\n目前，免费规划支持最多 100 位活跃宾客，桌面、平板和手机均已正式支持。免费项目保存在当前浏览器和设备，请自行备份。\n\nWedding Pass 正在筹备中，结账尚未开放。",
+    "created_at": "2026-09-06T01:39:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11516"
+  },
+  {
+    "id": 11515,
+    "title": "【工具自荐】NameVerse：用名字和真实回忆，生成一首原创生日歌",
+    "content": "推荐一个自己做的网站：NameVerse。\n\nhttps://nameverse.app\n\n过生日时，很多人只能发红包或买花。这个网站让你填对方的名字、关系和两三件真实小事，生成一首原创生日歌：名字会唱进副歌，回忆写进主歌。中文名也可以，不常见的读音还能注音。\n\n登录后先免费听 Take A 的前 60 秒，满意再一次性付费，解锁完整 MP3、第二版演唱，以及一个可以转发给对方的拆礼物页面。没有订阅。一首 19.99 美元，三首 49 美元。\n\n可以先看示范礼物页：https://nameverse.app/g/sample-elena\n\n<img width=\"2271\" height=\"1128\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1ea72074-f281-4d1d-b7bb-fd34d5088c11\" />\n\n<img width=\"1788\" height=\"1230\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/48e4d128-05bb-4062-bd4f-27272f584a3b\" />\n\n<img width=\"1866\" height=\"1212\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/702c53ae-7287-4910-8bf9-135dcaf66778\" />",
+    "created_at": "2026-09-06T00:02:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11515"
+  },
+  {
     "id": 11514,
     "title": "【开源自荐】Keelhaven：macOS 菜单栏的 restic 备份工具",
     "content": "### 项目地址\nhttps://github.com/shenxianpeng/keelhaven\n\n### 项目介绍\n\nKeelhaven 是一个纯菜单栏的 macOS 备份应用，没有 Dock 图标，也没有主窗口。备份引擎是 restic，加密、去重、增量都交给它，Keelhaven 负责界面、定时和密码管理。\n\n用起来是三步：选要保护的文件夹，选一个自己拥有的存储（外置硬盘、NAS/SFTP，或者任意 S3 协议的对象存储，比如 Backblaze B2、Wasabi、Cloudflare R2），再设一个定时（每小时/每天/每周）。设好之后它就在后台安静地跑，只有出错才弹通知。\n\n仓库密码只存在 macOS 钥匙串里，不落盘、不写日志，也不会作为命令行参数传给 restic 子进程。写出来的是标准的 restic 仓库，哪天不用 Keelhaven 了，用 restic 命令行本身也能继续读取和恢复。\n\nrestic 需要访问任意目录、网络和 SSH，App Store 的沙盒放不下，所以目前只有 Homebrew 和一行 curl 脚本两种安装方式。还没有申请 Apple 开发者证书：Homebrew 安装会在安装时清掉隔离标记，能直接打开；如果是从网站下载 dmg 双击安装，首次需要手动允许一次。GPLv3 开源，界面支持中英文双语。\n\n<img width=\"880\" alt=\"Keelhaven 菜单栏面板、新建计划向导、按时间点恢复的三个窗口\" src=\"https://raw.githubusercontent.com/shenxianpeng/keelhaven/main/docs/assets/screenshots/overview.png\" />\n\n```\nbrew install --cask shenxianpeng/tap/keelhaven\n```\n\n如果没有 Homebrew 可以通过 curl 命令来安装\n\n```\ncurl -fsSL https://keelhaven.app/install.sh | bash\n```\n",
@@ -774,53 +822,5 @@
     "created_at": "2026-08-29T02:18:42Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11414"
-  },
-  {
-    "id": 11413,
-    "title": "【开源工具自荐】Book2Advisor —— 把一个人的方法论，变成可以随时咨询的 AI 顾问",
-    "content": "**Book2Advisor**：把一个人的书、文章、演讲、访谈编译成结构化的「人物方法模型」，做成一个可以随时咨询的 AI 顾问（**Web / CLI / API / Agent Skill 四种形态**）。\n\n开源地址：https://github.com/Jweokk/Book2Advisor\n\n与普通\"书籍问答\"（RAG）的区别：\n- **书外新问题也能答**：书里没有直接答案的问题（\"这位企业家会怎么看 AI 取代工人？\"），按方法论推演（Method Transfer），而不是拼凑原文\n- **引用可追溯**：每条原则绑定原文证据（E1-E5 分级），回答中\"他说过的\"与\"按他方法推演的\"严格分开标注，杜绝编造\n- **换人只换语料**：方法模型驱动，切换人物零代码改动——已用两位语料形态完全不同的人物（自传体 vs 内部讲话体）验证，同一问题两人的诊断路径显著不同\n- **可导出为 Agent Skill**：一条命令把方法模型导出为 Claude Code / Hermes / Copilot 可加载的人物咨询 skill；仓库自带生成器 skill，agent 可用自己的模型从语料蒸馏\n\n技术栈：Python + FastAPI + 原生前端，LLM 推理（OpenAI 兼容接口，默认 DeepSeek，可换任意服务商），MIT 协议。",
-    "created_at": "2026-08-29T02:12:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11413"
-  },
-  {
-    "id": 11412,
-    "title": "【开源自荐】AI Art Engine：本地优先的开源 AI 艺术创作台，节点图串起图片，视频，3d模型，音频等艺术资产流水线",
-    "content": "我是这个项目的作者，自荐一下。\n\n现在的 AI 视频/图片创作大多是「网页抽卡」：提示词扔进网页会话，等结果、碰运气，素材散落在各家平台的对话框里，想拼成片子还得再拷去剪辑软件。做短剧、广告这类要批量出内容的活儿，这套流程撑不住。\n\nAI Art Engine 想把 AI 创作变成工程化生产：一个本地优先的桌面应用（Windows / macOS / Linux，GPL-3.0），工程、素材、模型配置全部留在本地，项目本身不设任何服务端。创作流程用节点图组织——文本、图片、视频、声音、3D 模型都是画布上的节点，连线即流水线，批量任务排队执行，共同上游自动复用，最后在内置成片时间线上编排导出（ffmpeg 合成 MP4）。\n\n几个我认为有意思的点：\n\n- **短剧 Agent 流水线**：单集剧本进去，Agent 依次完成节拍拆解、9 宫格分镜、4 宫格动态分镜（36 格），每一级产物都经过「导演审核」节点打分（PASS/FAIL，失败原因自动写入状态文件，重跑时自动带上），最终产出 36 条动态分镜视频。\n- **3D 导演台**：文生/图生 3D 模型（Meshy、Tripo、Rodin、Luma AI、Lux3D）连进节点即入 3D 舞台；也能丢参考图让 AI 用基础几何体搭出整座场景白模，摆机位、截站位图锁定构图，再喂给图生视频。\n- **一键工作流**：12 个行业模板（短剧分镜、游戏买量、电商带货、漫画出版、知识口播等），选模板 → 预览拓扑 → 落盘成宿主资产，也可以用自然语言让 AI 现场规划一张节点图。\n- **不绑厂商**：OpenAI、DeepSeek、智谱、Kimi、Google、可灵、MiniMax、火山方舟、ComfyUI 等 20+ 提供商，也支持 Ollama / vLLM / LM Studio 纯本地推理；模型 API Key 需自备（本地模型除外）。\n\n- GitHub：https://github.com/Justin-sky/ai-art-engine\n- 官网与使用手册：https://justin-sky.github.io/ai-art-engine/\n- 下载：Releases 提供 Windows / macOS / Linux 安装包\n\n<img width=\"1440\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f33f4dba-a252-4af6-892e-1d3c3736340e\" />\n\n<img width=\"1120\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3612061c-19ce-4de1-9faf-59475edbf570\" />\n\n<img width=\"1440\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dc7a1313-1445-41b8-bca7-0d033ad4bfd4\" />\n",
-    "created_at": "2026-08-29T01:48:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11412"
-  },
-  {
-    "id": 11411,
-    "title": "【工具自荐】我做了个 Codex 换皮肤工具，顺手把应用不生效和内存上涨修了",
-    "content": "我自己用 Codex 写代码，换主题时总遇到两个小问题：点了应用，界面还是原样；皮肤一多，工坊和 Codex 一起开着，内存会慢慢往上走。\n\n于是做了一个给 macOS 上 Codex 换皮肤的小工具。现在只加载正在用的皮肤，其他的需要时再读；重复点应用不会把样式一层层叠起来；切换完成后还会检查 Codex 界面是不是真的变了。\n\n这几张是实际应用后的截图，画面里还能看到任务结果、改动文件、代码和测试：\n\n![额度提醒主题](https://raw.githubusercontent.com/mercedesbestsupplier-maker/bifang-codex-skins/main/assets/01-quota-reset.jpg)\n\n![绿色工作区主题](https://raw.githubusercontent.com/mercedesbestsupplier-maker/bifang-codex-skins/main/assets/02-romance-green.jpg)\n\n![Bug 回归主题](https://raw.githubusercontent.com/mercedesbestsupplier-maker/bifang-codex-skins/main/assets/03-bug-reproduce.jpg)\n\n项目页和使用记录：<https://github.com/mercedesbestsupplier-maker/bifang-codex-skins>\n\n演示页：<https://skindrop-codex.manonloki.chatgpt.site/>\n\n完整主题：<https://ifdian.net/a/lydiahub2026>\n\n完整主题和安装方式放在爱发电主页，具体方案以页面显示为准。\n",
-    "created_at": "2026-08-28T09:25:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11411"
-  },
-  {
-    "id": 11410,
-    "title": "【开源自荐】Ops Admin：基于 Go + Vue 3 的一体化运维管理平台",
-    "content": "- 项目地址：https://github.com/qishu321/ops-admin\n- 语言类别：Go / Vue 3 / DevOps / Kubernetes\n- 项目标题：Ops Admin——面向中小型运维团队的一体化运维管理平台\n\n## 项目描述\nOps Admin 是一个基于 Go + Vue 3 开发的开源一体化运维管理平台，面向个人运维场景和中小型运维团队，围绕“资产、环境、应用、监控、执行”组织平台能力。\n\n平台将主机与数据库资产、Kubernetes 多集群管理、批量运维、作业编排、监控告警、消息通知以及 CI/CD 构建发布整合到统一工作台中，并支持通过 SSH 跳板网关访问隔离网络内的主机、数据库和 Kubernetes API，降低分散维护多个运维工具带来的使用与管理成本。\n\n- 截图\n<img width=\"2536\" height=\"1160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d8418287-6c6f-4aad-b065-f8eb6e095101\" />",
-    "created_at": "2026-08-28T09:14:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11410"
-  },
-  {
-    "id": 11409,
-    "title": "[文章合集自荐]>构建可复用、可调用、可验证的 AI 执行系统,让模型吸收不确定性，让系统约束不确定性。",
-    "content": "项目地址：https://github.com/MathsionYang/ai-capability-engineering\n\n\n# AI 能力工程：从 Skill、MCP 到 Agent\n\n> 构建可复用、可调用、可验证的 AI 执行系统。  \n> 让模型吸收不确定性，让系统约束不确定性。\n\n## 项目定位\n\n本目录收录一组围绕 **AI 能力工程** 展开的中文技术文章，核心问题是：\n\n```text\n如何把专家经验、外部工具和大模型推理能力组合成稳定、可治理、可验证的 AI 系统？\n```\n\n整套内容以 **Skill -> MCP -> Agent** 为主线展开：\n\n- **Skill**：方法层，回答“任务应该怎么稳定完成”。\n- **MCP**：能力层，回答“外部工具、资源和系统如何被 AI 稳定调用”。\n- **Agent**：执行层，回答“谁来理解目标、制定计划、调用工具、验证结果并持续调整”。\n\n## 发布主页\n\n- CSDN 主页：[https://blog.csdn.net/sinat_28228747?type=blog](https://blog.csdn.net/sinat_28228747?type=blog)\n- 掘金主页：[https://juejin.cn/user/3647513603343131/posts](https://juejin.cn/user/3647513603343131/posts)\n\n## 文章之间的关系\n\n这组文章不是孤立主题，而是一套从概念到生产治理的知识链路。\n\n```text\nAI 能力工程总纲\n  -> Skill：沉淀可复用方法\n  -> MCP：封装可调用能力\n  -> Agent：组织目标、计划、工具、状态和验证\n       -> 第一性原理：理解 Agent 是什么\n       -> 工程实践：从最小闭环到生产系统\n       -> 规划范式：决定怎么拆路径\n       -> 任务拆解：把目标变成可执行子任务\n       -> 记忆系统：让经验跨任务复用\n       -> 可观测性：让执行过程可追踪、可回放、可治理\n```\n\n也可以按工程分层理解：\n\n| 层级 | 解决的问题 | 对应文章 |\n| :--- | :--- | :--- |\n| 总纲层 | 建立 Skill、MCP、Agent 的整体框架 | 《AI 能力工程：从 Skill、MCP 到 Agent》 |\n| 方法层 | 把专家经验、流程和验证标准沉淀为可复用能力 | 《Skill 设计方法论》 |\n| 能力层 | 把工具、资源、协议、部署、安全和运维标准化 | 《MCP 的第一性原理》 |\n| Agent 基础层 | 讲清 Agent 的定义、边界、等级和核心闭环 | 《Agent 的第一性原理》《Agent 工程实践指南》 |\n| 执行增强层 | 讲清规划、拆解、记忆这些核心执行能力 | 《Agent 规划范式进化论》《Agent 的任务拆解艺术》《Agent 记忆系统设计》 |\n| 生产治理层 | 讲清日志、Trace、Replay、指标和成本治理 | 《Agent 可观测性实战》 |\n\n## 推荐阅读顺序\n\n如果是第一次阅读，建议按下面顺序走：\n\n1. [《AI 能力工程：从 Skill、MCP 到 Agent》](cn/AI能力工程：从Skill、MCP到Agent.md)  \n   先建立总框架，理解 Skill、MCP、Agent 分别处在哪一层。\n\n2. [《Agent 的第一性原理：从概念到范式演进》](cn/Agent的第一性原理：从概念到范式演进.md)  \n   再理解 Agent 的底层定义、目标闭环、能力等级和边界，避免把 Agent 简化成“模型加工具”。\n\n3. [《Agent 工程实践指南：从最小闭环到生产级系统》](cn/Agent工程实践指南：从最小闭环到生产级系统.md)  \n   从实践角度看一个 Agent 如何从目标、上下文、计划、工具、执行、验证走向可用系统。\n\n4. [《Skill 设计方法论：从专家经验到可复用能力》](cn/Skill设计方法论：从专家经验到可复用能力.md)  \n   学会把高频、复杂、有专家差距的任务沉淀成稳定流程和质量标准。\n\n5. [《MCP 的第一性原理：从工具调用到能力协议》](cn/MCP的第一性原理：从工具调用到能力协议.md)  \n   理解工具调用如何从简单函数封装，升级为带 schema、权限、错误处理、测试和运维的能力协议。\n\n6. [《Agent 规划范式进化论：从 CoT 到 Plan-and-Execute》](cn/Agent规划范式进化论：从CoT到Plan-and-Execute.md)  \n   学习 Agent 如何从内部推理走向外部行动，再走向可管理的任务计划。\n\n7. [《Agent 的任务拆解艺术：从目标到可执行子任务》](cn/Agent的任务拆解艺术：从目标到可执行子任务.md)  \n   深入理解如何把模糊目标拆成有输入、有输出、有依赖、有验证标准的子任务。\n\n8. [《Agent 记忆系统设计：从上下文管理到长期经验复用》](cn/Agent记忆系统设计：从上下文管理到长期经验复用.md)  \n   学习什么时候记、记什么、什么时候查、查出来怎么用，以及如何处理记忆冲突和过期。\n\n9. [《Agent 可观测性实战：从日志、Trace 到 Replay》](cn/Agent可观测性实战：从日志、Trace到Replay.md)  \n   最后进入生产治理，理解一次 Agent 任务如何被记录、追踪、验证、回放和成本管控。\n\n如果只想快速建立认知，可以读 1、2、3。  \n如果要开发 MCP Server，可以重点读 1、4、5、9。  \n如果要做生产级 Agent，可以按 1 到 9 顺序完整阅读。\n\n## 文档逐篇摘要\n\n### [AI 能力工程：从 Skill、MCP 到 Agent](cn/AI能力工程：从Skill、MCP到Agent.md)\n\n这是整个系列的总纲型文档，系统解释 AI 能力工程为什么不能只靠 Prompt，而要通过 Skill、MCP、Agent 三层协作来构建稳定执行系统。文章覆盖方法层、能力层、执行层，以及从 Demo 到生产平台的完整路径，适合作为全系列入口和知识地图。\n\n### [Agent 的第一性原理：从概念到范式演进](cn/Agent的第一性原理：从概念到范式演进.md)\n\n这篇文章从第一性原理重新定义 Agent，强调 Agent 不是“会调用工具的大模型”，而是在目标约束下持续感知、规划、行动、反馈和验证的闭环系统。它梳理了 Agent 从符号系统、强化学习、工作流到 LLM Agent 的演进，并解释 Agent、ChatGPT、RPA、Workflow 的边界。\n\n### [Agent 工程实践指南：从最小闭环到生产级系统](cn/Agent工程实践指南：从最小闭环到生产级系统.md)\n\n这是一份面向落地的 Agent 开发指南，重点讲如何从一个最小闭环开始构建 Agent：明确目标、定义输入输出、设置权限、设计工具、处理失败、建立验收标准。它适合初学者和项目团队用来把 Agent 从概念变成可运行、可评估、可逐步生产化的系统。\n\n### [Skill 设计方法论：从专家经验到可复用能力](cn/Skill设计方法论：从专家经验到可复用能力.md)\n\n这篇文章讲 Skill 如何把专家经验、工作流、工具使用方式和质量标准沉淀为可复用能力包。它覆盖 Skill 的触发条件、标准结构、资源组织、七步设计流程、多 Skill 协同、失败处理和验证闭环，是理解“怎么做”这一方法层的核心文章。\n\n### [MCP 的第一性原理：从工具调用到能力协议](cn/MCP的第一性原理：从工具调用到能力协议.md)\n\n这篇文章系统讲解 MCP 如何把外部工具、资源和提示模板协议化，让 AI Host 能以稳定、可治理的方式调用外部能力。内容覆盖 MCP 基础概念、Server 开发、Tools/Resources/Prompts、传输方式、schema、错误处理、安全、测试、部署、可观测性、版本管理和生态集成，是能力层的核心长文。\n\n### [Agent 规划范式进化论：从 CoT 到 Plan-and-Execute](cn/Agent规划范式进化论：从CoT到Plan-and-Execute.md)\n\n这篇文章解释 Agent 为什么需要规划，并对比 CoT、ReAct、Plan-and-Execute 三种典型范式。它说明 CoT 解决“怎么想”，ReAct 解决“怎么边想边做”，Plan-and-Execute 解决“怎么围绕目标组织长期行动”，适合理解 Agent 的决策和执行路径如何逐步工程化。\n\n### [Agent 的任务拆解艺术：从目标到可执行子任务](cn/Agent的任务拆解艺术：从目标到可执行子任务.md)\n\n这篇文章聚焦“目标如何变成可执行任务”，强调好的任务拆解不是把目标切碎，而是把目标转化为可执行、可观察、可验证、可恢复的工作单元。文章讲解层级分解、依赖图、输入输出分解、工具映射、验证导向拆解，并给出常见错误和评估方法。\n\n### [Agent 记忆系统设计：从上下文管理到长期经验复用](cn/Agent记忆系统设计：从上下文管理到长期经验复用.md)\n\n这篇文章讲 Agent 记忆系统的设计方法，区分短期记忆、长期记忆、中间层摘要和缓存，并重点回答什么时候写入、什么时候检索、检索后如何注入上下文。它还讨论记忆冲突、过期、隐私、评估指标和最小可用架构，是理解 Agent 如何跨会话复用经验的重要文章。\n\n### [Agent 可观测性实战：从日志、Trace 到 Replay](cn/Agent可观测性实战：从日志、Trace到Replay.md)\n\n这篇文章面向生产级 Agent 的可观测性建设，讲清一次任务的 Goal、Plan、Step、Tool Call、Observation、Interpretation、Validation、Output、Cost 如何形成证据链。文章给出结构化事件、Trace、Replay、指标阈值、存储开销估算和埋点代码，帮助定位目标误解、工具错误、观察误读、验证缺失和成本失控等问题。\n\n\n\n## Repository Structure\n\n```text\n.\n├── Readme.md\n├── cn/\n    ├── AI能力工程：从Skill、MCP到Agent.md\n    ├── Agent的第一性原理：从概念到范式演进.md\n    ├── Agent工程实践指南：从最小闭环到生产级系统.md\n    ├── Skill设计方法论：从专家经验到可复用能力.md\n    ├── MCP的第一性原理：从工具调用到能力协议.md\n    ├── Agent规划范式进化论：从CoT到Plan-and-Execute.md\n    ├── Agent的任务拆解艺术：从目标到可执行子任务.md\n    ├── Agent记忆系统设计：从上下文管理到长期经验复用.md\n    ├── Agent可观测性实战：从日志、Trace到Replay.md\n    \n```\n\n",
-    "created_at": "2026-08-28T08:23:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11409"
-  },
-  {
-    "id": 11408,
-    "title": "docs(issue-410): fix typo",
-    "content": null,
-    "created_at": "2026-08-28T06:29:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11408"
   }
 ]
