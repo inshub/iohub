@@ -1,5 +1,45 @@
 [
   {
+    "id": 11527,
+    "title": "〖独立工具推荐〗法脉：律师的本地离线法律库 + 法条笔记 + AI 合同审查（macOS）",
+    "content": "**是什么**：给中国执业律师做的本地优先桌面工具。离线法律库（412 部现行法律/司法解释、26,000+ 条，官方文本带效力状态）+ 笔记直接挂在法条下 + AI 合同审查/法库问答（BYOK，用自己的模型密钥直连厂商）。\n\n**几个可能有意思的设计取舍**：\n\n- **零服务器**：数据全在本地 SQLite + FTS5，授权 Ed25519 离线验签，官方承诺产品内不埋任何统计——律师的当事人材料确实不能上云。\n- **AI 引用回库核实**：模型引用的每条法条都回本地法库逐条比对，核不上的明确标「未核实」。做法律工具，幻觉不是体验问题是责任问题。\n- 笔记里写《劳动合同法》第39条会自动成链，悬停浮出法条原文。\n\n**价格**：公测期全部功能免费，无需注册账号。目前仅 Apple Silicon macOS。\n\n**顺带开源了它的内置数据**：[chinese-law-corpus](https://github.com/lttxzmj/chinese-law-corpus)——412 部法律逐条结构化 JSON + 278 件指导性案例 + 445 件公报案例，CC0，做法律科技的朋友可以直接取用。\n\n官网下载：https://lttxzmj.github.io/lawpulse-site/\n反馈：https://github.com/lttxzmj/lawpulse-feedback",
+    "created_at": "2026-09-06T13:25:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11527"
+  },
+  {
+    "id": 11526,
+    "title": "〖独立工具推荐〗快说输入法：全程离线的 Windows 语音输入法，语音 0 字节上传",
+    "content": "推荐一款对中文用户很友好的 Windows 语音输入法：**快说输入法**（https://kuaishuo.app/）\n\n**核心特点：全程离线**\n- 识别引擎（SenseVoice）内置在本地，装完即用，不下载云端模型\n- **语音 0 字节上传**：无账号、无云端、无遥测，识别全部在本机完成\n- 按住 Ctrl+Shift+Space 说话，松手文字即出；快按一下只听一句，避免误录长内容\n\n**几个实用功能**\n- **会议逐字稿**：自动区分说话人、录系统声音，会中录音会后出稿，适合写会议纪要\n- **声纹过滤**：可设置只转写特定说话人，过滤旁人插话和背景噪音\n- **悬浮条不抢焦点**：输入过程中窗口焦点始终停留在原应用\n- **Webhook 实时推送**：识别结果可实时推送到自己的服务，方便二次开发\n\n**其他信息**\n- 目前提供 Windows 版（v0.0.5），macOS 版开发中\n- 官网：https://kuaishuo.app/\n\n自我推荐，希望能进入阮大老师的选品视野，谢谢！",
+    "created_at": "2026-09-06T12:45:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11526"
+  },
+  {
+    "id": 11525,
+    "title": "【开源自荐】快咔截图：Windows 免费开源截图工具——本地 OCR、任意方向长截图、钉图，用户反馈共创当天迭代",
+    "content": "项目地址（官网）：https://www.kuaika.app/\n\n背景\n我日常截图需求：区域截屏、长截图、贴图钉在桌面上对照，市面工具要么收费要么强制登录云同步，找了很久没找到顺手的，于是自荐这个：快咔截图。\n\n它是什么\nWindows 免费开源截图工具，无账号、无云端、无埋点，纯本地运行。核心功能：\n- 0.24 秒冻结截屏，控件级吸附，像素级精准框选\n- 数字键 1-8 快速切换八种标注（矩形/椭圆/箭头/画笔/马赛克/文字/序号/高亮）\n- 本地 OCR：图上文字直接复制，不联网不上传\n- 钉图（贴图）：截图直接钉在桌面置顶，对照参考图很方便\n- 任意方向长截图，支持跨屏幕混合 DPI 像素级对齐\n- 源码完全公开，可自行编译\n\n安装\n官网 https://www.kuaika.app/ 下载 Windows 版。\n\nMIT 开源。开发者本人就在用户群里答疑，采纳的反馈会署名写进更新日志，当天迭代。欢迎试用，有问题欢迎提 Issue~",
+    "created_at": "2026-09-06T12:44:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11525"
+  },
+  {
+    "id": 11524,
+    "title": "推荐一个开源工具：Translate for Developers（面向开发者的划词翻译）",
+    "content": "推荐一个开源工具：**Translate for Developers**（https://github.com/SimplestBOT/translate-for-developers）。\n\nWindows 划词翻译，专门解决两个老问题：一是 MATLAB——它的编辑器是 Java 控件，基于 UIA 文本接口的取词方案拿不到选区（改用剪贴板 + UIA 双通道）；二是终端——划词工具注入的 Ctrl+C 在终端里是 SIGINT，会直接杀掉正在跑的编译或 `npm run dev`（终端前台自动只发 Ctrl+Insert）。\n\n面向开发者还有两个加分项：LLM 翻译自动保护代码/路径/URL 不被改写（先占位再还原）；内置 Windows 系统引擎的截图 OCR 翻译，免费离线。另有 DeepL/百度/任意 OpenAI 兼容模型可选、多行输入翻译。绿色免安装，MIT，附 5 秒演示 GIF。\n",
+    "created_at": "2026-09-06T11:32:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11524"
+  },
+  {
+    "id": 11523,
+    "title": "文章投稿：AI 前哨站第002期",
+    "content": "您好，我是公众号「暮雨笙的 AI 手记」的作者，想向您分享「AI 前哨站」系列的第002期。\n\n这期整理了六条 AI 更新。我想帮读者弄清楚：这些变化能用来做什么，哪些情况还不适合用，以及值不值得花时间试一试。比如，使用自托管 Agent 时，代码和密钥放在哪里；让 AI 处理视频时，怎样比较花费和结果质量；让它协助处理代码合并时，哪些操作仍要由人确认。文中区分发布信息、第三方测评和编辑判断，保留来源。这些检查方向不代表我已经逐项亲测，内容使用 AI 辅助整理与审校。\n\n我的公众号记录使用 AI 时的经验和思考，目前分为「AI资讯」和「和 AI 的日常」两部分。前者整理值得关注的变化，「AI 前哨站」是其中计划持续更新的系列；后者是日常使用 AI 的随笔。\n\n「AI 前哨站」也有由我维护的网站，收录系列文章和往期内容。每期还提供可复制、下载的 Markdown 资料文件，整理了资讯、来源和供继续研究的问题。读者可以交给自己使用的 AI，结合手头项目继续查资料、想思路；这些想法还需要进一步验证。公众号里的其他随笔暂不同步到官网。\n\n- 本期公众号原文：[第002期，微信标题为《GPT-6 来了，工作真能交给它吗？本周 6 条 AI 更新》](https://mp.weixin.qq.com/s/kEOTlANVaUz1vofI7WbJaQ)\n- 系列官网与往期：[AI 前哨站](https://rongnianxin.github.io/ai-outpost/)\n\n希望这篇文章能为您的选稿提供一个参考。谢谢阅读！\n",
+    "created_at": "2026-09-06T08:34:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11523"
+  },
+  {
     "id": 11522,
     "title": "【开源自荐】ctty：轻量级一体化连接管理器，SSH / 串口 / SFTP / Telnet 一个 TUI 搞定",
     "content": "### 项目地址\nhttps://github.com/zsuroy/ctty\n\n### 背景\n我以前是 Tabby 重度用户，好看、开箱即用，SSH / 串口 / SFTP 都顺手。后来 Harness 工具用的越多，上下文越来越长，Electron 那一套直接失控——光终端就吃将近 1.5G 内存，摸上去烫手～\n\n切到 Ghostty 之后真香，但痛苦也来了：它只是终端模拟器，Tabby 里那些连接管理全没了。市面上又找不到一个既原生轻量、又能在任意终端里跑的全能连接管理工具，干脆自己写一个。于是有了 ctty。\n\n### 它是什么\n纯 Go 写的 TUI 连接管理器，单个二进制大概 5MB，0 Electron。把 Tabby / Termius / Xshell 里最常用的那部分搬进终端：\n\n- SSH 主机看板（复用 ~/.ssh/config，支持 #tag、搜索、实时连通性）\n- 串口设备自动识别与调试\n- 内置 SFTP 文件浏览器\n- 原生 Telnet（不用系统 telnet）\n- 端口转发（-L / -R / -D）带历史复用\n- 中英文设置可切换，Linux / macOS / Windows / Termux(Android) 都能用\n- 小分屏友好：VS Code / JetBrains / tmux / Zellij 里 8~10 行高也能正常填表单\n\n### 效果\n![ctty demo](https://raw.githubusercontent.com/zsuroy/ctty/master/images/ctty.gif)\n\n### 安装\nmacOS：\n```shell\nbrew install zsuroy/ctty/ctty\n```\n\nLinux / macOS / Termux：\n```shell\ncurl -sSL https://raw.githubusercontent.com/zsuroy/ctty/master/install/unix.sh | bash\n```\n\nWindows（PowerShell）：\n```shell\nirm https://raw.githubusercontent.com/zsuroy/ctty/master/install/windows.ps1 | iex\n```\n\nMIT 开源。欢迎试用，有问题建议直接提 Issue / Pr~😋",
@@ -782,45 +822,5 @@
     "created_at": "2026-08-29T21:00:11Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11419"
-  },
-  {
-    "id": 11418,
-    "title": "【项目自荐】BidYourStartup —— 花 $1.99，把你的 Startup 顶上网站首页第一名",
-    "content": " 我是这个网站的作者，自荐一个小实验项目：BidYourStartup（bidyourstartup.com）。\n\n这个网站只卖一样东西——\"第一名\"。\n\n首页只有一个皇冠位置，任何人付 $1.99（约合十几元人民币），就可以让自己的 Startup 名称和链接戴上皇冠，挂在首页最顶部。没有竞价、没有订阅、没有加价抢拍，永远一口价 $1.99。\n\n规则只有一条：皇冠会一直属于你，直到下一个人也付 $1.99 接力。所以你可能是\"一日之君\"，也可能只当五分钟，取决于有没有人愿意把你顶下去。\n\n一些设计上的取舍：\n\n付费位诚实标注：皇冠明确标注为 Paid placement（付费推广位），不伪装成自然排名；\n链接安全筛查：所有提交的链接在付款前先过一道安全筛查（Google Safe Browsing 级别 + DNS 层校验），钓鱼和恶意网站直接拦截；\n钱包充值：$5 / $10 / $20 预充值，多次抢冠无需反复走结账流程；\n公开退款政策：站点上有明确的退款说明页。\n截至目前，第一顶皇冠还空着——现在付款的人将成为这个站的第一位\"开国\"第一名。\n\n适合刚发布产品、想要一个便宜又有仪式感的\"首发曝光\"的独立开发者，也适合单纯想整活的朋友。\n\n网站地址：https://bidyourstartup.com/ 定价说明：[Pricing — BidYourStartup](https://bidyourstartup.com/pricing)\n\n这个项目本质上是一个微支付实验：验证\"当一天第一名\"这种最便宜的仪式感，到底有没有人愿意买单。欢迎大家试用和拍砖。\n\n一个只卖\"第一名\"的网站：付 $1.99 让自己的 Startup 戴上首页皇冠，保留到下一位买家付款接力为止，付费位明确标注，无订阅无竞价。\n<img width=\"1512\" height=\"982\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b5244ab6-6602-444a-b4a4-1d3a24825a4e\" />\n\n<img width=\"1512\" height=\"982\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e88b2323-7b4a-4d70-965a-59802dbe1a31\" />\n",
-    "created_at": "2026-08-29T11:58:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11418"
-  },
-  {
-    "id": 11417,
-    "title": "【工具自荐】Agenton: v0.6.3 新增本地用量统计 - Windows用户必备小工具",
-    "content": "这版主要是把「额度」和「用量统计」拆成了两页：\n\n- 额度页：各服务商的会话/周额度进度条，展开能看今日花费、30 天累计和当前活动状态\n- 仪表盘（新）：本地统计的 token 用量 —— 模型占比环图、贡献热力图、按日分模型的 柱状图，支持今日/本周/本月/本年切换\n- 下载地址: https://agenton.xmagicer.com/\n\n<img width=\"2456\" height=\"1133\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/51be443f-8fca-4eca-8ff4-b565de6a9101\" />\n",
-    "created_at": "2026-08-29T11:11:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11417"
-  },
-  {
-    "id": 11416,
-    "title": "【工具自荐】ExportAlpha：在线去除视频背景，导出真正带透明通道的 WebM / ProRes MOV",
-    "content": "我是这个工具的作者，自荐一个在线 AI 视频背景去除工具：**ExportAlpha**。\n\n很多视频背景去除工具最终只能下载普通 MP4，背景虽然看起来被移除了，但文件本身没有透明通道，放到网页、OBS 或剪辑软件中仍然无法直接叠加使用。\n\nExportAlpha 想解决的是这个问题：上传视频后自动移除背景，并直接导出真正带 Alpha 透明通道的视频文件。\n\n主要支持：\n\n- **Transparent WebM**：VP9 + Alpha，适合 Chrome、Firefox、网页动画和 OBS 透明视频叠加\n- **ProRes 4444 MOV**：适合 Premiere、DaVinci Resolve、Final Cut 等剪辑软件\n- 支持上传 MP4、MOV、WebM 和 M4V\n- 最高支持 1080p、60 秒视频\n- 全程在线处理，不需要安装 FFmpeg 或桌面软件\n- 新账号赠送 15 秒测试额度，无需绑定银行卡\n\n工具地址：https://exportalpha.com\n\n需要注意的是，一些桌面播放器会把透明区域显示成黑色，这不代表透明通道丢失。可以在 Chrome、OBS 或剪辑时间线中叠加到彩色背景上验证。\n\n这个工具比较适合制作网页透明动画、直播挂件、商品展示素材、数字人视频和剪辑合成素材。欢迎试用和反馈。\n\n一个在线视频背景去除工具，可以将普通视频直接导出为带 Alpha 透明通道的 VP9 WebM 或 ProRes 4444 MOV，适合网页动画、OBS 叠加和后期剪辑。\n\n<img width=\"2082\" height=\"1305\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f4245600-a1ed-41cc-acde-c33ab6465467\" />\n\n<img width=\"2058\" height=\"1032\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/63f42ffa-e7a9-4e14-9001-92bd3ab9a7e4\" />",
-    "created_at": "2026-08-29T10:23:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11416"
-  },
-  {
-    "id": 11415,
-    "title": "【开源自荐】wezterm-kit —— 一行命令装好 Windows 终端（WezTerm+Nushell+Starship），也能丢给 AI 帮你装",
-    "content": "很多人问我：你这终端怎么配的？分屏顺手、背景半透明、AI 命令行还带标签页。\n\n今天我把整套环境打包成了开源项目 **wezterm-kit**。\n\n![wezterm-kit 预览](https://github.com/dqtx760/wezterm-kit/raw/main/assets/readme/screenshot.jpg)\n\n一句话：把 Windows 上那套老终端，换成开箱即用的现代环境。\n\n最爽的一点——你**不用自己敲命令**：把仓库地址丢给任意 AI 编程工具（Claude Code / Codex / Cursor 都行），它照着里面的 `SKILL.md`，自动帮你装成跟我一模一样的。\n\n包含什么：\n\n- **WezTerm**：GPU 加速、Lua 配置、好用的分屏\n- **Nushell**：管道里传的是结构化数据，不用拿纯文本硬解析\n- **Starship**：一眼看到 git 分支 / 目录 / 语言版本\n- **CaskaydiaCove Nerd Font**：缺了它提示符里全是方框\n- **AI CLI 快捷命令**：`cc` / `qw` / `cx` / `gm` / `km` / `gr`，启动时自动改标签页标题\n- 资源管理器右键「Open WezTerm here」、WezTerm 双通道（Nightly 推荐 / Stable）\n\n安装器是 PowerShell 写的：幂等、支持 `-WhatIf` 预演、覆盖前自动备份、不需要管理员权限。装完有 `verify.ps1` 跑 13 项验收。\n\n⚠️ 仅支持 Windows。\n\n仓库地址：https://github.com/dqtx760/wezterm-kit\n觉得好用点个 star，踩到坑提个 issue。\n",
-    "created_at": "2026-08-29T08:13:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11415"
-  },
-  {
-    "id": 11414,
-    "title": "【文章自荐】《AI 原生组织》—— 免费开源书籍：把 AI 长进组织里，而不是贴在组织上",
-    "content": "**《AI 原生组织》（AI-Native Organization）**——免费开源书籍，中英双语，持续更新。\n\n在线阅读：https://github.com/Jweokk/ai-native-organization-book （附整书 PDF 下载）\n\n背景：MIT NANDA 研究显示 95% 的企业 AI 投入没有可衡量的回报，多数企业\"买了工具、做了培训、设了激励\"，年终采用率仍不足 15%。这本书研究那些反例——DeepSeek 的 160 人创新密度、Anthropic 六步转型框架、Transn\"能量金\"激励——它们是把 AI 长进组织 DNA，而不是把 AI 当创可贴贴在旧组织上。\n\n全书回答三个问题：\n- **是什么**：AI 原生组织与\"AI 转型\"的本质区别（创可贴式 AI vs 原生 DNA）\n- **证据**：HBS、INSEAD、WEF、腾讯研究院的实证研究到底说了什么\n- **怎么做**：组织形态重构、流程重设、激励重建，外加从零起步的行动手册\n\n特色：所有数据与案例来源收录附录；写作过程本身是案例——每日信息收集进知识库、每周自动合并、版本化发布（v1.0.0 → v2.0.0）；参考了 FDE 开源书模式（免费全文 + GitHub 阅读 + PDF 下载）。",
-    "created_at": "2026-08-29T02:18:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11414"
   }
 ]
