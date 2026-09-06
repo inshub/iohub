@@ -1,5 +1,45 @@
 [
   {
+    "id": 11532,
+    "title": "【工具自荐】漢字ドリル：免费制作日语假名、汉字和姓名练习字帖，导出 A4 PDF",
+    "content": "自荐一个我开发的日语练字工具：**漢字ドリル**。\n\n网站：[kanjirenshu.com](https://kanjirenshu.com/)\n\n它可以把自己选的假名、汉字、姓名或词语排成 A4 练习字帖，预览后下载 PDF。主要面向日本家长和教师，也适合需要打印书写材料的日语学习者：想补练哪几个字，就用这些字生成一张练习单。\n\n目前支持：\n\n- **输入或点选文字**：平假名、片假名，以及按日本小学 1～6 年级划分的 1,026 个汉字。\n- **调整练习方式**：设置字格大小、描红浓度，选择描红、看写或先描后写；支持辅助线和可选笔顺图。\n- **保留完整词语**：姓名和词语可以按完整顺序重复练习，也可以切换为逐字练习。\n- **制作课堂材料**：添加标题、说明及姓名、班级、日期填写栏；常用排版设置可主动保存在同一浏览器中复用。\n\n当前界面为日语，制作和下载免费，无需注册。练习正文和 PDF 生成在浏览器本地处理，正文不会为生成 PDF 而上传到服务器。本机保存的设置不支持跨设备同步。\n\n例如，在[教师制作页](https://kanjirenshu.com/teachers/)输入「森・林・校」，可以生成下面这种“范字 → 描红 → 空白练习”的字帖。图片是工具实际生成的样张，填写栏留空。\n\n![漢字ドリル生成的 A4 汉字练习样张：森、林、校，带姓名、班级和日期填写栏](https://kanjirenshu.com/images/worksheet-teacher-homework.png)\n\n欢迎试用，也欢迎对字帖排版和操作流程提出建议。\n",
+    "created_at": "2026-09-06T16:04:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11532"
+  },
+  {
+    "id": 11531,
+    "title": "【工具自荐】AudioCut（audiocut.online）：无需上传文件的浏览器音频编辑工具",
+    "content": "自荐一个自己维护的在线音频工具站：[AudioCut](https://audiocut.online/zh)。五个工具均可免费使用，无需注册，所选媒体在浏览器内处理，不上传到服务器。\n\n适合播客、访谈和语音笔记中的小型编辑任务：去掉过长的停顿、截取一段录音，或把视频中的音轨另存为 MP3。\n\n目前提供：\n\n- **静音切除**：按音量阈值和最短持续时间检测安静片段，可设置切口两侧的保留时长，避免句子接得太紧。\n- **音频裁剪**：指定起止时间，保留一个连续片段。\n- **视频转 MP3**：选择浏览器可以解码的音轨，导出音频。\n- **速度与音量调整**：调整播放倍率或增益，试听后下载。\n\n可以从[静音切除工具](https://audiocut.online/zh/silence-remover)开始：选一段自己有权使用的录音，先用保守参数处理，再试听切口。如果轻声词语被选中，降低阈值；如果短暂停顿也被切掉，提高最短静音时长。\n\n结果保存为独立的 MP3，原文件不会被覆盖。静音检测不识别语义，也不能消除说话时的背景噪声；当前变速会同时改变音高。输入能否处理取决于浏览器的编解码支持和设备内存，视频输入只导出音频。\n\n提供中文等七种界面语言。\n\n![AudioCut 静音切除工具的文件选择界面，项目真实截图](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/qpy7ei215iro54dwxg1o.jpg)\n",
+    "created_at": "2026-09-06T16:03:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11531"
+  },
+  {
+    "id": 11530,
+    "title": "【工具自荐】Telemetry：用中文 SQL 试验场练习应用错误率分析",
+    "content": "我是 Telemetry 的创建者 JR（@TheBuilderJR），自荐一个可以免注册使用的中文 SQL 试验场：\n\nhttps://telemetry.sh/sql/playground?lang=zh\n\n它提供合成事件数据、可修改的查询和结果表，在浏览器里用 DuckDB / WebAssembly 执行。默认例子按接口计算请求数、5xx 错误数和错误率，适合练习「错误多，是因为流量多，还是失败比例高？」这类具体问题。还可选择后台任务重试、Webhook 和 LLM 成本等样例。\n\n一个上手方法：先运行默认查询，再修改 `HAVING COUNT(*) >= 20` 的最小样本数，观察哪些接口还会出现在结果中，理解筛选门槛怎样改变比较范围。\n\n试验场免费，不需要接入自己的日志；合成数据不是客户案例，也不是性能基准。Telemetry 本体是 JSON 事件与 SQL 分析服务，有免费额度和付费计划。中文表达由 AI 协助整理，以上以开发者身份分享。\n",
+    "created_at": "2026-09-06T15:41:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11530"
+  },
+  {
+    "id": 11529,
+    "title": "【文章自荐】iOS 17 通信架构重构始末",
+    "content": "原文：https://github.com/lezhi12/mobile_perf_blog/issues/1\n\n节选：\n2023 年 9 月，iOS 17 正式发布。伴随它一起到来的 Xcode 15，让两拨人几乎同时陷入了困惑。\n\n第一拨是 iOS 开发者。 他们打开 Xcode 15，连上升级了 iOS 17 的测试机，准备像往常一样调试——然后发现，Xcode 里找不到开发者镜像（Developer Disk Image）了。以前每升级一个 iOS 版本，Xcode 都会自动下载对应的 .dmg 文件，现在这个流程似乎断了。设备倒是能识别，但开发者服务死活起不来。\n\n第二拨是 iOS 测试工程师。 他们日常在 Windows 和 Linux 上用一套基于 libimobiledevice 的性能测试工具，采集 CPU、内存、FPS 等数据。这套工具在 iOS 16 及以前一直工作得好好的，但 iOS 17 的设备一连上，数据就断了——工具能发现设备，能配对，但就是拿不到性能数据。\n\n两拨人互相对视了一下，发现问题指向同一个根源：iOS 17 对设备通信架构做了一次彻底的重构。\n\n",
+    "created_at": "2026-09-06T14:58:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11529"
+  },
+  {
+    "id": 11528,
+    "title": "【开源自荐】ThoughtDAG：保留探索支线，自主选择 AI 下一次看到的上下文",
+    "content": "自荐一个自己维护的开源工具：[ThoughtDAG](https://github.com/chenxiachan/thoughtdag)。\n\n和 AI 查资料、试假设时，对话容易长出很多支线。ThoughtDAG 把问答和资料放到画布上，让用户选择哪些内容进入下一次请求：连接需要的节点进行汇总，不再使用的支线仍可留在图上。PDF 摘录保留页码来源。\n\n最近增加了 DeepSeek Harness 插件，可以直接在其 Web 界面中打开思维图，并用 Harness 的模型或 Agent 提问。源会话日志与后续请求分开处理，不会因为画布上删边就改写原始日志。\n\nMIT 协议，中英文界面，提供 macOS、Windows、Linux 桌面版。画布与资料本地保存，支持 Ollama 和 OpenAI 兼容接口；远程推理仍使用用户配置的服务和额度。\n\n![ThoughtDAG 在 DeepSeek Harness 中将对话展开为图并继续提问](https://raw.githubusercontent.com/chenxiachan/thoughtdag/main/docs/harness-plugin-zh.gif)\n\n- [官网与下载](https://chenxiachan.github.io/thoughtdag/)\n- [GitHub 源码](https://github.com/chenxiachan/thoughtdag)\n- [中文短演示](https://www.bilibili.com/video/BV1Ydt26bENA/)\n\n目前仍在迭代，主要面向愿意手动整理上下文的用户。\n",
+    "created_at": "2026-09-06T13:26:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11528"
+  },
+  {
     "id": 11527,
     "title": "〖独立工具推荐〗法脉：律师的本地离线法律库 + 法条笔记 + AI 合同审查（macOS）",
     "content": "**是什么**：给中国执业律师做的本地优先桌面工具。离线法律库（412 部现行法律/司法解释、26,000+ 条，官方文本带效力状态）+ 笔记直接挂在法条下 + AI 合同审查/法库问答（BYOK，用自己的模型密钥直连厂商）。\n\n**几个可能有意思的设计取舍**：\n\n- **零服务器**：数据全在本地 SQLite + FTS5，授权 Ed25519 离线验签，官方承诺产品内不埋任何统计——律师的当事人材料确实不能上云。\n- **AI 引用回库核实**：模型引用的每条法条都回本地法库逐条比对，核不上的明确标「未核实」。做法律工具，幻觉不是体验问题是责任问题。\n- 笔记里写《劳动合同法》第39条会自动成链，悬停浮出法条原文。\n\n**价格**：公测期全部功能免费，无需注册账号。目前仅 Apple Silicon macOS。\n\n**顺带开源了它的内置数据**：[chinese-law-corpus](https://github.com/lttxzmj/chinese-law-corpus)——412 部法律逐条结构化 JSON + 278 件指导性案例 + 445 件公报案例，CC0，做法律科技的朋友可以直接取用。\n\n官网下载：https://lttxzmj.github.io/lawpulse-site/\n反馈：https://github.com/lttxzmj/lawpulse-feedback",
@@ -780,47 +820,5 @@
     "created_at": "2026-08-30T12:38:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11424"
-  },
-  {
-    "id": 11423,
-    "title": "【开源自荐】AI-Novel-Writer：从灵感到修稿的小说创作桌面软件",
-    "content": "作品主页：https://www.orz.md/ai-novel-writer/\nGitHub：https://github.com/EthanYoQ/AI-Novel-Writer\n\nAI-Novel-Writer 是一款面向小说创作的开源桌面软件，把灵感、角色、世界观、大纲、章节蓝图、草稿、审稿和修稿放进同一个项目流程。\n\n它提供 Windows 与 macOS 安装包，支持用户自行配置 OpenAI-compatible 云模型或 Ollama。生成章节时会组织相关蓝图、角色资料、世界观和历史摘要；AI 审稿意见可以逐条编辑、忽略和补充，最终是否合并修订仍由作者决定。小说项目和本地数据库保存在用户电脑中；使用云模型时，生成所需上下文会发送给用户选择的服务商。另有独立的 DeepSeek Harness 插件开发预览。",
-    "created_at": "2026-08-30T11:28:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11423"
-  },
-  {
-    "id": 11422,
-    "title": "【开源自荐】DanKS：金山开源的 SOTA 级掼蛋智能体，完整开放三代技术路线（AI/强化学习项目）",
-    "content": "\nDanKS 是金山 AI Product Center 发起的掼蛋 AI 项目，仓库公开了从结构化检索到 PPO 自博弈的完整三代技术路线，配套共享的 108 张牌掼蛋规则引擎和可在线对战的 Demo。\n\n项目地址：https://github.com/Calix-L/DanKS\n在线体验：https://calixlin.com/CardKS/\n\n![DanKS 宣传页](https://raw.githubusercontent.com/Calix-L/DanKS/main/assets/danks-promotional-hero-v2.png)\n\n![在线 Demo 对局预览](https://raw.githubusercontent.com/Calix-L/DanKS/main/assets/danks-online-demo.gif)\n\n## 核心特性\n\n- 三代路线完整可读：V1 结构化检索加 NumPy 选择器，V2 学习型选择加 ONNX 选择器，V3 记忆感知策略加 PPO，逐代可运行可比较\n- SOTA 实战实力：在完整掼蛋晋级赛协议下，面对多种学习型与规则型基线均取得领先结果，实验数据见 CardKS 仓库\n- 全链路实现：覆盖规则引擎、合法动作生成、结构化召回、状态与候选特征、策略与价值网络、PPO 训练、checkpoint 管理与原生 C++ 加速\n- 共享规则引擎可独立使用：`from guandan import Environment` 即可起一桌四人牌局\n- 在线 Demo 支持中英文界面，1 个人类座位对 3 个 Bot 座位\n- 支持 CPU、NVIDIA CUDA 12.8、昇腾 NPU 三类加速后端\n\n## 安装\n\n最短可运行路径（CPU 上跑 V3）：\n\n```bash\ngit clone https://github.com/Calix-L/DanKS.git\ncd DanKS\npython3.11 -m venv .venv\nsource .venv/bin/activate\npython -m pip install --upgrade pip\npython -m pip install -e versions/v3\npython -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu\npython examples/retrieval_quickstart.py --version v3\npython examples/v3_model_smoke.py\n```\n\nWindows PowerShell 请使用 `.venv\\Scripts\\Activate.ps1`。\n\n技术栈：Python 3.10+、PyTorch 2.8、ONNX Runtime、NumPy、pybind11；Apache-2.0 协议。",
-    "created_at": "2026-08-30T09:26:44Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11422"
-  },
-  {
-    "id": 11421,
-    "title": "【开源自荐】@do-md/core-react：从零写的 30KB Markdown 编辑器内核，不基于 ProseMirror / Slate / Lexical",
-    "content": "利益相关：我是作者。\n\n`@do-md/core-react` 是一个 Markdown 所见即所得编辑器内核，Brotli 压缩后 30 KB+，运行时零依赖（peer 只有 React、React DOM 和 Immer）。\n\n在线编辑demo：https://www.domd.app/editor\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9fb64b6e-5714-4a14-8bfc-215db03a5590\" />\n\n## 背景\n\nProseMirror、Slate、Lexical 这类通用富文本框架，Markdown 只是导入导出格式：编辑发生在各自的富文本模型上，进出都要过一层转换。这个内核反过来，Markdown 文本本身就是编辑时的模型，没有这层转换。\n\n代价是它只做 Markdown，做不了通用富文本。换来的是：\n\n- 20,000 行的 Markdown 文档可以顺滑编辑，不用退回纯文本视图\n- AI 逐 token 吐 Markdown 时，代码围栏没闭合、表格只写了一半，也能实时正确渲染；结束符到了不会闪一下重排\n- 同一段落里的离线并发修改可以合并，不是段落级的后写覆盖\n- 多个编辑器实时同步，带远端光标；远端变更只重放到受影响的节点，不替换整篇文档\n\n## 演示（无需注册）\n\n- 流式写入：https://www.domd.app/playground\n- 离线合并：https://www.domd.app/playground/crdt\n- 实时协同：https://www.domd.app/playground/live\n\n## 仓库\n\nhttps://github.com/do-md/domd\n\n内核源码在 `.packages/@do-md/core`，npm 包是 [@do-md/core-react](https://www.npmjs.com/package/@do-md/core-react)。同一仓库里还有用它做的 DOMD：原生 macOS 应用、Quick Look 预览和一个给 agent 用的 CLI。\n\n许可证分两层：应用层（macOS / Web 应用、插件）是 MIT；内核自 0.11.0 起是 GPL-3.0，并按 GPL 第 7 条附加「小型主体」和「FOSS 许可证」两条例外（0.10.0 及更早是 PolyForm Noncommercial）。",
-    "created_at": "2026-08-30T08:07:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11421"
-  },
-  {
-    "id": 11420,
-    "title": "【开源自荐】chrome-devtools-cli v2.0.0 支持 microsoft edge 了",
-    "content": "edge 本来就是 chromium，协议完全一样，加上 --browser edge 就能连 edge 的 profile，macos linux windows 都支持，channel 也能一起用\n\n不过真正的问题是加了第二个浏览器之后才暴露出来的，之前守护进程只按 uid 区分，第一条命令连上哪个浏览器就锁定哪个，后面再传 --browser 会被直接忽略，你要 edge，它给你 chrome 的结果，还不报错\n\n现在守护进程按 websocket 端点的哈希来区分，chrome、edge、每个 headless 实例各有各的，可以同时跑\n\n顺带加了 list-daemons，能看到每个守护进程的 pid、连的哪个浏览器、跑了多久，kill-daemon 现在只杀你参数指向的那个，杀 edge 不会顺手把 chrome 的干掉，要全清用 --all\n\n还修了个我自己最在意的安全问题，daemon 被 sigkill 之后 pid 文件会留下来，系统可能把这个 pid 分给别的进程，之前 kill-daemon 会直接发信号过去，现在会先确认 socket 上真的有 daemon 在监听，而且整个检查过程加了锁，避免中途有新 daemon 启动\n\n报错也会说清楚是哪个浏览器，不会连 edge 超时却让你去检查 chrome\n\n有一个破坏性改动，所以直接跳大版本，kill-daemon 从全局变成按端点，脚本里想全清的话记得改成 --all\n\n需要 rust 1.89 以上\n\nRepo: [aeroxy/chrome-devtools-cli](https://github.com/aeroxy/chrome-devtools-cli)",
-    "created_at": "2026-08-30T05:25:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11420"
-  },
-  {
-    "id": 11419,
-    "title": "自荐：ScholarSeed——AI 时代学术论文的确定性质检门禁（41 个工具，纯标准库，零依赖）",
-    "content": "向周刊推荐一个开源项目，供挑选。\n\n**ScholarSeed** —— AI 时代学术论文的确定性质检门禁\n\n- 仓库：https://github.com/Morningstar202604/ScholarSeed （GitCode: https://gitcode.com/badhope/ScholarSeed ）\n- 许可证：PolyForm Noncommercial 1.0.0（学习/研究/个人使用免费）\n- 安装：`npm i -g scholarseed` 或直接克隆使用，纯 Python 标准库，零依赖\n\n**它解决什么问题**：现在大量学生和研究者用 AI 辅助写论文，常见的翻车点很具体——编造的参考文献、`p=0.000` 这种统计错误、样本量前后矛盾、图表编号断层、\"研究表明/专家认为\"却不给出处。这些恰恰是编辑和审稿人一眼就抓的东西。\n\nScholarSeed 提供 41 个确定性检查工具（MCP 服务器 + CLI），全部规则可复现、带行号证据：\n\n- **引文核验**：逐条实时比对 Crossref / Semantic Scholar / OpenAlex，编造的 DOI 当场判 C 级，可作 CI 硬门禁\n- **统计红线**：p 值必须有检验方法名、显著结论必须配效应量、不可能值（|r|>1）直接报错\n- **数字一致性**：互斥分桶加和越界（\"300 人，其中 180…另外 200…\"）、摘要与正文样本数对不上\n- **文献质量**：完整性（缺来源/缺卷期页/GB-T 7714 类型标识）、时效性（全部早于 10 年）、链接可信（占位域名/可选联网验活）\n- **AI 腔自检**：51 条模板短语、模糊归因、句长突发性——定位是\"帮你把稿子改朴素\"，不做\"AI 率\"判决\n\n工程方面：237 个单元测试，阈值经 70 篇 arXiv 真实论文校准，另附一套 31 处埋雷的检测率评测（`benchmarks/persona_eval/`，可复现）。姊妹项目 [AgentSeed](https://github.com/Morningstar202604/AgentSeed) 做代码侧的同类防幻觉门禁。\n\n定位上它不替人写论文，只负责\"交得出去\"这一段。如果与周刊选题方向不合，无妨，感谢阅读。\n",
-    "created_at": "2026-08-29T21:00:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11419"
   }
 ]
