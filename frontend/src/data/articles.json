@@ -1,5 +1,13 @@
 [
   {
+    "id": 11554,
+    "title": "图片切割的小工具",
+    "content": "vibe code了一个 把图片切割的小工具 https://doctorlai-msrc.github.io/cut-picture/?lang=zh-CN\n\n\n<img width=\"1248\" height=\"1255\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/350e92f5-3d30-4dc6-95f1-4e60657fc772\" />",
+    "created_at": "2026-09-07T21:28:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11554"
+  },
+  {
     "id": 11553,
     "title": "Fixpm",
     "content": "### 【自荐】fixpm — 治好你敲错 `npm isntall` 强迫症的终端交互纠错工具\n\n平时敲代码手速太快，经常把命令敲错：\n- `npm isntall` -> 报错 Unknown command\n- `npm i loadash` -> 顺手拼错依赖包（还容易踩到恶意钓鱼包的坑）\n- `npm install express save-dev` -> 漏掉了 `--` 前缀\n\n实在受够了人肉按退格键删除重新敲，我自己用 Python 撸了一个专门服务于前端包管理器的智能纠错工具：**fixpm**。\n\n✨ **核心亮点：**\n1. **静默守护：** 注入一行 Shell Hook（支持 Zsh/Bash/PowerShell），只有当命令报错退出时才会弹出提示，平时绝不打扰。\n2. **防钓鱼依赖检查：** 拼错包名时，会自动连线 npm registry 结合**编辑距离 + 周下载量对数权重**进行排序，绝对不会给你推荐死包或钓鱼高危包。\n3. **全平台全包管理器：** 完美适配 `npm / npx / pnpm / yarn` 的独特语法，已做好 PyPI、Homebrew tap 和 Windows Scoop (完全支持免 Python 环境直装单文件二进制)。\n\n目前核心规则完全在 `src/fixpm/rules/` 下通过声明式表格维护，项目刚刚开源，跑通了全套 Pytest 和 Ruff。目前由于专注于核心逻辑实现，基本处于 **0 关注度的冷启动孤岛状态** 😭。\n\n为了能通过某大模型厂商的开源质量审核冲一个开发者免费额度，急需老哥们动动发财的小手帮点个基础 Star 破冰！如果这个小轮子戳中了你的痛点，求个宝贵的 Star 鼓励一下！\n\n🔗 项目地址：https://github.com/Max-code7997/fixpm\n",
@@ -467,8 +475,8 @@
   },
   {
     "id": 11491,
-    "title": "【开源自荐】deja-vu：把 Claude Code、Codex、Cursor 等 22 个编码代理留在本机的会话记录变成可检索的记忆，装上就能用，不需要模型和 API key",
-    "content": "**项目地址：** https://github.com/vshulcz/deja-vu\n**中文说明：** https://github.com/vshulcz/deja-vu/blob/main/README.zh.md\n\n**项目介绍：**\n\nClaude Code、Codex、Cursor、OpenCode 这些工具每次会话都会把完整记录写到本机（~/.claude/projects、~/.codex/sessions 等）。deja-vu 直接索引这些文件，让代理拥有\"记忆\"——包括安装之前几个月的历史。别的记忆插件都是从安装那天开始记录，deja-vu 装上第一分钟就是满的。\n\n- 单个 Go 二进制，18 MB，没有守护进程，不调用模型，不需要 API key，数据不出本机\n- 支持 22 个编码代理的会话格式，一个工具的记忆可以被另一个工具用上\n- 代理自己会问：会话开始时得到本项目之前的结论；改文件前得到碰过这个文件的会话；命令报错后得到上次同样报错的解法\n- 命令行直接搜：`deja \"connection pool exhausted\"`，几 GB 的会话记录毫秒级返回\n- 索引时会把 key、token 之类的凭证去掉\n- 1.9 万个会话建索引 29 秒；同一台机器上和 agentmemory、MemPalace、CASS、claude-mem 的对比：https://vshulcz.github.io/deja-vu/guide/day-zero.html\n\n安装：`brew install deja-vu`，或 `go install github.com/vshulcz/deja-vu/cmd/deja@latest`，或 `npx @vshulcz/deja-vu`。MIT 协议。\n\n**项目截图：**\n\n![deja-vu 在 Claude Code 里召回三个月前 Codex 会话中的修复](https://raw.githubusercontent.com/vshulcz/deja-vu/assets/listings/recall-card.png)\n\n",
+    "title": "【开源自荐】deja-vu：把 Claude Code、Codex、Cursor 等 24 个编码代理留在本机的会话记录变成可检索的记忆，装上就能用，不需要模型和 API key",
+    "content": "**项目地址：** https://github.com/vshulcz/deja-vu\n**中文说明：** https://github.com/vshulcz/deja-vu/blob/main/README.zh.md\n\n**项目介绍：**\n\nClaude Code、Codex、Cursor、OpenCode 这些工具每次会话都会把完整记录写到本机（~/.claude/projects、~/.codex/sessions 等）。deja-vu 直接索引这些文件，让代理拥有\"记忆\"——包括安装之前几个月的历史。别的记忆插件都是从安装那天开始记录，deja-vu 装上第一分钟就是满的。\n\n- 单个 Go 二进制，18 MB，没有守护进程，不调用模型，不需要 API key，数据不出本机\n- 支持 24 个编码代理的会话格式，一个工具的记忆可以被另一个工具用上\n- 代理自己会问：会话开始时得到本项目之前的结论；改文件前得到碰过这个文件的会话；命令报错后得到上次同样报错的解法\n- 命令行直接搜：`deja \"connection pool exhausted\"`，几 GB 的会话记录毫秒级返回\n- 索引时会把 key、token 之类的凭证去掉\n- 1.9 万个会话建索引 29 秒；同一台机器上和 agentmemory、MemPalace、CASS、claude-mem 的对比：https://vshulcz.github.io/deja-vu/guide/day-zero.html\n\n安装：`brew install deja-vu`，或 `go install github.com/vshulcz/deja-vu/cmd/deja@latest`，或 `npx @vshulcz/deja-vu`。MIT 协议。\n\n**项目截图：**\n\n![deja-vu 在 Claude Code 里召回三个月前 Codex 会话中的修复](https://raw.githubusercontent.com/vshulcz/deja-vu/assets/listings/recall-card.png)",
     "created_at": "2026-09-03T16:16:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11491"
@@ -800,13 +808,5 @@
     "created_at": "2026-09-01T06:24:02Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11447"
-  },
-  {
-    "id": 11446,
-    "title": "【开源自荐】Archify：让 AI Coding Agent 生成可验证、可交互的架构图",
-    "content": "## 项目地址\n\nhttps://github.com/tt-a1i/archify\n\n## 在线演示\n\nhttps://tt-a1i.github.io/archify/gallery.html\n\n## 项目介绍\n\nArchify 是一个面向 Cursor、Claude Code、Codex CLI 和 OpenCode 的开源 Agent Skill，可以把代码库或自然语言描述转换成架构图、工作流图、时序图、数据流图和生命周期图。\n\n它不是直接让模型生成图片，而是由 Agent 先生成 typed JSON IR，再经过 schema、布局、路由和产物检查，最后输出自包含的交互式 HTML/SVG。生成结果可以继续在聊天里修改，也支持搜索节点、查看上下游关系、检查路径、演示以及导出 PNG、SVG 和 WebM。\n\n项目采用 MIT 协议，无需注册，也可以不提供代码仓库，直接描述系统开始使用。\n\n## 安装\n\n```bash\nnpx skills add tt-a1i/archify -g\n```\n\n## 项目截图\n\n![Archify](https://raw.githubusercontent.com/tt-a1i/archify/main/docs/assets/archify-readme-hero.png)\n",
-    "created_at": "2026-09-01T06:17:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11446"
   }
 ]
