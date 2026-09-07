@@ -1,5 +1,85 @@
 [
   {
+    "id": 11545,
+    "title": "【工具自荐】支持自定义工作流的纯浏览器本地运行的图片、视频、音频处理（压缩、合并、转格式、加水印等等）工具",
+    "content": "工作流是这个工具的特色功能，我将每个操作原子化，实现了一套 DSL（例如：`video|frames(interval=1,format=jpg)|format(webp)|compress(quality=0.8)|watermark(text=\"h5kit.com\",layout=tile,position=bottom-right,color=\"#ff0000\",opacity=0.7,angle=-30,size=5,spacing=2)`），可以自由组合每个操作，带来的一个有趣的效果就是用户可以自己配置好操作，然后分享出去链接给到别人直接使用。例如：[点击这个链接](https://h5kit.com/zh/workflow/?wz=H4sIAAAAAAAAEyXOQQrDIBBA0bvYTQRTpCW0mzmMsRMzRDNWJ6QpHr6Erj88PiUXsBWs9MVup5fMMFir28QlOel2HLNunlMuWGv33lwkOcBen7rtTrAkV5ZO8COg5mEhuXpOykR38CYgFNFkriTEK4wswqkvFGYxniMXUJdpstZaZTg7_5cfxq0hIvR3a84rGEw94xrgpn8qiboYrwAAAA)上传任意图片，你会得到一张宽度缩放到 800px，格式转成 webp，且加上了水印的图片。\n\n项目灵感来自于日常开发中碰到需要图片、视频、音频处理的场景，每次都去 Google 上什么 convert.io 那边，但是境外网站总是慢慢的，所以干脆一不做二不休，自己 VibeCoding 一个，工作流的灵感是我发现通过我需要进行多步操作才能达成我的目的，比如一张图又要调整尺寸，又要改变格式。每次都要使用多个工具才能达成我的需求。[点击这个链接](https://h5kit.com/zh/workflow/?wz=H4sIAAAAAAAAEyXMQQ6CMBBA0bvgBpJiqoboZg4z4BRGWqa2A4jh8Maw-8lL_sJPkt0lDJRLnpTSgh4uxkkKqPCKfbUfXa7UxmrvJMREOZfvGT3rBvb8qPYVlVLANJZKH4ViaEbWcyehMB43mRWUPZkomZVlglZUJdSJ-0FNJ14SFCfnrLW2MBKxO853g1PvCeqbNZm_BI3Jf5x6uFY_BiNRu7sAAAA)比如这个工作流，可以上传一个视频，然后生成一个 zip 包，里面是每一帧的截图，且加上了我们配置的水印，并且也同样压缩并转了 webp 格式的图片（最后附图）。\n\n<img width=\"2436\" height=\"1506\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c663b4c2-ddaa-46b9-99cf-d40f82356e43\" />\n\n<img width=\"2330\" height=\"1480\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7743ee91-b7c4-4786-a0f2-af68e1c4dabd\" />\n\n<img width=\"1470\" height=\"1304\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/86277bd5-0285-49f4-9e62-edaf479d1d63\" />",
+    "created_at": "2026-09-07T08:38:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11545"
+  },
+  {
+    "id": 11544,
+    "title": "【开源自荐】PolyJump：可配置 3D 棋盘游戏 AI 研究环境",
+    "content": "\n我是 PolyJump 的开发者，自荐一个开源项目：[PolyJump](https://github.com/SanZiNEO/poly-jump)。\n它不是又一个 2D 跳棋游戏，而是一个“不同空间路径模型 + 可配置规则 + 多人博弈”的 3D 棋盘 AI 研究环境。\n\n传统棋类大多建立在二维平面上；即使一些项目标着“3D”，也大多只是把多个二维面组装成一个三维外形，展开后仍然是一张平面。PolyJump 不只是在视觉上做 3D，而是把棋盘本身的空间路径结构作为可配置变量——不同的空间路径模型、6/8 人局、多种移动方向、中国跳棋 / 西洋跳棋 / 混合规则，让 AI 面对的不再是固定环境，而是多智能体、高不确定性、需要精算的博弈任务。\n\n## 在线试玩\n👉 https://sanzineo.github.io/polyjump/index.html\n## 效果\n\n<img width=\"1280\" height=\"658\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27c2219a-df52-42f4-b0b6-edd55ca921d4\" />\n<img width=\"1280\" height=\"654\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0db0d44-20b3-463b-9485-4946d7d21a44\" />\n<img width=\"1280\" height=\"656\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0bfd90ae-5fab-4783-8dbd-433b7c3e63f6\" />\n<img width=\"1280\" height=\"656\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4d5f9e60-cb48-4e42-be1a-21b46013adbf\" />\n\n## 功能\n- **7 种空间路径模型**：A / B / C / D + A-ext / B-ext / C-ext\n- **移动方向**：6 / 8 / 12 / 14 / 18 / 20 / 26，根据模型自动匹配或自定义\n- **玩家数**：2 / 3 / 4 / 6 / 8\n- **移动规则**：普通移动、跳跃、连跳、两格跳、自由停、强制跳到底\n- **游戏模式**：中国跳棋、西洋跳棋（吃子）、混合模式\n- **积分制**：连跳、吃子、进目标区、胜利奖励，可配置开关\n- **3D 前端**：HTML + Three.js，渲染、合法路径高亮、AI 自动对弈、回放、中英文切换\n- **后端**：Python + FastAPI，HTTP API 和纯后端 GameEnv\n- **AI 研究**：`ai_research/` 基准评测，支持批量对局、指标统计、时间戳归档\n## AI / 研究接口\n外部程序可以通过 Python 接口直接驱动游戏：\n```python\nfrom backend.game.config import PolyJumpConfig\nfrom backend.game.env import GameEnv\n\nconfig = PolyJumpConfig(geometry=\"B\", b_radius=6, players=2)\nenv = GameEnv(config)\nobs = env.reset()\n\nwhile not obs.done:\n    actions = obs.legal_actions\n    # 接入你的 AI：MCTS / RL / LLM Agent 等\n    action = actions[0]\n    obs = env.step(action)\n```\n`ai_research/` 提供不依赖前端的批量评测，目前包含 5 个基线 AI：`random` / `manhattan` / `euclidean` / `chebyshev` / `graph_bfs`，输出胜率、平均步数、目标区进出指标，结果归档到 `ai_research/runs/<时间戳>/`。\n## 快速开始\n```bash\npip install -r requirements.txt\npython run.py\n```\n项目地址：https://github.com/SanZiNEO/poly-jump\n目前的训练能力还是未知数——我还没有做深度训练，项目自带的三类简单算法在部分模型下也会出现迂回或迷路。但换个角度看，这类问题本身恰好来自于 **XYZ 轴非等步长**、**B 模型下的十二向等距离移动**等二维棋盘中不会出现的情景。",
+    "created_at": "2026-09-07T08:37:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11544"
+  },
+  {
+    "id": 11543,
+    "title": "【开源自荐】CodexReset：监控 Codex 用量重置恢复时，自动发送「继续」，让任务继续跑的工具。",
+    "content": "<img width=\"1417\" height=\"280\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fb5a35a9-7deb-42b3-84c0-522b5e5fe016\" />\n\n送给用 丐版Codex（**Plus版本**）的兄弟们，Codex的5小时重置太烦了， 让我总要等5小时才能继续Coding，半夜爬起来只为了去Codex里输入个「继续」，我想好好睡觉。\n我用Codex写了一个帮你鞭策 Codex 继续干活的小工具 **【Codex Reset】**。\n\n**它会监控你的用量窗口、找出被用量限制而中断暂停的任务对话，并在额度恢复的那一刻向Codex发送「继续」的指令，实现自动化催 AI 干活。**\n\n🤣 就是这么一个小痛点写的小东西，不知有没有兄弟用，\n最起码不用老惦记着今天的活，明天起床还没干完10%。\n\n👉Github开源地址\n[https://github.com/boyso/codex-reset](https://t.co/XM63jUksg6)\n\n👀下载 Codex Reset 体验\n[https://codexreset.100backlinks.org](https://t.co/d5nzk8nP12)\n\n<img width=\"2048\" height=\"1218\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/41356896-3d4f-4a45-b5da-3dfdd06f34b1\" />\n\n",
+    "created_at": "2026-09-07T07:52:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11543"
+  },
+  {
+    "id": 11542,
+    "title": "【开源自荐】DeepDeck：支持 WebMCP 和网页工具生成的 Harness 桌面客户端",
+    "content": "我做了 DeepDeck，一个基于 DeepSeek Harness 的开源桌面客户端，当前提供 Apple Silicon 和 Intel Mac 安装包，采用 MIT 协议。\n\n它内置了一个支持 WebMCP 的浏览器：Agent 可以发现并调用网站提供的工具。对于尚未提供工具的网站，用户描述任务，Builder 会尝试网页操作、检查结果，并将可行的操作保存成可复用工具。\n\n例如，在 X 上构建搜索、读取帖子、编辑和检查草稿的工具后，后续任务可以直接调用。工具源码和版本保存在本地，支持查看、禁用和回退；网站发生变化时，需要重新验证或修改工具。生成工具与网站原生工具分别标明来源。\n\n![DeepDeck 为 X 生成的工具，按来源展示](https://raw.githubusercontent.com/jo32/DeepDeck/247e443aa574c864b3ba0c310b48a70079c58ec8/apps/web/public/webmcp/built-webmcp.png)\n\n首次构建工具需要额外探索和验证，节省的时间与 token 取决于后续任务，尚未发布量化对比。\n\n- [项目源码](https://github.com/jo32/DeepDeck)\n- [中文介绍与演示截图](https://deepdeck.getmegaportal.com/zh#webmcp)\n- [下载最新版](https://github.com/jo32/DeepDeck/releases/latest)\n- [Harness 社区中的完整介绍（中文在前，英文在后）](https://github.com/deepseek-ai/deepseek-harness/discussions/5856)\n\n这是社区维护的非官方客户端。模型与凭据沿用 Harness 的配置。\n",
+    "created_at": "2026-09-07T07:37:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11542"
+  },
+  {
+    "id": 11541,
+    "title": "【开源自荐】Resume Builder：让 AI agent 像聊天一样陪你写简历",
+    "content": "【开源自荐】Resume Builder：让 AI agent 像聊天一样陪你写简历\n\n我是 Resume Builder 的开发者，自荐一个开源项目：[Resume Builder](https://github.com/SanZiNEO/resume-builder)。\n\n传统 AI 简历工具，通常是“填表 → AI 优化 → 导出”。用户输入被局限在表单里，AI 也只能在平台规则内帮你改，改完就结束了，讨论、口径、红线都留不下来。\n\nResume Builder 换了一种方式：你下载项目，在豆包、Codex、DSH 这类 AI agent 里加载 [AGENTS.md](https://github.com/SanZiNEO/resume-builder/blob/main/AGENTS.md)，然后直接聊天，AI 会像一位简历顾问一样，陪你一块一块改。\n\n<img width=\"800\" height=\"3036\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/afcb3b91-15ba-4748-9ea2-3b3af36f5f0e\" />\n\n和在线 AI 简历工具不同，这不是 SaaS，而是本地开源项目：用户下载后在自己的 AI agent 里加载，数据是本地 YAML，并带有 reference 记忆区和 HTML 中间产物。\n\n特点：\n\n- 内容全部是本地 YAML，不需要懂 YAML，AI 负责写\n- 每个 YAML 末尾有 `reference` 记忆区：用户原话、口径、红线、待确认事项都记在这里，构建时自动截断，不会进入最终简历\n- 一个 YAML 一个 YAML 讨论修改，不一次性生成整份简历\n- 中间产物是 HTML，AI 可以直接读 HTML/CSS：用户说“超页了”“不要红色”，AI 能直接定位并修改\n- 一份标准简历可以复制成多个岗位 JD 定制版本\n- 一键导出 HTML / PDF / 长图 / 分页 PNG\n- 开源、本地、无账号，数据在自己手里\n\n快速体验：\n\n```bash\ngit clone https://github.com/SanZiNEO/resume-builder.git\ncd resume-builder\npython -m pip install -r requirements.txt\npython make.py build --person demo\n```\n\n打开 `output/demo-*/demo-*.html` 就能看到效果。\n\n项目还很新，我更想分享的不是“又一个简历生成器”，而是“简历不应该靠填表，应该靠聊天”这个想法。\n",
+    "created_at": "2026-09-07T07:36:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11541"
+  },
+  {
+    "id": 11540,
+    "title": "【开源自荐】PhyAgentOS：让 AI Agent 走进物理世界，并在真实交互中持续进化",
+    "content": "PhyAgentOS 是一个面向物理智能体（Physical Agent）的开源 Harness 框架，由中山大学 HCP 实验室、鹏城国家实验室具身智能研究所与 X-Era Lab 联合研发。\n\n项目希望解决 AI Agent 从数字世界走向物理世界之后面临的核心问题：如何让不同机器人快速接入，让算法与 Skill 自由组合复用，并让 Agent 在真实环境中完成执行、验证、反思与持续进化。\n\nPhyAgentOS 将 Agent 的高层认知决策与底层物理执行解耦，把机器人、算法和 Skill 统一抽象为可调用的 Tool。Agent 只需要判断“下一步做什么”，而无需直接适配具体机器人 SDK、控制器或仿真环境。\n\n目前主要包含几个核心能力：\n- **异构机器人快速接入**：机器人动作统一通过 Forge Gateway / Tool API 执行，上层 Agent 不直接依赖具体硬件 SDK，同一套 Agent 与 Skill 可以迁移到不同机器人本体。\n- **Skill 自由组合与复用**：将感知、规划、操作、导航等基础能力封装成 Tool / Skill，并进一步组合成长程任务，避免每个机器人、每个 Demo 都重新开发一套流程。\n- **执行结束 ≠ 任务完成**：PhyAgentOS 将 Execution、Evidence 与 Verdict 分开处理。机器人完成动作后，系统会结合动作前后的图像与状态证据，判断用户目标是否真正达成。\n- **失败后自动重新规划**：如果 Verifier 判断任务没有完成，Agent 会基于当前环境状态生成新的 PlanRevision，继续完成任务，而不是简单重复之前的动作。\n- **在交互中持续进化**：经过验证的任务过程可以沉淀为可复用 Skill 与作用域内的 Lesson，让 Agent 将真实执行中的成功经验和失败反馈带入后续任务，形成 执行 → 验证 → 反思 → 改进 的闭环。\n\n目前 PhyAgentOS v1.0.0 已于 8.31 正式发布，采用 MIT License，支持 Agent、Tools、Skills、MCP、Memory、任务验证、失败恢复与经验进化等能力，项目已获得 2k+ GitHub Stars。我们也正在持续接入更多机器人本体、算法工具和真实任务，希望逐步建立一套面向 Physical Agent 的开放基础设施：**让 AI Agent 不只会调用数字世界的工具，也能够真正走进并理解物理世界。**\n\nGitHub：https://github.com/PhyAgentOS/PhyAgentOS-core\n官网：https://phy-agent-os.x-era.com/\n介绍视频：https://phy-agent-os.x-era.com/media/demos/overview.mp4\n\n<img width=\"1644\" height=\"1185\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6bba15e5-1ab6-4488-affa-5fe6d21b189f\" />\n\n<img width=\"1638\" height=\"1316\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8b73cf03-f1b8-4b0d-8389-aef354d6c257\" />\n\n<img width=\"1623\" height=\"1314\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a811b61c-79fc-4700-9582-2723737bdfed\" />\n\n<img width=\"1621\" height=\"1312\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0214b276-679c-41e2-8754-b597c59c1f52\" />",
+    "created_at": "2026-09-07T06:46:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11540"
+  },
+  {
+    "id": 11539,
+    "title": "【文章推荐】硬科技创业者的“天命”",
+    "content": "今年大热的硬科技赛道好像机会遍地都是，但为什么绝大多数人“看得见、抓不住”？文章将硬科技创业拆解为“可控的50%”与“天命般的50%”。聚焦消费级硬件这条小团队唯一能上桌的赛道，从0到0.1的众筹验证、量产爬坡的生死关，到库存周转、渠道扣点、止损信号等具体的“坑”。\n\n原文地址：\nhttps://mp.weixin.qq.com/s/hUlW2nZkKvMsdqgYu5K5ng",
+    "created_at": "2026-09-07T06:15:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11539"
+  },
+  {
+    "id": 11538,
+    "title": "【开源自荐】Minta：Agent 的\"记忆管理员\"，不只是存记忆",
+    "content": "    我是 Minta 的开发者，自荐一个开源项目：Minta (https://github.com/xinchen03/minta)——面向 AI 智能体的上下文质量层。\n一句话：它不只是又一款 AI 记忆库，而是给记忆做生命周期管理的质量层——检测\"哪条记忆已经过期、哪两条在互相打架、哪件事 AI 根本没做过却声称做过\"。\n    记忆工具教不会 AI 记忆,几乎所有的记忆工具都在解决\"怎么记住\"。这是我跟\"记不住\"这件事死磕三个月，逼出来的结论。你叫它\"别动 tests 目录\"：它学了。可它不知道的是，可能这条规则已经过时了，因为你上个月早就改主意了；又或者，它把三个月前试错的旧方案，当成宝贝推荐给你。而且上午刚讲过的话，下午新会话又问你一遍。\n    所以，存得住 ≠ 信得过。Minta的做法：\n  - **过期检测**：定期扫描，把过时的记忆标记、归档——不靠 LLM 自己\"觉得\"过时了\n  - **冲突表面化**：两条记忆矛盾时，不把两个都塞回 prompt，而是摊开给你决定\n  - **纠正闭环**：你纠正 AI → 进收件箱 → 你确认 → 变成规则。一次纠正，长期生效\n  - **证据分级**：按证据强度设门控，\"没做过实验的事，不允许声称做过\"\n\n<img width=\"2549\" height=\"1403\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/421209ca-24b3-47eb-8949-1d286c7bde43\" />\n\n  60 秒本地跑起来，无云、免费：\n  ```bash\n  git clone https://github.com/xinchen03/minta.git && cd minta\n  python minta_cli.py start   #  MCP 工具，Claude Code / Codex / Cursor 直接接\n\n    3 分钟接入（Windows 实测一键）：\n    github.com/xinchen03/minta → Download ZIP → 解压\n    双击 start_minta.bat（自动装依赖，弹网页+菜单）\n    菜单选编辑器：Claude Code / Codex / DeepSeek Harness / Cursor 了解更多：awesome-dsh-plugin.com/p/xinchen03/minta--dsh-plugin/ DSH 用户安装：dsh plugin --profile web add @xxinchen/dsh-plugin \n\n   Context Health——记忆生命周期仪表盘 (https://raw.githubusercontent.com/xinchen03/minta/main/assets/ui/ui-health.png)\n\n   核心引擎和记忆中枢 UI 全部开源；研究驾驶舱等高级面板通过 API Key 激活。项目还很新——但\"记忆会过期、会打架、会自说自话\"这个问题，大概每个把重要事情交给 AI 的人都会撞上，也许值得一看。",
+    "created_at": "2026-09-07T05:21:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11538"
+  },
+  {
+    "id": 11537,
+    "title": "【工具自荐】OrcaReplay：录下 AI 编程 agent 的运行，之后能断网逐字节重放",
+    "content": "**项目地址**：https://github.com/Continuum-AI-Corp/OrcaReplay\n\nAI 编程 agent 半夜把代码改坏了，早上想弄清它当时在想什么，手里通常只剩一段聊天记录——而聊天记录里没有它跑过哪些命令、退出码是多少、每一轮到底改了哪些文件。\n\nOrcaReplay 把这些一起录下来。它不改 agent，只是在**进程和 socket 这一层**架了个本地代理：模型的每次请求与回复、每条 shell 命令及其退出码、每轮的文件变更、MCP 的工具调用，全部落在同一条时间线上。\n\n录完之后有两件事是普通的 tracing 面板做不到的：\n\n**一是断网重放。** 把当初记下的响应原样喂回去，整次运行逐字节复现，而且是在别人的机器上也能复现——\"在我这儿跑不出来\"这类扯皮就没了。\n\n**二是分叉。** 从中途任意一个检查点接着跑，但换一个模型。两个模型面对完全相同的上下文和文件状态，谁的判断更好，可以直接对比，而不是各跑一遍然后猜差异出在哪。\n\n还有一点值得提：**它不需要 agent 配合**。因为捕获在 agent 下面一层，那些根本不读 base-URL 环境变量的 harness 也能录——比如用 ChatGPT 订阅登录的 Codex CLI，它只跟自己的后端通信，没有地址可以改，照样录得到。\n\n```bash\nnpm i -g orcareplay\norca record claude          # 录一次，agent 原样运行\norca replay <run-id>        # 断网重放，逐字节复现\norca fork <run-id> --at 7 --model gpt-5   # 从第 7 个检查点换模型重跑\n```\n\n目前支持 Claude Code、Codex、opencode、Qwen Code、Cursor、grok-cli、MiMo、Kilo。Node 20+，Apache-2.0，npm 上是 `orcareplay`。\n\n一句实话：项目 2026-08-29 才建库，150 star，还很新。放在这里是因为\"录下来能重放\"这个思路本身可能对读者有用，不是因为它已经被广泛使用。\n",
+    "created_at": "2026-09-07T04:14:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11537"
+  },
+  {
+    "id": 11536,
+    "title": "【工具自荐】Translation Workbench：给 Codex / Claude Code 用的翻译工作流技能",
+    "content": "自荐一个自己维护的开源 Agent Skill：[Translation Workbench](https://github.com/Alexu0317-FATHER/translation-workbench)。\n\n它把长篇翻译拆成「取材 → 起草 → 独立审核 → 人工定稿」四步，装进 Codex 或 Claude Code 里用：AI 交译文的同时必须交依据，术语和审核结论都要你点头才写进项目文档。\n\n- 让AI承担对源语言的理解。我认为译文的好坏取决于译者双语的水平，技能要求AI不仅仅提供翻译译文，而且给出翻译依据，以此来弥补译者源语言的掌握深度。\n- 让AI学习你的翻译风格，且持续优化，并在项目中长期保持一致性。\n\n下面是我翻译的小说里的一个例子：\n\n![happen 一句的 AI 初稿与定稿对比](https://raw.githubusercontent.com/Alexu0317-FATHER/translation-workbench/main/docs/draft-vs-final.jpg)\n\n`happen` 在这儿是北英格兰方言里的 perhaps，AI 初稿的「不妨」太客气了；「琢磨琢磨，这是为什么」又是英文的挂法。定稿改成「自个儿琢磨琢磨背后的道理」。这一层判断，机翻不会给你。\n\nMIT 协议，免费。系统不限（Windows / macOS / Linux），附带的两个检查脚本需要 Python 3.11，只用标准库。目前只验证过一个语言对（英译中）、一类文本（连载小说），模型只测过 Opus 5 和 GPT-5.6 Sol，产出流程到「你确认过的定稿 Markdown」为止。\n\n* [GitHub 源码](https://github.com/Alexu0317-FATHER/translation-workbench)\n* 安装：`npx skills add Alexu0317-FATHER/translation-workbench`\n* [正在用这套流程做的项目（在线阅读）](https://alexu0317-father.github.io/franz-lohners-chronicle-zh/)\n",
+    "created_at": "2026-09-07T03:32:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11536"
+  },
+  {
     "id": 11535,
     "title": "〖工具自荐〗GradeClarity：在浏览器中估算期末考试需要多少分的免费工具",
     "content": "我是 GradeClarity 的开发者，想推荐一个免费网页工具：\n\nhttps://gradeclarity.com/\n\n它适合采用百分制、且期末成绩按一定比例计入课程总评的课程。输入当前成绩和期末占比后，可以查看达到不同目标总评所需的期末分数、期末后的可能总评范围，以及哪些目标仍在数学上可达到。\n\n所有计算都在浏览器本地完成；不收集、存储或传输输入的成绩，无需注册。具体评分标准、曲线、及格线仍应以课程 syllabus 和教师政策为准；工具支持按课程大纲调整评分量表。\n\n目前界面为英文。",
@@ -730,95 +810,5 @@
     "created_at": "2026-08-31T15:10:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11437"
-  },
-  {
-    "id": 11436,
-    "title": "【工具自荐】RemoveText.video：在线去除视频文字，保留完整画幅",
-    "content": "\n[RemoveText.video](https://removetext.video/) 是一个在线视频文字和硬字幕清理工具，可以框选要去除的区域，保留完整画幅，无需安装剪辑软件。\n\n<img width=\"1740\" height=\"971\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/454203ec-9c1a-40de-b182-60180a8721bd\" />\n\n视频已经导出，字幕、日期或宣传文字已经烧录进画面，但想重新使用素材时，原来的剪辑工程可能找不到了。直接裁掉字幕会损失画面，盖一块色块又比较突兀。这个工具主要就是为这类场景准备的。\n\n除了文字和硬字幕，也支持清理 Logo 和水印。\n\n### 使用方式\n\n1. 选择视频，先在浏览器本地预览。\n2. 框选要清理的文字或标记。\n3. 确认后上传并处理，完成后下载视频。\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a1f02314-6d70-43cf-a8d8-2f16c6367e68\" />\n\n### 特点\n\n- **保留完整画幅**：不靠裁剪去掉字幕，按原始画面尺寸处理，最高支持 4K。\n- **手动框选为主**：适合清理固定位置的文字、旧角标；也提供自动移除模式，文字自动模式主要面向画面底部的常规字幕。\n- **支持常见格式**：MP4、MOV、WebM，单个文件不超过 100 MB。\n\n效果会受背景细节和运动情况影响，复杂场景可能留下修补痕迹，自动模式也可能漏检，建议先用一小段素材试一下。\n\n欢迎试用，也欢迎反馈清理效果和操作流程中遇到的问题。",
-    "created_at": "2026-08-31T14:15:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11436"
-  },
-  {
-    "id": 11435,
-    "title": "【工具自荐】产品图抠背景太慢？我做了个工具",
-    "content": "周末折腾了一个小工具： https://bgly.net/\n\n# **bgly 是什么**\n----------\n\n主要是抠图用的，譬如说你上传一张产品图，可以给你扣得出透明背景色图，比较适合做 logo 设计、电商抠图用。\n\n目前支持的功能：\n- 一键抠图\n- 免登录使用\n- API （需付费）\n\n暂时只做了这么个 MVP ，其实还想加 **批量** 操作来着，但是周末时间有限就没做，想看看市场反馈。\n\n![bgly hero]( https://cdn.bgly.net/uploads/landing/bgly.net%20hero.jpeg)\n# **效果展示**\n\n**使用前**：\n![before]( https://cdn.bgly.net/uploads/landing/home/skincare-before.png)\n\n**使用后**：\n ![after]( https://cdn.bgly.net/uploads/landing/home/skincare-after.png)\n \n\n\n希望大家可以体验并给点意见～",
-    "created_at": "2026-08-31T11:39:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11435"
-  },
-  {
-    "id": 11434,
-    "title": "谁在招人？（2026年9月）",
-    "content": "这里是免费的程序员招聘服务。\n\n如果你们团队正在招人，欢迎把招聘信息发在这个帖子里面。请简要描述，岗位名称、工作地点、岗位要求、团队简介、联系方式等等。\n\n## 发帖规则\n\n请遵守以下规则，违者（很可能）被拉黑。\n\n1. 同一团队招聘多个岗位，请写在一起，不要分成多个部分张贴。\n\n2. **必须披露招聘公司的名称，禁止匿名招聘。**\n \n3. 谢绝中介和猎头发帖。\n \n4. 不得发布与招聘无关的内容，且不得对公司或岗位进行评论或抱怨。\n\n有意应聘的读者，请直接与发帖人联系。\n\n## 历史帖\n\n程序员的招聘往往长期有效，大家别忘了查看上月的岗位。\n\n- 2026年：[8月](https://github.com/ruanyf/weekly/issues/10950)， [7月](https://github.com/ruanyf/weekly/issues/10517)，[6月](https://github.com/ruanyf/weekly/issues/10147)，[5月](https://github.com/ruanyf/weekly/issues/9815)，[4月](https://github.com/ruanyf/weekly/issues/9454)，[3月](https://github.com/ruanyf/weekly/issues/9088)，[2月](https://github.com/ruanyf/weekly/issues/8882)，[1月](https://github.com/ruanyf/weekly/issues/8591)\n- 2025年：[12月](https://github.com/ruanyf/weekly/issues/8332)，[11月](https://github.com/ruanyf/weekly/issues/8003)，[10月](https://github.com/ruanyf/weekly/issues/7832)，[9月](https://github.com/ruanyf/weekly/issues/7674)，[8月](https://github.com/ruanyf/weekly/issues/7408)，[7月](https://github.com/ruanyf/weekly/issues/7169)，[6月](https://github.com/ruanyf/weekly/issues/6965)，[5月](https://github.com/ruanyf/weekly/issues/6771)，[4月](https://github.com/ruanyf/weekly/issues/6443)，[3月](https://github.com/ruanyf/weekly/issues/6189)，[2月](https://github.com/ruanyf/weekly/issues/6012)，[1月](https://github.com/ruanyf/weekly/issues/5830)\n- 2024年：[12月](https://github.com/ruanyf/weekly/issues/5610)，[11月](https://github.com/ruanyf/weekly/issues/5445)，[10月](https://github.com/ruanyf/weekly/issues/5253)，[9月](https://github.com/ruanyf/weekly/issues/5090)， [8月](https://github.com/ruanyf/weekly/issues/4911)，[7月](https://github.com/ruanyf/weekly/issues/4743)，[6月](https://github.com/ruanyf/weekly/issues/4550)，[5月](https://github.com/ruanyf/weekly/issues/4390)，[4月](https://github.com/ruanyf/weekly/issues/4204)，[3月](https://github.com/ruanyf/weekly/issues/4075)，[2月](https://github.com/ruanyf/weekly/issues/4002)，[1月](https://github.com/ruanyf/weekly/issues/3814)\n- 2023年：[12月](https://github.com/ruanyf/weekly/issues/3684)，[11月](https://github.com/ruanyf/weekly/issues/3599)，[10月](https://github.com/ruanyf/weekly/issues/3529)，[9月](https://github.com/ruanyf/weekly/issues/3425)，[8月](https://github.com/ruanyf/weekly/issues/3324)，[7月](https://github.com/ruanyf/weekly/issues/3222)，[6月](https://github.com/ruanyf/weekly/issues/3157)，[5月](https://github.com/ruanyf/weekly/issues/3091)，[4月](https://github.com/ruanyf/weekly/issues/3022)，[3月](https://github.com/ruanyf/weekly/issues/2960)，[1月～2月](https://github.com/ruanyf/weekly/issues/2827)\n- 2022年：[12月](https://github.com/ruanyf/weekly/issues/2771)，[11月](https://github.com/ruanyf/weekly/issues/2715)，[10月](https://github.com/ruanyf/weekly/issues/2666)，[9月](https://github.com/ruanyf/weekly/issues/2599)，[8月](https://github.com/ruanyf/weekly/issues/2542)，[7月](https://github.com/ruanyf/weekly/issues/2483)，[6月](https://github.com/ruanyf/weekly/issues/2426)，[5月](https://github.com/ruanyf/weekly/issues/2356)，[4月](https://github.com/ruanyf/weekly/issues/2309)，[3月](https://github.com/ruanyf/weekly/issues/2234)，[2月](https://github.com/ruanyf/weekly/issues/2188)，[1月](https://github.com/ruanyf/weekly/issues/2139)\n- 2021年：[12月](https://github.com/ruanyf/weekly/issues/2092)，[11月](https://github.com/ruanyf/weekly/issues/2032)，[10月](https://github.com/ruanyf/weekly/issues/1980)，[9月](https://github.com/ruanyf/weekly/issues/1913)，[8月](https://github.com/ruanyf/weekly/issues/1870)，[7月](https://github.com/ruanyf/weekly/issues/1826)，[6月](https://github.com/ruanyf/weekly/issues/1784)，[5月](https://github.com/ruanyf/weekly/issues/1747)，[4月](https://github.com/ruanyf/weekly/issues/1709)，[3月](https://github.com/ruanyf/weekly/issues/1652)，[2月](https://github.com/ruanyf/weekly/issues/1629)，[1月](https://github.com/ruanyf/weekly/issues/1580)\n- 2020年：[12月](https://github.com/ruanyf/weekly/issues/1520)，[11月](https://github.com/ruanyf/weekly/issues/1473)，[9月-10月](https://github.com/ruanyf/weekly/issues/1392)，[7月-8月](https://github.com/ruanyf/weekly/issues/1315)，[5月-6月](https://github.com/ruanyf/weekly/issues/1206)，[4月](https://github.com/ruanyf/weekly/issues/1148)，[3月](https://github.com/ruanyf/weekly/issues/1106)， [1月-2月](https://github.com/ruanyf/weekly/issues/983)\n- 2019年：[12月](https://github.com/ruanyf/weekly/issues/983)，[9月-11月](https://github.com/ruanyf/weekly/issues/798)，[8月](https://github.com/ruanyf/weekly/issues/692)",
-    "created_at": "2026-08-31T09:17:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11434"
-  },
-  {
-    "id": 11433,
-    "title": "【网站自荐】ScriptSpool — 把你的代码变成动态视频、GIF动图",
-    "content": "**软件名称**\n\nScriptSpool\n\n**应用平台**\n\nWeb 端\n\n**推荐类型**\n\n开发者自荐\n\n**一句简介**\n\n一个在浏览器里把代码转换成动态视频和图片的小工具，粘贴代码、选择主题和动画，调整速度后即可导出 MP4、GIF、PNG 或 SVG。\n\n**应用简介**\n\n平时做开发教程或者录短视频，经常需要把一段代码做成动态效果。\n\n直接录屏不太好看，使用完整的视频剪辑软件又有点麻烦。\n\n我在网上也看了一些类似的工具和项目，有些做得还行，但用下来功能比较有限。\n\n所以就想着做一个自己真正会用的：\n\n**粘贴代码 → 选择样式 → 调整动画 → 导出。**\n\nScriptSpool 最开始只是一个很简单的代码打字动画工具，后来我又慢慢加入了逐字、逐行播放，以及主题、窗口样式、速度控制和多种导出格式。\n\n**主要特点：**\n\n* **代码动画**：支持逐字打字和逐行播放。\n\n* **速度控制**：可以调整打字速度、暂停和播放节奏。\n\n* **多种主题**：提供不同代码高亮主题、字体和背景。\n\n* **窗口样式**：可以模拟常见的代码编辑器窗口外观。\n\n* **视频导出**：支持 MP4、GIF。\n\n* **图片导出**：支持 PNG、SVG，也可以生成长截图。\n\n* **浏览器运行**：编辑、渲染和导出都在浏览器中完成。\n\n* **代码不上传**：代码不会上传到服务器进行处理。\n\n* **无需注册**：打开网页就可以直接使用。\n\n### 为什么做这个？\n\n其实就是做自己的视频演示时遇到的一个小问题。\n\n我只是想让一段代码【像正在被写出来】一样出现在视频里。\n\n结果发现，如果自己用剪辑软件做，调整动画、时间轴这些东西实在有点麻烦。\n\n后来又找了一些现成工具，发现很多功能比较简单。\n\n于是就想着：\n\n**能不能做一个专门解决这件小事的工具？**\n\n所以有了 ScriptSpool。\n\n还有一些辅助功能，比如，**结对房间**，基于 P2P 实时一起写代码。同步片段、聊天、冲刺计时 —— 无需账号。\n\n### 适合什么场景？\n\n* 制作开发教程\n\n* 制作抖音、小红书、 YouTube Shorts等短视频\n\n* 给代码演示增加动态效果\n\n* 制作技术分享配图\n\n* 制作课程中的代码动画\n\n* 给博客、文档制作代码截图\n\n* 不想打开复杂视频剪辑软件，只想快速做一段代码动画\n\n### 使用体验\n\n打开网页 → 粘贴代码 → 选择主题和动画 → 调整速度 → 预览 → 导出。\n\n整个过程都在浏览器完成，代码不会上传到服务器进行处理，所以你的代码是安全的。\n\n# 产品截图\n\n![首页截图](https://pichostimg.56mall.cn/2026/08/31/20260831112914_4d65f425.webp)\n![编辑器页面](https://pichostimg.56mall.cn/2026/08/31/20260831112916_2373f130.webp)\n\n逐字代码效果：https://screenapp.io/app/v/h60Zm5T7mX\n\n**在线使用：**  https://scriptspool.pixzens.com",
-    "created_at": "2026-08-31T03:42:21Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11433"
-  },
-  {
-    "id": 11432,
-    "title": "【开源自荐】ATBClone: macOS 应用多开引擎",
-    "content": "### 项目地址： \nhttps://github.com/aitobox/ATBClone\n\n### DMG下载\nhttps://github.com/aitobox/ATBClone/releases\n\n### 介绍\n🚀 ATBClone 是一个专为 macOS 设计的现代化应用程序多开（Multi-Instancing）与分身管理引擎。可以实现诸如Chrome浏览器，微信，Codex等工具的应用分身多开；支持独立数据隔离、独立网络代理（HTTP / SOCKS5）、自动化规则匹配、重签名与沙盒解除\n\n### ✨ 核心特性\n\n- 📦 **双引擎克隆架构 (Dual-Engine Cloning Mechanism)**：\n  - **硬克隆 (Hard Clone)**：面向原生/社交与独立架构应用（微信、QQ、Telegram、AI 客户端、Chrome、Edge、Arc 等）。完整复制 App Bundle，修改 `Info.plist` 与 Bundle Identifier，通过二进制劫持启动脚本注入独立 `HOME` / `TMPDIR` 数据目录，支持按需剥离 App Sandbox 沙盒限制，并完成 Ad-hoc 重新签名。\n  - **软克隆 (Soft Clone)**：面向现代代码编辑器与浏览器（Cursor、VS Code、Firefox、Brave、Tor、Zed 等）。生成轻量级启动器包装（Wrapper Bundle），自动注入 `--user-data-dir` / `--profile` 参数与独立代理环境变量。\n- 🔍 **智能应用探测 (App Prober)**：遇到未预设规则的任意 macOS 应用程序时，自动分析其 Mach-O 架构、Frameworks 与代码签名沙盒权限，动态决定软/硬克隆策略并提取推荐规则。\n- 🌐 **独立网络代理 (Isolated Network Proxies)**：为每个分身实例配置独立的 HTTP 或 SOCKS5 代理（支持认证），与系统主网络及母体应用互不干扰。\n- 📑 **规则引擎 (Recipe Engine)**：内置 33+ 常用应用与 AI Agent 工具分身规则，支持通过 `~/ATBClone/recipes/` 本地优先级覆盖自定义规则。\n- 🪄 **交互式向导 (Interactive Wizard)**：全流程引导式 CLI，支持终端拖拽 `.app` 路径、自动命名递增、自定义数据目录与快捷代理配置。\n- 🔄 **生命周期管理**：查看已有分身（`list`）、主应用升级后一键重克隆并保留用户数据（`update`）、安全删除分身（`remove` 支持 `--with-data` / `--keep-data` 与交互确认）。\n- 🛡️ **安全与提权机制**：默认克隆至 `~/Applications` 无需 root/sudo 权限；如需写入系统级 `/Applications` 采用原生单次 `osascript` 授权提权；严格使用 `shlex.quote` 保证路径转义安全。\n\n### 截图\n\n<img width=\"2062\" height=\"1552\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f72b8f9f-4530-40c8-b101-d98a9af47c8f\" />",
-    "created_at": "2026-08-31T03:25:12Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11432"
-  },
-  {
-    "id": 11431,
-    "title": "【工具自荐】AutoPiano 3D钢琴网站：在AI加持下，一周实现了3D钢琴网站应用",
-    "content": "## 背景\n之前在Bilibili网站看到up主“老师好，我是何同学”创作的魔法钢琴，钢琴机械结构喷出气泡，扰动蓝眼泪水藻生物，发出蓝色光芒，从而实现魔法可视化效果，实现了大自然和工程的巧妙结合，效果非常惊艳。\n\n于是乎就萌发了想法，想要把这种效果做成3D网页可视化版本，让大家都能亲自去体验感受下，让音乐净化心灵。\n\n在这个AI愈发发达的时代，AI似乎代替人类完成了太多事情，从文字、图片、代码，再到视频、游戏、音乐。人类剩余的想象和创作空间似乎被AI一步步压缩，所剩无几。也许我们要时不时停下来，在奋斗路途中小憩一下，聆听音乐，创造音乐，勿让AI的土壤覆灭生活的花朵。\n\n## 体验地址\nhttps://autopiano.cn/3d\n\n## 功能\n1、完整的three.js 三角钢琴场景，实现了键盘、键盘盖、钢琴盖板、箱体、琴弦、音板、踏板等各种部件。\n2、完整的发声效果，多种可选择乐器和音色，200多首音乐，实现midi解析及自动播放。\n3、环境光、氛围光、聚光灯等多种光照效果，支持光照跟随换肤功能变化。\n4、6种钢琴特效：红色眼泪、蓝色眼泪、音轨线、气泡、花瓣、音符。\n5、2种舞台特效：几何、烟花。\n6、钢琴键位修改 + 连接外部midi键盘。\n\n\n## 截图\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7be77a87-fc70-4136-9b6f-56bdeaae18be\" />\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a83e1047-1e1e-42ac-bb17-ea46599113a9\" />\n\n<img width=\"1920\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9cf194b2-92a7-422d-8d8b-5b71d165efae\" />\n",
-    "created_at": "2026-08-31T03:20:23Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11431"
-  },
-  {
-    "id": 11430,
-    "title": "【开源自荐】EnvMate：给开发、测试和生产环境加上醒目标识的浏览器扩展",
-    "content": "**项目地址：** https://github.com/knktc/EnvMate\n\n**在线安装：**\n\n- Chrome：https://chromewebstore.google.com/detail/envmate/mccdmjfnlkkjmcioapnehkmpgkblhiei\n- Edge：https://microsoftedge.microsoft.com/addons/detail/enighdiiommdnommodoninagjanhiogb\n- Firefox：https://addons.mozilla.org/addon/envmate/\n\nEnvMate 是一款支持 Chrome、Edge 和 Firefox 的浏览器扩展，帮助开发者区分开发、测试、预发布和生产环境。\n\n很多内部系统的页面看起来非常相似，浏览器标签页也容易混在一起。EnvMate 会根据 URL 规则识别当前环境，并在页面上显示醒目的环境徽标、水印或标题前缀，降低误操作风险。\n\n**主要功能：**\n\n- 支持通配符、URL 前缀和正则表达式匹配环境\n- 支持角标、圆角标签、呼吸灯和水印等环境标记\n- 支持在浏览器标签页标题前添加环境名称\n- 支持按分组管理多个产品或业务线的环境\n- 支持为每个环境保存多个测试账号，并在用户主动操作后快速填充\n- 支持从文件或 URL 导入配置，也可以导出选中的环境配置\n\n**截图：**\n\n水印和徽标示例：\n<img width=\"3588\" height=\"1958\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b1cb67bc-1dff-4e89-88d3-f9350387a679\" />\n\n配置界面：\n<img width=\"1420\" height=\"1950\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/013ee37a-44ab-40e4-a599-7bdba6f64127\" />\n\n分组管理：\n<img width=\"866\" height=\"814\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e631f9f8-815b-4adb-9218-3187b0ccafd0\" />",
-    "created_at": "2026-08-31T01:05:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11430"
-  },
-  {
-    "id": 11429,
-    "title": "【工具自荐】Apolu：追踪自己的 App 在 175 个 App Store 的榜单排名、评论与真实收入",
-    "content": "### 项目地址\n\n- 官网：https://apolu.app\n- App Store：https://apps.apple.com/app/apolu/id6796458283（iPhone / iPad / Mac，免费下载，含订阅）\n\n### 项目简介\n\nApolu 追踪你自己的 App 在全球 App Store 的榜单排名。\n\nApp Store 只让开发者看到自己所在的那一个国家/地区，而全世界有 175 个。三个平台、26 个分类、免费榜和付费榜加起来是两万多张实时榜单，Apple 没有任何接口能回答「我的 App 现在排第几」——只能有人一直抓、一直记着。Apolu 做的就是这件事：读 Apple 的榜单页面（每张 200 名），30 个大市场每小时一次，其余每四小时一次。\n\n- **排名**：175 个国家/地区 × iPhone/iPad/Mac × 免费榜/付费榜，带历史曲线\n- **提醒**：新进入一个国家、冲进前十、单次上升二十名这类值得看一眼的变化，不是每日流水账\n- **评论**：所有国家的新评论汇进一个收件箱，低分优先，可以直接在 App 内回复\n- **收入**：用你自己创建的 App Store Connect API 密钥读你自己的销售报表——真实的开发者分成，按日按国家，不是第三方估算模型\n- 界面 13 种语言，iPhone / iPad / Mac / Apple Watch / 小组件\n\n主屏小组件：在榜国家与各自名次、当日收入、待回复评论。\n\n![Apolu 的排名、收入、评论小组件](https://r2-orange-cloud.chatiro.app/IMG_0418.PNG)\n\n上榜之后可以生成一张战绩海报，图片或短视频，App 内所有语言都支持。\n\n![Apolu 生成的上榜海报](https://r2-orange-cloud.chatiro.app/apolu-achievement-6779323783-2.png)\n\n免费可以追踪任意数量的 App，看到所有市场的前 25 名，榜单随便浏览；PRO（$6.99/月、$39.99/年、$79.99 买断）解锁完整前 100 名、历史、提醒、评论回复和收入。排名数据完全不需要登录，只有评论和收入需要授权。\n\n顺便说个做的时候才发现的事：`apps.apple.com` 链接里的国家码只是提示，不是指令——Apple 按请求来源判定 storefront，所以你在自己电脑上打开「其他国家」的商品页，看到的其实还是本国的。想知道自己在别的市场排第几，靠手动查是查不出来的。\n\n先说清楚没有的：关键词排名和 ASO 建议都没做；也不估算任何 App（包括竞品）的下载量和收入。App 闭源。\n\n这是作者本人自荐。\n",
-    "created_at": "2026-08-30T18:44:03Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11429"
-  },
-  {
-    "id": 11428,
-    "title": "【开源自荐】Orange Cloud：iPhone / iPad / Apple Watch 上的 Cloudflare 客户端，OAuth 登录不用粘贴 API Token",
-    "content": "官网：https://o-c.do\nGitHub：https://github.com/chen2he/orange-cloud\nApp Store：https://apps.apple.com/app/id6779323783\n\n<img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/01_dashboard.jpg\" width=\"215\" alt=\"概览\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/02_analytics.jpg\" width=\"215\" alt=\"流量分析\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/06_workers_tail.jpg\" width=\"215\" alt=\"Workers 实时日志\" /> <img src=\"https://raw.githubusercontent.com/chen2he/orange-cloud/afe7afe5a7faeb4f851d16b0efa9fb6a30324c55/apps/web/public/shots/zh-Hans/05_daynight.jpg\" width=\"215\" alt=\"昼夜主题\" />\n\nOrange Cloud 是一款用 Swift / SwiftUI 写的 Cloudflare 第三方管理客户端，支持 iPhone、iPad 和 Apple Watch。和其他客户端不同的是，它走 Cloudflare 官方的 OAuth 2.0 + PKCE 登录，不用去后台建 API Token 再复制粘贴；授权时可以按 scope 勾选要给哪些权限，Token 只存在 Keychain 里，多个 Cloudflare 账号可以同时登录切换。\n\n功能大致覆盖了日常会用到的部分：域名与 DNS 记录增删改查、缓存规则、批量重定向、负载均衡、一键代理开关；Workers 与 Pages 的查看、创建部署和实时日志流（类似 wrangler tail，配合锁屏和灵动岛的实时活动）；R2 / D1 / KV（R2 还挂进了系统「文件」App，可以直接当网盘用）；WAF 自定义规则、Zero Trust、Tunnel 状态；流量分析走 GraphQL Analytics API，用 Swift Charts 画图。另外有主屏 / 锁屏小组件、控制中心控件、Siri 快捷指令和 Spotlight 索引，界面是自己做的一套「晨昏」设计（天色随本地时间变化，见上图第四张），本地化了 13 种语言。\n\n仓库是 AGPL-3.0 + Commons Clause。App Store 版本有 Pro 订阅（多账号、存储、实时日志、WAF 等），但自己克隆下来编译时加上 `OPENSOURCE_UNLOCKED` 编译条件就能零成本解锁全部功能，只是需要自建 OAuth Client。\n\nAndroid 版（Kotlin + Jetpack Compose）也在同一个仓库里，功能已经和 iOS 对齐，目前可以从官网直接下载 APK。\n",
-    "created_at": "2026-08-30T18:42:56Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11428"
-  },
-  {
-    "id": 11427,
-    "title": "【开源自荐】newtab01：基于书签目录的新标签页，允许以分组或者分屏的形式打开目录下的链接",
-    "content": "项目地址：https://github.com/lingyired/newtab01\nChrome store： https://chromewebstore.google.com/detail/newtab01-bookmark-driven/nlecfkdndodablijmfcjbnannkgmpegj\n\nnewtab01：基于书签目录的新标签页，允许以分组或者分屏的形式打开目录下的链接\n\n不是把完整的书签作为新标签的内容，而是维护几个 for 新标签页的书签目录即可。比如我在书签中自己定义了 start，work 等目录。\n\n然后拖拽到新标签页中的一列即可。\n\n\n![newtab01](https://github.com/lingyired/newtab01/raw/main/extension-previews/newtab.png)\n\n然后针对所有的目录，都可以以 chrome 分组的形式一键打开\n\n![newtab01 分组](https://github.com/lingyired/newtab01/raw/main/extension-previews/open%20as%20tab%20group.png)\n\n或者打开分屏（适用于 2-4 个链接的目录）\n\n![newtab01 分组](https://github.com/lingyired/newtab01/raw/main/extension-previews/open%20in%20split%20view.png)\n![newtab01 分组](https://github.com/lingyired/newtab01/raw/main/extension-previews/split%20view.png)\n\n内置 12 个高质量主题，均支持暗色和亮色模式\n\n![newtab01 主题](https://github.com/lingyired/newtab01/raw/main/extension-previews/change%20theme.png)\n\n支持导入 tweakcn 的主题\n\n![newtab01 导入主题](https://github.com/lingyired/newtab01/raw/main/extension-previews/install%20theme.png)\n\n最后：\n\n针对浏览器的新标签页，其实我个人最喜欢的就是简约的列表形式，同时支持鼠标中键快速批量打开多个链接，或者指定目录的链接。\n\n对于很多类似 app Launcher 那样的新标签页，其实不太适合，就好像我想要在新标签页中加入多个 github 项目的话，那么图标的形式就不太好满足了，因为链接的名字我觉得比图标重要。\n\n而且书签 x 新标签页我觉得天然很适合。当然也不能只是把书签直接都展开，有选择性的把部分目录展开是最好的方式。\n\n项目地址：https://github.com/lingyired/newtab01\nChrome store： https://chromewebstore.google.com/detail/newtab01-bookmark-driven/nlecfkdndodablijmfcjbnannkgmpegj\n",
-    "created_at": "2026-08-30T16:47:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11427"
   }
 ]
