@@ -1,5 +1,21 @@
 [
   {
+    "id": 11553,
+    "title": "Fixpm",
+    "content": "### 【自荐】fixpm — 治好你敲错 `npm isntall` 强迫症的终端交互纠错工具\n\n平时敲代码手速太快，经常把命令敲错：\n- `npm isntall` -> 报错 Unknown command\n- `npm i loadash` -> 顺手拼错依赖包（还容易踩到恶意钓鱼包的坑）\n- `npm install express save-dev` -> 漏掉了 `--` 前缀\n\n实在受够了人肉按退格键删除重新敲，我自己用 Python 撸了一个专门服务于前端包管理器的智能纠错工具：**fixpm**。\n\n✨ **核心亮点：**\n1. **静默守护：** 注入一行 Shell Hook（支持 Zsh/Bash/PowerShell），只有当命令报错退出时才会弹出提示，平时绝不打扰。\n2. **防钓鱼依赖检查：** 拼错包名时，会自动连线 npm registry 结合**编辑距离 + 周下载量对数权重**进行排序，绝对不会给你推荐死包或钓鱼高危包。\n3. **全平台全包管理器：** 完美适配 `npm / npx / pnpm / yarn` 的独特语法，已做好 PyPI、Homebrew tap 和 Windows Scoop (完全支持免 Python 环境直装单文件二进制)。\n\n目前核心规则完全在 `src/fixpm/rules/` 下通过声明式表格维护，项目刚刚开源，跑通了全套 Pytest 和 Ruff。目前由于专注于核心逻辑实现，基本处于 **0 关注度的冷启动孤岛状态** 😭。\n\n为了能通过某大模型厂商的开源质量审核冲一个开发者免费额度，急需老哥们动动发财的小手帮点个基础 Star 破冰！如果这个小轮子戳中了你的痛点，求个宝贵的 Star 鼓励一下！\n\n🔗 项目地址：https://github.com/Max-code7997/fixpm\n",
+    "created_at": "2026-09-07T18:49:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11553"
+  },
+  {
+    "id": 11552,
+    "title": "【开源自荐】ig-voice-transcriber v0.2.0 instagram自己转不了的语音 我写了个插件来转",
+    "content": "instagram本来就有语音转文字,但我这个号从来没成功过,抓包才看明白是服务端直接抛异常,返回里还明说了不让重试,所以那条转写失败下面的重试按钮点多少次都不可能成功\n\t\n顺便说个容易走弯路的点,那个接口只收一个media_id,音频压根不经过客户端,所以想把音频转码之后重新上传来修好现有的消息是行不通的,只会变成一条新消息,音频本身也没毛病,标准mp4,解码零报错\n\t\n真正难的是找音频地址,dom里没有,indexeddb里也没有,只在instagram自己的relay store里,跟它自己的react页面读的是同一份数据,instagram把同一个id同时打在音频记录和气泡的波形图上,所以我写了个跑在页面世界里的小脚本,直接照着这个id去store里查,不用监听网络请求,也不用靠时长去猜,没有猜错的可能\n\t\n转写结果也按这个id存在本地,长会话滚上去再滚回来不会重转,转发或引用同一条语音的消息因为id相同,直接就能看到转好的文字,不用再传一次\n\t\nv0.2加了个工具栏图标点开的小面板,能调超时时间,毕竟三秒的语音和十五分钟的语音等待时间不该一样,还能看到缓存了多少条转写,一键清空\n\t\n有一点得说在前面,语音会上传到第三方做识别,不会留在你自己电脑上,毕竟是别人发给你的私信,自己衡量一下能不能接受再装,想全本地的话,浏览器自带的语音识别也能干这活,我在文档里写了怎么弄\n\t\n不用api key,不用注册,不用配置,chrome和edge都能加载,开源\n\t\nhttps://github.com/aeroxy/ig-voice-transcriber",
+    "created_at": "2026-09-07T15:54:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11552"
+  },
+  {
     "id": 11551,
     "title": "【开源自荐】Lyrimuse：macOS 桌面歌词，把九个歌词源的候选统一打分排序，专治配错版本",
     "content": "你好，我是 Lyrimuse 的作者，自荐一个自己写的 macOS 桌面歌词工具，免费开源（GPL-3.0）。Swift（App）+ Go（后台采集服务）双进程，约 13 万行。\n\n**仓库：** https://github.com/Yudaotor/lyrimuse\n**官网：** https://yudaotor.github.io/lyrimuse/\n**安装：** Releases 里有 dmg（Apple Silicon 与 Intel 各一份），或 `brew install yudaotor/lyrimuse/lyrimuse`；需要 macOS 14+\n\nmacOS 上老牌的 LyricsX 自 2022 年 4 月起没有再发布新版本。而各家歌词软件普遍的做法是\"按顺序问几个源，谁先给出结果就用谁\"，在版本繁多的华语歌上必然出错：现场版配了录音室的词、粤语版配成国语版的词、三分钟的节选版配了五分钟专辑版的时间轴。Lyrimuse 把这件事当成一个排序问题来做。\n\n### 选词：九个源的候选统一打分\n\n九个歌词源（网易云、QQ 音乐、酷狗、酷我、咪咕、Musixmatch、LRCLIB、LyricFind、AMLL）并发查询、总截止 20 秒，返回的**全部候选**进同一个打分函数排序：\n\n- **版本限定词**单独判定：`Live` / `Remix` / 裸的 `(Edit)` / `(粤语)` 这类词错配罚 -600，不当成普通标题差异；\n- **语种版本**从整批候选里推断，再对每个候选双向判决——一致的放行、不一致的重罚，避免同时存在粤语版和国语版时误杀标注正确的那个；\n- **时长吻合度**：源上报的曲长、以及歌词最后一行的时间戳，跟本地这首歌的实际时长比。计算前先按结构剥掉末尾的署名行（\"混音：XXX\"这类行也带时间戳，会把最后一行时间戳抬高几十秒）；\n- **质量信号**：有没有逐字时间轴、有没有译文、内容是否被多个源交叉印证。\n\n打分逻辑由一套金标回归语料（22 个真实样本，含冠军判决与逐项得分）守着。每首歌都留有「解析决策」面板：每个候选各得多少分、每一项加了多少、赢家为什么赢。手动选定的歌词会被锁定，不被自动匹配覆盖。\n\n### 显示：四种逐字格式，四个展示面\n\n逐字（karaoke）时间轴解析四种格式：网易云 YRC、QQ QRC、酷狗 KRC、AMLL TTML。网易云的整行 LRC 与逐字 YRC 是两条独立产线、同一句的时间戳系统性差 0.7~3 秒，因此译文与罗马音按内容归一化后匹配贴行，不按时间戳最近邻。\n\n罗马音：日语走 CFStringTokenizer 形态分析，中文拼音走 ICU，粤拼用 rime-cantonese 的词级词典做多音字消歧（\"行街\" vs \"银行\"），词典离线预处理进二进制。翻译优先用源自带的社区翻译，其次走设备端 Apple Translation 框架，歌词不出本机。\n\n四个展示面任选或全开：桌面悬浮窗、贴着刘海的灵动岛胶囊、仿 Apple Music 的歌词窗口、菜单栏（可双排：当前句 + 下一句/译文/罗马音）。\n\n### 播放状态：MediaRemote 私有框架 + 浏览器网页播放器\n\nApple Music 走 AppleScript；QQ 音乐 / 网易云 / 酷狗 / Spotify 没有官方脚本接口，走系统级 MediaRemote 私有框架（经 `media-control` 这个社区逆向实现）。位置精度上做了两件事：锚点时刻取自事件流的**到达时刻**而非整秒时间戳（Spotify 报的锚点只精确到整秒、且一首歌内不刷新，直接外推有 0~1 秒随机偏移），精度 ±20ms；以及识别并忽略\"同一 elapsed 换新时间戳\"的陈旧锚点重发。\n\n浏览器里的 YouTube Music / Spotify 网页版是一等播放器：注入探针读页面自己的进度条，与本地播放器共用同一套同步管线。\n\n### 其他\n\n歌词全部缓存本机、离线可用；Last.fm / ListenBrainz 打卡与本地听歌统计；界面有简体中文 / 繁體中文 / English。没有账号、没有内购、没有数据上报（对外请求只有歌词接口本身，App 内有请求审计日志）。\n\n![四种显示方式](https://raw.githubusercontent.com/Yudaotor/lyrimuse/main/docs/images/hero-surfaces.png)\n\n![打分与解析决策](https://raw.githubusercontent.com/Yudaotor/lyrimuse/main/docs/images/hero-engine.png)\n\n感谢考虑收录。\n",
@@ -792,21 +808,5 @@
     "created_at": "2026-09-01T06:17:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11446"
-  },
-  {
-    "id": 11445,
-    "title": "【开源自荐】ai-guide：Vibe Coding 中文系统教程，从零基础到把产品做上线",
-    "content": "## 项目介绍\n\n[ai-guide](https://github.com/liyupi/ai-guide) 是一套完全免费开源的中文 Vibe Coding 教程。\n\n现在讲 AI 编程的内容不少，但大多停在「某个工具怎么用」这一层——装个 Cursor、贴几条 prompt，然后就没有然后了。这套教程想解决的是后面那段：**从选工具、跟 AI 对话，到做出一个完整项目、部署上线、拿到用户，整条路怎么走完。**\n\n内容按学习主线编排，零基础的人第一天就能做出第一个能跑的作品，有编程基础的可以直接跳到进阶技巧和项目实战。\n\n## 核心特性\n\n- **工具选型**：AI IDE、命令行工具、IDE 插件、零代码平台、智能体平台的横向对比和适用场景\n- **项目实战**：几十个能跟着做完的完整案例，按 AI 创意应用 / 实用工具 / 智能体和平台 / 跨端应用四类划分，每个都含功能演示、技术选型、架构设计和开发流程\n- **进阶技巧**：对话工程、上下文管理、幻觉处理、代码质量保障、成本控制\n- **上线变现**：部署、SEO、数据分析、盈利模式\n- **模型动态**：用同一套真实项目对 DeepSeek、GPT、Claude、Gemini、GLM 等做编程能力实测和横评，持续更新\n- **三语版本**：简体中文之外，仓库内同时维护繁体中文和英文翻译\n\n全部内容免费，没有付费墙。目前 19000+ Star。\n\n## 软件截图\n\n![教程大纲](https://pic.yupi.icu/1/%E9%B1%BC%E7%9A%AE%E7%9A%84%20AI%20%E5%AF%BC%E8%88%AA-16%E6%AF%949%E5%A4%A7%E7%BA%B2_%E5%89%AF%E6%9C%AC.jpg)\n\n## 项目地址\n\n- GitHub：https://github.com/liyupi/ai-guide\n- 在线阅读：https://ai.codefather.cn/vibe",
-    "created_at": "2026-09-01T06:01:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11445"
-  },
-  {
-    "id": 11444,
-    "title": "【开源自荐】Unfour：把 API、SSH 和数据库排障放进同一个桌面工作区（开发者工具）",
-    "content": "标题：\n\n【开源自荐】Unfour：把 API、SSH 和数据库排障放进同一个桌面工作区（开发者工具）\n\n正文：\n\nUnfour 是一个本地优先的开源桌面开发工具，面向需要同时处理 API、服务器和数据库问题的后端开发者。\n\n很多后端问题的排查过程类似：先用 API 请求复现问题，再通过 SSH 查看服务器日志，然后打开数据库客户端检查数据状态，修改代码后重新请求验证结果。Unfour 希望把这条排障路径放进同一个工作区，减少在多个工具之间切换和重复寻找上下文。\n\n项目地址：\n\nhttps://github.com/zyqzyq/Unfour\n\n官网：\n\nhttps://unfour.dev/\n\n![Unfour](https://raw.githubusercontent.com/zyqzyq/Unfour/main/docs/screenshots/app-overview.png)\n\n目前主要包含：\n\n* API Client：发送和管理 HTTP 请求，支持环境变量、认证、Headers、Body、请求前脚本和响应测试。\n* SSH Terminal：SSH 终端、SFTP、命令历史，以及多步骤 SSH Tasks。\n* Database：管理数据库连接、浏览 Schema 和表数据、执行 SQL。\n* Workspace：把 API、SSH、数据库连接和环境配置保留在同一个本地工作区。\n* MCP：Codex 和 Cursor 可以通过本地 MCP Server 使用 Unfour 中保存的 API、SSH 和数据库连接，辅助检查运行中的后端系统并验证修改结果。\n\n一个典型的使用流程是：\n\n```text\nAPI 请求出现问题\n↓\n通过 SSH 查看服务器日志\n↓\n检查数据库状态\n↓\n定位并修改问题\n↓\n重新发送请求验证结果\n```\n\n核心桌面功能免费并采用 Apache License 2.0 开源。\n\n技术栈：Tauri 2 + React + TypeScript + Rust\n\n目前提供 Windows、macOS 和 Linux 安装包：\n\nhttps://github.com/zyqzyq/Unfour/releases/latest",
-    "created_at": "2026-09-01T05:56:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11444"
   }
 ]
