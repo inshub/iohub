@@ -1,5 +1,77 @@
 [
   {
+    "id": 11575,
+    "title": "【开源自荐】Morphz：一个 Agent，同时处理多项任务，共享同一份认知",
+    "content": "大家好，我是 Morphz 的作者，想自荐一个开源的下一代 Agent。\n\n我们习惯把不同任务交给不同的 Agent，再让它们互相传递消息、同步进度。但如果一个 Agent 本身就能并发工作，为什么要先把它的认知拆开？\n\nMorphz 通过自研的结构化上下文，让**同一个 Agent 在同一个上下文内，同时推进多项任务**。它可以一边修改代码，一边等待另一台机器上的测试，同时回应你从聊天软件发来的消息。这些工作不是几个互不相识的助手在接力，而是同一个 Agent 在处理。\n\n它有三个主要特点：\n\n- **并发工作，共享认知。** 不同工作线程可以独立推进，一个任务等待工具结果时，其他任务照常进行。多个会话共享同一份认知，不必在几个独立上下文之间反复交代背景。\n- **LLM 自己维护上下文。** 在同一次响应里，模型既安排任务，也通过上下文事务形成新的认知、修订已有判断、建立关系，并将已经吸收的资料移出当前上下文。维护记忆是工作的一部分，而不是等上下文塞满后再做一次压缩。\n- **一个 Agent，连接多台设备。** Agent 的决策与工具执行相互独立，可以部署在服务器上，调用已连接电脑上的工具；也可以部署在本地，使用远程执行环境。接入新设备，不必再部署一个独立的 Agent。\n\n这些能力已经实现，并用于 Morphz 自身的开发和日常工作。官网有一段实机视频，展示它构建微缩北京场景时，如何并发推进工作。\n\n**One Agent for All — not an agent for every task.**\n\n- [GitHub 源码](https://github.com/morphz-ai/morphz)\n- [官网与实机演示](https://morphz.ai/#demo)\n- [上下文与记忆的实现机制](https://morphz.ai/blog/maintaining-context-without-compaction)\n\n欢迎试用，也欢迎对实现提出问题。\n\n<img width=\"1448\" height=\"1086\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4ae39686-7dab-4dab-bc7b-518a255f6f35\" />",
+    "created_at": "2026-09-08T13:58:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11575"
+  },
+  {
+    "id": 11574,
+    "title": "【网站自荐】热摸爽：聚合 200+ 中文热榜，并保存可回溯的历史热点快照",
+    "content": "## 项目地址\n\nhttps://remoshuang.com/\n\n## 它解决什么问题\n\n中文互联网的热点分散在微博、知乎、抖音、新闻媒体和技术社区；多数平台只展示实时榜单，过后很难查询某一天发生过什么。\n\n热摸爽聚合 200+ 公开 API、RSS 和官网榜单来源，提供分类浏览和跨平台事件合并。每天还会冻结一份不会继续变化的热点快照，用于查询往日热榜和核对来源。\n\n## 与普通热榜聚合的区别\n\n- 同一事件在多个平台出现时合并展示；\n- 提供按日期查询的历史热点快照；\n- 不把阅读量、播放量和回复数强行换算成虚构的统一热度；\n- 保留原始来源链接，并公开数据与排序方法；\n- 提供 RSS、趋势报告和每日人工审核摘要。\n\n历史存档：https://remoshuang.com/hot\n数据方法：https://remoshuang.com/methodology/",
+    "created_at": "2026-09-08T12:51:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11574"
+  },
+  {
+    "id": 11573,
+    "title": "【开源自荐】阿布（Abu）——你的 AI 桌面办公搭子",
+    "content": "阿布（ Abu ）是一款本地优先的 AI 桌面办公助手。\n支持自主规划任务、读写本地文件、执行命令，并提供多模型接入和多智能体并行执行等能力。\n它把原本需要人工反复操作的办公流程交给 AI 完成，同时将数据和密钥保留在本地，让 AI 真正融入日常工作。\n支持企业私有部署，具有 token 管理、权限管理、应用管理等能力\n\n- github地址：https://github.com/PM-Shawn/Abu-Cowork/\n- 官网地址 ：[myabu.cn](https://myabu.cn/)\n\n**🚀 核心能力**\n\n- 自进化：跑完一套复杂流程后，阿布主动提议「固化成技能」，一键生成草稿，审阅上架后下次直接调用，把一次性操作沉淀成你的专属工作流。\n- Agent 自主执行：自主规划任务、调用工具、读写文件、执行命令，一口气完成复杂工作流。\n- Skill 技能系统：内置 28 个技能，覆盖 Office 文档、设计创作、浏览器自动化、开发辅助等场景，一键安装，支持自定义扩展。\n- MCP 工具协议：通过 Model Context Protocol 连接数据库、搜索引擎、GitHub 等外部服务，能力随需生长。\n- 电脑操控：截屏识别 + 键鼠控制，直接操作桌面应用，像真人一样把活干完。\n- 触发器 / 值班：HTTP、文件变更、Cron、IM 消息等事件自动触发，实现 7×24 无人值守。\n- 多 Agent 并行：最多 5 个后台 Agent 同时干活，各自独立执行、进度实时可见，复杂任务并行推进。\n\n**🛡️ 用着放心**\n\n- 计划模式：涉及删除、覆盖、发送、安装等高风险步骤时，阿布先出分步计划，你点「确认执行」才动手；待批期间只跑只读操作。\n- 交互式提问：需要你拍板时，阿布在输入框上方弹出选项卡片，单选 / 多选皆可，也能自定义填写，不用在长文字里翻问题。\n- 本地优先 · 开源可审计：数据不上传，API Key 存本地，Seatbelt 沙箱隔离 + 路径保护 + 命令检查，代码完全开源。\n\n**💡 使用场景**\n无论你是职场人、学生还是开发者，阿布都能接得住\n\n- 通用办公：「帮我整理桌面，按文件类型分类到不同文件夹」「找出下载文件夹里超过 100MB 的文件」\n- 数据处理：「把这几个 CSV 文件合并成一个 Excel」「统计这个文件夹里所有表格的行数和列数」\n- 内容创作：「帮我写一份本周的项目周报」「把这篇文章翻译成英文并保存」\n- 开发辅助：「审查这个 PR 的代码并给出改进建议」「批量重命名项目里的图片文件为 kebab-case」",
+    "created_at": "2026-09-08T11:42:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11573"
+  },
+  {
+    "id": 11572,
+    "title": "【开源自荐】AI Context Linker：让 ChatGPT 了解你的本地项目",
+    "content": "分享一个开源的 AI 上下文工具：AI Context Linker。\n\n它可以一键把你的本地项目整理成简报，让 ChatGPT 网页版了解你的项目背景，不用上传整个代码仓库，也不用每次重新介绍。\n\n本地纯 Python 脚本，不消耗 AI token，分享什么由你决定。\n\n交给 ChatGPT 网页版后，最大的好处是聊天不占 Codex 额度，可以用订阅套餐里可选的高思考强度或比本地 Astra 更强的 Pro 模式，放开聊项目、做头脑风暴。\n\n特别适合同时做多个项目、经常用 AI 讨论方向和下一步的人。欢迎试用、Star，有问题直接提 Issue！\n\n项目地址：\nhttps://github.com/xhonye/AI-Context-Linker\n\n中文介绍与使用方法：\nhttps://github.com/xhonye/AI-Context-Linker/blob/main/README.zh-CN.md\n\n<img width=\"450\"  alt=\"Image\" src=\"https://github.com/user-attachments/assets/ecc4fbf0-9d17-4dec-b061-3bd7ac5b13a5\" />\n\n<img width=\"450\"  alt=\"Image\" src=\"https://github.com/user-attachments/assets/88119f02-63a6-4209-822c-86052352722c\" />\n",
+    "created_at": "2026-09-08T10:58:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11572"
+  },
+  {
+    "id": 11571,
+    "title": "【工具自荐】AI IP 检测：对照不同 AI 服务看到的出口 IP",
+    "content": "自荐一个 XiuStore 提供的免费网页工具：**AI IP 检测**。\n\n在线使用：https://store.xiu.ai/zh/ai-ip/\n\n切换网络或调整分流后，一个普通 IP 查询页面看到的出口，不一定就是访问各个 AI 服务时的出口。这个工具把几项检查放在同一页，方便对照：\n\n- 分别请求 Claude、ChatGPT、Grok、Perplexity 和 Cloudflare 的出口接口，显示各目标看到的 IP。\n- 用公开的第三方数据补充地区、网络类型和风险标记，保留无法检测的状态。\n- WebRTC 检测单独触发，方便和上面的 HTTP 出口信息比较。\n\n页面可以直接打开，不需要登录或购买订阅。它属于网络排查工具，不检测 AI 账号状态，也不承诺某个 IP 一定能使用某项服务。地区与风险数据是参考信息，检测结果会受当前网络和目标接口可用性影响。\n\n数据处理方式在页面上有说明：出口 IP 会发给第三方地理与风险接口；WebRTC 候选地址、时区、语言和浏览器信息不会由本页发送给 xiu.ai 后端。\n\n供周刊工具栏目考虑。由 XiuStore / XiuAI 维护，欢迎反馈使用问题。\n",
+    "created_at": "2026-09-08T10:40:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11571"
+  },
+  {
+    "id": 11570,
+    "title": "【开源自荐】Arcora：极简优雅的 macOS 多格式压缩与解压工具",
+    "content": "阮老师，您好！\n\n想向您自荐 **Arcora**，一款追求极简、优雅的开源 macOS 压缩与解压工具。希望把常用功能放进一个清爽的原生界面，让处理压缩包这件小事顺手一些。\n\n项目地址：[github.com/wybaby168/Arcora](https://github.com/wybaby168/Arcora)\n\n主要用心在这些日常体验上：\n\n- ZIP、7z、TAR、TAR.GZ、TAR.BZ2、TAR.XZ 的压缩与解压，以及 RAR4 / RAR5 的解压，都能在同一个应用里完成。\n- 可以先浏览压缩包、搜索文件、用 Quick Look 预览，再只解压需要的内容，不必为了取一个文件把整包展开。\n- 使用 SwiftUI / AppKit 原生界面，支持拖放操作；需要时可为 ZIP / 7z 设置密码和分卷，任务也能暂停、继续或取消。\n- 文件在本机处理，无需账号、不上传文件，没有广告或遥测。Arcora 原创代码以 MIT 协议开源，第三方引擎保留各自许可。\n\n相比 macOS 自带的 ZIP 压缩，Arcora 提供更多格式和可视化设置；相较只做解压的工具，它把压缩、浏览和按需提取放在了一起。希望带来的便利，是少切换工具、少记命令，保留 Mac 应用简洁自然的使用习惯。\n\n支持 Apple Silicon 与 Intel Mac，运行要求 macOS 14+，界面和文档提供中文、英文、日文。\n\n使用说明：目前提供源码和构建脚本，尚无已签名公证的安装包。RAR 压缩需另行配置官方编码器和自己的有效许可证，公开仓库和标准构建不附带两者。\n\n项目还在持续完善。如果您觉得适合周刊，恳请考虑收录，也欢迎读者提出建议。感谢您阅读。\n",
+    "created_at": "2026-09-08T09:46:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11570"
+  },
+  {
+    "id": 11569,
+    "title": "【开源自荐】就位：根据自己的身高，找到合适的桌椅和显示器高度",
+    "content": "【开源自荐】就位：根据自己的身高，找到合适的桌椅和显示器高度\n\n桌子、椅子和显示器都有一堆尺寸与高度参数，但很多人不知道现有设备该怎么调，准备换新设备时，也很难判断某个型号的调节范围是否适合自己。\n\n我做了一个免费开源的网页工具「就位」。输入身高，它会给出椅面、坐姿与站姿桌面、显示器顶部和观看距离的建议起点与参考范围。调整现有设备时可以照着设置；买新设备前，也可以拿商品标注的尺寸和调节范围来对照。\n\n- 在线使用：https://fit.barrybarrywu.com/\n- 国内镜像：https://fit.barrybarrywu.cn/\n- 源码：https://github.com/BarryBarrywu/workstation-fit\n\n![就位：按身高调节桌椅与显示器](https://raw.githubusercontent.com/BarryBarrywu/workstation-fit/1dccf5fccbe72b76910547ae93cec4b0e4b485ca/assets/readme/hero.png)\n\n工具支持 145 至 205 cm 的身高范围，可以切换坐姿和站姿。调整身高或姿势后，右侧的 3D 机器人、桌椅和显示器会同步变化，也可以单独查看每项建议对应的位置。\n\n身高只能提供一个开始尝试的位置，不能代替每个人真实的身体比例。因此，「就位」还提供了 30 秒身体检查，引导用户根据脚掌、膝盖、手肘和视线，继续微调自己的桌椅与显示器。它也不会保证某个商品型号一定合适，购买前仍要核对实际尺寸，有条件时再试坐或试用。\n\n每项建议都会列出原始资料、采用的数据、换算方式、适用范围和局限。人体尺寸主要参考 GB/T 10000-2023《中国成年人人体尺寸》，桌面、屏幕和观看距离的检查方法参考了职业健康与人体工学机构的公开指南。超出原始资料覆盖范围的结果会标记为趋势估算，不会当成精确结论。\n\n所有计算都在浏览器内完成，身高与校准进度只保存在当前设备，不需要账号，也不会上传到服务器。项目使用 Astro、TypeScript 和 Three.js 开发，源代码采用 MIT License，原创 3D 模型与视觉素材采用 CC BY 4.0。",
+    "created_at": "2026-09-08T09:43:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11569"
+  },
+  {
+    "id": 11568,
+    "title": "【开源自荐】Keyphore：用键盘灯光显示 Codex 任务状态",
+    "content": "【开源自荐】Keyphore：用键盘灯光显示 Codex 任务状态\n\n自荐一个免费开源的 macOS 小工具 Keyphore。它把 Codex 的任务状态显示在 NuPhy 键盘背光上：蓝色表示正在执行，橙色表示需要审批或输入，绿色表示一轮任务已经完成，空闲时熄灯。处理耗时任务时，即使正在看其他窗口，也能从键盘知道 Codex 是否在等你。\n\n- 官网：https://keyphore.barrybarrywu.com/\n- 源码：https://github.com/BarryBarrywu/Keyphore\n- 下载：https://github.com/BarryBarrywu/Keyphore/releases/latest\n\n![Keyphore 的键盘灯光状态](https://raw.githubusercontent.com/BarryBarrywu/Keyphore/9ca11f275809ebc2649bf365effdee8cc7682084/assets/readme/hero-zh-CN.svg)\n\nKeyphore 是一款原生 macOS 菜单栏 App。三种信号可以分别设置颜色、亮度、常亮或慢闪，也可以单独关闭。完成提示时间可设为 1 至 60 秒。多个 Codex 任务同时运行时，App 会按照“需要回应、执行中、已完成”的顺序汇总状态，避免某个任务的完成提示盖住仍在运行或等待回应的任务。\n\n所有任务状态都在本机处理。Keyphore 不需要账号，不提供云同步，也不会自动上传遥测、提示词、对话正文或工具内容。公开下载的 App 和 DMG 已使用 Developer ID 签名并通过 Apple 公证，也支持在 App 内检查更新。\n\n当前支持 Apple Silicon Mac 和 macOS 13 或更高版本，需要使用支持 Plugin 与 Hook 的 Codex 桌面版或 CLI。键盘支持原厂固件的 NuPhy Air65 V3 和 Air75 V3，更多型号可以参考残酷。需通过 USB 有线连接。目前不支持蓝牙、2.4 GHz 接收器、Intel Mac、ISO／JIS 配列及自定义固件。\n\n项目采用 GPL v3 开源许可证，Swift App、后台组件和独立的 Rust 插件源码都在仓库中。",
+    "created_at": "2026-09-08T09:38:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11568"
+  },
+  {
+    "id": 11567,
+    "title": "YayaTools：80+ 个本地运行的在线工具箱，PDF、图片、文本、开发调试一次备齐",
+    "content": "\n推荐一个我做的免费在线工具箱：YayaTools。\n\n它把日常最常用的 PDF、图片、文本、开发调试、数据转换、密码安全、计算器等小工具集中在一个网站里。目前已有 80+ 个工具，核心特点是：大多数处理直接在浏览器本地完成，不需要注册，也不上传文件到服务器。\n\n地址：https://yayatool.com/\n\n### 为什么做这个？\n\n很多在线小工具页面功能单一、广告和弹窗很多；更麻烦的是，处理 PDF、图片、密码、JSON、Token 等内容时，用户往往不知道文件和数据会被传到哪里。\n\nYayaTools 的思路是尽量利用浏览器本身的能力完成任务：Canvas 用于图片处理，FileReader 用于读取本地文件，Web Crypto 用于随机数、哈希和密码相关操作，DOM / JavaScript 用于文本、格式化与转换。因此多数工具可以即时得到结果，没有上传等待时间，也更适合处理隐私内容。\n\n### 常用功能\n\n- **PDF 与文档**：PDF 合并、拆分、提取页面、旋转、PDF 转图片、密码保护、元数据查看/编辑；\n- **图片与设计**：图片压缩与 WebP/JPG/PNG 转换、二维码生成、颜色工具、网站截图与设备样机图；\n- **文本与写作**：字数/字符统计、大小写转换、Markdown 编辑、文本差异对比、Lorem Ipsum 生成；\n- **开发与数据**：JSON 格式化与校验、Base64 编解码、URL 编解码、UUID 生成、JWT 解码、HTML/CSS 格式化与压缩、Cron 表达式解析；\n- **安全工具**：强密码生成、密码强度与熵分析、SHA-256 / SHA-512 / SHA-1 哈希与校验和生成；\n- **实用计算**：年龄与生日计算、百分比、折扣、单位换算、Unix 时间戳等；\n- **网络查询**：DNS 记录查询、SSL 证书和域名到期信息查询、WHOIS / RDAP 信息查看。\n\n### 使用体验上的设计\n\n- 无需注册，打开即用；\n- 大多数文件、图片、文本操作在本地浏览器完成；\n- 即时处理，避免“上传—等待—下载”的流程；\n- 支持键盘快捷键 `⌘K / Ctrl+K` 快速搜索工具；\n- 每个工具尽量只解决一个具体问题，界面保持简洁；\n- 手机和桌面端均可使用。\n\n适合开发者、运营、设计师、内容创作者和学生收藏：遇到临时的格式转换、数据处理、文件编辑或小计算需求时，不用在一堆广告页面里反复找工具。\n\n欢迎试用，也欢迎提出想加入的新工具。",
+    "created_at": "2026-09-08T09:32:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11567"
+  },
+  {
     "id": 11566,
     "title": "【资源自荐】GPT-6 Astra 案例集：75 个社区案例，附在线项目链接与可搜索画廊",
     "content": "## 项目地址\n\nGitHub：https://github.com/magiccreator-ai/awesome-gpt-6-astra\n\n可视化浏览：https://magiccreator.ai/astra\n\n## 项目介绍\n\n我整理了一个持续更新的 GPT-6 Astra 社区案例集，目前收录 75 个案例，涵盖游戏、Blender / 3D、网页、视频制作、绘画和其他计算机操作场景。其中 31 个案例附有作者提供的在线项目链接。\n\n希望让感兴趣的读者更方便地了解社区创作者用 Astra 做了什么，并找到原始演示和可以体验的项目。\n\n- 按用途分类，每个案例附作者、原始出处和简要说明。\n- 区分录屏展示与在线项目；涉及多种工具协作时，说明 Astra 的参与方式。\n- 提供网页画廊，支持预览、搜索、分类和筛选带在线链接的案例。\n- GitHub 版便于收藏，也欢迎通过 Issue 补充案例或纠错。\n\n例如：从旧图纸重建 Blender 蒸汽火车模型、可在浏览器体验的机器人对战游戏，以及可交互的汽车拆解展示。\n\n这是独立维护的社区案例目录。作品属于原作者；模型使用方式和效果以原帖描述为准，收录不代表已独立复现或逐一测试所有在线项目。\n",
@@ -730,81 +802,5 @@
     "created_at": "2026-09-02T12:37:25Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11469"
-  },
-  {
-    "id": 11468,
-    "title": "【开源自荐】Subtitle Scout —— 自托管「字幕获取 agent」，LLM 逐条甄别候选字幕，只装最合适的那条",
-    "content": "项目地址：https://github.com/fancydirty/subtitle-scout\n\n> 一个自托管的「字幕获取 agent」：盯着你的媒体库，搜五个字幕源、拿每条候选和视频本身对照校验、由 LLM 判断哪条最合适再落盘——宁缺毋滥，没有够好的就不装。不依赖 Jellyfin/Emby/Plex，直接扫文件系统。\n\n**它想解决什么**：常见的字幕自动化要么「按文件名硬匹配、装上一条对不上轴的」，要么「一部剧到底缺哪几集根本不告诉你」。Subtitle Scout 把字幕获取当成一个**证据问题**——由 agent 基于「搜索结果 → 校验事实 → 决策」自主判断，装不上就如实说「暂时没找到合适的」，绝不用一条烂字幕充数：\n\n- **五个源 + LLM 甄别**：ASSRT、OpenSubtitles、SubDL、r3sub、Jimaku（另有 SubHD/Zimuku 开关），读真实搜索结果按语言/版本/轴挑，装前对照视频校验。\n- **多语言分层**：中文源覆盖最厚；英、日、韩正式支持；西法德葡俄意可配置。缺中文字幕时可选让 LLM 从日文源翻译。\n- **季级追踪 + 每日巡检**：只回来补「还缺集」的剧；可选按 TMDB 反查整理目录（可逆）。\n- **一键自部署**：`docker compose up -d`，NAS/软路由/小主机都能跑；凭证只存在你自己的部署里（走数据库，不写进任何托管服务）。\n- **让你的 AI agent 替你装**：仓库自带 Agent Skill，Claude Code / Codex / Cursor 读了就能全程部署。\n\n字幕流——搜源、校验、逐格装上（覆盖格实时刷新）：\n\n![字幕流](https://raw.githubusercontent.com/fancydirty/subtitle-scout/main/docs/brand/lane-subtitle.gif)\n\n翻译流——缺中文时从日文源逐句翻译，四步进度 + 并发计数：\n\n![翻译流](https://raw.githubusercontent.com/fancydirty/subtitle-scout/main/docs/brand/lane-translate.gif)\n\n**免安装在线 demo**（只读，示例库，不碰你的任何东西）：https://demo.subtitlescout.com\n\n技术栈：单包 Node + better-sqlite3 + 进程内队列 worker，前端 React + Tailwind v4，3600+ 后端 / 1200+ 前端测试 + CI。AGPL-3.0、纯自托管，自带 LLM/TMDB/字幕源凭证——**不是托管服务**。\n",
-    "created_at": "2026-09-02T10:52:13Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11468"
-  },
-  {
-    "id": 11467,
-    "title": "【开源自荐】wedb_embed：纯 Rust 嵌入式 Redis 引擎，速度达 Redis 的 20~40 倍",
-    "content": "# wedb_embed：纯 Rust 嵌入式 Redis 兼容 LSM 数据库引擎\n\n项目地址：https://github.com/webc-site/wedb_embed\n示例代码：https://github.com/webc-site/wedb_embed/tree/main/examples\nCrates.io：https://crates.io/crates/wedb_embed\nAPI 文档：https://docs.rs/wedb_embed\n\n<p align=\"center\">\n  <img src=\"https://fastly.jsdelivr.net/gh/webc-fs/-@DE/YP_rkH2pMVecMXwJrONA.svg\" alt=\"wedb_embed vs Redis 性能与资源对比\" width=\"100%\">\n  <br>\n  <sub>测试环境：CPU: INTEL(R) XEON(R) PLATINUM 8573C (4核) | 内存: 15.6 GB | 硬盘: Azure Managed Virtual Disk (Cloud Standard SSD) | 系统: Ubuntu 24.04.4 LTS | Rust: 1.98.0 | Redis: v8.10.1</sub>\n</p>\n\n## 实测性能提升与资源开销对比\n\n在真实混合读写与 5GB 数据集（500 万条结构化数据）压测中：\n\n1. 综合读写速度达到 Redis 的 20~40 倍\n- Apple M2（NVMe SSD 本地固态硬盘）：实测综合性能约为 Redis 的 40 倍。\n- Linux 云端虚拟磁盘（GitHub Actions 云主机）：实测综合性能约为 Redis 的 20 倍。\n- 单点点查 P95 延迟处于亚微秒与微秒区间。性能倍率的大幅提升主要源于直接在 Rust 进程内通过函数调用交互，彻底消除了网络 Socket 传输、TCP 协议栈打包、系统调用上下文切换以及 RESP 协议的序列化与反序列化开销。\n\n2. 物理磁盘占用缩减 84%\n- 5GB 数据集实测物理磁盘落盘仅占用 1,179 MB（wedb_embed），对比 Redis AOF 的 7,531 MB，磁盘空间节省达 84%（得益于 LZ4 块级压缩与大 Value 键值分离）。\n\n3. 常驻内存开销降低 94%\n- 实测常驻内存（RSS）仅为 281 MB，而同等数据量下 Redis 需占用 4,800 MB 内存。\n- 内存占用完全由配置的 LSM 块缓存（默认 512MB）与 memtable 参数控制，不随磁盘总数据量线性膨胀，彻底规避 OOM 崩溃与内核 overcommit 配置要求。\n\n## 核心架构与深度性能优化\n\n1. 双 Keyspace 物理隔离与定制化 LSM 存储参数\n- data keyspace：存放原始字符串与复合集合子项数据，配置 8KB 块大小与 LZ4 块级压缩，并启用 4KB 阈值的键值分离（KV Separation），大 Value 不参与 LSM 树的多层 Compaction，大幅削减写放大与磁盘 I/O 抖动。\n- meta keyspace：存放复合 Key 元数据、版本控制信息及多租户目录，配置 4KB 块大小与内存 Hash 索引，并固定（Pin）索引与布隆过滤器在内存中，保障高频元数据点查的极低延迟。\n\n2. 零堆分配 Key 编码（OPPV + SmallKey）\n- 采用保持字节序的前缀可变长度编码（Order-Preserving Prefix Varint），在保证前缀扫描正确性的同时压缩 Key 体积。\n- 热路径中所有 Key 编码均使用 64 字节的栈分配缓冲区（SmallKey），完全避免全局内存分配器（malloc/jemalloc）的争用与堆内存碎片。\n\n## 完整支持的数据模型（16 种）\n\n- 基础键值：String（支持多段拼接与数值自增）、Hash（原生支持字段级 TTL 过期淘汰）。\n- 集合与有序集合：List（双端阻塞与弹出）、Set（集合交并差集计算）、Sorted Set（基于分数范围检索与排名）。\n- 专用结构与分析：Bitmap（位图与位置计算）、JSON（基于 JSONPath 的路径查询与更新）、TimeSeries（时间序列与降采样聚合）、Geo（地理位置半径搜索）、HyperLogLog（基数估算）、TDigest（高精度分位数估算）。\n- 过滤与流处理：Bloom Filter 与 Cuckoo Filter（概率型成员判断）、Streams（流消息队列与消费者组）。\n- 检索与 AI 扩展：Full-Text Search（全文检索）以及原生 HNSW 向量检索（支持余弦与欧氏距离的近邻相似度搜索）。\n\n欢迎大家试用、交流并提出反馈。\n",
-    "created_at": "2026-09-02T10:27:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11467"
-  },
-  {
-    "id": 11465,
-    "title": "【工具自荐】ToolSide-浏览器超级工具箱",
-    "content": "ToolSide-浏览器超级工具箱\n官网：https://toolside.link\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/03316702-42fd-401d-b042-a42abe29389e\" />\n\n浏览器右侧的超级工具箱：图片压缩、OCR、PDF 合并、JSON 格式化等 30+ 工具随手可用，不搜索、不切 Tab。\n\n装一个 ToolSide，就不用装十几个插件了，也不用四处找小工具网站了。\n\nToolSide 把高频小工具收进浏览器侧边栏：遇到问题，点开侧边栏搜索即用，用完即走，全程不切换标签页。\n\n## 【核心能力】\n\n▎剪贴板\n在任意标签页复制的文字、链接与图片，会自动进入剪贴板历史。跨标签页共享，切换页面内容不丢失；支持一键复制、导出下载，支持置顶与搜索，上周复制的内容也能找回来。\n\n▎截图与录屏\n支持区域截图、整页长截图和可视区域截图，也能直接录制标签页或屏幕视频。截取完成后，可以在侧边栏里直接标注、复制或保存。\n\n▎翻译\n在网页上选中一段文字，松开即显示译文浮层；也可以一键翻译整个页面，并提供原文对照，方便中英对照阅读。译文支持一键复制保存。\n\n▎右键直达\n在网页任意位置点击右键，常用操作会直接出现在菜单里：右键图片可以做压缩、格式转换或提取颜色；选中文本可以翻译或生成摘要；右键页面空白处可以截图或录屏。\n\n## 【工具覆盖的场景】\n\nToolSide 内置了覆盖日常办公与开发场景的一批工具，并在持续增加中：\n\n- 图片处理：压缩体积、转换格式、调整尺寸、裁剪、拼接，以及识别图片中的文字\n- 文档处理：PDF 文件的合并、拆分与压缩，PDF 与图片的互相转换\n- 文本与数据：格式化与校验结构化数据、格式转换、编解码、字符统计、文档预览\n- 开发辅助：解析令牌、生成随机标识、转换时间格式、查看请求信息等常用操作\n- AI 能力：总结当前页面或选中的文本、润色改写\n- 效率小件：拾取页面颜色、生成二维码、换算单位、生成强随机密码\n\n不确定某个需求能不能解决？打开侧边栏，用关键词搜索一下，中英文和常用别名都能命中。\n\n## 【设计理念】\n\n- 常驻侧边栏：与网页并排显示，收起后只占 36px 极窄入口，不打扰阅读\n- 快捷键唤起：Ctrl+Shift+T（Mac 为 ⌘⇧T）打开侧边栏，Ctrl+K 聚焦搜索，全流程键盘可达\n- 我的工具：收藏常用工具与网站，自定义打开方式\n\n## 【隐私承诺】\n\n图片、PDF、文本处理默认在你的浏览器本地完成，不上传服务器。你的数据留在你的设备上。\n\n## 【三步上手】\n\n1. 遇到问题：图片太大、PDF 要合并、一段外文看不懂\n2. 点开 ToolSide：点击右侧极窄入口或按快捷键，侧边栏即时展开\n3. 搜索并使用：输入关键词选中工具，在侧边栏里直接完成",
-    "created_at": "2026-09-02T09:41:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11465"
-  },
-  {
-    "id": 11464,
-    "title": "【工具自荐】Git Agent：跨平台原生 Git 客户端，支持三方合并与可撤销的 AI 合并建议",
-    "content": "自荐一个我开发的桌面 Git 客户端 **Git Agent**，基于 Rust 和 egui，支持 Windows、macOS 和 Linux。它把工作区、提交历史、差异审查和三方合并放在同一个工具中，AI 合并建议是可选辅助功能，不配置模型也能使用日常 Git 功能。\n\n- 项目仓库：[adoin/git-Agent](https://github.com/adoin/git-Agent)\n- 官网与真实截图：[git-agent.emssion.com](https://git-agent.emssion.com/)\n- 安装包：[GitHub Releases](https://github.com/adoin/git-Agent/releases/latest)\n- 中文文档：[README.zh-CN.md](https://github.com/adoin/git-Agent/blob/main/README.zh-CN.md)\n\n### 主要功能\n\n- **工作区与历史**：多仓库标签、批量暂存和取消暂存、提交图、按文件查找提交、双栏差异与语法高亮。\n- **三方合并编辑器**：同时查看两侧内容与合并结果，逐个跳转冲突、手动编辑，并支持撤销和重做。\n- **可审查的 AI 合并建议**：查看建议及解释，逐条采用；也可一次应用全部可执行建议，并通过一次撤销恢复。建议失效或改动相互冲突时，整批不应用。应用建议不会自动保存，最终结果仍由用户检查、保存和测试。\n- **其他 Git 工作流**：分支、标签、储藏、交互式变基、Git Flow、Git LFS、子模块和子树，以及中英文、深浅色外观。\n\n### 实际截图\n\n提交历史与差异视图：\n\n![Git Agent 实际运行截图：test-repo 提交历史与代码差异](https://git-agent.emssion.com/assets/history.png)\n\n深色模式的三方合并与 AI 建议：\n\n![Git Agent 实际运行截图：三方合并、AI 建议及应用所有建议入口](https://git-agent.emssion.com/assets/merge-dark.png)\n\n以上都是应用在测试仓库中的实际截图；AI 输出只代表此次测试，不保证其他冲突得到相同结果。\n\n### 使用与许可说明\n\n目前发布的 v1.4.0 提供 Windows x64 安装程序、macOS 通用架构安装包和 Linux Debian/Ubuntu amd64 包。使用前需要安装系统 Git；macOS 安装包目前使用临时签名，尚未经过 Apple 公证，具体说明见文档。\n\n应用可免费下载使用。AI 功能需要用户自行配置兼容的模型服务，服务商可能收取调用费用；发起分析时，代码和冲突上下文等内容可能发送给所配置的服务商，请先确认仓库规范与隐私政策。\n\n项目当前采用 **Apache License 2.0，附加 Commons Clause 1.0**，属于**源码可见**，不是未附加限制的 Apache 开源项目。允许公司内部使用；对主要依靠本软件功能向第三方收费的行为有限制，完整条款见 [LICENSE](https://github.com/adoin/git-Agent/blob/main/LICENSE)。\n\n项目仍在持续开发，欢迎试用并通过 [Issue](https://github.com/adoin/git-Agent/issues) 反馈实际使用中的问题，尤其是跨平台体验和复杂合并场景。\n",
-    "created_at": "2026-09-02T07:53:35Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11464"
-  },
-  {
-    "id": 11463,
-    "title": "【文章推荐】你的语法高亮是错误的（Your syntax highlighter is wrong）",
-    "content": "文章：Your syntax highlighter is wrong （你的语法高亮是错误的）\n\n几乎所有语法高亮方案都把注释标记为不显眼的浅色，背后实际上是代码比注释更重要的价值判断。\n但作者认为注释的正确用法是用来弥补代码表达能力的不足，注释应该比代码本身更重要，因此注释反而应该高亮显示，同时应该将没有意义的注释都删除。\n文章探讨了几个语法高亮的不合理之处，同时也包含了对于代码应该如何编写和阅读的感悟。\n\nHN链接：https://news.ycombinator.com/item?id=49508284\n原文链接：https://jameshfisher.com/2014/05/11/your-syntax-highlighter-is-wrong/",
-    "created_at": "2026-09-02T07:04:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11463"
-  },
-  {
-    "id": 11462,
-    "title": "【工具自荐】最夯的浏览器标签切换插件 SwiftTab Pro",
-    "content": "浏览器标签切换插件基本分为两种实现:\n\n一种是在页面注入脚本, 然后弹层显示标签, 这种体验最好, 但是有致命问题,就是一些标签页面不允许注入,比如设置页面,新标签页等, 注入的脚本还可能会被已有的页面样式或者插件影响, 体验会非常割裂;\n\n另外一种就是弹窗, 在工具栏弹出一个列表, 这种就非常简单可靠, 但是不能做太多丰富的界面效果, 比如显示缩略图;\n\nSwiftTab Pro 采用了第三种方式: 在新标签页打开, 这种方式避免了前面两种方式带来的问题, 同时又可以做出很多非常丰富的功能效果, 比如缩略图, vim 键位等.\n\nSwiftTab Pro 做了很多丰富的功能, 欢迎体验!\n\nchrome: https://chromewebstore.google.com/detail/fdgbickfhnjefknaomamncmcjbfdijdd?authuser=0&hl=zh-CN\n\nedge: https://microsoftedge.microsoft.com/addons/detail/cgmnbmmmlaiojjmhgcfhpladmmgcpheg\n\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f3e9f457-ac23-4730-9161-5b59505abb85\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/19316747-c1ce-4d6b-91c0-7da479229a70\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f6aa9e4a-32b6-4d25-93aa-d01929503553\" />",
-    "created_at": "2026-09-02T06:07:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11462"
-  },
-  {
-    "id": 11461,
-    "title": "【开源工具自荐】Whisper Web：浏览器本地运行的免费语音转文字工具",
-    "content": "网址：https://whisperwebfree.com/\n\n源码：https://github.com/whisper-web-online/whisper-web\n\nWhisper Web 是一个免费、开源的浏览器本地语音转文字工具。媒体解码、Whisper 推理、文本编辑和历史记录都在用户设备上完成，不需要注册账号，选择的本地音视频也不会上传到 Whisper Web 服务器。\n\n### 1. 浏览器本地运行，兼顾隐私与兼容性\n\n支持 Whisper Tiny、Base、Small 模型，可选 WebGPU 加速或 WebAssembly 兼容模式。第一次使用需要联网下载页面资源和所选模型，之后模型会缓存在浏览器中；本地媒体和转录文本不会发送给应用服务器。\n\n### 2. 从导入到字幕导出的完整流程\n\n支持 MP3、MP4、M4A、WAV、WebM、FLAC 等常见音视频格式，也可以使用麦克风录音或允许跨域访问的媒体直链。可识别 99 种语言，也能将非英语语音翻译为英语。完成后可以直接编辑、搜索和回放，并导出 TXT、JSON、SRT、VTT。\n\n### 3. 普通文件、大文件和本地 MP3 转换\n\n标准转录支持不超过 300 MB、20 分钟的文件；独立的大文件入口支持不超过 1 GB、1 小时的本地媒体，并按片段顺序转录。站内还提供本地 MP4 / MOV / WebM 转 MP3 工具，源视频和输出文件同样不会上传到应用服务器。\n\n项目采用 MIT License，网站目前免费使用，无需登录。界面提供英语、西班牙语和阿拉伯语版本。",
-    "created_at": "2026-09-02T05:43:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11461"
-  },
-  {
-    "id": 11460,
-    "title": "【开源自荐】Every QR Code：让每个 URL 长成可扫描的 3D 世界",
-    "content": "项目地址：https://every-qrcode.com/\n\n开源仓库：https://github.com/AlbertAZ1992/every-qrcode\n\nEvery QR Code 是一个开源的 3D 二维码项目：输入任意 URL，会根据网址生成一个确定性的 3D 世界，并最终变回真正可扫描的标准二维码。\n\n目前支持两种模型：\n\n- 🌳 Tree：二维码生长成一棵树\n- ⛰️ Terrain：二维码形成一片 3D 地形\n\n相同的 URL、模型和 generator version 会产生相同的视觉结果，因此它不只是随机动画，也可以看作 URL 的一种可复现视觉身份。\n\n![Tree QR](https://raw.githubusercontent.com/AlbertAZ1992/every-qrcode/main/docs/every-qrcode-core-tree.gif)\n\n![Terrain QR](https://raw.githubusercontent.com/AlbertAZ1992/every-qrcode/main/docs/every-qrcode-core-terrain.gif)\n\n### Gallery\n\n网站还做了一个公开 Gallery，可以浏览不同 URL 生成出来的 3D QR 世界，也可以提交自己的网站加入 Gallery。\n\n每个世界都可以在 3D 形态和标准二维码之间切换。\n\n### 开源组件\n\n除了在线体验，渲染器也已经作为组件开源并发布到 npm：\n\n- `@every-qrcode/react`\n- `@every-qrcode/web-component`\n\n因此开发者可以直接把这种 3D QR Code 嵌入自己的 React 项目或其他网站。\n\n3D 渲染使用 TypeScript + WebGPU，在浏览器本地运行；不支持 WebGPU 时会自动降级成静态、仍然可扫描的 SVG QR Code。\n\n项目目前是 MIT License，后续还计划增加 Hokusai Waves、Crystalline、Mechanical 等更多 3D 模型。",
-    "created_at": "2026-09-02T05:17:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11460"
-  },
-  {
-    "id": 11459,
-    "title": "【工具自荐】StitchCraft：照片几秒变可绣十字绣图纸，免费不限次无需注册",
-    "content": "网址：https://crossstitchpatternmaker.app\n\n一个免费的在线十字绣图纸生成器，把照片变成能真的一针一针绣出来的图纸。说三个和同类不太一样的地方。\n\n### 1. 核心功能真免费：不限次、不注册、照片不上传\n\n拖一张照片进浏览器，几秒转成十字绣图纸，不限次数，也不用注册账号。转换在浏览器本地完成，照片不会上传到服务器。PDF 导出和商用授权都免费，不是「免费 N 次再引导付费」那种。\n\n### 2. 454 色 DMC 感知匹配，导出即开工的 PDF\n\n色号匹配用感知色差模型（Delta-E / CIELAB），覆盖全部 454 种正品 DMC 绣线，不是简单取最近色导致绣出来偏色。实时调格数、颜色上限和平滑度（一键去掉难绣的碎点针），带可绣性评分。导出的 PDF 除了符号图纸，连每种线要买几绞、Aida 布要多大都算好了，打印出来直接开工。\n\n### 3. AI 是可选项，不是付费墙\n\n棘手照片（宠物、人像这类渐变多的）可以先用 AI 重绘成平整插画再转图纸，也支持文字描述直接生成原创图案，接了 GPT Image 2、Nano Banana 2 等 3 个模型。AI 按次计积分，点之前明确显示消耗几个积分，新账号送 10 积分；不充值完全不影响上面两条核心功能。\n\n### 收费\n\n照片转图纸永久免费：不限次、无注册、带商用授权。收费的只有 AI 处理，按积分计费（4–10 积分/次），积分包 6 个月有效；订阅只面向重度 AI 用户。",
-    "created_at": "2026-09-02T03:42:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11459"
   }
 ]
