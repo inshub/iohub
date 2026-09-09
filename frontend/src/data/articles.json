@@ -1,5 +1,45 @@
 [
   {
+    "id": 11599,
+    "title": "【开源自荐】Tessera：并行运行 Codex 图像生成与编辑任务，查看提示词和参考图",
+    "content": "![Tessera：查看 Codex 图像生成的参考图和结果](https://raw.githubusercontent.com/horang-labs/tessera/56e3b2de/docs/assets/releases/v0.2.4/images-input-and-result.png)\n\n大家好，我是 Tessera 的开发者。Tessera 是一个开源的多 Agent 工作区，支持 Codex、Claude Code 和 OpenCode。这次想分享我自己经常使用的一个场景：让 Agent 协调多个 Codex 会话，并行生成和编辑图片。\n\n我平时用 Codex 做很多图像工作，经常需要带着参考图尝试几个方向，再对选中的结果继续修改。任务一多，就得来回切换会话、查看进度、传递后续指令。\n\n为此，我给 Tessera 加了 CLI，让 Agent 可以创建会话、分配任务、查看进度和发送后续指令。例如，把同一组参考图交给几个 Codex 会话，各自尝试不同方向，再根据结果继续编辑。\n\n每个会话旁边还可以查看：\n\n- Codex 实际发送给 imagegen 的提示词\n- 本次生成使用的参考图\n- 生成结果\n\n如果结果不符合预期，可以先检查提示词和参考图，看看 Codex 是怎么理解要求的。也可以把图片直接拖回对话，继续修改或与其他图片组合。\n\n图像生成由 Codex 完成，Tessera 负责会话协调，以及生成过程的查看和人工调整。\n\n此外，Tessera 还提供原生终端、Git Worktree 管理、看板和手机远程访问。支持 Windows、macOS 和 Linux，采用 AGPL-3.0-only 许可证。使用上述图像功能需要自行配置可使用 imagegen 的 Codex 环境。\n\n项目地址：https://github.com/horang-labs/tessera\n\n下载地址：https://github.com/horang-labs/tessera/releases/latest\n\n欢迎试用，也想听听大家在多轮图像生成和编辑中，都是怎么管理参考图、提示词和不同版本的。",
+    "created_at": "2026-09-09T13:58:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11599"
+  },
+  {
+    "id": 11598,
+    "title": "［网站自荐］做了个纯浏览器端的视频抽帧工具，不上传、不安装",
+    "content": "做视频相关的事时经常要把视频拆成一帧帧的图 —— 做封面、做分镜、给 bug 提单配图、分析动作。\n\n常见的三条路我都不太满意：\n\n- **ffmpeg**：要装、要记命令，偶尔用一次还得翻文档\n- **桌面软件**：多半收费，而且挺重\n- **在线工具**：要上传视频，隐私和体积都不踏实\n\n所以自己撸了一个：**Video2Frames**\n\n👉 <a href=\"https://videotoframes.app\" rel=\"dofollow\"><strong>videotoframes.app</strong></a>\n\n## 它是什么\n\n一个纯前端的 Video Frame Extractor。整个抽帧过程跑在你自己的浏览器里，用的是 HTML5 Video + Canvas，**视频文件从头到尾不会离开你的电脑**。\n\n## 能做什么\n\n- **批量抽帧**：按时间间隔（每 N 秒 / 每 N 帧）自动抓一段区间内的所有帧\n- **单帧抓取**：拖进度条到某一刻，一键抓下当前帧\n- **导出 ZIP**：所有帧打包成 PNG\n- **导出 PDF**：带时间戳的 contact sheet，1/2/3/4/6 图每页可选\n- **提取音轨**：把音频单独导成 WebM\n- **整理**：抽完可以拖拽排序、删除、重命名\n\n原分辨率输出，抓帧时不做二次压缩。\n\n## 怎么用\n\n1. 打开页面，把 MP4 / MOV / WebM 拖进去\n2. 选模式（批量 or 单帧），设好区间和间隔\n3. 导出 ZIP / PDF / 音频\n\n不想找文件的话，页面上有 **Try sample**，点一下会用示例视频演示。\n\n## 几个坦诚的限制\n\n- 默认最长 5 分钟，设置里打开 10-minute mode 可以到 10 分钟；再长的还是建议 ffmpeg\n- 能处理什么格式取决于你的浏览器能解码什么（Chrome / Edge / Firefox / Safari 一般 MP4、MOV、WebM、M4V 都没问题）\n- 关掉页面帧就没了，工具本身不保存任何东西\n\n## 其他\n\n- 免费、无水印、不用注册\n- 20 种语言，右上角可切\n- 有深色模式\n\n第一次发，欢迎拍砖。想要的抽帧功能（比如按场景变化自动抽帧、批量队列）也可以说，能做的我加进去。\n",
+    "created_at": "2026-09-09T13:57:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11598"
+  },
+  {
+    "id": 11597,
+    "title": "【开源自荐】Codex Memories：可本地试跑的 Codex 长期记忆工具",
+    "content": "大家好，我是 Codex Memories 的维护者，想自荐这个 Apache-2.0 开源工具。\n\n项目地址：https://github.com/libenxier-beep/codex-memories\n预览版本：https://github.com/libenxier-beep/codex-memories/releases/tag/v0.2.0-preview.1\n中文说明：https://github.com/libenxier-beep/codex-memories/blob/main/README_ZH.md\n\n它面向需要跨会话保存项目规则和决定的 Codex 使用者：长期记忆以 Git 管理，检索使用本地索引，召回时检查来源与作用域，无需托管向量数据库。\n\n这次重点做了一个无需 API key 的隔离演示。准备 Python 3.9+ 和 Git 后：\n\n```bash\ngit clone https://github.com/libenxier-beep/codex-memories.git\ncd codex-memories\npython3 scripts/codex_memories.py demo\n```\n\n它会创建临时环境、提交一条虚构项目决定、建立索引，再由新进程找回这条记忆，最后清理临时部署，不改动原有 Codex 配置。输出示例：\n\n```text\nCodex Memories demo: PASS\nRecalled: The synthetic Aurora project uses SQLite for its offline task queue.\n```\n\n完整安装另有安装器、doctor 诊断和首次记忆指南。当前是预览版，CI 覆盖 macOS 与 Linux；自动会话捕获和召回还需要按文档配置 hook，演示成功不代表真实宿主已接入。通用检索质量尚未充分验证，仓库保留了失败评测和已知限制。记忆存储在本地，召回的片段仍可能进入 Codex 模型上下文。\n\n希望对需要本地、可检查记忆的开发者有用。欢迎实际试跑，尤其希望收到安装卡点和可复现召回失败的反馈。",
+    "created_at": "2026-09-09T13:37:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11597"
+  },
+  {
+    "id": 11596,
+    "title": "Ajiez - 免费在线工具箱,70 个工具全部在浏览器本地运行,无需注册",
+    "content": "大家好,自荐一个我们做的工具站:**Ajiez** → https://ajiez.top\n\n**它是什么**\n\n一个免费的在线工具合集,目前有 70 个工具、8 个分类:图片工具(压缩/格式转换/裁剪/取色)、PDF 工具(合并/拆分/压缩/水印)、开发者工具(JSON/XML/正则/Base64/时间戳)、计算器、文本工具、实用工具、颜色工具和 AI 工具(抠图/OCR/语音转文字)。\n\n**它和同类工具站的最大区别:所有计算都在你的浏览器里完成。**\n\n- 二维码生成、图片压缩、PDF 合并,由浏览器内的 JavaScript 完成;\n- AI 抠图和语音转文字,是把开源模型(RMBG-1.4、Whisper)下载到浏览器后本地推理——录音和照片根本不经过服务器,断网也能用;\n- 不注册、不限次、无水印,页面加载后拔掉网线照样能用。\n\n隐私之外的第二个卖点:省心。没有会员、没有\"高清导出请付费\"、没有弹窗,界面有中英双语。\n\n**几个可以直接试的入口**\n\n- AI 抠图:https://ajiez.top/zh/background-remover/\n- 合并 PDF:https://ajiez.top/zh/merge-pdf/\n- 二维码生成器:https://ajiez.top/zh/qr-code-generator/\n\n欢迎试用和拍砖,工具建议可以直接发到 support@ajiez.top,每条都会读。",
+    "created_at": "2026-09-09T09:46:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11596"
+  },
+  {
+    "id": 11595,
+    "title": "【应用自荐】 瀑布流模式照片浏览器",
+    "content": "微软应用商店，免费下载\nhttps://apps.microsoft.com/store/detail/9NQL7VPP88ZJ?cid=DevShareMCLPCS\n\ncrPhotos 是一款 C++开发的瀑布流照片应用 基于源代码 chromium 150.0.7871.91\n支持 GPU 渲染加速，视频硬件解码的跨平台照片应用\n\n- 通过时间线浏览本地照片与视频。\n- 添加媒体库文件夹、按文件名搜索和管理收藏。\n- 使用内置控件查看图片和播放视频。\n- 显示拍摄详情及文件内嵌的 GPS 信息，支持离线城市匹配。\n- 通过加密传输和设备配对，与附近的 crPhotos 设备分享媒体。\n- 管理可信设备，并选择是否自动接收文件。\n- 从垃圾箱恢复媒体，或将其永久删除。\n- 提供浅色、深色和跟随系统的外观设置，支持多种界面语言。\n\nLinux 版本下载 https://github.com/libcr/crPhotos/releases\n\n<img width=\"960\" height=\"540\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c5b9bcdc-ede8-47f2-98fe-01532736318f\" />\n<img width=\"960\" height=\"540\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/366b8d41-7fe1-46fb-a09c-6d8abbeae9dd\" />",
+    "created_at": "2026-09-09T09:22:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11595"
+  },
+  {
     "id": 11594,
     "title": "【资源自荐】Astra Games：40+ 游戏与互动作品精选，附试玩入口与开发资料",
     "content": "### 项目地址\n\n- GitHub：https://github.com/MartinDelophy/awesome-gpt-6-astra\n- 网页画廊：https://astragames.aigccreative.com/\n- 中文目录：https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/README.zh-CN.md\n\n### 简介\n\n推荐一份聚焦 GPT-6 Astra 游戏创作的社区清单，目前收录 **43个游戏与互动作品**，涵盖动作射击、解谜、策略经营、RPG、竞速与交互艺术。\n\n每个条目整理核心玩法、作者来源、试玩或源码运行入口、实机截图，以及模型参与说明；部分作品提供源码、原始提示词和多轮开发记录。网页画廊可搜索作品、作者与玩法，也能筛选游戏和互动实验，方便读者先试玩，再查看制作过程。\n\n### 可以先体验的三个案例\n\n- **[瓜体实验室](https://melon-game.jack-514.chatgpt.site/)**（Ayi1337）：把软体水果的形变与碰撞融入西瓜合成玩法。\n- **[雷霆战机 · 天穹远征](https://thunderfall.vercel.app/)**（jackroc）：三种战机、五大空域与多阶段首领的弹幕射击游戏。\n- **[三分天下 · 百将风云](https://sanguo-jiangshan.vercel.app/)**（MartinDelophy）：在15城地图经营资源、指挥108名武将的三国回合制策略游戏。\n\n### 截图\n\n**[瓜体实验室](https://melon-game.jack-514.chatgpt.site/)**（作者：Ayi1337）\n\n![瓜体实验室实机截图](https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/melon-lab/gameplay.jpg)\n\n**[雷霆战机 · 天穹远征](https://thunderfall.vercel.app/)**（作者：jackroc）\n\n![雷霆战机 · 天穹远征实机截图](https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/thunderfall/gameplay.jpg)\n\n**[三分天下 · 百将风云](https://sanguo-jiangshan.vercel.app/)**（作者：MartinDelophy）\n\n![三分天下 · 百将风云实机截图](https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/three-kingdoms/gameplay.jpg)\n\n### 维护与说明\n\n清单持续接受社区通过 Issue 或 PR 推荐作品、补充资料和纠错。模型使用信息依据创作者或投稿者说明，未确认的归因会在条目中标注，不代表逐一独立复现。清单文字采用 CC0，链接作品遵循各自许可；这是社区项目，与 OpenAI 无隶属关系。\n\n数量截至2026-09-09；具体收录以仓库与画廊为准。\n",
@@ -113,8 +153,8 @@
   },
   {
     "id": 11579,
-    "title": "【开源自荐】180+ 个 GPT-6 Astra 3D/游戏 案例，包含提示词",
-    "content": "最近 Astra 带火了 3D，在 X 上看到了很多优秀、有意思的案例，精选了 180+ 个，并提炼出了提示词。\n有些案例给 Astra 许愿后，效果真的不错！非常推荐大家去试试。\n感觉 3D 创作的时代可能要来了。\n\n🔗 **项目地址：** https://github.com/TripoGrowthLab/awesome-astra-prompts\n\n<img width=\"1200\" height=\"675\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27ed72a6-68bc-4bfb-b22a-bc4fb795dcfe\" />\n\n<img width=\"1199\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0aab3103-6a32-441c-9b1d-c871e4f61931\" />",
+    "title": "【开源自荐】200+ GPT-6 Astra 3D/游戏 案例，包含提示词",
+    "content": "最近 Astra 带火了 3D，在 X 上看到了很多优秀、有意思的案例，精选了 200+，并提炼出了提示词。\n有些案例给 Astra 许愿后，效果真的不错！非常推荐大家去试试。\n感觉 3D 创作的时代可能要来了。\n\n🔗 **项目地址：** https://github.com/TripoGrowthLab/awesome-astra-prompts\n\n<img width=\"1200\" height=\"675\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27ed72a6-68bc-4bfb-b22a-bc4fb795dcfe\" />\n\n<img width=\"1199\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0aab3103-6a32-441c-9b1d-c871e4f61931\" />",
     "created_at": "2026-09-08T15:49:37Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11579"
@@ -592,14 +632,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11520"
   },
   {
-    "id": 11517,
-    "title": "Correct description from '家庭卫生间' to '公共卫生间'",
-    "content": "https://restroomarchive.com/about 这个页面中有说明，是公共卫生间“publicly accessible restrooms”。",
-    "created_at": "2026-09-06T01:42:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11517"
-  },
-  {
     "id": 11516,
     "title": "〖独立工具推荐〗SeatingKit：把婚礼宾客名单、桌位和座位安排放进同一个可视化工作区",
     "content": "我是 SeatingKit 的开发者，想自荐一个面向婚礼宴会座位安排的网页工具。\n\n网站：https://seatingkit.com/\n\n很多婚礼座位安排会在宾客名单、场地草图和多份表格之间来回。SeatingKit 把这些步骤放在一个可视化工作区：导入宾客、摆放桌子、分配精确座位；需要改动时，可以先查看剩余宾客的座位建议，或交换两张已占用的座位。完成后可导出按桌分组的 PDF 和 PNG 文件。\n\n目前，免费规划支持最多 100 位活跃宾客，桌面、平板和手机均已正式支持。免费项目保存在当前浏览器和设备，请自行备份。\n\nWedding Pass 正在筹备中，结账尚未开放。",
@@ -754,51 +786,11 @@
     "url": "https://github.com/ruanyf/weekly/issues/11496"
   },
   {
-    "id": 11495,
-    "title": "Fix formatting in issue-411.md",
-    "content": null,
-    "created_at": "2026-09-04T02:46:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11495"
-  },
-  {
     "id": 11494,
     "title": "自荐项目：Qirabot —— AI 视觉驱动的跨平台 GUI 自动化框架，无需 DOM 和选择器",
     "content": "项目地址：https://github.com/qirabot/qirabot\n\nQirabot 是一个开源（MIT）的 Python GUI 自动化框架，由多模态 AI 视觉驱动：AI 像人一样\"看\"屏幕截图，决定下一步操作，直到完成任务。全程只靠像素，无需 DOM、无需选择器，因此浏览器、Android/iOS 真机、Windows 桌面和 Unity/Unreal 游戏都能用同一套 API 驱动，覆盖 Playwright / Selenium / Appium 无法触及的场景。\n\n一句话就能下达任务，比如让它在 iOS 真机上玩《梦幻西游》手游，从创号自动玩到 15 级（[完整未剪辑视频](https://qirabot.com/docs/zh/demos.html#mhxy_zero_to_15)）：\n\n```bash\nqirabot browser \"搜索 SpaceX，返回词条的第一句话\" --url wikipedia.org\n```\n\n![](https://assets.qirabot.com/demos/afk_journey_tutorial.poster.webp)\n\n主要特点：\n\n- **零门槛安装**：一行命令装好全部依赖，无需预装 Python；`qirabot doctor` 自动诊断环境。\n- **接入现有测试**：可直接传入已有的 Playwright / Selenium / Appium 会话，在 pytest 里混用 AI 步骤和传统选择器，一行 `bot.verify(page, \"商品网格正常显示且无报错横幅\")` 就是一个抗改版的视觉断言。\n- **隐私可控**：决策引擎在你自己的进程内运行，截图直接发往你自己配置的 Google Vertex AI / Gemini 模型，用你自己的凭据计费。\n- **可扩展**：支持挂载领域知识文件（教 AI 你的业务规则），支持注册自定义 Python 函数让 AI 中途调用（查数据库、取验证码、人工接管等）。\n- 每次运行生成带逐步截图的 HTML 报告，可录制视频；驱动真实鼠标键盘时有屏幕光晕提示，长按 ESC 一键中止。\n\n完整文档（中英文）：https://qirabot.com/docs/zh/\n",
     "created_at": "2026-09-04T02:02:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11494"
-  },
-  {
-    "id": 11493,
-    "title": "【开源自荐】Nova-TradingAgent：自托管 A 股多智能体投研台（十五人辩论，默认可关下单）",
-    "content": "**项目地址：** https://github.com/rufeng0411/Nova-TradingAgent  \n**文档：** https://rufeng0411.github.io/Nova-TradingAgent/  \n**许可：** AGPL-3.0\n\n**项目介绍：**\n\nNova-TradingAgent 是可自托管的 A 股投研台。上游 TradingAgents 那条多智能体辩论图还在，外面加了能登录的 Web（FastAPI，端口 8000）、专业 K 线、数据翻译层，以及按需打开的 Tushare L2 和 Qlib 桥。十五个角色吵完有一份能翻的研报。默认不连券商、不下单，输出不是投资建议。\n\n适合自己电脑上跑 LLM 投研、又不想把数据和报告交给别人的人。安装按仓库 `docs/zh-CN/install.md`，健康检查是 `GET /healthz`。\n",
-    "created_at": "2026-09-04T00:40:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11493"
-  },
-  {
-    "id": 11492,
-    "title": "【开源项目自荐】Footprint - 高颜值旅行与美食足迹记录平台（支持 3D 地球与通关护照）",
-    "content": "介绍产品定位（旅行+美食）、核心亮点（1/4/9多图排版、3D点亮地球、通关护照复古入境印章、双人情侣空间、离线桌面双模）、附上 GitHub 链接与 GitHub Pages 免装体验链接。\nhttps://github.com/linkingoscar/footprint",
-    "created_at": "2026-09-03T21:27:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11492"
-  },
-  {
-    "id": 11491,
-    "title": "【开源自荐】deja-vu：把 Claude Code、Codex、Cursor 等 24 个编码代理留在本机的会话记录变成可检索的记忆，装上就能用，不需要模型和 API key",
-    "content": "**项目地址：** https://github.com/vshulcz/deja-vu\n**中文说明：** https://github.com/vshulcz/deja-vu/blob/main/README.zh.md\n\n**项目介绍：**\n\nClaude Code、Codex、Cursor、OpenCode 这些工具每次会话都会把完整记录写到本机（~/.claude/projects、~/.codex/sessions 等）。deja-vu 直接索引这些文件，让代理拥有\"记忆\"——包括安装之前几个月的历史。别的记忆插件都是从安装那天开始记录，deja-vu 装上第一分钟就是满的。\n\n- 单个 Go 二进制，18 MB，没有守护进程，不调用模型，不需要 API key，数据不出本机\n- 支持 24 个编码代理的会话格式，一个工具的记忆可以被另一个工具用上\n- 代理自己会问：会话开始时得到本项目之前的结论；改文件前得到碰过这个文件的会话；命令报错后得到上次同样报错的解法\n- 命令行直接搜：`deja \"connection pool exhausted\"`，几 GB 的会话记录毫秒级返回\n- 索引时会把 key、token 之类的凭证去掉\n- 1.9 万个会话建索引 29 秒；同一台机器上和 agentmemory、MemPalace、CASS、claude-mem 的对比：https://vshulcz.github.io/deja-vu/guide/day-zero.html\n\n安装：`brew install deja-vu`，或 `go install github.com/vshulcz/deja-vu/cmd/deja@latest`，或 `npx @vshulcz/deja-vu`。MIT 协议。\n\n**项目截图：**\n\n![deja-vu 在 Claude Code 里召回三个月前 Codex 会话中的修复](https://raw.githubusercontent.com/vshulcz/deja-vu/assets/listings/recall-card.png)",
-    "created_at": "2026-09-03T16:16:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11491"
-  },
-  {
-    "id": 11489,
-    "title": "【开源自荐】Subpool: 轻量级的团队AI订阅账号池化管理",
-    "content": "\n自荐一个我们开发的开源项目 **Subpool**，它是一个面向团队的自托管 AI 订阅账号池化管理工具。\n\n很多团队购买了多个 AI 订阅账号，但在实际使用中容易遇到账号分配不透明、额度闲置、员工共用密钥、无法统一审计等问题。Subpool 将团队有权使用的订阅账号和 API 账号组成资源池，再为每位员工分配独立 API Key，通过统一接口进行调用。\n\n- 项目仓库：[gesta-run/subpool](https://github.com/gesta-run/subpool)\n- 快速开始：[README](https://github.com/gesta-run/subpool#quick-start)\n- 开源许可：[Apache License 2.0](https://github.com/gesta-run/subpool/blob/main/LICENSE)\n\n### 主要功能\n\n- **账号池化**：将多个 Codex 订阅账号或 OpenAI-compatible API 账号组合为资源池，未来将支持更多。\n- **员工独立 Key**：每位员工使用自己的 API Key，不需要接触上游账号凭据。\n- **自动分配与故障切换**：在健康账号之间分配请求，订阅额度不可用时可以切换到其他账号或付费 API。\n- **额度与健康监控**：查看账号剩余额度、重置时间、健康状态和分配情况。\n- **访问治理**：可以分别限制、过期或撤销员工 Key。\n- **统一 API**：提供 OpenAI-compatible Responses、Chat Completions 和 Responses WebSocket 接口。\n- **使用审计**：统计每个员工 Key 的输入、输出用量，并保留可见的账号分配关系。\n- **隐私保护**：上游凭据加密保存，不持久化提示词、模型回复或源代码。\n\n### 实际截图\n\n账号池与订阅额度管理：\n\n<img width=\"1773\" height=\"641\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/846e795a-6701-4c4d-88f9-d20868c1a7c0\" />\n\n### 部署与使用\n\nSubpool 由一个 Go 服务、内嵌的 React 管理界面和 PostgreSQL 组成，支持通过 Docker Compose 自托管部署。\n\n```bash\ngit clone https://github.com/gesta-run/subpool.git\ncd subpool\ncp .env.example .env\ndocker compose up -d --build\n```\n\n部署后，管理员连接团队已获授权的上游账号、创建资源池，再为员工生成独立 API Key。Codex 订阅账号通过官方 Device Code 流程授权，也支持添加 OpenAI-compatible API 服务。\n\nSubpool 当前仍在持续开发，欢迎试用，Star是最好的动力。\n\n项目采用 **Apache License 2.0**。Subpool 面向组织内部自托管和授权账号管理；使用时仍需遵守相应上游服务商的账号、订阅和 API 使用条款。",
-    "created_at": "2026-09-03T12:46:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11489"
   }
 ]
