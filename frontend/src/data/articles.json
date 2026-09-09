@@ -1,5 +1,101 @@
 [
   {
+    "id": 11594,
+    "title": "【资源自荐】Astra Games：40+ 游戏与互动作品精选，附试玩入口与开发资料",
+    "content": "### 项目地址\n\n- GitHub：https://github.com/MartinDelophy/awesome-gpt-6-astra\n- 网页画廊：https://astragames.aigccreative.com/\n- 中文目录：https://github.com/MartinDelophy/awesome-gpt-6-astra/blob/main/README.zh-CN.md\n\n### 简介\n\n推荐一份聚焦 GPT-6 Astra 游戏创作的社区清单，目前收录 **43个游戏与互动作品**，涵盖动作射击、解谜、策略经营、RPG、竞速与交互艺术。\n\n每个条目整理核心玩法、作者来源、试玩或源码运行入口、实机截图，以及模型参与说明；部分作品提供源码、原始提示词和多轮开发记录。网页画廊可搜索作品、作者与玩法，也能筛选游戏和互动实验，方便读者先试玩，再查看制作过程。\n\n### 可以先体验的三个案例\n\n- **[瓜体实验室](https://melon-game.jack-514.chatgpt.site/)**（Ayi1337）：把软体水果的形变与碰撞融入西瓜合成玩法。\n- **[雷霆战机 · 天穹远征](https://thunderfall.vercel.app/)**（jackroc）：三种战机、五大空域与多阶段首领的弹幕射击游戏。\n- **[三分天下 · 百将风云](https://sanguo-jiangshan.vercel.app/)**（MartinDelophy）：在15城地图经营资源、指挥108名武将的三国回合制策略游戏。\n\n### 截图\n\n**[瓜体实验室](https://melon-game.jack-514.chatgpt.site/)**（作者：Ayi1337）\n\n![瓜体实验室实机截图](https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/melon-lab/gameplay.jpg)\n\n**[雷霆战机 · 天穹远征](https://thunderfall.vercel.app/)**（作者：jackroc）\n\n![雷霆战机 · 天穹远征实机截图](https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/thunderfall/gameplay.jpg)\n\n**[三分天下 · 百将风云](https://sanguo-jiangshan.vercel.app/)**（作者：MartinDelophy）\n\n![三分天下 · 百将风云实机截图](https://raw.githubusercontent.com/MartinDelophy/awesome-gpt-6-astra/main/assets/screenshots/three-kingdoms/gameplay.jpg)\n\n### 维护与说明\n\n清单持续接受社区通过 Issue 或 PR 推荐作品、补充资料和纠错。模型使用信息依据创作者或投稿者说明，未确认的归因会在条目中标注，不代表逐一独立复现。清单文字采用 CC0，链接作品遵循各自许可；这是社区项目，与 OpenAI 无隶属关系。\n\n数量截至2026-09-09；具体收录以仓库与画廊为准。\n",
+    "created_at": "2026-09-09T08:04:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11594"
+  },
+  {
+    "id": 11593,
+    "title": "【开源自荐】PhoneCam：让 Android 手机和 iPhone 成为 Mac 摄像头",
+    "content": "阮老师您好，想向周刊自荐一个刚开源的 macOS 小工具 **PhoneCam**，欢迎您和周刊读者批评指正。\n\n项目地址：[wybaby168/phonecam](https://github.com/wybaby168/phonecam)  \n中文说明：[README.zh-CN.md](https://github.com/wybaby168/phonecam/blob/main/README.zh-CN.md)  \n开源协议：MIT\n\n<img src=\"https://raw.githubusercontent.com/wybaby168/phonecam/18633dded4b9e6e7d0ef0a081300c7665f16c901/assets/phonecam.png\" alt=\"PhoneCam 图标\" width=\"96\" />\n\n### 项目介绍\n\nMac 没有摄像头，或者现有摄像头的画面不够理想时，手边的手机往往可以再利用。PhoneCam 希望把兼容的 Android 手机或 iPhone 接入 Mac，用于视频沟通、远程教学、桌面演示，以及 OBS 录制和直播。手机能满足需求时，就不用再单独购买摄像头。\n\n### 核心功能与亮点\n\n- **手机接入**：实现了 Android 12+ 的 USB / ADB 相机采集、iPhone 连续互通相机，以及手机原生 USB Webcam / UVC 三种路径。具体要求和真机验证状态在 README 中分别列出。\n- **实时预览与画面调整**：提供原生预览窗口，可旋转、镜像、裁剪或留边；通过 CLI 选择设备、输出尺寸、帧率和 Android 码率，方便固定机位和脚本化使用。\n- **接入 OBS**：通过 Syphon 把处理后的画面交给 OBS，用于录制、直播，或通过 OBS Virtual Camera 供其他摄像头应用使用。\n- **本地处理**：视频不上传云端；Android 路径无需 root，也不需要另外安装常驻伴侣 APK。使用 VideoToolbox 硬件解码和 Core Image / Metal 处理画面，以有界的最新帧缓冲限制积压。\n- **便于维护**：使用 Swift 开发，提供中英文文档、机型反馈模板和自动构建测试，希望逐步补充不同手机与接收应用的实测记录。\n\n### 当前进展\n\n目前是 **macOS 13+ 开发预览版，需要从源码构建**。已在 Apple 芯片 Mac 上真实测通一台 Android 手机的「USB → PhoneCam → OBS Virtual Camera → 独立浏览器」链路，检查了实际画面、方向、停止和恢复；iPhone 连续互通与 Android UVC 已实现，仍待真机验证，因此暂不承诺所有机型兼容。\n\n已验证的虚拟摄像头输出依赖 OBS。PhoneCam 自带系统扩展的正式签名、公证及 Homebrew 分发还未完成，Windows 暂不支持。具体清晰度和帧率也取决于手机、光线与接收应用。[实测记录](https://github.com/wybaby168/phonecam/blob/main/docs/VERIFICATION.md)\n\n项目还在早期，欢迎试用、反馈兼容机型，或指出设计和实现上的不足。感谢您阅读，供周刊工具栏目参考。\n",
+    "created_at": "2026-09-09T08:02:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11593"
+  },
+  {
+    "id": 11592,
+    "title": "【资源自荐】GPT Image 2.5 提示词与案例合集（持续更新）",
+    "content": "## 项目地址\n\nGitHub：https://github.com/magiccreator-ai/awesome-gpt-image-2-5-prompts\n\n可视化浏览：https://magiccreator.ai/gpt-image-2-5-prompts\n\n## 项目介绍\n\n这是一个持续更新的 GPT Image 2.5 提示词与真实案例合集，内容来自社区创作者，并保留原作者和原始出处。\n\n公开的 Prompt 可以直接复制，也可以按图片编辑、产品广告、参考一致性、文字排版等场景分类浏览。GitHub 版方便收藏，也欢迎通过 Issue 补充案例或纠错。",
+    "created_at": "2026-09-09T07:12:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11592"
+  },
+  {
+    "id": 11591,
+    "title": "［网站自荐］RoamVista：在地球上选一座城市，开启免注册云旅行",
+    "content": "项目地址：https://roamvista.city/\n\n自荐一个我做的免费、免注册云旅行网站 RoamVista。\n\n可以转动交互式地球，从 120 座城市里选择目的地，观看步行、行车等旅行实录，或收听地区电台。也可以随机跳到一座城市，看看当地的街头和风景。\n\n[Relax 页面](https://roamvista.city/relax/) 另外整理了 138 个放松场景，包括自然、雨声、温馨空间和音乐等，适合工作间隙短暂换个环境。\n\n旅行视频是录制内容，并非实时街景直播；页面保留原作者和来源链接，第三方媒体的可用性可能变化。\n\n网站使用 Next.js 静态导出，部署在 Cloudflare，开发过程中使用了 AI 编程辅助。欢迎试用，也欢迎指出体验和内容上的问题。\n",
+    "created_at": "2026-09-09T06:54:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11591"
+  },
+  {
+    "id": 11590,
+    "title": "【开源自荐】Adnify：本地优先、可审查并行执行的多 Agent IDE",
+    "content": "阮老师好，我是 Adnify 的作者，想自荐一下这款本地优先的多 Agent IDE。\n\n项目地址：https://github.com/ad-naan/adnify  \n国内镜像：https://gitee.com/adnaan/adnify  \n下载地址：https://github.com/ad-naan/adnify/releases\n\nAdnify 不是在编辑器旁边增加一个 AI 对话框，而是把代码编辑、Agent 执行、多任务编排、终端和浏览器验证整合成一个完整的桌面开发环境。\n\n<img width=\"2881\" height=\"1705\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/967ddaa2-9439-4510-8721-0bc9f3ebb9ba\" />\n\n## 本地优先，也可以全本地运行\n\nAdnify 是原生桌面应用，项目文件、会话记录、任务状态、代码索引、素材记录和运行日志都保存在本地。\n\n模型不与某个平台绑定，支持 OpenAI、Anthropic、Google、DeepSeek、Ollama，以及兼容 OpenAI 协议的自定义服务。用户可以使用自己的 API Key，也可以连接本机 Ollama；配合本地模型和本地 Embedding，可以构建不依赖第三方模型云端的开发工作流。\n\n是否连接外部服务由用户自己决定。使用云端模型时，只有执行所需的上下文会发送给用户选择的模型服务；Adnify 本身不要求把项目托管到专有云端。\n\n应用提供完整中文界面，也支持英文，包含 Windows、macOS 和 Linux 安装包。\n\n## 核心能力：把复杂需求变成可审查的 Agent 任务图\n\n很多 AI 编程工具已经可以修改代码，但面对涉及多个模块的复杂需求时，任务拆分、执行顺序和多个 Agent 之间的协作通常隐藏在一段对话里。\n\nAdnify 的 Plan Mode 会先与用户确认需求，然后生成一张可以人工审查的任务图。每个任务都会标明：\n\n- 依赖关系和执行顺序；\n- 预期产物与验收条件；\n- 执行角色和使用的模型；\n- 可以串行还是并行执行。\n\n正式执行前，系统会检查依赖环、缺失的前置任务，以及并行任务之间可能出现的文件写入冲突。用户确认计划后，多个 Agent 才会按照依赖关系开始工作。\n\n<img width=\"2880\" height=\"1704\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/47a7e1fb-67cc-4e38-a610-ea4dccb6b8ae\" />\n\n每个子任务都有独立的 Agent 会话，可以随时进入查看。并行代码修改可以使用独立的 Git Worktree 和分支，避免多个 Agent 相互覆盖；执行结果通过合并队列统一回收，出现冲突时保留人工处理入口。\n\n任务执行期间，用户可以查看进度、处理权限审批、暂停或恢复任务，也可以要求某个子任务调整方案。所有任务完成后，还需要经过最终结果验收。\n\n对于修复 Bug、修改单个功能等较小任务，可以跳过编排，直接使用 Agent Mode。\n\n## AI 修改不是黑盒\n\nAdnify 内置 Monaco 编辑器、Git、终端和多语言 LSP。Agent 可以检索代码、修改文件、执行命令并读取诊断结果，但修改过程始终可以查看。\n\n文件变更会以 Diff 形式展示，用户可以接受或拒绝；会话支持检查点、分支和异常恢复，长任务也可以通过摘要和 Handoff 继续执行。\n\n<img width=\"2881\" height=\"1705\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56fc2405-fb9a-4437-86f3-3ee7985bbd1f\" />\n\n## 从代码修改一直做到页面验证\n\n前端修改完成后，Agent 可以直接打开本地开发页面，检查 DOM、计算样式、控制台错误和失败的网络请求，也可以点击、输入、滚动并等待页面元素出现。\n\n内置预览支持桌面、手机和平板尺寸。不同项目使用隔离的浏览器存储，不会因为使用相同的 localhost 地址而混用登录状态。\n\n除此之外，Adnify 还支持 MCP、Skills、代码语义检索、远程 SSH、调试面板，以及图片、视频和音频生成服务的自定义接入。\n\n## 项目信息\n\n- 支持平台：Windows、macOS、Linux\n- 界面语言：中文、英文\n- 模型服务：OpenAI、Anthropic、Google、DeepSeek、Ollama及兼容接口\n- 数据方式：项目、会话、索引和任务记录本地保存\n- 使用方式：提供安装包，也可以从源码构建\n\n如果你希望 AI 编程既能使用多个 Agent 处理复杂任务，又不想把任务拆分、代码修改和数据存储全部交给不可见的云端流程，欢迎试用 Adnify。",
+    "created_at": "2026-09-09T06:10:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11590"
+  },
+  {
+    "id": 11589,
+    "title": "【开源自荐】Runner：本地的 AI Agent 编排器，用一个原生桌面 App 同时跑多个 Claude Code / Codex",
+    "content": "阮老师好，自荐一个自己在开发、日常在用的开源项目：Runner。\n\n项目地址：https://github.com/yicheng47/runner\n下载：https://github.com/yicheng47/runner/releases/latest（macOS Apple Silicon 和 Windows x64，都有签名）\n\n![多个 agent 会话放进一个 App：分屏 + 侧边栏](https://raw.githubusercontent.com/yicheng47/runner/main/assets/chat_split.png)\n\nRunner 是一个本地的 AI Agent 编排器（orchestrator）。Claude Code、Codex 这类 CLI agent 多开之后，session 散落在各个终端窗口里很难管理，Runner 把它们放进一个 App 里，用三个概念组织：\n\n- runner：一份可复用的 agent 配置（运行时、角色、system prompt、工作目录）\n- crew：几个 runner 组成一支队伍，有且只有一个 lead\n- mission：启动一支 crew，每个位置一个真实的 PTY，agent 之间通过本地的 append-only 事件日志交接，需要人决定时 ask_human 会浮到 feed 里\n\n![Mission feed：crew 之间的交接和给人的提问](https://raw.githubusercontent.com/yicheng47/runner/main/assets/mission_feed.png)\n\n![Mission 里每个位置一个真实终端](https://raw.githubusercontent.com/yicheng47/runner/main/assets/mission_terminal.png)\n\n几个特点：\n\n- 跨厂商：Claude Code 和 Codex 可以在同一支 crew 里，比如 codex 写代码、claude 做 review，互相不绑定\n- 自带 MCP server：agent 自己也能建 crew、起 mission，整个 App 变成 agent 的协作 sandbox\n- 全部本地：session 是本机的真实进程，事件日志在磁盘上可回放，没有云端依赖\n- Rust 原生：UI 用 gpui-ce（Zed 的 GPUI 社区分支），终端用 alacritty_terminal，没有 webview；前端从 Tauri 迁到 GPUI 的过程也是用 Runner 自己的 crew 跑完的\n\n我写了一篇文章介绍围绕它形成的工作流（工具、仓库结构、两条 Agent 工作流）：https://www.v2ex.com/t/1240659\n\nGPL-3.0，欢迎试用和提意见。\n",
+    "created_at": "2026-09-09T05:18:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11589"
+  },
+  {
+    "id": 11588,
+    "title": "【开源自荐】CodexBar：在 macOS 菜单栏查看 Codex 额度、用量与任务状态",
+    "content": "阮老师好，向周刊自荐开源项目 CodexBar，面向日常使用 Codex 的 macOS 用户。\n\n使用 Codex 时，希望实时了解额度还剩多少、任务是否完成，以及是否有操作正在等待批准。CodexBar 将这些信息集中到菜单栏，减少在多个窗口之间反复查看。\n\n它主要提供以下功能：\n\n- 额度与用量：查看剩余额度、重置时间和 Token 用量，通过热力图回顾每日使用情况。\n- 重置到期前自动使用：在留存重置到期前自动使用，支持设置提前执行时间。\n- 任务与提醒：集中查看多个项目的任务状态，在任务完成或等待批准时发送通知。\n- 自动防睡眠：根据 Codex 任务状态保持 Mac 唤醒，任务结束后恢复正常睡眠策略。\n\n项目使用 Swift / SwiftUI 开发，支持 macOS 15+、中英文界面和自动更新，以 GPL-3.0 协议开源。\n\n项目地址：[bob-zebedy/CodexBar](https://github.com/bob-zebedy/CodexBar)  \n下载地址：[GitHub Releases](https://github.com/bob-zebedy/CodexBar/releases)\n\n也可通过 Homebrew 安装：\n\n```sh\nbrew install --cask bob-zebedy/tap/codexbar\n```\n\n![CodexBar](https://raw.githubusercontent.com/bob-zebedy/CodexBar/main/Images/preview-zh.gif)\n\n欢迎试用和反馈，感谢阅读。\n",
+    "created_at": "2026-09-09T04:23:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11588"
+  },
+  {
+    "id": 11587,
+    "title": "【工具自荐】Math AI：支持拍照和公式输入的分步数学解题工具",
+    "content": "Math AI 是一个浏览器端的数学解题与辅导工具，支持直接输入公式、文字题以及上传题目图片，并按步骤讲解代数、几何、微积分和统计问题。\n\n网站：https://mathai.chat/\n\n主要特点：\n- 支持公式、文字题与图片输入\n- 提供 Solver（解题）与 Tutor（辅导）模式\n- 展示分步思路，适合检查过程与学习概念\n- 免安装，可直接在浏览器使用\n\n服务提供有限的免费额度，也有可选付费方案。AI 生成的答案可能出错，重要结果仍应自行核对。",
+    "created_at": "2026-09-09T04:12:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11587"
+  },
+  {
+    "id": 11586,
+    "title": "【开源自荐】rpi：用 Rust 构建可组合的 LLM Agent SDK 和终端编码 Agent",
+    "content": "阮老师您好，想向周刊自荐一个我正在开发的开源项目：rpi。\n\n项目地址：\nhttps://github.com/bigfish1913/pi-rust\n\n项目官网：\nhttps://rpi.laofu.online/\n\nrpi 是一个基于 Pi agent 的 Rust 原生实现，延续 Pi agent 的 library-first 设计理念，目标是提供可组合、可测试的 LLM Agent 工具包。它不把 Agent 能力锁在单一 CLI 中，而是将模型 Provider、Agent loop、工具、会话和终端界面拆成独立的 Rust crate，方便开发者嵌入自己的应用或工作流。\n\n主要特点：\n\n- 基于 Rust，提供异步、流式的 Agent runtime。\n- 支持 Anthropic Messages、OpenAI-compatible Chat Completions，以及不需要 API key 的 faux provider。\n- 内置 `read`、`write`、`edit`、`bash`、`grep`、`find`、`ls` 等 coding-agent 工具。\n- 支持 AgentTool、AgentEvent、hooks、消息队列和工具调用循环。\n- 提供 session、JSONL 持久化、上下文压缩、skills 和 prompt templates。\n- 支持通过 `rpi-plugin-sdk` 和稳定 ABI 扩展工具、Provider、事件和资源发现。\n- 核心能力拆分为 `rpi-ai`、`rpi-agent`、`rpi-tools`、`rpi-harness`、`rpi-cli` 等 crate。\n\n如果只想直接使用终端 CLI，可以安装：\n\n```bash\ncargo install rpi-cli\n```\n\n安装后可以使用 `rpi` 命令启动：\n\n```bash\nrpi -p \"hello\"\n```\n\n也可以从源码运行不需要 API key 的本地示例：\n\n```bash\ngit clone https://github.com/bigfish1913/pi-rust.git\ncd pi-rust\ncargo run -p minimal\n```\n\n项目目前处于 0.1.x 阶段，核心 Agent loop、Provider、内置工具、Harness 和 CLI 已经可以运行，插件 ABI 和更多 Provider 仍在持续完善。项目采用 MIT License。\n\n文档：\n\n- 使用文档：https://rpi.laofu.online/docs.html\n- 架构文档：https://github.com/bigfish1913/pi-rust/blob/main/docs/architecture.md\n- Packages 页面：https://rpi.laofu.online/packages.html\n\n项目主要面向希望自己构建 coding agent、Agent 工作流或 Rust AI 基础设施的开发者。\n\n运行截图：\n\n<img width=\"1730\" height=\"983\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/21b4eb45-cd8d-4cf2-a00a-5d3320d6a000\" />\n\n<img width=\"1730\" height=\"983\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1fc63f5d-a6c6-4439-9132-b7e67107a8af\" />",
+    "created_at": "2026-09-09T03:58:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11586"
+  },
+  {
+    "id": 11585,
+    "title": "文章推薦：The Browser's Main Thread Is Expensive by Sunhyoup Lee",
+    "content": "[The Browser's Main Thread Is Expensive](https://kciter.so/posts/the-expensive-main-thread/en/)\n\n一篇關於瀏覧器性能优化的交互式文章，主要是關於主綫程优化的，寫的很好！",
+    "created_at": "2026-09-09T03:58:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11585"
+  },
+  {
+    "id": 11584,
+    "title": "[开源自荐] DSHX：用 TypeScript 和 React 开发 DeepSeek Harness 插件",
+    "content": "大家好，自荐一个开源项目 DSHX：面向 DeepSeek Harness 的插件开发工具链。\n\n可以用 TypeScript 编写插件逻辑，用 React 写界面，通过 Vite 完成构建和开发调试。工具链提供脚手架、诊断检查和类型化的 Host–Client API；配套网站也可以浏览社区插件与兼容性信息。\n\n适合有 TypeScript / React 基础、想为 DeepSeek Harness 开发扩展的朋友。项目采用 MIT 许可，目前处于 Preview 阶段，运行插件需要兼容的 DeepSeek Harness 环境。\n\n官网：https://dshx.io/zh\n源码与入门文档：https://github.com/liyown/dshx\n参考插件：https://github.com/liyown/dshx/tree/main/packages/plugin-marketplace",
+    "created_at": "2026-09-09T03:45:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11584"
+  },
+  {
+    "id": 11582,
+    "title": "自荐一个2M的Markdown阅读工具 mdview，阅读体验极好，广受好评",
+    "content": "mdview是一个安装包仅2M的干净，无打扰的markdown本地阅读器。主打轻量、简洁、高效。\n阅读界面，没有一个图标和按钮，只留下内容本身。滚动条也会自动悄悄隐藏。\n目录联动\n丰富的自定义设置\n除了极致的阅读体验，还支持 就地编辑 和分屏编辑 两种内置编辑功能。\n\n这是官网\nhttps://www.mdview.cn/\n\n\n这是软件界面\n\n<img width=\"1600\" height=\"867\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/df1542db-e955-42db-b20e-57e239b3f01c\" />\n\n\n这是就地编辑界面\n\n<img width=\"1600\" height=\"867\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d8b4a103-105f-4f18-b9e7-42b120e2cb57\" />\n\n\n这是双屏编辑界面\n\n<img width=\"1600\" height=\"867\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6d8c4132-7a55-4d14-bb7b-ebe01c6f888b\" />\n\n最近因为涨价，在v2ex掀起了大讨论\n两个月 12000 台装机、收入 1000 出头： 2MB 的 Markdown 阅读器 mdview 准备涨价，求建议\nhttps://www.v2ex.com/t/1239151\n\n\n这是昨天深夜收到的用户反馈，让我更有信心把这个产品好好做下去。\n\n<img width=\"466\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0c09315d-7465-4cc1-86fd-714208027dd4\" />\n\n<img width=\"468\" height=\"984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60405399-bf59-4e0b-b928-99c220359ad2\" />",
+    "created_at": "2026-09-09T03:30:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11582"
+  },
+  {
     "id": 11581,
     "title": "【开源自荐】FluentRead 流畅阅读：一款开源且接入 DeepSeek Harness 内核的浏览器双语翻译插件",
     "content": "FluentRead（流畅阅读）是一款开源的浏览器双语翻译插件，支持网页双语对照，并接入 DeepSeek Harness 作为内核。项目自2024年开源，持续至今。\n\n项目地址：https://github.com/FluentRead/FluentRead\n\n<img width=\"360\" height=\"541\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed5896dd-aeb1-436d-aede-8190f828b88c\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5149b16a-43d9-4914-9496-6a1a9bcd2ab8\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/21867c49-92d6-43ff-8408-15407ed13dfb\" />\n\n",
@@ -18,7 +114,7 @@
   {
     "id": 11579,
     "title": "【开源自荐】180+ 个 GPT-6 Astra 3D/游戏 案例，包含提示词",
-    "content": "最近 Astra 带火了 3D，在 X 上看到了很多优秀、有意思的案例，精选了 150+ 个，并提炼出了提示词。\n有些案例给 Astra 许愿后，效果真的不错！非常推荐大家去试试。\n感觉 3D 创作的时代可能要来了。\n\n🔗 **项目地址：** https://github.com/TripoGrowthLab/awesome-astra-prompts\n\n<img width=\"1200\" height=\"675\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27ed72a6-68bc-4bfb-b22a-bc4fb795dcfe\" />\n\n<img width=\"1199\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0aab3103-6a32-441c-9b1d-c871e4f61931\" />",
+    "content": "最近 Astra 带火了 3D，在 X 上看到了很多优秀、有意思的案例，精选了 180+ 个，并提炼出了提示词。\n有些案例给 Astra 许愿后，效果真的不错！非常推荐大家去试试。\n感觉 3D 创作的时代可能要来了。\n\n🔗 **项目地址：** https://github.com/TripoGrowthLab/awesome-astra-prompts\n\n<img width=\"1200\" height=\"675\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27ed72a6-68bc-4bfb-b22a-bc4fb795dcfe\" />\n\n<img width=\"1199\" height=\"779\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0aab3103-6a32-441c-9b1d-c871e4f61931\" />",
     "created_at": "2026-09-08T15:49:37Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11579"
@@ -90,7 +186,7 @@
   {
     "id": 11570,
     "title": "【开源自荐】Arcora：极简优雅的 macOS 多格式压缩与解压工具",
-    "content": "阮老师，您好！\n\n想向您自荐 **Arcora**，一款追求极简、优雅的开源 macOS 压缩与解压工具。希望把常用功能放进一个清爽的原生界面，让处理压缩包这件小事顺手一些。\n\n项目地址：[github.com/wybaby168/Arcora](https://github.com/wybaby168/Arcora)\n\n主要用心在这些日常体验上：\n\n- ZIP、7z、TAR、TAR.GZ、TAR.BZ2、TAR.XZ 的压缩与解压，以及 RAR4 / RAR5 的解压，都能在同一个应用里完成。\n- 可以先浏览压缩包、搜索文件、用 Quick Look 预览，再只解压需要的内容，不必为了取一个文件把整包展开。\n- 使用 SwiftUI / AppKit 原生界面，支持拖放操作；需要时可为 ZIP / 7z 设置密码和分卷，任务也能暂停、继续或取消。\n- 文件在本机处理，无需账号、不上传文件，没有广告或遥测。Arcora 原创代码以 MIT 协议开源，第三方引擎保留各自许可。\n\n相比 macOS 自带的 ZIP 压缩，Arcora 提供更多格式和可视化设置；相较只做解压的工具，它把压缩、浏览和按需提取放在了一起。希望带来的便利，是少切换工具、少记命令，保留 Mac 应用简洁自然的使用习惯。\n\n支持 Apple Silicon 与 Intel Mac，运行要求 macOS 14+，界面和文档提供中文、英文、日文。\n\n使用说明：目前提供源码和构建脚本，尚无已签名公证的安装包。RAR 压缩需另行配置官方编码器和自己的有效许可证，公开仓库和标准构建不附带两者。\n\n项目还在持续完善。如果您觉得适合周刊，恳请考虑收录，也欢迎读者提出建议。感谢您阅读。\n",
+    "content": "阮老师，您好！\n\n想向您自荐 **Arcora**，一款追求极简、优雅的开源 macOS 压缩与解压工具。希望把常用功能放进一个清爽的原生界面，让处理压缩包这件小事顺手一些。\n\n项目地址：[github.com/wybaby168/Arcora](https://github.com/wybaby168/Arcora)\n\n![Arcora 纯界面演示](https://raw.githubusercontent.com/wybaby168/Arcora/c25e9422bd3920633c804a4544beb846737af5b4/Documentation/Media/arcora-demo.webp)\n\n主要用心在这些日常体验上：\n\n- ZIP、7z、TAR、TAR.GZ、TAR.BZ2、TAR.XZ 的压缩与解压，以及 RAR4 / RAR5 的解压，都能在同一个应用里完成。\n- 可以先浏览压缩包、搜索文件、用 Quick Look 预览，再只解压需要的内容，不必为了取一个文件把整包展开。\n- 使用 SwiftUI / AppKit 原生界面，支持拖放操作；需要时可为 ZIP / 7z 设置密码和分卷，任务也能暂停、继续或取消。\n- 文件在本机处理，无需账号、不上传文件，没有广告或遥测。Arcora 原创代码以 MIT 协议开源，第三方引擎保留各自许可。\n\n相比 macOS 自带的 ZIP 压缩，Arcora 提供更多格式和可视化设置；相较只做解压的工具，它把压缩、浏览和按需提取放在了一起。希望带来的便利，是少切换工具、少记命令，保留 Mac 应用简洁自然的使用习惯。\n\n支持 Apple Silicon 与 Intel Mac，运行要求 macOS 14+，界面和文档提供中文、英文、日文。\n\n使用说明：目前提供源码和构建脚本，尚无已签名公证的安装包。RAR 压缩需另行配置官方编码器和自己的有效许可证，公开仓库和标准构建不附带两者。\n\n项目还在持续完善。如果您觉得适合周刊，恳请考虑收录，也欢迎读者提出建议。感谢您阅读。\n",
     "created_at": "2026-09-08T09:46:07Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11570"
@@ -704,103 +800,5 @@
     "created_at": "2026-09-03T12:46:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11489"
-  },
-  {
-    "id": 11488,
-    "title": "【开源自荐】BeeEye  蜂眼: 支持eBPF+ cuda 版本的wireshark",
-    "content": "BeeEye  蜂眼\n\nhttps://www.beeeye.dev/\n\nhttps://github.com/cn0xroot/BeeEye\n\n# 🐝 蜂眼 BeeEye\n\n**家庭 IoT 网关流量分析 —— 基于 eBPF 的设备指纹识别、协议解剖与入侵后行为检测。**\n\n[官网](https://www.beeeye.dev/) · [English](README.md) · [安装指南](INSTALL.zh-CN.md) · [使用手册](USAGE.md) · [架构说明](ARCHITECTURE.md) · [需求与设计](program.md) · [实现进度](PROGRESS.md) · [TLS 解密](TLS-DECRYPT.md) · [更新日志](CHANGELOG.zh-CN.md)\n\nBeeEye 跑在已经承担家庭网络路由的 Ubuntu 主机上。它把 eBPF 程序挂到 LAN 侧网卡上，识别每一台入网设备，并观察这些设备在和谁通信 —— 不需要在任何一台摄像头、门锁或手机上安装 agent，也不解密**它们**的流量（唯一有意的例外是网关自己的进程——默认本地解密，对其它设备则是用户自愿开启——见[隐私](#隐私)一节）。\n\n## 界面截图\n\n实时分析器：同一份实时抓包，在浅色/深色主题与中/英文之间切换，无需刷新页面：\n\n| 浅色 · English | 深色 · English |\n|---|---|\n| ![分析器 浅色主题 英文](https://github.com/cn0xroot/BeeEye/raw/main/PIC/analyzer-light-en.png) | ![分析器 深色主题 英文](https://github.com/cn0xroot/BeeEye/raw/main/PIC/analyzer-dark-en.png) |\n\n| 浅色 · 中文 | 深色 · 中文 |\n|---|---|\n| ![分析器 浅色主题 中文](https://github.com/cn0xroot/BeeEye/raw/main/PIC/analyzer-light-zh.png) | ![分析器 深色主题 中文](https://github.com/cn0xroot/BeeEye/raw/main/PIC/analyzer-dark-zh.png) |\n\n**BeeEye-desktop** —— 同一个分析器的原生窗口版本（给运维工作站用的 Tauri 瘦壳，见 [PROGRESS.md §二点五](PROGRESS.md)），下面是三套内置主题的效果：\n\n| 米黄纸感 | Matrix（设置面板展开中） | 午夜霓虹 |\n|---|---|---|\n| ![桌面客户端 米黄主题](https://github.com/cn0xroot/BeeEye/raw/main/PIC/desktop-paper-beige.png) | ![桌面客户端 Matrix 主题 设置面板](https://github.com/cn0xroot/BeeEye/raw/main/PIC/desktop-matrix-settings.png) | ![桌面客户端 午夜霓虹主题](https://github.com/cn0xroot/BeeEye/raw/main/PIC/desktop-midnight-neon.png) |\n\n---\n\n## 两个 UI，两个进程\n\nBeeEye 提供两个独立前端，因为它们回答的是**根本不同的问题**。它们是独立进程、独立端口、独立前端产物，任何一个都不会拖垮另一个。\n\n| | 总览 UI | 实时分析器 |\n|---|---|---|\n| **地址** | http://localhost:8080 | http://localhost:8081 |\n| **二进制** | `BeeEye-agent` | `BeeEye-gui` |\n| **面向** | 家里所有人 | 正在排查问题的人 |\n| **时间尺度** | 小时 → 周 | 毫秒 |\n| **展示** | 设备、告警、按 IP / 按协议视图、流量趋势 | Wireshark 式包列表、协议字段树、十六进制 |\n| **存储** | SQLite | 无，分析全在内存里 |\n| **数据来源** | ✅ **真实 AF_PACKET 抓包** | ✅ **真实 AF_PACKET 抓包** |\n\n两者在编译期共享源码包，运行时不共享任何东西。\n\n> ### 两个 UI 现在展示同一个真实网络\n>\n> `BeeEye-agent` 通过 `internal/livesource` 实时抓包 —— 与分析器相同的 AF_PACKET\n> 采集 —— 所以总览和分析器现在描述的是同一台机器的真实网络（本机 `192.168.x.x`）。\n> 无抓包权限时，agent 以无采集流水线的方式运行并在启动日志中说明，不存在可以\n> 冒充真实数据的模拟兜底（F43）。详见 [PROGRESS.md §0](PROGRESS.md)。\n\n---\n\n## 环境要求\n\n| | 最低 | 说明 |\n|---|---|---|\n| 内核 | Linux ≥ 5.8 且带 BTF | `/sys/kernel/btf/vmlinux` 必须存在。TCX 挂载需要 ≥ 6.6 |\n| Go | 1.25 | |\n| clang | ≥ 11 | 编译 eBPF 程序 |\n| bpftool | 任意版本 | 生成 `vmlinux.h` —— `apt install linux-tools-$(uname -r)` |\n| libbpf 头文件 | 任意版本 | `apt install libbpf-dev` |\n| Node | ≥ 18 | 构建两个前端 |\n| CUDA 工具链 | 可选 | GPU 色场渲染；CPU 路径产出完全相同的画面，始终可用 |\n\n---\n\n## 快速开始\n\n```bash\n./start.sh        # 预检 + 增量构建 + 启动两个服务\n```\n\n然后打开 **http://localhost:8080**（总览）和 **http://localhost:8081**（分析器）。\n\n`start.sh` 会检查工具链、在 `vmlinux.h` 缺失时重新生成，并且**只重建过期的部分** —— 它用 `find -newer` 对比源码与产物，`npm install` 只在 lockfile 比 `node_modules` 新时才跑。第二次启动通常只要几秒。\n\n```bash\n./start.sh --dev        # 额外启动两个 Vite 开发服务器（热更新）\n./start.sh stop|restart|status|logs\n./start.sh --setcap     # 授予抓包 capability，从而不需要 root\n./start.sh --rebuild    # 强制全量重建\n./start.sh --iface eth0 # 指定分析器的抓包网卡\n```\n\n加上 `--dev` 会再得到 **http://localhost:5173**（总览 UI，热更新，`/api` 代理到 :8080）和 **http://localhost:5174**（分析器 UI，代理到 :8081）。这两个端口是**改前端时用的**：改一行 CSS 立刻生效，不用重新构建，也不会打断正在跑的抓包。生产环境不需要它们 —— Go 二进制直接伺服构建好的 `dist/`。\n\n如果你想分步执行，原来的 make 目标都还在：`make bpf`、`make build`、`make frontends`、`make run`、`make smoke`。两条路径的日志都落在 `.run/`。\n\n### 抓真实的包\n\neBPF 路径和分析器的 AF_PACKET 套接字都需要权限。没有权限时该来源就是打不开 —— 分析器的 Start 会直接把权限错误原样报出来，agent 会以无采集流水线的方式运行，而不是回退到任何合成数据。不存在可能被误当成真实抓包的模拟流量。\n\n不用 root 也能真实抓包：\n\n```bash\n./start.sh --setcap     # 等价于下面两条\nsudo setcap cap_net_raw,cap_net_admin+ep         BeeEye-agent/bin/BeeEye-gui\nsudo setcap cap_bpf,cap_net_admin,cap_perfmon+ep BeeEye-agent/bin/BeeEye-agent\n```\n\n### 选择网卡\n\n接口名从不硬编码。编辑 `config/config.yaml`：\n\n```yaml\ninterfaces:\n  mode: explicit\n  explicit_list:\n    - name: wlan0\n      role: wifi_ap\n    - name: eth0\n      role: wan_uplink\n```\n\n挂 **LAN 侧**而不是 WAN 侧 —— 经过 NAT 之后，设备级的身份就没了。桥接环境下挂物理网卡或只挂网桥，两个都挂会把每个包重复计一次。\n\n> 注意：仓库里默认配置写的是 `wlan0` / `eth0`，请改成你本机真实的网卡名。\n\n---\n\n## 实时分析器\n\n三窗格，Wireshark 用户熟悉的布局：上方包列表，下方协议字段树与十六进制。选中一个字段会精确高亮它对应的那几个字节。\n\n**每一列都可排序。** 点击表头按该列排序，再点一次反向，第三次回到抓包顺序 —— 抓包顺序是一种独立状态，也是唯一一种能让实时抓包持续讲得通的状态。地址按**数值**排序而不是字典序（按文本排的话 `192.168.1.9` 会排在 `192.168.1.10` 后面，那样的地址列没法用），IPv4、IPv6、MAC 各自成一整块。排序会释放自动滚动 —— 列表不在抓包顺序时，跟随末尾没有意义。\n\n**显示过滤器**使用 Wireshark 语法的一个有意选取的子集：\n\n```\ntcp.port == 443 && !mdns\nip.addr == 192.168.1.0/24 and dns.qry.name contains \"tuya\"\ntls.handshake.extensions_server_name matches \"^ota\\.\"\ndns.flags.rcode == 3 || (tcp.flags.syn == 1 && tcp.flags.ack == 0)\n```\n\n支持：`&&` `||` `!`（也可写 `and` `or` `not`）、括号、`==` `!=` `>` `<` `>=` `<=`、`contains`、`matches`（正则）、地址字段上的 CIDR，以及裸协议名作为存在性判断。过滤框在你输入时就用**服务端自己的解析器**校验 —— 只有一套语法，不是两套。\n\n**模板菜单**提供现成的过滤器（按协议、按地址、排查场景、降噪）。选中一条会与你已有的表达式取 AND，并且仍然可编辑。\n\n> **与 Wireshark 唯一的有意分歧**：这里 `a != b` 表示*没有任何* `a` 等于 `b`。Wireshark 的 `!=` 表示*存在某个*值不等，于是 `tcp.port != 443` 对每个包都成立，因为对端端口永远不是 443。等价写法是 `!(a == b)`。\n\n### 进程归属\n\n本地端点是**网关自身 socket** 的流量会被归属到持有它的进程（`/proc/net/*` → inode → `/proc/*/fd`，与 `ss -p` 同一套机制）。\n\n其他设备之间的流量会显示为*不是本机*，而不是猜一个。包里不携带进程身份；在网关上没有任何可恢复的信息能说明是摄像头上的哪个程序发的。对这类流量，最强的身份就是设备本身。\n\n### 流量色场\n\n包列表上方那条带子是实时瀑布图：每个协议一行，**色相承载身份、亮度承载量级**，所以一次 MQTT 突发绝不会看起来像一次 DNS 突发。\n\n在装有 NVIDIA 显卡并用 `make build-cuda` 构建时，它由 CUDA 内核（`BeeEye-agent/cuda/BeeEye_render.cu`）逐像素渲染；否则由一份等价的 Go 实现渲染。状态徽章会标明**实际在跑的**是哪一个。两者由一个测试约束为产出相同图像 —— 它分别渲染再逐像素比对。\n\n---\n\n## 目录结构\n\n```\nBeeEye-agent/            Go module —— 两个二进制\n  bpf/                   eBPF C 源码 + 内核↔用户态事件契约\n  cuda/                  CUDA 色场渲染器\n  cmd/BeeEye-gui/        分析器入口\n  internal/\n    ebpf/                加载内核程序、读 ringbuf\n    live/                采集源：AF_PACKET、帧构造\n    dissect/             协议解剖 → 字段树 + 过滤索引\n    dfilter/             显示过滤器语言\n    procmap/             本机进程归属\n    render/              色场：CUDA 与 CPU 双后端\n    gui/                 分析器服务端（SSE、pcap 导出）\n    api/                 总览 REST API\n    store/ detect/ identity/ protocol/ geoip/ model/ config/ analyze/ namemap/ capture/ pcapfile/\nBeeEye-web/              总览 UI（React + Vite + i18next，6 套主题）\nBeeEye-gui/              分析器 UI（React + Vite + i18next，米黄／深色）\nconfig/                  config.yaml、port-service-map.yaml\nscripts/                 dev.sh、smoke.sh\nstart.sh                 一键启动\n```\n\n---\n\n## 测试\n\n```bash\nmake test           # 单元测试\nmake test-cuda      # 外加 GPU/CPU 渲染器一致性检查\nmake bpf-verify     # 证明 eBPF 程序能通过内核验证器\nmake smoke          # 两个服务端到端\n```\n\n几个值得一提的检查，因为它们覆盖的正是最容易悄无声息坏掉的东西：\n\n- `internal/ebpf` 读取编译产物的 **BTF**，把真实的结构体字段偏移与 Go 解码器的硬编码偏移逐个比对 —— C 头文件里调换一个字段顺序会让**构建失败**，而不是产出乱码 IP。\n- `internal/dissect` 对一个 TLS ClientHello 帧的**每一个前缀长度**都重新解剖一遍；真实抓包里 snaplen 截断是常态，绝不能 panic。\n- JA3 被检验的是让它有用的那个性质：同一客户端重复握手时稳定，密码套件列表不同时相异。\n- `internal/procmap` 验证其他设备的流量返回**未归属**，而不是硬安在某个巧合的本机进程上。\n- `internal/render` 在 GPU 和 CPU 上渲染同一帧并比对。\n\n---\n\n## 隐私\n\n- GeoIP 查**本地**数据库。目的 IP 不会被逐个送到第三方 API。\n- 门锁与摄像头的事件留在这台机器上。什么都不会上传。\n- 线上的 TLS 不解密。SNI、ALPN、JA3 来自握手阶段，设计上就是明文。\n- **一个有意的例外，默认关闭、且只限网关本机**：`BeeEye-tlspeek`（F14）可以通过给 OpenSSL 库挂 uprobe，读取*运行在网关本机上*的 TLS 进程的明文 —— 与 `procmap` 已经能按名字归属的是同一批进程、同一份内容。它触及不到摄像头、门锁或手机上的任何东西，那些库跑在它们自己的硬件上。它是一个独立命令，在你启动并指定目标之前什么都不抓 —— 这也是本行不再无条件写「不解密 TLS」的原因。设计与边界见 [TLS-DECRYPT.md](TLS-DECRYPT.md)。\n- 可选的 TLS 解密与 MITM（program.md §3.10）默认关闭，且只适用于你能安装证书的设备 —— 这恰好排除了本系统要盯的那些固件写死证书的 IoT 设备。\n- [eCapture](https://github.com/gojue/ecapture) 采用的 uprobe 方案从另一侧撞上同一堵墙：它只能触及**本内核上**运行的 TLS 库，因此能解密网关自己的进程，对摄像头或门锁上的任何东西都无能为力。完整评估（包括它在这里确实有用的地方）见 [TLS-DECRYPT.md](TLS-DECRYPT.md)；其中的阶段一 —— 网关本机、text 模式的明文捕获 —— 已实现为 `BeeEye-tlspeek`，并有一个解密真实 TLS 会话的测试覆盖。\n\n---\n\n## 状态\n\n本项目正在活跃开发中。[PROGRESS.md](PROGRESS.md) 逐条跟踪每个需求（F1–F44）的真实状态与具体缺口，并与代码保持同步。[ARCHITECTURE.md](ARCHITECTURE.md) 用图说明各部分如何组合在一起。\n\n**今天端到端可用的**：两个 UI、REST API、显示过滤器引擎、协议解剖器、检测引擎、pcap 导出、CUDA/CPU 色场 —— `scripts/smoke.sh` 检查其中 24 条路径，24 条全过。\n\nagent 已通过 eBPF 实时抓包（回退到 AF_PACKET）；两者均无权限时以无数据方式运行，不存在任何合成兜底（见上文提示）。\n\n---\n\n## 参考与致谢\n\nBeeEye 不是凭空而来 —— 设计上直接借鉴了下面几个项目，代码上则依赖下面这些开源库。\n\n**设计参考**\n\n- **[Wireshark](https://www.wireshark.org/)** —— 三窗格（包列表 / 协议字段树 / 十六进制视图）布局、`internal/dfilter` 实现的兼容子集显示过滤器语法、以及 JA3/TLS 字段命名，全部有意沿用 Wireshark 的习惯，让肌肉记忆能直接复用。\n- **[eCapture](https://github.com/gojue/ecapture)** —— `BeeEye-tlspeek`（F14）的 uprobe TLS 明文捕获设计跟随 eCapture 开创的思路（挂载到加密库的读写函数上，不做 MITM、不需要在目标上装证书）。它的模块清单同时也是 BeeEye 自身缺口的路线图：GoTLS、GnuTLS、NSS 覆盖，以及 pcap+keylog 合并导出，目前仍是待办（见 [PROGRESS.md](PROGRESS.md) F14/F45）——正因为 eCapture 已经证明这些都可行,才把它们列进了计划。两个项目的能力边界在哪里分岔（本项目只做网关本机、且是故意的）见 [TLS-DECRYPT.md](TLS-DECRYPT.md)。\n- **[Pcap-Analyzer](https://github.com/HatBoy/Pcap-Analyzer)** —— 离线分析视图（协议/会话方/会话统计、凭证提取、文件提取、攻击模式启发式检测）的功能形态，`internal/analyze` 与分析器的「报告」页签都仿照了它的思路——协议/通信主机/会话对三个面板还更进一步，用了一条和色场同一套辉光调色板的 GPU 渲染柱状图，而不是纯表格。\n\n**依赖的开源库**\n\n| 库 | 用途 |\n|---|---|\n| [cilium/ebpf](https://github.com/cilium/ebpf) | 加载/挂载 eBPF CO-RE 程序、读取 ringbuf 的 Go 绑定 |\n| [modernc.org/sqlite](https://gitlab.com/cznic/sqlite) | 纯 Go 实现的 SQLite（无需 CGO），承载总览的存储层 |\n| [oschwald/geoip2-golang](https://github.com/oschwald/geoip2-golang) + [maxminddb-golang](https://github.com/oschwald/maxminddb-golang) | 读取 MaxMind 格式的 `.mmdb` GeoIP 数据库，完全离线 |\n| [golang.org/x/sys](https://pkg.go.dev/golang.org/x/sys) | 原始 AF_PACKET 套接字与 RTNETLINK 热插拔监听 —— 不依赖 libpcap，无需 CGO |\n| [gopkg.in/yaml.v3](https://github.com/go-yaml/yaml) | 解析 `config.yaml` / `port-service-map.yaml` |\n| [React](https://react.dev/) + [Vite](https://vitejs.dev/) | 两套前端 SPA |\n| [react-i18next](https://react.i18next.com/) / [i18next](https://www.i18next.com/) | 两套前端的中英文双语界面 |\n| [NVIDIA CUDA](https://developer.nvidia.com/cuda-toolkit) | 流量色场渲染的可选 GPU 路径 —— CPU 兜底与其逐位一致，且始终可用 |\n\n另外要感谢 **[Spamhaus](https://www.spamhaus.org/)** 提供 `internal/threatintel` 拉取的 DROP 威胁情报 CIDR 名单（F29），以及 **[MaxMind GeoLite2](https://dev.maxmind.com/geoip/geolite2-free-geolocation-data)** 的数据库格式 —— 如果你在 `data/` 下放一份，地理定位会比内置的粗表更准确。\n",
-    "created_at": "2026-09-03T11:12:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11488"
-  },
-  {
-    "id": 11487,
-    "title": "【开源自荐】fastalp：最快的通用时序浮点压缩、解压",
-    "content": "# fastalp：纯 Rust 自适应无损浮点压缩库\n\n项目地址：https://github.com/webc-site/wedb_embed/tree/main/fastalp\nCrates.io：https://crates.io/crates/fastalp\nAPI 文档：https://docs.rs/fastalp\n\n<p align=\"center\">\n  <img src=\"https://fastly.jsdelivr.net/gh/webc-fs/-@Hu/42_CgdBX6_zPnwu0bNBA.svg\" alt=\"fastalp 浮点压缩算法全量性能与压缩比横向对比\" width=\"100%\">\n</p>\n\n## 项目简介\n\nfastalp 是自适应无损浮点压缩算法（Adaptive Lossless Floating-Point Compression, ALP）的高性能纯 Rust 工业级实现。专为时序数据库、列式存储引擎与向量数据场景设计，提供超高吞吐的压缩与解压能力。\n\n传统浮点压缩算法（如 Gorilla、Chimp、Fpzip）在面对现代高吞吐分析时往往受限于逐比特位级操作与分支预测失败开销。ALP 算法通过自适应寻找十进制最佳幂次将浮点数无损映射为定宽整数（Frame-of-Reference），结合位打包与极低异常率处理，完美释放现代 CPU 的 SIMD 矢量化与流水线吞吐。\n\n## 核心性能指标与实测优势\n\n1. 极致单核解压吞吐（55 ~ 77 GB/s）\n- 单核纯寄存器 SIMD 矢量化解码吞吐达到 55 至 77 GB/s。在第三方时序基准评测（graupel）中，单核实测解码达到 252 Mpt/s，数倍于传统流式算法。\n\n2. 高速端到端批量编码（6.1 ~ 23.1 GB/s）\n- 批量端到端编码达到 6.1 至 23.1 GB/s（graupel 实测单核时序编码达到 122 Mpt/s）。\n\n3. 高压缩比与真实数据集评测\n- 在 ALP 论文收录的 31 个公开标准数据集测试中，平均压缩比达到 2.29x。\n- 在真实气象水文浮点时序数据集中，实测落盘体积仅为 1.225 字节/点（压缩比达到 13.1x）。\n\n4. 零额外堆分配（Zero-Alloc）\n- 提供流式 compress_into 与 decompress_into 接口，支持调用方就地传入预分配切片缓冲区，消除内存分配开销并完美支持栈缓冲区复用。\n\n5. 健壮保底机制（Raw Fallback）\n- 内置针对极端高熵序列与随机噪声浮点的保护机制，当压缩无法获得收益时自动平滑回退，杜绝体积膨胀。\n\n6. 纯 Safe Rust 与环境兼容\n- 核心编解码模块采用纯 safe Rust 编写，零第三方运行时依赖，原生支持 no_std 与嵌入式环境。",
-    "created_at": "2026-09-03T10:39:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11487"
-  },
-  {
-    "id": 11486,
-    "title": "投稿：caddy-waf —— 给 Caddy 的 Web 应用防火墙（开源 · Go）",
-    "content": "软件名称：caddy-waf\n项目地址：https://github.com/fabriziosalmi/caddy-waf\n文档：https://www.caddy-waf.com\n许可证：AGPL-3.0\n类别：Web 安全 / WAF / Caddy 模块\n\n简介：\ncaddy-waf 是一个用 Go 写的 Caddy Web 应用防火墙中间件，已注册为 Caddy 模块 `http.handlers.waf`，一行配置即可挂到现有站点前面。\n\n几个特点：\n- 规则引擎：正则规则 + 异常评分（anomaly scoring），可加载 OWASP CRS 风格规则。\n- 多维封禁：IP / DNS / ASN / 国家 黑名单，支持从文件热加载并每日更新。\n- 限流 + 可观测：内置速率限制和 JSON 指标端点（可对接 Prometheus/Grafana、ELK）。\n- 已上线：注册在 Caddy 官方模块目录，最新版本 v0.4.2。\n\n安装：`xcaddy build --with github.com/fabriziosalmi/caddy-waf`，或用 `caddy add-package`；详见文档。\n\n希望能在周刊里推荐，谢谢。\n",
-    "created_at": "2026-09-03T09:28:16Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11486"
-  },
-  {
-    "id": 11485,
-    "title": "【开源自荐】perch：实用的轻量级终端 TUI 工具，Agent 会话/目录快速跳转、预览与恢复 ",
-    "content": "![demo](https://raw.githubusercontent.com/baoyudu/perch/main/docs/demo/demo.gif)\n\n开源地址：https://github.com/baoyudu/perch\n\nperch 是一个终端工具（TUI），解决 AI 编程时代的一个新问题：用上 Claude Code、Codex这类编程 agent 之后，同时进行的项目数量暴增，每天打开终端，常常想不起昨晚在哪个项目里、和 agent 聊到了哪一步，不同项目的文件夹又在哪里。\n\n在终端输入 `p`，它会列出你用 agent 打开过的所有项目，按最近使用排序，支持模糊搜索。右侧预览栏直接显示该项目上一次对话的结尾，帮你回忆停在了哪里；回车即可进入目录，也可以配置成一键续接上次会话（`claude --continue` / `codex resume`）。列表中还会显示每个项目的 git 分支和未提交文件数，常用项目可以置顶。\n\nperch 是**零配置**的：不需要登录或维护项目列表，数据全部来自 agent 自己留在本地的会话历史（如`~/.claude.json`、`~/.codex/sessions`）。 Go 编写的单文件二进制程序，极度轻量化，拥有优雅美观的 TUI 界面。可使用 Homebrew 一键安装。\n\n起初是给自己用的小工具，偶尔迭代，现在自己每天都使用频率很高，分享给大家。\n",
-    "created_at": "2026-09-03T09:03:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11485"
-  },
-  {
-    "id": 11484,
-    "title": "【开源自荐】TextToTalk：一段文案或一个链接，自动变成一集 PPT 式科普讲解视频",
-    "content": "TextToTalk 是一个「文案 → 讲解视频」的自动化工具：粘贴一段文案或一个 URL，AI 先规划出可编辑的分镜大纲，再逐页展开成 PPT 式页面，配上解说、字幕和背景音乐，最后无头渲染导出 MP4。做一集 3 分钟的科普视频通常要过「写稿 → 做 PPT → 配图 → 录音 → 剪辑」五关，它把中间三步压缩成一次回车。\n\n几个设计上的取舍：\n\n- **大纲先行，而不是黑盒直出。** 先流式流出全局大纲，每页的核心信息、版式、角色、节奏都可以增删、上下移、逐页修改；确认之后才展开分镜——在花时间渲染之前先把方向定对。\n- **逐页重做，而不是整片重抽。** 第 5 页不满意，可以单独重新生成，或就地编辑标题 / 解说 / 要点 / 时长 / 版式；改完自动作废旧成片，状态回到可再渲染。\n- **零素材依赖，纯代码画一切。** 背景音乐是纯 Node 数学生成的 WAV（琶音 + 低音 + 包络），没有任何音频素材；地图是结构化 SVG（标记点 / 航线 / 区域多边形），不调用任何在线地图服务；图表、图示、图标全是矢量绘制。\n- **预览即成片。** 分镜缩略图不是示意图，而是直接用服务端真实的 Remotion 场景组件渲染出来的，1920 设计宽等比缩放，看到什么就导出什么。\n- **链接直接进，公众号也能抓。** 贴 URL 自动抓正文，静态页走内置 fetch，JS 动态渲染的页面（公众号 / 知乎等）自动回退 Playwright 真浏览器。\n- **桌面版开箱即用。** Electron 封装、内置 ffmpeg，设置面板配好 Key 就能用；也提供免安装包，整个文件夹拷进 U 盘带走。\n\n画面侧由 16 个场景组件 + 26 条分发规则组成，根据页面字段自动匹配模板，不需要手动挑。三种运行方式：Docker 一键起、本地开发跑源码、Windows 免安装包解压即用（无需 Node、无需 Docker）。\n\n已知限制：目前只支持 1920×1080 横屏；任务状态存在内存里，TTL 24 小时；渲染是逐帧 CPU 密集任务，长视频需要一点耐心。\n\nMIT 协议，欢迎 Issue 和 PR。\n\n仓库：https://github.com/chenwr727/TextToTalk",
-    "created_at": "2026-09-03T07:26:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11484"
-  },
-  {
-    "id": 11483,
-    "title": "【开源自荐】余生账单：把上班、通勤和睡眠换算成你真正付出的时间",
-    "content": "项目地址：https://github.com/YPYT1/sun-to-spark\n预览地址：https://sun-to-spark.pages.dev\n\n余生账单是一个纯前端的人生时间账单工具。\n\n它想回答一个很简单的问题：\n\n一份工作，你真正付出的到底是多少时间？\n\n我们通常只计算每天的 8 小时工作时间，却很少把通勤、加班、调休、睡眠，以及因为工作而被占用的其他时间算进去。\n\n所以我做了这个小工具，把这些时间放进同一张「账单」里，让你直观看到：\n\n每周、每月、每年到底有多少时间花在工作相关的事情上\n通勤一年会消耗多少时间\n睡眠占掉人生之后，还剩多少真正可以自由支配的时间\n调休、加班等因素加入后，一份工作实际占用了多少人生\n从现在开始计算，到退休之前，还剩多少可以自由支配的时间\n\n它不是一个职业规划工具，也不是为了劝你辞职。\n\n只是想把平时很难感知的「时间成本」，变成一个可以看到的数字。\n\n特点\n纯前端运行：不需要后端服务，数据直接在浏览器中计算\n配置可分享：配置变化会实时写入 URL，可以直接把结果分享给别人\n海报导出：可以直接在浏览器中生成结果海报\n隐私友好：没有后端，不需要上传个人信息\n开源：代码完全公开，可以自行部署和修改\n技术栈\n\nReact 19 + Vite + TypeScript + Tailwind CSS\n\n本地运行\npnpm install\npnpm dev\n\n测试：\n\npnpm test\n\n构建：\n\npnpm build\n\n如果你也好奇，一份工作到底从人生里拿走了多少时间，可以试试看。\n\n项目地址：https://github.com/YPYT1/sun-to-spark",
-    "created_at": "2026-09-03T07:24:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11483"
-  },
-  {
-    "id": 11482,
-    "title": "【开源自荐】AI WorkDeck：律师写的开源「律师 IDE」，把整个案子装进一个窗口",
-    "content": "**AI WorkDeck**：一位执业律师写的开源「律师 IDE」——把整个案子装进一个窗口。\n\n- 文件、AI 对话、依据窗格、浏览器、版本记录在同一个工作台里，工作单位是案件而不是一次提问\n- 编辑器是编译成 WebAssembly 的 LibreOffice，真 .docx；AI 的每处修改都以字符级修订留痕，由人逐条接受或拒绝\n- 桌面端本地存储；另有 Office/WPS 加载项、iOS 取证同步、插件市场\n- AGPL-3.0，macOS / Windows 安装包可直接下载\n\n仓库：https://github.com/zeweihan/aiworkdeck\n官网：https://www.aiworkdeck.com\n\n![工作台截图](https://raw.githubusercontent.com/zeweihan/aiworkdeck/master/.github/assets/workspace-ai.png)",
-    "created_at": "2026-09-03T07:16:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11482"
-  },
-  {
-    "id": 11481,
-    "title": "【开源自荐】EO2Weave：跑在浏览器里的 AI agent，能改本地文件，也能调用网站工具（WebMCP）",
-    "content": "**项目地址**：https://github.com/nutstore/eo2weave\n**在线体验**：https://weave.eo2suite.cn （推荐 Chrome / Edge）\n**开源协议**：MIT\n\n**一句话介绍**：EO2Weave 是一个完全跑在浏览器里的 AI agent 平台——授权本地文件夹后，agent 直接在浏览器内读写你的文件、执行 Python；装上配套 Chrome 扩展，还能按 WebMCP 标准调用网站暴露的工具。我们不收集任何数据（数据流向详见下方说明）。\n\n**为什么值得一试**\n\n现在的 AI 编程工具要么是 IDE 插件（得先装环境），要么要把代码传到云端。我们的思路是：浏览器本身已经是个足够强的 agent 运行时。\n\n- **AI agent 直接读写本地文件夹**：基于 File System Access API 显式授权，不装任何东西，打开网页就能让它改你的项目\n- **支持 WebMCP 标准**：配套 Chrome 扩展提供 WebMCP 工具发现——任何网站都能通过标准 API 把能力暴露成 agent 可调用的工具（「网站即 MCP server」），agent 自动发现并调用\n- **agent 自带联网**：扩展内置 web_search / web_fetch，浏览器内 agent 也能查资料、抓网页；另有 Rust native host 提供本机磁盘与命令执行桥（可选安装）\n- **本地优先存储**：SQLite WASM + OPFS；Pyodide 在浏览器里跑 Python（pandas / numpy / matplotlib），数据分析全程本地\n- **每次改动可回滚**：agent 的每一步文件修改都有 inline diff、快照和一键回滚，敢让 AI 大胆改\n- **Rust + WASM 加速**文件操作；**多代理协作**早期探索中\n\n**数据与隐私（提前说清楚）**\n\n- **平台本身没有后端**：你的文件、对话、配置全部存在浏览器本地（OPFS），我们没有服务器存储这些数据，也没有埋点上报\n- **模型自带（BYOK）**：在设置里填自己的 API key，支持 DeepSeek / GLM / Qwen / Kimi / MiniMax / 火山引擎，以及任意 OpenAI 兼容接口\n- **需要如实说明**：AI 请求由你的浏览器**直连**所选模型服务商，agent 读取的文件内容会经过该服务商的服务器、受其隐私政策约束——这点与所有云端 AI 工具相同；区别在于这些请求不经手我们的服务器，我们无法也无需接触\n- **本地 Python（Pyodide）执行的数据完全不出浏览器**\n\n**文档**（双语文档，这里列中文入口）：\n\n- 用户指南：https://github.com/nutstore/eo2weave/blob/main/USER_GUIDE.md\n- 快速上手（5 分钟本地跑起来）：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/guides/quick-start.md\n- 架构总览：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/architecture/overview.md\n- OPFS + SQLite WASM 存储方案：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/architecture/opfs-guide.md\n- Rust + WASM 工作流：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/architecture/rust-wasm-flow.md\n- WebMCP 与页面外 MCP 服务接入（Figma / 插件 bridge）：https://github.com/nutstore/eo2weave/blob/main/docs/zh/developer/guides/mcp-page-outside-services.md\n- 浏览器扩展（WebMCP / web_search / native host）：https://github.com/nutstore/eo2weave/blob/main/browser-extension/README.md\n\n**适合谁**\n\n- 想让 AI 直接读写本地文件干活，但希望文件与工作数据默认留在自己电脑里、处理过程透明可回滚的人\n- 关注 agent 与浏览器结合、WebMCP 生态的工程师——我们在 SQLite WASM + OPFS、Pyodide、Rust WASM、浏览器扩展三层桥接上踩了不少坑，架构文档全部开源，欢迎交流\n\n站点打开即用。欢迎试用、提 issue、点个 star ⭐\n\n\n以下是浏览器扩展提供的侧边栏运行模式的相关截图：\n\n<img width=\"640\" height=\"400\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5d081627-ee7f-46c4-a28f-d58b9fd312ff\" />\n\n<img width=\"640\" height=\"400\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5020f36c-300f-4cb6-bd6b-0b82ddb59424\" />\n\n<img width=\"640\" height=\"400\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b2a11591-4bd1-4b75-b490-79efbc0fb5cc\" />\n",
-    "created_at": "2026-09-03T06:55:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11481"
-  },
-  {
-    "id": 11480,
-    "title": "【开源自荐】BongoCat  -  开源桌宠实时响应鼠标和键盘事件，使用纯C彻底重新实现",
-    "content": "<img width=\"800\" height=\"450\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cdcb5375-27c0-4799-8c04-87fad4a7d1c1\" />\n\n<img  height=\"580\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a94c9d2a-e054-4fb1-85e8-8692d7febd16\" />\n\n开源地址： https://github.com/vladelaina/BongoCat\n\n所有的**UI**，**交互**都使用**纯C + SDL3 + OpenGL** 实现，C++仅作为live2d的 Cubism Native Framework的桥接\n\n<img width=\"339\" height=\"154\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5e9f5771-85ca-4f02-acff-8fe76de05f21\" />\n\n得益于原生实现提交只有6mb，同时跨平台，运行时资源占用远低于同类型软件\n\n<img width=\"404\" height=\"103\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/73c28760-d029-41a0-b18c-ed628541ee6f\" />\n\n<img width=\"932\" height=\"511\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d7197905-3bae-4e30-b5e8-2134a402bb87\" />\n\n\n如果佬感兴趣这里还有一篇详细的介绍帖子 [Linux.do](https://linux.do/t/topic/2845597)",
-    "created_at": "2026-09-03T05:46:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11480"
-  },
-  {
-    "id": 11479,
-    "title": "［文章推荐］图片里没有文字，AI 是怎么凭一句话把它搜出来的？",
-    "content": "像素和Token，本是两个世界。但AI凭什么把撑伞的人和“雨天走在街上”精准配对？文章不甩术语，不堆公式，而是从三张图片三句话开始，像破案一样一步步拆解：怎么变成卡片？怎么打分数？怎么拉近正确、推开错误？直到最后你发现，AI对齐的不是单词，而是关系。这是那种读完会让你“哦——原来如此”的硬核科普。\n\n- [原文链接](https://mp.weixin.qq.com/s?__biz=MzY4OTMxODkyNQ==&mid=2247484065&idx=1&sn=c3797c398d187b89df4f353b76b0d50c&chksm=f2264033c4e500601f6e4adeb105402ca4ceecc17a462ee580de776fa4ca830f0b6a9ca960a5&sessionid=1788405393&scene=340&subscene=93&clicktime=1788406397&enterid=1788406397&jumppath=1003_1788405392039%2C1002_1788405392267%2C1001_1788405392578%2C50094_1788405393438&jumppathdepth=4&ascene=56&fasttmpl_type=0&fasttmpl_fullversion=8417261-zh_CN-zip&fasttmpl_flag=0&realreporttime=1788406397185&devicetype=android-35&version=28004d35&nettype=WIFI&abtest_cookie=AAACAA%3D%3D&lang=zh_CN&countrycode=CN&exportkey=n_ChQIAhIQzCjlWaAx1SPI4c1gqCYPbBLiAQIE97dBBAEAAAAAAFsKFEpZ2jsAAAAOpnltbLcz9gKNyK89dVj0PjCMmxhyxyqg9Oc5bcyXWve%2B%2FKX03YEDbt%2FwkD46pvTuBifq2r6CeIE%2FB8pl0LKPT9%2BKBsi%2FGEpllpJgGTFAY73Nb6xIOT3d%2BrxVqMhyBvSBfjUK8n7MkGboPIUj4OIfWfQ9CMDuds7y5QbvspHGsP%2BwoeONrE874jA%2BRKUAnr4tYHrBA4hE5jltRBu48B0i8WzoOjXdAphOnLS%2FcAxIfCzlMMDMJgvkDQo86koS0J6zMuHYeGvGg1B6xDY%3D&pass_ticket=so3MvIk0qToiPKJb4csaFFTGTFc6wskUVY%2F16Qg%2B5KBulO6QAM%2Be9b66px9d4%2Fkf&wx_header=3)",
-    "created_at": "2026-09-03T03:34:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11479"
-  },
-  {
-    "id": 11477,
-    "title": "〖工具自荐〗Best10.ai：先按使用场景筛出值得试的 AI 工具",
-    "content": "大家好，想分享一个我们正在做的网站：Best10.ai。\n\n找 AI 工具时，我经常遇到一个问题：搜索结果里有很多产品，但只看首页介绍，很难判断它到底适合什么工作。一个工具可能适合做视频，另一个更适合写作或开发；如果没有一个清楚的筛选过程，最后往往还是要打开很多页面逐个试。\n\n我们做 Best10.ai，起点就是想把“先建立一个靠谱的候选名单”这一步做得更简单一些。网站按具体类别整理 AI 工具，先从较大的候选范围里筛选，再给出不同使用场景下的重点推荐，而不是只做一个不加说明的工具链接列表。\n\n地址：https://www.best10.ai/\n\n每篇指南会尽量说明：\n\n- 这个工具主要解决什么问题；\n- 更适合哪类用户或工作流；\n- 它和同类产品相比有什么明显侧重点；\n- 免费使用、起始价格和功能限制需要注意什么。\n\n我觉得它更像是选工具前的第一轮过滤，而不是替用户直接做购买决定。AI 产品更新很快，价格、额度和功能也可能变化，所以这些信息仍然值得在正式使用前回到产品官网确认。\n\n如果你最近也在为某个具体任务找 AI 工具，欢迎看看。也想听听大家更希望先按什么维度筛选：工作场景、价格、上手难度，还是功能限制？",
-    "created_at": "2026-09-03T03:20:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11477"
-  },
-  {
-    "id": 11476,
-    "title": "【网站自荐】淘项有术 Hub AI工具箱 —— 合集了去水印、字幕提取、违禁词检测等实用工具",
-    "content": "给大家推荐一个 AI 工具箱导航站 —— **淘项有术 Hub**。\n\n它把各种 AI 应用、在线小工具和实用资源汇总到一个站，主打「即开即用、免费」。目前主要板块：\n\n- **AI 应用工具包**：视频去水印、视频文案提取、音频转文字、字幕提取、AI 证件照、二维码生成、短链接、文件格式/压缩、违禁词检测等\n- **在线视频工具**：M3U8/HLS 流媒体播放、视频格式转换、TS 合并，浏览器本地运行\n- **在线图片工具**：裁剪拼接、长图、马赛克打码、复古邮票、证件照，本地处理不上传\n- **AIGC 写作 & 视频创作**：论文初稿、查重、降重降 AI、AI 生成视频、图转视频、带货口播\n- **会员福利专区**：各类学习资源与技巧合集（登录可获取）\n\n很多工具无需安装、浏览器即可用，对经常做内容、做运营、需要随手处理文件的朋友比较实用。\n\n**地址**：https://tx3242.t.taoxiangyoushu.com/",
-    "created_at": "2026-09-03T03:04:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11476"
   }
 ]
