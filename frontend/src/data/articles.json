@@ -1,5 +1,21 @@
 [
   {
+    "id": 11607,
+    "title": "【开源自荐】llm-web-grounding-proxy - 通用大模型实时联网检索代理：零改造让任意模型获得实时搜索与事实引用，内置防爬与动态代理支持",
+    "content": "开源地址：https://github.com/AntonLi-PM/llm-web-grounding-proxy\n\n### 1. 项目简介\n**llm-web-grounding-proxy** 是一个高并发、低延迟的通用 OpenAI 兼容反向代理服务。\n\n它的目标是：**彻底解决个人与开发者在使用开源或商用大语言模型（如 DeepSeek-R1、Claude 3.7、GPT-4o、Ollama 本地模型）时，模型缺乏实时信息、产生幻觉，以及传统联网工具频繁被 Cloudflare Turnstile / 5 秒盾 / Google 429 封禁的问题。**\n\n你只需将客户端（如 NextChat、LobeChat、LibreChat、Open-WebUI、Cursor 或自建应用）的 `Base URL` 指向本代理，即可零改造获得媲美 Perplexity Pro 的实时深度联网检索与带原始事实链接的数字引用标注。\n\n---\n\n### 2. 解决的痛点\n1. **现有联网搜索 API 昂贵且受限**：商业搜索 API（如 Tavily、Perplexity API、SerpAPI）成本高昂，且返回的内容常有截断或滞后；\n2. **机房 IP 爬虫秒被拦截**：开发者自行用爬虫抓取目标网页时，机房公网 IP 极易触发 Cloudflare、DataDome、Akamai 等 WAF 的验证码拦截（403/429）；\n3. **客户端无需二次开发**：原生实现 OpenAI `/v1/chat/completions` 与 `/v1/models` 协议，流式（SSE stream）与非流式完全对齐，即插即用。\n\n---\n\n### 3. 核心特性\n- 🔌 **全生态即插即用**：标准 OpenAI 协议反向代理，上游兼容 DeepSeek、OpenAI、Anthropic、Ollama、vLLM 等任意提供商；\n- 🛡️ **抗封禁抓取内核**：集成动态住宅代理会话路由机制（Sticky Residential Proxy Routing），配合 TLS JA3/JA4 浏览器指纹伪装，在主流 WAF 下实测达到 99.4% 的爬取通过率；\n- 📑 **语义降噪与引用溯源**：抓取后自动清洗 HTML 冗余标签并提纯为高信息密度的 Markdown，自动在模型回答中注入 `[1]`, `[2]` 真实信源角标与文末参考书目；\n- ⚡ **高性能异步并发**：基于 FastAPI 与 HTTPX 异步架构，支持单实例百级并发，内存占用低；\n- 📦 **开箱即用**：已发布 PyPI (`pip install llm-web-grounding-proxy`)，并提供官方 Docker Compose 一键拉起配置文件。\n\n开源协议：Apache-2.0\n",
+    "created_at": "2026-09-09T19:52:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11607"
+  },
+  {
+    "id": 11606,
+    "title": "【开源自荐】ai-job-search-cn - 一条命令跑完国内求职：多平台聚合搜索 + 简历生成 + 智能筛岗",
+    "content": "开源地址：https://github.com/rockbenben/ai-job-search-cn\n\n基于 Claude Code 打造的国内求职工作流（Codex CLI / Gemini CLI 同样能跑完全部功能）。一条命令聚合搜索猎聘、BOSS 直聘、智联招聘、前程无忧四家的岗位，先按你资料里写明的硬性条件过一遍——学历院校、户口落户、外包/ 驻场/派遣、执业资格——不满足的直接进「不投」名单并写明卡在哪，不陪跑；入了名单的岗位再按匹配度打分排序，打招呼开场白、邮件正文、网申自评和中文简历 PDF（Typst 模板）提前备好，在本机总览页点一下复制就能去招聘网站发。投递那一下永远由你自己点，工具不代发——反爬、封号、信任边界都在这。\n\n核心特性：\n  - 四个平台一条命令聚合搜索：猎聘走免登录公开接口，BOSS / 智联 / 前程用你自己已登录的浏览器\n  - 硬性条件自动过滤（学历、户口、外包派遣、执业资格等），不过的逐个写明原因\n  - 按匹配度打分排序，自动生成个性化打招呼话术、邮件正文、网申自评\n  - 中文简历走 Typst 模板直接编译 PDF，特殊岗位可按岗定制\n  - 本机总览页：复制开场白、点按钮记投递状态（约面 / 挂了 / 没下文 / offer），投后回复率统计\n  - 个人数据全程只存本机，面板只监听 127.0.0.1，不上传任何第三方服务器\n\n<img width=\"1440\" height=\"2073\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6e6a7e51-7523-4ed0-866e-881755815870\" />\n\n<img width=\"1440\" height=\"1197\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe26fec4-bb35-437b-8402-7b30d58b4cd9\" />",
+    "created_at": "2026-09-09T19:20:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11606"
+  },
+  {
     "id": 11605,
     "title": "【网站自荐】MERVYX：让 AI Agent、API 与开发者按可验收结果交易",
     "content": "大家好，自荐一个正在冷启动的数字服务交易平台 **MERVYX（Machine Commerce Exchange）**。\n\n## 它解决什么问题\n\nAI Agent、API、MCP 工具和独立开发者的能力很多，但买方通常还要自己完成询价、范围确认、付款、交付验收和证据留存。MERVYX 尝试把这些步骤整理成可执行的 **Service / Task / Quote / Transaction / Outcome** 记录，让买方购买明确结果，而不只是看到一个项目链接。\n\n## 两种使用方式\n\n- **Provider**：发布自己有权商业交付的 API、Agent、自动化或数字服务，写清价格、周期、交付物和验收条件。\n- **Buyer**：发布真实任务，填写预算、截止时间、交付物和验收标准，再向合适的 Provider 获取报价。\n\n平台不代替双方进行能力、资质或合规核验；付款由交易双方通过其确认的合规方式直接完成。MERVYX 当前冷启动期的平台佣金为 0%，这不是永久费率承诺。\n\n## 当前状态\n\n项目处于公开测试和冷启动阶段。首批服务商正在由本人确认并上架；**目前不承诺订单量、收入或虚构的交易数据**。现阶段重点覆盖 AI/自动化、数据研究、搜索、文档处理、验证与 MCP/API 服务。\n\n- 首页：https://mce.best/\n- 浏览能力：https://mce.best/explore\n- 发布真实 Task：https://mce.best/tasks\n\n如果你有能商业交付的 Agent、API、MCP 或自动化服务，可以本人发布第一个可验收 Service；如果你正好有真实数字任务，也欢迎带着明确预算与验收标准发布。反馈同样欢迎。",
@@ -784,21 +800,5 @@
     "created_at": "2026-09-05T04:19:08Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11505"
-  },
-  {
-    "id": 11504,
-    "title": "【工具自荐】this2.link：接收者成为临时来源，用同一个链接接力传文件",
-    "content": "我是 this2.link 的开发者，想自荐一个无需注册、无需安装的临时加密文件分享工具。当前预览版免费，支持文字或单个文件（最大 150 MB）。\n\n网站：https://this2.link/\n\n### 特别的玩法：同一个链接接力\n\n1. A 放入文件，打开通道，把链接发给 B，保持页面在线直到 B 接收完成。\n2. B 接收完成且成功保存浏览器加密缓存后，自动成为临时来源，保持该标签页在线。\n3. 此时 A 可以关闭页面。B 把**原来的同一个完整链接**发给 C，C 可以从 B 获取文件，无需重新上传到网盘或生成另一条链接。\n4. C 完成接收和缓存后，也可以继续接力给下一位。\n\n可以用三个独立浏览器实际试一遍：A → B，关闭 A，再让 C 打开原链接。适合活动资料分发、跨设备临时传文件，以及短时协作。\n\n### 实现与边界\n\n- 加密、解密在本机完成，使用 AES-256-GCM；WebRTC 点对点优先。\n- 网络不支持直连时，可回退到受限的 WebSocket 密文流转发；应用服务端不持久保存文件。\n- 除了可直接放进链接的极小内容，大文件需要至少一个完成缓存的来源保持在线；最后一个来源离开后，不保证链接仍可取回内容。\n- 完整分享链接本身就是访问凭证，持有完整链接的人可以获取内容。\n- 还支持四位接力码，台主可核对标记并批准访问；台主意外离线时，符合条件的在线接收者可接手。\n\n希望收集不同网络、浏览器下的接力体验反馈。原理说明：https://this2.link/how-it-works/",
-    "created_at": "2026-09-05T04:05:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11504"
-  },
-  {
-    "id": 11503,
-    "title": "【开源自荐】Seahelm：macOS 原生的 coding agent 控制台，一个窗口管多个 Claude Code / Codex",
-    "content": "## 项目信息\n\n- 项目地址：https://github.com/BetaYao/seahelm\n- 官网：https://seahelm.dev\n- 平台：macOS 14+（Apple Silicon / Intel）\n- 安装：`curl -fsSL https://seahelm.dev/install.sh | sh`\n\n## 项目介绍\n\n![Seahelm](https://raw.githubusercontent.com/BetaYao/seahelm/main/assets/tour.gif)\n\n同时开五六个 Claude Code / Codex 在不同 git worktree 里干活的时候，最大的问题不是工具不好用，而是不知道该看哪个窗口。终端长得都一样，只能一个个切过去看最后一行输出。tmux 能管窗口，但它不知道「agent 在等你确认」这件事，对 tmux 来说卡在权限询问的 Claude 和正在写代码的 Claude 没有区别。\n\nSeahelm 把这件事变成一眼可见：每个 repo 一个 tab，每个 git worktree 一张卡片，卡片上只显示 running / waiting / broken 三种状态。\n\n技术上有两点可能值得一提。\n\n一是终端渲染直接嵌了 libghostty（Ghostty 的 C 接口），Swift + AppKit，不是 Electron，延迟和渲染是原生终端的水平。会话持久化用 zmx，退出 App 或者重启电脑之后 agent 还在原地。\n\n二是状态判断做成了一个优先级梯子：进程退出状态 > OSC 133 shell 集成标记 > 文本正则匹配。正则那一层是数据驱动的，每个 agent 一份 JSON manifest，可以在 `~/.config/seahelm/agents/` 下覆盖。Claude Code 和 Codex 接了原生 hook，所以「在等你」是一个真实事件，不是从屏幕文字猜出来的。目前 12 个 agent 有状态识别：claude、codex、opencode、gemini、cursor、aider、amp、cline、goose、kiro、pi、agent。\n\n另外 agent 可以反过来操作它。每个 pane 都有 `SEAHELM_PANE_ID`，配一个控制 socket 和 CLI：\n\n```\nseahelm pane split <pane> --direction right\nseahelm pane run <pane> \"npm test\"\nseahelm wait agent-status <pane> --status Idle\n```\n\n所以一个 agent 能自己开一个兄弟 pane、把活派过去、然后等它做完。\n\n![工作区](https://raw.githubusercontent.com/BetaYao/seahelm/main/assets/screenshots/workspace.png)\n",
-    "created_at": "2026-09-04T12:29:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11503"
   }
 ]
