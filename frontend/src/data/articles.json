@@ -96,14 +96,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/11608"
   },
   {
-    "id": 11607,
-    "title": "【开源自荐】llm-web-grounding-proxy - 通用大模型实时联网检索代理：零改造让任意模型获得实时搜索与事实引用，内置防爬与动态代理支持",
-    "content": "开源地址：https://github.com/AntonLi-PM/llm-web-grounding-proxy\n\n### 1. 项目简介\n**llm-web-grounding-proxy** 是一个高并发、低延迟的通用 OpenAI 兼容反向代理服务。\n\n它的目标是：**彻底解决个人与开发者在使用开源或商用大语言模型（如 DeepSeek-R1、Claude 3.7、GPT-4o、Ollama 本地模型）时，模型缺乏实时信息、产生幻觉，以及传统联网工具频繁被 Cloudflare Turnstile / 5 秒盾 / Google 429 封禁的问题。**\n\n你只需将客户端（如 NextChat、LobeChat、LibreChat、Open-WebUI、Cursor 或自建应用）的 `Base URL` 指向本代理，即可零改造获得媲美 Perplexity Pro 的实时深度联网检索与带原始事实链接的数字引用标注。\n\n---\n\n### 2. 解决的痛点\n1. **现有联网搜索 API 昂贵且受限**：商业搜索 API（如 Tavily、Perplexity API、SerpAPI）成本高昂，且返回的内容常有截断或滞后；\n2. **机房 IP 爬虫秒被拦截**：开发者自行用爬虫抓取目标网页时，机房公网 IP 极易触发 Cloudflare、DataDome、Akamai 等 WAF 的验证码拦截（403/429）；\n3. **客户端无需二次开发**：原生实现 OpenAI `/v1/chat/completions` 与 `/v1/models` 协议，流式（SSE stream）与非流式完全对齐，即插即用。\n\n---\n\n### 3. 核心特性\n- 🔌 **全生态即插即用**：标准 OpenAI 协议反向代理，上游兼容 DeepSeek、OpenAI、Anthropic、Ollama、vLLM 等任意提供商；\n- 🛡️ **抗封禁抓取内核**：集成动态住宅代理会话路由机制（Sticky Residential Proxy Routing），配合 TLS JA3/JA4 浏览器指纹伪装，在主流 WAF 下实测达到 99.4% 的爬取通过率；\n- 📑 **语义降噪与引用溯源**：抓取后自动清洗 HTML 冗余标签并提纯为高信息密度的 Markdown，自动在模型回答中注入 `[1]`, `[2]` 真实信源角标与文末参考书目；\n- ⚡ **高性能异步并发**：基于 FastAPI 与 HTTPX 异步架构，支持单实例百级并发，内存占用低；\n- 📦 **开箱即用**：已发布 PyPI (`pip install llm-web-grounding-proxy`)，并提供官方 Docker Compose 一键拉起配置文件。\n\n开源协议：Apache-2.0\n",
-    "created_at": "2026-09-09T19:52:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11607"
-  },
-  {
     "id": 11606,
     "title": "【开源自荐】ai-job-search-cn - 一条命令跑完国内求职：多平台聚合搜索 + 简历生成 + 智能筛岗",
     "content": "开源地址：https://github.com/rockbenben/ai-job-search-cn\n\n基于 Claude Code 打造的国内求职工作流（Codex CLI / Gemini CLI 同样能跑完全部功能）。一条命令聚合搜索猎聘、BOSS 直聘、智联招聘、前程无忧四家的岗位，先按你资料里写明的硬性条件过一遍——学历院校、户口落户、外包/ 驻场/派遣、执业资格——不满足的直接进「不投」名单并写明卡在哪，不陪跑；入了名单的岗位再按匹配度打分排序，打招呼开场白、邮件正文、网申自评和中文简历 PDF（Typst 模板）提前备好，在本机总览页点一下复制就能去招聘网站发。投递那一下永远由你自己点，工具不代发——反爬、封号、信任边界都在这。\n\n核心特性：\n  - 四个平台一条命令聚合搜索：猎聘走免登录公开接口，BOSS / 智联 / 前程用你自己已登录的浏览器\n  - 硬性条件自动过滤（学历、户口、外包派遣、执业资格等），不过的逐个写明原因\n  - 按匹配度打分排序，自动生成个性化打招呼话术、邮件正文、网申自评\n  - 中文简历走 Typst 模板直接编译 PDF，特殊岗位可按岗定制\n  - 本机总览页：复制开场白、点按钮记投递状态（约面 / 挂了 / 没下文 / offer），投后回复率统计\n  - 个人数据全程只存本机，面板只监听 127.0.0.1，不上传任何第三方服务器\n\n<img width=\"1440\" height=\"2073\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6e6a7e51-7523-4ed0-866e-881755815870\" />\n\n<img width=\"1440\" height=\"1197\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fe26fec4-bb35-437b-8402-7b30d58b4cd9\" />",
@@ -800,5 +792,13 @@
     "created_at": "2026-09-06T01:42:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/pull/11517"
+  },
+  {
+    "id": 11516,
+    "title": "〖独立工具推荐〗SeatingKit：把婚礼宾客名单、桌位和座位安排放进同一个可视化工作区",
+    "content": "我是 SeatingKit 的开发者，想自荐一个面向婚礼宴会座位安排的网页工具。\n\n网站：https://seatingkit.com/\n\n很多婚礼座位安排会在宾客名单、场地草图和多份表格之间来回。SeatingKit 把这些步骤放在一个可视化工作区：导入宾客、摆放桌子、分配精确座位；需要改动时，可以先查看剩余宾客的座位建议，或交换两张已占用的座位。完成后可导出按桌分组的 PDF 和 PNG 文件。\n\n目前，免费规划支持最多 100 位活跃宾客，桌面、平板和手机均已正式支持。免费项目保存在当前浏览器和设备，请自行备份。\n\nWedding Pass 正在筹备中，结账尚未开放。",
+    "created_at": "2026-09-06T01:39:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11516"
   }
 ]
