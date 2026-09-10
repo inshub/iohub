@@ -1,5 +1,21 @@
 [
   {
+    "id": 11609,
+    "title": "【网站自荐】AntiBrow：用你已经在写的 Playwright API 驱动的内核级反检测浏览器",
+    "content": "网站：https://antibrow.com\n源码与 SDK：https://github.com/antibrow/antibrow （SDK 是 MIT，约 330 star）\n\n做的是一个内核级的反检测浏览器，Windows / macOS / Linux 都有。\n\n和常见做法的区别在于指纹改在 C++ 层，而不是往页面里注入脚本——注入式的做法本身会留下痕迹。\n对外它交还的是一个标准的 Playwright `BrowserContext`（走 CDP），所以已有的 Playwright 脚本\n基本不用改就能跑，不需要再学一套 SDK。\n\n免费档是本地无限 profile，profile 数据存在自己磁盘上，不上传；另外每个 Chromium 大版本发布后\n会跟着重建，避免 profile 报一个已经没人在用的浏览器版本。\n\n**需要说明的是：SDK 是 MIT 开源的，浏览器内核本身闭源**，所以按「网站自荐」发而不是「开源自荐」。\n",
+    "created_at": "2026-09-10T03:19:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11609"
+  },
+  {
+    "id": 11608,
+    "title": "【开源自荐】每日更新的deepseek harness 插件， Ai知识库， skills 大全  https://github.com/Awesome-AI-Pedia/Awesome-AI-Pedia",
+    "content": "每日更新的deepseek harness 插件， Ai知识库， skills 大全  https://github.com/Awesome-AI-Pedia/Awesome-AI-Pedia",
+    "created_at": "2026-09-10T01:30:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11608"
+  },
+  {
     "id": 11607,
     "title": "【开源自荐】llm-web-grounding-proxy - 通用大模型实时联网检索代理：零改造让任意模型获得实时搜索与事实引用，内置防爬与动态代理支持",
     "content": "开源地址：https://github.com/AntonLi-PM/llm-web-grounding-proxy\n\n### 1. 项目简介\n**llm-web-grounding-proxy** 是一个高并发、低延迟的通用 OpenAI 兼容反向代理服务。\n\n它的目标是：**彻底解决个人与开发者在使用开源或商用大语言模型（如 DeepSeek-R1、Claude 3.7、GPT-4o、Ollama 本地模型）时，模型缺乏实时信息、产生幻觉，以及传统联网工具频繁被 Cloudflare Turnstile / 5 秒盾 / Google 429 封禁的问题。**\n\n你只需将客户端（如 NextChat、LobeChat、LibreChat、Open-WebUI、Cursor 或自建应用）的 `Base URL` 指向本代理，即可零改造获得媲美 Perplexity Pro 的实时深度联网检索与带原始事实链接的数字引用标注。\n\n---\n\n### 2. 解决的痛点\n1. **现有联网搜索 API 昂贵且受限**：商业搜索 API（如 Tavily、Perplexity API、SerpAPI）成本高昂，且返回的内容常有截断或滞后；\n2. **机房 IP 爬虫秒被拦截**：开发者自行用爬虫抓取目标网页时，机房公网 IP 极易触发 Cloudflare、DataDome、Akamai 等 WAF 的验证码拦截（403/429）；\n3. **客户端无需二次开发**：原生实现 OpenAI `/v1/chat/completions` 与 `/v1/models` 协议，流式（SSE stream）与非流式完全对齐，即插即用。\n\n---\n\n### 3. 核心特性\n- 🔌 **全生态即插即用**：标准 OpenAI 协议反向代理，上游兼容 DeepSeek、OpenAI、Anthropic、Ollama、vLLM 等任意提供商；\n- 🛡️ **抗封禁抓取内核**：集成动态住宅代理会话路由机制（Sticky Residential Proxy Routing），配合 TLS JA3/JA4 浏览器指纹伪装，在主流 WAF 下实测达到 99.4% 的爬取通过率；\n- 📑 **语义降噪与引用溯源**：抓取后自动清洗 HTML 冗余标签并提纯为高信息密度的 Markdown，自动在模型回答中注入 `[1]`, `[2]` 真实信源角标与文末参考书目；\n- ⚡ **高性能异步并发**：基于 FastAPI 与 HTTPX 异步架构，支持单实例百级并发，内存占用低；\n- 📦 **开箱即用**：已发布 PyPI (`pip install llm-web-grounding-proxy`)，并提供官方 Docker Compose 一键拉起配置文件。\n\n开源协议：Apache-2.0\n",
@@ -784,21 +800,5 @@
     "created_at": "2026-09-05T09:05:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11507"
-  },
-  {
-    "id": 11506,
-    "title": "【开源自荐】MPUp：从本地音乐文件生成带同步歌词的 MP4 视频",
-    "content": "项目地址：https://github.com/HUGHNew/mpup\n\nMPUp 是一个面向本地 MP3 / M4A 文件的命令行工具：读取歌曲元数据、封面和同步歌词，生成适合分享的 1080p MP4 音乐视频。\n\n它不依赖文件名猜歌名和歌手，而是直接读取音频文件头中的 `title`、`artist` 等元数据。生成过程中会优先复用音频内嵌封面；没有封面时也支持从 iTunes artwork 回退获取。同步歌词会在画面右侧按时间逐句高亮展示，没有歌词时则显示静态提示。\n\n主要特点：\n\n- 支持 MP3、M4A，以及目录批量处理\n- 自动提取或补全封面，并将封面写入生成的 MP3 元数据\n- 支持同步歌词，当前句高亮、相邻句淡出，并带平滑切换动画\n- 使用 Remotion 生成 1920×1080、30fps 视频\n- 最终通过 FFmpeg 做 fast-start 封装，并用 FFprobe 校验视频参数后原子发布\n- 中间文件和批次工作区会在成功或失败后清理，已有输出默认不覆盖\n\n环境需要 Python 3.11+、uv、Node.js 22+、FFmpeg/FFprobe，以及一款可显示中文的字体。\n\n安装：\n\n```bash\nuv sync\ncd renderer && npm ci && cd ..\n```\n\n使用示例：\n\n```bash\nuv run mpup assets/春.m4a --output-dir output\n```\n\n欢迎试用和反馈。",
-    "created_at": "2026-09-05T06:54:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11506"
-  },
-  {
-    "id": 11505,
-    "title": "【开发者自荐】为了留住将要流逝的时光 储留光诞生了 一个为记录生活而生的工具",
-    "content": "# 储流光｜储存将要流逝的时光\n\n这是我非常认真开发的APP，储流光，我想用它存储我将要流逝的时光，也希望能帮每一个人留住生活里珍贵的碎片。\n\n持续迭代了近半年，我几乎每一天都在思考怎样才能让这个APP变得更好。在广大网友的建议帮助下，经过无数个日日夜夜的调试打磨，我完成了一份还算不错的作品，储流光，值得被更多人知晓。\n\n如果你喜欢记录生活、习惯收藏细碎情绪、留意身体感受，或是想要更加认识你自己，不妨试一试储流光。\n\n**储流光——储存将要流逝的时光**\n\n## 它能记录什么\n\n内置 30+ 种记录模板，覆盖生活的方方面面：\n\n- **身体与情绪**：身体不适、情绪心情、睡眠、疲劳、头痛日记、生病\n- **生活日常**：饮食（含食物库）、喝水、运动、减肥打卡、戒色/戒酒/戒烟打卡\n- **趣味记录**：记仇、神人、后悔、人生瞬间、灵感、梦到的一切\n- **内容型**：日记（富文本 + 图片（支持动图） + 语音 + 皮肤 + 背景音乐）、阅读、影视剧、旅行、音乐、加班、宠物\n\n还支持**完全自定义记录类型**，另有模板市场，可以一键复制他人创建的记录类型。\n\n## 它不只是个\"记录本\"，记录只是起点\n\n### 流光兽\n\n会读取你记录的生活，生成日信、周信、月信，首页提供个性化问候。帮你留意日常容易忽略的生活细节，陪伴感十足。\n\n### 流光胖｜基于真实记录的多种AI玩法\n\n- **观心**：分析 MBTI、大五人格、九型、DISC 等 6 种人格报告，附带雷达图与对应记录证据\n- **林兢**：将你的记录蒸馏成「第二个你」，实现和自己对话\n- **宝安**：把一段时间的生活写成小说、古诗、脱口秀等共12种题材内容\n- **梦子**：结合生活记录解读梦境，还可以分析多段梦境背后的规律\n- **词云机**：生成专属人生词云，提取你的口头禅与高频关键词\n\n## 完整的回顾体系\n\n- 多维度统计：连续记录天数、趋势图、热力图\n- 时间轴、随机漫游、那年今日\n- 地图足迹：足迹 / 热力 / 时间线三种视图\n\n## 卡片与分享\n\n任意一条记录都可以生成精美卡片，提供复古、手账、深色、抽象等多套模板； 支持收藏分组，也可以发布到广场社区，互相点赞交流。\n\n## 其他实用功能\n\n时间轴、随机漫游、那年今日、图库、主题、字体； 数据导入导出、云端加密存储，无需担心备份与数据安全。\n\n## 数据完全属于你\n\n- 云端加密存储\n\n- 日记密码保护\n\n- 支持 PDF / DOCX 导出、日记导入迁移\n\n- 你的数据，随时可以带走\n\n  \n\n------\n\n# 关于付费\n\n百分之九十的功能是免费的，而且现在有活动，有20种方式随随便便获取vip，很轻易就可以获取一年左右的vip。\n\n关于价格，现在是68元 永久会员。\n\n\n\n# 如何下载\n\n**iOS**：前往 App Store 搜索「储流光」下载\n\nApp Store 链接：[[储流光‑储存将要流逝的时光](https://link.wtturl.cn/?target=https%3A%2F%2Fapps.apple.com%2Fcn%2Fapp%2F%E5%82%A8%E6%B5%81%E5%85%89%E2%80%91%E5%82%A8%E5%AD%98%E5%B0%86%E8%A6%81%E6%B5%81%E9%80%9D%E7%9A%84%E6%97%B6%E5%85%89%2Fid6781571752&scene=im&aid=582478&lang=zh)](https://link.wtturl.cn/?target=https%3A%2F%2Fapps.apple.com%2Fcn%2Fapp%2F%E5%82%A8%E6%B5%81%E5%85%89%E2%80%91%E5%82%A8%E5%AD%98%E5%B0%86%E8%A6%81%E6%B5%81%E9%80%9D%E7%9A%84%E6%97%B6%E5%85%89%2Fid6781571752&scene=im&aid=582478&lang=zh)\n\n**Android**：访问官网下载最新版本\n\n官网链接： https://chaogoodman.xyz/timelight/\n\n\n[\n\n<img width=\"1024\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/04e33e77-cb5b-430e-a756-a5ba3ddd75c6\" />\n<img width=\"1024\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4d51c43f-b974-4766-966e-41e4233d1426\" />\n<img width=\"1086\" height=\"1448\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a9d75753-5d28-437b-8e79-2459e7bc7904\" />\n<img width=\"1086\" height=\"1448\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e7f4c861-394f-41bd-9c4e-ebe7a1d7e7a9\" />\n<img width=\"1581\" height=\"995\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/98c19d5a-bb1e-4b75-b429-8772da0767ee\" />\n<img width=\"1024\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1f5f0d8-c064-46b4-8083-0ed94f7325a5\" />\n<img width=\"1086\" height=\"1448\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/936766c4-640b-40f8-bc34-f2ee613c1ff8\" />\n<img width=\"1024\" height=\"1536\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b2f25d7f-90e5-4fc4-8584-e075be2bf1dc\" />\n<img width=\"1086\" height=\"1448\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/424c2b46-42ca-42ac-a7f3-a2cf00698041\" />\n\n](url)",
-    "created_at": "2026-09-05T04:19:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11505"
   }
 ]
