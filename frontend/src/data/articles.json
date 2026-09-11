@@ -1,5 +1,37 @@
 [
   {
+    "id": 11636,
+    "title": "【开源自荐】Deck：在 macOS 上用看板管理多个终端 agent",
+    "content": "自荐一个开源项目 **Deck**，方便在 Mac 上同时管理多个 Claude Code、Codex 或其他终端 CLI 任务。\n\n同时开几个 agent 时，经常需要来回切换终端，查看哪个在等回复、哪个已经结束一轮。Deck 给这些本地终端加了一层管理界面：\n\n- **用看板整理任务**：每张卡片对应一个真实的 tmux session，可以按项目分组、手动调整位置，也可以分屏查看多个终端。\n- **集中查看待关注的 session**：启用 Claude Code 或 Codex 状态集成后，跨项目汇总输入请求和本轮结束未读，点击即可回到对应终端处理。结果是否符合预期，仍由使用者检查。\n- **退出应用，session 继续运行**：tmux 已内置，重新打开 Deck 可以继续查看；重启机器或后台 Shell 服务会结束其中的运行进程。\n\n目前支持 **Apple Silicon Mac、macOS 11 及以上**，采用 **MIT 许可证**，发行版已签名并通过 Apple 公证。无需 Deck 账号；agent CLI 需自行安装和登录，模型服务与费用由相应工具提供和收取。\n\n- [中文官网](https://deck.c9r.io/zh/)\n- [GitHub 源码与安装说明](https://github.com/c9r-io/deck)\n- [26 秒真实演示](https://deck.c9r.io/zh/#demo)：从三个 Claude session 中找到等待回复的任务，打开终端批准请求，再查看结果。中文界面与字幕，无音频，已剪去等待时间。\n\n[![Deck 真实演示：看板中的三个 Claude session，点击播放](https://deck.c9r.io/assets/demo/deck-0.6.6-poster.jpg)](https://deck.c9r.io/zh/#demo)\n\n欢迎同时使用多个终端 agent 的朋友试用和反馈。\n",
+    "created_at": "2026-09-11T17:08:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11636"
+  },
+  {
+    "id": 11635,
+    "title": "【开源自荐】oh-story-claudecode：让 Claude Code / Codex 等编程 Agent 写网文的 skill 包，扫榜→拆文→写作→去AI味全流程",
+    "content": "**项目地址**：https://github.com/zenstory-ai/oh-story-claudecode （MIT，6.7k star）\n\n**一句话**：把编程 Agent（Claude Code、Codex CLI、Google Antigravity、OpenCode、ZCode、OpenClaw、Reasonix）变成一套完整的网络小说写作工作流，长篇与短篇都覆盖。\n\n**它做什么**：按职业作者的方法论拆成 13 个 skill——扫榜（分析榜单选题材、人设、切入点）、拆文（拆解爆款的大纲节奏与剧情模块）、商业化写作（钩子、爽点、期待感）、去AI味、封面图。不是提示词合集：内置确定性 verifier、写正文前的 Reference Gate、分层的上下文状态管理，以及 7 个专业 agent 的协作部署（`/story-setup` 一键部署到各个 Agent 环境）。\n\n**适合谁**：在起点、番茄、晋江、七猫、知乎盐言等平台写作的作者，以及想看「非编程场景下 agent skills 能做到什么程度」的开发者。\n\n**安装**：`npx skills add zenstory-ai/oh-story-claudecode -y -g`\n\n英文 README：https://github.com/zenstory-ai/oh-story-claudecode/blob/main/README_EN.md\n同一组织的姊妹项目（短剧/漫剧、小说改游戏、视频解说）：https://github.com/zenstory-ai",
+    "created_at": "2026-09-11T16:37:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11635"
+  },
+  {
+    "id": 11634,
+    "title": "【开源自荐】capcut-cli：在终端里创建和编辑剪映 / CapCut 草稿，也能交给 AI Agent 来做",
+    "content": "## 为什么要做这个\n\n剪映 / CapCut 没有公开的编辑 API。批量加字幕、调时间轴、把长视频切成短视频，只能在界面里一条一条手动完成。\n\ncapcut-cli 直接读写本地草稿，在终端里完成这些操作；结果在剪映里打开，每条轨道依然可编辑。因为是 JSON 进、JSON 出，它也可以交给任何大模型 Agent 来驱动。\n\n## Highlight\n\n- 直接操作本地草稿存储：没有上传、没有 API、没有 MCP 服务，也没有 HTTP 守护进程\n- 同时支持剪映和 CapCut，支持的版本见 [version-support](https://github.com/renezander030/capcut-cli/blob/master/docs/version-support.md)\n- 导入 SRT、样式化字幕、静音感知剪辑\n- 调整时间、速度、音量、模板和动画（淡入淡出、Ken Burns）\n- 把长视频切成短视频\n- Node ≥ 18，只用内置模块，没有原生依赖；MIT 协议\n- 自带 Claude Code 插件和 Agent Skill\n- 独立的非官方项目，与字节跳动无关\n\n## 快速上手\n\n```bash\nnpm install -g capcut-cli\ncapcut doctor\ncapcut quickstart my-first --video clip.mp4 --srt captions.srt\n```\n\n## 链接\n\n- GitHub：https://github.com/renezander030/capcut-cli\n- 剪映快速上手（中文）：https://github.com/renezander030/capcut-cli/blob/master/docs/quickstart.zh-CN.md\n",
+    "created_at": "2026-09-11T15:16:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11634"
+  },
+  {
+    "id": 11633,
+    "title": "【开源自荐】ContextOS：让 Codex 的 272K 上下文在长任务中也无需压缩代码，综合减少 60% 上下文",
+    "content": "项目地址：https://github.com/yubinbin32-ops/ContextOS\n\n我用 Codex 改中型项目时，最消耗上下文的经常不是“写当前函数”，而是三件事：\n\n- 每轮都要重新理解项目结构\n- 为了定位一个方法，读进来一堆无关文件\n- 模型说完成了，但测试没有证据，后面反复返工\n\nContextOS 做的事，是把这些重复的上下文消耗从 Codex 的对话里拿出去。\n\n## 使用方式\n\n从仓库 Releases 下载 macOS App 后，App 会自动完成 MCP 安装和配置，把 ContextOS 注册到 Codex 等客户端里。\n\n打开 Codex，ContextOS 就已经启用，不需要手动改 `mcp.json`。\n\n## 核心流程\n\n1. 项目结构先写入 ContextOS\n\n在图形界面里整理模块、依赖链路、影响路径和检查点。这些内容会保存成 `.contextos/graph.json`，由 Git 追踪。Codex 不用每轮重新扫描目录，而是读取项目结构和相关任务上下文。\n\n2. Codex 按任务读取上下文\n\n任务开始时，ContextOS 返回紧凑的项目地图、相关 Block、Chain、Plan 和检查点，而不是把整个仓库塞进去。\n\n3. AST 只提供精准定位\n\nContextOS 给 Codex 的是 `path::symbol`、函数签名和行号范围，不是完整实现代码。编辑器打开的是具体目标方法，不是整个文件。\n\n4. `run_command` 压缩命令输出\n\n命令执行结果会经过 ContextOS 的终端网关，过滤 ANSI、进度条、本地路径和重复日志，只保留结构化诊断信息。\n\n5. 测试回执决定完成状态\n\n完成状态绑定测试执行结果和检查点。源码改过以后，相关检查点会变成 `retest_required`，模型不能只靠“我觉得完成了”过关。\n\n## 对比\n\n| 环节 | 不使用 ContextOS | 使用 ContextOS | 实测结果 |\n| :--- | :--- | :--- | :--- |\n| 项目结构理解 | 每轮读目录和文件 | 读取 Git 追踪的项目图 | 不重复扫描 |\n| 代码定位 | 读取整个源码文件 | `path::symbol` + 行号 | 单任务上下文降低 99.4% |\n| 执行链上下文 | 返回多模块实现内容 | 只返回定位信息 | 执行链上下文降低 98.5% |\n| 命令输出 | 原始终端日志进入上下文 | `run_command` 过滤和压缩 | 日志压缩 94.8% |\n| 完成状态 | 模型自我判断 | 测试回执 + 检查点门禁 | 目标模块召回 100% |\n\n表格里的 99.4%、98.5%、94.8% 来自 `npm run benchmark` 的可复现实测；标题里的“综合减少 60%”是我长时间任务用下来的体感。\n\n![ContextOS 架构画布](https://raw.githubusercontent.com/yubinbin32-ops/ContextOS/main/assets/canvas-overview.png)\n\n![影响路径追踪](https://raw.githubusercontent.com/yubinbin32-ops/ContextOS/main/assets/path-impact.png)\n\n![测试回执详情](https://raw.githubusercontent.com/yubinbin32-ops/ContextOS/main/assets/checkpoint-detail.png)\n\n欢迎实际试一下，尤其是已经用 Codex 跑过中大型项目的人。",
+    "created_at": "2026-09-11T14:43:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11633"
+  },
+  {
     "id": 11632,
     "title": "【开源自荐】AI加词：面向海外中文用户的开源背单词网站，FSRS 间隔重复 + AI 词条资料",
     "content": "项目地址：https://github.com/leoon-hu/jiaci\n在线体验：https://jiaci.app （邮箱验证码登录，免费）\n\n一个精简的背单词网站，做给在海外工作、留学的中文用户：内置 / 导入词库 → 每日按计划学习 → 认识 / 模糊打分 → FSRS 间隔重复安排复习。\n\n特点：\n- 复习用 FSRS 算法（ts-fsrs），按目标记忆保持率安排，难词密、简单词疏，间隔达到阈值自动转为已掌握，不用手动管理\n- 词条的核心义、义项、例句、搭配、辨析、词族、助记、词源由 AI 离线填充、全局共用，浏览时不调用模型\n- 21 本内置词库：高频三级、中高考、四六级、考研、托福、雅思、GRE、学术词汇、常用短语，以及租房 / 看病 / 银行 / 职场 / 孩子上学 / 数字生活六本海外场景词库\n- 单词四种口音 × 声音的发音，例句与中文释义也能朗读\n- 单词列表横向拖动一行直接打分 / 移出，长按多选，几秒内可撤销\n- 手机与桌面一套代码，PWA 可加到主屏\n\n技术：Next.js 15 + TypeScript + Prisma + PostgreSQL，MIT 协议，词典数据来自 ECDICT。\n\n截图：\n\n<img width=\"780\" height=\"1688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b8484d02-3bc4-4181-8d74-7211951b7773\" />\n<img width=\"780\" height=\"1688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a6c8da8e-524c-4599-89f4-cbcaee432f19\" />\n<img width=\"780\" height=\"1688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6831f1bb-e80e-44ac-aeec-adc850103842\" />\n<img width=\"780\" height=\"1688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/236aefb5-7823-42fe-aeea-0869317979a8\" />",
@@ -766,37 +798,5 @@
     "created_at": "2026-09-07T02:42:52Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11534"
-  },
-  {
-    "id": 11533,
-    "title": "推荐开源项目 Nova Studio：用对话交付整个项目",
-    "content": "**项目地址：** https://github.com/rufeng0411/Nova-Ai-Studio  \n**官网：** https://www.novapage.online/  \n**文档：** https://www.novapage.online/docs/  \n**案例：** https://www.novapage.online/showcase/\n\n**项目介绍：**\n\nNova Studio（Nova Ai-Studio 2.0）用对话交付整个项目：听需求、做分析、定目标、写出可打开的文件，再用清单验收。能力中心对外写 400+，白皮书写 35 条流程模板。Token「最高约 70%」是相对全程旗舰的上限，见官网 /claims/。源码用 pnpm 本机安装（不要裸 npm install）。不是 Amazon Nova。\n",
-    "created_at": "2026-09-06T23:24:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11533"
-  },
-  {
-    "id": 11532,
-    "title": "【工具自荐】漢字ドリル：免费制作日语假名、汉字和姓名练习字帖，导出 A4 PDF",
-    "content": "自荐一个我开发的日语练字工具：**漢字ドリル**。\n\n网站：[kanjirenshu.com](https://kanjirenshu.com/)\n\n它可以把自己选的假名、汉字、姓名或词语排成 A4 练习字帖，预览后下载 PDF。主要面向日本家长和教师，也适合需要打印书写材料的日语学习者：想补练哪几个字，就用这些字生成一张练习单。\n\n目前支持：\n\n- **输入或点选文字**：平假名、片假名，以及按日本小学 1～6 年级划分的 1,026 个汉字。\n- **调整练习方式**：设置字格大小、描红浓度，选择描红、看写或先描后写；支持辅助线和可选笔顺图。\n- **保留完整词语**：姓名和词语可以按完整顺序重复练习，也可以切换为逐字练习。\n- **制作课堂材料**：添加标题、说明及姓名、班级、日期填写栏；常用排版设置可主动保存在同一浏览器中复用。\n\n当前界面为日语，制作和下载免费，无需注册。练习正文和 PDF 生成在浏览器本地处理，正文不会为生成 PDF 而上传到服务器。本机保存的设置不支持跨设备同步。\n\n例如，在[教师制作页](https://kanjirenshu.com/teachers/)输入「森・林・校」，可以生成下面这种“范字 → 描红 → 空白练习”的字帖。图片是工具实际生成的样张，填写栏留空。\n\n![漢字ドリル生成的 A4 汉字练习样张：森、林、校，带姓名、班级和日期填写栏](https://kanjirenshu.com/images/worksheet-teacher-homework.png)\n\n欢迎试用，也欢迎对字帖排版和操作流程提出建议。\n",
-    "created_at": "2026-09-06T16:04:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11532"
-  },
-  {
-    "id": 11531,
-    "title": "【工具自荐】AudioCut（audiocut.online）：无需上传文件的浏览器音频编辑工具",
-    "content": "自荐一个自己维护的在线音频工具站：[AudioCut](https://audiocut.online/zh)。五个工具均可免费使用，无需注册，所选媒体在浏览器内处理，不上传到服务器。\n\n适合播客、访谈和语音笔记中的小型编辑任务：去掉过长的停顿、截取一段录音，或把视频中的音轨另存为 MP3。\n\n目前提供：\n\n- **静音切除**：按音量阈值和最短持续时间检测安静片段，可设置切口两侧的保留时长，避免句子接得太紧。\n- **音频裁剪**：指定起止时间，保留一个连续片段。\n- **视频转 MP3**：选择浏览器可以解码的音轨，导出音频。\n- **速度与音量调整**：调整播放倍率或增益，试听后下载。\n\n可以从[静音切除工具](https://audiocut.online/zh/silence-remover)开始：选一段自己有权使用的录音，先用保守参数处理，再试听切口。如果轻声词语被选中，降低阈值；如果短暂停顿也被切掉，提高最短静音时长。\n\n结果保存为独立的 MP3，原文件不会被覆盖。静音检测不识别语义，也不能消除说话时的背景噪声；当前变速会同时改变音高。输入能否处理取决于浏览器的编解码支持和设备内存，视频输入只导出音频。\n\n提供中文等七种界面语言。\n\n![AudioCut 静音切除工具的文件选择界面，项目真实截图](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/qpy7ei215iro54dwxg1o.jpg)\n",
-    "created_at": "2026-09-06T16:03:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11531"
-  },
-  {
-    "id": 11530,
-    "title": "【工具自荐】Telemetry：用中文 SQL 试验场练习应用错误率分析",
-    "content": "我是 Telemetry 的创建者 JR（@TheBuilderJR），自荐一个可以免注册使用的中文 SQL 试验场：\n\nhttps://telemetry.sh/sql/playground?lang=zh\n\n它提供合成事件数据、可修改的查询和结果表，在浏览器里用 DuckDB / WebAssembly 执行。默认例子按接口计算请求数、5xx 错误数和错误率，适合练习「错误多，是因为流量多，还是失败比例高？」这类具体问题。还可选择后台任务重试、Webhook 和 LLM 成本等样例。\n\n一个上手方法：先运行默认查询，再修改 `HAVING COUNT(*) >= 20` 的最小样本数，观察哪些接口还会出现在结果中，理解筛选门槛怎样改变比较范围。\n\n试验场免费，不需要接入自己的日志；合成数据不是客户案例，也不是性能基准。Telemetry 本体是 JSON 事件与 SQL 分析服务，有免费额度和付费计划。中文表达由 AI 协助整理，以上以开发者身份分享。\n",
-    "created_at": "2026-09-06T15:41:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11530"
   }
 ]
