@@ -1,5 +1,53 @@
 [
   {
+    "id": 11692,
+    "title": "【工具自荐】MDDock：本地优先的 Markdown 编辑器 + AI 知识库（macOS / Windows / iOS 免费）",
+    "content": "我是 MDDock 的开发者，想自荐一个本地优先的 Markdown 编辑器 + AI 知识库。\n\n起因是我的笔记分散在三处：Obsidian 写日常、Typora 写长文，还有一堆 AI 编程助手（Claude Code / Cursor）当「记忆」写下的 .md 文件，它们互相看不见。MDDock 的思路是直接打开任何一个 .md 文件夹——不导入、不锁定格式，你的文件夹就是知识库本身，可以用 git 管、用任意网盘同步。\n\n几个可能值得一提的点：\n\n- **AI 问答有据可查**：索引和搜索全部在本机完成（全文 + 语义），问一个问题，回答会引用具体来自哪个文件。只有当你明确发送问题时，相关内容才经过云端大模型，且首次发送前会征求同意。\n- **给 AI 编程助手当记忆**：自带 MCP server 和 CLI，Claude Code / Cursor / Codex 可以直接搜索、读取你的笔记——助手终于记得你上周跟它说过什么。\n- **写作体验完整**：Typora 式即时渲染、一键把文档变成幻灯片演示、和 Office 文档双向转换。\n- **免安装的浏览器工具**：官网还有一组打开即用的免费 Markdown 在线工具（预览 / 转换 / 表格 / 格式化）。\n\nmacOS / Windows / iOS 三端完全免费，闭源。官网 https://mddock.com ，iOS 版已上架 App Store。",
+    "created_at": "2026-09-14T14:56:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11692"
+  },
+  {
+    "id": 11691,
+    "title": "【开源自荐】mail2telegram 全新 2.0.0 重构支持 telegram 小程序版",
+    "content": "mail2telegram 是一个在 Telegram 中收邮件的机器人，完全运行在 [Cloudflare Workers](https://developers.cloudflare.com/workers/) 上。它结合了即时推送通知与 Telegram Mini App：每封新邮件都会带着快捷操作按钮推送到你的聊天，完整历史、附件和全部设置都在 Mini App 中管理。邮件通过 [Cloudflare Email Routing](https://developers.cloudflare.com/email-service/get-started/route-emails/) 投递到 Worker，AI 摘要则使用 [Workers AI](https://developers.cloudflare.com/workers-ai/) 或任意 OpenAI 兼容接口生成。\n\n\n<img width=\"5416\" height=\"2092\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0268374a-3651-416e-b704-d30b1543d5ac\" />\n\n- **推送通知**为每封邮件提供快捷按钮：`Preview`、`Summary`、`Open`。\n- **Mini App 收件箱**按文件夹浏览历史、沙箱渲染 HTML、下载附件、通过 Resend 回信，并管理全部设置。\n- **Mini App 设置**包含支持正则匹配的白/黑名单、地址测试、阻断策略、转发、AI 摘要选项和邮件处理限制。\n\n所有行为都在 Mini App 中配置并存储于 D1 —— Worker 本身只需要少量变量来标识机器人和可选的 API Key。",
+    "created_at": "2026-09-14T14:40:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11691"
+  },
+  {
+    "id": 11690,
+    "title": "【开源自荐】tunnix v0.5.0 中继关闭逻辑重写",
+    "content": "这次重写了隧道两端处理连接关闭的逻辑,之前有几个地方会默默做错事,现在都修了\n\n修了半关闭的处理,客户端如果先发完请求就关闭上传方向,之前可能收到空响应,现在能拿到完整回复\n\n目标连接中途断掉之前看起来像正常结束,这其实是静默的数据损坏,因为很多程序会把 eof 当成传输完成的信号,现在改成直接重置连接,不会伪装成功\n\n加了一个 abort 消息,客户端放弃一个连接之后服务端会真正停止读目标端,不会对着没人监听的 socket 继续读,实测有个场景之前客户端消失后服务端还在拉 179mb 数据花了 25 秒,现在 1mb 不到 50 毫秒就结束\n\n把所有可能卡死的等待都加上了边界,包括一个会永久卡住 session 锁的 watchdog,之前中继会在两边都没日志的情况下悄悄冻住,现在都修了\n\n客户端现在也会主动放弃重试,连续 3 次重连都拿不到数据就退出并给出原因,方便被 supervisor 拉起来,次数可以配置,设成 0 就是老的无限重试\n\n完全向后兼容,老服务端收到新的 abort 消息会直接忽略回退到老行为,tunnix 是一个 rust 单文件二进制,把普通 http 变成加密的 socks5 和 http 隧道,同一个二进制分 server 和 client 两个子命令\n\n[Github: aeroxy/tunnix](https://github.com/aeroxy/tunnix)",
+    "created_at": "2026-09-14T14:29:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11690"
+  },
+  {
+    "id": 11689,
+    "title": "[工具] Gemini Polish：优化 Gemini 的 CJK 中文排版与知识图谱可视化",
+    "content": "### 项目名称\nGemini Polish\n\n### 项目地址\n- Chrome 网上应用店：https://chromewebstore.google.com/detail/gemini-polish-graph-viewe/ajboihpfgkpcpeibiahobpdogdbbmfpn\n- 演示视频：https://youtu.be/2uQ6D9Tfb9g\n<!-- 如果开源了，建议补上 GitHub 仓库地址：- GitHub：https://github.com/xxx/xxx -->\n\n### 类别\n浏览器插件 / AI 工具\n\n### 项目简介\nGemini Polish 是一款专为 Google Gemini Web 界面设计的体验优化扩展，主要解决大语言模型生成内容在长文阅读和结构化信息展现上的两个痛点：\n\n1. **CJK 排版重构**：针对中文、日文、韩文字符默认行高偏窄、中英文混排间距局促的问题进行了排版微调，优化了字体回退链、标点挤压与段落留白，提升长篇技术文档和日常回答的阅读舒适度。\n2. **Graph 关系图谱可视化**：支持将 Gemini 输出中的结构化关系数据（如知识图谱、节点关联）直接渲染为交互式图表，使多维度信息更具结构感和直观性。\n\n### 截图 / 演示\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9a17cbd3-67b8-46f7-b36f-acff27ddc62d\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0471dde5-b1ea-4d2d-853a-0cfbd79d16af\" />\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/206db27f-c1f0-42d4-8bff-3e382dd085ff\" />\n\n### 补充说明\n插件主打无感与极简，不采集任何用户会话数据，欢迎大家体验并反馈改进建议。",
+    "created_at": "2026-09-14T14:25:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11689"
+  },
+  {
+    "id": 11688,
+    "title": "【工具自荐】抖评岛：把抖音公开评论和回复整理成 Excel / CSV",
+    "content": "我是抖评岛的开发者，想自荐一个做评论整理的小工具。\n\n给一条抖音视频做复盘，或者整理商品反馈时，常常需要把评论交给同事继续看。几张截图能说明一个例子，后面要筛选、加备注、找回某句话的回复，就还是表格方便。\n\n我做的 [抖评岛 ExportDou](https://exportdou.cn/) 处理的是这一步：粘贴公开视频分享链接，先看评论预览，再选择要导出的数量、是否包含回复，最后下载 Excel 或 CSV。用户不用安装插件，也不用交出抖音 Cookie。任务在后台运行，可以关掉页面，之后回来取文件。\n\n想先看看表格长什么样，可以直接下载 [CSV 样例](https://exportdou.cn/examples/exportdou-comments-sample.csv)。里面只有三条编写的示例数据，方便看字段和评论、回复之间的关系。表格拿到手以后，怎么分类、哪些反馈值得跟进，仍然由使用者判断；工具没有自动生成分析结论。\n\n如果需要把这一步接到自己的工作流里，也有 [API、CLI 和 Agent Skill 文档](https://exportdou.cn/developers)。\n\n这是有免费试用额度的付费服务：注册赠送 100 积分，可导出一级评论的 CSV；回复和 Excel 格式需要订阅。一级评论与回复共用所设的导出上限，能拿到多少内容取决于公开视频当前可见的数据，不保证抓全。",
+    "created_at": "2026-09-14T13:06:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11688"
+  },
+  {
+    "id": 11687,
+    "title": "【开源自荐】Heeler：一个面向 iPhone 和 iPad 的原生编程 Agent 控制台，基于 herdr",
+    "content": "### 项目地址\n\n- GitHub 源码：https://github.com/ZingerLittleBee/Heeler\n- TestFlight：https://testflight.apple.com/join/aXSxRn4r\n- App Store 下载：https://apps.apple.com/us/app/heeler-for-herdr/id6797263135 （CN 未在 App Store 上架，请使用 TestFlight。）\n- 官网：https://heeler.bybee.dev\n\n### 背景\n\n当 Claude Code、Codex 等 Agent 在电脑上执行任务时，离开桌面后，有时还需要看看进度、补充要求，或者回应它的确认提示。Heeler 可以在手机和平板上接着处理这些事情。\n\n**Heeler 使用 [herdr](https://github.com/herdrdev/herdr) 作为后端**，通过 SSH 连接机器，集中查看和操作 Agent。\n\n使用 SwiftUI 开发，支持 iOS / iPadOS 18 及以上版本，以 Apache-2.0 协议开源。\n\n### 它能做什么\n\n- **集中查看 Agent 状态。**\n- **直接操作 Agent 实时会话。**\n- **支持上传手机图片和文件。**\n- **Agent 状态通知、锁屏实时活动。** \n- **支持打开 Shell 终端。**\n- **适配 iPad。**\n\nHeeler 提供 herdr 插件，用于扫码配对和发送加密通知。\n\n### 截图\n\n<table>\n  <tr>\n    <th>iPhone</th>\n    <th>iPad</th>\n  </tr>\n  <tr>\n    <td valign=\"top\">\n      <img src=\"https://raw.githubusercontent.com/ZingerLittleBee/Heeler/main/docs/images/agent-iphone.png\" width=\"220\" alt=\"Heeler 的 iPhone Direct Input 与终端键盘\">\n    </td>\n    <td valign=\"top\">\n      <img src=\"https://raw.githubusercontent.com/ZingerLittleBee/Heeler/main/output/app-store/ipad-13/sources/05-windowed-console.png\" width=\"560\" alt=\"Heeler 的 iPad 窗口模式\">\n    </td>\n  </tr>\n</table>\n\n欢迎试用，也欢迎反馈实际使用中遇到的问题。",
+    "created_at": "2026-09-14T11:21:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11687"
+  },
+  {
     "id": 11686,
     "title": "【开源自荐】TrafficMonitor 专属高颜值股票行情插件。极简暗黑悬浮窗、A股/港股/美股/ETF全市场覆盖、盘口五档、资金流向热力图与全景量化看板。",
     "content": "项目地址：https://github.com/xiongaox/StockPlusPlus\n二改于：https://github.com/zsj118106/TrafficMonitorPlugins\n点击[README.md](https://github.com/xiongaox/StockPlusPlus/blob/main/README.md)查看更多\n\n<img width=\"665\" height=\"361\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9b4581eb-02e1-41a9-abc1-9185bd2c878e\" />\n\n<img width=\"798\" height=\"478\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0cec9eca-4201-4e8d-a3e0-77ff0bc61129\" />\n\n<img width=\"798\" height=\"478\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11093e01-d3c9-452b-aedf-b91cc2f355b8\" />\n\n<img width=\"798\" height=\"478\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/02e26366-2d62-4c3f-98c3-fac81749e967\" />\n\n<img width=\"798\" height=\"478\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cc9baf9c-f757-4f8c-ac62-dd3d5535283f\" />",
@@ -122,7 +170,7 @@
   {
     "id": 11671,
     "title": "【开源自荐】EvalArc：检查智能体评分器的盲点，附可交互证据演示",
-    "content": "维护者自荐：**evalarc**。EvalArc 是面向 AI 智能体的开源评测与验收工具。支持 Python／JavaScript 候选、TOML 套件、JUnit 和离线报告复核，保留每轮原始记录。交互实验室展示高分仍违反关键业务约束的案例；0.8.0 可下载完整套件证据，并离线复算原始配置、执行计划、验收规则和 JUnit；浏览器可分享到具体调用步骤。提供可筛选 HF Casebook 和中英文文档，现有演示为脚本对照。\n\n在线体验：https://huggingface.co/spaces/glayguo/evalarc\n\n- **把讨论定位到同一步**： Copy evidence link 保存任务、对照实现、种子、案例与 trace 步骤。接收者打开同一观察点，键盘可从详情返回案例列表；受限剪贴板有手动复制入口。\n- **失败可恢复**：suite、重复尝试、前后比较和任务包可以分别重试；一个任务包不可用时仍可检查另一个。页面经过 320／390／1440 像素与键盘路径验证。\n- **高分不代表完成**：工单策略得 93.75% 却重复写备注；代码实现得 92.5% 却混淆 JSON true 与 1。可检查全部 15 种声明缺陷，以及三项 suite 作业、六条重复尝试和 167 条审计用例的数据表。\n- **可复核交付**：`evalarc verify` 不执行候选代码，重算单次、重复、对照和完整套件报告，包括 TOML、plan、五次尝试与 JUnit；`--require-accepted` 检查配置的验收规则，`--require-resolved` 另行要求任务完整通过。Python／JavaScript 参考实现共享任务约定。\n\n```sh\nevalarc verify suite-evidence --json\n\n# Require every configured suite gate:\nevalarc verify suite-evidence --json --require-accepted\n```\n\n安装发布的 Python wheel，从首页下载 suite-evidence.zip 并解压后，无需 Docker 或 Node 即可核验；默认退出 0 表示证据一致，添加 --require-accepted 退出 1 表示严格备注规则拒绝该结果：\n\n项目：https://github.com/noteflowai/evalarc\n版本：https://github.com/noteflowai/evalarc/releases/tag/v0.8.0\n\n![分享具体失败证据，检查智能体评分器的盲点](https://github.com/noteflowai/evalarc/raw/main/docs/assets/suite-lab.png)\n\n本账号为维护者，项目与 AI 结对开发，采用 MIT 许可，处于研究预览阶段。现有展示来自已保存的公开开发任务和脚本 Docker 对照，不提供真实大模型排名或 RL 收益结论。离线一致性校验不等于重新运行评分器，也不认证报告作者；原始候选路径与计时仍是报告元数据。\n",
+    "content": "维护者自荐：**evalarc**。EvalArc 是面向 AI 智能体的开源评测与验收工具。支持 Python／JavaScript 候选、TOML 套件、JUnit 和离线报告复核，保留每轮原始记录。交互实验室展示高分仍违反关键业务约束的案例；0.8.0 可下载完整套件证据，并离线复算原始配置、执行计划、验收规则和 JUnit；浏览器可分享到具体调用步骤。提供可筛选 HF Casebook 和中英文文档，现有演示为脚本对照。\n\n在线体验：https://huggingface.co/spaces/glayguo/evalarc\n\n- **把讨论定位到同一步**： Copy evidence link 保存任务、对照实现、种子、案例与 trace 步骤。接收者打开同一观察点，键盘可从详情返回案例列表；受限剪贴板有手动复制入口。\n- **失败可恢复**：suite、重复尝试、前后比较和任务包可以分别重试；一个任务包不可用时仍可检查另一个。页面经过 320／390／1440 像素与键盘路径验证。\n- **高分不代表完成**：工单策略得 93.75% 却重复写备注；代码实现得 92.5% 却混淆 JSON true 与 1。可检查全部 15 种声明缺陷，以及三项 suite 作业、六条重复尝试和 167 条审计用例的数据表。\n- **可复核交付**：`evalarc verify` 不执行候选代码，重算单次、重复、对照和完整套件报告，包括 TOML、plan、五次尝试与 JUnit；`--require-accepted` 检查配置的验收规则，`--require-resolved` 另行要求任务完整通过。Python／JavaScript 参考实现共享任务约定。\n\n```sh\nevalarc verify suite-evidence --json\n\n# Require every configured suite gate:\nevalarc verify suite-evidence --json --require-accepted\n```\n\n安装发布的 Python wheel，从首页下载 suite-evidence.zip 并解压后，无需 Docker 或 Node 即可核验；默认退出 0 表示证据一致，添加 --require-accepted 退出 1 表示严格备注规则拒绝该结果：\n\n项目：https://github.com/noteflowai/evalarc\n版本：https://github.com/noteflowai/evalarc/releases/tag/v0.8.0\n\n![分享具体失败证据，检查智能体评分器的盲点](https://github.com/noteflowai/evalarc/raw/main/docs/assets/suite-lab.png)\n\n本账号为维护者，项目与 AI 结对开发，采用 MIT 许可，处于研究预览阶段。现有展示来自已保存的公开开发任务和脚本 Docker 对照，不提供真实大模型排名或 RL 收益结论。离线一致性校验不等于重新运行评分器，也不认证报告作者；原始候选路径与计时仍是报告元数据。\n\n<!-- research-pilots-20260914 -->\n### 2026-09-14 研究场景更新\n\n0.9.0 新增机器人原始记录数值验收、独立故障对照、Docker 启动就绪计时、Harbor 导入和 ATIF 导出。可在新网页中逐项查看 27 次技能交付、12 次技能组合、6 次跨模型交接的候选程序、工具收据和独立评分；33 条 ATIF 记录通过 Harbor 原生格式校验。所有失败公开保留，不宣称完整基准或通用可靠性结论。\n\n- 技术说明：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/discussions/1\n- 原始数据与原生场景：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/tree/v2026-09-14\n- 三仓交互评测：https://noteflowai.github.io/evalarc/skill-impact/\n\n以上为维护者自荐内容更新；当前仍等待编辑审核。<!-- /research-pilots-20260914 -->\n",
     "created_at": "2026-09-14T02:02:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11671"
@@ -170,7 +218,7 @@
   {
     "id": 11665,
     "title": "[开源自荐] dsh-skills-anywhere：让不同编程助手共享现有 Agent Skills",
-    "content": "维护者自荐：**dsh-skills-anywhere**。Skills Anywhere 直接发现编程助手目录、插件市场和 Git 仓库中的 SKILL.md，通过 DeepSeek Harness 或 MCP 提供查找与按需加载，无需复制。支持去重、重名处理、目录预算、本地解析检查和按文件哈希加载。0.9.0 新增技能目录清单、脚本／资源变化比较和按目录指纹加载；浏览器演示支持键盘打开／返回详情、保留设置清空搜索、恢复分享视图及本地文件读取失败恢复，适合多工具开发者与团队复用技能。\n\n在线体验：https://huggingface.co/spaces/glayguo/dsh-skills-anywhere\n\n- **目录内容可复核**：CLI 记录 SKILL.md、脚本、引用资料、资源及隐藏文件的路径、字节数和 SHA-256；比较两次清单可定位新增、删除与内容变化。MCP expected_bundle_sha256 在资源变化时拒绝按旧指纹加载。\n- **本地清单对比**：首页展示“说明没变、脚本已变”，也可打开自己的两份清单；浏览器先验证清单自身的哈希，再显示差异。清单不上传，不执行脚本。\n- **兼容新版 MCP**：使用官方 SDK 2.0.0，同一个 stdio 入口支持旧版初始化与 2026-07-28 协议；四种 SDK 配置通过真实子进程验证，安装包另有新旧客户端检查。目录覆盖和 SDK 互通不等于所有品牌客户端认证。\n- **真实的共享目录逻辑**：覆盖 68 种 Agent 目录定义，支持项目／用户目录、插件市场和 Git 来源，提供去重、重名解释、预算、Pin / Hide / Exclude。\n- **浏览器体验**：打开技能后聚焦说明，可返回原行；清空搜索保留目录选择；分享链接恢复预算、Pin／Hide 与当前技能。手机按钮更易操作，长说明支持键盘滚动。\n- **带入自己的 SKILL.md**：浏览器显示文件读取状态，比较严格／宽容解析并导出报告；拒绝无效 UTF-8，清空或编辑会丢弃旧读取结果。输入不上传、不加入分享链接。CLI/CI 提供相同解析检查和文件哈希。\n- **按已审核内容加载**：MCP `open_skill` 支持 `expected_sha256`；文件变化时不返回新指令，并在加载时复查作者禁用标志。\n\n```sh\nnpx -y dsh-skills-anywhere@0.9.0 bundle /path/to/skill --json > reviewed-bundle.json\n\n# Keep the manifest outside the skill directory:\nnpx -y dsh-skills-anywhere@0.9.0 bundle /path/to/skill --against reviewed-bundle.json --json\n```\n\n要求 Node.js 22.19+ 或 24+；先审核原始文件，清单存放在技能目录外；这些检查无需 dsh、Git 或模型 API：\n\n项目：https://github.com/noteflowai/dsh-skills-anywhere\n版本：https://github.com/noteflowai/dsh-skills-anywhere/releases/tag/v0.9.0\n\n![让不同编程助手共享现有 Agent Skills](https://huggingface.co/spaces/glayguo/dsh-skills-anywhere/resolve/main/thumbnail.png)\n\n维护者自荐：独立社区项目，与 AI 结对开发，MIT 许可，不代表上游官方。目录覆盖不等于所有客户端或技能脚本通过兼容验证。浏览器使用示例工作区，不扫描访客电脑、不运行技能或模型；解析和文件身份检查不构成脚本安全认证，目录指纹也不锁定之后执行时的文件。外部依赖、权限与作者身份不在指纹范围内。\n",
+    "content": "维护者自荐：**dsh-skills-anywhere**。Skills Anywhere 直接发现编程助手目录、插件市场和 Git 仓库中的 SKILL.md，通过 DeepSeek Harness 或 MCP 提供查找与按需加载，无需复制。支持去重、重名处理、目录预算、本地解析检查和按文件哈希加载。0.9.0 新增技能目录清单、脚本／资源变化比较和按目录指纹加载；浏览器演示支持键盘打开／返回详情、保留设置清空搜索、恢复分享视图及本地文件读取失败恢复，适合多工具开发者与团队复用技能。\n\n在线体验：https://huggingface.co/spaces/glayguo/dsh-skills-anywhere\n\n- **目录内容可复核**：CLI 记录 SKILL.md、脚本、引用资料、资源及隐藏文件的路径、字节数和 SHA-256；比较两次清单可定位新增、删除与内容变化。MCP expected_bundle_sha256 在资源变化时拒绝按旧指纹加载。\n- **本地清单对比**：首页展示“说明没变、脚本已变”，也可打开自己的两份清单；浏览器先验证清单自身的哈希，再显示差异。清单不上传，不执行脚本。\n- **兼容新版 MCP**：使用官方 SDK 2.0.0，同一个 stdio 入口支持旧版初始化与 2026-07-28 协议；四种 SDK 配置通过真实子进程验证，安装包另有新旧客户端检查。目录覆盖和 SDK 互通不等于所有品牌客户端认证。\n- **真实的共享目录逻辑**：覆盖 68 种 Agent 目录定义，支持项目／用户目录、插件市场和 Git 来源，提供去重、重名解释、预算、Pin / Hide / Exclude。\n- **浏览器体验**：打开技能后聚焦说明，可返回原行；清空搜索保留目录选择；分享链接恢复预算、Pin／Hide 与当前技能。手机按钮更易操作，长说明支持键盘滚动。\n- **带入自己的 SKILL.md**：浏览器显示文件读取状态，比较严格／宽容解析并导出报告；拒绝无效 UTF-8，清空或编辑会丢弃旧读取结果。输入不上传、不加入分享链接。CLI/CI 提供相同解析检查和文件哈希。\n- **按已审核内容加载**：MCP `open_skill` 支持 `expected_sha256`；文件变化时不返回新指令，并在加载时复查作者禁用标志。\n\n```sh\nnpx -y dsh-skills-anywhere@0.9.0 bundle /path/to/skill --json > reviewed-bundle.json\n\n# Keep the manifest outside the skill directory:\nnpx -y dsh-skills-anywhere@0.9.0 bundle /path/to/skill --against reviewed-bundle.json --json\n```\n\n要求 Node.js 22.19+ 或 24+；先审核原始文件，清单存放在技能目录外；这些检查无需 dsh、Git 或模型 API：\n\n项目：https://github.com/noteflowai/dsh-skills-anywhere\n版本：https://github.com/noteflowai/dsh-skills-anywhere/releases/tag/v0.9.0\n\n![让不同编程助手共享现有 Agent Skills](https://huggingface.co/spaces/glayguo/dsh-skills-anywhere/resolve/main/thumbnail.png)\n\n维护者自荐：独立社区项目，与 AI 结对开发，MIT 许可，不代表上游官方。目录覆盖不等于所有客户端或技能脚本通过兼容验证。浏览器使用示例工作区，不扫描访客电脑、不运行技能或模型；解析和文件身份检查不构成脚本安全认证，目录指纹也不锁定之后执行时的文件。外部依赖、权限与作者身份不在指纹范围内。\n\n<!-- research-pilots-20260914 -->\n### 2026-09-14 研究场景更新\n\n0.10.0 已发布到 npm 与 MCP Registry。新增隔离的真实 MCP／直接文件交付对照、共享搜索逻辑、目录回退与技能／目录指纹收据；对接 EvalArc 的 27 次实际 GPU 试验，连同技能组合和公开会话交接记录全部保留。试点未显示技能或记忆提分，不将“成功加载”当作“任务完成”。\n\n- 技术说明：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/discussions/1\n- 原始数据与原生场景：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/tree/v2026-09-14\n- 三仓交互评测：https://noteflowai.github.io/evalarc/skill-impact/\n\n以上为维护者自荐内容更新；当前仍等待编辑审核。<!-- /research-pilots-20260914 -->\n",
     "created_at": "2026-09-13T11:42:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11665"
@@ -178,7 +226,7 @@
   {
     "id": 11664,
     "title": "[开源自荐] Robot Reel：逐帧检查机器人策略与物理仿真实验",
-    "content": "维护者自荐：**robot-reel**。Robot Reel 将机器人策略与物理仿真录制做成交互网页。可对照 SmolVLA 的成功与失败、旋转 GPU 布料模型、探索 Microduck 关节和双摆轨迹，下载源数据与离线包。新版把播放控制放到三维视图旁，补齐键盘操作、视频重试和文件导出反馈；收到帧记录后可用安装包独立复核。适合具身智能教学、实验复盘与技术演示。\n\n在线体验：https://huggingface.co/spaces/glayguo/robot-reel\n\n- **Microduck 动作实验室**：两组原始步行记录，14 个关节、8,400 个实测角度样本，支持目标叠加、逐帧分享、JSON/CSV 和完整离线 ZIP。0.9.1 改善手机布局，支持四向键盘视角控制；视频失败可重试，并保留所选帧和关节。\n- **从演示到交付**：`robot-reel microduck-review` 可独立核对离线包和帧 JSON，不需要源码目录、GPU 或模型服务。发布过程同步整个查看器并核对清单，原始录制保留原样。\n- **GPU 布料与 Blender**：三组 Newton 布料录制只改变弯曲系数，可旋转叠加、导出测量图片，并通过 OpenUSD 进入 Blender。\n- **保留失败证据**：SmolVLA 的 30 次单任务闭环仿真全部保留；十二个双摆世界还可组成三维时间轨迹。\n\n```sh\npython3 -S -m robot_reel.cli cloth --output docs/cloth --verify\n```\n\n从源码检出目录，用 Python 3.12+ 只读校验附带的布料记录，无需 GPU：\n\n项目：https://github.com/noteflowai/robot-reel\n版本：https://github.com/noteflowai/robot-reel/releases/tag/v0.9.1\n\n![在浏览器里逐帧检查机器人与物理仿真实验](https://huggingface.co/spaces/glayguo/robot-reel/resolve/main/thumbnail.png)\n\n项目由本账号维护，与 AI 结对开发，仍处于早期阶段。代码采用 Apache-2.0；第三方模型与素材遵守上游许可。Microduck 使用 PD 近似仿真，模型衍生结构和录像保留非商业／相同方式共享条款。策略实验为单任务受控诊断，布料未启用碰撞和自接触；这些录制不提供真实机器人能力证明。\n",
+    "content": "维护者自荐：**robot-reel**。Robot Reel 将机器人策略与物理仿真录制做成交互实验室。新版在 L40S 上录制 Genesis 与 Newton 的六次抛体运动，对照解析解检查步长误差，保留全部 366 个状态和原生回放，并导出可编辑 OpenUSD。另有 SmolVLA 失败复盘、GPU 布料和 Microduck 关节探索，适合具身智能教学、实验复盘与客户技术演示。\n\n- **Solver Lab**：Genesis 1.4.1 与 Newton 1.6.0 各录制三种步长，支持轨迹、误差曲线、逐帧操作和完整 JSON/CSV；最大位置误差随步长缩小从约 32.70 厘米降到 2.05 厘米。\n- **原生记录可复核**：逐帧读回 Genesis 轨迹和全部 OpenUSD 样本；安装包可独立核验并导出完整离线实验。\n- **五个在线实验室**：保留 30 次 SmolVLA 单任务运行、42,471 个布料顶点样本、十二组双摆和两段 Microduck 步行，支持按场景查看记录。\n\n在线体验：https://huggingface.co/spaces/glayguo/robot-reel\n\n项目：https://github.com/noteflowai/robot-reel\n\n版本：https://github.com/noteflowai/robot-reel/releases/tag/v0.10.0\n\n从源码检出目录，以 Python 3.12+ 只读核对完整实验：\n\n```sh\npython3 -S -m robot_reel.cli solver-lab --output docs/solver-lab --verify\n```\n\n![Solver Lab：真实 CUDA 轨迹、步长控制与误差曲线](https://github.com/noteflowai/robot-reel/raw/v0.10.0/docs/solver-lab/poster.png)\n\n项目由本账号维护，与 AI 结对开发，仍处于早期阶段。代码及原创抛体场景采用 Apache-2.0；第三方素材遵守上游许可。Solver Lab 是无接触、无阻力的积分误差实验，两引擎在此场景中数值相同，不构成仿真器排名或真实机器人准确率证明。Microduck 衍生结构与录像保留非商业／相同方式共享条款。\n\n<!-- research-pilots-20260914 -->\n### 2026-09-14 研究场景更新\n\n新增实景 Scene Lab 与官方 LIBERO-Plus 子集：可切换纹理网格、25,000 个表面高斯和独立碰撞代理，下载经过重新打开校验的原生 Blender 场景；可逐帧对比同一初始状态下的相机／灯光扰动。另有实际运行的 OpenEnv 数值配方验收：错误配方 0 分、正确配方 1 分。高斯来自网格采样，并非训练的 3DGS；三次策略记录并非完整基准成绩。\n\n- 技术说明：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/discussions/1\n- 原始数据与原生场景：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/tree/v2026-09-14\n- 三仓交互评测：https://noteflowai.github.io/evalarc/skill-impact/\n\n以上为维护者自荐内容更新；当前仍等待编辑审核。<!-- /research-pilots-20260914 -->\n",
     "created_at": "2026-09-13T11:37:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11664"
@@ -258,7 +306,7 @@
   {
     "id": 11654,
     "title": "【软件自荐】AV-Toolkit：把 FFmpeg 放进浏览器，音视频处理不再上传文件",
-    "content": "<!-- 本文件是自动化提交的正文模板；内容与 doc/推广/发布包-全网.md 第 4 节一致，两处如有出入以本文件为准。 -->\n<!-- tcll321 会在提交时被自动替换为你的 GitHub 用户名。 -->\n\n- 名称：AV-Toolkit\n- 地址：https://av-toolkit.newscast.top/\n- 源码：https://github.com/tcll321/av-toolkit （MIT）\n\n一句话介绍：把 FFmpeg 编译成 WebAssembly 放在浏览器里运行，音视频的格式转换、片段截取、音频提取、压缩全部在本地完成，文件不上传服务器。\n\n为什么值得分享：主流在线音视频工具都在服务器上跑 FFmpeg，所以普遍有 50–100MB 的大小上限、每日次数限制和会员制，文件也确实会过一遍别人的硬盘。这个工具把算力搬回了用户自己的设备，没有上传过程，也就没有这些限制；同格式截取与 MP4→AAC 提取走流复制，几秒完成且画质零损失。技术上值得一说的是单/多线程内核按 SharedArrayBuffer 可用性自动切换，以及分辨率按短边计算以避免竖屏被放大。\n\n已知限制：速度取决于设备（浏览器内为软件编码，无硬件加速）；不做裁剪、旋转、变速。\n",
+    "content": "\n- 名称：AV-Toolkit\n- 地址：https://av-toolkit.newscast.top/\n- 源码：https://github.com/tcll321/av-toolkit （MIT）\n\n一句话介绍：把 FFmpeg 编译成 WebAssembly 放在浏览器里运行，音视频的格式转换、片段截取、音频提取、压缩全部在本地完成，文件不上传服务器。\n\n为什么值得分享：主流在线音视频工具都在服务器上跑 FFmpeg，所以普遍有 50–100MB 的大小上限、每日次数限制和会员制，文件也确实会过一遍别人的硬盘。这个工具把算力搬回了用户自己的设备，没有上传过程，也就没有这些限制；同格式截取与 MP4→AAC 提取走流复制，几秒完成且画质零损失。技术上值得一说的是单/多线程内核按 SharedArrayBuffer 可用性自动切换，以及分辨率按短边计算以避免竖屏被放大。\n\n已知限制：速度取决于设备（浏览器内为软件编码，无硬件加速）；不做裁剪、旋转、变速。\n",
     "created_at": "2026-09-13T01:37:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11654"
@@ -750,53 +798,5 @@
     "created_at": "2026-09-09T06:54:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11591"
-  },
-  {
-    "id": 11590,
-    "title": "【开源自荐】Adnify：本地优先、可审查并行执行的多 Agent IDE（非vscode二开）",
-    "content": "阮老师好，我是 Adnify 的作者，想自荐一下这款本地优先的多 Agent IDE。\n\n项目地址：https://github.com/ad-naan/adnify  \n国内镜像：https://gitee.com/adnaan/adnify  \n下载地址：https://github.com/ad-naan/adnify/releases\n\nAdnify 不是在编辑器旁边增加一个 AI 对话框，而是把代码编辑、Agent 执行、多任务编排、终端和浏览器验证整合成一个完整的桌面开发环境。\n\n<img width=\"2881\" height=\"1705\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/967ddaa2-9439-4510-8721-0bc9f3ebb9ba\" />\n\n## 本地优先，也可以全本地运行\n\nAdnify 是原生桌面应用，项目文件、会话记录、任务状态、代码索引、素材记录和运行日志都保存在本地。\n\n模型不与某个平台绑定，支持 OpenAI、Anthropic、Google、DeepSeek、Ollama，以及兼容 OpenAI 协议的自定义服务。用户可以使用自己的 API Key，也可以连接本机 Ollama；配合本地模型和本地 Embedding，可以构建不依赖第三方模型云端的开发工作流。\n\n是否连接外部服务由用户自己决定。使用云端模型时，只有执行所需的上下文会发送给用户选择的模型服务；Adnify 本身不要求把项目托管到专有云端。\n\n应用提供完整中文界面，也支持英文，包含 Windows、macOS 和 Linux 安装包。\n\n## 核心能力：把复杂需求变成可审查的 Agent 任务图\n\n很多 AI 编程工具已经可以修改代码，但面对涉及多个模块的复杂需求时，任务拆分、执行顺序和多个 Agent 之间的协作通常隐藏在一段对话里。\n\nAdnify 的 Plan Mode 会先与用户确认需求，然后生成一张可以人工审查的任务图。每个任务都会标明：\n\n- 依赖关系和执行顺序；\n- 预期产物与验收条件；\n- 执行角色和使用的模型；\n- 可以串行还是并行执行。\n\n正式执行前，系统会检查依赖环、缺失的前置任务，以及并行任务之间可能出现的文件写入冲突。用户确认计划后，多个 Agent 才会按照依赖关系开始工作。\n\n<img width=\"2880\" height=\"1704\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/47a7e1fb-67cc-4e38-a610-ea4dccb6b8ae\" />\n\n每个子任务都有独立的 Agent 会话，可以随时进入查看。并行代码修改可以使用独立的 Git Worktree 和分支，避免多个 Agent 相互覆盖；执行结果通过合并队列统一回收，出现冲突时保留人工处理入口。\n\n任务执行期间，用户可以查看进度、处理权限审批、暂停或恢复任务，也可以要求某个子任务调整方案。所有任务完成后，还需要经过最终结果验收。\n\n对于修复 Bug、修改单个功能等较小任务，可以跳过编排，直接使用 Agent Mode。\n\n## AI 修改不是黑盒\n\nAdnify 内置 Monaco 编辑器、Git、终端和多语言 LSP。Agent 可以检索代码、修改文件、执行命令并读取诊断结果，但修改过程始终可以查看。\n\n文件变更会以 Diff 形式展示，用户可以接受或拒绝；会话支持检查点、分支和异常恢复，长任务也可以通过摘要和 Handoff 继续执行。\n\n<img width=\"2881\" height=\"1705\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/56fc2405-fb9a-4437-86f3-3ee7985bbd1f\" />\n\n## 从代码修改一直做到页面验证\n\n前端修改完成后，Agent 可以直接打开本地开发页面，检查 DOM、计算样式、控制台错误和失败的网络请求，也可以点击、输入、滚动并等待页面元素出现。\n\n内置预览支持桌面、手机和平板尺寸。不同项目使用隔离的浏览器存储，不会因为使用相同的 localhost 地址而混用登录状态。\n\n除此之外，Adnify 还支持 MCP、Skills、代码语义检索、远程 SSH、调试面板，以及图片、视频和音频生成服务的自定义接入。\n\n## 项目信息\n\n- 支持平台：Windows、macOS、Linux\n- 界面语言：中文、英文\n- 模型服务：OpenAI、Anthropic、Google、DeepSeek、Ollama及兼容接口\n- 数据方式：项目、会话、索引和任务记录本地保存\n- 使用方式：提供安装包，也可以从源码构建\n\n如果你希望 AI 编程既能使用多个 Agent 处理复杂任务，又不想把任务拆分、代码修改和数据存储全部交给不可见的云端流程，欢迎试用 Adnify。",
-    "created_at": "2026-09-09T06:10:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11590"
-  },
-  {
-    "id": 11589,
-    "title": "【开源自荐】Runner：本地的 AI Agent 编排器，用一个原生桌面 App 同时跑多个 Claude Code / Codex",
-    "content": "阮老师好，自荐一个自己在开发、日常在用的开源项目：Runner。\n\n项目地址：https://github.com/yicheng47/runner\n下载：https://github.com/yicheng47/runner/releases/latest（macOS Apple Silicon 和 Windows x64，都有签名）\n\n![多个 agent 会话放进一个 App：分屏 + 侧边栏](https://raw.githubusercontent.com/yicheng47/runner/main/assets/chat_split.png)\n\nRunner 是一个本地的 AI Agent 编排器（orchestrator）。Claude Code、Codex 这类 CLI agent 多开之后，session 散落在各个终端窗口里很难管理，Runner 把它们放进一个 App 里，用三个概念组织：\n\n- runner：一份可复用的 agent 配置（运行时、角色、system prompt、工作目录）\n- crew：几个 runner 组成一支队伍，有且只有一个 lead\n- mission：启动一支 crew，每个位置一个真实的 PTY，agent 之间通过本地的 append-only 事件日志交接，需要人决定时 ask_human 会浮到 feed 里\n\n![Mission feed：crew 之间的交接和给人的提问](https://raw.githubusercontent.com/yicheng47/runner/main/assets/mission_feed.png)\n\n![Mission 里每个位置一个真实终端](https://raw.githubusercontent.com/yicheng47/runner/main/assets/mission_terminal.png)\n\n几个特点：\n\n- 跨厂商：Claude Code 和 Codex 可以在同一支 crew 里，比如 codex 写代码、claude 做 review，互相不绑定\n- 自带 MCP server：agent 自己也能建 crew、起 mission，整个 App 变成 agent 的协作 sandbox\n- 全部本地：session 是本机的真实进程，事件日志在磁盘上可回放，没有云端依赖\n- Rust 原生：UI 用 gpui-ce（Zed 的 GPUI 社区分支），终端用 alacritty_terminal，没有 webview；前端从 Tauri 迁到 GPUI 的过程也是用 Runner 自己的 crew 跑完的\n\n我写了一篇文章介绍围绕它形成的工作流（工具、仓库结构、两条 Agent 工作流）：https://www.v2ex.com/t/1240659\n\nGPL-3.0，欢迎试用和提意见。\n",
-    "created_at": "2026-09-09T05:18:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11589"
-  },
-  {
-    "id": 11588,
-    "title": "【开源自荐】CodexBar：在 macOS 菜单栏查看 Codex 额度、用量与任务状态",
-    "content": "阮老师好，向周刊自荐开源项目 CodexBar，面向日常使用 Codex 的 macOS 用户。\n\n使用 Codex 时，希望实时了解额度还剩多少、任务是否完成，以及是否有操作正在等待批准。CodexBar 将这些信息集中到菜单栏，减少在多个窗口之间反复查看。\n\n它主要提供以下功能：\n\n- 额度与用量：查看剩余额度、重置时间和 Token 用量，通过热力图回顾每日使用情况。\n- 重置到期前自动使用：在留存重置到期前自动使用，支持设置提前执行时间。\n- 任务与提醒：集中查看多个项目的任务状态，在任务完成或等待批准时发送通知。\n- 自动防睡眠：根据 Codex 任务状态保持 Mac 唤醒，任务结束后恢复正常睡眠策略。\n\n项目使用 Swift / SwiftUI 开发，支持 macOS 15+、中英文界面和自动更新，以 GPL-3.0 协议开源。\n\n项目地址：[bob-zebedy/CodexBar](https://github.com/bob-zebedy/CodexBar)  \n下载地址：[GitHub Releases](https://github.com/bob-zebedy/CodexBar/releases)\n\n也可通过 Homebrew 安装：\n\n```sh\nbrew install --cask bob-zebedy/tap/codexbar\n```\n\n![CodexBar](https://raw.githubusercontent.com/bob-zebedy/CodexBar/main/Images/preview-zh.gif)\n\n欢迎试用和反馈，感谢阅读。\n",
-    "created_at": "2026-09-09T04:23:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11588"
-  },
-  {
-    "id": 11587,
-    "title": "【工具自荐】Math AI：支持拍照和公式输入的分步数学解题工具",
-    "content": "Math AI 是一个浏览器端的数学解题与辅导工具，支持直接输入公式、文字题以及上传题目图片，并按步骤讲解代数、几何、微积分和统计问题。\n\n网站：https://mathai.chat/\n\n主要特点：\n- 支持公式、文字题与图片输入\n- 提供 Solver（解题）与 Tutor（辅导）模式\n- 展示分步思路，适合检查过程与学习概念\n- 免安装，可直接在浏览器使用\n\n服务提供有限的免费额度，也有可选付费方案。AI 生成的答案可能出错，重要结果仍应自行核对。",
-    "created_at": "2026-09-09T04:12:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11587"
-  },
-  {
-    "id": 11586,
-    "title": "【开源自荐】rpi：用 Rust 构建可组合的 LLM Agent SDK 和终端编码 Agent",
-    "content": "阮老师您好，想向周刊自荐一个我正在开发的开源项目：rpi。\n\n项目地址：\nhttps://github.com/bigfish1913/pi-rust\n\n项目官网：\nhttps://rpi.laofu.online/\n\nrpi 是一个基于 Pi agent 的 Rust 原生实现，延续 Pi agent 的 library-first 设计理念，目标是提供可组合、可测试的 LLM Agent 工具包。它不把 Agent 能力锁在单一 CLI 中，而是将模型 Provider、Agent loop、工具、会话和终端界面拆成独立的 Rust crate，方便开发者嵌入自己的应用或工作流。\n\n主要特点：\n\n- 基于 Rust，提供异步、流式的 Agent runtime。\n- 支持 Anthropic Messages、OpenAI-compatible Chat Completions，以及不需要 API key 的 faux provider。\n- 内置 `read`、`write`、`edit`、`bash`、`grep`、`find`、`ls` 等 coding-agent 工具。\n- 支持 AgentTool、AgentEvent、hooks、消息队列和工具调用循环。\n- 提供 session、JSONL 持久化、上下文压缩、skills 和 prompt templates。\n- 支持通过 `rpi-plugin-sdk` 和稳定 ABI 扩展工具、Provider、事件和资源发现。\n- 核心能力拆分为 `rpi-ai`、`rpi-agent`、`rpi-tools`、`rpi-harness`、`rpi-cli` 等 crate。\n\n如果只想直接使用终端 CLI，可以安装：\n\n```bash\ncargo install rpi-cli\n```\n\n安装后可以使用 `rpi` 命令启动：\n\n```bash\nrpi -p \"hello\"\n```\n\n也可以从源码运行不需要 API key 的本地示例：\n\n```bash\ngit clone https://github.com/bigfish1913/pi-rust.git\ncd pi-rust\ncargo run -p minimal\n```\n\n项目目前处于 0.1.x 阶段，核心 Agent loop、Provider、内置工具、Harness 和 CLI 已经可以运行，插件 ABI 和更多 Provider 仍在持续完善。项目采用 MIT License。\n\n文档：\n\n- 使用文档：https://rpi.laofu.online/docs.html\n- 架构文档：https://github.com/bigfish1913/pi-rust/blob/main/docs/architecture.md\n- Packages 页面：https://rpi.laofu.online/packages.html\n\n项目主要面向希望自己构建 coding agent、Agent 工作流或 Rust AI 基础设施的开发者。\n\n运行截图：\n\n<img width=\"1730\" height=\"983\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/21b4eb45-cd8d-4cf2-a00a-5d3320d6a000\" />\n\n<img width=\"1730\" height=\"983\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1fc63f5d-a6c6-4439-9132-b7e67107a8af\" />",
-    "created_at": "2026-09-09T03:58:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11586"
-  },
-  {
-    "id": 11585,
-    "title": "文章推薦：The Browser's Main Thread Is Expensive by Sunhyoup Lee",
-    "content": "[The Browser's Main Thread Is Expensive](https://kciter.so/posts/the-expensive-main-thread/en/)\n\n一篇關於瀏覧器性能优化的交互式文章，主要是關於主綫程优化的，寫的很好！",
-    "created_at": "2026-09-09T03:58:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11585"
   }
 ]
