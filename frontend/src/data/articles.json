@@ -1,5 +1,29 @@
 [
   {
+    "id": 11695,
+    "title": "【开源自荐】LLMxRay：本地大模型观测台，测量提示词缓存的复用",
+    "content": "https://github.com/LogneBudo/llmxray\n\nLLMxRay 是一个连接本机 Ollama 的大模型观测台，完全在本地运行：不需要 API key，不需要注册，不向外部发送任何数据。\n\n提供逐 token 的流式诊断、模型并排对比、基于 logprobs 的基准测试、嵌入与 RAG 检索，以及一个把同一提示词分别发往 Ollama 原生、OpenAI 兼容和 Anthropic 兼容三个接口的协议对比页。\n\n最新的 v0.6.0 加了一个「缓存实验室」：本地模型只有在提示词从第一个 token 起完全一致时才会复用 KV 缓存，所以系统提示词顶部的一个时间戳，会让整段提示词每轮都重新计算。实测同一个 324 token 的提示词，时间戳放在开头时缓存只复用 4 个 token、预填充耗时 64.6 ms；放到结尾则复用 290 个、耗时 18.6 ms —— 文字完全相同，预填充快了 3.5 倍。这个页面会标出缓存断裂的位置，并在你自己的守护进程上实测改写后能省多少，不做任何估算。\n\n界面和 README 有完整中文版。Apache-2.0 协议。\n\n一条命令启动：`npx llmxray`",
+    "created_at": "2026-09-14T20:42:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11695"
+  },
+  {
+    "id": 11694,
+    "title": "【网站自荐】AI Companion Atlas：面向中文用户的人机关系技术图谱",
+    "content": "阮老师好，自荐一个我们维护的中文网站：**AI Companion Atlas（人机关系技术图谱）**。\n\n- 网站：https://www.ailover-atlas.com/\n- 仓库：https://github.com/See-Sol-Lab/ai-companion-atlas\n\n它关注 AI 伴侣与长期人机关系背后的技术：如何让 AI 记住共同经历、感知时间、主动联系，以及跨窗口、跨设备继续一段对话或共同活动。\n\n做这个目录的出发点是：这些需求已经催生了不少独立项目，但资料散落在 GitHub、个人文档与中文社区里。普通用户很难判断一个项目到底能做什么，开发者也不容易发现别人在相近问题上做过哪些尝试。\n\n网站按实际用途整理记忆系统、桌面与手机前端、语音视觉、具身接口、共读共玩和关系延续等项目、工具与实践指南。每张卡片用中文说明用途、运行平台、来源和更新时间，详情页进一步介绍适合谁、如何使用及相关限制；支持搜索与分类筛选，读者可以提交项目或留下使用反馈。\n\n我们特别重视区分可运行的软件、可接入的模块与纯架构文档，并说明作者、上游关系和许可。收录经过人工核查，也会根据实际反馈修正标签或撤下条目；收录本身不代表对项目效果的背书。\n\n我觉得这个方向值得周刊读者看看：当 AI 开始参与持续的日常生活，人机交互要处理的就包括记忆的可靠性、主动行为的时机、隐私与控制权，以及关系在模型和设备更换后的连续性。AI 伴侣社区中的具体需求，为这些问题提供了一个值得观察的实践场景。希望这张图谱既能帮助中文用户找到入口，也能让开发者与人机交互研究者发现新的问题和已有探索。\n\n网站可直接浏览，无需注册。仓库源码公开，站点代码采用 PolyForm Noncommercial 1.0.0，原创编辑内容采用 CC BY-NC-SA 4.0；被收录项目遵循各自的许可。\n\n欢迎体验，也欢迎指出分类与介绍中需要改进的地方。谢谢！\n",
+    "created_at": "2026-09-14T17:27:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11694"
+  },
+  {
+    "id": 11693,
+    "title": "【开源自荐】minta--Agent 的\"记忆质检员\"，agent记忆的全生命周期治理",
+    "content": "自荐开源项目：Minta\n仓库：[https://github.com/xinchen03/minta](https://github.com/xinchen03/minta)\n\nMinta 是面向 AI 智能体的上下文质量层。\n\n当前绝大多数 AI 记忆工具都在解决「如何存储记忆」，但**存得住，不等于信得过**。\n模型可以记住一条指令，却分辨不出这条规则是否早已过期；也会把过去试错的临时方案当成最优解复用；还会凭空断言从未执行过的操作。记忆工具只负责写入，不负责校验记忆本身的有效性。\n\n这正是 Minta 试图解决的问题：给记忆增加完整生命周期管理能力，做记忆的质量校验层，核心能力包括：\n\n- 过期检测：周期性扫描记忆，自动标记并归档过时信息，不依赖大模型主观判断\n- 冲突识别：当多条记忆互相矛盾时，不会全部塞进 Prompt，而是将冲突暴露出来交由人工裁决\n- 纠正闭环：人工对 AI 的修正会进入待确认收件箱，确认后固化为长期生效规则，一次修正持续生效\n- 证据分级：设置可信度门限，阻止模型在缺少证据的前提下编造结论\n\n上手简单，支持本地离线运行、无云依赖：\ngit clone https://github.com/xinchen03/minta.git && cd minta\npython minta_cli.py start\n<img width=\"2549\" height=\"1403\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/047d5625-c3c9-4cf7-96aa-be5e6a1f4299\" />\n\n作为 MCP 工具，可直接接入 Claude Code、Codex、Cursor；Windows 用户也可以下载 ZIP 解压，双击 `start_minta.bat` 一键启动，自动安装依赖并打开管理页面。\nDSH 用户安装命令：`dsh plugin --profile web add @xxinchen/dsh-plugin`\n\n配套有 Context Health 记忆生命周期仪表盘：\n[https://raw.githubusercontent.com/xinchen03/minta/main/assets/ui/ui-health.png](https://raw.githubusercontent.com/xinchen03/minta/main/assets/ui/ui-health.png)\n\n项目核心引擎与记忆中枢 UI 完全开源；研究驾驶舱等高级面板可通过 API Key 解锁。项目尚在早期，但「记忆过期、互相冲突、模型无依据自证」是所有深度使用 AI 智能体的人都会碰到的痛点。\n\n文档：[[awesome-dsh-plugin.com/p/xinchen03/minta--dsh-plugin/](https://awesome-dsh-plugin.com/p/xinchen03/minta--dsh-plugin/)](https://awesome-dsh-plugin.com/p/xinchen03/minta--dsh-plugin/)\n\n",
+    "created_at": "2026-09-14T16:28:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11693"
+  },
+  {
     "id": 11692,
     "title": "【工具自荐】MDDock：本地优先的 Markdown 编辑器 + AI 知识库（macOS / Windows / iOS 免费）",
     "content": "我是 MDDock 的开发者，想自荐一个本地优先的 Markdown 编辑器 + AI 知识库。\n\n起因是我的笔记分散在三处：Obsidian 写日常、Typora 写长文，还有一堆 AI 编程助手（Claude Code / Cursor）当「记忆」写下的 .md 文件，它们互相看不见。MDDock 的思路是直接打开任何一个 .md 文件夹——不导入、不锁定格式，你的文件夹就是知识库本身，可以用 git 管、用任意网盘同步。\n\n几个可能值得一提的点：\n\n- **AI 问答有据可查**：索引和搜索全部在本机完成（全文 + 语义），问一个问题，回答会引用具体来自哪个文件。只有当你明确发送问题时，相关内容才经过云端大模型，且首次发送前会征求同意。\n- **给 AI 编程助手当记忆**：自带 MCP server 和 CLI，Claude Code / Cursor / Codex 可以直接搜索、读取你的笔记——助手终于记得你上周跟它说过什么。\n- **写作体验完整**：Typora 式即时渲染、一键把文档变成幻灯片演示、和 Office 文档双向转换。\n- **免安装的浏览器工具**：官网还有一组打开即用的免费 Markdown 在线工具（预览 / 转换 / 表格 / 格式化）。\n\nmacOS / Windows / iOS 三端完全免费，闭源。官网 https://mddock.com ，iOS 版已上架 App Store。",
@@ -774,29 +798,5 @@
     "created_at": "2026-09-09T08:04:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11594"
-  },
-  {
-    "id": 11593,
-    "title": "【开源自荐】PhoneCam：让 Android 手机和 iPhone 成为 Mac 摄像头",
-    "content": "阮老师您好，想向周刊自荐一个刚开源的 macOS 小工具 **PhoneCam**，欢迎您和周刊读者批评指正。\n\n项目地址：[wybaby168/phonecam](https://github.com/wybaby168/phonecam)  \n中文说明：[README.zh-CN.md](https://github.com/wybaby168/phonecam/blob/main/README.zh-CN.md)  \n开源协议：MIT\n\n<img src=\"https://raw.githubusercontent.com/wybaby168/phonecam/18633dded4b9e6e7d0ef0a081300c7665f16c901/assets/phonecam.png\" alt=\"PhoneCam 图标\" width=\"96\" />\n\n### 项目介绍\n\nMac 没有摄像头，或者现有摄像头的画面不够理想时，手边的手机往往可以再利用。PhoneCam 希望把兼容的 Android 手机或 iPhone 接入 Mac，用于视频沟通、远程教学、桌面演示，以及 OBS 录制和直播。手机能满足需求时，就不用再单独购买摄像头。\n\n### 核心功能与亮点\n\n- **手机接入**：实现了 Android 12+ 的 USB / ADB 相机采集、iPhone 连续互通相机，以及手机原生 USB Webcam / UVC 三种路径。具体要求和真机验证状态在 README 中分别列出。\n- **实时预览与画面调整**：提供原生预览窗口，可旋转、镜像、裁剪或留边；通过 CLI 选择设备、输出尺寸、帧率和 Android 码率，方便固定机位和脚本化使用。\n- **接入 OBS**：通过 Syphon 把处理后的画面交给 OBS，用于录制、直播，或通过 OBS Virtual Camera 供其他摄像头应用使用。\n- **本地处理**：视频不上传云端；Android 路径无需 root，也不需要另外安装常驻伴侣 APK。使用 VideoToolbox 硬件解码和 Core Image / Metal 处理画面，以有界的最新帧缓冲限制积压。\n- **便于维护**：使用 Swift 开发，提供中英文文档、机型反馈模板和自动构建测试，希望逐步补充不同手机与接收应用的实测记录。\n\n### 当前进展\n\n目前是 **macOS 13+ 开发预览版，需要从源码构建**。已在 Apple 芯片 Mac 上真实测通一台 Android 手机的「USB → PhoneCam → OBS Virtual Camera → 独立浏览器」链路，检查了实际画面、方向、停止和恢复；iPhone 连续互通与 Android UVC 已实现，仍待真机验证，因此暂不承诺所有机型兼容。\n\n已验证的虚拟摄像头输出依赖 OBS。PhoneCam 自带系统扩展的正式签名、公证及 Homebrew 分发还未完成，Windows 暂不支持。具体清晰度和帧率也取决于手机、光线与接收应用。[实测记录](https://github.com/wybaby168/phonecam/blob/main/docs/VERIFICATION.md)\n\n项目还在早期，欢迎试用、反馈兼容机型，或指出设计和实现上的不足。感谢您阅读，供周刊工具栏目参考。\n",
-    "created_at": "2026-09-09T08:02:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11593"
-  },
-  {
-    "id": 11592,
-    "title": "【资源自荐】GPT Image 2.5 提示词与案例合集（持续更新）",
-    "content": "## 项目地址\n\nGitHub：https://github.com/magiccreator-ai/awesome-gpt-image-2-5-prompts\n\n可视化浏览：https://magiccreator.ai/gpt-image-2-5-prompts\n\n## 项目介绍\n\n这是一个持续更新的 GPT Image 2.5 提示词与真实案例合集，内容来自社区创作者，并保留原作者和原始出处。\n\n公开的 Prompt 可以直接复制，也可以按图片编辑、产品广告、参考一致性、文字排版等场景分类浏览。GitHub 版方便收藏，也欢迎通过 Issue 补充案例或纠错。",
-    "created_at": "2026-09-09T07:12:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11592"
-  },
-  {
-    "id": 11591,
-    "title": "［网站自荐］RoamVista：在地球上选一座城市，开启免注册云旅行",
-    "content": "项目地址：https://roamvista.city/\n\n自荐一个我做的免费、免注册云旅行网站 RoamVista。\n\n可以转动交互式地球，从 120 座城市里选择目的地，观看步行、行车等旅行实录，或收听地区电台。也可以随机跳到一座城市，看看当地的街头和风景。\n\n[Relax 页面](https://roamvista.city/relax/) 另外整理了 138 个放松场景，包括自然、雨声、温馨空间和音乐等，适合工作间隙短暂换个环境。\n\n旅行视频是录制内容，并非实时街景直播；页面保留原作者和来源链接，第三方媒体的可用性可能变化。\n\n网站使用 Next.js 静态导出，部署在 Cloudflare，开发过程中使用了 AI 编程辅助。欢迎试用，也欢迎指出体验和内容上的问题。\n",
-    "created_at": "2026-09-09T06:54:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11591"
   }
 ]
