@@ -1,5 +1,45 @@
 [
   {
+    "id": 11673,
+    "title": "【工具自荐】Acrobat 替代品 PDF在线编辑器，支持批量生成PDF",
+    "content": "网址：https://gpdf.keepmot.com/\n\n工具简介\n1、免费在线体验，不用登录，简单易用\n2、现有PDF内容编辑，HTML转PDF\n3、轻松添加文本、形状、表格、签名、水印等个性化元素\n4、免费的发票、物流面单、收据、对账单、装箱单、证书等场景模板使用\n5、支持 PWA，可安装至本地",
+    "created_at": "2026-09-14T03:39:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11673"
+  },
+  {
+    "id": 11672,
+    "title": "【开源自荐】象见：纯前端、本地排盘的 AI 术数算命工具",
+    "content": "我是项目维护者，想自荐一个开源的 AI 算命项目：象见。\n\n象见是一个没有后端的纯前端应用。目前支持八字命理、紫微斗数、姻缘合参、阳宅八宅和塔罗牌。用户填写信息后，命盘由浏览器本地计算，再交给用户自己配置的大模型进行解读。\n\n项目比较重视隐私：没有业务服务器、数据库、账号系统、埋点或第三方脚本。生日、出生地、问题、API 密钥等数据只保存在用户自己的浏览器中；命盘与解读不会上传到项目服务器。需要模型解读时，请求由浏览器直接发送到用户配置的 Anthropic 或 OpenAI 兼容端点，也可以连接 Ollama、LM Studio 等本地模型。设置页提供了“一键焚毁”，可以清除浏览器里保存的全部数据。\n\n排盘本身不交给大模型完成。干支、节气交界、起运岁数、真太阳时和历史夏令时等由本地代码确定性计算，模型只负责解释已经排好的结构化命盘，减少模型自行排盘产生的错误。\n\n八字解读中还设计了一个“印证”环节：系统会列出几个过去的年份和可能发生的事情，用户可以逐条选择“准 / 不准 / 记不清”，模型再根据反馈重新分析格局，并改写受到影响的部分。结果支持继续追问，也可以导出为 Markdown 或 PNG 长图。\n\n整个项目使用 React 和 TypeScript 开发，构建后是一套纯静态文件，可以自行部署。项目不宣称预测准确率，更适合作为传统术数、本地计算和自带模型接口相结合的一次实验。\n\n在线演示：https://xiangjian.hanszhong.love/\n项目地址：https://github.com/HanszZ16/xiangjian-ai",
+    "created_at": "2026-09-14T02:26:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11672"
+  },
+  {
+    "id": 11671,
+    "title": "【开源自荐】EvalArc：检查智能体评分器的盲点，附可交互证据演示",
+    "content": "我是项目维护者，想自荐一个 MIT 开源的智能体评测研究预览项目：**EvalArc**。\n\n很多评测只给一个总分，但接近满分的实现仍可能破坏关键业务约束。项目先检查评分器本身：用正确实现与刻意带有缺陷的实现跑同一组验收条件，再保存失败检查和运行证据。\n\n在线演示有两个可以直接检查的例子：\n\n- 工单策略得到 **93.75%**，但服务写入备注后返回错误，策略换一个幂等键重试，导致重复备注。可以逐步查看调用和状态变化，并切换正确策略进行对照。\n- 代码实现得到 **92.5%**，但把 JSON 的 `true` 与 `1` 当作相等，破坏 compare-and-swap 的约定。报告指出具体失败用例。\n\n目前提供代码服务、模拟业务工具两个任务包，覆盖 15 种已声明缺陷。原始 JSON 包含随机种子、运行限制、候选代码/评分器/用例指纹和容器镜像 ID。Python CLI 无第三方运行时依赖，浏览器演示无需安装或模型 API。\n\n这是公开开发任务和脚本对照，尚未给出真实大模型成绩、任意奖励作弊防护或强化学习收益结论。适合设计 Agent 验收条件、研究评分器盲点，以及学习工具重试和幂等性。\n\n项目：https://github.com/noteflowai/evalarc\n在线演示：https://huggingface.co/spaces/glayguo/evalarc\n中文说明：https://github.com/noteflowai/evalarc/blob/main/README.zh-CN.md\n\n![EvalArc 交互证据实验室](https://raw.githubusercontent.com/noteflowai/evalarc/main/docs/assets/evidence-lab.png)\n\n## v0.3 更新：总分提升仍可能引入退步\n\n同一任务、种子、评分器和运行条件下，两份已保存的策略评测从 **90% 提升到 93.75%**。两项关闭工单检查改善，但一项原本通过的备注检查变成失败。新版首页可以逐项切换，直接对照前后工单状态。\n\n`evalarc compare` 在这种情况下返回退出码 1，并保存比较报告及两份输入 JSON；还新增了不执行候选代码的 `doctor` 环境预检查、可离线查看的单次评测报告，以及保护旧运行结果的输出机制。\n\n这里仍是脚本对照与公开开发任务，不是模型性能结论。维护者补充更新，沿用本帖，不重复投稿。\n\n![EvalArc v0.3：分数提升但检查退步](https://raw.githubusercontent.com/noteflowai/evalarc/main/docs/assets/regression-lab.png)\n\n",
+    "created_at": "2026-09-14T02:02:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11671"
+  },
+  {
+    "id": 11670,
+    "title": "【开源自荐】Status Trio: 将 iPhone Duo 的三合一状态图标带到 macOS",
+    "content": "Status Trio：一款借鉴 iPhone Duo 设计的三合一状态栏图标，集成 Wi‑Fi 、电池与音量。（将蜂窝数据信号改为音量大小）\n\nStatus Trio menubar 各种状态：\n\n![Status Trio menubar 各种状态](https://raw.githubusercontent.com/lingyired/status-trio/main/screenshots/status-style.png)\n\n点击后显示简易的三个状态的信息集合：\n\n![Status Trio popup](https://github.com/lingyired/status-trio/raw/main/screenshots/popup.png)\n\n允许设置是否显示充电状态、电量数字、以及圆弧的状态颜色。\n\n目前 popup 中的功能我觉得是次要，最主要是可以减少 2 个 menubar 的图标的位置。\n\n第一次看 iPhone Duo 三合一的图标的时候感觉很怪，但是后来一想到顶部菜单栏被刘海屏挤压得没空间的时候，就觉得这不失为一种解决方案。\n\n我制作了一个落地页，可以再网页中预览这个图标的功能：\n\nhttps://statustrio.lingai.net/\n\n项目地址：\n\nhttps://github.com/lingyired/status-trio",
+    "created_at": "2026-09-13T15:30:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11670"
+  },
+  {
+    "id": 11669,
+    "title": "【工具自荐】RoomAI —— 上传一张房间实拍照，20 秒到 1 分钟生成不改墙体的 AI 室内效果图",
+    "content": "RoomAI —— 保留真实户型的 AI 室内设计工具\n是什么\n\n[RoomAI](https://www.roomai.ai/) 只需一张手机随手拍的房间照片，就能在 20 秒到 1 分钟内生成保留原有墙体、门窗和机位的[室内效果图](https://www.roomai.ai/ai-room-design)。不需要装修软件，不需要绘制户型图，免费额度不用绑卡就能试。\n\n网站入口：[RoomAI](https://www.roomai.ai/)\n\n为什么做这个\n\n多数 AI 室内设计工具把上传的照片当成\"灵感参考\"——重新想象一遍空间，结果墙可能变宽了，窗户挪了位置，层高也悄悄拔高了。这种\"自由发挥\"发朋友圈没问题，但对于要挂牌卖房、要给业主看装修方案、要给承包商报价的场景，方案必须能对得上真实的房子，不然图好看也没用。\n\nRoomAI 把原图当成结构约束：墙体位置、门窗洞口、层高、暖气片插座这些\"动不了\"的东西保持不变，只替换材质、家具和光照。\n\n能做什么\n[AI 房间设计](https://www.roomai.ai/ai-room-design)：上传空房或已装修房间的照片，300+ 风格、20+ 房间类型可选，是最常用的入口\n分房间类型的专用页面：[客厅设计](https://www.roomai.ai/ai-living-room-design)按沙发和地毯尺度调过预设，[卧室设计](https://www.roomai.ai/ai-bedroom-design)会保留床头墙和衣柜位置，[卫生间设计](https://www.roomai.ai/ai-bathroom-design)只换瓷砖和洁具样式、不挪水管和窗户\n虚拟置家（Virtual Staging）：给空置挂牌房快速配上家具，成本约 0.3 美元一张图，对比传统实体置家 1500–3000 美元、5–10 个工作日\n清空家具（Declutter）：先把原业主的家具\"搬走\"，再重新置家，适合先清后装的场景\n[AI 外立面改造](https://www.roomai.ai/ai-home-design)：换外墙材质、屋顶、大门颜色，屋顶线和窗洞位置不变\n同一张源图出多套方案：昼夜光线切换、多种风格并排对比，方便客户或业主挑选\n有什么不同\n\n大多数 AI 房间设计工具是\"重画\"逻辑，墙、窗、层高都可能跟着风格一起变。RoomAI 是\"锁定结构、替换表层\"的逻辑——承包商能照着[生成的效果图](https://www.roomai.ai/ai-room-design)报价，买家看了实物不会觉得被图片\"忽悠\"。\n\n适合谁\n独立中介 / 房产经纪：空置房源没预算做实体置家，又担心被买家投诉\"图片跟实物不符\"，靠[虚拟置家](https://www.roomai.ai/ai-room-design)撑住挂牌照片\n装修中的业主：已经拿到报价单，在两种台面或三种墙色之间纠结，先用[客厅设计](https://www.roomai.ai/ai-living-room-design)或[卫生间设计](https://www.roomai.ai/ai-bathroom-design)预览一遍\n小型室内设计工作室：周四要交三套方案，又没预算外包渲染\n房产摄影师：拍摄之余顺带卖一份虚拟置家服务\n民宿房东：旺季前用[卧室设计](https://www.roomai.ai/ai-bedroom-design)刷新房源图片，测试不同风格对点击率的影响\n小型开发商：毛坯或半装修阶段就用[外立面改造](https://www.roomai.ai/ai-home-design)出图卖楼花\n定价\n\n免费版有 4 次生成额度可直接试用，无需绑卡；付费版从每月 11.99 美元起（约每张 0.3 美元）。\n\n欢迎试用交流，尤其是被\"AI 渲染悄悄挪了我家窗户\"坑过的朋友 🙏",
+    "created_at": "2026-09-13T14:41:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11669"
+  },
+  {
     "id": 11668,
     "title": "baiduan-router：九模型MCP调度器 pip install即用",
     "content": "\n\n一句提示词同时发九个AI模型。pip install baiduan-router，MCP原生，7个模型免费。\n\nPyPI：https://pypi.org/project/baiduan-router/\n中文：http://8.152.210.126:3000/woodo/baichuan-router",
@@ -34,7 +74,7 @@
   {
     "id": 11664,
     "title": "[开源自荐] Robot Reel：逐帧检查机器人策略与物理仿真实验",
-    "content": "自荐一个开源项目：Robot Reel，把机器人策略和物理仿真的一次运行，\n做成浏览器里可以逐帧检查、下载源数据的交互回放。\n\n体验：https://huggingface.co/spaces/glayguo/robot-reel\n\n![Robot Reel 的三个交互实验](https://raw.githubusercontent.com/noteflowai/robot-reel/858886243c100f866be773d2c32eb13c2e2da917/huggingface/thumbnail.png)\n\n可以从三个场景开始：\n\n- **策略失败回放**：SmolVLA 在同一个 LIBERO 任务中，按十组配对初始状态、\n  三种光照/机位条件完成 30 次闭环仿真。成功和失败全部保留，支持双相机对照、\n  查看动作与轨迹差异。\n- **GPU 布料实验**：三个 Newton 布料算例，只改变弯曲系数。可以旋转、叠加对比，\n  导出带测量数据的图片与 JSON，再把同一段变形通过 OpenUSD 导入 Blender。\n- **蝴蝶效应**：十二个双摆世界的相邻释放角相差 0.05°，保存下来的轨迹组成\n  可以旋转的三维“时间雕塑”。\n\n这些网页回放不需要安装软件、登录账号或运行 GPU 服务。源轨迹、校验清单、\n离线实验包与复现说明一起提供，适合机器人教学、实验复盘和技术演示。\n\n范围说明：策略实验是单任务受控诊断，不能作为 LIBERO 官方成绩或真实机器人\n能力证明；布料没有碰撞和自接触，也没有真实材料标定；双摆录制使用 CPU。\n原始仿真由 SmolVLA / LeRobot、Newton 等上游软件完成。\n\n仓库：https://github.com/noteflowai/robot-reel\n\n项目由本账号维护，仍处于早期阶段。代码采用 Apache-2.0，第三方模型和素材\n遵循各自上游许可。\n\n交互功能更新：Stress Lab 新增完整配对结果分组。相机条件净增两次成功，实际包含三次改善和一次退步；可点击对应种子查看录像，导出完整报告，并用安装后的 CLI 独立核验。0.8.0 正式发行包已包含配对分析、布料样本导入与高清图导出，同时提供完整配对 JSON 和校验和；两个离线包均经过实际安装程序导出及桌面、手机断网检查。\n",
+    "content": "自荐一个开源项目：Robot Reel，把机器人策略和物理仿真的一次运行，\n做成浏览器里可以逐帧检查、下载源数据的交互回放。\n\n体验：https://huggingface.co/spaces/glayguo/robot-reel\n\n![Robot Reel 的四个交互实验](https://huggingface.co/spaces/glayguo/robot-reel/resolve/main/thumbnail.png)\n\n可以从四个场景开始：\n\n- **策略失败回放**：SmolVLA 在同一个 LIBERO 任务中，按十组配对初始状态、\n  三种光照/机位条件完成 30 次闭环仿真。成功和失败全部保留，支持双相机对照、\n  查看动作与轨迹差异。\n- **GPU 布料实验**：三个 Newton 布料算例，只改变弯曲系数。可以旋转、叠加对比，\n  导出带测量数据的图片与 JSON，再把同一段变形通过 OpenUSD 导入 Blender。\n- **蝴蝶效应**：十二个双摆世界的相邻释放角相差 0.05°，保存下来的轨迹组成\n  可以旋转的三维“时间雕塑”。\n\n这些网页回放不需要安装软件、登录账号或运行 GPU 服务。源轨迹、校验清单、\n离线实验包与复现说明一起提供，适合机器人教学、实验复盘和技术演示。\n\n范围说明：策略实验是单任务受控诊断，不能作为 LIBERO 官方成绩或真实机器人\n能力证明；布料没有碰撞和自接触，也没有真实材料标定；双摆录制使用 CPU。\n原始仿真由 SmolVLA / LeRobot、Newton 等上游软件完成。\n\n仓库：https://github.com/noteflowai/robot-reel\n\n项目由本账号维护，仍处于早期阶段。代码采用 Apache-2.0，第三方模型和素材\n遵循各自上游许可。\n\n交互功能更新：Stress Lab 新增完整配对结果分组。相机条件净增两次成功，实际包含三次改善和一次退步；可点击对应种子查看录像，导出完整报告，并用安装后的 CLI 独立核验。0.8.0 正式发行包已包含配对分析、布料样本导入与高清图导出，同时提供完整配对 JSON 和校验和；两个离线包均经过实际安装程序导出及桌面、手机断网检查。\n\n\n新增 **Microduck 动作实验室**：选择 14 个关节中的任意一个，旋转三维结构、叠加策略目标、点击误差热图，与两组原始录像同步对照。保留 8,400 个实测关节样本，支持指定帧分享、JSON/CSV 导出和完整离线包。它参考 Microduck Anatomy 的交互思路做原创实现；模型衍生结构与录像保留上游非商业、相同方式共享条款。三维结构固定机身坐标，实验使用 PD 执行器近似仿真，不推断真实硬件能力。\n\n体验：https://noteflowai.github.io/robot-reel/microduck-lab/\n",
     "created_at": "2026-09-13T11:37:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11664"
@@ -758,45 +798,5 @@
     "created_at": "2026-09-08T10:40:24Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11571"
-  },
-  {
-    "id": 11570,
-    "title": "【开源自荐】Arcora：极简优雅的 macOS 多格式压缩与解压工具",
-    "content": "阮老师，您好！\n\n想向您自荐 **Arcora**，一款追求极简、优雅的开源 macOS 压缩与解压工具。希望把常用功能放进一个清爽的原生界面，让处理压缩包这件小事顺手一些。\n\n项目地址：[github.com/wybaby168/Arcora](https://github.com/wybaby168/Arcora)\n\n![Arcora 纯界面演示](https://raw.githubusercontent.com/wybaby168/Arcora/c25e9422bd3920633c804a4544beb846737af5b4/Documentation/Media/arcora-demo.webp)\n\n主要用心在这些日常体验上：\n\n- ZIP、7z、TAR、TAR.GZ、TAR.BZ2、TAR.XZ 的压缩与解压，以及 RAR4 / RAR5 的解压，都能在同一个应用里完成。\n- 可以先浏览压缩包、搜索文件、用 Quick Look 预览，再只解压需要的内容，不必为了取一个文件把整包展开。\n- 使用 SwiftUI / AppKit 原生界面，支持拖放操作；需要时可为 ZIP / 7z 设置密码和分卷，任务也能暂停、继续或取消。\n- 文件在本机处理，无需账号、不上传文件，没有广告或遥测。Arcora 原创代码以 MIT 协议开源，第三方引擎保留各自许可。\n\n相比 macOS 自带的 ZIP 压缩，Arcora 提供更多格式和可视化设置；相较只做解压的工具，它把压缩、浏览和按需提取放在了一起。希望带来的便利，是少切换工具、少记命令，保留 Mac 应用简洁自然的使用习惯。\n\n支持 Apple Silicon 与 Intel Mac，运行要求 macOS 14+，界面和文档提供中文、英文、日文。\n\n使用说明：目前提供源码和构建脚本，尚无已签名公证的安装包。RAR 压缩需另行配置官方编码器和自己的有效许可证，公开仓库和标准构建不附带两者。\n\n项目还在持续完善。如果您觉得适合周刊，恳请考虑收录，也欢迎读者提出建议。感谢您阅读。\n",
-    "created_at": "2026-09-08T09:46:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11570"
-  },
-  {
-    "id": 11569,
-    "title": "【开源自荐】就位：根据自己的身高，找到合适的桌椅和显示器高度",
-    "content": "【开源自荐】就位：根据自己的身高，找到合适的桌椅和显示器高度\n\n桌子、椅子和显示器都有一堆尺寸与高度参数，但很多人不知道现有设备该怎么调，准备换新设备时，也很难判断某个型号的调节范围是否适合自己。\n\n我做了一个免费开源的网页工具「就位」。输入身高，它会给出椅面、坐姿与站姿桌面、显示器顶部和观看距离的建议起点与参考范围。调整现有设备时可以照着设置；买新设备前，也可以拿商品标注的尺寸和调节范围来对照。\n\n- 在线使用：https://fit.barrybarrywu.com/\n- 国内镜像：https://fit.barrybarrywu.cn/\n- 源码：https://github.com/BarryBarrywu/workstation-fit\n\n![就位：按身高调节桌椅与显示器](https://raw.githubusercontent.com/BarryBarrywu/workstation-fit/1dccf5fccbe72b76910547ae93cec4b0e4b485ca/assets/readme/hero.png)\n\n工具支持 145 至 205 cm 的身高范围，可以切换坐姿和站姿。调整身高或姿势后，右侧的 3D 机器人、桌椅和显示器会同步变化，也可以单独查看每项建议对应的位置。\n\n身高只能提供一个开始尝试的位置，不能代替每个人真实的身体比例。因此，「就位」还提供了 30 秒身体检查，引导用户根据脚掌、膝盖、手肘和视线，继续微调自己的桌椅与显示器。它也不会保证某个商品型号一定合适，购买前仍要核对实际尺寸，有条件时再试坐或试用。\n\n每项建议都会列出原始资料、采用的数据、换算方式、适用范围和局限。人体尺寸主要参考 GB/T 10000-2023《中国成年人人体尺寸》，桌面、屏幕和观看距离的检查方法参考了职业健康与人体工学机构的公开指南。超出原始资料覆盖范围的结果会标记为趋势估算，不会当成精确结论。\n\n所有计算都在浏览器内完成，身高与校准进度只保存在当前设备，不需要账号，也不会上传到服务器。项目使用 Astro、TypeScript 和 Three.js 开发，源代码采用 MIT License，原创 3D 模型与视觉素材采用 CC BY 4.0。",
-    "created_at": "2026-09-08T09:43:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11569"
-  },
-  {
-    "id": 11568,
-    "title": "【开源自荐】Keyphore：用键盘灯光显示 Codex 任务状态",
-    "content": "【开源自荐】Keyphore：用键盘灯光显示 Codex 任务状态\n\n自荐一个免费开源的 macOS 小工具 Keyphore。它把 Codex 的任务状态显示在 NuPhy 键盘背光上：蓝色表示正在执行，橙色表示需要审批或输入，绿色表示一轮任务已经完成，空闲时熄灯。处理耗时任务时，即使正在看其他窗口，也能从键盘知道 Codex 是否在等你。\n\n- 官网：https://keyphore.barrybarrywu.com/\n- 源码：https://github.com/BarryBarrywu/Keyphore\n- 下载：https://github.com/BarryBarrywu/Keyphore/releases/latest\n\n![Keyphore 的键盘灯光状态](https://raw.githubusercontent.com/BarryBarrywu/Keyphore/9ca11f275809ebc2649bf365effdee8cc7682084/assets/readme/hero-zh-CN.svg)\n\nKeyphore 是一款原生 macOS 菜单栏 App。三种信号可以分别设置颜色、亮度、常亮或慢闪，也可以单独关闭。完成提示时间可设为 1 至 60 秒。多个 Codex 任务同时运行时，App 会按照“需要回应、执行中、已完成”的顺序汇总状态，避免某个任务的完成提示盖住仍在运行或等待回应的任务。\n\n所有任务状态都在本机处理。Keyphore 不需要账号，不提供云同步，也不会自动上传遥测、提示词、对话正文或工具内容。公开下载的 App 和 DMG 已使用 Developer ID 签名并通过 Apple 公证，也支持在 App 内检查更新。\n\n当前支持 Apple Silicon Mac 和 macOS 13 或更高版本，需要使用支持 Plugin 与 Hook 的 Codex 桌面版或 CLI。键盘支持原厂固件的 NuPhy Air65 V3 和 Air75 V3，更多型号可以参考残酷。需通过 USB 有线连接。目前不支持蓝牙、2.4 GHz 接收器、Intel Mac、ISO／JIS 配列及自定义固件。\n\n项目采用 GPL v3 开源许可证，Swift App、后台组件和独立的 Rust 插件源码都在仓库中。",
-    "created_at": "2026-09-08T09:38:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11568"
-  },
-  {
-    "id": 11567,
-    "title": "YayaTools：80+ 个本地运行的在线工具箱，PDF、图片、文本、开发调试一次备齐",
-    "content": "\n推荐一个我做的免费在线工具箱：YayaTools。\n\n它把日常最常用的 PDF、图片、文本、开发调试、数据转换、密码安全、计算器等小工具集中在一个网站里。目前已有 80+ 个工具，核心特点是：大多数处理直接在浏览器本地完成，不需要注册，也不上传文件到服务器。\n\n地址：https://yayatool.com/\n\n### 为什么做这个？\n\n很多在线小工具页面功能单一、广告和弹窗很多；更麻烦的是，处理 PDF、图片、密码、JSON、Token 等内容时，用户往往不知道文件和数据会被传到哪里。\n\nYayaTools 的思路是尽量利用浏览器本身的能力完成任务：Canvas 用于图片处理，FileReader 用于读取本地文件，Web Crypto 用于随机数、哈希和密码相关操作，DOM / JavaScript 用于文本、格式化与转换。因此多数工具可以即时得到结果，没有上传等待时间，也更适合处理隐私内容。\n\n### 常用功能\n\n- **PDF 与文档**：PDF 合并、拆分、提取页面、旋转、PDF 转图片、密码保护、元数据查看/编辑；\n- **图片与设计**：图片压缩与 WebP/JPG/PNG 转换、二维码生成、颜色工具、网站截图与设备样机图；\n- **文本与写作**：字数/字符统计、大小写转换、Markdown 编辑、文本差异对比、Lorem Ipsum 生成；\n- **开发与数据**：JSON 格式化与校验、Base64 编解码、URL 编解码、UUID 生成、JWT 解码、HTML/CSS 格式化与压缩、Cron 表达式解析；\n- **安全工具**：强密码生成、密码强度与熵分析、SHA-256 / SHA-512 / SHA-1 哈希与校验和生成；\n- **实用计算**：年龄与生日计算、百分比、折扣、单位换算、Unix 时间戳等；\n- **网络查询**：DNS 记录查询、SSL 证书和域名到期信息查询、WHOIS / RDAP 信息查看。\n\n### 使用体验上的设计\n\n- 无需注册，打开即用；\n- 大多数文件、图片、文本操作在本地浏览器完成；\n- 即时处理，避免“上传—等待—下载”的流程；\n- 支持键盘快捷键 `⌘K / Ctrl+K` 快速搜索工具；\n- 每个工具尽量只解决一个具体问题，界面保持简洁；\n- 手机和桌面端均可使用。\n\n适合开发者、运营、设计师、内容创作者和学生收藏：遇到临时的格式转换、数据处理、文件编辑或小计算需求时，不用在一堆广告页面里反复找工具。\n\n欢迎试用，也欢迎提出想加入的新工具。",
-    "created_at": "2026-09-08T09:32:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11567"
-  },
-  {
-    "id": 11566,
-    "title": "【资源自荐】GPT-6 Astra 案例集：75 个社区案例，附在线项目链接与可搜索画廊",
-    "content": "## 项目地址\n\nGitHub：https://github.com/magiccreator-ai/awesome-gpt-6-astra\n\n可视化浏览：https://magiccreator.ai/astra\n\n## 项目介绍\n\n我整理了一个持续更新的 GPT-6 Astra 社区案例集，目前收录 75 个案例，涵盖游戏、Blender / 3D、网页、视频制作、绘画和其他计算机操作场景。其中 31 个案例附有作者提供的在线项目链接。\n\n希望让感兴趣的读者更方便地了解社区创作者用 Astra 做了什么，并找到原始演示和可以体验的项目。\n\n- 按用途分类，每个案例附作者、原始出处和简要说明。\n- 区分录屏展示与在线项目；涉及多种工具协作时，说明 Astra 的参与方式。\n- 提供网页画廊，支持预览、搜索、分类和筛选带在线链接的案例。\n- GitHub 版便于收藏，也欢迎通过 Issue 补充案例或纠错。\n\n例如：从旧图纸重建 Blender 蒸汽火车模型、可在浏览器体验的机器人对战游戏，以及可交互的汽车拆解展示。\n\n这是独立维护的社区案例目录。作品属于原作者；模型使用方式和效果以原帖描述为准，收录不代表已独立复现或逐一测试所有在线项目。\n",
-    "created_at": "2026-09-08T06:08:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11566"
   }
 ]
