@@ -1,5 +1,85 @@
 [
   {
+    "id": 11724,
+    "title": "【开源自荐】CanvasCode：像做 PPT 一样在真实网页上拖拽拉伸微调，一键生成 AI 编程 Prompt",
+    "content": "### 项目名称\n**CanvasCode**（让真实网页秒变可自由拖拽拉伸的画布）\n\n### 项目地址\n- **GitHub 源码**：https://github.com/al1830329386-dev/canvascode\n- **开箱即用 Release 下载**：https://github.com/al1830329386-dev/canvascode/tree/main/releases\n\n### 效果演示动图\n![CanvasCode 实操演示](https://raw.githubusercontent.com/al1830329386-dev/canvascode/main/assets/demo.gif)\n\n### 解决了什么痛点？\n现在使用现代 AI 工具（Cursor、Claude 等）写前端页面虽然神速，但最磨人脾气的往往是**最后 10% 的视觉细节微调**：\n- 某个卡片窄了十几个像素，看起来局促；\n- 按钮底色不够亮，想换个更清爽的色彩；\n- 标题和副标题间距太紧，缺乏呼吸感；\n- 页面角落多出了几个没用的占位元素，想随手删除。\n\n如果纯靠打字跟 AI 描述：*“把第二排左边那个卡片调宽一点，右侧外边距加 8px……”*，AI 往往改了三轮不仅没对齐，还经常改错其他组件的 class，甚至把整页排版改崩。\n\n既然我们最习惯的排版直觉是像用 PPT 或 Figma 一样直接用手去拖、拉、拽，为什么不能直接在真实网页上改好呢？\n\n### 核心功能与特色\n1. **像 PPT 一样自由拉伸**：点选任意容器或按钮，四周唤出 8 个控制手柄自由拉高拉宽，按住 `Shift` 等比例缩放；\n2. **120 FPS 磁吸辅助线**：拖拽移动时自动感应吸附相邻组件与中心轴线，红线精准对齐；\n3. **双击改字与 Delete 删组件**：页面文案直接双击原地打字编辑，多余组件按键盘 Delete / Backspace 一秒删除，支持全局 `Ctrl+Z` 撤销；\n4. **一键生成多模态 Prompt**：调完后一键捕获高清纯净截图，并自动计算样式差值生成结构化 Markdown 规格书（带建议的 Tailwind 类名），直接粘给 AI 即可一遍过；\n5. **双形态模式**：\n   - **浏览器扩展**：即调即走，零安装门槛；\n   - **CanvasCode Studio 独立桌面端**：基于 **Tauri v2 + Rust** 打造，单文件 exe 仅 **8.5MB**（压缩包 2.5MB，拒绝 Electron 臃肿），内置桌面/iPad/iPhone 多端模拟器，并支持通过系统 IPC 直接将修改同步回写到本地磁盘源码！\n\n### 技术实现亮点\n- **零外部运行时依赖**：100% 原生纯 JavaScript，核心体积极小；\n- **绝对样式隔离**：完全运行在原生 Shadow DOM 沙箱内，绝不污染宿主网页原有 CSS，网页样式也不会影响工具；\n- **开源协议**：采用 GNU General Public License v3.0 (GPL-3.0) 强开源协议保护。",
+    "created_at": "2026-09-15T12:38:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11724"
+  },
+  {
+    "id": 11723,
+    "title": "【工具自荐】YouMoji：Chrome首款完全端侧的AI模型扩展，根据不同的YouTube视频内容自动飘出对应的emoji表情图片",
+    "content": "Chrome 扩展地址：[YouMoji - On-Device AI Emojis](https://chromewebstore.google.com/detail/youmoji-on-device-ai-emoj/enblcjdaieoncfjopbmcekjogmabholb)  \nAI 模型来源：[Desert Ant Labs](https://github.com/Desert-Ant-Labs)（开源模型 Emo）\n\n---\n\n看 YouTube 时字幕刷过去，有时能get到笑点，有时一闪而过没来得及反应。**YouMoji** 把这个瞬间变成屏幕上的实时表情包：每句字幕播出时，对应的 emoji 自动从画面上飘出来，不点暂停、不离开视频就能感受到内容的情绪。\n\n整个过程发生在浏览器内部，**不需要后端服务，也不产生任何网络请求**。\n\n### 它做了什么\n\n- **实时字幕 → 实时表情**：读取 YouTube 字幕，端侧模型将每一行文本转化为对应风格的飘浮 emoji，与视频节奏同步呈现。\n- **100% 端侧运行**：AI 模型（Emo）以 LiteRT 格式在浏览器 Worker 中运行，仅 **11MB**，每句字幕推理耗时低于 **2 毫秒**——完全离线，零延迟。\n- **支持 22 种语言**：原生覆盖中、英、日、韩等主流字幕语种，一个模型处理多语言输入。\n- **零隐私风险**：字幕文本不出浏览器沙箱，不追踪、不收集、不上传任何数据。不用注册，没有 API Key，永久免费。\n\n### 技术细节\n\n- 底层模型 **Emo**（[Hugging Face](https://huggingface.co/desert-ant-labs/emo)）是一个专为短文本情绪意图设计的分类器，词表大小 812，覆盖常见表情符号，专门针对字幕长度优化。\n- 模型以 **LiteRT** 格式部署，配合自定义 tokenizer，全部在 Web Worker 中完成计算，主线程无卡顿。\n- 扩展本身体积约 31MB，包含模型权重，安装后即离线可用。\n\n### 怎么用\n\n打开任意 YouTube 视频，只要有字幕开启，emoji 就会自动出现。\n\n---\n\n欢迎试用。如有任何建议可以在 Chrome 商店的 Support 页反馈。\n",
+    "created_at": "2026-09-15T10:24:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11723"
+  },
+  {
+    "id": 11722,
+    "title": "【开源自荐】Calyx：基于 libghostty 的 macOS 原生终端，并行运行并监管多个编码 agent（Claude Code / Codex / OpenCode 等）",
+    "content": "### 项目地址\nhttps://github.com/yuuichieguchi/Calyx\n\n文档：https://help.getcalyx.app\n\n### 背景\n我一直用 Ghostty，后来开始同时跑好几个编码 agent（Claude Code、Codex、OpenCode 等），问题就来了：开了一堆标签和分屏之后，根本记不住哪个窗格在干活、哪个在等我回复、哪个已经跑完。终端本身不知道里面跑的是 agent，所以只能挨个点开看。于是我做了 Calyx。\n\n### 它是什么\n一个 macOS 原生终端（Swift + AppKit），渲染用的是 libghostty（Ghostty 的引擎），专门为并行运行、监管多个编码 agent 而设计。支持 Claude Code、Codex、OpenCode、Hermes、Grok、pi 六种 CLI。\n\n- Agents 侧边栏：每个窗格的实时状态（工作中 / 空闲 / 等待回复 / 已完成），数据来自各 CLI 自己的 hook，不是猜的\n- 子代理：agent 派生的 subagent 显示为子行，带当前正在执行的工具（命令、文件路径或 URL）\n- 持久会话：重启 Calyx 之后会话还在，直接接着用\n- 内置 MCP 服务器：不同窗格里的 agent 可以互相发现、互相发消息，不需要共享文件或外部编排器\n- Git 侧边栏：对 diff 逐行写评论，整份 review 一键发给某个 agent 的窗格\n- 命令历史对 agent 可读：agent 可以通过 MCP 查最近执行过的命令和输出\n- 权限请求集中处理：Claude Code、Codex 等弹出的权限确认会汇总到右上角一个面板，不用再去找是哪个窗格在问\n- macOS 26 的 Liquid Glass 外观，八套主题\n\n### 效果\n三个 Claude Code 并行运行（36 秒）：\n\nhttps://github.com/user-attachments/assets/a04e1161-e296-4791-9b7c-3ef84d990089\n\n- 两个 agent 通过 MCP 互相发消息合写一篇故事：https://www.youtube.com/watch?v=Xty0ad9gGcM\n- diff 逐行评论并发给 agent：https://www.youtube.com/watch?v=_O2Lr4oFf4c\n\n### 安装\n已进入 Homebrew 官方 cask：\n\n```shell\nbrew install --cask calyx\n```\n\n也可以从 GitHub Releases 下载：https://github.com/yuuichieguchi/Calyx/releases\n\n要求 macOS 26 Tahoe、Apple Silicon。MIT 开源，欢迎试用和提 Issue。\n",
+    "created_at": "2026-09-15T09:19:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11722"
+  },
+  {
+    "id": 11721,
+    "title": "【开源自荐】Cesium MCP：用自然语言操控三维地球，打开网页即可体验",
+    "content": "自荐一个持续维护的开源项目 **Cesium MCP**，让 AI 不只是回答地图问题，还能通过工具调用实际操作浏览器中的 CesiumJS 三维地球。\n\n例如输入「飞到埃菲尔铁塔，添加一个红色标记」，AI 就能完成定位、相机飞行和标注；也支持加载 GeoJSON、3D Tiles、地形和影像，以及绘制路线、轨迹动画、距离测量等 60 多种操作。\n\n- **直接体验**：提供在线对话 Demo，无需本地安装或自行填写模型 API Key（公共演示有服务端用量限制）。\n- **接入自己的项目**：支持 MCP、WebMCP 和 Function Calling，可连接 MCP 客户端，也可嵌入已有 CesiumJS 页面。WebMCP 需兼容浏览器支持，不是使用内置对话 Demo 的前提。\n- **开源可扩展**：TypeScript 编写，MIT 协议，提供 npm 包及中英文文档。\n\n项目地址：https://github.com/gaopengbin/cesium-mcp\n\n在线体验：https://cesium-browser-agent.pages.dev/\n\n文档：https://gaopengbin.github.io/cesium-mcp/\n\n演示视频：https://github.com/user-attachments/assets/8a40565a-fcdd-47bf-ae67-bc870611c908\n\n欢迎试用与反馈，谢谢！",
+    "created_at": "2026-09-15T09:07:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11721"
+  },
+  {
+    "id": 11720,
+    "title": "【开源自荐】AuK：用自然语言生成和编辑语音，支持改台词、调情绪、声音克隆与降噪",
+    "content": "项目团队自荐一个开源项目：**AuK，一款通过自然语言指令完成语音生成与编辑的模型。**\n\n一段配音录好后，可能需要修改几个字、调整说话情绪，或者清理背景噪声。AuK 将这些能力整合进同一个模型，让使用者通过文字描述需要怎样生成或修改声音。\n\n项目地址：[Tencent-Hunyuan/AuK](https://github.com/Tencent-Hunyuan/AuK)\n在线体验：[ModelScope](https://modelscope.cn/studios/Tencent-Hunyuan/AuK) · [Hugging Face](https://huggingface.co/spaces/tencent/AuK)\n项目主页：[AuK](https://auk-project.github.io/)\n\n### 可以做什么\n\n- **修改台词**：对已有录音中的文字进行替换、插入或删除，例如将“明天上午开会”改成“周五下午开会”。\n- **调整说话方式**：改变情绪、音色、语速、音高和音量，也支持耳语与正常说话之间的转换。\n- **声音克隆与配音**：提供一段参考音频，让模型用相似的声音朗读新文本；也可以直接描述声音特点生成语音，无需参考录音。\n- **降噪与人声分离**：去除噪声和混响，从多人对话中保留指定说话人，或从歌曲中提取人声。\n- **歌词编辑**：修改演唱录音中的歌词，并尽量保留原有旋律与声音特征。\n\n其中，语音生成关注“让文字变成声音”，语音编辑关注“让已有声音按要求发生变化”。AuK 同时覆盖这两类任务，可用于配音制作、播客后期和语音应用开发等场景。\n\n### 开源与使用方式\n\n- 代码与模型权重均已公开，采用 **MIT 协议**。\n- 提供 **AuK Base** 和 **AuK-Flash** 两个版本，分别侧重生成质量与推理速度。\n- 提供 Python API、命令行工具、Gradio 网页界面和 ComfyUI 节点，支持本地部署。\n- 提供微调代码与文档，便于开发者基于自己的数据继续适配。\n\n项目当前主要面向中文和英文语音。读者可以先通过在线演示体验效果，再根据需要进行本地部署或二次开发。\n\n项目团队欢迎试用反馈、问题报告和社区贡献。声音克隆与录音编辑请使用已获授权的素材。",
+    "created_at": "2026-09-15T08:43:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11720"
+  },
+  {
+    "id": 11719,
+    "title": "【工具】AI345 - AI工具导航与 AI 社区",
+    "content": "https://www.ai345.info/ 面向中文用户的 AI 技能社区聚合平台，包含 AI 工具导航、每日 AI 资讯日报、原创 AI 实战教程和活跃的社区论坛。",
+    "created_at": "2026-09-15T08:35:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11719"
+  },
+  {
+    "id": 11718,
+    "title": "【开源自荐】基于配置的终端 dashboard",
+    "content": "使用 go 语言实现的基于配置的终端 dashboard. 只需要配置: 数据源(sources) + 布局(layout) 即可. 数据源通过脚本或者命令获取, 支持: chart, bar, stat, text, logs, table 等组件.\n\ngithub:  https://github.com/lyuangg/tui-dashboard\n\n\n<img width=\"1396\" height=\"872\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/021d662b-7ff3-4662-9ee0-75f42662f142\" />",
+    "created_at": "2026-09-15T08:26:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11718"
+  },
+  {
+    "id": 11717,
+    "title": "【开源自荐】My Portfolio：本地优先的个人资产管理，数据只在你浏览器里，默认一季度才更新行情",
+    "content": "**项目名称**：My Portfolio\n\n**项目地址**：https://github.com/CDz1129/my-portfolio\n**APP URL**：https://my-portfolio.cdz1129.workers.dev/\n\n**一句话简介**：一个本地优先的个人资产记录与展示工具——数据只存在你自己的浏览器里，永不离开本地。\n\n**自荐正文**：\n\n做这个的起点很朴素：我想要一个地方能一眼看清自己的资产，但市面上的同类 App 大多需要付费，而且价格不低，于是干脆自己动手做一个。\n\n它想解决的是：把散落在各个账户里的东西——现金、投资（A 股 / 港股 / 美股 / 加密货币）、固定资产、应收款、负债——集中到一处，看清净资产、资产配置和净值走势。\n\n核心卖点只有一个：**数据只存在你自己的浏览器（IndexedDB）里，不会上传到任何服务器。** 没有账号、没有登录、没有云端数据库、没有统计。行情服务只是一个无状态代理，只转发公开的股价 / 汇率请求，服务器不保存任何用户数据。代价也很直白：**换一个浏览器，数据就不在了**，所以内置了完整的 JSON 备份与恢复。\n\n几个我自己比较在意的设计：\n\n1. **默认每季度才更新一次行情，而不是实时。** 听说每秒盯盘的、每天看盘的、一年看一次的，长期结果往往不一样，常常是后一种更从容。我希望这个工具里的资产都是能让人安心睡觉的，一个季度看一次也不会慌，少一点频繁看盘的杂念。（频率可在设置里改，也随时能手动更新。）\n\n2. **两种资产视角**：既能按账户类型看配置，也能切到「按流动性」——券商里的现金算流动资产，只有持仓算投资资产。\n\n3. **中英双语**，一键切换；总资产的显示货币也能在首页直接切换。\n\n4. **本地优先的工程取舍**：用浏览器 IndexedDB 而不是 SQLite，换来零后端、可离线、无原生依赖；账本用事件溯源，账户只存期初余额，其余由流水回放，净值走势可以自由重算。演示数据放在独立数据库，和真实数据完全隔离。\n\n技术栈：React 18 + TypeScript + Vite + Tailwind；Dexie（IndexedDB）做本地存储；Recharts 画图；vite-plugin-pwa 支持 PWA。行情代理在本地用 Node、在云端用 Cloudflare Worker，共用同一份代码。MIT 协议。\n\n**它不是生活记账软件**：虽然也记录收入 / 支出 / 转账 / 买卖 / 余额调整，但本质是资产盘点与展示，和按笔记录日常开销的记账 App 完全不同。\n\n可以一键部署到 Cloudflare Workers（内置限流与边缘缓存），也可以只跑本地。诚邀试用，欢迎 issue 交流。\n",
+    "created_at": "2026-09-15T08:14:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11717"
+  },
+  {
+    "id": 11716,
+    "title": "[开源自荐] termcp：让 AI Agent 操作真实交互式终端，并提供可视化管理与人工接管",
+    "content": "项目地址：https://github.com/open-mcp-ai/termcp\ntermcp 是一个支持可视化管理的面向 AI Agent 的通用交互式终端 MCP。\n现在的 Agent 很擅长执行 ls、git status、curl 这类「运行一次就结束」的命令，但遇到真正的交互式程序就比较麻烦：\nSSH 可能先询问密码，安装程序会在中途弹出 [Y/n]，Python REPL 需要逐行输入，vim、gdb、htop、数据库 CLI 则从头到尾都在等待下一次键盘操作。\n这些程序不是一次 exec 能完成的。\ntermcp 的思路不是为 vim 做一个 MCP、为 gdb 再做一个 MCP、为某个数据库 CLI 再做一个 MCP，而是直接把完整的终端交互能力提供给 Agent。\n只要一个工具原本能够在终端里使用，Agent 就可以尝试直接通过 termcp 操作它：\nAgent → MCP → termcp → PTY → 任意 CLI\n因此，大量已经存在几十年的命令行工具，不需要为了 AI 再重新包装一遍 API 或 MCP Server。\n\n### 特点\n\n1. 真正的交互式终端\n   termcp 底层使用真实 PTY。\n   Agent 可以读取终端输出、向 stdin 输入文本，也可以发送 Enter、Tab、Esc、Ctrl+C 等按键，然后继续读取新的输出。\n   也就是说，它可以像人一样不断执行：\n   观察 → 判断 → 输入 → 再观察\n   vim、gdb、htop、Python REPL、交互式安装器等程序都可以直接运行，而不是退化成一连串 bash -c。\n2. Shell 会话可以跨多轮对话持续存在\n   Agent 启动一个程序后，不需要这一轮对话结束时把它关掉。\n   同一个 Shell 可以一直存在，下一轮继续操作；一条连接上还能同时打开多个 Shell，例如一个终端跑程序，另一个终端查看日志。\n   终端输出使用游标增量读取，不会每次都把整个历史重新塞进模型上下文。\n3. 本机和远程服务器使用同一套接口\n   termcp 把所有终端统一成 SSH。\n   远程机器使用正常 SSH；本机则通过进程内嵌的 SSH Server 建立内存连接，不额外监听 TCP 端口。\n   因此对于 Agent 来说，本机和远程服务器没有区别。\n   文件操作使用 SFTP，同时支持 SSH 的本地、远程和动态端口转发。\n4. 人可以实时观察并随时接管\n   termcp 自带 Web UI。\n   运行后打开：\n   http://127.0.0.1:18765/\n   就可以看到 Agent 正在操作的同一个终端。\n   vim、htop 等动态界面也会正常显示，多个终端可以像 iTerm2 一样平铺。\n   如果 Agent 操作错了，人可以随时直接接管键盘继续输入。\n   会话结束后，终端历史仍然会被保存，重启 termcp 后也可以继续查看。\n5. SSH 凭据不需要交给模型\n   SSH 密码和私钥由 termcp 本地管理，写入后无法通过 MCP 再读取。\n   Agent 只需要知道一个配置名称，例如：\n   prod-web\n   然后请求「连接 prod-web」即可。\n   主机地址、用户名、端口、密码和私钥都不需要出现在模型上下文里。\n   Agent 修改 SSH 配置的能力默认也是关闭的。\n\n### 快捷部署\n\n一个二进制即可运行\n\ntermcp 使用 Go 编写，MIT 协议，提供 macOS、Linux 和 Windows 的预编译版本。\nWeb UI、MCP SSE 和 Streamable HTTP 共用一个端口，默认是 18765，数据保存在本地 ~/.termcp，不需要额外数据库。\nClaude Code、Open WebUI 以及其他支持 MCP 的客户端都可以接入。\n我们希望 termcp 做的不是「再给一个工具开发一个 MCP」，而是给 Agent 一双能够操作终端的手。\n只要一个工具能在终端里运行，它就有机会直接成为 Agent 的工具。",
+    "created_at": "2026-09-15T07:57:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11716"
+  },
+  {
+    "id": 11715,
+    "title": "【项目自荐】OpenWorkBuddy：让本机 Agent 交付 PPT、Word、Excel（桌面工具）",
+    "content": "OpenWorkBuddy 是一个本地优先的 AI 工作 Agent。把“用这个 Excel 做一份 Q3 复盘 PPT”这类需求和材料交给它，最后得到的是可打开的 `.pptx` / `.docx` / `.xlsx` / HTML 文件，而不是一段聊天记录。\n\n仓库：https://github.com/CatCatUncle/openworkbuddy\n\n![真实运行演示：任务完成后在成果面板留下可打开文件](https://raw.githubusercontent.com/CatCatUncle/openworkbuddy/main/docs/images/demo.gif)\n\n它目前做了几件我觉得 AI 办公工具必须做实的事：\n\n- 任务结束会检查模型声称生成的文件是否真的在磁盘上；不在就判失败并重做\n- 会话、文件和模型 Key 默认留在本机，服务默认只监听 `127.0.0.1`\n- 可以切换 DeepSeek、通义、智谱、Kimi、OpenRouter、Ollama；本机已装 Claude Code 或 Codex 时也能直接作为引擎\n- 新能力就是一个 Markdown Skill 文件，存到 `skills/<名字>/skill.md` 后下一条任务生效；也支持 MCP 和 Agent Plugins\n- 提供 macOS / Windows 安装包，也可以用 Docker 或 Node.js 自托管\n\n源码运行（Node.js 18+）：\n\n```bash\ngit clone https://github.com/CatCatUncle/openworkbuddy.git\ncd openworkbuddy && npm install\nnpm run app\n```\n\n许可证为 PolyForm Noncommercial 1.0.0：个人、学习和非营利使用免费；商业使用需授权。\n\n现在最希望收集的反馈是：你希望一个本机 Agent 最终替你交付哪一种文件，以及“文件实际落盘校验”还应该覆盖哪些失败场景。",
+    "created_at": "2026-09-15T07:22:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11715"
+  },
+  {
     "id": 11714,
     "title": "[开源自荐] Recruit OS：让所有的面试官会面试，把“感觉不错”追问到证据",
     "content": "## 面试聊了一个小时，最后只能写“感觉不错”\n\n“表达挺好，项目也做过，感觉可以推进。”\n\n写完这句评价，再问自己：**他说的成果，有多少是他本人做的？你认可他的能力，依据是哪段回答？下一轮还需要验证什么？**\n\n我做 **Recruit OS**，就是希望帮助面试官把这些问题问清楚。目标很直接：**让所有的面试官会面试。**\n\n这是一个已经在我所在公司实际使用的 AI 辅助面试工作台，现在以 MIT 协议开源，支持企业独立部署。\n\n## 一个具体例子\n\n在仓库的虚构演示案例中，候选人说：“我们改革了提成方案，年化节省约 220 万。”\n\n工作台为这类回答准备了具体的追问：\n\n- **说的是“我们”**：哪一步由你独立负责？哪个决定是你做的？\n- **给了一个漂亮数字**：测算基线是什么？哪些已经发生，哪些只是全年预测？\n\n沿着这些问题，面试官可以进一步厘清本人贡献、团队决策、实际结果与预测。\n\n![虚构演示案例：面试工作台中的主问题与条件追问](https://raw.githubusercontent.com/xinxing870126-prog/recruit-os/main/docs/images/interview-followups.png)\n\n## 工作台如何辅助面试\n\n- **面试前**：结合岗位、简历和前序面试信息，准备本轮目标、提问路线和验证重点。\n- **面试中**：围绕当前话题，结合对话提供追问与参谋建议。\n- **面试后**：整理对话证据、风险与未核实的问题，生成反馈草稿，**由面试官确认最终结论**。\n\n项目还包含岗位管理、候选人分析、面试协作和飞书相关集成。\n\n## 源码与体验\n\n- [GitHub 仓库](https://github.com/xinxing870126-prog/recruit-os)\n- [中文介绍与快速启动](https://github.com/xinxing870126-prog/recruit-os/blob/main/README.zh-CN.md)\n- [面试工作台案例说明](https://github.com/xinxing870126-prog/recruit-os/blob/main/docs/interview-workspace.zh-CN.md)\n- **许可证：** MIT。\n- **语言：** 项目介绍、快速启动和面试案例提供中英两版；应用界面目前主要为简体中文。\n- **演示说明：** 截图中的计划、对话和反馈为人工编写的虚构快照，用于展示流程；实际 AI 和语音功能需要配置对应服务。\n\n欢迎关注招聘、面试方法和 AI 企业应用的朋友体验并交流。也想听听：你有没有遇到过“面试时没追下去，结束后才想起来”的问题？\n",
@@ -718,85 +798,5 @@
     "created_at": "2026-09-11T04:20:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11624"
-  },
-  {
-    "id": 11623,
-    "title": "【开源自荐】AISaasGo Image：无需登录的 AI 图片提示词库，541 个案例可浏览、复制与收藏",
-    "content": "项目地址：https://image.aisaasgo.org/\n\nGitHub：https://github.com/cf12436/gptimage_prompts\n\n使用 AI 生成图片时，经常遇到“知道想要什么效果，却不知道怎么描述”的情况，于是整理并改造了一个开源图片提示词网站 AISaasGo Image，希望让找灵感、选提示词和修改提示词更方便。\n\n目前收录了 541 个图片案例，涵盖产品电商、海报排版、摄影写实、插画艺术、品牌标识等 13 个分类。可以先浏览效果图，再查看完整提示词，替换主体、文案、配色等内容，用于自己的创作。\n\n主要特点：\n\n无需注册或登录，免费浏览、复制完整提示词\n支持关键词搜索、分类筛选和排序，方便按需求寻找案例\n支持本地收藏，收藏记录保存在当前浏览器\n支持中英文界面切换，案例标题与提示词保留原文\n支持复制案例分享链接，方便交流具体效果和写法\n提供 AISaasGo Image Prompts Skill，让支持技能的 AI 助手检索案例、挑选风格并改写提示词\n代码开源，保留案例作者与来源信息，欢迎提交新的提示词案例\n适合需要制作商品图、品牌海报、社交媒体配图，或想学习图片提示词写法的朋友。\n",
-    "created_at": "2026-09-11T03:38:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11623"
-  },
-  {
-    "id": 11622,
-    "title": "【工具自荐】AI 网络设备拓扑图设计工具",
-    "content": "AI 网络设备拓扑图设计工具，面向机房、安防方案设计人员，浏览器即可直接使用。工具内置交换机、路由器、监控摄像头等丰富设备库，支持批量放置设备、光纤 / 铜缆灵活连线，搭配智能对齐、标注避让等功能，快速绘制专业拓扑图，图纸可导出 PNG、PDF、JSON 文件。\n\n工具主打 AI 增强能力，可一键 AI 纠错、智能推荐设备补全方案，还能对图纸做智能分析，生成普通或深度整改报告并导出 PDF；支持自定义大模型，适合网络工程师快速完成项目拓扑方案绘制输出。\n\nhttps://gpcb.net/6753.html    目前内置模型为 Ornith-1.5-35B ",
-    "created_at": "2026-09-11T02:36:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11622"
-  },
-  {
-    "id": 11621,
-    "title": "【文章推荐】被关住的 AI，怎么自己“越狱”的？｜大白话看懂 DeepSeek Harness 漏洞事件",
-    "content": "沙箱明明拦住了 AI，它却通过一个本地接口，把自己的权限改成了“完全放开”。\n这不是 AI 突然觉醒，也不是沙箱被暴力攻破，而是管理 Agent 的系统把它错当成了用户。\n借 DeepSeek Harness 这次漏洞，看懂一个容易被忽略的安全问题：关住 AI 还不够，控制门锁的按钮也不能让它碰到。\n\n- https://mp.weixin.qq.com/s/CmuL-ccz5jiwEGOddZJa1Q",
-    "created_at": "2026-09-11T01:47:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11621"
-  },
-  {
-    "id": 11620,
-    "title": "【开源自荐】snapTrans：便捷截图涂鸦与框选原位翻译工具",
-    "content": "项目地址：https://snaptrans.heyluckyme.com/\n\nGitHub：可从项目主页进入\n\nsnapTrans 是一款面向 Windows 10/11 的开源屏幕翻译工具。按下快捷键后，可以直接读取选中的文字，或框选屏幕区域进行本地 OCR；松开鼠标，译文会在原选区内流式显示，不需要截图、粘贴或切换窗口。\n\n主要特点：\n\n- 本地 RapidOCR，截图像素不会上传\n- 原位翻译，尽量保持当前阅读上下文\n- 支持截图与标注、滚动长截图、规则表格提取\n- API Key 由用户自持，兼容 OpenAI API 服务\n- 无遥测，MIT 开源，永久免费\n\n适合阅读外语网页、桌面软件、长页面及表格内容。",
-    "created_at": "2026-09-11T01:10:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11620"
-  },
-  {
-    "id": 11619,
-    "title": "[开源自荐] Awesome GPT Image 2.5 Prompts：附原帖和输入要求的双语提示词合集",
-    "content": "项目地址：https://github.com/wangrunlin/awesome-gpt-image-2-5-prompts\n\n一个 GPT Image 2.5 提示词与创作工作流合集，目前收录 24 个案例，覆盖产品、人像、排版、局部编辑、角色和草图。\n\n主要特点：\n\n- 中英双语，逐条保留作者原帖与参考图／额外工具要求。\n- 区分原始英文提示词、编辑改编和原作者示例；当前均未独立生图复测。\n- 使用 JSON 作为数据源，自动生成文档，可供其他项目读取。\n\n代表案例：\n\n- [六色时装广告](https://github.com/wangrunlin/awesome-gpt-image-2-5-prompts/blob/main/prompts/six-color-fashion-campaign.md)\n- [咖啡机剖面排版](https://github.com/wangrunlin/awesome-gpt-image-2-5-prompts/blob/main/prompts/espresso-service-manual.md)\n- [移动台灯](https://github.com/wangrunlin/awesome-gpt-image-2-5-prompts/blob/main/prompts/move-the-lamp.md)\n\n我是该仓库维护者，同时运营 [Image 2.5](https://image-2-5.com)。本次按开源资源自荐；仓库工具和原创文档为 MIT，第三方提示词与媒体保留各自权利。\n",
-    "created_at": "2026-09-10T18:08:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11619"
-  },
-  {
-    "id": 11618,
-    "title": "【网站自荐】PicLocation：AI 照片地理定位网站，不依赖 EXIF 的纯视觉定位",
-    "content": "网站地址：https://piclocation.com\n\n自荐一个自己做的网站 PicLocation：上传一张照片，AI 分析画面中的线索推测拍摄地点，返回 GPS 坐标、城市、国家和置信度，结果标在交互地图上。\n\n核心特点：\n- 不依赖 EXIF/GPS 元数据，纯视觉识别——截图、被压缩转发、元数据被清除的照片同样能定位\n- 分析地标、建筑风格、植被、路牌文字、地形等线索，推断最可能的拍摄位置\n- 置信度透明：把握不足时会明确给出低置信度，不会硬给一个答案\n\n使用与隐私：\n- 免费无需注册，游客每天 2 次分析\n- 支持 JPG / PNG / WebP，单张最大 8MB\n- 图片保留 7 天后自动删除，不用于模型训练\n\n技术栈：TanStack Start + React 19，部署于 Cloudflare Workers（D1 / R2 / 队列），识别调用视觉大模型。\n\n![PicLocation 首页](https://images.appiconkitchen.com/blog/piclocation-hero.png)\n\n![分析结果示例 1](https://images.appiconkitchen.com/blog/piclocation_result_1.png)\n\n![分析结果示例 2](https://images.appiconkitchen.com/blog/piclocation_result_2.png)\n\n适合找回老照片拍摄地、整理旅行相册、核实图片背景真实性这类需求，有问题欢迎留言。\n",
-    "created_at": "2026-09-10T16:03:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11618"
-  },
-  {
-    "id": 11617,
-    "title": "【开源自荐】PaperRss：Reading First, AI Second 的 macOS RSS 阅读器",
-    "content": "灵感来自 NetNewsWire\n\n\n1. 三栏沉浸式布局，克制的、原生的界面设计\n2. 按需的、可自定义的配置的功能：AI 摘要、划词翻译 / 解释 / 提问、原文内双语翻译\n3. 学术阅读优化支持，LaTeX / MathJax \n\n\n仓库：https://github.com/ohmyangboy/PaperRss\n官网：https://rss.1leaf.cc/\n\n<img width=\"724\" height=\"989\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/923c364e-5931-458d-81a9-d28d991535b7\" />",
-    "created_at": "2026-09-10T14:10:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11617"
-  },
-  {
-    "id": 11616,
-    "title": "已撤回",
-    "content": "投稿已撤回。",
-    "created_at": "2026-09-10T11:57:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11616"
-  },
-  {
-    "id": 11615,
-    "title": "【开源自荐】支持 MAC、Win、Linux 的终端小说阅读器",
-    "content": "ReadCLI 是一个终端阅读器，支持 TXT 和 EPUB，带本地书架、进度保存、书签、搜索，支持多种功能自定义，以及几套偏 IDE 风格的界面\n\n项目地址：[ReadCLI](https://github.com/lvshp/ReadCLI)",
-    "created_at": "2026-09-10T09:05:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11615"
-  },
-  {
-    "id": 11614,
-    "title": "330+ 开源的多款免费在线计算器与单位转换器，MIT 协议",
-    "content": "一套使用 Next.js 14 开发，包含 300 多个免费在线计算器与转换器的综合工具集。包括金融、健康、家居与手工、单位转换器、效率工具。\n\n<img width=\"2366\" height=\"1318\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b6e0fe47-100b-4c0c-b9be-d5e5e40cf45a\" />\n\n开源地址：https://github.com/PDFCraftTool/OmniTools\n\n",
-    "created_at": "2026-09-10T08:38:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11614"
   }
 ]
