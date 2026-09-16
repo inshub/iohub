@@ -1,5 +1,109 @@
 [
   {
+    "id": 11752,
+    "title": "【工具自荐】H3 Max：从文字或参考图开始，快速生成 AI 视频",
+    "content": "项目地址：https://h3-max.pro/\n\n最近做了一个 AI 视频生成工具，叫 H3 Max，主要用来把文字描述或者参考图片转换成短视频。\n\n和单纯输入一句 prompt 然后等待结果的方式相比，我更希望它能够让视频生成过程稍微可控一些。所以在设计这个工作区的时候，把镜头、画面比例、视频时长和分辨率等设置都放到了生成流程里。\n\n目前 H3 Max 支持两种主要方式：\n\nText to Video\n\n直接从文字描述开始。可以描述人物、环境、动作、镜头运动和光线，让 AI 根据场景生成一段短视频。\n\nImage to Video\n\n如果已经有一张确定的图片，也可以把它作为视觉参考，再描述希望发生的动作和镜头变化，让静态画面变成动态视频。\n\n另外比较实用的是首帧和尾帧控制。\n\n可以上传第一帧来确定视频开始时的构图，也可以提供最后一帧来引导视频结束时的画面，然后用文字描述中间应该发生什么。这样在制作一些有明确起点和终点的镜头时，会比完全随机生成更容易规划。\n\n目前支持 5–15 秒的视频生成，视频分辨率包括 480p、768p 等选项；文字生成视频支持 16:9、9:16 和 1:1，也可以根据不同模型和设置查看生成所需要的 credits。\n\n网站还准备了一些比较具体的镜头示例，比如产品展示、竖屏短视频、材质特写和环境开场。\n\n我觉得这种示例对于刚开始使用 AI 视频生成的人还挺有帮助的。与其只写一堆形容词，不如直接描述：\n\n主体是什么 → 做什么动作 → 镜头怎么移动 → 光线是什么样 → 哪些东西保持不变。\n\n例如做一个产品镜头，可以让产品保持静止，只让镜头慢慢推进；做竖屏人物视频，则可以让人物保持在画面中央，同时预留字幕空间。\n\n这些示例也可以直接作为 prompt 的起点，再替换成自己的主体和场景。\n\n生成视频之后可以下载 MP4，再放到其他剪辑工具里进行裁剪、加字幕或者组合多个镜头。\n\n所以 H3 Max 更适合把它当成一个 AI 短视频镜头生成工作区，先生成一个镜头，再根据结果调整提示词和设置，而不是试图一次生成完整的长视频项目。\n\n如果你最近也在尝试 AI 视频生成，或者需要一些产品展示、人物片段、竖屏内容和场景开场镜头，可以试试看。\n\n项目地址：https://h3-max.pro/\n",
+    "created_at": "2026-09-16T09:08:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11752"
+  },
+  {
+    "id": 11751,
+    "title": "【开源自荐】Mi Fitness Data Bridge：小米运动健康数据本地导出 CSV/JSON，附免账号合成演示",
+    "content": "﻿## 项目简介\n\n自荐一个维护中的开源工具 **Mi Fitness Data Bridge（小米设备数据导出skill）**：将本人有权访问的 Mi Fitness（小米运动健康）记录保存到本机 SQLite，导出为 CSV / JSON，并提供 Python 接口和本地 stdio MCP 查询工具。\n\n适合想把运动健康记录备份到本机、放进表格整理，或接入自己的本地分析程序的人。重点是数据连接和导出，不是健康诊断或教练产品。\n\n- 仓库：https://github.com/shkyyy18/mi_fitness_data_bridge\n- **无需账号的合成数据演示**：https://shkyyy18.github.io/mi_fitness_data_bridge/\n- 兼容性与配置前提：https://github.com/shkyyy18/mi_fitness_data_bridge/blob/main/docs/compatibility.md\n- 开源协议：AGPL-3.0-only，保留上游 MIT 归属说明。\n\n![合成睡眠记录导出预览](https://raw.githubusercontent.com/shkyyy18/mi_fitness_data_bridge/main/docs/assets/synthetic-export-preview.png)\n\n## 可以先试什么\n\n浏览器演示可切换活动、睡眠、运动和身体测量样例，下载合成 CSV / JSON。样例由项目真实的本地导出器生成，但数据完全虚构；无需注册、安装或提供 Token。\n\n安装 Python 3.11+ 包后，也可以运行 `python examples/synthetic_demo.py`，验证 SQLite → JSON/CSV 的本地流程，不连接小米。\n\n## 需要提前说明的限制\n\n- **非官方、实验性**，与小米无隶属、背书或支持关系；依赖非公开上游接口，实际云端同步受设备、地区、固件和认证变化影响，不承诺全设备可用。\n- 当前真实账户配置需要已有的 `user_id` 和 `passToken`，没有一键账号授权流程。请勿把凭证交给陌生网站或维护者。\n- 演示只证明合成数据的本地导出流程，**不代表真实设备兼容性验证**。\n- 本地 MCP 不等于整个 AI 工作流离线，需要另外确认客户端和模型的数据处理方式。项目不支持托管凭证、公网代理或多用户云服务。\n- 欢迎仅反馈设备型号、账户地区和数据类型状态；请勿在 Issue 上传个人健康数据、数据库、日志或凭证。\n\n供有个人数据可移植性需求的读者参考。此次投稿文案和合成演示由 AI 辅助制作，不包含真实账户测试结论。\r\n",
+    "created_at": "2026-09-16T08:51:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11751"
+  },
+  {
+    "id": 11750,
+    "title": "【开源自荐】hippoxOS: 一个原生的LLM操作系统,将LLM作为操作系统解释层.",
+    "content": "欢迎下载和使用, 提出您宝贵的意见, 帮助我们完善这个系统.\nGitHub: https://github.com/HippoxHQ/hippoxOS\nReleases: https://github.com/HippoxHQ/hippoxOS/releases/latest\n\n### 概述\nHippoxOS 是一款面向桌面环境的 AI 原生操作系统。它并非传统意义上的应用程序集合，而是一个以自然语言为中枢交互方式的完整操作系统级平台，旨在让用户通过对话完成对计算机资源的全面控制与调度。\nHippoxOS 搭载了自研的 Hippox 内核，这是一个专为自然语言交互设计的操作系统内核。与传统操作系统内核不同，Hippox 内核不直接调度硬件资源，而是调度语言模型的能力、驱动程序（Drivers）的执行、工作流（Workflows）的编排以及系统资源的访问控制。基于 Hippox 内核，HippoxOS 构建了完整的驱动程序体系，将用户的自然语言输入转换为系统可执行的操作指令，实现对计算机的全面控制。\n\n### 内置6大子系统\n**通用对话子系统** - 通用对话子系统是 HippoxOS 的基础交互层，是用户与操作系统交互的统一入口。该子系统基于 Hippox 内核构建，集成了内核的全部调度能力，为所有其他专业领域提供对话基础设施。\n**视频编辑** — 对话驱动的 NLE 引擎，支持多轨道、转场、镜头运动、滤镜和实时预览, 该系统系统将传统的非线性编辑工作流转化为对话驱动的创作体验。用户可通过自然语言描述编辑意图，如剪辑片段、调整时间线、添加文字或图像叠加层等。\n该子系统底层搭载了自研的 NLE（Non-Linear Editing，非线性编辑）引擎，负责所有视频和音频数据的底层处理。\n**3D 沙盒** — 3D 沙盒子系统提供了一个通过对话生成和操作三维场景的环境。用户可以用自然语言描述想要构建的 3D 场景，系统生成相应的代码并在视口中实时渲染。所有历史生成的 3D 场景均可回溯和复用，支持场景快照切换和 GIF 动画导出，将 3D 内容创作从代码编写转变为语言描述。\n**地图与地理空间** — 地图子系统集成了专业级地理信息可视化能力。用户通过对话在地图上标注位置、绘制路径、创建热力图和聚类分析等。系统解析地理意图并在交互式地球视图上叠加相应的图层和标记，将复杂的地理空间分析转化为直观的对话交互。\n**金融分析** — 金融子系统提供实时金融数据可视化与分析能力。用户可通过对话查询和展示股票、加密货币等金融产品的价格走势与技术图表。系统整合实时行情数据、新闻资讯滚动条和交互式 K 线图，使用户能够以对话方式完成金融数据的探索与分析。\n**代码开发** — 代码开发子系统将 AI 辅助编程深度集成到桌面开发环境中。用户可通过自然语言描述开发需求，系统驱动代码生成和修改。该子系统的核心特性是代码变更的可控性——当 AI 对代码进行修改时，系统会以对比视图呈现修改前后的差异，用户确认后方可应用，确保开发者对代码库的完全掌控。\n\n<img width=\"1366\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11471b77-4cf0-4bfa-b29f-e26654ed4e04\" />\n\n<img width=\"1363\" height=\"876\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/89aabf64-6d67-49c0-828d-738b7a5aa0e8\" />\n\n<img width=\"1365\" height=\"828\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b8dd991d-304d-49f0-abf4-dbf4e9c69362\" />\n\n<img width=\"1365\" height=\"829\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d12ca280-c157-441e-a3a0-e066b24af841\" />\n\n<img width=\"1366\" height=\"938\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d4893281-5d5e-4a0c-8093-b08000ac869b\" />\n",
+    "created_at": "2026-09-16T08:36:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11750"
+  },
+  {
+    "id": 11749,
+    "title": "【开源自荐】cssgraph：给 AI 编程助手用的 CSS 知识图谱（MCP server）",
+    "content": "我是 [cssgraph](https://github.com/mack-peng/cssgraph) 的作者，自荐这个 MIT 协议的开源项目（还有一个姊妹项目 cssprobe-cli）。\n\n**cssgraph** 解决一个很具体的问题：AI 编程助手（Claude Code / Cursor / Codex 等）想搞清楚「这个 className 的样式从哪儿来、被谁覆盖、影响哪些文件」时，只能靠 grep + 逐文件 Read，一次次手工重建级联，既慢又费 token。\n\ncssgraph 把项目的样式表（CSS / SCSS / Less / Sass / PostCSS、CSS-in-JS、CSS Modules、Tailwind v3/v4）解析成一个本地 SQLite 知识图谱，通过 MCP 暴露 13 个工具——一次工具调用就能拿到某个 className 的属性、覆盖关系、特异性、引用它的组件与影响范围（O(1) 精确查找）。100% 本地运行，支持自动增量同步，索引不会过期。\n\n## 快速开始\n\n```bash\nnpm i -g cssgraph\ncd your-project && cssgraph init\ncssgraph mcp-install   # 自动配置 Claude Code / Cursor / Codex / opencode / Gemini CLI 等\n```\n\n## 姊妹项目 cssprobe-cli\n\n运行时 CSS 探针（基于 Playwright）：回答「为什么这个元素溢出、滚动链在哪、containing block 被谁劫持」这类静态代码看不出来的问题，给 AI 一份真实渲染现场 + ASCII 布局图。两者一静一动，合起来是完整的 CSS 诊断链路。\n\n- GitHub：[cssgraph](https://github.com/mack-peng/cssgraph) ｜ [cssprobe-cli](https://github.com/mack-peng/cssprobe-cli)\n- npm：`cssgraph` / `cssprobe-cli`\n- 已发布到官方 MCP Registry：`io.github.mack-peng/cssgraph`\n- MIT License，Node >= 22.5\n\n欢迎试用、拍砖和 PR。",
+    "created_at": "2026-09-16T08:11:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11749"
+  },
+  {
+    "id": 11748,
+    "title": "【工具自荐】Mac菜单栏Deepseek/Kimi/..账户余额 原生轻量",
+    "content": "# ✧ 余额 / Balance Bar for AI API\n项目地址：https://github.com/FuyuMikanLab/ai-credit-bar\n\n## 起因\n因为[deepseek-harness](https://github.com/deepseek-ai/deepseek-harness)花钱有点快，看余额比较直观。\n再想到之前用过的上班算工资小插件：钱条 [Lakr233/MoneyProgress](https://github.com/Lakr233/MoneyProgress)，觉得这个形式展示余额很好。\n当然其实token-bar有更全面的工具了，但是我比较关注余额，感觉看token并不直观。而且我自己是一个蛮多疑的人，所以真的很需要**API Key 存储在钥匙串**这个设计。所以就有了这个工具。\n\n## 简介\n<img alt=\"screenshot 011\" src=\"https://github.com/user-attachments/assets/9f658ef2-05bc-450c-a321-ee8df78358fe\" />\n\n原生 macOS 菜单栏小工具：实时显示各家 AI API **还剩多少钱**。\n\n- 简洁：仅显示 Logo + 余额\n- 原生：Swift + SwiftUI\n- 安全：API Key 存储在钥匙串\n\n## 数据源概览\n\n- Deepseek\n- Moonshot/KIMI\n- Zhipu/GLM\n- OpenRouter\n- SiliconFlow\n- OpenAI\n\n_其他信息请见项目：https://github.com/FuyuMikanLab/ai-credit-bar_\n",
+    "created_at": "2026-09-16T08:04:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11748"
+  },
+  {
+    "id": 11747,
+    "title": "【工具自荐】压缩 yasuo.app：文件不上传的浏览器本地视频、图片和 PDF 压缩工具",
+    "content": "## 项目介绍\n\n自荐一个刚上线的浏览器本地文件压缩工具：**压缩 / NeatCompress**。\n\n- 使用地址：[yasuo.app](https://yasuo.app/zh-CN/)\n- 英文入口：[neatcompress.com](https://neatcompress.com/en/)\n\n想解决的是一些日常小需求：视频太大没法发、报名照片要求 200 KB 以内、扫描 PDF 超过附件限制。为了压一下文件，先上传、等处理、再下载比较麻烦，私人照片和工作文档也不太愿意交给第三方服务器。\n\n这个工具直接在浏览器里处理，**选择的文件不上传服务器**。免费，无需注册或安装。首页选择或拖入文件后，会自动进入对应工具，并带过去已选文件。\n\n## 主要功能\n\n### 视频\n\n- 按目标 MB 大小或画质档位压缩，支持调整分辨率、帧率和画幅。\n- 时间轴缩略图裁剪：滑动预览、播放选段、0.1 秒微调位置。\n- 多视频拼接：调整片段顺序、逐段裁剪，选择横屏、竖屏或方形画幅。\n- 视频转 GIF，可设置片段、尺寸和帧率。\n- 提取音频，支持 M4A、MP3、WAV、FLAC；也可以移除视频声音。\n- 输出 MP4、MOV、MKV、WebM，支持批量处理、失败重试和打包下载。\n\n### 图片\n\n- 多选、拖放或粘贴截图，选择后自动压缩。\n- 按目标 KB 大小压缩，或选择四档画质、设置最长边尺寸。\n- 支持输出 JPG、PNG、WebP、AVIF；PNG 提供颜色量化、无损优化和颜色数量设置。\n- 压缩前后滑动对比，配有 2 倍局部放大镜，便于检查文字和边缘细节。\n- 单张下载或批量打包 ZIP，显示每张及整批节省的体积。\n\n### PDF\n\n- 智能模式优化文档内图片及冗余数据，保留文字、链接和表单。\n- 扫描件模式重绘页面，可调整画质、尺寸和渲染分辨率；此模式不保留可选文字和交互功能。\n- 提供文件组成分析、模式建议和文档元数据清理选项。\n\n## 实现与限制\n\n视频使用 WebCodecs 和 ffmpeg.wasm，设备支持时使用硬件编码，否则回落到软件处理。图片和 PDF 也在本地浏览器中处理。\n\n处理速度、可用格式和文件大小受设备内存及浏览器能力影响，部分组件首次使用需要联网下载。目标大小不保证精确达到，以实际导出结果为准。本地处理指文件内容不上传；正式站使用 GA4 统计访问及有限的视频处理事件，具体见[隐私说明](https://yasuo.app/zh-CN/privacy/)。\n\n页面截图及发布介绍：[V2EX 帖子](https://www.v2ex.com/t/1242456)。欢迎试用和反馈。\n",
+    "created_at": "2026-09-16T08:04:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11747"
+  },
+  {
+    "id": 11746,
+    "title": "【工具自荐】GPT Image 2.5：从文字到图片，也支持参考图编辑",
+    "content": "项目地址：GPT Image 2.5\n\n最近做了一个 AI 图片生成和编辑工具，叫 GPT Image 2.5。\n\n现在 AI 图片工具越来越多，但实际使用时，我觉得比较常见的需求其实主要有两种：\n\n一种是脑子里有一个想法，希望直接通过文字把它变成图片。\n\n另一种是已经有一张图片，但不想从零开始重新生成，而是希望在保留原有构图或主体的基础上修改其中的一部分。\n\n所以 GPT Image 2.5 把这两种方式放到了同一个页面里。\n\n目前主要支持：\n\nText to Image：通过文字描述生成图片\nmage to Image：上传一张参考图，通过文字说明修改图片\n支持 GPT Image 2.5 和 GPT Image 2 模型选择\n支持 1K、2K 和 4K 等不同分辨率\n支持 16:9、4:3、1:1、3:4、9:16、21:9 等多种画幅\n生成完成后可以下载 PNG 图片\n\nText to Image 的使用方式比较直接。\n\n你可以描述图片中的主体、环境、光线、构图和视觉风格，然后生成对应的画面。\n\n比如想做一张产品图片，可以描述产品的材质、摆放位置、拍摄角度和光线；想做海报，可以提前说明画面需要为标题预留空间；想做插画，也可以具体描述角色、场景和画风。\n\n我比较希望它不是那种只输入一句“生成一张好看的图片”，然后完全不知道怎么控制结果的工具。\n\n所以在写 prompt 时，可以尽量明确告诉 AI：\n\n画面里有什么、主体在哪里、环境是什么样、光线怎样、构图应该怎么安排。\n\n如果已经有参考图，则可以切换到 Image to Image。\n\n上传一张 PNG、JPEG 或 WebP 图片后，可以直接告诉 AI 哪些内容需要保留，哪些地方需要修改。\n\n例如：\n\n保留人物和整体构图，只修改背景。\n\n保留产品的位置和角度，更换颜色或环境。\n\n保留原来的画面风格，但改变季节、光线或者部分元素。\n\n这样在需要反复修改同一个视觉概念时，就不需要每次都从零开始重新描述整张图片。\n\n另外，网站把 prompt、参考图、模型选择、画幅和输出尺寸放在同一个工作区里。\n\n生成之后可以先查看结果，再根据需要修改 prompt 中的某一个部分继续尝试。\n\n我个人比较喜欢这种工作方式。\n\nAI 图片生成的结果不一定第一次就完全符合预期，与其一次把所有要求都推翻重新写，不如先看哪里需要调整，然后一次修改一个重点，更容易比较不同版本之间的变化。\n\n目前这个工具也整理了一些常见的使用场景，例如：\n\nProduct Photography\n\n用文字设计产品图片，控制材质、背景、光线和拍摄角度。\n\nPosters and Campaign Visuals\n\n生成海报或宣传视觉，并在画面中提前预留文字空间。\n\nIllustrations and Story Scenes\n\n通过角色、场景、季节、视角和画风描述生成插画或故事画面。\n\n网站还有一个 Community Showcase，会展示部分精选作品作为创意参考。不过生成的图片默认不会自动公开，提示词、参考上传图片和账号信息也不会显示在展示内容中。\n\n目前每张成功生成的图片消耗 5 credits，失败任务会退还对应 credits。生成服务需要账号、可用服务和足够的 credits，是否提供注册赠送额度则取决于当前运营设置。\n\n另外说明一下，这个网站是一个独立的 AI 图片生成与编辑工作空间，不是 OpenAI 官方网站。使用时可以根据自己的需求选择页面提供的模型和服务。\n\n如果你平时经常需要生成产品图、海报、插画，或者希望基于现有图片继续修改，而不想每次都从头开始，可以试试看。\n\n项目地址：GPT Image 2.5\n\n我的想法其实也比较简单：\n\n先把脑子里的想法变成一张图片，再一点一点把它修改成你真正想要的样子。\n",
+    "created_at": "2026-09-16T08:00:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11746"
+  },
+  {
+    "id": 11745,
+    "title": "【游戏分享】Copero：如果让你自己决定一名球员的职业生涯",
+    "content": "项目地址：[Copero](https://copero.io/)\n\n最近发现了一个挺有意思的浏览器足球游戏，叫 Copero。\n\n它不是那种控制球员踢一场比赛的足球游戏，而是更偏向“职业生涯模拟”。你需要先创建自己的球员，从 16 岁开始选择国籍、号码、惯用脚、场上位置和比赛风格，然后开始自己的职业生涯。之后每个赛季都会根据你的选择和模拟结果继续发展，直到最终退役。\n\n我觉得比较有意思的是，Copero 不只是单纯给你生成一份球员数据，而是把职业生涯拆成了很多实际选择。\n\n比如刚开始的时候，你需要面对第一份合同，比较球队提供的角色、预计出场时间、工资和合同期限。之后还可能遇到转会、续约、租借、伤病以及国家队征召等情况，每一次选择都会影响后面的职业轨迹。\n\n位置的选择也会影响整个模拟过程。目前可以选择 12 个位置，包括前锋、中场、后卫和门将。不同位置关注的数据也不一样，比如前锋更看重进球和进攻机会，而门将则会有自己的扑救、零封和失球表现。\n\n另外还有一个我觉得挺适合反复玩的地方：没有一条固定的最佳路线。\n\n你可以选择留在同一家俱乐部，尝试成为球队传奇；也可以不断转会，到不同国家体验不同的职业轨迹。网站还设置了忠诚、国家队和探索等不同成就目标。\n\n整个游戏可以直接在浏览器里玩，不需要注册，也不需要下载安装。完成职业生涯后，还可以查看完整的职业履历，并保存自己的结果卡。\n\n如果你喜欢足球经理、职业生涯模式，或者只是想看看“如果我从 16 岁开始踢职业足球，最后会变成什么样”，这个小游戏可以玩一下。\n\n我自己比较喜欢这种不需要花很多时间学习规则，几分钟就能开始一段新职业生涯的游戏。\n\n项目地址：[Copero](https://copero.io/)\n",
+    "created_at": "2026-09-16T07:10:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11745"
+  },
+  {
+    "id": 11744,
+    "title": "【开源自荐】jellyfin-rust：用 Rust 重写的 Jellyfin 媒体服务器，一套服务同时兼容 Jellyfin 和 Emby 两套 API",
+    "content": "我是 [jellyfin-rust](https://github.com/dydydd/jellyfin-rust) 的作者，自荐这个 GPL-2.0 的个人项目。\n\n它是一个用 Rust 重写的 Jellyfin 媒体服务器：同一套领域服务同时暴露 Jellyfin API（根路径及 `/api`）和 Emby API（`/emby`），两套 HTTP contract 共享 PostgreSQL 数据层，Jellyfin/Emby 的官方客户端都能直连。技术栈是 Axum + SeaORM，Cargo workspace 按职责拆成十几个 crate。\n\n## 当前能力\n\n- 用户 / 设备 / API Key / 认证权限，媒体库扫描（电影、剧集、照片、书籍，ffprobe 提取媒体流，支持增量扫描与文件系统监听）\n- 条目查询、搜索筛选、收藏、播放状态与历史；播放列表、合集、艺术家聚合页\n- 图片处理（缩略图、blurhash、上传/交换）、本地字幕、Trickplay 预览\n- 直接播放路径支持 HTTP Range / 206；SyncPlay、Quick Connect、Session 命令\n- TMDB 元数据远程搜索与刷新、NFO 本地元数据；Live TV 底层组件（XMLTV、Schedules Direct、HDHomeRun）\n- 自带 OpenAPI 文档（`/api-docs/openapi.json`）\n\n## 坦诚说明\n\n项目处于持续开发阶段，**尚未达到生产可用级别**：转码/HLS、完整插件体系等能力还在路线图上（README 有明确边界清单）。之所以写出来，是想给同样在学\"用 Rust 重写大型应用\"的朋友看一份拆得很细的 workspace 组织方式，也欢迎媒体服务器同好看 API 兼容层的实现。\n\n欢迎试用、拍砖和 PR。\n",
+    "created_at": "2026-09-16T07:09:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11744"
+  },
+  {
+    "id": 11743,
+    "title": "【工具自荐】DataHub Tools：浏览器里的 JSON、CSV 与 Markdown 表格转换工具箱",
+    "content": "项目名称：DataHub Tools\n\n中文入口：https://datahub.ac.cn/zh/tools/\n\n英文入口：https://datahub.ac.cn/tools/\n\n这是 DataHub 数据社区提供的免费浏览器工具箱。这里以项目方身份自荐，不是第三方测评；也不是同名的开源 DataHub 元数据平台。\n\n比较适合的用途是数据格式转换与整理：把接口返回的 JSON 数组转为 CSV、把 CSV 转成 Markdown 表格，或在文档和表格之间转换数据。也提供开发调试、字幕和图片相关工具，分类入口可以直接浏览。\n\n一个可以直接体验的例子：\n\nhttps://datahub.ac.cn/zh/tools/json-to-csv/\n\n输入：\n\n```json\n[\n  {\"name\":\"示例甲\",\"city\":\"北京\",\"note\":\"a,b\",\"profile\":{\"role\":\"analyst\"}},\n  {\"name\":\"示例乙\",\"city\":\"上海\",\"note\":\"hello\"}\n]\n```\n\n转换后，嵌套对象会展开为 `profile.role` 列，逗号所在字段会加引号，缺失列补空。这个例子已在当前线上版本实测。\n\n该转换工具无需注册，可在浏览器中直接操作。适合字段较稳定、来源可信的对象数组。页面同时说明局限：字面点号键可能与展开路径冲突；为 CSV 字段加引号不等于消除表格公式注入风险。不建议把未经检查的结果直接当作可信表格打开。\n\n希望听到实际使用反馈，尤其是日常 JSON/CSV/Markdown 整理中尚未覆盖的需求。各工具页面提供反馈入口。\r\n",
+    "created_at": "2026-09-16T06:41:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11743"
+  },
+  {
+    "id": 11742,
+    "title": "【工具自荐】AnonPeek：不用登录，快速查看 Instagram 公开资料",
+    "content": "项目地址：[AnonPeek](https://anonpeek.io/)\n\n最近做了一个比较轻量的 Instagram 公开资料查看工具，叫 **AnonPeek**。\n\n有时候只是想快速确认一个 Instagram 账号，看看用户名、简介、粉丝数量或者最近发布的公开内容，但为了这么简单的查询还需要登录账号，整个过程会比较麻烦。\n\n所以做了 AnonPeek，希望把这个过程变得简单一点。\n\n使用时只需要输入 Instagram 用户名，或者直接粘贴公开的 Instagram 个人主页链接，就可以查看整理后的公开资料。网站不要求登录 Instagram 账号。\n\n目前可以查看的信息包括：\n\n用户名和显示名称\n个人简介\n头像和公开主页链接\nFollowers、Following、Posts 等公开数据\n可获取的公开照片、视频和 Carousel\n帖子 caption 以及对应的原始链接\n在有可用公开媒体地址时，可以打开或下载相关媒体\n\n我比较重视的一点是，它并不是用来绕过 Instagram 的隐私设置。AnonPeek 只能处理公开账号能够被数据提供方获取的信息，无法查看 private account、Close Friends 或其他受限制的内容。\n\n我觉得它比较适合做一些简单的账号查询，比如品牌做竞品或市场调研、寻找创作者、联系之前先确认账号信息，或者只是想快速查看一个公开 Instagram 主页。\n\n另外，网站采用短期缓存来减少重复请求，并不会提供永久的个人搜索历史功能。由于公开数据本身可能受到账号改名、删除、地区限制、缓存和数据提供方限制影响，所以重要信息还是建议回到 Instagram 原始页面确认。\n\n如果你平时只是偶尔需要查看 Instagram 的公开资料，又不想为了简单查询专门登录账号，可以试试 AnonPeek。\n\n项目地址：[AnonPeek](https://anonpeek.io/)\n",
+    "created_at": "2026-09-16T06:29:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11742"
+  },
+  {
+    "id": 11741,
+    "title": "【工具自荐】Header Generator：快速生成符合 MLA 格式的论文页眉",
+    "content": "项目地址：[Header Generator](https://headergenerator.io/)\n\n最近做了一个比较实用的小工具，主要是帮助学生快速处理 MLA 格式论文里的页眉和标题排版问题。\n\n写论文的时候，真正麻烦的有时候并不是内容，而是这些看起来很小的格式要求。比如姓名、老师、课程、日期应该怎么排列，标题应该放在哪里，running head 和页码应该怎么设置，日期又不能直接写成数字格式。\n\n所以做了 Header Generator，希望把这部分格式工作变得简单一点。\n\n使用时只需要填写姓名、教师、课程、日期和论文标题几个基本信息，页面会实时生成 MLA 第一页的 heading 和右上角的 running head，可以直接查看最终效果。\n\n目前工具主要围绕 MLA 格式中比较容易出错的地方：\n\n自动生成四行 MLA heading\n生成右上角的姓氏 + 页码 running head\n实时预览排版效果\n检查日期、间距、位置等常见格式问题\n支持复制内容到 Google Docs\n可以下载可编辑的 DOCX 文件\n不需要注册账号，输入内容也不会上传处理\n\n另外网站也整理了一些 MLA 格式说明和常见错误，例如把 heading 放到每一页、日期使用错误格式、把 MLA 和 APA 的 running head 混在一起等。\n\n如果你经常写 MLA 格式的论文，或者每次提交作业前都要重新检查一遍页眉格式，可以试试看这个小工具。\n\n项目地址：[Header Generator](https://headergenerator.io/)\n",
+    "created_at": "2026-09-16T06:15:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11741"
+  },
+  {
+    "id": 11740,
+    "title": "【开源自荐】别再用 emoji 凑数：Naive Icons 让你 vibe coding 界面来点活人感",
+    "content": "<img width=\"3612\" height=\"1898\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7eed5195-656b-44c6-bb31-6804f6dec935\" />\n\n\n- 地址: https://github.com/guokaigdg/naive-icons\n\n- Naive Icons 正式开源，手绘风 React SVG 图标库，零依赖、开箱即用。vibe coding 出原型时，与其用样式不一、没法调色的 emoji 凑数，不如用 100+个自带表情、可调色、风格一致的手绘图标，让界面多出活人感。支持 currentColor 跟随、React 组件与独立 SVG 双形态、完整类型与无障碍；官网可搜索筛选、调尺寸描边色、深浅预览、复制下载。个人站、独立产品、教育 App 适用，MIT 可商用。\n",
+    "created_at": "2026-09-16T04:56:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11740"
+  },
+  {
     "id": 11739,
     "title": "【开源自荐】Flashgate：让 AI 编程 agent 不敢谎报固件能跑的硬件验证门禁",
     "content": "我是 [Flashgate](https://github.com/Lion-1209/flashgate) 的维护者，自荐这个 MIT 开源的硬件在环验证工具。\n\nAI 编程 agent 改完固件经常直接宣布\"能跑了\"——但它其实无从知道板子上的真实情况，编译通过不等于板子能启动。Flashgate 把最后一环交给硬件裁决：\n\n- 完整验证链：编译 → ST-Link/OpenOCD 烧录 → 等板子自报身份（串口 banner 带 git sha，或 64 字节 SWD RAM 签名，后者不需要串口线）→ 发真实控制台命令、断言硬件寄存器读回值 → 结构化退出码\n- **Stop hook 门禁**：挂进 Claude Code 后，agent 改了固件没过真机验证就想收工，会被当场拦下，并把板子的失败证词（比如\"收到呼吸灯命令却回报 OFF\"）喂回给 agent 定位修复\n- 每次验证（无论成败）落一份可审计的证据记录：逐项检查结论、板子原话、产物哈希\n- `bench-serve` 可把整台实验台挂上局域网，远程 agent 通过 Arm 的 device-connect 协议发现并请求真机验证（跨机实测通过）\n- 自带 OpenOCD 后端，不需要 ST 工具链；仓库含完整可编译的 STM32H743 示例工程（正点原子 Apollo），接线后开箱可跑\n\n仓库里有一段完整的真实 agent 会话记录：agent 被板子拦下、读证词、定位到固件里一处\"静默无操作谎言\"、修复、真机通过后才放行。\n\nPython 编写，`pip install flashgate` 即用，目前以 STM32 为主（适配器层本周已落地，欢迎其他芯片的档案贡献）。",
@@ -81,7 +185,7 @@
   },
   {
     "id": 11729,
-    "title": "【文章推荐】AI 操作电脑时，它看到的真是我们看到的界面吗？",
+    "title": "【文章推荐】AI 操作电脑时，它看到的真是我们看到的界面吗？- 未来的软件该长啥样",
     "content": "你以为 AI 正在像人一样看屏幕、点按钮，其实它可能根本没看见你看到的那个界面：有时读的是无障碍树，有时调用的是 CLI，什么接口都没有，才退回截图和鼠标。\n更有意思的是，Computer Use 的终点可能不是让机器更像人，而是让软件终于学会用机器能理解的方式表达“我能做什么”。\n\n- https://mp.weixin.qq.com/s/nSAeTuRGXs4P8szr5d1s-g\n",
     "created_at": "2026-09-16T01:44:54Z",
     "labels": [],
@@ -694,109 +798,5 @@
     "created_at": "2026-09-12T21:49:28Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11653"
-  },
-  {
-    "id": 11652,
-    "title": "【软件自荐】AtAt：在 Mac 任意输入框调用 Claude Code、Codex，少一点复制粘贴",
-    "content": "我是 AtAt 的开发者，想自荐一个原生 Mac 工具。\n\n平时用 Claude Code、Codex，总要把屏幕上的内容、选中的文字和文件搬进终端，再把结果复制回来。AtAt 想省掉这段来回：在输入框打 `@@`，把截图、文字、剪贴板内容或 Finder 文件带给自己的 agent；回答先预览，确认后按 Tab 插回原处。需要继续做复杂任务时，也能把上下文交给终端里的交互式 agent。\n\n此外，它也能独立用于截图、录屏、剪贴板历史和划词操作。模型或 agent 使用用户自己的账号与配置，提示词不经过 AtAt 的服务器。\n\n- 官网及演示：https://atatapp.com/?ref=ruanyf-weekly\n- 系统：macOS 15+，仅支持 Apple silicon。\n- 试用：7 天完整功能，无需 AtAt 账号或银行卡。\n- 价格：$9/月、$59/年或 $169 买断；早鸟为 $49/年、$119 买断，截止 2026-10-08（UTC）。价格未含适用税费。\n\n欢迎试用，也希望听听大家在把现有 agent 接进日常 Mac 工作流时遇到的问题。\n\n### 功能演示视频\n\n**在输入框输入 @@，直接调用自己的 agent**\n\nhttps://github.com/user-attachments/assets/0ca809ee-a609-4b7f-9533-4ef9854083a5\n\n**选中文字，让 agent 调整语气**\n\nhttps://github.com/user-attachments/assets/1145f769-c8d8-4ef0-81e5-3285a33e5982\n\n**框选屏幕内容，带着截图提问**\n\nhttps://github.com/user-attachments/assets/096821ba-2610-4d53-965b-942037f946fa\n\n**查看和使用剪贴板历史**\n\nhttps://github.com/user-attachments/assets/873d1661-4654-4dd3-a4fc-4f60ece9a087\n\n**在 Finder 中调用 AtAt**\n\nhttps://github.com/user-attachments/assets/a3349008-2cdb-4553-a7d1-28ec27190322\n\n**拖入文件作为上下文**\n\nhttps://github.com/user-attachments/assets/e4691e97-a24b-43a8-9f28-fa8082c07a35\n\n**把复杂任务交给终端中的交互式 agent**\n\nhttps://github.com/user-attachments/assets/b2e09f60-ae85-44a3-b0c7-083994900052\n\n\n[完整演示与资料包](https://atatapp.com/press)\n",
-    "created_at": "2026-09-12T14:20:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11652"
-  },
-  {
-    "id": 11651,
-    "title": "【资源自荐】游戏策划实务即用的 AI·Claude Code 活用法：一本全文免费的中文书",
-    "content": "一本关于把生成式 AI 放进日常工作流的书，全文免费开放，无需注册。\n\n**在线阅读（单页）**：https://eremes81.github.io/game-design-ai-practice-zh-hans/\n**仓库**：https://github.com/eremes81/game-design-ai-practice-zh-hans （简体）／ [繁体](https://github.com/eremes81/game-design-ai-practice-zh-hant)\n**许可**：CC BY-NC-SA 4.0\n\n作者是一位从业 24 年的游戏策划总监。书里写的是把 Claude Code 放进每天的制作流程之后，实际需要解决的问题：\n\n- 数据表的**模式先行**设计，让结构比数据先落地\n- 把会议记录变成**可追踪的决策**，而不是一堆摘要\n- **校验关卡**——拦住模型编造的数字、ID 和日期，在它们进入数据表之前\n- 成本控制：把 token 预算写成代码，而不是靠自觉\n- 版权与署名的处理流程\n\n副标题是「没有一个数字是编造的」。书中所有数字和案例都来自真实工作，或明确标注为构造的示例。示例代码大多仅依赖 Python 标准库。\n\n虽然以游戏行业为背景，但会议记录、决策追踪、验证关卡这几条工作流与行业无关，每章都有「游戏之外的应用」小节。\n\n**需要说明的**：本书原文是韩语（纸质版 2026 年 6 月出版，876 页，ISBN 979-11-12-21479-9）。中文版是作者在固定术语表约束下用 AI 辅助翻译、再自行审校的，作者并非中文母语者。README 中已如实标明，欢迎母语者通过 issue 或 PR 指正。\n\n我是作者本人，属于自荐。如果不合适请直接关闭，不会介意。",
-    "created_at": "2026-09-12T12:12:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11651"
-  },
-  {
-    "id": 11650,
-    "title": "〖网站自荐〗MakeBingoCards：把单词表变成可打印的 Bingo 卡片",
-    "content": "我做了一个面向教师、家长和小组活动组织者的免费网页工具：MakeBingoCards。课堂准备时，老师通常已经有一份词汇表，但把它排成多套可打印卡片很耗时。这个工具让用户把词汇逐行贴入，选择卡片数量、纸张和每页布局，生成独立的 5×5 Bingo 卡片，先预览，再在本地下载 PDF。它适合词汇复习、ESL 活动和小组游戏，不需要注册或付费。网站地址：https://makebingocards.com/ 我参与制作这个项目，特此说明关系。",
-    "created_at": "2026-09-12T11:16:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11650"
-  },
-  {
-    "id": 11649,
-    "title": "投稿：一个把单词表变成可打印 Bingo 卡片的小工具",
-    "content": "阮老师您好！想投稿一个自己制作的免费小工具：MakeBingoCards（https://makebingocards.com/）。它是一个 browser-based bingo card generator，用户把词汇表逐行贴入，选择卡片数量、纸张和每页布局，就能预览并在本地下载可打印的 5×5 Bingo PDF。实际演示（24 个课堂词汇，30 张 A4 双栏卡片）：https://youtube.com/shorts/BnStnytkEMM  流程说明：https://laconicleon.com/writing/2026-09-12-how-to-make-30-unique-printable-bingo-cards-from-your-own-word-list/ 这是我参与制作的项目，特此说明关系。若周刊的工具或资源栏目认为它对教师、家长或小组活动组织者有帮助，欢迎酌情参考；不合适也没关系。谢谢，Leon Reed",
-    "created_at": "2026-09-12T11:12:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11649"
-  },
-  {
-    "id": 11648,
-    "title": "【开源自荐】Birdview：先看清 AI 改什么，再让它动手",
-    "content": "项目地址：https://github.com/Qiuner/birdview\r\n\r\nBirdview 是一个面向 AI 编程变更的开源架构可视化工具。它把 Agent 声明的任务活动与系统模块、文件归属、源码证据和验证结果关联起来，并生成无需服务器即可打开的独立 HTML 视图。\r\n\r\n![Birdview 架构活动视图](https://raw.githubusercontent.com/Qiuner/birdview/main/docs/birdview-overview.png)\r\n\r\n![Birdview 中文界面](https://raw.githubusercontent.com/Qiuner/birdview/main/docs/birdview-overview.zh.png)\r\n\r\n它解决的是一个常被忽略的问题：AI 编程日志和 diff 能说明“做了什么”，但不一定能说明“这次变更在整个系统中属于哪里”。Birdview 用稳定的架构地图展示任务范围、当前目标、文件归属和检查结果，并提供完整架构、更改和并排对照视图。\r\n\r\n快速体验：\r\n\r\n```bash\r\ngit clone https://github.com/Qiuner/birdview.git\r\ncd birdview\r\nnpm ci\r\nnpm run build:demo\r\n```\r\n\r\n然后打开 `examples/harness-activity.html`。项目当前为 v0.1.0，活动记录是 Agent 声明的文件快照，不代表自动观测到真实编码操作。\r\n",
-    "created_at": "2026-09-12T10:42:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11648"
-  },
-  {
-    "id": 11647,
-    "title": "【项目自荐】NanoAvatar：老款手机也能运行的数字人项目",
-    "content": "NanoAvatar 是一款可在老款手机上运行的数字人项目，视频效果逼真、响应快、生成流畅，无需云端 GPU。\n\n推理代码和模型权重已经公开，同时提供演示视频与 Android APK。安装后可在 Experience 模式录下自己的声音，离线驱动数字人，不需要 API key，适合直接体验手机端数字人效果。\n\n[推理代码](https://github.com/wpydcr/NanoAvatar) · [模型权重](https://huggingface.co/wpydcr/NanoAvatar) · [演示视频](https://github.com/wpydcr/NanoAvatar#demo) · [Android APK](https://github.com/wpydcr/NanoAvatar/releases/latest)",
-    "created_at": "2026-09-12T10:02:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11647"
-  },
-  {
-    "id": 11646,
-    "title": "[开源自荐] BrainPilot：可自部署的多智能体科研工作台",
-    "content": "## 项目地址\n\nhttps://github.com/NeuroAIHub/BrainPilot\n\n## 简介\n\nBrainPilot 是一个开源多智能体科研工作台，把文献调研、代码执行、数据分析和写作串联起来。主 Agent 负责协调专家，用户可以随时参与；Graph of Trace 将执行步骤、证据和结果联系起来，便于检查科研过程。\n\n项目支持本地部署，也提供云端体验。开发者可以接入自己的模型服务、Skills 和 MCP 工具；公开仓库提供脑科学案例，可用于了解多 Agent 系统如何执行真实研究任务。\n\n## 推荐理由\n\n既有可直接体验的产品，也有完整开源实现。对研究者，它提供统一的任务与产物工作区；对开发者，可以参考 TypeScript 多 Agent 协作、工具集成和执行过程可视化的实现。\n\n- 云端体验：https://brainpilot.chat\n- 文档：https://brainpilot.chat/docs\n- 技术报告：https://arxiv.org/abs/2607.15079\n\n![BrainPilot 工作台与研究流程](https://raw.githubusercontent.com/NeuroAIHub/BrainPilot/main/assets/readme/brainpilot-overview.png)\n\n我们是项目开发团队，本条为开源自荐。\n",
-    "created_at": "2026-09-12T09:09:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11646"
-  },
-  {
-    "id": 11645,
-    "title": "【工具自荐】Rynoa：用右侧按键和轻拍机身，触发 Mac 常用操作",
-    "content": "大家好，我是 Rynoa 的开发者，想自荐一个 macOS 菜单栏小工具。\n\n打开常用应用、截图、静音，这些操作每天都会重复。Rynoa 可以把它们绑定到右 Command、右 Option，或兼容 Mac 上的机身轻拍，让常用操作更顺手。\n\n<img width=\"624\" height=\"1048\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a68a8cf1-23f4-4f29-9d0e-59928c8c365f\" />\n\n它支持：\n\n- **右侧按键手势**：右 Command / 右 Option 的单击、双击、三击和长按。\n- **机身拍击**：双击、三击、四击，不区分左右；每种手势可以单独绑定动作。\n- **三类动作**：打开或切换应用、发送自定义组合键，以及截图、音量、勿扰和窗口操作等系统动作。\n- **本地使用**：常驻菜单栏，支持随时暂停；动作配置保存在本机，手势与动作映射可离线使用，提供简体中文和英文界面。\n\n例如，可以把右 Command 双击设为打开微信，把右 Option 长按设为区域截图，再把机身双击设为静音。这些只是配置示例，可以换成自己的常用操作。\n\n支持 macOS 14+，提供 Apple Silicon / Intel 应用。机身拍击依赖具体机型和系统，目前验证范围有限，不保证所有 Mac 支持；不支持拍击的设备仍可使用键盘手势。轻拍即可，不必用力。当前安装包采用开发签名，尚未完成 Apple 公证，macOS 可能阻止打开，安装说明见使用指南。\n\n- 官网：[rynoa.jinso.top](https://rynoa.jinso.top)\n- 下载与版本说明：[Rynoa v1.0.0](https://github.com/JinSooo/rynoa/releases/tag/v1.0.0)\n- 使用指南：[HELP.md](https://github.com/JinSooo/rynoa/blob/main/HELP.md)\n- 问题反馈：[GitHub Issues](https://github.com/JinSooo/rynoa/issues)\n\n欢迎试用。尤其想了解大家最常绑定的动作，以及不同 Mac 型号上的拍击体验；反馈时附上机型和 macOS 版本，会很有帮助。",
-    "created_at": "2026-09-12T09:09:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11645"
-  },
-  {
-    "id": 11644,
-    "title": "【开源自荐】prox：管理 Linux 终端代理环境变量的命令行工具",
-    "content": "项目地址：https://github.com/luhuadong/prox\n\n![prox](https://raw.githubusercontent.com/luhuadong/prox/main/docs/images/prox_cover.png)\n\nprox 为 Linux 终端提供一套简单、可靠、可诊断的代理开关。它不提供代理服务，也不管理 Clash、V2Ray、企业代理或 VPN。它只负责安全地设置当前终端及其子进程使用的代理环境变量，并检查配置的代理是否可用。\n\nLinux 终端程序通常通过 `http_proxy`、`https_proxy` 和 `ALL_PROXY` 等环境变量使用代理。很多用户会直接在 `.bashrc` 中写入：\n\n```bash\nexport ALL_PROXY=\"http://127.0.0.1:7890\"\n```\n\n设置变量并不难，麻烦的是代理的生命周期：代理软件退出或端口不可用后，Git、curl 和包管理器仍会连接这个失效地址；手动开启和清除变量又容易遗漏，还可能覆盖终端原有的代理配置。\n\nprox 将这些操作统一为一系列命令：\n\n* `prox on` 在修改当前终端环境前检查代理端点，连接失败时保持环境不变；\n* `prox off` 恢复启用前的代理变量，而不是简单地全部清空；\n* `prox status` 显示当前 Shell 的代理状态，并识别变量是否被其他操作修改；\n* `prox check` 检查配置、代理端口以及通过代理访问网络是否正常；\n* `prox run -- <command>` 只让一条命令及其子进程使用代理，不修改当前 Shell。\n\nprox 使用 Go 编写，发布为单个二进制文件，不依赖 curl、nc、jq，也不需要后台守护进程。项目还提供预编译包、deb、rpm 和 Bash completion。\n",
-    "created_at": "2026-09-12T09:07:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11644"
-  },
-  {
-    "id": 11643,
-    "title": "【开源自荐】Mobile Easy Use：让 AI Agent 操作和探查 Android / iOS App 运行时",
-    "content": "我是项目维护者，想自荐一个面向 Android / iOS 开发者的开源工具。\n\nMobile Easy Use 让 Codex、Claude Code 等 AI Agent 通过 MCP 访问 App 运行时。除了点击、输入、滚动和截图等 UI 自动化能力，还能读取业务对象和配置、Hook 方法查看参数与调用栈、获取执行耗时和进程内存变化，以及临时替换返回值或字段来验证不同分支。\n\n它主要用于开发中的理解、调试和验证：例如分析「请求成功，列表却没更新」时，Agent 可以结合源码，检查实际数据和刷新方法的执行情况，而不只根据截图推断。\n\n使用时需要先将运行时集成到自己的 App 内部调试版本，编译安装后再连接。仓库提供 Integrate / Probe 等 Skills 引导接入和探查。底层基于 Frida，采用 MIT 许可证。\n\n项目与中文文档：https://github.com/agent-easy-use/mobile-easy-use\n\n下面是项目的 iOS 演示：\n\nhttps://github.com/user-attachments/assets/e956fdbf-da6a-4608-a877-11a107f70760\n",
-    "created_at": "2026-09-12T08:25:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11643"
-  },
-  {
-    "id": 11642,
-    "title": "投稿：UI Design Agent Kit —— 面向 AI 编程智能体的 UI 设计工作流",
-    "content": "投稿一个开源项目。\n\n**UI Design Agent Kit** 是一套给 AI 编程智能体（Codex / Claude Code / ZCode 类宿主）使用的 UI 设计工作流：把口语需求整理成可执行方案，联网检索设计素材并记录授权边界，用「设计契约」（语义 token、Do/Don't 规则、弹簧动效参数）约束实现，最后用真实浏览器做桌面/移动/键盘/减少动效验收并留存证据。\n\n- 在线展厅（含「地铁疾行」3D 跑酷、「积木小工坊」3D 拼搭两个可直接玩的 demo）：https://agent.kcos.club/\n- 源码：https://github.com/muzimu217/ui-design-agent-kit",
-    "created_at": "2026-09-12T07:04:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11642"
-  },
-  {
-    "id": 11641,
-    "title": "【工具推荐】RAADS-R Test：免费的成人自闭特质在线自测",
-    "content": "项目名称：RAADS-R Test\n\n网址：https://raads-rtest.online/\n\n简介：这是一个免费的浏览器端 RAADS-R 自我评估工具，面向希望了解自身自闭特质的成年人。它包含完整的 80 道问题，完成后会立即给出总分和四个领域的分项结果，并提供研究背景与分数解释。\n\n工具无需注册、无需安装，也不要求付费。网站明确说明结果仅供信息参考，不能替代医疗诊断。适合作为个人梳理体验、记录特征，或在寻求专业支持前准备交流材料的起点。",
-    "created_at": "2026-09-12T06:22:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11641"
-  },
-  {
-    "id": 11640,
-    "title": "【网站自荐】Mementolink：把文字和照片永久保存在比特币上",
-    "content": "我是 Mementolink 的开发者。这个网站可以把一段话、一张照片做成纪念作品，**将内容公开、永久保存在比特币上**。\n\n比如给逝去亲人的一封信、婚礼上说过的誓言，或者写给未来自己的一段话。文字和照片本身会写入比特币，不只是存一个指向网站的链接。\n\n下面是我们已经发布的 **Eleanor 照片示例**。点击照片可以看完整成品：\n\n<a href=\"https://mementolink.com/zh/examples/eleanor-vance\"><img src=\"https://mementolink.com/images/examples/eleanor-vance.jpg\" alt=\"Eleanor 照片示例，点击查看包含照片和纪念文字的完整成品\" width=\"240\" /></a>\n\n示例里的一句话是：“她教会我们，善意是唯一值得赶着去做的事。”\n\n也可以看看[婚礼誓言的版式示例](https://mementolink.com/en/examples/james-and-caroline)，或[写给三十岁自己的纯文字示例](https://mementolink.com/zh/examples/farewell-thirties)。这些都是产品样例。\n\n**不需要钱包，也不需要先买比特币。** 从成品页点击创建，写内容、看预览和最终报价，满意后再付款。\n\n- 纯文字：19 美元起\n- 带版式文字：39 美元起\n- 带一张照片：109 美元起\n\n均为一次付费，适用税费在结账时显示。适合愿意公开、已经定稿的内容；发布后的链上原文不能修改或删除。\n\n[查看照片成品并创建自己的纪念作品](https://mementolink.com/zh/examples/eleanor-vance) · [网站](https://mementolink.com/zh/)\n",
-    "created_at": "2026-09-12T05:16:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11640"
   }
 ]
