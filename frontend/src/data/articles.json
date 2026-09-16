@@ -1,5 +1,117 @@
 [
   {
+    "id": 11739,
+    "title": "【开源自荐】Flashgate：让 AI 编程 agent 不敢谎报固件能跑的硬件验证门禁",
+    "content": "我是 [Flashgate](https://github.com/Lion-1209/flashgate) 的维护者，自荐这个 MIT 开源的硬件在环验证工具。\n\nAI 编程 agent 改完固件经常直接宣布\"能跑了\"——但它其实无从知道板子上的真实情况，编译通过不等于板子能启动。Flashgate 把最后一环交给硬件裁决：\n\n- 完整验证链：编译 → ST-Link/OpenOCD 烧录 → 等板子自报身份（串口 banner 带 git sha，或 64 字节 SWD RAM 签名，后者不需要串口线）→ 发真实控制台命令、断言硬件寄存器读回值 → 结构化退出码\n- **Stop hook 门禁**：挂进 Claude Code 后，agent 改了固件没过真机验证就想收工，会被当场拦下，并把板子的失败证词（比如\"收到呼吸灯命令却回报 OFF\"）喂回给 agent 定位修复\n- 每次验证（无论成败）落一份可审计的证据记录：逐项检查结论、板子原话、产物哈希\n- `bench-serve` 可把整台实验台挂上局域网，远程 agent 通过 Arm 的 device-connect 协议发现并请求真机验证（跨机实测通过）\n- 自带 OpenOCD 后端，不需要 ST 工具链；仓库含完整可编译的 STM32H743 示例工程（正点原子 Apollo），接线后开箱可跑\n\n仓库里有一段完整的真实 agent 会话记录：agent 被板子拦下、读证词、定位到固件里一处\"静默无操作谎言\"、修复、真机通过后才放行。\n\nPython 编写，`pip install flashgate` 即用，目前以 STM32 为主（适配器层本周已落地，欢迎其他芯片的档案贡献）。",
+    "created_at": "2026-09-16T04:21:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11739"
+  },
+  {
+    "id": 11738,
+    "title": "【工具自荐】Face Shape Snap：拍张照片，快速找到你的脸型",
+    "content": "项目地址：https://faceshapesnap.com/\n\n最近做了一个比较简单的小工具，叫 Face Shape Snap，主要是帮大家快速判断自己的脸型。\n\n很多时候我们想换发型、挑眼镜，或者参考一些妆容建议，但第一步往往是先搞清楚自己的脸型。问题是，单纯照着镜子判断其实挺容易搞错的，尤其是 Oval、Oblong、Round 这几种比较接近的类型。\n\n所以我做了一个可以直接通过照片分析脸型的小工具。\n\n使用方式很简单：上传一张正面照片，或者直接调用摄像头，Face Shape Snap 会分析脸部关键点，然后根据额头、颧骨、下颌以及脸部长度之间的比例，判断属于哪一种脸型。目前支持 7 种常见类型：\n\nOval\nRound\nSquare\nHeart\nDiamond\nOblong\nTriangle\n\n比较方便的一点是，整个分析过程直接在浏览器中进行，照片不会上传到服务器。网站也不需要注册账号、邮箱或者安装 App，打开就可以使用。\n\n识别出脸型之后，还可以继续查看对应的风格指南，比如发型、眼镜和妆容方面的建议。这样它不只是告诉你“你是什么脸型”，而是可以继续帮助你把这个结果用到实际的造型选择上。\n\n我觉得这个工具比较适合那些准备换发型、买眼镜、研究妆容，或者单纯好奇自己到底是什么脸型的人。\n\n如果你也经常分不清自己到底是 Oval 还是 Oblong、Round 还是 Square，可以试试看。\n\n项目地址：Face Shape Snap\n",
+    "created_at": "2026-09-16T04:12:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11738"
+  },
+  {
+    "id": 11737,
+    "title": "【工具自荐】Reverse Video Search：用画面、声音和水印追踪视频来源",
+    "content": "项目地址：https://reversevideosearch.co/\n\nReverse Video Search 是一个用于视频溯源和来源验证的在线工具。\n\n做这个工具主要是因为现在一个视频被转载、裁剪、压缩、镜像、加字幕或者重新配音之后，单纯通过标题和关键词已经很难找到它最初的来源。\n\n很多时候我们看到一段视频，真正想知道的其实不是“这个视频叫什么”，而是：\n\n这个视频最早在哪里出现？\n\n是谁最先发布的？\n\n现在看到的版本是不是经过剪辑？\n\n有没有其他账号转载过？\n\n视频里的画面、声音或者水印能不能帮助找到原始来源？\n\n所以 Reverse Video Search 尝试从视频本身提取更多线索，而不是只搜索视频标题。\n\n目前可以直接上传视频，也可以使用公开的视频 URL 或关键词进行搜索。\n\n支持 MP4、MOV、AVI、WEBM 和 GIF，上传文件最大 50MB，视频最长 20 分钟。\n\n核心的搜索方式是 Visual Fingerprinting。\n\n系统会从视频中提取关键帧，然后寻找视觉上相似的内容。即使视频经过压缩、裁剪、调整大小或者镜像处理，也可以作为进一步寻找来源的线索。\n\n除了画面之外，也可以从其他信号寻找匹配。\n\nAudio Fingerprinting 可以比较视频中的音频，例如背景音乐、采访录音或者其他声音，即使相同的声音出现在不同的视频剪辑中，也可以作为搜索线索。\n\nTranscript Match 可以使用 Whisper 对部分视频中的语音进行转录，然后利用说话内容寻找相关结果。\n\n另外还有 OCR / Watermark Detection，可以读取视频关键帧中的文字、账号名称、Logo、水印和字幕。\n\n这一点对于寻找转载视频的原始账号尤其有用。\n\n比如一个视频被重新上传之后，原来的标题已经被修改，但是画面角落仍然保留着原作者的账号名称或者水印，那么这些信息就可能成为继续寻找来源的线索。\n\n除了寻找相似视频之外，Reverse Video Search 也比较关注时间线。\n\n找到可能的匹配之后，可以比较不同页面的发布日期、标题、字幕、水印和视频编辑情况，从而进一步判断哪个来源更早、更值得核实。\n\n搜索结果还可以整理成 Evidence Report，把来源链接、日期、缩略图、匹配信息和备注放在一起。\n\n这样如果是做事实核查、版权调查或者内容研究，就不用把所有找到的链接和截图分散保存。\n\n目前这个工具主要适合几类场景。\n\n如果你是内容创作者，可以用它寻找自己的视频是否被其他地方转载。\n\n如果你是记者或事实核查人员，可以用它调查一段正在传播的视频，尝试找到更早的来源，并比较不同版本之间的差异。\n\n如果你是品牌或代理机构，可以检查广告素材、品牌 Logo 或网红交付的视频是否出现在其他地方。\n\n如果你是研究人员，也可以利用来源链接、日期、缩略图和编辑信息建立一个比较完整的视频来源记录。\n\n当然，自动匹配并不能直接证明一个来源就是“原始来源”。\n\n网站本身也把搜索结果定位为调查线索，而不是最终结论。\n\n一些私人账号、已经删除的帖子、地区限制内容或者没有被索引的页面，系统可能无法访问。因此找到匹配之后，还是需要打开来源页面，比较日期、上下文和视频内容，再自己进行确认。\n\n我觉得这也是视频反向搜索比较重要的一点：\n\n不是让 AI 替你做最终判断，而是尽可能多地找到可以验证的证据。\n\n如果你手里有一段不知道出处的视频，或者经常需要确认网络视频的来源，可以试试看：\n\nhttps://reversevideosearch.co/\n\n目前可以先进行一次搜索，不需要账号；注册后还会获得额外 credits。\n\n如果有人经常做视频溯源、事实核查或者版权调查，也欢迎分享一下你们平时都是怎么寻找视频原始来源的。\n",
+    "created_at": "2026-09-16T03:45:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11737"
+  },
+  {
+    "id": 11736,
+    "title": "【工具自荐】Wan 3.0：让一个想法，从文字变成真实的视频镜头",
+    "content": "项目地址：https://wan-3.pro/\n\nWan 3.0 Video Generator 是一个面向 Wan 3.0 模型的视频生成网页工作空间，主要想做的是把从“一个镜头想法”到“一个可以查看的视频草稿”这件事情变得更简单。\n\n现在 AI 视频生成越来越容易，但实际使用的时候，我发现很多时候并不是想直接生成一整部视频，而只是想先验证一个镜头。\n\n比如一个产品镜头应该怎么移动，一个人物应该怎么走，一个场景应该怎样开始，或者一个竖屏短视频的第一段画面应该是什么样。\n\n所以这个项目更关注 shot-based video creation。\n\n目前支持两种主要方式：\n\nText to Video：直接用文字描述场景、动作、镜头运动和光线，让 AI 生成一个短视频镜头。\nImage to Video：上传一张第一帧图片，然后描述希望发生的动作，让画面从静态图片变成动态视频。\n\n生成之前还可以选择模型、画幅、分辨率和视频长度，这样可以先确定最终需要的输出形式，再进行生成。\n\n目前支持：\n\nWan 3.0 / Wan 3.0 Prime\n480P、720P、1080P\n2–15 秒视频\n16:9、9:16、1:1 等画幅\nText-to-Video\nImage-to-Video\n\n我也加入了一些比较实际的使用方式，比如：\n\nProduct Lens\n\n用一个简单的产品场景测试材质、灯光变化和摄像机移动，适合先做产品页面上的短视频素材。\n\nCharacter Motion\n\n从一张人物图片开始，只描述一个简单动作，比如走一步、转身或者回头，同时尽量保持人物的服装和构图。\n\nVertical Social Cut\n\n直接使用 9:16 画幅，为短视频平台制作竖屏视觉素材。\n\nStoryboard Previsualization\n\n如果一个故事需要多个镜头，可以分别生成几个短镜头，用来提前测试节奏、人物走位和镜头之间的连续性，而不是一开始就投入大量时间制作完整视频。\n\n我觉得这种方式比较适合现在的 AI 视频工作流。\n\n与其一次生成一个很长的视频，不如先把一个镜头做好，再继续下一个镜头。\n\n这样每次生成的内容都比较容易检查，也更方便修改 prompt 和镜头设计。\n\n目前网站也提供了一个 AI 视频 Gallery，可以查看一些成功生成的 Wan 3.0 视频，作为测试 prompt 和镜头创意时的参考。\n\n项目目前提供不同额度的计划，也支持 API，方便需要把视频生成功能接入自己产品的开发者。\n\n如果你正在研究 Wan 3.0，或者只是想快速测试 text-to-video / image-to-video，而不想先配置本地环境，可以直接试一下：\n\nhttps://wan-3.pro/\n\n欢迎大家测试不同的 prompt 和镜头设计。如果你发现一些特别有意思的 Wan 3.0 工作流，也欢迎分享出来。\n\n这个项目的目标其实很简单：\n\nStart with one shot, test the idea, then build the next shot.\n\n",
+    "created_at": "2026-09-16T03:21:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11736"
+  },
+  {
+    "id": 11735,
+    "title": "【开源自荐】余量：手表数据和体感不一致时，把活动建议的依据摊开看",
+    "content": "我是 [余量 Yuliang](https://github.com/zhuyep/yuliang) 的维护者。想自荐这个 MIT 开源、本地优先的小工具。\n\n手表记录了睡眠、HRV 和静息心率，但你今天觉得累，或者设备漏了记录：原定活动是否要调整，依据是什么？余量尝试把这些信息放在一张可以检查依据的建议卡上，而不是再给一个黑盒分数。\n\n**可以先用 [中文在线演示](https://zhuyep.github.io/yuliang/?lang=zh) 试三个情境**，无需安装、注册或提供健康数据：\n\n1. 点击“今天有点累”，看主观精力如何影响原计划，而不是由某个 HRV 数字直接下结论。\n2. 点击“设备漏了记录”，看缺失值为何不应该被当成零或状态差。\n3. 勾选“假设出现疼痛不适”，看它如何覆盖其他情境，不继续推荐原定活动。\n\n页面会展开每条建议的依据和合成历史样本。以上全部是虚构演示，不是我的真实健康记录，也不是用户使用效果证明。\n\n**当前更适合愿意折腾本地数据的可穿戴设备用户，不是面向所有跑者的即装即用产品。** 本地版支持主动选择的日汇总 JSON；已有兼容 garmin-grafana 的本机数据库时，可启用实验性只读适配器。不登录 Garmin、不自动同步，也不是官方集成。生成式 AI 默认关闭，核心流程使用可检查的确定性规则。\n\n目前是早期公共预览，规则没有临床验证，不能判断训练安全或替代医疗建议。想征集首批试用反馈：**试完一个合成情境后，这张卡是否值得你接入自己的数据继续使用？如果不值得，最大的原因是什么？** 可以直接在本帖回复，不需要分享健康指标、账号或私人截图。演示试用反馈与实际数据接入、持续使用会分别记录，不把它们混为采用。\n\n- 源码与本地启动：[zhuyep/yuliang](https://github.com/zhuyep/yuliang)\n- 英文演示：[Try in English](https://zhuyep.github.io/yuliang/?lang=en)\n- 英文说明：[English README](https://github.com/zhuyep/yuliang/blob/main/README.en.md)\n",
+    "created_at": "2026-09-16T02:44:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11735"
+  },
+  {
+    "id": 11734,
+    "title": "【工具自荐】雪泥 Spoor：让 AI 参与思考，而不只是替你生成内容",
+    "content": "我做了一个本地优先的无限画布 雪泥 Spoor。它把笔记、截图、书籍、网页资料和 AI 对话放在同一个空间里。你可以一边收集资料，一边和 AI 讨论，再把有价值的内容留下来、编辑、连接，最后逐渐形成自己的文章或作品。\n\n我不太喜欢一句话生成一篇文章的 AI 写作方式。\n\n所以 Spoor 更希望 AI 成为写作过程中的参与者：帮你提问、分析、连接和修改，但最终的判断和写作仍然属于作者。\n\n产品地址：https://spoor.ink/\n\n产品演示：\n\nhttps://spoor.ink/landing/xueni-promo-zh.mp4\n\n欢迎体验，也欢迎反馈。",
+    "created_at": "2026-09-16T02:36:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11734"
+  },
+  {
+    "id": 11733,
+    "title": "【开源自荐】AI Study Platform：把 PDF、YouTube 等学习资料转化为 Summary、Quiz、Flashcards 的 AI 学习平台",
+    "content": "**项目地址**：https://github.com/ttang1024/AI_Study_Platform\n\n**在线体验**：https://toto-study.com/\n\n\n这是一个开源的 AI 学习平台，可以把 PDF、YouTube / Bilibili 视频、网页文章、播客等学习资料转换成结构化的学习内容。\n\n目前主要功能包括：\n\n支持 PDF、YouTube / Bilibili、网页文章、Podcast 等多种学习资料\nAI 生成 Summary、结构化笔记、Flashcards、Quizzes、Mind Maps、Glossary\nAI Tutor：基于学习内容进行问答\nSpaced Repetition：帮助复习和记忆\n**支持多个 AI Provider，需要用户自行配置 API Key**\n支持分享生成的学习内容\n\n两个实际生成的内容：\n\n总结文档：https://toto-study.com/share/Xlv92yWNx_6Q\n总结 YouTube 视频：https://toto-study.com/share/LQMBIdQunFJ5\n\n项目还在持续开发中，欢迎大家体验、提 Issue 或 PR，也欢迎交流 AI 应用部署和成本控制方面的经验。\n\n我是作者，感谢大家支持。",
+    "created_at": "2026-09-16T02:29:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11733"
+  },
+  {
+    "id": 11732,
+    "title": "【开源自荐】FileMarkd，AI 驱动的文档转 Markdown 工具，设置Key一键部署Vercel，开启SaaS收费之旅",
+    "content": "# 🚀 FileMarkd — AI 驱动的全功能文档转 Markdown 开源平台\n\n**FileMarkd** 是一款基于 AI（Mistral OCR）的高性能文档转 Markdown 工具，同时也是一套**开箱即用、配置好 Key 即可一键部署上线的 SaaS 产品模板**。支持 40+ 种文档与图片格式解析，集成了 Stripe 订阅/积分支付、五语 i18n、推广返利、沉睡用户召回及全功能管理后台，支持一键无缝部署到 Vercel。\n\n* 🌐 **线上演示**：[filemarkd.com](https://filemarkd.com)\n* 📦 **开源地址**：[github.com/ItusiAI/Open-FileMarkd](https://github.com/ItusiAI/Open-FileMarkd)\n* 📜 **开源协议**：[MIT License](https://github.com/ItusiAI/Open-FileMarkd/blob/main/LICENSE)\n\n---\n\n## ⚡ 极速部署 | One-Click Deployment\n\n> **零繁琐配置**：只需在 Vercel 中导入项目，配置好对应的环境变量（如 `MISTRAL_API_KEY`、`DATABASE_URL`、`STRIPE_SECRET_KEY` 等），即可**一键部署上线**，瞬间拥有一个具备完整商业化变现能力的 AI SaaS 网站！\n\n---\n\n## ✨ 核心特性 | Features\n\n### 📄 1. 强大的 AI 文档解析（Mistral OCR 驱动）\n* **40+ 格式支持**：PDF、Word (`.docx`/`.doc`)、PowerPoint (`.pptx`/`.ppt`)、Excel (`.xlsx`/`.xls`)、CSV、EPUB、LaTeX (`.tex`)、Jupyter (`.ipynb`)、HTML、RTF、ODT、XML 及各类常见图片格式（PNG/JPG/WebP/HEIC 等）。\n* **智能结构还原**：精细化还原复杂表格（含单元格合并与对齐）、数学公式，智能剥离页眉、页脚与页码噪点。\n* **置信度标注（Confidence Score）**：每个识别数据块附带置信度评分，方便快速定位与人工复核低准确率区域。\n* **无门槛体验与 Mock 回退**：默认调用 `mistral-ocr-latest`；未配置 API Key 或开启 `MISTRAL_OCR_MOCK=true` 时自动切换为确定性模拟输出，本地开发与演示零成本。\n\n### 🔌 2. 灵活的输入与鉴权机制\n* **三种导入路径**：\n  * **本地上传**：拖放/点选文件，安全上传至 Cloudflare R2 并调用 OCR 服务。\n  * **远程 URL 解析**：直接粘贴公网 PDF/图片链接，服务端内置严格的四重校验与 SSRF 防护。\n  * **预设示例**：纯前端 Mock 模式，用户无需登录即可零门槛体验完整 UI 与解析效果。\n* **完善的鉴权防护**：\n  * NextAuth.js + JWT 会话管理，支持邮箱密码登录（含验证与重置）及 Google / GitHub OAuth 一键绑定。\n  * 前端 Guard (`requireAuth`) 拦截与后端 API `401` 兜底，优化未登录用户的无缝引导体验。\n\n### 💳 3. 商业化与积分/订阅体系\n* **Stripe 混合计费**：支持月度/年度订阅（Trial / Pro / Enterprise）与一次性积分包购买，支持 Webhook 自动入账及自助客户门户（退款/发票管理）。\n* **精细化积分管理**：\n  * **按页扣减**：预检扣除估计页数，识别完成后根据实际页数（`usage_info.pages_processed`）精准结算。\n  * **消耗优先级**：优先消耗有期限的订阅赠送积分，再消耗永不过期的购买积分。\n\n### 🌐 4. 国际化与 SEO 优化\n* **原生 5 语支持**：内置英语（默认）、简体中文（`zh-CN`）、繁体中文（`zh-TW`）、日语（`ja`）、韩语（`ko`），采用标准 BCP47 规范。\n* **SEO 友好架构**：非 IP 强制重定向策略，搭配完整的 hreflang、`sitemap.xml`、JSON-LD 结构化数据与 Open Graph / Twitter Card 分享卡片。\n\n### 📣 5. 用户增长与裂变体系\n* **推广返利（Affiliate）**：支持用户自定义专属推广码，提供**首单 30% 佣金**。内置“冻结 - 解冻 - 取消”三态资金流管理（7 天解冻期，防止退款套利），满 $10 即可申请提现。\n* **推荐奖励（Referral）**：支持邀请链接（`?ref=CODE`）注册绑定，双向赠送积分及延长订阅周期。\n\n### 🛡️ 6. 运营与管理后台（9 大核心模块）\n支持 URL Hash 直链导航，全方位掌控站点运营数据：\n1. **数据概览**：核心指标卡片（用户/订阅/积分/收入）及 7/30/90 天趋势图。\n2. **用户管理**：手动调整积分、管理订阅状态、推送审核及单用户明细。\n3. **流量分析**：无缝集成 Umami Analytics，实时掌握访问趋势。\n4. **推广与推荐管理**：审核返利提现申请、查看邀请链条与奖励流水。\n5. **营销邮件与提醒**：包含 Newsletter 订户管理、订阅到期自动提醒日志（提前 7 天/3 天/当天）。\n6. **沉睡用户召回**：基于 5 段分桶算法（`active` / `warm` / `dormant` / `inactive` / `churned`）精准筛选，支持创建分批节流的批量邮件召回活动，并内置全局退订与黑名单剔除机制。\n\n---\n\n## 🛠️ 技术栈 | Tech Stack\n\n* **全栈框架**：Next.js (App Router) + TypeScript\n* **样式 & UI**：Tailwind CSS + Shadcn UI\n* **数据库 & ORM**：PostgreSQL + Drizzle ORM\n* **身份认证**：NextAuth.js (Auth.js)\n* **AI & OCR 服务**：Mistral OCR API (`mistral-ocr-latest`)\n* **文件存储**：Cloudflare R2 / AWS S3 兼容存储\n* **支付引擎**：Stripe (Checkout, Webhooks, Customer Portal)\n* **邮件推送**：Resend\n* **定时任务**：Vercel Cron\n\n---",
+    "created_at": "2026-09-16T02:27:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11732"
+  },
+  {
+    "id": 11731,
+    "title": "【开源自荐】GPT-Load 2.0：统一管理 API Key 与订阅账号的自托管 AI 网关",
+    "content": "## 项目地址\n\n[GitHub](https://github.com/tbphp/gpt-load) · [官网与文档](https://www.gpt-load.com)\n\n## 简介\n\nGPT-Load 是一个 Go 编写的自托管 AI 网关。手里有多家服务商的 API Key 或多个 AI 订阅账号时，可以统一接入。客户端只配置一个地址和访问密钥，后续更换上游、调整模型和路由，都在管理页面里完成。\n\n## 主要功能\n\n- **API Key 与订阅账号统一管理**：支持 Codex、Claude、Antigravity、Grok 等订阅渠道，提供 OpenAI、Anthropic、Gemini 原生接口。\n- **自动调度与故障切换**：多账号轮询、按权重分流，支持失败重试、异常冷却和会话亲和，降低单个账号过载或失效的影响。\n- **用量与权限管理**：查看订阅额度、重置时间、请求日志、Token 用量和成本估算；可按访问密钥限制允许使用的分组与协议。\n- **部署简单**：单个 Go 程序内嵌 Web 管理界面，默认使用 SQLite，不必额外部署数据库。支持 Docker，也提供 Windows 安装包和 macOS、Linux 二进制。\n\n项目采用 MIT 协议，适合给自己的应用或 AI 编程工具集中管理上游。欢迎试用和反馈。\n\n## 界面截图\n\n分组与渠道管理：\n\n<img src=\"https://raw.githubusercontent.com/tbphp/gpt-load/main/screenshot/groups-overview.png\" alt=\"GPT-Load 2.0 分组与渠道管理\" width=\"860\" />\n\n订阅账号与额度状态：\n\n<img src=\"https://raw.githubusercontent.com/tbphp/gpt-load/main/screenshot/subscription-accounts.png\" alt=\"GPT-Load 2.0 订阅账号与额度状态\" width=\"860\" />",
+    "created_at": "2026-09-16T02:06:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11731"
+  },
+  {
+    "id": 11730,
+    "title": "【开源自荐】YYLO：用 git worktree 并行编排多个编码 agent（pi / Gemini CLI / Codex 等）的命令行工具",
+    "content": "### 项目地址\nhttps://github.com/yylo-dev/yylo\n\n### 它是什么\nYYLO（读 why-lo）是一个开源（MIT 协议）的命令行工具，npm 一条命令安装，用来编排多个 AI 编码智能体：每个任务在独立的 git worktree 里运行，互不踩踏；任务用看板管理生命周期，跑完进入预检、审查与合并队列，全程留下可核查的执行回执。它想把\"多个 agent 同时改同一个仓库\"从来回切窗口的手忙脚乱，变成可追踪、可回滚的日常流程。\n\n- 支持 pi、Gemini CLI、Codex 等 CLI 编码智能体，同一仓库并行多任务，各自独立 worktree\n- `yy task start/finish` 管理任务闭环，`yy merge status` / `yy merge arbiter run` 按序合入经过审查的改动\n- `ypl`（`yy pi --live`）在终端实时渲染 agent 会话、工具调用与执行摘要（迭代数、成本、会话 id）\n\n安装：`npm install --global '@yylo/cli@latest'`\n\n我是作者，欢迎使用与反馈。\n",
+    "created_at": "2026-09-16T01:54:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11730"
+  },
+  {
+    "id": 11729,
+    "title": "【文章推荐】AI 操作电脑时，它看到的真是我们看到的界面吗？",
+    "content": "你以为 AI 正在像人一样看屏幕、点按钮，其实它可能根本没看见你看到的那个界面：有时读的是无障碍树，有时调用的是 CLI，什么接口都没有，才退回截图和鼠标。\n更有意思的是，Computer Use 的终点可能不是让机器更像人，而是让软件终于学会用机器能理解的方式表达“我能做什么”。\n\n- https://mp.weixin.qq.com/s/nSAeTuRGXs4P8szr5d1s-g\n",
+    "created_at": "2026-09-16T01:44:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11729"
+  },
+  {
+    "id": 11728,
+    "title": "【网站自荐】RAADS-R Test：免费的成人孤独症特质在线自测工具",
+    "content": "项目地址：https://raads-rtest.online/\n\nRAADS-R Test 是一个免费的在线自我筛查工具，面向希望进一步了解自身孤独症相关特质的成年人。网站可直接在浏览器中使用，无需安装软件，问题覆盖社交互动、沟通、感官体验和长期行为模式等方面。\n\n该工具适合作为自我了解和整理问题的起点，帮助用户决定是否需要进一步咨询专业人士。测试结果仅供信息参考，不构成医疗诊断，也不能替代由合格专业人员进行的完整评估。\n\n特点：\n- 免费在线使用，界面简单\n- 聚焦成人孤独症相关特质\n- 提供清晰的自我反思入口\n- 明确提示结果不属于医学诊断\n\n希望能为关注神经多样性、自我认知和心理健康工具的读者提供一个实用资源。",
+    "created_at": "2026-09-16T01:26:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11728"
+  },
+  {
+    "id": 11727,
+    "title": "【网站自荐】Math AI：支持拍照与文本输入的分步数学解题工具",
+    "content": "项目地址：https://mathai.chat/\n\nMath AI 是一个浏览器端数学学习与解题工具，面向中学生、大学生、教师和自学者。用户可以直接输入题目，也可以上传题目照片，获得清晰的分步解析，而不只是最终答案。\n\n目前覆盖代数、几何、微积分、统计和数学应用题等常见场景，并提供 Solution 与 Tutor 两种模式，分别适合快速核对步骤和深入理解解题思路。无需注册即可获得免费使用额度，适合做作业检查、日常练习和考试复习。\n\n主要特点：\n- 支持文字输入和题目图片上传\n- 分步骤展示推导过程\n- 覆盖多类常见数学学科\n- 浏览器直接使用，无需安装客户端\n- 提供免费额度",
+    "created_at": "2026-09-16T01:00:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11727"
+  },
+  {
+    "id": 11726,
+    "title": "[开源自荐] Taskuary：把收到的请求交给智能体处理，再带回人工审核",
+    "content": "我在开发一个 MIT 开源的本地任务工作台 **Taskuary**，想解决从“收到一条请求”到“智能体完成并交回审核”之间反复切换工具的问题，向周刊自荐。\n\n基本流程是：邮件、工单或报表进入时间线 → 整理成任务 → 交给编程 CLI 或通用智能体 → 查看进度并审核结果。也可以直接手动创建任务。\n\n除了执行任务，智能体可以留下交接笔记，借助 Hub 共享资料；从用户纠正中总结的工作习惯保存在可编辑的 `LEARNED.md` 中。\n\n- 项目与源码：https://github.com/ldbumble/taskuary\n- [简体中文介绍、截图和安装步骤](https://github.com/ldbumble/taskuary/blob/master/README.zh-CN.md)\n- [免登录演示](https://taskuary.com/demo/)：虚构数据，不连接外部账号、不执行真实任务。\n\n![Taskuary 时间线：每项保留消息来源和时间](https://raw.githubusercontent.com/ldbumble/taskuary/master/docs/readme/01-timeline-sources-and-times.png)\n\n最新源码加入了 Qwen Code、OpenCode（可配置 DeepSeek 等模型）和 Kimi Code。应用本地运行，使用云端模型时仍会向模型服务发送内容。\n\n目前是早期项目，界面主要为英文。这三个 CLI 的集成已用真实程序与本地模拟模型端点验证，尚未完成真实云端模型调用和中国大陆网络环境验证；OpenCode、Kimi 预设目前用于执行任务。欢迎有现成服务账号的开发者试用，并反馈最需要的消息源和使用问题。\n",
+    "created_at": "2026-09-16T00:49:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11726"
+  },
+  {
     "id": 11725,
     "title": "【网站自荐】Textira：能查文献、跑实验、分析数据的 AI 科研工作台",
     "content": "大家好，最近我们在做一个 AI 科研工作台 Textira，想推荐给周刊读者。\n\n网站地址：https://textira.com/\n\n<img width=\"1296\" height=\"735\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/320a79ec-f0b7-4794-b1ea-68c89a49b010\" />\n\nTextira 想解决的问题其实很直接：现在 AI 已经能查文献、写代码、分析数据、生成图表，也能辅助写论文，但真正做一项研究时，这些事情依然散落在不同工具里。浏览器里查资料，本地保存 PDF 和数据，Jupyter 里跑代码，另一个窗口问 AI，实验完成后再把数据、图片、引用重新整理进论文。单独看，每一步都有很好用的工具，但从一个研究问题真正走到实验结果和论文，中间仍然需要大量人工衔接。\n\n<img width=\"1501\" height=\"768\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/411018e6-4485-40ae-8b9e-91400dddf46b\" />\n\n所以我们做 Textira 时，没有把它设计成一个单纯的 AI 聊天框或者论文生成器，而是以 **Research** 作为基本单位。一项研究里的文献、PDF、数据、代码、实验结果、图表和论文都可以放在同一个项目中，AI 也直接工作在这个环境里。你可以从一个研究问题开始，让它检索和阅读文献、寻找公开数据、编写并运行 Python、调用科研工具、分析实验结果、生成图表，再基于前面真实产生的材料继续完成后面的研究内容。\n\n\n比如，我们曾经把 NASA TESS 的公开观测数据交给 Textira，尝试从恒星的光变曲线中寻找系外行星留下的凌日信号。这个任务不是让 AI 回答「如何寻找系外行星」，而是真的让它读取数据、编写分析代码、执行程序、寻找周期性变化并生成图表。如果中间的方法不合适，还可以根据实际运行结果继续修改代码和重跑实验。类似地，也可以给它一段蛋白质序列，让它调用相应工具完成结构预测和分析，或者直接上传自己的 CSV、Excel、代码和实验数据进行处理。\n\n<img width=\"1440\" height=\"1120\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/506ffa81-aff6-420b-9558-abe061474db8\" />\n\n这也是我们比较在意的一点：**AI 不应该只告诉研究者实验怎么做，而应该能够真正参与实验。** 代码需要实际运行，数据需要实际处理，图表来自真实计算结果；任务过程中产生的数据、代码、图片和文件也都会留在 Research 中，后面的分析可以继续使用，而不是一次聊天结束以后重新从头解释。\n\n<img width=\"1006\" height=\"1510\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/43698420-aa4f-414e-bdf1-c3a3c60756de\" />\n\n论文则是这条链路自然的下一步。实验跑完以后，前面积累的文献、数据、代码、图表和实验结果仍然在同一个 Research 里，可以直接继续整理研究内容、处理引用和公式、调整结构和排版，并实时预览最终文档。Textira 支持完整的 LaTeX 项目，也可以导出常用文档格式，因此不需要实验结束以后，再把所有材料搬到另一个写作工具里重新开始。\n\n我们希望这样还能解决 AI 辅助论文时一个很实际的问题：**论文里的结果应该来自前面真正跑过的实验，而不是到了写作阶段再让模型“补”一组看起来合理的数据。** 当实验和论文处在同一个研究上下文中，AI 可以继续使用真实的数据、图表和运行结果，研究者也更容易检查一个数字、一张图或者一个结论到底来自哪里。\n\n<img width=\"720\" height=\"367\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/52c1fe64-5641-4518-9614-0f3dd58e405d\" />\n\n<img width=\"720\" height=\"457\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e7c6cdd1-acc0-46a7-a546-32f900f92190\" />\n\n\n所以 Textira 想做的并不是单独把某一个科研环节 AI 化，而是尽可能把一项研究连续起来：\n\n**研究问题 → 文献 → 数据 → 代码 → 实验 → 分析 → 图表 → 论文**\n\n目前 Textira 还在持续迭代。如果你手上正好有一个研究问题、一些实验数据，或者一篇正在进行中的论文，都可以直接拿来试试，也欢迎给我们反馈。\n\n<img width=\"3020\" height=\"1538\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd78b91c-4d64-44e2-a3f2-97d70b70f81e\" />\n\n相关文章：\n\n从序列到三维结构，Textira AI 如何预测蛋白质：https://cloud.tencent.com/developer/article/2741181\n\n\n\n媒体报道\n\nTextira 已获得 36Kr、钛媒体关注与报道。报道从 AI 科研与学术写作的实际需求出发，介绍了 Textira 如何将 AI 从论文写作环节进一步带入文献研究、实验、数据分析和投稿等科研流程。\n\n36Kr 报道：https://36kr.com/p/3977449594033798\n\nTextira：https://textira.com/",
@@ -433,8 +545,8 @@
   },
   {
     "id": 11671,
-    "title": "【开源自荐】EvalArc：检查智能体评分器的盲点，附可交互证据演示",
-    "content": "维护者自荐：**evalarc**。EvalArc 是面向 AI 智能体的开源评测与验收工具。支持 Python／JavaScript 候选、TOML 套件、JUnit 和离线报告复核，保留每轮原始记录。交互实验室展示高分仍违反关键业务约束的案例；0.8.0 可下载完整套件证据，并离线复算原始配置、执行计划、验收规则和 JUnit；浏览器可分享到具体调用步骤。提供可筛选 HF Casebook 和中英文文档，现有演示为脚本对照。\n\n在线体验：https://huggingface.co/spaces/glayguo/evalarc\n\n- **把讨论定位到同一步**： Copy evidence link 保存任务、对照实现、种子、案例与 trace 步骤。接收者打开同一观察点，键盘可从详情返回案例列表；受限剪贴板有手动复制入口。\n- **失败可恢复**：suite、重复尝试、前后比较和任务包可以分别重试；一个任务包不可用时仍可检查另一个。页面经过 320／390／1440 像素与键盘路径验证。\n- **高分不代表完成**：工单策略得 93.75% 却重复写备注；代码实现得 92.5% 却混淆 JSON true 与 1。可检查全部 15 种声明缺陷，以及三项 suite 作业、六条重复尝试和 167 条审计用例的数据表。\n- **可复核交付**：`evalarc verify` 不执行候选代码，重算单次、重复、对照和完整套件报告，包括 TOML、plan、五次尝试与 JUnit；`--require-accepted` 检查配置的验收规则，`--require-resolved` 另行要求任务完整通过。Python／JavaScript 参考实现共享任务约定。\n\n```sh\nevalarc verify suite-evidence --json\n\n# Require every configured suite gate:\nevalarc verify suite-evidence --json --require-accepted\n```\n\n安装发布的 Python wheel，从首页下载 suite-evidence.zip 并解压后，无需 Docker 或 Node 即可核验；默认退出 0 表示证据一致，添加 --require-accepted 退出 1 表示严格备注规则拒绝该结果：\n\n项目：https://github.com/noteflowai/evalarc\n版本：https://github.com/noteflowai/evalarc/releases/tag/v0.8.0\n\n![分享具体失败证据，检查智能体评分器的盲点](https://github.com/noteflowai/evalarc/raw/main/docs/assets/suite-lab.png)\n\n本账号为维护者，项目与 AI 结对开发，采用 MIT 许可，处于研究预览阶段。现有展示来自已保存的公开开发任务和脚本 Docker 对照，不提供真实大模型排名或 RL 收益结论。离线一致性校验不等于重新运行评分器，也不认证报告作者；原始候选路径与计时仍是报告元数据。\n\n<!-- research-pilots-20260914 -->\n### 2026-09-14 研究场景更新\n\n0.9.0 新增机器人原始记录数值验收、独立故障对照、Docker 启动就绪计时、Harbor 导入和 ATIF 导出。可在新网页中逐项查看 27 次技能交付、12 次技能组合、6 次跨模型交接的候选程序、工具收据和独立评分；33 条 ATIF 记录通过 Harbor 原生格式校验。所有失败公开保留，不宣称完整基准或通用可靠性结论。\n\n- 技术说明：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/discussions/1\n- 原始数据与原生场景：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/tree/v2026-09-14\n- 三仓交互评测：https://noteflowai.github.io/evalarc/skill-impact/\n\n以上为维护者自荐内容更新；当前仍等待编辑审核。<!-- /research-pilots-20260914 -->\n\n<!-- production-review-noteflow-1 -->\n## Production review — EvalArc v0.10.0\n\n[Inspect audit coverage](https://noteflowai.github.io/evalarc/#coverage) across all three task packs. Each of six single-case dependencies links to the original detecting checks, status and seed. All 21 declared faults are detected in the saved controls; this is coverage of those fault models only.\n\nThe [HF casebook](https://huggingface.co/datasets/glayguo/evalarc-casebook) now contains 251 original case-execution rows (135 coding, 32 support, 84 robot evidence). Detection margins count distinct case IDs; repeated seeds do not increase them. An assessed surviving control contributes zero margin; references have null margins in the dataset.\n\n[Release 0.10.0](https://github.com/noteflowai/evalarc/releases/tag/v0.10.0) includes all three offline audit reports with their original JSON and file hashes. Python 3.11–3.13, six task/language Docker audits, installed-wheel and desktop/mobile evidence-navigation checks passed. These are new views of existing records, not new model trials.\n<!-- /production-review-noteflow-1 -->",
+    "title": "【开源自荐】EvalArc：找出更高评分背后的 Agent 回归",
+    "content": "维护者自荐：**EvalArc——分数提高，Agent 就更可靠了吗？**\n\n一个已保存的对照案例中，分数从 90% 提高到 93.75%，两项检查改善，但重试多写了一条备注。EvalArc 可以并排查看退步的检查、逐步定位工具动作，并下载原始证据在本机复算。\n\n**先看一个问题，再决定是否适合自己的项目：**\n\n1. [打开免安装演示](https://noteflowai.github.io/evalarc/#regression)，查看 `retry-after-commit`。\n2. 检查相同分数为什么通过宽松规则、却被严格备注规则拒绝。\n3. 按[首次复核指南](https://github.com/noteflowai/evalarc/blob/main/docs/first-review.zh-CN.md)安装发布的 wheel，重建对照报告；无需 Docker、GPU 或模型密钥。\n\n适合需要复查 Agent 变更与发布验收的开发者。已有自己的记录时，可比较 EvalArc 评测，或按照受限格式导入保存的 AgentCore Evaluate 结果。欢迎反馈首次使用的卡点，不需要提供私有数据。\n\n项目：https://github.com/noteflowai/evalarc\nHugging Face：https://huggingface.co/spaces/glayguo/evalarc\n\n![分数提高，记录中的检查却退步](https://raw.githubusercontent.com/noteflowai/evalarc/main/docs/assets/first-review.gif)\n\n本账号为维护者，项目与 AI 结对开发，MIT 许可，处于研究预览。此案例是已保存的脚本 Docker 对照，不是客户事故或模型排名；离线复核不认证生产者或重新运行评分器。云端导入示例采用合成评分，未完成实时 AgentCore 评测。\n",
     "created_at": "2026-09-14T02:02:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11671"
@@ -686,117 +798,5 @@
     "created_at": "2026-09-12T05:16:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11640"
-  },
-  {
-    "id": 11639,
-    "title": "【开源自荐】Field Onboarding：让 AI 讲解陌生领域前，先问你已经会什么",
-    "content": "项目地址：https://github.com/ljx-chase/research-field-onboarding\n问 AI 一个自己不熟的领域，通常会得到一段满是术语的解释；追问\"这里面哪些是我 本来就该会的\"，只会得到更多术语。问题不在于它不懂，而在于它没问过你懂什么， 就自己选了一个起点。\n这个 skill 让它在开口之前，先列出该话题真正依赖的 3-5 个前置概念，由你给每一项 标注\"用过 / 学过 / 没接触\"，然后从你所在的位置往上讲，一次一级，每级结束出一道 诊断题。标了\"用过\"的概念它直接当锚点，不再重复解释。\n另外两条规则：推荐文献时，每篇要么当场检索验证并给出 DOI，要么明确标注\"凭记忆， 未核实\"，没有第三种；一轮能答完的窄问题直接回答，不走这套流程。\n纯 Markdown，无脚本，同一份文件可在 Claude Code、ChatGPT Skills 和 Codex 下 运行。MIT 协议，不需要注册或 API key。",
-    "created_at": "2026-09-12T03:58:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11639"
-  },
-  {
-    "id": 11638,
-    "title": "【网站自荐】今天不用省：给你一个亿，第一件买什么？",
-    "content": "我是「今天不用省」的维护者。做了一间免费的虚拟百货：可以买跑车、小院、耳机和大餐，也可以买「不用闹钟的一年」。\n\n体验：https://jintian-web-production.up.railway.app/?src=weekly\n\n打开就有一亿元虚拟预算，不注册、不扣款、不发货。不必花光，不做人格鉴定。买下的东西进入「已拥有」，可以放回，也能留下自己的愿望账单。\n\n这是早期普通浏览器版。微信内仍受限，闲置后首次打开可能较慢；没有全设备兼容或热度承诺。页面末尾有默认关闭的自愿使用记录，不开启也能完整玩，不收集购物清单。\n\n感兴趣可以随便逛，随时结束。欢迎说说哪件真想留下、哪一步无聊；不需要完成指定任务或帮忙转发。",
-    "created_at": "2026-09-12T00:55:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11638"
-  },
-  {
-    "id": 11637,
-    "title": "【工具自荐】剪蛋 Jiandan：把截图直接送进剪映专业版",
-    "content": "我是剪蛋的开发者，想自荐一个为 Windows 剪映用户做的小工具。文字由 AI 辅助整理。\n\n做教程、知识讲解或给口播配图时，截图明明已经在剪贴板里，却还要另存图片、找文件，再导入剪映。有时甚至先粘贴到聊天窗口，保存后再拖进去。剪蛋就是为减少这段重复操作而做的。\n\n运行剪蛋，打开剪映专业版的草稿素材页，截图或复制图片后回到剪映按 `Ctrl+V`，把图片作为剪辑素材导入。当前版本还会调用剪映的素材添加命令，尝试放到播放头位置、已有画面轨道上方；实际结果受剪映版本和界面状态影响。\n\n它适合把软件步骤截图、自己制作的知识卡片、获得授权的资料配图放进视频。它不替代剪映，也不负责 AI 生成或自动成片；已经保存好的一批文件仍可直接使用剪映原生导入。\n\n## 入口与演示\n\n- 官网：https://www.jiandan.qd.je/\n- 公开代码仓库：https://github.com/SKYCHENV/Jiandan\n- Windows EXE 下载及校验：https://www.jiandan.qd.je/download/\n- 实机 Demo：https://github.com/SKYCHENV/Jiandan/blob/main/demo/jiandan-demo.mp4\n- 操作说明：https://www.jiandan.qd.je/docs/quick-start/\n\n## 使用前说明\n\n- 面向 Windows 10/11 的剪映专业版，不是剪映官方插件；不宣称支持 Mac、手机剪映或国际版 CapCut。\n- 正式版首次使用需要邮箱验证码登录，登录和会话校验需要联网；图片与剪贴板内容不上传。\n- 图片会保存为本地素材文件，草稿可能引用这些文件，在仍需编辑草稿时请保留。\n- 如遇适配问题，欢迎在仓库 Issues 提供剪映版本与复现步骤；请勿公开验证码、邮箱或私人素材。",
-    "created_at": "2026-09-12T00:13:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11637"
-  },
-  {
-    "id": 11636,
-    "title": "【开源自荐】Deck：在 macOS 上用看板管理多个终端 agent",
-    "content": "自荐一个开源项目 **Deck**，方便在 Mac 上同时管理多个 Claude Code、Codex 或其他终端 CLI 任务。\n\n同时开几个 agent 时，经常需要来回切换终端，查看哪个在等回复、哪个已经结束一轮。Deck 给这些本地终端加了一层管理界面：\n\n- **用看板整理任务**：每张卡片对应一个真实的 tmux session，可以按项目分组、手动调整位置，也可以分屏查看多个终端。\n- **集中查看待关注的 session**：启用 Claude Code 或 Codex 状态集成后，跨项目汇总输入请求和本轮结束未读，点击即可回到对应终端处理。结果是否符合预期，仍由使用者检查。\n- **退出应用，session 继续运行**：tmux 已内置，重新打开 Deck 可以继续查看；重启机器或后台 Shell 服务会结束其中的运行进程。\n\n目前支持 **Apple Silicon Mac、macOS 11 及以上**，采用 **MIT 许可证**，发行版已签名并通过 Apple 公证。无需 Deck 账号；agent CLI 需自行安装和登录，模型服务与费用由相应工具提供和收取。\n\n- [中文官网](https://deck.c9r.io/zh/)\n- [GitHub 源码与安装说明](https://github.com/c9r-io/deck)\n- [26 秒真实演示](https://deck.c9r.io/zh/#demo)：从三个 Claude session 中找到等待回复的任务，打开终端批准请求，再查看结果。中文界面与字幕，无音频，已剪去等待时间。\n\n[![Deck 真实演示：看板中的三个 Claude session，点击播放](https://deck.c9r.io/assets/demo/deck-0.6.6-poster.jpg)](https://deck.c9r.io/zh/#demo)\n\n欢迎同时使用多个终端 agent 的朋友试用和反馈。\n",
-    "created_at": "2026-09-11T17:08:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11636"
-  },
-  {
-    "id": 11635,
-    "title": "【开源自荐】oh-story-claudecode：让 Claude Code / Codex 等编程 Agent 写网文的 skill 包，扫榜→拆文→写作→去AI味全流程",
-    "content": "**项目地址**：https://github.com/zenstory-ai/oh-story-claudecode （MIT，6.7k star）\n\n**一句话**：把编程 Agent（Claude Code、Codex CLI、Google Antigravity、OpenCode、ZCode、OpenClaw、Reasonix）变成一套完整的网络小说写作工作流，长篇与短篇都覆盖。\n\n**它做什么**：按职业作者的方法论拆成 13 个 skill——扫榜（分析榜单选题材、人设、切入点）、拆文（拆解爆款的大纲节奏与剧情模块）、商业化写作（钩子、爽点、期待感）、去AI味、封面图。不是提示词合集：内置确定性 verifier、写正文前的 Reference Gate、分层的上下文状态管理，以及 7 个专业 agent 的协作部署（`/story-setup` 一键部署到各个 Agent 环境）。\n\n**适合谁**：在起点、番茄、晋江、七猫、知乎盐言等平台写作的作者，以及想看「非编程场景下 agent skills 能做到什么程度」的开发者。\n\n**安装**：`npx skills add zenstory-ai/oh-story-claudecode -y -g`\n\n英文 README：https://github.com/zenstory-ai/oh-story-claudecode/blob/main/README_EN.md\n同一组织的姊妹项目（短剧/漫剧、小说改游戏、视频解说）：https://github.com/zenstory-ai",
-    "created_at": "2026-09-11T16:37:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11635"
-  },
-  {
-    "id": 11634,
-    "title": "【开源自荐】capcut-cli：在终端里创建和编辑剪映 / CapCut 草稿，也能交给 AI Agent 来做",
-    "content": "## 为什么要做这个\n\n剪映 / CapCut 没有公开的编辑 API。批量加字幕、调时间轴、把长视频切成短视频，只能在界面里一条一条手动完成。\n\ncapcut-cli 直接读写本地草稿，在终端里完成这些操作；结果在剪映里打开，每条轨道依然可编辑。因为是 JSON 进、JSON 出，它也可以交给任何大模型 Agent 来驱动。\n\n## Highlight\n\n- 直接操作本地草稿存储：没有上传、没有 API、没有 MCP 服务，也没有 HTTP 守护进程\n- 同时支持剪映和 CapCut，支持的版本见 [version-support](https://github.com/renezander030/capcut-cli/blob/master/docs/version-support.md)\n- 导入 SRT、样式化字幕、静音感知剪辑\n- 调整时间、速度、音量、模板和动画（淡入淡出、Ken Burns）\n- 把长视频切成短视频\n- Node ≥ 18，只用内置模块，没有原生依赖；MIT 协议\n- 自带 Claude Code 插件和 Agent Skill\n- 独立的非官方项目，与字节跳动无关\n\n## 快速上手\n\n```bash\nnpm install -g capcut-cli\ncapcut doctor\ncapcut quickstart my-first --video clip.mp4 --srt captions.srt\n```\n\n## 链接\n\n- GitHub：https://github.com/renezander030/capcut-cli\n- 剪映快速上手（中文）：https://github.com/renezander030/capcut-cli/blob/master/docs/quickstart.zh-CN.md\n",
-    "created_at": "2026-09-11T15:16:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11634"
-  },
-  {
-    "id": 11633,
-    "title": "【开源自荐】ContextOS：让 Codex 的 272K 上下文在长任务中也无需压缩代码，综合减少 60% 上下文",
-    "content": "项目地址：https://github.com/yubinbin32-ops/ContextOS\n\n我用 Codex 改中型项目时，最消耗上下文的经常不是“写当前函数”，而是三件事：\n\n- 每轮都要重新理解项目结构\n- 为了定位一个方法，读进来一堆无关文件\n- 模型说完成了，但测试没有证据，后面反复返工\n\nContextOS 做的事，是把这些重复的上下文消耗从 Codex 的对话里拿出去。\n\n## 使用方式\n\n从仓库 Releases 下载 macOS App 后，App 会自动完成 MCP 安装和配置，把 ContextOS 注册到 Codex 等客户端里。\n\n打开 Codex，ContextOS 就已经启用，不需要手动改 `mcp.json`。\n\n## 核心流程\n\n1. 项目结构先写入 ContextOS\n\n在图形界面里整理模块、依赖链路、影响路径和检查点。这些内容会保存成 `.contextos/graph.json`，由 Git 追踪。Codex 不用每轮重新扫描目录，而是读取项目结构和相关任务上下文。\n\n2. Codex 按任务读取上下文\n\n任务开始时，ContextOS 返回紧凑的项目地图、相关 Block、Chain、Plan 和检查点，而不是把整个仓库塞进去。\n\n3. AST 只提供精准定位\n\nContextOS 给 Codex 的是 `path::symbol`、函数签名和行号范围，不是完整实现代码。编辑器打开的是具体目标方法，不是整个文件。\n\n4. `run_command` 压缩命令输出\n\n命令执行结果会经过 ContextOS 的终端网关，过滤 ANSI、进度条、本地路径和重复日志，只保留结构化诊断信息。\n\n5. 测试回执决定完成状态\n\n完成状态绑定测试执行结果和检查点。源码改过以后，相关检查点会变成 `retest_required`，模型不能只靠“我觉得完成了”过关。\n\n## 对比\n\n| 环节 | 不使用 ContextOS | 使用 ContextOS | 实测结果 |\n| :--- | :--- | :--- | :--- |\n| 项目结构理解 | 每轮读目录和文件 | 读取 Git 追踪的项目图 | 不重复扫描 |\n| 代码定位 | 读取整个源码文件 | `path::symbol` + 行号 | 单任务上下文降低 99.4% |\n| 执行链上下文 | 返回多模块实现内容 | 只返回定位信息 | 执行链上下文降低 98.5% |\n| 命令输出 | 原始终端日志进入上下文 | `run_command` 过滤和压缩 | 日志压缩 94.8% |\n| 完成状态 | 模型自我判断 | 测试回执 + 检查点门禁 | 目标模块召回 100% |\n\n表格里的 99.4%、98.5%、94.8% 来自 `npm run benchmark` 的可复现实测；标题里的“综合减少 60%”是我长时间任务用下来的体感。\n\n![ContextOS 架构画布](https://raw.githubusercontent.com/yubinbin32-ops/ContextOS/main/assets/canvas-overview.png)\n\n![影响路径追踪](https://raw.githubusercontent.com/yubinbin32-ops/ContextOS/main/assets/path-impact.png)\n\n![测试回执详情](https://raw.githubusercontent.com/yubinbin32-ops/ContextOS/main/assets/checkpoint-detail.png)\n\n欢迎实际试一下，尤其是已经用 Codex 跑过中大型项目的人。",
-    "created_at": "2026-09-11T14:43:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11633"
-  },
-  {
-    "id": 11632,
-    "title": "【开源自荐】AI加词：面向海外中文用户的开源背单词网站，FSRS 间隔重复 + AI 词条资料",
-    "content": "项目地址：https://github.com/leoon-hu/jiaci\n在线体验：https://jiaci.app （邮箱验证码登录，免费）\n\n一个精简的背单词网站，做给在海外工作、留学的中文用户：内置 / 导入词库 → 每日按计划学习 → 认识 / 模糊打分 → FSRS 间隔重复安排复习。\n\n特点：\n- 复习用 FSRS 算法（ts-fsrs），按目标记忆保持率安排，难词密、简单词疏，间隔达到阈值自动转为已掌握，不用手动管理\n- 词条的核心义、义项、例句、搭配、辨析、词族、助记、词源由 AI 离线填充、全局共用，浏览时不调用模型\n- 21 本内置词库：高频三级、中高考、四六级、考研、托福、雅思、GRE、学术词汇、常用短语，以及租房 / 看病 / 银行 / 职场 / 孩子上学 / 数字生活六本海外场景词库\n- 单词四种口音 × 声音的发音，例句与中文释义也能朗读\n- 单词列表横向拖动一行直接打分 / 移出，长按多选，几秒内可撤销\n- 手机与桌面一套代码，PWA 可加到主屏\n\n技术：Next.js 15 + TypeScript + Prisma + PostgreSQL，MIT 协议，词典数据来自 ECDICT。\n\n截图：\n\n<img width=\"780\" height=\"1688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b8484d02-3bc4-4181-8d74-7211951b7773\" />\n<img width=\"780\" height=\"1688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a6c8da8e-524c-4599-89f4-cbcaee432f19\" />\n<img width=\"780\" height=\"1688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6831f1bb-e80e-44ac-aeec-adc850103842\" />\n<img width=\"780\" height=\"1688\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/236aefb5-7823-42fe-aeea-0869317979a8\" />",
-    "created_at": "2026-09-11T13:25:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11632"
-  },
-  {
-    "id": 11631,
-    "title": "【开源项目】自托管 AI 代码审查平台 codereview-ai 来了！",
-    "content": "告别人工 CR 的繁琐，让 AI 成为你的代码质量守门员！这是一款真正懂工程实践的 AI CR 工具——部署在你自己的服务器上，代码绝不出内网！🔒\n\n✨ 核心亮点：\n1️⃣ 精准行级评论：拒绝 AI 幻觉！纯工程引擎精准锚定行号，审查意见直接写回 PR/MR 的对应代码行。\n2️⃣ 三层智能审查：LLM 大模型 + Semgrep 静态分析 + Agentic 自主推理，全方位揪出代码隐患。\n3️⃣ 全自动工作流：Webhook 自动触发，支持一键补拉漏掉的 PR，审查结果实时推送到钉钉/飞书/企微！📱\n4️⃣ 开箱即用：Docker 一键私有化部署，自带高颜值 Vue 3 管理后台，轻松管理多项目与模型配置。\n\n💡 凡是能被工程确定的问题，绝不让模型去赌！金融级、企业级团队的私有化首选！\n\n🔥 赶紧给你的代码仓库挂上这个“超级大脑”吧！\n\n#AI工具 #代码审查 #程序员日常 #GitHub #GitLab #开源项目 #研发效能 \n\nhttps://github.com/zhansan379/codereview-ai\n\n<img width=\"2549\" height=\"1191\" alt=\"image\" src=\"https://github.com/user-attachments/assets/173bc789-b4a7-4a92-bcbe-e2d9a1ff8a9a\" />\n\n<img width=\"2549\" height=\"1191\" alt=\"image\" src=\"https://github.com/user-attachments/assets/4b8a42f2-9348-4bfa-87ad-a32133c5e77f\" />\n\n<img width=\"2549\" height=\"1191\" alt=\"image\" src=\"https://github.com/user-attachments/assets/2bbc929b-1cb4-4914-8660-89a44d74007c\" />\n\n<img width=\"1470\" height=\"785\" alt=\"image\" src=\"https://github.com/user-attachments/assets/8b488eb4-f5e9-4711-8898-aaa634ed8776\" />\n\n<img width=\"1367\" height=\"684\" alt=\"image\" src=\"https://github.com/user-attachments/assets/8c356076-37d3-44b7-8022-0f826296cf42\" />\n\n<img width=\"2560\" height=\"1368\" alt=\"image\" src=\"https://github.com/user-attachments/assets/1878447e-93f5-42c5-aa88-849fea0b870f\" />",
-    "created_at": "2026-09-11T11:11:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11631"
-  },
-  {
-    "id": 11630,
-    "title": "【网站自荐】OPC 情报站：追踪「一人公司」资讯的纯静态聚合站",
-    "content": "网站地址：https://opc-radar.pages.dev/\n\nGitHub：https://github.com/WXzhongwang/opc-radar\n\n自荐一个自己做的网站 OPC 情报站：把「一人公司（One Person Company, OPC）」这个主题的公开情报，按九个维度持续聚合起来，做成一个打开即用的数据看板。目前收录 82 条政策动向、创业案例与生态工具情报。\n\n核心特点：\n\n- **单一主题纵深，不是工具黄页**：只盯一人公司这一个赛道，从政策动向、社区落地、创业案例、生态工具、研究报告、赛事活动、风险观察、全球视野、趋势观察九个维度分类\n- **九类筛选 + 全文搜索 + 热度 TOP 10 排行**，卡片视图与时间线视图一键切换\n- **纯静态单文件实现，零外部依赖**：不引用任何 CDN、字体或 JS 库，断网也能直接打开\n- **零后端、零注册、零表单**，不采集任何数据；统计脚本仅由浏览器直连服务商，可一键关闭\n- **全端响应式**：覆盖 1080 / 900 / 640 / 400px 四档断点与横屏矮屏，实测无横向滚动\n- **数据开源可导出**：`data.json` 是唯一数据源，由 GitHub Actions 定时补充，MIT 协议\n\n技术实现上，所有情报沉淀在 `data.json`，页面在浏览器端读取并渲染；`index.html` 内嵌同一份数据副本，因此直接双击文件也能离线打开。",
-    "created_at": "2026-09-11T10:43:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11630"
-  },
-  {
-    "id": 11629,
-    "title": "【文章推荐】文字又没有像素，AI 到底把水印藏在哪里？",
-    "content": "图片可以悄悄改几个像素，文字却没有藏东西的地方。AI 生成的文章是怎么带上水印的，复制粘贴后为什么还可能被认出来？这篇文章从大模型每次“选下一个词”讲起，拆开文字水印真正藏信号的地方，也解释了它为什么可能改变具体用词，却仍然“不明显影响内容”。这是一个听起来很玄，弄懂后却很简单的机制。\n\n- https://mp.weixin.qq.com/s/0WeOR2c2oTP3eK6PNHPV2Q",
-    "created_at": "2026-09-11T10:29:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11629"
-  },
-  {
-    "id": 11627,
-    "title": "【开源自荐】Data Maskit：专为大模型打造的本地隐私脱敏与还原网关",
-    "content": "## 项目介绍\n\n- **项目名称**：Data Maskit (数据面具)\n- **项目地址**：https://github.com/xiaYuTian11/maskit\n- **开源协议**：AGPL-3.0\n- **适用平台**：Windows 桌面客户端 (Tauri 2)、Docker (amd64 / arm64 预构建镜像)\n\n### 解决了什么问题？\n\n在使用 Cursor、Claude Code、Codex 等 AI 编程助手排查代码与报错时，开发者往往会顺手把包含数据库账密（`mysql://...`）、内网私有 IP（`192.168.x` / `10.x`）、云厂商 AccessKey 和业务隐私的代码发给外部大模型服务商，极易发生撞库与安全合规风险。\n\nData Maskit 在开发终端与外部大模型之间构建了一道透明的“本地反向代理脱敏网关”：\n1. **出网前自动打码**：通过本地 19 类内置规则与自定义词库，将敏感信息自动替换为结构化业务占位符；\n2. **回复流式无感还原**：针对 `text/event-stream` 流式输出，逐 chunk 拼接还原，完全保留官方原生丝滑的打字机体验；\n3. **100% 本地运算**：零外部遥测，免装自签名 CA 根证书，带退出透明直连兜底（绝不断网）；\n4. **即插即用**：只需在 Cursor 等工具中将 API Base URL 改为本地监听端口即可。\n\n### 界面与效果截图\n\n- 控制台总览与 Token 看板：https://github.com/xiaYuTian11/maskit/blob/master/docs/screenshots/dashboard.png\n- 真实脱敏与还原明细（前后对照）：https://github.com/xiaYuTian11/maskit/blob/master/docs/screenshots/event-detail.png\n\n欢迎阮老师收录推荐，帮助更多开发者在安全合规的前提下享受 AI 编程提效！\n",
-    "created_at": "2026-09-11T07:30:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11627"
-  },
-  {
-    "id": 11626,
-    "title": "【工具自荐】PDF to MD：在浏览器本地将 PDF 转成 Markdown",
-    "content": "## PDF to MD\n\n一个将 PDF、DOCX 和 HTML 转成 Markdown 的在线工具。\n\n对于包含文本层的 PDF，转换过程可以直接在浏览器本地完成，文件内容不会上传到服务器。转换后可以在线检查和编辑结果，支持复制 Markdown、下载单个文件，以及批量导出 ZIP。\n\n扫描版 PDF 和图片可以选择云端 OCR 模式。此外还提供 Markdown 转 PDF、REST API 和 MCP 接口，适合接入自动化或 AI 工作流。\n\n本地转换免费使用。复杂表格、数学公式和多栏排版可能需要人工校对。\n\n- 网站：https://pdf-to-md.app/\n- 开发者文档：https://pdf-to-md.app/developers\n- 支持语言：中文、英文、日文和德文\n\n![PDF to MD](https://pdf-to-md.app/og-pdf-to-md.png)",
-    "created_at": "2026-09-11T07:21:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11626"
-  },
-  {
-    "id": 11625,
-    "title": "【项目自荐】Code Alone：一款使用Python编程的游戏开发者模拟器",
-    "content": "游戏名称：《Code Alone》\n开发者：Wenduo Yue\n引擎：Unity\n平台：Steam（免费Demo已上线）\n商店页链接：https://store.steampowered.com/app/4827900/Code_Alone/\n\n简介：\n这是一款让你体验游戏程序员工作的编程游戏。\n你将在游戏中亲手实现许多游戏的核心玩法，同时经历一段部分取材于真实经历的游戏开发者故事。\n\n截图：\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1d590944-3e0b-4a64-9350-7b8eb6ae13e3\" />\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/90449502-0491-4834-8479-aa009162a37f\" />\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/01e3fe20-f25e-487b-8b46-930c7b9b7520\" />\n\n补充：\n一个在游戏行业十几年的程序员，断断续续开发了三年。叙事部分已经尽量克制了。（现实过于抓马，以至于像假的）",
-    "created_at": "2026-09-11T05:40:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11625"
   }
 ]
