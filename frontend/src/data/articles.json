@@ -1,5 +1,13 @@
 [
   {
+    "id": 11762,
+    "title": "开源自荐】PiX: 把 AI Agent 会话变成一张图的桌面工作台,任意节点分叉,上下文跟随分支",
+    "content": "- 项目名称:PiX\n- 项目地址:https://github.com/huang-sh/PiX\n- 项目简介:基于开源 Agent 框架 Pi 的图形化工作台:会话不是一条时间轴,而是一张可生长的图,任意节点随时分叉,上下文跟随分支,多方向并行推进互不干扰。\n- 项目截图:\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/86ff65e5-1e1d-4030-ba9f-4f51cf4f0bd1\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e915508b-7a2d-48c8-9c3a-ae840d7ded46\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/37defeb5-b120-4570-acce-1ddc9057cad4\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aa3bcc0f-44ec-43c7-bb06-f1a22e506b10\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f98bef44-6c04-4f21-a49a-80fdea3560b6\" />\n\n## 补充说明\n\nPiX 是一个 Electron 桌面应用,给开源 Coding Agent [Pi](https://github.com/badlogic/pi-mono) 加了一层\"图优先\"的工作台:每一轮对话(你的提问 + 助手的回复与工具调用)是图上的一个节点,任何一个节点都可以随时长出新分支。\n\n传统 AI 对话是一条单线时间轴,想换方向要么推倒重来,要么在原对话里越聊越乱。PiX 让多个探索方向并存于同一张图上:哪条路径走通了就继续深入,走不通的分支留在图上,随时回来换条路再试。\n\n- 技术栈:Electron + TypeScript + Vue 3(Vue Flow 画布、xterm 终端)\n- 平台:Windows(安装版 / 便携版)、macOS(Apple Silicon / Intel)\n- 状态:v0.0.19,积极开发中;会话即真实的 Pi 会话文件,离开 PiX 仍可用 pi CLI 继续,并支持 SSH / WSL 远程环境与内置文件搜索\n\n## 值得关注的点\n\n1. **随时分叉**:从任意一轮对话分叉(Fork)、从此轮继续、或克隆当前分支做存档点,原分支完好无损;\n2. **上下文跟随分支**:切换分支时,聊天面板即时切换到该分支的消息;选中节点即可查看该轮的思考过程、工具调用与耗时;\n3. **多 Chat Panel 并排对比**:Ctrl+双击图上不同分支的节点,把分支固定到并排的聊天列,最多同时 3 列;每列独立滚动、独立回复,回复后该列继续跟随这条分支生长,直观对比不同方案的走向。\n\n## 30 秒上手\n\n从 [GitHub Releases](https://github.com/huang-sh/PiX/releases) 下载对应平台安装包即可(安装包未签名,Windows SmartScreen 提示时选择\"仍要运行\")。\n\n或从源码运行(Node.js ≥ 22.19):\n\n```bash\nnpm install\nnpm run dev\n```\n\n## 披露\n\n本人为项目作者,本文为自荐;版本号与 star 数截至发文时,均可在仓库核实。",
+    "created_at": "2026-09-16T22:05:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11762"
+  },
+  {
     "id": 11761,
     "title": "[开源自荐] dsh-novel-craft：把作者的点选压成写作规律，只有规律进模型上下文",
     "content": "> Github: https://github.com/shiyan688/dsh-novel-craft\n> 安装：`dsh plugin --profile web add dsh-novel-craft`（npm `dsh-novel-craft@0.1.4`，MIT）\n\n# 这是什么\n\n给中文网文/小说创作场景做的一个「作者品味校准」工作台，是 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的插件（宿主半区 + 浏览器半区）。\n\n一句话：一轮生成若干\"结构不同\"的候选稿，作者只做一件事——在觉得好的段落上点一下、在别扭的段落上点一下。这些点选被压成**可复用的写作规律**，下一轮写稿照着收敛。\n\n# 我遇到的问题（自己写了半年小说，都是真事）\n\n1. **禁AI腔清单能让模型不像 AI，但做不到\"像这个作者\"。** 清单人人都在抄，抄完模型不油腻了，可它依然不是我。\n2. **作者的真实反馈从来不沉淀。** 今天说\"太刻意\"，明天说\"没网感\"，第三轮同一个毛病。因为我给的是**评价**，不是**可复用的写法**。\n3. **原文喂不进上下文。** 那把作者选中的段落整理成档案交给模型？起步 6 KB，一轮一个样，模型还得自己从原文里猜规律——猜不准，还烧掉上下文预算。\n\n# 做法：三层分离，加一条硬规则\n\n硬规则是：**进模型上下文的只有规律，原文永远不进。**\n\n| 文件（都在 `<候选目录>/.dsh-novel-craft/`） | 给谁看 | 进上下文？ |\n| --- | --- | --- |\n| `marks.json` | 工作台（机器可读的好/坏标注） | ❌ 永不 |\n| `证据摘录.md` | 原文证据，给人回查、给提炼当输入 | ❌（文件头写着\"不要读进写稿上下文\"） |\n| `作者偏好档案.md` | **写稿会话只读这一份**（只有规律） | ✅ 就它 |\n\n# 真机数字（不是估算）\n\n- 在一份真实书稿上点 30 段好/坏（第 1、2、8 章）\n- 点一次「提炼规律」：**1.8 秒**回来 **14 条**规律\n- `作者偏好档案.md` 从 **6140 B 的原文摘录**变成 **714 B 的规律**，里面一条原文都没有\n- 下一轮写稿只需要读这 714 B\n\n提炼出来的规律长这样（原样抄几条）：\n\n```\n喜欢：\n- 器物先动，人后发声，用声响顶点收束静默\n- 给反派一句极短的私人恐惧，落点在赔不起\n避免：\n- 不要用比喻堆砌写人群的恐惧\n- 不要用旁白解释反应者的心理活动\n```\n\n# 规律是怎么来的（以及为什么不是全自动）\n\n一次**便宜的辅助模型调用**把待提炼的原文压成条目，但条目**不直接进档案**——作者逐条勾选才采纳，水位随之前移，同一段不会被重复送。规律区是作者的，工作台维护的自动块之外永不被覆盖，单条规律可以一键删掉。\n\n# 顺手记两个插件坑（可能对写 dsh 插件的人有用）\n\n1. **插件行的 `apply` 可能早于服务挂载**：在 `0.1.6-alpha.1` 上实测，同步 `apply` 里 `ctx.get('webServer')` 拿到的是 `undefined`——写成\"取不到就 return\"的插件会在新版本上**静默什么都不做**。改成 `ctx.inject(['settings','webServer'], …)` 等就绪（带超时兜底）即可。\n2. **调模型做结构化输出要默认关掉推理**：推理 token 和正文共用一份输出预算，我这边表现是\"接口 5.6 秒返回、解析出 0 条规律\"，关掉推理 + 抬高预算后 1.8 秒出 14 条（官方 Discussion #6857 也写了这条）。\n3. 另外客户端 bundle 的下发地址从 `/plugins/<id>/client.js` 变成了组合脚本 `/plugins/??a/client.js,b/client.js&rev=…`——插件不用管，但拿裸 URL 做测试的人会误以为\"插件没被收录\"。\n\n# 工程质量\n\n- 209 项断言：静态守卫（Hook 顺序、词条完整性）+ 回环端口上的接口闭环（含假 LLM 的提炼链路）+ 用成对 react/react-dom 把客户端组件真渲染成 HTML；**测试不依赖任何本机路径**\n- `scripts/check-dsh-compat.mjs` + CI 矩阵：每周自动在 `latest` / `next` / `alpha` / `0.1.2-rc.1` 四档上真装一份 dsh、起服务、验宿主路由与客户端半区下发\n- 出处与致谢：`skills/novel-writing` 的禁AI腔清单改编自 [dsh-novel-solo](https://github.com/Tkingxiao/dsh-novel-solo)（MIT），平台 DeepSeek Harness（MIT），完整声明在 `THIRD_PARTY_NOTICES.md`\n\n仓库里还带了两个配套 skill（`taste-calibration` / `novel-writing`），装到 `.dsh/skills/` 即可，插件负责\"让你低负担地点\"，skill 负责\"告诉 agent 怎么用这些标注\"。",
@@ -794,13 +802,5 @@
     "created_at": "2026-09-13T11:20:21Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11663"
-  },
-  {
-    "id": 11662,
-    "title": "【网站自荐】哪版：比较 iPhone 各地区版本的价格、双卡与功能差异",
-    "content": "我做了一个免费的 iPhone 地区版本比较网站「哪版」。\n\n买 iPhone 时，国行、港版、美版、日版看起来是同一款手机，实体 SIM 卡、eSIM、蜂窝频段、FaceTime、Apple Intelligence、卫星功能、保修条件和官方价格却可能不同。相关资料散落在 Apple 各地区的规格页、商店页面和支持文档里，手动对照很容易漏掉适用条件。\n\n哪版把同一款 iPhone、相同存储容量在不同销售地区的版本放在一起比较。选择想看的地区后，可以切换「只看不同」或「只看相同」，按 SIM 与双卡、机身与续航、无线连接、功能与服务筛选。每个项目都可以展开查看 Apple 官方来源、核验时间和适用条件，价格会保留官方本币原价，并提供带日期的参考换算。页面还提供简化的 3D 外观，用来查看 SIM 卡槽和接口位置。\n\n目前收录 11 款 iPhone，覆盖中国大陆、香港、澳门、美国、日本、加拿大、澳大利亚、新加坡、马来西亚、台湾、韩国和英国 12 个销售地区。。\n\n免费使用，无需注册。\n\n中国大陆访问：https://naban.barrybarrywu.cn/\n\n其他地区访问：https://naban.barrybarrywu.com/",
-    "created_at": "2026-09-13T10:58:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11662"
   }
 ]
