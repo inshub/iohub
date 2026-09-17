@@ -1,5 +1,29 @@
 [
   {
+    "id": 11779,
+    "title": "自荐：jpeg-hit —— 把 JPEG 精确压到指定 KB 的纯浏览器算法",
+    "content": "## 项目信息\n\n- 官网/仓库：https://github.com/CGIFM/jpeg-hit\n- 在线体验：https://specsave.pages.dev\n- 类别：工具 / 前端\n- 开源协议：MIT\n\n## 一句话介绍\n\n把 JPEG **精确压到指定 KB** 的纯浏览器算法：考试报名照片（国考 20KB、教资 200KB）一键达标，低分辨率照片还能自动放大重采样以精确命中目标体积，全部本地处理不上传服务器。\n\n## 补充\n\n- 双模式：`hitTarget`（不超过目标 KB 的最高画质）+ `hitExact`（误差 <5% 精确命中）\n- 零依赖单文件，可直接 import\n- 起源于一个考试报名照片工具站（规格急救站），算法部分提取开源\n\n求反馈 🙏",
+    "created_at": "2026-09-17T17:52:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11779"
+  },
+  {
+    "id": 11778,
+    "title": "【开源自荐】DatI-轻量级数据库语义网关，让用户在自己的Agent上进行数据分析",
+    "content": "项目地址：https://github.com/yimindev/dati\n\n### 1. 定位\n本应用主要面向Text2SQL问题。传统的ChatBI是一个独立应用，无法集成到用户的工作流中（例如用户查完经营数据后要生成一份PPT）；而标准数据库MCP或Skill缺少语义信息，且本地使用需要数据库连接信息，企业中由于安全管控不可行。\n\n**DatI** (**Dat**a **I**ntelligence) 是一个轻量级的数据库语义网关，用户接入数据源，配置语义信息，开启预置工具并按需增加参数化SQL工具，即可发布为Streamable Http的MCP服务，可灵活集成至用户Agent或任意MCP Host\n\n### 2. 核心特性\n- **安全**：数据库密码集中管理，并可按用户进行权限隔离；\n- **准确**：支持语义增强，让大模型生成SQL更准；复杂场景可用参数SQL自定义工具；\n- **灵活**：发布为MCP服务，任意Agent或者MCP client均可连接；\n\n### 3. 演示\n- 元数据配置与MCP配置\n\n<img width=\"1124\" height=\"573\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8b6e37a4-4b03-4681-977f-01c510ac8a01\" />\n\n<img width=\"1113\" height=\"663\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8be01192-1c25-47b0-ad72-4a16228f9160\" />\n\n- Agent中进行数据分析\n\n<img width=\"1061\" height=\"899\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27004bf7-eee8-4c58-afc3-9690ef80ee86\" />\n",
+    "created_at": "2026-09-17T15:31:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11778"
+  },
+  {
+    "id": 11777,
+    "title": "【项目自荐】sofagent —— 开源 FDE Harness：给 AI 编程助手加审计约束层，密钥泄漏/越界改文件 commit 前拦截",
+    "content": "自荐一下我的开源项目：https://github.com/KongFangXun/sofagent\n\n（9 月 1 日曾投过一次 [issue #11453](https://github.com/ruanyf/weekly/issues/11453)，两周没有回音，项目最近发了新版，换个信息重新自荐一次，请见谅。）\n\n# sofagent 是什么\n\n开源的 FDE Harness（TypeScript / MIT）：给 AI 编程助手（Claude Code、Codex、DSH 等）加一层**审计约束层**。核心场景：AI 改了不该改的文件、commit 里带出密钥、提示注入攻击——commit 前当场拦截，全程留痕，出事一键回滚。\n\n最近刚发布 v1.4.9：24 条审计规则 + HMAC 链审计留痕 + 自动快照回滚 + 104 个 MCP tool，仓库 4800+ 测试，README 双语。已在 awesome-dsh-plugin（16k 星）、yzfly/Awesome-MCP-ZH、e2b 生态多个 awesome 清单收录，Glama 目录评分 A。\n\n# 一行命令体验\n\n```bash\nnpx -y -p @sofagent/audit sofagent-audit\n```\n\n任何 git 仓库秒级审计最近一次 commit（实测 quick 模式约 1 秒，5 万行 diff 约 6 秒），无需配置、无需联网。\n\n# 它解决什么问题\n\n现在很多人用 AI 写代码，但 AI 会「自由发挥」：改它不该碰的文件、把密钥写进代码、被提示注入带着跑。sofagent 装一个 git hook 就行，AI 每次提交都过 24 条规则，事故在 commit 前被拦住，而不是上线后才发现。\n\n适合用 AI 编程但担心失控的个人开发者和小团队。欢迎看看：https://github.com/KongFangXun/sofagent\n",
+    "created_at": "2026-09-17T13:47:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11777"
+  },
+  {
     "id": 11776,
     "title": "【工具自荐】MyShare：把本地网页或 HTML 文件变成临时密码分享链接",
     "content": "项目：MyShare\n网址：https://sharemydemo.com/\n\n我是项目作者。MyShare 用浏览器把本地网页、HTTP API 或选中的 HTML 文件转成带临时密码的分享链接，适合展示 AI 网页原型、客户评审和教学演示。访客无需注册或安装扩展。\n\nHTML 文件可以直接选择，不必先启动文件服务器；文件夹根目录需有 index.html / index.htm。这里提供可下载的单文件互动样例及完整步骤：\nhttps://sharemydemo.com/examples/html-demo/\n\n免费无需注册，每次最多 60 分钟、150 MB。分享电脑、浏览器和适用的本地服务须保持在线；普通网页模式还需保留分享标签页。可选扩展支持后台分享，但不提供关机后的永久托管。\n\n主页有操作演示。欢迎试用，也感谢考虑收录。",
@@ -776,29 +800,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/11680"
-  },
-  {
-    "id": 11679,
-    "title": "【工具自荐】HyperCopy：Hyperliquid 交易员分析、监控与自动跟单工具，支持 Web 和 App",
-    "content": "大家好，我自己平时很喜欢炒股和研究交易，也会关注加密货币、美股、黄金、原油这些市场。\n\n平时使用各大交易所的跟单功能时，我发现热门交易员经常有跟单名额限制，平台展示的数据也不够完整，很难真正看清交易员的长期表现、持仓风格和风险；跟单产生收益后，通常还需要给带单员分润。\n\n这些限制让我一直觉得不够自由，也是我后来决定开发 HyperCopy 的主要原因。 所以我开发了 HyperCopy ，希望把“发现交易员—分析表现—监控动态—执行跟单”放进一个产品里。 主要功能有：\n\n发现和筛选交易员 可以根据盈亏、收益率、胜率、最大回撤、夏普比率、持仓方向、杠杆和交易频率等指标筛选交易员，尽量避免只看短期收益排行榜就盲目跟单。\n\n查看交易员历史表现 支持查看当前持仓、最近成交、历史交易、盈亏曲线、仓位分布和风险指标，先了解交易风格，再决定是否跟单。\n\n自动跟单和立即跟单 可以指定交易员自动跟单，也可以看到实时持仓后手动选择立即跟单。开仓后还能根据设置继续跟随加仓、减仓和平仓。\n\n仓位与风险控制 支持按资产比例、仓位比例或固定金额跟单，并可设置止盈止损、最大仓位、滑点保护和保证金保护等参数。不同市场的具体选项会根据交易账户和品种有所区别。\n\n行情和账户监控 可以关注交易员或账户的持仓变化、开平仓动态和风险变化，并接收相应通知。HyperCopy 同时支持 Web 和 APP ，两端账户、监控列表和跟单配置互通，都可以直接查看和管理跟单。 速度方面，目前在线实测，从捕获目标交易员的成交或仓位变化，到跟单订单提交，通常约为 1–2 秒。\n\n体验地址： Web： https://www.hypercopy.net/\n\nApp 下载： https://www.hypercopy.net/download\n\n这是我自己因为喜欢交易而开发的产品，目前仍在持续迭代，也包含部分付费功能。跟单不代表稳赚，建议先观察策略，并用小资金测试。\n\n界面截图：\n\n<img width=\"4008\" height=\"2718\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8e2bf7eb-7f5f-495d-bafb-dc8c2e30cf81\" />\n\n<img width=\"4008\" height=\"2718\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0c174eb-1171-4ccf-b360-4ef4557357db\" />",
-    "created_at": "2026-09-14T05:56:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11679"
-  },
-  {
-    "id": 11678,
-    "title": "【资源自荐】竞品证据交接示例：别把“没提到”写成“不支持”",
-    "content": "我是 MARKET//SKILLS 的维护者，分享一份中英双语的竞品研究操作示例：\n\nhttps://github.com/fffffrost/market-skills/blob/main/docs/competitor-evidence-handoff.md\n\n它用三张明确标为虚构的卡片，演示三类常见判断该怎样落笔：按席位和按项目的报价不能直接比；资料没有提到审核角色，不能写成产品不支持；能导出草稿，也不能推断能自动发布。\n\n页面包含填写好的证据表、可以复制到自己Agent里的任务，以及验收清单。示例和Skill采用MIT许可，不需要注册Mika工作台即可阅读和使用；运行Agent仍使用读者自己的环境。适合需要把竞品资料交给产品或销售的小团队。\n\n这些是教学卡片，不是真实厂商调查、客户案例或已完成测试。我与项目有关联；材料由AI辅助整理并经维护流程检查，没有用户增长或效果承诺。\n",
-    "created_at": "2026-09-14T05:36:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11678"
-  },
-  {
-    "id": 11677,
-    "title": "【开源自荐】grill-engineering：用 grill-me 拆解需求，让 Codex 自动开发、验收和修复",
-    "content": "### 项目介绍\n\n[grill-engineering](https://github.com/GRD-Chang/grill-engineering) 是一个自动推进 GitHub 任务开发的开源工具，配合 Matt Pocock 的 [Skills](https://github.com/mattpocock/skills) 使用。\n\n用 `grill-me` 讨论需求，再通过 `to-spec`、`to-tickets` 拆好任务后，开发往往还需要人逐轮推进：安排下一张 Ticket、跟进修复、处理 PR 和合并。我做这个项目，是想把这部分重复操作自动化。\n\n配置好后，一条命令启动，程序会按任务依赖调用 Codex 开发、对照需求验收；发现问题就交回开发修复，再次验收。\n\n**开发 → 验收 → 修复 → 再验收。**\n\nPR 创建、CI 检查和子任务合并也由程序自动处理，最终交付由维护者批准合并。需要人工决定或修复达到次数上限时，会暂停并保留已有工作。\n\n### 项目截图\n\n自动开发与验收流程：\n\n![grill-engineering 自动开发与验收流程](https://raw.githubusercontent.com/GRD-Chang/grill-engineering/main/docs/images/automation-overview.png)\n\n通过 `status` 查看当前任务和运行进度：\n\n![agent-run status 运行状态](https://raw.githubusercontent.com/GRD-Chang/grill-engineering/main/docs/images/status.png)\n\n通过 `history` 查看开发、验收、修复和合并记录：\n\n![agent-run history 运行历史](https://raw.githubusercontent.com/GRD-Chang/grill-engineering/main/docs/images/history.png)\n\n项目地址：https://github.com/GRD-Chang/grill-engineering\n",
-    "created_at": "2026-09-14T04:58:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11677"
   }
 ]
