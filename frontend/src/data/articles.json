@@ -1,5 +1,53 @@
 [
   {
+    "id": 11768,
+    "title": "【开源自荐】Codex Quota Dot：桌面上瞄一眼剩余额度",
+    "content": "自荐一个自己维护的小工具：[Codex Quota Dot](https://github.com/Silvren/codex-quota-dot)。\n\n写代码时只想瞄一眼 Codex 还剩多少额度，不想为这件事再切去设置页。所以做成了一个 56 px 的桌面小球：拖动换位置，点击才展开，鼠标路过不会突然弹一张卡片。\n\n展开可以看剩余额度、重置倒计时、重置机会，以及这次加上的 credits 余额。只有周额度的账号也能显示，不强行假定每个套餐都有五小时限额。余额标的是 credits 点数，不冒充美元。\n\nWindows 和 macOS 都有，Codex CLI / Desktop 用户都能用。基于 Tauri + Rust + React，不捆绑浏览器，没有同步服务器和遥测；通过已安装的 Codex 查询配额，不读取 auth.json、聊天记录或项目内容。MIT 开源。\n\n![界面演示，使用模拟数据](https://raw.githubusercontent.com/Silvren/codex-quota-dot/v0.2.4/assets/codex-quota-dot-ui.jpg)\n\n[源码与中文说明](https://github.com/Silvren/codex-quota-dot/blob/main/README.zh-CN.md) · [下载](https://github.com/Silvren/codex-quota-dot/releases/latest)\n\n它不做额度绕过，也不想做成另一个大面板——让用量留在视线里、不打断手头的事，就够了。\r\n",
+    "created_at": "2026-09-17T06:35:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11768"
+  },
+  {
+    "id": 11767,
+    "title": "【开源自荐】梗鲸 · DeepSeek酱语录：DeepSeek 娘化拟人（蓝色大肥鱼/鲸鱼娘）表情包图库，开源可自由引用",
+    "content": "推荐一个自己做的开源项目 [梗鲸 · DeepSeek酱语录](https://ai-meme.cdqyfdbymn.me/)，一个 DeepSeek 娘化拟人「蓝色大肥鱼 / 鲸鱼娘」的梗图与语录表情包图库。\n\nDeepSeek 走红后，网友给它创作了大量娘化拟人形象，其中流传最广的是\"蓝色大肥鱼 / 鲸鱼娘\"。梗鲸把这些散落在群聊和社交平台里的二创表情包汇总成图库：瀑布流浏览，点图放大、长按即存，持续更新。\n\n- **瀑布流图库**：点开放大，长按/右键即保存，手机电脑都好用\n- **中英双语背景故事**：配套开源仓库为每张图写清出处和梗的来龙去脉\n- **CDN 直链**：全部图片提供 CDN 外链，文章、视频、聊天里可以直接引用\n- **资源整包开源**：表情包合集整体开源，欢迎取用和二创\n\n- 在线图库：https://ai-meme.cdqyfdbymn.me/\n- GitHub 仓库：https://github.com/the-beating-light-of-the-nail/deepseek-chan-meme-pack\n\n项目免费、无需注册。",
+    "created_at": "2026-09-17T06:13:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11767"
+  },
+  {
+    "id": 11766,
+    "title": "【开源自荐】AgentMeasure：审计 110 个 AI 用量统计工具，五类计量 bug、20 个修复已被上游合并",
+    "content": "- 项目名称：AgentMeasure\n- 项目地址：https://github.com/roy-tong/AgentMeasure\n- 项目简介：AI 用量统计的「体检 + 审计」工具。起因是一个问题：你 dashboard 上的 token 和费用，到底数的是什么？作者用三周时间审计了约 110 个 Claude Code / Codex / 网关 / eval 生态的用量统计工具，整理出五类系统性计量 bug（同一消息被计两遍、重发事件重复累计、缓存 token 计价语义搞反、价表漂移、fork 会话丢数据），目前 45+ 条实证发现里已有 20 个被上游维护者合并修复（包括 langfuse 34k★、litellm 58k★ 级别仓库），每条都带可复现证据。工具本体只读扫描本地 Codex 会话日志，生成体检报告：哪些记录被记了两遍、哪些重试在放大消耗、哪些统计其实无法从日志证明（UNPROVABLE 而不是猜一个数）。维护用量统计工具的开发者可以用仓库里的 conformance fixtures 十分钟自检。\n- 说明性结果（五类 bug 一览，完整报告见仓库）：\n\n| # | bug 类 | 实证数 | 典型后果 |\n|---|---|---|---|\n| 1 | 同一响应按内容块多行重复计费 | 10+ | 成本虚高 ~2.4× |\n| 2 | 事件重发被当作新请求 | 5+ | token 重复累计 |\n| 3 | 缓存 token 计价语义（含/不含搞反） | 9 | 最多差 37.5% |\n| 4 | 价表漂移（含上游传染） | 7+ | 节省金额失真 3-4× |\n| 5 | resume/fork 会话历史丢失或重放 | 4+ | 86% 用量不可见 |\n\n- 相关链接：[审计报告全文](https://github.com/roy-tong/AgentMeasure/blob/main/campaigns/audit-report-2026-09.md) · [工具作者十分钟自检](https://github.com/roy-tong/AgentMeasure/blob/main/campaigns/tool-authors.md)\n",
+    "created_at": "2026-09-17T05:49:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11766"
+  },
+  {
+    "id": 11765,
+    "title": "网站推荐：Codex Reset Radar — Codex 使用额度与重置状态追踪",
+    "content": "在使用 Codex 的日常开发里，使用额度的变化常常难以跟踪：账户显示的限额、服务状态和公开的重置信息并不总是一致。最近发现一个专门页面，把 Codex 使用额度、重置状态、重置历史和 Tibo 的公开重置公告集中展示，方便在安排工作前快速查看：[latest Codex reset updates](https://quickresetai.online/)\n\n页面在浏览器中直接打开，不需要安装任何东西，适合在开始一段较长的编码会话之前先确认额度情况，再决定任务拆分和保存节奏。\n\n推荐理由：信息集中、加载快、界面直接，适合把额度信息当作日常开发计划的一部分来参考。",
+    "created_at": "2026-09-17T05:09:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11765"
+  },
+  {
+    "id": 11764,
+    "title": "【开源自荐】yovoice：简洁易用的本地 TTS 配音工具，支持音色复刻和情绪调节",
+    "content": "推荐一个自己做的开源桌面应用 [yovoice](https://github.com/leemysw/yovoice)，支持 macOS 和 Windows，用来做视频旁白和文章朗读。\n\n希望把本地配音做得简单一些。yovoice 将常用操作放在一个简洁的界面里，贴上文稿、选好音色，再调一下情绪，就可以生成配音。安装包内置了 audio.cpp 推理引擎，首次使用时在应用里下载模型即可，语音在本机生成。\n\n- **音色复刻**：导入或录制参考音频，用参考音色生成配音。\n- **情绪调节**：调整声音的情绪和表达方式。\n- **声音库与历史记录**：保存常用音色，试听和导出作品，也能复用之前的生成参数。\n- **模型管理**：在应用内下载模型，或导入本地 GGUF 文件。\n- **CLI 和 Agent Skill**：支持命令行调用，也可以让 Agent 完成配音任务。\n\n项目免费、开源，无需注册。\n\n- [GitHub 源码](https://github.com/leemysw/yovoice)\n- [下载安装包](https://github.com/leemysw/yovoice/releases/latest)\n\n### 工作台\n\n![yovoice 工作台](https://imgdb.io/i/z2QF-c8.png)\n\n<details>\n<summary>更多界面截图</summary>\n\n声音库\n\n![yovoice 声音库](https://imgdb.io/i/Jrf-Y2o.png)\n\n历史记录\n\n![yovoice 历史记录](https://imgdb.io/i/njBaNOI.png)\n\n模型管理\n\n![yovoice 模型管理](https://imgdb.io/i/9C5IYoA.png)\n\n推理引擎\n\n![yovoice 推理引擎](https://imgdb.io/i/fZMnKr4.png)\n\nmacOS 安装\n\n![yovoice macOS 安装](https://imgdb.io/i/dXqomzM.png)\n\n</details>\n\n欢迎试用，有问题或建议可以到项目仓库提 Issue。",
+    "created_at": "2026-09-17T04:38:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11764"
+  },
+  {
+    "id": 11763,
+    "title": "【文章推荐】Claude Code 是 Angular，Codex 是 Vue，DeepSeek 想当 React",
+    "content": "前端框架的“控制权之争”，正在 AI Agent 重演。Claude Code 像 Angular，Codex 像 Vue，DeepSeek Harness 想做 React。真正的问题不是功能，而是：核心该替用户决定多少？小核心不是免费午餐。\n\n- https://mp.weixin.qq.com/s/FkAdQroxddwiIqq6_jLeUQ",
+    "created_at": "2026-09-17T01:34:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11763"
+  },
+  {
     "id": 11762,
     "title": "开源自荐】PiX: 把 AI Agent 会话变成一张图的桌面工作台,任意节点分叉,上下文跟随分支",
     "content": "- 项目名称:PiX\n- 项目地址:https://github.com/huang-sh/PiX\n- 项目简介:基于开源 Agent 框架 Pi 的图形化工作台:会话不是一条时间轴,而是一张可生长的图,任意节点随时分叉,上下文跟随分支,多方向并行推进互不干扰。\n- 项目截图:\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/86ff65e5-1e1d-4030-ba9f-4f51cf4f0bd1\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e915508b-7a2d-48c8-9c3a-ae840d7ded46\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/37defeb5-b120-4570-acce-1ddc9057cad4\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aa3bcc0f-44ec-43c7-bb06-f1a22e506b10\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f98bef44-6c04-4f21-a49a-80fdea3560b6\" />\n\n## 补充说明\n\nPiX 是一个 Electron 桌面应用,给开源 Coding Agent [Pi](https://github.com/badlogic/pi-mono) 加了一层\"图优先\"的工作台:每一轮对话(你的提问 + 助手的回复与工具调用)是图上的一个节点,任何一个节点都可以随时长出新分支。\n\n传统 AI 对话是一条单线时间轴,想换方向要么推倒重来,要么在原对话里越聊越乱。PiX 让多个探索方向并存于同一张图上:哪条路径走通了就继续深入,走不通的分支留在图上,随时回来换条路再试。\n\n- 技术栈:Electron + TypeScript + Vue 3(Vue Flow 画布、xterm 终端)\n- 平台:Windows(安装版 / 便携版)、macOS(Apple Silicon / Intel)\n- 状态:v0.0.19,积极开发中;会话即真实的 Pi 会话文件,离开 PiX 仍可用 pi CLI 继续,并支持 SSH / WSL 远程环境与内置文件搜索\n\n## 值得关注的点\n\n1. **随时分叉**:从任意一轮对话分叉(Fork)、从此轮继续、或克隆当前分支做存档点,原分支完好无损;\n2. **上下文跟随分支**:切换分支时,聊天面板即时切换到该分支的消息;选中节点即可查看该轮的思考过程、工具调用与耗时;\n3. **多 Chat Panel 并排对比**:Ctrl+双击图上不同分支的节点,把分支固定到并排的聊天列,最多同时 3 列;每列独立滚动、独立回复,回复后该列继续跟随这条分支生长,直观对比不同方案的走向。\n\n## 30 秒上手\n\n从 [GitHub Releases](https://github.com/huang-sh/PiX/releases) 下载对应平台安装包即可(安装包未签名,Windows SmartScreen 提示时选择\"仍要运行\")。\n\n或从源码运行(Node.js ≥ 22.19):\n\n```bash\nnpm install\nnpm run dev\n```\n\n## 披露\n\n本人为项目作者,本文为自荐;版本号与 star 数截至发文时,均可在仓库核实。",
@@ -754,53 +802,5 @@
     "created_at": "2026-09-13T14:41:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11669"
-  },
-  {
-    "id": 11668,
-    "title": "baiduan-router：九模型MCP调度器 pip install即用",
-    "content": "\n\n一句提示词同时发九个AI模型。pip install baiduan-router，MCP原生，7个模型免费。\n\nPyPI：https://pypi.org/project/baiduan-router/\n中文：http://8.152.210.126:3000/woodo/baichuan-router",
-    "created_at": "2026-09-13T14:05:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11668"
-  },
-  {
-    "id": 11667,
-    "title": "【开源自荐】小憩海湾：在 Mac 桌面角落自动钓鱼，收集 100 种海洋生物",
-    "content": "分享一个自己的开源小项目：**小憩海湾 / Thank You for the Fish**，一款停在 Mac 桌面角落的放置钓鱼小游戏。\n\n你忙你的，小船等它的鱼。浮标下沉、鱼竿提起，鱼获自动收进鱼篓，不需要一直点击或盯着窗口。\n\n![桌面钓鱼实际演示](https://raw.githubusercontent.com/AmethystineAlpaca/thank-you-for-the-fish/main/docs/images/desktop-fishing.gif)\n\n- **100 种海洋生物 × 4 种性状**：普通、异色、荧光、炫彩，逐步点亮收藏图鉴。\n- 小船可拖动、缩放、暂停，置顶可以关闭；默认每 5–20 分钟随机咬钩。\n- 无需账号，安装后可离线使用，收藏保存在本机；退出后不会继续累积鱼获。\n- Electron + Canvas + WebGL，MIT 许可。美术由 AI 生成并整理为本地素材，动画和特效由代码实现，运行时不调用图片生成服务。\n\n**下载条件：** 当前公开的 v0.4.3 安装包适用于 Apple Silicon（M 系列）Mac，界面为简体中文；尚未经过 Developer ID 签名与公证，首次打开请参考仓库内的 Apple 官方说明。源码与发布包可能存在版本差异，请以 Release 说明为准。\n\n[项目源码、完整演示与中文说明](https://github.com/AmethystineAlpaca/thank-you-for-the-fish) · [下载最新发布版](https://github.com/AmethystineAlpaca/thank-you-for-the-fish/releases/latest)\n\n动图中的收竿为演示触发，正常使用需要等待咬钩。欢迎喜欢桌面小摆件和轻度收集的朋友试试，也希望收到安装体验、桌面占用和钓鱼节奏方面的反馈。",
-    "created_at": "2026-09-13T12:54:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11667"
-  },
-  {
-    "id": 11666,
-    "title": "〖网站自荐〗TreeQuoteCheck：拆开树木移除报价里的价格与服务范围",
-    "content": "我做了一个面向美国房主的免费网页工具：TreeQuoteCheck。树木移除报价很难只看总价比较，因为清运、树桩处理、许可、设备和场地恢复等范围可能不同。网站把任务分成两个入口：一是根据公开的树高价格表给出带来源和限制说明的宽泛规划区间；二是检查用户手上的逐项报价包含哪些工作。遇到电线、建筑接触、风暴损坏、特殊设备或其他超出条件的情况，工具不会继续给出数字，而是建议现场评估。它不需要注册，答案只保留在当前浏览器页面。当前是公开 Beta，不是本地承包商报价或树木安全评估。网站地址：https://treequotecheck.com/ 我参与制作这个项目，特此说明关系。\r\n",
-    "created_at": "2026-09-13T12:35:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11666"
-  },
-  {
-    "id": 11665,
-    "title": "[开源自荐] dsh-skills-anywhere：让不同编程助手共享现有 Agent Skills",
-    "content": "维护者自荐：**dsh-skills-anywhere**。Skills Anywhere 直接发现编程助手目录、插件市场和 Git 仓库中的 SKILL.md，通过 DeepSeek Harness 或 MCP 提供查找与按需加载，无需复制。支持去重、重名处理、目录预算、本地解析检查和按文件哈希加载。0.9.0 新增技能目录清单、脚本／资源变化比较和按目录指纹加载；浏览器演示支持键盘打开／返回详情、保留设置清空搜索、恢复分享视图及本地文件读取失败恢复，适合多工具开发者与团队复用技能。\n\n在线体验：https://huggingface.co/spaces/glayguo/dsh-skills-anywhere\n\n- **目录内容可复核**：CLI 记录 SKILL.md、脚本、引用资料、资源及隐藏文件的路径、字节数和 SHA-256；比较两次清单可定位新增、删除与内容变化。MCP expected_bundle_sha256 在资源变化时拒绝按旧指纹加载。\n- **本地清单对比**：首页展示“说明没变、脚本已变”，也可打开自己的两份清单；浏览器先验证清单自身的哈希，再显示差异。清单不上传，不执行脚本。\n- **兼容新版 MCP**：使用官方 SDK 2.0.0，同一个 stdio 入口支持旧版初始化与 2026-07-28 协议；四种 SDK 配置通过真实子进程验证，安装包另有新旧客户端检查。目录覆盖和 SDK 互通不等于所有品牌客户端认证。\n- **真实的共享目录逻辑**：覆盖 68 种 Agent 目录定义，支持项目／用户目录、插件市场和 Git 来源，提供去重、重名解释、预算、Pin / Hide / Exclude。\n- **浏览器体验**：打开技能后聚焦说明，可返回原行；清空搜索保留目录选择；分享链接恢复预算、Pin／Hide 与当前技能。手机按钮更易操作，长说明支持键盘滚动。\n- **带入自己的 SKILL.md**：浏览器显示文件读取状态，比较严格／宽容解析并导出报告；拒绝无效 UTF-8，清空或编辑会丢弃旧读取结果。输入不上传、不加入分享链接。CLI/CI 提供相同解析检查和文件哈希。\n- **按已审核内容加载**：MCP `open_skill` 支持 `expected_sha256`；文件变化时不返回新指令，并在加载时复查作者禁用标志。\n\n```sh\nnpx -y dsh-skills-anywhere@0.9.0 bundle /path/to/skill --json > reviewed-bundle.json\n\n# Keep the manifest outside the skill directory:\nnpx -y dsh-skills-anywhere@0.9.0 bundle /path/to/skill --against reviewed-bundle.json --json\n```\n\n要求 Node.js 22.19+ 或 24+；先审核原始文件，清单存放在技能目录外；这些检查无需 dsh、Git 或模型 API：\n\n项目：https://github.com/noteflowai/dsh-skills-anywhere\n版本：https://github.com/noteflowai/dsh-skills-anywhere/releases/tag/v0.9.0\n\n![让不同编程助手共享现有 Agent Skills](https://huggingface.co/spaces/glayguo/dsh-skills-anywhere/resolve/main/thumbnail.png)\n\n维护者自荐：独立社区项目，与 AI 结对开发，MIT 许可，不代表上游官方。目录覆盖不等于所有客户端或技能脚本通过兼容验证。浏览器使用示例工作区，不扫描访客电脑、不运行技能或模型；解析和文件身份检查不构成脚本安全认证，目录指纹也不锁定之后执行时的文件。外部依赖、权限与作者身份不在指纹范围内。\n\n<!-- research-pilots-20260914 -->\n### 2026-09-14 研究场景更新\n\n0.10.0 已发布到 npm 与 MCP Registry。新增隔离的真实 MCP／直接文件交付对照、共享搜索逻辑、目录回退与技能／目录指纹收据；对接 EvalArc 的 27 次实际 GPU 试验，连同技能组合和公开会话交接记录全部保留。试点未显示技能或记忆提分，不将“成功加载”当作“任务完成”。\n\n- 技术说明：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/discussions/1\n- 原始数据与原生场景：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/tree/v2026-09-14\n- 三仓交互评测：https://noteflowai.github.io/evalarc/skill-impact/\n\n以上为维护者自荐内容更新；当前仍等待编辑审核。<!-- /research-pilots-20260914 -->\n\n<!-- production-review-noteflow-1 -->\n## Production review — Skills Anywhere v0.11.0\n\nThe [local browser checker](https://huggingface.co/spaces/glayguo/dsh-skills-anywhere) now shows referenced HTTP(S) hosts/URLs and author-declared tools, separately from parsing. Invalid input clears the source results. No references are fetched and no client tool permissions are enforced.\n\nA concrete verifier correction: an arbitrary hex path or a `#sha256` fragment no longer passes `--require-pinned-sources`. The optional gate recognizes full-commit HTTPS layouts on GitHub/Hugging Face; it verifies address structure, not remote bytes, redirects or intent.\n\n[Release 0.11.0](https://github.com/noteflowai/dsh-skills-anywhere/releases/tag/v0.11.0) is available on GitHub, npm and the MCP Registry. 192 tests, mobile/iframe browser checks and independently installed-package checks passed.\n<!-- /production-review-noteflow-1 -->",
-    "created_at": "2026-09-13T11:42:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11665"
-  },
-  {
-    "id": 11664,
-    "title": "[开源自荐] Robot Reel：逐帧检查机器人策略与物理仿真实验",
-    "content": "维护者自荐：**robot-reel**。Robot Reel 将机器人策略与物理仿真录制做成交互实验室。新版在 L40S 上录制 Genesis 与 Newton 的六次抛体运动，对照解析解检查步长误差，保留全部 366 个状态和原生回放，并导出可编辑 OpenUSD。另有 SmolVLA 失败复盘、GPU 布料和 Microduck 关节探索，适合具身智能教学、实验复盘与客户技术演示。\n\n- **Solver Lab**：Genesis 1.4.1 与 Newton 1.6.0 各录制三种步长，支持轨迹、误差曲线、逐帧操作和完整 JSON/CSV；最大位置误差随步长缩小从约 32.70 厘米降到 2.05 厘米。\n- **原生记录可复核**：逐帧读回 Genesis 轨迹和全部 OpenUSD 样本；安装包可独立核验并导出完整离线实验。\n- **五个在线实验室**：保留 30 次 SmolVLA 单任务运行、42,471 个布料顶点样本、十二组双摆和两段 Microduck 步行，支持按场景查看记录。\n\n在线体验：https://huggingface.co/spaces/glayguo/robot-reel\n\n项目：https://github.com/noteflowai/robot-reel\n\n版本：https://github.com/noteflowai/robot-reel/releases/tag/v0.10.0\n\n从源码检出目录，以 Python 3.12+ 只读核对完整实验：\n\n```sh\npython3 -S -m robot_reel.cli solver-lab --output docs/solver-lab --verify\n```\n\n![Solver Lab：真实 CUDA 轨迹、步长控制与误差曲线](https://github.com/noteflowai/robot-reel/raw/v0.10.0/docs/solver-lab/poster.png)\n\n项目由本账号维护，与 AI 结对开发，仍处于早期阶段。代码及原创抛体场景采用 Apache-2.0；第三方素材遵守上游许可。Solver Lab 是无接触、无阻力的积分误差实验，两引擎在此场景中数值相同，不构成仿真器排名或真实机器人准确率证明。Microduck 衍生结构与录像保留非商业／相同方式共享条款。\n\n<!-- research-pilots-20260914 -->\n### 2026-09-14 研究场景更新\n\n新增实景 Scene Lab 与官方 LIBERO-Plus 子集：可切换纹理网格、25,000 个表面高斯和独立碰撞代理，下载经过重新打开校验的原生 Blender 场景；可逐帧对比同一初始状态下的相机／灯光扰动。另有实际运行的 OpenEnv 数值配方验收：错误配方 0 分、正确配方 1 分。高斯来自网格采样，并非训练的 3DGS；三次策略记录并非完整基准成绩。\n\n- 技术说明：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/discussions/1\n- 原始数据与原生场景：https://huggingface.co/datasets/glayguo/noteflow-research-pilots/tree/v2026-09-14\n- 三仓交互评测：https://noteflowai.github.io/evalarc/skill-impact/\n\n以上为维护者自荐内容更新；当前仍等待编辑审核。<!-- /research-pilots-20260914 -->\n\n<!-- production-review-noteflow-1 -->\n## Production review — Robot Reel v0.12.0\n\n[Inspect the final-motion failures](https://noteflowai.github.io/robot-reel/stress/#failures): filter recorded outcomes, then jump to the exact final sample window. The published pilot retains all 30 trials:14 step-limit episodes are still moving under the declared threshold, and 16 succeed. Movement does not establish progress or success under a larger budget.\n\nThe installed verifier now accepts the actual published v0.11 experiment archive as well as new packs with recomputed taxonomy. Missing consumed frames or camera hashes cannot count as identical policy input. The existing saved rerun was independently checked; state/action agreement is numerical equality of recorded arrays, not a full simulator bit-pattern claim.\n\n[Verified release and offline downloads](https://github.com/noteflowai/robot-reel/releases/tag/v0.12.0). Desktop/mobile and offline interaction checks passed. This update adds review and verification features; it does not claim new model training or Cosmos inference.\n<!-- /production-review-noteflow-1 -->",
-    "created_at": "2026-09-13T11:37:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11664"
-  },
-  {
-    "id": 11663,
-    "title": "【开源自荐】FractalBrainOS：基于Kuramoto相位同步与自由能原理的轻量级C++17神经形态计算引擎",
-    "content": "### 项目介绍\n- **项目名称：** FractalBrainOS\n- **项目地址：** https://github.com/NineNi999neNine/FractalBrainOS\n- **开源协议：** MIT\n\n### 核心特点\n1. **非反向传播（Non-Backprop）：** 基于 Kuramoto 相位同步模型与分形三元组结构（$3^L$ 扩展），实现自组织学习。\n2. **自由能原理（Karl Friston FEP）：** 自由能误差动态控制 STDP 突触可塑性。\n3. **边缘计算优化：** 全量 `int16` 相位量化（节省 75% 内存）与 512KB 三角函数查找表（LUT），可在树莓派 / Android Termux 上低功耗高效运行。\n4. **大模型结合：** LLM 仅作为语言表达区（布罗卡区），决策与记忆由底层振荡器内核独立运行。",
-    "created_at": "2026-09-13T11:20:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11663"
   }
 ]
