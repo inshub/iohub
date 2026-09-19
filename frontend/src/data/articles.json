@@ -1,5 +1,21 @@
 [
   {
+    "id": 11809,
+    "title": "【工具自荐】Snapora：Windows 截图、标注与贴图",
+    "content": "我是 Snapora 的维护者，按周刊 README 的软件投稿入口提交，供编辑筛选。\n\nSnapora 是 Windows 10/11 64 位桌面工具，将区域截图、文字/图形标注和贴图整合在一起。一个使用场景是把需要对照的界面截图固定在屏幕上方，再切换到其他程序继续工作；截图可加文字、箭头、马赛克或模糊，并复制或保存。\n\n- 官网与免费下载：https://snapora.9nn.cn/\n- 安装包、说明和问题反馈：https://github.com/Moresyl/Snapora\n- 当前界面语言：简体中文。\n- 项目状态：新发布的 1.0.0 版本，闭源；GitHub 仓库仅分发安装包和文档。它不是开源项目，也不声称已达到成熟同类产品的全部功能。\n\n核心截图功能不需要在线账号，截图内容默认在本机处理；客户端有联网检查更新功能。\n\n已搜索本仓库的 Snapora 投稿记录，未发现重复。感谢审阅。",
+    "created_at": "2026-09-19T15:35:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11809"
+  },
+  {
+    "id": 11808,
+    "title": "【开源自荐】PDFSeal：100% 纯本地运行、零数据上传的隐私 PDF 工具箱（支持 PWA 离线与流水线）",
+    "content": "### 项目名称与链接\n\n- **项目名称**：PDFSeal 🦭\n- **GitHub 仓库**：https://github.com/sealkit-org/pdfseal\n- **在线体验**：https://pdf.sealkit.org\n- **开源协议**：AGPLv3\n\n### 项目简介\n\n我们在处理发票、合同、个人证件等敏感文档时，市面上绝大多数在线 PDF 工具都需要将文件先上传到第三方服务器，存在极大的隐私与数据泄露隐患。\n\n**PDFSeal** 是一款专为隐私安全打造的 **100% 纯本地、纯客户端** PDF 工具箱。所有计算（合并、拆分、压缩、水印、页码、签名盖章、加密/解锁、物理级内容脱敏等）完全在浏览器内存（WebAssembly / pdf-lib / pdf.js）中完成，**绝不向任何服务器上传用户的文档**，完全无后端、零追踪、零打扰。\n\n### 核心特性\n\n1. **绝对零上传 / 断网可用**：底层没有任何文件上传接口。即使拔掉网线或开启飞行模式，所有功能 100% 正常运行，支持通过 PWA 安装为本地桌面与手机应用。\n2. **功能全面不简陋**：内置 14 大实用原子工具 + 自动化多步骤流水线（Pipeline）。包括但不限于：\n   - **物理级文本脱敏**：彻底销毁 PDF 底层内容流并自动校验零文本残留；\n   - **智能页码覆盖**：支持涂白遮罩自动取色，掩盖旧文件的错位老页码；\n   - **印章透明化与去白**：自动消除纸张白底和阴影，还原纯净印油质感；\n   - **智能二分压缩**：可指定目标文件大小（如 ≤2MB）进行自适应二分法搜索压缩。\n3. **多端自适应优化**：针对手机端设计了专属的单手操作抽屉、底部悬浮栏，并支持 Web Share API 原生系统分享（可直接 AirDrop 或微信转发）。\n4. **便捷自建**：提供单文件 Docker Compose，一行命令即可在局域网或内网完成私有化自托管。\n\n### 界面截图\n\n<!-- 提示：建议在打开的 pdf.sealkit.org 页面截一张漂亮的首页或工具操作图，在此处直接 Ctrl + V 粘贴即可自动生成图片链接 -->\n![PDFSeal 界面预览](https://pdf.sealkit.org/og-image.png)",
+    "created_at": "2026-09-19T15:18:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11808"
+  },
+  {
     "id": 11807,
     "title": "【开源自荐】Gauge：Windows 桌面悬浮窗，查看 Codex / Claude Code 多账号剩余额度",
     "content": "## Gauge：把 Codex 和 Claude Code 的额度放在桌面一角\n\n我是 Gauge 的作者。写代码时经常需要切窗口查看 AI 账号的剩余额度，于是做了一个 Windows 桌面悬浮工具，把多个账号的额度放到同一个窗口里。\n\n- Codex 每周、Claude Code 5 小时及每周剩余额度，附重置倒计时。\n- 自动识别本地有效登录，也可以通过官方授权页添加多个账号。\n- 显示套餐和当前登录状态；支持拖动、缩放、置顶、主题和中英文切换。\n- Python + PySide6，MIT 开源，提供 Windows x64 单文件 EXE。\n\n项目：[Beellix-dev/Gauge](https://github.com/Beellix-dev/Gauge)\n\n下载：[v0.1.0 预览版](https://github.com/Beellix-dev/Gauge/releases/tag/v0.1.0)\n\n<img src=\"https://raw.githubusercontent.com/Beellix-dev/Gauge/v0.1.0/docs/images/monitor-dark.png\" width=\"360\" alt=\"Gauge 多账号额度监控界面，使用演示账号数据\">\n\n截图中的账号和额度为演示数据。Gauge 没有自建后端，授权文件保存在本机；额度查询通过官方 CLI 或平台服务完成。[安全说明](https://github.com/Beellix-dev/Gauge/blob/main/docs/SECURITY.md)\n\n使用前需安装对应平台的官方 CLI；Claude 需要具备 Claude Code 使用权限的订阅授权。当前为首个预览版，EXE 未签名，Claude 付费账号在线查询及实验性的 Codex 登录切换尚未完成端到端人工验证。\n\n欢迎有相同需求的 Windows 用户试用，反馈最希望看到的指标和实际使用中遇到的问题。\r\n",
@@ -790,21 +806,5 @@
     "created_at": "2026-09-15T04:57:21Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11710"
-  },
-  {
-    "id": 11709,
-    "title": "【开源自荐】Tally：把 Claude Code / Codex 会话状态和 AI 配额放进 MacBook 刘海",
-    "content": "### 项目地址\n\nhttps://github.com/guokuaile/tally\n\n### 项目介绍\n\n同时开着几个 Claude Code / Codex 会话时，得不停切窗口看谁在等审批、谁跑完了，配额快见底了也不知道。Tally 是一个 macOS 原生小工具，把这些放进 MacBook 的刘海里：平时和刘海融为一体，有会话等你或跑完了才往下垂一条提示；鼠标停上去展开成面板。\n\n![刘海垂下提示，悬停展开面板](https://raw.githubusercontent.com/guokuaile/tally/main/docs/images/hero.gif)\n\n- 会话按「等你 / 在跑 / 最近」分组；等审批、等输入、跑完了，刘海垂一条提示并响一声。按 Esc 打断、API 报错、主回合结束后子 agent 还在后台跑，这些 hook 不上报的情况也判得准。\n- 点一行跳回那个会话所在的终端标签（Ghostty、Terminal、iTerm2，tmux 的 pane 也行），关掉的会话一键接着聊。\n- 各家配额摆一排：Claude、Codex、Cursor、Antigravity，加上 DeepSeek、Kimi、智谱 GLM、New API 中转站余额；Claude 和 Codex 有今日 / 本周花费和配速线，过 80% 和用完都会提醒。\n- 顺带网速与代理、内存电池、在跑的 app、文件架、合盖不休眠，和一只跟着 CPU 忙闲变化的菜单栏小恐龙。\n\n![AI 页：会话列表与各家用量](https://raw.githubusercontent.com/guokuaile/tally/main/docs/images/ai.png)\n\nSwiftUI + AppKit，零第三方依赖；只读各家登录留下的 token，不刷新、不写钥匙串，没有统计上报。要求 macOS 15+、Apple Silicon、带刘海的 MacBook。GPL-3.0 开源，Homebrew 一条命令安装：`brew install --cask guokuaile/tally/tally`。\n",
-    "created_at": "2026-09-15T03:25:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11709"
-  },
-  {
-    "id": 11708,
-    "title": "【工具自荐】Codex Reset Radar：Codex 额度重置的可溯源账本",
-    "content": "项目地址：https://whenresets.net\n\nCodex Reset Radar 是一个免费网页工具，把 OpenAI Codex 历次额度重置整理成可逐条核实的账本：每次重置都记录发生时间、官方来源链接与重置类型（故障补偿 / 里程碑 / 节日 / 计费调整），不靠传闻。\n\n目前已收录 55 次重置（2025 年 9 月至今），平均 6.7 天一次，最近 30 天加速到 2.5 天一次。除 Codex 外，还把 Claude、ChatGPT、Cursor、Copilot、Gemini、GLM、Kimi 等 15 个同类工具的额度与重置规则汇总到一页。\n\n主要功能包括：带来源链接的重置时间线、按类型分类的重置统计（55 resets / 15 outage comp / 8 milestone-tied / 8 banked）、同类工具额度规则对照、可选邮件提醒。数据同时开源为 CSV/JSON 数据集（MIT）：https://github.com/kosanhu2021-source/codex-reset-ledger",
-    "created_at": "2026-09-15T03:06:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11708"
   }
 ]
