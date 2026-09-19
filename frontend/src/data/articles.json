@@ -1,8 +1,32 @@
 [
   {
+    "id": 11807,
+    "title": "【开源自荐】Gauge：Windows 桌面悬浮窗，查看 Codex / Claude Code 多账号剩余额度",
+    "content": "## Gauge：把 Codex 和 Claude Code 的额度放在桌面一角\n\n我是 Gauge 的作者。写代码时经常需要切窗口查看 AI 账号的剩余额度，于是做了一个 Windows 桌面悬浮工具，把多个账号的额度放到同一个窗口里。\n\n- Codex 每周、Claude Code 5 小时及每周剩余额度，附重置倒计时。\n- 自动识别本地有效登录，也可以通过官方授权页添加多个账号。\n- 显示套餐和当前登录状态；支持拖动、缩放、置顶、主题和中英文切换。\n- Python + PySide6，MIT 开源，提供 Windows x64 单文件 EXE。\n\n项目：[Beellix-dev/Gauge](https://github.com/Beellix-dev/Gauge)\n\n下载：[v0.1.0 预览版](https://github.com/Beellix-dev/Gauge/releases/tag/v0.1.0)\n\n<img src=\"https://raw.githubusercontent.com/Beellix-dev/Gauge/v0.1.0/docs/images/monitor-dark.png\" width=\"360\" alt=\"Gauge 多账号额度监控界面，使用演示账号数据\">\n\n截图中的账号和额度为演示数据。Gauge 没有自建后端，授权文件保存在本机；额度查询通过官方 CLI 或平台服务完成。[安全说明](https://github.com/Beellix-dev/Gauge/blob/main/docs/SECURITY.md)\n\n使用前需安装对应平台的官方 CLI；Claude 需要具备 Claude Code 使用权限的订阅授权。当前为首个预览版，EXE 未签名，Claude 付费账号在线查询及实验性的 Codex 登录切换尚未完成端到端人工验证。\n\n欢迎有相同需求的 Windows 用户试用，反馈最希望看到的指标和实际使用中遇到的问题。\r\n",
+    "created_at": "2026-09-19T12:33:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11807"
+  },
+  {
+    "id": 11806,
+    "title": "[Resource Submission] WeirdThings — Clear explanations for unfamiliar words and puzzle connections",
+    "content": "Website: [WeirdThings](https://weird-things.net/)\n\nWeirdThings is an independent English-language explainer site for puzzle players, vocabulary learners, and curious readers. It covers unfamiliar words, Connections relationships, Wordle vocabulary, and selected questions that surface in games, search trends, and current events.\n\nEach guide answers a specific question with context that a short dictionary definition or answer list can miss. Articles link to supporting sources, and the public methodology explains how evidence and uncertainty are handled. The reviewed pages are free to read and require no account.\n\nExamples:\n\n- [ASTER: meaning and word origin](https://weird-things.net/things/aster/)\n- [WIDENER: the word relationship in Connections](https://weird-things.net/things/widener-connections/)\n\nWeirdThings is independently operated and is not affiliated with the games, publishers, or platforms it discusses.\n\nSubmitted by: Alex.X",
+    "created_at": "2026-09-19T12:30:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11806"
+  },
+  {
+    "id": 11805,
+    "title": "【开源自荐】Nano-Lumen：一个基于自研内核的 Windows 持久化 AI Runtime",
+    "content": "### 项目名称\n**Nano-Lumen**\n\n### 项目地址\n- GitHub 源码：https://github.com/Fhaxikii/Nano-Lumen\n- License：Apache-2.0\n\n### 预览（终端风主题）\n![界面预览](https://raw.githubusercontent.com/Fhaxikii/Nano-Lumen/main/assets/preview/ui-dark.png)\n\n### 解决了什么痛点？\n现在的 AI Agent 几乎都一个样：开会话 → 丢目标 → 干完走人。历史、状态、生命周期全塞在一个 session 对象里：\n- 同一 session 下上下文长期经过多次压缩后，最终会导致水位逐渐抬高，直到提示 session 不可用，聊了很久的对话说没就没了；\n- 你说\"我刚改的那个文件\"，它不知道，因为它并不能实时感知到你；\n- 它能不能做一件事，完全取决于预先内置了多少工具/MCP，AI的能力边界取决于已有的工具集合。\n\n### 核心功能与特色\n1. **没有 Session，只有 Task**：状态所有权、对话历史、上下文管理、长期记忆是四个独立系统，压缩上下文、崩溃都不会失忆；\n2. **轨迹感知**：它持续观测你在哪个窗口、改了什么文件、停了多久。你说\"继续刚才那个\"，它接得上，不用你解释；\n3. **目标导向，不是工具驱动**：任务超出内置工具时，它先判断能否临时写段脚本直接跑，或者也能将脚本变成长期可用的内置插件；也不行？就自己去 MCP 生态里找——查官方 Registry、翻 GitHub / HuggingFace 做工程尽调，验证通过才接进来。它的上限不是你预装了多少，而是整个互联网有什么；\n4. **操作系统**：GUI 操作按风险分级，危险命令有独立第三方分类器兜底；检测到你动鼠标键盘立刻让出前台，不假设用户本人不中途操作；每一次 OS 动作都留痕；\n5. **上下文治理**：长对话按新鲜度分层压缩，永不爆上下文，也永远不会\"会话已过期\"。\n\n### 技术实现与亮点\n- 截止目前开发期五个月左右、约 9 万行有效代码（含测试，测试套件随仓库分发），单进程 Windows 桌面应用，Apache-2.0；\n- 状态机内核：所有状态变更走唯一 write entry，重启后从持久化状态自动收敛，崩溃/任务当中关闭等情况下，下次启动还能问你要不要继续；\n- 上下文逐级衰减，是渐进压缩而不是粗暴截断；\n- 本地离线 RAG（bge-m3 嵌入 + 向量召回），无云上传；\n......\n\n**目前是 Beta —— 欢迎来读源码、提 issue、改代码。**\n",
+    "created_at": "2026-09-19T11:21:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11805"
+  },
+  {
     "id": 11804,
     "title": "【工具自荐】codePro-cli：把 Codex CLI 放进桌面灵动岛（网页交互演示）",
-    "content": "大家好，我是 codePro-cli 的开发者，想自荐一个正在迭代的桌面工具，也请经常使用 Codex CLI 的朋友帮忙看看交互是否顺手。\n\n**在线体验：https://codepro.wiki/**\n\ncodePro-cli 围绕 Codex CLI 做了一个桌面工作台，把项目、对话卡片、终端和状态面板整理在一起；平时收在屏幕顶部，需要时展开。想解决的问题很具体：多个项目、多个对话同时进行时，能更直观地找到当前任务。\n\n网页里可以直接体验：\n\n- 顶部灵动岛的展开与收起。\n- 项目与对话卡片切换，以及新建、搜索、归档等交互。\n- 主题切换、账号信息布局和设备状态面板。\n\n打开网站后，点击顶部灵动岛即可进入；双击桌面的“软件说明.dmg”可以查看功能与安装说明。\n\n**当前链接是网页交互演示**：普通聊天统一回复“你好”，账号、设备和性能数据均为模拟，不连接真实 AI，也不读取访客电脑上的 Codex 会话。目前 macOS / Windows 安装包下载入口尚未开放。桌面版使用前需要自行安装并登录 Codex CLI。这是独立开发项目，与 OpenAI 没有官方关联。\n\n最想听到两点反馈：这种顶部入口是否方便？同时处理多个项目时，对话卡片上最应该显示什么？欢迎直接在本帖反馈。\n\n下图为网页演示截图，状态数据为模拟。\n\n![codePro-cli 默认深色主题的网页交互演示，设备与账号数据为模拟](https://github.com/user-attachments/assets/25f36155-b92a-43ce-b045-9f5fe396534b)\n\n本文由 AI 辅助整理，截图来自上述公开网页演示。",
+    "content": "大家好，我是 codePro-cli 的开发者，想自荐一个正在迭代的桌面工具，也请经常使用 Codex CLI 的朋友帮忙看看交互是否顺手。\n\n**在线体验：https://codepro.wiki/**\n\ncodePro-cli 围绕 Codex CLI 做了一个桌面工作台，把项目、对话卡片、终端和状态面板整理在一起；平时收在屏幕顶部，需要时展开。想解决的问题很具体：多个项目、多个对话同时进行时，能更直观地找到当前任务。\n\n网页里可以直接体验：\n\n- 顶部灵动岛的展开与收起。\n- 项目与对话卡片切换，以及新建、搜索、归档等交互。\n- 主题切换、账号信息布局和设备状态面板。\n\n打开网站后，点击顶部灵动岛即可进入；双击桌面的“软件说明.dmg”可以查看功能与安装说明。\n\n**当前链接是网页交互演示**：普通聊天统一回复“你好”，账号、设备和性能数据均为模拟，不连接真实 AI，也不读取访客电脑上的 Codex 会话。官网现已显示 macOS / Windows 下载入口，安装版以官网说明为准；本帖主要邀请体验网页交互，尚未完成各平台安装验收。桌面版使用前需要自行安装并登录 Codex CLI。这是独立开发项目，与 OpenAI 没有官方关联。\n\n最想听到两点反馈：这种顶部入口是否方便？同时处理多个项目时，对话卡片上最应该显示什么？欢迎直接在本帖反馈。\n\n下图为网页演示截图，状态数据为模拟。\n\n![codePro-cli 默认深色主题的网页交互演示，设备与账号数据为模拟](https://github.com/user-attachments/assets/25f36155-b92a-43ce-b045-9f5fe396534b)\n\n本文由 AI 辅助整理，截图来自上述公开网页演示。",
     "created_at": "2026-09-19T08:20:23Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11804"
@@ -188,7 +212,9 @@
     "title": "【开源自荐】sh.cd：一行命令给服务器做体检，硬件、IP 质量、三网回程一次测完（推荐）",
     "content": "## 项目地址\n\nhttps://github.com/CleanIP/sh.cd\nhttps://sh.cd\n\n<img width=\"1520\" height=\"1120\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/05c1242f-8656-43e6-8acb-2788ad4f515a\" />\n\n## 背景\n\n买了 VPS 之后要测的东西很零碎：硬件跑分一个脚本，IP 纯净度一个网站，三网延迟和回程线路又是另外几个脚本，跑完还得自己截图拼到一起发论坛。我想要一条命令全测完，结果能直接甩个链接出去。\n\n## 它是什么\n\n一个服务器体检脚本，只依赖 bash 和 curl，本身不装任何软件（CPU、硬盘跑分需要 sysbench 和 fio，开始前问一次）。\n\n- **硬件与性能**：虚拟化类型、CPU / 内存 / 硬盘跑分；独立服务器还能读硬盘 SMART、内存条规格与温度，可选跑 Geekbench 6\n- **IP 质量**：纯净度与风险评分、多源检测、9 项流媒体与 AI 解锁、25 端口与 12 家邮箱握手、DNS 出口\n- **网络质量**：NAT 类型（NAT1–4）、BGP、31 省三网延迟加 223 个市级节点、31 省 × 三网的回程线路识别（CN2 GIA / 9929 / CMIN2 等，含大包回程、教育网回程与 IPv6）、国内外带宽测速、六大洲 36 个国际节点延迟\n- **结果页**：每次检测生成一个 `sh.cd/results/xxx`，可以一键复制链接、导出 Markdown 贴到论坛，终端里 `curl` 同一个地址也能看\n\n<img width=\"1520\" height=\"1920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/45fb7611-fee6-4926-bf50-d506d68846b5\" />\n\n## 用法  https://sh.cd\n\n    bash <(curl -Ls https://sh.cd)\n\n不带参数进菜单：1 一键全检（约 6 分钟），2 全部检测（约 20 分钟），也可以只测硬件、IP 或网络中的某一项。\n\n<img width=\"2560\" height=\"1760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b10d953-50c5-475f-ad3c-9fe2b3d7e936\" />\n\n## 说明\n\n- bash 3.2 及以上 + curl，Linux 与 macOS 都能跑\n- 只查发起请求的那个出口 IP，不能指定别的 IP，不读取主机名、文件或登录信息\n- MIT 开源\nhttps://sh.cd\n可以分享两个测试页看一下。\n洛杉矶全部检测：https://sh.cd/results/UqUpsnxydK\n香港 IPv6 + 市级延迟：https://sh.cd/results/eF6o1ddmxa\n基本24小时在线，有任何需求可以去提issue。基本上，很快就解决。",
     "created_at": "2026-09-17T19:39:53Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11781"
   },
   {
@@ -324,7 +350,9 @@
     "title": "【开源自荐】yovoice：简洁易用的本地 TTS 配音工具，支持音色复刻和情绪调节",
     "content": "推荐一个自己做的开源桌面应用 [yovoice](https://github.com/leemysw/yovoice)，支持 macOS 和 Windows，用来做视频旁白和文章朗读。\n\n希望把本地配音做得简单一些。yovoice 将常用操作放在一个简洁的界面里，贴上文稿、选好音色，再调一下情绪，就可以生成配音。安装包内置了 audio.cpp 推理引擎，首次使用时在应用里下载模型即可，语音在本机生成。\n\n- **音色复刻**：导入或录制参考音频，用参考音色生成配音。\n- **情绪调节**：调整声音的情绪和表达方式。\n- **声音库与历史记录**：保存常用音色，试听和导出作品，也能复用之前的生成参数。\n- **模型管理**：在应用内下载模型，或导入本地 GGUF 文件。\n- **CLI 和 Agent Skill**：支持命令行调用，也可以让 Agent 完成配音任务。\n\n项目免费、开源，无需注册。\n\n- [GitHub 源码](https://github.com/leemysw/yovoice)\n- [下载安装包](https://github.com/leemysw/yovoice/releases/latest)\n\n### 工作台\n\n![yovoice 工作台](https://imgdb.io/i/z2QF-c8.png)\n\n<details>\n<summary>更多界面截图</summary>\n\n声音库\n\n![yovoice 声音库](https://imgdb.io/i/Jrf-Y2o.png)\n\n历史记录\n\n![yovoice 历史记录](https://imgdb.io/i/njBaNOI.png)\n\n模型管理\n\n![yovoice 模型管理](https://imgdb.io/i/9C5IYoA.png)\n\n推理引擎\n\n![yovoice 推理引擎](https://imgdb.io/i/fZMnKr4.png)\n\nmacOS 安装\n\n![yovoice macOS 安装](https://imgdb.io/i/dXqomzM.png)\n\n</details>\n\n欢迎试用，有问题或建议可以到项目仓库提 Issue。",
     "created_at": "2026-09-17T04:38:14Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11764"
   },
   {
@@ -516,7 +544,9 @@
     "title": "【开源自荐】别再用 emoji 凑数：Naive Icons 让你 vibe coding 界面来点活人感",
     "content": "<img width=\"3612\" height=\"1898\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7eed5195-656b-44c6-bb31-6804f6dec935\" />\n\n\n- Naive Icons（ [animal-island-ui](https://github.com/guokaigdg/animal-island-ui)  作者新项目 ）\n- 地址: https://github.com/guokaigdg/naive-icons \n- Naive Icons 正式开源，手绘风 React SVG 图标库，零依赖、开箱即用。vibe coding 出原型时，与其用样式不一、没法调色的 emoji 凑数，不如用 100+个自带表情、可调色、风格一致的手绘图标，让界面多出活人感。支持 currentColor 跟随、React 组件与独立 SVG 双形态、完整类型与无障碍；官网可搜索筛选、调尺寸描边色、深浅预览、复制下载。个人站、独立产品、教育 App 适用，MIT 可商用。\n",
     "created_at": "2026-09-16T04:56:16Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11740"
   },
   {
@@ -692,7 +722,9 @@
     "title": "【开源自荐】基于配置的终端 dashboard",
     "content": "使用 go 语言实现的基于配置的终端 dashboard. 只需要配置: 数据源(sources) + 布局(layout) 即可. 数据源通过脚本或者命令获取, 支持: chart, bar, stat, text, logs, table 等组件.\n\ngithub:  https://github.com/lyuangg/tui-dashboard\n\n\n<img width=\"1396\" height=\"872\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/021d662b-7ff3-4662-9ee0-75f42662f142\" />",
     "created_at": "2026-09-15T08:26:26Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11718"
   },
   {
@@ -774,29 +806,5 @@
     "created_at": "2026-09-15T03:06:05Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11708"
-  },
-  {
-    "id": 11707,
-    "title": "拼多多集团-PDD｜「2027届校招正式批」已开放网申，研发同学新增免笔试福利！",
-    "content": null,
-    "created_at": "2026-09-15T03:00:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11707"
-  },
-  {
-    "id": 11706,
-    "title": "【文章自荐】一套用了多年的数据整理法：不靠待办，减少混乱，也不增加记忆负担",
-    "content": "阮老师好，自荐一篇关于个人数据流转与效率思考的长文：《港口思维：从自动化任务到一种生活方式》。\n\n## 文章地址\nhttps://victor42.eth.limo/post/3627/\n\n## 核心内容与思路\n日常琐碎的数字资料（临时下载的文件、截图、标签页等），随它去容易乱成垃圾场，但如果全靠待办清单强制清零，又会带来隐隐的焦虑和沉重的记忆负担。\n\n文章借鉴海运物流中“免箱期”与“免堆期”的概念，分享了一套运行多年的「港口思维」：\n1. 接受事物的中间状态，为数字文件与各类信息建立显式的装卸货“缓冲区”；\n2. 并非所有事都要有始有终，给缓冲区设定空间与时间维度的约束机制，重要的事就地处理，不重要的事随时间自然销毁（如通过自动化脚本或定时日清）。\n\n文中包含在电脑系统、手机（Tasker）、浏览器等方面的具体自动化实践，以及向物理物品、资金调度和思想信息延伸的生活哲学思考，供周刊读者交流参考。",
-    "created_at": "2026-09-15T02:53:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11706"
-  },
-  {
-    "id": 11705,
-    "title": "【开源自荐】TLSFlow：把 SSL/TLS 证书更新变成可验证、可回滚的自动化流程",
-    "content": "## 项目地址\n\nhttps://github.com/tlsflow/TLSFlow\n\n## TLSFlow 是什么\n\n证书有效期越来越短，但企业仍常用 Excel、临时脚本和人工 SSH 登录维护证书。TLSFlow 是一个面向企业的 SSL/TLS 证书全生命周期自动化平台，把证书资产、应用资产和部署过程放进同一个可追踪的流程。\n\n## 核心能力\n\n- 统一管理证书、服务器、站点、应用和责任人之间的关联关系\n- 支持 PEM、PFX、JKS、P7B 等证书格式及多种证书来源\n- 通过 Agent、SSH、网关和插件工作流覆盖 Windows、Linux、Web 服务器、负载均衡、云平台和隔离网络\n- 自动执行预检、备份、安装、刷新、HTTPS 验证以及失败回滚\n- 提供证书到期提醒、审批、操作审计、执行快照和变更记录\n- 通过插件系统和 Workflow DSL 扩展特殊设备、内部 API 和非标准部署流程\n\nTLSFlow 关注的是证书签发之后最容易失控的环节：证书在哪里、应该部署到哪里、部署是否生效、失败后能否恢复，以及整个过程能否审计。\n\n## 截图\n\n![TLSFlow 控制台仪表盘](https://raw.githubusercontent.com/tlsflow/TLSFlow/e51718e8a84f2c0d2ff902ba2dcd2afe1daa5d24/docs/Documentation/v1.0.0/img/image-20260903T155324.webp)\n\n## 快速开始\n\n文档：https://docs.tlsflow.com\n\n项目提供 Docker Compose 标准部署和 PGlite 单节点评估模式，适合先在测试环境验证证书资产管理和自动化部署流程。\n\n## 许可证说明\n\n核心代码默认采用 PolyForm Noncommercial 1.0.0。商业生产环境使用前，请阅读 LICENSE 并联系权利方获取商业授权。",
-    "created_at": "2026-09-15T02:49:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11705"
   }
 ]
