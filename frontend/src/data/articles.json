@@ -1,5 +1,53 @@
 [
   {
+    "id": 11815,
+    "title": "【工具自荐】Domino Image Viewer: macOS 的专业图片浏览对比工具，最多同时对比六张图片并同步缩放，像素级数据、区域统计以及图片评审等功能。",
+    "content": "# Domino Image Viewer\n\nHi~ 👋\n我是 Domino Image Viewer 的开发者，目前软件已经在 App Store 上架，并且已经在分类中排名 48 位，有2周免费试用期。\n\n**Domino Image Viewer 是一款 macOS 图片工作空间，把图片浏览、筛选、多图对比、像素级检查和文件整理放在了同一个应用里。**\n\n![图片](https://dominoimg.com/assets/product/1-zh-1920.webp \"六图对比\")\n\n官网：https://dominoimg.com/\n\nApp Store：https://apps.apple.com/app/id6760245734\n\n\n## 为什么做这个工具\n\n我以前在 Windows 上经常使用 FastStone Image Viewer。\n\n看大量图片、快速筛选、比较不同版本、放大检查细节、整理文件，这些事情基本可以在一个软件里连续完成。\n\n后来换到 macOS，我发现类似的工作流反而有些割裂。\n\nFinder 和系统预览很适合日常看图，专业图像软件又更偏向编辑和创作。但如果只是想把几张图片放在一起比较，检查导出前后的颜色和细节，或者一边筛选一边整理文件，经常需要在多个工具之间来回切换。\n\n所以五个多月前，我开始自己做 Domino Image Viewer。\n\n最初它只是一个解决自己图片整理需求的小工具，后来随着实际使用，慢慢加入了多图同步、差分、区域统计、HDR、评审等功能，最后变成了现在这个图片工作空间。\n\n## 我比较在意的几个设计点\n\n我不想把它做成另一个 Photoshop。\n\nDomino 更关注的是图片工作流里经常被忽略的一段：\n\n**浏览 → 筛选 → 对比 → 检查 → 整理。**\n\n比如同时检查几个版本时，可以把 2～6 张图片放在一起，同步缩放和平移，而不是不断切换窗口。\n\n如果肉眼很难确定两个版本哪里发生了变化，可以直接生成差异图，并调节容差阈值。\n\n需要继续确认细节时，可以放大到像素级查看 RGB / HSV / 亮度数值，也可以框选任意区域查看统计结果和直方图。\n\n对于摄影、设计和图像质量检查，还加入了 HDR / SDR 查看、ICC 色域转换、星级评分、评审模式和匿名 Ranking。\n\n除此之外，它也保留了比较日常的图片工作能力，包括：\n\n- 支持 100+ 图片格式和常见 RAW\n- 图片评级、筛选和文件中转\n- 旋转、镜像、裁剪、缩放和批量重命名\n- 图片拼接和 GIF 制作\n- 压缩包内直接浏览图片\n\n开发这个软件的过程中，我越来越觉得，“看图”本身其实也是一个工作流。\n\n很多时候用户并不是要修改图片，而只是想更快地回答几个问题：\n\n这几张哪张更好？\n\n两个版本到底改了哪里？\n\n导出以后颜色有没有变化？\n\n某个区域的亮度和颜色是否正常？\n\n这也是我现在继续开发 Domino Image Viewer 的方向：尽量把这些围绕图片做判断的步骤放进同一个连续的工作空间里。\n\n目前软件已经在 App Store 上架，还在持续优化大图、RAW、HDR、图片对比和评审相关的体验。\n\n官网：https://dominoimg.com/\n\nApp Store：https://apps.apple.com/app/id6760245734",
+    "created_at": "2026-09-19T19:32:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11815"
+  },
+  {
+    "id": 11814,
+    "title": "【开源自荐】jev-use：把 AI agent 里不需要输出文本的步骤交给判断模型",
+    "content": "项目地址：https://github.com/shitianfang/jev-use\n\nClaude Code / Codex / pi 的插件，把 AI agent 循环里**不需要输出文本**的步骤交给 TypeSafe 的判断模型 Jev：构建结束了吗？这 30 个元素里点哪个？这条命令安不安全？这类问题只要一个答案，而 LLM 的做法是先写一段话，再让你的代码从话里解析出那个答案。Jev 对一个状态回答\"是否 / 选一个 / 打分\"这类定型问题，一次前向传播给出结果，不生成任何 token。\n\n仓库里的数字都是自己跑出来的，脚本可复跑，包括对自己不利的那些：\n\n- 给基线模型加上 enum 约束之后，延迟优势是 **3×**，不是演示动图里看着像的 14×。这是我自己复测后改掉了 README 原来的说法。\n- 真正站得住的是成本：约 **$0.02 / 千次判断**，比同样受约束的 claude-haiku-4.5 便宜 16 倍。\n- 准确率：**454 条真实判断**，与 claude-opus-5 参考答案一致率 82.2%，未升级部分 89.5%。其中\"上下文压缩\"这一类只有 56.3%，低于恒定答案基线——一样写在文档里。\n- 命令安全门在参考标为危险的 22 条命令上**零漏放**，四个错误全是把不改变任何东西的命令误拒。\n\nMIT 协议，一行安装：`npx -y jev-use install`\n\n自荐，作者是我本人。\n",
+    "created_at": "2026-09-19T18:24:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11814"
+  },
+  {
+    "id": 11813,
+    "title": "【开源自荐】Markview：排版有出版级质量、打开又不慢的原生 Markdown 阅读器（Rust，三平台）",
+    "content": "我是 Markview 的维护者，按周刊 README 的软件投稿入口提交，供编辑筛选。\n\nMarkview 是一个只读的原生 Markdown 阅读器，用 Rust 从零写成。它不套 WebView、不跑 JavaScript、也不调用外部 TeX 进程：Markdown 从源码到屏幕的每一步，包括排版、数学公式和 PDF 导出，都在进程内完成，装完就是一个自包含的二进制。\n\n- 项目与下载：https://github.com/szdytom/markview\n- 开源协议：MIT\n- 当前版本：0.1.4，界面语言为简体中文与英文\n\n![Markview 排版一篇英文 Markdown 文档](https://raw.githubusercontent.com/szdytom/markview/main/docs/screenshots/en-typography.png)\n\n它最想解决两件事。\n\n一是排版。整段用 Knuth–Plass 算法求最优断行，再加英文断词，两端对齐时词距和字距的伸缩都有明确上限，不会为了齐而把某一行硬拽开。中文按 W3C 的《中文排版需求》处理：标点出现在行首或行尾时让出半个字宽、收尾标点悬挂到版心之外，cjk-type 可以在大陆、台湾、日本三套标点惯例之间切换。行内和行间 LaTeX 用纯 Rust 的 RaTeX 解析，KaTeX 字体随二进制分发，公式与正文共享基线，和文字一起两端对齐。\n\n二是速度。排版跑在工作线程上，超过 32 KiB 的文档会边排边把已经完成的部分发布上屏，解析仍然覆盖全文，所以引用定义这类跨段落语义依然正确。结果是首帧不随文档变大：从 10 KiB 的笔记到 1 MiB 的长文，从进程启动到第一帧可读内容都在 76 到 83 毫秒之间，彼此差距小于测量噪声；滚动完一篇 100 KiB 的中英混排加公式文档，常驻内存约 50 MiB。\n\n其他功能：代码高亮、表格、脚注、GitHub alerts，图片支持 PNG / JPEG / GIF / WebP / BMP / ICO / SVG；文档里指向其他 .md 文件的链接在新标签页打开；编辑源文件时阅读位置自动保持。主题除内置明暗外，可写 .mvss.toml 自定义，配 ss validate / install / list 三个命令。\n\n- Linux：AppImage、deb、tar.gz\n- Windows：MSI、zip\n- macOS：Intel 与 Apple Silicon 均有包\n\n安装包 11~15 MB。macOS 的包未签名，首次运行需去除 quarantine 属性。另提供命令行导出，markview --pdf doc.md -o doc.pdf 支持纸张、页边距、页眉页脚等参数，带 --watch 时文档或其引用的本地图片一改就重新导出，未变化的解析与布局直接复用；同一份文档导出两次，产物逐字节相同。\n\n设计取舍：Markview 是只读的，不编辑、不保存 Markdown，也不打算替代编辑器。它只把「打开一份 Markdown 并把它排得好看」这一件事做好。\n\n作为新项目，它在功能和成熟度上肯定不如一些已经发展多年的 Markdown 工具，欢迎批评和建议。\n",
+    "created_at": "2026-09-19T17:53:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11813"
+  },
+  {
+    "id": 11812,
+    "title": "【网站自荐】Video to Video AI：基于提示词转换短视频风格与场景",
+    "content": "推荐一个浏览器端的 AI 视频转换工具：[Video to Video](https://videotovideoai.online/)\n\n它面向已有短视频的二次创作：上传 MP4 后，可以通过提示词进行风格转换、背景替换、人物替换、重新打光、镜头角度调整和运动控制。网站还提供 720p、1080p、2K、4K 等输出选项，并支持生成独立的延续片段。\n\n比较适合用来快速探索同一段动作素材的不同视觉方向，再把选中的结果下载到常规剪辑软件中完成声音、字幕和节奏处理。页面包含中文界面，不要求安装桌面客户端。",
+    "created_at": "2026-09-19T17:19:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11812"
+  },
+  {
+    "id": 11811,
+    "title": "【工具自荐】Video to Video AI：用提示词转换短视频风格与场景",
+    "content": "项目地址：https://videotovideoai.online/\n\nVideo to Video AI 是一个浏览器端的 AI 视频转换工具。用户上传短视频并输入提示词后，可以进行风格迁移、背景或场景替换、角色引导、重新布光、镜头角度调整和动作控制，也可以生成独立的后续片段。\n\n工具面向视频创作者、剪辑师和社交媒体内容制作者，支持预览私有的 720p 或 1080p 结果并下载 MP4。网站提供清晰的操作流程与常见问题说明；生成服务需要登录并使用额度，并非无限免费工具。",
+    "created_at": "2026-09-19T17:04:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11811"
+  },
+  {
+    "id": 11810,
+    "title": "【工具自荐】Codex Quota Reset：把 AI 额度重置公告推送到微信",
+    "content": "用 AI 编程时，最打断节奏的事情之一，是任务做到一半额度耗尽：自己的额度什么时候恢复？平台有没有临时重置？一条公告究竟适用于哪些用户？这些信息往往分散在账号用量页面和公开消息里。\n\n我们做了 **Codex Quota Reset**，把公开重置公告、微信提醒和个人恢复倒计时集中到一个网站，方便安排下一次开工。\n\n**体验地址：https://codexquotareset.com/zh**\n\n<img width=\"1084\" height=\"733\" alt=\"首页：多平台入口、公开公告状态与个人倒计时\" src=\"https://github.com/user-attachments/assets/99f89f9a-09f9-45ac-959d-14d8c75426f0\" />\n\n### 1. 新公告推送到微信，减少反复刷消息\n\n中文首页提供「有新公告时推送到微信」订阅入口，通过 **Server酱** 连接微信。配置后，可将新收录的公开公告推送到微信，适合不方便一直开着网页、又想关注重置消息的朋友。\n\n设置方法：\n\n1. 打开 https://sct.ftqq.com ，按其流程微信扫码绑定并获取 SendKey。\n2. 在本站中文首页的微信订阅框中填写 SendKey，点击订阅。\n3. 后续关注新公告提醒，需要时可以退订。\n\n这里提醒的是**新收录的公开公告**，不是自动读取你的账号并判断个人额度已经恢复。\n\n**微信订阅设置界面：**\n\n<img width=\"1084\" height=\"733\" alt=\"微信公告订阅设置界面\" src=\"https://github.com/user-attachments/assets/a5087f2d-5a21-45c6-af13-3142ddce357e\" />\n\n### 2. Codex、Claude、GLM、Grok，集中查看公告\n\n网站提供四个平台的公告入口，方便切换查询，不必把不同平台的信息混在一起。公告保留时间与原始来源链接，便于进一步核对适用产品、套餐和发布背景。\n\n各平台的收录方式并不完全相同：例如 Claude 页面说明采用提交收录，不能将所有入口理解为同一种自动实时监控。具体来源与更新情况以各平台页面为准。\n\n### 3. 个人恢复倒计时，安排下一段编码时间\n\n在 Codex 用量页面或 CLI `/status` 查看自己的恢复时间，再填入本站的个人倒计时。公开公告和个人恢复时间分开展示，避免看到一条 reset 消息，就误以为自己的账号一定已经恢复。\n\n还可以导出 **`.ics` 日历事件**，导入日历并开启通知。个人时间提醒由日历应用负责，网页关闭后无需一直盯着倒计时。\n\n### 4. 查历史、看来源，区分不同类型的重置\n\nCodex 首页提供公告归档、分类筛选和公告日历，可按日期查看收录记录，也可以切换显示时区。普通重置与 banked reset 分别标注，方便理解「收到一次备用重置机会」和「当前额度已经恢复」的区别。\n\n历史间隔只用于回顾，不保证下一次重置时间；来源检查延迟或无法确认时，页面会显示相应提示。账号最终是否恢复，仍以官方用量页面为准。\n\n欢迎经常使用 AI 编程工具的朋友试用。也欢迎反馈希望关注的平台、微信提醒的使用体验，以及公告展示中需要改进的地方。\n",
+    "created_at": "2026-09-19T17:01:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11810"
+  },
+  {
     "id": 11809,
     "title": "【工具自荐】Snapora：Windows 截图、标注与贴图",
     "content": "我是 Snapora 的维护者，按周刊 README 的软件投稿入口提交，供编辑筛选。\n\nSnapora 是 Windows 10/11 64 位桌面工具，将区域截图、文字/图形标注和贴图整合在一起。一个使用场景是把需要对照的界面截图固定在屏幕上方，再切换到其他程序继续工作；截图可加文字、箭头、马赛克或模糊，并复制或保存。\n\n- 官网与免费下载：https://snapora.9nn.cn/\n- 安装包、说明和问题反馈：https://github.com/Moresyl/Snapora\n- 当前界面语言：简体中文。\n- 项目状态：新发布的 1.0.0 版本，闭源；GitHub 仓库仅分发安装包和文档。它不是开源项目，也不声称已达到成熟同类产品的全部功能。\n\n核心截图功能不需要在线账号，截图内容默认在本机处理；客户端有联网检查更新功能。\n\n已搜索本仓库的 Snapora 投稿记录，未发现重复。感谢审阅。",
@@ -758,53 +806,5 @@
     "created_at": "2026-09-15T07:57:40Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11716"
-  },
-  {
-    "id": 11715,
-    "title": "【项目自荐】OpenWorkBuddy：让本机 Agent 交付 PPT、Word、Excel（桌面工具）",
-    "content": "OpenWorkBuddy 是一个本地优先的 AI 工作 Agent。把“用这个 Excel 做一份 Q3 复盘 PPT”这类需求和材料交给它，最后得到的是可打开的 `.pptx` / `.docx` / `.xlsx` / HTML 文件，而不是一段聊天记录。\n\n仓库：https://github.com/CatCatUncle/openworkbuddy\n\n![真实运行演示：任务完成后在成果面板留下可打开文件](https://raw.githubusercontent.com/CatCatUncle/openworkbuddy/main/docs/images/demo.gif)\n\n它目前做了几件我觉得 AI 办公工具必须做实的事：\n\n- 任务结束会检查模型声称生成的文件是否真的在磁盘上；不在就判失败并重做\n- 会话、文件和模型 Key 默认留在本机，服务默认只监听 `127.0.0.1`\n- 可以切换 DeepSeek、通义、智谱、Kimi、OpenRouter、Ollama；本机已装 Claude Code 或 Codex 时也能直接作为引擎\n- 新能力就是一个 Markdown Skill 文件，存到 `skills/<名字>/skill.md` 后下一条任务生效；也支持 MCP 和 Agent Plugins\n- 提供 macOS / Windows 安装包，也可以用 Docker 或 Node.js 自托管\n\n源码运行（Node.js 18+）：\n\n```bash\ngit clone https://github.com/CatCatUncle/openworkbuddy.git\ncd openworkbuddy && npm install\nnpm run app\n```\n\n许可证为 PolyForm Noncommercial 1.0.0：个人、学习和非营利使用免费；商业使用需授权。\n\n现在最希望收集的反馈是：你希望一个本机 Agent 最终替你交付哪一种文件，以及“文件实际落盘校验”还应该覆盖哪些失败场景。",
-    "created_at": "2026-09-15T07:22:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11715"
-  },
-  {
-    "id": 11714,
-    "title": "[开源自荐] Recruit OS：让所有的面试官会面试，把“感觉不错”追问到证据",
-    "content": "## 面试聊了一个小时，最后只能写“感觉不错”\n\n“表达挺好，项目也做过，感觉可以推进。”\n\n写完这句评价，再问自己：**他说的成果，有多少是他本人做的？你认可他的能力，依据是哪段回答？下一轮还需要验证什么？**\n\n我做 **Recruit OS**，就是希望帮助面试官把这些问题问清楚。目标很直接：**让所有的面试官会面试。**\n\n这是一个已经在我所在公司实际使用的 AI 辅助面试工作台，现在以 MIT 协议开源，支持企业独立部署。\n\n## 一个具体例子\n\n在仓库的虚构演示案例中，候选人说：“我们改革了提成方案，年化节省约 220 万。”\n\n工作台为这类回答准备了具体的追问：\n\n- **说的是“我们”**：哪一步由你独立负责？哪个决定是你做的？\n- **给了一个漂亮数字**：测算基线是什么？哪些已经发生，哪些只是全年预测？\n\n沿着这些问题，面试官可以进一步厘清本人贡献、团队决策、实际结果与预测。\n\n![虚构演示案例：面试工作台中的主问题与条件追问](https://raw.githubusercontent.com/xinxing870126-prog/recruit-os/main/docs/images/interview-followups.png)\n\n## 工作台如何辅助面试\n\n- **面试前**：结合岗位、简历和前序面试信息，准备本轮目标、提问路线和验证重点。\n- **面试中**：围绕当前话题，结合对话提供追问与参谋建议。\n- **面试后**：整理对话证据、风险与未核实的问题，生成反馈草稿，**由面试官确认最终结论**。\n\n项目还包含岗位管理、候选人分析、面试协作和飞书相关集成。\n\n## 源码与体验\n\n- [GitHub 仓库](https://github.com/xinxing870126-prog/recruit-os)\n- [中文介绍与快速启动](https://github.com/xinxing870126-prog/recruit-os/blob/main/README.zh-CN.md)\n- [面试工作台案例说明](https://github.com/xinxing870126-prog/recruit-os/blob/main/docs/interview-workspace.zh-CN.md)\n- **许可证：** MIT。\n- **语言：** 项目介绍、快速启动和面试案例提供中英两版；应用界面目前主要为简体中文。\n- **演示说明：** 截图中的计划、对话和反馈为人工编写的虚构快照，用于展示流程；实际 AI 和语音功能需要配置对应服务。\n\n欢迎关注招聘、面试方法和 AI 企业应用的朋友体验并交流。也想听听：你有没有遇到过“面试时没追下去，结束后才想起来”的问题？\n",
-    "created_at": "2026-09-15T06:35:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11714"
-  },
-  {
-    "id": 11713,
-    "title": "【网站自荐】imagetopoetry.com 见景寻诗：上传一张照片，找到最贴近意境的真实古诗词",
-    "content": "大家好，想自荐一个我最近做的小网站：**见景寻诗**。\n\n网站地址：https://imagetopoetry.com/\n\n我平时拍到一些喜欢的风景时，经常会觉得“这幅画面很有诗意”，但真正想找一句贴切的古诗，却很难马上想起来。现在不少工具会直接生成一段仿古诗，我更想做另一件事：**不让 AI 冒充古人写诗，而是从真实古典诗词中找到与照片意境相合的一句。**\n\n因此做了「见景寻诗」。\n\n上传照片后，网站会分析画面里的景物、时节、色彩和情绪，再从诗词库中匹配整体意境最接近的真实诗句。结果会同时展示篇名、作者、朝代和匹配理由，方便核对出处，也可以查看完整诗作。\n\n找到诗句后，还能继续调整：\n\n- 留白题诗、古意竖排、画心题跋等版式\n- 字体、位置和文字颜色\n- 作者与篇名\n- 印章效果\n\n调整完成后，可以按照原图比例和像素尺寸生成 JPEG 海报并下载。\n\n目前网站免费使用，无需注册或登录，生成的图片没有水印。支持 JPG、PNG、WebP 格式，单张图片最大 10 MB。原图预览与最终海报合成主要在浏览器中完成。\n\n![见景寻诗生成效果](https://raw.githubusercontent.com/tanghaojin/image-to-poetry-website/main/docs/design/state-03-generated.png)\n\n现在还是第一个版本，还有不少地方可以继续完善。欢迎大家拿手机里的风景照片试试看，也很想听听大家的真实感受：匹配到的诗句是否贴合画面，以及海报排版用起来是否顺手。\n\n谢谢大家。",
-    "created_at": "2026-09-15T06:04:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11713"
-  },
-  {
-    "id": 11712,
-    "title": "【网站自荐】Doc-Translator.org：尽量保留原排版的免费 Word 文档翻译工具",
-    "content": "大家好，我做了一个免费的在线 Word 文档翻译工具：**Doc-Translator.org**。\n\n网站地址：https://doc-translator.org/\n\n做这个网站的起因很简单：以前翻译 Word 文档时，文字翻完了，表格、图片、页眉页脚和编号常常还要重新整理。对长文档来说，重新排版有时比翻译本身更费时间。所以我想把“翻译内容”和“尽量保留原文档结构”放在同一个流程里完成，让用户上传 DOCX 后，直接拿到一份仍然可以编辑的 Word 文件。\n\n目前网站支持：\n\n- 200 多种语言，可自动识别源语言；\n- 尽量保留段落、表格、图片、字体、页眉页脚、列表和编号等原有结构；\n- 返回可继续编辑的 DOCX 文件，而不是只能查看的图片或 PDF；\n- 单个文件最大 30 MB，不限页数；\n- 免费使用，无需注册，也不添加水印；\n- 文件仅用于完成本次翻译，原文件、译文和任务数据会在 24 小时后自动删除。\n\n目前只支持 DOCX。我没有急着堆很多格式，而是想先把 Word 文档这一件事做得更扎实。复杂文档的自动翻译和排版还可能出现语言或格式误差，如果大家遇到处理不好的文档，欢迎反馈给我，我会继续改进。\n\n我参与了这个网站的制作，特此说明关系。感谢阅读，也感谢《科技爱好者周刊》一直给独立产品提供被看见的机会。\n\n![Doc-Translator.org 网站预览](https://doc-translator.org/og.png)",
-    "created_at": "2026-09-15T06:00:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11712"
-  },
-  {
-    "id": 11711,
-    "title": "【开源自荐】MulmoTerminal：用颜色和声音告诉你，哪个编码 agent 在等你",
-    "content": "### 项目地址\n\nhttps://github.com/receptron/mulmoterminal\n\n### 项目介绍\n\n同时开着好几个编码 agent 的时候，最难的不是让它们跑起来，而是看出**哪一个在等你**。终端里「停在权限确认上」和「还在思考」看起来完全一样——都只是不再输出了。\n\nMulmoTerminal 把它们放进浏览器里的一个网格，一页最多 9 个格子，每格是一个真实的 PTY 终端。一条 `npx mulmoterminal@latest` 就能起来。\n\n- **颜色来自 agent CLI 自己的 hook，而不是去解析滚动输出。** Claude Code 会发出 `PreToolUse` / `Stop` / `Notification`，据此把格子分成 *在跑* / *等你* / *跑完了* 三种颜色。抓屏幕分不出前两种，hook 可以。（Codex 不上报「等待输入」——它的确认框画在自己的 TUI 里，不会进 rollout 文件——所以 Codex 只有「在跑 / 跑完了」两种。这一点工具里写明了，没有含糊过去。）\n\n- **声音才是你没盯着屏幕时管用的那一半。** 有 7 个时刻可以响，而且**每一个都能配自己的音频文件**：`finished`（一轮结束）、`waiting`（卡在输入上）、`command-done` / `command-failed`（Run 格子的退出码）、`session-exited`（PTY 结束）、`worker-failed`（后台隐藏 worker 死了——屏幕上没有格子的会话只有这一种会提醒）、`pr-ci-failed`（某个目录的 PR 变红）。给 `waiting` 和 `finished` 配两种不同的提示音，你就能靠耳朵分清「现在就得过去」和「等会儿再说」。其中 `finished` 和 `waiting` 还会作为 Web Push 推到手机上。\n\n- **一个格子不一定是 agent。** Claude Code、Codex、Antigravity、Grok、Muse 和普通 shell 在同一个网格里，所以看 agent 的地方也是你敲 `git log`、`npm test` 的地方。每个格子可以有自己的 git worktree，多个 agent 在同一个仓库的不同分支上互不干扰。\n\n- **它驱动你已经装好的 CLI，而不是取代它。** 没有账号要注册，没有 API key 要粘贴，中间也没有代理——对话还是从你的机器直接到厂商，和你手敲 CLI 时一模一样。用的是你现有的登录和订阅。\n\n- **tmux 托底，关掉浏览器不等于关掉工作。** 关标签页、重启浏览器再回来，会话和滚动缓冲都还在。因为界面是网页而不是桌面应用，局域网里用手机打开同一个地址就是同一个网格，手机上不用装任何东西就能批准一个确认框。\n\nTypeScript + xterm.js，MIT 协议，要求 Node 22.12+ 和至少一个 agent CLI（`claude` / `codex` / `agy` / `grok` / `muse`）已经装好并登录。默认打开 http://localhost:34567 ，数据不上传，也不做全局安装。\n",
-    "created_at": "2026-09-15T05:43:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11711"
-  },
-  {
-    "id": 11710,
-    "title": "【项目自荐】Money Nerds：结合图片板与直接资助的社区 Web 应用",
-    "content": "我是 Money Nerds 的项目维护者，想自荐一个源代码公开的社区 Web 应用：用户可以发布创作、想法、表情包或个人需求，其他人浏览内容后，自主选择是否直接支持作者。\n\n它把图片板和直接资助结合起来：帖子有独立页面，支持图片、音频和圆形视频；作者可以设置接受的加密资产与网络，支持者使用自己的钱包转账。平台不托管用户资金，也不收取资助佣金，网络手续费仍可能产生。公开个人主页可以查看站内内容和已核验的转账记录；转账记录不代表平台已验证求助故事的真实性。\n\n技术栈是 Next.js、TypeScript、Supabase 和 Clerk。可以免登录浏览公开内容；发帖需要登录。目前应用界面主要是英文。项目还在持续改进，移动端钱包、录音和 Telegram 返回流程需要更多真实设备反馈。\n\n- 在线演示：https://www.moneynerds.online/\n- 中文功能说明：https://www.moneynerds.online/zh/how-it-works\n- 安全说明：https://www.moneynerds.online/safety\n- 公开代码：https://github.com/isthisthelastone/money_nerds\n\n希望征求关于首次使用体验、发帖流程和资助说明是否清楚的反馈。体验时不必转账；如实际使用资助功能，请核对资产、网络和收款地址，加密转账通常无法撤销。不要在帖子中公开密钥或敏感身份资料。项目不承诺筹款结果，具体支付方式是否可用取决于所用服务和所在地区。\n\n披露：本投稿经项目维护者授权，使用 AI 辅助撰写和中文翻译。\n",
-    "created_at": "2026-09-15T04:57:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11710"
   }
 ]
