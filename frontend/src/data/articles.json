@@ -1,5 +1,29 @@
 [
   {
+    "id": 11839,
+    "title": "【开源自荐】Prism：跨平台社交内容分析框架，按收藏率而非点赞排序",
+    "content": "向周刊自荐一个开源项目：Prism。\n\n做内容研究的时候会遇到一个尴尬：开源世界的采集器已经很成熟了，但抓回来之后呢？小红书的字段和 B 站的对不上，抖音和快手又各是一套，想回答「哪类内容更值得做」这种问题，每换一个平台就得重写一遍分析代码。\n\nPrism 做的是采集器**之上**那一层：把各平台的原始帖子归一到同一套五张表（博主 / 笔记 / 指标 / 文本 / 分析结果），同一份分析代码跨平台直接复用，新增一个平台只需要写一个 adapter，不用动分析层。目前内置小红书、B 站、抖音、快手四个适配器。\n\n它有一个和同类工具不太一样的判断：**按收藏率排序，而不是点赞数。** 点赞只表示「不错」，收藏才表示「我还会回来看」。项目自带的演示数据里，收藏率榜单前排全是攻略类内容；同一批数据改按点赞排，出来的是猫和日落，两份完全不同的榜单。\n\n目前可以：\n\n- 定量分析：分布、集中度、图文与视频对比、收藏率排名\n- 情感分析：走本地 LLM，也可以配置任意 OpenAI 兼容端点\n- 时序与预测：线性回归回测\n- 数据自带：内置 adapter、MediaCrawler 导出、或任意自定义来源都行，schema 才是约定\n- 合规默认开启：用户 ID 加盐 HMAC 哈希、敏感字段丢弃、内置速率限制\n\n技术上是纯 Python + SQLite，没有额外的中间件，可以完全私有化部署。字段映射外置在 yml 里，平台改版时只改配置不动代码。\n\n装完想立刻看到效果的话，有一个离线 demo，不用配 cookies 也不用联网：\n\n```bash\npip install -e \".[forecast]\"\nprism demo\n```\n\n一秒后输出：\n\n```\n① Collect-rate ranking (save/like — Prism's core signal):\n    2.38  save   1520 / like    640   Every visa document I needed, in order\n    1.82  save   1655 / like    910   Reading a rental contract line by line\n    1.82  save   1490 / like    820   How to pick a rice cooker without overpaying\n\n② By content type (avg saves):\n   image    n=9    avg_save=1748\n   video    n=11   avg_save=693\n\n③ Save distribution: n=20 median=940 p90=1980 max=2610\n④ Save concentration: HHI=657 top3-share=0.284\n```\n\n比较适合想自己掌控数据、而不是租一个黑盒面板的技术型运营、独立开发者和中小数据团队。项目还在持续完善，特别希望听到真实使用中遇到的问题，尤其是新增其他平台 adapter 的需求。\n\n- GitHub：https://github.com/millennialdreamer/prism\n- 中文文档：https://github.com/millennialdreamer/prism/blob/main/README_zh.md\n- 开源协议：MIT\n\n![Prism 社交内容分析层，按收藏率而非点赞排序](https://raw.githubusercontent.com/millennialdreamer/prism/main/docs/assets/social-preview.png)\n",
+    "created_at": "2026-09-20T16:41:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11839"
+  },
+  {
+    "id": 11838,
+    "title": "【网站自荐】免费在线MP3转MIDI工具，MelodyTrace 让声音与音符自由互译",
+    "content": "## 为什么做？\n\n网站地址： [https://melodytrace.com](https://melodytrace.com/)\n\n做 MelodyTrace 的原因很简单。\n\n平时弹吉他弹了一段旋律，或者自己随手哼了一段，想把它变成 MIDI 再继续编曲，其实挺麻烦的。网上虽然有一些音频转 MIDI 的工具，但很多要么识别效果一般，要么转换完就结束了，后面还得再找软件处理。\n\n所以做了 MelodyTrace。\n\n它主要用来把 MP3、WAV、人声、哼唱、乐器录音这些音频转换成 MIDI。转换以后可以直接在网页里用钢琴卷帘查看和修改音符，调整不满意的地方，再导出 MIDI 放到 DAW 或制谱软件里继续用。\n\n现在也加了一些相关功能，比如视频转 MIDI、MIDI 转 MP3、SoundFont 音色试听和 MIDI 编辑。\n\n整体比较适合扒旋律、记录灵感、简单扒谱，或者把现成音频变成可以继续编辑的音乐素材。\n\n## 主要功能\n\n- 音频转 MIDI：MP3、WAV、FLAC、M4A/AAC、AIFF、OGG 等音频提取旋律并转换成 MIDI，也覆盖人声、哼唱、吉他等场景。\n- 视频转 MIDI：支持 MP4、MOV、WebM 等视频中的音频进一步转换为 MIDI。\n- 在线 MIDI 编辑：转换后直接用钢琴卷帘查看、播放、移动、拉长、移调或删除音符。\n- 重新采谱：可以根据不同素材调整参数，再次进行音高和节奏识别。\n- MIDI 转 MP3：把 MIDI 重新渲染成可以直接播放的音频。\n- SoundFont 音色渲染：可使用内置音色或上传自己的 SF2 / SF3，让同一份 MIDI 快速试听不同乐器效果。\n- 导出继续创作：生成标准 MIDI，也可以用于制谱，再放进 DAW、谱面软件或者练习软件继续处理。\n\n网站地址： [https://melodytrace.com](https://melodytrace.com/)\n\n欢迎大家多多提建议，网站右下角可提交建议。\n\n## 界面截图\n\n<img width=\"1536\" height=\"962\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6ddc575a-a647-434a-b4a6-2f75127a4abd\" />\n\n<img width=\"1536\" height=\"1065\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3598f028-9f2e-4c9c-a1f3-6c3064a8ab12\" />",
+    "created_at": "2026-09-20T15:02:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11838"
+  },
+  {
+    "id": 11837,
+    "title": "【开源自荐】原生多租户治理，集“资产CMDB + 自动化工单 + 分布式作业”于一体的企业级运维协同底座",
+    "content": "### 项目简介\n\n- 在线演示：http://www.fleetops.top/\n- 架构文档：https://duke1616.github.io/\n- 核心仓库：https://github.com/Duke1616/ecmdb\n\n日常运维平台建设中，CMDB、自动化工单与任务执行往往各是一套独立系统，缺乏多租户隔离与组织权限治理，系统间割裂严重。\n\nECMDB 采用全栈 Go + Vue 3 开发，是一套**原生多租户的微服务协同矩阵**。各子系统完全独立解耦、按需组网，既可单独部署，也能在统一控制台下聚合联动：\n\n- **统一控制台** · [ecmdb-web](https://github.com/Duke1616/ecmdb-web)\n  Vue 3 + TS 聚合工作台，基于 EIAM 动态渲染路由与菜单，支持微前端插件热插拔。\n\n- **统一身份与权限** · [eiam](https://github.com/Duke1616/eiam)\n  Casbin + OPA 双引擎驱动，支持多租户与组织树隔离、PBAC 细粒度数据鉴权，原生提供 OIDC / CAS / SAML 多协议单点登录。\n\n- **资产管理** · [ecmdb](https://github.com/Duke1616/ecmdb)\n  支持自定义多维资产模型与关系拓扑；提供开放插件架构 [ecmdb-plugins](https://github.com/Duke1616/ecmdb-plugins)，支持按需自定义扩展专属插件（开箱集成 WebSSH 终端与 SFTP 文件管理）。\n\n- **自动化流程工单** · [eflow](https://github.com/Duke1616/eflow)\n  可视化拖拽表单与审批流编排；内置自动化执行节点，审批通过后自动传参触发运维作业，实现无人值守流转。\n\n- **分布式作业调度** · [etask](https://github.com/Duke1616/etask)\n  多租户算力池隔离调度，原生支持 Shell/Python/Ansible 与 Go SDK，具备凭据沙箱与孤儿进程级联强杀。\n\n---\n\n### 系统全景架构\n\n![ECMDB 平台系统全景架构](https://duke1616.github.io/images/architecture.png)\n\n---\n\n欢迎体验与交流，如果对你有帮助，欢迎点个 Star ⭐️ 支持一下！",
+    "created_at": "2026-09-20T14:06:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11837"
+  },
+  {
     "id": 11836,
     "title": "【开源自荐】Data Asset Portal：面向数仓团队的轻量数据资产目录",
     "content": "大家好，我是 Data Asset Portal 的作者，想向周刊自荐这个开源项目。\n\n做数据仓库时，经常需要确认：某个字段是什么意思、一个指标来自哪张表、上下游之间有哪些映射关系。这些信息可能分散在 Excel、建表语句和不同的文档里，查找和交接都比较费事。\n\nData Asset Portal 尝试把这些信息整理成一个可以搜索、浏览和维护的中文目录，主要面向中小型数仓团队。\n\n目前可以：\n\n- 搜索数据表、字段、指标、报表和 API 资产，查看字段说明与指标口径。\n- 维护字段映射，查看已导入的上下游血缘关系。\n- 通过 HTTP API 导入外部系统整理好的元数据，也可以在页面中维护资产信息。\n\n项目采用 React + FastAPI，运行时不依赖独立搜索引擎或消息队列，可以部署在内网单机环境。仓库提供基于 SQLite 和虚构零售数据的一键 Demo，方便先体验完整的前后端流程。\n\n当前比较适合已经有元数据整理或采集程序、希望补一个统一查询入口的团队。数据库采集和血缘解析由外部工具完成，门户负责接收、管理和展示这些信息。\n\n项目还在持续完善，欢迎做数仓、数据开发和 BI 的朋友试用，尤其希望听到真实接入和日常查找过程中遇到的问题。\n\n- GitHub：https://github.com/0verme/data-asset-portal-community\n- 在线界面预览：https://data.overme.cn/ （静态演示，使用模拟数据，版本可能与仓库不同）\n- 开源协议：Apache-2.0\n\n![数据资产目录，使用虚构零售演示数据](https://raw.githubusercontent.com/0verme/data-asset-portal-community/main/docs/images/demo-data-assets.png)",
@@ -782,29 +806,5 @@
     "created_at": "2026-09-16T04:21:02Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11739"
-  },
-  {
-    "id": 11738,
-    "title": "【工具自荐】Face Shape Snap：拍张照片，快速找到你的脸型",
-    "content": "项目地址：https://faceshapesnap.com/\n\n最近做了一个比较简单的小工具，叫 Face Shape Snap，主要是帮大家快速判断自己的脸型。\n\n很多时候我们想换发型、挑眼镜，或者参考一些妆容建议，但第一步往往是先搞清楚自己的脸型。问题是，单纯照着镜子判断其实挺容易搞错的，尤其是 Oval、Oblong、Round 这几种比较接近的类型。\n\n所以我做了一个可以直接通过照片分析脸型的小工具。\n\n使用方式很简单：上传一张正面照片，或者直接调用摄像头，Face Shape Snap 会分析脸部关键点，然后根据额头、颧骨、下颌以及脸部长度之间的比例，判断属于哪一种脸型。目前支持 7 种常见类型：\n\nOval\nRound\nSquare\nHeart\nDiamond\nOblong\nTriangle\n\n比较方便的一点是，整个分析过程直接在浏览器中进行，照片不会上传到服务器。网站也不需要注册账号、邮箱或者安装 App，打开就可以使用。\n\n识别出脸型之后，还可以继续查看对应的风格指南，比如发型、眼镜和妆容方面的建议。这样它不只是告诉你“你是什么脸型”，而是可以继续帮助你把这个结果用到实际的造型选择上。\n\n我觉得这个工具比较适合那些准备换发型、买眼镜、研究妆容，或者单纯好奇自己到底是什么脸型的人。\n\n如果你也经常分不清自己到底是 Oval 还是 Oblong、Round 还是 Square，可以试试看。\n\n项目地址：Face Shape Snap\n",
-    "created_at": "2026-09-16T04:12:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11738"
-  },
-  {
-    "id": 11737,
-    "title": "【工具自荐】Reverse Video Search：用画面、声音和水印追踪视频来源",
-    "content": "项目地址：https://reversevideosearch.co/\n\nReverse Video Search 是一个用于视频溯源和来源验证的在线工具。\n\n做这个工具主要是因为现在一个视频被转载、裁剪、压缩、镜像、加字幕或者重新配音之后，单纯通过标题和关键词已经很难找到它最初的来源。\n\n很多时候我们看到一段视频，真正想知道的其实不是“这个视频叫什么”，而是：\n\n这个视频最早在哪里出现？\n\n是谁最先发布的？\n\n现在看到的版本是不是经过剪辑？\n\n有没有其他账号转载过？\n\n视频里的画面、声音或者水印能不能帮助找到原始来源？\n\n所以 Reverse Video Search 尝试从视频本身提取更多线索，而不是只搜索视频标题。\n\n目前可以直接上传视频，也可以使用公开的视频 URL 或关键词进行搜索。\n\n支持 MP4、MOV、AVI、WEBM 和 GIF，上传文件最大 50MB，视频最长 20 分钟。\n\n核心的搜索方式是 Visual Fingerprinting。\n\n系统会从视频中提取关键帧，然后寻找视觉上相似的内容。即使视频经过压缩、裁剪、调整大小或者镜像处理，也可以作为进一步寻找来源的线索。\n\n除了画面之外，也可以从其他信号寻找匹配。\n\nAudio Fingerprinting 可以比较视频中的音频，例如背景音乐、采访录音或者其他声音，即使相同的声音出现在不同的视频剪辑中，也可以作为搜索线索。\n\nTranscript Match 可以使用 Whisper 对部分视频中的语音进行转录，然后利用说话内容寻找相关结果。\n\n另外还有 OCR / Watermark Detection，可以读取视频关键帧中的文字、账号名称、Logo、水印和字幕。\n\n这一点对于寻找转载视频的原始账号尤其有用。\n\n比如一个视频被重新上传之后，原来的标题已经被修改，但是画面角落仍然保留着原作者的账号名称或者水印，那么这些信息就可能成为继续寻找来源的线索。\n\n除了寻找相似视频之外，Reverse Video Search 也比较关注时间线。\n\n找到可能的匹配之后，可以比较不同页面的发布日期、标题、字幕、水印和视频编辑情况，从而进一步判断哪个来源更早、更值得核实。\n\n搜索结果还可以整理成 Evidence Report，把来源链接、日期、缩略图、匹配信息和备注放在一起。\n\n这样如果是做事实核查、版权调查或者内容研究，就不用把所有找到的链接和截图分散保存。\n\n目前这个工具主要适合几类场景。\n\n如果你是内容创作者，可以用它寻找自己的视频是否被其他地方转载。\n\n如果你是记者或事实核查人员，可以用它调查一段正在传播的视频，尝试找到更早的来源，并比较不同版本之间的差异。\n\n如果你是品牌或代理机构，可以检查广告素材、品牌 Logo 或网红交付的视频是否出现在其他地方。\n\n如果你是研究人员，也可以利用来源链接、日期、缩略图和编辑信息建立一个比较完整的视频来源记录。\n\n当然，自动匹配并不能直接证明一个来源就是“原始来源”。\n\n网站本身也把搜索结果定位为调查线索，而不是最终结论。\n\n一些私人账号、已经删除的帖子、地区限制内容或者没有被索引的页面，系统可能无法访问。因此找到匹配之后，还是需要打开来源页面，比较日期、上下文和视频内容，再自己进行确认。\n\n我觉得这也是视频反向搜索比较重要的一点：\n\n不是让 AI 替你做最终判断，而是尽可能多地找到可以验证的证据。\n\n如果你手里有一段不知道出处的视频，或者经常需要确认网络视频的来源，可以试试看：\n\nhttps://reversevideosearch.co/\n\n目前可以先进行一次搜索，不需要账号；注册后还会获得额外 credits。\n\n如果有人经常做视频溯源、事实核查或者版权调查，也欢迎分享一下你们平时都是怎么寻找视频原始来源的。\n",
-    "created_at": "2026-09-16T03:45:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11737"
-  },
-  {
-    "id": 11736,
-    "title": "【工具自荐】Wan 3.0：让一个想法，从文字变成真实的视频镜头",
-    "content": "项目地址：https://wan-3.pro/\n\nWan 3.0 Video Generator 是一个面向 Wan 3.0 模型的视频生成网页工作空间，主要想做的是把从“一个镜头想法”到“一个可以查看的视频草稿”这件事情变得更简单。\n\n现在 AI 视频生成越来越容易，但实际使用的时候，我发现很多时候并不是想直接生成一整部视频，而只是想先验证一个镜头。\n\n比如一个产品镜头应该怎么移动，一个人物应该怎么走，一个场景应该怎样开始，或者一个竖屏短视频的第一段画面应该是什么样。\n\n所以这个项目更关注 shot-based video creation。\n\n目前支持两种主要方式：\n\nText to Video：直接用文字描述场景、动作、镜头运动和光线，让 AI 生成一个短视频镜头。\nImage to Video：上传一张第一帧图片，然后描述希望发生的动作，让画面从静态图片变成动态视频。\n\n生成之前还可以选择模型、画幅、分辨率和视频长度，这样可以先确定最终需要的输出形式，再进行生成。\n\n目前支持：\n\nWan 3.0 / Wan 3.0 Prime\n480P、720P、1080P\n2–15 秒视频\n16:9、9:16、1:1 等画幅\nText-to-Video\nImage-to-Video\n\n我也加入了一些比较实际的使用方式，比如：\n\nProduct Lens\n\n用一个简单的产品场景测试材质、灯光变化和摄像机移动，适合先做产品页面上的短视频素材。\n\nCharacter Motion\n\n从一张人物图片开始，只描述一个简单动作，比如走一步、转身或者回头，同时尽量保持人物的服装和构图。\n\nVertical Social Cut\n\n直接使用 9:16 画幅，为短视频平台制作竖屏视觉素材。\n\nStoryboard Previsualization\n\n如果一个故事需要多个镜头，可以分别生成几个短镜头，用来提前测试节奏、人物走位和镜头之间的连续性，而不是一开始就投入大量时间制作完整视频。\n\n我觉得这种方式比较适合现在的 AI 视频工作流。\n\n与其一次生成一个很长的视频，不如先把一个镜头做好，再继续下一个镜头。\n\n这样每次生成的内容都比较容易检查，也更方便修改 prompt 和镜头设计。\n\n目前网站也提供了一个 AI 视频 Gallery，可以查看一些成功生成的 Wan 3.0 视频，作为测试 prompt 和镜头创意时的参考。\n\n项目目前提供不同额度的计划，也支持 API，方便需要把视频生成功能接入自己产品的开发者。\n\n如果你正在研究 Wan 3.0，或者只是想快速测试 text-to-video / image-to-video，而不想先配置本地环境，可以直接试一下：\n\nhttps://wan-3.pro/\n\n欢迎大家测试不同的 prompt 和镜头设计。如果你发现一些特别有意思的 Wan 3.0 工作流，也欢迎分享出来。\n\n这个项目的目标其实很简单：\n\nStart with one shot, test the idea, then build the next shot.\n\n",
-    "created_at": "2026-09-16T03:21:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11736"
   }
 ]
