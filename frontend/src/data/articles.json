@@ -1,5 +1,37 @@
 [
   {
+    "id": 11836,
+    "title": "【开源自荐】Data Asset Portal：面向数仓团队的轻量数据资产目录",
+    "content": "大家好，我是 Data Asset Portal 的作者，想向周刊自荐这个开源项目。\n\n做数据仓库时，经常需要确认：某个字段是什么意思、一个指标来自哪张表、上下游之间有哪些映射关系。这些信息可能分散在 Excel、建表语句和不同的文档里，查找和交接都比较费事。\n\nData Asset Portal 尝试把这些信息整理成一个可以搜索、浏览和维护的中文目录，主要面向中小型数仓团队。\n\n目前可以：\n\n- 搜索数据表、字段、指标、报表和 API 资产，查看字段说明与指标口径。\n- 维护字段映射，查看已导入的上下游血缘关系。\n- 通过 HTTP API 导入外部系统整理好的元数据，也可以在页面中维护资产信息。\n\n项目采用 React + FastAPI，运行时不依赖独立搜索引擎或消息队列，可以部署在内网单机环境。仓库提供基于 SQLite 和虚构零售数据的一键 Demo，方便先体验完整的前后端流程。\n\n当前比较适合已经有元数据整理或采集程序、希望补一个统一查询入口的团队。数据库采集和血缘解析由外部工具完成，门户负责接收、管理和展示这些信息。\n\n项目还在持续完善，欢迎做数仓、数据开发和 BI 的朋友试用，尤其希望听到真实接入和日常查找过程中遇到的问题。\n\n- GitHub：https://github.com/0verme/data-asset-portal-community\n- 在线界面预览：https://data.overme.cn/ （静态演示，使用模拟数据，版本可能与仓库不同）\n- 开源协议：Apache-2.0\n\n![数据资产目录，使用虚构零售演示数据](https://raw.githubusercontent.com/0verme/data-asset-portal-community/main/docs/images/demo-data-assets.png)",
+    "created_at": "2026-09-20T13:44:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11836"
+  },
+  {
+    "id": 11835,
+    "title": "开源项目推荐：FocusFlow – 将复杂的系统架构大图转化为 60fps 电影级运镜故事",
+    "content": "### 1. 项目名称与开源地址\n\n* **项目名称**：FocusFlow\n* **GitHub 仓库**：https://github.com/tumio-ltd/focusflow\n* **在线演示体验**：https://focusflow.tumio.site/ （免安装、免登录，内置微服务/大模型RAG/实时湖仓三大可交互拓扑）\n* **开源许可**：MIT (核心播放器与 DSL) / AGPL-3.0 (创作工作台)\n\n---\n\n### 2. 项目简介 (一句话介绍)\n\nFocusFlow 是一个纯前端、离线优先的可视化创作工作台与 60fps 运行时引擎。它能将复杂的静态 4K 架构大图（如微服务集群、大模型 RAG 链路、实时数据湖仓拓扑），转化为类似电影运镜般平滑推拉、带动态贝塞尔流光与语音解说的交互式故事。\n\n---\n\n### 3. 为什么做这个项目？(痛点与背景)\n\n向团队、客户或技术评审委员会展示复杂的微服务或分布式系统时，传统的展示方式往往两难：\n* **静态 4K 大图**：堆砌上百个节点与连线，观众在 30 秒内就会迷失阅读焦点（认知过载）；\n* **PPT 幻灯片**：裁切大图后切碎了拓扑的全局空间上下文；\n* **屏幕录像 (MP4)**：虽然有动态感，但无法暂停下钻查看节点参数，而且文字受压缩伪影影响变糊。\n\nFocusFlow 的初衷就是让开发者能够像电影导演调度镜头一样编排架构图：在 60fps 硬件加速下平滑推拉运镜、聚焦局部节点，并沿依赖链路实时渲染带方向脉冲的贝塞尔发光流线。\n\n---\n\n### 4. 核心功能与技术亮点\n\n1. **60fps GPU 视锥电影级运镜**：由连续仿射变换矩阵驱动，全局俯瞰与局部微服务下钻丝滑切换，无卡顿无锯齿；\n2. **Sobel 算子智能边缘吸附**：内置轻量级计算机视觉算法，在 Canvas 上拖拽标定框，在 <1ms 内自动检测像素梯度并精准咬合微服务容器边框；\n3. **三次贝塞尔流光拓扑**：根据节点空间位置自动计算最佳相对锚点，实时渲染带方向脉冲的高对比度霓虹流光；\n4. **AI 语音解说与音画同步**：可视化音频波形轨道与分幕提词器联动，根据台词字数自动推导镜头驻留时长；\n5. **100% 离线单文件打包**：一键将 4K 底图、动态流光、镜头运动脚本与音频数据深度内联打包为一个独立的 `.html` 文件（<5MB），完全断网环境下双击即播，企业内部架构数据 100% 不上云；\n6. **超轻量独立运行时**：播放内核 (`@focusflow/player`) 纯原生 TS 编写，零 UI 框架依赖，打包体积仅约 35KB，可轻松嵌入任何 React、Vue 网页或博客。\n\n---\n\n### 5. 效果演示视频与动图\n\n#### 🎬 完整中文解说演示视频 (1080p 60fps · 建议戴上耳机观看)\n[![FocusFlow 1080p 60fps 完整中文解说演示视频](https://i.ytimg.com/vi/Osz0EapNnZI/maxresdefault.jpg)](https://youtu.be/Osz0EapNnZI)\n\n👉 **YouTube 1080p 60fps 完整中文解说视频直达**：[https://youtu.be/Osz0EapNnZI](https://youtu.be/Osz0EapNnZI)  \n*(涵盖微服务全景、Sobel 智能吸附、实时贝塞尔流光与单文件离线导出实操)*\n\n#### 🚀 核心运镜实操动图 (免翻墙即开循环)\n![FocusFlow 核心实操演示动图](https://raw.githubusercontent.com/tumio-ltd/focusflow/main/docs/assets/hero-demo.gif)\n\n#### 📸 核心技术视觉\n* **全屏播放态：60fps 视锥运镜播放器与微服务全局拓扑**：  \n  ![FocusFlow 全屏播放态与微服务全局拓扑](https://raw.githubusercontent.com/tumio-ltd/focusflow/main/docs/assets/feature-camera-flow.png)\n\n* **创作工作台：全景镜头编排控制器与音画分幕时间轴**：  \n  ![FocusFlow 创作工作台与镜头编排控制器](https://raw.githubusercontent.com/tumio-ltd/focusflow/main/docs/assets/feature-sobel-snap.png)\n\n---\n\n### 6. 在线体验与反馈\n\n免安装在线体验站现已上线（电脑浏览器打开体验最佳，内置微服务、大模型 RAG 链路和实时数据湖仓三大标杆拓扑工程）：  \n👉 [https://focusflow.tumio.site/](https://focusflow.tumio.site/)\n\n希望这个纯前端开源小工具能对经常需要进行技术汇报、方案答辩与系统架构评审的开发者朋友们有所帮助，感谢阮老师审阅！",
+    "created_at": "2026-09-20T11:44:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11835"
+  },
+  {
+    "id": 11834,
+    "title": "【开源自荐】PI-Desktop：本地优先的 AI 编程 Agent 桌面工作区",
+    "content": "这是我自己做的 PI-Desktop。简单说，它就是给 AI 编程 Agent 准备的一张长期工作台：项目、持久会话、模型、权限、diff review、插件和多 Agent 协作都放在一起，不用在终端、编辑器和各种工具之间来回切换。\n\n它基于 Electron + Rust host core + pi Agent Harness，支持 macOS、Windows 和 Linux。\n\n- 项目地址与下载：https://github.com/vastsa/PI-Desktop\n- 文档：https://pi-docs.aiuo.net/\n- 开源协议：LGPL-3.0-or-later\n- 当前版本：0.15.1\n- GitHub 数据：约 4.6k Stars、390 Forks，累计 3,360+ commits\n\n[![Stars](https://img.shields.io/github/stars/vastsa/PI-Desktop?style=flat)](https://github.com/vastsa/PI-Desktop/stargazers) [![Forks](https://img.shields.io/github/forks/vastsa/PI-Desktop?style=flat)](https://github.com/vastsa/PI-Desktop/network/members) [![Release](https://img.shields.io/github/v/release/vastsa/PI-Desktop)](https://github.com/vastsa/PI-Desktop/releases/latest)\n\n![PI-Desktop desktop workspace](https://raw.githubusercontent.com/vastsa/PI-Desktop/main/docs/image/readme/home.webp)\n\n## 核心亮点\n\n**1. 模型不绑定，工作流不重建**\n\n支持 OpenAI、Anthropic、OpenAI-compatible API，以及 Ollama、LM Studio 等本地模型。可以在同一个会话中切换模型，把云端模型、本地模型和自定义网关放进同一套工作流。\n\n**2. 从“一次性聊天”变成可持续的工程工作区**\n\n项目和会话持久保存，支持 Pin、Archive、Branch、Search、队列提示词、@ 引用文件、Slash Commands、diff review、命令输出和应用预览；还可以导入 Claude Code、Codex、OpenCode、Pi 的本地会话。\n\n![Persistent AI coding sessions](https://raw.githubusercontent.com/vastsa/PI-Desktop/main/docs/image/readme/chat_en.png)\n\n**3. Agent / Plan / Goal 三种执行方式**\n\n- Agent：直接执行日常编码任务\n- Plan：先研究项目并提交实现计划，再开始修改\n- Goal：锁定目标和验收标准，让 Agent 自主选择执行路径\n\n读文件、改代码、运行命令、调用工具和并行委派都经过权限边界，开发者可以随时查看修改和执行结果。\n\n**4. 插件不只是工具调用，而是完整的桌面扩展层**\n\n插件可以增加 Agent Tools、Skills、MCP Servers、Subagents、Commands、Panels、Work Panel Views、Themes、后台服务和插件间通信。项目同时提供插件市场和 Session Orchestrator，可以从一个会话协调多个持久 Worker Sessions 并行工作。\n\n![PI-Desktop plugin marketplace](https://raw.githubusercontent.com/vastsa/PI-Desktop/main/docs/image/readme/plugins_en.png)\n\n![PI-Desktop Session Orchestrator](https://raw.githubusercontent.com/vastsa/PI-Desktop/main/docs/image/readme/session-orchestrator-overview.png)\n\n**5. 本地优先，开发者掌握数据和权限**\n\n项目、会话、设置和日志默认保存在本机，API 凭据使用操作系统 Keychain；PI-Desktop 不要求账号、不设置强制中转服务，也没有 PI-Desktop telemetry。使用远程模型时，请求直接发送到用户配置的模型提供商。\n\nPI-Desktop 适合希望把 Claude Code、Codex、Pi 等 Agent 工作流从终端或编辑器中独立出来，同时又想保留模型自由、权限控制、长期会话和插件扩展能力的开发者。\n\n欢迎反馈实际使用中的安装体验、模型接入、跨平台兼容、长任务恢复和插件开发体验。",
+    "created_at": "2026-09-20T10:11:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11834"
+  },
+  {
+    "id": 11833,
+    "title": "【开源自荐】OpenAI4S：9.9 元的豆包 API，跑一个会自己写代码做科研的 AI 助手",
+    "content": "我们是北京大学—元空 AI 联合实验室，做了一个开源的科研 AI 智能体 **OpenAI4S**，想在这里自荐一下。\n\n- GitHub：https://github.com/PKU-YuanGroup/OpenAI4S\n- 文档：https://openai4s.org/docs/\n\n<div align=\"center\">\n<img src=\"https://github.com/PKU-YuanGroup/OpenAI4S/raw/main/assets/readme-gifs-hd/openai4s_penta.gif\" alt=\"OpenAI4S\" width=\"480\">\n</div>\n\n## 为什么做这个\n\n实验室里每天都在干同一类活：从 UniProt 拉一段蛋白序列、清洗一张表、跑个统计、画一张能放进论文的图。现在的 AI 助手大多是「问一句、调一个工具、再问一句」的模式，每走一步都要把中间结果原样塞回对话里。十万行的表格一贴，上下文就满了；窗口一关，变量全丢。\n\n我们换了个做法：让模型直接写一整段 Python 或 R，丢进一个常驻内核里跑。数据留在内核内存里，对话里只留一句 `<DataFrame 100000x20>`。上一段算出来的变量，下一段接着用，和在 Jupyter 里干活是一样的感觉。至于权限审批、调外部服务、记元数据这些事，还是走传统的 JSON 工具调用——两条路各管各擅长的，不互相凑合。\n\n还有一点是便宜。它不需要昂贵的前沿模型 Key，我们自己主力跑在豆包上，用火山方舟最便宜的那档套餐，**9.9 元一个月**。\n\n## 实际跑起来是什么样\n\n<table>\n<tr>\n  <td width=\"50%\"><b>Live API 工作流</b>：从 UniProt / RCSB 到 3D 结构和报告<br/><img src=\"https://github.com/PKU-YuanGroup/OpenAI4S/raw/main/assets/readme-gifs-hd/demo-01-hd.gif\" alt=\"Live API 工作流\"></td>\n  <td width=\"50%\"><b>真实数据分析</b>：人胰岛素 INS 从 UniProt / RCSB 到可复现报告<br/><img src=\"https://github.com/PKU-YuanGroup/OpenAI4S/raw/main/assets/readme-gifs-hd/demo-05-hd.gif\" alt=\"真实数据分析\"></td>\n</tr>\n<tr>\n  <td width=\"50%\"><b>可视化 Artifact 编辑</b>：一句话把 confidence 阈值线抬到 75<br/><img src=\"https://github.com/PKU-YuanGroup/OpenAI4S/raw/main/assets/readme-gifs-hd/demo-02-hd.gif\" alt=\"可视化 Artifact 编辑\"></td>\n  <td width=\"50%\"><b>注释驱动图表编辑</b>：圈选区域并重绘图例配色<br/><img src=\"https://github.com/PKU-YuanGroup/OpenAI4S/raw/main/assets/readme-gifs-hd/demo-06-hd.gif\" alt=\"注释驱动图表编辑\"></td>\n</tr>\n<tr>\n  <td width=\"50%\"><b>计划模式科研分析</b>：青蒿素与紫杉醇溶解度预测<br/><img src=\"https://github.com/PKU-YuanGroup/OpenAI4S/raw/main/assets/readme-gifs-hd/demo-03-hd.gif\" alt=\"计划模式科研分析\"></td>\n  <td width=\"50%\"><b>蛋白质工程</b>：从序列到突变候选与结构解释<br/><img src=\"https://github.com/PKU-YuanGroup/OpenAI4S/raw/main/assets/readme-gifs-hd/demo-04-hd.gif\" alt=\"蛋白质工程\"></td>\n</tr>\n</table>\n\n## 几个可能值得一看的地方\n\n- **核心零依赖**：引擎和 Web 服务端都是纯标准库写的（`http.server` 加一个手写的 WebSocket），LLM 客户端只用 `urllib` 直连 OpenAI / Anthropic / Gemini，装起来没有依赖地狱。\n- **R 不是二等公民**：Python 和 R 各有一条独立的常驻内核通道，做生信的同事不用被迫改用 Python。\n- **600 多个内置 Skill**：都是代码配方而不是 JSON schema，涵盖单细胞、分子对接、逆合成这类具体的活。也可以用 `npx` 把它们装到 Claude Code 之类的别的工具里单独用。\n- **本地执行有沙箱**：macOS 走 Seatbelt，Linux 走 bubblewrap；如果当前环境降级了、隔离没生效，它会直接告诉你，而不是假装安全。\n- **装法比较全**：macOS 有内置科学栈的 dmg（下完不用再联网装包），Linux 有解压即用的 tarball，也有 Docker 镜像和 `pip install openai4s`。\n\n## 上手\n\n```bash\ngit clone https://github.com/PKU-YuanGroup/OpenAI4S && cd OpenAI4S\n./setup.sh     # 一次性建环境\n./start.sh     # 打开 http://127.0.0.1:8760/\n```\n\n启动时不需要任何 Key，模型在界面里配。\n\nMIT 协议，项目还在快速迭代，欢迎来提 issue 吐槽或者拍砖。\n",
+    "created_at": "2026-09-20T09:12:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11833"
+  },
+  {
     "id": 11832,
     "title": "【开源自荐】京张向上 JINGZHANG RISING：首个 AI Agent 深度参与的 43.6 km² 真实城市设计全流程开源方案",
     "content": "# 介绍\n「京张向上 JINGZHANG RISING」是一个面向真实城市规划任务的开源设计方案。该项目参与了海淀区主导的“百年京张 AI 创新带城市设计开源征集”，针对北五环至北京北站沿线 43.6 平方公里片区，探索如何让 AI Agent 真正遵循国家规划法规与空间拓扑标准，完成高精度、可验证的城市设计。\n\n- GitHub 仓库：https://github.com/cf3901646/haidian\n- 官方在线交互系统：https://haidian.open-city.ai/submissions/cf3901646/jingzhang-rising/visual/index.html\n- 官方方案全景报告：https://haidian.open-city.ai/proposal-view.html?proposal=submissions/cf3901646/jingzhang-rising\n\n# 核心创新与亮点\n\n1. **历史文脉与自主精神融合**：\n   1909 年京张铁路建成（詹天佑自主修成干线铁路），2009 年国务院批复中关村“自主创新”示范区。方案将百年詹天佑“人”字形折返铁路作为空间几何母题，提出“百年自主，人字向上”，以 9.6 公里连续步行轴线串联清华园火车站等 4 个历史自主创新原点。\n\n2. **AI 治理红线：“人工兜底 ＋ 公开答卷”**：\n   方案确立了 AI 介入公共城市治理的底层伦理与制度底线：任何在公共空间面向公众运行的 AI 服务（如交通、安防巡逻、助老），必须强制保留人工实体通道；所有算法决策必须记录不可篡改的公开答卷日志，否则不得上线。\n\n3. **数学严谨性与数据复算**：\n   不同于简单的“AI 生成概念效果图”，全案 11.41 平方公里核心区、31 个用地细分地块、2.33 平方公里蓝绿空间等 30 项已知量化指标，全部由 9 个 GeoJSON 矢量图层在 EPSG:4548（北京地方高斯投影）下严格数学复算。对未公布红线的法定指标（容积率、限高）明确标记为 unknown 拒绝捏造，严守规划敬畏感。\n\n4. **极客交付：纯 CSS 状态机离线交互系统**：\n   方案成果交互主页采用 100% 纯 HTML + CSS 编写，不依赖任何第三方外部 JS，依托 radio button 嵌套与 SVG 实现 20 个标签页与公共治理模拟器，在任何离线弱网环境下毫秒级响应。\n\n# 成果与状态\n项目已通过赛事官方全部 4 道自动化评审大门（Deterministic, Spatial, Visual, Professional evidence），并已成功合并至大赛主仓库，评级为 `formal-review-ready`。成果包含中英双语 1500+ 行法定深度方案文本、矢量 A0 汇报大板 (PDF) 与 A3 成果册 (PDF)。\n",
@@ -68,7 +100,9 @@
     "title": "【网站自荐】免费在线 AI 辅助阅读《史记》等中华经典古籍",
     "content": "我最近在读《史记》，纸质书籍阅读不便，于是做了一个免费在线的 AI 辅助阅读古籍网站，\n\n**阅古文**：https://yueguwen.com\n\n这个网站主要解决阅读古文时遇到的两个问题：\n\n**没有接入强大的AI功能，辅助理解古籍内容；\n原文和注释、翻译对照阅读体验差；**\n\n目前主要有这些特色：\n\n- **优化注释、翻译的展示方式，方便在阅读原文时对照查看。**\n\n<div align=\"center\">\n  <img width=\"48%\" alt=\"古籍原文与注释界面\" src=\"https://github.com/user-attachments/assets/0ae5391c-e224-4199-bc1c-7a32d4c8e287\" />\n  <img width=\"48%\" alt=\"古籍原文与 AI 辅助阅读界面\" src=\"https://github.com/user-attachments/assets/aeff24b7-8421-41a8-b8d2-046c095962e3\" />\n</div>\n\n- **保留传统注释，为现代读者补充必要的历史背景，更加容易理解史记原文内容。**\n- **选中原文及注释即可免费调用 AI 进行翻译、解释和辅助理解。**\n- **在线打开即可使用，无需安装，手机上也能阅读。**\n\n网站先从自己正在阅读的《史记》开始，等体验打磨好了后，会继续整理和扩展更多古籍内容。\n\n体验地址：\n\nhttps://yueguwen.com\n\n欢迎体验和反馈，也很想听听大家对古籍阅读体验和 AI 助读功能的建议。",
     "created_at": "2026-09-20T03:52:59Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11824"
   },
   {
@@ -772,37 +806,5 @@
     "created_at": "2026-09-16T03:21:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11736"
-  },
-  {
-    "id": 11735,
-    "title": "【开源自荐】余量：手表数据和体感不一致时，把活动建议的依据摊开看",
-    "content": "我是 [余量 Yuliang](https://github.com/zhuyep/yuliang) 的维护者。想自荐这个 MIT 开源、本地优先的小工具。\n\n手表记录了睡眠、HRV 和静息心率，但你今天觉得累，或者设备漏了记录：原定活动是否要调整，依据是什么？余量尝试把这些信息放在一张可以检查依据的建议卡上，而不是再给一个黑盒分数。\n\n**可以先用 [中文在线演示](https://zhuyep.github.io/yuliang/?lang=zh) 试三个情境**，无需安装、注册或提供健康数据：\n\n1. 点击“今天有点累”，看主观精力如何影响原计划，而不是由某个 HRV 数字直接下结论。\n2. 点击“设备漏了记录”，看缺失值为何不应该被当成零或状态差。\n3. 勾选“假设出现疼痛不适”，看它如何覆盖其他情境，不继续推荐原定活动。\n\n页面会展开每条建议的依据和合成历史样本。以上全部是虚构演示，不是我的真实健康记录，也不是用户使用效果证明。\n\n**当前更适合愿意折腾本地数据的可穿戴设备用户，不是面向所有跑者的即装即用产品。** 本地版支持主动选择的日汇总 JSON；已有兼容 garmin-grafana 的本机数据库时，可启用实验性只读适配器。不登录 Garmin、不自动同步，也不是官方集成。生成式 AI 默认关闭，核心流程使用可检查的确定性规则。\n\n目前是早期公共预览，规则没有临床验证，不能判断训练安全或替代医疗建议。想征集首批试用反馈：**试完一个合成情境后，这张卡是否值得你接入自己的数据继续使用？如果不值得，最大的原因是什么？** 可以直接在本帖回复，不需要分享健康指标、账号或私人截图。演示试用反馈与实际数据接入、持续使用会分别记录，不把它们混为采用。\n\n- 源码与本地启动：[zhuyep/yuliang](https://github.com/zhuyep/yuliang)\n- 英文演示：[Try in English](https://zhuyep.github.io/yuliang/?lang=en)\n- 英文说明：[English README](https://github.com/zhuyep/yuliang/blob/main/README.en.md)\n",
-    "created_at": "2026-09-16T02:44:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11735"
-  },
-  {
-    "id": 11734,
-    "title": "【工具自荐】雪泥 Spoor：让 AI 参与思考，而不只是替你生成内容",
-    "content": "我做了一个本地优先的无限画布 雪泥 Spoor。它把笔记、截图、书籍、网页资料和 AI 对话放在同一个空间里。你可以一边收集资料，一边和 AI 讨论，再把有价值的内容留下来、编辑、连接，最后逐渐形成自己的文章或作品。\n\n我不太喜欢一句话生成一篇文章的 AI 写作方式。\n\n所以 Spoor 更希望 AI 成为写作过程中的参与者：帮你提问、分析、连接和修改，但最终的判断和写作仍然属于作者。\n\n产品地址：https://spoor.ink/\n\n产品演示：\n\nhttps://spoor.ink/landing/xueni-promo-zh.mp4\n\n欢迎体验，也欢迎反馈。",
-    "created_at": "2026-09-16T02:36:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11734"
-  },
-  {
-    "id": 11733,
-    "title": "【开源自荐】AI Study Platform：把 PDF、YouTube 等学习资料转化为 Summary、Quiz、Flashcards 的 AI 学习平台",
-    "content": "**项目地址**：https://github.com/ttang1024/AI_Study_Platform\n\n**在线体验**：https://toto-study.com/\n\n\n这是一个开源的 AI 学习平台，可以把 PDF、YouTube / Bilibili 视频、网页文章、播客等学习资料转换成结构化的学习内容。\n\n目前主要功能包括：\n\n支持 PDF、YouTube / Bilibili、网页文章、Podcast 等多种学习资料\nAI 生成 Summary、结构化笔记、Flashcards、Quizzes、Mind Maps、Glossary\nAI Tutor：基于学习内容进行问答\nSpaced Repetition：帮助复习和记忆\n**支持多个 AI Provider，需要用户自行配置 API Key**\n支持分享生成的学习内容\n\n两个实际生成的内容：\n\n总结文档：https://toto-study.com/share/Xlv92yWNx_6Q\n总结 YouTube 视频：https://toto-study.com/share/LQMBIdQunFJ5\n\n项目还在持续开发中，欢迎大家体验、提 Issue 或 PR，也欢迎交流 AI 应用部署和成本控制方面的经验。\n\n我是作者，感谢大家支持。",
-    "created_at": "2026-09-16T02:29:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11733"
-  },
-  {
-    "id": 11732,
-    "title": "【开源自荐】FileMarkd，AI 驱动的文档转 Markdown 工具，设置Key一键部署Vercel，开启SaaS收费之旅",
-    "content": "# 🚀 FileMarkd — AI 驱动的全功能文档转 Markdown 开源平台\n\n**FileMarkd** 是一款基于 AI（Mistral OCR）的高性能文档转 Markdown 工具，同时也是一套**开箱即用、配置好 Key 即可一键部署上线的 SaaS 产品模板**。支持 40+ 种文档与图片格式解析，集成了 Stripe 订阅/积分支付、五语 i18n、推广返利、沉睡用户召回及全功能管理后台，支持一键无缝部署到 Vercel。\n\n* 🌐 **线上演示**：[filemarkd.com](https://filemarkd.com)\n* 📦 **开源地址**：[github.com/ItusiAI/Open-FileMarkd](https://github.com/ItusiAI/Open-FileMarkd)\n* 📜 **开源协议**：[MIT License](https://github.com/ItusiAI/Open-FileMarkd/blob/main/LICENSE)\n\n---\n\n## ⚡ 极速部署 | One-Click Deployment\n\n> **零繁琐配置**：只需在 Vercel 中导入项目，配置好对应的环境变量（如 `MISTRAL_API_KEY`、`DATABASE_URL`、`STRIPE_SECRET_KEY` 等），即可**一键部署上线**，瞬间拥有一个具备完整商业化变现能力的 AI SaaS 网站！\n\n---\n\n## ✨ 核心特性 | Features\n\n### 📄 1. 强大的 AI 文档解析（Mistral OCR 驱动）\n* **40+ 格式支持**：PDF、Word (`.docx`/`.doc`)、PowerPoint (`.pptx`/`.ppt`)、Excel (`.xlsx`/`.xls`)、CSV、EPUB、LaTeX (`.tex`)、Jupyter (`.ipynb`)、HTML、RTF、ODT、XML 及各类常见图片格式（PNG/JPG/WebP/HEIC 等）。\n* **智能结构还原**：精细化还原复杂表格（含单元格合并与对齐）、数学公式，智能剥离页眉、页脚与页码噪点。\n* **置信度标注（Confidence Score）**：每个识别数据块附带置信度评分，方便快速定位与人工复核低准确率区域。\n* **无门槛体验与 Mock 回退**：默认调用 `mistral-ocr-latest`；未配置 API Key 或开启 `MISTRAL_OCR_MOCK=true` 时自动切换为确定性模拟输出，本地开发与演示零成本。\n\n### 🔌 2. 灵活的输入与鉴权机制\n* **三种导入路径**：\n  * **本地上传**：拖放/点选文件，安全上传至 Cloudflare R2 并调用 OCR 服务。\n  * **远程 URL 解析**：直接粘贴公网 PDF/图片链接，服务端内置严格的四重校验与 SSRF 防护。\n  * **预设示例**：纯前端 Mock 模式，用户无需登录即可零门槛体验完整 UI 与解析效果。\n* **完善的鉴权防护**：\n  * NextAuth.js + JWT 会话管理，支持邮箱密码登录（含验证与重置）及 Google / GitHub OAuth 一键绑定。\n  * 前端 Guard (`requireAuth`) 拦截与后端 API `401` 兜底，优化未登录用户的无缝引导体验。\n\n### 💳 3. 商业化与积分/订阅体系\n* **Stripe 混合计费**：支持月度/年度订阅（Trial / Pro / Enterprise）与一次性积分包购买，支持 Webhook 自动入账及自助客户门户（退款/发票管理）。\n* **精细化积分管理**：\n  * **按页扣减**：预检扣除估计页数，识别完成后根据实际页数（`usage_info.pages_processed`）精准结算。\n  * **消耗优先级**：优先消耗有期限的订阅赠送积分，再消耗永不过期的购买积分。\n\n### 🌐 4. 国际化与 SEO 优化\n* **原生 5 语支持**：内置英语（默认）、简体中文（`zh-CN`）、繁体中文（`zh-TW`）、日语（`ja`）、韩语（`ko`），采用标准 BCP47 规范。\n* **SEO 友好架构**：非 IP 强制重定向策略，搭配完整的 hreflang、`sitemap.xml`、JSON-LD 结构化数据与 Open Graph / Twitter Card 分享卡片。\n\n### 📣 5. 用户增长与裂变体系\n* **推广返利（Affiliate）**：支持用户自定义专属推广码，提供**首单 30% 佣金**。内置“冻结 - 解冻 - 取消”三态资金流管理（7 天解冻期，防止退款套利），满 $10 即可申请提现。\n* **推荐奖励（Referral）**：支持邀请链接（`?ref=CODE`）注册绑定，双向赠送积分及延长订阅周期。\n\n### 🛡️ 6. 运营与管理后台（9 大核心模块）\n支持 URL Hash 直链导航，全方位掌控站点运营数据：\n1. **数据概览**：核心指标卡片（用户/订阅/积分/收入）及 7/30/90 天趋势图。\n2. **用户管理**：手动调整积分、管理订阅状态、推送审核及单用户明细。\n3. **流量分析**：无缝集成 Umami Analytics，实时掌握访问趋势。\n4. **推广与推荐管理**：审核返利提现申请、查看邀请链条与奖励流水。\n5. **营销邮件与提醒**：包含 Newsletter 订户管理、订阅到期自动提醒日志（提前 7 天/3 天/当天）。\n6. **沉睡用户召回**：基于 5 段分桶算法（`active` / `warm` / `dormant` / `inactive` / `churned`）精准筛选，支持创建分批节流的批量邮件召回活动，并内置全局退订与黑名单剔除机制。\n\n---\n\n## 🛠️ 技术栈 | Tech Stack\n\n* **全栈框架**：Next.js (App Router) + TypeScript\n* **样式 & UI**：Tailwind CSS + Shadcn UI\n* **数据库 & ORM**：PostgreSQL + Drizzle ORM\n* **身份认证**：NextAuth.js (Auth.js)\n* **AI & OCR 服务**：Mistral OCR API (`mistral-ocr-latest`)\n* **文件存储**：Cloudflare R2 / AWS S3 兼容存储\n* **支付引擎**：Stripe (Checkout, Webhooks, Customer Portal)\n* **邮件推送**：Resend\n* **定时任务**：Vercel Cron\n\n---",
-    "created_at": "2026-09-16T02:27:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11732"
   }
 ]
