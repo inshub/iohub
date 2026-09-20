@@ -1,5 +1,61 @@
 [
   {
+    "id": 11823,
+    "title": "【网站自荐】GithubStarMate：GitHub 项目展示与开发者互助平台",
+    "content": "### 网站介绍\n\nGithubStarMate 是面向 GitHub 开发者的项目展示与互助平台。用户可以绑定自己的仓库、浏览其他开发者的项目，并通过 Star、Watch、Fork 参与互助，为项目寻找更多曝光机会。\n\n### 适用场景\n\n希望展示个人作品、浏览其他开发者项目，或了解 GitHub 项目互助推广方式的开发者。\n\n### 使用方式与费用\n\n平台提供免费的社区互助功能，也有付费推广服务。互动带有互助激励，不应将这些互动数据等同于独立用户评价或项目质量。网站可在线使用，参与互助需要注册并绑定 GitHub 仓库。\n\n网站：[GithubStarMate](https://www.githubstarmate.com/zh-Hans)\n\n投稿披露：这是一条由 GithubStarMate 项目方安排发布的产品自荐；发布账号代表同一项目方，不是独立用户测评。平台目前未公开源码，本次推荐的是在线网站。\n\n<!-- githubstarmate:submission:2026-09-20:ruanyf/weekly -->",
+    "created_at": "2026-09-20T03:24:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11823"
+  },
+  {
+    "id": 11822,
+    "title": "【资源自荐】数据仓库图解：用交互实验理解建模、指标口径与调度",
+    "content": "大家好，我做了一个中文交互式学习网站「数据仓库图解」，想向周刊自荐。\n\n同一笔余额，为什么做一次 JOIN 就被算了三遍？两张报表都写着“存款余额”，为什么数字对不上？调度任务明明成功了，数据为什么还不能发布？\n\n这个项目尝试通过可操作的小型实验，把这些数据工程问题讲清楚。案例主要围绕银行账户、交易和余额展开，使用简化的教学数据，在浏览器里就能体验，无需安装数据库或大数据环境。\n\n可以先试这三个实验：\n\n- [JOIN 为什么会让金额变大？](https://sql.sb/learn/sql-transformation-join/)：逐行观察匹配如何复制记录，以及调整粒度后结果怎样变化。\n- [存款余额指标实验](https://sql.sb/learn/metric-system/)：切换统计范围，观察哪些账户被计入，以及指标结果为什么不同。\n- [调度运行模拟器](https://sql.sb/learn/scheduling-system/)：观察上游迟到、任务失败和重跑如何影响下游。\n\n适合刚接触数据仓库的同学，以及已经会写 SQL、想进一步理解数据加工链路的开发者。课程还涉及数据质量、血缘、湖仓和数据交付等主题。\n\n项目还在持续完善，实验对生产场景做了教学简化。欢迎指出不准确的地方，也欢迎补充更容易讲清问题的案例。\n\n- 在线体验：https://sql.sb\n- GitHub：https://github.com/0verme/data-warehouse-visualized\n\n![数据建模交互示例](https://raw.githubusercontent.com/0verme/data-warehouse-visualized/main/docs/images/data-modeling.png)",
+    "created_at": "2026-09-20T03:03:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11822"
+  },
+  {
+    "id": 11821,
+    "title": "ChatGPT / Codex 防封号指南 2026｜最新封号潮底层逻辑与纯净网络破局方案",
+    "content": "**引言**\n\n2026年，ChatGPT 防封号与 Codex 账号被封，已经从偶发事件变成了国内 AI 用户的日常噩梦。大量付费用户遭遇“连坐”，有人刚开通 Pro 就收到封禁通知，甚至在正常使用 Codex 写代码时被系统直接判定为异常停用。\n\n不要误以为 OpenAI 在专门针对中国用户。其风控的核心锚点其实是“异常网络行为”与“违规使用模式”。本文将深度拆解 2026 年封号潮背后的底层逻辑，并提供从网络基建到行为伪装的完整破局方案。\n\n## 一、扒开风控底牌：触发 OpenAI 封杀的 6 大高危红线\n\n要想防封，必须先明白官方的风控探针在查什么。目前绝大多数账号阵亡，都是踩了以下雷区：\n\n* **底层网络环境污染（最高频死因）**：使用廉价共享机场、超售节点或机房 IP。短时间内频繁跨国切换节点，会导致同一出口 IP 下聚集大量异常请求，触发系统“连坐”机制。\n* **API 违规分发（次生灾害）**：将个人的 ChatGPT 或 Codex 订阅转换成 API 接口（如 sub2api），再进行多人共享或二次售卖。这已被官方明确列为不支持行为，极易触发防欺诈风控。\n* **支付链路异常**：使用虚拟卡、一次性卡，或出现一卡多号、支付地区与登录 IP 严重错位的情况。\n* **非人类的自动化并发**：请求间隔高度规律、短时间极高并发，或把个人订阅当成生产环境后端使用，会被直接识别为脚本滥用。\n* **触碰内容红线**：反复尝试越狱模型，或生成官方明确禁止的违规内容。\n* **设备指纹与登录异常**：在同一设备上高频切换多个账号，或者短时间内在多地出现异常登录。\n\n## 二、破局核心：抛弃廉价节点，构建高纯净网络环境（治本之法）\n\n防封的核心底层逻辑只有一条：让反作弊系统认为你是一个网络稳定、行为正常、没有共享订阅的真实个人用户。\n\n其中，**网络环境是重中之重**。市面上低价“万人骑”廉价机场存在致命缺陷：IP 纯净度极差、严重超售导致出口频繁变动、单节点并发请求过载，极易被系统判定为代理滥用。用这种节点去撞风控墙，等于主动送人头。\n\n**正确的解法是：建立低复用、高稳定性的 IEPL 专线网络。**\n\n经过大量 AI 用户的实测与淘汰，目前能够有效规避风控、口碑极佳的底层网络服务商是 **[TAG 机场](https://570836.l49.net/#/auth/d2RtVGgb)**。它之所以能成为防封利器，主要建立在以下三大核心壁垒：\n\n* **IEPL 内网专线防断流**：彻底摒弃易受干扰的公网中转，专线能大幅减少断流与 IP 跳变，完美适配 ChatGPT 长对话和 Codex 的长时间代码处理任务。\n* **物理级价格壁垒与低复用**：拥有全球 90+ 国家和地区的节点，方便用户固定常用地区出口，避免频繁跨国切换。其相对较高的套餐门槛和严格的设备数限制，从物理上过滤了海量低端脚本和“羊毛党”，极大降低了单节点的污染概率。\n* **原生多客户端支持**：全面支持 Clash、Shadowrocket 等主流客户端，方便配置精细的分流规则，从根源上杜绝 DNS 泄露。\n\n如果你目前还在用容易连坐的廉价共享机场，强烈建议尽快更换更干净的专线环境。可前往 **[TAG 机场官网](https://570836.l49.net/#/auth/d2RtVGgb)** 注册，日常主力推荐从 Silver 套餐起步，轻量使用可先考虑 Bronze 或 Special。\n\n## 三、行为伪装：建立真实的“人类画像”\n\n除了干净的底层网络，你的操作习惯也必须符合正常人类特征：\n\n* **循序渐进**：刚订阅不要立刻拉满并发或通宵跑自动化脚本，保持合理的调用间隔，避免 7×24 小时不间断高频调用。\n* **固守阵地**：尽量固定 1 到 2 个常用的出口地区，坚决杜绝无意义的跨国节点跳转。\n* **私产私用**：个人订阅仅限本人使用，绝对不要共享账号，更不能做成 API 对外提供。\n* **底子干净**：优先使用真实可验证的支付方式，避开虚拟卡和一卡多号。不要购买来路不明的成品账号。API Key 一旦泄露必须立刻撤销并重新生成。\n\n## 四、挽救与避坑内幕（FAQ）\n\n* **已经被封怎么办？** 立即保存邮件、错误提示及订单信息，通过官方入口提交申诉，强调是个人正常使用、未共享且出口相对稳定。**切忌立即用同一污染网络批量注册新号**，申诉期间也要避免继续使用高风险方式登录。因明显转售或滥用被封的，申诉成功率极低。\n* **固定美国 IP 就能绝对防封吗？** 不能。固定干净出口仅能降低“IP 跳变”和“共享出口”的风险，但无法覆盖账号共享、自动化滥用和支付异常等问题。\n* **提示额度用尽就是被封了吗？** 不一定，多数情况只是触发了 5 小时或周额度限制。真正封号会收到明确的账号暂停或停用通知。\n* **使用 sub2api 中转会被封吗？** 风险极高。将个人订阅转成 API 分享已被官方明确不支持。通过官方客户端或支持 Sign in with ChatGPT 的工具正常使用，风险明显更低。\n* **老邮箱/苹果内购能提升权重吗？** 目前无公开证据表明这些是官方防封条件，核心依然是真实资料与正常使用习惯。\n\n## 总结\n\n2026 年要想稳如泰山地使用 ChatGPT 和 Codex，核心唯有三点：\n\n1. **网络要干净稳定**：远离廉价共享节点，优先选择 IEPL 专线并固定出口。\n2. **使用要像真人**：控制节奏，绝不共享或转 API 分发。\n3. **资料要真实**：支付信息一致，避免批量操作。\n\n网络环境是第一优先级。现在还在用廉价共享节点的人，建议尽快迁移到更干净的专线，否则封号风险会持续存在。把以上三点做好，再配合 **[TAG 机场](https://570836.l49.net/#/auth/d2RtVGgb)** 这类高纯净专线环境，足以避开目前绝大多数的封号风控。",
+    "created_at": "2026-09-20T02:59:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11821"
+  },
+  {
+    "id": 11820,
+    "title": "【开源自荐】Fourier：让 AI Agent 直接构建视频工程",
+    "content": "# Fourier：一个面向 AI Agent 的视频创作框架\n\n最近做了一个开源项目 Fourier：\n\nhttps://github.com/VoidFunOfficial/fourier\n\n它想解决一个问题：当 AI Agent 已经可以写代码、调用工具和持续修改工程之后，视频创作是否还需要围绕 Timeline、Layer 和 Keyframe 来设计？\n\nFourier 的思路是把视频从“时间轴”变成“工程”。\n\n一个视频由 Scene、Component、Motion、Media 和 Data 等对象组成。Agent 操作的是“这里需要一个产品介绍场景”“这个图表应该怎样运动”，而不是直接维护大量帧数和关键帧。\n\n这也是 Fourier 的核心理念：\n\n**From Timeline to World。**\n\n和 Remotion 相比，Fourier 不希望 Agent 大量处理 `frame`、`Sequence`、`interpolate` 和时间换算，而是尽可能复用模型已经非常熟悉的 React / JSX、CSS、JavaScript 和 Motion 风格 API。\n\n和 Hyperframes 这类更高层的视频 DSL 相比，Fourier 也刻意避免继续扩充专用动画语言。复杂能力优先封装成 React Component，而不是增加新的 timeline 语法。\n\n原因很简单：\n\n**LLM 本来就会前端，就没必要再让它学习一门视频 DSL。**\n\n这也直接降低了 Agent 的上下文成本。很多能力可以直接复用模型已有的前端知识，不需要每次都塞入大量框架文档和专用语法；复杂视觉也可以封装成组件，让 Agent 只关注当前 Scene 和当前任务，而不是反复理解整个视频工程。\n\nFourier 更像一个面向 Agent 的视频工程系统。除了动画接口，它还在处理 Compiler、依赖关系、缓存和增量渲染。\n\n当 Agent 只修改一个 Scene 或一个 Component 时，Fourier 可以根据依赖关系定位受影响的部分，只重新渲染发生变化的内容，而不是每次都重新计算整部视频。\n\n理想流程是：\n\n```text id=\"wza7vr\"\nIntent\n  ↓\nScene / Component / Motion\n  ↓\nCompiler\n  ↓\nRender\n  ↓\nObserve\n  ↓\nPatch\n```\n\n这使 Agent 可以围绕局部上下文持续修改，同时减少无效 token 消耗和重复渲染成本。\n\n目前 Fourier 主要面向 MG 动画、产品介绍、Explain Video、UI 动画和数据驱动视频。下一步会加入多模态视频理解和自动剪辑。\n\n如果说 Remotion 是让开发者用 React 写视频，Fourier 想再往前走一步：\n\n**让 Agent 直接构建、理解和持续维护视频工程。**\n\n项目地址：\n\nhttps://github.com/VoidFunOfficial/fourier\n\n\n由 Fourier + GPT 做的示例视频 \n[苹果广告](https://github.com/VoidFunOfficial/fourier/tree/main/example-ad-apple)\n[视频复刻](https://github.com/VoidFunOfficial/fourier/tree/main/example-clone)\n[项目本身](https://github.com/VoidFunOfficial/fourier/tree/main/fourier-ad)\n",
+    "created_at": "2026-09-20T02:52:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11820"
+  },
+  {
+    "id": 11819,
+    "title": "【开源自荐】Sound Guard：长时间无播放时自动归零 macOS 输出音量",
+    "content": "我是项目作者，向科技爱好者周刊自荐一个原生 macOS 声音安全工具。\n\n## 项目地址\n\n- GitHub：https://github.com/wlzh/sound-guard-mac\n- 下载：https://github.com/wlzh/sound-guard-mac/releases\n- 开源协议：MIT\n\n## 项目简介\n\nSound Guard（声音守卫）解决一个很具体的问题：Mac 输出音量处于开启状态，但长时间没有播放活动时，自动把系统输出音量设为 0，避免下一次突然播放声音；未经用户点击确认，它不会自行恢复音量。\n\n主要特点：\n\n- 菜单栏驻留，空闲时间可设为 1–120 分钟，默认 5 分钟。\n- 默认只保护内建扬声器，也可以逐项选择其他输出设备。\n- 播放中不会归零；切换设备、睡眠唤醒或检测异常后会重新给予完整等待时间。\n- 可选开启恢复提醒：检测到新的持续播放活动后弹出确认窗口，只有点击“恢复音量”才恢复之前的音量。\n- 手动归零不会建立恢复凭据；设备、路由或音量发生变化时，旧的恢复请求会失效。\n- 不使用麦克风、不保存音频、不上传数据，所有检测都在本机完成。\n\n项目使用 Swift/AppKit 和 Core Audio 开发，不需要第三方运行时或驱动，需要 macOS 14.2 或更高版本。\n\n当前公开版本为 `v0.3.7` 开发预览版。Release 提供 Universal ZIP，采用 ad-hoc 签名且尚未经过 Apple notarization；仓库测试报告中保留了权限、其他设备和长期性能方面仍待补充的实机验证说明。\n\n![Sound Guard 设置界面](https://raw.githubusercontent.com/wlzh/sound-guard-mac/main/docs/assets/v0.2.0/app-overview.png)\n\n",
+    "created_at": "2026-09-20T02:47:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11819"
+  },
+  {
+    "id": 11818,
+    "title": "【开源自荐】Window Layout Memory：按显示器组合记住并恢复 macOS 窗口布局",
+    "content": "我是项目作者，向科技爱好者周刊自荐一个面向多显示器用户的原生 macOS 窗口布局工具。\n\n## 项目地址\n\n- GitHub：https://github.com/wlzh/window-layout-memory\n- 下载：https://github.com/wlzh/window-layout-memory/releases\n- 开源协议：MIT\n\n## 项目简介\n\nWindow Layout Memory 用来分别记住单屏、双屏和多屏环境下的窗口大小、位置与显示器归属。当显示器组合变化、系统重新登录或窗口被临时重排后，可以恢复对应布局，避免每次连接显示器都重新摆放窗口。\n\n项目比较强调“保守恢复”：\n\n- 按完整显示器组合和显示器身份隔离布局，不用单屏记录覆盖双屏偏好。\n- 对同一应用的多个窗口做保守匹配，遇到歧义时不猜测跨屏位置。\n- 支持锁定基准、历史回退、暂停、应用排除、私人备份和只读布局预览。\n- 可选记录用户拖动或缩放后的窗口位置，但无法确认是主动调整时只保留候选。\n- 针对台前调度提供可选的横屏铺满功能，并避开菜单栏和 Dock。\n- 数据仅保存在本机，不上传窗口标题、文档路径或显示器信息。\n\n应用使用 Swift/AppKit 开发，没有第三方运行时依赖。窗口控制需要 macOS 辅助功能权限。\n\n当前 `main` 源码版本为 `v0.3.0-preview.20/build 27`，仍是开发预览版；最新可下载 Release 为 `v0.3.0-preview.19`。Spaces、原生全屏窗口和台前调度分组恢复不在当前范围内。公开 ZIP 为 arm64、ad-hoc 签名且未公证，仓库中记录了测试状态和仍待完成的实机验收项。\n\n![Window Layout Memory 布局预览](https://raw.githubusercontent.com/wlzh/window-layout-memory/main/docs/assets/layout-preview.png)\n",
+    "created_at": "2026-09-20T02:47:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11818"
+  },
+  {
+    "id": 11817,
+    "title": "【开源自荐】WatermarkFlow：复制图片后一键添加水印的原生 macOS 菜单栏工具",
+    "content": "我是项目作者，向科技爱好者周刊自荐一个原生 macOS 图片水印工具。\n\n## 项目地址\n\n- GitHub：https://github.com/wlzh/watermark-flow-mac\n- 下载：https://github.com/wlzh/watermark-flow-mac/releases\n- 开源协议：MIT\n\n## 项目简介\n\nWatermarkFlow 是一个轻量的 macOS 菜单栏应用，用来缩短“复制图片 → 添加水印 → 粘贴发布”这条路径。复制图片或在 Finder 中复制图片文件后，可以直接套用默认模板，也可以先在非破坏式编辑器中调整位置、颜色、透明度、大小和旋转角度，再将结果复制回系统剪贴板。\n\n目前支持：\n\n- 文字、X、YouTube 和自定义 Logo 水印，可保存多套模板。\n- 单个水印和满屏错列平铺，满屏密度可调。\n- 按图片内容自动调整文字或背景的对比度，提高复杂背景上的可读性。\n- 从剪贴板、拖放或文件导入，生成 PNG 后直接复制，也可导出 PNG/JPEG。\n- 可录制全局快捷键，并为快捷操作单独指定默认模板；`v0.4.5` 将默认组合改为 `⌃⌥⌘W`，避开 macOS 标准“关闭全部窗口”快捷键，并自动迁移旧默认值。\n- 所有图片处理都在本机完成，不上传用户图片。\n\n项目使用 Swift/AppKit 开发，没有第三方运行时依赖，支持 Apple Silicon 和 Intel Mac，需要 macOS 13 或更高版本。\n\n当前 `main` 源码版本为 `v0.4.5/build 16`，自动化门禁包含 33 个核心测试、应用自检和 Universal 双架构构建。最新可下载 Release 为 `v0.4.4` 预览版；安装包采用 ad-hoc 签名，尚未经过 Apple notarization，首次启动需要按照仓库里的安装说明操作。\n",
+    "created_at": "2026-09-20T02:47:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11817"
+  },
+  {
     "id": 11816,
     "title": "【网站自荐】集中查阅 AI 服务事件与额度公告的中文信息站",
     "content": "我是 Reset Matrix To AI 的维护者，来这里自荐一个面向中文 AI 用户的信息站。\n\n用 AI 时遇到“突然用不了”，服务故障、个人额度用尽、平台调整规则是不同的问题。我把公开服务事件和额度相关公告放到一个页面，方便查看来源和时间。\n\n体验地址：[AI 服务事件与额度公告](https://reset.mto.ai/codex-reset?utm_source=ruanyf_weekly&utm_medium=community&utm_campaign=cn_launch_20260920#history)\n\n目前这个页面可以：\n\n- 汇总 OpenAI、Anthropic、Cursor、DeepSeek 的公开服务事件。\n- 将官方服务状态与社区追踪的额度公告分别标注，保留原始来源链接。\n- 用 UTC+8 展示事件时间，方便中文用户查阅。\n\n需要说明：这是第三方信息整理站，不连接你的 AI 账户，不读取个人剩余额度，也不能替你重置额度。页面里的时间计算器只是估算；个人额度和恢复时间仍以自己的产品界面为准。站内部分订阅价格、汇率和展示指标为静态参考信息，不是实时账户数据。\n\n网站还整理了 AI 实操与副业案例摘要，含生财有术体验卡推广入口，具有商业推广目的，这一点提前说明。\n\n欢迎试用和指出信息错误。尤其想听听：你遇到 AI 无法使用时，最先需要确认的是服务故障、额度规则，还是其他信息？\n",
@@ -748,63 +804,5 @@
     "created_at": "2026-09-15T12:38:23Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11724"
-  },
-  {
-    "id": 11723,
-    "title": "【工具自荐】YouMoji：Chrome首款完全端侧的AI模型扩展，根据不同的YouTube视频内容自动飘出对应的emoji表情图片",
-    "content": "Chrome 扩展地址：[YouMoji - On-Device AI Emojis](https://chromewebstore.google.com/detail/youmoji-on-device-ai-emoj/enblcjdaieoncfjopbmcekjogmabholb)  \nAI 模型来源：[Desert Ant Labs](https://github.com/Desert-Ant-Labs)（开源模型 Emo）\n\n---\n\n看 YouTube 时字幕刷过去，有时能get到笑点，有时一闪而过没来得及反应。**YouMoji** 把这个瞬间变成屏幕上的实时表情包：每句字幕播出时，对应的 emoji 自动从画面上飘出来，不点暂停、不离开视频就能感受到内容的情绪。\n\n整个过程发生在浏览器内部，**不需要后端服务，也不产生任何网络请求**。\n\n### 它做了什么\n\n- **实时字幕 → 实时表情**：读取 YouTube 字幕，端侧模型将每一行文本转化为对应风格的飘浮 emoji，与视频节奏同步呈现。\n- **100% 端侧运行**：AI 模型（Emo）以 LiteRT 格式在浏览器 Worker 中运行，仅 **11MB**，每句字幕推理耗时低于 **2 毫秒**——完全离线，零延迟。\n- **支持 22 种语言**：原生覆盖中、英、日、韩等主流字幕语种，一个模型处理多语言输入。\n- **零隐私风险**：字幕文本不出浏览器沙箱，不追踪、不收集、不上传任何数据。不用注册，没有 API Key，永久免费。\n\n### 技术细节\n\n- 底层模型 **Emo**（[Hugging Face](https://huggingface.co/desert-ant-labs/emo)）是一个专为短文本情绪意图设计的分类器，词表大小 812，覆盖常见表情符号，专门针对字幕长度优化。\n- 模型以 **LiteRT** 格式部署，配合自定义 tokenizer，全部在 Web Worker 中完成计算，主线程无卡顿。\n- 扩展本身体积约 31MB，包含模型权重，安装后即离线可用。\n\n### 怎么用\n\n打开任意 YouTube 视频，只要有字幕开启，emoji 就会自动出现。\n\n---\n\n欢迎试用。如有任何建议可以在 Chrome 商店的 Support 页反馈。\n",
-    "created_at": "2026-09-15T10:24:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11723"
-  },
-  {
-    "id": 11722,
-    "title": "【开源自荐】Calyx：基于 libghostty 的 macOS 原生终端，并行运行并监管多个编码 agent（Claude Code / Codex / OpenCode 等）",
-    "content": "### 项目地址\nhttps://github.com/yuuichieguchi/Calyx\n\n文档：https://help.getcalyx.app\n\n### 背景\n我一直用 Ghostty，后来开始同时跑好几个编码 agent（Claude Code、Codex、OpenCode 等），问题就来了：开了一堆标签和分屏之后，根本记不住哪个窗格在干活、哪个在等我回复、哪个已经跑完。终端本身不知道里面跑的是 agent，所以只能挨个点开看。于是我做了 Calyx。\n\n### 它是什么\n一个 macOS 原生终端（Swift + AppKit），渲染用的是 libghostty（Ghostty 的引擎），专门为并行运行、监管多个编码 agent 而设计。支持 Claude Code、Codex、OpenCode、Hermes、Grok、pi 六种 CLI。\n\n- Agents 侧边栏：每个窗格的实时状态（工作中 / 空闲 / 等待回复 / 已完成），数据来自各 CLI 自己的 hook，不是猜的\n- 子代理：agent 派生的 subagent 显示为子行，带当前正在执行的工具（命令、文件路径或 URL）\n- 持久会话：重启 Calyx 之后会话还在，直接接着用\n- 内置 MCP 服务器：不同窗格里的 agent 可以互相发现、互相发消息，不需要共享文件或外部编排器\n- Git 侧边栏：对 diff 逐行写评论，整份 review 一键发给某个 agent 的窗格\n- 命令历史对 agent 可读：agent 可以通过 MCP 查最近执行过的命令和输出\n- 权限请求集中处理：Claude Code、Codex 等弹出的权限确认会汇总到右上角一个面板，不用再去找是哪个窗格在问\n- macOS 26 的 Liquid Glass 外观，八套主题\n\n### 效果\n三个 Claude Code 并行运行（36 秒）：\n\nhttps://github.com/user-attachments/assets/a04e1161-e296-4791-9b7c-3ef84d990089\n\n- 两个 agent 通过 MCP 互相发消息合写一篇故事：https://www.youtube.com/watch?v=Xty0ad9gGcM\n- diff 逐行评论并发给 agent：https://www.youtube.com/watch?v=_O2Lr4oFf4c\n\n### 安装\n已进入 Homebrew 官方 cask：\n\n```shell\nbrew install --cask calyx\n```\n\n也可以从 GitHub Releases 下载：https://github.com/yuuichieguchi/Calyx/releases\n\n要求 macOS 26 Tahoe、Apple Silicon。MIT 开源，欢迎试用和提 Issue。\n",
-    "created_at": "2026-09-15T09:19:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11722"
-  },
-  {
-    "id": 11721,
-    "title": "【开源自荐】Cesium MCP：用自然语言操控三维地球，打开网页即可体验",
-    "content": "自荐一个持续维护的开源项目 **Cesium MCP**，让 AI 不只是回答地图问题，还能通过工具调用实际操作浏览器中的 CesiumJS 三维地球。\n\n例如输入「飞到埃菲尔铁塔，添加一个红色标记」，AI 就能完成定位、相机飞行和标注；也支持加载 GeoJSON、3D Tiles、地形和影像，以及绘制路线、轨迹动画、距离测量等 60 多种操作。\n\n- **直接体验**：提供在线对话 Demo，无需本地安装或自行填写模型 API Key（公共演示有服务端用量限制）。\n- **接入自己的项目**：支持 MCP、WebMCP 和 Function Calling，可连接 MCP 客户端，也可嵌入已有 CesiumJS 页面。WebMCP 需兼容浏览器支持，不是使用内置对话 Demo 的前提。\n- **开源可扩展**：TypeScript 编写，MIT 协议，提供 npm 包及中英文文档。\n\n项目地址：https://github.com/gaopengbin/cesium-mcp\n\n在线体验：https://cesium-browser-agent.pages.dev/\n\n文档：https://gaopengbin.github.io/cesium-mcp/\n\n演示视频：https://github.com/user-attachments/assets/8a40565a-fcdd-47bf-ae67-bc870611c908\n\n欢迎试用与反馈，谢谢！",
-    "created_at": "2026-09-15T09:07:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11721"
-  },
-  {
-    "id": 11720,
-    "title": "【开源自荐】AuK：用自然语言生成和编辑语音，支持改台词、调情绪、声音克隆与降噪",
-    "content": "项目团队自荐一个开源项目：**AuK，一款通过自然语言指令完成语音生成与编辑的模型。**\n\n一段配音录好后，可能需要修改几个字、调整说话情绪，或者清理背景噪声。AuK 将这些能力整合进同一个模型，让使用者通过文字描述需要怎样生成或修改声音。\n\n项目地址：[Tencent-Hunyuan/AuK](https://github.com/Tencent-Hunyuan/AuK)\n在线体验：[ModelScope](https://modelscope.cn/studios/Tencent-Hunyuan/AuK) · [Hugging Face](https://huggingface.co/spaces/tencent/AuK)\n项目主页：[AuK](https://auk-project.github.io/)\n\n### 可以做什么\n\n- **修改台词**：对已有录音中的文字进行替换、插入或删除，例如将“明天上午开会”改成“周五下午开会”。\n- **调整说话方式**：改变情绪、音色、语速、音高和音量，也支持耳语与正常说话之间的转换。\n- **声音克隆与配音**：提供一段参考音频，让模型用相似的声音朗读新文本；也可以直接描述声音特点生成语音，无需参考录音。\n- **降噪与人声分离**：去除噪声和混响，从多人对话中保留指定说话人，或从歌曲中提取人声。\n- **歌词编辑**：修改演唱录音中的歌词，并尽量保留原有旋律与声音特征。\n\n其中，语音生成关注“让文字变成声音”，语音编辑关注“让已有声音按要求发生变化”。AuK 同时覆盖这两类任务，可用于配音制作、播客后期和语音应用开发等场景。\n\n### 开源与使用方式\n\n- 代码与模型权重均已公开，采用 **MIT 协议**。\n- 提供 **AuK Base** 和 **AuK-Flash** 两个版本，分别侧重生成质量与推理速度。\n- 提供 Python API、命令行工具、Gradio 网页界面和 ComfyUI 节点，支持本地部署。\n- 提供微调代码与文档，便于开发者基于自己的数据继续适配。\n\n项目当前主要面向中文和英文语音。读者可以先通过在线演示体验效果，再根据需要进行本地部署或二次开发。\n\n项目团队欢迎试用反馈、问题报告和社区贡献。声音克隆与录音编辑请使用已获授权的素材。",
-    "created_at": "2026-09-15T08:43:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11720"
-  },
-  {
-    "id": 11719,
-    "title": "【工具】AI345 - AI工具导航与 AI 社区",
-    "content": "https://www.ai345.info/ 面向中文用户的 AI 技能社区聚合平台，包含 AI 工具导航、每日 AI 资讯日报、原创 AI 实战教程和活跃的社区论坛。",
-    "created_at": "2026-09-15T08:35:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11719"
-  },
-  {
-    "id": 11718,
-    "title": "【开源自荐】基于配置的终端 dashboard",
-    "content": "使用 go 语言实现的基于配置的终端 dashboard. 只需要配置: 数据源(sources) + 布局(layout) 即可. 数据源通过脚本或者命令获取, 支持: chart, bar, stat, text, logs, table 等组件.\n\ngithub:  https://github.com/lyuangg/tui-dashboard\n\n\n<img width=\"1396\" height=\"872\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/021d662b-7ff3-4662-9ee0-75f42662f142\" />",
-    "created_at": "2026-09-15T08:26:26Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11718"
-  },
-  {
-    "id": 11717,
-    "title": "【开源自荐】My Portfolio：本地优先的个人资产管理，数据只在你浏览器里，默认一季度才更新行情",
-    "content": "**项目名称**：My Portfolio\n\n**项目地址**：https://github.com/CDz1129/my-portfolio\n**APP URL**：https://my-portfolio.cdz1129.workers.dev/\n\n**一句话简介**：一个本地优先的个人资产记录与展示工具——数据只存在你自己的浏览器里，永不离开本地。\n\n**自荐正文**：\n\n做这个的起点很朴素：我想要一个地方能一眼看清自己的资产，但市面上的同类 App 大多需要付费，而且价格不低，于是干脆自己动手做一个。\n\n它想解决的是：把散落在各个账户里的东西——现金、投资（A 股 / 港股 / 美股 / 加密货币）、固定资产、应收款、负债——集中到一处，看清净资产、资产配置和净值走势。\n\n核心卖点只有一个：**数据只存在你自己的浏览器（IndexedDB）里，不会上传到任何服务器。** 没有账号、没有登录、没有云端数据库、没有统计。行情服务只是一个无状态代理，只转发公开的股价 / 汇率请求，服务器不保存任何用户数据。代价也很直白：**换一个浏览器，数据就不在了**，所以内置了完整的 JSON 备份与恢复。\n\n几个我自己比较在意的设计：\n\n1. **默认每季度才更新一次行情，而不是实时。** 听说每秒盯盘的、每天看盘的、一年看一次的，长期结果往往不一样，常常是后一种更从容。我希望这个工具里的资产都是能让人安心睡觉的，一个季度看一次也不会慌，少一点频繁看盘的杂念。（频率可在设置里改，也随时能手动更新。）\n\n2. **两种资产视角**：既能按账户类型看配置，也能切到「按流动性」——券商里的现金算流动资产，只有持仓算投资资产。\n\n3. **中英双语**，一键切换；总资产的显示货币也能在首页直接切换。\n\n4. **本地优先的工程取舍**：用浏览器 IndexedDB 而不是 SQLite，换来零后端、可离线、无原生依赖；账本用事件溯源，账户只存期初余额，其余由流水回放，净值走势可以自由重算。演示数据放在独立数据库，和真实数据完全隔离。\n\n技术栈：React 18 + TypeScript + Vite + Tailwind；Dexie（IndexedDB）做本地存储；Recharts 画图；vite-plugin-pwa 支持 PWA。行情代理在本地用 Node、在云端用 Cloudflare Worker，共用同一份代码。MIT 协议。\n\n**它不是生活记账软件**：虽然也记录收入 / 支出 / 转账 / 买卖 / 余额调整，但本质是资产盘点与展示，和按笔记录日常开销的记账 App 完全不同。\n\n可以一键部署到 Cloudflare Workers（内置限流与边缘缓存），也可以只跑本地。诚邀试用，欢迎 issue 交流。\n",
-    "created_at": "2026-09-15T08:14:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11717"
   }
 ]
