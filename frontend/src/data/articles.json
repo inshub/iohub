@@ -1,5 +1,13 @@
 [
   {
+    "id": 11852,
+    "title": "投稿提案：在工具栏目介绍 ScopeLedger",
+    "content": "此 PR 提交一条供后续周刊工具栏目参考的介绍。ScopeLedger 是面向电气、机械及暖通空调承包商的商业 SaaS，并非开源软件；文案按官网公开信息撰写。GitHub 页面当前提示新建 issue 受限，因此按 PR 提交。请按编辑需要调整、移入周刊，或关闭此 PR。",
+    "created_at": "2026-09-21T20:45:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/11852"
+  },
+  {
     "id": 11851,
     "title": "【产品自荐】压缩 (yasuo.app) - 纯浏览器本地0上传！免费、免注册、无大小限制的多媒体压缩神器",
     "content": "### 产品名称\n**压缩 (yasuo.app)**\n\n### 官网地址\n- 中文主站：https://yasuo.app\n- 国际站：https://neatcompress.com\n\n### 产品简介\n一款专为解决“多媒体压缩收费、强制上传服务器、文件大小受限”痛点而生的纯前端 Web 应用。支持视频、图片、PDF 极速批量压缩与处理。\n\n### 核心亮点\n1. **0 字节上传，彻底保护隐私**：底层采用现代浏览器的 **WebCodecs** 硬件加速 API 与单线程 WebAssembly (ffmpeg.wasm / pdf-lib) 双引擎兜底。所有编码解码 100% 在本地浏览器沙盒内运行，绝不上传任何服务器，断网亦可顺畅运行，敏感合同、私人相册、企业内部视频零泄露风险。\n2. **完全免费，免注册免登录**：打开即用，无需手机号验证码、无扫码登录套路、无广告弹窗、无导出水印。\n3. **彻底告别 50MB 强制收费限制**：突破传统在线压缩网站的体积与时长限制，GB 级别的超大视频、长篇 PDF 均可畅快压缩。\n4. **实用多功能矩阵**：\n   - **指定目标体积**：微信 25MB / 100MB 限制、邮件附件限制一键智能匹配与压缩；\n   - **音轨自由控制**：支持保留多音轨、视频提取独立音频、一键快速消音；\n   - **时间轴极速裁剪与转 GIF**：毫秒级精准裁剪、高画质 GIF 制作；\n   - **PDF 智能矢量瘦身**：保留矢量文字与高清矢量图形，仅对内嵌位图无损降噪；\n   - **图片多格式批量压缩**：支持 JPEG、PNG、WebP、AVIF，自动转换并保留最佳画质。\n\n### 技术实现\n- 零第三方重型 UI 框架，纯原生 HTML/CSS/JS + Python 静态构建；\n- 视频硬件编码：调用 WebCodecs 调用显卡/核显 GPU 硬编，速度可达纯 WASM 的 5~10 倍；\n- 音频与多轨：遵循 Media Foundation / AudioToolbox 编码规则，杜绝系统底层崩溃与回落损耗；\n- 软件回落：ffmpeg.wasm WORKERFS 零内存拷贝挂载，解决 2GB 内存寻址瓶颈。\n\n欢迎大家体验并提出宝贵建议！\n开发者联系：contact@yasuo.app",
@@ -796,13 +804,5 @@
     "created_at": "2026-09-16T09:08:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11752"
-  },
-  {
-    "id": 11751,
-    "title": "【开源自荐】Mi Fitness Data Bridge：小米运动健康数据本地导出 CSV/JSON，附免账号合成演示",
-    "content": "﻿## 项目简介\n\n自荐一个维护中的开源工具 **Mi Fitness Data Bridge（小米设备数据导出skill）**：将本人有权访问的 Mi Fitness（小米运动健康）记录保存到本机 SQLite，导出为 CSV / JSON，并提供 Python 接口和本地 stdio MCP 查询工具。\n\n适合想把运动健康记录备份到本机、放进表格整理，或接入自己的本地分析程序的人。重点是数据连接和导出，不是健康诊断或教练产品。\n\n- 仓库：https://github.com/shkyyy18/mi_fitness_data_bridge\n- **无需账号的合成数据演示**：https://shkyyy18.github.io/mi_fitness_data_bridge/\n- 兼容性与配置前提：https://github.com/shkyyy18/mi_fitness_data_bridge/blob/main/docs/compatibility.md\n- 开源协议：AGPL-3.0-only，保留上游 MIT 归属说明。\n\n![合成睡眠记录导出预览](https://raw.githubusercontent.com/shkyyy18/mi_fitness_data_bridge/main/docs/assets/synthetic-export-preview.png)\n\n## 可以先试什么\n\n浏览器演示可切换活动、睡眠、运动和身体测量样例，下载合成 CSV / JSON。样例由项目真实的本地导出器生成，但数据完全虚构；无需注册、安装或提供 Token。\n\n安装 Python 3.11+ 包后，也可以运行 `python examples/synthetic_demo.py`，验证 SQLite → JSON/CSV 的本地流程，不连接小米。\n\n## 需要提前说明的限制\n\n- **非官方、实验性**，与小米无隶属、背书或支持关系；依赖非公开上游接口，实际云端同步受设备、地区、固件和认证变化影响，不承诺全设备可用。\n- 当前真实账户配置需要已有的 `user_id` 和 `passToken`，没有一键账号授权流程。请勿把凭证交给陌生网站或维护者。\n- 演示只证明合成数据的本地导出流程，**不代表真实设备兼容性验证**。\n- 本地 MCP 不等于整个 AI 工作流离线，需要另外确认客户端和模型的数据处理方式。项目不支持托管凭证、公网代理或多用户云服务。\n- 欢迎仅反馈设备型号、账户地区和数据类型状态；请勿在 Issue 上传个人健康数据、数据库、日志或凭证。\n\n供有个人数据可移植性需求的读者参考。此次投稿文案和合成演示由 AI 辅助制作，不包含真实账户测试结论。\r\n",
-    "created_at": "2026-09-16T08:51:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11751"
   }
 ]
