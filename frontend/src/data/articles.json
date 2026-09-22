@@ -1,5 +1,21 @@
 [
   {
+    "id": 11873,
+    "title": "自荐：HarnessGate —— 统一管理 40+ 编码 agent 的自托管控制台",
+    "content": "自荐一个开源项目：[HarnessGate](https://github.com/meichuanyi/HarnessGate)（Node.js + WebSocket，MIT）。\n\n它是编码 agent 的\"多机位导播台\"：把 Claude Code、Codex、ZCode、OpenCode 等 40 多个 CLI agent 基于 ACP 协议统一接入一个自托管控制面，任何设备的浏览器或 VS Code 都能远程驱动服务器上的 agent（瘦客户端，agent 与文件都在服务器侧，客户端不碰文件）。\n\n几个可能对周刊读者有价值的点：\n\n1. **会话基础设施**：会话落盘、服务重启自动接续（session/resume / fork / load 三级降级）、跨设备续聊、连续故障自动自愈重建并注入进度摘要；\n2. **多智能体编排**：「工作队」模式由工头拆解任务，队员在独立 git worktree 并行实现，异厂商评审员零共享上下文把关后合并；另有圆桌讨论（并行/串行、主持人、评分锦标赛）；\n3. **运维友好**：42 个 harness 自动发现/探活/可信度分级，权限三档自动决策 + 全程 JSONL 审计台账，公网访问有登录门和 token 认证。\n\n快速开始：`git clone && npm install && npm start`，浏览器打开 9830 端口。",
+    "created_at": "2026-09-22T16:51:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11873"
+  },
+  {
+    "id": 11872,
+    "title": "【开源自荐】DeepSeek就可以当作jev用 deep-jev-seek",
+    "content": "https://github.com/lenML/deep-jev-seek\n\n[![CI](https://github.com/lenML/deep-jev-seek/actions/workflows/ci.yml/badge.svg)](https://github.com/lenML/deep-jev-seek/actions/workflows/ci.yml)\n[![npm](https://img.shields.io/npm/v/@lenml/jevseek.svg)](https://www.npmjs.com/package/@lenml/jevseek)\n[![npm downloads](https://img.shields.io/npm/dm/@lenml/jevseek.svg)](https://www.npmjs.com/package/@lenml/jevseek)\n[![Docker](https://github.com/lenML/deep-jev-seek/actions/workflows/docker.yml/badge.svg)](https://github.com/lenML/deep-jev-seek/actions/workflows/docker.yml)\n[![license](https://img.shields.io/npm/l/@lenml/jevseek.svg)](https://github.com/lenML/deep-jev-seek/blob/main/LICENSE)\n\n![JevSeek WebUI](https://github.com/lenML/deep-jev-seek/raw/main/docs/assets/readme-banner.webp)\n\n有 docker 中转、有npm包、也有web端可以直接对接本地启动的llmamcpp，快速体验jev模式。\n\n原理很简单，就是要求返回 logprobs \n并且据我测试， deepseek 准确率显著高于 jev（暂时没报告，调用成本很低，可以自行测试）\n\n也支持本地 llamacpp ，一样的原理，我测试大概 30b 的模型可以和 jev 差不多准确率，并且成本比 jev 低，但是延迟高\n\n欢迎提 pr 提 issues",
+    "created_at": "2026-09-22T15:47:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11872"
+  },
+  {
     "id": 11871,
     "title": "【网站自荐】AI Interior Design：上传房间照片生成室内设计方案",
     "content": "AI Interior Design 是一款在线 AI 室内设计工具，可以根据房间照片生成不同风格和照明条件下的改造参考图，帮助用户在装修或重新布置空间前快速比较视觉方向。\n\n网站：https://ai-interior-design.online/\n\n主要特点：\n- 上传现有房间照片即可开始；\n- 支持选择空间类型、室内风格和照明偏好；\n- 直接通过网页生成设计概念，无需安装客户端；\n- 适合房主、租客和设计人员进行前期构思与沟通。",
@@ -786,21 +802,5 @@
     "created_at": "2026-09-17T08:40:21Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11771"
-  },
-  {
-    "id": 11770,
-    "title": "【自荐】万象棋谱 WXHub：王者万象棋（自走棋）玩家工具站，阵容编辑器＋全量图鉴＋伤害计算器",
-    "content": "自荐一个工具（非开源，打开即用）：\n\n**万象棋谱 WXHub** — https://wxq.whatsyour.fun/\n\n《王者荣耀》万象棋（自走棋模式）的非官方玩家工具站：\n\n- 阵容编辑器：拖拽调整站位、标记主 C，多套阵容模板直接套用\n- 图鉴：英雄、装备、天赋、效果牌查询，含 Buff 词典与阵营被禁时的替补推演\n- 练习与数据：快速认卡竞速、伤害计算器、大数据评级\n- 新手五步教程、版本热点、兑换码指引\n\n全站免登录、免安装，手机浏览器打开即用。我是作者，欢迎提意见。",
-    "created_at": "2026-09-17T08:16:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11770"
-  },
-  {
-    "id": 11769,
-    "title": "【开源自荐】Nav Vue，简洁高效的个人网址导航站，基于 Vue 3 + Vite + TypeScript 构建。",
-    "content": "## 简介\n简洁高效的个人网址导航站，基于 Vue 3 + Vite + TypeScript 构建。支持站内搜索、多搜索引擎切换，数据完全由 JSON 配置驱动，可一键部署到 GitHub Pages。\n\n<img width=\"600\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3a222452-f7c9-4180-9e79-f15e5a3e8a35\" />\n\n## 特性\n\n- 📌 **固定顶栏**：品牌导航栏始终固定在顶部（毛玻璃效果），滚动不消失；滚动离开搜索区后**顶栏自动淡入紧凑搜索框**（与主页搜索框互斥，不会同时出现），随时发起搜索\n- 🌓 **明暗主题**：顶栏一键切换黑暗/明亮模式，记忆用户选择，默认跟随系统偏好，刷新无闪烁\n- 🗂️ **分类导航**：侧边栏锚点导航（移动端自动切换为横向滑动分类条），分类标题滚动吸顶\n- 📐 **规整网格**：每行固定 5 个卡片（小屏按断点降级 4/3/2/1 列）\n- 📱 **全端自适应**：320px 手机到 1920px 桌面均无横向滚动；窄屏按断点收起顶栏品牌名与副标题，优先保证搜索框与卡片的可用宽度\n- 📶 **自动折叠**：每个分类超过 3 行默认折叠，底部一键展开/收起；搜索过滤时自动全部展开\n- 🔍 **站内搜索**：输入即过滤，匹配名称 / 描述 / URL / 标签，命中关键词高亮；搜索框尾部为 Google 风格的圆形「清除 + 搜索」按钮（有输入才显示清除）\n- 🌐 **多引擎切换**：Hero 搜索框与顶栏紧凑搜索框**最左侧**均内置引擎下拉（图标 + 名称），支持站内、必应、百度、Google、DuckDuckGo、GitHub，默认站内搜索，两处选择实时同步且自动记忆\n- 🛡️ **跳转确认**：点击网站卡片先弹窗提示「即将前往【网址】，此链接与本网站无关，请自行判断」，点「继续访问」才在新标签页打开，点「取消跳转」/ Esc / 点遮罩即关闭，避免误点离开本站\n- 🖼️ **灵活 Logo**：支持本地目录、在线 URL、自动 favicon 服务三级来源，加载失败自动降级为首字母头像\n- 📦 **纯静态**：构建产物为纯静态文件，无需后端；数据修改后无需改代码\n- 🚀 **自动部署**：内置 GitHub Actions 流水线，推送即自动测试 + 构建 + 发布\n- 🪟 **全站毛玻璃**：全局光斑 + 网格底图打底，顶栏 / 搜索框 / 网站卡片 / 侧边导航 / 吸顶标题 / 跳转确认弹窗统一玻璃质感；模糊半径与透明度集中在 `src/styles/main.css` 的 `--glass-*` 变量里调节\n- 🎛️ **导航栏可配置**：顶栏显示项（logo / 标题 / 副标题 / 紧凑搜索框 / 主题按钮）、高度、是否固定、自定义链接与**二级下拉菜单**全部由 `config.json` 的 `nav` 段驱动；桌面端菜单紧跟在站点 logo 之后，窄屏自动收进**汉堡菜单**\n- 🔠 **悬停小动效**：鼠标移到卡片上时，名称与描述若超出一行被截断即左右往返滚动（未超出不滚动），同时 logo 转动一圈；两处动效均遵循系统「减少动态效果」偏好\n- 🎨 **图标三选一**：顶栏导航链接与**分类图标**共用同一种写法 —— Iconify 图标名、iconfont 字体图标（可自托管、离线可用）与图片，换图标只改 JSON\n- ✅ **质量保障**：vitest 单元测试覆盖搜索、引擎与主题核心逻辑\n\n## 🛠️ 技术栈\n\n| 类别 | 选型 |\n| --- | --- |\n| 框架 | Vue 3（`<script setup>` 组合式 API） |\n| 构建 | Vite 7 |\n| UI / 样式 | **Nuxt UI 4**（组件 + 语义色体系）+ Tailwind CSS 4 |\n| 语言 | TypeScript（strict 模式） |\n| 测试 | Vitest + happy-dom |\n| 包管理 | pnpm（不锁定版本，≥ 10 即可） |\n| 部署 | GitHub Pages + GitHub Actions |",
-    "created_at": "2026-09-17T07:21:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11769"
   }
 ]
