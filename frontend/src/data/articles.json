@@ -1,5 +1,93 @@
 [
   {
+    "id": 11871,
+    "title": "【网站自荐】AI Interior Design：上传房间照片生成室内设计方案",
+    "content": "AI Interior Design 是一款在线 AI 室内设计工具，可以根据房间照片生成不同风格和照明条件下的改造参考图，帮助用户在装修或重新布置空间前快速比较视觉方向。\n\n网站：https://ai-interior-design.online/\n\n主要特点：\n- 上传现有房间照片即可开始；\n- 支持选择空间类型、室内风格和照明偏好；\n- 直接通过网页生成设计概念，无需安装客户端；\n- 适合房主、租客和设计人员进行前期构思与沟通。",
+    "created_at": "2026-09-22T12:48:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11871"
+  },
+  {
+    "id": 11870,
+    "title": "[自荐] Claude Chat Mobile：把本机的 Claude Code 接到手机上的自托管 Web UI",
+    "content": "### 项目名称\n\nClaude Chat Mobile\n\n### 项目地址\n\n- 仓库：https://github.com/Ike-li/claude-chat-mobile\n- 网站：https://ike-li.github.io/claude-chat-mobile/zh/\n- 在线演示（不用装，直接点）：https://ike-li.github.io/claude-chat-mobile/demo/\n\n### 项目简介\n\n在电脑上跑着的 `claude` CLI，用手机浏览器接着开。\n\n它不是远程桌面截屏，也不是另一个云端 Claude，而是在本机起一个 Node 服务，\n通过 Agent SDK 驱动你自己那个已经登录好的 CLI。同一个会话、同一份 transcript、\n同样的 CLAUDE.md 与 MCP 配置，工具审批和 AskUserQuestion 都能在手机上点。\n\n自托管，单用户，没配 token 时只监听 127.0.0.1，新设备接入需要审批。\n\n### 为什么做它？\n\n离开电脑时，真正难受的不是看不到输出，而是它卡在一个需要你点「同意」的地方，\n然后干等一整夜。\n\n所以这个项目先解决的是这三件事：工具审批推到锁屏、模型提问能在手机上回答、\n以及跑完或卡住时有推送。至于在手机上写代码，那反而是次要的。\n\n### 技术亮点\n\n- **单驾驶员模型**：终端正在写这个会话时，手机端自动退成只读镜像，接管之后才能写。\n  两端不会把同一段对话写分叉——这是设计时最花力气的一处。\n- **终端等价性**：CLI 有什么，Web 就有什么。权限配置直接继承本机的 settings，\n  不额外注入 allowedTools；不在白名单上的操作会挂起并在手机上显示完整命令与 cwd。\n- **对第三方网关友好**：用什么 provider 由你的 CLI 决定，中转、API key 都行。\n  官方的 Remote Control 在 `ANTHROPIC_BASE_URL` 指向非官方地址时是不可用的。\n- Node ≥ 20，Express + Socket.IO，Apache-2.0。手机端是 PWA，可以加到主屏幕。\n\n### 界面截图\n\n![主页与会话侧栏](https://ike-li.github.io/claude-chat-mobile/screenshots/02-home.webp)\n\n![在手机上接着写代码](https://ike-li.github.io/claude-chat-mobile/screenshots/03-coding.webp)\n\n![会话设置里切换第三方网关的模型](https://ike-li.github.io/claude-chat-mobile/screenshots/05-gateways.webp)\n",
+    "created_at": "2026-09-22T12:42:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11870"
+  },
+  {
+    "id": 11869,
+    "title": "【开源自荐】Operational Ontology：Palantir 式本体的可运行最小参考实现，附工厂/医院/金融三个运营示例",
+    "content": "项目地址：https://github.com/gura105/operational-ontology\n简体中文 README：https://github.com/gura105/operational-ontology/blob/main/docs/README.zh-CN.md\n\nPalantir 的 Ontology 在中文圈讨论很多，但\"它到底是什么\"很难落到代码上。这个项目把其中的模式抽出来，用一份小型 TypeScript 参考实现给出可运行的定义。一句话：语义层让你\"读\"业务，Operational Ontology 让你\"运行\"业务。\n\n具体是四条性质同时成立：\n\n- 对象和链接：在其他系统拥有的数据之上建立共享的业务模型\n- 写入只经过命名的 Action：规则在 Action 内检查（例如已发货的订单不能取消），违反时返回机器可读的拒绝码\n- 每次尝试都进审计日志，被拒绝的也一样\n- 被接受的变更写回到数据的权威来源系统（write-back）\n\n同一份模型可以直接生成 MCP 工具。AI Agent 调用 cancel_order 时收到的拒绝码和人类操作一样，业务规则不需要写在提示词里。\n\n**它适合什么场景？** 我们把它叫做\"数据驱动的业务运营\"：出了一件事，要把分散在几个系统里的数据串起来，找出该对谁、对什么采取行动，再把行动本身记录下来。仓库里有三个示例：\n\n- 工厂：某台设备被发现异常。经过它的是哪些批次？这些批次发给了哪些客户？找出来之后，创建客户联系或复检任务，并把证据（设备、批次、发货记录）挂在任务上\n- 医院：一位患者要入院。哪张病床、哪位护士同时满足要求？记录临时分配，Action 会在执行时复核，不会把已确定的资源分配给第二个人\n- 金融：几个被标记的账户之间有没有共同的收款方？记录调查案件，并把作为证据的转账一并记下\n\n三个示例都是虚构数据，`pnpm demo:factory` / `demo:hospital` / `demo:finance` 可以直接跑。共同点是：先在对象和链接上\"查案\"，再通过 Action 落地，找到候选并不等于业务状态已经改变。\n\n订单主线的演示是 `pnpm demo`：两套字段和状态编码都不同的遗留订单系统整合成一个模型，然后读取、写入、拒绝、写回。\n\nMIT 协议。这是学习用的参考实现，不是框架。\n\n我是作者。欢迎提反例和问题，尤其欢迎\"这条性质在我们的系统里不成立\"这类意见。\n",
+    "created_at": "2026-09-22T10:53:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11869"
+  },
+  {
+    "id": 11868,
+    "title": "【开源自荐】浏览器可以直接运行的《红色警戒2》网页版，支持《尤里的复仇》、《共和国之辉》，高性能，支持多人联机，原汁原味",
+    "content": "\nFeatures:\n- 支持 macOS / Linux / Windows，移动端有限支持（WIP）\n- 支持《尤里的复仇》、《共和国之辉》\n- 多人联机\n- 高性能\n- 执行原版二进制文件，保持原汁原味\n- 实验性 SR 支持\n\nGithub: https://github.com/ra2-games/ra2\n在线体验：https://ra2.games\n\n---\n\n提到浏览器版的红色警戒2，很多人第一反应是 [Chrono Divide](https://game.chronodivide.com)，这是个非常出色的闭源项目，几乎把红警2的引擎和逻辑完整搬进了浏览器。\n\n但毕竟原版游戏是个黑箱，想还原所有逻辑（包括祖传 bug）复杂度太高，有些逻辑到现在还没实现，《尤里的复仇》也还不支持。。\n\n这个项目选择了不一样的技术路线：在 x86 VM 上做了一层 ABI 兼容层，不重写游戏引擎，保持原汁原味，可以低成本支持尤里复仇。\n\n实测下来，**冷启动更快，战场也更流畅**。同时自带 relay 服务器，可以流畅进行多人对局。\n\n<img width=\"300\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/54c0e6d6-459a-4380-b811-145d619ccbf9\" />\n\n---\n\n**同样的思路也应用到了 War3，内部测试发现可以稳定 60 帧打 DotA :)**\n\n",
+    "created_at": "2026-09-22T10:41:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11868"
+  },
+  {
+    "id": 11867,
+    "title": "工具投稿：iLoveAIImg —— 免费 AI 图片生成、编辑与去背景",
+    "content": "## 工具\n\n[iLoveAIImg](https://iloveaiimg.com/)\n\n## 简介\n\n一个面向创作者、设计师和电商卖家的 AI 图片工具集合：\n\n- 根据文字描述生成图片\n- 上传照片后，用一句话编辑背景、对象、颜色或风格\n- 将人物、商品或物体从背景中分离并下载透明 PNG\n- 可在工作区继续编辑，并下载需要的版本\n\n## 免费范围与限制\n\n- 首页提供无需登录即可试用的每日免费额度，当前免费方案显示每天 6 credits、最多约 3 张图片（实际消耗取决于工具和模型）。\n- 也提供月度/年度订阅及一次性 credit packs；不是无限免费生成。\n- 免费方案的图片保存 7 天，重要结果应及时下载。\n\n## 独立性与核验\n\n我是该产品的制作者。已检查公开首页、图片编辑页和去背景页，功能入口可访问；本投稿只介绍公开页面和免费方案，不把示意图当作生成结果，也不声称周刊已收录。",
+    "created_at": "2026-09-22T10:18:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11867"
+  },
+  {
+    "id": 11866,
+    "title": "【开源自荐】代码报错求助整理器：一个 HTML，把环境、复现步骤和报错整理成 Markdown",
+    "content": "做课程练习或小项目时，求助经常卡在信息没说全：运行环境、原始错误和已经试过的方法分散在好几条消息里。\n\n我们做了一个免费的单文件小工具：\n\nhttps://liunenglabs.xyz/guides/debug-report/\n\n按目标、环境、复现步骤、原始报错、已尝试方法和希望获得的帮助这六项填写，就能整理成可编辑、可复制或下载的 Markdown。缺失信息会明确标出；工具不执行代码，也不会把“整理了说明”当成“已经复现成功”。\n\n无需登录或购买订阅，不调用 AI、不上传输入、不保存草稿；源码可下载后离线使用：\n\nhttps://liunenglabs.xyz/guides/debug-report/source.html\n\n实现是一个 HTML，内含原生 CSS/JavaScript，无第三方依赖，按 MIT 许可开放。发送给同学、项目同事、开源维护者或 AI 前，请自己运行最小示例并移除密钥、Cookie 和个人信息。\n\n利益关系披露：我们运营 LiuNeng AI，经营 Plus/Pro 个人订阅服务，是独立商业服务方，非 OpenAI 官方。此次提交的是独立可用的免费工具，使用不需要购买服务。\n\n欢迎对缺失信息提示和 Markdown 输出提出建议。",
+    "created_at": "2026-09-22T10:05:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11866"
+  },
+  {
+    "id": 11865,
+    "title": "【产品自荐】Qind（轻达）— 让 Mac 更好用的效率工具箱",
+    "content": "Qind 是一款常驻菜单栏的 Mac 小工具，把四个最常用的能力装进了一个 App：**访达右键菜单增强、输入法自动切换、剪贴板历史、应用快捷键与窗口切换器**。原生开发、体积轻量，界面支持包括中文在内的 9 种语言。\n\n整个应用采用**模块化设计**：四大模块相互独立，用不到的可以一键关闭——关闭即彻底注销，不在后台驻留、不占用任何系统资源，只留下你真正需要的部分。\n\n\n- **开源地址**：<https://github.com/soonxf/Qind>\n- **系统要求**：macOS 14（Sonoma）及以上，Apple 芯片 / Intel 都支持\n\n## 功能总览\n\n| 模块                                                                          | 支持的功能                                                                                                                                                                                                                     |\n| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| [一、访达功能菜单](#一访达功能菜单右键就能干的事何必开终端)                   | 新建文件（含模板）、剪切 / 复制 / 粘贴、压缩 / 解压（30 种格式）、拷贝路径、显示隐藏文件、永久删除、强制清倒废纸篓、卸载应用、网络信息、常用 App 打开、终端中打开、新建标签页 / 窗口、重启访达；菜单可自定义排序、改名、换图标 |\n| [二、输入法自动切换](#二输入法自动切换微信永远中文终端永远英文)               | 按应用绑定输入法、应用切换 / 解锁 / 唤醒自动跟随、同应用新窗口触发、密码框自动跳过、切换提示                                                                                                                                   |\n| [三、剪贴板历史](#三剪贴板历史复制过的东西再也丢不了)                         | 记录文字 / 图片 / 文件 / 视频、快捷键搜索粘贴、桌面悬浮卡片、列表弹窗、收藏置顶、粘贴为纯文本、截屏录屏自动收录、本地存储不上云                                                                                                |\n| [四、应用快捷键与窗口切换器](#四应用快捷键与窗口切换器一个键搞定启动和切窗口) | 一键启动 / 唤起 / 最小化应用、冲突检测、带缩略图的窗口切换器、长按即选、跨桌面聚焦、红绿灯角标、切换器内关闭 / 最小化 / 铺满                                                                                                   |\n| 更多                                                                          | 截图标注 + OCR 文字识别、录屏                                                                                                                                                                                                  |\n\n---\n\n## 一、访达功能菜单：右键就能干的事，何必开终端\n\n\n\n<img width=\"2304\" height=\"1296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/40bbd3d1-b6c9-45ac-af19-21c8ba554016\" />\n\n安装后，访达右键菜单会多出一组实用功能，菜单顺序、名称、图标都可以按自己的习惯自定义。\n\n**常用功能一览**\n\n- **新建文件**：右键直接新建空白文件，还能设置自己的模板（比如 Markdown、Word 模板），一键按模板新建\n- **剪切 / 粘贴文件**：像 Windows 一样\"剪切\"文件，粘贴时遇到同名文件可选替换、跳过或取消\n- **压缩 / 解压**：右键直接压缩，支持加密码；解压支持 30 种格式，rar、7z、iso 都不用再装别的软件\n- **拷贝路径**：一键复制文件的完整路径\n- **显示 / 隐藏隐藏文件**：不用记终端命令，右键一点就切换\n- **删除**：跳过废纸篓直接永久删除，有二次确认防误删\n- **强制清倒废纸篓**：废纸篓因为文件名太长清不掉？这里能强制清空\n- **卸载应用**：删 App 的同时列出它的缓存残留，一并清理\n- **网络信息**：查看本机网络配置，Wi-Fi 密码经 Touch ID 验证后可查看\n- **常用 App**：右键用你指定的应用打开选中的文件\n- 另有**在终端中打开、新建标签页、新建窗口、重启访达**等小工具\n\n**它解决的烦恼**\n\n- Mac 访达右键**从来不能新建文件**，只能先开 App 再另存为\n- 访达**没有\"剪切\"文件**，移动文件只能拖来拖去\n- 系统**解压不了 rar、7z**，以前总要再装一个付费解压软件\n- 卸载 App 后**缓存垃圾散落各处**，占着磁盘\n- 危险操作都有**二次确认弹窗**，不怕手滑\n\n\n\n<img width=\"1032\" height=\"890\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fa859e07-1502-4d73-8211-614393f8e22d\" />\n\n\n\n---\n\n## 二、输入法自动切换：微信永远中文，终端永远英文\n\n\n\n<img width=\"2304\" height=\"1296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/707cbcbd-8c63-4565-a2ef-dfb026cf4fb8\" />\n\n\n给每个应用绑定它该用的输入法，切换应用时自动跟着变。\n\n**它能做到**\n\n- 切换到某个 App 时，自动换成你为它绑定的输入法\n- 锁屏后重新解锁、屏幕唤醒时，也会自动恢复\n- 同一个应用开新窗口，也能触发切换（需开启辅助功能权限）\n- **输密码时自动跳过**，绝不会在你输密码时把输入法切走\n- 切换后可选屏幕小提示，默认关闭，样式位置可调\n\n**它解决的烦恼**\n\n- 装了搜狗、微信输入法等第三方输入法后，macOS 有个老毛病：**一切换应用就自动跳回系统 ABC 英文输入法**，每次都要手动切回来，一天不知道要切多少回。Qind 在切换应用的瞬间自动换回你指定的输入法，不再被\"偷偷\"切走\n- Mac 自带的\"自动切换输入法\"时灵时不灵，Qind 按应用精确绑定——微信永远中文、终端永远英文，稳定可靠\n\n---\n\n## 三、剪贴板历史：复制过的东西，再也丢不了\n\n\n\n<img width=\"2304\" height=\"1296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/663a660f-52b4-440a-bbb0-0f1b78799b4f\" />\n\n\n\nMac 的剪贴板只记得最后一次复制的内容。Qind 帮你把复制历史全部留下来，**数据只存在你自己电脑上，不上传云端**。\n\n**它能做到**\n\n- 自动记录复制过的**文字、图片、文件、视频**，重复的不会记两遍\n- 每条记录标着**来自哪个应用、什么时候复制的**\n- 按快捷键呼出历史，**支持搜索**，回车就粘贴到当前应用\n- 两种查看方式：**桌面悬浮卡片**（记录像卡片一样摊在桌面上，可拖动、自动避让屏幕边缘）和**列表弹窗**（紧凑的列表或网格，可调样式和位置）\n- 重要内容可以**收藏、置顶**，清理历史时不会被删\n- **粘贴为纯文本**：从网页复制的内容，粘贴时自动去掉乱七八糟的字体格式\n- 保存多久、占多大空间由你定（最短 1 天到永久，容量 100MB ~ 1GB 可选）\n- 系统截屏、录屏的文件也会自动收进来，还支持指定文件夹自动收录\n\n**它解决的烦恼**\n\n- 复制了新内容，**旧的就被顶掉了**，跨文档搬运只能来回切换\n- 从网页复制粘贴，**格式一团糟**，还得手动清除样式\n- 地址、单号、常用话术**每次都要重新打**——现在收藏起来一键粘贴\n- 截屏文件堆满桌面，Qind 自动帮你归档\n\n\n\n<img width=\"2940\" height=\"1912\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6768d47c-2604-4617-a358-b1c950c88673\" />\n\n\n---\n\n## 四、应用快捷键与窗口切换器：一个键搞定启动和切窗口\n\n\n\n<img width=\"2304\" height=\"1296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/59c6a04f-82ba-4c70-9385-55e6f7814437\" />\n\n\n\n给常用的 App 绑一个全局快捷键，按一下就启动或唤到眼前；有多个窗口时，会弹出一个**带窗口实时预览图的切换器**。\n\n**它能做到**\n\n- 快捷键按下后很聪明：**App 没开就启动；开着就唤到最前；再按一下就最小化**\n- 绑定时自动检测**是否和其他软件、系统快捷键冲突**\n- **窗口切换器**：长按快捷键呼出，所有窗口带实时缩略图排开，再按切到下一个，**松手即选定**，全程不用鼠标\n- **跨桌面切换**：窗口扔在别的桌面（Space）也能直接拉过来，微信、QQ 这类\"顽固\"应用也切得动\n- 每个窗口带**红绿灯角标**：绿灯数字表示窗口在哪个桌面，黄灯表示已最小化，一眼看清\n- 在切换器里还能直接**关闭窗口、最小化、铺满屏幕**\n- 切换器位置、缩略图质量、窗口名称显示方式都可调\n\n**它解决的烦恼**\n\n- Cmd+Tab 切换**只有图标没有画面**，切到应用后还得盲切窗口\n- 窗口放在别的桌面，系统经常**切不过去、找不回来**\n- 最小化之后的窗口**像消失了一样**，翻半天找不到\n- 打开常用 App 要翻启动台、找 Dock——现在**一个键搞定**\n\n\n\n<img width=\"3840\" height=\"2160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba81e239-b4bf-4ad3-a5f9-287e3ee7b265\" />\n\n\n\n<img width=\"3840\" height=\"2160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9da0ef33-98e3-461e-9ee6-f8569f25f4ae\" />\n\n\n---\n\n## 关于权限\n\nQind 只在需要时申请权限，用途都写得很明白：\n\n- **辅助功能**：全局快捷键、窗口切换、自动粘贴\n- **屏幕录制**：窗口缩略图预览、截图功能\n- **完全磁盘访问**：强制清倒废纸篓、卸载应用清残留\n",
+    "created_at": "2026-09-22T09:47:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11865"
+  },
+  {
+    "id": 11864,
+    "title": "【产品自荐】摄影学英语：把老照片变成英语学习素材",
+    "content": "大家好，自荐一款我做的 iOS App：**摄影学英语**。\n\n它的思路很简单：**把自己拍的照片，变成英语单词、例句和口语练习。**\n\n拍照或导入老照片后，App 会识别场景中的物体和特征，生成对应的英文名词、形容词和描述句子，并可以继续进行：\n\n* 单词拼写\n* 英语跟读和口语评分\n* 学习记录和照片，本地离线存储\n* WebDAV 定时备份\n\n我想做的是：\n\n**不是先背一份词库，而是从自己看到的世界里学习英语。**\n\nV2EX 介绍：\nhttps://www.v2ex.com/t/1243975\n\nApp Store：\nhttps://apps.apple.com/cn/app/%E6%91%84%E5%BD%B1%E5%AD%A6%E8%8B%B1%E8%AF%AD/id6808490052\n\n<img width=\"1281\" height=\"1075\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ab0d8c08-719a-454e-91a7-d7aeb09c68f1\" />",
+    "created_at": "2026-09-22T08:19:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11864"
+  },
+  {
+    "id": 11863,
+    "title": "【开源自荐】Codent：工作区 · 模型 · 会话三平面可自由组合的 AI 编程 Agent",
+    "content": "介绍一下我在做的一个开源项目 **Codent** —— 一个 AI 编程 Agent，但它不只是\"又一个终端 AI 助手\"。\n\n- 代码：https://github.com/MrWangJustToDo/MyAgent\n- 在线体验（浏览器内 WebContainer，打开即用，无需安装）：https://mrwangjusttodo.github.io/MyAgent/\n- 安装：`npm install -g codent-cli`（当前 `0.0.1-beta.3`，需要 Node.js 24+），MIT 协议\n\n## 一套核心，多种形态\n\nCodent 把 Agent 运行时按职责拆成 10 个包、3 个平面，同一套核心逻辑能跑在差异很大的宿主里：\n\n| 宿主 | 形态 |\n|------|------|\n| 终端 CLI | React 渲染的 TUI：文件树、diff、流式 markdown |\n| Chrome 扩展 | 完整 Agent UI 跑在浏览器里 |\n| Playground | 浏览器内 WebContainer，打开网页就有一个可读写的 Linux 环境 |\n| IM 桥 | Telegram（先行），在聊天窗口里派活，审批用按钮完成 |\n\n它们共享同一个 core（Agent 循环、工具、模型、MCP、上下文压缩、记忆、遥测）和同一份 UI 层。\n\n## 三个正交平面 —— 最特别的地方\n\n多数工具的\"本地 / 远程\"是一个开关。Codent 把它拆成三个**互相独立**的平面，每一面都能单独选择本地还是远程：\n\n| 平面 | 管什么 | 远程方式 |\n|------|--------|----------|\n| Workspace | 文件、shell、fetch、平台信息（`CoreEnv` 抽象） | `--remote-env` |\n| LLM | key / baseURL / 模型选择 | `--remote-provider`（key 留在服务端） |\n| Agent Session | 消息、待办、审批、计划、用量 | `--remote-session`（REST + SSE） |\n\n于是这些组合都成立：本机工作区 + 服务端 key；服务端工作区 + 本机 key；甚至把整个 Agent 循环放到服务器上，客户端只当一个瘦终端 —— SSE 断线自动重连，正在跑的工具输出和摘要流重连后会续上。\n\n边界是刻意设的：`--remote-session` 与另外两个互斥（循环已经在服务端了）；而**服务端自己**还能再注册 `REMOTE_ENV` / `REMOTE_PROVIDER`，往上再接一层。\n\n## 扩展性：能力是模块，不是写死的开关\n\nAgent 能力以**声明式扩展模块**交付，一个 `ExtensionAPI` 提供 5 类注册通道：\n\n| 通道 | 用途 |\n|------|------|\n| `registerTool` | 给模型加工具 |\n| `registerCommand` | 加斜杠命令 |\n| `registerInterceptor` | 拦截生命周期事件（如 `tool:before:*`），可修改甚至取消 |\n| `registerContextProvider` | 每轮注入动态上下文 |\n| `registerMessageTransformer` | 改**模型看到的消息链**：媒体转文字、脱敏、按预算裁剪 |\n\n内置的 5 个扩展就是这套接口的产物，而不是特例代码：\n\n- **LSP + tree-sitter**：诊断 / hover / 定义 / 引用 / 符号 / 重命名 / 补全 / code action，外加 AST 搜索与结构化改写，诊断自动进上下文\n- **Memory**：跨会话自动抽取与沉淀知识\n- **Skills**：按需加载领域知识\n- **MCP**：接入外部 MCP server，工具自动变成 `mcp__<server>_<tool>`\n- **Code Mode**：模型写一段 TypeScript，在 `isolated-vm` 沙箱里执行，并把一批 Agent 工具以 `external_*` 暴露进去 —— 用一次执行替代多轮工具调用\n\n第三方扩展就是往 `.agents/extension/` 丢模块文件，仓库里有可直接抄的示例。扩展 UI 是一套通用的布局渲染接口，所以同一份扩展在终端、浏览器、远程宿主里表现一致。\n\n## 其他能力\n\nPlan Mode（探索 → review → 构建 → 强制复盘）、上下文隔离的子 Agent（可并行，`Ctrl+T` 实时看进度）、上下文自动压缩、工具审批（带内联 diff 预览，也可全放行）、OS 级命令沙箱、多会话并存切换、会话 / 用量 / 记忆 / 计划全部落在项目下的 `.agents/`、多模型（OpenAI / Anthropic 兼容即可接）。\n\n## 技术栈\n\nTypeScript（ESM + 严格模式）、TanStack AI SDK、Hono RPC、React + Zod、pnpm monorepo。发布包 `codent-cli` 是完全自包含的单包，core / app / node 全部内联，装完即用。\n\n## 快速开始\n\n```bash\nnpm install -g codent-cli\ncodent \"介绍一下这个代码库\"\n```\n\n在 `.env` 里配好 `MODEL_STYLE` / `BASE_URL` / `API_KEY` / `MODEL` 即可（任意 OpenAI 兼容网关）。\n\n项目还在 beta，但工程上比较较真：核心包有 150+ 个 `validate:*` 脚本覆盖 prompt cache、上下文压缩、沙箱、模型能力推导等边界，CI 会校验发布包的运行时依赖是否自包含。\n\n**本 issue 就用 codent-cli 自己创建**：把它挂在终端里，让它读仓库、核对 npm 版本与线上地址、生成正文，再通过它自己的 `run_command` 执行 `gh issue create` 提交。\n\n欢迎试用、提 issue，觉得有价值的话给个 star 支持一下 🙏\n",
+    "created_at": "2026-09-22T08:11:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11863"
+  },
+  {
+    "id": 11862,
+    "title": "产品推荐：Sakkyoku.ai —— 专注于日语歌曲与二次元风格的 AI 音乐生成平台",
+    "content": "### 项目推荐：Sakkyoku.ai（日语 AI 音乐生成平台）\n\n阮老师及各位周刊读者好！向大家自荐一款近期上线的音频大模型应用：**[Sakkyoku.ai - 专业的日语 AI 作曲与音乐生成平台](https://sakkyoku.ai/)**。\n\n---\n\n### 1. 为什么做这个产品？\n目前主流的生成式音乐大模型大多针对欧美流行或泛英语语料训练，在**日语发音韵律、J-Pop/二次元特有编曲结构（王道进行、BPM节奏）**上往往存在发音生硬、曲风不纯正的问题。\n\n为了解决创作者在日系风格音乐上的创作门槛，我们打造了专为日语及 ACG 风格深度优化的 **[在线日语 AI 作曲工具 Sakkyoku.ai](https://sakkyoku.ai/)**，让不懂乐理的开发者与独立创作者也能轻松制作高水准的原创音乐。\n\n---\n\n### 2. 核心功能与亮点\n\n- **自然语言一键成曲**：只需输入主题或情绪描述，即可实现**[通过文本提示词一键生成完整日语歌曲与伴奏](https://sakkyoku.ai/)**。\n- **专精日语歌声合成（Vocal Synthesis）**：声学模型针对日语发音与假名咬字深度优化，支持女声、男声及二次元/Vocaloid 风格的清澈人声表达。\n- **多元日系曲风覆盖**：全面涵盖 J-Pop、动漫摇滚（Anime Rock）、City Pop、Lo-Fi 以及游戏背景音乐（BGM）。\n- **商用友好（Royalty-Free）**：生成的音频资源支持用于独立游戏、视频剪辑、播客配乐及个人商业项目，无需担心版税侵权问题。\n- **极简交互设计**：零门槛 Web 界面，无需配置复杂的 DAW 编曲工作站环境，数十秒内输出高保真音频文件。\n\n---\n\n### 3. 产品链接与体验\n\n- **官方网站**：👉 [在线免费体验 Sakkyoku.ai 音乐生成器](https://sakkyoku.ai/)\n- **适用人群**：独立开发者（游戏/工具配乐）、视频创作者、BGM 需求者、二次元音乐爱好者。\n\n欢迎大家体验与反馈，希望能收录到周刊中，非常感谢阮老师和社区！",
+    "created_at": "2026-09-22T08:09:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11862"
+  },
+  {
+    "id": 11861,
+    "title": "【工具自荐】BlackGit: 解决Git管理巨型仓库（二进制资产多，如游戏项目）和无权限管理问题",
+    "content": "blackgit 由客户端和服务器两部分组成，但可以分开使用。\n使用blackgitcli管理巨型仓库（二进制资产多，如游戏项目），配合blackgitserver 可以提供权限管理\n\n## 项目名称\n\nBlackGit\n\n##项目地址\n\nhttps://github.com/zhuzhonghua/blackgit/\n\n##原理\n\n- **BlackGitCli** \n客户端使用sparse-checkout只检出自己关心的文件，而不用下载整个仓库，可以单独配合github/gitlab使用\n内置专属Agent，使用自然语言操作blackgit和各种git命令\n- **BlackGitServer**\n服务端作为github/gitlab的proxy layer，精确约束每个用户的权限，文件目录的可见性，配合BlackGitCli使用\n",
+    "created_at": "2026-09-22T08:06:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11861"
+  },
+  {
     "id": 11860,
     "title": "【工具自荐】WebDAV Index：打开网页即可浏览 WebDAV 目录",
     "content": "一个纯浏览器的 WebDAV 目录页，打开即可浏览远程文件并点开查看，无需安装客户端，数据也不经过第三方服务器。\n\n## 项目名称\n\nWebDAV Index\n\n## 项目地址\n\n- 在线使用：<https://webdav-index.fantasticmao.cn/>\n- 源码：<https://github.com/fantasticmao/webdav-index>\n\n## 功能简介\n\n打开网页即可浏览 WebDAV 目录，能以表格形式列出文件名、修改时间和大小，支持浏览器内查看图片、文本和视频等类型文件，其余类型则触发文件下载。\n\n## 解决痛点\n\n临时查看 NAS、Nextcloud 或自建 WebDAV 时，常见做法是安装 Cyberduck、RaiDrive 这类客户端，或者再部署一套 Alist、File Browser。手机和借用的电脑上往往不方便安装，而很多时候只需要列目录、点开文件。WebDAV Index 不用下载，浏览器打开就能连接，适合只想浏览目录、不想再套一层网盘服务的场景。\n",
@@ -714,95 +802,5 @@
     "created_at": "2026-09-17T07:21:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11769"
-  },
-  {
-    "id": 11768,
-    "title": "【开源自荐】Codex Quota Dot：桌面上瞄一眼剩余额度",
-    "content": "自荐一个自己维护的小工具：[Codex Quota Dot](https://github.com/Silvren/codex-quota-dot)。\n\n写代码时只想瞄一眼 Codex 还剩多少额度，不想为这件事再切去设置页。所以做成了一个 56 px 的桌面小球：拖动换位置，点击才展开，鼠标路过不会突然弹一张卡片。\n\n展开可以看剩余额度、重置倒计时、重置机会，以及这次加上的 credits 余额。只有周额度的账号也能显示，不强行假定每个套餐都有五小时限额。余额标的是 credits 点数，不冒充美元。\n\nWindows 和 macOS 都有，Codex CLI / Desktop 用户都能用。基于 Tauri + Rust + React，不捆绑浏览器，没有同步服务器和遥测；通过已安装的 Codex 查询配额，不读取 auth.json、聊天记录或项目内容。MIT 开源。\n\n![界面演示，使用模拟数据](https://raw.githubusercontent.com/Silvren/codex-quota-dot/v0.2.4/assets/codex-quota-dot-ui.jpg)\n\n[源码与中文说明](https://github.com/Silvren/codex-quota-dot/blob/main/README.zh-CN.md) · [下载](https://github.com/Silvren/codex-quota-dot/releases/latest)\n\n它不做额度绕过，也不想做成另一个大面板——让用量留在视线里、不打断手头的事，就够了。\r\n",
-    "created_at": "2026-09-17T06:35:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11768"
-  },
-  {
-    "id": 11767,
-    "title": "【开源自荐】梗鲸 · DeepSeek酱语录：DeepSeek 娘化拟人（蓝色大肥鱼/鲸鱼娘）表情包图库，开源可自由引用",
-    "content": "推荐一个自己做的开源项目 [梗鲸 · DeepSeek酱语录](https://ai-meme.cdqyfdbymn.me/)，一个 DeepSeek 娘化拟人「蓝色大肥鱼 / 鲸鱼娘」的梗图与语录表情包图库。\n\nDeepSeek 走红后，网友给它创作了大量娘化拟人形象，其中流传最广的是\"蓝色大肥鱼 / 鲸鱼娘\"。梗鲸把这些散落在群聊和社交平台里的二创表情包汇总成图库：瀑布流浏览，点图放大、长按即存，持续更新。\n\n- **瀑布流图库**：点开放大，长按/右键即保存，手机电脑都好用\n- **中英双语背景故事**：配套开源仓库为每张图写清出处和梗的来龙去脉\n- **CDN 直链**：全部图片提供 CDN 外链，文章、视频、聊天里可以直接引用\n- **资源整包开源**：表情包合集整体开源，欢迎取用和二创\n\n- 在线图库：https://ai-meme.cdqyfdbymn.me/\n- GitHub 仓库：https://github.com/the-beating-light-of-the-nail/deepseek-chan-meme-pack\n\n项目免费、无需注册。",
-    "created_at": "2026-09-17T06:13:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11767"
-  },
-  {
-    "id": 11766,
-    "title": "【开源自荐】AgentMeasure：审计 110 个 AI 用量统计工具，五类计量 bug、20 个修复已被上游合并",
-    "content": "- 项目名称：AgentMeasure\n- 项目地址：https://github.com/roy-tong/AgentMeasure\n- 项目简介：AI 用量统计的「体检 + 审计」工具。起因是一个问题：你 dashboard 上的 token 和费用，到底数的是什么？作者用三周时间审计了约 110 个 Claude Code / Codex / 网关 / eval 生态的用量统计工具，整理出五类系统性计量 bug（同一消息被计两遍、重发事件重复累计、缓存 token 计价语义搞反、价表漂移、fork 会话丢数据），目前 45+ 条实证发现里已有 20 个被上游维护者合并修复（包括 langfuse 34k★、litellm 58k★ 级别仓库），每条都带可复现证据。工具本体只读扫描本地 Codex 会话日志，生成体检报告：哪些记录被记了两遍、哪些重试在放大消耗、哪些统计其实无法从日志证明（UNPROVABLE 而不是猜一个数）。维护用量统计工具的开发者可以用仓库里的 conformance fixtures 十分钟自检。\n- 说明性结果（五类 bug 一览，完整报告见仓库）：\n\n| # | bug 类 | 实证数 | 典型后果 |\n|---|---|---|---|\n| 1 | 同一响应按内容块多行重复计费 | 10+ | 成本虚高 ~2.4× |\n| 2 | 事件重发被当作新请求 | 5+ | token 重复累计 |\n| 3 | 缓存 token 计价语义（含/不含搞反） | 9 | 最多差 37.5% |\n| 4 | 价表漂移（含上游传染） | 7+ | 节省金额失真 3-4× |\n| 5 | resume/fork 会话历史丢失或重放 | 4+ | 86% 用量不可见 |\n\n- 相关链接：[审计报告全文](https://github.com/roy-tong/AgentMeasure/blob/main/campaigns/audit-report-2026-09.md) · [工具作者十分钟自检](https://github.com/roy-tong/AgentMeasure/blob/main/campaigns/tool-authors.md)\n",
-    "created_at": "2026-09-17T05:49:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11766"
-  },
-  {
-    "id": 11765,
-    "title": "网站推荐：Codex Reset Radar — Codex 使用额度与重置状态追踪",
-    "content": "在使用 Codex 的日常开发里，使用额度的变化常常难以跟踪：账户显示的限额、服务状态和公开的重置信息并不总是一致。最近发现一个专门页面，把 Codex 使用额度、重置状态、重置历史和 Tibo 的公开重置公告集中展示，方便在安排工作前快速查看：[latest Codex reset updates](https://quickresetai.online/)\n\n页面在浏览器中直接打开，不需要安装任何东西，适合在开始一段较长的编码会话之前先确认额度情况，再决定任务拆分和保存节奏。\n\n推荐理由：信息集中、加载快、界面直接，适合把额度信息当作日常开发计划的一部分来参考。",
-    "created_at": "2026-09-17T05:09:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11765"
-  },
-  {
-    "id": 11764,
-    "title": "【开源自荐】yovoice：简洁易用的本地 TTS 配音工具，支持音色复刻和情绪调节",
-    "content": "推荐一个自己做的开源桌面应用 [yovoice](https://github.com/leemysw/yovoice)，支持 macOS 和 Windows，用来做视频旁白和文章朗读。\n\n希望把本地配音做得简单一些。yovoice 将常用操作放在一个简洁的界面里，贴上文稿、选好音色，再调一下情绪，就可以生成配音。安装包内置了 audio.cpp 推理引擎，首次使用时在应用里下载模型即可，语音在本机生成。\n\n- **音色复刻**：导入或录制参考音频，用参考音色生成配音。\n- **情绪调节**：调整声音的情绪和表达方式。\n- **声音库与历史记录**：保存常用音色，试听和导出作品，也能复用之前的生成参数。\n- **模型管理**：在应用内下载模型，或导入本地 GGUF 文件。\n- **CLI 和 Agent Skill**：支持命令行调用，也可以让 Agent 完成配音任务。\n\n项目免费、开源，无需注册。\n\n- [GitHub 源码](https://github.com/leemysw/yovoice)\n- [下载安装包](https://github.com/leemysw/yovoice/releases/latest)\n\n### 工作台\n\n![yovoice 工作台](https://imgdb.io/i/z2QF-c8.png)\n\n<details>\n<summary>更多界面截图</summary>\n\n声音库\n\n![yovoice 声音库](https://imgdb.io/i/Jrf-Y2o.png)\n\n历史记录\n\n![yovoice 历史记录](https://imgdb.io/i/njBaNOI.png)\n\n模型管理\n\n![yovoice 模型管理](https://imgdb.io/i/9C5IYoA.png)\n\n推理引擎\n\n![yovoice 推理引擎](https://imgdb.io/i/fZMnKr4.png)\n\nmacOS 安装\n\n![yovoice macOS 安装](https://imgdb.io/i/dXqomzM.png)\n\n</details>\n\n欢迎试用，有问题或建议可以到项目仓库提 Issue。",
-    "created_at": "2026-09-17T04:38:14Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11764"
-  },
-  {
-    "id": 11763,
-    "title": "【文章推荐】Claude Code 是 Angular，Codex 是 Vue，DeepSeek 想当 React",
-    "content": "前端框架的“控制权之争”，正在 AI Agent 重演。Claude Code 像 Angular，Codex 像 Vue，DeepSeek Harness 想做 React。真正的问题不是功能，而是：核心该替用户决定多少？小核心不是免费午餐。\n\n- https://mp.weixin.qq.com/s/FkAdQroxddwiIqq6_jLeUQ",
-    "created_at": "2026-09-17T01:34:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11763"
-  },
-  {
-    "id": 11762,
-    "title": "开源自荐】PiX: 把 AI Agent 会话变成一张图的桌面工作台,任意节点分叉,上下文跟随分支",
-    "content": "- 项目名称:PiX\n- 项目地址:https://github.com/huang-sh/PiX\n- 项目简介:基于开源 Agent 框架 Pi 的图形化工作台:会话不是一条时间轴,而是一张可生长的图,任意节点随时分叉,上下文跟随分支,多方向并行推进互不干扰。\n- 项目截图:\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/86ff65e5-1e1d-4030-ba9f-4f51cf4f0bd1\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e915508b-7a2d-48c8-9c3a-ae840d7ded46\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/37defeb5-b120-4570-acce-1ddc9057cad4\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aa3bcc0f-44ec-43c7-bb06-f1a22e506b10\" />\n\n<img width=\"560\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f98bef44-6c04-4f21-a49a-80fdea3560b6\" />\n\n## 补充说明\n\nPiX 是一个 Electron 桌面应用,给开源 Coding Agent [Pi](https://github.com/badlogic/pi-mono) 加了一层\"图优先\"的工作台:每一轮对话(你的提问 + 助手的回复与工具调用)是图上的一个节点,任何一个节点都可以随时长出新分支。\n\n传统 AI 对话是一条单线时间轴,想换方向要么推倒重来,要么在原对话里越聊越乱。PiX 让多个探索方向并存于同一张图上:哪条路径走通了就继续深入,走不通的分支留在图上,随时回来换条路再试。\n\n- 技术栈:Electron + TypeScript + Vue 3(Vue Flow 画布、xterm 终端)\n- 平台:Windows(安装版 / 便携版)、macOS(Apple Silicon / Intel)\n- 状态:v0.0.19,积极开发中;会话即真实的 Pi 会话文件,离开 PiX 仍可用 pi CLI 继续,并支持 SSH / WSL 远程环境与内置文件搜索\n\n## 值得关注的点\n\n1. **随时分叉**:从任意一轮对话分叉(Fork)、从此轮继续、或克隆当前分支做存档点,原分支完好无损;\n2. **上下文跟随分支**:切换分支时,聊天面板即时切换到该分支的消息;选中节点即可查看该轮的思考过程、工具调用与耗时;\n3. **多 Chat Panel 并排对比**:Ctrl+双击图上不同分支的节点,把分支固定到并排的聊天列,最多同时 3 列;每列独立滚动、独立回复,回复后该列继续跟随这条分支生长,直观对比不同方案的走向。\n\n## 30 秒上手\n\n从 [GitHub Releases](https://github.com/huang-sh/PiX/releases) 下载对应平台安装包即可(安装包未签名,Windows SmartScreen 提示时选择\"仍要运行\")。\n\n或从源码运行(Node.js ≥ 22.19):\n\n```bash\nnpm install\nnpm run dev\n```\n\n## 披露\n\n本人为项目作者,本文为自荐;版本号与 star 数截至发文时,均可在仓库核实。",
-    "created_at": "2026-09-16T22:05:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11762"
-  },
-  {
-    "id": 11761,
-    "title": "[开源自荐] dsh-novel-craft：把作者的点选压成写作规律，只有规律进模型上下文",
-    "content": "> Github: https://github.com/shiyan688/dsh-novel-craft\n> 安装：`dsh plugin --profile web add dsh-novel-craft`（npm `dsh-novel-craft@0.1.4`，MIT）\n\n# 这是什么\n\n给中文网文/小说创作场景做的一个「作者品味校准」工作台，是 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 的插件（宿主半区 + 浏览器半区）。\n\n一句话：一轮生成若干\"结构不同\"的候选稿，作者只做一件事——在觉得好的段落上点一下、在别扭的段落上点一下。这些点选被压成**可复用的写作规律**，下一轮写稿照着收敛。\n\n# 我遇到的问题（自己写了半年小说，都是真事）\n\n1. **禁AI腔清单能让模型不像 AI，但做不到\"像这个作者\"。** 清单人人都在抄，抄完模型不油腻了，可它依然不是我。\n2. **作者的真实反馈从来不沉淀。** 今天说\"太刻意\"，明天说\"没网感\"，第三轮同一个毛病。因为我给的是**评价**，不是**可复用的写法**。\n3. **原文喂不进上下文。** 那把作者选中的段落整理成档案交给模型？起步 6 KB，一轮一个样，模型还得自己从原文里猜规律——猜不准，还烧掉上下文预算。\n\n# 做法：三层分离，加一条硬规则\n\n硬规则是：**进模型上下文的只有规律，原文永远不进。**\n\n| 文件（都在 `<候选目录>/.dsh-novel-craft/`） | 给谁看 | 进上下文？ |\n| --- | --- | --- |\n| `marks.json` | 工作台（机器可读的好/坏标注） | ❌ 永不 |\n| `证据摘录.md` | 原文证据，给人回查、给提炼当输入 | ❌（文件头写着\"不要读进写稿上下文\"） |\n| `作者偏好档案.md` | **写稿会话只读这一份**（只有规律） | ✅ 就它 |\n\n# 真机数字（不是估算）\n\n- 在一份真实书稿上点 30 段好/坏（第 1、2、8 章）\n- 点一次「提炼规律」：**1.8 秒**回来 **14 条**规律\n- `作者偏好档案.md` 从 **6140 B 的原文摘录**变成 **714 B 的规律**，里面一条原文都没有\n- 下一轮写稿只需要读这 714 B\n\n提炼出来的规律长这样（原样抄几条）：\n\n```\n喜欢：\n- 器物先动，人后发声，用声响顶点收束静默\n- 给反派一句极短的私人恐惧，落点在赔不起\n避免：\n- 不要用比喻堆砌写人群的恐惧\n- 不要用旁白解释反应者的心理活动\n```\n\n# 规律是怎么来的（以及为什么不是全自动）\n\n一次**便宜的辅助模型调用**把待提炼的原文压成条目，但条目**不直接进档案**——作者逐条勾选才采纳，水位随之前移，同一段不会被重复送。规律区是作者的，工作台维护的自动块之外永不被覆盖，单条规律可以一键删掉。\n\n# 顺手记两个插件坑（可能对写 dsh 插件的人有用）\n\n1. **插件行的 `apply` 可能早于服务挂载**：在 `0.1.6-alpha.1` 上实测，同步 `apply` 里 `ctx.get('webServer')` 拿到的是 `undefined`——写成\"取不到就 return\"的插件会在新版本上**静默什么都不做**。改成 `ctx.inject(['settings','webServer'], …)` 等就绪（带超时兜底）即可。\n2. **调模型做结构化输出要默认关掉推理**：推理 token 和正文共用一份输出预算，我这边表现是\"接口 5.6 秒返回、解析出 0 条规律\"，关掉推理 + 抬高预算后 1.8 秒出 14 条（官方 Discussion #6857 也写了这条）。\n3. 另外客户端 bundle 的下发地址从 `/plugins/<id>/client.js` 变成了组合脚本 `/plugins/??a/client.js,b/client.js&rev=…`——插件不用管，但拿裸 URL 做测试的人会误以为\"插件没被收录\"。\n\n# 工程质量\n\n- 209 项断言：静态守卫（Hook 顺序、词条完整性）+ 回环端口上的接口闭环（含假 LLM 的提炼链路）+ 用成对 react/react-dom 把客户端组件真渲染成 HTML；**测试不依赖任何本机路径**\n- `scripts/check-dsh-compat.mjs` + CI 矩阵：每周自动在 `latest` / `next` / `alpha` / `0.1.2-rc.1` 四档上真装一份 dsh、起服务、验宿主路由与客户端半区下发\n- 出处与致谢：`skills/novel-writing` 的禁AI腔清单改编自 [dsh-novel-solo](https://github.com/Tkingxiao/dsh-novel-solo)（MIT），平台 DeepSeek Harness（MIT），完整声明在 `THIRD_PARTY_NOTICES.md`\n\n仓库里还带了两个配套 skill（`taste-calibration` / `novel-writing`），装到 `.dsh/skills/` 即可，插件负责\"让你低负担地点\"，skill 负责\"告诉 agent 怎么用这些标注\"。",
-    "created_at": "2026-09-16T16:01:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11761"
-  },
-  {
-    "id": 11760,
-    "title": "[开源自荐] llmdoc: 一个经过实践考验的 codebase memory 方案",
-    "content": "> Github: https://github.com/TokenRollAI/llmdoc\n> llmdoc首页: https://llmdoc.tokenroll.ai/\n\n# 标题的说明\n\n标题的实践考验指的是在两个 AI Starup 公司的实践, 支撑了大约 3 亿 ARR 产品的迭代(其实应该是 2.9 亿 ARR, 四舍五入其实差不多, 当然了其实是两家公司的两家产品加起来的 ARR 😭)\n\n在前司主要负责公司的 AI/Agent 建设, 同时也比较深入的参与了业务的开发, 一些开发上的尤其是 人&人, 人&AI 的协作的痛点感知还是非常清晰的.\n\n我相信我列出的问题肯定不止一个人遇到过:\n\n1. AI 写的代码没有沿用默认的技术框架/方案\n2. 需要在 Coding 前不断地输入/纠正\n3. 已经有的解决方案/函数/包库没有直接用, 又造了一堆轮子\n4. 明明纠正过很多次, 同样的错误在下一次又犯病\n5. 使用的 memory 没有版本化管理, 代码回滚/合并了, memory 没有更新\n6. 给了目标之后, 用了巨多时间巨多 context, 读取了N 多文件, 问了 N 个问题, 然后在过了甜点 context 阈值的情况下开始工作, 写的乱七八糟\n\n# context floor\n\n我曾经给很多人表达过一个观点: Agent 完成工作的好坏, 取决于 context 的丰富程度\n\n这里有几个需要说明的地方:\n\n1. 工作的好坏: 这里是靠人判断的, 架构是否合理, 抽象是否清晰, 是不是没有重复造轮子...\n2. Context 的丰富程度: 这里指的是和\"完成目标\"相关的 Context, 尽可能的多而且不重复, 在 context 无限大, 甜点 window 无限长的情况下, 最好的方案是把代码库+架构+db+UI+PRD 全都塞进去\n\n换句话说: 如果有办法能够稳定的为 Agent 提供良好的快速到达满足工作条件的 Context 路径, 就能提升 Agent 的工作效果和工作效率\n\n> context floor 只是我臆造的一个名词, 大家不用搜索, 我在一篇[早期的 blog](https://blog.pdjjq.org/post/llmdoc-solving-the-last-100-meters-of-ai-coding-z2tuegp#:~:text=%E5%BC%80%E5%A7%8B%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98.-,Context%20Floor,-%23) 里简单的说了一下, 大家不用关心\n\n# llmdoc\n\n好了, 为了引出正文已经瞎扯了很多了\n\n> Github: https://github.com/TokenRollAI/llmdoc\n>\n> llmdoc首页: https://llmdoc.tokenroll.ai/\n\n### 还是文档\n\n如果有一种内容, 一种 AI 产生的内容, 是比代码更高的抽象层次, 而且有足够好的阅读性和可理解性, 能够指导写代码, 它会是什么?\n\n我的答案是**文档**\n\n如果你已经想到让 AI 自动维护一个文档文件夹, 代码更新之后自动维护, 那么你已经理解了 llmdoc 了\n\n这就是最开始的 llmdoc 😁\n\n### 不仅仅是文档\n\n可是只靠文档就够了吗?\n\n尤其是代码库的文档, 我们会发现: 适合人阅读的文档, 不一定适合 AI, but why?\n\n最常用的文档组织形式是: [diataxis](https://diataxis.fr/)\n\n也就是类似: overview + guide + tutorials + reference ... 这样的组织形式, 经常看技术文档的朋友看到这几个名词应该不会默认\n\n但是在实践中, 这可能不是最好的组织形式\n\n1. Agent能够极为快速的\"Read\"(其实准确来说是 Load), 如果表达一个 Topic 的不同文档, 过于分散, 反而是在降低效率\n2. Agent不需要太过于细粒度的内容, 粒度再细也不会超过文档来源(代码), 这种情况下不如直接读代码\n\n### 一个更好的组织形式\n\n在之前的 v2 版本的 llmdoc 中, 使用的文档结构是优化版本的[diataxis](https://diataxis.fr/), 额外加了一个反思层 + index.md 用来帮助 Agent 判断哪些要读, 哪些不要读\n\n这是有用的, 但是有用的不是文档的组织形式, 而是文档内容, 实际 Agent 在读文档时还是经常会判断不准确文档和文档之间的关联...\n\n##### not only md\n\nmd 的格式没有问题, 但是 纯靠 md 无法结构化的表达文档和文档的关系, 文档和代码的关系, topic/domain 和文档的关系...\n\n一个简单的解决方案是: 增加 yaml frontier\n\n在 yaml 中做这些结构化的表达\n\n同时为了一些扩展性, 这里用了 mdx 格式 (可能不是个好主意😭)\n\n##### 程序化的判断\n\nAgent 可以判断很多事情, 代价是每判断一次, 就要烧 token\n\n程序化判断的好处有这么几个:\n\n1. 不可变的结论, 不会因为 Agent 主观判断而发生变化, 尤其是在代码和文档不一致时非常有用\n2. 免费\n\n##### topic by topic\n\n按照一个\"topic\"组织文档, 这里的 topic 可以是一个业务 domain, 可以是 cicd, 可以是 release...\n\n总之, 对于 codebase 来说, 最好不要是按照层级来划分的\n\n过多的层级, 过于强调渐进式暴露, 反而会对 Agent 的性能有影响\n\n按照 Topic 划分的另一个好处是, 一般来说一个任务需要的 Topic 不会太多, Agent 可以快速的知道 Topic 的大概, 知道要读写哪些文件, 这会非常快速的构成 context floor(我没有更好的表达方式了, 请原谅)\n\n# llmdoc V3\n\n> 一个示例的llmdoc: https://github.com/TokenRollAI/llmdoc/tree/main/llmdoc\n>\n> 是的, llmdoc 本身是自举的😁\n\n在前几天推出的 V3 版本中, 结合长期的实践, 我们做了[这样](https://github.com/TokenRollAI/llmdoc/issues/32)的设计:\n\n1. 不改变 llmdoc 的核心定位: 一个跟随代码做版本控制的外置 context provider\n2. doc 中保留最关键的信息: 决策/架构/设计\n3. 用稳定的 cli 替代掉 hook sh\n4. 更好的支持 diff code 和 doc 的 gap\n5. 文档增加 meta info 用来承担 description 和 related code file\n6. 更适合 AI 的文档组织形式: 按照 topic 和 domain 划分, 适合快速阅读\n\n好了, 这就是目前的完全体了, 他目前支持 Claude Code / Codex / 其他适配 Agent Plugin 标准的产品\n\n一个可以完全适配 任何工作流, 任何 Skill 的外挂的 Context Provider\n\n没有上手成本, 有完成的 cli/plugin/skill/hooks 支持\n\n我的个人项目也在长期使用, 效果不错, 强烈推荐\n\n---\n\n[点点 Star](https://github.com/TokenRollAI/llmdoc) 更有帮助哦, 如果大家有问题也欢迎 Issue / PR / 评论区提问",
-    "created_at": "2026-09-16T15:44:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11760"
-  },
-  {
-    "id": 11759,
-    "title": "[开源自荐] tool-bridge: Agent 的触手, 连接 设备/Context/MCP. 支持反向注册, SDK...",
-    "content": "> 先上链接: https://github.com/TokenRollAI/tool-bridge\n> 官方文档: https://tool-bridge.tokenroll.ai/\n\n过去一年在一些AI Starup 工作, 在这些强调 AI Native 的公司中做 Agent Infra 的过程中, 经常会遇到一些问题:\n\n1. 大量的不同业务的 Agent 希望能够共享工具, 但是也希望有足够的限制(某些工具禁止访问)\n2. 希望 Agent 和 Agent 之间能够共享 Context, 用飞书cli 太重, 而且 agent 创建的文档访问权限控制很麻烦\n3. 聚合MCP, 提供统一的开发体验, 某些 MCP 由于 Seat 限制不能够添加过多的 User 席位, 而且最好能够自部署, 没有商业风险\n4. 希望能够直接让 Agent 使用某些命令排查线上的机器/Pod/服务\n5. 自建的 mcp 又总是很难注册到 MCP Gateway\n\n以上就是我在做 Agent Infra 遇到的一些问题, 分散来看, 每一个其实都有解决方案.\n\n比如说 mcporter / mintlify / 各种 mcp gateway / agentdock ...\n\n但是作为部署/管理/成本/维护的考虑, 把这些功能分散到 N 个服务中好像有太过于舍本逐末.\n\n于是最近两个月, 我做了 tool-bridge, 简单来说: 基于树描述组织中的所有工具/MCP/Context/设备, 提供类似 cli 的 help 语义 + agent自主的 feedback + SDK + 支持反向注册, 实现的一套 Agent 的工具调用方式.\n\n当然, 本身是兼容 MCP 的, 同时 tool-bridge 也支持 接入mcp, 也支持以 mcp 的方式暴露.\n\n# 几个用例\n\n<img width=\"2516\" height=\"1504\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6624fd9e-c939-428e-ba0a-8bbbd2cc1c3f\" />\n\n<img width=\"1200\" height=\"2608\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bbf3a2f5-84bb-4291-b447-a242f19364af\" />\n\n<img width=\"1200\" height=\"2608\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/95ee748a-a6f1-47c0-acf0-d3bbb01930b0\" />\n\n<img width=\"1650\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1098b79d-1ace-4e24-887a-5f096f84ee92\" />\n\n\n---\n\n# 目前的范围能力\n\ntool-bridge 对开发者提供: SDK / Plugin-SDK / 完全开源的 Server / Dashboard\n\ntool-bridge 对Agent提供: API / CLI / MCP 的接入支持\n\ntool-bridge 对设备提供:\n1. linux / mac / windows 的 shell / Daemon / 自定义设备路径 的能力\n2. ios / android 的通知/可离线投递的信箱/震动/闪光/摄像头调用(根据设置权限) 的能力\n\n\n---\n\n目前我把目前使用的 Agent 对 MCP/Context/设备 的调用都迁移到了 tool-bridge, 体验不错, 推荐使用!\n\n欢迎 Star/Issue/PR, 目前处于 Pre-Launch 的阶段, API UI CMD 可能会有变更, 但是会尽快推出 1.0 的 Stable-Release\n",
-    "created_at": "2026-09-16T15:41:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11759"
-  },
-  {
-    "id": 11758,
-    "title": "【开源自荐】JieJu（解句）：支持本地 AI 和日语注音的 PDF / EPUB 语言学习阅读器",
-    "content": "大家好，我是 **JieJu（解句）** 的作者，想自荐这款本地优先、面向语言学习的 PDF / EPUB 阅读器。\n\n读外语原著时，查词、翻译、语法分析和笔记往往分散在不同工具里。JieJu 把这些步骤放回阅读现场：选中一个单词、表达或句子，直接查看翻译、句子主干、语法和重点表达；有价值的内容可以连同原文语境保存，之后再温习或返回原文。\n\n**项目地址：** https://github.com/zhouyeyu/JieJu  \n**许可证：** Apache-2.0（第三方组件遵循各自许可证）\n\n### 主要功能\n\n- **PDF / EPUB 阅读与划词解句**：支持常驻侧栏和弹出式解释，先看翻译与主干，再按需展开深入解析。\n- **日语阅读辅助**：本地分词、原形、活用分析和汉字假名注音；注音不会混入选区或 AI 请求。\n- **本地 AI 优先**：默认连接本机 Ollama，也可自行配置 OpenAI-compatible 服务。使用本机 Ollama 时，选区和有限上下文在本机处理；切换云端后会发送到用户指定的服务。\n- **生词、语境与随手温习**：保存词语和解句结果，支持返回来源；复习保持自愿，没有连续打卡、红点或强制提醒。\n\n### 实际截图\n\nmacOS：EPUB 阅读、日语注音和分层解句。\n\n![JieJu macOS：EPUB 阅读、日语注音和分层解句](https://raw.githubusercontent.com/zhouyeyu/JieJu/main/Docs/Assets/README/jieju-macos.jpg)\n\nWindows：EPUB 阅读、注音和弹出式深入解析。\n\n![JieJu Windows：EPUB 阅读、日语注音和弹出式深入解析](https://raw.githubusercontent.com/zhouyeyu/JieJu/main/Docs/Assets/README/jieju-windows.png)\n\n### 使用与当前阶段\n\n目前处于 **0.1 Alpha**：macOS 14+ 提供原生客户端，Windows 提供 WinUI 3 开发预览。尚未正式发布签名安装包，可按仓库 README 从源码构建；本地 AI 需要另行安装 Ollama 和模型，云端服务可能产生费用。\n\n扫描 PDF 的 OCR、复杂 EPUB 排版及部分跨平台体验仍在完善。模型解释可能出错，适合作为阅读辅助，而不是标准答案。\n\n欢迎对外语阅读、日语学习或本地 AI 工具有兴趣的朋友试用，也欢迎反馈电子书兼容性和解释体验。",
-    "created_at": "2026-09-16T15:17:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11758"
   }
 ]
