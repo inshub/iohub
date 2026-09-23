@@ -1,5 +1,37 @@
 [
   {
+    "id": 11877,
+    "title": "【开源自荐】AirStats：低占用的 macOS 系统监控器",
+    "content": "在一台 M3 Pro MacBook Pro 上进行 160 次同步采样，AirStats 空闲 CPU 为 0.046%、内存 11 MB；iStat Menus 为 0.116% 和 64 MB，Stats 为 1.931% 和 145 MB。测试方法和脚本已公开。\n它是原生 Swift macOS 菜单栏监控器，1.5 新增 24 小时历史图，可标出充电时段和峰值对应进程。安装后 8.9 MB，单进程运行，无辅助进程、启动代理或 Dock 图标。\n网站：https://airstats.app\n源码：https://github.com/byrencheema/airstats\n安装：`brew install --cask airstats`\n\n<img width=\"1520\" height=\"1864\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3c1a75d7-168e-4e23-9566-d24ba20ea52e\" />",
+    "created_at": "2026-09-23T06:40:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11877"
+  },
+  {
+    "id": 11876,
+    "title": "【开源自荐】：网站性能测试（Web Speed Test）",
+    "content": "\n## 介绍\n\n名称：网站性能测试（Web Speed Test）\n\n<img width=\"1256\" height=\"1294\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7eaccf9b-786c-4943-bbfe-a41a03f19609\" />\n\n链接：https://www.nocokit.cn/speedtest/\n\n#### 简介：\n\n一款双引擎的网站性能测试工具——服务器真实探测 HTTP/1.1/2/3 协议与 DNS/TCP/TLS 分相时序，同时用 \nLighthouse 无头浏览器采集 LCP/CLS 等渲染指标，输出资源瀑布、响应码、SEO 审计和 HAR 导出。\n\n\n#### 特点：\n\n- 完整 DNS、TCP、TLS 分相时序\n- 真实 HTTP/1.1 / 2 / 3 协议探测，报告 ALPN 协商结果\n- Lighthouse 渲染采集 LCP / CLS / TBT\n- 资源瀑布、响应码、SEO 审计、HAR 导出\n- RUM 真实用户 p75 / p95 统计\n\n#### 仓库\n\n github: https://github.com/bojue/speed-test",
+    "created_at": "2026-09-23T02:56:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11876"
+  },
+  {
+    "id": 11875,
+    "title": "【开源自荐】gcl2api-plus：支持多账号池、模型自动降级链与 Token 计费看板的 Gemini / Antigravity 转 API 网关",
+    "content": "### 项目名称\n\ngcl2api-plus (GeminiCLI to API Plus)\n\n### 项目地址\n\n- GitHub: https://github.com/Wzh0718/gcl2api-plus\n- 容器镜像: `ghcr.io/wzh0718/gcl2api-plus:latest`\n\n### 项目简介\n\n将 GeminiCLI 与 Antigravity 转换为兼容 OpenAI、Claude 和 Gemini 标准格式的自托管 API 网关。\n\n基于上游开源项目二次开发，专注于生产与个人开发场景下的**多账号池轮询调度、429 配额耗尽模型自动降级、API Key 权限分发以及 Token/费用统计监控**。\n\n### 为什么做这个项目？\n\n在使用各类客户端工具（如 Cherry Studio、NextChat、Cursor、各类 Agent 框架等）对接 Gemini 或 Antigravity 时，经常会遇到几个痛点：\n1. **单账号配额易被限流**：高频并发或重度使用容易触发 429 配额限制，单一模型一旦耗尽便导致调用链路全面中断。\n2. **缺乏多凭证统一管理**：手头有多个凭证时，手动切换繁琐，无法自动探测凭证失效（如 403 封禁）或健康状况。\n3. **对外分发与用量失控**：想要将接口分享给团队成员或部署到家庭服务器时，缺少独立的 API Key 权限控制与清晰的 Token 用量/费用账本。\n\n因此本项目在转 API 的基础能力之上，重点补充了企业级/团队级网关所需的凭证健康生命周期管理与降级冗余机制。\n\n### 核心特性\n\n- **模型配额耗尽自动降级链**：配置 `ANTIGRAVITY_MODEL_FALLBACK_CHAIN` 后，当高阶模型遇到明确的配额耗尽型 429 时，网关会自动平滑降级至备选模型（如 Flash / Tiered 版本），保障长任务或 Agent 链路不被阻断。\n- **多账号凭证池与健康守护**：支持多账号轮询调度、403 异常复核隔离、账号健康检查以及 RT / OAuth 一键登录管理。\n- **完整的 API Key 与权限控制**：支持签发独立 API Key，可单独设置权限范围、速率限制以及过期策略。\n- **Token 用量与费用统计**：内置可视化 Web 控制台，实时展示请求吞吐量、各模型 Token 消耗走势与费用账本。\n- **高可用存储架构**：以 SQLite 作为核心持久化主账本，可选配合 Redis 镜像加速计费统计与看板查询，支持非流响应大缓冲区与流式守护。\n- **开箱即用**：提供多架构 Docker 镜像（支持 amd64 / arm64），一条命令即可完成部署。\n\n### 快速部署\n\n使用 Docker 快速启动：\n\n```bash\ndocker run -d \\\n  --name gcli2api \\\n  --network host \\\n  -e API_PASSWORD=your_api_password \\\n  -e PANEL_PASSWORD=your_panel_password \\\n  -e PORT=7861 \\\n  -v \"$(pwd)/data/creds:/app/creds\" \\\n  ghcr.io/wzh0718/gcl2api-plus:latest\n```\n\n启动后访问 `http://<IP>:7861` 即可进入管理控制面板配置账号与模型降级链。\n\n### 界面截图\n\n| API Key 签发与权限管理 | 统计监控与费用账本 |\n| :---: | :---: |\n| ![API Key 管理](https://github.com/user-attachments/assets/a3f498a2-0693-4391-a55c-9fbc345f3736) | ![Token 统计与看板](https://github.com/user-attachments/assets/fe81dd96-5ae9-4600-b9ef-96dbcd2691f6) |\n\n| 账号与凭证管理 | 详细 Token 统计分布 |\n| :---: | :---: |\n| ![凭证管理](https://github.com/user-attachments/assets/49963ed8-0c50-4466-afdf-e14834d4626a) | ![Token 统计](https://github.com/user-attachments/assets/2eec6103-190a-4237-803b-3c619abcb0c8) |",
+    "created_at": "2026-09-23T02:12:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11875"
+  },
+  {
+    "id": 11874,
+    "title": "lost",
+    "content": "good",
+    "created_at": "2026-09-23T02:11:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11874"
+  },
+  {
     "id": 11873,
     "title": "自荐：HarnessGate —— 统一管理 40+ 编码 agent 的自托管控制台",
     "content": "自荐一个开源项目：[HarnessGate](https://github.com/meichuanyi/HarnessGate)（Node.js + WebSocket，MIT）。\n\n它是编码 agent 的\"多机位导播台\"：把 Claude Code、Codex、ZCode、OpenCode 等 40 多个 CLI agent 基于 ACP 协议统一接入一个自托管控制面，任何设备的浏览器或 VS Code 都能远程驱动服务器上的 agent（瘦客户端，agent 与文件都在服务器侧，客户端不碰文件）。\n\n几个可能对周刊读者有价值的点：\n\n1. **会话基础设施**：会话落盘、服务重启自动接续（session/resume / fork / load 三级降级）、跨设备续聊、连续故障自动自愈重建并注入进度摘要；\n2. **多智能体编排**：「工作队」模式由工头拆解任务，队员在独立 git worktree 并行实现，异厂商评审员零共享上下文把关后合并；另有圆桌讨论（并行/串行、主持人、评分锦标赛）；\n3. **运维友好**：42 个 harness 自动发现/探活/可信度分级，权限三档自动决策 + 全程 JSONL 审计台账，公网访问有登录门和 token 认证。\n\n快速开始：`git clone && npm install && npm start`，浏览器打开 9830 端口。",
@@ -10,7 +42,7 @@
   {
     "id": 11872,
     "title": "【开源自荐】DeepSeek就可以当作jev用 deep-jev-seek",
-    "content": "https://github.com/lenML/deep-jev-seek\n\n[![CI](https://github.com/lenML/deep-jev-seek/actions/workflows/ci.yml/badge.svg)](https://github.com/lenML/deep-jev-seek/actions/workflows/ci.yml)\n[![npm](https://img.shields.io/npm/v/@lenml/jevseek.svg)](https://www.npmjs.com/package/@lenml/jevseek)\n[![npm downloads](https://img.shields.io/npm/dm/@lenml/jevseek.svg)](https://www.npmjs.com/package/@lenml/jevseek)\n[![Docker](https://github.com/lenML/deep-jev-seek/actions/workflows/docker.yml/badge.svg)](https://github.com/lenML/deep-jev-seek/actions/workflows/docker.yml)\n[![license](https://img.shields.io/npm/l/@lenml/jevseek.svg)](https://github.com/lenML/deep-jev-seek/blob/main/LICENSE)\n\n![JevSeek WebUI](https://github.com/lenML/deep-jev-seek/raw/main/docs/assets/readme-banner.webp)\n\n有 docker 中转、有npm包、也有web端可以直接对接本地启动的llmamcpp，快速体验jev模式。\n\n原理很简单，就是要求返回 logprobs \n并且据我测试， deepseek 准确率显著高于 jev（暂时没报告，调用成本很低，可以自行测试）\n\n也支持本地 llamacpp ，一样的原理，我测试大概 30b 的模型可以和 jev 差不多准确率，并且成本比 jev 低，但是延迟高\n\n欢迎提 pr 提 issues",
+    "content": "https://github.com/lenML/deep-jev-seek\n\n[![CI](https://github.com/lenML/deep-jev-seek/actions/workflows/ci.yml/badge.svg)](https://github.com/lenML/deep-jev-seek/actions/workflows/ci.yml)\n[![npm](https://img.shields.io/npm/v/@lenml/jevseek.svg)](https://www.npmjs.com/package/@lenml/jevseek)\n[![npm downloads](https://img.shields.io/npm/dm/@lenml/jevseek.svg)](https://www.npmjs.com/package/@lenml/jevseek)\n[![Docker](https://github.com/lenML/deep-jev-seek/actions/workflows/docker.yml/badge.svg)](https://github.com/lenML/deep-jev-seek/actions/workflows/docker.yml)\n[![license](https://img.shields.io/npm/l/@lenml/jevseek.svg)](https://github.com/lenML/deep-jev-seek/blob/main/LICENSE)\n\n![JevSeek WebUI](https://github.com/lenML/deep-jev-seek/raw/main/docs/assets/readme-banner.webp)\n\n有 docker 中转、有npm包、也有web端可以直接对接本地启动的llmamcpp，快速体验jev模式。\n\n原理很简单，就是要求返回 logprobs \n并且据我测试， deepseek 准确率显著高于 jev（暂时没报告，调用成本很低，可以自行测试）\n\n也支持本地 llamacpp ，一样的原理，我测试大概 30b 的模型可以和 jev 差不多准确率，并且成本比 jev 低，但是延迟略高（两倍于jev）\n\n欢迎提 pr 提 issues",
     "created_at": "2026-09-22T15:47:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11872"
@@ -770,37 +802,5 @@
     "created_at": "2026-09-17T11:16:51Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11775"
-  },
-  {
-    "id": 11774,
-    "title": "【开源推荐】TechRadar-Agent：全自动前沿技术雷达与 AI 知识提炼智能体",
-    "content": "## 项目介绍\n\n- **项目名称**：TechRadar-Agent (全自动技术雷达智能体)\n- **项目地址**：https://github.com/dora-exploreLab/tech-radar-agent\n- **适用场景**：个人技术追踪、前沿文献研读、第二大脑知识管理\n\n### 解决的痛点\n在 AI 与技术大爆炸时代，每天都有无数的 GitHub Trending 爆款和 arXiv 论文涌现。开发者陷入“不看怕掉队，看又看不过来，市面资讯充斥营销软文”的信息过载与信噪比焦虑。\n\n### 核心特性\n1. **全自动自治抓取**：定时并发捕获 GitHub 热榜、arXiv 顶会 AI 论文、国内外大厂工程博客与计算机经典书目；\n2. **Agent Harness 严谨架构**：基于现代 TypeScript 5.x ESM，采用统一 `harness.act` 执行动作流，自带重试熔断与耗时审计；\n3. **高信噪比 AI 结构化萃取**：基于 Zod Schema 严格提取「痛点背景 ➡️ 核心机制 ➡️ 工程借鉴」，绝无废话；\n4. **零依赖开箱即跑**：内置本地安全持久化引擎（亦支持企业级 PostgreSQL 16 知识数仓）；\n5. **智能分流网络路由**：国内站点直连防 WAF，国外站点自动分流代理；\n6. **无缝联动第二大脑**：每日自动生成标准 Markdown 收件箱研报，原生适配 Obsidian 知识库生态。\n\n欢迎大家体验与提出建议！",
-    "created_at": "2026-09-17T10:02:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11774"
-  },
-  {
-    "id": 11773,
-    "title": "【开源自荐】opencode-vision-analyze：给看不了图的 AI 编程助手接上一双「眼睛」",
-    "content": "![opencode-vision-analyze](https://raw.githubusercontent.com/MwumLi/opencode-vision-analyze/main/assets/cover.zh.webp)\n\n**opencode-vision-analyze** —— 一个 opencode 插件：当主模型看不了图片时，由它按需调用 `vision_analyze` 工具，把图交给你的视觉模型描述，描述文字直接回到对话里；主模型本身支持图片时，贴图原样直发，不做多余处理。\n\n项目地址：https://github.com/MwumLi/opencode-vision-analyze\n\n亮点：\n\n- **工具化，而非提交时预分析**：模型自己决定何时看图、带着什么问题看，失败可在 agent 循环里重试，不阻塞提交\n- **零运行时依赖**：单文件 TypeScript，除插件本身无需安装任何东西\n- **自动发现 opencode zen 免费视觉模型**：与 `/models` 选择器同源发现图片模型，未登录也能用上 zen 免费视觉模型，`free_first: true` 可让免费模型优先\n- **内容寻址缓存**：同一张图只描述一次，跨会话 / 项目 / 重启复用\n- **区域裁剪**：先裁区域再降采样，能真正「放大」看清大图里的细小文字\n- **统一鉴权**：复用 opencode 已管理的 provider 凭据，无需额外配置 API Key\n\n安装（npm 一行配置，opencode 启动时自动安装）：\n\n```jsonc\n// opencode.json（项目级或全局）\n{\n  \"plugin\": [\n    [\"opencode-vision-analyze\", { \"models\": [\"openai/gpt-4o-mini\"] }]\n  ]\n}\n```\n\n也可把下面这段提示词粘给任意 OpenCode 会话，交给智能体自动安装并配置：\n\n```\nInstall and configure opencode-vision-analyze by following the instructions here:\nhttps://raw.githubusercontent.com/MwumLi/opencode-vision-analyze/main/docs/INSTALL.md\n```\n\nMIT 协议。个人项目，欢迎 Issue / PR，也欢迎试用反馈。\n",
-    "created_at": "2026-09-17T09:27:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11773"
-  },
-  {
-    "id": 11772,
-    "title": "【开源自荐】ChatAnchor：项目改名或移动后，继续原来的 AI 编程会话",
-    "content": "自荐一个本地 VS Code 扩展：[ChatAnchor](https://github.com/ascendho/ChatAnchor)。\n\n它解决的是 AI 编程里一个很常见、但挺烦人的小断点：项目文件夹改名或移动之后，Codex、Cursor Agent CLI、OpenCode 里的旧会话往往还停留在原路径，想继续原来的线程就要手动找记录、复制上下文，甚至重新解释一遍项目状态。\n\nChatAnchor 会给每个项目建立一个不随路径变化的本地身份，并结合 Git remote、commit、历史路径等线索，在目录位置变化后重新识别同一个项目。重新打开新目录后，可以直接在 VS Code 里继续原来的 Codex / Cursor / OpenCode 会话，或者从当前项目路径开启新的 agent 会话。\n\n它还做了一点跨 agent 的上下文复用：\n\n- Codex / Cursor 会话可以复制 `@path`，OpenCode 可以导出 JSON 或生成精简 Markdown transcript；\n- 可以从最多 10 条已链接会话生成本地 Project Context Pack，再把这个 `@path` 交给另一个 agent；\n- 默认扫描只读本地元数据，不读正文、不上传、不做遥测。只有显式执行导出、精简 transcript 或 Context Pack 时，才会读取用户选中的会话内容。\n\n这个项目最初来自 [Codex 官方 issue 26836](https://github.com/openai/codex/issues/26836) 里讨论的问题：项目目录改名或移动后，原会话无法自动重新关联。我们也把 ChatAnchor 的方案整理成 [comment](https://github.com/openai/codex/issues/26836#issuecomment-5558363522) 反馈给了 OpenAI 官方。\n\n项目地址：https://github.com/ascendho/ChatAnchor\n\nVS Code Marketplace：https://marketplace.visualstudio.com/items?itemName=ascendho.threadrelink\n\nnpm CLI：https://www.npmjs.com/package/@ascendho/chatanchor-cli\n",
-    "created_at": "2026-09-17T08:52:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11772"
-  },
-  {
-    "id": 11771,
-    "title": "【开源自荐】JQuick-Curl，将 cURL 命令转换为 Java HTTP 请求的框架，基于 OkHttp + ANTLR 构建",
-    "content": "**项目链接**：https://github.com/dromara/jquick-curl\n\n---\n\n### 它解决什么问题\n\n在 Java 里调第三方接口，通常要先从 Postman、Apifox 或浏览器 DevTools 复制一段 cURL，再手动翻译成 OkHttp 或 HttpClient 代码——构造请求头、拼参数、设超时、处理响应，一套下来几十行。等接口文档更新了，这段代码还得跟着改。\n\nJQuick-Curl 的做法是：**cURL 命令怎么写，Java 代码就怎么用**。命令交给 ANTLR 解析，底层用 OkHttp 连接池执行，中间不需要手写请求构建代码。\n\n---\n\n### 一个例子\n\n从 Postman 复制出来的命令是：\n\n```bash\ncurl -X POST https://httpbin.org/post \\\n  -H 'Content-Type: application/json' \\\n  -d '{\"sku\":\"A-1001\",\"count\":2}'\n```\n\n**在 Java 里直接贴到接口方法上**：\n\n```java\npublic interface OrderApi {\n    @JCurlCommand(\"curl -X POST https://httpbin.org/post \" +\n            \"-H 'Content-Type: application/json' \" +\n            \"-d '{\\\"sku\\\":\\\"A-1001\\\",\\\"count\\\":2}'\")\n    String create(JQuickCurlReq request);\n}\n\nOrderApi api = JCurlInvoker.createProxy(OrderApi.class);\nString body = api.create(new JQuickCurlReq());\n```\n\n接口定义和业务代码是分开的。调试工具里验证通过的请求，复制过来就能跑。\n\n**API 管理**：注解之外还有 XML\n除了 @JCurlCommand 注解，也可以把接口集中写在 apis.xml 里，请求模板完全不进 Java 代码：\n\n```xml\n<curls namespace=\"com.example.UserApi\">\n    <curl name=\"getUser\" returnClass=\"java.lang.String\">\n        curl -X GET https://api.example.com/users/#{id} -b @./cookies.txt\n    </curl>\n</curls>\n\n```\nXML 里支持 #{name} 占位符和 <if test=\"...\"> 条件渲染，配合 JQuickXmlFactory 生成代理客户端。注解方式用 ${name}，XML 方式用 #{name}，凭据可以从环境变量注入，不用硬编码。\n\n调试相关的几个点\n**Cookie 会话**：-c ./cookies.txt 把 Set-Cookie 按 Netscape 格式写盘，-b @./cookies.txt 下次请求自动带上，登录态可以跨调用保持。\n\n**文件上传下载**：-F 'file=@./report.pdf' 支持多部分上传，--output './download/report.pdf' 直接把响应写入磁盘。\n\n**批量执行**：JQuickCurlBatchRunner 扫描一个类里所有 @JCurlCommand 方法，按顺序跑完，返回结果列表。\n\n**拦截器与配置**：JQuickCurlConfig 是全局单例，统一管超时、连接池、重试、重定向和拦截器，加 Token、打日志这类横切逻辑不用改业务代码。\n\n**已实现的 curl 选项**：-X、-H、-d 系列、-b / -c、-F、-o、-u、-L、-x、--http2、-k、-v 等都有解析器和测试覆盖。\n\n**背景**\n项目由 Dromara 开源社区维护，已入选 Awesome Java 列表，目前 Apache License 2.0。Maven 坐标：\n\n```xml\n<dependency>\n    <groupId>io.github.paohaijiao</groupId>\n    <artifactId>jquick-curl</artifactId>\n    <version>2.5.0</version>\n</dependency>\n```\n适合需要频繁对接第三方接口、又不想为每个接口手写一套 HTTP 代码的 Java 项目。\n\n",
-    "created_at": "2026-09-17T08:40:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11771"
   }
 ]
