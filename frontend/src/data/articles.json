@@ -1,5 +1,61 @@
 [
   {
+    "id": 11884,
+    "title": "【工具自荐】SealsCrafter：把英文名刻成一枚真正的中文名字印章（篆书渲染+逐字释义，免费）",
+    "content": "【背景】给外国人起中文名，网上工具基本都只给文字音译，但大家真正想要的是那枚红色印章。SealsCrafter 把英文名单音译成真有姓有名的中文全名（比如 Jackson → 杰孙），用真正的篆书（seal script，青铜器铭文时代的古文字）渲染成实心印泥风印章 PNG，并逐字解释选字含义。\n\n网站：https://www.sealscrafter.com/\n\n效果示例（在线生成的印章图）：\n\n![Jackson 杰孙](https://www.sealscrafter.com/render?name=jackson)\n\n几点差异化：\n\n- 篆书字体而非楷体，朱文/白文、方/圆/椭圆、印泥纹理可调，导出透明 PNG 无水印\n- 免注册免费，每个名字都有逐字含义页（Google 搜 \"xxx chinese name meaning\" 能查到）\n- 自带公共 MCP server（https://www.sealscrafter.com/mcp），Claude/ChatGPT/Cursor 里可以直接让 AI 刻一枚名字印章，已收录官方 MCP Registry / Smithery / LobeHub / Glama\n- 嵌入外链友好：网站里有 Copy embed code 按钮，博客站长粘贴即用\n\n刚上线三周，欢迎拍砖。",
+    "created_at": "2026-09-23T12:59:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11884"
+  },
+  {
+    "id": 11883,
+    "title": "推荐一个本地离线待办/计划管理工具：本地工作控制台 lwc",
+    "content": "工具名：本地工作控制台 lwc\n\n链接：https://github.com/aks-666888/local-work-console\n\n一句话：无需联网、无需注册，双击单文件即用的本地待办与计划管理台，数据全留在自己电脑、不出机。\n\n为什么推荐：现在很多人想管自己的待办和计划，但又不想把数据交给云笔记。lwc 是个纯本地、零依赖、单文件 exe，打开就能用，适合注重隐私、不想折腾账号的人。免费版已公开，可作为效率类小工具推荐给读者。",
+    "created_at": "2026-09-23T12:41:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11883"
+  },
+  {
+    "id": 11882,
+    "title": "自荐：scm2cpp — 把 Scheme 翻译成可读 C++ 的编译器，附一个比 scikit-learn 快 10 倍的 lasso 包",
+    "content": "scm2cpp 是一个把 Scheme 子集翻译成人类可读 C++ 的编译器（Racket 实现，MIT 许可）。它不带运行时：整数变成 `int`，向量变成 `std::vector<double>`，类型由整程序推断（Hindley-Milner），推不出来的地方变成 C++ 模板参数。生成的代码可以直接读、直接改。\n\n它还带一个数组代数层和一个\"推导\"步骤（`--derive`）：写一个朴素的残差形式坐标下降（lasso），编译器会把循环提升成数组表达式，推导出协方差更新形式（Gram 矩阵），并把三个矩阵乘积交给 BLAS / cuBLAS。推导出来的内核和手写的内核在四种数据规模上时间完全一样。\n\n用它翻译出来的 lasso 求解器打包成了 `pip install scm2cpp-lasso`（不需要 Racket，只要 C++17 编译器；有 nvcc 就顺带编译 GPU 批处理）。在 4096 个 λ 的冷启动网格上（p=200, n=1800，交叉验证的典型形状）：sklearn 9.6 s，celer 13.5 s，skglm 14.5 s，cuML 53.6 s，scm2cpp-lasso 单核 0.91 s，GPU 0.044 s，目标函数值一致。\n\n仓库：https://github.com/niitsuma/scm2cpp （英文/日文 README，附完整基准脚本，可复现）\nPyPI：https://pypi.org/project/scm2cpp-lasso/",
+    "created_at": "2026-09-23T12:16:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11882"
+  },
+  {
+    "id": 11881,
+    "title": "【开源自荐】Video Transcript：开源的浏览器字幕编辑与视频导出工具",
+    "content": "GitHub：https://github.com/anghunk/video-transcript\n在线访问：https://video-transcript.zishu.me\n\nVideo Transcript（字幕工作室）是一款运行在浏览器中的视频字幕编辑工具，用于为本地 MP4 视频添加、调整和烧录字幕。**无需账号、无需后端、无水印。**\n\n导入视频后，你可以在时间轴上分段、编辑文字和设置样式，并实时预览字幕在画面中的最终效果。完成后直接导出带有字幕的 MP4，视频、字幕和导出过程都只在当前设备上完成，不会上传到服务器。\n\n<img width=\"3200\" height=\"2000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1068fcab-a164-4c61-b321-d575ffe76d5a\" />\n\n### 安全说明\n\n视频、字幕和导出结果始终保留在当前浏览器中，不会上传到服务器。",
+    "created_at": "2026-09-23T11:45:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11881"
+  },
+  {
+    "id": 11880,
+    "title": "【网站自荐】Matter Learn：用中文讲清楚智能家居统一协议 Matter 的学习网站",
+    "content": "网址：https://matter-learn.flyooo.uk/zh/\n\n一个免费的 Matter 协议中文学习网站，用图解和真实设备数据，讲清楚苹果、Google、亚马逊共同推动的智能家居统一标准。\n\n## 为什么做这个\n\nMatter 是智能家居的统一标准，支持它的设备可以同时接入 Apple Home、Google Home、Amazon Alexa。但它的官方规范又厚又全是英文，概念也多（Node、Endpoint、Cluster、Attribute、Command……）。我在做 Matter 相关开发时，发现团队里 App、固件、测试、产品各个角色上手都很吃力，于是把这些知识系统整理成了这个网站。\n\n## 网站内容\n\n- **概念总览**：用「智能大楼」的类比，讲清 Matter 的四层数据模型，配有协议栈、配网、Fabric 等示意图\n- **Cluster 手册**：收录全部 82 个标准 Cluster，每个都有属性、命令、枚举值说明，并附真实设备数据示例\n- **数据工具**：粘贴设备原始 JSON 自动解析成可读结构；输入 ID（如 0x0101）直接查出含义\n- **SDK 指南**：Android、iOS、Web 三个平台如何接入 Matter\n- 另有版本路线图和生态资源汇总\n\n中英双语，免费，无需登录。项目开源：https://github.com/CherryLover/matter-learn\n\n<img width=\"1366\" height=\"1108\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/db5e75de-dee3-47bf-a3d6-e594a824767c\" />\n\n<img width=\"1270\" height=\"1167\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/29a31aac-84a7-4c74-b6a0-03f7477bfdae\" />",
+    "created_at": "2026-09-23T08:22:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11880"
+  },
+  {
+    "id": 11879,
+    "title": "【开源自荐】开源自托管 AI 工作台，让同一个 Agent 同时服务 Web、微信和 QQ。支持多模型、联网搜索、文件解析与 Docker 部署；扫码绑定后可在微信/QQ 私聊或群 @ 对话",
+    "content": "PureChatNext是面向中文用户和小团队的开源自托管 AI 工作台。你可以在 Web 里配置 Agent 与模型，再把**同一个助手**接到微信和 QQ：扫码绑定后，私聊或群内 @ 即可对话\n\n与常见 ChatGPT Clone 相比，它更在意三件事：入口留在已有通讯工具、数据和 API Key 可私有部署、多模型 / 联网搜索 / 文件解析共用一套工作台。支持 Docker 一键部署，也提供在线 Demo 快速体验。\n\n文档：[next-docs.purechat.cn](https://next-docs.purechat.cn)  \n源码仓库：[github.com/Hyk260/PureChatNext](https://github.com/Hyk260/PureChatNext)  \n在线网站：[next.purechat.cn](https://next.purechat.cn/?utm_source=ruanyf_weekly&utm_medium=newsletter&utm_campaign=launch_2026q3&utm_content=project_submission)  \n备用地址：[app.purechat.cn](https://app.purechat.cn/?utm_source=ruanyf_weekly&utm_medium=newsletter&utm_campaign=launch_2026q3&utm_content=project_submission)\n\n\n### 技术架构\n\n- **前端**：Vite + React 19 + React Router SPA  \n- **服务端**：Next.js 16 BFF（API、认证、生产 SPA HTML 壳）  \n- **数据**：PostgreSQL + Drizzle ORM  \n- **AI**：Vercel AI SDK（OpenAI、DeepSeek、AI Gateway 等）  \n- **渠道**：独立 Channel Gateway，微信 iLink / QQ 扫码与 WebSocket（或 Webhook）长连接收发消息  \n- **部署**：单域名生产部署；Docker Compose 自托管；也可 Vercel + 托管数据库\n\n微信 / QQ → Gateway → Next.js BFF → PostgreSQL / LLM；Web SPA 同走 BFF。\n\n### 🎉 特性\n\n- **微信与 QQ 渠道**：扫码绑定后私聊或群 @ 助手；可指定 Agent、模型与 Provider；支持 `/agents`、`/new`、`/stop` 等指令  \n- **多模型对话**：流式输出、Tool Calling；自备 API Key，按环境变量切换 Provider  \n- **联网搜索**：SearXNG、Search1API、Google、Brave 等可聚合；网页抓取可接 Firecrawl、Jina、Tavily 等  \n- **文件处理**：PDF、DOCX、PPTX、Excel 等本地解析后参与对话  \n- **认证与账号**：邮箱登录、魔法链接、GitHub / Google / 微信 / 飞书等 OAuth；用量与免费额度账本  \n- **自托管友好**：MIT 开源；Docker 部署；密钥、文件与聊天记录可放在自己的环境\n\n### 🖼️ 截图\n\n![微信实聊](https://raw.githubusercontent.com/Hyk260/PureChatNext/main/images/wechat-chat.png)\n\n![QQ 实聊](https://raw.githubusercontent.com/Hyk260/PureChatNext/main/images/qq-chat.png)\n\n![微信渠道设置](https://raw.githubusercontent.com/Hyk260/PureChatNext/main/images/wechat-settings.png)\n\n![QQ 渠道设置](https://raw.githubusercontent.com/Hyk260/PureChatNext/main/images/qq-settings.png)\n",
+    "created_at": "2026-09-23T08:02:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11879"
+  },
+  {
+    "id": 11878,
+    "title": "【开源自荐】CLILoom：一款用于可视化编排 AI CLI 开发工作流的跨平台桌面应用。",
+    "content": "自荐一个开源桌面工具 CLILoom：\n\n**仓库：** https://github.com/laurentwu/CLILoom\n\nCLILoom 用来将 AI Agent 编排成可复用的可视化工作流。它直接运行本机真实的 CLI 和终端，可以将规划、开发、测试、Review、人工确认等步骤组合成一条自动化开发流程。\n\n主要特点：\n\n**可视化工作流：** 清晰编排命令、条件和并行任务，并可重复使用。\n**功能强大的小助手：** 告诉 AI 助手你的需求，即可轻松创建或调整专属工作流。\n**并行真实终端：** 在同一页面查看多个并行分支的实时终端输出。\n**自动化与人工协作：** 自动执行命令，需要时接收输入或进入交互式终端。\n**全程保留上下文：** 记录工作流版本、运行状态、终端会话和历史输出。\n**支持常用 AI CLI：** 通过自定义命令启动 Codex 等已安装的命令行助手。\n**跨平台、本地存储：** 支持 macOS、Windows 和 Linux，工作空间数据保存在本机。\n\n软件截图：\n\n<img width=\"2252\" height=\"1457\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ac2d6e6b-c308-465f-8366-62010fec8f34\" />\n\n项目采用 Apache-2.0 License，目前已经提供 Windows、macOS 和 Linux 安装包。",
+    "created_at": "2026-09-23T07:32:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11878"
+  },
+  {
     "id": 11877,
     "title": "【开源自荐】AirStats：低占用的 macOS 系统监控器",
     "content": "在一台 M3 Pro MacBook Pro 上进行 160 次同步采样，AirStats 空闲 CPU 为 0.046%、内存 11 MB；iStat Menus 为 0.116% 和 64 MB，Stats 为 1.931% 和 145 MB。测试方法和脚本已公开。\n它是原生 Swift macOS 菜单栏监控器，1.5 新增 24 小时历史图，可标出充电时段和峰值对应进程。安装后 8.9 MB，单进程运行，无辅助进程、启动代理或 Dock 图标。\n网站：https://airstats.app\n源码：https://github.com/byrencheema/airstats\n安装：`brew install --cask airstats`\n\n<img width=\"1520\" height=\"1864\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3c1a75d7-168e-4e23-9566-d24ba20ea52e\" />",
@@ -744,63 +800,5 @@
     "created_at": "2026-09-17T19:48:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11782"
-  },
-  {
-    "id": 11781,
-    "title": "【开源自荐】sh.cd：一行命令给服务器做体检，硬件、IP 质量、三网回程一次测完（推荐）",
-    "content": "## 项目地址\n\nhttps://github.com/CleanIP/sh.cd\nhttps://sh.cd\n\n<img width=\"1520\" height=\"1120\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/05c1242f-8656-43e6-8acb-2788ad4f515a\" />\n\n## 背景\n\n买了 VPS 之后要测的东西很零碎：硬件跑分一个脚本，IP 纯净度一个网站，三网延迟和回程线路又是另外几个脚本，跑完还得自己截图拼到一起发论坛。我想要一条命令全测完，结果能直接甩个链接出去。\n\n## 它是什么\n\n一个服务器体检脚本，只依赖 bash 和 curl，本身不装任何软件（CPU、硬盘跑分需要 sysbench 和 fio，开始前问一次）。\n\n- **硬件与性能**：虚拟化类型、CPU / 内存 / 硬盘跑分；独立服务器还能读硬盘 SMART、内存条规格与温度，可选跑 Geekbench 6\n- **IP 质量**：纯净度与风险评分、多源检测、9 项流媒体与 AI 解锁、25 端口与 12 家邮箱握手、DNS 出口\n- **网络质量**：NAT 类型（NAT1–4）、BGP、31 省三网延迟加 223 个市级节点、31 省 × 三网的回程线路识别（CN2 GIA / 9929 / CMIN2 等，含大包回程、教育网回程与 IPv6）、国内外带宽测速、六大洲 36 个国际节点延迟\n- **结果页**：每次检测生成一个 `sh.cd/results/xxx`，可以一键复制链接、导出 Markdown 贴到论坛，终端里 `curl` 同一个地址也能看\n\n<img width=\"1520\" height=\"1920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/45fb7611-fee6-4926-bf50-d506d68846b5\" />\n\n## 用法  https://sh.cd\n\n    bash <(curl -Ls https://sh.cd)\n\n不带参数进菜单：1 一键全检（约 6 分钟），2 全部检测（约 20 分钟），也可以只测硬件、IP 或网络中的某一项。\n\n<img width=\"2560\" height=\"1760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5b10d953-50c5-475f-ad3c-9fe2b3d7e936\" />\n\n## 说明\n\n- bash 3.2 及以上 + curl，Linux 与 macOS 都能跑\n- 只查发起请求的那个出口 IP，不能指定别的 IP，不读取主机名、文件或登录信息\n- MIT 开源\nhttps://sh.cd\n可以分享两个测试页看一下。\n洛杉矶全部检测：https://sh.cd/results/UqUpsnxydK\n香港 IPv6 + 市级延迟：https://sh.cd/results/eF6o1ddmxa\n基本24小时在线，有任何需求可以去提issue。基本上，很快就解决。",
-    "created_at": "2026-09-17T19:39:53Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11781"
-  },
-  {
-    "id": 11780,
-    "title": "【开源自荐】SoulCut: 一款功能全面的非线性视频编辑系统, 你最好的免费版平替.",
-    "content": "欢迎下载使用, 提出您宝贵的意见\n\n**Windows**\n\n- [SoulCut_windows_x86_64.msi](https://github.com/0xhappyboy/SoulCut/releases/latest/download/SoulCut_windows_x86_64.msi)\n- [SoulCut_windows_x86_64.exe](https://github.com/0xhappyboy/SoulCut/releases/latest/download/SoulCut_windows_x86_64.exe)\n\n**macOS**\n\n- [SoulCut_macos_x86_64.dmg](https://github.com/0xhappyboy/SoulCut/releases/latest/download/SoulCut_macos_x86_64.dmg)\n- [SoulCut_macos_aarch64.dmg](https://github.com/0xhappyboy/SoulCut/releases/latest/download/SoulCut_macos_aarch64.dmg)\n\n**Linux**\n\n- [SoulCut_linux_x86_64.AppImage](https://github.com/0xhappyboy/SoulCut/releases/latest/download/SoulCut_linux_x86_64.AppImage)\n- [SoulCut_linux_x86_64.deb](https://github.com/0xhappyboy/SoulCut/releases/latest/download/SoulCut_linux_x86_64.deb)\n- [SoulCut_linux_x86_64.rpm](https://github.com/0xhappyboy/SoulCut/releases/latest/download/SoulCut_linux_x86_64.rpm)\n\n### 多轨道编辑,多机位渲染\n\nhttps://github.com/user-attachments/assets/f7cb9dc8-9528-4a11-b910-bd9ca6c7f340\n\n### 滤镜与特效\n\nhttps://github.com/user-attachments/assets/cc9df193-5af6-4167-bc2f-69e3ec4a6735\n\n### 转场特效\n\nhttps://github.com/user-attachments/assets/6e6571d1-fdd3-465c-b7f3-5db31e72f4d2\n\n### 运镜效果\n\nhttps://github.com/user-attachments/assets/52fdca4b-77e8-4eb3-88f6-8170ad4f9674\n",
-    "created_at": "2026-09-17T18:19:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11780"
-  },
-  {
-    "id": 11779,
-    "title": "自荐：jpeg-hit —— 把 JPEG 精确压到指定 KB 的纯浏览器算法",
-    "content": "## 项目信息\n\n- 官网/仓库：https://github.com/CGIFM/jpeg-hit\n- 在线体验：https://specsave.pages.dev\n- 类别：工具 / 前端\n- 开源协议：MIT\n\n## 一句话介绍\n\n把 JPEG **精确压到指定 KB** 的纯浏览器算法：考试报名照片（国考 20KB、教资 200KB）一键达标，低分辨率照片还能自动放大重采样以精确命中目标体积，全部本地处理不上传服务器。\n\n## 补充\n\n- 双模式：`hitTarget`（不超过目标 KB 的最高画质）+ `hitExact`（误差 <5% 精确命中）\n- 零依赖单文件，可直接 import\n- 起源于一个考试报名照片工具站（规格急救站），算法部分提取开源\n\n求反馈 🙏",
-    "created_at": "2026-09-17T17:52:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11779"
-  },
-  {
-    "id": 11778,
-    "title": "【开源自荐】DatI-轻量级数据库语义网关，让用户在自己的Agent上进行数据分析",
-    "content": "项目地址：https://github.com/yimindev/dati\n\n### 1. 定位\n本应用主要面向Text2SQL问题。传统的ChatBI是一个独立应用，无法集成到用户的工作流中（例如用户查完经营数据后要生成一份PPT）；而标准数据库MCP或Skill缺少语义信息，且本地使用需要数据库连接信息，企业中由于安全管控不可行。\n\n**DatI** (**Dat**a **I**ntelligence) 是一个轻量级的数据库语义网关，用户接入数据源，配置语义信息，开启预置工具并按需增加参数化SQL工具，即可发布为Streamable Http的MCP服务，可灵活集成至用户Agent或任意MCP Host\n\n### 2. 核心特性\n- **安全**：数据库密码集中管理，并可按用户进行权限隔离；\n- **准确**：支持语义增强，让大模型生成SQL更准；复杂场景可用参数SQL自定义工具；\n- **灵活**：发布为MCP服务，任意Agent或者MCP client均可连接；\n\n### 3. 演示\n- 元数据配置与MCP配置\n\n<img width=\"1124\" height=\"573\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8b6e37a4-4b03-4681-977f-01c510ac8a01\" />\n\n<img width=\"1113\" height=\"663\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8be01192-1c25-47b0-ad72-4a16228f9160\" />\n\n- Agent中进行数据分析\n\n<img width=\"1061\" height=\"899\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/27004bf7-eee8-4c58-afc3-9690ef80ee86\" />\n",
-    "created_at": "2026-09-17T15:31:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11778"
-  },
-  {
-    "id": 11777,
-    "title": "【项目自荐】sofagent —— 开源 FDE Harness：给 AI 编程助手加审计约束层，密钥泄漏/越界改文件 commit 前拦截",
-    "content": "自荐一下我的开源项目：https://github.com/KongFangXun/sofagent\n\n（9 月 1 日曾投过一次 [issue #11453](https://github.com/ruanyf/weekly/issues/11453)，两周没有回音，项目最近发了新版，换个信息重新自荐一次，请见谅。）\n\n# sofagent 是什么\n\n开源的 FDE Harness（TypeScript / MIT）：给 AI 编程助手（Claude Code、Codex、DSH 等）加一层**审计约束层**。核心场景：AI 改了不该改的文件、commit 里带出密钥、提示注入攻击——commit 前当场拦截，全程留痕，出事一键回滚。\n\n最近刚发布 v1.4.9：24 条审计规则 + HMAC 链审计留痕 + 自动快照回滚 + 104 个 MCP tool，仓库 4800+ 测试，README 双语。已在 awesome-dsh-plugin（16k 星）、yzfly/Awesome-MCP-ZH、e2b 生态多个 awesome 清单收录，Glama 目录评分 A。\n\n# 一行命令体验\n\n```bash\nnpx -y -p @sofagent/audit sofagent-audit\n```\n\n任何 git 仓库秒级审计最近一次 commit（实测 quick 模式约 1 秒，5 万行 diff 约 6 秒），无需配置、无需联网。\n\n# 它解决什么问题\n\n现在很多人用 AI 写代码，但 AI 会「自由发挥」：改它不该碰的文件、把密钥写进代码、被提示注入带着跑。sofagent 装一个 git hook 就行，AI 每次提交都过 24 条规则，事故在 commit 前被拦住，而不是上线后才发现。\n\n适合用 AI 编程但担心失控的个人开发者和小团队。欢迎看看：https://github.com/KongFangXun/sofagent\n",
-    "created_at": "2026-09-17T13:47:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11777"
-  },
-  {
-    "id": 11776,
-    "title": "【工具自荐】MyShare：把本地网页或 HTML 文件变成临时密码分享链接",
-    "content": "项目：MyShare\n网址：https://sharemydemo.com/\n\n我是项目作者。MyShare 用浏览器把本地网页、HTTP API 或选中的 HTML 文件转成带临时密码的分享链接，适合展示 AI 网页原型、客户评审和教学演示。访客无需注册或安装扩展。\n\nHTML 文件可以直接选择，不必先启动文件服务器；文件夹根目录需有 index.html / index.htm。这里提供可下载的单文件互动样例及完整步骤：\nhttps://sharemydemo.com/examples/html-demo/\n\n免费无需注册，每次最多 60 分钟、150 MB。分享电脑、浏览器和适用的本地服务须保持在线；普通网页模式还需保留分享标签页。可选扩展支持后台分享，但不提供关机后的永久托管。\n\n主页有操作演示。欢迎试用，也感谢考虑收录。",
-    "created_at": "2026-09-17T11:19:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11776"
-  },
-  {
-    "id": 11775,
-    "title": "【网站自荐】摸鱼必备，收集奇葩网页的个人博客",
-    "content": "<img width=\"2553\" height=\"1310\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0279ff9c-6cf8-4e43-9957-71adfaf743e1\" />\n\n### **即便你也是程序员，但这些网页你肯定也没见过**\n\n- 声明：无广，无需登录关注\n\n- 最全的仿操作系统系列，从Windows1代到Windows11，不仅如此，还有Linux，DOS系统，上面这个图就是示例\n- 网页上的单机游戏，在线玩GTA，魔兽争霸，星际争霸，我的世界等多种单机游戏，摸鱼还摸不死你\n- 再来一个回忆杀，见下图\n\n<img width=\"2337\" height=\"1093\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60357ed1-3734-4456-8c6d-c66d566c234b\" />\n\n\n- 你以为看到尽头了，其实就是小高潮罢了，打开奇趣合集，你会看到：高仿抖音，王者容易复刻版，宇宙模拟器等等\n- 还有B站的小游戏直接免广告，以及文字游戏3D游戏，开源小游戏\n- 这是也是我对个人博客一次新的理解，让自己的内容更有价值\n- 地址:[直接访问](https://mx2d.cn/)",
-    "created_at": "2026-09-17T11:16:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11775"
   }
 ]
