@@ -1,5 +1,37 @@
 [
   {
+    "id": 11904,
+    "title": "【开源自荐】Gear：根据任务测评自进化的 Agent 框架",
+    "content": "大家好，自荐一个开源项目 [Gear](https://github.com/rsi-gear/gear)，希望帮助开发者提升 AI Agent 在具体任务中的表现。\n\n![Gear 自进化实验回放](https://github.com/rsi-gear/gear/blob/main/docs/guide/assets/automationbench-evolution-replay-en.png?raw=true)\n\n开发 Agent 时，经常需要反复调整提示词、工具和执行流程，再跑一遍任务，检查改动是否有效。Gear 把这个过程组织成一个由评测反馈驱动的优化循环：\n\n1. 准备一组有明确验收标准的任务，可以使用现有 benchmark，也可以定义自己的任务集。\n2. 运行 Agent，收集执行轨迹和评测结果。\n3. 由负责优化的 Agent 分析失败原因，修改授权范围内的组件。\n4. 重新评测、比较候选版本，保留表现更好的方案，继续迭代。\n\n可优化的组件包括提示词、工具实现、Skills、工作流和上下文管理。这些围绕模型的运行配置统称为 **harness**。Gear 会记录各版本的改动和评测结果，方便检查和复用；开发者也可以定制搜索算法，并根据通过率、费用或 token 消耗设置优化目标。\n\n在项目公开的 AutomationBench Marketing 实验中，GPT 5.6 Luna + DSH 在 100 个公开任务上的任务通过率从 **27% 提升到 53%**，目标完成率从 **75.37% 提升到 88.88%**。这组结果包含 harness 优化和推理档位从 medium 到 max 的变化，且任务集参与过优化；实验配置与评分口径均已公开，便于读者判断结果的适用范围。\n\nGear 通过 Refine Skill 接入 Codex、Claude Code、DSH 等 Agent 环境。负责提出改进的 Agent 与执行任务的 Agent 可以使用不同模型。当前已支持 harness 优化，模型训练仍处于实验阶段。\n\n项目采用 **MIT 协议**，提供中文文档和完整实验案例，欢迎试用、反馈和贡献。\n\n- [GitHub 源码](https://github.com/rsi-gear/gear)\n- [中文文档与快速开始](https://rsigear.xyz/docs/gear/zh)\n- [实验过程与优化算法](https://github.com/rsi-gear/gear/blob/main/docs/guide/zh-CN/example-algorithm.md)",
+    "created_at": "2026-09-24T13:36:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11904"
+  },
+  {
+    "id": 11903,
+    "title": "【开源自荐】geo-sleuth：没有文字的照片，AI 也能找出拍摄地点",
+    "content": "仓库：https://github.com/Oldcircle/geo-sleuth （MIT）\n\n![geo-sleuth](https://github.com/Oldcircle/geo-sleuth/raw/main/docs/hero.gif)\n\ngeo-sleuth 是一个 Agent Skill。把一张照片交给 Claude Code、Codex、Cursor 这类 agent，说一句「这张照片是在哪拍的」，它会给出拍摄机位、镜头朝向和一张卫星证据图。\n\n它和让大模型直接看图猜地点不一样：模型只负责读画面、提线索，搜索和排序交给二十个 Python 脚本，用 OpenStreetMap 几何、高程数据、卫星图和街景去比对。所以画面里没有招牌、车牌、地标，也能往下查。\n\nREADME 里的案例：一张抹掉 EXIF 的手机照片，稻田边一个白色烤炉，远处一条高架，右边一座山，没有一个字。\n\n- 从 OpenStreetMap 取出区域内 27,335 段铁路桥，用高程算地平线，筛到 171 处\n- 渲染 14,372 个候选机位的山脊线和照片比对，剩 3 个\n- 把照片里 17 根桥墩当尺子，最后定到广东清远的一个点，误差约 2 米，全程约 72 分钟\n\n安装：\n\n```bash\nnpx skills add Oldcircle/geo-sleuth\n```\n",
+    "created_at": "2026-09-24T13:19:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11903"
+  },
+  {
+    "id": 11902,
+    "title": "AnyFileKit：26 个文件工具，文件不上传，全部在浏览器里跑",
+    "content": "自荐一下我自己做的 AnyFileKit → https://anyfilekit.com\n\n起因是每次压张图、转个 PDF，都得先把文件传到别人服务器上，等它处理完再下回来。文件不重要的时候无所谓，是合同或者证件扫描件的时候就有点别扭。\n\n所以这个站里 26 个工具全都在浏览器里跑：压缩图片 / PDF / 视频，PDF 转 JPG 或可编辑的 Word，HEIC 转 JPG，图片转 PDF，视频转 MP3 或 GIF，Markdown 转 Word 或 PPT，合并和拆分 PDF，按工作表或按行拆分 Excel，裁剪和剪辑视频，多图拼接，还有图片转文字（六种语言）。\n\n选完文件之后是页面里的 JavaScript 直接把它读进来，没有上传这一步。这句不用信我说的，打开开发者工具切到 Network 面板，随便用一个工具，除了页面自己的代码之外不会再有任何请求。\n\n也因为没有上传，就没人替你设大小上限，能处理多大取决于你自己的电脑，2.2 GB 的视频在普通笔记本上打得开。不用注册，没有水印。\n\n有两件事得说在前面。一是三个 AI 翻译（PDF / 图片 / 视频）做不到全本地，模型太大跑不动，送出去的是提取出来的文字而不是文件本身，页面上有标注；每天 5 页免费，超了的话 9 美元买 30 天 1500 页，一次性付款不续费。二是它没做 PWA，页面本身还是要联网才打得开。\n\n几个可以直接试的：\n\n- 压缩图片 https://anyfilekit.com/compress-image/\n- PDF 转 JPG https://anyfilekit.com/pdf-to-jpg/\n- 按行拆 Excel（120 行拆成三份，每份都带表头）https://anyfilekit.com/split-excel-rows/\n",
+    "created_at": "2026-09-24T10:59:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11902"
+  },
+  {
+    "id": 11901,
+    "title": "【开源自荐】SyncClipboard CfServer：把剪贴板同步服务端跑在 Cloudflare 免费额度上",
+    "content": "仓库：https://github.com/Leexunhuan743/SyncClipboardCfServer （MIT）\n\nSyncClipboard 官方服务端的 Cloudflare Workers 复刻实现（TypeScript + D1 + R2 + Durable Objects）。官方客户端（Windows / macOS / Android，v3.1.1 及以上）零改动，把服务器地址指向部署好的 Worker 就能用：剪贴板实时同步（SignalR WebSocket 长连接）、WebDAV 兼容端点、历史记录跨设备同步。\n\n做它的原因：官方服务端要自备 VPS / Docker / 进程守护，而这个实现把服务端搬到 Cloudflare 边缘——无服务器、免运维、按量计费，个人用量基本落在免费额度内（一台客户端全天在线约 1.7 万次请求/天，免费额度 10 万次/天）。\n\n比官方多出来的：\n\n- 内置 Web 历史管理界面：浏览 / 搜索 / 筛选 / 排序历史记录，收藏、置顶、批量操作、文本与图片预览、复制下载；回收站（删除的记录连同图片/文件数据保留 30 天，可一键恢复）；在线调整保留策略，不用重新部署。\n- 部署两条路：命令行（wrangler），或 GitHub Actions（Fork 后配几个 Secret，推 master 自动建资源并部署）。\n\n与官方服务端的行为差异（先说清楚，避免踩坑）：\n\n- 单次上传默认上限 48 MiB（可调到 64 MiB），超出返回 413；\n- 文件夹 zip 解压总量 64 MiB、条目 1000、单条目 24 MiB；\n- 历史清理每 20 分钟一轮；\n- 访问不存在的地址且未带凭据时返回 401，并计入失败限速。\n\n这些限制来自 Cloudflare 免费档的约束（单请求 100 MiB、isolate 内存 128 MiB）；客户端默认单文件 20 MB，正常使用大多碰不到。\n\n工程上：协议行为逐条对照官方源码实现，并与官方发布件做过 A/B 实测；22 个测试套件；所有有意偏离都登记在 docs/protocol.md 的差异表里。\n\n独立的社区实现，与官方项目无关联、未获官方背书；协议行为与哈希算法移植自官方（MIT，版权声明已保留在 LICENSE 中）。\n",
+    "created_at": "2026-09-24T10:30:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11901"
+  },
+  {
     "id": 11900,
     "title": "【开源自荐】Layerive：把昂贵的商业生图流水线，搬进你的本地电脑",
     "content": "### 项目名称\nLayerive\n\n### 项目地址\nhttps://github.com/newljs/Layerive\n\n### 项目简介\nLayerive 是一款本地优先的 AI 图片创作与版本管理工作台，旨在**把昂贵的商业生图流水线，搬进你的本地电脑**。\n\n针对商业生图平台高昂的订阅月费，以及传统工具在微调改图时“历史记录杂乱、版本难以回溯”的痛点，Layerive 聚焦以下核心价值：\n1. **告别平台绑架**：拒绝被单一平台的昂贵月费套牢，自由接入任何低成本 API 中转站或本地模型，按量调用，几分钱跑出商业级出图效果。\n2. **改图如 Git，版本永不丢失**：自带生成版本树与前后对比，告别提示词与原图散落一地的混乱，每一次微调都清晰可追溯。\n3. **数据纯本地留存**：模型配置、创作历史与素材全部锁在本地，资产隐私零泄露，开箱即用。\n\n### 核心功能\n- **版本树与项目管理**：分支化管理每次提示词迭代、局部重绘与改动，完整保留演变上下文。\n- **变量批量改图与文生图**：支持注入变量批量出图，保证统一画风，满足系列图与电商多 SKU 生产需求。\n- **实用生产力修图套件**：内置局部重绘、参考图融合、图片改字、扩图与去水印，开箱即用，无需频繁切换进 PS。\n- **完全开源免费**：基于 MIT 协议开源。",
@@ -98,7 +130,7 @@
   {
     "id": 11888,
     "title": "【工具自荐】Orbi：给 GitHub Issue 打个标签，AI 写代码、另跑一轮评审、合并后发版",
-    "content": "Orbi 是一个自托管的 AI 编程 Agent，入口是 GitHub Issue。\n\n用法是写好一张 Issue，打上 `ai-ready` 标签。Orbi 在分支上写改动、开 PR，然后另跑一轮评审，对照 Issue 里写的验收项检查。评审通过就合并，再打 Release 标签。模型接你自己的 API，代码一直在你自己的仓库里。\n\nOrbi 自己的仓库就是这样开发的。外部项目也有一个例子：给 k8e 写 etcd 测试，第一版被维护者打回，改完才合并，合并后那张票又被提交信息自动关错了。整个过程写在这里：https://orbi.build/zh/blog/k8e-rejected-then-merged/?ref=ruanyf\n\n- 官网：https://orbi.build/zh/?ref=ruanyf\n- 源码：https://github.com/orbi-build/orbi\n- 许可证：Sustainable Use License，源码公开，自托管免费使用\n- 托管版 Orbi Cloud 收费\n",
+    "content": "Orbi 是一个自托管的 AI 编程 Agent，入口是 GitHub Issue。\n\n用法是写好一张 Issue，打上 `ai-ready` 标签。Orbi 在分支上写改动、开 PR，然后另跑一轮评审，对照 Issue 里写的验收项检查。评审通过就合并，再打 Release 标签。模型接你自己的 API，代码一直在你自己的仓库里。\n\nOrbi 自己的仓库就是这样开发的。外部项目也有一个例子：给 k8e 写 etcd 测试，第一版被维护者打回，改完才合并，合并后那张票又被提交信息自动关错了。整个过程写在这里：https://orbi.build/zh/blog/k8e-rejected-then-merged/?ref=ruanyf\n\n- 官网：https://orbi.build/zh/?ref=ruanyf\n- 源码：https://github.com/orbi-build/orbi\n- 许可证：AGPL-3.0 开源（也可选 Sustainable Use License），自托管免费使用\n- 托管版 Orbi Cloud 收费\n\n",
     "created_at": "2026-09-24T01:32:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11888"
@@ -768,37 +800,5 @@
     "created_at": "2026-09-19T05:32:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11802"
-  },
-  {
-    "id": 11801,
-    "title": "【开源自荐】agent-skills：18 个面向知识工作的 Agent Skills",
-    "content": "### 项目地址\n\nhttps://github.com/tronghieu/agent-skills （中文说明见 [README.zh.md](https://github.com/tronghieu/agent-skills/blob/main/README.zh.md)）\n\n### 介绍\n\n目前大多数 Agent Skills 是给程序员写代码用的。这个仓库里的 18 个 skill 面向做决策、做研究、写文档的人：设计思维、批判性思考、根因分析、市场调研、战略分析、数据分析、长文档精读、Diataxis 文档写作、演示文稿等。\n\n我是越南的开发者，这些 skill 最初都是为自己的工作写的，现在仍在日常使用。\n\n### 特点\n\n- 每个 skill 是一套带步骤和检查点的方法。以 design-thinking 为例：每条洞察必须能追溯到登记过的证据来源，没有来源的结论会一直标注为\"假设\"；到了用户访谈环节，agent 会停下来等你去做真实访谈，不会编造用户画像和引语。\n- deep-reader 用于精读 50 页以上的书、论文或学位论文，不需要把全文塞进上下文，并保留带页码的笔记，下次可以接着提问。\n- 遵循 agentskills.io 的 SKILL.md 规范。我自己在 Claude 和 DeepSeek 模型上实际使用过；Qwen Code、Kimi CLI、Trae 等工具也支持该规范，但我还没有逐一测试，欢迎反馈。\n- MIT 协议；仓库和每个 skill 都有中文 README。\n\n### 安装\n\n```bash\nnpx skills add tronghieu/agent-skills\n# 只装一个\nnpx skills add tronghieu/agent-skills --skill deep-reader\n```\n\n如果访问 GitHub 较慢，`skills/` 目录下每个 skill 都有对应的 zip 包，下载后解压到 `~/.claude/skills/` 或 `~/.agents/skills/` 即可。\n",
-    "created_at": "2026-09-19T04:31:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11801"
-  },
-  {
-    "id": 11800,
-    "title": "【网站自荐】梗鲸：DeepSeek 蓝色大肥鱼表情包图库，台词梗图持续更新",
-    "content": "网站：https://ai-meme.cdqyfdbymn.me/\n\n梗鲸是一个 DeepSeek 蓝色大肥鱼表情包图库：\n\n- 台词梗图持续更新，详情页可下载原图、一键复制直接去评论区斗图\n- 附角色三视图设定集与全站档案馆检索\n- 还有十几个大肥鱼主题的小游戏，看累了可以玩两把\n- 中/英/日/韩四语界面，免登录、免费\n\n如果觉得合适，欢迎收进周刊，谢谢！",
-    "created_at": "2026-09-19T04:00:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11800"
-  },
-  {
-    "id": 11799,
-    "title": "【自荐】梗鲸·DeepSeek酱语录：DeepSeek 大肥鱼表情包图库，台词梗图一键复制斗图",
-    "content": "自荐一个自制的小站（非开源，打开即用）：\n\n**梗鲸 · DeepSeek酱语录** — https://ai-meme.cdqyfdbymn.me/\n\nDeepSeek 大肥鱼表情包图库，梗图台词向：\n\n- 台词梗图按角色和情绪分类，持续更新\n- 详情页可下载原图，也可一键复制图片，直接去聊天窗口粘贴斗图\n- 附角色三视图设定集、全站档案馆检索\n- 十几个大肥鱼主题小游戏（连连看、记忆翻牌这类）\n- 中英日韩四语界面，全站免登录免费\n\n闲聊斗图缺弹药的时候挺好用。我是作者，欢迎提意见。",
-    "created_at": "2026-09-19T03:59:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11799"
-  },
-  {
-    "id": 11798,
-    "title": "【工具自荐】Musuw：从文档、网页和笔记查找有出处的答案",
-    "content": "Musuw 是一个 AI 知识库：汇集文档、网页和笔记，提问时查看来源引用，并把相关内容整理成 Wiki 页面与知识图谱。\n\n适合需要反复查资料、核对版本和出处的研究与知识工作。支持中英文，提供免费及付费套餐。\n\n- 官网：https://musuw.com/zh\n- 40 秒实际操作与示例资料：https://musuw.com/zh/guides/citation-checks\n- 源码：https://github.com/estromeglovettgen-coder/musuw\n\n![Musuw 引用核查示例](https://musuw.com/images/guides/cedar-cited-answer.jpg)\n\n产品方自荐，由 Codex 协助整理。项目基于 WeKnora 移植和迭代，保留上游归属。演示采用自有虚构资料，展示来源核查方法，不代表准确率保证。\n",
-    "created_at": "2026-09-19T02:25:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11798"
   }
 ]
