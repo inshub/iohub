@@ -1,5 +1,21 @@
 [
   {
+    "id": 11906,
+    "title": "【自荐】Z Shelter：末日居家求生原型，附公开事件配置与剧情关系图工具",
+    "content": "分享一下我做的 **Z Shelter**：一款围绕末日前备货、灾后守家和选择后果展开的单人生存管理原型。目前有免费的 macOS 试玩，支持中文和英文。\n\n![夜间实机：僵尸经过门前，街灯闪烁](https://raw.githubusercontent.com/AmethystineAlpaca/z-shelter-public/main/assets/night-walker-lights.gif)\n\n灾变前只有 **100 元预算**，要在食物、饮水、工具和建材之间取舍。之后围绕同一栋房子安排每天：修补门窗、外出搜刮，并决定如何回应来访者。有些选择会在后面的日子里带来新事件。\n\n现在的瓶颈也很明确：还能继续加物品和事件，但我没有想清楚什么会让玩家真正想“再活一天”。所以先公开现阶段的试玩和配置，想听听哪些部分值得继续做，哪里开始无聊。\n\n**比较适合开发者研究的部分：**公开仓库有基础包的 **40 个事件、96 个选择**，以及物品、商城和平衡配置。我还做了一个独立工具 **Event Graph Reviewer**，可以把事件、选项与 AND / OR 前置条件展开成关系图，搜索并查看节点详情。\n\n![Event Graph Reviewer 五事件示例](https://raw.githubusercontent.com/AmethystineAlpaca/event-graph-reviewer/main/docs/assets/demo.gif)\n\n上图是工具自带的五事件示例。工具在本地运行，只读查看关系，不模拟游戏或热修改已安装的游戏。\n\n- **[游戏介绍与免费试玩（itch.io）](https://alpacewhite.itch.io/z-shelter)**\n- **[公开配置、更多实机图与备用下载](https://github.com/AmethystineAlpaca/z-shelter-public)**\n- **[Event Graph Reviewer](https://github.com/AmethystineAlpaca/event-graph-reviewer)** · [加载游戏配置的方法](https://github.com/AmethystineAlpaca/z-shelter-public/blob/main/CONFIG.zh-CN.md)\n\n目前仅提供 macOS 安装包，含 Apple Silicon 和 Intel 可执行文件，在 Apple Silicon 上完成启动验证。无需安装 Godot；尚未经过 Apple 公证，首次打开请参考随包说明。游戏实现源码仍保持私有，公开配置不等于开源授权。部分视觉素材、代码和文字使用了生成式 AI 辅助，详见 itch.io 页面披露。\n\n这是早期原型，后续暂无固定更新计划。欢迎试玩，也欢迎从事件设计、准备策略或长期目标的角度提建议。",
+    "created_at": "2026-09-24T16:21:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11906"
+  },
+  {
+    "id": 11905,
+    "title": "【工具自荐】ToolMelo：免注册的在线文件工具，PDF 和图片在浏览器本地处理",
+    "content": "我做了一个免费、免注册、无广告的在线工具站 **ToolMelo**。\n\n网址：https://toolmelo.com\n\n主要解决几种日常的小麻烦：\n\n- **报名照片有尺寸和体积限制**：可以设置像素、目标 KB 和输出格式，下载前查看结果是否达标。\n- **临时处理 PDF**：支持合并、拆分、提取页面和转图片。\n- **Markdown 文章要换地方用**：排版预览后，可以导出 Word、HTML 或图片。\n\n文件处理类工具在浏览器本地运行，不需要把文件上传到服务器，支持中文、英文和日文界面。\n\n也说明一下边界：站内的「网页图片抓取」需要服务端联网；「决策工具」会把输入经服务端发送给 Jev。这两类与本地文件工具不同。\n\n欢迎试用，也欢迎直接反馈转换结果、兼容性和操作上的问题。",
+    "created_at": "2026-09-24T15:11:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11905"
+  },
+  {
     "id": 11904,
     "title": "【开源自荐】Gear：根据任务测评自进化的 Agent 框架",
     "content": "大家好，自荐一个开源项目 [Gear](https://github.com/rsi-gear/gear)，希望帮助开发者提升 AI Agent 在具体任务中的表现。\n\n![Gear 自进化实验回放](https://github.com/rsi-gear/gear/blob/main/docs/guide/assets/automationbench-evolution-replay-en.png?raw=true)\n\n开发 Agent 时，经常需要反复调整提示词、工具和执行流程，再跑一遍任务，检查改动是否有效。Gear 把这个过程组织成一个由评测反馈驱动的优化循环：\n\n1. 准备一组有明确验收标准的任务，可以使用现有 benchmark，也可以定义自己的任务集。\n2. 运行 Agent，收集执行轨迹和评测结果。\n3. 由负责优化的 Agent 分析失败原因，修改授权范围内的组件。\n4. 重新评测、比较候选版本，保留表现更好的方案，继续迭代。\n\n可优化的组件包括提示词、工具实现、Skills、工作流和上下文管理。这些围绕模型的运行配置统称为 **harness**。Gear 会记录各版本的改动和评测结果，方便检查和复用；开发者也可以定制搜索算法，并根据通过率、费用或 token 消耗设置优化目标。\n\n在项目公开的 AutomationBench Marketing 实验中，GPT 5.6 Luna + DSH 在 100 个公开任务上的任务通过率从 **27% 提升到 53%**，目标完成率从 **75.37% 提升到 88.88%**。这组结果包含 harness 优化和推理档位从 medium 到 max 的变化，且任务集参与过优化；实验配置与评分口径均已公开，便于读者判断结果的适用范围。\n\nGear 通过 Refine Skill 接入 Codex、Claude Code、DSH 等 Agent 环境。负责提出改进的 Agent 与执行任务的 Agent 可以使用不同模型。当前已支持 harness 优化，模型训练仍处于实验阶段。\n\n项目采用 **MIT 协议**，提供中文文档和完整实验案例，欢迎试用、反馈和贡献。\n\n- [GitHub 源码](https://github.com/rsi-gear/gear)\n- [中文文档与快速开始](https://rsigear.xyz/docs/gear/zh)\n- [实验过程与优化算法](https://github.com/rsi-gear/gear/blob/main/docs/guide/zh-CN/example-algorithm.md)",
@@ -784,21 +800,5 @@
     "created_at": "2026-09-19T08:20:23Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11804"
-  },
-  {
-    "id": 11803,
-    "title": "【工具自荐】一个b站视频生成思维导图的浏览器插件工具，支持充电视频字幕获取，没有收费入口，功能全免费",
-    "content": "\ngoogle: https://chromewebstore.google.com/detail/bilibili-ai/jcklggahkmngcnfakpmadejmajobjjeg\n\nedge: https://microsoftedge.microsoft.com/addons/detail/bilibili-ai/bnnpogkllfldcaajndmebobacogcmfdm\n\n<img width=\"892\" height=\"781\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9e20d4ee-20a9-407c-884d-ddfbfbdc59ce\" />\n\n<img width=\"885\" height=\"843\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/796abaa6-2c76-4c04-b553-75ab980ea8a9\" />\n\n<img width=\"907\" height=\"848\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3396b4d6-a7b8-42b1-8389-346f75c2565c\" />\n\n\n<img width=\"902\" height=\"830\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4485624b-60a9-4250-8eed-cb40f841b885\" />\n\n<img width=\"4032\" height=\"4848\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e0cb11f7-b8c0-4bd5-be50-d91262b0acb8\" />\n\n<img width=\"3156\" height=\"3036\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9a37b129-ea9e-4951-9d5f-751c1e8634f7\" />\n\n<img width=\"4416\" height=\"4848\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f6558573-322a-4908-a110-b0c4be48ea8f\" />\n\n\n\n",
-    "created_at": "2026-09-19T07:53:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11803"
-  },
-  {
-    "id": 11802,
-    "title": "[开源自荐] Python 图像处理库：一行参数驱动处理流水线 — 缩放/裁剪/水印/拼接/格式转换，开箱即用",
-    "content": "## 简介\n\n参数驱动的 Python 图像处理库，字符串或 JSON 定义处理流水线，支持缩放、裁剪、圆角、模糊、旋转、透明度、灰度、水印、图像合并九类操作，附带 CLI 工具\n\n- **仓库地址**：[https://github.com/skylerhu/py-img-processor](https://github.com/skylerhu/py-img-processor)\n- **在线文档**：[https://py-img-processor.readthedocs.io/](https://py-img-processor.readthedocs.io/)\n- **PyPI**：[https://pypi.org/project/py-img-processor/](https://pypi.org/project/py-img-processor/)\n\n## 项目描述\n\npy-img-processor 是一个基于 Pillow 的参数配置化图像处理库，面向后端服务和自动化脚本。通过字符串或 JSON 描述处理步骤（缩放、裁剪、圆角、水印、拼接、格式转换等），即可完成完整的图像处理流水线。同时提供 Python API 和 `img-processor` CLI 命令行工具，支持批量处理。类似于阿里云 OSS 图像处理的参数风格，但完全开源、可本地部署、无需依赖云服务。\n\n## 亮点\n\n1. **声明式参数驱动**：不需要写任何 Pillow 处理代码，一行字符串 `resize,s_200/crop,w_200,h_200,g_center/watermark,text_SGVsbG8,size_20/format,png` 即可完成缩放→裁剪→水印→格式转换的完整流水线。同时支持 JSON 格式，JSON 模式下文字水印无需 Base64 编码，可读性更强。\n\n2. **功能覆盖全面**：9 种操作类型（缩放/裁剪/圆角/模糊/旋转/透明度/灰度/水印/合并），5 种缩放模式（等比/填充/裁切/固定/延伸），九宫格定位系统，文字+图片双水印，支持平铺、旋转、透明度等精细控制。\n\n3. **生产级可用**：已在百万日活的产品中稳定运行，不考虑 CDN 缓存，图片真实处理 QPS 100+。完善的安全限制（文件大小/像素上限/路径白名单/域名白名单），兼容 Django 配置体系，可直接集成到现有后端服务。\n\n4. **开箱即用的 CLI**：`pip install` 后即可使用 `img-processor` 命令行工具，支持目录批量处理和多规格输出，运维脚本和自动化流水线可直接调用。\n\n## 示例代码\n\n安装：\n\n```bash\npip install py-img-processor\n```\n\n使用：\n\n```python\nfrom imgprocessor.processor import process_image\n\n# 一行字符串：缩放 → 居中裁剪 → 文字水印 → 圆角 → 转 PNG\nprocess_image(\n    \"photo.jpg\",\n    \"resize,s_200/crop,w_200,h_200,g_center/watermark,text_SGVsbG8,color_FFF,size_20/circle,r_10/format,png\",\n    out_path=\"output.png\",\n)\n\n# JSON 格式（等效写法，text 无需 Base64 编码）\nprocess_image(\n    \"photo.jpg\",\n    {\n        \"actions\": [\n            {\"key\": \"resize\", \"s\": 200},\n            {\"key\": \"crop\", \"w\": 200, \"h\": 200, \"g\": \"center\"},\n            {\"key\": \"watermark\", \"text\": \"Hello 世界\", \"color\": \"FFF\", \"size\": 20},\n            {\"key\": \"circle\", \"r\": 10},\n        ],\n        \"format\": \"png\",\n    },\n    out_path=\"output.png\",\n)\n```\n\n命令行批量处理：\n\n```bash\nimg-processor \\\n  -P ./photos/ \\\n  --action \"resize,s_800/format,webp\" \"resize,s_400/format,png\" \\\n  -O ./output/ --overwrite\n```\n\n## 其他\n\n**项目类型**：偏业务型的技术工具库。解决后端服务中图片处理参数化配置的通用需求，类似阿里云 OSS 图片处理的开源替代方案。在同类 Python 图像处理库中，以\"声明式参数驱动\"为核心差异点——开发者无需学习 Pillow API，只需拼接参数字符串即可完成复杂处理链路。\n\n**生产环境验证**：已在百万日活产品中长期稳定使用，图片真实处理 QPS 100+（不计 CDN 缓存），经过持续迭代和 Bug 修复，覆盖各种边界场景（EXIF 方向修正、多格式兼容、大图限制等）。\n\n**适用人群**：\n- **后端开发者**：需要在服务端做图片处理（缩略图、水印、格式转换）但不想重复封装 Pillow 代码；\n- **运维/自动化**：需要批量处理图片的脚本场景，CLI 工具开箱即用；\n- **初学者**：可以学习参数解析、Pillow 图像处理、CLI 工具封装、配置管理等 Python 工程化实践。\n",
-    "created_at": "2026-09-19T05:32:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11802"
   }
 ]
