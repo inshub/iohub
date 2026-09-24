@@ -1,5 +1,69 @@
 [
   {
+    "id": 11900,
+    "title": "【开源自荐】Layerive：把昂贵的商业生图流水线，搬进你的本地电脑",
+    "content": "### 项目名称\nLayerive\n\n### 项目地址\nhttps://github.com/newljs/Layerive\n\n### 项目简介\nLayerive 是一款本地优先的 AI 图片创作与版本管理工作台，旨在**把昂贵的商业生图流水线，搬进你的本地电脑**。\n\n针对商业生图平台高昂的订阅月费，以及传统工具在微调改图时“历史记录杂乱、版本难以回溯”的痛点，Layerive 聚焦以下核心价值：\n1. **告别平台绑架**：拒绝被单一平台的昂贵月费套牢，自由接入任何低成本 API 中转站或本地模型，按量调用，几分钱跑出商业级出图效果。\n2. **改图如 Git，版本永不丢失**：自带生成版本树与前后对比，告别提示词与原图散落一地的混乱，每一次微调都清晰可追溯。\n3. **数据纯本地留存**：模型配置、创作历史与素材全部锁在本地，资产隐私零泄露，开箱即用。\n\n### 核心功能\n- **版本树与项目管理**：分支化管理每次提示词迭代、局部重绘与改动，完整保留演变上下文。\n- **变量批量改图与文生图**：支持注入变量批量出图，保证统一画风，满足系列图与电商多 SKU 生产需求。\n- **实用生产力修图套件**：内置局部重绘、参考图融合、图片改字、扩图与去水印，开箱即用，无需频繁切换进 PS。\n- **完全开源免费**：基于 MIT 协议开源。",
+    "created_at": "2026-09-24T07:41:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11900"
+  },
+  {
+    "id": 11899,
+    "title": "【软件自荐】MyShell：Mac 上免费的终端和 SSH 客户端，支持 JumpServer 堡垒机，AI 助手可复用已登录的连接",
+    "content": "官网：https://myshell.flyooo.uk/\n\n一个免费的 Mac 终端和 SSH 客户端，登录一次一直在线，能直接登录 JumpServer 堡垒机同步机器，还能让 Claude Code 等 AI 助手复用已连好的服务器执行命令，不用交出密码。\n\n<img width=\"1229\" height=\"844\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7ea6d69e-00ce-4645-b6a9-7e104260df33\" />\n\n为什么做这个\n\n我日常要同时连很多台服务器，其中不少在公司的 JumpServer 堡垒机后面。以前每次都要去网页上复制一次性登录信息，再粘到终端里；标签一多，也很难找到要找的那台机器。市面上的 SSH 客户端要么不支持 JumpServer，要么要订阅收费，于是自己做了一个。\n\n主要功能\n\n登录一次，一直在线：同一台机器开再多标签、文件面板，只需登录一次；会话断了在原标签里重连，之前的输出还在\nJumpServer 堡垒机：填一次账号（支持二步验证），分给你的机器自动同步进来，点开就能连\n跳板机：内网机器经跳板机连接，选一下就行，不用写 SSH 配置文件\n竖排标签 + 快速切换：⌘J 呼出面板，输入名称或 IP 直达\n实时负载：所有机器的延迟、负载、CPU、内存、磁盘一屏看完\nSFTP 文件面板、凭据统一管理、常用命令片段、配置备份（本地 / WebDAV）\n本机接口（默认关闭）：本机脚本和 Claude Code、Codex 等 AI 助手，可以在已连好的服务器上执行命令、上传文件，密码和密钥始终留在 MyShell 里\n\n<img width=\"1224\" height=\"729\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3b71a490-e50a-4b32-b5f9-91eda1c4ae26\" />\n\n<img width=\"1093\" height=\"806\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/70789bda-f7d2-4bf6-8f42-70f45a6673c6\" />\n\n其他\n\n免费，无需注册，没有订阅和付费功能（目前不开源）\n支持 macOS 12 及以上，Apple 芯片和 Intel 芯片都有安装包，已签名并经过 Apple 公证，下载后双击即可打开\n密码和密钥只存在本机（默认存在 macOS 钥匙串），应用本身不上传数据\n\n使用教程：https://myshell.flyooo.uk/guide",
+    "created_at": "2026-09-24T07:39:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11899"
+  },
+  {
+    "id": 11898,
+    "title": "【开源自荐】agent-limit-retry：让 Claude Code 扛过额度限制，撞限额前先写交接文件，重置后自动续跑",
+    "content": "仓库：https://github.com/error0702/agent-limit-retry （MIT）\n主页：https://retry.autorun.fun\n\n## 它解决什么\n\n用 Claude Code 的 Pro/Max 订阅跑长任务时，5 小时或每周额度一到，正在跑的子 Agent 会一起失败；额度重置后主 Agent 通常把同样的任务**从头重新派发**，之前做的一半活作废，额度再花一次。我翻了自己 6 个会话的记录：449 个子 Agent 被限额打断，只有 8 个被按 ID 叫醒（而且都是在重置前叫的，所以又失败一次），438 个重做。\n\n其实 Claude Code 已经把需要的信息写在本机了：transcript 里有精确的重置时间（`quotaLimits.resetsAt`），状态栏会收到 5 小时/7 天的用量百分比，每个子 Agent 的记录里有它的任务、改过的文件和最后几步。agent-limit-retry 只是把这些读出来，在正确的时刻告诉 Agent 该做什么。\n\n## 它做什么\n\n- `npx agent-limit-retry` 一条命令安装：装 Claude Code 插件，接上状态栏（已有状态栏会保留并透传）\n- 额度用到 90% 时，让 Agent 做完当前一步先写 `HANDOFF.md`（目标、已完成、进行中、下一步、坑），每个窗口只提醒一次\n- 撞限额时记下精确的重置时间，发桌面通知\n- `alr run \"<任务>\"`：无人值守跑 `claude -p`，撞限额后睡到重置时间，用 `--resume` 续跑同一个会话，周限额同样处理\n- `alr selftest`：本地假接口模拟一次撞限额 + 自动续跑，不花额度\n- `alr status`：看两个窗口的用量和重置时间\n\n全部在本机运行：不走代理、不需要账号、不联网、不轮换账号，只帮你把已经付费的套餐用干净。子 Agent 按原 ID 续跑那部分（Claude Code / Codex / ZCode 都支持）是付费的 Pro 版，基础功能开源 MIT。\n\nNode.js 18+，Claude Code 2.1.234+。英文界面，中文 locale 下自动显示中文。\n",
+    "created_at": "2026-09-24T07:31:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11898"
+  },
+  {
+    "id": 11897,
+    "title": "【开源自荐】skillsgist：部署在自己 Cloudflare 账号上的私有 Agent Skills 仓库，用官方 npx skills 一条命令安装",
+    "content": "仓库：https://github.com/Qsnh/skillsgist （MIT）\n\nskillsgist 是一个私有的 Agent Skills 仓库，部署在你自己的 Cloudflare 账号上。技能在网页上上传和管理，团队成员用官方的 `npx skills add` 一条命令，就能把技能装进 Claude Code、Cursor、Codex 等 Agent。\n\n做它的原因：团队内部沉淀的技能，比如代码评审清单、发版流程、内部规范，往往不适合发到公开的技能仓库，但大家又希望像安装公开技能一样一条命令装好。skillsgist 直接实现了 skills.sh 的发现协议（`/.well-known/agent-skills/index.json`），所以不需要自定义 CLI、插件或 fork。\n\n几个可能有用的细节：\n\n- 默认私有，每个技能单独决定要不要公开；公开的技能不需要密钥就能安装\n- 私有安装用个人的 install key，这个 key 只能安装，不能登录、发布或删除，可以一键轮换\n- 可以上传 .zip、.tar.gz 或单个 SKILL.md，也可以直接在网页上改 SKILL.md\n- 版本不可变、按数字递增，旧版本都能查看和下载；制品按内容摘要寻址，CLI 下载时会校验\n- 有幂等的发布 API，可以在 CI 里每次 push 都自动发布\n- 整个服务就是一个 Worker、一个 D1 数据库和一个 R2 存储桶，默认限制在 Workers 免费套餐以内\n- README 里有 Deploy to Cloudflare 按钮，可以一键部署；也可以用 Wrangler 手动部署\n\n安装命令长这样：\n\n```bash\nnpx skills add https://<你的域名>/i/<install_key>\n```\n\n截图：\n\n![skillsgist 首页：带 install key 的安装命令和技能列表](https://raw.githubusercontent.com/Qsnh/skillsgist/main/docs/images/home.png)\n\n![技能详情页：单个技能的安装命令、渲染后的 SKILL.md、文件列表和版本历史](https://raw.githubusercontent.com/Qsnh/skillsgist/main/docs/images/skill.png)\n\n一句话简介（供周刊参考）：一个自托管的私有 Agent Skills 仓库，部署在 Cloudflare 上，在网页上管理技能，用官方的 `npx skills add` 命令安装。\n\n欢迎试用和提 issue。\n",
+    "created_at": "2026-09-24T04:58:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11897"
+  },
+  {
+    "id": 11896,
+    "title": "【开源自荐】简历通 ResumeForge：本地优先的 AI 简历工作台，用事实台账拦住 AI 编造的经历",
+    "content": "**项目地址**：https://github.com/magicapple123/ResumeForge\n**在线体验（只读演示，免安装）**：https://magicapple123.github.io/ResumeForge-official/demo.html\n\n## 它是什么\n\n本地优先的 AI 求职工作台。不注册、不登录，简历和资料只存在本机的一个 SQLite 文件里，随时可以拷走。一条链路覆盖：岗位采集 → 匹配度分析 → 生成简历 → 导出 → 投递跟进 → 模拟面试 → 复盘统计。\n\n## 为什么值得看一眼\n\nAI 简历工具最大的问题不是排版，是它会替你编。这个项目把「事实」从「表述」里拆出来单独管：生成结果里的学校 / 公司 / 项目名会和自己的资料库逐条比对，不一致就给**防虚构警告**；正文还留着【待补】标记时导出会被拦下并指出具体位置。比如「400 人、7.2%、6.1%、1.1 个」这种资料里根本没写过的量化成果，会被点名要求人工核对——模型编出来的东西不会悄悄留在简历里。\n\n另一个刻意不做的设计：匹配度**不给百分比评分**，只给五类结论（已匹配 / 表达缺口 / 证据不足 / 真实缺口 / 待确认）。理由是分数会让人误以为它能决定投递结果，而它不能。\n\n## 技术信息\n\n- FastAPI + React + SQLite 单机运行，MIT 协议，**没有会员、没有付费墙、没有导出次数限制**\n- 断网可用：解析、检查、预览、全部导出都离线；不配模型也能用大部分功能\n- 有 CI、2,700+ 个测试用例、数据库迁移链与升级方案\n- 不保存招聘网站密码 / Cookie / 令牌；投递台是唯一会主动访问外部站点的链路，必须由用户显式配置 + 显式点击才开始，不做无人值守运行\n\nWindows 双击 `start.cmd`，第一次会自动装好环境。中文界面，中文文档。\n",
+    "created_at": "2026-09-24T04:38:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11896"
+  },
+  {
+    "id": 11895,
+    "title": "【开源自荐】OpenSubs：在浏览器里给视频加字幕，视频不上传",
+    "content": "官网：https://opensubs.app\n仓库：https://github.com/open-subs/opensubs （AGPL-3.0）\n\nOpenSubs 用来给视频加字幕：识别语音、翻译、调样式、烧进画面，整个过程在你自己的机器上完成，视频文件不会上传到任何服务器。\n\n打开网页就能用，不用注册、不用装东西，也没有水印和时长限制。语音识别用的是 Whisper，编译成 WebAssembly 在浏览器里跑，支持 WebGPU 加速；除网页版外还有浏览器扩展、桌面版和命令行三种用法。\n\n几个可能有用的细节：\n\n- 字幕可以导出 SRT / VTT / ASS，也可以直接烧录成 MP4\n- 支持翻译，并且可以保留原文做成双语字幕\n- 有逐词高亮的样式，适合做短视频\n- 已有的字幕文件可以直接导入来调样式或烧录，不必重新识别\n- 界面有中文\n\n如果不想在本地跑模型，也可以填自己的 API key 走云端识别，这种情况下音频会发给对应的模型服务商，这一点在界面上有说明。\n\n做了几个月，欢迎试用和提 issue。",
+    "created_at": "2026-09-24T03:53:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11895"
+  },
+  {
+    "id": 11894,
+    "title": "Peekd: 轻量级 Web 文件服务器，用于快速浏览和共享本地文件",
+    "content": "![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/banner.svg)\n\n- 项目主页： https://jiacai2050.github.io/peekd/\n\n- 丰富的格式预览：Markdown 、HTML 、XML 、代码、文本、CSV 、TSV 、图像、音频、视频、PDF 和标准库存档列表 (ZIP 、TAR 和 TAR.GZ) 。\n\n- 支持 HTTP 范围，支持 sendfile 优化\n\n- 具有自动深色模式的轻量级单二进制\n\n## 截图\n\n### 文件夹\n![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/dir.webp)\n\n### Markdown\n![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/markdown.webp)\n\n### CSV\n![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/csv.webp)\n\n### Zip 压缩文件\n![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/zip.webp)",
+    "created_at": "2026-09-24T03:39:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11894"
+  },
+  {
+    "id": 11893,
+    "title": "【开源自荐】一个 Jev Figma 插件：语义判断交给 Jev，代码负责执行",
+    "content": "一个 Jev Figma 插件：你说「在这里加一个圆」，它就在画布上画出来。\n\n语义判断交给 TypeSafe 的 Jev：它不生成文字，一句话被拆成几道选择题并行问它——做什么、什么形状、放哪里；代码拿到答案后校验，再调用 Figma API 执行。置信度不够就复问，仍不明确就不执行；「这里」的坐标来自你拖到画布上的定位点，不由模型猜。\n\n- 源码：https://github.com/voidning/jev-figma-design-plugin\n- 现状：离线与模拟宿主测试已通过；真实 Jev 请求 + 真实 Figma 写入还没做端到端验收，README 里已写明\n\n<img width=\"1520\" height=\"608\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7e66d5f3-f259-4d76-9b09-24f30d6a63d7\" />",
+    "created_at": "2026-09-24T03:31:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11893"
+  },
+  {
     "id": 11892,
     "title": "【开源自荐】AgentCliKit：面向 AI Agent 的企业级原生 CLI 开发 Java SDK",
     "content": "### 项目名称\n**AgentCliKit** (https://github.com/redSun64/cliflow)\n\n### 一句话简介\n面向业务团队的企业级 Java SDK，用于将复杂的后端 API 封装为可直接交付给 **AI Agent** 和人类工程师使用的**高安全、原生命令行工具与 Skill 技能包**。\n\n### 解决什么痛点？\n让 AI Agent 接管企业运维和业务任务时，直接裸调 REST API 极易引发**幻觉误写、Token 上下文浪费、密钥明文泄露、跨平台环境依赖重**等问题。\nAgentCliKit 核心哲学：**业务定义语义，SDK 负责标准与安全**。\n\n### 核心特性亮点\n1. 🤖 **Agent-First**：渐进式 `schema` 发现机制（极大降低 LLM Token 消耗）、`@AgentCommand` 语义提示、一键安装 Agent Skill 目录。\n2. 🛡️ **默认安全与人机协作**：显式风险声明（`@CliRisk`）、计划预演（`--dry-run`）、写操作显式确认守卫（`--yes`）、敏感参数自动掩码。\n3. ⚡ **零环境依赖原生打包**：基于 JDK 21 `jpackage` 自动构建 Windows `.exe` 与 macOS `.app` 原生归档包，使用者与 Agent 无需安装 JDK/Maven。\n4. 🔒 **操作系统级凭据安全**：内置对接 Windows 凭据管理器与 macOS Keychain，隔离密钥明文。\n5. 🧩 **类型化 HTTP 与零样板代码**：声明式强类型 API 封装，编译期注解处理器自动生成 SPI 注册与命令树。\n\n```powershell\n# 渐进式发现 -> 预演计划 -> 确认执行\nemployee schema employee +onboard\nemployee employee +onboard --name \"张三\" --role developer --dry-r",
@@ -736,69 +800,5 @@
     "created_at": "2026-09-19T02:25:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11798"
-  },
-  {
-    "id": 11797,
-    "title": "【工具自荐】Markovo：把 PDF/Office 文档和授权网页转成干净 Markdown（Web/API/CLI/MCP）",
-    "content": "## 项目地址\n\nhttps://markovo.net （CLI / MCP 客户端仓库：https://github.com/fisher-byte/markovo）\n\n## 简介\n\nMarkovo 是一个文档转 Markdown 的转换工具：把 PDF、DOCX、PPTX、XLSX 以及获得授权的公开网页（Google Docs、Notion、GitHub、Hacker News、YouTube）转换成干净、结构化的 Markdown，供 AI agent 直接作为上下文使用。提供 Web、API、CLI 和 MCP 四种入口。\n\n## 解决的问题\n\n给 agent / RAG 喂文档时，PDF、PPT、表格这类格式直接塞给模型效果很差，需要先转成结构化的 Markdown。已有的开源方案（MinerU、Docling 等）要自己部署、吃机器资源；Markovo 把这个步骤做成一个托管服务 + 本地客户端，四种入口任选：\n\n- **Web**：单文件即转即得\n- **API**：服务端批量工作流\n- **CLI**：`uvx --from markovo markovo`，本地脚本自动化\n- **MCP**：远程 Streamable HTTP 端点（`https://markovo.net/mcp`，OAuth 2.1）或本地 stdio server，agent 工作流里直接调用\n\n## 主要功能\n\n- 支持 PDF / DOCX / PPTX / XLSX 和授权公开网页输入，输出保留标题、表格结构的 Markdown\n- 远程 MCP 走 OAuth 2.1 授权流程，不需要把 API key 贴进配置文件\n- 本地 stdio MCP 的文件工具被沙箱限制在 `MARKOVO_MCP_ROOT` 指定目录内，找不到目录时文件工具整体关闭\n- 每次转换都要求调用方给出明确的 Credit 上限，先估算、再执行，超限不执行；服务不会自动扣费或重试\n- 音频、YouTube 视频走转写路线，按解码分钟计价\n\n## 适用人群\n\n- 需要给 AI agent / RAG 管线准备结构化文档上下文的开发者\n- 想把 PDF、Office 文档批量转成 Markdown 的内容工作者\n- 在 MCP 生态里找文档处理工具的用户\n\n## 说明\n\n免费套餐每月赠送 Credits，Web / API / CLI / MCP 四个入口都能用。\n\n",
-    "created_at": "2026-09-18T22:58:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11797"
-  },
-  {
-    "id": 11796,
-    "title": "【工具自荐】CaptionWise-你的多语言 AI 语言助手，不只是翻译。",
-    "content": "官网：https://captionwise.cc\n\nCaptionWise 将实时语音翻译、双语字幕与 AI 辅助解答融入日常学习和工作。无论是留学生海外上课、观看外语视频、参加外语面试，还是参加跨语言会议，你都可以一边跟随原文与译文理解内容，一边借助 AI 梳理重点、解释疑问，让语言不再打断思路。\n\n# 多语言实时翻译，跟上每一句表达\n将正在听到的语音实时转换为原文与译文字幕，支持中文、英语、日语、德语、法语、俄语、西班牙语和葡萄牙语等多种语言。你可以自动识别来源语言，也可以手动指定语言并选择翻译目标，在对照阅读中理解内容、熟悉表达，更从容地跟上讲解与交流。\n\n# 麦克风与电脑声音，按场景自由选择\n听网课、看视频或参加线上会议时，选择电脑系统声音进行识别与翻译；需要识别身边的讲话时，切换至麦克风输入。让不同来源的语音，都能成为清晰可读的字幕。\n# 桌面悬浮字幕，专注眼前的内容\n将字幕悬浮在正在使用的窗口上方，观看课程、演示或视频时，无需频繁切换界面。支持双语、仅译文和仅原文显示，并可调整字幕字号、窗口位置与透明度，让字幕适应你的阅读习惯。\n# AI 随内容辅助理解，有疑问随时提问\n开启 AI 助手并授权选择课程或演示窗口后，CaptionWise 会结合窗口画面与实时字幕，在内容发生有意义的变化时自动提供解释，帮助你理解概念、梳理知识点。遇到难懂的内容，也可以主动请求解释或直接提问，在当前学习语境中继续深入理解。\n# 录音与字幕回顾，让重点可以重听\n会话结束后，可以在历史记录中查看双语字幕，并播放保存在本地的录音。回放时同步高亮对应字幕，方便重听没有听清的表达、复习课程难点，或回顾交流中的重要信息。\n\n从当下的实时理解，到结束后的回顾复习，CaptionWise 陪你更轻松地获取信息、更深入地理解内容。",
-    "created_at": "2026-09-18T14:24:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11796"
-  },
-  {
-    "id": 11795,
-    "title": "【工具推荐】Agents Anywhere：从手机访问工作设备上的 AI Agent",
-    "content": "# 【工具推荐】Agents Anywhere：从手机访问工作设备上的 AI Agent\n\n[Agents Anywhere](https://github.com/anywhere-labs/Agents-Anywhere) 是一个 MIT 开源的跨设备 Agent 工作台，支持 Codex、Claude Code 和 DeepSeek Harness。\n\n![alt text](https://raw.githubusercontent.com/anywhere-labs/Agents-Anywhere/b466e9da9bc1fabef4a506819fc2918a6b4986ec/docs/publications/weekly-11795/image.png)\n\n它让用户从桌面、手机、平板或浏览器，访问工作设备上的项目和会话，查看执行进度、回复审批与输入请求，并使用文件浏览、附件和远程终端功能。\n\nAgent 仍在连接的工作设备上执行，因此该设备需要保持开机、联网。多台电脑和 Linux 服务器可以分别接入，再从工作台访问各自的任务。桌面端采用类似 Codex 的项目与会话工作方式，移动端提供原生 Android、iOS / iPadOS 客户端，后者通过 TestFlight 分发。\n\n适合已经使用这些 Agent、希望离开电脑后仍能查看或继续任务的人。首次体验可安装桌面端，登录官方 Cloud，绑定设备并打开一个项目，再用手机登录同一服务和账号继续会话。\n\n也可以按 [Docker 文档](https://github.com/anywhere-labs/Agents-Anywhere/blob/main/docker/README.md)部署自己的服务端。会话与附件可能经过或存储在服务端；模型账号和费用仍遵循所用 Agent 的规则。\n\n[官网下载](https://www.agents-anywhere.com/download) · [Web](https://web.agents-anywhere.com) · [首次使用](https://github.com/anywhere-labs/Agents-Anywhere/blob/main/docs/getting-started.md)\n\n---\n\n桌面工作台：管理设备、项目与会话，并访问文件和终端。\n\n<img width=\"2940\" height=\"1846\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3348218c-8071-4266-acc0-918bdb96d5bd\" />\n\n在工作电脑上准备好 Agent 环境和账号，从官网下载客户端。\n\n![alt text](https://raw.githubusercontent.com/anywhere-labs/Agents-Anywhere/b466e9da9bc1fabef4a506819fc2918a6b4986ec/docs/publications/weekly-11795/PixPin_2026-09-18_16-40-10.png)\n\n登录 Cloud，或连接自己部署的服务。\n\n![alt text](https://raw.githubusercontent.com/anywhere-labs/Agents-Anywhere/b466e9da9bc1fabef4a506819fc2918a6b4986ec/docs/publications/weekly-11795/PixPin_2026-09-18_16-40-39.png)\n\n跟随引导绑定工作设备，桌面端已包含 Connector。\n\n![alt text](https://raw.githubusercontent.com/anywhere-labs/Agents-Anywhere/b466e9da9bc1fabef4a506819fc2918a6b4986ec/docs/publications/weekly-11795/PixPin_2026-09-18_16-51-22.png)\n\n确认设备在线、Agent 可用后，选择项目目录并创建会话。可以先让它介绍项目结构，再从手机继续追问。\n\n![alt text](https://raw.githubusercontent.com/anywhere-labs/Agents-Anywhere/b466e9da9bc1fabef4a506819fc2918a6b4986ec/docs/publications/weekly-11795/PixPin_2026-09-18_16-52-26.png)\n",
-    "created_at": "2026-09-18T12:22:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11795"
-  },
-  {
-    "id": 11794,
-    "title": "docs(issue-413): fix resource-link for visualstyles",
-    "content": "修复网站链接",
-    "created_at": "2026-09-18T11:12:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/11794"
-  },
-  {
-    "id": 11793,
-    "title": "【工具自荐】BugBnB（虫虫民宿）：垃圾桶一臭，果蝇、蚂蚁、蟑螂就住到你的桌面上（macOS 原生）",
-    "content": "官网：https://bugbnb.threep.top\n\n大家好，自荐一个我自己做的 macOS 小应用 **BugBnB**（中文名「虫虫民宿」），免费。设定很直白：你的废纸篓就是一家民宿，垃圾桶一发臭，住客就上门。\n\n![BugBnB 的「住客」页：五种昆虫的活体标本盒](https://bugbnb.threep.top/assets/generated/screens/zh-Hans/guests.jpg)\n\n### 它是怎么运作的\n\n- 一直盯着废纸篓：有多大、多少个项目、最早的一项放了多久、磁盘还剩多少空间。这几条规则想开几条开几条，任意一条满足就「开张」，阈值都能自己调\n- 住客有五种：果蝇、蚂蚁、蟑螂、蛾蠓、蚊子。谁来、来几只、多大个头都由你定，最多 20 只，分小 / 中 / 大三档；可以一次到齐，也可以每 15 分钟到 2 小时来一批\n- 清倒废纸篓时，一辆小垃圾车从屏幕边缘开进来，倒车靠到程序坞的废纸篓旁边，把桶抬起来倒进车斗——垃圾桶清空的那一刻，垃圾刚好倒进去，然后它从另一侧开走。柴油机换挡、气刹、倒车蜂鸣、喇叭，声音都有\n- 受够了就打开「除虫柜」：轰走（不伤性命）、杀虫剂、喷火。用完会留一段冷却期，暂时没有新住客\n\n### 虫子不是随机乱飞的\n\n每种都照着真实习性写：\n\n- 果蝇顺着气味「冲刺-摆动」地靠近，扫视式锯齿飞行；落在桶边用口器点食、搓前足\n- 蚂蚁先派一只侦察蚁探路，回巢路上留下信息素，同伴再排队沿路径来回搬面包屑，碰面还要碰碰触角\n- 蟑螂有趋触性，贴着屏幕边缘跑，走走停停扫触角；昼伏夜出，受惊会冲到屏幕外躲起来\n- 蛾蠓飞行能力弱，跳飞一小段就长时间歇着，翅膀收成一颗心\n- 蚊子在你鼠标不动的时候凑过来叮一口，肚子慢慢涨红，吸饱了飞得更慢\n\n它们会在你的**所有显示器**之间漫游，走的是屏幕真正相邻的那条边；鼠标一靠近就四散，点中一只它会夺路而逃，过一会儿先探头、僵住，确认安全了才慢慢挪回来。\n\n### 实现上\n\n原生 Swift + Core Graphics，没有 Electron。昆虫先按「标本图」的标准矢量绘制（复眼的小眼、刚毛、翅脉的薄膜干涉色、足刺都画了），再拆成可动的骨骼部件，动作帧在后台一次性烘焙成精灵图集，桌面上每只只切换图集区域并更新位置与阴影。菜单栏应用，几乎不占资源。\n\n隐私上很干净：不用注册、没有账号、不收集数据，联网只有每天一次检查更新和一次匿名启动计数，两件都能关掉。鼠标点击会直接穿过昆虫落到下面的窗口上；除非你点「清倒垃圾桶」，它不会打开、移动或删除任何文件。\n\n### 下载\n\nhttps://bugbnb.threep.top\n\nmacOS 11 Big Sur 及以上，Apple 芯片与 Intel 通用，免费、不上架 App Store。\n\n一个说明：目前用自签名证书发布，还没做 Apple 公证，第一次打开需要在「应用程序」里按住 Control 点一下图标，再选「打开」；之后的更新由应用内完成，不会再被拦。",
-    "created_at": "2026-09-18T09:34:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11793"
-  },
-  {
-    "id": 11792,
-    "title": "【工具自荐】POMOAI：把 GitHub 上热门的开源 AI 项目做成能一键跑起来的中文工作台",
-    "content": "## 项目地址\n\nhttps://www.pomoai.com\n\n## 简介\n\nPOMOAI 是一个面向中文用户的开源 AI 工作台：把 GitHub 上的热门开源 AI 项目汇集起来，既能看项目活跃度（Stars 增长、提交频率、是不是已经停更），也能选中一个一键部署、在本地跑起来。\n\n## 解决的问题\n\n想用开源 AI 项目的人，通常卡在三步：\n\n1. **不知道有哪些** —— GitHub Trending 每天变，周榜月榜散落在各处，中文资讯又滞后\n2. **判断不了死活** —— Star 很高但半年没提交的项目，装完才发现踩坑\n3. **装不起来** —— 每个项目的环境依赖、CUDA 版本、Python 版本都不一样，README 看完就劝退\n\nPOMOAI 把这三步收进一个站：项目库 + 周榜/月榜 + 活跃度判别 + 一键启动客户端。\n\n## 主要功能\n\n- **项目库**：按 Stars、语言、分类筛选 GitHub 上的开源 AI 项目\n- **趋势榜单**：周榜 / 月榜，看增长而不是看存量\n- **活跃度判别**：Stars 增长曲线 + 提交情况，能看出项目是活跃还是停更了\n- **项目详情**：代码分析、部署难度、详细介绍长文\n- **一键启动**：桌面客户端选中项目直接运行，不用自己配环境\n- 中文界面，国内直接可访问（有 ICP 备案）\n\n## 适用人群\n\n- 想试开源 AI 项目、但被环境配置劝退的普通用户\n- 需要做技术选型、判断某个项目值不值得投入的开发者\n- 关注开源 AI 生态趋势的内容创作者\n\n## 说明\n\n网站免费浏览，不登录即可查看项目库与榜单；桌面客户端在站内下载页。\n",
-    "created_at": "2026-09-18T08:59:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11792"
-  },
-  {
-    "id": 11791,
-    "title": "【工具自荐】ChronoBlock：一个轻量的桌面时间块应用",
-    "content": "我做了一个桌面时间块应用 ChronoBlock，把今天要做的事情安排进时间块里\n\n我尽量让这个应用保持简单，不做复杂的项目管理，也不加入 AI。\n\n- 任务拖拽成时间块：任务可以直接拖到时间轴上可视化\n\n- 番茄计时：时间块可以直接进入专注计时 \n\n- 自动顺延：一件事比预计做得久，后面的时间块可以跟着调整\n\n- 本地优先：数据保存在本地 \n\n- 不接管日历：没有 Calendar Sync  \n\n目前还在持续完善，欢迎试用和反馈：\n\nhttps://www.chronoblockapp.net/",
-    "created_at": "2026-09-18T08:24:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11791"
-  },
-  {
-    "id": 11790,
-    "title": "【开源自荐】tombstone-reaper-skill：让死代码与墓碑技能真正入土为安，终结 AI 上下文污染",
-    "content": "## 项目名称\n**tombstone-reaper-skill**（墓碑收割者）\n\n## 项目地址\nhttps://github.com/webkubor/tombstone-reaper-skill\n\n## 类别\n开发者工具 / AI Agent 技能 / 代码卫生与重构\n\n## 项目简介\n在传统开发时代，死代码最多是“看着难受”；而在 **AI Agent 与大模型编程时代，立了墓碑的死代码会直接烧钱（消耗 Token）、引发模型幻觉、并把废弃逻辑硬塞进 Prompt 上下文**。\n\n很多开发者在废弃某项功能时，习惯在文件头部加上 `// deprecated` 或 `【已停用】`，以为这叫下线 —— 实际上这叫**“立了墓碑”**。扫描器、RAG、Agent 检索依然会命中这些文件并喂给大模型。\n\n`tombstone-reaper-skill` 是一个极客风的减法清道夫工具：\n1. **精准验尸**：自动扫描自称已废弃（写了已停用/已退役/deprecated）却赖着不走的 Skills、死代码、构建残留垃圾（*.bak, *.tmp）；\n2. **一键入土**：安全执行归档或粉碎，把空间与注意力彻底还给干净代码；\n3. **入土功德单与战报**：清理完成后自动生成炫酷的「入土功德战报（Burial Certificate）」，量化计算本次清理为 AI Agent 释放了多少上下文 Tokens，晒出减法战绩！\n\n核心哲学：**“无用本身就是删除的充分理由，保留才需要论证。立了墓碑不叫下线，入土为安才叫下线。”**\n\n欢迎各位开发者试用，给自己的代码库办一场体面的入土仪式！🪦",
-    "created_at": "2026-09-18T08:23:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11790"
   }
 ]
