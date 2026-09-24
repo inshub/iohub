@@ -1,5 +1,53 @@
 [
   {
+    "id": 11892,
+    "title": "【开源自荐】AgentCliKit：面向 AI Agent 的企业级原生 CLI 开发 Java SDK",
+    "content": "### 项目名称\n**AgentCliKit** (https://github.com/redSun64/cliflow)\n\n### 一句话简介\n面向业务团队的企业级 Java SDK，用于将复杂的后端 API 封装为可直接交付给 **AI Agent** 和人类工程师使用的**高安全、原生命令行工具与 Skill 技能包**。\n\n### 解决什么痛点？\n让 AI Agent 接管企业运维和业务任务时，直接裸调 REST API 极易引发**幻觉误写、Token 上下文浪费、密钥明文泄露、跨平台环境依赖重**等问题。\nAgentCliKit 核心哲学：**业务定义语义，SDK 负责标准与安全**。\n\n### 核心特性亮点\n1. 🤖 **Agent-First**：渐进式 `schema` 发现机制（极大降低 LLM Token 消耗）、`@AgentCommand` 语义提示、一键安装 Agent Skill 目录。\n2. 🛡️ **默认安全与人机协作**：显式风险声明（`@CliRisk`）、计划预演（`--dry-run`）、写操作显式确认守卫（`--yes`）、敏感参数自动掩码。\n3. ⚡ **零环境依赖原生打包**：基于 JDK 21 `jpackage` 自动构建 Windows `.exe` 与 macOS `.app` 原生归档包，使用者与 Agent 无需安装 JDK/Maven。\n4. 🔒 **操作系统级凭据安全**：内置对接 Windows 凭据管理器与 macOS Keychain，隔离密钥明文。\n5. 🧩 **类型化 HTTP 与零样板代码**：声明式强类型 API 封装，编译期注解处理器自动生成 SPI 注册与命令树。\n\n```powershell\n# 渐进式发现 -> 预演计划 -> 确认执行\nemployee schema employee +onboard\nemployee employee +onboard --name \"张三\" --role developer --dry-r",
+    "created_at": "2026-09-24T03:17:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11892"
+  },
+  {
+    "id": 11891,
+    "title": "【开源自荐】坐直 - 运行在浏览器里的离线坐姿检测工具",
+    "content": "## 是什么？\n这是一个运行在浏览器里的坐姿检测工具，打开就可以立即通过电脑/手机的摄像头，实时检测 8 个维度的坐姿指标，和两个常用的提醒。\n\n- 工具官网和 Demo：[upright.linkly.ai/](https://upright.linkly.ai/)\n- 开源仓库：[github.com/LinklyAI/upright](https://github.com/LinklyAI/upright)\n\n<img width=\"1288\" height=\"913\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fc67753f-d393-4141-b33c-4cdea247e180\" />\n\n## 有什么功能？\n\n包含8 个维度的坐姿检测：\n- 离屏幕太近\n- 低头\n- 歪头\n- 头前伸\n- 驼背塌陷\n- 耸肩\n- 歪坐\n- 太久不眨眼\n\n和2 个有益且常用的提醒：\n- 45 分钟久坐提醒\n- 20 分钟远眺提醒，遵循 20-20-20 护眼法则\n\n以及：\n- 浏览器浮动置顶小窗\n- 姿势校准\n- 丰富的开关\n- 中英双语\n- 暗黑模式\n- 没有广告\n- 完全免费\n- **开源**\n\n使用极其简单，打开网页就能纠正自己的坐姿。适合上班族，也适合写作业的小孩使用（用手机打开放在桌子前面）。",
+    "created_at": "2026-09-24T02:50:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11891"
+  },
+  {
+    "id": 11890,
+    "title": "【工具自荐】DeepSeeker-Code：开源的 DeepSeek AI 编码助手，自研 agentic 引擎（CLI / VS Code / HTTP 三入口）",
+    "content": "## 是什么\n\nDeepSeeker-Code 是一个开源（MIT）的**单人本地 AI 编码助手**，由 DeepSeek 驱动，对标 Claude Code 的形态。自研整套 agentic 引擎：流式 agent 主循环 + 完整工具链（读写文件 / 跑命令 / 搜索 / 抓网页）+ 审批网关，外加 MCP / Hooks / Skills / 子 Agent 四套扩展机制。一套引擎驱动三个入口：终端 CLI（React Ink）、VS Code 插件、本地 HTTP API。\n\n- GitHub：https://github.com/xknk/deepseeker-code\n- 安装：`npm install -g deepseeker-code`\n- 协议：MIT\n\n## 几个做得比较深的地方\n\n- **长任务上下文压缩可召回**：上下文压缩时，被归档的原始消息和超长工具结果脱敏落盘存档，事后可用 recall 工具按需检索取回（文件类结果还带过期检测），长任务压缩后细节不丢、不用重跑工具。\n- **审批网关**：只读操作免审，改动类操作弹窗审批，「总是允许」会自动沉淀成 glob 权限规则持久化。\n- **两阶段计划模式**：先只读调研、给出方案，批准后才动手写代码。\n- **贴图多模态**：聊天里直接贴截图提问。\n- **针对 DeepSeek 深度调优**：上下文压缩甜点区、prompt 缓存感知压缩等都是按 DeepSeek 模型参数调的。\n\n## 为什么自研\n\n想要一个「数据全在本机、对 DeepSeek 调优、形态对标 Claude Code」的开源选择，于是从 agent 主循环开始写了一套。定位是单人本地工具，不做公网部署，也不上多租户。",
+    "created_at": "2026-09-24T02:14:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11890"
+  },
+  {
+    "id": 11889,
+    "title": "【网站自荐】阿萨拉整活办：三角洲行动同人网页小游戏，含 PVE 战术自走棋「哈夫币战争」",
+    "content": "大家好，我是琳，分享一个还在持续打磨的玩家同人小站：**三角洲Wiki · 阿萨拉整活办**。\n\n我想把《三角洲行动》里熟悉的干员、摸金和玩家梗，做成打开浏览器就能玩的小游戏。目前最想邀请大家体验的是 **「哈夫币战争」**：一款以三角洲干员为主题、玩法灵感来自《崩坏：星穹铁道》货币战争的单机 PVE 战术自走棋。\n\n## 直接体验\n\n- [哈夫币战争](https://jiangyilin2010-arch.github.io/delta-force-wiki/haff_currency_war.html)\n- [小游戏大厅](https://jiangyilin2010-arch.github.io/delta-force-wiki/mini_games.html)\n- [GitHub 仓库与项目介绍](https://github.com/jiangyilin2010-arch/delta-force-wiki)\n\n## 可以玩什么\n\n- **哈夫币战争**：招募干员、安排前后排、搭配羁绊与装备，在经济取舍中构筑队伍，挑战 PVE 敌人。\n- **洲了个洲**：以战利品为主题的叠层消除小游戏。\n- **阿萨拉摸金重开模拟器**：选地图、抽天赋，让随机事件写出一趟摸金故事。\n- 另有草丛扫雷、伦理选择题、靶场手速测试等轻量玩法。\n\n## 开发方式与当前状态\n\n这是一个边游玩、边设计、边用 AI 辅助开发迭代的个人项目。网站以 HTML、CSS、JavaScript 和静态托管为主，小游戏主要使用浏览器本地存储，无需下载游戏客户端。\n\n目前仍是开发中体验版，平衡性、操作体验和页面表现都在打磨，线上以已发布版本为准。尤其想听听大家对**阵容构筑是否有趣、战斗信息是否清楚、哪些操作比较繁琐**的意见。欢迎在[项目 Issues](https://github.com/jiangyilin2010-arch/delta-force-wiki/issues)反馈。\n\n这是非官方同人项目，与三角洲行动及崩坏：星穹铁道官方无隶属关系。仓库源码公开，但目前尚未为整个项目指定开源许可证；原作角色、图片等素材权利归各自权利人，公开可访问不代表对相关素材重新授权。\n\n感谢阅读，欢迎来阿萨拉整活办坐坐。",
+    "created_at": "2026-09-24T01:49:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11889"
+  },
+  {
+    "id": 11888,
+    "title": "【工具自荐】Orbi：给 GitHub Issue 打个标签，AI 写代码、另跑一轮评审、合并后发版",
+    "content": "Orbi 是一个自托管的 AI 编程 Agent，入口是 GitHub Issue。\n\n用法是写好一张 Issue，打上 `ai-ready` 标签。Orbi 在分支上写改动、开 PR，然后另跑一轮评审，对照 Issue 里写的验收项检查。评审通过就合并，再打 Release 标签。模型接你自己的 API，代码一直在你自己的仓库里。\n\nOrbi 自己的仓库就是这样开发的。外部项目也有一个例子：给 k8e 写 etcd 测试，第一版被维护者打回，改完才合并，合并后那张票又被提交信息自动关错了。整个过程写在这里：https://orbi.build/zh/blog/k8e-rejected-then-merged/?ref=ruanyf\n\n- 官网：https://orbi.build/zh/?ref=ruanyf\n- 源码：https://github.com/orbi-build/orbi\n- 许可证：Sustainable Use License，源码公开，自托管免费使用\n- 托管版 Orbi Cloud 收费\n",
+    "created_at": "2026-09-24T01:32:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11888"
+  },
+  {
+    "id": 11887,
+    "title": "工具自荐：PecoFence，免费开源的桌面图标管理工具（Stardock Fences 平替）",
+    "content": "自荐一个我做的 Windows 11 桌面图标管理工具 PecoFence，可以作为 **Stardock Fences 的免费开源平替**。\n\n主要用来整理桌面上的程序快捷方式、文件和文件夹。可以建立多个分组，拖动、调整大小，也能把分组合成标签页。支持按文件类型、扩展名、名称等规则自动分类，新放到桌面的文件也能按规则归组，不会移动原文件。\n\n演示视频：\n\nhttps://github.com/user-attachments/assets/1f1ed998-e417-4bd6-96b6-5ccef5b1c4ce\n\n![PecoFence 的桌面分组与标签页](https://raw.githubusercontent.com/DayuanJiang/PecoFence/main/docs/assets/tabs.gif)\n\n还支持把真实文件夹映射到桌面、双击隐藏分组，以及保存和恢复桌面布局。\n\n软件免费，不用注册账号，支持中文界面。用 Rust 编写，采用 Apache 2.0 许可证，可从 Microsoft Store 安装，也提供便携 ZIP。\n\n- [GitHub 源码与下载](https://github.com/DayuanJiang/PecoFence)\n- [中文官网与更多演示](https://pecofence.jiang.jp/zh-CN/)\n- [Microsoft Store](https://apps.microsoft.com/detail/9MV6WG3XNWSX)\n\n<details>\n<summary>系统要求与当前测试范围</summary>\n\n仅支持 Windows 11 x64，目前主要在 25H2 上测试，旧版本和多显示器组合仍在继续验证。设置面板需要 WebView2 Runtime。便携构建未签名，首次运行可能出现 SmartScreen 提示。\n\n自动分类不移动文件；主动移动、重命名或删除仍操作真实文件。玻璃效果采样静态壁纸，不会折射其他应用或动态壁纸。\n\n</details>\n",
+    "created_at": "2026-09-23T23:06:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11887"
+  },
+  {
     "id": 11886,
     "title": "【工具自荐】Spray Can：带端侧 OCR 的 macOS 键盘导航工具",
     "content": "一个免费开源的 macOS 键盘导航 App，不用鼠标也能点击、拖拽、滚动和定位界面元素。除了普通的 Accessibility API，还加入了 Apple Vision 端侧 OCR，所以即使一些 App 没有正确暴露 Accessibility 信息，也能直接识别屏幕上的文字并生成可跳转标签。\n\n核心有三种定位方式：Accessibility、OCR 和 Grid，三者互补覆盖整个屏幕。\n\nOCR 完全在本地运行，截图不会离开 Mac\n支持标签跳转、Grid、键盘指针移动、拖拽、点击和 Vim 式滚动\n免费、开源、无订阅、无账号，支持 macOS 14+ / Apple Silicon & Intel\n\nGitHub：[github.com/Kymer0615/spray_can](https://github.com/Kymer0615/spray_can)",
@@ -42,7 +90,7 @@
   {
     "id": 11881,
     "title": "【开源自荐】Video Transcript：开源的浏览器字幕编辑与视频导出工具",
-    "content": "GitHub：https://github.com/anghunk/video-transcript\n在线访问：https://video-transcript.zishu.me\n\nVideo Transcript（字幕工作室）是一款运行在浏览器中的视频字幕编辑工具，用于为本地 MP4 视频添加、调整和烧录字幕。**无需账号、无需后端、无水印。**\n\n导入视频后，你可以在时间轴上分段、编辑文字和设置样式，并实时预览字幕在画面中的最终效果。完成后直接导出带有字幕的 MP4，视频、字幕和导出过程都只在当前设备上完成，不会上传到服务器。\n\n<img width=\"3200\" height=\"2000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0b92a45f-799f-4854-b8d9-f75d69dfb162\" />\n\n### 安全说明\n\n视频、字幕和导出结果始终保留在当前浏览器中，不会上传到服务器。",
+    "content": "GitHub：https://github.com/anghunk/video-transcript\n在线访问：https://video-transcript.zishu.me\n\nVideo Transcript（字幕工作室）是一款运行在浏览器中的视频字幕编辑工具，用于为本地 MP4 视频添加、调整和烧录字幕。**支持本地自动识别生成字幕。无需账号、无需后端、无水印。** \n\n导入视频后，你可以在时间轴上分段、编辑文字和设置样式，并实时预览字幕在画面中的最终效果。完成后直接导出带有字幕的 MP4，视频、字幕和导出过程都只在当前设备上完成，不会上传到服务器。\n\n<img width=\"2940\" height=\"1602\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e2b5c823-bc5b-40e7-a431-9cc77fd8d20f\" />\n\n### 安全说明\n\n视频、字幕和导出结果始终保留在当前浏览器中，不会上传到服务器。",
     "created_at": "2026-09-23T11:45:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11881"
@@ -752,53 +800,5 @@
     "created_at": "2026-09-18T08:23:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11790"
-  },
-  {
-    "id": 11789,
-    "title": "【开源自荐】Lithe：面向 Java 与 AI 协作的低内存 IntelliJ IDEA 替代品",
-    "content": "大家好，自荐我们最近在做的开源项目 **Lithe**。\n\n- 项目地址：https://github.com/1lck/Lithe-IDEA\n- 项目主页：https://lithe.top\n- 下载地址：https://github.com/1lck/Lithe-IDEA/releases/latest\n- 开源协议：Apache License 2.0\n\nCodex、Claude Code 等 AI 编程工具已经可以完成大量编码工作，但开发者仍然需要 IDE 来理解生成的代码、跳转符号、运行和调试项目，并审查每一次修改。\n\n为了这些工作一直开着一套占用数 GB 内存的开发环境有些沉重，所以我们做了 Lithe：一款主要面向 Java 和 Spring Boot 开发者的轻量级 IntelliJ IDEA 替代品。\n\n打开普通项目后，Lithe 应用本身的基础内存占用通常约为 **300～400 MB**。语言服务器、终端、构建工具、调试器和数据库组件均按需启动，实际占用会随项目和启用的服务变化。\n\n> **AI 负责编写代码，Lithe 负责帮你看懂、跑通并审查修改。**\n\n### 目前支持\n\n- Java、Spring Boot 和 Maven 项目开发\n- 代码编辑、补全、符号导航以及双击 Shift、项目级全文搜索\n- 断点调试、自定义启动配置和 Java 测试调试\n- Git 管理、双栏 Diff 审查与本地历史\n- 自动识别 Spring Boot、Java、Maven、Gradle、npm、Cargo、Go、Python、Make、Docker Compose、Procfile 和 Shell 项目的运行入口\n- 数据库连接、SQL 执行、表结构浏览与 SQL 历史\n- 使用 AI 生成 Commit Message，并可自定义格式\n- 按语言独立启停语言服务，减少不必要的后台资源占用\n\n![Lithe Git Diff 审查](https://raw.githubusercontent.com/1lck/Lithe-IDEA/main/docs/assets/screenshots/git-diff-review.png)\n\n### 下载与当前状态\n\n- **macOS 13+**：提供 Apple Silicon 与 Intel DMG，也支持 Homebrew 安装和更新\n- **Windows x64**：提供 EXE 安装包\n\n项目目前保持快速迭代。部分安装包尚未完成商业证书签名，操作系统可能显示安全提示，具体安装说明可以在项目 README 中查看。\n\n欢迎 Java、Spring Boot 和 AI 编程工具用户体验并反馈。",
-    "created_at": "2026-09-18T06:19:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11789"
-  },
-  {
-    "id": 11788,
-    "title": "【工具自荐】投资组合 Dashboard — 苹果股市风格的持仓看板",
-    "content": "**产品名称**：投资组合 Dashboard\n\n**网址**：https://finance.adbyte.cn\n\n**Chrome 商店**：https://chromewebstore.google.com/detail/ccindmpclaifcembenipdpnfiaojdjjb\n\n**简介**：\n\n平时用 MSN 投资组合看持仓很费劲，网页端持仓散乱要翻多页，行情 15 分钟延迟盘中抓瞎，加一笔交易还得逐个弹窗点，索性自己写了个插件。\n\n点工具栏图标，弹一个 680px 的苹果股市风格暗色弹窗，持仓 + 关注条宏观 + 今日预估 footer 一屏打尽。A 股走腾讯实时接口秒级跳动，popup 打开每 5 秒原地刷新行情（不重建 DOM，展开的图表和轮播都不收起）；场外基金走新浪盘中估算净值。点持仓行展开看交易明细 + K 线，行内直接加 / 改 / 删交易、回写云端，同时显示由交易记录自动算出的成本价。\n\n底部「行情中心」进去看大盘资金分时净流入（主力 / 超大单 / 大单 / 中单 / 小单），以及行业 / 风格 / 概念 / 地域四类板块的资金排行，东方财富数据，今日 / 5 日 / 10 日切换，红涨绿跌。\n\n持仓行有个铃铛，点开设提醒：日涨跌、日内最高回调、52 周最高回调、区间涨跌、持仓收益率、区间收益率、今日盈亏额，7 类规则配涨 / 跌，触了发系统通知 + 角标红点，有冷却防刷屏。规则本地存不登录也能用，登录 MSN 后备份到末笔交易备注，跨设备跟着走。\n\n还能导入「自选基金助手」的配置文件，自动建组合 + 去重 + 节流，不用一笔笔手动加。今日预估钉在工具栏角标，每 2 分钟刷新，不开 popup 也能瞄一眼盈亏。\n\n暗 / 亮双主题，Edge / Chrome 通用，装好后登录 www.msn.cn 就能用。欢迎试试，有问题直接说。\n\n**截图**：\n\n<img width=\"1360\" height=\"1200\" alt=\"popup 暗色主界面\" src=\"https://finance.adbyte.cn/img/popup-dark.png\" />\n<img width=\"1360\" height=\"1200\" alt=\"行情中心 大盘资金\" src=\"https://finance.adbyte.cn/img/mc-fund-flow.png\" />\n<img width=\"1360\" height=\"1200\" alt=\"铃铛提醒规则面板\" src=\"https://finance.adbyte.cn/img/alert-modal.png\" />\n\n希望能够在老师的周刊里出现，谢谢啦～",
-    "created_at": "2026-09-18T06:15:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11788"
-  },
-  {
-    "id": 11787,
-    "title": "【工具自荐】ZoneFoundry for Sonos：把国内音乐源、中文语音和 AI 接进 Sonos 的 iOS 控制 App",
-    "content": "> App Store：https://apps.apple.com/app/apple-store/id6775692838?pt=128979813&ct=ruanyf&mt=8 （iOS 18+，免费）\n> 官网：https://zonefoundry.dev\n\n# 这是什么\n\n给 Sonos 用户做的第三方控制 App。官方 App 在国内用有两个硬伤：QQ 音乐 / 网易云和 Spotify / Apple Music 是割裂的，搜同一首歌要在不同 tab 之间跳；自带的语音对中文（尤其粤语）基本不工作。这个 App 补的就是这两块，顺手把 AI 接了进去。\n\n# 特点\n\n- **一个搜索框搜完所有服务**：Apple Music、Spotify、QQ 音乐、网易云一次搜完，结果按服务分组，QQ 音乐和网易云连拼音都认得\n- **说人话就行**：粤语、普通话、英文。「在客厅播五首周杰伦」「主卧音量调到 30，浴室调到 20」这种一句话多个动作也能拆，做错了有撤销\n- **不用注册**：iPhone 和音箱在同一个 Wi-Fi 就能用，账号只用于远程控制和多设备同步\n- **尽量不依赖常驻程序**：50 项功能里 46 项不用装任何东西——在家走局域网 UPnP，出门走 Sonos 官方云 API。剩下四样（EQ、闹钟、电量、line-in）是官方云 API 没开放，只能在局域网做\n- **让 AI 控制音箱**：内置 MCP 服务，23 个 tool，Claude / ChatGPT 等任何支持 MCP 的助手都能点歌、广播、执行场景。设置里生成一个密钥贴过去就行\n- **系统集成**：锁屏 / 灵动岛实时活动、小组件、控制中心、快捷指令和 Siri\n\n# 一个踩过的坑\n\n「往 Sonos 收藏夹加歌」一直被认为要经服务端，其实局域网 UPnP 的 `CreateObject` 就能写——卡住大家的是 metadata 那层：自己拼的 DIDL 一律被音箱拒掉（UPnP 803），必须用音箱当下 `GetPositionInfo` 返回的那份原样塞回去。搞清楚之后这块也不用装东西了。\n\n<p>\n<img src=\"https://zonefoundry.dev/assets/screenshots/10_home_rooms.jpg\" width=\"230\">\n<img src=\"https://zonefoundry.dev/assets/screenshots/01_assistant_orb.jpg\" width=\"230\">\n<img src=\"https://zonefoundry.dev/assets/screenshots/03_music_search_jaychou.jpg\" width=\"230\">\n</p>\n",
-    "created_at": "2026-09-18T06:12:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11787"
-  },
-  {
-    "id": 11786,
-    "title": "【工具自荐】Unit Converter for Science：科研、工程与教学单位换算",
-    "content": "Unit Converter for Science 是一款面向科研、工程、教学和日常计算的免费在线单位换算工具。支持长度、质量、时间、速度、面积、体积、温度、能量、力、压力和浓度等 11 类换算，并同时展示换算公式、换算因子和逐步推导，便于检查结果。网站支持多语言，打开网页即可使用。\n\n网站：https://www.unitconv.top",
-    "created_at": "2026-09-18T05:41:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11786"
-  },
-  {
-    "id": 11785,
-    "title": "【工具自荐】PodText：把播客变成可搜索的文字知识库",
-    "content": "<img width=\"3104\" height=\"2112\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2c2bcc3b-4dbf-495b-be0d-b3acda70f0ec\" />\n\nPodText 是我做的一个播客转文字工具。\n\n它支持 Apple Podcasts、Spotify、小宇宙、YouTube，以及直接上传音视频文件，可以生成带时间戳的逐字稿。转录以后，可以全文搜索，点击文字跳转到对应的音频位置，还可以自动生成摘要、章节、要点和金句。\n\n我做它的原因很简单：听完两三个小时的播客以后，经常记得某个人说过一句话，却再也找不到它。把播客变成文字以后，就可以像搜索文章一样搜索里面的内容。\n\n网站：https://podtext.ai/\n\n如果遇到问题或有功能建议，可以在 GitHub 反馈：\nhttps://github.com/ruguodev/podtext.ai/issues",
-    "created_at": "2026-09-18T05:11:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11785"
-  },
-  {
-    "id": 11784,
-    "title": "【开源自荐】BiliLens：在 B 站视频页面中直接生成 AI 总结的用户脚本",
-    "content": "https://github.com/FrRay/BiliLens\n## 项目简介\n\nBiliLens 是一个面向 B 站视频播放页的用户脚本。\n\n它可以读取视频播放器提供的字幕，并调用用户配置的兼容 OpenAI 格式的模型服务生成结构化总结。总结结果支持 Markdown 展示、复制、下载，以及按视频保存在本地。\n\n项目适合用于课程、教程、访谈、技术分享等视频的内容梳理与复习。\n\n## 演示\n\n![BiliLens 使用演示](https://raw.githubusercontent.com/FrRay/BiliLens/master/assets/bili-lens-demo.gif)\n\n## 主要功能\n\n- 自动获取 B 站播放器中的可用字幕；\n- 根据字幕生成 AI 总结；\n- 支持通用总结、要点提纲、学习笔记、行动清单和视频叙事等提示词模板；\n- 总结中的 `[MM:SS]` 或 `[HH:MM:SS]` 时间节点可以点击并跳转视频；\n- 支持复制字幕和总结内容；\n- 支持将总结下载为 Markdown 文件；\n- 按视频保存最近的本地总结；\n- 提供键盘快捷键和站内视频切换适配。\n\n## 使用方式\n\n1. 安装 Tampermonkey 或 ScriptCat；\n2. 打开项目中的用户脚本并安装；\n3. 进入 B 站视频播放页；\n4. 点击播放器下方工具栏中的「AI 总结」；\n5. 配置模型 API 后开始生成总结。\n\n脚本安装地址：\n\nhttps://raw.githubusercontent.com/FrRay/BiliLens/master/bili-lens.user.js\n\n## 隐私说明\n\nBiliLens 不包含独立服务器。\n\nAPI Key 保存在脚本管理器的本地存储中。当前视频的字幕和提示词会发送至用户自行配置的模型服务，项目本身不会收集或上传浏览记录。\n\n欢迎提出问题、建议和改进意见。",
-    "created_at": "2026-09-18T04:36:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11784"
   }
 ]
