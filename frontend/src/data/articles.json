@@ -1,5 +1,45 @@
 [
   {
+    "id": 11912,
+    "title": "【开源自荐】Farming：自托管的 AI 编程工作区，集成 Chat、终端、代码审查与浏览器",
+    "content": "大家好，自荐一个我开发的开源项目 **Farming**：把多种 AI 编程 Agent、终端、项目文件、代码审查和浏览器操作集中在一个可自托管的工作区里，支持电脑和手机访问，并提供常规界面与复古 CRT 控制室。\n\n它适合希望集中跟进编程任务、检查实际产出的人：从给 Agent 布置任务，到看代码改动、验证页面效果、继续提出要求，都可以在同一个工作区完成，减少在终端、编辑器、浏览器和历史对话之间来回切换。\n\n- 项目地址：https://github.com/zhuwenzhuang/farming\n- 中文文档：https://zhuwenzhuang.github.io/farming/cn/\n- 开源协议：MIT；运行平台：macOS、Linux。\n\n**主要能力**\n\n1. **统一使用多种 Coding Agent**：支持 Codex、Claude Code、Pi、OpenCode 等，按项目组织多个任务。既能在结构化 Chat 中阅读回答、计划和工具活动，也能使用真实终端里的 CLI 原生交互；受支持的会话可以在 Chat 与 Terminal 之间切换，并通过 History 查找和恢复。\n2. **检查代码和实际产出**：浏览、搜索和轻量编辑项目文件，使用可用 Language Server 的代码跳转与诊断，查看 Git Diff、提交历史与 Blame。Review 支持行级评论和已审阅标记；也能一边预览 HTML 页面，一边在旁边的 Chat 中继续与 Agent 沟通。\n3. **人与 Agent 共用浏览器**：Agent 可以打开、点击、填写网页，用户在 Farming 中查看同一个页面并随时接手。安装 Farming Browser Connector 后，还可以让 Agent 使用已有 Chrome 页面和登录状态。\n4. **电脑与手机接续工作**：Agent 进程、终端和项目文件留在自己的开发机上。手机浏览器可以查看进展、阅读结果、发送后续要求，并在 Chat、Terminal 和 Files 之间切换；关闭浏览器不会停止正在运行的 Agent。\n5. **Code / CRT 两种界面**：Farming Code 提供日常工作区；Farming CRT 提供键盘优先的复古控制室，集中查看多个 Agent 的实时输出和状态。两者共享同一套 Agent 和会话，切换界面不会重复创建任务。\n6. **多套账号与配置**：通过 Agent Homes，为同一种 Agent 分开管理工作、个人等环境，创建 Agent 时选择对应的登录状态与配置，并按 Home 查看 Skill、MCP、Hook 等扩展。\n\n另外还提供 Token 活动与历史趋势、临时只读分享，以及用于启动 Agent、查看输出和发送指令的 CLI。具体模型选项、会话恢复与切换能力以对应 Provider 的支持情况为准。\n\n**界面示例**\n\nCRT：总览多个 Agent，使用键盘进入会话。\n\n![Farming CRT 多 Agent 控制室](https://raw.githubusercontent.com/zhuwenzhuang/farming/e875b9642b57ef3c20167b05c6ece8971a29b2ab/docs/products/crt/assets/01-crt-dashboard.png)\n\nCode：左侧预览 HTML 页面，右侧继续与 Agent 沟通。\n\n![Farming Code 中并排使用 HTML 预览和 Agent Chat](https://raw.githubusercontent.com/zhuwenzhuang/farming/e875b9642b57ef3c20167b05c6ece8971a29b2ab/docs-site/public/cn/assets/files-html-preview-chat.png)\n\n手机：在浏览器里阅读结果、继续跟进任务。\n\n<img src=\"https://raw.githubusercontent.com/zhuwenzhuang/farming/e875b9642b57ef3c20167b05c6ece8971a29b2ab/docs/products/code/assets/05-mobile-agent-chat.png\" alt=\"手机浏览器中的 Farming Code 会话\" width=\"320\">\n\n以上为项目的演示截图。\n\n**试用方式**\n\n开发机已有 Node.js 22.13+（22.x）或 24+ 时：\n\n```bash\nnpm install --global farming-code@latest\nfarming daemon\n```\n\n打开命令输出的访问地址，选择 **New Agent** 和自己的代码仓库即可开始。目标 Agent 需要先在开发机上完成安装和登录；Farming 不包含模型服务或调用额度。也提供自带 Node.js 的指定目录安装，详见[快速开始](https://zhuwenzhuang.github.io/farming/cn/get-started/quickstart)。\n\n从手机或另一台电脑访问时，开发机需要保持运行，客户端需要能够访问它并完成鉴权；跨网络访问需要自行配置 VPN、SSH 隧道或受保护的反向代理等方式。\n\n欢迎试用。如果安装或使用时遇到阻碍，可以在[项目 Issues](https://github.com/zhuwenzhuang/farming/issues)反馈，也很想了解它能否改善你目前的工作方式。\n",
+    "created_at": "2026-09-25T08:58:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11912"
+  },
+  {
+    "id": 11911,
+    "title": "【开源自荐】Agent-Body：把 DSH 插件组织成一具会自愈的身体（反射弧零模型调用，48 条命令省 84.71% tool schema token）",
+    "content": "**项目**：Agent-Body\n**地址**：https://github.com/1420079678-ctrl/agent-body\n**在线演示**：https://1420079678-ctrl.github.io/agent-body/\n\n这是一个 DeepSeek Harness 的插件框架，思路是把每个插件当成一个**器官**来写：插件只声明自己的能力、感知和反射弧，剩下的生理机能由内核补上——变速心跳、神经冲动路由、睡眠期记忆巩固、闭环自愈。缺一个器官不致命，会自动找能力重叠最高的器官代偿。\n\n值得一说的是三处设计，数字都在仓库里可复现：\n\n**反射弧零模型调用。** 确定性条件命中即毫秒级执行，不烧 token。更有意思的是它会**自己长反射**：同一个工具同一种失败重复三次，系统就写出一条反射弧，下次自动开火。开火五次零贡献的反射会被自动停用。\n\n**自愈是闭环。** 失败先做确定性归因（工具缺失 / 参数错 / 权限 / 超时 / 网络 / 不存在 / 冲突），再按处方处置，而且**要等那个器官下次真的成功了才算伤口闭合**——不是修完就报成功。参数错误永不自动重试，因为重试只会放大错误。\n\n**装再多也不撑爆提示词。** 工具 schema 按当前意图显影，仓库内冷启动基准：48 条代表性命令下省掉 **84.71%** 的 tool schema token，`npm run bench:check` 会在数字漂移时直接构建失败。这个项目本身就是在给「插件装多了提示词爆炸」这个真实痛点找解法。\n\n**不用装也能看它跑起来：**\n\n```sh\ngit clone https://github.com/1420079678-ctrl/agent-body && cd agent-body\nnpm run demo     # 命令 → 冲动 → 支配 → 执行 → 归因 → 反射，离线、无密钥\nnpm run check    # CI 门禁：常量表、目录、测试、基准，全部离线\n```\n\n已经装了 DeepSeek Harness 的话，一条命令装齐三个核心器官：\n\n```sh\ndsh plugin --profile web add github:1420079678-ctrl/agent-body\n```\n\n仓库是 monorepo，24 个插件包，其中 10 个另有一份可单独安装的 tarball。项目还在早期，文档和基准都在仓库里，欢迎拍砖。\n",
+    "created_at": "2026-09-25T08:27:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11911"
+  },
+  {
+    "id": 11910,
+    "title": "【网站自荐】格物间：搜一个概念，让抽象看得见",
+    "content": "格物间是一个将抽象概念做成交互式网页演示的网站，内容涵盖数学、物理、计算机、地理等学科，并按学科和专题归类。可以搜索一个具体概念，也可以进入专题，浏览相关知识点的演示。我希望是任何地方 **打开就能用，不用下载软件。**\n\n网站：[格物间 gewujian.cn](https://gewujian.cn)\n\n这是我在陪孩子理解概念的过程中，逐渐做起来的一个个人项目。有些知识用语言和静态图片解释起来不太容易，我希望通过拖动图形、调整参数、观察变化，让概念之间的联系更容易看见。\n\n可以先体验这三个例子：\n\n* [圆的面积为什么用半径？](https://gewujian.cn/view/o3xEUPHPTjh2maN5lTyvfA)：通过圆环展开和细分，观察半径、周长与三角形面积公式之间的联系。\n* [图形展开](https://gewujian.cn/view/5PoaHu6e0_UazbbBGBM85Q)：用图形理解正方体展开。\n* [蜡烛向右，镜中的像为什么向下？](https://gewujian.cn/view/iJKvnERy9E5cFO6EMgVisQ)：在倾斜的平面镜前移动物体，观察物体与像的运动及对称关系。\n\n网站的组织方式是“学科 → 专题 → 具体概念与演示”。每个演示聚焦一个问题，同一专题下集中整理相关内容，方便围绕一个主题逐步探索，也方便讲解时找到需要的演示。\n\n演示以 HTML、CSS、JavaScript 网页形式运行，交互与图形变化在浏览器端呈现。设计上优先考虑电脑大屏，让图形、参数和解释可以同时看清楚。\n\n希望把它逐步做成一个随手可用的概念演示工具：**搜一个概念，让抽象看得见。**\n\n欢迎体验，也欢迎指出演示中的概念或交互问题。\n\n<img width=\"1000\" height=\"740\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b76f5679-99bd-4e6d-a967-42e7b43eb1cf\" />\n\n<img width=\"1000\" height=\"740\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0a3a2986-6cff-4073-a4a1-b1c60449b05f\" />",
+    "created_at": "2026-09-25T06:41:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11910"
+  },
+  {
+    "id": 11909,
+    "title": "【开源自荐】这可能是Window上最好看的终端",
+    "content": "<img width=\"1035\" height=\"600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3df4be2f-40dd-4a9e-9261-3065f0f3ffb7\" />\n\n<img width=\"1035\" height=\"604\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a6a0ac2f-3aae-4616-83d8-7df80b7464f5\" />\n\n<img width=\"1035\" height=\"627\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d3bfe3c9-08f7-4b37-b4a6-d05ecc1b5962\" />\n\n<img width=\"1035\" height=\"607\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ff1ce237-923e-4517-b14a-f18b1285dff0\" />\n\n<img width=\"1035\" height=\"606\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a5cf0a1a-0726-4f2c-a5e3-5a118e4a0ba4\" />\n\n<img width=\"1035\" height=\"624\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ae7f40a9-68c5-4f0b-92c4-510c09d8b242\" />\n\n项目地址：https://github.com/Kuddev/pebrel",
+    "created_at": "2026-09-25T05:58:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11909"
+  },
+  {
+    "id": 11908,
+    "title": "【开源自荐】KinetAios：macOS 上的多引擎 Agent 工作台，四引擎并发跑同一任务实时对比，数据全落本地 SQLite",
+    "content": "大家好，自荐一个开源项目 [KinetAios](https://github.com/phinn/KinetAios)（macOS 14+，免费档 $0 永久：单引擎 + Ollama 本地模型，不是试用）。\n\n它是一个**多引擎 AI Agent 工作台**：Direct / Claude Code / Codex / PEVJ 四个引擎可以并发跑同一个任务，实时对比每个引擎的执行状态、步骤数、token 消耗和成本。自带 API Key 即用，也可以完全跑 Ollama 本地模型离线使用；数据全部落在本地一个 SQLite 文件，没有中继服务器。\n\n和其他 Agent 客户端最大的差别是\"可比对\"。同一个任务，Claude Code 和 Codex 的差异平时只能凭感觉说，在 KinetAios 里是并排的两列实时数据。\n\n项目公开了一份四引擎跑同一任务的完整实测报告：40 万行医疗器械 CRM 交叉分析（多 Sheet × 医院等级 × 时间窗，产出交互式 ECharts 报告），四引擎同提示词零人工干预——自家 Direct 引擎 9.2 分 / 1.31M token 拿第一，也包括自家 PEVJ 引擎 3.5 分的全部翻车细节。报告方法论、逐维度打分、逐步 trace 都在仓库 documents/ 目录，欢迎按自己的任务复测：https://github.com/phinn/KinetAios/blob/main/documents/excel-cross-analysis-engines.html\n\n技术栈：SwiftUI + Swift Concurrency（macOS 原生，非 Electron），插件走 MCP 协议。",
+    "created_at": "2026-09-25T04:09:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11908"
+  },
+  {
     "id": 11907,
     "title": "【自荐】百度贴吧电脑版移动自适应",
     "content": "https://github.com/doincyberspace/better-tieba-mobile-browser\n\n一个 Tampermonkey 脚本，让你的手机浏览器也可以访问电脑端的贴吧网页版。摆脱臃肿的官方客户端，用上电脑网页端实际存在的响应式设计。\n\n<img width=\"432\" height=\"960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/578afecb-bbc2-4f34-8e0d-9db573b654cc\" />",
@@ -25,7 +65,7 @@
   },
   {
     "id": 11904,
-    "title": "【开源自荐】Gear：根据任务测评自进化的 Agent 框架",
+    "title": "【开源自荐】Gear：根据任务反馈自进化的 Agent 框架",
     "content": "大家好，自荐一个开源项目 [Gear](https://github.com/rsi-gear/gear)，希望帮助开发者提升 AI Agent 在具体任务中的表现。\n\n![Gear 自进化实验回放](https://github.com/rsi-gear/gear/blob/main/docs/guide/assets/automationbench-evolution-replay-en.png?raw=true)\n\n开发 Agent 时，经常需要反复调整提示词、工具和执行流程，再跑一遍任务，检查改动是否有效。Gear 把这个过程组织成一个由评测反馈驱动的优化循环：\n\n1. 准备一组有明确验收标准的任务，可以使用现有 benchmark，也可以定义自己的任务集。\n2. 运行 Agent，收集执行轨迹和评测结果。\n3. 由负责优化的 Agent 分析失败原因，修改授权范围内的组件。\n4. 重新评测、比较候选版本，保留表现更好的方案，继续迭代。\n\n可优化的组件包括提示词、工具实现、Skills、工作流和上下文管理。这些围绕模型的运行配置统称为 **harness**。Gear 会记录各版本的改动和评测结果，方便检查和复用；开发者也可以定制搜索算法，并根据通过率、费用或 token 消耗设置优化目标。\n\n在项目公开的 AutomationBench Marketing 实验中，GPT 5.6 Luna + DSH 在 100 个公开任务上的任务通过率从 **27% 提升到 53%**，目标完成率从 **75.37% 提升到 88.88%**。这组结果包含 harness 优化和推理档位从 medium 到 max 的变化，且任务集参与过优化；实验配置与评分口径均已公开，便于读者判断结果的适用范围。\n\nGear 通过 Refine Skill 接入 Codex、Claude Code、DSH 等 Agent 环境。负责提出改进的 Agent 与执行任务的 Agent 可以使用不同模型。当前已支持 harness 优化，模型训练仍处于实验阶段。\n\n项目采用 **MIT 协议**，提供中文文档和完整实验案例，欢迎试用、反馈和贡献。\n\n- [GitHub 源码](https://github.com/rsi-gear/gear)\n- [中文文档与快速开始](https://rsigear.xyz/docs/gear/zh)\n- [实验过程与优化算法](https://github.com/rsi-gear/gear/blob/main/docs/guide/zh-CN/example-algorithm.md)",
     "created_at": "2026-09-24T13:36:15Z",
     "labels": [],
@@ -760,45 +800,5 @@
     "created_at": "2026-09-19T17:01:11Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11810"
-  },
-  {
-    "id": 11809,
-    "title": "【工具自荐】Snapora：Windows 截图、标注与贴图",
-    "content": "我是 Snapora 的维护者，按周刊 README 的软件投稿入口提交，供编辑筛选。\n\nSnapora 是 Windows 10/11 64 位桌面工具，将区域截图、文字/图形标注和贴图整合在一起。一个使用场景是把需要对照的界面截图固定在屏幕上方，再切换到其他程序继续工作；截图可加文字、箭头、马赛克或模糊，并复制或保存。\n\n- 官网与免费下载：https://snapora.9nn.cn/\n- 安装包、说明和问题反馈：https://github.com/Moresyl/Snapora\n- 当前界面语言：简体中文。\n- 项目状态：新发布的 1.0.0 版本，闭源；GitHub 仓库仅分发安装包和文档。它不是开源项目，也不声称已达到成熟同类产品的全部功能。\n\n核心截图功能不需要在线账号，截图内容默认在本机处理；客户端有联网检查更新功能。\n\n已搜索本仓库的 Snapora 投稿记录，未发现重复。感谢审阅。",
-    "created_at": "2026-09-19T15:35:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11809"
-  },
-  {
-    "id": 11808,
-    "title": "【开源自荐】PDFSeal：100% 纯本地运行、零数据上传的隐私 PDF 工具箱（支持 PWA 离线与流水线）",
-    "content": "### 项目名称与链接\n\n- **项目名称**：PDFSeal 🦭\n- **GitHub 仓库**：https://github.com/sealkit-org/pdfseal\n- **在线体验**：https://pdf.sealkit.org\n- **开源协议**：AGPLv3\n\n### 项目简介\n\n我们在处理发票、合同、个人证件等敏感文档时，市面上绝大多数在线 PDF 工具都需要将文件先上传到第三方服务器，存在极大的隐私与数据泄露隐患。\n\n**PDFSeal** 是一款专为隐私安全打造的 **100% 纯本地、纯客户端** PDF 工具箱。所有计算（合并、拆分、压缩、水印、页码、签名盖章、加密/解锁、物理级内容脱敏等）完全在浏览器内存（WebAssembly / pdf-lib / pdf.js）中完成，**绝不向任何服务器上传用户的文档**，完全无后端、零追踪、零打扰。\n\n### 核心特性\n\n1. **绝对零上传 / 断网可用**：底层没有任何文件上传接口。即使拔掉网线或开启飞行模式，所有功能 100% 正常运行，支持通过 PWA 安装为本地桌面与手机应用。\n2. **功能全面不简陋**：内置 14 大实用原子工具 + 自动化多步骤流水线（Pipeline）。包括但不限于：\n   - **物理级文本脱敏**：彻底销毁 PDF 底层内容流并自动校验零文本残留；\n   - **智能页码覆盖**：支持涂白遮罩自动取色，掩盖旧文件的错位老页码；\n   - **印章透明化与去白**：自动消除纸张白底和阴影，还原纯净印油质感；\n   - **智能二分压缩**：可指定目标文件大小（如 ≤2MB）进行自适应二分法搜索压缩。\n3. **多端自适应优化**：针对手机端设计了专属的单手操作抽屉、底部悬浮栏，并支持 Web Share API 原生系统分享（可直接 AirDrop 或微信转发）。\n4. **便捷自建**：提供单文件 Docker Compose，一行命令即可在局域网或内网完成私有化自托管。\n\n### 界面截图\n\n<!-- 提示：建议在打开的 pdf.sealkit.org 页面截一张漂亮的首页或工具操作图，在此处直接 Ctrl + V 粘贴即可自动生成图片链接 -->\n![PDFSeal 界面预览](https://pdf.sealkit.org/og-image.png)",
-    "created_at": "2026-09-19T15:18:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11808"
-  },
-  {
-    "id": 11807,
-    "title": "【开源自荐】Gauge：Windows 桌面悬浮窗，查看 Codex / Claude Code 多账号剩余额度",
-    "content": "## Gauge：把 Codex 和 Claude Code 的额度放在桌面一角\n\n我是 Gauge 的作者。写代码时经常需要切窗口查看 AI 账号的剩余额度，于是做了一个 Windows 桌面悬浮工具，把多个账号的额度放到同一个窗口里。\n\n- Codex 每周、Claude Code 5 小时及每周剩余额度，附重置倒计时。\n- 自动识别本地有效登录，也可以通过官方授权页添加多个账号。\n- 显示套餐和当前登录状态；支持拖动、缩放、置顶、主题和中英文切换。\n- Python + PySide6，MIT 开源，提供 Windows x64 单文件 EXE。\n\n项目：[Beellix-dev/Gauge](https://github.com/Beellix-dev/Gauge)\n\n下载：[v0.1.0 预览版](https://github.com/Beellix-dev/Gauge/releases/tag/v0.1.0)\n\n<img src=\"https://raw.githubusercontent.com/Beellix-dev/Gauge/v0.1.0/docs/images/monitor-dark.png\" width=\"360\" alt=\"Gauge 多账号额度监控界面，使用演示账号数据\">\n\n截图中的账号和额度为演示数据。Gauge 没有自建后端，授权文件保存在本机；额度查询通过官方 CLI 或平台服务完成。[安全说明](https://github.com/Beellix-dev/Gauge/blob/main/docs/SECURITY.md)\n\n使用前需安装对应平台的官方 CLI；Claude 需要具备 Claude Code 使用权限的订阅授权。当前为首个预览版，EXE 未签名，Claude 付费账号在线查询及实验性的 Codex 登录切换尚未完成端到端人工验证。\n\n欢迎有相同需求的 Windows 用户试用，反馈最希望看到的指标和实际使用中遇到的问题。\r\n",
-    "created_at": "2026-09-19T12:33:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11807"
-  },
-  {
-    "id": 11806,
-    "title": "[Resource Submission] WeirdThings — Clear explanations for unfamiliar words and puzzle connections",
-    "content": "Website: [WeirdThings](https://weird-things.net/)\n\nWeirdThings is an independent English-language explainer site for puzzle players, vocabulary learners, and curious readers. It covers unfamiliar words, Connections relationships, Wordle vocabulary, and selected questions that surface in games, search trends, and current events.\n\nEach guide answers a specific question with context that a short dictionary definition or answer list can miss. Articles link to supporting sources, and the public methodology explains how evidence and uncertainty are handled. The reviewed pages are free to read and require no account.\n\nExamples:\n\n- [ASTER: meaning and word origin](https://weird-things.net/things/aster/)\n- [WIDENER: the word relationship in Connections](https://weird-things.net/things/widener-connections/)\n\nWeirdThings is independently operated and is not affiliated with the games, publishers, or platforms it discusses.\n\nSubmitted by: Alex.X",
-    "created_at": "2026-09-19T12:30:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11806"
-  },
-  {
-    "id": 11805,
-    "title": "【开源自荐】Nano-Lumen：一个基于自研内核的 Windows 持久化 AI Runtime",
-    "content": "### 项目名称\n**Nano-Lumen**\n\n### 项目地址\n- GitHub 源码：https://github.com/Fhaxikii/Nano-Lumen\n- License：Apache-2.0\n\n### 预览（终端风主题）\n![界面预览](https://raw.githubusercontent.com/Fhaxikii/Nano-Lumen/main/assets/preview/ui-dark.png)\n\n### 解决了什么痛点？\n现在的 AI Agent 几乎都一个样：开会话 → 丢目标 → 干完走人。历史、状态、生命周期全塞在一个 session 对象里：\n- 同一 session 下上下文长期经过多次压缩后，最终会导致水位逐渐抬高，直到提示 session 不可用，聊了很久的对话说没就没了；\n- 你说\"我刚改的那个文件\"，它不知道，因为它并不能实时感知到你；\n- 它能不能做一件事，完全取决于预先内置了多少工具/MCP，AI的能力边界取决于已有的工具集合。\n\n### 核心功能与特色\n1. **没有 Session，只有 Task**：状态所有权、对话历史、上下文管理、长期记忆是四个独立系统，压缩上下文、崩溃都不会失忆；\n2. **轨迹感知**：它持续观测你在哪个窗口、改了什么文件、停了多久。你说\"继续刚才那个\"，它接得上，不用你解释；\n3. **目标导向，不是工具驱动**：任务超出内置工具时，它先判断能否临时写段脚本直接跑，或者也能将脚本变成长期可用的内置插件；也不行？就自己去 MCP 生态里找——查官方 Registry、翻 GitHub / HuggingFace 做工程尽调，验证通过才接进来。它的上限不是你预装了多少，而是整个互联网有什么；\n4. **操作系统**：GUI 操作按风险分级，危险命令有独立第三方分类器兜底；检测到你动鼠标键盘立刻让出前台，不假设用户本人不中途操作；每一次 OS 动作都留痕；\n5. **上下文治理**：长对话按新鲜度分层压缩，永不爆上下文，也永远不会\"会话已过期\"。\n\n### 技术实现与亮点\n- 截止目前开发期五个月左右、约 9 万行有效代码（含测试，测试套件随仓库分发），单进程 Windows 桌面应用，Apache-2.0；\n- 状态机内核：所有状态变更走唯一 write entry，重启后从持久化状态自动收敛，崩溃/任务当中关闭等情况下，下次启动还能问你要不要继续；\n- 上下文逐级衰减，是渐进压缩而不是粗暴截断；\n- 本地离线 RAG（bge-m3 嵌入 + 向量召回），无云上传；\n......\n\n**目前是 Beta —— 欢迎来读源码、提 issue、改代码。**\n",
-    "created_at": "2026-09-19T11:21:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11805"
   }
 ]
