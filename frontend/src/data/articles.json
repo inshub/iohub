@@ -1,5 +1,13 @@
 [
   {
+    "id": 11923,
+    "title": "【软件自荐】FitStreak：每天练一次，用连续记录养成运动习惯的 iPhone 健身 App",
+    "content": "FitStreak 是我独立开发的 iPhone 健身习惯 App，已上架中国区 App Store，支持简体中文。\n\n很多人不缺训练计划，难的是稳定地开始。FitStreak 的想法是：每天完成一次适合当下状态的训练就算数，App 记录连续天数、经验值和成就，让坚持看得见。\n\n- 每日训练，每个动作有分步骤演示\n- 30 天入门、燃脂、核心训练计划\n- 按目标、时长和手边器材生成训练\n- 低冲击训练和椅上训练，适合刚开始运动的人\n- 可以提前安排休息日，休息不会让连续记录清零\n- 支持 Apple Health，离线也能记录\n\n免费下载，无需注册即可使用；高级版为订阅制（3 天免费试用）。\n\nApp Store：https://apps.apple.com/cn/app/id6759306186\n\n（我不会说中文，以上介绍借助 AI 翻译，如有不通顺之处请见谅。）\n\n",
+    "created_at": "2026-09-25T20:42:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11923"
+  },
+  {
     "id": 11922,
     "title": "【工具自荐】GeneFlow：浏览器里的质粒编辑器，能直接读写 SnapGene 的 .dna 文件",
     "content": "自荐一下我做的 GeneFlow → https://chembiotube.com/app/geneflow\n\n做分子克隆大概都绕不开 SnapGene 或 Benchling。前者确实好用，但它是商业桌面软件，一份授权不算便宜，而且只跑 Windows 和 macOS；后者是 SaaS，得注册账号，序列要传到别人的服务器上。对于小课题、教学实验，或者只是临时想画个质粒图谱看看酶切位点，这两个门槛都有点高。\n所以我把整个质粒编辑器搬进了浏览器。打开就能用，不用装、不用注册。\n\n功能大致是这些：\n- 格式兼容是真的兼容。导入支持 GenBank、FASTA、EMBL、SBOL、GFF3，也能读 SnapGene 的 .dna、Geneious 的 .geneious，以及测序峰图 .ab1 / .scf 和 FASTQ；导出支持 GenBank、FASTA、.dna、EMBL、SBOL、GFF3、BED 七种标准格式。所以它不是个只能自娱自乐的玩具 —— 装过 SnapGene 的人可以两边换着用。\n- 环状和线性质粒图谱、序列图、轨道视图，图谱可以导出 SVG 或高清 PNG，也能直接打印出来贴实验记录本。\n- 酶切做得比较细：内置 325 个限制性内切酶，可以自己加酶；除了完全酶切，还能算部分酶切、模拟凝胶电泳跑出条带，并且检查你挑的那个酶组合 —— 缓冲液兼不兼容、双酶切的最适温度、有没有星号活性风险。\n- 克隆设计：限制性酶切克隆、Gibson、Golden Gate、In-Fusion、SLIC、TA/Topo、Gateway、定点突变，都会给出带重叠区序列的引物方案。\n- 引物 Tm 用的是 NEB 的算法，还会查二聚体、发夹、错配位点和 in-silico PCR 特异性。\n- 测序读长可以比对到参考序列、检变异、导出 VCF；CRISPR 那边能做 gRNA 设计（带评分）、查脱靶、生成 HDR 供体序列。\n另外有个 AI 助手。它不是那种给你一段建议让你自己复制的聊天框 —— 它接了 68 个工具（Vercel AI SDK 的 tool calling），能直接读你当前打开的那个质粒并改它：加注释、插入/替换/删除片段、设计引物、跑一遍克隆方案、模拟酶切、导出文件，都能在对话里做完。\n有一点是刻意做的：这里没有服务器参与计算。你导入的质粒不会出现在任何一次出站请求里 —— 站内所有 API 路由都是后台管理和留言反馈用的，没有一个接口接收序列。计算逻辑全抽成了一个独立的纯 TypeScript 库（质粒解析、环状图谱几何、酶切搜索、克隆组装、序列比对），286 个导出函数、约两万行，React 只负责把结果画成 SVG。这个库 MIT 开源了：https://github.com/yuanluoyue/geneflow-core ，没有 React 依赖，可以拿去接别的界面。\n",
@@ -792,13 +800,5 @@
     "created_at": "2026-09-20T02:59:26Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11821"
-  },
-  {
-    "id": 11820,
-    "title": "【开源自荐】Fourier：让 AI Agent 直接构建视频工程",
-    "content": "# Fourier：一个面向 AI Agent 的视频创作框架\n\n最近做了一个开源项目 Fourier：\n\nhttps://github.com/VoidFunOfficial/fourier\n\n它想解决一个问题：当 AI Agent 已经可以写代码、调用工具和持续修改工程之后，视频创作是否还需要围绕 Timeline、Layer 和 Keyframe 来设计？\n\nFourier 的思路是把视频从“时间轴”变成“工程”。\n\n一个视频由 Scene、Component、Motion、Media 和 Data 等对象组成。Agent 操作的是“这里需要一个产品介绍场景”“这个图表应该怎样运动”，而不是直接维护大量帧数和关键帧。\n\n这也是 Fourier 的核心理念：\n\n**From Timeline to World。**\n\n和 Remotion 相比，Fourier 不希望 Agent 大量处理 `frame`、`Sequence`、`interpolate` 和时间换算，而是尽可能复用模型已经非常熟悉的 React / JSX、CSS、JavaScript 和 Motion 风格 API。\n\n和 Hyperframes 这类更高层的视频 DSL 相比，Fourier 也刻意避免继续扩充专用动画语言。复杂能力优先封装成 React Component，而不是增加新的 timeline 语法。\n\n原因很简单：\n\n**LLM 本来就会前端，就没必要再让它学习一门视频 DSL。**\n\n这也直接降低了 Agent 的上下文成本。很多能力可以直接复用模型已有的前端知识，不需要每次都塞入大量框架文档和专用语法；复杂视觉也可以封装成组件，让 Agent 只关注当前 Scene 和当前任务，而不是反复理解整个视频工程。\n\nFourier 更像一个面向 Agent 的视频工程系统。除了动画接口，它还在处理 Compiler、依赖关系、缓存和增量渲染。\n\n当 Agent 只修改一个 Scene 或一个 Component 时，Fourier 可以根据依赖关系定位受影响的部分，只重新渲染发生变化的内容，而不是每次都重新计算整部视频。\n\n理想流程是：\n\n```text id=\"wza7vr\"\nIntent\n  ↓\nScene / Component / Motion\n  ↓\nCompiler\n  ↓\nRender\n  ↓\nObserve\n  ↓\nPatch\n```\n\n这使 Agent 可以围绕局部上下文持续修改，同时减少无效 token 消耗和重复渲染成本。\n\n目前 Fourier 主要面向 MG 动画、产品介绍、Explain Video、UI 动画和数据驱动视频。下一步会加入多模态视频理解和自动剪辑。\n\n如果说 Remotion 是让开发者用 React 写视频，Fourier 想再往前走一步：\n\n**让 Agent 直接构建、理解和持续维护视频工程。**\n\n项目地址：\n\nhttps://github.com/VoidFunOfficial/fourier\n\n\n由 Fourier + GPT 做的示例视频 \n[苹果广告](https://github.com/VoidFunOfficial/fourier/tree/main/example-ad-apple)\n[视频复刻](https://github.com/VoidFunOfficial/fourier/tree/main/example-clone)\n[项目本身](https://github.com/VoidFunOfficial/fourier/tree/main/fourier-ad)\n",
-    "created_at": "2026-09-20T02:52:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11820"
   }
 ]
