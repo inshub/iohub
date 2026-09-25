@@ -1,5 +1,21 @@
 [
   {
+    "id": 11922,
+    "title": "【工具自荐】GeneFlow：浏览器里的质粒编辑器，能直接读写 SnapGene 的 .dna 文件",
+    "content": "自荐一下我做的 GeneFlow → https://chembiotube.com/app/geneflow\n\n做分子克隆大概都绕不开 SnapGene 或 Benchling。前者确实好用，但它是商业桌面软件，一份授权不算便宜，而且只跑 Windows 和 macOS；后者是 SaaS，得注册账号，序列要传到别人的服务器上。对于小课题、教学实验，或者只是临时想画个质粒图谱看看酶切位点，这两个门槛都有点高。\n所以我把整个质粒编辑器搬进了浏览器。打开就能用，不用装、不用注册。\n\n功能大致是这些：\n- 格式兼容是真的兼容。导入支持 GenBank、FASTA、EMBL、SBOL、GFF3，也能读 SnapGene 的 .dna、Geneious 的 .geneious，以及测序峰图 .ab1 / .scf 和 FASTQ；导出支持 GenBank、FASTA、.dna、EMBL、SBOL、GFF3、BED 七种标准格式。所以它不是个只能自娱自乐的玩具 —— 装过 SnapGene 的人可以两边换着用。\n- 环状和线性质粒图谱、序列图、轨道视图，图谱可以导出 SVG 或高清 PNG，也能直接打印出来贴实验记录本。\n- 酶切做得比较细：内置 325 个限制性内切酶，可以自己加酶；除了完全酶切，还能算部分酶切、模拟凝胶电泳跑出条带，并且检查你挑的那个酶组合 —— 缓冲液兼不兼容、双酶切的最适温度、有没有星号活性风险。\n- 克隆设计：限制性酶切克隆、Gibson、Golden Gate、In-Fusion、SLIC、TA/Topo、Gateway、定点突变，都会给出带重叠区序列的引物方案。\n- 引物 Tm 用的是 NEB 的算法，还会查二聚体、发夹、错配位点和 in-silico PCR 特异性。\n- 测序读长可以比对到参考序列、检变异、导出 VCF；CRISPR 那边能做 gRNA 设计（带评分）、查脱靶、生成 HDR 供体序列。\n另外有个 AI 助手。它不是那种给你一段建议让你自己复制的聊天框 —— 它接了 68 个工具（Vercel AI SDK 的 tool calling），能直接读你当前打开的那个质粒并改它：加注释、插入/替换/删除片段、设计引物、跑一遍克隆方案、模拟酶切、导出文件，都能在对话里做完。\n有一点是刻意做的：这里没有服务器参与计算。你导入的质粒不会出现在任何一次出站请求里 —— 站内所有 API 路由都是后台管理和留言反馈用的，没有一个接口接收序列。计算逻辑全抽成了一个独立的纯 TypeScript 库（质粒解析、环状图谱几何、酶切搜索、克隆组装、序列比对），286 个导出函数、约两万行，React 只负责把结果画成 SVG。这个库 MIT 开源了：https://github.com/yuanluoyue/geneflow-core ，没有 React 依赖，可以拿去接别的界面。\n",
+    "created_at": "2026-09-25T16:09:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11922"
+  },
+  {
+    "id": 11921,
+    "title": "【开源自荐】murder-board：在老板拷问你之前，先让 AI 灵魂拷问你",
+    "content": "一组开源 Agent Skills（纯 Markdown，MIT，无服务器、不需要 API Key）。核心技能「灵魂拷问」读你的汇报 PPT、文档或简历，按真实会场组评审团，把问题按\"致命度 = 被问到的可能性 × 答砸的杀伤力\"排序，一次只问一题、全程角色扮演追问，每个回答打分并给出更好的说法，最后生成一页备答清单。内置述职、竞聘答辩、立项评审、结构化面试、投资人路演等中文场景。\n\n另有 4 个技能：事前验尸、私董会、说人话、高难度对话陪练。\n\n支持 Claude Code、Codex、Cursor、Gemini CLI 等 Agent（npx skills add MbappeWU/murder-board）；不装也能用：把中文提示词粘贴到 DeepSeek、Kimi、豆包。\n\nGitHub：https://github.com/MbappeWU/murder-board\n免安装网页版：https://mbappewu.github.io/murder-board/\n",
+    "created_at": "2026-09-25T15:38:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11921"
+  },
+  {
     "id": 11920,
     "title": "【软件自荐】Grunz：无审查开源模型的聊天和编程 agent，免注册",
     "content": "创始人本人。Grunz 是一个聊天工具 + 一个 Claude Code 风格的编程 agent，只跑无审查的开源模型：qwen、deepseek、glm、kimi 去掉拒答训练（abliterated）的版本。不拒答、没有限制、不说教，问什么答什么，别的 AI 拒绝或者教育你的事，它直接做。\n\n不用注册账号。网页版不用安装，打开就送免费额度：https://grunzai.com/app 。桌面版在 https://grunzai.com ，支持 Mac / Windows / Linux，能改本地文件、写代码跑代码、上网查资料。\n\n欢迎试用，哪里不好用直接在这里告诉我。",
@@ -784,21 +800,5 @@
     "created_at": "2026-09-20T02:52:25Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11820"
-  },
-  {
-    "id": 11819,
-    "title": "【开源自荐】Sound Guard：长时间无播放时自动归零 macOS 输出音量",
-    "content": "我是项目作者，向科技爱好者周刊自荐一个原生 macOS 声音安全工具。\n\n## 项目地址\n\n- GitHub：https://github.com/wlzh/sound-guard-mac\n- 下载：https://github.com/wlzh/sound-guard-mac/releases\n- 开源协议：MIT\n\n## 项目简介\n\nSound Guard（声音守卫）解决一个很具体的问题：Mac 输出音量处于开启状态，但长时间没有播放活动时，自动把系统输出音量设为 0，避免下一次突然播放声音；未经用户点击确认，它不会自行恢复音量。\n\n主要特点：\n\n- 菜单栏驻留，空闲时间可设为 1–120 分钟，默认 5 分钟。\n- 默认只保护内建扬声器，也可以逐项选择其他输出设备。\n- 播放中不会归零；切换设备、睡眠唤醒或检测异常后会重新给予完整等待时间。\n- 可选开启恢复提醒：检测到新的持续播放活动后弹出确认窗口，只有点击“恢复音量”才恢复之前的音量。\n- 手动归零不会建立恢复凭据；设备、路由或音量发生变化时，旧的恢复请求会失效。\n- 不使用麦克风、不保存音频、不上传数据，所有检测都在本机完成。\n\n项目使用 Swift/AppKit 和 Core Audio 开发，不需要第三方运行时或驱动，需要 macOS 14.2 或更高版本。\n\n当前公开版本为 `v0.3.7` 开发预览版。Release 提供 Universal ZIP，采用 ad-hoc 签名且尚未经过 Apple notarization；仓库测试报告中保留了权限、其他设备和长期性能方面仍待补充的实机验证说明。\n\n![Sound Guard 设置界面](https://raw.githubusercontent.com/wlzh/sound-guard-mac/main/docs/assets/v0.2.0/app-overview.png)\n\n",
-    "created_at": "2026-09-20T02:47:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11819"
-  },
-  {
-    "id": 11818,
-    "title": "【开源自荐】Window Layout Memory：按显示器组合记住并恢复 macOS 窗口布局",
-    "content": "我是项目作者，向科技爱好者周刊自荐一个面向多显示器用户的原生 macOS 窗口布局工具。\n\n## 项目地址\n\n- GitHub：https://github.com/wlzh/window-layout-memory\n- 下载：https://github.com/wlzh/window-layout-memory/releases\n- 开源协议：MIT\n\n## 项目简介\n\nWindow Layout Memory 用来分别记住单屏、双屏和多屏环境下的窗口大小、位置与显示器归属。当显示器组合变化、系统重新登录或窗口被临时重排后，可以恢复对应布局，避免每次连接显示器都重新摆放窗口。\n\n项目比较强调“保守恢复”：\n\n- 按完整显示器组合和显示器身份隔离布局，不用单屏记录覆盖双屏偏好。\n- 对同一应用的多个窗口做保守匹配，遇到歧义时不猜测跨屏位置。\n- 支持锁定基准、历史回退、暂停、应用排除、私人备份和只读布局预览。\n- 可选记录用户拖动或缩放后的窗口位置，但无法确认是主动调整时只保留候选。\n- 针对台前调度提供可选的横屏铺满功能，并避开菜单栏和 Dock。\n- 数据仅保存在本机，不上传窗口标题、文档路径或显示器信息。\n\n应用使用 Swift/AppKit 开发，没有第三方运行时依赖。窗口控制需要 macOS 辅助功能权限。\n\n当前 `main` 源码版本为 `v0.3.0-preview.20/build 27`，仍是开发预览版；最新可下载 Release 为 `v0.3.0-preview.19`。Spaces、原生全屏窗口和台前调度分组恢复不在当前范围内。公开 ZIP 为 arm64、ad-hoc 签名且未公证，仓库中记录了测试状态和仍待完成的实机验收项。\n\n![Window Layout Memory 布局预览](https://raw.githubusercontent.com/wlzh/window-layout-memory/main/docs/assets/layout-preview.png)\n",
-    "created_at": "2026-09-20T02:47:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11818"
   }
 ]
