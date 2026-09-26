@@ -1,5 +1,21 @@
 [
   {
+    "id": 11932,
+    "title": "【工具自荐】回声口袋：中文音视频转文字与语音素材工作台",
+    "content": "产品名称：回声口袋\n官网：https://huishengkoudai.cn/\n\n回声口袋提供中文音视频转文字，支持会议与访谈录音、说话人区分、时间轴回听和多格式导出，可通过网页或微信小程序使用，适合整理会议记录、访谈素材和语音内容。\n\n登录后可按账号当前额度体验，具体次数与限制以产品内显示为准。",
+    "created_at": "2026-09-26T12:53:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11932"
+  },
+  {
+    "id": 11931,
+    "title": "【开源自荐】since-cutoff：找出你的编程 Agent 在你锁定的依赖版本上会写错哪些 API",
+    "content": "模型有训练截止日期，但你的 lockfile 没有。since-cutoff 读取项目的 lockfile，找出每个依赖在模型截止日期时的版本，并与你锁定的版本做静态 API 对比；再让不带工具的模型做小任务，用类型检查器（basedpyright）分别对两个版本打分，区分\"过时\"（旧版本正确、新版本出错）和\"写错\"。\n\n实测：Claude Haiku 4.5（训练截止 2025 年 2 月）在示例项目的 5 个被测库中，有 3 个写出了过时代码，例如 anthropic 1.8 已移除的 `temperature=`、huggingface_hub 2.0 已移除的 `resume_download=`。工具生成的 8 条 AGENTS.md 说明（约 390 token，其中 7 条经类型检查验证）让留出任务的正确率从 14% 提升到 57%（样本较小，仅一个模型、一个项目）。\n\n免费开源（MIT），本地运行，不执行任何代码；支持 Claude Code 插件，以及 OpenAI、DeepSeek、Ollama 等模型。\n\n项目地址：https://github.com/MohammadHijjawi97/since-cutoff\n中文说明：https://github.com/MohammadHijjawi97/since-cutoff/blob/main/README.zh-CN.md\n",
+    "created_at": "2026-09-26T09:41:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11931"
+  },
+  {
     "id": 11930,
     "title": "【工具自荐】Professional-Headshot.ai：上传自拍，生成并筛选职业头像",
     "content": "  大家好，我开发了 Professional-Headshot.ai，一款把照片或自拍转换成职业头像的在线工具，适用于简历、 LinkedIn 和个人网站。\n\n  上传清晰照片后，可以描述想要的风格，也可以让 AI 自动选择服装、背景和光线。\n\n  我们重点做了生成后的检查与选片：付费工作室会检查眼睛、牙齿、眼镜等细节，尝试修复或替换有明显问题的图片，每个场景提供一张推荐头像和两张备选，并支持用自然语言继续修改。\n\n  无需注册即可生成一张免费预览，下载带水印；无水印下载和完整工作室功能需付费。照片在云端处理，生成结果仍需自行确认相似度和细节。\n\n  欢迎试用并反馈。\n\n  体验地址：[Professional-Headshot.ai](https://professional-headshot.ai/)",
@@ -350,7 +366,9 @@
     "title": "工具自荐：PecoFence，免费开源的桌面图标管理工具（Stardock Fences 平替）",
     "content": "自荐一个我做的 Windows 11 桌面图标管理工具 PecoFence，可以作为 **Stardock Fences 的免费开源平替**。\n\n主要用来整理桌面上的程序快捷方式、文件和文件夹。可以建立多个分组，拖动、调整大小，也能把分组合成标签页。支持按文件类型、扩展名、名称等规则自动分类，新放到桌面的文件也能按规则归组，不会移动原文件。\n\n演示视频：\n\nhttps://github.com/user-attachments/assets/1f1ed998-e417-4bd6-96b6-5ccef5b1c4ce\n\n![PecoFence 的桌面分组与标签页](https://raw.githubusercontent.com/DayuanJiang/PecoFence/main/docs/assets/tabs.gif)\n\n还支持把真实文件夹映射到桌面、双击隐藏分组，以及保存和恢复桌面布局。\n\n软件免费，不用注册账号，支持中文界面。用 Rust 编写，采用 Apache 2.0 许可证，可从 Microsoft Store 安装，也提供便携 ZIP。\n\n- [GitHub 源码与下载](https://github.com/DayuanJiang/PecoFence)\n- [中文官网与更多演示](https://pecofence.jiang.jp/zh-CN/)\n- [Microsoft Store](https://apps.microsoft.com/detail/9MV6WG3XNWSX)\n\n<details>\n<summary>系统要求与当前测试范围</summary>\n\n仅支持 Windows 11 x64，目前主要在 25H2 上测试，旧版本和多显示器组合仍在继续验证。设置面板需要 WebView2 Runtime。便携构建未签名，首次运行可能出现 SmartScreen 提示。\n\n自动分类不移动文件；主动移动、重命名或删除仍操作真实文件。玻璃效果采样静态壁纸，不会折射其他应用或动态壁纸。\n\n</details>\n",
     "created_at": "2026-09-23T23:06:41Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/11887"
   },
   {
@@ -788,21 +806,5 @@
     "created_at": "2026-09-20T07:27:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11831"
-  },
-  {
-    "id": 11830,
-    "title": "[自荐] EasyDomain：结合网站导航、同类工具发现和域名资料查询的入口",
-    "content": "项目地址：https://easydomain.online/\n英文入口：https://easydomain.online/en/\n\n大家好，自荐一个正在维护的网站项目 EasyDomain。它想解决的问题是：找到一个网站后，除了点开使用，也能更方便地了解它做什么、寻找同类工具，并查看相关的域名与技术资料。\n\n目前可以：\n\n- 按分类、标签和关键词查找网站，继续浏览相关网站。\n- 在详情页查看网站介绍、截图，以及可获取的 DNS、HTTPS 证书、邮件服务、技术栈和社交分享信息。\n- 使用 DNS、HTTPS 等查询入口，配合站内知识文章理解这些信息。\n\n例如，挑选在线工具时可以先从标签找到候选，再看详情和同类网站；排查某个域名的配置时，则可以从查询工具进入对应资料。网站可直接浏览，无需注册。\n\n目前仍在持续完善分类和数据质量；技术信息展示的是采集时的情况，不是安全背书，部分介绍与问答由 AI 辅助生成。欢迎反馈实际使用中遇到的分类、检索和信息展示问题。\n\n这是一则项目方自荐，感谢周刊提供资源投稿入口。",
-    "created_at": "2026-09-20T07:22:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11830"
-  },
-  {
-    "id": 11829,
-    "title": "【开源自荐】清鸽LocalAI：离线、本地、保护隐私的移动端侧LLM应用",
-    "content": "# 介绍\n清鸽LocalAI 是一款专为大语言模型 (LLM) 设计的高性能本地客户端。通过将 AI 的强大能力直接带到您的设备中，清鸽LocalAI 在无需互联网连接的情况下，保障了数据主权与流畅的对话体验。\n\nGithub地址：https://github.com/QingGeTech/LocalAI\n官网：https://qingge.tech/localai/localai.html\n\n# 核心功能：\n本地离线运行，保障数据隐私： 推理和对话均在您的硬件本地完成，数据不离设备，保护您的交互信息安全。\n\nGGUF 模型兼容性： 支持导入并运行 GGUF 格式的模型。您可以根据设备性能和具体需求，自由选择适合的模型。\n\n多模态能力： 除了纯文本对话，清鸽LocalAI 还支持视觉模型 (Vision Models)。您可以添加图片进行内容分析、生成描述或解答视觉相关问题。\n\n深度自定义：推理控制： 精细调整 Temperature、Top-P、重复惩罚 (Repeat Penalty) 等参数。\n\n全量模型设置： 管理上下文长度和系统提示词 (System Prompt)，定制 AI 的行为模式。\n\n# 贡献\n项目目前仍有部分功能模块处于开发中或需进一步优化，如果你喜欢这个项目，欢迎通过 Star 、提交 Issue 和 Pull Request 来帮助改进 清鸽LocalAI\n\n",
-    "created_at": "2026-09-20T06:17:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11829"
   }
 ]
