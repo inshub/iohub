@@ -1,5 +1,29 @@
 [
   {
+    "id": 11958,
+    "title": "【工具自荐】Google Flow API：用 REST 调用 Veo 3.1、Omni 1.1 Flash 和 Nano Banana Pro",
+    "content": "https://useapi.net/docs/articles/google-flow-api-zh?utm_source=ruanyf-weekly&utm_medium=referral&utm_campaign=cn-launch\n\n一个托管的 Google Flow API：绑定自己的 Google 账号后，用 REST 调用 Flow 里的 Veo 3.1、Omni 1.1 Flash（带原生音频，官方 API 没有）和 Nano Banana Pro。示例代码开源：https://github.com/useapi/google-flow-api 。需要 useapi.net 付费订阅（每月 15 美元）。\n\n利益相关：我是 useapi.net 的维护者。\n",
+    "created_at": "2026-09-27T19:54:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11958"
+  },
+  {
+    "id": 11957,
+    "title": "【开源自荐】OpenShorts：把长视频自动剪成竖屏短视频的开源工具",
+    "content": "OpenShorts 是一个开源（MIT）的 AI 视频切片工具，把播客、直播、访谈等长视频自动剪成 9:16 竖屏短视频。它用 faster-whisper 转写，由大模型挑出最精彩的片段，再用人脸追踪重新构图、加上字幕；两人同框时会自动上下分屏，字幕放在接缝处不挡脸。Docker 一条命令自托管，免费、无水印，可以接 Ollama 等本地大模型，另有 MCP 服务器、REST API 和命令行工具（`pip install openshorts`）。说明：本项目是 mutonby/openshorts，与 jnMetaCode/openshorts（OpenShorts 开片）无关。\n\n项目地址：https://github.com/mutonby/openshorts\n\n![OpenShorts 生成的竖屏片段](https://raw.githubusercontent.com/mutonby/openshorts/main/screenshots/split-before-after.gif)\n",
+    "created_at": "2026-09-27T19:05:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11957"
+  },
+  {
+    "id": 11956,
+    "title": "【开源自荐】Fuwa：一个 macOS 窗口置顶工具",
+    "content": "我以前就想要一个这样的工具。做微信小程序时，一边改代码，一边想看开发者工具里的预览；做 App 时要盯着模拟器检查布局。编辑器一盖住这些窗口，就得反复切回来。跟着视频教程操作也一样：看一步、切回软件做一步，再切回去找刚才讲到哪儿。对照设计稿调界面，或照着 PDF 文档填参数时，也会碰到这个问题。\n\n最近借助 AI，总算把这个想法写成了 Fuwa。做完才发现市面上已经有同类工具了，不过这个是我自己做的版本，用下来觉得挺顺手，就开源分享给大家。\n\nFuwa 是一个 macOS 窗口置顶工具。把想看的窗口切到前面，按 `⌥⌘P`，它会在最上层显示这个窗口的实时画面。回到编辑器或正在操作的软件，预览、教程、设计稿还在眼前；置顶画面会让鼠标点击穿过去，不挡住下面的工作。也可以同时固定几个窗口，或者冻结画面，方便对着某一步慢慢做。需要操作原窗口时，可以用“显示源窗口”切回去。\n\nFuwa 支持 macOS 14 及以上。首次固定窗口时需要屏幕录制权限；窗口画面只在本机处理，不上传。\n\n项目地址：https://github.com/yuxino/fuwa\n\n官网与下载：https://fuwa.yuxino.cn\n\n非常欢迎大家试用。如果遇到固定不了的窗口、画面更新问题，或者有更顺手的用法建议，欢迎在仓库提交 issue；想一起改的也欢迎提 PR。\n",
+    "created_at": "2026-09-27T16:39:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11956"
+  },
+  {
     "id": 11955,
     "title": "【开源自荐】FCaptcha：可自行部署的 CAPTCHA，提供 Docker 镜像和 Node.js 表单示例",
     "content": "大家好，我是 WebDecoy 的 Chris Portscheller，FCaptcha 的开发团队成员。这是一次项目自荐。\n\n**FCaptcha 是一个采用 MIT 许可证、可自行部署的开源 CAPTCHA 项目**，提供复选框和无感模式，不使用图片或音频谜题。它结合浏览器信号、交互行为与工作量证明（Proof of Work），用于辅助识别自动化访问。\n\n- 提供 Go、Node.js 和 Python 服务端实现。\n- 提供公开 Docker 镜像 `ghcr.io/webdecoy/fcaptcha`，支持 Linux AMD64 / ARM64；自行部署无需注册托管服务账号。\n- 最近补充了 Docker 部署指南，以及可直接运行的 Node.js 联系表单示例。示例包含浏览器端获取令牌、后端验证、hostname/action 校验、令牌重放拒绝和验证服务故障处理。\n- 表单示例使用 Node.js 22+，支持日语/英语切换，仅用于本地演示，不发送邮件或保存消息。\n\n项目地址：https://github.com/WebDecoy/FCaptcha\n\nDocker 指南：https://github.com/WebDecoy/FCaptcha/blob/main/docker/README.md\n\n可运行示例：https://github.com/WebDecoy/FCaptcha/tree/main/examples/contact-form\n\n在线演示（英文）：https://webdecoy.com/product/fcaptcha-demo/?utm_source=ruanyf_weekly&utm_medium=community&utm_campaign=fcaptcha_oss_launch&utm_content=project_submission\n\n软件免费，但自行部署需要承担服务器和维护成本。检测可能出现误判或漏判，接入时应结合实际用户和流量进行评估，并始终在后端验证令牌。示例中的 10 项集成测试验证的是 API 接入与失败处理，不代表通用的机器人检测准确率。\n\n欢迎试用、阅读代码，并通过项目的 GitHub Issues 提出反馈。感谢考虑收录！\n",
@@ -786,29 +810,5 @@
     "created_at": "2026-09-22T02:02:39Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11856"
-  },
-  {
-    "id": 11855,
-    "title": "【开源网站自荐】AI 知识地图：把 130 个 AI 概念整理成 9 阶段学习路线",
-    "content": "项目地址：https://ai-knowledge-map.com/\n\nGitHub：https://github.com/Little-FishK/AI-knowledge-map\n\n这是我为 AI 初学者做的免费开源学习网站。很多人并不是学不会某个概念，而是不知道大模型、Transformer、Token、RAG、Agent、MCP 等词在整个 AI 领域里处于什么位置。网站把 130 个核心概念按 9 个阶段组织成一张可交互的知识地图，并用 416 条关系展示概念之间的联系。\n\n每个概念都有独立的深入解释页，从“为什么需要它”开始，再通过具体例子说明原理；支持简体中文和英文，阅读无需注册。代码采用 MIT 许可证，项目原创文章与配图采用 CC BY 4.0。\n\n适合零基础学习者、想补齐 AI 全局认知的开发者，以及教师作为课程导航资源使用。",
-    "created_at": "2026-09-22T02:01:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11855"
-  },
-  {
-    "id": 11854,
-    "title": "【开源自荐】数据API平台-DataPoly",
-    "content": "几乎每一个大数据团队都会需要一个类似OneService的服务。这类服务一般要求如下：\n- 统一标准与安全管控：提供统一的接口标准，并通过 API 申请、鉴权、限流、白名单等手段，保障数据安全，避免敏感数据直接暴露给应用\n- 全生命周期管理：支持从 API 的创建、测试、发布到调用的全流程管理，并实现开发态与生产态的环境隔离。\n- 运维监控与告警：可以监控 API 的调用量、异常情况，并支持配置超时、失败、限流等告警（如企业IM、邮件、短信），方便运维人员及时发现问题\n\n这类项目是必须要做的，但其实做到后面都是大相径庭的，为了给大家节省力气，容我向大家介绍一下主角——DataPoly。\n\nDataPoly（<https://github.com/camilesing/DataPoly）>\n是个分布式、有高可用机制的OneService应用，基于SQLRest遵循BSD协议进行了二次开发。进行二次开发的主要原因如下：\n\n1.  项目扩展点不足。比如一个SQL在上线前，我们要看其执行计划，是不是符合我们的期待。但这个不应该写在开源项目里，哪怕写在自己的项目里，这样后面去合并上游也会很麻烦。\n2.  在面对较为灵活的场景，有比直接写Grovvy脚本更好的方案。Grovvy还是相关还是面向开发者，对数仓同学并不友好。\n3.  权限管控能力较为基础，没有多角色的划分。\n\n在目前的v1.9.x实现中，已经支持了部分重要扩展点，并支持Spring or SPI的方式来向应用注入扩展。整体功能仍在丰富中。原相关功能展示：\n\n<img width=\"1247\" height=\"867\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/831f20ac-cea2-4137-a114-e60778f5a25c\" />\n<img width=\"1213\" height=\"680\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d71cf5d7-115a-42bf-a630-fe4ee7117d1d\" />\n<img width=\"1251\" height=\"265\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4a64495c-ffe1-4ed6-8b29-d5348b0ce8b0\" />\n<img width=\"1251\" height=\"256\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/320a77d4-73be-4875-98de-9481b00b09d4\" />\n<img width=\"1243\" height=\"420\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/44408fac-5ace-4110-963d-ed180ab61d1b\" />\n<img width=\"1241\" height=\"250\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c02c01de-2180-4854-a522-86e33e45b053\" />\n<img width=\"1241\" height=\"269\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f0ae790f-5fb3-4b47-84e2-d8e071acd950\" />\n<img width=\"1213\" height=\"1114\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6d4cacc5-b5f8-477f-a6c7-701242533bcd\" />\n<img width=\"1150\" height=\"296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd35ab7f-7c5d-40b8-890d-07b80cbe497f\" />\n\n<img width=\"1652\" height=\"1564\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8de6b24f-2619-48b3-99bd-a3212b72ebb2\" />\n<img width=\"2130\" height=\"518\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d200face-3ec9-42e4-9f09-010670d1f99b\" />\n<img width=\"2230\" height=\"568\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e3c394d2-e9de-4772-b944-a5096a1a254a\" />\n<img width=\"1562\" height=\"1152\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b8dffbe0-8a00-48b7-8c04-2c1373a80f6a\" />\n<img width=\"2360\" height=\"600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f2cc37fb-bb9e-4f15-b044-61a58c2af7b8\" />\n\n在接下来的2个月内，我将继续围绕着上述三个核心原因进行迭代，同时还会考虑系统集成便利度与界面交互的相关改进。大家遇到任何问题也可以开issue，觉得好用也可以给项目点个star，鼓励我持续迭代它。",
-    "created_at": "2026-09-22T01:02:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11854"
-  },
-  {
-    "id": 11853,
-    "title": "【开源自荐】ETON：一个用 **原生 Win32 C API**（不依赖Electron）实现的、类 Notepad++ 的 Windows 文本编辑器，支持markdown预览",
-    "content": "【开源自荐】ETON：一个用 **原生 Win32 C API**（不依赖 MFC / Qt / .NET / Electron）实现的、类 Notepad++ 的 Windows 文本编辑器。\n项目地址：https://github.com/qihaiyan/eton\n\n软件大小只有2M。\n\n源码可直接用 Visual Studio 生成工具（MSVC）编译为单个 eton.exe\n静态链接运行库（/MT）+ Scintilla + Lexilla，编译产物仅依赖系统 DLL，可直接拷贝到其他 Windows 机器运行\n内嵌 Common Controls v6 清单，自动获得系统主题（含暗色标题栏/控件）\nMarkdown 预览：只LaTex公式和Mermaid图标\n\n<img width=\"2648\" height=\"5313\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d85dfa74-c16f-4b98-b3a9-6d9b5e22fa0d\" />\n\n",
-    "created_at": "2026-09-22T00:50:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11853"
   }
 ]
