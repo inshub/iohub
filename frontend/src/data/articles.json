@@ -1,5 +1,125 @@
 [
   {
+    "id": 11975,
+    "title": "【开源自荐】mpc-plus：一份配置文件，发布多平台多环境小程序",
+    "content": "# [mpc-plus](https://github.com/pkc918/mpc-plus)：一份配置文件，管好多平台小程序上传\n\n小程序多端发版时，常见做法是：**每个平台一套脚本、一堆零散的 JSON/CLI 参数**，本地能跑，CI 里又要再抄一遍；AppID、私钥、Token 写死在仓库里也不安心。\n\n**[MPC Plus](https://github.com/pkc918/mpc-plus)** 想解决的是：**把「读配置 → 解析多平台 / 多环境 → 执行上传」收成一条清晰链路**，尤其适合 **uni-app / Taro 等多端模版**：构建产物分目录，上传逻辑却可以在 **一个文件里统一描述**。\n\n---\n\n## 和其它上传工具不太一样的点\n\n| 常见做法 | MPC Plus |\n| --- | --- |\n| 各平台各写脚本，参数散落在命令行 | **一个 `mpc.config.ts`**，结构、平台、环境一眼能看 |\n| 敏感信息容易进仓库 | 配置里用 **`process.env`**，凭据放 **`.env.*` 或 CI 密钥**，对隐私更友好 |\n| 一次只传一个端 | **`platforms` 下多平台 × 多 `env`**，可筛选，也可 **一次跑完全部** |\n| CI 和本地两套逻辑 | 同一套配置：**CI 只注入环境变量**，本地用 `.env.prod` 等文件 |\n\n核心思路：**配置是 TypeScript，可读、可类型检查；运行时按 `--env` 加载对应 `.env`，再解析出每个平台、每个环境的上传目标**。\n\n---\n\n## 已支持平台\n\n- [x] 微信\n- [x] 抖音\n- [x] 支付宝\n- [x] 小红书\n\n---\n\n## 配置示例\n\n```ts\nimport { defineConfig } from \"@mpc-plus/cli\";\n\nexport default defineConfig({\n  project: {\n    root: \"./dist/build/mp-weixin\",\n  },\n\n  release: {\n    version: \"1.0.0\",\n    description: \"Release v1.0.0\",\n  },\n\n  platforms: {\n    wechat: [\n      {\n        env: \"dev\",\n        appid: process.env.WX_APPID ?? \"\",\n        privateKeyPath: process.env.WECHAT_PRIVATE_KEY_PATH ?? \"./private.key\",\n      },\n      {\n        env: \"prod\",\n        appid: process.env.WX_APPID ?? \"\",\n        privateKeyPath: process.env.WECHAT_PRIVATE_KEY_PATH ?? \"./private.key\",\n      },\n    ],\n    // douyin / alipay / xhs … 同一文件里继续加\n  },\n});\n\n```\n\n本地 `.env.prod` 或 CI 里配置 `WX_APPID`、`WECHAT_PRIVATE_KEY_PATH` 等即可，**不必把密钥写进配置文件本身**。\n\n---\n\n开源项目，欢迎试用、提 Issue / PR。如果你也在做多端小程序模版或 CI 发版，欢迎交流。\n",
+    "created_at": "2026-09-28T07:32:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11975"
+  },
+  {
+    "id": 11973,
+    "title": "【网站自荐】Hysen Labs：跟踪 9 周 GitHub 星标增速榜，64% 的项目只上榜过一次",
+    "content": "## 网站地址\n\n- 每周星标增速 Top 10：https://hysenlabs.com/zh-cn/weekly\n- 近 30 天增速榜（附 CSV 下载）：https://hysenlabs.com/zh-cn/data/star-growth\n- 主站：https://hysenlabs.com/zh-cn\n\n## 一个数据发现\n\n我给大约 1.9 万个开源项目做每日 GitHub 星标快照，每周发布一次「星标增长最快的 10 个项目」。每周一页，发布后不再修改，任何人都能复核。\n\n到现在有 9 个完整周（2026-07-27 至 09-21）：\n\n- 90 个名额只由 47 个不重复的项目填满，其中 30 个（64%）只上榜过一次。\n- 相邻两周平均只有 4.9 个项目重合。\n- 连续在榜最久的是 mattpocock/skills、stablyai/orca、DietrichGebert/ponytail，都是 7 周。三个在同一周（09-14）一起掉榜，stablyai/orca 下一周又回来了。\n\n也就是说，「本周 GitHub 最火」这类榜单上的项目，大部分只有一周的热度。\n\n## 网站是什么\n\nHysen Labs 解读开源和 AI 项目，每篇从项目自己的 GitHub 仓库写起，主要回答两个问题：这个项目还在维护吗？它的许可证允许你怎么用？内容以英文为主，部分有中文、日文、德文、法文版本。\n\n## 口径与局限\n\n每周取最接近周一和周日边界的快照（相差 36 小时以内），缺快照的项目直接排除，不做估算；已归档和镜像仓库不计入。样本只有 9 周，项目池也偏 AI 和开发者工具，不代表整个 GitHub。\n\n我是网站作者。",
+    "created_at": "2026-09-28T06:38:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11973"
+  },
+  {
+    "id": 11972,
+    "title": "【开源自荐】DiskPilot Lite：双击一次，生成 C 盘清理建议报告",
+    "content": "一个 Windows 小工具，压缩包约 23 KB，解压后双击就能扫描 C 盘（调用本机的 WizTree），在本地生成一份离线的中文报告，按「放心清 / 在软件里清 / 先看再清」三档列出建议，并写明每一项去哪里清。\n\n它只给建议，不删除任何文件，也不上传数据（报告页面用 CSP 禁止了所有网络请求）。WizTree 个人使用免费，因为许可协议不允许再分发，所以需要单独安装，工具会在征得同意后通过 winget 安装。\n\nhttps://github.com/xpeng5278-web/diskpilot-lite\n\n![](https://raw.githubusercontent.com/xpeng5278-web/diskpilot-lite/main/docs/images/report-demo.png)\n",
+    "created_at": "2026-09-28T06:37:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11972"
+  },
+  {
+    "id": 11971,
+    "title": "【开源自荐】Umem-cache：键值对缓存",
+    "content": "项目地址\n========\n\nhttps://github.com/imchuncai/umem-cache\n\nUmem-cache\n===========\n\nUmem-cache是一个用户空间键值对缓存。它的目标是做到全世界最好。\n\n在基于Zipf分布且键值对大小在1KB以内的基准测试中，Umem-cache的命中率比Memcached和Redis高\n出10%，命中吞吐量高出50%。\n\n特性\n====\n\n强一致\n------\n\n缓存数据能够与后端数据库保持完全同步。换言之，你不会取到旧数据。\n\n反缓存击穿\n---------\n\n反缓存击穿是内置的。\n\n缓存击穿是指当某个热键首次进入缓存时，每个人都争相将其缓存，从而给后方数据库带来压力。反缓存击\n穿通过仅允许一个连接执行缓存工作来避免这种情况。\n\n内存碎片化\n---------\n\n我们没有内存碎片化问题，我们会通过移动键值对的存储位置来紧凑化内存布局。\n\n严格控制内存使用\n--------------\n\n我们充分尊重用户的配置。我们对内存使用（包括哈希表的内存占用）进行精确控制，增加键值对的数量\n不会导致额外的内存消耗，并且哈希表的大小是根据管理的键值对的数量动态调整的。\n\n多线程\n------\n\n我们提供多线程配置以充分发挥机器的性能。除了主线程和配置指定的工作线程外，我们不会创建其他线程。\n\n无锁\n----\n\n我们的多线程方案是无锁的，不存在随着线程数量上升反而导致性能下降的情况。\n\nTLS\n---\n\n我们提供了可选的TLS配置，该配置使用mTLS双向身份验证。\n\n集群\n----\n\n我们提供可选的集群配置，它基于raft共识算法实现，提供一致性和可用性保证。\n\n任意的键和值\n-----------\n\n键和值可以是任意字节数组，除了在使用单例时键的长度需要限制在255字节以内，使用集群时键的长度需要限制在247字节以内。",
+    "created_at": "2026-09-28T06:10:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11971"
+  },
+  {
+    "id": 11970,
+    "title": "【开源自荐】dowse：公司代码散在上百个仓库里？一个搜索框全搜完",
+    "content": "你有没有过这些时刻：\n\n- 要改一个公共接口，却不知道**哪些服务在调用它**，只能挨个仓库去翻\n- 线上报了一行错误日志，不知道**是哪个服务打出来的**\n- 要升级一个依赖，想知道**各个项目现在用的是哪个版本**，结果开了二十个窗口\n- GitHub 的代码搜索很好用，但**搜不到公司内网的仓库**，也搜不到你本地还没推送的改动\n\n代码一旦分散在几十上百个仓库里，「找到它」本身就成了一件体力活。\n\n**dowse 让你像用 Google 一样搜自己电脑上的所有代码仓库。** 输入一个词，所有仓库的结果就出来了，每条都标好来自哪个项目、哪个分支。\n\n![dowse：边输入边出结果，一键筛到某种语言，再切成表格](https://raw.githubusercontent.com/HenryZhang-ZHY/dowse/master/docs/images/dowse-search.gif)\n\n## 有多快\n\n我自己每天用的就是一个 111 个仓库、87 万个文件、20 GB 代码的库。搜一个具体的类名或者配置项，**十几毫秒到几十毫秒**出结果，比你切到另一个窗口还快。\n\n## 它能帮你做什么\n\n- **一次搜完所有仓库**：把存代码的文件夹拖进来，里面的仓库自动全部加入。也可以一键从 GitHub 把整个组织的仓库都 clone 下来。\n- **结果点一下就能缩小范围**：按项目、语言、目录一键筛选，几千条结果点几下就能缩小到你要的那几条。\n- **搜索结果直接变成表格**：想知道每个项目用的是哪个版本？一次搜索就能列成一张表，导出 Excel 就是一份现成的盘点报告。\n\n  ![表格视图：所有项目的版本号，一次搜索列成一张表](https://raw.githubusercontent.com/HenryZhang-ZHY/dowse/master/docs/images/table-view-capture-groups.webp)\n\n- **永远是最新代码**：可以设置每小时自动拉取，本地改了文件也能马上搜到，不用手动刷新。\n- **会用 GitHub 搜索，就会用 dowse**：搜索语法和 GitHub 代码搜索一样，没有学习成本。\n- **AI 编程助手也能用**：Claude Code、Cursor 这类工具可以通过命令行调用 dowse，让 AI 在你所有的仓库里找代码，而不只是当前这一个。\n- **代码不出你的电脑**：不上传、不联网索引、不需要部署服务器，下载解压就能用。\n\n## 试一试\n\n免费开源（MIT），支持 Windows、macOS、Linux：\n\n- 下载：https://github.com/HenryZhang-ZHY/dowse/releases/latest\n- 源码：https://github.com/HenryZhang-ZHY/dowse\n- 详细介绍：https://shuzhi.zone/blog/dowse-local-code-search-across-git-repositories/\n\n一句话简介（供周刊参考）：dowse 把你电脑上散落的几十上百个代码仓库放进一个搜索框，找调用方、查版本、定位日志，一次搜完。\n\n欢迎试用，有想法随时提 issue。\n",
+    "created_at": "2026-09-28T05:49:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11970"
+  },
+  {
+    "id": 11969,
+    "title": "【开源自荐】SpokenLog：录音与转写资料库，可选本地模型或自带 API",
+    "content": "我做了 SpokenLog，想把录音、转写、回听和修改文字放在同一个应用里，不把录音库绑定在一家转写服务上。\n\n可以选择本地 SenseVoice、Moonshine、Whisper，也可以使用自己的 Groq 或 Cloudflare 凭据。带时间戳的文字能点击回听，改完可导出 TXT、SRT、VTT、JSON。\n\n源码和下载：https://github.com/Blue-B/SpokenLog\n\n支持 Windows 和 Android，也提供 macOS/iOS 构建版本，但当前 Apple 版本还没有在设备上亲自测试。下面是 Windows 实际操作的原速片段，使用合成语音样例。\n\n项目采用 AGPL-3.0-only。界面目前只有英语和韩语。本地转写只接受 WAV，模型需另行下载；云服务的额度和费用另计。Windows 未签名，macOS 未公证，iOS 需要自行重签名。\n\nhttps://github.com/user-attachments/assets/cf12c70e-a913-4209-887f-9ed36139ffa6",
+    "created_at": "2026-09-28T05:41:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11969"
+  },
+  {
+    "id": 11968,
+    "title": "【网站自荐】Uncountable：康托对角线证明与无穷大分类学交互博物馆",
+    "content": "## 网站/项目地址\n- 主站（支持中英双语）：https://uncountable.victor42.work/\n- 中文直接访问：https://uncountable.victor42.work/?lang=zh\n\n## 内容简介\n这是一个博物馆级的数学概念交互探索展（Explorable Explanation）：\n\n从 1638 年伽利略的平方数悖论（自然数与完全平方数的一一对应）切入，一路推演至 1891 年格奥尔格·康托尔（Georg Cantor）打破人类直觉的对角线论证法（实数不可数）。\n\n## 核心交互特色\n1. **可探索解释（Explorable）**：不只是静态图文，全站设置了六个循序渐进的展厅，读者可以通过鼠标点击矩阵格子，亲手构造出那行打破“实数可数假定”的对角线新数字（第 n 位小数取反），直观触摸数学史上最优雅的构造性反证法。\n2. **无穷大分类学**：通过直观的可视化映射，让普通读者在交互操作中亲身体会到：自然数、奇偶数、有理数虽然都是“无穷大”，但它们是“同一种大小”（阿列夫零）；而实数轴上的点是“另一种更大、无法列举的无穷大”。\n3. **博物馆级交互美学**：黑金夜调风格，纯前端静态渲染，零广告、零追踪，原生适配移动端与桌面端，支持一键切换简体中文与英文。",
+    "created_at": "2026-09-28T04:34:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11968"
+  },
+  {
+    "id": 11967,
+    "title": "【开源自荐】AgentHop：让你的 Agent 和对方的 Agent 直接对话",
+    "content": "你问你的 AI，他问他的 AI，然后你们俩在中间来回复制粘贴。AgentHop 让两个 Agent 直接对话：一方开房间拿到配对码，另一方用这个码加入，两台机器都不需要公网地址；消息端到端加密，中继只转发密文。\n\n它作为 MCP server 接进 Claude Code、Codex、Cursor、Gemini CLI、grok，认识一次之后还能按名字邀请，中继也可以自己搭。单文件，不需要 Node.js，Apache-2.0。\n\n源码：https://github.com/sdyuyouth/agenthop\n\n![AgentHop](https://github.com/user-attachments/assets/d41acd4c-9771-4350-8449-bdfb701c1457)",
+    "created_at": "2026-09-28T04:24:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11967"
+  },
+  {
+    "id": 11966,
+    "title": "【工具自荐】Motion Control AI：让 AI 角色动画动作可控可复现",
+    "content": "Motion Control AI 是一个面向 AI 视频创作者的浏览器工具，用「参考视频驱动 + 角色图片」的方式，让 AI 角色动画从随机生成变成可控、可复现的生产流程。\n\n**它解决什么问题**\n\n生成式视频模型容易出现动作漂移、身份不一致、背景扭曲等随机问题，创作者很难稳定复现同一个角色。Motion Control AI 的思路是：创作者上传一张角色图和一段参考表演视频，工具负责把参考视频中的运动迁移到角色身上，同时保留角色的外观特征。\n\n**主要能力**\n\n- 参考视频动作迁移：提取参考片段中的姿态、节奏与手部轨迹\n- 角色身份保持：控制面部、发型、服装与身体比例的稳定性\n- 一次一个变量的迭代：固定输入只调整一个参数，便于对比与回归测试\n- 分离评审：把「动作是否到位」和「身份是否稳定」当作两个维度分别评估\n\n**适用人群**\n\nAI 视频创作者、角色动画作者、数字人内容团队、独立短片作者，以及需要批量产出一致角色镜头的团队。\n\n**工具地址**\n\nhttps://motioncontrolai.online/\n\n**为什么自荐**\n\n这类工具在中文创作者社区里的讨论还不多，但「让 AI 视频动作可控」是普遍痛点。希望能收到关于技术方案、定价模型和使用流程的反馈，也欢迎在 issues 中交流实际使用中遇到的问题。",
+    "created_at": "2026-09-28T03:46:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11966"
+  },
+  {
+    "id": 11965,
+    "title": "【网站自荐】问迹 wenjiai：AI 产品每天冒出几十个，我做了个 AI 原生的IT 桔子",
+    "content": "每天都有 AI 新品发布，融资新闻也刷不完。可真要回答：这个赛道都有谁、谁拿了钱、我还能不能进，还得在 Product Hunt、36 氪、公众号、官网之间来回翻。\n\n我做了个网站把这些收拢到一处，叫问迹（wenji）。想做成一个 AI 原生的 IT 桔子 / Crunchbase：不光查公司，也帮你判断赛道、比竞品，最后把自己的产品推出去。\n\n目前有什么：\n\nProductBook 产品库：收录 1.4 万多个 AI 产品和公司。可以按赛道、能力、场景、目标用户、行业、技术路线、商业模式等维度筛选，一共 1100 多个标签。\nAI语义搜索：不记得产品名也能找，直接搜“帮电商商家自动回客服的 Agent”就行。\nTrackBook 赛道报告：已经写了 AI 编程 Agent、AI 陪伴、视频生成、世界模型、灵巧手、推理平台、电商 Agent、AI 建站这 8 个赛道。每篇都讲清楚赛道边界、技术路线、玩家和融资，还有“新人还有没有机会”。报告里提到的公司都能点进产品页。还会持续扩展。\n商业速览：200 多家公司的一页纸速读，内容有产品体验、团队背景、怎么赚钱、现在进场贵不贵。\n榜单和标签页：按赛道看热门产品，一个标签点进去就是一个小赛道的玩家列表。\n产品自荐入口：做了 AI 产品的可以直接提交，审核后上架，自动打好标签。\n\n后面想做的：\n竞品分析：选中一个产品，自动拉出同赛道的对手，对比功能、定价、融资、团队，生成一份能直接拿去写 BP 的竞品表。\n内容宣发：产品上架后，帮你生成赛道稿、小红书图文和公众号排版，让新产品被搜到、被写进赛道报告里。\n说白了，问迹想陪创业者走完三步：先看清赛道，再看清对手，最后让别人看见你。\n\n网站：https://wenjiai.cn/",
+    "created_at": "2026-09-28T03:30:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11965"
+  },
+  {
+    "id": 11964,
+    "title": "【工具自荐】QDuo: 一款 AI 加持的环形划词 app",
+    "content": "\n### 功能介绍：\n\n1. 纯 SwiftUI Native 实现，轻量，快速\n2. 支持三种风格：环形风格，胶囊风格展示\n3. 动作支持分组（二级菜单）\n4. 支持 AI 动作，翻译、润色、搜索、朗读、处理文本、问大模型等 30+ 内置动作，可自定义动作\n\n### 开源地址\n\nGitHub: https://github.com/XueshiQiao/qduo\n> 构建已通过了 Apple 公证\n\n### 视频 & 截图\n\nhttps://github.com/user-attachments/assets/53a60172-9117-409d-a4bb-9696a673e0a3\n\n\n<img width=\"1298\" height=\"974\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/66dc82fc-323d-4628-b0a7-5a9c5be06aee\" />",
+    "created_at": "2026-09-28T03:27:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11964"
+  },
+  {
+    "id": 11963,
+    "title": "【开源自荐】TakeBoard：面向 ComfyUI 创作者的本地优先项目画布",
+    "content": "项目关联说明：这是 TakeBoard 项目的自荐，处于公开测试阶段。\n\n**TakeBoard 是面向 ComfyUI 创作者的开源、本地优先项目画布**：把参考素材、镜头输入、工作流和生成结果放在同一个项目里，便于管理多次尝试及其提示词和参数。它不替代 ComfyUI 的节点编辑器，也不是新的生成模型。\n\n- 导入图片、视频等素材，在画布上连接支持的输入并查看生成记录。\n- 使用自己的本机或远程 ComfyUI；本地项目管理无需注册。\n- 当前 beta.17 提供 macOS、Windows、Debian/Ubuntu 的 x64 / ARM64 原生安装包。\n- Apache-2.0 开源。生成仍需要用户自备 ComfyUI、模型和节点；导入任意工作流不代表可直接执行。\n\n适合已经在用 ComfyUI、希望把多镜头素材与结果整理在一起的创作者。桌面包尚未进行 Apple 公证或 Windows 商业代码签名；安装包验证不是所有 GPU 与工作流的生成验证。\n\n源码：https://github.com/Fourques/Takeboard\n\n下载：https://github.com/Fourques/Takeboard/blob/main/docs/downloads.md\n\n首次试用：https://github.com/Fourques/Takeboard/blob/main/docs/first-session.md\n\n目前希望收集首次使用与工作流兼容性的实际反馈。感谢编辑审阅。\n",
+    "created_at": "2026-09-28T03:25:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11963"
+  },
+  {
+    "id": 11962,
+    "title": "【网站自荐】SupaQR：把二维码、短链接和文件分享整合到一起的在线工具",
+    "content": "# 【网站自荐】SupaQR：一个把二维码、短链接和文件分享放在一起的在线工具\n\n大家好，向大家自荐一个我自己开发的产品 **SupaQR**：\n\nhttps://supaqr.com/\n\nSupaQR 是一个集 **二维码生成、短链接、文件分享和访问统计** 于一体的在线工具。\n\n最开始它只是一个二维码生成器，后来随着自己不断使用，我发现二维码背后真正需要解决的问题，往往并不只是“生成一张二维码图片”。\n\n比如：\n\n- 印刷出去的二维码，目标链接以后可能需要修改\n- 想知道二维码到底有没有人扫、什么时候扫、从哪里扫\n- 想把 PDF、图片、音频等文件直接变成二维码\n- 营销活动需要批量生成二维码\n- 一个很长的网址，希望变成容易传播的短链接\n- 文件发给客户以后，希望知道有没有被打开\n- 希望二维码和短链接都能使用自己的品牌域名\n\n这些需求通常需要几个不同的工具才能完成。\n\n所以我慢慢把 SupaQR 做成了现在这个样子，希望尽量用一个产品解决从：\n\n**二维码 / 短链接 → 分享 → 访问 → 数据统计**\n\n这一整套流程。\n\n## 为什么开发 SupaQR？\n\n市面上其实已经有很多优秀的二维码和短链接产品。\n\n但我自己使用这些产品时，一直有两个比较明显的感受。\n\n第一个是功能比较分散。\n\n二维码生成、URL Shortener、文件分享、访问统计，经常分别属于不同的产品。\n\n第二个是很多二维码工具的定价并不便宜。\n\n尤其是动态二维码。\n\n二维码一旦印在包装、宣传册、名片或者线下物料上，重新印刷的成本其实远远高于二维码本身。\n\n所以我希望 SupaQR 能做成一个：\n\n**功能足够完整，但价格尽量简单、便宜，而且普通人不需要研究半天就能使用的工具。**\n\n## 目前可以做什么？\n\n### 1. 动态二维码\n\n可以创建动态二维码。\n\n二维码印刷以后，即使目标网址发生变化，也可以直接修改二维码背后的目标内容，不需要重新生成和印刷二维码。\n\n同时可以查看二维码的扫描数据。\n\n### 2. 自定义二维码样式\n\n支持修改：\n\n- 颜色\n- Pattern\n- Eye 样式\n- Frame\n- Logo\n\n生成以后可以下载 PNG、JPG、SVG、EPS 等格式。\n\n所以除了网页使用，也比较适合包装、海报、宣传册等需要高清打印的场景。\n\n### 3. 多种二维码类型\n\n除了普通网址二维码，目前还可以创建包括：\n\n- URL\n- File\n- Document\n- vCard\n- Page\n- Form\n- Menu\n- App Store\n- Image\n- Audio\n- Video\n\n等不同类型的二维码。\n\n### 4. 短链接\n\nSupaQR 同时也是一个 URL Shortener。\n\n可以：\n\n- 创建短链接\n- 自定义短链接后缀\n- 使用自己的域名\n- 查看点击统计\n- 设置链接过期时间\n- 批量创建链接\n\n这样二维码和短链接的数据可以放在同一个后台管理。\n\n### 5. 文件分享\n\n可以直接上传：\n\n- 图片\n- PDF\n- Word\n- Excel\n- PPT\n- 视频\n- 音频\n- Markdown\n- 3D 文件\n\n等文件。\n\n上传以后可以生成分享链接或者二维码。\n\n同时支持密码、过期时间、下载限制和访问统计等功能。\n\n所以有时候甚至不需要自己先找地方托管 PDF，再生成二维码。\n\n### 6. 数据统计\n\n动态二维码和短链接都可以记录访问数据。\n\n对于线下宣传来说，我觉得这个功能比较有价值。\n\n因为以前印一张传单或者贴一个海报，基本不知道到底有没有人看。\n\n换成动态二维码以后，至少可以知道：\n\n**这张二维码有没有人扫描。**\n\n也可以进一步分析不同二维码、不同渠道和不同线下位置带来的访问效果。\n\n### 7. API\n\nSupaQR 也提供 API：\n\nhttps://docs.supaqr.com/\n\n如果需要批量生成二维码或者把二维码、短链接能力接入自己的系统，可以直接通过 API 完成。\n\n## 免费版\n\nSupaQR 有免费版本，不需要信用卡。\n\n目前免费计划可以创建动态二维码、静态二维码和短链接，并且二维码扫描次数不限。\n\n对于个人项目、小网站或者只是偶尔需要制作二维码的人，免费版本基本就可以直接开始使用。\n\n## 我比较想做的一件事\n\n我不太希望 SupaQR 最后只是变成一个：\n\n**“输入网址 → 下载二维码”**\n\n的工具。\n\n我更希望二维码成为连接现实世界和网页服务的一个入口。\n\n比如一家餐厅贴出的二维码，背后不只是一个 PDF；\n\n一家维修公司的车辆上贴出的二维码，背后也不一定只是官方网站；\n\n展会、产品包装、门店、设备、名片等线下场景，其实都可以通过二维码连接到不同的网页应用和后续操作。\n\n所以我现在也在继续尝试，让 SupaQR 从单纯的 QR Code Generator，慢慢变成：\n\n**Scan → Action → Track**\n\n即：\n\n**扫码 → 完成操作 → 记录结果**\n\n而不仅仅是“扫完跳到一个网址”。\n\n这个方向目前还在持续开发。\n\n## 一些适合 SupaQR 的场景\n\n目前我觉得比较典型的场景包括：\n\n- 餐厅菜单二维码\n- 产品包装二维码\n- PDF / 产品手册二维码\n- 展会宣传二维码\n- 名片 / vCard\n- Wi-Fi 二维码\n- App 下载二维码\n- 音频导览\n- 活动二维码\n- 短链接营销\n- 文件分享\n- 印刷品访问统计\n\n如果你的二维码以后可能修改内容，建议使用动态二维码；\n\n如果内容永远不会变化，用静态二维码就足够了。\n\n## 最后\n\n这是一个还在持续开发中的产品。\n\n地址：\n\n**https://supaqr.com/**\n\nQR Code Scanner：\n\n**https://the-qr-scanner.com/**\n\nAPI 文档：\n\n**https://docs.supaqr.com/**\n\n如果大家平时使用二维码、短链接或者文件分享工具时，有什么特别难用、特别贵，或者一直没有被解决的问题，也欢迎在 Issue 下面告诉我。\n\n我会认真看大家的反馈。\n\n谢谢大家！",
+    "created_at": "2026-09-28T03:21:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11962"
+  },
+  {
+    "id": 11961,
+    "title": "【文章自荐】原来几倍光学变焦是这么回事",
+    "content": "## 文章标题\n原来几倍光学变焦是这么回事\n\n## 文章链接\nhttps://victor42.eth.limo/post/3645\n\n## 内容简介\n关于焦距、光圈与手机多摄底层物理机制的极简科普（全文约 1100 字）：\n\n1. **光圈公式的物理本质**：光圈值 $f/x$ 就是字面除法（焦距除以孔径倍数），因此分母越小光圈越大；用相对值而非绝对孔径是为了让不同焦距镜头在同一数值下获得相同的曝光与景深。\n2. **手机“光学变焦”真相**：受限于机身物理厚度，手机并非专业相机的连续镜组伸缩，而是在几个固定焦距的独立定焦镜头之间切换，中间过渡倍率全靠算法数码裁切。\n3. **实机画质跳跃解谜**：以 OPPO Find X6 实测为例，解释了为什么 1x（主摄）清晰、2x（1x裁切）突然变糊、3x（切长焦）又变清晰、6x（长焦裁切）再次变糊的底层逻辑。揭开厂商“几倍光学变焦”宣传话术的本质。",
+    "created_at": "2026-09-28T03:00:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11961"
+  },
+  {
+    "id": 11960,
+    "title": "【项目自荐】博客时光机：在一台 Macintosh 里翻看博客历史",
+    "content": "我给自己的 Hugo 博客做了一个「时光机」。\n\n每次博客发布后，都会将静态站点保存到 IPFS，并记录对应的 CID。\n\n现在把这些历史快照重新整理成可视时间线，放进一台复古 Macintosh 里，可以直接翻看博客过去的样子。\n\n体验地址：\n\nhttps://liudon.com/time/\n\n效果图：\n\n![博客时光机效果](https://liudon.com/posts/hugo-ipfs-time-machine-v2/time-machine-history.png_720x.webp)\n\n动图略大，加载会慢一些。\n\n![博客时光机动态效果](https://liudon.com/blog-timemachine-show.gif)\n\n项目实施过程的记录：\n\nhttps://liudon.com/posts/hugo-ipfs-time-machine-v2/\n\nhttps://liudon.com/posts/hugo-ipfs-time-machine-v2-visual-index/",
+    "created_at": "2026-09-28T02:31:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11960"
+  },
+  {
     "id": 11959,
     "title": "【工具自荐】kdpbook.io：用对话描述一本书，生成亚马逊 KDP 可上传的图书文件",
     "content": "网址：https://kdpbook.io/?utm_source=ruanyf-weekly&utm_medium=github\n\nkdpbook.io 是一个面向亚马逊 KDP（Kindle Direct Publishing）自出版的 AI 图书工作室。在对话里描述想要的书（也可以导入自己的书稿），它会规划、写作、配图（角色参考图在每张插图中复用，保持形象一致）并排版，然后导出 KDP 要求的文件：内页 PDF、按最终页数计算书脊的全包封面 PDF、Kindle 电子书（EPUB）以及一份上架信息表（书名、简介、7 个关键词、分类）。思路有点像书籍版的 vibe coding：像在 Lovable 里描述一个应用那样，描述一本书。\n\n主要功能：\n- 36 种图书类型（8 大类），包括绘本、涂色书、谜题书、日记本、小说、非虚构和漫画；40 种插画风格，也可以用文字或参考图自定义风格。\n- 支持 34 种 KDP 语言、16 种标准平装开本（可自定义）和 5 种精装开本；开本、出血、边距和书脊宽度按 KDP 规则由代码计算。\n- 页面编辑器：实时预览、AI 改写、重绘插图、持续的 KDP 预检和 3D 书籍预览。\n- 免登录的免费工具：KDP 书脊宽度、封面尺寸（附模板）、印刷成本（14 个亚马逊站点）和版税计算器：https://kdpbook.io/kdp\n\n价格：注册赠送 2000 积分（大约够做一本 32 页的绘本），无需信用卡。免费方案导出的文件带 \"kdpbook.io preview\" 水印，不能用于销售；付费方案每月 25 美元起，导出无水印文件并附商用授权。另外提醒：KDP 要求上传时披露 AI 生成的文字和图片。\n\nkdpbook 是独立产品，与亚马逊没有关联。\n\n利益相关：我是 kdpbook.io 的开发者 Arsène Huot（法国巴黎的独立开发者），本条为自荐，供编辑试用和评估。\n",
@@ -690,125 +810,5 @@
     "created_at": "2026-09-23T02:11:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11874"
-  },
-  {
-    "id": 11873,
-    "title": "自荐：HarnessGate —— 统一管理 40+ 编码 agent 的自托管控制台",
-    "content": "自荐一个开源项目：[HarnessGate](https://github.com/meichuanyi/HarnessGate)（Node.js + WebSocket，MIT）。\n\n它是编码 agent 的\"多机位导播台\"：把 Claude Code、Codex、ZCode、OpenCode 等 40 多个 CLI agent 基于 ACP 协议统一接入一个自托管控制面，任何设备的浏览器或 VS Code 都能远程驱动服务器上的 agent（瘦客户端，agent 与文件都在服务器侧，客户端不碰文件）。\n\n几个可能对周刊读者有价值的点：\n\n1. **会话基础设施**：会话落盘、服务重启自动接续（session/resume / fork / load 三级降级）、跨设备续聊、连续故障自动自愈重建并注入进度摘要；\n2. **多智能体编排**：「工作队」模式由工头拆解任务，队员在独立 git worktree 并行实现，异厂商评审员零共享上下文把关后合并；另有圆桌讨论（并行/串行、主持人、评分锦标赛）；\n3. **运维友好**：42 个 harness 自动发现/探活/可信度分级，权限三档自动决策 + 全程 JSONL 审计台账，公网访问有登录门和 token 认证。\n\n快速开始：`git clone && npm install && npm start`，浏览器打开 9830 端口。",
-    "created_at": "2026-09-22T16:51:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11873"
-  },
-  {
-    "id": 11872,
-    "title": "【开源自荐】DeepSeek就可以当作jev用 deep-jev-seek",
-    "content": "https://github.com/lenML/deep-jev-seek\n\n[![CI](https://github.com/lenML/deep-jev-seek/actions/workflows/ci.yml/badge.svg)](https://github.com/lenML/deep-jev-seek/actions/workflows/ci.yml)\n[![npm](https://img.shields.io/npm/v/@lenml/jevseek.svg)](https://www.npmjs.com/package/@lenml/jevseek)\n[![npm downloads](https://img.shields.io/npm/dm/@lenml/jevseek.svg)](https://www.npmjs.com/package/@lenml/jevseek)\n[![Docker](https://github.com/lenML/deep-jev-seek/actions/workflows/docker.yml/badge.svg)](https://github.com/lenML/deep-jev-seek/actions/workflows/docker.yml)\n[![license](https://img.shields.io/npm/l/@lenml/jevseek.svg)](https://github.com/lenML/deep-jev-seek/blob/main/LICENSE)\n\n![JevSeek WebUI](https://github.com/lenML/deep-jev-seek/raw/main/docs/assets/readme-banner.webp)\n\n有 docker 中转、有npm包、也有web端可以直接对接本地启动的llmamcpp，快速体验jev模式。\n\n原理很简单，就是要求返回 logprobs \n并且据我测试， deepseek 准确率显著高于 jev（暂时没报告，调用成本很低，可以自行测试）\n\n也支持本地 llamacpp ，一样的原理，我测试大概 30b 的模型可以和 jev 差不多准确率，并且成本比 jev 低，但是延迟略高（两倍于jev）\n\n欢迎提 pr 提 issues",
-    "created_at": "2026-09-22T15:47:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11872"
-  },
-  {
-    "id": 11871,
-    "title": "【网站自荐】AI Interior Design：上传房间照片生成室内设计方案",
-    "content": "AI Interior Design 是一款在线 AI 室内设计工具，可以根据房间照片生成不同风格和照明条件下的改造参考图，帮助用户在装修或重新布置空间前快速比较视觉方向。\n\n网站：https://ai-interior-design.online/\n\n主要特点：\n- 上传现有房间照片即可开始；\n- 支持选择空间类型、室内风格和照明偏好；\n- 直接通过网页生成设计概念，无需安装客户端；\n- 适合房主、租客和设计人员进行前期构思与沟通。",
-    "created_at": "2026-09-22T12:48:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11871"
-  },
-  {
-    "id": 11870,
-    "title": "[自荐] Claude Chat Mobile：把本机的 Claude Code 接到手机上的自托管 Web UI",
-    "content": "### 项目名称\n\nClaude Chat Mobile\n\n### 项目地址\n\n- 仓库：https://github.com/Ike-li/claude-chat-mobile\n- 网站：https://ike-li.github.io/claude-chat-mobile/zh/\n- 在线演示（不用装，直接点）：https://ike-li.github.io/claude-chat-mobile/demo/\n\n### 项目简介\n\n在电脑上跑着的 `claude` CLI，用手机浏览器接着开。\n\n它不是远程桌面截屏，也不是另一个云端 Claude，而是在本机起一个 Node 服务，\n通过 Agent SDK 驱动你自己那个已经登录好的 CLI。同一个会话、同一份 transcript、\n同样的 CLAUDE.md 与 MCP 配置，工具审批和 AskUserQuestion 都能在手机上点。\n\n自托管，单用户，没配 token 时只监听 127.0.0.1，新设备接入需要审批。\n\n### 为什么做它？\n\n离开电脑时，真正难受的不是看不到输出，而是它卡在一个需要你点「同意」的地方，\n然后干等一整夜。\n\n所以这个项目先解决的是这三件事：工具审批推到锁屏、模型提问能在手机上回答、\n以及跑完或卡住时有推送。至于在手机上写代码，那反而是次要的。\n\n### 技术亮点\n\n- **单驾驶员模型**：终端正在写这个会话时，手机端自动退成只读镜像，接管之后才能写。\n  两端不会把同一段对话写分叉——这是设计时最花力气的一处。\n- **终端等价性**：CLI 有什么，Web 就有什么。权限配置直接继承本机的 settings，\n  不额外注入 allowedTools；不在白名单上的操作会挂起并在手机上显示完整命令与 cwd。\n- **对第三方网关友好**：用什么 provider 由你的 CLI 决定，中转、API key 都行。\n  官方的 Remote Control 在 `ANTHROPIC_BASE_URL` 指向非官方地址时是不可用的。\n- Node ≥ 20，Express + Socket.IO，Apache-2.0。手机端是 PWA，可以加到主屏幕。\n\n### 界面截图\n\n![主页与会话侧栏](https://ike-li.github.io/claude-chat-mobile/screenshots/02-home.webp)\n\n![在手机上接着写代码](https://ike-li.github.io/claude-chat-mobile/screenshots/03-coding.webp)\n\n![会话设置里切换第三方网关的模型](https://ike-li.github.io/claude-chat-mobile/screenshots/05-gateways.webp)\n",
-    "created_at": "2026-09-22T12:42:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11870"
-  },
-  {
-    "id": 11869,
-    "title": "【开源自荐】Operational Ontology：Palantir 式本体的可运行最小参考实现，附工厂/医院/金融三个运营示例",
-    "content": "项目地址：https://github.com/gura105/operational-ontology\n简体中文 README：https://github.com/gura105/operational-ontology/blob/main/docs/README.zh-CN.md\n\nPalantir 的 Ontology 在中文圈讨论很多，但\"它到底是什么\"很难落到代码上。这个项目把其中的模式抽出来，用一份小型 TypeScript 参考实现给出可运行的定义。一句话：语义层让你\"读\"业务，Operational Ontology 让你\"运行\"业务。\n\n具体是四条性质同时成立：\n\n- 对象和链接：在其他系统拥有的数据之上建立共享的业务模型\n- 写入只经过命名的 Action：规则在 Action 内检查（例如已发货的订单不能取消），违反时返回机器可读的拒绝码\n- 每次尝试都进审计日志，被拒绝的也一样\n- 被接受的变更写回到数据的权威来源系统（write-back）\n\n同一份模型可以直接生成 MCP 工具。AI Agent 调用 cancel_order 时收到的拒绝码和人类操作一样，业务规则不需要写在提示词里。\n\n**它适合什么场景？** 我们把它叫做\"数据驱动的业务运营\"：出了一件事，要把分散在几个系统里的数据串起来，找出该对谁、对什么采取行动，再把行动本身记录下来。仓库里有三个示例：\n\n- 工厂：某台设备被发现异常。经过它的是哪些批次？这些批次发给了哪些客户？找出来之后，创建客户联系或复检任务，并把证据（设备、批次、发货记录）挂在任务上\n- 医院：一位患者要入院。哪张病床、哪位护士同时满足要求？记录临时分配，Action 会在执行时复核，不会把已确定的资源分配给第二个人\n- 金融：几个被标记的账户之间有没有共同的收款方？记录调查案件，并把作为证据的转账一并记下\n\n三个示例都是虚构数据，`pnpm demo:factory` / `demo:hospital` / `demo:finance` 可以直接跑。共同点是：先在对象和链接上\"查案\"，再通过 Action 落地，找到候选并不等于业务状态已经改变。\n\n订单主线的演示是 `pnpm demo`：两套字段和状态编码都不同的遗留订单系统整合成一个模型，然后读取、写入、拒绝、写回。\n\nMIT 协议。这是学习用的参考实现，不是框架。\n\n我是作者。欢迎提反例和问题，尤其欢迎\"这条性质在我们的系统里不成立\"这类意见。\n",
-    "created_at": "2026-09-22T10:53:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11869"
-  },
-  {
-    "id": 11868,
-    "title": "【开源自荐】浏览器可以直接运行的《红色警戒2》网页版，支持《尤里的复仇》、《共和国之辉》，高性能，支持多人联机，原汁原味",
-    "content": "\nFeatures:\n- 支持 macOS / Linux / Windows，移动端有限支持（WIP）\n- 支持《尤里的复仇》、《共和国之辉》\n- 多人联机\n- 高性能\n- 执行原版二进制文件，保持原汁原味\n- 实验性 SR 支持\n\nGithub: https://github.com/ra2-games/ra2\n在线体验：https://ra2.games\n\n---\n\n提到浏览器版的红色警戒2，很多人第一反应是 [Chrono Divide](https://game.chronodivide.com)，这是个非常出色的闭源项目，几乎把红警2的引擎和逻辑完整搬进了浏览器。\n\n但毕竟原版游戏是个黑箱，想还原所有逻辑（包括祖传 bug）复杂度太高，有些逻辑到现在还没实现，《尤里的复仇》也还不支持。。\n\n这个项目选择了不一样的技术路线：在 x86 VM 上做了一层 ABI 兼容层，不重写游戏引擎，保持原汁原味，可以低成本支持尤里复仇。\n\n实测下来，**冷启动更快，战场也更流畅**。同时自带 relay 服务器，可以流畅进行多人对局。\n\n<img width=\"300\" height=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/54c0e6d6-459a-4380-b811-145d619ccbf9\" />\n\n---\n\n**同样的思路也应用到了 War3，内部测试发现可以稳定 60 帧打 DotA :)**\n\n",
-    "created_at": "2026-09-22T10:41:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11868"
-  },
-  {
-    "id": 11867,
-    "title": "工具投稿：iLoveAIImg —— 免费 AI 图片生成、编辑与去背景",
-    "content": "## 工具\n\n[iLoveAIImg](https://iloveaiimg.com/)\n\n## 简介\n\n一个面向创作者、设计师和电商卖家的 AI 图片工具集合：\n\n- 根据文字描述生成图片\n- 上传照片后，用一句话编辑背景、对象、颜色或风格\n- 将人物、商品或物体从背景中分离并下载透明 PNG\n- 可在工作区继续编辑，并下载需要的版本\n\n## 免费范围与限制\n\n- 首页提供无需登录即可试用的每日免费额度，当前免费方案显示每天 6 credits、最多约 3 张图片（实际消耗取决于工具和模型）。\n- 也提供月度/年度订阅及一次性 credit packs；不是无限免费生成。\n- 免费方案的图片保存 7 天，重要结果应及时下载。\n\n## 独立性与核验\n\n我是该产品的制作者。已检查公开首页、图片编辑页和去背景页，功能入口可访问；本投稿只介绍公开页面和免费方案，不把示意图当作生成结果，也不声称周刊已收录。",
-    "created_at": "2026-09-22T10:18:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11867"
-  },
-  {
-    "id": 11866,
-    "title": "【开源自荐】代码报错求助整理器：一个 HTML，把环境、复现步骤和报错整理成 Markdown",
-    "content": "做课程练习或小项目时，求助经常卡在信息没说全：运行环境、原始错误和已经试过的方法分散在好几条消息里。\n\n我们做了一个免费的单文件小工具：\n\nhttps://liunenglabs.xyz/guides/debug-report/\n\n按目标、环境、复现步骤、原始报错、已尝试方法和希望获得的帮助这六项填写，就能整理成可编辑、可复制或下载的 Markdown。缺失信息会明确标出；工具不执行代码，也不会把“整理了说明”当成“已经复现成功”。\n\n无需登录或购买订阅，不调用 AI、不上传输入、不保存草稿；源码可下载后离线使用：\n\nhttps://liunenglabs.xyz/guides/debug-report/source.html\n\n实现是一个 HTML，内含原生 CSS/JavaScript，无第三方依赖，按 MIT 许可开放。发送给同学、项目同事、开源维护者或 AI 前，请自己运行最小示例并移除密钥、Cookie 和个人信息。\n\n利益关系披露：我们运营 LiuNeng AI，经营 Plus/Pro 个人订阅服务，是独立商业服务方，非 OpenAI 官方。此次提交的是独立可用的免费工具，使用不需要购买服务。\n\n欢迎对缺失信息提示和 Markdown 输出提出建议。",
-    "created_at": "2026-09-22T10:05:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11866"
-  },
-  {
-    "id": 11865,
-    "title": "【产品自荐】Qind（轻达）— 让 Mac 更好用的效率工具箱",
-    "content": "Qind 是一款常驻菜单栏的 Mac 小工具，把四个最常用的能力装进了一个 App：**访达右键菜单增强、输入法自动切换、剪贴板历史、应用快捷键与窗口切换器**。原生开发、体积轻量，界面支持包括中文在内的 9 种语言。\n\n整个应用采用**模块化设计**：四大模块相互独立，用不到的可以一键关闭——关闭即彻底注销，不在后台驻留、不占用任何系统资源，只留下你真正需要的部分。\n\n\n- **开源地址**：<https://github.com/soonxf/Qind>\n- **系统要求**：macOS 14（Sonoma）及以上，Apple 芯片 / Intel 都支持\n\n## 功能总览\n\n| 模块                                                                          | 支持的功能                                                                                                                                                                                                                     |\n| ----------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |\n| [一、访达功能菜单](#一访达功能菜单右键就能干的事何必开终端)                   | 新建文件（含模板）、剪切 / 复制 / 粘贴、压缩 / 解压（30 种格式）、拷贝路径、显示隐藏文件、永久删除、强制清倒废纸篓、卸载应用、网络信息、常用 App 打开、终端中打开、新建标签页 / 窗口、重启访达；菜单可自定义排序、改名、换图标 |\n| [二、输入法自动切换](#二输入法自动切换微信永远中文终端永远英文)               | 按应用绑定输入法、应用切换 / 解锁 / 唤醒自动跟随、同应用新窗口触发、密码框自动跳过、切换提示                                                                                                                                   |\n| [三、剪贴板历史](#三剪贴板历史复制过的东西再也丢不了)                         | 记录文字 / 图片 / 文件 / 视频、快捷键搜索粘贴、桌面悬浮卡片、列表弹窗、收藏置顶、粘贴为纯文本、截屏录屏自动收录、本地存储不上云                                                                                                |\n| [四、应用快捷键与窗口切换器](#四应用快捷键与窗口切换器一个键搞定启动和切窗口) | 一键启动 / 唤起 / 最小化应用、冲突检测、带缩略图的窗口切换器、长按即选、跨桌面聚焦、红绿灯角标、切换器内关闭 / 最小化 / 铺满                                                                                                   |\n| 更多                                                                          | 截图标注 + OCR 文字识别、录屏                                                                                                                                                                                                  |\n\n---\n\n## 一、访达功能菜单：右键就能干的事，何必开终端\n\n\n\n<img width=\"2304\" height=\"1296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/40bbd3d1-b6c9-45ac-af19-21c8ba554016\" />\n\n安装后，访达右键菜单会多出一组实用功能，菜单顺序、名称、图标都可以按自己的习惯自定义。\n\n**常用功能一览**\n\n- **新建文件**：右键直接新建空白文件，还能设置自己的模板（比如 Markdown、Word 模板），一键按模板新建\n- **剪切 / 粘贴文件**：像 Windows 一样\"剪切\"文件，粘贴时遇到同名文件可选替换、跳过或取消\n- **压缩 / 解压**：右键直接压缩，支持加密码；解压支持 30 种格式，rar、7z、iso 都不用再装别的软件\n- **拷贝路径**：一键复制文件的完整路径\n- **显示 / 隐藏隐藏文件**：不用记终端命令，右键一点就切换\n- **删除**：跳过废纸篓直接永久删除，有二次确认防误删\n- **强制清倒废纸篓**：废纸篓因为文件名太长清不掉？这里能强制清空\n- **卸载应用**：删 App 的同时列出它的缓存残留，一并清理\n- **网络信息**：查看本机网络配置，Wi-Fi 密码经 Touch ID 验证后可查看\n- **常用 App**：右键用你指定的应用打开选中的文件\n- 另有**在终端中打开、新建标签页、新建窗口、重启访达**等小工具\n\n**它解决的烦恼**\n\n- Mac 访达右键**从来不能新建文件**，只能先开 App 再另存为\n- 访达**没有\"剪切\"文件**，移动文件只能拖来拖去\n- 系统**解压不了 rar、7z**，以前总要再装一个付费解压软件\n- 卸载 App 后**缓存垃圾散落各处**，占着磁盘\n- 危险操作都有**二次确认弹窗**，不怕手滑\n\n\n\n<img width=\"1032\" height=\"890\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fa859e07-1502-4d73-8211-614393f8e22d\" />\n\n\n\n---\n\n## 二、输入法自动切换：微信永远中文，终端永远英文\n\n\n\n<img width=\"2304\" height=\"1296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/707cbcbd-8c63-4565-a2ef-dfb026cf4fb8\" />\n\n\n给每个应用绑定它该用的输入法，切换应用时自动跟着变。\n\n**它能做到**\n\n- 切换到某个 App 时，自动换成你为它绑定的输入法\n- 锁屏后重新解锁、屏幕唤醒时，也会自动恢复\n- 同一个应用开新窗口，也能触发切换（需开启辅助功能权限）\n- **输密码时自动跳过**，绝不会在你输密码时把输入法切走\n- 切换后可选屏幕小提示，默认关闭，样式位置可调\n\n**它解决的烦恼**\n\n- 装了搜狗、微信输入法等第三方输入法后，macOS 有个老毛病：**一切换应用就自动跳回系统 ABC 英文输入法**，每次都要手动切回来，一天不知道要切多少回。Qind 在切换应用的瞬间自动换回你指定的输入法，不再被\"偷偷\"切走\n- Mac 自带的\"自动切换输入法\"时灵时不灵，Qind 按应用精确绑定——微信永远中文、终端永远英文，稳定可靠\n\n---\n\n## 三、剪贴板历史：复制过的东西，再也丢不了\n\n\n\n<img width=\"2304\" height=\"1296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/663a660f-52b4-440a-bbb0-0f1b78799b4f\" />\n\n\n\nMac 的剪贴板只记得最后一次复制的内容。Qind 帮你把复制历史全部留下来，**数据只存在你自己电脑上，不上传云端**。\n\n**它能做到**\n\n- 自动记录复制过的**文字、图片、文件、视频**，重复的不会记两遍\n- 每条记录标着**来自哪个应用、什么时候复制的**\n- 按快捷键呼出历史，**支持搜索**，回车就粘贴到当前应用\n- 两种查看方式：**桌面悬浮卡片**（记录像卡片一样摊在桌面上，可拖动、自动避让屏幕边缘）和**列表弹窗**（紧凑的列表或网格，可调样式和位置）\n- 重要内容可以**收藏、置顶**，清理历史时不会被删\n- **粘贴为纯文本**：从网页复制的内容，粘贴时自动去掉乱七八糟的字体格式\n- 保存多久、占多大空间由你定（最短 1 天到永久，容量 100MB ~ 1GB 可选）\n- 系统截屏、录屏的文件也会自动收进来，还支持指定文件夹自动收录\n\n**它解决的烦恼**\n\n- 复制了新内容，**旧的就被顶掉了**，跨文档搬运只能来回切换\n- 从网页复制粘贴，**格式一团糟**，还得手动清除样式\n- 地址、单号、常用话术**每次都要重新打**——现在收藏起来一键粘贴\n- 截屏文件堆满桌面，Qind 自动帮你归档\n\n\n\n<img width=\"2940\" height=\"1912\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6768d47c-2604-4617-a358-b1c950c88673\" />\n\n\n---\n\n## 四、应用快捷键与窗口切换器：一个键搞定启动和切窗口\n\n\n\n<img width=\"2304\" height=\"1296\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/59c6a04f-82ba-4c70-9385-55e6f7814437\" />\n\n\n\n给常用的 App 绑一个全局快捷键，按一下就启动或唤到眼前；有多个窗口时，会弹出一个**带窗口实时预览图的切换器**。\n\n**它能做到**\n\n- 快捷键按下后很聪明：**App 没开就启动；开着就唤到最前；再按一下就最小化**\n- 绑定时自动检测**是否和其他软件、系统快捷键冲突**\n- **窗口切换器**：长按快捷键呼出，所有窗口带实时缩略图排开，再按切到下一个，**松手即选定**，全程不用鼠标\n- **跨桌面切换**：窗口扔在别的桌面（Space）也能直接拉过来，微信、QQ 这类\"顽固\"应用也切得动\n- 每个窗口带**红绿灯角标**：绿灯数字表示窗口在哪个桌面，黄灯表示已最小化，一眼看清\n- 在切换器里还能直接**关闭窗口、最小化、铺满屏幕**\n- 切换器位置、缩略图质量、窗口名称显示方式都可调\n\n**它解决的烦恼**\n\n- Cmd+Tab 切换**只有图标没有画面**，切到应用后还得盲切窗口\n- 窗口放在别的桌面，系统经常**切不过去、找不回来**\n- 最小化之后的窗口**像消失了一样**，翻半天找不到\n- 打开常用 App 要翻启动台、找 Dock——现在**一个键搞定**\n\n\n\n<img width=\"3840\" height=\"2160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba81e239-b4bf-4ad3-a5f9-287e3ee7b265\" />\n\n\n\n<img width=\"3840\" height=\"2160\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9da0ef33-98e3-461e-9ee6-f8569f25f4ae\" />\n\n\n---\n\n## 关于权限\n\nQind 只在需要时申请权限，用途都写得很明白：\n\n- **辅助功能**：全局快捷键、窗口切换、自动粘贴\n- **屏幕录制**：窗口缩略图预览、截图功能\n- **完全磁盘访问**：强制清倒废纸篓、卸载应用清残留\n",
-    "created_at": "2026-09-22T09:47:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11865"
-  },
-  {
-    "id": 11864,
-    "title": "【产品自荐】摄影学英语：把老照片变成英语学习素材",
-    "content": "大家好，自荐一款我做的 iOS App：**摄影学英语**。\n\n它的思路很简单：**把自己拍的照片，变成英语单词、例句和口语练习。**\n\n拍照或导入老照片后，App 会识别场景中的物体和特征，生成对应的英文名词、形容词和描述句子，并可以继续进行：\n\n* 单词拼写\n* 英语跟读和口语评分\n* 学习记录和照片，本地离线存储\n* WebDAV 定时备份\n\n我想做的是：\n\n**不是先背一份词库，而是从自己看到的世界里学习英语。**\n\nV2EX 介绍：\nhttps://www.v2ex.com/t/1243975\n\nApp Store：\nhttps://apps.apple.com/cn/app/%E6%91%84%E5%BD%B1%E5%AD%A6%E8%8B%B1%E8%AF%AD/id6808490052\n\n<img width=\"1281\" height=\"1075\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ab0d8c08-719a-454e-91a7-d7aeb09c68f1\" />",
-    "created_at": "2026-09-22T08:19:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11864"
-  },
-  {
-    "id": 11863,
-    "title": "【开源自荐】Codent：工作区 · 模型 · 会话三平面可自由组合的 AI 编程 Agent",
-    "content": "介绍一下我在做的一个开源项目 **Codent** —— 一个 AI 编程 Agent，但它不只是\"又一个终端 AI 助手\"。\n\n- 代码：https://github.com/MrWangJustToDo/MyAgent\n- 在线体验（浏览器内 WebContainer，打开即用，无需安装）：https://mrwangjusttodo.github.io/MyAgent/\n- 安装：`npm install -g codent-cli`（当前 `0.0.1-beta.3`，需要 Node.js 24+），MIT 协议\n\n## 一套核心，多种形态\n\nCodent 把 Agent 运行时按职责拆成 10 个包、3 个平面，同一套核心逻辑能跑在差异很大的宿主里：\n\n| 宿主 | 形态 |\n|------|------|\n| 终端 CLI | React 渲染的 TUI：文件树、diff、流式 markdown |\n| Chrome 扩展 | 完整 Agent UI 跑在浏览器里 |\n| Playground | 浏览器内 WebContainer，打开网页就有一个可读写的 Linux 环境 |\n| IM 桥 | Telegram（先行），在聊天窗口里派活，审批用按钮完成 |\n\n它们共享同一个 core（Agent 循环、工具、模型、MCP、上下文压缩、记忆、遥测）和同一份 UI 层。\n\n## 三个正交平面 —— 最特别的地方\n\n多数工具的\"本地 / 远程\"是一个开关。Codent 把它拆成三个**互相独立**的平面，每一面都能单独选择本地还是远程：\n\n| 平面 | 管什么 | 远程方式 |\n|------|--------|----------|\n| Workspace | 文件、shell、fetch、平台信息（`CoreEnv` 抽象） | `--remote-env` |\n| LLM | key / baseURL / 模型选择 | `--remote-provider`（key 留在服务端） |\n| Agent Session | 消息、待办、审批、计划、用量 | `--remote-session`（REST + SSE） |\n\n于是这些组合都成立：本机工作区 + 服务端 key；服务端工作区 + 本机 key；甚至把整个 Agent 循环放到服务器上，客户端只当一个瘦终端 —— SSE 断线自动重连，正在跑的工具输出和摘要流重连后会续上。\n\n边界是刻意设的：`--remote-session` 与另外两个互斥（循环已经在服务端了）；而**服务端自己**还能再注册 `REMOTE_ENV` / `REMOTE_PROVIDER`，往上再接一层。\n\n## 扩展性：能力是模块，不是写死的开关\n\nAgent 能力以**声明式扩展模块**交付，一个 `ExtensionAPI` 提供 5 类注册通道：\n\n| 通道 | 用途 |\n|------|------|\n| `registerTool` | 给模型加工具 |\n| `registerCommand` | 加斜杠命令 |\n| `registerInterceptor` | 拦截生命周期事件（如 `tool:before:*`），可修改甚至取消 |\n| `registerContextProvider` | 每轮注入动态上下文 |\n| `registerMessageTransformer` | 改**模型看到的消息链**：媒体转文字、脱敏、按预算裁剪 |\n\n内置的 5 个扩展就是这套接口的产物，而不是特例代码：\n\n- **LSP + tree-sitter**：诊断 / hover / 定义 / 引用 / 符号 / 重命名 / 补全 / code action，外加 AST 搜索与结构化改写，诊断自动进上下文\n- **Memory**：跨会话自动抽取与沉淀知识\n- **Skills**：按需加载领域知识\n- **MCP**：接入外部 MCP server，工具自动变成 `mcp__<server>_<tool>`\n- **Code Mode**：模型写一段 TypeScript，在 `isolated-vm` 沙箱里执行，并把一批 Agent 工具以 `external_*` 暴露进去 —— 用一次执行替代多轮工具调用\n\n第三方扩展就是往 `.agents/extension/` 丢模块文件，仓库里有可直接抄的示例。扩展 UI 是一套通用的布局渲染接口，所以同一份扩展在终端、浏览器、远程宿主里表现一致。\n\n## 其他能力\n\nPlan Mode（探索 → review → 构建 → 强制复盘）、上下文隔离的子 Agent（可并行，`Ctrl+T` 实时看进度）、上下文自动压缩、工具审批（带内联 diff 预览，也可全放行）、OS 级命令沙箱、多会话并存切换、会话 / 用量 / 记忆 / 计划全部落在项目下的 `.agents/`、多模型（OpenAI / Anthropic 兼容即可接）。\n\n## 技术栈\n\nTypeScript（ESM + 严格模式）、TanStack AI SDK、Hono RPC、React + Zod、pnpm monorepo。发布包 `codent-cli` 是完全自包含的单包，core / app / node 全部内联，装完即用。\n\n## 快速开始\n\n```bash\nnpm install -g codent-cli\ncodent \"介绍一下这个代码库\"\n```\n\n在 `.env` 里配好 `MODEL_STYLE` / `BASE_URL` / `API_KEY` / `MODEL` 即可（任意 OpenAI 兼容网关）。\n\n项目还在 beta，但工程上比较较真：核心包有 150+ 个 `validate:*` 脚本覆盖 prompt cache、上下文压缩、沙箱、模型能力推导等边界，CI 会校验发布包的运行时依赖是否自包含。\n\n**本 issue 就用 codent-cli 自己创建**：把它挂在终端里，让它读仓库、核对 npm 版本与线上地址、生成正文，再通过它自己的 `run_command` 执行 `gh issue create` 提交。\n\n欢迎试用、提 issue，觉得有价值的话给个 star 支持一下 🙏\n",
-    "created_at": "2026-09-22T08:11:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11863"
-  },
-  {
-    "id": 11862,
-    "title": "产品推荐：Sakkyoku.ai —— 专注于日语歌曲与二次元风格的 AI 音乐生成平台",
-    "content": "### 项目推荐：Sakkyoku.ai（日语 AI 音乐生成平台）\n\n阮老师及各位周刊读者好！向大家自荐一款近期上线的音频大模型应用：**[Sakkyoku.ai - 专业的日语 AI 作曲与音乐生成平台](https://sakkyoku.ai/)**。\n\n---\n\n### 1. 为什么做这个产品？\n目前主流的生成式音乐大模型大多针对欧美流行或泛英语语料训练，在**日语发音韵律、J-Pop/二次元特有编曲结构（王道进行、BPM节奏）**上往往存在发音生硬、曲风不纯正的问题。\n\n为了解决创作者在日系风格音乐上的创作门槛，我们打造了专为日语及 ACG 风格深度优化的 **[在线日语 AI 作曲工具 Sakkyoku.ai](https://sakkyoku.ai/)**，让不懂乐理的开发者与独立创作者也能轻松制作高水准的原创音乐。\n\n---\n\n### 2. 核心功能与亮点\n\n- **自然语言一键成曲**：只需输入主题或情绪描述，即可实现**[通过文本提示词一键生成完整日语歌曲与伴奏](https://sakkyoku.ai/)**。\n- **专精日语歌声合成（Vocal Synthesis）**：声学模型针对日语发音与假名咬字深度优化，支持女声、男声及二次元/Vocaloid 风格的清澈人声表达。\n- **多元日系曲风覆盖**：全面涵盖 J-Pop、动漫摇滚（Anime Rock）、City Pop、Lo-Fi 以及游戏背景音乐（BGM）。\n- **商用友好（Royalty-Free）**：生成的音频资源支持用于独立游戏、视频剪辑、播客配乐及个人商业项目，无需担心版税侵权问题。\n- **极简交互设计**：零门槛 Web 界面，无需配置复杂的 DAW 编曲工作站环境，数十秒内输出高保真音频文件。\n\n---\n\n### 3. 产品链接与体验\n\n- **官方网站**：👉 [在线免费体验 Sakkyoku.ai 音乐生成器](https://sakkyoku.ai/)\n- **适用人群**：独立开发者（游戏/工具配乐）、视频创作者、BGM 需求者、二次元音乐爱好者。\n\n欢迎大家体验与反馈，希望能收录到周刊中，非常感谢阮老师和社区！",
-    "created_at": "2026-09-22T08:09:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11862"
-  },
-  {
-    "id": 11861,
-    "title": "【工具自荐】BlackGit: 解决Git管理巨型仓库（二进制资产多，如游戏项目）和无权限管理问题",
-    "content": "blackgit 由客户端和服务器两部分组成，但可以分开使用。\n使用blackgitcli管理巨型仓库（二进制资产多，如游戏项目），配合blackgitserver 可以提供权限管理\n\n## 项目名称\n\nBlackGit\n\n##项目地址\n\nhttps://github.com/zhuzhonghua/blackgit/\n\n##原理\n\n- **BlackGitCli** \n客户端使用sparse-checkout只检出自己关心的文件，而不用下载整个仓库，可以单独配合github/gitlab使用\n内置专属Agent，使用自然语言操作blackgit和各种git命令\n- **BlackGitServer**\n服务端作为github/gitlab的proxy layer，精确约束每个用户的权限，文件目录的可见性，配合BlackGitCli使用\n",
-    "created_at": "2026-09-22T08:06:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11861"
-  },
-  {
-    "id": 11860,
-    "title": "【工具自荐】WebDAV Index：打开网页即可浏览 WebDAV 目录",
-    "content": "一个纯浏览器的 WebDAV 目录页，打开即可浏览远程文件并点开查看，无需安装客户端，数据也不经过第三方服务器。\n\n## 项目名称\n\nWebDAV Index\n\n## 项目地址\n\n- 在线使用：<https://webdav-index.fantasticmao.cn/>\n- 源码：<https://github.com/fantasticmao/webdav-index>\n\n## 功能简介\n\n打开网页即可浏览 WebDAV 目录，能以表格形式列出文件名、修改时间和大小，支持浏览器内查看图片、文本和视频等类型文件，其余类型则触发文件下载。\n\n## 解决痛点\n\n临时查看 NAS、Nextcloud 或自建 WebDAV 时，常见做法是安装 Cyberduck、RaiDrive 这类客户端，或者再部署一套 Alist、File Browser。手机和借用的电脑上往往不方便安装，而很多时候只需要列目录、点开文件。WebDAV Index 不用下载，浏览器打开就能连接，适合只想浏览目录、不想再套一层网盘服务的场景。\n",
-    "created_at": "2026-09-22T06:43:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11860"
-  },
-  {
-    "id": 11859,
-    "title": "【文章推荐】同一家公司的 AI，为什么视频很强，生图却不行？",
-    "content": "字节 Seedance 已经能拍出像样的 AI 短片，豆包生图却经常构图跑偏、质感不对，改件衣服还可能连脸一起换掉。\n\n视频不就是很多张图片连起来吗？这篇文章会拆开这个反差：Seedance 主要是在已有世界里让人物和镜头连续运动，豆包生图却要从一句话开始，独自补出整幅画面。输出更多，不代表任务更难；真正决定难度的，是未知有多少、约束有多紧。\n\n- https://mp.weixin.qq.com/s/MJFBfbIpV6VQXv-FCt-Zzg",
-    "created_at": "2026-09-22T06:17:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11859"
   }
 ]
