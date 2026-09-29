@@ -1,5 +1,45 @@
 [
   {
+    "id": 11994,
+    "title": "【网站自荐】Checkerso：免费、无广告、免注册的在线跳棋/国际跳棋，支持离线 PWA",
+    "content": "网址：https://checkerso.com\n\nCheckerso 是一个在浏览器里直接玩的国际跳棋（Draughts / Checkers）网站，完全免费，没有广告，不用注册，也不用下载；首次访问后可作为 PWA 安装并离线使用。\n\n- 9 种规则：美式跳棋、国际跳棋 10×10（另有德/法/荷语页面）、巴西、俄罗斯、意大利、西班牙、土耳其、Pool 跳棋和\"输家胜\"（Anti），另外还有中国跳棋。每种规则按各自的吃子、升王规则实现（强制吃子、飞王、最多吃子等）。\n- 人机对战分简单/中等/困难三档，可悔棋、可提示；也可以两人同屏对战。\n- 美式和国际 10×10 支持发链接邀请朋友在线对战（没有随机匹配）。\n- 每日挑战：每天一个固定开局，对战电脑，赢了累计连胜；另有奖杯阶梯（/trophies）。\n\n技术栈：Astro + Preact，部署在 Cloudflare Pages，好友房间用 Cloudflare Worker + Durable Object。\n\n说明：界面目前有英语、西、俄、土、德、荷、法、意、葡（巴西）9 种语言，暂无中文界面。\n\n作者：Qijun Li（lannyone@gmail.com）",
+    "created_at": "2026-09-29T17:33:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11994"
+  },
+  {
+    "id": 11993,
+    "title": "【开源自荐】Highball：在 Apple 芯片的 Mac 上免费运行 Windows 游戏",
+    "content": "Highball 是一个免费开源（GPL-3.0）的原生 macOS 应用，让 Apple 芯片的 Mac 可以运行 Windows 游戏。\n\n它基于 Wine，自动配置 DXMT、DXVK 和 D3DMetal 这些图形转换层，可以一键安装 Steam 或连接 Epic 游戏库。它还维护一个公开的兼容性数据库（CC0），记录每款游戏在哪个引擎和图形模式下的实测结果和帧率，使用内核级反作弊、在 Mac 上不可能运行的游戏也会提前标出来，省得白白下载几十 GB。\n\n- 项目地址：https://github.com/gauthierpiarrette/highball\n- 中文说明：https://github.com/gauthierpiarrette/highball/blob/main/README.zh-CN.md\n- 游戏兼容性数据库：https://gethighball.com/database/\n\n![Highball 的游戏库](https://raw.githubusercontent.com/gauthierpiarrette/highball/main/.github/assets/app.png)\n",
+    "created_at": "2026-09-29T16:28:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11993"
+  },
+  {
+    "id": 11992,
+    "title": "【开源自荐】MultiCC：让同一个编码任务在 Claude Code 与 Codex 间接续",
+    "content": "仓库：https://github.com/lsjwzh/MultiCC\n\n用 Claude Code 做到一半，想要 Codex 的第二意见、或者额度用完了，通常得新开终端、新开会话，把上下文重讲一遍。\n\nMultiCC 是开源、自托管的 coding agent 工作台：对话和 Git worktree 属于任务本身，CLI 只是当前驱动它的引擎。在同一个 Chat 任务里从 Claude Code 切到 Codex，任务和工作区都留着，接手的 CLI 拿到一份有界的可见上下文 checkpoint，接着往下做。\n\n- 同一任务跨 CLI 接续：换引擎不丢任务和 worktree，不用从头交代\n- 任务级 Git 隔离：不同 agent 各改各的 worktree，集中看 diff、测试和交付状态\n- 多端接入：同一个自托管后端，桌面、浏览器和手机 App 都能看\n- 分层记忆与 Skill：机器 / CLI / 项目 / 任务 / 会话各有边界，减少重复说明\n- 可选的任务派工与团队交接包：把子任务派给另一个会话，或导出 Skill、记忆、上下文和适用的 Git 提交给队友导入\n\n说清边界：切 CLI 交接的是**可见文本 checkpoint**，不是模型隐藏状态的无损迁移，原 CLI 保留自己的原生 session；自托管服务器和所选 CLI / 模型需要自己配置，模型调用费用不含在开源项目里。\n\n安装（macOS / Linux，一行，目标机器不需要 Node / npm / Homebrew）：\n\n```\ncurl -sSL https://raw.githubusercontent.com/lsjwzh/MultiCC/v2.2.0/install.sh | bash\n```\n\nWindows PowerShell：`irm https://raw.githubusercontent.com/lsjwzh/MultiCC/v2.2.0/install.ps1 | iex`\n\nMIT 协议。\n",
+    "created_at": "2026-09-29T15:52:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11992"
+  },
+  {
+    "id": 11991,
+    "title": "【开源自荐】Mojito：会自己改代码的个人计划 App",
+    "content": "你好，自荐一个 MIT 开源项目：[Mojito](https://github.com/TimeLovercc/mojito)。\n\n它是一个自托管的每日计划 App（今天页、计划、笔记、信息流、对话），特别之处是 App 会自己进化：在 App 的对话里说一句“把下一步放最上面，加粗”，我 Mac 上的 Claude Code 就会改代码、构建、发布到手机，再推送告诉我改了什么；大改动会先等我确认。\n\n做法是把 App 的代码削到很薄：服务端（FastAPI + SQLite）只存数据、发推送，判断和新功能都交给掌握上下文的 agent。它一天里靠一句句需求长出了订阅页、iPhone 桌面网页版和推送、桌面版重设计和英文界面。\n\n可以当成 Meta Muse 这类云端个人 AI 的本地替代：数据和登录都留在自己的机器上。还是早期 alpha，需要自己部署；README 里有 5 分钟的试玩方式（假 hub + 示例数据，不用注册账号）。\n\n![Mojito 演示](https://github.com/TimeLovercc/mojito/raw/main/docs/media/mojito.gif)\n\n25 秒演示视频：https://youtu.be/gMkHYQJ1r8Q\n\n感谢审核。",
+    "created_at": "2026-09-29T15:48:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11991"
+  },
+  {
+    "id": 11990,
+    "title": "【开源自荐】知识公社：一个完全离线的免费学习平台（竞赛/升学/公考/红色经典/世赛）",
+    "content": "仓库：https://github.com/TaiMaBenJi/knowledge-commons\n\n在线体验：https://taimabenji.github.io/knowledge-commons/ （浏览器打开即用，可「添加到主屏幕」当 App 用）\n\n![首页](https://raw.githubusercontent.com/TaiMaBenJi/knowledge-commons/main/docs/screenshots/home.png)\n\n「知识公社」把散落各处的公开学习资源收集、分类、离线化，装进同一个网站 / App：\n\n- 竞赛：Codeforces 11425 题 + AtCoder 9600 题离线可搜索；ICPC 世界总决赛题解 158 份、蓝桥杯题解 168 份、天梯赛解析 28 份\n- 升学：高考数学真卷 ×4（内置阅读器）、专升本备考工具\n- 公务员：图形推理真题库 354 题逐题解析；国考/省考资料导航\n- 红色经典：《毛泽东选集》1–5 卷全文 229 篇 + 毛泽东诗词 90 首\n- 世界技能大赛：六大领域 50 个赛项「总纲 + 视频 + 模拟训练」三件套；62 集视频课与真题资料\n- 另有原创课程（算法竞赛 13 讲 / Python 入门 8 讲 / 行测 6 讲）、四份「从零到精通」路线、全站离线检索\n\n特点：\n\n- 完全离线：全部内容无需联网（Android 全量包约 560 MB）\n- 网页版是完整 PWA：浏览器打开即用、可安装到主屏幕/桌面，四个系统一个体验\n- Android / iOS / Windows / Web 四端，全部在 Releases 免费下载\n- MIT 开源、无广告、无任何收费内容，内容持续更新\n\n做这个的原因：知识并不稀缺，稀缺的是「知道去哪找、从哪开始」。希望能把信息差一个个消掉，让想学习的人打开就能学。\n",
+    "created_at": "2026-09-29T14:14:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11990"
+  },
+  {
     "id": 11989,
     "title": "【工具自荐】dtflow：在终端里看 LLM 训练数据的浏览器",
     "content": "仓库：https://github.com/KenyonY/dtflow\n\n![dt view](https://raw.githubusercontent.com/KenyonY/dtflow/main/docs/images/view/main.png)\n\n做大模型微调的人每天都在看 JSONL：一条样本是一段多轮对话，嵌套在 messages 里，`head | jq` 只能看一条，Excel 打不开，通用表格工具把对话显示成 `{3}`。\n\ndtflow 的 `dt view data.jsonl` 把训练数据当\"样本\"而不是\"表\"来看：左边表格扫视每条样本（轮数、角色序列、第一句用户提问、字数、调用过的工具），右边把当前样本渲染成对话——按角色上色、代码块高亮、工具调用参数格式化并标出非法 JSON、DPO 的 chosen / rejected 并排对比。\n\n- 搜索、筛选、排序都扫整个文件而不是当前页，筛出来的子集一键导出并自动记录来源和条件\n- 窗口化加载：91 万行、155MB 的 JSONL 打开只占 90MB 内存\n- 鼠标可用：点列头筛选、拖列宽、拖选文字复制，SSH 和 tmux 里也能进本机剪贴板\n- 顺带一套管道式命令行：`dt filter / select / dedupe / transform / export`，条件直接写 Python 表达式\n\n安装：`pip install dtflow`，或 `uvx --from dtflow dt view data.jsonl` 免安装试用。MIT 协议。",
@@ -764,45 +804,5 @@
     "created_at": "2026-09-24T03:31:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11893"
-  },
-  {
-    "id": 11892,
-    "title": "【开源自荐】AgentCliKit：面向 AI Agent 的企业级原生 CLI 开发 Java SDK",
-    "content": "### 项目名称\n**AgentCliKit** (https://github.com/redSun64/cliflow)\n\n### 一句话简介\n面向业务团队的企业级 Java SDK，用于将复杂的后端 API 封装为可直接交付给 **AI Agent** 和人类工程师使用的**高安全、原生命令行工具与 Skill 技能包**。\n\n### 解决什么痛点？\n让 AI Agent 接管企业运维和业务任务时，直接裸调 REST API 极易引发**幻觉误写、Token 上下文浪费、密钥明文泄露、跨平台环境依赖重**等问题。\nAgentCliKit 核心哲学：**业务定义语义，SDK 负责标准与安全**。\n\n### 核心特性亮点\n1. 🤖 **Agent-First**：渐进式 `schema` 发现机制（极大降低 LLM Token 消耗）、`@AgentCommand` 语义提示、一键安装 Agent Skill 目录。\n2. 🛡️ **默认安全与人机协作**：显式风险声明（`@CliRisk`）、计划预演（`--dry-run`）、写操作显式确认守卫（`--yes`）、敏感参数自动掩码。\n3. ⚡ **零环境依赖原生打包**：基于 JDK 21 `jpackage` 自动构建 Windows `.exe` 与 macOS `.app` 原生归档包，使用者与 Agent 无需安装 JDK/Maven。\n4. 🔒 **操作系统级凭据安全**：内置对接 Windows 凭据管理器与 macOS Keychain，隔离密钥明文。\n5. 🧩 **类型化 HTTP 与零样板代码**：声明式强类型 API 封装，编译期注解处理器自动生成 SPI 注册与命令树。\n\n```powershell\n# 渐进式发现 -> 预演计划 -> 确认执行\nemployee schema employee +onboard\nemployee employee +onboard --name \"张三\" --role developer --dry-r",
-    "created_at": "2026-09-24T03:17:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11892"
-  },
-  {
-    "id": 11891,
-    "title": "【开源自荐】坐直 - 运行在浏览器里的离线坐姿检测工具",
-    "content": "## 是什么？\n这是一个运行在浏览器里的坐姿检测工具，打开就可以立即通过电脑/手机的摄像头，实时检测 8 个维度的坐姿指标，和两个常用的提醒。\n\n- 工具官网和 Demo：[upright.linkly.ai/](https://upright.linkly.ai/)\n- 开源仓库：[github.com/LinklyAI/upright](https://github.com/LinklyAI/upright)\n\n<img width=\"1288\" height=\"913\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fc67753f-d393-4141-b33c-4cdea247e180\" />\n\n## 有什么功能？\n\n包含8 个维度的坐姿检测：\n- 离屏幕太近\n- 低头\n- 歪头\n- 头前伸\n- 驼背塌陷\n- 耸肩\n- 歪坐\n- 太久不眨眼\n\n和2 个有益且常用的提醒：\n- 45 分钟久坐提醒\n- 20 分钟远眺提醒，遵循 20-20-20 护眼法则\n\n以及：\n- 浏览器浮动置顶小窗\n- 姿势校准\n- 丰富的开关\n- 中英双语\n- 暗黑模式\n- 没有广告\n- 完全免费\n- **开源**\n\n使用极其简单，打开网页就能纠正自己的坐姿。适合上班族，也适合写作业的小孩使用（用手机打开放在桌子前面）。",
-    "created_at": "2026-09-24T02:50:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11891"
-  },
-  {
-    "id": 11890,
-    "title": "【工具自荐】DeepSeeker-Code：开源的 DeepSeek AI 编码助手，自研 agentic 引擎（CLI / VS Code / HTTP 三入口）",
-    "content": "## 是什么\n\nDeepSeeker-Code 是一个开源（MIT）的**单人本地 AI 编码助手**，由 DeepSeek 驱动，对标 Claude Code 的形态。自研整套 agentic 引擎：流式 agent 主循环 + 完整工具链（读写文件 / 跑命令 / 搜索 / 抓网页）+ 审批网关，外加 MCP / Hooks / Skills / 子 Agent 四套扩展机制。一套引擎驱动三个入口：终端 CLI（React Ink）、VS Code 插件、本地 HTTP API。\n\n- GitHub：https://github.com/xknk/deepseeker-code\n- 安装：`npm install -g deepseeker-code`\n- 协议：MIT\n\n## 几个做得比较深的地方\n\n- **长任务上下文压缩可召回**：上下文压缩时，被归档的原始消息和超长工具结果脱敏落盘存档，事后可用 recall 工具按需检索取回（文件类结果还带过期检测），长任务压缩后细节不丢、不用重跑工具。\n- **审批网关**：只读操作免审，改动类操作弹窗审批，「总是允许」会自动沉淀成 glob 权限规则持久化。\n- **两阶段计划模式**：先只读调研、给出方案，批准后才动手写代码。\n- **贴图多模态**：聊天里直接贴截图提问。\n- **针对 DeepSeek 深度调优**：上下文压缩甜点区、prompt 缓存感知压缩等都是按 DeepSeek 模型参数调的。\n\n## 为什么自研\n\n想要一个「数据全在本机、对 DeepSeek 调优、形态对标 Claude Code」的开源选择，于是从 agent 主循环开始写了一套。定位是单人本地工具，不做公网部署，也不上多租户。",
-    "created_at": "2026-09-24T02:14:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11890"
-  },
-  {
-    "id": 11889,
-    "title": "【网站自荐】阿萨拉整活办：三角洲行动同人网页小游戏，含 PVE 战术自走棋「哈夫币战争」",
-    "content": "大家好，我是琳，分享一个还在持续打磨的玩家同人小站：**三角洲Wiki · 阿萨拉整活办**。\n\n我想把《三角洲行动》里熟悉的干员、摸金和玩家梗，做成打开浏览器就能玩的小游戏。目前最想邀请大家体验的是 **「哈夫币战争」**：一款以三角洲干员为主题、玩法灵感来自《崩坏：星穹铁道》货币战争的单机 PVE 战术自走棋。\n\n## 直接体验\n\n- [哈夫币战争](https://jiangyilin2010-arch.github.io/delta-force-wiki/haff_currency_war.html)\n- [小游戏大厅](https://jiangyilin2010-arch.github.io/delta-force-wiki/mini_games.html)\n- [GitHub 仓库与项目介绍](https://github.com/jiangyilin2010-arch/delta-force-wiki)\n\n## 可以玩什么\n\n- **哈夫币战争**：招募干员、安排前后排、搭配羁绊与装备，在经济取舍中构筑队伍，挑战 PVE 敌人。\n- **洲了个洲**：以战利品为主题的叠层消除小游戏。\n- **阿萨拉摸金重开模拟器**：选地图、抽天赋，让随机事件写出一趟摸金故事。\n- 另有草丛扫雷、伦理选择题、靶场手速测试等轻量玩法。\n\n## 开发方式与当前状态\n\n这是一个边游玩、边设计、边用 AI 辅助开发迭代的个人项目。网站以 HTML、CSS、JavaScript 和静态托管为主，小游戏主要使用浏览器本地存储，无需下载游戏客户端。\n\n目前仍是开发中体验版，平衡性、操作体验和页面表现都在打磨，线上以已发布版本为准。尤其想听听大家对**阵容构筑是否有趣、战斗信息是否清楚、哪些操作比较繁琐**的意见。欢迎在[项目 Issues](https://github.com/jiangyilin2010-arch/delta-force-wiki/issues)反馈。\n\n这是非官方同人项目，与三角洲行动及崩坏：星穹铁道官方无隶属关系。仓库源码公开，但目前尚未为整个项目指定开源许可证；原作角色、图片等素材权利归各自权利人，公开可访问不代表对相关素材重新授权。\n\n感谢阅读，欢迎来阿萨拉整活办坐坐。",
-    "created_at": "2026-09-24T01:49:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11889"
-  },
-  {
-    "id": 11888,
-    "title": "【工具自荐】Orbi：给 GitHub Issue 打个标签，AI 写代码、另跑一轮评审、合并后发版",
-    "content": "Orbi 是一个自托管的 AI 编程 Agent，入口是 GitHub Issue。\n\n用法是写好一张 Issue，打上 `ai-ready` 标签。Orbi 在分支上写改动、开 PR，然后另跑一轮评审，对照 Issue 里写的验收项检查。评审通过就合并，再打 Release 标签。模型接你自己的 API，代码一直在你自己的仓库里。\n\nOrbi 自己的仓库就是这样开发的。外部项目也有一个例子：给 k8e 写 etcd 测试，第一版被维护者打回，改完才合并，合并后那张票又被提交信息自动关错了。整个过程写在这里：https://orbi.build/zh/blog/k8e-rejected-then-merged/?ref=ruanyf\n\n- 官网：https://orbi.build/zh/?ref=ruanyf\n- 源码：https://github.com/orbi-build/orbi\n- 许可证：AGPL-3.0 开源（也可选 Sustainable Use License），自托管免费使用\n- 托管版 Orbi Cloud 收费\n\n",
-    "created_at": "2026-09-24T01:32:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11888"
   }
 ]
