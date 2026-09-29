@@ -1,5 +1,29 @@
 [
   {
+    "id": 11985,
+    "title": "[项目自荐] 职场大神养成计划：把日常工作说清楚，练习难开口的职场对话",
+    "content": "你好，自荐一个 MIT 开源的中英文 Agent Skill：[career-growth-plan](https://github.com/Olandooooes/career-growth-plan)。\n\n它面向“每天很忙，却说不清自己做了什么、学到了什么”的职场人。三个可以直接试的入口：\n\n- **职场角色探索**：聊几件真实经历，得到可纠正的趣味角色卡，看看工作的收获和消耗。\n- **工作翻译器**：把日常工作写成人话版、江湖版、专业版；比喻可以夸张，正式成果不编造。\n- **职场对话陪练**：练习争取项目、讨论优先级等场景，AI 一次扮演对方一轮，可以暂停求助。\n\n例如，“今天追设计改图，和研发确认活动页，需求改了三次”，可以整理成“跟进活动素材迭代与活动页需求确认，协调设计、研发之间的变更沟通”；不会凭空写成“主导上线、效率提升 30%”。这是表达示例，不是真实用户成果。\n\n[中文免安装试玩](https://github.com/Olandooooes/career-growth-plan/blob/main/examples/start-here.zh-CN.md) / [English trial](https://github.com/Olandooooes/career-growth-plan/blob/main/examples/start-here.en.md)：复制提示词到常用 AI 即可。完整 Skill 还提供经历复盘与按需保存的本地 Markdown 档案。\n\n这是早期公开预览，需要 AI 工具配合，不是独立 App，也没有后台自动记忆。当前希望收集真实体验反馈，特别是哪些表达有帮助、哪些问题像审问。请勿公开公司或个人敏感信息。\n\n感谢审核。",
+    "created_at": "2026-09-29T03:13:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11985"
+  },
+  {
+    "id": 11984,
+    "title": "【开源自荐】钨极 Tungsten Edge：让每个窗口一目了然、一点就到的 macOS Dock 栏",
+    "content": "钨极是一款 Mac 上的 Dock 栏软件。macOS 的 Dock 栏以应用为单位，但我想要每个窗口都在 Dock 栏上、一点就到，所以做了钨极：窗口一目了然，一点就到。借鉴 Windows 任务栏的窗口操作逻辑，但是不要它的臃肿，只开一个窗口的应用以图标的形式呈现，UI 风格和设计理念都继承自原生 macOS。\n\n切换窗口是我一天里做得最多的操作。同类的软件我能找到的几乎都用过，但是最后一个都没留，宁愿用回原生 Dock：点了不一定到我要的那个窗口，栏上的条目还会乱动；再就是太像 Windows，又满又挤。\n\n所以我做钨极的功夫主要花在「准」和「稳」上：点哪个窗口就到哪个；最小化一个窗口，接手的就是它正后面那个；切标签、最小化、再还原，它在栏上的位置不动。如果你用多块屏幕，每块屏可以有自己的栏，栏上的窗口能直接拖到另一块屏。\n\n支持 macOS 12 及以上，Intel 和 Apple 芯片都能用，已签名公证，也可以 `brew install --cask tungsten-edge` 安装。\n\n源码是 GPL 开源的。现在免费；1.0 起改成一次性买断，包含后续更新，不订阅；1.0 之前到官网登记并确认邮箱的，永久免费。\n\n9 月 22 日发到 r/macapps，当天到了版块第一，2.7 万次浏览、77 条评论。\n\n项目地址：https://github.com/moonbai-studio/tungsten-edge\n官网与下载：https://tungstenedge.app\n\n![钨极演示](https://raw.githubusercontent.com/moonbai-studio/tungsten-edge/master/assets/demo.gif)\n\n欢迎试用，遇到问题可以在仓库提 issue。\n",
+    "created_at": "2026-09-29T02:40:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11984"
+  },
+  {
+    "id": 11983,
+    "title": "【开源自荐】OrbCue：替你盯着命令行 Agent 的windows桌面小球，减少你的“上下文切换”",
+    "content": "项目地址：https://github.com/QZYH123/OrbCue\n介绍：\nOrbCue 是 Windows 桌面上的一颗悬浮小球，解决的是人在盯着多agent进度时总要专注或者不断\"上下文切换\"来轮询不同会话的进度的问题，它替你盯着 Claude Code、Codex、Cursor、Grok Build等命令行 Agent。它利用hook把轮询优化为中断逻辑，把 Windows 和WSL 里的所有会话汇总在一起：谁在工作、谁在等你、谁做完了一眼可见，还会弹通知或推送到手机，点一下就能跳回对应终端。\n适合同时跑多个 Agent、或者挂着长任务去做别的事的时候用。项目用 Rust 和 Tauri 2 开发，界面基于Svelte，只读取工具自带的 hook 事件，不读对话内容。\n\n<img width=\"720\" height=\"405\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5147742d-005c-4d6e-a283-7b6b298d7c91\" />\n\n功能：\n  • 状态汇总：所有 Agent 会话汇总到同一颗球上，显示工作中、等待输入、等待授权、完成、失败。\n  • 多工具接入：支持 Claude Code、Codex、Cursor CLI、Grok Build，装在 Windows 或 WSL\n    里的都能接入，其他工具也可以通过命令自行接入。\n  • 提醒：弹系统通知并响提示音，可选通过 ntfy 推送到手机。\n  • 跳回终端：点一下回到对应终端。用 orb run 或\"原命令启动\"开的会话，能精确跳到那个标签页。\n  • 一键连接：自动发现已安装的工具，一键写入 hook，改之前自动备份，断开时只撤掉自己写的部分。\n  • 隐私：只读取 hook 事件，不读对话内容，数据只留在本机。\n  • 小球交互：可以贴边收起、调透明度，支持全局快捷键、开机自启和多套主题。\n",
+    "created_at": "2026-09-29T01:21:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11983"
+  },
+  {
     "id": 11982,
     "title": "【作品自荐】1D1T：一个极简的命令行（CLI）工具，用于每天记录一件“今日最棒”的小事。",
     "content": "项目名称：1D1T（One day. One thing.）\n一句话介绍：一个极简的命令行（CLI）工具，用于每天记录一件“今日最棒”的小事。\n\n项目介绍：https://vinono.github.io/1D1T/\n项目源码：https://github.com/vinono/1D1T\n\n项目简介：\n这款命令行工具的灵感来源于陈奕迅的歌曲《今天只做一件事》（Take a day. Feel the love in everything）。它抛弃了繁琐的图形界面，让开发者和命令行重度用户可以在终端里，用最轻量的方式记录每天的高光时刻。\n\n主要特点：\n\n极简无干扰：没有复杂的 UI 交互，在终端输入几行命令即可快速完成记录，不打断现有的工作流。\n\n拒绝流水账：主打“One day. One thing.”，每天只强制自己提取、记录一件最值得留恋的事，聚焦于积极的正向反馈。\n\n数据沉淀与回顾：现已支持基础的数据记录与展示功能，能够快捷查阅过往的“高光时刻”，将碎片化的日常转化为直观的正反馈。\n\n创作初衷：\n抛开技术层面，这个项目的起点其实是为了我家里性格偏内向、在公众场合不太自信的小朋友。为了帮他撇开无谓的焦虑，我和他约定每天发掘一件自己觉得很“厉害”的事并记录下来，帮他慢慢建立属于自己的成就感。\n\n后来我发现，这种“每天捕捉一次微小正反馈”的极简记录方式，同样也非常适合压力大、需要精神锚点的成年人。",
@@ -782,31 +806,5 @@
     "created_at": "2026-09-23T12:59:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11884"
-  },
-  {
-    "id": 11883,
-    "title": "推荐一个本地离线待办/计划管理工具：本地工作控制台 lwc",
-    "content": "工具名：本地工作控制台 lwc\n\n链接：https://github.com/aks-666888/local-work-console\n\n一句话：无需联网、无需注册，双击单文件即用的本地待办与计划管理台，数据全留在自己电脑、不出机。\n\n为什么推荐：现在很多人想管自己的待办和计划，但又不想把数据交给云笔记。lwc 是个纯本地、零依赖、单文件 exe，打开就能用，适合注重隐私、不想折腾账号的人。免费版已公开，可作为效率类小工具推荐给读者。",
-    "created_at": "2026-09-23T12:41:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11883"
-  },
-  {
-    "id": 11882,
-    "title": "自荐：scm2cpp — 把 Scheme 翻译成可读 C++ 的编译器，附一个比 scikit-learn 快 10 倍的 lasso 包",
-    "content": "scm2cpp 是一个把 Scheme 子集翻译成人类可读 C++ 的编译器（Racket 实现，MIT 许可）。它不带运行时：整数变成 `int`，向量变成 `std::vector<double>`，类型由整程序推断（Hindley-Milner），推不出来的地方变成 C++ 模板参数。生成的代码可以直接读、直接改。\n\n它还带一个数组代数层和一个\"推导\"步骤（`--derive`）：写一个朴素的残差形式坐标下降（lasso），编译器会把循环提升成数组表达式，推导出协方差更新形式（Gram 矩阵），并把三个矩阵乘积交给 BLAS / cuBLAS。推导出来的内核和手写的内核在四种数据规模上时间完全一样。\n\n用它翻译出来的 lasso 求解器打包成了 `pip install scm2cpp-lasso`（不需要 Racket，只要 C++17 编译器；有 nvcc 就顺带编译 GPU 批处理）。在 4096 个 λ 的冷启动网格上（p=200, n=1800，交叉验证的典型形状）：sklearn 9.6 s，celer 13.5 s，skglm 14.5 s，cuML 53.6 s，scm2cpp-lasso 单核 0.91 s，GPU 0.044 s，目标函数值一致。\n\n仓库：https://github.com/niitsuma/scm2cpp （英文/日文 README，附完整基准脚本，可复现）\nPyPI：https://pypi.org/project/scm2cpp-lasso/",
-    "created_at": "2026-09-23T12:16:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11882"
-  },
-  {
-    "id": 11881,
-    "title": "【开源自荐】Video Transcript：开源的浏览器字幕编辑与视频导出工具",
-    "content": "GitHub：https://github.com/anghunk/video-transcript\n在线访问：https://video-transcript.zishu.me\n\nVideo Transcript（字幕工作室）是一款运行在浏览器中的视频字幕编辑工具，用于为本地 MP4 视频添加、调整和烧录字幕。**支持本地自动识别生成字幕。无需账号、无需后端、无水印。** \n\n导入视频后，你可以在时间轴上分段、编辑文字和设置样式，并实时预览字幕在画面中的最终效果。完成后直接导出带有字幕的 MP4，视频、字幕和导出过程都只在当前设备上完成，不会上传到服务器。\n\n<img width=\"2940\" height=\"1602\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e2b5c823-bc5b-40e7-a431-9cc77fd8d20f\" />\n\n### 安全说明\n\n视频、字幕和导出结果始终保留在当前浏览器中，不会上传到服务器。",
-    "created_at": "2026-09-23T11:45:15Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11881"
   }
 ]
