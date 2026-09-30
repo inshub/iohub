@@ -1,5 +1,69 @@
 [
   {
+    "id": 12003,
+    "title": "【文章自荐】ProjDevBench：端到端项目开发能力的 Agent 评测",
+    "content": "文章链接 https://www.testtesttesttesttesttest.fun/vault/vibecoding%E5%BC%80%E5%8F%91%E7%BB%8F%E9%AA%8C/03%20%E4%B8%80%E7%AF%87%E7%AB%AF%E5%88%B0%E7%AB%AF%E6%B5%8B%E8%AF%95agent%E8%83%BD%E5%8A%9B%E7%9A%84%E6%9C%9F%E5%88%8A\n\n一句话概述：ProjDevBench 用\"OJ 执行分 80% + 代码审查分 20%\"端到端评测 coding agent 的完整项目开发能力。三大发现：① 从零构建是真正的分水岭（多数 agent 补全尚可、从零大跌）；② 交互越长越接近失败（tokens/轮数与分数显著负相关）；③ Agent 框架与模型是乘法关系。结论：vibe coding 可以做原型，但还不能替代完整项目开发。",
+    "created_at": "2026-09-30T11:01:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12003"
+  },
+  {
+    "id": 12002,
+    "title": "推荐一个 AI 工具：Hotel Lobby AI Video（两张照片生成双人趋势短视频）",
+    "content": "**工具名称**：Hotel Lobby AI Video\n\n**一句话介绍**：上传两张照片，生成 15 秒或 30 秒的 Hotel Lobby 风格双人同步短视频。\n\n**核心能力**：\n\n- 左右各上传一张照片，自动生成双人同步表演\n- 预设运镜方向、节奏、4:3 画幅、720p 输出与自动生成音频\n- 无需提示词，也不需要时间线剪辑\n\n**适合人群**：短视频创作者、表情包作者、剪辑爱好者与营销人员。\n\n**官网**：https://hotellobbyaivideo.online/\n\n以上为个人使用后的客观分享，不涉及付费推荐。",
+    "created_at": "2026-09-30T10:56:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12002"
+  },
+  {
+    "id": 12001,
+    "title": "【自荐】Crush 好感监控器：让 AI 帮你看聊天记录，TA 是不是在降温",
+    "content": "暧昧的时候总会对着一句\"好吧\"想半天，就做了这个小工具。把你和对方的聊天记录贴进去，它会一句一句地读，告诉你对方每句话大概是什么情绪、什么意思，也会说它为什么这么判断。\n\n还会按周画一条好感度曲线，看关系从哪一周开始变冷；邀约、关心、拒绝这些时刻会整理成一条时间线；你自己的回复也会被打分，并给两种改写。\n\n在自己电脑上跑，用自己的 DeepSeek Key，一段聊天几毛钱。发出去之前会把手机号、身份证号这类信息打码。\n\n不想装的话可以先看在线演示，里面是一段已经分析好的示例聊天：\nhttps://reverie0123.github.io/crush-monitor-universal/\n\nGitHub：https://github.com/Reverie0123/crush-monitor-universal\n\n这个项目改编自 FerryCorleone 的 crush-monitor，已征得原作者同意。需要注意，本项目仅供娱乐，分析结果不代表对方的真实想法，请只用它分析你自己参与的聊天。\n",
+    "created_at": "2026-09-30T08:01:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12001"
+  },
+  {
+    "id": 12000,
+    "title": "【项目自荐】Decision API——一个聚合、比较和调用决策模型的平台",
+    "content": "我做了 [Decision API](https://decisionapi.org)，想把多个专注于决策的 AI 模型聚合到一个平台里。你可以在同一个 Playground 里体验 Jev、Laya、Kev、Solar 和 Span，也可以通过统一的 API 调用它们，不必为每个模型单独开发一套集成。\n\n每次请求传入一份上下文和类型化问题，例如分类、评分或是非判断，API 会返回结构化答案和概率。同一份上下文可以同时提出多个问题；切换支持的模型时，也能沿用相同的请求格式。希望这能让开发者更方便地比较模型，并尝试把它们用于分类、路由和工单分流等流程。\n\n目前聚合了 openrouter，vecel，liquid等 decisions api 的服务。欢迎体验 [https://decisionapi.org](https://decisionapi.org)",
+    "created_at": "2026-09-30T06:28:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12000"
+  },
+  {
+    "id": 11999,
+    "title": "【开源自荐】Codex 保安：OpenAI Codex 的本机安全审计工具",
+    "content": "Codex 保安：OpenAI Codex 的本机安全审计工具（Windows，MIT 开源，作者自荐）。\n\n它只读 Codex 写在 `~/.codex/sessions` 的会话日志，实时检查 Codex 执行的命令、改动的文件和读进上下文的内容，发现读取 SSH 私钥 / auth.json、`curl | sh` 下载即执行、强推删库、工具输出里的提示注入、AGENTS.md 和 MCP 配置被投毒就提醒。配合 CC Switch 还能对比请求模型和上游自报模型，发现中转站偷换小模型。不代理流量、不装证书、不改任何配置。\n\n源码：https://github.com/jliushi/codex-baoan\n官网：https://jliushi.github.io/codex-baoan/\n\n![](https://raw.githubusercontent.com/jliushi/codex-baoan/main/docs/screenshot-overview.png)\n",
+    "created_at": "2026-09-30T05:38:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11999"
+  },
+  {
+    "id": 11998,
+    "title": "【开源自荐】AgentDeck：用手机远程操作 Claude Code / Codex / Cursor 等编码代理",
+    "content": "仓库：https://github.com/mantou132/AgentDeck\n\n我是作者。AgentDeck 是一个手机 / 浏览器插件端，用来远程操作电脑上已经装好、登录好的编码代理（Claude Code、Codex、Cursor、GitHub Copilot、Qwen Code 等），基于 Agent Client Protocol（ACP）。agent 本身还是要你自己在电脑上装好、配置好，这一步 AgentDeck 不负责，它解决的是\"配置好之后怎么远程用\"。\n\n- 一个 App 管所有 agent：不用为每个 agent 单独找/装各自的远程方案，手机上切换着用\n- 端到端加密：配对 ID 和消息端到端加密，relay 只转发密文，也可以自己搭 relay 自托管\n- 移动端体验：语音输入、图片附件、任务完成后手机 push 通知、随时看 Git diff 和文件改动/历史\n- Android 已上架 Google Play，浏览器插件支持 Chrome / Edge / Firefox（侧边栏 + DevTools 面板）\n\n电脑上装一个后台进程即可：\n\n```\nnpm install -g agentdeckd\nagentdeckd start\n```\n\n扫码配对后就能在手机上用。用 Tauri 2 + Rust 写的。\n\nDemo: https://www.youtube.com/watch?v=_HWCKW9nfpE\n",
+    "created_at": "2026-09-30T05:34:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11998"
+  },
+  {
+    "id": 11997,
+    "title": "【开源自荐】Duplex：人和 AI 共用一个浏览器",
+    "content": "仓库：https://github.com/Eric-huang799/duplex\n\n浏览器自动化工具（browser-use、Playwright MCP、Browser MCP 等）大多是 AI 在另一个自动化实例里跑流程，人只能看日志。Duplex 想换一种「共处一室」的方式：AI 就在你正在看的那个浏览器里操作。\n\n人看渲染后的页面，AI 读 DOM 与源码快照，两边共用同一个标签页和同一个实时会话。内置 stdio MCP 服务提供 24 个工具（页面快照、点击、输入、拖拽、滚动、等待、截图、标签页、批注、JS 求值等），兼容任意 MCP 客户端（opencode、Claude Code、Codex 等）；AI 的每次操作都会在页面上可视化（光标、元素高亮、\"AI 正在点击 X —— Esc 接管\"），按 Esc 随时人工接管。\n\n- 同屏协作：人看到的页面就是 AI 操作的页面，不需要另一个自动化浏览器实例\n- 会话镜像：opencode 会话在侧栏实时镜像；Codex / Claude Code 的会话可直接在面板里续聊\n- 任意 MCP 客户端可用：随应用内置 stdio 桥，首次调用工具时自动拉起浏览器\n- 内置模型可选：支持 OpenAI 兼容接口（含 Ollama）、Anthropic、Gemini\n- 写文件 / 跑命令 / 启动自定义工具都有确认弹窗，Esc / F2 全局急停\n\n说清边界：iframe 与 shadow DOM 内部暂不在快照/点击范围内；页面导航后元素引用会失效，需要重新快照；macOS 安装包未签名（首次需右键打开）；内置小模型在长任务链上明显弱于 opencode / Claude Code 这类完整方案。\n\nWindows / macOS / Linux 安装包见 Releases，MIT 协议。README 附 3 分钟双语字幕演示：\n\n![Duplex 演示](https://raw.githubusercontent.com/Eric-huang799/duplex/master/docs/screenshots/demo.gif)\n",
+    "created_at": "2026-09-30T05:33:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11997"
+  },
+  {
+    "id": 11996,
+    "title": "【工具自荐】DrNews：《科技爱好者周刊》阅读器",
+    "content": "想和大家分享一款我最近刚刚上线的手机阅读小工具——[DrNews](https://play.google.com/store/apps/details?id=com.feaxr.drnews)。\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/26bf0878-b5ca-4326-983c-31716c96f71b\" />\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68e1e6f6-e366-4a0e-81bf-94fdbd9e0f2b\" />\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60360fb1-b52c-4ac3-871c-ab88c9fcc429\" />\n\n[![Watch the video](https://youtube.com/shorts/mMTdm7XtcAE)](https://youtube.com/shorts/mMTdm7XtcAE)\n\n平时大家应该也经常在 GitHub 上看各种开源项目的 README、技术文档，或者追《科技爱好者周刊》（比如阮一峰老师的 weekly 等）。但说实话，直接用手机浏览器看 Markdown 经常字太小、排版生硬、偶尔图片还加载不出来，阅读体验挺折腾的。\n\nDrNews 就是为了解决这个问题做出来的。它界面做得很干净，没有任何乱七八糟的广告或干扰 （呵呵，仅在阅读页显示一次广告）。你可以把它当成一个“Markdown 专属的舒适阅读器”：\n\n-  它可以把你关注的 GitHub 仓库或文件夹同步到手机里，随时离线看。字体、字号、护眼背景（比如舒服的复古沙棕色、纯黑模式）都能随便调，读起来就像在看一本排版精致的小杂志；\n\n-  遇到长文章时间不够时，它有智能 AI 摘要，点一下就能帮你用中文或英文总结出核心要点，快速抓重点；\n\n-  通勤路上或眼睛累了的时候，还能直接用语音朗读听文章，它会自动过滤掉代码块和网址，听感很顺畅；\n\n-  遇上特别长的文档，点一下“目录”就能快速跳转到想看的小节，非常省心。\n\n如果你平时也喜欢在手机上读 《科技爱好者周刊》等 Markdown 文章或技术资讯，推荐你试试看，欢迎反馈！",
+    "created_at": "2026-09-30T04:37:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/11996"
+  },
+  {
     "id": 11995,
     "title": "【开源自荐】agent-manager：在一个终端界面里并排运行多个编码代理 CLI",
     "content": "项目地址：https://github.com/YoanWai/agent-manager\n官网：https://agent-manager.dev\n开源协议：Apache-2.0\n\n我是 agent-manager 的作者。它是一个终端 UI，把 Claude Code、Codex、OpenCode、Gemini CLI 等编码代理 CLI 放在各自持久的 tmux 会话里并排运行，启动的是你本机已安装的原版 CLI，登录、订阅、配置文件和 MCP 服务器都照常沿用。所有会话的实时状态集中在一个列表里，不用进入会话就能发送提示，还可以给会话开独立的 git worktree，并用全文件 diff 审阅代理改了什么。支持 macOS 和 Linux，Windows 上需在 WSL2 中运行。\n\n![agent-manager 会话列表](https://raw.githubusercontent.com/YoanWai/agent-manager/main/docs/screenshot-sessions.png)\n",
@@ -249,8 +313,8 @@
   },
   {
     "id": 11963,
-    "title": "【开源自荐】TakeBoard：面向 ComfyUI 创作者的本地优先项目画布",
-    "content": "项目关联说明：这是 TakeBoard 项目的自荐，处于公开测试阶段。\n\n**TakeBoard 是面向 ComfyUI 创作者的开源、本地优先项目画布**：把参考素材、镜头输入、工作流和生成结果放在同一个项目里，便于管理多次尝试及其提示词和参数。它不替代 ComfyUI 的节点编辑器，也不是新的生成模型。\n\n- 导入图片、视频等素材，在画布上连接支持的输入并查看生成记录。\n- 使用自己的本机或远程 ComfyUI；本地项目管理无需注册。\n- 当前 beta.17 提供 macOS、Windows、Debian/Ubuntu 的 x64 / ARM64 原生安装包。\n- Apache-2.0 开源。生成仍需要用户自备 ComfyUI、模型和节点；导入任意工作流不代表可直接执行。\n\n适合已经在用 ComfyUI、希望把多镜头素材与结果整理在一起的创作者。桌面包尚未进行 Apple 公证或 Windows 商业代码签名；安装包验证不是所有 GPU 与工作流的生成验证。\n\n源码：https://github.com/Fourques/Takeboard\n\n下载：https://github.com/Fourques/Takeboard/blob/main/docs/downloads.md\n\n首次试用：https://github.com/Fourques/Takeboard/blob/main/docs/first-session.md\n\n目前希望收集首次使用与工作流兼容性的实际反馈。感谢编辑审阅。\n",
+    "title": "【开源自荐】TakeBoard：基于 ComfyUI 的 AI 图片与视频创作画布",
+    "content": "维护者自荐：**TakeBoard，一个基于 ComfyUI 的开源 AI 创作画布。**\n\n在同一工作区选择模型、连接素材、编写提示词，生成图片与视频，再将结果用于下一步创作。它把配置好的 ComfyUI 工作流变成画布中的创作工具，适合希望可视化创作、同时使用自己模型与设备的用户。\n\n- 从文生图、图生图到视频生成，按工作流能力展示输入与参数。\n- 在画布中比较多个版本，连接结果继续创作。\n- 桌面端连接本机或远程 ComfyUI；项目可保存在本机，远程输出取回项目。\n\nApache-2.0 开源，提供 Mac、Windows、Debian/Ubuntu 的 x64 / ARM64 测试版安装包。本机使用无需注册。生成需要另行准备 ComfyUI、模型和节点，自定义工作流可能需要适配。\n\n[项目与源码](https://github.com/Fourques/Takeboard) · [下载与介绍](https://fourques.github.io/Takeboard/zh/) · [首次创作](https://github.com/Fourques/Takeboard/blob/main/docs/first-session.md)\n\n[交互演示](https://github.com/Fourques/Takeboard/blob/main/docs/demo-guide.md)使用标注清楚的模拟结果，非模型生成样片。当前 beta.17 的签名状态与首次打开方式见[安装说明](https://github.com/Fourques/Takeboard/blob/main/docs/downloads.md)。",
     "created_at": "2026-09-28T03:25:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11963"
@@ -736,73 +800,5 @@
     "created_at": "2026-09-24T10:59:30Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11902"
-  },
-  {
-    "id": 11901,
-    "title": "【开源自荐】SyncClipboard CfServer：把剪贴板同步服务端跑在 Cloudflare 免费额度上",
-    "content": "仓库：https://github.com/Leexunhuan743/SyncClipboardCfServer （MIT）\n\nSyncClipboard 官方服务端的 Cloudflare Workers 复刻实现（TypeScript + D1 + R2 + Durable Objects）。官方客户端（Windows / macOS / Android，v3.1.1 及以上）零改动，把服务器地址指向部署好的 Worker 就能用：剪贴板实时同步（SignalR WebSocket 长连接）、WebDAV 兼容端点、历史记录跨设备同步。\n\n做它的原因：官方服务端要自备 VPS / Docker / 进程守护，而这个实现把服务端搬到 Cloudflare 边缘——无服务器、免运维、按量计费，个人用量基本落在免费额度内（一台客户端全天在线约 1.7 万次请求/天，免费额度 10 万次/天）。\n\n比官方多出来的：\n\n- 内置 Web 历史管理界面：浏览 / 搜索 / 筛选 / 排序历史记录，收藏、置顶、批量操作、文本与图片预览、复制下载；回收站（删除的记录连同图片/文件数据保留 30 天，可一键恢复）；在线调整保留策略，不用重新部署。\n- 部署两条路：命令行（wrangler），或 GitHub Actions（Fork 后配几个 Secret，推 master 自动建资源并部署）。\n\n与官方服务端的行为差异（先说清楚，避免踩坑）：\n\n- 单次上传默认上限 48 MiB（可调到 64 MiB），超出返回 413；\n- 文件夹 zip 解压总量 64 MiB、条目 1000、单条目 24 MiB；\n- 历史清理每 20 分钟一轮；\n- 访问不存在的地址且未带凭据时返回 401，并计入失败限速。\n\n这些限制来自 Cloudflare 免费档的约束（单请求 100 MiB、isolate 内存 128 MiB）；客户端默认单文件 20 MB，正常使用大多碰不到。\n\n工程上：协议行为逐条对照官方源码实现，并与官方发布件做过 A/B 实测；22 个测试套件；所有有意偏离都登记在 docs/protocol.md 的差异表里。\n\n独立的社区实现，与官方项目无关联、未获官方背书；协议行为与哈希算法移植自官方（MIT，版权声明已保留在 LICENSE 中）。\n",
-    "created_at": "2026-09-24T10:30:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11901"
-  },
-  {
-    "id": 11900,
-    "title": "【开源自荐】Layerive：把昂贵的商业生图流水线，搬进你的本地电脑",
-    "content": "### 项目名称\nLayerive\n\n### 项目地址\nhttps://github.com/newljs/Layerive\n\n### 项目简介\nLayerive 是一款本地优先的 AI 图片创作与版本管理工作台，旨在**把昂贵的商业生图流水线，搬进你的本地电脑**。\n\n针对商业生图平台高昂的订阅月费，以及传统工具在微调改图时“历史记录杂乱、版本难以回溯”的痛点，Layerive 聚焦以下核心价值：\n1. **告别平台绑架**：拒绝被单一平台的昂贵月费套牢，自由接入任何低成本 API 中转站或本地模型，按量调用，几分钱跑出商业级出图效果。\n2. **改图如 Git，版本永不丢失**：自带生成版本树与前后对比，告别提示词与原图散落一地的混乱，每一次微调都清晰可追溯。\n3. **数据纯本地留存**：模型配置、创作历史与素材全部锁在本地，资产隐私零泄露，开箱即用。\n\n### 核心功能\n- **版本树与项目管理**：分支化管理每次提示词迭代、局部重绘与改动，完整保留演变上下文。\n- **变量批量改图与文生图**：支持注入变量批量出图，保证统一画风，满足系列图与电商多 SKU 生产需求。\n- **实用生产力修图套件**：内置局部重绘、参考图融合、图片改字、扩图与去水印，开箱即用，无需频繁切换进 PS。\n- **完全开源免费**：基于 MIT 协议开源。",
-    "created_at": "2026-09-24T07:41:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11900"
-  },
-  {
-    "id": 11899,
-    "title": "【软件自荐】MyShell：Mac 上免费的终端和 SSH 客户端，支持 JumpServer 堡垒机，AI 助手可复用已登录的连接",
-    "content": "官网：https://myshell.flyooo.uk/\n\n一个免费的 Mac 终端和 SSH 客户端，登录一次一直在线，能直接登录 JumpServer 堡垒机同步机器，还能让 Claude Code 等 AI 助手复用已连好的服务器执行命令，不用交出密码。\n\n<img width=\"1229\" height=\"844\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7ea6d69e-00ce-4645-b6a9-7e104260df33\" />\n\n为什么做这个\n\n我日常要同时连很多台服务器，其中不少在公司的 JumpServer 堡垒机后面。以前每次都要去网页上复制一次性登录信息，再粘到终端里；标签一多，也很难找到要找的那台机器。市面上的 SSH 客户端要么不支持 JumpServer，要么要订阅收费，于是自己做了一个。\n\n主要功能\n\n登录一次，一直在线：同一台机器开再多标签、文件面板，只需登录一次；会话断了在原标签里重连，之前的输出还在\nJumpServer 堡垒机：填一次账号（支持二步验证），分给你的机器自动同步进来，点开就能连\n跳板机：内网机器经跳板机连接，选一下就行，不用写 SSH 配置文件\n竖排标签 + 快速切换：⌘J 呼出面板，输入名称或 IP 直达\n实时负载：所有机器的延迟、负载、CPU、内存、磁盘一屏看完\nSFTP 文件面板、凭据统一管理、常用命令片段、配置备份（本地 / WebDAV）\n本机接口（默认关闭）：本机脚本和 Claude Code、Codex 等 AI 助手，可以在已连好的服务器上执行命令、上传文件，密码和密钥始终留在 MyShell 里\n\n<img width=\"1224\" height=\"729\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3b71a490-e50a-4b32-b5f9-91eda1c4ae26\" />\n\n<img width=\"1093\" height=\"806\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/70789bda-f7d2-4bf6-8f42-70f45a6673c6\" />\n\n其他\n\n免费，无需注册，没有订阅和付费功能（目前不开源）\n支持 macOS 12 及以上，Apple 芯片和 Intel 芯片都有安装包，已签名并经过 Apple 公证，下载后双击即可打开\n密码和密钥只存在本机（默认存在 macOS 钥匙串），应用本身不上传数据\n\n使用教程：https://myshell.flyooo.uk/guide",
-    "created_at": "2026-09-24T07:39:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11899"
-  },
-  {
-    "id": 11898,
-    "title": "【开源自荐】agent-limit-retry：让 Claude Code 扛过额度限制，撞限额前先写交接文件，重置后自动续跑",
-    "content": "仓库：https://github.com/error0702/agent-limit-retry （MIT）\n主页：https://retry.autorun.fun\n\n## 它解决什么\n\n用 Claude Code 的 Pro/Max 订阅跑长任务时，5 小时或每周额度一到，正在跑的子 Agent 会一起失败；额度重置后主 Agent 通常把同样的任务**从头重新派发**，之前做的一半活作废，额度再花一次。我翻了自己 6 个会话的记录：449 个子 Agent 被限额打断，只有 8 个被按 ID 叫醒（而且都是在重置前叫的，所以又失败一次），438 个重做。\n\n其实 Claude Code 已经把需要的信息写在本机了：transcript 里有精确的重置时间（`quotaLimits.resetsAt`），状态栏会收到 5 小时/7 天的用量百分比，每个子 Agent 的记录里有它的任务、改过的文件和最后几步。agent-limit-retry 只是把这些读出来，在正确的时刻告诉 Agent 该做什么。\n\n## 它做什么\n\n- `npx agent-limit-retry` 一条命令安装：装 Claude Code 插件，接上状态栏（已有状态栏会保留并透传）\n- 额度用到 90% 时，让 Agent 做完当前一步先写 `HANDOFF.md`（目标、已完成、进行中、下一步、坑），每个窗口只提醒一次\n- 撞限额时记下精确的重置时间，发桌面通知\n- `alr run \"<任务>\"`：无人值守跑 `claude -p`，撞限额后睡到重置时间，用 `--resume` 续跑同一个会话，周限额同样处理\n- `alr selftest`：本地假接口模拟一次撞限额 + 自动续跑，不花额度\n- `alr status`：看两个窗口的用量和重置时间\n\n全部在本机运行：不走代理、不需要账号、不联网、不轮换账号，只帮你把已经付费的套餐用干净。子 Agent 按原 ID 续跑那部分（Claude Code / Codex / ZCode 都支持）是付费的 Pro 版，基础功能开源 MIT。\n\nNode.js 18+，Claude Code 2.1.234+。英文界面，中文 locale 下自动显示中文。\n",
-    "created_at": "2026-09-24T07:31:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11898"
-  },
-  {
-    "id": 11897,
-    "title": "【开源自荐】skillsgist：部署在自己 Cloudflare 账号上的私有 Agent Skills 仓库，用官方 npx skills 一条命令安装",
-    "content": "仓库：https://github.com/Qsnh/skillsgist （MIT）\n\nskillsgist 是一个私有的 Agent Skills 仓库，部署在你自己的 Cloudflare 账号上。技能在网页上上传和管理，团队成员用官方的 `npx skills add` 一条命令，就能把技能装进 Claude Code、Cursor、Codex 等 Agent。\n\n做它的原因：团队内部沉淀的技能，比如代码评审清单、发版流程、内部规范，往往不适合发到公开的技能仓库，但大家又希望像安装公开技能一样一条命令装好。skillsgist 直接实现了 skills.sh 的发现协议（`/.well-known/agent-skills/index.json`），所以不需要自定义 CLI、插件或 fork。\n\n几个可能有用的细节：\n\n- 默认私有，每个技能单独决定要不要公开；公开的技能不需要密钥就能安装\n- 私有安装用个人的 install key，这个 key 只能安装，不能登录、发布或删除，可以一键轮换\n- 可以上传 .zip、.tar.gz 或单个 SKILL.md，也可以直接在网页上改 SKILL.md\n- 版本不可变、按数字递增，旧版本都能查看和下载；制品按内容摘要寻址，CLI 下载时会校验\n- 有幂等的发布 API，可以在 CI 里每次 push 都自动发布\n- 整个服务就是一个 Worker、一个 D1 数据库和一个 R2 存储桶，默认限制在 Workers 免费套餐以内\n- README 里有 Deploy to Cloudflare 按钮，可以一键部署；也可以用 Wrangler 手动部署\n\n安装命令长这样：\n\n```bash\nnpx skills add https://<你的域名>/i/<install_key>\n```\n\n截图：\n\n![skillsgist 首页：带 install key 的安装命令和技能列表](https://raw.githubusercontent.com/Qsnh/skillsgist/main/docs/images/home.png)\n\n![技能详情页：单个技能的安装命令、渲染后的 SKILL.md、文件列表和版本历史](https://raw.githubusercontent.com/Qsnh/skillsgist/main/docs/images/skill.png)\n\n一句话简介（供周刊参考）：一个自托管的私有 Agent Skills 仓库，部署在 Cloudflare 上，在网页上管理技能，用官方的 `npx skills add` 命令安装。\n\n欢迎试用和提 issue。\n",
-    "created_at": "2026-09-24T04:58:03Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11897"
-  },
-  {
-    "id": 11896,
-    "title": "【开源自荐】简历通 ResumeForge：本地优先的 AI 简历工作台，用事实台账拦住 AI 编造的经历",
-    "content": "**项目地址**：https://github.com/magicapple123/ResumeForge\n**在线体验（只读演示，免安装）**：https://magicapple123.github.io/ResumeForge-official/demo.html\n\n## 它是什么\n\n本地优先的 AI 求职工作台。不注册、不登录，简历和资料只存在本机的一个 SQLite 文件里，随时可以拷走。一条链路覆盖：岗位采集 → 匹配度分析 → 生成简历 → 导出 → 投递跟进 → 模拟面试 → 复盘统计。\n\n## 为什么值得看一眼\n\nAI 简历工具最大的问题不是排版，是它会替你编。这个项目把「事实」从「表述」里拆出来单独管：生成结果里的学校 / 公司 / 项目名会和自己的资料库逐条比对，不一致就给**防虚构警告**；正文还留着【待补】标记时导出会被拦下并指出具体位置。比如「400 人、7.2%、6.1%、1.1 个」这种资料里根本没写过的量化成果，会被点名要求人工核对——模型编出来的东西不会悄悄留在简历里。\n\n另一个刻意不做的设计：匹配度**不给百分比评分**，只给五类结论（已匹配 / 表达缺口 / 证据不足 / 真实缺口 / 待确认）。理由是分数会让人误以为它能决定投递结果，而它不能。\n\n## 技术信息\n\n- FastAPI + React + SQLite 单机运行，MIT 协议，**没有会员、没有付费墙、没有导出次数限制**\n- 断网可用：解析、检查、预览、全部导出都离线；不配模型也能用大部分功能\n- 有 CI、2,700+ 个测试用例、数据库迁移链与升级方案\n- 不保存招聘网站密码 / Cookie / 令牌；投递台是唯一会主动访问外部站点的链路，必须由用户显式配置 + 显式点击才开始，不做无人值守运行\n\nWindows 双击 `start.cmd`，第一次会自动装好环境。中文界面，中文文档。\n",
-    "created_at": "2026-09-24T04:38:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11896"
-  },
-  {
-    "id": 11895,
-    "title": "【开源自荐】OpenSubs：在浏览器里给视频加字幕，视频不上传",
-    "content": "官网：https://opensubs.app\n仓库：https://github.com/open-subs/opensubs （AGPL-3.0）\n\nOpenSubs 用来给视频加字幕：识别语音、翻译、调样式、烧进画面，整个过程在你自己的机器上完成，视频文件不会上传到任何服务器。\n\n打开网页就能用，不用注册、不用装东西，也没有水印和时长限制。语音识别用的是 Whisper，编译成 WebAssembly 在浏览器里跑，支持 WebGPU 加速；除网页版外还有浏览器扩展、桌面版和命令行三种用法。\n\n几个可能有用的细节：\n\n- 字幕可以导出 SRT / VTT / ASS，也可以直接烧录成 MP4\n- 支持翻译，并且可以保留原文做成双语字幕\n- 有逐词高亮的样式，适合做短视频\n- 已有的字幕文件可以直接导入来调样式或烧录，不必重新识别\n- 界面有中文\n\n如果不想在本地跑模型，也可以填自己的 API key 走云端识别，这种情况下音频会发给对应的模型服务商，这一点在界面上有说明。\n\n做了几个月，欢迎试用和提 issue。",
-    "created_at": "2026-09-24T03:53:44Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/11895"
-  },
-  {
-    "id": 11894,
-    "title": "Peekd: 轻量级 Web 文件服务器，用于快速浏览和共享本地文件",
-    "content": "![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/banner.svg)\n\n- 项目主页： https://jiacai2050.github.io/peekd/\n\n- 丰富的格式预览：Markdown 、HTML 、XML 、代码、文本、CSV 、TSV 、图像、音频、视频、PDF 和标准库存档列表 (ZIP 、TAR 和 TAR.GZ) 。\n\n- 支持 HTTP 范围，支持 sendfile 优化\n\n- 具有自动深色模式的轻量级单二进制\n\n## 截图\n\n### 文件夹\n![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/dir.webp)\n\n### Markdown\n![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/markdown.webp)\n\n### CSV\n![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/csv.webp)\n\n### Zip 压缩文件\n![]( https://github.com/jiacai2050/peekd/raw/main/docs/images/zip.webp)",
-    "created_at": "2026-09-24T03:39:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11894"
   }
 ]
