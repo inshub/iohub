@@ -1,5 +1,37 @@
 [
   {
+    "id": 12024,
+    "title": "【工具自荐】DockTerm：Claude Code 的终端工作台，权限请求从 Mac 刘海里弹出（开源，MIT）",
+    "content": "项目地址：https://github.com/munvard/dockterm\n\n我经常让 Claude Code 跑长任务，然后去做别的事，结果它在一个权限提示上等了十分钟。所以做了 DockTerm，一个免费开源的桌面工作区（Electron，MIT 协议，支持 macOS / Windows / Linux）。\n\n它不替换 claude，只是包住真实的终端会话，再加一些东西：\n\n- munu：Mac 刘海里的小脸（Windows 和 Linux 是顶部的小胶囊）。Claude 需要权限时，它把问题弹出来，全屏应用上面也能弹，点一下就能回答。它不会替你点确认。\n- 每个仓库一个窗格，多个会话放在同一个窗口里。\n- 实时显示子代理在做什么，可以审查 diff，也有简单的 Git。\n- 显示 5 小时和每周额度还剩多少（只在本地读取日志，是估算值）。\n- 本地运行，无账号，无遥测，自己不会调用任何 AI 接口，也不用装 hooks（直接读终端文字）。\n\n不足：基于 Electron，安装包比较大；Windows 版本还没有签名；状态检测依赖终端文字，Claude Code 改了提示文案时我需要跟进修复。\n\n安装：`brew install --cask munvard/dockterm/dockterm`，或者到 Releases 下载。仓库里有中文 README。\n\n作者：Moon Labs，亚美尼亚。欢迎反馈哪里会出问题。",
+    "created_at": "2026-10-01T18:25:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12024"
+  },
+  {
+    "id": 12023,
+    "title": "【工具自荐】49 Agents IDE：把所有 AI 编程 Agent 和终端放到一张无限画布上",
+    "content": "49 Agents IDE 是一个「2D Agent IDE」：把多个终端（真实的 tmux 会话）、多台机器、多个项目放在同一张可缩放的无限画布上。\n\n<img width=\"100%\" alt=\"49 Agents IDE\" src=\"https://github.com/user-attachments/assets/878b3926-e017-4ccc-9c54-315b647fd417\" />\n\n同时开五六个 Claude Code / Codex，十几个终端标签来回切，很容易乱。49 Agents IDE 把每个终端变成画布上的一个窗格，可以随意摆放、缩放：\n\n- 同时跑多个 Claude Code、Codex 或任意命令行 Agent（包括国产 CLI Agent），每个窗格都能看到 Agent 当前状态\n- 多台机器接入同一张画布，不用 SSH\n- 手机、平板也能打开同一个工作区\n- 画布上还有 Monaco 编辑器、Git 图、Markdown 笔记、权限请求通知\n\n推荐自托管，两条命令启动，终端和代码不离开你的机器：\n\n```bash\ngit clone https://github.com/alpbahadur/49-IDE.git && cd 49-IDE\n./49ctl setup && ./49ctl start   # 打开 http://localhost:1071\n```\n\n项目地址：https://github.com/alpbahadur/49-IDE （源码公开，BSL 1.1 许可，自托管免费）\n",
+    "created_at": "2026-10-01T18:21:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12023"
+  },
+  {
+    "id": 12022,
+    "title": "工具自荐：OpenJob——本地优先的 AI 求职工作台（人工确认制）",
+    "content": "**项目**：OpenJob\n**链接**：https://github.com/Batianxieshen1/OpenJob\n**分类建议**：工具\n\n**一句话介绍**：本地优先的 AI 求职工作台：Boss直聘岗位自动采集 + AI 五维评分 + 人工确认投递，数据全部留在自己电脑里。\n\n**详细介绍**：\n\nOpenJob 是一个装在自己电脑里的求职工作台（Python + React，MIT 协议）。它把找工作中的重复劳动自动化：在专用 Chrome 里自动翻页采集岗位、去重入库；AI 按五个维度（职责匹配 / 证据强度 / 硬性要求 / 工具技能 / 实际可行性）打分并给出评分理由；再按 JD 定向改写简历——逐行等长换写、排版零损伤、编造内容自动拦截；最后生成定制招呼语。\n\n设计上的核心铁律是「人工确认」：所有对外发送动作（打招呼 / 发简历 / 回复 HR）都必须在确认队列里逐条放行，代码层面不存在绕过路径。风控方面有单日页面访问硬上限、随机冷却、发送时间窗、模拟浏览节奏。岗位数据、简历、素材库、API Key 全部本地自持，唯一外发请求是对 AI 服务的调用。\n\n内置 Web 工作台（岗位池 / 市场分析 / 确认队列 / 简历工作台，明暗双主题），支持工作台存活期间的定时采集、HR 回复监听与投后管理（约面试 / Offer / 拒绝流转）。\n\n**适合谁**：正在集中求职（尤其校招 / 实习）、想把重复劳动交给工具、但保留每一个投递决定权的求职者。",
+    "created_at": "2026-10-01T17:35:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12022"
+  },
+  {
+    "id": 12021,
+    "title": "ReelTextStudio：把本地保存的音视频转成可编辑英文文本",
+    "content": "网站：https://reeltextstudio.com/\n\nReelTextStudio 是一个浏览器内转写工具：选择已经保存到本机、且浏览器可播放的音频或视频文件，即可把其中的英文语音转成可编辑文字，并可复制或下载为 TXT。\n\n它不抓取社交平台链接，也不需要注册账号。适合把自己已保存、并且有权使用的短视频或音频整理为文字。",
+    "created_at": "2026-10-01T14:44:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12021"
+  },
+  {
     "id": 12020,
     "title": "【资源自荐】Agent Needs：免注册收集 AI Agent 工作流真实卡点的小站",
     "content": "网站：https://catalog-check.leevi2010.chatgpt.site\n\n做了一个早期需求收集站 Agent Needs，想先弄清楚开发者实际使用 AI Agent 时卡在哪里，再决定值得做什么工具。目前处于免费、开放的需求发现阶段，没有支付或售卖功能，也还没有真实用户需求验证。\n\n如果你在使用或开发 Agent，欢迎提交一次真实经历：\n- 当时要完成什么任务？\n- 具体卡在了哪一步？\n- 现在怎么绕过去，出现频率和影响有多大？\n\n可以直接在网页填写，不需要注册、邮箱或钱包。也提供 POST /api/v1/needs 接口，便于在获得操作者授权后，从工作流提交问题。必填字段是 task（10–500 字符）、problem（20–2000 字符）和 consent: true；可选补充 agent、workaround、frequency、impact、buyer。\n\n提交内容先进入私有待审核队列，审核后可能公开展示；提交前页面会提示这一点。请只提交有权分享的信息，不要填写密码、API Key、客户隐私或公司机密。目前这只是收集和验证需求的实验，不承诺每个问题都会获得解决。\n\n欢迎 Agent 开发者、自动化工作流使用者体验并反馈。此投稿由 AI 助手协助整理并代为发布。",
@@ -450,7 +482,7 @@
   {
     "id": 11963,
     "title": "【开源自荐】TakeBoard：基于 ComfyUI 的 AI 图片与视频创作画布",
-    "content": "维护者自荐：**TakeBoard，一个基于 ComfyUI 的开源 AI 创作画布。**\n\n在同一工作区选择模型、连接素材、编写提示词，生成图片与视频，再将结果用于下一步创作。它把配置好的 ComfyUI 工作流变成画布中的创作工具，适合希望可视化创作、同时使用自己模型与设备的用户。\n\n- 从文生图、图生图到视频生成，按工作流能力展示输入与参数。\n- 在画布中比较多个版本，连接结果继续创作。\n- 桌面端连接本机或远程 ComfyUI；项目可保存在本机，远程输出取回项目。\n\nApache-2.0 开源，提供 Mac、Windows、Debian/Ubuntu 的 x64 / ARM64 测试版安装包。本机使用无需注册。生成需要另行准备 ComfyUI、模型和节点，自定义工作流可能需要适配。\n\n[项目与源码](https://github.com/Fourques/Takeboard) · [下载与介绍](https://fourques.github.io/Takeboard/zh/) · [首次创作](https://github.com/Fourques/Takeboard/blob/main/docs/first-session.md)\n\n[交互演示](https://github.com/Fourques/Takeboard/blob/main/docs/demo-guide.md)使用标注清楚的模拟结果，非模型生成样片。当前 beta.17 的签名状态与首次打开方式见[安装说明](https://github.com/Fourques/Takeboard/blob/main/docs/downloads.md)。",
+    "content": "维护者自荐：**TakeBoard，一个基于 ComfyUI 的开源 AI 创作画布。**\n\n在同一工作区选择模型、连接素材、编写提示词，生成图片与视频，再将结果用于下一步创作。它把配置好的 ComfyUI 工作流变成画布中的创作工具，适合希望可视化创作、同时使用自己模型与设备的用户。\n\n- 从文生图、图生图到视频生成，按工作流能力展示输入与参数。\n- 在画布中比较多个版本，连接结果继续创作。\n- 桌面端连接本机或远程 ComfyUI；项目可保存在本机，远程输出取回项目。\n\nApache-2.0 开源，提供 Mac、Windows、Debian/Ubuntu 的 x64 / ARM64 测试版安装包。本机使用无需注册。生成需要另行准备 ComfyUI、模型和节点，自定义工作流可能需要适配。\n\n[项目与源码](https://github.com/Fourques/Takeboard) · [下载与介绍](https://fourques.github.io/Takeboard/zh/) · [首次创作](https://github.com/Fourques/Takeboard/blob/main/docs/first-session.md)\n\n[交互演示](https://github.com/Fourques/Takeboard/blob/main/docs/demo-guide.md)使用标注清楚的模拟结果，非模型生成样片。当前桌面测试版 的签名状态与首次打开方式见[安装说明](https://github.com/Fourques/Takeboard/blob/main/docs/downloads.md)。",
     "created_at": "2026-09-28T03:25:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11963"
@@ -766,37 +798,5 @@
     "created_at": "2026-09-25T20:42:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11923"
-  },
-  {
-    "id": 11922,
-    "title": "【工具自荐】GeneFlow：浏览器里的质粒编辑器，能直接读写 SnapGene 的 .dna 文件",
-    "content": "自荐一下我做的 GeneFlow → https://chembiotube.com/app/geneflow\n\n做分子克隆大概都绕不开 SnapGene 或 Benchling。前者确实好用，但它是商业桌面软件，一份授权不算便宜，而且只跑 Windows 和 macOS；后者是 SaaS，得注册账号，序列要传到别人的服务器上。对于小课题、教学实验，或者只是临时想画个质粒图谱看看酶切位点，这两个门槛都有点高。\n所以我把整个质粒编辑器搬进了浏览器。打开就能用，不用装、不用注册。\n\n功能大致是这些：\n- 格式兼容是真的兼容。导入支持 GenBank、FASTA、EMBL、SBOL、GFF3，也能读 SnapGene 的 .dna、Geneious 的 .geneious，以及测序峰图 .ab1 / .scf 和 FASTQ；导出支持 GenBank、FASTA、.dna、EMBL、SBOL、GFF3、BED 七种标准格式。所以它不是个只能自娱自乐的玩具 —— 装过 SnapGene 的人可以两边换着用。\n- 环状和线性质粒图谱、序列图、轨道视图，图谱可以导出 SVG 或高清 PNG，也能直接打印出来贴实验记录本。\n- 酶切做得比较细：内置 325 个限制性内切酶，可以自己加酶；除了完全酶切，还能算部分酶切、模拟凝胶电泳跑出条带，并且检查你挑的那个酶组合 —— 缓冲液兼不兼容、双酶切的最适温度、有没有星号活性风险。\n- 克隆设计：限制性酶切克隆、Gibson、Golden Gate、In-Fusion、SLIC、TA/Topo、Gateway、定点突变，都会给出带重叠区序列的引物方案。\n- 引物 Tm 用的是 NEB 的算法，还会查二聚体、发夹、错配位点和 in-silico PCR 特异性。\n- 测序读长可以比对到参考序列、检变异、导出 VCF；CRISPR 那边能做 gRNA 设计（带评分）、查脱靶、生成 HDR 供体序列。\n另外有个 AI 助手。它不是那种给你一段建议让你自己复制的聊天框 —— 它接了 68 个工具（Vercel AI SDK 的 tool calling），能直接读你当前打开的那个质粒并改它：加注释、插入/替换/删除片段、设计引物、跑一遍克隆方案、模拟酶切、导出文件，都能在对话里做完。\n有一点是刻意做的：这里没有服务器参与计算。你导入的质粒不会出现在任何一次出站请求里 —— 站内所有 API 路由都是后台管理和留言反馈用的，没有一个接口接收序列。计算逻辑全抽成了一个独立的纯 TypeScript 库（质粒解析、环状图谱几何、酶切搜索、克隆组装、序列比对），286 个导出函数、约两万行，React 只负责把结果画成 SVG。这个库 MIT 开源了：https://github.com/yuanluoyue/geneflow-core ，没有 React 依赖，可以拿去接别的界面。\n",
-    "created_at": "2026-09-25T16:09:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11922"
-  },
-  {
-    "id": 11921,
-    "title": "【开源自荐】murder-board：在老板拷问你之前，先让 AI 灵魂拷问你",
-    "content": "一组开源 Agent Skills（纯 Markdown，MIT，无服务器、不需要 API Key）。核心技能「灵魂拷问」读你的汇报 PPT、文档或简历，按真实会场组评审团，把问题按\"致命度 = 被问到的可能性 × 答砸的杀伤力\"排序，一次只问一题、全程角色扮演追问，每个回答打分并给出更好的说法，最后生成一页备答清单。内置述职、竞聘答辩、立项评审、结构化面试、投资人路演等中文场景。\n\n另有 4 个技能：事前验尸、私董会、说人话、高难度对话陪练。\n\n支持 Claude Code、Codex、Cursor、Gemini CLI 等 Agent（npx skills add MbappeWU/murder-board）；不装也能用：把中文提示词粘贴到 DeepSeek、Kimi、豆包。\n\nGitHub：https://github.com/MbappeWU/murder-board\n免安装网页版：https://mbappewu.github.io/murder-board/\n",
-    "created_at": "2026-09-25T15:38:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11921"
-  },
-  {
-    "id": 11920,
-    "title": "【软件自荐】Grunz：无审查开源模型的聊天和编程 agent，免注册",
-    "content": "创始人本人。Grunz 是一个聊天工具 + 一个 Claude Code 风格的编程 agent，只跑无审查的开源模型：qwen、deepseek、glm、kimi 去掉拒答训练（abliterated）的版本。不拒答、没有限制、不说教，问什么答什么，别的 AI 拒绝或者教育你的事，它直接做。\n\n不用注册账号。网页版不用安装，打开就送免费额度：https://grunzai.com/app 。桌面版在 https://grunzai.com ，支持 Mac / Windows / Linux，能改本地文件、写代码跑代码、上网查资料。\n\n欢迎试用，哪里不好用直接在这里告诉我。",
-    "created_at": "2026-09-25T14:04:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11920"
-  },
-  {
-    "id": 11919,
-    "title": "【开源自荐】Cx Clear：统一的AI工具清理软件（Codex / Claude Code / Cursor / Open Code / DeepSeek Hermes 等远不止的清理）",
-    "content": "项目： Cx Clear 地址： https://github.com/moumoum0/cx-clear\n各种AI工具的占用都非常复杂，特别是codex写得很烂，使用cx clear可以直观地清理掉\n对于很多陈旧的聊天记录，可以简单地创建策略，一次性清理掉。而且软件附带了大量的命令，可以直接让AI去做这些操作，不需要自己来干\n\n<img width=\"1605\" height=\"1125\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/76c23383-8ae7-4821-a33f-71cda4a9057e\" />\n<img width=\"1605\" height=\"1125\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f1bb2765-7134-43eb-bd0d-0733fea27148\" />\n\n",
-    "created_at": "2026-09-25T13:31:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11919"
   }
 ]
