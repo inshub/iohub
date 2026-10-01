@@ -1,5 +1,61 @@
 [
   {
+    "id": 12020,
+    "title": "【资源自荐】Agent Needs：免注册收集 AI Agent 工作流真实卡点的小站",
+    "content": "网站：https://catalog-check.leevi2010.chatgpt.site\n\n做了一个早期需求收集站 Agent Needs，想先弄清楚开发者实际使用 AI Agent 时卡在哪里，再决定值得做什么工具。目前处于免费、开放的需求发现阶段，没有支付或售卖功能，也还没有真实用户需求验证。\n\n如果你在使用或开发 Agent，欢迎提交一次真实经历：\n- 当时要完成什么任务？\n- 具体卡在了哪一步？\n- 现在怎么绕过去，出现频率和影响有多大？\n\n可以直接在网页填写，不需要注册、邮箱或钱包。也提供 POST /api/v1/needs 接口，便于在获得操作者授权后，从工作流提交问题。必填字段是 task（10–500 字符）、problem（20–2000 字符）和 consent: true；可选补充 agent、workaround、frequency、impact、buyer。\n\n提交内容先进入私有待审核队列，审核后可能公开展示；提交前页面会提示这一点。请只提交有权分享的信息，不要填写密码、API Key、客户隐私或公司机密。目前这只是收集和验证需求的实验，不承诺每个问题都会获得解决。\n\n欢迎 Agent 开发者、自动化工作流使用者体验并反馈。此投稿由 AI 助手协助整理并代为发布。",
+    "created_at": "2026-10-01T09:58:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12020"
+  },
+  {
+    "id": 12019,
+    "title": "【开源自荐】Cursor Remote Lite：电脑不用带在身边，用手机接着用电脑上真实的 Cursor",
+    "content": "Cursor Remote Lite：电脑不用带在身边，也能在手机上接着用电脑里真实的 Cursor。\n\n- 源码：https://github.com/Suchenl/cursor-remote-lite （MIT）\n- 演示视频：https://www.bilibili.com/video/BV1HFaz6bEj3\n\n场景：早上让 Cursor 的 Agent 去修 bug，项目在公司的 GPU 服务器上，然后人去通勤、开会、出差，电脑没带。这期间 Agent 会停下来等你点「Run」，或者用提问的方式问你问题，一停就是半天。\n\n现有办法的不足：官方手机端只有 iPhone、需要付费套餐、只管 Agents 窗口；远程桌面在手机上看缩小的电脑屏幕，点按钮、打字都吃力，Agent 等你时也不提醒。\n\n这个项目在电脑上跑一个很小的中继，通过 Chrome DevTools 协议操作电脑上的 Cursor，手机上是为手机设计的界面：\n\n- 回答 Agent 的提问、收到推送后批准命令\n- 随时布置下一个任务，Agent 运行中发的消息自动排队\n- 逐个保留 / 撤销 Agent 改动的文件\n- 本地窗口、SSH 远程窗口、Agents 窗口都能用，可以换模型和思考强度\n- 经 Cloudflare 隧道访问，手机和电脑不用在同一个 Wi‑Fi；扫码配对；安卓 App + iPhone 添加到主屏幕\n\n![演示](https://raw.githubusercontent.com/Suchenl/cursor-remote-lite/main/docs/quickstart.gif)\n\n限制：电脑需要开着、不能睡眠；启动和后台服务脚本目前只支持 macOS（Windows 需手动启动）。\n",
+    "created_at": "2026-10-01T09:45:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12019"
+  },
+  {
+    "id": 12018,
+    "title": "【软件自荐】MSL Desktop：面向医学联络官的 Windows 工作台",
+    "content": "## MSL Desktop：医学联络官的日常工作台\n\n项目自荐。MSL（医学联络官）的日常工作会留下很多零散信息：拜访时专家的一句话、研究项目的新进展、等待回复的问题、下次交流要准备的资料。记录散开以后，后续跟进很容易丢掉背景。\n\nMSL Desktop 把专家交流、临床与非临床项目、任务、等待事项、日历和资料放在一起。设计时坚持一句话：**不要让记录工作变成比工作本身更耗费时间的事。**\n\n使用时可以先留下一句原话，让秘书结合已有项目准备整理建议；用户可以修改、暂缓或确认，确认后再写入正式事项。用户对方向的调整会纳入后续整理。AI 嵌在这些步骤中，日常工作仍由用户决定。\n\n- 专家交流可以积累为带来源的洞察，后续拜访能够找回背景。\n- 项目问答、简报和周月报依据工作台已有记录起草，使用前仍需核对。\n- 工作数据与安装目录分开保存，支持本地备份及云盘文件夹同步，关联目录中的源文件只读。\n- 新版微信入口中，普通文字直接记入收件箱；发送「召唤秘书」才打开五项菜单，可发起全局整理、生成每日简报、查看进度与待确认数量，或退出菜单。接收电脑需联网并运行工作台，建议仍在桌面端确认。\n\n技术栈为 Tauri 2、Rust、Svelte 和 SQLite。当前提供 Windows x64 安装包，macOS 版本正在开发。\n\n**使用边界：**远程模型需要配置自己的 API Key，相关记录和资料会发送给所选服务商，并产生该服务商的调用费用。请遵守所在机构的数据与合规要求；生成内容需人工核对，不用于自动作出临床决策。微信账号接入情况以微信服务返回为准。\n\n官网与下载：https://msl-desktop.pages.dev/\n\n源码与更新记录：https://github.com/holobunganan-sketch/msl-desktop\n\n下图使用演示数据：\n\n![MSL Desktop 项目页面，演示数据](https://msl-desktop.pages.dev/assets/project.png)",
+    "created_at": "2026-10-01T08:44:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12018"
+  },
+  {
+    "id": 12017,
+    "title": "【资源自荐】ClassicEmu：用 Codex 花 7 天搭建的在线复古游戏网站",
+    "content": "阮老师好，自荐一个自己做的在线复古游戏网站：[ClassicEmu](https://classicemu.com/)。\n\n想把小时候玩过的游戏搬进浏览器，于是我用 Codex 辅助开发，花了 7 天做出了这个网站。\n\n网站可以直接在浏览器里运行复古游戏，无需另外安装模拟器。提供红白机、超级任天堂、Game Boy Advance、PlayStation 和街机等平台的游戏，也可以按平台、类型和系列浏览，或搜索游戏名称。\n\n对喜欢老游戏的朋友，这是一个重温童年游戏的入口；对关注 AI 编程的朋友，也想分享一个用 Codex 把想法做成上线产品的实践。\n\n地址：https://classicemu.com/\n\n欢迎体验，也欢迎反馈问题。\n\n### 网站截图\n\n首页\n\n<img width=\"1519\" height=\"890\" alt=\"ClassicEmu homepage\" src=\"https://github.com/user-attachments/assets/b5eaca05-294b-49de-9d2f-75a6cb88fa14\" />\n\n游戏平台列表\n\n<img width=\"1518\" height=\"720\" alt=\"ClassicEmu platform directory\" src=\"https://github.com/user-attachments/assets/92082245-67ec-4cc1-8a21-7d1512c851e2\" />\n\n超级马里奥：浏览器内运行画面\n\n<img width=\"1519\" height=\"890\" alt=\"Super Mario Bros running in the browser\" src=\"https://github.com/user-attachments/assets/8ba6dba9-ba38-4110-8605-8e32aef3fd5f\" />",
+    "created_at": "2026-10-01T08:24:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12017"
+  },
+  {
+    "id": 12016,
+    "title": "【开源自荐】DeckDelta：页面重排后仍能追踪变化的本地 PDF 演示稿审阅工具",
+    "content": "DeckDelta 用于对比同一份演示稿的两个 PDF 版本。逐页对比容易把‘第 2 页移到第 20 页’当成大量修改；这个工具先做全局一对一页面匹配，再分别标记移动、修改、新增和删除。\n\n- 在线体验：https://mozzie49.github.io/deckdelta/\n- 操作演示与静态下载包：https://mozzie49.github.io/deckdelta/demo.html\n- 源码：https://github.com/mozzie49/deckdelta\n- 当前版本：v0.1.0-alpha.1，MIT 协议，支持简体中文和英文\n\n主要功能：\n- 对照文字、数字和页面渲染差异，支持并排预览和叠加查看\n- 对重复页面、弱匹配等情况提示不确定性，可手动更正配对\n- 记录备注和审阅状态，导出包含页面预览的独立 HTML 报告\n- 无需注册，也不需要接入模型服务；内置原创虚构样例，可直接试用\n\n![DeckDelta 追踪从第 4 页移到第 2 页的图表修改](https://mozzie49.github.io/deckdelta/deckdelta-preview.png)\n\n隐私与限制：PDF 在浏览器本地处理，没有文档处理后端；托管方仍会收到应用和静态资源请求。导出的报告包含原文图片、文字、文件名和备注，分享前需要检查。每份 PDF 最多 50 页、25 MB；不支持加密文件、整份纯扫描件或 OCR。匹配属于启发式方法，渲染差异使用像素采样，可能漏检，重要内容仍需人工核对。\n\n开发说明：项目由 AI 编程助手实现，以 mozzie49 账号发布；本投稿也由 AI 助手代为整理。\n\n目前仍处于 Alpha 阶段，欢迎针对可复现的漏检、匹配问题和使用体验提出反馈。",
+    "created_at": "2026-10-01T07:35:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12016"
+  },
+  {
+    "id": 12015,
+    "title": "开源自荐】dummyscheme，轻量scheme解释器，支持 r5rs，dummyscheme，基于字节码和寄存器寻址",
+    "content": "项目地址：https://github.com/zhuzhonghua/dummyscheme\n\n在线体验地址：https://zhuzhonghua.github.io/dummyscheme/repl.html\n\n 字节码编译器，指令集基于寄存器\n- 尾调用优化\n- 一等公民延续（`call/cc`），multi-short、不限长度，用 callframe 的 copy-on-write 实现\n  （界定延续 delimited continuation 计划在不久的将来支持）\n- 扁平的 box value（受 Lua 启发），没有链条；被内层 lambda 捕获时把栈上的值装箱\n- 用 stack segment 技术做延续捕获和链遍历，思路来自 Chez Scheme\n- 增量分代 GC，两个半区（部分实现，目前未启用）\n- `syntax-rules` 卫生宏，也支持自定义省略号\n- 数值塔，支持 bignum\n- 行级调试信息，带源码位置跟踪\n- 类似 Lua 的可嵌入性和可移植性：与平台无关，容易集成进 C/C++ 宿主程序\n- r4rstest（加 `SCHEME_STD_R4RS=1` 编译）和 r5rs-tests 全部测试通过\n- 支持 dynamic-wind，与 call/cc 嵌套，可以从 dynamic-wind 的 thunk/body 里跳出去；\n  允许跳出 before 和 after，但跳进 before 和 after 并不禁止\n- values + call-with-values\n- hash-table（受 Lua 启发）\n```\n(make-hash-table)\n(hash-table-ref table key)\n(hash-table-set! table key val)\n(hash-table-for-each (lambda (key val) xxx) table)\n```",
+    "created_at": "2026-10-01T07:21:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12015"
+  },
+  {
+    "id": 12014,
+    "title": "【开源自荐】Hammerdeck：给带鱼屏和多显示器用的 macOS 键盘窗口管理工具",
+    "content": "开源地址：https://github.com/kouxing2000/hammerdeck\n官网：https://hammerdeck.peach-studio.com\n\n项目简介：\n\nHammerdeck 是一个免费开源（GPL-3.0）的 macOS 菜单栏应用，用键盘管理大屏和多块屏幕上的窗口。原生 Swift 编写，内嵌 Lua 引擎，但每个功能都是设置里的一个开关，不用写脚本。界面支持简体中文。\n\n![演示](https://hammerdeck.peach-studio.com/assets/demo-hero.gif)\n\n主要功能：\n\n- 网格：3×3、2×2 或 6 格，按一个格子放进去，按两个格子铺满两格之间的矩形\n- 跨屏：一键把窗口扔到下一块屏，或者把两块屏上的窗口整体对调\n- Deck 和 Fan：把一块大屏上的所有窗口同时摆出来，点哪个切到哪个\n- 撤销：一个快捷键撤回上一次网格、跨屏或 Deck 移动\n- 规则：显示器接上时，自动把窗口放回保存的布局\n\n每次按快捷键，屏幕上都会提示刚执行了什么，所有决定都写进本地纯文本日志。无需账号，没有遥测。\n\n安装：`brew install --cask kouxing2000/tap/hammerdeck`，或在官网下载 DMG。支持 macOS 13 及以上，Apple Silicon 和 Intel 通用，已通过苹果公证。\n",
+    "created_at": "2026-10-01T04:33:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12014"
+  },
+  {
     "id": 12013,
     "title": "【自荐】AI Price Institute — AI 大模型免费额度与低价 API 中转比价站",
     "content": "网站：https://www.china-ai-arbitrage.xyz\n\nAI 服务比价站：汇总主流大模型官方价格、免费额度情报与第三方低价 API 中转报价，附真实额度测评与省钱攻略；另有游戏、流媒体会员等数字订阅比价工具。\n\n免费、无需注册，英文界面，持续更新。\n\n适合周刊「工具」或「资源」栏目，感谢！",
@@ -742,61 +798,5 @@
     "created_at": "2026-09-25T13:31:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11919"
-  },
-  {
-    "id": 11918,
-    "title": "【自荐】AI 共振：零服务器的每日 AI 雷达，排名公式公开可查",
-    "content": "项目地址：https://github.com/WZZNNE/AI-Resonance\n在线阅读：https://wzznne.github.io/AI-Resonance/\n\n每天从 GitHub、arXiv、Hacker News、X/Reddit 和各家 AI 实验室的博客收集动态，排成五个榜单，每榜十条。和常见的 AI 日报不太一样的地方：\n\n- 排名公式公开写在 `config.yaml` 里，点开任何一条都能看到每个信号贡献了多少分；大模型只负责写简介，不决定名次。\n- 同一个项目、论文或发布在多个来源同一天出现时，会被归成一组优先展示（跨源共振），方便对照原始报道。\n- 每条保留 183 天历史：首次上榜、连续天数、最好名次和趋势线，能分清一日爆火和持续走热。\n- 整站跑在 GitHub Actions + Pages 上，没有后端和数据库；fork 之后改 YAML，就能做成任意主题的雷达。\n- 中英双语，支持 Atom 订阅；可以自带 API 密钥在浏览器里做 AI 总结，也支持 Ollama、LM Studio 等本地模型。\n\n![AI 共振截图](https://raw.githubusercontent.com/WZZNNE/AI-Resonance/main/docs/screenshots/today-dark.zh.png)\n",
-    "created_at": "2026-09-25T13:23:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11918"
-  },
-  {
-    "id": 11917,
-    "title": "【开源自荐】ai-menshen：轻量级 AI 网关",
-    "content": "[ai-menshen](https://jiacai2050.github.io/ai-menshen/) 是一个轻量级网关，它在客户端和任何 OpenAI 兼容提供商之间进行身份验证、路由、故障转移、使用情报和缓存。\n\n## 工作原理示意图\n```mermaid\ngraph TD\n    subgraph EXTERNAL [External World]\n        direction LR\n        Client([Clients / OpenClaw 🦞])\n        Upstream([\"Upstream API<br>(OpenAI/DeepSeek...)\"])\n    end\n\n    subgraph LOCAL [Local Environment]\n        direction TB\n        G[\"ai-menshen<br>(Standalone Go binary)\"]\n\n        DB[(SQLite)]\n        CFG[config.toml]\n\n        G --- DB\n        G --- CFG\n    end\n\n    Client ==>|OpenAI API| G\n    G ==>|Auth Injection| Upstream\n\n    style EXTERNAL fill:none,stroke:#ccc,stroke-dasharray: 5 5\n    style LOCAL fill:#f0f7ff,stroke:#0066cc,stroke-width:2px\n    style G fill:#0066cc,color:#fff\n    style DB fill:#fff,stroke:#ddd\n    style CFG fill:#fff,stroke:#ddd\n```\n\n\n## 本地可视化 AI 请求\n![](https://raw.githubusercontent.com/jiacai2050/ai-menshen/main/docs/screenshot-overview.webp)\n\n",
-    "created_at": "2026-09-25T13:17:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11917"
-  },
-  {
-    "id": 11916,
-    "title": "【开源自荐】CWIST：C17 高性能 Web 框架与应用服务器",
-    "content": "CWIST 是一个用 C17 编写的 Web 框架和应用服务器，主打高性能、低资源占用和协议内置。\\n\\n主要特性：\\n- 支持 HTTP/1.1、HTTP/2、HTTP/3（QUIC）、WebSocket、WebTransport\\n- 内置混合后量子 TLS（X25519MLKEM768）\\n- 内置 SQLite ORM、Nuke DB、RDBMS 自动识别\\n- 提供 C1M reactor 和 Classic pool 两种工作模式\\n- 支持 WASI 0.2，可用 wasmtime 直接部署\\n- 零拷贝 IO、代际内存池、无锁任务队列\\n\\nGitHub：https://github.com/c4punks/CWIST\\n官网/组织站点：https://c4punks.github.io/\\n\\n适合需要在 C/C++ 生态里直接构建高吞吐、低延迟 Web 服务，又不想拼接大量第三方库的开发者。",
-    "created_at": "2026-09-25T12:35:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11916"
-  },
-  {
-    "id": 11915,
-    "title": "【开源自荐】Flint：本地优先的个人 AI Skills 资产管理器，集中管理并分发 skills 到各个 agent",
-    "content": "**项目名称**：Flint（local-skills-hub）\n\n**项目地址**：https://github.com/lcy362/flint\n**官网**：https://flint.lichuanyang.top\n**安装**：`npm install -g flint-skills-hub`（命令行执行 `flint`）\n\n**简介**\n\n一个本地优先（local-first）的个人 AI Skills 资产管理器，用来集中管理 Claude Code、Cursor、Codex 等 agent 使用的 skills。\n\n**特点**\n\n- 把散落在各处的 skills 统一收集起来，支持打标签、筛选、去重\n- 通过 symlink / copy 一键分发到不同 agent 和项目目录\n- skills 就是磁盘上的普通 SKILL.md 目录，可以用 git 做版本管理\n- 完全本地，无云端、无账号；换工具或换生态时资产跟着你走，不会被锁定\n- MIT 开源，提供 npm 包\n\n一句话定位：Obsidian 管理知识，Flint 管理 skills。\n",
-    "created_at": "2026-09-25T12:19:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11915"
-  },
-  {
-    "id": 11914,
-    "title": "【开源自荐】Agnes Video Generator：完全免费的开源 AI 视频生成器，输入一句话生成带旁白字幕的多场景视频",
-    "content": "**项目名称**：Agnes Video Generator\n\n**项目地址**：https://github.com/lcy362/agnes-video-generator\n**官网（可直接在线试用，无需安装）**：https://video.lichuanyang.top\n\n**简介**\n\n一个完全免费的开源 AI 视频生成工具，支持本地部署和 Docker 自托管。\n\n输入一句话主题，自动跑完整条流水线：文本分镜 → 逐场景生成 → 旁白配音 → 字幕 → 合成完整视频。另支持数字人主播、图生视频、关键帧动画。\n\n**特点**\n\n- **完全免费**：基于 Agnes AI 的免费模型，无订阅、无使用次数限制\n- **硬件门槛低**：AI 算力在云端，应用本身跑在普通笔记本上即可，不需要高端显卡\n- **本地自托管**：数据留在自己机器上，也可用 Docker 一键部署\n- Web UI 操作，界面支持 21 种语言\n- MIT 开源，GitHub 415+ stars，另提供 npm 包与 Docker 镜像\n\n适合想低成本、批量制作口播类短视频的创作者。\n",
-    "created_at": "2026-09-25T12:18:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11914"
-  },
-  {
-    "id": 11913,
-    "title": "【开源自荐】简单拼图：一个纯本地、不收集数据的开源在线拼图工具",
-    "content": "# 【开源自荐】简单拼图：一个纯本地、不收集数据的开源在线拼图工具\n\n【开源自荐】\n\n一款把多张照片拼成一张的开源在线工具，**全程在浏览器本地完成，图片不上传、不收集任何数据**，打开即用、免登录。\n\n## 项目地址\n\n[github.com/goku-open/easy-collage](https://github.com/goku-open/easy-collage)\n\n## 在线体验\n\n[easy-collage.gokuscraper.com](https://easy-collage.gokuscraper.com)\n\n## 具体介绍\n\n简单拼图（Easy Collage）是一款纯前端、纯本地处理的图片拼图工具。\n\n上传多张照片，选个布局模板，调整间距、圆角、背景和水印，一键导出高清成品——全程在你的浏览器里完成，图片不出设备，不上传任何服务器。\n\n它和市面上的在线拼图工具最大的区别就是**隐私**：没有统计、没有埋点、没有第三方上报，连访问统计都主动去掉了。你的照片和操作永远只留在本地，关掉网页就啥也不剩。\n\n项目基于 Apache 2.0 协议完全开源，代码全公开，可以自由使用、自行部署或二次开发。\n\n## 截图展示\n\n![简单拼图界面](https://raw.githubusercontent.com/goku-open/easy-collage/main/assets/screenshot.jpg)\n\n## 核心功能\n\n- **多张模板拼图**：支持 2~9 张图片的多组布局模板，横竖分割、分栏、九宫格随你挑\n- **拖拽上传**：支持 JPG / PNG / WebP / GIF，拖拽或点击即可上传\n- **实时调参**：间距、圆角、背景色、背景图、水印实时预览调整\n- **高清导出**：支持 PNG / JPG，1x~4x 多档分辨率，一键下载\n- **纯本地处理**：图片不上传、不收集数据、免登录、无水印\n- **响应式**：适配桌面端与移动端\n\n## 技术栈\n\n- 前端框架：Vue 3 + TypeScript\n- 构建工具：Vite\n- 状态管理：Pinia\n- 画布渲染：Konva（vue-konva）+ Canvas API\n- 样式：Tailwind CSS + Headless UI\n- 测试：Vitest\n- 部署：Cloudflare Pages\n\n",
-    "created_at": "2026-09-25T09:59:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11913"
-  },
-  {
-    "id": 11912,
-    "title": "【开源自荐】Farming：自托管的 AI 编程工作区，集成 Chat、终端、代码审查与浏览器",
-    "content": "大家好，自荐一个我开发的开源项目 **Farming**：把多种 AI 编程 Agent、终端、项目文件、代码审查和浏览器操作集中在一个可自托管的工作区里，支持电脑和手机访问，并提供常规界面与复古 CRT 控制室。\n\n它适合希望集中跟进编程任务、检查实际产出的人：从给 Agent 布置任务，到看代码改动、验证页面效果、继续提出要求，都可以在同一个工作区完成，减少在终端、编辑器、浏览器和历史对话之间来回切换。\n\n- 项目地址：https://github.com/zhuwenzhuang/farming\n- 中文文档：https://zhuwenzhuang.github.io/farming/cn/\n- 开源协议：MIT；运行平台：macOS、Linux。\n\n**主要能力**\n\n1. **统一使用多种 Coding Agent**：支持 Codex、Claude Code、Pi、OpenCode 等，按项目组织多个任务。既能在结构化 Chat 中阅读回答、计划和工具活动，也能使用真实终端里的 CLI 原生交互；受支持的会话可以在 Chat 与 Terminal 之间切换，并通过 History 查找和恢复。\n2. **检查代码和实际产出**：浏览、搜索和轻量编辑项目文件，使用可用 Language Server 的代码跳转与诊断，查看 Git Diff、提交历史与 Blame。Review 支持行级评论和已审阅标记；也能一边预览 HTML 页面，一边在旁边的 Chat 中继续与 Agent 沟通。\n3. **人与 Agent 共用浏览器**：Agent 可以打开、点击、填写网页，用户在 Farming 中查看同一个页面并随时接手。安装 Farming Browser Connector 后，还可以让 Agent 使用已有 Chrome 页面和登录状态。\n4. **电脑与手机接续工作**：Agent 进程、终端和项目文件留在自己的开发机上。手机浏览器可以查看进展、阅读结果、发送后续要求，并在 Chat、Terminal 和 Files 之间切换；关闭浏览器不会停止正在运行的 Agent。\n5. **Code / CRT 两种界面**：Farming Code 提供日常工作区；Farming CRT 提供键盘优先的复古控制室，集中查看多个 Agent 的实时输出和状态。两者共享同一套 Agent 和会话，切换界面不会重复创建任务。\n6. **多套账号与配置**：通过 Agent Homes，为同一种 Agent 分开管理工作、个人等环境，创建 Agent 时选择对应的登录状态与配置，并按 Home 查看 Skill、MCP、Hook 等扩展。\n\n另外还提供 Token 活动与历史趋势、临时只读分享，以及用于启动 Agent、查看输出和发送指令的 CLI。具体模型选项、会话恢复与切换能力以对应 Provider 的支持情况为准。\n\n**界面示例**\n\nCRT：总览多个 Agent，使用键盘进入会话。\n\n![Farming CRT 多 Agent 控制室](https://raw.githubusercontent.com/zhuwenzhuang/farming/e875b9642b57ef3c20167b05c6ece8971a29b2ab/docs/products/crt/assets/01-crt-dashboard.png)\n\nCode：左侧预览 HTML 页面，右侧继续与 Agent 沟通。\n\n![Farming Code 中并排使用 HTML 预览和 Agent Chat](https://raw.githubusercontent.com/zhuwenzhuang/farming/e875b9642b57ef3c20167b05c6ece8971a29b2ab/docs-site/public/cn/assets/files-html-preview-chat.png)\n\n手机：在浏览器里阅读结果、继续跟进任务。\n\n<img src=\"https://raw.githubusercontent.com/zhuwenzhuang/farming/e875b9642b57ef3c20167b05c6ece8971a29b2ab/docs/products/code/assets/05-mobile-agent-chat.png\" alt=\"手机浏览器中的 Farming Code 会话\" width=\"320\">\n\n以上为项目的演示截图。\n\n**试用方式**\n\n开发机已有 Node.js 22.13+（22.x）或 24+ 时：\n\n```bash\nnpm install --global farming-code@latest\nfarming daemon\n```\n\n打开命令输出的访问地址，选择 **New Agent** 和自己的代码仓库即可开始。目标 Agent 需要先在开发机上完成安装和登录；Farming 不包含模型服务或调用额度。也提供自带 Node.js 的指定目录安装，详见[快速开始](https://zhuwenzhuang.github.io/farming/cn/get-started/quickstart)。\n\n从手机或另一台电脑访问时，开发机需要保持运行，客户端需要能够访问它并完成鉴权；跨网络访问需要自行配置 VPN、SSH 隧道或受保护的反向代理等方式。\n\n欢迎试用。如果安装或使用时遇到阻碍，可以在[项目 Issues](https://github.com/zhuwenzhuang/farming/issues)反馈，也很想了解它能否改善你目前的工作方式。\n",
-    "created_at": "2026-09-25T08:58:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11912"
   }
 ]
