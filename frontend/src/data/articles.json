@@ -1,5 +1,21 @@
 [
   {
+    "id": 12026,
+    "title": "【开源自荐】Entune：只在符合语境时替换自定义词的开源听写工具",
+    "content": "我做了一个免费开源的听写工具 Entune，想解决个人词典\"一刀切\"替换的问题。\n\n语音识别常把人名和专业术语听错，个人词典可以纠正，但无条件替换又会把普通词改错。Entune 会先判断每一处替换是否符合句子语境：说 \"Claude Code\" 就写成 Claude Code，普通的 \"the cloud\" 保持不变。判断可以交给 TypeSafe 的 Jev，也可以用 Laya 在本机完成。\n\n语音识别可选云端或本地模型，录音和转写都保存在自己的电脑上。\n\n项目地址：https://github.com/eandualem/entune\n\n安装：`uv tool install entune`，然后运行 `entune`（支持 macOS 和 Windows）\n\n![历史记录：录音、转写、回放和重试](https://raw.githubusercontent.com/eandualem/entune/main/docs/demo/history-light.jpg)\n",
+    "created_at": "2026-10-01T21:42:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12026"
+  },
+  {
+    "id": 12025,
+    "title": "【开源自荐】LiteZip：免费开源的原生 macOS 压缩与解压工具",
+    "content": "我做了一个免费开源的 macOS 压缩与解压工具 LiteZip，希望把日常打包、加密、分卷和查看压缩包内容这些操作放进一个简洁的原生窗口。\n\n使用 SwiftUI / AppKit 开发，文件完全在本机处理，无需注册账号，没有广告或遥测。\n\n项目地址：https://github.com/gentpan/LiteZip\n下载地址：https://github.com/gentpan/LiteZip/releases/tag/v0.4.0\n\n主要功能：\n\n- 支持 ZIP、7Z、TAR 及常见压缩 TAR 格式的压缩与解压，内置 RAR / RAR5 解压，支持读取 ZIPX。\n- ZIP / 7Z 加密与分卷，支持批量任务、取消，以及分别压缩每个文件或文件夹。\n- 解压前查看目录、搜索文件名、校验完整性；默认解压到独立文件夹，避免覆盖已有文件。\n- 支持排除 .DS_Store、__MACOSX 等 Mac 资源文件，并提供 Finder 右键快捷操作。\n- 可制作、加密和预览 DMG 磁盘映像。\n\n目前是 0.4.0 开发预览版，支持 macOS 13 及以上，提供 Apple Silicon / Intel 通用安装包。已完成 Developer ID 签名和 Apple 公证。LiteZip 源码采用 MIT 许可，内置引擎遵循各自的开源许可。\n\nRAR 解压无需额外安装；创建 RAR 需单独安装并连接官方 RAR 编码器，其许可按 RARLAB 的规定执行。\n\n### 界面截图\n\n压缩格式、等级、密码与分卷设置集中在一个窗口，拖入文件后选择保存位置即可开始。\n\n<img src=\"https://raw.githubusercontent.com/gentpan/LiteZip/c9ae0b15bc978f275a9bcde7af423da4cdda8b5f/docs/screenshots/light.png\" width=\"560\" alt=\"LiteZip 浅色主界面：压缩等级、分卷、密码和拖放入口\">\n\n处理前可查看内容目录、搜索文件名并校验完整性；下图是加密 DMG 的实际预览。\n\n<img src=\"https://raw.githubusercontent.com/gentpan/LiteZip/c9ae0b15bc978f275a9bcde7af423da4cdda8b5f/docs/screenshots/dmg-preview.png\" width=\"720\" alt=\"LiteZip 加密 DMG 内容预览与完整性校验\">\n\n欢迎试用和反馈问题。\n",
+    "created_at": "2026-10-01T20:51:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12025"
+  },
+  {
     "id": 12024,
     "title": "【工具自荐】DockTerm：Claude Code 的终端工作台，权限请求从 Mac 刘海里弹出（开源，MIT）",
     "content": "项目地址：https://github.com/munvard/dockterm\n\n我经常让 Claude Code 跑长任务，然后去做别的事，结果它在一个权限提示上等了十分钟。所以做了 DockTerm，一个免费开源的桌面工作区（Electron，MIT 协议，支持 macOS / Windows / Linux）。\n\n它不替换 claude，只是包住真实的终端会话，再加一些东西：\n\n- munu：Mac 刘海里的小脸（Windows 和 Linux 是顶部的小胶囊）。Claude 需要权限时，它把问题弹出来，全屏应用上面也能弹，点一下就能回答。它不会替你点确认。\n- 每个仓库一个窗格，多个会话放在同一个窗口里。\n- 实时显示子代理在做什么，可以审查 diff，也有简单的 Git。\n- 显示 5 小时和每周额度还剩多少（只在本地读取日志，是估算值）。\n- 本地运行，无账号，无遥测，自己不会调用任何 AI 接口，也不用装 hooks（直接读终端文字）。\n\n不足：基于 Electron，安装包比较大；Windows 版本还没有签名；状态检测依赖终端文字，Claude Code 改了提示文案时我需要跟进修复。\n\n安装：`brew install --cask munvard/dockterm/dockterm`，或者到 Releases 下载。仓库里有中文 README。\n\n作者：Moon Labs，亚美尼亚。欢迎反馈哪里会出问题。",
@@ -782,21 +798,5 @@
     "created_at": "2026-09-26T03:49:26Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11925"
-  },
-  {
-    "id": 11924,
-    "title": "【开源推荐】手机直接调用视觉大模型 ，无需连接电脑，让 AI 直接操作你的手机！",
-    "content": "亮点\n支持虚拟屏，AI 操作时不占用主屏，你可在 AI 干活的同时刷视频、聊天...\n无需 Root 权限\n支持统计 Tokens 消耗\n用无障碍获取屏幕布局，为 AI 提供关键元素坐标、构建上下文\n支持标注 AI 上次点击位置，便于 AI 点歪时纠正\n支持设备上已安装的所有可启动应用\n执行状态可在 Android 16+ 设备上岛\n深度优化虚拟屏执行效率，运行流畅\n\n这是仓库链接 \nhttps://github.com/xjyzs/Operator-on-Android",
-    "created_at": "2026-09-26T01:16:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11924"
-  },
-  {
-    "id": 11923,
-    "title": "【软件自荐】FitStreak：每天练一次，用连续记录养成运动习惯的 iPhone 健身 App",
-    "content": "FitStreak 是我独立开发的 iPhone 健身习惯 App，已上架中国区 App Store，支持简体中文。\n\n很多人不缺训练计划，难的是稳定地开始。FitStreak 的想法是：每天完成一次适合当下状态的训练就算数，App 记录连续天数、经验值和成就，让坚持看得见。\n\n- 每日训练，每个动作有分步骤演示\n- 30 天入门、燃脂、核心训练计划\n- 按目标、时长和手边器材生成训练\n- 低冲击训练和椅上训练，适合刚开始运动的人\n- 可以提前安排休息日，休息不会让连续记录清零\n- 支持 Apple Health，离线也能记录\n\n免费下载，无需注册即可使用；高级版为订阅制（3 天免费试用）。\n\nApp Store：https://apps.apple.com/cn/app/id6759306186\n\n（我不会说中文，以上介绍借助 AI 翻译，如有不通顺之处请见谅。）\n\n",
-    "created_at": "2026-09-25T20:42:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11923"
   }
 ]
