@@ -1,5 +1,13 @@
 [
   {
+    "id": 12040,
+    "title": "【开源自荐】Browser Extension Launch：用自然语言完成浏览器插件开发、验收和上架准备",
+    "content": "项目地址：https://github.com/xiehuan123/browser-extension-launch\n\n这是一个面向非程序员的开源 Agent Skill。用户用自然语言描述想要的功能，AI 负责组织 Chrome 插件的产品流程、Manifest V3 开发、真实浏览器验收、发布包检查和商店提交材料。\n\n它与普通“生成一段扩展代码”的提示词不同：项目用候选版本指纹和验收门禁要求 AI 实际加载当前插件、从原生入口完成核心操作，并在需要时验证关闭重开后的持久化，再把源码完成、验收通过、提交审核和正式上线分开记录。\n\n项目已通过独立 Codex CLI 会话完成三个公开案例：外链直达、网页取色和广告净化。仓库提供 MIT 许可证、中文说明、npm/Skill CLI 安装和公开官网。\n\n官网：https://xiehuan123.github.io/browser-extension-launch/\n",
+    "created_at": "2026-10-02T18:25:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12040"
+  },
+  {
     "id": 12039,
     "title": "【开源自荐】Burrow：面向小团队和自托管服务的轻量 OIDC 单点登录服务（Go / MIT）",
     "content": "大家好，我是 Burrow 的维护者，最近发布了首个版本 **v0.1.0**，想自荐一个面向小团队和自托管服务的轻量单点登录项目。\n\n**Burrow 是一个 MIT 开源的 OIDC 身份提供商**，用于集中管理账户、登录和应用访问权限。它受 Casdoor 启发，采用独立实现，聚焦单组织、单实例部署。\n\n主要特点：\n\n- **部署简单**：Go 后端与 React 界面打包为一个二进制，也提供 Docker Compose 部署包；生产使用 PostgreSQL，开发支持 SQLite，无需 Redis 或消息队列。\n- **统一登录**：支持接入 OIDC 的 Web / SPA 应用，共享 Burrow SSO 会话，授权码流程默认要求 PKCE S256。\n- **密码 + TOTP**：所有用户必须绑定验证器；首次使用临时密码登录时需修改密码并完成 MFA。\n- **账户与权限管理**：提供用户、用户组、自定义角色、应用登录权限、管理操作审计和个人应用门户。\n- **双语和主题**：支持英文、简体中文，以及浅色、深色和跟随系统主题。\n\n此前已在本地完成 Grafana、Nightingale、Harbor 的 Web 登录人工验收，仓库提供相应接入示例。v0.1.0 提供 Linux amd64 二进制、容器镜像和部署包，推荐容器安装。\n\n项目地址：https://github.com/ArkGravity/burrow\n\n[中文 README](https://github.com/ArkGravity/burrow/blob/main/README_zh.md) · [v0.1.0 下载](https://github.com/ArkGravity/burrow/releases/tag/v0.1.0) · [安装说明](https://github.com/ArkGravity/burrow/blob/main/docs/releases/INSTALL.md) · [SSO 接入示例](https://github.com/ArkGravity/burrow/tree/main/examples/local-sso)\n\n下面是实际部署实例的界面截图。\n\n**总览与应用门户**\n\n![Burrow 总览与应用门户](https://raw.githubusercontent.com/ArkGravity/burrow/main/docs/screenshots/overview-dark.png)\n\n**角色管理**\n\n![Burrow 角色管理](https://raw.githubusercontent.com/ArkGravity/burrow/main/docs/screenshots/roles-dark.png)\n\n这是首个发布版本，欢迎试用、自托管接入和提出改进建议。感谢周刊维护者！\n",
@@ -790,13 +798,5 @@
     "created_at": "2026-09-27T01:11:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11940"
-  },
-  {
-    "id": 11939,
-    "title": "【开源自荐】dlook：在终端里渲染 Markdown、代码、Mermaid、图片、音频、视频和网页",
-    "content": "自荐一个最近做的开源项目 [dlook](https://github.com/eric8810/dlook) —— 在终端里\"看\"各种文件的单一工具。\n\n平时 `cat` 一个 README 只能看到一堆星号符号，打开 `.ts` 文件是纯文本，遇到 `flowchart.mmd` 完全不知道画的是什么。dlook 把这些都直接渲染出来：\n\n- **Markdown**：彩色标题、任务列表、圆角表格、样式化链接\n- **代码**：40+ 语言的 24-bit 真彩色语法高亮\n- **Mermaid**：28 种图渲染成真彩色 ASCII art，不需要浏览器和 Node\n- **图片**：支持 kitty / sixel / iTerm2 图形协议，本地 / http(s) / data: 来源均可\n- **音频 / 视频**：文档内可直接播放，带媒体条（播放暂停、快进、音量）；视频回放依赖 mpv\n- **网页**：`dlook https://…` 渲染成可读文本，链接可点击，不加载子资源\n- **Live reload**：保存即重新渲染\n- **框选复制**：走 OSC 52，SSH 远程也能复制\n\nRust 编写，编译为约 9.2 MB 的单文件静态二进制，Linux / macOS / Windows 开箱即用，无运行时依赖，一条命令安装：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/eric8810/dlook/main/scripts/install.sh | bash\n```\n\n![dlook 渲染 Markdown](https://raw.githubusercontent.com/eric8810/dlook/main/docs/screenshot.png)\n\n![dlook 渲染 Mermaid 图](https://raw.githubusercontent.com/eric8810/dlook/main/docs/mermaid.png)\n\n项目地址：https://github.com/eric8810/dlook\n",
-    "created_at": "2026-09-27T00:19:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11939"
   }
 ]
