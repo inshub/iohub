@@ -1,5 +1,69 @@
 [
   {
+    "id": 12039,
+    "title": "【开源自荐】Burrow：面向小团队和自托管服务的轻量 OIDC 单点登录服务（Go / MIT）",
+    "content": "大家好，我是 Burrow 的维护者，最近发布了首个版本 **v0.1.0**，想自荐一个面向小团队和自托管服务的轻量单点登录项目。\n\n**Burrow 是一个 MIT 开源的 OIDC 身份提供商**，用于集中管理账户、登录和应用访问权限。它受 Casdoor 启发，采用独立实现，聚焦单组织、单实例部署。\n\n主要特点：\n\n- **部署简单**：Go 后端与 React 界面打包为一个二进制，也提供 Docker Compose 部署包；生产使用 PostgreSQL，开发支持 SQLite，无需 Redis 或消息队列。\n- **统一登录**：支持接入 OIDC 的 Web / SPA 应用，共享 Burrow SSO 会话，授权码流程默认要求 PKCE S256。\n- **密码 + TOTP**：所有用户必须绑定验证器；首次使用临时密码登录时需修改密码并完成 MFA。\n- **账户与权限管理**：提供用户、用户组、自定义角色、应用登录权限、管理操作审计和个人应用门户。\n- **双语和主题**：支持英文、简体中文，以及浅色、深色和跟随系统主题。\n\n此前已在本地完成 Grafana、Nightingale、Harbor 的 Web 登录人工验收，仓库提供相应接入示例。v0.1.0 提供 Linux amd64 二进制、容器镜像和部署包，推荐容器安装。\n\n项目地址：https://github.com/ArkGravity/burrow\n\n[中文 README](https://github.com/ArkGravity/burrow/blob/main/README_zh.md) · [v0.1.0 下载](https://github.com/ArkGravity/burrow/releases/tag/v0.1.0) · [安装说明](https://github.com/ArkGravity/burrow/blob/main/docs/releases/INSTALL.md) · [SSO 接入示例](https://github.com/ArkGravity/burrow/tree/main/examples/local-sso)\n\n下面是实际部署实例的界面截图。\n\n**总览与应用门户**\n\n![Burrow 总览与应用门户](https://raw.githubusercontent.com/ArkGravity/burrow/main/docs/screenshots/overview-dark.png)\n\n**角色管理**\n\n![Burrow 角色管理](https://raw.githubusercontent.com/ArkGravity/burrow/main/docs/screenshots/roles-dark.png)\n\n这是首个发布版本，欢迎试用、自托管接入和提出改进建议。感谢周刊维护者！\n",
+    "created_at": "2026-10-02T17:21:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12039"
+  },
+  {
+    "id": 12038,
+    "title": "【开源自荐】PinkCollab：用 Android 手机继续电脑上的 OMP AI 编程会话",
+    "content": "我是 Pink，推荐自己做的开源项目 PinkCollab：一个非官方的 Oh My Pi（OMP）Android 客户端，方便离开电脑后继续操作 AI 编程会话。\n\n- 在手机上新建或继续电脑上的 OMP 会话，滑动切换多个会话\n- 通过自己电脑或服务器上的 Gateway 连接，扫码配对\n- Android 客户端和 Gateway 均开源，采用 MIT 许可证\n\n代码仓库：https://github.com/3xian/PinkCollab\n项目介绍：https://3xian.github.io/PinkCollab/\n安装包：https://github.com/3xian/PinkCollab/releases\n\n主机需要先安装 OMP 和 PinkCollab CLI，并保持唤醒和网络可达；AI 编程任务及模型配置留在主机。引导安装使用 Tailscale Funnel，也可以手动配置 HTTPS。续聊已有会话前，需要先关闭主机上对应的 OMP 实例，不支持同一会话同时使用。\n\n欢迎使用 OMP 和 Android 的朋友试用，反馈配对、连接稳定性和多会话操作方面的问题。",
+    "created_at": "2026-10-02T15:25:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12038"
+  },
+  {
+    "id": 12037,
+    "title": "【工具自荐】Physics AI：从文字或题目图片获取物理解题步骤",
+    "content": "分享一个网页形态的物理学习工具 Physics AI，适合在完成自己的推导后对照解题步骤。\n\n它支持输入文字题目或上传题目图片，提供分步骤解释，涵盖运动学、受力分析、电路和欧姆定律等常见主题，并提供直接求解与引导式学习模式。\n\n工具链接：[physics homework assistant](https://physicsai.chat/)\n\n一个建议的使用流程是：先列出已知条件和单位，画示意图，再把卡住的那一步交给工具解释，最后检查单位、方向和模型假设。AI 输出不应替代独立验证，尤其是图片中的符号或数字不清晰时。\n\n产品类型：Web 工具，无需安装客户端。",
+    "created_at": "2026-10-02T13:23:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12037"
+  },
+  {
+    "id": 12036,
+    "title": "【工具自荐】NetWasm：C# 编译到 WASM，Hello World 只要 82.5 KiB",
+    "content": "项目地址：https://github.com/zion-sati/NetWasm\n\nNetWasm 是面向 WebAssembly 和 WASI 的独立 .NET 编译器和运行时。编译器前端用 Roslyn 把 C# 编译成 CIL，再由 NetWasm 把 CIL 编译成 Wasm。CoreLib 和运行时也是独立实现，最终产物不依赖 CoreCLR 或 Mono，也不带 `dotnet.js` 和独立应用 DLL。\n\n想做的事很简单：保留 C# 的泛型、异常处理和自动内存管理，同时让程序只带上实际用到的部分。\n\n### 体积实测\n\n同样是 `Console.WriteLine(42)`，两种编译方案的结果如下：\n\n| 编译方案 | 未压缩 Wasm 体积 |\n| --- | ---: |\n| NetWasm | **82.5 KiB** |\n| .NET 11 RC1 Blazor WebAssembly AOT | **14.58 MiB** |\n\n后者约为前者的 **181 倍**。NetWasm 的数字已经包含运行时和精确 GC；Blazor 这边用 Release 发布，开了完整裁剪、AOT 后 IL 剥离，以及面向体积的编译和链接优化。\n\n这里比的是同一段输出逻辑在两种技术栈下的 Wasm 体积。NetWasm 输出的是 WASI 组件，Blazor 这边统计的是浏览器实际加载的原生 Wasm 和 Webcil 程序集；两边都不含 JavaScript、HTML 和 Wasm 宿主。\n\n[完整测试配置与复现说明](https://github.com/zion-sati/NetWasm/blob/main/docs/size-and-methodology.md)\n\n### 不止 Hello World\n\n也做了一个可以直接用的应用：[Regex Storm with NetWasm](https://regexstorm.netwasm.com/)。\n\n它用的是 .NET 自己的正则表达式引擎，编译成 Wasm 后在浏览器里提供匹配、捕获组查看、替换和分割，不是拿 JavaScript 正则模拟。**Wasm 文件经 Brotli 压缩后约 325 KB**，不含页面其他资源。正则和待处理文本都在本地处理，不上传后端，整个应用可以部署成静态网站。\n\n另外还有 [NetWasm Playground](https://playground.netwasm.com/)，可以直接编辑、编译、运行 C#。编译也在浏览器本地完成，不会把代码提交到服务器，不用先装工具链。\n\n### 当前状态\n\n项目还没到 1.0，兼容性仍在完善。采用闭世界编译，通用运行时反射是明确不支持的设计取舍，不是以后要补的功能。\n\n许可方面，CoreLib、运行时库和模板等是 MIT 许可；编译器和开发工具用 NetWasm Community License，源码可看，但不是 MIT。\n\n中文介绍：[嫌 .NET Wasm 太大？我重写了编译器和运行时](https://blog.csdn.net/2602_97119837/article/details/166994433)\n\n欢迎拿实际用的 C# 代码来试，反馈兼容性问题。\n",
+    "created_at": "2026-10-02T12:54:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12036"
+  },
+  {
+    "id": 12035,
+    "title": "【开源自荐】星梨：蓝色二次元学习桌宠，键盘联动、短时剪贴板记忆与间隔复习",
+    "content": "大家好，自荐一个刚开源的 Windows 学习桌宠「星梨」，目前是 v0.2.0 测试版。\n\n项目：https://github.com/LLR6/LR-StudyPet\n下载：https://github.com/LLR6/LR-StudyPet/releases/tag/v0.2.0\n\n浅蓝色二次元桌面伙伴，把专注计时、任务、中断书签、间隔复习卡和学习手记连接起来，帮助学习中断后找到下一步。\n\n新增功能：\n- 可选键盘活动联动，角色陪着敲键盘，不解码或保存输入文字。\n- 可选上一条剪贴板文本记忆，仅内存保留最多 60 秒，可恢复和清空。\n- 桌面整理建议，按类型、大小和相似名字给建议，不移动或删除文件。\n- Ctrl+Alt+Space 命令助手，输入前缀或中文需求，查看说明并复制。\n- 可选 Windows 登录自启动、角色大小、摸头小跳、星光、伸懒腰等互动。\n\nPython + PySide6 Essentials + SQLite，应用源码 MIT。基础学习功能离线可用，在线 AI 问答需自己配置服务商。已通过 Windows CI 的 15 项单元测试及源码和打包后界面启动检查；仍欢迎不同电脑的兼容性反馈。角色目前是四种生成姿态配合程序动效，尚无 Live2D 或语音。\n\n![星梨学习空间](https://raw.githubusercontent.com/LLR6/LR-StudyPet/main/preview.png)\n\n感谢审阅，欢迎试用、提 issue 和贡献代码。",
+    "created_at": "2026-10-02T12:00:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12035"
+  },
+  {
+    "id": 12034,
+    "title": "【开源自荐】Unterm：能被 AI Agent 直接操控的跨平台终端",
+    "content": "Unterm 是一款能被 AI Agent 直接操控的跨平台终端（macOS / Windows / Linux），Rust 编写，MIT 开源。\n\n- 终端本身通过 MCP 暴露 151 个方法：Claude Code、Codex、Gemini CLI 等 Agent 可以开标签、执行命令、读屏、截图；也有对应的命令行工具 `unterm-cli`。\n- 内置 Agent 驾驶舱：同时跑多个 Agent 时，侧栏显示谁在工作、谁在等你确认；还能让多个 Agent 在各自的 git worktree 里并行完成同一个任务，再对比 diff、合并或回滚。\n- 本地运行，无云端依赖，免费。\n\n项目地址：https://github.com/zhitongblog/unterm\n官网：https://unterm.app\n\n![Unterm](https://unterm.app/assets/shots/hero-macos.webp)\n",
+    "created_at": "2026-10-02T11:10:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12034"
+  },
+  {
+    "id": 12033,
+    "title": "【工具自荐】Captions Generator：给视频自动加字幕，支持中英双语",
+    "content": "https://captionsgenerator.app/\n\n一个网页版的 AI 字幕工具。上传视频，自动生成字幕，可以直接改字、调时间轴、选字幕样式，导出带字幕的 MP4，或者 SRT/VTT 字幕文件。\n\n- 支持翻译成 100 多种语言，可以做中英双语字幕\n- 视频不上传，在浏览器本地处理，只上传音频用于识别\n- 有免费版（导出带水印），注册即可使用\n",
+    "created_at": "2026-10-02T11:02:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12033"
+  },
+  {
+    "id": 12032,
+    "title": "【开源自荐】Codingns4DSH：把 17 类 Agent CLI 接入 DSH 原生会话",
+    "content": "面向经常切换 AI 编程工具的开发者，Codingns4DSH 将多种外部 Agent CLI 统一投影为 DSH 原生会话。\n\n如果你同时使用 Codex、Claude Code、Gemini CLI 或其他 AI 编程工具，Codingns4DSH 的外部 Agent 集成模块可以把已安装的 CLI 接入 DeepSeek Harness（DSH）原生会话。在同一个工作区里选择 Agent、模型和思考强度，查看流式输出、工具调用、恢复、打断和用量；部分 CLI 支持权限确认、提问和插话。\n\n![外部 Agent 选择器](https://github.com/user-attachments/assets/5b7c4415-ce9b-404d-b74f-96562329238e)\n\n当前支持 17 类 Agent：Command Code、Claude Code、Kimi CLI、Gemini CLI、Pi、Codex、OpenCode、Grok Build、MiniMax Code、ZCode、CodeBuddy、WorkBuddy、Cursor CLI、Kiro CLI、Qoder、Qoder CN、Antigravity。\n\n![外部 Agent 集成设置](https://github.com/user-attachments/assets/a92c45c4-c39d-4278-8dee-0d4f6e19a999)\n\n安装：\n\n    dsh plugin --profile web add @jingyi0605/codingns4dsh@0.2.0-rc.2\n    dsh web\n\n要求 DSH 0.2.0-rc.2、Node.js >=22.19，支持 macOS/Linux/Windows。Agent 需在 DSH 外安装和登录，插件不保存凭据。\n\n项目：https://github.com/jingyi0605/Codingns4DSH\nnpm：https://www.npmjs.com/package/@jingyi0605/codingns4dsh\n许可证：GPL-3.0-or-later\n\n外部 Agent 会话的上下文由 CLI 自己组装，因此面板只显示占用百分比和总量，不显示系统、工具、消息构成明细。",
+    "created_at": "2026-10-02T06:04:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12032"
+  },
+  {
     "id": 12031,
     "title": "【资源自荐】Dot 小绿皮书：从第一次任务到长期协作的中文开源指南",
     "content": "大家好，我是这个项目的作者，想自荐一份面向中文读者的非官方 Dot 实用指南：《Dot 小绿皮书》。\n拿到 Dot 之后，第一件事该交给它做什么？这份指南从一个小任务开始，逐步介绍如何交代责任、连接资料、设置长期跟进，以及检查、纠错和停止任务。\n目前包含：\n- 8 章渐进教程，每章配有可复制指令、练习和验收清单\n- 61 个常见问答，覆盖入门、连接、长期跟进与排错\n- 10 个公开用户案例，附来源和证据局限，未作独立复现实测\n在线阅读无需注册，也不需要编程基础。实际使用 Dot 仍取决于 OpenAI 的套餐、地区、分批开放及相关权限。\n在线阅读：https://tiee7.github.io/dot-green-book/\n第一次小任务：https://tiee7.github.io/dot-green-book/learn/first-task/\n开源仓库：https://github.com/Tiee7/dot-green-book\n代码和原创教程采用 MIT 许可证；第三方引用内容仍归原作者所有。\n欢迎试读、纠错，也欢迎反馈第一次使用 Dot 时最容易卡住的地方。感谢！",
@@ -250,7 +314,7 @@
   {
     "id": 12000,
     "title": "【项目自荐】Decision API——一个聚合、比较和调用决策模型的平台",
-    "content": "我做了 [Decision API](https://decisionapi.org)，想把多个专注于决策的 AI 模型聚合到一个平台里。你可以在同一个 Playground 里体验 Jev、Laya、Kev、Solar 和 Span，也可以通过统一的 API 调用它们，不必为每个模型单独开发一套集成。\n\n每次请求传入一份上下文和类型化问题，例如分类、评分或是非判断，API 会返回结构化答案和概率。同一份上下文可以同时提出多个问题；切换支持的模型时，也能沿用相同的请求格式。希望这能让开发者更方便地比较模型，并尝试把它们用于分类、路由和工单分流等流程。\n\n目前聚合了 openrouter，vecel，liquid等 decisions api 的服务。欢迎体验 [https://decisionapi.org](https://decisionapi.org)",
+    "content": "我做了 [Decision API](https://decisions-api.dev)，想把多个专注于决策的 AI 模型聚合到一个平台里。你可以在同一个 Playground 里体验 Jev、Laya、Kev、Solar 和 Span，也可以通过统一的 API 调用它们，不必为每个模型单独开发一套集成。\n\n每次请求传入一份上下文和类型化问题，例如分类、评分或是非判断，API 会返回结构化答案和概率。同一份上下文可以同时提出多个问题；切换支持的模型时，也能沿用相同的请求格式。希望这能让开发者更方便地比较模型，并尝试把它们用于分类、路由和工单分流等流程。\n\n目前聚合了 openrouter，vecel，liquid等 decisions api 的服务。欢迎体验 [https://decisions-api.dev](https://decisions-api.dev)",
     "created_at": "2026-09-30T06:28:53Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12000"
@@ -734,69 +798,5 @@
     "created_at": "2026-09-27T00:19:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11939"
-  },
-  {
-    "id": 11938,
-    "title": "【开源自荐】证据不足就拒绝打分的 AI Agent 可靠性测试",
-    "content": "LEEVAR Battery 是一套 MIT 开源的 AI Agent 可靠性测试（6 个维度、18 项），用你自己选的模型（包括 Ollama 本地模型）在本机给 agent 的真实对话评分。\n\n和常见评测不同的一点：样本里看不出来的项目报告为 NOT TESTED，证据不够时不给等级，而不是给一个好看的分数。`deno task demo` 不需要密钥和网络，可离线复现。\n\n项目地址：https://github.com/forevercrab321-svg/leevar-battery\n\n（作者自荐）",
-    "created_at": "2026-09-26T22:35:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11938"
-  },
-  {
-    "id": 11937,
-    "title": "【开源自荐】Cairn：把电子书变成带朗读的幻灯片（macOS）",
-    "content": "https://github.com/jiehaoZ/Cairn\n\n一个开源的 macOS 读书应用，把你自己的电子书（EPUB、PDF、MOBI 等）变成一站站带语音朗读和字幕的幻灯片。可以选四档深浅，从「知道个大概」到「完整走一遍」；路径按书的目录和章节原文编排，每一站都标注来源章节。附带一个伴读助手，可以针对这本书提问。模型可以自选（OpenAI、Claude、Gemini、DeepSeek 或本地模型），TypeScript 编写，MIT 协议。\n\n![Cairn](https://raw.githubusercontent.com/jiehaoZ/Cairn/main/docs/images/screenshot.jpg)\n",
-    "created_at": "2026-09-26T17:41:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11937"
-  },
-  {
-    "id": 11936,
-    "title": "【开源自荐】GitScry：从 Git 历史中挖掘代码演化上下文，辅助开发者和 Coding Agent",
-    "content": "自荐一个最近做的开源项目 [GitScry](https://github.com/WodenJay/GitScry) - 你的git历史就是一座藏宝库。\n\nGitScry 是一个用 Rust 编写的命令行工具。它希望解决一个问题：很多对开发很有价值的信息，其实已经存在于 Git 历史里，但通常需要手动组合 `git log`、`git blame`、旧 diff、revert 记录和文件历史才能找到。\n\nGitScry 会把这些历史整理成可以直接查询的问题，例如：\n\n- 以前有没有实现过类似的改动？\n- 某一行代码或某个 symbol 为什么会存在？\n- 哪些文件历史上经常一起修改？\n- 修改这个文件时，通常还需要看哪些测试？\n- 某种方案以前是否尝试过，后来又被放弃或 revert？\n- 哪个 commit 可能引入了当前 regression？\n- 已知一个 bug fix，最初引入这段错误代码的是哪个改动？\n\n### 一些特点\n\n- 完全基于本地 Git history，Git 仍然是 source of truth\n- 本地建立可重建缓存，不需要上传代码，**你的藏宝库永远属于你自己**\n- 查询结果会保留对应的 commit、path、confidence 和 evidence\n- 支持 Linux、macOS 和 Windows\n- 人类与 agent 均可以使用\n\n目前已经在 `git/git`、`curl/curl`、`rust-lang/rust`、`NousResearch/hermes-agent` 等真实仓库历史上测试过不同查询，README 里放了一些 benchmark 和实际示例。\n\n项目目前还在早期阶段，欢迎使用和反馈。",
-    "created_at": "2026-09-26T16:52:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11936"
-  },
-  {
-    "id": 11935,
-    "title": "【自荐】WallpaperMachine：在 Mac 上运行 Wallpaper Engine 壁纸",
-    "content": "https://github.com/WallpaperMachine/WallpaperMachine\n\n一个开源的 macOS 动态壁纸应用，可以播放 Wallpaper Engine 的场景、视频、网页壁纸，内置 Steam 创意工坊，支持多显示器和音乐律动。Swift + Rust 编写，GPL-2.0。",
-    "created_at": "2026-09-26T16:34:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11935"
-  },
-  {
-    "id": 11934,
-    "title": "【开源自荐】NodeLane漫译：一款浏览器漫画阅读器",
-    "content": "### NodeLane 漫译\n\n我开发了一款浏览器漫画阅读器，可以统一管理已适配网站、本地文件和 Google Drive 中的漫画，支持保存阅读进度、追踪已适配网站的章节更新。翻译是可选功能，可以使用云端服务或连接本地部署的 manga-translator-ui，并随时切换原图与译图。不需要翻译时，也可以直接作为漫画阅读器使用。\n\n<img width=\"1836\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/20ec16fc-3eff-4662-b918-cc956cc37c6d\" />\n\nGitHub：https://github.com/Wy2926/node-comics\n\n安装：[Chrome 应用商店](https://chromewebstore.google.com/detail/nodelane-comics-ai-manga/aiajdjliifeeaogpalejpggkiccjbneo)",
-    "created_at": "2026-09-26T15:40:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11934"
-  },
-  {
-    "id": 11932,
-    "title": "【工具自荐】回声口袋：中文音视频转文字与语音素材工作台",
-    "content": "产品名称：回声口袋\n官网：https://huishengkoudai.cn/\n\n回声口袋提供中文音视频转文字，支持会议与访谈录音、说话人区分、时间轴回听和多格式导出，可通过网页或微信小程序使用，适合整理会议记录、访谈素材和语音内容。\n\n登录后可按账号当前额度体验，具体次数与限制以产品内显示为准。",
-    "created_at": "2026-09-26T12:53:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11932"
-  },
-  {
-    "id": 11931,
-    "title": "【开源自荐】since-cutoff：找出你的编程 Agent 在你锁定的依赖版本上会写错哪些 API",
-    "content": "模型有训练截止日期，但你的 lockfile 没有。since-cutoff 读取项目的 lockfile，找出每个依赖在模型截止日期时的版本，并与你锁定的版本做静态 API 对比；再让不带工具的模型做小任务，用类型检查器（basedpyright）分别对两个版本打分，区分\"过时\"（旧版本正确、新版本出错）和\"写错\"。\n\n实测：Claude Haiku 4.5（训练截止 2025 年 2 月）在示例项目的 5 个被测库中，有 3 个写出了过时代码，例如 anthropic 1.8 已移除的 `temperature=`、huggingface_hub 2.0 已移除的 `resume_download=`。工具生成的 8 条 AGENTS.md 说明（约 390 token，其中 7 条经类型检查验证）让留出任务的正确率从 14% 提升到 57%（样本较小，仅一个模型、一个项目）。\n\n免费开源（MIT），本地运行，不执行任何代码；支持 Claude Code 插件，以及 OpenAI、DeepSeek、Ollama 等模型。\n\n项目地址：https://github.com/MohammadHijjawi97/since-cutoff\n中文说明：https://github.com/MohammadHijjawi97/since-cutoff/blob/main/README.zh-CN.md\n",
-    "created_at": "2026-09-26T09:41:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11931"
-  },
-  {
-    "id": 11930,
-    "title": "【工具自荐】Professional-Headshot.ai：上传自拍，生成并筛选职业头像",
-    "content": "  大家好，我开发了 Professional-Headshot.ai，一款把照片或自拍转换成职业头像的在线工具，适用于简历、 LinkedIn 和个人网站。\n\n  上传清晰照片后，可以描述想要的风格，也可以让 AI 自动选择服装、背景和光线。\n\n  我们重点做了生成后的检查与选片：付费工作室会检查眼睛、牙齿、眼镜等细节，尝试修复或替换有明显问题的图片，每个场景提供一张推荐头像和两张备选，并支持用自然语言继续修改。\n\n  无需注册即可生成一张免费预览，下载带水印；无水印下载和完整工作室功能需付费。照片在云端处理，生成结果仍需自行确认相似度和细节。\n\n  欢迎试用并反馈。\n\n  体验地址：[Professional-Headshot.ai](https://professional-headshot.ai/)",
-    "created_at": "2026-09-26T09:02:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11930"
   }
 ]
