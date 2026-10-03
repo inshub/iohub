@@ -1,5 +1,61 @@
 [
   {
+    "id": 12047,
+    "title": "【开源工具自荐】无限背景音乐 Infinite BGM —— 免费、打开就有音乐，16 种风格在浏览器里实时生成，没有音频文件",
+    "content": "**无限背景音乐（Infinite BGM）**：免费、无需注册、不用安装——打开网页点一下播放就有声音，适合工作、写代码、看书时一直放着（界面中英双语，带日夜模式）。音乐不是播放文件，而是在你的浏览器里用 Web Audio API **实时合成**的：16 种风格（Lofi / 爵士嘻哈 / 环境 / 睡眠 / 合成器浪潮 / 芯片音乐…），永远不重复，没有音频文件、没有曲库，音乐也不依赖任何服务器。\n\n在线体验：https://bgm.fly2ai.top\n开源地址：https://github.com/Jweokk/infinite-bgm\n\n特色：\n- **打开就能用，一直放下去**：纯静态页面，断网也能继续播放（音乐在浏览器里生成，不用联网取音频）；没有歌单、没有广告，点一下就出声音。\n- **没有音频文件**：整站构建产物约 220 KB（gzip 约 60 KB），仓库里没有一个 mp3/wav/ogg。和弦进行、鼓组、贝斯、旋律全部按乐理规则现场生成，13 种乐器 + 10 个效果器（EQ → 饱和 → 磁带 → 延迟 → 声像 → 混响 → 压缩 → 限制）。\n- **同一颗种子复现同一段音乐**：随机数不用 `Math.random()`，而是从 `seed|风格id|插件版本` 派生（cyrb128 + sfc32），并按键与段落 fork。所以暂停、切风格、回到某个小节都能接回同一段旋律；链接里带 `?seed=`，就能把刚听到的那段原样分享给别人。\n- **风格是插件，加一种不改核心**：16 种风格各自一个插件目录，核心引擎不认识任何具体风格；新增风格 = 建一个目录实现接口 + 一行注册。\n\n技术栈：TypeScript + Vite + Web Audio API，运行时零依赖，175 个单元测试；线上同款的 Nginx / 安全头 / Docker Compose 配置随仓库附带。MIT 协议。",
+    "created_at": "2026-10-03T07:33:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12047"
+  },
+  {
+    "id": 12046,
+    "title": "【资源自荐】三变·六反：地缘风险跟踪与推演沙盘，每个伤亡数字都标注信源与口径（零依赖手写单文件）",
+    "content": "**项目**：三变·六反 — 生命之祭 · 地缘风险跟踪与推演沙盘\n**链接**：https://0603wangxiao.github.io/geosandbox/\n**作者**：王潇（独立完成，非机构项目）\n\n## 这是什么\n\n一个地缘风险跟踪站，由两部分组成：以武装冲突伤亡记录为核心的《生命之祭》，\n以及在其之上展开的八模块推演沙盘。\n\n## 核心方法：只有一个口径——「经核实的最低确证数」\n\n站内每一个伤亡数字都附带**数据口径与参考信源**，可逐条回溯：\n\n- 14,224 名儿童遭杀害或致残（联合国秘书长《儿童与武装冲突》报告，同比 +18.9%）\n- 73,919 加沙累计死亡（加沙卫生部，联合国转引；不区分战斗人员；另有 174,977 人受伤）\n- 150 万+ 俄乌双方军人伤亡（独立媒体实名核实 / 情报估算；区间较宽，仅作量级参照）\n- ≥59,000 苏丹直接暴力致死（ACLED）\n\n理由很直接：武装冲突的伤亡统计从来不是精确值，而是各方在政治压力下给出的下限。\n与其呈现一个看起来确定的数字，不如明确它只是下限。\n\n其中两项编辑判断值得一提：**儿童单列**（因为在所有统计口径里，他们最容易被并入\n「平民」而失去可见度）；**军人与平民分列**（两类数据的可信度完全不同，合并会\n制造虚假的确定性）。\n\n## 设计上最重要的一件事\n\n站内把「已核实事实」与「推演情景」分成两条**互不混读**的轨道，后者的每一条都强制\n标注【推演情景 · 非已证实事实】。一旦两类内容在视觉上无法区分，读者就再也无法\n判断自己读到的到底是什么——而这恰恰是地缘题材最容易失守的地方。\n\n## 技术实现\n\n- 两个**自包含单文件**（首页 96 KB，沙盘 580 KB）\n- **零外部依赖**：外链 script 与 stylesheet 数量为 0，无框架、无 CDN、无构建步骤\n- 手写 WebGL 粒子背景；31 处内联 SVG（世界地图 / 七维雷达 / 图表）\n- `prefers-reduced-motion` 覆盖 23 处，离屏动画自动暂停，粒子画布按设备分级分辨率\n- 移动端可用的响应式布局与键盘可达的焦点样式\n\n## 许可\n\n自由使用，请注明出处；禁止商用。",
+    "created_at": "2026-10-03T07:20:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12046"
+  },
+  {
+    "id": 12045,
+    "title": "【工具自荐】今日宜：微信内的民俗日历、天气与每日配色参考",
+    "content": "今日宜是一款已经上线的微信小程序。本帖为运营方自荐，不是第三方测评，也不申请付费广告。\n\n## 可以用来做什么\n\n首页将公历、农历、星期、天气、传统宜忌和每日配色放在一起，提供今天、明天及指定日期的查看入口。它也包含择日、星座、周易和解梦等民俗文化内容。\n\n一个具体的使用场景是：出门前查看天气和穿衣提示，再看当天配色和日历信息。传统宜忌及个性化建议仅作民俗文化和日常生活参考，不承诺预测、改运或替代专业判断。\n\n## 使用入口\n\n在微信内搜索小程序「今日宜」打开。需要微信环境，不能在普通浏览器中直接使用。\n\n## 收费与资料说明\n\n根据运营者确认的当前线上状态，所有已开放功能均可免费使用，尚未开通收费。\n\n个性化内容需填写生日等资料，使用者可以先了解功能和资料要求，再决定是否使用。\n\n希望提交给《科技爱好者周刊》的软件/工具选题评估；是否收录由维护者决定。",
+    "created_at": "2026-10-03T05:26:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12045"
+  },
+  {
+    "id": 12044,
+    "title": "【开源自荐】中转塔台 Relay Tower：监控上游涨价、主调故障自动切换的大模型 API 中转运维面板（Node.js / MIT）",
+    "content": "大家好，我是中转塔台（Relay Tower）的作者。这是一个给 Sub2API / New-API 中转站做运维的开源面板，Node.js 编写，MIT 协议，Docker Compose 可一键部署。\n\n做大模型 API 中转，最怕上游半夜悄悄涨价，或者主调账号欠费、假死，客户那边全在报错。中转塔台就是为这两件事做的：\n\n- 盯上游倍率：每 5 分钟比对一次，涨价立刻弹窗并推送 Telegram，可一键切到更低价的备选账号；\n- 故障自动切换：主调欠费、请求连续失败或首字超时，自动切到副调，客户端地址不用改；\n- 手机上切线：Telegram 机器人用长轮询，没有公网 IP 也能收提醒、点按钮切换；\n- 算清利润：按客户、模型、分组统计请求数、Token 和利润，亏损通道标红。\n\n项目地址：https://github.com/oisano11/relay-tower\n\n![中转塔台控制台总览](https://raw.githubusercontent.com/oisano11/relay-tower/main/assets/screenshot-console-overview.png)\n",
+    "created_at": "2026-10-03T04:22:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12044"
+  },
+  {
+    "id": 12043,
+    "title": "【资源自荐】OpenPWA：中英双语 PWA 浏览器兼容性表与技术参考",
+    "content": "标题：OpenPWA：中英双语 PWA 浏览器兼容性表与技术参考\n\n链接：https://openpwa.net\n\n简介：OpenPWA 是一个中英双语的渐进式 Web 应用（PWA）技术参考站，免费访问。站内按能力逐项列出 PWA 相关特性的浏览器兼容性表（[英文](https://openpwa.net/compatibility/) / [中文](https://openpwa.net/zh/compatibility/)），数据与 MDN browser-compat-data 做自动比对；另有各平台的安装与推送通知行为说明（例如 [iOS Safari](https://openpwa.net/reference/platforms/ios-safari/)、[iOS 推送](https://openpwa.net/reference/notifications/ios-safari-push/)）、开发指南，以及面向 AI 工具的 [llms.txt](https://openpwa.net/llms.txt)。新增的 News 栏目有长文，例如 [Safari 27 makes top-level await spec-compliant](https://openpwa.net/news/safari-27-adds-full-spec-compliance-for-top-level-await/)。\n\n自荐，我是该站的维护者。\n",
+    "created_at": "2026-10-03T03:54:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12043"
+  },
+  {
+    "id": 12042,
+    "title": "【开源自荐】ThunderTalk：Mac 本地语音工具箱，语音输入、录音转文字、文字转语音和声音克隆",
+    "content": "大家好，我是 ThunderTalk 的作者，想自荐一个完全在本机运行的 macOS 语音工具。\n\n**ThunderTalk 是一个 MIT 开源、免费的 Mac 语音工具箱**，所有模型都在 Apple 芯片上本地运行，录音和文字不离开电脑。它对中文、英文和中英混说做了专门优化。\n\n主要功能：\n\n- **语音输入**：在任何 App 里按快捷键说话，松开就把文字粘贴到光标处。可选 Qwen3-ASR、SenseVoice、Parakeet、MOSS 等多个本地模型。\n- **录音转文字**：拖入音频或视频，输出带时间戳的文稿，可以区分说话人，导出 TXT、Markdown、SRT、VTT 或 JSON。\n- **文字转语音**：VoxCPM2、IndexTTS-2.5、Kokoro 三个引擎，内置 14 个音色（影视解说、纪录片旁白、新闻主播、Vlog、播客等风格），每个音色都可以先试听。\n- **声音克隆**：录 5 到 15 秒自己的声音，就能用它朗读任意文字。\n- **翻译**（可选）：用 SeamlessM4T v2 边说边译。\n\n几个实测数字（M3 Max）：VoxCPM2 和 IndexTTS 约为实时速度，Kokoro 在 CPU 上约为实时的 4 倍；生成的语音用独立的识别模型转回文字比对，中英文错误率为 0–3.4%。\n\n安装：`brew install --cask realallensong/tap/thundertalk`，或从 GitHub Releases 下载。需要 Apple 芯片的 Mac，macOS 15 及以上。\n\n项目地址：https://github.com/realAllenSong/ThunderTalk\n\n[中文 README](https://github.com/realAllenSong/ThunderTalk/blob/main/README.zh.md) · [官网](https://realallensong.github.io/ThunderTalk/) · [下载](https://github.com/realAllenSong/ThunderTalk/releases/latest)\n\n![ThunderTalk 演示](https://raw.githubusercontent.com/realAllenSong/ThunderTalk/main/assets/demo.gif)\n\n欢迎试用和提建议，感谢周刊！\n",
+    "created_at": "2026-10-03T03:28:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12042"
+  },
+  {
+    "id": 12041,
+    "title": "【工具自荐】AI Migos Video：用两张照片生成 Hotel Lobby 风格的双人视频",
+    "content": "## AI Migos Video 简介\n\n[AI Migos Video](https://aimigosvideo.com) 是一款在线工具：上传两张人物照片，就能生成以照片中人物为主角的 Hotel Lobby 风格双人表演视频。无需编写提示词、寻找原视频素材或安装应用，手机和电脑浏览器均可使用。\n\n## AI Migos Video 的主要功能\n\n- **双人视频生成**：分别上传一张清晰、正面的人物照片，第一张对应画面左侧，第二张对应右侧；也可以上传同一个人的两张照片。\n- **预设表演场景**：生成的视频包含橙色舞台、悬挂麦克风和双人配合的动作，无需手动剪辑。\n- **预览与下载**：新用户可先生成一段免费的 5 秒、480p 预览；完整视频生成后可下载，发布到短视频平台。\n\n## AI Migos Video 的核心特性\n\n[Hotel Lobby AI Generator](https://aimigosvideo.com) 专注于这一种双人视频格式，操作流程只有上传照片、选择画质和生成视频。网站称通常约 3 分钟完成渲染；若渲染失败或被拦截，会退还相应积分。完整视频需要付费。\n\n使用他人照片前应取得本人许可。该工具为独立项目，并非 Migos 或 COLORS 的官方产品。\n\n项目地址：[https://aimigosvideo.com](https://aimigosvideo.com)",
+    "created_at": "2026-10-03T03:21:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12041"
+  },
+  {
     "id": 12040,
     "title": "【开源自荐】Browser Extension Launch：用自然语言完成浏览器插件开发、验收和上架准备",
     "content": "项目地址：https://github.com/xiehuan123/browser-extension-launch\n\n这是一个面向非程序员的开源 Agent Skill。用户用自然语言描述想要的功能，AI 负责组织 Chrome 插件的产品流程、Manifest V3 开发、真实浏览器验收、发布包检查和商店提交材料。\n\n它与普通“生成一段扩展代码”的提示词不同：项目用候选版本指纹和验收门禁要求 AI 实际加载当前插件、从原生入口完成核心操作，并在需要时验证关闭重开后的持久化，再把源码完成、验收通过、提交审核和正式上线分开记录。\n\n项目已通过独立 Codex CLI 会话完成三个公开案例：外链直达、网页取色和广告净化。仓库提供 MIT 许可证、中文说明、npm/Skill CLI 安装和公开官网。\n\n官网：https://xiehuan123.github.io/browser-extension-launch/\n",
@@ -742,61 +798,5 @@
     "created_at": "2026-09-27T10:24:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11947"
-  },
-  {
-    "id": 11946,
-    "title": "【工具自荐】ToolSide-浏览器侧边栏工具箱，34个本地小工具，让你的效率直接起飞",
-    "content": "![](https://lh3.googleusercontent.com/UEySDCn1b4T-f1-rDl0SbmwT6VTpHnpflGWNY9KgbKLOJ2X23hh3wec7wXUCHkrs-1ngNFLCmQcIiT_OFU2GbpoCOg=s1280-w1280-h800)\n\n浏览器右侧的超级工具箱：图片压缩、OCR、PDF 合并、JSON 格式化等 30+ 工具随手可用，不搜索、不切 Tab。\n\n装一个 ToolSide，就不用装十几个插件了，也不用四处找小工具网站了。\n\nToolSide 把高频小工具收进浏览器侧边栏：遇到问题，点开侧边栏搜索即用，用完即走，全程不切换标签页。\n\nToolSide官网：[https://toolside.link](https://toolside.link)\n\n## 【核心能力】\n▎Markdown编辑和预览\n支持在浏览器打开Markdown文件，在浏览器内编辑和预览，只需要右键md文件，使用浏览器打开即可。\n\n▎收藏夹同步\n支持根据收藏夹内容生成1个私有导航网址，便于移动端访问收藏夹网址，实时更新同步，在PC上收藏网站，手机端也可以轻松访问。\n\n▎剪贴板\n在任意标签页复制的文字、链接与图片，会自动进入剪贴板历史。跨标签页共享，切换页面内容不丢失；支持一键复制、导出下载，支持置顶与搜索，上周复制的内容也能找回来。\n\n▎截图与录屏\n支持区域截图、整页长截图和可视区域截图，也能直接录制标签页或屏幕视频。截取完成后，可以在侧边栏里直接标注、复制或保存。\n\n▎翻译\n在网页上选中一段文字，松开即显示译文浮层；也可以一键翻译整个页面，并提供原文对照，方便中英对照阅读。译文支持一键复制保存。\n\n▎右键直达\n在网页任意位置点击右键，常用操作会直接出现在菜单里：右键图片可以做压缩、格式转换或提取颜色；选中文本可以翻译或生成摘要；右键页面空白处可以截图或录屏。\n\n## 【工具覆盖的场景】\n\nToolSide 内置了覆盖日常办公与开发场景的一批工具，并在持续增加中：\n\n- 图片处理：压缩体积、转换格式、调整尺寸、裁剪、拼接，以及识别图片中的文字\n- 文档处理：PDF 文件的合并、拆分与压缩，PDF 与图片的互相转换\n- 文本与数据：格式化与校验结构化数据、格式转换、编解码、字符统计、文档预览\n- 开发辅助：解析令牌、生成随机标识、转换时间格式、查看请求信息等常用操作\n- AI 能力：总结当前页面或选中的文本、润色改写\n- 效率小件：拾取页面颜色、生成二维码、换算单位、生成强随机密码\n\n不确定某个需求能不能解决？打开侧边栏，用关键词搜索一下，中英文和常用别名都能命中。\n\n## 【设计理念】\n\n- 常驻侧边栏：与网页并排显示，收起后只占 36px 极窄入口，不打扰阅读\n- 快捷键唤起：Ctrl+Shift+T（Mac 为 ⌘⇧T）打开侧边栏，Ctrl+K 聚焦搜索，全流程键盘可达\n- 我的工具：收藏常用工具与网站，自定义打开方式\n\n## 【隐私承诺】\n\n图片、PDF、文本处理默认在你的浏览器本地完成，不上传服务器。你的数据留在你的设备上。\n\n## 【三步上手】\n\n1. 遇到问题：图片太大、PDF 要合并、一段外文看不懂\n2. 点开 ToolSide：点击右侧极窄入口或按快捷键，侧边栏即时展开\n3. 搜索并使用：输入关键词选中工具，在侧边栏里直接完成",
-    "created_at": "2026-09-27T08:11:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11946"
-  },
-  {
-    "id": 11945,
-    "title": "【工具自荐】Start This Task：把大任务拆成一个可以开始的动作",
-    "content": "大家好，我是 Ethan Lee，分享自己在做的效率工具 Start This Task。\n\n产品地址：https://startthistask.com/start-a-task\n\n它主要帮助处理“任务太大或太模糊，不知道从哪里开始”的情况：输入任务后，先得到一个具体的起步动作，再展开成可编辑的步骤计划。\n\n主要功能：\n- 可以选择 Standard、Small 或 Tiny 的步骤粒度。\n- 某一步仍然太大时，可以继续拆分。\n- 可以编辑计划，并用 Focus Mode 和可调整的倒计时专注当前一步。\n\n例如，把“准备一个产品演示”从笼统目标变成先写出演示目标、再逐项推进的行动计划。它不是替你自动完成任务，而是帮助你更容易开始。\n\n产品有免费使用选项，也有付费功能，不是开源项目。欢迎对任务拆分的实用性、步骤粒度和专注模式提出反馈。",
-    "created_at": "2026-09-27T07:20:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11945"
-  },
-  {
-    "id": 11944,
-    "title": "【开源自荐】CourseRaptor：一句话查课表、成绩与教务通知的本地校园 AI 助手",
-    "content": "我是 CourseRaptor 的维护者（南京工业大学在读学生），按周刊 README 的投稿入口提交，供编辑筛选。\n\nCourseRaptor 是一个本地优先的开源校园教务助手：一句自然语言，直达课表、成绩、考试、教务通知、待办与手机日历导出。内核是 31 个工具驱动的本地 AI Agent（TypeScript + Vercel AI SDK v7 工具循环 + DeepSeek），终端 TUI、网页、QQ 机器人三种入口共用同一个 agent。\n\n- 项目地址：https://github.com/Health-525/courseraptor\n- 开源协议：ISC\n- 平台：Windows / macOS / Linux，提供免安装的便携版安装包（内置 Node 运行时，双击即用）\n- 免配置体验：内置离线演示模式，不填教务账号、不配 API Key 也能跑完整流程（虚构示例数据）\n\n![网页端一句话查询演示](https://raw.githubusercontent.com/Health-525/courseraptor/main/docs/screenshots/gui-demo.gif)\n\n它最想解决三件事。\n\n一是把教务查询从「打开 App → 找菜单 → 点三层」变成一句话。对话只是入口，背后是完整的 Agent 工具循环：可以问「这周五下午有空吗」，它会查课表、比对时间再回答；可以让学生成 Word/Excel/PDF 格式的成绩报表，通知附件自动解析，课表一键导出 .ics 进手机日历。\n\n二是隐私。教务账号密码是最敏感的一类凭证，所以整个项目没有服务端：登录凭证 AES-256-GCM 加密存储在本机，零遥测上报，学籍敏感字段在输出时自动打码，对教务系统的请求有限速保护。所有代码可审计。\n\n三是学校适配的开放性。教务系统逆向（正方新版协议，RSA + CSRF 登录流程）被解耦成可插拔的适配层，内核学校无关——新增一所学校只需实现一份适配文件，仓库里有适配指南和正方系参考实现，欢迎其他学校的同学共建。\n\n需要说明的限制：目前只适配了南京工业大学一所学校；正式使用需要配置自己的 DeepSeek API Key（对话消耗自己的额度，工具调用与离线功能不花钱）；写操作（如选课）仅在交互模式下可用且需二次确认。\n\n作为新项目，成熟度和功能广度肯定还有距离，欢迎批评和建议。\n\n（演示图与截图均为离线演示模式下的虚构示例数据，不代表真实教务信息。）",
-    "created_at": "2026-09-27T06:34:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11944"
-  },
-  {
-    "id": 11943,
-    "title": "【工具自荐】OmniDock：把 Dock 预览、窗口操作和常用快捷功能放进一个 Mac 应用",
-    "content": "我是 OmniDock 的开发者，平时经常在 Windows 和 Mac 之间工作。有些 Windows 上的操作更符合我的习惯，比如鼠标停在应用图标上查看窗口、再次点击图标收起应用。我想把这些习惯适配到 Mac，同时少装几个单功能工具，于是做了 OmniDock。\n\n目前它把 Dock 窗口预览与点击隐藏/唤起、窗口切换、每应用快捷键、窗口布局、本地可搜索剪贴板历史、Finder 右键扩展和菜单栏图标整理放在一个应用里，支持中英文。\n\n它不是要把 macOS 完全变成 Windows，也不声称能完整替代每一个专业工具，而是集中解决日常反复用到的操作。Finder 扩展受系统支持范围限制；菜单栏整理需要用户手动移动图标，不是自动分类。\n\n官网：https://omnidock.app/zh/\nGitHub：https://github.com/quanzhankeji/OmniDock\n功能演示：https://youtu.be/Y7r74VQ9Olc\n\n推荐给同样经常切换两个系统，或者希望减少常驻小工具数量的 Mac 用户。欢迎试用和反馈。",
-    "created_at": "2026-09-27T04:05:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11943"
-  },
-  {
-    "id": 11942,
-    "title": "[资源自荐] 精选副业：AI 编程与独立开发案例库，关注门槛、成本和试错",
-    "content": "我是「精选副业」的维护者，想自荐一个面向中文读者的项目案例资源。\n\n网站：https://jingxuan-fuye.pages.dev/\n\n做 AI 小工具、独立游戏或内容项目之前，我希望读者先能判断：这个结果依赖什么基础、投入了多少时间、走过哪些弯路，而不只是看到一个收入数字。\n\n目前网站整理了 500 余篇个人项目案例的公开解读，可按平台、项目和技能筛选。每篇尽量保留作者背景、成果口径、适用条件、风险和原帖入口，方便把案例当作调研线索，而不是收益预测。\n\n两个可以直接查看的入口：\n\n- [AI 编程与独立开发专题](https://jingxuan-fuye.pages.dev/topics/ai-coding/)\n- [AI 独立游戏案例](https://jingxuan-fuye.pages.dev/cases/scys-22258252855181441/)：作者讲述两个月开发三款游戏、前两款反响平平，以及上线后持续处理玩家反馈的经历。数字按作者自述标注，解读重点是选方向与后续维护的实际投入。\n\n公开解读无需注册、免费浏览；案例主要来自生财有术社区，本站保留来源链接，不提供会员原帖全文，原帖访问遵循来源平台规则。站内有可选的社区体验卡及付费加入推广入口，不影响公开解读的浏览。\n\n希望能为正在评估 AI 产品和个人项目方向的开发者提供一份可比较、可追溯的阅读索引。供周刊判断是否适合资源栏目，谢谢。\n",
-    "created_at": "2026-09-27T02:13:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11942"
-  },
-  {
-    "id": 11941,
-    "title": "【开源自荐】Prelook 将鼠标悬停在任意链接上即可预览——无需新标签页，也不会丢失上下文",
-    "content": "[Prelook](https://github.com/xrr2016/extensions) 是一款链接预览浏览器插件，让你在不离开当前页面的情况下，快速浏览任何链接背后的内容。\n\n【核心功能】\n• 链接预览：将鼠标悬停在任意链接上，即可在当前页面之上的浮动窗口中加载并显示目标页面，无需切换标签页。\n• 链接预热：自动预热即将预览的链接资源，实现近乎瞬时的加载体验，告别漫长等待。\n• 划词搜索：选中文本即可在侧边面板中搜索，支持多家搜索引擎与 AI 引擎，无需手动复制粘贴。\n• 多窗口预览：同时打开多个预览窗口进行内容对照，支持固定（Pin）与自由调整尺寸。\n• 追踪参数清理：自动剥离链接中的营销追踪参数，保护隐私不被画像。\n\n【高度可定制】\n所有设置集中在侧边面板中，包含触发方式、预览尺寸、窗口行为、外观主题、性能选项（预热、节能、动效）、保护选项（链接清理、危险提示、禁用站点）等，一切按你的浏览习惯调整\n\n【隐私优先】\n不收集任何用户数据，无分析、无遥测、无外部数据传输。所有设置均存储在本地。\n\n<img width=\"1522\" height=\"801\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3f7deb7-2b0f-496e-9e89-bfdea4070942\" />\n\n<img width=\"420\" height=\"1217\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4ec81be9-1735-4333-911a-0f1c7247537b\" />\n\n<img width=\"420\" height=\"1213\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4bcb72ec-423b-485c-bdb5-9fa998705368\" />",
-    "created_at": "2026-09-27T01:36:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11941"
-  },
-  {
-    "id": 11940,
-    "title": "【开源自荐】docs-governance，让 Claude Code 和 Codex 接续维护项目规则与设计决策",
-    "content": "推荐一个自己开发的开源项目 docs-governance，面向使用 Claude Code、Codex 长期维护项目的开发者。\n\nAI 编程过程中，代码可以保存在 Git 中，但项目约定、架构决策的理由和测试依据容易散落在不同会话里。这个项目提供一套 Skills、Markdown 模板和审计脚本，帮助后续 Agent 查找和核对这些信息。\n\n主要功能包括以下几项。\n\n- 分开维护项目规则、路径导航、当前状态和变更历史。\n- 按需要记录架构决策、接口契约和测试依据。\n- 提供默认只读的文档审计，检查路径、链接及文档结构等问题。\n- 提供 Claude Code 和 Codex 两端入口，共用同一套 Skills。\n\n普通项目使用 Markdown 即可，无需数据库。可以先安装插件，运行一次只读审计，再决定采用哪些文档和流程。\n\n采用 MIT 开源协议，项目内提供安装说明、使用指南和模板。\n\n[项目地址与安装说明](https://github.com/Seekers2001/docs-governance)\n",
-    "created_at": "2026-09-27T01:11:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11940"
   }
 ]
