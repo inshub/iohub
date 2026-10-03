@@ -1,5 +1,45 @@
 [
   {
+    "id": 12056,
+    "title": "【自荐】3d.paper.ac.cn：一张图生成可商用 3D 模型，微信支付按次付费",
+    "content": "大家好，自荐一个我做的 AI 3D 模型生成工具。\n\n**网址**：https://3d.paper.ac.cn\n\n**它是什么**：上传一张图片或输入一句话，1~3 分钟生成高精度 3D 模型（GLB），可直接导入 Blender / Unity / Godot，也能直接 3D 打印。底层是腾讯混元生 3D Pro。\n\n**与同类工具的差异**：\n\n1. **国内直连**：EdgeOne 大陆加速，不用梯子\n2. **微信支付、按次付费**：单次 ¥5.9 起，不强制订阅\n3. **提示词面板**：内置混元特化的中文提示词模板库（8 大分类 × 槽位填空），小白点选就能写出高质量提示词；配套开源词库 https://github.com/applecore2002-sketch/hunyuan3d-prompts\n4. **合规**：接入内容审核 + AIGC 标识，商用无顾虑\n\n**使用提示**（也是混元生 3D 的通用技巧）：\n\n- 文生 3D：一次只描述一个主体，全中文正向描述 50~150 字，不要写 4k / masterpiece 这类生图词（混元不吃这套）\n- 图生 3D：单主体 + 背景干净 + 光线均匀，成功率最高\n- 真人照片建议先转成 Q 版手办风格再上传，出片率翻倍\n\n欢迎大家试用、提 issue 反馈问题。",
+    "created_at": "2026-10-03T16:44:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12056"
+  },
+  {
+    "id": 12055,
+    "title": "【工具自荐】K2Eudic：Kindle / KOReader 阅读原版书时，直接把生词加入欧路词典",
+    "content": "自荐一个最近开发的 KOReader 开源插件 **K2Eudic**。\n\n平时用 Kindle + KOReader 看英文原版书，遇到生词后，希望能顺手加入欧路词典生词本，方便之后统一复习。但如果每次都要拿出手机、打开欧路、重新输入单词，会比较打断阅读。\n\n所以做了这个插件：安装后，在 KOReader 中**长按英文单词或短语，点击「添加至欧路生词本」**，就可以直接保存到指定的欧路生词本。\n\n它使用**欧路词典官方 API**，Kindle 上不需要安装欧路 App。目前支持：\n\n- 单词和短语直接加入指定生词本\n- 添加前编辑选中的内容，比如把 `running` 改成 `run`\n- 手动输入单词或短语\n- 自动跳过已经存在的生词\n- 网络失败后重试\n- 中文 / 英文界面\n- 插件内检查更新\n\n这样用 Kindle 阅读英文原版书时，基本可以做到 **“看到生词 → 长按 → 收藏”**，不用离开当前的阅读环境，之后再统一到欧路词典里复习。\n\n项目开源，支持 Kindle 等运行 KOReader 的设备。\n\nGitHub：https://github.com/chempeng/k2eudic.koplugin",
+    "created_at": "2026-10-03T15:28:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12055"
+  },
+  {
+    "id": 12054,
+    "title": "【工具自荐】WinkLingo：用电影原声学地道英语",
+    "content": "https://winklingo.com/zh\n\n用海量电影原声片段学地道英语。\n\n- 搜任意词组，即刻看到它在真实电影场景里怎么说\n- AI 逐句拆解语块、俚语、语法和发音，点词即查牛津释义\n- 章节精讲、跟读、慢速、单句循环，生词一键收藏复习\n\n（作者自荐。）",
+    "created_at": "2026-10-03T14:37:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12054"
+  },
+  {
+    "id": 12053,
+    "title": "【开源自荐】ArcFlow：可本地运行的 Java / Vue 顺序审批示例",
+    "content": "推荐 [ArcFlow（弧流）](https://github.com/JamesCube/ArcFlow)，一个轻量 Java DAG 内核与 Vue 顺序审批示例，采用 Apache-2.0 许可证。\n\n独立演示无需数据库：可以在设计器中配置 1–8 个审批步骤，发布流程，再切换演示账号完成申请与逐步审批。每笔申请保留提交时的流程快照，后续发布不会改变已有申请。另有接入固定提交版本 RuoYi-Vue / RuoYi-Vue3 的[参考示例](https://github.com/JamesCube/ArcFlow/blob/f636151a340b0e03c1e38b8f7a5fed418220e933/examples/ruoyi-vue3/README.md)，沿用若依的登录、用户、菜单和权限。\n\n[本地启动与第一笔审批](https://github.com/JamesCube/ArcFlow/blob/f636151a340b0e03c1e38b8f7a5fed418220e933/docs/GETTING_STARTED.md#简体中文)\n\n下面是独立界面的真实 Chromium 截图，使用合成数据；不是若依宿主截图。\n\n![ArcFlow 独立审批演示：保存的 Bob → Carol 审批序列](https://raw.githubusercontent.com/JamesCube/ArcFlow/f636151a340b0e03c1e38b8f7a5fed418220e933/docs/images/standalone-approval.png)\n\n当前限制：\n- 0.1.0-SNAPSHOT，API 尚不稳定；示例仅限 localhost 和合成数据，不适合直接用于生产审批。\n- 审批数据为单写者本地 JSON 快照，不支持多实例共享或 SQL 审批存储；若依示例的 MySQL 仅用于若依用户、角色和菜单等数据。\n- 尚未实现 BPMN 兼容、并行审批或条件路由。\n- 独立后端固定使用 Spring Boot 3.5.16，该系列已结束开源支持；[框架版本与安全边界说明](https://github.com/JamesCube/ArcFlow/blob/f636151a340b0e03c1e38b8f7a5fed418220e933/examples/approval-demo/README.md)。",
+    "created_at": "2026-10-03T14:00:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12053"
+  },
+  {
+    "id": 12052,
+    "title": "【开源自荐】shadcn-hub：全景式 shadcn/ui 组件生态矩阵与多维对比中心",
+    "content": "# 阮一峰《科技爱好者周刊》推荐提交模版\n\n**提交目标**：前往 [ruanyf/weekly/issues](https://github.com/ruanyf/weekly/issues) 点击 **New Issue**  \n**Issue 标题**：`开源推荐：shadcn-hub - 全景式 shadcn/ui 组件生态矩阵与多维对比中心`\n\n---\n\n### Issue 内容（直接复制即可）：\n\n阮老师好！推荐一个面向现代前端与独立开发者的开源全景组件对比平台：**shadcn-hub**。\n\n### 项目简介\n- **项目名称**：shadcn-hub\n- **项目地址**：https://github.com/wangtester/shadcn-hub\n- **在线预览**：https://wangtester.github.io/shadcn-hub/\n- **开源协议**：MIT\n\n### 为什么推荐？\n在当前前端开发中，以 shadcn/ui 为代表的无头组件已成为事实标准，并催生出众多优秀的生态分支（如 BoardUI 图表库、ShadcnStore 商业区块、Refero 设计规范及各种微动效库）。\n\n然而，很多开发者在搭建设计系统或选型时面临两大困境：\n1. **生态过度碎片化**：各个库散落在不同的独立站点，缺乏一个统一的对比视角；\n2. **文档与实装脱节**：不少聚合站仅有静态截图或统计虚标，无法直观体验代码和可交互效果。\n\n**`shadcn-hub`** 采用 Next.js 16 + Tailwind CSS v4 + @base-ui/react 构建，一站式将：\n1. **shadcn/ui 官方全量 61 款核心组件**；\n2. **BoardUI 19 款高阶仪表盘图表 + AI Agentic 智能体交互套件**；\n3. **ShadcnStore 39 类商业营销/电商区块**；\n4. **Refero 9 大主流设计风格实景**（Linear、Vercel Geist、Apple、Neo-Brutalism、Stripe、Supabase、Raycast、Notion、Perplexity）；\n5. **HeroUI、beUI、RareUI、Transitions、BeautifulUI 微交互动效**；\n\n全部集成并以“双层全局导航 + 全局 Cmd+K 搜索”的形式进行 **100% 严谨实机可交互渲染**。代码完全开源，且做到了零虚标对齐，希望能帮助到正在做前端架构、SaaS 或独立开发的朋友们。\n",
+    "created_at": "2026-10-03T13:27:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12052"
+  },
+  {
     "id": 12051,
     "title": "【开源自荐】atv-core：用 iPhone 自带的 Apple TV 遥控器控制 Android TV 和 Mac",
     "content": "atv-core 让 iPhone 控制中心自带的 **Apple TV 遥控器**，可以直接操控 **Android TV 和 Mac**。手机端无需安装额外 App，也不需要购买 Apple TV。\n\n[图文介绍与使用指南](https://corvo.myseu.cn/2026/09/27/2026-09-27-%E7%94%A8iPhone%E9%81%A5%E6%8E%A7%E5%99%A8%E6%8E%A7%E5%88%B6%E4%BD%A0%E7%9A%84Android-TV%E5%92%8CMac/)\n\n我是项目作者，做它是为了方便在沙发上控制电视，以及接在客厅电视上的 Mac mini。找不到电视遥控器时，可以直接从手机控制中心调出遥控器；用 Mac 看视频或听音乐时，也可以随手移动鼠标、调音量和控制播放。\n\n使用时，在电视或 Mac 上安装接收程序，手机与目标设备接入 **同一局域网**，再从 iPhone 遥控器中选择设备并配对即可。**iPhone 端无需安装**，电视或 Mac 端需要安装接收程序。\n\n### iPhone：找到遥控器，开始使用\n\n从屏幕右上角下滑打开控制中心，点击「Apple TV 遥控器」，选择已运行接收程序的设备并完成配对，就可以滑动和点按操作。\n\n| **找到遥控器** | **使用遥控器** |\n| :---: | :---: |\n| <img src=\"https://rawforcorvofeng.cn/blog/2026/09/27/ios_tv_control.jpg\" alt=\"控制中心中的遥控器入口\" width=\"200\"> | <img src=\"https://rawforcorvofeng.cn/blog/2026/09/27/ios_apple_tv_remote.png\" alt=\"iPhone 遥控器操作界面\" width=\"200\"> |\n\n### Android TV 端效果\n\n接收程序显示配对信息和连接状态。连接后，滑动手机触控板即可移动电视界面的焦点，点按确认打开当前项目。\n\n| **接收程序** | **电视桌面** | **焦点移动后** |\n| :---: | :---: | :---: |\n| <img src=\"https://rawforcorvofeng.cn/blog/2026/09/27/android_tv_main_screen_ready.png\" alt=\"Android TV 接收程序\" width=\"260\"> | <img src=\"https://rawforcorvofeng.cn/blog/2026/09/27/android_tv_launcher_home.png\" alt=\"Android TV 桌面初始焦点\" width=\"260\"> | <img src=\"https://rawforcorvofeng.cn/blog/2026/09/27/android_tv_nav_content.png\" alt=\"滑动后电视焦点移动\" width=\"260\"> |\n\n### Mac 端效果\n\nMac 端提供菜单栏应用，手机触控板可以用于移动鼠标，也支持方向键模式和媒体控制。下面是操作时的 Web 面板预览，可以查看触控轨迹、按键事件和音量状态。\n\n| **Mac 端操作预览：触控轨迹与遥控状态** |\n| :---: |\n| <img src=\"https://rawforcorvofeng.cn/blog/2026/09/27/mac_browser_inspector.png\" alt=\"Mac 端 Web 面板中的触控轨迹与遥控状态\" width=\"600\"> |\n\n主要功能：\n\n- **Android TV**：滑动触控板移动焦点，支持确认、返回、主页及媒体控制。\n- **macOS**：将触控板操作转换为鼠标移动，也支持方向键模式、音量调节和播放控制。\n- **局域网连接**：手机与目标设备在同一局域网内完成发现和配对。\n\n实现原理很简单：在 Android TV 或 Mac 上模拟 Apple TV 的通信服务，接收 iPhone 发来的遥控事件，再转换为目标设备的按键、鼠标或媒体操作。项目以 MIT 协议开源。\n\n目前提供 **Android APK**，以及 Apple Silicon、Intel Mac 的 **DMG 安装包**。首次使用需要配置相应权限：Mac 需要 **辅助功能权限**；Android TV 根据输入模式配置 ADB 调试和无障碍服务，详细步骤见项目文档。不同电视系统的权限入口和功能支持可能有所差异。\n\n- [项目源码](https://github.com/corvofeng/atv-core)\n- [安装包下载](https://github.com/corvofeng/atv-core/releases/latest)\n\n欢迎有类似使用场景的朋友尝试，并反馈设备兼容性和使用问题。\n",
@@ -178,7 +218,7 @@
   {
     "id": 12029,
     "title": "[资源自荐] 出处呢：58 条软件团队说法的双语研究手册",
-    "content": "项目：Citation[needed] / 出处呢\n\n仓库：https://github.com/MbappeWU/citation-needed\n在线阅读：https://mbappewu.github.io/citation-needed/\n发布包：https://github.com/MbappeWU/citation-needed/releases/tag/v0.1.0\n\n这是一本可直接在浏览器阅读的中英双语软件团队研究手册。它检查 AI 编程、工时、会议、远程办公、代码评审和招聘等九章的 58 条常见说法，每条都有研究出处、证据等级、适用局限和可带进会议的简短表述。\n\n目前 4 条成立、26 条视情况、24 条不成立、4 条证据不足；没有 A 级证据。125 个出处有分层的 CI 核查，涵盖元数据和部分摘要引文，不代表论文正文里的数字已全部核实。正文由 AI 辅助起草，尚未经过专家逐行审阅，仓库公开列出了薄弱点并欢迎读者抽查。\n\nv0.1.0 提供英文和中文各 60 页 PDF、离线阅读器、Agent Skill 以及分享图。内容 CC BY 4.0，脚本 MIT。使用无需安装，也没有要求读者注册。\n",
+    "content": "项目：Citation[needed] / 出处呢\n\n仓库：https://github.com/MbappeWU/citation-needed\n在线阅读：https://mbappewu.github.io/citation-needed/\n发布包：https://github.com/MbappeWU/citation-needed/releases/tag/v0.1.1\n\n这是一本可直接在浏览器阅读的中英双语软件团队研究手册。它检查 AI 编程、工时、会议、远程办公、代码评审和招聘等九章的 58 条常见说法，每条都有研究出处、证据等级、适用局限和可带进会议的简短表述。\n\n目前 4 条成立、26 条视情况、24 条不成立、4 条证据不足；没有 A 级证据。125 个出处有分层的 CI 核查，涵盖元数据和部分摘要引文，不代表论文正文里的数字已全部核实。正文由 AI 辅助起草，尚未经过专家逐行审阅，仓库公开列出了薄弱点并欢迎读者抽查。\n\nv0.1.1 提供英文和中文各 60 页 PDF、离线阅读器、Agent Skill 以及分享图。内容 CC BY 4.0，脚本 MIT。使用无需安装，也没有要求读者注册。\n",
     "created_at": "2026-10-02T03:04:13Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12029"
@@ -758,45 +798,5 @@
     "created_at": "2026-09-27T16:39:25Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11956"
-  },
-  {
-    "id": 11955,
-    "title": "【开源自荐】FCaptcha：可自行部署的 CAPTCHA，提供 Docker 镜像和 Node.js 表单示例",
-    "content": "大家好，我是 WebDecoy 的 Chris Portscheller，FCaptcha 的开发团队成员。这是一次项目自荐。\n\n**FCaptcha 是一个采用 MIT 许可证、可自行部署的开源 CAPTCHA 项目**，提供复选框和无感模式，不使用图片或音频谜题。它结合浏览器信号、交互行为与工作量证明（Proof of Work），用于辅助识别自动化访问。\n\n- 提供 Go、Node.js 和 Python 服务端实现。\n- 提供公开 Docker 镜像 `ghcr.io/webdecoy/fcaptcha`，支持 Linux AMD64 / ARM64；自行部署无需注册托管服务账号。\n- 最近补充了 Docker 部署指南，以及可直接运行的 Node.js 联系表单示例。示例包含浏览器端获取令牌、后端验证、hostname/action 校验、令牌重放拒绝和验证服务故障处理。\n- 表单示例使用 Node.js 22+，支持日语/英语切换，仅用于本地演示，不发送邮件或保存消息。\n\n项目地址：https://github.com/WebDecoy/FCaptcha\n\nDocker 指南：https://github.com/WebDecoy/FCaptcha/blob/main/docker/README.md\n\n可运行示例：https://github.com/WebDecoy/FCaptcha/tree/main/examples/contact-form\n\n在线演示（英文）：https://webdecoy.com/product/fcaptcha-demo/?utm_source=ruanyf_weekly&utm_medium=community&utm_campaign=fcaptcha_oss_launch&utm_content=project_submission\n\n软件免费，但自行部署需要承担服务器和维护成本。检测可能出现误判或漏判，接入时应结合实际用户和流量进行评估，并始终在后端验证令牌。示例中的 10 项集成测试验证的是 API 接入与失败处理，不代表通用的机器人检测准确率。\n\n欢迎试用、阅读代码，并通过项目的 GitHub Issues 提出反馈。感谢考虑收录！\n",
-    "created_at": "2026-09-27T15:34:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11955"
-  },
-  {
-    "id": 11954,
-    "title": "【创业日记】已经要创业6个月了，还是没拉到融资！",
-    "content": "# 已经要创业6个月了，还是没拉到融资！\n\n创业快6个月了，见了20多个投资人。\n\n融资金额：0。\n\n一开始，我觉得只要产品方向没问题，把故事讲清楚，总会有人愿意投。\n\n所以那段时间，我见投资人、改BP、回答各种问题。每聊完一个人，都感觉公司好像又往前推进了一点。\n\n但现在回头看，我发现见投资人特别容易给创业者制造一种幻觉：\n\n**你每天都很忙，但公司可能根本没有任何进展。**\n\n## 1.见投资人，不等于创业有进展\n\n融资这件事很奇怪。\n\n一场会可以聊一个小时，大家从市场聊到产品，从大厂聊到模型，最后好像什么都聊明白了。\n\n但聊完以后，什么也没有发生。\n\n产品没有多一个用户，用户的问题没有被解决，收入也没有增加。\n\n创业者却很容易沉浸在这种反馈里。\n\n这个投资人觉得方向不够大，我就重新讲一遍市场；那个投资人担心大厂竞争，我就重新解释一遍壁垒。\n\n最后BP改了很多版，产品却没有变得更好。\n\n## 2.融资不是创业的进度条\n\n以前我会下意识觉得，拿到融资，才代表这件事情被认可了。\n\n但创业到现在，我越来越觉得：\n\n**融资不是创业的进度条，产品才是。**\n\n投资人愿不愿意投，只能说明他愿不愿意投。它不能直接证明你的产品有没有价值，更不能替你解决用户的问题。\n\n如果产品本身没有跑通，融资也只是让你更有钱地继续犯错。\n\n如果产品真的在变好，即使暂时没有融资，公司也不是停在原地。\n\n## 3.没融到钱以后，只能回去干活\n\n没拿到融资当然不是什么值得庆祝的事情。\n\n钱不够，招不了更多人，很多事情只能自己干，压力也会一直存在。\n\n但它也逼着我重新回到一个最简单的问题：\n\n**如果没有投资人的钱，我们能不能先把一个用户的问题真正解决？**\n\n我们做的产品叫“连连AI”，简单来说，就是用AI帮人找人。\n\n有人想找FDE，有人想找合伙人，也有人想认识某个领域的人。我们希望用户只需要说出自己的需求，AI就能帮他理解、匹配，最后让双方建立连接。\n\n以前我总想着，这套流程什么时候才能完全自动化。\n\n但最近我不等了。\n\n只要有人在连连AI里发布需求，我就自己去看他到底想找谁，再去用户池里一个个找、一个个问、一个个推进对接。\n\n很慢，也很不AI。\n\n但至少每完成一次真实的对接，我都会比之前更清楚：用户为什么需要找这个人，什么样的匹配才算有效，我们的产品到底差在哪里。\n\n可能在连连AI真正成为一个产品之前，我自己就是它的人工版本。\n\n创业快6个月了，还是没拉到融资。\n\n说不焦虑肯定是假的。\n\n但比没拉到融资更可怕的，是花了6个月只学会怎么见投资人，却没有学会怎么把产品做出来。\n\n投资人还是会继续见。\n\n但更重要的，始终是做好产品。\n",
-    "created_at": "2026-09-27T14:34:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11954"
-  },
-  {
-    "id": 11953,
-    "title": "[投稿] AI Age Guesser：从图片试试趣味年龄估计",
-    "content": "推荐一个 AI 创意工具：FastMoro AI 的 AI Age Guesser。上传参考图片后，可以试试图片中的趣味年龄估计。它仅供娱乐，不能用于年龄核验或身份判断。\n\n链接：[AI Age Guesser – FastMoro AI](https://fastmoroai.com/tools/ai-age-guesser)\n\n披露：这是产品方自荐；如果不符合周刊的收录标准，请直接关闭此 Issue。",
-    "created_at": "2026-09-27T14:06:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11953"
-  },
-  {
-    "id": 11952,
-    "title": "【开源自荐】精酿 BrewReel：让便宜模型也能做竖版宣传片",
-    "content": "精酿 BrewReel 是一个开源的 Agent Skill（Apache-2.0），用来做竖版宣传片。\n\n用法：写一份产品简报，DeepSeek 这类低成本模型只负责写分镜 JSON（选镜头、写文案），版式、动效、合规校验、配乐和渲染交给现成的 Remotion 组件，一条命令出 1080×1920 的视频。\n\n- 3 种配方：卡片信息流 / 答题互动 / 角色漫游\n- 6 个行业包，内置《广告法》和行业合规校验\n- 中英双语；v0.5.1 起可选配音（旁白 + 逐字字幕）\n- 可装成 Claude Code / Codex 的 skill，也有 DeepSeek Harness 插件（npm：dsh-brewreel）\n\n还是预览版，低成本模型写出的片子目前要当初稿看，改过再发。\n\n仓库：https://github.com/Finderchangchang/brewreel\n官网：https://brewreel.com\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n",
-    "created_at": "2026-09-27T13:38:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11952"
-  },
-  {
-    "id": 11951,
-    "title": "【工具自荐】Title Case Converter：浏览器本地处理的英文标题大小写转换器",
-    "content": "网址：https://titlecaseconverter.app/\n\n这是 CNVX 维护的免费英文大小写转换工具，适合整理文章标题、论文标题或多行英文文本。无需注册，转换在浏览器本地进行，不调用 LLM，也不需要上传输入文本。\n\n主要功能：\n- 标题大小写、句式大小写、全小写、全大写、每词首字母大写、大小写反转。\n- 标题模式可选择 APA、Chicago、AP、MLA。\n- 支持多行转换、自定义保留拼写（如 iPhone）、编辑结果和复制纯文本。\n\n例如输入 `a guide to API`，按 APA 标题模式转换为 `A Guide to API`。特殊品牌名或需要结合语境判断的词，仍建议人工复核；它不是语法纠错或论文引用生成工具。\n\n利益关系说明：我是项目方 Ethan Lee（CNVX），本条为自荐，供编辑试用和评估。",
-    "created_at": "2026-09-27T12:20:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11951"
   }
 ]
