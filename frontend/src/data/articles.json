@@ -1,5 +1,53 @@
 [
   {
+    "id": 12067,
+    "title": "【开源自荐】桜幻想：在浏览器里乘船穿过四季的日本河谷（three.js 实时渲染）",
+    "content": "自荐一个开源的浏览器实时 3D 作品 **桜幻想 Sakura Fantasy**：坐一条苫舟（芦苇篷的日本河船），由船夫摇橹，顺着河谷漂流；春夏秋冬、早晚、晴雨雪都能切换。不是视频，每一帧都在网页里实时渲染。\n\n![](https://raw.githubusercontent.com/billpwchan/sakura-fantasy/main/docs/media/hero.webp)\n\n- **四季与时辰**：樱花、夏夜萤火与烟花、秋天逐片变红的枫叶、冬雪，雪会积在枝头和屋顶上；灯笼、萤火和烟花都倒映在河面上，烟花的声音按声速延迟传来。\n- **植物是\"种\"出来的**：树木按日本树种的扫描数据程序生成，分三级 LOD；地被植物来自 CC0 扫描。\n- **原创配乐**：筝、尺八和笙按日本调式（平调子、阳音阶、云井调子）实时演奏，春天樱花下会弹《さくらさくら》，叠在真实的野外录音上。\n- **技术**：three.js r186 + WebGL 2，不用游戏引擎和框架；有帧时间调节器，尽量稳在 60 fps。代码 MIT 协议。\n\n在线体验：https://sakura.billpwchan.art\n\n项目地址：https://github.com/billpwchan/sakura-fantasy\n\n谢谢！\n",
+    "created_at": "2026-10-04T12:58:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12067"
+  },
+  {
+    "id": 12066,
+    "title": "【开源自荐】HRouter Desktop：统一管理 AI 编程工具的供应商配置与模型备用线路",
+    "content": "## 项目简介\n\n自荐一个 MIT 开源桌面工具：[HRouter Desktop](https://github.com/honestTai/HRouter-Desktop)，用于集中管理 Claude Code、Codex、Gemini CLI 等 AI 编程工具的供应商配置和模型线路。\n\n做这个工具的起因是频繁切换模型：Claude Code 一份配置，Codex 一份，Gemini CLI 又是一份，每次换供应商都要重新找 Key、端点和模型映射，改完还担心覆盖原有配置。我希望把这些接入操作集中到一个工作台，让使用者少折腾配置，多专注编程。\n\n## 主要功能\n\n- **统一接入工作台**：覆盖 Claude Code、Claude Desktop、Codex、Gemini CLI、OpenCode 等 11 个 Agent；可接入官方供应商、自建端点和兼容服务。\n- **先看变更，再切配置**：主动开启 Claude / Codex 配置保护后，可保留自定义字段、预览变更、保存本地快照，并在恢复前检查冲突。\n- **为模型准备备用线路**：配置主备供应商及精确模型路由，在支持的本地代理模式下自动故障转移。不同 Agent 的支持范围不同，并非全部都支持代理接管。\n- **常用配置存成方案**：保存供应商、MCP、Skills 的选择，重新应用前先检查。接入方案不等于完整配置备份。\n- **用量可视化**：查看请求、Token、缓存和本地费用估算，提供浮动用量窗口与 macOS 桌面小组件。费用估算仅供参考，不是供应商账单。\n\n使用桌面工具不需要 HRouter 账户，也不要求使用 HRouter 服务；可自行选择已有供应商。\n\n## 界面预览\n\n**以 Agent 为中心的接入工作台：**\n\n![HRouter Desktop 中文工作台](https://raw.githubusercontent.com/honestTai/HRouter-Desktop/f1f2096772958fc6ed61491a3dbc32f643a620db/assets/screenshots/workbench-zh.png)\n\n**模型线路与备用供应商管理：**\n\n![HRouter Desktop 中文线路策略](https://raw.githubusercontent.com/honestTai/HRouter-Desktop/f1f2096772958fc6ed61491a3dbc32f643a620db/assets/screenshots/routes-zh.png)\n\n## 与 CC Switch 的关系\n\n项目基于 Jason Young 及贡献者开发的 [CC Switch](https://github.com/farion1231/cc-switch)，保留原作者版权与 MIT 许可证，独立维护，不是上游官方发行版。\n\n上游的供应商、代理、MCP、Skills、会话和用量基础能力仍然保留；本分支主要围绕 Agent 优先的界面、配置保护流程、可复用的接入方案、精确模型主备链和兼容性修复进行扩展，不将继承能力包装为新发明。这是本分支的改动说明，不代表当前上游缺少所有对应能力。\n\n## 下载与使用说明\n\n- **项目地址**：https://github.com/honestTai/HRouter-Desktop\n- **安装包**：https://github.com/honestTai/HRouter-Desktop/releases/tag/v0.4.0\n- **支持平台**：macOS 12+，仅 Apple Silicon（M 系列）；Windows x64。当前发布版本为 v0.4.0。\n- **技术栈**：Tauri 2、Rust、React、TypeScript。\n- **使用边界**：本地优先，但不是完全离线；模型调用、模型发现和用量查询等会访问相应服务，模型使用费用由所选供应商决定。API Key、配置文件与快照需作为敏感数据保管。\n\n欢迎试用，也欢迎通过项目 Issue 反馈安装、配置兼容性和使用体验问题。\n",
+    "created_at": "2026-10-04T12:30:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12066"
+  },
+  {
+    "id": 12065,
+    "title": "【自荐】Aesthetic Bio Maker：免费生成审美风 Instagram 简介的在线工具",
+    "content": "## 项目简介\n\n**Aesthetic Bio Maker** 是一个免费的在线工具，用来生成适合 Instagram、TikTok、Discord 和 Linktree 的审美风简介（bio）。不需要注册，打开就能用。\n\n- **在线地址：** https://aestheticbios.com\n\n## 核心功能\n\n1. **五种风格**：grunge / y2k / minimalist / vintage / classic aesthetic，每种风格都有独立页面、专属模板和生成器\n2. **一键复制**：输入名字和兴趣，自动组合模板生成成品简介，点一下复制就能粘贴到主页\n3. **平台字符数自适应**：自动按平台限制调整长度（Instagram 150、TikTok 80、Discord 200），粘贴不会截断\n4. **免费字符计数器**：附带检查任意文本是否符合 Instagram 150 字符限制的小工具\n\n## 技术栈\n\nTanStack Start + Cloudflare Workers + D1 数据库，纯前端生成无 LLM 依赖，加载快（SSR 直出 ~14ms）。\n\n欢迎试用和建议，也欢迎反馈新风格需求。",
+    "created_at": "2026-10-04T11:54:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12065"
+  },
+  {
+    "id": 12064,
+    "title": "【开源自荐】Bibo：日常跑在边缘、需要时启动 Linux 沙箱的个人 AI 工作空间",
+    "content": "自荐 [Bibo](https://github.com/Peiiii/bibo)：一个能跑 Python、整理文件并留下待办的个人 AI 工作空间，MIT 开源，可部署到自己的 Cloudflare 账号。\n\n这次想分享的是它的运行方式：日常对话、文件和待办由 Workers / Durable Objects 处理，遇到 Python、Shell 等系统工具才启动 Linux 沙箱。文件单独放在 R2，沙箱回收后，保存过的报告和数据仍在。\n\n拿一份示例订单表做了实际验证：7 行原始记录，去掉 2 行重复项，得到 5 笔订单、9 件商品、214 元合计。Python 真正在沙箱里执行，清洗后的 CSV、说明和脚本都留在个人文件空间里；一周销售分析的另一组示例还能保存报告和创建可编辑待办。\n\n![Python 执行与清洗说明](https://raw.githubusercontent.com/Peiiii/bibo/main/images/screenshots/bibo-sandbox-execution.png)\n\n![保存后的 CSV 文件](https://raw.githubusercontent.com/Peiiii/bibo/main/images/screenshots/bibo-file-workspace.png)\n\n这种拆分是为了减少不用系统工具时的闲置算力开销，还没有做统一成本基准测试，因此不报固定月费或承诺免费。自部署需要支持 Sandbox / Containers 的 Workers Paid 账号、R2 和自己的 DeepSeek API Key。\n\n项目仍是早期版本，当前界面以中文为主。临时安装的软件和未写入持久存储的沙箱文件会随实例回收消失，适合想研究边缘 Agent、按需沙箱和文件持久化的开发者试用。\n\n源码、部署步骤及更多真实截图：https://github.com/Peiiii/bibo\n官网：https://bibo.bot\n\n此条由项目维护者账号提交。\n",
+    "created_at": "2026-10-04T09:52:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12064"
+  },
+  {
+    "id": 12063,
+    "title": "【开源自荐】Snitch：实时网络流量可视化——查看电脑的每一个隐藏连接",
+    "content": "阮老师好，自荐一下我做的 **Snitch** —— 一个开源（AGPL-3.0）的实时网络流量可视化工具，相当于免费、跨平台、本地优先的 Little Snitch。\n\n项目地址：https://github.com/aixisstudio/Snitch\n\n你的电脑每小时会悄悄建立数百个连接。Snitch 用动画节点图 + 世界地图把它们全部实时展示出来：\n\n- **按进程归因**：知道是哪个应用在联网\n- **100% 离线地理定位**：内置 DB-IP Lite，查询不离开本机\n- **零遥测**：API 仅绑定 127.0.0.1 + token 认证，数据不出本机\n- **异常检测**：端口扫描、心跳外联、潜在数据外泄实时告警\n- 中英文双语界面；演示模式 `SNITCH_DEMO=1` 无需 root；Docker 一键部署；macOS 有打包好的应用（Releases）\n\n技术栈：ctypes 直连 libpcap（自己写的解析器，不依赖 Scapy）+ FastAPI/WebSocket + React/D3.js + Electron。\n\n![Snitch 实时节点图演示](https://raw.githubusercontent.com/aixisstudio/Snitch/main/docs/assets/demo.gif)\n\n刚上线 Product Hunt，欢迎试用和反馈！",
+    "created_at": "2026-10-04T08:29:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12063"
+  },
+  {
+    "id": 12062,
+    "title": "【开源自荐】open-compute：开源的 Cloudflare Workers 兼容平台",
+    "content": "阮老师好，自荐一下我做的 open-compute，一个可以运行在自己服务器上的 Cloudflare Workers 兼容平台，Apache-2.0 开源。\n\n我是 Cloudflare 的粉丝，很喜欢 Workers 这套开发方式。不过我们做 B 端交付时，经常遇到客户因为数据安全要求、企业网络限制，需要把应用和数据留在自己的基础设施里。为了私有化，又得重新搭存储、队列、任务调度这些东西。所以我做了 open-compute，希望能把这套熟悉的开发体验带到客户内网。\n\n它把运行时、部署、网关、存储、队列、工作流和管理界面打包进一个 Rust 二进制，底层使用 workerd，面向单机部署，默认使用 SQLite 和本地文件存储，不需要先搭一套 Kubernetes、外部数据库和缓存服务。\n\n兼容是这个项目的重点：在支持范围内，现有 Cloudflare Workers 项目的业务代码一行都不用改，原来的 Wrangler 配置、Bindings 和框架适配器都能继续使用，切换部署目标即可运行。API 按 Cloudflare 的接口实现，已有的 SDK 和工具也可以复用。\n\n目前支持 Workers、KV、D1、R2、Durable Objects、Queues、Workflows、Cron、Cache、Images、Vectorize、AI Search，以及 Static Assets、Service Bindings 等能力。具体支持范围和单机环境下的行为差异，可以查看[产品矩阵](https://open-compute.dev/docs/products/)。\n\n我已经在一些 B 端客户的私有化环境里部署并跑了一段时间，也在实际交付中持续完善它。现在开源出来，欢迎有类似需求的朋友试用、反馈。\n\n官网和文档：[open-compute.dev](https://open-compute.dev/)  \n源码：[elliothux/open-compute](https://github.com/elliothux/open-compute)\n\n做这个项目的起因，以及企业交付和 Agent 基础设施方面的一些想法，写在这篇博客里：[我把 Cloudflare 开源了](https://elliothu.me/blog/zh/open-sourcing-cloudflare)\n\n![open-compute-dashboard](https://open-compute.dev/assets/capabilities/dashboard.webp)",
+    "created_at": "2026-10-04T08:28:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12062"
+  },
+  {
     "id": 12061,
     "title": "【开源自荐】beautiCode：给 AI 编程客户端换上动态壁纸和视频背景",
     "content": "项目地址：https://github.com/starsstreaming/beautiCode\n\n![beautiCode](https://github.com/user-attachments/assets/d010a8ce-b131-47ef-a1aa-3a473290a4f8)\n\nbeautiCode 是一个本地换肤工具，可以把图片、视频或带雨丝、水波特效的动态壁纸，放进 Cursor、Codex Desktop、DeepSeek Harness、WorkBuddy 和豆包的对话界面背后，代码、输入框和按钮照常工作。\n\n演示视频：\n\nhttps://github.com/user-attachments/assets/f1b52d41-aea4-4330-80e1-5a90c344360e\n\n**亮点**\n\n- 一个工具同时支持五个 AI 编程客户端，一条命令接管本机所有已装客户端\n- 内置皮肤中心，在线浏览、一键安装审核过的皮肤；也能导入自己的图片（JPG / PNG / WebP / AVIF）和视频（MP4 / MOV）\n- 动态特效：视频循环播放，「画窗」等预设在静态图上叠加雨丝和光效；进入工作状态后自动压暗（DeepSeek Harness / Codex / WorkBuddy），保证文字可读\n- 安全：只通过本机调试端口或官方插件接口注入，不改客户端安装文件，失败自动回滚，可随时干净卸载\n\n**安装**\n\n```\nnpm install -g beauticode-desktop --foreground-scripts\nbeauticode-desktop all install\n```\n\n只用 DeepSeek Harness：`npx beauticode-dsh`\n\n**说明**：目前桌面端主要支持 Windows（WorkBuddy 同时支持 macOS），MIT 协议。本人是项目作者。\n\n我们每天花很多时间面对代码，beautiCode 想让这些时间更像生活，而不只是等待完成的任务。\n",
@@ -750,53 +798,5 @@
     "created_at": "2026-09-28T04:24:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11967"
-  },
-  {
-    "id": 11966,
-    "title": "【工具自荐】Motion Control AI：让 AI 角色动画动作可控可复现",
-    "content": "Motion Control AI 是一个面向 AI 视频创作者的浏览器工具，用「参考视频驱动 + 角色图片」的方式，让 AI 角色动画从随机生成变成可控、可复现的生产流程。\n\n**它解决什么问题**\n\n生成式视频模型容易出现动作漂移、身份不一致、背景扭曲等随机问题，创作者很难稳定复现同一个角色。Motion Control AI 的思路是：创作者上传一张角色图和一段参考表演视频，工具负责把参考视频中的运动迁移到角色身上，同时保留角色的外观特征。\n\n**主要能力**\n\n- 参考视频动作迁移：提取参考片段中的姿态、节奏与手部轨迹\n- 角色身份保持：控制面部、发型、服装与身体比例的稳定性\n- 一次一个变量的迭代：固定输入只调整一个参数，便于对比与回归测试\n- 分离评审：把「动作是否到位」和「身份是否稳定」当作两个维度分别评估\n\n**适用人群**\n\nAI 视频创作者、角色动画作者、数字人内容团队、独立短片作者，以及需要批量产出一致角色镜头的团队。\n\n**工具地址**\n\nhttps://motioncontrolai.online/\n\n**为什么自荐**\n\n这类工具在中文创作者社区里的讨论还不多，但「让 AI 视频动作可控」是普遍痛点。希望能收到关于技术方案、定价模型和使用流程的反馈，也欢迎在 issues 中交流实际使用中遇到的问题。",
-    "created_at": "2026-09-28T03:46:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11966"
-  },
-  {
-    "id": 11965,
-    "title": "【网站自荐】问迹 wenjiai：AI 产品每天冒出几十个，我做了个 AI 原生的IT 桔子",
-    "content": "每天都有 AI 新品发布，融资新闻也刷不完。可真要回答：这个赛道都有谁、谁拿了钱、我还能不能进，还得在 Product Hunt、36 氪、公众号、官网之间来回翻。\n\n我做了个网站把这些收拢到一处，叫问迹（wenji）。想做成一个 AI 原生的 IT 桔子 / Crunchbase：不光查公司，也帮你判断赛道、比竞品，最后把自己的产品推出去。\n\n目前有什么：\n\nProductBook 产品库：收录 1.4 万多个 AI 产品和公司。可以按赛道、能力、场景、目标用户、行业、技术路线、商业模式等维度筛选，一共 1100 多个标签。\nAI语义搜索：不记得产品名也能找，直接搜“帮电商商家自动回客服的 Agent”就行。\nTrackBook 赛道报告：已经写了 AI 编程 Agent、AI 陪伴、视频生成、世界模型、灵巧手、推理平台、电商 Agent、AI 建站这 8 个赛道。每篇都讲清楚赛道边界、技术路线、玩家和融资，还有“新人还有没有机会”。报告里提到的公司都能点进产品页。还会持续扩展。\n商业速览：200 多家公司的一页纸速读，内容有产品体验、团队背景、怎么赚钱、现在进场贵不贵。\n榜单和标签页：按赛道看热门产品，一个标签点进去就是一个小赛道的玩家列表。\n产品自荐入口：做了 AI 产品的可以直接提交，审核后上架，自动打好标签。\n\n后面想做的：\n竞品分析：选中一个产品，自动拉出同赛道的对手，对比功能、定价、融资、团队，生成一份能直接拿去写 BP 的竞品表。\n内容宣发：产品上架后，帮你生成赛道稿、小红书图文和公众号排版，让新产品被搜到、被写进赛道报告里。\n说白了，问迹想陪创业者走完三步：先看清赛道，再看清对手，最后让别人看见你。\n\n网站：https://wenjiai.cn/",
-    "created_at": "2026-09-28T03:30:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11965"
-  },
-  {
-    "id": 11964,
-    "title": "【工具自荐】QDuo: 一款 AI 加持的环形划词 app",
-    "content": "\n### 功能介绍：\n\n1. 纯 SwiftUI Native 实现，轻量，快速\n2. 支持三种风格：环形风格，胶囊风格展示\n3. 动作支持分组（二级菜单）\n4. 支持 AI 动作，翻译、润色、搜索、朗读、处理文本、问大模型等 30+ 内置动作，可自定义动作\n\n### 开源地址\n\nGitHub: https://github.com/XueshiQiao/qduo\n> 构建已通过了 Apple 公证\n\n### 视频 & 截图\n\nhttps://github.com/user-attachments/assets/53a60172-9117-409d-a4bb-9696a673e0a3\n\n\n<img width=\"1298\" height=\"974\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/66dc82fc-323d-4628-b0a7-5a9c5be06aee\" />",
-    "created_at": "2026-09-28T03:27:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11964"
-  },
-  {
-    "id": 11963,
-    "title": "【开源自荐】TakeBoard：基于 ComfyUI 的 AI 图片与视频创作画布",
-    "content": "维护者自荐：**TakeBoard，一个基于 ComfyUI 的开源 AI 创作画布。**\n\n在同一工作区选择模型、连接素材、编写提示词，生成图片与视频，再将结果用于下一步创作。它把配置好的 ComfyUI 工作流变成画布中的创作工具，适合希望可视化创作、同时使用自己模型与设备的用户。\n\n- 从文生图、图生图到视频生成，按工作流能力展示输入与参数。\n- 在画布中比较多个版本，连接结果继续创作。\n- 桌面端连接本机或远程 ComfyUI；项目可保存在本机，远程输出取回项目。\n\nApache-2.0 开源，提供 Mac、Windows、Debian/Ubuntu 的 x64 / ARM64 测试版安装包。本机使用无需注册。生成需要另行准备 ComfyUI、模型和节点，自定义工作流可能需要适配。\n\n[项目与源码](https://github.com/Fourques/Takeboard) · [下载与介绍](https://fourques.github.io/Takeboard/zh/) · [首次创作](https://github.com/Fourques/Takeboard/blob/main/docs/first-session.md)\n\n[交互演示](https://github.com/Fourques/Takeboard/blob/main/docs/demo-guide.md)使用标注清楚的模拟结果，非模型生成样片。当前桌面测试版 的签名状态与首次打开方式见[安装说明](https://github.com/Fourques/Takeboard/blob/main/docs/downloads.md)。",
-    "created_at": "2026-09-28T03:25:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11963"
-  },
-  {
-    "id": 11962,
-    "title": "【网站自荐】SupaQR：把二维码、短链接和文件分享整合到一起的在线工具",
-    "content": "# 【网站自荐】SupaQR：一个把二维码、短链接和文件分享放在一起的在线工具\n\n大家好，向大家自荐一个我自己开发的产品 **SupaQR**：\n\nhttps://supaqr.com/\n\nSupaQR 是一个集 **二维码生成、短链接、文件分享和访问统计** 于一体的在线工具。\n\n最开始它只是一个二维码生成器，后来随着自己不断使用，我发现二维码背后真正需要解决的问题，往往并不只是“生成一张二维码图片”。\n\n比如：\n\n- 印刷出去的二维码，目标链接以后可能需要修改\n- 想知道二维码到底有没有人扫、什么时候扫、从哪里扫\n- 想把 PDF、图片、音频等文件直接变成二维码\n- 营销活动需要批量生成二维码\n- 一个很长的网址，希望变成容易传播的短链接\n- 文件发给客户以后，希望知道有没有被打开\n- 希望二维码和短链接都能使用自己的品牌域名\n\n这些需求通常需要几个不同的工具才能完成。\n\n所以我慢慢把 SupaQR 做成了现在这个样子，希望尽量用一个产品解决从：\n\n**二维码 / 短链接 → 分享 → 访问 → 数据统计**\n\n这一整套流程。\n\n## 为什么开发 SupaQR？\n\n市面上其实已经有很多优秀的二维码和短链接产品。\n\n但我自己使用这些产品时，一直有两个比较明显的感受。\n\n第一个是功能比较分散。\n\n二维码生成、URL Shortener、文件分享、访问统计，经常分别属于不同的产品。\n\n第二个是很多二维码工具的定价并不便宜。\n\n尤其是动态二维码。\n\n二维码一旦印在包装、宣传册、名片或者线下物料上，重新印刷的成本其实远远高于二维码本身。\n\n所以我希望 SupaQR 能做成一个：\n\n**功能足够完整，但价格尽量简单、便宜，而且普通人不需要研究半天就能使用的工具。**\n\n## 目前可以做什么？\n\n### 1. 动态二维码\n\n可以创建动态二维码。\n\n二维码印刷以后，即使目标网址发生变化，也可以直接修改二维码背后的目标内容，不需要重新生成和印刷二维码。\n\n同时可以查看二维码的扫描数据。\n\n### 2. 自定义二维码样式\n\n支持修改：\n\n- 颜色\n- Pattern\n- Eye 样式\n- Frame\n- Logo\n\n生成以后可以下载 PNG、JPG、SVG、EPS 等格式。\n\n所以除了网页使用，也比较适合包装、海报、宣传册等需要高清打印的场景。\n\n### 3. 多种二维码类型\n\n除了普通网址二维码，目前还可以创建包括：\n\n- URL\n- File\n- Document\n- vCard\n- Page\n- Form\n- Menu\n- App Store\n- Image\n- Audio\n- Video\n\n等不同类型的二维码。\n\n### 4. 短链接\n\nSupaQR 同时也是一个 URL Shortener。\n\n可以：\n\n- 创建短链接\n- 自定义短链接后缀\n- 使用自己的域名\n- 查看点击统计\n- 设置链接过期时间\n- 批量创建链接\n\n这样二维码和短链接的数据可以放在同一个后台管理。\n\n### 5. 文件分享\n\n可以直接上传：\n\n- 图片\n- PDF\n- Word\n- Excel\n- PPT\n- 视频\n- 音频\n- Markdown\n- 3D 文件\n\n等文件。\n\n上传以后可以生成分享链接或者二维码。\n\n同时支持密码、过期时间、下载限制和访问统计等功能。\n\n所以有时候甚至不需要自己先找地方托管 PDF，再生成二维码。\n\n### 6. 数据统计\n\n动态二维码和短链接都可以记录访问数据。\n\n对于线下宣传来说，我觉得这个功能比较有价值。\n\n因为以前印一张传单或者贴一个海报，基本不知道到底有没有人看。\n\n换成动态二维码以后，至少可以知道：\n\n**这张二维码有没有人扫描。**\n\n也可以进一步分析不同二维码、不同渠道和不同线下位置带来的访问效果。\n\n### 7. API\n\nSupaQR 也提供 API：\n\nhttps://docs.supaqr.com/\n\n如果需要批量生成二维码或者把二维码、短链接能力接入自己的系统，可以直接通过 API 完成。\n\n## 免费版\n\nSupaQR 有免费版本，不需要信用卡。\n\n目前免费计划可以创建动态二维码、静态二维码和短链接，并且二维码扫描次数不限。\n\n对于个人项目、小网站或者只是偶尔需要制作二维码的人，免费版本基本就可以直接开始使用。\n\n## 我比较想做的一件事\n\n我不太希望 SupaQR 最后只是变成一个：\n\n**“输入网址 → 下载二维码”**\n\n的工具。\n\n我更希望二维码成为连接现实世界和网页服务的一个入口。\n\n比如一家餐厅贴出的二维码，背后不只是一个 PDF；\n\n一家维修公司的车辆上贴出的二维码，背后也不一定只是官方网站；\n\n展会、产品包装、门店、设备、名片等线下场景，其实都可以通过二维码连接到不同的网页应用和后续操作。\n\n所以我现在也在继续尝试，让 SupaQR 从单纯的 QR Code Generator，慢慢变成：\n\n**Scan → Action → Track**\n\n即：\n\n**扫码 → 完成操作 → 记录结果**\n\n而不仅仅是“扫完跳到一个网址”。\n\n这个方向目前还在持续开发。\n\n## 一些适合 SupaQR 的场景\n\n目前我觉得比较典型的场景包括：\n\n- 餐厅菜单二维码\n- 产品包装二维码\n- PDF / 产品手册二维码\n- 展会宣传二维码\n- 名片 / vCard\n- Wi-Fi 二维码\n- App 下载二维码\n- 音频导览\n- 活动二维码\n- 短链接营销\n- 文件分享\n- 印刷品访问统计\n\n如果你的二维码以后可能修改内容，建议使用动态二维码；\n\n如果内容永远不会变化，用静态二维码就足够了。\n\n## 最后\n\n这是一个还在持续开发中的产品。\n\n地址：\n\n**https://supaqr.com/**\n\nQR Code Scanner：\n\n**https://the-qr-scanner.com/**\n\nAPI 文档：\n\n**https://docs.supaqr.com/**\n\n如果大家平时使用二维码、短链接或者文件分享工具时，有什么特别难用、特别贵，或者一直没有被解决的问题，也欢迎在 Issue 下面告诉我。\n\n我会认真看大家的反馈。\n\n谢谢大家！",
-    "created_at": "2026-09-28T03:21:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11962"
-  },
-  {
-    "id": 11961,
-    "title": "【文章自荐】原来几倍光学变焦是这么回事",
-    "content": "## 文章标题\n原来几倍光学变焦是这么回事\n\n## 文章链接\nhttps://victor42.eth.limo/post/3645\n\n## 内容简介\n关于焦距、光圈与手机多摄底层物理机制的极简科普（全文约 1100 字）：\n\n1. **光圈公式的物理本质**：光圈值 $f/x$ 就是字面除法（焦距除以孔径倍数），因此分母越小光圈越大；用相对值而非绝对孔径是为了让不同焦距镜头在同一数值下获得相同的曝光与景深。\n2. **手机“光学变焦”真相**：受限于机身物理厚度，手机并非专业相机的连续镜组伸缩，而是在几个固定焦距的独立定焦镜头之间切换，中间过渡倍率全靠算法数码裁切。\n3. **实机画质跳跃解谜**：以 OPPO Find X6 实测为例，解释了为什么 1x（主摄）清晰、2x（1x裁切）突然变糊、3x（切长焦）又变清晰、6x（长焦裁切）再次变糊的底层逻辑。揭开厂商“几倍光学变焦”宣传话术的本质。",
-    "created_at": "2026-09-28T03:00:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11961"
   }
 ]
