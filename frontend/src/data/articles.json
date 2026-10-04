@@ -1,5 +1,37 @@
 [
   {
+    "id": 12077,
+    "title": "推荐：agent-skills-en —— 5 个开箱即用的英文 Agent Skills（MIT）",
+    "content": "推荐一个开源仓库：**agent-skills-en**\n\n一套装进 Claude Code / Codex 就能用的英文 Agent Skills（不是教程，是开箱即用的 SKILL.md 文件，`npx skills add alapha888/agent-skills-en` 一行安装）：\n\n- `git-commit-message`：读 staged diff 生成 conventional commit 信息，主语 ≤50 字符、正文讲清为什么改\n- `code-review-checklist`：按正确性/安全/可读性/性能/测试五维评审，上限 10 条可执行意见，不纠结风格\n- `meeting-notes`：原始记录整理成结论先行的纪要（Decisions / Action items / Open questions 三桶，缺失信息标注不编造）\n- `tech-writing-proofread`：只校对不重写，六类检查项以 Original → Suggestion → Reason 清单输出\n- `deep-research-framework`：问题先行、信源分三级、独立信源交叉验证，报告末尾必须写明不确定性\n\n特点：\n\n1. 纯 Markdown、零依赖，MIT 开源；每个 skill 都带完整的输入输出示例；\n2. 已被 skills.sh、SkillMD、AI Agents Listing、AlternativeTo 收录，另有 5 个 awesome 清单已合并收录；\n3. 这 5 个 skill 来自日常工作中反复向 coding agent 重复交代的五件事，把工作流写一次、之后自动遵循。\n\n仓库：https://github.com/alapha888/agent-skills-en\n",
+    "created_at": "2026-10-04T19:43:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12077"
+  },
+  {
+    "id": 12076,
+    "title": "【自荐】Igra Station：让你的 AI 智能体和别人的智能体同场竞技",
+    "content": "自荐 [Igra Station 智能体竞技场](https://igrastation.com/zh)：一个公开的竞技场，AI 智能体在这里和别人的智能体、和真人、和机器人对弈，比赛全程直播，结果计入公开的 Elo 排行榜。\n\n现在有 34 款游戏：国际象棋、国际跳棋、黑白棋、五子棋、海战棋、坦克对战，也有几个专门为智能体设计的谈判和经济类游戏。已经下完 6400 多盘。\n\n智能体自己下棋时，会做出一些没人教过它们的事。下面这几件事都有服务器日志和桌边聊天记录为证：\n\n- 一个智能体一步真棋都走不出来，就在桌边聊天里给对手发了一句“e2e4，我赢了”。对手也照样回了一句，双方都宣布自己获胜。\n- 对局结束后，智能体们开始互相介绍自己是怎么搭起来的：一方讲自己的六个预测器，另一方就拿自己的四个模型来回应。这个习惯从一个智能体开始，后来传给了别的智能体。\n- 炮战里，一个比分落后的智能体没等连射三发就主动移动，一步棋同时清掉了自己的过热、废掉了对手的校射。它拿到的说明里，根本没有这种打法。\n\n接入很简单：起个名字就能拿到密钥，读游戏规则，开桌或者入座，然后循环“看局面、走一步”。可以用 REST，也可以把竞技场当作 MCP 服务器接入 Claude、Cursor 等客户端。现成的 Python 客户端在 [kotinder/arena-play](https://github.com/kotinder/arena-play)（MIT，无依赖），里面故意没有任何策略，默认只会随机走合法的一步——怎么下赢，是你自己的事。用引擎、求解器、别的模型都可以，只是不许攻击竞技场。\n\n还有一件事我觉得挺有意思：在公平排行榜上（同一位所有者旗下智能体之间的对局不计入），用 DeepSeek 的智能体里，成绩最好的一个排在第 11 名，前十名里还没有它们。不知道是模型的问题，还是接入它们的人还没认真写策略。欢迎接上你的 DeepSeek、Qwen、Kimi 或 GLM 来试试，看能不能进前十。\n\n不想一直在线的话，可以开“异步对局”：每步从几小时到三天，断线、重启都不影响。每盘结束后都有一个永久页面，可以逐步复盘。\n\n![Igra Station 中文首页](https://raw.githubusercontent.com/kotinder/arena-play/main/docs/landing-zh.png)\n\n![说明里没写的八个招数](https://raw.githubusercontent.com/kotinder/arena-play/main/docs/landing-zh-cases.png)\n\n此条由项目维护者账号提交。",
+    "created_at": "2026-10-04T18:26:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12076"
+  },
+  {
+    "id": 12075,
+    "title": "【工具自荐】CrayonInk：上传一张照片，生成可直接打印的黑白涂色页",
+    "content": "自荐一个在线 AI 照片转涂色页工具：**CrayonInk**。\n\n很多\"照片转线稿\"工具出来的结果更像素描：有大片灰色阴影、线条断断续续，打印出来没法给孩子涂，填色区域都不闭合。\n\nCrayonInk 想解决的是这个问题：上传一张宠物、家人或婚礼照片，直接生成线条闭合、纯黑白的涂色页，下载就能打印。\n\n主要支持：\n\n- **四种风格**：Classic、Anime、Kawaii、Mandala\n- **细节程度可调**：低龄儿童适合大色块，大孩子和成人可以选更细的线条\n- **PNG 或 PDF 下载**：PDF 有 A4 / US Letter 两种尺寸，没有水印\n- **涂色书**：把多张照片做成一本带封面的 PDF（付费）\n- 用 Google 账号登录即可使用，新账号赠送一次性免费额度，无需绑定银行卡\n\n网站地址：https://crayonink.com/?utm_source=ruanyf_weekly\n\n需要注意的是，网站目前只有英文界面。线稿由第三方 AI 服务（fal.ai）生成，原始照片最多保留 24 小时就会从服务器删除。\n\n这个工具比较适合给孩子做专属涂色页、把宠物或全家福做成礼物，以及婚礼、纪念日的定制涂色书。开发过程（模型对比、成本、Cloudflare Workers 上的搭建）写了一篇英文开发日志：https://dev.to/_df88eb1337eb23b75c94ba/build-log-turning-photos-into-printable-coloring-pages-with-seedream-on-cloudflare-workers-oe9 。欢迎试用和反馈。\n\n一个在线照片转涂色页工具，上传宠物、家人或婚礼照片，生成线条闭合的黑白涂色页，可下载 PNG 或 A4 / Letter PDF 直接打印。\n\n<img width=\"1517\" height=\"915\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/be21276f-8c19-4c00-94eb-cfc427353ca5\" />\n\n<img width=\"1011\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/83df8e72-007b-4921-aa76-acd6c3c36b61\" />",
+    "created_at": "2026-10-04T18:12:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12075"
+  },
+  {
+    "id": 12074,
+    "title": "【开源自荐】Phone Use：让 AI Agent 操作 Android 手机，无需 Root 或 ADB",
+    "content": "大家好，我是 Phone Use 的作者，最近把这个项目开源了，想自荐给周刊。\n\n项目地址：https://github.com/nidhoggfgg/PhoneUse\n\nPhone Use 把已有的 AI Agent 通过 Skill 或 MCP 接到 Android 手机上，让它读取屏幕、点击、滑动、输入文字和切换应用。无需 Root、ADB，也无需为每个 App 单独适配，采用 MIT 许可证。\n\n### 可以做什么\n\nREADME 中有实际使用案例：让 Agent 浏览闲鱼，整理 29 条内存报价并核对商品详情；也有操作 Roguelike 游戏、探路打怪的案例。\n\n![AI 浏览闲鱼并整理内存报价](https://raw.githubusercontent.com/nidhoggfgg/PhoneUse/main/docs/images/secondhand-shopping.webp)\n\n### 怎么试用\n\n1. 从 [Releases](https://github.com/nidhoggfgg/PhoneUse/releases/latest) 下载 APK，安装到 Android 11+ 手机并开启无障碍权限。\n2. 手机与运行 Agent 的电脑连接到同一 Wi-Fi，或其他可互通的网络；Agent 的执行环境需要 Python 3.10+。\n3. 复制 App「连接 AI」中的提示词给 Agent，核对双方显示的八位码，在手机上授权后即可使用。\n\n支持 Skill、MCP 和 Python CLI，也可连接多台手机。Skill／MCP 使用 HTTPS，授权可在手机端撤销。操作期间需要保持手机亮屏、解锁；具体任务效果取决于所用 Agent 和 App 界面。\n\n[中文说明与更多案例](https://github.com/nidhoggfgg/PhoneUse/blob/main/README.zh-CN.md) · [接入文档](https://github.com/nidhoggfgg/PhoneUse/blob/main/docs/integrations.zh-CN.md)\n\n欢迎试用，也欢迎反馈不同机型、App 和 Agent 的兼容情况。",
+    "created_at": "2026-10-04T18:09:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12074"
+  },
+  {
     "id": 12073,
     "title": "【工具自荐】Shipvela Deployment Planner：在浏览器中检查静态站点发布配置",
     "content": "我是 Shipvela 创始人 Stefan Mitrovic，想推荐我们做的一个免费浏览器工具：**Shipvela Deployment Planner（部署配置规划器）**。本文由 Codex 协助整理和提交。\n\n入口：https://shipvela.com/tools/deploy-check\n\n写完一个 React/Vite 或静态网站后，发布前需要确认构建命令、输出目录和渲染方式。这个工具根据项目类型，或者用户在本地选择的 `package.json`，生成发布配置建议和 Shipvela CLI 命令，帮助发现不支持的配置。\n\n- 支持 React/Vite、普通 HTML、Next.js 静态导出和 Astro 静态站点的配置规划。\n- 无需账号，免费使用；可选的 `package.json` 在浏览器中读取，不上传文件。\n- 输出构建设置、输出目录和 CLI 命令；不执行构建，也不直接部署网站。\n- 适合第一次发布前检查设置，或查看不同框架的静态发布方式。\n\n例如，Vite 项目会给出 `npm run build` 和 `dist` 的发布配置；普通 HTML 项目会给出不需要构建的文件夹发布方案。工具核心已用四种静态项目配置和错误 JSON 做过检查。\n\n工具界面目前为英文。Shipvela 是闭源托管服务，本文没有将它描述为开源项目；规划器本身无需注册，而实际使用 Shipvela 托管需要账号。托管有免费 Hobby 档（3 个项目、每月 20 次发布）以及付费档，不能把规划器的免费使用理解为所有托管功能免费。\n",
@@ -766,37 +798,5 @@
     "created_at": "2026-09-28T11:51:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11978"
-  },
-  {
-    "id": 11977,
-    "title": "【开源自荐】SeenX: 一个X加载即保存的浏览器插件，让你不会再错过没有保存的 X 价值内容",
-    "content": "做了一个完全开源、免费的X浏览记录与搜索的插件。再也不用担心帖子没有收藏而找不到了。\n\n插件：https://chromewebstore.google.com/detail/seenx/jobkcdoacfikdggfgnmhicmmjokonaaf\nGithub：https://github.com/wildwind0/SeenX\n\nX（tweet） 上看不了浏览记录，有点难受。经常各种有价值的帖子和文章光顾着阅读，忘记收藏了，一不留神就被刷掉，后面想找都不好找。安装这个插件，浏览 X 无感知，刷过的就会被记录。当然也可以设置，只有点击的才被记录，按需设置。\n\n✅纯本地化优先 (100% Local-First)\n✅极致隐私与安全 (Zero Telemetry & Private)\n✅100% 完全免费 & 开源透明 (Free & Open Source)\n\n<img width=\"384\" height=\"1294\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a41b9f6f-5e4e-4ae1-815e-67c87cb36bff\" />\n\n<img width=\"2546\" height=\"1295\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a4e8754-e56d-4c22-9884-28c48ee6fe50\" />\n\n<img width=\"510\" height=\"904\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cf55a645-47a0-4856-98e2-5923fe15b544\" />",
-    "created_at": "2026-09-28T11:26:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11977"
-  },
-  {
-    "id": 11976,
-    "title": "【开源自荐】tlgr：为脚本和 AI Agent 设计的 Telegram 命令行工具",
-    "content": "tlgr 是一个在终端里完整操控个人 Telegram 账号的命令行工具，专为脚本和 AI Agent 设计。\n\n它以普通用户身份（MTProto，不是 Bot API）登录，可以收发和搜索消息，管理群组、频道、联系人、媒体、投票和 Stories。所有命令输出统一的 JSON 和稳定的退出码；后台守护进程能把新消息等事件通过带签名的 Webhook 推送给你的 Agent，不用轮询。仓库里还带了一个 Agent Skill，可以直接装进 Claude Code、Codex、Cursor 或 OpenClaw。\n\n- 源码：https://github.com/tlgrcli/tlgr （MIT 协议）\n- 安装：`pipx install tlgr-cli`\n\n```bash\ntlgr catchup --json                       # 所有未读会话和最新消息，不发已读回执\ntlgr message send @alice \"马上到\" --json    # 发消息\n```\n",
-    "created_at": "2026-09-28T09:57:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11976"
-  },
-  {
-    "id": 11975,
-    "title": "【开源自荐】mpc-plus：一份配置文件，发布多平台多环境小程序",
-    "content": "# [mpc-plus](https://github.com/pkc918/mpc-plus)：一份配置文件，管好多平台小程序上传\n\n小程序多端发版时，常见做法是：**每个平台一套脚本、一堆零散的 JSON/CLI 参数**，本地能跑，CI 里又要再抄一遍；AppID、私钥、Token 写死在仓库里也不安心。\n\n**[MPC Plus](https://github.com/pkc918/mpc-plus)** 想解决的是：**把「读配置 → 解析多平台 / 多环境 → 执行上传」收成一条清晰链路**，尤其适合 **uni-app / Taro 等多端模版**：构建产物分目录，上传逻辑却可以在 **一个文件里统一描述**。\n\n---\n\n## 和其它上传工具不太一样的点\n\n| 常见做法 | MPC Plus |\n| --- | --- |\n| 各平台各写脚本，参数散落在命令行 | **一个 `mpc.config.ts`**，结构、平台、环境一眼能看 |\n| 敏感信息容易进仓库 | 配置里用 **`process.env`**，凭据放 **`.env.*` 或 CI 密钥**，对隐私更友好 |\n| 一次只传一个端 | **`platforms` 下多平台 × 多 `env`**，可筛选，也可 **一次跑完全部** |\n| CI 和本地两套逻辑 | 同一套配置：**CI 只注入环境变量**，本地用 `.env.prod` 等文件 |\n\n核心思路：**配置是 TypeScript，可读、可类型检查；运行时按 `--env` 加载对应 `.env`，再解析出每个平台、每个环境的上传目标**。\n\n---\n\n## 已支持平台\n\n- [x] 微信\n- [x] 抖音\n- [x] 支付宝\n- [x] 小红书\n\n---\n\n## 配置示例\n\n```ts\nimport { defineConfig } from \"@mpc-plus/cli\";\n\nexport default defineConfig({\n  project: {\n    root: \"./dist/build/mp-weixin\",\n  },\n\n  release: {\n    version: \"1.0.0\",\n    description: \"Release v1.0.0\",\n  },\n\n  platforms: {\n    wechat: [\n      {\n        env: \"dev\",\n        appid: process.env.WX_APPID ?? \"\",\n        privateKeyPath: process.env.WECHAT_PRIVATE_KEY_PATH ?? \"./private.key\",\n      },\n      {\n        env: \"prod\",\n        appid: process.env.WX_APPID ?? \"\",\n        privateKeyPath: process.env.WECHAT_PRIVATE_KEY_PATH ?? \"./private.key\",\n      },\n    ],\n    // douyin / alipay / xhs … 同一文件里继续加\n  },\n});\n\n```\n\n本地 `.env.prod` 或 CI 里配置 `WX_APPID`、`WECHAT_PRIVATE_KEY_PATH` 等即可，**不必把密钥写进配置文件本身**。\n\n---\n\n开源项目，欢迎试用、提 Issue / PR。如果你也在做多端小程序模版或 CI 发版，欢迎交流。\n",
-    "created_at": "2026-09-28T07:32:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11975"
-  },
-  {
-    "id": 11973,
-    "title": "【网站自荐】Hysen Labs：跟踪 9 周 GitHub 星标增速榜，64% 的项目只上榜过一次",
-    "content": "## 网站地址\n\n- 每周星标增速 Top 10：https://hysenlabs.com/zh-cn/weekly\n- 近 30 天增速榜（附 CSV 下载）：https://hysenlabs.com/zh-cn/data/star-growth\n- 主站：https://hysenlabs.com/zh-cn\n\n## 一个数据发现\n\n我给大约 1.9 万个开源项目做每日 GitHub 星标快照，每周发布一次「星标增长最快的 10 个项目」。每周一页，发布后不再修改，任何人都能复核。\n\n到现在有 9 个完整周（2026-07-27 至 09-21）：\n\n- 90 个名额只由 47 个不重复的项目填满，其中 30 个（64%）只上榜过一次。\n- 相邻两周平均只有 4.9 个项目重合。\n- 连续在榜最久的是 mattpocock/skills、stablyai/orca、DietrichGebert/ponytail，都是 7 周。三个在同一周（09-14）一起掉榜，stablyai/orca 下一周又回来了。\n\n也就是说，「本周 GitHub 最火」这类榜单上的项目，大部分只有一周的热度。\n\n## 网站是什么\n\nHysen Labs 解读开源和 AI 项目，每篇从项目自己的 GitHub 仓库写起，主要回答两个问题：这个项目还在维护吗？它的许可证允许你怎么用？内容以英文为主，部分有中文、日文、德文、法文版本。\n\n## 口径与局限\n\n每周取最接近周一和周日边界的快照（相差 36 小时以内），缺快照的项目直接排除，不做估算；已归档和镜像仓库不计入。样本只有 9 周，项目池也偏 AI 和开发者工具，不代表整个 GitHub。\n\n我是网站作者。",
-    "created_at": "2026-09-28T06:38:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11973"
   }
 ]
