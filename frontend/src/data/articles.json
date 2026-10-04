@@ -1,5 +1,21 @@
 [
   {
+    "id": 12061,
+    "title": "【开源自荐】beautiCode：给 AI 编程客户端换上动态壁纸和视频背景",
+    "content": "项目地址：https://github.com/starsstreaming/beautiCode\n\n![beautiCode](https://github.com/user-attachments/assets/d010a8ce-b131-47ef-a1aa-3a473290a4f8)\n\nbeautiCode 是一个本地换肤工具，可以把图片、视频或带雨丝、水波特效的动态壁纸，放进 Cursor、Codex Desktop、DeepSeek Harness、WorkBuddy 和豆包的对话界面背后，代码、输入框和按钮照常工作。\n\n演示视频：\n\nhttps://github.com/user-attachments/assets/f1b52d41-aea4-4330-80e1-5a90c344360e\n\n**亮点**\n\n- 一个工具同时支持五个 AI 编程客户端，一条命令接管本机所有已装客户端\n- 内置皮肤中心，在线浏览、一键安装审核过的皮肤；也能导入自己的图片（JPG / PNG / WebP / AVIF）和视频（MP4 / MOV）\n- 动态特效：视频循环播放，「画窗」等预设在静态图上叠加雨丝和光效；进入工作状态后自动压暗（DeepSeek Harness / Codex / WorkBuddy），保证文字可读\n- 安全：只通过本机调试端口或官方插件接口注入，不改客户端安装文件，失败自动回滚，可随时干净卸载\n\n**安装**\n\n```\nnpm install -g beauticode-desktop --foreground-scripts\nbeauticode-desktop all install\n```\n\n只用 DeepSeek Harness：`npx beauticode-dsh`\n\n**说明**：目前桌面端主要支持 Windows（WorkBuddy 同时支持 macOS），MIT 协议。本人是项目作者。\n\n我们每天花很多时间面对代码，beautiCode 想让这些时间更像生活，而不只是等待完成的任务。\n",
+    "created_at": "2026-10-04T05:26:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12061"
+  },
+  {
+    "id": 12060,
+    "title": "【开源自荐】GlobalOverview：把 RSS 阅读、AI 出题、单词本塞进一个完全本地的英语学习 App",
+    "content": "### 项目介绍\n\n在使用知名 `rss` 阅读器 `readyou` 的时候，有很多优质的英文源，想要通过其锻炼英语能力，又苦与没有与其相适配的练习，所以开发了这个软件 **GlobalOverview**。\n\n**GlobalOverview** 基于 `flutter` 开发，主要用于解决这些问题：\n\n- 阅读英语文章很方便，但是要真正的时文带练习的还得买各类报刊。\n- 读英文外刊时遇到的生词、想做的题、做错的题没法沉淀成自己的数据，无法形成完整的学习闭环。\n- 常规的报刊没有足够的激励，对学习积极性的要求过高。\n\n### 项目截图\n\n<img width=\"540\" height=\"960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b12bda53-2074-4a14-b81e-a8af43c315af\" />\n<img width=\"540\" height=\"960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca39bc00-2e63-4ca2-9aae-add035d56100\" />\n<img width=\"540\" height=\"960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1c4c7ce3-4357-44b8-8f4f-5e710fe25de1\" />\n<img width=\"540\" height=\"960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c3dbceb2-54a4-4245-b8b8-664b49396c16\" />\n<img width=\"540\" height=\"960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/427f9e89-bf43-408c-9ad5-a1a3db85520f\" />\n<img width=\"540\" height=\"960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2f47faaf-8214-4a25-bfc9-0986e66b86e3\" />\n<img width=\"540\" height=\"960\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0570f244-d9b8-4743-927e-37203aeda71f\" />\n\n### 功能列表\n\n#### 订阅与阅读\n- 内置 `86` 个 `RSS` 源，分了 `17` 个分类，首次默认订阅 `14` 个，支持自行导入源\n- 抓取保护：自定义 `UA` + 自定义请求头；`403 / 429` / 付费墙 / `Cloudflare` 不入库\n\n#### 沉浸式阅读器\n- 字号 / 行距本地记忆，点词查词、长按取句、整段翻译\n- 正文插图自动重试降级，调用系统 `TTS` 朗读全文 / 选句 / 单词卡\n\n#### AI 精选与出题\n- 支持 `LLM` 精选文章，选取文章中好阅读的部分 ，可随时切回原文\n- `13` 种题型（完形 / 阅读 / 语法填空 / 概要写作 / 英译中 / 中译英…）\n- 完全自定义的 `LLM` 出题，可以根据用户要求对题目考点，方面，难度，题量等等进行定制。\n- 一屏一题左右滑动，\"回到原文\"对照，交卷后 LLM 批量评分出解析\n\n#### 错题本与单词本\n- 阅读点词自动沉淀，记录出现次数与原句出处\n- 做错自动汇入错题本，可独立重做 / 导出 PDF\n- 内置复习评分（忘记 / 模糊 / 记得）\n\n#### 成就与打卡\n- 连续天数、每日目标、15 枚成就徽章。\n\n#### 隐私与安全\n- 完全本地：无账号、无服务端（qwq我们也没钱搞服务器），数据只存本地 sqflite\n- 密钥安全：`LLM api key` 存` Android Keystore`\n\n### 项目地址\n[https://github.com/None-Ptr/GlobalOverview](https://github.com/None-Ptr/GlobalOverview)\n\n### 未来展望\n虽然我们已经接入了 `LLM`，但是仍有一些不足。例如我们虽然设置了成就系统，但一些成就的设计不是很合理，或激励效果较弱。在未来，我们也会支持让 `LLM` 实现智能分析用户学习成果、推荐用户阅读篇目的效果，期待有更多贡献者的参与。",
+    "created_at": "2026-10-04T02:22:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12060"
+  },
+  {
     "id": 12059,
     "title": "【自荐】摊账：市集摊主的免费单场经营结余试算页",
     "content": "摊账是一款面向市集摊主的免费单场经营结余试算页。收摊时容易把净收款当作利润，它把售出商品成本、损耗和场地等费用分开，帮助判断这一场剩下多少钱。\n\n链接：https://tanzhang-market-kit.hypebeast2k17.chatgpt.site\n\n无需注册，可在网页输入数字试算，也提供免费盘点 CSV。页面示例均为虚构数据；经营结余不等于现金流，未录入成本不会自动计入。当前投稿仅推荐免费网页功能。\n\n这是本人项目的自荐，欢迎指出计算口径或使用步骤的问题。\n",
@@ -782,21 +798,5 @@
     "created_at": "2026-09-28T03:00:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11961"
-  },
-  {
-    "id": 11960,
-    "title": "【项目自荐】博客时光机：在一台 Macintosh 里翻看博客历史",
-    "content": "我给自己的 Hugo 博客做了一个「时光机」。\n\n每次博客发布后，都会将静态站点保存到 IPFS，并记录对应的 CID。\n\n现在把这些历史快照重新整理成可视时间线，放进一台复古 Macintosh 里，可以直接翻看博客过去的样子。\n\n体验地址：\n\nhttps://liudon.com/time/\n\n效果图：\n\n![博客时光机效果](https://liudon.com/posts/hugo-ipfs-time-machine-v2/time-machine-history.png_720x.webp)\n\n动图略大，加载会慢一些。\n\n![博客时光机动态效果](https://liudon.com/blog-timemachine-show.gif)\n\n项目实施过程的记录：\n\nhttps://liudon.com/posts/hugo-ipfs-time-machine-v2/\n\nhttps://liudon.com/posts/hugo-ipfs-time-machine-v2-visual-index/",
-    "created_at": "2026-09-28T02:31:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11960"
-  },
-  {
-    "id": 11959,
-    "title": "【工具自荐】kdpbook.io：用对话描述一本书，生成亚马逊 KDP 可上传的图书文件",
-    "content": "网址：https://kdpbook.io/?utm_source=ruanyf-weekly&utm_medium=github\n\nkdpbook.io 是一个面向亚马逊 KDP（Kindle Direct Publishing）自出版的 AI 图书工作室。在对话里描述想要的书（也可以导入自己的书稿），它会规划、写作、配图（角色参考图在每张插图中复用，保持形象一致）并排版，然后导出 KDP 要求的文件：内页 PDF、按最终页数计算书脊的全包封面 PDF、Kindle 电子书（EPUB）以及一份上架信息表（书名、简介、7 个关键词、分类）。思路有点像书籍版的 vibe coding：像在 Lovable 里描述一个应用那样，描述一本书。\n\n主要功能：\n- 36 种图书类型（8 大类），包括绘本、涂色书、谜题书、日记本、小说、非虚构和漫画；40 种插画风格，也可以用文字或参考图自定义风格。\n- 支持 34 种 KDP 语言、16 种标准平装开本（可自定义）和 5 种精装开本；开本、出血、边距和书脊宽度按 KDP 规则由代码计算。\n- 页面编辑器：实时预览、AI 改写、重绘插图、持续的 KDP 预检和 3D 书籍预览。\n- 免登录的免费工具：KDP 书脊宽度、封面尺寸（附模板）、印刷成本（14 个亚马逊站点）和版税计算器：https://kdpbook.io/kdp\n\n价格：注册赠送 2000 积分（大约够做一本 32 页的绘本），无需信用卡。免费方案导出的文件带 \"kdpbook.io preview\" 水印，不能用于销售；付费方案每月 25 美元起，导出无水印文件并附商用授权。另外提醒：KDP 要求上传时披露 AI 生成的文字和图片。\n\nkdpbook 是独立产品，与亚马逊没有关联。\n\n利益相关：我是 kdpbook.io 的开发者 Arsène Huot（法国巴黎的独立开发者），本条为自荐，供编辑试用和评估。\n",
-    "created_at": "2026-09-27T22:54:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11959"
   }
 ]
