@@ -1,5 +1,13 @@
 [
   {
+    "id": 12078,
+    "title": "【开源自荐】PaperFold：从章节地图逐层缩放到原文的 arXiv 论文阅读器",
+    "content": "自荐一个刚开源的论文阅读器 **PaperFold**。我是作者 Xia Chen，目前在 TUM 做人机对齐方向的博士后研究。\n\n读论文时，经常需要来回确认一段话在整篇论证中的位置。我做了一个可以逐层折叠、展开的阅读界面：先把论文缩成章节地图，再展开关心的部分，直到看到每个原文段落。\n\n- 项目及缩放演示：https://github.com/chenxiachan/paperfold\n- 免安装体验：https://chenxiachan.github.io/paperfold-gallery/\n\n阅读器有五档：全文、逐字摘取的关键句、要点及理由、一句话提要、章节主题地图。前两档使用作者原文，后三档由模型生成，以不同字体区分。缩放时，保留下来的词会移动到新位置；也可以只展开一个段落，其余部分继续折叠。提问后的回答会链接到所引用的段落。\n\nPython 后端解析 arXiv 的 HTML，浏览器前端负责阅读和缩放；代码采用 Apache-2.0 许可。生成新论文需要该论文有 arXiv HTML 版本，并连接一个模型。生成后的论文可导出成独立 HTML 文件。\n\n体验页提供数学、机器学习、医学等八个领域的论文，均标注了作者及 Creative Commons 许可，无需注册或配置模型即可体验阅读。AI 生成的提要仍可能出错，可以随时展开原文核对。\n\n目前是早期版本，欢迎反馈解析失败的论文，以及长文阅读时的缩放、定位问题。\n",
+    "created_at": "2026-10-05T00:07:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12078"
+  },
+  {
     "id": 12077,
     "title": "推荐：agent-skills-en —— 5 个开箱即用的英文 Agent Skills（MIT）",
     "content": "推荐一个开源仓库：**agent-skills-en**\n\n一套装进 Claude Code / Codex 就能用的英文 Agent Skills（不是教程，是开箱即用的 SKILL.md 文件，`npx skills add alapha888/agent-skills-en` 一行安装）：\n\n- `git-commit-message`：读 staged diff 生成 conventional commit 信息，主语 ≤50 字符、正文讲清为什么改\n- `code-review-checklist`：按正确性/安全/可读性/性能/测试五维评审，上限 10 条可执行意见，不纠结风格\n- `meeting-notes`：原始记录整理成结论先行的纪要（Decisions / Action items / Open questions 三桶，缺失信息标注不编造）\n- `tech-writing-proofread`：只校对不重写，六类检查项以 Original → Suggestion → Reason 清单输出\n- `deep-research-framework`：问题先行、信源分三级、独立信源交叉验证，报告末尾必须写明不确定性\n\n特点：\n\n1. 纯 Markdown、零依赖，MIT 开源；每个 skill 都带完整的输入输出示例；\n2. 已被 skills.sh、SkillMD、AI Agents Listing、AlternativeTo 收录，另有 5 个 awesome 清单已合并收录；\n3. 这 5 个 skill 来自日常工作中反复向 coding agent 重复交代的五件事，把工作流写一次、之后自动遵循。\n\n仓库：https://github.com/alapha888/agent-skills-en\n",
@@ -790,13 +798,5 @@
     "created_at": "2026-09-28T12:02:54Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11979"
-  },
-  {
-    "id": 11978,
-    "title": "【开源自荐】seiso：给 AI 写的项目文档做 lint，查出对话残留、过时版本号和失效链接",
-    "content": "**项目地址：** https://github.com/scarletkc/seiso\n\n现在项目里的 Markdown 文档越来越多是 AI 写的，写的速度远远快过人审的速度。更麻烦的是，Claude Code、Codex 这类 coding agent 在下一次改代码时，又会把这些文档当成上下文读回去。文档里一个过时的版本号，或者一份字段列表在三处副本里只改了一处，人会被误导，agent 也会照着错的继续改。而且 AI 写文档，翻来覆去犯的就是那几种错。\n\nseiso 是一套项目文档的 Markdown 约定，加上按这套约定做检查的 linter，用 Rust 写的。思路类似 rustfmt 统一了 Rust 的代码格式，各个项目共用同一套规则，不用每家自己重新商量。项目要做的主要是把自己的文档对应到类型上，`seiso init` 会给出一份初始配置。\n\n约定的核心是这几条。\n\n- 每篇文档声明一种类型，比如 `howto`、`reference`、`adr`，只写这种类型该写的内容。操作指南只给步骤，为什么这样设计放进 ADR。\n- 每个事实只有一个归属页面，其他页面链接过去，不再复述一遍。\n- 长期存在的页面不记录比页面本身变得更快的值，比如版本号、部署状态和数量。\n- 成稿不对提需求的人说话，也不交代自己是怎么写出来的。\n- 工具判断不了的例外要写明理由，没写理由的例外本身就算违规。\n\n下面是对一篇中文部署文档的实际检查结果：\n\n```text\n$ seiso check --preview\ndocs/deploy.md:7:7: VOX001 This phrase refers to the requester of an earlier conversation.\n   |\n 7 | 好的，下面是按你的要求更新后的部署指南。\n   |\n   = suggestion: State the document's instructions or facts directly for its readers.\n\ndocs/deploy.md:9:12: STL001 This sentence pairs a current-state marker with a value that can change.\n   |\n 9 | 当前生产环境运行的是 2.3.1 版本。\n   |\n   = suggestion: Link to the source that owns the value, or state a lasting requirement with its constraint.\n\ndocs/deploy.md:14:5: LNK001 Local link target \"config.md\" does not exist in the workspace.\n    |\n 14 | 配置项见[配置说明](config.md)。\n    |\n   = suggestion: Update the path or restore the target; paths resolve from this document's directory, or from the workspace root when they start with /, and seiso does not add .md or index.md.\n\nFound 3 diagnostics.\n```\n\n每条诊断都会给出位置和修改建议，agent 只看 seiso 的输出就能修掉大部分问题。遇到需要人来判断的情况，比如两个页面到底哪个拥有某个事实，诊断会直接点出要做的决定。seiso 不去猜一段话像不像机器写的，格式和拼写也留给其他工具。\n\n我对误报比较保守。新规则一律先进 preview，要在固定版本的真实仓库语料上攒够至少 100 条逐条人工复核的留出集诊断，精度达到 95% 以上，才会升级成默认启用的稳定规则。所以现在默认只跑文档类型声明、本地链接目标和抑制注释这几条稳定规则，上面例子里的对话残留和当前状态值检查还在 preview，要加 `--preview` 才会开启。宁可漏报，也不给没有依据的诊断。\n\n它可以接进 Claude Code 的 PostToolUse hook。agent 每次用 Write 或 Edit 改完一个 Markdown 文件，seiso 就检查这个文件，发现问题时用退出码 2 把诊断直接反馈给 Claude，让它当场修掉。另外也支持 pre-commit 和 CI。中文、英文和日文文档都能检查。\n\n```sh\n# 三种安装方式任选一种\ncargo install seiso\nuv tool install seiso    # 或 pipx install seiso\nnpm install -g @scarletkc/seiso\n\n# 在仓库根目录\nseiso init\nseiso check\n```\n\nPyPI 和 npm 包自带主流平台的预编译二进制，不需要装 Rust 工具链。MIT 协议。\n",
-    "created_at": "2026-09-28T11:51:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11978"
   }
 ]
