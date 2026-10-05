@@ -1,5 +1,69 @@
 [
   {
+    "id": 12094,
+    "title": "【开源自荐】SunoMCP：在 AI 对话里生成音乐，并取回最终音频",
+    "content": "我是 AceDataCloud 项目方，自荐 [SunoMCP](https://github.com/AceDataCloud/SunoMCP)，一个 MIT 开源的 MCP 服务。它让 Claude、VS Code 等支持 MCP 的客户端直接生成音乐、写歌词、延长或翻唱已有作品，并通过任务查询取回最终结果。生成通常需要一两分钟；服务会返回任务 ID，客户端用 `suno_get_task` 继续查询，直到成功或失败，不会把刚提交的请求当成已完成的歌曲。\n\n**实际成品**：我们用托管 MCP 输入“Gentle lo-fi instrumental background for a coding tutorial, warm electric piano, soft steady drums, no vocals.”，选择 `chirp-v5-5` 和纯音乐模式。任务约 121 秒后完成，返回两首 MP3：[第一首（约 127 秒）](https://platform3.cdn.acedata.cloud/suno/a5c058a6-3cba-4b00-b735-e5c8b3f5856e.mp3)、[第二首（约 161 秒）](https://platform3.cdn.acedata.cloud/suno/af98031f-1502-499d-90fa-293592bf87bd.mp3)。这次生成和取回发生在 2026 年 9 月；截至 2026 年 10 月 6 日，两个音频链接仍可访问。\n\n**如何试用**：根据[项目 README](https://github.com/AceDataCloud/SunoMCP#quick-start)获取 API Token，把 `https://suno.mcp.acedata.cloud/mcp` 加到支持远程 MCP 的客户端；也可在 Python 3.10+ 环境运行 `uvx --from mcp-suno==2026.10.5.0 mcp-suno`，作为本地 stdio MCP 服务。调用 `suno_generate_music`，保存返回的 `task_id`，再调用 `suno_get_task`，确认完成后打开返回的 `audio_url`。README 有各客户端配置示例。\n\n项目并非 Suno 官方服务。**MCP 软件开源，生成所用的 AceDataCloud API 收费**：2026 年 10 月 6 日公开目录中，这种普通生成请求为 0.56 Credits/次，通常返回两首；按 100 Credits/$15 套餐约 $0.084/次，按 40 Credits/$7 套餐约 $0.098/次。套餐是预付额度，美元数字是按套餐汇率换算的单次消耗，并非一笔独立的单次付款。账户折扣、套餐与价格可能变化，请以[实时服务价格](https://platform.acedata.cloud/services/suno)和实际扣费为准。\n",
+    "created_at": "2026-10-05T17:22:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12094"
+  },
+  {
+    "id": 12093,
+    "title": "【开源自荐】mu：带判定内核的编程 Agent，日常判断交给小模型",
+    "content": "编程 Agent 每一轮都要做不少和代码无关的小判断：哪段工具输出该进上下文，一条被规则拦下的命令是不是用户要的，网页里有没有冲着 AI 的指令，\"做完了\"到底验证过没有。这些交给大模型，花 token 也分散注意力；交给写死的规则，又经常判错。\n\nmu 把它们交给一个小而快的判定模型 Jev：38 个决策点，每个只问一个有边界的问题，代码按答案行事，大模型只管干活。每个决策点都能单独设成生效、只记录或关闭，每次判定都写进本地账本，随时可查。判定模型也可以换成本地模型或任意大模型。\n\n作者自己测过：7 份真实的失败测试日志，按完全重复折叠，无损省下 51% 的字符；按目标让 Jev 挑测试日志，删掉 40% 到 46%，必需的行一行没丢。\n\n有命令行和桌面端，基于 pi 与 AionUi，MIT 协议（桌面端沿用 AionUi 的 Apache-2.0）。还在预发布阶段。\n\n- 源码：https://github.com/qybaihe/mu\n- 命令行：`npm i -g mu-agent`\n- 桌面端（macOS、Windows、Linux）：https://github.com/qybaihe/mu/releases\n",
+    "created_at": "2026-10-05T17:16:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12093"
+  },
+  {
+    "id": 12092,
+    "title": "【工具自荐】ModLab：把游戏 Mod 想法整理成可验收的项目简报",
+    "content": "我是 B.Liu，做了一个免费的游戏 Mod 项目简报生成器：\n\nhttps://modlabguides.online/brief-builder\n\n它解决的是开始写代码前需求不够具体的问题。填写游戏、版本、目标和限制后，生成一份可以复制或下载的文本简报，把版本核对、备份、回退和验收条件写进去，方便交给 coding agent。无需注册，简报在浏览器本地生成。\n\n一个使用例子：把“做一个更有趣的 Mod”缩小为“只改一个可观察的效果，记录当前游戏版本，用单独的测试存档验收，失败后可以恢复”。这不是自动生成或安装 Mod 的服务。\n\n网站也整理了 Universal Modder 的安装与首次制作流程：\nhttps://modlabguides.online/guides/install-universal-modder\n\n资料以开源项目的现有说明为依据：\nhttps://github.com/rehan-remade/universal-modder\n\nModLab 是独立工具和指南，不是上游项目的官方网站，也不宣称已在每个游戏或版本中完成兼容性测试。欢迎读者试用并指出不清楚或不准确的地方。",
+    "created_at": "2026-10-05T16:17:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12092"
+  },
+  {
+    "id": 12091,
+    "title": "【开源自荐】iphone-use：让 AI agent 操作你的真 iPhone",
+    "content": "很多 App 没有 API：银行、支付、健康、聊天。iphone-use 让 AI agent 直接操作一台真 iPhone：屏幕读成文字，点、滑、输入，操作没生效会直接说。\n\nMac 上的守护进程通过 USB 驱动手机上的 WebDriverAgent，对外提供 HTTP 接口和 21 个工具的 MCP server（Claude Code 等可直接接），也能在浏览器或 iOS App 里远程控制。禁止截屏的支付类 App 会按控件树画出线框图；做过一次的任务可以录成 flow，一条命令重放，不经过模型。\n\n开源（MIT）：https://github.com/leeguooooo/iphone-use\n2 分钟演示：https://github.com/user-attachments/assets/a9947152-6655-4509-ac1e-49953a3cea70\n",
+    "created_at": "2026-10-05T16:01:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12091"
+  },
+  {
+    "id": 12090,
+    "title": "【软件自荐】LocHub：在 Unreal Engine 编辑器里用你自己的 AI 做游戏本地化，支持中文源语言",
+    "content": "这是 LocHub 作者的自荐，文字由 AI 辅助整理。\n\nLocHub 是一个 Unreal Engine 5.6–5.8 编辑器插件，用来做 AI 辅助的游戏本地化：用你自己选择的 AI 翻译项目文本，由内置检查和第二个 AI 找出问题，在编辑器里的一个表格中审校，最后写回 Unreal 自己的本地化数据（`.archive`、编译后的 `.locres`）。它不替代 Unreal 的本地化系统，随时可以停用。\n\n![审校队列](https://github.com/DmVergasov/LocHub/raw/main/Docs/images/review_queue.gif)\n\n从 1.2.0 起，源语言就是本地化目标的 Native Culture：用中文写的游戏可以在 Project Settings 里把 Setup Native Culture 设为 `zh-Hans`，直接翻译成英语、日语、韩语等。\n\n### 能做什么\n\n- 自带密钥接入 Claude、OpenAI、Gemini、DeepSeek、Grok，或任何 OpenAI 兼容接口（Ollama、LM Studio、vLLM 等）。使用本地模型时，文本不离开你的电脑。\n- 格式参数（`{0}`、`{PlayerName}`）、各语言的复数形式和富文本标签在代码里校验两次：LocHub 一次，写入前 Unreal 自带的校验器再一次。有错的译文无法通过审校，手动也不行。\n- 可选的第二个 AI 担任评审，检查含义、术语和语气，按严重程度标注问题并给出修改建议。\n- 每条文本带上下文翻译：来源资产或 C++ 文件、开发者备注、同一界面已翻译的文本、项目简介和风格指南。\n- 术语表与禁止翻译词、UI 长度检查、导出 XLIFF / CSV 给人工译者。\n- 运行前估算费用，并可设置花费上限（Max USD）。人工修改永远不会被 AI 覆盖。\n\n### 使用边界\n\n- 源码公开，采用 Business Source License 1.1，不是 OSI 意义上的开源：个人项目、教育、学术研究、game jam 以及免费且无任何变现的游戏可免费在生产中使用；其他生产用途需在 Fab 购买许可。每个版本发布四年后转为 Apache 2.0。\n- 在 Windows 上测试过；需要 Node.js 22.11 或更高版本。\n\nGitHub：https://github.com/DmVergasov/LocHub\n中文说明：https://github.com/DmVergasov/LocHub/blob/main/README.zh-CN.md\n",
+    "created_at": "2026-10-05T14:23:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12090"
+  },
+  {
+    "id": 12089,
+    "title": "【开源自荐】Sonar：原生 iOS / macOS 音乐播放器",
+    "content": "阮老师好，自荐一下我做的 **Sonar**，一个用 SwiftUI 写的 iPhone 和 Mac 音乐播放器。\n\n目前接入网易云和 QQ，支持搜歌、收藏、播放队列和同步歌词。歌单保存在本机，可以导出 JSON 备份，再导入另一端；备份里只有歌曲信息，不包含音频文件。\n\nMac 端做成了状态栏面板和顶部播放器。点开面板选歌，鼠标移到屏幕顶部就能查看歌词、暂停或切歌，没有刘海的屏幕也能用。\n\n项目地址：[can4hou6joeng4/Sonar](https://github.com/can4hou6joeng4/Sonar)，GPL-3.0 开源。\n\n支持 **iOS 17+ / macOS 14+**。目前只提供源码，需要在 Mac 上用 Xcode 自行编译，[README](https://github.com/can4hou6joeng4/Sonar#从源码构建) 中有构建、打包和 iOS 真机签名步骤。歌曲、封面与歌词来自第三方服务，能否播放、能用什么音质取决于具体音源。\n\n### iOS\n\n![iOS 歌单、搜索与播放](https://pub-27c5bfbe6aed415786a6173c4836a305.r2.dev/sonar/posts/20261005/ca963bb1f2d7c47c/ios-main.png)\n\n![iOS 歌词与设置](https://pub-27c5bfbe6aed415786a6173c4836a305.r2.dev/sonar/posts/20261005/5f2d3c417a061793/ios-details.png)\n\n### macOS\n\n![macOS 状态栏与顶部播放器](https://pub-27c5bfbe6aed415786a6173c4836a305.r2.dev/sonar/posts/20261005/d148459ba8e65f11/macos.png)\n\n图片来自当前运行版本的实际截图。欢迎试用，也欢迎在项目仓库里反馈问题或建议。\n",
+    "created_at": "2026-10-05T13:44:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12089"
+  },
+  {
+    "id": 12088,
+    "title": "【开源自荐】一款开源的网页策略游戏（支持AGENT一键接入托管）",
+    "content": "SLG：一款开源的网页三国策略游戏，可以自己建城、征兵、攻城，也可以把令牌交给 Claude、ChatGPT 或自己写的脚本，让 AI 按同样的规则 24 小时替你经营，离线时还会给你写日报。支持 MCP，一行配置就能接入。\n- 在线公测：https://slg.yuntianyou.cc （Google / GitHub 登录，中英文界面）\n- 开源仓库（MIT）：https://github.com/athlan20/slg\n\n![世界地图](https://raw.githubusercontent.com/athlan20/slg/main/docs/screenshots/map.png)\n\n---\n\n**为什么做这个**\n\nSLG 游戏拼的是谁更肝：半夜收资源、掐点出兵、提防偷袭。我想反过来：让游戏本身就是给 AI 玩的，人可以亲自上手，也可以只负责定方向。\n\n**它和一般的「AI 对战平台」不同**\n\n- 这是一款完整的游戏：15 种建筑、11 个兵种互相克制、多回合战斗、世界地图、名城、武将、科技、全服事件、玩家对抗。人类玩家完全可以自己玩。\n- 服务端不跑任何 AI，智能全部由玩家自带；网页和 AI 走同一套协议、同一套校验，没有专门给 AI 的后门。\n- AI 只能用令牌登录，拿不到账号密码，令牌随时可以重置。\n- 提供 MCP 插件（`npx -y slg-mcp`），Claude Desktop、Cursor、Claude Code 里加一段配置就能直接说「帮我打三国」。\n- 排行榜可以按 AI 模型分组，看哪个大模型最会打仗。\n\n**技术栈**：Node.js + Fastify + 标准 WebSocket + PostgreSQL，前端 React。",
+    "created_at": "2026-10-05T12:22:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12088"
+  },
+  {
+    "id": 12087,
+    "title": "【工具自荐】山猫云商品原图排版：本地处理、免登录，导出商品图和可编辑草稿",
+    "content": "这是山猫云产品方自荐，文字由 AI 辅助整理。\n\n入口：https://www.sanmao.fun/apps/photo/layout?utm_source=ruanyf_weekly&utm_medium=community&utm_campaign=layout_20261005\n\n给已有商品实拍图、只需要补上标题/卖点/价格的用户。这里不调用生成式 AI，不改画面细节；按比例完整放入版式，不裁切、不拉伸原图。\n\n### 能做什么\n\n- 选择 JPG / PNG / WebP 图片，在浏览器内排版；图片和填写的文字不上传服务器。\n- 导出 1200×1200 或 1080×1440 的 PNG。\n- 保存包含原图、文字和版式的 JSON 草稿，下次打开继续编辑。不是自动保存，离开前需要主动保存草稿。\n\n### 使用边界\n\n- 该独立排版入口免费、无需登录；山猫云主站其他 AI 功能有收费，并非全站免费。\n- 单图最多 10 MB、1600 万像素。不提供抠图、换背景、批量详情页或原图文字拆层。\n- 使用原图不意味着输出文件逐字节不变，图片会按版式缩放并重新导出。\n- 工具会统计匿名会话的打开/导出事件及推广标签，不上传原图与填写内容。\n- 目前是在线网页工具，不声称开源，也不承诺离线加载。\n\n实际操作中已完成 1200×1200 PNG 导出和 JSON 草稿保存、刷新后重新打开的检查。带图片的自荐展示：https://meta.appinn.net/t/topic/92899 （讨论分享帖，不是编辑推荐或用户评价）。示例原图来自 Pexels / Jin He，图中文字和价格仅为演示，不代表真实商家案例。\n\n",
+    "created_at": "2026-10-05T08:51:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12087"
+  },
+  {
     "id": 12086,
     "title": "【软件自荐】Octuo：对话结束了，事情还在推进",
     "content": "多个工具、多个账号，不该意味着你要在更多窗口里搬运上下文。\n\n我们是 Octuo 团队（Tutuo, Inc.）。Octuo 是一个个人 AI 助理，是你处理工作的一个起点：围绕你的目标，把任务交给你连接并授权的 AI、工具和专业服务（Claude Code、Codex 仅为举例），带上每个任务需要的上下文，跟踪进度，汇总结果。账号可以来自不同工具，也可以是同一受支持服务的多个账号，均由你合法授权；各服务自己的使用条款和额度规则照常适用。Octuo 传递的是任务上下文，不是各工具原生聊天记录的同步。目前为 macOS 公测版，积分制计费。\n\nhttps://www.tutuo.ai/en/octuo/",
@@ -17,7 +81,7 @@
   },
   {
     "id": 12084,
-    "title": "【开源自荐】VideoSeek：用一句话在本地视频里找到那个镜头",
+    "title": "【开源自荐】VideoSeek：本地视频素材检索，索引与检索都在本机，无需上传视频",
     "content": "- 项目名称：VideoSeek（项目方自荐）\n- 项目地址：https://github.com/6v17/VideoSeek\n- 开源协议：AGPL-3.0\n- 项目简介（100 字以内）：一个本地运行的视频素材检索工具。用一句话、一张截图或一句台词检索本机视频，返回精确到秒的片段位置，可导出 mp4、剪映草稿或 FCPXML。索引与检索都在本机完成，媒体文件不上传。\n\n- 项目截图（3 张）：\n\n![文搜视频](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/文搜视频.png)\n\n![字幕搜索](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/字幕搜索.png)\n\n![标签搜索](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/标签搜索.png)\n\n### 主要功能\n\n1. 文字搜镜头：用自然语言描述画面，返回命中的时间范围，而不是只给一个文件列表。\n2. 截图搜镜头：丢一张参考图或截一帧进去，找相似画面。\n3. 硬字幕检索：对画面内嵌字幕做 OCR，按台词搜时间点。\n4. 标签检索：用「蓝发」「红白服饰」这类标签组合筛镜头，结果按网格给出缩略图和时间。\n5. 导出到剪辑软件：导出 mp4 片段、剪映草稿或 FCPXML 时间线。\n6. 全程本地：ONNX + Lance + FFmpeg 在本机跑，视频不上传；Windows 优先，也可从源码构建。",
     "created_at": "2026-10-05T05:16:48Z",
     "labels": [],
@@ -734,69 +798,5 @@
     "created_at": "2026-09-29T19:55:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11995"
-  },
-  {
-    "id": 11994,
-    "title": "【网站自荐】Checkerso：免费、无广告、免注册的在线跳棋/国际跳棋，支持离线 PWA",
-    "content": "网址：https://checkerso.com\n\nCheckerso 是一个在浏览器里直接玩的国际跳棋（Draughts / Checkers）网站，完全免费，没有广告，不用注册，也不用下载；首次访问后可作为 PWA 安装并离线使用。\n\n- 9 种规则：美式跳棋、国际跳棋 10×10（另有德/法/荷语页面）、巴西、俄罗斯、意大利、西班牙、土耳其、Pool 跳棋和\"输家胜\"（Anti），另外还有中国跳棋。每种规则按各自的吃子、升王规则实现（强制吃子、飞王、最多吃子等）。\n- 人机对战分简单/中等/困难三档，可悔棋、可提示；也可以两人同屏对战。\n- 美式和国际 10×10 支持发链接邀请朋友在线对战（没有随机匹配）。\n- 每日挑战：每天一个固定开局，对战电脑，赢了累计连胜；另有奖杯阶梯（/trophies）。\n\n技术栈：Astro + Preact，部署在 Cloudflare Pages，好友房间用 Cloudflare Worker + Durable Object。\n\n说明：界面目前有英语、西、俄、土、德、荷、法、意、葡（巴西）9 种语言，暂无中文界面。\n\n作者：Qijun Li（lannyone@gmail.com）",
-    "created_at": "2026-09-29T17:33:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11994"
-  },
-  {
-    "id": 11993,
-    "title": "【开源自荐】Highball：在 Apple 芯片的 Mac 上免费运行 Windows 游戏",
-    "content": "Highball 是一个免费开源（GPL-3.0）的原生 macOS 应用，让 Apple 芯片的 Mac 可以运行 Windows 游戏。\n\n它基于 Wine，自动配置 DXMT、DXVK 和 D3DMetal 这些图形转换层，可以一键安装 Steam 或连接 Epic 游戏库。它还维护一个公开的兼容性数据库（CC0），记录每款游戏在哪个引擎和图形模式下的实测结果和帧率，使用内核级反作弊、在 Mac 上不可能运行的游戏也会提前标出来，省得白白下载几十 GB。\n\n- 项目地址：https://github.com/gauthierpiarrette/highball\n- 中文说明：https://github.com/gauthierpiarrette/highball/blob/main/README.zh-CN.md\n- 游戏兼容性数据库：https://gethighball.com/database/\n\n![Highball 的游戏库](https://raw.githubusercontent.com/gauthierpiarrette/highball/main/.github/assets/app.png)\n",
-    "created_at": "2026-09-29T16:28:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11993"
-  },
-  {
-    "id": 11992,
-    "title": "【开源自荐】MultiCC：让同一个编码任务在 Claude Code 与 Codex 间接续",
-    "content": "仓库：https://github.com/lsjwzh/MultiCC\n\n用 Claude Code 做到一半，想要 Codex 的第二意见、或者额度用完了，通常得新开终端、新开会话，把上下文重讲一遍。\n\nMultiCC 是开源、自托管的 coding agent 工作台：对话和 Git worktree 属于任务本身，CLI 只是当前驱动它的引擎。在同一个 Chat 任务里从 Claude Code 切到 Codex，任务和工作区都留着，接手的 CLI 拿到一份有界的可见上下文 checkpoint，接着往下做。\n\n- 同一任务跨 CLI 接续：换引擎不丢任务和 worktree，不用从头交代\n- 任务级 Git 隔离：不同 agent 各改各的 worktree，集中看 diff、测试和交付状态\n- 多端接入：同一个自托管后端，桌面、浏览器和手机 App 都能看\n- 分层记忆与 Skill：机器 / CLI / 项目 / 任务 / 会话各有边界，减少重复说明\n- 可选的任务派工与团队交接包：把子任务派给另一个会话，或导出 Skill、记忆、上下文和适用的 Git 提交给队友导入\n\n说清边界：切 CLI 交接的是**可见文本 checkpoint**，不是模型隐藏状态的无损迁移，原 CLI 保留自己的原生 session；自托管服务器和所选 CLI / 模型需要自己配置，模型调用费用不含在开源项目里。\n\n安装（macOS / Linux，一行，目标机器不需要 Node / npm / Homebrew）：\n\n```\ncurl -sSL https://raw.githubusercontent.com/lsjwzh/MultiCC/v2.2.0/install.sh | bash\n```\n\nWindows PowerShell：`irm https://raw.githubusercontent.com/lsjwzh/MultiCC/v2.2.0/install.ps1 | iex`\n\nMIT 协议。\n",
-    "created_at": "2026-09-29T15:52:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11992"
-  },
-  {
-    "id": 11991,
-    "title": "【开源自荐】Mojito：会自己改代码的个人计划 App",
-    "content": "你好，自荐一个 MIT 开源项目：[Mojito](https://github.com/TimeLovercc/mojito)。\n\n它是一个自托管的每日计划 App（今天页、计划、笔记、信息流、对话），特别之处是 App 会自己进化：在 App 的对话里说一句“把下一步放最上面，加粗”，我 Mac 上的 Claude Code 就会改代码、构建、发布到手机，再推送告诉我改了什么；大改动会先等我确认。\n\n做法是把 App 的代码削到很薄：服务端（FastAPI + SQLite）只存数据、发推送，判断和新功能都交给掌握上下文的 agent。它一天里靠一句句需求长出了订阅页、iPhone 桌面网页版和推送、桌面版重设计和英文界面。\n\n可以当成 Meta Muse 这类云端个人 AI 的本地替代：数据和登录都留在自己的机器上。还是早期 alpha，需要自己部署；README 里有 5 分钟的试玩方式（假 hub + 示例数据，不用注册账号）。\n\n![Mojito 演示](https://github.com/TimeLovercc/mojito/raw/main/docs/media/mojito.gif)\n\n25 秒演示视频：https://youtu.be/gMkHYQJ1r8Q\n\n感谢审核。",
-    "created_at": "2026-09-29T15:48:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11991"
-  },
-  {
-    "id": 11990,
-    "title": "【开源自荐】知识公社：一个完全离线的免费学习平台（竞赛/升学/公考/红色经典/世赛）",
-    "content": "仓库：https://github.com/TaiMaBenJi/knowledge-commons\n\n在线体验：https://taimabenji.github.io/knowledge-commons/ （浏览器打开即用，可「添加到主屏幕」当 App 用）\n\n![首页](https://raw.githubusercontent.com/TaiMaBenJi/knowledge-commons/main/docs/screenshots/home.png)\n\n「知识公社」把散落各处的公开学习资源收集、分类、离线化，装进同一个网站 / App：\n\n- 竞赛：Codeforces 11425 题 + AtCoder 9600 题离线可搜索；ICPC 世界总决赛题解 158 份、蓝桥杯题解 168 份、天梯赛解析 28 份\n- 升学：高考数学真卷 ×4（内置阅读器）、专升本备考工具\n- 公务员：图形推理真题库 354 题逐题解析；国考/省考资料导航\n- 红色经典：《毛泽东选集》1–5 卷全文 229 篇 + 毛泽东诗词 90 首\n- 世界技能大赛：六大领域 50 个赛项「总纲 + 视频 + 模拟训练」三件套；62 集视频课与真题资料\n- 另有原创课程（算法竞赛 13 讲 / Python 入门 8 讲 / 行测 6 讲）、四份「从零到精通」路线、全站离线检索\n\n特点：\n\n- 完全离线：全部内容无需联网（Android 全量包约 560 MB）\n- 网页版是完整 PWA：浏览器打开即用、可安装到主屏幕/桌面，四个系统一个体验\n- Android / iOS / Windows / Web 四端，全部在 Releases 免费下载\n- MIT 开源、无广告、无任何收费内容，内容持续更新\n\n做这个的原因：知识并不稀缺，稀缺的是「知道去哪找、从哪开始」。希望能把信息差一个个消掉，让想学习的人打开就能学。\n",
-    "created_at": "2026-09-29T14:14:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11990"
-  },
-  {
-    "id": 11989,
-    "title": "【工具自荐】dtflow：在终端里看 LLM 训练数据的浏览器",
-    "content": "仓库：https://github.com/KenyonY/dtflow\n\n![dt view](https://raw.githubusercontent.com/KenyonY/dtflow/main/docs/images/view/main.png)\n\n做大模型微调的人每天都在看 JSONL：一条样本是一段多轮对话，嵌套在 messages 里，`head | jq` 只能看一条，Excel 打不开，通用表格工具把对话显示成 `{3}`。\n\ndtflow 的 `dt view data.jsonl` 把训练数据当\"样本\"而不是\"表\"来看：左边表格扫视每条样本（轮数、角色序列、第一句用户提问、字数、调用过的工具），右边把当前样本渲染成对话——按角色上色、代码块高亮、工具调用参数格式化并标出非法 JSON、DPO 的 chosen / rejected 并排对比。\n\n- 搜索、筛选、排序都扫整个文件而不是当前页，筛出来的子集一键导出并自动记录来源和条件\n- 窗口化加载：91 万行、155MB 的 JSONL 打开只占 90MB 内存\n- 鼠标可用：点列头筛选、拖列宽、拖选文字复制，SSH 和 tmux 里也能进本机剪贴板\n- 顺带一套管道式命令行：`dt filter / select / dedupe / transform / export`，条件直接写 Python 表达式\n\n安装：`pip install dtflow`，或 `uvx --from dtflow dt view data.jsonl` 免安装试用。MIT 协议。",
-    "created_at": "2026-09-29T11:30:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11989"
-  },
-  {
-    "id": 11988,
-    "title": "【开源自荐】macOS 上最漂亮的的 Codex 状态栏",
-    "content": "阮老师您好，自荐一个开源的 macOS Codex 状态栏 App\n\n[CodexBar](https://github.com/bob-zebedy/CodexBar)\n\n作为一个颜狗，好看是第一要务\n\n<img width=\"2124\" height=\"1362\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/159cf321-1310-4cb4-84f7-dfb445f0da06\" />\n\n除了能看到常规的数据，还支持在屏幕顶部实时展示流光效果表示任务运行的状态\n\n<img width=\"2000\" height=\"39\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/8ac91ae4-c5d5-4cc2-b518-73a71886c3ac\" />\n\n其次，还包括 codex 运行期间自动防睡眠，手动重置到期前自动使用等各种功能",
-    "created_at": "2026-09-29T08:48:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11988"
-  },
-  {
-    "id": 11987,
-    "title": "【开源自荐】PC·XRAY: 你的电脑，里面到底藏着什么？",
-    "content": "🖥️ **Ever wondered what’s actually inside your computer?**\n\n我做了一个小项目：**PC·XRAY**\n\nhttps://github.com/kerwin2046/pc-xray\n\n它会读取你机器的真实硬件信息，并把它渲染成一个可以交互的 3D 电脑剖面图。\n\nCPU、内存、SSD、散热、电池……\n把平时看不见的硬件，用另一种方式呈现出来。\n\n🔍 Scan your machine. See what's inside.\n\n如果你觉得这个项目有意思，欢迎点个 ⭐ Star 支持一下。\n\n也欢迎一起参与，让 PC·XRAY 变得更好。\nIdeas, feedback, code — all welcome.\n\n<img width=\"2166\" height=\"1129\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/81722777-cf3d-4c00-9a9c-9bea0493e804\" />",
-    "created_at": "2026-09-29T07:57:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11987"
   }
 ]
