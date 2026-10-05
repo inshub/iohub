@@ -1,5 +1,69 @@
 [
   {
+    "id": 12086,
+    "title": "【软件自荐】Octuo：对话结束了，事情还在推进",
+    "content": "多个工具、多个账号，不该意味着你要在更多窗口里搬运上下文。\n\n我们是 Octuo 团队（Tutuo, Inc.）。Octuo 是一个个人 AI 助理，是你处理工作的一个起点：围绕你的目标，把任务交给你连接并授权的 AI、工具和专业服务（Claude Code、Codex 仅为举例），带上每个任务需要的上下文，跟踪进度，汇总结果。账号可以来自不同工具，也可以是同一受支持服务的多个账号，均由你合法授权；各服务自己的使用条款和额度规则照常适用。Octuo 传递的是任务上下文，不是各工具原生聊天记录的同步。目前为 macOS 公测版，积分制计费。\n\nhttps://www.tutuo.ai/en/octuo/",
+    "created_at": "2026-10-05T06:52:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12086"
+  },
+  {
+    "id": 12085,
+    "title": "【软件自荐】nohmitaina：让人与 AI 共同读写工作记忆的本地编辑器",
+    "content": "大家好，我是 nohmitaina 的开发者，想分享一下最近发布的 0.3.0 版本。\n\n在和 AI 一起做事时，除了保存背景信息，我还希望把“这件事应该怎么做”留下来：按什么顺序推进，每一步需要什么信息、要检查什么，以及哪些地方需要我来判断。\n\n为此，我在 nohmitaina 中加入了 Procedure，用可视化流程来组织这些内容。比如“制定计划 → 评审计划 → 实现 → 验证”，每一步都可以设置角色、指令、输入、输出、工具和检查项。人可以在编辑器里查看和修改，AI 则通过 noh CLI 读写同一份流程。\n\n除了 Procedure，还有三种记忆类型：\n- Concept：保存想法、背景知识和概念。\n- Task：记录当前要做的工作。\n- Episode：留下执行结果和过程中发现的问题。\n\n最近我用它整理了一套产品推广流程：和 AI 一起寻找允许推广的社区，核对规则，准备文案，再由我确认并手动发布。之后让 AI 把结果记入 Episode，方便下次回顾。这次实践也让我发现，Episode 还需要按工作类型筛选，才能更方便地查看。\n\nnohmitaina 支持 macOS 和 Windows，记忆数据保存在本地，应用免费使用。与 AI 配合使用时，需要自行配置 Claude Code 或 Codex CLI；相关服务的订阅或 API 费用另计。\n\n官网提供可交互的操作演示：\nhttps://nohmitaina.com/zh?ref=ruanyf-weekly\n\n这次推广流程的使用案例：\nhttps://nohmitaina.com/usecases/zh/promotion-to-procedure.html?ref=ruanyf-weekly",
+    "created_at": "2026-10-05T06:31:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12085"
+  },
+  {
+    "id": 12084,
+    "title": "【开源自荐】VideoSeek：用一句话在本地视频里找到那个镜头",
+    "content": "- 项目名称：VideoSeek（项目方自荐）\n- 项目地址：https://github.com/6v17/VideoSeek\n- 开源协议：AGPL-3.0\n- 项目简介（100 字以内）：一个本地运行的视频素材检索工具。用一句话、一张截图或一句台词检索本机视频，返回精确到秒的片段位置，可导出 mp4、剪映草稿或 FCPXML。索引与检索都在本机完成，媒体文件不上传。\n\n- 项目截图（3 张）：\n\n![文搜视频](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/文搜视频.png)\n\n![字幕搜索](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/字幕搜索.png)\n\n![标签搜索](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/标签搜索.png)\n\n### 主要功能\n\n1. 文字搜镜头：用自然语言描述画面，返回命中的时间范围，而不是只给一个文件列表。\n2. 截图搜镜头：丢一张参考图或截一帧进去，找相似画面。\n3. 硬字幕检索：对画面内嵌字幕做 OCR，按台词搜时间点。\n4. 标签检索：用「蓝发」「红白服饰」这类标签组合筛镜头，结果按网格给出缩略图和时间。\n5. 导出到剪辑软件：导出 mp4 片段、剪映草稿或 FCPXML 时间线。\n6. 全程本地：ONNX + Lance + FFmpeg 在本机跑，视频不上传；Windows 优先，也可从源码构建。",
+    "created_at": "2026-10-05T05:16:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12084"
+  },
+  {
+    "id": 12083,
+    "title": "【开源自荐】herdr-web-ui：在手机上继续操作电脑上的 Claude Code / Codex",
+    "content": "大家好，我是 herdr-web-ui 的开发者 devswha，来分享一下这个 MIT 开源项目。\n\n电脑上跑着 Claude Code 或 Codex，人离开了，却还想看看进度、补一句要求，或者处理确认提示。herdr-web-ui 就是为这种场景做的：通过浏览器连接 herdr 里的会话，在手机上接着操作，不用另开一个 Agent。\n\n聊天记录和实时终端可以切换着看。手机上能发消息、附上截图，也能查看和下载 Agent 生成的文件。遇到权限确认、提问或计划选项，可以直接在卡片里回答。\n\n如果有多台电脑，也可以通过 SSH 接入 Linux、macOS 和 Windows，在侧栏切换各台机器的会话。手机端支持安装为 PWA，并在 Agent 需要回复或任务完成时发送推送通知。\n\n- [源码](https://github.com/devswha/herdr-web-ui)\n- [项目主页](https://devswha.github.io/herdr-web-ui/)\n- [在线演示](https://devswha.github.io/herdr-web-ui/demo/)\n- [56 秒实录：桌面与手机操作同一会话](https://devswha.github.io/herdr-web-ui/media/herdr-web-ui-film.mp4)\n\n在线演示用的是虚构会话，不连接真实电脑，输入也不会发送到机器上。实际使用需要 herdr 0.9.0+ 和本项目。服务默认监听 `127.0.0.1`，手机访问需要配置安全连接，例如 Tailscale HTTPS；推送需要浏览器支持并授权。Windows 目前使用终端画面镜像，与 Linux/macOS 的终端能力有差异。\n\n欢迎试用，有问题可以到项目仓库提 Issue。\n\n注：本帖中文使用 AI 辅助翻译和润色。",
+    "created_at": "2026-10-05T03:07:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12083"
+  },
+  {
+    "id": 12082,
+    "title": "【开源自荐】pi-durabletask-mcp：让 Claude/Codex 委派 Pi 审查代码",
+    "content": "我是 pi-durabletask-mcp 的维护者。这是一个外部 MCP 桥接工具：Claude Code／Codex 委派 Pi 在独立上下文审查代码，通过 `steer` 调整方向，再用 `follow_up` 在同一会话追问。\n\n默认内存存储；显式设置 `durable: true` 可启用 SQLite 检查点，支持桥接进程重启后恢复。需已配置的全局 Pi 和 Node.js 22.19+。\n\n基于 [howznguyen/pi-delegate-mcp](https://github.com/howznguyen/pi-delegate-mcp) 和 Pi Durable，MIT 开源。\n\n项目：https://github.com/Nyarlathoteppppp/pi-durabletask-mcp\n\n```bash\nnpm install -g pi-durabletask-mcp\n```\n",
+    "created_at": "2026-10-05T02:48:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12082"
+  },
+  {
+    "id": 12081,
+    "title": "【开源自荐】EdgeChat：无需维护服务器的团队聊天系统，支持 Telegram 双向桥接与语音通话",
+    "content": "- 项目名称：EdgeChat（项目方自荐）\n\n- 项目地址：https://github.com/aozorae/Edgechat\n\n- 在线体验：https://edgechat-demo.wcjxxgaq.workers.dev\n\n- 项目文档：https://echat.azora.top/\n\n- 开源协议：GNU GPL v3.0 or later\n\n- 项目简介（100 字以内）：基于 Cloudflare 的开源自部署聊天系统，无需维护服务器。支持群聊与私信、Telegram 双向桥接、跨实例同步、富文本、语音与文件、管理后台及 GitHub Actions 自动部署。\n\n- 项目截图（3 张，均来自 README）：\n\n![EdgeChat 项目头图](https://raw.githubusercontent.com/aozorae/Edgechat/master/Edgechat.jpg)\n\n![EdgeChat 聊天界面](https://raw.githubusercontent.com/aozorae/Edgechat/master/assets/previews/chat-home.png)\n\n![EdgeChat 管理后台](https://raw.githubusercontent.com/aozorae/Edgechat/master/assets/previews/admin-dashboard.png)\n\n### 主要功能\n\n1. **实时聊天与群组协作**：公开群组、私有群组、一对一私信，支持创建群组、邀请与管理成员、群名称与头像设置、在线状态、历史消息分页、未读计数、已读状态、消息回复、引用定位、群聊 @ 提及与提醒；管理员或群主可置顶、取消置顶和删除群消息。\n2. **Markdown 与富文本**：消息正文支持 Markdown，输入区可原位展开所见即所得编辑器；编辑器按需加载，展开和收起保留草稿，兼容回复、提及与附件流程，支持复制 Markdown 原文；消息中的远程图片不自动加载。\n3. **文件与语音消息**：分享图片、视频、音频和普通文件，支持附件预览与下载；浏览器录音提供实时波形、取消和发送，语音播放支持进度跳转、1x / 1.5x / 2x 倍速，同一时间只播放一条语音。\n4. **一对一语音通话**：网页私聊使用 WebRTC，默认 P2P，配置 Cloudflare TURN 凭据后可在直连失败时自动回退，也可手动切换 P2P / TURN；提供来电提示、接听、拒接、静音、挂断与时长，切换聊天或通讯录不打断通话。\n5. **Telegram 双向桥接**：管理员可将公开或私有群组与 Telegram 群组绑定，双向同步文字、图片、视频、语音、音频和普通文件，展示 Telegram 来源、外部发送者头像并支持回复关系；一对一私信不参与桥接。\n6. **跨实例群组同步**：两个独立部署的 EdgeChat 站点，经双方管理员邀请、认领和确认后绑定群组，双向同步绑定后的本站原创纯文字，展示昵称与来源实例；支持暂停、恢复、解绑及投递队列状态查看，来自其他桥的消息不会继续跨桥扩散。\n7. **通知与 PWA**：前台站内通知、后台浏览器系统通知、会话免打扰及提及/回复优先提醒；支持安装为 PWA 和点击通知进入对应会话。用户还可绑定站点 Telegram Bot，在关闭网页后接收私信与群聊 @ 提醒，两类提醒可分别开关，通知不包含消息正文。\n8. **通讯录与个人设置**：站内通讯录支持姓名/用户名搜索，资料卡展示个人简介并可发起私信；支持显示名、头像裁剪、个人简介、自定义背景与修改密码；私信可拉黑或解除拉黑，拉黑期间双方发送受限，历史消息保留。\n9. **管理后台**：仪表盘聚合统计、用户创建与管理、注册邀请链接、密码重置、永久或按天/小时/分钟的临时封禁与提前解封；群聊及成员面板展示管理员和禁言头衔，临时封禁到期自动恢复；可管理站点名称与图标、Telegram 配置、跨实例绑定，并查看 R2 存储统计、检查部署更新、执行只读维护自检及导出脱敏诊断报告。\n10. **隐身模式与数据管理**：管理员可选择收敛未登录访问入口，隐藏公开注册与未认证客户端入口，使用独立认证网关；目的在于减少未登录攻击面，不是匿名服务或规避审查工具。支持按配置定时硬删除过期消息、清理孤儿附件。\n11. **服务端静态加密**：新写入消息正文与新上传附件使用 AES-256-GCM 加密，支持密钥轮换并保留旧密钥读取历史密文；管理后台不提供消息正文查看入口。这里是服务端加密，**不是端到端加密**，仍需信任部署方与 Cloudflare 运行环境。\n12. **多语言与多端体验**：Liquid Glass 风格界面适配桌面和手机浏览器，支持简体中文、繁体中文与英文，按浏览器语言首次选择并保留手动设置；页面、编辑器与弹窗按需加载，提供基础无障碍支持。\n13. **部署与自动化扩展**：前端 Vue 3 + Vite，后端 Hono + Cloudflare Workers，结合 D1、KV、R2、Durable Objects 与 WebSocket Hibernation；通过内置 GitHub Actions 自动准备/复用资源、执行数据库迁移和部署更新，也支持 Wrangler 手动部署与 Docker 本地开发。兼容 WebMCP 的客户端可通过站点工具登录、查询群聊、读取/发送文字消息和打开私聊，沿用现有账号权限。\n\n### 补充说明\n\n- 适合团队、项目协作和小圈子社区，也适合已有 Telegram 群、希望增加独立网页聊天入口的用户。应用与数据部署在自己的 Cloudflare 账号下，源码可自行修改。\n- 在线 Demo 是浏览器内存模拟，不连接真实多人后端；刷新或重置恢复初始数据，不会写入生产数据，也不会建立真实通话。\n- 语音通话目前仅覆盖在线网页的一对一语音，不支持群聊通话、视频或后台离线来电；未配置 TURN 时仅 P2P 可用。跨实例绑定只同步绑定后的新纯文字，不回填历史，也不支持附件同步。\n- 仓库提供可连接自托管实例的 Capacitor Android 预发行客户端，目前暂停 Android 开发，不承诺应用停止后的后台推送；暂时弃用的原生 Compose 客户端源码仍保留。\n- 项目免费开源，但 Cloudflare 资源和 TURN 的费用取决于套餐、配置与实际用量，不代表云服务无限免费。\n",
+    "created_at": "2026-10-05T02:35:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12081"
+  },
+  {
+    "id": 12080,
+    "title": "【开源自荐】Sesame：说一句话，找回 Claude Code / Codex 以前做的看板和报告",
+    "content": "自荐一个开源 macOS 小工具 **Sesame**，用来找回 Claude Code、Codex 以前交付过的产物。\n\n- 项目地址：https://github.com/qiwei66/sesame\n- 协议：MIT，macOS 13+\n\n## 为什么做\n\n我用 Claude Code 和 Codex 做了很多看板、报告和网页。上周想打开其中一个交易看板，翻了二十多个会话都没找到，最后只好让 AI 去翻聊天记录。\n\n后来我数了一下，Claude Code 一共给我交付过 313 个产物，大部分都埋在会话里。\n\n## 它做什么\n\nSesame 读取本机的 Claude Code 和 Codex 记录，把 AI 交付过的产物整理成一个库：看板、报告、网站、PR、文件、在线文档都在里面。\n\n想找哪个，打几个字，或者按住热键说一句「打开上周那个交易大盘」，打开的就是那个看板，不是当时的对话。\n\n![首次打开](https://raw.githubusercontent.com/qiwei66/sesame/main/docs/assets/hero-firstrun-zh-light.gif)\n\n- 打第一个字就出结果，↑ ↓ 选，回车打开\n- 按住热键说话，松开就发送\n- 同名的不止一个时，给一个短列表让你挑；一个都对不上就直说没找到\n- 索引只存在本机\n\n## 安装\n\n```bash\nbrew install qiwei66/tap/sesame\nsesame\n```\n\n45 秒宣传片：https://github.com/qiwei66/sesame/releases/latest/download/sesame-promo-zh.mp4\n",
+    "created_at": "2026-10-05T02:16:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12080"
+  },
+  {
+    "id": 12079,
+    "title": "【工具自荐】APICompat：把「中转站到底支持哪个模型走哪条路」测成一张交叉矩阵",
+    "content": "自荐一个纯前端小工具 **APICompat**。它只想回答一个问题：**你手上那个中转站，到底哪个模型走哪条协议是通的。**\n\n## 起因\n\n第三方中转站（new-api / one-api 那一类）越来越多，但「它支持什么」很难问清楚：\n\n- 站点文档写「兼容 OpenAI / Claude / Gemini」，没说**具体到哪个模型**走哪条路；\n- 拿一个模型试一次，只能证明**这一个模型 × 这一种协议**通，换个模型可能全崩；\n- 看 `/v1/models` 只证明端点存在，**不证明任何一个模型真的能回话**；\n- 读 `supported_endpoint_types`，声明又经常和实测不符。\n\n所以做成了这么一条链：**先拉清单 → 按 10 种协议 × 全部可见模型跑交叉矩阵 → 逐格给状态与首块延迟 → 导出报告**。\n\n- 项目地址：https://github.com/abobb414/APICompat\n- 在线体验：https://apicompat.abobb.site （不用注册，填自己的中转站地址和 Key 就行）\n\n![实测矩阵](https://raw.githubusercontent.com/abobb414/APICompat/main/docs/screenshots/matrix.jpg)\n\n## 几个我自己比较在意的点\n\n**10 种协议各自成请求**，不是都套 OpenAI 模板。`openai` / `anthropic` / `openai-response` / `google` / `google-openai` / `dashscope` / `azure` / `ollama` / `cohere` / `custom`，路径、鉴权头、body 形态都按各自的规矩来。几个实测出来的细节：`azure` 的部署名进路径而不是进 body；`ollama` 回的是 **NDJSON 而不是 SSE**；`anthropic` 要把 Key 发两遍（`x-api-key` 与 `Authorization` 各一次）兼容面才最广。\n\n**11 种归因状态**，而不是只报「通 / 不通」。失败会区分成超时、限流/欠费、协议不支持、网络/CORS、模型不存在等——因为「重测一下就好」和「这条路根本不支持」是两种完全不同的结论。\n\n**判定「能用」以首块延迟为准**，不是等整段生成完。中转站上「能回话」和「回得快」是两件事。\n\n**四种导出**：HTML（自带样式的一页报告，可以直接发给别人）、Markdown（贴进 Issue / 群聊，表格原样保留）、JSON、CSV。四种里都带着同一轮的测量口径（采样次数、并发、超时、重试），拿到一份 CSV 的人应该能回答「这个 42 字/秒是怎么来的」。\n\n**零构建 / 零依赖 / 零后端的单文件静态站**：一个 147 KB 的 `index.html`，没有框架、没有 npm、没有打包步骤。深浅主题跟随系统，没有开关。\n\n## 为什么必须是纯前端\n\n因为它要拿你的 Key 去打你的上游。只要中间有任何一台服务器，Key 就得先离开你的浏览器。这里没有后端——页面取回来之后，每一条请求都是浏览器直连目标站点，数据不出本机。\n\n## 明确的限制\n\n- **目标站点必须允许跨域（CORS）**，否则浏览器一定会拦下来。这也是「网络/CORS」被单独列成一条状态的原因。\n- **矩阵只反映测试那一刻的状态**：上游渠道会变、额度会用完，红格子不代表这个模型永远不行。\n- 不做定时体检——那需要把历史结果存到某处，而「不落任何服务端」是这个项目的前提。\n\n最后提醒一句：建议**新建一个小额度 Key** 用来测试，测完立即删除。\n\n欢迎反馈协议覆盖、状态归因上漏掉或误判的情况。\n",
+    "created_at": "2026-10-05T01:24:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12079"
+  },
+  {
     "id": 12078,
     "title": "【开源自荐】PaperFold：从章节地图逐层缩放到原文的 arXiv 论文阅读器",
     "content": "自荐一个刚开源的论文阅读器 **PaperFold**。我是作者 Xia Chen，目前在 TUM 做人机对齐方向的博士后研究。\n\n读论文时，经常需要来回确认一段话在整篇论证中的位置。我做了一个可以逐层折叠、展开的阅读界面：先把论文缩成章节地图，再展开关心的部分，直到看到每个原文段落。\n\n- 项目及缩放演示：https://github.com/chenxiachan/paperfold\n- 免安装体验：https://chenxiachan.github.io/paperfold-gallery/\n\n阅读器有五档：全文、逐字摘取的关键句、要点及理由、一句话提要、章节主题地图。前两档使用作者原文，后三档由模型生成，以不同字体区分。缩放时，保留下来的词会移动到新位置；也可以只展开一个段落，其余部分继续折叠。提问后的回答会链接到所引用的段落。\n\nPython 后端解析 arXiv 的 HTML，浏览器前端负责阅读和缩放；代码采用 Apache-2.0 许可。生成新论文需要该论文有 arXiv HTML 版本，并连接一个模型。生成后的论文可导出成独立 HTML 文件。\n\n体验页提供数学、机器学习、医学等八个领域的论文，均标注了作者及 Creative Commons 许可，无需注册或配置模型即可体验阅读。AI 生成的提要仍可能出错，可以随时展开原文核对。\n\n目前是早期版本，欢迎反馈解析失败的论文，以及长文阅读时的缩放、定位问题。\n",
@@ -734,69 +798,5 @@
     "created_at": "2026-09-29T07:57:14Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11987"
-  },
-  {
-    "id": 11986,
-    "title": "【开源自荐】TouchBarChat：把 Mac 本地转写和 AI 提示放到 Touch Bar",
-    "content": "大家好，我做了 TouchBarChat，一款开源 macOS 面试辅助应用。它把这台 Mac 正在播放的声音交给 Apple 设备端语音转写；配置自己的 Chat Completions 兼容 API 后，再把参考回答流式显示在 Touch Bar 上。转录与回答依次切换，主屏幕可以留给会议画面。\n\n- 不配置 API 也能本地转写并保存文字；程序不采集麦克风、不保存音频。\n- 面试结束后可以编辑、恢复或导出 Markdown 问答记录；没有 Touch Bar 时也能在主窗口查看。\n- API Key 存在 macOS 钥匙串；启用 AI 时只把文字上下文发给用户选择的接口，不发送音频。\n\n项目使用 Swift 6、ScreenCaptureKit 和 Apple 本地语音框架，采用 MIT 协议，目前从源码构建。最低目标 macOS 13；实体 Touch Bar 和 macOS 13–25 仍需进一步实机验证，且 Touch Bar 展示依赖未公开 AppKit 接口。\n\n项目地址：https://github.com/Mixumi/TouchBarChat\n\n![TouchBarChat 界面示意](https://raw.githubusercontent.com/Mixumi/TouchBarChat/main/Docs/assets/touchbar-flow.svg)\n\n图为放大的界面示意，非实机截图。请仅在参与者知情、面试或会议规则允许的场景使用。",
-    "created_at": "2026-09-29T07:45:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11986"
-  },
-  {
-    "id": 11985,
-    "title": "[项目自荐] 职场大神养成计划：把日常工作说清楚，练习难开口的职场对话",
-    "content": "你好，自荐一个 MIT 开源的中英文 Agent Skill：[career-growth-plan](https://github.com/Olandooooes/career-growth-plan)。\n\n它面向“每天很忙，却说不清自己做了什么、学到了什么”的职场人。三个可以直接试的入口：\n\n- **职场角色探索**：聊几件真实经历，得到可纠正的趣味角色卡，看看工作的收获和消耗。\n- **工作翻译器**：把日常工作写成人话版、江湖版、专业版；比喻可以夸张，正式成果不编造。\n- **职场对话陪练**：练习争取项目、讨论优先级等场景，AI 一次扮演对方一轮，可以暂停求助。\n\n例如，“今天追设计改图，和研发确认活动页，需求改了三次”，可以整理成“跟进活动素材迭代与活动页需求确认，协调设计、研发之间的变更沟通”；不会凭空写成“主导上线、效率提升 30%”。这是表达示例，不是真实用户成果。\n\n[中文免安装试玩](https://github.com/Olandooooes/career-growth-plan/blob/main/examples/start-here.zh-CN.md) / [English trial](https://github.com/Olandooooes/career-growth-plan/blob/main/examples/start-here.en.md)：复制提示词到常用 AI 即可。完整 Skill 还提供经历复盘与按需保存的本地 Markdown 档案。\n\n这是早期公开预览，需要 AI 工具配合，不是独立 App，也没有后台自动记忆。当前希望收集真实体验反馈，特别是哪些表达有帮助、哪些问题像审问。请勿公开公司或个人敏感信息。\n\n感谢审核。",
-    "created_at": "2026-09-29T03:13:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11985"
-  },
-  {
-    "id": 11984,
-    "title": "【开源自荐】钨极 Tungsten Edge：让每个窗口一目了然、一点就到的 macOS Dock 栏",
-    "content": "钨极是一款 Mac 上的 Dock 栏软件。macOS 的 Dock 栏以应用为单位，但我想要每个窗口都在 Dock 栏上、一点就到，所以做了钨极：窗口一目了然，一点就到。借鉴 Windows 任务栏的窗口操作逻辑，但是不要它的臃肿，只开一个窗口的应用以图标的形式呈现，UI 风格和设计理念都继承自原生 macOS。\n\n切换窗口是我一天里做得最多的操作。同类的软件我能找到的几乎都用过，但是最后一个都没留，宁愿用回原生 Dock：点了不一定到我要的那个窗口，栏上的条目还会乱动；再就是太像 Windows，又满又挤。\n\n所以我做钨极的功夫主要花在「准」和「稳」上：点哪个窗口就到哪个；最小化一个窗口，接手的就是它正后面那个；切标签、最小化、再还原，它在栏上的位置不动。如果你用多块屏幕，每块屏可以有自己的栏，栏上的窗口能直接拖到另一块屏。\n\n支持 macOS 12 及以上，Intel 和 Apple 芯片都能用，已签名公证，也可以 `brew install --cask tungsten-edge` 安装。\n\n源码是 GPL 开源的。现在免费；1.0 起改成一次性买断，包含后续更新，不订阅；1.0 之前到官网登记并确认邮箱的，永久免费。\n\n9 月 22 日发到 r/macapps，当天到了版块第一，2.7 万次浏览、77 条评论。\n\n项目地址：https://github.com/moonbai-studio/tungsten-edge\n官网与下载：https://tungstenedge.app\n\n![钨极演示](https://raw.githubusercontent.com/moonbai-studio/tungsten-edge/master/assets/demo.gif)\n\n欢迎试用，遇到问题可以在仓库提 issue。\n",
-    "created_at": "2026-09-29T02:40:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11984"
-  },
-  {
-    "id": 11983,
-    "title": "【开源自荐】OrbCue：替你盯着命令行 Agent 的windows桌面小球，减少你的“上下文切换”",
-    "content": "项目地址：https://github.com/QZYH123/OrbCue\n介绍：\nOrbCue 是 Windows 桌面上的一颗悬浮小球，解决的是人在盯着多agent进度时总要专注或者不断\"上下文切换\"来轮询不同会话的进度的问题，它替你盯着 Claude Code、Codex、Cursor、Grok Build等命令行 Agent。它利用hook把轮询优化为中断逻辑，把 Windows 和WSL 里的所有会话汇总在一起：谁在工作、谁在等你、谁做完了一眼可见，还会弹通知或推送到手机，点一下就能跳回对应终端。\n适合同时跑多个 Agent、或者挂着长任务去做别的事的时候用。项目用 Rust 和 Tauri 2 开发，界面基于Svelte，只读取工具自带的 hook 事件，不读对话内容。\n\n<img width=\"720\" height=\"405\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5147742d-005c-4d6e-a283-7b6b298d7c91\" />\n\n功能：\n  • 状态汇总：所有 Agent 会话汇总到同一颗球上，显示工作中、等待输入、等待授权、完成、失败。\n  • 多工具接入：支持 Claude Code、Codex、Cursor CLI、Grok Build，装在 Windows 或 WSL\n    里的都能接入，其他工具也可以通过命令自行接入。\n  • 提醒：弹系统通知并响提示音，可选通过 ntfy 推送到手机。\n  • 跳回终端：点一下回到对应终端。用 orb run 或\"原命令启动\"开的会话，能精确跳到那个标签页。\n  • 一键连接：自动发现已安装的工具，一键写入 hook，改之前自动备份，断开时只撤掉自己写的部分。\n  • 隐私：只读取 hook 事件，不读对话内容，数据只留在本机。\n  • 小球交互：可以贴边收起、调透明度，支持全局快捷键、开机自启和多套主题。\n",
-    "created_at": "2026-09-29T01:21:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11983"
-  },
-  {
-    "id": 11982,
-    "title": "【作品自荐】1D1T：一个极简的命令行（CLI）工具，用于每天记录一件“今日最棒”的小事。",
-    "content": "项目名称：1D1T（One day. One thing.）\n一句话介绍：一个极简的命令行（CLI）工具，用于每天记录一件“今日最棒”的小事。\n\n项目介绍：https://vinono.github.io/1D1T/\n项目源码：https://github.com/vinono/1D1T\n\n项目简介：\n这款命令行工具的灵感来源于陈奕迅的歌曲《今天只做一件事》（Take a day. Feel the love in everything）。它抛弃了繁琐的图形界面，让开发者和命令行重度用户可以在终端里，用最轻量的方式记录每天的高光时刻。\n\n主要特点：\n\n极简无干扰：没有复杂的 UI 交互，在终端输入几行命令即可快速完成记录，不打断现有的工作流。\n\n拒绝流水账：主打“One day. One thing.”，每天只强制自己提取、记录一件最值得留恋的事，聚焦于积极的正向反馈。\n\n数据沉淀与回顾：现已支持基础的数据记录与展示功能，能够快捷查阅过往的“高光时刻”，将碎片化的日常转化为直观的正反馈。\n\n创作初衷：\n抛开技术层面，这个项目的起点其实是为了我家里性格偏内向、在公众场合不太自信的小朋友。为了帮他撇开无谓的焦虑，我和他约定每天发掘一件自己觉得很“厉害”的事并记录下来，帮他慢慢建立属于自己的成就感。\n\n后来我发现，这种“每天捕捉一次微小正反馈”的极简记录方式，同样也非常适合压力大、需要精神锚点的成年人。",
-    "created_at": "2026-09-28T21:51:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11982"
-  },
-  {
-    "id": 11981,
-    "title": "【作品自荐】四时竹声：用 Three.js 重建外婆家的竹林",
-    "content": "大佬，我想自荐一个个人作品：**四时竹声（A Home Among the Bamboo）**。\n\n这是我小时候长大的地方。小时回家要坐一条木船，渡过水库。竹林和老屋，就在水的那一边。\n\n\n- **在线体验：** https://yuuki.fans/cn\n- **项目源码：** https://github.com/yuukiLike/bamboo-old-house\n\n可以沿路漫游、在木廊停留，切换晨昏与风雨，也可以抬头看月亮。点亮「聆听竹林」后，能听到风、雨、鸟鸣与虫声，声音默认关闭。提供中文、英文和日文界面。\n\n项目使用 Three.js、React 和 TypeScript。希望用一段可以走进去的 3D 记忆，为已经回不去的故乡留下一点什么。\n\n![黄昏中的竹林与老屋](https://raw.githubusercontent.com/yuukiLike/bamboo-old-house/main/docs/screenshots/zh-grove.jpg)\n\n![竹梢间的月夜](https://raw.githubusercontent.com/yuukiLike/bamboo-old-house/main/docs/screenshots/zh-moon.jpg)\n\n欢迎体验和交流，也感谢周刊提供分享作品的机会。\n",
-    "created_at": "2026-09-28T17:14:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11981"
-  },
-  {
-    "id": 11980,
-    "title": "【工具自荐】回声 echo agent：Mac 上按 Fn+Space 说一句话，让 Claude Code 和 Codex 在后台干活",
-    "content": "回声 echo agent：Mac 上的语音 AI Agent。\n\n官网：https://echoagent.dev/zh/\n\n![回声 echo agent](https://echoagent.dev/media/og-zh.png)\n\n在任何应用里按 Fn+Space 说一句话，它把任务交给你电脑上已登录的 Claude Code 或 Codex，在后台执行；需要时把你正在看的窗口截图一起交过去。\n\n- 语音在 Mac 本机识别，中文、英文都能说，录音不保存、不上传\n- 调度用的是你自己的 Claude Code / Codex 命令行，默认沿用你的权限配置，几个任务可以同时跑\n- 浮窗不抢焦点，关掉后任务在后台继续\n- 免费下载，登录后每天有免费次数用内置模型，也可以填自己的 API Key\n- 支持 macOS 15 以上、Apple 芯片\n",
-    "created_at": "2026-09-28T15:10:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11980"
-  },
-  {
-    "id": 11979,
-    "title": "【文章自荐】IDE 已死 ADE 当立：未来的开发环境",
-    "content": "文章链接： https://fenghen.me/posts/2026/09/27/ide-is-dead-long-live-ade/\n\n**主要内容**\n\n由近一年开发模式的巨变，和新型编程工具开发的经历，引发的思考与总结：\n开发环境的动力引擎已从「人」切换为「AI」，上层 UI 必须随之重构。IDE 形态注定消亡，取而代之的是 ADE（Agent 驱动开发环境）。\n\n以及对未来开发环境 （ADE）形态的构想。\n\n",
-    "created_at": "2026-09-28T12:02:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11979"
   }
 ]
