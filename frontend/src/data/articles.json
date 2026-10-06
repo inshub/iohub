@@ -1,5 +1,29 @@
 [
   {
+    "id": 12097,
+    "title": "【开源自荐】HeadOrbit：戴着 AirPods 用头操作 Mac，歪头语音输入、转头模糊屏幕",
+    "content": "阮老师好，自荐一个 macOS 菜单栏小工具 **HeadOrbit**，用头的动作操作 Mac，不用摄像头。\n\nAirPods Pro、AirPods 4 这类耳机里有运动传感器，苹果拿它做空间音频的头部追踪。HeadOrbit 读的就是这份数据：扭头、点头、歪头三个动作，左右上下六个方向，每个方向可以绑一件事。\n\n比如语音输入。向左歪头，HeadOrbit 按住 Fn，长按 Fn 听写的输入法开始听你说话（用豆包输入法实测过）；头摆正，Fn 松开；再向右歪一下，就是回车。\n\n![歪头语音输入](https://headorbit.com/assets/tilt-voice-zh.gif)\n\n另外几个内置场景：\n\n- **转头模糊**：头向左或向右转过 35°，持续 0.6 秒，整个屏幕模糊，转回来就清楚。有人走到身后时用得上。\n- **坐姿提醒**：塌腰的时候下巴会慢慢抬起来继续看屏幕，抬头超过 15° 持续 5 秒，屏幕模糊，提示坐直。只看抬头，低头看键盘不算。\n- **颈部活动**（2.1 新加）：屏幕上出现一条轨迹，用头跟着描，绕环和画 8 字。\n\n触发角度、延时、按键都能改，也可以自己建场景。\n\n- 项目地址：https://github.com/Cogria-AI/HeadOrbit ，MIT 协议\n- 官网：https://headorbit.com\n- 要求：macOS 14+，支持头部追踪的 AirPods 或 Beats，耳机要连在这台 Mac 上\n- 头部角度只在本机处理，不录屏，不要账号。唯一的联网是检查更新\n\n模糊效果用的是 WindowServer 一个没公开的接口，新版 macOS 上公开的毛玻璃材质只会渲染成一层平的颜色。所以它上不了 App Store，安装包也没做公证，第一次打开要右键选「打开」。\n",
+    "created_at": "2026-10-05T21:29:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12097"
+  },
+  {
+    "id": 12096,
+    "title": "【开源自荐】nerf-watch：检查 Claude Code 和 Codex 有没有悄悄变笨或变贵",
+    "content": "nerf-watch 读取 Claude Code 和 Codex 已经写在你电脑上的会话日志，告诉你 Agent 有没有在你没改任何设置的情况下\"悄悄变了\"：实际回答的模型和你选的不一样、推理强度降了、CLI 升级后每轮的缓存写入翻倍、缓存命中率掉了、工具调用出错变多。\n\n很多人觉得\"更新之后变笨了\"\"额度掉得更快了\"，但没法验证。数据其实就在本地日志里。我第一版在自己的日志上报了 6 个警告，结果全是误报（子智能体的流量混进了平均值），现在只比较主对话、要求变化在至少两个项目里都出现才报警，每条结论都写明有多少数据支撑。\n\n完全本地运行，不联网，MIT 协议。还有一个 macOS 菜单栏小工具，变化时图标变红。\n\n```bash\nnpx nerf-watch check\n```\n\n源码：https://github.com/Abelo9996/nerf-watch\n",
+    "created_at": "2026-10-05T21:01:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12096"
+  },
+  {
+    "id": 12095,
+    "title": "【工具自荐】PillarChart：免费八字排盘 + 可核对算法，登录后可买一次性 PDF 报告",
+    "content": "自荐一个在线八字（四柱）排盘工具：**PillarChart**（站内产品名 **BaZi Chart**）。\n\n网上不少八字站是「填生日 → 给一句命运解读」。PillarChart 想做成更像日历 / 计算器的东西：输入出生日期、时辰和地点，免费排出四柱，并把每一步怎么算出来摊开给你看。\n\n主要支持：\n\n- **免费排盘**：首页即可算完整四柱，无需注册、不保存盘式\n- **计算 receipt**：UTC 时刻、夏令时扣除、真太阳时修正、前后节气等链路可核对；引擎版本号会印在结果上\n- **合盘免费**：两人四柱对照（五行互补、十神、日支关系等），不做「匹配百分比」打分\n- **一次性付费 PDF 报告**：用 Google 账号登录后可买书面报告（非订阅）；站上有样例 PDF 可先看\n- **Cloudflare Workers 栈**：Next.js 部署在 Workers，排盘引擎是自研 TypeScript，不调用外部算命 API\n\n网站地址：https://pillarchart.com/?utm_source=ruanyf_weekly\n\n需要注意的是，网站目前只有英文界面，面向海外读者；内容页会引用可核对的古典出处，并标明我们自己的翻译与方法约定（例如立春换年、真太阳时等）。短 AI 解读若出现，站点会标明仍是小范围试用，不是主卖点。\n\n这个工具比较适合想自己核对四柱算法的人、需要一份可下载 PDF 报告的读者，以及想看「免费计算器 + 一次性报告」这种独立开发变现路径的人。开发过程（引擎校验数字、Workers 栈、内容与报告漏斗）写了一篇英文开发日志：https://dev.to/_df88eb1337eb23b75c94ba/build-log-a-free-bazi-chart-calculator-and-one-time-pdf-reports-on-cloudflare-workers-12n1 。欢迎试用和反馈。\n\n一个免费八字四柱排盘站，展示可核对的计算 receipt，登录后可买一次性 PDF 报告；跑在 Cloudflare Workers 上。\n\n![首页排盘表单](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/afw30op7snahbnj8s1bo.png)\n\n![结果页四柱 + 打开的 receipt](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/pe06mxkkerx9vwoxiscs.png)",
+    "created_at": "2026-10-05T19:35:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12095"
+  },
+  {
     "id": 12094,
     "title": "【开源自荐】SunoMCP：在 AI 对话里生成音乐，并取回最终音频",
     "content": "我是 AceDataCloud 项目方，自荐 [SunoMCP](https://github.com/AceDataCloud/SunoMCP)，一个 MIT 开源的 MCP 服务。它让 Claude、VS Code 等支持 MCP 的客户端直接生成音乐、写歌词、延长或翻唱已有作品，并通过任务查询取回最终结果。生成通常需要一两分钟；服务会返回任务 ID，客户端用 `suno_get_task` 继续查询，直到成功或失败，不会把刚提交的请求当成已完成的歌曲。\n\n**实际成品**：我们用托管 MCP 输入“Gentle lo-fi instrumental background for a coding tutorial, warm electric piano, soft steady drums, no vocals.”，选择 `chirp-v5-5` 和纯音乐模式。任务约 121 秒后完成，返回两首 MP3：[第一首（约 127 秒）](https://platform3.cdn.acedata.cloud/suno/a5c058a6-3cba-4b00-b735-e5c8b3f5856e.mp3)、[第二首（约 161 秒）](https://platform3.cdn.acedata.cloud/suno/af98031f-1502-499d-90fa-293592bf87bd.mp3)。这次生成和取回发生在 2026 年 9 月；截至 2026 年 10 月 6 日，两个音频链接仍可访问。\n\n**如何试用**：根据[项目 README](https://github.com/AceDataCloud/SunoMCP#quick-start)获取 API Token，把 `https://suno.mcp.acedata.cloud/mcp` 加到支持远程 MCP 的客户端；也可在 Python 3.10+ 环境运行 `uvx --from mcp-suno==2026.10.5.0 mcp-suno`，作为本地 stdio MCP 服务。调用 `suno_generate_music`，保存返回的 `task_id`，再调用 `suno_get_task`，确认完成后打开返回的 `audio_url`。README 有各客户端配置示例。\n\n项目并非 Suno 官方服务。**MCP 软件开源，生成所用的 AceDataCloud API 收费**：2026 年 10 月 6 日公开目录中，这种普通生成请求为 0.56 Credits/次，通常返回两首；按 100 Credits/$15 套餐约 $0.084/次，按 40 Credits/$7 套餐约 $0.098/次。套餐是预付额度，美元数字是按套餐汇率换算的单次消耗，并非一笔独立的单次付款。账户折扣、套餐与价格可能变化，请以[实时服务价格](https://platform.acedata.cloud/services/suno)和实际扣费为准。\n",
@@ -774,29 +798,5 @@
     "created_at": "2026-09-30T05:34:04Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/11998"
-  },
-  {
-    "id": 11997,
-    "title": "【开源自荐】Duplex：人和 AI 共用一个浏览器",
-    "content": "仓库：https://github.com/Eric-huang799/duplex\n\n浏览器自动化工具（browser-use、Playwright MCP、Browser MCP 等）大多是 AI 在另一个自动化实例里跑流程，人只能看日志。Duplex 想换一种「共处一室」的方式：AI 就在你正在看的那个浏览器里操作。\n\n人看渲染后的页面，AI 读 DOM 与源码快照，两边共用同一个标签页和同一个实时会话。内置 stdio MCP 服务提供 24 个工具（页面快照、点击、输入、拖拽、滚动、等待、截图、标签页、批注、JS 求值等），兼容任意 MCP 客户端（opencode、Claude Code、Codex 等）；AI 的每次操作都会在页面上可视化（光标、元素高亮、\"AI 正在点击 X —— Esc 接管\"），按 Esc 随时人工接管。\n\n- 同屏协作：人看到的页面就是 AI 操作的页面，不需要另一个自动化浏览器实例\n- 会话镜像：opencode 会话在侧栏实时镜像；Codex / Claude Code 的会话可直接在面板里续聊\n- 任意 MCP 客户端可用：随应用内置 stdio 桥，首次调用工具时自动拉起浏览器\n- 内置模型可选：支持 OpenAI 兼容接口（含 Ollama）、Anthropic、Gemini\n- 写文件 / 跑命令 / 启动自定义工具都有确认弹窗，Esc / F2 全局急停\n\n说清边界：iframe 与 shadow DOM 内部暂不在快照/点击范围内；页面导航后元素引用会失效，需要重新快照；macOS 安装包未签名（首次需右键打开）；内置小模型在长任务链上明显弱于 opencode / Claude Code 这类完整方案。\n\nWindows / macOS / Linux 安装包见 Releases，MIT 协议。README 附 3 分钟双语字幕演示：\n\n![Duplex 演示](https://raw.githubusercontent.com/Eric-huang799/duplex/master/docs/screenshots/demo.gif)\n",
-    "created_at": "2026-09-30T05:33:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11997"
-  },
-  {
-    "id": 11996,
-    "title": "【工具自荐】DrNews：《科技爱好者周刊》阅读器",
-    "content": "想和大家分享一款我最近刚刚上线的手机阅读小工具——[DrNews](https://play.google.com/store/apps/details?id=com.feaxr.drnews)。\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/26bf0878-b5ca-4326-983c-31716c96f71b\" />\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68e1e6f6-e366-4a0e-81bf-94fdbd9e0f2b\" />\n\n<img width=\"300\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60360fb1-b52c-4ac3-871c-ab88c9fcc429\" />\n\n[![Watch the video](https://youtube.com/shorts/mMTdm7XtcAE)](https://youtube.com/shorts/mMTdm7XtcAE)\n\n平时大家应该也经常在 GitHub 上看各种开源项目的 README、技术文档，或者追《科技爱好者周刊》（比如阮一峰老师的 weekly 等）。但说实话，直接用手机浏览器看 Markdown 经常字太小、排版生硬、偶尔图片还加载不出来，阅读体验挺折腾的。\n\nDrNews 就是为了解决这个问题做出来的。它界面做得很干净，没有任何乱七八糟的广告或干扰 （呵呵，仅在阅读页显示一次广告）。你可以把它当成一个“Markdown 专属的舒适阅读器”：\n\n-  它可以把你关注的 GitHub 仓库或文件夹同步到手机里，随时离线看。字体、字号、护眼背景（比如舒服的复古沙棕色、纯黑模式）都能随便调，读起来就像在看一本排版精致的小杂志；\n\n-  遇到长文章时间不够时，它有智能 AI 摘要，点一下就能帮你用中文或英文总结出核心要点，快速抓重点；\n\n-  通勤路上或眼睛累了的时候，还能直接用语音朗读听文章，它会自动过滤掉代码块和网址，听感很顺畅；\n\n-  遇上特别长的文档，点一下“目录”就能快速跳转到想看的小节，非常省心。\n\n如果你平时也喜欢在手机上读 《科技爱好者周刊》等 Markdown 文章或技术资讯，推荐你试试看，欢迎反馈！",
-    "created_at": "2026-09-30T04:37:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11996"
-  },
-  {
-    "id": 11995,
-    "title": "【开源自荐】agent-manager：在一个终端界面里并排运行多个编码代理 CLI",
-    "content": "项目地址：https://github.com/YoanWai/agent-manager\n官网：https://agent-manager.dev\n开源协议：Apache-2.0\n\n我是 agent-manager 的作者。它是一个终端 UI，把 Claude Code、Codex、OpenCode、Gemini CLI 等编码代理 CLI 放在各自持久的 tmux 会话里并排运行，启动的是你本机已安装的原版 CLI，登录、订阅、配置文件和 MCP 服务器都照常沿用。所有会话的实时状态集中在一个列表里，不用进入会话就能发送提示，还可以给会话开独立的 git worktree，并用全文件 diff 审阅代理改了什么。支持 macOS 和 Linux，Windows 上需在 WSL2 中运行。\n\n![agent-manager 会话列表](https://raw.githubusercontent.com/YoanWai/agent-manager/main/docs/screenshot-sessions.png)\n",
-    "created_at": "2026-09-29T19:55:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/11995"
   }
 ]
