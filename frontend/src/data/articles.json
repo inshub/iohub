@@ -1,5 +1,117 @@
 [
   {
+    "id": 12117,
+    "title": "自荐：DiskWise — 只进废纸篓的开源 Mac 磁盘清理工具（SwiftUI）",
+    "content": "自荐项目：DiskWise\n\n- 项目链接：https://github.com/DreamOfXM/diskwise\n- 作者：DreamOfXM\n- 一句话：SwiftUI 原生的开源 CleanMyMac 平替，专清 Xcode DerivedData、node_modules、Docker；删除只进废纸篓、可撤销，零遥测零守护零联网。\n- 补充：针对开发者的专项扫描：Xcode DerivedData / 模拟器缓存、node_modules、Docker 镜像与卷、nvm/brew/pip 缓存、大文件 topN、重复文件（大小+哈希双验证）；每一项都解释「这是什么 / 删了会怎样 / 怎么恢复」。brew install --cask dreamofxm/diskwise/diskwise 一行安装。希望收录于周刊，感谢！",
+    "created_at": "2026-10-06T16:10:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12117"
+  },
+  {
+    "id": 12116,
+    "title": "【开源自荐】DiskWise：绝不真删文件的 macOS 磁盘清理器",
+    "content": "项目地址：https://github.com/DreamOfXM/diskwise\n\n一句话：开源的 macOS 磁盘清理器，唯一的删除路径是把文件移进废纸篓——代码里没有 rm -rf，整个会话可撤销。\n\n- 原生 SwiftUI，零遥测、零守护进程、无订阅；~5MB 通用 DMG，v1.7 起 Developer ID 签名 + Apple 公证\n- 整块磁盘画成一枚环，每段弧都是本次实测到的字节；扫描到哪看到哪\n- 为开发者机器而生：node_modules 按项目分组、Xcode DerivedData 逐个列示、Docker 用量只读展示；微信/钉钉/企业微信缓存有知识库级解释（是什么、删了会怎样、多久长回来）\n- 安装：brew cask / GitHub Release（附 SHA-256）/ Mac App Store；十种界面语言，Apache-2.0\n\n产品页：https://dreamofxm.github.io/diskwise/",
+    "created_at": "2026-10-06T16:06:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12116"
+  },
+  {
+    "id": 12115,
+    "title": "【网站自荐】FileOnTap：免费的浏览器本地文件转换工具，文件不上传",
+    "content": "自荐一个我自己做的免费小工具：FileOnTap。\n\n体验地址：https://fileontap.com/\n\n这是一个纯浏览器端的文件转换工具：HEIC 转 PDF / JPG / PNG、图片压缩、图片转 PDF。最大的特点是转换全程在浏览器本地完成（WebAssembly 本地解码），文件根本不经过任何服务器——不用上传、不用注册、没有水印，页面加载一次后断网也能用。\n\n做它的起因很简单：iPhone 默认存 HEIC 照片，Windows 打不开；网上的在线转换站都要先把照片上传到别人服务器，证件照、私人照片根本不敢传。所以干脆做了一个文件不出本机的版本。\n\n技术上用的是 libheif 编译成 WASM 在浏览器里解码，Canvas 做格式转换。除了 HEIC 转换，还顺手做了图片压缩和图片转 PDF，入口都在首页。\n\n欢迎试用拍砖。我是 FileOnTap 的开发者。",
+    "created_at": "2026-10-06T15:28:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12115"
+  },
+  {
+    "id": 12114,
+    "title": "【开源自荐】massCode：把代码片段、笔记和 HTTP 请求放在一起的开源开发者工作区",
+    "content": "### 软件名称\n**massCode**\n\n### 官网与仓库\n- 官网：https://masscode.io/\n- GitHub：https://github.com/massCodeIO/massCode\n- 下载：https://github.com/massCodeIO/massCode/releases/latest\n\n### 简介\nmassCode 是一个开源的桌面开发者工作区，支持 macOS、Windows 和 Linux。它最早是一个代码片段管理器，现在把代码片段、技术笔记、HTTP 客户端和常用开发小工具放在同一个应用里。\n\nAPI 请求、调用它的代码和相关说明通常分散在三个不同的工具里。在 massCode 中，它们放在一起，可以互相链接，并且全部以普通 Markdown 文件保存在本地磁盘上。\n\n### 核心特性\n1. **代码片段**：多级文件夹、标签、片段内多文件/多语言（fragments），支持 160 多种语法高亮。\n2. **笔记**：Markdown 笔记，用 `[[链接]]` 关联笔记、代码片段和 HTTP 请求；支持任务（状态、优先级、截止日期）、Mermaid 和思维导图。\n3. **HTTP 客户端**：集合、环境变量、GraphQL、WebSocket、断言与脚本、按顺序运行请求；可从 OpenAPI、Postman、Bruno 导入。\n4. **小工具**：计算笔记本、基于 Excalidraw 的画板，以及 JSON Diff、哈希、编码/解码等工具。\n5. **AI 助手**：使用自己的 API Key（OpenAI、Anthropic、Gemini、DeepSeek 等），或通过 Ollama、LM Studio 使用本地模型。\n6. **MCP**：Claude Code、Codex、Cursor 等编程智能体可以搜索和保存你的代码片段、笔记和 HTTP 请求。仅在本机监听，默认关闭。\n7. **本地优先**：没有账号，没有私有云。数据就是本地文件夹里的 Markdown 文件，可以用 iCloud Drive、Dropbox、Syncthing 或 Git 同步。\n\n### 运行环境与技术架构\n- Electron + Vue 3 + TypeScript\n- macOS、Windows、Linux\n- 安装：`brew install --cask masscode` 或 `winget install antonreshetov.massCode`\n- AGPL-3.0 开源协议\n\n### 界面截图\n![massCode](https://raw.githubusercontent.com/massCodeIO/massCode/main/docs/website/public/preview.png)\n",
+    "created_at": "2026-10-06T15:25:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12114"
+  },
+  {
+    "id": 12113,
+    "title": "【开源自荐】skill-placebo：热门 coding agent skill 的安慰剂对照实验",
+    "content": "skill-placebo 用长度相同的中性文字作为「安慰剂」，测试 9 个最热门的 coding agent skill 是否比安慰剂更好、对成本有什么影响。15 个公开任务，共 450 次试验，方法预先登记，数据公开，有中文 README。\n\n结果：9 个 skill 中 2 个优于安慰剂，1 个更差，6 个没有差别。\n\nhttps://github.com/simonether/skill-placebo",
+    "created_at": "2026-10-06T15:11:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12113"
+  },
+  {
+    "id": 12112,
+    "title": "【网站自荐】科普屋：沉浸式体验有趣的科普内容",
+    "content": "<img width=\"1024\" height=\"643\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/78393a26-58a1-456e-9506-997c89dfd8d8\" />\n\n网站的灵感来自我的 3 岁儿子，他最近迷上了太阳系里的各种星球，对宇宙和黑洞充满好奇。为了尽可能满足他无尽的好奇心，我借 AI 之力，做了这个 3D 交互式科普网站——「科普屋」。\n\n体验地址：[https://kepuwu.cn](https://kepuwu.cn)\n\n我希望把一些难以用语言向小朋友解释的知识，变成可以亲手探索的画面：行星是怎么围绕太阳转的？地球和太阳的大小差多少？太阳打开来看里面有什么？太阳、木星上的声音是怎么样的？黑洞又是怎么形成的？通过点击、拖动和缩放，让他在玩耍中慢慢建立直观的认识。\n\n然后既然是给 3 岁小朋友做的，操作做了尽可能的简化，目标是让大人简单的指导下，他自己就能上手操作探索。\n\n内容从他最喜欢的宇宙和太阳系开始，也逐渐扩展到了更多主题：\n\n- 宇宙与太阳系：观察行星运行，探索太阳系与黑洞的形成，从地球出发感受宇宙有多大。\n- 万物的尺度：比较细胞、恐龙、海洋生物与天体的大小，直观感受不同生命和星球之间的尺度差异。\n- 自然现象：通过 3D 演示，了解雨、风和闪电是怎样形成的。\n- 科技发展史：沿时间轴看看汽车、电话和计算机的演变。\n\n打开浏览器就能体验，欢迎大朋友、小朋友来逛逛，也欢迎和孩子一起探索。",
+    "created_at": "2026-10-06T14:09:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12112"
+  },
+  {
+    "id": 12111,
+    "title": "【开源自荐】STCN100 程序化的 ASD-STE100 中文版",
+    "content": "https://github.com/lenML/stcn100/\n\n用法：\n把下面这个复制发给 coding agent\n\n```\n请阅读\nhttps://raw.githubusercontent.com/lenML/stcn100/main/skill/SKILL.md\n然后扫描当前项目中的中文技术文档，根据 stcn100 的建议修复问题。\n修复后重新运行 stcn100，并汇总已修复项和仍需人工判断的项。\n```\n\n不只是代码，其他领域也可以开发适配，规则还不算多，会持续完善。\n\n自评：\n说实话我每次用都很怀疑作用在哪，因为其实 ai 生成的文档需要 lint 改动的地方其实不多，但是出乎意料的是，我每次让 agent 跑完我都会感觉我的 coding agent 变聪明了一点，我估计很可能有消除噪声的奇效。\n这个项目的出发点本来是 Karpathy 提出的让 llm 简化和人类交流，但是我发现，更重要的是可以用规则简化 ai 自身的上下文。\n",
+    "created_at": "2026-10-06T13:35:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12111"
+  },
+  {
+    "id": 12110,
+    "title": "【开源自荐】Lokii：像 Everything 一样快，专为 Mac 打造的亚毫秒级原生文件搜索工具",
+    "content": "### 软件名称\n**Lokii**\n\n### 官网与仓库\n- 官方主页：https://lokii.huangy.top/\n- GitHub 仓库：https://github.com/huangy7/lokii\n- 客户端下载：https://github.com/huangy7/lokii/releases/latest\n\n### 简介\n**Lokii** 是一款极致轻量、亚毫秒级响应的 macOS 原生即时文件搜索工具，致力于在 Mac 上带来类似 Windows 下 **Everything** 般的轻巧、瞬时文件名检索体验。\n\n在 macOS 上，Spotlight 或访达搜索在定位文件时有时不够快速直接，或者在海量文件中难以做到纯文件名的“键入即出结果”。Lokii 采用 **Rust 内存倒排索引核心（`lokii-core`）+ 纯原生 Swift/AppKit 前端**的架构，在数十万文件规模下依然提供亚毫秒级延迟与极低的资源消耗。\n\n### 核心特性\n1. **亚毫秒级即时检索**：输入字符的同时结果瞬时呈现在屏幕上，50 万级文件检索延迟 < 10ms，常驻内存占用极低（< 100MB）。\n2. **多模式智能识别**：支持纯子串匹配、通配符（`*`, `?`）、正则表达式（`^...$`）以及模糊拼写容错（Fuzzy）。\n3. **FSEvents 实时无感监听**：基于 macOS 多路 FSEvents 增量事件流与防抖队列，文件增删改移与重命名实时自动同步，日常待机 CPU 开销接近为零。\n4. **全键盘极速流交互**：\n   - 全局快捷键呼出（`⌘⇧Space`）\n   - 方向键平滑导航，`Enter` 访达中直达定位\n   - `⌘C` 一键复制完整文件路径，`Esc` 瞬间隐藏退出\n5. **纯原生 AppKit 视觉质感**：高信息密度原生虚拟列表、自适应斑马纹、系统原生文件图标渲染与轻量视窗动效。\n6. **持久化紧凑缓存**：基于 bitcode 紧凑二进制格式序列化存储索引，启动瞬间热加载恢复就绪状态。\n7. **100% 离线与隐私优先**：纯本地运行，没有任何账号系统，零网络请求、零遥测与追踪埋点，文件名与目录结构绝不离开您的 Mac。\n\n### 运行环境与技术架构\n- 核心采用 Rust（2021 edition）编写，通过 UniFFI 桥接至 Swift 5.9+ / AppKit。\n- 适用于 macOS 13.0+，原生支持 Apple Silicon（M 系列）与 Intel（x86_64）双架构。\n- 基于 MIT 协议开源。\n\n### 界面截图\n![Lokii 即时搜索主界面](https://raw.githubusercontent.com/huangy7/lokii/main/assets/screenshot-main.png)",
+    "created_at": "2026-10-06T13:33:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12110"
+  },
+  {
+    "id": 12109,
+    "title": "【开源自荐】MeowOut：原生 macOS 菜单栏全能工具箱，附带一只守护健康的像素宠物",
+    "content": "### 软件名称\n**MeowOut**\n\n### 官网与仓库\n- 官方网站：https://meow.huangy.top/\n- 在线演示：https://meow.huangy.top/#demo （浏览器里可直接免安装试用全部功能）\n- GitHub 仓库：https://github.com/huangy7/MeowOut\n- 最新 Release 下载：https://github.com/huangy7/MeowOut/releases/latest\n- Homebrew 安装：`brew install huangy7/tap/meowout`\n\n### 简介\n**MeowOut** 是一款采用 Swift 原生构建的 macOS 菜单栏多合一效率工具箱。\n\n很多开发者平时电脑菜单栏上会挂着许多单一功能的小工具（剪贴板、2FA、系统监控、便签备忘、防休眠等），不仅占用内存和屏幕空间，切换也很繁琐。同时长时间伏案编码容易忘记喝水和休息。\n\nMeowOut 将高频开发者日常工具深度整合进同一个原生菜单栏应用，并引入了一只可爱的像素小宠物（猫咪、熊猫、皮卡），在菜单栏陪你工作的同时提醒定时喝水、防沉迷与正念呼吸。\n\n### 核心功能\n1. **像素伴侣与健康守护**：猫咪/熊猫/皮卡在菜单栏常驻奔跑与互动，定时提醒喝水、久坐休息，内置全屏沉浸式正念呼吸练习。\n2. **剪贴板历史**：完整记录纯文本、富文本与图片，支持模糊搜索、快捷粘贴、置顶收藏与历史清理。\n3. **快速备忘（闪念胶囊）**：原生 Markdown 备忘录，支持时间线与日历双视图，快捷键随手呼出速记窗口。\n4. **文件中转站**：轻量拖拽暂存区，随手拖入多格式文件、需要时随时拖出，支持内容快速预览。\n5. **两步验证（TOTP 2FA）**：支持主流 TOTP 算法，密钥经 macOS 原生钥匙串（Keychain）安全加密存储。\n6. **实时系统与硬件监控**：半透明面板实时展示 CPU、内存、网络、电池与磁盘状态，支持进程下钻与高能耗排行；支持合盖防休眠、电池保护模式与清洁锁屏模式（擦键盘防误触）。\n7. **日常效率扩展**：\n   - **环形快捷启动器**：长按唤出光标直达的圆形多轮盘快捷启动器。\n   - **轻量基金看板**：实时估值跟踪、隐私遮罩与持仓收益计算。\n\n### 运行环境与技术\n- 基于 **Swift 5.9+ / macOS 14.0+** 原生开发，内存占用极低，动画与交互丝滑。\n- 基于 MIT 协议开源。\n\n### 界面与动态效果\n![MeowOut 界面演示](https://raw.githubusercontent.com/huangy7/MeowOut/main/.github/assets/hero.gif)",
+    "created_at": "2026-10-06T13:12:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12109"
+  },
+  {
+    "id": 12108,
+    "title": "【开源自荐】SeshBuddy：AI 编程智能体的桌面搭档与本地会话浏览器",
+    "content": "### 软件名称\n**SeshBuddy**\n\n### 官网与仓库\n- 官网主页：https://seshbuddy.huangy.top/\n- GitHub 仓库：https://github.com/huangy7/seshbuddy\n- 客户端下载：https://github.com/huangy7/seshbuddy/releases/latest\n\n### 简介\n**SeshBuddy** 是一款专为 AI 编程智能体（AI Coding Agents）设计的原生桌面搭档与会话浏览器。\n\n随着日常越来越多地使用 Claude Code、Codex、Gemini CLI、Antigravity、WorkBuddy、opencode 等命令行智能体写代码，会话历史往往散落在各个隐藏目录（如 `~/.claude/` 等）中，想要翻查几周前的思路、检索某段关键 Prompt 或工具调用十分不便，也难以直观观察智能体调用大模型时的网络报文与 Token 消耗。\n\nSeshBuddy 直接读取并解析本地已有会话日志，在本地建立全文索引，提供树状浏览、毫秒级检索、代码 Diff 对比与 API 流量检视能力——**完全纯本地运行、零遥测、不依赖云端账户**。\n\n### 核心特性\n1. **多 CLI 会话统一管理**：集中汇聚 Claude Code、Codex、Gemini、Antigravity、WorkBuddy、DSH、opencode 等主流工具的历史会话，以树状与列表形式清晰浏览、收藏与归档。\n2. **毫秒级本地全文检索**：内置 Tantivy 搜索引擎，覆盖会话标题、提问、回复、工具调用与代码块，数周历史秒级找回。\n3. **API 流量与 Token 检视**：内置轻量反向代理，位于 CLI 与模型服务商端点之间，可直观查看请求/响应报文、延迟及 Token 用量，一键开启与还原。\n4. **Monaco 编辑器与 Git Diff 审查**：支持并排代码差异比对与语法高亮，无需切出应用即可审阅智能体所做的每一处代码修改。\n5. **纯本地隐私与离线优先**：SQLite 存储，零云端依赖与追踪埋点，断网环境下依然完全可用，工程代码与对话不离本机。\n6. **跨平台原生支持**：支持 macOS（Apple Silicon / Intel）与 Windows。\n\n### 界面截图\n![SeshBuddy 界面截图](https://raw.githubusercontent.com/huangy7/seshbuddy/main/assets/screenshot-main.png)",
+    "created_at": "2026-10-06T13:03:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12108"
+  },
+  {
+    "id": 12107,
+    "title": "拼豆图纸生成器",
+    "content": "一张照片，直接变成可以照着拼的拼豆图纸\n还在自己数拼豆格子？\n我做了一个图片转拼豆图纸的网站。\n上传照片以后，直接生成：\n✅ 拼豆网格\n✅ 色号\n✅ 每种颜色用多少颗\n✅ PDF 打印施工图\n✅ PNG / SVG\n✅ 采购清单\n人物、宠物、Logo、动漫图都可以试。\n甚至连需要买多少颗豆都给你算好了。\n小咖拼豆   https://xcoff.ee\n玩拼豆的可以存一下。",
+    "created_at": "2026-10-06T12:07:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12107"
+  },
+  {
+    "id": 12106,
+    "title": "【网站自荐】Thousand Castles：收录全球 57,640 座城堡的地图与数据库",
+    "content": "阮老师您好，\n\n我是荷兰阿姆斯特丹的一名律师（https://www.linkedin.com/in/jelledrok ），业余时间用 Claude Code 做了这个网站：https://thousandcastles.com/?lang=zh ，收录了地球上的每一座城堡。\n\n网站收录了 170 个国家的 57,640 处城堡、宫殿和要塞，资料来自 Wikidata、维基百科、Flickr 和各国的文物登记。背后是一个 6 GB 的 SQLite 数据库：190 万张照片，每座城堡都有 AI 撰写的介绍和分类，共 28.4 万段译文，支持包括中文在内的 15 种语言，每晚自动整理和排名。访客可以给城堡投票、写点评。\n\n其中中国有 218 处：长城在世界排名第 4，故宫第 7，布达拉宫第 24，西安城墙第 86。还有\"长城\"和\"福建土楼\"等专题，每个专题都有背景介绍、地图和参考文献。\n\n开发过程中 Claude Code 擅长什么、不擅长什么，我写在了\"关于\"页面：https://thousandcastles.com/over.html?lang=zh\n\n如果您觉得值得一看，希望能在周刊里介绍一下。附上四张截图：中文首页、西安城墙、福建土楼专题和地图。\n\n谢谢！\nJelle Drok（荷兰）\n\n<img width=\"1518\" height=\"1322\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c4cfb0c4-feb7-4a03-aa19-83b88e3292e6\" />\n<img width=\"1524\" height=\"1267\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/97627674-50d2-4bd5-b633-613d44c8f87e\" />\n<img width=\"1524\" height=\"1325\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/98849fb9-e25b-47f4-90e2-6cbacefcdbc9\" />\n<img width=\"1521\" height=\"1321\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/40126168-dc80-4932-8289-73e32115fe10\" />",
+    "created_at": "2026-10-06T12:06:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12106"
+  },
+  {
+    "id": 12105,
+    "title": "【工具自荐】SnappyKit：40+ 个免费在线图片工具，全部在浏览器本地处理，不上传文件",
+    "content": "**40+ 图片工具｜纯浏览器本地处理｜隐私优先｜免注册**\n\n- 产品名称：SnappyKit\n- 网站：<https://snappykit.site>\n- 支持平台：网页（桌面 / 移动浏览器）\n\n------\n\n## **中文介绍**\n\n**SnappyKit** 是一套 40+ 个免费在线图片工具的合集：格式转换（40+ 组合，含 iPhone HEIC 导入）、图片压缩、改尺寸、裁剪、滤镜调色、EXIF 查看与清除、加水印/边框，以及批量处理打包 ZIP 下载。\n\n它最大的特点是**所有处理都在浏览器里完成**（Canvas + WebAssembly），图片不会上传到任何服务器。最难啃的 HEIC 解码用的是 libheif 的 WASM 版本，转换中途断网也能正常跑完。自动化测试套件会持续断言\"全程零上传请求、零外部请求\"——隐私不是宣传语，是被测试保证的行为。\n\n无需注册登录，没有水印，没有付费墙。\n\n------\n\n## **核心功能**\n\n- **格式转换**：JPG / PNG / WebP / AVIF 互转 40+ 组合，支持 iPhone HEIC 照片（本地 WASM 解码）\n- **图片压缩**：实时质量滑杆，输出 JPG / PNG / WebP / AVIF\n- **改尺寸与裁剪**：精确像素或锁定比例（1:1 头像、16:9 缩略图、4:5 帖子等）\n- **滤镜与调整**：灰度、复古、模糊、像素化、亮度、饱和度、反色等\n- **隐私清理**：EXIF 查看器与一键清除，分享前抹掉 GPS、设备信息等元数据\n- **开发者小工具**：图片转 ICO 图标、图片转 Base64、图片转 PDF\n- **批量处理**：多文件排队处理，打包 ZIP 一次下载\n\n## **适合这些场景**\n\n- 不想把家庭照片、工作截图、客户素材传到陌生服务器的用户\n- 开发者与设计师的日常工具箱：favicon 制作、Base64 内嵌、元数据清理\n- 适配邮件附件大小限制、门户上传限制、社交平台比例要求",
+    "created_at": "2026-10-06T09:48:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12105"
+  },
+  {
+    "id": 12104,
+    "title": "【开源自荐】MyAgents：在笔记本上提需求，让 Windows 上的 Agent 干活",
+    "content": "我是 MyAgents 的作者，自荐给周刊的软件栏目。\n\n国庆这周，我把自己的几台电脑接成了一个 Agent 网络。现在坐在笔记本前，可以让 Windows 上的 Agent 用它当地的文件和环境干活，再把结果交回来。\n\nMyAgents 是免费开源的桌面 Agent 工作台与任务系统，支持 macOS / Windows。刚发布的 0.5.0 新增 AgentNet：同一账号的设备加入网络、选择开放的 Agent，就能在对话中跨设备派活，不需要自己搭服务器。\n\n我实际试了一件很小的事：问 Windows 下载文件夹里有几个日志文件。笔记本上的 Agent 找到远端设备，Windows 那边检查完，回传了 6 个文件及明细。这件事不复杂，但说明其他电脑上的文件和工具，也可以进入当前的工作。\n\n<img src=\"https://github.com/user-attachments/assets/4f1ed577-902f-420d-9d05-3375591ee679\" alt=\"真实跨设备过程：笔记本派活给 Windows，结果回传 6 个文件及明细\" width=\"540\" />\n\n单机也能使用：每个 Agent 有自己的工作区、模型、Skill 和工具，日常事务可以建成定时任务。支持 Claude Agent SDK、Codex、DeepSeek Harness 等运行环境。\n\n客户端采用 AGPL-3.0-only；模型订阅或 API 按所选服务商计费。跨设备调用要求目标电脑在线、应用运行、相应 Agent 已开放，设备间任务与结果端到端加密。\n\n- 官网与下载：https://myagents.io/?utm_source=ruanyf_weekly&utm_medium=referral&utm_campaign=v050\n- 开源仓库：https://github.com/hAcKlyc/MyAgents\n- 0.5.0 发布说明：https://github.com/hAcKlyc/MyAgents/releases/tag/v0.5.0\n",
+    "created_at": "2026-10-06T09:44:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12104"
+  },
+  {
     "id": 12103,
     "title": "【开源自荐】霓虹天顶：在浏览器里开飞车穿过下雨的九龙",
     "content": "做了一个能在网页里开的赛博九龙，一直在下雨。从庙街夜市出发，路上的车靠左行驶，红灯会停。的士按港九红、新界绿、大屿山蓝刷色，小巴是奶油色配红顶或绿顶。按住空格就起飞，一路穿过雨云，能停到城里最高那座 1418 米的塔顶上。\n\n![庙街](https://raw.githubusercontent.com/billpwchan/neon-zenith/main/docs/media/market.jpg)\n\n整座城有 9373 栋楼，按一套规则程序生成，每栋都能撞上去。亮着的窗后面都有一个房间，靠的是 interior mapping。庙街那一段是在 Blender 里建模，再用 Cycles 烘焙的光照。另外有四条计时赛道，航道那条的金牌线是 47 秒。\n\n![云层之上](https://raw.githubusercontent.com/billpwchan/neon-zenith/main/docs/media/clouds.jpg)\n\n用的是 three.js r186 的 WebGPU 渲染器，材质全部用 TSL 写，浏览器不支持 WebGPU 时会退回 WebGL 2。电脑和手机都能玩，不用下载也不用登录。代码 MIT 协议。\n\n在线体验：https://zenith.billpwchan.art\n\n项目地址：https://github.com/billpwchan/neon-zenith\n",
@@ -694,117 +806,5 @@
     "created_at": "2026-10-01T08:44:52Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12018"
-  },
-  {
-    "id": 12017,
-    "title": "【资源自荐】ClassicEmu：用 Codex 花 7 天搭建的在线复古游戏网站",
-    "content": "阮老师好，自荐一个自己做的在线复古游戏网站：[ClassicEmu](https://classicemu.com/)。\n\n想把小时候玩过的游戏搬进浏览器，于是我用 Codex 辅助开发，花了 7 天做出了这个网站。\n\n网站可以直接在浏览器里运行复古游戏，无需另外安装模拟器。提供红白机、超级任天堂、Game Boy Advance、PlayStation 和街机等平台的游戏，也可以按平台、类型和系列浏览，或搜索游戏名称。\n\n对喜欢老游戏的朋友，这是一个重温童年游戏的入口；对关注 AI 编程的朋友，也想分享一个用 Codex 把想法做成上线产品的实践。\n\n地址：https://classicemu.com/\n\n欢迎体验，也欢迎反馈问题。\n\n### 网站截图\n\n首页\n\n<img width=\"1519\" height=\"890\" alt=\"ClassicEmu homepage\" src=\"https://github.com/user-attachments/assets/b5eaca05-294b-49de-9d2f-75a6cb88fa14\" />\n\n游戏平台列表\n\n<img width=\"1518\" height=\"720\" alt=\"ClassicEmu platform directory\" src=\"https://github.com/user-attachments/assets/92082245-67ec-4cc1-8a21-7d1512c851e2\" />\n\n超级马里奥：浏览器内运行画面\n\n<img width=\"1519\" height=\"890\" alt=\"Super Mario Bros running in the browser\" src=\"https://github.com/user-attachments/assets/8ba6dba9-ba38-4110-8605-8e32aef3fd5f\" />",
-    "created_at": "2026-10-01T08:24:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12017"
-  },
-  {
-    "id": 12016,
-    "title": "【开源自荐】DeckDelta：页面重排后仍能追踪变化的本地 PDF 演示稿审阅工具",
-    "content": "DeckDelta 用于对比同一份演示稿的两个 PDF 版本。逐页对比容易把‘第 2 页移到第 20 页’当成大量修改；这个工具先做全局一对一页面匹配，再分别标记移动、修改、新增和删除。\n\n- 在线体验：https://mozzie49.github.io/deckdelta/\n- 操作演示与静态下载包：https://mozzie49.github.io/deckdelta/demo.html\n- 源码：https://github.com/mozzie49/deckdelta\n- 当前版本：v0.1.0-alpha.1，MIT 协议，支持简体中文和英文\n\n主要功能：\n- 对照文字、数字和页面渲染差异，支持并排预览和叠加查看\n- 对重复页面、弱匹配等情况提示不确定性，可手动更正配对\n- 记录备注和审阅状态，导出包含页面预览的独立 HTML 报告\n- 无需注册，也不需要接入模型服务；内置原创虚构样例，可直接试用\n\n![DeckDelta 追踪从第 4 页移到第 2 页的图表修改](https://mozzie49.github.io/deckdelta/deckdelta-preview.png)\n\n隐私与限制：PDF 在浏览器本地处理，没有文档处理后端；托管方仍会收到应用和静态资源请求。导出的报告包含原文图片、文字、文件名和备注，分享前需要检查。每份 PDF 最多 50 页、25 MB；不支持加密文件、整份纯扫描件或 OCR。匹配属于启发式方法，渲染差异使用像素采样，可能漏检，重要内容仍需人工核对。\n\n开发说明：项目由 AI 编程助手实现，以 mozzie49 账号发布；本投稿也由 AI 助手代为整理。\n\n目前仍处于 Alpha 阶段，欢迎针对可复现的漏检、匹配问题和使用体验提出反馈。",
-    "created_at": "2026-10-01T07:35:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12016"
-  },
-  {
-    "id": 12015,
-    "title": "开源自荐】dummyscheme，轻量scheme解释器，支持 r5rs，dummyscheme，基于字节码和寄存器寻址",
-    "content": "项目地址：https://github.com/zhuzhonghua/dummyscheme\n\n在线体验地址：https://zhuzhonghua.github.io/dummyscheme/repl.html\n\n 字节码编译器，指令集基于寄存器\n- 尾调用优化\n- 一等公民延续（`call/cc`），multi-short、不限长度，用 callframe 的 copy-on-write 实现\n  （界定延续 delimited continuation 计划在不久的将来支持）\n- 扁平的 box value（受 Lua 启发），没有链条；被内层 lambda 捕获时把栈上的值装箱\n- 用 stack segment 技术做延续捕获和链遍历，思路来自 Chez Scheme\n- 增量分代 GC，两个半区（部分实现，目前未启用）\n- `syntax-rules` 卫生宏，也支持自定义省略号\n- 数值塔，支持 bignum\n- 行级调试信息，带源码位置跟踪\n- 类似 Lua 的可嵌入性和可移植性：与平台无关，容易集成进 C/C++ 宿主程序\n- r4rstest（加 `SCHEME_STD_R4RS=1` 编译）和 r5rs-tests 全部测试通过\n- 支持 dynamic-wind，与 call/cc 嵌套，可以从 dynamic-wind 的 thunk/body 里跳出去；\n  允许跳出 before 和 after，但跳进 before 和 after 并不禁止\n- values + call-with-values\n- hash-table（受 Lua 启发）\n```\n(make-hash-table)\n(hash-table-ref table key)\n(hash-table-set! table key val)\n(hash-table-for-each (lambda (key val) xxx) table)\n```",
-    "created_at": "2026-10-01T07:21:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12015"
-  },
-  {
-    "id": 12014,
-    "title": "【开源自荐】Hammerdeck：给带鱼屏和多显示器用的 macOS 键盘窗口管理工具",
-    "content": "开源地址：https://github.com/kouxing2000/hammerdeck\n官网：https://hammerdeck.peach-studio.com\n\n项目简介：\n\nHammerdeck 是一个免费开源（GPL-3.0）的 macOS 菜单栏应用，用键盘管理大屏和多块屏幕上的窗口。原生 Swift 编写，内嵌 Lua 引擎，但每个功能都是设置里的一个开关，不用写脚本。界面支持简体中文。\n\n![演示](https://hammerdeck.peach-studio.com/assets/demo-hero.gif)\n\n主要功能：\n\n- 网格：3×3、2×2 或 6 格，按一个格子放进去，按两个格子铺满两格之间的矩形\n- 跨屏：一键把窗口扔到下一块屏，或者把两块屏上的窗口整体对调\n- Deck 和 Fan：把一块大屏上的所有窗口同时摆出来，点哪个切到哪个\n- 撤销：一个快捷键撤回上一次网格、跨屏或 Deck 移动\n- 规则：显示器接上时，自动把窗口放回保存的布局\n\n每次按快捷键，屏幕上都会提示刚执行了什么，所有决定都写进本地纯文本日志。无需账号，没有遥测。\n\n安装：`brew install --cask kouxing2000/tap/hammerdeck`，或在官网下载 DMG。支持 macOS 13 及以上，Apple Silicon 和 Intel 通用，已通过苹果公证。\n",
-    "created_at": "2026-10-01T04:33:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12014"
-  },
-  {
-    "id": 12013,
-    "title": "【自荐】AI Price Institute — AI 大模型免费额度与低价 API 中转比价站",
-    "content": "网站：https://www.china-ai-arbitrage.xyz\n\nAI 服务比价站：汇总主流大模型官方价格、免费额度情报与第三方低价 API 中转报价，附真实额度测评与省钱攻略；另有游戏、流媒体会员等数字订阅比价工具。\n\n免费、无需注册，英文界面，持续更新。\n\n适合周刊「工具」或「资源」栏目，感谢！",
-    "created_at": "2026-10-01T04:02:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12013"
-  },
-  {
-    "id": 12012,
-    "title": "[自荐] RNGDLE.ART：数字模式探索与每日小游戏",
-    "content": "我参与制作了 RNGDLE.ART，一个免费的非 AI 数字小游戏与数学探索工具，想推荐给喜欢益智游戏和数字规律的朋友。\n\n官网：https://rngdle.art/\n\n- 输入 0 至 1,000,000 的整数，查看 31 种模式、因数分解和数字统计。\n- 在完整范围内统计相同或更高分数的数字占比，支持数字比较与数字沙盒。\n- 提供每日挑战，可分享数字链接或下载 PNG 卡片。\n\n无需注册，进度只保存在当前浏览器。稀有度分数用于探索与游戏，不代表数学价值或预测能力。欢迎试用并反馈问题。",
-    "created_at": "2026-10-01T03:08:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12012"
-  },
-  {
-    "id": 12011,
-    "title": "【开源自荐】Sevoflurane：原生 macOS 窗口中的 Steam，以及支持游戏窗口缩放的 Wine 引擎",
-    "content": "我是来自法国的开发者 Kagerou，想自荐一下 Sevoflurane。以下中文由 AI 协助翻译。\n\nSevoflurane 是一款免费开源的 macOS 应用，用 WebKit 在原生 Mac 窗口中显示 Windows Steam 界面，游戏下载和启动仍由 Steam 客户端负责。可以沿用现有的 CrossOver 容器，也可以使用随附的 Dormison——我维护的 Wine 分支。\n\n主要功能：\n\n- **游戏窗口缩放**：使用 Dormison 时，支持的固定分辨率游戏可以调整窗口大小、切换 macOS 全屏，游戏内部渲染分辨率保持不变。放大老游戏和视觉小说时，可选择 Lanczos、Anime4K 或 CuNNy 缩放。\n- **macOS 集成**：从菜单栏启动游戏，接收原生 Steam 通知；Steam 崩溃或卡住时可以自动重启。也支持 Steam 以外的 Windows 游戏。\n- **按游戏调整设置**：为每款游戏保存独立配置，查看帧率和帧时间曲线，保存运行记录以便比较。\n\n目前处于 Beta 阶段，需要 macOS 26 及以上和 Apple Silicon 芯片，提供简体中文界面。\n\n- 源码：https://github.com/kageroumado/sevoflurane\n- Dormison 引擎：https://github.com/kageroumado/dormison\n- 官网与下载：https://kagerou.glass/sevoflurane/zh-CN/\n- 游戏兼容性与性能报告：https://kagerou.glass/sevoflurane/games/?lang=zh-CN\n",
-    "created_at": "2026-09-30T23:57:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12011"
-  },
-  {
-    "id": 12010,
-    "title": "【工具自荐】WhenResets.com：带来源与核验标注的 Codex 公告档案",
-    "content": "项目地址：https://whenresets.com/\n公开数据：https://github.com/hyai-dev/codex-reset-evidence\n\n我做了 WhenResets.com，用来查看 OpenAI Codex 额度重置相关的公开公告：最近有哪些消息、原始来源是什么、记录属于常规重置、额度发放还是待复核。网站有中英文页面、历史时间线和公开 API；档案可下载为 CSV/JSON，修订记录与数据口径也公开。\n\n一个可复核的固定快照（2026-09-30 17:55 UTC）包含 76 条事件记录、79 条公告，其中 10 条待复核。档案明确把“已独立核验的全局重置”标为 0、来源覆盖标为 partial：公告发布的时间不等于每位用户额度实际恢复的时间，所以不会把它们混算成统一重置周期，也不报下一次重置概率。\n\n历史档案：https://whenresets.com/codex-reset-history\n固定快照：https://whenresets.com/api/v1/archive?snapshot_id=wr-668dc4b04c0ef700a55c3f8693d603ffe15af7b81bc04cb3fb865037f5f3a822\nAPI 文档：https://whenresets.com/api/openapi.json\n\n这是独立项目，与 OpenAI 无隶属关系。公开仓库只再发布自有元数据和来源链接，原始帖文仍归各作者所有；数据重用条件见仓库说明。\n",
-    "created_at": "2026-09-30T18:10:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12010"
-  },
-  {
-    "id": 12009,
-    "title": "谁在招人？（2026年10月）",
-    "content": "这里是免费的程序员招聘服务。\n\n如果你们团队正在招人，欢迎把招聘信息发在这个帖子里面。请简要描述，岗位名称、工作地点、岗位要求、团队简介、联系方式等等。\n\n## 发帖规则\n\n请遵守以下规则，违者（很可能）被拉黑。\n\n1. 同一团队招聘多个岗位，请写在一起，不要分成多个部分张贴。\n\n2. **必须披露招聘公司的名称，禁止匿名招聘。**\n \n3. 谢绝中介和猎头发帖。\n \n4. 不得发布与招聘无关的内容，且不得对公司或岗位进行评论或抱怨。\n\n有意应聘的读者，请直接与发帖人联系。\n\n## 历史帖\n\n程序员的招聘往往长期有效，大家别忘了查看上月的岗位。\n\n- 2026年：[9月](https://github.com/ruanyf/weekly/issues/11434)，[8月](https://github.com/ruanyf/weekly/issues/10950)， [7月](https://github.com/ruanyf/weekly/issues/10517)，[6月](https://github.com/ruanyf/weekly/issues/10147)，[5月](https://github.com/ruanyf/weekly/issues/9815)，[4月](https://github.com/ruanyf/weekly/issues/9454)，[3月](https://github.com/ruanyf/weekly/issues/9088)，[2月](https://github.com/ruanyf/weekly/issues/8882)，[1月](https://github.com/ruanyf/weekly/issues/8591)\n- 2025年：[12月](https://github.com/ruanyf/weekly/issues/8332)，[11月](https://github.com/ruanyf/weekly/issues/8003)，[10月](https://github.com/ruanyf/weekly/issues/7832)，[9月](https://github.com/ruanyf/weekly/issues/7674)，[8月](https://github.com/ruanyf/weekly/issues/7408)，[7月](https://github.com/ruanyf/weekly/issues/7169)，[6月](https://github.com/ruanyf/weekly/issues/6965)，[5月](https://github.com/ruanyf/weekly/issues/6771)，[4月](https://github.com/ruanyf/weekly/issues/6443)，[3月](https://github.com/ruanyf/weekly/issues/6189)，[2月](https://github.com/ruanyf/weekly/issues/6012)，[1月](https://github.com/ruanyf/weekly/issues/5830)\n- 2024年：[12月](https://github.com/ruanyf/weekly/issues/5610)，[11月](https://github.com/ruanyf/weekly/issues/5445)，[10月](https://github.com/ruanyf/weekly/issues/5253)，[9月](https://github.com/ruanyf/weekly/issues/5090)， [8月](https://github.com/ruanyf/weekly/issues/4911)，[7月](https://github.com/ruanyf/weekly/issues/4743)，[6月](https://github.com/ruanyf/weekly/issues/4550)，[5月](https://github.com/ruanyf/weekly/issues/4390)，[4月](https://github.com/ruanyf/weekly/issues/4204)，[3月](https://github.com/ruanyf/weekly/issues/4075)，[2月](https://github.com/ruanyf/weekly/issues/4002)，[1月](https://github.com/ruanyf/weekly/issues/3814)\n- 2023年：[12月](https://github.com/ruanyf/weekly/issues/3684)，[11月](https://github.com/ruanyf/weekly/issues/3599)，[10月](https://github.com/ruanyf/weekly/issues/3529)，[9月](https://github.com/ruanyf/weekly/issues/3425)，[8月](https://github.com/ruanyf/weekly/issues/3324)，[7月](https://github.com/ruanyf/weekly/issues/3222)，[6月](https://github.com/ruanyf/weekly/issues/3157)，[5月](https://github.com/ruanyf/weekly/issues/3091)，[4月](https://github.com/ruanyf/weekly/issues/3022)，[3月](https://github.com/ruanyf/weekly/issues/2960)，[1月～2月](https://github.com/ruanyf/weekly/issues/2827)\n- 2022年：[12月](https://github.com/ruanyf/weekly/issues/2771)，[11月](https://github.com/ruanyf/weekly/issues/2715)，[10月](https://github.com/ruanyf/weekly/issues/2666)，[9月](https://github.com/ruanyf/weekly/issues/2599)，[8月](https://github.com/ruanyf/weekly/issues/2542)，[7月](https://github.com/ruanyf/weekly/issues/2483)，[6月](https://github.com/ruanyf/weekly/issues/2426)，[5月](https://github.com/ruanyf/weekly/issues/2356)，[4月](https://github.com/ruanyf/weekly/issues/2309)，[3月](https://github.com/ruanyf/weekly/issues/2234)，[2月](https://github.com/ruanyf/weekly/issues/2188)，[1月](https://github.com/ruanyf/weekly/issues/2139)\n- 2021年：[12月](https://github.com/ruanyf/weekly/issues/2092)，[11月](https://github.com/ruanyf/weekly/issues/2032)，[10月](https://github.com/ruanyf/weekly/issues/1980)，[9月](https://github.com/ruanyf/weekly/issues/1913)，[8月](https://github.com/ruanyf/weekly/issues/1870)，[7月](https://github.com/ruanyf/weekly/issues/1826)，[6月](https://github.com/ruanyf/weekly/issues/1784)，[5月](https://github.com/ruanyf/weekly/issues/1747)，[4月](https://github.com/ruanyf/weekly/issues/1709)，[3月](https://github.com/ruanyf/weekly/issues/1652)，[2月](https://github.com/ruanyf/weekly/issues/1629)，[1月](https://github.com/ruanyf/weekly/issues/1580)\n- 2020年：[12月](https://github.com/ruanyf/weekly/issues/1520)，[11月](https://github.com/ruanyf/weekly/issues/1473)，[9月-10月](https://github.com/ruanyf/weekly/issues/1392)，[7月-8月](https://github.com/ruanyf/weekly/issues/1315)，[5月-6月](https://github.com/ruanyf/weekly/issues/1206)，[4月](https://github.com/ruanyf/weekly/issues/1148)，[3月](https://github.com/ruanyf/weekly/issues/1106)， [1月-2月](https://github.com/ruanyf/weekly/issues/983)\n- 2019年：[12月](https://github.com/ruanyf/weekly/issues/983)，[9月-11月](https://github.com/ruanyf/weekly/issues/798)，[8月](https://github.com/ruanyf/weekly/issues/692)",
-    "created_at": "2026-09-30T17:35:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12009"
-  },
-  {
-    "id": 12008,
-    "title": "【开源自荐】Precis：用于表格数据的质检工作台——可视化、零代码、多端可用",
-    "content": "我是 Precis 的作者，这是一个用于表格数据的质检工作台：可视化、零代码、多端可用。\n\n**项目地址**：https://github.com/AirSaiga/Precis\n\n表格是最普遍的数据载体之一，对表格数据的检查是普适需求。Precis 希望把检查做得规则更通用、门槛更低、报告更直观。\n\n- **专注表格**：支持标准Excel/CSV，报告可精确到表名、字段、行号。\n- **可视化**：用户可在画布上通过节点拖拽与线条连接进行建模，支持多种约束类型。\n- **零代码**：用户全程无需关注任何代码，内部规则通过YAML文件存储，可通过git等统一管理。\n- **多端**：支持桌面应用（Windows/macOS），CLI命令行。\n- **Agent智能化**：内置 MCP，harness可直连调用校验能力，同时支持插件化使用；GUI/CLI均自带AI助手，用户对话即可生成校验配置。\n\n目前项目处于 Alpha 阶段，Apache-2.0 开源，安装包在 Releases 页可直接下载。\n技术栈：Vue 3 + FastAPI + Electron。欢迎试用和提 Issue。\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aebd1324-b1bf-4567-970d-494a649df71b\" />",
-    "created_at": "2026-09-30T16:37:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12008"
-  },
-  {
-    "id": 12007,
-    "title": "【开源自荐】PowerTokens Video Studio：用 Excel 分镜表批量生成 AI 短剧视频的 Windows 小工具",
-    "content": "项目地址：https://github.com/PowerTokens/video-studio\n\n做 AI 短剧的时候，一集动不动几十个镜头，一条条复制提示词、等生成、再下载，很磨人。视频任务一跑就是几分钟，中途超时或者断网，你都不知道云端那个任务还在不在；重新点一次，又怕同一个镜头扣两次钱。\n\n所以我们做了这个小工具：把分镜写进 Excel/CSV，一行一个镜头，导入后批量生成。统一的角色设定会自动加到每条提示词前面，人物不容易跑偏。同时生成和下载的数量可以限制。每个任务的 Task ID 在开始轮询之前就存到本地，超时、断网、关掉软件都没关系，下次按 Task ID 继续查询和下载，不会重新提交。\n\nWindows 单文件 EXE，MIT 开源，Python/tkinter 写的，支持中英文界面切换。专注 Wan 3.0，通过 PowerTokens 的 API 调用，需要自备 Key。EXE 没有代码签名，第一次打开 SmartScreen 会拦一下，点\"仍要运行\"就行。\n\n利益相关：我是 PowerTokens 团队的。\n",
-    "created_at": "2026-09-30T16:25:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12007"
-  },
-  {
-    "id": 12006,
-    "title": "【工具自荐】智客 ZICQ：老报纸风的前沿科技博客与 AI 提示词/技能库",
-    "content": "### 网址\n- 官网：https://zicq.com/\n- AI 提示词库：https://zicq.com/zh/prompts\n- Agent 技能中心：https://zicq.com/zh/skills\n- 极客百科：https://zicq.com/zh/wiki\n\n### 简介\n我是站主，这是自荐。\n\n**智客 (ZICQ)** 是一个面向开发者与科技爱好者的前沿科技内容与工具平台。最大的特色是整站采用了民国老报纸的复古视觉排版风格（报头刊名三行式、暗红实线下划线、报纸双线与浓墨纸面感），用老报刊的阅读仪式感来承载最前沿的 AI 与计算机科技。\n\n### 核心内容与功能\n1. **AI 提示词库 (Prompts)**：精选生产级大模型指令与工作流 Prompt，方便开发者直接参考与复用。\n2. **Agent 技能中心 (Skills)**：跟踪并聚合面向下一代 AI 智能体的技能体系与实操规范。\n3. **前沿科技专刊 (News)**：聚焦大模型架构演进、编译器优化、具身智能等深度硬核资讯与论文解析。\n4. **极客百科 (Wiki)**：梳理核心技术概念与架构设计的结构化词条。\n5. **极速与纯粹**：基于 Go 语言原生自研架构，支持中英双语、响应轻快无干扰。\n\n欢迎大家体验并提出宝贵的建议与反馈！\n",
-    "created_at": "2026-09-30T15:49:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12006"
-  },
-  {
-    "id": 12005,
-    "title": "【工具自荐】onomeo：兼容 OpenAI 的 AI 接口聚合站，35 个免费模型",
-    "content": "网址：https://onomeo.com/zh\n\n我是站主，个人开发和运营，这是自荐。\n\nonomeo 是一个兼容 OpenAI 格式的 AI 接口聚合站。注册后建一把密钥，就能在自己的工具或代码里调用 DeepSeek、GLM、Gemini、Qwen 等 35 个免费模型，免费模型不扣额度，按次数限制（未付费账号每 5 小时 20 次）。不想接工具的话，网页里也能直接对话和画图。\n\n- 注册用 Google / GitHub / 邮箱，不用绑卡。\n- 站上有 SillyTavern、Cline、Open WebUI 等工具的接入步骤页。\n- Claude、GPT 等大模型只给付费账号用（5 美元得 300 万额度）。\n- 很多上游可能拿对话训练，每个模型页都写明了会、不会还是不明。\n\n目前是公测阶段，不保证所有功能都能正常使用，正在大量收集用户反馈，欢迎提。\n",
-    "created_at": "2026-09-30T14:40:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12005"
-  },
-  {
-    "id": 12004,
-    "title": "【开源自荐】Speech Wingman：离线的 Mac 语音规则提醒助手，支持中英混说",
-    "content": "作者自荐：Speech Wingman 是一个在 Mac 本地运行的语音提醒助手，适合演讲、面试或沟通练习。\n\n项目：https://github.com/AmethystineAlpaca/speech-wingman\n\n你可以写下“说到 banana 就提醒”“说汤姆的坏话就提醒，赞扬不提醒”等独立规则，点击桌面悬浮按钮开始监听。它支持中文、英文和中英混说，按当前定稿发言判断，命中后显示转录原话和简短建议。每行规则单独检查，提醒语言跟随当前发言。\n\n值得分享的地方：\n- 转录和小模型判断都在本机；应用和辅助进程使用 macOS 沙盒，没有网络权限，不会自动保存录音或转录。\n- 初次构建需要下载依赖与模型，完成后离线运行，无需账号或 API key。\n- Apple M4 / 16 GB 的短句测试中，已加载模型时约 1 秒出现转录预览。提醒还需要额外推理时间，规则越多可能越慢。\n- SwiftUI/AppKit + Silero VAD + SenseVoiceSmall + Qwen3 4B；源码 MIT，模型权重适用各自上游许可。\n\n当前是 **0.3.0 源码预览，需要自行构建**，没有现成安装包。面向 Apple Silicon / macOS 14+，建议 16 GB 内存。模型会有漏报或误报，连续长发言可能延迟提醒。\n\n[构建说明](https://github.com/AmethystineAlpaca/speech-wingman#getting-started) · [实际中英双语示例](https://github.com/AmethystineAlpaca/speech-wingman#chinese-english-both-in-the-same-sentence) · [测试与限制](https://github.com/AmethystineAlpaca/speech-wingman/blob/main/docs/validation.md)\n\n下图为当前应用界面使用虚构状态渲染的示意图，不是模型输出录像：\n\n<img src=\"https://raw.githubusercontent.com/AmethystineAlpaca/speech-wingman/d6ee991/docs/assets/floating-listening-en.png\" width=\"244\" alt=\"桌面悬浮监听按钮\">\n",
-    "created_at": "2026-09-30T12:56:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12004"
   }
 ]
