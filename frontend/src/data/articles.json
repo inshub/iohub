@@ -1,8 +1,40 @@
 [
   {
+    "id": 12128,
+    "title": "【开源自荐】共工空间：在群里 @ 队友电脑上的 Claude Code / Codex",
+    "content": "阮老师好，自荐一个我做的开源项目：共工空间，多人共用各自电脑上的 AI 编程 Agent。\n\n我们团队每个人都在自己的终端里跑 Claude Code 或 Codex，上下文各管各的：我让 Agent 改了接口队友不知道，我配好的环境队友用不上，Agent 起的服务也只有本机能看到。产品经理的需求，还得我先理解一遍再转述给 AI。\n\n所以做了共工空间，一个自托管的群聊：每个人把电脑接进来，电脑上的 Agent 就成了群里能 @ 的 Bot。@ 谁，谁的电脑就开工；过程、diff、审批全群可见，Bot 起的网页、桌面应用、小程序模拟器在群里直接打开。产品经理也可以直接 @ Bot 提需求，开发只管最后审批。\n\n- 服务器只做转发、中继和记录，不保管仓库凭据，也不调用模型\n- 本机 daemon 用 Rust 写，只往外连，不用管 NAT 和防火墙\n- Bot 之间可以接力；几台电脑能共用一份代码，冲突自动合并\n- 权限分三档，越档操作只有 Bot 主人能批\n- 服务端 Docker 一条命令部署，也有在线演示环境 http://gg.uyoqu.com\n\nApache-2.0，客户端支持 macOS / Linux / Windows。\n\n源码：https://github.com/yoqu/gonggong-space\n文档：https://yoqu.github.io/gonggong-space/\n\n![共工空间群聊与预览](https://cdn.jsdelivr.net/gh/yoqu/gonggong-space@v0.3.0/docs/promo/images/preview-workbench.png)\n",
+    "created_at": "2026-10-07T07:22:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12128"
+  },
+  {
+    "id": 12127,
+    "title": "【开源自荐】HowToWorkBetter：把 576 条职场规定写成可核查的清单，附一个能说出出处的 AI skill",
+    "content": "阮老师好，自荐一个我做的开源项目：HowToWorkBetter —— 一本 576 条的职场规定清单，外加一个能让 AI 照这份清单回答问题的 Skill。\n\n做它的起因是：网上讲职场的文章很多，但大部分讲完就完了——说「被裁了可以要 2N」，不告诉你是哪一份文件的第几条，也不告诉你哪些情况其实拿不到。我想做一份反过来的东西：每条都写清花掉什么、换回什么、依据是哪份文件的第几条。\n\n这本书有 32 节、576 条，覆盖工资、加班、年假、社保、工伤、生育、被裁、竞业、退休这些事。证据分三级：\n\n- A 级 518 条：法律法规、部委规章、官方统计原文，885 处链接可以逐条点回去核\n- B 级 51 条：推荐性国标、学会共识、单篇研究\n- C 级 7 条：只有作者经验，明写出来\n\n查不到中立依据的，宁可写「已检索，无可用依据」；各地不一样的地方一律写「按你所在省市当年公布的口径查」，不编全国统一值。\n\n工程部分是另一个重点：正文是纯 Markdown，用 Python + pandoc + typst 构建，一本书自动出四种成品——在线检索页、离线单文件 HTML（微信里能直接传，双击就开）、PDF、EPUB。CI 里跑三份检查器（体例、交叉引用 821 处、产出对齐 9 组），改坏格式当场报错。fork 下来换一套行业规则，就能生成自己领域的一本。\n\n装到 Claude Code 或 Codex 后，`workplace-decision-guide` 这个 skill 会先在你本地的 book/ 目录里把相关条目查出来，再照书里的算法回答，并注明出自第几节第几条；查不到就说查不到，不凭记忆编数字。\n\n源码：https://github.com/goodseafly/how-to-work-better\n在线检索页：https://goodseafly.github.io/how-to-work-better/\n正文 CC BY 4.0，代码 MIT。\n\n![高性价比职场指南](https://github.com/goodseafly/how-to-work-better/raw/main/og.png)\n\n欢迎试用和反馈。\n",
+    "created_at": "2026-10-07T07:00:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12127"
+  },
+  {
+    "id": 12126,
+    "title": "【开源自荐】browser4agent：AI 时代的油猴，让 Claude Code / Codex 用你已登录的浏览器",
+    "content": "阮老师好，自荐一下我做的开源项目 browser4agent：一个浏览器扩展加一个本地小程序，让任何 AI agent 使用你真实的、已登录的浏览器。\n\nClaude Code、Codex、Cursor、VS Code、Zed 通过 MCP 接入，不支持 MCP 的 agent 通过命令行接入；支持 Chrome、Edge、Firefox。全部在本机运行，不经过云端，没有遥测。\n\n最有特色的是「页面工具」，相当于给 agent 用的油猴脚本：按网址匹配网站，直接返回 agent 需要的结构化数据。比如：\n\n- YouTube 的字幕不在页面里，通用读取一小时的演讲页面，拿不到一句讲话内容；`get_transcript` 1 秒返回全部 1,162 行带时间戳的字幕。\n- 682 条评论的 Hacker News 讨论页，整页约 14.2 万 token；`get_thread` 只取 45 条顶层评论，约 6 千 token。\n\n页面工具可以在扩展内置的市场订阅，社区工具集在公开仓库里审核后发布。网站通过 WebMCP 提供的工具也会自动接入。\n\n源码：https://github.com/mantou132/browser4agent\n介绍文章：https://juejin.cn/post/7693394580931821595\n\n![browser4agent](https://raw.githubusercontent.com/mantou132/browser4agent/main/docs/preview.png)\n\n欢迎试用和反馈。\n",
+    "created_at": "2026-10-07T06:55:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12126"
+  },
+  {
+    "id": 12125,
+    "title": "【网站自荐】ETF Pilot：黄金 ETF 换算器，以及「金价」的三种含义",
+    "content": "大家好，自荐一个免费的黄金 ETF 换算工具：\nhttps://www.etfpilot.net/tools/gold-etf\n\n## 起因是一个对不上的数\n\n「金价涨了 3%，为什么我持有的 GLD 没涨 3%？」\n\n常见解释有费率、跟踪误差、买入时点，但还有一个更基础的：\n**你看到的「金价」和 ETF 跟踪的「金价」，可能不是同一个东西。**\n\n## 三种「金价」\n\n在搜索引擎里输入「金价」，至少会得到三种报价：\n\n**伦敦现货（XAUUSD）** —— LBMA 每天在伦敦定两次价，这是实物黄金的现货基准。TradingView、Google 财经上那个 XAUUSD 就是它。\n\n**COMEX 期货（GC=F）** —— 纽约商品交易所的期货报价，通常指向一个未来交割的合约。它等于现货价加上「持有到交割日」的成本：利息、仓储、保险。在利率为正的正常市场里，期货价总是高于现货，这个状态叫 contango。\n\n**上金所的 Au99.99 现货** —— 上金所的人民币/克报价，中间还叠了一层汇率。\n\n前两个的差距通常在 0.5% 到 1% 之间。举例，某一时刻：\n\n    伦敦现货      $4,293.50 / 盎司\n    COMEX 期货    $4,330.20 / 盎司\n    差额          $36.70 —— 0.855%\n\n**这不是套利机会，是「时间的价格」。** 拿着期货合约的人不需要租金库、也不需要占用现金去买金条，所以期货价必须高出一截，高出的部分正好覆盖这些成本。\n\n## 关键：黄金 ETF 跟踪的是现货，不是期货\nGLD、IAU、GLDM 都把实物金条存在金库里，按「金条价值 − 管理费」定价。它们**不持有任何期货合约**，所以对标的基准是**伦敦现货**。\n\n但网上不少换算器用的是期货价。拿期货价去换算 ETF 每股价格，每一次计算都会带进一个 0.85% 左右的系统性误差。看起来不多，但它会让「这只 ETF 是不是跟得上金价」这个判断完全失真。\n\n## 工具做了什么\n输入现货金价，换算出 IAU / GLD / GLDM 的每股价格；也可以反过来，从任一只ETF 的价格反推当前金价。双向都能算。\n\n比率不是写死的。每只 ETF 的「一股对应多少盎司」会**逐年下滑**——所有黄金 ETF都是靠卖掉一点点金条来付管理费的。所以工具用当前价格实时算比率，而不是假设一个固定的盎司数。10 万美元的仓位放十年，三只基金的费用差接近 3,000 美元（GLD 0.40%、IAU 0.25%、GLDM 0.10%）。\n\n## 一点说明\n- 只处理「美元/盎司 ↔ ETF 每股价格」，**不支持人民币/克或上金所报价**\n- 只在美股交易时段采样。休市时 ETF 价格停在上一收盘价、现货还在动，算出来的比率会漂移，所以干脆不采\n\n\n## 免责声明\n独立的第三方工具，不提供投资建议，与任何基金发行方无隶属关系。\n\n<img width=\"600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2b7fc356-8979-40a7-8171-374b23735681\" />",
+    "created_at": "2026-10-07T05:29:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12125"
+  },
+  {
     "id": 12124,
     "title": "【开源自荐】Email Marketing Bible：让 AI agent 懂邮件营销的开源 Skill",
-    "content": "阮老师好，自荐一下我写的 Email Marketing Bible，一个免费开源（MIT）的邮件营销 Agent Skill，适用于 Claude Code、Codex、Cursor、Gemini CLI 等能读取 SKILL.md 的 AI agent。\n\n我之前创办过邮件营销平台 SmartrMail（12,000 家客户，后来卖掉了），现在在做 Nitrosend。这些年做邮件最大的感受是：大模型写邮件、搭流程都很快，但缺少判断，比如欢迎邮件该发几封、为什么突然进了 Gmail 的推广栏、哪些句子一看就是 AI 写的。所以我把一份 19 章、引用 908 个来源的邮件营销指南浓缩成了一个 skill。\n\n装上之后，agent 可以：\n\n- 搭建自动化流程：欢迎、弃购挽回、流失召回等，一句话描述需求即可\n- 排查送达率问题：进垃圾箱、进推广栏、打开率突然下滑\n- 写邮件文案，并去掉“AI 味”\n- 指导 AI 做邮件设计，而不是照单全收模型的默认审美\n- 通过 MCP 操作 Klaviyo、Mailchimp、Resend 等邮件服务商，内置发送前确认，没有你的同意不会发出任何邮件\n- 查询各行业基准数据、GDPR / CAN-SPAM 等合规要求，以及电商、SaaS、非营利等 19 个行业的打法\n\n目前 GitHub 上 300 多颗星，已收录进 awesome-agent-skills。\n\n安装：\n\n```bash\nnpx skills add CosmoBlk/email-marketing-bible\n```\n\n源码：https://github.com/CosmoBlk/email-marketing-bible\n官网：https://emailmarketingskill.com\n\n![Email Marketing Bible](https://emailmarketingskill.com/og-image.png)\n\n欢迎试用和反馈。\n",
+    "content": "阮老师好，自荐一下我写的 Email Marketing Bible，一个免费开源（MIT）的邮件营销 Agent Skill，适用于 Claude Code、Codex、Cursor、Gemini CLI 等能读取 SKILL.md 的 AI agent。\n\n我之前创办过邮件营销平台 SmartrMail（12,000 家客户，后来卖掉了），现在在做 Nitrosend。这些年做邮件最大的感受是：大模型写邮件、搭流程都很快，但缺少判断，比如欢迎邮件该发几封、为什么突然进了 Gmail 的推广栏、哪些句子一看就是 AI 写的。所以我把一份 19 章、引用 908 个来源的邮件营销指南浓缩成了一个 skill。\n\n装上之后，agent 可以：\n\n- 搭建自动化流程：欢迎、弃购挽回、流失召回等，一句话描述需求即可\n- 排查送达率问题：进垃圾箱、进推广栏、打开率突然下滑\n- 写邮件文案，并去掉“AI 味”\n- 指导 AI 做邮件设计，而不是照单全收模型的默认审美\n- 通过 MCP 操作 Klaviyo、Mailchimp、Resend 等邮件服务商，内置发送前确认，没有你的同意不会发出任何邮件\n- 查询各行业基准数据、GDPR / CAN-SPAM 等合规要求，以及电商、SaaS、非营利等 19 个行业的打法\n\n目前 GitHub 上 300 多颗星，已收录进 awesome-agent-skills。\n\n安装：\n\n```bash\nnpx skills add CosmoBlk/email-marketing-bible\n```\n\n源码：https://github.com/CosmoBlk/email-marketing-bible\n官网：https://nitrosend.com/email-marketing-bible\n\n![Email Marketing Bible](https://emailmarketingskill.com/og-image.png)\n\n欢迎试用和反馈。\n\n",
     "created_at": "2026-10-07T04:30:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12124"
@@ -46,14 +78,6 @@
     "created_at": "2026-10-07T01:20:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12119"
-  },
-  {
-    "id": 12118,
-    "title": "【网站自荐】Telegram 频道审计：订阅者里到底有多少人在看帖子",
-    "content": "网址：https://tgscope.io/tools/telegram-channel-audit\n\n一个免费的 Telegram 频道审计工具，无需注册。输入频道用户名或 t.me 链接，就能看到：\n\n- 每条帖子大约被多少比例的订阅者看到（浏览量 ÷ 订阅数）；\n- 和同等规模、同语言、同主题的活跃频道相比处于什么位置，并列出同组里阅读率最高和最低的 3 个频道；\n- 一条广告帖在 1 小时、24/48/72 小时和 7 天后预计能拿到多少浏览，输入价格还能算出每千次浏览成本（CPM）。\n\n背后的研究：https://tgscope.io/rnd/telegram-channel-reach\n\n我们统计了 45,691 个订阅数过万、仍在更新的公开频道：\n\n- 订阅数一两万的频道，中位阅读率约 8%；百万级频道只有 4%，也就是每 25 个订阅者里只有 1 人看到帖子；\n- 229 个百万级频道中，有 64 个的帖子只被不到 2% 的订阅者看到；\n- 一条帖子在第一天拿到约一半的浏览，所以 24 小时后就删除的广告，只值长期广告一半的价格；\n- 中文频道的中位阅读率只有 3.5%，在所有语言里排倒数第二。",
-    "created_at": "2026-10-06T23:47:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12118"
   },
   {
     "id": 12117,
@@ -322,7 +346,7 @@
   {
     "id": 12084,
     "title": "【开源自荐】VideoSeek：本地视频素材检索，索引与检索都在本机，无需上传视频",
-    "content": "- 项目名称：VideoSeek\n- 项目地址：https://github.com/6v17/VideoSeek\n- 官网地址：https://www.lv17.top/\n- 开源协议：AGPL-3.0\n- 项目简介：本地离线运行的视频素材检索工具。用一句话、一组标签、一张截图或一句台词检索本机视频，返回精确到秒的片段位置；索引与检索都在本机完成，视频不上传。可导出剪辑草稿，帮助剪辑人员快速翻找本地素材。\n\n- 项目截图：\n\n![文搜视频](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/文搜视频.png)\n\n![字幕搜索](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/字幕搜索.png)\n\n![标签搜索](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/标签搜索.png)\n\n### 主要功能\n\n1. **文字搜镜头**：用自然语言描述画面，返回命中的时间范围，而不是只给一个文件列表。\n2. **截图搜镜头**：丢一张参考图或截一帧进去，找相似画面。\n3. **硬字幕检索**：对画面内嵌字幕做 OCR，按台词搜时间点。\n4. **标签检索**：用「蓝发」「红白服饰」这类标签组合筛镜头，结果按网格给出缩略图和时间。\n5. **导出到剪辑软件**：导出 mp4 片段、剪映草稿、Premiere XML 或达芬奇 FCPXML 时间线。\n6. **全程本地**：ONNX + Lance + FFmpeg 在本机跑，视频不上传；Windows 优先，也可从源码构建。\n7. **多种画面模型可选**：适配 openai-clip / chinese-clip / siglip2 的 base 与 large 档位，可按自己的显卡和精度需求选择。\n\n### 进阶用法\n\n- **局域网团队协作**：一台电脑建索引，多台用户同时访问搜索，素材不必复制到每台机器。\n- **Agent API（可选）**：开启本地 HTTP 接口后，可让 Cursor 等 Agent 直接调用搜索、读库与导出，数据仍留在本机。",
+    "content": "- 项目名称：VideoSeek\n- 项目地址：https://github.com/6v17/VideoSeek\n- 官网地址：https://www.lv17.top/\n- 飞书教程：https://ycnwd8tcjgtu.feishu.cn/docx/ZWkrdSqA6oJTOrxQ2XscxYtmnad\n- 开源协议：AGPL-3.0\n- 项目简介：本地离线运行的视频素材检索工具。用一句话、一组标签、一张截图或一句台词检索本机视频，返回精确到秒的片段位置；索引与检索都在本机完成，视频不上传。可导出剪辑草稿，帮助剪辑人员快速翻找本地素材。\n\n- 项目截图：\n![图搜视频](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/图搜视频.png)\n\n![文搜视频](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/文搜视频.png)\n\n![字幕搜索](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/字幕搜索.png)\n\n\n### 主要功能\n\n1. **文字搜镜头**：用自然语言描述画面，返回命中的时间范围，而不是只给一个文件列表。\n2. **截图搜镜头**：丢一张参考图或截一帧进去，找相似画面。\n3. **硬字幕检索**：对画面内嵌字幕做 OCR，按台词搜时间点。\n4. **标签检索**：用「蓝发」「红白服饰」这类标签组合筛镜头，结果按网格给出缩略图和时间。\n5. **导出到剪辑软件**：导出 mp4 片段、剪映草稿、Premiere XML 或达芬奇 FCPXML 时间线。\n6. **全程本地**：ONNX + Lance + FFmpeg 在本机跑，视频不上传；Windows 优先，也可从源码构建。\n7. **多种画面模型可选**：适配 openai-clip / chinese-clip / siglip2 的 base 与 large 档位，可按自己的显卡和精度需求选择。\n\n### 进阶用法\n\n- **局域网团队协作**：一台电脑建索引，多台用户同时访问搜索，素材在一台机器上就行了。\n- **Agent API（可选）**：开启本地 HTTP 接口后，可让 Cursor 等 Agent 直接调用搜索、读库与导出。\n- **视频理解**：支持vlm按chunk镜头连续帧拼合推断镜头内容，llm根据vlm输出、asr输出，动态判断剧情内容，规划大纲，一键选镜并生成剪映解说稿，实现粗剪。",
     "created_at": "2026-10-05T05:16:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12084"
@@ -778,31 +802,5 @@
     "created_at": "2026-10-02T02:41:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12028"
-  },
-  {
-    "id": 12027,
-    "title": "【开源自荐】Codingns4DSH：把 17 类 Agent CLI 接入 DSH 原生会话",
-    "content": "面向经常切换 AI 编程工具的开发者，Codingns4DSH 将多种外部 Agent CLI 统一投影为 DSH 原生会话。\n\n如果你同时使用 Codex、Claude Code、Gemini CLI 或其他 AI 编程工具，Codingns4DSH 的外部 Agent 集成模块可以把已安装的 CLI 接入 DeepSeek Harness（DSH）原生会话。在同一个工作区里选择 Agent、模型和思考强度，查看流式输出、工具调用、恢复、打断和用量；部分 CLI 支持权限确认、提问和插话。\n\n![Agent 选择器](https://raw.githubusercontent.com/jingyi0605/DSH-CodingNS/main/assets/screenshots/agent-picker.jpg)\n\n当前支持 17 类 Agent：Command Code、Claude Code、Kimi CLI、Gemini CLI、Pi、Codex、OpenCode、Grok Build、MiniMax Code、ZCode、CodeBuddy、WorkBuddy、Cursor CLI、Kiro CLI、Qoder、Qoder CN、Antigravity。\n\n![模型选择](https://raw.githubusercontent.com/jingyi0605/DSH-CodingNS/main/assets/screenshots/model-picker.jpg)\n\n安装：\n\n    dsh plugin --profile web add @jingyi0605/codingns4dsh@0.2.0-rc.2\n    dsh web\n\n要求 DSH 0.2.0-rc.2、Node.js >=22.19，支持 macOS/Linux/Windows。Agent 需在 DSH 外安装和登录，插件不保存凭据。\n\n项目：https://github.com/jingyi0605/Codingns4DSH\nnpm：https://www.npmjs.com/package/@jingyi0605/codingns4dsh\n许可证：GPL-3.0-or-later\n\n外部 Agent 会话的上下文由 CLI 自己组装，因此面板只显示占用百分比和总量，不显示系统、工具、消息构成明细。",
-    "created_at": "2026-10-02T02:22:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12027"
-  },
-  {
-    "id": 12026,
-    "title": "【开源自荐】Entune：只在符合语境时替换自定义词的开源听写工具",
-    "content": "我做了一个免费开源的听写工具 Entune，想解决个人词典\"一刀切\"替换的问题。\n\n语音识别常把人名和专业术语听错，个人词典可以纠正，但无条件替换又会把普通词改错。Entune 会先判断每一处替换是否符合句子语境：说 \"Claude Code\" 就写成 Claude Code，普通的 \"the cloud\" 保持不变。判断可以交给 TypeSafe 的 Jev，也可以用 Laya 在本机完成。\n\n语音识别可选云端或本地模型，录音和转写都保存在自己的电脑上。\n\n项目地址：https://github.com/eandualem/entune\n\n安装：`uv tool install entune`，然后运行 `entune`（支持 macOS 和 Windows）\n\n![历史记录：录音、转写、回放和重试](https://raw.githubusercontent.com/eandualem/entune/main/docs/demo/history-light.jpg)\n",
-    "created_at": "2026-10-01T21:42:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12026"
-  },
-  {
-    "id": 12025,
-    "title": "【开源自荐】LiteZip：免费开源的原生 macOS 压缩与解压工具",
-    "content": "我做了一个免费开源的 macOS 压缩与解压工具 LiteZip，希望把日常打包、加密、分卷和查看压缩包内容这些操作放进一个简洁的原生窗口。\n\n使用 SwiftUI / AppKit 开发，文件完全在本机处理，无需注册账号，没有广告或遥测。\n\n项目地址：https://github.com/gentpan/LiteZip\n下载地址：https://github.com/gentpan/LiteZip/releases/tag/v0.4.0\n\n主要功能：\n\n- 支持 ZIP、7Z、TAR 及常见压缩 TAR 格式的压缩与解压，内置 RAR / RAR5 解压，支持读取 ZIPX。\n- ZIP / 7Z 加密与分卷，支持批量任务、取消，以及分别压缩每个文件或文件夹。\n- 解压前查看目录、搜索文件名、校验完整性；默认解压到独立文件夹，避免覆盖已有文件。\n- 支持排除 .DS_Store、__MACOSX 等 Mac 资源文件，并提供 Finder 右键快捷操作。\n- 可制作、加密和预览 DMG 磁盘映像。\n\n目前是 0.4.0 开发预览版，支持 macOS 13 及以上，提供 Apple Silicon / Intel 通用安装包。已完成 Developer ID 签名和 Apple 公证。LiteZip 源码采用 MIT 许可，内置引擎遵循各自的开源许可。\n\nRAR 解压无需额外安装；创建 RAR 需单独安装并连接官方 RAR 编码器，其许可按 RARLAB 的规定执行。\n\n### 界面截图\n\n压缩格式、等级、密码与分卷设置集中在一个窗口，拖入文件后选择保存位置即可开始。\n\n<img src=\"https://raw.githubusercontent.com/gentpan/LiteZip/c9ae0b15bc978f275a9bcde7af423da4cdda8b5f/docs/screenshots/light.png\" width=\"560\" alt=\"LiteZip 浅色主界面：压缩等级、分卷、密码和拖放入口\">\n\n处理前可查看内容目录、搜索文件名并校验完整性；下图是加密 DMG 的实际预览。\n\n<img src=\"https://raw.githubusercontent.com/gentpan/LiteZip/c9ae0b15bc978f275a9bcde7af423da4cdda8b5f/docs/screenshots/dmg-preview.png\" width=\"720\" alt=\"LiteZip 加密 DMG 内容预览与完整性校验\">\n\n欢迎试用和反馈问题。\n",
-    "created_at": "2026-10-01T20:51:38Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12025"
   }
 ]
