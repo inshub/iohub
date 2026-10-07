@@ -1,5 +1,61 @@
 [
   {
+    "id": 12124,
+    "title": "【开源自荐】Email Marketing Bible：让 AI agent 懂邮件营销的开源 Skill",
+    "content": "阮老师好，自荐一下我写的 Email Marketing Bible，一个免费开源（MIT）的邮件营销 Agent Skill，适用于 Claude Code、Codex、Cursor、Gemini CLI 等能读取 SKILL.md 的 AI agent。\n\n我之前创办过邮件营销平台 SmartrMail（12,000 家客户，后来卖掉了），现在在做 Nitrosend。这些年做邮件最大的感受是：大模型写邮件、搭流程都很快，但缺少判断，比如欢迎邮件该发几封、为什么突然进了 Gmail 的推广栏、哪些句子一看就是 AI 写的。所以我把一份 19 章、引用 908 个来源的邮件营销指南浓缩成了一个 skill。\n\n装上之后，agent 可以：\n\n- 搭建自动化流程：欢迎、弃购挽回、流失召回等，一句话描述需求即可\n- 排查送达率问题：进垃圾箱、进推广栏、打开率突然下滑\n- 写邮件文案，并去掉“AI 味”\n- 指导 AI 做邮件设计，而不是照单全收模型的默认审美\n- 通过 MCP 操作 Klaviyo、Mailchimp、Resend 等邮件服务商，内置发送前确认，没有你的同意不会发出任何邮件\n- 查询各行业基准数据、GDPR / CAN-SPAM 等合规要求，以及电商、SaaS、非营利等 19 个行业的打法\n\n目前 GitHub 上 300 多颗星，已收录进 awesome-agent-skills。\n\n安装：\n\n```bash\nnpx skills add CosmoBlk/email-marketing-bible\n```\n\n源码：https://github.com/CosmoBlk/email-marketing-bible\n官网：https://emailmarketingskill.com\n\n![Email Marketing Bible](https://emailmarketingskill.com/og-image.png)\n\n欢迎试用和反馈。\n",
+    "created_at": "2026-10-07T04:30:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12124"
+  },
+  {
+    "id": 12123,
+    "title": "【开源自荐】charts-rs：不依赖浏览器的 Rust 图表库，27 种图表，可输出 SVG 与图片",
+    "content": "项目地址：https://github.com/vicanso/charts-rs\n\n在线试用：https://charts.npmtrend.com/\n\n## 项目简介\n\ncharts-rs 是一个用 Rust 编写的图表库，不依赖浏览器，也不依赖 Node.js：传入数据，直接得到 SVG，或者 PNG、JPEG、WebP、AVIF 图片。参数设计参考了 Apache ECharts，上手成本很低。\n\n它解决的是\"服务端出图\"这件事。以往想在后端生成一张图表，往往要起一个无头 Chrome 去跑 ECharts 再截图，又慢又重。charts-rs 把这一步变成了一次函数调用。\n\n## 核心特性一览\n\n📊 **27 种图表**：柱状图、折线图、饼图、散点图、雷达图、蜡烛图、热力图、漏斗图、瀑布图、仪表盘、矩形树图、箱线图、旭日图、桑基图、树图、关系图、直方图、和弦图、甘特图、地图、日历图、表格等，还可以把多张图拼在同一画布上。\n\n🚀 **极速生成**：实测一张柱状图生成 SVG 只要 41 微秒，生成 PNG 也只要 1.7 毫秒（M4 Pro 单线程），每来一个请求现画一张都没有压力。\n\n🖼️ **SVG 与图片都能出**：\n\n- 能显示 SVG 的地方用 SVG：任意缩放都清晰，体积小，还可以带悬停提示。\n- 显示不了的地方用图片：支持 PNG、JPEG、WebP、AVIF，尺寸可以自己指定，也能输出 2 倍图。\n\n🧩 **Rust 或 JSON 两种用法**：可以用类型化的 Rust API，也可以直接传一份 JSON。每个参数都有文档并经过校验，写错参数名会报错并给出提示，而不是悄悄被忽略。\n\n🎨 **主题与字体**：内置 10 种主题，可以自定义；支持加载自己的字体（TTF、OTF、TTC），中文没有问题，占用的内存只有字体文件本身大小。\n\n🛠️ **适用场景**：\n\n- 告警、机器人消息里带一张图（钉钉、飞书、企业微信、Slack、Telegram）\n- 日报、周报邮件\n- 导出 PDF、Word\n- 服务端渲染的看板\n- 命令行工具和定时任务\n\n# 项目截图\n\n<img width=\"1013\" height=\"722\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/17b41125-d62a-4f88-a35a-605bb49ef71a\" />",
+    "created_at": "2026-10-07T02:33:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12123"
+  },
+  {
+    "id": 12122,
+    "title": "【开源自荐】红果短剧 Mac：双来源浏览、选集下载与本地播放",
+    "content": "## 项目\n\n[红果短剧 Mac](https://github.com/jackotom/hongguo-drama-mac) — 面向 Apple Silicon 的开源短剧播放器与下载器。\n\n我是这个 Mac 移植分支的维护者。项目基于已有 GPL 开源项目改造，目标是在 Mac 上把找剧、按集下载、本地播放和分集合并放到同一个应用里，保留并注明了上游来源。\n\n### 已提供的功能\n\n- 红果与西饭两个独立来源，支持分类浏览和剧名搜索。\n- 单集、批量、区间选集下载，以及下载队列和本地剧库。\n- 播放进度记录、连续播放、兼容转码和已下载分集合并。\n- 未开放集数保留锁定状态，不提供解锁功能。\n\n当前 v1.1.3 提供 Apple Silicon / macOS 13+ 的 DMG，已完成 Developer ID 签名与 Apple 公证；同时提供应用源码和内置 FFmpeg/x264 对应源码。项目为社区修改版，非平台官方客户端，安装包不包含剧集媒体。\n\n- 源码：https://github.com/jackotom/hongguo-drama-mac\n- 下载：https://github.com/jackotom/hongguo-drama-mac/releases/tag/v1.1.3\n- 许可证：GPL-3.0\n- 技术：Electron、React、Node.js、FFmpeg\n\n### 实际界面\n\n![红果来源：分类浏览与来源切换](https://raw.githubusercontent.com/jackotom/hongguo-drama-mac/main/docs/screenshots/macos-browse.png)\n\n![西饭来源：题材与剧集目录](https://raw.githubusercontent.com/jackotom/hongguo-drama-mac/main/docs/screenshots/macos-xifan.png)\n\n项目刚开始公开维护，欢迎反馈 Mac 使用体验、接口失效和可复现的问题。平台接口与片源可用性可能变化；请仅处理有权访问和保存的内容。\n",
+    "created_at": "2026-10-07T02:00:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12122"
+  },
+  {
+    "id": 12121,
+    "title": "【开源自荐】ultramotion：给 AI agent 用的动效模板，一句话做出带配乐的视频",
+    "content": "一组开源的动效模板，做成 Agent Skill。装进 Claude Code 或 Codex 之后，跟它说一句「用液态玻璃风格做一条产品发布视频」，它就会写代码把每一帧画出来、渲染成 mp4、再配上代码合成的音乐。\n\n现在有液态玻璃、动感排版、手绘白板、综艺花字四种风格，网站上每种都放了同一句提示词用和不用 skill 的对比。\n\n网站：https://ultramotion.ai\n\n源码：https://github.com/sunsiyuan/ultramotion\n\n![](https://ultramotion.ai/assets/og.png)\n",
+    "created_at": "2026-10-07T01:37:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12121"
+  },
+  {
+    "id": 12120,
+    "title": "【游戏自荐】Krillion Coach：七题一轮的开放式问答练习",
+    "content": "我是 B.Liu，做了一个免费的开放式问答练习小游戏 Krillion Coach：\n\nhttps://krillion.space/\n\n玩家根据类别输入一个答案，而不是从选项里选择。每轮七题，可以使用每题 25 秒的计时，也可以关闭计时；支持每日练习和随机练习。每个被题库接受的答案让像素小鱼下潜，结束后可以查看答案表、复盘并复制本轮摘要。无需注册，桌面和手机浏览器均可使用。\n\n我想尝试的是把“看到答案觉得知道”和“自己从记忆中说出答案”分开，用短回合练习提取记忆，并把题库接受范围直接展示出来，方便核对。当前只有 14 个原创提示，后续希望根据真实反馈补充类别。\n\n这是独立制作的练习工具，使用自己的题库和练习计分；与官方 Krillion 游戏无关联，不复现其每日题库或稀有度算法。未被本练习题库收录的答案，也不代表它在官方游戏里错误。\n\n玩法与范围说明：https://krillion.space/guide\n\n欢迎试用并反馈题目表述、答案别名或手机上的操作问题。\n",
+    "created_at": "2026-10-07T01:21:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12120"
+  },
+  {
+    "id": 12119,
+    "title": "【网站自荐】Spelling Bee Solver：七字母英语单词游戏的分级提示与答案工具",
+    "content": "维护者自荐：我做了一个免费的 Spelling Bee 单词游戏辅助网站，无需注册。\n\n游戏给出7个不同字母，玩家要组成至少4个字母的英文单词；每个词都必须包含指定的中心字母，只能使用题目里的字母，同一个字母可以重复使用。\n\n这个工具让玩家按需要选择帮助程度：\n\n- Solver：输入题目的7个字母并指定中心字母，查找符合规则的字典候选词。\n- Hints：先看单词长度、首字母等统计，卡住时获得提示，而不立即看完整答案。\n- Answers：选择揭示已发布的每日答案；只有有来源的题目数据可用时才展示。\n- Pangram：专门查看把7种字母全部用到的单词。\n\n网站：https://spellingbeesolver.co/\n\n这是独立第三方工具，与《纽约时报》没有隶属关系。自定义字典匹配和每日发布词表分开显示；字典中的候选词不保证会被官方游戏接受。产品本身不是AI聊天工具。",
+    "created_at": "2026-10-07T01:20:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12119"
+  },
+  {
+    "id": 12118,
+    "title": "【网站自荐】Telegram 频道审计：订阅者里到底有多少人在看帖子",
+    "content": "网址：https://tgscope.io/tools/telegram-channel-audit\n\n一个免费的 Telegram 频道审计工具，无需注册。输入频道用户名或 t.me 链接，就能看到：\n\n- 每条帖子大约被多少比例的订阅者看到（浏览量 ÷ 订阅数）；\n- 和同等规模、同语言、同主题的活跃频道相比处于什么位置，并列出同组里阅读率最高和最低的 3 个频道；\n- 一条广告帖在 1 小时、24/48/72 小时和 7 天后预计能拿到多少浏览，输入价格还能算出每千次浏览成本（CPM）。\n\n背后的研究：https://tgscope.io/rnd/telegram-channel-reach\n\n我们统计了 45,691 个订阅数过万、仍在更新的公开频道：\n\n- 订阅数一两万的频道，中位阅读率约 8%；百万级频道只有 4%，也就是每 25 个订阅者里只有 1 人看到帖子；\n- 229 个百万级频道中，有 64 个的帖子只被不到 2% 的订阅者看到；\n- 一条帖子在第一天拿到约一半的浏览，所以 24 小时后就删除的广告，只值长期广告一半的价格；\n- 中文频道的中位阅读率只有 3.5%，在所有语言里排倒数第二。",
+    "created_at": "2026-10-06T23:47:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12118"
+  },
+  {
     "id": 12117,
     "title": "自荐：DiskWise — 只进废纸篓的开源 Mac 磁盘清理工具（SwiftUI）",
     "content": "自荐项目：DiskWise\n\n- 项目链接：https://github.com/DreamOfXM/diskwise\n- 作者：DreamOfXM\n- 一句话：SwiftUI 原生的开源 CleanMyMac 平替，专清 Xcode DerivedData、node_modules、Docker；删除只进废纸篓、可撤销，零遥测零守护零联网。\n- 补充：针对开发者的专项扫描：Xcode DerivedData / 模拟器缓存、node_modules、Docker 镜像与卷、nvm/brew/pip 缓存、大文件 topN、重复文件（大小+哈希双验证）；每一项都解释「这是什么 / 删了会怎样 / 怎么恢复」。brew install --cask dreamofxm/diskwise/diskwise 一行安装。希望收录于周刊，感谢！",
@@ -748,63 +804,5 @@
       "weekly"
     ],
     "url": "https://github.com/ruanyf/weekly/issues/12025"
-  },
-  {
-    "id": 12024,
-    "title": "【工具自荐】DockTerm：Claude Code 的终端工作台，权限请求从 Mac 刘海里弹出（开源，MIT）",
-    "content": "项目地址：https://github.com/munvard/dockterm\n\n我经常让 Claude Code 跑长任务，然后去做别的事，结果它在一个权限提示上等了十分钟。所以做了 DockTerm，一个免费开源的桌面工作区（Electron，MIT 协议，支持 macOS / Windows / Linux）。\n\n它不替换 claude，只是包住真实的终端会话，再加一些东西：\n\n- munu：Mac 刘海里的小脸（Windows 和 Linux 是顶部的小胶囊）。Claude 需要权限时，它把问题弹出来，全屏应用上面也能弹，点一下就能回答。它不会替你点确认。\n- 每个仓库一个窗格，多个会话放在同一个窗口里。\n- 实时显示子代理在做什么，可以审查 diff，也有简单的 Git。\n- 显示 5 小时和每周额度还剩多少（只在本地读取日志，是估算值）。\n- 本地运行，无账号，无遥测，自己不会调用任何 AI 接口，也不用装 hooks（直接读终端文字）。\n\n不足：基于 Electron，安装包比较大；Windows 版本还没有签名；状态检测依赖终端文字，Claude Code 改了提示文案时我需要跟进修复。\n\n安装：`brew install --cask munvard/dockterm/dockterm`，或者到 Releases 下载。仓库里有中文 README。\n\n作者：Moon Labs，亚美尼亚。欢迎反馈哪里会出问题。",
-    "created_at": "2026-10-01T18:25:37Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12024"
-  },
-  {
-    "id": 12023,
-    "title": "【工具自荐】49 Agents IDE：把所有 AI 编程 Agent 和终端放到一张无限画布上",
-    "content": "49 Agents IDE 是一个「2D Agent IDE」：把多个终端（真实的 tmux 会话）、多台机器、多个项目放在同一张可缩放的无限画布上。\n\n<img width=\"100%\" alt=\"49 Agents IDE\" src=\"https://github.com/user-attachments/assets/878b3926-e017-4ccc-9c54-315b647fd417\" />\n\n同时开五六个 Claude Code / Codex，十几个终端标签来回切，很容易乱。49 Agents IDE 把每个终端变成画布上的一个窗格，可以随意摆放、缩放：\n\n- 同时跑多个 Claude Code、Codex 或任意命令行 Agent（包括国产 CLI Agent），每个窗格都能看到 Agent 当前状态\n- 多台机器接入同一张画布，不用 SSH\n- 手机、平板也能打开同一个工作区\n- 画布上还有 Monaco 编辑器、Git 图、Markdown 笔记、权限请求通知\n\n推荐自托管，两条命令启动，终端和代码不离开你的机器：\n\n```bash\ngit clone https://github.com/alpbahadur/49-IDE.git && cd 49-IDE\n./49ctl setup && ./49ctl start   # 打开 http://localhost:1071\n```\n\n项目地址：https://github.com/alpbahadur/49-IDE （源码公开，BSL 1.1 许可，自托管免费）\n",
-    "created_at": "2026-10-01T18:21:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12023"
-  },
-  {
-    "id": 12022,
-    "title": "工具自荐：OpenJob——本地优先的 AI 求职工作台（人工确认制）",
-    "content": "**项目**：OpenJob\n**链接**：https://github.com/Batianxieshen1/OpenJob\n**分类建议**：工具\n\n**一句话介绍**：本地优先的 AI 求职工作台：Boss直聘岗位自动采集 + AI 五维评分 + 人工确认投递，数据全部留在自己电脑里。\n\n**详细介绍**：\n\nOpenJob 是一个装在自己电脑里的求职工作台（Python + React，MIT 协议）。它把找工作中的重复劳动自动化：在专用 Chrome 里自动翻页采集岗位、去重入库；AI 按五个维度（职责匹配 / 证据强度 / 硬性要求 / 工具技能 / 实际可行性）打分并给出评分理由；再按 JD 定向改写简历——逐行等长换写、排版零损伤、编造内容自动拦截；最后生成定制招呼语。\n\n设计上的核心铁律是「人工确认」：所有对外发送动作（打招呼 / 发简历 / 回复 HR）都必须在确认队列里逐条放行，代码层面不存在绕过路径。风控方面有单日页面访问硬上限、随机冷却、发送时间窗、模拟浏览节奏。岗位数据、简历、素材库、API Key 全部本地自持，唯一外发请求是对 AI 服务的调用。\n\n内置 Web 工作台（岗位池 / 市场分析 / 确认队列 / 简历工作台，明暗双主题），支持工作台存活期间的定时采集、HR 回复监听与投后管理（约面试 / Offer / 拒绝流转）。\n\n**适合谁**：正在集中求职（尤其校招 / 实习）、想把重复劳动交给工具、但保留每一个投递决定权的求职者。",
-    "created_at": "2026-10-01T17:35:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12022"
-  },
-  {
-    "id": 12021,
-    "title": "ReelTextStudio：把本地保存的音视频转成可编辑英文文本",
-    "content": "网站：https://reeltextstudio.com/\n\nReelTextStudio 是一个浏览器内转写工具：选择已经保存到本机、且浏览器可播放的音频或视频文件，即可把其中的英文语音转成可编辑文字，并可复制或下载为 TXT。\n\n它不抓取社交平台链接，也不需要注册账号。适合把自己已保存、并且有权使用的短视频或音频整理为文字。",
-    "created_at": "2026-10-01T14:44:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12021"
-  },
-  {
-    "id": 12020,
-    "title": "【资源自荐】Agent Needs：免注册收集 AI Agent 工作流真实卡点的小站",
-    "content": "网站：https://catalog-check.leevi2010.chatgpt.site\n\n做了一个早期需求收集站 Agent Needs，想先弄清楚开发者实际使用 AI Agent 时卡在哪里，再决定值得做什么工具。目前处于免费、开放的需求发现阶段，没有支付或售卖功能，也还没有真实用户需求验证。\n\n如果你在使用或开发 Agent，欢迎提交一次真实经历：\n- 当时要完成什么任务？\n- 具体卡在了哪一步？\n- 现在怎么绕过去，出现频率和影响有多大？\n\n可以直接在网页填写，不需要注册、邮箱或钱包。也提供 POST /api/v1/needs 接口，便于在获得操作者授权后，从工作流提交问题。必填字段是 task（10–500 字符）、problem（20–2000 字符）和 consent: true；可选补充 agent、workaround、frequency、impact、buyer。\n\n提交内容先进入私有待审核队列，审核后可能公开展示；提交前页面会提示这一点。请只提交有权分享的信息，不要填写密码、API Key、客户隐私或公司机密。目前这只是收集和验证需求的实验，不承诺每个问题都会获得解决。\n\n欢迎 Agent 开发者、自动化工作流使用者体验并反馈。此投稿由 AI 助手协助整理并代为发布。",
-    "created_at": "2026-10-01T09:58:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12020"
-  },
-  {
-    "id": 12019,
-    "title": "【开源自荐】Cursor Remote Lite：电脑不用带在身边，用手机接着用电脑上真实的 Cursor",
-    "content": "Cursor Remote Lite：电脑不用带在身边，也能在手机上接着用电脑里真实的 Cursor。\n\n- 源码：https://github.com/Suchenl/cursor-remote-lite （MIT）\n- 演示视频：https://www.bilibili.com/video/BV1HFaz6bEj3\n\n场景：早上让 Cursor 的 Agent 去修 bug，项目在公司的 GPU 服务器上，然后人去通勤、开会、出差，电脑没带。这期间 Agent 会停下来等你点「Run」，或者用提问的方式问你问题，一停就是半天。\n\n现有办法的不足：官方手机端只有 iPhone、需要付费套餐、只管 Agents 窗口；远程桌面在手机上看缩小的电脑屏幕，点按钮、打字都吃力，Agent 等你时也不提醒。\n\n这个项目在电脑上跑一个很小的中继，通过 Chrome DevTools 协议操作电脑上的 Cursor，手机上是为手机设计的界面：\n\n- 回答 Agent 的提问、收到推送后批准命令\n- 随时布置下一个任务，Agent 运行中发的消息自动排队\n- 逐个保留 / 撤销 Agent 改动的文件\n- 本地窗口、SSH 远程窗口、Agents 窗口都能用，可以换模型和思考强度\n- 经 Cloudflare 隧道访问，手机和电脑不用在同一个 Wi‑Fi；扫码配对；安卓 App + iPhone 添加到主屏幕\n\n![演示](https://raw.githubusercontent.com/Suchenl/cursor-remote-lite/main/docs/quickstart.gif)\n\n限制：电脑需要开着、不能睡眠；启动和后台服务脚本目前只支持 macOS（Windows 需手动启动）。\n",
-    "created_at": "2026-10-01T09:45:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12019"
-  },
-  {
-    "id": 12018,
-    "title": "【软件自荐】MSL Desktop：面向医学联络官的 Windows 工作台",
-    "content": "## MSL Desktop：医学联络官的日常工作台\n\n项目自荐。MSL（医学联络官）的日常工作会留下很多零散信息：拜访时专家的一句话、研究项目的新进展、等待回复的问题、下次交流要准备的资料。记录散开以后，后续跟进很容易丢掉背景。\n\nMSL Desktop 把专家交流、临床与非临床项目、任务、等待事项、日历和资料放在一起。设计时坚持一句话：**不要让记录工作变成比工作本身更耗费时间的事。**\n\n使用时可以先留下一句原话，让秘书结合已有项目准备整理建议；用户可以修改、暂缓或确认，确认后再写入正式事项。用户对方向的调整会纳入后续整理。AI 嵌在这些步骤中，日常工作仍由用户决定。\n\n- 专家交流可以积累为带来源的洞察，后续拜访能够找回背景。\n- 项目问答、简报和周月报依据工作台已有记录起草，使用前仍需核对。\n- 工作数据与安装目录分开保存，支持本地备份及云盘文件夹同步，关联目录中的源文件只读。\n- 新版微信入口中，普通文字直接记入收件箱；发送「召唤秘书」才打开五项菜单，可发起全局整理、生成每日简报、查看进度与待确认数量，或退出菜单。接收电脑需联网并运行工作台，建议仍在桌面端确认。\n\n技术栈为 Tauri 2、Rust、Svelte 和 SQLite。当前提供 Windows x64 安装包，macOS 版本正在开发。\n\n**使用边界：**远程模型需要配置自己的 API Key，相关记录和资料会发送给所选服务商，并产生该服务商的调用费用。请遵守所在机构的数据与合规要求；生成内容需人工核对，不用于自动作出临床决策。微信账号接入情况以微信服务返回为准。\n\n官网与下载：https://msl-desktop.pages.dev/\n\n源码与更新记录：https://github.com/holobunganan-sketch/msl-desktop\n\n下图使用演示数据：\n\n![MSL Desktop 项目页面，演示数据](https://msl-desktop.pages.dev/assets/project.png)",
-    "created_at": "2026-10-01T08:44:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12018"
   }
 ]
