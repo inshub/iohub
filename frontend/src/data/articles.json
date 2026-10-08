@@ -1,5 +1,13 @@
 [
   {
+    "id": 12132,
+    "title": "【开源自荐】Codingns4DSH：把 17 个外部 Agent 接入 DSH 原生会话",
+    "content": "面向经常切换 AI 编程工具的开发者，Codingns4DSH 将多种外部 Agent CLI 统一投影为 DSH 原生会话。\n\n如果你同时使用 Codex、Claude Code、Gemini CLI 或其他 AI 编程工具，Codingns4DSH 的外部 Agent 集成模块已支持 **17 个外部 Agent**，可以把已安装的 CLI（命令行工具）接入 DeepSeek Harness（DSH）原生会话，在同一个工作区切换使用。\n\n按各 CLI 的实际能力，插件提供模型选择、流式输出、工具调用、会话恢复、打断、思考强度及用量展示；支持的 CLI 还可在 DSH 原生界面完成权限确认、提问和插话。各 Agent 的能力有所不同，详见 [README 能力表](https://github.com/jingyi0605/Codingns4DSH#支持的外部-agent)。\n\n![外部 Agent 选择器](https://github.com/user-attachments/assets/5b7c4415-ce9b-404d-b74f-96562329238e)\n\n**完整名单：17 个外部 Agent（不含内置的 DeepSeek Harness Agent）**\n\n1. Command Code\n2. Claude Code\n3. Kimi CLI\n4. Gemini CLI\n5. Pi Agent\n6. Codex\n7. OpenCode\n8. Grok Build\n9. MiniMax Code\n10. ZCode\n11. CodeBuddy（自动识别 CN / 国际版）\n12. WorkBuddy\n13. Cursor CLI\n14. Kiro CLI\n15. Qoder\n16. Qoder CN\n17. Antigravity\n\nCodeBuddy 的 CN / 国际版由同一适配器自动识别区域；Qoder 与 Qoder CN 分别列出。\n\n![外部 Agent 集成设置](https://github.com/user-attachments/assets/a92c45c4-c39d-4278-8dee-0d4f6e19a999)\n\n安装：\n\n    dsh plugin --profile web add @jingyi0605/codingns4dsh@0.2.1-beta.3\n    dsh web\n\n当前安装版本为 `0.2.1-beta.3`（预发布版）；兼容 DSH `>=0.2.0-rc.2 <=0.2.1-alpha.1`，已验证 `0.2.1-alpha.1`；要求 Node.js `>=22.19`，支持 macOS、Linux、Windows。Agent 需在 DSH 外安装并登录，由各 CLI 管理凭据，插件不保存 Agent 凭据。\n\n项目：https://github.com/jingyi0605/Codingns4DSH\nnpm：https://www.npmjs.com/package/@jingyi0605/codingns4dsh\n许可证：GPL-3.0-or-later\n\n外部 Agent 会话的上下文由 CLI 自己组装，因此面板只显示占用百分比和总量，不显示系统、工具、消息构成明细。",
+    "created_at": "2026-10-07T23:46:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12132"
+  },
+  {
     "id": 12131,
     "title": "【网站自荐】Footprint：把你做的、喜欢的东西放在一个页面上，一个名字，属于你",
     "content": "网站：https://www.footprint.onl\n\n示例页面：https://www.footprint.onl/ae\n\nFootprint 是一个属于你自己的页面。图片、视频、音乐、链接、文字，凡是你做的、你喜欢的东西，都可以放进来，自由排列成不同的“房间”和合集。一个地方，一个名字，是你的。\n\n- 不用注册就能开始：打开示例页面，点左上角菜单里的 make one，起个名字就可以搭建。\n- 搭建和分享草稿是免费的；想永久保留那个名字（footprint.onl/你的名字）时，一次性付费认领，没有订阅。\n- 没有信息流、关注数和算法排序，页面就是页面。\n- 界面支持简体中文、英文、日文、韩文、印地文、阿拉伯文、希伯来文。\n\n这是自荐，由 Footprint 制作方提交。欢迎提意见。",
@@ -789,18 +797,10 @@
   },
   {
     "id": 12032,
-    "title": "【开源自荐】Codingns4DSH：把 17 类 Agent CLI 接入 DSH 原生会话",
-    "content": "面向经常切换 AI 编程工具的开发者，Codingns4DSH 将多种外部 Agent CLI 统一投影为 DSH 原生会话。\n\n如果你同时使用 Codex、Claude Code、Gemini CLI 或其他 AI 编程工具，Codingns4DSH 的外部 Agent 集成模块可以把已安装的 CLI 接入 DeepSeek Harness（DSH）原生会话。在同一个工作区里选择 Agent、模型和思考强度，查看流式输出、工具调用、恢复、打断和用量；部分 CLI 支持权限确认、提问和插话。\n\n![外部 Agent 选择器](https://github.com/user-attachments/assets/5b7c4415-ce9b-404d-b74f-96562329238e)\n\n当前支持 17 类 Agent：Command Code、Claude Code、Kimi CLI、Gemini CLI、Pi、Codex、OpenCode、Grok Build、MiniMax Code、ZCode、CodeBuddy、WorkBuddy、Cursor CLI、Kiro CLI、Qoder、Qoder CN、Antigravity。\n\n![外部 Agent 集成设置](https://github.com/user-attachments/assets/a92c45c4-c39d-4278-8dee-0d4f6e19a999)\n\n安装：\n\n    dsh plugin --profile web add @jingyi0605/codingns4dsh@0.2.0-rc.2\n    dsh web\n\n要求 DSH 0.2.0-rc.2、Node.js >=22.19，支持 macOS/Linux/Windows。Agent 需在 DSH 外安装和登录，插件不保存凭据。\n\n项目：https://github.com/jingyi0605/Codingns4DSH\nnpm：https://www.npmjs.com/package/@jingyi0605/codingns4dsh\n许可证：GPL-3.0-or-later\n\n外部 Agent 会话的上下文由 CLI 自己组装，因此面板只显示占用百分比和总量，不显示系统、工具、消息构成明细。",
+    "title": "【开源自荐】Codingns4DSH：把 17 个外部 Agent 接入 DSH 原生会话",
+    "content": "面向经常切换 AI 编程工具的开发者，Codingns4DSH 将多种外部 Agent CLI 统一投影为 DSH 原生会话。\n\n如果你同时使用 Codex、Claude Code、Gemini CLI 或其他 AI 编程工具，Codingns4DSH 的外部 Agent 集成模块已支持 **17 个外部 Agent**，可以把已安装的 CLI（命令行工具）接入 DeepSeek Harness（DSH）原生会话，在同一个工作区切换使用。\n\n按各 CLI 的实际能力，插件提供模型选择、流式输出、工具调用、会话恢复、打断、思考强度及用量展示；支持的 CLI 还可在 DSH 原生界面完成权限确认、提问和插话。各 Agent 的能力有所不同，详见 [README 能力表](https://github.com/jingyi0605/Codingns4DSH#支持的外部-agent)。\n\n![外部 Agent 选择器](https://github.com/user-attachments/assets/5b7c4415-ce9b-404d-b74f-96562329238e)\n\n**完整名单：17 个外部 Agent（不含内置的 DeepSeek Harness Agent）**\n\n1. Command Code\n2. Claude Code\n3. Kimi CLI\n4. Gemini CLI\n5. Pi Agent\n6. Codex\n7. OpenCode\n8. Grok Build\n9. MiniMax Code\n10. ZCode\n11. CodeBuddy（自动识别 CN / 国际版）\n12. WorkBuddy\n13. Cursor CLI\n14. Kiro CLI\n15. Qoder\n16. Qoder CN\n17. Antigravity\n\nCodeBuddy 的 CN / 国际版由同一适配器自动识别区域；Qoder 与 Qoder CN 分别列出。\n\n![外部 Agent 集成设置](https://github.com/user-attachments/assets/a92c45c4-c39d-4278-8dee-0d4f6e19a999)\n\n安装：\n\n    dsh plugin --profile web add @jingyi0605/codingns4dsh@0.2.1-beta.3\n    dsh web\n\n当前安装版本为 `0.2.1-beta.3`（预发布版）；兼容 DSH `>=0.2.0-rc.2 <=0.2.1-alpha.1`，已验证 `0.2.1-alpha.1`；要求 Node.js `>=22.19`，支持 macOS、Linux、Windows。Agent 需在 DSH 外安装并登录，由各 CLI 管理凭据，插件不保存 Agent 凭据。\n\n项目：https://github.com/jingyi0605/Codingns4DSH\nnpm：https://www.npmjs.com/package/@jingyi0605/codingns4dsh\n许可证：GPL-3.0-or-later\n\n外部 Agent 会话的上下文由 CLI 自己组装，因此面板只显示占用百分比和总量，不显示系统、工具、消息构成明细。",
     "created_at": "2026-10-02T06:04:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12032"
-  },
-  {
-    "id": 12031,
-    "title": "【资源自荐】Dot 小绿皮书：从第一次任务到长期协作的中文开源指南",
-    "content": "大家好，我是这个项目的作者，想自荐一份面向中文读者的非官方 Dot 实用指南：《Dot 小绿皮书》。\n拿到 Dot 之后，第一件事该交给它做什么？这份指南从一个小任务开始，逐步介绍如何交代责任、连接资料、设置长期跟进，以及检查、纠错和停止任务。\n目前包含：\n- 8 章渐进教程，每章配有可复制指令、练习和验收清单\n- 61 个常见问答，覆盖入门、连接、长期跟进与排错\n- 10 个公开用户案例，附来源和证据局限，未作独立复现实测\n在线阅读无需注册，也不需要编程基础。实际使用 Dot 仍取决于 OpenAI 的套餐、地区、分批开放及相关权限。\n在线阅读：https://tiee7.github.io/dot-green-book/\n第一次小任务：https://tiee7.github.io/dot-green-book/learn/first-task/\n开源仓库：https://github.com/Tiee7/dot-green-book\n代码和原创教程采用 MIT 许可证；第三方引用内容仍归原作者所有。\n欢迎试读、纠错，也欢迎反馈第一次使用 Dot 时最容易卡住的地方。感谢！",
-    "created_at": "2026-10-02T04:16:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12031"
   }
 ]
