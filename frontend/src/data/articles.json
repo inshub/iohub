@@ -1,5 +1,29 @@
 [
   {
+    "id": 12194,
+    "title": "【开源自荐】Droidline，用几行代码让安卓手机自己动起来，不用 ADB 和 root",
+    "content": "**项目地址**\n\nhttps://github.com/KnifeLemon/Droidline\n\n**一句话介绍**\n\n手机装一个应用，扫码和电脑配对一次，之后电脑上的 Python、Node.js、C# 代码或命令行就能通过 Wi-Fi 操作手机：按文字找到按钮点下去、输入文字、截图、读取通知。不用开 USB 调试，不用 root，免费开源。\n\n![演示](https://github.com/KnifeLemon/Droidline/raw/main/docs/media/demo-zh.webp)\n\n**能做什么**\n\n- 在真机上测试自己的应用，包括跨应用的流程，比如登录时去短信里拿验证码（Android 14 及以下，15 起系统会隐藏通知里的验证码）\n- 读取通知并处理，比如银行到账通知一来，就自动把订单标记为已收款\n- 同一个脚本同时跑在多部手机上。手机可以和电脑在同一个 Wi-Fi，也可以用移动数据通过隧道或自建中继连回来，全程端到端加密\n- 交给 AI：自带 MCP 服务器，Claude、ChatGPT、Cursor 这类 AI 可以看手机屏幕并操作\n- 命令行也能用，比如 `droidline touch text \"设置\"`\n\n**怎么做的**\n\n电脑端是 Go 写的服务器，手机端是 Kotlin 写的无障碍服务。找元素这一步直接在手机上完成，不像 adb + uiautomator 那样每次都把整个界面导出成 XML 文件再读回电脑。在 Galaxy S23 Ultra 上按文字找一个元素，10 次中位数是 16 ms，Appium UiAutomator2 是 100 ms，adb + uiautomator 是 2,368 ms。\n\n所有命令写在一份规格文件里，Python、Node.js、C# SDK、命令行和 MCP 工具都从它生成，所以 `touch` 在哪里都叫 `touch`。\n\n踩过的一个坑：一开始内置了开关 Wi-Fi、飞行模式的命令，做法是打开系统设置去点按钮。结果每家厂商、每个 Android 版本、每种语言的按钮文字都不一样，光是三星的韩文系统就把飞行模式叫“搭乘飞机模式”，小屏手机上要点的那一项还在屏幕外面。最后把这些命令删了，改成文档里的示例，按自己手机上的文字改一下就能用。关 Wi-Fi 这种会断开连接的步骤，可以放进 `batch` 交给手机离线执行，重新连上后再把结果交回来。\n\n**下载**\n\n- 应用和电脑端：https://github.com/KnifeLemon/Droidline/releases/latest （Android 9 及以上；电脑支持 Windows、macOS、Linux）\n- SDK：`pip install droidline`、`npm install droidline`、`dotnet add package Droidline`\n- 文档：https://droidline.dev/zh/",
+    "created_at": "2026-10-09T23:25:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12194"
+  },
+  {
+    "id": 12193,
+    "title": "【开源自荐】Filee，按住按键拖动文件，在光标处一键转换格式",
+    "content": "**项目地址**\n\nhttps://github.com/KnifeLemon/Filee\n\n**一句话介绍**\n\n转换文件格式不用再打开软件找导出菜单。按住 Ctrl（Mac 上是 Option）拖动文件，光标旁边弹出一圈格式，松手放到想要的格式上，转好的文件就出现在原文件旁边。免费开源，全程离线。\n\n![演示](https://github.com/KnifeLemon/Filee/raw/main/docs/media/demo-zh-CN.webp)\n\n**能转什么**\n\n- 图片、PDF、Word、Excel、PPT、电子书、压缩包、字体、CAD 图纸和韩文 HWP，约 180 种格式，不需要装 Office\n- 视频和音频用 FFmpeg，电脑上已经有的话会直接拿来用\n- 一次拖几十个文件也行，可以合并成一个 PDF 或打包成一个 ZIP\n- 也有命令行，比如 `filee convert *.heic --to jpg`\n\n**怎么做的**\n\n用 C# 和 Avalonia 写的。每种转换引擎实现同一个接口，程序先规划转换路径再执行，比如 HWP 转 DOCX 会先转成 HWPX 再转 DOCX，每一步交给最擅长的引擎。\n\n这周刚加了 macOS 和 Linux 预览版。移植时踩到一个坑，macOS 的程序坞在整个屏幕上盖了一层透明窗口，导致“鼠标下面是哪个程序的窗口”永远返回程序坞，拖动手势一直不触发，最后按窗口层级过滤才解决。\n\n**下载**\n\nhttps://filee.sh/zh-cn/ （Windows 为正式版，macOS 和 Linux 为预览版）",
+    "created_at": "2026-10-09T23:22:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12193"
+  },
+  {
+    "id": 12192,
+    "title": "【开源自荐】Proof Engine：写下方程，就把它的运动实时画出来的 Rust 生成艺术引擎",
+    "content": "**项目地址**：https://github.com/Mattbusel/proof-engine\n\n**一句话介绍**\n\n写下方程，它就把方程的运动画出来。一个用 Rust 写的实时生成艺术引擎：洛伦兹吸引子等奇异吸引子、力场和物理驱动成千上万个发光的点和字形，经过 HDR 泛光渲染，直接在屏幕上动起来。\n\n![galaxy 演示](https://raw.githubusercontent.com/Mattbusel/proof-engine/main/assets/gifs/galaxy.gif)\n\n**可以直接玩的东西**\n\n- Windows 下双击就能跑的洛伦兹吸引子演示，不用装 Rust：[proof-lorenz.exe](https://gitlab.com/mattbusel/proof-engine/-/releases/permalink/latest/downloads/proof-lorenz.exe)，也有 10 个演示加编辑器的合集，以及 Linux 版\n- 一个“数学屏保”：引擎里的十种奇异吸引子轮流播放，每个点都由方程实时驱动，下载 `.scr` 右键安装即可\n- 在自己的 Rust 程序里用：`cargo add proof-engine`\n\n**怎么做的**\n\n每一帧在 CPU 上用 RK4 推进 4 万个洛伦兹状态，每个状态变成一个字形实例，一次实例化绘制调用画完；再画进半精度浮点 HDR 缓冲区，让重叠处的亮度叠加超过 1.0，最后做泛光和 ACES 色调映射。README 里有一张动画示意图把这四步画出来了。\n\n有中文 README：https://github.com/Mattbusel/proof-engine/blob/main/README.zh-CN.md\n",
+    "created_at": "2026-10-09T22:10:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12192"
+  },
+  {
     "id": 12191,
     "title": "【开源自荐】小刷：洗澡、吃小龙虾时也能刷抖音",
     "content": "**项目地址**：https://github.com/hyh1627723044-oss/xiaoshua\n\n  **为什么做这个**\n\n  我洗澡的时候喜欢把手机放在一边刷抖音，但手是湿的，碰不了屏幕，只能靠自动播放。问题是一旦刷到一个长视频，澡都洗完了它还没放完，想跳也跳不过去。\n\n  吃小龙虾、吃薯片的时候也一样，满手油和调料，想划一下都得先找纸擦手。\n\n  所以我做了“小刷”：手机放在一边，直接喊“下一条”就翻页。上一条、点赞、收藏、看评论也都能用嘴完成。\n\n  **它能做什么**\n\n  - **语音口令**：下一条、上一条、播放、暂停、点赞、收藏、查看评论、关闭评论，说“停止控制”随时停下。\n  - **默认完全离线**：用 sherpa-onnx 在手机本地识别口令，不联网、不需要账号。\n  - **可选自然语言**：接入火山引擎语音识别和 JEV（OpenRouter 上的决策模型）后，说“换一个吧”“帮我点个赞”也能听懂。没把握就不执行，“不要点赞”这种否定句不会误触发。\n  - **延迟低**：评论、收藏按钮的位置只在第一次校准时读取（实测约 228 ms），之后每次直接点击，不增加延迟。\n  - **注重隐私**：执行动作时只确认前台是不是抖音，不截图、不读取界面内容。\n\n  **截图**\n\n<img width=\"260\" alt=\"准备就绪\" src=\"https://github.com/user-attachments/assets/f4695c17-87c5-4f4c-981d-2f9a28f05595\"\n  /> <img width=\"260\" alt=\"正在监听\"\n  src=\"https://github.com/user-attachments/assets/13a563c7-b137-48c9-92f3-29d4aefaa350\" />\nKotlin + Jetpack Compose，MIT 协议开源，欢迎试用和提建议。",
@@ -774,29 +798,5 @@
     "created_at": "2026-10-05T17:22:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12094"
-  },
-  {
-    "id": 12093,
-    "title": "【开源自荐】mu：带判定内核的编程 Agent，日常判断交给小模型",
-    "content": "编程 Agent 每一轮都要做不少和代码无关的小判断：哪段工具输出该进上下文，一条被规则拦下的命令是不是用户要的，网页里有没有冲着 AI 的指令，\"做完了\"到底验证过没有。这些交给大模型，花 token 也分散注意力；交给写死的规则，又经常判错。\n\nmu 把它们交给一个小而快的判定模型 Jev：38 个决策点，每个只问一个有边界的问题，代码按答案行事，大模型只管干活。每个决策点都能单独设成生效、只记录或关闭，每次判定都写进本地账本，随时可查。判定模型也可以换成本地模型或任意大模型。\n\n作者自己测过：7 份真实的失败测试日志，按完全重复折叠，无损省下 51% 的字符；按目标让 Jev 挑测试日志，删掉 40% 到 46%，必需的行一行没丢。\n\n有命令行和桌面端，基于 pi 与 AionUi，MIT 协议（桌面端沿用 AionUi 的 Apache-2.0）。还在预发布阶段。\n\n- 源码：https://github.com/qybaihe/mu\n- 命令行：`npm i -g mu-agent`\n- 桌面端（macOS、Windows、Linux）：https://github.com/qybaihe/mu/releases\n",
-    "created_at": "2026-10-05T17:16:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12093"
-  },
-  {
-    "id": 12092,
-    "title": "【工具自荐】ModLab：把游戏 Mod 想法整理成可验收的项目简报",
-    "content": "我是 B.Liu，做了一个免费的游戏 Mod 项目简报生成器：\n\nhttps://modlabguides.online/brief-builder\n\n它解决的是开始写代码前需求不够具体的问题。填写游戏、版本、目标和限制后，生成一份可以复制或下载的文本简报，把版本核对、备份、回退和验收条件写进去，方便交给 coding agent。无需注册，简报在浏览器本地生成。\n\n一个使用例子：把“做一个更有趣的 Mod”缩小为“只改一个可观察的效果，记录当前游戏版本，用单独的测试存档验收，失败后可以恢复”。这不是自动生成或安装 Mod 的服务。\n\n网站也整理了 Universal Modder 的安装与首次制作流程：\nhttps://modlabguides.online/guides/install-universal-modder\n\n资料以开源项目的现有说明为依据：\nhttps://github.com/rehan-remade/universal-modder\n\nModLab 是独立工具和指南，不是上游项目的官方网站，也不宣称已在每个游戏或版本中完成兼容性测试。欢迎读者试用并指出不清楚或不准确的地方。",
-    "created_at": "2026-10-05T16:17:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12092"
-  },
-  {
-    "id": 12091,
-    "title": "【开源自荐】iphone-use：让 AI agent 操作你的真 iPhone",
-    "content": "很多 App 没有 API：银行、支付、健康、聊天。iphone-use 让 AI agent 直接操作一台真 iPhone：屏幕读成文字，点、滑、输入，操作没生效会直接说。\n\nMac 上的守护进程通过 USB 驱动手机上的 WebDriverAgent，对外提供 HTTP 接口和 21 个工具的 MCP server（Claude Code 等可直接接），也能在浏览器或 iOS App 里远程控制。禁止截屏的支付类 App 会按控件树画出线框图；做过一次的任务可以录成 flow，一条命令重放，不经过模型。\n\n开源（MIT）：https://github.com/leeguooooo/iphone-use\n2 分钟演示：https://github.com/user-attachments/assets/a9947152-6655-4509-ac1e-49953a3cea70\n",
-    "created_at": "2026-10-05T16:01:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12091"
   }
 ]
