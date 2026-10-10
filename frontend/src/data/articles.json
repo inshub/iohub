@@ -1,5 +1,45 @@
 [
   {
+    "id": 12199,
+    "title": "【网站自荐】Reference Checker：免费批量核验论文参考文献，检查错误 DOI 和引用信息",
+    "content": "阮老师好，我做了一个参考文献核验工具 **Reference Checker**，想自荐给科技爱好者周刊。\n\n**网站地址：** https://referencechecker.ai/  \n**中文界面：** https://referencechecker.ai/zh\n\n### 解决什么问题\n\n论文中的参考文献即使格式正确、DOI 能打开，也可能对应另一篇文章。使用 ChatGPT 等工具辅助写作后，逐条确认文献是否存在、作者和标题是否一致，也是一件费时的事。\n\nReference Checker 可以检查整份参考文献列表，找到匹配的出版记录，并把原始引用与来源信息并排展示，方便学生、研究者、教师和编辑核对。\n\n### 主要功能\n\n- **批量导入：** 直接粘贴参考文献，或登录后从 PDF、Word、BibTeX、RIS 等 14 种格式及 arXiv 论文导入；单次导入最多 500 条。\n- **核对真实来源：** 按标识符和学科检索 Crossref、OpenAlex、PubMed 等 12 个学术数据源中的相关记录，每条结果显示实际查询的来源和可访问的出版链接。\n- **逐字段检查：** 比较标题、作者、年份、期刊、DOI 等信息，识别“有效 DOI 指向错误论文”、重复引用和元数据不一致等情况。\n- **修改与导出：** 提供 APA、MLA、Chicago、Harvard、Vancouver、IEEE、ABNT 七种引用格式的修正建议，支持 Markdown、CSV、JSON、BibTeX、RIS 导出；登录后还可保存历史记录和分享报告。\n\n### 免费使用\n\n访客无需注册，每天可检查 100 条粘贴的参考文献；登录后每天有 500 条核验额度，并可使用文件导入、导出、历史记录和分享功能。无需购买或订阅。界面支持中文、英文等六种语言。\n\n### 使用边界\n\n工具核对的是文献来源及引用信息，不判断论文中的论点是否得到该文献支持。未找到匹配记录不等于文献伪造，也不能证明使用了 AI。PDF 导入需要可选中的文字，扫描件需先做 OCR；目前每次处理一份参考文献列表。\n\n### 界面示例\n\n下图展示逐字段核对的工作区：示例引用的 DOI 指向另一篇论文，工具保留原始引用并显示对应来源信息。\n\n![Reference Checker 参考文献核验工作区](https://referencechecker.ai/landing/reference-checker/reference-checker-hero-demo-1920.webp)\n\n欢迎试用并提出建议，谢谢！\n\n",
+    "created_at": "2026-10-10T04:14:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12199"
+  },
+  {
+    "id": 12198,
+    "title": "【工具推荐】在线AI 音乐生成器",
+    "content": "\n工具链接：https://sunov6ai.com\n工具名称：Songnexa\n工具介绍：Songnexa – AI 音乐生成工具\n\nSongnexa 是一款在线 AI 音乐生成工具，能够帮助用户将创意、歌词和文字描述快速转化为完整的歌曲。平台支持人声歌曲和纯音乐生成，并提供歌词、音乐风格、歌曲标题等多种自定义选项，让用户能够根据自己的需求创作个性化音乐作品。\n\nSongnexa 适用于内容创作者、音乐人、词曲作者、营销人员，以及任何希望轻松创作原创音乐的用户。无需专业的音乐制作知识，也不需要安装复杂的音乐制作软件，只需输入文字描述或歌词，即可通过 AI 快速生成音乐。\n\n用户可以直接在浏览器中完成音乐创作、在线试听和音频下载。生成的音乐可用于 YouTube 视频、TikTok 短视频、社交媒体内容、广告宣传、个人项目、音乐 Demo、背景配乐以及各种创意场景。\n\n通过简单直观的操作流程和灵活的音乐生成选项，Songnexa 大幅降低了音乐创作的门槛，让每个人都能轻松将自己的音乐灵感变成现实，体验 AI 音乐创作的乐趣。",
+    "created_at": "2026-10-10T02:57:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12198"
+  },
+  {
+    "id": 12197,
+    "title": "【开源自荐】editorial-diagrams：让 AI 画出 OpenAI 工程博客同款技术配图的 Agent Skill",
+    "content": "editorial-diagrams 是一个 Agent Skill，在 Claude Code 或 Codex 里用一句话描述要解释的东西，就能画出 OpenAI 工程博客那种风格的技术配图。\n\n![Codex CLI 运行架构](https://raw.githubusercontent.com/wyh0626/editorial-diagrams/main/docs/images/06-codex-cli-zh-CN.png)\n\nOpenAI 9 月那篇讲 ChatGPT 在线存储的文章，配图画得很好：白底细线，小方块在连接上来回跑，连接池 LIFO 和 FIFO 的区别看一遍动画就懂。我照着它的构图写了这个 Skill，目前支持 5 类图：\n\n- 架构图：组件和依赖关系\n- 请求链路：一个请求经过哪些服务\n- 时间线对比：时间花在哪、谁在等\n- 连接池复用：LIFO / FIFO 的选择差异\n- 连接汇聚：同样负载下怎么用更少的连接\n\nAI 会选合适的构图，换上你的组件名和参数，输出一个带动画的单文件 HTML，不依赖外部字体和库。原文之外的题目也能画，比如这张 Codex CLI 运行架构：https://codex-architecture-site.vercel.app/\n\n安装：\n\n    npx skills add wyh0626/editorial-diagrams\n\n项目地址：https://github.com/wyh0626/editorial-diagrams\n\n参考文章：https://openai.com/zh-Hans-CN/index/scaling-storage-one-billion-users-part-one/\n",
+    "created_at": "2026-10-10T02:38:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12197"
+  },
+  {
+    "id": 12196,
+    "title": "【开源自荐】AgentGate：给多 Agent 管线装可靠性闸门",
+    "content": "阮老师好，自荐一个独立开发的开源项目：\n\nhttps://github.com/zw-onemaker-ai/agent_gate\n\n它是一个多 Agent 管线的「可靠性层」。起因是我用多个 AI Agent 协作跑 12 步开发管线，被「静默失败」坑了很多次：Agent 说「测试全过」，实际没跑；说「文件写好了」，磁盘上是空的。我统计了一下，不加验证的管线成功率只有六成左右，而且大部分失败没有任何报错。\n\nAgentGate 的思路是把「不信任」做成机制：每个 Agent 的产出必须过三道闸门才算数——① 产出文件真实存在且非空；② 所有验证命令必须贴出 EXIT_CODE（Agent 可以编话，编不了退出码）；③ 面向用户的产出过脱敏检查。任何一道不过，按错误类型定向回环给对应 Agent 修，连续失败升级人工闸门。\n\n几个我觉得有意思的点：执行调度是纯规则引擎，一行大模型都不调——PASS/FAIL 可追查、可复现；管线跑到一半崩了能断点恢复；127 个测试全过。仓库里有 3 个 Demo，clone 下来不用模型、不用 key，一条命令就能看到闸门怎么拦截假产出。\n\nMIT 协议，欢迎提 issue 和拍砖。\n",
+    "created_at": "2026-10-10T01:59:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12196"
+  },
+  {
+    "id": 12195,
+    "title": "[自荐] Scam With Your Friends Web：把 AI 对话做进一个开源联机网页游戏",
+    "content": "阮老师好，来投一个自己做的网页游戏：\n\nhttps://github.com/mrzh7/scam-with-your-friends-web\n\n名字叫 Scam With Your Friends Web，是受《Scam With Your Friends》启发的非官方项目。我用 Codex + GPT-6 辅助开发，把 3D 办公室、多人联机和 AI 来电拼在了一起。玩家在虚构的呼叫中心打工，和 AI 客户聊天、买道具、赶业绩，没完成就被老板炒掉。钱和身份资料都是游戏里的虚构内容。\n\n本来只是想做个能玩的东西，后来发现这也是个挺有意思的 AI 应用例子：光让模型说话还不够，它得记住自己是谁、跟上对话，还不能随便把游戏状态改乱。语音、口型、多人同步也都得一起配合。\n\n前端用了 React + Three.js，服务端跑在 Cloudflare Workers 上。源码默认不用账号，不填模型 Key 也有离线剧情；需要自由对话再接自己的模型。仓库里放了截图、宣传动画，以及本机启动和云端部署步骤，支持五种语言。\n\n还在继续打磨，尤其是手机端体验。这次自荐主要想分享一个可以下载、运行和改着玩的 AI 游戏项目，欢迎大家看看，也欢迎提问题。",
+    "created_at": "2026-10-09T23:59:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12195"
+  },
+  {
     "id": 12194,
     "title": "【开源自荐】Droidline，用几行代码让安卓手机自己动起来，不用 ADB 和 root",
     "content": "**项目地址**\n\nhttps://github.com/KnifeLemon/Droidline\n\n**一句话介绍**\n\n手机装一个应用，扫码和电脑配对一次，之后电脑上的 Python、Node.js、C# 代码或命令行就能通过 Wi-Fi 操作手机：按文字找到按钮点下去、输入文字、截图、读取通知。不用开 USB 调试，不用 root，免费开源。\n\n![演示](https://github.com/KnifeLemon/Droidline/raw/main/docs/media/demo-zh.webp)\n\n**能做什么**\n\n- 在真机上测试自己的应用，包括跨应用的流程，比如登录时去短信里拿验证码（Android 14 及以下，15 起系统会隐藏通知里的验证码）\n- 读取通知并处理，比如银行到账通知一来，就自动把订单标记为已收款\n- 同一个脚本同时跑在多部手机上。手机可以和电脑在同一个 Wi-Fi，也可以用移动数据通过隧道或自建中继连回来，全程端到端加密\n- 交给 AI：自带 MCP 服务器，Claude、ChatGPT、Cursor 这类 AI 可以看手机屏幕并操作\n- 命令行也能用，比如 `droidline touch text \"设置\"`\n\n**怎么做的**\n\n电脑端是 Go 写的服务器，手机端是 Kotlin 写的无障碍服务。找元素这一步直接在手机上完成，不像 adb + uiautomator 那样每次都把整个界面导出成 XML 文件再读回电脑。在 Galaxy S23 Ultra 上按文字找一个元素，10 次中位数是 16 ms，Appium UiAutomator2 是 100 ms，adb + uiautomator 是 2,368 ms。\n\n所有命令写在一份规格文件里，Python、Node.js、C# SDK、命令行和 MCP 工具都从它生成，所以 `touch` 在哪里都叫 `touch`。\n\n踩过的一个坑：一开始内置了开关 Wi-Fi、飞行模式的命令，做法是打开系统设置去点按钮。结果每家厂商、每个 Android 版本、每种语言的按钮文字都不一样，光是三星的韩文系统就把飞行模式叫“搭乘飞机模式”，小屏手机上要点的那一项还在屏幕外面。最后把这些命令删了，改成文档里的示例，按自己手机上的文字改一下就能用。关 Wi-Fi 这种会断开连接的步骤，可以放进 `batch` 交给手机离线执行，重新连上后再把结果交回来。\n\n**下载**\n\n- 应用和电脑端：https://github.com/KnifeLemon/Droidline/releases/latest （Android 9 及以上；电脑支持 Windows、macOS、Linux）\n- SDK：`pip install droidline`、`npm install droidline`、`dotnet add package Droidline`\n- 文档：https://droidline.dev/zh/",
@@ -122,7 +162,7 @@
   {
     "id": 12179,
     "title": "【开源自荐】ohmygame：世界第一款开源的 AI 游戏创作工具",
-    "content": "ohmygame 是一个开源的游戏 Agent 工具，让制作游戏变得更加简单。\nLLM、图片生成、3D模型统统集合，游戏画布、程序、策划与美术统统搞定。\n相比传统 Codex，它增加了 Agent 可控制的多画布，大幅度简化游戏工作流与提升工作效率。\n当然它不只是这些，更多欢迎来尝试...\n以及相比闭源的游戏创作工具，我相信它会拥有更多的可能！\n\n（测试阶段，可能有问题出现，欢迎提交 issue！）\n官方网站：https://ohmygame.ai\nGitHub 地址：https://github.com/WhiteTowerAI/ohmygame\n\n宣传片：\nhttps://github.com/user-attachments/assets/3c45f484-ad97-4699-a40c-5f59ea13dbff\n\n展示截图：\n\n<img width=\"2583\" height=\"1279\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7ec49419-d83d-434c-bb44-ddd496b77f3c\" />\n<img width=\"2429\" height=\"1279\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aaf79e1e-cfdc-4da3-aff7-92b232e697c4\" />",
+    "content": "ohmygame 是一个开源的游戏 Agent 工具，让制作游戏变得更加简单。\nLLM、图片生成、3D模型统统集合，游戏画布、程序、策划与美术统统搞定。\n相比传统 Codex，它增加了 Agent 可控制的多画布，大幅度简化游戏工作流与提升工作效率。\n当然它不只是这些，更多欢迎来尝试...\n以及相比闭源的游戏创作工具，我相信它会拥有更多的可能！\n\n官方网站：https://ohmygame.ai\nGitHub 地址：https://github.com/WhiteTowerAI/ohmygame\n\n宣传片：\nhttps://github.com/user-attachments/assets/3c45f484-ad97-4699-a40c-5f59ea13dbff\n\n展示截图：\n\n<img width=\"2583\" height=\"1279\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7ec49419-d83d-434c-bb44-ddd496b77f3c\" />\n<img width=\"2429\" height=\"1279\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aaf79e1e-cfdc-4da3-aff7-92b232e697c4\" />",
     "created_at": "2026-10-09T08:48:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12179"
@@ -724,7 +764,9 @@
     "title": "【开源自荐】霓虹天顶：在浏览器里开飞车穿过下雨的九龙",
     "content": "做了一个能在网页里开的赛博九龙，一直在下雨。从庙街夜市出发，路上的车靠左行驶，红灯会停。的士按港九红、新界绿、大屿山蓝刷色，小巴是奶油色配红顶或绿顶。按住空格就起飞，一路穿过雨云，能停到城里最高那座 1418 米的塔顶上。\n\n![庙街](https://raw.githubusercontent.com/billpwchan/neon-zenith/main/docs/media/market.jpg)\n\n整座城有 9373 栋楼，按一套规则程序生成，每栋都能撞上去。亮着的窗后面都有一个房间，靠的是 interior mapping。庙街那一段是在 Blender 里建模，再用 Cycles 烘焙的光照。另外有四条计时赛道，航道那条的金牌线是 47 秒。\n\n![云层之上](https://raw.githubusercontent.com/billpwchan/neon-zenith/main/docs/media/clouds.jpg)\n\n用的是 three.js r186 的 WebGPU 渲染器，材质全部用 TSL 写，浏览器不支持 WebGPU 时会退回 WebGL 2。电脑和手机都能玩，不用下载也不用登录。代码 MIT 协议。\n\n在线体验：https://zenith.billpwchan.art\n\n项目地址：https://github.com/billpwchan/neon-zenith\n",
     "created_at": "2026-10-06T06:51:22Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/12103"
   },
   {
@@ -732,7 +774,9 @@
     "title": "【开源自荐】三周、二十轮训练、600 美元：训练两个小模型在 Mac 上本地操作电脑",
     "content": "我花了三周、约 600 美元、二十轮训练，在 Qwen3.5 0.8B 和 4B 上微调出两个小模型，让它们在 Mac 本机替我操作电脑：看屏幕、决定下一步、点击和输入，不走云端。\n\n每一步是一道选择题，每个选项都有概率：0.8B 有把握就直接做，没把握交给 4B 复核；任务有两种理解时，它先问你一句再动手。\n\n文章记录了整个过程和踩过的坑：训练先在 Tinker 上跑，后来换到阿里云 PAI，最后按小时租显卡最划算；标签平滑把 0.8B 的把握「压扁」，导致七成步骤被交给 4B；几乎每一轮修好一个 bug，又学会一个新的捷径。\n\n文章：https://deskmind.dev/zh/blog/launch?ref=ruanyf\n项目（App、模型、操作层、评测全部开源）：https://github.com/deskmind-ai/deskmind\n\n![DeskMind 遇到两笔同名订单时先问用哪一笔](https://raw.githubusercontent.com/deskmind-ai/deskmind/main/docs/images/ask-card.png)\n",
     "created_at": "2026-10-06T06:01:12Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/12102"
   },
   {
@@ -748,7 +792,9 @@
     "title": "【开源自荐】 Qrypt：一个支持网盘加密的本地挂载软件",
     "content": "## 软件介绍\n之前一直在用 alist 进行网盘的本地管理，尽管使用起来很方便但是在部分场景下还是不能满足需求比如在需要通过命令行操作网盘目录时，这时通常需要使用 rclone 配合 alist 的 webdav 协议进行网盘的本地挂载。但是一个需求需要两个软件配合实现对于一个程序员来说太不简洁了，干脆写个程序来实现这个把网盘挂载到本地文件夹的需求。\n\n因此有了 [Qrypt](https://github.com/yinzhenyu-su/qrypt)，一个可以自由挂载网盘到本地当做本地文件夹进行操作的软件，同时支持对文件进行点对点的加密传输，除了你自己没有人知道文件的内容。\n\nQrypt 目前支持的网盘有：\n1. 阿里云盘\n2. 夸克网盘\n3. 百度网盘\n4. 电信 189 网盘\n5. 移动云盘\n6. s3 协议网盘\n7. webdav\n8. sftp\n9. 本地目录\n\n如果上述网盘没有你需要的欢迎提在项目中提 issue ，我会尽快添加支持。\n\n## 运行方式\n[Qrypt](https://github.com/yinzhenyu-su/qrypt) 可以通过命令行运行，此处以夸克网盘作为示例的配置文件如下：\n```toml\n[mount]\n# 挂载到本地的目录路径，windows 需要写入对应的绝对路径\nmount_point = \"~/Qrypt\"\n\n[[mounts]]\n# 网盘对应的自定义的本地目录，挂载成功后的路径示例：~/Qrypt/quark-test\nname = \"quark-test\"\ntype = \"quark\"\n\n[mounts.params]\n# cookie 的获取方式可以参考 alist 项目\ncookie = \"你的 quark cookie\"\n# 网盘中的具体目录，支持根目录和多级目录\nroot_path = \"/Test\"\n\n[mounts.encryption]\n# 配置加密密码，为空则不加密\npassword = \"你的加密密码\"\n```\n把配置文件保存为 qrypt.toml 和 qrypt二进制文件放在相同目录下然后运行\n```bash\n./qrypt mount\n```\n你会看到类似如下输出就表示挂载成功了：\n```bash\nMounted at /Users/yinzhenyu/Qrypt. Press Ctrl+C to unmount.\n```\n\n## 文件对比\nqrypt网盘加密和本地解密挂载后文件对比:\n[![compare-1.png](https://picui.ogmua.cn/s1/2026/10/06/6ac470ed90da5.webp)](https://picui.ogmua.cn/s1/2026/10/06/6ac470ed90da5.webp)\n项目的地址为:\n[Qrypt](https://github.com/yinzhenyu-su/qrypt)\n如果项目对你有帮助还请点个星吧！\n\n## 开源协议\nQrypt 项目以 [MIT](https://github.com/yinzhenyu-su/qrypt?tab=MIT-1-ov-file) 协议开源",
     "created_at": "2026-10-06T03:59:58Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/12100"
   },
   {
@@ -756,47 +802,9 @@
     "title": "【开源自荐】EdgeSSH：部署在 Cloudflare 上的个人 SSH 工作台",
     "content": "### 项目\n\n[EdgeSSH](https://github.com/aozorae/EdgeSSH)，Apache-2.0 开源。部署文档：https://edgessh-docs.pages.dev/\n\n### 推荐理由\n\n管理几台 VPS 时，除了终端还经常要传文件、看进程、保存常用命令。EdgeSSH 把这些工作放在同一个浏览器工作台里，并将 WebSSH 连接层部署到自己的 Cloudflare 账户，不需要另外维护一台 SSH 中转 VPS。\n\n- 浏览器 SSH 终端，支持密码和 OpenSSH 私钥认证。\n- SFTP 文件管理、进程监控、主机库和加密同步命令片段。\n- Workers 处理 API，Durable Objects 维持 SSH 会话，TCP Sockets 连接服务器，D1 保存加密资料。\n- 单管理员模式，可选择 Cloudflare Access 或 GitHub OAuth 登录。\n\n项目基于 [cmliu/CF-Workers-WebSSH](https://github.com/cmliu/CF-Workers-WebSSH) 演进，保留上游署名，并不是从零原创 SSH 协议实现；本仓库维护主机库、加密命令片段、文件管理、监控等工作台能力。\n\n### 适用范围\n\n面向个人开发者/VPS 管理，目标主机需要公网 SSH 可达。凭据由 Worker 使用，并非浏览器到主机的端到端加密；HTTP 端口转发暂不支持 HTTPS 上游和 WebSocket，不是企业多用户堡垒机。\n\n### 截图\n\n![EdgeSSH 主机总览](https://raw.githubusercontent.com/aozorae/EdgeSSH/main/docs/images/showcase/01-dashboard.png)\n\n我是本仓库维护者，本次为自荐。",
     "created_at": "2026-10-06T03:04:48Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/12099"
-  },
-  {
-    "id": 12098,
-    "title": "【工具自荐】InstruKit · 物有度｜德系博朗风设计的 iOS 多合一测量工具箱",
-    "content": "**多合一工具箱｜德系博朗风｜实体仪器质感**\n\n- 产品名称：InstruKit · 物有度\n- 支持平台：iPhone / iPad\n- 邮箱：[support@cuebuddy.cn](mailto:support@cuebuddy.cn)\n\n------\n\n## **中文介绍**\n\n**InstruKit · 物有度**是一款采用德系博朗风设计的 **iOS 多合一测量工具箱**。它把水平仪、直尺、声音、振动、光照和磁力等常用工具装进 iPhone 与 iPad，用一套精美、统一的实体仪器界面，让日常测量也有拿起一件精致工具的感觉。\n\n设计是物有度最鲜明的特色。温暖的机壳色调、细腻的金属表圈、清晰的刻度、醒目的橙色点缀，以及富有层次的表盘与操作件，共同营造出经典德系仪器的实物质感。不同工具沿用同一种设计语言，打开每一页，都像切换到工具箱里另一件经过认真设计的仪器。\n\n它也不只有好看的表盘：水平与角度测量、屏幕直尺、声音与频谱观察、振动测量、光照估算、磁场观察，以及放大镜、文字识别和条码扫描，都集中在一个 App 里。手电筒、屏幕补光、设备信息和网络状态等辅助功能，也能随手调用。\n\n适合喜欢经典工业设计、在意工具质感，也希望手机里有一套实用测量工具的用户。无需注册登录，没有广告；需要留存结果时，还可以通过 Pro 保存记录、归档项目、对比前后变化并导出报告。每项测量都会说明来源、方法与置信度，数据默认保存在当前设备。\n\n------\n\n## **适合这些场景**\n\n- 喜欢德系博朗风与经典工业设计，希望常用工具也有精美的仪器质感\n- 希望在一个 App 中集中使用多种测量与辅助工具\n- 调整桌面、置物架或支架时，查看水平与倾斜角度\n- 用屏幕直尺辅助查看小物件的长度\n- 观察不同位置或不同设置下的声音、频谱与振动变化\n- 对比桌面、阅读区或拍摄位置的相对光照变化\n- 查看磁场变化，辅助寻找可能产生磁异常的金属紧固件\n- 放大查看细节，识别包装文字、二维码或条码\n- 将多次测量整理进项目，保留调整前后的记录\n- 临时使用手电筒、屏幕补光和设备状态工具\n\n------\n\n## **核心功能**\n\n- 德系博朗风设计：温暖机壳、金属表圈、清晰刻度与橙色点缀\n- 实体仪器质感：富有层次的表盘与操作件，多种工具保持统一视觉语言\n- iOS 多合一工具箱：测量、观察、识别与照明辅助集中在一个 App\n- 无需注册登录，无广告，支持 iPhone 与 iPad\n- 水平仪与角度测量，支持设置零点参考\n- 屏幕直尺与游标，支持通过实体直尺设置显示比例\n- 声音相对数字电平、频谱观察与录制摘要\n- 振动加速度 RMS、峰值与变化曲线\n- 基于相机曝光参数的光照估算\n- 磁场强度读数与紧固件磁异常参考\n- 放大镜、文字识别与条码扫描\n- 实验性光学转速估算，按设备实际相机能力工作\n- 手电筒、屏幕补光、设备信息、网络状态与附近蓝牙设备查看\n- 测量来源、方法、置信度与限制说明\n- Pro 支持保存测量与录制、项目归档、兼容记录对比、PDF / CSV 导出和测量卡分享\n\n------\n\n## **使用方式**\n\n1. 打开 InstruKit · 物有度，选择需要的工具\n2. 查看该工具的方法说明，并按需授权相机、麦克风等权限\n3. 按提示放置设备或调整取景，等待有效读数\n4. 结合来源、方法与置信度理解结果\n5. 如已解锁 Pro，可保存记录，并添加到对应项目\n6. 在相近条件下再次测量，选择兼容记录查看差值，或导出报告与数据\n\n------\n\n## **说明**\n\n- 免费档可实时使用设备支持的工具并查看读数；保存、录制、项目、对比和导出等软件功能属于 Pro 权益，具体以应用内说明为准。\n- 测量数据默认保存在设备本地；相机、麦克风等权限按对应功能需要请求，工具可用性取决于设备硬件与系统支持。\n- 声音读数属于相对数字电平，不等同于经过验证的声压级 SPL 或 dBA，不应作为专业噪声合规判断依据。\n- 光照为相机曝光估算，光学转速为实验性估算，适合观察与参考，不能替代经过校准的专业仪器。\n- 磁力与紧固件工具仅提供磁异常参考，不能直接识别木龙骨、电线或墙内结构。\n- 屏幕直尺的物理比例受机型和显示条件影响，重要尺寸请使用实体量具复核；设置零点参考不等于传感器校准，较高置信度也不代表已验证的数值精度。\n- 对比应尽量保持测量方式与环境一致；涉及安全、施工验收或专业精度要求时，请使用适合该用途的专业设备。\n\n------\n\n## **English Introduction**\n\n**InstruKit** (Chinese name: **物有度**) is an **all-in-one measurement toolkit for iOS**, with a refined design inspired by classic Braun instruments. It brings levels, a ruler, sound, vibration, light, and magnetic-field tools to your iPhone and iPad, with the visual character of carefully crafted physical instruments.\n\nDesign is at the heart of InstruKit. Warm casing tones, finely detailed metal bezels, clear scales, distinctive orange accents, and layered dials and controls evoke classic German industrial design. Every tool shares this visual language, so moving between tools feels like picking up another instrument from the same thoughtfully designed collection.\n\nBehind the dials is a practical collection of features: level and angle measurements, an on-screen ruler, sound levels and spectrum views, vibration measurements, estimated light readings, magnetic-field observations, a magnifier, text recognition, and barcode scanning. A flashlight, screen light, device information, and network status tools are also close at hand.\n\nInstruKit is for people who appreciate classic industrial design, enjoy beautifully made tools, and want everyday measurement utilities in one app. No account is required, and there are no ads. With Pro, you can save records, organize projects, compare changes, and export reports. Measurements include explanations of their source, method, and confidence, with data stored on your device by default.\n\n------\n\n## **Best For**\n\n- Fans of classic Braun-inspired German industrial design and beautifully detailed instrument interfaces\n- Anyone who wants multiple measurement and utility tools in one app\n- Checking the level or tilt of a desk, shelf, or mount\n- Using an on-screen ruler as a reference for small objects\n- Observing sound, spectrum, and vibration changes across positions or settings\n- Comparing relative light conditions at a desk, reading area, or filming location\n- Observing magnetic anomalies that may indicate metal fasteners\n- Magnifying details and recognizing text, QR codes, or barcodes\n- Organizing measurements into projects and keeping before-and-after records\n- Quickly accessing a flashlight, screen light, and device status tools\n\n------\n\n## **Key Features**\n\n- Classic Braun-inspired design with warm casings, metal bezels, clear scales, and orange accents\n- Detailed dials and controls that evoke physical instruments, with a consistent look across tools\n- An all-in-one iOS toolkit for measuring, observing, scanning, and lighting\n- No account required, no ads, and support for iPhone and iPad\n- Level and angle measurements with a zero-reference option\n- On-screen ruler and cursor, with scale adjustment using a physical ruler\n- Relative digital sound levels, spectrum views, and recording summaries\n- Vibration acceleration RMS, peaks, and change-over-time views\n- Estimated light readings based on camera exposure settings\n- Magnetic-field readings and magnetic-anomaly references for fasteners\n- Magnifier, text recognition, and barcode scanning\n- Experimental optical RPM estimation using the camera capabilities available on your device\n- Flashlight, screen light, device information, network status, and nearby Bluetooth device discovery\n- Explanations of measurement sources, methods, confidence, and limitations\n- Pro features for saving measurements and recordings, organizing projects, comparing compatible records, exporting PDF / CSV files, and sharing measurement cards\n\n------\n\n## **How to Use**\n\n1. Open InstruKit and choose a tool\n2. Read its method notes and grant permissions, such as camera or microphone access, when needed\n3. Position your device or adjust the camera view as instructed, then wait for a valid reading\n4. Interpret the result alongside its source, method, and confidence\n5. With Pro unlocked, save the record and add it to a project\n6. Measure again under similar conditions, compare compatible records, or export a report or data file\n\n------\n\n## **Notes**\n\n- The free tier provides live access to tools supported by your device. Saving, recording, projects, comparisons, and exports are Pro software features; refer to the in-app feature descriptions for details.\n- Measurement data is stored locally by default. Permissions are requested as needed for the relevant feature, and tool availability depends on device hardware and system support.\n- Sound readings represent relative digital levels. They are not validated SPL or dBA measurements and should not be used for professional noise-compliance assessments.\n- Light readings are estimated from camera exposure. Optical RPM is an experimental estimate. Both are intended for observation and reference rather than replacing calibrated instruments.\n- The magnetic and fastener tools provide magnetic-anomaly references only. They cannot directly identify wooden studs, electrical wiring, or structures inside walls.\n- The on-screen ruler's physical scale depends on the device and display conditions. Verify important dimensions with a physical measuring tool. Setting a zero reference is not sensor calibration, and higher confidence does not imply validated numerical accuracy.\n- Keep methods and conditions consistent when comparing readings. Use appropriate professional equipment for safety decisions, construction acceptance, or tasks requiring validated accuracy.\n\n------\n\n## **联系方式 / Contact**\n\n如有使用反馈、功能建议或商务合作需求，欢迎联系：\n\nFor feedback, feature suggestions, support, or business inquiries, please contact:\n\n[support@cuebuddy.cn](mailto:support@cuebuddy.cn)\n\n<img width=\"1270\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dc5b2f65-e3ad-4413-a5fc-4484f922721a\" />\n<img width=\"1270\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/afb3f9f5-dde6-4397-9e21-ecff9aead025\" />\n<img width=\"1270\" height=\"760\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b5a69cb2-468c-4021-917a-271d9db05eaf\" />",
-    "created_at": "2026-10-06T02:24:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12098"
-  },
-  {
-    "id": 12097,
-    "title": "【开源自荐】HeadOrbit：戴着 AirPods 用头操作 Mac，歪头语音输入、转头模糊屏幕",
-    "content": "阮老师好，自荐一个 macOS 菜单栏小工具 **HeadOrbit**，用头的动作操作 Mac，不用摄像头。\n\nAirPods Pro、AirPods 4 这类耳机里有运动传感器，苹果拿它做空间音频的头部追踪。HeadOrbit 读的就是这份数据：扭头、点头、歪头三个动作，左右上下六个方向，每个方向可以绑一件事。\n\n比如语音输入。向左歪头，HeadOrbit 按住 Fn，长按 Fn 听写的输入法开始听你说话（用豆包输入法实测过）；头摆正，Fn 松开；再向右歪一下，就是回车。\n\n![歪头语音输入](https://headorbit.com/assets/tilt-voice-zh.gif)\n\n另外几个内置场景：\n\n- **转头模糊**：头向左或向右转过 35°，持续 0.6 秒，整个屏幕模糊，转回来就清楚。有人走到身后时用得上。\n- **坐姿提醒**：塌腰的时候下巴会慢慢抬起来继续看屏幕，抬头超过 15° 持续 5 秒，屏幕模糊，提示坐直。只看抬头，低头看键盘不算。\n- **颈部活动**（2.1 新加）：屏幕上出现一条轨迹，用头跟着描，绕环和画 8 字。\n\n触发角度、延时、按键都能改，也可以自己建场景。\n\n- 项目地址：https://github.com/Cogria-AI/HeadOrbit ，MIT 协议\n- 官网：https://headorbit.com\n- 要求：macOS 14+，支持头部追踪的 AirPods 或 Beats，耳机要连在这台 Mac 上\n- 头部角度只在本机处理，不录屏，不要账号。唯一的联网是检查更新\n\n模糊效果用的是 WindowServer 一个没公开的接口，新版 macOS 上公开的毛玻璃材质只会渲染成一层平的颜色。所以它上不了 App Store，安装包也没做公证，第一次打开要右键选「打开」。\n",
-    "created_at": "2026-10-05T21:29:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12097"
-  },
-  {
-    "id": 12096,
-    "title": "【开源自荐】nerf-watch：检查 Claude Code 和 Codex 有没有悄悄变笨或变贵",
-    "content": "nerf-watch 读取 Claude Code 和 Codex 已经写在你电脑上的会话日志，告诉你 Agent 有没有在你没改任何设置的情况下\"悄悄变了\"：实际回答的模型和你选的不一样、推理强度降了、CLI 升级后每轮的缓存写入翻倍、缓存命中率掉了、工具调用出错变多。\n\n很多人觉得\"更新之后变笨了\"\"额度掉得更快了\"，但没法验证。数据其实就在本地日志里。我第一版在自己的日志上报了 6 个警告，结果全是误报（子智能体的流量混进了平均值），现在只比较主对话、要求变化在至少两个项目里都出现才报警，每条结论都写明有多少数据支撑。\n\n完全本地运行，不联网，MIT 协议。还有一个 macOS 菜单栏小工具，变化时图标变红。\n\n```bash\nnpx nerf-watch check\n```\n\n源码：https://github.com/Abelo9996/nerf-watch\n",
-    "created_at": "2026-10-05T21:01:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12096"
-  },
-  {
-    "id": 12095,
-    "title": "【工具自荐】PillarChart：免费八字排盘 + 可核对算法，登录后可买一次性 PDF 报告",
-    "content": "自荐一个在线八字（四柱）排盘工具：**PillarChart**（站内产品名 **BaZi Chart**）。\n\n网上不少八字站是「填生日 → 给一句命运解读」。PillarChart 想做成更像日历 / 计算器的东西：输入出生日期、时辰和地点，免费排出四柱，并把每一步怎么算出来摊开给你看。\n\n主要支持：\n\n- **免费排盘**：首页即可算完整四柱，无需注册、不保存盘式\n- **计算 receipt**：UTC 时刻、夏令时扣除、真太阳时修正、前后节气等链路可核对；引擎版本号会印在结果上\n- **合盘免费**：两人四柱对照（五行互补、十神、日支关系等），不做「匹配百分比」打分\n- **一次性付费 PDF 报告**：用 Google 账号登录后可买书面报告（非订阅）；站上有样例 PDF 可先看\n- **Cloudflare Workers 栈**：Next.js 部署在 Workers，排盘引擎是自研 TypeScript，不调用外部算命 API\n\n网站地址：https://pillarchart.com/?utm_source=ruanyf_weekly\n\n需要注意的是，网站目前只有英文界面，面向海外读者；内容页会引用可核对的古典出处，并标明我们自己的翻译与方法约定（例如立春换年、真太阳时等）。短 AI 解读若出现，站点会标明仍是小范围试用，不是主卖点。\n\n这个工具比较适合想自己核对四柱算法的人、需要一份可下载 PDF 报告的读者，以及想看「免费计算器 + 一次性报告」这种独立开发变现路径的人。开发过程（引擎校验数字、Workers 栈、内容与报告漏斗）写了一篇英文开发日志：https://dev.to/_df88eb1337eb23b75c94ba/build-log-a-free-bazi-chart-calculator-and-one-time-pdf-reports-on-cloudflare-workers-12n1 。欢迎试用和反馈。\n\n一个免费八字四柱排盘站，展示可核对的计算 receipt，登录后可买一次性 PDF 报告；跑在 Cloudflare Workers 上。\n\n![首页排盘表单](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/afw30op7snahbnj8s1bo.png)\n\n![结果页四柱 + 打开的 receipt](https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/pe06mxkkerx9vwoxiscs.png)",
-    "created_at": "2026-10-05T19:35:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12095"
-  },
-  {
-    "id": 12094,
-    "title": "【开源自荐】SunoMCP：在 AI 对话里生成音乐，并取回最终音频",
-    "content": "我是 AceDataCloud 项目方，自荐 [SunoMCP](https://github.com/AceDataCloud/SunoMCP)，一个 MIT 开源的 MCP 服务。它让 Claude、VS Code 等支持 MCP 的客户端直接生成音乐、写歌词、延长或翻唱已有作品，并通过任务查询取回最终结果。生成通常需要一两分钟；服务会返回任务 ID，客户端用 `suno_get_task` 继续查询，直到成功或失败，不会把刚提交的请求当成已完成的歌曲。\n\n**实际成品**：我们用托管 MCP 输入“Gentle lo-fi instrumental background for a coding tutorial, warm electric piano, soft steady drums, no vocals.”，选择 `chirp-v5-5` 和纯音乐模式。任务约 121 秒后完成，返回两首 MP3：[第一首（约 127 秒）](https://platform3.cdn.acedata.cloud/suno/a5c058a6-3cba-4b00-b735-e5c8b3f5856e.mp3)、[第二首（约 161 秒）](https://platform3.cdn.acedata.cloud/suno/af98031f-1502-499d-90fa-293592bf87bd.mp3)。这次生成和取回发生在 2026 年 9 月；截至 2026 年 10 月 6 日，两个音频链接仍可访问。\n\n**如何试用**：根据[项目 README](https://github.com/AceDataCloud/SunoMCP#quick-start)获取 API Token，把 `https://suno.mcp.acedata.cloud/mcp` 加到支持远程 MCP 的客户端；也可在 Python 3.10+ 环境运行 `uvx --from mcp-suno==2026.10.5.0 mcp-suno`，作为本地 stdio MCP 服务。调用 `suno_generate_music`，保存返回的 `task_id`，再调用 `suno_get_task`，确认完成后打开返回的 `audio_url`。README 有各客户端配置示例。\n\n项目并非 Suno 官方服务。**MCP 软件开源，生成所用的 AceDataCloud API 收费**：2026 年 10 月 6 日公开目录中，这种普通生成请求为 0.56 Credits/次，通常返回两首；按 100 Credits/$15 套餐约 $0.084/次，按 40 Credits/$7 套餐约 $0.098/次。套餐是预付额度，美元数字是按套餐汇率换算的单次消耗，并非一笔独立的单次付款。账户折扣、套餐与价格可能变化，请以[实时服务价格](https://platform.acedata.cloud/services/suno)和实际扣费为准。\n",
-    "created_at": "2026-10-05T17:22:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12094"
   }
 ]
