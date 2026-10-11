@@ -1,5 +1,21 @@
 [
   {
+    "id": 12248,
+    "title": "【开源自荐】Cachety：在浏览器里给证件照加水印，文件全程不上传",
+    "content": "（我来自法国，不会中文，下面的内容借助 AI 翻译，如有不通顺的地方请见谅。）\n\n租房、求职、开户时，经常要把身份证照片发给别人。发出去之后，这份复印件就不受自己控制了。在上面写明用途、接收方和日期，比如「仅供租房申请使用，XX房产，2026年10月11日」，就很难被挪作他用。\n\n但我发现，大多数在线加水印工具都要先把身份证上传到它们的服务器。为了保护证件，反而要先把它交出去，这说不通，所以我做了 Cachety。\n\n它是一个纯前端的网页工具，所有处理都在浏览器里完成：用 pdf.js 把每一页渲染成图片，把水印画进图片里，再生成一个全新的文件。网站没有接收文件的服务器，页面的 CSP 设置了 `connect-src 'self'`，浏览器本身就会拒绝向其他域名发送任何数据。可以自己验证：打开页面后开启飞行模式，照样能用。\n\n其他功能：\n\n- 遮盖身份证号、银行卡号等信息，内容会被真正删除，而不只是盖上一层。\n- 自动清除文字层、元数据和照片的 GPS 位置。\n- 每份副本可带日期和唯一编号；可为每个接收方各生成一份。\n- 可选 AES-256 加密 PDF；支持 iPhone 的 HEIC 照片；手机上也能用。\n- 界面支持简体中文等 7 种语言。\n\n已知局限：水印只能是文字；输出的 PDF 是图片，文字不能再选中，文件可能比原来大。水印能防止复印件被挪用，但挡不住有人翻拍。\n\n免费、无需注册、AGPL-3.0 开源。基于 Next.js 静态导出，部署在 Cloudflare Pages。\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9c3e3749-f130-4065-81d2-5b6afc317376\" />\n\n- 网站：https://cachety.com/zh\n- 源码：https://github.com/cachety/cachety\n- 中文说明：https://github.com/cachety/cachety/blob/main/README.zh.md\n\n欢迎试用和提意见，特别是中文界面里哪里读起来不自然。\n",
+    "created_at": "2026-10-11T21:47:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12248"
+  },
+  {
+    "id": 12247,
+    "title": "【开源自荐】reasoning-router：让分类器为编程 Agent 的每一步选择推理强度",
+    "content": "我一直把编程 Agent 的推理强度开在 high，连改名这种小事也是，用量消耗得很快。但降到 medium 又会出错：在一个较难的 pytest bug 上，GPT-6 Astra 用 medium 5 次只解决了 1 次。\n\n所以我做了 reasoning-router。编程 Agent 每次请求模型之前，它先让一个小型分类器（默认是 TypeSafe 的 Jev，也可以换成 Cloudflare Clef、Laya 等）判断这一步需要多少推理强度，再把结果加到请求里。\n\n切换推理强度通常会让 prompt cache 失效。它用 OpenAI 的 `configuration_update` 和 Anthropic 的对话中 effort 消息来改强度，之前的上下文不变，所以缓存还能命中。\n\n在 10 个 SWE-bench Verified 问题上，路由和固定 high 都解决了 44/44，路由少用约 14% 的输出 token，耗时少约 9%。只测了一个模型和一组任务，结果仅供参考。\n\n支持 OpenCode 插件、Pi 扩展，以及可接入 Codex CLI 的本地代理。目前是 alpha 版本，MIT 协议。\n\n![推理强度路由示意](https://github.com/robertn702/reasoning-router/raw/main/assets/readme.gif)\n\n源码：https://github.com/robertn702/reasoning-router\n中文文档：https://github.com/robertn702/reasoning-router/blob/main/README_CN.md\n",
+    "created_at": "2026-10-11T19:33:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12247"
+  },
+  {
     "id": 12246,
     "title": "【开源自荐】LightGitPad：AI 写代码时，用来看项目和 Git 改动的轻量查看器",
     "content": "这是我做的开源桌面工具 LightGitPad，适合在 Claude Code、Codex 等 AI 编程助手修改代码后，检查工程和 Git 改动。\n\n在一个窗口里可以查看：\n\n- 工程文件树和带语法高亮的代码。\n- Git 改动及左右对照 diff、提交历史和分支列表。\n- Markdown 渲染预览，方便阅读助手生成的计划和报告。\n\n支持 Windows 10/11 x64 和 macOS 12 及以上（Apple Silicon、Intel）。源码采用 C++ / Qt 6，MIT 协议；v0.2.18 已提供两平台安装包及 SHA256 校验文件。\n\n它不调用任何 AI 服务，不需要账号或 API Key；Git 的提交、推送、拉取和切换分支仍由用户或编程助手完成。需要本机安装 Git 2.23 或以上。当前为 0.x 早期版本，安装包尚未用付费证书签名，首次启动需按 README 的说明确认。\n\n- 项目：https://github.com/felixlwang/LightGitPad\n- 下载：https://github.com/felixlwang/LightGitPad/releases/tag/v0.2.18\n- 中文说明：https://github.com/felixlwang/LightGitPad/blob/main/README.zh-CN.md\n\n欢迎试用，并通过项目 Issues 反馈问题或建议。\n",
@@ -788,21 +804,5 @@
     "created_at": "2026-10-08T07:09:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12146"
-  },
-  {
-    "id": 12145,
-    "title": "【开源自荐】Free for Creators：158 个许可透明的免费创作者素材站（可商用/免署名/免注册可筛选，CI 每周验链）",
-    "content": "**Free for Creators** 是一份开源的「真免费」创作者素材站清单：158 个资源，覆盖音乐、音效、视频素材、图片、字体、图标插画、LUT/剪辑模板、样机、3D/游戏素材、聚合搜索 10 个分类。\n\n与普通 awesome list 的区别是每条都人工核过 4 个元数据字段——素材「发布前最怕的三件事」：\n\n- 📜 什么许可协议（CC0、CC BY、各家自定义免费许可……）\n- ✍️ 是否必须署名（例：Incompetech 可商用但必须署名）\n- 💰 能否用于已货币化/商业内容（例：BBC Sound Effects 免费但 🚫 禁止商用）\n- 🔑 是否需要注册账号\n\n网站按「可商用 + 免署名 + 免注册」筛选目前有 79 条，拿来就能用、零手续。\n\n- 网站（搜索/筛选/⌘K 面板/深色模式/中英双语）：https://skyzhao1223.github.io/free-for-creators/\n- 仓库（数据为 CC0 的结构化 JSON）：https://github.com/skyzhao1223/free-for-creators\n\n工程上：中英 README 和整个网站全部由 JSON 数据自动生成，CI 拒绝数据与页面漂移；每周 GitHub Action 核验全部 158 个链接，死链自动开 issue 跟踪（上周检查 0 死链，约 47 个在 bot 墙后的站点标记为人工复核而非静默信任）；不会 git 也能用 issue 表单投稿——上周刚合并第一个社区投稿（一个 CC0 音效库，由站点维护者本人规范披露后提交，许可证页核实后收录）。\n\n非商业项目，没有付费版、没有账号体系。如发现任何元数据错误，欢迎指出——核实后 10 分钟内修复上线。",
-    "created_at": "2026-10-08T06:52:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12145"
-  },
-  {
-    "id": 12144,
-    "title": "【开源自荐】NavDeck：给 NAS 写的导航页，Lucky同步，Nothing 风格，Docker 状态监控",
-    "content": "<img width=\"1920\" height=\"1137\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/31351249-bd52-4bc1-a90b-e26e635afa33\" />\n\n功能特性\n\n- 🎨 Nothing 风格 UI — 点阵数字时钟 + 极简卡片，预设壁纸 + 自定义上传，亮暗主体\n- 🍀 Lucky 规则同步 — 对接 Lucky OpenAPI，一键把反代规则同步为卡片\n- 🃏 卡片化导航 — 按分类组织服务卡片，拖拽排序，状态灯实时探测服务可达性\n- 🪟 iframe 弹窗打开 — 弹窗内直接用 qBittorrent / Jellyfin等服务，用完即关\n- 📥 快速添加卡片 — 网址拖进页面（或 Ctrl+V）自动抓标题与图标建卡\n- 🔄 内外网地址自动切换 — 按网络策略点击卡片跳正确的地址，内网直连、外网走反代\n- 📦 Docker 容器监控 — Widget 栏聚合容器运行状态与 CPU / 内存水位，30 秒自动刷新\n- 📱 PWA — 可安装到手机 / 桌面主屏，静态资源缓存，离线有兜底页\n\n全局搜索：⌘K / Ctrl+K 唤起，支持拼音与首字母缩写——输 xiazai 就能找到下载类卡片，搜不到可直达搜索引擎：\n\n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ba606df-3d88-4be5-9ae3-99de5bd659f0\" />\n\n\n内置 275 个高清 SVG 图标，覆盖常见自托管服务，支持搜索；卡片可选「新标签页 / 弹框」两种打开方式：\n\n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4c279c62-d0f2-4e35-b3a4-42f6577b8dcc\" />\n\n\n卡片墙 + 状态灯（绿点在线 / 红点离线，服务探测实时刷新）：\n\n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/13792588-dfc7-4459-8642-0b5aaceee3f1\" />\n\n\n亮 / 暗双主题：\n\n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/623ba86e-9209-4469-8faa-977363262bd7\" />\n\n<img width=\"1280\" height=\"720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cd166205-299a-45cd-b96e-ca895c5c97b5\" />\n\n\n其余细节：自定义壁纸遮罩、字体缩放、favicon 自动抓取、本地图标上传、一键备份恢复（配置 + 文件打包 zip）、单用户认证（Credentials + JWT，30 天免登录），数据全部存本地 SQLite。\n\nRoadmap：qBittorrent 下载监控、更多设备状态指标、PWA 等。\n\n技术栈：Next.js 16（App Router）+ React 19 + Prisma 7（SQLite）+ Tailwind CSS v4，Docker 多阶段构建，镜像发布在 GHCR。\n\n开源（MIT），欢迎提 issue，觉得有用点个 star：\n📦 仓库：https://github.com/wavesbig/navdeck",
-    "created_at": "2026-10-08T06:26:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12144"
   }
 ]
