@@ -1,5 +1,61 @@
 [
   {
+    "id": 12246,
+    "title": "【开源自荐】LightGitPad：AI 写代码时，用来看项目和 Git 改动的轻量查看器",
+    "content": "这是我做的开源桌面工具 LightGitPad，适合在 Claude Code、Codex 等 AI 编程助手修改代码后，检查工程和 Git 改动。\n\n在一个窗口里可以查看：\n\n- 工程文件树和带语法高亮的代码。\n- Git 改动及左右对照 diff、提交历史和分支列表。\n- Markdown 渲染预览，方便阅读助手生成的计划和报告。\n\n支持 Windows 10/11 x64 和 macOS 12 及以上（Apple Silicon、Intel）。源码采用 C++ / Qt 6，MIT 协议；v0.2.18 已提供两平台安装包及 SHA256 校验文件。\n\n它不调用任何 AI 服务，不需要账号或 API Key；Git 的提交、推送、拉取和切换分支仍由用户或编程助手完成。需要本机安装 Git 2.23 或以上。当前为 0.x 早期版本，安装包尚未用付费证书签名，首次启动需按 README 的说明确认。\n\n- 项目：https://github.com/felixlwang/LightGitPad\n- 下载：https://github.com/felixlwang/LightGitPad/releases/tag/v0.2.18\n- 中文说明：https://github.com/felixlwang/LightGitPad/blob/main/README.zh-CN.md\n\n欢迎试用，并通过项目 Issues 反馈问题或建议。\n",
+    "created_at": "2026-10-11T16:36:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12246"
+  },
+  {
+    "id": 12245,
+    "title": "【开源自荐】chinese-natural-reply：让 GPT 用中文说人话",
+    "content": "项目地址：https://github.com/molang163/chinese-natural-reply\n\n一个给 Codex（GPT）用的 skill，让 GPT 说话像人：改善防御性回复，不套安慰模板，说大白话。和同类 skill 对比，说人话的能力排名第一（在作者设定的条件下）。\n\n规则来自我两个月里和 GPT 的真实对话。GPT 的中文回复里，最让我讨厌的是这些：\n\n- 防御性说明：“纸面上能确认的是……仅凭这两处改字还不能完全确定”\n- 主动提没发生的事：“也没有证据表明已有密码被删除”\n- 安慰套话：“先别急着给自己下结论，也不用逼自己马上振作起来”\n\n对比用的是 16 道没用来调 skill 的日常问题，和不加 skill 的原版、talk-normal、好好说话、Humanizer-zh、humanizer 一起盲评。所有回答和打分都在仓库里，可以自己判断。\n\n举个例子，用户说“这周作业多得写不完，好烦啊”：\n\n- 原版：……想吐槽我就听着。要是想一起理一理，把作业和截止时间随便列给我，不用整理得很整齐……\n- 用了这个 skill：一堆作业挤在这周，写着一份还惦记着后面好几份，确实烦。你现在是量太多来不及，还是有几份特别难、一直卡着？\n\n安装（Codex）：\n\n```bash\ncodex plugin marketplace add molang163/chinese-natural-reply\ncodex plugin add chinese-natural-reply@molang163\n```\n",
+    "created_at": "2026-10-11T16:29:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12245"
+  },
+  {
+    "id": 12244,
+    "title": "AiReadCodeBooks —— 开源专著书库大厦，把超大复杂代码库写成能读完的双栏交互专著",
+    "content": "### 项目介绍\n\n- **项目名称**：AiReadCodeBooks · 开源专著书库大厦\n- **在线体验地址**：https://malerjc.github.io/AiReadCodeBooks/\n- **核心专著样例（NCCL）**：https://malerjc.github.io/AiReadCodeBooks/books/nccl/\n\n### 痛点与背景\n\n很多工程师在日常进阶或系统架构攻坚时，经常需要研读知名开源库的底层源码（例如深度学习通信底座 NVIDIA NCCL、大模型推理引擎 vLLM、Rust 异步运行时 Tokio 等）。\n\n然而，面对几万至数十万行的庞大代码库，传统的阅读方式极其痛苦：\n1. **找不到脉络**：直接在 GitHub 或 IDE 里面跳转，容易迷失在深层调用栈中，只见树木不见森林；\n2. **缺乏系统性全景解读**：碎片化的博客文章往往版本陈旧，且缺乏端到端的全生命周期宏观设计；\n3. **读时无法核对真实代码**：教程里贴的代码经常省略上下文，无法快速定位到具体的代码行与关键分支。\n\n### 核心特性与创新\n\n为了解决“复杂开源代码读不下去”的难题，我们推出了 **AiReadCodeBooks 开源专著书库**，具有以下特色：\n\n1. **宏观与微观双栏架构精读**：\n   - 网页左侧是系统化的专著章节解析（从初始化契约、环形拓扑搜索、内存协议选型到内核调度）；\n   - 网页右侧是真实代码仓库的沉浸式浏览器，阅读过程中点击章节中的函数或代码块，右侧自动高亮并平滑定位到**永久锚定的真实 Git Commit 行号**。\n\n2. **覆盖多领域工业级硬核底座**：\n   - **《NCCL 源码解读：一次 AllReduce 的 GPU 旅程》**：全书 25 章系统拆解 NVIDIA NCCL 通信库内核，从多机多卡拓扑搜索到 LL/LL128/Simple 三种底层通信原语；\n   - **《vLLM 高性能推理引擎核心实现》**：剖析大模型高吞吐推理底座，涵盖 PagedAttention 显存虚拟化与 Continuous Batching；\n   - **《Tokio 异步运行时源码全景》**：深入 Rust 高并发异步底座的工作窃取任务调度算法与无锁环形队列；\n   - **《Vue 3 核心架构精读》**：从零解密响应式系统与虚拟 DOM 差分算法。\n\n3. **完全免费、无广告、纯静态极速加载**：\n   - 部署于 GitHub Pages，支持暗黑模式、多语言（中/英/日等）双语对照，所有内容均公开免费阅读。\n\n### 截图与体验\n\n- **全景书库大厦**：https://malerjc.github.io/AiReadCodeBooks/\n- **双栏交互阅读（以 NCCL AllReduce 通信原语为例）**：\n  读者在左栏阅读协议对比时，右栏自动同步加载对应的 CUDA Kernel 真实源码，无需本地配置复杂的开发与编译环境。\n\n希望能为正在钻研开源底座代码、希望提升系统工程设计能力的开发者们提供一份系统、省时、能真正读完的技术指南！\n",
+    "created_at": "2026-10-11T13:58:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12244"
+  },
+  {
+    "id": 12243,
+    "title": "【开源自荐】在图形计算器上运行的类暗黑像素 ARPG",
+    "content": "阮老师好，自荐一个开源项目：\n\n**灰烬深渊 Ashen Depths**：https://github.com/hannnnnnnny/ARPG-CX\n\n这是一个用 C99 写的原创像素 ARPG，系统致敬暗黑破坏神 4。它最特别的地方是：同一份代码既能在 TI-Nspire CX 图形计算器上运行（320x240、约 150MHz 的 ARM9 处理器），也能编译成带键盘鼠标操作和合成音效的 Windows 游戏。\n\n几个可能有意思的点：\n\n1. 在资源很紧的计算器上跑同屏 64 只怪物、大量特效，游戏过程中不做任何内存分配。\n2. 游戏逻辑完全确定性：README 里的动图、甚至宣传视频，都是游戏自己用无界面模式逐帧渲染出来的。\n3. 用约 31.7 万项测试和一个\"300 小时长线模拟器\"来调平衡。\n4. 开发过程中大量使用 Claude Code 辅助编程，我负责设计、测试和数值调优。\n\nMIT 开源，Windows 版可一键下载：https://github.com/hannnnnnnny/ARPG-CX/releases/latest\n\n（独立原创项目，与暴雪娱乐、德州仪器无关联。）\n\n谢谢！",
+    "created_at": "2026-10-11T12:57:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12243"
+  },
+  {
+    "id": 12242,
+    "title": "【开源工具自荐】Next.js + FastAPI + Celery/Redis + LibreOffice：PPT 点击动画按顺序转成 PDF",
+    "content": "我对象做学术，经常需要把带动画的 PPT 转成 PDF。但直接导出时，原本要随着点击一步步出现的内容，可能挤在同一页，公式、图表和结论的讲述顺序就乱了。\n\n所以我 vibe  coding 搓了 Slides Bloom：把 PPT 中支持的点击进入动画，按顺序展开成 PDF 页面。\n\n举个例子：一页学术汇报 PPT 起初只有标题，点击第 1 次出现研究问题，第 2 次出现公式，第 3 次出现结论。转换后的 PDF 会有连续 4 页：只有标题；标题加研究问题；再加公式；最后加上结论。之前出现的内容会一直保留，读 PDF 时也能跟着原来的讲述顺序往下看\n\n上传 .pptx 后，可以在线逐页预览，再下载 PDF。\n\n欢迎有同样需求的朋友试试：\n\n🔗 线上体验：https://slidesbloom.duckdns.org/\n💻 项目地址：https://github.com/HuibingLin/slides-bloom\n\n如果大家有兴趣，欢迎体验和提出建议，也欢迎提 Issue 或 PR 😊",
+    "created_at": "2026-10-11T12:37:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12242"
+  },
+  {
+    "id": 12241,
+    "title": "【网站自荐】大模型三国志：用三国志14武将数值给 AI 大模型排座位",
+    "content": "我做了一个娱乐向的数据对照网站：把 Artificial Analysis 2026-10-10 的模型评测快照，和《三国志14》1180 名武将的五维放在一起，给大模型排座位。武力对应模型的智能指数（以榜首为 100 折算），智力对应性价比。\n\n厂家坐主公位，算是各家站队：曹操 = OpenAI，孙权 = Meta，袁绍 = Anthropic，汉献帝 = NVIDIA。榜首的 Claude Opus 5.5 对上了吕布，折算武力和原版武力都是 100。目前编排了 102 席，可以按阵营浏览，点开能看到双雷达图和列传。\n\n页面是 Python 脚本生成的纯静态单页，不需要 API Key，代码以 MIT 开源。武将数值和立绘版权归 KOEI TECMO。\n\n网址：https://illegalcreed.github.io/llm-sanguo/\n源码：https://github.com/IllegalCreed/llm-sanguo\n\n![](https://raw.githubusercontent.com/IllegalCreed/llm-sanguo/main/docs/assets/overview.png)",
+    "created_at": "2026-10-11T12:33:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12241"
+  },
+  {
+    "id": 12240,
+    "title": "【开源自荐】type-pal：用 TypeScript 从零重写的《仙剑奇侠传》，浏览器里能玩到结局",
+    "content": "我是 type-pal 的作者。这是一个非官方同人项目：用 TypeScript 从零重写 1995 年的《仙剑奇侠传》，打开浏览器就能玩，主线可以一直打到结局。\n\n它不是 sdlpal 的 WebAssembly 移植。原版 MKF 资源解包、事件字节码解释器、320×200 调色板渲染、回合制战斗都是 TypeScript 实现的，sdlpal 的 C 源码只拿来当行为参考。现在在做第二阶段：一个可视化编辑器，可以改地图、场景、剧情、角色和战斗，改完直接在编辑器里试玩。\n\n代码全部由 AI 编程助手写成，我负责定方向、做判断和验收。\n\n在线试玩：https://pal.illegalscreed.cn/\n\n源码（GPL-3.0）：https://github.com/IllegalCreed/type-pal\n\n![从改地图到试玩](https://raw.githubusercontent.com/IllegalCreed/type-pal/main/docs/screenshots/editor-to-play.gif)\n\n声明：本项目与大宇、软星及《仙剑奇侠传》权利人无关。仓库不含完整原版游戏数据；在线试玩用到的原版资源仅供学习交流，权利人如有要求会立即下架。请支持正版。",
+    "created_at": "2026-10-11T12:17:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12240"
+  },
+  {
     "id": 12239,
     "title": "【工具自荐】AI Burning Bridges：用一张照片制作带动作和配乐的表演短视频",
     "content": "自荐一个做的照片转视频工具 AI Burning Bridges。上传一张单人照片，就可以让照片中的人物成为 Drake《Burning Bridges》派对场景的主角，制作自己的表演短片。\n\n项目地址：[aiburningbridges.app](https://aiburningbridges.app/)\n\n工具把参考表演、场景和配乐整合在同一个页面，主要功能是：\n\n- 普通照片即可开始：提供清晰的脸部和上半身照片，支持裁剪选定主体，不需要拍摄表演素材。\n- 内置动作与场景：可以先观看参考模板，不用另外寻找参考视频或编写动作提示词，再选择生成时长和画质。\n- 下载自带配乐的 MP4：成片包含对应片段的音频，无需再到剪辑软件里匹配音乐。\n\n目前聚焦单人、固定模板的创作，最长支持 29 秒，输出为 16:9 横屏。生成需要付费积分，确认前会显示费用，支持一次性购买，无需订阅。",
@@ -185,8 +241,8 @@
   },
   {
     "id": 12214,
-    "title": "【开源自荐】md-to-word：告别排版焦虑，用 Markdown + AI 一键导出出版级 Word（支持硕博论文/公式居中靠右/多种表格样式跨页/动态目录）",
-    "content": "## 项目推荐：md-to-word\n\n- **项目地址**：https://github.com/ls18166407597-design/md-to-word\n- **类别**：开源工具 / 写作与排版 / AI Skill\n- **许可证**：MIT\n\n### 项目简介\n很多人都尝试过用 Markdown 写作，但在提交学术论文、毕业大论文或企业正式报告时，往往被 Word 的排版规范卡住：\n- 传统 Pandoc 导出的样式经常字体变蓝、中西文混杂；\n- 数学公式编号无法居中并靠右对齐（只能靠手动打空格）；\n- 表格边框难以精确控制，无法满足学术三线表或商务紧凑表格的要求，跨页后第二页失去表头；\n- 无法实现学位论文要求的“前置罗马页码（i, ii）+ 正文阿拉伯页码（1, 2）”独立分节，也无法生成带点线制表位的真实目录。\n\n`md-to-word` 是一款致力于彻底解决上述痛点的开源自动化排版工具，同时封装为开箱即用的 AI Agent Skill（支持 Claude Code、Cursor、Antigravity 等）。\n\n### 核心亮点\n1. **纯净 Word 365 底模**：中西文字体独立绑定，彻底消灭样式污染；\n2. **公式居中与编号靠右**：将带编号公式自动重构为三列无边框布局，公式绝对居中、编号严格对齐右边界；\n3. **丰富且可调的表格样式**：支持三线表、全网格线、顶底线与无边框自由定制，线宽精准可控，跨页时表头自动重复；\n4. **独立分节与动态目录**：单节或多节自由切换，生成 Word 原生动态目录域；\n5. **三道确定性自动化质量门禁**：导前语法预检、导后数值完整性防丢数检查、底层 OpenXML 样式逐项对账；\n6. **双语支持与开箱即用 Demo**：内置中文硕博学位论文与现代企业级技术白皮书两套经过严格验证的标杆范文。",
+    "title": "【开源自荐】md-to-word：内容与排版解耦，用 Markdown + AI 优雅导出符合国标与学术规范的 Word 文档",
+    "content": "## 项目推荐：md-to-word\n\n* **项目地址**：https://github.com/ls-open/md-to-word\n* **类别**：开源工具 / 写作与排版 / AI Skill\n* **许可证**：MIT\n* **最新版本**：v1.2.0\n\n### 项目简介\n\n很多人都喜欢用 Markdown 写作，但在提交学术论文、毕业大论文、课题结项或企业正式报告时，往往被 Word 的排版规范卡住：\n\n* **格式与字体污染**：从外部复制粘贴格式崩盘，传统工具导出时中西文字体混乱（如宋体配 Times New Roman 总是打架）；\n* **公式对齐玄学**：数学公式要求居中、编号要求靠最右，手动打空格换电脑就全乱飞；\n* **三线表跨页丢失**：学术三线表或紧凑数据表跨页后第二页失去表头行；\n* **分节与目录断层**：无法实现学位论文要求的“前置罗马页码（i, ii）+ 正文阿拉伯页码（1, 2）”，无法生成带点线制表位的真实 Word 动态目录域；\n* **版本管理黑盒**：Word 是二进制压缩包，导致微信群里永远充斥着《最终版_v1》《定稿_修改.docx》，无法做行级代码审查与 Git 差异对比。\n\n**md-to-word** 是一款致力于彻底解决上述痛点的开源排版引擎与 AI Agent Skill。核心理念是**「内容与排版彻底解耦」**：你只管用 Markdown 纯文本专注于内容写作，繁琐的排版规范全部交给声明式引擎自动化处理。\n\n### 核心亮点\n\n1. **坚持纯文本与 Git 版本控制**：告别二进制黑盒，所有文字增删享受 Git 行级 Diff 对比与分支协作；导出的 `.docx` 内部固定时间戳（Deterministic Build），重复导出字节一致，对 Git 极度友好；\n2. **纯中文声明式规则（requirements.txt）**：像日常说话一样声明字体、字号、边框与行距（如 `正文：宋体/Times New Roman 小四 首行缩进2字符`），无需编写复杂宏或修改底层 XML；\n3. **公式居中与编号靠右**：将带编号公式自动重构为三列无边框布局，公式严格居中、编号精准对齐版心最右端，支持 CJK 编号格式（`（2-1）`）与正文交叉引用；\n4. **学术三线表与全网格线数据表**：支持自由配置三线表与商务全网格线表，跨页换行时第二页**自动重现表头行**；\n5. **双节体系与原生动态域**：支持前置罗马页码与正文阿拉伯页码无缝切换，生成 Word 原生动态目录（按 F9 键即可更新）与随章节变化的动态章名页眉；\n6. **内置国标参考文献库**：内置 GB/T 7714-2015 顺序编码制与 APA 7th 格式，正文写入 `[@key]` 即可在文末自动对齐悬挂缩进，并在 Word 中默认支持点击跳转；\n7. **三道确定性自动化质量门禁**：导前预检（拦截图片超出版心等隐患）、导后防丢数检查、底层 OpenXML 样式逐项静态对账（确保声明项 100% 真实生效）；\n8. **面向 AI Agent 深度调优**：内置开箱即用的 Agent Skill（原生适配 Claude Code、Cursor、Windsurf 等），用户只需自然语言提出要求，AI 全自动完成提取、组装、校验与 `.docx` 交付；\n9. **30 秒极简验证**：仓库内置 `demo/00_quickstart`（一份 26 行稿件 + 14 行配置），30 秒即可在本地跑通体验，同时包含学位论文与商业白皮书两套全要素标杆范文。\n\n",
     "created_at": "2026-10-10T10:52:11Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12214"
@@ -748,63 +804,5 @@
     "created_at": "2026-10-08T06:26:26Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12144"
-  },
-  {
-    "id": 12143,
-    "title": "【开源自荐】智慧仓储数字孪生：Three.js 实现的 3D 物流园区大屏",
-    "content": "[smart-warehouse](https://github.com/Xxcool/smart-warehouse) 是一个开源的 3D 智慧仓储数字孪生大屏，浏览器打开即可体验，无需安装。\n\n它用 Vue 3 + Three.js 还原了一个物流园区的运转：AGV 小车沿导引线自动搬运货物、货车在月台装卸、冷链仓实时温控，点击场景里的任意设备，镜头会自动推近并弹出数据卡片。支持「赛博夜景」和「白昼展厅」两种风格一键切换。\n\n一个比较特别的地方是：项目的 3D 模型由 AI 编程助手通过 Blender MCP 驱动 Blender 自动建模、导出，前端代码也主要由 AI Agent 生成，可以作为「AI + 3D 可视化」开发流程的一个参考案例。\n\n- 在线体验：https://smart-warehouse-wine.vercel.app\n- 项目地址：https://github.com/Xxcool/smart-warehouse\n\n![](https://raw.githubusercontent.com/Xxcool/smart-warehouse/main/docs/images/15_cyber_digital_twin.png)\n",
-    "created_at": "2026-10-08T06:10:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12143"
-  },
-  {
-    "id": 12142,
-    "title": "【工具自荐】飞砂宝盒：桌面整理 + 快捷访问 + 全盘搜索，以及 8 款按需下载的办公急救工具，核心客户端 20MB",
-    "content": "**项目**\n飞砂宝盒（Windows）\n\n官网 / 下载：https://flysa.cn/?from=weekly\n\n**一句话介绍**\nWindows 效率工具：桌面文件自动归类、快捷访问面板、Alt + Space 全盘搜索；另有 8 款办公急救工具按需下载，用哪个装哪个。\n\n**体积**\n- 安装包约 20MB，核心装完约 60MB\n- 工具全部装齐约 400MB（主要是录屏的编解码组件）\n- 工具按需下载，不装不占空间\n\n**为什么自己做**\n自己做之前也试过不少桌面整理软件。有的功能就一个整理，桌面干净了，软件也就不大打开了；有的倒是功能多，但安装包越来越大，还时不时跳出推荐。\n我们想要的很简单：平时能帮收拾桌面、搜文件，急用时又能处理 PDF、Office、压缩包密码这类麻烦事，而且别一上来就又大又吵。所以做成「日常好用 + 急救按需装」——整理和搜索默认免费，办公工具用到再下，不追求功能堆满。\n\n**主要功能**\n1. 桌面整理：新文件按规则进分区。可全自动归位，也可先入「未分类」再一键整理（避免找不到刚下的文件）。默认分区免费；自定义分区与规则需会员。\n2. 快捷访问：常用应用 / 文件夹固定到面板，快捷键唤出。\n3. 全盘搜索：Alt + Space，支持格式筛选。\n4. 桌面待办：可贴在桌面；云同步需会员。\n5. 8 款急救工具（按需下载）\n  - 免费：窗口抓取器（点一下查出弹窗所属进程）、自动关机助手\n  - 会员：PDF 密码管家、PDF 转换专家、Office 解密专家、压缩包解密专家、HEIC 互转、录屏\n  \n**免费与付费**\n- 免费：默认分区整理、快捷访问、全盘搜索、桌面待办、部分皮肤、窗口抓取器、自动关机助手；不登录也可用。\n- 会员（订阅 / 买断）：自定义分区与规则、待办云同步、部分皮肤，以及其余 6 款工具。\n- 工具需联网鉴权，文件仍在本地处理；无弹窗、无捆绑。\n\n**支持平台**\nWindows 7 及以上（32 / 64 位）。\n\n**截图**\n【截图 1：桌面整理前后】\n\n<img width=\"1035\" height=\"582\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c77645ce-1eb2-4513-b03d-29cb501555af\" />\n\n<img width=\"1035\" height=\"582\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1f87266b-7200-46d8-a93a-c19edbbdd7a1\" />\n\n【截图 2：快捷访问面板】\n\n<img width=\"888\" height=\"748\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2682595e-214e-4d95-8779-4e7afcc84344\" />\n\n【截图 3：Alt + Space 搜索】\n\n<img width=\"667\" height=\"750\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4ebe0e27-5473-4cba-80a4-cbb48463fe90\" />\n\n【截图 4（可选）：按需下载的工具面板】\n\n<img width=\"1035\" height=\"669\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/620063e3-0bab-4d9b-90aa-8c00b9c828b4\" />",
-    "created_at": "2026-10-08T03:46:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12142"
-  },
-  {
-    "id": 12141,
-    "title": "【产品自荐】EnvTrace —— 免费免注册的登录前浏览器环境检测（指纹 / IP / WebRTC）",
-    "content": "**网址**：https://envtrace.net\n\n### 一句话介绍\n\n免费、免注册的登录前环境自检：打开网页即可看到网站能看到的你——浏览器指纹、IP/代理质量、WebRTC/DNS 泄漏、时区语言一致性、自动化痕迹，最后给出一个健康分和场景建议。\n\n### 能检查什么\n\n- 浏览器指纹相关信号是否一致、是否异常\n- 出口 IP 与代理特征（线路类型、代理标记、黑名单/滥用风险）\n- WebRTC 泄漏、DNS 泄漏（是否绕过代理暴露真实 IP）\n- 时区、语言是否与 IP 所在地对得上\n- 常见的浏览器自动化痕迹\n- 汇总成一个健康分，并按社媒、广告、电商、支付等场景给出适配建议\n\n另附 IP 查询、2FA（TOTP）验证码生成等小工具。\n\n### 适合谁\n\n跨境电商卖家、多账号运营、代理/VPN 用户、关注隐私的用户，以及需要验证自动化环境的开发者——在登录高风险账号之前先确认环境没问题，而不是被风控之后再排查。\n\n### 免费说明\n\n完全免费，无需注册，打开即用；支持中文 / English / Português。检测结果不在服务端保存。\n\n我是 EnvTrace 的开发者，这是一个独立项目，自荐给周刊的工具栏目。欢迎试用和提意见。",
-    "created_at": "2026-10-08T03:28:23Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12141"
-  },
-  {
-    "id": 12140,
-    "title": "【开源自荐】Ginno：本地优先的个人 AI Agent，数据不出本机，自带可视化工作流",
-    "content": "## 项目地址\n\nhttps://github.com/robscc/ginno\n\n## 背景\n\nClaude Code 这类 Agent 的形态很好用，但我想给「个人使用」做一个完整的桌面形态：数据不出本机，工具 / 权限 / 技能 / 工作流有统一的界面，流程可编排、运行可观察。\n\n于是用业余时间做了两个多月，自己每天在用（dogfooding），迭代了 220+ 次提交，目前是能日常干活的状态。\n\n## 它是什么\n\nGinno 是一个 **本地优先（local-first）的个人 AI Agent 桌面应用**（macOS）。\n\n一条设计原则贯穿始终：**你的数据不离开你的机器。**\n\n- 无数据库：所有状态是 `~/.ginno/` 下的 JSON / JSONL / Markdown，可读、可手改、可进 git\n- 无账号、无云同步：打开即用；拷走文件夹就能搬家\n- 自带模型 Key：OpenAI / Anthropic / DeepSeek 或任意兼容端点；Ginno 只是客户端，不托管你的 Key 和数据\n\n技术栈：Tauri 2（Rust 桌面壳）+ Next.js 前端 + Python 运行时（FastAPI / LangGraph）。\n\n能力上：\n\n- **多 Agent 对话**：会话中随时切换 Agent，共享历史、各自独立记忆\n- **工具 · 权限 · 技能 · MCP · Hooks**：Claude Code 同款形态，全部内置\n- **可视化 Workflow Studio**：一份带版本的 DSL，编译成 LangGraph 状态图执行，运行过程实时观察\n- **本地知识库**：索引你的 Obsidian 仓库，回答带引用来源\n- **长程 Goal + TODO**：让 Agent 持续推进一个长期目标，并和待办同步\n- **内置浏览器 + 联网搜索**：检索带来源标注\n\n## 效果\n\n工作区：\n\n![Ginno 工作区](https://raw.githubusercontent.com/robscc/ginno/main/docs/smoke/ui-workspace.png)\n\nWorkflow Studio（可视化编排 + 运行观察）：\n\n![Workflow Studio](https://raw.githubusercontent.com/robscc/ginno/main/docs/smoke/ui-workflow-tab.png)\n\n本地知识库：\n\n![本地知识库](https://raw.githubusercontent.com/robscc/ginno/main/docs/smoke/kb-overview.png)\n\n## 安装\n\nmacOS（Apple Silicon）：\n\n**安装包（推荐）**：[Releases 下载 Ginno_0.1.0_aarch64.dmg](https://github.com/robscc/ginno/releases/tag/v0.1.0)（未签名，首次打开请右键 → 打开）\n\n或从源码运行：\n\n```bash\ngit clone https://github.com/robscc/ginno\ncd ginno\npnpm install\ncd packages/runtime && uv sync\ncd ../.. && pnpm dev\n```\n\n## 其他\n\nMIT 开源。项目还很早期，API 和 UI 迭代很快；欢迎试用，欢迎提 Issue / PR，中英文都行。\n",
-    "created_at": "2026-10-08T03:26:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12140"
-  },
-  {
-    "id": 12139,
-    "title": "【工具自荐】火星海平面模拟器",
-    "content": "[火星海平面模拟器](https://tinytovast.com/mars-sea-level-simulator)可以以互动的形式，允许用户在web端，模拟火星上存在海洋的话会发生什么，以及不同海平面高度的海洋在火星上看起来是怎样的。\n\n模拟器还加入了气候和生态模拟，模拟如果火星获得海洋后，如果引入植被的话，整个星球的外观演化情况。\n\nDemo视频\n\nhttps://github.com/user-attachments/assets/64abff51-7adb-4593-8ed7-b5d68427972e\n\n在线地址：https://tinytovast.com/mars-sea-level-simulator",
-    "created_at": "2026-10-08T03:08:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12139"
-  },
-  {
-    "id": 12138,
-    "title": "【开源自荐】Agent Muster：在浏览器里统一管理本地 AI 编程 Agent，支持钉钉/飞书远程派活",
-    "content": "<img width=\"2024\" height=\"1243\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ab4dc1cb-b7ae-4186-a006-13f321ca6f5b\" />\n\n> **项目地址：** https://github.com/sexyAmole/agent-muster\n>\n> **一句话介绍：** 在浏览器中统一管理本地的 Codex、Claude Code、Kimi CLI 等 AI 编程 Agent，并通过钉钉或飞书机器人随时随地给它们派发任务、接收回复。\n>\n> **解决的痛点：**\n> 现在开发者往往同时装了多个 AI 编程 CLI（Codex、Claude Code、Pi、Kimi CLI、Gemini CLI、OpenCode、Cursor Agent）。每个工具各开各的终端，会话分散、无法集中管理；想离开工位又没法继续跟进任务。\n>\n> **核心功能：**\n> - 自动检测本机已安装的 Agent，按项目管理会话，支持 1/2/4 分屏同时对话\n> - 实时查看回复内容、工具调用、执行状态和 Token 用量\n> - 会话持久化保存，可随时恢复历史对话、停止运行中任务\n> - 通过钉钉 / 飞书机器人远程收发任务：扫码创建应用、私聊或群里 @机器人 派活，执行完自动把结果发回 IM\n> - 无需公网 webhook——基于钉钉 Stream SDK / 飞书 WebSocket 长连接，纯本地运行\n> - IM 内置命令：`/new`、`/projects`、`/project`、`/models`、`/model`、`/status`、`/help`，可随时切换项目和模型\n>\n> **快速上手：**\n> ```bash\n> npx agent-muster\n> ```\n> 浏览器自动打开 http://127.0.0.1:17321 ，零配置开箱即用（要求 Node.js ≥ 22.19）。\n>\n> **典型场景：** 下班前把任务丢给钉钉机器人，回家后直接在手机上查看 Agent 的执行结果；或让一个 Agent 跑长任务的同时，在浏览器分屏里继续用另一个 Agent 写别的代码。\n>\n> **协议：** MIT",
-    "created_at": "2026-10-08T02:57:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12138"
-  },
-  {
-    "id": 12137,
-    "title": "【开源自荐】OpenHire：让 AI 助手直接搜雇主招聘系统里的岗位",
-    "content": "### 项目名称\n\nOpenHire\n\n### 项目地址\n\n- GitHub: https://github.com/gzchenhao/openhire\n- PyPI: https://pypi.org/project/openhire/\n\n### 项目简介\n\n一个 MCP 服务器，让 Claude、Cursor、TRAE 或任何 MCP 客户端直接搜索雇主**自己招聘系统**（Greenhouse、Lever、Ashby、北森、Moka）公开接口里的在架岗位。每条岗位带雇主系统里的**原始发布日期**、在架天数和直达投递链接，这些在招聘平台上看不到。\n\n目前收录 143 家有在架岗位的雇主（9 月底实测），集中在 AI 基础设施、智驾和具身智能，国内有理想汽车、宇树、优必选、小鹏汇天、梅卡曼德等。索引每周自动刷新，公开数字在仓库 `docs/numbers.json`。\n\n### 为什么做这个\n\n我是做智驾和具身智能方向的猎头，这个工具是和 AI 结对做出来的。招聘平台显示的「3 天前发布」是刷新时间，不是发布时间，HR 点一下就能刷。而企业自己招聘系统里的原始发布日改不掉。把这两个日期一对，很多岗位差好几个月。这个项目就是把「去官网查原始发布日」这件事做成一个工具，让 AI 助手代劳。\n\n### 特点\n\n- **一手数据**：不抓招聘平台，只读雇主 ATS 的公开接口\n- **简历不上传**：匹配在本机完成，服务器只见到一个匿名指纹；这条有 CI 测试钉死\n- **排序买不到**：排序是（匹配度，新鲜度）的纯函数，函数签名被测试锁死\n- **数字可核**：所有对外引用的数字都从 `numbers.json` 生成，每周重算\n\n### 快速使用\n\n```\nuvx openhire@latest serve\n```\n\n空索引会自动拉取公开快照，不用注册、不用 key。Claude Code 里两条命令即装：`/plugin marketplace add gzchenhao/openhire`，再 `/plugin install openhire@openhire`。Claude Desktop 用户可直接下载 Release 里的 `.mcpb` 双击安装。\n\n![终端实录：安装、拉索引、搜索](https://raw.githubusercontent.com/gzchenhao/openhire/main/docs/quickstart.svg)\n\nMIT 协议。\n",
-    "created_at": "2026-10-08T02:44:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12137"
   }
 ]
