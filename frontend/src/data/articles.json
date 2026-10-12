@@ -1,5 +1,157 @@
 [
   {
+    "id": 12287,
+    "title": "【开源自荐】jev-chat-windows —— 聊天窗口旁挂的回复辅助：离线 OCR，先看懂对方",
+    "content": "自荐一个开源小工具：jev-chat-windows\nhttps://github.com/jev-chat/jev-chat-windows\n\n它是一个挂在聊天窗口旁边的回复辅助：对聊天窗口截图，用本地离线 OCR 读屏上的对话，把文字交给 Jev 判断意图和情绪，给出 3 条候选回复，点一下填进输入框——发送永远由你自己按。\n\n技术上有两个我觉得还算有意思的点：\n\n1. 采集层完全不侵入聊天软件：按窗口 ID 截图（不是全屏），OCR 在本地离线完成，不注入、不 hook、不解密任何聊天数据库。判断层走 TypeSafe Jev，起草层接任意 OpenAI 兼容端点。\n2. 分发做成了\"下载即用\"：Releases 里有打包好的 exe（约 146 MB），普通用户不用装 Python；API key 只写 Windows 用户环境变量（注册表 HKCU\\Environment），不落任何文件，其余设置放在 exe 旁边的 config.json，整个文件夹拷走设置也跟着走。\n\nWindows 10 (1903+) / 11 可用，开源在 GitHub，exe 未签名（SmartScreen 会拦一下，介意可以自己打包）。\n\n适合聊天量大、想先看懂对方意图再回复的 Windows 用户，也欢迎研究离线 OCR + 窗口感知管线的同学看源码。\n",
+    "created_at": "2026-10-12T12:47:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12287"
+  },
+  {
+    "id": 12286,
+    "title": "工具自荐：用 CSV 批量填写 PDF，文件在浏览器内处理",
+    "content": "做了一个中文批量填表工具，目前免费开放 MVP。导入可填写 PDF 和 UTF-8 CSV，对应字段后，可预览单份成品并批量下载 ZIP；错误行单独报告，中文和长编号按文本保留。支持最多 100 行，暂不支持扫描件、普通无表单 PDF 和 Excel 文件。页面带虚构示例，可直接体验。欢迎反馈使用中的问题，请勿公开包含个人信息的文件。\n\n体验地址：https://verified-workflow-demo.speedyfawn2.chatgpt.site/workbench/",
+    "created_at": "2026-10-12T11:48:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12286"
+  },
+  {
+    "id": 12285,
+    "title": "【工具自荐】简洁高效的 URL 参数查看/编辑插件",
+    "content": "https://chromewebstore.google.com/detail/mearl/aoehhjnofngknnjefamjbplchbolghkm\n\n<img width=\"3840\" height=\"590\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4b95a5f0-91e2-4723-a70b-c82cc484bb23\" />\n\n<img width=\"3840\" height=\"1984\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/42308bf1-3c99-4466-b662-0d7f07c7f108\" />",
+    "created_at": "2026-10-12T11:39:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12285"
+  },
+  {
+    "id": 12284,
+    "title": "【开源自荐】jev-chat-jarvis-ios —— 一个键盘打通所有聊天 App：先看懂对方再回复",
+    "content": "自荐一个开源小工具：jev-chat-jarvis-ios（iOS 键盘版）\nhttps://github.com/jev-chat/jev-chat-jarvis-ios\n\n它是一个 iOS 自定义键盘：在任何聊天 App 里，长按复制对方那条消息，切到 Jev 键盘点「分析剪贴板」，键盘上直接给出这句话的意图（8 类概率分布）、风险分级（0-9）、行动建议和候选回复，点一下候选文字就进输入框。不跳 App、不切后台、不申请录屏权限——一个键盘打通所有聊天软件。\n\n技术上有两个我觉得还算有意思的点：\n\n1. 判断层走 TypeSafe Jev 的 systemone 接口，一次调用同时拿到 8 类意图的概率分布和 0-9 风险分布，还给候选回复排序；没配 key 也不会挂，自动退化成只起草的\"盲起草\"。生成层是标准 OpenAI 兼容 / Anthropic 兼容接口，智谱、DeepSeek、OpenRouter 都有预设，12 种话术并发各出 2 条（前稳后放）。\n2. 键盘扩展有 60MB 内存上限，整个键盘是在这个约束下用纯系统控件搭的；App 和键盘共用的判断口径（意图集、风险量表、话术库、prompt）收在 Shared/ 目录单一实现里，用 swiftc 就能在 Mac 上跑口径回归，不需要 iPhone。\n\n隐私边界：文字只在你点「分析」那一刻发往你自己配置的接口，无自建服务器、不落盘、不进日志；Key 存本机 App Group 私有容器；键盘不监听、不上传按键。发送永远由你手动完成。\n\nSwift 5 + SwiftUI，iOS 16+，MIT 开源，Xcode 免费个人账号就能真机跑。\n",
+    "created_at": "2026-10-12T11:33:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12284"
+  },
+  {
+    "id": 12283,
+    "title": "【开源自荐】jev-chat-jarvis-mac —— macOS 聊天悬浮窗：先看懂对方，再回复",
+    "content": "自荐一个开源小工具：jev-chat-jarvis-mac\nhttps://github.com/jev-chat/jev-chat-jarvis-mac\n\n它是一个 macOS 悬浮窗：聊天应用里弹出一条消息，悬浮窗会告诉你这句话的真实意图（8 类，零样本 86.4%）、风险分级（0-9 分）和几条候选回复，点「填入」进输入框——发送键永远由你自己按。\n\n技术上有几个我觉得还算有意思的点：\n\n1. 感知层没有侵入任何聊天应用：要么对前台聊天窗口按窗口 ID 截图（不是全屏），再用 Apple Vision OCR 只扫聊天区，按气泡和左右对齐区分正文、昵称、固定公告和引用；要么直接走系统文本接口读，不截图不 OCR。\n2. 判断层是个本地 2B 小模型，一次前向同时出 8 类意图的全分布和风险分级，下载后完全离线；也可以配 TypeSafe Jev 的 key 走云端。生成层接任意 OpenAI 兼容端点（DeepSeek、智谱、本地 Ollama 都实测过），14 种话术并发生成候选，再由本地模型重排。M1 Pro 上出意图约 1.5 秒。\n3. 坚持只读不代发：不模拟任何按键——合成输入事件会被部分应用的账号风控识别；「填入」优先走辅助功能接口写入并读回确认，定位不到就复制到剪贴板让你自己粘贴。\n\n用法：Releases 下载 .app 拖进应用程序，授予屏幕录制权限即可。仅支持 Apple Silicon（M 系列）+ macOS 13+，MIT 开源。\n\n适合每天在微信/飞书/QQ 里打字很多、想先看懂对方再回复的人，以及研究屏幕感知 + 端侧小模型落地的同学。\n",
+    "created_at": "2026-10-12T11:15:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12283"
+  },
+  {
+    "id": 12282,
+    "title": "【开源自荐】bushaoxin —— 把 AI 短剧良心掌柜台词做成万能公式 Skill",
+    "content": "自荐一个开源小玩意：bushaoxin（不烧心文学）\nhttps://github.com/eatmoreduck/bushaoxin\n\n起因是一个观察：红果短剧上批量生成的 AI\"良心商家\"短剧，台词高度同质化——\"贵是贵了点，但用了不烧心\"\"规矩不能坏\"\"明天怎么办？先做\"。同质化到反而被网友解构成一个万能公式\"万物皆可不烧心\"：学习、写码、恋爱、健身，任何事套上这套掌柜腔，就自动显得靠谱、有底线。本质是大家对\"不坑人\"的集体渴望找到了一个好玩的语言模因。\n\n我把这套公式做成了 Claude Code 的 Skill（遵循 Anthropic 开放的 Agent Skills 格式）：装上之后，让 AI 用良心掌柜的口吻写文案、评价事物、回怼、唠嗑。纯 prompt 实现，零依赖，Claude Code、claude.ai、Codex 都能用。\n\n用法很简单：\n\n```bash\ngit clone https://github.com/eatmoreduck/bushaoxin.git\ncp -r bushaoxin ~/.claude/skills/\n```\n\n然后对 AI 说\"用不烧心文学评价一下 XX\"，它会回：\n\n> 贵是贵了点。但学完不烧心。账一笔一笔记清楚，谁的问题谁负责。慢慢来，别慌，一慌就容易学岔。\n\n还做了个\"火候\"调节：说\"太烧了\"降一档、\"淡了\"升一档，从一句话点到为止到掌柜附体连发信条，吐槽本身就是遥控器。\n",
+    "created_at": "2026-10-12T11:06:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12282"
+  },
+  {
+    "id": 12281,
+    "title": "【开源自荐】Jev 聊天助手：回复前先看懂对方的安卓聊天辅助决策工具",
+    "content": "项目地址：https://github.com/jev-chat/jev-chat-jarvis\n官网：https://chatjevs.com\n\n阮老师好，自荐一个我做的开源安卓 App：Jev 聊天助手。\n\n它想解决的是「回消息前没看懂对方」这件事。打开聊天后，它先读一遍当前对话，判断对方真实意图和有没有风险，再起草几条候选回复，选中一条一键填进输入框，发不发由你自己点。\n\n- 国内版支持 QQ、飞书、X、WhatsApp（v1.7），同仓库另有英文海外版\n- 只读屏幕，不 hook、不改包、不需要 root；读不到时用本机 OCR\n- 只填不发，程序不会替你按发送\n- 模型接口自己配（OpenRouter 或任意 OpenAI 兼容接口），开源免费，MIT\n\n我是作者，和 QQ、飞书、X、WhatsApp 都没有官方关联。\n\n![截图](https://raw.githubusercontent.com/jev-chat/jev-chat-jarvis/main/.github/assets/images/overlay.png)\n",
+    "created_at": "2026-10-12T10:57:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12281"
+  },
+  {
+    "id": 12279,
+    "title": "【软件推荐】概言笔记-跨平台、本地优先的Markdown笔记软件",
+    "content": "概言是一款**本地优先**的**跨平台的Markdown**笔记软件，以块为记录形式，支持标题、表格、流程图、思维导图、媒体、嵌入网页等几十种类型数据格式，并且已接入多种AI进行进行内容创作。\n\n[点我去官网页面、可直接体验所有数据类型](https://gaiyan.net)\n\n<img width=\"2234\" height=\"1798\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1e02cb9c-ffb1-4f7a-96bf-abe46c4ea79d\" />\n\n### 特点\n- **本地存放数据**\n如果你担心数据存放云端不安全，可直接下载客户端使用本地空间，数据完全存放本地，媒体文件自定义管理。\n\n- **云端存放数据**\n- 如果你想分享文档给好友或者邀请好友一起编写文档，你可以邀请好友一起使用线上空间，分享文档，权限控制等都很方便\n",
+    "created_at": "2026-10-12T10:54:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12279"
+  },
+  {
+    "id": 12268,
+    "title": "【开源自荐】Sax Design Vue：有亿点点不一样的 Vue3 组件库，内置强大的表格与 Agent 组件",
+    "content": "大家好，自荐一下我一个人维护的开源项目 **Sax Design Vue**：基于 Vue3 和 TypeScript 的 UI 组件库，最近发布了 **2.1.0**，MIT 协议。\n\nVuesax 的 Vue3 版本停止持续更新后，我想尝试把它复活。做着做着，又决定在原有视觉语言上做点更大胆、更不一样的东西：让它既能做出有辨识度的界面，也能承接复杂数据业务与 Agent 应用。**表格的功能和交互参考了 vxe-table**，感谢这两个项目带来的启发。\n\n## 特色目录\n\n| 能力 | 值得一看的地方 |\n| --- | --- |\n| [基于路由的 Anchor](https://sax-design.emssion.com/zh/components/anchor.html#anchor-route-boundary) | 同一份目录混合路由章节和页内锚点；支持页首 / 页尾继续滚动切换章节，以及相邻路由预取。 |\n| [动态行高与双向虚拟表格](https://sax-design.emssion.com/zh/components/table/large-data-and-visualization.html) | 根据内容测量实际行高，配合行列虚拟化和按索引数据源；固定列、多级表头等业务能力仍可组合使用。 |\n| [Form / Table 共享渲染器](https://sax-design.emssion.com/zh/components/renderer.html) | 同一份渲染器定义服务于单元格展示、编辑、表单与筛选，复用标准控件和业务规则。 |\n| [14 个 Agent 交互组件](https://sax-design.emssion.com/zh/components/chat-input.html) | 覆盖输入、消息、流式输出、推理步骤、引用、计划审批等过程；模型能力通过数据配置联动。 |\n| [液态镜片 Card](https://sax-design.emssion.com/zh/components/card.html) | 用 SVG 滤镜实现背景折射，材质、布局和交互效果可以独立组合。 |\n| [弧形与 3D Carousel](https://sax-design.emssion.com/zh/components/carousel.html) | 弧形扇面、卡片层叠、环形轨道和棱柱展示，共用导航、拖动和自动播放能力。 |\n| [暗水印与截图显影](https://sax-design.emssion.com/zh/components/watermark.html) | 除明水印外，也能生成低可见度的暗水印，并提供截图显影示例。 |\n| [声明式 Skeleton](https://sax-design.emssion.com/zh/components/skeleton.html) | 用圆、方块、长条与嵌套行的简易配置组合骨架屏，避免每种布局都手写占位结构。 |\n\n下面用几个实际示例介绍其中的重点。\n\n## 1. 有自己的美术风格\n\n延续 Vuesax 的设计语言，以无边框、圆角、柔和阴影和渐变建立层次，强调卡片、控件、浮层之间的一致性；支持浅色 / 深色主题，也提供玻璃材质、气泡纹理进度条等视觉能力。\n\n输入、选择、反馈和弹出层都沿用这套视觉语言，配合霓虹文字、材质和动效做一点大胆的尝试。\n\n![首页精选：业务表格、Agent 输入、气泡进度与路由 Anchor](https://github.com/adoin/sax-design-vue/releases/download/v2.1.0/sax-design-vue-visual.jpg)\n\n## 2. 表格的业务能力与大数据渲染一起做\n\nTable 在同一个组件中提供多级表头、固定列、树形与分组、汇总、合并单元格、编辑校验、变更跟踪、查找替换、行列拖拽，以及查询表单、工具栏和请求代理。Form 与 Table 共用渲染器机制，常见输入与操作可以通过配置复用。\n\n![多级分组表头、排序、筛选与列设置的实际示例](https://github.com/adoin/sax-design-vue/releases/download/v2.1.0/sax-design-vue-table-features.jpg)\n\n**动态行高**会按内容自动测量，支持换行文本与不同高度的行，并与行列虚拟化配合，不要求每一行都写死高度。\n\n性能方面支持**行列双向虚拟化和按索引数据源 `virtualSource`**。虚拟化减少 DOM；索引数据源进一步避免为了描述巨量逻辑行列而先创建完整数组。\n\n下面是文档中的 **10 万行 × 10 万列逻辑数据**示例，支持在起点、中部和末端之间跳转，只读取当前窗口，并保留固定列。它表示逻辑规模，**不会一次创建或渲染全部单元格**。文档还提供百万行生成源的校验与图表取数示例。\n\n![十万行、十万列索引数据源：只渲染当前窗口，并保留右侧固定列](https://github.com/adoin/sax-design-vue/releases/download/v2.1.0/sax-design-vue-table-virtual.jpg)\n\n可以直接体验：[表格基础](https://sax-design.emssion.com/zh/components/table/data-and-column-definitions.html) · [编辑与校验](https://sax-design.emssion.com/zh/components/table/editing-validation-and-changes.html) · [虚拟化与大数据](https://sax-design.emssion.com/zh/components/table/large-data-and-visualization.html)\n\n## 3. 内置 14 个常用 Agent 交互组件\n\n覆盖聊天输入、角色消息、消息虚拟滚动、聊天历史、流式文本、推理步骤、引用、代码块、文件差异、任务列表、计划审批、问题卡片、图像生成状态和 Agent Editor。\n\n- **聊天输入**：文件选择与图片预览、语音输入入口、模型选择、Fast 和思考强度设置；模型能力由应用传入，切换模型时联动可用选项。\n- **消息与输出**：用户 / Agent 的不同布局和操作，动态行高虚拟滚动、历史懒加载、流式展示和引用。\n- **执行过程**：推理步骤、任务列表、可展开的计划与批准反馈，以及收集用户回答的问题卡片。\n\n![Chat Input：附件预览、输入后发送状态与模型思考强度面板](https://github.com/adoin/sax-design-vue/releases/download/v2.1.0/sax-design-vue-agent.jpg)\n\n![Plan Card：展开任务清单与批准、拒绝操作](https://github.com/adoin/sax-design-vue/releases/download/v2.1.0/sax-design-vue-agent-plan.jpg)\n\n这些组件负责界面和交互，模型服务及业务流程由应用接入。可以从现成组件开始组合，而不必逐个重写聊天与执行过程的基础 UI。\n\n项目提供中英文文档、可运行示例、代码查看与在线 Playground。\n\n- GitHub：https://github.com/adoin/sax-design-vue\n- 文档：https://sax-design.emssion.com/zh/\n- GitHub Pages 镜像：https://adoin.github.io/sax-design-vue/zh/\n- npm：https://www.npmjs.com/package/sax-design-vue\n\n欢迎试用，也欢迎提交问题和建议。\n",
+    "created_at": "2026-10-12T10:29:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12268"
+  },
+  {
+    "id": 12267,
+    "title": "Toolmaker Agent: 一个基于智能体的 SDLC 平台，支持人类与智能体在同一结构化数据模型上开展协作。",
+    "content": "当 AI 开始写代码，如何管理好你的产品需求和设计？\n\n> 让人、产品和编码智能体，共用一份不会散落的项目长期记忆。\n\n这两年，团队写代码和文档的速度变快了。\n\n开一场会，AI 能帮你生成会议纪要；使用 Superpower skills 讨论一个功能，几分钟就能得到一份 spec；让 Claude Code、Codex 或其他编码智能体开始工作，又会多出 plan、ADR、实现说明和测试记录。\n\n看起来，每个人都更高效了。\n\n但项目并没有因此更容易管理。相反，很多团队正在经历另一种混乱：文档散落在不同目录、不同仓库、不同聊天记录里。产品经理记得当初的目标，开发记得实现时的取舍，AI 记得当前上下文——可当需要回答“这个需求是谁定的？”、“它属于哪个特性？”、“哪些设计图和它有关？”时，大家又回到了搜索 Markdown、翻聊天记录和开会确认。\n\n问题从来不是少了一份文档，而是缺少一个能让结论持续存在、可被查询和复用的地方。\n\nToolmaker Agent 正是为这件事而来。\n\n## 1. 软件工程在 AI 时代的回归\n\nAI 把写代码、写说明和生成方案的速度提升到了新的量级，但它没有消除软件工程要解决的核心问题：目标是否清楚、边界是否一致、决策能否追溯、变更是否可控，以及不同角色能否基于同一份事实协作。恰恰因为产出更快、参与者更多，这些问题比过去更容易被放大。\n\n过去一段时间，团队往往把注意力放在“让 AI 再生成一份内容”上，而忽视了软件工程最基础的工作：把已确认的结论组织成可管理、可复用、可验证的资产。没有这层基础，AI 生成的 spec、plan 和代码会更快地累积，也会更快地失去上下文。\n\nToolmaker Agent 按照软件工程的标准设计和开发：用 Product、Feature、Requirement 与 UML 表达边界和关系，用稳定 OID、修订版本与关联关系保留演进过程，并通过网页、对话和 MCP 让同一份项目事实服务于人和智能体。这不是回到笨重的流程，而是在 AI 加速交付时，让软件工程重新成为团队共同的工作底座。\n\n## 2. 不把 AI 产出再丢进一个文件夹\n\nToolmaker Agent 是一个面向 AI SDLC 的本地工作台。它把产品（Product）、特性（Feature）、需求（Requirement）和 UML/4+1 系统设计图，放进同一套结构化数据模型里。\n\n这意味着，一条需求不再只是某份 Markdown 里的段落：它有稳定的 OID、有父子关系、有修订版本，也能和所在特性、产品和系统设计图关联起来。无论是产品负责人梳理范围，还是技术负责人回溯设计决策，面对的都是同一份项目事实，而不是各自手里的“最新版”。\n\n更重要的是，这份事实不只给人看，也可以给智能体用。\n\n## 3. 一套数据，三种工作方式\n\n不同角色不必被迫使用同一种界面。Toolmaker Agent 为同一份数据提供了三种入口。\n\n**3.1 产品和研发可以在网页里直接管理。**\n\n像使用普通工作台一样创建 Product、Feature、Requirement 和 UML 图；系统设计图使用 Mermaid 渲染，并可导出 PNG 或 SVG。该手动模式不依赖 AI，是最直接、最可控的基础能力。\n\n**3.2 也可以和 AI 对话，把讨论变成结构化结论。**\n\n例如，你可以先和对话智能体讨论请假流程里的审批边界、例外情况和优先级。结论收敛后，再让它整理成一个 Feature 和多条 Requirement。\n\n这里有一个值得强调的设计：在网页对话中，每一次写入都会先进入“提议 → 确认”流程。模型会把准备创建或修改的字段列出来；在你点击确认之前，数据不会落库。AI 可以帮你组织和补全信息，但最终决定权仍然在你手里。\n\n演示动画：LLM Chat交流\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4d449d42-6ef3-45e9-8ddd-565ff296b23f\" />\n\n**3.3 编码智能体则可以通过 MCP 直接接入。**\n\n把 Toolmaker Agent 注册到 Claude Code、Codex 或 DeepSeek Harness 后，智能体便能在终端中查询、创建、更新和删除同一份 Product、Feature、Requirement 与 UML 数据。一次方案讨论结束后，不必再手工把结论搬运到另一个系统：让智能体调用 MCP 工具，即可把它保存为后续任何人、任何智能体都能查询的项目资产。\n\n网页、对话和 MCP 背后是同一个 service 层和同一份数据库。换句话说，产品经理在网页里创建的需求，开发可以在终端中查询；编码智能体补充的设计记录，团队也能在网页中继续完善。\n\n演示动画：MCP 操作\n\n<img width=\"1879\" height=\"948\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e5deaf42-d688-4c1a-ac6c-0780c16371a5\" />\n\n## 4. AI 的速度，配上工程化的可追溯\n\n很多团队已经拥有 AI，却仍然缺少“共享上下文”。原因很简单：对话会过去，模型上下文会切换，文件会被复制；只有被确认并沉淀下来的结构化记录，才能成为团队的长期记忆。\n\nToolmaker Agent 还提供语义检索能力。配置向量化服务后，你不必只靠精确关键词或 OID 去翻找资料，也可以用“找和审批流程相似的需求”这样的自然语言检索 Product、Feature、Requirement 和 UML 图。它并不替代严谨的需求管理，而是让既有知识更容易重新被找到。\n\n对于关心数据边界的团队，选择也在自己手里：Toolmaker Agent 可以对接多家模型供应商；如果希望模型完全在本机运行，也可以接入 Ollama 或 LM Studio。即使暂时不配置语义检索，核心的 CRUD、对话和 MCP 工作流依然可用。\n\n## 5. 竞品分析：与 Superpowers skills 和 Understand Anything 的边界\n\nToolmaker Agent 不试图取代编码智能体的工作流方法论，也不试图自动理解每一行代码。它解决的是另一个常被忽略的问题：把讨论后确认的产品结论、需求边界和设计关系，保存为能够跨角色、跨会话、跨工具复用的项目事实。\n\n### 5.1 与 Superpowers skills：从“怎么做”到“结论存在哪里”\n\n[Superpowers](https://github.com/obra/superpowers)/[Matt Pocock skills](https://github.com/mattpocock/skills) 是一套面向编码智能体的软件开发方法论。它强调在写代码前澄清意图、形成设计和实现计划，并在实现阶段使用测试、审查、调试和分支管理等技能约束执行质量。它的优势是把一次编码任务从“直接生成代码”变成更可验证的工程流程，尤其适合开发者在当前仓库内完成从设计到提交的闭环。\n\n它的产物通常是随仓库保存的 spec、plan、测试和实现记录。这对代码交付非常自然，但当一个结论需要被产品、研发和多个智能体长期共同查询时，文件仍可能分散在仓库和目录中；Feature、Requirement、UML 与后续讨论之间也不一定形成统一的可查询关系。\n\nToolmaker Agent 的优势恰好在这一层：它把 Product、Feature、Requirement 和 UML 作为带 OID、版本和关联关系的结构化对象，对网页、对话与 MCP 提供同一份数据。它不替代 Superpowers 的设计、TDD 或代码审查纪律；相反，更适合承接 Superpowers 已确认的 spec 和 plan，把需要跨角色复用的结论沉淀为项目资产。它的取舍也很明确：Toolmaker Agent 不规定智能体必须如何编码、测试或提交，团队仍应搭配 Superpowers 或自身工程规范完成执行治理。\n\n### 5.2 与 Understand Anything：从“理解现有代码”到“管理已确认的产品事实”\n\n[Understand Anything](https://github.com/labolado/understand-anything) 面向代码库理解。它通过静态分析和多智能体处理，构建文件、函数、类和依赖关系的知识图谱，并提供交互式视图帮助团队浏览大型代码库。它的优势是加快接手遗留系统、定位调用关系和理解技术结构；对于“这段代码依赖什么”“功能在哪里实现”这样的问题，它提供的是代码层面的事实和导航。\n\n它的边界也很清楚：代码图谱反映的是仓库当前实现，不天然等于产品决策。一个需求为何存在、优先级如何确定、它属于哪个特性、设计图是否已被产品负责人确认，仍需要产品层的结构化记录。代码变化后，图谱也需要重新分析才能反映新的实现。\n\nToolmaker Agent 不自动生成函数级依赖图，因此在代码理解深度上不替代 Understand Anything；但它擅长保存经人确认的产品、需求和系统设计，并让这些结论可通过 MCP 回到编码智能体的上下文。二者可以串联：先用 Understand Anything 理解已有仓库，再把确认后的范围、需求和 UML 沉淀到 Toolmaker Agent，最后用 Superpowers skills 或团队既有流程完成可验证的实现。\n\n### 5.3 如何选择或组合\n\n- 需要把一个功能做对、做稳，并约束设计、计划、测试和审查流程：优先使用 Superpowers skills。\n- 需要快速理解陌生或大型代码库的模块、调用与依赖：优先使用 Understand Anything。\n- 需要让产品、研发和多个智能体共享可追溯的 Product、Feature、Requirement 与 UML：使用 Toolmaker Agent。\n- 三者一起使用时，形成“理解代码 → 确认产品事实 → 受控实现”的闭环，而不是让其中任何一个承担全部职责。\n\n## 6. 从下载到第一条需求，不必先搭一套系统\n\nToolmaker Agent 以预编译、自包含的单文件二进制发布。前端已内嵌，无需单独部署前端，也不需要准备外部数据库；首次启动会自动创建 SQLite 数据库，默认打开 `http://localhost:8080`。\n\n你可以从一个很小的动作开始：\n\n1. 下载与你的 Windows、Linux 或 macOS 环境匹配的版本；\n2. 启动后创建一个 Product；\n3. 为它补上一个 Feature 和几条 Requirement；\n4. 让对话智能体或你常用的 Code Agent 帮你继续维护这份结构化上下文。\n\n不必等到所有流程都完美，也不必先迁移整个知识库。先把下一次讨论的结论放到一个能持续被找到、被关联、被复用的位置。\n\n当 AI 正在加速产出时，团队真正需要的，也许不是更多 Markdown，而是一份所有参与者都能读懂、也都能使用的项目记忆。\n\n## 7. 立即开始\n\n前往 [Toolmaker Agent Releases](https://github.com/phcp-tech/toolmaker-agent/releases) 下载与你的系统匹配的二进制文件。想让 Claude Code 或 Codex 直接使用它，也可以在启动后按 README 中的 MCP 配置接入。\n\n**把下一次讨论，变成下一次开发还能继续使用的资产。**\n\n更多内容，请阅读：https://github.com/phcp-tech/toolmaker-agent/blob/main/README.zh.md\n\n下载使用，请移步：https://github.com/phcp-tech/toolmaker-agent/releases\n\n## 8. 联系我们\n\n- Github Issues: https://github.com/phcp-tech/toolmaker-agent/issues\n- Wechat Accounts: PHCP\n- QQ Group: 150129626\n- Discord: https://discord.com/invite/jFhTM3df75\n- X: https://x.com/zhishi_io\n- Email: support@toolmaker.io\n",
+    "created_at": "2026-10-12T09:52:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12267"
+  },
+  {
+    "id": 12266,
+    "title": "【网站自荐】StatOrigin：每个统计数字都能追溯到原始出处",
+    "content": "StatOrigin：https://statorigin.org\n\n一个免费、开放的行业统计数据库。目前收录约 22 万条已核实的行业统计数字，覆盖医疗、电力燃气、电动车、半导体等 32 个行业，来自 157 家一手发布机构（比如国际能源署）。\n\n它想解决的问题是：网上很多\"据统计\"找不到出处。StatOrigin 的每个数字都带着发布机构、报告、所在页和原句，引用之前可以自己点开原文核对。\n\n- 可以按行业、地区、年份浏览和搜索，比如\"中国粗钢产量\"\"全球电动车销量\"。\n- 免费 REST API：https://statorigin.org/docs/api ，不用 key 每天 1,000 次请求，CORS 开放，每条返回都附完整出处和现成的引用格式。\n- 数据以 CC BY 4.0 发布，注明原始发布机构即可商用。\n\n我是作者，网站免费、无广告、无需注册。\n",
+    "created_at": "2026-10-12T09:46:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12266"
+  },
+  {
+    "id": 12265,
+    "title": "【网站自荐】ScanChess：棋盘照片转 FEN，手写棋谱记录纸转 PGN",
+    "content": "ScanChess：https://scanchess.com/zh （中文界面）\n\n给线下下国际象棋的棋手、教练和学校棋社用的网页工具，解决\"比赛记录纸和棋书里的局面怎么快速搬进电脑\"这件事。\n\n- 棋盘图片转 FEN：上传棋盘截图、2D 棋图或俯拍照片，识别成可编辑的局面（FEN），核对之后可以直接分析、接着下或导出。\n- 手写记录纸转 PGN：按顺序上传同一盘棋的记录纸（可以多页），逐步核对着法，再导出 PGN 复盘。\n- 站内还有一批小工具：PGN/FEN 查看器、Stockfish 分析、PGN 校验、PGN 转 GIF/PDF、可打印记录纸生成器等。查看器和分析无需账号。\n\n图片识别需要登录，每个棋盘消耗 1 个点数；新账号送 10 个免费点数（最多 10 个棋盘或 5 张记录纸），不用绑卡。\n\n我是作者。\n",
+    "created_at": "2026-10-12T09:45:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12265"
+  },
+  {
+    "id": 12264,
+    "title": "【网站自荐】海螺知物：给 0-6 岁孩子的睡前故事和 AI 定制绘本",
+    "content": "海螺知物：https://haloweava.com\n\n给 0-6 岁孩子用的中文睡前故事网站，网页版，电脑和手机都能打开。\n\n- 分龄故事：按 0-2、3-4、5-6 岁分，有成语寓言、情绪管理、习惯养成、科学探索等主题，每篇附一段给家长的共读引导。\n- AI 定制绘本：填宝贝昵称、年龄、主角和想讲的道理，AI 写一本 3-8 页的故事，每页配一张插画（水彩、星空、蜡笔、3D 黏土四种画风），生成后可以逐页改写、重绘。\n- 英文单词故事：中文故事里嵌 4-6 个英文单词，每个词至少出现 3 次，点词听英文母语童声发音，不用汉字标音。\n- 点读朗读、夜间模式，几篇故事可以装订成纸质绘本打印。\n\n阅读和点读免费；AI 生成插图注册送 60 张，之后按会员计费，没有自动续费。\n",
+    "created_at": "2026-10-12T09:37:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12264"
+  },
+  {
+    "id": 12263,
+    "title": "【开源自荐】Apple Docs 2.0 MCP：让 AI 编程助手查阅 Apple 官方开发者文档和 WWDC",
+    "content": "Apple Docs 2.0 MCP 是一个开源（MIT）的 MCP 服务器，让 Claude Code、Cursor、Codex 等 AI 编程助手在编写 Swift 代码之前先查阅 Apple 官方文档：\n\n- 文档搜索：与 developer.apple.com 的搜索结果一致，涵盖 API 参考、文章、示例代码、人机界面指南（HIG）、App Store Connect 帮助和 WWDC 视频\n- 完整页面：每个成员的完整签名、继承关系和各系统版本的可用性\n- 离线索引：按名称查找 336,629 个文档页面\n- WWDC 2014–2026：1,700 个会议视频可离线使用，其中 1,416 个附讲稿，715 个附带时间点的代码示例\n\n无需 API 密钥或账号，一行即可使用：\nnpx -y apple-docs-2.0-mcp\n\nhttps://github.com/mishafyi/Apple-Docs-2.0-MCP\n",
+    "created_at": "2026-10-12T09:33:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12263"
+  },
+  {
+    "id": 12262,
+    "title": "[开源自荐] 让 AI 进入你的诸多终端 —— Let AI into your terminals.",
+    "content": "让 AI 进入你的诸多终端\n轻量 AI Native 安全终端，可视化多界面，MCP+SKILLS+API\n官网 termcp.org\n\n人机平等共驾 —— 双方写同一条终端，每一屏都实时看得见；接管、切换、协作。\n细粒度会话控制 —— 文件管理、端口转发、多终端复用、读写终端窗口。\n安装无依赖 —— 10m 左右单文件，多平台兼容，支持 npx 集成。\n预览\n打开 http://127.0.0.1:18765/ —— 所有 Agent 的会话都在这里。\n\nwebui\n\n <img src=\"https://github.com/user-attachments/assets/622c5005-c293-46ef-a39f-e4c7863aac30\" width=\"860\" alt=\"webui\">\n\n每个 shell 的时间轴按来源标出每一行——绿色是 shell 输出、黄色是你的输入、粉色是 Agent 的。遇到 sudo、密码、MFA 或 [Y/n]，Agent 会调 notify_user 把提示交回给你；你在浏览器里输入密码，它留在模型上下文之外。",
+    "created_at": "2026-10-12T09:02:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12262"
+  },
+  {
+    "id": 12261,
+    "title": "[开源自荐] AIGCNEWS：用自然语言找 AI 项目、看增长趋势，支持 MCP",
+    "content": "AIGCNEWS 是我做的一个 AI 项目和资讯资料站，想减少找工具时在 GitHub、论文网站和资讯平台之间来回翻的时间。支持搜索、查看增长趋势和回看历史，也提供 MCP 接口给 Agent 使用。\n\n- **在线体验**：https://aigcnews.cn\n- **源码仓库**：https://github.com/Kaixxrua/AIGCNEWS\n- **MCP 接入**：https://aigcnews.cn/mcp\n\n### 主要功能\n\n- **找开源项目**：自然语言搜索，按分类、标签和编程语言筛选；查看 README、Star 总数、24 小时增长和近期趋势。\n- **看 AI 动态**：整理论文、新闻、产品与社区讨论，支持按日期回看；X 动态页提供中文译文、图文视频和账号分组。\n- **找 UI 参考**：浏览组件和整页模板，查看预览、源码、依赖与来源许可。\n- **通过 MCP 检索**：让 Agent 搜索项目、论文、榜单和 UI 素材。公开工具支持匿名调用，个人收藏、追踪等能力需要账号授权及相应权限。\n\n接入 MCP 后可以这样问：\n\n> 找适合做本地知识库的 RAG 项目，比较最近更新和 Star 增长，需要时再读取 README 核对部署要求。\n\n### 开源与使用说明\n\n前端为 Vue 3 + TypeScript，后端为 FastAPI，MCP 使用独立 Go 服务，仓库提供 Docker Compose 自托管说明。\n\n代码和文档采用 **AGPL-3.0**。线上数据库、完整 UI 素材和品牌资源不随源码开放；自托管需要自己的数据和配置，UI 素材遵循各自的来源许可。网站部分功能需要登录、会员权限或调用额度，具体见对应页面。\n\n欢迎试用、反馈问题，也欢迎通过 Issue 或 PR 参与。\n\n### 界面截图\n\n![AIGCNEWS 首页](https://raw.githubusercontent.com/Kaixxrua/AIGCNEWS/main/docs/assets/readme/dashboard.png)\n\n![项目库：分类、热榜、项目详情和增长趋势](https://raw.githubusercontent.com/Kaixxrua/AIGCNEWS/main/docs/assets/readme/projects.png)\n\n![X 动态：账号分组、中文译文和日期筛选](https://raw.githubusercontent.com/Kaixxrua/AIGCNEWS/main/docs/assets/readme/x-updates.png)",
+    "created_at": "2026-10-12T08:48:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12261"
+  },
+  {
+    "id": 12260,
+    "title": "【工具自荐】AI Genjutsu：通过参考图替换现有视频中的角色",
+    "content": "### 项目介绍\n\nAI Genjutsu 是一个基于浏览器的 AI 视频编辑工具，主要用于参考图驱动的角色替换：上传现有视频和角色参考图，描述要替换的人物，再生成编辑后的视频。源视频用于引导动作、节奏和镜头运动，参考图用于引导角色外观。\n\n官网：https://aigenjutsu.org/\n\n### 使用方式\n\n1. 上传已有的短视频。\n2. 添加角色参考图，描述需要替换的人物。\n3. 查看生成所需积分，确认后生成并预览、下载结果。\n\n适合探索同一段表演的不同角色形象、短视频角色创意和视觉概念。当前支持 4–30 秒的视频，具体文件要求在上传区列明。\n\n### 限制与收费\n\n- 视频生成需要付费积分，可单独购买积分，也提供订阅方案。\n- 原始动作和镜头运动作为生成指导，实际效果受到遮挡、快速运动、源视频质量和参考图的影响，不保证逐帧完全一致。\n- 请使用拥有使用权、并取得必要人物授权的素材。\n\n我是该项目的开发者，本帖为自荐。AI Genjutsu 是独立服务，与 Higgsfield 无隶属或背书关系。欢迎反馈上传流程、功能说明和使用体验。",
+    "created_at": "2026-10-12T08:33:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12260"
+  },
+  {
+    "id": 12259,
+    "title": "[自荐] PageFold：在浏览器里合并、拆分 PDF，文件不上传",
+    "content": "PageFold 是一个在线 PDF 工具：合并、拆分、旋转、压缩 PDF，图片转 PDF，添加页码和水印。\n所有文件只在浏览器里处理，不会上传到服务器，免注册即可使用。\n链接：https://pagefold.tooleek.com/zh/\n我是作者，网站免费、有广告。",
+    "created_at": "2026-10-12T08:14:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12259"
+  },
+  {
+    "id": 12258,
+    "title": "【vscode 插件自荐】JavaDoc Rendered View：在 VS Code / Cursor 里用 Eclipse 风格看 Javadoc",
+    "content": "## 项目地址\n\n- Marketplace：https://marketplace.visualstudio.com/items?itemName=liuhualiang.javadoc-rendered-view\n- Open VSX：https://open-vsx.org/extension/liuhualiang/javadoc-rendered-view\n\n## 一句话介绍\n\n在 VS Code / Cursor 里提供类似 Eclipse 的底部 **Javadoc** 面板：源码留在编辑器里读，当前光标处类 / 方法 / 字段的 `/** … */` 渲染到面板里；工程源码和 jar / jdt 依赖源都可用。可选通过 LLM 翻译成中文，原文与译文对照。\n\n## 为什么做\n\n从 Eclipse 转到 VS Code / Cursor 写 Java 时，最怀念的就是底部那个随光标刷新的 Javadoc 视图。悬停提示一闪而过、不够沉浸；打开完整 HTML 站点又太重。于是做了这个轻量面板：只渲染已有注释，不生成骨架，也不跑 JDK `javadoc` 导出站点。\n\n## 核心功能\n\n- **底部 Javadoc 面板**随光标刷新（默认 Panel，可拖到侧栏）\n- 渲染签名与 `@param`、`@return`、`@see`、`@since` 等标签\n- 解析 `{@code}`、`{@link}`、`{@linkplain}`、`{@literal}`、`{@value}` 及常见 HTML 实体\n- **链接可点击**：`{@link}` / `@see` 在编辑器内跳转，外链用系统浏览器打开\n- **明确支持 jar / jdt 依赖源**，不只是工作区文件\n- **可选 LLM 翻译**：任意 OpenAI 兼容接口（OpenAI、DeepSeek、通义兼容端、本地 Ollama 等），译文缓存，API Key 存 Secret Storage\n- 快捷键 `Ctrl+Alt+Q`，以及状态栏 / 标题栏入口\n\n## 快速开始\n\n1. 从 Marketplace 或 Open VSX 安装 **JavaDoc Rendered View**\n2. 打开任意 `.java`（工作区或 jar 附加源码均可）\n3. `Ctrl+Alt+Q` 打开面板，光标移到带 Javadoc 的成员上即可\n4. （可选）执行 `JavaDoc: Set Translation API Key`，在面板点「译此块」做中英对照\n\n欢迎试用和提意见。",
+    "created_at": "2026-10-12T07:03:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12258"
+  },
+  {
     "id": 12257,
     "title": "【网站自荐】MapMC：用现实地点生成可探索的 Minecraft 世界",
     "content": "MapMC 是我们正在开发的 Minecraft 地图工具。玩家可以选择现实中的地点区域，生成相应的 Minecraft 地图，再在游戏里探索和建造，把地图探索与 Minecraft 创作结合起来。\n\n官网：https://mapmc.app/",
@@ -648,161 +800,5 @@
     "created_at": "2026-10-09T05:51:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12174"
-  },
-  {
-    "id": 12173,
-    "title": "【开源自荐】rfig：Rust 终端自动补全工具",
-    "content": "项目名称：rfig\n\n项目地址：https://github.com/tamia6/rfig\n\n官网：https://tamia6.github.io/rfig/\n\n一句话介绍：rfig 是一个用 Rust 编写的终端自动补全工具，支持 zsh、Bash、Fish，让命令行获得 IDE 风格的补全菜单。\n\n主要功能：\n- 输入命令时自动显示补全菜单，不需要按 Tab。\n- 支持多级子命令、选项、参数和动态上下文，例如 git checkout 后显示当前仓库分支。\n- 优先读取本机 shell 补全定义，缺少定义时使用命令帮助信息补齐。\n- 安装时扫描本机命令，后台异步验证和优化补全规则。\n- 记录本地历史和选择习惯，提供灰字建议并调整候选排序。\n- 支持 macOS 和 Linux，兼容 zsh、Bash、Fish。\n\n安装：\n\n    brew tap tamia6/rfig\n    brew install rfig\n    rfig setup\n\n演示 GIF：https://raw.githubusercontent.com/tamia6/rfig/main/assets/rfig-demo.gif",
-    "created_at": "2026-10-09T03:45:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12173"
-  },
-  {
-    "id": 12172,
-    "title": "【开源自荐】LubanPNG：网页、API、CLI 共用额度的图片压缩工具",
-    "content": "## LubanPNG：网页、API、CLI 共用额度的图片压缩工具\n\n**项目地址**：https://lubanpng.wizthink.cn/?utm_source=ruanyf_weekly&utm_medium=issue&utm_campaign=r1_20261009\n**开源仓库**：https://github.com/Curzibn/LubanPNG （MIT）\n\nLubanPNG 是一个在线图片压缩服务，与 Android 图片压缩库 [Luban](https://github.com/Curzibn/Luban) 来自同一维护方。支持 PNG / JPEG / GIF / WebP / AVIF 压缩与静态图格式转换；网页打开即用，无需注册。\n\n**计次口径**：\n\n- 只对真正变小的压缩计 1 次；失败或无收益（结果没变小）不计次\n- 转成不同格式且结果变小计 2 次\n- 匿名每天 5 次；注册账号每月 50 次（网页、API、CLI 共用一份额度）\n- 单张 5MB，产物保留 24 小时\n- 放大：REST API 支持静态 PNG / JPEG 按 2× / 4× 放大，成功计 1 次（不适用\"没变小不计次\"规则）；网页与 CLI 暂无放大入口\n\nREST API 带 OpenAPI 文档，CLI 是 npm 包 `lubanpng`。\n\n如果你正在处理真实的站点、商品或内容图片，欢迎试用并反馈：结果是否满足你的用途？什么情况下你会改天再用？",
-    "created_at": "2026-10-09T03:25:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12172"
-  },
-  {
-    "id": 12171,
-    "title": "【网站自荐】因为深知背单词的痛，AI做了一个免费面向初高中大学四六级考研雅思托福背单词的在线网站",
-    "content": "<img width=\"2914\" height=\"1674\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f74e5898-ef04-4fb1-a2ef-2072c0f386d2\" />\n网站：[https://vocab4u.suilang.net](https://vocab4u.suilang.net)\n免费、不用注册、不装 App、没有广告，打开网页就能背。\n\n■ 有什么\n· 7954 个单词词条，7 本词书：初中核心词 1588 / 高中必备词 3657 / 四级 3725 / 六级 5138 / 考研 4539，另有 309 个托福雅思 GRE 词\n· 每个词条：音标、中文释义、3–6 条中英对照例句、词根分析、词缀分析、文化背景、单词变形、记忆方法，还有一个带中文翻译的小故事\n· 五种练法：卡牌速览 / 打字默写 / 听写辨词 / 例句填空 / 选择题\n· 288 条词根词缀，可以按「零件」串着记\n· 4 篇背单词方法教程（四级计划、词根入门、打字背单词、听力词汇）\n\n■ 几个可能你在意的点\n· 不用注册登录，学习进度存在你自己浏览器里，我不收集也不上传\n· 键盘可以全程操作：空格键发音、回车提交、数字键选答案\n· 第一次打开后浏览器会缓存，断网也能继续背\n· 换设备可以用学习器里的「导出进度」搬到新设备，也能导出 Anki / CSV\n· 单词默认用在线真人发音，加载不出来自动切浏览器语音朗读\n· 打字默写答错会指出错在哪个字母，并要求照正确拼写再打一遍\n",
-    "created_at": "2026-10-09T03:02:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12171"
-  },
-  {
-    "id": 12170,
-    "title": "【网站自荐】宝可梦改版GBA在线玩，厌倦了到处找模拟器和宝可梦改版资源，我用AI搭了一个在线玩宝可梦改版资源的网站",
-    "content": "<img width=\"2956\" height=\"1728\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/82c502b7-c8ad-44b0-a34e-a371908681a0\" />\n\n先说结论，GBA改版在线玩，网址是 [https://gba.suilang.net](https://gba.suilang.net)，浏览器打开就能玩，不用装任何东西。\n\n为什么搞这个。我之前玩究绿和漆黑魅影，每换一次设备就要重来一遍：电脑上装VisualBoyAdvance或者mGBA，手机上装MyBoy，找ROM、解压、丢到指定文件夹，安卓11以后还动不动就是\"无权访问该目录\"。想在iPad上躺着刷两把，iOS那个模拟器更是要自己签名，烦得要死。\n\n后来就干脆自己弄了个网页版，用的是开源的mGBA内核编译成WebAssembly，前端是EmulatorJS，游戏文件全部放在自己服务器上。打开网页，点开始玩，几秒钟进游戏。\n\n现在库里是这几款：\n\n究极绿宝石 V-5\n\n漆黑的魅影 5.0EX 无尽混沌（BW 和 DP 版都有）\n\n宝可梦解放 v2.1.1 汉化修订版\n\n西班牙火箭队 一至五周目（汉化版）\n\n用下来几个我自己最常点的功能：\n\n倍速真的是命。默认1倍，可以选2/4/8倍，甚至不限速。按住Shift临时加速，松开自动回到原来的倍速。练级、刷果子、走路遇敌这些事，8倍速下来省的时间不是一点半点。（中间踩了个坑，一开始开到8倍发现只有120fps，查了半天是内核的垂直同步把速度锁死了，关掉之后实测能跑到564fps）\n\n存档。工具栏有个\"快速存/快速读\"，键盘1和2。还可以开5个槽位，每个槽位带一张当时的游戏画面缩略图，不用猜哪个存档是哪个进度。全部存在浏览器里，刷新不丢。换设备的话可以导出成.state文件，导过去接着玩。电池存档.sav也能导，跟电脑上的模拟器通用。\n\n画面。默认3倍，也可以选适应宽度或者1~5倍，都是GBA原生240×160的整数倍放大，像素不会糊。设置那条控制栏默认是收起来的，不挡画面，点\"⚙设置\"才展开，这点对我这种强迫症很重要。\n\n金手指。究绿那些常用代码我提前解析好放在里面了，勾选就用，也可以自己粘代码。\n\n手机上会自动出虚拟手柄，横屏体验最好。iOS上注意把侧边的静音开关拨过来，不然没声音。\n\n还有个我自己很喜欢的：手上有别的.gba文件，直接拖进网页就能玩，文件不上传，只存在本机浏览器里。\n\n最后说实话，这东西是我自己做的，发出来是想让人用、顺便收集点bug。功能我觉得已经够用了，缺点也直说：手机竖屏玩着还是别扭，得横屏；有些老安卓机开8倍速会掉帧；换设备要手动导存档，没法自动同步（这个要登录体系，暂时没做）。",
-    "created_at": "2026-10-09T02:58:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12170"
-  },
-  {
-    "id": 12169,
-    "title": "【网站自荐】Turner：免费、不限次数、无需登录、无水印的AI图像编辑器",
-    "content": "## 项目地址\n[https://turner.art](https://turner.art)\n\n## 项目介绍\nTurner 是一款基于 Qwen 的免费 AI 图像编辑器。支持用户通过提示词直接修改图片，无需注册、无水印导出，不限使用次数。\n\n## 为什么开发Turner ?\n目前市面上的 AI 图像编辑工具大多存在次数限制或强加水印的问题，且多数操作偏向文生图。\n因此我独立开发了这款零门槛的网页端工具，希望能让大家日常处理、修改图片时更自由高效。\n\n## 核心特点\n- **自然语言修图**：支持通过 Prompt 更换背景、调整光影色彩、修改主体文字、切换视角等。\n- **开箱即用**：无需注册账号，打开网页即可直接上传编辑。\n- **无水印导出**：编辑完成后可直接免费下载高清无水印成图。\n- **不限使用次数**：日常修图无需担心额度耗尽。\n\n## 适用人群\n电商卖家（白底/换背景/换场景）、内容创作者（调光调色/视变换）、设计营销人员及日常图片修改。\n\n## 效果图\n| 原图 | 提示词：俯瞰视角 |\n| :---: | :---: |\n| <img width=\"380\" alt=\"原图\" src=\"https://github.com/user-attachments/assets/2502c32b-5b20-4091-bffc-d8d204b50b5e\" /> | <img width=\"380\" alt=\"俯瞰视角\" src=\"https://github.com/user-attachments/assets/d6f04519-7059-4ae0-8d9e-2b5114aa3e65\" /> |\n",
-    "created_at": "2026-10-09T02:57:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12169"
-  },
-  {
-    "id": 12168,
-    "title": "【网站自荐】信息学奥赛 AI 备考助手",
-    "content": "\n信息学奥赛 AI 备考助手,覆盖 GESP C++ 1-8 级 + CSP-J/S + NOIP + NOI 共 12 个赛事级别,按用户实时画像LLM动态生成练习题,客观题规则判分 + 编程题 LLM 判分,全链路日志;管理员后台可复核判分争议、管理题目与用户、处理反馈。\n\n访问地址：https://www.getoia.top\n\n## 赛事覆盖\n\n| 级别 | KP 数 | 主题 + 子项结构 |\n|---|---|---|\n| GESP-1 | 7 | 平铺(入门) |\n| GESP-2 | 18 | 5 主题 + 13 子项 |\n| GESP-3 | 15 | 5 主题 + 10 子项 |\n| GESP-4 | 11 | 3 主题 + 8 子项 |\n| GESP-5 | 9 | 2 主题 + 7 子项 |\n| GESP-6 | 11 | 3 主题 + 8 子项 |\n| GESP-7 | 14 | 4 主题 + 10 子项 |\n| GESP-8 | 12 | 2 主题 + 10 子项 |\n| CSP-J | 29 | 7 主题 + 22 子项 |\n| CSP-S | 25 | 6 主题 + 19 子项 |\n| NOIP | 19 | 5 主题 + 14 子项 |\n| NOI | 25 | 6 主题 + 19 子项 |\n| **合计** | **195** | — |",
-    "created_at": "2026-10-09T02:44:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12168"
-  },
-  {
-    "id": 12167,
-    "title": "【自荐】Virtainer Free：在一台自己的服务器上运行虚拟机和 Docker 镜像的免费虚拟化平台",
-    "content": "- 网址：https://virtainer.io\n- Free 1.1 发布说明：https://virtainer.io/blog/virtainer-free-1-1/\n\nVirtainer 是一个自托管的虚拟化平台，安装在自己的物理机上。Free 版面向单台主机，免费使用，不按 CPU 核数或虚拟机数量收费，也没有时间限制。\n\n它运行两类机器：\n\n- 完整的 Linux 虚拟机，直接从 Linux 云镜像创建；\n- AppVM：把 Docker/OCI 镜像作为一台有自己内核、硬件隔离的虚拟机运行，不需要手动转换镜像。\n\n主机系统本身是一个只读镜像，升级时整体切换到新镜像，如果有问题，重启一次就回到上一个版本。自带 Web 控制台、终端和 SSH，以及带冗余的存储池、磁盘告警和 L2 桥接网络。\n\n10 月 6 日发布的 Free 1.1 主要改进了经典虚拟机：\n\n- 内置自己的 guest agent（单个约 1 MB 的二进制，随 Virtainer 一起提供，不需要在虚拟机里联网安装）；\n- 添加镜像时，先用 cloud-image-inspector 在不启动、不挂载的情况下读取镜像内容，再据此生成首次启动配置；\n- 不依赖虚拟机网络和 SSH 的 Shell 终端；\n- 运行中虚拟机的快照和整机回滚，网卡热插拔，热添加的 CPU 和内存会自动上线。\n\nVirtainer Free 免费但不开源；其中的两个组件以 Apache-2.0 开源：\n\n- https://github.com/virtainer/virtainer-guest-agent\n- https://github.com/virtainer/cloud-image-inspector\n\n硬件要求：64 位 x86 机器，固件里开启硬件虚拟化，有线网卡，安装时需要联网；安装会清空整块目标磁盘。\n\n说明：这是自荐，我是 Virtainer 团队成员。\n",
-    "created_at": "2026-10-09T02:30:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12167"
-  },
-  {
-    "id": 12166,
-    "title": "【开源自荐】dsh-asr-plugin：在 Mac 上为 DeepSeek Harness 添加本地会议转写",
-    "content": "项目：https://github.com/huliux/dsh-asr-plugin\n主页与安装说明：https://huliux.github.io/dsh-asr-plugin/\n\n这是一款非官方的 DeepSeek Harness（DSH）会议转写插件，适合已经在 Apple Silicon Mac 上使用 DSH 的用户。\n\n- 录制麦克风、系统音频，或导入 WAV、M4A、MP3，生成带时间戳和说话人标签的转写。\n- 在 DSH 对话中用 @ 选择会议，让已配置的大模型整理决策、行动项并导出。\n- 录音过程中也可以手动引用当前会议草稿，请求阶段性总结；该总结是当次快照，不会自动持续刷新。\n\n![DSH 引用演示会议并整理决策与行动项](https://raw.githubusercontent.com/huliux/dsh-asr-plugin/main/assets/screenshots/meeting-summary.jpg)\n\n截图使用虚构、语音合成的会议内容，不含真实会议数据，也不是识别准确率测试。\n\n当前版本 0.1.2，要求 DSH 0.2.0-rc.2、Node.js 24 和 Apple Silicon macOS；不支持 Windows、Linux 或 Intel Mac。项目源码采用 Apache-2.0 许可，第三方组件和模型遵循各自许可。\n\n基础模型下载约 278 MiB，准备完成后语音推理在本地运行。调用大模型总结时，被引用的转写文本会发送给 DSH 配置的模型服务商。录音 Helper 使用 ad-hoc 签名，尚未经过 Apple 公证，安装时可能需要额外的权限或安全确认。\n\n披露：本帖由项目维护者授权的 AI 助手代为整理和提交。",
-    "created_at": "2026-10-09T02:28:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12166"
-  },
-  {
-    "id": 12165,
-    "title": "【工具自荐】Open Contexts：免费开源的 macOS 窗口切换器，支持常驻应用栏和窗口分组",
-    "content": "自荐一个免费开源的 macOS 窗口切换器：[Open Contexts](https://github.com/zshnb/open-contexts)。\n\nMac 上同时打开多个浏览器、编辑器和终端窗口时，系统自带的 `⌘Tab` 只能切换应用，找到某个具体窗口还要多一步。Open Contexts 按最近使用顺序列出每个窗口，并提供屏幕边缘应用栏，方便用键盘或鼠标直接切换。\n\n主要功能：\n\n- **窗口级切换**：默认 `⌘Tab` 切换所有窗口，Command + 反引号切换当前应用的窗口；快捷键可以自定义。\n- **屏幕边缘应用栏**：可放在左侧、右侧或底部，常驻显示或鼠标靠近边缘时唤出，支持显示图标和窗口标题。\n- **可保存的窗口分组**：将不同应用的窗口按代码、资料、聊天等任务归组，支持拖动排序和固定位置；重启后恢复分组及可匹配窗口的归属。\n- **原生、免费、开源**：使用 Swift、AppKit 和 SwiftUI 开发，采用 Apache 2.0 许可证，无需账号或订阅，分组数据保存在本机。\n\n项目复刻了 Contexts 的应用栏和窗口切换体验，并加入可保存的自定义窗口分组。目前不支持窗口搜索和触控板切换手势；保存分组不会重新打开应用或恢复桌面窗口的尺寸和位置。\n\n支持 macOS 13 及以上，提供 Apple Silicon / Intel 通用 DMG，安装后需要授予辅助功能权限。当前发行包尚未经过 Apple 公证，遇到系统拦截时可参考 README 的安装说明；macOS 13 等较旧版本尚未完成实机验证。\n\n[中文官网及交互演示](https://opencontexts.zshnb.com/zh/) · [GitHub 源码](https://github.com/zshnb/open-contexts) · [下载最新版本](https://github.com/zshnb/open-contexts/releases/latest)\n\n实际运行截图：\n\n<img src=\"https://raw.githubusercontent.com/zshnb/open-contexts/main/docs/screenshots/sidebar-left.png\" alt=\"Open Contexts 侧边栏按分组列出窗口\" width=\"188\">\n\n<img src=\"https://raw.githubusercontent.com/zshnb/open-contexts/main/docs/screenshots/window-switcher.png\" alt=\"Open Contexts 键盘窗口切换器\" width=\"600\">\n\n披露：我是项目维护者，希望能作为周刊工具推荐候选。欢迎反馈，感谢！\n",
-    "created_at": "2026-10-09T02:26:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12165"
-  },
-  {
-    "id": 12164,
-    "title": "【网站自荐】算法可视化：92 个数据结构与算法条目，可以逐步回放，四种语言代码逐行同步",
-    "content": "我是这个网站的作者。它是一个数据结构与算法的可视化网站，9 大类 92 个条目，从排序、二分、Dijkstra、背包，一直到 2-SAT、后缀数组、FFT、Pollard's Rho。\n\n77 个算法页可以单步前进、后退、拖动进度条，右侧的 TypeScript / Python / Go / Rust 代码会随着步骤高亮当前执行的那一行，同时显示变量和解说；12 个排序页可以输入自己的数组，并通过链接分享。另外 15 个数据结构页可以直接在页面里操作。中英双语，手机也能用。\n\n这个项目是 2022 年为了自己学算法开的头（学了总忘，想做成动画方便回看），只做完冒泡排序就搁下了，今年借助 AI 才把它做完。纯前端（Vue 3 + TypeScript），MIT 开源。\n\nhttps://algo.illegalscreed.cn/\n\n源码：https://github.com/IllegalCreed/algorithms-visualization\n\n![快速排序逐步回放](https://raw.githubusercontent.com/IllegalCreed/algorithms-visualization/main/docs/assets/quick-sort-step-through.gif)",
-    "created_at": "2026-10-09T00:52:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12164"
-  },
-  {
-    "id": 12163,
-    "title": "【开源自荐】uvim：macOS 全局 Vim",
-    "content": "uvim 是我开发的一款 macOS 全局 Vim 工具，让熟悉的编辑操作延续到编辑器之外。在其他应用中撰写文字、回复评论时，也可以用 `cw` 修改单词，用 `dd` 删除整行，用 `f` 进行搜索，用 `.` 重复上一次修改。\n\n在多数原生应用中，uvim 的编辑体验已经接近完美。它能直接读写文本、控制选区，并显示 Normal 模式的方块光标，Vim 命令可以直接作用于当前输入框。\n\n<img width=\"1520\" height=\"592\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/acc92936-308b-41f0-b993-8c290c67a575\" />\n\n浏览器和 Electron 应用的输入框差异较大，uvim 会根据实际表现调整编辑方式，由原生 native 修改到 key remapping。它会核对每一步操作的结果；如果某种方法在同类输入框中反复失败，便会记录并停用这一方法。对于无法直接写入的输入框，uvim 会通过应用自身的按键完成编辑。\n\n项目包含约 1,500 项自动化检查，主要通过模拟输入框验证编辑引擎，其中也模拟了 Chromium 和 Electron 的部分编辑行为。源码与测试以 GPL-3.0 协议公开，欢迎查阅和参与改进。\n\nuvim 免费，支持 macOS 14 及以上，安装包已签名并通过 Apple 公证。在输入框中按 Esc 即可进入 Normal 模式，也可以在设置中启用 Ctrl + [。\n\n主页：https://uvim.app\n源码：https://github.com/celve/uvim\n下载：https://github.com/celve/uvim/releases/latest\n\n欢迎通过 GitHub Issues 提问或反馈使用中遇到的问题；附上应用名称和操作步骤，会更便于定位。",
-    "created_at": "2026-10-09T00:29:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12163"
-  },
-  {
-    "id": 12162,
-    "title": "【开源自荐】拾级 Shiji：装进 AI 助手的成长顾问，从高三填志愿到入职三年",
-    "content": "## 快速使用\n\n**项目地址**：https://github.com/ZhongQuinnKing/shiji\n**预览页**：https://zhongquinnking.github.io/shiji\n**安装**：\n\n```bash\n# Claude Code\ngit clone https://github.com/ZhongQuinnKing/shiji ~/.claude/skills/shiji\n```\n\n豆包把文件夹拖进「我的技能」即可；其他 AI 助手可把相关篇章直接丢进对话。\n\n## 项目介绍\n\n拾级是一个给 AI 助手用的中文成长知识包，专门回答\"高三到入职三年\"路上的问题：填志愿、转专业、绩点保研、考研考公、求职面试、签三方、租房、和导师相处。\n\n这类问题 AI 裸着也能说几句，但常常停在\"要早点准备、注意选校\"的水位——听着都对，落不了地。拾级把答案整理到了\"一句话能照做\"的颗粒度：可以直接发出去的话术、具体到数字的阈值、现场还原式的案例对话、每条建议的依据和边界。全库 151 篇，十二条线：高考、大学、考研、考公、求职、职场、论文、研究生、留学、学习、人际与生活、特殊通道。\n\n静态知识库最大的敌人是时效，回答规范因此定成\"双源回答\"：库给深度，政策行情类先联网查最新、标注核验日期；各省不同的事（社保公积金、专升本、考公岗位）按用户所在地区查。库答不了的，它写明\"库存里还没有\"并附提交模板——每次真实使用都会给库\"定弦\"。\n\n边界写死在最前面：不代笔论文、不做心理诊断、不查人、不碰政治宗教违禁。\n\n## 几个落点\n\n- 考研：2027 起报名与确认一体化（不再有独立网上确认），报名篇已按官宣更新并标注\"最后核验\"\n- 求职：三方协议的备注栏是唯一能主动写字的地方；另有八套免费简历模板可直接填写\n- 大学：绩点怎么算怎么保、转专业的时间窗口、学业预警怎么自救\n- 生活：第一次租房，押金必须写进合同（《住房租赁条例》2025-09-15 施行）\n\n## 开源协议\n\n内容 CC BY-NC-ND 4.0（自己用、自己改都自由；商用需授权），代码 MIT。\n\n---\n\n作者平时弹琴教琴，这套东西是照着\"当年那个手足无措的自己\"的标准整理的。\n",
-    "created_at": "2026-10-08T23:48:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12162"
-  },
-  {
-    "id": 12161,
-    "title": "【文章自荐】碰一碰碰烂Web3，送奶茶送出新经济",
-    "content": "全文1.3w字。接续《为什么我说 DeepSeek Harness 是一个很 Web3 的产品》，以一个更加广阔的视角，站在如今回望今年2月份春节AI补贴大战，回溯性建构一条智能代理经济在我国推广的战略主线与图景，试图寻找目前我们在哪一个阶段，并定位后续的工程建设方向。\n\n文章链接：[【深度】碰一碰碰烂Web3，送奶茶送出新经济](https://mp.weixin.qq.com/s/uh0tE950Lq1OcysoEGyqdw)",
-    "created_at": "2026-10-08T19:33:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12161"
-  },
-  {
-    "id": 12160,
-    "title": "【文章自荐】为什么我说 DeepSeek Harness 是一个很 Web3 的产品",
-    "content": "全文近1.5万字，引入Web3、意图经济、价值经济的整体背景，从技术架构、商业应用、盈利回环的角度，梳理了DeepSeek Harness的可能生发路径，提出 行业版 Agent 产品的概念，并描绘未来智能代理经济的协议环节在工程学的角度如何构建。\n\n是我呕心沥血的人工作品。\n\n文章地址：[为什么我说 DeepSeek Harness 是一个很 Web3 的产品](https://mp.weixin.qq.com/s/Z9SvvT0G7U5GcLii_9v3sg)",
-    "created_at": "2026-10-08T19:29:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12160"
-  },
-  {
-    "id": 12159,
-    "title": "【网站自荐】灵感蜂巢 PromptHive：面向自媒体创作者的中文提示词模板库",
-    "content": "## 项目地址\n\nhttps://www.prompt-hive.net/\n\n## 项目简介\n\n灵感蜂巢 PromptHive 是一个面向自媒体创作者的中文 AI 提示词模板库，把 500+ 提示词按「平台 × 创作环节」两个维度分类，而不是按「写作 / 营销 / 编程」这种大领域堆在一起：\n\n- **平台**：小红书、抖音、B站、知乎、微信公众号、快手\n- **环节**：选题规划、标题优化、文案创作、种草文案、脚本创作、评论互动、人设定位、复盘分析、图片设计\n\n每条模板带变量槽位（`{产品名称}`、`{目标人群}` 这类），把示例换成自己的信息，整段发给 AI 就能用。\n\n## 为什么做这个工具\n\n做自媒体的人每天要在几个平台之间切换，而每个平台的标题逻辑、文案语气、脚本结构都不一样——通用提示词写出来的东西，发小红书和发公众号本来就不该是同一个样子。\n\n市面上的提示词库大多按大领域分类，落到具体平台和具体环节时还是得自己改。所以干脆按「先选平台、再选环节」来组织：定位、复制、填变量、用完。\n\n## 主要特点\n\n- 500+ 提示词，6 个平台 × 9 个创作环节双维分类\n- 每条模板带变量槽位，替换后可直接交给 AI，不需要自己调结构\n- 覆盖中文自媒体平台（小红书、抖音、快手、B站、知乎、公众号），不是英文提示词库的翻译搬运\n- 每月新增 50+ 条，跟平台算法和热点更新\n- 免费注册即可浏览使用；普通会员永久免费，部分进阶模板需 VIP（不影响免费部分）\n\n（费用情况如实说明：核心功能免费，进阶模板付费。）",
-    "created_at": "2026-10-08T17:42:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12159"
-  },
-  {
-    "id": 12158,
-    "title": "【开源自荐】CNEquity：把整个 A 股市场装进本地，让 AI 直接查",
-    "content": "## 快速使用\n\n**项目地址：** https://github.com/rootSunc/CNEquity\n**文档：** https://rootsunc.github.io/CNEquity/ （[English](https://rootsunc.github.io/CNEquity/en/)）\n**安装：** `pip install cnequity`，零账号、零 token\n\n## 项目介绍\n\nCNEquity 是一个开源、自托管的 A 股数据湖：把行情、财报、资金面、公司事件、宏观和期货期权等 55 个数据集采集到本地 Parquet，做增量更新、失败续跑和质量审计，再通过 Python、SQL、网页控制台和 MCP 统一查询。\n\n做量化研究或回测时，常见的痛点是：每次都要重新拉数据、中断了要从头来、不知道这份数据是哪天从哪个接口拿的，以及最隐蔽的——用「今天还在交易的股票」去回测过去，悄悄漏掉了退市股（幸存者偏差），或者用了事后才披露的财报（未来函数）。CNEquity 把这些口径做进了数据层：退市股保留在历史股票池里，财报按 `as_of` 只返回当时已披露的数据，原始价和复权因子分开存。\n\n它也是一个 MCP 服务，可以把整个 A 股数据湖接给 Claude、ChatGPT、Cursor、Codex 等 AI 助手，让 AI 直接用 SQL 查历史数据，回答里自带复权和覆盖口径。\n\n![CNEquity 控制台](https://raw.githubusercontent.com/rootSunc/CNEquity/main/docs/assets/cne-serve-tour.zh.gif)\n\n## 核心功能\n\n- **55 个数据集**：日线 / 分钟线、复权因子、财报、估值、北向、融资融券、龙虎榜、公告、行业成分、宏观、期货期权与 Greeks 等\n- **一分钟试用**：`cne init --profile demo` 用真实数据源抓 5 只股票，立刻能查\n- **研究口径正确**：保留退市股、PIT 财报、复权方式查询时再选，每行带来源和版本\n- **断点续跑**：中断后重跑同一条命令，已下载的批次不会重来\n- **网页控制台**：`cne serve` 查看覆盖、新鲜度、质量，还能从页面发起日更和回填\n- **接给 AI**：`cne mcp` 提供 6 个只读工具（含 DuckDB SQL），支持 stdio 和 Streamable HTTP，已登记到官方 MCP Registry\n- **中英文双语**：文档和控制台都有中英文两套\n\n## 快速开始\n\n```bash\npip install cnequity\ncne init --profile demo      # 约 1 分钟，建一个小 demo 湖\ncne serve --config configs/cnequity.demo.toml   # 打开网页控制台\n```\n\n完整的沪深京全市场：`cne init`（近 3 年，首次需要几个小时，可随时中断续跑）。\n\n开源协议：Apache-2.0\n",
-    "created_at": "2026-10-08T15:19:46Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12158"
-  },
-  {
-    "id": 12157,
-    "title": "【开源自荐】bg2x：本地的 AI 图像超分辨率工具",
-    "content": "## 快速使用\n\n**项目地址：** https://github.com/isixe/bg2x\n**在线体验：** https://bg2x.itea.dev/\n**桌面端下载：** https://bg2x.itea.dev/download).itea.dev/download\n\n## 工具介绍\n\nbg2x 是一款完全在浏览器本地运行的 AI 图像超分辨率（放大）工具，最高可将图片放大 4 倍。所有处理均在浏览器本地完成，不上传任何数据到服务器。\n\n日常处理图片时，经常会遇到老照片发虚、截图分辨率不够、动漫线稿需要放大等场景，而传统的插值放大会让画面更糊。bg2x 将「选择模型 → 一键放大 → 对比效果 → 导出结果」整合为一步到位的流程，基于 Real-ESRGAN、Swin2SR、Real-CUGAN 等模型重建细节，无需安装、无需注册，打开网页即可使用。\n\n<img width=\"2544\" height=\"1430\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b6513aec-12b9-4347-b42e-941e2ab6a82f\" />\n\n## 核心功能\n\n- **AI 超分辨率** — 基于 Real-ESRGAN、Swin2SR、Real-CUGAN 模型，最高 4 倍放大，重建真实细节而非简单插值\n- **10 个专用模型** — 覆盖真实照片、动漫、插画、压缩图片等场景，按需下载\n- **隐私本地推理** — 通过 Web Worker 中的 ONNX Runtime Web 运行，100% 在设备本地完成，无后端、零上传\n- **GPU 加速** — 在支持时使用 WebGPU 运行，并可自动回退到多线程 WASM\n- **批量处理** — 多张图片加入队列依次处理，支持逐项进度显示与单项取消\n- **多格式导出** — 结果可导出为 PNG、JPG 或 WebP，整批结果还能打包为 ZIP 下载\n- **历史记录** — 可选择持久化保留处理结果，随时回看与重新下载\n\n## 适用场景\n\n- 老照片、低清截图、模糊素材的修复与放大\n- 动漫、插画、线稿的无损放大，用于上色或印刷前处理\n- 设计素材放大，产出详情页、海报所需的高清图\n- 内容创作者批量整理社交平台所需的清晰图片\n- 对隐私敏感的图片（证件、医疗、商业稿）在本地放大，全程不联网上传\n",
-    "created_at": "2026-10-08T14:30:11Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12157"
-  },
-  {
-    "id": 12156,
-    "title": "【网站自荐】AimRange：在线FPS练枪靶场",
-    "content": "## 项目地址\n[https://aimrange.org/](https://aimrange.org/)\n\n## 项目简介\nAimRange 是一个在浏览器里练枪的在线瞄准训练器。打开网页就能玩，不用下载客户端，也不用注册。点一个场景开始后，鼠标会被锁定进 3D 靶场，你打的每一枪都实时计分。分数由击杀速度和命中率共同决定。\n\n## 为什么做这个工具\n每天玩游戏前想练下枪，但现成的练枪软件都得装客户端、开启动器，太麻烦了。\n所以想做一个\"打开网页就能练\"的版本，并且尽量贴近游戏里的手感：灵敏度和视野按游戏的算法换算，准星可以直接导入游戏里的配置。这样在网页里练的肌肉记忆，回到游戏里也用得上。\n\n ## 主要特点\n  - 6 个常见场景：Gridshot、Sixshot、Microshot、Spidershot、Motionshot、Strafetrack，覆盖点射、甩枪、微调和跟枪。\n  - 灵敏度默认按瓦的算法，瓦学弟直接填游戏里的数就行。go 学长切到 CS2 填自己的数，几个游戏之间也能互相换算\n  - 准星可以直接粘贴瓦的准星代码导入，不用一项项调\n  - 有周榜和总榜。没有账号体系，起个名字就能上榜\n  - 顺手增加了反应时间测试等小工具\n\n<img width=\"3418\" height=\"1876\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/caa15e1e-d762-4906-a573-bba6d54a57e6\" />",
-    "created_at": "2026-10-08T14:15:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12156"
-  },
-  {
-    "id": 12155,
-    "title": "【自荐】公众号发现：按领域和更新频率找公众号的网站",
-    "content": "阮老师好，自荐一个我业余做的网站：公众号发现\n\nhttps://wechat.aim888888.xyz/wechat\n\n在微信里很难按\"类别\"找公众号，所以我做了这个目录。它可以按科技、财经、教育、生活、媒体与时政浏览，可以按账号类型筛选（媒体、个人 IP、高校、研究机构等），也可以只看近 30 天高频更新的号。\n\n每个号有一份 AI 生成的内容画像和五项评分。每项评分都附原文引用和「局限」说明，引用跟原文对不上的维度会标「无法判断」，不硬打分。文章页附原文链接，可以直接跳回公众号。\n\n网站免费，浏览不需要注册。目前精选的号约 180 个，还在持续补充。\n\n可供参考的一句话介绍：\n\n> 一个微信公众号目录网站，按领域、账号类型和近 30 天更新频率筛选公众号，每个号附 AI 内容画像，评分都给出原文引用。",
-    "created_at": "2026-10-08T12:39:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12155"
   }
 ]
