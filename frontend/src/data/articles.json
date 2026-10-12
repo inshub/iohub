@@ -1,5 +1,77 @@
 [
   {
+    "id": 12257,
+    "title": "【网站自荐】MapMC：用现实地点生成可探索的 Minecraft 世界",
+    "content": "MapMC 是我们正在开发的 Minecraft 地图工具。玩家可以选择现实中的地点区域，生成相应的 Minecraft 地图，再在游戏里探索和建造，把地图探索与 Minecraft 创作结合起来。\n\n官网：https://mapmc.app/",
+    "created_at": "2026-10-12T04:40:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12257"
+  },
+  {
+    "id": 12256,
+    "title": "【开源自荐】autopilot：让 Claude Code 红蓝对抗写代码，证据齐了才合并",
+    "content": "autopilot 是一个 Claude Code / Codex 插件（MIT）：你给一个目标，它自动规划、实现、验收、合并，再把经验沉淀进项目知识库。\n\n造它是因为 AI 写码的两个真实教训：我碰到过 864 个测试全绿、页面输入框却根本不能用的版本；也抓到过一张截图被复制 7 份、冒充 7 个验收证据。测试数量在涨，证据质量没涨——所以我把「验收」做进了循环：\n\n- **红蓝对抗**：蓝队负责实现，红队看不到蓝队的做法，拿目标盲测找茬，更接近真实质检；\n- **证据闸门**：每个验收谓词都要有真实产物，没有产物的 PASS 会被机械判 FAIL，专治 AI「报喜不报忧」；\n- **知识工程**：任务结束后把踩坑经验自动沉淀进项目知识库，下个任务开局就带上。\n\n这不是为了开源而开源：过去 6.5 个月我自己的活全跑在它上面，迭代了 146 个版本、380+ 个 commits（其中 84% 与 AI 结对完成）。\n\n仓库（含 31 秒真实运行 GIF）：https://github.com/strzhao/autopilot\n安装：在 Claude Code 里 `/plugin marketplace add https://github.com/strzhao/autopilot.git`，然后 `/plugins` 安装。\n\n欢迎拍砖。\n",
+    "created_at": "2026-10-12T03:59:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12256"
+  },
+  {
+    "id": 12255,
+    "title": "【开源自荐】麦麦点餐最优解 - 用 Python 算清麦当劳优惠券的开源 Skill",
+    "content": "### 项目名称与地址\n\n- 项目名称：麦麦点餐最优解（mcd-meal-optimizer）\n- 仓库地址：https://github.com/minxin88/mcd-meal-optimizer\n- 开源协议：MIT\n\n### 项目简介\n\n一个跑在 WorkBuddy 上的开源 Skill：接麦当劳中国官方 MCP，拉门店真实菜单、真实营养数据、真实可用优惠券，再用本地 Python 脚本穷举所有搭配，算出「最省 / 最健康 / 性价比最高」三套能直接下单的方案。\n\n它只依赖 Python 标准库，不需要 pip install，也不需要 MCP Token 就能先跑一遍离线示例看效果。\n\n### 为什么做这个项目？\n\n麦当劳的优惠券是**满减、折扣、品类限定**混着来的，单看每一张都懂，放在一起就不会算了。\n\n举个真实的坑：手里有「满 40 减 10」和「汉堡 8.8 折」两张券。\n\n- 买一个 25.5 元的汉堡：8.8 折省 3.06 元，满减用不了 → **折扣赢**\n- 买两个（51 元）：8.8 折省 6.12 元，满减省 10 元 → **满减赢**\n- 再加一份 12 元薯条凑到 63 元：**薯条白买了** —— 券已经封顶在减 10，多花的 12 元一分没省\n\n也就是说，**哪张券最省、要不要凑单，完全取决于你这单的构成**，没有标准答案。\n\n再叠上「预算 45 元、热量不超 1100 kcal、蛋白质要 35 克以上」这类约束，满足条件的组合轻松上千套，人手不可能算完。\n\n### 它是怎么工作的？\n\n核心设计是**把「算」和「说」分开**：\n\n```\n用户说人话\n   │  \"两个人吃、50 块以内、别太油\"\n   ▼\n大模型理解意图 ──► 翻译成硬约束（预算/热量/蛋白质/忌口）\n   │\n   ▼\n麦当劳 MCP 拉真实数据 ──► 门店菜单 / 营养 / 可用券\n   │\n   ▼\n本地 Python 脚本（无网络）──► 穷举全部组合 + 券最优匹配\n   │\n   ▼\n大模型组织成人话 ──► 三套方案\n```\n\n**为什么不把枚举交给大模型？** 上千套组合的枚举是纯数学问题，不是语言问题。交给大模型：慢、贵、会算错钱；交给脚本：几毫秒出结果、可复现、零 token 消耗。\n\n### 功能与特点\n\n- **真实数据**：菜单、价格、营养、优惠券全部来自麦当劳官方 MCP 实时接口，不内置任何硬编码数据表\n- **券最优匹配**：对每个组合遍历所有券，按「这一单实际能减多少」挑最省的那张（一张订单只能用一张券，不能简单挑面额大的）\n- **三种口味排序**：最省（实付升序）/ 最健康（热量蛋白质偏离度）/ 性价比（每 1 元换到的蛋白质克数）\n- **零依赖**：Python 3.9+，只用标准库，无网络请求\n- **先试后配**：内置离线示例数据，`python scripts/optimize_meal.py --demo` 无需 Token 即可跑出结果\n- **有边界**：不主动下单、不自动领券；涉及花钱的操作一律先让用户确认门店、取餐方式和商品清单\n\n### 实测\n\n2026-10-12 在深圳北站站内一店（早餐时段）真实跑过一次：约束为预算 ≤ 45 元、热量 ≤ 1100 kcal、蛋白质 ≥ 35 g，共枚举出 127 套可行组合，最省方案实付 29.4 元。\n",
+    "created_at": "2026-10-12T03:08:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12255"
+  },
+  {
+    "id": 12254,
+    "title": "【开源自荐】KVMFlow - 用普通 USB 切换器联动外接显示器的开源工具",
+    "content": "### 项目名称与地址\n\n- 项目名称：KVMFlow\n- 仓库地址：https://github.com/Kerw1n1209/KVMFlow\n- 官网：https://kvmflow.net\n\n### 项目简介\n\n一款运行在 macOS 和 Windows 上的显示器联动工具。它监听普通 USB 切换器的动作，通过 DDC/CI 协议自动向外接显示器发送切源指令，让键盘、鼠标和多台显示器一键切到另一台电脑。\n\n### 为什么做这个项目？\n\n很多双机办公的开发者（比如一台 Mac 办公，一台 Windows 娱乐或跑编译），桌面通常是两台电脑连着一到两台显示器。\n\n目前的切换方案普遍存在痛点：\n1. **硬件 KVM**：支持 4K/高刷的硬件 KVM 普遍在数百甚至上千元，而且桌面接线复杂、容易挑线。\n2. **纯软件 KVM（如 Barrier/Synergy）**：通过局域网传输键鼠，有输入延迟，且两台电脑处于不同网络或内网隔离时无法使用。\n3. **低成本 USB 切换器**：几十块的切换器只能切键鼠，每次切电脑都要伸手去摸显示器背后的 OSD 按键，如果是双屏更要按两次。\n\n### 它是怎么工作的？\n\n- 键盘、鼠标插在普通的 USB 切换器上，显示器视频线各自直连两台电脑。\n- 两端运行 KVMFlow。按一下 USB 切换器切走键鼠时，软件捕获到设备离开/接入事件，立即通过 DDC/CI 向显示器发送切源指令（如从 DP 1 切到 HDMI 1）。\n- 视频信号和外设依然走物理直连，零延迟、不占网络带宽、纯本地运行。\n\n### 功能与特点\n\n- **支持平台**：macOS（Apple Silicon）与 Windows x64，底层核心采用 Rust 实现，跨平台体验一致。\n- **多显示器支持**：支持分别记录每台屏幕对应的输入源通道。\n- **纯本地运行**：不收集键鼠输入，不转发画面，无需注册账号。\n- **开源协议**：MIT License。\n\n### 界面预览\n\n![KVMFlow 状态界面](https://kvmflow.net/app/status.png)",
+    "created_at": "2026-10-12T03:03:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12254"
+  },
+  {
+    "id": 12253,
+    "title": "【软件自荐】LaunchHome：macOS 26 的启动台替代",
+    "content": "自荐一个我开发的 Mac 工具。\n\n**LaunchHome**\nhttps://launchhome.app\n\nmacOS 26 去掉了启动台，新的“应用程序”界面会自动分类，不能自己排列，也不能建文件夹。LaunchHome 还原了启动台的用法：全屏显示所有应用，可以自建文件夹，可以拖拽排序。\n\n![image](https://launchhome.app/og/og-cover.jpg)",
+    "created_at": "2026-10-12T02:59:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12253"
+  },
+  {
+    "id": 12252,
+    "title": "【开源自荐】YearLens：把主动提供的聊天导出整理成可核验的年度回顾",
+    "content": "我是姚明宇，做了 YearLens，一个本地 Python 工具和 Agent Skill，可把用户主动提供的聊天导出整理成年份统计、月度原文线索和数据质量说明。目前为 v0.1.1 原型，无需 API key；不会自动读取账号历史。仓库附虚构样例，欢迎反馈解析口径和报告可读性，请勿上传真实聊天记录。\n\n项目：https://github.com/xiaoyu607/yearlens",
+    "created_at": "2026-10-12T02:36:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12252"
+  },
+  {
+    "id": 12251,
+    "title": "【开源自荐】Claude Code 的账户切换工具",
+    "content": "**项目名：** aswap\n**GitHub：** https://github.com/BlackHole1/aswap\n**协议：** MIT\n\n这是一个基于 [claude-swap](https://github.com/realiti4/claude-swap) 二次开发的产品，claude-swap 最近的更新比较缓慢，而且对于新特性的支持也几乎没有了。\n所以我通过 patches 的方案在原有的项目上直接进行修改，后期也可以随时跟进上游的任何改动。\n\naswap 额外做了下面的事情:\n\n* 修复凭证归属错误问题\n* 手动刷新凭证用量\n* 多账号会话历史共享\n* 支持多账号 Claude Desktop\n* 支持多账号 Claude in Chrome 扩展 (支持 cookies, extensions, bookmarks, logins, history 同步)\n\n而且向下兼容 claude-swap 的所有用法，以及 100% 兼容 CodexBar \n\n截图:\n\n<img width=\"1938\" height=\"894\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4d04e9cc-967f-4b23-a752-5c0a6238c05a\" />\n\n<img width=\"1938\" height=\"562\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e743a599-7f60-4f83-b7ab-1a6de0b93479\" />\n\n<img width=\"1938\" height=\"598\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4217e266-36ed-455d-a1b2-f82e6afc9608\" />\n\n<img width=\"1938\" height=\"784\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/06b2c23e-d807-4823-ac99-b19d1369851e\" />",
+    "created_at": "2026-10-12T01:03:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12251"
+  },
+  {
+    "id": 12250,
+    "title": "【开源自荐】让 GitHub notifications 保持清爽",
+    "content": "**项目名：** Mewte\n**GitHub：** https://github.com/BlackHole1/Mewte\n**协议：** MIT\n**描述：** 让你的 GitHub 收件箱保持安静：一个根据你的规则将通知标记为已完成的自托管工具。\n\n### 功能特性\n\n- 支持多个 GitHub 账号，各自设置轮询间隔\n- 在浏览器中配置规则，条件可嵌套，涵盖仓库、原因、类型、状态、标题、标签、作者等\n- 支持通过修改 YAML 来直接增删改规则\n- 支持 Issue、Pull request 和 Discussion\n- 创建规则时，可以进行预览，确认规则会清理哪些通知\n- 历史记录\n- 单用户登录，可开启双因素认证\n- 支持 SQLite、PostgreSQL 和 MySQL\n- 8 种语言，浅色和深色主题\n\n### 问题场景\n\nGithub notifications 的过滤方式效率比较低下，有时候需要将所有的已合并 PR 全部标记 Done，需要翻页好几次才可以。\n\n而 Github 的 Repo Watch 又无法做到更细粒度的通知划分，导致只能被动的接受这个项目所有类型的通知。\n\n在我的场景中，由于我是多个开源组织的 Member，几乎每次有 PR 时，都会被通过 `@team` 的方式，将这个 PR 添加到我的 GitHub notifications 中。\n\n### 截图\n\n<table>\n  <tr>\n    <td rowspan=\"2\" width=\"50%\" valign=\"top\">\n\t\t<img width=\"2560\" height=\"3142\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/884fca3b-35e9-4ab5-918b-bc60dea34a70\" /><br><sub>嵌套条件，并可预览规则会清理哪些通知</sub>\n    </td>\n    <td width=\"50%\" valign=\"top\">\n      <img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/afeed489-686b-4082-b2c2-2c148e6ab91d\" /><br> <sub>规则按从上到下的顺序匹配</sub>\n    </td>\n  </tr>\n  <tr>\n    <td valign=\"top\">\n      <img width=\"2560\" height=\"1600\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d3bb6775-b082-455c-94c3-22d4d394a43b\" /><br><sub>历史记录</sub>\n    </td>\n  </tr>\n</table>",
+    "created_at": "2026-10-12T00:50:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12250"
+  },
+  {
+    "id": 12249,
+    "title": "【工具自荐】LUT Generator：从参考图探索照片和 SDR 视频的可复用色彩风格",
+    "content": "项目地址：[lut generator from image](https://ailutgenerator.online/)\n\n这是一个网页形态的参考图色彩工具，面向希望先比较风格、再决定是否导出 LUT 的摄影和 SDR 视频工作流。上传自己的源图与参考图后，可以探索色彩匹配、微调并下载 PNG 预览。匹配、微调及 PNG 预览免费；自定义 .cube LUT 导出使用积分，不是无限免费导出。\n\n建议把参考匹配视为调色起点，而不是对所有素材都有效的万能滤镜：先稳定曝光、白平衡及输入色彩空间，再比较人物、阴影和高光等不同内容；对视频逐镜头检查，不以一张漂亮样图代表整段素材。参考素材及最终生产素材应分别核对版权，屏幕预览也不能代替印刷打样或具体编辑器的色彩管理要求。\n\n自荐披露：我与该项目有关联。本条仅提交工具线索供社区维护者评估，不表示周刊已收录，也不声称存在融资、营收或投资回报。欢迎就预览和导出流程的可用性提出反馈。",
+    "created_at": "2026-10-12T00:28:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12249"
+  },
+  {
     "id": 12248,
     "title": "【开源自荐】Cachety：在浏览器里给证件照加水印，文件全程不上传",
     "content": "（我来自法国，不会中文，下面的内容借助 AI 翻译，如有不通顺的地方请见谅。）\n\n租房、求职、开户时，经常要把身份证照片发给别人。发出去之后，这份复印件就不受自己控制了。在上面写明用途、接收方和日期，比如「仅供租房申请使用，XX房产，2026年10月11日」，就很难被挪作他用。\n\n但我发现，大多数在线加水印工具都要先把身份证上传到它们的服务器。为了保护证件，反而要先把它交出去，这说不通，所以我做了 Cachety。\n\n它是一个纯前端的网页工具，所有处理都在浏览器里完成：用 pdf.js 把每一页渲染成图片，把水印画进图片里，再生成一个全新的文件。网站没有接收文件的服务器，页面的 CSP 设置了 `connect-src 'self'`，浏览器本身就会拒绝向其他域名发送任何数据。可以自己验证：打开页面后开启飞行模式，照样能用。\n\n其他功能：\n\n- 遮盖身份证号、银行卡号等信息，内容会被真正删除，而不只是盖上一层。\n- 自动清除文字层、元数据和照片的 GPS 位置。\n- 每份副本可带日期和唯一编号；可为每个接收方各生成一份。\n- 可选 AES-256 加密 PDF；支持 iPhone 的 HEIC 照片；手机上也能用。\n- 界面支持简体中文等 7 种语言。\n\n已知局限：水印只能是文字；输出的 PDF 是图片，文字不能再选中，文件可能比原来大。水印能防止复印件被挪用，但挡不住有人翻拍。\n\n免费、无需注册、AGPL-3.0 开源。基于 Next.js 静态导出，部署在 Cloudflare Pages。\n\n<img width=\"2880\" height=\"1800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9c3e3749-f130-4065-81d2-5b6afc317376\" />\n\n- 网站：https://cachety.com/zh\n- 源码：https://github.com/cachety/cachety\n- 中文说明：https://github.com/cachety/cachety/blob/main/README.zh.md\n\n欢迎试用和提意见，特别是中文界面里哪里读起来不自然。\n",
@@ -90,7 +162,7 @@
   {
     "id": 12237,
     "title": "【软件自荐】红果短剧 Mac 版：推荐连播、历史续播与置顶小窗",
-    "content": "## 项目\n\n[红果短剧 Mac 版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos)是一个非官方的 macOS 桌面播放器，面向想在 Mac 上打开就看、看完接下一集的用户。我独立维护客户端，重点放在连续播放、切集和本机续看，而不是批量下载。\n\n- 首页直接进入推荐播放，也能搜索剧名或演员、浏览榜单；选集支持分组和定位。\n- 收藏、历史、集数和观看位置保存在本机；v0.1.10 增加追剧列表和手动检查新季、新集。\n- 可切画质与最高 3 倍速，支持置顶小窗、全屏和下一集预加载。实际画质与播放可用性取决于片源和网络。\n- 完整 DMG 内置首次运行所需组件；安装运行环境无需另行下载，找剧与播放仍需联网。\n\n[下载与安装说明](https://strivetolearncode.github.io/hongguo-short-drama-macos/?utm_source=weekly) · [v0.1.10 发行版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/tag/v0.1.10) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)\n\n![推荐播放界面](https://raw.githubusercontent.com/StriveToLearnCode/hongguo-short-drama-macos/main/docs/assets/recommend-latest.png)\n\n![选集与播放界面](https://raw.githubusercontent.com/StriveToLearnCode/hongguo-short-drama-macos/main/docs/assets/episodes-latest.png)\n\n**安装与项目边界：**这是第三方客户端，与红果短剧官方及 Windows 原发行者没有维护关系；发行仓库用于下载和反馈，客户端源码目前未公开。v0.1.10 已在 Apple Silicon / macOS 15.3.1 上做实际播放验收；物理 Intel、M5/macOS 26、macOS 13 和全新账户仍待完整实测。应用尚未经过 Apple 公证；安装前请阅读下载页提示。若系统提示恶意软件或“将损坏你的电脑”，请停止安装并反馈，不要绕过系统警告。观看记录不与手机账号同步，安装包不包含剧集媒体。",
+    "content": "## 项目\n\n[红果短剧 Mac 版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos)是一个非官方的 macOS 桌面播放器。我独立维护客户端，重点是打开后连续观看、切集与本机续看，而不是批量下载。\n\n- 首页进入推荐播放，也能按剧名或演员搜索、浏览榜单；同一部剧自然播完后接下一集。\n- 收藏、历史、集数和观看位置保存在本机；可以加入追剧列表；部分剧目的更新检查可能因内容来源分页失败。\n- 可切画质与最高 3 倍速，支持置顶小窗、全屏和下一集预加载。具体画质与播放可用性取决于片源和网络。\n- 完整 DMG 内置首次运行组件；安装运行环境无需另行下载，找剧和播放仍需联网。\n\n[下载与安装说明（当前稳定版）](https://strivetolearncode.github.io/hongguo-short-drama-macos/?utm_source=weekly) · [查看最新发行版](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/latest) · [约 12 秒真实 Mac App 演示（v0.2.0）](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/releases/download/v0.2.0/HongguoMac-0.2.0-intro.mp4) · [反馈问题](https://github.com/StriveToLearnCode/hongguo-short-drama-macos/issues)\n\n![v0.2.0 实际 App 录制封面](https://raw.githubusercontent.com/StriveToLearnCode/hongguo-short-drama-macos/main/docs/assets/v0.2.0-video-poster.png)\n\n**安装与边界（2026-10-12 更新）：**截至 2026-10-12，最新稳定版为 v0.2.2；演示录制自 v0.2.0，不代表本版逐项实测。项目与红果短剧官方及 Windows 原发行者无维护关系；发行仓库用于下载和反馈，客户端源码目前未公开。Apple Silicon / macOS 15.3.1 用于 v0.2.2 构建和回归；物理 Intel、M5/macOS 26、macOS 13 和全新账户仍待完整实机验收。应用尚未经过 Apple 公证；若系统提示恶意软件或“将损坏你的电脑”，请停止安装并反馈，不要绕过系统警告。观看记录不与手机账号同步，安装包不包含剧集媒体。",
     "created_at": "2026-10-11T11:23:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12237"
@@ -146,7 +218,7 @@
   {
     "id": 12230,
     "title": "[开源自荐] Clipori：一个能被动记忆的 Mac AI 剪贴板备忘录",
-    "content": "主要是平时工作总是忘东西，做了个会被动记忆方便我老年痴呆的小玩具\n## 演示\n\n- 会自动保存复制的文字、链接、代码、截图和图片。\n- 支持 AI 自动分类内容以及 AI 搜索，支持自定义 OpenAI / Claude 兼容服务。\n- `⇧⌘V` 呼出，单击复制，双击粘贴。\n- 多选卡片拖入分类，支持固定记录。\n- 编辑记录、追加备注，也可以创建桌面便笺。\n- 自定义快捷键、语言、保留期限和忽略应用。\n\n![Clipori 操作演示](https://raw.githubusercontent.com/Panzer-Jack/Clipori/main/docs/assets/clipori-demo-zh.gif)\n\n## 开始使用\n\n项目官网：[clipori.panzer-jack.cn](clipori.panzer-jack.cn)\nGithub仓库：[Panzer-Jack/Clipori](https://github.com/Panzer-Jack/Clipori)\n\n**macOS 14 或更高版本 · 支持 Apple Silicon 与 Intel · 安装包无需 Xcode**\n\n1. **下载应用**：前往 [GitHub Releases](https://github.com/Panzer-Jack/Clipori/releases)，M 系列芯片选择 `arm64`，Intel 选择 `x86_64`。打开 DMG 或解压 ZIP，将 **Clipori.app** 拖入**应用程序**。\n\n2. **首次启动前**，在「终端」执行以下命令，移除应用的隔离标记：\n\n   ```sh\n   xattr -dr com.apple.quarantine /Applications/Clipori.app\n   ```\n\n3. **唤起卡片栏**：打开 Clipori，按 **`⇧⌘V`**。应用常驻菜单栏，复制文字或图片后便会自动收录。\n\n4. **开启直接粘贴**：在「系统设置 → 隐私与安全性 → 辅助功能」中开启 Clipori。未授权时仍可复制卡片，切回目标应用按 `⌘V` 粘贴。\n\n5. **配置 AI**：在「设置 → AI」选择协议，填写接口地址、模型和 API Key，测试后保存。不配置 AI 也能使用历史记录和关键词搜索。\n\n> 因为使用临时签名，尚未通过 Apple 公证。如系统拦截了你信任的安装包，可按 [Apple 官方说明](https://support.apple.com/en-us/102445)使用「仍要打开」。\n\n### 基本操作\n\n| 操作 | 效果 |\n| --- | --- |\n| `⇧⌘V` | 显示或收起卡片栏 |\n| 悬停 | 轻微上浮、高亮，不改变剪贴板 |\n| 单击 | 只选中当前卡片，完整替换剪贴板；面板保持打开 |\n| 双击 / `↩` | 复制并粘贴到打开面板前的应用 |\n| `⌘` 点击 / `⇧` 点击 | 增减选中项 / 连续选择，用于归类 |\n| 拖动选中卡片到分类 | 整组归类 |\n| 空格 / `⌘E` | 预览 / 编辑与追加 |\n| `⌘↩` | 输入问题后让 AI 找回 |\n\n应用快捷键都可以在「设置 → 快捷键」中修改。\n\n## 数据与设置\n\n- 历史记录存储在本机 SQLite，API Key 保存在钥匙串。可暂停记录或忽略指定应用，支持常见剪贴板隐私标记。\n- AI 搜索向你配置的服务发送问题与候选片段；自动分类发送待分类内容，默认关闭。不会发送图片像素。\n- 新安装默认保留 30 天，可选 1 天、1 周、1 个月、1 年或永久。固定记录与 Pinboard 永久保留；升级保留原设置，缩短期限前会确认。\n- 系统首选语言为中文时默认中文，其他情况默认英文，也可以在设置中切换。\n- 卡片图标自动表示内容类型，颜色跟随所属分类。\n\n## 许可\n\n[Apache-2.0](https://github.com/Panzer-Jack/Clipori/blob/main/LICENSE)。\n\n灵感来源：[Paste](https://pasteapp.io/)。\n",
+    "content": "主要是平时工作总是忘东西，做了个会被动记忆方便我老年痴呆的小玩具\n## 演示\n\n- 会自动保存复制的文字、链接、代码、截图和图片。\n- 支持 AI 自动分类内容以及 AI 搜索，支持自定义 OpenAI / Claude 兼容服务。\n- `⇧⌘V` 呼出，单击复制，双击粘贴。\n- 多选卡片拖入分类，支持固定记录。\n- 编辑记录、追加备注，也可以创建桌面便笺。\n- 自定义快捷键、语言、保留期限和忽略应用。\n\n![Clipori 操作演示](https://raw.githubusercontent.com/Panzer-Jack/Clipori/main/docs/assets/clipori-demo-zh.gif)\n\n## 开始使用\n\n项目官网：[https://clipori.panzer-jack.cn](https://clipori.panzer-jack.cn)\nGithub仓库：[Panzer-Jack/Clipori](https://github.com/Panzer-Jack/Clipori)\n\n**macOS 14 或更高版本 · 支持 Apple Silicon 与 Intel · 安装包无需 Xcode**\n\n1. **下载应用**：前往 [GitHub Releases](https://github.com/Panzer-Jack/Clipori/releases)，M 系列芯片选择 `arm64`，Intel 选择 `x86_64`。打开 DMG 或解压 ZIP，将 **Clipori.app** 拖入**应用程序**。\n\n2. **首次启动前**，在「终端」执行以下命令，移除应用的隔离标记：\n\n   ```sh\n   xattr -dr com.apple.quarantine /Applications/Clipori.app\n   ```\n\n3. **唤起卡片栏**：打开 Clipori，按 **`⇧⌘V`**。应用常驻菜单栏，复制文字或图片后便会自动收录。\n\n4. **开启直接粘贴**：在「系统设置 → 隐私与安全性 → 辅助功能」中开启 Clipori。未授权时仍可复制卡片，切回目标应用按 `⌘V` 粘贴。\n\n5. **配置 AI**：在「设置 → AI」选择协议，填写接口地址、模型和 API Key，测试后保存。不配置 AI 也能使用历史记录和关键词搜索。\n\n> 因为使用临时签名，尚未通过 Apple 公证。如系统拦截了你信任的安装包，可按 [Apple 官方说明](https://support.apple.com/en-us/102445)使用「仍要打开」。\n\n### 基本操作\n\n| 操作 | 效果 |\n| --- | --- |\n| `⇧⌘V` | 显示或收起卡片栏 |\n| 悬停 | 轻微上浮、高亮，不改变剪贴板 |\n| 单击 | 只选中当前卡片，完整替换剪贴板；面板保持打开 |\n| 双击 / `↩` | 复制并粘贴到打开面板前的应用 |\n| `⌘` 点击 / `⇧` 点击 | 增减选中项 / 连续选择，用于归类 |\n| 拖动选中卡片到分类 | 整组归类 |\n| 空格 / `⌘E` | 预览 / 编辑与追加 |\n| `⌘↩` | 输入问题后让 AI 找回 |\n\n应用快捷键都可以在「设置 → 快捷键」中修改。\n\n## 数据与设置\n\n- 历史记录存储在本机 SQLite，API Key 保存在钥匙串。可暂停记录或忽略指定应用，支持常见剪贴板隐私标记。\n- AI 搜索向你配置的服务发送问题与候选片段；自动分类发送待分类内容，默认关闭。不会发送图片像素。\n- 新安装默认保留 30 天，可选 1 天、1 周、1 个月、1 年或永久。固定记录与 Pinboard 永久保留；升级保留原设置，缩短期限前会确认。\n- 系统首选语言为中文时默认中文，其他情况默认英文，也可以在设置中切换。\n- 卡片图标自动表示内容类型，颜色跟随所属分类。\n\n## 许可\n\n[Apache-2.0](https://github.com/Panzer-Jack/Clipori/blob/main/LICENSE)。\n\n灵感来源：[Paste](https://pasteapp.io/)。\n",
     "created_at": "2026-10-11T06:33:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12230"
@@ -732,77 +804,5 @@
     "created_at": "2026-10-08T12:39:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12155"
-  },
-  {
-    "id": 12154,
-    "title": "已撤回",
-    "content": "作者已撤回此投稿。",
-    "created_at": "2026-10-08T11:42:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12154"
-  },
-  {
-    "id": 12153,
-    "title": "【网站自荐】Guess Song Game：听短片段猜歌的免费网页游戏",
-    "content": "自荐一个正在维护的免费网页猜歌游戏：\n\nhttps://guesssonggame.com/\n\n听一段音乐，选择对应的歌名；猜错或跳过后，可以听到更长的片段。网站也提供每日挑战、无限练习，以及按单词线索猜歌名的 Song Wordle 模式。\n\n直接在浏览器打开即可游玩，适合想用几分钟做音乐小测验的人。欢迎体验并反馈玩法和交互上的问题。",
-    "created_at": "2026-10-08T11:35:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12153"
-  },
-  {
-    "id": 12152,
-    "title": "【网站自荐】Loretypes：6 个免费的自我探索小测验，免注册看完整结果",
-    "content": "Loretypes（https://loretypes.com/ ）是一个英文的自我探索小测验网站，目前有 6 个测验：\n\n- 光环颜色测试（Aura Color Test）：21 题，看 8 种颜色里哪种居首，其余颜色的分布也一起显示\n- 原型测试（Archetype Test）：24 题，原创的 10 型模型，五个维度，给出主类型和辅助类型\n- 道德阵营测试（Moral Alignment Test）：24 题，结果落在九宫格阵营图上\n- 前世测验（Past Life Quiz）：24 题，结果是虚构的故事角色，只为好玩，不声称揭示真实的前世\n- 色彩季型测验（Color Season Quiz）：24 题，问的是你喜欢哪些配色，不需要上传照片\n- 守护动物测验（Spirit Animal Quiz）：24 题，用 8 种动物做比喻\n\n每个测验 3–4 分钟，不用注册、不留邮箱，完整结果免费看，可以生成分享链接。\n\n测验计分是固定规则，不用 AI。原型测试做完后，可以选择让 AI 针对某个场景（比如团队合作）写一段反思，这是可选功能，每天有次数上限。\n\n这些测验只用于自我反思和娱乐，不是心理学或临床诊断。\n\n我是这个网站的作者，独立开发。欢迎试用和提意见。\n\n![Loretypes](https://loretypes.com/og/home.png)\n",
-    "created_at": "2026-10-08T10:44:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12152"
-  },
-  {
-    "id": 12151,
-    "title": "【工具自荐】rfig：为 Zsh、Bash、Fish 添加补全菜单和历史建议",
-    "content": "自荐一个免费开源的命令行补全工具：[rfig](https://github.com/tamia6/rfig)。\n\n它用 Rust 编写，为 macOS 和 Linux 上的 Zsh、Bash、Fish 添加输入时的补全菜单和基于历史的自动建议。可以用方向键选择候选并插入参数，历史建议按当前工作目录匹配，命令仍由原有 Shell 执行。\n\n适合希望获得类似 Fig 补全体验的终端用户；它是独立实现，不是 Fig 的分支，不依赖 AI。\n\n- MIT 许可证，免费开源。\n- 提供 Homebrew、预编译包和源码安装。\n- 支持 Bash 4.4+、Fish 3.6+；macOS 自带的 Bash 3.2 不受支持。\n- README 包含安装、卸载和 Linux 内核相关限制说明。\n\n[官网](https://tamia6.github.io/rfig/) · [源码与下载](https://github.com/tamia6/rfig)\n\n![rfig 补全菜单与历史自动建议演示](https://raw.githubusercontent.com/tamia6/rfig/main/assets/rfig-demo.gif)\n\n披露：我是项目维护者，希望能作为周刊工具推荐候选。\n",
-    "created_at": "2026-10-08T10:13:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12151"
-  },
-  {
-    "id": 12150,
-    "title": "【工具自荐】AppDuo：免费开源的原生 macOS 应用分身工具",
-    "content": "自荐一个免费开源的 macOS 应用分身工具：[AppDuo](https://github.com/tamia6/AppDuo)。\n\n当工作号和个人号需要同时在线时，可以创建使用独立数据目录的应用分身，并用不同名称和图标区分。它使用 Swift/SwiftUI 开发，支持硬分身、启动器式软分身，以及从本机原应用更新硬分身并保留数据和配置。\n\n- macOS 14+，提供 Apple Silicon 和 Intel 的 DMG，以及 Homebrew 安装。\n- GPL-3.0 许可证，免费开源。\n- 应用兼容性取决于目标应用和版本；当前界面为中文，发行包采用 ad-hoc 签名、尚未经过 Apple 公证。\n\n[官网](https://tamia6.github.io/AppDuo/) · [源码与下载](https://github.com/tamia6/AppDuo)\n\n![Dock 中原版微信与分身使用不同图标](https://raw.githubusercontent.com/tamia6/AppDuo/main/docs/images/wechat-dock.png)\n\n披露：我是项目维护者，希望能作为周刊工具推荐候选。\n",
-    "created_at": "2026-10-08T10:13:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12150"
-  },
-  {
-    "id": 12149,
-    "title": "【软件自荐】漫阅（ManYue）：iPhone / iPad 本地漫画与 NAS 书库阅读器",
-    "content": "我是漫阅的开发者，来做一次软件自荐。漫阅（ManYue）是一款面向 iPhone 和 iPad 的漫画阅读器，适合整理自己的漫画文件，以及阅读个人 NAS / 服务器书库。\n\n主要功能：\n- 从「文件」App 导入 CBZ、CBR、CB7、ZIP、RAR、7z、PDF 等格式；已导入或已下载的内容可离线阅读。\n- 通过书架分组、阅读记录、书签和待阅读清单整理收藏；支持单页 / 双页、横向 / 纵向阅读和深浅色主题。\n- Pro 提供 SMB、云端导入，以及 iCloud / WebDAV 同步等功能。\n- Ultra 包含 Pro 功能，并提供 Komga、Kavita、LANraragi、Suwayomi / Tachidesk 等服务器书库连接功能。\n\n漫画文件和来源由使用者自行添加。App 为付费下载，另有可选的 Pro / Ultra 内购，具体功能范围以 App Store 说明为准。\n\nApp Store：https://apps.apple.com/mo/app/id6753895889\n项目资料：https://github.com/SoBison/ManYue\n\n欢迎有本地漫画或 NAS 阅读需求的朋友反馈使用体验。",
-    "created_at": "2026-10-08T09:34:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12149"
-  },
-  {
-    "id": 12148,
-    "title": "【自荐】MacMD Viewer：macOS 上的只读 Markdown 阅读器",
-    "content": "MacMD Viewer 是一个 macOS 上的只读 Markdown 阅读器（需要 macOS 14 及以上），用来阅读本地的 README、技术文档，以及 AI 编程助手生成的计划和说明文件。它不提供编辑功能，文件在编辑器里保存后，打开的文档会自动重新加载。\n\n支持在访达中按空格键通过快速查看（Quick Look）预览 Markdown，渲染 Mermaid 图表，代码语法高亮，文档大纲导航，12 种主题，可导出保留 Mermaid 图表和高亮代码的 PDF，并可离线使用。\n\n收费软件，19.99 美元一次性买断，安装包 5.4 MB，也可以用 `brew install --cask macmd-viewer` 安装。我是这个软件的开发者。\n\nhttps://macmdviewer.com\n\n![MacMD Viewer](https://macmdviewer.com/images/product/app-scroll-poster.jpg)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n",
-    "created_at": "2026-10-08T08:10:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12148"
-  },
-  {
-    "id": 12147,
-    "title": "【工具自荐】NudgeScout：自动化查找推广网站、公开邮箱与自动管理外链建联",
-    "content": "大家好，向周刊自荐一个我们做的在线工具 **NudgeScout**，适合需要推广产品的独立开发者、小团队，以及 SEO 从业者。\n\n产品上线后，找推广渠道往往要在搜索结果、网站联系页、邮箱和表格之间来回切换：哪些网站适合介绍自己的产品？从哪里联系编辑？发过的邮件有没有回复？\n\nNudgeScout 把网站研究、公开联系方式查找和邮件建联放在同一个任务里，方便接着处理后续沟通。\n\n### 主要功能\n\n- **找相关网站**：查看网站内容、投稿要求和合作方式，筛选适合自己产品的推广机会。\n- **找公开联系方式**：从网站公开页面查找邮箱或联系入口，保留来源页面，方便核对。这个功能可以单独使用，不需要连接邮箱，也不会发邮件。\n- **管理建联沟通**：按用户确认的计划，通过已连接的邮箱发送有针对性的介绍，处理真人回复，整理报价与合作条件。\n- **检查外链结果**：区分邮件已发送、对方已回复和链接已上线，并记录公开页面中的实际链接。\n\n### 可以先体验什么\n\n官网有交互演示，也可以无需登录浏览[免费发布平台目录](https://nudgescout.com/zh/free-backlink-sites)，查看平台的参与方式、要求和限制，再选择适合自己项目的渠道。\n\n付费合作和链接交换由用户决定，平台注册、提交和文章投递由用户自行处理。对方是否回复或发布链接无法保证。\n\n官网：[https://nudgescout.com/zh/](https://nudgescout.com/zh/)  \nGitHub 产品介绍页：[LiuXiyun/nudgescout](https://github.com/LiuXiyun/nudgescout)\n\n欢迎试用，也欢迎反馈哪些查找和沟通环节还不够顺手。\n",
-    "created_at": "2026-10-08T07:45:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12147"
-  },
-  {
-    "id": 12146,
-    "title": "【开源自荐】掘金同步助手 · Juejin Sync：在掘金写作，一键安全同步到 CSDN、微信公众号、知乎专栏与博客园草稿箱",
-    "content": "## 项目介绍\n\n- **项目名称**：掘金同步助手 · Juejin Sync\n- **项目仓库**：https://github.com/juejin-sync/juejin-sync\n- **官方网站**：https://juejinsync.vercel.app/\n- **开源协议**：MIT\n\n技术创作者经常需要“一文多发”，但手动把掘金写好的 Markdown 同步到各大平台非常繁琐：微信公众号排版错乱且代码块缩进丢失、知乎专栏采用 Draft.js 富文本结构且公式排版各异、外链处理麻烦、图片容易遭遇防盗链；同时，市面上不少同步工具需要将平台账号密码托管到第三方云端服务器，存在严重的安全隐患与封号风险。\n\n**掘金同步助手** 是一款面向技术创作者的 Chrome 扩展（Manifest V3）。支持在掘金发布文章或编辑草稿时，一键将文章、代码块、图片及 Mermaid 图表智能转换并安全着陆到目标平台的**草稿箱**（已支持 **CSDN、微信公众号、博客园、知乎专栏**）。\n\n---\n\n## 核心特性\n\n- 🛡️ **纯前端端侧运行，零隐私泄露风险**：所有内容转换与网络通信均在浏览器本地扩展内完成，复用当前浏览器已登录会话，**不依赖任何托管账号密码的中转服务器**。知乎专栏通过同源 Bridge 交互，**完全不申请敏感 cookies 权限**。\n- 📝 **只同步草稿箱，绝不自动公开**：同步结果安全着陆到目标平台的草稿箱，由作者自行二次预览检查后再决定发布，把控最终内容质量。\n- 🎨 **多平台高保真排版适配**：\n  - **微信公众号**：自动将 Markdown 渲染为内联样式 HTML；代码块使用微信专用 `section / pre / code` 结构逐行保真；外链自动转文末参考链接；源文章封面自动生成 16:9、1:1、3:4 三套裁剪比例并绑定。\n  - **知乎专栏**：深度适配 Draft.js 富文本结构；实施严格标签白名单；支持知乎原生可编辑 LaTeX 公式卡片转换；外链图片双轨上传（服务端转存+本地二进制上传）。\n  - **博客园 & CSDN**：Markdown 格式规范化、正文图片自动转存防盗链、题图自动绑定。\n- 📊 **Mermaid 图表离屏渲染（Offscreen Document）**：在浏览器离屏文档中将流程图、时序图等 Mermaid 语法自动渲染为高清 PNG 图片再转存上传，解决目标平台不支持图表语法的问题。\n- 🔒 **草稿映射与账号防重**：支持草稿更新与账号隔离，远端状态冲突时强制阻断覆盖，避免多账号切换或重试时产生重复草稿。\n\n---\n\n## 安装体验\n\n1. 📥 前往 [Releases 页面](https://github.com/juejin-sync/juejin-sync/releases/latest) 下载最新版解压包并解压。\n2. 🌐 打开 Chrome，访问 `chrome://extensions/` 并开启右上角“开发者模式”。\n3. 📂 点击“加载已解压的扩展程序”，选择解压目录即可。\n4. 🔑 在同一浏览器中登录掘金及需要同步的目标平台即可开始同步。\n",
-    "created_at": "2026-10-08T07:09:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12146"
   }
 ]
