@@ -1,5 +1,61 @@
 [
   {
+    "id": 12294,
+    "title": "【开源自荐】MiroTalk RND：随机匹配，即刻畅聊！",
+    "content": "**MiroTalk RND** 是一款可自行部署的 WebRTC 随机视频聊天应用。用户加入等待队列后，系统会自动将两位用户进行一对一匹配。你可以与对方畅聊，也可以随时点击 **Next（下一个）**，立即匹配新的聊天对象。\n\n**在线演示：** https://rnd.mirotalk.com/  \n**源代码：** https://github.com/miroslavpejic85/mirotalkrnd\n\n## 使用流程\n\n### 1. 加入匹配队列\n\n加入等待队列，寻找聊天伙伴。\n\n![加入匹配队列](https://public-files.gumroad.com/va3jxf2smjuvwkftcpluxsik900s)\n\n### 2. 成功匹配另一位用户\n\n系统会自动为你匹配另一位参与者，开启一对一视频聊天。\n\n![匹配成功](https://public-files.gumroad.com/miwo4gv3976g8eqqj76xw4zk104m)\n\n### 3. 开始聊天，或点击 Next 匹配下一位\n\n尽情畅聊！想认识新朋友时，只需点击 **Next（下一个）**，即可立即开始新一轮匹配。\n\n![开始聊天或切换下一位](https://public-files.gumroad.com/6nj12edpjptsj79pb4bhbm5ezjjk)",
+    "created_at": "2026-10-12T18:48:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12294"
+  },
+  {
+    "id": 12293,
+    "title": "【开源自荐】Oxynote：页面内嵌实时图表的自托管团队 Wiki",
+    "content": "阮老师好，自荐一下我做的 Oxynote，一个可以自托管的工程团队内部 Wiki，Apache-2.0 开源。\n\n我做了 8 年多软件工程师，很长一段时间里，我工作中最可靠的\"文档\"其实是 Slack 上一个只有我自己的聊天：Grafana 链接、调用其他团队服务的 curl 命令、哪个版本部署在哪里的笔记。后来试过把这些搬到 Notion，但文档和它描述的监控图表分别放在两个工具里，各改各的，很快就对不上了。\n\n所以在 Oxynote 里，页面可以直接插入实时图表块，图表自己去查询 Prometheus、PostgreSQL、MySQL 或 MariaDB，就放在解释它的那段文字旁边。Runbook 和值班文档里看到的是实时数据，而不是过时的截图。\n\n重要页面可以开启审核：修改先进入草稿，以 Diff 的形式展示（包括图表的改动），审批之后再合并到主版本，就像代码的 Pull Request。\n\n另外它也是一个普通的协同编辑器：多人实时编辑、评论、标签、全文搜索，还有 Stripe 风格的左右分栏 API 文档块。内置 MCP Server，Claude Code、Cursor 这类工具可以搜索和编辑页面，这部分是可选的。\n\n部署是一个 Docker 容器，内置 PostgreSQL，支持 amd64 和 arm64：\n\n```bash\ndocker run -d -p 8080:8080 -v oxynote_data:/oxynote/data ghcr.io/oxynote/oxynote:latest\n```\n\n技术栈是 Go 后端、Nuxt 4 / Vue 前端（Tiptap + Yjs），目前界面只有英文。欢迎有类似需求的朋友试用、反馈。\n\n源码：[oxynote/oxynote](https://github.com/oxynote/oxynote)\n\n![页面内嵌实时图表](https://raw.githubusercontent.com/oxynote/oxynote/main/docs/images/hero-light.png)\n",
+    "created_at": "2026-10-12T17:46:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12293"
+  },
+  {
+    "id": 12292,
+    "title": "【开源自荐】Avorythm：浏览器标签页的 AI 实时译配与双语字幕",
+    "content": "大家好，我是 Avorythm 的开发者，想自荐一个 MIT 开源项目。\n\n**Avorythm：浏览器标签页的 AI 实时译配与双语字幕。**\n\n观看外语技术课程、演讲或播客时，它可以捕获用户主动选定的标签页音频，生成翻译语音，并同时显示原文和译文字幕。不需要视频本身已有字幕。\n\n### 可以做什么\n\n- 独立控制原声、译配、原文字幕和译文字幕。\n- 移动、调整字幕浮窗，继续使用原网页。\n- 选择低延迟的原页面播放，或缓冲式录制播放器；后者支持暂停、回看及本地导出。\n- 浏览器扩展独立运行，不要求安装桌面程序、Python 或 FFmpeg。项目另有桌面版本。\n\n### 使用条件与限制\n\n扩展本身免费，代码采用 MIT 许可证。使用者需要自己的 Google Gemini API 密钥；Groq Whisper 路线可选。免费额度、地区可用性和可能的费用由相应服务商决定，不是无限免费服务。\n\n处理会在用户明确选择标签页并同意后启动；所选音频和文本会发送给相应 AI 服务，因此不是离线翻译。实时路径存在处理延迟，缓冲播放器通过延后观看来对齐内容，不承诺零延迟或完美译文。\n\n目前有简体中文界面、中文网站以及中文演示和设置视频。欢迎反馈中文语音、字幕可读性和安装体验方面的问题。\n\n- 源码：https://github.com/msmahdinejad/avorythm\n- 中文官网与 40 秒演示：https://msmahdinejad.github.io/avorythm/zh/?v=demo#videos\n- Chrome Web Store：https://chromewebstore.google.com/detail/avorythm-live-translation/kbdbbedijheicmmnmoidamdaodjbhjje\n\n谢谢维护周刊，也欢迎大家试用或参与开发。\n",
+    "created_at": "2026-10-12T16:57:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12292"
+  },
+  {
+    "id": 12291,
+    "title": "【开源自荐】FlowPick：全平台网页媒体嗅探扩展，支持云端离线加速/双模录制/Blob抓取",
+    "content": "\n**FlowPick**：一款功能强大的开源浏览器扩展，支持各大主流平台的音视频无损/图片高清抓取与批量下载。\n\n**特色**：\n* **全平台多格式嗅探**：深度支持 B站、抖音、小红书、X（Twitter）等主流平台的视频、音频、图片、字幕、文档等资源，智能识别并提供一键下载。\n* **预览与防盗链代理**：内置播放预览与防盗链代理支持，下载前即可在线验货，确保抓取到最高画质或原始源文件。\n* **批量下载与高效管理**：支持多任务并行、规则通知横幅及高效的资源管理，让海量素材收集轻松高效。\n* **跨浏览器支持**：完美适配 Chrome、Edge、Firefox 等主流浏览器。\n* **双模录制与 Blob 抓取**： 支持 MSR / MSE 双模式媒体录制，轻松攻克常规手段无法下载的流媒体；完美支持复杂 Blob 图片的捕捉与导出。\n* **云端离线极速下载**： 彻底解决大文件或跨境资源下载卡顿问题！支持云端离线托管与通道加速，秒级抓取、随取随用。\n\n开源地址：[https://github.com/ezwebtools/flowpick](https://github.com/ezwebtools/flowpick)\n官方网站：[https://flowpick.net](https://flowpick.net)\n\n\n<table>\n  <tr>\n    <td width=\"33%\"><img src=\"https://github.com/user-attachments/assets/4a13f3bf-153a-46c6-891f-6e94ab0f5154\" width=\"100%\" /><br/><sub>资源预览 · 音视频动态预览</sub></td>\n    <td width=\"33%\"><img src=\"https://github.com/user-attachments/assets/93001fc2-1bab-4f72-80d5-1614cedfb25d\" width=\"100%\" /><br/><sub>双重录制 · 攻克无法下载难题</sub></td>\n    <td width=\"33%\"><img src=\"https://github.com/user-attachments/assets/e61dc660-b327-4339-8a65-2b9d3cda5f8b\" width=\"100%\" /><br/><sub>设置中心 · 自定义嗅探规则</sub></td>\n  </tr>\n  <tr>\n    <td width=\"33%\"><img src=\"https://github.com/user-attachments/assets/2f1c9175-2fe4-4a43-ad5d-9f13dbf2d772\" width=\"100%\" /><br/><sub>多分辨率 · 动态抓取多分辨率</sub></td>\n    <td width=\"33%\"><img src=\"https://github.com/user-attachments/assets/1eb6aa37-380e-489f-ac72-66017ce91e01\" width=\"100%\" /><br/><sub>多线程 · 支持自定义多线程下载</sub></td>\n    <td width=\"33%\"><img src=\"https://github.com/user-attachments/assets/4781a23a-3ae9-453f-8ff0-5b385a15c761\" width=\"100%\" /><br/><sub>离线处理 · 云离线下载托管</sub></td>\n  </tr>\n</table>",
+    "created_at": "2026-10-12T16:47:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12291"
+  },
+  {
+    "id": 12290,
+    "title": "【开源自荐】小篆输入法 —— 打拼音就出篆书的输入法，附三个古文字网页小工具",
+    "content": "## 小篆输入法\n\n**打拼音就出篆书的 macOS 输入法，另附 Windows / 安卓的 Rime 方案和三个在线小工具。**\n\n### 为什么做\n\n想写句篆书发朋友圈，得一个字一个字翻《说文》查篆形，找到还要自己拼图排版。\n查了三个字就放弃了，然后花了一个月做了个输入法。\n\n### 核心设计\n\n**上屏的是普通汉字，靠字体把它显示成篆形。**\n\n不是不想用篆书字符 —— 篆书在 Unicode 里是 U+3D000 往上的超 BMP 码位，\n没装字体的机器上全是豆腐块，复制给别人也看不了、搜不到。\n所以绕了一下：汉字上屏，字体换形。这样能复制、能搜索、换台电脑也不会变乱码。\n\n### 字形来源\n\n- 主体：开元小篆（11,081 个码位，SIL OFL，把《说文》公版刻本扫描描摹）\n- 补缺：台湾全字库说文解字（OGDL-Taiwan-1.0）\n\n### 三个在线小工具（纯 HTML，字体内嵌，双击即用）\n\n- **篆书卡片**：输入名字，出一张篆书卡片\n- **古文字抽象画**：六种「心境」对应六种画法（Brice Marden / 井上有一 / Pollock / 东巴文 / Rothko / 当代书象）\n- **古文字表情包**：六种语气的方形表情包\n\n### 链接\n\n- 输入法：https://github.com/Ivan666jjj/xiaozhuan-ime\n- 三个网页：https://github.com/Ivan666jjj/zhuanshu-tools\n\n代码 MIT，字体均为开源授权。",
+    "created_at": "2026-10-12T16:22:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12290"
+  },
+  {
+    "id": 12289,
+    "title": "【工具自荐】Liveify：实况照片制作、视频转 GIF 与视频截图",
+    "content": "阮老师好，我是 Liveify 的开发者，想自荐一个实况照片制作与转换工具。\n\n官网：https://videolivephoto.com/\niPhone App：https://apps.apple.com/us/app/liveify-live-photo-maker/id6780715489\n\n它解决的是「手里已有一段视频或 GIF，想把其中的瞬间保留为 iPhone 实况照片」的问题：在 iPhone App 中选取素材、裁剪片段、选择封面，制作并保存为 Live Photo。\n\n网页版也有几个可以单独使用的小工具：\n\n- 视频转 GIF：https://videolivephoto.com/video-to-gif\n- 视频截图：https://videolivephoto.com/video-to-photo\n- AI 照片动画：https://videolivephoto.com/photo-to-live-photo\n\n浏览器 GIF 与图片导出免费；AI 照片动画需要登录并消耗积分。iPhone App 免费下载，含可选订阅，具体额度与价格以 App 内显示为准。\n\n网页版的视频/GIF 转实况照片入口提供预览，真正创建并保存 Live Photo 需要在 iPhone App 中重新选择原始素材。AI 网页结果可下载为 .livp 文件，保存到相册还需要兼容的 iPhone 导入工具。\n\n适合希望从短视频中保留生活瞬间、制作 GIF 或提取视频画面的读者。如果适合周刊的工具栏目，欢迎考虑收录，谢谢！\n",
+    "created_at": "2026-10-12T16:19:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12289"
+  },
+  {
+    "id": 12288,
+    "title": "【自荐】Scam With Your Friends 非官方开源粉丝复刻网页版",
+    "content": "《Scam With Your Friends》的非官方开源粉丝复刻网页版（与官方开发者无关，正版见 Steam：https://store.steampowered.com/app/4954910/Scam_With_Your_Friends/ ）。浏览器打开就能和最多 3 位朋友联机，在 3D 办公室里接听 AI 来电者、完成每日指标。技术上用 React 19 + Three.js 渲染，Cloudflare Durable Objects 做每房间权威服务器，WebRTC 做语音，大模型扮演来电者。MIT 开源。\n\n- 代码：https://github.com/mrzh7/scam-with-your-friends-web\n- 试玩：https://scam.gamefun.world\n\n适合放在\"工具\"或\"资源\"栏目，也可作为\"用 Serverless 做实时联机游戏\"的案例。谢谢！\n",
+    "created_at": "2026-10-12T16:05:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12288"
+  },
+  {
     "id": 12287,
     "title": "【开源自荐】jev-chat-windows —— 聊天窗口旁挂的回复辅助：离线 OCR，先看懂对方",
     "content": "自荐一个开源小工具：jev-chat-windows\nhttps://github.com/jev-chat/jev-chat-windows\n\n它是一个挂在聊天窗口旁边的回复辅助：对聊天窗口截图，用本地离线 OCR 读屏上的对话，把文字交给 Jev 判断意图和情绪，给出 3 条候选回复，点一下填进输入框——发送永远由你自己按。\n\n技术上有两个我觉得还算有意思的点：\n\n1. 采集层完全不侵入聊天软件：按窗口 ID 截图（不是全屏），OCR 在本地离线完成，不注入、不 hook、不解密任何聊天数据库。判断层走 TypeSafe Jev，起草层接任意 OpenAI 兼容端点。\n2. 分发做成了\"下载即用\"：Releases 里有打包好的 exe（约 146 MB），普通用户不用装 Python；API key 只写 Windows 用户环境变量（注册表 HKCU\\Environment），不落任何文件，其余设置放在 exe 旁边的 config.json，整个文件夹拷走设置也跟着走。\n\nWindows 10 (1903+) / 11 可用，开源在 GitHub，exe 未签名（SmartScreen 会拦一下，介意可以自己打包）。\n\n适合聊天量大、想先看懂对方意图再回复的 Windows 用户，也欢迎研究离线 OCR + 窗口感知管线的同学看源码。\n",
@@ -744,61 +800,5 @@
     "created_at": "2026-10-09T11:07:26Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12182"
-  },
-  {
-    "id": 12181,
-    "title": "[开源自荐]最近爆火的维权哥的Openworbuddy",
-    "content": "OpenWorkBuddy\n跑在你自己电脑上的 AI 办公助理。\n交代一句话，它自己规划、动手、验收，把 PPT / Word / Excel / 网页落到你硬盘上。\n给你的是能打开的文件，不是一段聊天记录。\nhttps://github.com/CatCatUncle/openworkbuddy\n\n",
-    "created_at": "2026-10-09T10:23:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12181"
-  },
-  {
-    "id": 12180,
-    "title": "【开源自荐】Oil Find：苹果版的 Everything，按 ⇧⌘F 输入即出结果",
-    "content": "项目地址：https://github.com/oil-oil/oil-find\n\nOil Find 是 macOS 上的文件搜索工具，思路和 Windows 上的 Everything 一样：自己给磁盘上的文件名建一份内存索引，不依赖 Spotlight。按 ⇧⌘F，屏幕正中弹出搜索框，每打一个字，结果就跟着出来；文件新建、改名、删除，索引都会实时更新。\n\n- 快：文件名存放在一块连续的内存里，匹配交给 C 和 Apple 芯片的向量指令。85 万个文件时搜 readme 约 0.6 毫秒，整盘 750 万个文件约 8 毫秒。\n- 支持拼音首字母和全拼（输入 wd 能找到「文档」），也支持通配符、正则，以及按类型、大小、修改时间筛选。\n- 只读取文件名、大小和修改时间，索引只存在本机。\n\n免费开源（MIT），支持 Apple 芯片、macOS 14 及以上。另有付费的 Pro 版，可以搜外置硬盘（拔掉后也能搜）和图片里的文字。\n\n下载与介绍：https://find.oiloil.org\n\n![Oil Find](https://find.oiloil.org/assets/og/home.zh.png)\n\n![搜索面板](https://raw.githubusercontent.com/oil-oil/oil-find/main/assets/readme/search-zh-light.png)",
-    "created_at": "2026-10-09T09:36:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12180"
-  },
-  {
-    "id": 12179,
-    "title": "【开源自荐】ohmygame：世界第一款开源的 AI 游戏创作工具",
-    "content": "ohmygame 是一个开源的游戏 Agent 工具，让制作游戏变得更加简单。\nLLM、图片生成、3D模型统统集合，游戏画布、程序、策划与美术统统搞定。\n相比传统 Codex，它增加了 Agent 可控制的多画布，大幅度简化游戏工作流与提升工作效率。\n当然它不只是这些，更多欢迎来尝试...\n以及相比闭源的游戏创作工具，我相信它会拥有更多的可能！\n\n官方网站：https://ohmygame.ai\nGitHub 地址：https://github.com/WhiteTowerAI/ohmygame\n\n宣传片：\nhttps://github.com/user-attachments/assets/3c45f484-ad97-4699-a40c-5f59ea13dbff\n\n展示截图：\n\n<img width=\"2583\" height=\"1279\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7ec49419-d83d-434c-bb44-ddd496b77f3c\" />\n<img width=\"2429\" height=\"1279\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/aaf79e1e-cfdc-4da3-aff7-92b232e697c4\" />",
-    "created_at": "2026-10-09T08:48:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12179"
-  },
-  {
-    "id": 12178,
-    "title": "【开源自荐】Chorus：同时向多个 AI 提问，并排比较回答的 Mac 应用",
-    "content": "我做了 Chorus，一个免费开源的 Mac 应用。把同一个问题同时发给 ChatGPT、Claude、Gemini 等 AI，在一个窗口里并排比较回答，省去切换标签页、反复粘贴的问题。\n\n直接使用各网站的现有账号，这个流程不需要 API key。也支持用 @ 单独追问某个 AI、发送图片和快捷键提问。需要 macOS 13 或以上，支持 Apple silicon 和 Intel。\n\n官网与下载：https://askchorus.app/\n源码：https://github.com/askchorus/chorus （Swift，GPL-3.0）\n[37 秒演示](https://askchorus.app/chorus-promo.mp4?v=20261008)\n\n![Chorus 并排显示多个 AI 的回答](https://raw.githubusercontent.com/askchorus/chorus/main/docs/screenshot.png)\n",
-    "created_at": "2026-10-09T07:38:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12178"
-  },
-  {
-    "id": 12177,
-    "title": "【开源自荐】玉尺 Yuchi：给中文写作量呼吸的一把尺，文章与诗都能量",
-    "content": "## 快速使用\n\n**项目地址**：https://github.com/ZhongQuinnKing/yuchi\n**网页版（免安装）**：https://zhongquinnking.github.io/yuchi\n\n```bash\ngit clone https://github.com/ZhongQuinnKing/yuchi\npython3 yuchi.py 你的文章.txt          # 文章诊断\npython3 yuchi.py 你的诗.txt --poem     # 诗：平仄标注 + 韵脚\n```\n\n## 项目介绍\n\n玉尺是一个中文写作的诊断工具。它不查错别字，也不查语法，量的是更玄但更关键的东西——节奏。一段文字读起来顺不顺，很多时候不在用词，在句子的长短呼吸、连接词的分量、段落是推进还是平铺。\n\n玉尺把这些量成数：总分（附“约超过多少人类样本”的百分位）、逐层拆解（大句呼吸 / 句内呼吸 / 套话与虚词 / 段落参差）、问题指到具体句子并附改法。满分点不是拍脑袋定的，按真人语料 75 分位标定。\n\n诗另有一套体检。近体诗：逐字平仄标注、“连着四个仄声，念起来发紧”式的读感解释、偶句韵脚查对平水韵；词：818 个词牌逐字对谱、词林正韵查韵；对联：字数、平仄、对仗逐位校验——尺子只报数，判断留给你。\n\n三个入口同一套算法：命令行（Python 纯标准库，零依赖）、单文件网页、AI 技能包（十四篇写作教材，从节奏、结构、改稿流程到诗的呼吸、工具地图，装进 Claude、豆包等助手，AI 写中文时按它办）。\n\n## 几个落点\n\n- 写公众号、文案、报告：贴进去，它指出哪几句“平”了、哪个词是套话，改完复量一遍\n- 写诗：平仄标出来、韵脚查对韵部；“景到诗”引导从眼前的景走到一首诗，给起点不给终点\n- 用 AI 写东西：技能包装进助手，让它下笔时带着呼吸；写完再过一遍尺\n\n## 开源协议\n\n内容 CC BY-NC-ND 4.0（自用自改自由、商用需授权），代码 MIT；校准的验过什么、没验过什么，如实写在仓库 CHANGELOG 里。\n\n---\n\n同族四件：采诗（读）、夜诵（守）、拾级（陪）、玉尺（量）。\n",
-    "created_at": "2026-10-09T07:37:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12177"
-  },
-  {
-    "id": 12176,
-    "title": "【工具自荐】RapDuo：用两张照片生成双人说唱视频",
-    "content": "## RapDuo 简介\n\n[RapDuo](https://rapduo.app) 是一个在线 AI 视频工具。上传两张照片，它会让照片中的人物或宠物轮流说唱，生成带人声、伴奏和口型动画的短视频，无需拍摄或剪辑。\n\n## RapDuo 的主要功能\n\n上传两张正面、光线充足的照片后，可以选择橙色录音棚、街头、天台、霓虹俱乐部等九种场景，并输入一句主题，例如生日祝福或朋友间的玩笑。[Rap Duo AI](https://rapduo.app) 会据此生成视频，完成后可下载带声音的 MP4 文件。默认输出为 16:9；需要竖屏视频时，也可以在自定义选项中选择 9:16。\n\n## RapDuo 的核心特性\n\n- **双人轮流演唱**：两张照片分别对应左右两位表演者，各有自己的唱词；宠物照片也可以使用。\n- **按主题生成音乐**：除「Original」场景外，其余八种场景会为视频生成新的歌词和伴奏。「Original」场景使用原有歌曲，发布时需留意平台的音乐版权规则。\n- **可以先预览**：新用户登录后可免费生成一次 5 秒预览，再决定是否制作完整版。网站说明，生成失败不会扣除额度。\n\n项目地址：[https://rapduo.app](https://rapduo.app)",
-    "created_at": "2026-10-09T06:57:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12176"
-  },
-  {
-    "id": 12174,
-    "title": "【开源自荐】ParkerLabel：纯 CPU 运行的 AI 辅助图片标注工具",
-    "content": "我开源了一个图片标注工具 ParkerLabel，用于目标检测和实例分割。\n\n纯 CPU 运行，不需要显卡。基于 MobileSAM，通过正负点击生成目标掩膜，也可以手动修正。提供 macOS arm64 和 Windows x64 便携包，解压后运行，不用安装 Python 或配环境。\n\n标注保存在图片旁，包含每个实例的类别、边界框和掩膜，支持保存后继续编辑。界面支持中文等九种语言。\n\n项目：https://github.com/Parker-Lyu/ParkerLabel\n\n下载：https://github.com/Parker-Lyu/ParkerLabel/releases/tag/v1.0.0\n\n![操作演示](https://raw.githubusercontent.com/Parker-Lyu/ParkerLabel/main/docs/images/parkerlabel-ui-demo.gif)\n\n做视觉数据标注的朋友可以试试，有问题直接提 issue。\n",
-    "created_at": "2026-10-09T05:51:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12174"
   }
 ]
