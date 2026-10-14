@@ -1,8 +1,48 @@
 [
   {
+    "id": 12378,
+    "title": "【项目自荐】Rocuronium：给 AI 智能体一个独立的 Mac 桌面",
+    "content": "Rocuronium 为 AI 智能体提供独立的 macOS 登录会话和桌面，让你和智能体同时工作。辅助功能数据缺失时，本地视觉模型帮助定位控件；每次交互都会返回实际变化的证据。\n\n演示、下载与源码：https://github.com/kageroumado/rocuronium\n\n作者：Mado Kagerou / kageroumado",
+    "created_at": "2026-10-14T16:28:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12378"
+  },
+  {
+    "id": 12377,
+    "title": "【开源自荐】Codex Deck，轻松管理 Codex 多账号与额度",
+    "content": "我做了一个开源桌面工具 [Codex Deck](https://github.com/Sanjeever/codex-deck)，把 Codex CLI 多账号、额度和历史会话放在一个窗口里。一眼查看各账号剩余额度和恢复时间，快速切换账号，也能搜索、阅读本地历史会话。支持 macOS、Windows 和 Linux，提供后台额度刷新、低额度提醒与 WebDAV 备份，让日常使用 Codex 更省心。\n\n![Codex Deck 账号列表与额度](https://github.com/Sanjeever/codex-deck/raw/main/docs/screenshots/accounts.png)\n",
+    "created_at": "2026-10-14T15:53:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12377"
+  },
+  {
+    "id": 12376,
+    "title": "【开源网站自荐】Reze Design - 浏览器里的MMD动画设计、渲染和分享平台：上线两个半月，B 站 332 个作品、 10 万+点赞",
+    "content": "网址：https://reze.design\n源码：https://github.com/AmyangXYZ/reze-design\n引擎：https://github.com/AmyangXYZ/reze-engine （npm: reze-engine）\n\n![Reze Design](https://raw.githubusercontent.com/AmyangXYZ/reze-design/main/showcase.jpg)\n\nMMD（MikuMikuDance）发布于 2008 年，是基于 DirectX 9 的 Windows 桌面软件，至今仍是二次元舞蹈视频的主要制作工具。它需要本地安装，仅支持 Windows，画面效果依赖第三方 MME 插件。另一条路线是导入 Blender 渲染，画质上限更高，但学习门槛高，出片也慢。\n\nReze Design 在浏览器中重新实现了 MMD，并把它带到现代、面向未来的技术栈上：原生 WebGPU，不依赖 Three.js 等第三方框架；纯 TypeScript 实现 Bullet 物理；在线实时编辑渲染节点图；WGSL 特效系统。它兼容 PMX 模型与 VMD 动作，支持 IK、表情变形和头发衣物的刚体物理，打开网页即可使用，画面实时渲染，所见即所得。\n\n渲染方面，材质以节点图描述，编辑时实时编译为 WGSL，光照模型参照 Unity URP。深空之眼、鸣潮、绝区零、星穹铁道等游戏的画风已移植为节点图，可一键应用。渲染管线为全程 HDR，包含级联阴影、bloom、景深、HDRI 环境光与 ASC CDL 调色，并通过 GPU 视锥剔除与 render bundle 降低 CPU 开销。\n\n场景特效以 WGSL 编写，支持 GPU 粒子、骨骼拖尾和模拟网格，可读取骨骼运动、音频与歌词数据，也可向场景发射光源。粒子参与深度测试，因此能与角色正确遮挡。\n\n动画方面，编辑器提供时间轴与曲线编辑器，在视口中直接拖动骨骼即可打关键帧，结果保存为 VMD，可在任何 MMD 工具中使用。导入 .lrc 歌词可一键生成口型动画，支持日名、韩文、汉字、罗马音、拼音和英文。\n\n编辑器内置 AI 美术指导，可根据文字描述或参考图调整灯光、调色、镜头、着色器参数与特效，必要时生成新的 WGSL 特效和材质节点。AI 使用用户自己的 API Key，请求由浏览器直接发往服务商。\n\n所有渲染基于场景时钟，离线导出与实时预览逐帧一致，支持 4K 60 帧视频及透明通道输出。\n\n作品可以发布到场景画廊，获得一个永久链接。链接打开的是实时运行的 3D 场景，观众可以自由旋转视角观看，也可以一键复刻到自己的编辑器里继续创作。\n\n自七月底上线以来，已有 32 位 B 站创作者使用 Reze Design 发布了 332 个视频，累计播放 65 万次、点赞 10 万+。统计数据每日更新，公开于 https://reze.design/analysis/bilibili",
+    "created_at": "2026-10-14T15:14:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12376"
+  },
+  {
+    "id": 12375,
+    "title": "【开源自荐】MastraWork：把 Agent 运行组织成任务的开源桌面 AI 工作台",
+    "content": "**项目**：MastraWork　|　**地址**：https://github.com/movclantian/mastra-desktop\r\n**平台**：Windows / macOS / Linux　|　**许可**：Apache-2.0　|　**最新版本**：v0.0.7\r\n\r\n---\r\n\r\n### 它是什么\r\n\r\n一个**本地优先的开源桌面 AI 工作台**，底层是 [Mastra](https://mastra.ai) 框架 + Electron。\r\n\r\n它想解决的事情很具体：现在多数 AI 工具给你一段回答，事情就停在那儿；代码改到一半让它继续，它常常重新把文件读一遍，从接不上的地方往下编。前面聊过的上下文，像是没发生过。\r\n\r\nMastraWork 的做法是把一次 Agent 运行**组织成一个任务**。任务落在具体的工作区里，长在线程上，每一步都留下痕迹。它能暂停，能回头检查，也能交给团队里的其他成员接着看。断掉之后不是从头再来，而是接着往下走。\r\n\r\n它面向软件工程和知识工作：Agent、团队、工作区、终端、浏览器、MCP、技能和资料库收在同一个应用里，围着同一个任务转。\r\n\r\n![空态首页](https://raw.githubusercontent.com/movclantian/mastra-desktop/main/docs/image/%E7%A9%BA%E6%80%81%E9%A6%96%E9%A1%B5.png)\r\n![完整工作界面(打开右侧文件面板)](https://raw.githubusercontent.com/movclantian/mastra-desktop/main/docs/image/%E5%AE%8C%E6%95%B4%E5%B7%A5%E4%BD%9C%E7%95%8C%E9%9D%A2%28%E6%89%93%E5%BC%80%E5%8F%B3%E4%BE%A7%E6%96%87%E4%BB%B6%E9%9D%A2%E6%9D%BF%29.png)\r\n\r\n---\r\n\r\n### 功能详解\r\n\r\n**🧭 工程任务**\r\n读取代码、全局搜索、编辑与 AST 修改、运行命令、查看差异、调用 LSP 都在里面。关键是**读、写、执行分开授权**，每一步都有记录，不是开一个大权限就全放开。\r\n\r\n**🛡️ 受控执行**\r\n计划、构建、复查三种模式，切的是「Agent 现在能碰什么」。人工询问和批准留在流程里，高风险动作停下来等人确认，不靠模型自觉。\r\n\r\n**👥 Agent 团队**\r\n主 Agent 可以带一群专家成员，支持委派、交接、并行、分支、循环和审批工作流。复杂任务拆给合适的人，而不是一个 Agent 硬扛。\r\n\r\n![智能体团队创建](https://raw.githubusercontent.com/movclantian/mastra-desktop/main/docs/image/%E6%99%BA%E8%83%BD%E4%BD%93%E5%9B%A2%E9%98%9F%E5%88%9B%E5%BB%BA.png)\r\n![专家](https://raw.githubusercontent.com/movclantian/mastra-desktop/main/docs/image/%E4%B8%93%E5%AE%B6.png)\r\n![主代理构建task并委派子代理](https://raw.githubusercontent.com/movclantian/mastra-desktop/main/docs/image/%E4%B8%BB%E4%BB%A3%E7%90%86%E6%9E%84%E5%BB%BAtask%E5%B9%B6%E5%A7%94%E6%B4%BE%E5%AD%90%E4%BB%A3%E7%90%86.png)\r\n\r\n**🧩 开放扩展**\r\n模型 Provider、MCP Server、技能与插件、浏览器、资料库、记忆和网页检索，按需接入，**不绑定任何一家模型服务**。今天用这家，明天想换，配置改一下就行。\r\n\r\n**🖥️ 桌面集成**\r\nElectron 主进程、原生浏览器视图、PTY 终端、系统通知、凭据保险库。API Key、OAuth token 和 Cookie 由桌面主进程的凭据保险库保管。\r\n\r\n**📚 记忆与资料库**\r\n记忆跨会话保留；资料库统一收文档、表格和网页；用量、费用和历史数据随时可查。\r\n\r\n![浏览器自动化](https://raw.githubusercontent.com/movclantian/mastra-desktop/main/docs/image/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%87%AA%E5%8A%A8%E5%8C%96.png)\r\n![资料库](https://raw.githubusercontent.com/movclantian/mastra-desktop/main/docs/image/%E8%B5%84%E6%96%99%E5%BA%93.png)\r\n![用量与费用](https://raw.githubusercontent.com/movclantian/mastra-desktop/main/docs/image/%E7%94%A8%E9%87%8F%E4%B8%8E%E8%B4%B9%E7%94%A8.png)\r\n\r\n---\r\n\r\n### 一个任务是怎么走完的\r\n\r\n一个任务从开工到验收，Agent 手里的权限是变的，分三个阶段：\r\n\r\n1. **计划** —— 先把事情想清楚，读代码、查资料、出方案。\r\n2. **构建** —— 方案定了再动手，改代码、跑命令、推进任务，每一步都留下记录，随时可以停下来回头看。\r\n3. **复查** —— 对照差异和工作记录验收，高风险的操作在这一步需要人批准。\r\n\r\n读、编辑、执行和外部工具在三阶段各有一套策略，图的入口在应用内设置里，实际安全性以服务端权限检查和测试记录为准。\r\n\r\n---\r\n\r\n### 技术栈\r\n\r\n| 部分 | 选型 |\r\n| --- | --- |\r\n| 桌面外壳 | Electron 44、electron-vite、electron-builder |\r\n| 界面 | React 19、TypeScript、Tailwind CSS 4、CodeMirror 6、xterm |\r\n| Agent 框架 | Mastra 1.77（core、memory、rag、mcp、observability） |\r\n| 数据与检索 | libsql、DuckDB、fastembed 本地向量 |\r\n| 代码与文档 | Shiki 高亮、Mermaid、KaTeX、PDF 与 Office 解析 |\r\n| 工具链 | Biome、Knip、pnpm workspace |\r\n\r\n---\r\n\r\n### 快速开始\r\n\r\n三个平台都有现成安装包，也可以从源码跑（需要 Node.js `>=22.19.0 <23`、pnpm `12.11.2`）：\r\n\r\n```sh\r\ncorepack enable\r\ncorepack prepare pnpm@12.11.2 --activate\r\npnpm install --frozen-lockfile\r\npnpm dev\r\n```\r\n\r\n首次启动后配一个可用的模型 Provider、选一个工作区目录即可。需要网页检索、浏览器、MCP 或技能时，再按实际服务分别配置凭据。默认本地数据目录是 `~/.mastrawork`，Mastra 服务跑在本机 `4111` 端口。\r\n\r\n**下载**：https://github.com/movclantian/mastra-desktop/releases\r\n\r\n---\r\n\r\n### 关于「本地优先」\r\n\r\n需要说清楚一点：「本地优先」说的是桌面宿主、默认工作区和本地数据边界优先留在本机，**不表示所有推理都在本地完成**。模型推理走哪个服务由使用者自己配置，模型服务会收到你发过去的提示词和选定的上下文。\r\n\r\n---\r\n\r\n项目还在很早期（v0.0.7），用着顺手或者踩到坑，都欢迎来 Issues 说一声。\r\n",
+    "created_at": "2026-10-14T15:07:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12375"
+  },
+  {
+    "id": 12374,
+    "title": "为 README 增加往期周刊检索说明",
+    "content": "## 现状\n\n感谢持续维护这份周刊。README.md 的 `2026` 等年份章节按月份列出期号和标题，并链接到 `docs/issue-N.md`；例如目前的第 414 期链接到 `docs/issue-414.md`。这种按时间浏览很清楚，但当读者记得主题关键词、想从往期正文中找出处时，README 没有说明如何检索 `docs/` 中的文章。\n\n## 建议\n\n能否在 README.md 的往期目录附近增加一小段“检索往期内容”的说明，介绍使用 GitHub 代码搜索限定本仓库和 `docs/` 路径，并给一个可复制的关键词查询示例（例如 `repo:ruanyf/weekly path:docs/ 缓存`）？同时链接到 GitHub 代码搜索语法文档，并简要说明搜索入口/适用限制。这样不需引入额外服务或维护新的索引，也能帮助读者从已有的单期 Markdown 正文中找主题。\n\n## 参考\n\n- README.md：项目介绍与按年份组织的期刊目录：https://github.com/ruanyf/weekly/blob/master/README.md#2026\n- docs/issue-414.md：单期文章示例：https://github.com/ruanyf/weekly/blob/master/docs/issue-414.md；docs/：往期文章目录：https://github.com/ruanyf/weekly/tree/master/docs\n- GitHub 官方文档：Understanding GitHub code search syntax（repo: 与 path: 限定符）：https://docs.github.com/en/search-github/github-code-search/understanding-github-code-search-syntax",
+    "created_at": "2026-10-14T14:24:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12374"
+  },
+  {
     "id": 12373,
-    "title": "【文章自荐】为什么苹果每月付款和 App Store Connect 对不上：一个完整的对账示例",
-    "content": "链接：https://proceedsledger.noemacreate.org/guide/apple-payment-reconciliation?utm_source=ruanyf\n\n一篇英文长文，用具体数字解释苹果每月打款金额为什么很少和 App Store Connect 显示的销售额一致：苹果按财务月结算，每个地区按各自的汇率换算，低于付款门槛的地区余额会结转到以后的月份，部分地区会预扣税，退款也会另行扣除。文章最后给出一笔能和银行到账金额逐分对上的会计分录（Xero 或 QuickBooks Online）。适合自己记账的独立开发者。\n\n我是作者，这是自荐。文章末尾链接了我做的付费工具 Proceeds Ledger（在浏览器中运行，演示和核对免费）。\n",
+    "title": "Withdrawn",
+    "content": "Withdrawn.",
     "created_at": "2026-10-14T13:11:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12373"
@@ -76,7 +116,9 @@
     "title": "【开源自荐】Bulchimbeon：只在 AI 编程代理工作时阻止 Mac 休眠的菜单栏工具",
     "content": "https://github.com/s3onghyun/bulchimbeon\n\n![demo](https://raw.githubusercontent.com/s3onghyun/bulchimbeon/main/docs/media/demo.gif)\n\n一个 macOS 菜单栏工具：只在 Claude Code、Codex 等 AI 编程代理真正工作时阻止 Mac 休眠，活儿干完就自动\"换岗\"，让 Mac 正常睡眠。\n支持合盖保持唤醒（应用被强制退出也会在 5 秒内恢复休眠设置）、过热暂停并在降温后自动恢复、低电量撤岗。\n不安装 hook、守护进程或 root 辅助程序，macOS 13 起可用。MIT 开源，有中文 README。\n\n```bash\nbrew install --cask s3onghyun/tap/bulchimbeon\n```\n",
     "created_at": "2026-10-14T07:18:55Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/12364"
   },
   {
@@ -102,14 +144,6 @@
     "created_at": "2026-10-14T06:34:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12361"
-  },
-  {
-    "id": 12360,
-    "title": "【Tool Recommended】A new, 12-axis political compass tool for deeper ideological mapping",
-    "content": "Political quizzes often oversimplify complex views into a single \"Left vs. Right\" spectrum. For those looking for a more detailed understanding of where their priorities truly lie, [IdeologyTest.pro](https://www.ideologytest.pro/) offers a more nuanced approach.\nThis tool maps political and social perspectives across 12 independent axes, providing a comprehensive breakdown rather than a simple label.\nKey features include:\n12-Axis Analysis: Evaluates stances on diverse topics—from economic policy and social hierarchy to technology, ecology, and housing.\nDimensional Mapping: Moves beyond binary labels to visualize complex, overlapping viewpoints.\nPrivacy-Focused: No registration required. The analysis is computed entirely within the browser, ensuring user data remains private.\nFast & Accessible: The test takes roughly 6 minutes to complete and is fully responsive on both mobile and desktop.\nObjective Framework: Designed to help users visualize their specific affinities across a broad range of contemporary policy issues.\nPotential use cases:\nIdeological Self-Discovery: Useful for mapping out personal beliefs across a wide array of dimensions.\nPolicy Comparison: Helps connect individual views to broader, real-world policy frameworks.\nData Visualization: Provides a clear visual representation of complex, multi-dimensional viewpoints.\nThe tool is currently free to use. Feedback on the framework, the questioning style, or suggestions for additional axes is encouraged to help refine the tool's accuracy and depth.\nExplore the tool here: 👉 [[https://www.ideologytest.pro/](https://www.ideologytest.pro/)]",
-    "created_at": "2026-10-14T05:54:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12360"
   },
   {
     "id": 12359,
@@ -496,7 +530,7 @@
   {
     "id": 12309,
     "title": "【开源自荐】OpenSocrates：给 AI 的建议补上假设、反对理由和改判条件，现已支持简体中文",
-    "content": "推荐一个我开发的免费 MIT 开源项目 OpenSocrates。\n\n面对“这个功能应该自己开发，还是接入现成服务”之类的选择，我希望 AI 的回答不止给出一个推荐，还能把推荐所依赖的条件、最强的反对理由，以及什么证据会让它改变判断说清楚。OpenSocrates 为这类资料综合、方案比较和消息撰写提供 48 种完整的思考方法，每种都写明适用条件、完整步骤和需要检查的证据。\n\nv1.5.1 刚加入全部 48 种方法的简体中文、日文步骤与配套案例，连同英文、韩文共四种语言。源码和内容均可查看、修改，不需要单独注册 OpenSocrates 账号。\n\n一个可以按自己的任务填写的例子：\n\n“请使用 OpenSocrates 比较自建和采购两种方案。必须满足的条件是［实际条件］。请列出推荐的关键假设、最强反对理由和会让你改变推荐的证据；不要编造没有提供的数据。这次只做比较，不执行操作。”\n\n项目提供 Codex、Apple Silicon Mac 上的 Claude Code、Claude 账户技能 ZIP 和 Antigravity 的对应交付方式。各自的支持平台和启用步骤不同，中文 README 有完整说明。这里的语言支持是思考指令与参考内容的语言，不代表所有宿主界面或安装器消息都已翻译。\n\n项目地址：https://github.com/ParkerHwang/OpenSocrates\n简体中文介绍和安装：https://github.com/ParkerHwang/OpenSocrates/blob/v1.5.1/README.zh.md\n发布与下载：https://github.com/ParkerHwang/OpenSocrates/releases/tag/v1.5.1\n\n如果适合周刊的开源工具栏目，希望能推荐给读者，也欢迎指出文档和实际使用中需要改进的地方。\n\n披露：我是项目开发者，此次为自荐。投稿使用 AI 辅助整理，并与版本固定的公开资料核对。",
+    "content": "推荐一个我开发的免费 MIT 开源项目 OpenSocrates。\n\n面对“这个功能应该自己开发，还是接入现成服务”之类的选择，我希望 AI 的回答不止给出一个推荐，还能把推荐所依赖的条件、最强的反对理由，以及什么证据会让它改变判断说清楚。OpenSocrates 为这类资料综合、方案比较和消息撰写提供 48 种完整的思考方法，每种都写明适用条件、完整步骤和需要检查的证据。\n\nv1.5.1 刚加入全部 48 种方法的简体中文、日文步骤与配套案例，连同英文、韩文共四种语言。源码和内容均可查看、修改，不需要单独注册 OpenSocrates 账号。\n\n一个可以按自己的任务填写的例子：\n\n“请使用 OpenSocrates 比较自建和采购两种方案。必须满足的条件是［实际条件］。请列出推荐的关键假设、最强反对理由和会让你改变推荐的证据；不要编造没有提供的数据。这次只做比较，不执行操作。”\n\n项目提供 Codex、Apple Silicon Mac 上的 Claude Code、Claude 账户技能 ZIP 和 Antigravity 的对应交付方式。各自的支持平台和启用步骤不同，中文 README 有完整说明。这里的语言支持是思考指令与参考内容的语言，不代表所有宿主界面或安装器消息都已翻译。\n\n项目地址：https://github.com/ParkerHwang/OpenSocrates\n简体中文介绍和安装：https://github.com/ParkerHwang/OpenSocrates/blob/v1.5.1/README.zh.md\n发布与下载：https://github.com/ParkerHwang/OpenSocrates/releases/tag/v1.5.1\n\n如果适合周刊的开源工具栏目，希望能推荐给读者，也欢迎指出文档和实际使用中需要改进的地方。\n\n披露：我是项目开发者，此次为自荐。投稿使用 AI 辅助整理，并与版本固定的公开资料核对。\n\n### 2026-10-14 更新\n\nv1.5.2 已发布：全部 48 种方法的完整步骤和示例现覆盖包括简体中文在内的十种语言。这里指推理指令和参考内容的语言，不代表应用界面或安装器消息全部翻译。\n\n上文保留 v1.5.1 发布时的介绍与试用问题；本次更新不新增应用或操作系统支持，也没有新增模型实验或效果验证。\n\n- [v1.5.2 简体中文介绍与安装步骤](https://github.com/ParkerHwang/OpenSocrates/blob/v1.5.2/README.zh.md)\n- [v1.5.2 发布说明与下载](https://github.com/ParkerHwang/OpenSocrates/releases/tag/v1.5.2)",
     "created_at": "2026-10-13T04:09:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12309"
@@ -772,37 +806,5 @@
     "created_at": "2026-10-12T08:48:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12261"
-  },
-  {
-    "id": 12260,
-    "title": "【工具自荐】AI Genjutsu：通过参考图替换现有视频中的角色",
-    "content": "### 项目介绍\n\nAI Genjutsu 是一个基于浏览器的 AI 视频编辑工具，主要用于参考图驱动的角色替换：上传现有视频和角色参考图，描述要替换的人物，再生成编辑后的视频。源视频用于引导动作、节奏和镜头运动，参考图用于引导角色外观。\n\n官网：https://aigenjutsu.org/\n\n### 使用方式\n\n1. 上传已有的短视频。\n2. 添加角色参考图，描述需要替换的人物。\n3. 查看生成所需积分，确认后生成并预览、下载结果。\n\n适合探索同一段表演的不同角色形象、短视频角色创意和视觉概念。当前支持 4–30 秒的视频，具体文件要求在上传区列明。\n\n### 限制与收费\n\n- 视频生成需要付费积分，可单独购买积分，也提供订阅方案。\n- 原始动作和镜头运动作为生成指导，实际效果受到遮挡、快速运动、源视频质量和参考图的影响，不保证逐帧完全一致。\n- 请使用拥有使用权、并取得必要人物授权的素材。\n\n我是该项目的开发者，本帖为自荐。AI Genjutsu 是独立服务，与 Higgsfield 无隶属或背书关系。欢迎反馈上传流程、功能说明和使用体验。",
-    "created_at": "2026-10-12T08:33:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12260"
-  },
-  {
-    "id": 12259,
-    "title": "[自荐] PageFold：在浏览器里合并、拆分 PDF，文件不上传",
-    "content": "PageFold 是一个在线 PDF 工具：合并、拆分、旋转、压缩 PDF，图片转 PDF，添加页码和水印。\n所有文件只在浏览器里处理，不会上传到服务器，免注册即可使用。\n链接：https://pagefold.tooleek.com/zh/\n我是作者，网站免费、有广告。",
-    "created_at": "2026-10-12T08:14:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12259"
-  },
-  {
-    "id": 12258,
-    "title": "【vscode 插件自荐】JavaDoc Rendered View：在 VS Code / Cursor 里用 Eclipse 风格看 Javadoc",
-    "content": "## 项目地址\n\n- Marketplace：https://marketplace.visualstudio.com/items?itemName=liuhualiang.javadoc-rendered-view\n- Open VSX：https://open-vsx.org/extension/liuhualiang/javadoc-rendered-view\n\n## 一句话介绍\n\n在 VS Code / Cursor 里提供类似 Eclipse 的底部 **Javadoc** 面板：源码留在编辑器里读，当前光标处类 / 方法 / 字段的 `/** … */` 渲染到面板里；工程源码和 jar / jdt 依赖源都可用。可选通过 LLM 翻译成中文，原文与译文对照。\n\n## 为什么做\n\n从 Eclipse 转到 VS Code / Cursor 写 Java 时，最怀念的就是底部那个随光标刷新的 Javadoc 视图。悬停提示一闪而过、不够沉浸；打开完整 HTML 站点又太重。于是做了这个轻量面板：只渲染已有注释，不生成骨架，也不跑 JDK `javadoc` 导出站点。\n\n## 核心功能\n\n- **底部 Javadoc 面板**随光标刷新（默认 Panel，可拖到侧栏）\n- 渲染签名与 `@param`、`@return`、`@see`、`@since` 等标签\n- 解析 `{@code}`、`{@link}`、`{@linkplain}`、`{@literal}`、`{@value}` 及常见 HTML 实体\n- **链接可点击**：`{@link}` / `@see` 在编辑器内跳转，外链用系统浏览器打开\n- **明确支持 jar / jdt 依赖源**，不只是工作区文件\n- **可选 LLM 翻译**：任意 OpenAI 兼容接口（OpenAI、DeepSeek、通义兼容端、本地 Ollama 等），译文缓存，API Key 存 Secret Storage\n- 快捷键 `Ctrl+Alt+Q`，以及状态栏 / 标题栏入口\n\n## 快速开始\n\n1. 从 Marketplace 或 Open VSX 安装 **JavaDoc Rendered View**\n2. 打开任意 `.java`（工作区或 jar 附加源码均可）\n3. `Ctrl+Alt+Q` 打开面板，光标移到带 Javadoc 的成员上即可\n4. （可选）执行 `JavaDoc: Set Translation API Key`，在面板点「译此块」做中英对照\n\n欢迎试用和提意见。",
-    "created_at": "2026-10-12T07:03:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12258"
-  },
-  {
-    "id": 12257,
-    "title": "【网站自荐】MapMC：用现实地点生成可探索的 Minecraft 世界",
-    "content": "MapMC 是我们正在开发的 Minecraft 地图工具。玩家可以选择现实中的地点区域，生成相应的 Minecraft 地图，再在游戏里探索和建造，把地图探索与 Minecraft 创作结合起来。\n\n官网：https://mapmc.app/",
-    "created_at": "2026-10-12T04:40:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12257"
   }
 ]
