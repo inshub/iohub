@@ -1,5 +1,101 @@
 [
   {
+    "id": 12413,
+    "title": "[开源自荐] TokenFlow：统计 AI 编程用量，生成自动更新的 README／博客卡片",
+    "content": "大家好，我是 TokenFlow 的作者，想自荐一个面向 AI 编程用户的用量统计与展示工具。\n\n同时使用 Codex、Claude Code、Gemini CLI 等工具，又在几台电脑之间切换，用量记录往往很分散。TokenFlow 在本机读取 Agent 日志，按工具、模型和时间汇总 token 与估算费用，再把多设备统计放到同一个看板中。\n\n其中一个核心功能是生成自动更新的 AI 用量卡片。复制 Markdown 图片或 HTML 嵌入代码，就可以把用量总览、趋势或热力图放进 GitHub README、个人主页或博客。新增用量同步后，同一个卡片链接会呈现更新后的数据，省去手动截图和替换图片的过程，适合展示个人 AI 编程活动和使用习惯。\n\nTokenFlow 提供桌面端、CLI 和网页看板。桌面端可在菜单栏／系统托盘查看当天用量，未登录也能查看本地统计；需要多设备汇总时可以开启同步。提示词、回复正文、会话 ID 和源文件路径保留在本地，上传的是使用量元数据。未知价格的模型仍统计 token，并标记未计价。费用按模型定价估算，可用于观察使用趋势。\n\n- 项目主页：https://github.com/Renaissance-Mind/TokenFlow\n- GitHub：https://github.com/Renaissance-Mind/TokenFlow\n- 开源协议：[Apache-2.0](https://github.com/Renaissance-Mind/TokenFlow/blob/main/LICENSE)\n- CLI 安装：`npm install -g @renaissancemind/tokenflow`\n\n![TokenFlow 功能预览](https://raw.githubusercontent.com/Renaissance-Mind/TokenFlow/main/docs/assets/teaser_zh.png)",
+    "created_at": "2026-10-15T14:32:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12413"
+  },
+  {
+    "id": 12412,
+    "title": "[开源自荐] DrawAI：将 AI 生成图、论文图和截图重建为可编辑的 PPTX／SVG",
+    "content": "大家好，我是 DrawAI 的作者，想自荐一个让位图重新可编辑的工具。\n\nAI 生成的幻灯片、论文示意图或一张截图，往往只有一整张图片。改一句话、移动一个模块、换一条箭头，都需要重新生成或手工重画。DrawAI 尝试理解图中的文字、形状、布局与局部素材，再重建为 SVG 和 PPTX，便于在 PowerPoint 等工具中继续修改。\n\n导出的 PPTX 使用原生文字、形状和局部图片对象组织页面。它也支持在 Codex／Claude Code 会话中从需求制作演示文稿，或者通过浏览器工作台、CLI 处理已有图像。适合做科研插图、课程讲义和技术汇报。复杂纹理、照片等内容仍可能保留为图片素材，重建结果需要检查。\n\n源码以 Apache-2.0 发布；第三方模型、字体和外部服务遵循各自条款。\n\n- GitHub：https://github.com/Renaissance-Mind/DrawAI\n- 项目主页：https://github.com/Renaissance-Mind/DrawAI\n- 在线演示：https://drawai.renaissancemind.ai/demo\n- 论文：https://arxiv.org/abs/2608.00548\n\n演示视频：\n\nhttps://github.com/user-attachments/assets/bca69174-10d6-44c4-a73e-7b95e8eefde9",
+    "created_at": "2026-10-15T14:32:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12412"
+  },
+  {
+    "id": 12411,
+    "title": "【开源自荐】YN：面向长篇翻译的 AI Harness，实战测试达千万字规模",
+    "content": "大家好，自荐一个我开发的开源翻译工作台 YN Translation Workshop，主要面向长篇小说翻译与游戏本地化。\n\nYN 支持 TXT、EPUB 和横排文字层 PDF，把 AI 初翻、校对、原译文对照编辑、术语与角色管理放在同一个项目中。可以让 AI 起草，也可以自己翻译，只让 AI 检查指定内容，最后逐行审阅和修改。\n\n我重点打磨的是 YN Harness，也就是围绕 AI 翻译建立的一套任务约束、检查、修复和恢复机制。长篇翻译中，模型可能漏行、破坏控制符、混用译名，或在任务没做完时声称已经完成。YN 针对这些问题做了具体设计：\n\n1. 限定写入范围，强制检查结构\n程序分配互不重叠的行范围，限制模型修改的内容；提交时检查行数、空行、占位符、标签、控制码和自定义保留规则，校对建议也要通过结构检查。\n\n2. 独立复审，按问题行修复\n译文先进入暂存区，再由独立 AI 检查全部机械风险行和抽样普通行。发现问题后交回原翻译 Agent 精确修复，保留其他有效内容；修复停滞时停止并留下草稿和诊断。\n\n3. 管理跨章节的一致性\n术语表、角色称谓、代词和口吻作为项目资料复用，按当前文本命中情况提供给 AI。新发现的译名保留来源证据，冲突进入修复流程，避免多个 Agent 随意改写共享资料。\n\n4. 中断后核验再续跑\n分块草稿、任务范围和复审证据持久保存。恢复前核对文件内容与证据是否仍匹配，保留未变内容的有效检查结果，减少整篇重翻和重复审查。\n\n5. 由程序核验是否真正完成\n任务、待修复问题、产物和最终全文机械检查都满足条件后，流程才算结束，而不是仅凭模型一句“已完成”。\n\n实战中，最大测试规模已达 1000 万字、54 万多行。围绕这类大量文本的持续处理，YN 做了分块调度、状态持久化、精确修复和断点恢复等稳定性设计。\n\n机械检查负责可明确验证的结构约束；含义、文风和语境仍需要 AI 复审与人工判断。工作台保留逐行编辑以及接受、拒绝校对建议的入口，方便译者掌握最终成稿。\n\n项目采用 MIT 协议，提供 Windows x64 安装版和便携版。AI 功能需自行配置模型供应商，相关文本会发送给所选供应商。\n\n项目：https://github.com/TohmaN233/YN-translation-workshop\n下载：https://github.com/TohmaN233/YN-translation-workshop/releases\n手册：https://tohman233.github.io/YN-translation-workshop/",
+    "created_at": "2026-10-15T14:22:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12411"
+  },
+  {
+    "id": 12410,
+    "title": "【开源/网站自荐】The 12 Axes：免登录、零追踪的十二维度政治自我反思测验（纯前端与多语言实现）",
+    "content": "### 项目名称\nThe 12 Axes (十二轴政治倾向自我反思工具)\n\n### 官网地址 / 在线体验\n- 官网直达：https://12axes.site/\n- 测验方法论与坐标计算说明：https://12axes.site/method\n- 西班牙语版：https://12axes.site/es/\n- 葡萄牙语版：https://12axes.site/pt/\n\n### 项目简介\n传统的左右政治光谱（1D）或二维政治罗盘（2D）往往把很多并不相关的政治观念生硬地压缩在一起。\nThe 12 Axes 是一个完全运行在浏览器客户端本地的现代政治态度多维量化测试工具：\n\n1. **十二个独立正交维度**：涵盖政府形态（联邦/集权、民主/威权、安全/自由）、对外事务（国际/国家、军事/和平、保护/全球）、经济机制（平等/市场、计划/自由放任）、社会文化（世俗/宗教、进步/传统、同化/多元、科技/生物保守）。\n2. **纯前端架构，隐私优先**：无需注册登录，无后端数据库，所有题目答案与测试进度全部仅保存在访问者本地浏览器中，绝不收集或上传用户的任何政治观点。\n3. **向量距离匹配算法**：自动计算与 41 种现代意识形态和 42 位历史先贤（林肯、甘地、丘吉尔、亚当·斯密、马克思、曼德拉等）的多维空间距离，并支持一键生成 9:16 移动端结果分享卡片。\n4. **技术栈**：基于 React 19、TanStack Start、Tailwind CSS 构建，全站部署于 Cloudflare Workers 边缘网络，极速加载与原生国际化支持。\n",
+    "created_at": "2026-10-15T14:07:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12410"
+  },
+  {
+    "id": 12409,
+    "title": "【资源自荐】awesome-uncensored-ai：大模型「去除拒答」（abliteration）的中文入门与横评",
+    "content": "项目地址：https://github.com/sichang-ai/awesome-uncensored-ai\n\n一份中文资料，讲清楚大模型的「拒答」是怎么训练出来的，以及怎么把它去掉：\n\n- **原理**：拒答由模型激活空间里一个固定的方向控制。abliteration（定向消融）把这个方向从权重里正交掉，模型就不再拒绝，而能力基本不受影响。\n- **前沿实测**：整理了 Anthropic 9 月报告的数据：GLM-5.3 经过处理后拒答率从 90% 以上降到 2%～3%，GPQA 得分不变，成本约 1,200～4,400 美元。也整理了这件事的另一面：7 月 Hugging Face 应对 AI agent 入侵时，前沿模型因为安全护栏拒绝做逆向分析，最后靠自己部署的开源 GLM 完成。\n- **工具与部署**：Heretic 等自动化工具怎么用，以及现成的去拒答权重、显存与量化怎么选。\n- **平台横评**：对话、图像、视频、语音各类平台的内容政策与价格，每条事实都附官方来源。\n\n不收录越狱提示词，也不收录针对真实个人的换脸或声音克隆服务；文中列出了所有平台共同的红线，比如涉及未成年人的内容。\n\n利益披露：维护者是思畅 AI 团队，思畅本身也在横评之列，优点缺点照写。\n",
+    "created_at": "2026-10-15T13:45:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12409"
+  },
+  {
+    "id": 12408,
+    "title": "【工具自荐】TaskbarLyrics：在任务栏显示音乐歌词",
+    "content": "https://github.com/ANYNC/TaskbarLyrics\n在任务栏显示歌词\n当前已支持自动识别网易云音乐，QQ音乐，spotify\n\n<img width=\"688\" height=\"292\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/94341963-ffe7-49ba-bb81-93a41e6566ae\" />",
+    "created_at": "2026-10-15T11:57:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12408"
+  },
+  {
+    "id": 12407,
+    "title": "【自荐】TheKronometre —— 免费、无广告、无需注册的在线秒表（支持计圈与 CSV 导出）",
+    "content": "网址：https://thekronometre.com\n\n简介：\nTheKronometre 是一个纯浏览器端的在线秒表工具，打开即用，无需下载 App、无需注册、没有广告。适合训练计时、课堂/演示、日常专注等场景。\n\n特点：\n- 10 毫秒显示精度，并有专门页面说明网页计时的精度与局限\n- 不限次数计圈，自动标出最快/最慢圈，显示分段与圈差\n- 一键导出 CSV，可直接用 Excel / Google Sheets 打开\n- 全键盘操作：空格 开始/暂停，L 计圈，R 重置，F 全屏，M 静音\n- 全屏模式，适合投屏和教练使用\n- 数据只保存在本地浏览器，不上传服务器\n- 另有倒计时、番茄钟（Pomodoro）、运动秒表等页面\n- 支持 18 种语言，手机和电脑都能用，可添加到主屏幕\n\n截图：\n（在这里拖入 1–2 张截图：主界面 + 计圈/导出界面）\n\n<img width=\"1535\" height=\"707\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/14b42eb5-946d-42ed-bc2e-3b0f8a2b6ffe\" />",
+    "created_at": "2026-10-15T10:38:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12407"
+  },
+  {
+    "id": 12406,
+    "title": "[开源自荐] Open Typora：直接编辑正文的 Markdown 编辑器，提供 macOS / Windows 安装包",
+    "content": "### 项目介绍\n\n项目地址：https://github.com/AniChikage/open-typora\n\n我是项目作者，自荐一个 MIT 许可的桌面 Markdown 编辑器。Open Typora 支持直接修改排版后的正文，需要时切换完整源码；文档仍是自己文件夹中的普通 `.md` 文件，使用无需账号。受 Typora 的编辑体验启发，独立实现，与 Typora 官方无关联。\n\n### 可以直接试用\n\n- 即时编辑标题、列表、任务、表格和代码，支持 MathJax 公式与 Mermaid。\n- 本地文件树、文件夹搜索、快速打开、自动保存和恢复，以及外部修改冲突检测。\n- 内置 HTML/PDF 导出；其他文档格式通过可选的 Pandoc 转换。\n- 0.5.2 提供 macOS 14+ Apple Silicon 的 DMG，以及 Windows 10/11 x64 的 EXE 安装包。\n\n[下载与校验文件](https://github.com/AniChikage/open-typora/releases/tag/v0.5.2) · [项目介绍与实际操作](https://github.com/AniChikage/open-typora/blob/main/docs/introducing-open-typora.zh-CN.md)\n\n### 实际操作演示\n\n![Open Typora editing, tasks, table, source view, saving and PDF export](https://raw.githubusercontent.com/AniChikage/open-typora/main/docs/images/editing-demo.gif)\n\n演示来自 0.5.2 macOS 安装版的实际窗口，按步骤整理为动图，播放时长不代表操作耗时。[对应 Markdown](https://github.com/AniChikage/open-typora/blob/main/examples/clear-page.md)和[导出 PDF](https://github.com/AniChikage/open-typora/blob/main/examples/clear-page.pdf)可直接查看。\n\n### 当前边界\n\n目前是早期预览版，界面为简体中文，尚未与 Typora 完整对齐。Windows 输入法候选交互仍缺人工验收，旧 DOC/RTF 导入等也有限制。Windows 包暂无代码签名证书，macOS 包尚未经过 Apple 公证。\n\n[完整功能清单与已知差异](https://github.com/AniChikage/open-typora/blob/main/docs/feature-parity.md)。欢迎试用并反馈可复现的编辑、输入法和文件兼容问题。",
+    "created_at": "2026-10-15T10:14:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12406"
+  },
+  {
+    "id": 12405,
+    "title": "【开源自荐】rocksgraph：一个可替代neo4j的图数据库",
+    "content": "**项目地址**\nhttps://github.com/ljcui/rocksgraph\n\n**项目简介**\n一款跟neo4j 类似的图数据库，实现opencypher查询语言，兼容neo4j的客户端，支持多图、数据多副本等neo4j商业版才有的功能。",
+    "created_at": "2026-10-15T09:40:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12405"
+  },
+  {
+    "id": 12404,
+    "title": "【开源自荐】Mixdog：同样的结果少用 63% 的 token，让 Claude/ChatGPT 订阅额度用得更久",
+    "content": "我做了一个开源的桌面编程智能体 [Mixdog](https://github.com/tribgames/mixdog)，重点是把上下文管好，让已有的 Claude、ChatGPT、Grok 订阅额度用得更久。在 Terminal-Bench 2.1 上（89 个任务各跑 5 次，同一个模型 GPT-5.6 Sol xhigh，官方 Harbor 验证器打分），成功率和 Codex CLI 持平，token 少用 63%，89 个任务里有 87 个更省。所有日志和脚本都放在仓库里，可以自己复查。\n\n用法上，主模型负责规划，便宜的模型并行做搜索、修改和审查；一个 150MB 的本地小模型在 CPU 上大约 0.1 秒判断每一步该用多大的推理强度。可以直接登录已有订阅，也支持 API key 和本地模型。有 Windows、macOS、Linux 桌面版，也可以 `npm i -g mixdog` 在终端里用，Apache-2.0 协议。\n\n![Mixdog 与 Codex CLI 在 Terminal-Bench 2.1 上的对比](https://raw.githubusercontent.com/tribgames/mixdog/main/design/promo/tb21-sol-vs-codex-light.svg)\n",
+    "created_at": "2026-10-15T09:38:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12404"
+  },
+  {
+    "id": 12403,
+    "title": "【工具自荐】Burning Bridges AI：照片生成派对音乐短视频工具",
+    "content": "给大家推荐一个我最近看到的工具：Burning Bridges AI。它主要是把一张照片做成带有派对场景和音乐的短视频，上传自己、朋友、宠物或虚构角色的照片，选好场景和画面设置，再写一小段描述，就可以开始生成。\n\n生成后可以先预览，再下载成片。网站支持选择模型、分辨率和视频时长，也有适合短视频平台的竖屏比例。整体上手比较简单，不需要自己拍摄视频，也不用另外打开剪辑软件。\n\n它采用一次性购买积分包的方式，不是订阅制，价格从 9.90 美元起。具体能生成多少条视频，会根据选择的模型、画质和时长变化，实际价格和额度可以到官网查看。\n\n官网：https://burning-bridges.net/\n\n如果你平时喜欢做有趣的短视频，或者想把一张照片做成更有戏剧感的内容，可以去官网试试看。\n",
+    "created_at": "2026-10-15T09:14:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12403"
+  },
+  {
+    "id": 12402,
+    "title": "【工具自荐】大鹏书法：免费查书法字形、看原帖，支持临帖和集字",
+    "content": "我是大鹏书法的开发者，也是一个书法爱好者。以前用书法工具，常遇到广告多、部分功能收费、想查的字找不到的问题，就想自己做一个用着顺手的。\n\n我最看重的是查到一个字以后，还能找到它在原帖里的位置。单字可以看笔画和结构，放回原帖，还能对照前后字的大小、疏密和行气。\n\n目前可以：\n\n- 输入单字或多字，按书体、书家筛选书法字形。\n- 从字形查看对应的碑帖原页，也可以按页浏览碑帖。\n- 在微信小程序里临帖、集字；喜欢的字形和碑帖可以登录后收藏。\n\n目前这些功能全部免费，碑帖和字形资料还在持续补充。如果遇到缺字、出处有疑问，或操作不顺手，欢迎反馈。\n\n字典网页版：https://zidian.dapengshufa.com/\n\n官网：https://www.dapengshufa.com/\n\n微信搜索「大鹏书法字典」「大鹏书法集字」。\n\n以下是小程序的实际界面：\n\n<img width=\"300\" alt=\"大鹏书法字典小程序界面\" src=\"https://github.com/user-attachments/assets/6a4fdb8a-e9f9-4d3d-b66f-2e6ed7b767a6\" />\n<img width=\"300\" alt=\"大鹏书法集字小程序界面\" src=\"https://github.com/user-attachments/assets/53ea0c23-b754-4cd0-adee-366a52207ada\" />",
+    "created_at": "2026-10-15T09:04:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12402"
+  },
+  {
     "id": 12401,
     "title": "【开源自荐】Iven Pet：陪你工作与摸鱼的 3D 绒质桌宠",
     "content": "### 项目地址\n\nhttps://github.com/IvenKooLab/desktop-pet\n\n### 项目简介\n\n我做了一只可以独立运行在 macOS / Windows 上的 3D 绒质桌宠，名字叫 Iven，也是我们的第一个原创 IP 角色。她戴着青蓝耳机、抱着场记板，会在桌面小跳漫游，自动挥手、打板、伸懒腰、打瞌睡、玩魔方，也能点击互动、拖拽和睡觉。\n\n除了陪伴，还提供 DSH、ZCode 的本地适配器：助手工作、等待权限确认或结束本轮时，桌宠通过动作和气泡提醒。多个来源可自动跟随，也可指定一个；不需要额外调用模型。中英文菜单可以即时切换。\n\n桌宠自身无需账号或模型 API。macOS 使用原生 AppKit 透明窗口，首次从源码运行需要 Apple 命令行工具；Windows 源码运行需要 Python 3.8+ 和 tkinter。\n\n接入范围说明：Claude Code、Cursor、OpenCode 已有适配代码，但仍待实机验证；当前无法跟随正在使用的 Codex 桌面会话。\n\n### 演示\n\n![Iven 挥手、弹跳、打板](https://raw.githubusercontent.com/IvenKooLab/desktop-pet/main/docs/previews/reactions.gif)\n\n![伸懒腰、打瞌睡、玩魔方](https://raw.githubusercontent.com/IvenKooLab/desktop-pet/main/docs/previews/little-breaks.gif)\n\n### 开源协议\n\n代码采用 MIT。项目 README 提供平台差异、运行方式和各适配器说明。\n",
@@ -550,7 +646,7 @@
   {
     "id": 12331,
     "title": "【开源自荐】VideoPrinterTurbo：下载即用的 AI 视频字幕翻译、重新配音与素材替换工具",
-    "content": "### 项目名称\n\nVideoPrinterTurbo\n\n### 项目地址\n\nhttps://github.com/leftatrium2/VideoPrinterTurbo\n\n*** 新发布 1.0.1 版本，增加批量下载功能，最大100个Url，IDM平替 ***\n\n### 项目简介\n\n大家好，我是 VideoPrinterTurbo 的开发者，希望自荐这个项目，供「AI 工具」分类收录参考。\n\nVideoPrinterTurbo 是一款免费开源、本机运行的视频处理工具，将视频下载、语音识别、字幕翻译与改写、AI 配音和素材替换整合到同一个可视化操作流程中。\n\n例如，对于自己制作或获得授权的视频，可以通过「下载 → 识别原文 → 翻译字幕 → 生成新配音 → 合成视频」的流程，制作其他语言的版本。\n\n### 主要功能\n\n- **视频下载**：基于 yt-dlp，支持大量视频网站，支持 HTTP / SOCKS5 代理。\n- **语音识别**：支持本地 Whisper、远程 Whisper 和云端 ASR 服务。\n- **字幕翻译与改写**：通过 OpenAI 兼容的 LLM 服务翻译或改写字幕内容。\n- **AI 重新配音**：通过 TTS 将处理后的字幕转为语音，并合成到输出视频中。\n- **视频素材替换**：支持按关键词搜索 Pexels、Pixabay 素材，替换原视频画面。\n- **任务管理**：通过界面创建、编辑任务，查看处理状态和本地输出路径。\n\n### 使用方式与特点\n\n- 免费开源，应用在自己的电脑上运行。\n- 提供 Windows x64 和 macOS Apple Silicon 运行包。\n- 无需单独安装 Python、Node.js 等开发环境，下载后即可启动。\n- 可以仅用于视频下载，也可以按需要配置 ASR、LLM、TTS，使用完整的 AI 处理流程。\n- 支持本地语音识别；软件本身免费，选择第三方 AI 服务时可能产生 API 费用。\n\n### 下载体验\n\nhttps://github.com/leftatrium2/VideoPrinterTurbo/releases/tag/v1.0.1\n\n项目 README 提供配置教程、操作截图及视频效果演示。\n\n### 建议收录简述\n\n[VideoPrinterTurbo](https://github.com/leftatrium2/VideoPrinterTurbo)：一款免费开源的 AI 视频处理工具，集成基于 yt-dlp 的视频下载、Whisper 语音识别、LLM 字幕翻译与改写、TTS 配音及素材替换功能，提供 Windows 和 macOS 运行包，无需配置开发环境，下载即可启动。\n\n欢迎试用和反馈，感谢维护者的审核与分享！\n\n### 使用须知与法律风险\n\nVideoPrinterTurbo 仅提供视频处理与辅助创作功能，不授予任何第三方内容的使用权。\n\n- **版权与授权**：下载、翻译、改写、重新配音或替换画面前，请确认拥有相应权利或已取得必要授权。视频可以公开观看，并不代表可以自由下载、修改或再次发布；注明来源、非商业使用或二次创作，也不当然免除侵权责任。\n- **平台与素材规则**：请遵守视频来源平台的服务条款，以及 Pexels、Pixabay 等素材平台的具体许可条件。工具具备下载能力，不代表平台允许该下载行为。\n- **隐私与第三方服务**：使用云端 ASR、LLM 或 TTS 时，相关音频、字幕等内容可能发送至所选服务商，请确认有权提供这些数据，并了解其隐私政策与数据处理条款。\n- **AI 输出审核**：翻译、改写和配音可能出现错误，请在使用或发布前审核，避免误导性内容及对他人权益的侵害。\n\n自动发布功能目前保持禁用。请在合法、获得授权的范围内使用本项目；本说明不排除或限制开发者及提供方依法不得免除的责任。\n",
+    "content": "### 项目名称\n\nVideoPrinterTurbo\n\n### 项目地址\n\nhttps://github.com/leftatrium2/VideoPrinterTurbo\n\n*** 新发布 1.0.1 版本，增加批量下载功能，最大100个Url，IDM平替 ***\n\n### 项目简介\n\n大家好，我是 VideoPrinterTurbo 的开发者，希望自荐这个项目，供「AI 工具」分类收录参考。\n\nVideoPrinterTurbo 是一款免费开源、本机运行的视频处理工具，将视频下载、语音识别、字幕翻译与改写、AI 配音和素材替换整合到同一个可视化操作流程中。\n\n例如，对于自己制作或获得授权的视频，可以通过「下载 → 识别原文 → 翻译字幕 → 生成新配音 → 合成视频」的流程，制作其他语言的版本。\n\n### 主要功能\n\n- **视频下载**：基于 yt-dlp，支持大量视频网站，支持 HTTP / SOCKS5 代理。\n- **语音识别**：支持本地 Whisper、远程 Whisper 和云端 ASR 服务。\n- **字幕翻译与改写**：通过 OpenAI 兼容的 LLM 服务翻译或改写字幕内容。\n- **AI 重新配音**：通过 TTS 将处理后的字幕转为语音，并合成到输出视频中。\n- **视频素材替换**：支持按关键词搜索 Pexels、Pixabay 素材，替换原视频画面。\n- **任务管理**：通过界面创建、编辑任务，查看处理状态和本地输出路径。\n\n### 使用方式与特点\n\n- 免费开源，应用在自己的电脑上运行。\n- 提供 Windows x64 和 macOS Apple Silicon 运行包。\n- 无需单独安装 Python、Node.js 等开发环境，下载后即可启动。\n- 可以仅用于视频下载，也可以按需要配置 ASR、LLM、TTS，使用完整的 AI 处理流程。\n- 支持本地语音识别；软件本身免费，选择第三方 AI 服务时可能产生 API 费用。\n\n### 下载体验\n\nhttps://github.com/leftatrium2/VideoPrinterTurbo/releases/tag/v1.0.2\n\n项目 README 提供配置教程、操作截图及视频效果演示。\n\n### 建议收录简述\n\n[VideoPrinterTurbo](https://github.com/leftatrium2/VideoPrinterTurbo)：一款免费开源的 AI 视频处理工具，集成基于 yt-dlp 的视频下载、Whisper 语音识别、LLM 字幕翻译与改写、TTS 配音及素材替换功能，提供 Windows 和 macOS 运行包，无需配置开发环境，下载即可启动。\n\n欢迎试用和反馈，感谢维护者的审核与分享！\n\n### 使用须知与法律风险\n\nVideoPrinterTurbo 仅提供视频处理与辅助创作功能，不授予任何第三方内容的使用权。\n\n- **版权与授权**：下载、翻译、改写、重新配音或替换画面前，请确认拥有相应权利或已取得必要授权。视频可以公开观看，并不代表可以自由下载、修改或再次发布；注明来源、非商业使用或二次创作，也可能需要承担侵权责任。\n- **平台与素材规则**：请遵守视频来源平台的服务条款，以及 Pexels、Pixabay 等素材平台的具体许可条件。工具具备下载能力，不代表平台允许该下载行为。\n- **隐私与第三方服务**：使用云端 ASR、LLM 或 TTS 时，相关音频、字幕等内容可能发送至所选服务商，请确认有权提供这些数据，并了解其隐私政策与数据处理条款。\n- **AI 输出审核**：翻译、改写和配音可能出现错误，请在使用或发布前审核，避免误导性内容及对他人权益的侵害。\n\n自动发布功能目前保持禁用。请在合法、获得授权的范围内使用本项目；本说明不排除或限制开发者及提供方依法不得免除的责任。\n\n### 示例代码\n\n```markdown\n\n```\n\n### 截图或演示视频\n\n#### 原视频：\n\n[![Watch the demo](doc/thumbnails.webp)](https://www.youtube.com/watch?v=E7YiKBeOneo&t=1s)\n\n#### 增加翻译字幕后：\n\n[![Watch the demo](doc/thumbnails.webp)](https://www.youtube.com/watch?v=AiSW3_SyaKs)\n\n#### 增加翻译字幕并重新配音：\n[![Watch the demo](doc/thumbnails.webp)](https://www.youtube.com/watch?v=08dmRF8JVaI)\n\n#### 增加翻译字幕、重新配音并修改视频：\n[![Watch the demo](doc/thumbnails_2.webp)](https://www.youtube.com/watch?v=321RVhF8ok8)",
     "created_at": "2026-10-13T11:54:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12331"
@@ -710,101 +806,5 @@
     "created_at": "2026-10-13T04:34:10Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12310"
-  },
-  {
-    "id": 12309,
-    "title": "【开源自荐】OpenSocrates：给 AI 的建议补上假设、反对理由和改判条件，现已支持简体中文",
-    "content": "推荐一个我开发的免费 MIT 开源项目 OpenSocrates。\n\n面对“这个功能应该自己开发，还是接入现成服务”之类的选择，我希望 AI 的回答不止给出一个推荐，还能把推荐所依赖的条件、最强的反对理由，以及什么证据会让它改变判断说清楚。OpenSocrates 为这类资料综合、方案比较和消息撰写提供 48 种完整的思考方法，每种都写明适用条件、完整步骤和需要检查的证据。\n\nv1.5.1 刚加入全部 48 种方法的简体中文、日文步骤与配套案例，连同英文、韩文共四种语言。源码和内容均可查看、修改，不需要单独注册 OpenSocrates 账号。\n\n一个可以按自己的任务填写的例子：\n\n“请使用 OpenSocrates 比较自建和采购两种方案。必须满足的条件是［实际条件］。请列出推荐的关键假设、最强反对理由和会让你改变推荐的证据；不要编造没有提供的数据。这次只做比较，不执行操作。”\n\n项目提供 Codex、Apple Silicon Mac 上的 Claude Code、Claude 账户技能 ZIP 和 Antigravity 的对应交付方式。各自的支持平台和启用步骤不同，中文 README 有完整说明。这里的语言支持是思考指令与参考内容的语言，不代表所有宿主界面或安装器消息都已翻译。\n\n项目地址：https://github.com/ParkerHwang/OpenSocrates\n简体中文介绍和安装：https://github.com/ParkerHwang/OpenSocrates/blob/v1.5.1/README.zh.md\n发布与下载：https://github.com/ParkerHwang/OpenSocrates/releases/tag/v1.5.1\n\n如果适合周刊的开源工具栏目，希望能推荐给读者，也欢迎指出文档和实际使用中需要改进的地方。\n\n披露：我是项目开发者，此次为自荐。投稿使用 AI 辅助整理，并与版本固定的公开资料核对。\n\n### 2026-10-14 更新\n\nv1.5.2 已发布：全部 48 种方法的完整步骤和示例现覆盖包括简体中文在内的十种语言。这里指推理指令和参考内容的语言，不代表应用界面或安装器消息全部翻译。\n\n上文保留 v1.5.1 发布时的介绍与试用问题；本次更新不新增应用或操作系统支持，也没有新增模型实验或效果验证。\n\n- [v1.5.2 简体中文介绍与安装步骤](https://github.com/ParkerHwang/OpenSocrates/blob/v1.5.2/README.zh.md)\n- [v1.5.2 发布说明与下载](https://github.com/ParkerHwang/OpenSocrates/releases/tag/v1.5.2)",
-    "created_at": "2026-10-13T04:09:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12309"
-  },
-  {
-    "id": 12306,
-    "title": "【开源自荐】memnest：让编程 AI 在新会话里找回以前做过的事和原因",
-    "content": "项目地址：\nhttps://github.com/Blue-B/memnest\n\n这是一个给编程 AI 用的本地记忆服务，用来在新会话里找回以前做过的事，以及当时为什么这样决定。\n\n我做它的原因：我平时用 Claude Code、Codex、pi 这类工具写代码，从以前用 Droid CLI 的时候开始，就经常想问 AI“之前那个设置为什么改了？”“上次遇到这个错误是怎么处理的？”。但会话一换，AI 就不记得了，自己去翻旧的对话记录也很费时间。\n\nmemnest 会把编程 AI 的对话文本和明确保存的决定存在本机。连接的 AI 可以在新会话里搜索这些记录，读取原文后再回答。搜索结果带记录 ID，可以回头核对依据。\n\n主要功能：\n\n1. 支持 Claude Code、Codex、pi，以及其他 MCP 客户端，多个工具可以共用同一份记录。\n2. 存储和搜索都在本地：SQLite 保存原文，用 BM25 加本地多语言向量模型检索。默认的存储和检索不调用生成式大模型。\n3. 决定变了，可以用新记录替代旧记录，旧记录仍然保留。\n4. 安装以前的对话不会自动全部导入，可以选择需要的对话文件导入。\n\n使用前需要知道：首次使用会下载约 1.1GB 的向量模型；目前提供 Linux x86_64 和 Arm64 预编译包，macOS 只能从源码构建。它是检索工具，可能漏掉相关记录，也不能判断旧决定现在是否仍然正确。\n\n实际查询示例（把真实请求结果整理成图片，不是录屏）：\n\n![memnest recall demo](https://raw.githubusercontent.com/Blue-B/memnest/b496723e7573373e78e8409c9b6f7b56476479fc/docs/recall-demo.png)\n\n代码开源，许可证是 MIT。\n",
-    "created_at": "2026-10-13T03:36:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12306"
-  },
-  {
-    "id": 12305,
-    "title": "【开源自荐】BossAlign（蛔虫引擎）：解决大模型改稿“矫枉过正一刀切”的多审稿人偏好对齐框架",
-    "content": "阮老师好，自荐一个开源项目。\n\n- **项目名称**：BossAlign（代号：蛔虫引擎 / Roundworm）\n- **项目地址**：https://github.com/davidmercer0620-ai/bossalign\n- **类别**：AI 偏好对齐框架 / Context Engineering\n- **开源协议**：MIT（支持 Python CLI 与 Node.js 零依赖运行）\n\n---\n\n### 要解决什么问题？\n\n日常用大模型写方案、公文或分镜脚本交由主管/客户审阅时，经常陷入“越改越错”的循环：\n1. **过度泛化（一刀切）**：审稿人针对某一篇说“这篇是给买家选品的，少讲点车间工艺”，大模型会把这句话当成全局禁令，在下一篇专门讲“研发制造实力”的稿子里把所有机器和工艺删得一干二净。\n2. **多头意见打架**：一号位关注战略目的与叙事节奏，业务负责人关注操作动线与参数准确度，两人的反馈混在一起喂给模型，往往顾此失彼。\n3. **信源污染**：把同事转述或 AI 自己的推导当成审稿人原话沉淀下来，越改离真实要求越远。\n\n`BossAlign` 的思路是把软件工程里管理 Bug 和回归测试的方法搬到审稿流里，把每一次退稿反馈转化为带边界约束的结构化规则。\n\n---\n\n### 核心设计点\n\n- **反例边界守卫（Negative Boundary Guard）**：任何一条从反馈中提炼的原则，强制包含三要素：`[核心主张] + [适用范围] + [禁止跨界套用的反例边界]`。新任务生成前先做碰撞检测，防止局部意见污染全局。\n- **四级证据阶梯（Evidence Ladder）**：将“本人原话（带时间戳/批注）”、“现场实测事实”、“他人转述”与“AI 推断”四级物理隔离。未经验证的推断不写入长期画像，模型自检通过也不等于真人过审。\n- **情绪脱水与黑话编译（Emotion De-noiser & Dialect Compiler）**：剥离反馈语音中的情绪发泄，将“要高端但别死板”、“我只是说个意思”等模糊意图解码为具体的画面留白、实测数据锚点与连读节奏。\n- **影子老板闭门沙箱与净室交付（Clean-Room Sanitizer）**：交稿前按不同审稿人视角跑预审拦截旧错；导出成稿时自动洗脱所有内部规则 ID、反馈编号和 AI 注释，保证对外交付文档干净无痕。\n\n---\n\n### 快速体验\n\n仓库内置了零外部依赖的演示脚本与一套完整的双审过稿虚构案例（含三篇方法论白皮书）：\n\n```bash\ngit clone https://github.com/davidmercer0620-ai/bossalign.git\ncd bossalign\n\n# 使用 Node.js 或 Python 直接体验 30 秒完整闭环演示\nnode index.js\n# 或 python -m bossalign.cli demo\n```\n\n希望能对同样在复杂审批流里用 AI 干活的朋友有所启发，感谢阮老师审阅！",
-    "created_at": "2026-10-13T03:35:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12305"
-  },
-  {
-    "id": 12304,
-    "title": "【网站自荐】VocalRemove Studio：在线 AI 人声分离和音频工具箱",
-    "content": "VocalRemove Studio：https://www.echoseq.com/zh\n\n网页版 AI 音频工具，浏览器打开就能用，不用下载软件，界面有中、英、日、韩、西、法 6 种语言。它要解决的是这类事：想把一首歌里的人声和伴奏分开、去掉录音里的噪音，或者给音频做点简单的剪切、拼接、转格式，但不想为此装一套专业软件。\n\n- 人声分离：上传歌曲，AI 把人声和伴奏分成两条音轨，可以用来做 K 歌伴奏、翻唱伴奏，或者提取清唱。\n- 智能降噪：去掉录音里的背景噪音、电流声和环境杂音，适合播客、口播和会议录音。\n- 多轨分离：把一首歌拆成人声、鼓、贝斯、吉他等独立音轨，方便扒谱、练习和二次混音。\n- 另有五个免登录、在浏览器本地处理的工具：视频提取音频（MP4、AVI、MKV 等）、音频裁剪（看着波形精确裁剪，支持淡入淡出）、音频拼接（支持交叉淡化）、格式转换（MP3、WAV、FLAC、AAC、OGG、M4A 互转，可设码率和采样率）、波形编辑器（淡入淡出、混响、均衡等效果）。\n\n免费和收费的边界：提取、裁剪、拼接、转换和波形编辑器免费，不用登录；人声分离、降噪、多轨分离这三个 AI 功能需要用邮箱注册登录后使用，会员有包月（每天 100 次、单文件 50 MB、多轨分离最多 4 轨）、包季（每天 300 次、单文件 150 MB、最多 6 轨）和终身会员。\n",
-    "created_at": "2026-10-13T03:32:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12304"
-  },
-  {
-    "id": 12303,
-    "title": "【开源自荐】Evir：本地优先的桌面 AI Agent（Tauri 2 / 开发中）",
-    "content": "阮老师好，自荐一个开源项目。\n\n软件名称：Evir\n项目地址：https://github.com/z-Zihan/Evir\n类别：AI 开发工具 / 桌面 Agent\n技术栈：Tauri 2 + Rust 后端，React 19 + TypeScript 前端，SQLite 本地存储\n\n简介：\n\nEvir 是一个本地优先（local-first）的桌面 AI Agent。打开一个本地项目，告诉它要完成什么，它会读、改、运行、验证——每一步工具调用、文件 diff、失败原因都在任务流里可见，写操作按权限审批，每次修改都可以快照回滚。\n\n几个我觉得有用的点：\n\n- 自带模型（BYOM）：接任意支持工具调用的模型即可开工，7 种协议适配（OpenAI / Anthropic / Gemini / Ollama / OpenAI-compatible 等）；无账号、无积分、无云端后端，密钥存本地加密库（AES-256-GCM）。\n- 全程可审计：Plan 模式先出带验证点的结构化计划；Goal 模式用真实证据逐条核验「完成条件」，模型说「完成」不算完成。\n- 口径诚实：模型能力按真实评估分级，失败也如实记录；README 里未验证的清单照样标注。\n\n还在积极开发中（macOS 安装包目前 ad-hoc 签名，需要手动放行）。\n\n希望能在周刊里推荐，谢谢。\n",
-    "created_at": "2026-10-13T03:16:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12303"
-  },
-  {
-    "id": 12302,
-    "title": "【开源自荐】Sonar：基于 SwiftUI 的 macOS 灵动刘海音乐播放器（原生轻量、开箱即用、支持本地离线播放）",
-    "content": "阮老师好，自荐一下我做的 Sonar —— 一个基于纯原生 SwiftUI 构建的 macOS / iOS 极简音乐播放器。\n\n> 一句话介绍：告别 Electron 网页套壳与冗余社交，在 Mac 屏幕顶部带来优雅的灵动刘海交互；免配置即装即用，既能离线畅听本地音乐（支持内嵌封面与 LRC 歌词），也支持网易云歌单导入与播放。\n\n项目地址：[can4hou6joeng4/Sonar](https://github.com/can4hou6joeng4/Sonar)，GPL-3.0 开源。\n\n---\n\n### 🌟 核心亮点\n\n- 🖥️ **屏幕顶部灵动刘海交互**：深度适配 macOS，鼠标悬停在屏幕顶部或刘海区域即可优雅展开迷你播放器、展示同步滚动歌词与快捷切歌；无刘海屏幕同样自适应胶囊悬浮条。\n- ⚡ **纯原生 SwiftUI 极简体验**：没有开屏广告、没有直播和复杂社交，常驻状态栏面板随呼随用，极低内存与 CPU 占用。\n- 🎵 **零配置离线即用（Local-first）**：支持一键拖入或导入本地音频文件/文件夹（MP3、FLAC、M4A、WAV 等），自动读取 ID3 元数据、内嵌封面与同目录同名 `.lrc` 歌词，无需任何 API Key 与网络即可离线畅听。\n- 📦 **免编译开箱可用与精致 DMG 交互**：为 Mac 用户提供了预编译好的正式版 Universal 通用架构 `.dmg` 安装包，配备原生 Retina 高清暗色拖拽交互界面，无需安装 Xcode，双击即可拖入应用程序直接体验。\n- 🔄 **歌单云端备份与迁移**：本地歌单基于 SwiftData 持久化，支持 JSON 导出与跨端导入；支持网易云公开歌单快速解析合并。\n\n---\n\n### 🚀 快速上手与运行\n\n- **Mac 用户（推荐免编译）**：  \n  直接在 [GitHub Releases (v1.0.0 正式版)](https://github.com/can4hou6joeng4/Sonar/releases/tag/v1.0.0) 下载 `SonarMac.dmg` 拖入 Applications 即可运行。  \n  *(由于采用本地 Ad-hoc 签名，若遇系统安全提示，终端执行 `xattr -cr /Applications/SonarMac.app` 即可)*\n- **源码构建**：  \n  项目采用标准 Xcode 工程，支持 iOS 17+ / macOS 14+，运行 `./scripts/package-mac.sh` 可一键完成 Release 打包。\n\n---\n\n### 界面效果\n\n#### macOS（状态栏面板与屏幕顶部灵动刘海）\n\n![macOS 状态栏与顶部播放器](https://pub-27c5bfbe6aed415786a6173c4836a305.r2.dev/sonar/posts/20261005/d148459ba8e65f11/macos.png)\n\n#### iOS（黑胶启动动效与大图播放）\n\n![iOS 歌单、搜索与播放](https://pub-27c5bfbe6aed415786a6173c4836a305.r2.dev/sonar/posts/20261005/ca963bb1f2d7c47c/ios-main.png)\n\n欢迎试用！如果有关于交互与播放格式的建议，欢迎在仓库反馈。\n",
-    "created_at": "2026-10-13T02:36:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12302"
-  },
-  {
-    "id": 12301,
-    "title": "【工具自荐】AI Anime Generator：用文字和参考图探索动漫角色与场景",
-    "content": "设计原创动漫角色时，可以先把人物外观、表情、服装和环境拆成几个明确的提示词，再比较不同画风下的构图。AI Anime Generator 是一个网页工具，可根据文字提示生成动漫角色、肖像和场景，也支持使用参考图辅助表达细节。\n\n工具地址：https://ai-anime.io/\n\n可选风格包括电影感赛璐璐、90 年代复古、Q 版、柔和浪漫与黑白漫画。一个实用的尝试方式是先固定角色描述，只改变风格或光线，看看哪种视觉方向更适合故事设定、头像或分镜草图。\n\n例如，描述“雨后的车站、穿蓝色外套的原创角色、柔和侧光”，再逐步补充视角与背景元素。生成结果可作为概念探索素材，但细节与角色一致性仍需要人工检查；使用参考图时也应确认拥有相应使用权。这里介绍的是工具本身，不代表经过周刊收录。",
-    "created_at": "2026-10-13T02:30:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12301"
-  },
-  {
-    "id": 12300,
-    "title": "【开源自荐】拾光 Relight：本地 AI 照片库，每天挑一张照片给你写一封信",
-    "content": "拾光 Relight 是一个本地优先的 AI 照片库（Web 自托管 + macOS 菜单栏 App，MIT）：把照片目录交给它，视觉模型在本机完成打标、写描述、打质量分，每天选出一张「每日精选」，起一个标题、配一段短文，还能自动设成桌面壁纸。\n\n起因很简单：照片越攒越多，但几乎不会再被翻看。用云端 AI 整理，等于把全家照片交给别人的服务器；而本地视觉模型这两年刚好到了可用的程度——所以我把 Qwen 视觉模型接进自己的照片库，推理过程默认不出本机。\n\n它做了三件事：\n\n- **语义标签**：中文美学体系的标签（自然风光 / 电影感 / 引导线构图 / 冷色调……）。我丢了 10 张测试图进去，它打出了 111 个标签；\n- **描述与评分**：每张照片一段可读的中文描述，外加 1-10 的质量分，像一位住在相册里的图片编辑；\n- **每日精选**：从库里挑一张，起一个文学标题（有一张峡湾照片被它命名成「悬崖上的微尘」），配一篇短文——这是我最喜欢的部分，有点像每天收到一封自己照片写的信。\n\n技术栈：Next.js 15 + Hono + SQLite + BullMQ，视觉模型走 OpenAI 兼容接口，llama.cpp / Ollama 都能接。\n\n仓库（含 demo GIF）：https://github.com/strzhao/relight\nmacOS：`brew install --cask strzhao/relight/relight`\n\n欢迎拍砖。\n",
-    "created_at": "2026-10-13T02:13:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12300"
-  },
-  {
-    "id": 12298,
-    "title": "投稿：TokLens —— 本地优先的 AI 编程助手用量统计桌面工具（开源 · Rust / Tauri）",
-    "content": "阮老师好，自荐一个开源项目。\n\n软件名称：TokLens\n项目地址：https://github.com/MY-Final/TokLens\n类别：AI 开发工具 / 用量统计\n技术栈：Tauri 2 + Rust 后端，React 19 + TypeScript + Tailwind CSS 4 + Recharts 前端，SQLite 本地存储\n\n简介：\n\nTokLens 是一个本地优先（local-first）的桌面应用，用来统计和分析 AI 编程助手的用量。所有数据存在本机 SQLite 里，采集过程只读，不改动客户端原始文件，默认不联网、无遥测。\n\n几个我觉得有用的点：\n\n- 多客户端聚合：一个面板看完全部用量。支持 Codex、Claude Code、OpenCode、DSH、Kimi Code、MiMoCode、Pi Desktop、WorkBuddy、GitHub Copilot、Gemini CLI、Grok CLI、MCode 共 12 个数据源，不用再逐个翻日志。\n- 隐私优先：只读采集，只落统计不落正文；默认无网络请求，模型图标本地打包。想清数据就在应用里一键清空。\n- 可视化：总览、趋势、模型排行、会话元数据、数据源状态五个视图，趋势图能直观看出「这个月的 token 花在哪了」。\n- 口径诚实：数据明确区分「实测 / 推导 / 估算 / 未知 / 部分」，不把估算值伪装成精确值。\n- 体积小：Windows x64 安装包约 3.4 MiB（NSIS），另有 macOS Intel / Apple Silicon 安装包。\n\n安装：从 Releases 页下载对应平台安装包，当前最新 v0.1.8，已发布 9 个稳定 release。\n\n希望能在周刊里推荐，谢谢。\n",
-    "created_at": "2026-10-13T02:06:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12298"
-  },
-  {
-    "id": 12297,
-    "title": "【开源自荐】OneMaker Pipeline：给多 Agent 团队编一条交付管线",
-    "content": "阮老师好，自荐一个开源项目：\n\nhttps://github.com/zw-onemaker-ai/onemaker-pipeline\n\n一句话：把完整工程团队的 14 个角色和工序，编成一条多 Agent 的交付管线。我不缺会用 AI 写代码的工具，缺的是「工序」——谁先谁后、什么算完成、出错了往哪退。这三个问题不解决，交付质量就只能靠运气。\n\n这个项目的思路是把「制度」做进管线：每个角色的产出必须过三道闸门才能交给下一个角色（① 文件真实存在且非空 ② 所有验证命令必须贴出 EXIT_CODE——Agent 编得了话，编不了退出码 ③ 面向用户的产出过脱敏检查）；审查不通过不盲目重跑，而是按问题类型回环到对应角色；三层记忆给上下文装硬上限，防膨胀。\n\n几个我觉得有意思的点：它不是新的 Agent 框架，而是「跑在 Agent 之上的制度」——一份可直接被 Claude Code 等编程 Agent 使用的协议集；零第三方依赖，仓库里 3 个 Demo（门禁 / 记忆 / 管线漫游）clone 下来 1 分钟跑完；最近还给它加了 RSI 自我迭代——失误登记 → 预防闸门 → 自动验证，管线会自己修自己的流程。\n\n这是继 AgentGate（管线可靠性层）后的第二条线：一个管「点」（每个产出可不可信），这个管「面」（整条交付线有没有工序），可以配合使用。MIT 协议，欢迎拍砖。\n",
-    "created_at": "2026-10-13T01:39:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12297"
-  },
-  {
-    "id": 12296,
-    "title": "【工具自荐】GIF Downloader：视频转 GIF、动图压缩与高清放大，支持 Chrome 扩展",
-    "content": "在线工具 [GIF Downloader](https://gif-downloader.app/zh/)，把视频下载、GIF 制作、压缩和画质增强放在同一个网站里，免费使用，无需注册。\n\n主要功能：\n- 社交平台视频下载：粘贴 X（Twitter）、Facebook、TikTok、Instagram、Threads、Reddit 的公开视频帖子链接，即可获取视频，直接保存或继续制作 GIF。\n- 视频转 GIF 与动图编辑：支持打开本地视频和 GIF，截取片段、裁剪画面，调整尺寸、帧率、播放速度和文件大小上限。也可以将 X 上以视频形式存储的动图转换成 .gif 文件。\n- [GIF 压缩](https://gif-downloader.app/zh/gif-compressor/)：调整压缩强度、尺寸和帧率，设置目标体积，对比处理前后的效果再下载。\n- [GIF 高清放大](https://gif-downloader.app/zh/gif-upscaler/)：基于 Anime4K 增强画质，将宽高各放大两倍，尤其适合动漫和线条画，并保留动画与透明背景。\n\nGIF 制作、压缩和画质增强都在浏览器本地完成，处理本地文件时无需上传。网站提供中文等 21 种语言界面。\n另外做了一个 Chrome 扩展「Twitter / X GIF Downloader」：安装后，X 帖子的分享菜单会增加 「Export GIF」 按钮。点击即可自动获取视频、转换并下载 GIF，无需手动复制链接或切换页面；菜单内可以查看进度，也可以再次点击取消。需要截取片段或调整参数时，点击扩展工具栏图标即可打开网站编辑器。\n\n扩展安装：[Chrome Web Store](https://chromewebstore.google.com/detail/twitter-x-gif-downloader/ahekfkedlpmfopghhpbmemgkljkfijpb)\n",
-    "created_at": "2026-10-13T01:00:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12296"
-  },
-  {
-    "id": 12295,
-    "title": "【自荐】Megaphone：给开源项目做发布前体检，并按各平台规则写推广文案",
-    "content": "Megaphone（https://github.com/2104178150-ai/megaphone）是一个帮助开发者推广开源项目的工具，适合做了项目却不知道怎么发布的人。\n\n粘贴 GitHub 仓库地址，就能得到 0–100 的发布就绪评分和最该先改的几件事；配套的 AI 技能会按 Hacker News、V2EX、HelloGitHub、小红书等 16 个渠道各自的规则写推广文案。\n\n在线体验：https://2104178150-ai.github.io/megaphone/ ，协议 MIT。\n\n谢谢阮老师！\n",
-    "created_at": "2026-10-12T22:48:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12295"
   }
 ]
