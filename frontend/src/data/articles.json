@@ -1,5 +1,85 @@
 [
   {
+    "id": 12433,
+    "title": "【工具自荐】小小陪伴：用 AI Skill 制作可打印的中英双语亲子绘本",
+    "content": "## 项目简介\n\n大家好，自荐一个面向家长的项目：**小小陪伴**。\n\n它包含一套「陪伴式绘本制作」Skill（`companion-picture-book`）和配套网站。家长可以从孩子的年龄、想陪伴的生活场景开始，让 AI 推荐适合的内容形式，再确认主题、人物和画风，逐页制作中英双语绘本。\n\n我们想把「爸爸回家」「睡前说晚安」「第一次上幼儿园」这样的小事，变成可以打印出来一起翻、由家长朗读的小故事，也让家长在制作过程中熟悉 Skill 和提示词的用法。\n\n## 主要功能\n\n1. **共读内容与素材建议**：根据年龄、兴趣和共读目标，建议内容复杂度、页数及互动方式，并说明是否需要准备照片；使用虚构角色时无需照片。\n2. **两种制作形式**：支持单页互动／认知图卡和连续故事绘本。提供故事大类即可让 AI 编写梗概，再由家长确认。\n3. **逐页生成与检查**：先固定人物和场景，再逐页推进情节；Skill 包含故事逻辑、跨页面容与服装、场景道具状态、图文对应和双语文字的检查要求，出现问题时优先局部修改。\n4. **五份配套文本**：双语对照稿（含英文音标和中文谐音）、中文朗读稿、英文纯正文稿、英文音标版、英文中文谐音版，并附独立的家长共读提示。\n5. **打印与朗读资源**：网站提供《爸爸回家啦》四页演示绘本、A4／A5 打印 PDF、原图和朗读稿；支持浏览器朗读，以及英文音标、中文近似读音辅助。\n\n## 使用方式\n\n1. 在网站填写孩子年龄、主题和画风，生成本次制作指令，并下载 Skill 技能包。\n2. 把技能文件和制作指令提供给豆包等 AI 助手；如果无法读取 ZIP，先解压，提供 `SKILL.md` 和它引用的 `references` 说明文件。\n3. 先确认内容形式、故事梗概、人物和画风，再让 AI 生成、检查并整理成品。\n\n**网站负责资料下载和制作指令整理，实际内容适配与生图在 AI 工具中进行。** 具体能否读取文件、生成图片和导出附件，取决于所用工具的能力；成品仍需家长核对。中文谐音仅作为近似读音提示。\n\n## 网站与下载\n\n- 官网：[小小陪伴](https://peiban.zengchuan.cn/)\n- 使用教程：[在豆包中使用绘本 Skill](https://peiban.zengchuan.cn/how-to-use)\n- 技能包：[下载 companion-picture-book.zip](https://peiban.zengchuan.cn/downloads/companion-picture-book.zip)\n\n## 页面截图\n\n### 1. 演示绘本与制作流程\n\n![小小陪伴：适龄建议、角色与场景设定，以及《爸爸回家啦》四页双语演示绘本](https://peiban.zengchuan.cn/showcase-20261016-overview.jpg)\n\n### 2. 填写需求，整理制作指令\n\n![填写孩子年龄、内容形式、主题和画风，整理可发送给 AI 助手的制作指令](https://peiban.zengchuan.cn/showcase-20261016-custom.jpg)\n\n### 3. 家长朗读稿与英文教学辅助\n\n![A4／A5 打印资源、浏览器朗读，以及附英文音标的双语朗读稿](https://peiban.zengchuan.cn/showcase-20261016-reading.jpg)\n\n欢迎试用，也欢迎反馈制作过程中遇到的人物一致性、故事衔接和打印使用问题。",
+    "created_at": "2026-10-16T08:26:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12433"
+  },
+  {
+    "id": 12432,
+    "title": "【开源自荐】VibeStart：任意组合技术栈，一行命令搭建AI Native的现代全栈应用",
+    "content": "开源地址：https://github.com/VinkyDev/vibestart ｜ 官网：https://vibestart.net （当前164 star）\n\n## 它解决什么问题\n\n用 AI 起新项目很快，但第一天埋下的技术选型和工程规范缺位，会让项目在第三十天变成屎山：超大文件、重复封装、修一个 bug 带出一个新的。VibeStart 是一个开源的 TypeScript 全栈项目生成器，为「人和 AI 一起维护」准备起点。\n\n## 三种用法\n\n```bash\nnpx vibestart-cli          # 终端逐项选择\n# 或到 https://vibestart.net/studio 可视化配置，实时预览每个会生成的文件\n# 或安装skill，直接交给 AI 编码智能体使用\nnpx skills add VinkyDev/vibestart --skill vibestart\n```\n\n## 生成的仓库\n\n- **任意组合**：React 19（含 React Compiler）/ Next.js / TanStack Start，Hono，oRPC，Drizzle 1.0，PostgreSQL / MySQL / SQLite / MongoDB，Better Auth，Electron，Expo，Docker，shadcn（Base UI）+ Tailwind 4，Vitest，Playwright 或 TesterArmy e2e；工具链统一到 Vite+，开发、检查、测试、构建都走 `vp` 一个命令。\n- **端到端类型安全**：Drizzle 定义表，oRPC 从表推导接口类型，页面从接口推导，没有代码生成。\n- **为 AI 准备的规则**：生成 AGENTS.md，写明改哪里、怎么写、什么时候算做完；Oxlint + Ultracite 预设（含 anti-slop 规则），可开 Knip 清理无用文件与依赖。\n- **能持续升级**：`vibestart upgrade` 以「原模板 / 你的项目 / 新模板」三方合并，先预览再写入，业务代码归你。\n\n## 组合均经过验证\n\n支持 3,241 种合法组合，每次发布前都在 CI 里真实生成、安装，跑完类型检查、lint、测试（含真实浏览器 e2e）与生产构建；结果按文件 SHA-256 指纹存入公开的 [verification](https://github.com/VinkyDev/vibestart/tree/verification) 分支（已有 4,491 条 Linux、62 条 Windows 记录），文件一改就自动重跑。\n\n<img width=\"2276\" height=\"1216\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b112406e-e4be-4f7d-b294-83d59e574e4c\" />",
+    "created_at": "2026-10-16T08:03:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12432"
+  },
+  {
+    "id": 12431,
+    "title": "【工具自荐】OmniPost：让 Claude Code / OpenClaw 一条命令把文章发到 41 个平台",
+    "content": "OmniPost 是一个 Windows / macOS 桌面应用，自己不写内容，只负责把 Agent 写好的 Markdown 发到知乎、CSDN、掘金、公众号、小红书、B 站、Dev.to、Mastodon 等 41 个平台。登录态全在本机的独立浏览器分区里，不经过云端。对外是一个 MCP 端点和一个命令行，Claude Code 一行 `claude mcp add` 就能接，OpenClaw 放一个 Skill 文件夹。\n\n开源的部分：https://github.com/OmniGoAI/omnipost-skill ，里面有给 Agent 用的 Skill、各家接入方法，以及小红书、公众号、抖音等 10 个平台的官方内容规则速查（站外链接、二维码、AI 声明等，附条款来源），不用 OmniPost 也能当对照表。\n\n官网：https://omnigoai.com/zh/products/omnipost/ 。免费版可用，专业版 ¥39/月。\n",
+    "created_at": "2026-10-16T07:56:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12431"
+  },
+  {
+    "id": 12430,
+    "title": "【工具自荐】ViiTor live ：音频转文字工具，带时间戳，支持100 多种语言并支持按文本编辑音频",
+    "content": "项目地址：https://www.viitor.live/en-US/\n\nViiTor 是一个在线 AI 音视频转录与内容处理工具，可以上传 MP3、WAV、M4A、MP4、MOV 等文件，也可以导入有权处理的公开视频链接，将语音转换成带时间戳的可编辑文字。\n\n它支持 100 多种语言、多人说话人识别、专业术语热词、背景人声过滤和 AI 摘要，转录结果可以导出为 DOCX、TXT、SRT，用于整理会议、访谈、播客、课程和视频字幕。\n\n比较有特点的是文本驱动的音频编辑：转录完成后，可以直接通过文字定位对应音频，按句删除内容；也可以修改句子并生成替换语音，不需要反复拖动音频波形寻找位置。单个文件最大支持 500MB。\n\n在线工具，无需注册，免费使用。\n",
+    "created_at": "2026-10-16T07:54:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12430"
+  },
+  {
+    "id": 12429,
+    "title": "【工具自荐】免费的 Grok Bot Routine 指令生成器",
+    "content": "自荐免费的中文网页工具：[Grok Bot Routine 指令生成器](https://grokguide.si/tools/routine-builder)。\n\n填写任务、来源、时间、时区和失败处理，生成可复制指令；提供三个可修改示例，支持键盘操作。\n\n它只在浏览器生成文字，不连接账号、不创建或执行 Routine。生成后仍需自己粘贴到 Bot，核对时间表和权限；示例不是已经验证过的自动化。\n\n我是站点维护者。工具非官方、免费；网站共享页脚含个人代充服务信息，特此披露。\n",
+    "created_at": "2026-10-16T07:14:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12429"
+  },
+  {
+    "id": 12428,
+    "title": "【工具自荐】打码鸭：给图片和视频中的人脸、车牌、文字自动打码",
+    "content": "我是打码鸭的开发者，分享一个在线处理图片和视频隐私信息的工具。\n\n**体验地址：https://damaya.cn/**\n\n发旅行照片、行车记录仪视频或聊天截图之前，经常需要遮住路人的脸、车牌、手机号和地址。打码鸭可以先自动识别人脸、车牌和文字，再生成打码结果，减少逐个寻找和手动框选的工作。\n\n目前主要支持：\n\n- **图片和视频打码**：提供马赛克、模糊、实色遮挡、遮眼黑条和贴纸。\n- **按人物或轨迹调整视频**：先预览自动打码结果，再选择保留自己或已授权出镜的人，其余对象继续打码。\n- **检查和修正结果**：可以调整打码对象、补充需要遮挡的区域，再重新生成。\n\n网页版，无需安装，不登录也能使用。每天有免费处理额度，带打码鸭品牌水印的结果可免费下载；无品牌水印下载，未登录每天免费 1 次，登录后每天免费 3 次。超出免费额度、处理更大文件或更长视频时有付费选项，具体见[价格页](https://damaya.cn/pricing)。\n\n文件需要上传到服务器处理，具体见[文件处理说明](https://damaya.cn/help/file-handling-and-data-safety)。小尺寸人脸、运动模糊或遮挡等情况可能导致漏检、人物关联错误，发布前仍需复核结果。\n\n欢迎试用，也想听听大家在图片和视频打码中遇到的具体问题。",
+    "created_at": "2026-10-16T05:52:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12428"
+  },
+  {
+    "id": 12427,
+    "title": "【工具自荐】TwexAPI：不用申请 X 开发者账号，按量付费读取 X（Twitter）公开数据，支持 MCP",
+    "content": "项目名称：TwexAPI\n\n网址：https://twexapi.io\n\n文档：https://docs.twexapi.io\n\n开源 SDK / MCP / CLI（MIT 协议）：https://github.com/twexapi-dev/x-api-scraper\n\n我是这个服务的开发者，自荐一个读取 X（Twitter）公开数据的 API。\n\nX 官方 API 改为按量计费后，读取 1000 条帖子要 5 美元，读取 1000 个用户资料要 10 美元，个人开发者做点小工具、写个研究脚本，成本很高。TwexAPI 只用一个 API Key，不需要申请 X 开发者账号，也不需要绑定你自己的 X 账号。\n\n主要特点：\n\n1. 支持高级搜索（按关键词、用户、日期筛选）、用户资料、时间线、粉丝/关注列表、回复、引用、转推者、全球趋势、X 长文（Articles）。\n2. 按量计费，读取一条帖子或用户资料约 5 Credits（1 美元 = 100,000 Credits），折合每 1000 条约 0.05 美元。新账号赠送 20,000 Credits，大约可以读 4000 条。\n3. 提供远程 MCP 服务（`https://api.twexapi.io/mcp`），可以直接接入 Claude、Cursor 等 AI 工具，让 AI 搜索和分析推文。\n4. 开源 SDK 覆盖 Python、TypeScript、Go、Java、C#、PHP、Ruby、Kotlin，另有命令行工具、n8n 节点和 Terraform Provider。\n5. 搜索、时间线、粉丝等列表接口统一用 cursor 翻页。\n\n一个请求示例：\n\n```bash\ncurl -X POST 'https://api.twexapi.io/twitter/advanced_search/page' \\\n  -H \"Authorization: Bearer $X_API_SCRAPER_KEY\" \\\n  -H 'content-type: application/json' \\\n  -d '{\"searchTerms\": [\"from:elonmusk\"], \"sortBy\": \"Latest\", \"next_cursor\": \"\"}'\n```\n\n使用场景：舆情监控、竞品追踪、学术研究收集推文样本，或者让 AI Agent 定时总结某个话题的最新讨论。\n\n说明：TwexAPI 是独立的第三方服务，与 X Corp. 无关联，只读取公开数据。\n\n欢迎试用和反馈。\n",
+    "created_at": "2026-10-16T05:02:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12427"
+  },
+  {
+    "id": 12426,
+    "title": "【开源自荐】让你的产品通过 REST API 轻松接入 DeepSeek / Pi Agent",
+    "content": "https://www.hellodac.com/zh\n\nDAC 通过 REST API 把智能体接进你的产品——免费、MIT 开源、可自部署。\n\n包括接入单个Agent节点，及Agent集群。\n\n<img width=\"2200\" height=\"1238\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e023d88c-e867-45d9-8669-5a0282f353ce\" />",
+    "created_at": "2026-10-16T04:24:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12426"
+  },
+  {
+    "id": 12425,
+    "title": "【开源自荐】Free English Learning Tools：11 个免费英语练习网站（雅思听说读写、剑桥 KET/PET/FCE 词卡）",
+    "content": "https://github.com/shelfom/free-english-learning-tools\n\n我们是天津的一所英语学校，给自己的学生做了 11 个练习网站，现在全部开源（MIT），免费、不用注册、手机打开就能练。\n\n每个网站只练一项能力：雅思听力，把考点词和它的同义替换“听”出来（《剑桥雅思》11–20 共 40 套、2,069 组、英音录音）；雅思阅读，把题目里的说法和原文里的说法配对（120 篇、2,200 组）；写作有句子改错、6 分句改写成 8 分、范文回译；口语有 128 套 Part 1–3 AI 模考，按四项评分标准估分。另有剑桥 KET、PET 官方词表和 FCE 核心词的插画闪卡（英音发音），以及学术词汇表 AWL 570 词。\n\n一页看全部：https://shelfom.github.io/free-english-learning-tools/\n\n![](https://raw.githubusercontent.com/shelfom/free-english-learning-tools/main/assets/og.jpg)",
+    "created_at": "2026-10-16T04:00:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12425"
+  },
+  {
+    "id": 12424,
+    "title": "【开源自荐】bilibili-douyin-notes：把视频变成 Markdown 课堂笔记的 AI 技能",
+    "content": "https://github.com/lucky-Luor/bilibili-douyin-notes\n\n一个 AI 编程助手（Claude Code / Codex 等）的技能包：输入 B站、抖音、YouTube 或小红书的视频链接，自动生成 Markdown 课堂笔记，包含小节要点、知识地图、自测题，以及能跳回视频对应秒数的时间索引。优先使用字幕，没有字幕时在本地用 faster-whisper 做语音识别，不调用任何付费 API。\n\n![](https://raw.githubusercontent.com/lucky-Luor/bilibili-douyin-notes/main/docs/images/note-preview.png)",
+    "created_at": "2026-10-16T03:38:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12424"
+  },
+  {
     "id": 12423,
     "title": "AI生成架构图工具",
     "content": "https://archify.si/zh\n\n用大白话讲清楚，得到一张可信的图。\n用skill直接为你的代码库生成可交互的优美架构图。\n适配claude，codex等主流AI工具\n\n<img width=\"1304\" height=\"585\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92d0f7ec-d262-4771-8a53-79a1b007bf9f\" />",
@@ -425,7 +505,7 @@
   },
   {
     "id": 12370,
-    "title": "【开源自荐】",
+    "title": "【开源自荐】千影 MyriadReel 开源 AI 视频生成工具，爆款复刻，批量生成，支持多轮对话和 cli 调用",
     "content": "[项目地址：https://github.com/SkypieaAI/MyriadReel](https://github.com/SkypieaAI/MyriadReel)\n\n开源 AI 视频生成 CLI，提供一个视频，实现一键复刻，MIT 协议。 \n理解参考视频 → 写分镜表 → 生图 → 生视频 → 转写字幕 → 渲染成片， 全程在终端里，由你的 Coding Agent 驱动\n\n**提供两种执行方式：**\n- 命令行 agent 多轮对话\n- 原生 cli 命令执行\n",
     "created_at": "2026-10-14T10:30:17Z",
     "labels": [],
@@ -722,87 +802,5 @@
     "created_at": "2026-10-13T12:42:37Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12332"
-  },
-  {
-    "id": 12331,
-    "title": "【开源自荐】VideoPrinterTurbo：下载即用的 AI 视频字幕翻译、重新配音与素材替换工具",
-    "content": "### 项目名称\n\nVideoPrinterTurbo\n\n### 项目地址\n\nhttps://github.com/leftatrium2/VideoPrinterTurbo\n\n*** 新发布 1.0.1 版本，增加批量下载功能，最大100个Url，IDM平替 ***\n\n### 项目简介\n\n大家好，我是 VideoPrinterTurbo 的开发者，希望自荐这个项目，供「AI 工具」分类收录参考。\n\nVideoPrinterTurbo 是一款免费开源、本机运行的视频处理工具，将视频下载、语音识别、字幕翻译与改写、AI 配音和素材替换整合到同一个可视化操作流程中。\n\n例如，对于自己制作或获得授权的视频，可以通过「下载 → 识别原文 → 翻译字幕 → 生成新配音 → 合成视频」的流程，制作其他语言的版本。\n\n### 主要功能\n\n- **视频下载**：基于 yt-dlp，支持大量视频网站，支持 HTTP / SOCKS5 代理。\n- **语音识别**：支持本地 Whisper、远程 Whisper 和云端 ASR 服务。\n- **字幕翻译与改写**：通过 OpenAI 兼容的 LLM 服务翻译或改写字幕内容。\n- **AI 重新配音**：通过 TTS 将处理后的字幕转为语音，并合成到输出视频中。\n- **视频素材替换**：支持按关键词搜索 Pexels、Pixabay 素材，替换原视频画面。\n- **任务管理**：通过界面创建、编辑任务，查看处理状态和本地输出路径。\n\n### 使用方式与特点\n\n- 免费开源，应用在自己的电脑上运行。\n- 提供 Windows x64 和 macOS Apple Silicon 运行包。\n- 无需单独安装 Python、Node.js 等开发环境，下载后即可启动。\n- 可以仅用于视频下载，也可以按需要配置 ASR、LLM、TTS，使用完整的 AI 处理流程。\n- 支持本地语音识别；软件本身免费，选择第三方 AI 服务时可能产生 API 费用。\n\n### 下载体验\n\nhttps://github.com/leftatrium2/VideoPrinterTurbo/releases/tag/v1.0.2\n\n项目 README 提供配置教程、操作截图及视频效果演示。\n\n### 建议收录简述\n\n[VideoPrinterTurbo](https://github.com/leftatrium2/VideoPrinterTurbo)：一款免费开源的 AI 视频处理工具，集成基于 yt-dlp 的视频下载、Whisper 语音识别、LLM 字幕翻译与改写、TTS 配音及素材替换功能，提供 Windows 和 macOS 运行包，无需配置开发环境，下载即可启动。\n\n欢迎试用和反馈，感谢维护者的审核与分享！\n\n### 使用须知与法律风险\n\nVideoPrinterTurbo 仅提供视频处理与辅助创作功能，不授予任何第三方内容的使用权。\n\n- **版权与授权**：下载、翻译、改写、重新配音或替换画面前，请确认拥有相应权利或已取得必要授权。视频可以公开观看，并不代表可以自由下载、修改或再次发布；注明来源、非商业使用或二次创作，也可能需要承担侵权责任。\n- **平台与素材规则**：请遵守视频来源平台的服务条款，以及 Pexels、Pixabay 等素材平台的具体许可条件。工具具备下载能力，不代表平台允许该下载行为。\n- **隐私与第三方服务**：使用云端 ASR、LLM 或 TTS 时，相关音频、字幕等内容可能发送至所选服务商，请确认有权提供这些数据，并了解其隐私政策与数据处理条款。\n- **AI 输出审核**：翻译、改写和配音可能出现错误，请在使用或发布前审核，避免误导性内容及对他人权益的侵害。\n\n自动发布功能目前保持禁用。请在合法、获得授权的范围内使用本项目；本说明不排除或限制开发者及提供方依法不得免除的责任。\n\n### 示例代码\n\n```markdown\n\n```\n\n### 截图或演示视频\n\n#### 原视频：\n\n[![Watch the demo](doc/thumbnails.webp)](https://www.youtube.com/watch?v=E7YiKBeOneo&t=1s)\n\n#### 增加翻译字幕后：\n\n[![Watch the demo](doc/thumbnails.webp)](https://www.youtube.com/watch?v=AiSW3_SyaKs)\n\n#### 增加翻译字幕并重新配音：\n[![Watch the demo](doc/thumbnails.webp)](https://www.youtube.com/watch?v=08dmRF8JVaI)\n\n#### 增加翻译字幕、重新配音并修改视频：\n[![Watch the demo](doc/thumbnails_2.webp)](https://www.youtube.com/watch?v=321RVhF8ok8)",
-    "created_at": "2026-10-13T11:54:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12331"
-  },
-  {
-    "id": 12330,
-    "title": "App自荐：LumaLog，Prompt Library 我的第一次创作沉淀",
-    "content": "介绍页面：https://theodoruszq.github.io/posts/20260927-ios_development_lumalog/\n心得文章：https://theodoruszq.github.io/posts/20261013-building-lumalog/\n\n一个完全不会Swift语言的小白，最近利用AI完整的完成并上架了一个自己的 App：LumaLog。初衷是一开始想着有很多好看的生成图片，但是实在是找不到合适地方存放他们，用文件夹存需要应对分类、文本模态和图片模态不一等问题，手机上也无法查看，因此开发了一个小工具专门处理这件事。并且意外的发现引入了MCP之后，生图/生视频这件事好像变得更加容易了，再也不用导出找Prompt，打开某某文件夹，有一个引用库在旁边，直接说关键字就行了，而且Prompt和图片都在一起展示。\n\nApp还处于初级阶段，还有非常多不完善的地方，希望谅解，如有问题可即时反馈~",
-    "created_at": "2026-10-13T10:55:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12330"
-  },
-  {
-    "id": 12329,
-    "title": "资源自荐：中文浏览器工具、产业链图解与订阅报价对比",
-    "content": "这是一次关联项目自荐，由 AI 助手代运营者 Jake Tao 整理并提交。根据 README 的文章、软件和资源投稿入口，提供三个面向中文读者的已上线项目，供周刊编辑独立判断是否适合收录。\n\n### 1. AI Lab：浏览器工具、指南与原创漫画\n\nhttps://ailab.packscena.com/\n\n包含图片压缩、文档相关工具、使用指南、小游戏和原创漫画。图片压缩基础体验、公开指南和部分完整漫画样章无需登录；其他完整工具、小游戏与漫画需要账号和积分。适合从一个小任务开始尝试的中文读者，不是所有功能都免费开放。\n\n### 2. 阿军图解产业：产业链入门资源\n\nhttps://ajun-industry.packscena.com/\n\n用图文梳理 AI 算力、半导体、储能等产业环节，也有 RAG 与微调、HBM 与 DDR、MW 与 MWh 等概念指南。当前首页列出 55 期全文开放内容，文章可直接阅读；完整图解资料另有按需获取入口。适合先建立产业结构和术语认知的读者。\n\n### 3. SubAtlas 订阅图谱：按条件查看订阅报价\n\nhttps://subatlas.packscena.com/\n\n按产品、地区、周期、交付形式和来源整理订阅相关报价，区分当前有效记录、历史已过期记录和规格待核对记录，并可查看原始来源。用途是把规格和报价时间一起对照，避免把不同条件的低价直接比较。它是独立的信息整理站，不是相关订阅品牌的官方网站；展示记录不等于商家当前仍可按该价格成交。\n\n上述项目均与提交方有关联。这里仅申请编辑评估，不表示已获周刊推荐或审核。谢谢。\n",
-    "created_at": "2026-10-13T10:35:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12329"
-  },
-  {
-    "id": 12326,
-    "title": "【开源自荐】Nomo：支持 Windows/macOS 的所见即所得 Markdown 编辑器",
-    "content": "我是 Nomo 的作者，想推荐一下自己开发的免费开源 Markdown 编辑器。\n\nNomo 主打所见即所得、即时渲染和专注写作，支持 Windows 和 macOS。文档以本地 Markdown 文件保存，支持语义编辑与源码模式切换，适合写笔记和技术文档。\n\n项目采用 AGPL-3.0 协议开源，欢迎试用和反馈问题。\n\n- 官网：https://nomo-md.pages.dev/\n- 项目仓库：https://github.com/nomo-md/nomo\n- 下载安装：https://github.com/nomo-md/nomo/releases\n- B 站视频：https://www.bilibili.com/video/BV1whHj6kEm3\n",
-    "created_at": "2026-10-13T10:11:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12326"
-  },
-  {
-    "id": 12325,
-    "title": "【开源自荐】pan-transfer-bot：夸克/百度网盘资源整理 Agent Skill",
-    "content": "pan-transfer-bot 是我开发的开源工具，用来整理**自己的**夸克/百度网盘资源：粘贴包含分享链接的文本，自动识别链接与提取码（支持短链穿透），转存到自己的网盘并按 年/月/日 归档，生成新的分享链接，并用纯本地算法生成配套文案（无需大模型 API）。\n\n- 提供 Web 界面与 REST API（FastAPI）\n- 附带 SKILL.md，可作为 Agent Skill 供 Claude Code 等 AI Agent 调用\n- 支持 Docker 一键部署，Cookie 仅保存在本地\n- MIT 开源\n\n仓库：https://github.com/hen9xin/pan-transfer-bot\n\n请仅用于处理自己有权保存和分享的内容。",
-    "created_at": "2026-10-13T09:46:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12325"
-  },
-  {
-    "id": 12324,
-    "title": "【自荐】一个字的一生：一个汉字从甲骨文到简体的完整演变（形 · 音 · 义 · 族）",
-    "content": "一个查汉字字源的网站：输入任意汉字，一页看完它的 **形、音、义、族**。\n\n🔗 在线使用：https://ivan666jjj.github.io/yigezi/\n📦 源码：https://github.com/Ivan666jjj/yigezi\n\n**四个维度**\n\n- **形** —— 甲骨文 → 小篆 → 繁体 → 简体，四体对照（10,249 个小篆字形、1,425 个甲骨文字形），附年代\n- **音** —— 现代拼音 / 中古音反切与音韵地位（如「東」：通攝 開口 一等 平聲 東韻 端母）/ 上古音构拟（Baxter-Sagart，如「東」\\*tˤoŋ）\n- **义** —— 《说文解字》原文，并标注《说文》因东汉时未见甲骨文而致误之处（如「為」训「母猴也」，甲骨文实为「以手牵象」；「射」析为「从矢从身」，甲骨文是手拉弓搭箭之形）\n- **族** —— 谐声系列：同声符的字族（740 组），可点击跳转（「工」→ 江 功 攻 空 紅 虹 貢 項…）\n\n**技术上**\n\n- 整个应用是**单个 HTML 文件**，不联网、也不依赖对方安装字体 —— 两套字体按需子集内嵌（完整 25.8 MB → 8.5 MB woff2），点开即用、可在手机上离线看\n- 演变动图的 **GIF 编码器是自写的**（浏览器原生只能解码不能编码 GIF），配中位切分量化压缩调色板\n- 字形、释义、音韵数据全部取自**开放授权**来源（OFL-1.1、Apache-2.0、CC BY 4.0），逐条列在仓库的 `THIRD_PARTY_NOTICES.md`\n\n**已知局限（如实说明）**\n\n- 甲骨文只覆盖 1,425 个汉字 —— 这是甲骨学界的客观上限（已释字约 1,600），换字体也突破不了\n- 中古音覆盖 7,964 字、上古音构拟 3,163 字，查不到的一律显示「—」，不编造数据\n- 《说文》成书于东汉，其字形说解有系统性错误；本页只标注、不篡改，因为「东汉人怎么理解这个字」同样是知识\n\n缘起：朋友和她舍友聊天时的点子 ——「电脑里已经有小篆和甲骨文字体了，能不能做个查字就能看到它怎么来的页面？好分享，又有专业性。」",
-    "created_at": "2026-10-13T09:24:19Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12324"
-  },
-  {
-    "id": 12323,
-    "title": "自荐：zeroshot，用开源工作流缩小与闭源前沿模型的差距",
-    "content": "大家好，我是 Eivind Meyer，来自挪威。博士期间研究强化学习中的表征学习，现在是 The Open Engine Company 的 CEO。\n\n我们在做 zeroshot，可以把它理解为 coding agent 的 CI：用可配置的执行图串起任务拆解、实现、独立审查和返修。写代码的 agent 不能自己宣布通过。\n\n项目采用 MIT 协议开源。我们想探索：更好的图拓扑和验证循环，能在多大程度上缩小开源模型与闭源前沿模型的差距？这条路不应该只掌握在少数 AI 实验室手里。\n\nhttps://zeroshot.sh",
-    "created_at": "2026-10-13T08:45:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12323"
-  },
-  {
-    "id": 12322,
-    "title": "[自荐] ImgDuck：具有现代 SaaS 体验的纯净免费图床 | 智能压缩 | 原生接入 PicGo",
-    "content": "大家好，\n\n折腾博客和开源项目时，图床是最重要的基础设施。因为受够了各种防盗链、满屏广告和随时停运的风险，我花了几周时间从底层重构，为开发者量身打造了这款现代化的云端图床：ImgDuck。\n\n主打一个：纯净无广、极客体验、长久稳定。\n\n🔗 官网地址：[https://imgduck.com](https://www.google.com/search?q=https://imgduck.com)\n✨ 核心亮点（不啰嗦，看功能）\n\n    ⚡️ 全球 CDN 极速分发：直链无限制，生成即用，完美支持各大 Markdown 编辑器及静态博客。\n\n    👨‍💻 “零阻力”工具链：提供专业级数据面板。支持 PicGo / ShareX 配置文件一键下载，导入即用。\n\n    🗜️ 前端智能压缩 (Visual QA)：不仅支持 15MB 大图，还内置浏览器本地 WebP 压缩引擎。上传前可用“画质对比滑块”直观确认细节，无损省下 80% 体积。\n\n    🛡️ 硬核 AI 护航 (防跑路)：为确保域名长久稳定，底层接入本地 TensorFlow 模型进行严苛的 NSFW 拦截，杜绝恶意滥用，让正规用户的图片高枕无忧。\n\n    💅 现代 SaaS 级 UI：不仅是图床，更是一个精致的图库管理中台。支持深色模式、多图预览、批量管理与 API Token 轮换。\n\n🎁 免费额度\n\n    游客通道：免登录，单图 15MB 拖拽秒传。\n\n    Hobby 计划（推荐）：注册即送 2GB 高速永久空间，解锁完整 API 与开发者工具，写个人博客/记笔记绝对管够！\n    (重度用户也有极具性价比的 Pro 扩容方案及自定义域名支持)\n![index.png](https://i.imgduck.com/u/2Hb2sN.png)\n![client.png](https://i.imgduck.com/u/dtbgML.png)\n\n项目在架构安全（前端流控 + 纯内网隔离流转）和 UI 交互上死磕了很久。欢迎各位开发者白嫖体验、测速！如果有任何建议，或者对这套防封架构感兴趣，欢迎在评论区交流 🙏！",
-    "created_at": "2026-10-13T08:14:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12322"
-  },
-  {
-    "id": 12321,
-    "title": "【开源自荐】Unlikely：把任务展开成跨领域联想网络，由人挑选创作路线",
-    "content": "推荐一个我正在迭代的 MIT 开源项目 **Unlikely**：围绕具体任务展开跨领域联想网络，再由使用者决定哪些联系值得留下。\n\n- [在线体验：先看 15 秒案例](https://rre37826-source.github.io/unlikely/)\n- [GitHub 源码](https://github.com/rre37826-source/unlikely)\n\n举个例子：任务是写一部只有两位演员、一间厨房的短片，起点是「柠檬浓缩液」。路线借用了音乐里的重复与变奏，以及游戏读档中「同一起点、换一次选择」的结构，得到短片构思《比例》：三次问「加多少水」，改变谁掌握水壶，最后两人各自调配，两杯不同的饮料并排留下。\n\n![从柠檬浓缩液，经音乐与游戏，走向短片《比例》的路线示意；不是已拍摄影片](https://rre37826-source.github.io/unlikely/social-preview.png)\n\n可以点开完整网络中的节点与连线，查看联系理由，保留、删改和重排自己的路线，并导出 Markdown、JSON 或 SVG。现有写作、产品和商业三个精选案例。\n\n**精选案例是人工编排的可交互演示，无需注册、API key 或等待模型。** 自定义任务可使用有额度和预算限制的公共试用，也可以自行连接模型。示例试玩不会覆盖原先保存的地图，主动保存后才替换。\n\n这是与 AI 协作开发的早期项目。目前想先了解：跨领域联系是否真的有启发，第一次使用是否容易看懂。如果愿意试一遍，欢迎在[反馈入口](https://github.com/rre37826-source/unlikely/issues/1)留下一个有用或牵强的联系，或者卡住的步骤；不需要给好评。\n",
-    "created_at": "2026-10-13T08:06:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12321"
-  },
-  {
-    "id": 12320,
-    "title": "[Telegram群管机器人]一个用小程序可视化设置的电报群管机器人，@GroupModAppBot。",
-    "content": "## 项目名称\n\n@GroupModAppBot\n\n## 项目地址\n\nBot：\nhttps://t.me/GroupModAppBot\n\n## 项目简介\n\nGroupModAppBot 是一个 Telegram 群管机器人，覆盖入群审核、反广告、违规处罚、关键词回复、定时任务和抽奖。\n\n很多群管机器人的功能不少，设置却靠记命令、写参数，管理员接手时要先读一遍说明。这个 Telegram 群管机器人把全部设置放进了 Telegram 小程序（Mini App）：在 Telegram 里打开就能用，所有功能都是开关、下拉选项和输入框，没有命令要记，没有配置文件要改，也不需要自己部署服务器。\n\n小程序里能做的事情：\n\n- 入群验证：选择网页人机验证或数学题，选择限时，支持入群申请审核。\n- 反垃圾：反刷屏、违禁词、消息长度、链接、昵称、反转发（含 via 机器人、访客机器人）、频道身份发言，共七项。每一项独立开关，处罚方式在下拉列表里选，可选删除、警告、禁言、移出、封禁。\n- 预设模板：内置基础、标准、严格三套反广告模板，选一套即可应用到自己的群；也可以把设置好的群保存成自己的模板，再套用到其他群。\n- 关键词回复：添加回复卡片，选择触发词和回复内容，可以带链接按钮，按钮的颜色、图标、位置在页面上直接调整。\n- 消息模板：在和机器人的私聊里发一条写好的消息，保存后可在小程序里按 Telegram 里的样子预览，再用到关键词回复、抽奖和定时任务里。\n- 超级定时任务：按每天、每周、每月、固定间隔或 cron 设置，页面会预览接下来几次的执行时间；任务里可以定时发消息、置顶、改群权限、开关功能、改群名和简介。\n- 抽奖：选择到点、满人数或手动开奖，设置奖项和卡密，要求参加者先加入指定的群或关注指定的频道，支持口令参加。\n- 入群与退群消息、警告与举报、命令开关，都在同一个小程序里。\n- 多语言：机器人和小程序共支持 11 种语言，跟随 Telegram 的语言设置。\n\n## 使用方法\n\n- 把 Telegram 群管机器人 @GroupModAppBot 添加到群组，并设为管理员，需要开启限制成员、删除消息、通过链接邀请、管理话题、置顶消息、修改群信息这几项权限。\n- 在群里发送 /start，点击消息里的按钮，即可打开该群的设置小程序。\n- 在小程序里打开需要的功能，按页面提示选择选项，保存后立即生效。群主和获授权的管理员都可以操作，群主可以在小程序里决定哪些管理员能改哪些功能。",
-    "created_at": "2026-10-13T07:56:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12320"
   }
 ]
