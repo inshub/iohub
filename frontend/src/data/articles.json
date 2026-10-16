@@ -1,5 +1,85 @@
 [
   {
+    "id": 12443,
+    "title": "【开源自荐】Anselm：一句话让 AI 搭建并持久运行工作流的本地桌面应用",
+    "content": "项目地址：https://github.com/Cookiezisg/Anselm\n官网：https://anselm.website\n\nAnselm 是一个开源（Apache-2.0）的本地优先 AI 工作流桌面应用，支持 macOS、Linux、Windows。\n\n用自然语言描述需求，比如\"每周一早上 9 点汇总 GitHub 动态、写周报、等我确认后存档\"，它会自动创建代码函数、LLM 智能体、定时触发器和人工审批节点，组合成工作流并运行。每个节点的结果实时写入本地 SQLite，崩溃或重启后从断点继续。下载即用，不需要 API key，也可以接入 Ollama 完全离线运行。\n\n![Anselm](https://github.com/Cookiezisg/Anselm/raw/main/docs/assets/readme/workflow-editor-light.png)\n",
+    "created_at": "2026-10-16T13:56:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12443"
+  },
+  {
+    "id": 12442,
+    "title": "[项目自荐] 元形：旧截图与新 HTML 共用的 AI 原型工作台",
+    "content": "做旧产品迭代时，常常只是增加一个功能，原型却要先把已有界面重新做一遍。AI 可以生成 HTML，但几张独立页面仍需要整理成可讨论、可体验的完整流程。\n\n我做了一个开源工具“元形”：保留不变的旧页面截图，为这次需要操作的部分生成 HTML，把它们连接到同一个项目中。产品经理可以在流程画布上推演入口和分支，切到完整原型连续操作，也能导出单个 HTML 发给同事离线查看。\n\n可以把它理解成 AI 时代的 Axure：用自然语言生成与修改页面，同时保留拖动、连线和普通批注这些评审需要的操作。\n\n这里有一个无需安装即可体验的虚构案例：在已有客户列表上增加“分配客户”，包含管理员操作和普通成员访问两条路径。\n\n- [操作完整原型](https://jasperlin2333.github.io/yuanxing/demo/prototype.html)\n- [查看同一案例的流程画布](https://jasperlin2333.github.io/yuanxing/demo/review.html)\n- [开源代码与使用说明](https://github.com/JasperLin2333/yuanxing)\n- [产品介绍](https://jasperlin2333.github.io/yuanxing/)\n\n制作自己的项目需要能读写文件、运行命令的 AI 助手和 Node.js 20+。元形可作为 Skill 安装，运行时无需 npm 依赖，MIT 开源。\n\n欢迎正在用 AI 做原型、又需要迭代旧系统的朋友试用，告诉我在哪一步还不顺手。\n",
+    "created_at": "2026-10-16T12:55:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12442"
+  },
+  {
+    "id": 12441,
+    "title": "【开源自荐】claude-fingerprint-shield — 只在 Claude 站点生效的浏览器指纹伪装扩展",
+    "content": "## 项目地址\n\nhttps://github.com/AnonUsAl/claude-fingerprint-shield\n（MIT / Public，无第三方依赖）\n\n## 一句话介绍\n\n建议收录语（工具栏目风格）：\n\n> [claude-fingerprint-shield](https://github.com/AnonUsAl/claude-fingerprint-shield)：\n> 一个 Chromium 扩展，只在 Claude 相关域名上把浏览器的系统时区、语言、已装中文字体、\n> WebRTC 出口 IP 等特征伪装成非中国大陆环境，用来看清「浏览器指纹是如何被用来识别你来自哪里」的。\n\n## 为什么值得一看\n\n真正有意思的不是扩展本身，而是它拆开的那套检测模型。Claude 相关站点上有一套\n**10 项加权的地区风险分**，权重从高到低是：系统时区 24、浏览器语言 18、已安装中文字体 14、\n国产厂商字体 10、WebRTC IP 泄露 10、国产浏览器 UA 8、国产品牌设备 6、Intl 区域设置 4、\n时区偏移 3、Emoji 渲染风格 3。\n\n项目把每一项的判定逻辑都写进了 README。其中两个点我觉得值得分享：\n\n**一是字体探测。** 检测方用的是 canvas 宽度比对：先用通用族量一遍基线宽度，再把候选字体\n加进去量一遍，宽度不同就判定「装了」。第一个版本我为了图省事，把被禁字体**替换**成\n`sans-serif`——结果改写后的宽度和基线也不一样，反而被判定成「字体存在」，分数照样 +14 / +10。\n正确的做法是整段**删除**被禁族，让字体串自然回落到通用族，量出与基线一致的宽度。这个坑\nREADME 里有完整的数值对照，配套的回归测试是纯 Node 的，不用浏览器就能复现。\n\n**二是有一项根本降不动。** 那个「Emoji 渲染风格」看起来可以伪装，但读代码会发现它压根没在测\nemoji 渲染，只是按 UA / platform 推断系统厂商，而 Apple 的系数 0.25 已经是整张表里最低的一档\n（没有任何分支返回 0），`3 × 0.25` 四舍五入就是 +1。也就是说 macOS 用户无论怎么伪装都消不掉\n这 1 分。README 里专门写清了这一点，免得有人误以为是自己配置错了。\n\n## 边界说明\n\n需要明确的是：**它只消除网页端可见的指纹，不代理流量、不碰账号，也不涉及任何「绕过风控」的手法。**\nIP 归属、支付方式、账号资历这些都不在网页可见范围内，项目 README 里专门列了一节讲「降不了的东西」，\n结论是「低分 ≠ 不会被封」。我更希望它被当成一份关于浏览器指纹的实证材料来看。\n\n## 截图\n\n（建议附上一张长图：同一页面在启用扩展前后的风险分对比）",
+    "created_at": "2026-10-16T11:37:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12441"
+  },
+  {
+    "id": 12440,
+    "title": "【工具自荐】CurlShot：一次 HTTP 请求把网页、HTML 或 Markdown 变成截图、PDF 或滚动视频，内置 MCP 服务器给 AI 智能体用",
+    "content": "官网：https://curlshot.com\n文档：https://curlshot.com/docs\n\n自荐一个网页截图 API：CurlShot。一次 HTTP 请求，把网址、HTML 或 Markdown 变成 PNG / JPEG / WebP 图片、PDF，或者从上到下滚动的视频（MP4、WebM、GIF）。\n\n```bash\ncurl \"https://curlshot.com/api/v1/screenshot?access_key=YOUR_ACCESS_KEY&url=https://example.com\" --output example.png\n```\n\n它解决的是自己维护 headless 浏览器时的那些麻烦：\n\n- 用真实浏览器（headless Chromium）渲染，整页截图时会先滚动加载懒加载图片；\n- 截图前屏蔽 Cookie 弹窗、广告、追踪器和聊天气泡（大多数网站有效，不是所有网站）；\n- 手机、平板、桌面设备预设，深色模式，按 CSS 选择器只截某个元素；\n- 带 Cookie 或请求头可以截登录后的页面；异步任务 + 签名 webhook，一次最多 100 个网址的批量截图；\n- 给 AI 智能体用：内置 MCP 服务器（`https://curlshot.com/api/mcp`，工具 `take_screenshot`、`list_devices`），另有 OpenAPI 3.1 和 llms.txt。\n\n不需要 SDK，任何能发 HTTP 请求的语言都能用，文档里有 cURL、Node.js、Python、PHP、Go、Ruby 示例，还有一个 n8n 社区节点。\n\n价格：免费版每月 100 张截图，不需要绑卡；付费版每月 19 美元起。失败的渲染和命中缓存不计数。首页的在线工具不用注册也能直接试。\n\n已知限制也说明一下：私有/本地网络地址会被拒绝（可以直接发送 HTML）；有些网站会拦截自动化浏览器。\n",
+    "created_at": "2026-10-16T11:06:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12440"
+  },
+  {
+    "id": 12439,
+    "title": "【资源自荐】927 条 Opus 5.5 视频案例与中文提示词",
+    "content": "这是一份面向中文读者的视频提示词参考资料。可以先按效果浏览，再阅读原作者公开的提示词，学习如何描述动效、产品演示、科普动画和 3D 场景。\n\n- 在线浏览：https://wutuobangai.top/opus55-video-prompts.html\n- GitHub：https://github.com/wutuobangai/happy-ai-opus55-video-prompts\n\n在线页提供 927 条案例；仓库精选 30 条，附中文与原文提示词、GIF 预览和原作者出处。资料免费浏览，实际制作视频所需的模型、工具与素材需另行准备，不保证复制提示词即可复现相同成片。\n\n![动效简历案例预览](https://raw.githubusercontent.com/wutuobangai/happy-ai-opus55-video-prompts/main/assets/previews/25.gif)\n\n我是这个资料集的维护者。这是对公开案例的整理和中文导读，来源合集、原作者与许可范围在仓库的 README、CREDITS.md、LICENSE.md 中列出，第三方作品权利仍归原作者。希望作为「资源」供读者参考。\n",
+    "created_at": "2026-10-16T10:06:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12439"
+  },
+  {
+    "id": 12438,
+    "title": "【开源自荐】motion-prompt: 把常见的动效、镜头、UI 和照片风格按编号命名，提供可运行的示例和一个供 AI 使用的 skill，方便挑选、复用并移植到项目中",
+    "content": "这是一个为创意/视频/界面设计工作提供“命名库”和可运行示例的项目——把常见的 motion-graphics、camera moves、UI 动效、网页效果和照片风格用编号+名称+示例代码打包成可浏览的画廊和一个供智能 agent（如 Claude Code / Codex）使用的 skill，方便挑选、复用和移植这些动效到实际项目中。\n\n[中文仓库](https://github.com/liunnn1994/motion-prompt)\n[在线地址](https://motion-prompt.2077tech.com/)\n\n[原版地址](https://github.com/showheyohtaki/motion-prompt)",
+    "created_at": "2026-10-16T10:05:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12438"
+  },
+  {
+    "id": 12437,
+    "title": "【开源自荐】Device Hub Pro：在 Mac 上并排管理 Android 和 iOS 设备，支持 iPhone Duo 3D",
+    "content": "## Device Hub Pro\n\n一款**免费、开源（MIT）的原生 macOS 应用**（Swift/SwiftUI），在同一窗口中管理并镜像 Android 模拟器、Android 真机和 iOS 模拟器。\n\n- **直接操作：**在设备画面上点击、滑动和输入\n- **控制面板：**修改网络、电量、定位、外观、权限，发送深层链接和推送通知\n- **日志与截图：**实时查看 logcat 和模拟器日志，截图、录屏\n- **应用与文件：**拖拽安装应用、传输文件，扫码无线连接 Android 手机\n- **iPhone Duo 3D：**以 3D 方式显示苹果新的折叠屏模拟器，可折成书本、笔记本或帐篷姿态，并旋转查看应用在两块屏幕上的效果\n\n适合需要在 Android 和 iOS 上测试同一版本的移动开发者和测试人员。\n\n[开源地址](https://github.com/gitemre/device-hub-pro)\n\n![iPhone Duo 3D](https://github.com/gitemre/device-hub-pro/raw/main/docs/assets/iphone-duo-3d.gif \"iPhone Duo 3D 预览\")\n",
+    "created_at": "2026-10-16T09:33:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12437"
+  },
+  {
+    "id": 12436,
+    "title": "【工具自荐】DisplayPilot：Mac 外接显示器 DDC/CI 失灵时，用伽马表接管亮度（付费，有 14 天全功能试用）",
+    "content": "官网：https://huayanming.github.io/displaypilot/zh-Hans/?src=weekly\n下载：https://github.com/huayanming/displaypilot/releases/latest\n\n自荐一个 macOS 桌面工具 DisplayPilot。它解决的是外接显示器最常见、也最容易被误判的一个问题：**Mac 调不动显示器的亮度，但显示器自己的按键是好的**。\n\n原因是 DDC/CI（视频线 I²C 侧通道上的控制命令）在某一环断了——显示器 OSD 里没开、扩展坞不转发、主动式转接线丢了侧通道，或者面板根本没实现。画面一切正常，只有控制失灵。\n\nDisplayPilot 的做法是**两条腿**：\n\n- DDC/CI 可用时走硬件，控制亮度、音量、输入源；\n- **不可用时自动改用 CoreGraphics 伽马表调光**——画面由 GPU 生成、经伽马表整形才到面板，往表里写一条压暗曲线就能调暗，完全不依赖 DDC。界面上会明确标注「DDC 无应答」，不假装成功。\n\n代价我也写在官网上，没有藏：伽马表压的是画面不是背光，省电不如硬件调光，压不到纯黑，且**对 HDR 内容无效**（HDR 绕过伽马环节）。\n\n另外两块能力：\n\n- **色彩校准**：对比度、伽马、色温都以**面板原始曲线**为基准重算，而不是在当前状态上叠加，所以反复调节不会累积误差，一键交回 ColorSync；\n- **缓存清理**：只处理 13 类有确定性重建路径的产物，删除前**先移入隔离区保留 30 天**，永久删除默认关闭。\n\n关于收费，说清楚：**这是付费软件，一次性买断，没有订阅**，提供 14 天功能完整的试用，不需要注册账号。激活码本地离线验签，应用**不做遥测、不做埋点**，除了检查更新（默认关闭）外不主动联网。\n\n官网还写了两篇排查向的长文，不是广告：\n- [Mac 外接显示器 DDC/CI 无响应](https://huayanming.github.io/displaypilot/zh-Hans/guide-ddc.html?src=weekly)\n- [macOS 开发者缓存清理：哪些能删、哪些删了就出事](https://huayanming.github.io/displaypilot/zh-Hans/guide-cleanup.html?src=weekly)\n\n我是这个工具的开发者本人，产品相关的技术细节（DDC/IOAVService、伽马表插值、跨卷隔离）都乐意在这里回答。",
+    "created_at": "2026-10-16T09:20:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12436"
+  },
+  {
+    "id": 12435,
+    "title": "【开源自荐】AudioScript 声稿：讯飞同传免费平替——本地系统语音实时转写，国际会议、英文播客、生肉影视",
+    "content": "项目地址：https://github.com/niyongsheng/AudioScript\n下载地址：https://github.com/niyongsheng/AudioScript/releases/latest\n\n自荐一个 macOS 桌面工具 AudioScript（声稿）：**讯飞同传的免费平替**——本地系统语音实时转写，覆盖国际会议、英文播客、生肉影视。\n\n它监听的是**系统声音输出**，不是麦克风：把正在播放的外语内容实时转成「原文 + 中文译文」的双语悬浮字幕。识别与翻译全部在本机完成，音频不出本机，断网也能用。\n\n演示：\n\nhttps://github.com/user-attachments/assets/10649363-0b68-45f5-aa0b-97a9135dab53\n\n几个主要用途：\n\n- **拾取系统声音**：走 macOS 14.2+ 的 Core Audio Process Tap，不用装虚拟声卡，戴耳机也照样拾音；也可以切到麦克风，或两者混合。\n- **实时离线**：sherpa-onnx 做流式识别，CTranslate2 跑 opus-mt（en ↔ zh）做翻译，边说边出字幕，不联网、不限时长。\n- **双语悬浮字幕窗**：源文一行、译文一行对照显示，字号 / 不透明度 / 显示行数可调，支持点击穿透；macOS 上换类成 NSPanel，**能压在别的应用全屏窗口之上**——全屏看视频也能读字幕。\n- **常驻**：托盘、关窗不退出、单实例、开机自启、全局热键。\n\n技术栈 Tauri 2 + Rust + React，MIT 许可。中英双语 ASR 模型与 en↔zh 翻译模型随安装包内置，装完即用，首次启动不需要下载、不需要配置（安装包因此约 200 MB）。\n\n现状说明：v0.1.0 只提供 **macOS 14.2+ / Apple 芯片**的安装包（系统声音回环依赖新版 Core Audio API）；Windows 与 Linux 版本在计划里，尚未发布。\n\n欢迎试用与反馈。\n",
+    "created_at": "2026-10-16T09:05:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12435"
+  },
+  {
+    "id": 12434,
+    "title": "【开源自荐】sjq：AI 流式响应的 jq，Agent Loop 省 98.6%–99.1% Token",
+    "content": "开源地址：https://github.com/vivgrid/sjq （当前6 star）\n\n## 它解决什么问题\n\n把 LLM 流式响应用管道传给 jq：\n\n```console\n$ curl -sN \"$BASE_URL/v1/chat/completions\" -d '{\"stream\":true, …}' | jq\njq: parse error: Invalid numeric literal at line 1, column 5\n```\n\n流式响应不是一份 JSON 文档，而是一行行 `data: {...}` 的 SSE 事件（`/v1/responses` 还有 `event:` 行）。sjq 解析 SSE 分帧，每个事件只打印它新增的内容，一行一个增量，外加一行计时：TTFT、总耗时、tokens/秒。\n\n<img src=\"https://raw.githubusercontent.com/vivgrid/sjq/main/assets/demo.svg\" width=\"100%\">\n\n## 信封占了 98.6%–99.1%\n\n每个 `data:` 行都在重复 id、model、object 类型和一串 null，真正的新文本只有几个字符（按字节实测；SSE 信封是高度重复的 JSON，token 占比与字节占比基本一致）：\n\n| 流 | 线上字节 | 生成文本 | 信封占比 |\n|---|---|---|---|\n| chat completion，短回答 | 3,590 B | 31 B | 99.1% |\n| chat completion，推理 + 回答 | 10,446 B | 142 B | 98.6% |\n| Responses API，推理 + 回答 | 24,726 B | 300 B | 98.8% |\n\n## Agent Loop 中节省 98.6%–99.1% Token\n\n调试 Agent Loop 时，常常要让 agent 盯着原始流看：某个工具是不是在正确的时间、以正确的参数被调用了。直接把原始 SSE 喂给 agent，98.6%–99.1% 的输入 token 都花在信封上。先用 sjq 过一遍，agent 只读增量——同一份信息，输入 token 省 98.6%–99.1%。\n\n## 按模型算一笔账\n\n价格来源：https://vivgrid.com/docs/models（USD/1M tokens）。以 50M input token 的原始流为基准（即 agent 直接读原始 SSE 流）：\n\n| 模型 | 输入价格 | input token 大小 | 原始成本 | 用 sjq 后成本 | 节省 |\n|---|---|---|---|---|---|\n| fable-5-1 | $10.00 | 50M | $500.00 | $4.50–$7.00 | **$493.00–$495.50** |\n| gemini-4-argon | $4.00 | 50M | $200.00 | $1.80–$2.80 | **$197.20–$198.20** |\n| gpt-6.1-sol | $2.00 | 50M | $100.00 | $0.90–$1.40 | **$98.60–$99.10** |\n\n节省比例只取决于信封占比（98.6%–99.1%）；绝对节省金额随模型输入价格变化。（注：fable-5-1 在价格页上为 claude-fable-5-1。）\n\n## 安装\n\n```sh\nbrew tap vivgrid/tap && brew trust vivgrid/tap  # Homebrew 6+ 需要 trust 第三方 tap，一次即可\nbrew install sjq\n# 或从源码安装\ncargo install --git https://github.com/vivgrid/sjq\n```",
+    "created_at": "2026-10-16T08:59:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12434"
+  },
+  {
     "id": 12433,
     "title": "【工具自荐】小小陪伴：用 AI Skill 制作可打印的中英双语亲子绘本",
     "content": "## 项目简介\n\n大家好，自荐一个面向家长的项目：**小小陪伴**。\n\n它包含一套「陪伴式绘本制作」Skill（`companion-picture-book`）和配套网站。家长可以从孩子的年龄、想陪伴的生活场景开始，让 AI 推荐适合的内容形式，再确认主题、人物和画风，逐页制作中英双语绘本。\n\n我们想把「爸爸回家」「睡前说晚安」「第一次上幼儿园」这样的小事，变成可以打印出来一起翻、由家长朗读的小故事，也让家长在制作过程中熟悉 Skill 和提示词的用法。\n\n## 主要功能\n\n1. **共读内容与素材建议**：根据年龄、兴趣和共读目标，建议内容复杂度、页数及互动方式，并说明是否需要准备照片；使用虚构角色时无需照片。\n2. **两种制作形式**：支持单页互动／认知图卡和连续故事绘本。提供故事大类即可让 AI 编写梗概，再由家长确认。\n3. **逐页生成与检查**：先固定人物和场景，再逐页推进情节；Skill 包含故事逻辑、跨页面容与服装、场景道具状态、图文对应和双语文字的检查要求，出现问题时优先局部修改。\n4. **五份配套文本**：双语对照稿（含英文音标和中文谐音）、中文朗读稿、英文纯正文稿、英文音标版、英文中文谐音版，并附独立的家长共读提示。\n5. **打印与朗读资源**：网站提供《爸爸回家啦》四页演示绘本、A4／A5 打印 PDF、原图和朗读稿；支持浏览器朗读，以及英文音标、中文近似读音辅助。\n\n## 使用方式\n\n1. 在网站填写孩子年龄、主题和画风，生成本次制作指令，并下载 Skill 技能包。\n2. 把技能文件和制作指令提供给豆包等 AI 助手；如果无法读取 ZIP，先解压，提供 `SKILL.md` 和它引用的 `references` 说明文件。\n3. 先确认内容形式、故事梗概、人物和画风，再让 AI 生成、检查并整理成品。\n\n**网站负责资料下载和制作指令整理，实际内容适配与生图在 AI 工具中进行。** 具体能否读取文件、生成图片和导出附件，取决于所用工具的能力；成品仍需家长核对。中文谐音仅作为近似读音提示。\n\n## 网站与下载\n\n- 官网：[小小陪伴](https://peiban.zengchuan.cn/)\n- 使用教程：[在豆包中使用绘本 Skill](https://peiban.zengchuan.cn/how-to-use)\n- 技能包：[下载 companion-picture-book.zip](https://peiban.zengchuan.cn/downloads/companion-picture-book.zip)\n\n## 页面截图\n\n### 1. 演示绘本与制作流程\n\n![小小陪伴：适龄建议、角色与场景设定，以及《爸爸回家啦》四页双语演示绘本](https://peiban.zengchuan.cn/showcase-20261016-overview.jpg)\n\n### 2. 填写需求，整理制作指令\n\n![填写孩子年龄、内容形式、主题和画风，整理可发送给 AI 助手的制作指令](https://peiban.zengchuan.cn/showcase-20261016-custom.jpg)\n\n### 3. 家长朗读稿与英文教学辅助\n\n![A4／A5 打印资源、浏览器朗读，以及附英文音标的双语朗读稿](https://peiban.zengchuan.cn/showcase-20261016-reading.jpg)\n\n欢迎试用，也欢迎反馈制作过程中遇到的人物一致性、故事衔接和打印使用问题。",
@@ -506,7 +586,7 @@
   {
     "id": 12370,
     "title": "【开源自荐】千影 MyriadReel 开源 AI 视频生成工具，爆款复刻，批量生成，支持多轮对话和 cli 调用",
-    "content": "[项目地址：https://github.com/SkypieaAI/MyriadReel](https://github.com/SkypieaAI/MyriadReel)\n\n开源 AI 视频生成 CLI，提供一个视频，实现一键复刻，MIT 协议。 \n理解参考视频 → 写分镜表 → 生图 → 生视频 → 转写字幕 → 渲染成片， 全程在终端里，由你的 Coding Agent 驱动\n\n**提供两种执行方式：**\n- 命令行 agent 多轮对话\n- 原生 cli 命令执行\n",
+    "content": "[项目地址：https://github.com/SkypieaAI/MyriadReel](https://github.com/SkypieaAI/MyriadReel)\n[项目地址：https://gitee.com/skypiea-ai/myriad-reel](https://gitee.com/skypiea-ai/myriad-reel\n[项目地址：https://cnb.cool/SkypieaAI/MyriadReel](https://cnb.cool/SkypieaAI/MyriadReel)\n\n开源 AI 视频生成 CLI，提供一个视频，实现一键复刻，MIT 协议。 \n理解参考视频 → 写分镜表 → 生图 → 生视频 → 转写字幕 → 渲染成片， 全程在终端里，由你的 Coding Agent 驱动\n\n**提供两种执行方式：**\n- 命令行 agent 多轮对话\n- 原生 cli 命令执行\n",
     "created_at": "2026-10-14T10:30:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12370"
@@ -720,87 +800,5 @@
     "created_at": "2026-10-13T20:24:02Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12343"
-  },
-  {
-    "id": 12342,
-    "title": "软件自荐：商品照片、简历、标志、美甲、发型与食物照片网页工具",
-    "content": "这是一次关联软件自荐，由AI助手代个人项目运营者Jake Tao整理提交。根据README的软件投稿入口，提供两个已上线项目，供编辑独立选择。\n\n### PackScena\n\nhttps://packscena.com/\n\n为商品照片生成背景与生活场景。目前提供邀请码试用，生成图的商品细节需要人工核对。\n\n### ResumePlot\n\nhttps://resumeplot.com/\n\n本地优先的简历导入、编辑与PDF导出，支持需要人工核对的AI经历改写；AI请求、云保存和分享会发送相关内容到服务端。\n\n上述项目均与提交方有关联。本次仅申请软件栏目评估，不代表已获周刊推荐或审核。谢谢。\n\n补充同一运营者Jake Tao的四个已上线软件项目，仍由AI助手代提交，供编辑独立评估：\n\n### LogoMovo\n\nhttps://logomovo.com/\n\nAI标志生成工作室，可浏览公开参考；生成需要登录和付费。\n\n### NailMoodLab\n\nhttps://nailmoodlab.com/\n\nAI美甲构想与样式参考工具；生成受登录、套餐及额度限制，图片作为与美甲师沟通的素材，不能保证实际施作结果。\n\n### LookScene\n\nhttps://lookscene.packscena.com/\n\n发型、穿搭和场景照片预览，目前为邀请码试用，登录和积分限制生成；不保证发型或衣物的真实效果。\n\n### DishVivid\n\nhttps://dishvivid.com/\n\n食物照片编辑工具，基础手动调整可在本地使用，可选AI生成需要登录和额度；生成结果须人工核对食物细节和份量。\n\n以上四站与提交方有关联。原两站介绍保持；这次只补充软件栏目候选，不能据此认为已获周刊推荐、收录、搜索排名或访问量。\n",
-    "created_at": "2026-10-13T19:59:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12342"
-  },
-  {
-    "id": 12341,
-    "title": "【开源自荐】Hatoba：内置 AI 助手和端到端加密同步的开源 SSH 客户端",
-    "content": "我是 Hatoba 的作者，想推荐一下自己做的开源桌面 SSH 客户端。\n\n我用了很多年 SSH 工具，其实没想再做一个 SSH 客户端，最后还是按自己想要的样子做了 Hatoba。\n\n每个终端旁边都有一个 AI 助手面板。在面板里描述问题，它会读取终端屏幕、运行命令、读取和编辑主机上的文件，找出原因并修好。命令可以由你逐条批准，运行前还能修改，也可以开启自动批准，交给你选的模型批准其中安全的操作。它改过的文件都会显示 diff，可以撤销。模型支持任何兼容 OpenAI 或 Anthropic API 的服务，包括本地模型，也可以加自己的 skills 和 MCP 服务器。\n\n![AI 助手在终端旁找出并修复 nginx 502](https://raw.githubusercontent.com/scarletkc/Hatoba/v0.2.0/apps/site/src/assets/screenshots/zh-CN/ai-assistant.png)\n\n同步不经过 Hatoba 的服务器。Hatoba 会把一个 Worker 和 D1 数据库部署到你自己的 Cloudflare 账户，然后在设备之间同步主机、密钥和 AI 对话。数据离开设备前就已经加密，Worker 和数据库里只有密文。个人使用一般在 Cloudflare 免费额度之内，不开同步的话所有功能也都能离线用。\n\n![Hatoba 把同步 Worker 部署到自己的 Cloudflare 账户](https://raw.githubusercontent.com/scarletkc/Hatoba/v0.2.0/apps/site/src/assets/screenshots/zh-CN/sync-deploy.png)\n\nSSH 客户端常用的功能也都有，比如分组、标签和模糊搜索，导入 ~/.ssh/config，ProxyJump 和 SOCKS5、HTTP 代理，SFTP 文件面板，本地端口转发，导入 OpenSSH、PEM 和 PuTTY 密钥。还有一个仪表盘，在一个页面上看所有主机的 CPU、内存、磁盘和网络，数据通过 SSH 读取，服务器上不用装任何东西。\n\n![仪表盘显示每台主机的 CPU、内存和磁盘](https://raw.githubusercontent.com/scarletkc/Hatoba/v0.2.0/apps/site/src/assets/screenshots/zh-CN/dashboard.png)\n\n目前优先照顾 Windows，标题栏支持 Snap Layouts 和 Mica，中文输入法也能正常用。每个版本同时提供 Linux 包和实验性的 macOS 版本。项目基于 Tauri 2 和 Rust，MIT 协议开源。\n\n- 官网：https://hatoba.fog.moe/zh/\n- 下载：https://hatoba.fog.moe/zh/download/\n- 项目仓库：https://github.com/scarletkc/Hatoba\n- 开源协议：MIT\n",
-    "created_at": "2026-10-13T18:28:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12341"
-  },
-  {
-    "id": 12340,
-    "title": "【开源自荐】ESP32 iPhone Agent：用 7 美元的 ESP32 让 AI 操作真实 iPhone",
-    "content": "项目名称：ESP32 iPhone Agent\n\n项目地址：https://github.com/onehumanbeing/esp32-iphone-agent\n\n一句话介绍：用一块约 7 美元的 ESP32-S3 开发板，让 AI 模型操作真实的 iPhone，不需要 Mac、不需要开发者账号、不需要越狱。\n\n主要功能：\n- 眼睛：iPhone 通过 AirPlay 屏幕镜像投屏到电脑（UxPlay），画面转成 JPEG 帧交给 AI。\n- 手：ESP32-S3 插在 iPhone 的 USB 口上，模拟标准 USB 鼠标和键盘；打开辅助触控后，点击就是轻点，拖动就是滑动。\n- 大脑：支持任何兼容 OpenAI 接口、能看图的视觉模型，可以用云端 API，也可以用自己部署的模型。规划模型先写计划，执行模型再根据每一张新截图选择下一步操作。\n- 闭环纠错：每次点击前先找到并校正指针位置，每次操作后检查屏幕是否真的变化，重复操作时自动重新规划。\n- 手机上不需要安装任何应用，只看像素，所以任何 App（包括游戏）都能用。电脑可以是 macOS 或 Linux。\n- 后续计划：发展成运行在自己板子上的独立设备，不需要电脑就能跑完整个流程。\n\n演示视频：https://www.youtube.com/watch?v=Ly4im-P4jYg\n\n截图：https://raw.githubusercontent.com/onehumanbeing/esp32-iphone-agent/main/docs/images/demo.png\n",
-    "created_at": "2026-10-13T18:04:44Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12340"
-  },
-  {
-    "id": 12339,
-    "title": "App自荐：像话——说一句英语，它告诉你母语者会怎么说",
-    "content": "官网：https://mirrorsay.com\n（iOS 在 App Store 搜「像话」；Android 安装包在官网下载）\n\n像话是一个练英语口语的手机 App：你对它说一句英语，它告诉你母语者会怎么说，再带你跟读一遍，逐词对比你和参考音差在哪。免费，不用注册。\n\n做它是因为我自己需要：读写没问题，一开口就是翻译腔，而且没人会纠正你——同事听得懂，犯不着说。我想要一面镜子，照的是自己每天真的要说的话，而不是课本例句。现在我自己每天都在用它练。\n\n除了\"说一句、照一照、跟着读\"这个核心循环，还有几个我自己最常用的功能：\n\n- **说中文也行**：英文卡住时直接说中文，照样给你母语者的说法，不用先去查词典。\n- **添加句子**：看到好句子就存下来练。把文章、字幕粘贴进来自动拆句，或者截图、拍照识别；双语字幕会自动配对，先只看中文意思自己说一遍，再揭晓原句。\n- **今日句式**：每天一个母语者高频句式（比如 I'd like to…），用它说一句自己的话就能点亮，慢慢攒成自己的句式库。\n- **桌面小组件**（iPhone）：今天的句子就在主屏幕上，等电梯的工夫长按就能开口。\n\n欢迎试用，也很想听到你的反馈，尤其是它哪里改得不对。\n\n官网：https://mirrorsay.com\n\n<p>\n<img src=\"https://mirrorsay.com/assets/shots/zh/step2.webp\" width=\"200\" alt=\"说一句，看母语者怎么说\">\n<img src=\"https://mirrorsay.com/assets/shots/zh/rescue.webp\" width=\"200\" alt=\"说中文也行\">\n<img src=\"https://mirrorsay.com/assets/shots/zh/import.webp\" width=\"200\" alt=\"添加句子\">\n<img src=\"https://mirrorsay.com/assets/shots/zh/pattern.webp\" width=\"200\" alt=\"今日句式\">\n</p>\n",
-    "created_at": "2026-10-13T16:38:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12339"
-  },
-  {
-    "id": 12338,
-    "title": "【开源自荐】PicMake：纯前端的 GPT Image 2.5 生图工作台",
-    "content": "\n项目地址：https://github.com/crisweb1994/PicMake\n在线体验：https://picmake.crisweb.com\n\n一个开源的 GPT Image 2.5 网页客户端，纯前端，填入自己的 API Key（官方或兼容的中转站）就能生图，Key 和图片都只保存在浏览器本地。支持流式预览、一段描述同时生成多个比例、草图、局部重绘和本地历史。\n\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/57704e4a-f003-4c1c-b73e-c0b6b0507951\" />",
-    "created_at": "2026-10-13T15:04:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12338"
-  },
-  {
-    "id": 12337,
-    "title": "【开源自荐】Pinto Notes：ChatGPT 和 Claude 能读写的 Mac 笔记应用",
-    "content": "我是 Pinto Notes 的开发者。\n\nPinto Notes 是一款免费、开源（MIT）的 Mac 笔记应用，用 Swift 编写，用法接近 Apple 备忘录：文件夹、清单、表格、附件，多设备同步，端到端加密，还可以一次导入 Apple 备忘录里的全部笔记。\n\n它自带 MCP 服务器。你批准之后，ChatGPT、Claude、Claude Code、Codex 等 AI 就能搜索、阅读和修改你的笔记，每次修改都会高亮显示，并保留上一个版本，可以撤销。iPhone 版还没有上架 App Store。\n\n- 官网：https://pintonotes.com\n- 源码：https://github.com/pinto-notes/pinto-notes",
-    "created_at": "2026-10-13T14:52:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12337"
-  },
-  {
-    "id": 12335,
-    "title": "【开源自荐】StreamLingo：支持本地 Ollama 的 YouTube 直播 AI 翻译字幕",
-    "content": "我是 StreamLingo 的作者，想自荐一个面向 YouTube 直播的开源字幕工具。\n\n看直播时，如果没有可用的中文或英文字幕，StreamLingo 可以直接采集当前 Chrome 标签页的音频，通过本地语音识别与已有的 Ollama 模型生成翻译字幕，并显示在播放器里。无需主播先提供字幕，原声照常播放，也不需要用麦克风录扬声器。\n\n- 支持英译中、中译英，以及自动识别后翻译为中文或英文。\n- 中英文界面可切换；长字幕自动分页，给译文保留阅读时间。\n- 已有 Ollama 的用户可下载 Windows 预构建包，首次配置后，日常双击启动本地服务，再在扩展中开始字幕。\n\n项目（MIT）：https://github.com/michael-chow-arch/StreamLingo\n\nWindows 预览版：https://github.com/michael-chow-arch/StreamLingo/releases/tag/v0.2.0\n\n![StreamLingo：YouTube 播放器内的实际英译中字幕](https://raw.githubusercontent.com/michael-chow-arch/StreamLingo/v0.2.0/docs/assets/real-demo-cover-zh-CN.jpg)\n\n[32 秒使用演示](https://github.com/michael-chow-arch/StreamLingo/releases/download/v0.2.0/streamlingo-zh-CN-horizontal.mp4)。截图和短片展示开放电影的 YouTube 回放及实际字幕输出，并非直播录屏；字幕未在后期改写。\n\n目前为早期 Windows 预览版：需要 NVIDIA GPU、CUDA 12 cuBLAS、适用于 CUDA 12 的完整 cuDNN 9、64 位 Python 3.11–3.13，以及已可用的 Ollama 聊天模型。扩展暂需在 Chrome 手动加载，尚未上架商店。识别、翻译和字幕阅读均可能产生错误或延迟；具体要求与实测范围见仓库说明。\n\n画面来自 Blender Foundation《Tears of Steel》，依 [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) 使用；[原视频](https://www.youtube.com/watch?v=R6MlUcmOul8) / [官方说明](https://mango.blender.org/about/)。进行了画面裁切、实际字幕叠加及宣传排版。\n",
-    "created_at": "2026-10-13T14:43:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12335"
-  },
-  {
-    "id": 12334,
-    "title": "〖开源自荐〗Vagus：轻量快速的多 Coding Agent 桌面工作区",
-    "content": "我是 Vagus 的独立开发者，想分享一个面向日常编程的桌面工作区。\n\nVagus 是一款本地优先的桌面应用，让开发者可以在同一个项目工作区中使用 Pi、Claude Code、Codex、OpenCode、Qoder CLI 和 ZCode。\n\nVagus 注重简洁、轻量的使用体验：界面清晰，安装包小巧，启动迅速。工作时可以按项目管理和搜索会话，查看 Agent 的回复、工具活动和执行状态，逐轮审阅文件变更与 diff；也可以从工作区打开文件、终端和浏览器。\n\n各 Agent 的可用能力取决于对应的本地 CLI 或协议；相关 CLI 需要在本机单独安装和配置。\n\n- 项目仓库：https://github.com/versot/Vagus\n- Beta 下载：https://github.com/versot/Vagus/releases\n- 开源协议：Apache-2.0",
-    "created_at": "2026-10-13T14:38:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12334"
-  },
-  {
-    "id": 12333,
-    "title": "【开源自荐】gknowledge：Karpathy LLM Wiki 的原生 Linux 桌面实现，默认离线，支持 MCP",
-    "content": "我是 gknowledge 的作者之一，想推荐一下我们开发的免费开源知识库应用。\n\ngknowledge 是 Karpathy「LLM Wiki」思路的 Linux 原生桌面实现（GTK 4 + Libadwaita）：导入文档后，自动整理成相互链接、每页带出处的 Markdown wiki，并支持带引用的问答。知识库就是普通文件夹，可以直接用 Obsidian 打开。\n\n默认离线可用，不需要 API key；也可以用自己的 ChatGPT 套餐登录，或接入 Ollama 等本地模型。自带 MCP 服务器，Claude Code 等智能体可以直接读写同一个 wiki。\n\n项目采用 MIT 协议开源，欢迎试用和反馈问题。\n\n- 项目仓库：https://github.com/openapi/gknowledge （有中文 README）\n- 下载安装：https://github.com/openapi/gknowledge/releases\n- Ubuntu / Debian 一行安装：`curl -fsSL https://github.com/openapi/gknowledge/releases/latest/download/install.sh | bash`\n\n![带引用的问答](https://raw.githubusercontent.com/openapi/gknowledge/main/docs/screenshots/cited-answer.png)\n",
-    "created_at": "2026-10-13T13:55:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12333"
-  },
-  {
-    "id": 12332,
-    "title": "【开源自荐】物谱 Thingary：物品档案、账户盘点与财务自由测算（macOS）",
-    "content": "物谱 Thingary 是一个开源、本地使用的 macOS 应用：给重要物品留档，定期盘点账户资产与负债，再按明确条件测算未来。\n\n不用每天补齐流水，物品价格和日期未知时可留空；物品购入金额与金融净资产分开。规划能反算每月需要存多少，估算财务独立时间，展示投资组合轨迹、压力情景、市场路径区间、敏感性矩阵和收益顺序检查。所有结果按假设估算，路径占比不代表现实概率。\n\n无需账号，支持完整备份和 Excel 导入导出，内置独立虚构样例。当前为 0.0.6 公开测试版，Apple Silicon / Intel 通用包；实测 Apple Silicon、macOS 27，未经过 Apple 公证。只在主动检查更新时查询 Gitee 与 GitHub 公开版本列表，代码采用 AGPL-3.0-or-later。\n\n- 项目与截图：https://github.com/CoderJackZhu/Thingary\n- GitHub 下载：https://github.com/CoderJackZhu/Thingary/releases/tag/v0.0.6\n- 国内下载：https://gitee.com/CoderJackZhu/thingary/releases/tag/v0.0.6\n\n我是项目维护者，向周刊自荐，欢迎反馈。\n",
-    "created_at": "2026-10-13T12:42:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12332"
   }
 ]
