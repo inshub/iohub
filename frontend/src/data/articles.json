@@ -1,5 +1,69 @@
 [
   {
+    "id": 12456,
+    "title": "投稿：cj-tauri —— 用仓颉语言写的 Tauri：国产编程语言的桌面应用混合开发框架（开源）",
+    "content": "项目地址：https://atomgit.com/qq8864/cj-tauri （GitHub 镜像：https://github.com/yangyongzhen/cj-tauri）\n官网（中英双语，含 19 屏实机截图轮播）：https://yangyongzhen.github.io/cj-tauri/\n\ncj-tauri 是用华为仓颉语言实现的 Tauri 式混合开发框架：仓颉静态编译做后端，系统自带 WebView（Windows WebView2 / Linux WebKitGTK）做前端，产物是不带 Chromium 的原生桌面应用，几 MB 级。IPC 双向桥、能力白名单安全模型、14 个官方插件（fs/dialog/serial/sqlite/redis/mqtt/http/ws/托盘/全局快捷键等）、26 个可直接运行的示例（含 AI 对话客户端、串口示波器、SQLite 浏览器、Redis/MQTT 调试台等业务向工具）。\n\n两个可能让读者感兴趣的点：\n\n1. 这是「给新语言补桌面开发生态」的完整实践——不是 demo，而是从 IPC 协议、能力安全模型到脚手架 CLI、npm 分发的整套体系，文档含 12 条设计决策记录（ADR）与需求追踪矩阵；\n2. 协议栈是纯仓颉手写的（MQTT 3.1.1、RESP2），SQLite 用 FFI 直连系统 libsqlite3，对想了解仓颉 FFI / 二进制协议实现的读者有参考价值。\n\nMIT 协议，npm 分发（`npx cj-tauri create myapp`）。技术交流 QQ 群：92381027。",
+    "created_at": "2026-10-17T03:08:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12456"
+  },
+  {
+    "id": 12455,
+    "title": "【开源自荐】cjh：用仓颉语言从零实现的终端编码代理",
+    "content": "**项目**：cjh —— 用仓颉语言从零实现的终端编码代理（Coding Agent Harness）\n\n**仓库**：https://atomgit.com/qq8864/cjh\n**官网**：https://yangyongzhen.github.io/cjh\n**许可**：MIT\n\n一句话：在终端里说一句需求，Agent 自己规划、调用工具、读结果、迭代到完成；全过程在 TUI 里实时可见，也能用内置 Web 界面远程驱动同一个会话。\n\n值得一看的地方：\n\n1. **语言上的一次实测。** 仓颉生态里已经有 LLM Agent 框架（CangjieMagic、CangChain），但还缺一个「能日常用的完整 agent 工具」。这个项目把主流 agent 的成熟设计——工具注册表、最小权限审批层、会话压缩、插件信任链——在仓颉里实现了一遍，也顺手验证了这门语言写系统级 CLI 的可行性。\n\n2. **单二进制零依赖。** 静态链接，Linux 17.1 MB、Windows exe 14.1 MB；Windows 带上 4 个 DLL 即可运行，不依赖 Node 或 Python。\n\n3. **同一个 Agent，两个前端。** TUI 自己实现差分渲染；Web 通道用 WebSocket 推流，切换模型、压缩上下文、取消回合这些控制帧与工具审批请求都能从中转给 Agent，API 密钥不下发到浏览器。\n\n4. **测试当门禁。** 632 个用例，其中包含伪终端驱动的 TUI 集成测试（差分渲染、粘贴解码这类只能真终端测）；静态链接下仓颉测试框架会崩，脚本会自动切动态配置跑完再还原静态。\n\n5. **协议上的取舍。** 回合结束帧的 `finish_reason` 保持封闭三值 `stop/cancelled/error`，上游截断改用一个可选布尔字段承载——给已发布的枚举加新取值，对老客户端是破坏性的。\n\n局限也写清楚：目前只有命令行与内置 Web 两种形态，没有 GUI；插件生态刚起步；文档以中文为主（英文 README 是完整的）。\n\n仓库里有两篇关于测试组织与协议扩展的笔记，感兴趣可以直接看 `docs/articles/`。\n",
+    "created_at": "2026-10-17T03:05:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12455"
+  },
+  {
+    "id": 12454,
+    "title": "【工具自荐】9bot：WhatsApp 群组 AI 自动化管理机器人",
+    "content": "**产品名称**：9bot – WhatsApp群组自动化管理机器人\n\n**网址**：https://9bot.com.br/zh\n\n**一句话介绍**：WhatsApp群组AI管理机器人，自动拦截垃圾信息、欢迎新成员。\n\n**详细介绍**：9bot是一款内置AI的WhatsApp群组自动化管理工具：自动拦截垃圾信息和广告链接、自动回答问题、欢迎新成员、定时发送消息、执行群规，7×24小时管理你的社群。适合外贸团队、跨境卖家、社群运营和客户服务。\n\n**价格**：前3个月每月CNY 230，之后每月CNY 460，提供7天试用。可在中国大陆以外使用（需要WhatsApp）。\n\n**作者**：创始人 Ivan Schroll（巴西），2025年成立。",
+    "created_at": "2026-10-17T02:44:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12454"
+  },
+  {
+    "id": 12453,
+    "title": "【开源自荐】AI Todo：一句话改任务，AI 动手前先给你看 diff",
+    "content": "「把周会挪到周五下午三点，标成高优先级。」——在 AI Todo 里，你对输入框说的每一句话，都会先变成一条 diff：改哪个任务、改成什么，一目了然。你确认，它才动手。\n\n这个设计同时回应两个现实：一是表单式 todo 太累，日期选择器、优先级下拉、标签面板，记个事要填八个字段——LLM 时代，输入框应该只剩一个；二是 AI 不该直接碰你的数据，它理解得再好也有翻车的时候，diff 预览是安全底线，用下来也意外成了「AI 在想什么」的透明窗口。\n\n它还有一半是为 AI agent 造的：CLI 全 JSON 输出，agent 读 --help 就能自己学会全部命令——我自己搭的 AI 助手每天都通过它记待办、排事项，它是我少数自己每天都在吃狗粮的项目。\n\n任务支持多层嵌套，任务列表可升级为共享项目空间（@成员 + 甘特图）。自托管，MIT。\n\n仓库（含 demo GIF）：https://github.com/strzhao/ai-todo\n在线（需登录）：https://ai-todo.stringzhao.life\n\n欢迎拍砖。\n",
+    "created_at": "2026-10-17T02:17:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12453"
+  },
+  {
+    "id": 12452,
+    "title": "把飞书云盘挂载到 Linux",
+    "content": "飞书（Lark）在国内团队协作里用得不少，云盘里堆满了共享的文档、表格和归档文件。但飞书官方并没有提供 Linux 下的同步盘客户端，想在 Linux 上方便地访问云盘文件，往往只能网页版手动下载，或者调用开放平台 API 自己写脚本——都很别扭。\n\n[feishu-dav](https://github.com/muxueqz/feishu-dav) 就是为了解决这个问题：它把飞书云盘通过 WebDAV 协议暴露成本地 HTTP 服务，再用 rclone mount 挂载成一个本地目录。之后你就可以像操作普通文件夹一样浏览、读取、上传飞书云盘里的文件了。\n\n整个项目只有一个 Python 文件 feishu_dav.py\n\nhttps://muxueqz.top/feishu-dav.html",
+    "created_at": "2026-10-17T02:16:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12452"
+  },
+  {
+    "id": 12451,
+    "title": "【产品自荐】StatementXL：银行流水 PDF 转 Excel，自动标出需要核对的行",
+    "content": "自荐一个我自己独立开发的小工具 StatementXL。\n\n很多银行流水只能拿到 PDF：超过网银导出期限的旧月份、已经销户的账户、客户直接发来的对账单。要整理进 Excel，要么手动一行行敲，要么用转换工具，但转完之后哪几行可能错了，往往只能自己从头比对。\n\n所以我做了 StatementXL，重点是三件事：\n\n1.  PDF 转 Excel：上传一份银行流水 PDF（最多 4 MB、50 页），导出 Excel，也可以导出 CSV、TSV、JSON、Markdown 或 HTML。\n2. 逐行核对标记：每一行都会标上 OK、DISCREPANCY（证据有冲突）或 UNVERIFIABLE（缺少关键信息），下载前就能看到，只需对照原件检查被标出的行。\n3. 不保留文件：本站不把 PDF、Excel 和流水明细存成历史记录，文件只用于本次转换。专业版和企业版在常规解析失败时会回退到 AI 解析来尝试扫描件，这时 PDF 会交给第三方 AI 服务商处理，网站上有写明。\n\n可以免费试用：不登录每天 1 页，Google 登录后每天 5 页。付费套餐 US$19.90/月起。目前导出的是通用表格，不是 QuickBooks 或 Xero 专用格式，导入前需要对一下列。\n\n官网：https://bankstatementconverter.xyz/zh-CN?utm_source=ruanyifeng\n\n如果你手上有转不好的银行或版式，非常欢迎反馈，这正是我接下来要改进的地方。谢谢！",
+    "created_at": "2026-10-17T02:06:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12451"
+  },
+  {
+    "id": 12450,
+    "title": "【工具自荐】Fuse Bead Patterns：从像素画到品牌配色和可打印拼豆图纸",
+    "content": "我是 Fuse Bead Patterns 的维护者，想向周刊自荐这个免费的浏览器工具：\n\nhttps://fusebeadpatterns.art/\n\n做拼豆时，把图片缩成马赛克还不够，通常还需要按手头的豆子品牌配色、修改零散格子、统计材料，再打印图纸。网站把这些步骤放在同一个流程中：\n\n- 从自己的图片生成图纸，选择 Perler、Hama 或 Artkal S 配色，再逐格修改。\n- 查看颜色用量并导出 PNG、PDF 和可继续编辑的项目文件。\n- 也可从独立的 [Pixel Art Grid](https://fusebeadpatterns.art/pixel-art-grid) 开始手绘或转换图片，保留透明度、限制颜色、导出原尺寸 PNG，再转到拼豆编辑器。\n\n图片转换在当前浏览器中完成，工具目前免费、无需注册。界面提供英语、德语、法语和日语，目前没有中文界面。屏幕配色只是实物颜色的近似参考，不承诺不同品牌可以混合熔接。\n\n本次为维护者自荐，网站与介绍使用了 AI 辅助制作；工具的图片转换不依赖生成式 AI。欢迎编辑按实际用途评估，也欢迎反馈配色、打印和项目继续编辑时的问题。",
+    "created_at": "2026-10-17T01:32:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12450"
+  },
+  {
+    "id": 12449,
+    "title": "[资源自荐] QClawHub：Agent Skills 的双语上手指南与结果检查",
+    "content": "我是 QClawHub 的维护者，想自荐一个免费资源：\n\nhttps://qclawhub.com/skills\n\n网站把不同项目的 Agent Skills 整理为中文、英文使用指南。重点不是再列一次安装包，而是帮助已经找到某个 Skill 的读者判断适不适合自己、完成首次输入、检查输出和排查卡点。文章链接原项目，保留适用版本和资料范围；未实测的练习不会写成亲测成果。\n\n例如 [grill-me 指南](https://qclawhub.com/skills/mattpocock-grill-me) 讲解如何准备需求、推进追问和检查决策；[baoyu-infographic 指南](https://qclawhub.com/skills/jimliu--baoyu-infographic) 区分图像后端选择，并给出可准备的输入与输出检查。\n\n阅读和搜索不需要账号，也不收费；实际使用某个 Skill 可能仍需其底层软件、模型账号或 API 费用。网站独立维护，与腾讯 QClaw 和各 Skill 作者没有官方关联。\n\n如果这种“从目录到首次任务”的资料整理适合周刊资源栏目，欢迎考虑。也欢迎指出说明中的缺漏。\n",
+    "created_at": "2026-10-17T01:06:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12449"
+  },
+  {
     "id": 12448,
     "title": "Bref： iPhone 、 iPad 、Mac 与 Apple TV 多平台支持的媒体播放器",
     "content": "Bref 是一款适用于 iPhone 、iPad 、Mac 和 Apple TV 多平台支持的媒体播放器。\n\n功能概览\n\n- 支持多种视频格式：3GP / 3G2, ASF, AVI, DivX / Xvid, DVR-MS, FLV, M4V, MKV, MOV, MP4, MPEG, MTS / M2TS, MXF, OGM / OGV, RM / RMVB, TS, VOB, WebM, WMV, WTV 等等\n- 支持多种视频编码：H.264 / AVC, H.265 / HEVC, AV1, VP9, VC-1, MPEG 等等\n- 支持多种音频格式：AAC, AC-3, E-AC-3, ALAC, APE, DTS / DTS-HD, FLAC, M4A, MLP / TrueHD, MP3, OGG, Opus, WAV / PCM, WMA 等等\n- 支持多种文件源选择：本地文件、SMB 、只读 NFSv3 、WebDAV 、FTP 、FTPES 、FTPS 、SFTP 、以及用于 EPUB 、PDF 阅读的 OPDS 图书源\n- 支持多种网盘：百度网盘、Dropbox 、Google Drive 、OneDrive 。\n- 支持多种媒体服务器：支持 Jellyfin 、Emby 、Plex 、飞牛影视，\n- 支持 IPTV：本地导入或远程订阅 M3U/M3U8 IPTV 播放列表\n- 支持局域网自动发现同一网络中的 UPnP / DLNA 媒体服务器\n- 支持海报、片源介绍等 Meta 信息的剥削获取\n- 支持字幕发现/选择/导入、音轨选择\n- 支持杜比视界、杜比音效文件的播放\n- 支持 iCloud 多设备同步\n- 支持网络投屏\n\n前后大概花了 7 个月的时间进行开发、测试，涵盖了：多种协议的解析、视频流的读取、多种格式兼容、缓存的处理，还有多平台设备的兼容、界面适应、网盘权限的开通等等，做一款播放器的难度比我预期的还要高很多，期待有更多人体验并反馈。\n\n开发 Apple TV App 的时候，参考了一些苹果的设计：侧边栏的样式、Siri Remote 触控区域左右滑动，即可连续调整视频进度，为客厅大屏带来直观、跟手的定位体验。\n\n因为精力有限，如果有不足的地方，请您多多包涵，反馈后我会及时进行解决。\n\n更多介绍可以查看落地页： https://www.bref.cn/\n\nApp Store：[Bref - 视频与音乐播放器](https://apps.apple.com/cn/app/bref-%E8%A7%86%E9%A2%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E6%92%AD%E6%94%BE%E5%99%A8/id6788695019)\n\n\n<img width=\"2147\" height=\"1539\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4d36115e-df62-480e-8a99-b1ffa8e0a7da\" />\n\n<img width=\"2147\" height=\"1539\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/14be3836-7950-4f0a-a2e0-a53ae5293119\" />",
@@ -736,69 +800,5 @@
     "created_at": "2026-10-14T04:14:54Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12356"
-  },
-  {
-    "id": 12355,
-    "title": "【开源自荐】Semaphore：纯浏览器本地运行、绝不上传图片的 ASCII 字符画与 2×4 盲文点阵工作台",
-    "content": "### 项目地址\n\n- **在线体验**：https://semaphore.bobochang.cn （转换器页面：https://semaphore.bobochang.cn/tool ）\n- **源码仓库**：https://github.com/can4hou6joeng4/Semaphore\n- **开源协议**：MIT\n\n---\n\n### 项目介绍\n\n平时在编写 GitHub README 头部 Banner、Linux SSH 登录欢迎图（`/etc/motd`）或者终端 fastfetch logo 时，经常需要把图片转换成纯文本 ASCII 字符画。\n\n但网上的多数转换工具要么必须将图片上传至第三方服务端（存在隐私隐患），要么充斥大量广告，且大多仅提供简单的 10 阶字符替换，导致人像和精细几何边缘严重失真。\n\n**Semaphore（旗语）** 是一款完全运行在浏览器本地的现代化图像转 ASCII 与盲文点阵转换工作台。\n\n![Semaphore 预览图](https://raw.githubusercontent.com/can4hou6joeng4/Semaphore/main/docs/images/social-preview.png)\n\n---\n\n### 核心亮点\n\n1. **绝对隐私保证（Zero Data Egress）**：\n   - 采用纯客户端 Canvas API 逐像素提取与严格 TypeScript 实现。\n   - 生产环境通过 Cloudflare 边缘强制实施严格的 CSP 策略：`connect-src 'none'`。\n   - 页面在物理上无法发起任何 `fetch`、`XMLHttpRequest` 或 `WebSocket` 请求；整站**无后端 API、无 Cookie、无任何第三方分析追踪脚本**，用户的图片字节绝对不会离开本地浏览器。\n\n2. **2×4 盲文点阵与误差扩散（Braille Dithering）**：\n   - 传统字符画每个等宽单元对应一个像素。Semaphore 利用 Unicode 盲文块（`U+2800..U+28FF`），将每个字符单元拆解为 2×4 的点阵矩阵。\n   - 引入 **Floyd–Steinberg 误差扩散抖动** 算法，在相同的列宽下实现了高达 8 倍的空间像素密度，即使是复杂的人物肖像轮廓也能清晰保留。\n\n3. **6 套针对不同终端场景的字符集阶梯**：\n   - `Standard`（经典 10 阶 7-bit ASCII）：` .:-=+*#%@`，兼容所有终端与老旧环境，永不乱码。\n   - `Detailed`（68 阶微调灰度）：灰度阶跃约 1.5%，适合大幅 Bannner 与打印。\n   - `Blocks`（Unicode 方块元素）：` ░▒▓█`，专为像素画与复古街机风格设计。\n   - `Minimal`（5 阶极简）与 `Binary`（01 赛博朋克二值化）。\n   - `Braille`（盲文点阵矩阵）。\n\n4. **调参与导出完备**：\n   - 支持实时调节输出列宽、对比度、亮度、色彩模式（单色绿磷光 / 灰阶 / 原图彩色 ANSI/RGB）、字符反相与反抖动。\n   - 支持一键复制纯文本、下载 `.txt` 文本文件、导出高分辨率单色/全彩 `.png` 图像、以及带有转换参数和原图预览的分享卡片（Share Card）。\n\n5. **极简技术栈与复古终端美学**：\n   - 零庞大框架依赖（Vanilla DOM + TS strict），单次加载即完成全部逻辑，弱网/离线即可使用。\n   - 界面融入 CRT 绿磷光微质感与扫描线特效。\n\n![转换器界面](https://raw.githubusercontent.com/can4hou6joeng4/Semaphore/main/docs/images/tool.webp)\n\n欢迎大家体验与反馈，感谢阮老师长期维护周刊！\n",
-    "created_at": "2026-10-14T04:04:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12355"
-  },
-  {
-    "id": 12354,
-    "title": "[软件自荐] MacClean：查看 Xcode 缓存和本地 AI 模型的磁盘占用",
-    "content": "我是 MacClean 的开发者，想给周刊推荐这个 Mac 磁盘清理工具。\n\n做 Xcode 开发或在本地跑模型时，可以先看清楚哪些文件占空间，再决定删什么。MacClean 把 Xcode 等开发缓存和 Ollama、Hugging Face、LM Studio 的本地模型列出来，显示占用和用途，供用户逐项选择。本地模型默认不勾选，删除后再次使用可能需要重新下载。\n\n支持 macOS 14 及以上，Apple silicon 和 Intel。扫描和查看结果免费；完整功能试用 7 天，之后清理需要买断许可证，当前价格 98 元起。普通文件会移入废纸篓，清空前仍占空间；Docker 清理和本地快照有单独的恢复限制。\n\n官网：https://thulem.com/?utm_source=ruanyf_weekly&utm_medium=community&utm_campaign=developer_storage\n\n目前尚未经过 Apple 公证，安装和权限说明见：https://thulem.com/download.html 。如果适合工具栏目，欢迎收录，也欢迎指出哪里还不方便。\n\n",
-    "created_at": "2026-10-14T04:01:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12354"
-  },
-  {
-    "id": 12353,
-    "title": "【插件自荐】MiaoMint：类 RayCast 的浏览器标签管理插件",
-    "content": "一个类似 RayCast 的浏览器标签管理插件。灵感来自于 Zen 的 Pannel。\n一个搜索框可以搜索、切换标签页；通过不同的指令组合对书签、历史记录进行管理。支持一键关闭重复标签。\n数据完全存放在本地，最大程度保证用户的数据不泄露。\n\n- 文章介绍地址：[插件+1：MiaoMint —— 类 RayCast 的标签管理工具](https://mp.weixin.qq.com/s/Z-aYpvfiAUptmBKtHz5KeA)\n- 官方网站：[https://miaomint.konata9.cc/](https://miaomint.konata9.cc/)\n- Chrome 商店地址：https://chromewebstore.google.com/detail/miaomint-smart-tab-manage/fhbglejcilmhdnmipnjhanffmbijjego?hl=zh\n\n### 标签搜索：\n![标签搜索](https://raw.githubusercontent.com/Konata9/pic-base/main/pics/20260923135202736.gif)\n### 书签/历史/常用标签搜索：\n![书签/历史/常用标签搜索](https://raw.githubusercontent.com/Konata9/pic-base/main/pics/20260923203755074.gif)\n### 书签去重\n![书签去重](https://raw.githubusercontent.com/Konata9/pic-base/main/pics/20260923210639060.gif)",
-    "created_at": "2026-10-14T03:46:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12353"
-  },
-  {
-    "id": 12352,
-    "title": "【资源自荐】Claude Code 国内使用指南（2026 版）：配置写法、模型 ID、缓存省钱与常见报错",
-    "content": "**Claude Code 国内使用指南（2026 版）**\n\nhttps://github.com/2867297362mjb-sketch/claude-code-guide-cn\n\n一页讲清在国内怎么用 Claude Code：几种用法（官方订阅、官方 API、云厂商、第三方 API）的利弊对比，macOS / Windows / settings.json 三种配置写法和一键脚本，模型 ID 怎么钉住（不钉会请求到网关没有的模型），常见报错表，以及 WorkBuddy、CodeBuddy、OpenCode、cc-switch 的接入方法。\n\n和常见教程不同的地方是带了真实账单数据：Claude Code 里一次 Opus 5.5 请求按官方价平均约 0.18 美元，上下文里 92% 是缓存读，所以账单高低主要看缓存有没有断，指南里列了会让缓存断掉的几种操作和自查方法。\n\n利益相关：仓库由 TeamoRouter 团队维护，推荐来源部分把我们列在官方和云厂商之后，所有配置对任何支持 Anthropic 原生协议的平台通用。MIT 协议。\n",
-    "created_at": "2026-10-14T03:40:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12352"
-  },
-  {
-    "id": 12351,
-    "title": "【开源自荐】LearnNote：字幕优先的视频笔记与本地学习工作台",
-    "content": "我是 LearnNote 的开发者，提交一个开源学习工具供周刊选题参考。\n\nLearnNote 把视频字幕、本地视频和 PDF、Markdown、TXT、HTML 资料放进本机工作台，供阅读、编辑和回到来源。视频有可用字幕时先读字幕；可以只保存字幕原文，或连接自己的文字模型生成总结笔记。原文和总结分别保留，AI 输出仍需核对。\n\n当前主线可通过 Windows 启动脚本打开浏览器工作台；macOS、Linux 仍属预览。公开的 v0.2.14 发行页另提供 Windows 安装包和浏览器扩展。无需 LearnNote 账号；使用远程模型需自行配置服务，费用和数据传输按所选服务商规则处理。\n\n源码采用 Apache-2.0，第三方组件保留各自许可。\n项目：https://github.com/hurry060215-tech/learnnote-assistant\n产品与流程：https://hurry060215-tech.github.io/learnnote-assistant/\n发行包：https://github.com/hurry060215-tech/learnnote-assistant/releases/tag/v0.2.14",
-    "created_at": "2026-10-14T03:32:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12351"
-  },
-  {
-    "id": 12350,
-    "title": "[网站自荐] 书径：用中文了解外文原版书的内容与阅读门槛",
-    "content": "### 网站\n[书径 · EbookNest](https://ebooknest.store/)\n\n### 它解决什么问题\n想找外文书时，中文读者常常先知道自己关心的主题，却不知道英文原书名。即使找到书，也还要判断它讲什么、适合什么阅读程度。\n\n书径把中文介绍、原文题名和精选内页放在同一个书籍页面里，让读者先了解内容，再选择原书。目前整理80条外文书目、12个主题，以英文非虚构读物为主，涵盖运动、航海、攀登、木工与工程手作、骑行、摄影和亲子等。\n\n### 可以怎样使用\n- 搜索中文书名、原文题名、作者或主题关键词，或按分类浏览。\n- 查看中文内容介绍、适读人群、目录选读和已有的版本信息。\n- 对于有内页预览的书，先看原书插图、排版和英文难度。\n- 通过6篇主题选书指南，比较同类书的不同内容方向。\n\n示例：[木工夹具选书指南](https://ebooknest.store/guides/woodworking-jigs-reading)。\n\n### 关联说明\n我是网站维护者，本帖为自荐，供周刊编辑评估。网站目前免费浏览，无需注册；有可用PDF资源的书籍提供百度网盘入口，保存或下载可能需要百度账号，文件保留原书语言，大部分为英文。\n",
-    "created_at": "2026-10-14T03:18:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12350"
-  },
-  {
-    "id": 12349,
-    "title": "【网站自荐】Vidlark - 40 多个 AI 视频和图片模型放在一个积分余额里",
-    "content": "自荐一个 AI 视频和图片生成网站：https://vidlark.ai/\n\n把 Seedance 2.5 / 2.0、Kling 3.0、Veo 3.1、Wan 3.0、MiniMax H3、Vidu Q4、Nano Banana 2.1、GPT Image 2.5 等 40 多个模型放在一起，用同一个积分余额。可以文生视频、图生视频、用参考图引导，部分模型带同步声音；图片侧有文生图、改图、放大和去背景。\n\n每个模型页在生成前显示价格，失败自动退积分。注册送 100 积分，不用绑卡；免费积分生成的内容带水印。界面有 6 种语言。\n\n关系披露：我是 Vidlark 的开发者。\n\n供周刊工具栏目参考。\n",
-    "created_at": "2026-10-14T03:05:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12349"
-  },
-  {
-    "id": 12348,
-    "title": "【工具自荐】Travel Planning：用 Codex 把旅行需求变成可分享的水彩旅行手账",
-    "content": "大家好，自荐一个我持续开发的旅行规划 Skill / Codex 插件：**Travel Planning**。\n\n它把旅行需求整理成一本有信息来源、可以在手机上阅读、分享和打印的水彩旅行手账。\n\n- [项目地址与安装说明](https://github.com/Acorn2/travel-planning)\n- [在线 Demo：宜昌峡江慢游 · 武汉纯电自驾 5 日](https://merry-sunshine-eaa71d.netlify.app/trips/yichang-2026-10-15/)\n\n![旅行手账首页：水彩封面与行程入口](https://raw.githubusercontent.com/Acorn2/travel-planning/main/assets/readme/demo-desktop.png)\n\n### 它解决什么问题？\n\n旅行攻略里的景点推荐很多，但整理成一份具体行程，还需要查交通、比较路线、确认预约，再把每天的安排发给同行者。\n\nTravel Planning 把这些步骤串起来：告诉 Codex 出发地、日期、人数、预算和偏好，先比较 2～3 个路线方案；确认方向后，再调研资料、编排行程，生成完整的行程页面。\n\n### 主要特点\n\n- **先选路线，再查细节**：结合交通、时间和旅行节奏比较方案，确认后再深入规划。\n- **研究保留来源**：记录地址、费用、预约要求、备选安排和待复核事项；按需接入高德、飞猪、飞常准和小红书，补充地图、交通及近期体验。\n- **生成水彩旅行手账**：包含“玩什么·吃什么 / 全程概览 / 每日行程 / 出发准备”四个视图，配有水彩封面、体验明信片和地方风味插画。\n- **方便分享和携带**：默认交付可独立打开的本地 HTML，支持打印或保存 PDF；审核并明确确认后，可以发布到自己的 Netlify 站点，通过链接和二维码分享。\n\n### 手机上的使用效果\n\n按日期查看每天的游玩主题、时间和地点，出发前集中检查预约与准备事项。\n\n<p>\n  <img src=\"https://raw.githubusercontent.com/Acorn2/travel-planning/main/assets/readme/demo-mobile-day.png\" width=\"320\" alt=\"手机每日行程：游玩主题、时间与地点\">\n  <img src=\"https://raw.githubusercontent.com/Acorn2/travel-planning/main/assets/readme/demo-mobile-prepare.png\" width=\"320\" alt=\"手机出发准备：预约事项与办理入口\">\n</p>\n\n### 怎么使用？\n\n安装后，可以直接向 Codex 提出这样的需求：\n\n> 使用 $travel-planning 帮我规划上海出发的杭州三日游，2 人，预算 5000 元，喜欢历史街区和当地美食，节奏不要太赶。\n>\n> 先给我 2～3 个路线方案，等我确认后再深度调研，最后生成可以在手机阅读、分享和打印的旅行手账。\n\n目前已验证 Codex 安装流程，安装命令和可选数据源配置见项目 README。\n\n插件负责研究与规划，不代订或付款；价格、开放时间、余票等动态信息仍需临行复核。截图中的水彩插画为 AI 生成的氛围示意，并非景点实拍。\n\n项目基于 [mater1996/travel-planning](https://github.com/mater1996/travel-planning) 持续开发，采用 **PolyForm Noncommercial License 1.0.0**，商业用途需另行授权。\n\n欢迎试用，也欢迎反馈安装和行程安排中的问题。",
-    "created_at": "2026-10-14T03:00:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12348"
   }
 ]
