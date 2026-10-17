@@ -1,5 +1,29 @@
 [
   {
+    "id": 12488,
+    "title": "【开源自荐】BeatBrowser：让 Codex 等 Agent 使用你已登录的 Chrome",
+    "content": "项目地址：https://github.com/BeatAPI/BeatBrowser\n\n我是项目维护者，想自荐 BeatBrowser：一个免费、MIT 开源的 Chrome 扩展和本地桥接工具，让 Codex、Claude Code 等兼容 Agent 使用你现有的 Chrome 和网站登录态，不必另换专用浏览器。\n\n任务在独立后台窗口中运行，可以在扩展工作区查看进度、暂停、继续或人工接管。扩展、桥接、MCP、CLI和JavaScript SDK源码均公开。\n\n本地模式需要 Node.js 20+、Chrome 116+，扩展通过开发者模式加载；Agent/模型费用由使用者自行承担。另有可选云端适配器预览，通过用户自己配置的认证隧道连接本机 Chrome，电脑需保持在线。\n\n[中文README](https://github.com/BeatAPI/BeatBrowser/blob/main/README.zh-CN.md) · [安装说明](https://github.com/BeatAPI/BeatBrowser/blob/main/docs/INSTALL.md)\n\n![本地安装与使用路径示意，非实机任务截图](https://raw.githubusercontent.com/BeatAPI/BeatBrowser/main/media/readme-journey.zh-CN.png)\n",
+    "created_at": "2026-10-17T20:09:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12488"
+  },
+  {
+    "id": 12487,
+    "title": "[开源自荐] Typorium：让 iPad 也能拥有 Typora 式的所见即所得 Markdown 编辑体验",
+    "content": "### 项目介绍\n\n项目地址：https://github.com/ikwbb/Typorium\n\n在线体验：https://ikwbb.github.io/Typorium/\n\n我是项目作者，想自荐一个开源的 Markdown 编辑器 **Typorium**。\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3729e677-d2d5-4106-923c-5b65c14fdbf5\" />\n\n一直很喜欢 Typora 的所见即所得（WYSIWYG）编辑体验，但在 iPad 上很难找到类似的 Markdown 编辑器。于是做了 Typorium，希望能把接近 Typora 的写作体验带到浏览器，尤其是 iPad 上。\n\nTyporium 不需要下载安装包，打开网页就能使用，也可以添加到 iPad 主屏幕，像原生 App 一样离线使用。\n\n### 主要特点\n\n- **Typora 式所见即所得**：直接编辑排版后的 Markdown，光标移到对应位置时才显示 Markdown 标记，不需要在源码和预览之间来回切换。\n- **专门适配 iPad**：针对触屏、虚拟键盘和文本选择做了优化，键盘上方提供格式工具栏，支持触控编辑。\n- **功能比较完整**：支持表格、代码高亮、MathJax 数学公式、Mermaid 图表、目录、文件管理等。\n- **跨平台、离线可用**：支持 Windows、macOS 和 iPadOS 等平台的现代浏览器，可安装为 PWA。\n- **本地优先**：无需注册账号，文档保存在设备本地，可以导入和导出普通 `.md` 文件。\n- **兼容 Typora**：支持导入 Typora 主题，尽量保持 Markdown 文件及编辑习惯的一致性。\n\n项目使用 TypeScript 和 CodeMirror 6 构建，参考了 [Open Typora](https://github.com/AniChikage/open-typora)，并同样采用 MIT 许可证开源。\n\n欢迎大家试用，尤其希望听到 iPad 用户的反馈！",
+    "created_at": "2026-10-17T19:58:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12487"
+  },
+  {
+    "id": 12486,
+    "title": "【工具自荐】html-to-video：一条命令把 HTML 动画逐帧渲染成 MP4（MIT，纯本地）",
+    "content": "一个把 HTML / Canvas 动画**逐帧渲染成 MP4** 的命令行工具。\n\n不是录屏，也不是 AI 文生视频。做法是：把画面在 HTML 里写成 `frame(t)` 纯函数，用无头浏览器逐帧 seek 到指定时刻截图，再用 ffmpeg 编成 H.264。因为是逐帧推的，所以帧率是真的（60fps 不用插帧），每一帧都精确对齐，同样的输入永远得到同样的输出。\n\n**它解决的问题**\n\n现在想用代码做视频，主流选择是 Remotion（React）或 Motion Canvas（场景式）。两者都好，但要先把内容组织成它们的世界观。而很多真实场景是：手上已经有一屏 HTML（常常是 AI 刚生成的），只想把它变成 mp4。为一屏画面建一个 React 工程，代价过大。\n\n这个工具刻意不做框架 —— 输入是一个能跑的 HTML 文件，输出是 mp4：\n\n```bash\nbash assets/render.sh my-video.html --duration=6 --fps=60\n```\n\n**几个不太常见的点**\n\n- **确定性**：冻结 wall-clock rAF，由外部逐帧推进，同一份代码重跑逐帧一致。可版本管理、可做视觉回归\n- **自带验收**：`qa.js` 检查六维（确定性 / 最长连续静止 / 跳变 / 文字框景 / 字体回退 / 控制台报错）。为了让验收本身可信，仓库里放了一个塞满六类真实缺陷的对照样本，测试要求它必须被判失败\n- **横竖屏自适应**：`--width=1080 --height=1920` 就是竖屏，模板跟视口重排而不是拉伸。1920×1080 下与旧版逐像素一致（PSNR 逐帧回归，`average:inf`）\n- **断点续渲**：`--resume`，长片子跑到 80% 崩了不用从零开始。帧先写 `.part` 再改名，参数变了直接拒绝，编码前逐个核帧号 —— 实测续渲出来的 mp4 与一次渲完的 **MD5 完全相同**\n\nMIT，纯本地运行，不调任何 API，不按次计费。\n\nGitHub：https://github.com/wx4766/html-to-video\n\n---\n\n*（自我补充：项目 2026-10 开始维护，目前一个人在做。6 个模板覆盖标题卡 / 条形图 / 折线图 / 数字滚动 / 时间线 / 竖屏卡，README 里每个都有 GIF 预览和 1080p 原片。CI 跑在 Ubuntu + Node 20 上，14 个用例。最缺的是新模板，仓库里挂了 4 个 `good first issue`，欢迎认领。）*",
+    "created_at": "2026-10-17T17:38:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12486"
+  },
+  {
     "id": 12483,
     "title": "【游戏自荐】vibestead/Vibe村，一款面向 Vibe Coding 人群的像素风村庄经营游戏，写代码，建家园",
     "content": "我想做一个能陪大家写代码、也能在休息时进去逛逛的小世界，于是有了 Vibe 村：一款面向 Vibe Coding 爱好者的像素风村庄经营游戏。\n\n[https://vibestead.org/](https://vibestead.org/)\n\n第一次打开需要加载游戏素材，可能有些慢。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ce8cec26-9f94-4a3e-94fb-cb75941de95d\" />\n\n你从一片林地和一间木材厂开始，慢慢搭起生产线、建造住宅、种菜、布置小院，把森林里的小村庄经营起来。\n\n🎮 可以玩些什么？\n\n🪵 经营木材厂\n招募伐木工和种植工，安排采伐、补种和运输，再把原木一步步加工成木板与成品。升级设备、扩展林区，观察哪里缺料、哪里积压，把整条生产线运转起来。\n\n<img width=\"1010\" height=\"576\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f3094743-0eb9-44b3-b2c7-7950dccf9099\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f201ca82-b5e8-4d1e-87cd-592203e50cf9\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/22a5ec1a-b947-4221-990c-b5b2fb5d04c7\" />\n\n🚚 接订单、做生意\n根据客户需求备货、装车、配送，完成订单领取货款，再把收入投入下一轮建设。随着发展，还能解锁更多设备和经营内容。\n\n<img width=\"1000\" height=\"678\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3239d64f-bfde-44ca-a2f3-98ab3bfe0916\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/37190db1-04c0-4b1b-984f-6467fa096f72\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/49e5b384-a1d7-439c-8640-e3169409586a\" />\n\n👷 招募经理，逐步实现自动化\n收集和培养不同经理，提高机器效率，解锁运输和接单等自动化能力，看着伙伴们在村里忙碌。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd33f9b3-5db6-476d-be20-dd662a397e3f\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ee28566-6022-4f9d-9714-3c88af007e3a\" />\n\n🏡 盖房子，建设自己的村庄\n从第一栋住宅开始，收集木材、钉子、油漆和砖块，完成施工与升级，逐渐提高村庄繁荣度。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e028a932-ca04-46ce-8618-eac48bfebfea\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cbd3edeb-fc97-45af-8389-accc4f6d7882\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9579fd33-9dca-48d2-b3f7-543d6f12e2ad\" />\n\n\n🥕 种菜、手作、逛小院\n经营之外，也可以照料田园、参与小游戏、制作手作品、收集装饰，按自己的节奏安排村庄生活。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/78d9556b-a16e-4259-8a20-7d76266bf1d4\" />\n\n\n💎 把编程日常带进游戏\n连接 Vibestead CLI 后，可以同步 AI 编程用量，回到游戏领取钻石，用于村庄建设和装饰。支持接入 Codex、Claude Code 等工具；上传的是每日用量汇总，不上传代码或聊天正文。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bb85568a-697f-4b34-beda-346003d4f835\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/84ad4b29-a9ac-4be6-96da-3fcff80606ec\" />\n\n游戏内置了全球排行榜，可以跟全球玩家对比Token消耗量，也可以创建一个群组，跟自己的几个朋友一起做一个小榜单互相比比谁消耗的Token更多。\n\n✨ 我最想分享的几个亮点\n- 写代码与养村庄连在一起：编程用量可以兑换游戏奖励，给每天的 coding 多一点看得见的仪式感。\n- 经营过程看得见：工人采伐、车辆运输、机器加工，资源沿着生产线流转，小村庄会随着投入逐渐成长。\n- 经营与田园生活都能玩：想研究效率就调整产线，想放松就种菜、盖房、布置小院。\n- 打开浏览器就能玩：支持中文和英文，适合在写代码的间隙回来看看。\n\n游戏还在持续打磨中，欢迎喜欢像素风、放置经营和 Vibe Coding 的朋友来试试。也很想听听大家的建议：哪里好玩、哪里卡住、还想在村里做些什么，都欢迎告诉我。\n",
@@ -774,29 +798,5 @@
     "created_at": "2026-10-15T03:29:53Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12387"
-  },
-  {
-    "id": 12386,
-    "title": "【开源自荐】Python / Node.js 模型 API 示例：中文 SSE 分块、断流排错与费用估算",
-    "content": "开源地址：https://github.com/lintt76/tikway-examples\n\n一组不依赖第三方库的模型 API 接入示例，主要面向第一次接入 OpenAI 兼容接口，或者需要排查 Node.js 流式输出问题的开发者：\n\n- Python 标准库发送最小 Chat Completions 文本请求，检查鉴权、模型 ID 和响应结构。\n- Node.js 原生 fetch / SSE 示例：处理 UTF-8 中文跨分块、CRLF、多行 data、流内错误和缺少 `[DONE]` 的提前断流。\n- Python Decimal 费用估算：按输入／输出价格、Token 单位和请求数估算预算，不联网。\n- 中英文 README、401／404／断流排错说明，以及 13 项离线自动检查。\n\n配套文章：[模型 ID、Token 用量和费用如何核对](https://tikway.ai/guides/model-id-and-billing-verification)。文章区分展示名称、请求 ID 与别名映射，也说明响应字段或模型自述不能单独证明底层模型来源。\n\n利益关系说明：由 Tikway 运营方自荐。示例代码 MIT 开源，费用计算和离线测试不调用 API；运行真实请求需要自己的 Key，并按所用服务的规则计费。Tikway 是独立第三方 API 服务，非模型厂商官方服务。当前验证范围是模拟响应和离线计算，未宣称完成所有生产型号或 Agent 工作流的实测。\n",
-    "created_at": "2026-10-15T03:17:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12386"
-  },
-  {
-    "id": 12385,
-    "title": "【工具自荐】Lunar Age Calculator：向英文读者解释传统虚岁与周岁",
-    "content": "我是 Chinese Gender Predictor 的维护者，自荐其中一个可以独立使用的英文工具：[Lunar Age Calculator](https://chinesegenderpredictor.net/lunar-age-calculator/)。\n\n输入公历生日和要查询的日期，就能比较传统虚岁与周岁。工具先把两个日期转换为农历年份，再按“目标农历年 − 出生农历年 + 1”计算，而不是一律给周岁加一；页面解释了春节前后、生日和闰日带来的差异，便于向不熟悉中国历法的朋友说明这种计龄方法。\n\n日期计算在访客浏览器内完成，不需要账号，输入的生日、日期和计算结果不会发送给统计服务。网站有可选择的访问统计，不能将它描述成完全没有统计。\n\n同站的传统性别表只是民俗娱乐，明确说明不能用于医学判断；另有免费 A4/US Letter 派对游戏 PDF。制作过程使用了 AI 辅助，历法换算使用 lunar-javascript，计算方法和来源说明见 [How it works](https://chinesegenderpredictor.net/how-it-works/)。\n\n网站：https://chinesegenderpredictor.net/\n\n![网站界面预览](https://chinesegenderpredictor.net/assets/social-preview.png)\n",
-    "created_at": "2026-10-15T02:40:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12385"
-  },
-  {
-    "id": 12384,
-    "title": "【资源自荐】AI Browser Games：按操作方式、节奏和人数筛选浏览器游戏",
-    "content": "我是 AI Browser Games 的维护者，想向周刊推荐这个浏览器游戏发现目录：\n\nhttps://aibrowsergames.net/\n\n目录目前收录 100 款第三方浏览器游戏，通过 iDev.Games 官方播放器在网页内打开。玩家可以按类型、操作方式、游戏节奏和游玩人数筛选，先看说明再决定玩哪一款。\n\n我整理了每款游戏的操作说明、创作者来源和资料核对记录，并把“来源资料已核对”与“浏览器内试玩检查”分开标记。对于设备或操作支持尚未确认的条目，页面会保留未知状态。\n\n站名里的 AI 对应一个有来源依据的制作标签：目前只有 4 款游戏有创作者公开说明的 AI 辅助制作记录，页面提供来源链接，并区分制作辅助与游戏运行时的 AI 功能。其余条目按普通浏览器游戏展示。\n\n这个目录适合想按手头的输入设备、节奏偏好或游玩人数找小游戏的读者。游戏由各自创作者提供，本站负责筛选、信息整理和发现体验。\n",
-    "created_at": "2026-10-15T02:14:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12384"
   }
 ]
