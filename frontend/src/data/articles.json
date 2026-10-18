@@ -1,5 +1,61 @@
 [
   {
+    "id": 12524,
+    "title": "【工具自荐】AOCI-CODE：为 AI 编程助手建立可持续维护的项目认知地图",
+    "content": "推荐一个面向 AI 编程和长期项目维护的工具：**AOCI-CODE**。它为 AI Agent 建立一份随代码保存、可持续维护的项目认知地图，通过本地 CLI 和 MCP Server 接入 Codex、Claude Code、Cursor 等编程助手。项目源码公开，采用 FSL-1.1-MIT 许可证。\n\n- GitHub：https://github.com/aoci-spec/aoci-code\n- 中文介绍与使用说明：https://github.com/aoci-spec/aoci-code/blob/main/README.zh-CN.md\n- 发布包：https://github.com/aoci-spec/aoci-code/releases\n\n用 AI 开发已有项目时，新开对话或切换 Agent 后，往往需要重新搜索代码、梳理模块关系，重要的设计约束也容易在上下文中丢失。AOCI-CODE 将模型对文件和数据库表的理解保存为结构化的纯文本索引，让 Agent 开始任务前先了解系统整体，再按需查看具体源码，适合接手已有项目、持续迭代开发和跨会话协作。\n\n主要功能：\n\n- **项目整体认知**：由模型基于实际源码，为受管文件和数据库表撰写索引，记录职责、重要关系、接口约定，以及修改时需要遵守的约束。\n- **跨会话、跨 Agent 复用**：索引随项目保存，通过 Git 管理版本；在索引与代码版本一致时，后续会话和其他 Agent 可以读取并复用已有的系统认知。\n- **增量维护**：开发任务完成后，通过 MCP 工作流发现代码变化，由 Agent 更新受影响的索引条目，让认知随项目一起演进。\n- **代码与数据库统一理解**：支持代码索引和表级数据库索引；目前支持 MySQL、PostgreSQL，以及受限支持的 openGauss 6.0.5，数据库索引读取表结构，不读取业务数据。\n- **本地运行、接入现有工具**：AOCI-CODE 本身不上传源码；索引由用户已有的 AI Agent 撰写，沿用该 Agent 的模型通道。\n\n项目目前处于发布候选阶段。首次建立索引需要 Agent 读取受管文件并撰写条目，项目越大耗时越长，支持中断后继续。索引用于提供整体认知，具体修改仍需核对源码和运行测试。安装、MCP 接入及建立索引的步骤见中文 README。\n\n欢迎正在使用 AI 维护实际项目的朋友试用，也欢迎通过 [Issues](https://github.com/aoci-spec/aoci-code/issues) 反馈使用的 Agent、项目规模和遇到的问题。\n",
+    "created_at": "2026-10-18T16:48:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12524"
+  },
+  {
+    "id": 12523,
+    "title": "【开源自荐】Social SDK：统一的 TypeScript 社交平台客户端",
+    "content": "项目地址：https://github.com/opencoredev/social-sdk\n文档：https://social-sdk.dev\n\nSocial SDK 是一个 MIT 许可的 TypeScript 库，用一个类型化客户端对接 X、Threads、Bluesky、LinkedIn、Instagram、TikTok 和 YouTube，也可以接 Zernio、Postiz、PostFast、Buffer 等托管后端。每个发布目标单独返回结果（已发布、处理中、失败等），并附带可离线测试的 mock 后端。运行在 Node.js 22.12+ 或 Bun 上。",
+    "created_at": "2026-10-18T16:13:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12523"
+  },
+  {
+    "id": 12522,
+    "title": "【开源自荐】wxa-runner：在浏览器里用微信官方基础库运行小程序，支持 Playwright 无头测试",
+    "content": "项目地址：https://github.com/open-wxa/wxa-runner\n\n我是项目作者。wxa-runner 是一个开源（MIT）命令行工具，可以在普通浏览器里运行微信小程序，用于本地调试和 E2E 自动化测试。\n\n它不把小程序转成 H5，而是直接加载微信官方的基础库和编译器，自己只实现微信客户端的「原生层」：消息桥、页面栈、原生 API，以及导航栏、tabBar、弹窗这些原生界面。渲染、组件、`setData`、生命周期都由官方代码完成，行为和开发者工具一致。\n\n在小程序目录（或 uni-app / Taro 编译出的 `mp-weixin` 目录）里一行启动：\n\n```bash\nnpx wxa-runner dev . --open\n```\n\n<img width=\"1454\" height=\"805\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/69593a8a-addb-4d7a-8f60-4d08e109c221\" />\n\n### 能做什么\n\n- **AI Agent 可以直接操作**：Claude Code、Codex 这类 Agent 最擅长的就是操作浏览器。小程序跑在浏览器里，它们用现成的浏览器能力就能点页面、看 DOM、读控制台和网络请求、写 Playwright 测试，不用为小程序额外配置开发者工具的自动化端口\n- **用 Chrome DevTools 调试**：打断点、看网络请求和 DOM，调用栈停在业务代码上，不会掉进基础库\n- **Playwright 无头测试**：直接在浏览器里跑 E2E，不用远程控制开发者工具，CI 里没装开发者工具也能跑\n- **跳过登录**：在 `wxa.setup.ts` 里预置 storage、mock 原生 API、拦截 `wx.request`，不用改业务代码\n- **直接打开任意页面**：地址加上 `?path=pages/detail/detail&id=1` 即可\n- **热更新**：改页面的 wxml、js、wxss 不刷新页面，页面栈和全局状态都保留\n\n测试写起来是这样：\n\n```ts\ntest('提交后跳转到结果页', async ({ miniProgram }) => {\n  await miniProgram.mock('login', { code: 'test_code' });\n  await miniProgram.open('pages/form/form');\n  await miniProgram.current.locator('#submit').click();\n\n  await expect(miniProgram).toHavePath('pages/result/result');\n  await expect(miniProgram).toHavePageData({ status: 'ok' });\n});\n```\n\n### 当前边界\n\n- 不替代开发者工具：预览、上传、真机调试仍然要用开发者工具\n- 不支持蓝牙等设备能力，也不支持插件、分包异步化和 Worker\n- 已在 uni-app（Vue 3）真实项目上验证，基础库验证过 2.32.3 到 3.8.8 之间的多个版本\n\n欢迎试用。遇到跑不起来的小程序，请到 Issue 里反馈。\n",
+    "created_at": "2026-10-18T16:08:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12522"
+  },
+  {
+    "id": 12521,
+    "title": "【网站自荐】Krillion Unlimited -  Krillion游戏无限练习站",
+    "content": "项目名称：[Krillion Unlimited](https://krillion-unlimited.org)\n\n一句话介绍： Krillion 无限练习站——每天可反复开局练 rare-answer 手感，并附带今日答案、无剧透提示、往期归档和题目单页。\n\n主要功能：\n\n    无限练习：Classic（7 题限时）、Endless（氧气计时）、Topic（按分类练），记录存在浏览器本地，不用登录。\n    内容站：今日答案、Hints、Archive 日期页、Prompt 单页；按档位给可执行的打分提示。\n\n演示：打开 https://krillion-unlimited.org/ ，点 Start dive 即可试玩。\n\n截图：![krillion unlimited](https://krillion-unlimited.org/img/og/home.jpg)",
+    "created_at": "2026-10-18T15:18:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12521"
+  },
+  {
+    "id": 12520,
+    "title": "猫斯卡：从故事想法开始做 AI 剧集短剧",
+    "content": "我们是猫斯卡团队，想自荐我们做的 AI 剧集短剧创作工具。打开[猫斯卡](https://www.maosika.com/)，写下故事想法，按引导确定集数、单集时长和调性，再确认简报与人物，便可开始分集写作。\n\n已有演示里，奶茶店店长穿越到东宫开店，得到了 30 集梗概和前三集正文。第一集末，李管事拿着封条来查封；第二集一开场，他仍举着封条，眼睛却粘在桌上的奶茶上。可以对照截图，看上一集留下的动作如何接下去。\n\n本次展示2026年9月9日留存的创意输入与剧本，未包含该剧的视频成片；平台按实际用量计费，内容由创作者修改、确认。\n\n![已有项目的故事输入：奶茶店店长穿越到东宫开店](https://github.com/user-attachments/assets/82599ce3-8a10-440c-ac16-9cf8dd06144c)\n\n![第 2 集开场：李管事仍举着封条，视线转向桌上的珍珠奶茶](https://github.com/user-attachments/assets/10458d61-ff20-43dc-a5d5-86937dff0ca3)\n",
+    "created_at": "2026-10-18T14:58:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12520"
+  },
+  {
+    "id": 12519,
+    "title": "【开源自荐】estafeta：跨 AI 编程会话保存计划、检查结果和下一步",
+    "content": "我是 estafeta 的作者。这个开源项目用于把编程任务从一次 AI 会话交接到下一次：计划、已执行的检查和下一步保存在项目文件中。\n\n例如，结束时使用 `session-end` 保存下一步；新会话用 `session-start` 读取项目上下文，检查工作区变化后继续。`plan-and-orchestrate` 用于分阶段计划和验收，小型 Python 运行时记录实际检查的命令及结果。\n\n需要 Python 3.9+ 和有终端访问能力的编程助手，可用于 Claude Code、Codex 等。它不迁移聊天历史或登录凭据。\n\n源码：https://github.com/pashbel/estafeta\n\n免费，Apache-2.0。\n\n这段中文由 AI 协助撰写。\n",
+    "created_at": "2026-10-18T14:45:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12519"
+  },
+  {
+    "id": 12518,
+    "title": "【开源自荐】StoneSVN：支持 Windows、macOS 和 Linux 的 SVN 桌面客户端",
+    "content": "推荐一个面向仍在使用 SVN 的开发者的开源桌面客户端：**StoneSVN**。支持 Windows、macOS 和 Linux，采用 MIT 许可证，基于 OrcaSVN 继续开发。\n\n- 官网与界面预览：https://stonesvn.github.io/zh-CN/\n- GitHub：https://github.com/firzen/StoneSVN\n- 安装包：https://github.com/firzen/StoneSVN/releases/latest\n\n很多项目仍需要使用 SVN。StoneSVN 将日常的“查看变更 → 审阅差异 → 选择提交”集中到一个工作台，适合管理多个工作副本，以及希望在不同操作系统上使用同一套界面的开发者。\n\n主要功能：\n\n- **多工作副本管理**：通过项目栏切换工作副本，在当前会话中按项目保留提交草稿、勾选和筛选条件。\n- **审阅差异与选择提交**：查看文本 Diff，按文件或目录选择提交范围。\n- **本地贮藏**：暂存尚未准备提交的修改，支持按文本变更块选择，再恢复到原工作副本。\n- **历史和文件操作**：查看提交时间线及单文件历史，预览图片、编辑 SVN 属性，支持保留历史的重命名与移动。\n- **全局忽略**：在所有工作副本中统一过滤临时文件。\n- **多语言与主题**：支持简繁中文、英文、日文、韩文及浅色、深色主题。\n\n当前正式版本为 v1.1.2，提供 Windows、macOS（Apple Silicon / Intel）和 Linux 安装包。技术栈为 Tauri、Rust 和 Vue 3，调用本机 SVN CLI，需要另行安装 SVN 命令行工具。\n\nmacOS 安装包采用 Ad-hoc 签名，尚未经过苹果公证，首次打开方式见官网。通用 Merge、Switch 和逐行 Blame 界面尚未提供。\n\n欢迎有 SVN 使用场景的朋友试用，也欢迎通过 [Issues](https://github.com/firzen/StoneSVN/issues) 反馈系统版本、SVN 版本及遇到的问题。\n",
+    "created_at": "2026-10-18T14:07:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12518"
+  },
+  {
     "id": 12517,
     "title": "【作品自荐】Word Ladder：免费四字母英文词梯小游戏",
     "content": "自荐一个浏览器小游戏 Word Ladder：\n\nhttps://getwordladder.com/\n\n它采用经典词梯规则：每一步只改变一个字母，组成有效的四字母英文单词，从起点走到目标词。打开即可免费游玩，无需注册或安装。\n\n目前支持每日挑战、自由练习、提示、撤销和换题。完成后可以分享不含解题单词的成绩，也可以发送同题链接给朋友。界面采用简洁的卡片样式。\n\n每日题按纽约日期更新，使用固定题库循环排期；进度只保存于当前浏览器，没有云同步。适合喜欢英文单词和短篇文字谜题的人试玩。\n",
@@ -82,7 +138,7 @@
   {
     "id": 12507,
     "title": "【开源自荐】吃了麦？——用真实菜单和套餐组成给麦当劳配餐",
-    "content": "项目：https://github.com/HessianZ/chilemai （MIT 开源）\n\n「吃了麦？」是一个 WorkBuddy Skill，想帮不愿翻菜单的人决定麦当劳吃什么：说出地点、预算和偏好，查询门店在售菜单、核对套餐组成与营养，再给出一餐建议。目前仅接入麦当劳 MCP，需要自行配置 Token；非麦当劳官方产品。\n\n值得开发者讨论的一个细节：套餐不能套用同名主食的热量。项目把菜单、规格、套餐组成和营养匹配放在一起处理，对规格不明或数据缺失保留待确认状态。10月15日用 WorkBuddy 实际完成了附近门店、在售菜单、营养表和套餐组成四种只读查询；未创建订单或支付，最终价格与供应仍需当次核实。\n\n- [32秒介绍片](https://www.bilibili.com/video/BV1A4Je6HEmx/)\n- [SkillHub 安装入口](https://skillhub.cn/skills/indiv-hessian/chilemai)\n- [安装说明与源码](https://github.com/HessianZ/chilemai#安装)\n\n首次可以只查询：“杭州西湖附近，到店自取，预算40元，想控制热量。先确认门店并查询当次菜单，给我两种方案，说明套餐组成。这次只查询，不下单。”\n\n本条为项目方自荐，由 AI 助手协助整理，供周刊编辑独立评估是否适合收录。\n",
+    "content": "项目：https://github.com/HessianZ/chilemai （MIT 开源）\n\n「吃了麦？」是一个 WorkBuddy Skill，想帮不愿翻菜单的人决定麦当劳吃什么：说出地点、预算和偏好，查询门店在售菜单、核对套餐组成与营养，再给出一餐建议。目前仅接入麦当劳 MCP，需要自行配置 Token；非麦当劳官方产品。\n\n值得开发者讨论的一个细节：套餐不能套用同名主食的热量。项目把菜单、规格、套餐组成和营养匹配放在一起处理，对规格不明或数据缺失保留待确认状态。10月15日用 WorkBuddy 实际完成了附近门店、在售菜单、营养表和套餐组成四种只读查询；未创建订单或支付，最终价格与供应仍需当次核实。\n\n- [32秒介绍片](https://www.bilibili.com/video/BV1A4Je6HEmx/)\n- [SkillHub 安装入口](https://skillhub.cn/skills/indiv-hessian/chilemai)\n- [安装说明与源码](https://github.com/HessianZ/chilemai#安装)\n\n首次可以只查询：“杭州西湖附近，到店自取，预算40元，想控制热量。先确认门店并查询当次菜单，给我两种方案，说明套餐组成。这次只查询，不下单。”\n\n本条为项目方自荐，由 AI 助手协助整理，供周刊编辑独立评估是否适合收录。\n\n10月18日补充：[免 Token 历史案例预览](https://hessianz.github.io/chilemai/) 已上线。可调整预算与热量条件、展开套餐组成并复制首次只读查询提示。页面只比较两份10月15日的真实历史案例；价格为当时菜单估价，未最终核价，不实时查询、不下单。\n",
     "created_at": "2026-10-18T07:50:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12507"
@@ -742,61 +798,5 @@
     "created_at": "2026-10-16T01:59:07Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12423"
-  },
-  {
-    "id": 12422,
-    "title": "【网站自荐】僵尸拥抱动效视频生成工具 Zombie Couple Video",
-    "content": "项目名称：[Zombie couple Video](https://zombieaivideo.app/)\n\n我是这个网站的开发者，自荐一个用两张照片生成「僵尸趋势」短视频的网页工具。\n\n## 功能说明\n上传两张照片，一张是拿枪的人，一张是变成僵尸的人、家人或宠物。不用写提示词，网站按固定的四段镜头生成一条 15 秒、带声音的视频：木屋里举枪对峙、僵尸面部特写、放下枪后扑过来拥抱，最后切到麦田里。\n\n## 主要特色\n可选 480p 或 720p，以及 16:9 或 9:16。\n一次买断积分，没有订阅。积分有效期 365 天。生成失败会自动退回积分。\n\n网站界面是英文。请只使用本人、宠物，或已同意出镜的成年人的照片。\n\n欢迎试用和反馈。\n\n![zombie ai video](https://zombieaivideo.app/imgs/example/poster.webp)",
-    "created_at": "2026-10-16T01:33:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12422"
-  },
-  {
-    "id": 12421,
-    "title": "【开源自荐】LightRead 轻阅：本地优先的电子书与论文阅读器",
-    "content": "项目地址：https://github.com/yzfly/LightRead\n下载地址：https://github.com/yzfly/LightRead/releases/latest\n\n自荐一个开源阅读工具 LightRead（轻阅），面向同时阅读电子书和 PDF 论文的用户。它把藏书、阅读进度和批注默认保存在本机，本地阅读不需要注册或联网，提供 macOS、Windows、Linux 安装包，另有实验性 Android 版本。\n\n几个主要用途：\n\n- 阅读 EPUB、MOBI、AZW3、PDF 等格式，在同一个本地书库中管理电子书和论文。\n- PDF 原版页面阅读、划线批注、书签和听书；支持离线语音模型。\n- 从 arXiv、古登堡计划、OPDS / Calibre 等来源找书或论文。\n- 可选论文翻译和 Agent 精读；“论文十问”分别保留 AI 初答、自己的修订和 AI 再答，方便形成自己的理解。\n- 支持开放藏书包导入导出和 WebDAV 备份，便于迁移自己的数据。\n\n技术栈是 Tauri 2 + Rust + Vue 3，许可证为 AGPL-3.0-or-later。AI、在线书源和在线语音属于可选联网功能，模型服务可能产生费用；不配置 AI 也可正常阅读。\n\n![轻阅书库](https://raw.githubusercontent.com/yzfly/LightRead/main/docs/screenshots/library.png)\n\n![PDF 双页阅读](https://raw.githubusercontent.com/yzfly/LightRead/main/docs/screenshots/pdf-spread.png)\n\n欢迎试用与反馈。\n",
-    "created_at": "2026-10-16T00:38:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12421"
-  },
-  {
-    "id": 12420,
-    "title": "【开源自荐】bodycam：记录 Claude Code、Codex 等 AI 编程助手在你 Mac 上做的每一件事",
-    "content": "项目名称：bodycam\n\n项目地址：https://github.com/omlahore/bodycam\n\n官网：https://omlahore.github.io/bodycam/\n\n一句话介绍：bodycam 是一个免费开源的 macOS 工具，用系统自带的 eslogger（Endpoint Security）记录 Claude Code、Codex、Gemini CLI 等 AI 编程助手执行的每条命令、读写的每个文件、读取的密钥和打开的网络连接。\n\n主要功能：\n- 用 `bodycam claude` 启动助手，退出时生成 Markdown 报告，命令行里像 token 的值会自动打码。\n- 标记值得注意的行为：读取 .env、SSH 私钥、钥匙串、浏览器数据，修改 .zshrc、LaunchAgents，执行 curl | sh 等。\n- 连助手启动的子进程（npm test、shell 脚本）也一起记录，这些在助手自己的对话记录里看不到。\n- 菜单栏应用：助手运行时图标变红，读到敏感文件时发通知，每次运行都有完整时间线。\n- `bodycam --demo` 运行一个无害的假助手，可以直接看效果。\n- 报告只保存在本机。MIT 协议，Go + Swift 编写。\n\n支持平台：macOS 13+（Apple Silicon 与 Intel）\n\n安装：\n\n    brew install omlahore/tap/bodycam\n    brew install --cask omlahore/tap/bodycam-app\n\n截图：\n\n![bodycam](https://raw.githubusercontent.com/omlahore/bodycam/main/assets/demo.gif)\n",
-    "created_at": "2026-10-16T00:14:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12420"
-  },
-  {
-    "id": 12419,
-    "title": "【开源自荐】Arroxy：基于 yt-dlp 的跨平台视频、音频下载桌面应用",
-    "content": "项目名称：Arroxy\n\n项目地址：https://github.com/antonio-orionus/Arroxy\n\n官网：https://orionus.dev/arroxy/\n\n一句话介绍：Arroxy 是一个免费开源的 yt-dlp 桌面图形界面，可以下载 YouTube 以及其他 2000 多个 yt-dlp 支持网站的视频、音频、播放列表、频道和字幕。\n\n主要功能：\n- 最高支持 4K / HDR / 60fps。\n- 支持播放列表、整个频道和批量 URL 列表下载，下载队列可暂停、继续。\n- 支持 SponsorBlock，可把字幕和封面嵌入视频文件。\n- 无广告、无跟踪、无需注册登录。\n- 界面支持 30 种语言，包括简体中文。\n- MIT 协议开源，使用 Electron + TypeScript + React 开发，持续维护中。\n\n支持平台：Windows 10/11、macOS 13+（Intel 与 Apple Silicon）、Linux（AppImage、Flatpak、tar.gz）。\n\n安装：\n\n    winget install AntonioOrionus.Arroxy\n    brew install --cask antonio-orionus/arroxy/arroxy\n\n也可以通过 Scoop 安装，或在 [Releases](https://github.com/antonio-orionus/Arroxy/releases) 页面直接下载。\n\n中文说明：https://github.com/antonio-orionus/Arroxy/blob/main/README.zh.md\n\n截图：\n\n![Arroxy](https://raw.githubusercontent.com/antonio-orionus/Arroxy/main/build/Main-screenshot.png)\n\n我是 Arroxy 的作者和维护者。\n",
-    "created_at": "2026-10-15T17:57:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12419"
-  },
-  {
-    "id": 12418,
-    "title": "【网站自荐】拾年 TenYears：支持中英文的美股与 ETF 定投回测工具",
-    "content": "项目名称：拾年 TenYears\n\n体验地址：https://tenyears.app/?lang=zh\n\n我是这个网站的开发者，自荐一个用于查看定投历史表现的网页工具。\n\n拾年支持选择股票或 ETF，自定义起止日期、每次投入金额和投入周期，查看累计本金、资产价值、收益及资金加权年化收益率（XIRR）。\n\n主要特色：\n\n1. 最多比较 4 个标的，各自按相同金额独立定投。\n2. 使用每日历史收盘价，考虑拆股、现金分红，可切换分红再投资。\n3. 提供月度、年度记录，支持导出 CSV、图片和 PDF。\n4. 回测参数可以保存到分享链接中，打开链接即可还原并继续调整。\n5. 支持完整的中文、英文界面。\n\n一个使用场景：在相同日期范围内，比较每月投入 500 美元到不同 ETF 的历史结果，再观察分红再投资带来的变化。\n\n本项目用于历史数据研究与计算展示，不提供投资建议。结果未计入税费、交易费用及通胀，历史表现不代表未来收益。\n\n欢迎试用和反馈。",
-    "created_at": "2026-10-15T17:39:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12418"
-  },
-  {
-    "id": 12417,
-    "title": "【开源自荐】Logo to Stickers：把项目 Logo 做成有小故事的纸贴纸",
-    "content": "自荐一个刚开源的 Codex Skill：把已有 Logo 变成有动作、有小事故的白边纸贴纸。\n\n这次为自己的项目做网站装饰，来回试了几轮。比较有趣的结果是：群学的小组成员缠进了关系图，MultiPush 的章鱼忙着分拣邮件，Windup 的机械鸟把发条拧过了头。\n\n仓库保留了三套真实案例、15 张透明 PNG、对应的实际提示词，以及从品牌特征、动作设计到纸质白边的生成流程。\n\n- 源码与安装：https://github.com/huyanxius/logo-to-stickers\n- 直接看效果：https://huyanxius.github.io/logo-to-stickers/\n- 原尺寸 PNG：https://github.com/huyanxius/logo-to-stickers/releases/tag/v1.0.0\n\n这是配合图像生成工具使用的技能包，需要 Codex 能调用相应工具；画廊用于查看样例，没有在线生成服务。技能代码采用 MIT，图像生成费用由所用工具决定，品牌示例的权利说明见仓库 NOTICE。\n\n下面每组都是原 Logo 和这次生成的五张贴纸：\n\n![群学：原 Logo 到五个调研小场景](https://huyanxius.github.io/logo-to-stickers/assets/series-qunxue.png)\n\n![MultiPush：原 Logo 到五个章鱼邮差小场景](https://huyanxius.github.io/logo-to-stickers/assets/series-multipush.png)\n\n![Windup：原 Logo 到五个机械鸟小场景](https://huyanxius.github.io/logo-to-stickers/assets/series-windup.png)\n\n这是项目作者自荐。贴纸由 Codex 图像工具生成，生成过程也整理在仓库中。\n",
-    "created_at": "2026-10-15T17:33:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12417"
-  },
-  {
-    "id": 12416,
-    "title": "【工具自荐】Video To Frames：在浏览器里把视频抽成图片，文件不上传",
-    "content": "## 自荐一个我做的浏览器本地视频抽帧工具「[Video To Frames](https://videotoframes.io)」。\n视频在你自己的设备上解码，不上传、不注册，抽出来的图片可以直接下载或分享。\n\n## 在线版视频抽帧工具\n浏览器访问（可免费使用）：https://videotoframes.io\n\n## 主要功能\n\n七种抽帧方式：只取关键帧、按场景切换、每隔 N 秒、逐帧、固定张数、指定帧率、单帧。单帧可以在附近自动挑最清晰的一张。\n在时间轴上拖选片段，或直接填写起止时间。导出前会先显示预计张数。\n导出 PNG、JPG 或 WebP。可以打包成 ZIP、直接存进文件夹、复制单张，或拼成联系表。\n文件名带帧号和时间码，方便对回原视频。课件录屏可以跳过重复画面，大致得到一页幻灯片一张图。\n手机上可以把图片分享到相册。旁边还有视频转 GIF、视频转 MP3、HEIC 转 JPG、WebP 转 PNG，同样在浏览器里完成。\n\n## 和其他视频抽帧工具的区别\n\n文件不离开设备：用浏览器自己的解码器在本地处理，没有上传再下载这一步。打开开发者工具的网络面板，看不到视频被传走。\n关键帧模式只读文件索引，不用把每一帧都解码，长视频通常几秒就能出结果。\n同一次操作里覆盖封面挑选、课件转图片、逐帧动画、摄影测量和训练数据取样，不必为每种用途换一个工具。\n免费、无水印、无需账号，也不限抽帧张数。特别长的 4K 视频受本机内存影响，可以只选一段，或按间隔抽。\n\n![video to frames](https://videotoframes.io/og/en/home.png)",
-    "created_at": "2026-10-15T16:06:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12416"
   }
 ]
