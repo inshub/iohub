@@ -1,5 +1,21 @@
 [
   {
+    "id": 12526,
+    "title": "【软件自荐】小蓝助手 Blue：Windows 桌面多步骤任务工具",
+    "content": "推荐一个面向 Windows 的桌面任务工具：小蓝助手 Blue。\n\n- 产品介绍：https://www.bluedoai.com/tools/\n- 公开安装包：https://github.com/ffawei/xiaolan-assistant-bluedoai/releases\n\n它可在用户授权范围内整理资料、编写脚本，并接续应用操作处理多步骤任务。工具本体免费；可接用户自有 API 或兼容的本地模型，也可选用 BlueDoAI 平台按量计费的托管模型。后者不是免费额度。\n\n我是产品方，按周刊 README 的软件投稿入口自荐。上面的 GitHub 仓库用于发布安装包，不作为产品开源源码声明。功能与当前版本请以官网和安装包说明为准，是否适合周刊由编辑判断。\n",
+    "created_at": "2026-10-18T23:06:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12526"
+  },
+  {
+    "id": 12525,
+    "title": "【开源自荐】轻舟（qz）：一个真正会用浏览器的 Agent",
+    "content": "项目名称：轻舟（qz）\n\n项目地址：https://github.com/alibaba/qz-browser-agent\n\n官网：https://alibaba.github.io/qz-browser-agent/\n\n一句话介绍：阿里巴巴最新开源的多任务浏览器 Agent，直接在用户已登录的 Chrome 里干活，把查到的资料整理成表格、图集或可溯源的报告；其他 Agent 也能通过 CLI 和 MCP 调用它。\n\n主要功能：\n- 补上 Agent 网页交互的“最后一公里”：遇到登录墙、连续点击、异步翻页也能在真实的 Chrome 里跑完，再把干净的结果交回。\n- 透明可见，人与 Agent 协同：常驻浏览器侧边栏，每一步操作和结果都看得见，可以随时介入或停止。\n- 并行多任务调研：同时运行大量任务，每个任务还能派生子任务；跨站点提取参数并附来源链接，整理成对比表格或本地文件。\n- 跑通一次，一句话存成 Skill，下次一句话就能复用。\n- 原生浏览器环境：直接用你日常的 Chrome，登录状态、Cookie 和扩展即插即用，不用配虚拟环境。\n- 本地优先：会话、Skill 和数据都存在本地，没有后台服务器；模型自选，DeepSeek、OpenAI 等都能接。\n\n安装：[Chrome 应用商店](https://chromewebstore.google.com/detail/dknbdgkgoinlgjpfebapkklbmjjgdblm)，或从 GitHub Release 下载后手动加载。\n\n\n给编程 Agent 用：\n\n    npx skills add alibaba/qz-browser-agent -g\n    npx qz-browser-agent@latest connect\n\n![轻舟从 Wikipedia 采集杭州照片](https://raw.githubusercontent.com/alibaba/qz-browser-agent/main/docs/images/workspace-zh-CN.png)",
+    "created_at": "2026-10-18T20:42:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12525"
+  },
+  {
     "id": 12524,
     "title": "【工具自荐】AOCI-CODE：为 AI 编程助手建立可持续维护的项目认知地图",
     "content": "推荐一个面向 AI 编程和长期项目维护的工具：**AOCI-CODE**。它为 AI Agent 建立一份随代码保存、可持续维护的项目认知地图，通过本地 CLI 和 MCP Server 接入 Codex、Claude Code、Cursor 等编程助手。项目源码公开，采用 FSL-1.1-MIT 许可证。\n\n- GitHub：https://github.com/aoci-spec/aoci-code\n- 中文介绍与使用说明：https://github.com/aoci-spec/aoci-code/blob/main/README.zh-CN.md\n- 发布包：https://github.com/aoci-spec/aoci-code/releases\n\n用 AI 开发已有项目时，新开对话或切换 Agent 后，往往需要重新搜索代码、梳理模块关系，重要的设计约束也容易在上下文中丢失。AOCI-CODE 将模型对文件和数据库表的理解保存为结构化的纯文本索引，让 Agent 开始任务前先了解系统整体，再按需查看具体源码，适合接手已有项目、持续迭代开发和跨会话协作。\n\n主要功能：\n\n- **项目整体认知**：由模型基于实际源码，为受管文件和数据库表撰写索引，记录职责、重要关系、接口约定，以及修改时需要遵守的约束。\n- **跨会话、跨 Agent 复用**：索引随项目保存，通过 Git 管理版本；在索引与代码版本一致时，后续会话和其他 Agent 可以读取并复用已有的系统认知。\n- **增量维护**：开发任务完成后，通过 MCP 工作流发现代码变化，由 Agent 更新受影响的索引条目，让认知随项目一起演进。\n- **代码与数据库统一理解**：支持代码索引和表级数据库索引；目前支持 MySQL、PostgreSQL，以及受限支持的 openGauss 6.0.5，数据库索引读取表结构，不读取业务数据。\n- **本地运行、接入现有工具**：AOCI-CODE 本身不上传源码；索引由用户已有的 AI Agent 撰写，沿用该 Agent 的模型通道。\n\n项目目前处于发布候选阶段。首次建立索引需要 Agent 读取受管文件并撰写条目，项目越大耗时越长，支持中断后继续。索引用于提供整体认知，具体修改仍需核对源码和运行测试。安装、MCP 接入及建立索引的步骤见中文 README。\n\n欢迎正在使用 AI 维护实际项目的朋友试用，也欢迎通过 [Issues](https://github.com/aoci-spec/aoci-code/issues) 反馈使用的 Agent、项目规模和遇到的问题。\n",
@@ -138,7 +154,7 @@
   {
     "id": 12507,
     "title": "【开源自荐】吃了麦？——用真实菜单和套餐组成给麦当劳配餐",
-    "content": "项目：https://github.com/HessianZ/chilemai （MIT 开源）\n\n「吃了麦？」是一个 WorkBuddy Skill，想帮不愿翻菜单的人决定麦当劳吃什么：说出地点、预算和偏好，查询门店在售菜单、核对套餐组成与营养，再给出一餐建议。目前仅接入麦当劳 MCP，需要自行配置 Token；非麦当劳官方产品。\n\n值得开发者讨论的一个细节：套餐不能套用同名主食的热量。项目把菜单、规格、套餐组成和营养匹配放在一起处理，对规格不明或数据缺失保留待确认状态。10月15日用 WorkBuddy 实际完成了附近门店、在售菜单、营养表和套餐组成四种只读查询；未创建订单或支付，最终价格与供应仍需当次核实。\n\n- [32秒介绍片](https://www.bilibili.com/video/BV1A4Je6HEmx/)\n- [SkillHub 安装入口](https://skillhub.cn/skills/indiv-hessian/chilemai)\n- [安装说明与源码](https://github.com/HessianZ/chilemai#安装)\n\n首次可以只查询：“杭州西湖附近，到店自取，预算40元，想控制热量。先确认门店并查询当次菜单，给我两种方案，说明套餐组成。这次只查询，不下单。”\n\n本条为项目方自荐，由 AI 助手协助整理，供周刊编辑独立评估是否适合收录。\n\n10月18日补充：[免 Token 历史案例预览](https://hessianz.github.io/chilemai/) 已上线。可调整预算与热量条件、展开套餐组成并复制首次只读查询提示。页面只比较两份10月15日的真实历史案例；价格为当时菜单估价，未最终核价，不实时查询、不下单。\n",
+    "content": "项目：https://github.com/HessianZ/chilemai （MIT 开源）\r\n\r\n「吃了麦？」是一个 WorkBuddy Skill，想帮不愿翻菜单的人决定麦当劳吃什么：说出地点、预算和偏好，查询门店在售菜单、核对套餐组成与营养，再给出一餐建议。目前仅接入麦当劳 MCP，需要自行配置 Token；非麦当劳官方产品。\r\n\r\n值得开发者讨论的一个细节：套餐不能套用同名主食的热量。项目把菜单、规格、套餐组成和营养匹配放在一起处理，对规格不明或数据缺失保留待确认状态。10月15日用 WorkBuddy 实际完成了附近门店、在售菜单、营养表和套餐组成四种只读查询；未创建订单或支付，最终价格与供应仍需当次核实。\r\n\r\n项目正在参加麦当劳程序员创意开发大赛。如果你认可这个开源项目，欢迎到 [GitHub 仓库](https://github.com/HessianZ/chilemai) 自愿点 Star 支持；无需先安装 Skill 或配置 Token。\r\n\r\n- [32秒介绍片](https://www.bilibili.com/video/BV1A4Je6HEmx/)\r\n- [SkillHub 安装入口](https://skillhub.cn/skills/indiv-hessian/chilemai)\r\n- [安装说明与源码](https://github.com/HessianZ/chilemai#安装)\r\n\r\n首次可以只查询：“杭州西湖附近，到店自取，预算40元，想控制热量。先确认门店并查询当次菜单，给我两种方案，说明套餐组成。这次只查询，不下单。”\r\n\r\n本条为项目方自荐，由 AI 助手协助整理，供周刊编辑独立评估是否适合收录。\r\n\r\n10月18日补充：[免 Token 历史案例预览](https://hessianz.github.io/chilemai/) 已上线。可调整预算与热量条件、展开套餐组成并复制首次只读查询提示。页面只比较两份10月15日的真实历史案例；价格为当时菜单估价，未最终核价，不实时查询、不下单。\r\n",
     "created_at": "2026-10-18T07:50:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12507"
@@ -782,21 +798,5 @@
     "created_at": "2026-10-16T04:00:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12425"
-  },
-  {
-    "id": 12424,
-    "title": "【开源自荐】bilibili-douyin-notes：把视频变成 Markdown 课堂笔记的 AI 技能",
-    "content": "https://github.com/lucky-Luor/bilibili-douyin-notes\n\n一个 AI 编程助手（Claude Code / Codex 等）的技能包：输入 B站、抖音、YouTube 或小红书的视频链接，自动生成 Markdown 课堂笔记，包含小节要点、知识地图、自测题，以及能跳回视频对应秒数的时间索引。优先使用字幕，没有字幕时在本地用 faster-whisper 做语音识别，不调用任何付费 API。\n\n![](https://raw.githubusercontent.com/lucky-Luor/bilibili-douyin-notes/main/docs/images/note-preview.png)",
-    "created_at": "2026-10-16T03:38:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12424"
-  },
-  {
-    "id": 12423,
-    "title": "AI生成架构图工具",
-    "content": "https://archify.si/zh\n\n用大白话讲清楚，得到一张可信的图。\n用skill直接为你的代码库生成可交互的优美架构图。\n适配claude，codex等主流AI工具\n\n<img width=\"1304\" height=\"585\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/92d0f7ec-d262-4771-8a53-79a1b007bf9f\" />",
-    "created_at": "2026-10-16T01:59:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12423"
   }
 ]
