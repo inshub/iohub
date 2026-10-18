@@ -1,5 +1,61 @@
 [
   {
+    "id": 12495,
+    "title": "【工具自荐】LokalBot：完全在 Mac 本地运行的 AI 会议纪要和工作记忆，免费开源",
+    "content": "LokalBot 是一个免费开源（GPLv3）的 macOS 应用，用本地 AI 帮你记住工作中说过、看过的内容。\n\n- **会议纪要，不用机器人进会：** 直接录制麦克风和会议软件的声音，在本机转写，生成要点、决策和带负责人的待办，每一条都能跳回原话。\n- **支持中文：** 默认使用 Qwen3-ASR 1.7B，支持 30 种语言和 22 种中文方言（包括粤语、吴语、闽南语、四川话等），中英混说也能识别；中文会议会生成中文纪要。\n- **工作回顾与搜索：** 一次搜索覆盖会议转写和（开启后的）屏幕文字，Today 和 Timeline 汇总每天做了什么。\n- **语音输入和自动补全：** 按住快捷键说话即可输入；在任何应用里打字时，灰色文字会提示这句话怎么写完，按 Tab 接受。\n- **接入 AI 编程助手：** 自带只读的 CLI 和 MCP 服务器，可以让 Claude Code 等工具查询你的会议记录。\n\n所有模型都在 Mac 上运行（llama.cpp + MLX），不需要账号，没有遥测。需要 Apple Silicon 和 macOS 15 及以上。\n\n项目地址：https://github.com/stevyhacker/lokalbot\n\n中文介绍：https://github.com/stevyhacker/lokalbot/blob/master/README.zh-CN.md\n\n![LokalBot 中一场普通话会议的要点与待办](https://raw.githubusercontent.com/stevyhacker/LokalBot/master/Assets/screenshots/zh-Hans/meetings-summary.png)\n\n截图：一场虚构的普通话会议，由本机模型实际转写并生成纪要。\n",
+    "created_at": "2026-10-18T03:20:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12495"
+  },
+  {
+    "id": 12494,
+    "title": "【开源自荐】PocketDuck：一个二进制的轻量嵌入式 BI 栈（PocketBase + DuckDB）",
+    "content": "📎 项目地址：https://github.com/mailbus/PocketDuck（[中文文档](https://github.com/mailbus/PocketDuck/blob/main/README.zh-CN.md)）\n\n**一句话**：把 PocketBase（认证/文件/实时订阅）和 DuckDB（分析引擎）装进一个二进制，面向小用户量、分析型、多源进出的轻量嵌入式 BI 栈。非官方社区项目，MIT。\n\n**能干什么**：\n- 一条 SQL 跨源 JOIN：远端 Parquet × 本地 SQLite × PostgreSQL × MySQL\n- `POST /api/analyze` 只读分析 API（超时掐断、万行截断，不进 PocketBase 热路径）\n- `pduck import` 把 PG/MySQL 表拉进仓库（10 万行约 4 秒）；`pduck export` 写出到 Parquet / PostgreSQL / Excel\n- 内置 SQL 控制台页，浏览器登录即用，零前端构建\n\n**适合谁**：需要一个能跑分析 SQL 的后端、但不想拉起一整套数据栈的独立开发者和小团队。\n\n**真实性**：演示查询的期望结果由独立 DuckDB CLI 固化、逐行比对；构建/实验记录可复现。预编译二进制下载解压约 5 分钟可跑通示例。\n\n（自荐人即作者）",
+    "created_at": "2026-10-18T03:02:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12494"
+  },
+  {
+    "id": 12493,
+    "title": "【工具自荐】LayerGrab：把一张图拆成可编辑的图层，补全被遮挡的背景",
+    "content": "LayerGrab 是一个 AI 图片转图层工具：上传一张图（PNG / JPG / WebP），约 60–100 秒拆成最多 16 个透明图层，每层一个元素并带英文名称，被挡住的背景会补全；可导出 PNG、ZIP 或带图层的 PSD。也可以只提取你指名的一个元素，得到一张透明底 PNG。\n\n有 Figma 插件和 Chrome 扩展（源码 MIT：https://github.com/layergrab/layergrab-plugins），网页版是英文界面。每个账号可免费试用一次，之后按积分计费。\n\n链接：https://layergrab.com\n\n我是 LayerGrab 的开发者，欢迎试用和反馈。\n",
+    "created_at": "2026-10-18T02:46:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12493"
+  },
+  {
+    "id": 12492,
+    "title": "【工具自荐】ArtificialWatch：每 60 秒检查各家 AI 接口，记录新模型上线的那一分钟",
+    "content": "**网址：** https://artificialwatch.com\n\n## 工具介绍\n\nArtificialWatch 每 60 秒检查一次各家 AI 厂商自己的 API（OpenAI、Anthropic、Google、xAI、DeepSeek、Kimi、通义千问等），第二次检查确认后，记录一个新模型真正可以调用的那一分钟，并发出提醒。判断依据只有 API 是否真的返回了结果，不看传闻、泄露或文档页面。\n\n![ArtificialWatch](https://artificialwatch.com/og-aw.png?v=4)\n\n## 主要页面\n\n- **上线记录** https://artificialwatch.com/record ：自 8 月 3 日起每次上线的首次发现时间和确认时间，没有命中的也公开\n- **新模型发布** https://artificialwatch.com/releases ：按 API 实际上线日期排列\n- **基准汇总** https://artificialwatch.com/benchmarks ：LMArena、LiveBench、SimpleBench 等公开排行榜放在一张表里\n- **API 价格** https://artificialwatch.com/llm-pricing ：所有在线模型的价格对照\n- **模型状态** https://artificialwatch.com/status ：定期向每个在线模型发一次真实请求，看它是否可用\n\n网页、邮件提醒和 Chrome 推送免费（免费邮件约晚 15 分钟批量发送），付费版增加短信和电话提醒。\n\n另有一个 MIT 开源的命令行版本 ai-model-watch（零依赖 Node.js），可以自己运行，对比各家 /models 列表，只显示新出现的模型：https://github.com/markksantos/ai-model-watch\n\n我是作者。\n",
+    "created_at": "2026-10-18T01:35:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12492"
+  },
+  {
+    "id": 12491,
+    "title": "【工具自荐】zippic：在浏览器本地压缩、转换图片，文件不上传",
+    "content": "zippic 是一个免费的在线图片工具：压缩、格式转换（JPG / PNG / WebP / AVIF / GIF / JXL / APNG）、改尺寸、裁剪、加水印，HEIC / PSD / PDF 转图片，视频转 GIF 等，共 19 个工具。\n\n所有处理都在浏览器里用 WebAssembly 完成，图片不会上传到服务器，所以也没有文件大小和张数限制，支持批量压缩和质量调节。免注册，支持 11 种语言。\n\n链接：https://zippic.app\n\n我是 zippic 的开发者，欢迎试用和反馈。",
+    "created_at": "2026-10-18T00:31:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12491"
+  },
+  {
+    "id": 12490,
+    "title": "Broken links in the docs",
+    "content": "Hi,\n\nA few links in the docs no longer work (404 / 410):\n\n| File | Link | Status | Replay |\n|------|------|--------|--------|\n| docs/free-music.md | https://www.pdinfo.com/royalty-free-music.php | 404 | https://pathlyhq.com/en/scan?url=https%3A%2F%2Fwww.pdinfo.com%2Froyalty-free-music.php&utm_source=dochunter&utm_medium=bot&utm_campaign=dead_link |\n\nCheers,",
+    "created_at": "2026-10-18T00:17:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12490"
+  },
+  {
+    "id": 12489,
+    "title": "【开源自荐】Textus：带 AI 写作助手的开源 Markdown 编辑器",
+    "content": "Textus 是我开发的一款所见即所得 Markdown 编辑器，支持 macOS（Apple Silicon 与 Intel）、Windows 和 Linux，免费，MIT 协议开源。\n\n写作时看到的就是排版后的样子，公式、表格、Mermaid 图表都能直接编辑，也可以使用 Typora 主题。\n\n![Textus](https://raw.githubusercontent.com/CatVinci-Studio/Textus/main/docs/images/readme/zh/hero.png)\n\nAI 写作助手是可选的，默认不打扰：灰色补全按 Tab 接受；也可以让它逐句给出修改建议，或者在页边写批注，由你决定采纳哪一句。支持 DeepSeek、OpenAI、Claude、Gemini 等 20 多家模型，任何兼容 OpenAI 的接口，以及 Ollama 本地模型。\n\n不需要账号，没有遥测，文件就是你磁盘上的 .md。基于 Tauri 2（Rust）+ React 构建，安装包小。\n\n主页：https://textus.catvinci.com\n源码：https://github.com/CatVinci-Studio/Textus\n下载：https://github.com/CatVinci-Studio/Textus/releases/latest\nmacOS 也可以用 Homebrew：`brew install --cask catvinci-studio/tap/textus`\n",
+    "created_at": "2026-10-17T22:26:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12489"
+  },
+  {
     "id": 12488,
     "title": "【开源自荐】BeatBrowser：让 Codex 等 Agent 使用你已登录的 Chrome",
     "content": "项目地址：https://github.com/BeatAPI/BeatBrowser\n\n我是项目维护者，想自荐 BeatBrowser：一个免费、MIT 开源的 Chrome 扩展和本地桥接工具，让 Codex、Claude Code 等兼容 Agent 使用你现有的 Chrome 和网站登录态，不必另换专用浏览器。\n\n任务在独立后台窗口中运行，可以在扩展工作区查看进度、暂停、继续或人工接管。扩展、桥接、MCP、CLI和JavaScript SDK源码均公开。\n\n本地模式需要 Node.js 20+、Chrome 116+，扩展通过开发者模式加载；Agent/模型费用由使用者自行承担。另有可选云端适配器预览，通过用户自己配置的认证隧道连接本机 Chrome，电脑需保持在线。\n\n[中文README](https://github.com/BeatAPI/BeatBrowser/blob/main/README.zh-CN.md) · [安装说明](https://github.com/BeatAPI/BeatBrowser/blob/main/docs/INSTALL.md)\n\n![本地安装与使用路径示意，非实机任务截图](https://raw.githubusercontent.com/BeatAPI/BeatBrowser/main/media/readme-journey.zh-CN.png)\n",
@@ -742,61 +798,5 @@
     "created_at": "2026-10-15T07:16:29Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12394"
-  },
-  {
-    "id": 12393,
-    "title": "【开源自荐】daily-indie-radar：专为出海开发者与独立黑客打造的 90% 降噪每日情报库",
-    "content": "阮老师好，各位读者好，自荐一个为出海与独立开发者自建的信息降噪情报库「Indie Radar」。\n\n- GitHub 每日归档仓库：https://github.com/louis-cai/daily-indie-radar\n- 在线情报站：https://radar.everythingisok.top\n- Telegram 点滴广播：https://t.me/IndieRadarPro\n\n### 解决什么痛点？\n平时自己转型做独立开发和出海，最大的痛点是每天被垃圾信息淹没：Product Hunt、Hacker News、推特上铺天盖地全是套壳工具互吹、空气币营销号和焦虑通稿。想翻点真正开箱即用的硬核开源轮子，或可核实的真实变现案例，每天要在垃圾信息里淘金很久。\n\n### 怎么做的？\n基于开源底座二开了一套针对出海垂直信源的自动化过滤管道：\n1. **信源聚拢与向量去重**：盯着 Product Hunt、Show HN、Trends.vc、Stripe 等一手源，用 PostgreSQL + pgvector 跑本地语义嵌入，折叠 48 小时内的重复报道；\n2. **5 轴硬核打分降噪**：重写 Prompts，按真实变现逻辑、开源成熟度、实操落地性打分，把纯公关稿过滤掉 90% 以上；\n3. **极克制的推送规则**：写死了防打扰规则（单日封顶最多 4 条、间隔 2.5 小时、夜间 23:00 - 08:30 严格静默）；\n4. **全自动开源归档**：每天定时将精选内容通过脚本自动同步到 GitHub 仓库生成 Markdown 归档。\n\n全自用 0 广告 0 返利，给同样关注出海独立开发、开源基础设施的朋友一个干净、抗打扰的信息源。\n",
-    "created_at": "2026-10-15T06:27:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12393"
-  },
-  {
-    "id": 12392,
-    "title": "【开源自荐】flowagent：一句话目标自动拆成 DAG 并调度执行的 Agent 工作流框架",
-    "content": "flowagent 是我自己写的一个对话式 AI 工作流框架，前后端都开源。\n\n你只要在对话里说一句目标，比如\"抓取这个仓库的 star 数并生成周报\"，它会自己把任务拆成子任务、排出执行顺序、生成一张 DAG，然后按节点逐个调度执行，前端实时显示每个节点的状态。做 agent 编排的时候，不用再手写流程。\n\n几个实现上的点：\n\n- 后端 Go + Gin + GORM + MySQL，异步任务基于 light-task-scheduler，子任务状态机清晰，可观测性好\n- 工具接入走 MCP 协议，按 conversation 粒度配置，加新工具不用改框架\n- 前端 React 18 + Vite，DAG 渲染和交互完整，方便二次开发\n- 规划、调度、执行三者解耦，想换 LLM 或换调度器都能单独替换\n\n适合想了解 Agent 任务规划、DAG 编排和 MCP 集成的同学参考。\n\n项目地址：https://github.com/memory-overflow/flowagent\n\ndemo 视频：https://www.youtube.com/watch?v=11F32rEWOZQ",
-    "created_at": "2026-10-15T06:26:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12392"
-  },
-  {
-    "id": 12391,
-    "title": "【工具自荐】ai-video-prompt：免费开源的视频反推prompt skill",
-    "content": "自荐一个我开发的 AI 视频反推提示词工具「BestPrompts：Video-to-Prompt」，同时开放了可在 Codex、Cursor 中使用的 Skill 源码。\n\n开源skill：https://github.com/wonfull888/ai-video-prompt \n中文文档：https://github.com/wonfull888/ai-video-prompt/blob/main/README.zh-CN.md\n在线版（可免费使用)：https://bestprompts.app/video-to-prompt/\n\n### 主要功能\n1. 逐镜头分析视频场景、人物表情、动作变化及镜头运动。\n2. 自动生成中英文双语结构化 Prompt，支持 Markdown 复制和下载。\n3. 多阶段检查 Prompt，发现遗漏细节及缺乏视觉证据的描述。\n4. 提供开源 Skill，可在 Codex、Cursor 等 AI 工具中使用。\n5. 网站收录数千个真实 AI 视频案例，包含原始 Prompt 和创作者信息。\n\n### 与其他 Video-to-Prompt 工具的区别\n1. 完整视频理解：视觉模型直接分析视频内容，而不只是依赖静态截图，更注重人物表情、连续动作和镜头变化。\n2. 多阶段复查机制：结合关键帧补充分析和独立模型校验，减少细节遗漏、人物身份混淆及 AI 幻觉。\n3. 结构化、可编辑：提供逐镜头 Prompt 和对应的视觉证据，方便检查、修改和二次开发。\n4. 开源 Skill + 免费网页版：开发者可以集成到自己的 AI 工作流，普通用户无需配置即可在线使用。\n\n",
-    "created_at": "2026-10-15T06:23:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12391"
-  },
-  {
-    "id": 12390,
-    "title": "【工具自荐】CurlShot：一个 GET 请求就能拿到网页截图、PDF 和滚动视频的 API",
-    "content": "大家好，自荐一个我做的网页截图 API「CurlShot」。\n\n- 网址：[https://curlshot.com](https://curlshot.com)\n- 文档：[https://curlshot.com/docs](https://curlshot.com/docs)（英文）\n\n一个 GET 请求就能拿到任意公开网页的截图，不用自己部署和维护无头浏览器：\n\n```\ncurl \"https://curlshot.com/api/v1/screenshot?url=https://example.com&access_key=YOUR_KEY\" -o shot.png\n```\n\n### 主要功能\n\n- 输出 PNG、JPEG、WebP、PDF，或者从上到下滚动的视频（MP4 / WebM / GIF）\n- 整页截图、只截某个元素（CSS 选择器）、指定设备尺寸、深色模式\n- 屏蔽广告、Cookie 弹窗和聊天插件\n- 也可以传入 HTML 或 Markdown，直接渲染成图片或 PDF（例如生成 Open Graph 分享图）\n- 有 OpenAPI 描述文件，还有一个托管的 MCP 端点，Claude、Cursor 等 AI 智能体可以直接调用截图\n- 首页的在线工具不需要注册即可试用\n\n### 价格\n\n免费套餐每月 100 张截图，不需要绑卡；付费从每月 19 美元起。失败的渲染和缓存命中不计数。\n\n欢迎试用和提意见。\n",
-    "created_at": "2026-10-15T05:49:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12390"
-  },
-  {
-    "id": 12389,
-    "title": "【开源自荐】Raven：管 Agent 的 Agent，在一个对话里调度 Claude Code、Codex 等 AI Agent",
-    "content": "阮老师好，自荐一下我们团队开源的 Raven（Apache-2.0）。\n\n电脑上装了很多 Agent，用 Claude Code 写代码，Codex 写文案、做设计，Hermes Agent 盯工作消息，一个个切换着用很麻烦。而 Raven 就是管 Agent 的 Agent，只需和 Raven 对话就可以管理和调度所有 Agent，非常方便。而且组合 Agent 之后，Raven 可以把 Codex 的输出传给 Claude Code，同一份工作的不同环节都挑最专业的 Agent 来做，效果大大提升。\n\n它的做法是：先把目标拆成带依赖关系的任务图，再把每个子任务交给最合适的 Agent，上一步的产出自动交给下一步。可调度的既有 Raven 内置的研究、编码、设计和长时任务 Agent，也有通过 ACP 等接口接入的 Claude Code、Codex、OpenCode、Hermes Agent 等第三方 Agent。\n\n一个例子：给 Raven 一份游戏需求文档，它自主运行约 4 天，用 Godot 4 做出了一款可玩的游戏，过程记录在仓库 README 里。\n\n安装（macOS / Linux / WSL2，Windows 见 README）：\n\n```bash\ncurl -fsSL https://raven.evermind.ai/install.sh | bash\n```\n\n安装后用 `raven web` 打开网页界面，或用 `raven tui` 打开终端界面。\n\n源码：https://github.com/EverMind-AI/Raven\n\n![Raven 工作流总览](https://github.com/user-attachments/assets/f400d693-d8cf-46eb-b846-6948f66f6fed)\n![Raven 网页界面：子 Agent 页](https://github.com/user-attachments/assets/a7be5dca-b65a-4dea-9d88-2a4cb55f74b3)\n",
-    "created_at": "2026-10-15T04:55:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12389"
-  },
-  {
-    "id": 12388,
-    "title": "【开源自荐】AI Browser：给 AI Agent 用的常驻\"副驾浏览器\"，读语义树而非截图",
-    "content": "开源地址：https://github.com/Glittering/ai-browser\nnpm：https://www.npmjs.com/package/@glittering0717/ai-browser\n官方 MCP Registry：io.github.Glittering/ai-browser\n\nAI Browser 是一个 Electron 浏览器，但\"驾驶员\"是 AI Agent：窗口正常可见、持久登录、常驻桌面，Agent 通过 17 个 MCP 工具（browse_*）或原始 WebSocket JSON-RPC 驱动它；遇到扫码、滑块、支付确认时，人随时可以接管鼠标，没有交接 API，也没有权限弹窗。\n\n它和现有\"截图 + OCR + 坐标\"式 Agent 浏览器最大的区别是感知方式：Agent 拿到的是带 role/label/稳定元素 ID 的语义树（无障碍树基础上的结构化页面），不花视觉 token，也不怕页面位移。\n\n- 点击与按键走 Chrome DevTools Protocol 受信输入（不是合成 JS 事件），Draft.js / ProseMirror / Quill / CKEditor 走同一条通道，无框架特判；点击后用 elementFromPoint 校验确实命中\n- browse_diff 把\"验证操作生效\"做成工具原语：返回显式 changed/unchanged 判定、前后值与 JSON path，并对页面数据模型指纹化——ComfyUI 这类只改 canvas 数据、DOM 零变动的操作也能被识别\n- 2D Canvas 文字在绘制层直接截获 fillText 字符串，无需 OCR；仅 WebGL 保留截图路径且默认关闭\n- Agent 后台操作时窗口不抢焦点（showInactive + 焦点模拟），并用 macOS lsappinfo 从外部做焦点测试\n- 控制端口仅绑定 127.0.0.1；428 个单元测试（28 个文件）+ 428 个 Electron 端到端断言（12 个套件）全绿\n\n已实测的真实网站流程：知乎文章发布（Draft.js 加粗/多段落/清空/发布弹层）、CSDN（CKEditor 正文/标签/摘要/发布）、百度与 Bing 搜索、东方财富（2458 语义节点）等。\n\n安装：npx -y @glittering0717/ai-browser mcp（Node ≥ 18，已收录 MCP 官方 Registry，可直接被 Claude Code / Cursor / Codex 发现）。\n\n利益关系说明：本人为项目作者，MIT 开源，无商业付费版本。当前已验证平台为 macOS 与 Linux，Windows 未测试，README 中如实标注；与 chrome-devtools-mcp、Playwright MCP 的定位差异也在 README 中做了对比说明。",
-    "created_at": "2026-10-15T04:08:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12388"
-  },
-  {
-    "id": 12387,
-    "title": "【工具自荐】JSON 工作台：纯前端中文 JSON 格式化、结构图与差异对比，数据本地处理",
-    "content": "大家好，自荐一个我做的中文 JSON 工具「JSON 工作台」，用于日常查看接口返回值、定位嵌套字段和比较两份 JSON。\n\n- 在线试用：[https://json-tools-alpha.vercel.app/](https://json-tools-alpha.vercel.app/)\n- 源码仓库：[Bclound/jsonTools](https://github.com/Bclound/jsonTools)\n\n无需注册或登录，无广告。打开页面粘贴 JSON 即可使用；JSON 的解析、格式化、搜索和对比均在浏览器本地完成，内容不上传服务器，也不持久化保存。\n\n### 主要功能\n\n- **格式化、压缩与校验**：支持错误定位，保留大整数和原始数字精度，避免接口中的长 ID 被改写。\n- **代码与结构图联动**：编辑器和可缩放的节点结构图同屏显示，点击字段定位代码；显示当前 JSON 路径，并可复制。\n- **全局搜索**：按字段名、值或完整路径查找，展示行号与含数组下标的路径，支持点击跳转和代码高亮。\n- **结构化对比**：粘贴两份 JSON 后自动计算新增、删除和修改，默认忽略对象字段顺序；可选择忽略数组顺序，支持差异定位及报告导出。\n- **面向大文档的处理**：计算放在 Web Worker 中，编辑器和结果列表按可见区域渲染。仓库包含 120,002 行样本的核心检查；实际性能取决于数据结构、字节数与设备内存。\n\n页面主要保留「编辑器」和「对比」两个入口，采用深色界面。项目可自行部署到静态站点服务。\n\n使用提示：内容仅保存在当前页面内存中，刷新或关闭页面前请复制或下载需要保留的数据。\n\n欢迎试用，也欢迎在项目仓库提出问题或建议。\n",
-    "created_at": "2026-10-15T03:29:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12387"
   }
 ]
