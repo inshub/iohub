@@ -1,5 +1,37 @@
 [
   {
+    "id": 12571,
+    "title": "【开源自荐】玄印写作：能不忘伏笔、多线叙事、渐进揭示的 AI 小说写作软件",
+    "content": "玄印写作是一款开源桌面 AI 小说写作软件。引用人物、设定或章节，让 AI 推敲情节、创作和修改正文，再到面板核对。世界线记录事件发生的顺序，叙事线编排讲述顺序和人物视角，安排信息逐步揭露。伏笔可记回收计划，关联原句并跳回正文。作品存本地；首次创作需自备文本模型接口与密钥，远程调用会发送相关内容。\n\n仓库：[https://github.com/mySingleLive/shakeink-desktop](https://github.com/mySingleLive/shakeink-desktop)\n\n官方包：[0.1 首版下载](https://github.com/mySingleLive/shakeink-desktop/releases/tag/0.1)（Windows x64 / M 系列 Mac）\n\n官网：[shake.ink](https://shake.ink/)\n\n![伏笔管理：右侧记录回收计划，右下“引用位置”保留章节原句并可跳回正文；虚构演示作品《照夜渡》](https://raw.githubusercontent.com/mySingleLive/shakeink-desktop/65e12ba57b876219966b7d46d7876b54bfb04e6a/docs/readme-assets/foreshadows-paper.png)",
+    "created_at": "2026-10-19T21:04:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12571"
+  },
+  {
+    "id": 12570,
+    "title": "【资源自荐】黯羽轻扬：AI 工作流与软件工程实践博客（含付费内容）",
+    "content": "自荐一个原创中文技术博客：[黯羽轻扬](https://blog.ayqy.net/)。\n\n我在这里记录 AI 工作流、软件工程实践和个人产品经验，面向希望把 AI 用到实际开发中的读者。首页可浏览文章摘要，站内提供目录与试读入口；其中包含付费专栏，具体访问范围以各篇页面标注为准。\n\n如果适合周刊的文章或资源栏目，欢迎评估收录。谢谢！",
+    "created_at": "2026-10-19T20:43:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12570"
+  },
+  {
+    "id": 12569,
+    "title": "【开源自荐】AILatch：源码在磁盘上一直是密文，AI 编程助手读不到，程序照常运行",
+    "content": "AILatch 是一个给 Python 项目用的源码加密工具（MIT 协议）。\n\nCursor、Claude Code 这类 AI 编程助手经常会把整个项目读一遍。有些文件你不想让它们看到，但加密之后程序又跑不起来。AILatch 把文件就地加密，`cat`、`grep`、代码索引读到的都是乱码；运行时在内存里解密，程序照常跑。\n\n- `ailatch lock main.py` 加密，`ailatch run main.py` 直接运行\n- 加密的模块可以正常 `import`，加密的 JSON、配置文件可以正常 `open()` 读\n- 明文只在进程内存里，磁盘上不会多出明文副本\n- `ailatch show` 查看、`ailatch open` 在图形界面里编辑，保存时自动加密回去\n\n适用范围：Python 3.11+，在 Windows 和 macOS 上测试过。它防的是 AI 助手读文件，不防有本机权限的攻击者。\n\n- 仓库：https://github.com/lo2589/AILatch\n- README 首屏有演示动图",
+    "created_at": "2026-10-19T20:22:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12569"
+  },
+  {
+    "id": 12568,
+    "title": "【开源自荐】iPhone Agent Harness：用 Safari + ESP32 让 AI 无线操作 iPhone",
+    "content": "**项目仓库（MIT）：https://github.com/cccat6/iphone-agent-harness**\n\n演示与浏览器刷机：https://igent.cc\n中文说明：https://github.com/cccat6/iphone-agent-harness/blob/main/docs/readme/zh-Hans.md\n\n大家好，我是项目作者，想自荐一个开源的 iPhone 自动化项目：在 Safari 中用自然语言描述任务，由智能体查看屏幕，再通过旁边的 ESP32 蓝牙桥完成点按、输入和滑动。网站提供了在真实 iPhone 上设置闹钟的演示。\n\n### 实现方式\n\n- Safari 负责会话、屏幕采集和模型调用；Harness 校验动作计划后，通过局域网 WebRTC 发送指令。\n- ESP32 模拟蓝牙鼠标和键盘，通过 iOS 辅助触控操作手机，不在板上运行大模型。\n- 手机和桥接板使用同一个日常 Wi-Fi，板子独立供电，手机不用插线连接板子。\n- 首次固件安装可在电脑 Chrome / Edge 中完成；提供会话管理、自选模型、可分享技能和 MCP 工具配置。\n\n会话、截图和密钥保存在当前浏览器；选定的上下文发送给用户选择的模型服务商。项目提供英语、简体中文、繁体中文、日语、俄语、德语、法语和西班牙语版本。\n\n当前需要 **iOS / iPadOS 27+、Safari 屏幕共享、辅助触控，以及可用的视觉模型**。演示是具体任务的实机结果，不代表任意 App 或长流程都已验证。\n\n项目受到 onehumanbeing/esp32-iphone-agent 的启发，已在 README 中致谢。我们的实现采用 Safari + 蓝牙 HID 的无线使用路线。\n\n欢迎试用、反馈设备兼容性和希望自动化的手机任务。",
+    "created_at": "2026-10-19T20:19:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12568"
+  },
+  {
     "id": 12567,
     "title": "【开源自荐】CoWork OS：执行前都由你批准的开源 AI 桌面应用",
     "content": "CoWork OS 是我们开发的一款开源 AI 桌面应用（MIT 协议，支持 macOS 和 Windows）。它可以处理文件、文档表格和演示文稿，操作浏览器，整理邮件和日历，运行定时任务和聊天机器人。\n\n和命令行智能体相比，它的重点是“看得见、管得住”：每一次工具调用都实时显示在任务时间线上；发送消息、联网、使用凭据、读写工作区以外的文件之前，都会弹出批准卡片，显示将要执行的完整命令，由你确认后才运行。\n\n![CoWork OS 演示](https://github.com/CoWork-OS/CoWork-OS/raw/main/resources/branding/images/readme-demo.gif)\n\n模型可以自己选：本地 Ollama、LM Studio，或 OpenRouter、Kimi、GLM、ChatGPT 账号等。首次任务可以通过 OpenRouter 的免费模型直接运行，不需要 API key。记忆以 Markdown 文件保存在本地 git 文件夹里，每次修改都是一次提交，可以直接打开查看和编辑。\n\n最新的 0.5.61 版本还支持从 Hermes Agent 和 OpenClaw 一键迁移人设、记忆、技能和定时任务，导入前会先列出所有内容，不会修改原来的目录。\n\n安装只需要一条命令，不会弹出系统安全拦截：\n\n- macOS（Apple 芯片）：`curl -fsSL https://coworkosapp.com/install.sh | bash`\n- Windows（PowerShell）：`irm https://coworkosapp.com/install.ps1 | iex`\n- 其他系统 / Intel Mac：`npm install -g cowork-os`\n\n应用界面目前是英文的，中文说明见 [README.zh-CN](https://github.com/CoWork-OS/CoWork-OS/blob/main/README.zh-CN.md)。\n\n源码：https://github.com/CoWork-OS/CoWork-OS\n发布说明：https://github.com/CoWork-OS/CoWork-OS/releases/tag/v0.5.61\n\n欢迎通过 GitHub Issues 反馈问题和建议。\n",
@@ -768,37 +800,5 @@
     "created_at": "2026-10-17T09:25:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12467"
-  },
-  {
-    "id": 12466,
-    "title": "【开源自荐】怎么降低claude做视频的成本，蒸馏它！",
-    "content": "用这个skills，使用claude做出一个视频，然后让AI把这个做视频的逻辑和过程保存成一个视频配方，下次使用的时候，可以换其他模型调用，实现低成本类似的效果\n\nclaude opus 5.5做的视频：\n\nhttps://github.com/user-attachments/assets/cb145781-cbb3-4fa1-933a-693a888089f8\n\n这是用glm 5.3 flash 用保存下来的视频配方，实现的另一个主题的视频：\n\nhttps://github.com/user-attachments/assets/2dc8181a-3b6d-4aba-8436-2ee86a0c5db0\n\n项目地址：https://github.com/JuneYaooo/cheap-claude-video",
-    "created_at": "2026-10-17T09:20:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12466"
-  },
-  {
-    "id": 12465,
-    "title": "【工具自荐】 图角落：轻量的图片工具箱",
-    "content": "## 快速使用\n\n**在线体验：** https://picnook.itea.dev/\n\n## 工具介绍\n\n图角落是一款完全在浏览器本地运行的免费图片工具箱，集成 10 大分类、23 款实用小工具。所有处理均在浏览器本地完成，不上传任何数据到服务器。\n\n日常处理图片时，经常会遇到社交平台要裁切尺寸、发图前想抹掉 EXIF 里的 GPS、给作品加防盗水印、把几张图拼成对比图、临时想看一眼 PSD / AI 设计稿等场景。传统做法要么依赖笨重的桌面软件，要么把图片传到不可信的在线网站。图角落将常用图片需求拆成一个个独立小工具，打开对应页面即可使用，无需安装、无需注册。\n\n<img width=\"2544\" height=\"1430\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f0c24503-6f78-43de-aa71-c52fa7dbbfd1\" />\n\n## 核心功能\n\n- **23 个工具、10 大分类** — 覆盖裁切、调色、缩放、画布留白、平铺水印、拼贴合成、元数据查看与清除、GIF 互转、PSD / AI 预览导出，以及幻影坦克 / 光棱坦克隐写图等场景，按需取用\n- **隐私本地处理** — 全部在浏览器内通过 Canvas 2D 与本地解析库完成，100% 在设备本地运行，无后端、零上传\n- **批量友好** — 多文件输入、裁切队列、逐项进度显示，结果可打包为 ZIP 一键下载\n- **多格式导出** — 结果可导出为 PNG、JPG 或 WebP；宫格切图、GIF 拆帧等多图结果自动打包\n\t\t",
-    "created_at": "2026-10-17T07:35:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12465"
-  },
-  {
-    "id": 12464,
-    "title": "【开源自荐】知识类视频工作台，Claude SDK运行时+Deepseek API也能做出好视频",
-    "content": "做知识类短视频最累的不是剪辑，是来回改 🥲\n选题想不清、脚本写得拖沓、动画做出来又不对味，每一步都要推倒重来。\n所以我给自己写了个本地工具：AI-Video-Studio。\n\n> 没有Claude账号也能用，搭配风格库也能做出稳定效果的视频。\n\t\n📌 怎么用\n1️⃣ 选题池：点\"头脑风暴\"，AI 联网查资料，一次给一批选题卡片，带卖点、标签和评分\n2️⃣ 选题打磨：挑中一个，AI 帮你理清核心问题、反直觉点、关键事实（附出处）\n3️⃣ 叙事：拆成一个个镜头，写旁白、自动配音、逐镜校验\n4️⃣ 动画：AI 写动画代码，自己渲染预览、看关键帧、再改，最后出 1080P 成片\n\nGithub开源地址：[ai-video-studio](https://github.com/PGshen/ai-video-studio)\n\n预览图\n![风格库](https://github.com/PGshen/ai-video-studio/raw/main/docs/image/%E9%A3%8E%E6%A0%BC%E5%BA%93.jpg)\n![工作台](https://github.com/PGshen/ai-video-studio/raw/main/docs/image/%E5%B7%A5%E4%BD%9C%E5%8F%B0.jpg)",
-    "created_at": "2026-10-17T07:24:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12464"
-  },
-  {
-    "id": 12463,
-    "title": "【开源自荐】江山时序：纯前端开源的中国历史交互地图时间轴（战国至现代 2400 年版图演进与点地溯源）",
-    "content": "### 1. 项目简介\n\n- **项目名称**：江山时序（Chronicles of the Realm）\n- **在线体验**：https://deanchen.me/jiangshan-map/\n- **GitHub 源码**：https://github.com/DeanChensj/jiangshan-map\n- **静态图志与文史专题**：https://deanchen.me/jiangshan-map/topics/index.html\n- **开源协议**：MIT\n\n「江山时序」是一幅纯前端、零重度框架依赖的中国历史交互舆图。旨在解决读史书、背古诗词时“古今地名对不上、朝代分合看不清、行迹路线无感知”的痛点。把从公元前 403 年（《资治通鉴》开篇 · 三家分晋）至今两千四百余年、18 个历史时期的版图演进、历代州府、名关古战场、编年大事装进了一张宣纸设色古舆图里。\n\n---\n\n### 2. 核心功能与技术特色\n\n1. **纯前端原生轻量架构**：\n   - 零 React / Vue / Webpack 构建依赖，基于原生 ES 模块与 Canvas/SVG 混合渲染，首屏加载快速，已全部静态化部署于 GitHub Pages。\n2. **2400 年疆域演变与「虚线残影」对比**：\n   - 收录 164 幅历史版图快照，拖动时间轴即可直观查看战国七雄、汉末割据、三国鼎立、两宋对峙等天下分合；切换节点时会自动浮现上一阶段的朱砂虚线残影，疆域盈亏得失一目了然。\n3. **点地溯源与古今透视**：\n   - 点击地图任意古城或雄关，即可展开该地跨越 18 朝的政区更迭沿革与历史大事件（如长安自秦咸阳、汉唐至明清西安的建置）；支持开启「古今透视镜」直接在古舆图上投射现代省界。\n4. **青史行迹与诗词名胜**：\n   - 内置秦始皇东巡、汉武帝开疆、诸葛亮北伐、玄奘西行、李白东坡贬谪游历等 7 条万里行迹路线，逐站带入历史现场。\n5. **完整 SEO 静态图志专题**：\n   - 自动静态生成了 35 篇朝代图志与地理专题页（包含 JSON-LD 结构化史料与深色模式自适应），方便查阅与搜索引擎索引。\n\n---\n\n### 3. 项目预览截图\n\n![盛唐 741 年 · 长安点地溯源与史事纪要](https://raw.githubusercontent.com/DeanChensj/jiangshan-map/main/assets/preview_741_tang_trace.png)\n\n![大明永乐十三年（1415 年）· 应天府政区悬停与两京十三布政使司](https://raw.githubusercontent.com/DeanChensj/jiangshan-map/main/assets/preview_1415_ming_yingtian.png)\n\n![青史行迹 · 苏轼平生贬谪与游历路线](https://raw.githubusercontent.com/DeanChensj/jiangshan-map/main/assets/preview_journey_sushi.png)",
-    "created_at": "2026-10-17T07:20:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12463"
   }
 ]
