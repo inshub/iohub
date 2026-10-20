@@ -1,5 +1,141 @@
 [
   {
+    "id": 12612,
+    "title": "【开源自荐】Oh My Hermes：让 Hermes Agent 保留项目记忆，按任务选择模型",
+    "content": "项目维护方自荐，由项目的 AI 协作账号 frirenai 提交。\n\n## 项目：Oh My Hermes\n\n用 Hermes Agent 做研究、审查代码或推进长期项目时，常见的麻烦是：换一个会话又要重新交代背景，不同工作也需要反复调整模型和提示。\n\nOh My Hermes（OMH）是 Hermes Agent 的开源工作流插件，让你在原有的聊天入口里使用项目记忆、按任务配置的模型与推理强度，以及专业工作流。\n\n- **项目记忆**：将经过确认的项目约束和决定保存下来，供后续任务按需召回；不是把整段历史对话全部塞进上下文。\n- **按任务选择模型**：为研究、写作、代码审查等任务类别配置不同模型与推理强度，并在终端查看委派通道的状态。\n- **专业工作流**：提供研究、架构梳理、代码审查、调试与验证等技能，减少每次从头设计工作方法的负担。\n\n例如，面对一个陌生仓库，可以先梳理架构，再拆分审查任务，并将确认后的项目约束留给下一次会话。这里介绍的是工作方式，不是性能测试或完成率承诺。\n\n项目已提供中文 README，其中有安装说明和界面演示。\n\n项目地址：https://github.com/rlaope/oh-my-hermes\n\n中文介绍：https://github.com/rlaope/oh-my-hermes/blob/main/README.zh.md\n\n![项目 README 中的 Hermes CLI 界面演示](https://raw.githubusercontent.com/rlaope/oh-my-hermes/main/assets/hermes-cli.gif)\n",
+    "created_at": "2026-10-20T14:11:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12612"
+  },
+  {
+    "id": 12611,
+    "title": "【开源自荐】对话枝图：用树状图查看 Codex 项目对话的分叉关系",
+    "content": "### 项目地址\n\nhttps://github.com/chimestone/codex-conversation-tree\n\n### 为什么做这个工具\n\n使用 Codex 时，一个项目里会开很多对话，也会从已有对话继续分叉。对话多了以后，仅靠标题列表很难看清「这条思路是从哪里分出来的」。\n\n因此做了「对话枝图」：读取本机保存的分叉来源，把项目对话呈现为从左向右展开的树。它是一个非官方本地辅助工具，可以在浏览器或 Codex 的独立浏览器面板中使用。\n\n### 主要功能\n\n- **真实分支**：按记录中的父子关系连接，不通过标题相似度猜测。\n- **人工整理**：单独提供文件夹分组，不改写真实分叉关系。\n- **查看与定位**：支持标题搜索、保留祖先路径、展开折叠、归档筛选，以及 10%–500% 缩放。\n- **本地运行**：只读会话元数据，不解析聊天正文、不上传会话数据；人工分组另外保存在本机。\n\n### 怎么运行\n\n需要 Node.js 24+，无需安装第三方运行依赖：\n\n```bash\ngit clone https://github.com/chimestone/codex-conversation-tree.git\ncd codex-conversation-tree\nnode server.mjs\n```\n\n启动后访问本机的 `http://127.0.0.1:43127/`。Windows 也提供双击启动脚本。\n\n### 当前状态与边界\n\n采用 **MIT 协议**。目前是 Windows 首版，已验证基本交互，并有 9 项自动化测试。\n\n它不修改 Codex 原生侧栏，也不支持云端 ChatGPT 对话。由于依赖 Codex 的内部本地存储格式，客户端更新后可能需要适配；目前还没有验证其他操作系统。\n\n欢迎经常使用 Codex 多对话、分支功能的朋友试用和反馈。",
+    "created_at": "2026-10-20T13:50:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12611"
+  },
+  {
+    "id": 12610,
+    "title": "【文章自荐】Deno 的八年：一场没逃出 Node 引力的运行时起义",
+    "content": "最近 Deno 被 cloudflare 收购，Deno 进入维护期，Deno deploy 也在 6 个月后停止服务。\n\n作为 Node 程序员，也是从 Deno 官宣开始关注到现在。正好利用 AI 搜集资料并回顾了 Deno 的八年。从刚开始主打与 Node 的不同，到逐渐兼容 Node 特性，到最后被收购，复盘了 Deno 逐渐式微的原因。\n\n文章地址：[https://mp.weixin.qq.com/s/VQk9qV1wBu2zE84mKgQMoQ](https://mp.weixin.qq.com/s/VQk9qV1wBu2zE84mKgQMoQ)\n\nNote: 本文部分内容由 AI 辅助生成，并经人工核对与润色；文中数据与引语均来自公开报道。",
+    "created_at": "2026-10-20T12:09:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12610"
+  },
+  {
+    "id": 12609,
+    "title": "[自荐] Pitchcraft：从产品仓库到图片 PPT 与可编辑稿的技能包",
+    "content": "项目地址：https://github.com/huyanxius/pitchcraft\n\nPitchcraft｜路演构造术是一套产品答辩与路演的助手技能包，把资料判断、图片页面制作和后续修改接在同一流程里。输入可以是产品仓库、GitHub/PR 链接、讲稿或已有 PPT。\n\n它先从来源核对事实、提取产品的配色和视觉素材，再用整页图像生成制作图片 PPT。需要继续修改时，另存可编辑 PPTX，恢复可见原生文字、适合的简单图形和独立图片素材，清理底图中重复的文字。复杂插图仍可能保留为位图，数据可编辑图表需要可靠源数据。\n\n仓库包含三个配套技能及辅助脚本，提供中英文安装说明和[两页公开资料试用题](https://github.com/huyanxius/pitchcraft/blob/main/docs/TRY_IT.md)。宿主需要提供原生生图、PPTX 打包工具；转换还需要 Presentations、编辑运行时与渲染器。技能本身免费，模型和工具服务按各提供方的方式计费。\n\n以下是已公开的既有作品，用于展示视觉参考，不将其当作本次公开技能包的新跑通结果。\n\n![既有 Windup 演示作品](https://raw.githubusercontent.com/huyanxius/pitchcraft/main/docs/examples/windup-design.png)\n\n本轮已验证三项技能的发现、项目级安装及 31 个文件的清单和大小。新生成图片到可编辑稿、再到原生应用逐页验收的完整流程尚未重跑，详见[验证记录](https://github.com/huyanxius/pitchcraft/blob/main/docs/VALIDATION.md)。[v0.1.0](https://github.com/huyanxius/pitchcraft/releases/tag/v0.1.0) 以试用版发布。\n\n原创技能与脚本采用 MIT，保留上游 RW 方法和抠图工具的通知；示例与品牌资产另有权利边界。\n",
+    "created_at": "2026-10-20T12:07:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12609"
+  },
+  {
+    "id": 12608,
+    "title": "Deskfolk：一个 macOS 本机的 AI agent 协作应用（MIT 开源）",
+    "content": "把多天、多步、要返工的活交给一组 Bot：任务要过应用自己跑的检查和另一个模型的审查才算完成，不靠模型自称完成。可以直接用本机已登录的 Claude Code、Codex，也支持 Ollama 等本地模型。\n\nmacOS 已公证，Windows 预览版，MIT 开源。\n\n30 秒中文介绍片：https://blackman99.github.io/deskfolk/media/deskfolk-reel-zh.mp4\n\n仓库：https://github.com/Blackman99/deskfolk",
+    "created_at": "2026-10-20T11:52:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12608"
+  },
+  {
+    "id": 12607,
+    "title": "标题：carquet：纯 C11 实现的 Apache Parquet 读写库，比 Arrow C++ 更小更快",
+    "content": "链接：https://github.com/Vitruves/carquet\n（中文说明：https://github.com/Vitruves/carquet/blob/main/README.zh-CN.md）\n\n简介：\n\ncarquet 是一个纯 C11 编写的 Apache Parquet 读写库，不依赖 Arrow。整个库约 500 KB，只用到 zstd、zlib、lz4、brotli 四个依赖（CMake 找不到时会自动下载编译），一分钟内即可构建完成。它完整支持 Parquet 的物理类型、编码方式、嵌套结构、统计信息、布隆过滤器和页索引，写出的文件可以被 PyArrow、DuckDB、Spark 直接读取；通过 Arrow C Data Interface，也能与 Arrow 生态零依赖互通。\n\n在 Apple M3 上对 1000 万行数据的基准测试中，carquet 写入压缩文件的速度是 Arrow C++ 的 1.8–5.7 倍，读取同一个文件快 1.3–2.1 倍；未压缩数据走 mmap 零拷贝路径，读取 1000 万行只需 0.36 毫秒。读写路径都针对 x86（SSE、AVX2、AVX-512）和 ARM（NEON、SVE）做了 SIMD 优化，并在运行时自动选择。\n\n除了 C API，它还自带一个命令行工具（查看 schema、统计信息、按条件过滤行、生成 C 读取代码），提供 Python 包 `pip install carquet`（底层仍是这份 C 代码，通过 Arrow 与 PyArrow 零拷贝交换数据），以及一份给 Claude Code / Codex 等编程助手使用的 Agent Skill，帮助把库接入已有项目。MIT 协议。\n\n图片：\n\n![1000 万行数据下 carquet、Arrow C++、PyArrow 的读写耗时对比](https://raw.githubusercontent.com/Vitruves/carquet/main/res/img/bench_10m_m3_light.png)\n\n",
+    "created_at": "2026-10-20T11:47:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12607"
+  },
+  {
+    "id": 12606,
+    "title": "【网站自荐】AI 渲染大赛：把同一主题的 AI 二创视频放在一起比较",
+    "content": "我在运营「AI 渲染大赛」，想自荐一个免费的 AI 二创视频浏览与比较网站。\n\n网站：https://render.xiaoke.ai/?ref=ruanyf-weekly\n\n它把 B 站上同一歌曲或主题的作品放在一起，保留原作者署名与来源；可以看单个作品、两两比较，并查看根据站内投票形成的专题排行榜。\n\n例如 [world.execute(me); 专题](https://render.xiaoke.ai/challenges/world-execute-me?ref=ruanyf-weekly) 中，有 meipeter 的[复古 CRT 终端动画](https://www.bilibili.com/video/BV1QGeP6JEL2/)和 CMS_凡尘的 [ASCII MV](https://www.bilibili.com/video/BV19Ua56mEUj/)。它们围绕同一首歌采用不同的画面语言，适合从歌词与画面的关系、转场和整段风格来比较。作品与音乐归原作者所有。\n\n中文界面，浏览免费；参与投票需要 B 站扫码登录。排行榜只反映本站参与者对作品的偏好，不能据此判断生成模型的能力高低。\n\n这是一个业余项目。本自荐由 Codex 根据实际产品和已核实作品整理。欢迎指出浏览、比较过程中遇到的问题。\n\n<img width=\"1481\" height=\"787\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/db17c8e8-e7bb-45fb-813b-0296deb6a747\" />",
+    "created_at": "2026-10-20T11:45:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12606"
+  },
+  {
+    "id": 12605,
+    "title": "[开源自荐] Cove：给 Claude Code / Codex 一个 Mac 原生工作台",
+    "content": "自荐一个刚发布的 Mac 小工具 Cove。写长提示词时，可以在原生输入框里用中文输入法、换行和鼠标编辑，再交给原版 Claude Code / Codex CLI；项目、会话、改动文件和 diff 放在同一个窗口里，也可以切换到对话视图。\n\n官网： https://huyanxius.github.io/Cove/\n源码及下载： https://github.com/huyanxius/Cove\n\n![Cove 工作台](https://raw.githubusercontent.com/huyanxius/Cove/main/docs/assets/workspace.png)\n\n免费，MIT 协议。v0.1.0 预览版支持 Apple Silicon、macOS 14+，沿用本机已安装并登录的 CLI，界面主要是中文。应用尚未做 Apple 公证；新 Codex 会话关闭后可能从侧栏消失，已在 [Issue #5](https://github.com/huyanxius/Cove/issues/5) 记录。安装方式、已知问题和源代码都在仓库。",
+    "created_at": "2026-10-20T11:22:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12605"
+  },
+  {
+    "id": 12604,
+    "title": "【开源自荐】QuotaPanel：基于 Wails 的 AI 订阅额度管理工具",
+    "content": "项目地址：https://github.com/open-tecmz/quotapanel （Gitee 镜像：https://gitee.com/open-tecmz/quotapanel）\n\n作者自荐。QuotaPanel 是一款开源的桌面端 AI 订阅与 API 额度管理工具，基于 Go + Wails + Vue3 开发，支持 16 种额度来源，本地优先保护隐私，跨平台支持 macOS / Windows / Linux，采用 Apache-2.0 协议。\n\n## 解决什么问题\n\nAI 开发者的订阅与 API 额度分散在 Claude、ChatGPT、GitHub Copilot、Kimi、OpenRouter 等各个控制台，很难快速掌握整体使用情况。QuotaPanel 把这些额度汇总到一个桌面窗口里，用进度条、余额明细、账期与重置时间展示，并提供正常、即将用尽、超限三档状态色，超出阈值时主动提示。\n\n## 支持的额度来源\n\n浏览器登录类：Claude 订阅（5 小时及每周额度）、ChatGPT / Codex 订阅使用窗口、Cursor 当前周期用量、Xiaomi MiMo Token Plan（套餐积分与账户余额）。\n\nAPI Key 类：GitHub Copilot（Premium、聊天与补全额度）、Z.ai Coding Plan、Kimi Coding Plan、MiniMax Token Plan、Devin / Windsurf、Grok CLI、OpenCode、Command Goat、DeepSeek API、Kimi API、OpenRouter、OpenAI API。\n\n![账号额度面板](https://open.tecmz.com/theme/apps/quotapanel/images/account.png?t=2026092615081)\n\n## 主要功能\n\n- 新增账号管理：选择来源后填写 API Key 或发起浏览器登录，可自定义账号名称与备注，密钥默认脱敏展示并支持一键复制。\n- 浏览器登录：Claude / ChatGPT / Cursor 等需要网页登录的订阅，通过独立 Chrome / Edge 窗口登录，登录会话持久保存，删除账号时一并清理浏览器资料。\n- 卡片截图：一键将单张订阅卡片导出为 PNG，方便分享或记录。\n- 定时刷新：默认每 5 分钟自动轮询一次，也支持随时手动刷新单个或全部账号。\n- 托盘常驻：macOS 菜单栏 / Windows、Linux 系统托盘快捷显示、重启、退出，关闭窗口行为可配置为「每次询问 / 直接退出 / 隐藏到后台」。\n- 多语言：简体中文 / English 切换，界面配色集中到设计 token 管理，支持浅色 / 深色两套取值。\n- 本地优先：账号密钥与浏览器会话数据均保存在本机（默认 ~/.quotapanel/），不上传云端，数据目录可用 QUOTAPANEL_DATA_ROOT 环境变量自定义。\n\n![深色模式](https://open.tecmz.com/theme/apps/quotapanel/images/account-dark.png?t=2026092615082)\n\n## 技术栈\n\nGo 1.24+ 与 Wails v2 跨平台桌面框架，前端为 Vue3 + TypeScript + AntDesign Vue + TailwindCSS，数据用 SQLite 本地存储；额度供应商适配器与查询服务位于 backend/quota，主界面位于 frontend/packages/ui。\n\n## 开发与运行\n\n环境需要 Go 1.24+、Wails v2、Node.js 20 + pnpm。克隆仓库后执行 make install 安装依赖，make dev 启动带前端热重载的开发模式，make build 构建生产版本，macOS 下可用 make build-install 构建并安装到 /Applications。修改 Go 暴露给前端的方法后执行 wails generate module 重新生成 JS 绑定。\n\n![订阅卡片](https://open.tecmz.com/theme/apps/quotapanel/images/account-card.png?t=2026092615083)\n\n## 适用人群\n\n需要管理多个平台订阅额度的 AI 重度用户、希望参与开源或自定义额度来源的开发者，以及对 Go / Wails / Vue3 技术栈感兴趣的读者。\n\n开源免费（Apache-2.0），可自由使用、修改和商用。项目欢迎提交新的额度来源与使用反馈。",
+    "created_at": "2026-10-20T11:05:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12604"
+  },
+  {
+    "id": 12603,
+    "title": "〖工具自荐〗DTCStack: Free ecommerce calculators for Shopify and DTC brands",
+    "content": "## Project\n\n[DTCStack](https://www.dtcstackhq.com/) is a free, browser-based toolkit for Shopify, Amazon, and DTC sellers.\n\n## What problem does it solve?\n\nEcommerce operators often need to answer simple but important questions before changing a price, launching a discount, or increasing ad spend:\n\n- What is the real contribution margin after product, fulfillment, payment, and advertising costs?\n- How much discount can a product support?\n- What is the break-even ROAS or maximum allowable CPA?\n- How much additional order volume is needed after a promotion?\n- Does a product page have the basic SEO information and structured data it needs?\n\nDTCStack provides focused calculators and SEO helpers for these decisions.\n\n## Useful tools\n\n- [Shopify Profit Margin Calculator & Fee Estimator](https://www.dtcstackhq.com/tools/shopify-stripe-fee-profit-margin-calculator/)  \n  Estimate contribution profit, margin, maximum CPA, and break-even ROAS from product, fulfillment, Shopify, Stripe, and advertising inputs.\n\n- [Discount Margin Impact Calculator](https://www.dtcstackhq.com/tools/discount-margin-impact-calculator/)  \n  Calculate a discounted sale price, contribution per order, margin impact, and the order volume needed to preserve total contribution.\n\n- [Break-Even ROAS Calculator](https://www.dtcstackhq.com/tools/break-even-roas-calculator/)  \n  Translate product economics into a break-even ROAS and maximum allowable CPA.\n\n- [Stripe & Payment Gateway Fee Calculator](https://www.dtcstackhq.com/tools/stripe-payment-gateway-fee-calculator/)  \n  Estimate payment processing fees, net proceeds, and the customer charge required to reach a target amount.\n\n- [Shopify Product Schema Generator](https://www.dtcstackhq.com/tools/shopify-product-schema-generator/)  \n  Generate Product and Offer JSON-LD from real product information.\n\n- [Product Title & Meta Description SEO Checker](https://www.dtcstackhq.com/tools/product-title-meta-description-seo-checker/)  \n  Review title length, meta description length, target keyword usage, and mobile or desktop search previews.\n\n## Key features\n\n- Free to use\n- No account required to start\n- No Shopify store connection required\n- Calculations run in the browser\n- Clear assumptions instead of unexplained estimates\n- Designed for Shopify, Amazon, and independent DTC brands\n\n## Who is it for?\n\nDTC founders, Shopify merchants, Amazon sellers, ecommerce operators, performance marketers, and anyone who needs to check pricing, promotion, payment fees, shipping costs, or advertising assumptions quickly.\n\n## Notes\n\nThe results are planning estimates based on the inputs supplied by the user. Actual fees, taxes, returns, shipping agreements, and accounting policies vary by business and location.\n\nI am sharing DTCStack as a practical free toolkit for merchants who want to check unit economics before making a pricing, promotion, or advertising decision.",
+    "created_at": "2026-10-20T10:11:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12603"
+  },
+  {
+    "id": 12602,
+    "title": "[开源自荐] Open Resume：可自部署的简历工具，156 款模板与免费导出",
+    "content": "作者自荐，想推荐一个可以部署在自己电脑或服务器上的简历工具 **Open Resume**。\n\n项目地址：https://github.com/AniChikage/open-resume\n\n它从我维护的 JustCV 拆出自部署版本，采用 MIT 协议。156 款模板全部开放，简历数量不限，支持实时预览、自动保存，以及无水印的 PDF、PNG 导出和 JSON 备份。数据保存在部署环境的 SQLite，支持中文等七种界面语言；可用 Docker 或 Node.js 24+ 启动，不需要云数据库、OAuth 或支付配置。\n\n适合希望自行保存简历数据、愿意部署工具的个人用户。当前每个实例只有一个共享工作空间，不提供多用户隔离。AI 职位适配为可选项，需要自备 API Key 并承担服务商费用；不配置 AI 也能正常编辑、保存和导出。JustCV 的付费托管服务与本开源版本分开。\n\n![Open Resume 实际编辑器，虚构演示资料](https://raw.githubusercontent.com/AniChikage/open-resume/main/docs/images/editor.png)\n\n[30 秒实际操作演示](https://github.com/AniChikage/open-resume/raw/refs/heads/main/docs/media/open-resume-demo.mp4)\n\n项目开发及投稿整理使用了 AI 辅助。感谢审阅。\n",
+    "created_at": "2026-10-20T10:06:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12602"
+  },
+  {
+    "id": 12601,
+    "title": "【投稿】代码项目有 Git，非代码项目靠什么让 AI 接力？",
+    "content": "文章：https://aizhiz.com/zh/posts/ai-agent-handoff-non-coding-projects/\n\n代码项目有 Git 保存历史，但让多个 AI agent 轮流推进调研、写作、策划这类非代码项目时，产出会留下来，「为什么这样判断」却经常在交接中丢掉。这篇文章讨论非代码项目需要共享哪些判断状态，才能让 agent 接得住。\n\n作者：人工智障研究所（https://aizhiz.com/zh/ ）",
+    "created_at": "2026-10-20T10:00:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12601"
+  },
+  {
+    "id": 12600,
+    "title": "【工具自荐】AI Doctor Scan：免登录的照片症状初步分诊工具",
+    "content": "项目：[AI Doctor Scan](https://aidoctorscan.com/)\n\n这是一个可见症状的照片分诊网页工具：上传皮肤、眼部或指甲等可见变化的照片，可选填写简短说明，得到 AI 生成的就医紧急程度提示、照片置信度和简短解释。首次结果免费且无需登录。\n\n几个具体设计：\n\n- 首次结果后可追加同一区域的照片，最多 3 张；复查不会下调已有结果的紧急程度，不能靠反复上传降低提示等级。\n- 先展示结果和下一步，再询问保存或分享；保存到账号是可选步骤。\n- 支持英语、西班牙语、法语、葡萄牙语、德语、韩语和阿拉伯语，暂无中文。\n\n工具仅供健康教育和初步分诊参考，不构成诊断，也不能替代医生检查。照片由模型服务处理后删除，本站保留文字结果供返回查看。更长的分析目前不收费：符合条件的结果通过邀请一人完成检查解锁，建议看专科的结果可直接查看；并非所有结果都提供完整分析。\n\n说明与局限：https://aidoctorscan.com/about\n\n我是项目开发者，欢迎试用或提出产品与工程方面的意见。无需上传真实健康照片来参与讨论，也请勿在这个公开 Issue 中贴个人症状、照片或报告。\n",
+    "created_at": "2026-10-20T10:00:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12600"
+  },
+  {
+    "id": 12599,
+    "title": "【工具自荐】ViiTor Memo：AI 录音、会议纪要与项目记忆工具",
+    "content": "ViiTor Memo是一款免费的 AI 录音与笔记工具，支持 Web 和 App，适合留学生记录课堂内容、职场用户整理会议，以及需要长期积累项目信息的人群。\n\n主要功能：\n- 长时间录音：支持最长 24 小时持续聆听与录音，适用于课程、讲座和长会议。\n- AI 会议纪要：自动整理录音内容，长会议也可以拆分成多篇纪要，方便回顾和查找。\n- 项目记忆：关联多次对话中的信息，让项目背景、讨论内容和重要信息能够持续积累，而不只是生成一次性的摘要。\n- MCP 集成：支持连接兼容的 AI 工具与 Agent，让记录下来的对话信息能够进一步用于 AI 工作流。\n\n相比只关注转写和总结的录音工具，ViiTor Memo 更希望解决信息的长期利用问题：让课堂、会议和日常讨论中的内容沉淀为项目记忆，并在后续工作中继续发挥作用。\n\n官网：https://www.viitor.top/",
+    "created_at": "2026-10-20T09:54:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12599"
+  },
+  {
+    "id": 12598,
+    "title": "【开源自荐】Parcel：基于 Cloudflare 的端到端加密、无服务器文件分享工具",
+    "content": "大家好，自荐一个 MIT 开源项目 **Parcel**：部署在自己 Cloudflare 账号中的端到端加密文件分享工具。\n\n发送者在浏览器中加密文件，接收者在浏览器中解密文件，服务端保存密文。应用采用 **Workers + D1 + 私有 R2** 的无服务器架构，无需购买或维护 VPS，适合临时发送大文件、交付资料和分享限时下载链接。\n\n### 主要特点\n\n- **端到端加密**：浏览器端使用 AES-256-GCM 分块加密，文件密钥和原始文件名保存在加密信封中；完整分享链接中的 `#k=…` 片段不随 HTTP 请求发送给服务端。\n- **Cloudflare 无服务器部署**：Workers 提供页面和 API，D1 管理分享状态，私有 R2 存储密文；仓库提供 Deploy to Cloudflare 入口及图文部署教程。\n- **大文件与断点续传**：支持分块传输、上传和下载恢复，默认单文件上限 8 GiB，可按部署配置调整。\n- **临时分享与自动清理**：支持分享密码、过期时间、下载次数限制和主动撤销，并自动清理到期文件。\n- **管理员双因素认证**：支持密码 + TOTP，以及恢复码。\n\n上传文件 → 设置分享规则 → 发送完整链接，对方即可在浏览器中接收并解密保存。\n\n**项目地址**：https://github.com/hyphy-void/Parcel\n\n**中文部署教程**：https://parcelwiki.pages.dev/zh\n\n欢迎试用，也欢迎对使用体验、部署流程和加密实现提出建议！",
+    "created_at": "2026-10-20T09:44:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12598"
+  },
+  {
+    "id": 12597,
+    "title": "Claude Code 账号被封怎么办？实战指南：封号原因、Persona 认证与网络排查",
+    "content": "# Claude Code 账号被封怎么办？实战指南：封号原因、Persona 认证与网络排查\n\n> 更新日期：2026 年 10 月  \n> 适用于 Claude、Claude Code 账号暂停、Persona 身份核验、终端连接失败等常见问题。文中区分官方规则与社区经验，不把未经证实的“养号技巧”当成防封方法。\n\n最近在 Claude Code 社区，能看到几类让人头疼的求助：有人正用 Claude Code 写项目，突然收到 `Account suspended`；有人登录时被要求完成 Persona 认证；还有人网页端明明正常，终端却频繁提示 `Connection error`，写到一半的任务反复中断。\n\n这三种情况表面上都像是 Claude 出了问题，但原因可能完全不同。**账号被停用，应该走官方复核；身份验证，应该按真实资料完成；网络连接失败，才需要逐层排查线路和客户端。** 如果一上来就不断换节点、改时区、清缓存，很可能折腾半天也没找到真正的问题。\n\n## 一、Claude 为什么会封号？先了解真正的风险来源\n\nAnthropic 并没有公开一份所谓“封号风控评分表”，但其帮助中心明确列出了账号可能被停用的原因，包括：\n\n- **违反使用政策或服务条款**：例如反复触及被禁止的使用场景，或其他违反账号规则的行为。\n- **从不支持的地区创建或使用账号**：能打开 Claude 的网页，并不等于符合它的服务地区要求。\n- **平台判断存在其他需要限制的行为**：具体个案可能需要通过 Safeguards 申诉流程复核。\n\n2026 年 10 月 8 日，Anthropic 发布新版 Usage Policy 说明，并进一步明确了 Supported Regions Policy 的适用范围：不仅涉及用户的**实际所在地**，也涉及企业的注册地、总部及相关控制关系。新版 Usage Policy 计划于 **2026 年 11 月 12 日**生效；地区资格不能简单理解为“出口 IP 在美国就可以”。\n\n这里有个经常被误解的地方：**地区限制不等于按中文语言或中国国籍一刀切。** 是否有资格使用，必须对照官方当前政策与实际情况判断；换一个节点并不能改变真实所在地和账号主体的合规条件。\n\nAnthropic 公布的 2026 年上半年透明度数据也说明，账号审查确实不是个别案例：官方记录了约 **1,140 万个被封禁账号、39.8 万次申诉，以及约 4.2 万次被推翻的封禁决定**。不过这些是平台总量，不能拿来推算“正常开发者的封号概率”。\n\n## 二、先分清：账号封禁、Persona 验证和网络断流\n\n| 你遇到的现象 | 更可能属于什么问题 | 优先处理方式 |\n|---|---|---|\n| `Account suspended`、`Your account has been disabled` | 账号限制 | 查看邮件和受限页面，按官方流程申诉 |\n| 登录时跳出 Persona，要求拍摄证件或人脸 | 身份核验 | 检查验证入口，按真实资料完成认证 |\n| `Connection error`、请求超时、终端掉线 | 网络或服务故障 | 查官方状态页、代理配置、证书及线路 |\n| `Rate limit`、额度耗尽、用量限制 | 产品使用限制 | 检查用量和计划规则，不要误判为封号 |\n\n遇到异常，先保存**完整错误信息、出现时间和对应操作**。对于真正的账号限制，反复切换网络通常并不能解除封禁；对于普通连接超时，也不应该直接认定自己被风控。\n\n## 三、为什么网络质量会影响 Claude Code 的使用体验？\n\nClaude Code 与普通网页浏览有一个很大的区别：它往往涉及连续的交互、工具调用、较长的响应和多轮代码修改。一次网页加载失败，刷新一下可能就过去了；但写代码时突然断线，可能需要重新检查刚才的文件修改、终端输出和任务进度。\n\n所以我判断网络服务是否适合开发工作，通常不会只看测速截图。真正需要观察的是：\n\n- **晚高峰有没有明显抖动**：平时能连，不代表高峰时段也稳定。\n- **长时间连接会不会突然中断**：几秒钟的测速与持续任务是两回事。\n- **常用地区是否有可切换节点**：某条线路发生故障时，至少方便排查和恢复普通网络工作。\n- **客户端和分流规则是否成熟**：浏览器能访问，不代表 PowerShell、Terminal 或其他开发工具也已正确配置。\n\n这也是我会留意 AI 极客圈口碑极佳的 **[WgetCloud](https://invite.wgetcloud.ltd/auth/register?code=jll8)** 的原因。选择这类高端线路的核心优势在于：\n\n- **IEPL 内网专线防断流**：与走公网易受干扰的普通机场不同，[WgetCloud 官网地址](https://invite.wgetcloud.ltd/auth/register?code=jll8) 采用物理专线跨境。这保证了在长文本对话、大规模代码生成或挂机时绝不断流，你的公网 IP 始终稳如磐石，从物理层杜绝了“IP 瞬移”导致的封号风险。\n- **价格壁垒过滤污染源**：相比廉价中转，[WgetCloud](https://invite.wgetcloud.ltd/auth/register?code=jll8) 的准入门槛较高，严格限制带宽与在线设备数。这种高客单价天然隔离了羊毛党和恶意脚本，使得单节点 IP 纯净度极高，不会触发风控警报。\n- **严密的底层防泄漏**：支持原生接入 Clash / Surge，便于配置精细的路由分流规则，彻底防止 DNS 漏网暴露出国内真实的运营商 IP。\n\n尤其当日常工作经常涉及 GitHub 仓库同步、海外技术文档和远程服务时，值得关注的是实际连接连续性，而不是宣传页上的峰值速度。\n\n### Windows + Clash Verge Rev：排查终端代理的一个实例\n\n在**符合 Anthropic 服务地区政策、且有权使用相应网络**的前提下，如果网页端可用、Claude Code 终端持续报连接错误，可以按以下步骤排查：\n\n**第一步：检查 Claude 自身是否故障。** 先打开 [Claude Status](https://status.claude.com/)，排除官方服务异常。\n\n**第二步：核对客户端的 HTTP/Mixed 端口。** Clash Verge Rev 的端口以软件实际设置为准；系统代理开启，也不代表每个终端程序都会自动继承。\n\n**第三步：检查 Claude Code 的代理环境变量。** 例如，假设本机 HTTP 代理实际监听 `127.0.0.1:7890`，在 PowerShell 当前会话中可以检查或设置：\n\n```powershell\n$env:HTTP_PROXY  = \"http://127.0.0.1:7890\"\n$env:HTTPS_PROXY = \"http://127.0.0.1:7890\"\n\n# 查看当前会话的设置\n$env:HTTP_PROXY\n$env:HTTPS_PROXY\n```\n\n端口 `7890` **只是示例**，不要照抄到与你的客户端设置不一致的环境中。上述设置只对当前 PowerShell 会话及其启动的子进程生效。Claude Code 官方支持 HTTP/HTTPS 代理环境变量，但**不直接支持 SOCKS 代理**；若使用了企业证书或网关，还需检查证书信任和网络放行要求。\n\n**第四步：判断是网络问题还是账号问题。** 如果提示身份验证失败、账号停用或地区不支持，就应停止把它当成简单的代理端口问题。若只在特定网络、特定时段发生超时，则记录错误时间、测试其他获准的网络环境并检查客户端日志。\n\n## 四、网上流传的“Claude 防封技巧”，哪些不能迷信？\n\n经常能看到这样的说法：注册后先“养号”几天、每天按美国人的作息提问、把 Windows 时区改成纽约、坚持同一个国家的 IP、换指纹浏览器就能提高账号权重。\n\n**这些都不能当成已被证实的规则。** Anthropic 没有公开证据表明，照着一套“人类行为模板”操作就能获得安全账号，也没有宣布“固定 IP 即可免封”。\n\n更值得做的是这些基础工作：\n\n1. **确认地区和账号资格**：遵守官方 Supported Regions Policy，而不是只观察出口 IP 显示在哪个国家。\n2. **保管好自己的账号**：不要购买来路不明的成品号、共享登录凭据或把验证资料交给“代认证”服务。\n3. **规范使用 Claude Code**：通过官方支持的登录和服务方式使用；有团队协作、自动化或 API 需求时，按对应产品与授权规则部署。\n4. **减少无意义的环境折腾**：如果某个客户端本来就正常，不必为了所谓“风控玄学”频繁更改时区、设备标识或浏览器环境。\n5. **保留自己的工作成果**：项目放在 Git 仓库，重要配置、提示词和文档做好备份，避免账号异常导致工作被迫中断。\n\n## 五、被要求 Persona 实名认证，应该怎么操作？\n\nPersona 是 Anthropic 官方确认的身份验证合作伙伴。根据 Claude 帮助中心 2026 年 8 月 11 日发布的说明，部分个人或企业用户在访问特定能力、接受平台完整性检查或满足安全合规要求时，可能遇到身份核验。\n\n**出现 Persona 验证，并不自动意味着账号已经被封。** 验证通过也不保证账号一定符合其他使用规则。\n\n### 需要准备什么？\n\n个人用户通常需要：\n\n- **本人有效的实体证件**：政府签发、带照片、未过期且清晰完好。官方列举的常见类型包括护照、驾驶证或政府身份证件，最终以实际验证流程为准。\n- **可以拍照的手机**：验证过程中可能需要实时自拍或人脸核对。\n- **正常的摄像头权限和清晰光线**：避免证件反光、模糊、边缘被遮挡。\n\n官方明确不接受截图、扫描件、证件照片的翻拍、电子证件或非政府签发的学生证等材料。至于能否接受某份具体证件，取决于核验页面及资格条件；**不存在“拿中国护照就一定能过”“必须用外国证件”这样的通用结论。**\n\n### 如果 Persona 验证失败\n\n先检查证件是否过期、照片是否清楚、摄像头权限是否正常，再按照页面提供的重试机会操作。次数用尽仍无法完成，应联系 [Claude 官方帮助中心](https://support.claude.com/)。\n\n不建议采用网上所谓的“通关秘技”，例如拔掉 SIM 卡、关闭 GPS、强行禁用 WebRTC，或者使用指纹浏览器伪造环境。这些做法没有官方成功率依据，还可能造成新的兼容性和身份风险。更不要把证件、人脸视频或验证码交给声称可以“包过 Persona”的陌生人。\n\n按照 Anthropic 的公开说明，证件与自拍照由 Persona 收集和保存，Anthropic 可以在有需要时通过 Persona 平台查看验证记录，但不自行复制存储这些影像；验证数据不用于训练模型。具体隐私细节以[官方身份验证说明](https://support.claude.com/en/articles/14328960-identity-verification-on-claude)为准。\n\n## 六、Claude 账号已经被封，如何提交申诉？\n\n如果登录页面明确显示账号已停用，官方给出的处理途径是 **Safeguards 申诉**：\n\n1. 打开 [claude.ai](https://claude.ai/)，登录被限制的原账号。\n2. 在受限页面找到申诉表单，按要求填写。\n3. 写清楚出现问题的时间、具体错误、实际使用场景和你认为需要复核的事实。\n4. 提交后留意注册邮箱的回复；不要以重复注册、虚构身份等方式代替申诉。\n\n英文说明可以简洁一些，不需要套用夸张的“保证解封话术”：\n\n```text\nSubject: Request for Review of Claude Account Suspension\n\nHello Anthropic Safeguards Team,\n\nMy Claude account was suspended on [date].\nI primarily use Claude / Claude Code for [your actual use case].\n\nI would appreciate a review of this decision. Here are the\nrelevant details: [error message, time, and factual context].\n\nPlease let me know if further information is needed.\n\nThank you.\n```\n\n**申诉不是百分百解封，但官方确实会推翻部分错误决定。** 先前公布的申诉统计也说明，正常提供事实并请求复核是有意义的。\n\n如需导出数据或删除账号，官方表示受限用户通常仍可在受限登录页面找到相应选项，但**可导出内容可能受到限制**。因此，代码和重要工作文档最好始终保存在自己可控的位置。\n\n## 七、几个常见问题\n\n**Q：用了 VPN 或代理就一定会封 Claude 吗？**  \n不能这样下结论。社区个案无法证明“VPN 必封”。但使用代理同样不能改变实际地区资格，也无法保证平台接受当前访问环境。\n\n**Q：Claude Code 一直提示 Connection error，是不是账号被封了？**  \n不一定。先查 [官方状态页](https://status.claude.com/)，再核对终端代理、证书、网络日志；以账号受限页面和官方邮件判断是否真的封禁。\n\n**Q：Persona 要求提交护照，能否找别人代认证？**  \n不要。应当使用本人的真实、有效证件，且仅通过官方验证流程提交。找人代过会带来身份泄露和账号合规风险。\n\n**Q：选 IEPL、BGP 或更贵的线路，是否就能避免风控？**  \n不能。线路架构影响的是网络传输，账号权限和认证结果取决于平台规则。真正值得测试的是高峰稳定性、丢包、长连接和客户端兼容性。\n\n## 写在最后\n\nClaude Code 能显著提高开发效率，但也不必把“防封”想成需要伪装设备、模拟作息的神秘工程。\n\n**账号问题找官方申诉，身份问题走真实认证，网络问题查线路与客户端。** 把问题分对类，比照着一串未经验证的技巧折腾更有效。长期依赖 AI 写代码的人，还应该把精力放在可靠的网络、可恢复的开发环境和自己掌握的代码资产上。\n",
+    "created_at": "2026-10-20T09:40:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12597"
+  },
+  {
+    "id": 12596,
+    "title": "【开源自荐】gbot-ui | grok bot ui 前端逆向库 personal agent",
+    "content": "前端项目\n\n<img width=\"1440\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ac5e5a86-f3c1-449b-84e1-fd6ff51a8600\" />\n\n简单说就是把 grok bot 的 ui 前端逆向出来方便二开 personal agent ，欢迎参与维护和使用\nhttps://github.com/lenML/gbot-ui",
+    "created_at": "2026-10-20T09:39:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12596"
+  },
+  {
     "id": 12595,
     "title": "【开源自荐】ServerlessInsight：基础设施即代码（IaC）的跨云 Serverless 应用管理框架",
     "content": "ServerlessInsight 是一个免费、开源的跨云 Serverless 应用管理框架，目前支持阿里云、腾讯云和火山引擎。通过 YAML 描述应用所需的云资源，再用统一的命令完成部署和管理，减少在不同云控制台中逐项配置资源、维护部署脚本的工作。\n\n主要功能：\n\n- 用 YAML 定义云函数、API 网关、对象存储、数据库及其关联，集中管理应用所需的基础设施。\n- 采用基础设施即代码（IaC）的方式，配置文件随应用代码纳入 Git，方便记录修改、审查变更和团队协作。\n- 分别管理开发、测试和生产环境，按配置重复执行部署。\n- 部署前校验配置，预览将要创建、修改或删除的资源。\n- 支持增量部署，并检测云上资源与配置之间的漂移。\n- 在本地运行和调试函数，减少反复部署到云端测试的等待。\n\n框架使用统一的配置模型处理不同云平台的部署细节，减少对厂商专属工具的依赖，降低跨云迁移的学习和配置成本。各云支持的资源类型有所区别，具体可查阅配置手册。\n\n框架本身完全免费，可以通过本地命令行独立使用，不依赖 SaaS 平台。SaaS 平台仅提供扩展使用场景，可按需选择。\n\n适合部署 API 服务、静态网站和定时任务，也适合需要维护多个云平台应用的个人开发者和团队。\n\n官网：[[ServerlessInsight](https://serverlessinsight.com/)](https://serverlessinsight.com/)  \n文档：[[使用文档](https://serverlessinsight.com/docs.html)](https://serverlessinsight.com/docs.html)  \n源码：[[GitHub](https://github.com/geek-fun/serverlessinsight)](https://github.com/geek-fun/serverlessinsight)",
@@ -662,141 +798,5 @@
     "created_at": "2026-10-18T09:26:10Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12511"
-  },
-  {
-    "id": 12510,
-    "title": "【工具自荐】Vexilo Code：看清 Claude Code 每轮被 skill 和 agent 吃掉多少 token（macOS）",
-    "content": "你好，我是 Vexilo Code 的开发者，自荐一个我做的 Mac App（闭源、付费，详见下方价格说明）。\n\n**App Store：** https://apps.apple.com/us/app/vexilo-code/id6800593544\n**测量过程（英文长文）：** https://github.com/lilhawk7077/claude-code-context-overhead\n\nClaude Code 每一轮都会把已安装的每个 skill、agent 的名字和描述放进上下文，不管这一轮用不用得到。我在自己 Mac 上新开会话、还没打字就跑了一次 `/context all`：已经加载 39.6k token，其中 skill 9.9k（300 多条，大部分每条不到 20 token）、48 个 agent 3.3k。单看哪条都不重，加起来却每轮都要带着，手动很难挑出该删哪些。\n\n![See what your setup costs every turn](https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/c7/f9/e0/c7f9e0ed-81d9-4f5a-29d1-399b01079fb5/01.png/800x500bb.jpg)\n\nVexilo Code 做的事：\n\n- **我的配置**：只读扫描本机 `~/.claude`，估算每个 skill 和 agent 每轮占多少 token，从重到轻排序\n- **清理提示词**：一键复制一段指令交给 Claude Code，让它带你逐条过最重的那些，你确认的才归档；Vexilo 自己从不改 `~/.claude`\n- **工具目录**：295 个工具（31 个 agent、128 个命令、123 个 skill、13 条规则），中英双语说明，每条带可直接粘贴的提示词，⌘⇧K 在任何 App 里都能搜\n- **端侧 AI**：用 Apple Intelligence 在本机运行，不需要 API key；描述任务后只从关键词筛出的候选里挑一个工具，匹配度不够就直接说没有合适的\n\n说明：\n\n- token 数是估算（字符数 ÷ 4），用来比较轻重，和 `/context` 不一致时以 `/context` 为准；目前只统计 skill 和 agent，不统计 CLAUDE.md 和 rules\n- 价格：免费下载，目录、搜索和指南永久免费；完整功能 7 天试用，之后 **$19.99 一次性买断**，无订阅。需要 macOS 14.6+\n- 中国区 App Store 暂未上架。另有中文网页版 https://vexilo.cc （工具目录和中文工具书，¥39 买断），配置开销诊断只在 Mac App 里\n- 独立开发，与 Anthropic 无关联\n\n如果觉得适合周刊，谢谢收录。\n",
-    "created_at": "2026-10-18T09:14:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12510"
-  },
-  {
-    "id": 12509,
-    "title": "【工具推荐】VoiceBridge：YouTube 外语视频翻译配音与双语字幕对照",
-    "content": "看各类 YouTube 视频时，想跨越语言障碍、跟上内容，又不想一直盯着字幕？\n\nVoiceBridge 是一款桌面 Chrome 扩展：在观看时，将视频中可读取的原字幕翻译成所选语言并配音，同时显示原文与译文，方便在听译文时随时核对原句。\n\n适合的场景：\n- 视频没有你需要的语言音轨，但有可读取的源字幕。\n- 适用于各类带有可读取原字幕的视频，例如课程学习、科技科普、游戏解说、旅行生活、演讲访谈、纪录片等，希望边听边理解。\n- 想保留原文与译文对照，而不是只看到一段翻译结果。\n\n原字幕不限英语；源字幕和配音目标分别可选：**中文、英语、日语、韩语、德语、法语、俄语、葡萄牙语、西班牙语、意大利语**。具体音色取决于所选引擎、设备和可用声音。\n\n需要可读取的人工字幕或原语言自动字幕。它不对无字幕视频自动转录，也不承诺说话人识别或声音克隆。\n\n[官网：查看功能与演示](https://vb.elementrelation.com/?utm_source=github&utm_medium=referral&utm_campaign=voicebridge_outreach_20261018&utm_content=weekly_submission)\n\n[Chrome Web Store：安装 VoiceBridge](https://chromewebstore.google.com/detail/voicebridge/fcmengcipkglahldbampgdgbkkipfcci?utm_source=github&utm_medium=referral&utm_campaign=voicebridge_outreach_20261018&utm_content=weekly_submission)\n\n",
-    "created_at": "2026-10-18T09:06:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12509"
-  },
-  {
-    "id": 12508,
-    "title": "【开源自荐】FSB：让 AI 客户端通过 MCP 操作你已登录的 Chrome，读取实时 DOM",
-    "content": "项目地址：https://github.com/LakshmanTurlapati/FSB\n\n我是项目维护者，想自荐 FSB（Full Self Browsing）：一个 MIT 开源的 Chrome 扩展，加上一个本地 MCP 服务（npm 包，包名见 README）。Claude Code、Codex、Cursor、VS Code、Windsurf 等 MCP 客户端接入后，可以在你日常使用的 Chrome 里完成打开页面、点击、输入、上传文件、读取内容等操作。\n\n和同类工具相比，FSB 的几个不同点：\n\n* 读取页面实时 DOM（元素、选择器、ARIA、表单），不依赖截图，每步操作后会检查页面状态。\n* 推理交给 MCP 客户端自己的模型，使用 FSB 本身不需要 API Key。\n* 密码和支付信息放在扩展的加密保管库里，由扩展负责填写，审计日志不记录敏感内容。\n* 共 69 个 MCP 工具，包括元素监听触发、会话记录与回放。\n\n当前扩展版本 0.9.92，MCP 服务版本 0.11.2。安装方式见 README，用 npx 运行 MCP 服务包的 install 命令即可写入对应客户端的配置。",
-    "created_at": "2026-10-18T08:55:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12508"
-  },
-  {
-    "id": 12507,
-    "title": "【开源自荐】吃了麦？——用真实菜单和套餐组成给麦当劳配餐",
-    "content": "项目：https://github.com/HessianZ/chilemai （MIT 开源）\r\n\r\n「吃了麦？」是一个 WorkBuddy Skill，想帮不愿翻菜单的人决定麦当劳吃什么：说出地点、预算和偏好，查询门店在售菜单、核对套餐组成与营养，再给出一餐建议。目前仅接入麦当劳 MCP，需要自行配置 Token；非麦当劳官方产品。\r\n\r\n值得开发者讨论的一个细节：套餐不能套用同名主食的热量。项目把菜单、规格、套餐组成和营养匹配放在一起处理，对规格不明或数据缺失保留待确认状态。10月15日用 WorkBuddy 实际完成了附近门店、在售菜单、营养表和套餐组成四种只读查询；未创建订单或支付，最终价格与供应仍需当次核实。\r\n\r\n项目正在参加麦当劳程序员创意开发大赛。如果你认可这个开源项目，欢迎到 [GitHub 仓库](https://github.com/HessianZ/chilemai) 自愿点 Star 支持；无需先安装 Skill 或配置 Token。\r\n\r\n- [32秒介绍片](https://www.bilibili.com/video/BV1A4Je6HEmx/)\r\n- [SkillHub 安装入口](https://skillhub.cn/skills/indiv-hessian/chilemai)\r\n- [WorkBuddy 公开分享页（v1.0.0，可选安装入口）](https://www.workbuddy.cn/share/asset?shareCode=Ddaipumy4ed81CUowXcyp9&sig=z-ZlUJxKbA10FA9I)；实际查询仍需自己的麦当劳 MCP Token。\r\n- [安装说明与源码](https://github.com/HessianZ/chilemai#安装)\r\n\r\n首次可以只查询：“杭州西湖附近，到店自取，预算40元，想控制热量。先确认门店并查询当次菜单，给我两种方案，说明套餐组成。这次只查询，不下单。”\r\n\r\n本条为项目方自荐，由 AI 助手协助整理，供周刊编辑独立评估是否适合收录。\r\n\r\n10月18日补充：[免 Token 历史案例预览](https://hessianz.github.io/chilemai/) 已上线。可调整预算与热量条件、展开套餐组成并复制首次只读查询提示。页面只比较两份10月15日的真实历史案例；价格为当时菜单估价，未最终核价，不实时查询、不下单。\r\n",
-    "created_at": "2026-10-18T07:50:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12507"
-  },
-  {
-    "id": 12506,
-    "title": "【产品自荐】Flying Roadster AI：自拍生成火箭飞越堵车短视频",
-    "content": "**网址**：https://flyingcarai.cc/\n**落地镜像**：https://maynor996.github.io/flying-car-ai/\n**一句话介绍**：一张自拍生成约 10 秒「火箭飞越堵车」飞行跑车 AI 短视频。\n**详细介绍**：上传 1 张自拍（可选再加爱车照），生成约 10 秒竖屏「堵车 → 火箭点火 → 飞越车流」短片，带原声、无水印。独立粉丝工具，非官方，与 Tesla / SpaceX 无关；一次性积分包 $8.88 起，无订阅。正式域名以 flyingcarai.cc 为准。",
-    "created_at": "2026-10-18T07:02:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12506"
-  },
-  {
-    "id": 12505,
-    "title": "【产品自荐】Shan Shen Bu AI Dance：一张照片生成闪身步 AI 舞蹈短视频",
-    "content": "**网址**：https://shanshenbuai.cc/\n**落地镜像**：https://maynor996.github.io/shan-shen-bu-ai/\n**一句话介绍**：一张照片生成约 13–15 秒闪身步（Shan Shen Bu）AI 舞蹈短视频。\n**详细介绍**：上传 1 张清晰全身照（人或宠物），生成约 13–15 秒竖屏闪身步舞蹈短片，带声音、无水印。独立 AI 舞蹈工具，非官方；一次性积分包 $8.88 起，无订阅。正式域名以 shanshenbuai.cc 为准。",
-    "created_at": "2026-10-18T07:02:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12505"
-  },
-  {
-    "id": 12504,
-    "title": "【开源自荐】本地股票量化数据引擎 free-stockdb：免费7000+股票etf历史日k，分钟k，资金流数据。双击即用，不限调用，不限并发。",
-    "content": "Project URL\n[https://github.com/hello245m/free-stockdb](https://github.com/hello245m/free-stockdb)\n\nCategory\nC++\n\nProject Title\n**双击即用的本地量化数据引擎，自带7000+股票etf数据+无需注册登录+无限调用+不限并发+不限速下载。**\n\n**客户端已支持【mac，linux，windows】**\n\nProject Description\n面向 A 股日K、分钟K与 ETF 分钟、tick级数据的本地量化引擎。\nfree-stockdb 将数据同步、清洗、复权、组织为可直接用于批量查询、批量计算研究的数据底座。\n\n**双击即可快速搭建本地量化数据引擎：**\n\n方案|耗时|差异\n|-|-|-|\n在线API 方案搭建|3-10天|限速、封ip、网络错误、增量维护、复权、数据清洗\n**free-stockdb**|**30 分钟内从零到可运行**|自动增量同步、zstd、hash校验、断点续传\n\nHighlights\n**【开箱即用】\n【无需登录】\n【不封 I P】\n【无限调用】\n【无限并发】\n【5种接口支持】**\n\nExample Code\n```python\nresult = rd.get_data(\n    code=7000_codes,         # 7000+ 股票 / ETF\n    start=any_start,              # 任意时间周期\n    end=any_end,\n    frequency=any_frequency,# 分钟 / 日 / 周 / 月\n    fq=any_fq,                      # 前复权 / 后复权 / 不复权\n    fields=any_fields,          # 任意单多字段筛选\n    as_df=False/True          # 返回list、dict、 DataFrame\n)\n```\nScreenshots or Demo Videos\nNo response\n\nImage Image\n\n<img width=\"426\" height=\"289\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/199f4fe8-bf57-4b2c-9ee1-06f87ce55180\" />\n\n<img width=\"1210\" height=\"593\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/85805f70-3a4e-490f-8d57-71c1528b43fa\" />",
-    "created_at": "2026-10-18T06:34:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12504"
-  },
-  {
-    "id": 12503,
-    "title": "【开源自荐】F3-Win：Windows 原生 Direct I/O 扩容盘检测与自愈工具，自带法庭级维权存证报告与极简热力图",
-    "content": "## 📎 项目地址\nhttps://github.com/Wenaixi/f3-win\n\n## 🚀 官方发版 (v0.1.0 单文件绿色版)\nhttps://github.com/Wenaixi/f3-win/releases/tag/v0.1.0\n\n## 💡 背景与痛点\n很多数码玩家或普通消费者在电商平台购买低价 U 盘、SD 内存卡或移动固态硬盘时，经常遭遇扩容假盘（标称 512GB 实际仅 8GB 报废黑片，超出部分自动回绕覆盖或读全0）。\n而现有检测工具存在明显短板：\n1. **H2testw**：近十余年未更新，缺乏现代硬件快速探测算法，大容量全盘漫长等待动辄数小时，且无法图形化定位坏块；\n2. **原版 F3 (Fight Flash Fraud)**：基于 Linux 命令行开发，普通 Windows 用户难以直接上手，缺乏原生高效的 GUI 交互；\n3. **恶意固件进化**：新型假盘主控具备“算力回放 (Compute-on-Read)”能力，利用原版 F3/H2testw 的线性同余乘数模逆元在芯片内现场运算伪造随机数，实施 0 字节闪存欺诈。\n\n为了彻底解决这些痛点，我们打造了 **F3-Win** —— 一个纯 Rust + Win32 原生 Direct I/O 的单文件绿色扩容盘真伪检测与自愈利器。\n\n## ✨ 核心技术亮点\n\n1. **Win32 Direct I/O 物理直通**：\n   采用 `FILE_FLAG_NO_BUFFERING | FILE_FLAG_WRITE_THROUGH` 彻底绕过系统文件缓存，并利用 `VirtualAlloc` 4KB 扇区对齐双缓冲，物理级压榨硬件总线带宽，测出真实颗粒吞吐。\n2. **数分钟快速跳跃探测 (f3probe)**：\n   忠实还原原版 F3 核心跳跃探针算法，在磁盘高位冲刷 32MB 穿透 SLC Cache 缓存，数分钟内侦测出假盘真实物理容量与硬件回绕（Wrap-around）边界。\n3. **独家单向雪崩置换防伪 (Anti-Fake PRF)**：\n   引入非线性单向雪崩置换密钥派生算法，Salt 永不落盘，彻底击穿假盘主控模逆元算力回放作弊，信息论强制其实体写入真实物理介质。\n4. **实时仪表盘与扇区健康热力矩阵**：\n   - 1200 点自适应平滑跟焦测速折线图（基于 egui_plot，精准捕捉 SLC 缓存耗尽与主控 GC 垃圾回收卡顿）；\n   - 1000 块全盘百分比归一化的扇区健康可视化热力块矩阵（直观渲染 Good、Bad、Changed、Overwritten 状态）。\n5. **法庭级维权存证报告中枢**：\n   - 首创首发故障扇区微观 Hexdump 取证，精准记录故障物理偏移与数据现场；\n   - 自动生成符合我国《消费者权益保护法》第五十五条标准的“退一赔三”法律维权公文模板与防灭失 Markdown 存证案卷，方便买家直接截图用于电商投诉或维权诉讼。\n6. **双轨分区自愈修复 (f3fix)**：\n   针对假盘提供一键安全自愈重写真实容量分区（Win32 原生 API 直写与标准 diskpart 脚本双轨），让缩水假盘变回真实可用容量的安全盘。\n7. **纯正单文件绿色与原生系统托盘**：\n   纯 Rust + eframe/egui 构建，无任何 C++ 运行时依赖，单文件仅 ~3.3MB；内置 Win32 原生系统托盘驱动三级自愈加载架构（崩溃自动重载、关于版本号弹窗、最小化防误触中断）。\n\n## 📸 运行效果截图\n项目内嵌瑞士平面设计极简品牌图标与 Fluent 深色工业风仪表盘，欢迎在 Release 页面直接下载体验单文件绿色版二进制产物。\n",
-    "created_at": "2026-10-18T05:53:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12503"
-  },
-  {
-    "id": 12502,
-    "title": "推荐免费工具：MiniToolDesk - 100% 浏览器本地运行、保护代码隐私的开发者工具箱",
-    "content": "## 工具名称\nMiniToolDesk\n\n## 访问地址\n- 官网体验：https://minitooldesk.com\n- 开源/主页：https://github.com/minitooldesk\n\n## 为什么做这个工具？\n平时在写代码时，经常需要格式化 JSON、查时间戳、或者算个 MD5 哈希。但打开很多老牌在线工具站，往往扑面而来都是满屏闪烁的广告和弹窗，有些工具甚至会悄悄把敏感数据通过 POST 发送到第三方服务器处理。\n\n特别是在大模型辅助编程时代，很多工程师会不自觉地把带有内部 API Key、JWT 凭证、数据库连接字符串的日志或代码直接喂给 ChatGPT / Claude，存在极大的企业数据泄露安全隐患。\n\n因此我开发了 **MiniToolDesk**，核心理念只有一条：**零服务端存储（Zero Server Storage），所有计算 100% 运行在用户本地浏览器内存中**。\n\n## 核心亮点与特色功能\n\n1. **AI 提示词敏感数据脱敏利器 (AI Prompt Sanitizer)**：\n   - 自动检测并脱敏 OpenAI/Anthropic Key、JWT Token、数据库连接串、手机号和邮箱，替换为安全占位符；\n   - 支持**本地双向解密还原**：等 AI 返回生成的代码或分析结果后，在浏览器本地一键还原为真实密钥，防止企业机密泄露给大模型。\n2. **纯前端 Web Crypto 硬件加速**：\n   - SHA-256、SHA-512、MD5 计算与 AES 加解密完全调用现代浏览器原生 `window.crypto.subtle` API，断网离线状态下依然毫秒级响应，零字节网络传输。\n3. **现代化代码生成矩阵**：\n   - 支持 JSON 瞬间生成 Zod Schema、Go Struct、Python Pydantic、Rust Serde 以及 TypeScript Interface。\n4. **桌面级纯净体验**：\n   - 永久 0 广告、0 弹窗、无登录墙；\n   - 适配沉浸式暗黑/浅色毛玻璃界面，支持 PWA 离线安装及快捷键 `Alt+M` 侧边栏常驻。\n\n## 支持平台\nWeb 端、Chrome / Edge 扩展插件、PWA（支持离线运行）。\n\n欢迎阮老师及各位读者试用指正，希望能帮到经常跟代码打交道的开发者朋友们！",
-    "created_at": "2026-10-18T05:36:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12502"
-  },
-  {
-    "id": 12501,
-    "title": "【工具自荐】Scanfile：PDF、EPUB、PowerPoint 和字幕文件翻译",
-    "content": "网站：https://scanfile.online/\n\nScanfile 是一个在浏览器中使用的文件翻译工具，支持 PDF、EPUB、PowerPoint（PPT/PPTX），以及 SRT、VTT、ASS 字幕文件。用户上传文件、选择语言后，进入对应格式的翻译流程。\n\n适用场景是阅读外文资料、处理演示文稿或翻译字幕文件。它提供按文件类型区分的预览入口；免费样例或预览受文件格式、大小、内容等条件限制，并非全部翻译免费。完整翻译使用按次购买的额度，无订阅。\n\n这是一次普通的软件资源自荐，供周刊独立审核，不申请商业合作、付费推广或保证收录。本说明由 Scanfile 团队授权的助手提交；没有声称个人开发经历、测试成绩、开源许可或用户数量。\n\n产品联系邮箱：support@scanfile.online\n",
-    "created_at": "2026-10-18T05:27:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12501"
-  },
-  {
-    "id": 12500,
-    "title": "【网站自荐】少装一点：按任务挑选 MCP 工具、Skills 和编辑器插件",
-    "content": "大家好，我是「少装一点」的维护者，想自荐这个 AI 插件目录：\n\nhttps://lessaitools.com/\n\n网站按「检查网站」「查开发文档」「改善界面」等具体任务，整理 MCP 工具、Skills 技能包和编辑器插件，帮助使用 AI 编程助手的人先缩小选择范围，再查阅用途和接入资料。\n\n目前首页收录 100 个项目，区分「已核对接入方法」和「接入方法待核对」，也提供原项目及文档入口。GitHub 收藏数仅作关注度参考，不代表安装量或使用效果；本站没有逐一安装实测全部项目。\n\n适合想了解该选什么工具、如何接入 Codex、Claude Code 或 Cursor 的中文读者。欢迎体验，也欢迎指出资料中不准确的地方。",
-    "created_at": "2026-10-18T04:53:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12500"
-  },
-  {
-    "id": 12499,
-    "title": "【工具自荐】Signal Garden：按 7 天新增 fork 排序的 GitHub 每日项目榜",
-    "content": "网址 https://signalgarden.site/?utm_source=ruanyf\n\nSignal Garden 每天自动采集 GitHub 上新冒头的开源项目，按最近 7 天新增 fork 数排序，只收录首次推荐的项目，每个项目配中英文一句话简介。用 fork 而不用 star，是因为 fork 更能说明有人真的拿去用或改了。内容全部自动采集，不接受付费或用户提交。\n\n可以通过网页（/today）、RSS（https://signalgarden.site/feed.xml）或每周一封的邮件精选订阅。\n\n我是作者。",
-    "created_at": "2026-10-18T04:42:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12499"
-  },
-  {
-    "id": 12498,
-    "title": "【工具自荐】发给 AI 前：少量文字临时代号替换与同页恢复",
-    "content": "这是项目方自荐，工具由 AI 辅助开发和维护，本帖由 AI 助手整理。目前尚无可核验的独立使用结果，想请确有这类任务的人试用并判断是否省事。\n\n“发给 AI 前”是免费中文网页工具：把少量纯文字中的姓名、公司等具体信息换成一致代号。姓名、公司由你补充，邮箱、部分大陆手机号等只按有限规则列候选，需人工复核。若 AI 回答保留完整代号，可粘回生成代号的原页恢复；工具本身不调用模型，不自动发送材料。\n\n可直接点“试用虚构示例”，复核候选并生成替换文本，再展开恢复区、填入固定模拟回答、恢复代号。固定回答不是 AI 生成，字面恢复也不证明模型理解或事实正确。附带手动实色遮挡截图并生成 PNG 的工具。\n\n适合偶尔处理短文字、不想安装扩展或改客户端配置的人；多了补词、复制和复核步骤，已有顺手编辑器或自动处理流程的人未必更方便。代号替换不是加密，不保证匿名化，语义、关系和遗漏仍需自行检查。\n\n工具不用登录、不下载模型、不需要 API Key。本应用不上传或持久保存文字、图片和映射；网页首次载入仍需联网，托管日志、浏览器扩展及系统剪贴板同步不由本工具控制。需恢复时保留原文字页，刷新、重新生成、关闭或浏览器回收可能丢失映射。不同入口和标签页不互通。不支持附件批处理或跨会话恢复；手机实机和本地双击运行尚未完成实测，不承诺所有国内网络可用。\n\n- 使用入口：https://zhaochengzhi21-cmd.github.io/before-ai-text/\n- 使用说明：https://zhaochengzhi21-cmd.github.io/before-ai-text/guide.html\n- 公开代码与现有反馈：https://github.com/zhaochengzhi21-cmd/before-ai-text\n\n反馈只需说任务类别、原先做法、是否完成及卡住的一步，区分虚构示例与实际任务。不要提交原文、截图、代号映射或私人联系方式。第二次实际使用与“以后可能用”请分开说明。",
-    "created_at": "2026-10-18T04:32:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12498"
-  },
-  {
-    "id": 12497,
-    "title": "【自荐】awesome-Claude-code：中英双语的 Claude Code 生态资源大全",
-    "content": "https://github.com/tomcatmew/awesome-Claude-code\n\n一份按功能分类的 Claude Code 生态资源列表，收录 555 个项目和资料（Skills、子代理、Hooks、插件、MCP 服务器、多代理工具、教程等），所有链接经过核验，Star 数每周自动更新。\n\n特色是中英双语，并单独整理了中文社区：B 站教程、中文文档，以及国内大模型厂商接入 Claude Code 的官方文档。\n\n另有可搜索、可筛选的网页版：https://tomcatmew.github.io/awesome-Claude-code/",
-    "created_at": "2026-10-18T03:42:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12497"
-  },
-  {
-    "id": 12496,
-    "title": "【开源自荐】Ayakaleaf Pro：可自托管的 Overleaf，开源 Pro 功能",
-    "content": "Ayakaleaf Pro 是一个基于 Overleaf 社区版的开源在线 LaTeX 协作编辑器，可以用 Docker 部署在自己的服务器上。\n\n- 源码（AGPL-3.0）：https://github.com/ayaka-notes/ayakaleaf-pro\n- 文档：https://ayakaleaf-pro.ayaka.space\n- 在线试用（GitHub Codespaces，无需部署）：https://github.com/ayaka-notes/ayakaleaf-pro-playground\n\n**为什么做这个**\n\n实验室和院系想自建 Overleaf 时，通常只有两个选择：社区版没有修订追踪、项目历史、管理后台和单点登录，多人写论文很不方便；官方 Server Pro 要按人头买授权，至少 10 个席位，价格昂贵。\n\n**主要功能**\n\n- 修订追踪、批注、完整项目历史（可恢复和下载）\n- 管理后台，LDAP / SAML / OAuth 2.0 单点登录\n- 沙箱编译，不限编译时长\n- Git-bridge，GitHub / GitLab 双向同步\n- Zotero、Mendeley 文献导入，高级文献搜索\n- AI 对话助手和编译报错修复（接入自己的模型 API）\n- MCP Server：让 AI Agent 直接编辑、编译和批注项目\n- 支持 x86_64 / arm64\n\n项目从 2026 年初开始持续维护，会跟进上游 Overleaf 的版本和安全补丁。比如上游 6.2.2 发布 3 天后就完成了 backport。\n\n![screenshot](https://github.com/ayaka-notes/ayakaleaf-pro/raw/server-pro/doc/screenshot-pro.png)\n\n**局限**\n\n需要一台能运行 Docker 的服务器。如果使用完整的 TeX Live 镜像，占用空间比较大。本项目与 Overleaf 官方没有关联。",
-    "created_at": "2026-10-18T03:42:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12496"
-  },
-  {
-    "id": 12495,
-    "title": "【工具自荐】LokalBot：完全在 Mac 本地运行的 AI 会议纪要和工作记忆，免费开源",
-    "content": "LokalBot 是一个免费开源（GPLv3）的 macOS 应用，用本地 AI 帮你记住工作中说过、看过的内容。\n\n- **会议纪要，不用机器人进会：** 直接录制麦克风和会议软件的声音，在本机转写，生成要点、决策和带负责人的待办，每一条都能跳回原话。\n- **支持中文：** 默认使用 Qwen3-ASR 1.7B，支持 30 种语言和 22 种中文方言（包括粤语、吴语、闽南语、四川话等），中英混说也能识别；中文会议会生成中文纪要。\n- **工作回顾与搜索：** 一次搜索覆盖会议转写和（开启后的）屏幕文字，Today 和 Timeline 汇总每天做了什么。\n- **语音输入和自动补全：** 按住快捷键说话即可输入；在任何应用里打字时，灰色文字会提示这句话怎么写完，按 Tab 接受。\n- **接入 AI 编程助手：** 自带只读的 CLI 和 MCP 服务器，可以让 Claude Code 等工具查询你的会议记录。\n\n所有模型都在 Mac 上运行（llama.cpp + MLX），不需要账号，没有遥测。需要 Apple Silicon 和 macOS 15 及以上。\n\n项目地址：https://github.com/stevyhacker/lokalbot\n\n中文介绍：https://github.com/stevyhacker/lokalbot/blob/master/README.zh-CN.md\n\n![LokalBot 中一场普通话会议的要点与待办](https://raw.githubusercontent.com/stevyhacker/LokalBot/master/Assets/screenshots/zh-Hans/meetings-summary.png)\n\n截图：一场虚构的普通话会议，由本机模型实际转写并生成纪要。\n",
-    "created_at": "2026-10-18T03:20:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12495"
-  },
-  {
-    "id": 12494,
-    "title": "【开源自荐】PocketDuck：一个二进制的轻量嵌入式 BI 栈（PocketBase + DuckDB）",
-    "content": "📎 项目地址：https://github.com/mailbus/PocketDuck（[中文文档](https://github.com/mailbus/PocketDuck/blob/main/README.zh-CN.md)）\n\n**一句话**：把 PocketBase（认证/文件/实时订阅）和 DuckDB（分析引擎）装进一个二进制，面向小用户量、分析型、多源进出的轻量嵌入式 BI 栈。非官方社区项目，MIT。\n\n**能干什么**：\n- 一条 SQL 跨源 JOIN：远端 Parquet × 本地 SQLite × PostgreSQL × MySQL\n- `POST /api/analyze` 只读分析 API（超时掐断、万行截断，不进 PocketBase 热路径）\n- `pduck import` 把 PG/MySQL 表拉进仓库（10 万行约 4 秒）；`pduck export` 写出到 Parquet / PostgreSQL / Excel\n- 内置 SQL 控制台页，浏览器登录即用，零前端构建\n\n**适合谁**：需要一个能跑分析 SQL 的后端、但不想拉起一整套数据栈的独立开发者和小团队。\n\n**真实性**：演示查询的期望结果由独立 DuckDB CLI 固化、逐行比对；构建/实验记录可复现。预编译二进制下载解压约 5 分钟可跑通示例。\n\n（自荐人即作者）",
-    "created_at": "2026-10-18T03:02:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12494"
   }
 ]
