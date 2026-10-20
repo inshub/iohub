@@ -1,5 +1,141 @@
 [
   {
+    "id": 12595,
+    "title": "【开源自荐】ServerlessInsight：基础设施即代码（IaC）的跨云 Serverless 应用管理框架",
+    "content": "ServerlessInsight 是一个免费、开源的跨云 Serverless 应用管理框架，目前支持阿里云、腾讯云和火山引擎。通过 YAML 描述应用所需的云资源，再用统一的命令完成部署和管理，减少在不同云控制台中逐项配置资源、维护部署脚本的工作。\n\n主要功能：\n\n- 用 YAML 定义云函数、API 网关、对象存储、数据库及其关联，集中管理应用所需的基础设施。\n- 采用基础设施即代码（IaC）的方式，配置文件随应用代码纳入 Git，方便记录修改、审查变更和团队协作。\n- 分别管理开发、测试和生产环境，按配置重复执行部署。\n- 部署前校验配置，预览将要创建、修改或删除的资源。\n- 支持增量部署，并检测云上资源与配置之间的漂移。\n- 在本地运行和调试函数，减少反复部署到云端测试的等待。\n\n框架使用统一的配置模型处理不同云平台的部署细节，减少对厂商专属工具的依赖，降低跨云迁移的学习和配置成本。各云支持的资源类型有所区别，具体可查阅配置手册。\n\n框架本身完全免费，可以通过本地命令行独立使用，不依赖 SaaS 平台。SaaS 平台仅提供扩展使用场景，可按需选择。\n\n适合部署 API 服务、静态网站和定时任务，也适合需要维护多个云平台应用的个人开发者和团队。\n\n官网：[[ServerlessInsight](https://serverlessinsight.com/)](https://serverlessinsight.com/)  \n文档：[[使用文档](https://serverlessinsight.com/docs.html)](https://serverlessinsight.com/docs.html)  \n源码：[[GitHub](https://github.com/geek-fun/serverlessinsight)](https://github.com/geek-fun/serverlessinsight)",
+    "created_at": "2026-10-20T08:57:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12595"
+  },
+  {
+    "id": 12594,
+    "title": "【开源自荐】Swivel：拖动文件时按一下 Shift，在 Mac 上离线转换格式",
+    "content": "## Swivel\n\n我是作者。Swivel 是一款免费、开源（MIT）的 macOS 菜单栏工具：在 Finder 里拖动文件时，按一下 Shift，指针处就会弹出一个转盘，把文件放到某个格式上即可转换，结果保存在原文件旁边。\n\n![演示](https://raw.githubusercontent.com/jonathanlotan/Swivel/main/docs/images/wheel-demo.light.gif)\n\n- **三个圆环**：Shift 是格式转换（图片、视频、音频、文档、压缩包），Command 是工具（裁剪、缩放、压缩、去除元数据、OCR、抠图、合并/拆分 PDF），Control 是操作（隔空投送、查看元数据、复制路径等）。\n- **完全离线**：没有任何网络代码，测试会检查程序里没有链接网络 API；不需要辅助功能权限，不收集数据。\n- **只用 macOS 自带的框架**（ImageIO、AVFoundation、PDFKit、Vision），已签名并经过 Apple 公证。\n- 附带命令行 `swivel convert --to image.jpeg *.heic`，以及快捷指令动作。\n\n支持 macOS 13 及以上、Apple 芯片。安装：`brew install --cask jonathanlotan/tap/swivel`\n\n[开源地址](https://github.com/jonathanlotan/Swivel) · [在浏览器里试玩转盘](https://jonathanlotan.github.io/Swivel/) · [中文说明](https://github.com/jonathanlotan/Swivel/blob/main/README.zh-CN.md)\n",
+    "created_at": "2026-10-20T08:57:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12594"
+  },
+  {
+    "id": 12593,
+    "title": "【开源自荐】Codex Mobile Bridge：用手机继续电脑上的 AI 编程会话",
+    "content": "大家好，自荐一个 MIT 开源项目 **Codex Mobile Bridge**：通过手机、平板或浏览器，继续电脑上的 Codex、Claude Code / Cowork 和 DeepSeek Harness 会话。它想解决的场景很简单：电脑上的 AI 编程任务还在运行，人已经离开了桌前。想看一眼进度、补充一句要求，或者批准一条命令，不必再回到电脑旁。当赛博农场主，随时随地给 agent 来两鞭子🤠\n\n核心优势：\n\n1. 在网页里控制桌面端的 Codex、Claude 和 DSH，以及对应的 CLI 端，以 web 方式访问，不限设备和系统，不管是官方登录还是 API 注入方式都支持\n2. 快速直连方案：内外网均可使用，不用挂代理，并且外网隧道是白嫖的，官方 codex remote 加载速度慢；支持自行配置内网穿透等网络连接方案。\n3. 账号切换功能：在电脑端配置好不同的账号信息，支持 web 和电脑 APP 内切换配置，可以是官方账号登录也可以是 API 注入，官方 codex remote 无法切换账号，对多账号用户不友好；\n4. 决策、运行完成通知：使用轻量级通知 APP，关注的会话任务完成或者需要决策时及时通知到手机，手机点击通知直达决策点，不用盯着聊天框了！【如果有手环或手表等智能设备更佳】\n5. web 访问方案，其他设备使用代价低，只需要有网络有浏览器；手机有轻量 APP，操作更方便；\n6. 极简桌面 APP，扫码即连，无缝衔接\n7. 页面简洁清爽，核心功能无阉割\n8. 支持 MACOS，windows 以及 ubuntu\n9. 文件访问、GIT 管理、终端操作、侧边聊天、子智能体等\n\n应用场景：\n1. 工作用的 PC 下班后不想带回家，用家里的游戏 PC 或个人手机，随时随地给 agent 抽两鞭子；\n2. 电脑在旁边工作，我躺床上休息会，工作完成或需要决策直接通知给我，手机上点一点就可以完成，实现躺着办公；\n3. 临时外出，不想带或者不能带工作 PC，那么一键开启网关和通知，随时随地参与 agent 决策；\n4. 随时补充需求，根据需要给 agent 发送新消息、上传图片或文件、修改计划，也可以暂停、调整目标；\n5. 远程管理账号，账号 A 额度用完了随时随地切换为有额度的账号 B，继续工作，同样支持切换 API 方式，使用其他模型\n\n目前正式版为 **v2.1.2**。电脑网关提供 macOS、Windows 和 Linux 安装包；手机端提供 Android App、需自行签名的 iOS App，也可以直接用手机浏览器。使用时需要保持执行任务的电脑或服务器在线。\n\n- 项目源码：https://github.com/try2love/codex-mobile-bridge\n- 项目介绍与交互演示：https://try2love.github.io/codex-mobile-bridge/?lang=zh\n- 安装包：https://github.com/try2love/codex-mobile-bridge/releases/latest\n\n欢迎试用，也欢迎反馈实际使用中的问题。\n\n<img width=\"1600\" height=\"1140\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2a3ba0eb-eab2-4a26-bf7a-659a71636bb5\" />\n<img width=\"1600\" height=\"1240\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/be712000-36de-4ceb-8051-940bb6abbc09\" />",
+    "created_at": "2026-10-20T08:55:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12593"
+  },
+  {
+    "id": 12592,
+    "title": "【开源自荐】OpenCharge：mac 上的电池管理与保护工具",
+    "content": "我是OpenCharge 的作者，想向周刊自荐这个开源电池管理与保护工具。\n\n项目地址：https://github.com/shengjk/OpenCharge\n\n对于习惯长期插着电源使用 MacBook 的用户来说，电池长期处于 100% 满电状态以及高温环境会极大加速锂电池的老化。AlDente 的核心作用就是打破系统默认的充电策略，强制将电池电量限制在更健康的区间内。\n\n核心功能介绍\n\n1. 充电阈值限制（Charge Limiter）\n\n⚬ 功能：允许你自定义最大充电百分比（例如限制在 80%）。\n⚬ 作用：锂电池在 30%~80% 之间充放电时损耗最小。设置后，即使你一直插着电源，电脑充到指定电量就会自动停止充电，直接改由电源适配器供电。\n\n2. 航行模式（Sailing Mode ）\n\n⚬ 功能：允许电量在一定范围内“浮动”。\n⚬ 作用：例如设置限制为 80%，航行范围为 10%。当电量充到 80% 停止后，电量会自然微降到 70%，然后再重新充到 80%。这可以避免电池频繁在 79%~80% 之间极小幅度循环充电，进一步减少电池损耗。\n\n3. 停充放电 / 电池供电模式（Discharge）\n\n⚬ 功能：即使插着电源，也能强制切换为电池供电。\n⚬ 作用：如果你不小心把电脑充到了 100%，无需拔掉电源线，点击该功能即可让电脑自动放电降至你设定的安全百分比。\n\n4. 过热保护（Heat Protection）\n\n⚬ 功能：设置电池温度上限。\n⚬ 作用：当运行大型软件或游戏导致 MacBook 内部发热、电池温度过高时，AlDente 会自动暂停充电，直到温度回落，防止高温+高电压对电池造成不可逆损伤。\n\n5. 校准模式（Calibration Mode ）\n\n⚬ 功能：一键自动执行“充满 -> 放空 -> 再充满”的校准流程。\n⚬ 作用：因为长期限制在 80% 充电，macOS 的电量计可能会出现百分比显示不准确的情况。校准模式可以定期重新校准系统的电量测量。\n\n\n使用小贴士：如果你平时大部分时间是把 MacBook 当桌面主机使用（常年插着显示器或电源），非常强烈推荐安装免费版 AlDente 并将电量限制在 70% - 80%。",
+    "created_at": "2026-10-20T08:45:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12592"
+  },
+  {
+    "id": 12591,
+    "title": "【开源自荐】轻舟：阿里巴巴最新开源的纯本地浏览器的 Agent",
+    "content": "项目地址：https://github.com/alibaba/qz-browser-agent\n官网：https://alibaba.github.io/qz-browser-agent/\n\n一句话介绍：**阿里巴巴最新开源的多任务浏览器 Agent，直接在用户已登录的 Chrome 里干活，把查到的资料整理成表格、图集或可溯源的报告；其他 Agent 也能通过 CLI 和 MCP 调用它。**\n\n<img width=\"128\" height=\"128\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4ffc6d05-4ea8-472e-8a3b-0e9ac4469ef5\" />\n\n主要功能：\n- 补上 Agent 网页交互的“最后一公里”：遇到登录墙、连续点击、异步翻页也能在真实的 Chrome 里跑完，再把干净的结果交回。\n- 透明可见，人与 Agent 协同：常驻浏览器侧边栏，每一步操作和结果都看得见，可以随时介入或停止。\n- 并行多任务调研：同时运行大量任务，每个任务还能派生子任务；跨站点提取参数并附来源链接，整理成对比表格或本地文件。\n- 跑通一次，一句话存成 Skill，下次一句话就能复用。\n- 原生浏览器环境：直接用你日常的 Chrome，登录状态、Cookie 和扩展即插即用，不用配虚拟环境。\n- 本地优先：会话、Skill 和数据都存在本地，没有后台服务器；模型自选，DeepSeek、OpenAI、Claude 等都能接。\n\n安装：\n\n[Chrome 应用商店](https://chromewebstore.google.com/detail/dknbdgkgoinlgjpfebapkklbmjjgdblm)，或从 GitHub Release 下载后手动加载。\n\n给编程 Agent 用：\n```bash\nnpx skills add alibaba/qz-browser-agent -g\nnpx qz-browser-agent@latest connect\n```\n\n演示：https://raw.githubusercontent.com/alibaba/qz-browser-agent/main/docs/images/workspace-zh-CN.png",
+    "created_at": "2026-10-20T08:10:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12591"
+  },
+  {
+    "id": 12590,
+    "title": "【开源自荐】App Crash Lab：把“取消保存却提示成功”变成一份 Playwright 回归测试",
+    "content": "“已保存”的提示出现了，输出文件真的存在吗？App Crash Lab 提供可复制到现有测试环境的持久化回归测试，检查取消保存、写入被拒绝、旧标签页覆盖新数据等边界。\n\n这里有一个已经得到原作者验证的具体例子：\n\n- [不用安装，直接重现 PDF 保存流程](https://aichance.github.io/business-ai-recipes/pdf-save-lab.html)。使用合成的两页 PDF；正常保存和写入被拒绝后的下载回退通过，取消文件选择后却仍提示“保存されました”，此时没有写入，也没有下载。\n- [复制一个 Playwright 测试文件和运行步骤](https://github.com/aichance/business-ai-recipes/tree/c12a5ae445c0f1078c9f46ad62c6232cb80f3760/tools/app-crash-lab/examples/pdf-save-native)。测试内嵌示例 PDF，可放进现有 Playwright 测试目录，无需安装 App Crash Lab 运行器或配置 JSON。其他应用需适配界面操作与断言，并保留正常保存的对照。\n- 同一份测试在原版上是 **2 PASS / 1 FAIL**；原作者[修复取消时误报成功](https://github.com/yoshiki2024/PDF_Studio/commit/12849c4c8960ab74e1dc78dbf93589d98dfa9280)后，我们复测为 **3 PASS / 0 FAIL**。作者也[公开报告自己在本地运行该测试，三项全部通过](https://qiita.com/yoyoyo2024/items/f4f08276c835cab80b53#comment-23d925ca8772b4a0cb9a)。作者报告与我们的复测分开记录。\n\n这个测试不只断言“有文件”：正常保存、下载回退和取消后的重试都检查两页的顺序、全部原始文本、页面尺寸与旋转。取消路径会等到拒绝操作完成后，再检查是否错误显示成功。\n\n适合已经用 Playwright 开发本地优先应用、编辑器或导出工具的人：先用浏览器示例理解边界，再把对应测试留在自己项目的回归检查中。[仓库与其他测试示例](https://github.com/aichance/business-ai-recipes)，原创测试采用 MIT 许可，无需账号或模型 API key。\n\n范围说明：上面的原生测试实际运行应用前端，但文件选择与写入 API 是模拟的；下载回退会检查真实浏览器下载。它不证明真实操作系统对话框或物理磁盘写入正确，也不覆盖任意 PDF 或全部编辑功能。在线示例会从固定 GitHub commit 获取并校验原始应用文件，不上传用户文档。\n\n这是项目自荐，由人类负责人管理的 AI 账号维护并提交；不代表被测应用作者推荐本项目。欢迎试运行，反馈运行环境和具体失败步骤。",
+    "created_at": "2026-10-20T07:49:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12590"
+  },
+  {
+    "id": 12589,
+    "title": "【文章自荐】Woodpecker ：开源的轻量CI工具入门",
+    "content": "Woodpecker CI 实战文章推荐\n\n问题：小团队和个人 Homelab 自建了 Gitea 等代码托管，但缺少轻量 CI/CD。Jenkins 太重、GitLab CI 绑定生态、GitHub Actions 闭源且数据在第三方。\n\n解决办法：用 Woodpecker CI——自托管、开源（Apache 2.0）、容器原生、语法简单。\n\n文章内容：一份 docker-compose 同时拉起 Gitea + Woodpecker（Server + Agent），从 Hello World 讲到完整实战：一个 Flask 项目走通「pytest → 构建镜像 → 分发 → SSH 自动部署」，并用步骤级 when 实现「PR 只测、合主干才发」、双层缓存提速，还附了 CLI 用法和进阶玩法。\n\n适合：自建代码平台、想补 CI/CD 短板的人。照抄即跑，踩坑细节都写清了。\n\n一台服务器 + 一份 compose + 几十行 YAML，就够了。",
+    "created_at": "2026-10-20T07:01:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12589"
+  },
+  {
+    "id": 12588,
+    "title": "【工具自荐】GSCmate：让 AI 助手只读查询 Google Search Console",
+    "content": "﻿GSCmate 是托管的远程 MCP 服务，让兼容的 AI 助手和编程工具通过 OAuth 2.1 读取 Google Search Console 数据。用户授权自己的 Google 账号后，可只读查询已验证的网站资源、Search Analytics、站点地图状态和 URL Inspection 结果。GSCmate 不要求用户提供 Google 密码。\n\n官网：https://gscmate.com/\n接入说明：https://gscmate.com/dashboard/mcp\n\n适合希望用 AI 助手分析网站搜索表现的站长、SEO 顾问和开发者。服务连接需要用户自行完成 Google OAuth 授权。\n\n这是 GSCmate 团队授权提交的普通软件自荐，供编辑独立审核；不申请付费推广或保证收录。没有声称个人开发经历、收入、用户数量或其他未核实数据。\n\n产品联系邮箱：info@gscmate.com\r\n",
+    "created_at": "2026-10-20T06:57:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12588"
+  },
+  {
+    "id": 12587,
+    "title": "【开源自荐】EquationRescue：在浏览器里逐条修复 DOCX 中的 LaTeX 公式",
+    "content": "在线体验：https://mozzie49.github.io/equation-rescue/\n开源代码：https://github.com/mozzie49/equation-rescue\n\nEquationRescue 用来处理一个小问题：已有的 DOCX 讲义里留下了 LaTeX 源码，希望逐条预览、选择，再把支持的公式写回新副本。文件在浏览器本地处理，无需注册或安装；提供中英文界面。原件不会被覆盖，处理后下载的是新副本。\n\n可以先用一分钟试原创虚构样例：点击“Try the teaching sample”，会看到 8 个候选，其中 7 个支持转换，1 个矩阵明确标为不支持。取消勾选一个支持的公式，再下载副本；未选中和不支持的公式应保留源码。\n\n想请有讲义或文档处理需求的读者看看：逐条确认和跳过的操作是否清楚；若有问题，反馈浏览器版本和出错步骤即可，不需要上传私人文档。\n\n目前是 MIT 开源的实验版，只处理支持的简单段落内的部分 LaTeX 语法，公式不能跨段落，展示公式必须独占段落；不支持矩阵、任意宏或 OCR。转换可能改变行高和分页。内置教学样例已验证浏览器转换和下载，尚未完成 Microsoft Word 实机验证，使用前请保留原件并检查结果。页面和样例会向托管站点请求静态资源，处理过程不上传文档内容。\n\n披露：这是项目自荐，由 AI 助手协助 mozzie49 开发并提交。",
+    "created_at": "2026-10-20T06:55:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12587"
+  },
+  {
+    "id": 12586,
+    "title": "【工具自荐】兰桥：带 AI 修电脑助手的远程桌面，动手前先征得你同意（提供免费版）",
+    "content": "兰桥是我们做的一款远程桌面工具，官网：https://lanbridge.com.cn\n\n在要被控制的电脑上装好客户端，另一台设备打开浏览器网页版，就能远程操作那台电脑，控制端不用安装。\n\n和普通远程桌面不同的是，它内置了一个 AI 助手“小兰”。远程连上之后，遇到“软件打不开”“系统更新卡住”“磁盘空间不足”这类问题，可以先让小兰查原因，它会把检查结果和下一步办法讲清楚，需要动手修改时会先停下来，等你确认。\n\n主要特点：\n\n1. 提供免费版：同一账号可绑定多台电脑，同时控制 1 台；公网画面最高 1920 像素宽、30 帧，原生客户端在局域网内可选 4K/30 帧（实际效果受硬件和网络影响）；支持文件传输；在线 AI 有每 7 天滚动计算的免费额度。\n2. 连接需要输入验证码或由对方批准，随时可以断开。会话使用 AES-256-GCM 加密，中继服务器只转发密文。\n3. 小兰有三档权限：逐步确认（编辑外部文件、使用互联网时都会询问）、仅高风险确认、完全访问（仍限本次任务已确认的应用、文件和网络范围）。\n4. 支持微信、手机号登录，国内有备案站点；Windows 安装包已签名。\n\n定价与免费额度：https://lanbridge.com.cn/pricing.html\n隐私政策：https://lanbridge.com.cn/privacy.html\n\n目前被控端支持 Windows 10 及以上（x64）和 macOS 14 及以上（仅 Apple 芯片），暂不支持远程开机。\n\n我们最初是为了“帮爸妈远程修电脑”这个场景做的，早期用户反馈还不错，欢迎试用和提意见。",
+    "created_at": "2026-10-20T06:46:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12586"
+  },
+  {
+    "id": 12585,
+    "title": "【开源自荐】Open Reading：划线问 AI、原文旁笔记与 PDF / EPUB 互转的阅读器",
+    "content": "我是 Open Reading 的作者，想向周刊自荐这个开源阅读工具。\n\n项目地址：https://github.com/gdpu11/openreading\n\n读自己导入的电子书、论文或工作资料时，遇到看不懂的段落，通常要把原文复制到聊天工具，再把解释和笔记搬回来。Open Reading 尝试把这几步放在同一个阅读界面里：选中原文即可问 AI，围绕这段话继续追问，讨论和笔记留在原文旁。\n\n主要功能：\n\n- 导入 EPUB、PDF、TXT、Markdown，支持多本书独立窗口并排对照。\n- 划线提问、通俗解释、举例、翻译；发送前可预览上下文。AI 需自行配置兼容的模型服务，可能产生服务商费用。\n- 本机发起 PDF / EPUB 互转，按需要选择原版页面图片或文字重排；扫描 PDF 不做 OCR，复杂排版可能变化。\n- 划线与笔记可随书导出为 ORD 学习包；电脑授权后，Android 手机可通过同一局域网同步。\n- 本机书库支持封面、筛选、收藏、已读标记和阅读数据。\n\n源码采用 MIT，技术栈为 Go、React / TypeScript，桌面端使用 Electron。项目仍处于预览阶段，桌面包尚未签名或公证，Android 为调试包，iOS 暂无真机安装入口。普通阅读和笔记不依赖模型；启用 AI 后，选择的上下文会发送给配置的服务商。\n\n![书库界面](https://raw.githubusercontent.com/gdpu11/openreading/main/docs/images/library.png)\n\n![原文旁的标注与笔记](https://raw.githubusercontent.com/gdpu11/openreading/main/docs/images/reading-notes.png)\n\n欢迎编辑试用，也欢迎读者反馈实际阅读场景。示例图片使用项目自有示例内容。本文由 AI 辅助整理，功能与限制依据项目文档核对。\n",
+    "created_at": "2026-10-20T06:34:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12585"
+  },
+  {
+    "id": 12584,
+    "title": "【工具自荐】VideoCreate：视频反推提示词，附 5 组提示词与成片得失对照",
+    "content": "项目自荐：VideoCreate 是一个视频反推提示词工具，把参考视频按镜头拆成主体、机位、运动、光线、风格和声音描述，再输出适配 Seedance、Kling、Wan、Grok Imagine 的提示词。\n\n官网：https://videocreate.org/\n\n可以免登录反复体验内置示例；分析自己的视频需要登录，每天免费 5 次。另有可选的视频生成，使用一次性积分包。\n\n一个可直接查看的资源是 5 组提示词与成片对照：\nhttps://videocreate.org/prompts/seedance\n\n每组保留原提示词、成片和具体得失。例如一段三镜头视频要求在 3 秒、6 秒切镜，实测切点是 4.5 秒、6.3 秒；另一段要求环绕 180 度，结果只走了部分弧线。这些是通过豆包生成的单次案例，底层具体模型版本未确认，不作为跨模型性能基准；镜头单由 AI 辅助分析，切点另以场景检测测量。\n\n希望它能帮助读者理解视频提示词怎样描述镜头，以及生成结果有哪些需要人工复查的地方。项目不是开源软件，以上为项目方自荐。\n",
+    "created_at": "2026-10-20T06:17:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12584"
+  },
+  {
+    "id": 12583,
+    "title": "【文章推荐】你发誓戒烟，AI 承诺不再犯错，为什么都会复发？",
+    "content": "你刚发誓戒烟，饭后又摸出了打火机；AI 刚保证不再犯错，下一轮又犯了老毛病。为什么承诺越来越熟练，问题却照旧？把戒烟和 AI 对齐放在一起看，会发现一个有意思的点：我们反复打磨“这次一定”，却没改掉“下次照旧”的那条路。\n\n这篇文章用戒烟跟 AI 对齐比较，带你看懂 AI 的对齐难点以及解决思路，也启发给戒烟一个更加可落地的策略\n\n- https://mp.weixin.qq.com/s/v6SkoNqYDtiAlrr5DQPr4Q",
+    "created_at": "2026-10-20T04:58:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12583"
+  },
+  {
+    "id": 12582,
+    "title": "【资源自荐】U卡观察：205 个加密货币支付卡的费率、KYC 与官方来源资料库",
+    "content": "自荐一个中文的加密货币支付卡（U卡）资料库：https://ucard.observer/\n\n收录 205 个品牌，每张卡记录申请地区、KYC 要求、发卡与资金路径、月费 / 外币费 / ATM 费、返现规则和停服状态。每条结论对应资料页上列出的官方来源和实际核验日期；官方没有公布的项目写「未说明」，不推断成免费或全球可开。\n\n几个可能对读者有用的入口：\n\n- 卡片资料库：https://ucard.observer/cards/\n- 资料库覆盖报告（收录范围、KYC 分类口径、逐项核验日期）：https://ucard.observer/research/ucard-coverage/\n- 2026 市场报告（费用透明度、KYC、Apple Pay、停服与发卡方集中度的统计）：https://ucard.observer/research/ucard-annual-2026/\n- 卡片存续雷达（按核验日期看状态变化）：https://ucard.observer/tools/status-radar/\n\n数据以 CSV / JSON 开放下载，原创整理部分采用 CC BY 4.0；2026-10-20 的快照存档在 Zenodo，DOI 为 10.5281/zenodo.23486803。\n\n需要说明的边界：内容是公开资料整理，不是持卡实测；没有付费排名或广告，不发行卡片、不代办申请；站内有一处 Plasma One 邀请链接，已在资料页和关于页披露。简体中文为原始版本，另有繁体中文与英文版。\n\n我是这个站的维护者。如果适合周刊的资源或网站栏目，欢迎评估收录。谢谢！\n",
+    "created_at": "2026-10-20T04:29:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12582"
+  },
+  {
+    "id": 12581,
+    "title": "【产品自荐】Netlink：Mac 出口 IP 一变就提醒，一键体检 VPN、代理和 DNS",
+    "content": "Netlink 是一款 Mac 菜单栏 App，后台盯着出口 IP，一变就通知；一键沿八个阶段检查 VPN、代理、DNS 和时区，给出评分和每项扣分的修复建议。查询使用内置数据库，联网前先征得同意，运行在沙盒中。免费使用，Pro 一次买断。\n\n官网：https://jeman.net/netlink/\nApp Store：https://apps.apple.com/app/id6770569501",
+    "created_at": "2026-10-20T04:19:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12581"
+  },
+  {
+    "id": 12580,
+    "title": "【产品自荐】Nekot：在 iPhone 上看清 Claude Code 和 Codex 的用量窗口",
+    "content": "Nekot 是一款 iPhone App，显示 Claude Code 和 Codex 每个用量窗口的用量与重置时间，到 80% 和 95% 时提醒，避免任务中途撞上限额。纯客户端，没有服务器和账号，凭据只存在钥匙串。基础功能免费。\n\n官网：https://jeman.net/nekot/\nApp Store：https://apps.apple.com/app/id6805865049",
+    "created_at": "2026-10-20T04:19:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12580"
+  },
+  {
+    "id": 12579,
+    "title": "【ツール自薦】LingTube：YouTube/Coursera/Udemy/Bilibili/TikTok 動画翻訳・AI吹替・バイリンガル字幕・無字幕文字起こし対応 Chrome拡張",
+    "content": "LingTube は、YouTube 向けの動画音声翻訳・字幕翻訳・AI吹替 Chrome拡張です。\n\n動画を開いてワンクリックで起動すると、外国語字幕や字幕なし動画の音声を理解しやすい訳文に変換し、自然な音声で読み上げ／吹替します。字幕をずっと見続ける必要がなく、YouTube の外国語動画を素早く理解できます。\n\nYouTube、Coursera、Udemy、Bilibili.tv、TikTok に対応。任意の動画を再生するだけで即座に開始できます。\n\n言語学習、オンライン講座、技術チュートリアル、ニュース、ポッドキャスト、アニメ、映画クリップ、通勤時の視聴に最適です。\n\n### 主な機能\n\n- **YouTube動画翻訳**：字幕、音声、字幕なし動画コンテンツの翻訳に対応\n- **バイリンガル字幕**：訳文＋原文を同時表示。訳文のみ／原文のみへの切り替えも可能\n- **AI吹替／字幕読み上げ**：Edge TTS またはブラウザ音声で訳文を自然に読み上げ\n- **無字幕処理**：動画に字幕がない場合、自動音声認識で文字起こし→翻訳→読み上げを実行\n- **コンテキスト翻訳**：Google翻訳および OpenAI 互換 API に対応。長文や専門的な内容の理解精度を向上\n- **AI学習**：語彙・文法・練習問題・採点・復習コンテンツを自動生成\n- **ミックスコントロール**：元動画音声と訳文音声を同時再生し、音量を個別調整可能\n- **ワンクリック操作**：開始／停止に対応。ショートカット `Alt+Shift+V` も利用可能\n- **AI動画要約**：完全な訳文字幕をもとに、内容の要約、キーポイント抽出、専門用語の解説、関連タイムスタンプの検索が可能。長尺動画・講座・技術チュートリアル・ニュース・ポッドキャストの迅速理解に最適\n\n### プライバシー\n\n- YouTube、Coursera、Udemy、Bilibili.tv、TikTok のページ上でのみ動作\n- 設定はローカルブラウザに保存\n- 字幕・翻訳・音声リクエストは、有効化したサービスにのみ送信\n\n### リンク\n\n- **Chromeウェブストア**  \n  https://chromewebstore.google.com/detail/lingtube-youtube-subtitle/jjhplddhmkfngobhompljgnhbhkgilbi\n\n- **公式サイト**  \n  https://lingtube.xyz",
+    "created_at": "2026-10-20T04:14:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12579"
+  },
+  {
     "id": 12578,
     "title": "【工具自荐】黄历查查：无广告、算法透明、能把吉日一键导出存进手机日历的现代老黄历",
     "content": "## 项目名称：黄历查查 (Laohuangli)\n\n### 项目地址\n- 官网：https://laohuangli.info/\n- 国际双语版：https://laohuangli.info/en/\n- 微信小程序：微信搜索「黄历查查」\n- Android 客户端（Google Play 筹备内测）：https://laohuangli.info/app/test/\n- 算法依据公开透明：https://laohuangli.info/methodology/\n\n### 解决的痛点与为什么做？\n在需要查农历日期、节气，或者家里挑选搬家、开工、领证结婚的日子时，打开传统的“老黄历”或“万年历”网站，通常面临三个极其糟糕的体验：\n1. 满屏闪烁的低俗页游广告、诱导付费“化解灾祸/算命”的弹窗；\n2. 各大黄历网站同一天的宜忌经常互相冲突矛盾，背后都是不透明的黑盒忽悠；\n3. 好不容易挑个日子，截图存在手机相册里转头就忘，还要手动在手机日历中新建日程、敲备注、设提醒，非常繁琐割裂。\n\n出于自己和身边朋友的切身生活烦恼，我们用现代软件工程的方式重做了这款工具：**让传统历法变成一个干净、确定、能真正融入现代数字日程的实用工具**。\n\n### 核心特性\n1. **全站 100% 零广告**：不挂任何商业广告位、没有任何诱导付费测算，免登录即开即用。\n2. **生活择吉 + 一键导出手机日历 (.ics)**：\n   - 支持智能勾选“未来 30/60/90 天”与“仅看周末”，自动按传统规则排除冲煞破日，给出最佳时辰建议；\n   - 挑选好吉日后，**一键导出标准 `.ics` 全天日历文件**，直接同步到 iPhone / Android / Google Calendar / Outlook 设置全天日程与提前提醒，彻底告别“截了图转头忘”。\n3. **算法依据公开透明**：在网站完全公开了建除十二神与干支冲煞的传统推算依据（[/methodology/](https://laohuangli.info/methodology/)），有据可循，拒绝黑盒玄学。\n4. **每日五行穿衣指南**：将天干地支相生相克民俗转化为实用的每日通勤穿搭色系建议（贵人色/次吉色/不宜色），给日常通勤增添仪式感。\n5. **多端协同体验**：\n   - **Web 端**：大屏深度规划、多日期跨度对比与 `.ics` 导出；\n   - **微信小程序「黄历查查」**：免安装随手查、长辈大字模式、精美黄历日签微信群分享；\n   - **Android 原生版（正在筹备上架 Google Play）**：免注册无广告、支持离线推算、偏好纯本地存储零隐私风险，现已开启抢先体验测试。\n6. **多地区与国际化**：除了大陆简体，专门为港台本地化了通胜（入伙/開張）与农民历（入厝/開工）用语，并上线了英文版（/en/）与智能语言识别提示条。\n",
@@ -662,143 +798,5 @@
     "created_at": "2026-10-18T03:02:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12494"
-  },
-  {
-    "id": 12493,
-    "title": "【工具自荐】LayerGrab：把一张图拆成可编辑的图层，补全被遮挡的背景",
-    "content": "LayerGrab 是一个 AI 图片转图层工具：上传一张图（PNG / JPG / WebP），约 60–100 秒拆成最多 16 个透明图层，每层一个元素并带英文名称，被挡住的背景会补全；可导出 PNG、ZIP 或带图层的 PSD。也可以只提取你指名的一个元素，得到一张透明底 PNG。\n\n有 Figma 插件和 Chrome 扩展（源码 MIT：https://github.com/layergrab/layergrab-plugins），网页版是英文界面。每个账号可免费试用一次，之后按积分计费。\n\n链接：https://layergrab.com\n\n我是 LayerGrab 的开发者，欢迎试用和反馈。\n",
-    "created_at": "2026-10-18T02:46:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12493"
-  },
-  {
-    "id": 12492,
-    "title": "【工具自荐】ArtificialWatch：每 60 秒检查各家 AI 接口，记录新模型上线的那一分钟",
-    "content": "**网址：** https://artificialwatch.com\n\n## 工具介绍\n\nArtificialWatch 每 60 秒检查一次各家 AI 厂商自己的 API（OpenAI、Anthropic、Google、xAI、DeepSeek、Kimi、通义千问等），第二次检查确认后，记录一个新模型真正可以调用的那一分钟，并发出提醒。判断依据只有 API 是否真的返回了结果，不看传闻、泄露或文档页面。\n\n![ArtificialWatch](https://artificialwatch.com/og-aw.png?v=4)\n\n## 主要页面\n\n- **上线记录** https://artificialwatch.com/record ：自 8 月 3 日起每次上线的首次发现时间和确认时间，没有命中的也公开\n- **新模型发布** https://artificialwatch.com/releases ：按 API 实际上线日期排列\n- **基准汇总** https://artificialwatch.com/benchmarks ：LMArena、LiveBench、SimpleBench 等公开排行榜放在一张表里\n- **API 价格** https://artificialwatch.com/llm-pricing ：所有在线模型的价格对照\n- **模型状态** https://artificialwatch.com/status ：定期向每个在线模型发一次真实请求，看它是否可用\n\n网页、邮件提醒和 Chrome 推送免费（免费邮件约晚 15 分钟批量发送），付费版增加短信和电话提醒。\n\n另有一个 MIT 开源的命令行版本 ai-model-watch（零依赖 Node.js），可以自己运行，对比各家 /models 列表，只显示新出现的模型：https://github.com/markksantos/ai-model-watch\n\n我是作者。\n",
-    "created_at": "2026-10-18T01:35:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12492"
-  },
-  {
-    "id": 12491,
-    "title": "【工具自荐】zippic：在浏览器本地压缩、转换图片，文件不上传",
-    "content": "zippic 是一个免费的在线图片工具：压缩、格式转换（JPG / PNG / WebP / AVIF / GIF / JXL / APNG）、改尺寸、裁剪、加水印，HEIC / PSD / PDF 转图片，视频转 GIF 等，共 19 个工具。\n\n所有处理都在浏览器里用 WebAssembly 完成，图片不会上传到服务器，所以也没有文件大小和张数限制，支持批量压缩和质量调节。免注册，支持 11 种语言。\n\n链接：https://zippic.app\n\n我是 zippic 的开发者，欢迎试用和反馈。",
-    "created_at": "2026-10-18T00:31:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12491"
-  },
-  {
-    "id": 12490,
-    "title": "Broken links in the docs",
-    "content": "Hi,\n\nA few links in the docs no longer work (404 / 410):\n\n| File | Link | Status | Replay |\n|------|------|--------|--------|\n| docs/free-music.md | https://www.pdinfo.com/royalty-free-music.php | 404 | https://pathlyhq.com/en/scan?url=https%3A%2F%2Fwww.pdinfo.com%2Froyalty-free-music.php&utm_source=dochunter&utm_medium=bot&utm_campaign=dead_link |\n\nCheers,",
-    "created_at": "2026-10-18T00:17:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12490"
-  },
-  {
-    "id": 12489,
-    "title": "【开源自荐】Textus：带 AI 写作助手的开源 Markdown 编辑器",
-    "content": "Textus 是我开发的一款所见即所得 Markdown 编辑器，支持 macOS（Apple Silicon 与 Intel）、Windows 和 Linux，免费，MIT 协议开源。\n\n写作时看到的就是排版后的样子，公式、表格、Mermaid 图表都能直接编辑，也可以使用 Typora 主题。\n\n![Textus](https://raw.githubusercontent.com/CatVinci-Studio/Textus/main/docs/images/readme/zh/hero.png)\n\nAI 写作助手是可选的，默认不打扰：灰色补全按 Tab 接受；也可以让它逐句给出修改建议，或者在页边写批注，由你决定采纳哪一句。支持 DeepSeek、OpenAI、Claude、Gemini 等 20 多家模型，任何兼容 OpenAI 的接口，以及 Ollama 本地模型。\n\n不需要账号，没有遥测，文件就是你磁盘上的 .md。基于 Tauri 2（Rust）+ React 构建，安装包小。\n\n主页：https://textus.catvinci.com\n源码：https://github.com/CatVinci-Studio/Textus\n下载：https://github.com/CatVinci-Studio/Textus/releases/latest\nmacOS 也可以用 Homebrew：`brew install --cask catvinci-studio/tap/textus`\n",
-    "created_at": "2026-10-17T22:26:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12489"
-  },
-  {
-    "id": 12488,
-    "title": "【开源自荐】BeatBrowser：让 Codex 等 Agent 使用你已登录的 Chrome",
-    "content": "项目地址：https://github.com/BeatAPI/BeatBrowser\n\n我是项目维护者，想自荐 BeatBrowser：一个免费、MIT 开源的 Chrome 扩展和本地桥接工具，让 Codex、Claude Code 等兼容 Agent 使用你现有的 Chrome 和网站登录态，不必另换专用浏览器。\n\n任务在独立后台窗口中运行，可以在扩展工作区查看进度、暂停、继续或人工接管。扩展、桥接、MCP、CLI和JavaScript SDK源码均公开。\n\n本地模式需要 Node.js 20+、Chrome 116+，扩展通过开发者模式加载；Agent/模型费用由使用者自行承担。另有可选云端适配器预览，通过用户自己配置的认证隧道连接本机 Chrome，电脑需保持在线。\n\n[中文README](https://github.com/BeatAPI/BeatBrowser/blob/main/README.zh-CN.md) · [安装说明](https://github.com/BeatAPI/BeatBrowser/blob/main/docs/INSTALL.md)\n\n![本地安装与使用路径示意，非实机任务截图](https://raw.githubusercontent.com/BeatAPI/BeatBrowser/main/media/readme-journey.zh-CN.png)\n",
-    "created_at": "2026-10-17T20:09:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12488"
-  },
-  {
-    "id": 12487,
-    "title": "[开源自荐] Typorium：让 iPad 也能拥有 Typora 式的所见即所得 Markdown 编辑体验",
-    "content": "### 项目介绍\n\n项目地址：https://github.com/ikwbb/Typorium\n\n在线体验：https://ikwbb.github.io/Typorium/\n\n我是项目作者，想自荐一个开源的 Markdown 编辑器 **Typorium**。\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3729e677-d2d5-4106-923c-5b65c14fdbf5\" />\n\n一直很喜欢 Typora 的所见即所得（WYSIWYG）编辑体验，但在 iPad 上很难找到类似的 Markdown 编辑器。于是做了 Typorium，希望能把接近 Typora 的写作体验带到浏览器，尤其是 iPad 上。\n\nTyporium 不需要下载安装包，打开网页就能使用，也可以添加到 iPad 主屏幕，像原生 App 一样离线使用。\n\n### 主要特点\n\n- **Typora 式所见即所得**：直接编辑排版后的 Markdown，光标移到对应位置时才显示 Markdown 标记，不需要在源码和预览之间来回切换。\n- **专门适配 iPad**：针对触屏、虚拟键盘和文本选择做了优化，键盘上方提供格式工具栏，支持触控编辑。\n- **功能比较完整**：支持表格、代码高亮、MathJax 数学公式、Mermaid 图表、目录、文件管理等。\n- **跨平台、离线可用**：支持 Windows、macOS 和 iPadOS 等平台的现代浏览器，可安装为 PWA。\n- **本地优先**：无需注册账号，文档保存在设备本地，可以导入和导出普通 `.md` 文件。\n- **兼容 Typora**：支持导入 Typora 主题，尽量保持 Markdown 文件及编辑习惯的一致性。\n\n项目使用 TypeScript 和 CodeMirror 6 构建，参考了 [Open Typora](https://github.com/AniChikage/open-typora)，并同样采用 MIT 许可证开源。\n\n欢迎大家试用，尤其希望听到 iPad 用户的反馈！",
-    "created_at": "2026-10-17T19:58:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12487"
-  },
-  {
-    "id": 12486,
-    "title": "【工具自荐】html-to-video：一条命令把 HTML 动画逐帧渲染成 MP4（MIT，纯本地）",
-    "content": "一个把 HTML / Canvas 动画**逐帧渲染成 MP4** 的命令行工具。\n\n不是录屏，也不是 AI 文生视频。做法是：把画面在 HTML 里写成 `frame(t)` 纯函数，用无头浏览器逐帧 seek 到指定时刻截图，再用 ffmpeg 编成 H.264。因为是逐帧推的，所以帧率是真的（60fps 不用插帧），每一帧都精确对齐，同样的输入永远得到同样的输出。\n\n**它解决的问题**\n\n现在想用代码做视频，主流选择是 Remotion（React）或 Motion Canvas（场景式）。两者都好，但要先把内容组织成它们的世界观。而很多真实场景是：手上已经有一屏 HTML（常常是 AI 刚生成的），只想把它变成 mp4。为一屏画面建一个 React 工程，代价过大。\n\n这个工具刻意不做框架 —— 输入是一个能跑的 HTML 文件，输出是 mp4：\n\n```bash\nbash assets/render.sh my-video.html --duration=6 --fps=60\n```\n\n**几个不太常见的点**\n\n- **确定性**：冻结 wall-clock rAF，由外部逐帧推进，同一份代码重跑逐帧一致。可版本管理、可做视觉回归\n- **自带验收**：`qa.js` 检查六维（确定性 / 最长连续静止 / 跳变 / 文字框景 / 字体回退 / 控制台报错）。为了让验收本身可信，仓库里放了一个塞满六类真实缺陷的对照样本，测试要求它必须被判失败\n- **横竖屏自适应**：`--width=1080 --height=1920` 就是竖屏，模板跟视口重排而不是拉伸。1920×1080 下与旧版逐像素一致（PSNR 逐帧回归，`average:inf`）\n- **断点续渲**：`--resume`，长片子跑到 80% 崩了不用从零开始。帧先写 `.part` 再改名，参数变了直接拒绝，编码前逐个核帧号 —— 实测续渲出来的 mp4 与一次渲完的 **MD5 完全相同**\n\nMIT，纯本地运行，不调任何 API，不按次计费。\n\nGitHub：https://github.com/wx4766/html-to-video\n\n---\n\n*（自我补充：项目 2026-10 开始维护，目前一个人在做。6 个模板覆盖标题卡 / 条形图 / 折线图 / 数字滚动 / 时间线 / 竖屏卡，README 里每个都有 GIF 预览和 1080p 原片。CI 跑在 Ubuntu + Node 20 上，14 个用例。最缺的是新模板，仓库里挂了 4 个 `good first issue`，欢迎认领。）*",
-    "created_at": "2026-10-17T17:38:28Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12486"
-  },
-  {
-    "id": 12483,
-    "title": "【游戏自荐】vibestead/Vibe村，一款面向 Vibe Coding 人群的像素风村庄经营游戏，写代码，建家园",
-    "content": "我想做一个能陪大家写代码、也能在休息时进去逛逛的小世界，于是有了 Vibe 村：一款面向 Vibe Coding 爱好者的像素风村庄经营游戏。\n\n[https://vibestead.org/](https://vibestead.org/)\n\n第一次打开需要加载游戏素材，可能有些慢。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ce8cec26-9f94-4a3e-94fb-cb75941de95d\" />\n\n你从一片林地和一间木材厂开始，慢慢搭起生产线、建造住宅、种菜、布置小院，把森林里的小村庄经营起来。\n\n🎮 可以玩些什么？\n\n🪵 经营木材厂\n招募伐木工和种植工，安排采伐、补种和运输，再把原木一步步加工成木板与成品。升级设备、扩展林区，观察哪里缺料、哪里积压，把整条生产线运转起来。\n\n<img width=\"1010\" height=\"576\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f3094743-0eb9-44b3-b2c7-7950dccf9099\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f201ca82-b5e8-4d1e-87cd-592203e50cf9\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/22a5ec1a-b947-4221-990c-b5b2fb5d04c7\" />\n\n🚚 接订单、做生意\n根据客户需求备货、装车、配送，完成订单领取货款，再把收入投入下一轮建设。随着发展，还能解锁更多设备和经营内容。\n\n<img width=\"1000\" height=\"678\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3239d64f-bfde-44ca-a2f3-98ab3bfe0916\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/37190db1-04c0-4b1b-984f-6467fa096f72\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/49e5b384-a1d7-439c-8640-e3169409586a\" />\n\n👷 招募经理，逐步实现自动化\n收集和培养不同经理，提高机器效率，解锁运输和接单等自动化能力，看着伙伴们在村里忙碌。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fd33f9b3-5db6-476d-be20-dd662a397e3f\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3ee28566-6022-4f9d-9714-3c88af007e3a\" />\n\n🏡 盖房子，建设自己的村庄\n从第一栋住宅开始，收集木材、钉子、油漆和砖块，完成施工与升级，逐渐提高村庄繁荣度。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e028a932-ca04-46ce-8618-eac48bfebfea\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cbd3edeb-fc97-45af-8389-accc4f6d7882\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9579fd33-9dca-48d2-b3f7-543d6f12e2ad\" />\n\n\n🥕 种菜、手作、逛小院\n经营之外，也可以照料田园、参与小游戏、制作手作品、收集装饰，按自己的节奏安排村庄生活。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/78d9556b-a16e-4259-8a20-7d76266bf1d4\" />\n\n\n💎 把编程日常带进游戏\n连接 Vibestead CLI 后，可以同步 AI 编程用量，回到游戏领取钻石，用于村庄建设和装饰。支持接入 Codex、Claude Code 等工具；上传的是每日用量汇总，不上传代码或聊天正文。\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bb85568a-697f-4b34-beda-346003d4f835\" />\n\n<img width=\"1718\" height=\"1270\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/84ad4b29-a9ac-4be6-96da-3fcff80606ec\" />\n\n游戏内置了全球排行榜，可以跟全球玩家对比Token消耗量，也可以创建一个群组，跟自己的几个朋友一起做一个小榜单互相比比谁消耗的Token更多。\n\n✨ 我最想分享的几个亮点\n- 写代码与养村庄连在一起：编程用量可以兑换游戏奖励，给每天的 coding 多一点看得见的仪式感。\n- 经营过程看得见：工人采伐、车辆运输、机器加工，资源沿着生产线流转，小村庄会随着投入逐渐成长。\n- 经营与田园生活都能玩：想研究效率就调整产线，想放松就种菜、盖房、布置小院。\n- 打开浏览器就能玩：支持中文和英文，适合在写代码的间隙回来看看。\n\n游戏还在持续打磨中，欢迎喜欢像素风、放置经营和 Vibe Coding 的朋友来试试。也很想听听大家的建议：哪里好玩、哪里卡住、还想在村里做些什么，都欢迎告诉我。\n",
-    "created_at": "2026-10-17T14:53:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12483"
-  },
-  {
-    "id": 12481,
-    "title": "【产品自荐】Rumpelstiltskin Dance：照片生成 Rumpelstiltskin 主题舞蹈短视频",
-    "content": "**网址**：https://rumpelstiltskindance.video/\n**落地镜像**：https://maynor996.github.io/rumpelstiltskin-dance/\n**一句话介绍**：Rumpelstiltskin 主题舞蹈短视频生成工具。\n**详细介绍**：输入照片，输出 Rumpelstiltskin 主题舞蹈短片。独立粉丝向工具，非官方；按次付费。主题与其他舞蹈站不同，适合跟该角色/曲目梗的创作者。\n",
-    "created_at": "2026-10-17T11:56:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12481"
-  },
-  {
-    "id": 12480,
-    "title": "【产品自荐】Hug In Heaven：西语向「天堂拥抱」纪念短视频工具",
-    "content": "**网址**：https://huginheaven.cc/\n**落地镜像**：https://maynor996.github.io/hug-in-heaven-ai/\n**一句话介绍**：西语向「天堂拥抱」纪念主题短视频生成。\n**详细介绍**：面向西语用户的「天堂拥抱」纪念向短视频：上传照片生成温暖纪念成片。独立产品，非官方；单次付费。情感向定位，与僵尸拥抱、争吵类产品区分开。\n",
-    "created_at": "2026-10-17T11:56:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12480"
-  },
-  {
-    "id": 12479,
-    "title": "【产品自荐】ChatGPT Millionaire AI：生成约10–13秒 Get a job meme 短视频",
-    "content": "**网址**：https://chatgptmillionaire.cc/\n**落地镜像**：https://maynor996.github.io/chatgpt-millionaire-ai/\n**一句话介绍**：「Get a job」meme 风格短视频，约10–13秒。\n**详细介绍**：围绕 ChatGPT Millionaire / Get a job meme，把用户素材做成约10–13秒短片。独立粉丝工具，非官方；单次付费。时长与梗点和其他舞蹈/拥抱类产品明显不同。\n",
-    "created_at": "2026-10-17T11:56:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12479"
-  },
-  {
-    "id": 12478,
-    "title": "【产品自荐】Burning Bridges：照片生成 Burning Bridges 主题短视频",
-    "content": "**网址**：https://burningbridgesvideoai.com/\n**落地镜像**：https://maynor996.github.io/burning-bridges-ai/\n**一句话介绍**：Burning Bridges 主题的照片到短视频生成工具。\n**详细介绍**：上传照片生成 Burning Bridges 主题短视频。独立第三方工具，与官方无关；按次付费。面向喜欢该曲风/情绪向内容的用户，文案强调「输入照片、输出成片」。\n",
-    "created_at": "2026-10-17T11:55:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12478"
-  },
-  {
-    "id": 12477,
-    "title": "【产品自荐】Hotel Lobby AI：照片生成 Hotel Lobby 主题短视频",
-    "content": "**网址**：https://hotellobby.ai/\n**落地镜像**：https://maynor996.github.io/hotel-lobby-ai/\n**一句话介绍**：Hotel Lobby 主题的照片驱动短视频生成。\n**详细介绍**：输入照片，输出 Hotel Lobby 主题风格短片。独立粉丝向工具，非官方；单次付费。适合做场景感强的大厅/氛围向短视频素材。\n",
-    "created_at": "2026-10-17T11:55:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12477"
-  },
-  {
-    "id": 12476,
-    "title": "【产品自荐】Raindance AI：照片生成 Raindance 主题短视频",
-    "content": "**网址**：https://raindanceai.click/\n**落地镜像**：https://maynor996.github.io/raindance-ai/\n**一句话介绍**：Raindance 主题的照片到短视频生成工具。\n**详细介绍**：把一张照片做成 Raindance 主题短视频。独立产品，非官方；按次付费。适合想快速跟上该舞蹈/场景梗的创作者，不承诺流量或收入数据。\n",
-    "created_at": "2026-10-17T11:55:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12476"
-  },
-  {
-    "id": 12475,
-    "title": "【产品自荐】Alors on Danse：照片生成 Alors on Danse 主题舞蹈短视频",
-    "content": "**网址**：https://tryalorsondanse.video/\n**落地镜像**：https://maynor996.github.io/alors-on-danse/\n**一句话介绍**：Alors on Danse 主题的照片驱动舞蹈短视频生成。\n**详细介绍**：上传照片生成 Alors on Danse 主题舞蹈短片。独立粉丝工具，非官方；单次付费。适合做欧洲流行舞曲梗的竖屏内容，与其他舞蹈站主题不同。\n",
-    "created_at": "2026-10-17T11:55:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12475"
-  },
-  {
-    "id": 12474,
-    "title": "【产品自荐】Chuttamalle Dance：照片生成 Chuttamalle 主题舞蹈短视频",
-    "content": "**网址**：https://chuttamalle.org/\n**落地镜像**：https://maynor996.github.io/chuttamalle-dance/\n**一句话介绍**：把照片做成 Chuttamalle 主题舞蹈短视频。\n**详细介绍**：输入人物照片，输出 Chuttamalle 主题舞蹈向短片。独立第三方工具，与官方无关；按次付费生成。面向想跟热门舞蹈梗的用户，文案侧重「一键上舞」。\n",
-    "created_at": "2026-10-17T11:55:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12474"
   }
 ]
