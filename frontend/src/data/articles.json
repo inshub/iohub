@@ -1,8 +1,64 @@
 [
   {
+    "id": 12641,
+    "title": "[资源自荐] 财报核对台：宁德时代2025年报的三处数字口径核对",
+    "content": "网址：https://caibaodui.com/\n\n一个中文财报核对样张，将境外收入占比与毛利率、两种扣非字段、百分比与百分点分开解释，并定位到官方年度报告页码。\n\n目前覆盖宁德时代2025年报一份报告，包含8项年度数据、3档金额单位和4页原文定位。免费、无需登录；采用AI辅助整理，数字与字段对照官方披露文件复核，扣非差额原因保留待核。\n\n本人为维护者，提交原创阅读资源自荐。目前是单份报告的阅读样张。\n",
+    "created_at": "2026-10-21T13:06:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12641"
+  },
+  {
+    "id": 12640,
+    "title": "【开源自荐】Cybokron Dock Groups：一款按分组打开、隐藏或关闭应用的 Mac 菜单栏应用",
+    "content": "https://github.com/ercanatay/cybokron-dock-groups\n\n![Cybokron Dock Groups](https://raw.githubusercontent.com/ercanatay/cybokron-dock-groups/main/docs/screenshots/popup-panel.png)\n\n我开发了一款 macOS 菜单栏应用，名为 Cybokron Dock Groups。将应用和网站放入自定义名称的分组中，选择一个分组后，其中的应用会出现在 Dock 上方的弹窗中，你可以一次性打开、隐藏或关闭整个分组。每个分组还可以拥有自己的 Dock 图标。\n\n原生 Swift 开发，采用 MIT 许可，免费且开源。支持 Apple Silicon 和 Intel，需要 macOS 14 或更高版本。界面支持简体中文。中文产品页面：https://cybokron.com/zh/dock-groups/\n\n感谢阮老师",
+    "created_at": "2026-10-21T10:14:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12640"
+  },
+  {
+    "id": 12639,
+    "title": "【工具】Restoria —— 给老旧 Windows 用的扫描档案归档工具",
+    "content": "把装订档案的扫描件一键变成方向端正、干净、标准 A4 的归档页。\nWin7 SP1 到 Win11 都能跑，单文件、不联网、原图不动。\n方向检测靠装订孔这类物理证据，没有证据就不转（误转比漏转更糟）。\n\n我自己本身就在做档案数字化工程、整理了非常多的档案，既要在保密机子里运行，又能拥有较好性能的选择，这个工具我花了50多天写了出来，我的这一轮档案归档工作结束了，总共整理了1.8w张图片。目前来看做到了比较简单的操作交互。我写代码不是专业的，一定会会有瑕疵，我希望能够有各位英雄好汉们的帮助，帮我把把关。谢谢了！！！！\n\nhttps://github.com/MC5lan/restoria",
+    "created_at": "2026-10-21T09:39:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12639"
+  },
+  {
+    "id": 12638,
+    "title": "【网站自荐】卡雷达：号卡比价平台，帮你找到最划算的上网方式",
+    "content": "做了一个号卡比价展示网站，想自荐一下。\n\n网站：https://kaleida.com.cn\n\n把多个号卡平台的流量卡信息汇总到一起，统一展示、支持比价筛选。用户可以按运营商、月租、流量、通话时长等条件筛选，找到适合自己的上网方案，选中后扫码即可办理。\n\n几个花了功夫的地方：\n\n- 数据来自五个上游号卡平台，自动同步、统一格式，省去逐个平台翻找的麻烦。\n- 内置 AI 聊天助手，告诉它你的需求（比如\"月租 19 元以内、流量 100G 以上\"），它会从商品目录里智能推荐合适的卡。\n- 除了流量卡，还覆盖宽带和随身 WiFi 方案，方便横向比较。\n- 移动端优先设计，手机上浏览体验比较好。\n\n免费，不用注册，打开就能用。欢迎试用后提意见。",
+    "created_at": "2026-10-21T09:35:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12638"
+  },
+  {
+    "id": 12637,
+    "title": "【开源自荐】DyHub：抖音直播弹幕采集与分发中台",
+    "content": "DyHub 是一个抖音直播弹幕采集与分发中台，双采集内核自研（轻量纯代码直连 + 浏览器 CDP 旁观），产出统一事件协议，通过 WebSocket / SSE / Webhook 三种通道分发。MIT 协议开源。\n\n- 源码：https://github.com/ymstar/dyhub\n\n**为什么做这个**\n\n接抖音弹幕的消费场景很多——弹幕墙、弹幕游戏、AI 直播助理、数据看板——但每个都要自己啃 protobuf 解码、跟抖音私有协议、处理签名和风控。抖音一改协议，所有下游全得跟着改。\n\nDyHub 把采集和分发拆开：采集层把抖音私有 protobuf 翻译成统一的 DanmakuEvent，下游只认这一种事件格式，上游改协议不碰消费端。\n\n**主要功能**\n\n- 双采集内核：① 浏览器内核（默认）——真实 Chrome headless + CDP 旁观 wss 帧，最稳、抗风控，抖音改协议自动跟随；② 轻量内核——纯代码直连 wss，秒级连接、零浏览器进程，适合资源受限环境\n- 统一事件协议：弹幕、礼物、进场、点赞、关注、房间统计等全部标准化为 DanmakuEvent，消费端零感知\n- 三通道分发：WebSocket（低延迟实时）、SSE（浏览器一行接入）、Webhook（HMAC-SHA256 签名鉴权）\n- 多房间并发：单实例同时采集多个直播间，控制台一键切换查看\n- 每房间独立 Cookie：抖音同一账号同一时间只能在一个直播间，多房间共用登录态会互相竞争。支持为每个房间设置独立 Cookie（多账号多房间互不干扰），持久化到磁盘，Docker 重新部署自动恢复\n- 可视化控制台：实时弹幕流、事件筛选、房间管理、三通道对接演示与在线测试\n- Docker 一键部署：镜像内置 Chromium + 中文字体\n\n![控制台-实时监控](https://github.com/ymstar/dyhub/raw/main/docs/screenshots/console-monitor.png)\n\n**局限**\n\n浏览器内核需运行 Chromium（约 200MB 内存/房间）；轻量内核依赖第三方签名脚本，抖音改签名算法可能失效（可随时回退浏览器内核）。请仅采集自有或已授权的直播间。",
+    "created_at": "2026-10-21T09:29:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12637"
+  },
+  {
+    "id": 12636,
+    "title": "【开源自荐】Agent Workflow Skills：让 AI 沿用老项目规范，逐项交付改动",
+    "content": "我是 Agent Workflow Skills 的作者，想自荐一套面向编程智能体的开源开发工作流。\n\n项目：[suntianhu/agent-workflow-skills](https://github.com/suntianhu/agent-workflow-skills)\n\n现已收录至 [skills.sh](https://skills.sh/suntianhu/agent-workflow-skills)，可按分类浏览全部 29 个技能。\n\n它关注已有项目的持续维护：新页面怎样接住原规范，多个小改怎样控制范围，迁移时怎样交代旧业务的去向。当前有 **29 个技能、9 套条件组合**，我重点整理了三件事：\n\n- **沿用已有规则：** 核对代码基线与后续差异，继续使用原规范入口；新页面继承字体、主题、组件和交互习惯。\n- **改动逐项验收：** 每处改动对应需求或必要依赖，修 bug 同时核对受影响的正常行为，按任务选择验证方式。\n- **迁移保留业务：** 建立旧接口、数据、定时任务和回调的保留映射，交代共存、执行权交接与恢复条件。\n\n仓库有一个虚构老项目新增领用页、再增加筛选的执行案例，记录了原规范、主题和旧工单流程的延续。原创内容采用 MIT 许可，README 提供六种语言，技能正文和详细指南目前为中文。使用时可先让智能体读取所需 SKILL.md；具体宿主加载与验证范围在文档中列明。\n\n[中文介绍与快速开始](https://github.com/suntianhu/agent-workflow-skills/blob/main/README.zh-CN.md) · [实际执行记录](https://github.com/suntianhu/agent-workflow-skills/blob/main/docs/executed-workflows.md)\n\n希望对正在用 AI 维护已有项目的读者有帮助，欢迎试用反馈。",
+    "created_at": "2026-10-21T09:27:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12636"
+  },
+  {
+    "id": 12635,
+    "title": "iSomor：翻译 PDF 并保留原始版式",
+    "content": "【自荐】iSomor：翻译 PDF 并保留原始版式\n\n**网址**：https://tryisomor.com\n\niSomor 是一款 AI PDF 翻译工具，翻译文字的同时保留原始版式。上传文字型 PDF 后，图表与图注、表格行列、公式、多栏排版和标题样式都尽量保持原样。\n\n- 支持左右或上下对照阅读，方便核对术语、数字和复杂段落\n- 可下载纯译文 PDF 或双语 PDF\n- 适用于论文、表单证书和技术手册",
+    "created_at": "2026-10-21T09:24:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12635"
+  },
+  {
     "id": 12634,
     "title": "【开源自荐】Dayside：用实时天色看对方醒没醒的 Mac 菜单栏世界时钟",
-    "content": "https://github.com/ninondev/Dayside\n\n![Dayside](https://raw.githubusercontent.com/ninondev/Dayside/main/.github/readme/dayside-hero-zh-Hans.png)\n\n开源了一个 Mac 菜单栏世界时钟 Dayside，底层用 Rust 按城市坐标算出实时天色，一眼就能看出对方醒没醒。\n\n把聊天记录或邮件粘进去，它能离线认出 16 种语言里的时间，有歧义会把两种读法都列出来，还能帮跨时区的定期会议轮流分担熬夜。\n\nGPL-3.0-only，免费开源。目前只支持 Apple 芯片和 macOS 26 及以上。\n\n谢谢阮老师\n",
+    "content": "https://github.com/ninondev/Dayside\n\n![Dayside](https://raw.githubusercontent.com/ninondev/Dayside/main/.github/readme/dayside-hero-zh-Hans.png)\n\n开源了一个macOS菜单栏世界时钟: Dayside，底层用Rust的核心，按城市坐标算出实时天色，一眼就能看出对方醒没醒。\n\n把聊天记录或邮件粘进去，它能离线认出16种语言里的时间，有歧义会把两种读法都列出来，还能帮跨时区的定期会议轮流分担熬夜。\n\nGPL-3.0-only，免费开源。目前只支持Apple芯片和macOS 26及以上。\n\n谢谢阮老师\n",
     "created_at": "2026-10-21T08:26:43Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12634"
@@ -14,14 +70,6 @@
     "created_at": "2026-10-21T08:07:13Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12633"
-  },
-  {
-    "id": 12632,
-    "title": "给 ChatGPT、Claude Code 多准备一条稳定线路",
-    "content": "这些年用过不少机场，最后一直保留下来当主力的还是 **[TAG 机场](https://570836.l49.net/#/auth/d2RtVGgb)**。\n\n现在日常办公、写代码基本离不开 ChatGPT、Claude Code 这些 AI 工具，对机场的要求也跟以前不太一样了。\n\n以前可能更在意测速能跑多少 Mbps，现在反而更看重**线路稳不稳定、连接会不会频繁中断，以及落地 IP 的质量**。\n\n尤其是 Claude Code 这类 AI 编程工具，有时候一个任务需要持续运行很久，网络频繁断连确实很影响体验。\n\nTAG 是一家运营接近十年的老牌机场，主打 **IEPL 专线**，也是我个人长期使用下来比较满意的一家。\n\n除了线路稳定性，它还有几个我比较喜欢的地方：\n\n**① 节点覆盖广：** 全球 92+ 个国家和地区，不仅有常见的美、日、新、港节点，还有土耳其、以色列、俄罗斯等比较冷门的地区。\n\n**② 落地 IP 资源丰富：** 提供原生 IP、商业宽带和家庭宽带 IP。对于需要使用海外 AI 服务、特定地区 IP 或流媒体的用户来说，节点选择比较灵活。\n\n**③ 使用方便：** Windows、Mac、Android 都有官方客户端，也支持 Clash、Shadowrocket、Surge 等常用软件，不需要额外折腾。\n\n**④ 套餐选择多：** 月付套餐、流量包都有，可以根据自己的实际需求选择。\n\n当然，没有哪家机场能保证永远不掉线，AI 平台本身也存在地区和账户使用限制。\n\n但如果你跟我一样，平时经常使用 **ChatGPT、Claude Code 等海外 AI 工具**，希望有一条稳定、省心、节点选择丰富的网络线路，TAG 确实值得了解一下。\n\n**👉 [TAG 机场官网链接](https://570836.l49.net/#/auth/d2RtVGgb)**\n\n以下为晚高峰测速：\n\n![image](https://user-images.githubusercontent.com/54033249/233945992-637d8568-776d-4736-ac75-abcd774763b9.png)\n\n",
-    "created_at": "2026-10-21T08:04:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12632"
   },
   {
     "id": 12631,
@@ -754,53 +802,5 @@
     "created_at": "2026-10-19T04:50:41Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12540"
-  },
-  {
-    "id": 12539,
-    "title": "【产品自荐】Devil Wears Prada AI：一张照片生成皮革街拍 glow-up 短视频",
-    "content": "**网址**：https://pradaai.cc/\n**落地镜像**：https://maynor996.github.io/devil-wears-prada-ai/\n**一句话介绍**：一张照片（可选服装照）生成约 15 秒家门口型→夜间皮革街拍 glow-up 短视频。\n**详细介绍**：上传 1 张照片（可选第 2 张服装照），生成约 15 秒竖屏短片，带声音。独立粉丝 AI 工具，与电影/品牌无关；仅限成人同意照片。一次性积分包 $8.88 起，无订阅。正式域名以 pradaai.cc 为准。",
-    "created_at": "2026-10-19T04:17:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12539"
-  },
-  {
-    "id": 12538,
-    "title": "[开源自荐] Glim：在一个 Mac 工作区里查看文档、源码和数据文件",
-    "content": "项目：https://github.com/NeoPanic/Glim\n\n我是 Glim 的作者，想推荐一下这个 MIT 开源的 Mac 文件查看器。\n\n用 Agent 做项目后，经常要看它产出的源码、说明文档、图表、表格和 PDF，每种文件都去开一个应用挺麻烦的。Glim 想解决的就是这件事：一个工作区打开本地文件夹，切换查看不同格式。\n\n目前可以预览 Markdown（含支持的图表和公式）、PDF、Office 文档、图片、JSON、CSV 和源码。普通 UTF-8 文本能做基础编辑、自动保存；也能查看 Git 差异，暂存或取消暂存，并提交已暂存的内容。PDF、Office 为只读预览，不是完整办公编辑器。\n\n![Glim 的文件侧栏、多标签和 Markdown 预览](https://raw.githubusercontent.com/NeoPanic/Glim/main/assets/readme/workspace.png)\n\n使用 Rust + GPUI Kit，部分文档读取器使用 macOS 原生能力，支持 Apple Silicon 和 Intel。项目还很年轻，当前稳定版为 v0.2.3，欢迎试用和反馈格式兼容问题。\n\n- 下载：https://github.com/NeoPanic/Glim/releases/latest\n- 各格式支持范围：https://github.com/NeoPanic/Glim/blob/main/docs/file-format-support.md\n- 架构说明：https://github.com/NeoPanic/Glim/blob/main/docs/architecture.md\n\n安装包尚未经过 Apple 公证，首次启动要求见 README。没有性能跑分或完整格式兼容性的保证。截图中的示例文档来自公开的 12-factor-agents 项目，文字与插图归原项目所有。\n",
-    "created_at": "2026-10-19T04:08:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12538"
-  },
-  {
-    "id": 12537,
-    "title": "【产品自荐】Bby Wow Guy AI：一张脸部照生成 quince concha meme 短视频",
-    "content": "**网址**：https://bbywowguyai.cc/\n**落地镜像**：https://maynor996.github.io/bby-wow-guy-ai/\n**一句话介绍**：一张清晰脸部照生成约 10 秒竖屏 quince concha / Bby Wow Guy meme 短视频。\n**详细介绍**：上传 1 张清晰脸部照，生成约 10 秒 9:16 短片（进场、咬一口、盯镜头、离场），带声音、无水印。独立粉丝 AI 工具，与原作品/品牌无关；仅限成人同意照片。一次性积分包 $8.88 起，无订阅。正式域名以 bbywowguyai.cc 为准。",
-    "created_at": "2026-10-19T03:39:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12537"
-  },
-  {
-    "id": 12536,
-    "title": "【开源自荐】💬 koto：一句话完成不同 Agent Harness 之间会话复制 / 迁移 / 同步",
-    "content": "阮老师好，自荐一个我做的开源工具 **koto**。\n\n## **koto 有什么用**\n\n你也许遇到过：\n\n* 想试试新的 Agent Harness，但已有的会话不好迁移，只好继续用原来的。\n* 切换工具后，反复沟通的上下文丢了。新工具又要重新理解工作区，无法利用之前交互的上下文，重复消耗时间和 token。\n* 同一任务开了几条会话，想比较的时候却难以看清它们的区别。\n\nkoto 就是为了解决这些问题，一键把会话复制到其他受支持的 Agent Harness，打破不同框架之间的壁垒。\n\n## **用 koto CLI，一句话完成跨 Harness 会话复制 / 迁移 / 同步**\n\n安装 koto CLI 后，比如当前在用 Codex，想切到 pi，只需要跟 Agent 说：\n\n> 用 koto 复制当前会话到 pi\n\nAgent 调用 koto CLI 完成复制，并告诉你新会话如何打开。\n\n## **还有 koto App，提供直观的浏览、灵活的复制、清晰的对比**\n\n用 koto App 浏览各个 Agent Harness 的会话，更方便地复制对话的任意轮次。每次复制都会创建新会话，原会话保持不变。\n\n![会话复制](https://raw.githubusercontent.com/Seanium/koto/main/site/assets/screenshots/zh-light-copy.png)\n\n用会话树分析多条会话的历史和分叉。\n\n![会话树](https://raw.githubusercontent.com/Seanium/koto/main/site/assets/screenshots/zh-light-tree.png)\n\n逐行比较提问和回复的变化。\n\n![逐行对比](https://raw.githubusercontent.com/Seanium/koto/main/site/assets/screenshots/zh-light-diff.png)\n\n目前支持这些 Agent Harness，不断扩充 ing：\n\nAntigravity CLI、Claude Code、Claude Desktop、Codex、Cursor CLI、Cursor Desktop、DeepSeek Harness、OpenCode、pi、WorkBuddy 国内版与国际版，以及 ZCode。\n\n支持 macOS、Windows、Linux。CLI 和 App 分开下载，完全开源（MIT）。\n欢迎试用和反馈：\n\n[项目主页 - kotoai.site](https://kotoai.site/)\n\n[GitHub 仓库 - Seanium/koto](https://github.com/Seanium/koto)\n\n欢迎 Star！\n",
-    "created_at": "2026-10-19T03:12:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12536"
-  },
-  {
-    "id": 12534,
-    "title": "【工具推荐】Bulin 47 AI：用一张照片生成 15 秒 Freestyle 视频",
-    "content": "想把一张普通的肖像照片，做成一段有动作、有表情、还能对上嘴型的短视频？\n\nBulin 47 AI 是一款付费的 AI 视频工具：上传一张人物或角色照片，选择参考的 Freestyle 表演后，它会生成一段约 15 秒的个性化视频。工具会根据参考动作驱动身体运动、面部表情和唇部动作，同时尽量保持原人物或角色的可识别度。\n\n主要特点：\n支持从单张肖像照片生成短视频。\n根据参考表演生成 Freestyle 动作与镜头表现。\n自动处理动作、表情和唇部同步。\n可选择 480p 或 720p 输出质量。\n生成后可以下载视频，适合分享到社交平台。\n\n它适合用来制作个人创意视频、角色展示、社交媒体短片，或快速测试照片驱动视频的效果。需要注意的是，最终效果会受到输入照片、参考表演和输出设置的影响，复杂姿态或遮挡较多的图片可能需要多次尝试。\n\n官网：https://bulin47.pro/",
-    "created_at": "2026-10-19T02:40:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12534"
-  },
-  {
-    "id": 12533,
-    "title": "【开源自荐】Tidytalk：按住说话，松开就是整理好的文字，本地识别的 Mac 语音输入",
-    "content": "Tidytalk 是我开发的一款 Mac 语音输入工具。按住 Option + Command 说一段话，松开后，它在本机识别语音，用 AI 去掉\"嗯、那个、就是说\"，修正口误、补全标点，再把文字粘贴到光标处。微信、邮件、备忘录、代码编辑器里都能用。\n\n比如说\"项目要延期到下周三，不对，是下周四\"，粘贴出来的是\"项目要延期到下周四。\"\n\n它和系统自带的听写不同：不是边说边打字，而是等你说完一整段，整理好再一次性输出，更适合写消息和文档。\n\n隐私是我最在意的部分。语音识别用 SenseVoice 模型，始终在本机完成，录音不上传。AI 整理可以接 Ollama 或 LM Studio 的本机模型，这样整个过程都不联网，也不需要 API Key；想用云端的话，DeepSeek、OpenAI 等兼容接口也都支持。\n\n最新版加了实时字幕：按 ⌃⌥C 收听电脑播放的声音（视频、网课、会议），屏幕底部显示字幕，同样在本机识别；可以逐句翻译，也可以按 ⌃⌥V 把刚才那段话整理后粘贴出来。\n\nTidytalk 免费，源码以 MIT 协议公开，没有账号和统计。需要 macOS 26 及以上、Apple 芯片的 Mac。安装包还没有经过苹果公证，第一次打开需要在\"系统设置 › 隐私与安全性\"里点\"仍要打开\"。\n\n主页：https://tidytalk.zayen.dev/zh/\n源码：https://github.com/byteyu2436/tidytalk\n下载：https://github.com/byteyu2436/tidytalk/releases/latest\n\n欢迎通过 GitHub Issues 反馈；附上当时说的话和整理结果，会更方便我改进。",
-    "created_at": "2026-10-19T02:35:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12533"
   }
 ]
