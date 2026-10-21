@@ -1,5 +1,61 @@
 [
   {
+    "id": 12648,
+    "title": "【工具自荐】NovAI：一个 OpenAI 兼容入口调用 DeepSeek/Qwen/GLM/Kimi 等 111 个中国模型，官方直连不加价，有免费层",
+    "content": "## 是什么\n\nNovAI 是一个 OpenAI 兼容的中国模型 API 入口：一个 `base_url` + 一个 key，调用 DeepSeek、Qwen（通义）、GLM（智谱）、Kimi（月之暗面）、MiniMax、Doubao（豆包）、Hunyuan（混元）等 111 个模型（含文本、图像、视频），端点：\n\n```\nbase_url = https://aiapi-pro.com/v1\n```\n\n任何 OpenAI SDK / 工具都能直接用：Cline、Continue、Aider、Cherry Studio、OpenClaw、LangChain 等，改 `base_url` 和模型名即可。另有远程 MCP 端点 `https://aiapi-pro.com/api/mcp`（提供 `cheapest_models` / `model_price` / `list_categories` 三个工具）。\n\n## 为什么可能值得一看\n\n- **官方直连、不加价**：走各家的官方 API，倍率固定 1.0（按官方列表价透传，不按人民币换算加价二次加价）。价格单可在 `/transparency.json` 和 `/china-ai-leaderboard.json` 机器读取核对。\n- **免费层是真的免费**：5 个通义/智谱的 Flash 模型（glm-4.7-flash、glm-4.1v-thinking-flash、glm-4.6v-flash、cogview-3-flash、cogvideox-flash），10 次/天、5 次/分，不需要信用卡、不需要手机号；视频 5 次/天。\n- **一个端点同时出文/图/视频**：豆包 Seedream（图）和 Seedance（视频）也在同一套 key 下。\n\n## 一条 curl 试\n\n```bash\ncurl https://aiapi-pro.com/v1/chat/completions \\\n  -H \"Authorization: Bearer $NOVAI_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"glm-4.7-flash\",\"messages\":[{\"role\":\"user\",\"content\":\"你好\"}]}'\n```\n\n免费 key 在 https://aiapi-pro.com/free 领取（不用卡）。\n\n## 链接\n\n- 免费层与限制说明：https://aiapi-pro.com/free\n- 价格/加价说明：https://aiapi-pro.com/transparency\n- 模型与价格 JSON：https://aiapi-pro.com/china-ai-leaderboard.json\n- MCP（PyPI）：`pip install aiapi-pro`（含 `novai-prices` 等工具）\n- 代码/文档：https://aiapi-pro.com/docs\n\n## 说明\n\n项目自荐。请求会原样转发到对应模型的官方 API，不在我们这层二次训练或改写内容；免费层有每日调用上限，付费按官方价透传。欢迎指出问题或建议模型覆盖。\n",
+    "created_at": "2026-10-21T19:42:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12648"
+  },
+  {
+    "id": 12647,
+    "title": "[开源自荐] Candle Audit Kit：离线检查 OKX K 线缺漏、重复与 CSV/JSON 一致性",
+    "content": "项目地址：https://github.com/linqingzi/candle-audit-kit\n免安装合成报告预览：https://linqingzi.github.io/candle-audit-kit/\n\n维护者自荐。Candle Audit Kit 是一个 MIT 许可的 Python 本机命令行工具，面向研究人员与数据工程师，在研究或回测前检查本地 OKX OHLCV 输入。\n\n主要功能：\n- 检查 K 线缺漏、重复、时间窗口、已收盘状态和数量单位。\n- 将 CSV 与原始原生 JSON 响应逐字段对账，保留原始十进制字符串。\n- 保存不可变数据快照、Parquet 数据和来源哈希，并生成中英文 HTML 报告与 JSON 证据。\n\n可以先直接打开预览，查看固定的合成样例；预览没有文件上传功能。实际稽核在本机运行。安装当前源码后，可以使用 `candle-audit demo --root data/demo --language en` 复现英文示例。\n\n项目仍属预发布阶段，支持 CPython 3.11–3.14、macOS/Linux。示例数据全部是合成的，不连接交易账户、不执行交易。一致性检查通过并不能证明文件来自真实交易所，也不代表收益或投资建议。",
+    "created_at": "2026-10-21T19:27:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12647"
+  },
+  {
+    "id": 12646,
+    "title": "【工具自荐】Sorsa API：用于公开 X / Twitter 数据的只读 REST API 与 MCP 服务",
+    "content": "项目：**Sorsa API**\n\n官网：https://api.sorsa.io\n文档：https://docs.sorsa.io\n开源 MCP 服务：https://github.com/Sorsa-io/sorsa-mcp\n\n这是一次来自产品方的工具自荐。Sorsa API 提供公开 X（Twitter）数据的只读 REST 接口，包括用户资料、帖子、搜索、关注者与关注列表、列表、社区及互动验证，可用于数据分析、研究和 AI 应用。\n\n使用一个 Sorsa API Key 即可接入，无需提供 X 账号密码或 Cookie，也不需要 X 开发者账号。提供在线 API Playground、OpenAPI 描述文件，以及可在 Cursor、Claude Desktop 等客户端使用的 MCP 服务。\n\n新用户可试用 100 次请求，无需信用卡；更多用量需付费。服务不支持发帖、私信或读取私密账号内容。Sorsa API 是独立服务，与 X Corp. 无隶属关系。",
+    "created_at": "2026-10-21T18:21:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12646"
+  },
+  {
+    "id": 12645,
+    "title": "【开源自荐】Dopamine：针对 Apple Silicon Mac 的原生防休眠与合盖背光断电工具",
+    "content": "https://github.com/UniversalSDK/Dopamine\n\n![Dopamine](https://dopamine.33rd.pro/assets/icon.jpg)\n\n### 项目简介\nDopamine 是一款专为搭载 Apple Silicon（M1/M2/M3/M4）MacBook 设计的原生 macOS 菜单栏防休眠与屏幕保护工具。\n\n### 解决的核心痛点\n在 MacBook 上使用传统防休眠工具（如 Amphetamine / Caffeine）时，如果合上笔记本盖子，Liquid Retina / Mini-LED 屏幕底层的背光往往依然处于通电常亮状态，不仅加速发热烘烤键盘，还严重消耗电池。\n\nDopamine 针对 Apple Silicon 芯片进行了深度底层优化：\n1. **合盖硬件级断电**：合上屏幕时，通过底层硬件接口与 DPMS 机制自动将背光彻底切断（0.0 尼特纯黑），同时保持 CPU 后台下载、大模型推理、视频渲染或编译持续运行，完全杜绝发热。\n2. **开盖毫秒级复原**：打开屏幕时，无缝恢复原本设置的亮度与色彩。\n3. **轻量纯原生**：100% Swift 原生打造，内存仅占用 ~15MB，零 Electron 臃肿。\n4. **多语言适配**：原生支持简体中文、英语等 11 种语言。\n5. **苹果官方公证**：已通过 Apple Developer ID 签名与 Apple 官方安全公证（Notarized by Apple），macOS Gatekeeper 零报警直接运行。\n\n- **代码仓库**：https://github.com/UniversalSDK/Dopamine\n- **官方网站**：https://dopamine.33rd.pro\n- **Homebrew 一键安装**：\n```bash\nbrew install --cask universalsdk/dopamine/dopamine\n```\n- **开源协议**：MIT\n\n感谢阮老师与周刊读者！",
+    "created_at": "2026-10-21T17:23:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12645"
+  },
+  {
+    "id": 12644,
+    "title": "【开源自荐】Pulse：Windows 桌面悬浮小组件，随时看整机功耗、续航和真实网络延迟",
+    "content": "笔记本现在耗电多少瓦、剩下的电还能用多久、网络是真断了还是只是慢？Pulse 把这些信息放在桌面的一张小卡片上，随时可见。它用原生 C++ 和 Direct2D 编写，单个 exe 免安装，支持 **Windows 10 / 11**。\n\n![Pulse 完整模式，显示 CPU、GPU、内存、处理器功耗，电池状态和网络延迟](https://raw.githubusercontent.com/yftx888/Pulse/main/docs/screenshots/demo-full.webp)\n\n主要功能：\n\n- **功耗与续航**：读取 Windows 自带的 RAPL 能耗计数器，显示处理器、CPU、核显、内存的功耗；用电池时给出平滑后的续航预计和到 20% 的剩余时间。无需管理员权限。\n- **真实网络延迟**：用 HTTP 请求测延迟并判定断网，走系统代理，所以在 Clash TUN 这类 ping 总显示 0 ms 的环境下也准确；断网和恢复时弹出提醒卡片。\n- **两种显示模式**：完整卡片和迷你单行，双击切换，各自显示哪些指标都能在右键菜单里勾选。\n\n![Pulse 迷你模式，一行显示电量、功耗、CPU、内存、网速和延迟](https://raw.githubusercontent.com/yftx888/Pulse/main/docs/screenshots/demo-compact.webp)\n\n迷你模式自身只占单核约 0.1%–0.3%，只采集勾选的指标。程序只读取系统计数器，不改系统设置，联网仅用于测延迟，没有统计和自动更新。发布包由 GitHub Actions 从源码构建，采用 MIT 许可证。\n\n- GitHub：[yftx888/Pulse](https://github.com/yftx888/Pulse)\n- 下载：[Releases](https://github.com/yftx888/Pulse/releases/latest)",
+    "created_at": "2026-10-21T16:42:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12644"
+  },
+  {
+    "id": 12643,
+    "title": "【网站自荐】Reglyph：最原汁原味的pdf扫描件翻译工具",
+    "content": "网址：https://tryreglyph.com/zh/\n\n我做这个工具，是因为扫描件的pdf翻译一直不好用。证书、成绩单、说明书、论文的扫描版 PDF，丢进常见的翻译工具，要么提示没办法翻译扫描文档，要么就是简单的贴一个白底黑字的块到pdf中，非常不优雅。因此就想做一个更好用的扫描件翻译，既能够准确翻译，还能保持原有版面和背景，让扫描件pdf在翻译之后也能赏心悦目。\n\nReglyph会先识别出页面上的文字，把原文从图里擦掉，翻译完再排回原来的位置。表格、印章、签名栏、页码都留在原处，下载下来还是一份和原件差不多的 PDF。也能导出左边原文、右边译文的双语对照版。目前为了保证质量，只支持 19 种源语言语言的文档，后续会加入更多语言的支持。\n\n如果你也经常要看外文的pdf或者将文档翻译成外语（比如留学材料、外文合同、老设备的说明书），并且不满足于目前其他的pdf翻译软件提供的效果，可以来Reglyph试试。注册就送 5 页，无水印直接下载，无需绑卡。\n\n还有不少要改进的地方，比如语言支持不够多，扫描太糊的页面会认错字。用的时候遇到问题，欢迎在这里留言告诉我，如果有大量翻译的需求，也欢迎跟我联系！\n\n<img width=\"1470\" height=\"838\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f9165353-bc93-4444-b293-e5300bb2f37c\" />\n",
+    "created_at": "2026-10-21T16:29:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12643"
+  },
+  {
+    "id": 12642,
+    "title": "【开源自荐】Codex Co²：让多人共享同一个 Codex 会话，一起推进工作",
+    "content": "阮老师好，自荐一个开源项目 「Codex Co²」（https://github.com/SpaceCoder-Kafka/codex-co2/blob/main/README.zh-CN.md ）: **让多人共享同一个 Codex 会话，一起推进工作**。\n\n解决的痛点是，Codex 官方虽然也提供了会话分享功能，但只可以把只读的历史快照发给别人。但如果对方看完后想继续追问、补充信息，或让 Agent 接着排查的话，就满足不了，需要一种能持续交互的协作方式。\n\n**Codex Co² 通过生成邀请链接，让一方得以在官方 Codex Desktop 中继续工作，另外几方则可以通过浏览器加入所选会话，查看已有上下文，并向同一个 Agent 发送消息、跟进后续结果。**\n\n一个典型场景就是运营与研发的接力排障：\n运营先让 Codex 分析用户反馈的日志，得到初步结论，再将这条会话分享给研发。研发加入后，可以直接查看前面的日志分析过程，补充代码背景、追问可疑线索，让 Agent 继续定位问题。运营也能在同一条会话中补充用户信息、跟进排查进展。\n\n主要特点：\n- 共享持续进行的会话：加入后可以继续交互，后续消息与 Agent 回复持续同步。\n- 协作者只需浏览器：打开邀请，经分享者批准后加入，无需安装应用。\n- 由分享者控制范围：只共享选中的会话，可移除成员、结束共享，也可开启逐条消息审批；原生工具审批仍在分享者的 Desktop 中处理。\n\n<img width=\"1198\" height=\"1313\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/748b0ace-a73b-4c48-83c1-bd2d2e81738b\" />\n\n<img width=\"2400\" height=\"1664\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a315007-a23b-4a37-ae98-8f8603ca749c\" />\n\n<img width=\"1574\" height=\"1428\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4a7fc870-2c15-42e8-b078-508484b836fc\" />\n\n[中文演示视频](https://github-production-user-asset-6210df.s3.amazonaws.com/202612221/680116219-b1c2f544-3684-432e-9e03-f32ac15b9370.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20261021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261021T161455Z&X-Amz-Expires=300&X-Amz-Signature=d9b62c9807923b5c23565cb4c08f799a7957c3b3d6207684651ee079ac6ccca0&X-Amz-SignedHeaders=host&response-content-type=video%2Fmp4)",
+    "created_at": "2026-10-21T16:17:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12642"
+  },
+  {
     "id": 12641,
     "title": "[资源自荐] 财报核对台：宁德时代2025年报的三处数字口径核对",
     "content": "网址：https://caibaodui.com/\n\n一个中文财报核对样张，将境外收入占比与毛利率、两种扣非字段、百分比与百分点分开解释，并定位到官方年度报告页码。\n\n目前覆盖宁德时代2025年报一份报告，包含8项年度数据、3档金额单位和4页原文定位。免费、无需登录；采用AI辅助整理，数字与字段对照官方披露文件复核，扣非差额原因保留待核。\n\n本人为维护者，提交原创阅读资源自荐。目前是单份报告的阅读样张。\n",
@@ -746,61 +802,5 @@
     "created_at": "2026-10-19T06:57:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12547"
-  },
-  {
-    "id": 12546,
-    "title": "【产品自荐】Yila：我们做了一个科研版 Codex，打开网页就能用",
-    "content": "大家好，我们做了一个面向科研工作者的 AI Agent：[Yila](https://yila.ai/zh)。\n\n用一句话介绍，就是 **Codex, but for scientific research.**\n\n<img width=\"800\" alt=\"Yila 首页：研究从这里开始，支持文献检索、文献综述、科研绘图和数据分析等任务\" src=\"https://github.com/user-attachments/assets/4614decb-047c-4191-9a2f-91347e7becfc\" />\n\n你可以说这是一个“套壳产品”。不过，对科研工作者来说，把这些工具装到一起、真正用起来，本身就有不少门槛。\n\n至于为什么不直接用 Codex，举个简单的例子：如果你想让它检索万方的论文库，接着分析实验数据、画出科研图表，这中间的数据源、运行环境和研究方法，都需要有人准备。\n\n我们把这些准备工作做进了 Yila：接入万方等学术数据库，内置科研 Skills、Python 和 R 运行环境，以及常用的统计分析和绘图工具。**不用下载安装，也不用自己配环境，在网页上描述研究问题就能开始。**\n\n**例子一：从文献检索到带引用的综述草稿**\n\n围绕一个研究问题检索、筛选文献，比较不同研究的方法和结论，整理证据矩阵，再写成带引用的综述草稿。下图是一个检索了 60 篇候选文献的案例，展示了综述中对不同研究结论的比较。[查看完整案例](https://yila.ai/zh/use-cases/grounded-literature-review)\n\n<img width=\"640\" alt=\"文献综述成果截图：比较研究结论的分歧，并保留对应引用\" src=\"https://github.com/user-attachments/assets/479662f7-8abb-4d40-9c7a-d5b404dfcd8a\" />\n\n**例子二：上传实验数据，完成分析和绘图**\n\n这个转录组案例从数据检查、差异基因筛选，到火山图和 PCA 散点图，最后一起交付图表、结果表和可复用的 Python 脚本。下图是样本的 PCA 散点图。[查看完整案例](https://yila.ai/zh/use-cases/transcriptomics-data-analysis)\n\n<img width=\"760\" alt=\"转录组分析成果截图：GSE52778 样本 PCA 散点图，按实验分组着色\" src=\"https://github.com/user-attachments/assets/858015a3-a202-4e46-9839-9d2c67ef0d7e\" />\n\n我们已经悄悄内测了一段时间，发现科研用户的付费率还挺高。这个反馈让我们觉得，帮大家省下配置工具、整理资料的时间，确实是一件值得做的事。\n\n欢迎科研工作者试试，也欢迎告诉我们：你的研究里，还有哪些费时的步骤值得交给 Agent？\n\n体验：[yila.ai](https://yila.ai/zh) · [更多案例](https://yila.ai/zh/use-cases)\n",
-    "created_at": "2026-10-19T06:51:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12546"
-  },
-  {
-    "id": 12545,
-    "title": "【开源自荐】Pixtale - 一个沉浸式自托管云存储相册应用",
-    "content": "阮老师，您好：\n\n向你推荐一下我最近开发云端相册：**Pixtale**\n\nPixtale 是一个自托管的云端存储照片相册应用，采用现代化的技术 Next.js + Shdcn/ui 开发， 照片使用瀑布流列表 + 灯箱设计， 拥有更好的视觉体验，支持 本地、S3、Telegram 等方式作为存储空间，配合本项目的桌面同步工具 **Pixtale Sync**，可自动化将本地照片同步至云端\n\n✨ 核心特性：\n- 瀑布流列表：瀑布流列表+灯箱设计，带来沉浸式体验\n- 自动同步：配合本项目的同步工具，可自同步至云端\n- 聚合存储：支持本地、 Telegram、 S3等方式聚合存储\n\n🔗 仓库链接：\n- 在线演示：https://022335.xyz\n- 仓库地址：https://github.com/pixtalelab/pixtale\n\n💻 界面预览：\n<table>\n  <tr>\n    <td><img src=\"https://img.022335.xyz/demo.jpg\" /></td>\n    <td><img src=\"https://img.022335.xyz/demo1.jpg\" /></td>\n  </tr>\n  <tr>\n    <td><img src=\"https://img.022335.xyz/demo2.jpg\" /></td>\n    <td><img src=\"https://img.022335.xyz/demo3.jpg\" /></td>\n  </tr>\n</table>",
-    "created_at": "2026-10-19T06:49:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12545"
-  },
-  {
-    "id": 12544,
-    "title": "【开源自荐】照片记账 Photo Ledger：支付截图自动记账，OCR + 小模型全程端侧",
-    "content": "我是 Photo Ledger 的作者。\n\n手动记账最烦的是录入。这个 Android 应用把支付宝、微信等支付成功页 / 账单详情页的截图批量导入，在手机本地完成 OCR 和字段提取，生成待确认的账目草稿，一键入账。不监听屏幕、不登录支付账号，截图、账目和推理都在设备上完成。\n\n- 批量导入：相册多选或从微信「分享」导入，最多 20 张，逐张显示进度\n- 自动提取实付款、付款日期、消费类别；一图多单自动拆分；重复截图按内容哈希去重\n- 规则快路径让版式清晰的截图毫秒级出草稿，复杂/多单页面再降级到 Qwen3-0.6B（LiteRT-LM，GPU 加速，JSON Schema 约束解码）\n- 商户记忆、截图全屏对照核对、按月分组、汇总统计、搜索、CSV / zip 备份恢复\n- 30 张标注截图的回归闸门：实付款 96.7%、日期 100%、类别 100%\n\n技术栈：Kotlin + Compose + Room；PP-OCRv4（ONNX）做 OCR，Qwen3-0.6B 的 .litertlm 权重做字段抽取，LiteRT-LM 约束解码保证输出结构。MIT 开源，无遥测。\n\n- 仓库：https://github.com/p-nickzhang-q/photo-ledger\n- 下载（Android，v0.5.2 APK）：https://github.com/p-nickzhang-q/photo-ledger/releases/tag/v0.5.2\n- 界面截图与性能数据：https://github.com/p-nickzhang-q/photo-ledger#readme\n\n局限：目前只支持 Android；首次使用需要手动下载约 600MB 的模型（OCR 模型另计，提供 ModelScope 国内源），模型就绪后识别全程离线；建议 6GB 以上内存；识别结果入账前需人工确认。\n",
-    "created_at": "2026-10-19T05:48:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12544"
-  },
-  {
-    "id": 12543,
-    "title": "[资源自荐] Claude 动画案例库：效果预览、作者提示词与工具说明",
-    "content": "阮老师好，我是 Leadde Open Lab 的项目维护者，想自荐一个免费的 Claude 动画案例库：Awesome Opus Video Prompts。\n\n<img width=\"1440\" height=\"2239\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/673a35fd-f416-40d6-9839-e80c58009bf4\" />\n\n在浏览 AI 动画作品时，我们经常遇到一个问题：看到了效果，却很难把作者公开的提示词、使用的工具和原始出处找齐。我们做了一个展示页，并用 GitHub 仓库整理这些信息，方便读者先看效果，再挑选案例尝试。\n\n可以从这三个例子开始：\n\n- 东京雨夜售货机：Three.js 场景，作者公开的提示词包含雨景、湿地反射、交互和程序化音效要求。\nhttps://leaddeopenlab.github.io/awesome-opus-5-5-video-prompts/prompts/threejs-tokyo-rainy-night-prompt/\n- 像素巫师：Canvas 2D 动画，公开提示词要求用单个 HTML 文件实现，不使用外部素材。\nhttps://leaddeopenlab.github.io/awesome-opus-5-5-video-prompts/prompts/pixel-art-wizard-html-prompt/\n- 动态设计 Showreel：作者分享的 15 秒动画效果与提示词；渲染工具未公开，页面也标注了这一点。\nhttps://leaddeopenlab.github.io/awesome-opus-5-5-video-prompts/prompts/claude-motion-designer-showreel-prompt/\n\n展示页支持中英文切换、分类检索和复制提示词，无需注册。仓库还提供三个独立的 15 秒可编辑动画模板，附预览、配置和导出说明，方便从明确的结构开始修改。\n\n我们负责收集整理，案例作品归原作者。收录内容保留作者和原帖链接，区分完整提示词与公开片段；这些作者案例尚未由我们独立复现，不保证复制提示词就能得到完全相同的结果。三个可编辑模板与作者案例分开提供。\n\n展示页：https://leaddeopenlab.github.io/awesome-opus-5-5-video-prompts/\nGitHub：https://github.com/LeaddeOpenLab/awesome-opus-5-5-video-prompts\n\n希望这份资源能帮助对 Claude 创意编程、网页动画和视频制作感兴趣的读者。谢谢！\n\n### 补充：一个可以直接修改和导出的产品动画示例\n\n我们新增了 ORBIT：为一款虚构笔记应用制作的 15 秒产品发布动画，使用 Codex 修改 JavaScript Canvas 模板并完成 MP4 导出。\n\n教程包含成片、修改前后对比、可直接使用的复现提示词，以及源码和导出步骤。可以替换产品名称、文案、配色和截图，制作自己的版本；浏览预览无需注册，MP4 导出在本地运行。\n\n- [观看成片与完整教程](https://leaddeopenlab.github.io/awesome-opus-5-5-video-prompts/tutorials/codex-product-launch-video/?utm_source=ruanyf_weekly&utm_medium=community&utm_campaign=orbit_launch_202610&utm_content=existing_submission_update)\n- [15 秒 MP4](https://leaddeopenlab.github.io/awesome-opus-5-5-video-prompts/assets/orbit/after.mp4)\n- [可编辑源码](https://github.com/LeaddeOpenLab/awesome-opus-5-5-video-prompts/tree/main/templates/orbit-launch-15s)\n\nLeadde Open Lab",
-    "created_at": "2026-10-19T05:45:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12543"
-  },
-  {
-    "id": 12542,
-    "title": "Withdrawn",
-    "content": "Withdrawn by the author.",
-    "created_at": "2026-10-19T05:35:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12542"
-  },
-  {
-    "id": 12541,
-    "title": "【开源自荐】gilvt：能看清哪个 Claude Code 会话在等你的 macOS 终端",
-    "content": "我是 gilvt 的作者。\n\n同时开三四个 Claude Code、Codex 会话时，最费神的不是写代码，而是搞清楚哪个停下来等我审批、哪个测试挂了、哪个已经做完在等我看结果。普通终端只能挨个标签页去翻。\n\ngilvt 是一个原生 macOS 终端（Rust + gpui + alacritty_terminal），在它里面运行 claude 或 codex 时：\n\n- 左栏按「需要你 / 出错 / 运行中 / 已完成」列出所有会话，等待审批时发系统通知，点击跳到对应的 pane\n- 检查器按轮次显示 Agent 执行的命令、改动的文件和这一轮的 diff\n- Quick Look 显示词级 diff，渲染 Markdown 和 Mermaid，内置编辑器带实时预览，review 不用切回 IDE\n- 可以搜索、恢复几天前的会话；SSH 到 Linux 或 Apple 芯片 Mac 上跑的 Agent 也会出现在左栏\n\n不修改 ~/.claude、~/.codex 和 shell 配置，没有遥测，免费开源（Apache-2.0）。\n\n- 官网：https://gilvt.com\n- 仓库：https://github.com/Gilvt-WTJ/gilvt\n- 下载：https://gilvt.com/download （macOS 11 及以上，Apple 芯片与 Intel）\n\n![gilvt](https://gilvt.com/images/gilvt-light.png)\n\n局限：只支持 macOS；目前只识别 Claude Code 和 Codex；内置编辑器没有代码补全。\n",
-    "created_at": "2026-10-19T05:29:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12541"
-  },
-  {
-    "id": 12540,
-    "title": "【产品自荐】Command Reopen：让 Mac 的 Cmd+Tab 恢复最小化窗口，无需任何权限",
-    "content": "![Command Reopen](https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/c6/4b/8e/c64b8e73-64f0-96d1-64d2-682fccabb876/01-Main.png/800x500bb.jpg)\n\n**网址**：https://commandreopen.com/\n\n**一句话介绍**：让 Mac 的 Cmd+Tab 切到应用时，把最小化的窗口一起恢复，不需要任何系统权限。\n\n**详细介绍**：\n\nmacOS 的 Cmd+Tab 有个老问题：切到一个应用，如果它的窗口之前被最小化了，窗口还留在 Dock 里，屏幕上什么都没有，还得再去点一下。\n\nCommand Reopen 就是修这个的。照常按 Cmd+Tab 切换，最小化的窗口会自动回来；如果应用一个窗口都没有（比如 Finder），它会帮你新开一个。\n\n它和 AltTab 这类切换器的思路不一样：不替换系统切换器，只是增强原生的 Cmd+Tab，所以操作习惯不用变。另外它不需要「辅助功能」和「屏幕录制」权限，是 Mac App Store 上架的沙盒应用，在公司管控、不允许开这些权限的 Mac 上也能用。\n\n- 当前版本 1.5.1，支持 macOS 13.0 及以上\n- 14 天免费试用，之后 $9.99 一次性买断（也可选 $5.99/年）\n- App Store：https://apps.apple.com/us/app/command-reopen-fix-cmd-tab/id6757333924\n- 源码：https://github.com/Feng6611/mac-command-reopen\n\n这是我独立开发的小工具，欢迎试用和反馈。\n",
-    "created_at": "2026-10-19T04:50:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12540"
   }
 ]
