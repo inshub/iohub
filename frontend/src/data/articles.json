@@ -1,5 +1,21 @@
 [
   {
+    "id": 12650,
+    "title": "【工具自荐】这图能改：iPhone 上把视频转成实况照片、把图片压缩到指定大小，全在本机处理",
+    "content": "![这图能改](https://hugehard.app/assets/app-icon.png)\n\n## 是什么\n\n《这图能改》是独立工作室 HugeHard Studio 做的一个 iPhone 图片视频小工具箱（iOS 17+），把日常常用的几个处理步骤收在一个 App 里：\n\n- **视频转实况照片（Live Photo）**：选一段视频，转成能设成动态壁纸、在相册里长按会动的实况照片\n- **图片压缩到指定大小**：报名照、证件照、表单上传常要求「不超过 200KB」之类，直接填目标大小\n- 视频压缩、视频转 GIF、图片格式转换、调整尺寸\n\n普通的图片视频处理都在手机本机完成，不上传。可选的 AI 生图/改图需要用户自己配置服务商。\n\n## 链接\n\n- 产品页：https://hugehard.app/apps/this-pic-can-change/\n- TestFlight 公开测试（免费）：https://testflight.apple.com/join/GK8ht2vv\n- 视频转实况照片图文教程：https://hugehard.app/guides/video-to-live-photo/\n- 图片压缩到指定大小教程：https://hugehard.app/guides/image-compression/\n\n## 说明\n\n项目自荐，目前在 TestFlight 公开测试，App Store 版正在审核。界面为简体中文。欢迎提意见，感谢阮老师和周刊读者！\n",
+    "created_at": "2026-10-21T22:20:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12650"
+  },
+  {
+    "id": 12649,
+    "title": "【网站自荐】人类伴侣消除计划：把择偶条件逐条执行，看最后还剩下哪些人类",
+    "content": "阮老师好，我想自荐一个自己做的网页小游戏。\n\n网址：https://maoku.org/match-eradication/\n\n游戏叫《人类伴侣消除计划》，是海关盘查式的赛博相亲。你一条一条输入择偶条件，系统就逐条执行，看最后还剩下哪些人类。\n\n游戏收录了三万多种职业，我把大家对这些职业的典型认知和刻板印象做成了数据，用来算每一条伴侣需求成立的概率。\n\n做这个是因为我发现，我们常常在用采购电子产品或者筛选上市公司的标准，去要求一个活生生的人。所谓理想伴侣，很大一部分其实是理想生活方式的人格化。如果把对亲密关系的全部期待认真执行到底，现实世界里还容得下多少人？\n\n十分钟左右，不用注册，有中英文版，欢迎试玩提意见。\n\n谢谢阮老师抽空看一下，也谢谢周刊一直以来的分享。",
+    "created_at": "2026-10-21T20:43:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12649"
+  },
+  {
     "id": 12648,
     "title": "【工具自荐】NovAI：一个 OpenAI 兼容入口调用 DeepSeek/Qwen/GLM/Kimi 等 111 个中国模型，官方直连不加价，有免费层",
     "content": "## 是什么\n\nNovAI 是一个 OpenAI 兼容的中国模型 API 入口：一个 `base_url` + 一个 key，调用 DeepSeek、Qwen（通义）、GLM（智谱）、Kimi（月之暗面）、MiniMax、Doubao（豆包）、Hunyuan（混元）等 111 个模型（含文本、图像、视频），端点：\n\n```\nbase_url = https://aiapi-pro.com/v1\n```\n\n任何 OpenAI SDK / 工具都能直接用：Cline、Continue、Aider、Cherry Studio、OpenClaw、LangChain 等，改 `base_url` 和模型名即可。另有远程 MCP 端点 `https://aiapi-pro.com/api/mcp`（提供 `cheapest_models` / `model_price` / `list_categories` 三个工具）。\n\n## 为什么可能值得一看\n\n- **官方直连、不加价**：走各家的官方 API，倍率固定 1.0（按官方列表价透传，不按人民币换算加价二次加价）。价格单可在 `/transparency.json` 和 `/china-ai-leaderboard.json` 机器读取核对。\n- **免费层是真的免费**：5 个通义/智谱的 Flash 模型（glm-4.7-flash、glm-4.1v-thinking-flash、glm-4.6v-flash、cogview-3-flash、cogvideox-flash），10 次/天、5 次/分，不需要信用卡、不需要手机号；视频 5 次/天。\n- **一个端点同时出文/图/视频**：豆包 Seedream（图）和 Seedance（视频）也在同一套 key 下。\n\n## 一条 curl 试\n\n```bash\ncurl https://aiapi-pro.com/v1/chat/completions \\\n  -H \"Authorization: Bearer $NOVAI_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"glm-4.7-flash\",\"messages\":[{\"role\":\"user\",\"content\":\"你好\"}]}'\n```\n\n免费 key 在 https://aiapi-pro.com/free 领取（不用卡）。\n\n## 链接\n\n- 免费层与限制说明：https://aiapi-pro.com/free\n- 价格/加价说明：https://aiapi-pro.com/transparency\n- 模型与价格 JSON：https://aiapi-pro.com/china-ai-leaderboard.json\n- MCP（PyPI）：`pip install aiapi-pro`（含 `novai-prices` 等工具）\n- 代码/文档：https://aiapi-pro.com/docs\n\n## 说明\n\n项目自荐。请求会原样转发到对应模型的官方 API，不在我们这层二次训练或改写内容；免费层有每日调用上限，付费按官方价透传。欢迎指出问题或建议模型覆盖。\n",
@@ -786,21 +802,5 @@
     "created_at": "2026-10-19T08:42:22Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12549"
-  },
-  {
-    "id": 12548,
-    "title": "【网站自荐】云帆工具 SailGoGo：80+ 款免费在线工具，全部浏览器本地运行，文件不上传服务器",
-    "content": "链接：https://www.sailgogo.com/\n一句话介绍：一个免费在线工具集，80+ 款工具全部在浏览器本地运行——文件不经过任何服务器，无需注册登录，打开即用。\n特色工具：\n- 年会抽奖：适合公司活动的大屏抽奖，导入名单即可用\n- PDF 工具箱：合并、拆分、压缩、转换，纯前端处理敏感文档\n- 计算器大全：房贷、个税、装修预算、油费、学分绩点等 70+ 个实用计算器\n- 图片处理：压缩、裁剪、格式转换、水印、Base64 互转\n- 开发者工具：JWT 解析、Cron 表达式解析、正则测试、时间戳转换\n为什么值得推荐：\n- 所有涉及文件的操作（图片、PDF）都在本地浏览器完成，数据不出浏览器，适合处理隐私敏感内容\n- 纯静态站，无需账号，打开即用，手机端自适应\n- 界面支持 37 种语言\n免费使用，欢迎试用和提意见。",
-    "created_at": "2026-10-19T07:41:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12548"
-  },
-  {
-    "id": 12547,
-    "title": "【开源自荐】File Lite：跨平台、单文件 Web 文件管理器、Vue3 + Go，像资源管理器一样用",
-    "content": "File Lite 是一个自托管的 Web 文件管理器：Go 写的后端 + 内嵌进二进制的 Vue3 前端。跨平台、单文件，解压双击运行，像资源管理器一样用。可用于管理文件、图片浏览、听歌、看剧等操作。将任何电脑变成一台小 NAS。\n\n- 仓库： [https://github.com/canwdev/file-lite](https://github.com/canwdev/file-lite)\n- 中文说明： [https://github.com/canwdev/file-lite/blob/master/docs/zh-CN/README.md](https://github.com/canwdev/file-lite/blob/master/docs/zh-CN/README.md)\n- 下载： [https://github.com/canwdev/file-lite/releases](https://github.com/canwdev/file-lite/releases)\n\n**截图** \n![screenshot](https://github.com/canwdev/file-lite/blob/master/docs/screenshots/00-main.webp?raw=true)\n\n**主要功能**\n\n- 标签页与双面板模式，支持托拽；列表/网格视图、收藏与磁盘、适配移动端 UI\n- 侧栏直接列出网络位置（ SMB/NFS ）与 WSL 等挂载点\n- 新建/重命名/复制/移动/删除；拖拽上传、下载，下载文件夹自动打包 zip\n- 自动探测系统已安装的 7-Zip ，能压缩/解压（含密码、可选格式），没装则隐藏入口\n- 图片/视频/音乐预览；音乐支持内嵌封面与同步歌词（ LRC/VTT ），字幕会自动找同名文件\n- 文本编辑器保存时保持文件原有的编码（ GBK/UTF-16 等）和换行符\n- 无限画廊：把当前目录的图片/视频/音频做成竖向信息流，滚轮/键盘/触屏都能翻\n- 亮/暗/跟随系统主题与多套强调色，简中/英/日三种界面语言\n- 插件机制（仓库里有预置插件，实验性）\n- 密码或一次性 ticket 登录、IP 白名单、HTTPS （可自动生成自签证书）\n\n**技术栈与体积**\n\n- 后端 Go + Echo ；前端 Vue 3 + TypeScript + Vite\n- 单二进制 10MB 左右，UPX 压缩后 5MB~\n- 跨平台支持（ amd64 / arm64 ）：Windows / Linux / macOS\n\n**已知限制**\n\n- 暂时不做多用户，也不做网盘聚合\n- 7-Zip 、ffmpeg 需要自己装，File Lite 自动探测到了才有压缩与视频封面能力\n",
-    "created_at": "2026-10-19T06:57:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12547"
   }
 ]
