@@ -1,5 +1,37 @@
 [
   {
+    "id": 12678,
+    "title": "（已撤回）",
+    "content": "已撤回。",
+    "created_at": "2026-10-22T17:14:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12678"
+  },
+  {
+    "id": 12677,
+    "title": "【工具自荐】Everygen AI：免费的 AI 图片和视频工作台",
+    "content": "Everygen AI 是一个网页版的 AI 创作工作台，把热门的图片、视频模型集中在一处，比如 Grok Imagine、Kling、Seedance、GPT Image、Nano Banana，换模型只需在面板里点一下，另外也能用 Suno 生成音乐。\n\n生成图片不用登录，新访客有欢迎积分可以直接试；登录后有新用户奖励，每天还能领免费积分，每次生成前会先显示所需积分。\n\n还提供一批模板（产品广告、UGC、动漫等），点开会自动填好提示词、模型和参数。这是独立站点，与同名的其他 Everygen 产品无关。\n\n网址：https://everygenai.io/",
+    "created_at": "2026-10-22T16:32:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12677"
+  },
+  {
+    "id": 12676,
+    "title": "【开源自荐】CloakBrowser MCP：保留 Playwright MCP 工具接口的浏览器自动化服务",
+    "content": "### 项目：CloakBrowser MCP\n\n我是项目作者，想自荐一个面向 AI 代理的浏览器自动化工具。\n\n- GitHub：https://github.com/swimmwatch/cloakbrowser-mcp\n- 中文文档：https://swimmwatch.github.io/cloakbrowser-mcp/zh/\n- npm：https://www.npmjs.com/package/cloakbrowser-mcp\n\nCloakBrowser MCP 使用 CloakBrowser Chromium 运行上游 Playwright MCP，保留其浏览器工具接口。AI 客户端可以通过 MCP 导航网页、操作页面和截图，适合网页资料收集、重复操作和 Web 界面测试。\n\n它提供 npm 和 Docker 两种安装方式，支持 stdio 与 Streamable HTTP、多会话隔离、持久化浏览器配置，以及两个本地诊断工具。它不是新的大模型，也不提供托管代理服务。\n\n快速体验：\n\n```sh\nnpx -y cloakbrowser-mcp@latest\n```\n\n需要 Node.js 22.13+（22.x）或 24+。将该命令配置到支持 stdio 的 MCP 客户端后，可让客户端打开 https://example.com 并获取页面截图。\n\nMCP 桥接层以 MIT 许可开源；CloakBrowser 浏览器二进制采用独立专有许可。项目不保证绕过任何网站的反自动化保护。\n",
+    "created_at": "2026-10-22T16:31:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12676"
+  },
+  {
+    "id": 12675,
+    "title": "【工具自荐】巨浪 AI：查询模型 API 报价，分清账户余额与实际费用",
+    "content": "我在维护巨浪 AI，一个 AI 模型与 API 服务商公开报价查询网站，想自荐给周刊。\n\n它主要解决一个容易踩坑的问题：两个平台的报价数字不同，不一定能直接判断谁更便宜。模型版本、分组、按次或按 token 计费，以及“美元余额”与实际货币，都可能影响比较。\n\n例如，以下是假设算例，不是任何服务商当前报价：完成同一个任务，A 扣 4 美元余额，B 扣 2 美元余额；如果 A 的充值条件是 70 元买 100 余额，B 是 200 元买 100 余额，实际费用分别是 2.8 元、4 元。单看余额扣费会得出相反结论。\n\n网站可以按完整模型 ID 搜索公开报价，保留服务商、分组、单位、原始来源和采集时间。选定具体报价后可按用量估算；没有明确换算条件时，不把余额直接折算成人民币，也不把不同余额混排为最低价。\n\n试用页面：[Claude Sonnet 4.6 报价查询](https://jvlangai.com/price/claude-sonnet-4-6?utm_campaign=community-share)\n\n报价采集和官网访问检查不代表已完成付费模型调用测试。这个工具帮助核对公开信息，不对服务商质量作担保。\n\n欢迎试用和指出问题，尤其是模型匹配、计价解释和来源是否清楚；每条报价提供纠错入口。",
+    "created_at": "2026-10-22T14:56:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12675"
+  },
+  {
     "id": 12674,
     "title": "【开源自荐】连镜：开源 AI 视觉创作工作台，在无限画布里串起文本、图片、视频、音频生成",
     "content": "连镜是一个可自部署的 AI 视觉创作工作台：React 无限画布 + Go 后端，文本、图片、视频、音频节点可以连线，上游节点的结果直接作为下游生成的参考。MIT 协议开源。\n\n- 源码：https://github.com/zaylora/video-canvas\n- 在线体验：https://canvas.vbing.site\n\n**为什么做这个**\n\n做 AI 视频，通常要在各家生成网站和一堆文件夹之间来回切：这张图是哪个提示词出的、这段视频用了哪张首帧、改了一版之后怎么回到上一版，都靠人记。连镜把这些关系画成一张画布，节点之间的连线就是素材的来源，生成结果保留历史版本，可以随时切回。\n\n**主要功能**\n\n- 无限画布：节点互相连线，上游结果直接作为下游参考。\n- 3D 导演台：用人台、道具和多机位摆构图，把机位画面导出为首帧图和视频，再放回画布。\n- 画布 Agent：在画布里对话，Agent 能创建、编辑、排列节点并联网搜索，改动可撤销，可导入技能包。\n- 插件化接入模型：每种供应商协议是一个 JS 插件，跑在隔离的 plugin-runner 进程里。内置 OpenAI、Anthropic、Google、豆包、阿里百炼、可灵、即梦、Vidu、海螺、Sora 等，也可以上传自定义插件。\n- 异步任务：提交即返回，进度走 WebSocket 推送，断线重连后自动对账。\n- 积分与后台：提交时冻结积分，成功扣除，失败退回；后台有渠道和模型配置（连通性检查通过才能启用）、用户、支付、审计。\n- 保存不冲突：画布用 `revision` 乐观锁，多个标签页同时编辑不会互相覆盖。\n- Docker 一键部署：一条命令安装，首个注册账号自动成为超级管理员。\n\n![无限画布](https://raw.githubusercontent.com/zaylora/video-canvas/master/docs/assets/screenshots/%E7%94%BB%E5%B8%83.png)\n\n![3D 导演台](https://raw.githubusercontent.com/zaylora/video-canvas/master/docs/assets/screenshots/%E5%AF%BC%E6%BC%94%E5%8F%B0.png)\n",
@@ -770,37 +802,5 @@
     "created_at": "2026-10-20T03:11:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12577"
-  },
-  {
-    "id": 12576,
-    "title": "【工具自荐】WAWin：在 WhatsApp 网页版中翻译消息、用 AI 辅助起草回复",
-    "content": "大家好，我是 WAWin 团队成员，想自荐一个刚起步的 Chrome 插件。\n\nWAWin 用在 WhatsApp Web 里，主要面向经常回复海外客户的外贸业务员、销售和客服。我们想解决的事情很具体：看懂客户发来的外语消息，以及不用每次都从空白输入框开始写回复。\n\n目前可以：\n\n- 在聊天界面中翻译消息，减少来回复制到翻译工具的操作。\n- 先用自己熟悉的语言写回复，查看译文后再发送。\n- 用 AI 辅助起草回复，由自己检查、修改并决定是否发送。\n\n例如，客户用英语询问产品，业务员可以先看翻译，再用中文组织回复；涉及报价、交期等信息，仍然需要自己核对。我们希望它能帮忙处理语言和措辞，而不是替用户作出业务承诺。\n\n产品还有不少细节在完善，尤其想听听日常用 WhatsApp 沟通客户的人，在翻译和回复流程里有哪些不顺手的地方。\n\n- [Chrome 应用商店（含产品截图）](https://chromewebstore.google.com/detail/wawin-%C2%B7-ai-customer-assis/dnicphphlpdhpdndkalnmaacjnpokdeb)\n- [产品网站](https://wawin.ai/en/)\n\nWAWin 是独立开发的第三方扩展，与 WhatsApp 官方无隶属关系，需要配合 WhatsApp Web 使用。感谢阅读和建议。\n",
-    "created_at": "2026-10-20T02:57:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12576"
-  },
-  {
-    "id": 12575,
-    "title": "【工具自荐】Turn any question file into an Excel sheet — easy to tidy up, export, and re-import.将任意试题文件转为excel，便于整理导出导入",
-    "content": "The pain it solves is dumb but real: teachers write exams in Word, then Canvas forces them to re-type every question one form at a time — because Canvas only imports QTI packages, never a .docx. That last mile is pure busywork.\n\nSo: drop in a Word / PDF / Google Doc, get a Canvas-ready quiz out. A few things we deliberately built around:\n• No login, files never reused — educators are (rightly) wary of student data leaving their control.\n• It survives messy real docs: two-column layouts, mixed 1. / 一、 numbering, math, images, sub-questions.\n\nThere's also a Chinese edition at examparser.com/cn/.\n\nIf you've ever fought a quiz migration, what format wrecked your week? Always curious.\n[https://examparser.com](url)",
-    "created_at": "2026-10-20T02:47:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12575"
-  },
-  {
-    "id": 12574,
-    "title": "【开源自荐】WorldBase：跑在本机的个人通用 Agent，Rust 核心 + 三端同核",
-    "content": "## 项目地址\nhttps://github.com/RZfive/WorldBase\n\n## 一句话简介\nWorldBase 是一个 AI 驱动的项目生成器与管理平台，用自然语言描述需求即可生成完整可运行的 Web 应用，并支持持续修改、验证和数据分析。\n\n## 主要特性\n- **对话生成完整项目**：描述需求即可生成可运行的 Next.js 全栈应用，无需手写脚手架\n- **Agent 直接改代码**：AI 可以读写子项目源码、调用其 API 验证修改、查询数据库做分析，形成完整闭环\n- **数据完全本地**：项目数据存储在本地 SQLite，除模型 API 外不依赖任何云端服务，隐私可控\n- **三端同核**：Electron 桌面端（Windows/macOS/Linux）、Flutter 移动端、Rust CLI，共用同一套 Rust Agent 核心，Monorepo 架构\n- **内置 60+ 工具**：文件读写、终端命令、浏览器操作、数据库查询、图像生成等，覆盖开发全流程\n- **支持多模型**：可接入 OpenAI、Anthropic接口协议\n\n## 演示\n![WorldBase Demo](https://raw.githubusercontent.com/RZfive/WorldBase/main/docs/assets/demo.gif)\n\n## 技术栈\nRust（Agent 核心）+ TypeScript/React（前端）+ Electron（桌面端）+ Flutter（移动端）+ SQLite（本地存储）\n\n## 适合人群\n- 想快速验证想法的产品经理和独立开发者\n- 需要 AI 辅助完成全栈开发的工程师\n- 重视数据隐私、希望本地运行的团队\n",
-    "created_at": "2026-10-20T02:39:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12574"
-  },
-  {
-    "id": 12573,
-    "title": "【工具自荐】字幕猫 CaptionCat：一只住在 YouTube 字幕上的像素小猫，陪你听播客、练听力",
-    "content": "![字幕猫 CaptionCat](https://raw.githubusercontent.com/loethen/captioncat/main/.github/assets/demo.gif)\n\n**网址**：https://captioncat.app/zh/\n\n**一句话介绍**：Chrome 插件，在 YouTube 字幕上放一只像素奶牛猫，听长播客、练英语听力时有它陪着；还能悬停看整句翻译、点词连原句收藏。\n\n**详细介绍**：\n\n我平时在 YouTube 上听英文播客练听力，一期一两个小时，画面基本就是两个人对着麦克风。听久了会有点无聊，就做了这个插件。\n\n装上之后，字幕上会多一只像素小猫：在字幕上踱步、洗脸、伸懒腰，看到小红点就追，视频太长就趴着睡着了。听到 cute、wow、fish 这类词，它会冒爱心、瞪眼睛、犯馋。原型是我家的奶牛猫「警花」。\n\n实现上的小细节：\n\n- 只读 YouTube 页面上已经显示的字幕 DOM，不下载字幕轨；整个插件只有一个挂在播放器上的 MutationObserver\n- 所有浮层都挂在播放器节点里，所以全屏时小猫也在\n\n学习功能只留了两个，需要时在设置里打开：\n\n- 悬停翻译：鼠标停在字幕上，显示整句翻译（16 种语言），视频暂停，移开继续\n- 点词收藏：点一下单词，连同原句一起存下来，按视频分组，可以导出 JSON，或一键复制复习提示词给 AI\n\n没有账号，不做统计，设置和生词都存在浏览器里；唯一会发出去的，是开启悬停翻译后你停留的那一句字幕（发给 Google 翻译）。\n\n- 源码：https://github.com/loethen/captioncat\n- 支持 Chrome 和 Edge，界面有简体中文和英文\n\n这是我独立开发的小工具，欢迎试用和反馈。",
-    "created_at": "2026-10-20T02:34:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12573"
   }
 ]
