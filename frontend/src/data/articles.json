@@ -1,8 +1,80 @@
 [
   {
+    "id": 12674,
+    "title": "【开源自荐】连镜：开源 AI 视觉创作工作台，在无限画布里串起文本、图片、视频、音频生成",
+    "content": "连镜是一个可自部署的 AI 视觉创作工作台：React 无限画布 + Go 后端，文本、图片、视频、音频节点可以连线，上游节点的结果直接作为下游生成的参考。MIT 协议开源。\n\n- 源码：https://github.com/zaylora/video-canvas\n- 在线体验：https://canvas.vbing.site\n\n**为什么做这个**\n\n做 AI 视频，通常要在各家生成网站和一堆文件夹之间来回切：这张图是哪个提示词出的、这段视频用了哪张首帧、改了一版之后怎么回到上一版，都靠人记。连镜把这些关系画成一张画布，节点之间的连线就是素材的来源，生成结果保留历史版本，可以随时切回。\n\n**主要功能**\n\n- 无限画布：节点互相连线，上游结果直接作为下游参考。\n- 3D 导演台：用人台、道具和多机位摆构图，把机位画面导出为首帧图和视频，再放回画布。\n- 画布 Agent：在画布里对话，Agent 能创建、编辑、排列节点并联网搜索，改动可撤销，可导入技能包。\n- 插件化接入模型：每种供应商协议是一个 JS 插件，跑在隔离的 plugin-runner 进程里。内置 OpenAI、Anthropic、Google、豆包、阿里百炼、可灵、即梦、Vidu、海螺、Sora 等，也可以上传自定义插件。\n- 异步任务：提交即返回，进度走 WebSocket 推送，断线重连后自动对账。\n- 积分与后台：提交时冻结积分，成功扣除，失败退回；后台有渠道和模型配置（连通性检查通过才能启用）、用户、支付、审计。\n- 保存不冲突：画布用 `revision` 乐观锁，多个标签页同时编辑不会互相覆盖。\n- Docker 一键部署：一条命令安装，首个注册账号自动成为超级管理员。\n\n![无限画布](https://raw.githubusercontent.com/zaylora/video-canvas/master/docs/assets/screenshots/%E7%94%BB%E5%B8%83.png)\n\n![3D 导演台](https://raw.githubusercontent.com/zaylora/video-canvas/master/docs/assets/screenshots/%E5%AF%BC%E6%BC%94%E5%8F%B0.png)\n",
+    "created_at": "2026-10-22T14:32:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12674"
+  },
+  {
+    "id": 12673,
+    "title": "【工具自荐】FloorAI 平面图创建工具：生产级在线户型图编辑器，免费免注册，支持精确绘图、4000+ 家具素材及 CAD 导出",
+    "content": "最近给 FloorAI 上线了一个免费的在线平面图编辑工具 **Floor Plan Maker**，希望让没有 CAD 经验的用户，也能直接在浏览器中绘制和编辑户型图。\n\n**工具地址：** https://www.floorai.ai/zh/floor-plan-maker\n\n目前主要支持以下功能：\n\n- **免费使用，无需注册**：打开网页即可开始绘制，不需要下载安装软件。\n- **49 套可编辑模板**：涵盖住宅、公寓、办公室、餐厅、咖啡馆、商铺等场景，也可以从空白画布开始设计。\n- **可视化平面图编辑**：支持绘制墙体、房间、门窗、楼梯等建筑元素，可以输入精确尺寸，支持米和英尺单位切换。\n- **4000+ 家具素材**：内置床、沙发、桌椅、橱柜等家具，支持拖拽摆放、调整位置和布局。\n- **自动计算房间面积**：可以为房间设置名称和类型，自动计算各房间及整体的面积，修改墙体后同步更新。\n- **多楼层与方案对比**：支持创建多个楼层，复制不同设计方案，方便比较装修和空间布局。\n- **多格式导出**：支持 PNG、PDF、SVG、DXF，图片最高支持 4K 分辨率，也可以导出带比例尺的图纸，方便打印或在 CAD 软件中继续编辑。\n\n这个工具主要面向装修规划、室内设计、房产展示，以及餐厅、办公室等商业空间布局场景。\n\n相比需要安装和学习的专业 CAD 软件，希望它能让普通用户更轻松地完成平面图设计，同时保留尺寸编辑、面积计算和 CAD 格式导出等实用功能。\n\n目前工具刚上线，欢迎大家体验并提出建议！\n\n**在线体验：** [免费在线户型图设计工具](https://www.floorai.ai/floor-plan-maker)\n\n<img width=\"3430\" height=\"1920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d3d0221c-6546-404f-8974-59447ff58bf9\" />",
+    "created_at": "2026-10-22T13:53:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12673"
+  },
+  {
+    "id": 12672,
+    "title": "【自荐】10khours：把练习时间填进 10,000 个格子的极简工具",
+    "content": "### 自荐：10khours，一格一小时的极简练习记录工具\n\n网址：https://10khours.org/\n\n我做了一个免费的小工具，把 10,000 小时铺成 10,000 个格子：练完一小时，就填上一格。适合记录钢琴、画画、编程或自己定义的技能。\n\n它不计时，也没有连续打卡的要求。用户可以输入小时数回车补记，也可以点击格子逐个记录；记多了，点击累计小时数就能修改。达到 10,000 小时后，会生成一张可保存、分享的纪念证书，上面写着 “So you weren’t kidding.”\n\n单页即可使用，未登录时记录保存在本机；可选 Google 登录后云端保存，并导出自己的记录。目前没有广告或收费功能。\n\n“10,000 小时”在这里是一种可视化目标，不是保证成为专家的科学门槛，纪念证书也不是资格认证。希望它能让漫长的练习变得看得见。\n\n![10khours：一格一小时的练习记录工具](https://10khours.org/social-card.png)\n",
+    "created_at": "2026-10-22T13:48:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12672"
+  },
+  {
+    "id": 12671,
+    "title": "【软件自荐】节日彩灯 Festival Lights：给 Mac 屏幕挂一串会自动换装的彩灯",
+    "content": "万圣节快到了，给 Mac 屏幕也挂点南瓜和小幽灵。\n\n我做了一个免费的 macOS 菜单栏小工具 **节日彩灯 Festival Lights**，在屏幕顶端挂一串会动的彩灯。万圣节挂南瓜，圣诞节换小彩灯，春节换红灯笼，给每天看着的桌面添一点节日气氛。\n\n**官网与下载：[gozry.com/festival-lights](https://gozry.com/festival-lights/?lang=zh)**（官网有实际运行的动画演示）\n\n![万圣节主题：屏幕顶端的南瓜、幽灵和蝙蝠彩灯](https://gozry.com/festival-lights/media/halloween.webp)\n\n主要功能：\n\n- **随节日自动换装**：内置 16 套主题，覆盖万圣节、圣诞节、春节等节日；节日过后会恢复自己的设置。\n- **按喜好调整**：17 种灯的造型，支持常亮、呼吸、闪烁、追光、忽明忽暗五种效果。灯的数量、大小、灯串下垂弧度和动画速度都能调整，设置时可实时预览。\n- **兼顾日常使用**：鼠标点击可以穿过彩灯，不影响下方窗口操作；可以放在窗口上方或后面。开启系统「减弱动态效果」时，会自动停止动画。\n- **支持多显示器**：可以只显示在主屏、指定屏幕，或所有屏幕上；也支持通过快捷指令和 Siri 控制。\n\n![中文菜单栏面板：切换主题、灯的造型和动画效果](https://gozry.com/festival-lights/media/zh/panel-light.webp)\n\n目前版本 **1.4**，安装包约 **3.4 MB**，需要 **macOS 14.0 或更高版本**，支持 Apple 芯片和 Intel 芯片，提供中英文界面。\n\n**免费，无需注册。** 欢迎试用，也欢迎反馈想要的节日主题或使用中遇到的问题。感谢阮老师和周刊社区。",
+    "created_at": "2026-10-22T13:13:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12671"
+  },
+  {
+    "id": 12670,
+    "title": "【开源自荐】万象棋谱：按开局选择重算王者万象棋的阵容榜，去掉幸存者偏差",
+    "content": "自荐一个开源的游戏数据小站，**万象棋谱**，王者荣耀里自走棋玩法「万象棋」的对局助手。\n\n![](https://raw.githubusercontent.com/billpwchan/wanxiang-qipu/main/docs/images/demo-opening.webp)\n\n做它是因为发现阵容榜有幸存者偏差。阵容榜通常按「终局阵容」统计：对局结束时场上是什么，就算哪一套。没打成的人会被记到别的阵容里，所以每套阵容都只剩下成功的样本。\n\n但棋手在第一回合就选定了。我改成按「选了这个棋手之后的全部对局」来算，用的是 datawxq 上顶尖对局的 18.5 万个终局。换了口径，排名变化很大：钟馗韩信打成时平均 2.37 名，排第 2；按开局选择算是 3.58 名，排第 10，因为韩信太脆，没打成的局很多。十套路线之间的差距也缩到半个名次左右，反而是同一套牌换个棋手，差距更大。\n\n网站本身是无构建、零依赖的原生 ES 模块。开局页那块「竖纹玻璃」是一个 WebGL2 片元着色器，每条竖纹当成一段柱面透镜来折射，带色散和磨砂。\n\n在线使用：https://wanxiang.52-198-144-26.sslip.io/\n\n项目地址：https://github.com/billpwchan/wanxiang-qipu\n\n谢谢！\n",
+    "created_at": "2026-10-22T12:49:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12670"
+  },
+  {
+    "id": 12669,
+    "title": "【开源自荐】futu_algo：基于富途 OpenAPI 的港股量化交易系统，回测和模拟盘逐笔一致",
+    "content": "自荐一个开源的港股量化交易系统，**futu_algo**，基于富途 OpenAPI。\n\n![](https://raw.githubusercontent.com/billpwchan/futu_algo/master/docs/images/console-dashboard.png)\n\n项目 2020 年写的，攒了 600 多个 star。今年翻出来一看，新装的环境根本跑不起来（futu-api 删了 `OpenHKTradeContext`），实盘遇到第一个卖出信号就崩，持仓平不掉，有个策略因为拿一根 K 线跟它自己比，永远不会交易。所以干脆整个重写了，刚发了 2.1.0。\n\n现在的版本：\n\n- K 线本地缓存，自动翻过富途单页 1000 根的限制，不超频率和历史额度；任意分钟周期按交易时段合成，不跨午休。\n- 指标按通达信的算法实现，公式可以逐行搬过来；每次回测自动检查未来函数。\n- 回测按下一根开盘价、整手成交，印花税和交易征费按成交当天适用的费率算，滑点按港交所价位表，基准是恒生指数。\n- 模拟盘吃 OpenD 实时推送的 K 线，跟回测用同一份策略代码。测试会拿真实的一分钟 K 线同时跑回测和实盘引擎，要求每一笔成交、每一笔费用和最终资金完全一致。\n- 自带网页控制台，不需要富途账户也能用 `futu-algo web --demo` 在模拟行情里体验。\n\nPython 3.11+，Apache-2.0。\n\n项目地址：https://github.com/billpwchan/futu_algo\n\n谢谢！\n",
+    "created_at": "2026-10-22T12:49:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12669"
+  },
+  {
+    "id": 12668,
+    "title": "【开源自荐】oh-my-agent：多个编码 agent 共用一套技能，跑通测试才收工",
+    "content": "项目名称：oh-my-agent（命令 `oma`）\n\n项目地址：https://github.com/first-fluke/oh-my-agent\n\n中文说明：https://github.com/first-fluke/oh-my-agent/blob/main/docs/README.zh.md\n\n一句话介绍：给你已经在用的编码 agent（Claude Code、Codex CLI、Cursor 等）加上规划、开发、审查、调试的分工，并且可以让它在你自己的测试脚本通过之前不能结束任务。\n\n我做它的原因很简单：同时用几个编码 agent 时，每个工具都要单独维护一套规则和技能，而 agent 经常在测试还没跑过的时候就说“完成了”。\n\n主要功能：\n- 技能和工作流只放在一个 `.agents/` 目录里，再写进各运行时自己的配置；技能按条目软链接到各工具的技能目录，改一处就够了。`oma link <工具> --dry-run` 可以先看会写哪些文件。\n- 长任务可以设门禁：`oma goal set --gate test` 之后，agent 想停下时会先跑你的 test、lint 或 typecheck 脚本，不通过就被送回去继续做。检查过程中代码有改动的话，这次通过不算数。`oma goal status --check-fresh` 会对比上次通过时的代码和现在的代码，输出 fresh 或 stale。\n- 切换、恢复会话或上下文压缩之后，会把这个会话最近的事件和记住的事实重新注入，限同一台机器、同一个项目。\n- 不用记斜杠命令，直接说“review this PR”这类话也能触发对应工作流。触发器在 CI 里用 212 条标注过的英文和韩文提示词测试，误触发超过 10% 或漏触发超过 20% 就不让合并。\n\n我自己每天上班都在用，今年用它提交了 2 万多个 commit。MIT 协议。\n\n安装（在项目根目录）：\n\n    curl -fsSL https://raw.githubusercontent.com/first-fluke/oh-my-agent/main/cli/install.sh | bash\n    oma doctor\n\n架构图：https://raw.githubusercontent.com/first-fluke/oh-my-agent/main/docs/assets/architecture/oh-my-agent-architecture.png\n",
+    "created_at": "2026-10-22T12:38:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12668"
+  },
+  {
+    "id": 12667,
+    "title": "【开源自荐】Voltip：按住快捷键说话，松开后文字出现在光标处的语音输入工具",
+    "content": "## 项目名称\n\nVoltip：开源的语音输入工具。\n\n## 项目地址\n\n- 源码：https://github.com/sunerpy/voltip\n- 官网：https://voltip.firlab.app/zh/\n\n## 项目简介\n\n在电脑上按住快捷键说话，松开后文字插入当前应用的光标处，支持 Windows、macOS、Linux 和 Android。识别可以用本机模型离线完成，也可以用安装包内置的服务（不用注册、不用填密钥）或自己选的云端服务商。\n\n## 主要功能\n\n- 本地识别：Qwen3-ASR、SenseVoice、Paraformer，Qwen3-ASR 可以用显卡加速（Windows、Linux 用 Vulkan，macOS 用 Metal）。\n- AI 润色：去掉口头禅和说错后改口的部分，内置校对、提示词优化、中英互译、要点纪要等预设。\n- 个人词典和替换规则，纠正总被听错的词。\n- 语音编辑：选中文字，说出修改要求，改写结果替换选区。\n- 长录音单次最长 2 小时，可以录电脑播放的声音，导出 SRT 字幕。\n- 手机当麦克风和键盘：扫码配对，音频端到端加密传到电脑。\n\n## 界面展示\n\n![Voltip 主页](https://raw.githubusercontent.com/sunerpy/voltip/main/docs/site/public/screens/home-zh-light.webp)\n\n![按住快捷键说话，文字插入光标处](https://raw.githubusercontent.com/sunerpy/voltip/main/docs/readme/media/voltip-dictation-zh.webp)\n\n## 下载安装\n\n- Windows（PowerShell）：`irm https://raw.githubusercontent.com/sunerpy/voltip/main/scripts/install.ps1 | iex`\n- Linux、macOS（终端）：`curl -fsSL https://raw.githubusercontent.com/sunerpy/voltip/main/scripts/install.sh | sh`\n- 安装包：https://github.com/sunerpy/voltip/releases/latest\n\n我是项目作者。\n",
+    "created_at": "2026-10-22T11:45:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12667"
+  },
+  {
+    "id": 12666,
+    "title": "【软件自荐】魔女口袋：带小魔女互动和音乐舞台的 Windows 桌面工具",
+    "content": "我是魔女口袋的作者，最近做了一套 Windows 桌面工具，想分享给喜欢桌面美化的朋友试试。\n\n它把常用软件、窗口切换、搜索和音乐控制放在一条玻璃任务栏里，旁边有一只可以点击、摸头和拖动的小魔女。点开她，会展开漫画气泡风格的分类应用抽屉。\n\n几个日常能用到的功能：\n\n- **整理和打开应用**：固定常用软件，按游戏、办公、工具等分类；可以查看已打开窗口的缩略图并切换窗口。\n- **拼音搜索**：支持中文、全拼和首字母，查找应用、文件和文件夹。\n- **音乐舞台**：显示曲名与专辑封面，提供播放、暂停、切歌和音量控制，舞台可以拖动或关闭。曲目信息和按钮是否可用，取决于播放器提供的 Windows 媒体会话。\n- **按习惯调整外观**：任务栏样式、动效强度、静态显示和全屏避让都可以设置。\n\n目前发布的是 **0.58.15 试用版**，支持 Windows 10 / 11（64 位）。提供全功能版和精简版安装包；主要想用任务栏、小魔女和音乐控制的话，可以选精简版。\n\n项目介绍：https://github.com/wtolddd/magic-pocket\n\n安装包：https://github.com/wtolddd/magic-pocket/releases/tag/v0.58.15\n\n仓库目前用于发布安装包、更新说明和收集反馈。想听听大家对桌面交互和音乐舞台的建议，使用中遇到问题也欢迎到项目的 Issues 留言。",
+    "created_at": "2026-10-22T09:33:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12666"
+  },
+  {
     "id": 12665,
-    "title": "【开源自荐】言录 Brevia：本地会议转写、AI 笔记与多端协同",
-    "content": "## 项目名称\n\n言录（Brevia）：开源、本地优先的会议助手。\n\n## 项目地址\n\n- 源码：https://github.com/zerolovesea/Brevia\n- 官网：https://brevia.work/\n\n## 项目简介\n\n言录用于会议、访谈、课堂等场景的录音、实时转写和笔记整理，支持 macOS、Windows、iOS 和 Android。\n\n语音识别在电脑本机完成，手机可以独立录音，也可以与电脑连接，将收音、转写和笔记整理放在同一套流程中。\n\n## 主要功能\n\n- **本地处理**：录音与会议记录保存在自己的设备中。下载所需模型后，转写、AI 笔记、纪要和翻译均可离线运行。\n- **多端协同**：手机扫码连接同一局域网内的电脑，可直接作为电脑麦克风。电脑负责识别，手机查看实时转写与笔记；离线录音也可在之后上传到电脑整理。\n- **AI 笔记与纪要**：转写和笔记并排显示，AI 从对话中提取决定与待办，由用户选择采纳。笔记与会后纪要均可继续编辑，支持导出 Markdown、TXT、JSON、SRT、DOCX、PDF。\n- **悬浮录音胶囊**：主窗口收起后，仍可查看录音状态、字幕和笔记，控制暂停、继续与结束录音。\n- **多语言与录音来源**：支持 30 多种语言转写及原文、译文对照；电脑端支持麦克风、系统声音或双路同时录制。\n\n## 界面展示\n\n手机扫码连接电脑后，可在手机查看转写，并在桌面端选择手机作为收音设备。点击图片可查看原图。\n\n<table>\n  <tr><th>手机扫码连接</th><th>手机查看实时转写</th><th>桌面选择手机麦克风</th></tr>\n  <tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/connection.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/connection.png\" width=\"180\" alt=\"手机扫码连接\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/live.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/live.png\" width=\"180\" alt=\"手机查看实时转写\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/desktop/zh/phone-microphone.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/desktop/zh/phone-microphone.png\" width=\"500\" alt=\"桌面选择手机麦克风\" /></a></td></tr>\n</table>\n\n以下为实时转写、AI 笔记与悬浮胶囊的动态演示：\n\n<table>\n  <tr><th>实时转写与 AI 笔记</th><th>悬浮录音胶囊</th></tr>\n  <tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/live.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/live.gif\" width=\"460\" alt=\"实时转写与 AI 笔记\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/capsule.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/capsule.gif\" width=\"460\" alt=\"悬浮录音胶囊\" /></a></td></tr>\n</table>\n\n## 下载安装\n\n| 平台 | 下载入口 |\n| --- | --- |\n| Windows x64 | [Windows 安装包（.exe）](https://github.com/zerolovesea/Brevia/releases/download/v1.4.5/Brevia-1.4.5-x64-setup.exe) |\n| macOS · Apple Silicon · macOS 14+ | [macOS 安装包（.dmg）](https://github.com/zerolovesea/Brevia/releases/download/v1.4.5/Brevia-1.4.5-arm64.dmg) |\n| iPhone · iOS 15+ | [App Store 下载](https://apps.apple.com/app/id6819869442) |\n| Android · Android 7+ | [下载 APK](https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk) |\n\n手机端下载二维码：\n\n<table>\n  <tr><th>iPhone · App Store</th><th>Android · APK</th></tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://apps.apple.com/app/id6819869442\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/download/ios-qr.png\" width=\"150\" alt=\"iPhone 下载二维码\" /></a></td>\n    <td align=\"center\"><a href=\"https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/download/android-qr.png\" width=\"150\" alt=\"Android 下载二维码\" /></a></td>\n  </tr>\n</table>\n\n欢迎试用，也欢迎反馈使用中遇到的问题。\n",
+    "title": "【开源自荐】言录 Brevia：本地会议转写、AI 笔记、手机端协同录音 桌面端转写",
+    "content": "## 项目名称\n\n言录（Brevia）：开源、本地优先的会议助手。\n\n## 项目地址\n\n- 源码：https://github.com/zerolovesea/Brevia\n- 官网：https://brevia.work/\n\n## 项目简介\n\n言录用于会议、访谈、课堂等场景的录音、实时转写和笔记整理，支持 macOS、Windows、iOS 和 Android。\n\n语音识别在电脑本机完成，手机可以独立录音，也可以与电脑连接，将收音、转写和笔记整理放在同一套流程中。\n\n## 主要功能\n\n- **本地处理**：录音与会议记录保存在自己的设备中。下载所需模型后，转写、AI 笔记、纪要和翻译均可离线运行。\n- **多端协同**：手机扫码连接同一局域网内的电脑，可直接作为电脑麦克风。电脑负责识别，手机查看实时转写与笔记；离线录音也可在之后上传到电脑整理。\n- **AI 笔记与纪要**：AI 从对话中提取决定与待办，由用户选择采纳。支持导出 Markdown、TXT、JSON、SRT、DOCX、PDF。\n- **悬浮录音胶囊**：主窗口收起后，仍可查看录音状态、字幕和笔记，控制暂停、继续与结束录音。\n- **多语言与录音来源**：支持 30 多种语言转写及原文、译文对照；电脑端支持麦克风、系统声音。\n\n## 界面展示\n\n手机扫码连接电脑后，可在手机查看转写，并在桌面端选择手机作为收音设备。点击图片可查看原图。\n\n<table>\n  <tr><th>手机扫码连接</th><th>手机查看实时转写</th><th>桌面选择手机麦克风</th></tr>\n  <tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/connection.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/connection.png\" width=\"180\" alt=\"手机扫码连接\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/live.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/live.png\" width=\"180\" alt=\"手机查看实时转写\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/desktop/zh/phone-microphone.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/desktop/zh/phone-microphone.png\" width=\"500\" alt=\"桌面选择手机麦克风\" /></a></td></tr>\n</table>\n\n以下为实时转写、AI 笔记与悬浮胶囊的动态演示：\n\n<table>\n  <tr><th>实时转写与 AI 笔记</th><th>悬浮录音胶囊</th></tr>\n  <tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/live.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/live.gif\" width=\"460\" alt=\"实时转写与 AI 笔记\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/capsule.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/capsule.gif\" width=\"460\" alt=\"悬浮录音胶囊\" /></a></td></tr>\n</table>\n\n## 下载安装\n\n| 平台 | 下载入口 |\n| --- | --- |\n| Windows x64 | [Windows 安装包（.exe）](https://github.com/zerolovesea/Brevia/releases/download/v1.4.5/Brevia-1.4.5-x64-setup.exe) |\n| macOS · Apple Silicon · macOS 14+ | [macOS 安装包（.dmg）](https://github.com/zerolovesea/Brevia/releases/download/v1.4.5/Brevia-1.4.5-arm64.dmg) |\n| iPhone · iOS 15+ | [App Store 下载](https://apps.apple.com/app/id6819869442) |\n| Android · Android 7+ | [下载 APK](https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk) |\n\n手机端下载二维码：\n\n<table>\n  <tr><th>iPhone · App Store</th><th>Android · APK</th></tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://apps.apple.com/app/id6819869442\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/download/ios-qr.png\" width=\"150\" alt=\"iPhone 下载二维码\" /></a></td>\n    <td align=\"center\"><a href=\"https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/download/android-qr.png\" width=\"150\" alt=\"Android 下载二维码\" /></a></td>\n  </tr>\n</table>\n\n欢迎试用，也欢迎反馈使用中遇到的问题。\n",
     "created_at": "2026-10-22T08:47:25Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12665"
@@ -186,7 +258,7 @@
   {
     "id": 12642,
     "title": "【开源自荐】Codex Co²：让多人共享同一个 Codex 会话，一起推进工作",
-    "content": "阮老师好，自荐一个开源项目 「Codex Co²」（https://github.com/SpaceCoder-Kafka/codex-co2/blob/main/README.zh-CN.md ）: **让多人共享同一个 Codex 会话，一起推进工作**。\n\n解决的痛点是，Codex 官方虽然也提供了会话分享功能，但只可以把只读的历史快照发给别人。但如果对方看完后想继续追问、补充信息，或让 Agent 接着排查的话，就满足不了，需要一种能持续交互的协作方式。\n\n**Codex Co² 通过生成邀请链接，让一方得以在官方 Codex Desktop 中继续工作，另外几方则可以通过浏览器加入所选会话，查看已有上下文，并向同一个 Agent 发送消息、跟进后续结果。**\n\n一个典型场景就是运营与研发的接力排障：\n运营先让 Codex 分析用户反馈的日志，得到初步结论，再将这条会话分享给研发。研发加入后，可以直接查看前面的日志分析过程，补充代码背景、追问可疑线索，让 Agent 继续定位问题。运营也能在同一条会话中补充用户信息、跟进排查进展。\n\n主要特点：\n- 共享持续进行的会话：加入后可以继续交互，后续消息与 Agent 回复持续同步。\n- 协作者只需浏览器：打开邀请，经分享者批准后加入，无需安装应用。\n- 由分享者控制范围：只共享选中的会话，可移除成员、结束共享，也可开启逐条消息审批；原生工具审批仍在分享者的 Desktop 中处理。\n\n<img width=\"1198\" height=\"1313\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/748b0ace-a73b-4c48-83c1-bd2d2e81738b\" />\n\n<img width=\"2400\" height=\"1664\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a315007-a23b-4a37-ae98-8f8603ca749c\" />\n\n<img width=\"1574\" height=\"1428\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4a7fc870-2c15-42e8-b078-508484b836fc\" />\n\n[中文演示视频](https://github-production-user-asset-6210df.s3.amazonaws.com/202612221/680116219-b1c2f544-3684-432e-9e03-f32ac15b9370.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20261021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261021T161455Z&X-Amz-Expires=300&X-Amz-Signature=d9b62c9807923b5c23565cb4c08f799a7957c3b3d6207684651ee079ac6ccca0&X-Amz-SignedHeaders=host&response-content-type=video%2Fmp4)",
+    "content": "阮老师好，自荐一个开源项目 「Codex Co²」（https://github.com/SpaceCoder-Kafka/codex-co2/blob/main/README.zh-CN.md ）: **让多人共享同一个 Codex 会话，一起推进工作**。\n\n解决的痛点是，Codex 官方虽然也提供了会话分享功能，但只可以把只读的历史快照发给别人。但如果对方看完后想继续追问、补充信息，或让 Agent 接着排查的话，就满足不了，需要一种能持续交互的协作方式。\n\n**Codex Co² 通过生成邀请链接，让一方得以在官方 Codex Desktop 中继续工作，另外几方则可以通过浏览器加入所选会话，查看已有上下文，并向同一个 Agent 发送消息、跟进后续结果。**\n\n一个典型场景就是运营与研发的接力排障：\n运营先让 Codex 分析用户反馈的日志，得到初步结论，再将这条会话分享给研发。研发加入后，可以直接查看前面的日志分析过程，补充代码背景、追问可疑线索，让 Agent 继续定位问题。运营也能在同一条会话中补充用户信息、跟进排查进展。\n\n主要特点：\n- 共享持续进行的会话：加入后可以继续交互，后续消息与 Agent 回复持续同步。\n- 协作者只需浏览器：打开邀请，经分享者批准后加入，无需安装应用。\n- 由分享者控制范围：只共享选中的会话，可移除成员、结束共享，也可开启逐条消息审批；原生工具审批仍在分享者的 Desktop 中处理。\n\n<img width=\"2172\" height=\"724\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9216b184-a6be-456e-a5aa-b6400e828196\" />\n\n<img width=\"1506\" height=\"1044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11d02649-608e-4c33-922d-9049c746b913\" />\n\n<img width=\"1506\" height=\"1044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f8ed4ac7-0ab6-473b-8b64-f08c119ad713\" />\n\n<img width=\"1317\" height=\"1194\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cd5dc945-3d8c-4683-9aa1-bd037f5f6117\" />\n\n<img width=\"1314\" height=\"1197\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/09b7d7ca-07b6-42d5-aa8b-f17b1200fe88\" />\n\n[中文演示视频](https://github-production-user-asset-6210df.s3.amazonaws.com/202612221/680116219-b1c2f544-3684-432e-9e03-f32ac15b9370.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20261021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261021T161455Z&X-Amz-Expires=300&X-Amz-Signature=d9b62c9807923b5c23565cb4c08f799a7957c3b3d6207684651ee079ac6ccca0&X-Amz-SignedHeaders=host&response-content-type=video%2Fmp4)",
     "created_at": "2026-10-21T16:17:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12642"
@@ -346,7 +418,7 @@
   {
     "id": 12621,
     "title": "[开源自荐] 无剧透回放：防剧透项目，目前提供英雄联盟赛事回放功能",
-    "content": "我是作者，想自荐「无剧透回放 / Spoiler-Free Replays」：一个开源、免费的防剧透项目，目前提供英雄联盟赛事回放功能，视频来源为 B 站。\n\n补看比赛时，即使没看到比分，视频剩余时长和总局数也可能提前揭晓胜负。这个工具隐藏界面中的比分、封面、时长、进度条和总局数，选一场比赛从第一局开始看，正片结束后自动接下一局。\n\n目前需要在自己的电脑上安装运行，无需 API Key，原创代码采用 MIT 许可证。当前版本为 v0.1.2-preview，仍是早期预览；比赛名单不覆盖完整赛程，视频画面及解说本身仍可能剧透。\n\n- [项目与安装说明](https://github.com/cooleryu/spoiler-free-replays)\n- [当前版本：v0.1.2-preview](https://github.com/cooleryu/spoiler-free-replays/releases/tag/v0.1.2-preview)\n- [观看操作演示：v0.1.1-preview](https://github.com/cooleryu/spoiler-free-replays/releases/download/v0.1.1-preview/spoiler-free-replays-demo.mp4)\n\n![v0.1.1-preview 演示封面](https://github.com/cooleryu/spoiler-free-replays/releases/download/v0.1.1-preview/spoiler-free-replays-demo-poster.jpg)\n",
+    "content": "**官方仓库与安装说明：[无剧透回放 / Spoiler-Free Replays](https://github.com/cooleryu/spoiler-free-replays)**\n\n我是作者，做这个项目的念头很简单：想看比赛，也想好好睡觉。\n\n遇到凌晨的比赛，熬夜看直播舍不得睡，第二天补回放又很容易被剧透。即使躲过了比分，一张封面、视频剩余时长，或者一共有几局，都可能提前告诉你结果。我希望能先安心睡觉，等官方回放出来后再看，把悬念尽量留到自己观看的那一刻。\n\n说实话，这个项目没有什么高深的技术，是我在 AI 帮助下做出来的一个小工具。只是觉得，如果能少熬几次夜，好好休息，第二天再享受比赛，也是一件值得做的事。\n\n它目前是一个开源、免费的本地英雄联盟赛事回放工具，视频来源为 B 站。安装好后，打开页面、刷新名单、选一场比赛，就可以从第一局开始看：\n\n- 隐藏界面中的比分、封面、视频时长、进度条和总局数，减少点开回放前后被提示结果的机会。\n- 正片结束后自动接下一局，尽量不用返回列表找视频，也少一次看到后续局数的机会。\n- 没有弹幕，保留暂停、音量、全屏和按秒快进快退等基本操作。\n\n这里看的仍是回放，但希望能保留一些看直播时“不知道接下来会发生什么”的乐趣。能正常作息，就不必每次都为了比赛硬撑到凌晨。\n\n目前需要在自己的电脑上安装运行，也可以让能操作本地项目的 AI 帮忙安装、启动。日常获取比赛名单由程序按固定来源和规则完成，观看不需要调用 AI，也不需要 API Key。原创代码采用 MIT 许可证。\n\n当前版本为 v0.1.2-preview，仍是早期预览，只覆盖部分英雄联盟赛事；名单可能延迟或遗漏。工具隐藏的是界面提示，视频画面和解说本身仍可能剧透。欢迎试用，也欢迎反馈遇到的问题。\n\n- [源码、安装说明与问题反馈](https://github.com/cooleryu/spoiler-free-replays)\n- [当前版本：v0.1.2-preview](https://github.com/cooleryu/spoiler-free-replays/releases/tag/v0.1.2-preview)\n- [观看操作演示：v0.1.1-preview](https://github.com/cooleryu/spoiler-free-replays/releases/download/v0.1.1-preview/spoiler-free-replays-demo.mp4)\n\n![v0.1.1-preview 演示封面](https://github.com/cooleryu/spoiler-free-replays/releases/download/v0.1.1-preview/spoiler-free-replays-demo-poster.jpg)\n",
     "created_at": "2026-10-21T02:25:13Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12621"
@@ -730,77 +802,5 @@
     "created_at": "2026-10-20T02:34:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12573"
-  },
-  {
-    "id": 12572,
-    "title": "【工具自荐】Caption Checker：在浏览器里按 Netflix、BBC、DCMP 标准检查 SRT/VTT 字幕",
-    "content": "**网址：** https://www.markstudios.com/tools/caption-checker\n\n## 工具介绍\n\n一个免费的英文字幕检查工具。把 SRT 或 WebVTT 字幕文件拖进去（或直接粘贴字幕文本），按你选的标准逐条检查：Netflix 英文字幕规范（成人或儿童节目）、BBC 字幕指南，或美国 DCMP Captioning Key（三个阅读等级）。它会标出阅读速度过快（每秒字符数或每分钟词数）、单行过长、行数过多、停留时间过短或过长、字幕间隔不够、时间重叠，以及无法解析的时间码。\n\n文件只在浏览器里处理，不会上传。每个限值都注明了出处，即各标准自己的官方页面。\n\n![caption-check 检查一个旅行 vlog 的 SRT 文件：8 条字幕里有 2 条符合 Netflix 英文规范](https://raw.githubusercontent.com/markksantos/caption-checker/main/docs/preview.png)\n\n## 其他用法\n\n- 开源的命令行和 MCP 版本（MIT，零依赖，Node.js 18+）：`npx -y github:markksantos/caption-checker captions.srt`。有字幕超出限值时退出码为 1，可以放进 CI；加 `--mcp` 可以在 Claude、Cursor、VS Code 里作为 MCP 服务器使用。https://github.com/markksantos/caption-checker\n- 我们用它检查了 NASA 和 MIT OpenCourseWare 的 387 个视频、共 339,521 条字幕，结果在这里：https://www.markstudios.com/research/caption-reading-speed-study\n\n我是作者（Mark Studios，一家视频剪辑工作室）。\n",
-    "created_at": "2026-10-20T01:54:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12572"
-  },
-  {
-    "id": 12571,
-    "title": "【开源自荐】玄印写作：能不忘伏笔、多线叙事、渐进揭示的 AI 小说写作软件",
-    "content": "玄印写作是一款开源桌面 AI 小说写作软件。引用人物、设定或章节，让 AI 推敲情节、创作和修改正文，再到面板核对。世界线记录事件发生的顺序，叙事线编排讲述顺序和人物视角，安排信息逐步揭露。伏笔可记回收计划，关联原句并跳回正文。作品存本地；首次创作需自备文本模型接口与密钥，远程调用会发送相关内容。\n\n仓库：[https://github.com/mySingleLive/shakeink-desktop](https://github.com/mySingleLive/shakeink-desktop)\n\n官方包：[0.1 首版下载](https://github.com/mySingleLive/shakeink-desktop/releases/tag/0.1)（Windows x64 / M 系列 Mac）\n\n官网：[shake.ink](https://shake.ink/)\n\n![伏笔管理：右侧记录回收计划，右下“引用位置”保留章节原句并可跳回正文；虚构演示作品《照夜渡》](https://raw.githubusercontent.com/mySingleLive/shakeink-desktop/65e12ba57b876219966b7d46d7876b54bfb04e6a/docs/readme-assets/foreshadows-paper.png)",
-    "created_at": "2026-10-19T21:04:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12571"
-  },
-  {
-    "id": 12570,
-    "title": "【资源自荐】黯羽轻扬：AI 工作流与软件工程实践博客（含付费内容）",
-    "content": "自荐一个原创中文技术博客：[黯羽轻扬](https://blog.ayqy.net/)。\n\n我在这里记录 AI 工作流、软件工程实践和个人产品经验，面向希望把 AI 用到实际开发中的读者。首页可浏览文章摘要，站内提供目录与试读入口；其中包含付费专栏，具体访问范围以各篇页面标注为准。\n\n如果适合周刊的文章或资源栏目，欢迎评估收录。谢谢！",
-    "created_at": "2026-10-19T20:43:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12570"
-  },
-  {
-    "id": 12569,
-    "title": "【开源自荐】AILatch：源码在磁盘上一直是密文，AI 编程助手读不到，程序照常运行",
-    "content": "AILatch 是一个给 Python 项目用的源码加密工具（MIT 协议）。\n\nCursor、Claude Code 这类 AI 编程助手经常会把整个项目读一遍。有些文件你不想让它们看到，但加密之后程序又跑不起来。AILatch 把文件就地加密，`cat`、`grep`、代码索引读到的都是乱码；运行时在内存里解密，程序照常跑。\n\n- `ailatch lock main.py` 加密，`ailatch run main.py` 直接运行\n- 加密的模块可以正常 `import`，加密的 JSON、配置文件可以正常 `open()` 读\n- 明文只在进程内存里，磁盘上不会多出明文副本\n- `ailatch show` 查看、`ailatch open` 在图形界面里编辑，保存时自动加密回去\n\n适用范围：Python 3.11+，在 Windows 和 macOS 上测试过。它防的是 AI 助手读文件，不防有本机权限的攻击者。\n\n- 仓库：https://github.com/lo2589/AILatch\n- README 首屏有演示动图",
-    "created_at": "2026-10-19T20:22:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12569"
-  },
-  {
-    "id": 12568,
-    "title": "【开源自荐】iPhone Agent Harness：用 Safari + ESP32 让 AI 无线操作 iPhone",
-    "content": "**项目仓库（MIT）：https://github.com/cccat6/iphone-agent-harness**\n\n演示与浏览器刷机：https://igent.cc\n中文说明：https://github.com/cccat6/iphone-agent-harness/blob/main/docs/readme/zh-Hans.md\n\n大家好，我是项目作者，想自荐一个开源的 iPhone 自动化项目：在 Safari 中用自然语言描述任务，由智能体查看屏幕，再通过旁边的 ESP32 蓝牙桥完成点按、输入和滑动。网站提供了在真实 iPhone 上设置闹钟的演示。\n\n### 实现方式\n\n- Safari 负责会话、屏幕采集和模型调用；Harness 校验动作计划后，通过局域网 WebRTC 发送指令。\n- ESP32 模拟蓝牙鼠标和键盘，通过 iOS 辅助触控操作手机，不在板上运行大模型。\n- 手机和桥接板使用同一个日常 Wi-Fi，板子独立供电，手机不用插线连接板子。\n- 首次固件安装可在电脑 Chrome / Edge 中完成；提供会话管理、自选模型、可分享技能和 MCP 工具配置。\n\n会话、截图和密钥保存在当前浏览器；选定的上下文发送给用户选择的模型服务商。项目提供英语、简体中文、繁体中文、日语、俄语、德语、法语和西班牙语版本。\n\n当前需要 **iOS / iPadOS 27+、Safari 屏幕共享、辅助触控，以及可用的视觉模型**。演示是具体任务的实机结果，不代表任意 App 或长流程都已验证。\n\n项目受到 onehumanbeing/esp32-iphone-agent 的启发，已在 README 中致谢。我们的实现采用 Safari + 蓝牙 HID 的无线使用路线。\n\n欢迎试用、反馈设备兼容性和希望自动化的手机任务。",
-    "created_at": "2026-10-19T20:19:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12568"
-  },
-  {
-    "id": 12567,
-    "title": "【开源自荐】CoWork OS：执行前都由你批准的开源 AI 桌面应用",
-    "content": "CoWork OS 是我们开发的一款开源 AI 桌面应用（MIT 协议，支持 macOS 和 Windows）。它可以处理文件、文档表格和演示文稿，操作浏览器，整理邮件和日历，运行定时任务和聊天机器人。\n\n和命令行智能体相比，它的重点是“看得见、管得住”：每一次工具调用都实时显示在任务时间线上；发送消息、联网、使用凭据、读写工作区以外的文件之前，都会弹出批准卡片，显示将要执行的完整命令，由你确认后才运行。\n\n![CoWork OS 演示](https://github.com/CoWork-OS/CoWork-OS/raw/main/resources/branding/images/readme-demo.gif)\n\n模型可以自己选：本地 Ollama、LM Studio，或 OpenRouter、Kimi、GLM、ChatGPT 账号等。首次任务可以通过 OpenRouter 的免费模型直接运行，不需要 API key。记忆以 Markdown 文件保存在本地 git 文件夹里，每次修改都是一次提交，可以直接打开查看和编辑。\n\n最新的 0.5.61 版本还支持从 Hermes Agent 和 OpenClaw 一键迁移人设、记忆、技能和定时任务，导入前会先列出所有内容，不会修改原来的目录。\n\n安装只需要一条命令，不会弹出系统安全拦截：\n\n- macOS（Apple 芯片）：`curl -fsSL https://coworkosapp.com/install.sh | bash`\n- Windows（PowerShell）：`irm https://coworkosapp.com/install.ps1 | iex`\n- 其他系统 / Intel Mac：`npm install -g cowork-os`\n\n应用界面目前是英文的，中文说明见 [README.zh-CN](https://github.com/CoWork-OS/CoWork-OS/blob/main/README.zh-CN.md)。\n\n源码：https://github.com/CoWork-OS/CoWork-OS\n发布说明：https://github.com/CoWork-OS/CoWork-OS/releases/tag/v0.5.61\n\n欢迎通过 GitHub Issues 反馈问题和建议。\n",
-    "created_at": "2026-10-19T19:31:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12567"
-  },
-  {
-    "id": 12566,
-    "title": "【开源自荐】World Monitor：开源实时全球情报仪表盘，地缘政治、市场、能源、航运同一张地图",
-    "content": "World Monitor 是一个开源的实时全球情报仪表盘：把地缘政治、金融市场、能源、航运和网络安全事件放在同一张实时地图上，并用 AI 把新闻流汇总成简报。\n\n- 网站：https://www.worldmonitor.app/?utm_source=ruanyf-weekly\n- 仓库：https://github.com/koala73/worldmonitor （AGPL-3.0）\n- 介绍：https://www.worldmonitor.app/about\n\n**主要功能**\n\n- 3D 地球（globe.gl）和 WebGL 平面地图（deck.gl）两种视图，共用一套图层\n- 按全球和地区分类的新闻源，由 AI 汇总成简报\n- 国家不稳定指数（CII）：31 个重点国家的实时评分和 24 小时变化\n- 跨数据流关联：军事、经济、灾害、冲突升级信号同时出现时提示\n- 金融雷达：股市、大宗商品、加密货币\n- 可以用 Ollama 在本地跑全部 AI 功能，不需要 API Key\n\n**其他形态**\n\n- 桌面应用（Tauri 2）：macOS、Windows、Linux\n- 公开 API、MCP 服务器，以及 npm / PyPI / Go / Ruby SDK\n- 同一套代码另有科技、金融、大宗商品、能源等分站\n\n作者自荐。\n",
-    "created_at": "2026-10-19T17:20:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12566"
-  },
-  {
-    "id": 12565,
-    "title": "工具推荐：CloudWorth，云服务器/VPS 超卖检测",
-    "content": "CloudWorth（云划算）是一个零依赖的检测探针，支持 Linux 和 Windows Server，约 10 秒检测云服务器/VPS 是否超卖：CPU Steal Time、磁盘缓存虚标、老旧 CPU 代际，并给出规格调整建议。首次检测免费，无需注册。界面支持 11 种语言（英语、简体/繁体中文、日语、韩语、德语、法语、西班牙语、葡萄牙语、意大利语、荷兰语）。\n\nhttps://www.getcloudworth.com/\n\n说明：我是 CloudWorth 的开发者。",
-    "created_at": "2026-10-19T16:01:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12565"
-  },
-  {
-    "id": 12564,
-    "title": "【开源自荐】抽屉 Drawer —— 把常用网址、文件夹、文件收进一个快捷键（Windows 开源）",
-    "content": "抽屉 Drawer 是一个 Windows 快捷启动器，把经常打开的网址、文件夹和文件收进一个可搜索的列表：一个全局快捷键呼出，输入几个字母回车即开。\n\n- 仓库：https://github.com/hsq2004815-oss/resource-hub-desktop\n- 中文说明：https://github.com/hsq2004815-oss/resource-hub-desktop/blob/main/README.zh-CN.md\n- 下载：https://github.com/hsq2004815-oss/resource-hub-desktop/releases/latest\n- 协议：MIT；免安装约 22 MB，Windows 10/11 64 位\n\n**演示**\n\n![抽屉 Drawer 演示](https://github.com/hsq2004815-oss/resource-hub-desktop/raw/main/docs/images/demo.gif)\n\n**主要功能**\n\n- 网址 / 文件夹 / 文件放在同一个列表：搜索、分类筛选、收藏置顶、拖动排序（误拖 5 秒撤销），列表 / 网格两种视图\n- 文件夹详情直接展开思维导图：Ctrl+滚轮缩放、拖动平移、逐层展开，双击打开、右键加入抽屉\n- 快速面板：`Ctrl+Alt+Shift+L` / `F` 呼出紧凑树状列表，方向键 + 回车，Esc 关闭，Tab 切换\n- Chrome / Edge 书签只读导入，新书签自动进来；资源管理器右键「添加到抽屉」\n- 纯本地：不登录、不联网、无统计，数据就是程序目录下几个 JSON；换电脑复制文件夹即可\n\n**技术栈**\n\n- 界面 Flutter（Windows desktop），后端纯标准库 Python，通过 stdio 上的 JSON Lines 通信\n- 原版是 2900 行单文件 Tkinter，迁移过程按 25 个阶段记录在仓库 `migration/` 目录\n- 75 个 Flutter 测试 + 326 个 Python 测试\n\n**已知限制**\n\n- 目前只支持 Windows 10 / 11 64 位\n- exe 没有代码签名，首次运行 SmartScreen 会提示「未知发布者」\n- 书签双向同步（删除 / 改名）需要手动加载附带的浏览器扩展\n\n欢迎在 GitHub Issues 反馈问题或提需求。\n",
-    "created_at": "2026-10-19T16:01:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12564"
   }
 ]
