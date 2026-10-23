@@ -1,5 +1,77 @@
 [
   {
+    "id": 12688,
+    "title": "用开源项目自建了个影视站，免费、无广告",
+    "content": "用开源项目自建了个影视站，免费、无广告：\n👉 https://freetv.utjx.cn\n\n11 个源自动聚合去重，40 万+部影片\n电影 / 剧集 / 动漫 / 综艺 / 短剧都有\n弹幕、多线路切换、断点续播，手机电脑通用\n\n链接建议复制到浏览器打开，欢迎使用~\n",
+    "created_at": "2026-10-23T03:16:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12688"
+  },
+  {
+    "id": 12687,
+    "title": "【开源自荐】SlopSquat：面向 AI 辅助编程时代的依赖包幻觉投毒（Slopsquatting）轻量级开源嗅探工具",
+    "content": "我是 SlopSquat 的作者，提交给周刊编辑筛选。\n\n- **项目地址**：https://github.com/Mianm-l/slopsquat\n- **开源协议**：MIT\n- **技术栈**：Python 3.8+（零三方依赖 / 标准库实现）\n- **支持生态**：Python (`requirements.txt`) / Node.js (`package.json`)\n\n---\n\n### 💡 为什么做这个（背景与痛点）\n\n在 AI 辅助编程（Cursor、Claude Code、ChatGPT、Copilot）日益普及的今天，大模型在生成工程代码时，经常会**凭空捏造一个不存在的第三方库名**（例如：`flask-super-route-beautifier-ai` 或 `react-easy-modal`）。\n\n攻击者利用自动化脚本持续收集大模型最常幻觉编造的包名，抢先在 **PyPI** 或 **npm** 官方源上注册这些虚假包，并在其构建脚本或主入口中植入恶意代码（窃取环境变量、SSH 密钥、内网凭证）。这种新型软件供应链攻击被称为 **Slopsquatting（AI 幻觉包抢注投毒）**。\n\n**传统安全工具的致命盲区：**\n* 常见的安全门禁（Snyk、Dependabot、`pip audit`、`npm audit`）完全基于**已知 CVE 漏洞库**运作；\n* 刚刚抢注上架几天的投毒包在漏洞库里根本没有 CVE 编号，传统工具会盲目返回 **`0 vulnerabilities found (安全无风险)`**，导致开发者毫无戒备地安装中招。\n\n为此我做了 **SlopSquat** —— 一个轻量、零依赖的命令行与 CI/CD 嗅探工具，不依赖滞后的 CVE 库，而是通过官方源元数据指纹与多维启发式画像，直接在毫秒级嗅探出高危的 AI 幻觉投毒依赖。\n\n---\n\n### ✨ 核心特性\n\n- ⚡ **零外部三方依赖**：纯 Python 3.8+ 标准库实现，无需安装庞大运行时，开箱秒跑。\n- 🌐 **双主流生态覆盖**：同时支持 Python (`requirements.txt`) 与 Node.js (`package.json`)，自动递归探测清单。\n- 🔬 **五维启发式防投毒画像**：\n  1. **未注册抢注空窗预警**：官方源上根本不存在该包（95分高危），预警攻击者可能随时抢注；\n  2. **出生天数 (Freshness)**：刚注册 < 7 天（+45分）；老牌库（> 1年）大幅减免风险；\n  3. **下载荒漠 (Desert)**：全球月下载量极低（+25分）；百万下载明星库免检；\n  4. **幽灵仓库 (Ghost Repo)**：官方元数据中未提供任何有效 GitHub/GitLab 源码仓库；\n  5. **AI 幻觉后缀特征**：命名正则命中大模型高频编造词根（`-helper`, `-utils`, `-toolkit`, `-easy`, `-manager` 等）。\n- 🚀 **毫秒级并发探测**：多线程并发直连 PyPI 与 npm 官方 JSON API，百个依赖秒级核验完毕。\n- 🛡️ **开箱即用 CI/CD 门禁**：内置 GitHub Actions 模板，发现高危依赖以非零状态码（`exit 1`）退出，自动红牌阻断恶意 PR 合并。\n\n---\n\n### 🖥️ 快速体验\n\n```bash\ngit clone https://github.com/Mianm-l/slopsquat.git\ncd slopsquat\n\n# 扫描 requirements.txt 或整个前端/后端项目\npython -m slopsquat examples/requirements.txt\n```\n\n欢迎大家试用并提出宝贵建议，希望能为使用 AI 辅助编程的开发者们提供一层轻巧有效的供应链防线。",
+    "created_at": "2026-10-23T02:42:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12687"
+  },
+  {
+    "id": 12686,
+    "title": "Withdrawn",
+    "content": "Withdrawn by the author.",
+    "created_at": "2026-10-23T02:26:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12686"
+  },
+  {
+    "id": 12685,
+    "title": "【开源自荐】vhr-bench：约一分钟测完一台 Linux 服务器的 Bash 脚本",
+    "content": "[vhr-bench](https://github.com/vpshostreview/vhr-vps-benchmark) 是 MIT 开源的单文件 Bash 脚本，约一分钟测出一台 Linux 服务器的 CPU 与内存性能（sysbench）和磁盘 4K 随机读写 IOPS（fio）。安装 sysbench 或 fio 前先询问；不传上传令牌就不向任何地方发送数据；`--cleanup` 卸载它安装的软件包。适合在部署前检查新买的 VPS，或用同样条件比较不同主机。\n\n一行运行：\n\n```bash\ncurl -fsSL https://github.com/vpshostreview/vhr-vps-benchmark/releases/latest/download/vhr-bench | bash -s -- --cleanup\n```\n\n自荐说明：我是 vhr-bench 的维护者。\n",
+    "created_at": "2026-10-23T01:59:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12685"
+  },
+  {
+    "id": 12684,
+    "title": "【开源自荐】OfficeSentry：专为打工人与研发团队设计的轻量级监控哨兵（支持微信/企微 ChatOps 交互、桌面原生弹窗、防抖自愈与职场节律关怀）",
+    "content": "我是 OfficeSentry 的作者，提交给周刊编辑筛选。\n\n- **项目地址**：https://github.com/Mianm-l/office-sentry\n- **开源协议**：MIT\n- **技术栈**：Python 3.8+ / Docker / HTML5 (无重型依赖)\n\n---\n\n### 💡 为什么做这个\n\n在日常研发与办公中，作为个人开发者、独立运维或小团队，我们经常遇到这些尴尬的场景：\n1. **监控太重**：想盯几个本地服务、内网穿透（如 cpolar / frp）、自建 API 或开发机，动辄搭建一套 Prometheus + Grafana 或 Zabbix 太繁琐，吃内存又杀鸡用牛刀。\n2. **告警风暴与不便**：很多简单的监控脚本遇到偶发网络毛刺就疯狂弹窗或发邮件；人在外边收到故障告警时，身边没有电脑，无法便捷地查询状态或临时停用/新增监控。\n3. **日常节奏疏忽**：下班前常常忙于排错而忘记按时填报工时与日志；长时间敲代码久坐，缺乏规律的喝水与活动提醒。\n\n为此我做了 **OfficeSentry** —— 一个极度轻量、开箱即用，把**服务监控**与**打工人自保关怀**结合的轻量级哨兵。\n\n---\n\n### ✨ 核心特性\n\n- 🎯 **多协议心跳探针**：支持 HTTP/HTTPS 接口响应校验（状态码、耗时毫秒、关键词匹配）与 TCP 端口探测（MySQL、Redis、自定义端口）。\n- 🤖 **微信 / 钉钉 / 飞书 ChatOps 自然语言交互**：直接在微信公众号（微信测试号/插件）、钉钉或飞书群向机器人发送人话（如 `体检`、`查询`、`添加 订单API http://...`、`停用 生产网关`），哨兵当场测速并即时热加载配置生效，无需电脑即可在手机端完成轻运维。\n- 🛡️ **智能防告警风暴与自愈通报**：内置状态机，支持多级失败防抖过滤、故障冷却防刷屏，并在服务恢复时自动计算故障历时（如“历时 3分20秒”）推送绿色自愈通报。\n- 🔔 **工位 + 移动端双通道触达**：电脑前提供 Windows 10/11 原生 WinRT Toast 气泡弹窗（静默无打扰，不遮挡工作），离开工位时推送到手机微信与群聊。\n- ⏰ **职场节律关怀**：工作日下班前（17:50）定时提醒日报与工时填报，工作时段定期提醒久坐喝水舒展。\n- 🎨 **开箱即用与跨平台**：自带傻瓜式本地 Web 配置面板（双击直接在浏览器打开调参）；支持 Windows 后台静默守护运行（无黑框、支持开机自启），同时也提供标准 Docker / Docker Compose 一键部署。\n- 🔒 **本地回路与签名防护**：管理接口强制绑定本地 127.0.0.1 访问，外网仅放行腾讯标准安全验签的 Webhook 回调，保障工位电脑安全。\n\n---\n\n### 🚀 快速上手体验\n\n```bash\ngit clone https://github.com/Mianm-l/office-sentry.git\ncd office-sentry\npip install -r requirements.txt\n\n# Windows：双击 配置助手.bat 即可网页调参，双击 start.bat 即可后台静默守护\n# Linux / Docker：\ndocker-compose up -d\n```\n\n欢迎大家试用并提出宝贵意见，希望能帮同在职场码字的大家减轻一些运维和琐碎提醒的负担。",
+    "created_at": "2026-10-23T01:56:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12684"
+  },
+  {
+    "id": 12683,
+    "title": "【工具自荐】remote-assist-tool：一个协助码，让 AI 助手直接调试远端机器",
+    "content": "我是 remote-assist-tool 的作者，提交给周刊编辑筛选。\n\nremote-assist-tool 是一个命令行远程协助工具，Go 编写，单个二进制，MIT 协议开源。被协助的一方运行 `remote share`，拿到一个协助码；协助方用这个码就能连上去，不需要公网 IP，也不需要在对方机器上配置 SSH 服务端或开端口。\n\n![demo](https://github.com/kegechen/remote-assist-tool/raw/master/docs/images/demo.gif)\n\n它有两种用法：\n\n1. **传统 SSH 远程协助**：协助方运行 `remote help --code <协助码> --legacy-ssh`，本地就有一条到对方 SSH 的隧道。\n2. **让 AI 助手直接操作远端机器**：`remote help --mcp-stdio` 本身就是一个标准的 MCP server，Claude Code、Codex、豆包等支持 MCP 的 AI 工具都能接入。配置好以后，对 AI 说一句\"协助码 xxxx，连上去\"，它就能在远端执行命令、读写文件、看进程、查日志、上传下载文件（一共 12 个工具），用来远程排查问题。被协助端的终端会实时显示 AI 执行的每一个操作。\n\n```bash\n# 安装（Linux / macOS / Windows Git Bash，amd64 和 arm64 都支持）\ncurl -fsSL https://raw.githubusercontent.com/kegechen/remote-assist-tool/master/install.sh | sh\n\n# 被协助端：生成协助码，默认 30 分钟后过期\nremote share\n\n# 协助端：用协助码建立 SSH 隧道\nremote help --code ABCD-EFGHIJ --legacy-ssh\n```\n\n其他特点：\n\n- 三种连接方式：经公网中转服务器转发；同一局域网内用 `--standalone` 直连，不依赖任何外部服务器；NAT 打洞 P2P 直连，打洞失败会自动回落到中转。\n- 中转服务器可以自己部署（Windows / Linux / macOS 都有预编译版本，Windows 还能装成系统服务）。也有一个内置的公共中转服务器，开箱即用，但它在海外，而且中转服务器属于信任边界，所以敏感环境建议自己部署。\n- 链路使用 TLS 加密，AI 工具通道再用协助码派生的密钥额外加密一层；支持命令黑名单/白名单。\n\n- 项目地址：https://github.com/kegechen/remote-assist-tool\n- 开源协议：MIT\n- 当前版本：v1.1.0\n\n已搜索本仓库，没有找到该项目的投稿记录。谢谢！\n",
+    "created_at": "2026-10-23T01:32:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12683"
+  },
+  {
+    "id": 12682,
+    "title": "【自荐】AION 2 Pets — 你的《永恒之塔2》全宠物图鉴与养成规划站",
+    "content": "# 🐾 AION 2 Pets — 你的《永恒之塔2》全宠物图鉴与养成规划站\n\n> **非官方玩家社区工具站 · 数据驱动 · 刷魂路线一目了然**\n\n---\n\n## 📌 网站定位\n\n**aion2pets.com** 是一个专为《AION 2》玩家打造的**宠物/坐骑资料数据库 + 养成规划工具**。  \n不是 NCSOFT 官方站点，而是社区玩家共建的实用向导航站，帮你少走弯路、高效集宠。\n\n---\n\n## ✨ 核心功能一览\n\n| 功能模块 | 说明 |\n|---------|------|\n| 🔍 **全宠物图鉴** | 收录 **207+** 只可收集宠物/坐骑，按 **Cogni / Fera / Natura / Varian / Special** 五大类清晰归类 |\n| 🧬 **灵魂获取指引** | 标注每只宠物所需灵魂数量、掉落怪物、等级推荐及箱子/商店/活动来源 |\n| 🗺️ **刷魂路线推荐** | 直接告诉你\"去哪刷、刷什么怪\"，如 Lv32 Varg Berserker 对应某宠物最佳farm点 |\n| 📊 **Insight 养成规划** | 解析 Pet Insight 等级机制：5灵魂解锁 → 30灵魂 Lv2 → 105灵魂 Lv3，附带变形条件与种族加成说明 |\n| ✅ **收藏进度管理** | 本地收藏清单、JSON 导出、资源计算器、刷怪坐标地图等辅助工具 |\n\n---\n\n## 🎯 适合谁用？\n\n- ✅ 想**高效集齐宠物**的收集党\n- ✅ 纠结**先刷哪只、资源怎么分配**的养成玩家\n- ✅ 需要**快速查掉落、查路线**的开荒队伍\n- ✅ 喜欢用**数据说话**的硬核玩家\n\n---\n\n## ⚠️ 温馨提示\n\n- 本站为**社区非官方站点**，数据源自 MetaBot.GG / Wikily 等公开数据库\n- 页面标注\"未经验证\"，**进游戏前建议以客户端实际内容为准**\n\n---\n\n## 🚀 立即访问\n\n👉 **https://aion2pets.com/**\n\n*让你的每一颗灵魂都不浪费。*",
+    "created_at": "2026-10-23T01:26:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12682"
+  },
+  {
+    "id": 12681,
+    "title": "【开源自荐】FrameCut-为 Apple 芯片 Mac 打造的 vlog 剪辑软件 · 免费 · 无水印 · 全部本地运行 · 安装包不到 3 MB",
+    "content": "https://github.com/lidedongsn/frame-cut",
+    "created_at": "2026-10-23T01:08:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12681"
+  },
+  {
+    "id": 12680,
+    "title": "[资源自荐] DalilNano：面向阿语读者的 AI 图像提示词与设计教程",
+    "content": "我通过维护者授权的 AI 助理提交这条资源建议，供周刊编辑判断。\n\n[DalilNano](https://dalilnano.com/) 是面向阿语读者的 AI 图像提示词、示例与教程资源。它提供可复制的提示词和写作、图片编辑、产品设计等说明，读者在自己使用的图像工具中实践。\n\n值得评估的角度是阿语图像创作中的视觉描述、从右到左的文字和逐步修改：\n\n- [提示词写作指南（阿语）](https://dalilnano.com/getting-started/prompt-writing-secrets)：把主题、构图、光线和场景写成明确的视觉需求，再逐步改进。\n- [阿语产品说明页示例](https://dalilnano.com/prompt-handbook/product-design/#case148)：完整阿语提示词与对应已发布配图，可以直接检查文字方向、步骤和构图。\n\n![DalilNano 已发布的 AI 生成设计示例](https://banana-prompt.nanoprompts.org/arabic/handbook/2026-07-11/classic-ar-148-arabic-flatpack-stool-instructions.webp)\n\n落地内容为阿拉伯语；这条中文介绍用于说明用途，是否适合周刊由编辑决定。图为虚构产品的设计练习，不是真实产品安装指南。网站可免费浏览，是独立学习资源，不提供本站内图像生成，也不代表 OpenAI 或 Google 官方。这里没有声称客户效果、模型性能或周刊已收录。",
+    "created_at": "2026-10-23T00:47:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12680"
+  },
+  {
     "id": 12679,
     "title": "[开源自荐] MeshLive：无需互联网的蓝牙语音/视频通话与直播",
     "content": "我是 MeshLive 的维护者，想自荐这款 GPL-3.0-or-later 开源 Android 应用。它让附近手机通过蓝牙进行语音/视频通话与直播，不需要互联网、SIM 卡、账号或服务器。\n\n项目地址：https://github.com/MeshLive/meshlive-android\n下载 APK：https://github.com/MeshLive/meshlive-android/releases/latest\n\n### 可以做什么\n\n- 附近手机直接进行语音或视频通话。\n- 直播视频，或使用纯音频直播；中间的手机可以继续转发。\n- 扫描彼此的二维码添加联系人。Android 10 及以上可从 GitHub 安装。\n\n它探索的是没有网络时的本地通信，只使用手机蓝牙，无需专用无线电硬件。每跳会增加延迟，视频质量和距离受蓝牙及具体手机限制。\n\n### 当前状态\n\n项目仍是 beta，采用自定义协议，尚未经过独立安全审计。邻近设备仍可能观察到无线活动及部分发现元数据，不应作为生命安全或高风险通信的保障。项目由人类维护者主导，使用了大量 AI 辅助开发；源码、协议说明和已公布的测试数据可供检查。\n\n[隐私说明](https://github.com/MeshLive/meshlive-android/blob/main/docs/privacy.md) · [公开测试数据](https://github.com/MeshLive/meshlive-benchmarks)\n\n### 界面截图\n\n![附近语音/视频通话界面](https://raw.githubusercontent.com/MeshLive/meshlive-android/7659a861933513bb680cd1a75dc95c046c785421/fastlane/metadata/android/en-US/images/phoneScreenshots/04-calls.png)\n\n![附近直播界面](https://raw.githubusercontent.com/MeshLive/meshlive-android/7659a861933513bb680cd1a75dc95c046c785421/fastlane/metadata/android/en-US/images/phoneScreenshots/02-live.png)\n",
@@ -730,77 +802,5 @@
     "created_at": "2026-10-20T06:55:20Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12587"
-  },
-  {
-    "id": 12586,
-    "title": "【工具自荐】兰桥：带 AI 修电脑助手的远程桌面，动手前先征得你同意（提供免费版）",
-    "content": "兰桥是我们做的一款远程桌面工具，官网：https://lanbridge.com.cn\n\n在要被控制的电脑上装好客户端，另一台设备打开浏览器网页版，就能远程操作那台电脑，控制端不用安装。\n\n和普通远程桌面不同的是，它内置了一个 AI 助手“小兰”。远程连上之后，遇到“软件打不开”“系统更新卡住”“磁盘空间不足”这类问题，可以先让小兰查原因，它会把检查结果和下一步办法讲清楚，需要动手修改时会先停下来，等你确认。\n\n主要特点：\n\n1. 提供免费版：同一账号可绑定多台电脑，同时控制 1 台；公网画面最高 1920 像素宽、30 帧，原生客户端在局域网内可选 4K/30 帧（实际效果受硬件和网络影响）；支持文件传输；在线 AI 有每 7 天滚动计算的免费额度。\n2. 连接需要输入验证码或由对方批准，随时可以断开。会话使用 AES-256-GCM 加密，中继服务器只转发密文。\n3. 小兰有三档权限：逐步确认（编辑外部文件、使用互联网时都会询问）、仅高风险确认、完全访问（仍限本次任务已确认的应用、文件和网络范围）。\n4. 支持微信、手机号登录，国内有备案站点；Windows 安装包已签名。\n\n定价与免费额度：https://lanbridge.com.cn/pricing.html\n隐私政策：https://lanbridge.com.cn/privacy.html\n\n目前被控端支持 Windows 10 及以上（x64）和 macOS 14 及以上（仅 Apple 芯片），暂不支持远程开机。\n\n我们最初是为了“帮爸妈远程修电脑”这个场景做的，早期用户反馈还不错，欢迎试用和提意见。",
-    "created_at": "2026-10-20T06:46:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12586"
-  },
-  {
-    "id": 12585,
-    "title": "【开源自荐】Open Reading：划线问 AI、原文旁笔记与 PDF / EPUB 互转的阅读器",
-    "content": "我是 Open Reading 的作者，想向周刊自荐这个开源阅读工具。\n\n项目地址：https://github.com/gdpu11/openreading\n\n读自己导入的电子书、论文或工作资料时，遇到看不懂的段落，通常要把原文复制到聊天工具，再把解释和笔记搬回来。Open Reading 尝试把这几步放在同一个阅读界面里：选中原文即可问 AI，围绕这段话继续追问，讨论和笔记留在原文旁。\n\n主要功能：\n\n- 导入 EPUB、PDF、TXT、Markdown，支持多本书独立窗口并排对照。\n- 划线提问、通俗解释、举例、翻译；发送前可预览上下文。AI 需自行配置兼容的模型服务，可能产生服务商费用。\n- 本机发起 PDF / EPUB 互转，按需要选择原版页面图片或文字重排；扫描 PDF 不做 OCR，复杂排版可能变化。\n- 划线与笔记可随书导出为 ORD 学习包；电脑授权后，Android 手机可通过同一局域网同步。\n- 本机书库支持封面、筛选、收藏、已读标记和阅读数据。\n\n源码采用 MIT，技术栈为 Go、React / TypeScript，桌面端使用 Electron。项目仍处于预览阶段，桌面包尚未签名或公证，Android 为调试包，iOS 暂无真机安装入口。普通阅读和笔记不依赖模型；启用 AI 后，选择的上下文会发送给配置的服务商。\n\n![书库界面](https://raw.githubusercontent.com/gdpu11/openreading/main/docs/images/library.png)\n\n![原文旁的标注与笔记](https://raw.githubusercontent.com/gdpu11/openreading/main/docs/images/reading-notes.png)\n\n欢迎编辑试用，也欢迎读者反馈实际阅读场景。示例图片使用项目自有示例内容。本文由 AI 辅助整理，功能与限制依据项目文档核对。\n",
-    "created_at": "2026-10-20T06:34:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12585"
-  },
-  {
-    "id": 12584,
-    "title": "【工具自荐】VideoCreate：视频反推提示词，附 5 组提示词与成片得失对照",
-    "content": "项目自荐：VideoCreate 是一个视频反推提示词工具，把参考视频按镜头拆成主体、机位、运动、光线、风格和声音描述，再输出适配 Seedance、Kling、Wan、Grok Imagine 的提示词。\n\n官网：https://videocreate.org/\n\n可以免登录反复体验内置示例；分析自己的视频需要登录，每天免费 5 次。另有可选的视频生成，使用一次性积分包。\n\n一个可直接查看的资源是 5 组提示词与成片对照：\nhttps://videocreate.org/prompts/seedance\n\n每组保留原提示词、成片和具体得失。例如一段三镜头视频要求在 3 秒、6 秒切镜，实测切点是 4.5 秒、6.3 秒；另一段要求环绕 180 度，结果只走了部分弧线。这些是通过豆包生成的单次案例，底层具体模型版本未确认，不作为跨模型性能基准；镜头单由 AI 辅助分析，切点另以场景检测测量。\n\n希望它能帮助读者理解视频提示词怎样描述镜头，以及生成结果有哪些需要人工复查的地方。项目不是开源软件，以上为项目方自荐。\n",
-    "created_at": "2026-10-20T06:17:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12584"
-  },
-  {
-    "id": 12583,
-    "title": "【文章推荐】你发誓戒烟，AI 承诺不再犯错，为什么都会复发？",
-    "content": "你刚发誓戒烟，饭后又摸出了打火机；AI 刚保证不再犯错，下一轮又犯了老毛病。为什么承诺越来越熟练，问题却照旧？把戒烟和 AI 对齐放在一起看，会发现一个有意思的点：我们反复打磨“这次一定”，却没改掉“下次照旧”的那条路。\n\n这篇文章用戒烟跟 AI 对齐比较，带你看懂 AI 的对齐难点以及解决思路，也启发给戒烟一个更加可落地的策略\n\n- https://mp.weixin.qq.com/s/v6SkoNqYDtiAlrr5DQPr4Q",
-    "created_at": "2026-10-20T04:58:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12583"
-  },
-  {
-    "id": 12582,
-    "title": "【资源自荐】U卡观察：205 个加密货币支付卡的费率、KYC 与官方来源资料库",
-    "content": "自荐一个中文的加密货币支付卡（U卡）资料库：https://ucard.observer/\n\n收录 205 个品牌，每张卡记录申请地区、KYC 要求、发卡与资金路径、月费 / 外币费 / ATM 费、返现规则和停服状态。每条结论对应资料页上列出的官方来源和实际核验日期；官方没有公布的项目写「未说明」，不推断成免费或全球可开。\n\n几个可能对读者有用的入口：\n\n- 卡片资料库：https://ucard.observer/cards/\n- 资料库覆盖报告（收录范围、KYC 分类口径、逐项核验日期）：https://ucard.observer/research/ucard-coverage/\n- 2026 市场报告（费用透明度、KYC、Apple Pay、停服与发卡方集中度的统计）：https://ucard.observer/research/ucard-annual-2026/\n- 卡片存续雷达（按核验日期看状态变化）：https://ucard.observer/tools/status-radar/\n\n数据以 CSV / JSON 开放下载，原创整理部分采用 CC BY 4.0；2026-10-20 的快照存档在 Zenodo，DOI 为 10.5281/zenodo.23486803。\n\n需要说明的边界：内容是公开资料整理，不是持卡实测；没有付费排名或广告，不发行卡片、不代办申请；站内有一处 Plasma One 邀请链接，已在资料页和关于页披露。简体中文为原始版本，另有繁体中文与英文版。\n\n我是这个站的维护者。如果适合周刊的资源或网站栏目，欢迎评估收录。谢谢！\n",
-    "created_at": "2026-10-20T04:29:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12582"
-  },
-  {
-    "id": 12581,
-    "title": "【产品自荐】Netlink：Mac 出口 IP 一变就提醒，一键体检 VPN、代理和 DNS",
-    "content": "Netlink 是一款 Mac 菜单栏 App，后台盯着出口 IP，一变就通知；一键沿八个阶段检查 VPN、代理、DNS 和时区，给出评分和每项扣分的修复建议。查询使用内置数据库，联网前先征得同意，运行在沙盒中。免费使用，Pro 一次买断。\n\n官网：https://jeman.net/netlink/\nApp Store：https://apps.apple.com/app/id6770569501",
-    "created_at": "2026-10-20T04:19:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12581"
-  },
-  {
-    "id": 12580,
-    "title": "【产品自荐】Nekot：在 iPhone 上看清 Claude Code 和 Codex 的用量窗口",
-    "content": "Nekot 是一款 iPhone App，显示 Claude Code 和 Codex 每个用量窗口的用量与重置时间，到 80% 和 95% 时提醒，避免任务中途撞上限额。纯客户端，没有服务器和账号，凭据只存在钥匙串。基础功能免费。\n\n官网：https://jeman.net/nekot/\nApp Store：https://apps.apple.com/app/id6805865049",
-    "created_at": "2026-10-20T04:19:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12580"
-  },
-  {
-    "id": 12579,
-    "title": "【ツール自薦】LingTube：YouTube/Coursera/Udemy/Bilibili/TikTok 動画翻訳・AI吹替・バイリンガル字幕・無字幕文字起こし対応 Chrome拡張",
-    "content": "LingTube は、YouTube 向けの動画音声翻訳・字幕翻訳・AI吹替 Chrome拡張です。\n\n動画を開いてワンクリックで起動すると、外国語字幕や字幕なし動画の音声を理解しやすい訳文に変換し、自然な音声で読み上げ／吹替します。字幕をずっと見続ける必要がなく、YouTube の外国語動画を素早く理解できます。\n\nYouTube、Coursera、Udemy、Bilibili.tv、TikTok に対応。任意の動画を再生するだけで即座に開始できます。\n\n言語学習、オンライン講座、技術チュートリアル、ニュース、ポッドキャスト、アニメ、映画クリップ、通勤時の視聴に最適です。\n\n### 主な機能\n\n- **YouTube動画翻訳**：字幕、音声、字幕なし動画コンテンツの翻訳に対応\n- **バイリンガル字幕**：訳文＋原文を同時表示。訳文のみ／原文のみへの切り替えも可能\n- **AI吹替／字幕読み上げ**：Edge TTS またはブラウザ音声で訳文を自然に読み上げ\n- **無字幕処理**：動画に字幕がない場合、自動音声認識で文字起こし→翻訳→読み上げを実行\n- **コンテキスト翻訳**：Google翻訳および OpenAI 互換 API に対応。長文や専門的な内容の理解精度を向上\n- **AI学習**：語彙・文法・練習問題・採点・復習コンテンツを自動生成\n- **ミックスコントロール**：元動画音声と訳文音声を同時再生し、音量を個別調整可能\n- **ワンクリック操作**：開始／停止に対応。ショートカット `Alt+Shift+V` も利用可能\n- **AI動画要約**：完全な訳文字幕をもとに、内容の要約、キーポイント抽出、専門用語の解説、関連タイムスタンプの検索が可能。長尺動画・講座・技術チュートリアル・ニュース・ポッドキャストの迅速理解に最適\n\n### プライバシー\n\n- YouTube、Coursera、Udemy、Bilibili.tv、TikTok のページ上でのみ動作\n- 設定はローカルブラウザに保存\n- 字幕・翻訳・音声リクエストは、有効化したサービスにのみ送信\n\n### リンク\n\n- **Chromeウェブストア**  \n  https://chromewebstore.google.com/detail/lingtube-youtube-subtitle/jjhplddhmkfngobhompljgnhbhkgilbi\n\n- **公式サイト**  \n  https://lingtube.xyz",
-    "created_at": "2026-10-20T04:14:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12579"
-  },
-  {
-    "id": 12578,
-    "title": "【工具自荐】黄历查查：农历与节气查询、传统候选日期对比",
-    "content": "## 黄历查查\n\n一个用于查询农历、节气和比较传统候选日期的日历工具。网站免注册，当前不展示商业广告。宜忌与候选按本站规则计算，供民俗参考，方法说明公开可读。\n\n- 官网 https://laohuangli.info/\n- 方法说明 https://laohuangli.info/methodology/\n- 香港入伙择日试点 https://laohuangli.info/hk/jiri/banjia/2026/11/\n- Android测试说明 https://laohuangli.info/app/test/\n\n择日工具支持筛选和最多三个候选日比较。香港入伙与装修试点可下载 .ics 全天事件文件，用户自行导入日历并设置提醒，暂未扩展到所有地区和事项。\n\n微信小程序可搜索“黄历查查”。Android仍在测试，公开Alpha与本人内部测试版本不同，测试功能以参与轨道为准。核心历法可离线，主动AI解读和反馈会联网处理相应内容，详见 https://laohuangli.info/app/privacy/ 。\n\n工程仓库目前为私有，方法说明公开。欢迎反馈查询、比较和日历文件导入中遇到的问题。\n",
-    "created_at": "2026-10-20T03:37:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12578"
   }
 ]
