@@ -1,5 +1,109 @@
 [
   {
+    "id": 12701,
+    "title": "【开源自荐】Context Attachment Manager：让 Codex 和 Claude 按需取回历史图片",
+    "content": "我是项目作者，想推荐一个管理多图长对话的小工具。\n\n在 Codex 里反复生图、改图时，历史图片会不断累积，跟着后续消息重复发送。我做了 Context Attachment Manager，让对话继续留在原任务中，同时减少不必要的图片重传。\n\n- 模型按需取回历史图片；重要参考图可以固定为每轮发送，也能手动勾选。\n- 按描述、用户评价和轮次查找图片，例如搜“脸最好”或“雨夜”。\n- 为图片记录特征和评价，帮助对话压缩后重新找到对应图片。\n- 项目中的一个 15 张图测试，请求体从 24.9 MB 降至 212 KB；这是该测试场景的数据，不代表所有对话的效果。\n\n适用于 Codex 桌面版和 Claude 桌面版 Code 标签页中的本地会话，支持 Windows、macOS、Linux。v0.9.0 也支持兼容对应客户端协议的自定义服务地址。插件在本机处理，不修改原始对话和素材，不额外上传到第三方服务。\n\n项目采用 MIT 协议，TypeScript/Node 实现。README 有图文演示，安装可直接让 Codex 或 Claude 按 INSTALL.md 操作。\n\n- 项目：https://github.com/chipfighter/context-attachment-manager\n- 中文介绍：https://github.com/chipfighter/context-attachment-manager/blob/main/README_CN.md\n- 安装：https://github.com/chipfighter/context-attachment-manager/blob/main/INSTALL.md\n\n![自动选图、搜索历史图片与预览界面](https://raw.githubusercontent.com/chipfighter/context-attachment-manager/v0.9.0/docs/images/hero-zh.png)\n\n欢迎有多图长对话需求的朋友试用并反馈。",
+    "created_at": "2026-10-23T08:36:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12701"
+  },
+  {
+    "id": 12700,
+    "title": "【工具自荐】FlowPick：在浏览器中分析 M3U8/HLS 播放列表、下载与处理媒体",
+    "content": "我是 FlowPick 的作者，推荐一个浏览器媒体工具项目。本次自荐侧重可直接体验的 M3U8/HLS 播放列表分析器和可复现样本。\n\n- 分析器：https://flowpick.net/tools/m3u8-playlist-analyzer\n- 官网：https://flowpick.net\n- 扩展开源仓库：https://github.com/ezwebtools/flowpick （MIT；该许可证指扩展仓库，不代表所有网站工具均开源）\n\n### 可以做什么\n\n1. 无需安装扩展即可分析可访问的 M3U8 URL，或直接粘贴播放列表文本，检查主播放列表/媒体播放列表、清晰度、音轨、分片、时长和加密标记。\n2. 配合 FlowPick 扩展，在有权访问的网页中识别视频、音频和图片，进行预览与下载。\n3. 网站还提供音频转换等媒体工具，支持浏览器本地处理，具体格式与能力以各工具页面为准。\n\n### 可复现示例\n\n页面提供 FlowPick 自行生成的公开测试素材：4 秒测试画面和提示音，包含两个各 2 秒的 TS 分片。\n\n- 播放列表：https://flowpick.net/samples/flowpick-test.m3u8\n- 分析应显示：媒体播放列表、2 个分片、总时长 4 秒。\n- 2026 年 10 月 21 日已在 Chrome 中配合扩展完成该样本的下载、合并与保存。保存结果为 64,535 字节 MP4，包含 H.264 视频（160×90）和 AAC 音频，时长约 4.04 秒。\n\nURL 分析受源站跨域策略、授权及链接有效期影响；可改为粘贴播放列表文本。上述测试仅验证该公开样本，不代表所有网站、加密流或直播都可下载，也不绕过 DRM、付费墙或访问控制。\n\n### 投稿背景\n\n此前已提交过项目介绍：#12291。本次重新整理为可直接体验、附样本和验证结果的工具介绍，供编辑判断；若与旧帖重复，可按一条投稿处理。\n\n身份披露：我是 FlowPick 作者，本次为本人项目自荐。",
+    "created_at": "2026-10-23T08:30:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12700"
+  },
+  {
+    "id": 12699,
+    "title": "【开源自荐】Port Sentinel 2：用 Go + Wails 重写的跨平台端口管理工具",
+    "content": "[Port Sentinel（端口哨兵）](https://github.com/Sanjeever/port_sentinel) 曾以 Flutter 开发的 Windows 工具收录于[《科技爱好者周刊》第 382 期](https://github.com/ruanyf/weekly/blob/master/docs/issue-382.md?plain=1#L187)，如今已用 Go + Wails 重写，支持 Windows、macOS 和 Linux。通过图形界面查看 TCP/UDP 端口及关联进程，按端口号、PID 或进程名搜索，确认后结束占用进程，快速处理开发中的端口冲突。项目采用 MIT 协议开源，支持中英文和深浅色主题。\n\n![Port Sentinel 2 macOS 界面](https://raw.githubusercontent.com/Sanjeever/port_sentinel/main/assets/screenshot/main-macos.png)",
+    "created_at": "2026-10-23T07:36:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12699"
+  },
+  {
+    "id": 12698,
+    "title": "[开源自荐] BOKI - 离线优先的开源财务软件：数据不出机器，断网也能记账",
+    "content": "开源地址：https://github.com/edrin09/boki（Gitee 镜像：https://gitee.com/edrin/boki）\n\n官网与在线文档：https://edrin09.github.io/boki/\n\n项目简介：\nBOKI 是一套离线优先的开源财务软件，前端 Vue 3 + 后端 NestJS + SQLite 单文件数据库，单命令启动、开箱即用。在云端记账簿数据泄露频发的当下，它走另一条路：没有云端、没有第三方 SDK、没有任何埋点与遥测——全部账务数据就是本机一个 financial.db 文件，备份是拷贝目录，迁移是搬文件夹，数据主权 100% 在用户手里。\n\n内核只保留记账必需的复式记账引擎（科目、凭证、期初、公司上下文），借贷必相等由后端强校验；其余能力全部插件化（官方插件 14 个），不装的插件在界面上不留痕迹。\n\n核心特性：\n\n- 🧾 复式记账内核：科目 / 凭证 / 期初 / 多公司上下文，借贷必相等前后端双重强校验，已审核凭证禁止改动\n- 📊 报表可审计：资产负债表、利润表（本期+本年累计）、科目余额表、试算平衡表、票据台账、现金流简表、费用结构分析\n- 🔐 权限与多公司：JWT 登录 + RBAC（菜单级 + 操作级），一个账号管理多家记账公司，数据完全隔离\n- 🗄 数据离线：SQLite 单文件（WAL 模式），一键备份/恢复，无任何外部服务依赖\n- 🎤 语音识别离线：sherpa-onnx 本地流式中文 ASR（zipformer int8），音频不上传\n- 🤖 大模型可选离线：内置 Ollama / llama.cpp / vLLM 本地模型预设（OpenAI 兼容协议、无需 API Key），也可切换云端模型\n- 🧩 插件化：想要什么装什么，卸载不留痕迹\n\n技术亮点：\n\n- 复式记账引擎与权限模型在服务端强校验，不依赖前端约束\n- 本地模型自动降级：模型缺失时服务照常启动，仅相关功能提示未就绪（/api/ocr/status 可查）\n- 许可：内核 AGPL-3.0，官方插件 Apache-2.0\n- 平台：Windows / macOS / Linux\n\n适合对象：个人与小团队的记账、代理记账/财务工作室的私有化部署、对数据隐私敏感的任何记账场景。\n\n项目正在寻找第一批真实用户，任何反馈（尤其是报表与记账流程上的\"不顺手\"）都非常欢迎，可以直接提 issue。如果觉得有价值，欢迎点个 Star 支持开源维护者 🙏",
+    "created_at": "2026-10-23T07:20:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12698"
+  },
+  {
+    "id": 12697,
+    "title": "推荐工具：匠工具箱，34 个浏览器本地运行的免费工具",
+    "content": "推荐一个自己做的免费在线工具箱：https://tools.takumikit.com/zh-cn/\n\n- 34 个工具：AI 一键抠图、HEIC 转 JPG、图片压缩、音视频格式转换（MOV/WebM/MKV 转 MP4）、文字转语音、JSON 格式化、二维码生成、房贷和复利计算等。\n- 无需注册、免费。\n- 图片、音视频文件在浏览器本地处理（抠图用浏览器端运行的 AI 模型），不上传服务器。\n- 支持简体中文、繁体中文、英文、日文、韩文。\n\n声明：我是这个网站的作者。",
+    "created_at": "2026-10-23T07:02:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12697"
+  },
+  {
+    "id": 12696,
+    "title": "【开源自荐】Voltip：按住快捷键说话，松开后文字出现在光标处，识别可以完全在本机",
+    "content": "Voltip 是我做的开源语音输入工具（AGPL-3.0），支持 Windows、macOS、Linux，另有安卓应用。\n\n- 源码：https://github.com/sunerpy/voltip\n- 官网：https://voltip.firlab.app/zh/\n- 在线体验（不用安装）：https://voltip.firlab.app/zh/guide/try\n\n## 它做什么\n\n在任意应用里按住 Ctrl+Alt+Space 说话，松开后，文字直接粘贴到光标处。开着 AI 润色时，口头禅和说错又改口的部分会被去掉，例如按住快捷键说的是「那个，就是，评审会定在周一上午十点，呃，不对，应该是下午两点，请大家带上最新的数据。」，写进文档的是「评审会定在周一下午两点。请大家带上最新的数据。」\n\n![按住 Ctrl+Alt+Space 说话，松开后润色过的文字出现在光标处](https://raw.githubusercontent.com/sunerpy/voltip/main/docs/readme/media/voltip-dictation-zh.webp)\n\n## 几个特点\n\n- 识别可以完全在本机：下载 Qwen3-ASR、SenseVoice 或 Paraformer 模型以后，录音不离开电脑。Qwen3-ASR 有显卡时用 Vulkan（Windows、Linux）或 Metal（macOS），没有就用 CPU。\n- 也可以用云端：安装包内置了默认的识别和润色服务，装好就能用，不用注册；也可以接自己的服务商（OpenAI、Groq、硅基流动、阿里云百炼或任意 OpenAI 兼容接口），润色还可以用本机的 Ollama。\n- 词典和替换规则：专门纠正总被听错的人名、项目名和命令，正确写法也会提示给云端识别和 AI 润色。\n- 场景：按前台应用自动换润色方式，比如编程场景里代码、命令和路径保持原样。\n- 安卓手机可以当电脑的麦克风和键盘：扫码配对，音频端到端加密后传到电脑，由电脑识别并输入。\n- 没有桌面的 Linux 服务器上，`voltip-server` 可以向本机其他程序提供 OpenAI 兼容的转写接口。\n\n## 安装\n\n```bash\n# Linux（x86_64）和 macOS\ncurl -fsSL https://raw.githubusercontent.com/sunerpy/voltip/main/scripts/install.sh | sh\n```\n\n```powershell\n# Windows 10/11，PowerShell\nirm https://raw.githubusercontent.com/sunerpy/voltip/main/scripts/install.ps1 | iex\n```\n\n安装包也可以在 GitHub 发布页下载。\n\n## 不足\n\n内置服务由所有用户共用，请求多或额度用完时会跳过润色，想稳定使用最好接自己的服务商。Windows 安装包还没有代码签名，首次启动 SmartScreen 会提示；macOS 版未经 Apple 公证；iOS 版还没有；纯 Wayland 会话没有全局快捷键。如果主要在手机上打字，它帮助不大，安卓应用主要是电脑的麦克风和键盘。",
+    "created_at": "2026-10-23T06:58:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12696"
+  },
+  {
+    "id": 12695,
+    "title": "【自荐】字相：免费中文字体预览与「找相似字体」网站",
+    "content": "[字相](https://zixiangfont.com) 收录 237 款可免费使用的简体中文字体（开源字体和免费商用字体），每款都能输入任意文字在线预览。特色是「相似字体」：程序测量每款字体的笔形、字重、圆润度等 12 项特征，为每款字体找出风格最接近的字体，还可以要求「更圆」「更粗」「更适合标题」。网站代码开源：https://github.com/potatates/open-chinese-fonts",
+    "created_at": "2026-10-23T06:51:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12695"
+  },
+  {
+    "id": 12694,
+    "title": "【开源自荐】Codex 主动发现与 SVG 工作流：两轮鹈鹕骑车实测（youchibuwan-ops）",
+    "content": "# 让 Codex 主动找方法、查证据：工作流与两轮鹈鹕实测\n\n自荐一个我维护的 MIT 开源项目：[Agent Workflow Skills](https://github.com/youchibuwan-ops/agent-workflow-skills)，目前是 Codex 预发布版，含两份可单独安装的中文工作流。\n\n做这个项目，是希望代理遇到陌生问题时能主动找方法、核查来源、检查作品，而不总靠用户逐处指出。重点 Skill `proactive-skill-discovery` 把能力缺口、成熟方案检索、来源/许可证审阅、实际复用、产物验证和经验沉淀连起来；另一份 SVG Skill 则将多角度参考、结构理解、局部制作与整件复审串成流程。[安装说明](https://github.com/youchibuwan-ops/agent-workflow-skills/blob/main/docs/installation.md)提供固定预发布版本的 Codex 命令及独立 ZIP。\n\n为方便读者看实际产物，公开了两轮鹈鹕骑自行车 A/B：静态 SVG 和动画 SVG。每轮同模型 gpt-6-astra、xhigh 极高思考强度，同提示词和工具、全新隔离会话，每组上限 900 秒 / 80 次工具启动；A 不启用目标 Skill，B 只安装 SVG Skill，不显式点名调用，两轮 B 均实际读取。\n\n静态 A 在左，B 在右：\n\n![静态原件对照](https://raw.githubusercontent.com/youchibuwan-ops/agent-workflow-skills/7c7fc005b506cb353bbff6973351fab6112d079b/evals/pelican/v1/results/comparison.png)\n\n动画 A 在左，B 在右，以下来自真实浏览器录像。**B 在 900 秒预算截止前保存了可播放作品，但没有正常完成主任务。**\n\n![动画对照](https://raw.githubusercontent.com/youchibuwan-ops/agent-workflow-skills/7c7fc005b506cb353bbff6973351fab6112d079b/evals/pelican/animated-v1/results/comparison.gif)\n\n非盲观察里，B 更明确地表达了传动、羽毛/喉囊材质和前叉制动细节，并有自主检查与纠错记录；A 也能自主修正并产出完整作品。代价同样公开：静态 A/B 约 458/568 秒，动画 A 约 519 秒，B 用满 900 秒。相同上限不等于相同 token 消耗。\n\n这只是两轮作者案例：没有最终配对的独立盲评分，不能推导普遍质量提升；双方都没有运行中的人工纠正，不能量化“节省了多少提醒”。静态旧 B 曾被测试器误停，获授权仅补跑一次 B，旧结果和失败均保留。这两轮不是主动发现 Skill 的效果实验，后者有另行公开的干净环境流程验收记录。\n\n[中文完整案例与原件](https://github.com/youchibuwan-ops/agent-workflow-skills/blob/main/evals/pelican/README.zh-CN.md) · [主动发现的验收与限制](https://github.com/youchibuwan-ops/agent-workflow-skills/blob/main/docs/codex-acceptance.md)\n\n希望对更重视成品质量、愿意接受额外检查时间的开发者有用。欢迎复现和反馈失败，包括“检查更多但并没变好”的情况；项目不承诺每次自动触发或每次产物都正确。\n",
+    "created_at": "2026-10-23T06:50:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12694"
+  },
+  {
+    "id": 12693,
+    "title": "撤回投稿",
+    "content": "此投稿已撤回，请勿收录。原项目介绍和链接已移除。\n",
+    "created_at": "2026-10-23T05:53:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12693"
+  },
+  {
+    "id": 12692,
+    "title": "【开源自荐】知树阅读是一个可安装到手机的个人数字书架：把文件、订阅和网页文章收进来，安静地搜索、阅读、收藏、同步，再从公共目录发现新的内容。",
+    "content": "大家好，我做了一个叫「知树阅读（ZhiTree book）」的个人数字图书馆，地址是：https://books.zhitree.cn/\n起因很简单：我的 PDF、读书笔记、Markdown、网页文章和小工具散落在很多地方。收藏夹越来越长，但真正想重新找到、继续读、或者回顾某一篇内容时，往往很困难。\n知树阅读尝试把这些内容放到一个更适合“阅读与回访”的空间里，而不只是做另一个链接收藏夹。\nguide：https://books.zhitree.cn/#read/notes%2Fguide%2Findex.html\n已经上线\n\t• 个人数字书架：可收录 PDF、Markdown、HTML、TXT、网页链接和网页小工具。\n\t• 搜索与整理：支持分类、标签、合集、收藏/星标、置顶、隐藏，以及最近添加、最近阅读、标题、发布日期排序。\n\t• 沉浸式阅读：支持阅读进度、目录、书签、字号、行距、版面宽度，以及浅色、深色、米黄、护眼绿等阅读主题。\n\t• 订阅阅读：可订阅 RSS、Atom、JSON Feed；每个订阅源自动成为一个合集，新文章会进入自己的书架。\n\t• 站内阅读网页：订阅文章、收藏链接和公共目录文章会尽量提取正文，在站内阅读；无法读取的内容会明确跳转到原站。\n\t• 推荐订阅：已有按分类和流量参考整理的推荐订阅页，可一键订阅多个博客或栏目。\n\t• 公共目录：只保存标题、摘要和原文链接，不复制别人的全文；支持按类型、标签、书架筛选，也能收藏到自己的书架。\n\t• 无账号使用：个人添加的文件、订阅、进度和书签默认只保存在自己的浏览器中。\n\t• 备份与同步：支持浏览器本地备份与恢复；可选加密同步可在多设备同步书单、订阅、进度、书签和小型文本文件。\n\t• 移动端与 PWA：可安装到手机主屏幕，支持离线阅读已打开的内容；Android 还支持从系统分享菜单发送文件或链接到知树阅读。\n正在规划\n\t• 推荐与热度：在首页、订阅页和分类页增加“值得一读”区域，展示热门订阅、高收藏内容、近期高热文章和编辑推荐。\n\t• 更清晰的排序：补充热度、收藏数、浏览量等排序方式，并区分“最近发布”和“最近阅读”。\n\t• 公共目录卡片升级：更直观地显示收藏数、热度或浏览量；评估是否为可下载内容增加下载入口。\n\t• 手机阅读体验：目录打开后，点击页面空白区域即可收起，减少对正文的遮挡。\n\t• 更多订阅来源：扩展科技、学术、金融、音乐等领域榜单，以及小红书、知乎、B 站、抖音、微博、X、YouTube 等平台的优质内容入口。\n\t• 公共目录筛选升级：增加合集下拉框，并提供“按平台 / 按领域”的切换，让用户更快找到想看的内容。\n轻量笔记：为“我的书架”增加随读笔记，优先做好手机端的快速记录；富文本会在不牺牲简洁和性能的前提下逐步支持。\n它还在持续迭代中。我尤其想听听大家的反馈：你们平时如何整理 PDF、读书笔记和长文章？哪些功能会让你愿意长期使用这样的个人阅读库？\n\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1cf7f08-9c32-43e7-b2ed-b91af5a971a4\" />\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5ad145bd-d316-4729-8dec-b1963da128d3\" />\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11bec3c8-cb61-4483-9bd1-a1e682873f69\" />\n<img width=\"489\" height=\"687\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/135138e7-eb66-4538-878d-819a2b5d2e0c\" />\n<img width=\"1500\" height=\"1348\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b32d4c47-a484-4c61-83f1-6927900ba6d2\" />\n<img width=\"1040\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/237f398f-1405-4636-8ded-02df59de5d0a\" />\n<img width=\"1080\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/005c5da9-4325-40ff-ac28-df14dca9f988\" />\n<img width=\"1500\" height=\"859\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c23d883b-c5c9-4252-88d2-498d24c01ac7\" />\n<img width=\"600\" height=\"1298\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a8ab513-02e9-48d9-9fef-060a55b8c319\" />\n<img width=\"600\" height=\"1298\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a354586-28bf-45dc-bacf-5d634dda0bd4\" />\n<img width=\"600\" height=\"1298\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed6a2169-7a03-4d62-bcd2-7df141d5e373\" />\n<img width=\"600\" height=\"1298\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b326c1c0-b89b-4b7c-8fea-b0f02bf70251\" />\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dd578a2b-952f-4daf-a46b-cd52094ca716\" />\n<img width=\"1040\" height=\"860\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c24048a2-6121-4fdf-a8cf-75b8fff6cc15\" />\n<img width=\"1300\" height=\"504\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dfac9e95-13e6-4bc7-9927-6b179e18dd01\" />\n<img width=\"1300\" height=\"898\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a9a96749-b2cb-45d6-b73b-99c64449dc44\" />",
+    "created_at": "2026-10-23T05:30:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12692"
+  },
+  {
+    "id": 12691,
+    "title": "【开源自荐】审美工程：写给 AIGC 创作者与产品团队的 12 篇方法随笔",
+    "content": "阮老师好，推荐一组自己写的文章。\n\n《审美工程》从“为什么 AI 做出来的东西总有一股 AI 味”出发，讨论生成变得便宜之后，审美判断怎样被说清楚、落实到生成里、被检查，并留给下一次创作。12 篇依次是审美语言、参考系统、艺术指导、生成协议、审美评审、审美记忆、品牌审美、团队协作等。\n\n- 在线阅读：https://leenlbma.github.io/aesthetic-engineering/\n- GitHub：https://github.com/leenlbma/aesthetic-engineering\n- 许可：文章 CC BY 4.0，代码 MIT；提供 llms.txt，方便交给 AI 阅读\n\n谢谢！",
+    "created_at": "2026-10-23T05:00:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12691"
+  },
+  {
+    "id": 12690,
+    "title": "【开源自荐】token-pilot：所有 AI 工具的本地账单 + 预算控制器（国产模型自动归一）",
+    "content": "**项目地址**：https://github.com/anthonyhann/token-pilot\n**开源协议**：MIT\n**平台**：macOS / Windows（CLI 全平台）\n\n### 为什么做（背景与痛点）\n\n我同时用 Claude Code、Codex、Kimi Code，还经常通过它们跑 DeepSeek、GLM、Kimi 等国产模型。有一天发现：**我根本答不上来「我这个月给 AI 烧了多少钱」**——每个工具有自己的用量页，分散、单位不一、没有总账、更没有预算。\n\n### 它是什么\n\n**token-pilot = 你所有 AI 工具的本地账单 + 预算控制器。**\n\n一条命令看清今天/本月各工具、各模型烧了多少 token、多少钱；菜单栏常驻 `¥今日 · 预算%`；超支系统通知；打转检测（揪出死循环烧钱的会话）；省钱建议（贵模型干轻活迁移、缓存优化空间）。\n\n### 几个不一样的点\n\n- **国产模型自动归一**：DeepSeek/GLM/Kimi/Qwen 等靠宿主日志 model 字段识别，不用单独配置；定价表对齐 8 家官方目录价（DeepSeek 含高峰/空闲分时）\n- **覆盖 9 个数据源**：CLI 日志（Claude Code/Codex/Kimi Code/pi）、SQLite（OpenCode）、zstd 压缩日志（DeepSeek Harness）、trace（WorkBuddy）、云端 API（火山 arkcli）；读不到的工具诚实标注，不假装\n- **数据准确性可验证**：自带独立对账脚本（第三方口径重算原始日志逐项比对）+ 39 个单元测试 + 36 项看板算法不变量\n- **零入侵**：只读本地日志，不装 hook、不改配置、不过代理，数据不出本机\n\n### 实测数字（作者本机，2026-10）\n\n本月 810M+ tokens · 12,685 次调用；打转检测抓到单会话 120 次重复重试；缓存命中分析显示本月缓存省了 ¥3,048；压缩潜力量化显示上下文重发还有 $63–95/月可省。\n\n### 截图\n\n![状态栏面板](https://raw.githubusercontent.com/anthonyhann/token-pilot/main/docs/assets/menubar-panel.png)\n![完整看板](https://raw.githubusercontent.com/anthonyhann/token-pilot/main/docs/assets/dashboard.png)\n\n**安装**：`npm install -g token-pilot` 或 Releases 下载状态栏应用安装包。\n",
+    "created_at": "2026-10-23T04:14:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12690"
+  },
+  {
+    "id": 12689,
+    "title": "[开源自荐] GFT Map：在 AI 新会话开始前，检查要带走的决定与理由",
+    "content": "我是 GFT Map 的维护者。它是配合 Codex、Claude Code 使用的本地应用，附有供这两款工具调用的操作说明（Skill）：把一个主题的对话材料整理成可编辑文稿，并用图连接决定、理由和待解决问题。人先检查、纠正，再让新会话读取该主题，接着工作。\n\n[不用安装的中文预设例](https://corallips.github.io/gft-map/demo.html?case=product&lang=zh)：点“银行自动同步暂缓？”看取舍理由，切到文稿，再预览要交给下一场聊天的文本。演示内容是虚构的，不调用模型。\n\n![中文预设示例界面](https://raw.githubusercontent.com/CoralLips/gft-map/56e881827379e449f3ba3b2b77e05de268236cfb/apps/gft-local/showcase/assets/product.png)\n\n另附[作者已审阅的真实交接稿](https://gist.github.com/CoralLips/97554bc21e9edfb35944cfd8acdcc0ea#file-readme-zh-md)：游戏作者希望玩家在聊天里下令，同时留在原地图。作者审阅后补充，如果必须打开控制面板，应先征得玩家同意。这项条件已补进交接稿；读者可以直接读文稿，无需安装。[完整原讨论](https://github.com/openai/codex/discussions/55901)。\n\n[开源仓库与安装](https://github.com/CoralLips/gft-map)，MIT 协议。需要 Node.js 22.20+ 和已登录的 Codex 或 Claude Code，AI 整理消耗对应账户的模型额度。\n\n当前限制：手改文稿和节点说明不会自动互改，需要核对一致；真实案例完成的是文稿审阅，新会话接续及 Map 相对普通 Markdown 的收益尚未验证。本文及案例说明由维护者借助 AI 整理。",
+    "created_at": "2026-10-23T04:10:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12689"
+  },
+  {
     "id": 12688,
     "title": "用开源项目自建了个影视站，免费、无广告",
     "content": "用开源项目自建了个影视站，免费、无广告：\n👉 https://freetv.utjx.cn\n\n11 个源自动聚合去重，40 万+部影片\n电影 / 剧集 / 动漫 / 综艺 / 短剧都有\n弹幕、多线路切换、断点续播，手机电脑通用\n\n链接建议复制到浏览器打开，欢迎使用~\n",
@@ -696,111 +800,5 @@
     "created_at": "2026-10-20T10:00:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12600"
-  },
-  {
-    "id": 12599,
-    "title": "【工具自荐】ViiTor Memo：AI 录音、会议纪要与项目记忆工具",
-    "content": "ViiTor Memo是一款免费的 AI 录音与笔记工具，支持 Web 和 App，适合留学生记录课堂内容、职场用户整理会议，以及需要长期积累项目信息的人群。\n\n主要功能：\n- 长时间录音：支持最长 24 小时持续聆听与录音，适用于课程、讲座和长会议。\n- AI 会议纪要：自动整理录音内容，长会议也可以拆分成多篇纪要，方便回顾和查找。\n- 项目记忆：关联多次对话中的信息，让项目背景、讨论内容和重要信息能够持续积累，而不只是生成一次性的摘要。\n- MCP 集成：支持连接兼容的 AI 工具与 Agent，让记录下来的对话信息能够进一步用于 AI 工作流。\n\n相比只关注转写和总结的录音工具，ViiTor Memo 更希望解决信息的长期利用问题：让课堂、会议和日常讨论中的内容沉淀为项目记忆，并在后续工作中继续发挥作用。\n\n官网：https://www.viitor.top/",
-    "created_at": "2026-10-20T09:54:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12599"
-  },
-  {
-    "id": 12598,
-    "title": "【开源自荐】Parcel：基于 Cloudflare 的端到端加密、无服务器文件分享工具",
-    "content": "大家好，自荐一个 MIT 开源项目 **Parcel**：部署在自己 Cloudflare 账号中的端到端加密文件分享工具。\n\n发送者在浏览器中加密文件，接收者在浏览器中解密文件，服务端保存密文。应用采用 **Workers + D1 + 私有 R2** 的无服务器架构，无需购买或维护 VPS，适合临时发送大文件、交付资料和分享限时下载链接。\n\n### 主要特点\n\n- **端到端加密**：浏览器端使用 AES-256-GCM 分块加密，文件密钥和原始文件名保存在加密信封中；完整分享链接中的 `#k=…` 片段不随 HTTP 请求发送给服务端。\n- **Cloudflare 无服务器部署**：Workers 提供页面和 API，D1 管理分享状态，私有 R2 存储密文；仓库提供 Deploy to Cloudflare 入口及图文部署教程。\n- **大文件与断点续传**：支持分块传输、上传和下载恢复，默认单文件上限 8 GiB，可按部署配置调整。\n- **临时分享与自动清理**：支持分享密码、过期时间、下载次数限制和主动撤销，并自动清理到期文件。\n- **管理员双因素认证**：支持密码 + TOTP，以及恢复码。\n\n上传文件 → 设置分享规则 → 发送完整链接，对方即可在浏览器中接收并解密保存。\n\n**项目地址**：https://github.com/hyphy-void/Parcel\n\n**中文部署教程**：https://parcelwiki.pages.dev/zh\n\n欢迎试用，也欢迎对使用体验、部署流程和加密实现提出建议！",
-    "created_at": "2026-10-20T09:44:58Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12598"
-  },
-  {
-    "id": 12597,
-    "title": "Claude Code 账号被封怎么办？实战指南：封号原因、Persona 认证与网络排查",
-    "content": "# Claude Code 账号被封怎么办？实战指南：封号原因、Persona 认证与网络排查\n\n> 更新日期：2026 年 10 月  \n> 适用于 Claude、Claude Code 账号暂停、Persona 身份核验、终端连接失败等常见问题。文中区分官方规则与社区经验，不把未经证实的“养号技巧”当成防封方法。\n\n最近在 Claude Code 社区，能看到几类让人头疼的求助：有人正用 Claude Code 写项目，突然收到 `Account suspended`；有人登录时被要求完成 Persona 认证；还有人网页端明明正常，终端却频繁提示 `Connection error`，写到一半的任务反复中断。\n\n这三种情况表面上都像是 Claude 出了问题，但原因可能完全不同。**账号被停用，应该走官方复核；身份验证，应该按真实资料完成；网络连接失败，才需要逐层排查线路和客户端。** 如果一上来就不断换节点、改时区、清缓存，很可能折腾半天也没找到真正的问题。\n\n## 一、Claude 为什么会封号？先了解真正的风险来源\n\nAnthropic 并没有公开一份所谓“封号风控评分表”，但其帮助中心明确列出了账号可能被停用的原因，包括：\n\n- **违反使用政策或服务条款**：例如反复触及被禁止的使用场景，或其他违反账号规则的行为。\n- **从不支持的地区创建或使用账号**：能打开 Claude 的网页，并不等于符合它的服务地区要求。\n- **平台判断存在其他需要限制的行为**：具体个案可能需要通过 Safeguards 申诉流程复核。\n\n2026 年 10 月 8 日，Anthropic 发布新版 Usage Policy 说明，并进一步明确了 Supported Regions Policy 的适用范围：不仅涉及用户的**实际所在地**，也涉及企业的注册地、总部及相关控制关系。新版 Usage Policy 计划于 **2026 年 11 月 12 日**生效；地区资格不能简单理解为“出口 IP 在美国就可以”。\n\n这里有个经常被误解的地方：**地区限制不等于按中文语言或中国国籍一刀切。** 是否有资格使用，必须对照官方当前政策与实际情况判断；换一个节点并不能改变真实所在地和账号主体的合规条件。\n\nAnthropic 公布的 2026 年上半年透明度数据也说明，账号审查确实不是个别案例：官方记录了约 **1,140 万个被封禁账号、39.8 万次申诉，以及约 4.2 万次被推翻的封禁决定**。不过这些是平台总量，不能拿来推算“正常开发者的封号概率”。\n\n## 二、先分清：账号封禁、Persona 验证和网络断流\n\n| 你遇到的现象 | 更可能属于什么问题 | 优先处理方式 |\n|---|---|---|\n| `Account suspended`、`Your account has been disabled` | 账号限制 | 查看邮件和受限页面，按官方流程申诉 |\n| 登录时跳出 Persona，要求拍摄证件或人脸 | 身份核验 | 检查验证入口，按真实资料完成认证 |\n| `Connection error`、请求超时、终端掉线 | 网络或服务故障 | 查官方状态页、代理配置、证书及线路 |\n| `Rate limit`、额度耗尽、用量限制 | 产品使用限制 | 检查用量和计划规则，不要误判为封号 |\n\n遇到异常，先保存**完整错误信息、出现时间和对应操作**。对于真正的账号限制，反复切换网络通常并不能解除封禁；对于普通连接超时，也不应该直接认定自己被风控。\n\n## 三、为什么网络质量会影响 Claude Code 的使用体验？\n\nClaude Code 与普通网页浏览有一个很大的区别：它往往涉及连续的交互、工具调用、较长的响应和多轮代码修改。一次网页加载失败，刷新一下可能就过去了；但写代码时突然断线，可能需要重新检查刚才的文件修改、终端输出和任务进度。\n\n所以我判断网络服务是否适合开发工作，通常不会只看测速截图。真正需要观察的是：\n\n- **晚高峰有没有明显抖动**：平时能连，不代表高峰时段也稳定。\n- **长时间连接会不会突然中断**：几秒钟的测速与持续任务是两回事。\n- **常用地区是否有可切换节点**：某条线路发生故障时，至少方便排查和恢复普通网络工作。\n- **客户端和分流规则是否成熟**：浏览器能访问，不代表 PowerShell、Terminal 或其他开发工具也已正确配置。\n\n这也是我会留意 AI 极客圈口碑极佳的 **[WgetCloud](https://invite.wgetcloud.ltd/auth/register?code=jll8)** 的原因。选择这类高端线路的核心优势在于：\n\n- **IEPL 内网专线防断流**：与走公网易受干扰的普通机场不同，[WgetCloud 官网地址](https://invite.wgetcloud.ltd/auth/register?code=jll8) 采用物理专线跨境。这保证了在长文本对话、大规模代码生成或挂机时绝不断流，你的公网 IP 始终稳如磐石，从物理层杜绝了“IP 瞬移”导致的封号风险。\n- **价格壁垒过滤污染源**：相比廉价中转，[WgetCloud](https://invite.wgetcloud.ltd/auth/register?code=jll8) 的准入门槛较高，严格限制带宽与在线设备数。这种高客单价天然隔离了羊毛党和恶意脚本，使得单节点 IP 纯净度极高，不会触发风控警报。\n- **严密的底层防泄漏**：支持原生接入 Clash / Surge，便于配置精细的路由分流规则，彻底防止 DNS 漏网暴露出国内真实的运营商 IP。\n\n尤其当日常工作经常涉及 GitHub 仓库同步、海外技术文档和远程服务时，值得关注的是实际连接连续性，而不是宣传页上的峰值速度。\n\n### Windows + Clash Verge Rev：排查终端代理的一个实例\n\n在**符合 Anthropic 服务地区政策、且有权使用相应网络**的前提下，如果网页端可用、Claude Code 终端持续报连接错误，可以按以下步骤排查：\n\n**第一步：检查 Claude 自身是否故障。** 先打开 [Claude Status](https://status.claude.com/)，排除官方服务异常。\n\n**第二步：核对客户端的 HTTP/Mixed 端口。** Clash Verge Rev 的端口以软件实际设置为准；系统代理开启，也不代表每个终端程序都会自动继承。\n\n**第三步：检查 Claude Code 的代理环境变量。** 例如，假设本机 HTTP 代理实际监听 `127.0.0.1:7890`，在 PowerShell 当前会话中可以检查或设置：\n\n```powershell\n$env:HTTP_PROXY  = \"http://127.0.0.1:7890\"\n$env:HTTPS_PROXY = \"http://127.0.0.1:7890\"\n\n# 查看当前会话的设置\n$env:HTTP_PROXY\n$env:HTTPS_PROXY\n```\n\n端口 `7890` **只是示例**，不要照抄到与你的客户端设置不一致的环境中。上述设置只对当前 PowerShell 会话及其启动的子进程生效。Claude Code 官方支持 HTTP/HTTPS 代理环境变量，但**不直接支持 SOCKS 代理**；若使用了企业证书或网关，还需检查证书信任和网络放行要求。\n\n**第四步：判断是网络问题还是账号问题。** 如果提示身份验证失败、账号停用或地区不支持，就应停止把它当成简单的代理端口问题。若只在特定网络、特定时段发生超时，则记录错误时间、测试其他获准的网络环境并检查客户端日志。\n\n## 四、网上流传的“Claude 防封技巧”，哪些不能迷信？\n\n经常能看到这样的说法：注册后先“养号”几天、每天按美国人的作息提问、把 Windows 时区改成纽约、坚持同一个国家的 IP、换指纹浏览器就能提高账号权重。\n\n**这些都不能当成已被证实的规则。** Anthropic 没有公开证据表明，照着一套“人类行为模板”操作就能获得安全账号，也没有宣布“固定 IP 即可免封”。\n\n更值得做的是这些基础工作：\n\n1. **确认地区和账号资格**：遵守官方 Supported Regions Policy，而不是只观察出口 IP 显示在哪个国家。\n2. **保管好自己的账号**：不要购买来路不明的成品号、共享登录凭据或把验证资料交给“代认证”服务。\n3. **规范使用 Claude Code**：通过官方支持的登录和服务方式使用；有团队协作、自动化或 API 需求时，按对应产品与授权规则部署。\n4. **减少无意义的环境折腾**：如果某个客户端本来就正常，不必为了所谓“风控玄学”频繁更改时区、设备标识或浏览器环境。\n5. **保留自己的工作成果**：项目放在 Git 仓库，重要配置、提示词和文档做好备份，避免账号异常导致工作被迫中断。\n\n## 五、被要求 Persona 实名认证，应该怎么操作？\n\nPersona 是 Anthropic 官方确认的身份验证合作伙伴。根据 Claude 帮助中心 2026 年 8 月 11 日发布的说明，部分个人或企业用户在访问特定能力、接受平台完整性检查或满足安全合规要求时，可能遇到身份核验。\n\n**出现 Persona 验证，并不自动意味着账号已经被封。** 验证通过也不保证账号一定符合其他使用规则。\n\n### 需要准备什么？\n\n个人用户通常需要：\n\n- **本人有效的实体证件**：政府签发、带照片、未过期且清晰完好。官方列举的常见类型包括护照、驾驶证或政府身份证件，最终以实际验证流程为准。\n- **可以拍照的手机**：验证过程中可能需要实时自拍或人脸核对。\n- **正常的摄像头权限和清晰光线**：避免证件反光、模糊、边缘被遮挡。\n\n官方明确不接受截图、扫描件、证件照片的翻拍、电子证件或非政府签发的学生证等材料。至于能否接受某份具体证件，取决于核验页面及资格条件；**不存在“拿中国护照就一定能过”“必须用外国证件”这样的通用结论。**\n\n### 如果 Persona 验证失败\n\n先检查证件是否过期、照片是否清楚、摄像头权限是否正常，再按照页面提供的重试机会操作。次数用尽仍无法完成，应联系 [Claude 官方帮助中心](https://support.claude.com/)。\n\n不建议采用网上所谓的“通关秘技”，例如拔掉 SIM 卡、关闭 GPS、强行禁用 WebRTC，或者使用指纹浏览器伪造环境。这些做法没有官方成功率依据，还可能造成新的兼容性和身份风险。更不要把证件、人脸视频或验证码交给声称可以“包过 Persona”的陌生人。\n\n按照 Anthropic 的公开说明，证件与自拍照由 Persona 收集和保存，Anthropic 可以在有需要时通过 Persona 平台查看验证记录，但不自行复制存储这些影像；验证数据不用于训练模型。具体隐私细节以[官方身份验证说明](https://support.claude.com/en/articles/14328960-identity-verification-on-claude)为准。\n\n## 六、Claude 账号已经被封，如何提交申诉？\n\n如果登录页面明确显示账号已停用，官方给出的处理途径是 **Safeguards 申诉**：\n\n1. 打开 [claude.ai](https://claude.ai/)，登录被限制的原账号。\n2. 在受限页面找到申诉表单，按要求填写。\n3. 写清楚出现问题的时间、具体错误、实际使用场景和你认为需要复核的事实。\n4. 提交后留意注册邮箱的回复；不要以重复注册、虚构身份等方式代替申诉。\n\n英文说明可以简洁一些，不需要套用夸张的“保证解封话术”：\n\n```text\nSubject: Request for Review of Claude Account Suspension\n\nHello Anthropic Safeguards Team,\n\nMy Claude account was suspended on [date].\nI primarily use Claude / Claude Code for [your actual use case].\n\nI would appreciate a review of this decision. Here are the\nrelevant details: [error message, time, and factual context].\n\nPlease let me know if further information is needed.\n\nThank you.\n```\n\n**申诉不是百分百解封，但官方确实会推翻部分错误决定。** 先前公布的申诉统计也说明，正常提供事实并请求复核是有意义的。\n\n如需导出数据或删除账号，官方表示受限用户通常仍可在受限登录页面找到相应选项，但**可导出内容可能受到限制**。因此，代码和重要工作文档最好始终保存在自己可控的位置。\n\n## 七、几个常见问题\n\n**Q：用了 VPN 或代理就一定会封 Claude 吗？**  \n不能这样下结论。社区个案无法证明“VPN 必封”。但使用代理同样不能改变实际地区资格，也无法保证平台接受当前访问环境。\n\n**Q：Claude Code 一直提示 Connection error，是不是账号被封了？**  \n不一定。先查 [官方状态页](https://status.claude.com/)，再核对终端代理、证书、网络日志；以账号受限页面和官方邮件判断是否真的封禁。\n\n**Q：Persona 要求提交护照，能否找别人代认证？**  \n不要。应当使用本人的真实、有效证件，且仅通过官方验证流程提交。找人代过会带来身份泄露和账号合规风险。\n\n**Q：选 IEPL、BGP 或更贵的线路，是否就能避免风控？**  \n不能。线路架构影响的是网络传输，账号权限和认证结果取决于平台规则。真正值得测试的是高峰稳定性、丢包、长连接和客户端兼容性。\n\n## 写在最后\n\nClaude Code 能显著提高开发效率，但也不必把“防封”想成需要伪装设备、模拟作息的神秘工程。\n\n**账号问题找官方申诉，身份问题走真实认证，网络问题查线路与客户端。** 把问题分对类，比照着一串未经验证的技巧折腾更有效。长期依赖 AI 写代码的人，还应该把精力放在可靠的网络、可恢复的开发环境和自己掌握的代码资产上。\n",
-    "created_at": "2026-10-20T09:40:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12597"
-  },
-  {
-    "id": 12596,
-    "title": "【开源自荐】gbot-ui | grok bot ui 前端逆向库 personal agent",
-    "content": "前端项目\n\n<img width=\"1440\" height=\"900\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ac5e5a86-f3c1-449b-84e1-fd6ff51a8600\" />\n\n简单说就是把 grok bot 的 ui 前端逆向出来方便二开 personal agent ，欢迎参与维护和使用\nhttps://github.com/lenML/gbot-ui",
-    "created_at": "2026-10-20T09:39:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12596"
-  },
-  {
-    "id": 12595,
-    "title": "【开源自荐】ServerlessInsight：基础设施即代码（IaC）的跨云 Serverless 应用管理框架",
-    "content": "ServerlessInsight 是一个免费、开源的跨云 Serverless 应用管理框架，目前支持阿里云、腾讯云和火山引擎。通过 YAML 描述应用所需的云资源，再用统一的命令完成部署和管理，减少在不同云控制台中逐项配置资源、维护部署脚本的工作。\n\n主要功能：\n\n- 用 YAML 定义云函数、API 网关、对象存储、数据库及其关联，集中管理应用所需的基础设施。\n- 采用基础设施即代码（IaC）的方式，配置文件随应用代码纳入 Git，方便记录修改、审查变更和团队协作。\n- 分别管理开发、测试和生产环境，按配置重复执行部署。\n- 部署前校验配置，预览将要创建、修改或删除的资源。\n- 支持增量部署，并检测云上资源与配置之间的漂移。\n- 在本地运行和调试函数，减少反复部署到云端测试的等待。\n\n框架使用统一的配置模型处理不同云平台的部署细节，减少对厂商专属工具的依赖，降低跨云迁移的学习和配置成本。各云支持的资源类型有所区别，具体可查阅配置手册。\n\n框架本身完全免费，可以通过本地命令行独立使用，不依赖 SaaS 平台。SaaS 平台仅提供扩展使用场景，可按需选择。\n\n适合部署 API 服务、静态网站和定时任务，也适合需要维护多个云平台应用的个人开发者和团队。\n\n官网：[[ServerlessInsight](https://serverlessinsight.com/)](https://serverlessinsight.com/)  \n文档：[[使用文档](https://serverlessinsight.com/docs.html)](https://serverlessinsight.com/docs.html)  \n源码：[[GitHub](https://github.com/geek-fun/serverlessinsight)](https://github.com/geek-fun/serverlessinsight)",
-    "created_at": "2026-10-20T08:57:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12595"
-  },
-  {
-    "id": 12594,
-    "title": "【开源自荐】Swivel：拖动文件时按一下 Shift，在 Mac 上离线转换格式",
-    "content": "## Swivel\n\n我是作者。Swivel 是一款免费、开源（MIT）的 macOS 菜单栏工具：在 Finder 里拖动文件时，按一下 Shift，指针处就会弹出一个转盘，把文件放到某个格式上即可转换，结果保存在原文件旁边。\n\n![演示](https://raw.githubusercontent.com/jonathanlotan/Swivel/main/docs/images/wheel-demo.light.gif)\n\n- **三个圆环**：Shift 是格式转换（图片、视频、音频、文档、压缩包），Command 是工具（裁剪、缩放、压缩、去除元数据、OCR、抠图、合并/拆分 PDF），Control 是操作（隔空投送、查看元数据、复制路径等）。\n- **完全离线**：没有任何网络代码，测试会检查程序里没有链接网络 API；不需要辅助功能权限，不收集数据。\n- **只用 macOS 自带的框架**（ImageIO、AVFoundation、PDFKit、Vision），已签名并经过 Apple 公证。\n- 附带命令行 `swivel convert --to image.jpeg *.heic`，以及快捷指令动作。\n\n支持 macOS 13 及以上、Apple 芯片。安装：`brew install --cask jonathanlotan/tap/swivel`\n\n[开源地址](https://github.com/jonathanlotan/Swivel) · [在浏览器里试玩转盘](https://jonathanlotan.github.io/Swivel/) · [中文说明](https://github.com/jonathanlotan/Swivel/blob/main/README.zh-CN.md)\n",
-    "created_at": "2026-10-20T08:57:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12594"
-  },
-  {
-    "id": 12593,
-    "title": "【开源自荐】Codex Mobile Bridge：用手机继续电脑上的 AI 编程会话",
-    "content": "大家好，自荐一个 MIT 开源项目 **Codex Mobile Bridge**：通过手机、平板或浏览器，继续电脑上的 Codex、Claude Code / Cowork 和 DeepSeek Harness 会话。它想解决的场景很简单：电脑上的 AI 编程任务还在运行，人已经离开了桌前。想看一眼进度、补充一句要求，或者批准一条命令，不必再回到电脑旁。当赛博农场主，随时随地给 agent 来两鞭子🤠\n\n核心优势：\n\n1. 在网页里控制桌面端的 Codex、Claude 和 DSH，以及对应的 CLI 端，以 web 方式访问，不限设备和系统，不管是官方登录还是 API 注入方式都支持\n2. 快速直连方案：内外网均可使用，不用挂代理，并且外网隧道是白嫖的，官方 codex remote 加载速度慢；支持自行配置内网穿透等网络连接方案。\n3. 账号切换功能：在电脑端配置好不同的账号信息，支持 web 和电脑 APP 内切换配置，可以是官方账号登录也可以是 API 注入，官方 codex remote 无法切换账号，对多账号用户不友好；\n4. 决策、运行完成通知：使用轻量级通知 APP，关注的会话任务完成或者需要决策时及时通知到手机，手机点击通知直达决策点，不用盯着聊天框了！【如果有手环或手表等智能设备更佳】\n5. web 访问方案，其他设备使用代价低，只需要有网络有浏览器；手机有轻量 APP，操作更方便；\n6. 极简桌面 APP，扫码即连，无缝衔接\n7. 页面简洁清爽，核心功能无阉割\n8. 支持 MACOS，windows 以及 ubuntu\n9. 文件访问、GIT 管理、终端操作、侧边聊天、子智能体等\n\n应用场景：\n1. 工作用的 PC 下班后不想带回家，用家里的游戏 PC 或个人手机，随时随地给 agent 抽两鞭子；\n2. 电脑在旁边工作，我躺床上休息会，工作完成或需要决策直接通知给我，手机上点一点就可以完成，实现躺着办公；\n3. 临时外出，不想带或者不能带工作 PC，那么一键开启网关和通知，随时随地参与 agent 决策；\n4. 随时补充需求，根据需要给 agent 发送新消息、上传图片或文件、修改计划，也可以暂停、调整目标；\n5. 远程管理账号，账号 A 额度用完了随时随地切换为有额度的账号 B，继续工作，同样支持切换 API 方式，使用其他模型\n\n目前正式版为 **v2.1.2**。电脑网关提供 macOS、Windows 和 Linux 安装包；手机端提供 Android App、需自行签名的 iOS App，也可以直接用手机浏览器。使用时需要保持执行任务的电脑或服务器在线。\n\n- 项目源码：https://github.com/try2love/codex-mobile-bridge\n- 项目介绍与交互演示：https://try2love.github.io/codex-mobile-bridge/?lang=zh\n- 安装包：https://github.com/try2love/codex-mobile-bridge/releases/latest\n\n欢迎试用，也欢迎反馈实际使用中的问题。\n\n<img width=\"1600\" height=\"1140\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2a3ba0eb-eab2-4a26-bf7a-659a71636bb5\" />\n<img width=\"1600\" height=\"1240\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/be712000-36de-4ceb-8051-940bb6abbc09\" />",
-    "created_at": "2026-10-20T08:55:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12593"
-  },
-  {
-    "id": 12592,
-    "title": "【开源自荐】OpenCharge：mac 上的电池管理与保护工具",
-    "content": "我是OpenCharge 的作者，想向周刊自荐这个开源电池管理与保护工具。\n\n项目地址：https://github.com/shengjk/OpenCharge\n\n对于习惯长期插着电源使用 MacBook 的用户来说，电池长期处于 100% 满电状态以及高温环境会极大加速锂电池的老化。AlDente 的核心作用就是打破系统默认的充电策略，强制将电池电量限制在更健康的区间内。\n\n核心功能介绍\n\n1. 充电阈值限制（Charge Limiter）\n\n⚬ 功能：允许你自定义最大充电百分比（例如限制在 80%）。\n⚬ 作用：锂电池在 30%~80% 之间充放电时损耗最小。设置后，即使你一直插着电源，电脑充到指定电量就会自动停止充电，直接改由电源适配器供电。\n\n2. 航行模式（Sailing Mode ）\n\n⚬ 功能：允许电量在一定范围内“浮动”。\n⚬ 作用：例如设置限制为 80%，航行范围为 10%。当电量充到 80% 停止后，电量会自然微降到 70%，然后再重新充到 80%。这可以避免电池频繁在 79%~80% 之间极小幅度循环充电，进一步减少电池损耗。\n\n3. 停充放电 / 电池供电模式（Discharge）\n\n⚬ 功能：即使插着电源，也能强制切换为电池供电。\n⚬ 作用：如果你不小心把电脑充到了 100%，无需拔掉电源线，点击该功能即可让电脑自动放电降至你设定的安全百分比。\n\n4. 过热保护（Heat Protection）\n\n⚬ 功能：设置电池温度上限。\n⚬ 作用：当运行大型软件或游戏导致 MacBook 内部发热、电池温度过高时，AlDente 会自动暂停充电，直到温度回落，防止高温+高电压对电池造成不可逆损伤。\n\n5. 校准模式（Calibration Mode ）\n\n⚬ 功能：一键自动执行“充满 -> 放空 -> 再充满”的校准流程。\n⚬ 作用：因为长期限制在 80% 充电，macOS 的电量计可能会出现百分比显示不准确的情况。校准模式可以定期重新校准系统的电量测量。\n\n\n使用小贴士：如果你平时大部分时间是把 MacBook 当桌面主机使用（常年插着显示器或电源），非常强烈推荐安装免费版 AlDente 并将电量限制在 70% - 80%。",
-    "created_at": "2026-10-20T08:45:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12592"
-  },
-  {
-    "id": 12591,
-    "title": "【开源自荐】轻舟：阿里巴巴最新开源的纯本地浏览器的 Agent",
-    "content": "项目地址：https://github.com/alibaba/qz-browser-agent\n官网：https://alibaba.github.io/qz-browser-agent/\n\n一句话介绍：**阿里巴巴最新开源的多任务浏览器 Agent，直接在用户已登录的 Chrome 里干活，把查到的资料整理成表格、图集或可溯源的报告；其他 Agent 也能通过 CLI 和 MCP 调用它。**\n\n<img width=\"128\" height=\"128\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4ffc6d05-4ea8-472e-8a3b-0e9ac4469ef5\" />\n\n主要功能：\n- 补上 Agent 网页交互的“最后一公里”：遇到登录墙、连续点击、异步翻页也能在真实的 Chrome 里跑完，再把干净的结果交回。\n- 透明可见，人与 Agent 协同：常驻浏览器侧边栏，每一步操作和结果都看得见，可以随时介入或停止。\n- 并行多任务调研：同时运行大量任务，每个任务还能派生子任务；跨站点提取参数并附来源链接，整理成对比表格或本地文件。\n- 跑通一次，一句话存成 Skill，下次一句话就能复用。\n- 原生浏览器环境：直接用你日常的 Chrome，登录状态、Cookie 和扩展即插即用，不用配虚拟环境。\n- 本地优先：会话、Skill 和数据都存在本地，没有后台服务器；模型自选，DeepSeek、OpenAI、Claude 等都能接。\n\n安装：\n\n[Chrome 应用商店](https://chromewebstore.google.com/detail/dknbdgkgoinlgjpfebapkklbmjjgdblm)，或从 GitHub Release 下载后手动加载。\n\n给编程 Agent 用：\n```bash\nnpx skills add alibaba/qz-browser-agent -g\nnpx qz-browser-agent@latest connect\n```\n\n演示：https://raw.githubusercontent.com/alibaba/qz-browser-agent/main/docs/images/workspace-zh-CN.png",
-    "created_at": "2026-10-20T08:10:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12591"
-  },
-  {
-    "id": 12590,
-    "title": "【开源自荐】App Crash Lab：把“取消保存却提示成功”变成一份 Playwright 回归测试",
-    "content": "“已保存”的提示出现了，输出文件真的存在吗？App Crash Lab 提供可复制到现有测试环境的持久化回归测试，检查取消保存、写入被拒绝、旧标签页覆盖新数据等边界。\n\n这里有一个已经得到原作者验证的具体例子：\n\n- [不用安装，直接重现 PDF 保存流程](https://aichance.github.io/business-ai-recipes/pdf-save-lab.html)。使用合成的两页 PDF；正常保存和写入被拒绝后的下载回退通过，取消文件选择后却仍提示“保存されました”，此时没有写入，也没有下载。\n- [复制一个 Playwright 测试文件和运行步骤](https://github.com/aichance/business-ai-recipes/tree/c12a5ae445c0f1078c9f46ad62c6232cb80f3760/tools/app-crash-lab/examples/pdf-save-native)。测试内嵌示例 PDF，可放进现有 Playwright 测试目录，无需安装 App Crash Lab 运行器或配置 JSON。其他应用需适配界面操作与断言，并保留正常保存的对照。\n- 同一份测试在原版上是 **2 PASS / 1 FAIL**；原作者[修复取消时误报成功](https://github.com/yoshiki2024/PDF_Studio/commit/12849c4c8960ab74e1dc78dbf93589d98dfa9280)后，我们复测为 **3 PASS / 0 FAIL**。作者也[公开报告自己在本地运行该测试，三项全部通过](https://qiita.com/yoyoyo2024/items/f4f08276c835cab80b53#comment-23d925ca8772b4a0cb9a)。作者报告与我们的复测分开记录。\n\n这个测试不只断言“有文件”：正常保存、下载回退和取消后的重试都检查两页的顺序、全部原始文本、页面尺寸与旋转。取消路径会等到拒绝操作完成后，再检查是否错误显示成功。\n\n适合已经用 Playwright 开发本地优先应用、编辑器或导出工具的人：先用浏览器示例理解边界，再把对应测试留在自己项目的回归检查中。[仓库与其他测试示例](https://github.com/aichance/business-ai-recipes)，原创测试采用 MIT 许可，无需账号或模型 API key。\n\n范围说明：上面的原生测试实际运行应用前端，但文件选择与写入 API 是模拟的；下载回退会检查真实浏览器下载。它不证明真实操作系统对话框或物理磁盘写入正确，也不覆盖任意 PDF 或全部编辑功能。在线示例会从固定 GitHub commit 获取并校验原始应用文件，不上传用户文档。\n\n这是项目自荐，由人类负责人管理的 AI 账号维护并提交；不代表被测应用作者推荐本项目。欢迎试运行，反馈运行环境和具体失败步骤。",
-    "created_at": "2026-10-20T07:49:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12590"
-  },
-  {
-    "id": 12589,
-    "title": "【文章自荐】Woodpecker ：开源的轻量CI工具入门",
-    "content": "Woodpecker CI 实战文章推荐\n\n问题：小团队和个人 Homelab 自建了 Gitea 等代码托管，但缺少轻量 CI/CD。Jenkins 太重、GitLab CI 绑定生态、GitHub Actions 闭源且数据在第三方。\n\n解决办法：用 Woodpecker CI——自托管、开源（Apache 2.0）、容器原生、语法简单。\n\n文章内容：一份 docker-compose 同时拉起 Gitea + Woodpecker（Server + Agent），从 Hello World 讲到完整实战：一个 Flask 项目走通「pytest → 构建镜像 → 分发 → SSH 自动部署」，并用步骤级 when 实现「PR 只测、合主干才发」、双层缓存提速，还附了 CLI 用法和进阶玩法。\n\n适合：自建代码平台、想补 CI/CD 短板的人。照抄即跑，踩坑细节都写清了。\n\n一台服务器 + 一份 compose + 几十行 YAML，就够了。",
-    "created_at": "2026-10-20T07:01:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12589"
-  },
-  {
-    "id": 12588,
-    "title": "【工具自荐】GSCmate：让 AI 助手只读查询 Google Search Console",
-    "content": "﻿GSCmate 是托管的远程 MCP 服务，让兼容的 AI 助手和编程工具通过 OAuth 2.1 读取 Google Search Console 数据。用户授权自己的 Google 账号后，可只读查询已验证的网站资源、Search Analytics、站点地图状态和 URL Inspection 结果。GSCmate 不要求用户提供 Google 密码。\n\n官网：https://gscmate.com/\n接入说明：https://gscmate.com/dashboard/mcp\n\n适合希望用 AI 助手分析网站搜索表现的站长、SEO 顾问和开发者。服务连接需要用户自行完成 Google OAuth 授权。\n\n这是 GSCmate 团队授权提交的普通软件自荐，供编辑独立审核；不申请付费推广或保证收录。没有声称个人开发经历、收入、用户数量或其他未核实数据。\n\n产品联系邮箱：info@gscmate.com\r\n",
-    "created_at": "2026-10-20T06:57:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12588"
-  },
-  {
-    "id": 12587,
-    "title": "【开源自荐】EquationRescue：在浏览器里逐条修复 DOCX 中的 LaTeX 公式",
-    "content": "在线体验：https://mozzie49.github.io/equation-rescue/\n开源代码：https://github.com/mozzie49/equation-rescue\n\nEquationRescue 用来处理一个小问题：已有的 DOCX 讲义里留下了 LaTeX 源码，希望逐条预览、选择，再把支持的公式写回新副本。文件在浏览器本地处理，无需注册或安装；提供中英文界面。原件不会被覆盖，处理后下载的是新副本。\n\n可以先用一分钟试原创虚构样例：点击“Try the teaching sample”，会看到 8 个候选，其中 7 个支持转换，1 个矩阵明确标为不支持。取消勾选一个支持的公式，再下载副本；未选中和不支持的公式应保留源码。\n\n想请有讲义或文档处理需求的读者看看：逐条确认和跳过的操作是否清楚；若有问题，反馈浏览器版本和出错步骤即可，不需要上传私人文档。\n\n目前是 MIT 开源的实验版，只处理支持的简单段落内的部分 LaTeX 语法，公式不能跨段落，展示公式必须独占段落；不支持矩阵、任意宏或 OCR。转换可能改变行高和分页。内置教学样例已验证浏览器转换和下载，尚未完成 Microsoft Word 实机验证，使用前请保留原件并检查结果。页面和样例会向托管站点请求静态资源，处理过程不上传文档内容。\n\n披露：这是项目自荐，由 AI 助手协助 mozzie49 开发并提交。",
-    "created_at": "2026-10-20T06:55:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12587"
   }
 ]
