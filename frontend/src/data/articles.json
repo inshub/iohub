@@ -1,5 +1,61 @@
 [
   {
+    "id": 12744,
+    "title": "【工具自荐】 AI 面部颜值分析工具：上传照片即可获得 1–10 分评分",
+    "content": "访问地址: [face analysis](https://faceanalysisai.com/)\n\n<img width=\"542\" height=\"705\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba14daa2-6369-427b-8040-c15b97044451\" />",
+    "created_at": "2026-10-24T12:42:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12744"
+  },
+  {
+    "id": 12743,
+    "title": "【软件自荐】人生岔路：随机出生、可分岔时间线的像素人生游戏（可直接试玩）",
+    "content": "### 项目简介\n\n「人生岔路 / Otherlife」是一个中文像素人生模拟游戏：从随机出生开始，经历学习、工作、关系与迁居，也可以回到过去的一个选择前，保留原来的未来，再展开另一条时间线。\n\n- **直接试玩**：https://lancerlsy.github.io/life-crossroads/\n- **项目仓库与完整版本**：https://github.com/LancerLSY/life-crossroads\n\n### 想探索的玩法\n\n- 在172个国家与地区中按权重抽取出生地，逐项揭晓身份与家庭背景。\n- 共同计划会记录起因、实际投入和结束原因；等待不会自动被算作完成。\n- 陪伴、帮助、承诺与失约会影响亲密和信任，后续故事沿已有经历发展。\n- 住宅、家庭与人物年龄改变像素场景；支持保存、回看和时间线分岔。\n\n网页试玩不需要安装，也不需要模型密钥；它使用本地故事引擎，进度保存在当前浏览器。完整版本可以自行接入DeepSeek，增加自由对话和有事实依据的年度人物关系分析。游戏界面目前为中文，仓库有中英文说明；源码公开可查看，暂未声明开源许可证。\n\n![实际像素渲染场景](https://raw.githubusercontent.com/LancerLSY/life-crossroads/main/docs/media/otherlife-cover.png)\n\n作者自荐，欢迎试玩和具体反馈，尤其想了解哪些因果后续显得合理、哪些关系变化显得生硬。\n",
+    "created_at": "2026-10-24T12:21:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12743"
+  },
+  {
+    "id": 12742,
+    "title": "【开源自荐】Web3D Viewer — 单文件 OBJ 查看器，贴图没显示时告诉你为什么",
+    "content": "## 项目地址\n\nhttps://github.com/userzz1145141919810-rgb/web-3d-viewer\n\n在线版：https://userzz1145141919810-rgb.github.io/web-3d-viewer/\n\n## 简介\n\n一个单 HTML 文件的 OBJ 模型查看器，基于 Three.js。把 `.obj` + `.mtl` + 贴图打包成 ZIP 丢进浏览器就能看，不需要安装、没有后端。\n\n## 特点\n\n重点是贴图没显示出来时告诉你为什么。\n\nOBJ/MTL 这套格式里，MTL 写的是 `map_Kd texture.png`，但实际文件可能在子目录里、大小写不同、或扩展名不同。加载器找不到就静默跳过，模型渲染成一片黑或纯白，没有任何提示。\n\n这个工具把每次贴图查找的过程打出来：精确路径 → 去扩展名 → 模糊包含，以及最终未找到的项。同时显示顶点数、三角面数、材质数。\n\n## 实现上值得一提\n\n- 按需渲染：静止时不重绘，只在视角变化或贴图加载完成时触发\n- 切换模型时释放上一轮的 geometry、material 和全部 texture，并 revoke 对应的 blob URL（`material.dispose()` 不会连带释放贴图，这部分是单独处理的）\n- 贴图尺寸超过设备 `maxTextureSize` 时关闭 mipmap，避免生成 mipmap 时显存溢出\n\n## 适用边界\n\n- 只针对 OBJ 工作流，不支持 glTF / GLB，也不支持骨骼与形变动画\n- 需要联网：Three.js 和 JSZip 走 CDN（页面加载失败时会给出可切换的备用源）\n- 移动端处理大 ZIP 受内存限制，实测安全线在 80–100 MB 左右\n\n## 开发日志\n\n每个改动的**原因**记在 CHANGELOG 里，不只记改了什么。比如最近修的一个：MTL 的 `Kd` 是 sRGB 值，而 `THREE.Color.setRGB()` 默认按线性色彩空间解释，暗色材质会整体发白——Kd=0.2 实际显示成 0.48。\n\nhttps://github.com/userzz1145141919810-rgb/web-3d-viewer/blob/main/CHANGELOG.md\n\n感谢考虑收录。\n",
+    "created_at": "2026-10-24T12:07:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12742"
+  },
+  {
+    "id": 12741,
+    "title": "【项目自荐】无限月读：分享小工具、互动网页与 Demo 的创作社区",
+    "content": "无限月读（Infinite Tsukuyomi）是一个已上线的创作与作品分享社区，鼓励展示 Demo、互动内容、网页小工具、个人网页、二次元小玩意和独立游戏，也欢迎使用传统工具或 AI 辅助完成的作品。\n\n适合这样的场景：用 AI 做出了一个抽签工具、互动个人主页或趣味网页，希望公开展示、邀请别人体验，并根据具体反馈继续修改。平台提供作品与作者介绍、社区互动和活动相关入口；投稿支持方式及账号要求以网站当前页面为准。\n\n为方便刚开始做小网页的人，我们还开源了三个无需构建工具的 HTML/CSS/JavaScript 示例：随机分组工具、互动个人主页、原创随机台词卡片。源码采用 MIT 许可，附中英文运行与分享说明；平台本身不因此成为开源项目。\n\n官网：https://www.wuxianyuedu.cn/\n开源示例：https://github.com/sakuraladder/wuxianyuedu-creative-web-starters\n\n我是平台维护方，本帖为项目自荐。平台与示例界面目前以中文为主，具体作品的语言与运行条件以作者说明为准。介绍使用 AI 辅助整理。",
+    "created_at": "2026-10-24T10:45:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12741"
+  },
+  {
+    "id": 12740,
+    "title": "[开源自荐] Paper Translator v3：面向老扫描学术论文的中文翻译与重排",
+    "content": "## 项目地址\n\nhttps://github.com/jimdutju/paper-translator-v3\n\n## 简介\n\nPaper Translator v3 是一个将英文扫描版/原生文字版学术论文翻译并重新排成中文 PDF 的实验项目。目前主要使用量化金融、计量经济学论文验证，希望帮助仍在阅读老扫描论文的研究者。\n\n## 特点\n\n- 视觉模型读取原文、公式和阅读顺序，版面检测器与文字层只提供几何信息，再进行中文重排。\n- 公式经 LaTeX 编译为矢量内容；图表保留原图，指定保留英文的区域不强制翻译。\n- 检查翻译时数学变量是否丢失、是否有文字压图、空白页或未还原的占位符；有问题的数学翻译缓存可按段重译。\n\n## 验证与适用边界\n\n当前完成三篇共 56 页的重建验证和 11 项回归测试，另有本机 pdf2zh 1.9.11 的有限样本对照；这不代表全文语义准确，也不代表优于最新 pdf2zh/BabelDOC。\n\n项目采用 MIT 许可证，代码开源。运行需要 Python、LaTeX、检测器权重和使用者自己的模型 API，API 费用由服务商收取。当前更适合愿意配置环境、希望检查与改进论文翻译流程的读者。\n\n对照与已知限制：https://github.com/jimdutju/paper-translator-v3/blob/main/docs/COMPARISON.md\n\n欢迎试用，尤其希望收到扫描论文、公式或复杂版面的失败样本及安装反馈。感谢考虑收录。\n",
+    "created_at": "2026-10-24T10:35:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12740"
+  },
+  {
+    "id": 12739,
+    "title": "【软件自荐】票号核对台：跨 Excel/CSV 核对发票号，导出原文件、工作表和行号",
+    "content": "做了一个范围比较小的表格核对工具，想申请周刊软件栏目收录。工具借助 AI 开发，文件解析和核对在本机运行，不调用 AI，也不上传台账。\n\n**官网与合成演示：** https://piaoh-offline.xuhaotian29.chatgpt.site/\n\n### 解决哪一步\n\n手里有多份票据登记或报销台账时，找出相同号码之后，还需要回到原文件核查。这个工具逐表选择表头与号码列，跨 `.xlsx`、`.xls` 和 UTF-8 CSV 比较号码，导出的清单带原文件名、工作表和原表行号；有发票代码时，也可按“代码 + 号码”核对。\n\n它保留文本号码的前导零，对长数值精度风险、公式等情况单独提示复核，不改写原文件。熟悉 Power Query 或脚本的用户可以自己实现类似流程，这个版本提供固定操作界面与带来源位置的导出清单。\n\n### 能看到什么\n\n官网提供三条合成记录的交互演示，以及完整工具使用19条合成记录的实测截图。演示不读取访客文件，也不是完整付费工具。\n\n![使用合成样例运行的结果页，非客户数据](https://piaoh-offline.xuhaotian29.chatgpt.site/product-screenshot.png)\n\n### 价格与交付\n\n离线版 v1.0 为19.90元一次购买当前版本，无订阅；目前限量首发，库存以[爱发电独立商品页](https://afdian.com/item/c1b23310cea911f1be9152540025c377)为准。当前采用人工交付，付款后48小时内通过爱发电私信发送下载链接与解锁码，每天北京时间10:00查单，非即时发货，急用勿买。\n\n### 边界\n\n只核对表格字段是否相同，不验证发票真伪，不识别 PDF、图片或 OCR；已经在源表中丢失精度的号码不能恢复。最多50个文件、总计50 MiB、累计20,000行（含表头）。尚无付费客户验证，不宣称节省了多少时间或已经产生收益。\n\n如果你处理过这类台账，欢迎就来源定位、异常提示和导出格式提出具体建议，请不要发送真实发票或业务台账。",
+    "created_at": "2026-10-24T10:24:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12739"
+  },
+  {
+    "id": 12738,
+    "title": "【开源自荐】LLMSlim：给 AI Agent 的长期记忆 MCP 服务器，读写不调用 LLM",
+    "content": "作者自荐。\n\nLLMSlim（MIT，Python）是一个 MCP 服务器和 Claude Code 插件，给 Claude Code、Cursor、Codex 等 AI 编程 Agent 加上留在本机的长期记忆：\n\n- 消息按原文存进本地 SQLite（或自有 PostgreSQL），不经过模型改写\n- 按问题在你设定的 token 预算内召回能回答它的消息\n- 读写都不调用 LLM，记忆功能不需要 API key\n- 五个工具：remember、recall、list_memories、forget，以及 fit_context（把超长日志或工具输出裁剪到预算内）\n\n接入 Claude Code：\n\n```\npip install \"llmslim[mcp]\"\nclaude mcp add llmslim -- llmslim mcp\n```\n\nGitHub: https://github.com/Thanatos9404/llmslim\n已收录于官方 MCP Registry（io.github.Thanatos9404/llmslim）。\n\n谢谢阮老师\n",
+    "created_at": "2026-10-24T08:45:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12738"
+  },
+  {
     "id": 12737,
     "title": "【开源自荐】Knovum：本地优先的无限画布 AI 知识空间（Tauri 2 + Vue 3）",
     "content": "## Knovum\n\n一款开源、本地优先的无限画布 AI 知识工作空间。将 Heptabase 式的空间白板、Obsidian 的数据掌控权（开放 JSON Canvas + SQLite）与本地离线 AI（Ollama + LanceDB + Whisper）结合，打造轻量、隐私可控的技术调研与学习桌面工作台。\n\n• **本地优先与数据掌控**：完全杜绝云端绑定和私有格式锁定。支持行业开放的 **JSON Canvas** 规范与标准单文件 **SQLite**，数据 100% 留存在本地，断网全功能可用。\n• **极轻原生桌面（Tauri 2 + Rust）**：底层由 Rust 驱动，前端采用 Vue 3，启动秒开，常驻内存仅几十 MB，彻底告别传统 Electron 工具动辄数百 MB 内存的笨重感。\n• **空间化无限画布**：支持 Markdown 笔记卡片、技术草图、PDF/音视频素材同屏混排与双向关联连线，告别死板的层级文件夹。\n• **开箱即用的端侧 AI**：内置嵌入式 LanceDB 向量检索与本地 Whisper 语音切片转录，原生对接本地 Ollama 模型，提供变异感知溯源引擎（修改源笔记时自动标识引文失效，避免假引用）。\n• **开放协议集成**：原生支持 Model Context Protocol (MCP) 与 Agent Client Protocol (ACP)。\n\n开源地址：https://github.com/madebyzan/knovum",
@@ -742,61 +798,5 @@
     "created_at": "2026-10-21T16:42:05Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12644"
-  },
-  {
-    "id": 12643,
-    "title": "【网站自荐】Reglyph：最原汁原味的pdf扫描件翻译工具",
-    "content": "网址：https://tryreglyph.com/zh/\n\n我做这个工具，是因为扫描件的pdf翻译一直不好用。证书、成绩单、说明书、论文的扫描版 PDF，丢进常见的翻译工具，要么提示没办法翻译扫描文档，要么就是简单的贴一个白底黑字的块到pdf中，非常不优雅。因此就想做一个更好用的扫描件翻译，既能够准确翻译，还能保持原有版面和背景，让扫描件pdf在翻译之后也能赏心悦目。\n\nReglyph会先识别出页面上的文字，把原文从图里擦掉，翻译完再排回原来的位置。表格、印章、签名栏、页码都留在原处，下载下来还是一份和原件差不多的 PDF。也能导出左边原文、右边译文的双语对照版。目前为了保证质量，只支持 19 种源语言语言的文档，后续会加入更多语言的支持。\n\n如果你也经常要看外文的pdf或者将文档翻译成外语（比如留学材料、外文合同、老设备的说明书），并且不满足于目前其他的pdf翻译软件提供的效果，可以来Reglyph试试。注册就送 5 页，无水印直接下载，无需绑卡。\n\n还有不少要改进的地方，比如语言支持不够多，扫描太糊的页面会认错字。用的时候遇到问题，欢迎在这里留言告诉我，如果有大量翻译的需求，也欢迎跟我联系！\n\n<img width=\"1470\" height=\"838\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f9165353-bc93-4444-b293-e5300bb2f37c\" />\n",
-    "created_at": "2026-10-21T16:29:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12643"
-  },
-  {
-    "id": 12642,
-    "title": "【开源自荐】Codex Co²：让多人共享同一个 Codex 会话，一起推进工作",
-    "content": "阮老师好，自荐一个开源项目 「Codex Co²」（https://github.com/SpaceCoder-Kafka/codex-co2/blob/main/README.zh-CN.md ）: **让多人共享同一个 Codex 会话，一起推进工作**。\n\n解决的痛点是，Codex 官方虽然也提供了会话分享功能，但只可以把只读的历史快照发给别人。但如果对方看完后想继续追问、补充信息，或让 Agent 接着排查的话，就满足不了，需要一种能持续交互的协作方式。\n\n**Codex Co² 通过生成邀请链接，让一方得以在官方 Codex Desktop 中继续工作，另外几方则可以通过浏览器加入所选会话，查看已有上下文，并向同一个 Agent 发送消息、跟进后续结果。**\n\n一个典型场景就是运营与研发的接力排障：\n运营先让 Codex 分析用户反馈的日志，得到初步结论，再将这条会话分享给研发。研发加入后，可以直接查看前面的日志分析过程，补充代码背景、追问可疑线索，让 Agent 继续定位问题。运营也能在同一条会话中补充用户信息、跟进排查进展。\n\n主要特点：\n- 共享持续进行的会话：加入后可以继续交互，后续消息与 Agent 回复持续同步。\n- 协作者只需浏览器：打开邀请，经分享者批准后加入，无需安装应用。\n- 由分享者控制范围：只共享选中的会话，可移除成员、结束共享，也可开启逐条消息审批；原生工具审批仍在分享者的 Desktop 中处理。\n\n<img width=\"2172\" height=\"724\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9216b184-a6be-456e-a5aa-b6400e828196\" />\n\n<img width=\"1506\" height=\"1044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11d02649-608e-4c33-922d-9049c746b913\" />\n\n<img width=\"1506\" height=\"1044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f8ed4ac7-0ab6-473b-8b64-f08c119ad713\" />\n\n<img width=\"1317\" height=\"1194\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/cd5dc945-3d8c-4683-9aa1-bd037f5f6117\" />\n\n<img width=\"1314\" height=\"1197\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/09b7d7ca-07b6-42d5-aa8b-f17b1200fe88\" />\n\n[中文演示视频](https://github-production-user-asset-6210df.s3.amazonaws.com/202612221/680116219-b1c2f544-3684-432e-9e03-f32ac15b9370.mp4?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20261021%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20261021T161455Z&X-Amz-Expires=300&X-Amz-Signature=d9b62c9807923b5c23565cb4c08f799a7957c3b3d6207684651ee079ac6ccca0&X-Amz-SignedHeaders=host&response-content-type=video%2Fmp4)",
-    "created_at": "2026-10-21T16:17:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12642"
-  },
-  {
-    "id": 12641,
-    "title": "[资源自荐] 财报核对台：宁德时代2025年报的三处数字口径核对",
-    "content": "网址：https://caibaodui.com/\n\n一个中文财报核对样张，将境外收入占比与毛利率、两种扣非字段、百分比与百分点分开解释，并定位到官方年度报告页码。\n\n目前覆盖宁德时代2025年报一份报告，包含8项年度数据、3档金额单位和4页原文定位。免费、无需登录；采用AI辅助整理，数字与字段对照官方披露文件复核，扣非差额原因保留待核。\n\n本人为维护者，提交原创阅读资源自荐。目前是单份报告的阅读样张。\n",
-    "created_at": "2026-10-21T13:06:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12641"
-  },
-  {
-    "id": 12640,
-    "title": "【开源自荐】Cybokron Dock Groups：一款按分组打开、隐藏或关闭应用的 Mac 菜单栏应用",
-    "content": "https://github.com/ercanatay/cybokron-dock-groups\n\n![Cybokron Dock Groups](https://raw.githubusercontent.com/ercanatay/cybokron-dock-groups/main/docs/screenshots/popup-panel.png)\n\n我开发了一款 macOS 菜单栏应用，名为 Cybokron Dock Groups。将应用和网站放入自定义名称的分组中，选择一个分组后，其中的应用会出现在 Dock 上方的弹窗中，你可以一次性打开、隐藏或关闭整个分组。每个分组还可以拥有自己的 Dock 图标。\n\n原生 Swift 开发，采用 MIT 许可，免费且开源。支持 Apple Silicon 和 Intel，需要 macOS 14 或更高版本。界面支持简体中文。中文产品页面：https://cybokron.com/zh/dock-groups/\n\n感谢阮老师",
-    "created_at": "2026-10-21T10:14:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12640"
-  },
-  {
-    "id": 12639,
-    "title": "【工具】Restoria —— 给老旧 Windows 用的扫描档案归档工具",
-    "content": "把装订档案的扫描件一键变成方向端正、干净、标准 A4 的归档页。\nWin7 SP1 到 Win11 都能跑，单文件、不联网、原图不动。\n方向检测靠装订孔这类物理证据，没有证据就不转（误转比漏转更糟）。\n\n我自己本身就在做档案数字化工程、整理了非常多的档案，既要在保密机子里运行，又能拥有较好性能的选择，这个工具我花了50多天写了出来，我的这一轮档案归档工作结束了，总共整理了1.8w张图片。目前来看做到了比较简单的操作交互。我写代码不是专业的，一定会会有瑕疵，我希望能够有各位英雄好汉们的帮助，帮我把把关。谢谢了！！！！\n\nhttps://github.com/MC5lan/restoria",
-    "created_at": "2026-10-21T09:39:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12639"
-  },
-  {
-    "id": 12638,
-    "title": "【网站自荐】卡雷达：号卡比价平台，帮你找到最划算的上网方式",
-    "content": "做了一个号卡比价展示网站，想自荐一下。\n\n网站：https://kaleida.com.cn\n\n把多个号卡平台的流量卡信息汇总到一起，统一展示、支持比价筛选。用户可以按运营商、月租、流量、通话时长等条件筛选，找到适合自己的上网方案，选中后扫码即可办理。\n\n几个花了功夫的地方：\n\n- 数据来自五个上游号卡平台，自动同步、统一格式，省去逐个平台翻找的麻烦。\n- 内置 AI 聊天助手，告诉它你的需求（比如\"月租 19 元以内、流量 100G 以上\"），它会从商品目录里智能推荐合适的卡。\n- 除了流量卡，还覆盖宽带和随身 WiFi 方案，方便横向比较。\n- 移动端优先设计，手机上浏览体验比较好。\n\n免费，不用注册，打开就能用。欢迎试用后提意见。",
-    "created_at": "2026-10-21T09:35:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12638"
-  },
-  {
-    "id": 12637,
-    "title": "【开源自荐】DyHub：抖音直播弹幕采集与分发中台",
-    "content": "DyHub 是一个抖音直播弹幕采集与分发中台，双采集内核自研（轻量纯代码直连 + 浏览器 CDP 旁观），产出统一事件协议，通过 WebSocket / SSE / Webhook 三种通道分发。MIT 协议开源。\n\n- 源码：https://github.com/ymstar/dyhub\n\n**为什么做这个**\n\n接抖音弹幕的消费场景很多——弹幕墙、弹幕游戏、AI 直播助理、数据看板——但每个都要自己啃 protobuf 解码、跟抖音私有协议、处理签名和风控。抖音一改协议，所有下游全得跟着改。\n\nDyHub 把采集和分发拆开：采集层把抖音私有 protobuf 翻译成统一的 DanmakuEvent，下游只认这一种事件格式，上游改协议不碰消费端。\n\n**主要功能**\n\n- 双采集内核：① 浏览器内核（默认）——真实 Chrome headless + CDP 旁观 wss 帧，最稳、抗风控，抖音改协议自动跟随；② 轻量内核——纯代码直连 wss，秒级连接、零浏览器进程，适合资源受限环境\n- 统一事件协议：弹幕、礼物、进场、点赞、关注、房间统计等全部标准化为 DanmakuEvent，消费端零感知\n- 三通道分发：WebSocket（低延迟实时）、SSE（浏览器一行接入）、Webhook（HMAC-SHA256 签名鉴权）\n- 多房间并发：单实例同时采集多个直播间，控制台一键切换查看\n- 每房间独立 Cookie：抖音同一账号同一时间只能在一个直播间，多房间共用登录态会互相竞争。支持为每个房间设置独立 Cookie（多账号多房间互不干扰），持久化到磁盘，Docker 重新部署自动恢复\n- 可视化控制台：实时弹幕流、事件筛选、房间管理、三通道对接演示与在线测试\n- Docker 一键部署：镜像内置 Chromium + 中文字体\n\n![控制台-实时监控](https://github.com/ymstar/dyhub/raw/main/docs/screenshots/console-monitor.png)\n\n**局限**\n\n浏览器内核需运行 Chromium（约 200MB 内存/房间）；轻量内核依赖第三方签名脚本，抖音改签名算法可能失效（可随时回退浏览器内核）。请仅采集自有或已授权的直播间。",
-    "created_at": "2026-10-21T09:29:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12637"
   }
 ]
