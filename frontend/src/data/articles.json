@@ -1,5 +1,13 @@
 [
   {
+    "id": 12749,
+    "title": "【项目自荐】Aitoword - 浏览器本地运行的免费 AI 回答转 Word 工具",
+    "content": "- **项目名称**：**Aitoword**\n- **项目链接**：[https://aitoword.online/](https://aitoword.online)\n\n- **项目简介**：一款免费在线转换工具，可在浏览器本地将 AI 回答、Markdown 文本转换为可编辑的 Word 文档，支持 LaTeX 公式与表格格式保留，无需上传文件、无需登录，保护数据隐私。\n- **使用流程**：粘贴或导入 → 选择预设并检查预览 → 下载 Word，再继续编辑。网站有现成示例，可以先看表格和公式的实际输出。正文和生成文件都在浏览器中处理，不上传至转换服务器，也不保存云端草稿。刷新或关闭页面后不会恢复输入，需要及时下载；加载网站本身仍需联网。\n\n- **目前的限制**：图片链接只保留文字说明，不自动下载图片；不是所有 LaTeX 语法都支持，无法转换的公式会保留原式并提示，也不支持公式截图识别。字体和最终分页需要在下载后用 Word 检查。\n- **项目标签**：工具，效率，办公\n\n\n<img width=\"1721\" height=\"862\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f09d4738-3882-438c-ae96-c7804c26c3b4\" />",
+    "created_at": "2026-10-24T18:29:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12749"
+  },
+  {
     "id": 12748,
     "title": "【工具自荐】Time Overlay 倒计时叠加层，以及 YouTube GIF Comments 本地 GIF 工具",
     "content": "两个已上线的浏览器工具，申请周刊考虑介绍。\n\n**项目名称：** Time Overlay\n**项目地址：** https://timeoverlay.co/\n**项目简介：** 浏览器本地的倒计时叠加层生成器。选时长、模板和位置后，可导出透明 PNG 序列、带 alpha 的 WebM（OBS / Streamlabs）、MOV（Final Cut）或绿幕 MP4。视频不上传，也不需要账号。免费版最长 5 分钟，Pro 一次性 $9。不是 AI 工具。\n\n**项目名称：** YouTube GIF Comments\n**项目地址：** https://youtubegifcomments.com/\n**项目简介：** 免费的视频转 GIF 和 GIF 压缩工具，全部在浏览器本地处理，不上传文件、无需注册、无水印。站点同时整理了 YouTube GIF 评论的使用教程。Not affiliated with YouTube, Google or Tenor.\n\n已搜索本仓库 issues，没有 timeoverlay.co 和 youtubegifcomments.com。FlowPrompter 已在 #10261，不重复投稿。\n",
@@ -790,13 +798,5 @@
     "created_at": "2026-10-21T20:43:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12649"
-  },
-  {
-    "id": 12648,
-    "title": "【工具自荐】NovAI：一个 OpenAI 兼容入口调用 DeepSeek/Qwen/GLM/Kimi 等 111 个中国模型，官方直连不加价，有免费层",
-    "content": "## 是什么\n\nNovAI 是一个 OpenAI 兼容的中国模型 API 入口：一个 `base_url` + 一个 key，调用 DeepSeek、Qwen（通义）、GLM（智谱）、Kimi（月之暗面）、MiniMax、Doubao（豆包）、Hunyuan（混元）等 111 个模型（含文本、图像、视频），端点：\n\n```\nbase_url = https://aiapi-pro.com/v1\n```\n\n任何 OpenAI SDK / 工具都能直接用：Cline、Continue、Aider、Cherry Studio、OpenClaw、LangChain 等，改 `base_url` 和模型名即可。另有远程 MCP 端点 `https://aiapi-pro.com/api/mcp`（提供 `cheapest_models` / `model_price` / `list_categories` 三个工具）。\n\n## 为什么可能值得一看\n\n- **官方直连、不加价**：走各家的官方 API，倍率固定 1.0（按官方列表价透传，不按人民币换算加价二次加价）。价格单可在 `/transparency.json` 和 `/china-ai-leaderboard.json` 机器读取核对。\n- **免费层是真的免费**：5 个通义/智谱的 Flash 模型（glm-4.7-flash、glm-4.1v-thinking-flash、glm-4.6v-flash、cogview-3-flash、cogvideox-flash），10 次/天、5 次/分，不需要信用卡、不需要手机号；视频 5 次/天。\n- **一个端点同时出文/图/视频**：豆包 Seedream（图）和 Seedance（视频）也在同一套 key 下。\n\n## 一条 curl 试\n\n```bash\ncurl https://aiapi-pro.com/v1/chat/completions \\\n  -H \"Authorization: Bearer $NOVAI_API_KEY\" \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\"model\":\"glm-4.7-flash\",\"messages\":[{\"role\":\"user\",\"content\":\"你好\"}]}'\n```\n\n免费 key 在 https://aiapi-pro.com/free 领取（不用卡）。\n\n## 链接\n\n- 免费层与限制说明：https://aiapi-pro.com/free\n- 价格/加价说明：https://aiapi-pro.com/transparency\n- 模型与价格 JSON：https://aiapi-pro.com/china-ai-leaderboard.json\n- MCP（PyPI）：`pip install aiapi-pro`（含 `novai-prices` 等工具）\n- 代码/文档：https://aiapi-pro.com/docs\n\n## 说明\n\n项目自荐。请求会原样转发到对应模型的官方 API，不在我们这层二次训练或改写内容；免费层有每日调用上限，付费按官方价透传。欢迎指出问题或建议模型覆盖。\n",
-    "created_at": "2026-10-21T19:42:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12648"
   }
 ]
