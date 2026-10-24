@@ -1,5 +1,37 @@
 [
   {
+    "id": 12748,
+    "title": "【工具自荐】Time Overlay 倒计时叠加层，以及 YouTube GIF Comments 本地 GIF 工具",
+    "content": "两个已上线的浏览器工具，申请周刊考虑介绍。\n\n**项目名称：** Time Overlay\n**项目地址：** https://timeoverlay.co/\n**项目简介：** 浏览器本地的倒计时叠加层生成器。选时长、模板和位置后，可导出透明 PNG 序列、带 alpha 的 WebM（OBS / Streamlabs）、MOV（Final Cut）或绿幕 MP4。视频不上传，也不需要账号。免费版最长 5 分钟，Pro 一次性 $9。不是 AI 工具。\n\n**项目名称：** YouTube GIF Comments\n**项目地址：** https://youtubegifcomments.com/\n**项目简介：** 免费的视频转 GIF 和 GIF 压缩工具，全部在浏览器本地处理，不上传文件、无需注册、无水印。站点同时整理了 YouTube GIF 评论的使用教程。Not affiliated with YouTube, Google or Tenor.\n\n已搜索本仓库 issues，没有 timeoverlay.co 和 youtubegifcomments.com。FlowPrompter 已在 #10261，不重复投稿。\n",
+    "created_at": "2026-10-24T16:28:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12748"
+  },
+  {
+    "id": 12747,
+    "title": "工具投稿：Plain Game —— 免费浏览器每日估算游戏",
+    "content": "## 工具\n\n[Plain Game](https://plaingame.fun/)\n\n## 简介\n\n一个 Wordle 风格的免费浏览器每日估算 / Fermi 小游戏：\n\n- 每日 7 轮，每轮 30 秒\n- 5 轮：说出数值接近目标的事物（山峰、电影、建筑等）\n- 2 轮：直接估算数字\n- 越接近得分越高，飞机飞得越高；隐藏金色回合双倍分\n- 模式：Daily（纽约午夜重置）、Practice、Discovery、Past flights、好友挑战链接、登机牌图片分享\n\n## 免费范围与限制\n\n- 完全免费：无需注册、下载或付费；进度保存在本地。\n- 独立站点，**不隶属** playplain.app。\n\n## 独立性与核验\n\n我是该产品的制作者（chaozicoder）。已检查公开首页、玩法与关于页；本投稿只介绍公开功能，不声称周刊已收录。",
+    "created_at": "2026-10-24T16:07:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12747"
+  },
+  {
+    "id": 12746,
+    "title": "工具投稿：Window Peeper AI —— 肖像生成 Window Peeper 梗视频",
+    "content": "## 工具\n\n[Window Peeper AI](https://windowpeeperai.pro/)\n\n## 简介\n\n一个把单张成年人肖像做成 Window Peeper 梗视频的小工具：\n\n- 上传一张清晰的成年人正面照片\n- 生成约 14 秒、9:16 竖屏 MP4（亮灯窗户、吃汉堡、对视、拉窗帘等节拍）\n- 可选 480p / 720p\n- 站点另有免费制作指南、提示词和梗来源说明\n\n## 免费范围与限制\n\n- 生成使用积分；积分包约从 $6.90 起一次性购买、不过期，失败会退积分。\n- **不是**无限免费生成；免费部分主要是指南 / 提示词 / 示例阅读。\n- 只接受同意出镜的成年人照片。\n\n## 独立性与核验\n\n我是该产品的制作者（chaozicoder）。已检查公开首页、指南与定价页；本投稿只介绍公开页面和定价边界，不声称周刊已收录。",
+    "created_at": "2026-10-24T16:07:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12746"
+  },
+  {
+    "id": 12745,
+    "title": "【开源自荐】wolf：基于 llama.cpp 的 Rust 本地推理工具，支持多轮对话与上下文保存",
+    "content": "## wolf\n\n**基于 llama.cpp 的 Rust 本地 GGUF 模型推理工具**\n\n一个二进制就能在本地跑 GGUF 模型，支持多轮对话、会话上下文保存与恢复，\nGPU 后端可切换（CUDA / Vulkan / ROCm / Metal）。\n\n## 项目地址\n\nhttps://github.com/DA3M0/wolf\n\n## 解决什么问题\n\n折腾本地推理时经常要记一大堆 llama.cpp 的 CLI 参数，会话上下文也没法跨\n进程保存。wolf 把这套流程封装成了一个 Rust CLI：\n\n- **单二进制** — 编译完一个可执行文件，装好就能跑，不用配 Python 环境\n- **多轮对话 + 上下文持久化** — 会话可以保存到磁盘，下次启动继续聊\n- **多 GPU 后端** — CUDA / Vulkan / ROCm / Metal 可切换，覆盖主流显卡\n- **模型管理** — 支持查看 GGUF 模型结构信息\n\n## 功能特性\n\n- 基于 llama.cpp 封装，性能与原生一致\n- 多轮对话，支持保存 / 恢复会话\n- GPU 加速后端可配置\n- GGUF 模型结构检查\n\n## 已知限制\n\n- Safetensors 目前只支持结构检查，暂不支持推理\n- GPU 加速需要自行编译对应后端\n\n## 快速上手\ngit clone https://github.com/DA3M0/wolf\ncd wolf\ncargo build --release\n./target/release/wolf chat --model ./qwen2.5-7b-q4.gguf\n",
+    "created_at": "2026-10-24T15:47:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12745"
+  },
+  {
     "id": 12744,
     "title": "【工具自荐】 AI 面部颜值分析工具：上传照片即可获得 1–10 分评分",
     "content": "访问地址: [face analysis](https://faceanalysisai.com/)\n\n<img width=\"542\" height=\"705\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba14daa2-6369-427b-8040-c15b97044451\" />",
@@ -10,7 +42,7 @@
   {
     "id": 12743,
     "title": "【软件自荐】人生岔路：随机出生、可分岔时间线的像素人生游戏（可直接试玩）",
-    "content": "### 项目简介\n\n「人生岔路 / Otherlife」是一个中文像素人生模拟游戏：从随机出生开始，经历学习、工作、关系与迁居，也可以回到过去的一个选择前，保留原来的未来，再展开另一条时间线。\n\n- **直接试玩**：https://lancerlsy.github.io/life-crossroads/\n- **项目仓库与完整版本**：https://github.com/LancerLSY/life-crossroads\n\n### 想探索的玩法\n\n- 在172个国家与地区中按权重抽取出生地，逐项揭晓身份与家庭背景。\n- 共同计划会记录起因、实际投入和结束原因；等待不会自动被算作完成。\n- 陪伴、帮助、承诺与失约会影响亲密和信任，后续故事沿已有经历发展。\n- 住宅、家庭与人物年龄改变像素场景；支持保存、回看和时间线分岔。\n\n网页试玩不需要安装，也不需要模型密钥；它使用本地故事引擎，进度保存在当前浏览器。完整版本可以自行接入DeepSeek，增加自由对话和有事实依据的年度人物关系分析。游戏界面目前为中文，仓库有中英文说明；源码公开可查看，暂未声明开源许可证。\n\n![实际像素渲染场景](https://raw.githubusercontent.com/LancerLSY/life-crossroads/main/docs/media/otherlife-cover.png)\n\n作者自荐，欢迎试玩和具体反馈，尤其想了解哪些因果后续显得合理、哪些关系变化显得生硬。\n",
+    "content": "### 项目简介\n\n「人生岔路 / Otherlife」是一个中文像素人生模拟游戏：从随机出生开始，经历学习、工作、关系与迁居，也可以回到过去的一个选择前，保留原来的未来，再展开另一条时间线。\n\n- **直接试玩**：https://lancerlsy.github.io/life-crossroads/\n- **项目仓库与完整版本**：https://github.com/LancerLSY/life-crossroads\n\n### 想探索的玩法\n\n- 在172个国家与地区中按权重抽取出生地，逐项揭晓身份与家庭背景。\n- 共同计划会记录起因、实际投入和结束原因；等待不会自动被算作完成。\n- 陪伴、帮助、承诺与失约会影响亲密和信任，后续故事沿已有经历发展。\n- 住宅、家庭与人物年龄改变像素场景；支持保存、回看和时间线分岔。\n\n网页试玩不需要安装，也不需要模型密钥；它使用本地故事引擎，进度保存在当前浏览器。完整版本可以自行接入DeepSeek，增加自由对话和有事实依据的年度人物关系分析。游戏界面目前为中文，仓库有中英文说明；原创代码及有权授权的美术采用 MIT；第三方数据与依赖保留原条款，详见仓库 LICENSE 与 NOTICE。\n\n![实际像素渲染场景](https://raw.githubusercontent.com/LancerLSY/life-crossroads/main/docs/media/otherlife-cover.png)\n\n作者自荐，欢迎试玩和具体反馈，尤其想了解哪些因果后续显得合理、哪些关系变化显得生硬。\n",
     "created_at": "2026-10-24T12:21:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12743"
@@ -766,37 +798,5 @@
     "created_at": "2026-10-21T19:42:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12648"
-  },
-  {
-    "id": 12647,
-    "title": "[开源自荐] Candle Audit Kit：离线检查 OKX K 线缺漏、重复与 CSV/JSON 一致性",
-    "content": "项目地址：https://github.com/linqingzi/candle-audit-kit\n免安装合成报告预览：https://linqingzi.github.io/candle-audit-kit/\n\n维护者自荐。Candle Audit Kit 是一个 MIT 许可的 Python 本机命令行工具，面向研究人员与数据工程师，在研究或回测前检查本地 OKX OHLCV 输入。\n\n主要功能：\n- 检查 K 线缺漏、重复、时间窗口、已收盘状态和数量单位。\n- 将 CSV 与原始原生 JSON 响应逐字段对账，保留原始十进制字符串。\n- 保存不可变数据快照、Parquet 数据和来源哈希，并生成中英文 HTML 报告与 JSON 证据。\n\n可以先直接打开预览，查看固定的合成样例；预览没有文件上传功能。实际稽核在本机运行。安装当前源码后，可以使用 `candle-audit demo --root data/demo --language en` 复现英文示例。\n\n项目仍属预发布阶段，支持 CPython 3.11–3.14、macOS/Linux。示例数据全部是合成的，不连接交易账户、不执行交易。一致性检查通过并不能证明文件来自真实交易所，也不代表收益或投资建议。",
-    "created_at": "2026-10-21T19:27:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12647"
-  },
-  {
-    "id": 12646,
-    "title": "【工具自荐】Sorsa API：用于公开 X / Twitter 数据的只读 REST API 与 MCP 服务",
-    "content": "项目：**Sorsa API**\n\n官网：https://api.sorsa.io\n文档：https://docs.sorsa.io\n开源 MCP 服务：https://github.com/Sorsa-io/sorsa-mcp\n\n这是一次来自产品方的工具自荐。Sorsa API 提供公开 X（Twitter）数据的只读 REST 接口，包括用户资料、帖子、搜索、关注者与关注列表、列表、社区及互动验证，可用于数据分析、研究和 AI 应用。\n\n使用一个 Sorsa API Key 即可接入，无需提供 X 账号密码或 Cookie，也不需要 X 开发者账号。提供在线 API Playground、OpenAPI 描述文件，以及可在 Cursor、Claude Desktop 等客户端使用的 MCP 服务。\n\n新用户可试用 100 次请求，无需信用卡；更多用量需付费。服务不支持发帖、私信或读取私密账号内容。Sorsa API 是独立服务，与 X Corp. 无隶属关系。",
-    "created_at": "2026-10-21T18:21:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12646"
-  },
-  {
-    "id": 12645,
-    "title": "【开源自荐】Dopamine：针对 Apple Silicon Mac 的原生防休眠与合盖背光断电工具",
-    "content": "https://github.com/UniversalSDK/Dopamine\n\n![Dopamine](https://dopamine.33rd.pro/assets/icon.jpg)\n\n### 项目简介\nDopamine 是一款专为搭载 Apple Silicon（M1/M2/M3/M4）MacBook 设计的原生 macOS 菜单栏防休眠与屏幕保护工具。\n\n### 解决的核心痛点\n在 MacBook 上使用传统防休眠工具（如 Amphetamine / Caffeine）时，如果合上笔记本盖子，Liquid Retina / Mini-LED 屏幕底层的背光往往依然处于通电常亮状态，不仅加速发热烘烤键盘，还严重消耗电池。\n\nDopamine 针对 Apple Silicon 芯片进行了深度底层优化：\n1. **合盖硬件级断电**：合上屏幕时，通过底层硬件接口与 DPMS 机制自动将背光彻底切断（0.0 尼特纯黑），同时保持 CPU 后台下载、大模型推理、视频渲染或编译持续运行，完全杜绝发热。\n2. **开盖毫秒级复原**：打开屏幕时，无缝恢复原本设置的亮度与色彩。\n3. **轻量纯原生**：100% Swift 原生打造，内存仅占用 ~15MB，零 Electron 臃肿。\n4. **多语言适配**：原生支持简体中文、英语等 11 种语言。\n5. **苹果官方公证**：已通过 Apple Developer ID 签名与 Apple 官方安全公证（Notarized by Apple），macOS Gatekeeper 零报警直接运行。\n\n- **代码仓库**：https://github.com/UniversalSDK/Dopamine\n- **官方网站**：https://dopamine.33rd.pro\n- **Homebrew 一键安装**：\n```bash\nbrew install --cask universalsdk/dopamine/dopamine\n```\n- **开源协议**：MIT\n\n感谢阮老师与周刊读者！",
-    "created_at": "2026-10-21T17:23:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12645"
-  },
-  {
-    "id": 12644,
-    "title": "【开源自荐】Pulse：Windows 桌面悬浮小组件，随时看整机功耗、续航和真实网络延迟",
-    "content": "笔记本现在耗电多少瓦、剩下的电还能用多久、网络是真断了还是只是慢？Pulse 把这些信息放在桌面的一张小卡片上，随时可见。它用原生 C++ 和 Direct2D 编写，单个 exe 免安装，支持 **Windows 10 / 11**。\n\n![Pulse 完整模式，显示 CPU、GPU、内存、处理器功耗，电池状态和网络延迟](https://raw.githubusercontent.com/yftx888/Pulse/main/docs/screenshots/demo-full.webp)\n\n主要功能：\n\n- **功耗与续航**：读取 Windows 自带的 RAPL 能耗计数器，显示处理器、CPU、核显、内存的功耗；用电池时给出平滑后的续航预计和到 20% 的剩余时间。无需管理员权限。\n- **真实网络延迟**：用 HTTP 请求测延迟并判定断网，走系统代理，所以在 Clash TUN 这类 ping 总显示 0 ms 的环境下也准确；断网和恢复时弹出提醒卡片。\n- **两种显示模式**：完整卡片和迷你单行，双击切换，各自显示哪些指标都能在右键菜单里勾选。\n\n![Pulse 迷你模式，一行显示电量、功耗、CPU、内存、网速和延迟](https://raw.githubusercontent.com/yftx888/Pulse/main/docs/screenshots/demo-compact.webp)\n\n迷你模式自身只占单核约 0.1%–0.3%，只采集勾选的指标。程序只读取系统计数器，不改系统设置，联网仅用于测延迟，没有统计和自动更新。发布包由 GitHub Actions 从源码构建，采用 MIT 许可证。\n\n- GitHub：[yftx888/Pulse](https://github.com/yftx888/Pulse)\n- 下载：[Releases](https://github.com/yftx888/Pulse/releases/latest)",
-    "created_at": "2026-10-21T16:42:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12644"
   }
 ]
