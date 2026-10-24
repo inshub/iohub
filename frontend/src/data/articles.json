@@ -1,5 +1,37 @@
 [
   {
+    "id": 12723,
+    "title": "【开源自荐】Borg：Rust 编写的个人 AI 助手，自我修复，默认开启沙箱",
+    "content": "Borg 是一个用 Rust 编写的个人 AI 助手，运行在你自己的电脑上，可以连续几周无人值守。\n\n- 自我修复：子系统崩溃后自动重启，每晚自动修复卡住的任务，不消耗 token\n- 不怕限流：API key 自动轮换，出错时切换到下一个模型服务商\n- 默认开启沙箱，文件工具屏蔽 ~/.ssh、~/.aws、.env\n- 在终端、桌面应用，或 Telegram、Slack、Discord、WhatsApp、iMessage 里对话\n- 一条命令从 OpenClaw 或 Hermes Agent 迁移\n\n[开源地址](https://github.com/adelphidata/borg)\n",
+    "created_at": "2026-10-24T03:07:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12723"
+  },
+  {
+    "id": 12722,
+    "title": "【开源自荐】ML Studio：全学科通用的桌面端机器学习工作台，本地优先，一条链出实验报告",
+    "content": "### 项目：ML Studio——全学科通用的桌面端机器学习工作台，一条链路跑完\n\n- 项目地址：https://github.com/Marvin-LiJunZan/ML-Studio\n- 官网地址：https://marvin-lijunzan.github.io/ML-Studio/\n- 下载地址：https://github.com/Marvin-LiJunZan/ML-Studio/releases\n\n很多做实证研究的科研人员与工程师（无论理工农医、经管金融还是实证社科），手头都有大量表格数据，希望快速试验哪个机器学习模型表现最好，并生成规范的汇报图表。但大家往往卡在配 Python/Conda 环境、排查依赖冲突、调超参玄学，以及用 matplotlib 一张张画残差图、混淆矩阵、ROC 曲线的繁琐流程中。商业 SaaS 又存在科研数据外泄隐患。\n\n我开源了 **ML Studio**，一个基于 Electron + FastAPI + Scikit-learn + Optuna 构建的跨平台桌面端工作台（Windows / macOS / Linux）：\n\n1. **拖拽即跑**：拖入 CSV/Excel 表格，自动推断列类型、清洗缺失值与异常值；\n2. **四大建模范式**：支持回归、分类、聚类与时间序列，基于 Optuna 自动化多目标超参寻优；\n3. **学术级训练诊断**：内置残差图、学习曲线、过拟合预警、特征相关性热力图等全套 ECharts 动态看板；\n4. **一键生成实验报告**：一键导出包含高分辨率图表与统计分析结论的 HTML / Markdown / Word / PDF 完整报告；\n5. **纯本地隐私优先**：运算与数据全部留存在本机，无外部云端依赖，断网可用；\n6. **前瞻性 AI-Native 架构**：我们发布了 [RFC-001 规范](https://github.com/Marvin-LiJunZan/ML-Studio/blob/main/docs/rfcs/RFC-001-AGENTIC-GUI-SPECIFICATION.md)，借鉴 VS Code 的 `config.json` 强类型配置、全局命令总线（Command Registry）与语义控件树快照（Semantic Control Tree），提供本地 MCP（Model Context Protocol）服务，方便外部 AI Agent 直接以 100% 确定性操控软件。\n\n![ML Studio 工作区截图](https://raw.githubusercontent.com/Marvin-LiJunZan/ML-Studio/main/assets/img/app-workspace.png)\n\n目前 v1.0.0 已在 GitHub Releases 发布各平台开箱即用安装包，采用 MIT 协议开源，欢迎大家试用、拍砖和共同交流！\n",
+    "created_at": "2026-10-24T02:52:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12722"
+  },
+  {
+    "id": 12721,
+    "title": "【开源自荐】Open Walnut：远程开发机上的 Claude Code，SSH 断了照样跑，一个网页全管",
+    "content": "项目地址：https://github.com/EvanZhang008/open-walnut\n开源协议：MIT\n\n我平时在好几台远程开发机上跑 Claude Code。以前的办法是每台机器开一个 SSH 窗口，再套一层 tmux，窗口一多就分不清哪个会话在等我，笔记本一合盖、网络一断，还要一个个重新连回去。\n\nOpen Walnut 是我为这件事写的自托管网页。每台主机上有一个小 daemon，Claude Code 进程归它管，所以 SSH 断了或者笔记本睡眠，远程会话都在继续跑；重新连上后，历史从磁盘上的会话日志恢复。daemon 由 Walnut 通过免密 SSH 自动部署和升级，不用手动拷文件。\n\n所有会话在一个网页里并排看。每个会话有自己的 diff，列出它改过的每个文件（从会话日志里算，不依赖 git），可以逐行评论，再把评论发回同一个会话。旁边还有任务、笔记和长期记忆，以及一个能帮你开会话、找上下文的个人 AI。\n\n数据都在本机 `~/.open-walnut/`，没有遥测，也不需要注册账号。\n\n安装（macOS 或 Linux，脚本自带 Node；需要一个已登录的 Claude Code）：\n\n```bash\ncurl -fsSL https://github.com/EvanZhang008/open-walnut/releases/latest/download/install.sh | sh\nwalnut web\n```\n\n也可以 `brew install evanzhang008/tap/open-walnut` 或 `npm install -g open-walnut`。\n\n<img width=\"1600\" height=\"900\" alt=\"多个会话并排的首页\" src=\"https://github.com/user-attachments/assets/afac2fa6-63ac-44ba-a681-2be082e9c745\" />\n\n<img width=\"1600\" height=\"900\" alt=\"一个会话的 diff 审阅\" src=\"https://github.com/user-attachments/assets/8170ad2e-0a32-4413-a7a0-6a08c9b5b5a5\" />",
+    "created_at": "2026-10-24T01:34:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12721"
+  },
+  {
+    "id": 12720,
+    "title": "【开源自荐】丹青取色：把古画里的颜色变成有名字的色卡",
+    "content": "想找配色参考的时候，看古画比看色卡舒服，但画里的颜色叫不上名字，就做了这个工具。上传一幅画，先 k-means 聚出主色，再去 526 种中国传统色里找最接近的——CIELAB 空间算 CIE94 色差，同名时让给占比更高的簇。《千里江山图》取出来是蟹壳灰、鲛青、田螺绿，《富春山居图》取出来全是灰，水墨画本来就没有彩色。\n\n部分色名附了出处，比如「靛青，蓼蓝发酵所制，青出于蓝本此」，一共整理了 44 条，不敢保证全对，欢迎指正。可以存成朋友圈竖版、手机壁纸或方图的色卡，也能导出 CSS 变量，变量名就是色名（`--蟹壳灰: #695e45`）。纯前端没有后端，图片不上传服务器。\n\n在线：https://cchichi.github.io/danqing-palette/\n代码：https://github.com/cchichi/danqing-palette",
+    "created_at": "2026-10-24T00:15:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12720"
+  },
+  {
     "id": 12719,
     "title": "工具推荐：私密PDF工具箱，10 个纯本地运行的 PDF 工具，文件永不上传",
     "content": "私密PDF工具箱（PrivatePDF）是一个纯本地运行的在线 PDF 工具箱，包含合并、拆分、页面整理、旋转、压缩、水印、页码、图片转 PDF（支持 iPhone HEIC）、PDF 转图片、提取文字共 10 个工具。全部功能在浏览器本地完成（pdf-lib + PDF.js），没有后端、没有上传接口，断网也能用（PWA），无文件大小与次数限制，中英双语。MIT 开源，可自部署/内网部署。\n\nhttps://github.com/cchichi/privatepdf\n\n说明：我是该项目开发者，但不是商业推广，项目完全免费无广告。\n",
@@ -98,7 +130,7 @@
   {
     "id": 12707,
     "title": "【产品设计自荐】Companest 伴境：把 AI 工作伙伴放进一个有房间和角色的小世界，从邮件事项开始",
-    "content": "大家好，我是 Owen Teng，与 Robinson AI Lab 共建 Companest，负责产品方向、交互设计、前端探索和产品呈现。想分享一个工作场景 AI 产品的交互探索：[Companest · 伴境](https://github.com/Owen-Teng/companest)。\n\n它尝试让“找到要处理的事、看清上下文、决定下一步”更直观：房间组织工作入口，角色提供亲近感，事项板集中呈现需要关注的工作。邮件是第一个可用的预览工作流。\n\n![Companest 实际首页，使用虚构数据](https://raw.githubusercontent.com/Owen-Teng/companest/main/docs/media/companest-world.png)\n\n目前可以公开查看：\n\n- 六位助理的场景动画，以及每项能力的当前状态。\n- 邮件事项、上下文、可编辑回复与后续变化的 [五步实机截图分镜和功能说明](https://github.com/Owen-Teng/companest/blob/main/docs/MAIL-FEATURES.zh-CN.md)。\n- [产品创意由来](https://github.com/Owen-Teng/companest/blob/main/docs/ORIGIN.zh-CN.md) 和 [获取及数据边界](https://github.com/Owen-Teng/companest/blob/main/docs/ACCESS.md)。\n\n当前是 Windows 邮件预览 0.3.26 的产品展示，源码和安装包尚未公开。163 邮箱与可选 AI 建议需要用户自己的受支持环境。其余五位助理的动画已经存在，不代表完整业务工作流已接通；截图使用独立虚构数据，分镜不是连续录屏，也没有据此宣称效率提升。\n\n欢迎从交互角度给建议：看完演示后，你能否判断哪个事项需要你处理，以及一封新回复会怎样改变原来的草稿？可以在 [反馈区](https://github.com/Owen-Teng/companest/issues) 描述一个不含私人信息的具体场景。",
+    "content": "如果打开邮箱，像走进一间小屋，会怎样？\n\n![邮件伙伴原有场景动画](https://raw.githubusercontent.com/Owen-Teng/companest/main/docs/media/assistant-mail.gif)\n\n我是 Owen Teng，与 Robinson AI Lab 一起做 **Companest（伴境）**：有动画伙伴、用不同房间承载工作的 Windows 工作空间。邮件是首先探索的流程。\n\n这次展示一个很具体的变化：\n\n1. 项目材料约定 **20:00** 交付。你读完背景，写好回复。\n2. 新邮件来了：时间改成 **22:00**。\n3. 变化留在原事项里，草稿也保留，并提醒你先核对新情况，再回复。\n\n![实际应用：交付从20:00改为22:00，原草稿保留并提示核对；虚构示例数据](https://raw.githubusercontent.com/Owen-Teng/companest/main/docs/media/scene-update-detail.jpg)\n\n房间带你进入，黑板让你看到待处理的事，决定仍由你做。\n\n**这样的房间会让你更愿意打开工作，还是更喜欢普通列表？**\n\n[20秒英文字幕短片](https://github.com/Owen-Teng/companest/blob/main/docs/media/companest-reddit-20s.mp4) · [项目与更多截图](https://github.com/Owen-Teng/companest)\n\n*早期 Windows 预览；源码与安装包尚未公开。短片由原有动画及真实应用截图剪辑，使用虚构数据，不是连续操作录屏。界面为中文，旧截图仍有 Friday 字样；其他五个房间的完整流程未接通。文案由 Codex 协助，无提效或用户规模结论。*\n",
     "created_at": "2026-10-23T12:32:42Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12707"
@@ -766,37 +798,5 @@
     "created_at": "2026-10-21T02:28:10Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12622"
-  },
-  {
-    "id": 12621,
-    "title": "[开源自荐] 无剧透回放：防剧透项目，目前提供英雄联盟赛事回放功能",
-    "content": "**官方仓库与安装说明：[无剧透回放 / Spoiler-Free Replays](https://github.com/cooleryu/spoiler-free-replays)**\n\n我是作者，做这个项目的念头很简单：想看比赛，也想好好睡觉。\n\n遇到凌晨的比赛，熬夜看直播舍不得睡，第二天补回放又很容易被剧透。即使躲过了比分，一张封面、视频剩余时长，或者一共有几局，都可能提前告诉你结果。我希望能先安心睡觉，等官方回放出来后再看，把悬念尽量留到自己观看的那一刻。\n\n说实话，这个项目没有什么高深的技术，是我在 AI 帮助下做出来的一个小工具。只是觉得，如果能少熬几次夜，好好休息，第二天再享受比赛，也是一件值得做的事。\n\n它目前是一个开源、免费的本地英雄联盟赛事回放工具，视频来源为 B 站。安装好后，打开页面、刷新名单、选一场比赛，就可以从第一局开始看：\n\n- 隐藏界面中的比分、封面、视频时长、进度条和总局数，减少点开回放前后被提示结果的机会。\n- 正片结束后自动接下一局，尽量不用返回列表找视频，也少一次看到后续局数的机会。\n- 没有弹幕，保留暂停、音量、全屏和按秒快进快退等基本操作。\n\n这里看的仍是回放，但希望能保留一些看直播时“不知道接下来会发生什么”的乐趣。能正常作息，就不必每次都为了比赛硬撑到凌晨。\n\n目前需要在自己的电脑上安装运行，也可以让能操作本地项目的 AI 帮忙安装、启动。日常获取比赛名单由程序按固定来源和规则完成，观看不需要调用 AI，也不需要 API Key。原创代码采用 MIT 许可证。\n\n当前版本为 v0.1.2-preview，仍是早期预览，只覆盖部分英雄联盟赛事；名单可能延迟或遗漏。工具隐藏的是界面提示，视频画面和解说本身仍可能剧透。欢迎试用，也欢迎反馈遇到的问题。\n\n- [源码、安装说明与问题反馈](https://github.com/cooleryu/spoiler-free-replays)\n- [当前版本：v0.1.2-preview](https://github.com/cooleryu/spoiler-free-replays/releases/tag/v0.1.2-preview)\n- [观看操作演示：v0.1.1-preview](https://github.com/cooleryu/spoiler-free-replays/releases/download/v0.1.1-preview/spoiler-free-replays-demo.mp4)\n\n![v0.1.1-preview 演示封面](https://github.com/cooleryu/spoiler-free-replays/releases/download/v0.1.1-preview/spoiler-free-replays-demo-poster.jpg)\n",
-    "created_at": "2026-10-21T02:25:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12621"
-  },
-  {
-    "id": 12620,
-    "title": "【网站自荐】ExamParser:将试题文件整理为excel格式，用于整理导入导出",
-    "content": "网站地址：[https://examparser.com](url)\n为教育工作者准备的小工具，处理试题文件的格式标准化的问题\n非常小的工具，希望能帮助到需要的人",
-    "created_at": "2026-10-21T02:19:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12620"
-  },
-  {
-    "id": 12619,
-    "title": "【网站自荐】RoamDial：随机收听世界各地的电台直播，拖动地球就能换台",
-    "content": "我做了一个随机收听世界各地电台直播的网站，想自荐一下。\n\n网站：https://roamdial.com/\n\n全世界的网络电台按地理位置铺成一张星图。拖动地球，准星停在哪里就听哪里；按「下一站」就随机跳到地球上的另一个角落。比如按一下，可能落到墨西哥的一个流行台，卡片上显示此刻正在放的歌，点一下就能跳到网易云或 Spotify 去听。\n\n几个做的时候花了功夫的地方：\n\n- 公开电台目录里有大量死链。服务器每周把所有播放地址测一遍，随机只从测得通的台里挑。\n- 各台原始音量能差 30 dB，网页里实时测量、自动拉平，换台不会突然很响。\n- 电台没推送曲名时，可以点「识别这首歌」；能对上时间的会显示同步歌词。\n\n免费，没有广告，不用注册，打开浏览器就能听，手机上可以添加到主屏幕。部分境外电台在国内直连放不出来，网站会尽量避开，但仍可能碰到。\n\n这是一个业余项目，电台目录来自 Radio Browser。欢迎试用后提意见。\n\n![RoamDial](https://roamdial.com/og.png)\n",
-    "created_at": "2026-10-21T02:01:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12619"
-  },
-  {
-    "id": 12617,
-    "title": "【自荐】Flappy Car：点击喷气穿过星舰的浏览器小游戏",
-    "content": "自荐一个我用 Codex 辅助开发的个人学习项目 **Flappy Car**：让像素 Roadster 喷气，穿过星舰助推器之间的空隙。中文界面，免费，手机和电脑浏览器都能直接玩。\n\n试玩：[Flappy Car](https://flappy-car.xiaoke.ai/?utm_source=ruanyf_weekly&utm_medium=community&utm_campaign=showcase_20261021)\n\n源码：[liuzhao1225/flappy-car](https://github.com/liuzhao1225/flappy-car)\n\n点击屏幕、按空格或 ↑ 上升，每过一组障碍得 1 分，10 分可获得第一枚 Doge 铜牌。结算后可以保存成绩图，朋友扫描成绩图上的邀请二维码即可开玩并自动加为好友，在好友榜比较最高分。欢迎试玩并反馈操作手感。\n\n![Flappy Car 宣传封面，使用游戏现有像素素材排版，非玩家成绩](https://flappy-car.xiaoke.ai/assets/social-preview.jpg)\n\n这是个人学习项目，与 Tesla、SpaceX 及 Flappy Bird 原作者无关联。Flappy Bird 原始游戏、美术和音效归原作者；素材来源及保留的许可见[玩法页与项目资料](https://flappy-car.xiaoke.ai/about.html)。配图为宣传封面，不代表实测分数或玩家数据。本文由 Codex 辅助整理。\n",
-    "created_at": "2026-10-20T22:23:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12617"
   }
 ]
