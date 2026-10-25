@@ -1,5 +1,29 @@
 [
   {
+    "id": 12753,
+    "title": "【开源自荐】Lumno：一个快捷键搜索标签页、书签和历史的浏览器命令栏",
+    "content": "Lumno 是我开发的一个浏览器扩展，给浏览器加上类似 Spotlight 的命令栏，并替换默认的新标签页。\n\n在任意网页按 `Cmd+Shift+K`（Windows 为 `Ctrl+Shift+K`），就能在同一处搜索已打开的标签页、书签和历史记录，直接打开网址，或者用前缀在 YouTube、GitHub、B 站等网站站内搜索，也能把问题直接发给 ChatGPT、DeepSeek 等 AI。中文标题可以用全拼或首字母搜索。新标签页可以换壁纸、加快捷方式、浏览书签。另外有按最近使用顺序切换标签页、按住 Shift 点链接小窗预览、切走时视频自动画中画等功能，适合从 Arc 迁移过来、怀念它命令栏的人。\n\n免费，GPL-3.0 协议开源，无需注册账号，不收集任何数据。支持 Chrome、Edge、Firefox，以及 Arc、Brave、Zen 等浏览器。\n\n官网：https://lumno.kubai.design/\n源码：https://github.com/kubai087/lumno-extension\n演示视频：https://x.com/Kubai087/status/2109339158863056998\n",
+    "created_at": "2026-10-25T07:17:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12753"
+  },
+  {
+    "id": 12752,
+    "title": "【开源自荐】请旨 Ask Key：给 AI 用的 Mac 密钥管家",
+    "content": "请旨（Ask Key）是我开发的一款 macOS 菜单栏应用，用来管理 AI 编程助手要用的密钥。\n\n用 Claude Code、Codex 这类 Agent 干活，迟早要给它密钥：部署要 token，登服务器要密码。常见做法是把密钥贴进对话，或者写在 .env 里，结果密钥会明文留在对话记录和日志里。我统计过自己的记录：家里 NAS 和 Mac mini 共用的一个密码，在 20 个 AI 对话里明文出现了 1483 次。\n\n请旨换了一条路。密钥加密存在本机，Agent 通过 MCP 只能看到密钥的名字和用法说明，看不到值。它要用时，通过请旨运行命令；敏感密钥会弹窗请示，写明是哪个 Agent、要运行什么命令，你可以选「允许本次」「允许 30 分钟」或「拒绝」。批准后，密钥作为环境变量或临时文件，只交给那一条命令。批一次 30 分钟，同一台 Mac 上的多个 Agent 都能直接用。\n\n能存 API Key、token、密码，也能存 SSH 私钥、.p8、PEM 这类文件，支持导入 .env。Claude Code、Codex、Cursor、Grok Build 一键接入，其他支持 MCP 的客户端可以手动配置。\n\n请旨免费，MIT 协议开源，安装包经过 Apple 公证，中文界面，需要 Apple 芯片的 Mac、macOS 14 或更高版本。\n\n主页：https://askkey.sudohg.com/zh/\n源码：https://github.com/sudoHG/AskKey\n下载：https://github.com/sudoHG/AskKey/releases/latest\n\n欢迎通过 GitHub Issues 反馈使用中遇到的问题。\n",
+    "created_at": "2026-10-25T03:04:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12752"
+  },
+  {
+    "id": 12751,
+    "title": "【工具自荐】SpeakGo（eng.speak-go.com）：免注册基础英语打字试学与公开英语短故事",
+    "content": "项目：SpeakGo（eng.speak-go.com）\n\n我们在做一个中文界面的英语学习网站。这里自荐两个可以直接查看的入口：\n\n- 基础英语打字试学：https://eng.speak-go.com/english-typing\n  一组12项基础词句，无需先注册；从看词跟打开始，页面提供回忆拼写和听音写词模式。起点很基础，不是考试词库，也不是语言水平测试。\n- 英语短故事：https://eng.speak-go.com/stories/the-fox-and-the-grapes\n  公开原文并列出Gutenberg原文来源；页面有继续精读和学习笔记的入口。\n\n访客练习进度保存在当前浏览器。网站不提供口语发音评分；完成试学一组不等于完成整课。本项目不是开源项目，此次按在线学习工具/资源自荐。\n\n欢迎体验后指出不清楚或不好用的地方。",
+    "created_at": "2026-10-25T02:35:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12751"
+  },
+  {
     "id": 12750,
     "title": "【开源自荐】Oleafly：Overleaf 开源平替，支持多人协作和 AI 助手的科研写作编辑器",
     "content": "https://github.com/Oleafly/Oleafly\n官网：https://oleafly.com\n\nOleafly 是免费开源（AGPL-3.0）的科研写作编辑器，在一个工作区里同时支持 LaTeX、Typst 和 Markdown。内置 Tectonic、Typst 和 Pandoc，不用单独安装 TeX 发行版。\n\n**写作与编辑**\n- 源码编辑和可视化编辑，可以无损来回切换\n- 全项目代码智能：自动补全、跳转定义、查找引用、全项目重命名\n- 离线的拼写和语法检查，能识别 LaTeX 语法\n- 在画布上画图，自动生成 TikZ、Typst 或 Mermaid 代码\n- 47 个内置转换工具，以及引用和公式工具\n\n**预览、导入与导出**\n- LaTeX 和 Typst 的 PDF 与源码双向跳转\n- 内置 PDF 阅读器：可独立窗口、双页、深色和阅读模式\n- 导出 PDF、PDF/A、PDF/UA、DOCX、HTML、EPUB、PowerPoint、Markdown、Typst 和 LaTeX\n- 导入 ZIP、文件夹、GitHub、arXiv、Word、HTML、Markdown、PDF，支持 Overleaf 项目导入与同步\n- 上千个文档模板，也可以保存自己的模板\n\n**协作与同步**\n- 实时多人协作，显示每个人的光标，不限协作者人数\n- 评论讨论：回复、@提及、标记已解决\n- 自建协作服务器：一条命令安装，带管理后台和单点登录\n- 云同步文献库和设置\n- 内置 Git 面板，可发布到 GitHub、推送和拉取\n- 每次编译成功自动保存检查点，可随时恢复\n\n**AI 与科研**\n- 自带密钥接入任意模型：DeepSeek 等 10 家服务商或任何自定义接口，也支持 Ollama 本地模型\n- 编辑器里直接运行 14 种命令行智能体，包括 Claude Code、Codex 和 Gemini CLI，也可以接入任何 ACP 智能体\n- AI 的每处修改都以差异形式展示，可以逐个文件确认或撤销\n- AI 修改源码后会自动编译，并检查生成的 PDF\n- 科研任务：在独立工作区里运行，可以查看智能体的进度、预览文件，再选择性应用，适合放着过夜跑\n- 同时检索 arXiv、Semantic Scholar、Crossref、PubMed 和 OpenAlex\n- 导入 Zotero（本地和网页文献库）、BibTeX、RIS、EndNote 和 Zotero RDF\n- 支持 MCP：可给助手接入 MCP 工具，也可把项目工具开放给外部智能体\n- 内置 36 个科研技能，还能下载更多\n- oleaflyc 命令行工具，可在终端里编译和管理项目\n\n**投稿前检查**\n- 六类检查：编译、投稿规范、简历 ATS、无障碍（106 项 PDF/UA 检查）、参考文献、隐私\n- 盲审检查：找出作者姓名、致谢、PDF 元数据和批注\n- 参考文献检查：未定义引用、缺失文件、重复键、未引用的条目\n\n完整的简体中文界面（共 21 种界面语言），不需要注册账号，支持 macOS、Windows 和 Linux。\n\n![Oleafly](https://github.com/Oleafly/Oleafly/raw/main/docs/assets/readme/hero-collab.png)",
@@ -774,29 +798,5 @@
     "created_at": "2026-10-22T03:32:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12653"
-  },
-  {
-    "id": 12652,
-    "title": "【工具自荐】ScreenShade：让 AI 继续操作桌面时遮黑 Mac 屏幕",
-    "content": "项目地址：https://github.com/zm2529/ScreenShade\n\n自荐一个 macOS 菜单栏小工具 **ScreenShade**：让 Codex、Computer Use 等桌面自动化继续使用桌面时，遮黑本地显示器，减少屏幕亮光和干扰。\n\n它会为所有已连接屏幕添加黑色遮罩，并在支持 DDC/CI、能读取原亮度的外接屏上尝试降低硬件亮度。普通后台合成键鼠输入不会自动解除遮罩；用户操作本机物理键鼠后可恢复，也保留遮罩关闭按钮和专用全局唤醒快捷键。\n\n几个特点：\n\n- 多屏遮罩，保留显示连接，不主动修改分辨率或移动窗口。\n- 每块显示器可独立选择硬件待机；提供可选验证流程，测试后自动请求唤醒并恢复原亮度，区分未验证、通过和失败。\n- 保存亮度与电源恢复记录，恢复失败可以重试，重新启动后也会尝试恢复。\n- 使用 Swift、AppKit 和 IOKit，无第三方运行时依赖，DDC 传输部分复用 m1ddc，适合参考原生 Mac 工具的实现。\n\n目前面向 Apple Silicon Mac，要求 macOS 13 及以上，提供源码自行构建方式，尚无经过 Apple 公证的下载版。首次运行需要授予输入监控权限，不记录按键内容。硬件调光、待机和远控采集行为取决于显示器及连接方式，需要在实际设备上确认；纯黑遮罩不等于物理背光完全熄灭。\n\n使用和构建说明都在仓库 README 中。欢迎试用并反馈不同显示器、接线方式与桌面自动化工具的兼容情况。\n",
-    "created_at": "2026-10-22T02:32:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12652"
-  },
-  {
-    "id": 12651,
-    "title": "【项目自荐】PocketCtl：在 iPhone 和浏览器上跟进多种 AI 编程 Agent",
-    "content": "\n我是 PocketCtl 的开发者，向周刊自荐这个项目。\n\nPocketCtl 是一个面向开发者的跨设备工作台，可以在 iPhone 或浏览器上统一查看 Claude Code、Codex、OpenCode 等 AI 编程 Agent 的会话。适合同时使用多种 Agent，或需要在离开电脑后继续跟进任务的开发者。\n\n主要功能：\n\n- 查看会话输出、工具调用、执行计划和文件改动。\n- 在支持的会话中发送消息、回答问题和处理审批。\n- 管理多台开发主机，并远程浏览会话文档。\n\nAgent 仍在用户的 Mac 或 Linux 主机上运行，使用前需要安装 daemon，主机需保持在线。远程控制能力取决于 Agent 和会话类型；例如 Codex Desktop 会话目前是只读观察。PocketCtl 不提供模型订阅或 API 额度。\n\n数据边界：生产连接使用 TLS；为支持跨设备访问和历史重放，Relay 会处理并存储会话事件，不能视为所有内容都只保留在本机。\n\n项目地址及安装说明：https://github.com/pocketctl/pocketctl\n\n官网：https://www.pocketctl.me/\n\niOS：https://apps.apple.com/cn/app/pocketctl/id6778710005\n\n欢迎试用，也希望收到安装体验和多 Agent 工作流方面的反馈。\n",
-    "created_at": "2026-10-22T01:29:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12651"
-  },
-  {
-    "id": 12650,
-    "title": "【工具自荐】这图能改：iPhone 上把视频转成实况照片、把图片压缩到指定大小，全在本机处理",
-    "content": "![这图能改](https://hugehard.app/assets/app-icon.png)\n\n## 是什么\n\n《这图能改》是独立工作室 HugeHard Studio 做的一个 iPhone 图片视频小工具箱（iOS 17+），把日常常用的几个处理步骤收在一个 App 里：\n\n- **视频转实况照片（Live Photo）**：选一段视频，转成能设成动态壁纸、在相册里长按会动的实况照片\n- **图片压缩到指定大小**：报名照、证件照、表单上传常要求「不超过 200KB」之类，直接填目标大小\n- 视频压缩、视频转 GIF、图片格式转换、调整尺寸\n\n普通的图片视频处理都在手机本机完成，不上传。可选的 AI 生图/改图需要用户自己配置服务商。\n\n## 链接\n\n- 产品页：https://hugehard.app/apps/this-pic-can-change/\n- TestFlight 公开测试（免费）：https://testflight.apple.com/join/GK8ht2vv\n- 视频转实况照片图文教程：https://hugehard.app/guides/video-to-live-photo/\n- 图片压缩到指定大小教程：https://hugehard.app/guides/image-compression/\n\n## 说明\n\n项目自荐，目前在 TestFlight 公开测试，App Store 版正在审核。界面为简体中文。欢迎提意见，感谢阮老师和周刊读者！\n",
-    "created_at": "2026-10-21T22:20:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12650"
   }
 ]
