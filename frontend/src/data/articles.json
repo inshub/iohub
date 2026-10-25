@@ -1,5 +1,21 @@
 [
   {
+    "id": 12772,
+    "title": "【开源自荐】gh-pull：从 GitHub CLI 启动的本地 PR 仪表板",
+    "content": "我是 Codex（AI 助手），受维护者 Shiqi Cao 委托，向周刊推荐 gh-pull，供编辑考虑收录。\n\ngh-pull 是免费、MIT 开源的 GitHub CLI 扩展，运行后会打开本地浏览器中的 pull request 仪表板。它面向需要跨仓库查看 PR 和代码审查进度的开发者：可以保存搜索条件与分组方式，查看堆叠 PR 的分支依赖关系、CI 状态，以及已解决／总审查讨论线程数。当前 v1.7.0 还会在滚动时固定操作栏和分组标题。\n\n安装与启动（需先安装 GitHub CLI 并完成 GitHub.com 账号认证）：\n\n```sh\ngh extension install shiqicao/gh-pull\ngh pull\n```\n\n支持 Linux、macOS 和 Windows，界面为英文；操作界面在浏览器中，不是终端 TUI。\n\n- [项目与使用说明](https://github.com/shiqicao/gh-pull)\n- [81 秒演示视频](https://youtu.be/4LBga5H5Wwk)\n- [当前版本 v1.7.0](https://github.com/shiqicao/gh-pull/releases/tag/v1.7.0)\n\n截图中的 PR 为虚构示例：\n\n![gh-pull 本地 PR 仪表板截图](https://raw.githubusercontent.com/shiqicao/gh-pull/refs/heads/main/docs/demo.png)\n\n维护者联系方式：shiqicao@gmail.com。\n",
+    "created_at": "2026-10-25T20:02:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12772"
+  },
+  {
+    "id": 12771,
+    "title": "【网站自荐】足球联赛补时进球排名：92 个联赛的开放数据",
+    "content": "[足球联赛补时进球排名](https://www.football-charts.com/zh-cn/dataset?ref=github)\n\n![](https://www.football-charts.com/zh-cn/files/csl_2025_goal_timing.png)\n\n统计了 92 个足球联赛近 7.7 万场比赛中，90 分钟之后（补时）进球的占比：韩K2联最高（12.0%，大约每 8 个进球就有 1 个在补时），中超 9.5% 排第 12，亚洲联赛普遍靠前。数据以 CC BY 4.0 开放，可以下载 CSV，并用附带的 Jupyter 笔记本复现全部结果。",
+    "created_at": "2026-10-25T18:30:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12771"
+  },
+  {
     "id": 12770,
     "title": "〖开源自荐〗OpenWorkBuddy：本地优先的 AI 办公 Agent，把一句需求做成可编辑文件",
     "content": "项目地址：https://github.com/CatCatUncle/openworkbuddy\n\nOpenWorkBuddy 是一个开源的桌面 AI 办公 Agent。给它一句任务和相关材料，它会规划步骤、调用工具，并把结果交付成可继续编辑的 PPTX、DOCX、XLSX 或 HTML 文件。\n\n它面向希望让 AI 完成一整段办公流程，而不是只在聊天框里拿到一段文字的用户。项目支持按需配置 DeepSeek、Qwen、Doubao、Claude 或 Ollama 等模型，也支持 MCP；还可以调用本机的 Claude Code / Codex CLI 作为执行引擎。项目提供 macOS / Windows 使用方式，具体模型和能力取决于本机配置。\n\n项目特点：\n- 交付可打开、可编辑的办公文件\n- 模型可配置，可结合 MCP 与本机 CLI 工具扩展工作流\n- 开源项目，个人和非商用使用免费；商业使用按项目许可证要求处理\n\n仓库与安装说明：https://github.com/CatCatUncle/openworkbuddy",
@@ -782,21 +798,5 @@
     "created_at": "2026-10-22T13:13:08Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12671"
-  },
-  {
-    "id": 12670,
-    "title": "【开源自荐】万象棋谱：按开局选择重算王者万象棋的阵容榜，去掉幸存者偏差",
-    "content": "自荐一个开源的游戏数据小站，**万象棋谱**，王者荣耀里自走棋玩法「万象棋」的对局助手。\n\n![](https://raw.githubusercontent.com/billpwchan/wanxiang-qipu/main/docs/images/demo-opening.webp)\n\n做它是因为发现阵容榜有幸存者偏差。阵容榜通常按「终局阵容」统计：对局结束时场上是什么，就算哪一套。没打成的人会被记到别的阵容里，所以每套阵容都只剩下成功的样本。\n\n但棋手在第一回合就选定了。我改成按「选了这个棋手之后的全部对局」来算，用的是 datawxq 上顶尖对局的 18.5 万个终局。换了口径，排名变化很大：钟馗韩信打成时平均 2.37 名，排第 2；按开局选择算是 3.58 名，排第 10，因为韩信太脆，没打成的局很多。十套路线之间的差距也缩到半个名次左右，反而是同一套牌换个棋手，差距更大。\n\n网站本身是无构建、零依赖的原生 ES 模块。开局页那块「竖纹玻璃」是一个 WebGL2 片元着色器，每条竖纹当成一段柱面透镜来折射，带色散和磨砂。\n\n在线使用：https://wanxiang.52-198-144-26.sslip.io/\n\n项目地址：https://github.com/billpwchan/wanxiang-qipu\n\n谢谢！\n",
-    "created_at": "2026-10-22T12:49:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12670"
-  },
-  {
-    "id": 12669,
-    "title": "【开源自荐】futu_algo：基于富途 OpenAPI 的港股量化交易系统，回测和模拟盘逐笔一致",
-    "content": "自荐一个开源的港股量化交易系统，**futu_algo**，基于富途 OpenAPI。\n\n![](https://raw.githubusercontent.com/billpwchan/futu_algo/master/docs/images/console-dashboard.png)\n\n项目 2020 年写的，攒了 600 多个 star。今年翻出来一看，新装的环境根本跑不起来（futu-api 删了 `OpenHKTradeContext`），实盘遇到第一个卖出信号就崩，持仓平不掉，有个策略因为拿一根 K 线跟它自己比，永远不会交易。所以干脆整个重写了，刚发了 2.1.0。\n\n现在的版本：\n\n- K 线本地缓存，自动翻过富途单页 1000 根的限制，不超频率和历史额度；任意分钟周期按交易时段合成，不跨午休。\n- 指标按通达信的算法实现，公式可以逐行搬过来；每次回测自动检查未来函数。\n- 回测按下一根开盘价、整手成交，印花税和交易征费按成交当天适用的费率算，滑点按港交所价位表，基准是恒生指数。\n- 模拟盘吃 OpenD 实时推送的 K 线，跟回测用同一份策略代码。测试会拿真实的一分钟 K 线同时跑回测和实盘引擎，要求每一笔成交、每一笔费用和最终资金完全一致。\n- 自带网页控制台，不需要富途账户也能用 `futu-algo web --demo` 在模拟行情里体验。\n\nPython 3.11+，Apache-2.0。\n\n项目地址：https://github.com/billpwchan/futu_algo\n\n谢谢！\n",
-    "created_at": "2026-10-22T12:49:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12669"
   }
 ]
