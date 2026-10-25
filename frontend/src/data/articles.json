@@ -1,8 +1,80 @@
 [
   {
+    "id": 12770,
+    "title": "〖开源自荐〗OpenWorkBuddy：本地优先的 AI 办公 Agent，把一句需求做成可编辑文件",
+    "content": "项目地址：https://github.com/CatCatUncle/openworkbuddy\n\nOpenWorkBuddy 是一个开源的桌面 AI 办公 Agent。给它一句任务和相关材料，它会规划步骤、调用工具，并把结果交付成可继续编辑的 PPTX、DOCX、XLSX 或 HTML 文件。\n\n它面向希望让 AI 完成一整段办公流程，而不是只在聊天框里拿到一段文字的用户。项目支持按需配置 DeepSeek、Qwen、Doubao、Claude 或 Ollama 等模型，也支持 MCP；还可以调用本机的 Claude Code / Codex CLI 作为执行引擎。项目提供 macOS / Windows 使用方式，具体模型和能力取决于本机配置。\n\n项目特点：\n- 交付可打开、可编辑的办公文件\n- 模型可配置，可结合 MCP 与本机 CLI 工具扩展工作流\n- 开源项目，个人和非商用使用免费；商业使用按项目许可证要求处理\n\n仓库与安装说明：https://github.com/CatCatUncle/openworkbuddy",
+    "created_at": "2026-10-25T17:07:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12770"
+  },
+  {
+    "id": 12769,
+    "title": "推荐工具：JSON Formatter，纯浏览器本地格式化 / 压缩 / 校验 / 修复",
+    "content": "大家好，自荐一个免费在线 JSON 工具：\n\n- 在线地址：https://echtcosplay.de/tools/json-formatter/\n\n无需注册，无广告。粘贴 JSON 即可使用；格式化、压缩、校验和修复都在浏览器本地完成，内容不上传服务器。\n\n### 主要功能\n- **格式化 / 压缩 / 校验**：美化缩进、一键压缩、定位解析错误\n- **修复常见坏 JSON**：缺引号、单引号、尾逗号、未闭合括号、注释、JSONP 包装等\n- **排序键 / 清理空值**：递归按键名字母序排序；去掉空字符串、空对象、空数组和 null\n- **转义 / 反转义**：把 JSON 转成可嵌入字符串，或还原回来\n- **大文件**：计算放在 Web Worker 里，界面不卡死\n\n另有配套 Chrome 扩展（同名 JSON Formatter by EchtCosplay），支持工具栏弹窗、侧边栏，以及选中网页文字右键「Send to JSON Formatter」。\n\n声明：我是这个工具的作者（EchtCosplay）。欢迎试用，也欢迎提建议。",
+    "created_at": "2026-10-25T17:00:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12769"
+  },
+  {
+    "id": 12768,
+    "title": "【工具自荐】【AESTHETICA-10】一个永远只打 10 分的 AI 颜值评分（恶搞）",
+    "content": "<img width=\"1166\" height=\"1659\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/780ff837-1d58-47fa-897d-74c4d0503c42\" />\n\n2017 年我自己做过一个 AI 颜值打分应用。快十年过去了，又看见了类似的网站：上传一张自拍，给你算出一个精确到小数点后两位的分数，比如 6.2/10，再顺手卖你一套“变美方案”。自己亲手做过，我的结论是：这东西从根上就是扯淡。分数主要量的是你的相机，光线、焦距、角度、距离一变，同一张脸的分数就跟着变，有的网站干脆建议你多传几张取平均。还有研究发现，离脸 30 厘米拍的自拍，会让鼻翼看起来比 1.5 米外拍的宽约 30%（JAMA Facial Plastic Surgery，2018）。精确到两位小数只是看起来像科学，本质是带进度条的星座运势。\n\n所以这次我做了一个反过来的版本：仪器感一样不少，只是结论比较诚实：你本来就是 10 分。\n\n真·人脸识别：在浏览器里用 MediaPipe 人脸关键点模型定位 478 个面部关键点，把“黄金比例”网格、颧骨、下颌角的标注精准贴到你脸上，然后全部无视。识别不到人脸就不画网格，直接显示“NO FACE IN FRAME · STILL 10/10”。\n\n核心评分算法只有一行：`return 10.00;`\n\n5 位专家人设：严谨的颅面物理学博士、巴黎高定选角导演、15 世纪佛罗伦萨雕塑家、算力过载的神经网络集群、无条件夸夸的吹捧科学家。每位都有自己的一套夸法、六维评分和一张煞有介事的人体测量数据表。\n\n官方认证 PDF：一键导出 A4 证书，带你的照片、病例编号、六维评分、专家签名和印章，可用于各种争论、群聊和照镜子。\n\n<img width=\"531\" height=\"756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0d88b11-be78-4fd5-9542-20d2a7273cc3\" />\n\n多种测试对象：支持上传、拖拽、摄像头实时追踪（拍下一帧再打分），也可以直接用内置样本：凌晨 5 点枕头印自拍、死亡仰拍角度、车管所证件照，以及一颗土豆。\n\n隐私方面，照片全程不出浏览器，人脸识别在本地运行，只从 CDN 下载模型文件。没有后端、不上传、不存储，没有登录也没有付费。界面目前是英文。\n\n在线体验：https://aero.oops.wtf/p/aesthetica-10",
+    "created_at": "2026-10-25T16:54:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12768"
+  },
+  {
+    "id": 12767,
+    "title": "自荐：Twinkle Model —— OpenAI 兼容的 AI API 中转站",
+    "content": "**名称**：Twinkle Model\n**网址**：https://big-model.smart-agi.com\n**一句话**：基于开源 sub2api 搭建的 OpenAI 兼容 AI API 中转站，渠道为官方订阅，一个 Key 调用 GPT、Claude、Grok、GLM、DeepSeek、Kimi，以及 gpt-image、Seedance 等生图/视频模型，按倍率计费，支付宝 ¥1 起充，可开发票。\n**适合**：在国内用 Claude Code、Codex、Cherry Studio 等工具，需要稳定且便宜的 API 的开发者。\n（本人为站点运营者，自荐。）",
+    "created_at": "2026-10-25T15:50:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12767"
+  },
+  {
+    "id": 12766,
+    "title": "【开源自荐】FactoryFlow（交有数）：小工厂的订单、分批送货与对账工具",
+    "content": "我平时做制造贸易相关业务，要接订单、安排送货、月底对账。借助 AI 编程工具，我把这些流程做成了 FactoryFlow（交有数），现以 MIT 许可证开源，提供 Windows 开发者预览版。\n\n[GitHub 源码、说明和演示](https://github.com/Doublzzz/FactoryFlow) · [Windows 预览版下载](https://github.com/Doublzzz/FactoryFlow/releases/tag/v0.1.0-preview.1)\n\n目前围绕三个环节：\n\n- **录单**：可以从第一张订单开始，客户和物料资料逐步整理；图片、PDF 的本地 OCR 结果需要人工核对后确认。\n- **分批送货**：按订单行记录已交、待交和各自单位。送货录错可以作废，恢复待交数量并保留原记录。\n- **对账**：记录客户反馈、部分认可、本期正式结算和跨月承接，保留历史凭证。\n\n数据保存在本机，核心业务与本地 OCR 可以离线运行。使用 React / TypeScript、Python / FastAPI 和 PostgreSQL；数量与金额采用精确小数，业务动作保留审计记录。\n\n![分批送货后的待交清单](https://raw.githubusercontent.com/Doublzzz/FactoryFlow/main/docs/images/readme/zh-03-open-lines.png)\n\n*合成数据示例：120 件已交 30 件、剩 90 件；35.5 千克已交 10.25 千克、剩 25.25 千克。*\n\n当前公开包为 **v0.1.0-preview.1**，仅支持 Windows 10/11 x64、单机及人民币业务，尚不包含库存、付款、多币种和海外税务。代码、测试及文档有 AI 编程工具深度参与，我负责需求、业务规则和流程核对。\n\n公开包完成过合成数据流程及备份恢复检查，仍不等于长期生产验证；OCR 可能漏行或识别错误。请在独立试用目录使用合成样例，不要放入唯一一份真实业务数据，预览版之间暂不保证直接沿用旧数据。\n\n欢迎做过跟单、送货、对账或业务系统的朋友试用，指出缺少的业务情况和不顺手的操作。",
+    "created_at": "2026-10-25T15:37:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12766"
+  },
+  {
+    "id": 12765,
+    "title": "【开源自荐】Weblink：支持一对多的低延迟 Windows 远程桌面，浏览器即可连接",
+    "content": "Weblink 是我开发的开源 Windows 远程桌面工具，重点是低延迟交互和一对多桌面共享。受控电脑运行 Windows 客户端，其他设备通过浏览器加入同一房间即可观看桌面，获得授权后还能操作鼠标和键盘。\n\n主要特点：\n\n- **浏览器即用**：手机或电脑上的控制端无需注册账号，也无需安装客户端。\n- **一对多共享**：多个设备可以同时观看同一个 Windows 桌面，适合远程演示和协作。\n- **低延迟设计**：采用 Windows 原生屏幕采集、受支持的硬件编码和 WebRTC；兼容的观看端可复用编码器。实际延迟取决于硬件与网络条件。\n- **配套功能**：支持文件传输、剪贴板共享、聊天及语音视频通话。\n\n项目采用 MIT 协议，支持自行部署。连接需要信令服务，无法直连时可通过 TURN 中继。\n\n- 官网：https://www.webl.ink/\n- 源码：https://github.com/99percentpeople/weblink\n\n![Weblink 远程桌面界面演示](https://www.webl.ink/screenshots/dark/remote-desktop.webp)",
+    "created_at": "2026-10-25T14:35:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12765"
+  },
+  {
+    "id": 12764,
+    "title": "【开源自荐】WHartTest：AI 驱动的测试自动化平台，上传需求文档自动生成功能/接口/UI 测试用例",
+    "content": "测试同学大概都熟悉这个场景：需求文档一到手，就得人肉把 PRD 一条条翻译成用例表；好不容易写完，接口/UI 自动化脚本又因为一次改版全部失效。我们被这件事折磨了太多年，干脆把整条链路 AI 化做成了平台，今天自荐给大家——WHartTest。\n\n它是一个可自部署的 AI 测试自动化平台（协议为自定义，见仓库 LICENSE），基于 Django + Vue 前后端分离，GitHub 目前 1.1k star。\n\n它主要做三件事：\n\n- 功能用例：上传需求文档（支持在线编辑），AI 结合知识库上下文生成完整用例（前置/步骤/预期），列表 + 思维导图双视图管理\n- 接口自动化：根据接口定义自动生成请求步骤、断言、变量提取与前后置脚本；失败后 AI 读日志和响应定位问题，给出修复方案\n- UI 自动化：AI 生成页面操作步骤与元素定位，执行时采集日志/截图/视频/Trace，定位失效自动给修复建议\n\n底座是 LangChain/LangGraph 多轮编排 + RAG 知识库（文档分块/向量化/重排）+ MCP 工具调用，另有一个 Skills 技能库，可以装 Playwright 技能让 AI 真正操作浏览器。\n\n链接：\n- GitHub：https://github.com/MGdaasLab/WHartTest\n- 官网：https://wharttest.mgdaas.com/\n- 文档：https://docs.wharttest.mgdaas.com/\n\n欢迎测试同行拍砖，也想听听大家在\"AI 生成用例\"上的落地体验。",
+    "created_at": "2026-10-25T14:35:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12764"
+  },
+  {
+    "id": 12763,
+    "title": "【工具自荐】GitHubPlay：精选 GitHub 开源项目排行榜、AI 工具与多平台客户端下载目录",
+    "content": "## 推荐项目\n\n**项目名称**：GitHubPlay\n**官网地址**：[https://githubplay.com](https://githubplay.com)\n**开源主页**：[https://github.com/coffeefreehans/githubplay](https://github.com/coffeefreehans/githubplay)\n\n---\n\n## 项目简介\n\n平时经常在 GitHub 上找好玩的开源桌面端、开发工具与前沿 AI 项目，但经常遇到几个痛点：\n1. **找安装包繁琐**：很多优质开源项目没有独立官网，下载时需要点进 Releases 在一堆 source code.zip 和各类架构二进制包中捉迷藏；\n2. **官方榜单刷星/题库多**：GitHub 官方 Trending 经常被面试八股文、刷星题库霸榜，很难真正发现高可用的实际软件；\n3. **架构与平台不清晰**：确认是否支持 Mac Apple Silicon 还是 Windows ARM 经常需要费时翻阅 README。\n\n因此开发了 **[GitHubPlay](https://githubplay.com)**，致力于做一个专注“应用与客户端分发视角”的开源软件发现平台。\n\n---\n\n## 核心功能\n\n- **多平台安装包一键直达**：自动识别分析 Releases 中的多架构安装包（macOS DMG/PKG、Windows EXE/MSI、Linux AppImage/deb），免去繁琐翻找；\n- **多维度真实增长榜**：提供 24 小时、7 天、30 天星标增长排行榜，支持按客户端和 AI 工具分类筛选；\n- **深度分类目录**：整理了 AI 大模型、开发辅助、效率工具、音视频处理等 30 多个垂直领域；\n- **开源作者专属徽章**：开源作者可以直接取用类似动态星标徽章嵌入自己的 README 中；\n- **智能语言自适应**：全站基于 Next.js App Router 服务端直出（SSR），智能自适应浏览器语言偏好（中/英双语）。\n\n欢迎阮老师与周刊读者试用交流与批评指正！\n",
+    "created_at": "2026-10-25T13:56:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12763"
+  },
+  {
+    "id": 12762,
+    "title": "【工具推荐】一款可以去除本地视频字幕和文字的工作，也支持图片水印擦除以及几十个图片视频工具-大象去字幕",
+    "content": "**大象去字幕**\n\n工具简介：一款可以自动擦除视频硬字幕、水印、台标的免费工具，本地处理不上传，保护隐私。\n地址：(https://www.easyremove.top/)\n\n使用场景：\n- 下载的影视、教程视频带硬字幕，想干净地二次剪辑或发自己号\n- 录屏、直播回放里有台标或水印，需要擦掉再用\n- 做视频素材时字幕挡到了重点画面，想还原干净画面\n- AI生成的视频带了自己不想要的问题\n\n特点：\n- 自动识别字幕区域，不用手动框选\n- 智能填充背景，静止画面和动态画面都能处理\n- 支持常见视频格式，处理完直接导出\n- 操作简单，拖进去点一下就行，不用学\n- 对电脑配置要求不高，普通笔记本也能跑\n\n放几张工具界面图片\n\n<img width=\"3836\" height=\"1638\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d63ff1d4-c90f-462f-822a-0abac0c012aa\" />\n\n<img width=\"3824\" height=\"1516\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7e3fe72f-2aee-4899-9700-6766d4c2aa68\" />",
+    "created_at": "2026-10-25T13:36:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12762"
+  },
+  {
     "id": 12761,
     "title": "简历专家智能体",
-    "content": "从来没写过简历， 不知道简历从何入手？ 简历专家智能体， 通过聊天方式来引导用户写简历， 引导用户写出简历的亮点， 挖掘出项目的价值， 技能的优势。 \n\n功能介绍： https://haojianli.me/blog/resume-agent-co-creation\n功能入口： https://haojianli.me/resume/create-with-agent",
+    "content": "从来没写过简历， 不知道简历从何入手？ 简历专家智能体， 通过聊天方式来引导用户写简历， 引导用户写出简历的亮点， 挖掘出项目的价值， 技能的优势。 \n\n功能介绍： https://haojianli.me/blog/resume-agent-co-creation\n功能入口： https://haojianli.me/resume/create-with-agent\n功能截屏：\n\n<img width=\"1391\" height=\"833\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/994020f4-d1c0-4768-85c3-152a7c10f036\" />\n\n<img width=\"1379\" height=\"776\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0aa45a5f-ce71-42ca-91d0-3a130c077f4d\" />\n\n<img width=\"1367\" height=\"834\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca1971ca-1990-4235-8af8-496bb44e1555\" />\n\n<img width=\"1701\" height=\"971\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/badd3e42-1284-40e2-b8d3-4af3167b9b43\" />\n\n<img width=\"1698\" height=\"966\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68590244-ed21-4e21-a9ef-4b0de24e6857\" />",
     "created_at": "2026-10-25T12:38:32Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12761"
@@ -152,14 +224,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/12743"
   },
   {
-    "id": 12742,
-    "title": "【开源自荐】Web3D Viewer — 单文件 OBJ 查看器，贴图没显示时告诉你为什么",
-    "content": "## 项目地址\n\nhttps://github.com/userzz1145141919810-rgb/web-3d-viewer\n\n在线版：https://userzz1145141919810-rgb.github.io/web-3d-viewer/\n\n## 简介\n\n一个单 HTML 文件的 OBJ 模型查看器，基于 Three.js。把 `.obj` + `.mtl` + 贴图打包成 ZIP 丢进浏览器就能看，不需要安装、没有后端。\n\n## 特点\n\n重点是贴图没显示出来时告诉你为什么。\n\nOBJ/MTL 这套格式里，MTL 写的是 `map_Kd texture.png`，但实际文件可能在子目录里、大小写不同、或扩展名不同。加载器找不到就静默跳过，模型渲染成一片黑或纯白，没有任何提示。\n\n这个工具把每次贴图查找的过程打出来：精确路径 → 去扩展名 → 模糊包含，以及最终未找到的项。同时显示顶点数、三角面数、材质数。\n\n## 实现上值得一提\n\n- 按需渲染：静止时不重绘，只在视角变化或贴图加载完成时触发\n- 切换模型时释放上一轮的 geometry、material 和全部 texture，并 revoke 对应的 blob URL（`material.dispose()` 不会连带释放贴图，这部分是单独处理的）\n- 贴图尺寸超过设备 `maxTextureSize` 时关闭 mipmap，避免生成 mipmap 时显存溢出\n\n## 适用边界\n\n- 只针对 OBJ 工作流，不支持 glTF / GLB，也不支持骨骼与形变动画\n- 需要联网：Three.js 和 JSZip 走 CDN（页面加载失败时会给出可切换的备用源）\n- 移动端处理大 ZIP 受内存限制，实测安全线在 80–100 MB 左右\n\n## 开发日志\n\n每个改动的**原因**记在 CHANGELOG 里，不只记改了什么。比如最近修的一个：MTL 的 `Kd` 是 sRGB 值，而 `THREE.Color.setRGB()` 默认按线性色彩空间解释，暗色材质会整体发白——Kd=0.2 实际显示成 0.48。\n\nhttps://github.com/userzz1145141919810-rgb/web-3d-viewer/blob/main/CHANGELOG.md\n\n感谢考虑收录。\n",
-    "created_at": "2026-10-24T12:07:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12742"
-  },
-  {
     "id": 12741,
     "title": "【项目自荐】无限月读：分享小工具、互动网页与 Demo 的创作社区",
     "content": "无限月读（Infinite Tsukuyomi）是一个已上线的创作与作品分享社区，鼓励展示 Demo、互动内容、网页小工具、个人网页、二次元小玩意和独立游戏，也欢迎使用传统工具或 AI 辅助完成的作品。\n\n适合这样的场景：用 AI 做出了一个抽签工具、互动个人主页或趣味网页，希望公开展示、邀请别人体验，并根据具体反馈继续修改。平台提供作品与作者介绍、社区互动和活动相关入口；投稿支持方式及账号要求以网站当前页面为准。\n\n为方便刚开始做小网页的人，我们还开源了三个无需构建工具的 HTML/CSS/JavaScript 示例：随机分组工具、互动个人主页、原创随机台词卡片。源码采用 MIT 许可，附中英文运行与分享说明；平台本身不因此成为开源项目。\n\n官网：https://www.wuxianyuedu.cn/\n开源示例：https://github.com/sakuraladder/wuxianyuedu-creative-web-starters\n\n我是平台维护方，本帖为项目自荐。平台与示例界面目前以中文为主，具体作品的语言与运行条件以作者说明为准。介绍使用 AI 辅助整理。",
@@ -274,7 +338,7 @@
   {
     "id": 12727,
     "title": "[自荐] DSH A2UI：面向 DeepSeek Harness 的 A2UI 协议开发预览",
-    "content": "自荐 DSH A2UI，一个面向 DeepSeek Harness 的独立 A2UI 协议开发预览，供想把交互表单接入 DSH 的开发者试用。\n\n目前使用官方 A2UI renderer 和 schema，支持受限 basic catalog 的严格校验，并提供两种无需账号或 API key 的合成示例：\n\n- 本地浏览器 demo：流式展示表单、编辑、导出与恢复记录；恢复时不会再次执行历史动作。\n- 可执行 agent-loop 示例：使用真实 DSH AgentLoop、ToolRuntime 和会话渲染组件，通过脚本化本地模型，在 jsdom 中验证“表单操作进入下一轮 agent，并生成预览”的链路。\n\n当前为 0.1.0-alpha.6，针对 DSH 0.2.0-rc.2 验证。示例中的模型、传输和部分宿主结构是合成的，不代表完整 DSH shell、真实模型、完整 A2UI 协议或生产部署已经验收。未提交的表单编辑目前不会跨 DSH 重载自动恢复。项目并非 DeepSeek、Google 或 A2UI 官方项目。\n\n源码：[项目仓库](https://github.com/sunxiuguo/dsh-a2ui)\n复现：[无密钥示例](https://github.com/sunxiuguo/dsh-a2ui/blob/013341ed5ec291eaab74fae2042b4b703f6a4e99/docs/synthetic-loop.md)\n验证：[该提交的 CI](https://github.com/sunxiuguo/dsh-a2ui/actions/runs/40062807353)\n\n项目代码采用 MIT 许可，依赖及官方 schema 保留各自许可声明；尚未发布 npm 包。欢迎试跑示例，反馈具体文档或集成问题。",
+    "content": "自荐 DSH A2UI，一个面向 DeepSeek Harness 的独立 A2UI 协议开发预览，供想把交互表单接入 DSH 的开发者试用。\n\n目前使用官方 A2UI renderer 和 schema，支持受限 basic catalog 的严格校验，并提供两种无需账号或 API key 的合成示例：\n\n- 本地浏览器 demo：流式展示表单、编辑、导出与恢复记录；恢复时不会再次执行历史动作。\n- 可执行 agent-loop 示例：使用真实 DSH AgentLoop、ToolRuntime 和会话渲染组件，通过脚本化本地模型，在 jsdom 中验证“表单操作进入下一轮 agent，并生成预览”的链路。\n\n首次投稿（2026-10-24）版本为 0.1.0-alpha.6，针对 DSH 0.2.0-rc.2 验证。示例中的模型、传输和部分宿主结构是合成的，不代表完整 DSH shell、真实模型、完整 A2UI 协议或生产部署已经验收。未提交的表单编辑目前不会跨 DSH 重载自动恢复。项目并非 DeepSeek、Google 或 A2UI 官方项目。\n\n源码：[项目仓库](https://github.com/sunxiuguo/dsh-a2ui)\n复现：[无密钥示例](https://github.com/sunxiuguo/dsh-a2ui/blob/013341ed5ec291eaab74fae2042b4b703f6a4e99/docs/synthetic-loop.md)\n验证：[该提交的 CI](https://github.com/sunxiuguo/dsh-a2ui/actions/runs/40062807353)\n\n项目代码采用 MIT 许可，依赖及官方 schema 保留各自许可声明；尚未发布 npm 包。欢迎试跑示例，反馈具体文档或集成问题。\n\n### 2026-10-25 更新\n\n当前源码为 0.1.0-alpha.13，默认支持范围仍是受限 A2UI v0.9/v0.9.1，未发布 npm 包。试用入口和本地打包安装、更新、回退说明见[该版本 README](https://github.com/sunxiuguo/dsh-a2ui/blob/a8744445f4475c5a0fceb32a018a00617a954038/README.md)。\n\n补充一项已完成的真实宿主验证：alpha.8 的精确源码 a8bb06d8 在官方 DSH 0.2.0-rc.2 CLI/Web shell 中，完成了安装、双会话交互、取消，以及正常重启后恢复已提交的历史，不重新发送历史动作。[运行结果](https://github.com/sunxiuguo/dsh-a2ui/actions/runs/40092097281)和[截图、复现范围](https://github.com/sunxiuguo/dsh-a2ui/blob/a8744445f4475c5a0fceb32a018a00617a954038/docs/full-host-acceptance.md)均已公开。\n\n这次宿主验证使用脚本化模型和合成数据，只覆盖该 alpha.8 源码及场景，不代表 alpha.13、真实模型、完整协议或生产环境已经获得同样验收。未提交的表单草稿仍不会跨宿主重载自动恢复。\n",
     "created_at": "2026-10-24T05:29:06Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12727"
@@ -734,69 +798,5 @@
     "created_at": "2026-10-22T12:49:00Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12669"
-  },
-  {
-    "id": 12668,
-    "title": "【开源自荐】oh-my-agent：多个编码 agent 共用一套技能，跑通测试才收工",
-    "content": "项目名称：oh-my-agent（命令 `oma`）\n\n项目地址：https://github.com/first-fluke/oh-my-agent\n\n中文说明：https://github.com/first-fluke/oh-my-agent/blob/main/docs/README.zh.md\n\n一句话介绍：给你已经在用的编码 agent（Claude Code、Codex CLI、Cursor 等）加上规划、开发、审查、调试的分工，并且可以让它在你自己的测试脚本通过之前不能结束任务。\n\n我做它的原因很简单：同时用几个编码 agent 时，每个工具都要单独维护一套规则和技能，而 agent 经常在测试还没跑过的时候就说“完成了”。\n\n主要功能：\n- 技能和工作流只放在一个 `.agents/` 目录里，再写进各运行时自己的配置；技能按条目软链接到各工具的技能目录，改一处就够了。`oma link <工具> --dry-run` 可以先看会写哪些文件。\n- 长任务可以设门禁：`oma goal set --gate test` 之后，agent 想停下时会先跑你的 test、lint 或 typecheck 脚本，不通过就被送回去继续做。检查过程中代码有改动的话，这次通过不算数。`oma goal status --check-fresh` 会对比上次通过时的代码和现在的代码，输出 fresh 或 stale。\n- 切换、恢复会话或上下文压缩之后，会把这个会话最近的事件和记住的事实重新注入，限同一台机器、同一个项目。\n- 不用记斜杠命令，直接说“review this PR”这类话也能触发对应工作流。触发器在 CI 里用 212 条标注过的英文和韩文提示词测试，误触发超过 10% 或漏触发超过 20% 就不让合并。\n\n我自己每天上班都在用，今年用它提交了 2 万多个 commit。MIT 协议。\n\n安装（在项目根目录）：\n\n    curl -fsSL https://raw.githubusercontent.com/first-fluke/oh-my-agent/main/cli/install.sh | bash\n    oma doctor\n\n架构图：https://raw.githubusercontent.com/first-fluke/oh-my-agent/main/docs/assets/architecture/oh-my-agent-architecture.png\n",
-    "created_at": "2026-10-22T12:38:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12668"
-  },
-  {
-    "id": 12667,
-    "title": "【开源自荐】Voltip：按住快捷键说话，松开后文字出现在光标处的语音输入工具",
-    "content": "## 项目名称\n\nVoltip：开源的语音输入工具。\n\n## 项目地址\n\n- 源码：https://github.com/sunerpy/voltip\n- 官网：https://voltip.firlab.app/zh/\n\n## 项目简介\n\n在电脑上按住快捷键说话，松开后文字插入当前应用的光标处，支持 Windows、macOS、Linux 和 Android。识别可以用本机模型离线完成，也可以用安装包内置的服务（不用注册、不用填密钥）或自己选的云端服务商。\n\n## 主要功能\n\n- 本地识别：Qwen3-ASR、SenseVoice、Paraformer，Qwen3-ASR 可以用显卡加速（Windows、Linux 用 Vulkan，macOS 用 Metal）。\n- AI 润色：去掉口头禅和说错后改口的部分，内置校对、提示词优化、中英互译、要点纪要等预设。\n- 个人词典和替换规则，纠正总被听错的词。\n- 语音编辑：选中文字，说出修改要求，改写结果替换选区。\n- 长录音单次最长 2 小时，可以录电脑播放的声音，导出 SRT 字幕。\n- 手机当麦克风和键盘：扫码配对，音频端到端加密传到电脑。\n\n## 界面展示\n\n![Voltip 主页](https://raw.githubusercontent.com/sunerpy/voltip/main/docs/site/public/screens/home-zh-light.webp)\n\n![按住快捷键说话，文字插入光标处](https://raw.githubusercontent.com/sunerpy/voltip/main/docs/readme/media/voltip-dictation-zh.webp)\n\n## 下载安装\n\n- Windows（PowerShell）：`irm https://raw.githubusercontent.com/sunerpy/voltip/main/scripts/install.ps1 | iex`\n- Linux、macOS（终端）：`curl -fsSL https://raw.githubusercontent.com/sunerpy/voltip/main/scripts/install.sh | sh`\n- 安装包：https://github.com/sunerpy/voltip/releases/latest\n\n我是项目作者。\n",
-    "created_at": "2026-10-22T11:45:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12667"
-  },
-  {
-    "id": 12666,
-    "title": "【软件自荐】魔女口袋：带小魔女互动和音乐舞台的 Windows 桌面工具",
-    "content": "我是魔女口袋的作者，最近做了一套 Windows 桌面工具，想分享给喜欢桌面美化的朋友试试。\n\n它把常用软件、窗口切换、搜索和音乐控制放在一条玻璃任务栏里，旁边有一只可以点击、摸头和拖动的小魔女。点开她，会展开漫画气泡风格的分类应用抽屉。\n\n几个日常能用到的功能：\n\n- **整理和打开应用**：固定常用软件，按游戏、办公、工具等分类；可以查看已打开窗口的缩略图并切换窗口。\n- **拼音搜索**：支持中文、全拼和首字母，查找应用、文件和文件夹。\n- **音乐舞台**：显示曲名与专辑封面，提供播放、暂停、切歌和音量控制，舞台可以拖动或关闭。曲目信息和按钮是否可用，取决于播放器提供的 Windows 媒体会话。\n- **按习惯调整外观**：任务栏样式、动效强度、静态显示和全屏避让都可以设置。\n\n目前发布的是 **0.58.15 试用版**，支持 Windows 10 / 11（64 位）。提供全功能版和精简版安装包；主要想用任务栏、小魔女和音乐控制的话，可以选精简版。\n\n项目介绍：https://github.com/wtolddd/magic-pocket\n\n安装包：https://github.com/wtolddd/magic-pocket/releases/tag/v0.58.15\n\n仓库目前用于发布安装包、更新说明和收集反馈。想听听大家对桌面交互和音乐舞台的建议，使用中遇到问题也欢迎到项目的 Issues 留言。",
-    "created_at": "2026-10-22T09:33:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12666"
-  },
-  {
-    "id": 12665,
-    "title": "【开源自荐】言录 Brevia：本地会议转写、AI 笔记、手机端协同录音 桌面端转写",
-    "content": "## 项目名称\n\n言录（Brevia）：开源、本地优先的会议助手。\n\n## 项目地址\n\n- 源码：https://github.com/zerolovesea/Brevia\n- 官网：https://brevia.work/\n\n## 项目简介\n\n言录用于会议、访谈、课堂等场景的录音、实时转写和笔记整理，支持 macOS、Windows、iOS 和 Android。\n\n语音识别在电脑本机完成，手机可以独立录音，也可以与电脑连接，将收音、转写和笔记整理放在同一套流程中。\n\n## 主要功能\n\n- **本地处理**：录音与会议记录保存在自己的设备中。下载所需模型后，转写、AI 笔记、纪要和翻译均可离线运行。\n- **多端协同**：手机扫码连接同一局域网内的电脑，可直接作为电脑麦克风。电脑负责识别，手机查看实时转写与笔记；离线录音也可在之后上传到电脑整理。\n- **AI 笔记与纪要**：AI 从对话中提取决定与待办，由用户选择采纳。支持导出 Markdown、TXT、JSON、SRT、DOCX、PDF。\n- **悬浮录音胶囊**：主窗口收起后，仍可查看录音状态、字幕和笔记，控制暂停、继续与结束录音。\n- **多语言与录音来源**：支持 30 多种语言转写及原文、译文对照；电脑端支持麦克风、系统声音。\n\n## 界面展示\n\n手机扫码连接电脑后，可在手机查看转写，并在桌面端选择手机作为收音设备。点击图片可查看原图。\n\n<table>\n  <tr><th>手机扫码连接</th><th>手机查看实时转写</th><th>桌面选择手机麦克风</th></tr>\n  <tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/connection.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/connection.png\" width=\"180\" alt=\"手机扫码连接\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/live.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/mobile/zh/live.png\" width=\"180\" alt=\"手机查看实时转写\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/desktop/zh/phone-microphone.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/showcase/desktop/zh/phone-microphone.png\" width=\"500\" alt=\"桌面选择手机麦克风\" /></a></td></tr>\n</table>\n\n以下为实时转写、AI 笔记与悬浮胶囊的动态演示：\n\n<table>\n  <tr><th>实时转写与 AI 笔记</th><th>悬浮录音胶囊</th></tr>\n  <tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/live.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/live.gif\" width=\"460\" alt=\"实时转写与 AI 笔记\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/capsule.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/showcase/desktop/zh/capsule.gif\" width=\"460\" alt=\"悬浮录音胶囊\" /></a></td></tr>\n</table>\n\n## 下载安装\n\n| 平台 | 下载入口 |\n| --- | --- |\n| Windows x64 | [Windows 安装包（.exe）](https://github.com/zerolovesea/Brevia/releases/download/v1.4.5/Brevia-1.4.5-x64-setup.exe) |\n| macOS · Apple Silicon · macOS 14+ | [macOS 安装包（.dmg）](https://github.com/zerolovesea/Brevia/releases/download/v1.4.5/Brevia-1.4.5-arm64.dmg) |\n| iPhone · iOS 15+ | [App Store 下载](https://apps.apple.com/app/id6819869442) |\n| Android · Android 7+ | [下载 APK](https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk) |\n\n手机端下载二维码：\n\n<table>\n  <tr><th>iPhone · App Store</th><th>Android · APK</th></tr>\n  <tr>\n    <td align=\"center\"><a href=\"https://apps.apple.com/app/id6819869442\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/download/ios-qr.png\" width=\"150\" alt=\"iPhone 下载二维码\" /></a></td>\n    <td align=\"center\"><a href=\"https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/main/docs/assets/download/android-qr.png\" width=\"150\" alt=\"Android 下载二维码\" /></a></td>\n  </tr>\n</table>\n\n欢迎试用，也欢迎反馈使用中遇到的问题。\n",
-    "created_at": "2026-10-22T08:47:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12665"
-  },
-  {
-    "id": 12664,
-    "title": "【开源模型自荐】MemT 1.0：Towards Memory-Native Evolution（288B）",
-    "content": "我们推出并开源了记忆原生基础模型 MemT 1.0，探索让“记住、更新、调用经验”成为模型可以学习的能力，这是我们的 GitHub 开源链接：https://github.com/MemTensor/MemT-1.0 ，欢迎老师体验～\n\n## 模型创新点\n我们在 Transformer 的部分模块中加入原生记忆模块，让模型通过内部记忆状态保留和使用历史信息。每轮交互时，模型读取已有记忆；交互结束后，再将输入与回答写入记忆，供后续使用。这个过程中，模型权重保持固定，更新的是各条交互轨迹独立维护的记忆状态。也就是说，在后续相关任务中，模型可以利用此前写入的信息，无需再次把历史原文放进当前上下文。\n\n## 模型具体表现\n本次开源包含 Flash 和 Nano 两款模型，总参数量分别为 288B、36B，激活参数量分别为 17B、3B。在查询时不提供历史原文的条件下，两款模型在 11 项记忆基准上的平均得分分别为 50.6、47.0，位列本次评估的参数化记忆方法第一、第二。同时，我们也在 Coding Agent 中探索了经验的使用：将检索到的操作经验写入内部记忆，帮助模型完成后续任务。\n\n<img width=\"2614\" height=\"1920\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/acb463c2-daac-4c5d-9c92-ebc1caa559de\" />",
-    "created_at": "2026-10-22T08:42:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12664"
-  },
-  {
-    "id": 12663,
-    "title": "【开源自荐】Jant：Tumblr 风格的开源轻博客，由 Note, Link 和 Quote  三种基本形式组成",
-    "content": "自荐一个我开发的开源博客系统 **Jant**。\n\nJant 是 Tumblr 风格的开源轻博客，介于传统博客和社交媒体之间，由 Note、Link 和 Quote 三种基本形式组成。\n\n- 网站：https://jant.me/\n- 源码：https://github.com/jant-me/jant\n- 在线演示：https://demo.jant.me （无需注册）\n- 真实的 Jant 博客：https://www.owenyoung.com\n- Jant 上的其他博客：https://jant.me/discover\n\n<img width=\"1102\" height=\"2359\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5d3f51f4-404d-44f9-8a9b-5a96a6993bff\" />\n\nJant 的独特点是：\n\n- **三种原生格式**：在 Jant 博客中帖子有 Note、Link、Quote 三种类型，Link 和 Quote 类型用来分享链接和摘录。Note 类型的标题是可选的，同时还支持用 Thread 把几条内容串在一起。这样，不同形式和长度的内容，都可以自然地成为博客的一部分。\n- **发布不等于推送**：在传统博客和社交媒体里，发布意味着推送给所有的订阅者，所以我们经常会纠结要不要发，这导致很多值得留下的记录最后都没有留下（想象一下我们发朋友圈是不是这样）。在 Jant 中，默认只有标为 Featured 的帖子会进入 RSS。甚至，你在发帖时还可以选择公开但不出现在首页，此时帖子会出现在归档和所属的 Collection 里。\n- **内容始终归我们自己**：整个博客可以自动同步到 GitHub 仓库，每篇帖子一个 Markdown 文件，仓库本身就是完整的 Hugo 站点。\n\n部署方式：\n\n- 一键部署到 Cloudflare Workers，个人博客的流量通常在免费额度内\n- 用 Docker 部署到自己的服务器，支持 SQLite 和 Postgres\n- 不想部署，也可以用 jant.me 托管版\n\n协议：AGPL-3.0。",
-    "created_at": "2026-10-22T08:31:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12663"
-  },
-  {
-    "id": 12662,
-    "title": "【开源自荐】Watchdog：给 Win7 / Server 2008 R2 用的进程守护工具",
-    "content": "很多老程序已经没人维护，但还得在 Win2008 / Win7 这类老系统上继续服役。Watchdog 是一个带现代界面的 Windows 进程守护工具：程序崩溃、假死或端口无响应时自动重启，并把原因（退出码含义、崩溃模块、最后输出）推送到企业微信。Go 1.20 编译，免 VC 运行库，绿色运行，MIT 开源。\n\nhttps://github.com/chenlz22550/watchdog\n",
-    "created_at": "2026-10-22T08:31:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12662"
-  },
-  {
-    "id": 12661,
-    "title": "【开源自荐】Treefold：把 AI Coding 的多仓库、Worktree、终端和任务放在一起",
-    "content": "LLM 时代高强度用 AI Agent 搞项目，LLM 很强，但想要高效舒服的开发还是有很多繁琐的流程。\n\n例如经常同时推进几个任务，还涉及前后端两个 repo，并行任务不相互冲突大家都知道用 git worktree。\n\n手敲 git worktree 命令很繁琐，AI 可以代劳，但每次都要交代一遍却挺烦：从哪个分支创建，前后端项目在哪个目录，做完合回哪里。想去对应目录跑条命令，还得找路径、开终端、切过去。任务一多，就容易忘记哪个目录对应哪件事。\n\n我就在想能不能把常用流程做到一个 ui 界面中管理，于是做了一个 APP 叫 Treefold。我想把每项任务的代码、终端和进度放在一起，打开就知道做到哪了，接下来可以继续做什么。\n\n## 任务展开以后，要知道怎么收回来\n\n我把工作分成三层：Project、Workspace、Fork。\n\nProject 放一个项目相关的仓库和目录。我一般让原仓库保持在 main 分支，再为每项 feature 创建 Workspace，各自使用独立分支和 worktree。创建时默认从原仓库当前分支展开，也可以选择其他本地或远端分支作为起点。\n\n一个 feature 里有可以并行的子任务，就继续创建 Fork。比如做“商品搜索”，可以让几个 Fork 分别负责接口、页面和测试，各自在独立目录里修改，完成后合回父 Workspace，再一起联调和交付。\n\n这样，worktree 就有了明确的父子关系，交付时知道应该合回哪里。操作由人确认，发生冲突仍然需要处理。Workspace 还可以选择推送 feature 分支，接着走原来的远端评审流程。\n\n简单任务开一个 Workspace 就够了，不用每次都拆 Fork。同一 Workspace 里的多个 Session 共享代码目录；需要隔离修改时，再创建 Fork。\n\n## worktree 多了，目录和状态都得看得清\n\n`git worktree list` 能列出目录和分支，但想知道里面是否有未提交的修改、改动是否已经合回去，还得逐个检查。任务多了，这些小操作也会打断思路。\n\nTreefold 把 worktree list 做成了界面里的管理列表，按仓库展开。每个 worktree 的分支、路径、当前提交和关联任务放在一起，同时显示未提交改动、冲突，以及相对目标分支领先或落后的提交数。已经合入目标分支的状态也会标出来，不用挨个进入目录查 Git。\n\n![worktree 管理列表：查看分支、目录、任务归属、未提交改动和领先／落后状态](https://github.com/user-attachments/assets/f15239f8-c0b2-482c-9e4a-4749e5ce6f26)\n\n从列表可以直接打开关联任务；不再使用的 worktree，可以在界面里确认后删除，也能清理失效的 worktree 记录。哪些还在开发、哪些改动已经合入、哪些目录可以收拾，都有地方查看。\n\n完成的任务可以归档，先保留分支、worktree 和工作记录，之后再按需清理。Project 里可以批量清理已归档的 Workspace，Workspace 里也能清理已归档的 Fork。隔天回来看时，活跃任务和已完成的工作分开，也能找到之前的交付记录。\n\n创建 worktree、启动 Session 和批量清理都可以在后台继续，不用一直守着弹窗。切去做其他任务后，也能回来查看状态和失败原因。\n\n## Agent 写完，检查代码和提交\n\n我一直挺喜欢 JetBrains 的 Git 集成：修改在哪里，提交了什么，都可以直接看。\n\nTreefold 里也放了 Git Changes 和 History。开发过程中看 diff，交付前检查提交；几个零散提交可以用 Squash 整理成一个，也可以 Reset 到指定提交。当前分支最新一次提交的说明写得不合适，也可以直接在 History 里修改。如果本地记录显示它被远端分支、标签或其他分支引用，会先提醒，再由我决定是否继续。\n\n![查看 Git Changes、提交历史和常用 Git 操作](https://github.com/user-attachments/assets/4e7cf442-4375-42ed-8901-62331cf8020b)\n\n完成交付时，可以选择 Squash，把这项工作的成果合成一个提交放进父分支。前后端改动不一样，就分别填写提交说明，在同一个弹窗里检查后一起确认。源分支上的开发记录仍然保留，父分支收到的是整理后的提交。\n\n![Squash 交付：为前端和后端分别填写提交说明](https://github.com/user-attachments/assets/c533f978-9d84-4834-8916-fe651d601c85)\n\n我没有做完整的交互式 rebase 和冲突编辑器。常用操作放在界面里，更复杂的 Git 操作继续交给终端和 Agent，处理完再回来检查结果。\n\nProject 里也能直接查看和搜索本地、远端分支，切换分支，或者删除不再需要的分支。这些短操作，不用每次都通过聊天交给 Agent。\n\n检查代码时，也不想每次都重新告诉 Agent：“这是哪几个仓库，应该和哪个分支比较，别漏掉还没提交的修改。”所以加了 AI Review：在 Workspace 或 Fork 里选一个 Agent，确认提示词，就会打开一个专门检查这项工作的 Session。\n\nFork 和父 Workspace 比较，Workspace 和 Project 当前分支比较。Treefold 会把各仓库的路径、分支和比较范围交给 Agent，要求同时检查已提交、未提交的修改和新文件。默认提示词让它先报告问题，我确认后，可以在同一个 Session 里继续讨论、修复和验证。也可以给 Project 保存自己的 Review 提示词。\n\n这样，从开发、检查到修复都留在同一项任务里，最后再决定怎么交付。完成交付前，如果还有将被停止的 Session 在运行，界面会先列出来，让我选择暂缓交付，或者确认停止后继续。这里检查的是进程是否还活着，不能替我判断 Agent 是否已经做完。\n\n![AI Review：编辑提示词，选择 Agent 和工作目录](https://github.com/user-attachments/assets/be50aea7-79c7-45ff-b89b-18baf05f72f4)\n\n## 暂缓的任务，先记在 Todo 里\n\n和 AI 讨论方案时，经常会冒出一些现在不做、以后值得试的点子。以前我会开个文件记 Todo，接下来还得记得这个文件放在哪。\n\n现在可以直接记到 Workspace 的 Todo list。要做的时候，把 Todo 分配给 Fork，展开成一项独立工作；完成并合回父 Workspace 后，关联的 Todo 也会完成。\n\n![Workspace 中的 Todo、Fork 和 Session](https://github.com/user-attachments/assets/5daeff35-b6cb-4c05-ba3f-aeff03e02318)\n\nTreefold 也带了 CLI 和 Skill，Agent 能读取、添加和修改 Todo，遇到问题时也能记录阻塞原因。换一个 Session 接着做，代码、Todo 和交付记录都还留在 Workspace 里，不用依赖某一次聊天记住所有事情。\n\n比如接口开发时发现一个值得单独处理的问题，可以先留下 Todo，继续完成手头的工作。等有空了再把它分出去，也不用为了保留这个点子一直开着原来的 Session。\n\n## Agent 把服务跑起来了，我却看不到它在干什么\n\n调试的时候，我经常要让 Agent 启动前后端服务。以前它通常在自己的会话后台启动，再告诉我“服务已经起来了”。我只知道启动了，眼前却没有一个能持续看日志的终端。想知道请求有没有进来、服务有没有报错，还得让它再查一遍。\n\n两个 Agent 并行工作时更麻烦：各自的会话没有共享的进程列表，不知道对方已经启动了什么。一个刚把服务跑起来，另一个又启动一遍，端口就冲突了。\n\nTreefold 用 amux 管理这些需要持续运行的进程。服务可以跟着任务列出来，人能在界面里看日志、输入命令，Agent 也能通过 amux 查询进程、读取日志、停止或重启服务。几个 Session 可以共同观察同一个服务，启动前先查看已有进程，再决定复用还是另开一套。\n\n![在任务中切换 Agent Session 和开发服务日志](https://github.com/user-attachments/assets/1482f20b-31ea-4d82-8e8c-acd63e500cad)\n\n切走页面不影响进程运行，也不用再回忆服务藏在哪次聊天里。不过并行启动多套服务时，端口仍然需要分别配置，Treefold 目前不会自动隔离端口。\n\n关闭窗口时，可以选择让 App 留在后台，或者直接退出。退出 App 后是否保留 amux 和受管进程，则由单独的设置控制。\n\n## 一个任务，可能要改几个仓库\n\n有些项目的前后端是两个 Git 仓库。一个功能要两边一起改，就得告诉 AI 两边的位置，同步创建分支和 worktree，再检查是不是进了对应的目录。\n\n所以 Treefold 的一个 Project 可以放多个仓库。创建 Workspace 或 Fork 时，相关仓库一起准备分支和 worktree，后续查看修改、同步和交付也在同一个任务里完成，各仓库的结果分别展示。\n\n接手已有工作也不用从头开始。创建 Workspace 时，每个仓库可以分别新建分支，或者选一个已有的本地或远端分支继续做。分支列表可以搜索，已经被其他 worktree 占用的本地分支会标出来，避免选错工作目录。前端从 main 开始，后端接着已有 feature 开发，也可以放进同一个 Workspace。\n\n![同一个 Workspace 中，前端新建分支，后端继续使用已有分支](https://github.com/user-attachments/assets/be23ceb4-78d1-41e9-9df7-a234199da15e)\n\n还有 monorepo：一个仓库里放了很多项目，我可能只关心其中几个目录。Treefold 可以把这些子目录设为工作入口，也可以加入外部资料目录，方便 Agent 找到相关上下文。目录选择帮助组织工作，Git worktree 仍然以整个仓库为单位。\n\n需要换回熟悉的工具时，Open With 可以直接在 IDE、终端或 Finder 中打开当前目录，也能一键复制路径。选中了哪个任务，就打开它对应的工作目录。\n\n## 保留终端习惯，少记几个快捷键\n\n我日常主要用 Agent 的 CLI 和 TUI，所以 Treefold 里的 Agent 也是原来的终端界面。目前支持 Codex、Claude Code、OpenCode 和 Pi，也可以单独开 Shell 跑命令。终端使用 xterm.js。\n\nAgent 使用本机安装的 CLI，沿用自己的登录和模型配置。喜欢哪个就用哪个，同一项任务里也可以开不同的 Agent Session。使用前先确认相应 CLI 在终端里能正常运行；没有配置 Agent，也可以先用 Shell。\n\n我喜欢 Command Palette，但不想记一大堆快捷键。所以默认只给少数高频操作绑定快捷键，其他操作从 Palette 找，也可以按自己的习惯修改绑定。\n\n这里我比较在意上下文：在某个 Fork 里打开 Palette，新建 Session、开始 AI Review 或打开目录，就应该接着使用这个 Fork 的上下文，不用重新选一遍。\n\n![Command Palette：在当前任务中查找操作、启动 Session 和 AI Review](https://github.com/user-attachments/assets/8cc57e15-c183-49ad-b493-f74745b07855)\n\n## 免费开源，本地运行\n\nTreefold 免费开源，使用 AGPL-3.0-only 许可证。App 在本机运行，项目状态、任务、Session 元数据和配置保存在自己的电脑上，核心管理功能不依赖云端服务。\n\nAgent 沿用你自己的模型和服务配置，模型调用、网络访问和费用由对应服务及配置决定。目前支持 Apple Silicon Mac，需要 macOS 14 或更新版本。\n\n官网：[treefold.win5do.top](https://treefold.win5do.top/)\n\nGitHub：[win5do/treefold](https://github.com/win5do/treefold)\n\n下载：[GitHub Releases](https://github.com/win5do/treefold/releases)\n\n如果你也遇到过这些问题，欢迎下载试用。哪里不顺手、想增加什么功能，都可以提 [Issue](https://github.com/win5do/treefold/issues)，或者通过 [README 里的飞书交流群](https://github.com/win5do/treefold/blob/main/README.zh-CN.md#%E9%A3%9E%E4%B9%A6%E4%BA%A4%E6%B5%81%E7%BE%A4)找我交流 AI Coding 经验。\n\n也欢迎 Fork，按自己的习惯修改、贡献代码。觉得有用的话，帮忙点个 Star。",
-    "created_at": "2026-10-22T08:10:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12661"
   }
 ]
