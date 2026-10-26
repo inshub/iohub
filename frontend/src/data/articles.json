@@ -1,5 +1,125 @@
 [
   {
+    "id": 12797,
+    "title": "【开源自荐】MakeMovie：开源 AI 影视生产线，从一段文字到一部成片",
+    "content": "项目地址：https://github.com/DreamOfXM/makemovie\n产品页（逐阶段导览）：https://dreamofxm.github.io/makemovie/\n\nMakeMovie 是一个 Apache-2.0 开源、可自托管的 AI 影视制作平台：上传一段小说原文或故事设定，自动完成剧本改编 → 分镜 → 角色/场景/道具定妆 → 首帧 → 图生视频 → AI 配音 → 配乐 → 合成母带 → 质检审计 → 交付，每一步可查看、可编辑、可追溯到产生它的那次模型调用。\n\n- 交付不止成片：同时产出 SRT 字幕与 EDL / FCPXML / OTIO 剪辑清单，可直接在 Premiere Pro / DaVinci Resolve 继续精剪\n- 模型可插拔：OpenAI / Anthropic / Google / 阿里百炼 / 可灵 / 火山 Seedance / 任意 OpenAI 兼容端点，九个能力槽位一键补齐\n- 支持短剧 / 电视剧 / 电影三种项目形态，整本小说自动拆章分集（上限 100 万字符）\n- 声音链完整：本地内嵌 Qwen3-TTS（MLX）音色克隆配音、逐镜氛围声、配乐与声音工坊降噪\n- 每一帧都有账：任务幂等可恢复、逐镜质检问题队列、按物理量记账的用量台账\n- Docker 一条命令自托管，内置示例项目零 API key 试跑\n\n技术栈：TypeScript monorepo（Next.js + Fastify + Prisma/PostgreSQL + BullMQ + FFmpeg）。\n",
+    "created_at": "2026-10-26T16:06:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12797"
+  },
+  {
+    "id": 12796,
+    "title": "【开源自荐】Scientific Interview：AI 搜岗、简历与面经复盘的本地求职工作台",
+    "content": "阮老师好，自荐一个 MIT 开源项目 **Scientific Interview**：把 AI 搜岗、简历修改、面经复盘和投递进度整理到本地 HTML 工作台。\n\n项目地址：https://github.com/ft1148137/scientific-interview\n中文安装说明：https://github.com/ft1148137/scientific-interview/blob/main/README.zh-CN.md\n\n我最初的做法是让 AI 读取招聘页面，遇到登录时自己接手，再把结果整理成 HTML。后来把这套流程做成了可复用的 Skill 和本地工具。\n\n主要有三个特点：\n\n1. **有依据的增量搜岗与匹配**：保存搜索条件、岗位来源和核验时间，对比新增岗位及 JD 变化；结合已确认经历给出 1—5 分、匹配理由和差距。\n2. **简历与面经持续积累**：可以导入 PDF 简历修改，也可以通过提问补全真实经历后创建；面试后向 AI 复述问答与反馈，确认过的复盘可供后续简历修改和岗位评分参考。\n3. **量化投递过程**：查看申请状态、投递与反馈趋势、公司及方向/行业分布。连续 30 天无实质变化的岗位标为不活跃，保留原申请状态，不把停滞当作拒绝。\n\nHTML 工作台现已支持中英文切换，默认英文，并在当前浏览器记住语言选择；岗位与个人资料保留原文。\n\n网站与浏览器通过独立插槽扩展。当前有国内企业官网及海外实验性来源，浏览器支持 Codex Chrome 插件和 Tabbit 官方 CLI；具体搜索范围、抽样验证与限制在仓库中列明。登录和验证码由用户完成，申请提交需用户授权并核验。\n\n源码安装需要 Python 3.10+；macOS 已验证，Windows 尚未完整验证。可先运行合成演示体验 HTML，演示不需要连接招聘网站。AI 分析依赖用户自己的宿主账户，本地存档不意味着模型分析离线运行。\n\n下图为合成数据演示，不含个人求职记录：\n\n![Scientific Interview 合成数据统计工作台](https://raw.githubusercontent.com/ft1148137/scientific-interview/main/docs/assets/compact-charts.jpg)\n\n欢迎试用并反馈安装、岗位来源适配和求职记录流程中的问题。",
+    "created_at": "2026-10-26T15:25:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12796"
+  },
+  {
+    "id": 12795,
+    "title": "自荐安卓小工具「涟漪」：专门对付“装了戒手机软件又被自己三秒卸载”的自控 App",
+    "content": "阮老师好，自荐一个我自己写的安卓端免费小工具 **涟漪**（v0.1.0）。\n\n- 官网：https://ripplefocus.github.io/\n- 下载页（GitHub Releases）：https://github.com/ripplefocus/ripplefocus.github.io/releases/latest\n\n**为什么做这个**\n\n我晚上经常刷短视频刷到两三点。以前试过系统自带的「数字健康 / 屏幕使用时间」，也装过几款限制时长的 App，但每次手痒的时候，要么点一下「今天忽略限制」，要么花三秒钟进系统设置把权限关了，甚至直接把限制软件卸载掉。\n\n后来想明白，自控工具真正难的不是「到点弹个拦截框」，而是**当我冲动想改规则、想卸载它的时候，怎么把我拦住**。很多时候只要能硬生生卡住这 15 分钟，那股非刷不可的劲也就过去了。做完之后发现，这套机制除了治成年人自己手痒，也很适合**家长用来管孩子看手机**。\n\n**它目前做的几件事**\n\n1. **装上就有默认规则**：自带「睡觉 23:30–07:00」专注时段；手机里要是装着抖音、快手、TikTok、YouTube，默认给每天 90 分钟上限。\n2. **严进宽出 + 亲友/家长解锁码**：把规则改严立刻生效；但只要是放松规则（加时长、跳过今晚专注、暂停、关防卸载），必须先走完 15 分钟～2 小时的倒计时（抖音这类高风险 App 等待时间翻倍，且按开机单调时钟计算，往后拨系统时间没用），或者输入由家人/家长保管的解锁码。\n3. **两层防卸载（孩子杀后台、重启也绕不过）**：\n   - 普通模式不用连电脑，开「无障碍 + 设备管理器」两步就能用。去桌面长按卸载、去系统设置里强行停止、清数据、关无障碍或停用设备管理器，都会被当场退回桌面。\n   - 里面还有一个可选的「高级保护」：利用安卓 11+ 的本机无线调试，在手机自己内部拉起一个轻量守护进程，直接调系统接口把卸载开关锁死。实测在 ColorOS 14 上，哪怕从最近任务划掉涟漪（约 2.5 秒自己重连）或者直接重启手机，守护和无障碍都会自己恢复。\n4. **家长管孩子手机的场景**：家长给孩子设好每天短视频/游戏的时长和晚上睡觉时段，把等待时间调到 2 小时、设好家长解锁码并开启防卸载，孩子自己改系统时间、杀后台、进设置清数据或重启手机都解不开，同时又不用买专门的学生手机。\n5. **不耽误打电话和正事**：电话、短信、闹钟、日历、相机、输入法、文件选择器、系统钱包都归在「系统必需」里，任何时候都不拦，孩子正常接打电话、早上闹钟响都不受影响。\n6. **纯本地、免费无广告**：没有账号体系，不收集任何统计数据。唯一用到网络的地方是手动点「检查更新」时从 GitHub 拉新包，以及开启高级保护时在手机本机内做无线调试握手。\n\n预览图：\n![](https://ripplefocus.github.io/logo.png)\n",
+    "created_at": "2026-10-26T15:12:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12795"
+  },
+  {
+    "id": 12794,
+    "title": "科技爱好者周刊投稿：systemo ebook —— 本地电子书工作台，TXT 转带封面 EPUB 并直传 Kindle",
+    "content": "【项目名称】systemo ebook\n\n【项目地址】https://github.com/systemsssx/systemo-ebook\n\n【一句话说明】Windows 本地电子书工作台：把 TXT / 网文自动分章、补齐作者和封面，生成带目录的 EPUB，再通过 WiFi 直传手机、Send to Kindle 或苹果图书送进阅读器，内置阅读器可直接试读。转换和传输全程在本机完成，不上传文件。\n\n【为什么值得推荐】只为一本书去装 Calibre 有点重，在线转换又要把书稿上传。这个小工具把「导入 → 自动分章 → 补封面 → 转 EPUB → 传设备」压成一条流水线，还支持断点续传（中断重跑只补缺章）、多章并发带全局限速、书库里批量加入待发送队列一次发到设备。开发者自荐，源码开放，书源的解析规则可自行扩展。\n\n【系统要求】Windows 10 / 11 x64，免费，解压即用（自带 Python 后端、Pandoc、ChromeDriver，无需另装运行库）。\n\n【下载】https://github.com/systemsssx/systemo-ebook/releases/tag/v1.1.0\n安装包 systemo-ebook-v1.1.0-full.rar（257,491,742 字节），SHA256 9B5F3FB14EB37960D77F90676E4D5DA614DC32F0D54E313B3D064848DA396965。\n\n【截图】可用 README 内的三张真实界面截图：制作页、传输页、内置阅读器。\n\n【说明】本工具只做本地格式转换与个人离线阅读，不提供任何资源分发或分享功能。",
+    "created_at": "2026-10-26T15:03:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12794"
+  },
+  {
+    "id": 12793,
+    "title": "【工具自荐】LTX-23 Video Studio：基于 LTX 模型的在线文生视频、图生视频工具",
+    "content": "### 项目介绍\n\n项目地址：https://ltx-23.org/\n\nLTX-23 Video Studio 是独立的第三方 AI 视频生成平台，可在浏览器中使用 LTX 视频模型，无需本地安装模型。\n\n### 主要功能\n\n- 文生视频：用自然语言描述场景、动作和镜头。\n- 图生视频：以参考图片为起点生成动态视频。\n- 提供 LTX-2.5 和 LTX-2.3 模型选项，支持的模型与设置可生成同步音频。\n- 提供可复用的视频提示词和创作指南。\n\n提示词资源：https://ltx-23.org/prompts\n\n创作指南：https://ltx-23.org/blog\n\n### 适用人群与收费说明\n\n适合内容创作者、设计师、营销人员和 AI 视频爱好者。视频生成采用付费积分或订阅模式，价格和模型能力以网站当前页面为准。\n\n这是项目方自荐，欢迎反馈。LTX-23 Video Studio 并非 LTX 或 Lightricks 官方网站，与其无隶属或背书关系。\n\n联系邮箱：support@ltx-23.org",
+    "created_at": "2026-10-26T14:30:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12793"
+  },
+  {
+    "id": 12792,
+    "title": "【软件自荐】棱镜 Prism：集成 AI 助手和多服务器巡检的 SSH 桌面工作台",
+    "content": "棱镜（Prism）集成 SSH 终端、SFTP 文件管理和 AI 助手，适合自己管理服务器的开发者。桌面端无需注册或部署后端；AI 可接自己的模型服务，或支持工具调用的本地 Ollama 模型。\n\n支持多台已连接主机巡检，按主机汇总 CPU、内存、磁盘、服务和端口状态；Docker / Compose 部署按阶段确认，提供实时日志和验证步骤。专用巡检和读取工具直接执行，自定义命令及部署阶段确认后执行。\n\n提供 Windows、macOS、Linux 安装包。模型费用由服务商决定；使用外部模型时，相关对话和终端输出会发送到该模型服务。\n\n- [官网与上手](https://aides-hik.github.io/AI-ssh/)\n- [项目与教程](https://github.com/aides-hik/AI-ssh)\n- [下载安装](https://github.com/aides-hik/AI-ssh/releases/latest)\n- [问题反馈](https://github.com/aides-hik/AI-ssh/issues)",
+    "created_at": "2026-10-26T14:10:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12792"
+  },
+  {
+    "id": 12791,
+    "title": "【开源自荐】蓝宝书 01 · DeepSeek Harness：一本讲「为什么这样设计」的图解书",
+    "content": "【开源自荐】一本讲「为什么这样设计」的图解书：蓝宝书 01 · DeepSeek Harness\n\n- 项目名称：蓝宝书 01 · DeepSeek Harness——《一切皆插件：一个 AI 外壳是怎么长出来的》\n\n- 项目地址：\n  在线阅读（GitHub Pages，免下载）：https://tobemagic.github.io/deepseek-harness-bluebook/\n  GitHub：https://github.com/TobeMagic/deepseek-harness-bluebook\n\n- 项目简介：\n  一本免费的设计解读书。用「修灯师傅队伍」一个生活故事贯穿全书，把 DeepSeek Harness 拆开讲清楚每一层为什么被设计成这样、代价是什么、哪些能搬到自己的项目里。3.4 万字，42 张手绘流程图，零代码、零包名，不写代码的人也能读完。每节先讲人话再上术语，结尾给对照表和「这条能搬去哪」。书中还把 DeepSeek Harness 与 Claude Code、Codex CLI 摆在一起对比：三家外壳，三种卖法。\n\n  免费、MIT、可离线阅读的单文件 HTML，另有 PDF 和 EPUB。\n\n- 项目截图：\n\n![封面](https://raw.githubusercontent.com/TobeMagic/deepseek-harness-bluebook/main/books/deepseek-harness/assets/cover.jpg)\n\n![社交预览图](https://raw.githubusercontent.com/TobeMagic/deepseek-harness-bluebook/main/books/deepseek-harness/assets/social-preview.png)\n",
+    "created_at": "2026-10-26T13:43:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12791"
+  },
+  {
+    "id": 12790,
+    "title": "【开源自荐】EricGameLauncher：一款采用WinUI3和.NET10构建的极简主义次世代游戏启动器。",
+    "content": "## 推荐项目\n\n**项目名称**：EricGameLauncher\n**开源主页**：[EricGameLauncher](https://github.com/EricZhang233/EricGameLauncher)\n\n---\n\n## 亮点速览\n\n<img width=\"932\" height=\"602\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/267b92f5-d82d-45d6-b05b-76c05dcafe0e\" />\n\n*   🧩 **全链路执行**：主程序、管理器、代替启动、伴随执行四条链路逐项可配；EXE、快捷方式、URL 协议、网页、商店应用都能直接跑。\n*   🖱️ **动态右键菜单**：菜单项随项目自动增减，识别到平台即显示「运行 Steam / 运行 Xbox」；每个项目最多 10 个自定义项，可独立配置标题、命令、参数与提权。\n*   🗂️ **多平台一站收纳**：Steam、Epic Games、Xbox、WeGame、独立 exe、网页与商店应用共处一库，顺序完全自定义。\n*   🔍 **多路搜索**：拼音全拼、拼音首字母、中文、英文、路径与 URL 协议都能当关键词——`yxlm` 直达英雄联盟，`C:\\Program Files` 按路径命中，`steam` 顺协议捞出全部。\n*   📥 **扫描即入库**：自动识别 Steam、Epic Games、Xbox 已安装游戏，按新增 / 已存在 / 已失效分组，一键导入或批量清理。\n*   💻 **全功能 CLI & Skill**：桌面端能做的命令行都能做，`-help` 与 `skill` 内置完整文档，脚本与 AI Agent 可直接接入。\n*   🚀 **快速启动**：后台宿主预读配置、预热图标与界面，再次打开几乎瞬间出现；不需要时一键关闭，进程随即退出。\n*   🗑️ **三段式删除**：主界面删除只进回收站，回收站删除才开始 72 小时倒计时，到期后下次启动自动清理——手滑也救得回来。\n*   🎒 **完全便携**：配置与图标缓存可随程序走，塞进 U 盘即可随身携带；系统模式与便携模式之间一键迁移。\n",
+    "created_at": "2026-10-26T13:30:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12790"
+  },
+  {
+    "id": 12789,
+    "title": "【开源自荐】知音：读你在 YouTube Music 的喜欢，每天推荐几首你还没收藏的歌",
+    "content": "自荐一个开源项目，知音（zhiyin）。\n\n它读你在 YouTube Music 点过的喜欢（默认只读），按口味分成几个电台，每天早上给你听过的电台换上几首你还没收藏的歌，每首附一句为什么选它。候选来自 YouTube Music 的听歌图谱，先去掉你已有的，排出短名单交给 Claude 当编辑挑，一般只放它打分 0.7 以上的。另外会把你所有的喜欢画成一张唱片，一年一圈，给口味起个名字，可以存成分享卡。\n\n![知音：你的耳朵](https://raw.githubusercontent.com/billpwchan/zhiyin/main/docs/images/ear.zh-CN.webp)\n\n网页版：https://zhiyin.billpwchan.art/?ref=github （不登录可以先听一位示例听众的电台）\n\n项目地址：https://github.com/billpwchan/zhiyin\n\nFastAPI 加原生 JS，MIT，可以自己部署。谢谢！\n",
+    "created_at": "2026-10-26T13:25:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12789"
+  },
+  {
+    "id": 12788,
+    "title": "【开源自荐】awesome-game-skill 收集了几百种可以让Claude Code、Codex、Cursor、Kimi 等 AI 编程 Agent 更会做游戏的 Skill（SKILL.md）、MCP 服务器和配套工具",
+    "content": "这个列表收集能让 Claude Code、Codex、Cursor、Kimi 等 AI 编程 Agent 更会做游戏的 Skill（SKILL.md）、MCP 服务器和配套工具，覆盖 Unity / Unreal / Godot / Bevy / Roblox 等引擎，以及美术资产、像素风格、音效、测试与逆向。所有链接都经过可访问性检查，星数和许可证来自 GitHub API（2026-10-26 更新）。同一个仓库里的多个 skill 合并为一行，data/skills.json 里保留了全部 255 个 skill 的明细。\n\n姐妹仓库：[awesome-kimi-k3-game](https://github.com/gdfsdjj145/awesome-kimi-k3-game) — Kimi K3 做游戏的可玩效果与提示词\n在线浏览：[gameskill.dev](https://gameskill.dev/)\n机器可读数据：[data/skills.json](https://github.com/gdfsdjj145/awesome-game-skill/blob/main/data/skills.json)\n\n直接让你的agent读这个skill，立马开始你的AI创作游戏之旅",
+    "created_at": "2026-10-26T12:51:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12788"
+  },
+  {
+    "id": 12787,
+    "title": "【开源自荐】Symbix，一个陪伴型的全能Agent",
+    "content": "## 正文\n简言之：一个陪伴型的全能Agent\n\n遇到一个痛处:AI 助手要么只会给一段话让你自己排版,要么不打招呼就把你文件改了。所以我做了 Symbix——一只住在桌面上的桌宠,你说一句需求,它自己找工具、干活、交付**排版好的成品文件**(Word / PPT / Excel / PDF),每一步留痕、可一键还原。\n\n但它不想只当效率工具。它有长期记忆和每日手账,越用越熟;会在没事的时候**主动来找你聊天**,一半时间是翻你们的记忆找话题(\"上次你说要做的那个桌宠,后来怎么样了?\");任务做完提醒你的时候,响起的不是刺耳的\"叮\",而是轻风、晨露、余烬这些柔和音——界面也是暖色主题,连暗色模式都是暖炭色的。它是个工具,更是个有温度的桌面伙伴。\n\n该有的边界感也有:多步任务先报计划等你点头,文件修改和命令执行都会弹审批卡——或者打开 auto-pilot,放它自己跑。全部数据本地:对话、记忆、附件,删会话连附件一起清。\n\n<img width=\"2520\" height=\"1580\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1e964990-705f-46cd-89c8-3b45e6d2be20\" />\n\n**亮点一览:**\n\n- 📦 以md为媒介，多种文件可解析，支持模型视觉和ocr\n- 💛 会主动来找你:翻记忆找话题、弹幕先开口,是个有温度的桌面伙伴\n- 🌸 温柔感做进细节:十几种柔和提示音(轻风/晨露/余烬…)+ 全套暖色主题,暗色也是暖炭色\n- 🤖 一句话跑完整条流水线:检索 → 下载 → 精读 → 总结 → 交付,全程无人值守\n- 🎭 复杂任务自动分身多智能体并行,每个分身可以用不同的模型\n- 🗂️ 每步操作有可读 diff,任何一步一键回溯,新建的文件也能撤\n- 💾 长期记忆 + 每日手账,重启后不用重新自我介绍\n- 🎨 会自己画皮肤:描述想要的样子,它画形象、做动作、打包成能导入的桌宠\n- 🔊 本地语音识别(数据不出机器)+ 流式逐句 TTS\n- 🧩 自研pythonSDK包，工具丰富，且Skill 包和 MCP 工具即插即用,权限和审批与内置工具同一套\n\n**下载 / 了解更多:**\n\n- 🐙 GitHub 开源:https://github.com/yoruniubi/Symbix\n\n",
+    "created_at": "2026-10-26T12:15:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12787"
+  },
+  {
+    "id": 12786,
+    "title": "【工具自荐】HandFonty：在浏览器里手写字母，制作并导出自己的字体",
+    "content": "大家好，自荐一个我做的在线手写字体工具 **HandFonty**。\n\n网址：**https://handfonty.com**\n\n它可以把自己写的字母做成真正可安装的字体：在浏览器里用鼠标、手指或手写笔逐个绘制字母，调整字距和轮廓，再导出 OTF / TTF 文件，安装到 macOS、Windows 或用于设计软件。\n\n主要功能：\n\n- 提供字母书写引导，以及钢笔、马克笔、平尖笔等笔刷，支持笔画平滑调整。\n- 可逐字调整左右留白、位置、缩放，以及全局字距，边调整边看相邻字母的效果。\n- 支持自定义文本预览、多版本字形和自定义连字。\n- 导出矢量字体；缺字的字体会明确标记为草稿。\n- 支持桌面和移动端浏览器，提供中文与英文界面。\n\n适合做个人手写字体、邀请函、贺卡、手账，或把自己的书法和手绘字母用于设计。\n\n第一款字体可免费制作和导出，供个人使用。更多字符、商业授权等高级功能提供付费 Pro 方案，单款字体 $5.99 起，另有可选订阅：[价格说明](https://handfonty.com/pricing)。\n\n下面是书写、字距调整和预览导出的界面截图：\n\n**1. 在浏览器里逐个书写字母**\n\n![HandFonty 字母书写界面](https://github.com/user-attachments/assets/56b85f5d-592b-4127-a9be-0ffab47562fd)\n\n**2. 调整字距、位置和字形大小**\n\n![HandFonty 字距调整界面](https://github.com/user-attachments/assets/b33f3f14-9c49-423f-b00f-bc29cfc89d06)\n\n**3. 预览并导出字体**\n\n![HandFonty 字体预览与导出界面](https://github.com/user-attachments/assets/b6cc578a-474b-4715-be13-64ed3a12a93b)\n\n欢迎试用，也欢迎反馈字距调整的体验和导出后的字体效果。谢谢！\n",
+    "created_at": "2026-10-26T12:15:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12786"
+  },
+  {
+    "id": 12785,
+    "title": "【开源自荐】AWS Lightsail 省钱计算器：同规格加几台小实例，超额费从每 TB $92 降到 $2.5",
+    "content": "AWS Lightsail 有个不太为人知的规则：同地区、同规格的实例共享一个流量池。超额费每 TB 约 $92，而加一台 $5 的 IPv6 实例就多出 2 TB，相当于每 TB $2.5。\n\n我被收过一次 $500 的超额费，事后才发现提前加 3 台小实例、花 $15 就能避免，于是做了这个计算器：填入本月已用流量，它会预测月底用量、额度哪天用完、会多付多少钱，并对比加 0～3 台实例的总花费，给出最省的方案。\n\n- 在线使用：https://ls.1ms.dog/\n- 源码（MIT）：https://github.com/yt1988/lightsail-cost-saver\n\n纯前端、数据只存在浏览器本地；19 个地区的价格从 AWS Price List API 拉取。站点还提供 llms.txt，计算模块和价格数据允许跨域读取，可以直接交给 AI Agent 或在脚本里调用。也可以免费部署到 Cloudflare Workers / Vercel，或者 docker run 自托管。\n\n![](https://pomf2.lain.la/f/qnqtfwy4.png)\n",
+    "created_at": "2026-10-26T11:48:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12785"
+  },
+  {
+    "id": 12784,
+    "title": "【工具自荐】960W 表格预检：在浏览器里检查 CSV 引号、列数和商品字段",
+    "content": "大家好，我是「960W 表格预检」的经营者。这是借助 AI 开发和整理说明的独立免费工具，目前在验证是否对处理商品表格的人有用。\n\n在线使用：https://solo-csv-preflight.960w.workers.dev/\n\n适合在已经整理好 CSV、准备导入前做一次文件检查。中文界面，可以粘贴内容或选择文件，不需要注册、连接店铺或留下邮箱。\n\n目前能检查：\n\n- 引号不配对、闭合引号后多余字符、某行列数与表头不一致。\n- 空白/重复表头、完全相同的数据行等需要人工核对的情况。\n- 选择 Shopify 商品模式后，检查部分标题、handle 和价格格式问题。\n- 在页面显示问题位置，并下载检查报告；原文件不被改写。\n\n例如虚构价格 `$12.50` 会提示价格不能带货币符号；页面有可直接载入的示例，不必拿真实业务文件试验。\n\nCSV 内容只在当前浏览器处理，不上传。网站另有 Cloudflare Web Analytics 访问统计；可选的上线通知名单有单独隐私说明，不加入也能免费使用。\n\n限制也明确：只支持 UTF-8、逗号分隔 CSV，单文件最多 5 MB、50,000 行；它不转换任意供应商表格，不修复文件、不同步库存，也不保证 Shopify 一定接受导入。这不是 Shopify 官方产品，源码仓库当前未公开，不以开源项目名义投稿。\n\n希望先得到 3 位实际处理商品 CSV 的使用者自愿反馈：提示是否帮你定位了问题，或哪里提示不准。只需在这里描述情况，不必提交表格、邮箱、店铺权限或含客户信息的截图；不需要好评、登记或购买。免费版当前不收费，未来批量版还在验证中。",
+    "created_at": "2026-10-26T11:35:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12784"
+  },
+  {
+    "id": 12783,
+    "title": "【开源自荐】backlink-guard：提交网站之前，先查这个外链来源值不值得发",
+    "content": "**项目地址**：https://github.com/zhuyansen/backlink-guard\n\n一个「外链来源体检」工具：在你把网站提交到导航站、awesome 列表、客座文章站之前，先读这些站自己的页面，对照 Google 的链接垃圾政策，给出「跳过 / 先看看 / 只免费提交 / 价值低 / 可以提交」的建议，每条都附上页面原文或数字作为依据。已经停放的域名、明码卖 dofollow 的站、要求回链的站、同一个人运营的站群，都会被标出来。\n\n链接上线后，它还能核实链接是否真的传权重、放在页面哪个位置；平时可以体检自己的外链画像，找出指向 404 页面的外链并建议 301，看看哪些站链向竞品却没链向你，以及 Google 的 AI 概览和 AI 助手引用了谁。它从不替你提交任何东西。\n\n纯 Python、无依赖、MIT 开源，`pip install backlink-guard` 就能用，不配 key 也能跑免费的页面检查；付费数据走你自己的 Glasser 或 AIsa key。也能当 Claude Code 插件、Agent Skill 和 MCP 服务器用。\n\n![backlink-guard 的流程](https://raw.githubusercontent.com/zhuyansen/backlink-guard/main/docs/flow.zh.gif)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n",
+    "created_at": "2026-10-26T10:57:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12783"
+  },
+  {
     "id": 12782,
     "title": "【插件自荐】墨观 Inkstone 一套从 526 个中国传统颜色里长出来的代码配色",
     "content": "一套从 [526 个中国传统颜色](https://zhongguose.com/) 里长出来的代码配色。支持 VSCode, VSCodium, Trae 等主流编辑器；Kaku、Ghostty 终端以及 OpenCode。已经上架 VSCode marketplace 和 OpenVSX 市场\n\n网站：[https://inkstone.konata9.cc/zh/](https://inkstone.konata9.cc/zh/) 可以体验 6 种主题色。\n项目地址：[https://github.com/Konata9/inkstone](https://github.com/Konata9/inkstone)\n\n<img width=\"3360\" height=\"2436\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f3df127c-bfff-4e6f-86cc-7668a84b3ce8\" />",
@@ -169,7 +289,7 @@
   },
   {
     "id": 12761,
-    "title": "简历专家智能体",
+    "title": "【工具自荐】简历专家智能体",
     "content": "从来没写过简历， 不知道简历从何入手？ 简历专家智能体， 通过聊天方式来引导用户写简历， 引导用户写出简历的亮点， 挖掘出项目的价值， 技能的优势。 \n\n功能介绍： https://haojianli.me/blog/resume-agent-co-creation\n功能入口： https://haojianli.me/resume/create-with-agent\n功能截屏：\n\n<img width=\"1391\" height=\"833\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/994020f4-d1c0-4768-85c3-152a7c10f036\" />\n\n<img width=\"1379\" height=\"776\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0aa45a5f-ce71-42ca-91d0-3a130c077f4d\" />\n\n<img width=\"1367\" height=\"834\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca1971ca-1990-4235-8af8-496bb44e1555\" />\n\n<img width=\"1701\" height=\"971\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/badd3e42-1284-40e2-b8d3-4af3167b9b43\" />\n\n<img width=\"1698\" height=\"966\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68590244-ed21-4e21-a9ef-4b0de24e6857\" />",
     "created_at": "2026-10-25T12:38:32Z",
     "labels": [],
@@ -678,125 +798,5 @@
     "created_at": "2026-10-23T07:02:24Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12697"
-  },
-  {
-    "id": 12696,
-    "title": "【开源自荐】Voltip：按住快捷键说话，松开后文字出现在光标处，识别可以完全在本机",
-    "content": "Voltip 是我做的开源语音输入工具（AGPL-3.0），支持 Windows、macOS、Linux，另有安卓应用。\n\n- 源码：https://github.com/sunerpy/voltip\n- 官网：https://voltip.firlab.app/zh/\n- 在线体验（不用安装）：https://voltip.firlab.app/zh/guide/try\n\n## 它做什么\n\n在任意应用里按住 Ctrl+Alt+Space 说话，松开后，文字直接粘贴到光标处。开着 AI 润色时，口头禅和说错又改口的部分会被去掉，例如按住快捷键说的是「那个，就是，评审会定在周一上午十点，呃，不对，应该是下午两点，请大家带上最新的数据。」，写进文档的是「评审会定在周一下午两点。请大家带上最新的数据。」\n\n![按住 Ctrl+Alt+Space 说话，松开后润色过的文字出现在光标处](https://raw.githubusercontent.com/sunerpy/voltip/main/docs/readme/media/voltip-dictation-zh.webp)\n\n## 几个特点\n\n- 识别可以完全在本机：下载 Qwen3-ASR、SenseVoice 或 Paraformer 模型以后，录音不离开电脑。Qwen3-ASR 有显卡时用 Vulkan（Windows、Linux）或 Metal（macOS），没有就用 CPU。\n- 也可以用云端：安装包内置了默认的识别和润色服务，装好就能用，不用注册；也可以接自己的服务商（OpenAI、Groq、硅基流动、阿里云百炼或任意 OpenAI 兼容接口），润色还可以用本机的 Ollama。\n- 词典和替换规则：专门纠正总被听错的人名、项目名和命令，正确写法也会提示给云端识别和 AI 润色。\n- 场景：按前台应用自动换润色方式，比如编程场景里代码、命令和路径保持原样。\n- 安卓手机可以当电脑的麦克风和键盘：扫码配对，音频端到端加密后传到电脑，由电脑识别并输入。\n- 没有桌面的 Linux 服务器上，`voltip-server` 可以向本机其他程序提供 OpenAI 兼容的转写接口。\n\n## 安装\n\n```bash\n# Linux（x86_64）和 macOS\ncurl -fsSL https://raw.githubusercontent.com/sunerpy/voltip/main/scripts/install.sh | sh\n```\n\n```powershell\n# Windows 10/11，PowerShell\nirm https://raw.githubusercontent.com/sunerpy/voltip/main/scripts/install.ps1 | iex\n```\n\n安装包也可以在 GitHub 发布页下载。\n\n## 不足\n\n内置服务由所有用户共用，请求多或额度用完时会跳过润色，想稳定使用最好接自己的服务商。Windows 安装包还没有代码签名，首次启动 SmartScreen 会提示；macOS 版未经 Apple 公证；iOS 版还没有；纯 Wayland 会话没有全局快捷键。如果主要在手机上打字，它帮助不大，安卓应用主要是电脑的麦克风和键盘。",
-    "created_at": "2026-10-23T06:58:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12696"
-  },
-  {
-    "id": 12695,
-    "title": "【自荐】字相：免费中文字体预览与「找相似字体」网站",
-    "content": "[字相](https://zixiangfont.com) 收录 237 款可免费使用的简体中文字体（开源字体和免费商用字体），每款都能输入任意文字在线预览。特色是「相似字体」：程序测量每款字体的笔形、字重、圆润度等 12 项特征，为每款字体找出风格最接近的字体，还可以要求「更圆」「更粗」「更适合标题」。网站代码开源：https://github.com/potatates/open-chinese-fonts",
-    "created_at": "2026-10-23T06:51:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12695"
-  },
-  {
-    "id": 12694,
-    "title": "【开源自荐】Codex 主动发现与 SVG 工作流：两轮鹈鹕骑车实测（youchibuwan-ops）",
-    "content": "# 让 Codex 主动找方法、查证据：工作流与两轮鹈鹕实测\n\n自荐一个我维护的 MIT 开源项目：[Agent Workflow Skills](https://github.com/youchibuwan-ops/agent-workflow-skills)，目前是 Codex 预发布版，含两份可单独安装的中文工作流。\n\n做这个项目，是希望代理遇到陌生问题时能主动找方法、核查来源、检查作品，而不总靠用户逐处指出。重点 Skill `proactive-skill-discovery` 把能力缺口、成熟方案检索、来源/许可证审阅、实际复用、产物验证和经验沉淀连起来；另一份 SVG Skill 则将多角度参考、结构理解、局部制作与整件复审串成流程。[安装说明](https://github.com/youchibuwan-ops/agent-workflow-skills/blob/main/docs/installation.md)提供固定预发布版本的 Codex 命令及独立 ZIP。\n\n为方便读者看实际产物，公开了两轮鹈鹕骑自行车 A/B：静态 SVG 和动画 SVG。每轮同模型 gpt-6-astra、xhigh 极高思考强度，同提示词和工具、全新隔离会话，每组上限 900 秒 / 80 次工具启动；A 不启用目标 Skill，B 只安装 SVG Skill，不显式点名调用，两轮 B 均实际读取。\n\n静态 A 在左，B 在右：\n\n![静态原件对照](https://raw.githubusercontent.com/youchibuwan-ops/agent-workflow-skills/7c7fc005b506cb353bbff6973351fab6112d079b/evals/pelican/v1/results/comparison.png)\n\n动画 A 在左，B 在右，以下来自真实浏览器录像。**B 在 900 秒预算截止前保存了可播放作品，但没有正常完成主任务。**\n\n![动画对照](https://raw.githubusercontent.com/youchibuwan-ops/agent-workflow-skills/7c7fc005b506cb353bbff6973351fab6112d079b/evals/pelican/animated-v1/results/comparison.gif)\n\n非盲观察里，B 更明确地表达了传动、羽毛/喉囊材质和前叉制动细节，并有自主检查与纠错记录；A 也能自主修正并产出完整作品。代价同样公开：静态 A/B 约 458/568 秒，动画 A 约 519 秒，B 用满 900 秒。相同上限不等于相同 token 消耗。\n\n这只是两轮作者案例：没有最终配对的独立盲评分，不能推导普遍质量提升；双方都没有运行中的人工纠正，不能量化“节省了多少提醒”。静态旧 B 曾被测试器误停，获授权仅补跑一次 B，旧结果和失败均保留。这两轮不是主动发现 Skill 的效果实验，后者有另行公开的干净环境流程验收记录。\n\n[中文完整案例与原件](https://github.com/youchibuwan-ops/agent-workflow-skills/blob/main/evals/pelican/README.zh-CN.md) · [主动发现的验收与限制](https://github.com/youchibuwan-ops/agent-workflow-skills/blob/main/docs/codex-acceptance.md)\n\n希望对更重视成品质量、愿意接受额外检查时间的开发者有用。欢迎复现和反馈失败，包括“检查更多但并没变好”的情况；项目不承诺每次自动触发或每次产物都正确。\n",
-    "created_at": "2026-10-23T06:50:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12694"
-  },
-  {
-    "id": 12693,
-    "title": "撤回投稿",
-    "content": "此投稿已撤回，请勿收录。原项目介绍和链接已移除。\n",
-    "created_at": "2026-10-23T05:53:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12693"
-  },
-  {
-    "id": 12692,
-    "title": "【开源自荐】知树阅读是一个可安装到手机的个人数字书架：把文件、订阅和网页文章收进来，安静地搜索、阅读、收藏、同步，再从公共目录发现新的内容。",
-    "content": "大家好，我做了一个叫「知树阅读（ZhiTree book）」的个人数字图书馆，地址是：https://books.zhitree.cn/\n起因很简单：我的 PDF、读书笔记、Markdown、网页文章和小工具散落在很多地方。收藏夹越来越长，但真正想重新找到、继续读、或者回顾某一篇内容时，往往很困难。\n知树阅读尝试把这些内容放到一个更适合“阅读与回访”的空间里，而不只是做另一个链接收藏夹。\nguide：https://books.zhitree.cn/#read/notes%2Fguide%2Findex.html\n已经上线\n\t• 个人数字书架：可收录 PDF、Markdown、HTML、TXT、网页链接和网页小工具。\n\t• 搜索与整理：支持分类、标签、合集、收藏/星标、置顶、隐藏，以及最近添加、最近阅读、标题、发布日期排序。\n\t• 沉浸式阅读：支持阅读进度、目录、书签、字号、行距、版面宽度，以及浅色、深色、米黄、护眼绿等阅读主题。\n\t• 订阅阅读：可订阅 RSS、Atom、JSON Feed；每个订阅源自动成为一个合集，新文章会进入自己的书架。\n\t• 站内阅读网页：订阅文章、收藏链接和公共目录文章会尽量提取正文，在站内阅读；无法读取的内容会明确跳转到原站。\n\t• 推荐订阅：已有按分类和流量参考整理的推荐订阅页，可一键订阅多个博客或栏目。\n\t• 公共目录：只保存标题、摘要和原文链接，不复制别人的全文；支持按类型、标签、书架筛选，也能收藏到自己的书架。\n\t• 无账号使用：个人添加的文件、订阅、进度和书签默认只保存在自己的浏览器中。\n\t• 备份与同步：支持浏览器本地备份与恢复；可选加密同步可在多设备同步书单、订阅、进度、书签和小型文本文件。\n\t• 移动端与 PWA：可安装到手机主屏幕，支持离线阅读已打开的内容；Android 还支持从系统分享菜单发送文件或链接到知树阅读。\n正在规划\n\t• 推荐与热度：在首页、订阅页和分类页增加“值得一读”区域，展示热门订阅、高收藏内容、近期高热文章和编辑推荐。\n\t• 更清晰的排序：补充热度、收藏数、浏览量等排序方式，并区分“最近发布”和“最近阅读”。\n\t• 公共目录卡片升级：更直观地显示收藏数、热度或浏览量；评估是否为可下载内容增加下载入口。\n\t• 手机阅读体验：目录打开后，点击页面空白区域即可收起，减少对正文的遮挡。\n\t• 更多订阅来源：扩展科技、学术、金融、音乐等领域榜单，以及小红书、知乎、B 站、抖音、微博、X、YouTube 等平台的优质内容入口。\n\t• 公共目录筛选升级：增加合集下拉框，并提供“按平台 / 按领域”的切换，让用户更快找到想看的内容。\n轻量笔记：为“我的书架”增加随读笔记，优先做好手机端的快速记录；富文本会在不牺牲简洁和性能的前提下逐步支持。\n它还在持续迭代中。我尤其想听听大家的反馈：你们平时如何整理 PDF、读书笔记和长文章？哪些功能会让你愿意长期使用这样的个人阅读库？\n\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e1cf7f08-9c32-43e7-b2ed-b91af5a971a4\" />\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5ad145bd-d316-4729-8dec-b1963da128d3\" />\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/11bec3c8-cb61-4483-9bd1-a1e682873f69\" />\n<img width=\"489\" height=\"687\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/135138e7-eb66-4538-878d-819a2b5d2e0c\" />\n<img width=\"1500\" height=\"1348\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b32d4c47-a484-4c61-83f1-6927900ba6d2\" />\n<img width=\"1040\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/237f398f-1405-4636-8ded-02df59de5d0a\" />\n<img width=\"1080\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/005c5da9-4325-40ff-ac28-df14dca9f988\" />\n<img width=\"1500\" height=\"859\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c23d883b-c5c9-4252-88d2-498d24c01ac7\" />\n<img width=\"600\" height=\"1298\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/1a8ab513-02e9-48d9-9fef-060a55b8c319\" />\n<img width=\"600\" height=\"1298\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5a354586-28bf-45dc-bacf-5d634dda0bd4\" />\n<img width=\"600\" height=\"1298\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed6a2169-7a03-4d62-bcd2-7df141d5e373\" />\n<img width=\"600\" height=\"1298\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b326c1c0-b89b-4b7c-8fea-b0f02bf70251\" />\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dd578a2b-952f-4daf-a46b-cd52094ca716\" />\n<img width=\"1040\" height=\"860\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c24048a2-6121-4fdf-a8cf-75b8fff6cc15\" />\n<img width=\"1300\" height=\"504\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/dfac9e95-13e6-4bc7-9927-6b179e18dd01\" />\n<img width=\"1300\" height=\"898\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a9a96749-b2cb-45d6-b73b-99c64449dc44\" />",
-    "created_at": "2026-10-23T05:30:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12692"
-  },
-  {
-    "id": 12691,
-    "title": "【开源自荐】审美工程：写给 AIGC 创作者与产品团队的 12 篇方法随笔",
-    "content": "阮老师好，推荐一组自己写的文章。\n\n《审美工程》从“为什么 AI 做出来的东西总有一股 AI 味”出发，讨论生成变得便宜之后，审美判断怎样被说清楚、落实到生成里、被检查，并留给下一次创作。12 篇依次是审美语言、参考系统、艺术指导、生成协议、审美评审、审美记忆、品牌审美、团队协作等。\n\n- 在线阅读：https://leenlbma.github.io/aesthetic-engineering/\n- GitHub：https://github.com/leenlbma/aesthetic-engineering\n- 许可：文章 CC BY 4.0，代码 MIT；提供 llms.txt，方便交给 AI 阅读\n\n谢谢！",
-    "created_at": "2026-10-23T05:00:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12691"
-  },
-  {
-    "id": 12690,
-    "title": "【开源自荐】token-pilot：所有 AI 工具的本地账单 + 预算控制器（国产模型自动归一）",
-    "content": "**项目地址**：https://github.com/anthonyhann/token-pilot\n**开源协议**：MIT\n**平台**：macOS / Windows（CLI 全平台）\n\n### 为什么做（背景与痛点）\n\n我同时用 Claude Code、Codex、Kimi Code，还经常通过它们跑 DeepSeek、GLM、Kimi 等国产模型。有一天发现：**我根本答不上来「我这个月给 AI 烧了多少钱」**——每个工具有自己的用量页，分散、单位不一、没有总账、更没有预算。\n\n### 它是什么\n\n**token-pilot = 你所有 AI 工具的本地账单 + 预算控制器。**\n\n一条命令看清今天/本月各工具、各模型烧了多少 token、多少钱；菜单栏常驻 `¥今日 · 预算%`；超支系统通知；打转检测（揪出死循环烧钱的会话）；省钱建议（贵模型干轻活迁移、缓存优化空间）。\n\n### 几个不一样的点\n\n- **国产模型自动归一**：DeepSeek/GLM/Kimi/Qwen 等靠宿主日志 model 字段识别，不用单独配置；定价表对齐 8 家官方目录价（DeepSeek 含高峰/空闲分时）\n- **覆盖 9 个数据源**：CLI 日志（Claude Code/Codex/Kimi Code/pi）、SQLite（OpenCode）、zstd 压缩日志（DeepSeek Harness）、trace（WorkBuddy）、云端 API（火山 arkcli）；读不到的工具诚实标注，不假装\n- **数据准确性可验证**：自带独立对账脚本（第三方口径重算原始日志逐项比对）+ 39 个单元测试 + 36 项看板算法不变量\n- **零入侵**：只读本地日志，不装 hook、不改配置、不过代理，数据不出本机\n\n### 实测数字（作者本机，2026-10）\n\n本月 810M+ tokens · 12,685 次调用；打转检测抓到单会话 120 次重复重试；缓存命中分析显示本月缓存省了 ¥3,048；压缩潜力量化显示上下文重发还有 $63–95/月可省。\n\n### 截图\n\n![状态栏面板](https://raw.githubusercontent.com/anthonyhann/token-pilot/main/docs/assets/menubar-panel.png)\n![完整看板](https://raw.githubusercontent.com/anthonyhann/token-pilot/main/docs/assets/dashboard.png)\n\n**安装**：`npm install -g token-pilot` 或 Releases 下载状态栏应用安装包。\n",
-    "created_at": "2026-10-23T04:14:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12690"
-  },
-  {
-    "id": 12689,
-    "title": "[开源自荐] GFT Map：在 AI 新会话开始前，检查要带走的决定与理由",
-    "content": "我是 GFT Map 的维护者。它是配合 Codex、Claude Code 使用的本地应用，附有供这两款工具调用的操作说明（Skill）：把一个主题的对话材料整理成可编辑文稿，并用图连接决定、理由和待解决问题。人先检查、纠正，再让新会话读取该主题，接着工作。\n\n[不用安装的中文预设例](https://corallips.github.io/gft-map/demo.html?case=product&lang=zh)：点“银行自动同步暂缓？”看取舍理由，切到文稿，再预览要交给下一场聊天的文本。演示内容是虚构的，不调用模型。\n\n![中文预设示例界面](https://raw.githubusercontent.com/CoralLips/gft-map/56e881827379e449f3ba3b2b77e05de268236cfb/apps/gft-local/showcase/assets/product.png)\n\n另附[作者已审阅的真实交接稿](https://gist.github.com/CoralLips/97554bc21e9edfb35944cfd8acdcc0ea#file-readme-zh-md)：游戏作者希望玩家在聊天里下令，同时留在原地图。作者审阅后补充，如果必须打开控制面板，应先征得玩家同意。这项条件已补进交接稿；读者可以直接读文稿，无需安装。[完整原讨论](https://github.com/openai/codex/discussions/55901)。\n\n[开源仓库与安装](https://github.com/CoralLips/gft-map)，MIT 协议。需要 Node.js 22.20+ 和已登录的 Codex 或 Claude Code，AI 整理消耗对应账户的模型额度。\n\n当前限制：手改文稿和节点说明不会自动互改，需要核对一致；真实案例完成的是文稿审阅，新会话接续及 Map 相对普通 Markdown 的收益尚未验证。本文及案例说明由维护者借助 AI 整理。",
-    "created_at": "2026-10-23T04:10:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12689"
-  },
-  {
-    "id": 12688,
-    "title": "用开源项目自建了个影视站，免费、无广告",
-    "content": "用开源项目自建了个影视站，免费、无广告：\n👉 https://freetv.utjx.cn\n\n11 个源自动聚合去重，40 万+部影片\n电影 / 剧集 / 动漫 / 综艺 / 短剧都有\n弹幕、多线路切换、断点续播，手机电脑通用\n\n链接建议复制到浏览器打开，欢迎使用~\n",
-    "created_at": "2026-10-23T03:16:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12688"
-  },
-  {
-    "id": 12687,
-    "title": "【开源自荐】SlopSquat：面向 AI 辅助编程时代的依赖包幻觉投毒（Slopsquatting）轻量级开源嗅探工具",
-    "content": "我是 SlopSquat 的作者，提交给周刊编辑筛选。\n\n- **项目地址**：https://github.com/Mianm-l/slopsquat\n- **开源协议**：MIT\n- **技术栈**：Python 3.8+（零三方依赖 / 标准库实现）\n- **支持生态**：Python (`requirements.txt`) / Node.js (`package.json`)\n\n---\n\n### 💡 为什么做这个（背景与痛点）\n\n在 AI 辅助编程（Cursor、Claude Code、ChatGPT、Copilot）日益普及的今天，大模型在生成工程代码时，经常会**凭空捏造一个不存在的第三方库名**（例如：`flask-super-route-beautifier-ai` 或 `react-easy-modal`）。\n\n攻击者利用自动化脚本持续收集大模型最常幻觉编造的包名，抢先在 **PyPI** 或 **npm** 官方源上注册这些虚假包，并在其构建脚本或主入口中植入恶意代码（窃取环境变量、SSH 密钥、内网凭证）。这种新型软件供应链攻击被称为 **Slopsquatting（AI 幻觉包抢注投毒）**。\n\n**传统安全工具的致命盲区：**\n* 常见的安全门禁（Snyk、Dependabot、`pip audit`、`npm audit`）完全基于**已知 CVE 漏洞库**运作；\n* 刚刚抢注上架几天的投毒包在漏洞库里根本没有 CVE 编号，传统工具会盲目返回 **`0 vulnerabilities found (安全无风险)`**，导致开发者毫无戒备地安装中招。\n\n为此我做了 **SlopSquat** —— 一个轻量、零依赖的命令行与 CI/CD 嗅探工具，不依赖滞后的 CVE 库，而是通过官方源元数据指纹与多维启发式画像，直接在毫秒级嗅探出高危的 AI 幻觉投毒依赖。\n\n---\n\n### ✨ 核心特性\n\n- ⚡ **零外部三方依赖**：纯 Python 3.8+ 标准库实现，无需安装庞大运行时，开箱秒跑。\n- 🌐 **双主流生态覆盖**：同时支持 Python (`requirements.txt`) 与 Node.js (`package.json`)，自动递归探测清单。\n- 🔬 **五维启发式防投毒画像**：\n  1. **未注册抢注空窗预警**：官方源上根本不存在该包（95分高危），预警攻击者可能随时抢注；\n  2. **出生天数 (Freshness)**：刚注册 < 7 天（+45分）；老牌库（> 1年）大幅减免风险；\n  3. **下载荒漠 (Desert)**：全球月下载量极低（+25分）；百万下载明星库免检；\n  4. **幽灵仓库 (Ghost Repo)**：官方元数据中未提供任何有效 GitHub/GitLab 源码仓库；\n  5. **AI 幻觉后缀特征**：命名正则命中大模型高频编造词根（`-helper`, `-utils`, `-toolkit`, `-easy`, `-manager` 等）。\n- 🚀 **毫秒级并发探测**：多线程并发直连 PyPI 与 npm 官方 JSON API，百个依赖秒级核验完毕。\n- 🛡️ **开箱即用 CI/CD 门禁**：内置 GitHub Actions 模板，发现高危依赖以非零状态码（`exit 1`）退出，自动红牌阻断恶意 PR 合并。\n\n---\n\n### 🖥️ 快速体验\n\n```bash\ngit clone https://github.com/Mianm-l/slopsquat.git\ncd slopsquat\n\n# 扫描 requirements.txt 或整个前端/后端项目\npython -m slopsquat examples/requirements.txt\n```\n\n欢迎大家试用并提出宝贵建议，希望能为使用 AI 辅助编程的开发者们提供一层轻巧有效的供应链防线。",
-    "created_at": "2026-10-23T02:42:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12687"
-  },
-  {
-    "id": 12686,
-    "title": "Withdrawn",
-    "content": "Withdrawn by the author.",
-    "created_at": "2026-10-23T02:26:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12686"
-  },
-  {
-    "id": 12684,
-    "title": "【开源自荐】OfficeSentry：专为打工人与研发团队设计的轻量级监控哨兵（支持微信/企微 ChatOps 交互、桌面原生弹窗、防抖自愈与职场节律关怀）",
-    "content": "我是 OfficeSentry 的作者，提交给周刊编辑筛选。\n\n- **项目地址**：https://github.com/Mianm-l/office-sentry\n- **开源协议**：MIT\n- **技术栈**：Python 3.8+ / Docker / HTML5 (无重型依赖)\n\n---\n\n### 💡 为什么做这个\n\n在日常研发与办公中，作为个人开发者、独立运维或小团队，我们经常遇到这些尴尬的场景：\n1. **监控太重**：想盯几个本地服务、内网穿透（如 cpolar / frp）、自建 API 或开发机，动辄搭建一套 Prometheus + Grafana 或 Zabbix 太繁琐，吃内存又杀鸡用牛刀。\n2. **告警风暴与不便**：很多简单的监控脚本遇到偶发网络毛刺就疯狂弹窗或发邮件；人在外边收到故障告警时，身边没有电脑，无法便捷地查询状态或临时停用/新增监控。\n3. **日常节奏疏忽**：下班前常常忙于排错而忘记按时填报工时与日志；长时间敲代码久坐，缺乏规律的喝水与活动提醒。\n\n为此我做了 **OfficeSentry** —— 一个极度轻量、开箱即用，把**服务监控**与**打工人自保关怀**结合的轻量级哨兵。\n\n---\n\n### ✨ 核心特性\n\n- 🎯 **多协议心跳探针**：支持 HTTP/HTTPS 接口响应校验（状态码、耗时毫秒、关键词匹配）与 TCP 端口探测（MySQL、Redis、自定义端口）。\n- 🤖 **微信 / 钉钉 / 飞书 ChatOps 自然语言交互**：直接在微信公众号（微信测试号/插件）、钉钉或飞书群向机器人发送人话（如 `体检`、`查询`、`添加 订单API http://...`、`停用 生产网关`），哨兵当场测速并即时热加载配置生效，无需电脑即可在手机端完成轻运维。\n- 🛡️ **智能防告警风暴与自愈通报**：内置状态机，支持多级失败防抖过滤、故障冷却防刷屏，并在服务恢复时自动计算故障历时（如“历时 3分20秒”）推送绿色自愈通报。\n- 🔔 **工位 + 移动端双通道触达**：电脑前提供 Windows 10/11 原生 WinRT Toast 气泡弹窗（静默无打扰，不遮挡工作），离开工位时推送到手机微信与群聊。\n- ⏰ **职场节律关怀**：工作日下班前（17:50）定时提醒日报与工时填报，工作时段定期提醒久坐喝水舒展。\n- 🎨 **开箱即用与跨平台**：自带傻瓜式本地 Web 配置面板（双击直接在浏览器打开调参）；支持 Windows 后台静默守护运行（无黑框、支持开机自启），同时也提供标准 Docker / Docker Compose 一键部署。\n- 🔒 **本地回路与签名防护**：管理接口强制绑定本地 127.0.0.1 访问，外网仅放行腾讯标准安全验签的 Webhook 回调，保障工位电脑安全。\n\n---\n\n### 🚀 快速上手体验\n\n```bash\ngit clone https://github.com/Mianm-l/office-sentry.git\ncd office-sentry\npip install -r requirements.txt\n\n# Windows：双击 配置助手.bat 即可网页调参，双击 start.bat 即可后台静默守护\n# Linux / Docker：\ndocker-compose up -d\n```\n\n欢迎大家试用并提出宝贵意见，希望能帮同在职场码字的大家减轻一些运维和琐碎提醒的负担。",
-    "created_at": "2026-10-23T01:56:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12684"
-  },
-  {
-    "id": 12683,
-    "title": "【工具自荐】remote-assist-tool：一个协助码，让 AI 助手直接调试远端机器",
-    "content": "我是 remote-assist-tool 的作者，提交给周刊编辑筛选。\n\nremote-assist-tool 是一个命令行远程协助工具，Go 编写，单个二进制，MIT 协议开源。被协助的一方运行 `remote share`，拿到一个协助码；协助方用这个码就能连上去，不需要公网 IP，也不需要在对方机器上配置 SSH 服务端或开端口。\n\n![demo](https://github.com/kegechen/remote-assist-tool/raw/master/docs/images/demo.gif)\n\n它有两种用法：\n\n1. **传统 SSH 远程协助**：协助方运行 `remote help --code <协助码> --legacy-ssh`，本地就有一条到对方 SSH 的隧道。\n2. **让 AI 助手直接操作远端机器**：`remote help --mcp-stdio` 本身就是一个标准的 MCP server，Claude Code、Codex、豆包等支持 MCP 的 AI 工具都能接入。配置好以后，对 AI 说一句\"协助码 xxxx，连上去\"，它就能在远端执行命令、读写文件、看进程、查日志、上传下载文件（一共 12 个工具），用来远程排查问题。被协助端的终端会实时显示 AI 执行的每一个操作。\n\n```bash\n# 安装（Linux / macOS / Windows Git Bash，amd64 和 arm64 都支持）\ncurl -fsSL https://raw.githubusercontent.com/kegechen/remote-assist-tool/master/install.sh | sh\n\n# 被协助端：生成协助码，默认 30 分钟后过期\nremote share\n\n# 协助端：用协助码建立 SSH 隧道\nremote help --code ABCD-EFGHIJ --legacy-ssh\n```\n\n其他特点：\n\n- 三种连接方式：经公网中转服务器转发；同一局域网内用 `--standalone` 直连，不依赖任何外部服务器；NAT 打洞 P2P 直连，打洞失败会自动回落到中转。\n- 中转服务器可以自己部署（Windows / Linux / macOS 都有预编译版本，Windows 还能装成系统服务）。也有一个内置的公共中转服务器，开箱即用，但它在海外，而且中转服务器属于信任边界，所以敏感环境建议自己部署。\n- 链路使用 TLS 加密，AI 工具通道再用协助码派生的密钥额外加密一层；支持命令黑名单/白名单。\n\n- 项目地址：https://github.com/kegechen/remote-assist-tool\n- 开源协议：MIT\n- 当前版本：v1.1.0\n\n已搜索本仓库，没有找到该项目的投稿记录。谢谢！\n",
-    "created_at": "2026-10-23T01:32:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12683"
-  },
-  {
-    "id": 12682,
-    "title": "【自荐】AION 2 Pets — 你的《永恒之塔2》全宠物图鉴与养成规划站",
-    "content": "# 🐾 AION 2 Pets — 你的《永恒之塔2》全宠物图鉴与养成规划站\n\n> **非官方玩家社区工具站 · 数据驱动 · 刷魂路线一目了然**\n\n---\n\n## 📌 网站定位\n\n**aion2pets.com** 是一个专为《AION 2》玩家打造的**宠物/坐骑资料数据库 + 养成规划工具**。  \n不是 NCSOFT 官方站点，而是社区玩家共建的实用向导航站，帮你少走弯路、高效集宠。\n\n---\n\n## ✨ 核心功能一览\n\n| 功能模块 | 说明 |\n|---------|------|\n| 🔍 **全宠物图鉴** | 收录 **207+** 只可收集宠物/坐骑，按 **Cogni / Fera / Natura / Varian / Special** 五大类清晰归类 |\n| 🧬 **灵魂获取指引** | 标注每只宠物所需灵魂数量、掉落怪物、等级推荐及箱子/商店/活动来源 |\n| 🗺️ **刷魂路线推荐** | 直接告诉你\"去哪刷、刷什么怪\"，如 Lv32 Varg Berserker 对应某宠物最佳farm点 |\n| 📊 **Insight 养成规划** | 解析 Pet Insight 等级机制：5灵魂解锁 → 30灵魂 Lv2 → 105灵魂 Lv3，附带变形条件与种族加成说明 |\n| ✅ **收藏进度管理** | 本地收藏清单、JSON 导出、资源计算器、刷怪坐标地图等辅助工具 |\n\n---\n\n## 🎯 适合谁用？\n\n- ✅ 想**高效集齐宠物**的收集党\n- ✅ 纠结**先刷哪只、资源怎么分配**的养成玩家\n- ✅ 需要**快速查掉落、查路线**的开荒队伍\n- ✅ 喜欢用**数据说话**的硬核玩家\n\n---\n\n## ⚠️ 温馨提示\n\n- 本站为**社区非官方站点**，数据源自 MetaBot.GG / Wikily 等公开数据库\n- 页面标注\"未经验证\"，**进游戏前建议以客户端实际内容为准**\n\n---\n\n## 🚀 立即访问\n\n👉 **https://aion2pets.com/**\n\n*让你的每一颗灵魂都不浪费。*",
-    "created_at": "2026-10-23T01:26:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12682"
-  },
-  {
-    "id": 12681,
-    "title": "【开源自荐】FrameCut-为 Apple 芯片 Mac 打造的 vlog 剪辑软件 · 免费 · 无水印 · 全部本地运行 · 安装包不到 3 MB",
-    "content": "https://github.com/lidedongsn/frame-cut",
-    "created_at": "2026-10-23T01:08:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12681"
   }
 ]
