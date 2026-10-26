@@ -1,5 +1,29 @@
 [
   {
+    "id": 12805,
+    "title": "【开源自荐】OpenMontage Drama Studio：一句话灵感生成短剧的开源 AI 工坊",
+    "content": "项目地址：https://github.com/charliewwdev/OpenMontage\n在线体验：https://openmontage.dtok.io\n\n![影视工坊](https://raw.githubusercontent.com/charliewwdev/OpenMontage/main/docs/screenshots/04-workshop.png)\n\nOpenMontage Drama Studio 是我个人开发的 AI 短剧 / 短视频 Web 工坊（AGPL-3.0，可 Docker 自部署）。输入一句话灵感，按「剧本 → 角色 → 场景 → 道具 → 分镜 → 配音 → 剪辑」七个环节推进；角色、场景、道具图会作为参考传给分镜出片，任意环节都可以单独重做。\n\n- 能做什么：短剧、热门短视频（抖音、小红书、TikTok、Shorts 等平台套路模板）、电商带货广告片模板\n- 文本模型：DeepSeek / OpenAI / Claude / Gemini / 通义 / 豆包等 OpenAI 兼容接口\n- 出图 Seedream、出视频 Seedance，均为需自备 key 的付费第三方 API（出图也可接自己的 ComfyUI）\n- 另有 Skill 市场、无限画布节点视图\n- 技术栈：React + FastAPI + PostgreSQL + Redis + MinIO/S3\n\n说明：项目最初基于 AGPL-3.0 的 calesthio/OpenMontage 代码起步，现已重构为独立产品，与原项目无隶属关系。\n",
+    "created_at": "2026-10-26T20:06:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12805"
+  },
+  {
+    "id": 12804,
+    "title": "【开源自荐】rederive：把代码库的设计决策变成问题，让你自己推导一遍",
+    "content": "项目地址：https://github.com/EricJujianZou/rederive\n\nrederive 是一个面向 Claude Code、Codex、Cursor 等 25 种编程智能体的技能。它不直接讲解代码，而是读取代码库，找出塑造代码的设计决策（比如中间件为什么是一条链、状态为什么放在那里），把每个决策变成一个问题。你先自己推导设计，它再对照真实实现，指出你的答案和代码的不同，然后进入下一个决策。\n\n适合学习 Express、Redis 等开源项目，或在面试前弄懂自己用 AI 写的项目。\n\n免费开源（MIT），一行安装：npx skills add EricJujianZou/rederive\n\n上线 8 天， 263 个 GitHub 星。",
+    "created_at": "2026-10-26T19:44:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12804"
+  },
+  {
+    "id": 12803,
+    "title": "【开源自荐】SOMA：让 AI 编程智能体帮你画 3D 模型的桌面 CAD 应用",
+    "content": "**项目地址：** https://github.com/Kai-Jungsthoefel/SOMA\n**网站：** https://somacad.app\n\n![SOMA 爆炸视图](https://raw.githubusercontent.com/Kai-Jungsthoefel/SOMA/main/docs/images/explode.png)\n\nSOMA 是一个开源（GPL-3.0）的桌面 CAD 应用，相当于 CAD 版的 vibe coding。\n\n你用自然语言描述需要的零件，比如“一个树莓派 5 外壳，盖子上有通风孔”，你自己的 CLI 编程智能体（Claude Code、Codex CLI、OpenCode、Gemini CLI 等）用 Python 和 CadQuery 写出参数化模型，SOMA 每次修改后自动构建并显示 3D 结果。你可以在视图中点选零件、测量、直接在画面上标注，再发送给智能体继续修改，最后导出 STEP、STL、3MF 用于 3D 打印或加工。\n\nSOMA 本身不是智能体，也不需要额外的 AI 订阅。它还支持剖切、爆炸视图、标准件、FEM 强度分析、动画和工程图。Windows、macOS、Linux 安装包已内置 Python、CadQuery、Git 和 CalculiX。\n\n演示视频：https://github.com/user-attachments/assets/3294d1e4-1f06-477d-9770-c91f3470330d\n\n（Note: this text was translated with the help of an AI, as I don't read Chinese. Replies in English are easiest for me.）",
+    "created_at": "2026-10-26T17:44:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12803"
+  },
+  {
     "id": 12797,
     "title": "【开源自荐】MakeMovie：开源 AI 影视生产线，从一段文字到一部成片",
     "content": "项目地址：https://github.com/DreamOfXM/makemovie\n产品页（逐阶段导览）：https://dreamofxm.github.io/makemovie/\n\nMakeMovie 是一个 Apache-2.0 开源、可自托管的 AI 影视制作平台：上传一段小说原文或故事设定，自动完成剧本改编 → 分镜 → 角色/场景/道具定妆 → 首帧 → 图生视频 → AI 配音 → 配乐 → 合成母带 → 质检审计 → 交付，每一步可查看、可编辑、可追溯到产生它的那次模型调用。\n\n- 交付不止成片：同时产出 SRT 字幕与 EDL / FCPXML / OTIO 剪辑清单，可直接在 Premiere Pro / DaVinci Resolve 继续精剪\n- 模型可插拔：OpenAI / Anthropic / Google / 阿里百炼 / 可灵 / 火山 Seedance / 任意 OpenAI 兼容端点，九个能力槽位一键补齐\n- 支持短剧 / 电视剧 / 电影三种项目形态，整本小说自动拆章分集（上限 100 万字符）\n- 声音链完整：本地内嵌 Qwen3-TTS（MLX）音色克隆配音、逐镜氛围声、配乐与声音工坊降噪\n- 每一帧都有账：任务幂等可恢复、逐镜质检问题队列、按物理量记账的用量台账\n- Docker 一条命令自托管，内置示例项目零 API key 试跑\n\n技术栈：TypeScript monorepo（Next.js + Fastify + Prisma/PostgreSQL + BullMQ + FFmpeg）。\n",
@@ -774,29 +798,5 @@
     "created_at": "2026-10-23T08:30:30Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12700"
-  },
-  {
-    "id": 12699,
-    "title": "【开源自荐】Port Sentinel 2：用 Go + Wails 重写的跨平台端口管理工具",
-    "content": "[Port Sentinel（端口哨兵）](https://github.com/Sanjeever/port_sentinel) 曾以 Flutter 开发的 Windows 工具收录于[《科技爱好者周刊》第 382 期](https://github.com/ruanyf/weekly/blob/master/docs/issue-382.md?plain=1#L187)，如今已用 Go + Wails 重写，支持 Windows、macOS 和 Linux。通过图形界面查看 TCP/UDP 端口及关联进程，按端口号、PID 或进程名搜索，确认后结束占用进程，快速处理开发中的端口冲突。项目采用 MIT 协议开源，支持中英文和深浅色主题。\n\n![Port Sentinel 2 macOS 界面](https://raw.githubusercontent.com/Sanjeever/port_sentinel/main/assets/screenshot/main-macos.png)",
-    "created_at": "2026-10-23T07:36:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12699"
-  },
-  {
-    "id": 12698,
-    "title": "[开源自荐] BOKI - 离线优先的开源财务软件：数据不出机器，断网也能记账",
-    "content": "开源地址：https://github.com/edrin09/boki（Gitee 镜像：https://gitee.com/edrin/boki）\n\n官网与在线文档：https://edrin09.github.io/boki/\n\n项目简介：\nBOKI 是一套离线优先的开源财务软件，前端 Vue 3 + 后端 NestJS + SQLite 单文件数据库，单命令启动、开箱即用。在云端记账簿数据泄露频发的当下，它走另一条路：没有云端、没有第三方 SDK、没有任何埋点与遥测——全部账务数据就是本机一个 financial.db 文件，备份是拷贝目录，迁移是搬文件夹，数据主权 100% 在用户手里。\n\n内核只保留记账必需的复式记账引擎（科目、凭证、期初、公司上下文），借贷必相等由后端强校验；其余能力全部插件化（官方插件 14 个），不装的插件在界面上不留痕迹。\n\n核心特性：\n\n- 🧾 复式记账内核：科目 / 凭证 / 期初 / 多公司上下文，借贷必相等前后端双重强校验，已审核凭证禁止改动\n- 📊 报表可审计：资产负债表、利润表（本期+本年累计）、科目余额表、试算平衡表、票据台账、现金流简表、费用结构分析\n- 🔐 权限与多公司：JWT 登录 + RBAC（菜单级 + 操作级），一个账号管理多家记账公司，数据完全隔离\n- 🗄 数据离线：SQLite 单文件（WAL 模式），一键备份/恢复，无任何外部服务依赖\n- 🎤 语音识别离线：sherpa-onnx 本地流式中文 ASR（zipformer int8），音频不上传\n- 🤖 大模型可选离线：内置 Ollama / llama.cpp / vLLM 本地模型预设（OpenAI 兼容协议、无需 API Key），也可切换云端模型\n- 🧩 插件化：想要什么装什么，卸载不留痕迹\n\n技术亮点：\n\n- 复式记账引擎与权限模型在服务端强校验，不依赖前端约束\n- 本地模型自动降级：模型缺失时服务照常启动，仅相关功能提示未就绪（/api/ocr/status 可查）\n- 许可：内核 AGPL-3.0，官方插件 Apache-2.0\n- 平台：Windows / macOS / Linux\n\n适合对象：个人与小团队的记账、代理记账/财务工作室的私有化部署、对数据隐私敏感的任何记账场景。\n\n项目正在寻找第一批真实用户，任何反馈（尤其是报表与记账流程上的\"不顺手\"）都非常欢迎，可以直接提 issue。如果觉得有价值，欢迎点个 Star 支持开源维护者 🙏",
-    "created_at": "2026-10-23T07:20:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12698"
-  },
-  {
-    "id": 12697,
-    "title": "推荐工具：匠工具箱，34 个浏览器本地运行的免费工具",
-    "content": "推荐一个自己做的免费在线工具箱：https://tools.takumikit.com/zh-cn/\n\n- 34 个工具：AI 一键抠图、HEIC 转 JPG、图片压缩、音视频格式转换（MOV/WebM/MKV 转 MP4）、文字转语音、JSON 格式化、二维码生成、房贷和复利计算等。\n- 无需注册、免费。\n- 图片、音视频文件在浏览器本地处理（抠图用浏览器端运行的 AI 模型），不上传服务器。\n- 支持简体中文、繁体中文、英文、日文、韩文。\n\n声明：我是这个网站的作者。",
-    "created_at": "2026-10-23T07:02:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12697"
   }
 ]
