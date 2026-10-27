@@ -1,5 +1,45 @@
 [
   {
+    "id": 12836,
+    "title": "【开源自荐】QuireKit：在浏览器里真正分页的文档编辑器框架",
+    "content": "QuireKit 是一个开源的文档编辑器框架，可以用它搭建自己的在线文档。\n\n它沿用 ProseMirror 的文档、事务和插件模型，但不依赖浏览器的 DOM 排版：断行、分页、光标和选区都由 QuireKit 自己计算，再绘制到 Canvas 或 SVG 上，所以编辑时看到的就是一页一页的纸。\n\n同一套内核还提供块编辑器和 Markdown 编辑器（三种编辑视图改的都是 Markdown 原文），以及公式、流程图、思维导图、白板等编辑器。开源部分全部 MIT 许可，目前是 alpha 版。\n\n官网（打开即可在线编辑）：https://quirekit.com\nGitHub：https://github.com/quirekit/quirekit",
+    "created_at": "2026-10-27T19:20:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12836"
+  },
+  {
+    "id": 12835,
+    "title": "【开源自荐】范围澄清练习：让AI扮演临时加需求的客户，自己练一轮回应",
+    "content": "自荐一个 AI 辅助制作的中文开源练习，面向网页接单新手：原本说好做三页静态网站，客户又想“顺便”加会员、预约和付款，怎么先把范围与未知说清楚？\n\n项目：https://github.com/daishengyong/ai-practice-lab-demo\n\n免费版使用一个固定虚构案例。使用者自己回应，AI 再引用实际原句，指出一项已澄清的边界和一项仍需确认的问题，不替使用者回答，不给职业或收入保证。\n\n**两种免费体验**\n\n- 不下载：复制 README 的单轮提示到自己已有的 AI 对话中，先回答一次；这种方式不提供本地保存与恢复。\n- 需要保存：下载免费的本地 Skill，用具备文件读写和 Python 3.9+ 的 Agent 主持；自备模型权限和额度。\n\n免费仓库按 MIT 开源。仓库另说明同作者的独立付费版本，本次只邀请体验免费版，不要求购买。普通 AI 也能做基础沟通练习，固定流程是否有额外帮助仍需要真实反馈。\n\n**想听到的反馈**\n\n你实际试了哪种方式？哪里最费劲？自己回应后，哪一句反馈有帮助或没有帮助？还没试也欢迎说明原因。可用 README 的体验表单或邮箱反馈，也可以在这里直接讨论。\n\n请只使用本项目的虚构案例，不提供真实客户、订单或个人资料。当前只有本地技术核查，没有真人学习效果或成交证明；此次希望先找到愿意亲自试一轮的人。\n",
+    "created_at": "2026-10-27T17:12:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12835"
+  },
+  {
+    "id": 12834,
+    "title": "开源自荐：Linope，探索Agent 系统的内核和传统操作系统内核有何异同？",
+    "content": "目前，我注意到：许多开发者提出疑问：Agent系统内核和传统的系统内核有何区别？带着许多开发者的疑问，我开发了linope Agent 内核。\n\nLinope旨在探索Agent 系统的内核和传统操作系统内核有什么区别？在借鉴传统的系统内核，融合了一些个人的想法，探索Agent 系统内核与传统系统内核的异同，定义一种新的Agent开发范式。\n项目地址：https://github.com/answeryt/Linope.git\n关于Linope设计思想以及工程范式的技术报告:(https://github.com/answeryt/Linope/blob/main/linope-agent-kernel.pdf",
+    "created_at": "2026-10-27T16:38:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12834"
+  },
+  {
+    "id": 12833,
+    "title": "【开源自荐】翻译助手：在输入框里写中文草稿、译文原地替回的浏览器翻译扩展（离线、不上传、开源）",
+    "content": "【开源自荐】翻译助手：在输入框里写中文草稿、译文原地替回的浏览器翻译扩展（离线、不上传、开源）\n\n用外语写回复比读外语更麻烦：读有整页翻译，写却只能自己憋或来回粘贴。这个扩展补的是「写」这一步——在评论框、发帖框、网页版邮箱的正文框里直接用中文打草稿，点框边的「翻译回复」，译文确认后整段替回输入框，发送键仍然在你手上。\n\n项目地址：https://github.com/DreamOfXM/translate-assistant\n\n主要特性：\n\n- 写入式翻译：译文整段替回输入框；写入逐字复核，写坏自动回滚，React 受控输入框和 iframe 里的正文框都能写，绝不代点发送\n- 整页双语对照：译文逐段插在原文下方，只翻正文，导航/广告/评论区不碰；另支持选中即译、悬停即译\n- 五种译文样式：色块、虚线下划线、马克笔、模糊对照、纯译文，一键切换\n- 引擎全部本地：优先用 Chrome 内置的端上模型（138+），否则用内置的 bergamot WASM 引擎（Firefox Translations 同款，116 个语言方向）；语言包装好后断网也能用。也支持接入自己的 AI 服务（默认关闭）\n- MPL-2.0 开源，附 macOS 菜单栏版，可在任意 App 的输入框里完成同样的写入式翻译\n\n![写入式翻译演示](https://raw.githubusercontent.com/DreamOfXM/translate-assistant/main/docs/images/writeback.gif)\n\n![整页双语对照](https://raw.githubusercontent.com/DreamOfXM/translate-assistant/main/docs/images/bilingual.gif)\n\n安装：到 Releases 下载 zip，Chrome 开发者模式加载即可。欢迎试用与反馈。\n",
+    "created_at": "2026-10-27T15:56:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12833"
+  },
+  {
+    "id": 12832,
+    "title": "【开源自荐】Yang-MarkD：专门看 AI 生成文档的 Markdown 阅读器（方框图对齐、本地 SVG、中文）",
+    "content": "## Yang-MarkD\r\n\r\n一个**开源、只读、体积很小**的 Markdown 阅读器，专门用来看 AI 助手生成的 `.md` 文档。\r\n\r\n- **方框字符图对齐：**`┌─┐│└┘` 画的架构图按真正的字符网格排版，中文标签占两列，不再错位\r\n- **本地图片直接显示：**`![](figures/xxx.svg)` 这类相对路径的 SVG / PNG 按文件所在目录加载\r\n- **中英文混排：**表格、任务列表、代码块都清晰整齐\r\n- **即开即看：**双击 `.md` 文件就打开；目录侧栏、浅色/深色主题、导出 PDF\r\n- **轻量：**Windows 绿色版下载 3MB，另有 MSI 安装包和 Linux 版（AppImage / deb / rpm）\r\n\r\n基于 Tauri v2 + React，MIT 协议。\r\n\r\n[开源地址](https://github.com/xiaojunyang0805/Yang-MarkD)\r\n\r\n![项目截图](https://raw.githubusercontent.com/xiaojunyang0805/Yang-MarkD/main/docs/images/screenshot-light.png \"界面预览\")\r\n",
+    "created_at": "2026-10-27T15:51:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12832"
+  },
+  {
     "id": 12831,
     "title": "【开源自荐】usage-float：Windows 无边框 AI 订阅额度悬浮窗与副屏仪表盘（支持官方重置券探测与 mpv 动态壁纸）",
     "content": "阮老师好，自荐一个专为 AI 编程与大模型订阅重度用户开发的 Windows 开源工具：**usage-float**（附配套开源工具链）。\n\n### 项目 1（主推）：usage-float\n\n- **仓库地址**：https://github.com/akiiwa-games/usage-float\n- **开源协议**：MIT\n- **适用平台**：Windows 10 / 11（免安装单文件 `UsageFloat.exe` 见 Releases，约 26MB 内置完整 `mpv`）\n\n![usage-float 预览](https://raw.githubusercontent.com/akiiwa-games/usage-float/main/docs/social-preview.png)\n\n#### 一句话介绍\n一个 Windows 无边框、无任务栏图标的 AI 订阅额度 HUD 悬浮窗与副屏仪表盘，同屏实时监控 Claude Code、ChatGPT Codex、Grok、Google Antigravity、LiteLLM 等多账号的 5 小时与 7 天限额窗口；支持一键探测并兑换官方隐藏的限额重置券；双击 `Ctrl` 秒切 `mpv` 动态壁纸。\n\n#### 解决了什么痛点？\n1. **多账号与多平台额度盲盒**：做严肃编码任务时，多开 Claude Code / Codex / Grok / agy 经常突然撞上 5 小时限额墙或周上限。以往要在各个网页或 CLI 里繁琐查询，`usage-float` 直接以极低资源占用在副屏或桌面角常驻展示全部账号的动态进度条与剩余重置时间。\n2. **官方隐藏福利一键兑换**：\n   - Anthropic 为 Claude Code CLI 用户提供了周重置券（`cedar_ember`）与 5 小时碰墙重置券（`juniper_tide`）；\n   - OpenAI 官方对部分 ChatGPT / Codex 订阅也发放了限额重置券（`/backend-api/wham/rate-limit-reset-credits`）；\n   - `usage-float` 模拟官方 CLI 原生协议安全嗅探重置券资格，有券时直接在界面提示，点击即可一键兑换回满血，绝不浪费。\n3. **无感常驻与桌面摸鱼/护眼切换**：副屏平时是干净专业的黑金/暗黑仪表盘，双击 `Ctrl`（或自定义热键）无缝切换为你本地收藏的 `mpv` 4K/60fps 动态壁纸或画廊，兼顾生产力与视觉愉悦。\n4. **Agent 本地查询友好**：除了图形界面，提供 `python usage_float.py once`（或读取本地原子写入的 `~/.usage-float/usage-cache.json`），方便本地 Agent 路由器无网络请求开销直接获取账号剩余额度。\n\n![副屏仪表盘模式](https://raw.githubusercontent.com/akiiwa-games/usage-float/main/docs/screenshots/panel.png)\n\n---\n\n### 配套开源工具自荐（同一开发者生态）\n\n为了让多订阅 AI 编码体验更完整，我们在同一生态下还开源了另外两个轻量实用的工具，供感兴趣的同学参考：\n\n#### 1. [AgentCompass](https://github.com/akiiwa-games/AgentCompass)\n- **仓库地址**：https://github.com/akiiwa-games/AgentCompass\n- **简介**：多订阅编码 Agent 的确定性任务路由器与 `PreToolUse` 门禁。配合 `usage-float` 的额度缓存，通过基于任务难度的确定性算法自动选派最合适的模型/订阅（如简单任务走廉价模型，深度推理走旗舰模型），防止昂贵配额被闲碎任务浪费，并内建防套娃递归与权限门禁。\n\n![AgentCompass 架构](https://raw.githubusercontent.com/akiiwa-games/AgentCompass/main/docs/hero.png)\n\n#### 2. [lark-mbti-jev](https://github.com/akiiwa-games/lark-mbti-jev)\n- **仓库地址**：https://github.com/akiiwa-games/lark-mbti-jev\n- **简介**：基于官方 `lark-cli`、TypeSafe AI (`Jev`) 与 Windows UIA 无障碍接口的飞书桌面群聊实时悬浮标签工具。无缝吸附在飞书窗口旁，实时感知群聊成员发言并用微模型推断其当前 MBTI 倾向或少女乐队（MyGO!!!!! / 孤独摇滚 / Ave Mujica 等）角色相似度，带来有趣的群聊交互体验。\n\n![lark-mbti-jev 演示](https://raw.githubusercontent.com/akiiwa-games/lark-mbti-jev/main/docs/demo-girl-bands.png)\n\n---\n希望这套工具能帮到经常使用 AI 编程助手的开发者朋友们！欢迎试用、提出建议或 PR。\n",
@@ -758,45 +798,5 @@
     "created_at": "2026-10-24T07:12:07Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12731"
-  },
-  {
-    "id": 12730,
-    "title": "【开源自荐】山河纪：在地图上读历史，对照同一时期的中国与世界",
-    "content": "阮老师好，大家好，自荐一个自己做的开源历史探索网站：**山河纪 · Time Atlas**。\n\n想把历史中的时间、地点和人物放在一起：读到一件事，可以看到它发生在哪里、当时的政权版图，也可以看看同一时期的世界发生了什么。\n\n**在线体验：**[history.zhaoguhong.com](https://history.zhaoguhong.com/)  \n**开源地址：**[github.com/zhaoguhong/time-atlas](https://github.com/zhaoguhong/time-atlas)\n\n![山河纪：公元741年的唐朝地图、历史事件与时间轴](https://raw.githubusercontent.com/zhaoguhong/time-atlas/9e0129d9d1bfbd2e0f229d7b73246815bda2daa6/docs/images/desktop.png)\n\n*上图为盛唐时期（公元 741 年，开元末年）的实际界面。*\n\n目前主要有三种浏览方式：\n\n- **沿地图看历史**：拖动时间轴观察疆域变化，点击事件阅读背景、经过和影响，也可以对比两个年份的版图。\n- **把中外历史放在一起看**：切换到“时空柱”，中国与世界的历史事件沿同一条时间轴并排展开，可以上下拖动、缩放，查看同时代的大事。\n- **跟着专题和人物读下去**：从三国、丝绸之路、大运河等专题进入，也可以跟随苏轼、诸葛亮等人物有出处的活动记录，在地图上逐站浏览。\n\n电脑和手机都能使用，支持搜索、收藏、继续阅读和分享当前视图。\n\n内容以中国历史为主，也收录世界史重要节点，目前截至 1912 年。历史讲解附有参考来源，资料还在持续补充，欢迎喜欢历史的朋友试用、纠错，一起完善。\n",
-    "created_at": "2026-10-24T07:03:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12730"
-  },
-  {
-    "id": 12729,
-    "title": "【自荐】毕观天下：每天两期的中文世界新闻简报（晨报、下午茶）",
-    "content": "自荐一个中文世界新闻简报：毕观天下。每天两期，晨报和下午茶；多来源客观汇总世界新闻；有网站，也有播客（RSS）。\n网站：https://biguan.com\n播客 RSS：https://biguan.com/podcast.xml\n作者自荐，欢迎试读和反馈。",
-    "created_at": "2026-10-24T06:36:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12729"
-  },
-  {
-    "id": 12728,
-    "title": "【开源自荐】M3U Studio：可自行部署的 IPTV 频道管理工具",
-    "content": "大家好，自荐一个自己开发的开源项目 **M3U Studio**。\n\n整理家里的 IPTV 频道时，经常需要调整分组和顺序、批量替换播放地址、配置台标和 EPG。直接修改 M3U / TXT 文件比较繁琐，于是做了一个网页管理工具。\n\n导入已有频道后，可以在浏览器里整理，确认后发布，生成订阅地址供播放器使用。\n\n项目地址：https://github.com/cachemiao/m3u-studio\n\n主要功能：\n\n- 多列表管理，支持导入 M3U / TXT 文件、文本和链接，生成独立或合并订阅。\n- 多选频道一起拖动，支持边缘自动滚动、批量编辑和跨列表移动或复制。\n- 上传台标并按名称自动匹配，配置 EPG、回放和 FCC 参数。\n- 草稿自动保存，支持撤销、重做和发布历史恢复；修改确认后再发布。\n\n支持 Docker 部署和 AMD64 / ARM64，可运行在 NAS 或服务器上。基于 Python / Flask + SQLite，前端使用原生 HTML / CSS / JavaScript，采用 GPL-2.0-only 许可证。\n\n项目不提供直播源和台标，需要用户自行添加；主要负责频道整理与订阅生成。\n\n![M3U Studio 界面](https://raw.githubusercontent.com/cachemiao/m3u-studio/main/docs/images/channel-editor.png)\n\n部署方式和使用指南见项目 README，欢迎试用和反馈。",
-    "created_at": "2026-10-24T06:27:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12728"
-  },
-  {
-    "id": 12727,
-    "title": "[自荐] DSH A2UI：面向 DeepSeek Harness 的 A2UI 协议开发预览",
-    "content": "自荐 DSH A2UI，一个面向 DeepSeek Harness 的独立 A2UI 协议开发预览，供想把交互表单接入 DSH 的开发者试用。\n\n目前使用官方 A2UI renderer 和 schema，支持受限 basic catalog 的严格校验，并提供两种无需账号或 API key 的合成示例：\n\n- 本地浏览器 demo：流式展示表单、编辑、导出与恢复记录；恢复时不会再次执行历史动作。\n- 可执行 agent-loop 示例：使用真实 DSH AgentLoop、ToolRuntime 和会话渲染组件，通过脚本化本地模型，在 jsdom 中验证“表单操作进入下一轮 agent，并生成预览”的链路。\n\n首次投稿（2026-10-24）版本为 0.1.0-alpha.6，针对 DSH 0.2.0-rc.2 验证。示例中的模型、传输和部分宿主结构是合成的，不代表完整 DSH shell、真实模型、完整 A2UI 协议或生产部署已经验收。未提交的表单编辑目前不会跨 DSH 重载自动恢复。项目并非 DeepSeek、Google 或 A2UI 官方项目。\n\n源码：[项目仓库](https://github.com/sunxiuguo/dsh-a2ui)\n复现：[无密钥示例](https://github.com/sunxiuguo/dsh-a2ui/blob/013341ed5ec291eaab74fae2042b4b703f6a4e99/docs/synthetic-loop.md)\n验证：[该提交的 CI](https://github.com/sunxiuguo/dsh-a2ui/actions/runs/40062807353)\n\n项目代码采用 MIT 许可，依赖及官方 schema 保留各自许可声明；尚未发布 npm 包。欢迎试跑示例，反馈具体文档或集成问题。\n\n### 2026-10-25 更新\n\n当前源码为 0.1.0-alpha.13，默认支持范围仍是受限 A2UI v0.9/v0.9.1，未发布 npm 包。试用入口和本地打包安装、更新、回退说明见[该版本 README](https://github.com/sunxiuguo/dsh-a2ui/blob/a8744445f4475c5a0fceb32a018a00617a954038/README.md)。\n\n补充一项已完成的真实宿主验证：alpha.8 的精确源码 a8bb06d8 在官方 DSH 0.2.0-rc.2 CLI/Web shell 中，完成了安装、双会话交互、取消，以及正常重启后恢复已提交的历史，不重新发送历史动作。[运行结果](https://github.com/sunxiuguo/dsh-a2ui/actions/runs/40092097281)和[截图、复现范围](https://github.com/sunxiuguo/dsh-a2ui/blob/a8744445f4475c5a0fceb32a018a00617a954038/docs/full-host-acceptance.md)均已公开。\n\n这次宿主验证使用脚本化模型和合成数据，只覆盖该 alpha.8 源码及场景，不代表 alpha.13、真实模型、完整协议或生产环境已经获得同样验收。未提交的表单草稿仍不会跨宿主重载自动恢复。\n\n### 2026-10-25 补充：alpha.13 的独立验证\n\n此前的 alpha.8 记录保留如上。同日 15:00 UTC 完成了 alpha.13（源码 a8744445）在官方 DSH 0.2.0-rc.2 CLI/Web shell 中的另一轮限定验收：先在停止宿主的隔离 profile 中验证安装、更新、回退与重装，再在独立的新 alpha.13 profile 中验证双会话交互、取消和正常重启后恢复已提交的历史，不重放历史动作。见[运行结果](https://github.com/sunxiuguo/dsh-a2ui/actions/runs/40204726938)与[真实截图及完整验证边界](https://github.com/sunxiuguo/dsh-a2ui/blob/70526716467f9996bc64b4959ed58700b2e08cef/docs/full-host-acceptance.md)。\n\n模型与数据仍是合成的；这不证明跨版本历史迁移、真实模型、完整协议、其他宿主版本、崩溃恢复或生产环境已验收。未提交的表单草稿仍不会跨宿主重载恢复。\n",
-    "created_at": "2026-10-24T05:29:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12727"
-  },
-  {
-    "id": 12726,
-    "title": "【项目自荐】EVEngine：让 AI 编写、运行和调试游戏的脚本驱动引擎",
-    "content": "阮老师好，自荐一个自己开发的项目 **EVEngine**，一个面向 AI 辅助开发、支持 2D / 3D 的轻量脚本驱动游戏引擎。\n\nAI 写出游戏代码后，还需要运行游戏、观察状态、定位问题，再继续修改。EVEngine 的目标是让 AI 参与这一整个过程，帮助开发者从第一个 Demo 持续迭代下去。\n\n目前提供的能力：\n\n- **用脚本表达玩法**：使用兼容 Squirrel 的 EveScript，调用物理、动画、UI、背包和程序化生成等模块，方便 AI 在已有接口上编写和修改游戏逻辑。\n- **缩短修改反馈**：桌面端支持脚本与资源热重载，修改后可以直接查看运行效果。\n- **让 AI 参与调试**：提供 MCP 辅助开发能力如截图、获取场景、查看渲染流程等，以及断点、监视和快照等调试工具，支持围绕游戏实际运行结果继续排查与修改。\n\n![EVEngine 房屋坍塌](https://github.com/EVEngine/EVEngine/blob/main/docs/images/examples/house-collapse.gif?raw=true)\n\n*上图为引擎内置示例的实际渲染画面。*\n\n- [视频演示：自研引擎，让 AI 编写游戏 Demo](https://www.bilibili.com/video/BV1Lop76qEgs/)\n- [视频演示：模型和动画由 AI 写代码生成](https://www.bilibili.com/video/BV1qPJB6XEPK/)\n- [GitHub 源码与使用文档](https://github.com/EVEngine/EVEngine)\n- [项目官网](https://evengine.github.io/)\n- [示例画廊与运行说明](https://github.com/EVEngine/EVEngine/blob/main/docs/images/examples/README.md)\n\n后续重点探索游戏的脚本化测试与规范检查。例如 AI 调整场景后，通过测试角色实际移动，验证关键地点之间是否仍可通行，让修改结果有可重复的验收依据。这是项目希望继续推进的方向。\n\n项目采用双许可，具体使用及商用条件见仓库许可证。作者自荐，欢迎试用和反馈。",
-    "created_at": "2026-10-24T04:57:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12726"
   }
 ]
