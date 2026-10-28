@@ -1,5 +1,21 @@
 [
   {
+    "id": 12838,
+    "title": "【开源自荐】dsh-delivery-board：写在代码仓库里的交付看板（阶段 / 交接 / 周报 / Timeline）",
+    "content": "推荐一个我开源的项目：**dsh-delivery-board**（v0.2.0）。\n\n把交付看板写进代码仓库：阶段流水线、交接审计、软 WIP 上限、客户周报（Markdown），以及本地可编辑看板 + 日历轴 Timeline。状态默认落在仓库里的 `delivery.json`，跟 PR 一起评审；不是要替代 Jira/Linear，只保留当前仓库真正需要的交付上下文。\n\n项目地址：\n\n- GitHub：https://github.com/jerryxff26-alt/dsh-delivery-board\n- 演示 GIF：https://github.com/jerryxff26-alt/dsh-delivery-board/blob/main/docs/demo/demo.gif\n\n主要特点：\n\n- 独立运行：`npx github:jerryxff26-alt/dsh-delivery-board`（也可作为 DeepSeek Harness / dsh 插件安装）\n- 卡片流转自动记录交接；阶段可设软 WIP（超限警告，不强制卡住）\n- `weekly` 生成客户周报；`open` 打开本机看板与 Timeline\n- MIT 协议，无额外运行时依赖\n\n适用场景：小团队或「人 + AI 编程助手」需要把「谁在做什么、卡在哪、本周交付了什么」和代码放在一起时。欢迎试用与 star。",
+    "created_at": "2026-10-28T00:27:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12838"
+  },
+  {
+    "id": 12837,
+    "title": "【工具自荐】Aident Loadout：让多个 AI Agent 共用一套应用连接和 Skills",
+    "content": "阮老师好，自荐一个我们团队做的开发者工具：**Aident Loadout**\n\n- 网址：https://aident.ai\n- 文档：https://docs.aident.ai/loadout/overview\n- 开源 Skill（MIT）：https://github.com/Aident-AI/aident-skill\n\n**一句话**：给 AI 编程/办公 Agent 配一套共用的\"装备\"：应用账号只连接一次，Codex、Claude Code、Cursor、ChatGPT 等 MCP 客户端都能直接调用。\n\n**介绍**：同时用好几个 Agent 时，每个都要单独配 MCP、API Key 和授权，很麻烦。Loadout 提供一个远程 MCP 服务器（`https://loadout.aident.ai/mcp`）、一个 npm CLI（`@aident-ai/cli`）和一个开源 Skill，Agent 按需求搜索应用动作、读取实时 schema 再执行；另外内置 400+ 个现成的 Skills（调研、内容、运营等）。OAuth 在浏览器里授权，API Key 保存在 Aident Vault 里不交给模型，每次调用都会记录在审计日志里，并显示花费。可以免费按量付费开始使用。\n\n我是 Aident 团队成员，本帖为自荐。\n",
+    "created_at": "2026-10-27T21:43:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12837"
+  },
+  {
     "id": 12836,
     "title": "【开源自荐】QuireKit：在浏览器里真正分页的文档编辑器框架",
     "content": "QuireKit 是一个开源的文档编辑器框架，可以用它搭建自己的在线文档。\n\n它沿用 ProseMirror 的文档、事务和插件模型，但不依赖浏览器的 DOM 排版：断行、分页、光标和选区都由 QuireKit 自己计算，再绘制到 Canvas 或 SVG 上，所以编辑时看到的就是一页一页的纸。\n\n同一套内核还提供块编辑器和 Markdown 编辑器（三种编辑视图改的都是 Markdown 原文），以及公式、流程图、思维导图、白板等编辑器。开源部分全部 MIT 许可，目前是 alpha 版。\n\n官网（打开即可在线编辑）：https://quirekit.com\nGitHub：https://github.com/quirekit/quirekit",
@@ -130,7 +146,7 @@
   {
     "id": 12820,
     "title": "【网站自荐】Wave Radar：美股、A股、港股的缠论 + 波浪全市场扫描",
-    "content": "阮老师好，自荐一个自己做的网站：**Wave Radar**\n\n- 网址：https://waveradar.us\n- 每日复盘（无需注册）：https://waveradar.us/zh/daily\n\n**一句话**：把缠论和斐波那契扩展的画法写成程序，每天收盘后对美股、A股、港股全市场扫一遍，找出正好落在等浪价位或缠论买卖点上的股票。\n\n**介绍**：缠论（笔、线段、中枢、三类买卖点）和波浪扩展平时都是一张图一张图手画的。Wave Radar 在服务端把全市场的结构算好，图上直接显示，再把期权 Gamma 敞口、合理估值区间、13F 机构持仓变化放在旁边一起看。另外从几个交易群的匿名聊天里统计一个每日“社区恐惧贪婪指数”，每天的复盘页面公开可看。有永久免费账号；只做研究工具，不荐股。\n\n![Wave Radar](https://waveradar.us/preview.png)\n\n我是开发者本人，本帖为自荐。",
+    "content": "阮老师好，自荐一个自己做的网站：**Wave Radar**\n\n- 网址：https://waveradar.us\n- 每日复盘（无需注册）：https://waveradar.us/zh/daily\n\n**一句话**：每天收盘后对美股、A股、港股全市场扫描 75 个技术信号（包括缠论买卖点和斐波那契等浪扩展），并给出每个信号在这只股票上的历史胜率。\n\n**介绍**：缠论（笔、线段、中枢、三类买卖点）和波浪扩展平时都是一张图一张图手画的。Wave Radar 在服务端把全市场的结构和 75 个技术信号算好，每个信号都附上它在该股票上的历史胜率，图上直接显示，再把期权 Gamma 敞口、合理估值区间、13F 机构持仓和内部人交易放在旁边一起看。另有 AI 对宏观数据和突发新闻的分析；对讨论最热的股票，用一个综合模型把技术面、新闻、内部人交易、Gamma、估值、财报、情绪和资金流放在一起，估计接下来几个交易日的走势。还从几个交易群的匿名聊天里统计每日“社区恐惧贪婪指数”，每天的复盘页面公开可看。有永久免费账号；只做研究工具，不荐股。\n\n![Wave Radar](https://waveradar.us/preview.png)\n\n我是开发者本人，本帖为自荐。",
     "created_at": "2026-10-27T07:57:33Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12820"
@@ -782,21 +798,5 @@
     "created_at": "2026-10-24T07:40:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12733"
-  },
-  {
-    "id": 12732,
-    "title": "【开源自荐】cccodroid：在安卓手机上跑官方 Claude Code，不用 root",
-    "content": "## cccodroid\n\n一个安卓应用，在手机上原生运行官方原版 Claude Code。不用 root，不走 proot、chroot 或虚拟机。\n\n- **真在手机上干活**：模型在云端推理，代码、文件、工具链都在本机。写代码、编译 C/C++、跑 Python / Node、打包 APK、git 推送，都在手机上完成。\n- **官方原版**：从官方渠道下载，按官方清单校验 sha256，不做修改；国内连不上会自动换 npm 镜像取同一份文件。\n- **图形界面**：对话、多标签终端、文件编辑、PDF / Office / 网页预览、应用内浏览器、项目与定时任务，平板横屏自动分栏。\n- **按需装组件**：Blender、Godot、LibreOffice 等一键安装。\n\n我是作者，本次自荐。项目以 Apache-2.0 开源，属第三方项目，与 Anthropic 无关。\n\n[开源地址](https://github.com/greyoak111/cccodroid) · [官网（国内直连下载）](https://cccodroid.net)\n\n![项目截图](https://raw.githubusercontent.com/greyoak111/cccodroid/main/docs/assets/hero.jpg \"平板横屏首屏与组件页\")\n",
-    "created_at": "2026-10-24T07:13:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12732"
-  },
-  {
-    "id": 12731,
-    "title": "【开源软件】Sonovect：本地录音与视频音轨转写服务",
-    "content": "我是 Sonovect 的维护者，想推荐刚发布的 v0.1.0。项目将 Qwen3-ASR／FunASR 组装为本地 ASR（自动语音识别）服务，输出兼容 FunASR 的结构化结果、文字和字幕，可另选环境音分析。常用部署为 2～3 个容器，提供网络接口、命令行、MCP（模型上下文协议）与智能体技能。\n\n仓库附中英文说明、全部配置选项，以及保留日期、样本和硬件配置的[本地／云端同素材测试](https://github.com/talentshf/sonovect/blob/v0.1.0/docs/quality.zh-CN.md)。这些测试展示了本地方案在所测素材上的可比识别质量，不代表所有内容或配置的全面排名。\n\n当前部署面向 Linux amd64（常见 Intel／AMD 64 位主机）的文件任务，容器本地构建、权重按需下载，准备完成后识别在本地运行。视频处理音轨，不分析画面；中文情绪分析仍为实验功能。\n\n- [项目与使用说明](https://github.com/talentshf/sonovect)\n- [v0.1.0 发行](https://github.com/talentshf/sonovect/releases/tag/v0.1.0)\n\n![Sonovect：在自己的硬件上运行本地语音识别](https://github.com/talentshf/sonovect/releases/download/v0.1.0/sonovect-social-preview.png)\n\n如果适合周刊的开源工具栏目，欢迎考虑收录。也欢迎使用者分享所用硬件、部署路线和首次任务遇到的问题。\n\n*本投稿由 AI 辅助整理。*",
-    "created_at": "2026-10-24T07:12:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12731"
   }
 ]
