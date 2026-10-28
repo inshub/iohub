@@ -1,5 +1,69 @@
 [
   {
+    "id": 12846,
+    "title": "【开源自荐】MirrorProxy：自托管的多生态软件源代理，支持跨平台改源与 AI Agent 集成",
+    "content": "阮老师好，自荐一个我开发的 MIT 开源项目：**MirrorProxy**，使用 Rust 开发的自托管软件源与下载代理平台，配有 Web 管理后台和 Windows、macOS、Linux 客户端。\n\n- 项目地址：https://github.com/inbjo/MirrorProxy\n- 在线演示：https://sina.dev\n- 中文介绍：https://github.com/inbjo/MirrorProxy/blob/main/README_CN.md\n- 快速开始：https://github.com/inbjo/MirrorProxy/wiki/Getting-Started-zh-CN\n\n开发环境和 CI 往往同时依赖 GitHub、容器镜像、npm、pip、Cargo 等多个软件源。官方源访问不稳定时，需要分别寻找镜像、修改配置；第三方镜像又可能限流、变更或失效。\n\nMirrorProxy 希望把这些分散的配置与运维工作集中起来：部署在一台网络通畅的服务器上，将常用软件源统一到自己的域名。**按需代理，不需要预先完整同步庞大的仓库**；可选择启用有容量限制的磁盘缓存，并为同一个源配置备用上游。\n\n主要功能：\n\n- **多生态统一代理**：支持 GitHub 发布文件、Raw 与只读 Git 克隆，Docker/OCI，npm、PyPI、Cargo、Go Modules、Maven、NuGet，以及常见 Linux/BSD 软件仓库等。\n- **跨平台客户端**：帮助查看、切换和恢复软件源，提供配置预览、备份与回滚保护，方便个人开发机、团队和 CI 使用。\n- **可视化管理**：集中管理上游、健康检测、缓存、流量统计、账号与团队配额，支持邮件和 Webhook 告警。\n- **AI Agent 集成**：提供 Skill 和 MCP，让 Codex、Claude Code、Cursor 等工具查询实例实际启用的软件源与配置方式，而不是依赖写死的镜像地址。\n- **受控下载**：可单独启用公网 HTTPS 文件下载，采用用户授权和下载专用 Token，并限制流量、大小和并发；默认关闭，拒绝私网目标。\n- **便于自托管**：服务端内嵌 Web 界面，默认使用 SQLite，提供 Docker Compose、Linux 二进制和 systemd 部署方式。\n\n适合经常切换软件源的开发者、自托管用户，以及希望统一管理软件分发入口的小团队。实际下载效果取决于部署服务器到上游及客户端之间的网络条件。\n\n目前已发布 **v1.7.1**，针对前一版界面重构后的登录、个人中心、授权、邀请与会话管理等细节做了较多体验修复。欢迎试用和反馈，感谢考虑收录。\n\n补充说明：此前提交过旧版介绍 #10770，已由我自行关闭；本帖依据当前 README 重新整理，补充了跨平台客户端、团队管理与 Skill/MCP 等现有能力。\n",
+    "created_at": "2026-10-28T07:49:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12846"
+  },
+  {
+    "id": 12845,
+    "title": "【文章自荐】俄罗斯软件哲学：单机榨干",
+    "content": "为什么有些软件看起来不怎么商业化，却能在自己的领域里强得可怕？\n\n从 Nginx、ClickHouse 到 7-Zip，这篇文章试着揭开俄罗斯软件背后的工程哲学：当别人忙着堆服务器、加框架时，有人还在琢磨怎么把一台机器的性能榨干。\n\n软件究竟是越做越复杂，还是应该把每一分算力都用在刀刃上？\n\n原文地址：\n[https://mp.weixin.qq.com/s/jpiSA4d1RQLYT6POB9FEIQ](url)",
+    "created_at": "2026-10-28T06:37:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12845"
+  },
+  {
+    "id": 12844,
+    "title": "【工具自荐】铝构AI BeamJoin：铝型材设计 AI Agent，支持三维搭建与安装清单",
+    "content": "阮老师好，自荐一个我开发的在线铝型材设计工具：**铝构AI BeamJoin**，面向想用铝型材 DIY 桌架、工作台、置物架和设备支架的朋友。\n\n体验地址：[铝构AI BeamJoin](https://forgepane.com)\n\n自己设计铝型材家具，除了确定外观，还需要计算型材切割长度、选择连接件、确定板材尺寸，并整理给商家的加工信息。BeamJoin 希望把三维设计、方案修改和材料清单放到同一个网页里完成。\n\n目前主要支持：\n\n- **AI 辅助设计**：用自然语言描述需求，让助手辅助搭建和修改方案，生成的三维结构可以继续手动编辑。\n- **在线三维搭建**：在浏览器里调整型材尺寸与位置，添加连接件、台面、层板和孔位。\n- **材料与切割清单**：根据当前设计整理型材规格、切割长度、材料数量及加工信息，导出 PDF、Excel，方便采购询价和加工沟通。\n\n这个项目也是一次 **AI 与传统工业结合的探索**。铝型材是成熟的工业材料，背后有具体的规格、连接方式和加工要求。我想尝试让 AI 从理解自然语言需求出发，参与三维搭建和方案修改，再将设计整理成材料与加工清单，衔接实际采购和加工沟通。\n\n希望通过这个具体场景，探索 AI 如何降低普通人使用工业材料进行设计和搭建的门槛，同时保留尺寸、连接与加工细节的可编辑性，让“有个搭建想法”到“知道需要哪些材料”的过程更容易一些。\n\n目前仍在持续完善，实际承载与加工条件需要结合材料和安装方式确认。欢迎铝型材 DIY 爱好者，以及有相关设计、加工经验的朋友试用和反馈。\n\n我是开发者本人，本帖为自荐。感谢考虑收录。\n\n## 产品截图\n\n### 1. 在线铝型材三维设计工作台\n\n![在线铝型材三维设计工作台](https://github.com/user-attachments/assets/1a0f0215-3857-4e9e-a031-ce5f7929af37)\n\n### 2. AI 设计助手与方案建议\n\n![AI 设计助手与方案建议](https://github.com/user-attachments/assets/591848fb-6ab7-4555-a60d-f8fbb647d78e)\n\n### 3. 铝型材规格库\n\n![铝型材规格库](https://github.com/user-attachments/assets/5ce25d84-327e-47fa-952d-aab1fc1e4d7b)\n\n### 4. 创意中心与参考案例\n\n![创意中心与参考案例](https://github.com/user-attachments/assets/92e21687-080b-4f3d-ba8c-c90b3b144b45)\n\n### 5. 我的设计方案\n\n![我的设计方案](https://github.com/user-attachments/assets/536b43a8-3db2-45d3-b81d-fb4de77929a5)\n",
+    "created_at": "2026-10-28T06:27:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12844"
+  },
+  {
+    "id": 12843,
+    "title": "【开源自荐】Me2Cloud：从你自己的网络测各大云区域的延迟",
+    "content": "一个测云服务器延迟的网页：https://m2c.1ms.dog\n\n测速网站都是从机房测的，测不到你自己的运营商和晚高峰。Me2Cloud 在你的浏览器里直接发请求，测 17 家云厂商、361 个区域的延迟、抖动和丢包，适合买服务器前挑区域。\n\n开源（MIT），纯静态，可以免费部署到 Cloudflare：https://github.com/yt1988/me2cloud\n\n![](https://raw.githubusercontent.com/yt1988/me2cloud/main/docs/screenshots/hero-zh.png)\n",
+    "created_at": "2026-10-28T05:49:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12843"
+  },
+  {
+    "id": 12842,
+    "title": "【自荐】diting：给 AI 智能体用的浏览器引擎，单二进制内置 V8、无需 Chromium",
+    "content": "阮老师好，自荐一个自己的开源项目。\n\n**diting**：给 AI 智能体用的浏览器引擎——单个 Rust 二进制内置 V8，自带 CSS/布局/绘制栈，不依赖 Chromium，也不需要系统装浏览器。\n\nhttps://github.com/yinnho/diting\n\n现在让 AI 读写网页，一般是拿 Playwright/Puppeteer 驱动一个完整的 Chrome：装一次几百 MB，一个进程动辄几百 MB 内存，页面一多还要排队。diting 把整套浏览器做进一个二进制：启动就是一个本地 HTTP 服务，每项能力都是一次 curl——JS 渲染后的页面直接出 markdown（静态页约 100ms 应答，V8 只在页面真需要 JS 时才启动）、截图、录制的操作流程零 token 回放、五引擎聚合搜索、以及把写好的 HTML/CSS 动画确定性地渲染成 MP4。对中文网页（百度/搜狗/微信）的解析是一等公民。\n\n拿它配合 Claude Code / Codex 这类编码智能体做商品采集、自动发布、内容生产，比驱动 Chrome 省一个数量级的资源。macOS / Linux / Windows 都有预编译包，`brew install yinnho/diting/diting` 或一行 curl 脚本可装。Apache-2.0 协议，目前 v0.8.3。\n",
+    "created_at": "2026-10-28T05:34:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12842"
+  },
+  {
+    "id": 12841,
+    "title": "【自荐】Remove-OfficePlus：一键清理微软 OfficePLUS 加载项",
+    "content": "阮老师好，自荐一个自己写的开源小工具。\n\n**Remove-OfficePlus**：一键清理「微软 OfficePLUS」（也叫微软 PPT 助手 / Office 助手）的 Windows 工具，删除前自动备份注册表。\n\nhttps://github.com/HenryYannis/Remove-OfficePlus\n\n很多人电脑里莫名多了这个 Office 加载项：在 Office 选项里取消勾选，重启后又被勾回来；手动删文件提示被占用，删掉后开机又被后台服务装回来。原因是它注册了一个 LocalSystem 权限、开机自启的系统服务，还在 HKLM 里写了强制加载，优先级高于用户自己的设置。\n\n这个工具按「进程 → 服务 → 注册表 → 计划任务 → 缓存目录」整条链清理。删除前先把注册表导出成 .reg 备份，备份失败就不删；删完自动复检。有图形界面绿色版 exe 和一行 PowerShell 命令两种用法，还支持只扫描和预演模式。MIT 协议。\n\n![清理前后对比](https://raw.githubusercontent.com/HenryYannis/Remove-OfficePlus/main/docs/images/scan-after.png)",
+    "created_at": "2026-10-28T05:25:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12841"
+  },
+  {
+    "id": 12840,
+    "title": "【产品自荐】熔岩 Lava：A股消息面热度 MCP/REST",
+    "content": "## 熔岩 Lava\n\nA 股股票与概念板块的**消息面热度监测**，给量化与 AI Agent 用的结构化只读数据接口。\n\n- **产品**：https://lava.ai-dolphin.com/subscribe\n- **文档**：https://lava.ai-dolphin.com/subscribe/docs\n- **远程 MCP**：https://lava.ai-dolphin.com/subscribe/v1/mcp\n- **OpenAPI**：https://lava.ai-dolphin.com/subscribe/v1/openapi.json\n- **GitHub**：https://github.com/dustinliang666-blip/lava-mcp\n- **Glama**：https://glama.ai/mcp/connectors/com.ai-dolphin.lava/lava\n\n### 特点（简述）\n- 个股 / 概念热度、全市场热榜、加权热度、首提流、新闻命中（匿名 ID）\n- 只读；机构/大V 匿名；**不含多空方向与原文**\n- 开通赠代金券；按次计费（详见落地页）\n\n不构成投资建议。欢迎试用与反馈。",
+    "created_at": "2026-10-28T05:18:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12840"
+  },
+  {
+    "id": 12839,
+    "title": "【网站自荐】1 in 8 Billion：免费的人生模拟游戏",
+    "content": "## 1 in 8 Billion\n\n网址：https://1in8billion.site/\n\n1 in 8 Billion 是一款免费的人生模拟游戏。游戏会随机决定玩家出生的国家和家庭，玩家再通过升学、工作、恋爱、移居等选择，体验一段从出生到人生结束的独特人生。\n\n标签：人生模拟、人生模拟器、人生游戏、生存模拟",
+    "created_at": "2026-10-28T02:32:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12839"
+  },
+  {
     "id": 12838,
     "title": "【开源自荐】dsh-delivery-board：写在代码仓库里的交付看板（阶段 / 交接 / 周报 / Timeline）",
     "content": "推荐一个我开源的项目：**dsh-delivery-board**（v0.2.0）。\n\n把交付看板写进代码仓库：阶段流水线、交接审计、软 WIP 上限、客户周报（Markdown），以及本地可编辑看板 + 日历轴 Timeline。状态默认落在仓库里的 `delivery.json`，跟 PR 一起评审；不是要替代 Jira/Linear，只保留当前仓库真正需要的交付上下文。\n\n项目地址：\n\n- GitHub：https://github.com/jerryxff26-alt/dsh-delivery-board\n- 演示 GIF：https://github.com/jerryxff26-alt/dsh-delivery-board/blob/main/docs/demo/demo.gif\n\n主要特点：\n\n- 独立运行：`npx github:jerryxff26-alt/dsh-delivery-board`（也可作为 DeepSeek Harness / dsh 插件安装）\n- 卡片流转自动记录交接；阶段可设软 WIP（超限警告，不强制卡住）\n- `weekly` 生成客户周报；`open` 打开本机看板与 Timeline\n- MIT 协议，无额外运行时依赖\n\n适用场景：小团队或「人 + AI 编程助手」需要把「谁在做什么、卡在哪、本周交付了什么」和代码放在一起时。欢迎试用与 star。",
@@ -258,7 +322,7 @@
   {
     "id": 12806,
     "title": "【开源自荐】学术成果商业化评估：输入一篇论文，输出带引用的商业化初筛报告",
-    "content": "项目地址：https://github.com/shuxiachai/academic-commercialization-agent\n\n一个开源的多智能体工具，输入一篇论文或一个研究主题，输出一份商业化初筛报告：技术成熟度、制造成熟度、专利、市场分别打分，每条论断都标出来源。检索和来源验证由代码完成，模型只在冻结的来源里推理，总分也由代码计算，不让模型自己算。\n\n不用注册、不用 API key，可以先读 5 份完整的示例报告（其中 1 份中文）：https://academic-commercialization-agent.up.railway.app/samples\n\n作者还用它做了一个预注册的对照实验：1 个、4 个、6 个 agent 各跑 30 次，隔两个月换模型重跑，一半结论反转了。过程、原始数据和局限都公开：https://zhuanlan.zhihu.com/p/2097645985484780217\n\nMIT 协议，Python + CrewAI + FastAPI。\n\n![](https://raw.githubusercontent.com/shuxiachai/academic-commercialization-agent/main/assets/social-preview.png)\n\n我是项目作者，这是自荐。\n",
+    "content": "项目地址：https://github.com/shuxiachai/academic-commercialization-agent\n\n一个开源的多智能体工具，输入一篇论文或一个研究主题，输出一份商业化初筛报告：技术成熟度、制造成熟度、专利、市场分别打分，每条论断都标出来源。检索和来源验证由代码完成，模型只在冻结的来源里推理，总分也由代码计算，不让模型自己算。\n\n不用注册、不用 API key，可以先读 5 份完整的示例报告（其中 1 份中文）：https://academic-commercialization-agent.up.railway.app/samples\n\n作者还用它做了一个预注册的对照实验：1 个、4 个、6 个 agent 各跑 30 次，隔两个月换模型重跑，一半结论反转了。过程、结果和局限都公开：https://zhuanlan.zhihu.com/p/2097645985484780217\n\nMIT 协议，Python + CrewAI + FastAPI。\n\n![](https://raw.githubusercontent.com/shuxiachai/academic-commercialization-agent/main/assets/social-preview.png)\n\n我是项目作者，这是自荐。\n\n",
     "created_at": "2026-10-27T00:04:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12806"
@@ -306,7 +370,7 @@
   {
     "id": 12795,
     "title": "自荐：涟漪（Ripple）v0.1.2 - 安卓防卸载自控与防沉迷工具（支持只拦微信视频号/Shorts/Reels）",
-    "content": "阮老师好，自荐一个我自己写的安卓端免费小工具 **涟漪（Ripple）v0.1.2**。\n\n- 中文官网：https://ripplefocus.github.io/\n- 英文官网：https://ripplefocus.github.io/en/\n- 下载页（GitHub Releases）：https://github.com/ripplefocus/ripplefocus.github.io/releases/latest\n\n**为什么做这个**\n\n我晚上经常刷短视频刷到两三点。以前试过系统自带的「数字健康 / 屏幕使用时间」，也装过几款限制时长的 App，但每次手痒的时候，要么点一下「今天忽略限制」，要么花三秒钟进系统设置把权限关了，甚至直接把限制软件卸载掉。另外，平时工作生活离不开微信，海外用户也离不开 YouTube 长视频和 Instagram 私信，如果把整个 App 锁死会耽误正事，不锁又容易顺手点进视频号、Shorts 或 Reels 刷个不停。\n\n后来想明白，自控工具真正难的是两件事：一是怎么在保留日常通讯的同时只精准拦住应用内的短视频流，二是**当我冲动想改规则、想卸载它的时候，怎么把我拦住**。很多时候只要能硬生生卡住这 15 分钟，那股非刷不可的劲也就过去了。做完之后发现，这套机制除了治成年人自己手痒，也很适合**家长用来管孩子看手机**。\n\n**它目前做的几件事**\n\n1. **应用内局部拦截（v0.1.2 新增）**：支持在保留应用正常功能的前提下只拦短视频流。开启后，微信正常聊天、扫码和支付不受影响，但一点进「微信视频号」或「朋友圈」就会自动退回上一页；同样支持保留 YouTube 搜索与长视频、保留 Instagram 私信与图文，点进 `YouTube Shorts` 或 `Instagram Reels` 竖屏视频流时自动退回。\n2. **装上就有默认规则与中英双语**：自带「睡觉 23:30–07:00」专注时段；手机里要是装着抖音、快手、TikTok、YouTube，默认给每天 90 分钟上限。应用内完整支持简体中文与英文（默认跟随系统语言，也可手动切换）。\n3. **严进宽出 + 亲友/家长解锁码**：把规则改严立刻生效；但只要是放松规则（关闭局部拦截、加时长、跳过今晚专注、暂停、关防卸载），必须先走完 15 分钟～2 小时的倒计时（抖音这类高风险 App 等待时间翻倍，且按开机单调时钟计算，往后拨系统时间没用），或者输入由家人/家长保管的解锁码。\n4. **两层防卸载（孩子杀后台、重启也绕不过）**：\n   - 普通模式不用连电脑，开「无障碍 + 设备管理器」两步就能用。去桌面长按卸载、去系统设置里强行停止、清数据、关无障碍或停用设备管理器，都会被当场退回桌面。\n   - 里面还有一个可选的「高级保护」：利用安卓 11+ 的本机无线调试，在手机自己内部拉起一个轻量守护进程，直接调系统接口把卸载开关锁死。实测在 ColorOS 14 上，哪怕从最近任务划掉涟漪（约 2.5 秒自己重连）或者直接重启手机，守护和无障碍都会自己恢复。\n5. **家长管孩子手机的场景**：家长给孩子设好每天短视频/游戏的时长、开启微信视频号局部拦截并设好晚上睡觉时段，把等待时间调到 2 小时、设好家长解锁码并开启防卸载，孩子自己改系统时间、杀后台、进设置清数据或重启手机都解不开，同时又不用买专门的学生手机。\n6. **不耽误打电话和正事**：电话、短信、闹钟、日历、相机、输入法、文件选择器、系统钱包都归在「系统必需」里，任何时候都不拦，正常接打电话、早上闹钟响都不受影响。\n7. **纯本地、免费无广告**：没有账号体系，不收集任何统计数据。唯一用到网络的地方是手动点「检查更新」时从 GitHub 拉新包，以及开启高级保护时在手机本机内做无线调试握手。\n\n预览图：\n![](https://ripplefocus.github.io/logo.png)\n",
+    "content": "自荐一个我自己做的安卓端免费无广告小工具 **涟漪（Ripple）**（最新 `v0.1.3` 正式版，安装包已从 52.3 MB 瘦身至 **8.57 MB**，缩减 83.6%）。\n\n- 中文官网：https://ripplefocus.github.io/\n- 免梯直连下载（v0.1.3，8.57 MB）：https://ripplefocus.github.io/dl/ripple-v0.1.3.apk\n- 家长防沉迷专项指南：https://ripplefocus.github.io/parental-control/\n- 小米/OPPO/vivo 防杀后台保活指南：https://ripplefocus.github.io/keep-alive-guide/\n- GitHub Releases：https://github.com/ripplefocus/ripplefocus.github.io/releases/tag/v0.1.3\n\n### 解决什么实际痛点（成年人戒短视频 + 家长管孩子手机防绕过）\n\n不管是成年人自己熬夜刷短视频，还是**家长给初高中孩子配手机后防沉迷**，市面上常见的屏幕时间管理软件都有三个很容易被绕过的漏洞：\n1. **微信必须留着联系家长/看班级群，结果成了刷视频号的后门**：不能把微信一刀切锁死，但只要留着微信，孩子或自己就会顺手滑进「发现 > 视频号」或朋友圈刷到半夜。\n2. **改手机系统时间就能清零限额**：很多定时锁机工具依赖系统时间（`System.currentTimeMillis()`），孩子进设置把日期时间往前拨几小时就能跳过锁机。\n3. **三秒钟进设置强行停止或偷卸管控软件**：在小米 HyperOS、OPPO ColorOS、vivo OriginOS 上，从最近任务列表把卡片一划，或者直接卸载软件，限制就彻底失效了。\n\n### 涟漪 v0.1.3 的核心实现\n\n1. **应用内短视频流局部拦截（只禁娱乐，不耽误联系家长）**：支持独立勾选拦截 **微信 · 视频号、微信 · 朋友圈、YouTube · Shorts、Instagram · Reels**（内置 `1200ms` 单调时钟退回节流防闪烁）。正常微信收发消息、语音通话、看班级通知、扫码支付、看长视频网课完全不受影响，一旦点进短视频流立即自动退回上一页；电话、短信、早上全屏响铃闹钟与系统相机永久放行。\n2. **家长/亲友解锁码 + 单调时钟防反悔倒计时（防改系统时间）**：把规则改严立刻生效；想加时长、关闭视频号拦截、跳过晚间睡眠锁机（默认 `23:30–07:00`）或卸载软件，必须输入由**家长或家人保管的解锁码**，或者老老实实走完 15 分钟到 2 小时的冷却倒计时（短视频应用自动翻倍）。计时完全基于安卓开机单调时钟（`SystemClock.elapsedRealtime()`），孩子怎么改系统日期时间都无法跳过一秒钟。\n3. **两层防冲动卸载 + 免电脑 2.5 秒无障碍自愈**：\n   - **基础防卸载**：开启无障碍与设备管理器两步即可拦截桌面卸载、设置里强行停止、清除数据与停用管理器。\n   - **可选本机无线调试「高级保护」**：无需连接电脑、无需 Root，在手机本机配对一次 Android 11+ 无线调试，内置守护进程 `ripple_ss` 会调用系统接口锁死卸载开关（`setBlockUninstallForUser`）；就算孩子从最近任务把涟漪卡片划掉，守护进程也会在约 **2.5 秒**内自动重连恢复无障碍服务，手机重启也能自愈。\n4. **8.57 MB 极速包与纯本地零隐私顾虑**：仅保留 `arm64-v8a` 64 位真机架构并开启原生库高压缩，体积仅 8.57 MB；无广告、无内购、不用注册账号，不上传孩子任何位置或聊天记录，数据 100% 留在手机本地。",
     "created_at": "2026-10-26T15:12:49Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12795"
@@ -734,69 +798,5 @@
     "created_at": "2026-10-24T10:45:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12741"
-  },
-  {
-    "id": 12740,
-    "title": "[开源自荐] Paper Translator v3：面向老扫描学术论文的中文翻译与重排",
-    "content": "## 项目地址\n\nhttps://github.com/jimdutju/paper-translator-v3\n\n## 简介\n\nPaper Translator v3 是一个将英文扫描版/原生文字版学术论文翻译并重新排成中文 PDF 的实验项目。目前主要使用量化金融、计量经济学论文验证，希望帮助仍在阅读老扫描论文的研究者。\n\n## 特点\n\n- 视觉模型读取原文、公式和阅读顺序，版面检测器与文字层只提供几何信息，再进行中文重排。\n- 公式经 LaTeX 编译为矢量内容；图表保留原图，指定保留英文的区域不强制翻译。\n- 检查翻译时数学变量是否丢失、是否有文字压图、空白页或未还原的占位符；有问题的数学翻译缓存可按段重译。\n\n## 验证与适用边界\n\n当前完成三篇共 56 页的重建验证和 11 项回归测试，另有本机 pdf2zh 1.9.11 的有限样本对照；这不代表全文语义准确，也不代表优于最新 pdf2zh/BabelDOC。\n\n项目采用 MIT 许可证，代码开源。运行需要 Python、LaTeX、检测器权重和使用者自己的模型 API，API 费用由服务商收取。当前更适合愿意配置环境、希望检查与改进论文翻译流程的读者。\n\n对照与已知限制：https://github.com/jimdutju/paper-translator-v3/blob/main/docs/COMPARISON.md\n\n欢迎试用，尤其希望收到扫描论文、公式或复杂版面的失败样本及安装反馈。感谢考虑收录。\n",
-    "created_at": "2026-10-24T10:35:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12740"
-  },
-  {
-    "id": 12739,
-    "title": "【软件自荐】票号核对台：跨 Excel/CSV 核对发票号，导出原文件、工作表和行号",
-    "content": "做了一个范围比较小的表格核对工具，想申请周刊软件栏目收录。工具借助 AI 开发，文件解析和核对在本机运行，不调用 AI，也不上传台账。\n\n**官网与合成演示：** https://piaoh-offline.xuhaotian29.chatgpt.site/\n\n### 解决哪一步\n\n手里有多份票据登记或报销台账时，找出相同号码之后，还需要回到原文件核查。这个工具逐表选择表头与号码列，跨 `.xlsx`、`.xls` 和 UTF-8 CSV 比较号码，导出的清单带原文件名、工作表和原表行号；有发票代码时，也可按“代码 + 号码”核对。\n\n它保留文本号码的前导零，对长数值精度风险、公式等情况单独提示复核，不改写原文件。熟悉 Power Query 或脚本的用户可以自己实现类似流程，这个版本提供固定操作界面与带来源位置的导出清单。\n\n### 能看到什么\n\n官网提供三条合成记录的交互演示，以及完整工具使用19条合成记录的实测截图。演示不读取访客文件，也不是完整付费工具。\n\n![使用合成样例运行的结果页，非客户数据](https://piaoh-offline.xuhaotian29.chatgpt.site/product-screenshot.png)\n\n### 价格与交付\n\n离线版 v1.0 为19.90元一次购买当前版本，无订阅；目前限量首发，库存以[爱发电独立商品页](https://afdian.com/item/c1b23310cea911f1be9152540025c377)为准。当前采用人工交付，付款后48小时内通过爱发电私信发送下载链接与解锁码，每天北京时间10:00查单，非即时发货，急用勿买。\n\n### 边界\n\n只核对表格字段是否相同，不验证发票真伪，不识别 PDF、图片或 OCR；已经在源表中丢失精度的号码不能恢复。最多50个文件、总计50 MiB、累计20,000行（含表头）。尚无付费客户验证，不宣称节省了多少时间或已经产生收益。\n\n如果你处理过这类台账，欢迎就来源定位、异常提示和导出格式提出具体建议，请不要发送真实发票或业务台账。",
-    "created_at": "2026-10-24T10:24:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12739"
-  },
-  {
-    "id": 12738,
-    "title": "【开源自荐】LLMSlim：给 AI Agent 的长期记忆 MCP 服务器，读写不调用 LLM",
-    "content": "作者自荐。\n\nLLMSlim（MIT，Python）是一个 MCP 服务器和 Claude Code 插件，给 Claude Code、Cursor、Codex 等 AI 编程 Agent 加上留在本机的长期记忆：\n\n- 消息按原文存进本地 SQLite（或自有 PostgreSQL），不经过模型改写\n- 按问题在你设定的 token 预算内召回能回答它的消息\n- 读写都不调用 LLM，记忆功能不需要 API key\n- 五个工具：remember、recall、list_memories、forget，以及 fit_context（把超长日志或工具输出裁剪到预算内）\n\n接入 Claude Code：\n\n```\npip install \"llmslim[mcp]\"\nclaude mcp add llmslim -- llmslim mcp\n```\n\nGitHub: https://github.com/Thanatos9404/llmslim\n已收录于官方 MCP Registry（io.github.Thanatos9404/llmslim）。\n\n谢谢阮老师\n",
-    "created_at": "2026-10-24T08:45:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12738"
-  },
-  {
-    "id": 12737,
-    "title": "【开源自荐】Knovum：本地优先的无限画布 AI 知识空间（Tauri 2 + Vue 3）",
-    "content": "## Knovum\n\n一款开源、本地优先的无限画布 AI 知识工作空间。将 Heptabase 式的空间白板、Obsidian 的数据掌控权（开放 JSON Canvas + SQLite）与本地离线 AI（Ollama + LanceDB + Whisper）结合，打造轻量、隐私可控的技术调研与学习桌面工作台。\n\n• **本地优先与数据掌控**：完全杜绝云端绑定和私有格式锁定。支持行业开放的 **JSON Canvas** 规范与标准单文件 **SQLite**，数据 100% 留存在本地，断网全功能可用。\n• **极轻原生桌面（Tauri 2 + Rust）**：底层由 Rust 驱动，前端采用 Vue 3，启动秒开，常驻内存仅几十 MB，彻底告别传统 Electron 工具动辄数百 MB 内存的笨重感。\n• **空间化无限画布**：支持 Markdown 笔记卡片、技术草图、PDF/音视频素材同屏混排与双向关联连线，告别死板的层级文件夹。\n• **开箱即用的端侧 AI**：内置嵌入式 LanceDB 向量检索与本地 Whisper 语音切片转录，原生对接本地 Ollama 模型，提供变异感知溯源引擎（修改源笔记时自动标识引文失效，避免假引用）。\n• **开放协议集成**：原生支持 Model Context Protocol (MCP) 与 Agent Client Protocol (ACP)。\n\n开源地址：https://github.com/madebyzan/knovum",
-    "created_at": "2026-10-24T08:25:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12737"
-  },
-  {
-    "id": 12736,
-    "title": "【自荐】漫匣 Manxia：有实体书质感的 Flutter 开源漫画阅读器",
-    "content": "漫匣 Manxia：https://github.com/LexianLix/manxia\n\n一个用 Flutter 编写的开源漫画阅读器（Android），主打实体书质感：立体书架上封面满幅装订、书脊随封面取色，进入阅读时封面沿书脊翻开，配悬浮毛玻璃导航。默认接入动漫屋进行漫画发现，支持条漫 / 分页 / 双页与曲面翻页，可导入本地图片、CBZ、PDF 并离线下载，书库通过 WebDAV 同步。另有插件系统，主题、阅读预设和漫画源都能用 JSON 清单免编译扩展。MIT 开源，安装包见仓库 Releases。",
-    "created_at": "2026-10-24T07:52:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12736"
-  },
-  {
-    "id": 12735,
-    "title": "【自荐】Vitals：按应用而不是进程看Mac的CPU、内存和耗电",
-    "content": "自荐一个Mac工具：Vitals，活动监视器的替代品。\n\n活动监视器里有上千个进程，Vitals把它们归到所属的应用下，大约60行：Chrome的几十个辅助进程算作一行，每个应用一个CPU、内存、能耗、磁盘和网络数字。\n\n- 保留30天的历史，可以看昨天下午是什么拖慢了Mac\n- 某个应用占用过高时提醒\n- 按项目文件夹列出忘了关的开发服务器、端口和Docker容器\n- 自带MCP服务器，Claude、Cursor可以直接问Mac现在的状态\n- 简体中文、繁体中文界面\n\n3天免费试用，不用注册、不用绑卡，之后一次买断。\n少数派的评测：https://sspai.com/post/116445\n\n网站：https://vitalsmac.com/zh-hans\n作者自荐，欢迎反馈。\n\n<img width=\"1840\" height=\"1119\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed53c9d6-b5ce-4393-8241-c87d76de852f\" />",
-    "created_at": "2026-10-24T07:50:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12735"
-  },
-  {
-    "id": 12734,
-    "title": "【开源自荐】OpenIDEA：用 Rust 重写的 IntelliJ 风格 IDE",
-    "content": "## OpenIDEA\n\n一个**开源**的桌面 IDE，保留 IntelliJ IDEA 的使用习惯（快捷键、工具窗口、双击 Shift 全局搜索），底层用 **Rust + Tauri 2** 重写。\n\n- **快且轻**：打开约 770 个文件的 Python 项目 1.1 秒就绪，内存 169 MB；同条件下 IntelliJ IDEA 为 13.2 秒、2011 MB\n- **功能齐全**：编辑器与代码补全、调试器、Git、终端、数据库客户端、HTTP 客户端，支持 60 多种语言\n- **全平台**：提供 macOS、Windows、Linux 安装包，支持自动更新\n\n[开源地址](https://github.com/l0ng-ai/openidea)\n\n![调试器截图](https://github.com/l0ng-ai/openidea/raw/main/docs/media/debug.jpg)\n",
-    "created_at": "2026-10-24T07:41:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12734"
-  },
-  {
-    "id": 12733,
-    "title": "【工具推荐】TrendSwap：单张人像照片一键生成对口型爆款短视频",
-    "content": "- 项目官网：[https://trendswap.app/](https://trendswap.app/)（支持中文：[https://trendswap.app/zh](https://trendswap.app/zh)）\n- 官方文档：[https://docs.trendswap.app](https://docs.trendswap.app)\n\n### 项目简介\n自荐一个我们团队开发的 AI 短视频创作平台：**TrendSwap**。\n\n它解决的核心痛点是：市面上现有的 AI 换脸或图生视频工具，要么人脸变形失真、五官被“混脸/同化”成路人，要么提示词极其繁琐且音画不同步。\n\nTrendSwap 专注于**单张人像照片一键成片**：用户只需上传一张自拍或人像照片，即可直接复刻全球社交媒体当下最热门的模版（如 Drake Burning Bridges 烛光晚宴漫步、Bulin 47 抖肩舞、双人霓虹舞、Smalltown Boy 猫咪尖叫双人舞等），自动生成面部五官 100% 严格保真、动作与音频口型高精度同步的竖屏 MP4 短视频。\n\n### 核心亮点\n1. **严格面部身份锁定**：通过多模态条件控制与身份解耦协议，确保生成的面部五官轮廓、眼神与骨骼特征 100% 完全源自用户上传的照片，绝不与原模板主角产生融脸或变形。\n2. **母带级音画毫秒同步**：预置高热度原版人声音频与节奏点，音频与动作动态精准同步。\n3. **零门槛即时可用**：无需编写复杂 Prompt 或本地部署 ComfyUI 工作流，开箱即用，支持多语言（中/英/西/日）界面与 MCP Server 自动化接入。\n4. **免费体验**：提供新用户免费体验额度，无水印、无需订阅。\n\n欢迎老师和大家体验、交流与指导！",
-    "created_at": "2026-10-24T07:40:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12733"
   }
 ]
