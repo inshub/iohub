@@ -1,5 +1,37 @@
 [
   {
+    "id": 12901,
+    "title": "【开源自荐】Runward：在本地回看多个编程代理的并行活动",
+    "content": "我是 Runward 的维护者，想向周刊自荐这个 MIT 开源的小工具。\n\n仓库：https://github.com/K-kiron/runward\n\n同时开着几个编程代理时，终端里的日志不容易回答一个问题：它们在同一时间分别做了什么？Runward 读取用户明确选择的会话文件，把工具调用、错误、推理摘要和子代理活动排到共享时钟的瀑布图里，并提供控制台、事件时间线和筛选。\n\n它是本地查看器，不负责启动或编排代理，也不自动执行交接。默认仅监听回环地址，没有运行时依赖、前端构建步骤或向外部服务发送的请求；演示也不需要模型账户或 API Key。\n\n目前覆盖 Codex、Claude Code、DeepSeek Harness（DSH）、OpenCode、OpenHands 和 Gemini CLI。Codex 已用真实本地会话检查；Claude Code 使用合成测试；新增加的四种读取器以官方格式和合成样例验证，尚未完成真实模型会话验证。没有时间或 token 数据时，界面保留未知状态。\n\n用 Node.js 22+ 可直接体验合成数据演示：\n\n```sh\ngit clone https://github.com/K-kiron/runward.git\ncd runward\nnpm run demo\n```\n\n然后打开 http://127.0.0.1:4317 。\n\n![Runward synthetic demo](https://raw.githubusercontent.com/K-kiron/runward/main/docs/screenshot.png)\n\n上图为合成数据。导入的原始日志不会自动脱敏，公开反馈请使用最小合成样例。\n\n希望收到多会话时间线是否好用、各工具导出格式是否兼容的反馈，也欢迎贡献解析回归测试和采集说明：[适配文档](https://github.com/K-kiron/runward/blob/main/docs/adapters.md) / [贡献指南](https://github.com/K-kiron/runward/blob/main/CONTRIBUTING.md)。",
+    "created_at": "2026-10-29T22:12:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12901"
+  },
+  {
+    "id": 12900,
+    "title": "【网站自荐】Threezy：每天一局的卡牌找规律小游戏",
+    "content": "推荐一个自己做的网页小游戏。\n\nThreezy：https://threezy.net\n\n桌上有 9 张牌，每张牌有形状、颜色、填充三种属性。要找出 3 张牌组成一组，每种属性必须三张全部相同或者全部不同。每天有一局所有人都一样的每日牌局（2 分钟限时，或者比谁最快找到 10 组），有全球排行榜，也有不限时的无尽模式。\n\n免费、无广告、不用注册，手机和电脑都能玩，界面支持简体中文。一个人开发，部署在 Cloudflare Pages + D1 上。",
+    "created_at": "2026-10-29T21:35:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12900"
+  },
+  {
+    "id": 12899,
+    "title": "【开源自荐】澜姿 - 模特Pose生图工具",
+    "content": "### 澜姿\n\n仓库：https://github.com/wzc520pyfm/gen-ai-pose-image\n在线演示：https://gen-ai-pose-image.vercel.app/\n\n澜姿是一个姿势参考生图工具。从公开的姿势线稿里选一个或多个姿势，也可选择更换衣装集里的衣服，让DeepSeek鲸鱼娘「大肥鱼」按这个姿势出图。姿势图和服装图都不放进仓库，页面按需读取。可导入其他模特。可独立部署，也可装进 DeepSeek Harness。\n\n## 预览\n\n<img width=\"1512\" height=\"824\" alt=\"Image\" src=\"https://github.com/wzc520pyfm/gen-ai-pose-image/blob/main/docs/studio-live.jpg?raw=true\" />\n\n<img width=\"726\" height=\"478\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/237a0391-3aa9-4657-ac7d-2a6f864f2f36\" />\n",
+    "created_at": "2026-10-29T19:41:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12899"
+  },
+  {
+    "id": 12898,
+    "title": "【自荐】三个 AI 图像/视频在线工具",
+    "content": "自荐三个浏览器里就能用的 AI 工具，无需安装：\n\n- [EveryGen AI](https://everygenai.app/)：一站式 AI 图像和视频生成，用文字或图片生成画面。\n- [Face Swap Video](https://faceswap.video/)：在线 AI 换脸，支持视频和照片。\n- [Genjutsu](https://genjutsu.tv/)：把文字和图片变成电影感 AI 视频，还能用动作迁移二创热门片段。",
+    "created_at": "2026-10-29T17:27:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12898"
+  },
+  {
     "id": 12897,
     "title": "【自荐】LinkDigest：把小红书/抖音/公众号/B站/小宇宙链接变成 AI 可读的文字",
     "content": "LinkDigest（https://linkdigest.dev/zh）：给 AI Agent 用的链接读取服务。贴一条小红书、抖音、公众号、B站或小宇宙播客链接，返回带时间的逐字稿、每张图和画面上的文字（OCR）、热评，以及每条都逐字核对过原文的要点。支持 Claude Code / Cursor（MCP）、REST API、浏览器扩展；不用登录平台账号、不用 Cookie。注册送 10 积分。作者是独立开发者，欢迎试用和反馈。",
@@ -782,37 +814,5 @@
     "created_at": "2026-10-26T15:03:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12794"
-  },
-  {
-    "id": 12793,
-    "title": "【工具自荐】LTX-23 Video Studio：基于 LTX 模型的在线文生视频、图生视频工具",
-    "content": "### 项目介绍\n\n项目地址：https://ltx-23.org/\n\nLTX-23 Video Studio 是独立的第三方 AI 视频生成平台，可在浏览器中使用 LTX 视频模型，无需本地安装模型。\n\n### 主要功能\n\n- 文生视频：用自然语言描述场景、动作和镜头。\n- 图生视频：以参考图片为起点生成动态视频。\n- 提供 LTX-2.5 和 LTX-2.3 模型选项，支持的模型与设置可生成同步音频。\n- 提供可复用的视频提示词和创作指南。\n\n提示词资源：https://ltx-23.org/prompts\n\n创作指南：https://ltx-23.org/blog\n\n### 适用人群与收费说明\n\n适合内容创作者、设计师、营销人员和 AI 视频爱好者。视频生成采用付费积分或订阅模式，价格和模型能力以网站当前页面为准。\n\n这是项目方自荐，欢迎反馈。LTX-23 Video Studio 并非 LTX 或 Lightricks 官方网站，与其无隶属或背书关系。\n\n联系邮箱：support@ltx-23.org",
-    "created_at": "2026-10-26T14:30:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12793"
-  },
-  {
-    "id": 12792,
-    "title": "【软件自荐】棱镜 Prism：集成 AI 助手和多服务器巡检的 SSH 桌面工作台",
-    "content": "棱镜（Prism）集成 SSH 终端、SFTP 文件管理和 AI 助手，适合自己管理服务器的开发者。桌面端无需注册或部署后端；AI 可接自己的模型服务，或支持工具调用的本地 Ollama 模型。\n\n支持多台已连接主机巡检，按主机汇总 CPU、内存、磁盘、服务和端口状态；Docker / Compose 部署按阶段确认，提供实时日志和验证步骤。专用巡检和读取工具直接执行，自定义命令及部署阶段确认后执行。\n\n提供 Windows、macOS、Linux 安装包。模型费用由服务商决定；使用外部模型时，相关对话和终端输出会发送到该模型服务。\n\n- [官网与上手](https://aides-hik.github.io/AI-ssh/)\n- [项目与教程](https://github.com/aides-hik/AI-ssh)\n- [下载安装](https://github.com/aides-hik/AI-ssh/releases/latest)\n- [问题反馈](https://github.com/aides-hik/AI-ssh/issues)",
-    "created_at": "2026-10-26T14:10:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12792"
-  },
-  {
-    "id": 12791,
-    "title": "【开源自荐】蓝宝书 01 · DeepSeek Harness：一本讲「为什么这样设计」的图解书",
-    "content": "【开源自荐】一本讲「为什么这样设计」的图解书：蓝宝书 01 · DeepSeek Harness\n\n- 项目名称：蓝宝书 01 · DeepSeek Harness——《一切皆插件：一个 AI 外壳是怎么长出来的》\n\n- 项目地址：\n  在线阅读（GitHub Pages，免下载）：https://tobemagic.github.io/deepseek-harness-bluebook/\n  GitHub：https://github.com/TobeMagic/deepseek-harness-bluebook\n\n- 项目简介：\n  一本免费的设计解读书。用「修灯师傅队伍」一个生活故事贯穿全书，把 DeepSeek Harness 拆开讲清楚每一层为什么被设计成这样、代价是什么、哪些能搬到自己的项目里。3.4 万字，42 张手绘流程图，零代码、零包名，不写代码的人也能读完。每节先讲人话再上术语，结尾给对照表和「这条能搬去哪」。书中还把 DeepSeek Harness 与 Claude Code、Codex CLI 摆在一起对比：三家外壳，三种卖法。\n\n  免费、MIT、可离线阅读的单文件 HTML，另有 PDF 和 EPUB。\n\n- 项目截图：\n\n![封面](https://raw.githubusercontent.com/TobeMagic/deepseek-harness-bluebook/main/books/deepseek-harness/assets/cover.jpg)\n\n![社交预览图](https://raw.githubusercontent.com/TobeMagic/deepseek-harness-bluebook/main/books/deepseek-harness/assets/social-preview.png)\n",
-    "created_at": "2026-10-26T13:43:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12791"
-  },
-  {
-    "id": 12790,
-    "title": "【开源自荐】EricGameLauncher：一款采用WinUI3和.NET10构建的极简主义次世代游戏启动器。",
-    "content": "## 推荐项目\n\n**项目名称**：EricGameLauncher\n**开源主页**：[EricGameLauncher](https://github.com/EricZhang233/EricGameLauncher)\n\n---\n\n## 亮点速览\n\n<img width=\"932\" height=\"602\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/267b92f5-d82d-45d6-b05b-76c05dcafe0e\" />\n\n*   🧩 **全链路执行**：主程序、管理器、代替启动、伴随执行四条链路逐项可配；EXE、快捷方式、URL 协议、网页、商店应用都能直接跑。\n*   🖱️ **动态右键菜单**：菜单项随项目自动增减，识别到平台即显示「运行 Steam / 运行 Xbox」；每个项目最多 10 个自定义项，可独立配置标题、命令、参数与提权。\n*   🗂️ **多平台一站收纳**：Steam、Epic Games、Xbox、WeGame、独立 exe、网页与商店应用共处一库，顺序完全自定义。\n*   🔍 **多路搜索**：拼音全拼、拼音首字母、中文、英文、路径与 URL 协议都能当关键词——`yxlm` 直达英雄联盟，`C:\\Program Files` 按路径命中，`steam` 顺协议捞出全部。\n*   📥 **扫描即入库**：自动识别 Steam、Epic Games、Xbox 已安装游戏，按新增 / 已存在 / 已失效分组，一键导入或批量清理。\n*   💻 **全功能 CLI & Skill**：桌面端能做的命令行都能做，`-help` 与 `skill` 内置完整文档，脚本与 AI Agent 可直接接入。\n*   🚀 **快速启动**：后台宿主预读配置、预热图标与界面，再次打开几乎瞬间出现；不需要时一键关闭，进程随即退出。\n*   🗑️ **三段式删除**：主界面删除只进回收站，回收站删除才开始 72 小时倒计时，到期后下次启动自动清理——手滑也救得回来。\n*   🎒 **完全便携**：配置与图标缓存可随程序走，塞进 U 盘即可随身携带；系统模式与便携模式之间一键迁移。\n",
-    "created_at": "2026-10-26T13:30:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12790"
   }
 ]
