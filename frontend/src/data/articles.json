@@ -1,5 +1,29 @@
 [
   {
+    "id": 12867,
+    "title": "【自荐】mb-to-kb：在浏览器里把照片、签名、PDF 压到指定 KB",
+    "content": "https://mb-to-kb.com/\n\n免费在线工具，用于网申等场景：输入目标大小（如 50 KB），自动把照片压到不超过这个大小的最高画质；也能处理签名（按 px/cm 定尺寸）和 PDF。文件不上传，全部在浏览器本地完成，不用注册。\n\n核心算法开源：https://github.com/teasoup90/compress-to-kb",
+    "created_at": "2026-10-29T01:10:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12867"
+  },
+  {
+    "id": 12866,
+    "title": "【开源自荐】wise-men-flash：讲清理由、保留反方意见的 Claude Code 决策 Skill",
+    "content": "阮老师好，自荐我做的开源项目 [wise-men-flash](https://github.com/Ali-expandings/wise-men-flash)（MIT）。\n\n第 414 期谈 Jev 决策模型时提到，它只给一个数，这个数是怎么来的无从得知。wise-men-flash 走的是另一条路：给出的不是一个概率，而是一份讲清理由的决策备忘录。\n\n它是一个 Claude Code Skill：一个难题同时交给三个 subagent——一位熟悉这类工作的实践者、一位相关领域的成员，以及一个专挑前提毛病的 Devil's Advocate，三人各走不同的推理路径，互相看不到对方的答案。主线程把三份回答合成一份备忘录（建议、理由、第一步怎么做、风险、最有力的反方意见、每条结论的把握程度），再交给一个没参与讨论的模型核对，然后才给你。\n\n测试结果和局限：预注册盲测，8 道新题，每题 3 位 Opus 盲评，它得 23.4/25，每道题都高于 6 个热门 Claude Code Skill 和直接回答。但评委也是 Claude，题量小，而且单看正确性，直接回答反而更高（4.3 对 3.8）。原始答案、评分和分析脚本都在仓库的 `eval-data/` 里。\n\n在 Claude Code 里安装：\n\n```\n/plugin marketplace add Ali-expandings/wise-men-flash\n/plugin install wise-men-flash@wise-men-flash\n```\n\n或者 `npx skills add Ali-expandings/wise-men-flash -g`。\n\n另有完整版 [wise-men](https://github.com/Ali-expandings/wise-men)：3–7 位成员独立作答、互评、分歧时辩论，最后由 Chairman 写出保留异议的备忘录。\n\n- 项目地址：https://github.com/Ali-expandings/wise-men-flash\n",
+    "created_at": "2026-10-28T22:03:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12866"
+  },
+  {
+    "id": 12865,
+    "title": "【开源自荐】Anki Miner: automated Anki language vocabulary card creation from video, audio, manga and books",
+    "content": "Anki Miner is a desktop app that automatically creates Anki language vocabulary cards from all types of media, in 32 languages. The UI is also available in Simplified Chinese.\n\n- Repository: https://github.com/0xzerolight/anki_miner\n- Download: https://github.com/0xzerolight/anki_miner/releases/latest\n\n![Demo](https://raw.githubusercontent.com/0xzerolight/anki_miner/main/gifs/demo.gif)\n\nThe Chinese version below is AI-translated.\n\n---\n\nAnki Miner 是一款桌面软件，可以从各种媒体中自动制作 Anki 外语单词卡，支持 32 种语言。界面也支持简体中文。\n\n- 仓库：https://github.com/0xzerolight/anki_miner\n- 下载：https://github.com/0xzerolight/anki_miner/releases/latest\n",
+    "created_at": "2026-10-28T21:53:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12865"
+  },
+  {
     "id": 12864,
     "title": "docs(ru): add Russian translation of issue 416",
     "content": "Hi! This PR adds a Russian adaptation (an illustrated retelling) of issue 416 as `docs/ru/issue-416.md`, next to `docs/issue-416.md`.\n\n- Adapted by Aleksandr Davydenko (https://github.com/kotuke); the file says it is an adaptation, credits the original and keeps the CC 3.0 BY-NC-ND notice.\n- Non-commercial, with attribution; original links and images (cdn.beekka.com) are kept.\n- The text is also published at https://kotuke.ru/ruanyf/416.html\n\nPlease feel free to rename the file, move it, or close this PR if you prefer a different arrangement or object to it. Thank you for the weekly!\n\n你好！这个 PR 添加了第 416 期周刊的俄语改写版（带插图的转述），文件为 `docs/ru/issue-416.md`，与 `docs/issue-416.md` 对应。\n\n- 改写者：Aleksandr Davydenko（https://github.com/kotuke）；文件中已说明是改写版，注明原文出处，并保留 CC 3.0 署名-非商用-非衍生 声明。\n- 非商业用途并注明出处；保留原文链接和图片（cdn.beekka.com）。\n- 该文也发布在 https://kotuke.ru/ruanyf/416.html\n\n如果你希望调整文件名、目录，或者不同意此改写，请直接修改或关闭此 PR。感谢周刊！",
@@ -774,29 +798,5 @@
     "created_at": "2026-10-25T13:36:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12762"
-  },
-  {
-    "id": 12761,
-    "title": "【工具自荐】简历专家智能体",
-    "content": "从来没写过简历， 不知道简历从何入手？ 简历专家智能体， 通过聊天方式来引导用户写简历， 引导用户写出简历的亮点， 挖掘出项目的价值， 技能的优势。 \n\n功能介绍： https://haojianli.me/blog/resume-agent-co-creation\n功能入口： https://haojianli.me/resume/create-with-agent\n功能截屏：\n\n<img width=\"1391\" height=\"833\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/994020f4-d1c0-4768-85c3-152a7c10f036\" />\n\n<img width=\"1379\" height=\"776\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0aa45a5f-ce71-42ca-91d0-3a130c077f4d\" />\n\n<img width=\"1367\" height=\"834\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca1971ca-1990-4235-8af8-496bb44e1555\" />\n\n<img width=\"1701\" height=\"971\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/badd3e42-1284-40e2-b8d3-4af3167b9b43\" />\n\n<img width=\"1698\" height=\"966\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/68590244-ed21-4e21-a9ef-4b0de24e6857\" />",
-    "created_at": "2026-10-25T12:38:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12761"
-  },
-  {
-    "id": 12760,
-    "title": "【网站自荐】Cyberbara Motion：在国内用 Opus 5.5 生成视频，附案例与完整提示词",
-    "content": "![Cyberbara Motion：在国内用 Opus 5.5 生成视频](https://github.com/user-attachments/assets/2a24637a-6f3e-47a9-a837-aed784132cb5)\n\n做了一个浏览器里的动效视频创作工具 **Cyberbara Motion**，把 Opus 5.5 的视频创作流程和可复用的提示词案例放在一起。\n\n网站：**https://cyberbara.com/motion**\n\n最近用 Opus 5.5 制作的科普动画、产品介绍和 3D 动效多了起来。但想自己试一试，往往还要先处理 Claude Code 订阅和本地环境配置。我希望把这段上手流程缩短：在网页里选一个案例，复用提示词，换成自己的主题，再提交生成。\n\n## 可以用来做什么\n\n- 知识科普、概念讲解\n- SaaS 产品介绍和功能演示\n- 手绘定格、风格化动画\n- 3D 场景与动态歌词 MV\n\n页面提供案例预览和对应 Prompt，可以先看效果，再点击 **Reuse this prompt** 修改。创作流程中也加入了提示词优化，目标是减少无效尝试和 token 消耗。\n\n![Cyberbara Motion 页面](https://github.com/user-attachments/assets/3dfe7f6d-7ea6-44f9-987f-feca7019ae9e)\n\n## 三个案例与完整中文提示词\n\n以下是案例库中收录的社区作品节选，供大家参考画风和提示词写法。英文 Prompt 完整翻译为中文。\n\n### 1. 用不同画风解释递归\n\n社区作者：@emollick\n\n![多画风递归科普](https://github.com/user-attachments/assets/41d84a3b-0025-4def-a7a3-e56fe193176f)\n\n> 制作一支讲解递归的视频。每一次对递归的解释，都使用一种截然不同的视频风格。让视频体现自我引用，构思巧妙，节奏快速。\n\n### 2. SaaS 产品发布视频\n\n社区作者：@moritzkremb\n\n![SaaS 产品发布视频](https://github.com/user-attachments/assets/e24a2b9b-7874-447c-ba5f-e1b350c4c24a)\n\n> 我希望你制作一支非常专业的 SaaS 产品发布视频。去找一款 SaaS 产品，最好只选一款大家熟悉的，这样更容易辨认。选定后，务必从互联网上获取真实的素材、图片以及所有相关资料。把这些素材制作成那种典型的、剪辑非常专业的动态图形风格产品发布视频，就像人们在 Twitter 上发布新 SaaS 产品时制作的视频一样，展示产品的功能、收益以及所有这些方面。\n\n### 3. AI 数据中心的 3D 动画\n\n![AI 数据中心 3D 动画](https://github.com/user-attachments/assets/bccce161-3df3-49d8-8950-94a5ccc3ab01)\n\n> 让我看看一座 AI 数据中心内部都在发生些什么。\n\n## 怎么开始\n\n1. 打开 [Cyberbara Motion](https://cyberbara.com/motion)，选一个接近自己需求的案例。\n2. 点击 **Reuse this prompt**，修改主题、文案和参考素材。\n3. 提交生成，等待并预览作品。\n\n也欢迎反馈实际使用中遇到的问题，或者分享希望补充的案例类型。\n",
-    "created_at": "2026-10-25T12:15:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12760"
-  },
-  {
-    "id": 12759,
-    "title": "【工具自荐】【量化学院】面向零基础的交互式量化交易入门课",
-    "content": "<img width=\"1203\" height=\"811\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6f5960af-d8cb-4a1d-b41b-dbcfbc994b81\" />\n\n总有人问我量化交易到底是什么，大家总把它想象成某种高深莫测的黑魔法、天才数学模型或者电脑自动印钞机。其实底层逻辑真没那么玄乎：把一个直觉写成计算机能执行的死规则，老老实实用历史数据做回测验证，再做好仓位控制别把自己玩死，仅此而已。为了不每次都从头解释一遍，我干脆做了这个互动式小课。\n\n为了让任何人都能完全看懂，课程把核心概念全做成了可互动的沙盒实验：\n\n猜涨跌小游戏：连猜 10 天明天的走势，亲身体会单日涨跌基本就是抛硬币，量化赚的是几千次交易里 53% 胜率的微小优势。\n动量与均值回归回测：拖动滑块调均线和布林带参数，切换趋势市和震荡市，实时看“$100 变成多少”的净值曲线和买卖点，看懂震荡市里双均线是怎么来回打脸被割韭菜的。\n夏普比率与回撤对比：直观展示为什么一个赚 +120% 但中途腰斩 50% 的策略，在专业量化眼里远不如一个年化 +30% 但回撤只有 5% 的平稳策略。\n40 人凯利公式下注模拟：给每人一枚 55% 胜率的硬币，只要每次下注超过 20%（重仓），典型玩家最后全都会走向事实破产。\n过拟合陷阱实时演示：在一段 100% 纯随机的数据里自动扫 430 组参数，选出在“过去”暴赚的所谓“神级策略”，然后一揭晓“未来”数据，当场打回原形。\n10 行 Python 代码拆解：点击每行看逐行注释，重点解释为什么 .shift(1) 是防止“偷看未来数据”（未来函数 Bug）的铁律。\n\n市场走势基于 PRNG 伪随机数算法生成，无需任何后端或外部网络请求，完完全全在浏览器本地单页跑通。\n\n页面支持全量 EN / 中文 一键即时切换（包括图表标签、报错解释与交互反馈），词汇表支持中英双向搜索，进度自动存 localStorage。没有登录、没有付费、没有真实资金风险。\n\n在线体验：https://aero.oops.wtf/p/quant-academy",
-    "created_at": "2026-10-25T11:25:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12759"
   }
 ]
