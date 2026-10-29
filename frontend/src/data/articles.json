@@ -1,5 +1,85 @@
 [
   {
+    "id": 12878,
+    "title": "【工具自荐】IdeaPanner：从已经在赚钱的产品里找点子，上线前 60 秒体检网站（免费，Chrome 插件 + 网页）",
+    "content": "**项目链接**：https://ideapanner.resuhive.com\n\n**项目简介**\n\nIdeaPanner 是一个给独立开发者用的免费工具（网页 + Chrome 插件），解决两件事：做什么、做完了能不能上线。\n\n1. **找点子**：从「已经在赚钱的产品」倒推。TrustMRR 上列了很多用 Stripe 验证过收入的小产品，装上插件之后边刷边标记（跳过 / 先放着 / 深挖），AI 会解释这个产品是做什么的、怎么收钱，并把搜索量、关键词难度、CPC 和排在前面的竞品挂在它下面。动手写代码之前，需求先查过一遍。\n2. **上线前体检**：贴一个网址，60 秒左右给出 Launch Score。首页跑 39 条规则检查（SEO、隐私条款、移动端 viewport、页面体积等），规则查不了的交给 AI 看，最后只列出最该改的 3 件事，并附上可以直接粘进 Cursor / Claude Code 的修改提示词。\n\n另外有几个不用登录的小工具：SaaS 点子生成器（每个点子都附真实的 Reddit 帖子作来源）、Reddit 各创业板块的月度热帖和抱怨帖整理。\n\n插件和网页版都免费，插件不登录也能用。界面目前是英文。\n\n- Chrome 插件：https://chromewebstore.google.com/detail/ibjbnafobdhmofffmjfljclnofeibike\n- 网页版：https://ideapanner.resuhive.com\n\n![IdeaPanner](https://ideapanner.resuhive.com/opengraph-image)\n\n作者是一个白天上班、下班做独立产品的前端开发。\n",
+    "created_at": "2026-10-29T07:47:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12878"
+  },
+  {
+    "id": 12877,
+    "title": "【开源自荐】Plainsay：Mac 菜单栏语音输入工具，支持在本机运行 Whisper 和 Parakeet",
+    "content": "项目地址：https://github.com/conrader/plainsay\n官网：https://plainsay.app/\n\n说明：本次自荐由 Plainsay 开发者 Konrad 的助理代为提交，内容由 AI 辅助起草。\n\nPlainsay 是一款原生 macOS 菜单栏语音输入工具，采用 MIT 许可证开源。按住快捷键说话，松开后，识别出的文字会粘贴到你开始说话时使用的窗口。如果无法恢复该窗口，或无法确认粘贴目标，文字会保留在剪贴板中。\n\n- Local（本地）模式免费，在本机运行 Whisper（通过 WhisperKit）或 NVIDIA Parakeet（通过 FluidAudio），无需注册账号，模型下载完成后即可离线识别。\n- 使用 Swift 编写，安装包约 12 MB，需要搭载 Apple 芯片、运行 macOS 14 或更高版本的 Mac。模型需单独下载一次，大小视模型而定（约 150～632 MB）。\n- 隐私：Local 模式在本机处理音频。润色可关闭，也可使用本地端点或托管服务；使用托管润色服务时，文字会发送给所选服务商。可选的 Plainsay Cloud 识别服务每月 4 美元，使用时会上传音频。下载模型和检查更新仍需联网，更新检查可以关闭。\n- 仓库中有基准测试记录，包含每条参考文本、识别结果和耗时。\n\n安装：运行 `brew install --cask conrader/plainsay/plainsay`，或从官网下载已公证的 DMG 安装包。",
+    "created_at": "2026-10-29T07:37:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12877"
+  },
+  {
+    "id": 12876,
+    "title": "推荐开源：无名大叔系统优化工具箱（Go + Wails，15MB 免安装）",
+    "content": "3z9wOpt（无名大叔系统优化工具箱）—— 一款免安装的 Windows 系统优化清理工具。\n\nhttps://github.com/3z9w/3z9wopt\n\nGo + Wails v2 写的单文件绿色版，15MB，解压双击就跑，不需要安装。\n一款能清垃圾、优化系统、查硬件、管理启动项、查磁盘空间占用、分析蓝屏——等 10 个模块，\n外加 34 个系统原生小工具（SFC / DISM / 网络修复 / 引导修复等）的小巧好用的软件。\n\n几个我觉得值得一看的点：\n\n- 数据真读本机，读不到的字段界面上就写「读不到」，不编造。驱动管理里也不写\n  「有 N 个驱动可更新」那样需要逐家官网核实才能说的话。\n- 改了能拨回来：启动项禁用写的是系统 StartupApproved 审批位，而不是删注册表 Run 键值，\n  154 项优化每一条都能单独还原。\n- 磁盘占用直读 NTFS 的 MFT 索引，全盘几秒出结果，不是遍历目录。\n- 不联网、不留后台，GPLv3 开源。\n\n作者是做电脑远程维修的，这个项目今年从闭源转成了开源。\n目前只支持 Windows 10/11（依赖 WebView2），不支持 ARM64。\n\n（作者本人投稿）",
+    "created_at": "2026-10-29T07:26:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12876"
+  },
+  {
+    "id": 12875,
+    "title": "【开源自荐】基于 Cloudflare 的一站式邮箱服务平台",
+    "content": "\n💡**项目简介：**\n只需要一个域名，就可以创建多个不同的邮箱，类似各大邮箱平台，本项目支持部署到 Cloudflare Workers ，降低服务器成本，搭建自己的邮箱服务\n\n🔗 **仓库链接：**\n- 在线演示：https://skymail.ink\n- 仓库地址：https://github.com/maillab/cloud-mail\n\n💻 **界面预览：**\n<table>\n  <tr>\n    <td><img src=\"https://raw.githubusercontent.com/maillab/cloud-mail/main/doc/demo/demo.jpg\" /></td>\n    <td><img src=\"https://raw.githubusercontent.com/maillab/cloud-mail/main/doc/demo/demo1.jpg\" /></td>\n  </tr>\n  <tr>\n    <td><img src=\"https://raw.githubusercontent.com/maillab/cloud-mail/main/doc/demo/demo2.jpg\" /></td>\n    <td><img src=\"https://raw.githubusercontent.com/maillab/cloud-mail/main/doc/demo/demo3.jpg\" /></td>\n  </tr>\n</table>",
+    "created_at": "2026-10-29T07:26:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12875"
+  },
+  {
+    "id": 12874,
+    "title": "【开源自荐】小清：认得剪映、达芬奇和 AI 工具缓存的 Mac 清理工具，只清能重建的部分",
+    "content": "**项目链接**：https://github.com/chenmozhe008/qingo\n\n**项目简介**\n\n小清是一款面向影视创作者和开发者的 Mac 清理工具（SwiftUI，MIT）。它按工具识别剪映、达芬奇、Adobe 系列，以及 Cursor、Claude Code、Codex 等 60 余款剪辑、设计与 AI 工具的缓存，只清理能自动重建的部分，项目、素材和对话都不动。\n\n![小清：总览](https://raw.githubusercontent.com/chenmozhe008/qingo/master/docs/images/overview-light.png)\n\n**为什么值得推荐**\n\n- 通用清理软件按类别汇总，很难分清同一个工具目录里哪些是缓存、哪些是作品和对话；小清逐个工具识别，每一项写明名称、位置和可清理的原因\n- 点「快速扫描」，能清的已经默认选好，再点「清理」即完成；文件只移到废纸篓，清理后可一键撤销\n- 微信、企业微信只显示占用和在微信内的清理路径，不直接删除\n- 不联网、不上传数据，清理规则全部在代码里，可以自行查验\n\n需要 macOS 14+、Apple 芯片。\n",
+    "created_at": "2026-10-29T06:04:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12874"
+  },
+  {
+    "id": 12873,
+    "title": "【开源自荐】闪电全能下载：磁力、网页文件和 YouTube、B 站、抖音视频，在一个 Mac 窗口里下载",
+    "content": "**项目链接**：https://github.com/chenmozhe008/shandian-download\n\n**项目简介**\n\n闪电全能下载是一款原生 macOS 下载工具（SwiftUI，GPL-3.0）。磁力链接、种子、ed2k、HTTP 直链、网盘直链，以及 YouTube、B 站、抖音、小红书等平台的视频，都在同一个窗口里下载：复制链接后按 ⌘V 即开始，链接类型自动识别；配套浏览器扩展可以接管网页上的下载。\n\n![闪电全能下载：正在下载](https://raw.githubusercontent.com/chenmozhe008/shandian-download/master/docs/images/screenshot-downloading.png)\n\n**为什么值得推荐**\n\n- 视频默认下最高画质，优先 H.264 + AAC，剪映、Final Cut 可以直接导入；抖音、小红书视频不带平台水印\n- 磁力任务每次启动合并最新的公开 tracker、固定 BT 端口，公开片源实测 5–18 秒开始下载；没人分享的冷门资源可交给 PikPak 云盘离线\n- 电影可以边下边看；关窗后台继续下，退出再打开自动续传、不用重新校验\n- 下载内核是打了补丁的 Gopeed（补丁开源在仓库里），视频平台用 yt-dlp\n\n免费开源，不用注册，没有广告。需要 macOS 14+、Apple 芯片。\n",
+    "created_at": "2026-10-29T06:03:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12873"
+  },
+  {
+    "id": 12872,
+    "title": "【开源自荐】paper-bro 论文看不懂？一键变成能玩的互动课🧪",
+    "content": "谁懂啊😭 每次打开 arXiv 论文，第一页还没读完就想放弃……\n论文是新想法最早出现的地方，可它是写给专家看的，普通人真的很难啃。\n\n之前我在自己做的平台 AERO 上做了两门互动课（Quant Academy 和 Neuron Academy），没想到挺多人喜欢💡\n于是我干脆组了一支 AI agent 小分队，专门把论文变成互动课👇\n\n✨ paper-bro 是什么\n贴一个 arXiv 链接，它就给这篇论文做一门互动课：\n📖 6～10 节短课，写给好奇的小白，会初中数学就能跟上\n🧪 每节课都有一个能上手玩的小实验：拖滑块、按按钮，看着概念自己动起来\n✅ 最后有小测验，还有术语小词典，专业名词不再劝退\n\n🔍 不是生成完就算了\n上线前，每个实验都会在真实浏览器里实测一遍：每个滑块都拖，每个按钮都按\n还有一个独立的“审稿 agent”拿原论文逐节核对\n有问题就修，修不好的实验直接拿掉，绝不凑数上线\n\n🙌 一篇论文只有一门课\n第一个提交的人触发生成，几分钟就好，之后所有人直接看成品\n免费！不用注册！不用登录！\n\n💡 隐藏小技巧\n在任何 arXiv 论文页面，把地址栏里的 arxiv.org 换成 aero.oops.wtf/paper-bro，直接跳到这篇论文的课\n\n📌 第一门课：《Attention Is All You Need》\n就是 2017 年提出 Transformer 的那篇，今天的大模型基本都基于它\n\n想学哪篇论文，打开 [aero.oops.wtf/paper-bro](https://aero.oops.wtf/paper-bro) 贴链接就行\n（目前课程是英文的，但用词很简单，比直接啃论文友好太多）\n\nhttps://youtu.be/7egZZNXmRTQ\n\n视频里是 3 分钟完整演示🎬 代码在 GitHub，Rust 写的：[aeroxy/paper-bro](https://github.com/aeroxy/paper-bro)\n建议先收藏⭐ 下次读论文用得上\n",
+    "created_at": "2026-10-29T05:42:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12872"
+  },
+  {
+    "id": 12871,
+    "title": "【开源自荐】晒窗 ShaiWin：把常用窗口“挂”起来，随点随用，快速定位频繁使用的窗口",
+    "content": "**项目链接**：https://github.com/19y/ShaiWin\n\n**项目简介**\n\n晒窗（ShaiWin）是一个 Windows 桌面小工具，只做一件事：把你正在用的窗口从屏幕上“摘下来”，挂到屏幕顶端的一根晾衣绳上。抓住任意窗口的标题栏往屏幕顶端一拖，窗口就缩成一张卡片垂在绳子上；点一下卡片，窗口长回原来的大小和位置。桌面立刻变干净，但窗口没关、没最小化到任务栏，也没从 Alt+Tab 里消失。\n\n![ShaiWin 使用效果](https://raw.githubusercontent.com/19y/ShaiWin/main/assets/usage.png)\n\n**为什么值得推荐**\n\n日常工作中窗口一多，在任务栏和 Alt+Tab 里来回找窗口很打断节奏。ShaiWin 的做法足够轻：它不接管、不整理、不猜测，只挂你亲手拖上去的窗口，不隐藏任务栏按钮，不改 Alt+Tab，也不动系统的 Snap 布局。定位很克制，就是一个“手边窗口暂存架”。\n\n技术上也足够省心：单个 `exe`，绿色免安装，不需要 .NET / VC++ 运行库，不需要管理员权限，Windows 10 1809+ 或 Windows 11 x64 即可运行。项目用 Rust 构建，CI 通过 GitHub Actions 自动测试、打包、发 Release，已有 67 个单元测试覆盖。\n\n如果你也经常面对一堆窗口、又不想改变现有的窗口管理习惯，这个小工具值得一试。",
+    "created_at": "2026-10-29T03:49:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12871"
+  },
+  {
+    "id": 12870,
+    "title": "【资源自荐】中文 AI 资讯信源清单：174 个中英 AI 资讯源，CC0",
+    "content": "推荐一个资源：**中文 AI 资讯信源清单**\n\nhttps://github.com/biletian/awesome-ai-news-sources-zh\n\n收录 174 个中英文 AI 资讯源，分 10 类（官方博客、实验室、媒体、通讯、社区等），每个附链接和一句说明，CI 定期检查链接，CC0 协议可随意使用。\n\n说明：这是我们自己维护的清单，也是 AI 资讯产品知一刻（https://zhiyike.cn）每天在读的信源。\n",
+    "created_at": "2026-10-29T03:40:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12870"
+  },
+  {
+    "id": 12869,
+    "title": "【开源自荐】Alchemist Coder：Claude Code 与 Codex 的开源桌面应用",
+    "content": "Alchemist Coder 是我开发的开源（AGPL-3.0）桌面应用，通过 Agent Client Protocol（ACP）运行 Claude Code 和 Codex，并实时显示每个智能体和它派生的子智能体，支持 macOS、Windows 和 Linux。免费的社区版中，智能体只能使用本地模型（Ollama 或 LM Studio）。应用没有遥测，也不需要注册账号。\n\n- 项目地址：https://github.com/Alekla0126/alchemist-coder\n- 官网：https://coder.alekla.com\n",
+    "created_at": "2026-10-29T03:38:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12869"
+  },
+  {
     "id": 12867,
     "title": "【自荐】mb-to-kb：在浏览器里把照片、签名、PDF 压到指定 KB",
     "content": "https://mb-to-kb.com/\n\n免费在线工具，用于网申等场景：输入目标大小（如 50 KB），自动把照片压到不超过这个大小的最高画质；也能处理签名（按 px/cm 定尺寸）和 PDF。文件不上传，全部在浏览器本地完成，不用注册。\n\n核心算法开源：https://github.com/teasoup90/compress-to-kb",
@@ -62,14 +142,6 @@
     "created_at": "2026-10-28T16:31:46Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12860"
-  },
-  {
-    "id": 12859,
-    "title": "【自荐】MINIMAXH3：AI 视频生成网站与 API",
-    "content": "**先联系咨询：微信 Huaz0105 ｜QQ 1782919426 ｜邮箱 1782919426@qq.com**\n\n**购买与充值：https://68n.cn/NPokE**\n\n运营方自荐：独立第三方付费 AI 视频生成服务与 API，适合视频创作者和开发者。价格优惠，模型与渠道会变化，具体费用和可用情况请先联系咨询，以实时信息为准。\n\n**For international customers — contact us first:** Email 1782919426@qq.com | WeChat Huaz0105 | QQ 1782919426.\n\n**Purchase / top up:** https://68n.cn/NPokE\n\nIndependent third-party paid AI video generation and API service for creators and developers. Contact us for current model availability and pricing. Prices are in CNY/RMB. If you are outside China or have difficulty paying in RMB, please contact us before purchasing to discuss available payment options.",
-    "created_at": "2026-10-28T15:45:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12859"
   },
   {
     "id": 12858,
@@ -636,7 +708,9 @@
     "title": "【插件自荐】墨观 Inkstone 一套从 526 个中国传统颜色里长出来的代码配色",
     "content": "一套从 [526 个中国传统颜色](https://zhongguose.com/) 里长出来的代码配色。支持 VSCode, VSCodium, Trae 等主流编辑器；Kaku、Ghostty 终端以及 OpenCode。已经上架 VSCode marketplace 和 OpenVSX 市场\n\n网站：[https://inkstone.konata9.cc/zh/](https://inkstone.konata9.cc/zh/) 可以体验 6 种主题色。\n项目地址：[https://github.com/Konata9/inkstone](https://github.com/Konata9/inkstone)\n\n<img width=\"3360\" height=\"2436\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f3df127c-bfff-4e6f-86cc-7668a84b3ce8\" />",
     "created_at": "2026-10-26T09:03:25Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/12782"
   },
   {
@@ -726,77 +800,5 @@
     "created_at": "2026-10-25T18:30:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12771"
-  },
-  {
-    "id": 12770,
-    "title": "〖开源自荐〗OpenWorkBuddy：本地优先的 AI 办公 Agent，把一句需求做成可编辑文件",
-    "content": "项目地址：https://github.com/CatCatUncle/openworkbuddy\n\nOpenWorkBuddy 是一个开源的桌面 AI 办公 Agent。给它一句任务和相关材料，它会规划步骤、调用工具，并把结果交付成可继续编辑的 PPTX、DOCX、XLSX 或 HTML 文件。\n\n它面向希望让 AI 完成一整段办公流程，而不是只在聊天框里拿到一段文字的用户。项目支持按需配置 DeepSeek、Qwen、Doubao、Claude 或 Ollama 等模型，也支持 MCP；还可以调用本机的 Claude Code / Codex CLI 作为执行引擎。项目提供 macOS / Windows 使用方式，具体模型和能力取决于本机配置。\n\n项目特点：\n- 交付可打开、可编辑的办公文件\n- 模型可配置，可结合 MCP 与本机 CLI 工具扩展工作流\n- 开源项目，个人和非商用使用免费；商业使用按项目许可证要求处理\n\n仓库与安装说明：https://github.com/CatCatUncle/openworkbuddy",
-    "created_at": "2026-10-25T17:07:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12770"
-  },
-  {
-    "id": 12769,
-    "title": "推荐工具：JSON Formatter，纯浏览器本地格式化 / 压缩 / 校验 / 修复",
-    "content": "大家好，自荐一个免费在线 JSON 工具：\n\n- 在线地址：https://echtcosplay.de/tools/json-formatter/\n\n无需注册，无广告。粘贴 JSON 即可使用；格式化、压缩、校验和修复都在浏览器本地完成，内容不上传服务器。\n\n### 主要功能\n- **格式化 / 压缩 / 校验**：美化缩进、一键压缩、定位解析错误\n- **修复常见坏 JSON**：缺引号、单引号、尾逗号、未闭合括号、注释、JSONP 包装等\n- **排序键 / 清理空值**：递归按键名字母序排序；去掉空字符串、空对象、空数组和 null\n- **转义 / 反转义**：把 JSON 转成可嵌入字符串，或还原回来\n- **大文件**：计算放在 Web Worker 里，界面不卡死\n\n另有配套 Chrome 扩展（同名 JSON Formatter by EchtCosplay），支持工具栏弹窗、侧边栏，以及选中网页文字右键「Send to JSON Formatter」。\n\n声明：我是这个工具的作者（EchtCosplay）。欢迎试用，也欢迎提建议。",
-    "created_at": "2026-10-25T17:00:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12769"
-  },
-  {
-    "id": 12768,
-    "title": "【工具自荐】【AESTHETICA-10】一个永远只打 10 分的 AI 颜值评分（恶搞）",
-    "content": "<img width=\"1166\" height=\"1659\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/780ff837-1d58-47fa-897d-74c4d0503c42\" />\n\n2017 年我自己做过一个 AI 颜值打分应用。快十年过去了，又看见了类似的网站：上传一张自拍，给你算出一个精确到小数点后两位的分数，比如 6.2/10，再顺手卖你一套“变美方案”。自己亲手做过，我的结论是：这东西从根上就是扯淡。分数主要量的是你的相机，光线、焦距、角度、距离一变，同一张脸的分数就跟着变，有的网站干脆建议你多传几张取平均。还有研究发现，离脸 30 厘米拍的自拍，会让鼻翼看起来比 1.5 米外拍的宽约 30%（JAMA Facial Plastic Surgery，2018）。精确到两位小数只是看起来像科学，本质是带进度条的星座运势。\n\n所以这次我做了一个反过来的版本：仪器感一样不少，只是结论比较诚实：你本来就是 10 分。\n\n真·人脸识别：在浏览器里用 MediaPipe 人脸关键点模型定位 478 个面部关键点，把“黄金比例”网格、颧骨、下颌角的标注精准贴到你脸上，然后全部无视。识别不到人脸就不画网格，直接显示“NO FACE IN FRAME · STILL 10/10”。\n\n核心评分算法只有一行：`return 10.00;`\n\n5 位专家人设：严谨的颅面物理学博士、巴黎高定选角导演、15 世纪佛罗伦萨雕塑家、算力过载的神经网络集群、无条件夸夸的吹捧科学家。每位都有自己的一套夸法、六维评分和一张煞有介事的人体测量数据表。\n\n官方认证 PDF：一键导出 A4 证书，带你的照片、病例编号、六维评分、专家签名和印章，可用于各种争论、群聊和照镜子。\n\n<img width=\"531\" height=\"756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d0d88b11-be78-4fd5-9542-20d2a7273cc3\" />\n\n多种测试对象：支持上传、拖拽、摄像头实时追踪（拍下一帧再打分），也可以直接用内置样本：凌晨 5 点枕头印自拍、死亡仰拍角度、车管所证件照，以及一颗土豆。\n\n隐私方面，照片全程不出浏览器，人脸识别在本地运行，只从 CDN 下载模型文件。没有后端、不上传、不存储，没有登录也没有付费。界面目前是英文。\n\n在线体验：https://aero.oops.wtf/p/aesthetica-10",
-    "created_at": "2026-10-25T16:54:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12768"
-  },
-  {
-    "id": 12767,
-    "title": "自荐：Twinkle Model —— OpenAI 兼容的 AI API 中转站",
-    "content": "**名称**：Twinkle Model\n**网址**：https://big-model.smart-agi.com\n**一句话**：基于开源 sub2api 搭建的 OpenAI 兼容 AI API 中转站，渠道为官方订阅，一个 Key 调用 GPT、Claude、Grok、GLM、DeepSeek、Kimi，以及 gpt-image、Seedance 等生图/视频模型，按倍率计费，支付宝 ¥1 起充，可开发票。\n**适合**：在国内用 Claude Code、Codex、Cherry Studio 等工具，需要稳定且便宜的 API 的开发者。\n（本人为站点运营者，自荐。）",
-    "created_at": "2026-10-25T15:50:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12767"
-  },
-  {
-    "id": 12766,
-    "title": "【开源自荐】FactoryFlow（交有数）：小工厂的订单、分批送货与对账工具",
-    "content": "我平时做制造贸易相关业务，要接订单、安排送货、月底对账。借助 AI 编程工具，我把这些流程做成了 FactoryFlow（交有数），现以 MIT 许可证开源，提供 Windows 开发者预览版。\n\n[GitHub 源码、说明和演示](https://github.com/Doublzzz/FactoryFlow) · [Windows 预览版下载](https://github.com/Doublzzz/FactoryFlow/releases/tag/v0.1.0-preview.1)\n\n目前围绕三个环节：\n\n- **录单**：可以从第一张订单开始，客户和物料资料逐步整理；图片、PDF 的本地 OCR 结果需要人工核对后确认。\n- **分批送货**：按订单行记录已交、待交和各自单位。送货录错可以作废，恢复待交数量并保留原记录。\n- **对账**：记录客户反馈、部分认可、本期正式结算和跨月承接，保留历史凭证。\n\n数据保存在本机，核心业务与本地 OCR 可以离线运行。使用 React / TypeScript、Python / FastAPI 和 PostgreSQL；数量与金额采用精确小数，业务动作保留审计记录。\n\n![分批送货后的待交清单](https://raw.githubusercontent.com/Doublzzz/FactoryFlow/main/docs/images/readme/zh-03-open-lines.png)\n\n*合成数据示例：120 件已交 30 件、剩 90 件；35.5 千克已交 10.25 千克、剩 25.25 千克。*\n\n当前公开包为 **v0.1.0-preview.1**，仅支持 Windows 10/11 x64、单机及人民币业务，尚不包含库存、付款、多币种和海外税务。代码、测试及文档有 AI 编程工具深度参与，我负责需求、业务规则和流程核对。\n\n公开包完成过合成数据流程及备份恢复检查，仍不等于长期生产验证；OCR 可能漏行或识别错误。请在独立试用目录使用合成样例，不要放入唯一一份真实业务数据，预览版之间暂不保证直接沿用旧数据。\n\n欢迎做过跟单、送货、对账或业务系统的朋友试用，指出缺少的业务情况和不顺手的操作。",
-    "created_at": "2026-10-25T15:37:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12766"
-  },
-  {
-    "id": 12765,
-    "title": "【开源自荐】Weblink：支持一对多的低延迟 Windows 远程桌面，浏览器即可连接",
-    "content": "Weblink 是我开发的开源 Windows 远程桌面工具，重点是低延迟交互和一对多桌面共享。受控电脑运行 Windows 客户端，其他设备通过浏览器加入同一房间即可观看桌面，获得授权后还能操作鼠标和键盘。\n\n主要特点：\n\n- **浏览器即用**：手机或电脑上的控制端无需注册账号，也无需安装客户端。\n- **一对多共享**：多个设备可以同时观看同一个 Windows 桌面，适合远程演示和协作。\n- **低延迟设计**：采用 Windows 原生屏幕采集、受支持的硬件编码和 WebRTC；兼容的观看端可复用编码器。实际延迟取决于硬件与网络条件。\n- **配套功能**：支持文件传输、剪贴板共享、聊天及语音视频通话。\n\n项目采用 MIT 协议，支持自行部署。连接需要信令服务，无法直连时可通过 TURN 中继。\n\n- 官网：https://www.webl.ink/\n- 源码：https://github.com/99percentpeople/weblink\n\n![Weblink 远程桌面界面演示](https://www.webl.ink/screenshots/dark/remote-desktop.webp)",
-    "created_at": "2026-10-25T14:35:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12765"
-  },
-  {
-    "id": 12764,
-    "title": "【开源自荐】WHartTest：AI 驱动的测试自动化平台，上传需求文档自动生成功能/接口/UI 测试用例",
-    "content": "测试同学大概都熟悉这个场景：需求文档一到手，就得人肉把 PRD 一条条翻译成用例表；好不容易写完，接口/UI 自动化脚本又因为一次改版全部失效。我们被这件事折磨了太多年，干脆把整条链路 AI 化做成了平台，今天自荐给大家——WHartTest。\n\n它是一个可自部署的 AI 测试自动化平台（协议为自定义，见仓库 LICENSE），基于 Django + Vue 前后端分离，GitHub 目前 1.1k star。\n\n它主要做三件事：\n\n- 功能用例：上传需求文档（支持在线编辑），AI 结合知识库上下文生成完整用例（前置/步骤/预期），列表 + 思维导图双视图管理\n- 接口自动化：根据接口定义自动生成请求步骤、断言、变量提取与前后置脚本；失败后 AI 读日志和响应定位问题，给出修复方案\n- UI 自动化：AI 生成页面操作步骤与元素定位，执行时采集日志/截图/视频/Trace，定位失效自动给修复建议\n\n底座是 LangChain/LangGraph 多轮编排 + RAG 知识库（文档分块/向量化/重排）+ MCP 工具调用，另有一个 Skills 技能库，可以装 Playwright 技能让 AI 真正操作浏览器。\n\n链接：\n- GitHub：https://github.com/MGdaasLab/WHartTest\n- 官网：https://wharttest.mgdaas.com/\n- 文档：https://docs.wharttest.mgdaas.com/\n\n欢迎测试同行拍砖，也想听听大家在\"AI 生成用例\"上的落地体验。",
-    "created_at": "2026-10-25T14:35:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12764"
-  },
-  {
-    "id": 12763,
-    "title": "【工具自荐】GitHubPlay：精选 GitHub 开源项目排行榜、AI 工具与多平台客户端下载目录",
-    "content": "## 推荐项目\n\n**项目名称**：GitHubPlay\n**官网地址**：[https://githubplay.com](https://githubplay.com)\n**开源主页**：[https://github.com/coffeefreehans/githubplay](https://github.com/coffeefreehans/githubplay)\n\n---\n\n## 项目简介\n\n平时经常在 GitHub 上找好玩的开源桌面端、开发工具与前沿 AI 项目，但经常遇到几个痛点：\n1. **找安装包繁琐**：很多优质开源项目没有独立官网，下载时需要点进 Releases 在一堆 source code.zip 和各类架构二进制包中捉迷藏；\n2. **官方榜单刷星/题库多**：GitHub 官方 Trending 经常被面试八股文、刷星题库霸榜，很难真正发现高可用的实际软件；\n3. **架构与平台不清晰**：确认是否支持 Mac Apple Silicon 还是 Windows ARM 经常需要费时翻阅 README。\n\n因此开发了 **[GitHubPlay](https://githubplay.com)**，致力于做一个专注“应用与客户端分发视角”的开源软件发现平台。\n\n---\n\n## 核心功能\n\n- **多平台安装包一键直达**：自动识别分析 Releases 中的多架构安装包（macOS DMG/PKG、Windows EXE/MSI、Linux AppImage/deb），免去繁琐翻找；\n- **多维度真实增长榜**：提供 24 小时、7 天、30 天星标增长排行榜，支持按客户端和 AI 工具分类筛选；\n- **深度分类目录**：整理了 AI 大模型、开发辅助、效率工具、音视频处理等 30 多个垂直领域；\n- **开源作者专属徽章**：开源作者可以直接取用类似动态星标徽章嵌入自己的 README 中；\n- **智能语言自适应**：全站基于 Next.js App Router 服务端直出（SSR），智能自适应浏览器语言偏好（中/英双语）。\n\n欢迎阮老师与周刊读者试用交流与批评指正！\n",
-    "created_at": "2026-10-25T13:56:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12763"
-  },
-  {
-    "id": 12762,
-    "title": "【工具推荐】一款可以去除本地视频字幕和文字的工作，也支持图片水印擦除以及几十个图片视频工具-大象去字幕",
-    "content": "**大象去字幕**\n\n工具简介：一款可以自动擦除视频硬字幕、水印、台标的免费工具，本地处理不上传，保护隐私。\n地址：(https://www.easyremove.top/)\n\n使用场景：\n- 下载的影视、教程视频带硬字幕，想干净地二次剪辑或发自己号\n- 录屏、直播回放里有台标或水印，需要擦掉再用\n- 做视频素材时字幕挡到了重点画面，想还原干净画面\n- AI生成的视频带了自己不想要的问题\n\n特点：\n- 自动识别字幕区域，不用手动框选\n- 智能填充背景，静止画面和动态画面都能处理\n- 支持常见视频格式，处理完直接导出\n- 操作简单，拖进去点一下就行，不用学\n- 对电脑配置要求不高，普通笔记本也能跑\n\n放几张工具界面图片\n\n<img width=\"3836\" height=\"1638\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d63ff1d4-c90f-462f-822a-0abac0c012aa\" />\n\n<img width=\"3824\" height=\"1516\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/7e3fe72f-2aee-4899-9700-6766d4c2aa68\" />",
-    "created_at": "2026-10-25T13:36:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12762"
   }
 ]
