@@ -1,5 +1,37 @@
 [
   {
+    "id": 12925,
+    "title": "【开发者自荐】Yenpo：和 AI 一起写项目时，读懂它改了哪些代码（macOS）",
+    "content": "Yenpo 是一个 macOS 桌面应用，用来在和 Claude Code、Codex 这类 agent 一起写项目时，读懂和审查 AI 写的代码，跟上它的思路。它不接入 Claude Code、Codex、Cursor 或 GitHub，看的是你本地仓库里的改动。\n\n- 直接读取本地的 git 仓库，按改动列出 AI 改过的文件，逐个看行内 diff\n- 内置 AI Reader，默认只读，可以对着代码问\"这段为什么这么改\"；用你自己的模型服务商\n- 自带终端和编辑器，看完可以顺手改\n- 不需要注册账号，应用内没有遥测\n- 支持 macOS 14+，界面有 10 种语言\n\n网址：https://yenpo.app/zh/?utm_source=ruanyf\n20 秒演示：https://yenpo.app/media/demo/yenpo-demo.gif\n\n这是我的个人项目，欢迎试用和提意见。\n",
+    "created_at": "2026-10-30T16:11:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12925"
+  },
+  {
+    "id": 12924,
+    "title": "【开源自荐】Engramory：AI 编程助手的 Markdown 长期记忆，附 DeepSeek Harness 插件",
+    "content": "Engramory 是一套给 AI 编程助手用的长期记忆规范，MIT 开源。记忆就是一个文件夹里的小 Markdown 文件：一条事实一个文件，外加一个每次会话都会加载的索引 `MEMORY.md`。没有数据库、向量库或后台服务，记了什么随时能用编辑器打开看、改、删。\n\n- 项目地址：https://github.com/tinqiao-oss/engramory\n- DeepSeek Harness 插件：`dsh plugin --profile <名字> add dsh-engramory`（npm 包 `dsh-engramory`）\n\n**为什么做这个**\n\nAI 助手每开一个新会话，就忘了上次你纠正过它什么、这个项目有哪些坑。把聊天记录全自动存下来，又会越存越乱、越存越占上下文。Engramory 的做法是只存值得长期记住的事实：你的偏好、你给过的纠正、项目约定、外部资源在哪。写之前先查重，过时了就改或删，索引始终保持很小。\n\n**主要功能**\n\n- 四类记忆：用户、反馈、项目、参考。反馈和项目类要写清「为什么」和「怎么用」，下次遇到边界情况才知道怎么判断。\n- 索引有上限，默认 200 行 / 25KB。在 Claude Code（hook）和 DeepSeek Harness（插件）上，会在写入前拦下让超限索引继续变大的写入，缩小它的改写一律放行；其他宿主靠规则加校验脚本。\n- DeepSeek Harness 插件：每一步都把索引放进上下文，不用等模型自己去读文件；左侧栏有一个只读的「记忆」页，按类型列出笔记，点名字用默认程序打开；插件页里有设置页。记忆语言跟随 dsh，中文界面下笔记名、标题、标签都是中文。\n- 同一个记忆库可以一个宿主写、其他宿主只读。仓库里有 Claude Code、Codex、OpenClaw、Kiro、DeepSeek Harness 的安装说明。\n- 实验性的「大肥鱼模式」：给陪聊人设记下它和你一起经历的事、你们的约定。\n\n**局限**\n\n它是规则和纪律，不是数据库：记什么、记得好不好，取决于模型照不照做。写入前的拦截只在 Claude Code 和 DeepSeek Harness 上有，而且 shell 命令或外部编辑器的写入都能绕过。适合个人、本地、小规模的记忆，不适合团队共享或大量检索。\n",
+    "created_at": "2026-10-30T15:29:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12924"
+  },
+  {
+    "id": 12923,
+    "title": "【开源自荐】NobodyWho：在任何设备上离线运行大模型的推理引擎，新增决策模型",
+    "content": "NobodyWho 是一个开源（EUPL-1.2）的本地大模型推理引擎，核心用 Rust 编写，底层基于 llama.cpp。它提供 Python、Swift、Kotlin、Flutter、React Native 和 Godot 六种语言绑定，可以在桌面端（Linux / macOS / Windows）、Android 和 iOS 上离线运行模型，不需要 API Key。我是这个项目的贡献者。\n\n- 源码：https://github.com/nobodywho-ooo/nobodywho\n- 文档：https://docs.nobodywho.ooo\n\n**主要功能**\n\n- 运行 GGUF 格式的对话模型（Gemma、Qwen、Mistral 等），支持 Vulkan / Metal GPU 加速\n- 类型安全的工具调用：根据函数签名自动生成约束语法，不需要手写 schema\n- 多模态输入（图片、音频）\n- 语音转文字（Whisper）、文字转语音（Kokoro 等）、语音活动检测（Silero）\n- 直接从 Hugging Face 下载模型\n\n**本周新增：决策模型**\n\n10 月 29 日发布的版本加入了 Laya 决策模型（Apache-2.0，Q8_0 GGUF 文件 449 MB）。决策模型不生成文本：你给它一段输入和一组事先写好的选项，它返回每个选项的概率。支持三种问题：单选（choice）、是/否概率（noul）和分级评分（score）。适合在本地做分类、路由、内容审核这类判断，不需要再解析大模型的输出。\n\n```python\nfrom nobodywho import Decision, Model\n\nmodel = Model(model_path=\"hf://ggml-org/Laya-GGUF/Laya-Q8_0.gguf\")\ndecisions = Decision(model=model, n_ctx=1024)\n\nresult = decisions.decide(\n    state={\"message\": \"My order hasn't moved in three days and I need it tomorrow.\"},\n    questions={\"urgent\": {\"type\": \"noul\", \"instructions\": \"Does this ticket need urgent handling?\"}},\n)\nprint(result[\"answers\"][\"urgent\"][\"noul\"])  # 回答“是”的概率\n```\n\n![NobodyWho](https://github.com/nobodywho-ooo/nobodywho/raw/main/assets/intro.webp)\n\n**局限**\n\n- Laya 处理中文输入的效果还没有验证过，用于中文场景前建议先在自己的数据上测试。\n- 移动端对内存有要求：Android 建议 6 GB 内存以上，模型最好小于 1 GB。\n- 许可证是 EUPL-1.2，不是 MIT。\n",
+    "created_at": "2026-10-30T12:24:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12923"
+  },
+  {
+    "id": 12922,
+    "title": "【开源自荐】Arcade：在 Claude Code 里用任务看板、笔记和团队聊天，等 agent 时还能玩游戏",
+    "content": "项目地址：https://github.com/ArbakovMaxim/agent-arcade\n中文说明：https://github.com/ArbakovMaxim/agent-arcade/blob/HEAD/README.zh.md\n\nArcade 是一个免费开源（AGPL-3.0）的 Claude Code 插件，基于 Claude Code 的 Mods（function hooks），把 Claude Code 变成小小的工作台：\n\n- 项目任务看板：在任意卡片上点“交给 Claude”，Claude 勾掉完成的项，并把结果写回卡片；\n- 和 Claude 一起记的笔记本，所有打开的会话共享；\n- 小团队的共享看板和聊天（可选 GitHub 登录）；\n- 等待时：agent 工作 10 秒后，输入框上方出现“玩一会儿吗？”（可以推迟或关闭）。NES 游戏直接在 Claude Code 里玩；其他游戏、公共领域的书、和 agent 正在做的主题相关的文章在浏览器里打开；\n- Claude 完成或请求权限时，游戏上方弹出横幅，一键回到 agent。\n\n支持终端、VS Code 和 Claude Desktop（Windows、macOS、Linux），需要 Claude Code 2.1.275+。\n\n安装：\nclaude plugin marketplace add ArbakovMaxim/agent-arcade\nclaude plugin install arcade@agent-arcade\n\n30 秒演示视频：https://github.com/user-attachments/assets/1c21bf5c-f5c7-4671-a453-bdcf6aa4b287\n\nBeta 版，无广告、无统计。中文是借助翻译写的，如有不通顺请见谅。",
+    "created_at": "2026-10-30T12:21:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12922"
+  },
+  {
     "id": 12921,
     "title": "【网站自荐】VAQIRA：独立开发者真实收入排行榜，每个数字都附创始人原文出处",
     "content": "网址：https://vaqira.com/\n\nVAQIRA 收录独立开发者和小团队产品的收入，按最近 30 天收入排名，每天更新一期。\n\n和常见收入榜的区别：每个数字都必须有创始人或官方公开的原文出处（推文、博客、访谈、公开看板），页面上直接链到原文；只按原文口径记录，不估算，也不把年收入除以 12 换算成月收入。找不到出处的产品宁可不收。\n\n每个产品有一页收入时间线、获客渠道和出处列表。全部数据按 CC BY 4.0 开放，可直接下载 JSON 和 CSV：https://vaqira.com/data.json\n\n收录规则：https://vaqira.com/method/",
@@ -782,37 +814,5 @@
     "created_at": "2026-10-27T10:11:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12823"
-  },
-  {
-    "id": 12822,
-    "title": "【自荐】Paxa：泰语、英语、中文语音合成 API，附泰文票据 OCR 和中译泰",
-    "content": "自荐一个我们做的语音和语言 API：**Paxa**，来自曼谷的 Paxa Labs。\n\n网站：https://paxalabs.com/zh\n文档：https://paxalabs.com/docs\n\n我们主要做泰语，同时支持英语和中文，可能对进入泰国市场的中国团队有点用：\n\n- **语音合成**：50 个音色，每个音色都能说泰语、英语和中文，一句话里混着说也可以。可以在文本里写语气提示（比如 `[whispering]`），支持流式输出和逐词时间戳。\n- **泰文 OCR**：把泰文收据、税务发票和表格转成 Markdown，每次请求最多 50 页。\n- **翻译成泰语**：支持 14 种源语言，包括中文和英文。\n- **语音识别**：目前是研究预览版。\n\n一个用法：同一份广播稿，生成泰语和中文两个版本，用在酒店、商场或交通场所（[示例页面](https://paxalabs.com/zh/thai-chinese)）。\n\n使用条件：新账户有 100 个免费积分，不用绑卡；之后按量付费，语音合成每 100 万字符 10 美元。这是在线服务，没有开源。\n\n利益相关：我是 Paxa Labs 的联合创始人，本帖为自荐。欢迎试用，也欢迎提意见。\n",
-    "created_at": "2026-10-27T10:01:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12822"
-  },
-  {
-    "id": 12821,
-    "title": "【网站自荐】中国昼夜地图：在2D地图和3D地球上看中国昼夜变化",
-    "content": " ### 阮老师好，自荐一个我开发的网站：中国昼夜地图。\n\n - 网址：https://daylight.gdufe888.top/sun/\n - 演示视频：https://www.bilibili.com/video/BV1ojpJ6kE5W/\n\n\n  ### 介绍：\n 中国东西跨度很大，但我们用的都是同一个北京时间。那么**夏至黑龙江可能2点多天就亮了**，**晚上新疆10点多天才黑**。这是一个非常有趣的地理知识。这个网站把中国一天中的昼夜变化做成了可以播放和拖动的地图。\n\n 网站支持2D、3D两种模式。3D可以转动和缩放自然地球，从立体视角观察中国及全球受光情况，也支持两个日期同步播放，方便比较不同季节的\n 白昼长短。\n\n 时间轴覆盖00:00至24:00，播放经过昼夜交界时会自动放慢。网站还提供二十四节气定位、冬夏对比、两天对比、全屏观察和手机布局。天文计算在浏览器中完成，完全免费，完全不需要注册账号或申请API Key。\n\n 我是开发者本人，本站为自荐。\n\n<img width=\"1919\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9a1f8fcf-9b1a-4cec-b5e7-964c744bf509\" />\n\n<img width=\"1920\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/df88994f-580c-4f7d-9a3e-16a96ce508e5\" />",
-    "created_at": "2026-10-27T08:04:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12821"
-  },
-  {
-    "id": 12820,
-    "title": "【网站自荐】Wave Radar：美股、A股、港股的缠论 + 波浪全市场扫描",
-    "content": "阮老师好，自荐一个自己做的网站：**Wave Radar**\n\n- 网址：https://waveradar.us\n- 每日复盘（无需注册）：https://waveradar.us/zh/daily\n\n**一句话**：每天收盘后对美股、A股、港股全市场扫描 75 个技术信号（包括缠论买卖点和斐波那契等浪扩展），并给出每个信号在这只股票上的历史胜率。\n\n**介绍**：缠论（笔、线段、中枢、三类买卖点）和波浪扩展平时都是一张图一张图手画的。Wave Radar 在服务端把全市场的结构和 75 个技术信号算好，每个信号都附上它在该股票上的历史胜率，图上直接显示，再把期权 Gamma 敞口、合理估值区间、13F 机构持仓和内部人交易放在旁边一起看。另有 AI 对宏观数据和突发新闻的分析；对讨论最热的股票，用一个综合模型把技术面、新闻、内部人交易、Gamma、估值、财报、情绪和资金流放在一起，估计接下来几个交易日的走势。还从几个交易群的匿名聊天里统计每日“社区恐惧贪婪指数”，每天的复盘页面公开可看。有永久免费账号；只做研究工具，不荐股。\n\n![Wave Radar](https://waveradar.us/preview.png)\n\n我是开发者本人，本帖为自荐。",
-    "created_at": "2026-10-27T07:57:33Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12820"
-  },
-  {
-    "id": 12819,
-    "title": "【资源自荐】海外 AI 工具中文周报：每周 10 个海外 AI 新工具，附出处链接",
-    "content": "作者自荐，推荐一个开源仓库。\n\n「海外 AI 工具中文周报」每期挑 10 个海外新出的 AI 工具，用中文写清楚：它做什么、要不要钱、国内能不能直接用。每条都附出处链接；没实测的标“未实测”，查不到的写“未确认”。目前仓库里有 2 期，免费阅读。\n\n仓库里还有 screenshot-to-code（截图生成网页代码，MIT 协议，作者 Abi Raja）的非官方中文教程和 FAQ，讲怎么接 Kimi、硅基流动这类 OpenAI 兼容接口。我不是 screenshot-to-code 的作者。\n\ngithub: https://github.com/yuf5761-arch/AIToolWeekly\n\n声明：内容由 AI 制作，经过人工核对。\n\n谢谢阮老师\n",
-    "created_at": "2026-10-27T07:43:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12819"
   }
 ]
