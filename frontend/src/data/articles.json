@@ -1,5 +1,61 @@
 [
   {
+    "id": 12908,
+    "title": "【工具自荐】Tinydesk AI：用照片让你和朋友加入《Outstanding》Tiny Desk 片段视频",
+    "content": "Tinydesk AI 简介\n[Tinydesk AI](https://tinydesk-ai.co/) 是一个浏览器端视频生成工具：上传照片，就能把自己和朋友放进《Outstanding》Tiny Desk 演出片段，生成适合分享到短视频平台的竖屏视频。\n\nTinydesk AI 的主要功能\n在 [Tiny Desk AI Generator](https://tinydesk-ai.co/) 中，点击主唱、萨克斯、键盘手或两位和声歌手的位置，分别上传一张对应人物的照片。主唱照片必填，其余位置可留空，保留原片中的表演者；最多可替换五人。\n\n生成时可以选择 4 秒、10 秒或 19 秒的版本，完成后下载带有原片声音的 MP4。新账户提供一次 4 秒版本的免费试用。\n\nTinydesk AI 的核心特性\n[AI Tiny Desk](https://tinydesk-ai.co/) 保留原片的镜头切换、节奏和声音，只替换画面中的人物。无需逐镜头剪辑，适合制作朋友间分享的趣味短片。上传前请取得照片中成年人的同意；发布时也应标注视频由 AI 生成。\n\n项目地址：[https://tinydesk-ai.co/](https://tinydesk-ai.co/)",
+    "created_at": "2026-10-30T04:27:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12908"
+  },
+  {
+    "id": 12907,
+    "title": "【开源自荐】我把个人网站，建成了3D我的世界🔨",
+    "content": "演示：https://terryhu.cn\n仓库：https://github.com/terryHu7/homecraft\n\n过去我是个喜欢折腾网站的人，但模板换了又换，总感觉被什么东西困住了。\n\n受我的世界、黑客帝国和元宇宙的启发，借助 AI，我把个人网站从二维网页建成了三维世界。\n\n这个世界包罗万象，可以自由移动，里面建了篮球场，健身房，工作台，甚至还有昼夜交替和天气系统。\n\n对于二维网页也完全可以内嵌进来，例如按 F 查看。而且得益于方块风的性能开销小，手机也能轻松访问。\n\n项目初始模板一行命令启动：python3 tools/serve.py\n完整实现也已开源：examples/terry-home\n\n![image](https://github.com/user-attachments/assets/48c029f9-6d56-4816-98e5-f971aab6d9c5)",
+    "created_at": "2026-10-30T04:17:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12907"
+  },
+  {
+    "id": 12906,
+    "title": "【开源自荐】honestly：AI 编程助手说「测试通过、已修复、已部署」时，核对它有没有真的做过，没有就当场拦下回复（Claude Code / Codex / Cursor / Gemini CLI）",
+    "content": "用 Claude Code、Codex 写代码的人多半遇到过：助手改完代码，写一句\"修好了，12 个测试全部通过\"，合并后 CI 红了，一看改完之后根本没跑测试。多数时候不是它撒谎，是\"过期\"：十分钟前测试确实通过，它又改了一遍，然后把旧结果当成新结果报上来。\n\nhonestly 是一个 hook：助手每写完一条回复，它读这一轮的会话记录，找出\"测试通过 / 修好了 / 已推送 / 已发送 / 已部署 / 已保存 / 查过了\"等 14 类结论，看最后一次改代码之后有没有对应的命令，并读命令的输出而不是退出码（`pytest | tail` 的退出码是 tail 的，测试全挂也是 0）。没有依据就拦下回复，要求它先跑再说；下一条回复会写明为什么被拦、补跑的结果是什么。\n\n项目地址：https://github.com/kennywu411-dev/honestly\n\n主要特点：\n\n- 支持 Claude Code、Codex、Cursor、Gemini CLI；三条命令装好：`pip install honestly && honestly guard install && honestly doctor`\n- 确定性规则，纯 Python 标准库，不调模型、不要 API key、不上传任何东西\n- 看不见的一律记\"无法核实\"（远程 CI、浏览器操作、用户自己的终端），不冤枉；每轮规则改动后都做两遍标注，第二遍盲标，最后一轮 12/12 和 11/11\n- 第二个 hook 在命令执行前拦没加 `pipefail` 的 `pytest | tail` 这类管道，失败会显示得像通过\n- `honestly audit` 把本机所有历史会话过一遍，按助手、模型、项目、周给一个数；作者自己 122 个会话，339 条结论里 17 条背后什么都没跑\n- 误拦一条命令解决：`honestly ignore` 当场消掉，`honestly feedback` 生成可以直接贴进 issue 的报告\n\n![honestly 拦下一条没跑测试的\"测试通过\"](https://raw.githubusercontent.com/kennywu411-dev/honestly/main/assets/demo.zh.gif)\n\n![honestly audit 在作者会话上的结果](https://raw.githubusercontent.com/kennywu411-dev/honestly/main/assets/hero.png)\n\n规则先按作者自己的技术栈（Python、JS）调的，其他栈的误拦在预期之内，欢迎提 issue。MIT 许可，中英文 README 都有。\n",
+    "created_at": "2026-10-30T03:45:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12906"
+  },
+  {
+    "id": 12905,
+    "title": "【工具自荐】沉浸式AI提问：划词提问，读AI长对话再也不用上下来回翻",
+    "content": "网站地址：\n[https://promptos.cn/](url)\n\n项目简介：\n\n<img width=\"1200\" height=\"440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/59cf933f-2696-49e8-a75b-f9ff133e632d\" />\n\n**沉浸式AI提问** 是一款面向 **Chrome / Edge** 的网页阅读助手。使用者可以通过划词的方式获取AI解释并添加注释，不再需要来回翻阅上下文，顺着思路阅读，获得沉浸式阅读体验。\n\n## 减少 AI 长回答中的阅读中断\n\n在使用 AI 获取知识、分析问题或学习新概念时，读者可能尚未读完整段回答，就对其中某句话产生疑问。常见的处理方式是暂停阅读，在对话输入框中引用相关内容并重新提问；获得补充解释后，再向上滚动，定位原回答及此前的阅读位置。\n\n当回答较长、概念较多时，这一过程会频繁重复。补充解释中的新疑问还可能引出更多轮对话，使原始内容与后续讨论逐渐分散，增加来回定位和衔接思路的负担。\n\n**针对局部内容的疑问，适合在对应的原文旁展开讨论。** 沉浸式AI提问将解释入口放在选中文字附近，使读者可以围绕当前词句提问、查看回答并继续追问，减少往返对话输入区与原文位置的操作。\n\n这一方式同样适用于普通网页阅读：查阅资料时，可以直接在原文旁获取解释，减少复制内容、切换窗口和重新交代背景的步骤。\n\n## 结合上下文解释，围绕选中内容持续讨论\n\n在网页正文中选中词语或句子后，将鼠标悬停于小蓝点，即可打开解释浮窗。插件会结合选中文字及必要上下文生成回答，使解释与当前阅读内容保持关联。\n\n<img width=\"1200\" height=\"850\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfdb28cb-9fe1-48b1-8ffa-0df8ba75c536\" />\n\n*演示流程：选择词句 → 悬停蓝点 → 查看解释 → 连续追问 → 原文保留标注。*\n\n首次解释后，读者可以在同一浮窗内进一步讨论概念含义、具体示例、推导依据或实现方法。例如，阅读支付 API 相关内容时，可以先了解“幂等性”的含义，再追问其实现方式；阅读 AI 回答时，也可以针对某一步推导要求补充说明。\n\n解释与追问围绕当前选中内容展开，原文仍保留在阅读位置。完成讨论后，移开鼠标即可继续阅读后续内容。\n\n## 将解释与讨论保存为原文注释\n\n即时解释解决当前的理解问题，注释则便于后续复习与查阅。\n\n沉浸式AI提问会在浏览器本地保存解释与相关对话，并在对应原文旁留下标注。读者可以将对术语、句子和段落的讨论保留为注释，通过悬停小标再次查看，无需重新生成已有回答。\n\n<img width=\"1200\" height=\"850\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a81da37f-dd39-4a48-be46-79fb73c87556\" />\n\n*演示流程：查看已有注释 → 模拟刷新 → 恢复标注 → 再次回看已保存内容。*\n\n刷新或重新访问网页时，插件会依据保存的原文及附近文本尝试恢复标注，使之前的解释能够重新关联到相应内容。网页内容发生较大变化、原文被删除或扩展数据被清除时，可能影响恢复。\n\n## 适用场景\n\n| 阅读场景 | 使用方式 |\n| --- | --- |\n| AI 长篇回答 | 针对特定表述、概念或推导步骤就地提问，减少重新提问后返回原文定位的往返 |\n| 技术文档 | 结合当前语境理解专业术语，并继续讨论实现方法与示例 |\n| 外文资料 | 选择难以理解的词句，获取结合上下文的解释 |\n| 新领域学习 | 在阅读过程中逐项澄清陌生概念，保留相关讨论供后续查阅 |\n| 原文注释 | 通过提问与讨论形成注释，将解释保存在对应词句旁，便于随时回看 |",
+    "created_at": "2026-10-30T01:47:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12905"
+  },
+  {
+    "id": 12904,
+    "title": "【工具自荐】SoulDub：视频语音翻译、字幕编辑与片段配音重生成",
+    "content": "网站地址：\nhttps://www.souldub.ai/zh\n\n项目简介：\nSoulDub 是一个面向创作者、教育内容和团队的视频翻译工作流。上传视频后选择源语言和目标语言，生成翻译字幕和配音；可以在编辑器中检查、修改原文和译文字幕，并为修改后的片段重新生成语音，最后下载已完成的视频、字幕或音频。\n\n我做它的起因：\n我不想为了理解一个视频一直盯着字幕，所以想把“听懂”从屏幕里解放出来。SoulDub 目前提供免费版，也有按月方案，适合先试用再决定是否用于持续更新或批量制作。\n\n演示视频：\nhttps://www.tiktok.com/@dashuaiboy/video/7702022636418747651\n\n适合场景：\n- 多语言视频本地化\n- 课程、访谈和知识内容的初译\n- 创作者发布不同语言版本\n\n当前限制：\n语言支持、单次时长、上传大小和并发数取决于当前配置或套餐；生成结果发布前仍需要人工检查。\n\n这是我们团队自研的产品，欢迎反馈。",
+    "created_at": "2026-10-30T01:29:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12904"
+  },
+  {
+    "id": 12903,
+    "title": "【开源自荐】翻译助手：在输入框里写中文草稿、译文原地替回的浏览器翻译扩展（离线、不上传、开源）",
+    "content": "【开源自荐】翻译助手：在输入框里写中文草稿、译文原地替回的浏览器翻译扩展（离线、不上传、开源）\n\n用外语写回复比读外语更麻烦：读有整页翻译，写却只能自己憋或来回粘贴。这个扩展补的是「写」这一步——在评论框、发帖框、网页版邮箱的正文框里直接用中文打草稿，点框边的「翻译回复」，译文确认后整段替回输入框，发送键仍然在你手上。\n\n项目地址：https://github.com/DreamOfXM/translate-assistant\n\n主要特性：\n\n- 写入式翻译：译文整段替回输入框；写入逐字复核，写坏自动回滚，React 受控输入框和 iframe 里的正文框都能写，绝不代点发送\n- 整页双语对照：译文逐段插在原文下方，只翻正文，导航/广告/评论区不碰；另支持选中即译、悬停即译\n- 五种译文样式：色块、虚线下划线、马克笔、模糊对照、纯译文，一键切换\n- 引擎全部本地：优先用 Chrome 内置的端上模型（138+），否则用内置的 bergamot WASM 引擎（Firefox Translations 同款，116 个语言方向）；语言包装好后断网也能用。也支持接入自己的 AI 服务（默认关闭）\n- MPL-2.0 开源，附 macOS 菜单栏版，可在任意 App 的输入框里完成同样的写入式翻译\n\n![写入式翻译演示](https://raw.githubusercontent.com/DreamOfXM/translate-assistant/main/docs/images/writeback.gif)\n\n![整页双语对照](https://raw.githubusercontent.com/DreamOfXM/translate-assistant/main/docs/images/bilingual.gif)\n\n安装：到 Releases 下载 zip，Chrome 开发者模式加载即可。欢迎试用与反馈。\n",
+    "created_at": "2026-10-30T00:55:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12903"
+  },
+  {
+    "id": 12902,
+    "title": "【开源自荐】WPAForge：在 Android 手机上逐条验证 WPA/WPA2 口令的 Wi-Fi 审计工具",
+    "content": "项目地址：https://github.com/wlmosv-png/wpaforge\n\nWPAForge 是一个跑在 Android 手机上的 Wi-Fi 网络审计工具：在手机本地验证你自己拥有（或已获授权）的路由器的 WPA/WPA2 口令强度。不用电脑，也不把抓包丢到别处算，全部在本机完成。\n\n![WPAForge](https://raw.githubusercontent.com/wlmosv-png/wpaforge/main/docs/banner.png)\n\n它和\"导一份字典跑一遍\"的工具不一样的地方：\n\n- **每条候选都真实发起一次关联**，以 4-Way Handshake 是否完成为唯一判据，逐条给出「成功 / 密码错 / 不确定」，不靠猜\n- **按目标现场生成候选**：SSID、厂商、门牌、姓名、生日、手机号都能当依据；同时支持内置字典，以及自己导入或下载的字典\n- **结果按本机战绩排序**：字典页会直接写「这本在你这里命中过几次、平均几条中一次」\n- 另外带 **WPS（含拆半攻击与断点续跑）**、**局域网侦察**、**离线校验 .cap / .hc22000**（1 万条约 37 秒）、**频谱雷达与信道建议**\n- **不动你原来的网络配置**：动手前先把目标原配置加密记下，收尾写回并回读确认；没还原成功的会留在「审计」页的恢复状态区，可重试\n\n要求 Android 8.0+，**需要 Root**（判定依赖 `su + cmd wifi`）。全程不联网上传任何东西，命中的口令在本机只以密文保存。\n\n> 只用于你自己拥有、或已获得授权的网络。\n\n官网（截图与下载）：https://wlmosv.dpdns.org/wpaforge/",
+    "created_at": "2026-10-29T22:57:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12902"
+  },
+  {
     "id": 12901,
     "title": "【开源自荐】Runward：在本地回看多个编程代理的并行活动",
     "content": "我是 Runward 的维护者，想向周刊自荐这个 MIT 开源的小工具。\n\n仓库：https://github.com/K-kiron/runward\n\n同时开着几个编程代理时，终端里的日志不容易回答一个问题：它们在同一时间分别做了什么？Runward 读取用户明确选择的会话文件，把工具调用、错误、推理摘要和子代理活动排到共享时钟的瀑布图里，并提供控制台、事件时间线和筛选。\n\n它是本地查看器，不负责启动或编排代理，也不自动执行交接。默认仅监听回环地址，没有运行时依赖、前端构建步骤或向外部服务发送的请求；演示也不需要模型账户或 API Key。\n\n目前覆盖 Codex、Claude Code、DeepSeek Harness（DSH）、OpenCode、OpenHands 和 Gemini CLI。Codex 已用真实本地会话检查；Claude Code 使用合成测试；新增加的四种读取器以官方格式和合成样例验证，尚未完成真实模型会话验证。没有时间或 token 数据时，界面保留未知状态。\n\n用 Node.js 22+ 可直接体验合成数据演示：\n\n```sh\ngit clone https://github.com/K-kiron/runward.git\ncd runward\nnpm run demo\n```\n\n然后打开 http://127.0.0.1:4317 。\n\n![Runward synthetic demo](https://raw.githubusercontent.com/K-kiron/runward/main/docs/screenshot.png)\n\n上图为合成数据。导入的原始日志不会自动脱敏，公开反馈请使用最小合成样例。\n\n希望收到多会话时间线是否好用、各工具导出格式是否兼容的反馈，也欢迎贡献解析回归测试和采集说明：[适配文档](https://github.com/K-kiron/runward/blob/main/docs/adapters.md) / [贡献指南](https://github.com/K-kiron/runward/blob/main/CONTRIBUTING.md)。",
@@ -758,61 +814,5 @@
     "created_at": "2026-10-27T00:04:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12806"
-  },
-  {
-    "id": 12805,
-    "title": "【开源自荐】OpenMontage Drama Studio：一句话灵感生成短剧的开源 AI 工坊",
-    "content": "项目地址：https://github.com/charliewwdev/OpenMontage\n在线体验：https://openmontage.dtok.io\n\n![影视工坊](https://raw.githubusercontent.com/charliewwdev/OpenMontage/main/docs/screenshots/04-workshop.png)\n\nOpenMontage Drama Studio 是我个人开发的 AI 短剧 / 短视频 Web 工坊（AGPL-3.0，可 Docker 自部署）。输入一句话灵感，按「剧本 → 角色 → 场景 → 道具 → 分镜 → 配音 → 剪辑」七个环节推进；角色、场景、道具图会作为参考传给分镜出片，任意环节都可以单独重做。\n\n- 能做什么：短剧、热门短视频（抖音、小红书、TikTok、Shorts 等平台套路模板）、电商带货广告片模板\n- 文本模型：DeepSeek / OpenAI / Claude / Gemini / 通义 / 豆包等 OpenAI 兼容接口\n- 出图 Seedream、出视频 Seedance，均为需自备 key 的付费第三方 API（出图也可接自己的 ComfyUI）\n- 另有 Skill 市场、无限画布节点视图\n- 技术栈：React + FastAPI + PostgreSQL + Redis + MinIO/S3\n\n说明：项目最初基于 AGPL-3.0 的 calesthio/OpenMontage 代码起步，现已重构为独立产品，与原项目无隶属关系。\n",
-    "created_at": "2026-10-26T20:06:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12805"
-  },
-  {
-    "id": 12804,
-    "title": "【开源自荐】rederive：把代码库的设计决策变成问题，让你自己推导一遍",
-    "content": "项目地址：https://github.com/EricJujianZou/rederive\n\nrederive 是一个面向 Claude Code、Codex、Cursor 等 25 种编程智能体的技能。它不直接讲解代码，而是读取代码库，找出塑造代码的设计决策（比如中间件为什么是一条链、状态为什么放在那里），把每个决策变成一个问题。你先自己推导设计，它再对照真实实现，指出你的答案和代码的不同，然后进入下一个决策。\n\n适合学习 Express、Redis 等开源项目，或在面试前弄懂自己用 AI 写的项目。\n\n免费开源（MIT），一行安装：npx skills add EricJujianZou/rederive\n\n上线 8 天， 263 个 GitHub 星。",
-    "created_at": "2026-10-26T19:44:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12804"
-  },
-  {
-    "id": 12803,
-    "title": "【开源自荐】SOMA：让 AI 编程智能体帮你画 3D 模型的桌面 CAD 应用",
-    "content": "**项目地址：** https://github.com/Kai-Jungsthoefel/SOMA\n**网站：** https://somacad.app\n\n![SOMA 爆炸视图](https://raw.githubusercontent.com/Kai-Jungsthoefel/SOMA/main/docs/images/explode.png)\n\nSOMA 是一个开源（GPL-3.0）的桌面 CAD 应用，相当于 CAD 版的 vibe coding。\n\n你用自然语言描述需要的零件，比如“一个树莓派 5 外壳，盖子上有通风孔”，你自己的 CLI 编程智能体（Claude Code、Codex CLI、OpenCode、Gemini CLI 等）用 Python 和 CadQuery 写出参数化模型，SOMA 每次修改后自动构建并显示 3D 结果。你可以在视图中点选零件、测量、直接在画面上标注，再发送给智能体继续修改，最后导出 STEP、STL、3MF 用于 3D 打印或加工。\n\nSOMA 本身不是智能体，也不需要额外的 AI 订阅。它还支持剖切、爆炸视图、标准件、FEM 强度分析、动画和工程图。Windows、macOS、Linux 安装包已内置 Python、CadQuery、Git 和 CalculiX。\n\n演示视频：https://github.com/user-attachments/assets/3294d1e4-1f06-477d-9770-c91f3470330d\n\n（Note: this text was translated with the help of an AI, as I don't read Chinese. Replies in English are easiest for me.）",
-    "created_at": "2026-10-26T17:44:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12803"
-  },
-  {
-    "id": 12797,
-    "title": "【开源自荐】MakeMovie：开源 AI 影视生产线，从一段文字到一部成片",
-    "content": "项目地址：https://github.com/DreamOfXM/makemovie\n产品页（逐阶段导览）：https://dreamofxm.github.io/makemovie/\n\nMakeMovie 是一个 Apache-2.0 开源、可自托管的 AI 影视制作平台：上传一段小说原文或故事设定，自动完成剧本改编 → 分镜 → 角色/场景/道具定妆 → 首帧 → 图生视频 → AI 配音 → 配乐 → 合成母带 → 质检审计 → 交付，每一步可查看、可编辑、可追溯到产生它的那次模型调用。\n\n- 交付不止成片：同时产出 SRT 字幕与 EDL / FCPXML / OTIO 剪辑清单，可直接在 Premiere Pro / DaVinci Resolve 继续精剪\n- 模型可插拔：OpenAI / Anthropic / Google / 阿里百炼 / 可灵 / 火山 Seedance / 任意 OpenAI 兼容端点，九个能力槽位一键补齐\n- 支持短剧 / 电视剧 / 电影三种项目形态，整本小说自动拆章分集（上限 100 万字符）\n- 声音链完整：本地内嵌 Qwen3-TTS（MLX）音色克隆配音、逐镜氛围声、配乐与声音工坊降噪\n- 每一帧都有账：任务幂等可恢复、逐镜质检问题队列、按物理量记账的用量台账\n- Docker 一条命令自托管，内置示例项目零 API key 试跑\n\n技术栈：TypeScript monorepo（Next.js + Fastify + Prisma/PostgreSQL + BullMQ + FFmpeg）。\n",
-    "created_at": "2026-10-26T16:06:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12797"
-  },
-  {
-    "id": 12796,
-    "title": "【开源自荐】Scientific Interview：AI 搜岗、简历与面经复盘的本地求职工作台",
-    "content": "阮老师好，自荐一个 MIT 开源项目 **Scientific Interview**：把 AI 搜岗、简历修改、面经复盘和投递进度整理到本地 HTML 工作台。\n\n项目地址：https://github.com/ft1148137/scientific-interview\n中文安装说明：https://github.com/ft1148137/scientific-interview/blob/main/README.zh-CN.md\n\n我最初的做法是让 AI 读取招聘页面，遇到登录时自己接手，再把结果整理成 HTML。后来把这套流程做成了可复用的 Skill 和本地工具。\n\n主要有三个特点：\n\n1. **有依据的增量搜岗与匹配**：保存搜索条件、岗位来源和核验时间，对比新增岗位及 JD 变化；结合已确认经历给出 1—5 分、匹配理由和差距。\n2. **简历与面经持续积累**：可以导入 PDF 简历修改，也可以通过提问补全真实经历后创建；面试后向 AI 复述问答与反馈，确认过的复盘可供后续简历修改和岗位评分参考。\n3. **量化投递过程**：查看申请状态、投递与反馈趋势、公司及方向/行业分布。连续 30 天无实质变化的岗位标为不活跃，保留原申请状态，不把停滞当作拒绝。\n\nHTML 工作台现已支持中英文切换，默认英文，并在当前浏览器记住语言选择；岗位与个人资料保留原文。\n\n网站与浏览器通过独立插槽扩展。当前有国内企业官网及海外实验性来源，浏览器支持 Codex Chrome 插件和 Tabbit 官方 CLI；具体搜索范围、抽样验证与限制在仓库中列明。登录和验证码由用户完成，申请提交需用户授权并核验。\n\n源码安装需要 Python 3.10+；macOS 已验证，Windows 尚未完整验证。可先运行合成演示体验 HTML，演示不需要连接招聘网站。AI 分析依赖用户自己的宿主账户，本地存档不意味着模型分析离线运行。\n\n下图为合成数据演示，不含个人求职记录：\n\n![Scientific Interview 合成数据统计工作台](https://raw.githubusercontent.com/ft1148137/scientific-interview/main/docs/assets/compact-charts.jpg)\n\n欢迎试用并反馈安装、岗位来源适配和求职记录流程中的问题。",
-    "created_at": "2026-10-26T15:25:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12796"
-  },
-  {
-    "id": 12795,
-    "title": "自荐：涟漪（Ripple）v0.1.5 - 支持 Android 与 iOS 的防卸载自控工具（支持只拦微信视频号/Shorts/Reels + 单调时钟冷静期）",
-    "content": "### 项目名称\n**涟漪（Ripple）v0.1.5** — 支持 Android 8.0+ 与 iOS 16.0+（Screen Time API）的本地自控与防冲动卸载工具\n\n- **官方网站（中文）**：https://ripplefocus.github.io/\n- **English Site**：https://ripplefocus.github.io/en/\n- **iOS 16.0+ 专区**：https://ripplefocus.github.io/ios/\n- **开源发布仓库**：https://github.com/ripplefocus/ripplefocus.github.io\n- **直接下载最新版（v0.1.5）**：\n  - **Android APK（8.57 MB）**：[GitHub Release 直链](https://github.com/ripplefocus/ripplefocus.github.io/releases/download/v0.1.5/ripple-v0.1.5.apk) ｜ [国内免梯直连](https://ripplefocus.github.io/dl/ripple-v0.1.5.apk)\n  - **iOS IPA（7.40 MB，iOS 16.0+）**：[GitHub Release 直链](https://github.com/ripplefocus/ripplefocus.github.io/releases/download/v0.1.5/ripple-v0.1.5.ipa) ｜ [国内免梯直连](https://ripplefocus.github.io/dl/ripple-v0.1.5.ipa)\n\n---\n\n### 为什么做这个工具？\n大多数「屏幕使用时间」或锁机软件在真正上瘾的时刻（比如凌晨 1 点刷短视频、或者孩子想玩手机时）很容易失效：\n1. 系统自带的屏幕时间（包括 iPhone 屏幕使用时间和安卓数字健康）点一下「今天忽略限额」就能跳过，或者 4 位密码很容易被孩子偷看试出；\n2. 进系统设置关掉无障碍权限、强行停止或直接卸载 App 只需要几秒钟；\n3. 把手机系统时间往后改一天，很多软件的配额就重置了；\n4. 微信、YouTube、Instagram 既是日常联系/学习的必需工具，里面又嵌了视频号、朋友圈、Shorts、Reels，一刀切锁死整个 App 会耽误正事。\n\n---\n\n### 核心功能与技术特点（v0.1.5）\n1. **应用内短视频流局部拦截（不影响正常聊天与工作）**：\n   - 支持在「每日时长」顶部一键开启 **微信视频号、微信朋友圈、YouTube Shorts、Instagram Reels** 局部拦截；\n   - 点进短视频流时自动退回上一页，而正常微信聊天、收发红包、扫码支付、看 YouTube 长视频教程和发私信完全不受影响。\n2. **收紧立刻生效，放松强制走「单调时钟」冷静期（15 分钟～2 小时）**：\n   - 把限额改少或开启拦截立刻生效；\n   - 想增加时长、关闭局部拦截、跳过晚间专注时段或卸载涟漪，必须先走完 **15 分钟至 2 小时** 的倒计时（短视频高风险应用自动翻倍），或者输入由**亲友 / 家长保管的 8 位解锁码**；\n   - 倒计时基于内核级**开机单调时钟**（Android `SystemClock.elapsedRealtime()` / iOS `ProcessInfo.processInfo.systemUptime`），手动修改手机日期、时间或时区完全无效。\n3. **Android + iOS 双端系统级防卸载与后台自愈**：\n   - **Android 端（仅 8.57 MB）**：默认两步开启无障碍与设备管理器即可拦截桌面卸载、设置页强行停止与清数据；可选开启 Android 11+ **本机无线调试「高级保护」**（无需连电脑、无需 Root），通过本机 `adbd` 启动 `shell` 守护进程锁死系统级卸载开关（`setBlockUninstallForUser`），在 ColorOS / HyperOS / OriginOS 上划掉后台 **2.5 秒内自动重连无障碍**，手机重启自动恢复。\n   - **iOS 端（iOS 16.0+ Screen Time API）**：基于苹果官方 `FamilyControls`、`ManagedSettings` 与 `DeviceActivityMonitor` 独立扩展构建，开启防卸载后直接调用系统 `denyAppRemoval = true` 禁止桌面删除应用，划掉后台到点依然自动弹出系统级拦截盾牌。\n4. **系统必需应用永不误拦 + 纯本地零隐私上传**：\n   - 电话、短信、闹钟（含全屏响铃界面）、日历、系统相机、输入法、文件选择器、NFC 钱包始终可用；\n   - 免费无广告、无账号、无任何第三方统计 SDK，所有数据纯本地存储。\n\n---\n\n### 真机实测截图\n| 每日时长与局部短视频流拦截 | 真机当场拦下冲动卸载 | 两层防卸载与无线调试 2.5 秒自愈 |\n| :---: | :---: | :---: |\n| ![每日时长](https://ripplefocus.github.io/shots/limits-default.png) | ![防卸载拦截](https://ripplefocus.github.io/shots/tp-delete.png) | ![保护状态](https://ripplefocus.github.io/shots/protection-ok.png) |\n",
-    "created_at": "2026-10-26T15:12:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12795"
-  },
-  {
-    "id": 12794,
-    "title": "科技爱好者周刊投稿：systemo ebook —— 本地电子书工作台，TXT 转带封面 EPUB 并直传 Kindle",
-    "content": "【项目名称】systemo ebook\n\n【项目地址】https://github.com/systemsssx/systemo-ebook\n\n【一句话说明】Windows 本地电子书工作台：把 TXT / 网文自动分章、补齐作者和封面，生成带目录的 EPUB，再通过 WiFi 直传手机、Send to Kindle 或苹果图书送进阅读器，内置阅读器可直接试读。转换和传输全程在本机完成，不上传文件。\n\n【为什么值得推荐】只为一本书去装 Calibre 有点重，在线转换又要把书稿上传。这个小工具把「导入 → 自动分章 → 补封面 → 转 EPUB → 传设备」压成一条流水线，还支持断点续传（中断重跑只补缺章）、多章并发带全局限速、书库里批量加入待发送队列一次发到设备。开发者自荐，源码开放，书源的解析规则可自行扩展。\n\n【系统要求】Windows 10 / 11 x64，免费，解压即用（自带 Python 后端、Pandoc、ChromeDriver，无需另装运行库）。\n\n【下载】https://github.com/systemsssx/systemo-ebook/releases/tag/v1.1.0\n安装包 systemo-ebook-v1.1.0-full.rar（257,491,742 字节），SHA256 9B5F3FB14EB37960D77F90676E4D5DA614DC32F0D54E313B3D064848DA396965。\n\n【截图】可用 README 内的三张真实界面截图：制作页、传输页、内置阅读器。\n\n【说明】本工具只做本地格式转换与个人离线阅读，不提供任何资源分发或分享功能。",
-    "created_at": "2026-10-26T15:03:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12794"
   }
 ]
