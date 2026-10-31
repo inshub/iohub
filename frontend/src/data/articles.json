@@ -1,5 +1,101 @@
 [
   {
+    "id": 12948,
+    "title": "【开源自荐】BLA：防 AI 自动逆向的软件构建产物加固工具",
+    "content": "自荐一个我开发的开源工具 **BLA（Blind LLM Agents）**，采用 MIT 许可证。\n\n随着 REA（Reverse Engineer Anything）这类逆向 MCP 工具出现，现在把打包好的桌面客户端、二进制程序或前端产物丢给 Claude Code、Cursor、Codex，AI 已经可以用一条命令自动反编译并还原核心逻辑。传统代码混淆（比如单纯改变量名）在大模型的全局推理面前基本失效了。\n\n我做 BLA 的思路不是和 AI 拼“谁更难读”，而是针对自动化逆向 Agent 的工程边界做低成本反制——对准备发布的构建产物注入格式合法的诱饵逻辑与解析预算陷阱，让正常用户的实际运行行为 100% 不变，但试图自动逆向的 AI 分析器会触发资源上限、顺着假线索跑偏并持续消耗 Token。\n\n![BLA 加固前后对抗 REA 逆向分析对比](https://raw.githubusercontent.com/qybaihe/bla/main/docs/assets/bla-vs-rea-showcase.svg)\n\n几个主要特点：\n\n- **构建后直接加固，不改业务源码**：一条命令即可完成符号/SourceMap 暴露面扫描、加固注入与运行时等价性校验：\n  ```bash\n  npx bla-agents harden ./dist\n  ```\n- **覆盖主流发布产物格式**：支持 JavaScript / TypeScript、Electron（`.asar` 与 Fuses）、WebAssembly、Python（`.py` / `.pyc`）、原生二进制（ELF / Mach-O / PE）、SQLite、AI 模型权重（Safetensors / GGUF）及移动端包体等。\n- **多种接入方式**：既可以作为 CLI 和 Vite / Webpack / Rollup / esbuild 打包插件放进构建流水线，也支持一键注册为 MCP 服务，在 Claude Code、Cursor、Codex 等编程助手里直接调用。\n- **真实分析器对抗实测**：仓库附带了针对真实 REA 分析路径的加固前后对照测试记录（[`docs/redteam/empirical-rea-validation.md`](https://github.com/qybaihe/bla/blob/main/docs/redteam/empirical-rea-validation.md)），同时也如实标注了当前的防护边界与局限。\n\n项目相关链接：\n\n- 开源仓库：https://github.com/qybaihe/bla\n- 项目主页：https://bla.tools\n- npm 包：https://www.npmjs.com/package/bla-agents\n- 开源协议：MIT\n\n欢迎试用和提建议，感谢阮老师和周刊读者！",
+    "created_at": "2026-10-31T16:32:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12948"
+  },
+  {
+    "id": 12947,
+    "title": "【开源自荐】claude-star-ipc：让 Claude Code、Codex 等不同厂商的 AI 编程终端分工协作",
+    "content": "https://github.com/GXY2017/claude-star-ipc\n\n让几个 AI 编程终端（Claude Code、Codex CLI 或别家的 CLI）在同一个项目里分工：一个 hub 终端拆任务、派简报、收结果，worker 终端各自干活。终端之间只靠一个 SQLite 信箱通信，所以可以混用不同厂商的模型，比如一家出方案、另一家实现、第三家审。\n\n和类似方案的区别：Claude Code 自带的跨会话消息和 Agent Teams 只在同一家 harness 内部；DeepSeek 刚发的 Super-agent 架构（Router / Worker）和 dsh 的各种 team 插件也都绑定自家运行时。这个项目把协调层放在 harness 外面，哪家的 CLI 都能接进来。\n\n目前只在 Windows + WezTerm 上跑过，MIT 协议。",
+    "created_at": "2026-10-31T16:13:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12947"
+  },
+  {
+    "id": 12946,
+    "title": "【自荐】湾区 AI 日历：粤港澳大湾区 AI 活动与赛事日历，每天核对更新，可订阅到手机日历",
+    "content": "做这个站的原因很具体：深圳、广州、中国香港的 AI 活动散在公众号、Luma、政府网站和各种群里，经常是结束了才在群里看到。\n\n**项目地址**：https://wqai.ltd\n\n**现在收录了什么**\n- 96 场活动 + 79 项赛事，覆盖深圳、广州、中国香港、东莞、珠海（佛山有数据但近期无场次）\n- 每场都有主办方、时间地点和**官方报名链接**，本站不代办报名、不代收费用\n- 支持 ICS 订阅，可以直接进手机日历\n- 有一张 OPC（一人公司）社区 / 孵化器 / 共享空间地图，125 家，可在地图上定位\n- 中英双语\n\n**每天在做什么**\n每天 08:00 跑一次核对：把已结束的活动归档、把新的活动补进来、把改期的改掉。活动页上写着\"以主办方官方为准\"，报名前请再确认一次。\n\n**技术上的一个实验**\n站点是 Python 生成的静态站，放了 llms.txt，robots.txt 里放行了主流生成式爬虫。想看看 AI 搜索会不会真的引用这类结构化活动数据，跑一段时间再看效果。\n\n11 月的开放数据同步放在 GitHub（CC BY 4.0，每月 1 号更新）：\nhttps://github.com/tgchtggn29-bit/gba-ai-events\n\n**想听的两件事**\n1. 你平时怎么找线下 AI 活动？哪些信息源是我漏掉的？\n2. 如果有明显该收录但没收录的活动，欢迎直接指出名称。\n",
+    "created_at": "2026-10-31T15:40:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12946"
+  },
+  {
+    "id": 12945,
+    "title": "【开源自荐】「拾趣」开源了：用 AI 把中国古典故事变成连环画",
+    "content": "**还有剩余的 Codex token？不妨用来读读故事。**\n\n把中国古典故事变成自己的连环画：选书、选主题、选画风，在电脑或手机上阅读，也可以导出 PDF 或一张长图保存。故事、图片和阅读进度保存在你的电脑上。\n\nmacOS / Linux 可使用已登录的 Codex CLI（订阅额度）；也支持 OpenAI API 和 Gemini（API 密钥），Windows 可使用这两种 API 服务。\n\n项目与使用说明：https://github.com/yysun/shiqu\n欢迎试用，尤其想听听大家对故事改编、画风和手机阅读体验的反馈。\n\n![拾趣界面预览](https://raw.githubusercontent.com/yysun/shiqu/main/.docs/assets/screenshots.png)",
+    "created_at": "2026-10-31T15:20:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12945"
+  },
+  {
+    "id": 12944,
+    "title": "【工具自荐】Phone agen：Mika 你手机上的私人 AI 助理，替你操作 App、上网、把事办成。 它在一块看不见的后台屏上干活，你照样刷你的手机。",
+    "content": "Mika 正式开源：真正的 Phone Agent，就跑在你的安卓手机上。\n\n一句话交给它，它就能在你手机上把事干完。\n\n复用你现有的登录态，不用额外授权，也不用 Root，更不用电脑。\n\n你继续玩手机，它在后台干活，互不干扰。干完了通知你，你也可以随时随地再丢任务给它。\n\n他能干什么？\n\n1、操作你手机上的任何 App：发微信、总结群聊、小红书总结博主内容，在 BOSS 直聘批量打招呼、订闹钟、改设置，手机上的 App 都能操作，不用事先适配\n\n2、内置浏览器：强大的 Browser use，搜索、筛选、读网页、批量操作，帮你把事干好的同时，节奏像真人一样，不容易被风控\n\n3、悬浮胶囊：在任何 App 里都能随时呼起，和它对话，叫它干活，或者把这一屏发给它，问这个怎么回、帮我记下来\n\n4、本地 Linux 沙箱：跑 Python、处理你发来的文件、Agent 写的脚本\n\n不要 root，无需电脑，就跑在你的安卓手机上，真正的 phone Agent，替你在手机上把事都干了。\n\nhttps://github.com/wangzan101/mika",
+    "created_at": "2026-10-31T15:16:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12944"
+  },
+  {
+    "id": 12943,
+    "title": "【工具自荐】Screen Capture for macOS：纯原生 Swift + ScreenCaptureKit 截图与防卡死滚动长截图工具（开源免费 / 过 Apple 公证）",
+    "content": "## 项目地址\n\n- **GitHub 仓库**：https://github.com/nasadunadu/screen-capture-macos\n- **最新正式版 DMG 直接下载（v0.5.0 · Apple Silicon）**：https://github.com/nasadunadu/screen-capture-macos/releases/latest/download/ScreenCapture-0.5.0-macos-arm64.dmg\n\n![Screen Capture v0.5.0 双工作流总览](https://raw.githubusercontent.com/nasadunadu/screen-capture-macos/main/docs/images/hero-showcase.svg)\n\n---\n\n## 为什么做这个工具？\n\n平时在 Mac 上最高频的截图动作只有两个：**顺手截张图画个箭头（`Command + 4`）** 和 **把长网页/长聊天记录拼成一张滚动长图（`Command + 5`）**。\n\n但目前 Mac 截图工具普遍存在三个痛点：\n1. 早期好用的免费工具（如 iShot、Xnip）塞满了会员付费墙、长图水印与冗余后台功能；\n2. **滚动截长图极易翻车**：遇到带顶部固定导航栏（Sticky Header）或底部悬浮输入框（Sticky Footer）的页面，滚到中段要么卡死不动，要么每隔一屏就残留一条重复的底部栏；\n3. 升级到 macOS 26/27 + 120Hz ProMotion 高刷屏后，部分基于旧窗口过滤机制的截图工具在快速销毁浮窗时会触发 `WindowServer` 的 `CARenderUpdateValidateRestrictedLayerHosts` 崩溃黑屏。\n\n因此我用纯原生 **Swift + AppKit + ScreenCaptureKit + Accelerate** 编写并开源了 **Screen Capture for macOS（v0.5.0）**——**100% 免费开源（Apache-2.0）、零广告、零内购、零网络权限（所有像素仅在本机内存处理），且已通过 Apple 官方 Developer ID 签名与公证（Notarized）**。\n\n---\n\n## 核心特性\n\n1. **防卡死、自动去吸底的滚动长截图（`Command + 5`）**：\n   - 左栏实时滚动视口、右栏无缝拼接预览；\n   - 解耦固定顶/底栏遮罩搜索对普通匹配得分的前置门限，结合水平与垂直双维梯度能量识别静止底栏；\n   - 滚动中途一旦检出固定底栏，立即通过 `trimOutputTail` 从已拼接尾部精确裁除，配合 `84px` 灰度粗配准、`1:1` 原生像素级垂直微调（`±3px`）与快速滚动两步前瞻（2-step lookahead），彻底告别长图断层与重影。\n2. **紧凑型 AI 时代精细矢量工具条（`Command + 4`）**：\n   - 使用 SwiftUI `Canvas` 原生绘制全套 `17×17pt` 矢量图标，`31×31pt` 紧凑热区 + 毛玻璃胶囊外观；\n   - 支持 `#8839EF` 紫色四角标尺二次缩放/移动选区、前粗后细渐变箭头、圆角阴影导出与全流程 `Escape` 取消。\n3. **macOS 26/27 `WindowServer` 120Hz 稳定性加固**：\n   - 采用进程级 `SCContentFilter(desktopIndependentWindow:excludingApplications:)` 过滤自身窗口，并设计 `EditorPanel.retire` 跨渲染周期延后 `50ms` 安全释放机制。\n\n---\n\n## 一键安装（支持 Apple Silicon M1–M5，macOS 14+）\n\n```bash\nbrew tap nasadunadu/tap https://github.com/nasadunadu/screen-capture-macos.git\nbrew install --cask screencapture\n```\n\n![原生设置与快捷键面板](https://raw.githubusercontent.com/nasadunadu/screen-capture-macos/main/docs/images/settings.png)\n",
+    "created_at": "2026-10-31T14:24:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12943"
+  },
+  {
+    "id": 12942,
+    "title": "【工具自荐】weread-book-exporter - 微信读书全书无损导出工具（精排 PDF/EPUB/Markdown）",
+    "content": "https://github.com/WANGXIN-567/weread-book-exporter",
+    "created_at": "2026-10-31T13:45:51Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12942"
+  },
+  {
+    "id": 12941,
+    "title": "【自荐】叮卡 DingCard：开源图文卡片编辑器，AI 可以通过 MCP 直接出整套图",
+    "content": "叮卡（DingCard）是一个开源（MIT）的图文卡片编辑器，在浏览器里就能用，不需要账号。\n\n- 长文自动排成卡片：粘贴 Markdown，按小红书、微博、推特的尺寸实时分页，有九套长文版式。\n- 海报自由排版：文字、图片、形状、图表、表格、二维码放在同一块画布上，88 套模板，可以导出 PNG / JPG / PDF、长图或九宫格。\n- 给 AI 用：MCP 服务器 `dingcard-mcp` 发布在 npm 上，也登记在 MCP 官方注册表。Claude Code、Codex、Cursor 这类客户端可以按内容生成整套卡片，按导出的样子检查文字被裁、对比度低、残留示例文字，再交给编辑器让人接着改。\n\n在线使用：https://dingcard.vercel.app\nGitHub：https://github.com/lottshin/DingCard\n产品介绍：https://dingcard.pages.dev\n",
+    "created_at": "2026-10-31T13:08:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12941"
+  },
+  {
+    "id": 12940,
+    "title": "【工具自荐】Crossbow：开源跨平台的现代化代理客户端（mihomo / sing-box 双内核）",
+    "content": "#### 1. 项目简介\n\n**Crossbow** 是一款开源的跨平台网络代理客户端，基于 Tauri 2 + React + Rust 构建，支持 **mihomo / sing-box 双内核**一键切换。它把订阅管理、节点选择、系统代理、TUN 模式、连接与日志放在同一个界面里，并在托盘 / 菜单栏常驻实时上下行速率。目前提供 macOS（Apple Silicon，Developer ID 签名 + 公证 + 自动更新）、Windows x64（系统级服务承载 TUN）与 Linux x86_64（实验性）安装包。\n\n#### 2. 解决痛点\n\n- **内核与界面割裂**：mihomo / sing-box 官方只发布内核本体，命令行与 YAML 配置门槛不低；现有图形客户端或闭源、或体积庞大、或内置大量用不到的功能。\n- **双内核难以对比**：想在不同网络环境下比较 Clash Meta 与 sing-box 的表现，通常要手动改配置来回重启。\n- **托盘信息量不足**：多数客户端托盘只剩一个开关，想知道当前速率得点开主界面。\n- **TUN 与系统代理互斥**：不少客户端二者只能二选一，切换成本高。\n\nCrossbow 针对这四点给出了一体化的开源答案。\n\n#### 3. 项目亮点\n\n- **双内核热切换**：mihomo / sing-box 随时切换，配置自动转换，启动失败快速报错。\n- **系统代理与 TUN 独立控制**：可同时开启、分别关闭；macOS 一键管理员授权，Windows 由受控系统服务承载 TUN，带端口自愈与接管自愈能力。\n- **菜单栏实时速率**：macOS 菜单栏双行常驻显示上下行速率（等宽字体、宽度零抖动），托盘菜单内可直接切换节点、批量测延迟。\n- **轻量原生**：Tauri 2 而非 Electron，安装包小、内存占用低，完整适配深浅色主题。\n- **工程化发布**：双平台 CI 构建、macOS 签名 + 公证、启动冒烟验证、SHA256SUMS 与应用内自动更新。\n\n#### 4. 项目地址\n\n- **GitHub**：https://github.com/Richard-Zhang1019/Crossbow\n- **官网 / 下载**：https://crossbow-client.netlify.app/\n- **Releases**：https://github.com/Richard-Zhang1019/Crossbow/releases/latest\n\n#### 5. 截图\n\n<img width=\"1049\" height=\"758\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b3607aaf-0a60-40cc-9893-8484975e34ba\" /> \n\n<img width=\"1049\" height=\"758\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0832ab42-93a2-4f0f-b91c-10d9aad4ad91\" />\n\n#### 6. 推广理由\n\nCrossbow 是一个从第一行代码起就完全开源的代理客户端：订阅、分流、TUN、双内核、托盘速率这些高频需求全部开箱即用，同时保持小体积与原生体验，代码结构清晰、发布流程完整（签名、公证、启动验证、校验和）。希望它进入周刊，让更多开发者多一个轻量、透明、可自行编译的选择，也欢迎试用反馈。\n",
+    "created_at": "2026-10-31T13:08:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12940"
+  },
+  {
+    "id": 12939,
+    "title": "【工具自荐】MomentRescue：用同一个人的参考照片辅助修复合照闭眼",
+    "content": "### 简介\n\nMomentRescue 是我做的一个在线照片修复工具，主要想解决合照里个别人闭眼、眼镜反光等小问题。\n\n网址：https://momentrescue.com/\n\n### 闭眼修复的使用方式\n\n1. 上传需要修复的照片，选中要处理的人物区域。\n2. 可以额外提供同一个人的睁眼照片作为参考。\n3. 生成后对比原图和参考图，检查视线、眼睑、眼镜边缘，以及是否出现其他不希望的改动。\n\n参考图只能辅助生成，不能保证完全还原本人；如果有同一组连拍中合适的照片，应先考虑直接选片或常规合成。官网当前演示使用合成人物，并非真实客户照片。\n\n### 其他信息\n\n- 还有眼镜反光、照片阴影和移除人物等修复入口。\n- 使用修复功能需要 Google 登录，新用户有 1 个免费 Rescue Credit；后续为按次购买，没有订阅。\n- AI 修复可能生成不准确的面部细节，建议保留原图；不应把生成的眼睛或表情当作历史事实或证据。\n\n我是产品开发者，欢迎编辑评估是否适合周刊，也欢迎反馈参考照片的选择和修复结果的检查方式。\n",
+    "created_at": "2026-10-31T13:02:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12939"
+  },
+  {
+    "id": 12938,
+    "title": "TeapotRouter：给 Claude Code / Codex 的按量计费 API 网关",
+    "content": "## 自荐（利益相关：作者本人）\n\n[TeapotRouter](https://teapotrouter.com/zh?utm_source=ruanyf) 是一个面向 AI 编程助手的 API 网关：一个 Key 同时兼容 Anthropic 和 OpenAI 双协议，Claude Code、Codex CLI 改两个环境变量就能接入，按 token 计费。\n\n### 为什么做这个\n\n中转站市场口碑差，不是\"中转\"本身的问题，而是三件事：价格不透明、余额会过期、跑路没对账。所以这个站把三个承诺做成硬规则：\n\n- **价格表全站公开**：每个模型的基准价与实付口径写在明处，另有机器可读的 [JSON 价格接口](https://teapotrouter.com/api/pricing)，方便比价工具直接抓；\n- **余额永不过期**；\n- **计费日志可导出对账**：每笔请求的成本、延迟、渠道都可查——Claude Code 烧 token 到底烧在哪，看得见。\n\n其余：支付宝可充值（最低 $1）、多上游自动故障转移、支持退款（按剩余余额退，工单办理）。\n\n### 彩蛋\n\n名字和 logo 来自 HTTP 状态码 418 \"I'm a teapot\"——logo 就是「418 压扁成一把茶壶」，官网还专门做了一页 [418 状态码小史](https://teapotrouter.com/zh/418)（从世界上第一个咖啡壶摄像头讲到 RFC 2324）。\n\n### 接入（Claude Code 示例）\n\n```bash\nexport ANTHROPIC_BASE_URL=https://api.teapotrouter.com\nexport ANTHROPIC_AUTH_TOKEN=sk-your-key\n```\n\n上线两周的新站，欢迎批评。\n",
+    "created_at": "2026-10-31T12:55:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12938"
+  },
+  {
+    "id": 12937,
+    "title": "【自荐】 宙と木：把个人博客做成一片宇宙的自托管网站",
+    "content": "项目地址：https://github.com/Koimsurai/sora-to-ki\n在线示例：https://koimsurai.com\n\n一个开源、可自托管的个人网站。每一页都是同一片宇宙里的一种东西（文章是星轨、碎念是彗星），全站只用黑、白、琥珀三种颜色。docker compose up -d 即可起站，附初始化向导与后台。\n\n设计与重做过程的长文：https://koimsurai.com/zh-cn/blog/blog-redesign-dots-and-lines",
+    "created_at": "2026-10-31T12:00:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12937"
+  },
+  {
     "id": 12936,
     "title": "【资源自荐】Bases Helper：Obsidian Bases 阅读追踪、公式排错与筛选实践指南",
     "content": "自荐一个英文的 Obsidian Bases 实用教程集，面向已经开始用 Bases、但卡在属性类型和公式细节的用户。\n\n入口：https://baseshelper.com/guides/\n\n目前有四篇免费指南，配有可复制表达式、实际界面截图和可下载的练习库：\n\n- [阅读进度追踪](https://baseshelper.com/guides/reading-tracker/)：每本书一个笔记，用已读页数和总页数生成进度条。\n- [公式排错](https://baseshelper.com/guides/formula-troubleshooting/)：检查字段名、数字与文本类型、0 与缺失值，以及公式列和数字排序。\n- [按年月分组](https://baseshelper.com/guides/group-by-month/)：用包含年份的月份键，避免不同年份的同一个月混在一起，并处理缺失日期。\n- [组合筛选](https://baseshelper.com/guides/bases-filters/)：文件夹、状态、标签，以及全局筛选和单个视图筛选的关系。\n\n希望提供的价值是让读者能在独立练习库里复现问题，再应用到自己的笔记，而不只是复制一段不知道该放在哪里的公式。\n\n网页和练习文件无需注册、无需付费；需要启用 Obsidian 内置 Bases，不依赖社区插件。阅读进度来自手动维护的数字属性，不会自动统计正文勾选框，也不与阅读器同步。\n\n测试范围是 macOS 上的 Obsidian 1.14.5；其他版本和移动端未验证。[测试方法及限制](https://baseshelper.com/about/)。\n\n关系与制作说明：这是 Bases Helper 项目方自荐，与 Obsidian 官方无关。文章及本投稿使用了 AI 辅助，文章实例已在原生 Obsidian 中检查，站点所有者审核后发布。此次投稿由 AI 助手在站点所有者明确授权下提交。\n",
@@ -716,103 +812,5 @@
     "created_at": "2026-10-28T07:49:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12846"
-  },
-  {
-    "id": 12845,
-    "title": "【文章自荐】俄罗斯软件哲学：单机榨干",
-    "content": "为什么有些软件看起来不怎么商业化，却能在自己的领域里强得可怕？\n\n从 Nginx、ClickHouse 到 7-Zip，这篇文章试着揭开俄罗斯软件背后的工程哲学：当别人忙着堆服务器、加框架时，有人还在琢磨怎么把一台机器的性能榨干。\n\n软件究竟是越做越复杂，还是应该把每一分算力都用在刀刃上？\n\n原文地址：\n[https://mp.weixin.qq.com/s/jpiSA4d1RQLYT6POB9FEIQ](url)",
-    "created_at": "2026-10-28T06:37:18Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/12845"
-  },
-  {
-    "id": 12844,
-    "title": "【工具自荐】铝构AI BeamJoin：铝型材设计 AI Agent，支持三维搭建与安装清单",
-    "content": "阮老师好，自荐一个我开发的在线铝型材设计工具：**铝构AI BeamJoin**，面向想用铝型材 DIY 桌架、工作台、置物架和设备支架的朋友。\n\n体验地址：[铝构AI BeamJoin](https://forgepane.com)\n\n自己设计铝型材家具，除了确定外观，还需要计算型材切割长度、选择连接件、确定板材尺寸，并整理给商家的加工信息。BeamJoin 希望把三维设计、方案修改和材料清单放到同一个网页里完成。\n\n目前主要支持：\n\n- **AI 辅助设计**：用自然语言描述需求，让助手辅助搭建和修改方案，生成的三维结构可以继续手动编辑。\n- **在线三维搭建**：在浏览器里调整型材尺寸与位置，添加连接件、台面、层板和孔位。\n- **材料与切割清单**：根据当前设计整理型材规格、切割长度、材料数量及加工信息，导出 PDF、Excel，方便采购询价和加工沟通。\n\n这个项目也是一次 **AI 与传统工业结合的探索**。铝型材是成熟的工业材料，背后有具体的规格、连接方式和加工要求。我想尝试让 AI 从理解自然语言需求出发，参与三维搭建和方案修改，再将设计整理成材料与加工清单，衔接实际采购和加工沟通。\n\n希望通过这个具体场景，探索 AI 如何降低普通人使用工业材料进行设计和搭建的门槛，同时保留尺寸、连接与加工细节的可编辑性，让“有个搭建想法”到“知道需要哪些材料”的过程更容易一些。\n\n目前仍在持续完善，实际承载与加工条件需要结合材料和安装方式确认。欢迎铝型材 DIY 爱好者，以及有相关设计、加工经验的朋友试用和反馈。\n\n我是开发者本人，本帖为自荐。感谢考虑收录。\n\n## 产品截图\n\n### 1. 在线铝型材三维设计工作台\n\n![在线铝型材三维设计工作台](https://github.com/user-attachments/assets/1a0f0215-3857-4e9e-a031-ce5f7929af37)\n\n### 2. AI 设计助手与方案建议\n\n![AI 设计助手与方案建议](https://github.com/user-attachments/assets/591848fb-6ab7-4555-a60d-f8fbb647d78e)\n\n### 3. 铝型材规格库\n\n![铝型材规格库](https://github.com/user-attachments/assets/5ce25d84-327e-47fa-952d-aab1fc1e4d7b)\n\n### 4. 创意中心与参考案例\n\n![创意中心与参考案例](https://github.com/user-attachments/assets/92e21687-080b-4f3d-ba8c-c90b3b144b45)\n\n### 5. 我的设计方案\n\n![我的设计方案](https://github.com/user-attachments/assets/536b43a8-3db2-45d3-b81d-fb4de77929a5)\n",
-    "created_at": "2026-10-28T06:27:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12844"
-  },
-  {
-    "id": 12843,
-    "title": "【开源自荐】Me2Cloud：从你自己的网络测各大云区域的延迟",
-    "content": "一个测云服务器延迟的网页：https://m2c.1ms.dog\n\n测速网站都是从机房测的，测不到你自己的运营商和晚高峰。Me2Cloud 在你的浏览器里直接发请求，测 17 家云厂商、361 个区域的延迟、抖动和丢包，适合买服务器前挑区域。\n\n开源（MIT），纯静态，可以免费部署到 Cloudflare：https://github.com/yt1988/me2cloud\n\n![](https://raw.githubusercontent.com/yt1988/me2cloud/main/docs/screenshots/hero-zh.png)\n",
-    "created_at": "2026-10-28T05:49:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12843"
-  },
-  {
-    "id": 12842,
-    "title": "【自荐】diting：给 AI 智能体用的浏览器引擎，单二进制内置 V8、无需 Chromium",
-    "content": "阮老师好，自荐一个自己的开源项目。\n\n**diting**：给 AI 智能体用的浏览器引擎——单个 Rust 二进制内置 V8，自带 CSS/布局/绘制栈，不依赖 Chromium，也不需要系统装浏览器。\n\nhttps://github.com/yinnho/diting\n\n现在让 AI 读写网页，一般是拿 Playwright/Puppeteer 驱动一个完整的 Chrome：装一次几百 MB，一个进程动辄几百 MB 内存，页面一多还要排队。diting 把整套浏览器做进一个二进制：启动就是一个本地 HTTP 服务，每项能力都是一次 curl——JS 渲染后的页面直接出 markdown（静态页约 100ms 应答，V8 只在页面真需要 JS 时才启动）、截图、录制的操作流程零 token 回放、五引擎聚合搜索、以及把写好的 HTML/CSS 动画确定性地渲染成 MP4。对中文网页（百度/搜狗/微信）的解析是一等公民。\n\n拿它配合 Claude Code / Codex 这类编码智能体做商品采集、自动发布、内容生产，比驱动 Chrome 省一个数量级的资源。macOS / Linux / Windows 都有预编译包，`brew install yinnho/diting/diting` 或一行 curl 脚本可装。Apache-2.0 协议，目前 v0.8.3。\n",
-    "created_at": "2026-10-28T05:34:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12842"
-  },
-  {
-    "id": 12841,
-    "title": "【自荐】Remove-OfficePlus：一键清理微软 OfficePLUS 加载项",
-    "content": "阮老师好，自荐一个自己写的开源小工具。\n\n**Remove-OfficePlus**：一键清理「微软 OfficePLUS」（也叫微软 PPT 助手 / Office 助手）的 Windows 工具，删除前自动备份注册表。\n\nhttps://github.com/HenryYannis/Remove-OfficePlus\n\n很多人电脑里莫名多了这个 Office 加载项：在 Office 选项里取消勾选，重启后又被勾回来；手动删文件提示被占用，删掉后开机又被后台服务装回来。原因是它注册了一个 LocalSystem 权限、开机自启的系统服务，还在 HKLM 里写了强制加载，优先级高于用户自己的设置。\n\n这个工具按「进程 → 服务 → 注册表 → 计划任务 → 缓存目录」整条链清理。删除前先把注册表导出成 .reg 备份，备份失败就不删；删完自动复检。有图形界面绿色版 exe 和一行 PowerShell 命令两种用法，还支持只扫描和预演模式。MIT 协议。\n\n![清理前后对比](https://raw.githubusercontent.com/HenryYannis/Remove-OfficePlus/main/docs/images/scan-after.png)",
-    "created_at": "2026-10-28T05:25:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12841"
-  },
-  {
-    "id": 12840,
-    "title": "【产品自荐】熔岩 Lava：A股消息面热度 MCP/REST",
-    "content": "## 熔岩 Lava\n\nA 股股票与概念板块的**消息面热度监测**，给量化与 AI Agent 用的结构化只读数据接口。\n\n- **产品**：https://lava.ai-dolphin.com/subscribe\n- **文档**：https://lava.ai-dolphin.com/subscribe/docs\n- **远程 MCP**：https://lava.ai-dolphin.com/subscribe/v1/mcp\n- **OpenAPI**：https://lava.ai-dolphin.com/subscribe/v1/openapi.json\n- **GitHub**：https://github.com/dustinliang666-blip/lava-mcp\n- **Glama**：https://glama.ai/mcp/connectors/com.ai-dolphin.lava/lava\n\n### 特点（简述）\n- 个股 / 概念热度、全市场热榜、加权热度、首提流、新闻命中（匿名 ID）\n- 只读；机构/大V 匿名；**不含多空方向与原文**\n- 开通赠代金券；按次计费（详见落地页）\n\n不构成投资建议。欢迎试用与反馈。",
-    "created_at": "2026-10-28T05:18:06Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12840"
-  },
-  {
-    "id": 12839,
-    "title": "【网站自荐】1 in 8 Billion：免费的人生模拟游戏",
-    "content": "## 1 in 8 Billion\n\n网址：https://1in8billion.site/\n\n1 in 8 Billion 是一款免费的人生模拟游戏。游戏会随机决定玩家出生的国家和家庭，玩家再通过升学、工作、恋爱、移居等选择，体验一段从出生到人生结束的独特人生。\n\n标签：人生模拟、人生模拟器、人生游戏、生存模拟",
-    "created_at": "2026-10-28T02:32:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12839"
-  },
-  {
-    "id": 12838,
-    "title": "【开源自荐】dsh-delivery-board：写在代码仓库里的交付看板（阶段 / 交接 / 周报 / Timeline）",
-    "content": "推荐一个我开源的项目：**dsh-delivery-board**（v0.2.0）。\n\n把交付看板写进代码仓库：阶段流水线、交接审计、软 WIP 上限、客户周报（Markdown），以及本地可编辑看板 + 日历轴 Timeline。状态默认落在仓库里的 `delivery.json`，跟 PR 一起评审；不是要替代 Jira/Linear，只保留当前仓库真正需要的交付上下文。\n\n项目地址：\n\n- GitHub：https://github.com/jerryxff26-alt/dsh-delivery-board\n- 演示 GIF：https://github.com/jerryxff26-alt/dsh-delivery-board/blob/main/docs/demo/demo.gif\n\n主要特点：\n\n- 独立运行：`npx github:jerryxff26-alt/dsh-delivery-board`（也可作为 DeepSeek Harness / dsh 插件安装）\n- 卡片流转自动记录交接；阶段可设软 WIP（超限警告，不强制卡住）\n- `weekly` 生成客户周报；`open` 打开本机看板与 Timeline\n- MIT 协议，无额外运行时依赖\n\n适用场景：小团队或「人 + AI 编程助手」需要把「谁在做什么、卡在哪、本周交付了什么」和代码放在一起时。欢迎试用与 star。",
-    "created_at": "2026-10-28T00:27:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12838"
-  },
-  {
-    "id": 12837,
-    "title": "【工具自荐】Aident Loadout：让多个 AI Agent 共用一套应用连接和 Skills",
-    "content": "阮老师好，自荐一个我们团队做的开发者工具：**Aident Loadout**\n\n- 网址：https://aident.ai\n- 文档：https://docs.aident.ai/loadout/overview\n- 开源 Skill（MIT）：https://github.com/Aident-AI/aident-skill\n\n**一句话**：给 AI 编程/办公 Agent 配一套共用的\"装备\"：应用账号只连接一次，Codex、Claude Code、Cursor、ChatGPT 等 MCP 客户端都能直接调用。\n\n**介绍**：同时用好几个 Agent 时，每个都要单独配 MCP、API Key 和授权，很麻烦。Loadout 提供一个远程 MCP 服务器（`https://loadout.aident.ai/mcp`）、一个 npm CLI（`@aident-ai/cli`）和一个开源 Skill，Agent 按需求搜索应用动作、读取实时 schema 再执行；另外内置 400+ 个现成的 Skills（调研、内容、运营等）。OAuth 在浏览器里授权，API Key 保存在 Aident Vault 里不交给模型，每次调用都会记录在审计日志里，并显示花费。可以免费按量付费开始使用。\n\n我是 Aident 团队成员，本帖为自荐。\n",
-    "created_at": "2026-10-27T21:43:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12837"
-  },
-  {
-    "id": 12836,
-    "title": "【开源自荐】QuireKit：在浏览器里真正分页的文档编辑器框架",
-    "content": "QuireKit 是一个开源的文档编辑器框架，可以用它搭建自己的在线文档。\n\n它沿用 ProseMirror 的文档、事务和插件模型，但不依赖浏览器的 DOM 排版：断行、分页、光标和选区都由 QuireKit 自己计算，再绘制到 Canvas 或 SVG 上，所以编辑时看到的就是一页一页的纸。\n\n同一套内核还提供块编辑器和 Markdown 编辑器（三种编辑视图改的都是 Markdown 原文），以及公式、流程图、思维导图、白板等编辑器。开源部分全部 MIT 许可，目前是 alpha 版。\n\n官网（打开即可在线编辑）：https://quirekit.com\nGitHub：https://github.com/quirekit/quirekit",
-    "created_at": "2026-10-27T19:20:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12836"
-  },
-  {
-    "id": 12835,
-    "title": "【开源自荐】范围澄清练习：让AI扮演临时加需求的客户，自己练一轮回应",
-    "content": "自荐一个 AI 辅助制作的中文开源练习，面向网页接单新手：原本说好做三页静态网站，客户又想“顺便”加会员、预约和付款，怎么先把范围与未知说清楚？\n\n项目：https://github.com/daishengyong/ai-practice-lab-demo\n\n免费版使用一个固定虚构案例。使用者自己回应，AI 再引用实际原句，指出一项已澄清的边界和一项仍需确认的问题，不替使用者回答，不给职业或收入保证。\n\n**两种免费体验**\n\n- 不下载：复制 README 的单轮提示到自己已有的 AI 对话中，先回答一次；这种方式不提供本地保存与恢复。\n- 需要保存：下载免费的本地 Skill，用具备文件读写和 Python 3.9+ 的 Agent 主持；自备模型权限和额度。\n\n免费仓库按 MIT 开源。仓库另说明同作者的独立付费版本，本次只邀请体验免费版，不要求购买。普通 AI 也能做基础沟通练习，固定流程是否有额外帮助仍需要真实反馈。\n\n**想听到的反馈**\n\n你实际试了哪种方式？哪里最费劲？自己回应后，哪一句反馈有帮助或没有帮助？还没试也欢迎说明原因。可用 README 的体验表单或邮箱反馈，也可以在这里直接讨论。\n\n请只使用本项目的虚构案例，不提供真实客户、订单或个人资料。当前只有本地技术核查，没有真人学习效果或成交证明；此次希望先找到愿意亲自试一轮的人。\n",
-    "created_at": "2026-10-27T17:12:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12835"
-  },
-  {
-    "id": 12834,
-    "title": "开源自荐：Linope，探索Agent 系统的内核和传统操作系统内核有何异同？",
-    "content": "目前，我注意到：许多开发者提出疑问：Agent系统内核和传统的系统内核有何区别？带着许多开发者的疑问，我开发了linope Agent 内核。\n\nLinope旨在探索Agent 系统的内核和传统操作系统内核有什么区别？在借鉴传统的系统内核，融合了一些个人的想法，探索Agent 系统内核与传统系统内核的异同，定义一种新的Agent开发范式。\n项目地址：https://github.com/answeryt/Linope.git\n关于Linope设计思想以及工程范式的技术报告:(https://github.com/answeryt/Linope/blob/main/linope-agent-kernel.pdf",
-    "created_at": "2026-10-27T16:38:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12834"
   }
 ]
