@@ -1,5 +1,29 @@
 [
   {
+    "id": 12951,
+    "title": "【开源自荐】Hotseat：Mac 上多个 Claude 账号一键切换，会话和设置都不丢",
+    "content": "Hotseat（https://github.com/zahT3/hotseat）：macOS 菜单栏工具，在同一台 Mac 上切换多个 Claude 账号。Claude Code 和 Claude Desktop 一键换号，会话、设置和 skills 共用同一份，换号后能接着原来的对话继续。不读取任何登录凭证。Go + Swift，MIT 协议。\n\n![Hotseat](https://raw.githubusercontent.com/zahT3/hotseat/main/docs/images/hotseat.gif)\n\n- 菜单栏能看到每个账号 5 小时和每周的用量、什么时候重置。\n- CLI 会话因为额度停下时，会弹窗问要不要换到你的另一个账号继续。不点就不换。\n- 不自动轮换账号，没有号池，只适合你自己名下的账号。\n\n安装：`brew install zahT3/tap/hotseat`，或去 [Releases](https://github.com/zahT3/hotseat/releases) 下载。macOS 14 以上。\n",
+    "created_at": "2026-10-31T18:06:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12951"
+  },
+  {
+    "id": 12950,
+    "title": "【开源自荐】Imbo：让不同编程 agent 的会话互发消息，也能发给同事的 agent",
+    "content": "Imbo 是我开发的开源（Apache-2.0）工具，用 Rust 写成，让编程 agent 的会话之间直接收发消息，不用人在中间转述。支持 Claude Code、Codex、opencode、Cursor CLI、MiniMax Code、ZCode 六个工具，不同工具之间也能互发：比如你的 Codex 会话直接问同事的 Claude Code 会话一个接口问题，对方回复后叫醒你这边空闲的 Codex 接着干。按账号 ID 加联系人后可以私聊、建群、传附件，对方离线时消息留到上线再送达。\n\n支持 macOS 和 Linux。官方服务器注册后免费 30 天，之后 $2/月；服务器端也开源，自建免费。\n\n![Imbo 演示](https://github.com/Bearisbug/imbo/raw/main/.github/assets/demo.gif)\n\n- 项目地址：https://github.com/Bearisbug/imbo\n- 官网：https://imbo.dev\n",
+    "created_at": "2026-10-31T17:39:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12950"
+  },
+  {
+    "id": 12949,
+    "title": "【开源自荐】AudioLens：在 VS Code 里检查远程音频、原始 PCM 和 Kaldi WAV Ark",
+    "content": "大家好，我是 AudioLens 的作者，想自荐这个面向语音和音频开发者的开源 VS Code 扩展。\n\n排查语音数据时，代码、转写文本和音频通常要来回切换；音频放在远程服务器上，或者只有一份没有文件头的 PCM 时，检查起来更麻烦。AudioLens 把播放、波形、频谱图和选区分析放进 VS Code，让音频检查留在数据清单、日志和代码旁边。\n\n几个具体用法：\n\n- Remote SSH：在远程工作区打开音频，由扩展读取远端文件并传到本地界面播放、分析。\n- 数据集排查：悬停文本中的音频路径，通过 Open in AudioLens 打开，再选取片段播放、查看 RMS、峰值和削波比例。\n- 原始 PCM：明确指定采样率、通道数、编码、字节序和偏移，检查算法导出的 .pcm / .raw。\n- Kaldi WAV Ark：输入 wav.ark:offset，读取对应的 WAV 条目，无需加载整个归档；仅支持以 RIFF/WAVE 开头的音频条目。\n- 多通道录音：逐通道查看波形和频谱图，支持静音、独听。\n\n![AudioLens 多通道检查演示](https://raw.githubusercontent.com/SimZhou/vscode-audiolens/main/docs/assets/readme/1.multi-channel_tracks_and_multi-view.zh-CN.gif)\n\n源码（Apache-2.0）：https://github.com/SimZhou/vscode-audiolens\n安装：https://marketplace.visualstudio.com/items?itemName=simzhou.audiolens\n也可在 VS Code 终端运行：code --install-extension simzhou.audiolens\n\n欢迎语音、音频和机器学习开发者试用，并反馈实际数据检查中遇到的问题。\n",
+    "created_at": "2026-10-31T17:04:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12949"
+  },
+  {
     "id": 12948,
     "title": "【开源自荐】BLA：防 AI 自动逆向的软件构建产物加固工具",
     "content": "自荐一个我开发的开源工具 **BLA（Blind LLM Agents）**，采用 MIT 许可证。\n\n随着 REA（Reverse Engineer Anything）这类逆向 MCP 工具出现，现在把打包好的桌面客户端、二进制程序或前端产物丢给 Claude Code、Cursor、Codex，AI 已经可以用一条命令自动反编译并还原核心逻辑。传统代码混淆（比如单纯改变量名）在大模型的全局推理面前基本失效了。\n\n我做 BLA 的思路不是和 AI 拼“谁更难读”，而是针对自动化逆向 Agent 的工程边界做低成本反制——对准备发布的构建产物注入格式合法的诱饵逻辑与解析预算陷阱，让正常用户的实际运行行为 100% 不变，但试图自动逆向的 AI 分析器会触发资源上限、顺着假线索跑偏并持续消耗 Token。\n\n![BLA 加固前后对抗 REA 逆向分析对比](https://raw.githubusercontent.com/qybaihe/bla/main/docs/assets/bla-vs-rea-showcase.svg)\n\n几个主要特点：\n\n- **构建后直接加固，不改业务源码**：一条命令即可完成符号/SourceMap 暴露面扫描、加固注入与运行时等价性校验：\n  ```bash\n  npx bla-agents harden ./dist\n  ```\n- **覆盖主流发布产物格式**：支持 JavaScript / TypeScript、Electron（`.asar` 与 Fuses）、WebAssembly、Python（`.py` / `.pyc`）、原生二进制（ELF / Mach-O / PE）、SQLite、AI 模型权重（Safetensors / GGUF）及移动端包体等。\n- **多种接入方式**：既可以作为 CLI 和 Vite / Webpack / Rollup / esbuild 打包插件放进构建流水线，也支持一键注册为 MCP 服务，在 Claude Code、Cursor、Codex 等编程助手里直接调用。\n- **真实分析器对抗实测**：仓库附带了针对真实 REA 分析路径的加固前后对照测试记录（[`docs/redteam/empirical-rea-validation.md`](https://github.com/qybaihe/bla/blob/main/docs/redteam/empirical-rea-validation.md)），同时也如实标注了当前的防护边界与局限。\n\n项目相关链接：\n\n- 开源仓库：https://github.com/qybaihe/bla\n- 项目主页：https://bla.tools\n- npm 包：https://www.npmjs.com/package/bla-agents\n- 开源协议：MIT\n\n欢迎试用和提建议，感谢阮老师和周刊读者！",
@@ -788,29 +812,5 @@
     "created_at": "2026-10-28T09:32:50Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12850"
-  },
-  {
-    "id": 12849,
-    "title": "【文章自荐】Mole 出 Mac 版后，用户教会了我做产品",
-    "content": "[Mole 出 Mac 版后，用户教会了我做产品](https://tw93.fun/2026-08-16/mole-mac.html)（中文）\n\n![](https://cdn.tw93.fun/blog/pic/mole-mac-cover-calm.png)\n\n作者写了一个 Mac 清理的命令行工具 Mole，开源一年多获得7万颗星。后来他又做成了付费的桌面版，本文是他的复盘。文章大部分篇幅留给了用户来信。比如一位快70岁的英国用户不小心买了两份，一位美国用户指出美国人在技术场景里其实都用摄氏度。作者最大的收获几乎都来自这些邮件。\n\n原文地址：https://tw93.fun/2026-08-16/mole-mac.html\n",
-    "created_at": "2026-10-28T08:55:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12849"
-  },
-  {
-    "id": 12847,
-    "title": "【开源自荐】Pika Clean：删之前先让 AI 告诉你文件能不能删的 Mac 清理工具",
-    "content": "## Pika Clean\n\n一个开源、免费的 Mac 清理工具。扫描出缓存、日志、旧下载后，点一下任意条目，AI 会告诉你它是什么、删了会怎样，看懂了再删。\n\n- **AI 解释**：用你自己的 AI，本机 Claude Code 或任何 OpenAI 兼容服务都行；只发路径和大小，不发文件内容\n- **删得放心**：个人文件只进废纸篓，可一键放回；删除前核对是不是同一个文件\n- **功能齐全**：卸载软件、开机启动项、菜单栏系统监控、开发者缓存清理\n- Tauri + Rust 开发，安装包约 10 MB，支持 Intel 和 Apple 芯片，GPLv3 开源\n\n[开源地址](https://github.com/black-robe-sanfeng/pika-clean)\n\n![演示](https://github.com/black-robe-sanfeng/pika-clean/raw/main/website/demo.gif)\n",
-    "created_at": "2026-10-28T08:23:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12847"
-  },
-  {
-    "id": 12846,
-    "title": "【开源自荐】MirrorProxy：自托管的多生态软件源代理，支持跨平台改源与 AI Agent 集成",
-    "content": "阮老师好，自荐一个我开发的 MIT 开源项目：**MirrorProxy**，使用 Rust 开发的自托管软件源与下载代理平台，配有 Web 管理后台和 Windows、macOS、Linux 客户端。\n\n- 项目地址：https://github.com/inbjo/MirrorProxy\n- 在线演示：https://sina.dev\n- 中文介绍：https://github.com/inbjo/MirrorProxy/blob/main/README_CN.md\n- 快速开始：https://github.com/inbjo/MirrorProxy/wiki/Getting-Started-zh-CN\n\n开发环境和 CI 往往同时依赖 GitHub、容器镜像、npm、pip、Cargo 等多个软件源。官方源访问不稳定时，需要分别寻找镜像、修改配置；第三方镜像又可能限流、变更或失效。\n\nMirrorProxy 希望把这些分散的配置与运维工作集中起来：部署在一台网络通畅的服务器上，将常用软件源统一到自己的域名。**按需代理，不需要预先完整同步庞大的仓库**；可选择启用有容量限制的磁盘缓存，并为同一个源配置备用上游。\n\n主要功能：\n\n- **多生态统一代理**：支持 GitHub 发布文件、Raw 与只读 Git 克隆，Docker/OCI，npm、PyPI、Cargo、Go Modules、Maven、NuGet，以及常见 Linux/BSD 软件仓库等。\n- **跨平台客户端**：帮助查看、切换和恢复软件源，提供配置预览、备份与回滚保护，方便个人开发机、团队和 CI 使用。\n- **可视化管理**：集中管理上游、健康检测、缓存、流量统计、账号与团队配额，支持邮件和 Webhook 告警。\n- **AI Agent 集成**：提供 Skill 和 MCP，让 Codex、Claude Code、Cursor 等工具查询实例实际启用的软件源与配置方式，而不是依赖写死的镜像地址。\n- **受控下载**：可单独启用公网 HTTPS 文件下载，采用用户授权和下载专用 Token，并限制流量、大小和并发；默认关闭，拒绝私网目标。\n- **便于自托管**：服务端内嵌 Web 界面，默认使用 SQLite，提供 Docker Compose、Linux 二进制和 systemd 部署方式。\n\n适合经常切换软件源的开发者、自托管用户，以及希望统一管理软件分发入口的小团队。实际下载效果取决于部署服务器到上游及客户端之间的网络条件。\n\n目前已发布 **v1.7.1**，针对前一版界面重构后的登录、个人中心、授权、邀请与会话管理等细节做了较多体验修复。欢迎试用和反馈，感谢考虑收录。\n\n补充说明：此前提交过旧版介绍 #10770，已由我自行关闭；本帖依据当前 README 重新整理，补充了跨平台客户端、团队管理与 Skill/MCP 等现有能力。\n",
-    "created_at": "2026-10-28T07:49:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12846"
   }
 ]
