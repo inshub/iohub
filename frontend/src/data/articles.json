@@ -1,5 +1,101 @@
 [
   {
+    "id": 13003,
+    "title": "[项目自荐] Local Rewrite Lab：让英文改写参考自己的写作风格",
+    "content": "留学生润色自己写的英文作业，常会遇到改完不像自己的问题。Local Rewrite Lab 可以用自己的旧作作风格参考，在本地生成改写候选，并保留原文方便核对。也适合英文邮件、技术文档等表达调整；作业场景请遵守课程对 AI 编辑的要求。\n\n项目基于 llama.cpp 和 Gemma-2-Ataraxy-9B，支持 TXT / JSONL 批处理，已在 18GB 的 M3 Pro 上测试。仓库提供中英文运行说明和 GPTZero 案例记录。\n\n项目地址：https://github.com/Yed-13/local-rewrite-lab\n\n这是项目方自荐，欢迎试用并反馈改写质量和安装体验。",
+    "created_at": "2026-11-02T07:31:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13003"
+  },
+  {
+    "id": 13002,
+    "title": "自荐开源项目 MoMo Agent：打通 Apple Watch、iPhone 与 Mac 的自托管个人主动智能体",
+    "content": "阮老师好，向周刊自荐一下我们刚开源的个人智能体项目 **MoMo Agent**。\n\n- **项目地址**：https://github.com/Miri-Labs/MoMo-Agent\n- **支持平台**：watchOS 10+ / iOS 17+ / macOS 15+（Swift 原生客户端 + Python Agent 运行时）\n\n### 做了什么事\n\n现在大多数电脑 Agent 还是得人坐到屏幕前、打开聊天框敲提示词才能干活，但很多真实的待办和上下文其实发生在离开电脑的日常交谈里。\n\n我们把自己的 Apple Watch、iPhone 和 Mac 串成了一套完全自托管（Self-Hosted）的闭环：\n\n1. **穿戴无感采集**：Apple Watch（或连着手机的蓝牙耳机）在后台分片记录日常对话，支持抬腕一键静音和打重点标记。\n2. **手机本地免费转写**：音频回传到 iPhone 后，直接在端侧离线运行 Sherpa-ONNX + SenseVoice + 说话人声纹分离，多语言转写成本为 $0。\n3. **内置私网同步**：应用内嵌了用户态 Tailscale（`tsnet`），不需要公网 IP 或云服务器中转，在外面用蜂窝网络也能端到端加密直连家里的 Mac。\n4. **Mac 后台主动办事**：Mac 端默认接入了 DeepSeek 刚开源的 SuperAgent（也支持一键切换 Hermes 引擎），会自动过滤日常寒暄闲聊，在本地 SQLite 里记住个人习惯，一旦对话里提到明确的待办或多步准备事项，就在后台派发子智能体提前把资料、草稿或对比表准备好。推理直接复用本机已有的 Claude 或 OpenAI Codex 订阅，没有额外的按量 API 账单。\n\n### 界面预览\n\n![设备协同概览](https://raw.githubusercontent.com/Miri-Labs/MoMo-Agent/main/docs/assets/devices-3d-zh.png)\n\n![Apple Watch 录音与 iPhone 本地转录时间轴](https://raw.githubusercontent.com/Miri-Labs/MoMo-Agent/main/docs/assets/watch-and-iphone-zh.png)\n\n![Mac 端主动任务执行与记忆星图](https://raw.githubusercontent.com/Miri-Labs/MoMo-Agent/main/docs/assets/mac-agent-zh.png)\n\n所有原始录音、转录文稿和长期记忆都只保存在用户自己的设备本地。欢迎大家试用和拍砖！",
+    "created_at": "2026-11-02T06:58:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13002"
+  },
+  {
+    "id": 13001,
+    "title": "【免费工具】临时邮箱网站，分享给有需要的朋友",
+    "content": "\n我做了一个临时邮箱网站 **Dayfly Mail**，适合临时接收验证邮件，也可以在开发自己的应用时手动测试收信。\n\n网站地址：[https://dayfly.email/zh-CN](https://dayfly.email/zh-CN)\n\n目前免费使用，不需要注册账号，也不用填写手机号或个人邮箱。邮箱地址可以随机生成，也可以自己填写前缀。\n\n有效期有 10 分钟、1 小时、24 小时和 3 天可选，默认是 1 小时。收件箱会自动刷新，可以查看文本和 HTML 邮件，用完也能手动销毁。\n\n**使用方法：**\n\n1. 打开网站，选择邮箱有效期。前缀可以自己填，留空就会随机生成。\n\n2. 点击“创建邮箱”，复制生成的完整地址。\n\n3. 把地址填到需要收信的地方，保持当前页面打开，等待邮件到达后查看。\n\n4. 用完后可以点击“立即销毁”。如果没有手动销毁，到期后邮箱会停止访问，过期数据由后台定时清理。\n\n\n有几个限制提前说明：目前只支持收信，不支持发信，也不保存附件。有些网站会屏蔽临时邮箱，不能保证所有验证码都能收到。邮箱到期或销毁后无法恢复，重要账号和找回密码建议使用长期可访问的邮箱。\n\n",
+    "created_at": "2026-11-02T06:09:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13001"
+  },
+  {
+    "id": 13000,
+    "title": "【开源自荐】豆瓣随机：从豆瓣收藏里随机抽一个的 Chrome 扩展",
+    "content": "豆瓣随机是一个 Chrome 扩展：从你自己在豆瓣标过的「想看 / 想读」「看过 / 读过」里随机抽一个，抽到就去看。\n\n项目地址：https://github.com/duola8789/douban-random-picker\n商店安装：https://chromewebstore.google.com/detail/bmaafglngmalgmpglcejlkelemibpdoe\n\n![侧边栏](https://raw.githubusercontent.com/duola8789/douban-random-picker/main/docs/shots/sidepanel.png)\n\n## 为什么做这个\n\n列表的问题不是没有想看的，而是想看的太多。推荐解决「发现」，它解决「收尾」——你缺的不是下一个推荐，是一个不再比较的理由。\n\n所以它刻意不自由：一个类别抽中后只有一个待看，要么去看，要么跳过；跳过每天有限额；不推荐、不打分、不社交。候选全部来自你自己的收藏，只读豆瓣，数据只留在本地。\n\n## 几个工程上的点\n\n- 豆瓣收藏接口要求 Referer，扩展 fetch 设不了；service worker 跨站又不保证带 SameSite=Lax 的 cookie。请求放在 *.douban.com 的 content script 里发，同站、Referer 天然合规，也不需要 cookies 权限。\n- MV3 service worker 空闲约 30 秒休眠，分页循环放在 content script，SW 只做编排。\n- 随机不是合并池里均匀抽：先等概率抽类别，再类内均匀，避免图书条目多就占掉大半。\n\nMIT。非官方工具，与豆瓣无关联。\n",
+    "created_at": "2026-11-02T05:55:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13000"
+  },
+  {
+    "id": 12999,
+    "title": "【开源自荐】基于 Cloudflare 的一款现代化人情往来记账与协作应用",
+    "content": "💡**项目简介：**\n礼尚是一款专注于记录中国\"人情往来\"礼金往来的全栈 Web 应用。帮助家庭管理婚礼、生日、节日等场合的礼金记录，支持多用户协作，提供完善的统计分析和数据备份功能。\n\n🔗 **仓库链接：**\n\n在线演示：https://ledge.952737.xyz\n邮箱&密码：test@163.com/123456\n\n仓库地址：https://github.com/chengzhnag/harmony-ledger-workers\n\n\n💻 **界面预览：**\n\n![项目预览图](https://img.952737.xyz/file/1778551781929_Stitch_20260512_100741.png)",
+    "created_at": "2026-11-02T05:51:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12999"
+  },
+  {
+    "id": 12998,
+    "title": "【网站自荐】Jev-X：每天精选 X 上关于 Jev 决策模型的讨论，由 Jev 自己打分",
+    "content": "网址：https://jev-x.com/zh/\n\nJev 是 TypeSafe AI 推出的 System One 决策模型（周刊第 414 期《Jev 决策模型有什么用》介绍过）。相关讨论每天散落在 X 上数百条帖子里，还夹杂着抽奖和刷互动的内容，很难跟进。\n\nJev-X 收集同时提到 Jev 与 TypeSafe 的帖子，交给 Jev 本身打分（5 档质量分，换算为 0–100）并分类（教程、开源、集成、用例、评测、新闻等），低于 50 分的不展示。读者可以看每日精选（当天质量分前 50）和近 3 天热门（按互动排序，每小时刷新），另有 GitHub 上 Jev 开源项目排行、帖子评分查询和每日讨论统计。排序规则公开，全站中英双语，免费，无需注册。\n\n做这个站的原因：https://jev-x.com/blog/why-jev-x/zh/\n\n我是站长 Rich（X：@Web3wr），本站为社区项目，与 TypeSafe AI 无官方关系。",
+    "created_at": "2026-11-02T05:39:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12998"
+  },
+  {
+    "id": 12997,
+    "title": "【开源自荐】CodeNow：给 Java 开发的本机桌面工具箱",
+    "content": "[CodeNow](https://github.com/pdw1988/codenow)：一款给 Java 开发者的桌面工具，把查表结构、造测试数据、连库查询、Redis、看日志、调接口收在一个窗口。特点是直接扫 Spring Boot 源码列出全部接口（不用 Swagger），表结构支持按中文注释和拼音搜字段。基于 Tauri 2，数据全存本机。（[@pdw1988](https://github.com/pdw1988) 投稿）\n\n![](https://raw.githubusercontent.com/pdw1988/codenow/main/.github/assets/db-query.png)",
+    "created_at": "2026-11-02T05:29:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12997"
+  },
+  {
+    "id": 12996,
+    "title": "【开源自荐】Gately：一站式网络网关，DDNS、反向代理、证书、WAF 装进一个程序",
+    "content": "Gately 是给家庭服务器、NAS 和 VPS 用的网络网关，开源（Apache-2.0），用 Go 编写。公网入口常用的 DDNS、STUN 穿透、端口转发、反向代理、HTTPS 证书自动续期、WAF 和入侵防护，都在一个程序和一个 Web 后台里配置。\n\n项目地址：https://github.com/wangwanjie/gately\n官网：https://gately.cn\n\n![网络拓扑](https://raw.githubusercontent.com/wangwanjie/gately/main/docs/images/zh-CN/topology.webp)\n\n- 多个服务共用 443 端口：按 SNI、Host 或协议特征分流，TLS 原样透传；\n- Web 服务支持 HTTP/3、OWASP CRS 规则的 WAF、OIDC 单点登录，可导入 nginx 配置；\n- 网络拓扑页实时显示访客到后端的流量走向；\n- 默认不连接任何项目方服务器，配置是明文 JSON，每次修改都能回滚；\n- 支持 Docker、飞牛 fnOS、OpenWrt、Linux、macOS、Windows。\n\n我是作者，开发中大量使用了 Claude Code。谢谢阮老师！\n",
+    "created_at": "2026-11-02T05:01:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12996"
+  },
+  {
+    "id": 12995,
+    "title": "【开源自荐】万能翻译站：把文件、文档、游戏、图片拖进窗口，自动识别翻译并替换（Windows 桌面工具）",
+    "content": "万能翻译站是一个开源的 Windows 桌面翻译工具（MIT）。它想解决的事情很具体：翻译一份文档、一个游戏剧本，或者一批截图里的文字，通常要在文件管理器、翻译网站、编辑器之间来回倒腾，复制、粘贴、存回去，每份文件都要走一遍。这个工具把这一串动作收进一个窗口，拖进去，识别、提取、翻译、替换一次走完。\r\n\r\n项目地址：https://github.com/Match0121/universal-translator\r\n\r\n![界面](https://raw.githubusercontent.com/Match0121/universal-translator/main/docs/assets/screenshot-import.png)\r\n\r\n## 能做什么\r\n\r\n- **文档**：Word / Excel / PPT / EPUB / PDF / HTML / Markdown / TXT，支持整个文件夹连子目录一起拖入\r\n- **PDF 保持原排版导出**：文本型原位替换译文，扫描件逐页 OCR 后按图片方式覆盖译文\r\n- **图片批量翻译**：文件夹批量导入，先勾选再识别，结果按文本平铺并带缩略图，可导出覆盖图\r\n- **游戏剧本**：Ren'Py（rpy）、吉里吉里（ks）自动识别，xp3 资源包可解包翻译后重新封包\r\n- **导出组合**：格式（原格式 / TXT / Markdown / HTML / Word / PDF）× 方式（逐个写入文件夹 / 打包 ZIP）\r\n- **逐条编辑**：翻译结果可以直接改原文和译文，导出使用修改后的内容\r\n\r\n## 安装\r\n\r\nWindows 10/11 下载 exe 直接用，不需要装 Python 或任何运行时：\r\n\r\nhttps://github.com/Match0121/universal-translator/releases\r\n\r\n首次运行会提示「未知发布者」，未签名软件的标准提示，点「更多信息 → 仍要运行」即可。\r\n\r\n## 技术栈\r\n\r\nPython + pywebview（WebView2 内核），OCR 用 rapidocr-onnxruntime。翻译引擎支持 MyMemory（免费免配置）、百度、DeepL，以及 OpenAI 兼容接口（可接 Ollama、LM Studio 等本地 LLM）。\r\n\r\n所有处理在本机完成，文件不上传，不需要账号，没有广告。MIT 协议。\r\n",
+    "created_at": "2026-11-02T04:49:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12995"
+  },
+  {
+    "id": 12994,
+    "title": "【开源自荐】FaviconDL：输入网址，下载任意网站的全部图标（ICO/PNG/SVG），附免 Key API",
+    "content": "**网址**：https://favicondl.com/ （开源：https://github.com/sweesama/favicondl.com ）\n\n**一句话介绍**：输入任意网址或域名，找出这个网站实际发布的全部图标（ICO / PNG / SVG / Apple Touch Icon / manifest 图标），预览后直接下载。免费，不用注册。\n\n**为什么做它**：做链接预览、书签页、导航站时经常要拿别人网站的 favicon。很多现成的服务只返回一张 16px 或 32px 的小图，或者已经停服（比如 Clearbit Logo API、favicongrabber）。我想要一个能把网站真实声明的所有图标都列出来、能拿到高清 SVG/180px/512px 的工具。\n\n**主要功能**：\n- 解析页面 HTML、manifest、Apple Touch Icon 等多个来源，列出每个图标的尺寸和格式\n- 一键复制直链和 HTML 代码片段\n- 免 Key 的 JSON API，例如：`https://favicondl.com/api/favicon?url=github.com&format=json`\n- 附带图片转 favicon（生成 16–512px + manifest 的 ZIP）、批量获取最多 100 个域名的图标\n- 界面支持中文、英文、日文、韩文、西班牙文\n\n我是作者，个人项目，没有付费功能。谢谢阮老师和周刊！\n",
+    "created_at": "2026-11-02T02:14:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12994"
+  },
+  {
+    "id": 12993,
+    "title": "【开源自荐】Kiteline：在手机上管理 Claude Code、Codex 的编程 Agent",
+    "content": "Kiteline 把电脑上 Claude Code、Codex、OpenCode 等编程 Agent 的会话同步到 iPhone、iPad 和 Apple Watch，离开电脑也能看进度、回消息、在锁屏上批权限；Agent 做完网页还能自己用 Playwright 测一遍，把截图和测试报告发到手机。不需要 API Key，不改 Agent 配置。\n\n电脑端（Mac、Windows、Linux）以 AGPL-3.0 开源：https://github.com/hon6/kiteline\n官网：https://tars.betac.cn\n\n![Kiteline](https://raw.githubusercontent.com/hon6/kiteline/main/docs/images/hero-zh.jpg)\n",
+    "created_at": "2026-11-02T01:57:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12993"
+  },
+  {
+    "id": 12992,
+    "title": "【网站自荐】Nihongo to Japan：简体中文界面的免费日语自学站（191 课教材＋JLPT N5–N1 语法、单词、测验）",
+    "content": "网址：https://www.nihongotojapan.com/zh-cn\n\n我是 Nihongo to Japan 的作者，一个人做的日语学习网站，有简体中文界面。\n\n- 自学教材：从五十音开始，共 191 课，每课后面有练习题：https://www.nihongotojapan.com/zh-cn/materials\n- JLPT N5–N1 语法讲解、例句和练习：https://www.nihongotojapan.com/zh-cn/grammar\n- 日语水平测试：几分钟测出大概在哪个级别：https://www.nihongotojapan.com/zh-cn/japanese-level-test\n\n主要课程、语法、单词和测验都免费、不用注册；另有可自选的支持方案，提供额外练习和 PDF。网站有广告。\n\n适合想自学日语、准备 JLPT 的读者。谢谢阮老师！",
+    "created_at": "2026-11-02T01:20:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/12992"
+  },
+  {
     "id": 12991,
     "title": "【工具自荐】【Ainance】每天给自己打分的AI分析师📈",
     "content": "每天打开财经新闻，各路观点满天飞：这个要涨、那个要崩……\n可第二天，几乎没人回头看自己说得对不对🤔\n\t\n于是我做了一个必须回头看的 AI 分析师👇\n\t\n✨ Ainance\n\t\nAinance = AI + finance。每天新加坡时间早上 5 点（美股刚收盘），finance-bro（底层的智能体）会读完过去 24 小时的财经新闻，看一遍各个市场的行情，然后发一份早报：\n📰 大白话复盘过去 24 小时：美股、亚洲、加密、大宗商品都发生了什么，每条都附原始新闻链接\n📈 10 个看涨 + 10 个看跌，每个都标 1x～9x 的信心分\n✅ 第二天对答案：每个判断都拿下一个交易时段的真实价格来批改，对就是对、错就是错，全部公开在页面上\n🧠 会长记性：每天把对错总结进一本“错题本”，第二天做判断前先翻一遍\n\t\n🔍 上线前还会自己审稿\n每期发布前，它会把页面渲染出来，在电脑和手机上各截一遍图，对照行情表核对数字、对照日历核对日期，再把措辞改顺\n\t\n📚 每一期都存档，战绩全程公开\n第一期今天早上已经发出，明天早上就有第一张成绩单\n它今天是打脸还是打卡，每天早上来看一眼就知道😂\n\t\n⚠️ AI 写的短线研究观点，每天公开打分，不构成任何投资建议\n\t\nPS：logo 中间那个洞纯属巧合\n\t\n📌 网址：[aeroxy.github.io/ainance](https://aeroxy.github.io/ainance/)（目前是英文的，但用词很简单）",
@@ -702,101 +798,5 @@
     "created_at": "2026-10-30T01:29:53Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12904"
-  },
-  {
-    "id": 12903,
-    "title": "【开源自荐】翻译助手：在输入框里写中文草稿、译文原地替回的浏览器翻译扩展（离线、不上传、开源）",
-    "content": "【开源自荐】翻译助手：在输入框里写中文草稿、译文原地替回的浏览器翻译扩展（离线、不上传、开源）\n\n用外语写回复比读外语更麻烦：读有整页翻译，写却只能自己憋或来回粘贴。这个扩展补的是「写」这一步——在评论框、发帖框、网页版邮箱的正文框里直接用中文打草稿，点框边的「翻译回复」，译文确认后整段替回输入框，发送键仍然在你手上。\n\n项目地址：https://github.com/DreamOfXM/translate-assistant\n\n主要特性：\n\n- 写入式翻译：译文整段替回输入框；写入逐字复核，写坏自动回滚，React 受控输入框和 iframe 里的正文框都能写，绝不代点发送\n- 整页双语对照：译文逐段插在原文下方，只翻正文，导航/广告/评论区不碰；另支持选中即译、悬停即译\n- 五种译文样式：色块、虚线下划线、马克笔、模糊对照、纯译文，一键切换\n- 引擎全部本地：优先用 Chrome 内置的端上模型（138+），否则用内置的 bergamot WASM 引擎（Firefox Translations 同款，116 个语言方向）；语言包装好后断网也能用。也支持接入自己的 AI 服务（默认关闭）\n- MPL-2.0 开源，附 macOS 菜单栏版，可在任意 App 的输入框里完成同样的写入式翻译\n\n![写入式翻译演示](https://raw.githubusercontent.com/DreamOfXM/translate-assistant/main/docs/images/writeback.gif)\n\n![整页双语对照](https://raw.githubusercontent.com/DreamOfXM/translate-assistant/main/docs/images/bilingual.gif)\n\n安装：到 Releases 下载 zip，Chrome 开发者模式加载即可。欢迎试用与反馈。\n",
-    "created_at": "2026-10-30T00:55:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12903"
-  },
-  {
-    "id": 12902,
-    "title": "【开源自荐】WPAForge：在 Android 手机上逐条验证 WPA/WPA2 口令的 Wi-Fi 审计工具",
-    "content": "项目地址：https://github.com/wlmosv-png/wpaforge\n\nWPAForge 是一个跑在 Android 手机上的 Wi-Fi 网络审计工具：在手机本地验证你自己拥有（或已获授权）的路由器的 WPA/WPA2 口令强度。不用电脑，也不把抓包丢到别处算，全部在本机完成。\n\n![WPAForge](https://raw.githubusercontent.com/wlmosv-png/wpaforge/main/docs/banner.png)\n\n它和\"导一份字典跑一遍\"的工具不一样的地方：\n\n- **每条候选都真实发起一次关联**，以 4-Way Handshake 是否完成为唯一判据，逐条给出「成功 / 密码错 / 不确定」，不靠猜\n- **按目标现场生成候选**：SSID、厂商、门牌、姓名、生日、手机号都能当依据；同时支持内置字典，以及自己导入或下载的字典\n- **结果按本机战绩排序**：字典页会直接写「这本在你这里命中过几次、平均几条中一次」\n- 另外带 **WPS（含拆半攻击与断点续跑）**、**局域网侦察**、**离线校验 .cap / .hc22000**（1 万条约 37 秒）、**频谱雷达与信道建议**\n- **不动你原来的网络配置**：动手前先把目标原配置加密记下，收尾写回并回读确认；没还原成功的会留在「审计」页的恢复状态区，可重试\n\n要求 Android 8.0+，**需要 Root**（判定依赖 `su + cmd wifi`）。全程不联网上传任何东西，命中的口令在本机只以密文保存。\n\n> 只用于你自己拥有、或已获得授权的网络。\n\n官网（截图与下载）：https://wlmosv.dpdns.org/wpaforge/",
-    "created_at": "2026-10-29T22:57:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12902"
-  },
-  {
-    "id": 12901,
-    "title": "【开源自荐】Runward：在本地回看多个编程代理的并行活动",
-    "content": "我是 Runward 的维护者，想向周刊自荐这个 MIT 开源的小工具。\n\n仓库：https://github.com/K-kiron/runward\n\n同时开着几个编程代理时，终端里的日志不容易回答一个问题：它们在同一时间分别做了什么？Runward 读取用户明确选择的会话文件，把工具调用、错误、推理摘要和子代理活动排到共享时钟的瀑布图里，并提供控制台、事件时间线和筛选。\n\n它是本地查看器，不负责启动或编排代理，也不自动执行交接。默认仅监听回环地址，没有运行时依赖、前端构建步骤或向外部服务发送的请求；演示也不需要模型账户或 API Key。\n\n目前覆盖 Codex、Claude Code、DeepSeek Harness（DSH）、OpenCode、OpenHands 和 Gemini CLI。Codex 已用真实本地会话检查；Claude Code 使用合成测试；新增加的四种读取器以官方格式和合成样例验证，尚未完成真实模型会话验证。没有时间或 token 数据时，界面保留未知状态。\n\n用 Node.js 22+ 可直接体验合成数据演示：\n\n```sh\ngit clone https://github.com/K-kiron/runward.git\ncd runward\nnpm run demo\n```\n\n然后打开 http://127.0.0.1:4317 。\n\n![Runward synthetic demo](https://raw.githubusercontent.com/K-kiron/runward/main/docs/screenshot.png)\n\n上图为合成数据。导入的原始日志不会自动脱敏，公开反馈请使用最小合成样例。\n\n希望收到多会话时间线是否好用、各工具导出格式是否兼容的反馈，也欢迎贡献解析回归测试和采集说明：[适配文档](https://github.com/K-kiron/runward/blob/main/docs/adapters.md) / [贡献指南](https://github.com/K-kiron/runward/blob/main/CONTRIBUTING.md)。",
-    "created_at": "2026-10-29T22:12:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12901"
-  },
-  {
-    "id": 12900,
-    "title": "【网站自荐】Threezy：每天一局的卡牌找规律小游戏",
-    "content": "推荐一个自己做的网页小游戏。\n\nThreezy：https://threezy.net\n\n桌上有 9 张牌，每张牌有形状、颜色、填充三种属性。要找出 3 张牌组成一组，每种属性必须三张全部相同或者全部不同。每天有一局所有人都一样的每日牌局（2 分钟限时，或者比谁最快找到 10 组），有全球排行榜，也有不限时的无尽模式。\n\n免费、无广告、不用注册，手机和电脑都能玩，界面支持简体中文。一个人开发，部署在 Cloudflare Pages + D1 上。",
-    "created_at": "2026-10-29T21:35:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12900"
-  },
-  {
-    "id": 12899,
-    "title": "【开源自荐】澜姿 - 模特Pose生图工具",
-    "content": "### 澜姿\n\n仓库：https://github.com/wzc520pyfm/gen-ai-pose-image\n在线演示：https://gen-ai-pose-image.vercel.app/\n\n澜姿是一个姿势参考生图工具。从公开的姿势线稿里选一个或多个姿势，也可选择更换衣装集里的衣服，让DeepSeek鲸鱼娘「大肥鱼」按这个姿势出图。姿势图和服装图都不放进仓库，页面按需读取。可导入其他模特。可独立部署，也可装进 DeepSeek Harness。\n\n## 预览\n\n<img width=\"1512\" height=\"824\" alt=\"Image\" src=\"https://github.com/wzc520pyfm/gen-ai-pose-image/blob/main/docs/studio-live.jpg?raw=true\" />\n\n<img width=\"726\" height=\"478\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/237a0391-3aa9-4657-ac7d-2a6f864f2f36\" />\n",
-    "created_at": "2026-10-29T19:41:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12899"
-  },
-  {
-    "id": 12898,
-    "title": "【自荐】三个 AI 图像/视频在线工具",
-    "content": "自荐三个浏览器里就能用的 AI 工具，无需安装：\n\n- [EveryGen AI](https://everygenai.app/)：一站式 AI 图像和视频生成，用文字或图片生成画面。\n- [Face Swap Video](https://faceswap.video/)：在线 AI 换脸，支持视频和照片。\n- [Genjutsu](https://genjutsu.tv/)：把文字和图片变成电影感 AI 视频，还能用动作迁移二创热门片段。",
-    "created_at": "2026-10-29T17:27:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12898"
-  },
-  {
-    "id": 12897,
-    "title": "【自荐】LinkDigest：把小红书/抖音/公众号/B站/小宇宙链接变成 AI 可读的文字",
-    "content": "LinkDigest（ https://linkdigest.dev/zh ）：给 AI Agent 用的链接读取服务。贴一条小红书、抖音、公众号、B站或小宇宙播客链接，返回带时间的逐字稿、每张图和画面上的文字（OCR）、热评，以及每条都逐字核对过原文的要点。支持 Claude Code / Cursor（MCP）、REST API、浏览器扩展；不用登录平台账号、不用 Cookie。注册送 10 积分。作者是独立开发者，欢迎试用和反馈。",
-    "created_at": "2026-10-29T15:56:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12897"
-  },
-  {
-    "id": 12896,
-    "title": "【开源自荐】Gear：打造 RSI 领域的 scikit-learn",
-    "content": "![Gear 框架示意图](https://github.com/user-attachments/assets/0a9ef1d0-622b-4773-9ff0-75913337c7e1)\n\n读了一堆 RSI（递归自我改进）论文，感觉绕来绕去，还是 RL 和进化搜索里的几个老问题：\n\n1. **Sampling**：怎么高效地找到值得尝试的改动？\n2. **评测**：怎么判断新 variant 真的变好了？\n3. **多样性**：怎么避免过早收敛，越进化路越窄？\n\n这些方法不全是 RL，但换成“自进化”的名字，也没让这些问题消失。\n\n所以我们做了 **Gear**。框架采用受 Meta-learning 启发的双层结构：内层 Agent 执行任务、产生轨迹；外层 Meta Agent 根据轨迹和评测反馈，改进提示词、工具、工作流和上下文管理。\n\n我们将搜索决策与执行、评测流程分离，想做 **RSI 领域的 scikit-learn**，让 GEPA、RRSI、Harness² 这类算法更容易实现和比较。目前已经实现了一个包含共享失败诊断和分阶段评测的 GEPA 变体。\n\n固定使用 **GPT 5.6 Luna、medium 推理档位**，任务通过率如下：\n\n| 任务集 | 原始 DSH | Gear 优化后的 DSH |\n| --- | ---: | ---: |\n| AutomationBench Marketing | 27.0% | 40.0% |\n| AutomationBench Support | 17.0% | 25.0% |\n| Terminal-Bench 2.1 | 52.8% | 62.9% |\n\n在 Marketing 的 max 档评测中，Luna + 优化后的 DSH 达到 **88.88% 的目标完成率**，高于 Astra + Codex 的 **84.08%**。不过，严格任务通过率是 **53% 对 57%**，优势体现在部分目标完成度上。\n\n另外，两种模型同用优化后的 DSH、同为 max 档时，Luna 单任务 API 等价费用估算为 **0.0568 美元**，Astra 为 **1.1858 美元**，低约 **95%**，不含优化和基础设施开销。",
-    "created_at": "2026-10-29T15:51:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12896"
-  },
-  {
-    "id": 12895,
-    "title": "【工具自荐】aidesign – 用对话生成可编辑的多页面 UI (可直接在线交互)",
-    "content": "\n网站地址：https://aidesign.lumiflora.cc/\n\n项目简介：\naidesign 是一个 AI 界面设计工具。输入自然语言需求，生成多页面、logo、海报、带结构化图层的 Web UI，生成后可以逐层修改、交互，也可以继续用对话调整当前页面和导出react、vue、html以及将所有设计页面导出为一整个可运行的项目代码。\n\n下面为一段两分钟的演示视频，使用的模型为deepseek -v4-pro和deepseek-v4.1-flash\n\nhttps://github.com/user-attachments/assets/8df30d4f-4971-4e5f-87b1-d1c110c5f074\n\n核心特性：\n\n从一句需求生成整套多页面 UI，不是单张效果图\n设计 Token 变量绑定与一致性检查\n对话式修改当前页面，不需要从头重新生成，支持某一页，某一处细节ai修改，且支持直接代码修改，然后实时预览生效\n\n降低体验门槛：\n不需要注册，项目数据存在浏览器本地。不配置 API Key 也能用内置 Mock 生成器走一遍“需求→生成→编辑”的完整流程。\n\n适用场景：\nSaaS 后台、数据看板、企业官网落地页、移动端 H5、内部工具的高保真原型探索，想快速将想法生成为一个demo的用户。\n\n当前限制：\n暂不支持自部署模型，只支持公网可直连的 OpenAI 兼容公网端点。",
-    "created_at": "2026-10-29T15:46:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12895"
-  },
-  {
-    "id": 12894,
-    "title": "【工具自荐】Rap Video：基于照片生成双人对唱说唱视频与原创伴奏的 AI 工具",
-    "content": "网站：https://rap-video.com/\n\n开发者自荐：本投稿由 Rap Video 开发者提交，与网站存在直接关联。\n\nRap Video 是一个生成式 AI 音乐短视频工具。用户只需上传两张人像照片（或一张合照）并输入简短主题，即可生成两名角色在录音棚悬挂麦克风前交替对唱、自然律动并精准对齐唇形的 15 秒无水印说唱视频。系统会自动编写定制押韵歌词，并生成全新原创 Trap 伴奏。\n\n适用场景是快速生成 TikTok / Reels 热门说唱视频（如 Hotel Lobby 橙色录音棚同款）、朋友生日恶搞或创意送礼。视频时长为 5~15 秒短片段，采用 100% 原创伴奏，避免社交平台版权静音下架。",
-    "created_at": "2026-10-29T15:30:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12894"
-  },
-  {
-    "id": 12893,
-    "title": "【工具自荐】TokensQC：Claude / OpenAI API 协议、响应与延迟检测",
-    "content": "网站：https://tokensqc.com/\n\n开发者自荐：本投稿由 TokensQC 开发者提交，与网站存在直接关联。\n\nTokensQC 是一个面向 AI API 接入排查的网页工具。填写 API 基础地址，选择有权限的模型后，可检查响应结构、流式返回及请求延迟等可观察行为；检查项随模型而异，部分型号还包含工具调用往返检查。站内另有 API 中转站目录和模型参数对比，方便查找接入资料。\n\n适用场景是接入第三方 Claude / OpenAI 兼容 API 后，排查协议不匹配、响应异常和延迟问题。返回的 model 字段或签名字段只能作为行为线索，不能证明底层模型身份；单次结果也不能代表长期稳定性或实际账单准确性。\n\n费用与数据边界：网站工具不收服务费，探针会发送实际 API 请求并消耗目标服务商额度。鉴权信息会经 TokensQC 代理转发至用户填写的服务商，请使用专门的限额测试 Key，不要使用生产主 Key 或真实业务内容，分享结果前注意脱敏。\n\n欢迎就检测范围、误判和使用体验提出反馈。",
-    "created_at": "2026-10-29T15:11:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12893"
-  },
-  {
-    "id": 12892,
-    "title": "【项目自荐】VaultMesh：本地优先的跨平台密码管理器，为 AI Agent 提供 SSH 能力而不暴露私钥",
-    "content": "我想自荐一个本地优先密码管理器：VaultMesh。\n\n\n### 项目简介\n\nVaultMesh 是一个多端支持、本地优先（Local-First）的个人密码与凭据管理器，支持 macOS、Windows、Android 以及 Chrome / Firefox 浏览器扩展。\n\n它没有云端账号、没有中央服务器，加密数据库（Vault）仅存储在用户自己的设备上。除常规的网站凭据、TOTP、SSH 密钥和局域网 P2P 同步外，VaultMesh 针对当前开发者深度使用 AI Agent 的场景，提出了 “只给能力，不给凭据（Capabilities, not Credentials）” 的 Agent 能力代理机制。\n\n![VaultMesh 桌面端界面](https://blog.atlankj.com/_next/image?url=%2Fapi%2Fmedia%2Ffile%2Fvaultmesh-product-hero-20260811.png%3F2026-08-11T13%253A51%253A54.997Z&w=1920&q=100)\n\n---\n\n### 为什么做这个项目？解决的痛点\n\n1. **摆脱云端束缚与数据泄露隐忧**：\n   许多主流密码管理工具依赖远端云服务。VaultMesh 坚持 Local-First，底层加解密与核心逻辑全部由共享的 Rust core 驱动，跨设备同步仅在受信任的局域网内双向传输密文，无云端中转与后门。\n\n2. **AI Agent 时代的凭据安全两难**：\n   开发者在使用 Claude Desktop、Cursor、Cline 或 ChatGPT 执行日常运维、部署和测试时，经常需要让 Agent 访问远程服务器或执行脚本。直接将私钥、明文密码贴进 Prompt 或配置到环境变量中，极易造成私钥外泄或记录在第三方模型日志中。\n\n   为此，VaultMesh 实现了基于标准 Model Context Protocol (MCP) 的 **Agent Capability Broker**：\n   - **零私钥暴露**：Agent 不直接接触私钥文件，而是向本地 VaultMesh 申请一次短时（如 15 分钟）的 OpenSSH Agent 会话；\n   - **系统原生生物识别**：调用时触发宿主机原生 Touch ID / 密码认证弹窗；\n   - **原生协议与零环境侵入**：本地生成单会话独占的 Unix Socket，支持 `ssh`、`rsync`、`git` 等所有原生工具链，私钥仅在 Rust 内存中完成签名，操作完成或超时后即刻安全销毁。\n\n---\n\n### 核心特性\n\n- **多凭据聚合**：卡片式管理网站登录、SSH 凭据、支付卡、身份信息与开发者 API 密钥。\n- **局域网双向同步**：配对设备在同一 Wi-Fi 内自动发现与安全同步，锁定时只传输密文。\n- **浏览器扩展联动**：Chrome / Firefox 扩展作为受控轻量代理，不持久化 Vault，支持安全填充。\n- **短时 SSH-Agent 桥接（亮点）**：让 AI Agent 安全免密操作远程服务器，私钥全程不落盘、不入上下文。\n\n---\n\n- **项目地址：** https://github.com/atlantis-mk/VaultMesh\n- **产品介绍、界面展示与下载：** https://blog.atlankj.com/products/vaultmesh\n\n### 桌面端界面\n\n<img width=\"920\" height=\"654\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/567ce7e0-8ba4-423a-88cb-9a3153469cc1\" />\n\n<img width=\"785\" height=\"413\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/893c8d35-38b9-4bc5-9267-f5e4e43db605\" />",
-    "created_at": "2026-10-29T14:58:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12892"
   }
 ]
