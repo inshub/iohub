@@ -1,5 +1,197 @@
 [
   {
+    "id": 13027,
+    "title": "[工具推荐] OpenMathpix：可离线使用的 Windows 公式截图转 LaTeX 工具",
+    "content": "OpenMathpix 是一个免费的 Windows x64 公式截图识别工具。通过 Ctrl+Shift+S 截图，或粘贴、拖入公式图片，即可获得 LaTeX，并在预览区查看公式、复制源码和查阅历史。\n\n公式模型在本地 CPU 上运行，完成初始化后可离线使用，本地模式无需账号、API Key、Python 或 GPU。适合把论文、课件中的公式整理到 LaTeX 文档和学习笔记。\n\n- 项目与使用说明：https://github.com/JhuoW/OpenMathpix\n- Windows x64 便携版：https://github.com/JhuoW/OpenMathpix/releases/tag/v2026.11.01\n\n![OpenMathpix 本地公式识别](https://raw.githubusercontent.com/JhuoW/OpenMathpix/v2026.11.01/instruct/MFR-example.png)",
+    "created_at": "2026-11-02T17:07:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13027"
+  },
+  {
+    "id": 13026,
+    "title": "[工具推荐] PDF-Editor：免费开源、本地处理的浏览器 PDF 编辑器",
+    "content": "PDF-Editor 是一个免费开源的浏览器 PDF 编辑器，支持直接修改原文、导入 TTF/OTF 字体、添加批注和签名、填写表单，以及合并、拆分、排序和裁剪页面。\n\n文件在浏览器本地处理，打开网页即可使用，提供中文和英文界面。还可以通过本地 OCR 为英语、简体中文扫描件添加可搜索的文字层。\n\n- 在线使用：https://wei2hu0.github.io/PDF-Editor/\n- 源码：https://github.com/JhuoW/PDF-Editor\n- 许可：AGPL-3.0\n\n![PDF-Editor 工作区](https://raw.githubusercontent.com/JhuoW/PDF-Editor/master/docs/imgs/promotion_2.png)",
+    "created_at": "2026-11-02T17:06:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13026"
+  },
+  {
+    "id": 13025,
+    "title": "【开源自荐】tree-todo：树形待办桌面应用，任务无限分叉、状态沿树自动传播（Tauri 2 + Rust，Windows / macOS，MIT）",
+    "content": "阮老师好，我是 tree-todo 的作者，向周刊自荐。\n\ntree-todo 是一个 MIT 开源的桌面待办应用（Windows / macOS），把待办做成可以无限分叉的树，并让完成状态沿着树自动传播。\n\n平铺清单看不出「这条任务线还剩多少活」；换成脑图，结构清楚了，但节点没有 pending / done，做完子任务还得自己回去勾父节点。结构工具和状态工具，一直是两套东西。\n\ntree-todo 把两者合成一个动作，规则只有四条：\n\n1. 勾掉父任务，整条支线一起完成；\n2. 子任务全部完成，父任务自动完成并一路向上传播；\n3. 在已完成的任务下新增子任务，它自动退回待处理；\n4. 取消任一子任务，祖先链全部回到待处理。\n\n所以你永远不用判断「父任务该不该勾」——树的形状本身就是进度的真相。另有平铺视图（只列叶子任务、每条带面包屑路径）、嵌套目录多文档、`⌘F` 搜索定位、按任务线统计、回收站、100 步撤销、明暗主题。\n\n数据本地优先：每个文档一个 SQLite 文件，每次操作即事务写入，没有「保存」按钮，无账号、无联网、无遥测，复制数据目录就是完整备份。\n\n技术上，状态传播只在 Rust 侧实现一次（`propagate.rs` 是纯逻辑引擎，33 个单测），并与数据写入放在同一个事务里，前端只持有渲染快照，快速连点也不会错乱。\n\n安装包已放在 Release 里：macOS 通用包（Apple Silicon + Intel）约 6 MB，Windows x64 安装程序约 2 MB，下载即装，不用自己编译。两者都还没做代码签名——macOS 首次打开请右键「打开」或到「隐私与安全性」里允许，Windows 若提示 SmartScreen 点「更多信息 → 仍要运行」。\n\n开源仓库 / 下载：https://github.com/Jeysin/tree-todo/releases/latest\n技术栈：Tauri 2 + Rust + React 19，MIT",
+    "created_at": "2026-11-02T15:42:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13025"
+  },
+  {
+    "id": 13024,
+    "title": "【开源自荐】howmuchai：GitHub 仓库里有多少代码是 AI 写的",
+    "content": "**howmuchai**：看一个 GitHub 仓库里有多少提交是 AI 编程助手写的。\n\n- 网址：https://maximilianfeix.github.io/howmuchai/\n- 代码：https://github.com/maximilianfeix/howmuchai （MIT）\n\n它读取仓库最近 90 天的提交和 PR，统计带有 AI 助手签名的比例（Claude Code、Copilot、Cursor、Codex、Devin 等的 co-author 署名、机器人账号、PR 页脚、分支名），每个结果都链接到具体的提交。\n\n对星标最多的 1000 个活跃仓库的测量：69% 至少有一个 AI 署名的提交，所有提交中 16% 带签名。\n\n很多人会删掉签名，所以另有一个实验性的估计：把未署名提交的写作风格与该仓库 2022 年以前的提交对比，给出 90% 区间；只有仓库自己公开了至少 10 个 AI 提交时才估计，以免冤枉认真写提交说明的人类项目。\n\n命令行：`npx github:maximilianfeix/howmuchai vercel/next.js`，也有 GitHub Action 和 README 徽章。\n",
+    "created_at": "2026-11-02T15:32:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13024"
+  },
+  {
+    "id": 13023,
+    "title": "【工具自荐】UsageRail：卖 API 时要做的 API key、限流、额度和按量计费，装成服务端中间件",
+    "content": "我是 UsageRail 的开发者。如果你在做一个按次或按 token 收费的 API，收费这一侧的杂活可以交给它：给客户发 API key、按客户限流、扣额度、记用量，再用你自己的 Stripe 账号出账单。\n\n## 怎么接\n\n在 API 服务里加一个中间件，Node.js 和 Python 都有，SDK 是 MIT 开源的。\n\n请求进来时，中间件先查 key、这个客户的限流和剩余额度，放行后把这次请求（或者你上报的 token 数这类单位）记到客户名下。key 和限额是在进程里对着同步下来的副本查的，前面不用再架网关或代理。SDK 仓库里有基准测试脚本，Node.js 22 上查一次加记一次账，p50 大约 5 微秒。\n\n目前支持 Express、Fastify、Hono（含 Cloudflare Workers）、Next.js route handler，Python 这边是 FastAPI、Starlette、Flask 和 Django。\n\n## 价格\n\n每月通过它收的钱不到 1,000 美元时免费，含每月 100 万次请求和 1 个正式应用，不抽成。超过以后按月付，29 美元起。\n\n## 先说清楚的两点\n\n- 账单走你自己的 Stripe 账号，得先有能用的 Stripe。中国大陆主体现在开不了 Stripe，香港等地区可以。\n- 界面和文档目前只有英文。\n\n官网：https://usagerail.com\nSDK 源码：https://github.com/usagerail/sdk\n",
+    "created_at": "2026-11-02T15:28:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13023"
+  },
+  {
+    "id": 13022,
+    "title": "【开源自荐】Project Mode：为 DeepSeek Harness 增加持续协调的多 Agent 项目模式",
+    "content": "项目地址：[Burns1028/dsh-plugin-project-mode](https://github.com/Burns1028/dsh-plugin-project-mode)\n\nProject Mode 是 DeepSeek Harness 的非官方开源插件：主会话里的 Coordinator 持续管理 Worker 子会话，负责派发、复用、引导、排队、审阅结果，并维护项目记录和共享上下文。用户也可以直接进入 Worker 修改任务，再回主会话继续协调。\n\n![实际协作流程：派发 Worker、人工修改要求、Coordinator 接回结果、下一轮复用上下文](https://raw.githubusercontent.com/Burns1028/dsh-plugin-project-mode/v0.1.23/docs/media/project-workflow.gif)\n\n这段约 60 秒的剪辑来自一次真实 CLI 任务：Exporter 改代码和测试，Docs 维护说明；中途人工把排序要求从 A→Z 改成 Z→A，Coordinator 接到结果后跟进文档。下一轮沿用 Worker 与上下文添加一篇笔记，没有重新交代排序规则，最终产物通过 9 项测试。录像剪掉等待并全程标注，不代表任务在 60 秒内完成。\n\n[MP4 演示](https://github.com/Burns1028/dsh-plugin-project-mode/blob/v0.1.23/docs/media/project-workflow.mp4) · [可复现任务](https://github.com/Burns1028/dsh-plugin-project-mode/blob/v0.1.23/docs/demo-workflow.md) · [实际代码和产物](https://github.com/Burns1028/dsh-plugin-project-mode/tree/v0.1.23/docs/demo-result)\n\n项目采用 MIT 协议，目前为 v0.1.23 开发预览，需要 Node 24.9+、npm、Git，以及 DSH 0.2.1-rc.3 和仓库列出的三个兼容扩展。提供 setup/start 命令，在独立目录安装锁定运行时并应用扩展。[安装与兼容说明](https://github.com/Burns1028/dsh-plugin-project-mode/blob/v0.1.23/docs/quickstart.md)。实机验收为 macOS arm64，启动器有 macOS/Linux CI；完整 Windows 安装尚未验收。\n\n作者自荐，欢迎试用与反馈。\n",
+    "created_at": "2026-11-02T15:12:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13022"
+  },
+  {
+    "id": 13021,
+    "title": "【工具自荐】Licentivo：支持 AI 辅助接入的软件授权服务，招募 30 位开发者测试",
+    "content": "我是 Licentivo 的开发者，自荐一个面向独立软件作者和小团队的软件授权服务，希望找开发者在真实项目或小型测试应用中接入，帮助验证接入流程和授权行为。\n\n官网和控制台均支持中文界面，可以使用中文完成产品配置和授权管理。\n\n## 它解决什么问题\n\n给桌面应用、插件、CLI 或开发工具加上软件授权时，除了激活码，还需要处理设备数量、离线使用、功能权限，以及许可证失效后的行为。Licentivo 将这些能力放在同一个控制台和 API 中，支持许可证激活、设备绑定与额度、离线授权、功能权限和浮动席位。\n\nSDK 支持 Go、Java、C、C++、C#、Python、JavaScript、Rust、Ruby，也可以按文档手动集成。\n\n## 想重点验证的部分：AI 辅助接入\n\n1. 在控制台创建产品，配置设备上限、离线策略等授权规则。\n2. 复制控制台生成的英文接入提示词，在自己的项目中交给 AI 编程工具。\n3. 提示词包含 SDK 安装、功能保护、激活、离线处理和检查步骤；开发者审核修改并运行应用。\n4. 自己输入激活码，验证受保护功能的实际行为。\n\n设备上限和离线允许时长等规则可自行配置。希望大家除了测试首次激活，也测试无效许可证、达到设备上限、断网以及重新联网等场景，看看行为是否符合自己的策略。\n\n## 本轮免费试用\n\nLicentivo 是商业托管服务，本次提供限时免费测试：\n\n- 首批 30 个名额，免费使用 Starter 套餐 3 个月。\n- 每个账户享有 1,200 台设备额度，每月 API 调用不限量。\n- 兑换码：`PROMO-AB863D6B201A`\n- 注册后进入控制台，在「用量与账单 / Usage and billing → 兑换码 / Redeem code」中领取。\n- 适用于 2026 年 11 月 2 日 00:00（UTC+8）起注册的账户。领取期为一个月，截止 2026 年 12 月 2 日 21:45（UTC+8），或名额领完为止。\n- 本轮招募中，同一账户限领取一次初始 3 个月赠送。\n\n官网：https://www.licentivo.com/zh/\n\n每条被采纳的建议，或经核实的有效 Bug 报告，可额外获得 1 个月；同一账户通过反馈最多获得 3 个月额外赠送，连同初始试用合计最多 6 个月。\n\n反馈请发送至 support@licentivo.com，注明 Licentivo 账户邮箱。Bug 请尽量附上 SDK/语言及版本、操作系统、复现步骤、预期与实际结果，核实后发放额外月份。\n\n欢迎在评论中讨论接入问题。对我最有帮助的是实际接入时卡在哪一步、配置与运行结果哪里不一致，以及文档或 AI 提示词遗漏了什么。\n\n## 产品展示\n\n<img width=\"1920\" height=\"1080\" alt=\"Licentivo 产品概览\" src=\"https://github.com/user-attachments/assets/245e35a2-9707-439d-95f4-d2f80f7e9a77\" />\n<img width=\"1920\" height=\"1080\" alt=\"Licentivo AI 辅助接入流程\" src=\"https://github.com/user-attachments/assets/8c58939f-c4c0-4ffd-941b-87d2c4dab4e8\" />",
+    "created_at": "2026-11-02T13:53:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13021"
+  },
+  {
+    "id": 13020,
+    "title": "【开源自荐】Friday：让 Claude Code、Codex、Cursor 等编程 Agent 组队干活，一个额度用完任务自动交给另一个（MIT）",
+    "content": "阮老师好，我是 Friday 的作者，向周刊自荐（利益相关）。\n\nFriday 是一个免费、MIT 开源的桌面应用（macOS / Windows / Linux），让 Claude Code、Codex、Cursor、Gemini CLI、GitHub Copilot、OpenCode 等编程 Agent 在同一个项目里组队干活。\n\n起因是我经常做到一半就用完 Claude 的额度，任务只能停着等重置，或者手动切到 Codex，再把整件事从头解释一遍。\n\nFriday 做的事：\n\n1. **共享任务板**：一个 Agent 拆分任务，其他 Agent 认领适合自己的部分。\n2. **Agent 之间直接发消息**：不用你在几个终端之间来回复制粘贴。\n3. **额度用完自动交接**：任务转给另一个 Agent，附带前一个做了什么、改了什么的记录；接手的 Agent 先检查代码、重跑测试，再继续。\n4. **每个 Agent 一个 git worktree**：互不覆盖，你逐个看 diff、在某一行留评论，再提交。\n5. **项目记忆（v0.2.6）**：你纠正过一次的错误，之后在这个仓库里启动的每个 Agent 都会先被告知。\n\n<img src=\"https://raw.githubusercontent.com/splashxmoon/friday/main/docs/assets/agents-in-session.png\" alt=\"Friday 里多个 Agent 在同一个会话中协作\" width=\"640\">\n\n无需账号，用你已有的各家套餐，在你自己的电脑上运行。装了 Node.js 22 也可以一行启动：`npx github:splashxmoon/friday`\n\n开源仓库：https://github.com/splashxmoon/friday\n官网：https://www.tryfridaywork.com\n",
+    "created_at": "2026-11-02T13:34:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13020"
+  },
+  {
+    "id": 13019,
+    "title": "【开源自荐】Konode：无需账号的浏览器同步扩展，书签和标签页存进你自己的坚果云 / GitHub / WebDAV",
+    "content": "阮老师和各位读者好，自荐一个我开发的开源浏览器扩展：**Konode**。\n\n**一句话介绍**：把浏览器的书签、打开的标签页、历史记录和扩展列表，同步到你自己的存储里（坚果云、GitHub 仓库或任意 WebDAV 服务器，也支持 Google Drive）。没有 Konode 账号，也没有 Konode 服务器。\n\n- 开源仓库：https://github.com/konabe-studio/konode （MPL-2.0）\n- Chrome 应用商店：https://chromewebstore.google.com/detail/konode/mmlfiiimnpnjcjhhbldenpcmnibedkfa\n- Firefox 附加组件：https://addons.mozilla.org/firefox/addon/konode/\n- 打不开应用商店的话，[GitHub Releases](https://github.com/konabe-studio/konode/releases) 里有 zip 包，用坚果云、GitHub 或 WebDAV 同步完全正常（这个包不能登录 Google Drive）。\n\n![Konode 弹出窗口：同步状态、数据类型和其他设备的标签页](https://raw.githubusercontent.com/konabe-studio/konode/main/docs/hero.png)\n\n**为什么做它**：我同时用好几个浏览器。浏览器自带的同步只在同一家浏览器之间有效，数据还要经过厂商的服务器。我想要一个能跨浏览器、数据只放在自己存储里的方案。\n\n**特点**：\n- 设置向导里有坚果云卡片，填坚果云邮箱和第三方应用密码就能用，国内不需要 Google Drive。\n- 可选端对端加密（AES-256-GCM），存储服务商也看不到内容。\n- Chrome、Edge、Brave、Helium 等 Chromium 浏览器和 Firefox 可以共用同一个同步文件夹；Android 版 Firefox 也能同步打开的标签页。\n- 删除会同步到其他设备，但一次要删除太多书签时会先拦下，并保存还原点。\n- 可以将指定的书签文件夹排除在同步之外，标签页分组也能随标签页一起恢复。\n- 界面支持简体中文和繁体中文，跟随浏览器语言。\n\n我是作者，个人项目，欢迎提 issue。谢谢阮老师和周刊！",
+    "created_at": "2026-11-02T13:11:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13019"
+  },
+  {
+    "id": 13018,
+    "title": "【软件自荐】Linkit：本地优先的 AI 个人书签与知识助手（Go + Wails + SQLite）",
+    "content": "# 【软件自荐】Linkit：本地优先的 AI 个人书签与知识助手（Go + Wails + SQLite）\n\n### 项目地址\nhttps://github.com/blue-idea/linkit\n\n### 一句话介绍\n跨平台的本地优先个人书签与知识助手，基于 Go + Wails + SQLite 构建，支持本地语义向量检索、404 死链检测与知识图谱。\n\n### 为什么做它\n浏览器书签收藏往往容易变成信息孤岛，积累成千上万个链接后难以检索。商业稍后读服务大多收取昂贵订阅费且依赖第三方云端。\nLinkit 采用 Local-First 架构，数据保存在本机的 SQLite 数据库中，毫秒级响应，保护隐私。\n\n### 核心特性\n1. **本地优先架构**：基于 Go + Wails + SQLite 构建，数据保存在本机，毫秒级检索，断网可用。\n2. **语义向量检索**：不记得标题也能通过模糊意图查找内容。支持接入本地运行开源模型（如 Ollama）或兼容接口。\n3. **链接健康扫描与去重**：自动体检全库链接，一键筛选失效 404 死链与重复书签。\n4. **Spotlight 快速检索**：通过快捷键随时唤出全局搜索与粘贴入库。\n5. **知识关联图谱**：交互式节点网络，探索书签之间的主题联系。\n6. **全平台支持**：支持 macOS（提供 Homebrew Tap）、Windows 及 Linux。\n\n### 截图展示\n![Linkit 仪表盘工作台](https://raw.githubusercontent.com/blue-idea/linkit/main/ui/screenshot/dashboard.png)\n\n### 说明\n我是作者，个人开发的免费工具（主仓提供预编译安装包与项目说明）。欢迎阮老师与周刊读者试用与反馈！\n",
+    "created_at": "2026-11-02T13:10:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13018"
+  },
+  {
+    "id": 13017,
+    "title": "【网站自荐】HumanizeAI：把 AI 草稿改得更像人写的免费润色工具",
+    "content": "**网址**：https://humanizeaiwork.com/\n\n**一句话介绍**：把 ChatGPT 等生成的英文草稿，改写成更自然、好读的文字。免费，有几种风格可选。\n\n**为什么做它**：AI 草稿常有套话和生硬节奏。我想做一个打开即用、不用注册的网页润色器，方便改完自己再过一遍再发布。\n\n**说明**：工具只做改写辅助，发布前请自行核对事实与含义。我是作者，个人项目。谢谢阮老师和周刊！",
+    "created_at": "2026-11-02T12:45:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13017"
+  },
+  {
+    "id": 13016,
+    "title": "【网站自荐】听说了吗？（AnyMesgs）：把 AI 热点讲成人话的中文解读站",
+    "content": "**网址**：https://anymesgs.com/ ｜ RSS：https://anymesgs.com/rss.xml\n\n**一句话介绍**：中文 AI 资讯解读站。每天把行业里的新东西看懂、判断靠不靠谱，再用人话讲明白；文章常配动图、交互和类比。\n\n**为什么做它**：AI 新闻又多又碎，标题党也多。我想做一个偏「讲清楚」而不是「追热点刷屏」的阅读站，并提供 RSS 方便订阅。\n\n我是作者。谢谢阮老师和周刊！",
+    "created_at": "2026-11-02T12:45:16Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13016"
+  },
+  {
+    "id": 13015,
+    "title": "【网站自荐】Nano Banana 指南：本地/离线替代与 API 对照",
+    "content": "**网址**：https://nano-banana.live/ （相关仓库：https://github.com/sweesama/nano-banana ）\n\n**一句话介绍**：独立整理的 Nano Banana（Gemini 图像）使用说明页：能不能本地跑、有没有开源替代、API 怎么对接，对照写清楚。\n\n**为什么做它**：很多人搜「Nano Banana 本地」「离线」「开源」时，结果很散、说法不一。我想把常见问题和可行路径收成一页，方便查。\n\n**说明**：这是指南站，不是官方产品页；内容会随官方能力变化更新。我是作者，个人项目。谢谢阮老师和周刊！",
+    "created_at": "2026-11-02T12:45:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13015"
+  },
+  {
+    "id": 13014,
+    "title": "【网站自荐】Color Genius：拖 RGB 滑块还原颜色的色感测试小游戏",
+    "content": "**网址**：https://colorgenius.art/\n\n**一句话介绍**：屏幕给出一个颜色，你拖 RGB 滑块去还原它，越接近分数越高。有多种难度，成绩可以上全球排行榜。\n\n**为什么做它**：设计师和前端经常要估色、对色。我想做一个不用注册、打开就能玩的网页小游戏，顺带练眼力。\n\n**主要功能**：\n- 多种难度的 RGB 匹配\n- 全球排行榜\n- 还有每日配色挑战页 `/daily`\n- 免费，免注册，手机电脑都能玩\n\n我是作者，个人项目。谢谢阮老师和周刊！",
+    "created_at": "2026-11-02T12:45:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13014"
+  },
+  {
+    "id": 13013,
+    "title": "[probe] please ignore",
+    "content": "probe",
+    "created_at": "2026-11-02T12:44:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13013"
+  },
+  {
+    "id": 13012,
+    "title": "【开源自荐】PixelsAgentBridge - 让 AI Agent 跨网络操作你的设备，120+ MCP工具大大提高多机协调开发，部署，调试效率。跨平台+管理后台全面开源。",
+    "content": "### **Pixels Agent Bridge**\n[Github地址](https://github.com/PixelsCloud/PixelsAgentBridge)\n> 让 AI Agent 跨网络操作你的设备\n<img width=\"300\" height=\"90\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/9a141d77-0ae4-449f-b0f4-47dbcff61e8d\" />\n\n### 主要功能\n0. Agent操作：Agent可以直接使用MCP工具，连接远端计算机，操作，部署，传输文件，运行，调试，端口映射，文档，网页处理等。\n1. 远程桌面：独立窗口查看画面，支持切换屏幕、鼠标键盘、全屏及文字／PNG 图片剪贴板同步。可选 15／30／60 FPS 上限，默认 30 FPS；使用本机指针并同步远端样式。默认只查看，已占用会话需明确确认后才能接管。\n2. 命令与终端：运行程序、使用独立交互式终端窗口、查看任务输出；Windows 在支持的环境下提供 System 终端。\n3. DeepSeek Harness 插件：在 DeepSeek Harness 侧栏直接登录、添加和管理设备、打开远程终端、查看任务记录，配合 Agent 跨设备执行任务；操作端无需另装 Pixels 桌面应用。\n4. 文件操作：独立双栏文件传输窗口，支持设备标签页、文件／文件夹传输、进度、速度和用时展示。同名冲突可选择替换、跳过或保留两者，并将选择用于本次传输后续冲突。MCP 也支持文件搜索、编辑、复制和压缩。\n5. 桌面自动化：在 Windows、macOS 上获取 JPEG 截图、查询窗口与 UI 控件、发送键鼠输入。\n6. 系统与开发工具：查询系统资源、进程和网络，执行平台支持的服务管理、Git 和 Docker 操作。\n7. 文档与浏览器：提取和搜索文档、渲染支持的格式、离线 OCR，以及操作 Pixels 启动的浏览器。Agent 遇到需要人工处理的环节时可以请求协助。\n8. Android 被控端：在系统授权范围内提供无障碍界面操作、截图、文件、应用、通知、命令和网络工具。电脑上的文件传输与终端窗口可使用手机应用自身身份和已授权访问范围，不提供 Root 或 ADB shell 权限。  \n9. 桌面管理：管理设备、查看本地任务记录和各 Agent 的 MCP 连接。支持简体中文、英文及亮暗主题。账号与 Web 后台：登录、管理用户和设备，设置 Relay 节点容量、监控连接、维护节点及停用／恢复。任务记录只保存在本地，不上传服务端。\n\n  \n#### 视频演示： 查看客户内网部署的本地AI服务的状态\nhttps://github.com/user-attachments/assets/28282df6-9554-4cba-be39-b36a6aed1e28\n\n### 软件展示\n\n1. 主界面，类远控软件，快速添加，管理设备。\n<img width=\"1568\" height=\"1003\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c716a335-1ba5-4863-bd2d-b95eb0b42d09\" />\n\n2.  使用示例\n<img width=\"1281\" height=\"828\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f845f7d6-2607-4bdd-8ccb-c365da3efa1b\" />\n\n3.  远程命令行\n<img width=\"1650\" height=\"1080\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a125bb7c-20e7-46f4-a242-23977b4f9a8c\" />\n\n4. 远程桌面\n<img width=\"2339\" height=\"1381\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ca3a6896-7acf-42f4-b570-8bcb4ed61242\" />\n\n6.  文件传输\n<img width=\"1800\" height=\"1140\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6cae5ca9-a3d4-4bfd-9ddc-d06835d97aad\" />\n\n7. Deepseek harness 插件\n\n<img width=\"2171\" height=\"1482\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/21a9117d-d4c9-466e-b19f-518ed9f4ef95\" />\n\n8. 后端管理，管理多设备\n\n<img width=\"2799\" height=\"1660\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b0373919-78fa-44ab-b0c9-6ed67073f5b4\" />",
+    "created_at": "2026-11-02T12:23:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13012"
+  },
+  {
+    "id": 13011,
+    "title": "【开源自荐】OpenTandem：用手机指挥多台电脑上的 Claude Code、Codex 等 AI 编程工具",
+    "content": "阮老师好，我是 OpenTandem 的作者，向周刊自荐（利益相关）。\n\nOpenTandem 是我们做的一个部分开源的项目，帮用户把多台电脑上的多个 AI 编程工具集中到一个页面管理，离开电脑后，也能用手机继续指挥它们干活。\n\n起因是我们自己同时用着好几个 AI 编程工具（Codex、Claude Code、OpenCode 等），在电脑前要在多个窗口之间来回切换，还要用 SSH 管理好几台 Mac mini；出门在外或者周末休息时，想利用碎片时间让 AI 继续干活、把 token 用起来，又只能等回到电脑前。\n\nOpenTandem 把这两件事一起解决了，目前已支持 Claude Code、Codex、OpenCode 等 18 个 Agent：\n\n1. **换 Agent、换模型，任务接着跑**：原有对话和产物都保留，还能看到每个 Agent 的实时额度。\n\n   <img src=\"https://raw.githubusercontent.com/opentandem/opentandem/main/.github/media/agent-model-zh.gif\" alt=\"在同一个任务里切换 Agent 和模型\" width=\"460\">\n2. **换到手机，任务接着做**：在手机上接着对话、看进度、打开生成的文件。\n\n   <img src=\"https://raw.githubusercontent.com/opentandem/opentandem/main/.github/media/mobile-workflow-zh.gif\" alt=\"在手机上继续同一个任务\" width=\"460\">\n3. **远程预览电脑上的 localhost**：电脑上跑起来的网页，在手机上也能直接打开看效果。\n4. **派任务前，先看哪台机器就绪**：每台电脑是否在线，实时显示。\n\n   <img src=\"https://raw.githubusercontent.com/opentandem/opentandem/main/.github/media/machine-onboarding-zh.gif\" alt=\"添加电脑并选择机器发送任务\" width=\"460\">\n5. **任务、对话、产物，都在一个地方**：按项目整理，换哪台设备都能打开。\n\n   <img src=\"https://raw.githubusercontent.com/opentandem/opentandem/main/.github/media/task-artifacts-zh.gif\" alt=\"按项目整理任务并在另一台设备打开产物\" width=\"460\">\n\n上手只需要在电脑上运行 `npx opentandem@latest remote`，再用手机扫码允许，这台电脑就连上了。\n\n一些和我们需求相似的用户试过以后就一直在用。适合一人公司（OPC）、AI native 团队，以及同时在几台电脑上跑好几个 Agent 的用户，欢迎来试试，有问题可以在仓库 issues 里找我们。\n\n开源仓库：https://github.com/opentandem/opentandem\n官网：https://opentandem.org/zh\n",
+    "created_at": "2026-11-02T11:49:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13011"
+  },
+  {
+    "id": 13010,
+    "title": "【开源自荐】PasteFerry 隔空贴：电脑手机互传文件、多设备剪贴板同步，支持 Mac / Windows / Linux / Android / Web",
+    "content": "阮老师和各位读者好，自荐一下自己开发的免费开源工具：**隔空贴 PasteFerry**。\n\n**PasteFerry 是一款跨平台剪贴板同步、剪贴板历史管理和文件传输工具。Mac、Windows、Linux 多台电脑之间，可以「这台复制，那台粘贴」，也能跨网络传文件；Android 提供原生客户端，iPhone、iPad 和 Android 还可以扫码使用网页互传。**\n\n- 开源仓库：https://github.com/baiyuze/pasteferry\n- 官网与下载：https://pasteferry.cc/download/\n- 上手教程：https://pasteferry.cc/start/\n- 国内镜像：https://gitee.com/baiyuze/pasteferry/releases\n- 最新版本：[2.8.3](https://github.com/baiyuze/pasteferry/releases/tag/v2.8.3)，2026-11-01 发布，AGPL-3.0 开源。\n\n### 主界面：把多台设备的复制记录找回来\n\n![PasteFerry 隔空贴主界面：多设备剪贴板同步、历史搜索与分类](https://raw.githubusercontent.com/baiyuze/pasteferry/main/docs/assets/screenshots/history-dark.png)\n\n同时用 Mac、Windows 和 Linux 时，复制链接、截图、代码片段，或者把文件从一台设备拿到另一台，经常要借助聊天软件、网盘或数据线。隔空贴希望把这些日常操作放进同一个工具：自己的设备配对后同步剪贴板，需要传资料时直接发送，之前复制过的东西也能搜索找回。\n\n### 这次更新了什么\n\n**1. Android 手机也有独立的「隔空传送」了**\n\n手机与电脑可以双向传文件，支持批量选择照片和文件、发送文件夹、查看进度、断点续传；收到的文件可以保存或分享给其他 App。同一局域网使用加密 TCP 连接，当前支持 Android 9+、ARM64 手机。\n\n**2. 网页互传增加了独立文件传输页面**\n\n手机不想安装 App，或使用 iPhone / iPad，可以扫描电脑上的二维码，在浏览器里使用。除了查看电脑的复制记录、发送文字和照片，现在也支持批量文件上传、加密下载、进度和传输记录。电脑可以给已经登记的浏览器排队发送文件；独立文件传输不会改动剪贴板。\n\n**3. 改进连接恢复和传输操作**\n\n最新 2.8.3 改进首次连接失败后的恢复，连接建立时显示「连接中」，减少误报版本不兼容；好友文件传输可以取消，等待对方接收和排队中的任务也能取消，重新打开对话仍可查看进行中的任务。\n\n### 目前能做什么\n\n| 需求 | 支持情况 |\n| --- | --- |\n| Mac 与 Windows 共享剪贴板 | 支持，Linux 也可加入，多台已配对设备同步 |\n| 复制文字、富文本、图片、文件、文件夹 | 桌面端支持，小文件自动传输，大文件可按需获取 |\n| 跨网络同步与传文件 | 桌面端支持，启用官方服务或自建服务，优先 NAT 打洞直连，失败时加密中转；也可配合 Tailscale |\n| 剪贴板历史管理 | 支持搜索、分类、预览、收藏，中文可用拼音搜索 |\n| 快捷粘贴 | Mac 按 Option+V，Windows / Linux 按 Alt+V，可调整快捷键 |\n| 文件与文件夹传输 | 支持拖放、进度、断点续传、SHA-256 校验 |\n| 给好友发文件 | 好友码添加联系人，对方确认后接收，可设置自动接收；好友看不到自己的剪贴板 |\n| Android 手机电脑互传 | 原生客户端，当前支持局域网内使用 |\n| iPhone / iPad / Android 网页互传 | 扫码免安装，需与电脑处于可互访的同一局域网 |\n| 自建服务 | 支持 Linux、macOS、Windows 和 Docker |\n\n### 文件传输：选设备，发文件\n\n![PasteFerry 跨平台文件传输主界面：设备雷达、文件夹传输和进度](https://raw.githubusercontent.com/baiyuze/pasteferry/main/docs/assets/screenshots/send-dark.png)\n\n### 多设备管理与跨网络连接\n\n设备页显示配对和在线状态；同一局域网无需部署服务器，跨网络可使用官方或自建服务。直连时内容在设备之间传输，需要中转时服务器转发端到端加密数据。实际能否打洞直连取决于网络环境；官方中转目前默认每天 100 MB，直连流量不计入中转额度，实际额度以客户端显示为准。\n\n![PasteFerry 多设备管理：已配对设备、直连、中转与离线状态](https://raw.githubusercontent.com/baiyuze/pasteferry/main/docs/assets/screenshots/devices.png)\n\n![PasteFerry 跨网络连接设置：官方服务与自建服务器](https://raw.githubusercontent.com/baiyuze/pasteferry/main/docs/assets/screenshots/official-settings-dark.png)\n\n### 好友传文件\n\n![PasteFerry 好友传文件：联系人、发送记录与自动接收设置](https://raw.githubusercontent.com/baiyuze/pasteferry/main/docs/assets/screenshots/friends-page-dark.png)\n\n### 手机网页互传入口\n\n下图是电脑端的扫码入口。手机打开的是这台电脑提供的网页，可查看复制记录和互传文件，无需注册一个共同账号。\n\n![PasteFerry 手机网页互传电脑端扫码入口：适用于 Android、iPhone 和 iPad](https://raw.githubusercontent.com/baiyuze/pasteferry/main/docs/assets/screenshots/web-share-dark.png)\n\n### 历史收藏与快捷粘贴\n\n![PasteFerry 收藏页面：保存常用文本、链接、图片与文件](https://raw.githubusercontent.com/baiyuze/pasteferry/main/docs/assets/screenshots/favorites-dark.png)\n\n![PasteFerry 快捷粘贴浮窗：搜索历史并粘贴到当前应用](https://raw.githubusercontent.com/baiyuze/pasteferry/main/docs/assets/screenshots/card-picker-dark.png)\n\n### 手机端的实际边界\n\n- **跨网络能力目前主要在桌面端**；Android 和网页互传当前用于局域网。\n- Android 可以接收电脑复制的文字并写入手机剪贴板；手机上复制的文字，需要粘贴到发送框后主动发送。iPhone / iPad 暂无原生 App，使用网页互传。\n- 网页文件传输需要页面保持打开；单文件上传上限 4 GB、下载上限 200 MB，每批最多 64 个文件。中断的网页上传需要重新选择文件，传输记录刷新后保留。\n- 网页由电脑通过局域网 HTTP 提供，内容单独加密，但不能防止网页代码被主动篡改，适合可信的家庭或办公网络；它与原生客户端的端到端加密连接方案不同。\n\n### English summary\n\n**PasteFerry** is a free, open-source **cross-platform clipboard manager** with **multi-device clipboard sync**, **peer-to-peer file transfer** and **self-hosting**. Desktop apps support **macOS, Windows and Linux**, including clipboard sharing and file transfer across different networks. The **Android app** supports local-network file and folder transfers with resume support. **Browser-based phone-to-PC file transfer** works on Android, iPhone and iPad without installing an app, with batch uploads, encrypted downloads and transfer history.\n\n欢迎试用，也欢迎反馈多电脑办公、手机电脑互传、跨网络同步等场景下的问题。\n",
+    "created_at": "2026-11-02T11:45:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13010"
+  },
+  {
+    "id": 13009,
+    "title": "【开源自荐】Web Printer：HTML 分页导出工具，解决了复杂页面的内容截断、跨页错乱和长文档白屏问题",
+    "content": "自荐一个最近开发的开源项目 **Web Printer**。\n\n- **GitHub**：[https://github.com/darialan/web-printer](https://github.com/darialan/web-printer)\n- **在线体验**：[https://pdf-demo-phi.vercel.app/?lang=zh](https://pdf-demo-phi.vercel.app/?lang=zh)\n\nWeb Printer 是一个浏览器端 HTML 分页导出工具，尽量保留网页原有样式，将长文章、业务报表、合同等页面导出为 PDF 或逐页图片。\n\n做这个项目主要是为了解决 [[html2pdf.js](https://github.com/eKoopmans/html2pdf.js)](https://github.com/eKoopmans/html2pdf.js) 在复杂页面导出中容易遇到的几个问题：**文字被截断、表格跨页不完整、布局偏移，以及长文档导出空白**。\n\n它主要做了三方面改进：\n\n- **内容感知分页**：测量真实文字行和表格行，在合适的位置分页，避免直接从文字或表格中间切断。\n- **保留原有布局**：使用离屏 DOM 快照进行测量与渲染，尽量保持网页原有的 CSS 样式。\n- **逐页渲染**：不再先生成一张超长 Canvas，而是逐页生成 PDF，降低长文档遇到 Canvas 尺寸限制的风险。\n\n还做了一组与 html2pdf.js 的 Benchmark 对比。在本机测试中：\n\n- **5 页文档**：导出速度约快 **2 倍**（2.17s vs 4.38s）。\n- **复杂表格**：导出速度约快 **2.5 倍**（1.24s vs 3.12s）。\n- **20 / 50 页文档**：Web Printer 通过内容完整性校验，而 html2pdf.js 在相同测试中出现内容重复或空白页。\n\n测试基于 Chromium 141、html2pdf.js 0.14.0 和仓库中的 Web Printer 3.0 开发代码，每组运行 3 次取中位数。详细数据和复现方法见 [[Benchmark 报告](https://github.com/darialan/web-printer/blob/master/docs/benchmark.md)](https://github.com/darialan/web-printer/blob/master/docs/benchmark.md)。\n\n项目基于 TypeScript，支持 React 等前端项目接入，完全在浏览器端执行，无需服务端 PDF 服务，采用 MIT 开源协议。\n\n欢迎试用和反馈！",
+    "created_at": "2026-11-02T11:44:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13009"
+  },
+  {
+    "id": 13008,
+    "title": "【网站自荐】Particle Logo：把 Logo 变成粒子动画的在线工具，可导出视频、GIF 和代码",
+    "content": "Particle Logo：https://particlelogo.com/zh\n\n在浏览器里使用的 Logo 粒子动画工具，不用安装软件。上传 PNG、SVG、JPG 或 WebP 格式的 Logo，工具把图形采样成点阵，再用 9 种效果之一让粒子组成这个 Logo。它要解决的是这类事：想给品牌片头、网站首屏或加载页做一段 Logo 粒子动画，但不想为此学一套专业的动效软件。\n\n- 9 种效果：包括 Quantum Condense、Vortex Singularity、Hologram Raster Scan、Cymatics Resonance 等。可以调点阵密度、粒子大小和速度，保留原图颜色或选金属质感，实时 60 FPS 预览。\n- 导出：视频（MP4 或 WebM，取决于浏览器）、GIF、单个 HTML 文件、Vue 3 组件、React 组件、Framer 和 Webflow 嵌入代码，以及点阵 JSON。组件不依赖任何库，用一个 canvas 的 2D 接口绘制，最多嵌入 1,600 个点，可以传 0–100 的 progress 值，和页面加载进度同步。\n- 另有“粒子文字”：输入文字生成粒子动画。\n- 图片只在浏览器里采样和渲染，不上传服务器。\n\n免费和收费的边界：免费版可以预览全部 9 种效果，导出带小水印的视频和 GIF，并复制 HTML 文件；Pro 每月 6.99 美元，或一次性 34.99 美元终身使用，去水印，另有 4K 视频、透明背景、Vue / React / 嵌入代码 / JSON 导出和商用授权。界面有简体中文和 English 两种语言。\n",
+    "created_at": "2026-11-02T10:27:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13008"
+  },
+  {
+    "id": 13007,
+    "title": "【网站自荐】奶蛙 Hub：支持中英文与图片文字检索的免费表情包图库",
+    "content": "我是奶蛙 Hub 的维护者，推荐一个免费、无需注册的表情包检索站：[Naiwa Hub / 奶蛙 Hub](https://naiwahub.com/zh)。\n\n它主要整理 Naiwa（奶蛙）的反应图、完整 GIF 和角色变体，解决群聊里记得一句配文、却找不到原图的问题：\n\n- 可以输入中文、英文或图片里的文字检索，也能按心情、角色和话题浏览。\n- [经典馆](https://naiwahub.com/zh/classics)适合先认识常见表情；[统一图库](https://naiwahub.com/zh/memes)支持继续筛选和查看动图。\n- 动图保留完整动画；条目有稳定链接和来源记录，社区提交经过人工审核后进入图库。\n- 个人收藏和屏蔽保存在浏览器中。\n\n相关公开资料：[GitHub 素材索引](https://github.com/fisher-byte/NaiwaHub)，包含双语元数据、稳定 ID、来源、文件 SHA-256 和逐项权利状态。该仓库是素材索引，网站应用代码没有在此仓库公开。\n\n站点同时提供[英文版](https://naiwahub.com/)，便于向不认识中文的朋友解释、查找这一类反应图。本帖为站点维护者自荐，供周刊资源栏参考。\n",
+    "created_at": "2026-11-02T10:19:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13007"
+  },
+  {
+    "id": 13006,
+    "title": "【开源自荐】吟诗：给古诗词每个字标上拼音的网页，可背诵、默写、看诗人足迹",
+    "content": "吟诗是一个开源的古诗词阅读网页，打开就能用，不用注册。\n\n- 每个字上方标带声调的拼音，课本读音为准，多音字可点开改读音\n- 横排、竖排、田字格三种版式，适合给孩子读诗、描红\n- 遮字背诵、填空默写、朗读、飞花令、诗词接龙\n- 学习列表：家长或老师建一份「今日作业」，生成链接发给孩子，按 朗读 → 跟读 → 背诵 → 默写 依次练\n- 诗人足迹地图：李白、杜甫、苏轼等八位诗人一生的停留地，点地名看在那里写的诗\n- 纯静态页面，数据都存在本机浏览器，无账号、无统计\n\n网址：https://ttnan.github.io/yinshi/\n代码：https://github.com/TTNAN/yinshi （MIT）\n\n![吟诗](https://raw.githubusercontent.com/TTNAN/yinshi/main/docs/screenshots/desktop.webp)",
+    "created_at": "2026-11-02T09:37:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13006"
+  },
+  {
+    "id": 13005,
+    "title": "【开源自荐】Everything Skills：按任务检索和组合 AI Agent 技能",
+    "content": "我是项目维护者 findscripter，向周刊自荐 Everything Skills。\n\n使用 Agent Skills 时，往往需要先判断“这个任务该选哪份指令、还要搭配什么”。项目按领域组织技能，提供任务检索、分类筛选和关系导航，并为 Claude Code 提供按卷安装入口。在线检索无需登录。\n\n- [在线体验](https://findscripter.github.io/everything-skills/?lang=zh)\n- [公开仓库](https://github.com/findscripter/everything-skills)\n- [教学案例](https://github.com/findscripter/everything-skills/tree/main/examples)：接手陌生仓库、论文导读与引用核查、API 变更评审。\n\n每个案例公开输入、叙述产物、自有复现脚本及验证范围。库内技能与外部仓库目录分开展示；关系来自声明，帮助选择工作流，不表示自动编排或全部技能已经运行验证。\n\n![33 秒实际检索演示](https://raw.githubusercontent.com/findscripter/everything-skills/main/assets/demos/catalog-walkthrough.gif)\n\n这是维护者自荐。介绍文字由 AI 辅助整理，链接、功能和案例检查范围已对照公开仓库核对；欢迎反馈检索缺口和首次使用问题。\n",
+    "created_at": "2026-11-02T09:09:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13005"
+  },
+  {
+    "id": 13004,
+    "title": "【工具自荐】Gibbai：在 Windows 查找、预览本地模型，并用于 Blender",
+    "content": "我是 Gibbai 产品方，推荐一个面向 Windows／Blender 用户的本地 CG 素材工具。\n\n如果本地模型文件已经积累了很多，用时仍需要逐个翻目录，Gibbai 提供了一条可视化查找和复用路径。下面的 30 秒真实演示展示添加本地目录、挑选模型、3D 预览，以及拖入 Blender：\n\nhttps://www.bilibili.com/video/BV1bxxe6CEyR/\n\n官网和当前功能说明：https://www.gibbai.com/\n\n基础功能免费；AI 功能需有效试用或会员。这里是产品方自荐，欢迎有本地模型整理需求的用户查看演示并反馈。",
+    "created_at": "2026-11-02T09:00:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13004"
+  },
+  {
     "id": 13003,
     "title": "[项目自荐] Local Rewrite Lab：让英文改写参考自己的写作风格",
     "content": "留学生润色自己写的英文作业，常会遇到改完不像自己的问题。Local Rewrite Lab 可以用自己的旧作作风格参考，在本地生成改写候选，并保留原文方便核对。也适合英文邮件、技术文档等表达调整；作业场景请遵守课程对 AI 编辑的要求。\n\n项目基于 llama.cpp 和 Gemma-2-Ataraxy-9B，支持 TXT / JSONL 批处理，已在 18GB 的 M3 Pro 上测试。仓库提供中英文运行说明和 GPTZero 案例记录。\n\n项目地址：https://github.com/Yed-13/local-rewrite-lab\n\n这是项目方自荐，欢迎试用并反馈改写质量和安装体验。",
@@ -606,197 +798,5 @@
     "created_at": "2026-10-31T03:09:01Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12928"
-  },
-  {
-    "id": 12927,
-    "title": "【开源自荐】PageSift：用 Rust 编写的网页内容引擎，把网页、PDF 和 Office 文档变成干净的 Markdown 和结构化数据",
-    "content": "PageSift 是一款用 Rust 编写的开源网页内容引擎，把杂乱的网页、PDF 和 Office 文档变成干净的 Markdown 和结构化数据，专为 AI Agent 与 RAG 流水线提供数据。\n\n- 项目地址：https://github.com/YOLOW92/pagesift\n- 开源协议：AGPL-3.0，当前版本 0.81.x，约 175 个 GitHub star\n\n主要特点：\n\n- 兼容 Firecrawl / Jina Reader 的 API，自带 MCP 服务器，单二进制即可自托管\n- PDF 转 Markdown 比 pypdf 快约 22 倍，一次 2 亿任务量级的运行内存峰值只有 888 MiB",
-    "created_at": "2026-10-31T02:43:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12927"
-  },
-  {
-    "id": 12926,
-    "title": "【网站自荐】HACKERS：帮新手挑一个真能做完的黑客松或 Kaggle 比赛",
-    "content": "网址：https://hackers.pocketplay.win/zh/\n\n把 Devpost 上正在报名的黑客松和 Kaggle 比赛放在一张图里，按“新手能不能做完”排序。\n\n- 每个比赛都标出奖金、倒计时和新手友好分，友好分的计算公式公开在页面上。图上横轴是剩余时间，纵轴是友好分，一眼能看出哪些还来得及。\n- 截止日历把未来几周的截止日期排在一起，方便规划周末项目。\n- 附新手攻略，覆盖选题、组队到提交，中英文都有。\n\n免费，不用登录。英文版：https://hackers.pocketplay.win/en/",
-    "created_at": "2026-10-30T20:29:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12926"
-  },
-  {
-    "id": 12925,
-    "title": "【开发者自荐】Yenpo：和 AI 一起写项目时，读懂它改了哪些代码（macOS）",
-    "content": "Yenpo 是一个 macOS 桌面应用，用来在和 Claude Code、Codex 这类 agent 一起写项目时，读懂和审查 AI 写的代码，跟上它的思路。它不接入 Claude Code、Codex、Cursor 或 GitHub，看的是你本地仓库里的改动。\n\n- 直接读取本地的 git 仓库，按改动列出 AI 改过的文件，逐个看行内 diff\n- 内置 AI Reader，默认只读，可以对着代码问\"这段为什么这么改\"；用你自己的模型服务商\n- 自带终端和编辑器，看完可以顺手改\n- 不需要注册账号，应用内没有遥测\n- 支持 macOS 14+，界面有 10 种语言\n\n网址：https://yenpo.app/zh/?utm_source=ruanyf\n20 秒演示：https://yenpo.app/media/demo/yenpo-demo.gif\n\n这是我的个人项目，欢迎试用和提意见。\n",
-    "created_at": "2026-10-30T16:11:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12925"
-  },
-  {
-    "id": 12924,
-    "title": "【开源自荐】Engramory：AI 编程助手的 Markdown 长期记忆，附 DeepSeek Harness 插件",
-    "content": "Engramory 是一套给 AI 编程助手用的长期记忆规范，MIT 开源。记忆就是一个文件夹里的小 Markdown 文件：一条事实一个文件，外加一个每次会话都会加载的索引 `MEMORY.md`。没有数据库、向量库或后台服务，记了什么随时能用编辑器打开看、改、删。\n\n- 项目地址：https://github.com/tinqiao-oss/engramory\n- DeepSeek Harness 插件：`dsh plugin --profile <名字> add dsh-engramory`（npm 包 `dsh-engramory`）\n\n**为什么做这个**\n\nAI 助手每开一个新会话，就忘了上次你纠正过它什么、这个项目有哪些坑。把聊天记录全自动存下来，又会越存越乱、越存越占上下文。Engramory 的做法是只存值得长期记住的事实：你的偏好、你给过的纠正、项目约定、外部资源在哪。写之前先查重，过时了就改或删，索引始终保持很小。\n\n**主要功能**\n\n- 四类记忆：用户、反馈、项目、参考。反馈和项目类要写清「为什么」和「怎么用」，下次遇到边界情况才知道怎么判断。\n- 索引有上限，默认 200 行 / 25KB。在 Claude Code（hook）和 DeepSeek Harness（插件）上，会在写入前拦下让超限索引继续变大的写入，缩小它的改写一律放行；其他宿主靠规则加校验脚本。\n- DeepSeek Harness 插件：每一步都把索引放进上下文，不用等模型自己去读文件；左侧栏有一个只读的「记忆」页，按类型列出笔记，点名字用默认程序打开；插件页里有设置页。记忆语言跟随 dsh，中文界面下笔记名、标题、标签都是中文。\n- 同一个记忆库可以一个宿主写、其他宿主只读。仓库里有 Claude Code、Codex、OpenClaw、Kiro、DeepSeek Harness 的安装说明。\n- 实验性的「大肥鱼模式」：给陪聊人设记下它和你一起经历的事、你们的约定。\n\n**局限**\n\n它是规则和纪律，不是数据库：记什么、记得好不好，取决于模型照不照做。写入前的拦截只在 Claude Code 和 DeepSeek Harness 上有，而且 shell 命令或外部编辑器的写入都能绕过。适合个人、本地、小规模的记忆，不适合团队共享或大量检索。\n",
-    "created_at": "2026-10-30T15:29:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12924"
-  },
-  {
-    "id": 12923,
-    "title": "【开源自荐】NobodyWho：在任何设备上离线运行大模型的推理引擎，新增决策模型",
-    "content": "NobodyWho 是一个开源（EUPL-1.2）的本地大模型推理引擎，核心用 Rust 编写，底层基于 llama.cpp。它提供 Python、Swift、Kotlin、Flutter、React Native 和 Godot 六种语言绑定，可以在桌面端（Linux / macOS / Windows）、Android 和 iOS 上离线运行模型，不需要 API Key。我是这个项目的贡献者。\n\n- 源码：https://github.com/nobodywho-ooo/nobodywho\n- 文档：https://docs.nobodywho.ooo\n\n**主要功能**\n\n- 运行 GGUF 格式的对话模型（Gemma、Qwen、Mistral 等），支持 Vulkan / Metal GPU 加速\n- 类型安全的工具调用：根据函数签名自动生成约束语法，不需要手写 schema\n- 多模态输入（图片、音频）\n- 语音转文字（Whisper）、文字转语音（Kokoro 等）、语音活动检测（Silero）\n- 直接从 Hugging Face 下载模型\n\n**本周新增：决策模型**\n\n10 月 29 日发布的版本加入了 Laya 决策模型（Apache-2.0，Q8_0 GGUF 文件 449 MB）。决策模型不生成文本：你给它一段输入和一组事先写好的选项，它返回每个选项的概率。支持三种问题：单选（choice）、是/否概率（noul）和分级评分（score）。适合在本地做分类、路由、内容审核这类判断，不需要再解析大模型的输出。\n\n```python\nfrom nobodywho import Decision, Model\n\nmodel = Model(model_path=\"hf://ggml-org/Laya-GGUF/Laya-Q8_0.gguf\")\ndecisions = Decision(model=model, n_ctx=1024)\n\nresult = decisions.decide(\n    state={\"message\": \"My order hasn't moved in three days and I need it tomorrow.\"},\n    questions={\"urgent\": {\"type\": \"noul\", \"instructions\": \"Does this ticket need urgent handling?\"}},\n)\nprint(result[\"answers\"][\"urgent\"][\"noul\"])  # 回答“是”的概率\n```\n\n![NobodyWho](https://github.com/nobodywho-ooo/nobodywho/raw/main/assets/intro.webp)\n\n**局限**\n\n- Laya 处理中文输入的效果还没有验证过，用于中文场景前建议先在自己的数据上测试。\n- 移动端对内存有要求：Android 建议 6 GB 内存以上，模型最好小于 1 GB。\n- 许可证是 EUPL-1.2，不是 MIT。\n",
-    "created_at": "2026-10-30T12:24:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12923"
-  },
-  {
-    "id": 12922,
-    "title": "【开源自荐】Arcade：在 Claude Code 里用任务看板、笔记和团队聊天，等 agent 时还能玩游戏",
-    "content": "项目地址：https://github.com/ArbakovMaxim/agent-arcade\n中文说明：https://github.com/ArbakovMaxim/agent-arcade/blob/HEAD/README.zh.md\n\nArcade 是一个免费开源（AGPL-3.0）的 Claude Code 插件，基于 Claude Code 的 Mods（function hooks），把 Claude Code 变成小小的工作台：\n\n- 项目任务看板：在任意卡片上点“交给 Claude”，Claude 勾掉完成的项，并把结果写回卡片；\n- 和 Claude 一起记的笔记本，所有打开的会话共享；\n- 小团队的共享看板和聊天（可选 GitHub 登录）；\n- 等待时：agent 工作 10 秒后，输入框上方出现“玩一会儿吗？”（可以推迟或关闭）。NES 游戏直接在 Claude Code 里玩；其他游戏、公共领域的书、和 agent 正在做的主题相关的文章在浏览器里打开；\n- Claude 完成或请求权限时，游戏上方弹出横幅，一键回到 agent。\n\n支持终端、VS Code 和 Claude Desktop（Windows、macOS、Linux），需要 Claude Code 2.1.275+。\n\n安装：\nclaude plugin marketplace add ArbakovMaxim/agent-arcade\nclaude plugin install arcade@agent-arcade\n\n30 秒演示视频：https://github.com/user-attachments/assets/1c21bf5c-f5c7-4671-a453-bdcf6aa4b287\n\nBeta 版，无广告、无统计。中文是借助翻译写的，如有不通顺请见谅。",
-    "created_at": "2026-10-30T12:21:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12922"
-  },
-  {
-    "id": 12921,
-    "title": "【网站自荐】VAQIRA：独立开发者真实收入排行榜，每个数字都附创始人原文出处",
-    "content": "网址：https://vaqira.com/\n\nVAQIRA 收录独立开发者和小团队产品的收入，按最近 30 天收入排名，每天更新一期。\n\n和常见收入榜的区别：每个数字都必须有创始人或官方公开的原文出处（推文、博客、访谈、公开看板），页面上直接链到原文；只按原文口径记录，不估算，也不把年收入除以 12 换算成月收入。找不到出处的产品宁可不收。\n\n每个产品有一页收入时间线、获客渠道和出处列表。全部数据按 CC BY 4.0 开放，可直接下载 JSON 和 CSV：https://vaqira.com/data.json\n\n收录规则：https://vaqira.com/method/",
-    "created_at": "2026-10-30T11:27:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12921"
-  },
-  {
-    "id": 12920,
-    "title": "[Resource] Inspecting SVG files: vector paths, embedded bitmaps and font dependencies",
-    "content": "I am suggesting this resource on behalf of the Pic2SVG team. This submission was prepared with AI assistance; it is a self-recommendation, not an independent review.\n\nResource: https://pic2svg.com/how-to-check-if-svg-is-a-real-vector/\n\nAn `.svg` extension does not by itself establish that artwork is made from editable vector geometry. This practical guide explains how to inspect SVG source for paths and shapes, embedded raster images, text that depends on fonts, and external references. The checks help developers and designers review exported logos or artwork before handing the file to another application.\n\nThe accompanying SVG structure checker is linked from the guide. Its findings describe document structure; they do not certify manufacturing safety, copyright ownership, or compatibility with every cutting machine.\n\nPic2SVG also offers deterministic raster-to-SVG tracing. It does not generate artwork or use an AI model for tracing. I am proposing the inspection guide for its practical educational value. Please consider it only if it is useful to the weekly's readers; no reciprocal link or promotional placement is requested.",
-    "created_at": "2026-10-30T09:18:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12920"
-  },
-  {
-    "id": 12919,
-    "title": "【开源自荐】memecub：让 AI Agent 按情绪搜表情包，并自动给文章配图",
-    "content": "## 项目介绍\n\n[memecub](https://github.com/liyupi/memecub) 是给 AI Agent 用的表情包搜索和自动配图工具，开源的部分是它的 Agent Skill、远程 MCP 配置和命令行工具。\n\n写公众号、博客、推文的时候，常常想在一句吐槽后面配个表情包，但要么搜半天找不到贴切的，要么找到了也不知道能不能用。memecub 让 Claude Code、Codex、Cursor 这类 AI 工具直接拥有一个表情包图库：按情绪搜，或者把整篇文章丢给它，返回在合适的句子后面配好表情包的成稿。\n\n## 核心特性\n\n- **自动配图**：读完整篇文章，挑出值得配图的句子，以 Markdown 插入最贴切的表情包\n- **按情绪搜**：搜「无语」「裂开」「摸鱼」或 `facepalm`、`this is fine`，拿到的是想表达的那个反应\n- **中英文同库**：熊猫头、奶龙、金馆长、吗喽和 Drake、This Is Fine、Doge 都能搜到，中文角色名按整词匹配\n- **标清版权**：每张图注明能否商用、附来源链接，需要署名的已带好署名\n- **零安装**：`npx skills add https://memecub.com` 一行命令装进 40 多款 Agent；也可以直接接远程 MCP `https://memecub.com/mcp`；搜索不需要 Key\n\n## 软件截图\n\n![自动配图效果](https://raw.githubusercontent.com/liyupi/memecub/master/assets/demo-zh.png)\n\n## 项目地址\n\n- GitHub：https://github.com/liyupi/memecub\n- 官网：https://memecub.com/zh\n",
-    "created_at": "2026-10-30T07:53:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12919"
-  },
-  {
-    "id": 12918,
-    "title": "【网站自荐】GitHubPlay：精选 GitHub 热门开源应用市场、Releases 安装包直达与 50+ 商业替代",
-    "content": "大家好，向阮老师和各位开发者自荐一个开源软件与 AI 工具发现平台 **GitHubPlay**：\n\n- **官网地址**：https://githubplay.com\n- **开源替代专区**：https://githubplay.com/alternatives\n\n### 解决的痛点\n1. **GitHub Releases 在国内下载慢、架构选包难**：很多优秀的开源客户端（如 LocalSend、Cherry Studio、Cap、Windmill 等）更新频繁，国内普通开发者或非技术人员去 GitHub Releases 页面，常常在几十个 assets 里分不清 x64 / arm64 / universal，也经常遇到直连下载超时断连的问题。\n2. **商业软件昂贵，难以快速找到靠谱的开源替代**：想要寻找替代 Notion、Sentry、Figma、Slack、Jira、Navicat 的成熟私有化开源方案，在网上搜索往往只能找到零散过时的文章。\n\n### 核心功能与特色\n- **一键直达官方多平台二进制 Releases**：自动解析 GitHub Releases 资产，按 Windows (exe/msi)、macOS (dmg/pkg)、Linux (AppImage/deb) 结构化展示并提供高速下载通道与更新说明。\n- **50+ 顶级商业软件开源替代对比评测**：提供详细的对比矩阵、功能对标与迁移建议（见 [alternatives 专区](https://githubplay.com/alternatives)）。\n- **开源星标增速榜与每日 AI 资讯**：过滤刷星与非工具项目，聚焦真正实用的优质开源工具。\n- **极简极速体验**：全站 SSR 直出，零广告弹窗，纯粹克制。\n\n欢迎阮老师和大家体验、拍砖与指点！\n",
-    "created_at": "2026-10-30T07:51:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12918"
-  },
-  {
-    "id": 12917,
-    "title": "【工具自荐】TokLookup：免费查 TikTok 公开主页、User ID 与地区信息（无需登录）",
-    "content": "推荐一个我做的小工具：TokLookup。\n\n它是一个免费的 TikTok user finder，用来查找公开账号信息。输入用户名等公开标识后，可以查看公开主页相关信息，以及站点能拿到的 User ID、region 等线索。全程网页可用，无需登录，也不需要 TikTok 账号。\n\n工具地址：https://toklookup.click/\n\n主要特点：\n\n免费，浏览器打开即用\n无需登录 / 无需 TikTok 账号\n面向公开资料查询（公开主页、User ID、region 相关信息）\n适合营销、创作者协作或研究前先核对账号是否存在、是否对得上\n适用场景：发私信或合作前快速核对 TikTok 公开账号；按公开信息做基础检索。仅处理公开数据，不是下载器，也不提供私密分析。\n\n如有不当之处欢迎指出，谢谢。",
-    "created_at": "2026-10-30T07:50:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12917"
-  },
-  {
-    "id": 12916,
-    "title": "【开源自荐】孙宇晨的观点，用 AI 落地：两期访谈的全文和 23 篇 AI 教程",
-    "content": "项目地址：https://github.com/wousp112/awesome-justin-sun-ideas-to-ai-howto\n\n孙宇晨最近上了两期访谈，邵艾伦那期 4 个多小时，YouTube 上没有字幕，没法直接丢给 AI。我把两期都用 Gemini 转成了带时间戳的全文，加了按话题分的目录，按上下文改正了 200 多处听错的词。\n\n访谈里能动手的观点，每个配了一篇教程，写清楚一步步怎么做、用什么工具。工具都给两条路，一条是好用的，一条是国内不用海外手机号就能开的。教程里提到的 86 个工具，价格和国内能不能直接用，统一记在一张工具总表里。\n\n还有一份 AGENT.md，复制给任何 AI，说说自己的情况，它会照访谈的思路给你几条路和一个能反悔的小实验。用 Claude Code 或 Codex 的话，可以用下面这行命令装成 skill。\n\n```\nnpx skills add wousp112/awesome-justin-sun-ideas-to-ai-howto\n```\n\n除了两期全文，仓库里的内容都是 CC BY 4.0，免费用，注明出处就行。\n",
-    "created_at": "2026-10-30T07:23:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12916"
-  },
-  {
-    "id": 12915,
-    "title": "【网站自荐】Asteriadne：每个网站都实际打开过、配中文介绍和截图的网站导航",
-    "content": "网址：https://korlyn.xyz\n\n收录的网站和在线工具范围比较杂：开发文档、学术论文数据库、播客平台、在线小游戏、隐私工具、各国央行的统计数据等，按主题分类浏览。\n\n和一般导航站的区别是：每个网站都实际打开过，配了截图和一篇中文介绍，写清楚它能做什么、怎么用、哪些功能要注册。\n\n没有广告，不需要登录。",
-    "created_at": "2026-10-30T06:58:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12915"
-  },
-  {
-    "id": 12914,
-    "title": "【开源自荐】Agent Ping：菜单栏一眼看出哪个 AI 编程会话在等你",
-    "content": "我是 Agent Ping 的作者，自荐这个 Apache-2.0 的开源面板。\n\n仓库：https://github.com/DreamOfXM/agent-ping\n\n同时开着 Qoder、Claude Code、Codex、ZCode、WorkBuddy、OpenCode 的时候，难的不是看它们各自做了什么，而是判断此刻有没有一条在等我。窗口平铺在屏幕上，得挨个点开才知道哪条在等确认、哪条已经报错停下。Agent Ping 把这个判断放到菜单栏：按状态分组，等你回答的那一组排在最前，并带出它正在问的问题原文；点一行就回到那条会话（App 内跳转，或 CLI 会话直接恢复）。\n\n它不接管、不编排、不启动任何代理，只读这六家已经写在本机的日志（Codex 的 rollout、Claude 的 transcript、Qoder、ZCode、WorkBuddy 的会话库、OpenCode 的存储），不要登录、不要账号。整个二进制不发起网络请求，这一点可以在包里用 `nm -u` 复核。\n\nmacOS 13+ 是菜单栏应用，Linux 是 X11 托盘项，六种界面语言。安装走 Homebrew 源码编译，四行命令（brew trust 只需一次）：\n\n```sh\nbrew tap DreamOfXM/agent-ping https://github.com/DreamOfXM/agent-ping\nbrew trust dreamofxm/agent-ping\nbrew install agent-ping\nagent-ping\n```\n\n![六家 Agent 同屏，按状态分组](https://raw.githubusercontent.com/DreamOfXM/agent-ping/main/docs/fig-01-queue-zh.png)\n\n已知限制写在 README 里：会话级跳转逐家验证过，ZCode 只能落到工作区（它没有可用的会话深链）；桌面提醒要在设置里装一次可选 hook，不装也有面板；Linux 侧的点击落点还在补齐。\n\n产品页：https://dreamofxm.github.io/agent-ping/\n",
-    "created_at": "2026-10-30T06:47:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12914"
-  },
-  {
-    "id": 12913,
-    "title": "fix(issue-417): 事实错误及笔误",
-    "content": "- 28 届 CGPM 在凡尔赛\r\n- 地球自转 变快/变慢 写反，负闰秒含义写反（自转变慢 -> 正闰秒 -> 多一秒；自转变快 -> 负闰秒 -> 跳过一秒）\r\n- `Anthropologie` -> `Anthropic`",
-    "created_at": "2026-10-30T06:22:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/12913"
-  },
-  {
-    "id": 12912,
-    "title": "【开源自荐】豆瓣随机：从你标过的豆瓣条目里随机抽一部电影、一本书",
-    "content": "（已撤回）",
-    "created_at": "2026-10-30T06:21:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12912"
-  },
-  {
-    "id": 12911,
-    "title": "【开源自荐】“三门问题”模拟器",
-    "content": "三门问题（Monty Hall Problem，蒙提霍尔问题）是一个经典的概率问题，核心在于：在主持人知情并有策略地开门后，换门是否更有利？\n\n##### 经典设定\n+ 三扇门后：1 扇后面是汽车，2 扇后面是山羊。\n+ 参赛者先选一扇门，比如选 1 号门。\n+ 主持人知道车在哪，并且必定会打开另一扇没被选中、且后面是山羊的门。\n+ 主持人打开一扇有羊的门后，问参赛者：是否改选剩下的那扇门？\n\n结论：应该换门。不换门，获胜概率是 1/3；换门，获胜概率是 2/3。\n\n但我相信很多人第一次看到这个问题，都绕不过来。\n于是就有了这个网站，模拟三门问题的场景，你来选择；重复多轮选择之后，看看“不换”的胜率和“换”的胜率。\n\n+ [模拟器](https://ppzreboot.github.io/Q3/)\n+ [源码](https://github.com/ppzreboot/Q3)",
-    "created_at": "2026-10-30T05:53:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12911"
-  },
-  {
-    "id": 12910,
-    "title": "【网站自荐】Varwo：按任务发现 AI 工具、模型与实用指南",
-    "content": "大家好，自荐一个正在整理的 AI 工具目录 **Varwo**：\n\nhttps://varwo.com/\n\nVarwo 面向日常工作和内容创作，帮助用户按具体任务寻找 AI 工具、模型和实用指南。网站目前支持英文和中文。\n\n目前的主要内容：\n\n- **按任务找工具**：覆盖 AI 搜索、编程、文档写作、图像与视频生成、语音音乐、数字人、剪辑和字幕等分类。\n- **了解适用场景与费用方式**：工具页面整理用途、适合的任务和价格模式，并提供官网入口，方便继续核对。\n- **查看工具与模型动态**：汇总近期新增工具、模型更新及相关使用指南。\n- **探索视频创作流程**：提供从创意到工具选择、制作步骤的实用指南。\n\n可以从 [工具目录](https://varwo.com/tools) 或 [AI 动态](https://varwo.com/ai-updates) 开始浏览。价格和功能变化较快，最终以各工具官网为准。\n\n欢迎反馈分类是否好用、哪些信息还需要补充。",
-    "created_at": "2026-10-30T05:01:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12910"
-  },
-  {
-    "id": 12909,
-    "title": "【工具自荐】Still：帮 ADHD、拖延的人找回专注力的 Mac App，纯本地",
-    "content": "## 快速使用\n\n- **官网**：https://getstill.dev\n- **运行环境**：macOS 14+，原生应用\n\n## 工具介绍\n\n传统的番茄钟需要每次手动点击“开始”，而人一旦走神往往连点开始都会忘；像 Timing、RescueTime 这类全量time tracker又过于复杂，每天生成的大量分类饼图和评分很容易带来负罪感。\n\n**Still** 是一款极简的 macOS 菜单栏工具（UI 受 Things 3 和苹果原生“屏幕使用时间”启发）。它砍掉了复杂的分类和图表，只回答一个问题：**此时此刻，你在专注吗？（Are you focused right now?）**\n\n<img width=\"426\" height=\"704\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f9110990-cd57-49fa-bf5a-3e2b3cc50b64\" />\n\n## 核心功能\n\n- **全自动记录，零启动成本**：只需勾选哪些 App 和网站（支持读取浏览器当前 Tab 的 URL）属于工作区，切入即自动统计专注时长。\n- **三个客观信号，代替专注打分**：不做任何效率评分，只诚实展示三个核心指标——**进入专注次数（Focus starts）**、**专注时长（Focus time）**、**应用切换次数（App switches）**。\n- **安静的走神微提醒**：当你切出工作区走神过久时，屏幕最顶部边缘会亮起一根微小的磁吸挂绳，安静地提醒你回到工作状态（也可切换为标准系统通知）。\n- **100% 本地运行（Local-first）**：仅在本地判断当前最前台窗口与标签页，所有数据完全保存在 Mac 本机，不上传任何服务器。\n- **免费可用，无订阅制**：基础核心功能完全免费直装可用（Pro 版采用传统一次性买断，无任何订阅）。\n\n<img width=\"1132\" height=\"1037\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/46f03e82-a279-4dee-ae50-481b725e16b9\" />\n\n---\n\n我是独立开发者，因为过去几年自己注意力下降、经常无意识切窗口走神，所以写了这个自救小工具。如果合适，希望能被周刊收录，谢谢阮老师！",
-    "created_at": "2026-10-30T05:00:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12909"
-  },
-  {
-    "id": 12908,
-    "title": "【工具自荐】Tinydesk AI：用照片让你和朋友加入《Outstanding》Tiny Desk 片段视频",
-    "content": "Tinydesk AI 简介\n[Tinydesk AI](https://tinydesk-ai.co/) 是一个浏览器端视频生成工具：上传照片，就能把自己和朋友放进《Outstanding》Tiny Desk 演出片段，生成适合分享到短视频平台的竖屏视频。\n\nTinydesk AI 的主要功能\n在 [Tiny Desk AI Generator](https://tinydesk-ai.co/) 中，点击主唱、萨克斯、键盘手或两位和声歌手的位置，分别上传一张对应人物的照片。主唱照片必填，其余位置可留空，保留原片中的表演者；最多可替换五人。\n\n生成时可以选择 4 秒、10 秒或 19 秒的版本，完成后下载带有原片声音的 MP4。新账户提供一次 4 秒版本的免费试用。\n\nTinydesk AI 的核心特性\n[AI Tiny Desk](https://tinydesk-ai.co/) 保留原片的镜头切换、节奏和声音，只替换画面中的人物。无需逐镜头剪辑，适合制作朋友间分享的趣味短片。上传前请取得照片中成年人的同意；发布时也应标注视频由 AI 生成。\n\n项目地址：[https://tinydesk-ai.co/](https://tinydesk-ai.co/)",
-    "created_at": "2026-10-30T04:27:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12908"
-  },
-  {
-    "id": 12907,
-    "title": "【开源自荐】我把个人网站，建成了3D我的世界🔨",
-    "content": "演示：https://terryhu.cn\n仓库：https://github.com/terryHu7/homecraft\n\n过去我是个喜欢折腾网站的人，但模板换了又换，总感觉被什么东西困住了。\n\n受我的世界、黑客帝国和元宇宙的启发，借助 AI，我把个人网站从二维网页建成了三维世界。\n\n这个世界包罗万象，可以自由移动，里面建了篮球场，健身房，工作台，甚至还有昼夜交替和天气系统。\n\n对于二维网页也完全可以内嵌进来，例如按 F 查看。而且得益于方块风的性能开销小，手机也能轻松访问。\n\n项目初始模板一行命令启动：python3 tools/serve.py\n完整实现也已开源：examples/terry-home\n\n![image](https://github.com/user-attachments/assets/48c029f9-6d56-4816-98e5-f971aab6d9c5)",
-    "created_at": "2026-10-30T04:17:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12907"
-  },
-  {
-    "id": 12906,
-    "title": "【开源自荐】honestly：AI 编程助手说「测试通过、已修复、已部署」时，核对它有没有真的做过，没有就当场拦下回复（Claude Code / Codex / Cursor / Gemini CLI）",
-    "content": "三组公开数据：有人人工标了 150 个 Claude Code 会话，357 句\"测试通过\"里 80 句背后根本没跑；圣母大学等分析 20,574 个真实会话（Claude Code、Codex、Cursor、Gemini CLI 都在），16,118 个失误里每 100 个就有 22 个是\"没做完却说做完了\"；Transluce 看了 8,600 个会话，每 55 个就有 1 个严重到\"没验证的代码直接进生产\"。\n\n它不是每次骗你，是有一定概率不去检查却告诉你检查过了。轮到你头上是什么样：Codex 仓库有人提 issue，它说验证过了就部署，线上卡了五分钟，数据库连接池被打满；Claude Code 仓库有人提 issue，它说修复完成，缺陷还在线上，8,726 条记录漏掉，另一条是测试明明在报错、它回复 ALL PASSED；Cursor 论坛有人说它\"浏览器里试过了\"，追问才承认没开过浏览器。便宜的结局是 CI 红了回头排查，贵的是线上炸、数据漏，最糟的是后面几轮全建在这句话上，错一层叠一层。\n\nhonestly 是一个 hook：助手每写完一条回复，它读这一轮的会话记录，找出\"测试通过 / 修好了 / 已推送 / 已发送 / 已部署 / 已保存 / 查过了\"等 14 类结论，看最后一次改代码之后有没有对应的命令，并读命令的输出而不是退出码（`pytest | tail` 的退出码是 tail 的，测试全挂也是 0）。没有依据就拦下回复，要求它先跑再说；下一条回复会写明为什么被拦、补跑的结果是什么。\n\n项目地址：https://github.com/kennywu411-dev/honestly\n\n主要特点：\n\n- 支持 Claude Code、Codex、Cursor、Gemini CLI；三条命令装好：`pip install honestly && honestly guard install && honestly doctor`\n- 确定性规则，纯 Python 标准库，不调模型、不要 API key、不上传任何东西\n- 看不见的一律记\"无法核实\"（远程 CI、浏览器操作、用户自己的终端），不冤枉；每轮规则改动后都做两遍标注，第二遍盲标，最后一轮 12/12 和 11/11\n- 第二个 hook 在命令执行前拦没加 `pipefail` 的 `pytest | tail` 这类管道，失败会显示得像通过\n- `honestly audit` 把本机所有历史会话过一遍，按助手、模型、项目、周分项，每一条被标记的结论都能 `honestly explain` 看完整时间线\n- 误拦一条命令解决：`honestly ignore` 当场消掉，`honestly feedback` 生成可以直接贴进 issue 的报告\n\n![honestly 拦下一条没跑测试的\"测试通过\"](https://raw.githubusercontent.com/kennywu411-dev/honestly/main/assets/demo.zh.gif)\n\n规则先按作者自己的技术栈（Python、JS）调的，其他栈的误拦在预期之内，欢迎提 issue。MIT 许可，中英文 README 都有。\n",
-    "created_at": "2026-10-30T03:45:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12906"
-  },
-  {
-    "id": 12905,
-    "title": "【工具自荐】沉浸式AI提问：划词提问，读AI长对话再也不用上下来回翻",
-    "content": "网站地址：\n[https://promptos.cn/](url)\n\n项目简介：\n\n<img width=\"1200\" height=\"440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/59cf933f-2696-49e8-a75b-f9ff133e632d\" />\n\n**沉浸式AI提问** 是一款面向 **Chrome / Edge** 的网页阅读助手。使用者可以通过划词的方式获取AI解释并添加注释，不再需要来回翻阅上下文，顺着思路阅读，获得沉浸式阅读体验。\n\n## 减少 AI 长回答中的阅读中断\n\n在使用 AI 获取知识、分析问题或学习新概念时，读者可能尚未读完整段回答，就对其中某句话产生疑问。常见的处理方式是暂停阅读，在对话输入框中引用相关内容并重新提问；获得补充解释后，再向上滚动，定位原回答及此前的阅读位置。\n\n当回答较长、概念较多时，这一过程会频繁重复。补充解释中的新疑问还可能引出更多轮对话，使原始内容与后续讨论逐渐分散，增加来回定位和衔接思路的负担。\n\n**针对局部内容的疑问，适合在对应的原文旁展开讨论。** 沉浸式AI提问将解释入口放在选中文字附近，使读者可以围绕当前词句提问、查看回答并继续追问，减少往返对话输入区与原文位置的操作。\n\n这一方式同样适用于普通网页阅读：查阅资料时，可以直接在原文旁获取解释，减少复制内容、切换窗口和重新交代背景的步骤。\n\n## 结合上下文解释，围绕选中内容持续讨论\n\n在网页正文中选中词语或句子后，将鼠标悬停于小蓝点，即可打开解释浮窗。插件会结合选中文字及必要上下文生成回答，使解释与当前阅读内容保持关联。\n\n<img width=\"1200\" height=\"850\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bfdb28cb-9fe1-48b1-8ffa-0df8ba75c536\" />\n\n*演示流程：选择词句 → 悬停蓝点 → 查看解释 → 连续追问 → 原文保留标注。*\n\n首次解释后，读者可以在同一浮窗内进一步讨论概念含义、具体示例、推导依据或实现方法。例如，阅读支付 API 相关内容时，可以先了解“幂等性”的含义，再追问其实现方式；阅读 AI 回答时，也可以针对某一步推导要求补充说明。\n\n解释与追问围绕当前选中内容展开，原文仍保留在阅读位置。完成讨论后，移开鼠标即可继续阅读后续内容。\n\n## 将解释与讨论保存为原文注释\n\n即时解释解决当前的理解问题，注释则便于后续复习与查阅。\n\n沉浸式AI提问会在浏览器本地保存解释与相关对话，并在对应原文旁留下标注。读者可以将对术语、句子和段落的讨论保留为注释，通过悬停小标再次查看，无需重新生成已有回答。\n\n<img width=\"1200\" height=\"850\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a81da37f-dd39-4a48-be46-79fb73c87556\" />\n\n*演示流程：查看已有注释 → 模拟刷新 → 恢复标注 → 再次回看已保存内容。*\n\n刷新或重新访问网页时，插件会依据保存的原文及附近文本尝试恢复标注，使之前的解释能够重新关联到相应内容。网页内容发生较大变化、原文被删除或扩展数据被清除时，可能影响恢复。\n\n## 适用场景\n\n| 阅读场景 | 使用方式 |\n| --- | --- |\n| AI 长篇回答 | 针对特定表述、概念或推导步骤就地提问，减少重新提问后返回原文定位的往返 |\n| 技术文档 | 结合当前语境理解专业术语，并继续讨论实现方法与示例 |\n| 外文资料 | 选择难以理解的词句，获取结合上下文的解释 |\n| 新领域学习 | 在阅读过程中逐项澄清陌生概念，保留相关讨论供后续查阅 |\n| 原文注释 | 通过提问与讨论形成注释，将解释保存在对应词句旁，便于随时回看 |",
-    "created_at": "2026-10-30T01:47:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12905"
-  },
-  {
-    "id": 12904,
-    "title": "【工具自荐】SoulDub：视频语音翻译、字幕编辑与片段配音重生成",
-    "content": "网站地址：\nhttps://www.souldub.ai/zh\n\n项目简介：\nSoulDub 是一个面向创作者、教育内容和团队的视频翻译工作流。上传视频后选择源语言和目标语言，生成翻译字幕和配音；可以在编辑器中检查、修改原文和译文字幕，并为修改后的片段重新生成语音，最后下载已完成的视频、字幕或音频。\n\n我做它的起因：\n我不想为了理解一个视频一直盯着字幕，所以想把“听懂”从屏幕里解放出来。SoulDub 目前提供免费版，也有按月方案，适合先试用再决定是否用于持续更新或批量制作。\n\n演示视频：\nhttps://www.tiktok.com/@dashuaiboy/video/7702022636418747651\n\n适合场景：\n- 多语言视频本地化\n- 课程、访谈和知识内容的初译\n- 创作者发布不同语言版本\n\n当前限制：\n语言支持、单次时长、上传大小和并发数取决于当前配置或套餐；生成结果发布前仍需要人工检查。\n\n这是我们团队自研的产品，欢迎反馈。",
-    "created_at": "2026-10-30T01:29:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12904"
   }
 ]
