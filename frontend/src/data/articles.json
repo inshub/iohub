@@ -1,5 +1,117 @@
 [
   {
+    "id": 13094,
+    "title": "做了个截图解题工具「题伴」，想找一位正在准备笔试的朋友，带一道卡住的题来试",
+    "content": "我是题伴的开发者，正在找第一位愿意拿自己正在练习的题目来体验、告诉我哪里不好用的朋友。\n\n题伴可以接收题目截图或文字，给出答案和解析，支持编程题、选择题、填空和主观题。想先验证一件具体的事：你最近卡住的那道题，能不能通过它看懂思路、继续做下去。\n\n新账号有 10 次体验额度，可以先试，不用先充值。用完后可选次数包：19 元 / 100 次、49 元 / 300 次，无自动续费。\n\n体验入口：https://tiban.momoai.pro/app\n\n1. 注册或登录。题伴和 MomoAI 共用账号；如果页面提示验证邮箱，完成验证后再登录。\n2. 点击「手动输入」，贴一道完整题目，或点「添加图片」上传题目截图。\n3. 点击「获取答案」，查看答案，再核对是否真的解决了你的疑问。\n\n11 月 4 日用编程样题自测，快速版正常返回；深度版遇到了服务错误。这次先体验快速版。\n\n第一次可以直接在网页试。想在电脑上直接读题，也有桌面版；Mac 当前适用于 Apple 芯片，仍为未完成正式开发者认证的预览版，Windows 包尚待实机验证。\n\n试完后，欢迎在本帖回一句：**哪类题、有没有帮到你、卡在哪一步**。不必公开账号邮箱或私人资料。\n\n这是用于日常练习和复盘的工具。AI 答案需要核对，我也想知道它答错或没讲清楚的地方。\n",
+    "created_at": "2026-11-04T16:16:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13094"
+  },
+  {
+    "id": 13093,
+    "title": "【开源自荐】FunFan：按温度规则自动调速的 macOS 风扇工具，退出或崩溃都会把控制权还给系统",
+    "content": "项目地址：[https://github.com/lovexiaov/funfan](https://github.com/lovexiaov/funfan)（MIT）\n下载：[Releases](https://github.com/lovexiaov/funfan/releases)（macOS 13+，Apple Silicon）\n\nFunFan 是 macOS 菜单栏里的风扇控制工具，纯 Swift/SwiftUI、零第三方依赖。同类工具大多给你一个滑块，它给的是一套能自己跑的规则：读 SMC 温度，按「CPU 均温 ≥ 60℃ → 3500 RPM」这样的规则或温度曲线自动调速。\n\n它主要花功夫的地方，是**接管之后怎么安全地放手**：\n\n- **只提速不压低**：所有策略结果都要过一道随温度升高的安全下限，规则写错也降不到系统推荐值以下；只写 `F0Tg`，绝不写 0 RPM，不碰固件推荐区间。\n- **10 秒租约 + 看门狗**：GUI 与特权后台组件之间靠 XPC 心跳续租，App 退出、被 `kill -9`、合盖、租约过期，风扇都会在约 10 秒内回到系统自动控制；合盖链路已在 MacBook Pro M2 真机验证。\n- **四种策略**：自动 / 固定 / 曲线 / 规则，带 40 RPM 死区防抖与曲线斜率限制，转速不会来回跳。\n- **一键诊断**：`funfanctl diagnose` 直接产出可贴进 issue 的 Markdown 报告，含机型、全部 SMC 温度键的可读情况（本机 180 个）、风扇区间与后台组件状态。\n\n顺手记一个 Apple Silicon 的坑：温度键不全是 `flt`，本机有 6 个是 `ioft` 定点类型且必须按有符号解，否则未接探针的哨兵值会算成 2.8e14℃，还会「看起来合法」地骗过合理性过滤。\n\n![菜单栏面板](https://raw.githubusercontent.com/lovexiaov/funfan/main/docs/ui-prototype/popover-actual.png)\n![曲线编辑](https://raw.githubusercontent.com/lovexiaov/funfan/main/docs/ui-prototype/curve-window-actual.png)\n\n目前是 alpha，包未经 Apple 公证，首次打开要在「系统设置 → 隐私与安全性」放行一次；改风扇转速属于直接操作硬件，风险自负，异常时切回「自动」即可。我是作者 @lovexiaov，欢迎试用和提 issue。\n",
+    "created_at": "2026-11-04T15:31:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13093"
+  },
+  {
+    "id": 13092,
+    "title": "【工具自荐】Beavery：一段视频挑出多张实况照片、GIF 和原画质照片，一次导出（iPhone / iPad / Mac）",
+    "content": "### 项目地址\n\n- 官网：https://beavery.savetimefor.fun\n- App Store：https://apps.apple.com/cn/app/id6826636404?ct=social-ruanyf （iPhone / iPad / Mac 同一个 App，免费下载，含内购）\n- 30 秒演示视频：https://youtu.be/AGBc4EetiHU\n\n### 项目简介\n\nBeavery 把视频变成实况照片。演唱会、旅行、孩子生日，只管录视频；回来在同一段视频里挑出很多个瞬间，一次全部导出：这段做实况照片，那段做 GIF，再截一帧存原画质照片。\n\n- **慢拖到逐帧**：时间轴慢慢拖会拉长到单帧，停在刚好的那一刻；封面可以选任意一帧。\n- **一次导出多个结果**：每个选区先放进「待导出」，最后一次写进相册。\n- **原样保留**：视频样本直接从源文件拷贝进实况照片，不重新编码，HDR、现场声音、拍摄时间和地点都保留；视频转实况不限时长。\n- **三端一个 App**：Mac 版是原生 Mac App，和 iPhone、iPad 同一个 App Store 条目，买一次通用。\n- **在你的设备上处理**：照片和视频不上传，不用注册账号。\n\n收费：免费下载，一次导出一个结果免费，第一次批量导出也免费；之后一次导出多个结果需要 Pro，终身 ¥38 或年订阅 ¥22。\n\n我是独立开发者，欢迎提意见，尤其是拖时间轴的手感。\n",
+    "created_at": "2026-11-04T15:03:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13092"
+  },
+  {
+    "id": 13091,
+    "title": "【工具自荐】DeepSeek API 费用计算器与中英双语使用指南",
+    "content": "自荐一个已上线的免费工具，帮助开发者把 DeepSeek API 的 token 单价换算成每月用量预算。\n\n中文工具页面为 https://deepseekv5.dev/zh/pricing/ ，英文页面为 https://deepseekv5.dev/en/pricing/ 。\n\n## 能做什么\n\n- 按模型、每次输入和输出 token、每月调用次数估算月费用。\n- 调整输入缓存命中比例，分别显示输入与输出费用。\n- 比较峰时和谷时计费假设。\n- 把模型和用量条件保存在分享链接中，切换中英文时保留这些条件。\n\n计算在浏览器内完成，使用者无需登录或填写 API Key。价格参考链接和核查日期展示在页面中，方便对照官方资料。\n\n例如，准备接入一个日常助手或多步骤工作流时，可以先填入自己的调用量，再调整上下文长度、输出长度和缓存比例，观察预算如何变化。上线后可根据实际用量继续校准。\n\n## 配套资料\n\n网站还提供中英双语的入门、模型比较和访问排查指南，并标明原始信息来源。\n\n费用估算公式与示例也整理成了可直接阅读的文档。\n\nhttps://gist.github.com/suuuuuu-1/1dc984337d9ef2a0cfbc79beebd5c429\n\nDeepSeekV5.dev 是独立维护的指南网站，与 DeepSeek 官方没有隶属关系。欢迎试用和反馈计算过程或文档中的问题。\n",
+    "created_at": "2026-11-04T14:51:27Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13091"
+  },
+  {
+    "id": 13090,
+    "title": "【工具推荐】Onward：并行管理 AI 编程助手的开源工作台",
+    "content": "推荐一款开源桌面工具 Onward，适合同时使用 Codex、Claude Code 等命令行编程助手的开发者。\n\n它把多个终端、提示词管理和代码审查放在同一个工作台里：可以保存并复用提示词，向多个 Agent 派发任务，在分屏中查看执行过程，再通过内置编辑器查看 Git Diff。项目还提供 onward-bridge，让 Agent 可以读取和操作其他终端，辅助协作。\n\n项目地址：https://github.com/OPPO-PersonalAI/Onward-Agent-Workbench\n\n我写的介绍文章：https://xioacd99.github.io/zh/articles/stop-being-a-human-router-why-i-switched-to-onward/",
+    "created_at": "2026-11-04T14:50:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13090"
+  },
+  {
+    "id": 13089,
+    "title": "【开源推荐】Interline 行间：自带 API Key 的开源 Chrome 双语翻译扩展",
+    "content": "Interline（行间）是一个开源的双语网页翻译 Chrome 扩展，代码以 MIT 许可公开。\n\n项目地址：https://github.com/eigenlux-ai/interline-translator\n官网：https://eigenlux-ai.github.io/interline-translator/\nChrome 商店：https://chromewebstore.google.com/detail/mcefogikngeheopmdmaapfgpnnlgcoid\n\n其特点是翻译引擎不绑定单一服务商：内置 Google 翻译无需 API Key；也可自行配置 API Key，接入 OpenAI、Anthropic、Google Gemini、OpenRouter，或任何兼容 OpenAI / Anthropic 协议的服务，包括本地部署的 Ollama。插件本身不收费，费用取决于所选服务商；翻译请求由浏览器直接发送至服务商，不经过中间服务器，API Key 仅保存在本地。\n\n功能包括：整页翻译将译文按段落插入原文下方，支持双语、仅译文、仅原文三种视图及 10 种译文样式；划词翻译支持查看译文、词汇释义与朗读；在输入框中连按三次空格可将草稿原地翻译为目标语言；支持按站点设置自动翻译或例外，以及为整页翻译指定风格、提示词和术语表；界面提供 12 种语言及深色模式。\n\n技术实现为 Chrome MV3 扩展，使用 WXT、React 与 TypeScript；注入页面的界面位于 Shadow DOM 中，与宿主页面样式隔离。项目包含 800 余个单元测试。\n\n![整页双语对照翻译](https://raw.githubusercontent.com/eigenlux-ai/interline-translator/main/assets/store/zh_CN/screenshot-1-bilingual.png)\n\n![引擎设置：可自行配置 API Key](https://raw.githubusercontent.com/eigenlux-ai/interline-translator/main/assets/store/zh_CN/screenshot-3-settings.png)\n",
+    "created_at": "2026-11-04T14:21:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13089"
+  },
+  {
+    "id": 13088,
+    "title": "项目自荐:Fibo 2 Edit，离线 AI 画图改图工具，自带 PS 插件",
+    "content": "Adobe 原生 PS 的 Firefly 生成式 AI 功能，在国内地区无法直接使用.\nFibo 2 Edit 是一款离线本地 AI 画图改图工具，本站自行开发了配套 Photoshop 插件，\n让国内用户可以在 PS 内使用本地大模型完成 AI 绘图、图片修改、扩图重绘，不依赖云端在线服务。\n\n不使用ps的用户,也可以直接使用浏览器进行文生图或者图片编辑,还支持多图编辑,体积9gb,比其他人打包的20+gb小一半\n\n软件解压即用，无需复杂部署，底层基于 Fibo2.0 Edit Turbo 模型，仅需 4 步即可完成出图，自带大量摄影、修图风格预设与关键词提示词集；\n支持网页端独立使用，也可以作为 PS 插件工作。模型可以跑在本机，也可以部署在内网其他机器 / 服务器，PS 插件通过 7890 端口调用，A 卡电脑也可以网络蹭 N 卡机器运行。\n\n硬件：全量运行显存约 10GB，RTX3060 以上 N 卡最佳，6GB 显存也可以运行，速度会变慢。\n\nhttps://gpcb.net/7212.html",
+    "created_at": "2026-11-04T11:47:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13088"
+  },
+  {
+    "id": 13087,
+    "title": "【开源自荐】流畅阅读 FluentRead：开源的沉浸式双语翻译浏览器插件",
+    "content": "<img width=\"320\" height=\"425\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f1485509-eafa-46a2-bd13-c13861ed8941\" />\n\n**流畅阅读（FluentRead）** 是一款免费、开源的浏览器双语翻译插件，希望让阅读外语网页像阅读母语一样自然。\n\n它能够在保留原网页排版的基础上，实现原文与译文的双语对照阅读，并支持多种翻译服务及 AI 大模型。除网页双语翻译外，还提供以下功能：\n\n- **网页翻译**：双语对照、全文翻译、鼠标悬停翻译和划词翻译。\n- **AI 阅读辅助**：结合上下文解释单词、分析句子，支持连续追问。\n- **图片与文档翻译**：支持图片、PDF、ePub、Word 等内容的翻译与阅读。\n- **视频双语字幕**：支持 YouTube 等平台的双语字幕。\n\n项目基于 GPL-3.0 协议开源，目前已有超过 8,800 个 GitHub Star，支持 Chrome、Edge 和 Firefox 浏览器。\n\n**项目地址**：https://github.com/FluentRead/FluentRead\n\n**官网**：https://read.thinkstu.com/\n\n![流畅阅读网页双语翻译效果](https://raw.githubusercontent.com/FluentRead/FluentRead/main/docs/public/screenshots/translation.webp)",
+    "created_at": "2026-11-04T11:40:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13087"
+  },
+  {
+    "id": 13086,
+    "title": "自荐开源工具 repo-airgap：开源项目隐私外联审计与内网离线化辅助工具",
+    "content": "项目地址：https://github.com/Hero-all/repo-airgap\n\n把 GitHub 开源项目部署到企业内网或私有环境时，经常会遇到后台暗发遥测统计（Telemetry），或者在构建、启动时偷偷联网拉取模型/字体/词表导致断网报错。\n\n`repo-airgap` 是一个纯本地运行的命令行工具兼 AI Agent Skill，用来辅助开源项目的去遥测与内网离线化改造：\n\n1. **自动生成离线环境变量**：识别 Next.js、Gradio、Streamlit、Hugging Face 等 27 个常见框架，自动将缺失的官方关闭遥测与强制离线开关输出为 `.airgap/offline.env`。\n2. **定位外联与暗中下载点**：静态扫描代码中的外联 URL、遥测 SDK 以及 `from_pretrained`、`nltk.download`、Google 字体等运行期联网下载位置。\n3. **可逆补丁改造**：支持配合 Claude Code / Cursor / Codex 等工具对确认需要停用的外联打补丁，并支持随时一键字节级无损回滚。\n\n![预览图](https://raw.githubusercontent.com/Hero-all/repo-airgap/main/assets/workflow-preview.svg)",
+    "created_at": "2026-11-04T10:34:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13086"
+  },
+  {
+    "id": 13085,
+    "title": "【开源自荐】WinDiskArchitect：专为现代开发者打造的 Windows 系统盘架构治理与无损瘦身引擎",
+    "content": "## 项目名称\n**WinDiskArchitect (WinDisk)**\n\n## 项目地址\nhttps://github.com/DewellNaa/win-disk-architect\n\n## 项目简介\n专为现代 AI 开发者、工程师与极客量身定制的 Windows 系统盘架构治理与无损瘦身引擎（纯 Python 零依赖 + Windows 原生 API，提供免 Python 单文件绿色版 EXE）。告别 C 盘频繁爆红告警，无感白嫖 10 ~ 20 GB 纯净物理扇区。\n\n## 解决的痛点\n现代开发者和 AI 工程师的 Windows 系统盘（C 盘）常年处于爆红边缘。在日常使用 `uv`、`npm`、`_npx`、`Playwright` 自动化浏览器、`Docker`、`HuggingFace` 模型以及 VS Code / 派生 IDE 自动更新的过程中，系统盘会被数以万计的碎片文件蚕食殆尽。\n\n传统的“电脑管家/清理软件”往往治标不治本：\n1. **对现代开发栈完全失明**：只扫浏览器 Cookie 和回收站，对 `_npx`（几吉字节的临时依赖包）、Playwright 多版本自动化浏览器内核等真正的空间吞噬大户视而不见；\n2. **非黑即白的“暴力硬删”**：面对软件写死在 C 盘的 `AppData`，要么不敢动，要么一删就导致软件损坏报错；\n3. **完全无视操作系统底层架构**：不懂得启用微软原生硬件级无损压缩（`CompactOS`），不懂得通过 NTFS Junction 跨卷外迁，更不懂得分区物理拓扑与驱动白名单保护。\n\n为了彻底解决自己的 C 盘空间焦虑，开发了这套系统级工程治理工具。实测在本人 120GB 爆红 C 盘上，安全回收了整整 14GB 可用空间（可用空间从 12GB 翻倍至 26GB+）。\n\n## 核心技术特色\n1. **现代 AI 与全生态开发栈原生自愈**：\n   - 定向穿透清理常规工具漏掉的 `AppData\\Local\\npm-cache\\_npx` 隐蔽临时依赖包；\n   - 自动淘汰清理 Playwright 历史版本 Chromium/Firefox/WebKit 内核，只保留最新活跃版本；\n   - 一键自愈 `uv`、`pnpm`、`pip`、更新器离线安装包（crx_cache / MSI）与非活动锁定临时文件。\n2. **AppData 大目录结构性无感外迁 (NTFS Junction)**：\n   - 面对占用巨大的软件数据（如 Qoder、Playwright、各类浏览器），采用 `robocopy /E /MOVE /R:1 /W:1` 绕过 Windows Git 只读对象锁定，物理平移至空间充裕的非系统盘（自动识别最大剩余分区，如 `D:\\`），并原子级建立底层 NTFS Junction 目录联接（`mklink /J`）。软件原位读写，完全无感知、零报错。\n3. **微软官方 CompactOS 硬件级透明无损压缩**：\n   - 一键调度 Windows 10/11 底层 LZMS 算法，对系统二进制文件进行透明高比率压缩（实测 1.6:1），零 CPU 与磁盘性能损耗，直接白嫖 3 ~ 5 GB 纯净空间。随时可一键 `compact /compactos:never` 完美复原。\n4. **显卡与系统核心驱动防误删白名单**：\n   - 穿透诊断 `DriverStore` 驱动仓库。智能识别当前正在实时驱动屏幕显示的显卡主驱动（如 AMD 核显 / NVIDIA 驱动），对总大小 < 1.5GB 的健康系统实施硬拦截，杜绝民间清理工具强删驱动引发的黑屏灾难。\n5. **强制 100% 后悔药保障 (SendToRecycleBin)**：\n   - 绝对禁止不可逆的暴力硬删。所有清理动作均通过 Windows Shell 原生 COM 接口送入系统回收站，并在原位自动生成 `_RECOVERY_MEMO_*.txt` 恢复备忘录，随时可在桌面回收站一键右键还原。\n6. **双发布形态（开箱即用）**：\n   - 开发者模式：`pip install win-disk-architect`，随时在终端敲 `windisk diagnose` 或 `windisk clean`；\n   - 小白免安装绿色版：通过 GitHub Actions CI/CD 全自动编译为单文件绿色免安装版 `WinDiskArchitect.exe`，右键以管理员运行直接体检与自愈。\n\n开源遵循 MIT 协议，代码零外部重型依赖。希望能帮助到饱受 C 盘空间困扰的 Windows 开发者与打工人！\n",
+    "created_at": "2026-11-04T10:19:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13085"
+  },
+  {
+    "id": 13084,
+    "title": "【开源自荐】agent-graph：用 git graph 代替会话列表，管理同时在跑的多个编程 agent",
+    "content": "源码（MIT）：https://github.com/jihe520/agent-graph\n在线预览：https://jihe520.github.io/agent-graph/\n\n同时跑好几个 Claude Code、Codex 这样的编程 agent 时，会话列表很难看清：谁在哪个分支、哪个 worktree 上改代码，谁在等你批准，谁做完了可以合并。\n\nagent-graph 是一次交互探索：把 agent 开发环境的主视图换成 git graph，agent 挂在它所在的分支上显示状态，批准和合并在图上就地处理，会话退到侧栏。仓库里是设计规范、一份给 agent 的实现提示词和一个单文件原型（数据是模拟的）。在能改源码的 ADE 里把提示词发给 agent，就能照着实现。\n\nhttps://github.com/user-attachments/assets/123cfb00-07ef-4b2b-b531-33635909f158\n",
+    "created_at": "2026-11-04T10:04:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13084"
+  },
+  {
+    "id": 13083,
+    "title": "终端显示，会闪烁",
+    "content": "在打印日志，往上调一点日志，再看中间的日志，有新日志输入之后就会一直闪烁，tail -f命令",
+    "created_at": "2026-11-04T10:03:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13083"
+  },
+  {
+    "id": 13082,
+    "title": "终端显示，会闪烁",
+    "content": "在打印日志，往上调一点日志，再看中间的日志，有新日志输入之后就会一直闪烁，tail -f命令",
+    "created_at": "2026-11-04T09:59:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13082"
+  },
+  {
+    "id": 13081,
+    "title": "上传文件，如果失败了自动续传就会提示 覆盖，跳过，重命名",
+    "content": "上传文件，如果失败了自动续传就会提示 覆盖，跳过，重命名，实际上我里面什么都没有，只不过失败了你不是断点续传而是重新传的，这个逻辑有问题，至少不能提示我覆盖，跳过，重命名，我只传了一次，过程失败我可以接受，不应该提示这种",
+    "created_at": "2026-11-04T09:54:39Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13081"
+  },
+  {
     "id": 13080,
     "title": "【工具自荐】星云业务通：连接 AI 助手与企业系统，从 Excel 生成 ERP 生产订单",
     "content": "阮老师好，我是星云业务通产品团队成员，想自荐一个连接 AI 工作平台与企业现有业务系统的工具。\n\n企业里有一类很常见的工作：收到一份 Excel，整理其中的信息，再逐项录入 ERP。AI 已经可以读取表格，但要完成后面的业务办理，还需要衔接企业系统的接口、字段和操作页面。\n\n我们做的星云业务通，主要承担这一层连接，让员工可以在 WorkBuddy、千问办公、豆包工作等 AI 平台中调用企业业务能力。\n\n下面是一个实际演示：**把 Excel 中的生产订单录入金蝶云星空。**\n\n员工在 WorkBuddy 中上传生产订单 Excel，要求使用“生产订单保存”能力完成任务。WorkBuddy 读取表格，通过星云业务通调用对应能力，打开业务单据页面，将日期、生产组织、物料、车间、单位和数量等信息带入表单。\n\n员工可以在页面中检查、修改这些内容，确认无误后点击提交。\n\n![WorkBuddy 读取 Excel，将生产订单信息带入业务表单，供员工核对后提交。](https://github.com/user-attachments/assets/39c957d0-de5e-46aa-9395-a115836e75a9)\n\n*WorkBuddy 左侧显示处理过程，右侧是带入数据后的生产订单表单。*\n\n提交后，系统返回保存结果和单据编号。在金蝶云星空中，可以查看对应的生产订单。下面的单据编号为 `MO26090028`，与提交结果一致。\n\n![在金蝶云星空中查看保存后的生产订单，公司名称已脱敏。](https://github.com/user-attachments/assets/1e471ab5-67df-457d-b28b-fcd3ad92a35b)\n\n*保存后的金蝶生产订单。公司名称已脱敏。*\n\n这个流程保留了一个明确的交接点：AI 整理信息、准备填写内容，员工在业务页面中检查最终要写入系统的数据，并完成提交。\n\n在配置端，企业可以将已有系统的数据查询、业务接口和操作页面封装为 AI 可调用的能力，再发布、授权给相应员工。星云业务通提供用户与业务身份映射、能力授权和调用审计，用于管理员工能够使用哪些能力，以及查看执行情况。\n\n生产订单录入是其中一个场景，同样的连接方式也可以用于库存查询、销售订单分析、采购到货查询等工作。\n\n星云业务通是**商业闭源产品**，使用前需要接入企业系统、配置并授权相关能力。上述演示基于已配置的金蝶云星空场景。\n\n产品介绍与公开演示：[星云业务通](https://www.xingyunzuo.cn/ai-system-connector)\n\n本次为产品团队自荐，供周刊选题参考。谢谢。",
@@ -26,7 +138,7 @@
   {
     "id": 13077,
     "title": "【网站自荐】AllOne：给独立开发者和创作者的一站式工具箱",
-    "content": "AllOne：给独立开发者和创作者的一站式工具箱，每个工具都标清免费额度和国内能不能用\n\n网址：https://www.allone.top\n\n我是 AllOne 的作者，一个人在做的中文工具导航站。\n\n做它的原因：找工具时最花时间的不是\"有哪些\"，而是\"免费版够不够用、多少钱、国内能不能直接用、有没有中文\"。所以 AllOne 给每个工具做了一张信息卡，把这几件事写清楚，并附上替代品。\n\n• 工具库：227 个工具，按做一个产品的流程分类：找方向、做出来、上线、做内容、拉用户、收钱、管好钱和时间\n• 教程与指南：上手教程、怎么选、免费替代\n• 落地案例：真实项目用了哪些工具\n• 每周精选：最新一期《用 AI 编程，怎么少花钱？》，整理了 Cursor、Trae、OpenCode 等的免费额度和省钱用法 https://www.allone.top/weekly/2026-w45\n\n免费，无需注册。欢迎反馈",
+    "content": "AllOne：给独立开发者和创作者的一站式工具箱，每个工具都标清免费额度和国内能不能用\n\n网址：https://www.allone.top\n\n我是 AllOne 的作者，一个人在做的中文工具导航站。\n\n做它的原因：找工具时最花时间的不是\"有哪些\"，而是\"免费版够不够用、多少钱、国内能不能直接用、有没有中文\"。所以 AllOne 给每个工具做了一张信息卡，把这几件事写清楚，并附上替代品。\n\n• 工具库：227 个工具，按做一个产品的流程分类：找方向、做出来、上线、做内容、拉用户、收钱、管好钱和时间\n• 教程与指南：上手教程、怎么选、免费替代\n• 落地案例：真实项目用了哪些工具\n• 每周精选：最新一期《用 AI 编程，怎么少花钱？》，整理了 Cursor、Trae、OpenCode 等的免费额度和省钱用法 https://www.allone.top/weekly/2026-w45\n\n免费，无需注册。欢迎反馈\n\n<img width=\"960\" height=\"872\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a39b5f88-0e34-4369-9a43-78a43e139817\" />",
     "created_at": "2026-11-04T07:56:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13077"
@@ -68,7 +180,9 @@
     "title": "【开源自荐】halfsize：把视频压到指定大小，并测出画质损失",
     "content": "项目：halfsize\n\n地址：https://github.com/YKLovePython/halfsize\n\n一句话：把视频精确压到指定大小（25 MB、10 MB、700k……），并用 VMAF / SSIM 告诉你画质到底损失了多少。\n\n## 为什么做这个\n\n「把视频变小」的工具很多，但真正麻烦的是两件事：\n\n1. 要刚好塞进平台限制，不能超；\n2. 压完不知道画质还能不能看。\n\nhalfsize 把这两件事合成一条命令：算码率 → 按目标挑分辨率 → 两遍编码 → 采样测 SSIM 和 VMAF → 给一句人话结论。\n\n```bash\nnpx halfsize video.mp4 --to 25mb\nnpx halfsize video.mp4 --for discord   # 直接用平台上限\n```\n\n输出长这样：\n\n```\n23.2 MB  ->  1.99 MB   12x smaller   0.3% under target\nVMAF 84.4   SSIM 0.968   slight softening\n```\n\n## 特点\n\n- **本地运行**：不上传、不注册、无遥测，命令行完全不联网\n- **精确控大小**：两遍 ABR + 分辨率阶梯，默认瞄准目标下方 3%，不会超平台硬上限\n- **画质可验证**：三个采样点 SSIM + 中点 VMAF，比「你觉得还行」靠谱\n- **平台预设**：`--for discord / whatsapp / wechat / email / twitter`\n- **批量**：`npx halfsize *.mp4 --to 25mb`\n- **本地网页版**：`npx halfsize --web`，拖拽即可，带分享图\n- 中英双语文档、MIT、Node 18+，FFmpeg 自动打包\n\n## 适用场景\n\n发微信/邮件前把视频压到限制内、给 Discord 传片段、把录屏压小但不想糊、以及在脚本/CI 里需要「输出必须小于 N MB」的场合。\n\n截图：https://raw.githubusercontent.com/YKLovePython/halfsize/main/docs/card.png\n",
     "created_at": "2026-11-04T07:14:00Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/13072"
   },
   {
@@ -148,7 +262,9 @@
     "title": "【网站自荐】Hacker Podcasts：Hacker News 评论区 20 年来反复推荐的播客合集",
     "content": "网址：https://www.hackerpodcasts.org/\n\nHacker Podcasts 收集了 2007–2026 年 Hacker News 评论区里被反复推荐的播客，共约 841 档，相关评论约 2.1 万条。\n\n特点：\n- 数据来自 HN 公开评论，按「被推荐的月份数」排序，而不是单次热度，更能反映长期口碑。\n- 筛选规则：至少 3 人推荐、非负面提及、持续约 3 个月以上。\n- 播客一集动辄一小时，选错代价高，用 HN 社区的长期推荐做筛选能省不少时间。\n\n它和同系列的 HackerTube（HN 推荐的 YouTube 视频）、HackerBooks（HN 推荐的书）是一套，都基于 HN 公开数据整理。\n\n我是作者 qcrao，欢迎反馈。谢谢阮老师！",
     "created_at": "2026-11-04T02:39:30Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/13061"
   },
   {
@@ -484,7 +600,9 @@
     "title": "【软件自荐】Linkit：本地优先的 AI 个人书签与知识助手（Go + Wails + SQLite）",
     "content": "# 【软件自荐】Linkit：本地优先的 AI 个人书签与知识助手（Go + Wails + SQLite）\n\n### 项目地址\nhttps://github.com/blue-idea/linkit\n\n### 一句话介绍\n跨平台的本地优先个人书签与知识助手，基于 Go + Wails + SQLite 构建，支持本地语义向量检索、404 死链检测与知识图谱。\n\n### 为什么做它\n浏览器书签收藏往往容易变成信息孤岛，积累成千上万个链接后难以检索。商业稍后读服务大多收取昂贵订阅费且依赖第三方云端。\nLinkit 采用 Local-First 架构，数据保存在本机的 SQLite 数据库中，毫秒级响应，保护隐私。\n\n### 核心特性\n1. **本地优先架构**：基于 Go + Wails + SQLite 构建，数据保存在本机，毫秒级检索，断网可用。\n2. **语义向量检索**：不记得标题也能通过模糊意图查找内容。支持接入本地运行开源模型（如 Ollama）或兼容接口。\n3. **链接健康扫描与去重**：自动体检全库链接，一键筛选失效 404 死链与重复书签。\n4. **Spotlight 快速检索**：通过快捷键随时唤出全局搜索与粘贴入库。\n5. **知识关联图谱**：交互式节点网络，探索书签之间的主题联系。\n6. **全平台支持**：支持 macOS（提供 Homebrew Tap）、Windows 及 Linux。\n\n### 截图展示\n![Linkit 仪表盘工作台](https://raw.githubusercontent.com/blue-idea/linkit/main/ui/screenshot/dashboard.png)\n\n### 说明\n我是作者，个人开发的免费工具（主仓提供预编译安装包与项目说明）。欢迎阮老师与周刊读者试用与反馈！\n",
     "created_at": "2026-11-02T13:10:14Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/13018"
   },
   {
@@ -686,117 +804,5 @@
     "created_at": "2026-11-02T01:57:03Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/12993"
-  },
-  {
-    "id": 12992,
-    "title": "【网站自荐】Nihongo to Japan：简体中文界面的免费日语自学站（191 课教材＋JLPT N5–N1 语法、单词、测验）",
-    "content": "网址：https://www.nihongotojapan.com/zh-cn\n\n我是 Nihongo to Japan 的作者，一个人做的日语学习网站，有简体中文界面。\n\n- 自学教材：从五十音开始，共 191 课，每课后面有练习题：https://www.nihongotojapan.com/zh-cn/materials\n- JLPT N5–N1 语法讲解、例句和练习：https://www.nihongotojapan.com/zh-cn/grammar\n- 日语水平测试：几分钟测出大概在哪个级别：https://www.nihongotojapan.com/zh-cn/japanese-level-test\n\n主要课程、语法、单词和测验都免费、不用注册；另有可自选的支持方案，提供额外练习和 PDF。网站有广告。\n\n适合想自学日语、准备 JLPT 的读者。谢谢阮老师！",
-    "created_at": "2026-11-02T01:20:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12992"
-  },
-  {
-    "id": 12991,
-    "title": "【工具自荐】【Ainance】每天给自己打分的AI分析师📈",
-    "content": "每天打开财经新闻，各路观点满天飞：这个要涨、那个要崩……\n可第二天，几乎没人回头看自己说得对不对🤔\n\t\n于是我做了一个必须回头看的 AI 分析师👇\n\t\n✨ Ainance\n\t\nAinance = AI + finance。每天新加坡时间早上 5 点（美股刚收盘），finance-bro（底层的智能体）会读完过去 24 小时的财经新闻，看一遍各个市场的行情，然后发一份早报：\n📰 大白话复盘过去 24 小时：美股、亚洲、加密、大宗商品都发生了什么，每条都附原始新闻链接\n📈 10 个看涨 + 10 个看跌，每个都标 1x～9x 的信心分\n✅ 第二天对答案：每个判断都拿下一个交易时段的真实价格来批改，对就是对、错就是错，全部公开在页面上\n🧠 会长记性：每天把对错总结进一本“错题本”，第二天做判断前先翻一遍\n\t\n🔍 上线前还会自己审稿\n每期发布前，它会把页面渲染出来，在电脑和手机上各截一遍图，对照行情表核对数字、对照日历核对日期，再把措辞改顺\n\t\n📚 每一期都存档，战绩全程公开\n第一期今天早上已经发出，明天早上就有第一张成绩单\n它今天是打脸还是打卡，每天早上来看一眼就知道😂\n\t\n⚠️ AI 写的短线研究观点，每天公开打分，不构成任何投资建议\n\t\nPS：logo 中间那个洞纯属巧合\n\t\n📌 网址：[aeroxy.github.io/ainance](https://aeroxy.github.io/ainance/)（目前是英文的，但用词很简单）",
-    "created_at": "2026-11-01T19:37:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12991"
-  },
-  {
-    "id": 12990,
-    "title": "【文章自荐】CRF 是什么意思？视频压缩 CRF 值怎么选（H.264 / HEVC 推荐参数）",
-    "content": "网址：https://obelisk.club/blog/crf-video-compression-explained-zh\n\n压缩视频时总会看到 CRF 这个参数（ffmpeg、HandBrake 里都有），但常见的解释要么只有一句「恒定速率因子」，要么只说「用 23 就好」。这篇讲清楚：\n\n- CRF 是 x264 / x265 的画质参数：数值越小画质越高、文件越大\n- H.264 默认 23，HEVC 默认 28；CRF 17 左右肉眼几乎看不出差别\n- 每加 6，文件大约减半\n- 附不同用途的推荐参数对照表，以及同一段公有领域视频在三档 CRF 下的实测体积和 SSIM\n\n作者是写 Mac 视频压缩工具的独立开发者。\n",
-    "created_at": "2026-11-01T18:58:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12990"
-  },
-  {
-    "id": 12989,
-    "title": "【工具自荐】Info.plist 检查器：上传 App Store Connect 之前，先查出会被拒收的 Info.plist 问题",
-    "content": "网址：https://obelisk.club/tools/info-plist-checker?lang=zh\n\n粘贴或拖入 iOS / Mac 应用的 Info.plist（XML 和二进制格式都可以），在浏览器里检查 App Store Connect 会拒收的问题：\n\n- 版本号和构建号格式不对、Bundle ID 含非法字符\n- 构建产物里还留着没展开的 `$(...)` 变量\n- 权限用途说明是空的或是占位文字\n- 用 iOS 27 SDK 构建却没有启动屏\n- Mac 应用缺少 App 分类（LSApplicationCategoryType）、没有设置出口合规键\n\n每一条结果都附上对应的 Apple 官方文档链接。文件只在浏览器本地读取，不上传；免费，无需注册。",
-    "created_at": "2026-11-01T18:58:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12989"
-  },
-  {
-    "id": 12988,
-    "title": "【网站自荐】QuizQuip：新加坡中一/中二科学复习站（笔记+测验+原创试卷）",
-    "content": "QuizQuip：https://quizquip.com\n\n给新加坡中学生（中一/中二，G2/G3）做的科学复习站，按考试节奏（WA1、WA2、EOY）组织。\n\n- 每章配要点笔记、关键词、常见错误、小测验、专题题目和一份原创练习卷（可下载）。\n- 笔记免费读；免费账号解锁完整测验、专题答案、试卷下载、AI 练习（按本章要点生成新题）和进度记录。\n- 目前中一、中二科学已上线，更多科目在路上；站内另有九种语言的性格/趣味测验区。\n\n练习卷全部原创，与任何学校或考试机构无关。\n\n我是作者。",
-    "created_at": "2026-11-01T18:57:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12988"
-  },
-  {
-    "id": 12987,
-    "title": "【网站自荐】DefiLPKit：粘贴池子地址，看费率 APR、净收益和建议价格区间",
-    "content": "DefiLPKit：https://defilpkit.com\n\n给 Uniswap v3 / PancakeSwap v3 / Aerodrome Slipstream（Ethereum、Base、Arbitrum、BNB Chain）和 Raydium CLMM（Solana）做流动性（LP）的免费网页计算器，解决\"这个池子到底值不值得进\"这件事。\n\n- 粘贴池子地址或搜代币对，直接看当前费率 APR。\n- 估算扣掉无常损失和 gas 之后的净收益，给出一个可以试的价格区间。\n- 只读计算器：不连钱包、不托管、不需要注册，打开就能算。\n\n数据来自链上和公开接口，收益和区间都是估算值，仅供参考。\n\n我是作者。",
-    "created_at": "2026-11-01T18:57:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12987"
-  },
-  {
-    "id": 12986,
-    "title": "【工具自荐】安迪AI视频下载：将多平台视频解析、画质选择和下载队列集中到一个 Windows 窗口",
-    "content": "### 软件介绍\n\n大家好，我是「安迪AI视频下载」的开发者，想自荐一款自己使用 Codex 辅助开发的 Windows 桌面工具。\n\n项目官网：https://anydiy.cn/\n\n整理视频资料时，我经常需要在不同网页、分享链接和下载工具之间切换。保存到电脑后，还要确认有没有声音、文件是否完整，以及下载到了哪个目录。\n\n因此，我把链接解析、画质选择、音视频合并和下载队列集中到一个桌面窗口，希望减少这些重复操作。\n\n### 主要功能\n\n- **链接解析**：粘贴视频链接或分享文本，查看解析结果及可用格式。\n- **画质选择**：根据源视频实际提供的资源选择画质，不通过修改分辨率标签冒充高清。\n- **批量任务**：将多个视频链接加入下载队列，集中查看进度，支持暂停、取消和失败重试。\n- **音视频处理**：自动处理分离的音视频轨道，支持提取音频，以及在平台提供时保存字幕、封面。\n- **本机保存**：视频文件保存到用户选择的电脑目录，完成后可以直接打开保存位置。\n- **平台适配**：目前已有抖音、微信视频号和央视网具体样本的成功下载记录，也集成了基于 yt-dlp 的其他站点解析能力。\n\n### 适用场景\n\n- 备份自己发布的视频。\n- 整理已获得下载和使用授权的视频资料。\n- 将分散的视频链接对应的文件保存到电脑，再按自己的项目目录整理。\n\n### 开发过程\n\n项目采用 Wails、Go、Vue 3 和 TypeScript 开发，结合 yt-dlp、FFmpeg 等组件完成解析、下载及音视频处理。\n\n开发中花时间较多的，并不只是“把文件下载下来”，还包括：\n\n- 避免某条音轨下载完成后，界面就误报整个任务接近完成。\n- 处理音视频分轨下载后的合并。\n- 区分下载、媒体处理和文件校验阶段。\n- 尽量让失败原因清楚，方便判断是登录、网络、组件还是平台适配问题。\n\n软件名称中的“AI”是品牌名称，目前主要功能是视频解析、下载及任务管理，不包含 AI 剪辑、内容生成或画质修复。\n\n### 使用边界与收费说明\n\n目前主要面向 Windows 用户，仍在持续完善平台适配和使用体验。\n\n不同平台会调整接口与访问规则，部分内容需要登录，部分链接可能无法下载。具体样本成功不代表该平台所有视频都始终可用，清晰度也以实际可获取的源资源为准。\n\n产品采用付费授权方向，试用方式、价格及授权范围以实际发布页面为准，不以永久免费工具进行宣传。\n\n本工具仅用于用户拥有相应权利、且平台允许下载的内容，不用于绕过付费、DRM 或其他访问限制。\n\n欢迎大家对操作体验、错误提示和平台适配提出建议，也感谢周刊提供交流和展示独立作品的机会。\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/66262f6b-5c12-409c-832c-d17ff59dbc4b\" />\n\n<!-- Failed to upload \"安迪AI视频下载-v3.5.1-客户端.zip\" -->",
-    "created_at": "2026-11-01T18:52:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12986"
-  },
-  {
-    "id": 12985,
-    "title": "【开源自荐】LumaView：约 2.5 MB 的原生 Mac 看图工具",
-    "content": "我是 LumaView 的开发者。它是一个简洁的 Mac 看图工具：打开图片后直接浏览同文件夹的其他图片，不需要先导入或建立照片库。\n\n- 支持文件夹内前后浏览、缩放、平移、旋转和打印。\n- 按需查看 EXIF 信息，也能阅读多页 PDF。\n- 支持 JPEG、PNG、HEIC、GIF、TIFF、WebP，以及系统支持的 RAW 等格式。\n- Swift/SwiftUI 原生应用，MIT 开源，本地浏览，支持七种界面语言。\n\n运行要求：macOS 12+，支持 Apple Silicon 和 Intel Mac。当前通用版 DMG 约 2.5 MB；文件体积会随版本变化。GitHub 安装包暂未经过 Apple 公证，首次打开请查看项目安装说明。\n\n[官网](https://ixiehao.github.io/LumaView/) · [源码与安装说明](https://github.com/ixiehao/LumaView) · [下载最新版本](https://github.com/ixiehao/LumaView/releases/latest)\n\n![LumaView：直接浏览文件夹中的图片](https://raw.githubusercontent.com/ixiehao/LumaView/main/docs/assets/lumaview-browse.png)",
-    "created_at": "2026-11-01T18:51:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12985"
-  },
-  {
-    "id": 12984,
-    "title": "【开源自荐】MP4Flow：原生 Mac 批量视频转换与剪裁工具",
-    "content": "我是 MP4Flow 的开发者。它为 FFmpeg 提供原生 Mac 图形界面，适合批量整理视频，或只想做简单剪裁而不打开完整剪辑软件的用户。\n\n- 批量转成 MP4，兼容的流可直接重封装，避免不必要的重新编码。\n- 支持截取片段、裁切画面、旋转和合并视频。\n- 支持导出参数设置、队列管理及失败项重排。\n- 视频处理在本机完成；Swift/SwiftUI 原生应用，MIT 开源，支持七种界面语言。\n\n运行要求：macOS 13+，支持 Apple Silicon 和 Intel Mac。**需要单独安装 FFmpeg 和 ffprobe**，应用不内置这两个工具。可选的实验性画质增强另需 Apple Silicon 和 macOS 27+，普通转换不需要。GitHub 安装包暂未经过 Apple 公证。\n\n[官网与安装说明](https://ixiehao.github.io/MP4Flow/) · [源码](https://github.com/ixiehao/MP4Flow) · [下载最新版本](https://github.com/ixiehao/MP4Flow/releases/latest)\n\n![MP4Flow 中文转换队列](https://raw.githubusercontent.com/ixiehao/MP4Flow/main/website/assets/mp4flow-v150-queue-zh.jpg)\n\n演示视频：Tears of Steel (2012)，Blender Foundation / Blender Institute，CC BY 3.0；[影片官网](https://mango.blender.org/) · [许可](https://creativecommons.org/licenses/by/3.0/)。FFmpeg 需单独安装，许可取决于所用构建。",
-    "created_at": "2026-11-01T18:51:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12984"
-  },
-  {
-    "id": 12983,
-    "title": "【开源自荐】ShotMap：在 Mac 上把视频整理成一张分镜图",
-    "content": "我是 ShotMap 的开发者。整理家庭录像或剪辑素材时，只看文件夹里的一张缩略图，很难判断一段视频里有什么。ShotMap 将视频中的多个画面按时间排成一张图，方便先浏览内容，再打开原片。\n\n- 自动选择候选画面，也能在可视化时间轴里手动选帧、逐帧微调。\n- 支持批量处理、3×3 至 8×8 网格、底色、时间码与文件名标注。\n- 导出 PNG/JPG；视频取帧和成图都在本机完成，无需账号、无需上传视频。\n- Swift/SwiftUI 原生应用，MIT 开源；支持七种界面语言。\n\n运行要求：macOS 13+，支持 Apple Silicon 和 Intel Mac，无需另装 FFmpeg。GitHub 安装包暂未经过 Apple 公证；首次打开请遵循项目安装说明及 macOS 提示。\n\n[官网与使用说明](https://ixiehao.github.io/ShotMap/zh/) · [源码](https://github.com/ixiehao/ShotMap) · [下载最新版本](https://github.com/ixiehao/ShotMap/releases/latest)\n\n![ShotMap：Tears of Steel 的分镜图与视频队列](https://raw.githubusercontent.com/ixiehao/ShotMap/main/website/assets/workspace-zh.webp)\n\n演示视频：Tears of Steel (2012)，Blender Foundation / Blender Institute，CC BY 3.0；[影片官网](https://mango.blender.org/) · [许可](https://creativecommons.org/licenses/by/3.0/)。截图仅用于展示软件操作。",
-    "created_at": "2026-11-01T18:51:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12983"
-  },
-  {
-    "id": 12982,
-    "title": "【工具自荐】Better Excalidraw Workspace：给 Excalidraw 加上本地多画布工作区和其他图形",
-    "content": "项目地址：https://github.com/LiMingHuaGit/better-excalidraw\n\n在线介绍：https://liminghua.fyi/better-excalidraw/\n\nChrome 商店：https://chromewebstore.google.com/detail/failnnidjndkmiabcleibfjmfnpdhflm\n\nBetter Excalidraw Workspace 是一个免费开源的 Chrome 扩展，为 Excalidraw 官方网站增加本地项目和多画布管理能力。\n\n原版 Excalidraw 很适合快速绘图，但本地积累的画布多了以后，查找、切换和保存文件会变得比较麻烦。这个扩展可以把电脑中的文件夹直接作为工作区，在侧栏集中管理其中的 `.excalidraw` 文件。\n\n主要功能：\n\n- 递归读取工作区及子目录中的画布文件\n- 搜索、切换和新建画布\n- 切换画布前自动保存，避免内容丢失\n- 支持手动保存和可配置的定时自动保存\n- 增加多边形、星形、流程判断、箭头、气泡等扩展图形\n- 选择图形后可像原生工具一样在画布上拖拽确定大小和位置\n- 支持复制、旋转、水平翻转和垂直翻转\n- 支持中英文界面，根据浏览器语言自动切换\n\n所有画布文件都保存在用户选择的本地目录中，不需要注册账号，也不会上传到云端。\n\n项目使用 TypeScript 开发，基于 Chrome Manifest V3，采用 MIT 许可证。\n\n![本地多画布工作区](https://raw.githubusercontent.com/LiMingHuaGit/better-excalidraw/main/store-listing/screenshots/01-local-workspace.png)\n\n![扩展图形工具](https://raw.githubusercontent.com/LiMingHuaGit/better-excalidraw/main/store-listing/screenshots/02-extended-shapes.png)",
-    "created_at": "2026-11-01T16:40:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12982"
-  },
-  {
-    "id": 12981,
-    "title": "【开源自荐】AnyModelBot：开箱即用的 DeepSeek Super Agent，后台任务、定时规则和「需要你」收件箱的开源桌面 AI 助手",
-    "content": "AnyModelBot 是我们开发的开源（MIT）桌面 AI 助手，支持 Windows、macOS、Linux，界面有中文和英文。装好就是开箱即用的 DeepSeek Super Agent：交代一句，它在后台做完；一句话写下规则，它按时去做；所有等你处理的事集中在「需要你」。设计参考 DeepSeek 最近开源的 dsh-superagent 原型，智能体运行在 DeepSeek Harness 上。我们认为它是较早把这套思路做成一个人的桌面助手的应用之一。\n\n- 源码：https://github.com/modelflare-ai/AnyModelBot\n- 下载：https://github.com/modelflare-ai/AnyModelBot/releases/latest\n- 设计文档（中文）：https://github.com/modelflare-ai/AnyModelBot/blob/master/docs/blog/superagent.md\n- DeepSeek 原型：https://github.com/deepseek-ai/dsh-superagent-prototype\n\n**解决什么问题**\n\n聊天机器人等你开口，答完就停。可很多事不是一问一答：调研要跑半小时，价格要每天盯，周报每周一要写。DeepSeek 的原型提出一条原则：占用尽量少的注意力，带来尽量多的价值。AnyModelBot 把它缩成「一个人」的版本，由三样东西组成，都不需要额外配置：\n\n- **后台任务**：调研、做报告这类要跑一阵子的事，交代一句就在自己的会话和文件夹里做，聊天照常，每个机器人同时跑 2 个任务，所有机器人合计 4 个。\n- **规则**：一句话写下长期吩咐，加一个时间表，比如「每天早上 8 点看看 X 的价格，低于 200 告诉我」。可以先选「观察」：照常按时运行，但文件只读、从不给你发消息，满 3 次正常运行后再问你要不要改成执行。\n- **需要你**：所有机器人在等你回答、批准或处理的事，集中在侧栏一处，没事时这一行不出现。提问带默认答案，你一直不回，任务也不会卡一整晚。\n\n**不打扰是硬规矩**\n\n只推三种消息：能用的结果、要你做的决定、要你处理的失败；进展和重试从不推。默认 22:00 到 08:00 免打扰，每个对话每天最多主动发微信 3 条、飞书 5 条，超出的合成一条摘要。每个任务和规则都有预算上限，默认任务 $1.00、规则每次运行 $0.10、每月 $3.00，花到了就停下来问你。\n\n**怎么跑起来的**\n\n每个机器人一个智能体进程，任务和规则各开各的会话，DeepSeek Harness 负责跑会话；任务、时间表、送达和预算由应用自己管。后台会话用 `task_report` 工具汇报状态，「需要你」读的就是这些字段，不去猜自由文本。可在应用、微信、飞书里使用，通过 Modelflare 一个账号调用 70+ 个模型（含 DeepSeek），可选国际线路或面向中国大陆优化的线路。\n\n**局限**\n\n- dsh-superagent 是面向团队、盯着一个 GitHub 仓库的研究原型（官方说明：仅供参考，不是 DeepSeek 的正式产品）。我们只拿了它的骨架，没有实现 Source、Trigger、Thread、Eval、Mandate 复核、Subscription、GitHub PR 生命周期和 Policy 版本；由事件触发的「工作负载」目前只是探索方向\n- 微信只允许机器人在你最近一次发消息后的 24 小时内主动发消息，我们不去绕：发不出去的结果留在「需要你」里，你下次在微信开口时合成一条送到。飞书没有这个限制\n- 任务和规则跑在你自己的电脑上，电脑关着时错过的规则不会补跑\n- 模型通过 Modelflare 账号调用，需要登录，按 token 计费，不是本地模型项目\n- 项目 2026 年 10 月底才公开，用户和使用历史都还很少\n\n我是该项目的维护者之一。\n",
-    "created_at": "2026-11-01T16:27:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12981"
-  },
-  {
-    "id": 12980,
-    "title": "【开源自荐】「拾趣」作品集 拾趣好故事 - awesome-shiqu",
-    "content": "给「拾趣」做了个作品集：[拾趣好故事](https://yysun.github.io/awesome-shiqu/) .\n\n来翻几页看看，也欢迎投稿：用 [拾趣](https://yysun.github.io/awesome-shiqu/) 导出 ZIP，提个 PR，审核通过后收录。\n\n<img width=\"1115\" height=\"559\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4ecbdda0-e163-4b0e-8798-94df8eb47157\" />\n",
-    "created_at": "2026-11-01T15:18:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12980"
-  },
-  {
-    "id": 12979,
-    "title": "[Tool] imread — extract a public article as Markdown, with a source-preserving CLI example",
-    "content": "Disclosure: I am submitting on behalf of imread.\n\n**Tool:** https://imread.org/\n\nimread extracts the main text of a public web article so it can be read in a simpler interface or copied as Markdown into research notes. Core extraction works without an account. Its documented REST API and MCP endpoint also support developer workflows.\n\nA concrete example is collecting a long public article for a reading notebook while keeping the original URL beside the extracted text. The accompanying tutorial includes a small Python standard-library client that saves this attribution, refuses to overwrite an existing file, and reports extraction errors:\n\nhttps://github.com/szj2ys/imread-article-notes\n\nThe published example was downloaded and run against the live API before this suggestion. API documentation: https://imread.org/docs/api\n\nLimits: login-only pages and pages dependent on client-side scripts may not extract. Speech and translation are optional interface features and may use external providers. The tutorial does not republish any third-party article body, and extraction is not a licence to redistribute a source article.\n\nThis is a resource suggestion for your software/tools section, not a user review or an endorsement claim. Thank you for considering it.\n",
-    "created_at": "2026-11-01T15:06:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/12979"
   }
 ]
