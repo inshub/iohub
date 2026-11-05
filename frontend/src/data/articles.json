@@ -1,5 +1,69 @@
 [
   {
+    "id": 13125,
+    "title": "【网站自荐】Agentic Kingdoms：真人玩家与 AI 智能体同场的网页策略 MMO",
+    "content": "Agentic Kingdoms 是一款免费的中世纪王国战争 MMO，手机和电脑浏览器打开即玩，无需下载，可以用游客身份直接开始。\n\n- 聊天在 11 种语言之间实时翻译，不同国家的玩家可以各用自己的语言交流。\n- 真人玩家和 AI 智能体在同一个持续运转的世界里游玩，操作频率限制相同（智能体每天攻击和侦察同一名真人玩家的次数另有上限）；智能体名字旁带有所有玩家可见的 AI 标签。\n- 智能体通过公开的 MCP 服务器或 HTTP/WebSocket API 加入，无需密钥；接入说明是一份公开文档：https://agentickingdoms.com/skill.zh.md\n\n试玩：https://play.agentickingdoms.com/?guest=1&src=news.zh.ruanyf\n\n",
+    "created_at": "2026-11-05T20:58:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13125"
+  },
+  {
+    "id": 13124,
+    "title": "【开源自荐】autorekt：让 AI agent 读懂全球市场的命令行数据工具",
+    "content": "项目地址：https://github.com/autorekt/autorekt\n官网：https://autorekt.com/zh/\n\n问 AI 市场为什么动了，它通常只能翻出过时的训练数据和几条新闻标题。autorekt 是一个开源（MIT）的命令行工具，它直接从免费公开数据源获取市场数据，整理成适合 AI agent 阅读的紧凑文本，每个数字都标明有多旧。数据源包括交易所、纽约联储、美国财政部、FRED、CFTC、Cboe 期权链、DTCC 互换成交、欧洲央行、中国银行间市场、Polymarket 和 Kalshi。\n\n- 一个 Rust 可执行文件，Linux、macOS、Windows 一行命令安装，不需要账号和 API 密钥，也不连接作者的任何服务器\n- 四个命令：show 看数据，search 找代码，why 解释一次波动，watch 设置提醒规则；任何能执行 shell 的 agent 都能用\n- 覆盖美元流动性、互换利差、期权交易商伽马、CFTC 持仓、加密资金费率和爆仓、人民币中间价、预测市场赔率等分散的免费数据\n- 附带 agent skill，Claude Code 等 agent 会自动在回答市场问题前先查数据\n",
+    "created_at": "2026-11-05T20:26:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13124"
+  },
+  {
+    "id": 13123,
+    "title": "【开源自荐】Flipic：给摄影师挑片用的开源 Mac 看图软件",
+    "content": "项目地址：https://github.com/xmasdong/flipic\n官网（中文）：https://flipic.app/\n\n自荐一个开源的 Mac 看图软件 Flipic，解决的是拍完照之后的\"挑片\"这一步。\n\n拍完一场活动，几百上千张照片拷进电脑，先得把能用的挑出来。Mac 自带的「预览」一次只能开一张；开 Lightroom 又得先建图库、等导入，还没开始挑就先花几分钟。Flipic 干的就是中间这一步：双击文件夹里随便一张照片，它直接读这个文件夹——不导入、不建库、不要账号，左右方向键往下翻，4800 万像素的 RAW 按住方向键连翻也跟得上。看不清焦点的话，鼠标停在眼睛上按 0，立刻放大到 100%；连拍拿不准留哪张，按 C 两张并排比。\n\n挑中的照片按 1–5 打星，星级按 XMP 标准写进文件元数据（JPEG/HEIC 写进文件本身，相机 RAW 写在同名 .xmp 边车文件里，RAW 一个字节不动），之后在 Lightroom、Bridge、Capture One 里都能直接读到，换软件不用重打一遍。要留的按 P 标记，存成访达标签，不开 Flipic 在访达里也能找到。活动照片几百张的场景还有个清理模式（⇧⌘K）：用系统自带的 Vision 框架在本机把相似连拍、完全重复、闭眼、糊掉的照片分出来并推荐保留哪张，删不删、删哪些由你决定，⌘Z 可撤销。\n\n几条设计上的坚持：默认完全联网功能为零（不收集任何数据），清理检测全部在本机跑，照片不上传；安装包不到 4 MB，Developer ID 签名并通过 Apple 公证；支持 JPEG/PNG/HEIC/WebP/GIF/TIFF/AVIF/JPEG XL/PSD/OpenEXR 和常见相机 RAW（ARW、CR2、CR3、NEF、RAF、DNG 等），界面有 14 种语言，macOS 13 起 Apple 芯片和 Intel 都能用。Swift + AppKit 手写，零第三方依赖。\n\n完全免费且开源（MIT），看图、打星、标记、筛选、清理模式都在免费范围里；另有一个 ¥68 买断的 Pro，是大批量挑片的一些增强功能（按人比闭眼、修图前后对比之类），免费版已经够大多数人用。\n\n安装包和更多截图见官网，也支持从源码构建。现在用它的基本都是摄影师，很多功能是他们提的，欢迎试用提意见。\n",
+    "created_at": "2026-11-05T17:08:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13123"
+  },
+  {
+    "id": 13122,
+    "title": "【开源自荐】CodeYear：本地优先的年度代码报告生成器，直接读取本地 git、不上传代码",
+    "content": "## 项目地址\n\nhttps://github.com/Qiongkura/codeyear\n\nCodeYear 是一个本地优先的年度代码报告生成器。它直接读取本机的 `.git` 目录，不要求 OAuth 授权、不上传任何代码，因此可以统计 GitHub Wrapped 覆盖不到的部分：私有仓库、公司内网 GitLab、Gitee 仓库和本地个人项目。\n\n## 主要特点\n\n1. **只统计本人提交**：自动识别 git 身份，支持 `--alias` 合并旧邮箱、`.mailmap` 自动映射；\n2. **多副本去重**：同一项目的 `work/`、`backup/`、fork 副本按根提交血统自动合并，不虚报数字；\n3. **剔除噪音**：自动过滤锁文件、构建产物和 merge commit，\"最常改文件\"榜保证是真实手写代码；\n4. **一次扫描五连输出**：中英双语纸面档案风格 HTML 报告、2400×3200 海报、完整长图、640×1254 透明底 GitHub 主页 SVG 卡片（浅色/深色自适应、4 套主题）；\n5. **灵活口径**：`--compare` 同比去年、`--rolling` 最近 365 天、`--exclude` 排除指定仓库；\n6. **零门槛上手**：已发布 PyPI，`pip install codeyear` 或 `uvx codeyear scan ~/code` 即可运行，Windows 另有免装 Python 的单文件 exe，软件内自带检查更新。\n\n## 报告首屏\n\n![Annual report preview](https://qiongkura.github.io/codeyear/report-preview-en.png)\n\n## GitHub 主页卡片（浅色 / 深色自适应）\n\n| Light | Dark |\n| --- | --- |\n| ![card light](https://qiongkura.github.io/codeyear/sample-card-en.svg) | ![card dark](https://qiongkura.github.io/codeyear/sample-card-en-dark.svg) |\n\n在线示例：https://qiongkura.github.io/codeyear/\n开源协议：MIT\n",
+    "created_at": "2026-11-05T16:16:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13122"
+  },
+  {
+    "id": 13121,
+    "title": "【软件自荐】iLoveDevTool：免费在线开发者工具箱（40+ 工具，代码运行 / 格式转换 / 文本处理）",
+    "content": "自荐一个开发者工具站：[iLoveDevTool](https://www.ilovedevtool.com/zh-CN)\n\n40+ 个免费在线开发者工具的集合，无需注册：\n\n- **代码运行**：Python、PHP、Java、C++、Go 在线 playground，支持多文件项目与分享链接\n- **数据转换**：JSON 转 Excel / CSV / YAML / PHP / Python，XML 校验（DTD / XSD），Excel、CSV 转 JSON\n- **文本处理**：文本对比（diff）、正则测试、大小写转换、Markdown 预览\n- **开发常备**：Unix 时间戳转换、时间换算、Base64 / URL 编解码、JWT 解析、哈希生成、二维码生成\n\n界面支持 20 种语言（含简体 / 繁体中文）和暗色模式。全站免费，无付费档。\n\n利益相关：我是站长，本帖为自荐。",
+    "created_at": "2026-11-05T16:11:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13121"
+  },
+  {
+    "id": 13120,
+    "title": "【开源自荐】Murmury：视频会议时，根据你自己的文档实时给出简短回答（Mac，可完全本地运行）",
+    "content": "Murmury 是一个开源的 Mac 应用（GPL-3.0）。它会收听 Zoom、Meet、Teams 通话中对方的声音，在本机用 Whisper（MLX）转写；当对方向你提问时，从你自己的文档里找出简短的回答，并标明出处。\n\n- 可以完全本地运行：通过 Ollama 或 LM Studio 使用本地模型，不需要 API key，数据不离开电脑；也可以用自己的 Claude、OpenAI、Gemini 等 key。\n- 没有机器人加入会议，也不保存录音。\n- 回答窗口不会被屏幕共享捕获（macOS 26.6.2 实测：ScreenCaptureKit、screencapture、CGWindowListCreateImage 均为 0 像素）。\n- 需要 Apple Silicon。\n\n看到第 414 期写了 Jev 决策模型：我们也在做一个 Jev 式的本地决策模型，用来决定什么时候调用本地 LLM（issue #20，欢迎参与）。\n\nhttps://github.com/GianlucaBave/murmury",
+    "created_at": "2026-11-05T16:08:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13120"
+  },
+  {
+    "id": 13119,
+    "title": "【软件自荐】x.erp：装在自己 NAS 上的开源进销存软件",
+    "content": "我是 x.erp 的开发者，想向周刊推荐这款开源的进销存软件。\n\n它是给小店、小公司用的：商品和多仓库库存、扫码出入库、销售采购和退货、收付款、往来对账、经营报表。装在自己的 NAS（飞牛、群晖、威联通等）或任意能跑 Docker 的机器上，局域网里的电脑和手机用浏览器就能多人同时用。数据存在本地 SQLite，每天自动备份，不联网也能用。\n\n全部功能免费，AGPL-3.0 开源。服务端只有一个 `server.js`，不依赖任何 npm 包（数据库用的是 Node 22 内置的 `node:sqlite`）。\n\n在线试用（账号 admin，密码 admin123，数据每小时重置）：https://demo.zhaoyoucai.xyz\nGitHub：https://github.com/Zyc009234/x.erp\n官网：https://www.zhaoyoucai.xyz/xerp/\n\nDocker 安装：\n\n```bash\ndocker run -d --name xerp -p 8686:8686 -v ./xerp-data:/data ghcr.io/zyc009234/xerp:latest\n```\n\n工作台界面：\n![x.erp 工作台](https://raw.githubusercontent.com/Zyc009234/x.erp/main/docs/screenshots/dashboard.png)\n",
+    "created_at": "2026-11-05T15:55:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13119"
+  },
+  {
+    "id": 13118,
+    "title": "【开源自荐】lmux：用来跑 Claude Code 和 Codex 的轻量 macOS 原生终端",
+    "content": "lmux 是我开发的一个 macOS 原生终端，用 Swift/AppKit 写的，基于 libghostty，主要用来同时跑多个 Claude Code 和 Codex 会话。\n\n![lmux](https://raw.githubusercontent.com/sooftware/lmux/main/docs/site/img/og.png)\n\n- 项目地址：https://github.com/sooftware/lmux\n- 主页：https://lmux.dev\n\n特点：\n\n- 侧边栏管理多个工作区，每个面板都可以分屏、开标签页\n- 通过 Claude Code 的 hooks 和 Codex 显示每个 agent 的状态：运行中、需要你处理、已完成、失败\n- prompt 发错了会话，可以直接撤回，不用重启会话（仅支持 Claude Code）\n- 退出应用或重启电脑后，会话会自动恢复\n- 直接读取你的 Ghostty 配置\n- 空闲时 CPU 占用接近 0%，不发任何网络请求\n- 修复了输入韩文时组字的问题，部分日文、中文输入法的问题也做了修复\n- 支持 macOS 14 及以上、Apple 芯片，MIT 协议，免费\n\n安装：\n\n    brew install --cask sooftware/tap/lmux\n",
+    "created_at": "2026-11-05T14:10:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13118"
+  },
+  {
     "id": 13117,
     "title": "【开源自荐】ant-design-x-vue 2.0：Ant Design X 的 Vue 实现发布2.0",
     "content": "\n这是 Ant Design X 的社区 Vue 实现，现发布2.0版本，自 2.0 起拆成三件套，提供 界面、流式渲染、数据管理 全面解决方案，方便开发者按需搭建 AI 对话界面：\n\n`ant-design-x-vue` — 智能界面 / 对话组件  \n基于 Ant Design RICH 设计范式的 Vue AI UI，开箱即用的智能对话组件，快速搭建 Agent / 聊天界面。\n\n`@ant-design-x-vue/x-markdown` — 流式 Markdown  \n面向 AI 流式输出的 Markdown 渲染，从 `@ant-design-x-vue/x-markdown` 独立引入，支持自定义插件扩展。\n\n`@ant-design-x-vue/x-sdk` — 对话数据流  \n提供管理AI会话的能力。\n\n<img width=\"1512\" height=\"756\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/09ba26cb-67a0-42d8-b037-dff43395c037\" />\n\n仓库：https://github.com/wzc520pyfm/ant-design-x-vue\n文档：https://[ant-design-x-vue.netlify.app](https://ant-design-x-vue.netlify.app/)",
@@ -178,7 +242,7 @@
   {
     "id": 13093,
     "title": "【开源自荐】FunFan：按温度规则自动调速的 macOS 风扇工具，退出或崩溃都会把控制权还给系统",
-    "content": "项目地址：[https://github.com/lovexiaov/funfan](https://github.com/lovexiaov/funfan)（MIT）\n下载：[Releases](https://github.com/lovexiaov/funfan/releases)（macOS 13+，Apple Silicon）\n\nFunFan 是 macOS 菜单栏里的风扇控制工具，纯 Swift/SwiftUI、零第三方依赖。同类工具大多给你一个滑块，它给的是一套能自己跑的规则：读 SMC 温度，按「CPU 均温 ≥ 60℃ → 3500 RPM」这样的规则或温度曲线自动调速。\n\n它主要花功夫的地方，是**接管之后怎么安全地放手**：\n\n- **只提速不压低**：所有策略结果都要过一道随温度升高的安全下限，规则写错也降不到系统推荐值以下；只写 `F0Tg`，绝不写 0 RPM，不碰固件推荐区间。\n- **10 秒租约 + 看门狗**：GUI 与特权后台组件之间靠 XPC 心跳续租，App 退出、被 `kill -9`、合盖、租约过期，风扇都会在约 10 秒内回到系统自动控制；合盖链路已在 MacBook Pro M2 真机验证。\n- **四种策略**：自动 / 固定 / 曲线 / 规则，带 40 RPM 死区防抖与曲线斜率限制，转速不会来回跳。\n- **一键诊断**：`funfanctl diagnose` 直接产出可贴进 issue 的 Markdown 报告，含机型、全部 SMC 温度键的可读情况（本机 180 个）、风扇区间与后台组件状态。\n\n顺手记一个 Apple Silicon 的坑：温度键不全是 `flt`，本机有 6 个是 `ioft` 定点类型且必须按有符号解，否则未接探针的哨兵值会算成 2.8e14℃，还会「看起来合法」地骗过合理性过滤。\n\n![菜单栏面板](https://raw.githubusercontent.com/lovexiaov/funfan/main/docs/ui-prototype/popover-actual.png)\n![曲线编辑](https://raw.githubusercontent.com/lovexiaov/funfan/main/docs/ui-prototype/curve-window-actual.png)\n\n目前是 alpha，包未经 Apple 公证，首次打开要在「系统设置 → 隐私与安全性」放行一次；改风扇转速属于直接操作硬件，风险自负，异常时切回「自动」即可。我是作者 @lovexiaov，欢迎试用和提 issue。\n",
+    "content": "项目地址：[https://github.com/lovexiaov/funfan](https://github.com/lovexiaov/funfan)（MIT）\n下载：[Releases](https://github.com/lovexiaov/funfan/releases)（macOS 13+，Apple Silicon）\n\nFunFan 是 macOS 菜单栏里的风扇控制工具，纯 Swift/SwiftUI、零第三方依赖。同类工具大多给你一个滑块，它给的是一套能自己跑的规则：读 SMC 温度，按「CPU 均温 ≥ 60℃ → 3500 RPM」这样的规则或温度曲线自动调速。\n\n它主要花功夫的地方，是**接管之后怎么安全地放手**：\n\n- **只提速不压低**：所有策略结果都要过一道随温度升高的安全下限，规则写错也降不到系统推荐值以下；只写 `F0Tg`，绝不写 0 RPM，不碰固件推荐区间。\n- **10 秒租约 + 看门狗**：GUI 与特权后台组件之间靠 XPC 心跳续租，App 退出、被 `kill -9`、合盖、租约过期，风扇都会在约 10 秒内回到系统自动控制；合盖链路已在 MacBook Pro M2 真机验证。\n- **四种策略**：自动 / 固定 / 曲线 / 规则，带 40 RPM 死区防抖与曲线斜率限制，转速不会来回跳。\n- **一键诊断**：`funfanctl diagnose` 直接产出可贴进 issue 的 Markdown 报告，含机型、全部 SMC 温度键的可读情况（本机 180 个）、风扇区间与后台组件状态。\n\n顺手记一个 Apple Silicon 的坑：温度键不全是 `flt`，本机有 6 个是 `ioft` 定点类型且必须按有符号解，否则未接探针的哨兵值会算成 2.8e14℃，还会「看起来合法」地骗过合理性过滤。\n\n![菜单栏面板](https://raw.githubusercontent.com/lovexiaov/funfan/main/docs/ui-prototype/popover-actual.png)\n![曲线编辑](https://raw.githubusercontent.com/lovexiaov/funfan/main/docs/ui-prototype/curve-window-actual.png)\n\n目前是 alpha，包未经 Apple 公证，首次打开要在「系统设置 → 隐私与安全性」放行一次；改风扇转速属于直接操作硬件，风险自负，异常时切回「自动」即可。我是作者 @lovexiaov，欢迎试用和提 issue。\n\n视频演示（Bilibili）：[【FunFan】一款轻巧、简洁、功能强大的 macOS 菜单栏风扇控制工具，专为 Apple 芯片 Mac 打造。](https://www.bilibili.com/video/BV1uW4h6GEZq/)\n\n\n",
     "created_at": "2026-11-04T15:31:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13093"
@@ -738,71 +802,5 @@
     "created_at": "2026-11-02T15:12:55Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13022"
-  },
-  {
-    "id": 13021,
-    "title": "【工具自荐】Licentivo：AI 辅助接入的软件授权服务，赠送 30 份 3 个月试用",
-    "content": "我是 Licentivo 的开发者。这次赠送 30 份 Starter 套餐，每份免费使用 3 个月，适合正在给桌面软件、插件、CLI 或开发工具接入授权功能的独立开发者和小团队，支持 AI 辅助接入自己的项目。\n\n官网和控制台均支持中文界面，可以使用中文完成产品配置和授权管理。\n\n## 领取 3 个月免费试用\n\n- 首批 30 个名额，每份免费使用 Starter 套餐 3 个月。\n- 每个账户享有 1,200 台设备额度，每月 API 调用不限量。\n- 兑换码：**PROMO-AB863D6B201A**\n- 注册后进入控制台，在「用量与账单 / Usage and billing → 兑换码 / Redeem code」中领取。\n- 适用于 2026 年 11 月 2 日 00:00（UTC+8）起注册的账户。领取期为一个月，截止 2026 年 12 月 2 日 21:45（UTC+8），或名额领完为止。\n- 同一账户在本轮试用赠送中限领取一次初始 3 个月赠送。\n\n领取初始 3 个月赠送不要求提交反馈，欢迎用于自己的项目或小型测试应用。Licentivo 是商业托管服务，本次为限时免费试用赠送。\n\n官网：https://www.licentivo.com/zh/\n\n## 它解决什么问题\n\n给桌面应用、插件、CLI 或开发工具加上软件授权时，除了激活码，还需要处理设备数量、离线使用、功能权限，以及许可证失效后的行为。Licentivo 将这些能力放在同一个控制台和 API 中，支持许可证激活、设备绑定与额度、离线授权、功能权限和浮动席位。\n\nSDK 支持 Go、Java、C、C++、C#、Python、JavaScript、Rust、Ruby，也可以按文档手动集成。\n\n## AI 辅助接入自己的项目\n\n1. 在控制台创建产品，配置设备上限、离线策略等授权规则。\n2. 复制控制台生成的英文接入提示词，在自己的项目中交给 AI 编程工具。\n3. 提示词包含 SDK 安装、功能保护、激活、离线处理和检查步骤；开发者审核修改并运行应用。\n4. 自己输入激活码，验证受保护功能的实际行为。\n\n设备上限和离线允许时长等规则可自行配置。接入时可以按需要检查无效许可证、达到设备上限、断网以及重新联网等场景，确认行为符合自己的策略。\n\n## 自愿反馈，可额外获赠最多 3 个月\n\n每条被采纳的建议，或经核实的有效 Bug 报告，可额外获得 1 个月；同一账户通过反馈最多获得 3 个月额外赠送，连同初始试用合计最多 6 个月。\n\n反馈请发送至 support@licentivo.com，注明 Licentivo 账户邮箱。Bug 请尽量附上 SDK/语言及版本、操作系统、复现步骤、预期与实际结果，核实后发放额外月份。\n\n欢迎在评论中讨论接入问题，也欢迎分享文档或 AI 接入提示词可以改进的地方。\n\n## 产品展示\n\n<img width=\"1920\" height=\"1080\" alt=\"Licentivo 产品概览\" src=\"https://github.com/user-attachments/assets/245e35a2-9707-439d-95f4-d2f80f7e9a77\" />\n<img width=\"1920\" height=\"1080\" alt=\"Licentivo AI 辅助接入流程\" src=\"https://github.com/user-attachments/assets/8c58939f-c4c0-4ffd-941b-87d2c4dab4e8\" />",
-    "created_at": "2026-11-02T13:53:57Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13021"
-  },
-  {
-    "id": 13020,
-    "title": "【开源自荐】Friday：让 Claude Code、Codex、Cursor 等编程 Agent 组队干活，一个额度用完任务自动交给另一个（MIT）",
-    "content": "阮老师好，我是 Friday 的作者，向周刊自荐（利益相关）。\n\nFriday 是一个免费、MIT 开源的桌面应用（macOS / Windows / Linux），让 Claude Code、Codex、Cursor、Gemini CLI、GitHub Copilot、OpenCode 等编程 Agent 在同一个项目里组队干活。\n\n起因是我经常做到一半就用完 Claude 的额度，任务只能停着等重置，或者手动切到 Codex，再把整件事从头解释一遍。\n\nFriday 做的事：\n\n1. **共享任务板**：一个 Agent 拆分任务，其他 Agent 认领适合自己的部分。\n2. **Agent 之间直接发消息**：不用你在几个终端之间来回复制粘贴。\n3. **额度用完自动交接**：任务转给另一个 Agent，附带前一个做了什么、改了什么的记录；接手的 Agent 先检查代码、重跑测试，再继续。\n4. **每个 Agent 一个 git worktree**：互不覆盖，你逐个看 diff、在某一行留评论，再提交。\n5. **项目记忆（v0.2.6）**：你纠正过一次的错误，之后在这个仓库里启动的每个 Agent 都会先被告知。\n\n<img src=\"https://raw.githubusercontent.com/splashxmoon/friday/main/docs/assets/agents-in-session.png\" alt=\"Friday 里多个 Agent 在同一个会话中协作\" width=\"640\">\n\n无需账号，用你已有的各家套餐，在你自己的电脑上运行。装了 Node.js 22 也可以一行启动：`npx github:splashxmoon/friday`\n\n开源仓库：https://github.com/splashxmoon/friday\n官网：https://www.tryfridaywork.com\n",
-    "created_at": "2026-11-02T13:34:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13020"
-  },
-  {
-    "id": 13019,
-    "title": "【开源自荐】Konode：无需账号的浏览器同步扩展，书签和标签页存进你自己的坚果云 / GitHub / WebDAV",
-    "content": "阮老师和各位读者好，自荐一个我开发的开源浏览器扩展：**Konode**。\n\n**一句话介绍**：把浏览器的书签、打开的标签页、历史记录和扩展列表，同步到你自己的存储里（坚果云、GitHub 仓库或任意 WebDAV 服务器，也支持 Google Drive）。没有 Konode 账号，也没有 Konode 服务器。\n\n- 开源仓库：https://github.com/konabe-studio/konode （MPL-2.0）\n- Chrome 应用商店：https://chromewebstore.google.com/detail/konode/mmlfiiimnpnjcjhhbldenpcmnibedkfa\n- Firefox 附加组件：https://addons.mozilla.org/firefox/addon/konode/\n- 打不开应用商店的话，[GitHub Releases](https://github.com/konabe-studio/konode/releases) 里有 zip 包，用坚果云、GitHub 或 WebDAV 同步完全正常（这个包不能登录 Google Drive）。\n\n![Konode 弹出窗口：同步状态、数据类型和其他设备的标签页](https://raw.githubusercontent.com/konabe-studio/konode/main/docs/hero.png)\n\n**为什么做它**：我同时用好几个浏览器。浏览器自带的同步只在同一家浏览器之间有效，数据还要经过厂商的服务器。我想要一个能跨浏览器、数据只放在自己存储里的方案。\n\n**特点**：\n- 设置向导里有坚果云卡片，填坚果云邮箱和第三方应用密码就能用，国内不需要 Google Drive。\n- 可选端对端加密（AES-256-GCM），存储服务商也看不到内容。\n- Chrome、Edge、Brave、Helium 等 Chromium 浏览器和 Firefox 可以共用同一个同步文件夹；Android 版 Firefox 也能同步打开的标签页。\n- 删除会同步到其他设备，但一次要删除太多书签时会先拦下，并保存还原点。\n- 可以将指定的书签文件夹排除在同步之外，标签页分组也能随标签页一起恢复。\n- 界面支持简体中文和繁体中文，跟随浏览器语言。\n\n我是作者，个人项目，欢迎提 issue。谢谢阮老师和周刊！",
-    "created_at": "2026-11-02T13:11:04Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13019"
-  },
-  {
-    "id": 13018,
-    "title": "【软件自荐】Linkit：本地优先的 AI 个人书签与知识助手（Go + Wails + SQLite）",
-    "content": "# 【软件自荐】Linkit：本地优先的 AI 个人书签与知识助手（Go + Wails + SQLite）\n\n### 项目地址\nhttps://github.com/blue-idea/linkit\n\n### 一句话介绍\n跨平台的本地优先个人书签与知识助手，基于 Go + Wails + SQLite 构建，支持本地语义向量检索、404 死链检测与知识图谱。\n\n### 为什么做它\n浏览器书签收藏往往容易变成信息孤岛，积累成千上万个链接后难以检索。商业稍后读服务大多收取昂贵订阅费且依赖第三方云端。\nLinkit 采用 Local-First 架构，数据保存在本机的 SQLite 数据库中，毫秒级响应，保护隐私。\n\n### 核心特性\n1. **本地优先架构**：基于 Go + Wails + SQLite 构建，数据保存在本机，毫秒级检索，断网可用。\n2. **语义向量检索**：不记得标题也能通过模糊意图查找内容。支持接入本地运行开源模型（如 Ollama）或兼容接口。\n3. **链接健康扫描与去重**：自动体检全库链接，一键筛选失效 404 死链与重复书签。\n4. **Spotlight 快速检索**：通过快捷键随时唤出全局搜索与粘贴入库。\n5. **知识关联图谱**：交互式节点网络，探索书签之间的主题联系。\n6. **全平台支持**：支持 macOS（提供 Homebrew Tap）、Windows 及 Linux。\n\n### 截图展示\n![Linkit 仪表盘工作台](https://raw.githubusercontent.com/blue-idea/linkit/main/ui/screenshot/dashboard.png)\n\n### 说明\n我是作者，个人开发的免费工具（主仓提供预编译安装包与项目说明）。欢迎阮老师与周刊读者试用与反馈！\n",
-    "created_at": "2026-11-02T13:10:14Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/13018"
-  },
-  {
-    "id": 13017,
-    "title": "【网站自荐】HumanizeAI：把 AI 草稿改得更像人写的免费润色工具",
-    "content": "**网址**：https://humanizeaiwork.com/\n\n**一句话介绍**：把 ChatGPT 等生成的英文草稿，改写成更自然、好读的文字。免费，有几种风格可选。\n\n**为什么做它**：AI 草稿常有套话和生硬节奏。我想做一个打开即用、不用注册的网页润色器，方便改完自己再过一遍再发布。\n\n**说明**：工具只做改写辅助，发布前请自行核对事实与含义。我是作者，个人项目。谢谢阮老师和周刊！",
-    "created_at": "2026-11-02T12:45:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13017"
-  },
-  {
-    "id": 13016,
-    "title": "【网站自荐】听说了吗？（AnyMesgs）：把 AI 热点讲成人话的中文解读站",
-    "content": "**网址**：https://anymesgs.com/ ｜ RSS：https://anymesgs.com/rss.xml\n\n**一句话介绍**：中文 AI 资讯解读站。每天把行业里的新东西看懂、判断靠不靠谱，再用人话讲明白；文章常配动图、交互和类比。\n\n**为什么做它**：AI 新闻又多又碎，标题党也多。我想做一个偏「讲清楚」而不是「追热点刷屏」的阅读站，并提供 RSS 方便订阅。\n\n我是作者。谢谢阮老师和周刊！",
-    "created_at": "2026-11-02T12:45:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13016"
-  },
-  {
-    "id": 13015,
-    "title": "【网站自荐】Nano Banana 指南：本地/离线替代与 API 对照",
-    "content": "**网址**：https://nano-banana.live/ （相关仓库：https://github.com/sweesama/nano-banana ）\n\n**一句话介绍**：独立整理的 Nano Banana（Gemini 图像）使用说明页：能不能本地跑、有没有开源替代、API 怎么对接，对照写清楚。\n\n**为什么做它**：很多人搜「Nano Banana 本地」「离线」「开源」时，结果很散、说法不一。我想把常见问题和可行路径收成一页，方便查。\n\n**说明**：这是指南站，不是官方产品页；内容会随官方能力变化更新。我是作者，个人项目。谢谢阮老师和周刊！",
-    "created_at": "2026-11-02T12:45:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13015"
-  },
-  {
-    "id": 13014,
-    "title": "【网站自荐】Color Genius：拖 RGB 滑块还原颜色的色感测试小游戏",
-    "content": "**网址**：https://colorgenius.art/\n\n**一句话介绍**：屏幕给出一个颜色，你拖 RGB 滑块去还原它，越接近分数越高。有多种难度，成绩可以上全球排行榜。\n\n**为什么做它**：设计师和前端经常要估色、对色。我想做一个不用注册、打开就能玩的网页小游戏，顺带练眼力。\n\n**主要功能**：\n- 多种难度的 RGB 匹配\n- 全球排行榜\n- 还有每日配色挑战页 `/daily`\n- 免费，免注册，手机电脑都能玩\n\n我是作者，个人项目。谢谢阮老师和周刊！",
-    "created_at": "2026-11-02T12:45:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13014"
   }
 ]
