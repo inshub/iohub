@@ -1,5 +1,125 @@
 [
   {
+    "id": 13145,
+    "title": "自荐投稿：AI Focus — 同时开很多个 AI 时用的专注力面板（Windows）",
+    "content": "同时开着网页版 ChatGPT / Claude、几个 Claude Code 终端、Codex 桌面版，窗口一多就不知道谁跑完了、谁在等你。AI Focus 把所有会话集中到一个面板：谁在等你、等了多久、最后回复了什么，一眼看清；Alt+W 跳到等你最久的会话，Alt+E 跳回来，能定位到终端的具体标签页。数据全在本机，不联网、不用账号。仅 Windows，浏览器扩展需手动加载。\n\n<img width=\"1620\" height=\"1020\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/620295e5-63f3-403b-9ab2-fc5a61bc1c9e\" />\n\n<img width=\"538\" height=\"520\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/02105476-caf7-48ae-bdf8-78a4ea6b5549\" />\n\n[https://github.com/jy1989/AiFocus](https://github.com/jy1989/AiFocus)\n\n",
+    "created_at": "2026-11-06T09:11:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13145"
+  },
+  {
+    "id": 13144,
+    "title": "BoopFace：AI Bot 表情组件，零依赖SVG",
+    "content": "BoopFace 是一个零依赖的 SVG 机器人脸组件（原生 JS Web Component），给 AI 聊天机器人和 Agent 界面提供 18 种表情和视线跟随、拖拽挤压等小互动，内置 188 款皮肤，核心 45 KB（gzip），MIT 开源。https://github.com/CX-ArtLab/BoopFace",
+    "created_at": "2026-11-06T09:01:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13144"
+  },
+  {
+    "id": 13143,
+    "title": "【开源自荐】Excaliself：可自托管的团队 Excalidraw 白板",
+    "content": "Excaliself 是一个部署在自己服务器上的团队白板，基于 Excalidraw 画布，可以作为 Excalidraw+ 的自托管替代方案。所有绘图都保存在你自己的 PostgreSQL 中。\n\n- 邀请制账号，支持单点登录（Google Workspace、Microsoft Entra ID、OIDC）\n- 私人空间和团队空间，团队共用一个素材库\n- 文件夹、收藏，可按标题和画布内文字搜索\n- 实时协作由应用服务端处理，不需要另外部署协作服务器\n- 可从 Excalidraw+ 导入绘图\n- 内置 MCP 服务，Claude 等 AI 客户端可以查找、读取和创建绘图，无需配置 LLM API 密钥\n\n技术栈：TypeScript（TanStack Start）+ PostgreSQL，MIT 许可证。\n\n一行命令试用（数据只保存在内存中）：\n\n    docker run --rm -p 127.0.0.1:3000:3000 -e PREVIEW_MODE=true ghcr.io/maciekzygmunt/excaliself\n\n然后打开 http://localhost:3000/preview/login\n\n- 项目地址：https://github.com/maciekzygmunt/excaliself\n- 官网与文档：https://excaliself.com （另有中文 README）\n\n![Excaliself 首页](https://raw.githubusercontent.com/maciekzygmunt/excaliself/main/docs/images/home-light.png)\n\n利益相关：我是项目作者。\n",
+    "created_at": "2026-11-06T09:00:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13143"
+  },
+  {
+    "id": 13142,
+    "title": "【网站自荐】AgentCraft：64 条 GPT Image 2.6 提示词，每条附成图和出处",
+    "content": "## 网站名称\nAgentCraft 的 GPT Image 2.6 提示词页（https://agentcraft.dev/zh/prompts/image/gpt-image-2-6/ ）\n\n## 介绍\nOpenAI 11 月 4 日发布了 GPT Image 2.6，ChatGPT 里叫 Images 2.6，新增 GIF 动图。这一页收了 64 条它的提示词，每条原样摘自 OpenAI 官方的 Image prompting guide 或创作者在 X 上的帖子，旁边放着生成的成图或 GIF，并链到出处，点开就能复制全文。\n\n页首还整理了这次的变化：API 里 flare 和 sunburst 两个同价模型的区别、新增的圈选局部改图和 SVG 导出、每百万 token 的价格。\n\n免费浏览和复制，不用注册，中英双语（英文版 https://agentcraft.dev/en/prompts/image/gpt-image-2-6/ ）。\n\n披露：我参与维护 AgentCraft，这是自荐。\n",
+    "created_at": "2026-11-06T08:06:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13142"
+  },
+  {
+    "id": 13141,
+    "title": "【开源项目自荐】Fun - 基于 C 转译且内置 M:N 虚拟线程的静态类型系统级编程语言",
+    "content": "### 项目名称：Fun 编程语言\n\n**项目简介：**\nFun 是一款静态类型的自研编程语言，它直接转译（Transpile）为可读的 C 语言代码。该项目专注于提供极简的语言表面、强大的静态类型系统、实用的并发原语以及对编辑器极其友好的工具链（内置 FLS 语言服务器、格式化、诊断等）。\n\n**核心特性：**\n1. **高性能 C 转译：** 编译产物为 C 语言，具备极佳的跨平台便携性、极低的运行时开销与零性能损耗的 C 语言互操作能力。\n2. **混合并发模型：** 同时支持 M:N 虚拟线程（通过 fork 实现轻量级 I/O 任务与异步资源加载）以及 1:1 系统原生 OS 线程（std.thread，用于固定高帧率的系统如渲染和物理引擎）。\n3. **灵活的数值类型：** 提供高层默认数值类型（num, dec）的同时，支持固定宽度标量类型（i32, u64）以及任意宽度的整数（iN, uN），极其适合游戏引擎底层与系统级开发。\n4. **开箱即用的工具链：** 内置代码格式化（fun -fmt）、静态分析（fun lint）与调试映射（fun -g）。\n\n**项目地址：** https://github.com/omdxp/fun",
+    "created_at": "2026-11-06T08:02:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13141"
+  },
+  {
+    "id": 13140,
+    "title": "【文章自荐】2026 年 App Store 数据观察：每 10 个上榜应用有 1 个提到 AI，两成一年没更新",
+    "content": "网址：https://obelisk.club/research/app-store-2026?lang=zh\n\n统计了 178,637 个自 10 月起出现在 173 个国家和地区 App Store 排行榜上的应用，几个发现：\n\n- 约每 10 个上榜应用就有 1 个在介绍里提到 AI，图形和设计类高达 43%\n- 出售内购或订阅的应用提到 AI 的比例，是纯免费应用的 3 倍\n- 两成上榜应用已经一年以上没有更新，其中近一半超过三年\n- 1–2 星差评里最常见的抱怨是订阅与价格，其次是 Bug 和登录问题\n\n页面写明了每个数字的统计口径和偏差，图表和 CSV 数据以 CC BY 4.0 授权，可免费引用。\n",
+    "created_at": "2026-11-06T07:58:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13140"
+  },
+  {
+    "id": 13139,
+    "title": "fix(issue-418): 事实错误及笔误",
+    "content": "- 太空机房原文说的问题是供电限制\n- JetBrains 成立于2000年\n- 翻译问题：asbestos‌ 石棉",
+    "created_at": "2026-11-06T06:57:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/13139"
+  },
+  {
+    "id": 13138,
+    "title": "【开源自荐】经典电影台词，学英语， WEB版开源， docker一键部署，即开即用！",
+    "content": "开源地址： \n\nhttps://github.com/zhaoolee/piclex-web/\n\n在线体验直达地址：\n\nhttps://piclex.v2fy.com/piclex-web/#/deck/b33417a7-0f7e-4081-be35-2fe44d9d30c4?module=spelling&photo=2&word=9c936733-aaf4-4e93-a58b-8f968797b77b%3A0\n\n\n\n\n<img width=\"924\" height=\"1720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/36900e7f-3f5e-46af-a5e8-2c89b1a96c12\" />\n\n\n<img width=\"894\" height=\"1724\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f8b4e12c-e69a-4b24-8b65-6619aced4856\" />",
+    "created_at": "2026-11-06T04:58:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13138"
+  },
+  {
+    "id": 13137,
+    "title": "【开源工具】MiniToolDesk: 100% 浏览器本地运算、零数据上传的极客开发者工具箱",
+    "content": "## 软件名称\nMiniToolDesk (https://minitooldesk.com/)\n\n## 核心特点与解决痛点\n日常开发中，工程师经常需要使用 JSON 格式化、代码/文本比对、Hash 计算等小工具，但市面上大量在线工具广告泛滥，甚至将敏感数据上传到第三方后端，存在极大的数据泄露隐患。\n\nMiniToolDesk 采用严格的“100% 浏览器本地计算”架构：\n1. **零服务端数据交互**：利用 Web Crypto API、HTML5 Canvas 和 Web Workers，所有计算与转换均在本地内存中完成，断网可正常使用。\n2. **多语言矩阵与侧边栏支持**：支持中文、英文、日文等 7 种语言，支持 PWA 离线运行，并提供专属 Chrome/Edge 侧边栏扩展（Alt+M 随手呼出，无需频繁切屏）。\n3. **内置 AI 数据脱敏与 AST 矩阵**：提供专用的本地 Prompt 脱敏工具（向 ChatGPT 提问前一键屏蔽 API Key 与敏感数据），以及 JSON 一键转 Zod / Go Struct / Pydantic 等类型定义。\n4. **全套免费无广告**：界面参考 Raycast / Linear 设计规范，零弹窗、零强制注册。\n\n欢迎体验与交流：https://minitooldesk.com/",
+    "created_at": "2026-11-06T04:11:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13137"
+  },
+  {
+    "id": 13136,
+    "title": "【开源自荐】小维助手：在 Android 手机上运行 Pi / DeepSeek Harness 的 AI Agent",
+    "content": "https://github.com/zjw1918/WeiAssist\n\n开源的 Android AI 助手，内置 Pi 引擎，也可一键安装 DeepSeek Harness（支持子 Agent）。\n能跑 Linux 命令、操作手机 App、用 Telegram 远程指挥，无服务器，密钥只在本机。",
+    "created_at": "2026-11-06T04:11:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13136"
+  },
+  {
+    "id": 13135,
+    "title": "修正 HackerTube 的介绍",
+    "content": "明确 HackerTube 是 YouTube 视频推荐网站。 \n\n它可能让人以为 HackerTube 是 YouTube 旗下的网站，或者是一个类似 YouTube、由用户上传视频的平台。实际上，HackerTube 更适合描述为一个发现和浏览 YouTube 视频的网站：它整理了 Hacker News 用户推荐的部分视频。",
+    "created_at": "2026-11-06T03:01:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/pull/13135"
+  },
+  {
+    "id": 13134,
+    "title": "工具自荐：蜗牛快搜 — Windows 中文桌面文件检索工具",
+    "content": "蜗牛快搜（SnailQuickSearch），一款国产 Windows 桌面文件检索与磁盘整理工具。\n\n传统 Windows 文件检索工具大多需要记忆复杂检索语法，中文适配不足。该工具内置**本地离线规则解析引擎**，支持用中文口语进行多条件复合检索，不需要联网调用大模型。\n\n主要特性：\n- 离线自然语言检索，自动拆解时间、大小、后缀、路径筛选条件\n- 原生中文优化：拼音首拼、简繁互搜、别字容错\n- 集成磁盘统计、MD5内容级查重、空间可视化分析\n- 支持通配符、正则、SQL、Lua脚本多种高阶检索模式\n- 基于NTFS MFT索引，针对百万级海量文件做内存调度优化\n\n<img width=\"1465\" height=\"892\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/926f9a25-7752-494a-800f-be992b1e9f4a\" />\n\n<img width=\"1465\" height=\"892\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/bce1d418-021b-4f67-bfb5-ada99e70aa02\" />\n\n<img width=\"1465\" height=\"892\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2519bb91-de6c-4d10-9a70-9cc58f581f4f\" />\n\n<img width=\"1465\" height=\"892\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/498a9f78-527c-4e08-9e62-54731b39e987\" />\n\n项目官网：www.xunjieso.com\nGitHub：[地址](https://github.com/Winlpl/SnailQuickSearch)",
+    "created_at": "2026-11-06T02:59:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13134"
+  },
+  {
+    "id": 13133,
+    "title": "【开源自荐】CodeX 重度患者必备！原生插件看板管理并发对话，组织对话合集",
+    "content": "产品截图 1:\n\n<img width=\"894\" height=\"1118\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/801befc4-3276-4986-aa75-13c26a053490\" />\n\n产品截图 2:\n\n<img width=\"3826\" height=\"2088\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/446ce0a0-3224-4af4-bbac-73bd89afcd2f\" />\n\n\n---\n\n## 插件使用场景一\n\n插件设计之初是为我自己的需求服务，应该很多人和我一样是 Codex 重度用户，而且会同时开很多个会话，经常是这个会话在出方案、另一个会话在 worktree 写代码、其他还开了一堆的会话在排查线上问题，同时要并行处理很多事情。\n\n当然并行处理并不是阻塞点，毕竟是 AI 处理，阻塞点在于每一个对话结束后都要我们一个一个去 check 才行，这就导致经常会忘记 check，或者不想现在就 check，那随着处理的东西越来越多，之前没有立即 check 的对话，很可能会被漏掉，几十几百个会话里面，漏看一两个是常有的事情，我经常是隔了几天发现这个问题还没被处理，然后来 Codex 根据关键字搜对话，这个时候我又得花时间重新回想一遍这个问题的背景。\n\n甚至有时候会出现你隔了很久来 check 的时候，发现 Codex 竟然需要你输入补充信息，这就更难受了。。。\n\n## 插件使用场景二\n\n上面我们重点聊的是并行处理的问题，我经常还会遇到的一个场景是，开多个对话分模块来处理同一个需求，然后这个模块的所有内容我都会在同一个对话里进行，这样做的目的是啥呢，就是保证不同的模块的上下文都是连贯的，一个对话专注处理一个模块，拥有我关于这个模块的所有输入。如果需求开发的时间跨度比较长，就经常会忘记某个模块。如果没有这个插件的话，我目前的解法是统一重命名 + 置顶。\n\n再举个例子，就是我们日常工作中还存在很多调研性的需求，这类工作不一定要及时处理，只是先调研，可能到后面某一天的时候来会拿出来，到时候要找的话，要么是关键字搜索，要么就是把这些对话先置顶。这类需求一多，管理起来就越来越麻烦\n\n## 插件使用场景三\n\n我目前的开发流程基本都是写让 Codex 写方案文档/设计稿 -> Goal 模式实现 -> 出验收文档 -> 推送 MR，对我来说要 check 的就 3 个东西：\n\n1. 方案文档\n2. 验收文档\n3. MR 链接\n\n所以需要不管我在这个对话中聊了多少轮，这三个东西我都能快速的找到，但现在做不到，我经常需要翻上下文来找\n\n\n## 插件介绍\n\n以上，便是这个插件要解决的问题。\n\n**Codex-Kanban-Plugin**：A Kanban board for Codex power users to manage concurrent chats, tasks, and usage history. 专为 Codex 重度使用者设计，看板模式管理并发对话，组织对话合集\n\nGitHub 地址：[jingchengyin/codex-kanban-plugin](https://github.com/jingchengyin/codex-kanban-plugin)\n\n### 看板\n\n<img width=\"3826\" height=\"2088\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/894a06ab-a840-439f-9dac-ab7fb944a647\" />\n\n\n看板按状态分列：\n\n- 需要你处理\n- 正在运行\n- 未读（对话已完成但还未读）\n- 空闲（对话已完成且已经完成）\n- 执行异常（比如模型失败，排队超时等等）\n\n看板上展示的信息包括：\n\n- 所属文件夹\n- 使用的分支/worktree\n- 模型和思考强度\n- 计划模式\n- 目标模式\n- 最近一次的用户输入\n- 最近一次 Codex 处理所花费的 token 和时间\n- 自动解析出来的成果（目前包括 MR 链接 + 计划文档 + 飞书文档）\n- 所属合集\n\n支持自定义配置成果解析 URL：\n\n<img width=\"1084\" height=\"1922\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/75754cd0-e712-4500-b311-c778721f4f17\" />\n\n如果存在需要用户输入的会话，看板卡片会直接展示待确认卡片，可直接在插件内操作，无需跳转会话\n\n### 合集\n\n对应上述场景二，合集支持把多条对话关联起来，统一管理说明、进度、成果和验收清单。\n\n<img width=\"1084\" height=\"1922\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ba4fb129-0a6b-4ce9-8418-d5e76651aeae\" />\n\n事项有四个状态：待开始、进行中、待验收、已验收，状态由你手动更新。\n\n看板页面也可以快速加入合集：\n\n<img width=\"1212\" height=\"1360\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f13e3d21-9881-498b-b759-89238925e162\" />\n\n\n合集 icon 和颜色支持自定义：\n\n<img width=\"894\" height=\"1118\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e9cfb833-e5c9-407b-9b74-f85d5a88e10e\" />\n\n\n### 关于安全性\n\n插件只读访问本机 Codex 对话数据，所有数据均保存在 `CODEX_HOME/kanban/workspace.sqlite`。没设置 `CODEX_HOME` 时，默认位置是 `~/.codex/kanban/workspace.sqlite`。\n\n### 快速安装\n\n目前只支持 MacOS，Windows 暂未适配，欢迎 PR 👏\n\n把下面这段话发给 Codex，让它帮你安装：\n\n```\n请帮我安装 Codex-Kanban-Plugin：https://github.com/jingchengyin/codex-kanban-plugin\n从 main 分支添加插件市场，安装 codex-kanban-plugin@codex-kanban-plugin，并检查安装结果。\n```\n",
+    "created_at": "2026-11-06T02:22:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13133"
+  },
+  {
+    "id": 13132,
+    "title": "【开源自荐】定时自动网页签到助手",
+    "content": "阮老师好，自荐一个自己写的浏览器扩展，我是作者。\n\n**定时自动网页签到助手**（项目名「签到助手」/ checkin-extension）：\n\n论坛、社区、工具站常有每日签到，点一下不费事，但每天挨个打开、找按钮、戳一下，几分钟就这么没了。这个浏览器扩展让你用鼠标把每个网站的签到按钮点一下记住，之后设个时间，浏览器开着就会自动替你全部签完，跑完发条通知告诉你结果；到点时没开浏览器，下次启动会补跑。不用注册、没有服务器，任务只存在自己的浏览器里，Edge 和 Chrome 都能装，代码开源。\n\n![签到助手界面（简体中文）](https://raw.githubusercontent.com/qinruimac/checkin-extension/main/docs/screenshots/popup-zh_CN.png)\n\n- 项目地址：https://github.com/qinruimac/checkin-extension （GPL-3.0-or-later）\n- 官网（10 种语言）：https://erui.org/checkin/\n- 安装：Edge https://microsoftedge.microsoft.com/addons/detail/jfoiljgknpbcddkpfpaglcoeeflgpiha\n  Chrome https://chromewebstore.google.com/detail/gdgdjllgdagmhkdmomcikgpocabfnmai\n\n几个具体做法：\n\n- **记按钮不用懂技术**：在网页上点「选取签到按钮」，鼠标戳一下那个按钮就行，扩展自动生成稳定的选择器；网站改版后重新选一次即可。\n- **定时自动跑**：默认每天 08:00 执行，浏览器开着就可以；到点时浏览器没开着，下次启动后约 1 分钟补跑，当天已跑过就跳过。手动执行随时可用，不受限制。\n- **跑完有反馈**：后台依次打开、点击，结束弹一条通知告诉你成功几个、失败几个；失败的任务会保留标签页方便查看。\n- **换设备不丢**：任务列表跟随浏览器账号同步，也能导出 JSON 备份再导入。\n- **10 种语言界面**：中英繁日韩法德俄西葡，跟随浏览器语言，也可手动切换。\n\n隐私上做得比较克制：不用注册、不登录也能用；没有后端、不收集任何数据；定时器用的是浏览器自带的闹钟，不产生网络请求。\n\n欢迎试用，也欢迎提 Issue 或 PR。",
+    "created_at": "2026-11-06T02:17:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13132"
+  },
+  {
+    "id": 13131,
+    "title": "【开源自荐】定时自动网页签到助手",
+    "content": "阮老师好，自荐一个自己写的浏览器扩展，我是作者。\n\n**定时自动网页签到助手**（项目名「签到助手」/ checkin-extension）：\n\n论坛、社区、工具站常有每日签到，点一下不费事，但每天挨个打开、找按钮、戳一下，几分钟就这么没了。这个浏览器扩展让你用鼠标把每个网站的签到按钮点一下记住，之后设个时间，浏览器开着就会自动替你全部签完，跑完发条通知告诉你结果；到点时没开浏览器，下次启动会补跑。不用注册、没有服务器，任务只存在自己的浏览器里，Edge 和 Chrome 都能装，代码开源。\n\n![签到助手界面（简体中文）](https://raw.githubusercontent.com/qinruimac/checkin-extension/main/docs/screenshots/popup-zh_CN.png)\n\n- 项目地址：https://github.com/qinruimac/checkin-extension （GPL-3.0-or-later）\n- 官网（10 种语言）：https://erui.org/checkin/\n- 安装：Edge https://microsoftedge.microsoft.com/addons/detail/jfoiljgknpbcddkpfpaglcoeeflgpiha\n  Chrome https://chromewebstore.google.com/detail/gdgdjllgdagmhkdmomcikgpocabfnmai\n\n几个具体做法：\n\n- **记按钮不用懂技术**：在网页上点「选取签到按钮」，鼠标戳一下那个按钮就行，扩展自动生成稳定的选择器；网站改版后重新选一次即可。\n- **定时自动跑**：默认每天 08:00 执行，浏览器开着就可以；到点时浏览器没开着，下次启动后约 1 分钟补跑，当天已跑过就跳过。手动执行随时可用，不受限制。\n- **跑完有反馈**：后台依次打开、点击，结束弹一条通知告诉你成功几个、失败几个；失败的任务会保留标签页方便查看。\n- **换设备不丢**：任务列表跟随浏览器账号同步，也能导出 JSON 备份再导入。\n- **10 种语言界面**：中英繁日韩法德俄西葡，跟随浏览器语言，也可手动切换。\n\n隐私上做得比较克制：不用注册、不登录也能用；没有后端、不收集任何数据；定时器用的是浏览器自带的闹钟，不产生网络请求。\n\n欢迎试用，也欢迎提 Issue 或 PR。",
+    "created_at": "2026-11-06T02:14:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13131"
+  },
+  {
     "id": 13130,
     "title": "【网站自荐】HeadlineArena：用真实事件检验 AI Agent 的预测判断能力",
     "content": "大家好，我们在做 HeadlineArena，一个面向 AI Agent 的真实世界预测评测平台。本帖为项目方自荐。\n\n**网站介绍**\n我们围绕结果尚未揭晓的真实事件发布预测任务，让 Agent 在截止时间前提交预测和判断依据；结果公布后，按任务规则核验、评分，并形成可持续查看的表现记录。\n目前网站可以查看预测任务、已结算结果和公开排行榜，也提供 Agent 接入指引。任务涉及能源、粮食、利率和官方经济数据等。目前公开结果评估的是包含模型、工具和提示词的 Agent 系统。\n\n**我们的服务**\n对企业AI团队：为做大模型后训练、Agent 开发和评测提供前瞻预测评测。我们也想请教后训练评测的同学，这类真实世界反馈，能否帮助发现模型的判断偏差，并为后续优化提供参考？欢迎体验、接入自己的 Agent，也欢迎讨论任务设计和评分方法。\n对开发者：如果你对预测感性，可以直接接入你的agent在平台做预测赚取积分，目前积分可兑换token，未来还有更多兑现的手段。\n\n**对标产品**\n我们对标的国外产品有：\n- forecastbench\n- futuresearch\n\n**更多信息** \n网站：https://headlinearena.com/\n接入指引：https://headlinearena.com/agent-onboarding\n评测方法：https://headlinearena.com/methodology\n\n欢迎大家多多指教和业务洽谈！！谢谢ruanyifeng老师的平台！",
@@ -682,125 +802,5 @@
     "created_at": "2026-11-03T08:02:47Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13043"
-  },
-  {
-    "id": 13042,
-    "title": "【开源自荐】xgoose：电脑和手机都能用的跨端浏览器 AI 助手",
-    "content": "xgoose 是一款支持多端的浏览器 AI 助手（覆盖 Win/Mac/Linux 桌面端，以及手机/平板的 Safari 和 Firefox）。它的核心玩法是给不同的网站配置专属“技能”（integration skills），让 AI 直接在当前网页帮你搜帖子、读长文、整理资料。\n\n最方便的一点是，它会直接共享你浏览器的当前会话。也就是说，只要这个网站你已经登录了，AI 就能直接无缝使用，免去了让 AI 在独立环境里重新走一遍繁琐登录的麻烦。\n\n模型选择上丰俭由人，日常杂活可以跑便宜的模型，也完全支持接你自己的 API。目前 Chrome 扩展、代理核心和技能运行时均已开源，欢迎体验交流。\n\n[官网与安装入口](https://xgoose.org/)\n\n[GitHub 源码](https://github.com/xGoose-dev/xgoose)\n\n[网站技能列表](https://xgoose.org/skills/)",
-    "created_at": "2026-11-03T07:18:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13042"
-  },
-  {
-    "id": 13041,
-    "title": "【工具自荐】Pic Creator：用文字生成和编辑图片，也支持视频创作",
-    "content": "我参与 Pic Creator 的推广，想向周刊推荐这个面向创作者的在线工具：https://piccreator.ai/\n\n它支持从文字描述生成图片，也可以上传已有照片，再用文字指定要修改的背景、人物细节或画面风格。除单张图片创作外，网站还提供视频生成和批量图片编辑，适合制作社媒配图、产品展示图和早期创意草稿。\n\n新用户可用 20 点免费额度试用图片生成或编辑；批量编辑和更高用量需要付费方案。网站汇集 Nano Banana、GPT Image 等模型，是独立运营的服务，并非这些模型研发团队的官方网站。",
-    "created_at": "2026-11-03T06:56:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13041"
-  },
-  {
-    "id": 13040,
-    "title": "【开源自荐】QVeris Agent Toolkit：让 AI 助手按需发现并调用专业数据与工具",
-    "content": "大家好，代表 QVeris 推荐我们的开源接入工具包 **QVeris Agent Toolkit**，供周刊选题参考。\n\n项目地址：https://github.com/QVerisAI/qveris-agent-toolkit\n\n官网：https://qveris.ai/\n\n它解决的是 AI 助手遇到现有工具无法完成的任务时，如何发现可用的数据服务、了解接口范围并发起调用的问题。工具包提供 CLI、MCP Server、Python SDK 和 REST API 文档，可接入现有助手、应用或工作流。\n\n典型流程是用自然语言 Discover 查找候选服务，再 Call 调用；需要确认参数、服务范围或当前报价时，再使用 Inspect / Probe。支持的领域包括金融与公司信息、社交媒体、生命科学、研究等，实际覆盖和调用条件以具体能力为准。支持的接口还可查看用量与积分记录，便于检查执行与计费结果。\n\n例如，可以让助手先找出可用的天气查询能力，确认所需参数后获取指定地点的天气，而不用在提示词中预先塞入整个接口目录。仓库 README 提供了安装说明和调用示例。\n\n**开源与费用范围：**这里开源的是接入工具包；QVeris 托管平台及上游数据服务的执行并非全部免费。Discover 免费，Call 按所选能力计费，使用前可查看相关说明：https://qveris.ai/pricing 。\n\n欢迎反馈使用体验或提出建议。",
-    "created_at": "2026-11-03T06:48:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13040"
-  },
-  {
-    "id": 13039,
-    "title": "【工具自荐】人间走一遭：在浏览器里过完一生的中文人生模拟游戏",
-    "content": "网址：https://zouyizao.com （中国大陆访问 https://cn.zouyizao.com 更快）\n\n《人间走一遭》是一款免费的中文网页人生模拟游戏，手机和电脑都能玩，不用下载，也不用注册。\n\n为什么做这个：想在十几分钟里，体验一段受时代影响的普通人生。\n\n主要功能：\n- 投胎三选一，出身、家境、天赋随机，名字可以自己起\n- 一年一回合，经历读书、高考填志愿、工作、恋爱结婚、生孩子、理财、生病、变老\n- 出生年份 1950 到 2049 年，下岗、房价、互联网、AI 等时代浪潮会按年代找上门\n- 约 5000 个随机事件，200 种职业，100 座城市，94 个专业\n- 走完一世有结局页和可以分享的人生卡片，还能让孩子接着活\n- 水墨宣纸风画面，配古风背景音乐\n\n使用：打开网址直接开始。",
-    "created_at": "2026-11-03T04:16:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13039"
-  },
-  {
-    "id": 13037,
-    "title": "【开源自荐】纸间：浏览器里的 AI 论文阅读器，为大模型时代更优雅的读论文而生",
-    "content": "项目地址：https://github.com/Robbings/Paperpane\n\n<img width=\"2000\" height=\"1366\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5fc79fa5-ff10-43ae-bc37-d087b017e7e7\" />\n\n纸间是一款浏览器扩展，用来在浏览器里阅读论文。在 arXiv、Google Scholar 等页面点一下即可打开论文，右侧自动生成概览，论文自动识别图表公式；阅读时可以对照翻译，划选文字或用提供的工具之间截图或者选择自动识别的图表公式，就可以直接让 AI 解释或提问，回答会标注出处，点击即可跳回原文。\n\n**为什么做这个**\n\n我原来用 Zotero 读论文，但它对 AI 的支持有限，有很多开发者做了很多ai插件，且不说相关插件不少需要付费，装上之后体验也比较割裂。\n现在也有很多 AI 工具能很方便地解读论文，但它们和原文是分开的，读到一半想对照原文，还得来回切换。\n另外做调研时，常常需要先在浏览器里快速看一批论文，再决定哪些值得收进文献库，而浏览器自带的 PDF 阅读器只能看。\n所以我做了一个在浏览器里运行、原生就是围绕大模型设计的阅读器，它提供各种 AI 能力，但始终以论文为中心，AI 不会喧宾夺主：翻译、解释和回答都贴着原文出现，随时可以对照。\n\n**主要功能**\n\n- 论文网站一键打开，自动生成概览（总结、关键词、研究问题、方法等，内容可自定义）\n- 按页对照翻译，划选翻译；支持大模型和机器翻译，谷歌翻译可免费使用\n- 划选解释、划选提问、框选图片提问，回答标注原文出处\n- 自动识别公式、表格和图片，公式可复制为 LaTeX，表格可复制为 Markdown 或 Excel\n- 高亮、批注、Markdown 笔记\n- 文献库支持多级文件夹和标签，可通过 WebDAV 多端同步，可与 Zotero 互相导入导出，尽量保留批注和目录结构\n- 内置主流模型服务商，也可添加任意兼容 OpenAI 格式的接口；每个功能可以单独指定模型\n\n数据保存在浏览器本地或自己的Webdav服务器，没有服务器；API 密钥只保存在本机。\n\n![对照翻译](https://raw.githubusercontent.com/Robbings/Paperpane/main/docs/readme/images/f2-translate.gif)\n\n**使用**\n\n插件刚做好还没有上架商店，目前需要从 Release 下载后以「开发者模式」加载。AI 相关功能需要自备模型 API。\n\n- 源码：https://github.com/Robbings/Paperpane\n- 下载使用：https://github.com/Robbings/Paperpane/releases/latest",
-    "created_at": "2026-11-03T04:02:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13037"
-  },
-  {
-    "id": 13036,
-    "title": "【开源自荐】TraceRoot（YC S25）：开源的 AI Agent 自愈层，内置 TraceRoot Agent 自动定位出错代码、分析根因、给出修复建议并提交 PR",
-    "content": "AI Agent 出问题往往不报错，而是\"安静地答错\"：编造数据、调错工具、陷入循环。翻运行记录找原因非常耗时。TraceRoot 记录 Agent 的每一步，用大模型自动筛出有问题的运行，再结合你的源代码和 Git 提交历史，指出是哪一行、哪次改动导致的，必要时直接提一个修复 PR。\n\n主要功能\n\n<img width=\"800\" height=\"425\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/5e5ed792-f6c9-4e9f-b5a5-6b89ae926480\" />\n\n* 一行代码接入 LangChain / LangGraph、CrewAI、Pydantic AI、OpenAI Agents SDK、Claude Agent SDK、Vercel AI SDK 等主流框架，基于 OpenTelemetry\n* 用自然语言写检测规则，自动发现幻觉、工具调用失败、逻辑错误等问题\n* 根因分析：在隔离沙箱里读取出错时对应版本的代码，关联到具体文件、行号和提交\n* 把线上发现的问题存成测试集，改提示词或换模型前先跑一遍，防止旧问题复发\n* 调试用的模型可以用自己的 API Key（OpenAI、Anthropic、DeepSeek、Kimi、GLM 等）\n\n上手\n\n1. `pip install traceroot`，在代码开头加一行 `traceroot.initialize(integrations=[...])`\n2. 云服务有免费额度，无需提前输入信用卡信息：https://app.traceroot.ai\n3. 也可以用 Docker 完全自部署，代码和数据不出自己的服务器\n\n链接：https://github.com/traceroot-ai/traceroot\n\nP.S. 我是 TraceRoot 团队的成员。项目开源，欢迎试用和提意见。如果你试用后觉得好用，也欢迎给我们点个 Star，或者分享给身边做 AI Agent 的朋友，谢谢 ：）",
-    "created_at": "2026-11-03T03:59:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13036"
-  },
-  {
-    "id": 13035,
-    "title": "【开源自荐】devcheck：macOS 菜单栏端口地图，看清 3000 端口被谁占了",
-    "content": "项目地址：https://github.com/iihao/devcheck\n\n**一句话**：Mac 菜单栏端口地图，告诉你每个端口被谁占用、属于哪个代码项目、以及该怎么处理。\n\n**两个真实痛点**：\n\n1. `npm run dev` 报 EADDRINUSE，`lsof -i :3000` 只给一个 PID，不知道是哪个项目留下的旧进程；\n2. 5000 端口被 macOS 自己的「隔空播放接收器」（ControlCenter）占着，服务能起来但静默失败，排查很久。\n\n而且 `lsof` 会把二十多个桌面应用和系统守护进程一起列出来，噪音太大。\n\n**做法**：\n\n- 端口 → 进程 → **所属项目**（从进程 cwd 向上找 `package.json` / `pom.xml` / `go.mod` / `.git`）\n- 默认隐藏 GUI 应用/系统端口，只留跟开发相关的\n- `devcheck why 5000` 用人话解释，并给处理建议（去系统设置关掉 AirPlay，或换 5001）\n- 体检规则：同一端口被多进程占用、端口在监听但握手失败（假活）、单进程 CPU 飙高\n\n**几个刻意的技术选择**：\n\n- 可达性用裸 TCP 握手（`connect` + `poll`）判断，不用 HTTP——否则 Redis/MySQL 会被误判成挂了\n- 零第三方依赖、零特权：不装任何库，不需要 sudo 或「完全磁盘访问」，没有任何网络请求和埋点\n- 体检规则是纯函数，30 个单测；菜单栏用 AppKit，通用二进制（arm64 + x86_64）\n\n**安装**：\n\n```\nbrew install --cask iihao/tap/devcheck\n```\n\n（会同时装菜单栏 App 和 `devcheck` 命令行。构建暂无 Apple Developer 签名，首次启动需要 `xattr -dr com.apple.quarantine /Applications/DevCheck.app`）\n\n截图：https://raw.githubusercontent.com/iihao/devcheck/main/docs/menubar.png\nCLI 演示：https://raw.githubusercontent.com/iihao/devcheck/main/docs/demo-cli.zh.gif",
-    "created_at": "2026-11-03T03:49:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13035"
-  },
-  {
-    "id": 13034,
-    "title": "【资源自荐】世界模型图谱：有出处的中文世界模型资料站",
-    "content": "网址：https://worldmodelatlas.com/\n\n世界模型（world model）是最近 AI 领域常见的词，Genie、V-JEPA、Sora 这些名字常和它一起出现，但相关论文和发布材料读起来比较费劲。这个免费网站把它们整理成中文资料，尽量讲得简洁好懂。\n\n![世界模型图谱](https://worldmodelatlas.com/assets/share/default.jpg)\n\n- 模型目录：收录 48 个模型，可以按类型、控制方式和应用领域筛选。资料写明来源，查不到的明确标为未知。\n- 文章：16 篇原创解读，以及 8 篇论文中文译稿（DINO-WM、DreamerV3、V-JEPA 2 等）。\n- 时间线：按日期记录世界模型领域的重要事件。\n\n可以先读这两篇：\n\n- [看过很多视频，机器人为什么还需要动作数据？](https://worldmodelatlas.com/learn/why-robots-need-action-data/)\n- [预测下一秒还不错，为什么十秒后就乱了？](https://worldmodelatlas.com/learn/why-multi-step-prediction-drifts/)\n\n说明：我是网站作者。方向和反馈由我负责，资料整理、写作、翻译和配图主要由 AI 完成，制作过程公开在 [Lab 页面](https://worldmodelatlas.com/lab/)。\n",
-    "created_at": "2026-11-03T03:25:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13034"
-  },
-  {
-    "id": 13033,
-    "title": "【开源自荐】Stars Organizer：把 GitHub Stars 整理进 GitHub Lists，并标出已经没人维护的仓库",
-    "content": "Stars 多了以后很难找。Stars Organizer 帮你把 Stars 分进 GitHub 自带的 Lists，改动会同步回 GitHub；每个仓库还有一个健康分，已经停更或归档的仓库一眼就能看出来。\n\n![](https://raw.githubusercontent.com/armanckeser/github-stars-organizer/main/img/hero.gif)\n\n**主要功能**\n- Lists 同步回 GitHub，另有一个「不在任何 List 里」的待整理区\n- 每个仓库的健康分，以及停更仓库的活跃替代品\n- 标签、评分、备注\n- 每次启动前自动备份，恢复时只补回缺少的内容\n- 只和 GitHub 通信，没有遥测\n- 可以让 Claude Code、Codex 等 AI agent 帮你整理几百个 Stars：`npx skills add armanckeser/github-stars-organizer`\n\n**上手**\n1. `npx github-stars-organizer`（使用 GitHub CLI 的登录）\n2. 或者先试 Demo，无需登录：https://stars-demo.armanckeser.com/\n3. 也可以用 Docker 自托管\n\n链接：https://github.com/armanckeser/github-stars-organizer\n\nP.S. 代码在 Claude Code 的帮助下写成，每个改动我都会审阅。这段中文介绍是机器翻译的。\n",
-    "created_at": "2026-11-03T03:25:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13033"
-  },
-  {
-    "id": 13032,
-    "title": "【开源自荐】网站鉴权分析器（Chrome 扩展，开源）",
-    "content": "给某个网站写 skill 时，常常遇到不知道它的认证方式的问题，通常需要手动复制 Cookie，比较繁琐。于是做了这个 Chrome 插件：登录一次自动识别鉴权方式，一键复制认证值或 Prompt 给 AI。本地分析，不上传任何服务器。\n名称：网站鉴权分析器（Chrome 扩展，开源）\n链接：https://chromewebstore.google.com/detail/pilmmhildffjeibkmlcdlheeefcccfnb\n源码：https://github.com/tomandjerry136/Site-Auth-Inspector\n\n<img width=\"1280\" height=\"800\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/fb2732db-3b74-404a-9185-4a64d8acb43c\" />",
-    "created_at": "2026-11-03T03:22:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13032"
-  },
-  {
-    "id": 13031,
-    "title": "【工具自荐】GFPGAN.io：在浏览器里修复老照片中的模糊人脸",
-    "content": "网址：https://gfpgan.io/\n\nGFPGAN 是开源的人脸修复模型；GFPGAN.io 把老照片修复做成了无需安装的软件网页。上传 JPG、PNG 或 WebP 图片后，可以对比修复前后，再下载无水印的结果。无需账号，每天可免费修复 1 张标准尺寸照片；2K/4K 大图等功能需要付费。\n\n比较适合只有几张旧家庭照片、又不想安装 Python 和配置显卡的人。遇到严重损坏、原图人脸信息已经缺失的情况，AI 会猜测细节，不能把修复图当成真实历史记录。建议保留原图并仔细对比五官。网站由独立团队运营，与腾讯或原始 GFPGAN 模型团队没有隶属关系。",
-    "created_at": "2026-11-03T02:47:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13031"
-  },
-  {
-    "id": 13030,
-    "title": "【工具自荐】SimplerEmail：做了多个独立产品后，我给自己做了一个域名邮件工具",
-    "content": "阮老师好，自荐一个从自己维护多个独立产品的需求中做出来的小工具：**[SimplerEmail](https://simpleremail.com/zh)**。\n\n## 为什么会做这个工具\n\n我们自己做了几个独立产品，每个产品都需要一个正式的联系地址，比如 `support@产品域名`。产品逐渐多起来后，邮箱也跟着变多了。\n\n麻烦的地方在于：有些产品只是偶尔收到几封咨询，但依然要分别配置邮箱、查看来信，再确认应该用哪个产品的身份回复。对于一个人维护多个产品的场景，邮件量不一定大，管理入口却越来越多。\n\n我们希望每个产品都保留自己的域名地址，同时让维护者继续使用每天已经在看的那个邮箱。于是做了 SimplerEmail，先解决一个具体的问题：**多个产品的邮件，汇总到一个日常邮箱处理，回复时仍使用各自的产品地址。**\n\n## 它如何工作\n\n举个例子，你同时维护两个产品：\n\n- `support@product-a.com`\n- `hello@product-b.com`\n\n接入这两个域名并开启转发后，来信可以统一转发到你已验证的常用邮箱。完成产品地址的发信配置后，直接在常用邮箱中回复转发邮件，SimplerEmail 会通过回复中继，以对应产品的地址发给客户。也可以在网站中查看邮件、回复和主动写信。\n\n这样，每个产品仍有独立的对外身份，自己日常只需要关注一个主邮箱。\n\n## 产品截图\n\n下面是官网首页及邮件工作区预览，图中的产品名称与邮件内容为演示数据。\n\n![SimplerEmail 官网与邮件工作区预览](https://screenshots.azn8.com/screenshots/7e958015-dfdb-4caa-921d-9af455e04dfb/dc2f9af4ad79e7b8.webp)\n\n## 目前支持的功能\n\n- **多个自有域名接入**：为不同产品使用各自的域名邮件地址。\n- **来信转发到主邮箱**：转发目标需要先验证，并在设置后开启转发。\n- **以产品地址回复**：支持在常用邮箱回复转发邮件，也可以在网站中处理邮件。\n- **按产品整理邮件**：提供产品筛选、待回复状态和可编辑分类标签。\n- **API 与 MCP 发信**：应用或兼容的 MCP 客户端可通过已验证的产品地址发送通知；API/MCP 密钥仅用于发信，不提供收件箱读取权限。\n\n## 免费额度与接入要求\n\n免费版支持 **10 个自有域名，每月共享 100 次邮件操作**，包含 API 与 MCP。收信、自动转发、回复分别计数，例如收到一封邮件、转发一次、回复一次，共使用 3 次操作。邮件量增长后可选择付费套餐。\n\n域名需要自行持有，首次接入需要验证所有权并按指引配置 DNS。修改 MX 会影响该域名的邮件路由，已有邮箱的域名需要先检查现有配置。\n\n产品聚焦个人维护多个产品的邮件场景，目前不提供 IMAP、POP3 或日历。常用邮箱回复中继要求发出的邮件带 DKIM 签名，具体适配条件见官网说明。\n\n网站：**https://simpleremail.com/zh**\n\n如果你也在维护多个独立产品，欢迎试用，也想听听大家在处理产品邮件时，最希望省掉哪一步。谢谢！\n",
-    "created_at": "2026-11-03T02:05:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13030"
-  },
-  {
-    "id": 13029,
-    "title": "【项目自荐】Offer汪，把中文技术面试的问题、转写和参考回答放在一起",
-    "content": "「如果要优化一个系统的响应延迟，你会怎么做？」可以先口头答一遍，再用示例检查自己是否讲清了如何定位瓶颈、如何验证优化。**Offer汪（OfferPaw）** 是我做的中文技术面试问答工具，把问题、转写和流式参考回答放在一个工作台，也支持本地会话记录和自选模型。\n\n想先看流程，可以运行**免 API 密钥的预设演示**：安装 Git 和 Node.js 24 后，在终端执行：\n\n```sh\ngit clone https://github.com/JadoreSamoyed/offerpaw.git\ncd offerpaw\nnpm ci\nnpm run demo\n```\n\n打开 `http://localhost:8081`，点「模拟演示」，第一道题和参考回答会自动出现。演示使用内置问答，无需麦克风、模型下载或 API 密钥。\n\n![Offer汪网页预设演示，展示一道系统延迟优化题及其参考回答](https://raw.githubusercontent.com/JadoreSamoyed/offerpaw/main/docs/media/scripted-demo.png)\n\n目前是 **MIT 源码预览版**，真实语音需要自行配置转写与回答模型。真机及真实语音链路待验收，详见[版本说明](https://github.com/JadoreSamoyed/offerpaw/blob/main/docs/releases/v0.1.0-alpha.1.md)。\n\n项目地址：[JadoreSamoyed/offerpaw](https://github.com/JadoreSamoyed/offerpaw)。欢迎按[中文快速开始](https://github.com/JadoreSamoyed/offerpaw/blob/main/README.zh-CN.md#先体验演示)试一次，反馈最先卡住的步骤；这会帮助我优先改进上手体验。\r\n",
-    "created_at": "2026-11-03T02:00:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13029"
-  },
-  {
-    "id": 13028,
-    "title": "【开源自荐】BG-Agent：可在本地从零训练的酒馆战棋 AI 研究工程",
-    "content": "项目地址：**https://github.com/HongyuLeo/BG-Agent**\n\n![BG-Agent — Train. Evaluate. Share.](https://raw.githubusercontent.com/HongyuLeo/BG-Agent/main/docs/assets/bg-agent-banner.svg)\n\n我是仓库维护者，想自荐这个由 AI 编程工具协助构建的开源研究项目。BG-Agent 基于 **AutoTavern / TavernGym** 模拟器，保留上游许可和归属，增加了面向37.0的命名规则适配和独立的实体 Transformer + GRU + PPO 训练工程。它不是 TavernAgent 的官方训练代码。\n\n希望解决的问题是：模拟器开源后，感兴趣的开发者如何开始训练、检查结果、复现问题，并逐步共同改进游戏AI。\n\n目前提供：\n\n- Linux / WSL 从零初始化和完整八人对局 PPO 训练；不需要私有起始权重或 API 密钥。\n- 暂停、续训、导出，以及规则/卡表/模型契约检查。\n- 中英双语训练指南、明确的规则版本与已知限制。\n- 规则修复、环境复现、独立评测和有授权高手数据的贡献入口。\n\n发布准备中完成了 CPU 两局训练、暂停后续训一局、导出核验，以及38项选择性桌面/实战源码测试。**这些证明管线能够运行，不证明棋力。** 测试复用了现有依赖，全新系统安装和CUDA仍待社区复现。\n\n目前受算力成本和训练进度限制，**没有经过验证的强模型可开源，也不支持把多人独立训练权重直接合并**；不会把上游论文的15000分作为本项目成绩。规则是截至2026-11-03本项目最新整理快照，持续跟进37.0，但不宣称已证明全部线上热修等价。\n\n适合对强化学习、游戏规则模拟、AI辅助开发和可复现研究感兴趣的朋友。希望大家一起贡献实验、评测和修复，让更多人能参与这项技术。\n\n- [研究预览 Release](https://github.com/HongyuLeo/BG-Agent/releases/tag/v0.1.0-research)\n- [中文训练指南](https://github.com/HongyuLeo/BG-Agent/blob/main/training/README.zh-CN.md)\n- [验证记录](https://github.com/HongyuLeo/BG-Agent/blob/main/training/VALIDATION.md)\n- [参与贡献](https://github.com/HongyuLeo/BG-Agent/issues/1)\n\n许可：本项目原创代码MIT，上游组件保留原许可；与Blizzard无隶属关系，不分发官方游戏客户端或美术资源。\n",
-    "created_at": "2026-11-02T22:03:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13028"
-  },
-  {
-    "id": 13027,
-    "title": "[工具推荐] OpenMathpix：可离线使用的 Windows 公式截图转 LaTeX 工具",
-    "content": "OpenMathpix 是一个免费的 Windows x64 公式截图识别工具。通过 Ctrl+Shift+S 截图，或粘贴、拖入公式图片，即可获得 LaTeX，并在预览区查看公式、复制源码和查阅历史。\n\n公式模型在本地 CPU 上运行，完成初始化后可离线使用，本地模式无需账号、API Key、Python 或 GPU。适合把论文、课件中的公式整理到 LaTeX 文档和学习笔记。\n\n- 项目与使用说明：https://github.com/JhuoW/OpenMathpix\n- Windows x64 便携版：https://github.com/JhuoW/OpenMathpix/releases/tag/v2026.11.01\n\n![OpenMathpix 本地公式识别](https://raw.githubusercontent.com/JhuoW/OpenMathpix/v2026.11.01/instruct/MFR-example.png)",
-    "created_at": "2026-11-02T17:07:32Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13027"
   }
 ]
