@@ -1,5 +1,29 @@
 [
   {
+    "id": 13155,
+    "title": "〖开源自荐〗PeerBrush：可在同一份分层文档中绘画并使用本地 MCP 的桌面编辑器",
+    "content": "阮老师好，推荐一下我参与的开源项目 PeerBrush。\n\nPeerBrush 是用 Rust 开发的桌面绘画与图像编辑器，支持图层、蒙版和混合模式。一个典型用法是：你在前景图层上继续画，让本地 MCP 客户端调整另一层的蒙版。图层可以预留，减少两边同时修改同一处的冲突。也可以只用编辑器，不连接 AI。\n\n目前可以编辑并保存受支持的 8 位和 16 位 RGB 分层 PSD。不支持的 Photoshop 结构会以只读预览打开。0.30.1 提供 Windows x64、Apple 芯片 Mac 和 Ubuntu 24.04 amd64 版本，采用 GPLv3 许可证。\n\n- [项目主页和 63 秒演示](https://peerbrush.com/#demo)\n- [源代码](https://github.com/Deftr0y/PeerBrush)\n- [0.30.1 发布说明与下载](https://github.com/Deftr0y/PeerBrush/releases/tag/v0.30.1)\n\n![PeerBrush 工作区：画布、图层和蒙版控件](https://peerbrush.com/assets/showcase/workspace-golden-hour.webp)\n\n项目开发使用了 AI 辅助，截图中的示例画面由 ImageGen 生成。这份中文介绍也使用了 AI 辅助。",
+    "created_at": "2026-11-06T21:09:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13155"
+  },
+  {
+    "id": 13154,
+    "title": "【开源自荐】红米 AX6S / 小米 AX3200 的 OpenWrt 25.12 优化固件：针对 CPU 编译优化、有线→无线硬件转发、实测调优的运行模式",
+    "content": "- 项目地址：https://github.com/Dreyk007/openwrt-ax3200\n- 下载：https://github.com/Dreyk007/openwrt-ax3200/releases/latest\n\n红米 AX6S / 小米 AX3200 是一款很常见的 Wi-Fi 6 路由器（MT7622 + MT7915），很多人家里都有一台。这个固件基于 OpenWrt 25.12.6 稳定版，让这台老路由器焕发新生：新内核、新驱动修复、硬件加速全开，还能在网页上一键升级。\n\n- 针对 Cortex-A53 优化编译：GCC 15.3、-O2、Crypto 和 CRC32 指令、LTO；schedutil 调速器让待机 CPU 占用从 6 % 降到 3.8 %。\n- 默认开启硬件加速（HFO + WED）：千兆 NAT 几乎不占 CPU，外网到 5 GHz Wi-Fi 的流量绕过 CPU。\n- 修好了 bridger：有线 → Wi-Fi 6 的桥接流量走硬件转发，约 1.3 Gbit/s，CPU 约 8 %（原来约 70 %）。内核修复已进入 OpenWrt main。\n- \"运行模式\"页面：均衡、最大吞吐、低延迟（VR、无线游戏）、SQM，每种模式都在这台路由器上实测过，写明优缺点的数据。\n- 18 个 mt76 驱动修复（客户端连接/断开时的内核崩溃等），硬件加速下流量统计也正确。\n- 网页内一键更新，升级后自动重新安装用户自己装的软件包。\n- 由 GitHub Actions 公开构建，每个文件都有构建来源证明。\n\n我是作者，不会中文，这段文字借助翻译写成。欢迎在 GitHub Issues 反馈，中文或英文都可以。\n\n<img width=\"996\" height=\"991\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/2459ce31-cd69-43e4-964e-ded4539a893b\" />",
+    "created_at": "2026-11-06T19:16:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13154"
+  },
+  {
+    "id": 13153,
+    "title": "【网站自荐】Paw Pointer：把鼠标停在哪里，猫爪就指向哪里",
+    "content": "我是 Paw Pointer 的作者，想给周刊推荐一个可以用鼠标玩的猫咪小网站。\n\n把光标移到屏幕上任意一点，停一会儿，就会出现一张真实的猫咪照片。照片里伸出来的猫爪，刚好指着你选的位置。换个位置试试，会有另一只猫来“指路”。在手机上，轻点屏幕就可以玩。\n\n玩法受 Pointer Pointer 启发。我用 React 和 TypeScript 做了猫咪版本，打开就能玩，不需要注册。\n\n[在线试玩](https://pawpointer.app/?utm_source=ruanyf_weekly&utm_medium=referral&utm_campaign=cat_communities) · [项目源码与照片来源](https://github.com/givemethatsewon/pawpointer)\n",
+    "created_at": "2026-11-06T18:22:57Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13153"
+  },
+  {
     "id": 13152,
     "title": "【开源自荐】KinetAios:Claude Code 与 Codex 双引擎桌面仪表盘(多会话同窗管理)",
     "content": "**项目**:KinetAios — Claude Code 与 Codex 双引擎桌面仪表盘(开源,GPL-3.0)\n\n**地址**:https://github.com/phinn/KinetAios\n\n**一句话**:把 Claude Code 和 Codex 的多个 CLI 会话装进一个桌面窗口,local-first,数据不出本机。\n\n**它能干什么**\n\n- **多引擎多会话同窗管理**:Claude Code / Codex 会话作为独立对话并存,每个会话走官方 CLI 续接(`claude --resume` / `codex`),换终端不丢现场\n- **按会话切引擎/模型**:一个窗口里同时跑 GLM、Kimi、DeepSeek、Claude、GPT,互不污染上下文\n- **MCP 双向**:既是 MCP 客户端也能当 MCP Server 对外暴露工具\n- **本地 SQLite + FTS5** 全文检索所有历史会话;无账号、无云端中转\n- 内置 Direct 引擎(ReAct loop,30+ 工具 + 插件 SDK + 21 个插件),不依赖 CLI 也能跑\n- Windows 11 / macOS 双平台,全局快捷键呼出\n\n**为什么做它**\n\n团队日常同时开 5-8 个 agent 会话(不同项目、不同引擎),终端里 tab 多到分不清,`--resume` 找会话全靠记忆。KinetAios 就是把这件事变成仪表盘:会话状态、耗时、token 消耗一眼可见。\n\n**附带**:同系列还有 19 个上架 App Store 的小工具(KinetTask / KinetBrief / KinetMinutes 等),但 KinetAios 是唯一开源的核心,桌面端 agent 管理是主战场。\n\n项目 2026 年中启动,还年轻(13 star),欢迎试用拍砖。Windows 安装包(NSIS)与 macOS 版均可从 Releases 下载。\n",
@@ -334,14 +358,6 @@
     "created_at": "2026-11-05T07:38:02Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13111"
-  },
-  {
-    "id": 13110,
-    "title": "【网站自荐】iLook：免费、注重隐私的 AI 面部分析（脸型、对称性、黄金比例）",
-    "content": "网址：https://www.ilook.fit/\n\niLook 是一个免费、注重隐私的 AI 面部分析工具。上传一张照片，就能得到一份非医疗用途的报告：脸型、左右对称性信号、面部比例，以及黄金比例（phi）参考，还有适合的发型和配色方向。\n\n开发者也可以直接调用同样的分析：公开的 REST/OpenAPI 接口、免 API Key 的远程 MCP 服务器（https://www.ilook.fit/mcp，可直接接入 Claude、Cursor 等），以及 A2A agent card。\n\niLook 不做人脸识别、不建立生物特征档案、不推断敏感属性，也不做医疗判断。免费使用。\n\n作者：Harshul Lodha（印度 Wallic Technologies Private Limited）\n",
-    "created_at": "2026-11-05T06:46:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13110"
   },
   {
     "id": 13109,
@@ -786,21 +802,5 @@
     "created_at": "2026-11-03T11:57:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13052"
-  },
-  {
-    "id": 13051,
-    "title": "【工具自荐】01Router：统一 AI 视频、图像、文本和音频模型 API",
-    "content": "大家好，推荐 01Router。它提供一个 API Key，用于访问 AI 视频和图像模型，也支持文本和音频；用户可以在网页工作室生成视频和图片，或将这些模型集成到自己的产品中。\n\n产品主页：<a href=\"https://01router.com/gateway/seedance-2.5\n\">seedance 2.5</a>\n\n产品地址：https://01router.com/",
-    "created_at": "2026-11-03T10:33:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13051"
-  },
-  {
-    "id": 13050,
-    "title": "【开源自荐】ai-token-checkin-workers：国内主流 AI 编程助手每日额度关机自动代领套件",
-    "content": "## 项目名称\n**ai-token-checkin-workers**\n\n## 项目地址\nhttps://github.com/DewellNaa/ai-token-checkin-workers\n\n## 项目简介\n国内主流 AI 编程助手每日额度自动签到套件（Cloudflare Worker Serverless 版）。电脑关机也能准时自动代领、令牌自动轮换、飞书告警卡片。\n\n## 解决的痛点\n国内主流 AI 编程助手（海螺 MiniMax、字节 Trae、腾讯 WorkBuddy、Qoder）每天赠送大量代码模型额度，但每天肉身把 4~5 个桌面客户端全打开一遍极其繁琐，漏打一天连签中断更是肉疼。\n网上大部分签到脚本要么依赖本地常驻开机跑 Python，要么依赖三方未开源服务。为了实现「0 成本、电脑关机也能准时领、无感令牌轮换」，花时间逆向了各家的协议，写了这套基于 Cloudflare Workers 的开源套件。\n\n## 核心技术特色\n1. **完全 Serverless，电脑关机准时打卡**：所有打卡任务直接跑在 Cloudflare Workers 免费边缘网络上，通过 Cron 定时触发，不消耗本机任何资源；\n2. **令牌自洽与防风控**：\n   - **MiniMax Code (海螺)**：基于 RFC 8628 OAuth 2.0 设备授权机制，在 Worker KV 内部单向轮换刷新 Refresh Token，一次授权终身代领；\n   - **Trae CN (字节)**：本地 AES-128 凭据解密与 x-device-id 设备指纹绑定，云端准时打卡；\n   - **WorkBuddy (腾讯)**：30 天超长 Access Token 缓存防抢占下线，同时支持自动派遣萌猫旅行出发与领取旅行特产；\n   - **Qoder CN**：Windows 原生 DPAPI+CNG 凭据提取，支持云端约 16 天无感容灾打卡。\n3. **飞书交互卡片告警（静默模式）**：\n   日常代领成功静默入库，不发骚扰通知；只有在 Token 过期或接口变动时，才会向飞书群/私聊推送红色预警交互卡片。\n4. **跨平台一键状态巡检**：\n   提供跨平台 `python check_all.py` 与 PowerShell 原生脚本，一键秒级查看所有平台打卡状态、连签天数与最新积分。\n\n开源遵循 MIT 协议，年化相当于免费获取价值超过 ¥1,200+ 的商业大模型推理额度。希望对经常使用国内 AI 编程助手的开发者有所帮助！",
-    "created_at": "2026-11-03T09:37:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13050"
   }
 ]
