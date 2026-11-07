@@ -1,5 +1,93 @@
 [
   {
+    "id": 13173,
+    "title": "【工具自荐】Last Card Standing：用两两比较选出最喜欢的一个或前三名",
+    "content": "嗨！我是 zojro，我做了一个免费网页工具 Last Card Standing，想向周刊自荐。\n\n地址：https://last-card-standing.zojro.com\n\n选照片、挑配音试音或比较几个标题时，选项一多，就容易来回翻、记不清。这个工具每次只展示两个选项，由你选更喜欢的那个，逐步选出一个结果，或排好顺序的前三名。\n\n- 支持文本、图片、音频和视频文件，每批比较同一种类型。\n- 免费、免注册、无广告，支持中文和英文。\n- 文件在浏览器本地处理，不会上传；刷新或关闭标签页后，文件和比较记录不会保留。\n\n视觉风格和交互借鉴了 Balatro 的风格，让比较过程没那么枯燥。\n\n欢迎试用和提意见。\n",
+    "created_at": "2026-11-07T11:43:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13173"
+  },
+  {
+    "id": 13172,
+    "title": "【开源自荐】AlphaDesk：让 AI 客户端从 SEC 财报原文里查美股数据并标出处的 MCP 服务",
+    "content": "AlphaDesk 是一个 MCP 服务，接入 Claude、Cursor 等 AI 客户端后，可以查美股行情，并从 10-K、10-Q 财报原文里找答案，每条回答附财报段落出处。说“帮我买”时只生成模拟订单，必须由人确认，不连接券商。\n\n- 7 个工具：行情、历史价格、新闻、财报检索（BM25，带引用）、关键财务数据（SEC XBRL）、组合风险（波动率、最大回撤、beta）、模拟下单\n- 下单有单笔和 10 分钟累计上限，防止拆单绕过\n- 附带离线数据快照，不需要 API key\n- 附带评测：12 道预先冻结的验证题任务成功率 91.7%（智谱 glm-5.3），10 道下单安全题重复 3 次 30/30 通过，每次问答约 0.006 美元（按标价估算）\n- 覆盖 NVDA、MSFT、AAPL、TSLA、AMZN，输出不构成投资建议\n\n安装（需要 uv 和 Git），写入 MCP 客户端配置：\n\n    \"alphadesk\": { \"command\": \"uvx\", \"args\": [\"--from\", \"git+https://github.com/TTNAN/AlphaDesk\", \"alphadesk-mcp\"] }\n\n也可以下载 Release 里的 alphadesk.mcpb，一键安装到 Claude Desktop。已上架官方 MCP Registry 和魔搭 MCP 广场。\n\nPython，MIT 许可证。\n\n- 项目地址：https://github.com/TTNAN/AlphaDesk\n- 魔搭：https://www.modelscope.cn/mcp/servers/CaesarTT/alphadesk\n\n![AlphaDesk 使用示意](https://raw.githubusercontent.com/TTNAN/AlphaDesk/main/docs/assets/demo.gif)\n\n利益相关：我是项目作者。",
+    "created_at": "2026-11-07T11:24:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13172"
+  },
+  {
+    "id": 13171,
+    "title": "【自荐】报价贴：进价表转客户报价（5条免费试用，完整版49元）",
+    "content": "报价贴是一个把已有进价表整理成客户报价的离线工具。由 Codex 受账号持有者委托实现与测试，使用 AI 辅助开发。当前是首版试卖，尚无客户成交案例。\n\n**试用仓库：** https://github.com/Ocean516/quotelpaste-trial\n\n**5条试用包直接下载：** https://raw.githubusercontent.com/Ocean516/quotelpaste-trial/main/报价贴_试用包.zip\n\n适合每天需要把供应商进价表改成客户报价的小商家：\n\n- 从 Excel / WPS 复制“商品、规格、成本价”三列，或读取 UTF-8 CSV。\n- 设定固定加价、按成本上浮及向上取整；逐条核对商品配置和售价。\n- 导出客户报价图片、CSV或文本，客户版本不带成本列；PDF通过浏览器打印保存。\n- 单个HTML在电脑Chrome / Edge本地打开，无账号、无订阅、不上传报价数据。\n\n![合成示例，非市场报价](https://raw.githubusercontent.com/Ocean516/quotelpaste-trial/main/sample.png)\n\n提供5条免费试用。完整版暂定人民币49元买断，一个商家内部使用，单次最多500条，单张图片最多50条；这不是开源商业授权。请先用试用版确认自己的三列格式适用，再决定是否购买。\n\n当前不含图片识别、实时行情、库存和订单管理。页面中的商品与价格是合成演示，不是市场报价。已核对金额精度、错误行阻断、重复行保留、核对与条数限制、客户CSV成本隔离，并实际生成和查看PNG，另生成PDF样例。\n\n有同类工作流程的人可以先试5条；使用问题或购买咨询可到项目仓库提Issue，只描述格式和希望解决的问题即可。请勿公开真实进价表、客户资料或支付凭证。\n",
+    "created_at": "2026-11-07T09:29:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13171"
+  },
+  {
+    "id": 13170,
+    "title": "【工具自荐】Trify3D：一个页面并排跑 Tripo3D、Meshy、Rodin 三家 AI 生 3D 引擎，比完再导出",
+    "content": "想把一张产品图、原画或手绘稿变成能用的 3D 模型，又拿不准哪家 AI 生成工具效果好，可以在浏览器里试试 Trify3D：它把 Tripo3D、Meshy、Rodin 三家引擎放在同一个页面，同一段文字或同一张图并排生成，直接对比网格和贴图，选中意的那个再导出，不用为每家单独注册账号、各买额度。\n\n网址：https://trify3d.com/\n\n- 支持文字生 3D、单图生 3D，也支持正/侧/背多视图输入和批量生成，另有 AI 贴图（PBR：albedo、normal、roughness、metallic）。\n- 导出 GLB、glTF、OBJ、STL，可直接进 Blender、Unity、Unreal 做资产，或进切片软件做 3D 打印。\n- 全程在浏览器里完成，无需安装软件。\n- 新账号送 50 个生成额度，不要求绑卡；额度在三个引擎间通用，之后按需买量或订阅。\n- 站内另附 STL 在线编辑器（免费、免注册，可修复和转 STL/3MF/PLY）与照片转人像打印指南等工具页。\n\n生成的模型归用户所有，商用条款以官网说明为准。做游戏道具、电商 3D 预览或 3D 打印手办的可以先用免费额度跑一遍再决定。\n\n利益关系说明：这条自荐由我受 Trify3D 团队委托提交；介绍内容依据官网公开页面核对整理，建议以自己实际生成效果为准。\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
+    "created_at": "2026-11-07T09:21:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13170"
+  },
+  {
+    "id": 13169,
+    "title": "【自荐】红果短剧批量下载：一条分享链接到整剧 ZIP，1000 集 85 秒的云端交付链路与踩坑记录",
+    "content": "项目地址：https://github.com/parallelpan/hongguo-downloader\n\n先说清楚这个仓库是什么、不是什么：它公开的只有**系统架构、交付链路与工程实践文档**（含界面截图），不提供可执行代码、内容获取工具或破解方法，文档与截图采用 CC BY-NC 4.0（可转载署名、不可商用）。项目是第三方非官方的，与红果、字节跳动及其关联公司没有任何关系，未获授权或认可。线上另有一个可体验的网页服务作为对照，按实际取件集数计费。\n\n写这份文档的起因是一个很具体的工程问题：短剧平台只提供「在 App 里一集一集看」，没有全集导出。想把一部上千集的长剧变成一套可留存的文件，难点其实不在「下载」这个动作，而在**长任务怎么编排、失败怎么恢复、以及最后那个几 GB 的 ZIP 怎么在不落盘的前提下发出去**。\n\n仓库里记录了三个带生产实测数字的案例：\n\n1. **1000 集长剧，85 秒完成交付**。下载阶段 worker 只上传分集文件，不同步打整包；每集独立状态，失败自动重排、已完成的跳过，任务在约 85 秒就变为「已完成」，用户可以立即取件。整包改为收尾时按需生成。\n2. **双支付通道的对账不靠人盯**。币安 USDT 走金额尾差指纹，Stripe 走自动查单；两条通道不共用同一套指纹池，再配合 24 小时补确认窗口，避免同金额订单串单。\n3. **实例被摘除，75 秒自愈**。单机自愈架构（伸缩组 MIN=MAX=1 + 自定义镜像 + Tunnel，源站不开公网端口），故障演练附完整时间线。一个反直觉的运维约束也写在里面：有任务在跑时只重启 API、不能重启 worker，否则 SIGTERM 会让任务永久卡在 running。\n\n几个我觉得对做类似系统最有参考价值的坑：\n\n- **上游会混发不同封装的分集**。一部分分集用私有封装的编码容器，流内缺少标准参数集，通用工具会直接报不支持；另一部分其实是明文流。所以流水线不能靠「有没有密钥」判断能不能处理，下载后要先识别封装类型，再决定重编码还是直接 remux。\n- **整包打包不能「先把对象列出来、再一起开连接」**。888 集会一次打开 888 条对象存储连接，被判空闲后断连，表现为 `IncompleteRead`。改成同时只开一条、断读后按已读字节续读，4.26GB / 888 集约 114 秒稳定完成，且全程不落盘。\n- **解码校验不能当成交付门槛**。20 秒超时后要换成跳过环路滤波再验一次，双超时才放行；否则会把本来能播的成品误判成失败。\n- **发版和镜像是两件事**。伸缩组重建看的是「生效伸缩配置」里的镜像 ID，只发代码不刷镜像，机器一回收就回退；线上代码只来自某个 tag 的 `git archive`，一次上线一个 tag。\n- **首屏 SSR 是前端的逐字镜像**。导航、页脚、首屏骨架在后端另有一份，改前端不同步改它，水合时会闪一下；后来加了一条自检：关掉 JS 的截图和开着 JS 的截图应几乎一致。\n\n技术栈大致是 Python + FastAPI、React + Vite、对象存储，加上独立的转码 worker 队列；文档里有架构图和各环节的职责划分。\n\n适合谁看：在做长任务队列、转码流水线、对象存储流式打包，或者想把一个「要跑几个小时的活」包装成网页服务的人。文档里的数字都是生产实测，不是压测推演，也记了不少走错的弯路。\n\n限制与声明：仓库仅用于展示产品设计与工程实践，不提供任何内容获取工具、破解方法或可执行代码。内容版权归原权利人所有，使用者应自行确保对所处理内容拥有合法权利，并遵守所在地法律法规与平台服务条款。文档不可商用，仓库只接受文档纠错类 issue。",
+    "created_at": "2026-11-07T09:02:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13169"
+  },
+  {
+    "id": 13168,
+    "title": "【资源自荐】Effect Atlas：43 个交给 AI 应用的前端动效",
+    "content": "Effect Atlas 是一个前端动效图鉴，收录了光标、悬停、文字、滚动、转场、画廊等 8 类共 43 个效果，都能在线预览。\n\n每个效果都附完整代码（JS、CSS、HTML），纯原生 JavaScript，不依赖框架。代码注释是写给 AI 看的：说明动画怎么动、哪些参数不能改，复制给 Claude Code、Codex、Cursor 等工具，它就能把效果加进你的页面。\n\n- 网址：https://effectatlas.com\n- 中文版：https://effectatlas.com/zh/\n- GitHub：https://github.com/effect-atlas/effect-atlas\n- 个人和客户项目可免费使用\n\n![Effect Atlas](https://raw.githubusercontent.com/effect-atlas/effect-atlas/main/assets/banner.png)\n",
+    "created_at": "2026-11-07T08:34:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13168"
+  },
+  {
+    "id": 13167,
+    "title": "【工具自荐】hotskills — 每小时更新的 AI Agent Skills 排行榜，安装前看清每个 skill 会运行什么",
+    "content": "hotskills（https://hotskills.dev ）是一个免费的 AI Agent Skills 排行榜：收录 6,400 多个在 GitHub 上发布 SKILL.md 技能的仓库（适用于 Claude Code、Codex、Cursor 等智能体），按 GitHub 星标排序，每小时更新。\n\n它关注两件事：哪些 skill 正在快速增长，以及安装之前它到底会运行什么。\n\n主要特性：\n- 每个仓库都有自动安全等级：仅指令 / 本地脚本 / 网络或宽泛 shell，每个信号都标出对应的文件和行号（自动信号，不是保证）\n- 每个 skill 的 Token 成本估算：常驻上下文的 frontmatter（中位数约 114 tokens），激活时加载的 SKILL.md（中位数约 1,350 tokens）\n- 安装命令固定到已检查的 commit，而不是 main 分支\n- 热度指数 0–10、24 小时趋势，以及每月的「State of agent skills」报告\n- 只读 MCP 服务器（已收录在官方 MCP Registry：dev.hotskills/hotskills），智能体可以直接查询排行与安全信号\n- 无需注册，没有追踪 cookie；排名不使用 LLM，规则公开\n\n10 月的数据：在已检查的 849 个热门仓库中，78% 含有网络调用或宽泛的 shell 命令。\n\n![hotskills](https://hotskills.dev/og/default.png)\n\n![State of agent skills, October 2026](https://hotskills.dev/og/state-2026-10.png)\n\n网站：https://hotskills.dev\nMCP：https://hotskills.dev/mcp/\n\n网站界面为英文。\n\n— Stefano\n\n",
+    "created_at": "2026-11-07T07:58:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13167"
+  },
+  {
+    "id": 13166,
+    "title": "【开源自荐】champt v2 地图上的同城聊天",
+    "content": "2013 年 4 月我上线了一个叫 champt 的同城聊天网站，这周把它从头重写了一遍\n\n当年的口号是 where you chat with your local geeks，花了两三周做出来，跑在免费的云服务额度上，用的人很少，修了几个 bug 就没再管，额度用完网站下线，我也就把它忘了\n\n这次查资料才知道，同年 11 月 yik yak 上线了几乎一样的东西，五英里内匿名发帖，在美国大学里火了一阵，后来种族歧视和霸凌泛滥，2017 年关停\n\n回头看，我当年想错了两件事，这东西从来不只是给极客玩的，它只需要附近有人，而人一多，匿名就会把最糟糕的东西放进来\n\n十三年过去，变的不是人，是一个人做这种东西的成本，当年花了两三周，这次用 claude 大概一天就重写完了\n\n在你所在的位置发起话题，位置会模糊到 100 米左右，不会暴露你家门口\n\n全世界的人都能看，但只有 100 公里以内的人才能回复，这差不多是现在说走就走的距离\n\n每个话题只活 24 小时，只有别人回复才会续命，自己跟自己聊没用，要两个人轮流说话才能一直聊下去\n\n登录，再取一个昵称，别人只看得到昵称，邮箱只留在服务器上\n\n没有信息流，没有点赞，没有粉丝数，也不会实时追踪位置，想看新消息就自己刷新\n\n这次跑在免费套餐上，没有服务器要管，话题到期自己消失，就算我又把它忘了，它也能活下去\n\n其实也是想找个借口试试在 vercel 上跑 rust，后端是一个 axum 函数，数据库是放在新加坡的 neon postgres，地图用 maplibre 和 openfreemap，连地图 api key 都不需要\n\n免费的网页应用，手机电脑的浏览器都能直接打开",
+    "created_at": "2026-11-07T07:56:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13166"
+  },
+  {
+    "id": 13165,
+    "title": "【文章自荐】AI 搜索是怎么推荐的？抓包实测 5 家国产 AI 的搜索词改写与引用来源",
+    "content": "我是作者何瑜，自荐一篇自己写的观测文章（个人非商业研究）。\n\n我在 5 家国产 AI 上问同一句「苏州当地有哪些医美？」，抓包看背后的请求：千问把问题改写成 1 条搜索词，Kimi 3 条，豆包 5 条；豆包还把上一轮对话里提到的企业名带进了这一轮的搜索词；千问检索到 20 条素材，只把 5 条送进模型。只测了一次，文中每条结论都标注了实测、推断或未知。\n\n文章：https://opengeo.page/observations/001-suzhou-yimei/\n脱敏抓包数据（CC BY 4.0）：https://huggingface.co/datasets/Maodian/opengeo-observation-001",
+    "created_at": "2026-11-07T07:26:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13165"
+  },
+  {
+    "id": 13164,
+    "title": "【软件自荐】Whistle：把 Herdr 装进你的口袋",
+    "content": "Whistle 是 Herdr 的 Android 远程客户端，让你离开电脑后，仍能在手机上查看并继续 Herdr 管理的 AI 编程会话。\n\n官网：https://whistleremote.cc/\n\n电脑上的 Agent 还在跑任务，人却要离开工位。这时可能只想看一眼进度、补充一句要求，或者等这一轮结束后再继续安排。Whistle 把这些操作带到手机上，接着使用已有的 Herdr 会话。\n- 查看会话：在手机上查看 Herdr 会话及其内容，了解任务进展。\n- 继续对话：向已有会话发送消息，补充要求，继续推进任务。\n- 接收通知：接收所监控主机的回合结束通知，及时回来查看结果。\n会话内容在 Whistle 与 Bridge 之间端到端加密。\n\n<img width=\"1782\" height=\"1060\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/3b6b62f3-b9f7-419b-9ed3-b71b61a6138d\" />\n\n<img width=\"1776\" height=\"1054\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4421f2f6-0c9d-4418-9c5f-f26c001614f5\" />\n\n<img width=\"1782\" height=\"1062\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/ed0be8db-5c2d-4f48-a09f-f41c87af75da\" />\n\n<img width=\"1778\" height=\"1060\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/80686e9a-1d89-4be3-8f86-f2fea76e1b2a\" />\n\n目前支持 Android，需配合 Herdr 0.9.5 使用。",
+    "created_at": "2026-11-07T06:03:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13164"
+  },
+  {
+    "id": 13163,
+    "title": "【工具自荐】UnimeType：不用来回切输入法，一个英文键盘连续写中/日/英混排句子的跨平台输入法与在线转换工具",
+    "content": "[UnimeType](https://unimetype.com) 是一个专为双语与多语言混输设计的跨平台输入法及在线转换工具。\n\n平时在写技术文档、工作消息或日常聊天时，一句话里经常同时夹杂中文、英文单词、代码标识符或日文，用传统输入法每遇到一个英文词都要按 `Shift` / `Caps Lock` / `Ctrl + Space` 来回切模式，还会遇到拼音候选框吞掉英文单词的问题。\n\nUnimeType 采用了**「先用普通拉丁键盘一气呵成打完草稿，再按一下一键整句转换（Convert）」**的交互方式：\n\n- **免切换整句混输转换（Convert）**：打字时没有候选框干扰，全程在标准英文键盘上连续输入拼音（中文）、罗马音（日文）、Hinglish（印地语）、Arabizi（阿拉伯语）或 Translit（俄语）与英文单词混合的句子（例如直接输入 `wo gang push le new build, mingtian morning kan xia metrics` 或 `kyou wa Tokyo de meeting ga arimasu`），写完按一次转换键（桌面端默认 `Caps Lock`，移动端点 `Convert`），自动将拼音/罗马音片段转为母语文字（`我刚 push 了 new build，明天 morning 看下 metrics` / `今日は Tokyo で meeting があります`），句中的英文词汇、代码变量、URL 与数字原样保留。\n- **输入框原位润色（Polish）与解释（Explain）**：在当前聊天框或编辑器里直接润色双语草稿，或选中陌生缩写/习语弹出三行只读解释卡片，无需切去浏览器复制粘贴。\n- **平时打字零网络请求 + 开源本地模型**：普通按键输入完全在本地，仅在你主动触发 Convert / Polish / Explain 时发起请求；除了官方云端额度（注册即赠 1,000 体验积分）外，还支持免费接入自有 API Key，或在本地通过 LM Studio 离线运行我们在 Hugging Face 开源的专用微调转写模型（[`UnimeType/Transliteration-2.0-4B`](https://huggingface.co/UnimeType/Transliteration-2.0-4B) 与 [`0.8B`](https://huggingface.co/UnimeType/Transliteration-2.0-0.8B)）。\n\n**免安装网页在线体验与全平台下载：**\n\n- 官网首页：https://unimetype.com\n- 免登录网页在线转换台（中英混输）：https://unimetype.com/tools/pinyin-to-chinese\n- 免登录网页在线转换台（日英罗马音混输）：https://unimetype.com/tools/romaji-to-hiragana\n- 全平台客户端下载（iOS / Android / macOS / Windows / Linux / ChromeOS）：https://unimetype.com/download",
+    "created_at": "2026-11-07T05:55:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13163"
+  },
+  {
     "id": 13162,
     "title": "【文章自薦】學習網頁內容無障礙",
     "content": "寫了一篇關於網頁無障礙相關的文章，理清了一些概念，整理了一些學習連結，還有一些我發現的博客中容易出現的無障礙問題。\n\n文章連結：[學習網頁內容無障礙](https://taxodium.ink/learn-web-content-accessibility.html)",
@@ -712,95 +800,5 @@
     "created_at": "2026-11-04T07:11:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13071"
-  },
-  {
-    "id": 13070,
-    "title": "【开源自荐】Cube Solver Lab：浏览器里的魔方求解器，用图论视图看懂每一步",
-    "content": "在线使用：https://cube-solver.org/zh-hans/\n源码（MIT）：https://github.com/neichen/cube-solver\n\n一个网页魔方求解器，支持 2×2 到 15×15、金字塔、斜转和五魔方。涂色、输入打乱公式或用摄像头录入状态后，可以在 3D 中一步步播放解法。\n\n3D 视图旁边还有一个置换图，每个色块是一个节点，能看到每次转动让色块沿着环移动（灵感来自じゃがりきん @jagarikin 的动画）。5 阶及以上用 Tomas Rokicki 的 gullicube，编译成多线程 WebAssembly 求解。界面支持 12 种语言。\n\n![Cube Solver Lab](https://cube-solver.org/img/og/root.png)\n",
-    "created_at": "2026-11-04T06:39:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13070"
-  },
-  {
-    "id": 13069,
-    "title": "网站自荐 AI Rap Video：上传照片，生成 AI 说唱短视频",
-    "content": "网址：[[rapvideoai.xyz](https://rapvideoai.xyz/)](https://rapvideoai.xyz/)\n\nAI Rap Video 是一个在线 AI 视频生成工具：上传用户的照片照片，就可以生成 10 秒或 15 秒的说唱/音乐短视频，\n\n- 不需要你有剪辑经验，网页上直接生成\n- 自带多种模板：酒店大堂说唱（Hotel Lobby）、录音棚（Booth Session）、\"爸妈变唱片白金歌手\"（Parents Go Platinum）等\n- 适合做一些竖屏短视频供娱乐，或者给朋友、家人做个有梗的生日视频\n- 注册就会送积分\n\n入口页：[[rapvideoai.xyz/photo-to-music-video](https://rapvideoai.xyz/photo-to-music-video)](https://rapvideoai.xyz/photo-to-music-video)\n\n欢迎试用和反馈，谢谢！",
-    "created_at": "2026-11-04T06:12:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13069"
-  },
-  {
-    "id": 13067,
-    "title": "【网站自荐】DramaCanvas：基于无限画布的免费 AI 影视与短剧制作工作台（支持 MCP 协议、3D 运镜预演与 BYOK）",
-    "content": "DramaCanvas（https://dramacanva.com/zh）是一个建立在无限画布（Infinite Canvas）之上的全流程 AI 影视与短剧创作平台。\n\n传统的 AI 视频创作通常需要在生图、生视频、音频和剪辑等十几个割裂的网页标签页之间来回切换。DramaCanvas 将剧本拆解、角色资产设定、分镜设计、多模型生成、机位控制与时间线剪辑**全部收敛到同一张可视化无限画布中，支持从一句话灵感或小说原稿直接推进到最终成片导出。\n\n▲ 实战工程展示：在单张无限画布上通过 119 个节点连线完成的《Lucid Gravity》2分钟 AI MV 全流程工程（从左上角的角色服装设定、道具拆解，到右侧多轨分镜生成与合成），点击成片页底部的「Open editable canvas」即可直接打开并复刻完整节点画布。\n\n<img width=\"3600\" height=\"2010\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/e0a6e61d-29a3-4a27-ad46-eeb88bf78633\" />\n\n核心特性与工作流亮点\n\n全流程无限画布与多模型聚合：告别碎片化工具切换，画布原生集成 Seedance 2.5、Wan 3.0、Kling O3、Minimax H3、Nano Banana 等主流视觉生成模型，并提供逐帧拉片（Frame Breakdown）、片段重拍（Clip Remake）与 9:16 竖屏短剧立项工作室（Short Drama Studio）。\n\n<img width=\"3600\" height=\"2010\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/c6c92571-66d6-4448-93ff-2d17b985926c\" />\n\n原生支持 MCP 协议（让 AI Agent 接管画布）：除了内置的制作 Agent 外，平台原生支持 MCP（Model Context Protocol）。在终端运行一行命令（claude mcp add）即可将 Claude Code、Codex 或 Cursor 等外部 Agent 直接接入画布，自动化编排分镜与生成任务。\n130+ 可复用创作技能库（Skills & Tools）：内置 133 个可复用的 AI 影视工作流模块（Skill）与 62 个专项工具，涵盖小说转短剧分镜、分集大纲规划、角色视觉风格锁定、单行口型同步（Lip sync）、前三秒黄金钩子生成等标准化工业节点。\n3D 导演台（3D Director Console）与深度动捕：内置轻量级 3D 预演空间，支持摆放标准人偶或导入本地 `.glb/.gltf` 模型、设置几何遮挡并在 24fps 时间轴上规划摄像机运动轨迹，可直接将 3D 白模预演渲染为实景成片；同时提供 **Depth Motion Capture（深度动作捕捉）** 节点，支持提取参考视频的深度图与动作精准迁移至新角色。\n支持 BYOK（自带模型密钥，零积分抽成）：支持用户接入自有 API 渠道（原生兼容 New API、Sub2API、CLIProxyAPI 等 OpenAI 格式网关）。API 密钥仅保存在本地浏览器（服务端不存明文），调用模型完全走用户自有渠道，不扣取平台积分、不赚算力差价。同时配备支持浏览器本地优先存储的项目素材库（Asset Library）。\n\n<img width=\"3592\" height=\"1916\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/0ddc181d-5ff9-4a0b-892b-0bd87dcc001f\" />\n\n在线体验\n中文版入口： https://dramacanva.com/zh\n英文版入口： https://dramacanva.com\n\n注册即可免费开启画布体验，非常欢迎各位开发者和创作者试用并提出宝贵建议！",
-    "created_at": "2026-11-04T05:50:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13067"
-  },
-  {
-    "id": 13066,
-    "title": "【开源自荐】Agent Office：把你的 AI 编程 Agent 放进同一间 3D 办公室",
-    "content": "Agent Office 是一个本地运行的 3D agent 状态面板：每个 AI 编程会话都会变成办公室里的人物，实时展示它是在思考、执行工具，还是等待输入。\n\nopencode 支持直接发消息、Stop 和权限审批，Claude Code / Cursor / Codex / DeepSeek / QCoder / Trae 通过 hooks 只读接入。\n\n\n<img width=\"1491\" height=\"822\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/55242dbd-8de8-4cb6-ab17-4168b73f05bf\" />\n\n项目地址：https://github.com/lyuangg/agent-office",
-    "created_at": "2026-11-04T04:26:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13066"
-  },
-  {
-    "id": 13065,
-    "title": "【工具自荐】Linger：macOS 本地优先的私人审美记忆库",
-    "content": "Linger 是一个 macOS 应用，面向设计师、摄影师和视觉创作者，用来保存平时看到的好看的东西：图片、截图和来源出处，并记下自己当时的感受和词语。创作的时候，可以用自己的语言把它们找回来。\n\n内容可以在墙、网格、合集、专注几种视图里浏览。资料保存在本地，外部 AI 默认关闭，需要时可以自己打开。同类工具有 Eagle、mymind、Pinterest。\n\n支持 Apple Silicon，macOS 11 及以上，用 Tauri 2 + React 构建。可免费试用 14 天，不用绑卡；个人版 $39 一次性买断（2 台），终身版 $79（4 台）。\n\n- 官网：https://withlinger.com/zh/\n- 下载：https://withlinger.com/download\n- 在线试玩：https://withlinger.com/demo/?lang=zh\n\n我是独立开发者 Lucius Miao，欢迎试用和提意见。",
-    "created_at": "2026-11-04T04:08:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13065"
-  },
-  {
-    "id": 13064,
-    "title": "[开源自荐] ArgusAI：Agent 原生安全工作台，全域逆向与持续巡检",
-    "content": "大家好，我是 HG-ha，自荐开源项目 ArgusAI。\n\n项目地址：https://github.com/HG-ha/Argusai\n\nArgusAI 是跨平台的 Agent 原生安全工作台。给出目标与授权范围后，Agent 可以联动浏览器、MITM 抓包、扫描、沙盒与全域逆向工具，记录待办、证据和产物，再继续下一步分析。\n\n逆向覆盖 Web 脚本、WASM、移动端与原生二进制，可按需接入 Ghidra、Frida、JADX 等工具链。有状态工具、跨会话记忆、临时子 Agent 和持久小队用于接续复杂任务；固定间隔、Cron、Webhook 和文件变化触发器支持持续巡检及唤醒指定对话。配对通讯渠道可以远程下达任务、接收报告和产物文件。\n\n个人开发者可以用它检查自己应用的接口权限、分析程序行为，修复后复测。企业可以围绕已连接的主机与应用组织巡检、调查威胁线索，并主动报告。实际执行受工具环境、资源和授权范围约束。\n\n提供 Windows、Linux、macOS 预编译发行包，GUI 与 CLI 连接同一套工作能力；支持配置模型端点，并提供 Codex、Claude Code、Cursor 等本地 Agent 的 ACP 接入入口。协议为 GPL-3.0-only。\n\n- 下载：https://github.com/HG-ha/Argusai/releases/latest\n- 文档：https://github.com/HG-ha/Argusai/wiki\n\n<table><tr><td><img src=\"https://raw.githubusercontent.com/HG-ha/Argusai/v0.1.8/website/assets/screens/agent-light.webp\" width=\"520\" alt=\"桌面 Agent 演示\"></td><td><img src=\"https://raw.githubusercontent.com/HG-ha/Argusai/v0.1.8/website/assets/screens/cli-light.webp\" width=\"520\" alt=\"CLI 演示\"></td></tr></table>\n\n作者自荐，署名：HG-ha。\n",
-    "created_at": "2026-11-04T03:50:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13064"
-  },
-  {
-    "id": 13063,
-    "title": "【工具自荐】自荐纯本地零上传在线工具箱：基于 Astro + Rust Wasm 的 32 款免登录实用工具（视频转GIF/证件照控20KB/提前还贷/源码可视化）",
-    "content": "阮老师好，自荐一个刚开源上线的纯前端隐私工具站与原理实验室：**[原心工具箱 (yunsin.top)](https://yunsin.top/tools/)**（开源仓库：[iamyunsin.github.io](https://github.com/iamyunsin/iamyunsin.github.io)）。\n\n平时自己在转 GIF、压报名证件照 KB 数、合并保密合同 PDF 时，发现网上的工具大多需要上传服务器、限制 5MB 大小或强制打水印，于是用 **Astro 5 + Vue 3 + 微型 Rust WebAssembly** 搓了一套 **100% 在浏览器内存中运行（断网也能用）** 的免费工具集：\n\n- **多媒体与证件处理**：[视频转 GIF 无水印工作台](https://yunsin.top/tools/video-to-gif/)（自研 RGB555 调色板量化 + 12-bit LZW 编码，免下载 30MB ffmpeg.wasm）、[报名证件照二分法精准控 15~25KB](https://yunsin.top/tools/exam-photo-20kb/)、[WebP/AVIF 批量转换与 EXIF GPS 擦除](https://yunsin.top/tools/image-converter/)。\n- **金融算账照妖镜**：[提前还房贷（缩短年限 vs 减少月供）对比引擎](https://yunsin.top/tools/mortgage-shorten-vs-reduce/)、[信用卡分期/网贷月费率转真实 IRR 年化计算器](https://yunsin.top/tools/credit-card-installment-apr/)。\n- **前端底层交互实验室**：配套博客文章做了可单步点击推演的 [Vue 3 编译器 AST & PatchFlags 可视化](https://yunsin.top/tools/vue3-compiler-visualizer/) 与 [最长递增子序列 (LIS) 快速 Diff 动画沙盒](https://yunsin.top/tools/vue3-runtime-visualizer/)。\n\n全站无后端、零上传、免注册无水印，希望能帮到有需要的朋友！",
-    "created_at": "2026-11-04T03:34:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13063"
-  },
-  {
-    "id": 13062,
-    "title": "【开源自荐】KinetAios：7 个 AI 编码引擎同窗竞技、共享端侧长期记忆的本地工作台",
-    "content": "网址：https://github.com/phinn/KinetAios\n\nKinetAios 是一个本地优先的 AI Agent 桌面工作台（Windows/macOS，Electron + TypeScript，GPL-3.0 开源）。\n\n它解决的问题：开发者同时用多个 AI 编码引擎（Claude Code、Codex、DeepSeek 等）时，会话散落在各个终端里，上下文互不相通。KinetAios 把 7 个引擎放进同一个窗口——可以随时切换或并发提问做横向对比，而且所有引擎共享同一份长期记忆（本地 SQLite + FTS5，自动沉淀、去重、衰减），换引擎不丢上下文。\n\n特点：\n- 30+ 内置工具（shell、文件读写、网页抓取、记忆检索），21 个领域插件，MCP 客户端/服务端双支持\n- 纯本地运行：无账号、无中转服务器，API Key 和对话数据不出本机\n- 全局快捷键速呼、流式输出、多频道界面，对标 Claude Code 但不锁单一引擎\n- Windows 与 macOS 双平台支持（cmd/PowerShell 与 sh 路由在运行时分流）\n\n我是作者 phinn，做了两年多，最近刚发布 4.0.6。官网（含截图）：https://phinn.github.io/kinetapp/ 欢迎反馈，谢谢阮老师！\n",
-    "created_at": "2026-11-04T02:50:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13062"
-  },
-  {
-    "id": 13061,
-    "title": "【网站自荐】Hacker Podcasts：Hacker News 评论区 20 年来反复推荐的播客合集",
-    "content": "网址：https://www.hackerpodcasts.org/\n\nHacker Podcasts 收集了 2007–2026 年 Hacker News 评论区里被反复推荐的播客，共约 841 档，相关评论约 2.1 万条。\n\n特点：\n- 数据来自 HN 公开评论，按「被推荐的月份数」排序，而不是单次热度，更能反映长期口碑。\n- 筛选规则：至少 3 人推荐、非负面提及、持续约 3 个月以上。\n- 播客一集动辄一小时，选错代价高，用 HN 社区的长期推荐做筛选能省不少时间。\n\n它和同系列的 HackerTube（HN 推荐的 YouTube 视频）、HackerBooks（HN 推荐的书）是一套，都基于 HN 公开数据整理。\n\n我是作者 qcrao，欢迎反馈。谢谢阮老师！",
-    "created_at": "2026-11-04T02:39:30Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/13061"
-  },
-  {
-    "id": 13060,
-    "title": "【工具自荐】CrestGeo：看豆包、DeepSeek 等 AI 怎么介绍你的网站和品牌",
-    "content": "网址：https://crestgeo.com\n\n我是开发者。现在很多人直接问豆包、DeepSeek，而不是去搜索引擎翻网页。我想知道 AI 回答里会不会提到自己、说得准不准，就做了 CrestGeo。\n\n它主要帮你看四件事：AI 有没有提到你、说得对不对、问到同类时推荐了谁、该怎么改。输入可以是网站，也可以是品牌名或店铺名。\n\n不付款也能先看总分和最主要的 3 个问题；¥0.99 解锁完整报告，会在豆包、DeepSeek、Kimi 等 AI 的回答里抽样检测，并列出 robots 是否放行 AI 爬虫、llms.txt、结构化数据等检查结果和改法。另有 ¥29 修复包。\n\n一个真实例子：CrestGeo 自己的官网一开始只有 80 分，其他项都满分，只有结构化数据是 0——写了，但当时没被认出来。调整写法后这一项变成 20，总分到 100。\n\n它只告诉你哪里有问题、怎么改，不承诺收录或排名。\n\n真实报告示例：https://crestgeo.com/report/crestgeo",
-    "created_at": "2026-11-04T02:35:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13060"
-  },
-  {
-    "id": 13059,
-    "title": "【开源自荐】Xiaobai-Research：帮开发者与团队算清「自研成本 vs. 外部采购」的中文深度调研与 Word 排版引擎",
-    "content": "### 项目地址\n- **GitHub 仓库**：https://github.com/Wattson-Law/Xiaobai-Reasearch\n- **Release 下载**：https://github.com/Wattson-Law/Xiaobai-Reasearch/releases/tag/v1.0.0\n\n---\n\n### 一句话简介\n面向个人开发者、研发团队与企业立项场景的**中文深度行业调研与公文级 Word（.docx）一键排版引擎**——专治通用大模型写调研报告满嘴“全面赋能”公关套话，5 分钟白话时间线看懂陌生赛道，逐章核算**「自研成本（人月/BOM/工程踩坑）vs. 外部采购」**的科学抉择。\n\n---\n\n### 核心解决的痛点与特性\n\n平时独立开发者或小团队切入新方向、做技术选型立项时，直接让通用大模型生成的调研报告往往**“外行看不懂、内行不敢用”**。Xiaobai-Research（小白深度调研引擎 v1.0，兼容 DeepSeek Harness 插件与 Claude Code / Cursor 通用 Agent Skill）通过方法论约束 + 本地 Python 质检与排版脚本解决这一问题：\n\n1. **2.1 节强制「零门槛白话演进时间线」**：首次出现的专业术语必须附带一句话大白话解释，按代际讲清“上一代卡在哪 -> 这一代怎么破局”，让跨界开发者 5 分钟摸清陌生行业脉络。\n2. **每章末强制「五维技术瓶颈 + 自研成本 vs. 采购选型」双主线闭环**：\n   - 从**机理、感知、决策、安全、证据**五个维度给出可被数据反驳的物理判据边界（精度、时延、误差极限）；\n   - 按架构层拆解**「直接外采 / 采购底座+二开 / 核心自研」**，强制将自研收益、隐性工程代价与风险补偿手段成对写出；\n   - 内置 check_threads.py 启发式质检脚本，自动扫描每章信号密度与博弈闭环，拦截水文。\n3. **离线免配环境，一键编译直出标准 Word（.docx）报告**：\n   - 仓库内置 python-docx 与 mistune 离线依赖，一条命令（\build_docx.py）直接生成包含**原生 Word 三级自动目录（TOC \\o \"1-3\"）、宋体分级标题 + 16pt 仿宋正文、0.5pt 黑白标准三线对比表**的 .docx 文档。\n\n---\n\n### 插件直出 Word (.docx) 成果预览与基准测试\n\n![Word 直出成果预览](https://raw.githubusercontent.com/Wattson-Law/Xiaobai-Reasearch/main/assets/docx_output_showcase.png)\n\n![ERQI 评测基准曲线](https://raw.githubusercontent.com/Wattson-Law/Xiaobai-Reasearch/main/assets/erqi_benchmark_dashboard.png)",
-    "created_at": "2026-11-04T00:51:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13059"
   }
 ]
