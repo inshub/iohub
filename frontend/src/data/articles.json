@@ -1,5 +1,45 @@
 [
   {
+    "id": 13184,
+    "title": "【开源自荐】Agent Retry Rodeo：用回放看清 Agent 重试为什么会重复写入",
+    "content": "项目：[Agent Retry Rodeo](https://github.com/RishabhPande/agent-retry-rodeo)\n\n我是项目维护者。这个 MIT 开源的 Python 教学实验场，演示一个很容易被“完成了”掩盖的问题：写入已经成功，但确认响应超时，盲目重试反而产生重复评论。\n\n读者可以在浏览器回放中逐步查看工具调用、注入的故障和持久化状态，对比朴素策略与恢复策略。四类故障包括丢失确认、部分成功、版本冲突和无效状态转换，共八次脚本演示；安装后可离线运行，不需要模型 API Key，数据全部是合成的。\n\n```sh\npython -m pip install -e .\nretry-rodeo demo\n```\n\n在克隆的仓库中运行，打开生成的 `rodeo-output/index.html`。也可以直接试用 [公开回放](https://rishabhpande.github.io/agent-retry-rodeo/)。\n\n适合想理解 Agent 工具调用可靠性、或练习写故障场景与状态断言的开发者。可以添加 YAML 任务样例，或接入自己信任的本地 Python 适配器。\n\n边界说明：内置策略是确定性的教学脚本，不是 LLM；这不是实测的模型排行榜，也不提供生产环境的 exactly-once 保证。本地适配器不是沙箱，不要执行陌生人的代码。\n\nEnglish summary: a local, synthetic retry-failure lab with inspectable state and scripted baselines, not a real-LLM performance claim. I maintain the project and am submitting it for editorial consideration.",
+    "created_at": "2026-11-07T22:47:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13184"
+  },
+  {
+    "id": 13183,
+    "title": "【开源自荐】Lowspeak：按住 fn 说话，在任何 Mac 应用里输入文字，支持中文和离线识别",
+    "content": "Lowspeak 是我开发的 macOS 菜单栏语音输入工具：按住 fn 键说话，松开后文字直接出现在光标所在的位置，任何应用都可以，不用切换窗口，也不用手动粘贴。菜单、对话框和通知都有简体中文和繁体中文。\n\n- 源码（MIT 或 Apache-2.0）：https://github.com/sventmueller/lowspeak\n- 中文说明：https://github.com/sventmueller/lowspeak/blob/main/assets/readme/zh-Hans/README.md\n- 下载（已签名并通过 Apple 公证）：https://github.com/sventmueller/lowspeak/releases/latest\n- Homebrew：`brew install --cask sventmueller/tap/lowspeak`\n\n![Lowspeak 宣传图（英文）](https://raw.githubusercontent.com/sventmueller/lowspeak/main/assets/social-preview.png)\n\n**中文支持**\n\n- 界面跟随系统语言切换简体或繁体中文，菜单用词沿用 Apple 的译法\n- 说中文：Whisper（本地或在线）和 OpenAI 的 GPT Transcribe 都能识别；选择「中文（繁体）」时 GPT Transcribe 输出繁体字，Whisper 输出的可能是简体也可能是繁体\n- 词汇表可以填入人名和专业术语，帮助识别时写对\n\n**解决什么问题**\n\n想在任何应用里用说话代替打字，同时自己决定声音交给谁处理：在线用 Groq 或 OpenAI（用你自己的 API Key，中间没有任何服务器），或者完全离线用 Whisper、NVIDIA Parakeet 在本机识别。网络断开时，已安装的本地模型会接手同一段录音，听写不会丢。\n\n**主要功能**\n\n- 速度：开始说话时就预先建立网络连接，用 Groq 时松开 fn 约 0.4 秒出字；在 Apple Silicon 上，Parakeet 约三分之一秒处理 40 秒语音\n- 原生：Rust 直接调用 AppKit，没有 Electron；应用约 17 MB，在线模式下内存约 45 MB\n- 可选的后期处理：去掉口头禅、修正语法，并按目标应用调整格式\n- 连按两次 fn 进入免按住模式，最长五分钟；菜单里保留最近十条听写；听写后自动恢复剪贴板原有内容\n- 隐私：无需注册账号，没有遥测\n- 价格：软件免费；Groq 的免费套餐在每日额度内不收费，OpenAI 按用量收费，本地模型不产生费用\n\n**局限**\n\n- Parakeet 不支持中文，说中文要用 Whisper 或 GPT Transcribe\n- OpenAI 和 Groq 的服务在部分地区可能无法访问，这时只能用本地模型\n- 不是逐字实时显示：松开 fn 或结束免按住模式后，文字才一起出现\n- 除英文外的界面翻译都是机器翻译，还没有母语者校对，欢迎在 GitHub 上提出修改\n- Intel Mac 上本地模型很慢，建议在线识别\n- 项目 2026 年 11 月初才公开\n",
+    "created_at": "2026-11-07T22:06:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13183"
+  },
+  {
+    "id": 13182,
+    "title": "【资源自荐】三组 AI 结果核对练习：交接、资料来源与代码变更",
+    "content": "分享三组免费的中文练习，练习给 AI 交任务后怎么核对结果。每组都有完整模拟材料、提示词和参考核对点：\n\n- [任务交接](https://sites.google.com/view/cchello-ai-task-lab/开始练习)：分清内部预览和对外发布，保留未确认的负责人、预算。\n- [资料来源](https://sites.google.com/view/cchello-ai-task-lab/research)：不同样本、平均数与中位数为什么不能直接合并。\n- [代码变更](https://sites.google.com/view/cchello-ai-task-lab/review)：需求只改按钮文案，提交却顺带改了金额舍入，应该怎样验收。\n\n无需注册，可复制、改写和用于教学；可以人工完成，也可用自己已有的 AI 工具，模型服务费用另计。下面可直接展开一组完整练习。\n\n由 CC-Brichy777 / CCHello 项目方使用 AI 辅助制作，全部是模拟资料，尚无人类讲师审定或课堂实测。外链页面有项目方署名、CCHello 付费第三方桌面服务说明及官网入口；练习不要求使用或推荐产品。\n\n<details>\n<summary>直接试做：把讨论整理成可交接的任务</summary>\n\n先读下面六条模拟讨论，分清已经决定的事、暂定安排和仍需追问的问题。\n\n**材料**\n\n- N01：周一讨论，演示页暂定周五发。设计同学小林先出两版首页，周三前给大家看。\n- N02：周二补充，周五只是内部预览，不是对外发布。公开发布日期需要等隐私说明和测试一起过。\n- N03：测试负责人阿青说周四可以检查登录流程；支付流程还没有安排测试负责人。\n- N04：大家提到预算先按2000元准备，小周追问能否提高到3000元。会上没有确认。\n- N05：小林说首页只保留一个主要按钮，按钮文案还没定。两版稿都不代表最终方案。\n- N06：会议结束前确认，内部预览前要隐藏演示数据中的邮箱和订单号。没有分配执行人。\n\n**给 AI 的任务**\n\n请只根据以上模拟材料整理交接清单。每行给出事项、状态（已确认／暂定／待确认）、材料明确写出的负责人、时间和来源编号。没有写出的信息填“未确认”，不要替参与者决定预算、日期或负责人。最后列出最先需要追问的三个问题。\n\n**拿到结果后，逐项回看原文**\n\n- 周五是内部预览，没有推断出公开发布日期。回看 N01、N02。\n- 支付测试与脱敏的执行人仍待确认。回看 N03、N06。\n- 没有把3000元写成获批预算，保留2000元准备口径与3000元提问。回看 N04。\n- 周三前提供两版首页；最终方案和按钮文案没有确认。回看 N01、N05。\n- 关键结论有来源编号，没有把追问写成既定事实。\n\n保留第一版结果，再写下“已核实、需修正、待追问”各一项。这些核对点是供人工检查的参考，不是自动评分，也不保证穷尽所有问题。\n\n</details>\n",
+    "created_at": "2026-11-07T19:49:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13182"
+  },
+  {
+    "id": 13181,
+    "title": "【开源自荐】Agent Autofill：面向 macOS 本地 AI Agent 的加密个人数据金库与 MCP 代理",
+    "content": "项目地址：\nhttps://github.com/lifan-builds/agent-autofill\n\n在线演示与产品介绍（含 33 秒演示视频与交互式沙盒）：\nhttps://clifan.com/agent-autofill/\n\n在使用 Claude Code、Codex、Cursor 或 OpenClaw 等本地 AI Agent 处理网页表单、登录和二次验证（2FA）时，用户往往不得不把密码写进明文 `.env`、在对话框里反复粘贴个人地址，或者把账号和信用卡上传到云端 Bot Vault。\n\n**Agent Autofill**（Apache-2.0 开源）是一个运行在 macOS 本机的个人数据金库与 MCP（Model Context Protocol）信息代理服务，核心设计是“只给 Agent 当前任务所需的最小字段，其余留在你的 Mac 上”：\n\n1. **本机钥匙串加密存储**：个人资料（区分 Home / Work 语义）、网站登录凭据和支付卡信息保存在本机 AES-GCM 加密的 SQLite 数据库中，主密钥与邮箱授权令牌存储在 macOS Keychain。\n2. **免明文 CSV 的 Chrome 本地导入**：支持扫描本机 Chrome 多配置目录（`Default`、`Profile 1` 等）的地址簿与密码管理器，通过本机回环界面（`127.0.0.1`）确认语义并筛选后再写入正式库，无需导出明文 CSV。\n3. **密码不进大模型上下文（`credential.use`）**：提供配套 Chrome 扩展的单次、绑定目标域名（Origin-bound）令牌交接机制，由扩展在校验当前页面域名后填入密码，原始密码不会进入 LLM Prompt 或日志。\n4. **限定范围的 2FA 验证码读取**：支持从只读 Gmail API（`gmail.readonly`）、IMAP 邮箱以及 macOS 本机信息（Messages `chat.db`，含 Sonoma/Sequoia `attributedBody` 二进制流解码）中提取最近一次验证码，并在读取后标记已消费以防重放。\n5. **严格的只读信息边界**：仅提供信息读取与提案，绝不代为跳转网页、点击提交按钮、发送消息或自动结账。\n\n可以先运行完全使用虚构数据、无需配置账号或网络的交互演示：\n\n```bash\nuv tool install git+https://github.com/lifan-builds/agent-autofill.git\nagent-autofill demo\n```\n\n一行命令接入本地 MCP 客户端：\n\n```bash\nagent-autofill mcp-install --client claude   # 支持 claude / cursor / codex / antigravity\n```",
+    "created_at": "2026-11-07T19:40:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13181"
+  },
+  {
+    "id": 13180,
+    "title": "【开源自荐】looot-techstack：开源的网站技术栈查询工具，几家数据商的答案并排对比",
+    "content": "looot-techstack 是一个开源的网站技术栈查询工具，可以看作 BuiltWith 和 Wappalyzer 查询功能的替代品：输入一个域名，看它的网站用了哪些技术；或者输入一项技术，找用它的公司。\n\n它自己不爬网站，而是同时问几家技术栈数据商（BuiltWith Free、Tomba、PredictLeads 等），把答案并排列出来，标出每项技术是哪几家报出的、几家之间的重合度，以及首次和最后发现日期。\n\n- 一个有意思的发现：对 clay.com，Tomba 报了 17 项技术，PredictLeads 报了 100 项，两边重合只有 2 项。PredictLeads 读的是招聘启事，所以很多条目是招聘广告里提到的工具，不是网站上真实检测到的标签。并排对比能直接看到这种分歧\n- 运行前先报价，按域名计费，每个域名 0 到几美分；失败的调用不收费\n- 有 Web 界面和命令行，支持批量、按技术和类别筛选、导出 CSV\n- `npm run demo` 用示例数据启动，不需要账号和 key；`--dry-run` 也不花钱\n\n    git clone https://github.com/loootai/looot-techstack && cd looot-techstack && npm install --ignore-scripts && npm run demo\n\n真实查询需要一个 looot 账号和预付余额（最低充值 5 美元，注册不送额度）。Next.js，MIT 许可证。\n\n- 项目地址：https://github.com/loootai/looot-techstack\n\n![looot-techstack 演示](https://raw.githubusercontent.com/loootai/looot-techstack/main/docs/media/demo.gif)\n\n利益相关：我在 looot 工作，这个项目是我们做的。\n",
+    "created_at": "2026-11-07T19:25:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13180"
+  },
+  {
     "id": 13179,
     "title": "【开源自荐】一个压缩图片到指定大小的压缩工具",
     "content": "\n网站：https://imgcap.vercel.app\n\n现有的图片压缩工具，要么只能设置输出宽高要么设置输出质量，但是用户常常遇到的是大小限制\n\n有些网站上传图片会限制大小，这个工具可以压缩图片到指定的大小，省去了让用户反复手动调整的麻烦，\n例如: 10mb -> 500kb\n\n这也是一个 npm 包可以集成到你的项目上传组件中，纯前端自动压缩，减少了服务压力，用户体验也好\n\n```javascript\nimport imgcap from 'imgcap'\n\n// Social media avatar (500KB limit)\nconst avatar = await imgcap(file, { targetSize: 500 * 1024 })\n\n// With format conversion\nconst webp = await imgcap(imageFile, {\n  targetSize: 300 * 1024,\n  outputType: 'image/webp'\n})\n```",
@@ -758,45 +798,5 @@
     "created_at": "2026-11-04T09:59:58Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13082"
-  },
-  {
-    "id": 13081,
-    "title": "上传文件，如果失败了自动续传就会提示 覆盖，跳过，重命名",
-    "content": "上传文件，如果失败了自动续传就会提示 覆盖，跳过，重命名，实际上我里面什么都没有，只不过失败了你不是断点续传而是重新传的，这个逻辑有问题，至少不能提示我覆盖，跳过，重命名，我只传了一次，过程失败我可以接受，不应该提示这种",
-    "created_at": "2026-11-04T09:54:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13081"
-  },
-  {
-    "id": 13080,
-    "title": "【工具自荐】星云业务通：连接 AI 助手与企业系统，从 Excel 生成 ERP 生产订单",
-    "content": "阮老师好，我是星云业务通产品团队成员，想自荐一个连接 AI 工作平台与企业现有业务系统的工具。\n\n企业里有一类很常见的工作：收到一份 Excel，整理其中的信息，再逐项录入 ERP。AI 已经可以读取表格，但要完成后面的业务办理，还需要衔接企业系统的接口、字段和操作页面。\n\n我们做的星云业务通，主要承担这一层连接，让员工可以在 WorkBuddy、千问办公、豆包工作等 AI 平台中调用企业业务能力。\n\n下面是一个实际演示：**把 Excel 中的生产订单录入金蝶云星空。**\n\n员工在 WorkBuddy 中上传生产订单 Excel，要求使用“生产订单保存”能力完成任务。WorkBuddy 读取表格，通过星云业务通调用对应能力，打开业务单据页面，将日期、生产组织、物料、车间、单位和数量等信息带入表单。\n\n员工可以在页面中检查、修改这些内容，确认无误后点击提交。\n\n![WorkBuddy 读取 Excel，将生产订单信息带入业务表单，供员工核对后提交。](https://github.com/user-attachments/assets/39c957d0-de5e-46aa-9395-a115836e75a9)\n\n*WorkBuddy 左侧显示处理过程，右侧是带入数据后的生产订单表单。*\n\n提交后，系统返回保存结果和单据编号。在金蝶云星空中，可以查看对应的生产订单。下面的单据编号为 `MO26090028`，与提交结果一致。\n\n![在金蝶云星空中查看保存后的生产订单，公司名称已脱敏。](https://github.com/user-attachments/assets/1e471ab5-67df-457d-b28b-fcd3ad92a35b)\n\n*保存后的金蝶生产订单。公司名称已脱敏。*\n\n这个流程保留了一个明确的交接点：AI 整理信息、准备填写内容，员工在业务页面中检查最终要写入系统的数据，并完成提交。\n\n在配置端，企业可以将已有系统的数据查询、业务接口和操作页面封装为 AI 可调用的能力，再发布、授权给相应员工。星云业务通提供用户与业务身份映射、能力授权和调用审计，用于管理员工能够使用哪些能力，以及查看执行情况。\n\n生产订单录入是其中一个场景，同样的连接方式也可以用于库存查询、销售订单分析、采购到货查询等工作。\n\n星云业务通是**商业闭源产品**，使用前需要接入企业系统、配置并授权相关能力。上述演示基于已配置的金蝶云星空场景。\n\n产品介绍与公开演示：[星云业务通](https://www.xingyunzuo.cn/ai-system-connector)\n\n本次为产品团队自荐，供周刊选题参考。谢谢。",
-    "created_at": "2026-11-04T08:35:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13080"
-  },
-  {
-    "id": 13079,
-    "title": "【开源自荐】YI TUO HUB STUDIO：Markdown 一键排成公众号 HTML 的开源排版工具",
-    "content": "[YI TUO HUB STUDIO](https://github.com/yan9651688/yituo-hub-studio)：开源的微信公众号排版工具，粘贴 Markdown、选一套主题（共 20 套），一键复制进公众号编辑器且样式不丢。复制前自动做平台合规校验，截图可直接粘贴内联、无需图床。纯静态零构建，另有可选的 AI 写作页（使用自己的 API）。在线体验：https://studio.yituohub.com （[@yan9651688](https://github.com/yan9651688) 投稿）\n\n![](https://raw.githubusercontent.com/yan9651688/yituo-hub-studio/main/docs/social-preview.png)\n",
-    "created_at": "2026-11-04T08:15:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13079"
-  },
-  {
-    "id": 13078,
-    "title": "【工具自荐】ResumeInvited：免费的英文在线简历制作工具",
-    "content": "我是 ResumeInvited 的维护者，想向周刊推荐这个免费小工具。\n\n官网：https://resumeinvited.com/\n\n它面向需要制作英文简历的求职者。选好模板后，可以一边填写工作经历、教育背景和技能，一边预览排版，完成后导出 PDF 或可编辑的 Word 文件。使用时无需注册，草稿保存在当前浏览器。",
-    "created_at": "2026-11-04T08:01:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13078"
-  },
-  {
-    "id": 13077,
-    "title": "【网站自荐】AllOne：给独立开发者和创作者的一站式工具箱",
-    "content": "AllOne：给独立开发者和创作者的一站式工具箱，每个工具都标清免费额度和国内能不能用\n\n网址：https://www.allone.top\n\n我是 AllOne 的作者，一个人在做的中文工具导航站。\n\n做它的原因：找工具时最花时间的不是\"有哪些\"，而是\"免费版够不够用、多少钱、国内能不能直接用、有没有中文\"。所以 AllOne 给每个工具做了一张信息卡，把这几件事写清楚，并附上替代品。\n\n• 工具库：227 个工具，按做一个产品的流程分类：找方向、做出来、上线、做内容、拉用户、收钱、管好钱和时间\n• 教程与指南：上手教程、怎么选、免费替代\n• 落地案例：真实项目用了哪些工具\n• 每周精选：最新一期《用 AI 编程，怎么少花钱？》，整理了 Cursor、Trae、OpenCode 等的免费额度和省钱用法 https://www.allone.top/weekly/2026-w45\n\n免费，无需注册。欢迎反馈\n\n<img width=\"960\" height=\"872\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/a39b5f88-0e34-4369-9a43-78a43e139817\" />",
-    "created_at": "2026-11-04T07:56:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13077"
   }
 ]
