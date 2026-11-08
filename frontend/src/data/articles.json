@@ -1,5 +1,77 @@
 [
   {
+    "id": 13197,
+    "title": "【开源自荐】一线城市省钱指南：17 章的北上广深生活成本手册，可在线检索",
+    "content": "阮老师好，自荐一个中文文档项目：一线城市省钱指南。\n\n写给在北上广深工作、月收入 6000～30000 元的人。这本书不做\"节俭说教\"，只拆成本结构：房租、吃饭、通勤、话费宽带、医保、购物，以及那些需要自己去申请的政策待遇——公积金、个税专项附加扣除、失业金、技能补贴、保障性租赁住房。哪些能谈、哪些能领、哪些入口值得先查。\n\n目前的形态：\n\n- 17 章 94 节，另有三份附录：一年省钱日历、链接索引、政策文号核对清单\n- 四个城市各一章，写当地特有的路径，比如北京的公积金直付房租、上海的保租房和\"一张床\"、深圳的青年驿站\n- 在线检索页：按\"我现在遇到的问题\"查，也能按城市、章节筛，全文内嵌，离线可用\n- EPUB / PDF / 离线单文件 HTML\n- 附带一个 Claude Code / Codex 的 skill，装好后可以直接问\"住远一点能省多少、多花多少通勤时间\"，它按书里的口径算完，并注明出自哪一节\n\n举个例子。第 1.1 节把\"住远一点省钱\"改写成一道减法：\n\n真实时薪 =（月薪 − 房租 − 通勤成本）÷（174 − 每月多耗的通勤小时）\n\n同样月薪一万，租在公司 3 公里、月租 6000 的人，真实时薪 21.8 元；租在郊区、月租 3200、单程 90 分钟的人，43.8 元。月租贵一倍的人，时薪只有对方的一半。但结论不是\"越远越好\"——这张表是拿来跟自己的时间价格对照的，单程超过 75 分钟，隐性成本会反噬。\n\n内容基于 2026 年 10 月的政策口径，涉及申领和资格的以主管部门最新公告为准，仓库里单独列了待核实清单。正文由人工智能辅助整理，已在文档中注明。\n\n许可为 CC BY-NC-SA 4.0，其中看房清单、合同条款、维权工具箱和附录 A 为 CC BY 4.0。\n\nGitHub：https://github.com/sluke23/HowToSaveMoney\n在线阅读：https://sluke23.github.io/HowToSaveMoney/\n",
+    "created_at": "2026-11-08T12:40:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13197"
+  },
+  {
+    "id": 13196,
+    "title": "〖开源自荐〗GitHub Page Jump：给 GitHub 分页加上首页、末页和直接跳页",
+    "content": "GitHub 的分页体验一直有个盲区：搜索结果有页码，但 Repositories、Stars、Commits 这些常用列表只给“Previous / Next”，没有页码，既跳不到第一页，也去不了最后一页，想翻到中间某页只能一页页点。\n\nGitHub Page Jump 是一个零构建的 Chrome Manifest V3 扩展，专门补上这块缺失的能力。它根据 GitHub 实际渲染的三种分页形态自动切换策略：\n\n- 有页码的分页器：直接添加 ⏮️ 首页和 ⏭️ 末页按钮，输入页码回车即可跳转。\n- 无页码的 page 参数列表（如 ?tab=repositories、?tab=followers）：它会在后台自动索引页数，在 GitHub 原有的 Previous / Next 之间插入一个 1 2 3 … n 的页码窗口，点击即可直达。查找末页使用指数扫描 + 二分查找，100 页大约只需要 13 个请求，而不是逐页遍历。\n- after 游标列表（如 ?tab=stars、/tags、/commits）：同样支持页码窗口，并会沿着游标链定位末页。\n\n几个值得提的点：\n\n- 零构建：源码直接就是可加载的扩展，没有打包步骤。\n- 跟随 GitHub 主题：控件使用 Primer 颜色变量，自动适配 light / dark / high-contrast。\n- 兼容 GitHub 的 Turbo / PJAX 部分导航，不会在站内跳转后失效。\n- 可访问性：使用真实按钮、GitHub 自身的 Page N 命名，带 aria-current=\"page\" 和行内校验提示。\n- 支持工具栏 popup 中开启“固定分页栏到底部”的偏好（默认关闭）。\n\n项目地址：https://github.com/TekkenSteve/github-page-jump\n\n安装方式：Chrome 116+，从 Releases 下载 zip 解压后在 chrome://extensions/ 开发者模式下加载，或直接从源码 Load unpacked。",
+    "created_at": "2026-11-08T11:46:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13196"
+  },
+  {
+    "id": 13195,
+    "title": "【开源自荐】VideoSeek：一款在本地海量视频中定位某个镜头的桌面软件",
+    "content": "- 项目名称：VideoSeek\n- 项目地址：https://github.com/6v17/VideoSeek\n- 官网地址：https://www.lv17.top/\n- 飞书教程：https://ycnwd8tcjgtu.feishu.cn/docx/ZWkrdSqA6oJTOrxQ2XscxYtmnad\n- 开源协议：AGPL-3.0\n- 项目简介：本地离线运行的视频素材检索工具。用一句描述、一组标签、一张截图或一句台词检索本机视频，返回精确到秒的片段位置；索引与检索都在本机完成，视频无需上传云。可导出剪辑草稿，帮助剪辑人员快速翻找本地素材。（源码端最新支持搜本地图片！）\n\n- 项目截图：\n\n![文搜视频](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/文搜演示.gif)\n\n### 主要功能\n\n1. **文字搜镜头**：用自然语言描述画面，返回命中的时间范围，而不是只给一个文件列表。\n2. **截图搜镜头**：丢一张参考图或截一帧进去，找相似画面。\n3. **硬字幕检索**：对画面内嵌字幕做 OCR，按台词搜时间点。\n4. **标签检索**：用「蓝发」「红白服饰」这类标签组合筛镜头，结果按网格给出缩略图和时间。\n5. **导出到剪辑软件**：导出 mp4 片段、剪映草稿、Premiere XML 或达芬奇 FCPXML 时间线。\n6. **可完全本地构建**：ONNX + Lance + FFmpeg 在本机跑，视频不上传；Windows 优先，也可从源码构建。\n7. **多种画面模型可选**：适配 openai-clip / chinese-clip / siglip2 /fgclip2的 base 与 large 档位(可选qwen3 vl embding云端嵌入模型)，可按自己的显卡和精度需求选择。\n\n### 进阶用法\n\n- **局域网团队协作**：一台电脑建索引，多台用户同时访问搜索，素材在一台机器上就行了。\n- **Agent API（可选）**：开启本地 HTTP 接口后，可让 Cursor 等 Agent 直接调用搜索、读库与导出。\n- **视频理解**：支持vlm按chunk镜头连续帧拼合推断镜头内容，llm根据vlm输出、asr输出，动态判断剧情内容，规划大纲，一键选镜并生成剪映解说稿，实现粗剪。",
+    "created_at": "2026-11-08T11:37:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13195"
+  },
+  {
+    "id": 13194,
+    "title": "【资源自荐】从 microGPT 到唐诗 GPT：中文动手课，包含训练、生成和失败实验",
+    "content": "自荐一套面向会一点 Python 的初学者的中文动手课：[从 microGPT 到唐诗 GPT](https://github.com/OakcoderX/TangShiGPT-Course)。\n\n课程受 Karpathy 的 microgpt 启发，采用独立的 PyTorch 教学实现，带学习者把《全唐诗》JSON 整理成字符序列，训练、保存、加载一个小 GPT，再观察它怎样生成五言、七言形式的草稿。\n\n学习路径包括：\n- 先做“下一字频数”基线，再训练模型，比较统计规律与模型输出。\n- 从小规模短跑开始，练习保存权重和继续训练。\n- 用真实的李白风格实验学习设计对照、匿名比较输出和判断失败。当前模型能生成唐诗形式的草稿，但李白风格仍不能稳定复现。\n\n[完整学习包](https://github.com/OakcoderX/TangShiGPT-Course/releases/tag/v1.0.0)提供 HTML 自学教案、可编辑 PPTX、代码、语料、权重和实验记录。下载解压后，用浏览器打开 docs/index.html 阅读教案；运行代码需要 Python 3.10 以上和项目依赖，支持 CPU，亦可尝试 CUDA 或 Apple MPS。\n\n这是公开免费学习项目，不是 Karpathy 的官方课程。自有代码、教案和权重目前没有附开源许可证，上游数据许可已在包内保留。欢迎反馈最难跟上的步骤。",
+    "created_at": "2026-11-08T10:53:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13194"
+  },
+  {
+    "id": 13193,
+    "title": "〖文章自荐〗写代码前，怎样判断一个海外小工具有没有真实需求？",
+    "content": "阮老师好，自荐一篇中文图文指南：[如何验证出海产品需求？](https://zhaoxuqiu.online/methodology)。\n\n文章面向想做小工具的独立开发者，讲的是写第一行代码之前怎么验证一个具体任务。用一个虚构例子：用户要把图片压到上传限制以内。即使相关词有人搜，也要先区分对方是在找排障步骤，还是想立刻拿到一张能上传的图片。\n\n指南给出了一个可以照着做的流程：\n\n1. 看目标市场的前 10 条自然结果，记录它们分别在回答什么。\n2. 拿同一张超限图片试几个现有工具，比较能否达标、用了几步、在哪里卡住。\n3. 请确实有这个任务的人独立试用，记录完成率和失败原因，决定下一轮做什么。\n\n原文有流程图、证据对照表和 7 天行动清单，无需登录，全文免费。文章由我参与维护的「出海找需求」发布。\n",
+    "created_at": "2026-11-08T09:46:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13193"
+  },
+  {
+    "id": 13192,
+    "title": "【工具自荐】objekto.io：用几句话、照片或草图描述一个物品，AI 设计可 3D 打印的多部件模型并制作送货",
+    "content": "网址：https://objekto.io/en\n\nobjekto.io 是一个法国的在线服务，把一段描述变成真实的物品。用几句话描述想要的东西（也可以附一张照片或草图），再选择模式：设计（Design）、发明（Invent，为天马行空的想法给出三个可行方向）或维修 / 替换（Repair / replace）。AI 以参数化 CAD 的方式逐个部件设计 3D 模型，检查每个部件能否打印（壁厚、最小细节、配合间隙、各材料的最大尺寸、干涉、稳定性），并给出爆炸图、零件清单和装配指南。之后由合作的工业 3D 打印工坊制造，送货上门。\n\n主要功能：\n- 每个物品最多 12 个不同的打印部件；螺纹、销钉、卡扣等连接结构也一起打印，少数无法打印的部件（电子元件、磁铁、玻璃、刀片）会单独列出，需另行购买。\n- 免费的尺寸滑块（不调用 AI，几秒内重新计算），其他修改在对话中完成。\n- 材料包括 PA12 尼龙（SLS、MJF、全彩）、柔性 TPE 和 TPU、多种树脂、PETG、PLA，以及失蜡铸造黄铜。\n- 下单前显示含增值税和运费的固定欧元价格，工坊工程师会审核每一笔订单。\n- 付费方案可下载 STL、3MF 和 STEP 文件，Pro 和 Studio 方案还提供参数化源代码。\n- 社区图库：可以发布设计（CC BY、CC BY-NC 或仅供下单），也可以 remix 或直接订购别人的设计。\n\n价格：注册赠送 2000 积分（一次性，无需信用卡），大约够设计一个 2 到 4 个部件的物品；付费方案每月 29 欧元起（Creator），另有 Pro 70 欧元、Studio 299 欧元（均含增值税）。打印费用另付，用欧元结算，不使用积分。\n\n限制：实物订单在上线初期只配送到法国本土（含科西嘉）；界面为英文和法文。不提供医疗、食品接触或承重等认证产品。\n\n利益相关：我是 objekto 的创始人 Arsène Huot（法国巴黎），本条为自荐，供编辑试用和评估。\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n",
+    "created_at": "2026-11-08T08:59:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13192"
+  },
+  {
+    "id": 13191,
+    "title": "【开源自荐】Setem：macOS 菜单栏语音输入法，Swift 原生实现、内存占用小",
+    "content": "Setem 是我开发的 macOS 菜单栏语音输入法，Swift 原生实现，常驻内存占用小。按住或点按快捷键说话，在浮窗中预览识别结果，定稿后一次性输入到光标处；支持豆包、微信、千问三个云端识别渠道和本机离线模型（Apple 芯片，断网可用）。开源免费，MIT 协议，macOS 15+ 可用。\n\nGitHub：https://github.com/zcyoung2000/Setem\n",
+    "created_at": "2026-11-08T08:11:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13191"
+  },
+  {
+    "id": 13190,
+    "title": "【开源自荐】千禧时光机：找回1997年到2012 年的记忆",
+    "content": "https://hanfeisun.github.io/2000s/\n\n\n<img width=\"1080\" height=\"1440\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/4aa7e5f5-5d8d-49cb-b208-17a5fa903a24\" />\n\n一个关于 1997 到 2012 年内地生活的年代资料站。从华语流行音乐起步，后来扩展到电视、网络、校园、日常生活、社会新闻、体育和亚文化，最近又加了按地区写的“地方”篇：31 个省区市、港澳台、潮汕，以及 19 个国家当地人的千禧年记忆。\n\n页面里内嵌了播放器，读专栏时可以听当年的歌、看当年的电视片段，换页不断歌。\n\n现在有什么\n\n- 296 篇专栏，比如《十块钱坐到早上七点：网吧里的一夜》《凌晨四点开市的五爱街》《五点二十七分的〈游戏东西〉》\n\n- 4100 多条分年份的大事记、759 个词条、1337 部电视剧的年表\n\n- 4500 多首歌，其中 4000 多首能在页面里直接播放；按年份、内地/港台、榜单、专题浏览\n\n- 每条内容都列了出处，可以点开核对\n",
+    "created_at": "2026-11-08T06:57:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13190"
+  },
+  {
+    "id": 13189,
+    "title": "【自荐】Keydrop：自托管的兑换码 / 激活码分发工具（开源）",
+    "content": "Keydrop 是一个开源（MIT）的兑换码管理工具，部署在你自己的 Cloudflare 账户（Workers + D1），没有托管服务费，也不按码收费。\n\n适合独立开发者管理兑换码、折扣码、License Key 和 App Store 优惠码：\n\n- 生成码，或从 CSV / Excel 导入，码加密保存\n- 公开或私密领取页（可设领取条件），也可以用 Stripe 付款，买一次发一个码\n- License Key 在线激活，限制设备数量\n- 提供 REST API、Webhook 和 MCP，后台或 AI 代理可以直接发码、查码\n- 一键部署到 Cloudflare，界面有 8 种语言\n\nGitHub：https://github.com/all-right-LLC/keydrop\n网站：https://keydrop.allright.dev\n",
+    "created_at": "2026-11-08T05:18:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13189"
+  },
+  {
     "id": 13188,
     "title": "【开源自荐】AITerminal：带可扩展插件中心的 AI 运维终端",
     "content": "阮老师好，自荐一个我维护的开源项目 **AITerminal**：带可扩展插件中心的 AI 运维终端，采用 **Apache-2.0** 协议。\n\n它把本地终端、SSH 和 AI 操作放在同一个桌面界面里。重点是让开发者把自己的运维经验、排障流程和常用工具封装成插件，按需安装、组合和分享。\n\n插件中心目前支持：\n\n- **扩展 AI 和终端能力**：插件可以提供参数化工具、AI 指引、模型适配器、任务事件和界面面板，也能接入标准 MCP 服务（stdio / Streamable HTTP）。例如用 Docker 工作台查看容器状态、执行巡检和读取交互日志，用通知插件订阅任务结果。\n- **开发与分发**：提供插件 SDK、类型定义，以及创建模板、校验、打包命令；支持导入本地开发目录或插件包、配置自定义 HTTPS 插件源和恢复历史版本。\n- **按标签启用**：不同终端标签的插件实例、配置、AI 上下文和任务相互隔离，可以为不同服务器配置不同的工具组合。\n- **可参考的内置插件**：目前有 10 个，包括系统巡检、Docker 工作台、Git 时光机、任务通知，以及无需模型 Key 的终端宠物和运维闯关。既有运维用途，也提供面板、事件和会话状态的开发示例。\n\n应用支持 Windows、Linux 和 macOS；Windows 本地终端默认使用 WSL Ubuntu，当前 macOS 安装包为 Apple Silicon。使用 AI 时配置自己的模型 API，支持 Chat Completions、Responses 和 Messages 格式；也支持 Codex、tmux 等交互式命令。\n\n欢迎试用、反馈问题，也欢迎开发者一起完善插件系统，贡献运维工具、MCP 集成、模型适配器或有趣的小插件。\n\n- 源码与功能演示：https://github.com/Amo-Zeng/AITerminal\n- 三平台安装包：https://github.com/Amo-Zeng/AITerminal/releases/latest\n- 插件使用说明：https://github.com/Amo-Zeng/AITerminal/blob/main/PLUGINS.md\n- 插件开发 SDK：https://github.com/Amo-Zeng/AITerminal/blob/main/PLUGIN_SDK.md\n- 参与共建：https://github.com/Amo-Zeng/AITerminal/blob/main/CONTRIBUTING.md\n",
@@ -674,7 +746,7 @@
   {
     "id": 13101,
     "title": "【开源自荐】Token Yugong：愚公移山版 Claude Code / Codex 用量菜单栏桌宠",
-    "content": "## 项目地址\n\nhttps://github.com/s3onghyun/token-yugong\n\n## 简介\n\nmacOS 菜单栏上的像素愚公。他背篓里的土就是你 Claude Code 的 5 小时额度，装满了就坐下打盹、倒计时到重置；你用掉的每个 token 都让大山矮一点。\n\n![Token Yugong](https://raw.githubusercontent.com/s3onghyun/token-yugong/main/docs/hero.gif)\n\n## 为什么做\n\n用 Claude Code 常常是用到一半撞上额度。现成的用量工具多是数字和进度条，我想要一个瞟一眼就懂、看着又不焦虑的样子。愚公移山正好是\"每天挖一点，总会挖完\"的故事。\n\n## 特点\n\n- 只读官方限额（Claude Code 通过 status line 交给本机的 rate_limits、Codex 本机会话日志），没有数据就说\"不知道\"，从不估算\n- 数据只留在本机，无账号、无遥测；联网只有每天一次检查 GitHub 新版本（可关闭），以及你填了 key 时查询 OpenAI 费用或 DeepSeek 余额\n- 智叟、愚公妻子、夸娥氏二子都会登场；用量越多，解锁越多称号\n- 原生 Swift，Apple 芯片和 Intel 通用，可用 Homebrew 安装：`brew install --cask s3onghyun/tap/token-yugong`\n- 界面支持简体中文；代码 MIT，像素美术以代码绘制\n\n我是作者，在 AI 编程助手协助下开发。中文界面为 AI 辅助翻译，欢迎试用和指正。",
+    "content": "## 项目地址\n\nhttps://github.com/s3onghyun/token-yugong\n\n## 简介\n\nmacOS 菜单栏上的像素愚公。他背篓里的土就是你 Claude Code 的 5 小时额度，装满了就坐下打盹、倒计时到重置；你用掉的每个 token 都让大山矮一点。\n\n![Token Yugong](https://raw.githubusercontent.com/s3onghyun/token-yugong/main/docs/hero.gif)\n\n## 为什么做\n\n用 Claude Code 常常是用到一半撞上额度。现成的用量工具多是数字和进度条，我想要一个瞟一眼就懂、看着又不焦虑的样子。愚公移山正好是\"每天挖一点，总会挖完\"的故事。\n\n## 特点\n\n- 只读官方限额（Claude Code 通过 status line 交给本机的 rate_limits、Codex 本机会话日志），没有数据就说\"不知道\"，从不估算\n- 数据只留在本机，无账号、无遥测；联网只有每天一次检查 GitHub 新版本（可关闭），以及你填了 key 时查询 OpenAI 费用或 DeepSeek 余额\n- 智叟、愚公妻子、夸娥氏二子都会登场；用量越多，解锁越多称号\n- 原生 Swift，Apple 芯片和 Intel 通用，可用 Homebrew 安装：`brew install --cask s3onghyun/tap/token-yugong`\n- 界面支持简体中文；代码 MIT，像素美术以代码绘制\n\n我是作者，在 AI 编程助手协助下开发。中文界面为 AI 辅助翻译，欢迎试用和指正。\n\n\n**更新（v0.2.9，2026-11-08）：** 菜单栏动画的 CPU 占用从 31.28%（v0.2.4）降到 0.313%，静止时为 0.015%（M5 Pro 上 `top` 60 秒平均值）；另外新增实验性的 Linux 测试版（AppImage / .deb）。\n",
     "created_at": "2026-11-05T01:37:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13101"
@@ -726,77 +798,5 @@
     "created_at": "2026-11-04T17:58:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13095"
-  },
-  {
-    "id": 13094,
-    "title": "做了个截图解题工具「题伴」，想找一位正在准备笔试的朋友，带一道卡住的题来试",
-    "content": "我是题伴的开发者，正在找第一位愿意拿自己正在练习的题目来体验、告诉我哪里不好用的朋友。\n\n题伴可以接收题目截图或文字，给出答案和解析，支持编程题、选择题、填空和主观题。想先验证一件具体的事：你最近卡住的那道题，能不能通过它看懂思路、继续做下去。\n\n新账号有 10 次体验额度，可以先试，不用先充值。用完后可选次数包：19 元 / 100 次、49 元 / 300 次，无自动续费。\n\n体验入口：https://tiban.momoai.pro/app\n\n**第一次文字或截图练习可直接用网页，不用先安装桌面端或连接电脑。**\n\n1. 点击右上角菜单里的「登录 / 注册」；首次使用再点「免费注册」。题伴和 MomoAI 共用账号；如果页面提示验证邮箱，完成验证后再登录。\n2. 点击「手动输入」，贴一道完整题目，或点「添加图片」上传题目截图。\n3. 点击「获取答案」，查看答案，再核对是否真的解决了你的疑问。\n\n11 月 4 日用编程样题自测，快速版正常返回；深度版遇到了服务错误。这次先体验快速版。\n\n想在电脑上直接读题，也有桌面版；Mac 当前适用于 Apple 芯片，仍为未完成正式开发者认证的预览版，Windows 包尚待实机验证。\n\n试完后，欢迎在本帖回一句：**哪类题、有没有帮到你、卡在哪一步**。不必公开账号邮箱或私人资料。\n\n这是用于日常练习和复盘的工具。AI 答案需要核对，我也想知道它答错或没讲清楚的地方。\n",
-    "created_at": "2026-11-04T16:16:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13094"
-  },
-  {
-    "id": 13093,
-    "title": "【开源自荐】FunFan：按温度规则自动调速的 macOS 风扇工具，退出或崩溃都会把控制权还给系统",
-    "content": "项目地址：[https://github.com/lovexiaov/funfan](https://github.com/lovexiaov/funfan)（MIT）\n下载：[Releases](https://github.com/lovexiaov/funfan/releases)（macOS 13+，Apple Silicon）\n\nFunFan 是 macOS 菜单栏里的风扇控制工具，纯 Swift/SwiftUI、零第三方依赖。同类工具大多给你一个滑块，它给的是一套能自己跑的规则：读 SMC 温度，按「CPU 均温 ≥ 60℃ → 3500 RPM」这样的规则或温度曲线自动调速。\n\n它主要花功夫的地方，是**接管之后怎么安全地放手**：\n\n- **只提速不压低**：所有策略结果都要过一道随温度升高的安全下限，规则写错也降不到系统推荐值以下；只写 `F0Tg`，绝不写 0 RPM，不碰固件推荐区间。\n- **10 秒租约 + 看门狗**：GUI 与特权后台组件之间靠 XPC 心跳续租，App 退出、被 `kill -9`、合盖、租约过期，风扇都会在约 10 秒内回到系统自动控制；合盖链路已在 MacBook Pro M2 真机验证。\n- **四种策略**：自动 / 固定 / 曲线 / 规则，带 40 RPM 死区防抖与曲线斜率限制，转速不会来回跳。\n- **一键诊断**：`funfanctl diagnose` 直接产出可贴进 issue 的 Markdown 报告，含机型、全部 SMC 温度键的可读情况（本机 180 个）、风扇区间与后台组件状态。\n\n顺手记一个 Apple Silicon 的坑：温度键不全是 `flt`，本机有 6 个是 `ioft` 定点类型且必须按有符号解，否则未接探针的哨兵值会算成 2.8e14℃，还会「看起来合法」地骗过合理性过滤。\n\n![菜单栏面板](https://raw.githubusercontent.com/lovexiaov/funfan/main/docs/ui-prototype/popover-actual.png)\n![曲线编辑](https://raw.githubusercontent.com/lovexiaov/funfan/main/docs/ui-prototype/curve-window-actual.png)\n\n目前是 alpha，包未经 Apple 公证，首次打开要在「系统设置 → 隐私与安全性」放行一次；改风扇转速属于直接操作硬件，风险自负，异常时切回「自动」即可。我是作者 @lovexiaov，欢迎试用和提 issue。\n\n视频演示（Bilibili）：[【FunFan】一款轻巧、简洁、功能强大的 macOS 菜单栏风扇控制工具，专为 Apple 芯片 Mac 打造。](https://www.bilibili.com/video/BV1uW4h6GEZq/)\n\n\n",
-    "created_at": "2026-11-04T15:31:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13093"
-  },
-  {
-    "id": 13092,
-    "title": "【工具自荐】Beavery：一段视频挑出多张实况照片、GIF 和原画质照片，一次导出（iPhone / iPad / Mac）",
-    "content": "### 项目地址\n\n- 官网：https://beavery.savetimefor.fun\n- App Store：https://apps.apple.com/cn/app/id6826636404?ct=social-ruanyf （iPhone / iPad / Mac 同一个 App，免费下载，含内购）\n- 30 秒演示视频：https://youtu.be/AGBc4EetiHU\n\n### 项目简介\n\nBeavery 把视频变成实况照片。演唱会、旅行、孩子生日，只管录视频；回来在同一段视频里挑出很多个瞬间，一次全部导出：这段做实况照片，那段做 GIF，再截一帧存原画质照片。\n\n- **慢拖到逐帧**：时间轴慢慢拖会拉长到单帧，停在刚好的那一刻；封面可以选任意一帧。\n- **一次导出多个结果**：每个选区先放进「待导出」，最后一次写进相册。\n- **原样保留**：视频样本直接从源文件拷贝进实况照片，不重新编码，HDR、现场声音、拍摄时间和地点都保留；视频转实况不限时长。\n- **三端一个 App**：Mac 版是原生 Mac App，和 iPhone、iPad 同一个 App Store 条目，买一次通用。\n- **在你的设备上处理**：照片和视频不上传，不用注册账号。\n\n收费：免费下载，一次导出一个结果免费，第一次批量导出也免费；之后一次导出多个结果需要 Pro，终身 ¥38 或年订阅 ¥22。\n\n我是独立开发者，欢迎提意见，尤其是拖时间轴的手感。\n",
-    "created_at": "2026-11-04T15:03:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13092"
-  },
-  {
-    "id": 13091,
-    "title": "【工具自荐】DeepSeek API 费用计算器与中英双语使用指南",
-    "content": "自荐一个已上线的免费工具，帮助开发者把 DeepSeek API 的 token 单价换算成每月用量预算。\n\n中文工具页面为 https://deepseekv5.dev/zh/pricing/ ，英文页面为 https://deepseekv5.dev/en/pricing/ 。\n\n## 能做什么\n\n- 按模型、每次输入和输出 token、每月调用次数估算月费用。\n- 调整输入缓存命中比例，分别显示输入与输出费用。\n- 比较峰时和谷时计费假设。\n- 把模型和用量条件保存在分享链接中，切换中英文时保留这些条件。\n\n计算在浏览器内完成，使用者无需登录或填写 API Key。价格参考链接和核查日期展示在页面中，方便对照官方资料。\n\n例如，准备接入一个日常助手或多步骤工作流时，可以先填入自己的调用量，再调整上下文长度、输出长度和缓存比例，观察预算如何变化。上线后可根据实际用量继续校准。\n\n## 配套资料\n\n网站还提供中英双语的入门、模型比较和访问排查指南，并标明原始信息来源。\n\n费用估算公式与示例也整理成了可直接阅读的文档。\n\nhttps://gist.github.com/suuuuuu-1/1dc984337d9ef2a0cfbc79beebd5c429\n\nDeepSeekV5.dev 是独立维护的指南网站，与 DeepSeek 官方没有隶属关系。欢迎试用和反馈计算过程或文档中的问题。\n",
-    "created_at": "2026-11-04T14:51:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13091"
-  },
-  {
-    "id": 13090,
-    "title": "【工具推荐】Onward：并行管理 AI 编程助手的开源工作台",
-    "content": "推荐一款开源桌面工具 Onward，适合同时使用 Codex、Claude Code 等命令行编程助手的开发者。\n\n它把多个终端、提示词管理和代码审查放在同一个工作台里：可以保存并复用提示词，向多个 Agent 派发任务，在分屏中查看执行过程，再通过内置编辑器查看 Git Diff。项目还提供 onward-bridge，让 Agent 可以读取和操作其他终端，辅助协作。\n\n项目地址：https://github.com/OPPO-PersonalAI/Onward-Agent-Workbench\n\n我写的介绍文章：https://xioacd99.github.io/zh/articles/stop-being-a-human-router-why-i-switched-to-onward/",
-    "created_at": "2026-11-04T14:50:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13090"
-  },
-  {
-    "id": 13089,
-    "title": "【开源推荐】Interline 行间：自带 API Key 的开源 Chrome 双语翻译扩展",
-    "content": "Interline（行间）是一个开源的双语网页翻译 Chrome 扩展，代码以 MIT 许可公开。\n\n项目地址：https://github.com/eigenlux-ai/interline-translator\n官网：https://eigenlux-ai.github.io/interline-translator/\nChrome 商店：https://chromewebstore.google.com/detail/mcefogikngeheopmdmaapfgpnnlgcoid\n\n其特点是翻译引擎不绑定单一服务商：内置 Google 翻译无需 API Key；也可自行配置 API Key，接入 OpenAI、Anthropic、Google Gemini、OpenRouter，或任何兼容 OpenAI / Anthropic 协议的服务，包括本地部署的 Ollama。插件本身不收费，费用取决于所选服务商；翻译请求由浏览器直接发送至服务商，不经过中间服务器，API Key 仅保存在本地。\n\n功能包括：整页翻译将译文按段落插入原文下方，支持双语、仅译文、仅原文三种视图及 10 种译文样式；划词翻译支持查看译文、词汇释义与朗读；在输入框中连按三次空格可将草稿原地翻译为目标语言；支持按站点设置自动翻译或例外，以及为整页翻译指定风格、提示词和术语表；界面提供 12 种语言及深色模式。\n\n技术实现为 Chrome MV3 扩展，使用 WXT、React 与 TypeScript；注入页面的界面位于 Shadow DOM 中，与宿主页面样式隔离。项目包含 800 余个单元测试。\n\n![整页双语对照翻译](https://raw.githubusercontent.com/eigenlux-ai/interline-translator/main/assets/store/zh_CN/screenshot-1-bilingual.png)\n\n![引擎设置：可自行配置 API Key](https://raw.githubusercontent.com/eigenlux-ai/interline-translator/main/assets/store/zh_CN/screenshot-3-settings.png)\n",
-    "created_at": "2026-11-04T14:21:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13089"
-  },
-  {
-    "id": 13088,
-    "title": "项目自荐:Fibo 2 Edit，离线 AI 画图改图工具，自带 PS 插件",
-    "content": "Adobe 原生 PS 的 Firefly 生成式 AI 功能，在国内地区无法直接使用.\nFibo 2 Edit 是一款离线本地 AI 画图改图工具，本站自行开发了配套 Photoshop 插件，\n让国内用户可以在 PS 内使用本地大模型完成 AI 绘图、图片修改、扩图重绘，不依赖云端在线服务。\n\n不使用ps的用户,也可以直接使用浏览器进行文生图或者图片编辑,还支持多图编辑,体积9gb,比其他人打包的20+gb小一半\n\n软件解压即用，无需复杂部署，底层基于 Fibo2.0 Edit Turbo 模型，仅需 4 步即可完成出图，自带大量摄影、修图风格预设与关键词提示词集；\n支持网页端独立使用，也可以作为 PS 插件工作。模型可以跑在本机，也可以部署在内网其他机器 / 服务器，PS 插件通过 7890 端口调用，A 卡电脑也可以网络蹭 N 卡机器运行。\n\n硬件：全量运行显存约 10GB，RTX3060 以上 N 卡最佳，6GB 显存也可以运行，速度会变慢。\n\nhttps://gpcb.net/7212.html",
-    "created_at": "2026-11-04T11:47:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13088"
-  },
-  {
-    "id": 13087,
-    "title": "【开源自荐】流畅阅读 FluentRead：开源的沉浸式双语翻译浏览器插件",
-    "content": "<img width=\"320\" height=\"425\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f1485509-eafa-46a2-bd13-c13861ed8941\" />\n\n**流畅阅读（FluentRead）** 是一款免费、开源的浏览器双语翻译插件，希望让阅读外语网页像阅读母语一样自然。\n\n它能够在保留原网页排版的基础上，实现原文与译文的双语对照阅读，并支持多种翻译服务及 AI 大模型。除网页双语翻译外，还提供以下功能：\n\n- **网页翻译**：双语对照、全文翻译、鼠标悬停翻译和划词翻译。\n- **AI 阅读辅助**：结合上下文解释单词、分析句子，支持连续追问。\n- **图片与文档翻译**：支持图片、PDF、ePub、Word 等内容的翻译与阅读。\n- **视频双语字幕**：支持 YouTube 等平台的双语字幕。\n\n项目基于 GPL-3.0 协议开源，目前已有超过 8,800 个 GitHub Star，支持 Chrome、Edge 和 Firefox 浏览器。\n\n**项目地址**：https://github.com/FluentRead/FluentRead\n\n**官网**：https://read.thinkstu.com/\n\n![流畅阅读网页双语翻译效果](https://raw.githubusercontent.com/FluentRead/FluentRead/main/docs/public/screenshots/translation.webp)",
-    "created_at": "2026-11-04T11:40:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13087"
-  },
-  {
-    "id": 13086,
-    "title": "自荐开源工具 repo-airgap：开源项目隐私外联审计与内网离线化辅助工具",
-    "content": "项目地址：https://github.com/Hero-all/repo-airgap\n\n把 GitHub 开源项目部署到企业内网或私有环境时，经常会遇到后台暗发遥测统计（Telemetry），或者在构建、启动时偷偷联网拉取模型/字体/词表导致断网报错。\n\n`repo-airgap` 是一个纯本地运行的命令行工具兼 AI Agent Skill，用来辅助开源项目的去遥测与内网离线化改造：\n\n1. **自动生成离线环境变量**：识别 Next.js、Gradio、Streamlit、Hugging Face 等 27 个常见框架，自动将缺失的官方关闭遥测与强制离线开关输出为 `.airgap/offline.env`。\n2. **定位外联与暗中下载点**：静态扫描代码中的外联 URL、遥测 SDK 以及 `from_pretrained`、`nltk.download`、Google 字体等运行期联网下载位置。\n3. **可逆补丁改造**：支持配合 Claude Code / Cursor / Codex 等工具对确认需要停用的外联打补丁，并支持随时一键字节级无损回滚。\n\n![预览图](https://raw.githubusercontent.com/Hero-all/repo-airgap/main/assets/workflow-preview.svg)",
-    "created_at": "2026-11-04T10:34:35Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13086"
   }
 ]
