@@ -1,5 +1,37 @@
 [
   {
+    "id": 13188,
+    "title": "【开源自荐】AITerminal：带可扩展插件中心的 AI 运维终端",
+    "content": "阮老师好，自荐一个我维护的开源项目 **AITerminal**：带可扩展插件中心的 AI 运维终端，采用 **Apache-2.0** 协议。\n\n它把本地终端、SSH 和 AI 操作放在同一个桌面界面里。重点是让开发者把自己的运维经验、排障流程和常用工具封装成插件，按需安装、组合和分享。\n\n插件中心目前支持：\n\n- **扩展 AI 和终端能力**：插件可以提供参数化工具、AI 指引、模型适配器、任务事件和界面面板，也能接入标准 MCP 服务（stdio / Streamable HTTP）。例如用 Docker 工作台查看容器状态、执行巡检和读取交互日志，用通知插件订阅任务结果。\n- **开发与分发**：提供插件 SDK、类型定义，以及创建模板、校验、打包命令；支持导入本地开发目录或插件包、配置自定义 HTTPS 插件源和恢复历史版本。\n- **按标签启用**：不同终端标签的插件实例、配置、AI 上下文和任务相互隔离，可以为不同服务器配置不同的工具组合。\n- **可参考的内置插件**：目前有 10 个，包括系统巡检、Docker 工作台、Git 时光机、任务通知，以及无需模型 Key 的终端宠物和运维闯关。既有运维用途，也提供面板、事件和会话状态的开发示例。\n\n应用支持 Windows、Linux 和 macOS；Windows 本地终端默认使用 WSL Ubuntu，当前 macOS 安装包为 Apple Silicon。使用 AI 时配置自己的模型 API，支持 Chat Completions、Responses 和 Messages 格式；也支持 Codex、tmux 等交互式命令。\n\n欢迎试用、反馈问题，也欢迎开发者一起完善插件系统，贡献运维工具、MCP 集成、模型适配器或有趣的小插件。\n\n- 源码与功能演示：https://github.com/Amo-Zeng/AITerminal\n- 三平台安装包：https://github.com/Amo-Zeng/AITerminal/releases/latest\n- 插件使用说明：https://github.com/Amo-Zeng/AITerminal/blob/main/PLUGINS.md\n- 插件开发 SDK：https://github.com/Amo-Zeng/AITerminal/blob/main/PLUGIN_SDK.md\n- 参与共建：https://github.com/Amo-Zeng/AITerminal/blob/main/CONTRIBUTING.md\n",
+    "created_at": "2026-11-08T03:44:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13188"
+  },
+  {
+    "id": 13187,
+    "title": "【开源自荐】AI Frontier Agent：可自部署的 AI 资讯阅读器，提供带原文引用的中英双语简报",
+    "content": "您好，自荐一个我开发的开源项目 **AI Frontier Agent**。\n\n它将分散在官方博客、模型与 API 更新日志、论文和开源社区中的 AI 更新聚合到一起，整理相关报道，并生成带原文引用的中英双语每日简报。读者可以先看简报，再点回原始来源核验。\n\n主要功能：\n\n- 聚合 AI 更新，支持搜索、来源筛选和相关事件整理。\n- 中英双语简报与 RSS 订阅，公开演示无需注册即可阅读文章和简报。\n- 来源健康与新鲜度诊断，方便发现抓取失败和内容停更。\n- Docker Compose 自部署，可配置自己的兼容模型 API；代码采用 Apache-2.0 许可。\n\n这是早期项目，来源访问和生成摘要都可能出错，不保证完整覆盖；自部署的服务器与模型调用费用由部署者承担。\n\n体验：https://ai.zhangyangbin.com/summary?lang=zh\n\n源码与部署说明：https://github.com/nikefd/ai-frontier-agent\n\n![每日简报截图](https://raw.githubusercontent.com/nikefd/ai-frontier-agent/d75987e/docs/images/daily-digest.png)\n\n截图为已有演示页面，实时内容会变化。欢迎试用，也欢迎提出具体的阅读或部署问题。\n",
+    "created_at": "2026-11-08T03:24:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13187"
+  },
+  {
+    "id": 13186,
+    "title": "【开源自荐】Firefly-Agent：融合 Live2D 桌面伴侣与多智能体工作台的本地 AI 助手",
+    "content": "阮老师好，自荐一个我开源的桌面端 AI 项目：**Firefly-Agent**\n\n### 为什么做这个项目？\n市面上现有的桌面宠物大多只能简单闲聊，聊几句就容易“失忆”；而真正能读写文件、改代码、跑终端的 Agent 工具，往往又只是一个冷冰冰的命令行或聊天框。\n我想尝试打破这层割裂：**把「有温度的 Live2D 角色陪伴」和「有严格安全边界的本地多智能体工作台」真正融合进同一个桌面窗口里。**\n\n### 核心工程设计与亮点\n\n1. **Chat / Work / Code 三态同窗与克制陪伴**\n   - 右下角常驻 Live2D 模型，但拒绝做“烦人的弹窗机器”：调用底层工具干活时，她会自动切换成认真的「工作表情」；内置主动关心话题，但如果检测到你在忙未回复，绝不会连续打扰。\n   - 切入 Work 与 Code 模式后，可直接接入本地文件系统、Git、LSP 以及 Obsidian 知识库。\n\n2. **主从式多 Agent 并行委派（1+12 ）协同**\n   - 面对复杂的多步骤任务（如同时统计代码函数、检索多篇本地笔记并交叉比对），主代理（流萤）不再单线程死磕，而是按需从内置的 12 个角色子代理中委派帮手开启子会话并行处理，最后由主代理对照原文做统一核对与汇总。每个子代理均可独立绑定不同的大模型服务。\n\n3. **本地三层加密记忆链与 `d3-force` 记忆星图**\n   - 为了解决桌宠“聊完就忘”和“胡乱幻觉”的问题，所有上下文与事实全部加密落盘在本机 SQLite 中，拆分为 **S（近期语境）/ M（核心事实）/ H（历史检索）** 三层记忆配合 RAG 检索。\n   - 在设置页中，系统会将她记住的关于你的事实，实时渲染成一张以“你”为中心的 `d3-force` 动态记忆关系星图。\n\n4. **“动手之前先问你”：自研 Harness 循环与安全沙箱**\n   - 底层基于 TypeScript 与 Rust 原生辅助模块（`app.rs`）构建，原生支持 MCP 协议（`stdio` / `SSE` / `Streamable HTTP`）与插件扩展。\n   - 所有的文件写入、命令执行、内置浏览器操作均受控于权限拦截器（支持命令审批卡片、目录隔离与 TUN 模式下的 fake-ip 拦截）。执行完毕后，繁琐的调用日志会自动折叠为一行干净的时间线摘要。\n\n5. **零门槛的在线交互预览**\n   - 为了让不想立刻下载安装包的朋友也能直观感受交互逻辑，我复用同一套前端代码构建了免安装的在线体验网页，点开即玩。\n\n### 相关链接\n- **官网**：https://hotarufirefly.online\n- **仓库**：https://github.com/Firefly-0423/Firefly-Agent\n- **演示视频**：https://www.bilibili.com/video/BV1J74q66Ecs/\n\n### 实机与架构预览\n\n<img width=\"1200\" height=\"653\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/926d69c7-001f-4744-a3de-4553645969d0\" />\n\n<img width=\"1200\" height=\"653\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/30ffe3e6-2860-4880-a2b8-ab965a22f81b\" />\n\n<img width=\"1200\" height=\"653\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6791173c-22b2-4d87-bef5-82fa0ad487c3\" />\n\n<img width=\"9602\" height=\"8375\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f19358aa-fa1f-4c02-886e-6a4424f7fd1d\" />\n",
+    "created_at": "2026-11-08T02:39:53Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13186"
+  },
+  {
+    "id": 13185,
+    "title": "【工具自荐】BrewPage：给 AI Agent 用的免费 HTML / Markdown 托管，一次调用返回分享链接",
+    "content": "**项目地址：** https://brewpage.app\n\nAI 写出的 HTML 报告、Markdown 文档或一个小型静态网站，往往需要变成一个链接发给别人看。BrewPage 是一个免费的托管服务，一次 HTTP 请求或一次 MCP 工具调用，就返回一个 HTTPS 分享链接，不需要注册，也不需要 API Key。\n\n- 支持 HTML 页面、Markdown、多文件静态网站（最多 200 个文件、共 20 MB）、任意文件（单个 5 MB），以及 JSON 文档和键值存储。\n- 每次发布返回 `ownerToken`，可以原地更新（链接不变）或删除。\n- 默认 15 天后过期，最长 30 天（登录免费账号可到 90 天），适合临时分享，不是永久存储。\n- 给 Agent 用：npm 包 `brewpage-mcp`（MIT，20 个工具），也可以直接连远程 MCP 端点 `https://brewpage.app/mcp`；OpenAPI 文档：https://kochetkov-ma.github.io/brewpage-openapi/\n\n一条 curl 就能发布：\n\n```bash\ncurl -X POST 'https://brewpage.app/api/html?format=html&ttl=15' \\\n  -H \"Content-Type: application/json\" \\\n  -H \"User-Agent: MyAgent/1.0\" \\\n  -d '{\"content\": \"<h1>Hello, world!</h1>\"}'\n```\n\n（不带 `ns=public` 时为不公开链接；服务本身是闭源托管服务，MCP 服务器与 OpenAPI 仓库开源：https://github.com/kochetkov-ma/brewpage-openapi 。我是作者。）\n",
+    "created_at": "2026-11-07T23:55:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13185"
+  },
+  {
     "id": 13184,
     "title": "【开源自荐】Agent Retry Rodeo：用回放看清 Agent 重试为什么会重复写入",
     "content": "项目：[Agent Retry Rodeo](https://github.com/RishabhPande/agent-retry-rodeo)\n\n我是项目维护者。这个 MIT 开源的 Python 教学实验场，演示一个很容易被“完成了”掩盖的问题：写入已经成功，但确认响应超时，盲目重试反而产生重复评论。\n\n读者可以在浏览器回放中逐步查看工具调用、注入的故障和持久化状态，对比朴素策略与恢复策略。四类故障包括丢失确认、部分成功、版本冲突和无效状态转换，共八次脚本演示；安装后可离线运行，不需要模型 API Key，数据全部是合成的。\n\n```sh\npython -m pip install -e .\nretry-rodeo demo\n```\n\n在克隆的仓库中运行，打开生成的 `rodeo-output/index.html`。也可以直接试用 [公开回放](https://rishabhpande.github.io/agent-retry-rodeo/)。\n\n适合想理解 Agent 工具调用可靠性、或练习写故障场景与状态断言的开发者。可以添加 YAML 任务样例，或接入自己信任的本地 Python 适配器。\n\n边界说明：内置策略是确定性的教学脚本，不是 LLM；这不是实测的模型排行榜，也不提供生产环境的 exactly-once 保证。本地适配器不是沙箱，不要执行陌生人的代码。\n\nEnglish summary: a local, synthetic retry-failure lab with inspectable state and scripted baselines, not a real-LLM performance claim. I maintain the project and am submitting it for editorial consideration.",
@@ -766,37 +798,5 @@
     "created_at": "2026-11-04T10:34:35Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13086"
-  },
-  {
-    "id": 13085,
-    "title": "【开源自荐】WinDiskArchitect：专为现代开发者打造的 Windows 系统盘架构治理与无损瘦身引擎",
-    "content": "## 项目名称\n**WinDiskArchitect (WinDisk)**\n\n## 项目地址\nhttps://github.com/DewellNaa/win-disk-architect\n\n## 项目简介\n专为现代 AI 开发者、工程师与极客量身定制的 Windows 系统盘架构治理与无损瘦身引擎（纯 Python 零依赖 + Windows 原生 API，提供免 Python 单文件绿色版 EXE）。告别 C 盘频繁爆红告警，无感白嫖 10 ~ 20 GB 纯净物理扇区。\n\n## 解决的痛点\n现代开发者和 AI 工程师的 Windows 系统盘（C 盘）常年处于爆红边缘。在日常使用 `uv`、`npm`、`_npx`、`Playwright` 自动化浏览器、`Docker`、`HuggingFace` 模型以及 VS Code / 派生 IDE 自动更新的过程中，系统盘会被数以万计的碎片文件蚕食殆尽。\n\n传统的“电脑管家/清理软件”往往治标不治本：\n1. **对现代开发栈完全失明**：只扫浏览器 Cookie 和回收站，对 `_npx`（几吉字节的临时依赖包）、Playwright 多版本自动化浏览器内核等真正的空间吞噬大户视而不见；\n2. **非黑即白的“暴力硬删”**：面对软件写死在 C 盘的 `AppData`，要么不敢动，要么一删就导致软件损坏报错；\n3. **完全无视操作系统底层架构**：不懂得启用微软原生硬件级无损压缩（`CompactOS`），不懂得通过 NTFS Junction 跨卷外迁，更不懂得分区物理拓扑与驱动白名单保护。\n\n为了彻底解决自己的 C 盘空间焦虑，开发了这套系统级工程治理工具。实测在本人 120GB 爆红 C 盘上，安全回收了整整 14GB 可用空间（可用空间从 12GB 翻倍至 26GB+）。\n\n## 核心技术特色\n1. **现代 AI 与全生态开发栈原生自愈**：\n   - 定向穿透清理常规工具漏掉的 `AppData\\Local\\npm-cache\\_npx` 隐蔽临时依赖包；\n   - 自动淘汰清理 Playwright 历史版本 Chromium/Firefox/WebKit 内核，只保留最新活跃版本；\n   - 一键自愈 `uv`、`pnpm`、`pip`、更新器离线安装包（crx_cache / MSI）与非活动锁定临时文件。\n2. **AppData 大目录结构性无感外迁 (NTFS Junction)**：\n   - 面对占用巨大的软件数据（如 Qoder、Playwright、各类浏览器），采用 `robocopy /E /MOVE /R:1 /W:1` 绕过 Windows Git 只读对象锁定，物理平移至空间充裕的非系统盘（自动识别最大剩余分区，如 `D:\\`），并原子级建立底层 NTFS Junction 目录联接（`mklink /J`）。软件原位读写，完全无感知、零报错。\n3. **微软官方 CompactOS 硬件级透明无损压缩**：\n   - 一键调度 Windows 10/11 底层 LZMS 算法，对系统二进制文件进行透明高比率压缩（实测 1.6:1），零 CPU 与磁盘性能损耗，直接白嫖 3 ~ 5 GB 纯净空间。随时可一键 `compact /compactos:never` 完美复原。\n4. **显卡与系统核心驱动防误删白名单**：\n   - 穿透诊断 `DriverStore` 驱动仓库。智能识别当前正在实时驱动屏幕显示的显卡主驱动（如 AMD 核显 / NVIDIA 驱动），对总大小 < 1.5GB 的健康系统实施硬拦截，杜绝民间清理工具强删驱动引发的黑屏灾难。\n5. **强制 100% 后悔药保障 (SendToRecycleBin)**：\n   - 绝对禁止不可逆的暴力硬删。所有清理动作均通过 Windows Shell 原生 COM 接口送入系统回收站，并在原位自动生成 `_RECOVERY_MEMO_*.txt` 恢复备忘录，随时可在桌面回收站一键右键还原。\n6. **双发布形态（开箱即用）**：\n   - 开发者模式：`pip install win-disk-architect`，随时在终端敲 `windisk diagnose` 或 `windisk clean`；\n   - 小白免安装绿色版：通过 GitHub Actions CI/CD 全自动编译为单文件绿色免安装版 `WinDiskArchitect.exe`，右键以管理员运行直接体检与自愈。\n\n开源遵循 MIT 协议，代码零外部重型依赖。希望能帮助到饱受 C 盘空间困扰的 Windows 开发者与打工人！\n",
-    "created_at": "2026-11-04T10:19:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13085"
-  },
-  {
-    "id": 13084,
-    "title": "【开源自荐】agent-graph：用 git graph 代替会话列表，管理同时在跑的多个编程 agent",
-    "content": "源码（MIT）：https://github.com/jihe520/agent-graph\n在线预览：https://jihe520.github.io/agent-graph/\n\n同时跑好几个 Claude Code、Codex 这样的编程 agent 时，会话列表很难看清：谁在哪个分支、哪个 worktree 上改代码，谁在等你批准，谁做完了可以合并。\n\nagent-graph 是一次交互探索：把 agent 开发环境的主视图换成 git graph，agent 挂在它所在的分支上显示状态，批准和合并在图上就地处理，会话退到侧栏。仓库里是设计规范、一份给 agent 的实现提示词和一个单文件原型（数据是模拟的）。在能改源码的 ADE 里把提示词发给 agent，就能照着实现。\n\nhttps://github.com/user-attachments/assets/123cfb00-07ef-4b2b-b531-33635909f158\n",
-    "created_at": "2026-11-04T10:04:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13084"
-  },
-  {
-    "id": 13083,
-    "title": "终端显示，会闪烁",
-    "content": "在打印日志，往上调一点日志，再看中间的日志，有新日志输入之后就会一直闪烁，tail -f命令",
-    "created_at": "2026-11-04T10:03:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13083"
-  },
-  {
-    "id": 13082,
-    "title": "终端显示，会闪烁",
-    "content": "在打印日志，往上调一点日志，再看中间的日志，有新日志输入之后就会一直闪烁，tail -f命令",
-    "created_at": "2026-11-04T09:59:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13082"
   }
 ]
