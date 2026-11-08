@@ -1,5 +1,13 @@
 [
   {
+    "id": 13203,
+    "title": "【开源自荐】Read the Loop：用真实录制的 Claude Code 会话，图解 AI 编程智能体如何工作",
+    "content": "![第一章：小游戏的 bug、智能体的循环、修好之后](https://raw.githubusercontent.com/candygoogy/read-the-loop/master/media/hero-zh.gif)\n\n**Read the Loop**：一个交互式网站，用真实录制的 Claude Code 会话，一步步图解 AI 编程智能体是怎么干活的。\n\n- 网址：https://loop.candygoogy.dev/zh/\n- 源码和录制数据：https://github.com/candygoogy/read-the-loop\n\n从「帮我修这个 bug」到「修好了」之间，智能体其实是在一个循环里：模型提出请求，外壳程序（harness）去运行，再把结果贴回对话，模型每次都把整段对话从头读一遍。网站目前有五章，中英双语：\n\n1. 智能体就是一个循环：一个打砖块小游戏，球会从挡板右半边穿过去，Claude Code 用 5 次调用、26.5 秒修好。第一轮由读者自己当外壳程序。\n2. 上下文窗口：给它 black 的一个真实 issue，44 次调用，整场会话累计读了 148 万多个 token。\n3. 缓存：其中 96.5% 来自缓存。按公开价格算，有缓存 1.20 美元，没有缓存 6.43 美元。\n4. 压缩：把这段对话压缩成摘要之后，它还记得什么、忘了什么。\n5. 工具与权限：Claude Code 实际发给模型的工具说明，以及外壳程序拒绝了哪些命令。\n\n页面上的数字、命令和模型写的每一句话，都是从录制文件里读出来的，不是手写的。网站本身是用 Claude Code 做的，中文由 Claude 翻译。\n",
+    "created_at": "2026-11-08T19:28:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13203"
+  },
+  {
     "id": 13202,
     "title": "【开源自荐】移ろい：滚动条就是时钟，在浏览器里走过一座京都宅院的一天",
     "content": "做了一个网页，滚动条就是时钟。\n\n页面是京都北边山里的一座宅子和庭院，从天亮前的院门走到夜里的锦鲤池，一共 14 个停留点，由一条连续的镜头路径串起来。往下滚一格，太阳就往前走一段；停下来不动，光也照样在变。按 1 到 4 可以切四季：春天落花，夏夜溪边有萤火虫，秋天枫叶变红往下掉，冬天屋顶和石灯笼上积雪，锦鲤沉到池底。\n\n![从 04:45 到 21:00 的池边](https://raw.githubusercontent.com/billpwchan/utsuroi/main/docs/media/day.webp)\n\n石头、树、灯笼、茶碗都是真实物件的扫描。房子是代码按京间尺寸生成的（一间 1.82 米，柱 12 厘米），四翼、入母屋瓦顶、障子和襖都有。屋里的光用 Blender Cycles 离线路径追踪，烤了早上六点到傍晚六点的七个太阳位置，页面按当前时刻在两份烘焙之间混合，所以房间里的光会跟着窗外的天色慢慢变。\n\n![四季](https://raw.githubusercontent.com/billpwchan/utsuroi/main/docs/media/seasons.jpg)\n\n声音全是实时合成，没有下载任何音频文件：风、竹子、溪水、蹲踞的滴水，春天清晨的树莺、夏天的蝉、夜里的铃虫，铁壶烧水的“松风”，走廊的莺张地板（踩上去会像鸟叫一样吱吱响），还有日出日落时远处的寺钟。按 P 进拍照模式，会印一张明信片。\n\n纯 three.js r186，没有用游戏引擎。电脑和手机都能打开，不用下载也不用登录。代码 MIT 协议。\n\n在线体验：https://utsuroi.billpwchan.art\n\n项目地址：https://github.com/billpwchan/utsuroi\n",
@@ -426,7 +434,7 @@
   {
     "id": 13149,
     "title": "【开源自荐】ManaWG：可自托管的合租室友应用（账单分摊、打扫轮值、购物清单、聊天）",
-    "content": "- 项目地址：https://github.com/Abuarchiv/manawg\n- 免登录试用：https://manawg.com/en/demo\n- 许可：Apache-2.0\n\n面向合租室友的开源应用，把账单分摊、打扫轮值、共享购物清单、日历、留言板和群聊放在同一个应用里。\n\n可以用 Docker Compose 自托管（支持 amd64 和 arm64，约 500 MB 内存），也可以作为 PWA 安装，离线时的操作会排队，恢复后不重复提交。金额全部按整数分存储，分摊结果总能加回总额。界面目前只有德语和英语。\n\n我是作者，欢迎试用和反馈。\n\n![ManaWG](https://raw.githubusercontent.com/Abuarchiv/manawg/main/docs/screenshots/features-light.webp)\n",
+    "content": "- 项目地址：https://github.com/Abuarchiv/manawg\n- 免登录试用：https://manawg.com/en/demo\n- 许可：Apache-2.0\n\n面向合租室友的开源应用，把账单分摊、打扫轮值、共享购物清单、日历、留言板和群聊放在同一个应用里。\n\n可以用 Docker Compose 自托管（支持 amd64 和 arm64，约 500 MB 内存），也可以作为 PWA 安装，离线时的操作会排队，恢复后不重复提交。金额全部按整数分存储，分摊结果总能加回总额。界面目前有德语和英语，西班牙语已合并到主分支，将随下一个版本发布。可以导入 Splitwise 和 Splid 导出的 CSV，Tricount 和 Settle Up 的导入同样已合并到主分支，将随下一个版本发布。\n\n我是作者，欢迎试用和反馈。\n\n![ManaWG](https://raw.githubusercontent.com/Abuarchiv/manawg/main/docs/screenshots/features-light.webp)\n",
     "created_at": "2026-11-06T13:13:23Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13149"
@@ -790,13 +798,5 @@
     "created_at": "2026-11-05T01:37:17Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13101"
-  },
-  {
-    "id": 13100,
-    "title": "【网站自荐】bookgalaxy：书籍信息组成的银河",
-    "content": "基于豆瓣数据，书籍组成的星空。 https://bookgalaxy.love/\n每本书都是一颗星星，人数越多，评分越高星星越亮，这里人数的权重大于评分，避免人少出现的刷分。\n书籍间的连线表示看过这本书的人还喜欢哪些，想营造出类似组成“星座”的感觉，滚轮滚动可以看到更深层次的书籍。\n可以在页面上留下自己的邮箱，可以定期获取我的书籍推荐。\n",
-    "created_at": "2026-11-04T23:23:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13100"
   }
 ]
