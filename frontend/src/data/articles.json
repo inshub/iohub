@@ -1,5 +1,29 @@
 [
   {
+    "id": 13238,
+    "title": "【工具自荐】Everygen AI：把文字或参考图片快速做成短视频",
+    "content": "Everygen AI 是一个把文字或参考图片转换为短视频的工具，适合把产品想法、教程步骤或创意草图快速做成可预览的视觉内容。\n\n生成前可以先查看可用模型/模板与预计积分消耗，再决定是否生成，便于控制迭代成本。\n\n官网：https://everygenai.org/\n\n作者：Everygen AI",
+    "created_at": "2026-11-09T21:36:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13238"
+  },
+  {
+    "id": 13237,
+    "title": "[工具自荐] FlyDesk 飞桌：面向手机操作电脑与多设备协作的远程工具，邀请体验反馈",
+    "content": "大家好，我们是 FlyDesk 飞桌的开发团队，向周刊自荐这款正在持续完善的远程操作工具，也希望邀请有实际需求的朋友参与体验并反馈问题。\n\n官网与下载：https://desk.flychat.work/#downloads\n\n适用场景：在手机上临时操作自己的电脑、多设备切换，以及经对方明确授权后的远程协助。\n\n当前提供：\n- 通过设备 ID 与访问码连接。\n- 手机触控、键盘操作，以及设备管理和云收藏。\n- 官网目前已提供 Windows、Apple 芯片 Mac 和 Android 安装包；iPhone / iPad 的公开入口尚未开放，请以官网下载页实际发布为准。\n\nFlyDesk 基于 QuickDesk 持续开发，包含 VIP 付费权益，具体功能和权益以产品页面为准。\n\n我们尤其希望收到连接流程、网络切换、手机拖选和滚动、键盘输入以及错误提示方面的具体反馈。欢迎附系统、应用版本、操作步骤、实际表现和预期表现；请不要公开设备访问码、密码或个人信息。\n\n桌面端实际组件界面（演示账号和设备数据）：\n![FlyDesk 桌面界面，演示数据](https://desk.flychat.work/site/app-desktop.png)\n\n手机端实际组件界面（演示账号和设备数据）：\n![FlyDesk 手机界面，演示数据](https://desk.flychat.work/site/app-mobile.png)\n\n开发方产品介绍与体验招募：https://zhuanlan.zhihu.com/p/2103291767672026342\n\n感谢审阅，也欢迎直接指出产品不足。\n",
+    "created_at": "2026-11-09T17:18:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13237"
+  },
+  {
+    "id": 13236,
+    "title": "【开源自荐】CutVoke：AI 和人共用同一条可编辑时间线的本地视频剪辑器",
+    "content": "项目地址：https://github.com/frankShan001/CutVoke\n\nCutVoke 是一个开源（MIT）、本地运行的视频编辑器。编辑器界面、MCP server、HTTP API 和命令行读写同一个工程：可以让 Claude Code、Codex、Cursor 等 AI Agent 通过 MCP 剪出初稿，再在多轨时间线上手动修改字幕、片段和关键帧，最后导出 MP4 或可继续编辑的工程包。\n\n- 编辑器不内置大模型，素材留在本机\n- 编辑租约、命令预演、批量一次撤销，避免 AI 改坏工程\n- preview_frames 返回真实渲染画面，AI 可以自己检查成片\n- 内置 FFmpeg，Windows / macOS / Linux 下载即用\n\n截图：\n![](https://raw.githubusercontent.com/frankShan001/CutVoke/main/docs/images/readme/zh-CN/editor-overview.png)",
+    "created_at": "2026-11-09T16:50:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13236"
+  },
+  {
     "id": 13235,
     "title": "【开源自荐】Rind：可解释、可撤销的开源 macOS 卸载与清理工具（Rust + GPUI）",
     "content": "项目地址：https://github.com/ahjdzx/rind （我是作者）\n\n## 项目简介\n\nRind 是一个开源的 macOS 卸载与清理工具（GPL-3.0），用 Rust 编写，界面基于 GPUI（与 Zed 同一套渲染引擎），要求 macOS 14+。\n\n它解决的具体问题：卸载一个 App 时，它散落在 ~/Library 各处的残留文件往往清不干净。Rind 把残留找出来之后，会逐个文件说明它为什么属于这个 App、有多大把握（bundle id、App Group、签名 Team、Homebrew cask 的 zap 段、pkg 回执等都会作为证据），确认之后再移入废纸篓。\n\n三个设计重点：\n\n- 可解释：每个文件都带证据和置信度（certain / likely / possible），可以逐条核对再决定勾选。\n- 可撤销：所有删除只移入废纸篓，History 里一键放回；`--dry-run` 预演与真实执行走同一条路径，结果一致。\n- 保守默认：iCloud、钥匙串、SSH/GPG 密钥、邮件、照片图库、含钱包的浏览器 profile 等保护区永远无法选中。\n\n功能：应用卸载与残留、孤儿文件、缓存与开发产物清理、磁盘空间分析、启动项管理；自带 12 个子命令的 CLI（全部支持 `--json`，移动类支持 `--dry-run`）；无账号、无遥测、无常驻进程。\n\n现状：v0.2.0（2026-11-09），DMG 见 Releases（ad-hoc 签名未公证，首次打开需右键）；自动化测试 270+，CI 全绿。\n\n## 项目截图\n\n![总览](https://raw.githubusercontent.com/ahjdzx/rind/main/docs/images/zh/overview.jpg)\n\n![应用卸载](https://raw.githubusercontent.com/ahjdzx/rind/main/docs/images/zh/apps.jpg)\n\n动图（全部页面）：https://raw.githubusercontent.com/ahjdzx/rind/main/docs/images/zh/demo.gif\n",
@@ -18,7 +42,7 @@
   {
     "id": 13233,
     "title": "【开源自荐】Cyber API：Rust + GPUI 构建的原生 API 客户端",
-    "content": "项目地址：https://github.com/vicanso/cyberapi\n\n## 项目简介\n  Cyber API 基于 Rust 编写，UI 层使用了与 Zed Editor 同款的渲染引擎 GPUI。这意味着 Cyber API 的每一个像素都是由 GPU 直接绘制的，告别了 Electron\n  的内存占用与卡顿，带来了原生、60 FPS 丝般顺滑的 API 调试体验；同时同一份代码既能构建原生桌面版，也能编译为 WebAssembly 作为团队网页版自行部署。\n\n  核心特性一览\n  🚀 极速渲染：告别 HTML/CSS 的重绘负担，不是 Electron 也不套壳网页，数千个接口的大型项目也能秒开，大体积响应报文依然流畅不卡顿。\n\n  🧩 全协议覆盖：一套工具搞定各类接口调试：\n\n  - 支持标准 REST 请求（JSON、表单、Multipart、XML 等）与直接粘贴 cURL 导入。\n\n  - 支持 GraphQL（拉取 Schema 自动补全查询、错误行定位与流式订阅）。\n\n  - 支持 gRPC（支持 Server Reflection 反射或导入 .proto 文件，覆盖一元与流式调用）。\n\n  - 支持 WebSocket 双向通信与 SSE（text/event-stream）流式实时输出，非常适合调试大模型流式接口。\n\n  🔍 请求与响应深度洞察：\n\n  - 耗时拆解：清晰展示 DNS、TCP、TLS、服务器处理和传输各阶段耗时，实际发出的原始报文原样可查。\n\n  - 智能视图：JSON/NDJSON 支持树形浏览与 JSONPath 过滤；图片二进制流直接预览；内置历史记录与响应 Diff 对比。\n\n  - 自动化验证：支持响应断言、JSON Schema 校验、Mock 服务与接口压测，并可通过 cyberapi-cli 在终端或 CI 中直接运行检查。\n\n  🔗 高效联动与无痛迁移：\n\n  - 支持多环境切换（可标记生产环境防误触）、目录级认证/变量继承，还能用 {{g(接口, data.token)}} 直接引用其他接口的响应字段，告别手动复制粘贴。\n\n  - 兼容导入 Postman、Insomnia、Hoppscotch、Bruno、OpenAPI/Swagger、HAR 等格式；绑定 OpenAPI 地址后可随时增量同步，自动保留本地已填参数与密钥。\n\n  🤖 AI 助手与团队协作：内置 MCP Server，Claude Code、Cursor 等客户端可直接读取接口（敏感值自动打码）并按权限辅助调试；网页版支持 Docker\n  一键自托管，桌面版登录后可离线编辑、按需同步并查看历史版本对比。\n\n  💻 全平台支持：支持 macOS、Windows 和 Linux（均可在 GitHub Release 下载），同时提供 Docker 镜像支持私有化 Web 部署（在线体验：https://cyberapi.pingap.io/ ）。\n\n## 项目截图\n\n\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6554866d-51a5-4e51-9748-64661a78eb66\" />",
+    "content": "项目地址：https://github.com/vicanso/cyberapi\n\n## 项目简介\n  Cyber API 基于 Rust 编写，UI 层使用了与 Zed Editor 同款的渲染引擎 GPUI。这意味着 Cyber API 的每一个像素都是由 GPU 直接绘制的，告别了 Electron\n  的内存占用与卡顿，带来了原生、60 FPS 丝般顺滑的 API 调试体验；同时同一份代码既能构建原生桌面版，也能编译为 WebAssembly 作为团队网页版自行部署。\n\n  核心特性一览\n  🚀 极速渲染：告别 HTML/CSS 的重绘负担，不是 Electron 也不套壳网页，数千个接口的大型项目也能秒开，大体积响应报文依然流畅不卡顿。\n\n  🧩 全协议覆盖：一套工具搞定各类接口调试：\n\n  - 支持标准 REST 请求（JSON、表单、Multipart、XML 等）与直接粘贴 cURL 导入。\n\n  - 支持 GraphQL（拉取 Schema 自动补全查询、错误行定位与流式订阅）。\n\n  - 支持 gRPC（支持 Server Reflection 反射或导入 .proto 文件，覆盖一元与流式调用）。\n\n  - 支持 WebSocket 双向通信与 SSE（text/event-stream）流式实时输出，非常适合调试大模型流式接口。\n\n  🔍 请求与响应深度洞察：\n\n  - 耗时拆解：清晰展示 DNS、TCP、TLS、服务器处理和传输各阶段耗时，实际发出的原始报文原样可查。\n\n  - 智能视图：JSON/NDJSON 支持树形浏览与 JSONPath 过滤；图片二进制流直接预览；内置历史记录与响应 Diff 对比。\n\n  - 自动化验证：支持响应断言、JSON Schema 校验、Mock 服务与接口压测，并可通过 cyberapi-cli 在终端或 CI 中直接运行检查。\n\n  🔗 高效联动与无痛迁移：\n\n  - 支持多环境切换（可标记生产环境防误触）、目录级认证/变量继承，还能用 {{g(接口, data.token)}} 直接引用其他接口的响应字段，告别手动复制粘贴。\n\n  - 兼容导入 Postman、Insomnia、Hoppscotch、Bruno、OpenAPI/Swagger、HAR 等格式；绑定 OpenAPI 地址后可随时增量同步，自动保留本地已填参数与密钥。\n\n  🤖 AI 助手与团队协作：内置 MCP Server，Claude Code、Cursor 等客户端可直接读取接口（敏感值自动打码）并按权限辅助调试；网页版支持 Docker一键自托管，桌面版登录后可离线编辑、按需同步并查看历史版本对比。\n\n  💻 全平台支持：支持 macOS、Windows 和 Linux（均可在 GitHub Release 下载），同时提供 Docker 镜像支持私有化 Web 部署（在线体验：https://cyberapi.pingap.io/ ）。\n\n## 项目截图\n\n\n<img width=\"1600\" height=\"1000\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6554866d-51a5-4e51-9748-64661a78eb66\" />",
     "created_at": "2026-11-09T13:36:48Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13233"
@@ -778,29 +802,5 @@
     "created_at": "2026-11-06T06:57:57Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/pull/13139"
-  },
-  {
-    "id": 13138,
-    "title": "【开源自荐】经典电影台词，学英语， WEB版开源， docker一键部署，即开即用！",
-    "content": "开源地址： \n\nhttps://github.com/zhaoolee/piclex-web/\n\n在线体验直达地址：\n\nhttps://piclex.v2fy.com/piclex-web/#/deck/b33417a7-0f7e-4081-be35-2fe44d9d30c4?module=spelling&photo=2&word=9c936733-aaf4-4e93-a58b-8f968797b77b%3A0\n\n\n\n\n<img width=\"924\" height=\"1720\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/36900e7f-3f5e-46af-a5e8-2c89b1a96c12\" />\n\n\n<img width=\"894\" height=\"1724\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/f8b4e12c-e69a-4b24-8b65-6619aced4856\" />",
-    "created_at": "2026-11-06T04:58:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13138"
-  },
-  {
-    "id": 13137,
-    "title": "【开源工具】MiniToolDesk: 100% 浏览器本地运算、零数据上传的极客开发者工具箱",
-    "content": "## 软件名称\nMiniToolDesk (https://minitooldesk.com/)\n\n## 核心特点与解决痛点\n日常开发中，工程师经常需要使用 JSON 格式化、代码/文本比对、Hash 计算等小工具，但市面上大量在线工具广告泛滥，甚至将敏感数据上传到第三方后端，存在极大的数据泄露隐患。\n\nMiniToolDesk 采用严格的“100% 浏览器本地计算”架构：\n1. **零服务端数据交互**：利用 Web Crypto API、HTML5 Canvas 和 Web Workers，所有计算与转换均在本地内存中完成，断网可正常使用。\n2. **多语言矩阵与侧边栏支持**：支持中文、英文、日文等 7 种语言，支持 PWA 离线运行，并提供专属 Chrome/Edge 侧边栏扩展（Alt+M 随手呼出，无需频繁切屏）。\n3. **内置 AI 数据脱敏与 AST 矩阵**：提供专用的本地 Prompt 脱敏工具（向 ChatGPT 提问前一键屏蔽 API Key 与敏感数据），以及 JSON 一键转 Zod / Go Struct / Pydantic 等类型定义。\n4. **全套免费无广告**：界面参考 Raycast / Linear 设计规范，零弹窗、零强制注册。\n\n欢迎体验与交流：https://minitooldesk.com/",
-    "created_at": "2026-11-06T04:11:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13137"
-  },
-  {
-    "id": 13136,
-    "title": "【开源自荐】小维助手：在 Android 手机上运行 Pi / DeepSeek Harness 的 AI Agent",
-    "content": "https://github.com/zjw1918/WeiAssist\n\n开源的 Android AI 助手，内置 Pi 引擎，也可一键安装 DeepSeek Harness（支持子 Agent）。\n能跑 Linux 命令、操作手机 App、用 Telegram 远程指挥，无服务器，密钥只在本机。",
-    "created_at": "2026-11-06T04:11:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13136"
   }
 ]
