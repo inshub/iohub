@@ -1,5 +1,61 @@
 [
   {
+    "id": 13278,
+    "title": "【自荐】Davish：无需 Agent 的桌面版 SSH 服务器管理工具（开源）",
+    "content": "**项目地址**：https://github.com/2hjaito/davish\n\n**简介**：Davish 是一个开源（GPL-3.0）的跨平台桌面应用，通过普通 SSH 管理 Linux 服务器，服务器端不需要安装任何 Agent，直接使用本机的 `~/.ssh/config` 和密钥。\n\n界面模仿桌面操作系统（菜单栏、Dock、可拖拽和分屏的窗口，支持深色模式），内置约 20 个应用：终端、SFTP 文件管理和编辑器、CPU/内存/磁盘实时监控、Docker、日志、Nginx、Cron、服务管理、端口与 ufw 防火墙、SSH 登录安全分析等。\n\n技术栈：Go + Wails（后端），Svelte 5（前端），支持 Windows、macOS、Linux。\n\n**截图**：\n\n![Davish](https://github.com/2hjaito/davish/raw/main/assets/screenshots/zh/desktop.png)\n\n我是作者，欢迎试用和反馈，谢谢！",
+    "created_at": "2026-11-11T04:54:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13278"
+  },
+  {
+    "id": 13277,
+    "title": "【开源自荐】imagegen-swarm：把六个图像引擎放进同一条队列（Claude Code / Codex 技能）",
+    "content": "自荐一个开源项目 **imagegen-swarm**：给 Claude Code 和 Codex 用的技能，把一批图同时交给 Codex、即梦（Jimeng）、Grok、Gemini、Muse 和 Lovart。每个图像工具都有自己的额度，按周或按月重置，常常用不完；单独用一个引擎又慢，额度用尽整批就会停。这个技能把六个引擎放进同一条队列，空闲的引擎接下一张图。\n\n项目地址：https://github.com/Ekko237/imagegen-swarm\n\n![50 张图用了 2.3 分钟，比单引擎快 11 倍，在 8 GB M1 MacBook Pro 上（一次实测）](https://github.com/Ekko237/imagegen-swarm/raw/main/docs/efficiency.png)\n\n主要特点：\n\n- 六个引擎一起跑，各开几条通道，空闲通道接下一个能处理的任务。只需登录其中一个即可，每多一个引擎，整批会更快。\n- 某个引擎报告额度用尽、没有登录或没有安装时，会把它关掉，任务退回队列，换还没试过的引擎重试（默认最多 3 个）。\n- 会检查每张图是这次新生成的；比例不对会换引擎重做；输出是真正的 PNG。同一份任务列表再跑一遍，已完成的图会跳过。\n- 通道数按内存调整：4 GB 电脑 12 条，16 GB 及以上 34 条。\n- 多数引擎不需要图像 API Key：Codex 和即梦用已有账号；Grok、Gemini、Muse 用各自登录；只有 Lovart 用官方 AK/SK，保存在本机。即梦还可以生成视频。\n- README 里有一次实测：在 8 GB M1 MacBook Pro 上，50 张图用了 2.3 分钟，比单独用一个引擎快 11 倍。这只是一次测试，速度取决于各引擎当时还有多少额度；那次 Lovart 和 Muse 用的是免费套餐，Gemini 和 Lovart 中途额度用尽。\n\n安装（还需要 Node.js 18+，以及带 Pillow 的 Python 3：`python3 -m pip install pillow`。生成前至少登录一个引擎）：\n\n```bash\nclaude plugin install imagegen-swarm --marketplace Ekko237/imagegen-swarm\n```\n\n```bash\ncodex plugin marketplace add Ekko237/imagegen-swarm\ncodex plugin add imagegen-swarm@imagegen-swarm\n```\n\n```bash\nnpx skills add https://github.com/Ekko237/imagegen-swarm -a claude-code -a codex\n```\n\n开源许可证：MIT。\n",
+    "created_at": "2026-11-11T03:56:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13277"
+  },
+  {
+    "id": 13276,
+    "title": "【开发者自荐】摄秘 SheMi：iPhone 隐私相机，拍照不进系统相册",
+    "content": "摄秘（SheMi）是一款 iPhone 隐私相机。和「先拍后藏」的加密相册不同，它的拍摄入口就在 App 内：按下快门，照片直接存入 App 私有沙盒，不进系统相册、不参与 iCloud 同步，也不上传任何服务器。\n\n- 密码 + Face ID / Touch ID 解锁，凭据存 Secure Enclave\n- 替身相册：替身密码进入另一套相册\n- 拍摄/导入自动剥离 EXIF 位置与机型信息\n- 导出三路径：系统相册 / ZIP / 局域网\n- 无账号、无广告，除用户主动反馈外不收集数据\n\n定价：30 天免费试用，之后 ¥39 一次买断（当前首发价）。\n\n官网：https://www.ruisstech.com/shemi/\nApp Store：https://apps.apple.com/cn/app/id6823223493\n\n我是开发者，欢迎反馈。\n",
+    "created_at": "2026-11-11T03:30:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13276"
+  },
+  {
+    "id": 13275,
+    "title": "【开源自荐】Helmp：读起来像 help me 的 macOS 启动器，截图识字、剪贴板、翻译都在一个面板里",
+    "content": "Helmp 是我用 Rust 写的 macOS 启动器，名字读起来像 \"help me\"。按 ⌥Space 唤起一个面板，可以搜应用、文件和系统设置，也能在里面直接做几件日常小事：\n\n- 应用搜索支持拼音和首字母（输入 wx 找到微信），名字里有空格、连字符也不影响匹配。\n- 剪贴板历史：单击看详情，双击复制。\n- 截图（⇧⌘1）先冻结屏幕再框选，选区可以调整，右下角可以保存、复制、钉在桌面上。截图识字（⇧⌘2）松开鼠标就出结果，文字自动复制，用的是系统自带的 Vision，离线识别。\n- 翻译：接你自己的模型 API Key，Key 存在系统钥匙串里。\n- 插件：用一个 plugin.json 声明命令（打开链接、调用 HTTP 接口、运行脚本），比如几行配置就能把文字发到 flomo。有插件中心，也可以让 Claude Code 直接帮你写插件。\n- 自带 MCP 服务：Claude Code 等 coding agent 可以调用 Helmp 的功能，有副作用的操作会先在面板里请你确认。\n\n![Helmp](https://blog.peterchen97.cn/helmp/assets/shots/apps-zh-light.png)\n\n项目以 MIT 协议开源，免费使用。安装包已签名并通过 Apple 公证，支持 macOS 15 及以上。内置自动更新，国内从七牛下载，不需要翻墙。\n\n主页：https://blog.peterchen97.cn/helmp/\n源码：https://github.com/PeterChen1997/helmp\n下载：https://github.com/PeterChen1997/helmp/releases/latest （国内：https://blog.peterchen97.cn/helmp/releases/0.4.1/Helmp-0.4.1.dmg ）\n作者博客：https://blog.peterchen97.cn\n\n欢迎在 GitHub Issues 里反馈问题和建议。\n",
+    "created_at": "2026-11-11T03:20:22Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13275"
+  },
+  {
+    "id": 13274,
+    "title": "【开源自荐】ast-bro v4.3.0 支持 windows",
+    "content": "这次的重点是 windows 支持,顺便把搜索重写了一遍\n\nwindows x64 现在是正式支持的平台了,npm install -g @ast-bro/cli 或者 uv tool install ast-bro 直接就能装,第一次运行会自动下载 ci 测试过的二进制并按版本缓存,也不用额外装 visual c++ 运行库\n\n语义搜索重写了,切块跟着声明走,不再按字节数硬切,排序时先用文件大纲给文件打分再排代码块,同一个查询每次结果都一样,每条结果还带字节偏移\n\n不再悄悄截断,deps, reverse-deps, impact, trace 被 --depth 截断时会明确告诉你,以前一个有 54 个导入方的文件,depth 1 的 reverse-deps 只报 33 个,还什么提示都没有\n\nread hook 也升级了,文件太大被 claude code 直接拒绝读取的时候,agent 现在能拿到一份地图,而不是一个光秃秃的报错,地图太长时会优先保住公开接口,提示里也写清楚了地图只是索引,不是文件本身\n\nmap 输出太大时,也会提示你换成更省的 digest 写法,cli 和 mcp 都有\n\n没有破坏性改动,旧的搜索索引第一次用时会自动重建,支持 rust python typescript go java 等语言,可以当 cli, mcp server, 或者编码 agent 工具用,macos arm64 和 windows x64 都有预编译版本,homebrew, npm, pypi, crates.io 都能装\n\nhttps://github.com/aeroxy/ast-bro",
+    "created_at": "2026-11-11T03:17:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13274"
+  },
+  {
+    "id": 13273,
+    "title": "【开源自荐】ouba-classmate：一行安装的中文求职 Agent Skills 套件 + 12 仓公开横评数据",
+    "content": "自荐一个正在维护的开源项目 **ouba-classmate**：面向中文求职与职场场景的一键安装 Agent Skills 套件（适配 Claude Code、Codex、Cursor 与 MCP），附带一份开源的 **《中文 AI 求职 Skill 公开横评》数据集** 与免安装的 **《2026 求职防身情报库》**。\n\n现在很多人用大模型改简历或模拟面试，但纯 Prompt 工具很容易出现两个痛点：**一是“职位权限幻觉”**（把“参与内测、协助整理问答对”自动升格成“主导企业级架构迭代”，真到业务主管面试被追问两句就当场穿帮）；**二是“打分不可复算”**（同一份简历和 JD 连测三次，分数波动高达 15–20 分）。\n\n我们把求职全链路拆解成带**确定性本地校验脚本**的开源组件，支持在终端一行命令按需调用，也提供了免安装的网页体检与静态速查表：\n\n### 目前可以做什么\n\n- **简历 vs JD 确定性算分与证据核查 (`jd-resume-match`)**：强制绑定简历原文行号（`L1..Ln`）核对证据缺口，总分由本地 Python 脚本按数学公式 `floor(100 * Σ(w*c)/Σw + 0.5)` 确定性复算，并提供零网络上传的本地 stdio MCP Server。\n- **中文经历面试连环追问陪练 (`ai-interviewer`)**：不问死记硬背的八股文，专门按目标 JD 对个人真实经历做 0–2 层深挖追问（个人边界、基线分母、方案取舍），每道题给出引用候选人原话的五维点评。\n- **多平台招聘筛选 (`job-search`) & Offer 前公司四态背调 (`sherlock-company`)**：按确认条件整理带原始链接的 HTML/Excel 岗位清单；在接 Offer 前把公司信息按「已证实 / 有线索 / 说法冲突 / 还不知道」整理为核实清单。\n- **《中文 AI 求职 Skill 公开横评 (v0.1)》(`benchmark/`)**：用 3 组合成简历盲测了 GitHub 上 12 个主流中英文求职 Skill（含开源 CSV 数据集与自家项目不做 PDF 排版的短板披露）。\n- **免安装《2026 求职防身情报库》(`radar/`) & 30 秒网页速测机**：即使不安装 CLI，也能直接查阅《大厂经历面试 24 道深挖母题》《JD 15 大黑话解码表》《接 Offer 背调 18 问》，或在网页端 30 秒生成「AI 职业战力诊断小票」。\n\n### 使用方式与开源许可\n\n仓库索引与核心套件采用 **MIT** 许可证，`benchmark/` 横评数据集采用 **CC BY 4.0** 许可证，完全免费开源。\n\n```bash\n# 方式 1：作为 Claude Code 插件市场一键注册\nclaude plugin marketplace add ouxxyy/ouba-classmate\n\n# 方式 2：使用 Agent Skills CLI 一键安装\nnpx skills add ouxxyy/ouba-classmate\n\n# 方式 3：使用 uvx 直接启动本地简历 vs JD 确定性算分 MCP Server\nuvx --from \"git+https://github.com/ouxxyy/jd-resume-match#subdirectory=mcp\" jd-resume-match-mcp --self-test\n```\n\n### 项目链接\n\n- **GitHub 主仓**：https://github.com/ouxxyy/ouba-classmate\n- **在线体验与 30 秒职业战力体检机**：https://ouxxyy.github.io/ouba-classmate/#career-radar\n- **《12 仓中文 AI 求职 Skill 公开横评》报告**：https://github.com/ouxxyy/ouba-classmate/blob/main/benchmark/README.md\n- **《2026 求职防身情报库（24道追问母题 + 背调18问）》**：https://github.com/ouxxyy/ouba-classmate/blob/main/radar/README.md\n\n### 展示预览\n\n![欧八同学 AI Skills 与跳槽涨薪工具合集总览](https://raw.githubusercontent.com/ouxxyy/ouba-classmate/main/assets/banner.png)\n\n欢迎正在看机会、改简历或折腾 Claude Code / MCP 的朋友试用与反馈！\n",
+    "created_at": "2026-11-11T03:05:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13273"
+  },
+  {
+    "id": 13272,
+    "title": "【开源自荐】chrome-devtools-cli v2.2.2 agent 有脚本库了",
+    "content": "chrome-devtools-cli v2.2.2 是个小版本，命令行本身没有变化，但定下了 agent 自己的脚本该放哪\n\nskill 文件旁边多了一个 scripts 文件夹，默认是空的，skill 会让 agent 给某个网站写一次性脚本之前先看这里，值得留下的就存进去，一个网站一个文件，下次直接复用\n\n有个坑我也写进文档了，命令行按你运行命令时所在的目录解析相对路径，不是 skill 文件夹，所以得传 skill 文件夹里的完整路径\n\n我自己的脚本集合公开在 chrome-devtools-cli-scripts，一个网站一个文件，现在有一个 discord 脚本，能列出侧边栏的频道，读已经加载的消息，也能往上滚动把更早的消息收集起来，只读取和滚动你已经打开的页面，不会发送或修改任何东西\n\nreadme 里也补了 run-script 和 adapter 的说明，以前完全没提过，可以看看 adapter 是怎么写的，直接拿我的去用\n\nscripts 文件夹属于 skill，不在 release 的压缩包里，要用的话从仓库把 skill 文件夹复制过去\n\n这是一个直接走 devtools 协议的 rust 命令行工具，给需要操作真实浏览器的 ai agent 用，需要 rust 1.89 以上\n\nhttps://github.com/aeroxy/chrome-devtools-cli\nhttps://github.com/aeroxy/chrome-devtools-cli-scripts",
+    "created_at": "2026-11-11T02:43:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13272"
+  },
+  {
     "id": 13271,
     "title": "【工具自荐】Beamlynx：删除一行之前，先看清哪些表依赖它",
     "content": "Beamlynx 是一个可视化、可交互的桌面数据库客户端。它能做的事不少，这里只讲其中一件。\n\n在一个不熟悉的数据库里删一行数据，等于在猜会弄坏什么。这由外键决定，而从你眼前的这张表上，很难看出来。\n\nTraverse 从一张表出发，找出所有指向它的表，再找出指向这些表的表，并统计每张表的行数。它还能生成删除脚本，从最深的表开始删，这样不会留下指向已删除行的外键。\n\n目前支持 PostgreSQL、MySQL 8 和 SQLite，其他数据库暂不支持。非商业使用免费，商业使用需要许可证。\n\n欢迎反馈，哪怕你不喜欢它。\n\nhttps://beamlynx.com/zh\n\n我是独立开发者，这段中文借助 AI 翻译。我也可以用英文回复。\n\n<img width=\"965\" height=\"442\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60754eae-63b7-4785-9889-cf81f34b7d2b\" />",
@@ -194,7 +250,7 @@
   {
     "id": 13246,
     "title": "【开源自荐】AgentHome：把 Claude Code / Codex / Gemini 的会话收进本机归档，并查看 token 用量、成本与剩余额度",
-    "content": "阮老师好，自荐一个自己写的 macOS 应用，我是作者。\n\n**AgentHome**：把 Claude Code、Codex、Gemini CLI 的会话收进本机归档，在同一块仪表盘上查看 token 用量、估算成本和剩余订阅额度。\n\n做它有三个原因：\n\n1. Claude Code 默认 30 天后删除会话记录，几个月前解决某个难题的那次对话，到时候就找不回来了。\n2. 长会话每一轮都会从缓存重读一遍上下文，token 数字大得吓人，却和实际花费对不上。\n3. 各家的 5 小时 / 7 天额度窗口分散在不同地方。\n\n![仪表盘](https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/dashboard-dark.zh-CN.png)\n\n- **比 agent 清理活得久的归档**：每份会话记录入库前先逐字节拷贝（zstd 压缩）到 `~/AgentHome/raw/`，agent 删掉自己的文件后，副本还在。只拷贝，不改动 agent 的目录。\n- **成本算得清**：直接从会话记录里算 token，按模型、缓存档位分别计价，分项目、分模型统计，有 30 / 90 天趋势。\n- **额度一眼看到**：Claude 额度通过官方 `claude` CLI 的 `/usage` 读取，Codex 额度读它自己写进会话文件的快照。不读任何凭据，不调私有接口。\n- **全文搜索**：⌘K 跨全部消息搜索，支持中文子串，回车直接跳到那条消息。\n- **菜单栏面板**：点菜单栏的像素小屋，不用开主窗口就能看到今日成本、各家剩余额度和重置倒计时。\n- **像素栖息地**：左栏小屋里住着 Claude（狐狸）、Codex（企鹅）、Gemini（猫），会随真实的活动和额度工作、思考、疲惫或睡觉。\n- 实时同步、中英双语界面，另附命令行工具；没有统计上报，数据不离开本机。\n\n<img src=\"https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/menubar-dark.zh-CN.png\" alt=\"菜单栏面板\" width=\"360\">\n\n| 归档 | 会话详情 |\n|---|---|\n| ![归档](https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/archive-dark.zh-CN.png) | ![会话详情](https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/session-dark.zh-CN.png) |\n\n![⌘K 全局搜索](https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/search-dark.zh-CN.png)\n\n技术栈：Rust + [GPUI Kit](https://github.com/longbridge/gpui-kit)（Zed 编辑器的 GPUI 框架），原生 macOS 应用，Apache-2.0 许可证。\n\n- 项目地址：https://github.com/PeterChen1997/agenthome\n- 下载：https://github.com/PeterChen1997/agenthome/releases/latest （Apple Silicon，macOS 15+，已签名并经苹果公证）\n\n截图均为内置演示数据。欢迎试用，也欢迎提 Issue 或 PR。\n",
+    "content": "阮老师好，自荐一个自己写的 macOS 应用，我是作者。\n\n**AgentHome**：把 Claude Code、Codex、Antigravity CLI（`agy`）的会话收进本机归档，在同一块仪表盘上查看 token 用量、估算成本和剩余订阅额度。\n\n做它有三个原因：\n\n1. Claude Code 默认 30 天后删除会话记录，几个月前解决某个难题的那次对话，到时候就找不回来了。\n2. 长会话每一轮都会从缓存重读一遍上下文，token 数字大得吓人，却和实际花费对不上。\n3. 各家的 5 小时 / 7 天额度窗口分散在不同地方。\n\n![仪表盘](https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/dashboard-dark.zh-CN.png)\n\n- **比 agent 清理活得久的归档**：每份会话记录入库前先逐字节拷贝（zstd 压缩）到 `~/AgentHome/raw/`，agent 删掉自己的文件后，副本还在。只拷贝，不改动 agent 的目录。\n- **成本算得清**：直接从会话记录里算 token，按模型、缓存档位分别计价，分项目、分模型统计，有 30 / 90 天趋势。\n- **额度一眼看到**：Claude 额度通过官方 `claude` CLI 的 `/usage` 读取，Antigravity 额度通过官方 `agy -p /usage` 读取，Codex 额度读它自己写进会话文件的快照。不读任何凭据，不调私有接口。\n- **额度够不够用**：按「已用比例 ÷ 窗口已过时间」推算照现在的速度能不能撑到重置，分宽裕 / 正常 / 偏紧 / 紧张，偏紧时提示大约多久后用完；ChatGPT 的重置额度也会显示到期时间并提前提醒。\n- **全文搜索**：⌘K 跨全部消息搜索，支持中文子串，回车直接跳到那条消息。\n- **菜单栏面板**：点菜单栏的像素小屋，不用开主窗口就能看到今日成本、各家剩余额度和重置倒计时。\n- **像素栖息地**：左栏小屋里住着 Claude（狐狸）、Codex（企鹅）、Gemini（猫），会随真实的活动和额度工作、思考、疲惫或睡觉。\n- **来源可扩展**：每个 agent 是注册表里的一个来源，加一个新来源（比如 OpenCode）只需实现一个 trait，有开发指南，欢迎提 PR。\n- 实时同步、中英双语界面、应用内一键更新（下载后核对签名与苹果公证再替换），另附命令行工具；没有统计上报，数据不离开本机。\n\n<img src=\"https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/menubar-dark.zh-CN.png\" alt=\"菜单栏面板\" width=\"360\">\n\n| 归档 | 会话详情 |\n|---|---|\n| ![归档](https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/archive-dark.zh-CN.png) | ![会话详情](https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/session-dark.zh-CN.png) |\n\n![⌘K 全局搜索](https://raw.githubusercontent.com/PeterChen1997/agenthome/main/docs/screenshots/search-dark.zh-CN.png)\n\n技术栈：Rust + [GPUI Kit](https://github.com/longbridge/gpui-kit)（Zed 编辑器的 GPUI 框架），原生 macOS 应用，Apache-2.0 许可证。\n\n- 项目地址：https://github.com/PeterChen1997/agenthome\n- 下载：https://github.com/PeterChen1997/agenthome/releases/latest （Apple Silicon，macOS 15+，已签名并经苹果公证）\n\n截图均为内置演示数据。欢迎试用，也欢迎提 Issue 或 PR。\n\n作者：Peter Chen，博客 https://blog.peterchen97.cn\n\n",
     "created_at": "2026-11-10T04:06:38Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13246"
@@ -748,61 +804,5 @@
     "created_at": "2026-11-07T15:24:38Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13176"
-  },
-  {
-    "id": 13175,
-    "title": "【開源自薦】雷霆震驚！聲聲慢 SpeakSlow：開源免費、速度最快的中文語音輸入",
-    "content": "我靠，它就是一個超快的輸入工具。\n\n快就是快。我不騙你。\n\n- https://github.com/Jeffrey0117/SpeakSlow\n- https://jeffrey0117.github.io/SpeakSlow/\n- Apache 2.0、免費、203 ⭐\n\n使用方法超簡單：按一下右 Ctrl 開始講，再按一下停止。字直接落在你游標的位置。瀏覽器、Word、終端機、AI 對話框，都一樣。\n\n超猛的地方是隱私。完全在你自己的電腦上跑，一個字都不上雲。不用 API key，沒有額度，斷網也能用。\n\n90 秒的長句，停下來 0.3 秒出字。\n\n然後幾個天才設計：\n\n- **操作模式**：選一段字，用講的下指令。翻譯、轉繁簡、朗讀。\n- **快速修改**：講錯按一個鍵，跳出大字卡，用講的覆蓋掉。\n- **同音字用講的指定**：「北方的北、爛掉的爛」。\n\nWindows、macOS、Linux 都有安裝檔。\n\n真的不想罵髒話。X！\n\n這也是我用講的講出來的。\n\n快點下載，推薦給你朋友。\n",
-    "created_at": "2026-11-07T14:25:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13175"
-  },
-  {
-    "id": 13174,
-    "title": "【开源自荐】Wanim：浏览器中的 Manim (3Blue1Brown 的动画库)，但是体积仅 1/20，为讲义/课件设计",
-    "content": "## 简介\n\n仓库：https://github.com/Acfboy/Wanim\nPlayground：https://wanim.org/playground/\n\nmanim 是全网粉丝数千万的知名数学博主 3b1b 开发并使用的强大数学动画制作工具。但原版配置较复杂，等待渲染较慢。现有的一些让其跑在浏览器里的项目要么无法运行原版代码，要么需要 ~40 MiB 的 pyodide 运行环境和库。\n\n本项目无需 pyodide 即可让原版 manim 代码开箱即用地跑在浏览器里，实时渲染，并且原版代码稍作修改就可以制作可交互的演示。需加载体积只有约 1.8MiB，足以嵌入任何地方。专门为嵌入讲义/课件中设计。\n\n**如何实现的**：对原版 manim 静态分析以后按方法调用连边，建图之后缩点得到 DAG，让 AI 沿着 DAG 逐方法对齐原版 API 得到 js 动画库，再 patch 了 rapydscript-ng 使其支持 numpy，把用户代码对接到逐方法一致的动画库。无需 Pyodide 故体积小。具体见[知乎文章](https://zhuanlan.zhihu.com/p/2102395422492960174)\n\n## 示例\n\n### 复刻 3b1b 经典傅里叶变换演示\n\n在线演示地址：https://wanim.org/playground/?id=4be3ae8d&show=1\n\n拖动滑块，可以看到三角函数曲线被以不同的速度绕在圈上。右侧指示质心位置变化。\n<img src=\"https://github.com/Acfboy/Wanim/raw/main/assets/fourier.gif\"> </img>\n\n### 可交互的讲义\n\n在线演示地址：https://wanim.org/zh-Hans/blog/\n在线制作讲义：https://wanim.org/zh-Hans/studio/notes\n\n嵌入的动画，双击变成可交互版本。\n\n<img width=\"1024\" height=\"563\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/53a91622-7a6e-4b05-a253-d786c7939a77\" />\n\n### 嵌入 AI 对话\n\n在线演示地址：https://wanim.org/chat/\n\n让 ai 也可以用高质量的演示讲解。\n\n<img src=\"https://github.com/Acfboy/Wanim/raw/main/assets/linear_trans.gif\"> </img>\n\n### 作为幻灯片\n\n在线演示地址：https://wanim.org/playground/?id=bfa1cf5e&show=1\n\n支持幻灯片模式，适用于各种演示。右下角按钮和左右键可以切换上一页下一页。\n<img src=\"https://github.com/Acfboy/Wanim/raw/main/assets/slides.gif\"> </img>\n\n## 为什么选择 Wanim？\n- 原版 manim 代码：几乎兼容动画所需所有原版 manim 接口。\n- 体积小：体积是其它同类项目的 1/20。这使得它可以嵌入任何地方。\n- 可交互：可以添加任意路径滑块、数字输入、拖动视角等交互组件。\n\n## 链接\n\n- Github: https://github.com/Acfboy/Wanim\n- 文档：https://wanim.org/\n- 一些示例：https://wanim.org/docs/gallery\n- Playground（可一键分享）：https://wanim.org/playground\n- AI Studio（让 AI 来制作，直接得到渲染结果）：https://wanim.org/studio",
-    "created_at": "2026-11-07T12:57:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13174"
-  },
-  {
-    "id": 13173,
-    "title": "【工具自荐】Last Card Standing：用两两比较选出最喜欢的一个或前三名",
-    "content": "嗨！我是 zojro，我做了一个免费网页工具 Last Card Standing，想向周刊自荐。\n\n地址：https://last-card-standing.zojro.com\n\n选照片、挑配音试音或比较几个标题时，选项一多，就容易来回翻、记不清。这个工具每次只展示两个选项，由你选更喜欢的那个，逐步选出一个结果，或排好顺序的前三名。\n\n- 支持文本、图片、音频和视频文件，每批比较同一种类型。\n- 免费、免注册、无广告，支持中文和英文。\n- 文件在浏览器本地处理，不会上传；刷新或关闭标签页后，文件和比较记录不会保留。\n\n视觉风格和交互借鉴了 Balatro 的风格，让比较过程没那么枯燥。\n\n欢迎试用和提意见。\n",
-    "created_at": "2026-11-07T11:43:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13173"
-  },
-  {
-    "id": 13172,
-    "title": "【开源自荐】AlphaDesk：让 AI 客户端从 SEC 财报原文里查美股数据并标出处的 MCP 服务",
-    "content": "AlphaDesk 是一个 MCP 服务，接入 Claude、Cursor 等 AI 客户端后，可以查美股行情，并从 10-K、10-Q 财报原文里找答案，每条回答附财报段落出处。说“帮我买”时只生成模拟订单，必须由人确认，不连接券商。\n\n- 7 个工具：行情、历史价格、新闻、财报检索（BM25，带引用）、关键财务数据（SEC XBRL）、组合风险（波动率、最大回撤、beta）、模拟下单\n- 下单有单笔和 10 分钟累计上限，防止拆单绕过\n- 附带离线数据快照，不需要 API key\n- 附带评测：12 道预先冻结的验证题任务成功率 91.7%（智谱 glm-5.3），10 道下单安全题重复 3 次 30/30 通过，每次问答约 0.006 美元（按标价估算）\n- 覆盖 NVDA、MSFT、AAPL、TSLA、AMZN，输出不构成投资建议\n\n安装（需要 uv 和 Git），写入 MCP 客户端配置：\n\n    \"alphadesk\": { \"command\": \"uvx\", \"args\": [\"--from\", \"git+https://github.com/TTNAN/AlphaDesk\", \"alphadesk-mcp\"] }\n\n也可以下载 Release 里的 alphadesk.mcpb，一键安装到 Claude Desktop。已上架官方 MCP Registry 和魔搭 MCP 广场。\n\nPython，MIT 许可证。\n\n- 项目地址：https://github.com/TTNAN/AlphaDesk\n- 魔搭：https://www.modelscope.cn/mcp/servers/CaesarTT/alphadesk\n\n![AlphaDesk 使用示意](https://raw.githubusercontent.com/TTNAN/AlphaDesk/main/docs/assets/demo.gif)\n\n利益相关：我是项目作者。",
-    "created_at": "2026-11-07T11:24:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13172"
-  },
-  {
-    "id": 13171,
-    "title": "【自荐】报价贴：进价表转客户报价（5条免费试用，完整版49元）",
-    "content": "报价贴是一个把已有进价表整理成客户报价的离线工具。由 Codex 受账号持有者委托实现与测试，使用 AI 辅助开发。当前是首版试卖，尚无客户成交案例。\n\n**试用仓库：** https://github.com/Ocean516/quotelpaste-trial\n\n**5条试用包直接下载：** https://raw.githubusercontent.com/Ocean516/quotelpaste-trial/main/报价贴_试用包.zip\n\n适合每天需要把供应商进价表改成客户报价的小商家：\n\n- 从 Excel / WPS 复制“商品、规格、成本价”三列，或读取 UTF-8 CSV。\n- 设定固定加价、按成本上浮及向上取整；逐条核对商品配置和售价。\n- 导出客户报价图片、CSV或文本，客户版本不带成本列；PDF通过浏览器打印保存。\n- 单个HTML在电脑Chrome / Edge本地打开，无账号、无订阅、不上传报价数据。\n\n![合成示例，非市场报价](https://raw.githubusercontent.com/Ocean516/quotelpaste-trial/main/sample.png)\n\n提供5条免费试用。完整版暂定人民币49元买断，一个商家内部使用，单次最多500条，单张图片最多50条；这不是开源商业授权。请先用试用版确认自己的三列格式适用，再决定是否购买。\n\n当前不含图片识别、实时行情、库存和订单管理。页面中的商品与价格是合成演示，不是市场报价。已核对金额精度、错误行阻断、重复行保留、核对与条数限制、客户CSV成本隔离，并实际生成和查看PNG，另生成PDF样例。\n\n有同类工作流程的人可以先试5条；使用问题或购买咨询可到项目仓库提Issue，只描述格式和希望解决的问题即可。请勿公开真实进价表、客户资料或支付凭证。\n",
-    "created_at": "2026-11-07T09:29:38Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13171"
-  },
-  {
-    "id": 13170,
-    "title": "【工具自荐】Trify3D：一个页面并排跑 Tripo3D、Meshy、Rodin 三家 AI 生 3D 引擎，比完再导出",
-    "content": "想把一张产品图、原画或手绘稿变成能用的 3D 模型，又拿不准哪家 AI 生成工具效果好，可以在浏览器里试试 Trify3D：它把 Tripo3D、Meshy、Rodin 三家引擎放在同一个页面，同一段文字或同一张图并排生成，直接对比网格和贴图，选中意的那个再导出，不用为每家单独注册账号、各买额度。\n\n网址：https://trify3d.com/\n\n- 支持文字生 3D、单图生 3D，也支持正/侧/背多视图输入和批量生成，另有 AI 贴图（PBR：albedo、normal、roughness、metallic）。\n- 导出 GLB、glTF、OBJ、STL，可直接进 Blender、Unity、Unreal 做资产，或进切片软件做 3D 打印。\n- 全程在浏览器里完成，无需安装软件。\n- 新账号送 50 个生成额度，不要求绑卡；额度在三个引擎间通用，之后按需买量或订阅。\n- 站内另附 STL 在线编辑器（免费、免注册，可修复和转 STL/3MF/PLY）与照片转人像打印指南等工具页。\n\n生成的模型归用户所有，商用条款以官网说明为准。做游戏道具、电商 3D 预览或 3D 打印手办的可以先用免费额度跑一遍再决定。\n\n利益关系说明：这条自荐由我受 Trify3D 团队委托提交；介绍内容依据官网公开页面核对整理，建议以自己实际生成效果为准。\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)",
-    "created_at": "2026-11-07T09:21:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13170"
-  },
-  {
-    "id": 13169,
-    "title": "【自荐】红果短剧批量下载：一条分享链接到整剧 ZIP，1000 集 85 秒的云端交付链路与踩坑记录",
-    "content": "项目地址：https://github.com/parallelpan/hongguo-downloader\n\n先说清楚这个仓库是什么、不是什么：它公开的只有**系统架构、交付链路与工程实践文档**（含界面截图），不提供可执行代码、内容获取工具或破解方法，文档与截图采用 CC BY-NC 4.0（可转载署名、不可商用）。项目是第三方非官方的，与红果、字节跳动及其关联公司没有任何关系，未获授权或认可。线上另有一个可体验的网页服务作为对照，按实际取件集数计费。\n\n写这份文档的起因是一个很具体的工程问题：短剧平台只提供「在 App 里一集一集看」，没有全集导出。想把一部上千集的长剧变成一套可留存的文件，难点其实不在「下载」这个动作，而在**长任务怎么编排、失败怎么恢复、以及最后那个几 GB 的 ZIP 怎么在不落盘的前提下发出去**。\n\n仓库里记录了三个带生产实测数字的案例：\n\n1. **1000 集长剧，85 秒完成交付**。下载阶段 worker 只上传分集文件，不同步打整包；每集独立状态，失败自动重排、已完成的跳过，任务在约 85 秒就变为「已完成」，用户可以立即取件。整包改为收尾时按需生成。\n2. **双支付通道的对账不靠人盯**。币安 USDT 走金额尾差指纹，Stripe 走自动查单；两条通道不共用同一套指纹池，再配合 24 小时补确认窗口，避免同金额订单串单。\n3. **实例被摘除，75 秒自愈**。单机自愈架构（伸缩组 MIN=MAX=1 + 自定义镜像 + Tunnel，源站不开公网端口），故障演练附完整时间线。一个反直觉的运维约束也写在里面：有任务在跑时只重启 API、不能重启 worker，否则 SIGTERM 会让任务永久卡在 running。\n\n几个我觉得对做类似系统最有参考价值的坑：\n\n- **上游会混发不同封装的分集**。一部分分集用私有封装的编码容器，流内缺少标准参数集，通用工具会直接报不支持；另一部分其实是明文流。所以流水线不能靠「有没有密钥」判断能不能处理，下载后要先识别封装类型，再决定重编码还是直接 remux。\n- **整包打包不能「先把对象列出来、再一起开连接」**。888 集会一次打开 888 条对象存储连接，被判空闲后断连，表现为 `IncompleteRead`。改成同时只开一条、断读后按已读字节续读，4.26GB / 888 集约 114 秒稳定完成，且全程不落盘。\n- **解码校验不能当成交付门槛**。20 秒超时后要换成跳过环路滤波再验一次，双超时才放行；否则会把本来能播的成品误判成失败。\n- **发版和镜像是两件事**。伸缩组重建看的是「生效伸缩配置」里的镜像 ID，只发代码不刷镜像，机器一回收就回退；线上代码只来自某个 tag 的 `git archive`，一次上线一个 tag。\n- **首屏 SSR 是前端的逐字镜像**。导航、页脚、首屏骨架在后端另有一份，改前端不同步改它，水合时会闪一下；后来加了一条自检：关掉 JS 的截图和开着 JS 的截图应几乎一致。\n\n技术栈大致是 Python + FastAPI、React + Vite、对象存储，加上独立的转码 worker 队列；文档里有架构图和各环节的职责划分。\n\n适合谁看：在做长任务队列、转码流水线、对象存储流式打包，或者想把一个「要跑几个小时的活」包装成网页服务的人。文档里的数字都是生产实测，不是压测推演，也记了不少走错的弯路。\n\n限制与声明：仓库仅用于展示产品设计与工程实践，不提供任何内容获取工具、破解方法或可执行代码。内容版权归原权利人所有，使用者应自行确保对所处理内容拥有合法权利，并遵守所在地法律法规与平台服务条款。文档不可商用，仓库只接受文档纠错类 issue。",
-    "created_at": "2026-11-07T09:02:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13169"
   }
 ]
