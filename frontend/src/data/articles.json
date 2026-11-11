@@ -1,5 +1,69 @@
 [
   {
+    "id": 13302,
+    "title": "【工具自荐】用 VisaPath 核对海外岗位的工作地点和签证担保",
+    "content": "周刊编辑好，我是 VisaPath 项目的 ALEX。我们做了一个中文海外求职工具，供准备搬到国外工作、或想留在国内远程工作的人使用。\n\n筛海外职位时，有两句英文很值得留意。\n\n- 想留在国内工作，看到 `Remote (US only)`，工作地点仍限美国。如果招聘页只写 `Remote`，可以先问招聘方：“Can I do this role full-time from mainland China?”\n- 想搬到国外，看到 `Visa sponsorship may be available`，可以把问题具体到正在看的职位：“Does your team offer visa sponsorship for an overseas applicant for this particular role?”\n\n[VisaPath 官网使用指南](https://visaspaths.com/guides/visapath-getting-started/) 可以直接阅读。想实际找岗位时，用邮箱注册，填写工作经历和搬迁意愿，再从匹配到的岗位卡打开招聘来源，核对地点和担保条件。\n",
+    "created_at": "2026-11-11T18:11:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13302"
+  },
+  {
+    "id": 13301,
+    "title": "Sorry delete this",
+    "content": "Sorry delete this ",
+    "created_at": "2026-11-11T17:30:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13301"
+  },
+  {
+    "id": 13300,
+    "title": "【开源自荐】Pi GPUI：给终端 AI 编程工具 pi 写的桌面客户端",
+    "content": "pi 是一个跑在终端里的 AI 编程工具。我平时用它写代码，经常同时开好几个会话，切来切去有点乱，就用 Rust 和 GPUI（Zed 在用的 UI 框架）给它做了个桌面版，没用 Electron，也没套 webview。\n\n不是又做了一个 agent，跑的就是你电脑上已经装好的 pi，模型、扩展和会话还是原来那一套，pi 里配好的 DeepSeek、Qwen 这里直接能用。\n\n- 多个会话一起跑，用标签页切换，每个会话各自跑一个 pi 进程\n- 会话是一棵树，可以从任意一条消息分叉出去\n- 改了哪些文件、diff 长什么样，侧边栏里直接看\n\n在终端的 pi 里输入 /gpui，当前会话会搬到应用里接着用（得先 pi install npm:pi-gpui）。\n\n我拿 0.1.11 在 M1 Pro 上测了一下，没开项目，只算应用本身，不含 pi：大概 0.4 秒出窗口，空闲内存 74 MB 左右，安装包 7.3 MB。同样的测法，另外三个 Electron 版的 pi 客户端，安装包都超过 120 MB，空闲内存 190 到 430 MB。\n\nMac（Apple 芯片，macOS 13 起）用 brew 就能装。Linux 版刚出，还是 beta，目前只在 arm64 虚拟机里的 Ubuntu 24.04 上跑过，有问题欢迎提 issue。\n\nhttps://github.com/bytesbay/pi-gpui\n\n![Pi GPUI](https://raw.githubusercontent.com/bytesbay/pi-gpui/main/docs/demo.gif)\n\n动图里模型的回复是提前写好的，界面操作、改文件、跑测试都是真的。扩展的状态栏、小组件和窗口标题，这版还显示不了。",
+    "created_at": "2026-11-11T16:52:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13300"
+  },
+  {
+    "id": 13299,
+    "title": "【开源自荐】Berth：让 VS Code 当多 Agent 工作台",
+    "content": "- 项目地址：https://github.com/maxzyma/berth\n- 安装：VS Code 扩展市场搜索 Berth\n\nBerth 是一个 VS Code 扩展，把 tmux 里运行的 Claude Code、Codex、Gemini CLI 等 AI Agent 会话列在侧栏（目前识别 7 种），标出哪些还在工作，点一下就在编辑器里打开对应终端，旁边是项目文件和 diff。\n\n换着用这类 Agent 很方便：项目约定写在 AGENTS.md 这类文件里，哪个 Agent 都能读，额度用完或者任务更适合另一个时，换一个就行。换得多了，会话散在不同项目和终端标签里，想找某一个得靠记。\n\n看文件、看 diff 这些事 VS Code 本来就能做，Berth 只加了一个会话列表。Agent 照旧用你自己的命令或脚本启动，由 tmux 保持运行，重载 VS Code 也不会中断。\n\n支持 macOS 和 Linux，Windows 需通过 WSL；需要 tmux 3.0 以上。MIT 开源，早期版本。\n\n![Berth 侧栏会话列表、Agent 终端与项目源码并排](https://raw.githubusercontent.com/maxzyma/berth/main/docs/assets/sessions-beside-files.png)\n\n示例工作区，Agent 回复为合成内容。\n",
+    "created_at": "2026-11-11T15:52:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13299"
+  },
+  {
+    "id": 13298,
+    "title": "【工具自荐】自动排版无限拼图画布",
+    "content": "我做了一个纯前端的拼图工具，把照片拖进去就能自动生成对齐的拼图长图\n\n底层用了动态规划算法来计算每一行的高度，不管拖进多少张照片，横图竖图混排都能自动适应尺寸，每一行左右严丝合缝，而且完全不裁切原图\n\n工作区是一个无限画布，可以随便拖拽平移和缩放查看细节，按住拖拽还能直接调整照片顺序并实时重排\n\n支持实时调节画布宽度，行高，间距和边距，做好后直接导出为 webp，jpg 或 png 格式\n\n整个工具就是单个 html 文件，在任何浏览器打开都能直接本地运行，照片不用上传服务器\n\nhttps://aero.oops.wtf/p/framework\n",
+    "created_at": "2026-11-11T15:39:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13298"
+  },
+  {
+    "id": 13297,
+    "title": "【工具自荐】Square Face Generator：九个免费头像小工具，浏览器里直接做",
+    "content": "**网址**：https://www.squarefaceicongenerator.app/\n\n**一句话介绍**：九个免费头像小工具放在一个网站里，打开浏览器就能做，存 PNG 无水印，不用注册。\n\n**能做什么**\n- 方块脸、椭圆脸头像，每个部件都能换色\n- 8-bit 像素图标，导出 48 / 96px 清晰 PNG\n- 全身像素小人、像素猫、Q 版角色\n- 打印成纸方块，剪下来折成小立方体\n- 导出前可以预览圆形裁切，直接用作 Discord、X 头像\n\n全部在浏览器里生成，不上传图片，不用装任何东西。\n",
+    "created_at": "2026-11-11T15:12:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13297"
+  },
+  {
+    "id": 13296,
+    "title": "【开源自荐】爱易聊 AIYIchat：自托管的 AI 陪伴服务运营平台（QQ/微信/网页）",
+    "content": "### 项目地址\nhttps://github.com/BugWhispererChen/AIYIchat\n\n### 一句话\n一套自托管的 AI 聊天服务运营平台：部署一次，就能在 QQ / 微信 / 网页上对外提供有长期记忆的 AI 陪伴服务。MIT 开源。\n\n### 它解决什么问题\n市面上的 AI 陪伴项目大多聚焦\"模型更强\"或\"前端更好看\"，但真要把服务长期对外运营，缺的是额度、审核、评测、可观测这些不好看的部分。本项目把这些内建了：\n\n- **平台侧**：账号 → 身份/渠道 → 服务三层台账；QQ 多 Bot + 微信多账号 + 网页渠道并存，配置 30 秒轮询热增删、逐 Bot 启停，不用重启进程；配额按 Token/条/张分别计量，套餐模板套用留订单台账；注册审核、图形验证码、IP 限流、登录锁定、注销级联硬删除；内容安全审计；离线评测（模型评审 + 确定性指标 + A/B 成对比较）；三态健康检查与分阶段耗时。\n- **用户侧**：五级长期记忆，其中\"点状事实时效剔除\"是纯规则实现——\"明天要面试\"过了那天就不会再被当成近况提起；反思归纳出的每条洞察都要 ≥2 条源事实作证据、可单独撤销；发送前有确定性\"AI 腔\"门禁，零模型成本；会主动找你，但连续被忽略就自己收着。\n\n### 技术栈\nPython 3.11 + FastAPI（全异步）+ MongoDB + Docker Compose。模型侧走 OpenAI 兼容接口，管理后台服务端渲染，无前端构建链。\n\n### 上手成本\n只需两样：阿里云百炼 API Key + 管理后台密码。\n- Windows：双击安装包，自带数据库与音频工具链，无需预装 Docker/Python/MongoDB\n- Linux：解压后 `./deploy.sh`\n- 源码：`docker compose up -d --build`，自签名证书由 certgen 服务自动准备\n\n11 位预置角色与表情包随启动自动入库，绑好渠道就能聊。\n\n### 老实交代的边界\n- 预置人设、提示词与 AI 腔正则都是中文专用，**没有英文界面**\n- 声音复刻与 TTS 绑 DashScope，换供应商要重新复刻音色\n- 限流/验证码/后台会话是单实例进程内存，**多实例部署前必须换共享存储**\n- **没接第三方支付**，套餐订单是记账台账，收款要自己在外侧接\n- 主动消息目前只支持 QQ / 微信\n\n### 声明\n我是本项目作者。无付费版、无托管版、无广告，唯一外部成本是你自己的模型 API Key。",
+    "created_at": "2026-11-11T15:10:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13296"
+  },
+  {
+    "id": 13295,
+    "title": "开源项目推荐：MD-Vault - 零依赖、本地优先的 Markdown 2FA 密码看板",
+    "content": "## MD-Vault：零依赖、本地优先的 Markdown 2FA 密码看板\n\n### 1. 项目简介\n很多开发者平时习惯在本地用普通的 `.md` 文件记录日常账号、测试服务器 IP 或各种 API 凭据，格式透明无厂商锁定。\n但随着账号越积越多，纯文本查找和翻找变得繁琐，日常复制时还容易手误改动甚至误删密码字符；更关键的是，普通的 Markdown 无法原生计算 2FA 动态口令，每次登录网站都必须停下工作掏出手机查看验证码。\nMD-Vault 是一个极简的单文件本地看板，让本地标准的 `.md` 密码本秒变高密度交互金库，纯本地内存运行，100% 气隙安全，零网络外连，断网也能双击秒开。\n\n- 项目地址：https://github.com/xiangc579/md-vault\n- 在线体验：https://xiangc579.github.io/md-vault/\n- 主要语言：HTML / JavaScript / CSS\n\n### 2. 核心特性\n\n- 纯文本单一真实源 (Single Source of Truth)：底层就是普通的 .md 文件，随时可用 VS Code、Obsidian、Vim 打开，永无私有格式绑定与厂商锁定\n\n- 首创 Markdown 原生 2FA：在文档中写入 totp 代码块，渲染端纯本地实时演算 30 秒倒计时 6 位验证码（基于浏览器原生 WebCrypto API），一键点击直接复制（自动去空格）\n\n- 极简单文件 HTML 交付：全站打包为不足 30KB 的单 HTML 文件，零 npm 依赖，零外部网络外连，真正 100% 气隙安全\n\n- AST 紧凑卡片排版：自研轻量 AST 解析流水线，重组为 104px 标签列的紧凑桌面卡片，支持 / 键毫秒级全局过滤与即点即拷防手误篡改\n\n- 官方技术专栏深度实录：https://www.tumio.site/zh/blog/md-vault-local-first-2fa\n\n\n### 3. 演示截图\n\n![](https://assets.tumio.site/blog/md-vault-local-first-2fa/images/md-vault-banner.png)",
+    "created_at": "2026-11-11T14:27:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13295"
+  },
+  {
     "id": 13294,
     "title": "自荐开源桌面软件：AI Art Engine —— 把扁平界面截图拆成可改字分层 PSD 与 Unity/Godot 代码，内置开源版 Machinations 游戏数值仿真器",
     "content": "你好阮老师，自荐一个我开发的跨平台开源桌面软件 **AI Art Engine**（GPL-3.0，支持 Windows / macOS / Linux）。\n\n- GitHub：https://github.com/Justin-sky/ai-art-engine\n- 官网与文档：https://justin-sky.github.io/ai-art-engine/\n- 安装包下载：https://github.com/Justin-sky/ai-art-engine/releases\n\n### 解决什么痛点？\n\n现在 AI 生成的图片和视频都是“扁平死文件”——字改不了、层分不开、进不了游戏引擎或剪辑轨道。我做这个本地优先的桌面引擎，核心是把生成结果直接编译成**可编辑的工业工程文件**：\n\n1. **游戏/应用 UI 截图拆层 → 原生可双击改字 PSD (`TySh`) + 多引擎代码**：结合本机离线 OCR 与视觉分割，把一张扁平 UI 图剥离为 16 类控件与九宫格干净底板（支持 3D 爆炸视图检视），一键导出保留 Photoshop 原生可编辑文字层的 `.psd`，并生成 Unity UXML/UGUI、Godot 4 `.tscn` 和 HTML5 代码。\n2. **开源平替 Machinations 游戏数值沙盘**：内置 59 款经典游戏经济积木（抽卡软硬保底、护甲减伤、放置产线等），支持蒙特卡洛仿真，并且可以直接在折线图上鼠标拖拽曲线，120fps 逆向反推上游参数公式并导出 C# / GDScript。\n3. **2D 立绘自动绑骨导 Spine & 短剧直出剪映草稿**：内置本地免费 ONNX（YOLOv8 / SAM2）推理，支持二次元立绘拆件导出标准 Spine 2D 骨骼包，以及五阶段漫剧分镜直出剪映专业版可编辑多轨草稿。\n4. **内置 102 个本地 MCP 工具**：支持多会话并行 Agent 直控，也可让 Claude Code / Cursor 通过 `npx -y ai-art-engine-mcp` 一行命令接管本地工程（内置零 API Key 样板间，打开即可直接体验 3D 拆层与数值沙盘）。\n\n附上软件实机截图：\n\n![游戏 UI 3D 爆炸拆层与 PSD/Unity/Godot 导出](https://raw.githubusercontent.com/Justin-sky/ai-art-engine/main/website/assets/imgs/ui-layers.webp)\n\n![五阶段影视分镜工作台](https://raw.githubusercontent.com/Justin-sky/ai-art-engine/main/website/assets/imgs/film-workbench.webp)",
@@ -41,8 +105,8 @@
   },
   {
     "id": 13289,
-    "title": "【开源自荐】Mearl：把网页操作变成 Skill，人和 Agent 都能用",
-    "content": "项目地址：https://github.com/mearlhq/mearl\n\nMearl 是为人和 AI Agent 准备的可扩展浏览器工作环境。希望解决的问题是：Agent 完成一次网页任务后，能不能顺手留下一个可以反复使用、继续修改的工具？\n\n- 将网页操作沉淀为 Skill，可同时提供工具箱界面和命令入口：人使用可视化界面，Agent 直接调用。\n- 遇到新需求，可以继续扩展同一个 Skill，而不是每次重新开始。\n- Skill 可通过 skills.sh 生态分发，Mearl 提供直接安装入口。\n- 适用于网页操作、信息整理、页面检查与调试，也可按需接入客户端环境能力包。\n\n64 秒中文演示从真实商品页整理信息、生成工具，再追加预算筛选：\nhttps://www.bilibili.com/video/BV12hWy6AEJj\n\n中文介绍与视频：https://zhuanlan.zhihu.com/p/2103906822235108667",
+    "title": "【开源自荐】Mearl：让 AI 在你的浏览器里操作和调试网页",
+    "content": "项目地址：[mearlhq/mearl](https://github.com/mearlhq/mearl)\n\nMearl 是一个开源的浏览器工作环境。接入 AI Agent 后，可以沿用日常浏览器的登录状态，让它查订单、填表或下载报表。也可以连接开启了远程调试的浏览器或 Electron 应用，或通过 Provider 接入远端浏览器。\n\n比如，想确认订单页在没有订单时会显示什么，可以在同一个标签页里查看接口响应，把它模拟成空列表，再刷新页面检查结果。如果问题只在 App 内出现，还可以模拟 WebView 环境，检查依赖 User-Agent 或 JSBridge 的网页行为。\n\n经常重复的操作可以做成带参数的 Skill。比如把导出报表的日期做成参数，下次既能让 Agent 调用，也能从浏览器工具箱手动运行。\n\n![Mearl DevTools 将订单接口响应模拟为空列表，手机预览显示 0 条订单](https://img.alicdn.com/imgextra/i2/O1CN011V7jfyamdJG3eacC_!!6000000003764-49-tps-1800-1080.webp)\n",
     "created_at": "2026-11-11T09:57:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13289"
@@ -742,69 +806,5 @@
     "created_at": "2026-11-08T15:20:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13200"
-  },
-  {
-    "id": 13199,
-    "title": "【工具自荐】Clear Bazi Chart：可核对时区、夏令时和真太阳时的浏览器八字排盘",
-    "content": "推荐一个免费网页工具：[Clear Bazi Chart](https://clearbazichart.com/)。出生资料在浏览器里计算，无需注册或上传。\n\n它解决的是排盘结果不一致时怎么核对输入的问题。拿同一张出生记录对照两个结果，可以先区分当地钟表时间、换算后的 UTC 时刻和用于排盘的时钟，再看历史时区偏移、夏令时和真太阳时设置。\n\n首页的时间核对指引带有合成案例，读者可以复现，不必填写自己的出生资料。排盘结果按传统历法口径展示。",
-    "created_at": "2026-11-08T15:15:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13199"
-  },
-  {
-    "id": 13198,
-    "title": "Youtube 学习、二创插件",
-    "content": "YoutuRead：将 Youtube 视频一键转成图文笔记，进行学习、二次创作分享。\n官网：https://www.zinglife.top/youturead/index.html\n插件链接：https://chromewebstore.google.com/detail/youturead/doefhkgnnaanfkhaoegilabigledfdmb?hl=en-US&utm_source=ext_sidebar",
-    "created_at": "2026-11-08T13:16:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13198"
-  },
-  {
-    "id": 13197,
-    "title": "【开源自荐】一线城市省钱指南：17 章的北上广深生活成本手册，可在线检索",
-    "content": "阮老师好，自荐一个中文文档项目：一线城市省钱指南。\n\n写给在北上广深工作、月收入 6000～30000 元的人。这本书不做\"节俭说教\"，只拆成本结构：房租、吃饭、通勤、话费宽带、医保、购物，以及那些需要自己去申请的政策待遇——公积金、个税专项附加扣除、失业金、技能补贴、保障性租赁住房。哪些能谈、哪些能领、哪些入口值得先查。\n\n目前的形态：\n\n- 17 章 94 节，另有三份附录：一年省钱日历、链接索引、政策文号核对清单\n- 四个城市各一章，写当地特有的路径，比如北京的公积金直付房租、上海的保租房和\"一张床\"、深圳的青年驿站\n- 在线检索页：按\"我现在遇到的问题\"查，也能按城市、章节筛，全文内嵌，离线可用\n- EPUB / PDF / 离线单文件 HTML\n- 附带一个 Claude Code / Codex 的 skill，装好后可以直接问\"住远一点能省多少、多花多少通勤时间\"，它按书里的口径算完，并注明出自哪一节\n\n举个例子。第 1.1 节把\"住远一点省钱\"改写成一道减法：\n\n真实时薪 =（月薪 − 房租 − 通勤成本）÷（174 − 每月多耗的通勤小时）\n\n同样月薪一万，租在公司 3 公里、月租 6000 的人，真实时薪 21.8 元；租在郊区、月租 3200、单程 90 分钟的人，43.8 元。月租贵一倍的人，时薪只有对方的一半。但结论不是\"越远越好\"——这张表是拿来跟自己的时间价格对照的，单程超过 75 分钟，隐性成本会反噬。\n\n内容基于 2026 年 10 月的政策口径，涉及申领和资格的以主管部门最新公告为准，仓库里单独列了待核实清单。正文由人工智能辅助整理，已在文档中注明。\n\n许可为 CC BY-NC-SA 4.0，其中看房清单、合同条款、维权工具箱和附录 A 为 CC BY 4.0。\n\nGitHub：https://github.com/sluke23/HowToSaveMoney\n在线阅读：https://sluke23.github.io/HowToSaveMoney/\n",
-    "created_at": "2026-11-08T12:40:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13197"
-  },
-  {
-    "id": 13196,
-    "title": "〖开源自荐〗GitHub Page Jump：给 GitHub 分页加上首页、末页和直接跳页",
-    "content": "GitHub 的分页体验一直有个盲区：搜索结果有页码，但 Repositories、Stars、Commits 这些常用列表只给“Previous / Next”，没有页码，既跳不到第一页，也去不了最后一页，想翻到中间某页只能一页页点。\n\nGitHub Page Jump 是一个零构建的 Chrome Manifest V3 扩展，专门补上这块缺失的能力。它根据 GitHub 实际渲染的三种分页形态自动切换策略：\n\n- 有页码的分页器：直接添加 ⏮️ 首页和 ⏭️ 末页按钮，输入页码回车即可跳转。\n- 无页码的 page 参数列表（如 ?tab=repositories、?tab=followers）：它会在后台自动索引页数，在 GitHub 原有的 Previous / Next 之间插入一个 1 2 3 … n 的页码窗口，点击即可直达。查找末页使用指数扫描 + 二分查找，100 页大约只需要 13 个请求，而不是逐页遍历。\n- after 游标列表（如 ?tab=stars、/tags、/commits）：同样支持页码窗口，并会沿着游标链定位末页。\n\n几个值得提的点：\n\n- 零构建：源码直接就是可加载的扩展，没有打包步骤。\n- 跟随 GitHub 主题：控件使用 Primer 颜色变量，自动适配 light / dark / high-contrast。\n- 兼容 GitHub 的 Turbo / PJAX 部分导航，不会在站内跳转后失效。\n- 可访问性：使用真实按钮、GitHub 自身的 Page N 命名，带 aria-current=\"page\" 和行内校验提示。\n- 支持工具栏 popup 中开启“固定分页栏到底部”的偏好（默认关闭）。\n\n项目地址：https://github.com/TekkenSteve/github-page-jump\n\n安装方式：Chrome 116+，从 Releases 下载 zip 解压后在 chrome://extensions/ 开发者模式下加载，或直接从源码 Load unpacked。",
-    "created_at": "2026-11-08T11:46:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13196"
-  },
-  {
-    "id": 13195,
-    "title": "【开源自荐】VideoSeek：一款在本地海量视频中定位某个镜头的桌面软件",
-    "content": "- 项目名称：VideoSeek\n- 项目地址：https://github.com/6v17/VideoSeek\n- 官网地址：https://www.lv17.top/\n- 飞书教程：https://ycnwd8tcjgtu.feishu.cn/docx/ZWkrdSqA6oJTOrxQ2XscxYtmnad\n- 开源协议：AGPL-3.0\n- 项目简介：本地离线运行的视频素材检索工具。用一句描述、一组标签、一张截图或一句台词检索本机视频，返回精确到秒的片段位置；索引与检索都在本机完成，视频无需上传云。可导出剪辑草稿，帮助剪辑人员快速翻找本地素材。（源码端最新支持搜本地图片！）\n\n- 项目截图：\n\n![文搜视频](https://raw.githubusercontent.com/6v17/VideoSeek/master/docs/assets/文搜演示.gif)\n\n### 主要功能\n\n1. **文字搜镜头**：用自然语言描述画面，返回命中的时间范围，而不是只给一个文件列表。\n2. **截图搜镜头**：丢一张参考图或截一帧进去，找相似画面。\n3. **硬字幕检索**：对画面内嵌字幕做 OCR，按台词搜时间点。\n4. **标签检索**：用「蓝发」「红白服饰」这类标签组合筛镜头，结果按网格给出缩略图和时间。\n5. **导出到剪辑软件**：导出 mp4 片段、剪映草稿、Premiere XML 或达芬奇 FCPXML 时间线。\n6. **可完全本地构建**：ONNX + Lance + FFmpeg 在本机跑，视频不上传；Windows 优先，也可从源码构建。\n7. **多种画面模型可选**：适配 openai-clip / chinese-clip / siglip2 /fgclip2的 base 与 large 档位(可选qwen3 vl embding云端嵌入模型)，可按自己的显卡和精度需求选择。\n\n### 进阶用法\n\n- **局域网团队协作**：一台电脑建索引，多台用户同时访问搜索，素材在一台机器上就行了。\n- **Agent API（可选）**：开启本地 HTTP 接口后，可让 Cursor 等 Agent 直接调用搜索、读库与导出。\n- **视频理解**：支持vlm按chunk镜头连续帧拼合推断镜头内容，llm根据vlm输出、asr输出，动态判断剧情内容，规划大纲，一键选镜并生成剪映解说稿，实现粗剪。",
-    "created_at": "2026-11-08T11:37:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13195"
-  },
-  {
-    "id": 13194,
-    "title": "【资源自荐】从 microGPT 到唐诗 GPT：中文动手课，包含训练、生成和失败实验",
-    "content": "自荐一套面向会一点 Python 的初学者的中文动手课：[从 microGPT 到唐诗 GPT](https://github.com/OakcoderX/TangShiGPT-Course)。\n\n课程受 Karpathy 的 microgpt 启发，采用独立的 PyTorch 教学实现，带学习者把《全唐诗》JSON 整理成字符序列，训练、保存、加载一个小 GPT，再观察它怎样生成五言、七言形式的草稿。\n\n学习路径包括：\n- 先做“下一字频数”基线，再训练模型，比较统计规律与模型输出。\n- 从小规模短跑开始，练习保存权重和继续训练。\n- 用真实的李白风格实验学习设计对照、匿名比较输出和判断失败。当前模型能生成唐诗形式的草稿，但李白风格仍不能稳定复现。\n\n[完整学习包](https://github.com/OakcoderX/TangShiGPT-Course/releases/tag/v1.0.0)提供 HTML 自学教案、可编辑 PPTX、代码、语料、权重和实验记录。下载解压后，用浏览器打开 docs/index.html 阅读教案；运行代码需要 Python 3.10 以上和项目依赖，支持 CPU，亦可尝试 CUDA 或 Apple MPS。\n\n这是公开免费学习项目，不是 Karpathy 的官方课程。自有代码、教案和权重目前没有附开源许可证，上游数据许可已在包内保留。欢迎反馈最难跟上的步骤。",
-    "created_at": "2026-11-08T10:53:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13194"
-  },
-  {
-    "id": 13193,
-    "title": "〖文章自荐〗写代码前，怎样判断一个海外小工具有没有真实需求？",
-    "content": "阮老师好，自荐一篇中文图文指南：[如何验证出海产品需求？](https://zhaoxuqiu.online/methodology)。\n\n文章面向想做小工具的独立开发者，讲的是写第一行代码之前怎么验证一个具体任务。用一个虚构例子：用户要把图片压到上传限制以内。即使相关词有人搜，也要先区分对方是在找排障步骤，还是想立刻拿到一张能上传的图片。\n\n指南给出了一个可以照着做的流程：\n\n1. 看目标市场的前 10 条自然结果，记录它们分别在回答什么。\n2. 拿同一张超限图片试几个现有工具，比较能否达标、用了几步、在哪里卡住。\n3. 请确实有这个任务的人独立试用，记录完成率和失败原因，决定下一轮做什么。\n\n原文有流程图、证据对照表和 7 天行动清单，无需登录，全文免费。文章由我参与维护的「出海找需求」发布。\n",
-    "created_at": "2026-11-08T09:46:20Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13193"
-  },
-  {
-    "id": 13192,
-    "title": "【工具自荐】objekto.io：用几句话、照片或草图描述一个物品，AI 设计可 3D 打印的多部件模型并制作送货",
-    "content": "网址：https://objekto.io/en\n\nobjekto.io 是一个法国的在线服务，把一段描述变成真实的物品。用几句话描述想要的东西（也可以附一张照片或草图），再选择模式：设计（Design）、发明（Invent，为天马行空的想法给出三个可行方向）或维修 / 替换（Repair / replace）。AI 以参数化 CAD 的方式逐个部件设计 3D 模型，检查每个部件能否打印（壁厚、最小细节、配合间隙、各材料的最大尺寸、干涉、稳定性），并给出爆炸图、零件清单和装配指南。之后由合作的工业 3D 打印工坊制造，送货上门。\n\n主要功能：\n- 每个物品最多 12 个不同的打印部件；螺纹、销钉、卡扣等连接结构也一起打印，少数无法打印的部件（电子元件、磁铁、玻璃、刀片）会单独列出，需另行购买。\n- 免费的尺寸滑块（不调用 AI，几秒内重新计算），其他修改在对话中完成。\n- 材料包括 PA12 尼龙（SLS、MJF、全彩）、柔性 TPE 和 TPU、多种树脂、PETG、PLA，以及失蜡铸造黄铜。\n- 下单前显示含增值税和运费的固定欧元价格，工坊工程师会审核每一笔订单。\n- 付费方案可下载 STL、3MF 和 STEP 文件，Pro 和 Studio 方案还提供参数化源代码。\n- 社区图库：可以发布设计（CC BY、CC BY-NC 或仅供下单），也可以 remix 或直接订购别人的设计。\n\n价格：注册赠送 2000 积分（一次性，无需信用卡），大约够设计一个 2 到 4 个部件的物品；付费方案每月 29 欧元起（Creator），另有 Pro 70 欧元、Studio 299 欧元（均含增值税）。打印费用另付，用欧元结算，不使用积分。\n\n限制：实物订单在上线初期只配送到法国本土（含科西嘉）；界面为英文和法文。不提供医疗、食品接触或承重等认证产品。\n\n利益相关：我是 objekto 的创始人 Arsène Huot（法国巴黎），本条为自荐，供编辑试用和评估。\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n",
-    "created_at": "2026-11-08T08:59:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13192"
   }
 ]
