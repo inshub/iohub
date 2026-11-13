@@ -1,19 +1,51 @@
 [
   {
+    "id": 13344,
+    "title": "投稿：从 Demo 到商用 —— 用 AI 编程把 Demo 做成能收钱、能长期运行的项目（开源中文书）",
+    "content": "https://luochen211.github.io/demo-to-production/\n\n一本开源的中文书，写给会用 AI 编程、但还没独立做出过商用系统的人。全书 14 章，用一个餐厅运营后台贯穿，讲怎么把 Demo 补到能收钱、能长期运行：部署、监控、备份、支付对账、权限与隐私合规、报价和交付。每章分两部分：交给 AI 做什么，自己验收什么。\n\nGitHub：https://github.com/luochen211/demo-to-production\n\n![](https://luochen211.github.io/demo-to-production/og.png)\n",
+    "created_at": "2026-11-13T02:15:26Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13344"
+  },
+  {
+    "id": 13343,
+    "title": "【工具自荐】AutoResearch：浏览器端 AI 科研系统，内测需申请，获批后获赠有限初始额度",
+    "content": "自荐 AutoResearch（https://autoresearch.me）。这是通过浏览器使用的 AI 科研系统，把文献探索、科研想法、模型实现、GPU 实验和论文撰写连在同一流程里。它不是 GitHub 上同名的 karpathy/autoresearch 项目。\n\n官网：\n\n- 中文：https://autoresearch.me/zh/\n- English：https://autoresearch.me/en/\n- 价格与使用条件：https://autoresearch.me/zh/pricing\n\n完整系统目前处于内测。需要在官网提交申请，经管理员审核通过后，按邮件引导设置密码并登录账号。获批成员获赠 5,000 初始 credits。官方说明内测期间免费，但这是有限额度，不是无限免费，也不是无需账号即可使用；可完成的工作取决于算力、数据与研究范围。后续方案已在价格页预览，具体价格尚未公布。\n\n如果不适合周刊，可以忽略，谢谢。",
+    "created_at": "2026-11-13T02:00:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13343"
+  },
+  {
+    "id": 13342,
+    "title": "【工具自荐】vsux：把项目终端、文件和 Git 变更放在同一 Mac 工作区",
+    "content": "## 项目\n\n[vsux](https://vsux.sphrag.com/) 是一个以终端为核心的原生 Mac 轻量编辑器，面向同时处理多个本地项目的开发者。\n\n每个项目工作区把分屏终端、文件编辑、Git 变更审查、常用命令和后台服务放在同一窗口。切换工作区时，后台服务继续运行；需要查看生成结果时，可以直接打开文件、差异或 Markdown 预览。\n\n项目使用 SwiftUI 与 AppKit，免费开源，采用 MIT 协议。用户可以继续在终端中运行自己的 AI 编码工具，应用本身没有内置 AI 代理。\n\n- 源码与下载：https://github.com/shadowDragons/vsux\n- 环境：macOS 14+，仅 Apple Silicon。\n- 版本：v0.1.2 预发布版，ad-hoc 签名，尚未经过 Apple 公证。\n- 恢复范围：保存布局与工作目录，不恢复进程、终端历史或未保存编辑。\n\n![项目工作区实机截图](https://raw.githubusercontent.com/shadowDragons/vsux/main/web/public/assets/workspace-zh.webp)\n\n截图使用虚构演示项目与示例输出，不构成性能测试。\n\n作者自荐；本文由 AI 助手协助整理，欢迎编辑评估是否适合周刊的工具栏目。\n",
+    "created_at": "2026-11-13T01:21:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13342"
+  },
+  {
+    "id": 13341,
+    "title": "【开源自荐】Claude 账号切换器：Claude 桌面端一键换号，免邮箱验证码，聊天跟着走",
+    "content": "项目：Claude Account Switcher（Claude 账号切换器）\n\n地址：https://github.com/SnlperStripes/claude-account-switcher\n\n一句话：一个系统托盘工具，让 Claude 桌面应用在多个账号之间一键切换，不用每次退出登录、等邮箱验证码，Claude Code 聊天也会带到新账号。\n\n## 解决的麻烦\n\n有两个 Claude 账号的人，在桌面端换号通常要：\n\n1. 退出登录，原来的登录状态随之作废，下次还得从头来；\n2. 输入另一个邮箱，等验证码；\n3. 换完发现 Claude Code 聊天从侧边栏消失了（聊天还在本机磁盘上，只是 Claude 按账号分开列出）；\n4. 只能看到当前账号的用量，其他账号还剩多少只能猜。\n\n## 特点\n\n- **保留每个账号的登录**：每个账号只输一次验证码，之后在托盘里点一下，约十秒完成切换\n- **聊天跟着走**：切换时把其他账号的聊天列表和项目分组导入目标账号；切换那一刻正在回复的聊天，会弹窗询问是否在新账号里继续\n- **用量总览**：托盘菜单实时列出所有已保存账号的 5 小时和每周用量，以及重置时间\n- **数据留在本机**：Token 保持 Claude 原有的加密形式，只发往 api.anthropic.com；每次切换前备份，出错自动恢复\n- **简体中文界面**：系统语言为简体中文时自动显示中文\n- Go 编写，单个可执行文件，Windows 可用 `winget install SnlperStripes.ClaudeAccountSwitcher` 安装，Apache 2.0 开源\n\n## 平台\n\nWindows 10/11 已实测，支持 Microsoft Store 版和官网下载版。macOS 版在 CI 中构建通过，但还没有在真实 Mac 上测试过，欢迎有 Mac 的朋友反馈。\n\n![演示](https://raw.githubusercontent.com/SnlperStripes/claude-account-switcher/main/assets/demo.gif)\n\n我是作者。这是非官方工具，与 Anthropic 无关。\n",
+    "created_at": "2026-11-12T22:21:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13341"
+  },
+  {
+    "id": 13340,
+    "title": "【工具自荐】Agent Site：通过桌面侧边栏监督Agent在终端搬砖",
+    "content": "Hi 阮老师，我是项目维护者 Xuanyuan，向周刊自荐 **Agent Site**。核心就是让每个人当督公时刻监督agent干活。\r\n\r\n痛点：同时开多个 AI 编程会话时，有时候注意力不集中就得切回终端确认项目是不是还在推进。Agent Site完美解决了这一个问题，把传统的QQ侧边栏思路加到agent状态栏上。如果用户允许，甚至可以直接通过侧边栏指挥agent工作。\r\n\r\n[项目地址](https://github.com/iswalterwu/agent-site) · [Windows 下载](https://github.com/iswalterwu/agent-site/releases/tag/v0.1.0) · [中文说明](https://github.com/iswalterwu/agent-site/blob/main/README.zh-CN.md)\r\n\r\n<img src=\"https://raw.githubusercontent.com/iswalterwu/agent-site/ccf02162bcbaf38a30a3fe52009a905127249469/assets/demo.zh-CN.gif\" width=\"960\" alt=\"Agent Site 中文动图：查看会话与待办进度，在桌面回答 agent 的提问。\" />\r\n\r\n*动图使用真实 App 渲染器和虚构会话，pi 桥接交互为模拟演示，没有录制私人会话。*\r\n\r\n## 它能做什么\r\n\r\n- **会话变成工人。** 工作、空闲、停滞、等待反馈有不同显示；点开工人，可以看最近动作和会话详情。\r\n- **进展变成楼层。** 用楼层展示计划切片或会话待办的状态，区分已完成、进行中和未开始。这里反映的是记录下来的进展，不是从代码量或 token 数猜完成率。\r\n- **需要你时，少切一次终端。** 接上 pi 桥接后，可以从桌面暂停、继续、发送建议和回答提问。Claude Code、DSH 目前只做只读监控，不把“能看见”说成“能控制”。\r\n- **不用时收起来。** 透明置顶小窗贴在屏幕边缘，空白区域可穿透，不用时折成窄彩带。支持塔楼、厂房、临街店三种造型，以及明暗主题。\r\n\r\n它不是新的 agent 启动器或调度器，也不要求换一套开发流程。没有规格文件也可以使用会话待办；两者都没有，仍能显示会话活动。\r\n\r\n目前提供 **Windows 11 x64 便携版**，完整解压后即可运行，桌面 App 不必另装 Node.js、npm 或 Electron；支持简体中文和英文，**MIT 开源**。监控在本机完成，不额外调用模型。Windows 便携版未签名，安装与校验说明见仓库。\r\n\r\n谢谢阮老师。\r\n",
+    "created_at": "2026-11-12T21:31:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13340"
+  },
+  {
     "id": 13339,
     "title": "【开源自荐】ClickHouse Loom：给 AI 编程智能体的自托管共享记忆与代码索引",
     "content": "ClickHouse Loom：开源、自托管的 MCP 服务器，给 Claude Code、Codex、Cursor 等 AI 编程智能体提供跨会话共享的长期记忆、带引用的文档检索和代码仓库索引，数据存在 ClickHouse。\n\nhttps://github.com/ClickHouse/loom\n\n中文介绍：https://github.com/ClickHouse/loom/blob/main/README.zh-CN.md\n\n- 一个智能体在会话中保存的决定和发现，下一次会话或另一个智能体都能找到；每次修改都有版本历史，矛盾会被标记。\n- 代码索引直接回答“定义在哪、谁调用、改动影响什么”，减少整文件读取。\n- 一条命令用 Docker 安装，也可用 Helm 部署到 Kubernetes；Apache-2.0。\n\n声明：我参与 Loom 的开发。\n",
     "created_at": "2026-11-12T20:15:36Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13339"
-  },
-  {
-    "id": 13338,
-    "title": "【工具自荐】卡站 KAZHAN · AI 会员选购与商家报价对比",
-    "content": "卡站 KAZHAN 是一个面向中文用户的 AI 会员选购与比价网站，方便在购买前比较 ChatGPT、Claude、Gemini 和 Grok 的购买方式、预算与适用条件。\n\n### 可以体验的功能\n\n- 免登录选择平台、使用方式与预算，查看当前套餐及资格说明，选购结果可以分享。\n- 搜索第三方商品的标题、商家和说明，查看来源及采集时间，最多选择 3 件商品同屏对比。\n- 从商品或对比结果进入咨询时，保留所选商品、当前展示价和参考链接。\n\n这是站方自荐。选购与比价功能免费，网站另提供付费人工代充，先免费核验资格，通过后报价付款，预计约 12 小时处理。外站商品在原商家付款，交付和售后由该商家负责。价格、库存、适用资格和最终费用以当前详情及商家确认为准。\n\n[体验选购助手](https://kazhan.store/choose?utm_source=github_ruanyf_weekly&utm_campaign=launch_20261113)\n\n[阅读选购指南](https://kazhan.store/guides/ai-membership.html)\n\n<img width=\"1440\" height=\"810\" alt=\"卡站选购助手公开界面\" src=\"https://github.com/user-attachments/assets/fa972cef-7847-4eba-99c6-a74ac69c58e7\" />",
-    "created_at": "2026-11-12T18:54:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13338"
   },
   {
     "id": 13337,
@@ -60,7 +92,9 @@
     "title": "【工具自荐】Photoshot：用 48 种笔刷把平涂插画画出质感，附完整演示与 Photoshop ABR 下载",
     "content": "我是 Photoshot 的开发者，想自荐这次更新：给浏览器里的绘画工具加入了 48 种笔刷，并做了一段 14 分 46 秒的演示，把这些笔刷用到同一张猫咪咖啡馆插画里。\n\n这次想展示的是笔触本身能改变什么：先用铅笔和马克笔建立形状、颜色，再用水粉、半色调网点、排线和颗粒笔刷增加质感。每一步都显示当前笔刷名称、局部放大和测试笔触。\n\n### 从平涂到质感\n\n![视频 00:03：同一区域平涂与纹理效果对比](https://raw.githubusercontent.com/Abraham721/photoshot/community-brush-showcase-20261112/docs/images/studio48-video-20261112/01-flat-to-textured.jpg)\n\n### 滚轮笔刷的墨量衰减\n\n![视频 07:22：Short ink depletion 滚轮笔刷与逐渐变淡的笔触](https://raw.githubusercontent.com/Abraham721/photoshot/community-brush-showcase-20261112/docs/images/studio48-video-20261112/03-ink-roller.jpg)\n\n### 半色调网点\n\n![视频 08:45：花盆和海报上的半色调网点及笔触测试](https://raw.githubusercontent.com/Abraham721/photoshot/community-brush-showcase-20261112/docs/images/studio48-video-20261112/04-halftone.jpg)\n\n### 同一张画的三个阶段\n\n![视频 13:55：铅笔草图、铺色、纹理完成稿](https://raw.githubusercontent.com/Abraham721/photoshot/community-brush-showcase-20261112/docs/images/studio48-video-20261112/06-finished-art.jpg)\n\n完整演示：[From Flat Colors to Rich Texture | 48 Brushes in Action](https://youtu.be/qOZ_FBHyMuw)（英语旁白和字幕）。可直接看 [滚轮笔刷 06:01](https://youtu.be/qOZ_FBHyMuw?t=361)、[半色调 08:01](https://youtu.be/qOZ_FBHyMuw?t=481)、[排线 09:01](https://youtu.be/qOZ_FBHyMuw?t=541)。\n\n笔刷下载与安装：[Photoshot Brushes](https://slohero.com/photoshot/brushes/?lang=en)。Photoshop 用户也可以下载 ABR 笔刷文件使用；Photoshot 用户可从网站安装。\n\n演示使用 Photoshot 的实际笔刷引擎和自动化笔输入，方便对比预设；不是手绘过程录像，也不表示两款软件的每个笔刷参数都完全一致。项目的公开代码与开发记录：[Abraham721/photoshot](https://github.com/Abraham721/photoshot)（原始代码并非开源许可证）。\n\n如果试用过这些笔刷，欢迎指出哪些笔触的差别还不够清楚，或哪些安装步骤需要补充说明。\n",
     "created_at": "2026-11-12T14:29:40Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/13332"
   },
   {
@@ -493,8 +527,8 @@
   },
   {
     "id": 13278,
-    "title": "【开源自荐】Davish：把 Linux 服务器变成一个“桌面”，SSH 连上即用，服务器端什么都不用装",
-    "content": "**项目地址**：https://github.com/2hjaito/davish\n\n**简介**：Davish 是一个开源（GPL-3.0）的跨平台桌面应用，通过普通 SSH 管理 Linux 服务器，服务器端不需要安装任何 Agent，直接使用本机的 `~/.ssh/config` 和密钥。\n\n界面模仿桌面操作系统（菜单栏、Dock、可拖拽和分屏的窗口，支持深色模式），内置约 20 个应用：终端、SFTP 文件管理和编辑器、CPU/内存/磁盘实时监控、Docker、日志、Nginx、Cron、服务管理、端口与 ufw 防火墙、SSH 登录安全分析等。\n\n技术栈：Go + Wails（后端），Svelte 5（前端），支持 Windows、macOS、Linux。\n\n**截图**：\n\n![Davish](https://github.com/2hjaito/davish/raw/main/assets/screenshots/zh/desktop.png)\n\n我是作者，欢迎试用和反馈，谢谢！",
+    "title": "【开源自荐】Davish：SSH 连上服务器，就是一个桌面，服务器端零安装",
+    "content": "**项目地址**：https://github.com/2hjaito/davish\n\n![Davish 演示](https://github.com/2hjaito/davish/blob/main/assets/demo.gif?raw=true)\n\n常见的服务器面板（比如宝塔、1Panel）都要在服务器上装一套服务、开一个 Web 端口。Davish 换了个思路：界面和逻辑全部跑在你自己的电脑上，服务器端只需要一个普通的 SSH。\n\n- 服务器端什么都不用装，不开新端口，没有常驻 agent\n- 直接读取本地 `~/.ssh/config` 和密钥，已有的主机配置开箱即用\n\n连上之后，看到的是一个类似桌面操作系统的界面：菜单栏、Dock、可拖拽和分屏的窗口、深色模式。\n\n内置约 20 个工具：终端、SFTP 文件管理与编辑、CPU/内存/磁盘实时监控、Docker、日志、Nginx、Cron、服务管理、端口与 ufw 防火墙、SSH 登录安全分析等。\n\n技术栈为 Go + Wails，前端 Svelte 5，支持 Windows / macOS / Linux，开源协议 GPL-3.0。\n\n我是作者，欢迎试用和反馈。",
     "created_at": "2026-11-11T04:54:09Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13278"
@@ -772,37 +806,5 @@
     "created_at": "2026-11-10T01:59:59Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13242"
-  },
-  {
-    "id": 13241,
-    "title": "【开源自荐】红楼梦图谱：把人物谱系和关系做成可以点的图",
-    "content": "项目地址：https://github.com/iihao/honglou-atlas\n\n**一句话**：把《红楼梦》的人物谱系和关系做成一张可以点、可以搜的交互图谱。\n\n**三个真实痛点**：\n\n1. 读原著时人物太多、关系太乱，读到后面忘了前面，在纸上画关系图，画到第三张就放弃了；\n2. 普通人物关系图只有一根线写「兄妹」，但宝玉和探春首先是同父异母兄妹，其次才是诗社发起人与社员——关系的轻重完全没有体现；\n3. 家谱只画父子，可红楼的「关系」还包括嫡庶、房分、袭爵、排行，这些散在几十回和脂批里，读者很难自己拼起来。\n\n**做法**：\n\n- 173 位人物、870 条带类型的关系、50 个谱系节点，全部结构化存进 SQLite，一条命令重建\n- 谱系节点标出排行、嫡庶（左色条）、房分、爵位官职，袭爵的人加「爵」角标\n- 同一对人物只画一根线，显示权重最高的关系（血缘 > 婚姻 > 主仆 > 诗社同人），其余在卡片里并列\n- 关系图按家族分岛，跨族连线默认隐藏，悬停时其余自动变暗\n- 前端原生 JS，无框架无 npm；后端只用 Python 标准库；GitHub Pages 纯静态部署\n\n**在线体验**：https://iihao.github.io/honglou-atlas/ （手机可用，无需注册）\n\n**截图 / 演示**：\n- https://github.com/iihao/honglou-atlas/blob/main/docs/demo.gif\n- https://github.com/iihao/honglou-atlas/blob/main/docs/screenshot-graph.png\n",
-    "created_at": "2026-11-10T01:48:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13241"
-  },
-  {
-    "id": 13240,
-    "title": "[开源自荐] 肉鸽游戏 背单词，启动！",
-    "content": "核心玩法是，限时关卡杀怪物，获得经验，金币，购买强大的道具（购买道具时，把单词正确填入孔槽，即可解锁道具，否则就只扣款不发货），再杀下一轮更强大的怪物，直到撑到 20 轮，解锁更强大的道具与角色。\n\n如果不想在游戏中拼词，可以在 App 内拍照生成单词，拼写单词，获取经验，经验可以在游戏中，免拼获取道具\n\n\n在线体验：https://piclex.v2fy.com/piclex-web/#/settings/lab\n\n开源地址：https://github.com/zhaoolee/piclex-web/\n\n\n<img width=\"1688\" height=\"1044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/329feec0-684b-4ec7-810f-cad1489d5e80\" />\n\n<img width=\"1688\" height=\"1044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/d2e5307b-a3c3-4bb2-91de-206c16db35b1\" />\n\n<img width=\"1688\" height=\"1044\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/55ef5524-3cc0-4e70-be55-afab4acf1cb9\" />",
-    "created_at": "2026-11-10T01:19:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13240"
-  },
-  {
-    "id": 13239,
-    "title": "[文章自荐] Apple 官网排版细节鉴赏",
-    "content": "自荐一篇文章：[Apple 官网排版细节鉴赏](https://skywt.cn/blog/apple-typography-details)。\n\n阅读 Apple 中文官网源码时，我发现了不少容易忽略的排版细节：为中英文混排定制的字体、针对不同屏幕宽度保护不被换行拆开的词语，以及消除行末标点影响的标题视觉居中。文章结合截图和 HTML/CSS 示例，介绍了这些细节及其实现方式。\n\n本文已获少数派首页推荐。\n",
-    "created_at": "2026-11-10T00:52:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13239"
-  },
-  {
-    "id": 13237,
-    "title": "[工具自荐] FlyDesk 飞桌：面向手机操作电脑与多设备协作的远程工具，邀请体验反馈",
-    "content": "大家好，我们是 FlyDesk 飞桌的开发团队，向周刊自荐这款正在持续完善的远程操作工具，也希望邀请有实际需求的朋友参与体验并反馈问题。\n\n官网与下载：https://desk.flychat.work/#downloads\n\n适用场景：在手机上临时操作自己的电脑、多设备切换，以及经对方明确授权后的远程协助。\n\n当前提供：\n- 通过设备 ID 与访问码连接。\n- 手机触控、键盘操作，以及设备管理和云收藏。\n- 官网目前已提供 Windows、Apple 芯片 Mac 和 Android 安装包；iPhone / iPad 的公开入口尚未开放，请以官网下载页实际发布为准。\n\nFlyDesk 基于 QuickDesk 持续开发，包含 VIP 付费权益，具体功能和权益以产品页面为准。\n\n我们尤其希望收到连接流程、网络切换、手机拖选和滚动、键盘输入以及错误提示方面的具体反馈。欢迎附系统、应用版本、操作步骤、实际表现和预期表现；请不要公开设备访问码、密码或个人信息。\n\n桌面端实际组件界面（演示账号和设备数据）：\n![FlyDesk 桌面界面，演示数据](https://desk.flychat.work/site/app-desktop.png)\n\n手机端实际组件界面（演示账号和设备数据）：\n![FlyDesk 手机界面，演示数据](https://desk.flychat.work/site/app-mobile.png)\n\n开发方产品介绍与体验招募：https://zhuanlan.zhihu.com/p/2103291767672026342\n\n感谢审阅，也欢迎直接指出产品不足。\n",
-    "created_at": "2026-11-09T17:18:03Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13237"
   }
 ]
