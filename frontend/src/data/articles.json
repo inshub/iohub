@@ -1,5 +1,53 @@
 [
   {
+    "id": 13374,
+    "title": "【开源自荐】Zyrite：功能完整的开源 Markdown 编辑器，打开文件夹就能多文件写作",
+    "content": "Zyrite 是 ZYAILLC 团队做的开源 Markdown 桌面编辑器。原文、实时预览和所见即所得放在同一个窗口里，打开一个文件夹就是一个笔记库。文件始终是你磁盘上的普通 `.md`，不用注册账号，也不经过我们的服务器。\n\n![Zyrite](https://raw.githubusercontent.com/ZYAILLC/zyrite/main/docs/images/cover.jpg)\n\n**完整的 Markdown 写作**\n\n- 三种写法：原文和预览两栏同步滚动、实时预览、所见即所得。所见即所得保存时只重写你改过的块，改一个词，`git diff` 里就只有一行。\n- CommonMark + GFM（表格、任务列表、脚注）、YAML frontmatter、KaTeX 公式和化学式。\n- Mermaid、Graphviz、Markmap 图表，100 多种语言的代码高亮，全部本地渲染，不联网。\n- Obsidian 语法：`[[双链]]`、图片和章节嵌入、`#标签`、callout、`==高亮==`，从 Obsidian 搬过来的笔记不用改。\n- 正则查找替换、多光标、专注模式、打字机模式。\n\n**多文件编辑**\n\n- 打开任意文件夹就有文件树和大纲，外部增删改文件即时同步。\n- 双链补全；重命名或移动笔记时，可以一并更新指向它的链接。\n- 命令面板、快速打开、全文搜索，中文不用分词也能搜到。\n- 也能打开 YAML、JSON、TOML、配置文件、CSV、代码和日志，带语法高亮；JSON / YAML / TOML 边写边校验。GBK、Big5 等旧编码自动识别，按原编码写回。\n\n![原文和预览分栏](https://raw.githubusercontent.com/ZYAILLC/zyrite/main/docs/images/screenshot-editor.jpg)\n\n**其他**\n\n- 审阅 AI Agent 的改动：Claude Code、Cursor、Codex 改了文件，Zyrite 按块标出改动，逐处接受或拒绝；内置 MCP 服务，支持页边批注。\n- 导出 PDF、HTML、Word（不需要装 pandoc），PDF 的公式、图表和中文排版与预览一致。\n- 选中文字可以用 AI 润色、续写、翻译。内置 DeepSeek、通义千问、智谱、Kimi、豆包、腾讯混元、文心、Claude、Gemini、Grok 等 26 个模型服务，也能用 ChatGPT 套餐登录，或者接 Ollama 等本地模型。密钥存在系统钥匙串里。\n\n基于 Tauri + Rust + React，支持 macOS、Windows、Linux，Apache-2.0 许可。macOS 和 Windows 安装包都不到 9 MB。界面默认英文，可以在设置里切换为简体中文。\n\n- 项目地址：https://github.com/ZYAILLC/zyrite\n- 下载：https://github.com/ZYAILLC/zyrite/releases/latest\n\n利益相关：我们是项目开发团队 ZYAILLC。\n",
+    "created_at": "2026-11-14T06:52:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13374"
+  },
+  {
+    "id": 13373,
+    "title": "【工具自荐】SeatChartKit：免费在线教室座位表生成器，浏览器本地运行",
+    "content": "## 产品信息\n\n- 名称：SeatChartKit\n- 网站：https://seatchartkit.com\n- 平台：Web（浏览器）\n\n## 介绍\n\nSeatChartKit 是一个免费的教室座位表生成器，全部功能在浏览器本地完成，不需要注册账号，学生名单不会上传到任何服务器。老师把班级名单粘贴进去（或导入 CSV），选择行式、成对或分组布局，工具会自动生成第一版座位表，之后可以拖拽微调，最后直接打印或导出 PDF。\n\n## 核心功能\n\n- 粘贴名单或导入 CSV，一键生成行式/成对/分组座位表\n- 支持真实课堂约束：锁定指定座位、前排请求、\"某些学生必须分开\"\n- 拖拽移动/交换学生座位，支持撤销与重做\n- 排座计算在 Web Worker 中进行，不打断页面操作\n- 数据仅保存在浏览器本地（IndexedDB），支持 JSON 备份与恢复\n- 打印或保存为 PDF，无需注册，完全免费\n\n## 适合场景\n\n- 中小学开学排座、期中换座\n- 培训课程、活动现场的座位安排",
+    "created_at": "2026-11-14T04:17:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13373"
+  },
+  {
+    "id": 13372,
+    "title": "【开源自荐】Lean Init IDE：在浏览器里跑真正的 Lean 4 语言服务器",
+    "content": "学 Lean 4 之前通常要先在本地装工具链、配编辑器插件，不少人卡在这一步就没往下学。我做了一个运行在浏览器里的 Lean 4 练习环境，不用装任何本地软件，打开网页就能写证明、看报错和实时 Goal。\n\n<img width=\"2876\" height=\"1548\" alt=\"image\" src=\"https://github.com/user-attachments/assets/66cbf06d-8d54-44e0-b455-ab4950946d9f\" />\n\n- 编译器和语言服务器（Lean 4.34.1）以 WebAssembly 跑在浏览器 Web Worker 里，所有检查和求值都在本地完成，代码不会上传。\n- 首次点击「启动 Lean」会下载约 102MB 的运行时（用 zstd 压缩并做了分片校验，国内会优先走镜像），之后走浏览器缓存。\n- 编辑器基于 Monaco，接了真实的语义补全、悬停提示和报错跳转，输入 `\\to`、`\\forall` 这类缩写会自动转成对应的 Unicode 符号。\n- 配套写了 22 节中英双语入门课，从基础逻辑一直讲到归纳、素数和插入排序验证。页内代码块点一下就能直接运行（复用进程，一般不到半秒出结果），练习会带到编辑器并自动保存草稿。\n\n在线地址：https://criticalthinking.de5.net\nGitHub 仓库：https://github.com/3y3y3y-huaiji/lean-init-ide\n\n技术栈主要是 Lean 4 Init (WebAssembly)、`@wasm-idle/lsp`、Monaco、Service Worker 和 Cloudflare R2，Apache-2.0 / MulanPSL-2.0 双协议开源。\n\n目前只带 Lean 自带的 `Init` 标准库，不包含 `Mathlib`，需要浏览器支持 Cross-Origin Isolation，用 Chrome / Edge 桌面端体验比较稳。欢迎试用和提意见。\n",
+    "created_at": "2026-11-14T03:15:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13372"
+  },
+  {
+    "id": 13371,
+    "title": "【开源自荐】ai-tutorial：本机实测的中文 AI 应用教程书架",
+    "content": "开源地址：https://github.com/ybak/ai-tutorial\n\n在线阅读：https://ybak.github.io/ai-tutorial/\n\n这是一套中文 AI 应用实战教程，目前八本，都在本机实测后写成：AgentScope Java、MCP、RAGFlow、FastGPT、CopilotKit、Langfuse、Super-agent、LiteLLM。文档站和源码在同一个仓库。\n\nLiteLLM 分册另有英文版：https://ybak.github.io/ai-tutorial/en/litellm/  \n该书配了 Docker Compose 本地演示（`books/litellm/demo/`），用模拟上游即可练习虚拟密钥、配额和降级，不需要厂商密钥。\n\n许可：Apache-2.0。NOTICE 写明内容供学习与技术分享，不用于商业用途。\n\n![LiteLLM Admin 首页（本机演示截图）](https://raw.githubusercontent.com/ybak/ai-tutorial/main/books/litellm/assets/images/02-home.png)",
+    "created_at": "2026-11-14T01:04:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13371"
+  },
+  {
+    "id": 13370,
+    "title": "【开源自荐】数学建模 AI 工具大全：120 个 Agent、Skill、模板和获奖论文，附国赛 / 美赛 / 华为杯 AI 使用规定",
+    "content": "项目地址：https://github.com/DU8866-nice/awesome-math-modeling\n\n数学建模竞赛的 AI 工具与资源精选，覆盖国赛 CUMCM、美赛 MCM/ICM 和华为杯研赛。\n\n- 收录 120 个项目，分 11 类：全流程 Agent、Claude Code / Codex Skill、论文评审、LaTeX 模板、算法代码、获奖论文和求解器等。\n- 每个工具标明工作方式：全自动、人机协作（关键决策由人确认）或引导式（不代写）。\n- 开头对比三大赛事的 AI 使用规定：都要求如实声明，国赛和华为杯不合规会取消评奖资格。\n- 星标和更新时间每周自动刷新；清单本身也是一个 skill，可以让 agent 帮你挑。\n- 中英双语，CC0 许可。2027 美赛 1 月 28 日开赛，正好用来备赛。\n",
+    "created_at": "2026-11-14T01:03:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13370"
+  },
+  {
+    "id": 13369,
+    "title": "【开源自荐】Downright：macOS 原生的 Markdown 阅读器和编辑器",
+    "content": "项目地址：https://github.com/ezzy1630/Downright\n\n网站：https://downright.cc\n\nDownright 是一个 macOS 原生的 Markdown 阅读器和编辑器，用 Swift、AppKit 和 TextKit 2 写成，不是 Electron。\n\n- 双击 `.md` 文件，直接看到排好版的文档，也可以就地编辑，不需要分屏预览\n- 文件内容按原样保存，打开、阅读不会改动磁盘上的文件\n- 支持表格、任务列表、提示框（callout）、代码高亮、Mermaid 图和数学公式\n- 自带 Quick Look 插件：在访达里按空格就能预览 Markdown，还有缩略图\n- 文件被其他程序（比如命令行里的 AI 编程工具）修改时，会实时刷新并标出改动的地方\n- 免费开源（MIT），已签名和公证，支持 Intel 和 Apple Silicon，需要 macOS 14 以上\n\n我是作者。中文不是我的母语，如有不通顺的地方请见谅。\n",
+    "created_at": "2026-11-14T01:03:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13369"
+  },
+  {
     "id": 13368,
     "title": "【工具自荐】AIHOT 大模型 API 价格对比",
     "content": "### 网站链接\n\nhttps://aihot.news/leaderboard/prices\n\n### 介绍\n\n这是 AIHOT 的大模型 API 价格对比页，公开展示各厂商每百万 Token 的输入、输出和缓存命中价格。表格可按列排序，也给出一组明确的用量比例，方便读者比较缓存命中较多时的预估成本。点击模型可查看该型号的报价依据和适用条件。\n\n### 推荐理由\n\n开发者选模型时，可以把缓存命中价与普通输入价分开比较，再到厂商的官方价格页确认。页面免费阅读，无需登录。\n\n我是 AIHOT 的维护方。\n",
@@ -756,55 +804,5 @@
     "created_at": "2026-11-11T03:17:56Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13274"
-  },
-  {
-    "id": 13273,
-    "title": "【开源自荐】ouba-classmate：一行安装的中文求职 Agent Skills 套件 + 12 仓公开横评数据",
-    "content": "自荐一个正在维护的开源项目 **ouba-classmate**：面向中文求职与职场场景的一键安装 Agent Skills 套件（适配 Claude Code、Codex、Cursor 与 MCP），附带一份开源的 **《中文 AI 求职 Skill 公开横评》数据集** 与免安装的 **《2026 求职防身情报库》**。\n\n现在很多人用大模型改简历或模拟面试，但纯 Prompt 工具很容易出现两个痛点：**一是“职位权限幻觉”**（把“参与内测、协助整理问答对”自动升格成“主导企业级架构迭代”，真到业务主管面试被追问两句就当场穿帮）；**二是“打分不可复算”**（同一份简历和 JD 连测三次，分数波动高达 15–20 分）。\n\n我们把求职全链路拆解成带**确定性本地校验脚本**的开源组件，支持在终端一行命令按需调用，也提供了免安装的网页体检与静态速查表：\n\n### 目前可以做什么\n\n- **简历 vs JD 确定性算分与证据核查 (`jd-resume-match`)**：强制绑定简历原文行号（`L1..Ln`）核对证据缺口，总分由本地 Python 脚本按数学公式 `floor(100 * Σ(w*c)/Σw + 0.5)` 确定性复算，并提供零网络上传的本地 stdio MCP Server。\n- **中文经历面试连环追问陪练 (`ai-interviewer`)**：不问死记硬背的八股文，专门按目标 JD 对个人真实经历做 0–2 层深挖追问（个人边界、基线分母、方案取舍），每道题给出引用候选人原话的五维点评。\n- **多平台招聘筛选 (`job-search`) & Offer 前公司四态背调 (`sherlock-company`)**：按确认条件整理带原始链接的 HTML/Excel 岗位清单；在接 Offer 前把公司信息按「已证实 / 有线索 / 说法冲突 / 还不知道」整理为核实清单。\n- **《中文 AI 求职 Skill 公开横评 (v0.1)》(`benchmark/`)**：用 3 组合成简历盲测了 GitHub 上 12 个主流中英文求职 Skill（含开源 CSV 数据集与自家项目不做 PDF 排版的短板披露）。\n- **免安装《2026 求职防身情报库》(`radar/`) & 30 秒网页速测机**：即使不安装 CLI，也能直接查阅《大厂经历面试 24 道深挖母题》《JD 15 大黑话解码表》《接 Offer 背调 18 问》，或在网页端 30 秒生成「AI 职业战力诊断小票」。\n\n### 使用方式与开源许可\n\n仓库索引与核心套件采用 **MIT** 许可证，`benchmark/` 横评数据集采用 **CC BY 4.0** 许可证，完全免费开源。\n\n```bash\n# 方式 1：作为 Claude Code 插件市场一键注册\nclaude plugin marketplace add ouxxyy/ouba-classmate\n\n# 方式 2：使用 Agent Skills CLI 一键安装\nnpx skills add ouxxyy/ouba-classmate\n\n# 方式 3：使用 uvx 直接启动本地简历 vs JD 确定性算分 MCP Server\nuvx --from \"git+https://github.com/ouxxyy/jd-resume-match#subdirectory=mcp\" jd-resume-match-mcp --self-test\n```\n\n### 项目链接\n\n- **GitHub 主仓**：https://github.com/ouxxyy/ouba-classmate\n- **在线体验与 30 秒职业战力体检机**：https://ouxxyy.github.io/ouba-classmate/#career-radar\n- **《12 仓中文 AI 求职 Skill 公开横评》报告**：https://github.com/ouxxyy/ouba-classmate/blob/main/benchmark/README.md\n- **《2026 求职防身情报库（24道追问母题 + 背调18问）》**：https://github.com/ouxxyy/ouba-classmate/blob/main/radar/README.md\n\n### 展示预览\n\n![欧八同学 AI Skills 与跳槽涨薪工具合集总览](https://raw.githubusercontent.com/ouxxyy/ouba-classmate/main/assets/banner.png)\n\n欢迎正在看机会、改简历或折腾 Claude Code / MCP 的朋友试用与反馈！\n",
-    "created_at": "2026-11-11T03:05:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13273"
-  },
-  {
-    "id": 13272,
-    "title": "【开源自荐】chrome-devtools-cli v2.2.2 agent 有脚本库了",
-    "content": "chrome-devtools-cli v2.2.2 是个小版本，命令行本身没有变化，但定下了 agent 自己的脚本该放哪\n\nskill 文件旁边多了一个 scripts 文件夹，默认是空的，skill 会让 agent 给某个网站写一次性脚本之前先看这里，值得留下的就存进去，一个网站一个文件，下次直接复用\n\n有个坑我也写进文档了，命令行按你运行命令时所在的目录解析相对路径，不是 skill 文件夹，所以得传 skill 文件夹里的完整路径\n\n我自己的脚本集合公开在 chrome-devtools-cli-scripts，一个网站一个文件，现在有一个 discord 脚本，能列出侧边栏的频道，读已经加载的消息，也能往上滚动把更早的消息收集起来，只读取和滚动你已经打开的页面，不会发送或修改任何东西\n\nreadme 里也补了 run-script 和 adapter 的说明，以前完全没提过，可以看看 adapter 是怎么写的，直接拿我的去用\n\nscripts 文件夹属于 skill，不在 release 的压缩包里，要用的话从仓库把 skill 文件夹复制过去\n\n这是一个直接走 devtools 协议的 rust 命令行工具，给需要操作真实浏览器的 ai agent 用，需要 rust 1.89 以上\n\nhttps://github.com/aeroxy/chrome-devtools-cli\nhttps://github.com/aeroxy/chrome-devtools-cli-scripts",
-    "created_at": "2026-11-11T02:43:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13272"
-  },
-  {
-    "id": 13271,
-    "title": "【工具自荐】Beamlynx：删除一行之前，先看清哪些表依赖它",
-    "content": "Beamlynx 是一个可视化、可交互的桌面数据库客户端。它能做的事不少，这里只讲其中一件。\n\n在一个不熟悉的数据库里删一行数据，等于在猜会弄坏什么。这由外键决定，而从你眼前的这张表上，很难看出来。\n\nTraverse 从一张表出发，找出所有指向它的表，再找出指向这些表的表，并统计每张表的行数。它还能生成删除脚本，从最深的表开始删，这样不会留下指向已删除行的外键。\n\n目前支持 PostgreSQL、MySQL 8 和 SQLite，其他数据库暂不支持。非商业使用免费，商业使用需要许可证。\n\n欢迎反馈，哪怕你不喜欢它。\n\nhttps://beamlynx.com/zh\n\n我是独立开发者，这段中文借助 AI 翻译。我也可以用英文回复。\n\n<img width=\"965\" height=\"442\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/60754eae-63b7-4785-9889-cf81f34b7d2b\" />",
-    "created_at": "2026-11-10T21:28:35Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/13271"
-  },
-  {
-    "id": 13270,
-    "title": "【开源自荐】Nomi：本地优先的 AI 视频工作台，串起分镜、生成与时间轴",
-    "content": "自荐一个正在维护的开源项目 **Nomi**：面向 AI 视频创作者的桌面工作台，把故事、分镜、参考素材、图片／视频生成和时间轴放在同一个本地项目里。\n\n做 AI 视频时，常常要在聊天工具、模型网站和剪辑软件之间搬提示词、下载素材、重新整理镜头。Nomi 希望把这些步骤接起来：告诉 Agent 想拍什么，由它辅助拆镜头、准备关键帧、生成视频并编排时间轴，创作者可以继续调整，最后导出 MP4。\n\n### 目前可以做什么\n\n- **分镜与画布**：组织镜头、提示词和角色／场景参考，查看并修改生成结果。\n- **自选模型**：接入自己的模型 API 或本地 ComfyUI，在不同镜头使用合适的模型。\n- **时间轴与导出**：整理生成的视频，继续编辑并导出 MP4。\n- **3D 导演台**：摆人物、定机位，使用手机取景，将拍到的画面送回画布作为后续创作素材。\n- **MCP 接入**：让 Claude Code、Codex、Cursor 等支持 MCP 的工具操作 Nomi。\n\n### 使用方式与费用\n\n支持 **macOS（Apple 芯片／Intel）和 Windows x64**，采用 **AGPL-3.0-only** 开源许可证。\n\nNomi 本身免费，不需要注册 Nomi 账号。模型由用户自行接入，外部模型调用按供应商计费。项目和素材保存在本地；调用外部模型时，会向用户配置的供应商发送完成生成所需的提示词和参考素材。\n\n### 项目链接\n\n- 官网：https://nomiaqm.com/\n- GitHub：https://github.com/aqm857886159/Nomi\n- 下载：https://github.com/aqm857886159/Nomi/releases/latest\n- 快速上手：https://nomiaqm.com/quickstart\n- 宣传片：https://github.com/aqm857886159/Nomi/blob/7ca679e15e9bb1bd4cb789c43d2d2e0beba92f76/marketing/assets/video/nomi-0.22-film.mp4\n\n### 展示截图\n\n**Agent 与创作画布**\n\n![Nomi Agent 与创作画布：组织参考图和镜头关键帧](https://raw.githubusercontent.com/aqm857886159/Nomi/7ca679e15e9bb1bd4cb789c43d2d2e0beba92f76/marketing/assets/promo-0.22/still-agent.jpg)\n\n**3D 导演台与手机取景**\n\n![Nomi 3D 导演台：人物摆位、相机和手机取景](https://raw.githubusercontent.com/aqm857886159/Nomi/7ca679e15e9bb1bd4cb789c43d2d2e0beba92f76/marketing/assets/promo-0.22/still-director.jpg)\n\n欢迎试用，也欢迎反馈实际创作中卡住的步骤。\n",
-    "created_at": "2026-11-10T20:13:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13270"
-  },
-  {
-    "id": 13269,
-    "title": "【工具自荐】vvid：在特斯拉车机浏览器里看 YouTube、B站、抖音链接",
-    "content": "vvid（vvid.tv）是给特斯拉车机浏览器用的网页应用。先在手机上把 YouTube、B站或抖音的视频链接加进自己的媒体库；上车后在车机浏览器打开 vvid.tv，用同一个邮箱和验证码登录，就能在车机屏幕上播放，无需安装 App。它还能在车机屏幕上显示正在播放歌曲的同步歌词，限时免费。有免费方案，各方案详情见 vvid.tv/pricing。\n\n网址：https://vvid.tv/home\n我是开发者。",
-    "created_at": "2026-11-10T19:56:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13269"
-  },
-  {
-    "id": 13268,
-    "title": "【开源自荐】yabbistir：在文本光标下方弹出的开源 macOS 剪贴板历史工具",
-    "content": "## yabbistir\n\n一个**键盘优先、开源**的 macOS 剪贴板历史工具：按 ⇧⌘V，面板在文本光标正下方弹出，输入即搜，回车粘贴到当前应用。\n\n- **粘贴队列：** ⇧⌘C 连续复制几段内容，之后每次 ⌘V 依次粘贴下一段，可拖动调整顺序，适合填写多项表单\n- **扩展商店：** 36 个用 TypeScript 编写的扩展，安装前列出所需权限，同意后才生效\n- **中文界面：** 0.6.0 起支持简体中文和繁體中文，面板搜索支持拼音、注音等输入法\n- **隐私：** 历史只保存在本机，没有遥测，不保存密码管理器复制的内容\n\nSwift 原生开发，MIT 协议，安装包已签名并公证，需要 macOS 26 和 Apple 芯片。\n\n![yabbistir](https://raw.githubusercontent.com/berkaygkc/yabbistir/main/.github/assets/panel.png)\n\n[开源地址](https://github.com/berkaygkc/yabbistir) · [官网](https://berkaygkc.github.io/yabbistir-site/zh-hans/)\n\n翻译如有不妥欢迎指正：https://github.com/berkaygkc/yabbistir/issues/new?template=translation.yml\n",
-    "created_at": "2026-11-10T17:10:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13268"
   }
 ]
