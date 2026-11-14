@@ -1,5 +1,77 @@
 [
   {
+    "id": 13383,
+    "title": "【开源自荐】Harness Hollow：两个人共用一个农场的 3D 合作种田游戏，浏览器里就能玩",
+    "content": "我是 Harness Hollow 的作者。这是一款两人合作的 3D 种田游戏：两个人共用同一个农场，实时一起种地、养动物、在工坊里加工产品，一个人种下的作物另一个人可以收获，双方的操作会立刻出现在彼此的屏幕上。电脑、平板和手机的浏览器都能玩，界面目前只有英文和保加利亚语。\n\n前端是 Three.js（不用打包工具，通过 import map 加载），后端是一个很小的 Node.js 服务（Express + ws）。同一套 JavaScript 规则引擎既在浏览器里预测操作，又在服务器上做最终判定。可以用 `npm install && npm start` 或 Dockerfile 自己部署。\n\n代码主要由 AI 编程助手写成（以 Claude Code 为主，OpenAI Codex 做复查），我负责设计、定方向和试玩验收；插画由 AI 图像模型生成。\n\n在线试玩（无需注册）：https://harvest-hollow.up.railway.app\n\n源码（MIT）：https://github.com/KrasimirKralev/harvest-hollow\n\n![两个浏览器里的同一个农场](https://raw.githubusercontent.com/KrasimirKralev/harvest-hollow/main/docs/media/hero.gif)\n",
+    "created_at": "2026-11-14T16:06:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13383"
+  },
+  {
+    "id": 13382,
+    "title": "【开源自荐】Blog City：把一千多个中文独立博客做成一座可以飞进去的城市",
+    "content": "项目：博客之城 Blog City\n在线：https://play.mukunjin.com\n源码：https://github.com/mukunjin/blog-city\n\n把「中文独立博客列表」（chinese-independent-blogs）里的 1595 个博客做成了一座 3D 城市，每个博客一栋楼。楼高和亮窗由最近一次发文时间决定：越新的楼越高、灯越亮，位置也越靠市中心；RSS 已经抓不到的博客是矮而全黑的一栋，仍然立在那里。\n\n可以拖动、缩放，点一栋楼能看到它的活跃度、最近发文时间和标签。市中心是一座环岛，立着 BLOG CITY 八个字母。\n\n技术上有两点：\n1.  1595 栋楼是同一个 InstancedMesh，一次 draw call 画完。每栋楼的窗户列数、楼层数、亮灯比例都是实例属性，网格和亮灯在 shader 里按 UV 程序化算出来，整个场景没有一张贴图。\n2. 浏览器不发任何网络请求。所有数据在构建时算成一份 350 KB 的 JSON，纯静态托管在Cloudflare Pages，没有后端。\n\n数据每周自动同步：发文时间来自列表站自己的公开状态接口（它每小时检测一次 RSS），我没有自己爬任何站点。\n\n<img width=\"1440\" height=\"735\" alt=\"屏幕截图 2026-11-14 222334\" src=\"https://github.com/user-attachments/assets/0931def9-d0a4-4ca2-825d-c4ebb5379d09\" />\n\n<img width=\"1440\" height=\"737\" alt=\"屏幕截图 2026-11-14 223628\" src=\"https://github.com/user-attachments/assets/17bd49e2-2d17-4604-9dc0-a55eb23395a9\" />\n",
+    "created_at": "2026-11-14T14:43:56Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13382"
+  },
+  {
+    "id": 13381,
+    "title": "【作品自荐】投壶 · 一矢入壶：打开浏览器就能玩的古风小游戏",
+    "content": "自荐一款我做的古风网页小游戏：《投壶 · 一矢入壶》。\n\n试玩地址：https://touhu.mlisten.cn/\n\n![投壶游戏展示图](https://touhu.mlisten.cn/og-touhu.png)\n\n以中国传统投壶为灵感，按住蓄力、松手投箭。投中得筹，投失记一杯罚酒，累计三杯结束一局。随着挑战推进，需要结合风向和风力判断落点，还有连中和投进壶耳的「贯耳」奖励。\n\n- 免费、无需下载，手机和电脑浏览器都能玩，游客可直接开始。\n- 宣纸底色、山水、梅花与朱砂印章，搭配可独立开关的背景音乐和游戏音效。\n- 登录后可参与全球「天下榜」，跨设备同步最高成绩。\n\n\n想把一个简单的投壶玩法做得耐看、顺手，也有一点反复挑战的乐趣。欢迎大家试玩！",
+    "created_at": "2026-11-14T14:42:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13381"
+  },
+  {
+    "id": 13380,
+    "title": "【自荐】灵犀：国学版 MBTI，你是《周易》64 卦里的哪一卦？",
+    "content": "灵犀 Lyncis（https://lyncis.app），一个国学版 MBTI。输入生日，测出你在《周易》里的本命卦、身份名和本命神，还能和朋友合一卦，看你们是什么组合。\n\n背后还有一位 AI 伙伴 Lumi，在你纠结、疲惫的时候，陪你换个角度看看，给自己一点疗愈。不算命，不断吉凶，每一句都有古籍出处。支持中英文，网页直接用。\n\n借东方千年的智慧，更懂自己，也更懂身边的人。这是我们做灵犀的初心。\n\n<img width=\"1080\" height=\"1350\" alt=\"本命卦\" src=\"https://github.com/user-attachments/assets/9a705242-4fa7-4c2f-927f-86a9978ec703\" />\n\n<img width=\"1080\" height=\"1350\" alt=\"合卦\" src=\"https://github.com/user-attachments/assets/fbb3b3d2-ede4-4eab-bf24-e86629728c92\" />",
+    "created_at": "2026-11-14T14:14:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13380"
+  },
+  {
+    "id": 13379,
+    "title": "【开源自荐】phonedriver：让 Claude Code、Codex 等 AI 智能体操作 Android 手机和 iPhone 的开源工具",
+    "content": "项目地址：https://github.com/hridaya423/phonedriver\n\n网站：https://phonedriver.dev\n\n自荐：我是 phonedriver 的作者。我不会中文，这段介绍是机器翻译的，有不通顺的地方请见谅。\n\nphonedriver 是一个免费、开源（AGPL-3.0）的 MCP 服务器和命令行工具，用 Rust 编写。它让 Claude Code、Codex、Cursor 等 AI 智能体直接使用 Android 手机或 iPhone：读取屏幕、点击、输入、滑动，任何 App 都可以，不需要 App 提供 API。\n\n![Claude Code 通过 phonedriver 在真实的 Domino's 网站上点披萨，到付款按钮时停下来询问用户](https://raw.githubusercontent.com/hridaya423/phonedriver/main/.github/assets/demo.gif)\n\n- 智能体看到的不是截图，而是一份带编号的文本列表，按编号点击；每次操作后只返回发生变化的那几行。\n- Android 上不需要安装 App。phonedriver 通过 adb 用 `app_process` 启动一个常驻的小进程（和 scrcpy 的做法相同），让无障碍连接一直保持着。\n- 速度：在一台 Android 17 模拟器上读取 1000 行的列表，p50 为 12.7 ms，`adb shell uiautomator dump` 为 2163.7 ms。在 HONOR X8 真机上是 78.5 ms 对 2506.6 ms。\n- 点到 Pay、Place order、Delete account 这类按钮时，工具会拦住这次点击，先在客户端里询问用户。\n- 也可以用来测试自己的 App：我在一个注册表单里埋了两个 bug，Claude 用 49 秒把两个都找了出来，并写出了复现步骤。\n\n局限：速度数据主要来自模拟器，真机只测过一台 HONOR X8；iOS 需要一台装有 Xcode 的 Mac。基准测试的方法和原始数据都是公开的：https://phonedriver.dev/benchmarks\n\n安装：`claude mcp add phonedriver -- npx -y phonedriver mcp`\n\n仓库里有中文 README。欢迎反馈。\n",
+    "created_at": "2026-11-14T14:05:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13379"
+  },
+  {
+    "id": 13378,
+    "title": "【开源自荐】SourceWeft：开源可自托管的 AI 工作站，多智能体 + 技能库 + 带引用的知识库",
+    "content": "项目地址：https://github.com/SourceWeft/SourceWeft\n\n网站：https://sourceweft.com/zh-CN\n\n自荐：我是 SourceWeft 的作者。\n\nSourceWeft 是一个开源（Apache-2.0）、可自托管的 AI 工作站，可以当作 ChatGPT 和 NotebookLM 的开源替代：把对话、知识库、工作文件和任务执行放在同一个地方，用自己的模型和 Key，部署在自己的电脑或团队服务器上。\n\n![SourceWeft 界面](https://raw.githubusercontent.com/SourceWeft/SourceWeft/main/assets/chat-page.png)\n\n- 带引用的知识库：导入 PDF、网页、笔记、YouTube、Notion、Google Drive、Gmail、Slack 等资料，回答里的引用能点回原文。\n- 多智能体：交代要完成的工作，主 Agent 拆解任务，把调研、规划、执行分给子 Agent，再汇总结果。\n- 技能库和 MCP：内置做演示文稿、网页、图片、会议纪要等技能，也可以加自己的技能，接入 MCP 服务。\n- 沙箱执行：经批准的命令在隔离的临时环境里运行，产物收回到工作文件。\n- 多端可用：Web 端加 macOS / Windows / Linux 桌面端，可用 Docker Compose 自托管。\n\n说明：`enterprise/` 目录是单独的商业许可，其余代码为 Apache-2.0。项目还在 1.0 之前，桌面端目前是 rc 版。这段介绍由 AI 编程助手起草，我本人审阅确认后提交。\n",
+    "created_at": "2026-11-14T13:22:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13378"
+  },
+  {
+    "id": 13377,
+    "title": "【工具自荐】Ampuly Engine：可本地部署的 Agent 项目与业务协作引擎（源码预览）",
+    "content": "大家好，我们是 Ampuly 团队，自荐一个正在征集开发者反馈的源码预览项目。\n\n**项目：** [Ampuly Engine / 安普里引擎](https://github.com/amplichina/ampuly-engine-source)  \n**说明：** [中文 README](https://github.com/amplichina/ampuly-engine-source/blob/main/README.md) · [English README](https://github.com/amplichina/ampuly-engine-source/blob/main/README.en.md)\n\n### 它做什么\n\nAmpuly Engine 是面向项目任务与业务协作的 Python 引擎，包含 Agent 执行、工具调用、审批、项目数据和浏览器控制台源码，可在本地部署。\n\n我们想探索的问题是：在一个本地项目环境里组织 Agent、任务和审批，能否减少团队协作中的配置与交接成本？这次先开放通用引擎供开发者评估，私有业务流、客户数据和账号信息均不包含在公开仓库内。早期基础来自 HKUDS/OpenOPC，已保留来源与第三方许可说明。\n\n### 适合谁，以及当前进度\n\n适合愿意自行准备 Python/Node 环境、从合成数据开始评估的开发者。在新建 Windows 环境中，依赖安装、前端/wheel 构建，以及控制台建号、登录、创建/列出空白项目的基础流程已通过检查。\n\n**仍是开发者源码预览，整体尚未验收通过。** 不附带一键安装器；真实模型/外部 Agent 完整流程、生产业务流程、浏览器端到端交互和第二台实体电脑安装尚未验证。后台用户配置发现及安装进程退出还有已记录的限制，详情写在 README，不建议直接接入生产资料。\n\n### 许可说明\n\n本项目是**源码可见、附条件商用**，不是 OSI 批准的开源许可。适用原创部分的商用需要书面授权：共享方案允许安普里仅为内部研究和产品改进使用有权提供的脱敏业务流设计；保密方案按引擎直接交付产生的实收收入扣除退款及代收税费后计收 3%。两种方案按明确约定申报必要收入汇总，安装不会自动上传业务流或收入。完整边界见 [LICENSE](https://github.com/amplichina/ampuly-engine-source/blob/main/LICENSE)，上游及第三方权利不变。\n\n我们尤其希望收集干净环境安装、项目/任务组织、审批和执行边界方面的反馈。欢迎通过仓库 [Discussions](https://github.com/amplichina/ampuly-engine-source/discussions) 交流，或提交可复现且脱敏的 Issue。感谢审阅。\n\n",
+    "created_at": "2026-11-14T10:25:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13377"
+  },
+  {
+    "id": 13376,
+    "title": "【开源自荐】o8：给 AI 编程代理用的开源代码审查与合并工具",
+    "content": "项目地址：https://github.com/o8-run/o8\n\n网站：https://o8.run\n\n自荐：我是 o8 的作者。\n\no8 是一个免费、开源（MIT）的桌面应用，专门负责审查和合并 AI 编程代理写出来的代码。代码可以在任何地方写：Claude Code、Codex、Cursor 或你自己的编辑器。写完交给 o8，由另一个独立的代理（最好是不同的模型）审查真实的 diff，把问题退回给作者修改，修完再审，通过后合并。\n\n![o8 审查并提交代码](https://raw.githubusercontent.com/o8-run/o8/main/assets/review-and-commit.gif)\n\n- 写代码的代理不能给自己的代码放行。审查由另一个代理完成，批准结果绑定到它审查的那个 commit，代码再改动，批准就失效。\n- 审查不通过时，问题清单会退回给原作者代理修改，最多两轮，每一步都留有记录。\n- 不绑定模型和工具。o8 调用你机器上已经装好的代理 CLI（Claude Code、Codex、OpenCode、Gemini、Cursor、Aider 等），用你自己的订阅或 API Key。\n- 可以通过 `o8` 命令行或任何 MCP 客户端使用。\n- macOS 14+ 提供签名、自动更新的安装包；Linux 有预览版安装包（AppImage、DEB、RPM）。\n\n目前的进度：审查、退回修改、复审已经在主分支可用；统一的受控合并和按项目规则自动合并还在开发中，路线图在仓库的 ROADMAP.md。欢迎反馈。\n",
+    "created_at": "2026-11-14T10:01:18Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13376"
+  },
+  {
+    "id": 13375,
+    "title": "【开源自荐】Zorven：一条命令把本机服务发布到公网 HTTPS 的开源内网穿透工具",
+    "content": "项目地址：https://github.com/tkodcumpeg4/zorven\n\n网站：https://zorven.app\n\n自荐：我是 Zorven 团队的成员。\n\nZorven 是用 Go 写的开源（AGPL-3.0）内网穿透工具，一条命令（如 `zorven 3000`）就能把本机或服务器上的服务发布到公网 HTTPS 地址，可以自己部署，作为 ngrok、Cloudflare Tunnel 的替代。\n\n- 客户端只发起出站连接，不用端口转发、公网 IP 或改防火墙，CGNAT 和公司网络后面也能用\n- 支持 HTTP、WebSocket、SSE，以及原始 TCP/UDP 隧道，自定义域名自动申请 ACME 证书\n- 内置 WAF、速率限制、访问者登录、Webhook 签名校验等边缘安全规则\n- 提供 Windows、macOS、Linux 客户端；`zorven mcp` 内置 MCP 服务，AI 助手可以受控地使用隧道\n- 有免费套餐；采用 open core 模式，隧道本身完整开源，计费、集群、SSO、审计日志为商业版（见 docs/OPEN-CORE.md）\n\n项目比较新（2026 年 9 月创建，最新版本 v0.3.8），欢迎反馈问题。\n",
+    "created_at": "2026-11-14T09:54:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13375"
+  },
+  {
     "id": 13374,
     "title": "【开源自荐】Zyrite：功能完整的开源 Markdown 编辑器，打开文件夹就能多文件写作",
     "content": "Zyrite 是 ZYAILLC 团队做的开源 Markdown 桌面编辑器。原文、实时预览和所见即所得放在同一个窗口里，打开一个文件夹就是一个笔记库。文件始终是你磁盘上的普通 `.md`，不用注册账号，也不经过我们的服务器。\n\n![Zyrite](https://raw.githubusercontent.com/ZYAILLC/zyrite/main/docs/images/cover.jpg)\n\n**完整的 Markdown 写作**\n\n- 三种写法：原文和预览两栏同步滚动、实时预览、所见即所得。所见即所得保存时只重写你改过的块，改一个词，`git diff` 里就只有一行。\n- CommonMark + GFM（表格、任务列表、脚注）、YAML frontmatter、KaTeX 公式和化学式。\n- Mermaid、Graphviz、Markmap 图表，100 多种语言的代码高亮，全部本地渲染，不联网。\n- Obsidian 语法：`[[双链]]`、图片和章节嵌入、`#标签`、callout、`==高亮==`，从 Obsidian 搬过来的笔记不用改。\n- 正则查找替换、多光标、专注模式、打字机模式。\n\n**多文件编辑**\n\n- 打开任意文件夹就有文件树和大纲，外部增删改文件即时同步。\n- 双链补全；重命名或移动笔记时，可以一并更新指向它的链接。\n- 命令面板、快速打开、全文搜索，中文不用分词也能搜到。\n- 也能打开 YAML、JSON、TOML、配置文件、CSV、代码和日志，带语法高亮；JSON / YAML / TOML 边写边校验。GBK、Big5 等旧编码自动识别，按原编码写回。\n\n![原文和预览分栏](https://raw.githubusercontent.com/ZYAILLC/zyrite/main/docs/images/screenshot-editor.jpg)\n\n**其他**\n\n- 审阅 AI Agent 的改动：Claude Code、Cursor、Codex 改了文件，Zyrite 按块标出改动，逐处接受或拒绝；内置 MCP 服务，支持页边批注。\n- 导出 PDF、HTML、Word（不需要装 pandoc），PDF 的公式、图表和中文排版与预览一致。\n- 选中文字可以用 AI 润色、续写、翻译。内置 DeepSeek、通义千问、智谱、Kimi、豆包、腾讯混元、文心、Claude、Gemini、Grok 等 26 个模型服务，也能用 ChatGPT 套餐登录，或者接 Ollama 等本地模型。密钥存在系统钥匙串里。\n\n基于 Tauri + Rust + React，支持 macOS、Windows、Linux，Apache-2.0 许可。macOS 和 Windows 安装包都不到 9 MB。界面默认英文，可以在设置里切换为简体中文。\n\n- 项目地址：https://github.com/ZYAILLC/zyrite\n- 下载：https://github.com/ZYAILLC/zyrite/releases/latest\n\n利益相关：我们是项目开发团队 ZYAILLC。\n",
@@ -20,7 +92,9 @@
     "title": "【开源自荐】Lean Init IDE：在浏览器里跑真正的 Lean 4 语言服务器",
     "content": "学 Lean 4 之前通常要先在本地装工具链、配编辑器插件，不少人卡在这一步就没往下学。我做了一个运行在浏览器里的 Lean 4 练习环境，不用装任何本地软件，打开网页就能写证明、看报错和实时 Goal。\n\n<img width=\"2876\" height=\"1548\" alt=\"image\" src=\"https://github.com/user-attachments/assets/66cbf06d-8d54-44e0-b455-ab4950946d9f\" />\n\n- 编译器和语言服务器（Lean 4.34.1）以 WebAssembly 跑在浏览器 Web Worker 里，所有检查和求值都在本地完成，代码不会上传。\n- 首次点击「启动 Lean」会下载约 102MB 的运行时（用 zstd 压缩并做了分片校验，国内会优先走镜像），之后走浏览器缓存。\n- 编辑器基于 Monaco，接了真实的语义补全、悬停提示和报错跳转，输入 `\\to`、`\\forall` 这类缩写会自动转成对应的 Unicode 符号。\n- 配套写了 22 节中英双语入门课，从基础逻辑一直讲到归纳、素数和插入排序验证。页内代码块点一下就能直接运行（复用进程，一般不到半秒出结果），练习会带到编辑器并自动保存草稿。\n\n在线地址：https://criticalthinking.de5.net\nGitHub 仓库：https://github.com/3y3y3y-huaiji/lean-init-ide\n\n技术栈主要是 Lean 4 Init (WebAssembly)、`@wasm-idle/lsp`、Monaco、Service Worker 和 Cloudflare R2，Apache-2.0 / MulanPSL-2.0 双协议开源。\n\n目前只带 Lean 自带的 `Init` 标准库，不包含 `Mathlib`，需要浏览器支持 Cross-Origin Isolation，用 Chrome / Edge 桌面端体验比较稳。欢迎试用和提意见。\n",
     "created_at": "2026-11-14T03:15:19Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/13372"
   },
   {
@@ -88,22 +162,6 @@
     "url": "https://github.com/ruanyf/weekly/issues/13364"
   },
   {
-    "id": 13363,
-    "title": "【产品自荐】PixBloom：一张商品照片生成整套电商主图",
-    "content": "网址：https://pixbloom.org\n\nPixBloom 是一个 AI 生图网站，主要给电商卖家和做内容的人用：\n\n- 电商套图：上传一张商品实拍（手机随手拍也行），一次生成白底主图、使用场景图、材质细节图和多角度图，4 张都是独立图片，不是拼图\n- 一句话生成小红书封面、春节和节日海报、头像、壁纸等 20 多种场景，也支持图生图\n- 无水印下载\n\n收费方式：按张消耗积分（每张 10 积分），首单尝鲜包 ¥9.9 可生成 4 张；生成失败自动退回积分。",
-    "created_at": "2026-11-13T17:28:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13363"
-  },
-  {
-    "id": 13362,
-    "title": "【自荐】雅思爱我：一屏一个词的雅思和四六级背单词网站",
-    "content": "网址：https://yasilove.me\n\n一个人做的背单词网站，打开即用。\n\n- 三本词书：雅思 5999 词、四级 3808 词、六级新增 1933 词\n- 一屏只放一个词：英美音标、中文核心义、一句记忆钩子和雅思语境例句\n- 每天按计划学新词，到期自动复习，测验答错的词进错词本\n- 「精听」：名人演讲逐句精听，字幕里的生词点一下就能查\n- 登录同一邮箱可多端同步学习记录\n\n做它的初衷很简单：给英语基础不好、又得考雅思的人一个不吵的背词地方。欢迎试用和提意见。\n\n—— 315fang",
-    "created_at": "2026-11-13T13:44:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13362"
-  },
-  {
     "id": 13361,
     "title": "【自荐】雅思爱我：一屏一个词的雅思和四六级背单词网站",
     "content": "网址：https://yasilove.me\n\n一个人做的背单词网站，打开即用。\n\n- 三本词书：雅思 5999 词、四级 3808 词、六级新增 1933 词\n- 一屏只放一个词：英美音标、中文核心义、一句记忆钩子和雅思语境例句\n- 每天按计划学新词，到期自动复习，测验答错的词进错词本\n- 「精听」：名人演讲逐句精听，字幕里的生词点一下就能查\n- 登录同一邮箱可多端同步学习记录\n\n做它的初衷很简单：给英语基础不好、又得考雅思的人一个不吵的背词地方。欢迎试用和提意见。\n\n—— 315fang",
@@ -114,7 +172,7 @@
   {
     "id": 13360,
     "title": "【开源自荐】QRdx：开源二维码生成平台，带 React 组件库、命令行工具和免 key 图片 API",
-    "content": "项目地址：https://github.com/bucharitesh/qrdx\n网站：https://qrdx.dev\n\nQRdx 是一个开源的二维码平台。浏览器里可以免费生成带样式的二维码，不用注册，没有水印，还会给设计打一个\"扫码难度\"分数。\n\n给开发者的部分：\n- npm 包 qrdx（MIT）：React 组件和二维码引擎\n- 命令行：npx @qrdx/cli generate \"https://example.com\" -o qr.svg\n- 图片 API，不需要 key：https://api.qrdx.dev/v1/qr?data=https://example.com\n- 远程 MCP 服务器：https://mcp.qrdx.dev/mcp\n\n动态二维码和扫码统计是付费功能。Web 应用是 AGPL 协议，可以用 Docker Compose 自部署。\n",
+    "content": "项目地址：https://github.com/qrdxinc/qrdx\n网站：https://qrdx.dev\n\nQRdx 是一个开源的二维码平台。浏览器里可以免费生成带样式的二维码，不用注册，没有水印，还会给设计打一个\"扫码难度\"分数。\n\n给开发者的部分：\n- npm 包 qrdx（MIT）：React 组件和二维码引擎\n- 命令行：npx @qrdx/cli generate \"https://example.com\" -o qr.svg\n- 图片 API，不需要 key：https://api.qrdx.dev/v1/qr?data=https://example.com\n- 远程 MCP 服务器：https://mcp.qrdx.dev/mcp\n\n动态二维码和扫码统计是付费功能。Web 应用是 AGPL 协议，可以用 Docker Compose 自部署。\n",
     "created_at": "2026-11-13T11:58:11Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13360"
@@ -161,7 +219,7 @@
   },
   {
     "id": 13354,
-    "title": "【开源自荐】会译 HuiYi：完全免费的 Windows 本地会议助手，支持实时语音，字幕翻译和会议纪要",
+    "title": "【开源自荐】会译 HuiYi：完全免费的 Windows 本地会议助手，支持实时语音，字幕翻译和会议纪要以及词库",
     "content": "自荐一个我开发的开源项目 **会译 HuiYi**，一个**完全免费、在 Windows 本地运行的会议助手**，支持实时字幕、翻译、会议纪要和同声传译。\n\n软件功能全部开放，采用 Apache-2.0 许可证。语音识别和发言人区分在电脑上完成，会议记录保存在本地。**搭配本地 Ollama 模型，还可以在自己的电脑上生成纪要，无需支付云端模型 API 费用。**\n\n![会译会议记录与会议纪要](https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/main-notes.png)\n\n### 同时记录电脑和麦克风的声音\n\n开线上会议时，对方的声音从电脑里出来，自己的声音从麦克风进去。会译可以同时记录这两路声音，把讨论整理成带发言人的逐字稿。\n\n打开软件，点击「开始会议」即可收听，适用于腾讯会议、飞书、钉钉、Zoom，以及浏览器里播放的课程和访谈。\n\n<img src=\"https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/panel-ready.png\" width=\"320\" alt=\"点击开始会议后收听\">\n\n### 边听边看双语字幕\n\n支持识别中、英、日、韩和粤语，显示原文与译文。实时面板放在屏幕边上，方便开会或看外语视频时对照，也可以使用悬浮字幕。\n\n<img src=\"https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/panel-lines.png\" width=\"380\" alt=\"发言人和双语逐字稿\">\n\n![会译悬浮字幕](https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/subtitle.png)\n\n### 自动整理纪要和待办\n\n把讨论按议题整理，提取结论、待办事项、负责人和截止日期。支持导出 **Word、Markdown 和文本**，方便继续编辑和分享。\n\n<img src=\"https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/panel-notes.png\" width=\"380\" alt=\"实时面板中的会议纪要\">\n\n![按项目周会模板生成的纪要](https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/notes-weekly.png)\n\n### 发言人可以改名，原文可以回查\n\n根据声音区分不同的人，点击发言人名称就能修改，逐字稿和纪要同步更新。会议记录支持分组、归档，以及搜索纪要和逐字稿内容。\n\n<img src=\"https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/speaker-name.png\" width=\"340\" alt=\"修改发言人姓名\">\n\n![会议双语逐字稿](https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/main-lines.png)\n\n### 不同会议使用不同模板\n\n内置周会、需求评审、客户拜访、面试、复盘等 **15 个纪要模板**，也可以根据自己的工作方式创建模板。\n\n![会译纪要模板中心](https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/templates.png)\n\n### 对接本地 Ollama，免费生成纪要\n\n在「设置 → AI 服务」中选择「本地 Ollama」，填写自己的服务地址，例如 `http://localhost:11434`，即可读取已经下载的模型。也支持局域网内其他电脑的 Ollama 服务。\n\n**API key 可以留空**，选择模型后点击「保存并验证」即可使用。搭配本地模型，语音识别、发言人区分和纪要生成都可以在自己的电脑上完成。运行速度取决于电脑配置和模型大小。\n\n也可以接入 DeepSeek、通义千问等云端模型，相关 API 费用由所选服务商收取。\n\n![会译 AI 服务配置页](https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/settings-ai.png)\n\n### 把自己的话翻译后说进会议\n\n按住右 Ctrl 讲话，松开后翻译并播报。配合 VB-CABLE 虚拟麦克风，可以把译后的语音送进会议软件。\n\n![会译同声传译设置](https://raw.githubusercontent.com/LingyiChen-AI/huiyi/main/docs/images/settings-speak.png)\n\n另外，也支持导入本地录音和视频，或通过 yt-dlp 下载视频链接的音轨后识别，适合整理已有的会议录音、课程和访谈。\n\n目前支持 **Windows 10 / 11 x64**，提供安装包和免安装版。首次启动需要下载识别模型，视频链接导入需要 FFmpeg。\n\n欢迎试用，也欢迎通过 Issue 反馈问题和建议。\n\n- [项目源码与使用说明](https://github.com/LingyiChen-AI/huiyi)\n- [下载 Windows 安装包](https://github.com/LingyiChen-AI/huiyi/releases/latest/download/HuiYi-Setup.exe)\n",
     "created_at": "2026-11-13T08:44:27Z",
     "labels": [],
@@ -748,61 +806,5 @@
     "created_at": "2026-11-11T06:12:19Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13281"
-  },
-  {
-    "id": 13280,
-    "title": "【文章自荐】一次 18 分钟的 AI 运行里，有 13 分钟在等不会回来的响应",
-    "content": "[一次 18 分钟的 AI 运行里，有 13 分钟在等不会回来的响应](https://juejin.cn/post/7706584659241615379)（中文）\n\n作者的开源多智能体项目，线上一次运行要 18 分钟，其中 13 分钟耗在已经不再返回数据的请求上。本文记录了排查过程：先给每次请求留记录，再改成流式输出，重试时换新连接，最后用一个不计费的“链路探测”找到原因——从境外访问大陆的模型端点，较大的请求会间歇性卡住。文章也写了为什么最终没有根治，以及怎样让这类失败不由用户买单。文中数字都能在项目公开的 PR 里查到。\n\n原文地址：https://juejin.cn/post/7706584659241615379\n知乎同文：https://zhuanlan.zhihu.com/p/2103843257109299726\n\n说明：文章在 AI 辅助下完成，我是作者。项目本身此前在 #12806 自荐过，这次投的是文章。\n",
-    "created_at": "2026-11-11T05:50:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13280"
-  },
-  {
-    "id": 13279,
-    "title": "【开源自荐】quark-skill：一句话让 AI 搜网盘分享并转存到夸克（Agent Skill）",
-    "content": "自荐一个开源项目 quark-skill：给 Claude Code、Codex、Cursor 等智能体用的技能。在对话里说一句「帮我找一下线性代数的课件，存到夸克」，它会去搜、列出候选让你挑，确认后转存到你的夸克网盘，再回查告诉你存在了哪个目录。\n\n项目地址：https://github.com/TTNAN/quark-skill\n\n![演示：一句话搜索并转存到夸克网盘](https://raw.githubusercontent.com/TTNAN/quark-skill/main/assets/demo.gif)\n\n主要特点：\n\n- 只拼接两段现成能力：PanSou 公开搜索 API 找夸克分享链接，夸克官方 Skill（quarkclouddrive）的 saveas 负责转存。不抓 cookie、不逆向接口、不部署服务。\n- 搜索结果只留夸克链接，按链接去重、按日期从新到旧列前 5 条，标出哪些需要提取码。\n- 你点头才转存；链接失效时原样报错并推荐下一条，不会自己连着试。\n- PanSou 冷启动时第一次常返回空结果，脚本会自动退避重试，避免误报「搜不到」。\n- 脚本只用 Python 标准库，附单元测试和 GitHub Actions CI。\n\n安装（需先装好夸克官方 Skill 并完成一次登录授权）：\n\n```bash\nnpx skills add TTNAN/quark-skill -g -y\n```\n\n项目不提供、不托管任何资源，请只转存你有权保存的内容。\n\n开源许可证：MIT。\n",
-    "created_at": "2026-11-11T05:49:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13279"
-  },
-  {
-    "id": 13278,
-    "title": "【开源自荐】Davish：SSH 连上服务器，就是一个桌面，服务器端零安装",
-    "content": "**项目地址**：https://github.com/2hjaito/davish\n\n![Davish 演示](https://github.com/2hjaito/davish/blob/main/assets/demo.gif?raw=true)\n\n常见的服务器面板（比如宝塔、1Panel）都要在服务器上装一套服务、开一个 Web 端口。Davish 换了个思路：界面和逻辑全部跑在你自己的电脑上，服务器端只需要一个普通的 SSH。\n\n- 服务器端什么都不用装，不开新端口，没有常驻 agent\n- 直接读取本地 `~/.ssh/config` 和密钥，已有的主机配置开箱即用\n\n连上之后，看到的是一个类似桌面操作系统的界面：菜单栏、Dock、可拖拽和分屏的窗口、深色模式。\n\n内置约 20 个工具：终端、SFTP 文件管理与编辑、CPU/内存/磁盘实时监控、Docker、日志、Nginx、Cron、服务管理、端口与 ufw 防火墙、SSH 登录安全分析等。\n\n技术栈为 Go + Wails，前端 Svelte 5，支持 Windows / macOS / Linux，开源协议 GPL-3.0。\n\n我是作者，欢迎试用和反馈。",
-    "created_at": "2026-11-11T04:54:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13278"
-  },
-  {
-    "id": 13277,
-    "title": "【开源自荐】imagegen-swarm：把六个图像引擎放进同一条队列（Claude Code / Codex 技能）",
-    "content": "自荐一个开源项目 **imagegen-swarm**：给 Claude Code 和 Codex 用的技能，把一批图同时交给 Codex、即梦（Jimeng）、Grok、Gemini、Muse 和 Lovart。每个图像工具都有自己的额度，按周或按月重置，常常用不完；单独用一个引擎又慢，额度用尽整批就会停。这个技能把六个引擎放进同一条队列，空闲的引擎接下一张图。\n\n项目地址：https://github.com/Ekko237/imagegen-swarm\n\n![50 张图用了 2.3 分钟，比单引擎快 11 倍，在 8 GB M1 MacBook Pro 上（一次实测）](https://github.com/Ekko237/imagegen-swarm/raw/main/docs/efficiency.png)\n\n主要特点：\n\n- 六个引擎一起跑，各开几条通道，空闲通道接下一个能处理的任务。只需登录其中一个即可，每多一个引擎，整批会更快。\n- 某个引擎报告额度用尽、没有登录或没有安装时，会把它关掉，任务退回队列，换还没试过的引擎重试（默认最多 3 个）。\n- 会检查每张图是这次新生成的；比例不对会换引擎重做；输出是真正的 PNG。同一份任务列表再跑一遍，已完成的图会跳过。\n- 通道数按内存调整：4 GB 电脑 12 条，16 GB 及以上 34 条。\n- 多数引擎不需要图像 API Key：Codex 和即梦用已有账号；Grok、Gemini、Muse 用各自登录；只有 Lovart 用官方 AK/SK，保存在本机。即梦还可以生成视频。\n- README 里有一次实测：在 8 GB M1 MacBook Pro 上，50 张图用了 2.3 分钟，比单独用一个引擎快 11 倍。这只是一次测试，速度取决于各引擎当时还有多少额度；那次 Lovart 和 Muse 用的是免费套餐，Gemini 和 Lovart 中途额度用尽。\n\n安装（还需要 Node.js 18+，以及带 Pillow 的 Python 3：`python3 -m pip install pillow`。生成前至少登录一个引擎）：\n\n```bash\nclaude plugin install imagegen-swarm --marketplace Ekko237/imagegen-swarm\n```\n\n```bash\ncodex plugin marketplace add Ekko237/imagegen-swarm\ncodex plugin add imagegen-swarm@imagegen-swarm\n```\n\n```bash\nnpx skills add https://github.com/Ekko237/imagegen-swarm -a claude-code -a codex\n```\n\n开源许可证：MIT。\n",
-    "created_at": "2026-11-11T03:56:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13277"
-  },
-  {
-    "id": 13276,
-    "title": "【开发者自荐】摄秘 SheMi：iPhone 隐私相机，拍照不进系统相册",
-    "content": "摄秘（SheMi）是一款 iPhone 隐私相机。和「先拍后藏」的加密相册不同，它的拍摄入口就在 App 内：按下快门，照片直接存入 App 私有沙盒，不进系统相册、不参与 iCloud 同步，也不上传任何服务器。\n\n- 密码 + Face ID / Touch ID 解锁，凭据存 Secure Enclave\n- 替身相册：替身密码进入另一套相册\n- 拍摄/导入自动剥离 EXIF 位置与机型信息\n- 导出三路径：系统相册 / ZIP / 局域网\n- 无账号、无广告，除用户主动反馈外不收集数据\n\n定价：30 天免费试用，之后 ¥39 一次买断（当前首发价）。\n\n官网：https://www.ruisstech.com/shemi/\nApp Store：https://apps.apple.com/cn/app/id6823223493\n\n我是开发者，欢迎反馈。\n",
-    "created_at": "2026-11-11T03:30:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13276"
-  },
-  {
-    "id": 13275,
-    "title": "【开源自荐】Helmp：读起来像 help me 的 macOS 启动器，截图识字、剪贴板、翻译都在一个面板里",
-    "content": "Helmp 是我用 Rust 写的 macOS 启动器，名字读起来像 \"help me\"。按 ⌥Space 唤起一个面板，可以搜应用、文件和系统设置，也能在里面直接做几件日常小事：\n\n- 应用搜索支持拼音和首字母（输入 wx 找到微信），名字里有空格、连字符也不影响匹配。\n- 剪贴板历史：单击看详情，双击复制。\n- 截图（⇧⌘1）先冻结屏幕再框选，选区可以调整，右下角可以保存、复制、钉在桌面上。截图识字（⇧⌘2）松开鼠标就出结果，文字自动复制，用的是系统自带的 Vision，离线识别。\n- 翻译：接你自己的模型 API Key，Key 存在系统钥匙串里。\n- 插件：用一个 plugin.json 声明命令（打开链接、调用 HTTP 接口、运行脚本），比如几行配置就能把文字发到 flomo。有插件中心，也可以让 Claude Code 直接帮你写插件。\n- 自带 MCP 服务：Claude Code 等 coding agent 可以调用 Helmp 的功能，有副作用的操作会先在面板里请你确认。\n\n![Helmp](https://blog.peterchen97.cn/helmp/assets/shots/apps-zh-light.png)\n\n项目以 MIT 协议开源，免费使用。安装包已签名并通过 Apple 公证，支持 macOS 15 及以上。内置自动更新，国内从七牛下载，不需要翻墙。\n\n主页：https://blog.peterchen97.cn/helmp/\n源码：https://github.com/PeterChen1997/helmp\n下载：https://github.com/PeterChen1997/helmp/releases/latest （国内：https://blog.peterchen97.cn/helmp/releases/0.4.1/Helmp-0.4.1.dmg ）\n作者博客：https://blog.peterchen97.cn\n\n欢迎在 GitHub Issues 里反馈问题和建议。\n",
-    "created_at": "2026-11-11T03:20:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13275"
-  },
-  {
-    "id": 13274,
-    "title": "【开源自荐】ast-bro v4.3.0 支持 windows",
-    "content": "这次的重点是 windows 支持,顺便把搜索重写了一遍\n\nwindows x64 现在是正式支持的平台了,npm install -g @ast-bro/cli 或者 uv tool install ast-bro 直接就能装,第一次运行会自动下载 ci 测试过的二进制并按版本缓存,也不用额外装 visual c++ 运行库\n\n语义搜索重写了,切块跟着声明走,不再按字节数硬切,排序时先用文件大纲给文件打分再排代码块,同一个查询每次结果都一样,每条结果还带字节偏移\n\n不再悄悄截断,deps, reverse-deps, impact, trace 被 --depth 截断时会明确告诉你,以前一个有 54 个导入方的文件,depth 1 的 reverse-deps 只报 33 个,还什么提示都没有\n\nread hook 也升级了,文件太大被 claude code 直接拒绝读取的时候,agent 现在能拿到一份地图,而不是一个光秃秃的报错,地图太长时会优先保住公开接口,提示里也写清楚了地图只是索引,不是文件本身\n\nmap 输出太大时,也会提示你换成更省的 digest 写法,cli 和 mcp 都有\n\n没有破坏性改动,旧的搜索索引第一次用时会自动重建,支持 rust python typescript go java 等语言,可以当 cli, mcp server, 或者编码 agent 工具用,macos arm64 和 windows x64 都有预编译版本,homebrew, npm, pypi, crates.io 都能装\n\nhttps://github.com/aeroxy/ast-bro",
-    "created_at": "2026-11-11T03:17:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13274"
   }
 ]
