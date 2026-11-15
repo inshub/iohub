@@ -1,5 +1,45 @@
 [
   {
+    "id": 13409,
+    "title": "【工具自荐】FlashData：YouTube 下载、YouTube 数据与 Google 搜索 API，附开源 MCP 客户端",
+    "content": "推荐项目：FlashData。它把 Google 搜索、YouTube 数据和媒体下载接入 REST API、MCP 与命令行，适合需要程序化处理搜索结果或视频资料的开发者。\n\n- 官网：https://flashdata.dev/zh?utm_source=ruanyfweekly\n- 文档：https://flashdata.dev/docs?utm_source=ruanyfweekly\n- MCP 开源客户端：https://github.com/flashdatadev/flashdata-mcp\n\n三个产品分别做什么：\n\n1. **YouTube Download**：通过异步任务、批量请求或文件式 Bulk 集合，把视频、音频或指定片段交付到用户自己的 Amazon S3、Google Cloud Storage、Azure Blob 或 S3 兼容存储。需要目标存储写入权限及相应内容使用权；按实际交付媒体字节计费，存储服务商费用另计。\n2. **YouTube Data**：返回视频搜索、元数据、已有字幕或转录、频道信息、联想词和许可标签等结构化数据。标准搜索每次最多20条，扩展搜索最多700条，受实际可用结果限制且计价不同；Bulk 可处理视频ID文件中的元数据、已有字幕和许可检查。不提供语音转写或字幕翻译，许可标签也不代表训练或再利用授权。\n3. **Google Search**：返回网页、新闻、图片、购物、视频和地点搜索的结构化结果，可设置国家、语言和位置，支持实时、异步与批量请求。返回链接、摘要及可用字段，不是抓取每个目标网页的完整正文；每个查询分别计费。\n\n一个使用方向是先检索相关视频、读取已有字幕并保留原链接和时间戳，供研究或知识库整理；需要媒体文件时再单独发起下载到自己的存储。开源客户端提供工具清单、参数、成本查询和配置示例，可以先读取定价、余额与限额，再决定是否调用付费查询。\n\n**费用与边界**：MCP 客户端采用 MIT 许可证；FlashData 托管服务和数据调用另按其服务条款及 Credits 计费，客户端开源不代表 API 永久免费。符合条件的新账号完成邮箱验证和账号设置后，可获得三产品共享的一次性试用 Credits，无需信用卡；不是每个产品各送一份，也不是每月续发的免费额度。具体价格与限制以当前文档为准。用户配置自己的 API Key；不要将密钥或存储凭据放进公开 Issue。\n\n**关系披露**：这是受项目方委托的自荐，使用 AI 辅助整理事实说明，供编辑审核。本次未调用付费 API，不声称实测性能或保证收录。\n",
+    "created_at": "2026-11-15T17:30:13Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13409"
+  },
+  {
+    "id": 13408,
+    "title": "[工具自荐] VidQuark — 免费 TikTok MP4 下载与 MP3 转换，附文件查找教程",
+    "content": "VidQuark 是一款免费网页工具，支持从单条公开的 TikTok 视频链接获取可用的 MP4 视频，或将音频转换为 MP3，使用时无需注册 VidQuark 账号。\n\n最近在下载结果卡片的按钮旁加入了 iPhone、Android 和 PC／Mac 的文件查找教程，帮助用户找到浏览器保存的文件。独立 MP3 页面提供粘贴链接、Find audio、Download Audio MP3 的操作流程，并附 30 秒英语演示。\n\n- 官网入口为 [VidQuark](https://vidquark.com/)。\n- 音频转换可直接打开 [TikTok to MP3 工具](https://vidquark.com/tiktok-to-mp3?utm_source=github&utm_medium=community&utm_campaign=weekly_20261116)。\n- 演示介绍了输入链接、选择音频和保存文件的过程。[30 秒操作演示](https://vidquark.com/media/tiktok-mp3-walkthrough-20261113.mp4)\n\n界面及教程目前为英文，面向国际版 TikTok。媒体在服务器端处理，网站有广告和请求频率限制，可用格式、清晰度和结果取决于来源及连接。请只保存自己拥有或获准使用的内容。\n\nWindows Chrome 的 MP4 和 MP3 下载流程已实测，实体 iPhone、Android 的文件保存操作仍在收集验证。欢迎反馈使用设备、浏览器及具体错误提示。\n\n本次为项目方自荐，正文由获授权的 Codex 助手整理提交。",
+    "created_at": "2026-11-15T17:18:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13408"
+  },
+  {
+    "id": 13407,
+    "title": "【开源自荐】antigravity-zh-launcher：Google Antigravity 无损双入口中文启动器",
+    "content": "我是作者 guuguo，想自荐一个桌面端小工具：[antigravity-zh-launcher](https://github.com/guuguo/antigravity-zh-launcher)（Shell / PowerShell / JS，MIT）。\n\n## 它解决什么问题\n\nGoogle Antigravity 目前原生全英文。直接修改应用安装包打汉化补丁容易破坏代码签名、触发系统文件保护，官方版本一更新补丁就会失效；而普通菜单汉化往往会漏掉对话里的动态思考时间、工具运行步骤（`Analyzed / Editing / finished`）以及提示词语言漂移问题。\n\n`antigravity-zh-launcher` 的思路是不碰原版安装包，额外创建一个独立的「Antigravity 中文」桌面入口：平时点原版图标还是纯英文原样，点中文图标才加载中文界面叠加层与中文思考提示词，退出或切回后自动清理还原。\n\n## 主要特点\n\n- **不改原版安装包与签名**：原版 Antigravity 丝毫不动，官方自动更新不受影响。\n- **双入口环境隔离**：通过 `agy-zh` / `agyd`（或两个桌面图标）在中英文会话和提示词规则之间无损切换。\n- **覆盖 Agent 执行链词条**：界面词库复用 MIT 开源项目 `yuexps/Antigravity-Hans`，并针对运行期 `Task Log`、步骤动词和相对时间做了补全对齐。\n- **macOS / Windows 双平台一键安装与卸载**：两边均提供单行安装和彻底卸载还原脚本。\n\n## 效果截图\n\n![原版英文与独立中文双图标并存](https://raw.githubusercontent.com/guuguo/antigravity-zh-launcher/main/docs/assets/real-dual-icons.png)\n\n![全中文界面、执行链路与 AI 中文思考实拍](https://raw.githubusercontent.com/guuguo/antigravity-zh-launcher/main/docs/assets/real-ui-zh.png)\n\n## 快速试用\n\n- **macOS**：`curl -fsSL https://raw.githubusercontent.com/guuguo/antigravity-zh-launcher/main/install.sh | bash`\n- **Windows (PowerShell)**：`irm https://raw.githubusercontent.com/guuguo/antigravity-zh-launcher/main/install.ps1 | iex`\n- **已发布版本**：[v1.0.0 Release](https://github.com/guuguo/antigravity-zh-launcher/releases/tag/v1.0.0)\n\n项目仅处理客户端本地汉化与双入口切换，不包含代理或免 TUN 功能。欢迎 macOS / Windows 用户试用并在仓库反馈漏翻词条或兼容问题。",
+    "created_at": "2026-11-15T16:27:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13407"
+  },
+  {
+    "id": 13406,
+    "title": "【开源自荐】AI-Memory-Book：给编程 AI 一份可回读原文的本地工程记忆",
+    "content": "我是项目维护者 Afloat16，想自荐一个面向多会话开发的开源工具：[AI-Memory-Book](https://github.com/Afloat16/AI-Memory-Book)（Python，MIT）。\n\n## 它解决什么问题\n\n用编程 AI 做长周期任务时，换一个会话或客户端，很容易找不到之前确认的接口约束、修正过的实验参数，以及已经失败过的方案。AI-Memory-Book 把项目组织成书、任务组织成章节，将原始对话保存为可定位的证据页；新会话可以通过 MCP 检索相关记录，再回读原文继续工作。\n\n例如仓库里的工程演示包含：训练数据输入契约、负权路径算法的失败尝试、推理 KV cache 参数修正，以及不同项目中同名参数的隔离查询。\n\n## 有哪些实用特点\n\n- **本地运行**：默认使用 SQLite/FTS5 建索引和检索，不需要额外的记忆提取模型调用或 embedding 服务。\n- **结果能核对**：返回来源引用与页面定位，方便检查约束来自哪里、是否已经被后续修正。\n- **适合工程上下文**：按项目限定查询范围，默认最多返回 5 条、总计 2400 字符；当前源码支持 `HTTPParser` / `http_parser` 等标识符变体查询。\n- **跨客户端接入**：提供 Claude Code、Codex、Gemini 等客户端的 MCP 配置说明。不同客户端的自动记录捕获能力在文档中分别说明。\n- **便于自己验证**：提供可运行的工程示例、检索评测脚本、数据库备份与检查命令，以及安装和跨平台 CI。\n\n## 试用入口\n\n- [中文 README 与安装说明](https://github.com/Afloat16/AI-Memory-Book/blob/main/README.zh-CN.md)\n- [工程工作流示例](https://github.com/Afloat16/AI-Memory-Book/blob/main/docs/engineering-workflows.md)\n- [MCP 客户端配置](https://github.com/Afloat16/AI-Memory-Book/blob/main/docs/integrations.md)\n\n按 README 从当前 `main` 源码安装后，在仓库目录中可试运行：\n\n```bash\nmemory-book --db ./demo-memory.db import examples/engineering-workflow.json --format canonical\nmemory-book --db ./demo-memory.db recall \"current kv_cache block_size\" --project inference-demo\n```\n\n项目还在早期开发阶段，示例和评测使用的是开发用数据，不代表真实业务里的生产力提升。欢迎有多会话开发、算法实验记录或跨客户端交接需求的朋友试用，尤其想听到“旧约束被误召回”或“关键原文没有找到”的具体案例。",
+    "created_at": "2026-11-15T16:01:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13406"
+  },
+  {
+    "id": 13405,
+    "title": "【工具自荐】EssayPrinter：去除博客广告并通过Markdown转译Typst实现再排版",
+    "content": "## 产品信息\n- 名称：EssayPrinter\n- 仓库：https://github.com/RobertTerisa/EssayPrinter\n- 平台：本地编程平台/Python\n\n## 介绍\nEssayPrinter是一个本地排版工具，通过LLM语义提取json化的AST实现去除博客广告等非正文内容并实现再排版。通过死门禁schema防止幻觉，未通过门禁无PDF产物。以下为效果图：\n\n\n<img width=\"1280\" height=\"764\" alt=\"before\" src=\"https://github.com/user-attachments/assets/8a9d3f9a-1188-4a91-b1e6-0c529908b721\" />\n\n<img width=\"1280\" height=\"764\" alt=\"after\" src=\"https://github.com/user-attachments/assets/9f235de5-16ce-4ac8-bf53-28919335ccdc\" />\n\n## 核心功能\n- 通过LLM语义提取正文内容\n- 通过AST将markdown转译为Typst用于排版\n- 输出可用于打印，纸质阅读的PDF\n\n## 适合场景\n- 可以用于博客的沉浸式纸质阅读和批注",
+    "created_at": "2026-11-15T13:55:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13405"
+  },
+  {
     "id": 13404,
     "title": "【资源自荐】Shader Learn：中英双语 GLSL 互动学习与在线编辑器",
     "content": "项目地址：https://shader-learn.com/\n中文学习入口：https://shader-learn.com/zh/learn\n在线编辑器：https://shader-learn.com/playground\n\n我做了一个中英双语的 GLSL 互动学习平台 Shader Learn，想推荐给周刊的读者。\n\n它把学习路径、练习、函数参考和实时着色器预览放在一起：读者可以修改代码，直接观察颜色、形状和动画如何变化，不用先搭建本地 WebGL 环境。\n\n几个可以直接查看的页面：\n\n- [GLSL 函数参考](https://shader-learn.com/glsl)：函数解释、常见问题和可修改示例。\n- [smoothstep 示例](https://shader-learn.com/glsl/smoothstep)：通过修改代码理解边缘过渡。\n- [效果示例库](https://shader-learn.com/examples)：效果代码、解释与实时预览。\n- [Playground](https://shader-learn.com/playground)：实时编辑、时间控制、纹理和 uniform 配置。\n\n适合刚接触 Shader 的前端开发者和创意编程学习者。部分教程需要 Pro，公开函数参考、示例和 Playground 可用于体验。\n\n我是作者，欢迎试用和反馈。谢谢！",
@@ -54,7 +94,7 @@
   {
     "id": 13398,
     "title": "【自荐】tinybrain：从零做中文小模型，600 亿 token 数据集和全部代码开源",
-    "content": "tinybrain 是一个以中文为主的小语言模型项目：数据清洗、分词器、模型、预训练、SFT、蒸馏到强化学习，每一步的代码都用 PyTorch 从零写出来，数据集（26 个公开来源，分 1B / 5B / 20B / 60B token 四档）也在 ModelScope 开源。一张 16GB 显卡就能从头训，README 里把每个部件的原理和公式写清楚了，适合想搞懂大模型怎么做出来的人。\n\n代码：https://github.com/cai114514114514/tinybrain 数据：https://www.modelscope.cn/datasets/caiwangzsnm/tinybrain-dataset\n\n<img width=\"1920\" height=\"1080\" alt=\"0-封面\" src=\"https://github.com/user-attachments/assets/66fc0354-3db4-4b9c-87b1-cafa33cd71fe\" />",
+    "content": "tinybrain 是一个以中文为主的小语言模型项目：数据清洗、分词器、模型、预训练、SFT、蒸馏到强化学习，每一步的代码都用 PyTorch 从零写出来，数据集（26 个公开来源，分 1B / 5B / 20B / 60B token 四档）也在 ModelScope 开源。一张 16GB 显卡就能从头训，README 里把每个部件的原理和公式写清楚了，适合想搞懂大模型怎么做出来的人。\n\n代码：https://github.com/logitcai/tinybrain 数据：https://www.modelscope.cn/datasets/caiwangzsnm/tinybrain-dataset\n\n<img width=\"1920\" height=\"1080\" alt=\"0-封面\" src=\"https://github.com/user-attachments/assets/66fc0354-3db4-4b9c-87b1-cafa33cd71fe\" />\n",
     "created_at": "2026-11-15T08:58:55Z",
     "labels": [
       "weekly"
@@ -772,45 +812,5 @@
     "created_at": "2026-11-12T02:47:34Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13307"
-  },
-  {
-    "id": 13306,
-    "title": "【工具自荐】AI秒记账：把出差时随口记的费用整理成 Excel",
-    "content": "推荐我们做的微信小程序「AI秒记账」。它给经常驻场、替公司垫款的人留一份自己的费用明细。\n\n例如驻场期间从车站打车去客户现场，下车时说一句“车站到客户现场，打车 36 元”，就能把用途和金额一起记下来。拿到票据也可以直接拍照或上传，核对识别出来的账单。每趟行程单建账本，回来把这一趟的明细导成 Excel，交报销单时能查清每笔钱去了哪里。\n\n微信搜「AI秒记账」，或用微信扫描[这个小程序码](https://gist.githubusercontent.com/wujm12138/1cad024149ad8528c03a4286dcffcb58/raw/a097ee5ce7d86bf9b005d657c24d14fc53c8d8b4/ai-miaojizhang.jpg)。\n\n附一组[出差分账示例](https://gist.github.com/wujm12138/1cad024149ad8528c03a4286dcffcb58#file-travel-md)：同一周给 A 厂做调试、去 B 店做验收，怎么从三笔支出整理成两份明细。\n",
-    "created_at": "2026-11-12T02:28:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13306"
-  },
-  {
-    "id": 13305,
-    "title": "【文章推荐】没有摩擦，就没有学习：AI 时代工程师如何真正成长",
-    "content": "AI能放大交付，却不等于工程能力。文章从新人依赖AI写代码切入，提醒我们：判断力来自理解系统、做出选择、接受反馈并承担责任。若初级岗位和培养路径持续收缩，效率提升可能变成未来人才缺口。值得工程师与管理者一读。\n\n- https://mp.weixin.qq.com/s/2B7RVtu2UimBaJGvQFRsCw",
-    "created_at": "2026-11-12T01:59:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13305"
-  },
-  {
-    "id": 13304,
-    "title": "【开源自荐】AI 短剧 / 漫剧开源工具大全：118 个项目，从剧本分镜到视频生成、配音口型",
-    "content": "项目地址：https://github.com/DU8866-nice/awesome-ai-drama\n\nAI 短剧 / 漫剧全流程的开源工具精选：剧本、分镜、角色一致性、视频生成、配音口型、剪辑字幕，一直到合规发布。\n\n- 收录 118 个项目，按制作流程分成 11 类，每个都标注星标数和最近更新时间。\n- 数据每周自动刷新、按热度重新排序，并定期检查失效链接。\n- 给出四条现成的组合路线：零代码、一站式开源平台、全本地、Agent 工作流。\n- 附中国大陆发布前需要了解的规定摘要（AI 生成内容标识、微短剧备案分类）。\n- 中英双语，CC0 许可，欢迎推荐项目。\n",
-    "created_at": "2026-11-11T22:20:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13304"
-  },
-  {
-    "id": 13303,
-    "title": "【开源自荐】JobFit：对照职位描述检查简历，每条结论都附简历原句作证据",
-    "content": "项目地址：https://github.com/DU8866-nice/jobfit\n\n在线试用：https://jobfit-xxut.onrender.com （免费托管，一段时间没人访问后，第一次打开需要约 1 分钟唤醒）\n\nJobFit 对照任意职位描述检查简历：列出职位的全部要求，标出简历满足了哪些，并为每个\"满足\"附上简历中的原句作为证据。\n\n- 模型的回答只当草稿：每一处引用都会回到简历里查找，找不到就删掉；修改建议只改写简历里已有的句子，不编造经历和技能。\n- 分数由代码里的固定公式计算，不会每次运行都不一样。\n- 列出职位描述里有、简历里从未出现的关键词；职位要求国籍、居留或签证担保时单独提醒。\n- 支持中英文职位描述和简历，PDF / Word / 纯文本；可选 Claude 或 DeepSeek，也有不需要 API Key 的离线演示模式。\n- 不保存任何数据，MIT 许可。\n\n![](https://raw.githubusercontent.com/DU8866-nice/jobfit/main/docs/images/results-zh.png)\n",
-    "created_at": "2026-11-11T22:19:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13303"
-  },
-  {
-    "id": 13302,
-    "title": "【工具自荐】用 VisaPath 核对海外岗位的工作地点和签证担保",
-    "content": "周刊编辑好，我是 VisaPath 项目的 ALEX。我们做了一个中文海外求职工具，供准备搬到国外工作、或想留在国内远程工作的人使用。\n\n筛海外职位时，有两句英文很值得留意。\n\n- 想留在国内工作，看到 `Remote (US only)`，工作地点仍限美国。如果招聘页只写 `Remote`，可以先问招聘方：“Can I do this role full-time from mainland China?”\n- 想搬到国外，看到 `Visa sponsorship may be available`，可以把问题具体到正在看的职位：“Does your team offer visa sponsorship for an overseas applicant for this particular role?”\n\n[VisaPath 官网使用指南](https://visaspaths.com/guides/visapath-getting-started/) 可以直接阅读。想实际找岗位时，用邮箱注册，填写工作经历和搬迁意愿，再从匹配到的岗位卡打开招聘来源，核对地点和担保条件。\n",
-    "created_at": "2026-11-11T18:11:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13302"
   }
 ]
