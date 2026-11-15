@@ -1,5 +1,13 @@
 [
   {
+    "id": 13410,
+    "title": "【工具自荐】OffiAI：把多个 AI 编程会话放进 3D 办公室，看清哪个在等权限确认",
+    "content": "OffiAI 是一个免费的 Mac 应用，把 Claude Code、Codex、Cowork 和 Gemini 的每个会话放到一个 3D 办公室里，各占一张桌子。\n\n同时开着几个 AI 编程会话时，迟早会有一个停在权限确认上，而那个窗口刚好没人看，任务就一直等着。在 OffiAI 里，正在工作或等你处理的会话都能在办公室里看到；从 OffiAI 启动的 Claude Code 任务，权限请求可以直接点 Allow 或 Deny。完成的任务会一直留在桌上，直到你确认。\n\n它获取各工具在本机的状态：读取 Claude Code 的会话记录，接收 Codex 的 hook 事件并以只读方式读取其会话文件，以只读方式打开 Antigravity CLI 的本地数据库；Cowork 则通过一个本地 MCP 插件主动汇报。应用本身不运行模型，各 Agent 照常使用你原有的账号。\n\n无需注册账号，不收集使用统计数据；除非你主动发送问题反馈，否则会话内容不会上传到我们的服务器。\n\n仅支持 Apple 芯片的 Mac。应用界面只有英文、西班牙文和德文，暂无中文界面。目前是公开测试版。\n\nhttps://offiai.app/zh/\n\n1 分钟中文演示（AI 配音）：https://youtu.be/XHkI3MMdNdU\n\n我们是开发团队（德国不来梅 Delicatino GmbH），这段中文借助 AI 翻译。也欢迎直接用英文交流。\n\n![等待权限确认的 Claude Code 办公桌](https://offiai.app/blog/if-offiai-cannot-open-it-explains/shot-01.png)",
+    "created_at": "2026-11-15T22:44:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13410"
+  },
+  {
     "id": 13409,
     "title": "【工具自荐】FlashData：YouTube 下载、YouTube 数据与 Google 搜索 API，附开源 MCP 客户端",
     "content": "推荐项目：FlashData。它把 Google 搜索、YouTube 数据和媒体下载接入 REST API、MCP 与命令行，适合需要程序化处理搜索结果或视频资料的开发者。\n\n- 官网：https://flashdata.dev/zh?utm_source=ruanyfweekly\n- 文档：https://flashdata.dev/docs?utm_source=ruanyfweekly\n- MCP 开源客户端：https://github.com/flashdatadev/flashdata-mcp\n\n三个产品分别做什么：\n\n1. **YouTube Download**：通过异步任务、批量请求或文件式 Bulk 集合，把视频、音频或指定片段交付到用户自己的 Amazon S3、Google Cloud Storage、Azure Blob 或 S3 兼容存储。需要目标存储写入权限及相应内容使用权；按实际交付媒体字节计费，存储服务商费用另计。\n2. **YouTube Data**：返回视频搜索、元数据、已有字幕或转录、频道信息、联想词和许可标签等结构化数据。标准搜索每次最多20条，扩展搜索最多700条，受实际可用结果限制且计价不同；Bulk 可处理视频ID文件中的元数据、已有字幕和许可检查。不提供语音转写或字幕翻译，许可标签也不代表训练或再利用授权。\n3. **Google Search**：返回网页、新闻、图片、购物、视频和地点搜索的结构化结果，可设置国家、语言和位置，支持实时、异步与批量请求。返回链接、摘要及可用字段，不是抓取每个目标网页的完整正文；每个查询分别计费。\n\n一个使用方向是先检索相关视频、读取已有字幕并保留原链接和时间戳，供研究或知识库整理；需要媒体文件时再单独发起下载到自己的存储。开源客户端提供工具清单、参数、成本查询和配置示例，可以先读取定价、余额与限额，再决定是否调用付费查询。\n\n**费用与边界**：MCP 客户端采用 MIT 许可证；FlashData 托管服务和数据调用另按其服务条款及 Credits 计费，客户端开源不代表 API 永久免费。符合条件的新账号完成邮箱验证和账号设置后，可获得三产品共享的一次性试用 Credits，无需信用卡；不是每个产品各送一份，也不是每月续发的免费额度。具体价格与限制以当前文档为准。用户配置自己的 API Key；不要将密钥或存储凭据放进公开 Issue。\n\n**关系披露**：这是受项目方委托的自荐，使用 AI 辅助整理事实说明，供编辑审核。本次未调用付费 API，不声称实测性能或保证收录。\n",
@@ -804,13 +812,5 @@
     "created_at": "2026-11-12T03:14:40Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13308"
-  },
-  {
-    "id": 13307,
-    "title": "【工具自荐】TextScope：免费的浏览器文本分析、格式清理与 Token 估算工具",
-    "content": "我是 TextScope 的作者 seven，想自荐一个无需注册的浏览器文本工具集合。\n\n网站：https://textscopes.com/\n\n它适合写作、整理模型输出、检查英文网页标题等日常场景，支持字数与字符统计、Flesch 可读性、关键词短语频率、SEO 标题检查、阅读与演讲时长估算、大小写与 URL Slug 转换、Markdown 和隐藏 Unicode 字符清理，以及 LLM Token 数量估算。\n\n例如，复制一段带 Markdown 的模型回答后，可以先清理格式，再检查字数和关键词频率。文本处理在浏览器本地完成，无需上传待处理文本。Token 数量为估算；工具不生成文章，也不检测 AI 作者身份。\n\n欢迎试用和反馈。",
-    "created_at": "2026-11-12T02:47:34Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13307"
   }
 ]
