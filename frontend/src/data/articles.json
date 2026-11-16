@@ -1,5 +1,61 @@
 [
   {
+    "id": 13417,
+    "title": "【资源自荐】美国商业账户对 8 国居民创始人的开户政策数据集（CC BY 4.0）",
+    "content": "https://www.globalsolo.global/data/banking-access-index\n\n这个数据集整理了 19 家美国商业账户提供方的开户政策，看它们对 8 个国家的居民创始人怎么写：中国、印度、巴基斯坦、尼日利亚、英国、加拿大、土耳其、巴西。提供方里有传统银行（Chase、Bank of America、Wells Fargo），也有金融科技公司（Mercury、Relay、Wise Business、Payoneer 等）。\n\n每一格只记这家机构在自己页面上写了什么，分四种：书面写明接受、书面写明限制、没写限制、没有公开政策。每格附原文引用和链接。没写限制不等于接受，所以这两种分开标。\n\n拿中国居民这一列来说：19 家里，2 家书面写明接受，8 家写明限制，4 家没写限制，5 家没有公开政策。\n\n可以下载 CSV 和 JSON，协议是 CC BY 4.0，Zenodo DOI 10.5281/zenodo.21336392。最近一次逐条核对是 2026-10-27。\n\n我是这个数据集的维护者。\n",
+    "created_at": "2026-11-16T03:54:17Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13417"
+  },
+  {
+    "id": 13416,
+    "title": "【工具自荐】两个浏览器小工具：SRT 字幕校对（含简繁转换）和 App Store / Google Play 字数统计",
+    "content": "我是 Stanley J。最近做了两个给自己用的小工具，都在浏览器里运行，不用注册，文件和文案也不会上传，源码是 MIT 协议。\n\n1. SRT 字幕校对\n\nhttps://todanley.github.io/srt-subtitle-checker/  \nhttps://github.com/todanley/srt-subtitle-checker\n\n打开网页，把 SRT 贴进去或把文件拖进去，可以检查编号、时间轴格式、结束时间早于开始、重叠，以及行长和阅读速度是否超限。英文和中日韩有不同的默认上限，也可以自己改。页面里还能做简繁转换（用的是打进页面的 OpenCC 词库），然后下载一份重新编号、时间轴格式统一的字幕。需要的话可以自动折行，或去掉空轴。界面有中文和英文。\n\n2. App Store / Google Play 上架文案字数统计\n\nhttps://todanley.github.io/app-store-listing-counter/  \nhttps://github.com/todanley/app-store-listing-counter\n\n按两个商店的官方字段实时计数：App Store 的名称、副标题、宣传文本、关键词和描述，以及 Google Play 的标题、短描述和完整描述。中日韩和 emoji 按字素簇计数。靠近上限或超出时，计数颜色会变化。关键词可以检查重复、空项和多余空格，并能清理后复制；也可以一次复制某个商店的全部字段。界面同样有中文和英文。",
+    "created_at": "2026-11-16T03:00:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13416"
+  },
+  {
+    "id": 13415,
+    "title": "【开源自荐】Brevia 2.x：本地会议转写，支持鱼骨图、会议共享、MCP 与 AI 自动检测术语",
+    "content": "## 项目名称\n\n\nBrevia 2.x：会议转写、知识整理与协作工具。\n\n## 项目地址\n\n- GitHub：https://github.com/zerolovesea/Brevia\n- 官网与下载：https://brevia.work/\n- 最新正式版：https://github.com/zerolovesea/Brevia/releases/latest\n\n## 项目简介\n\nBrevia 2.x将录音、实时转写、AI 笔记、会议纪要和原话回溯放在同一个应用里。适用于线上会议、现场讨论、采访和课堂，也可以导入已有录音整理字幕。\n\n支持 **macOS、Windows、Linux** 三端桌面应用，以及 **iPhone、Android** 手机应用。无需注册账号，录音和会议记录默认保存在自己的设备上；下载所需模型后，转写、翻译、AI 笔记和纪要均可离线运行。\n\n## 架构与性能更新\n\n2.x 从 Electron + Python 迁移到 **Tauri／Rust、系统 WebView 和原生推理引擎**，移除了随包携带的 Electron 和 Python 运行环境。推理引擎随应用提供，模型权重按需下载。\n\n- **标准安装包约 50 MB**：当前 macOS DMG 约 **46 MB**，Windows CPU 版约 **38 MB**，Linux CPU 版约 **57 MB**，不含按需下载的模型权重。\n- **CPU／CUDA 可选**：Windows 和 Linux 均提供 CPU、NVIDIA CUDA 两种构建；macOS 使用 Apple Silicon 的 MLX／Metal。CUDA 包包含额外 GPU 依赖，Linux 约 124 MB、Windows 约 180 MB。\n- **推理速度与内存优化**：原生推理减少运行环境开销，降低内存占用并改善处理速度。公开的 M4 Pro 测试中，**66 分 40 秒录音完整转写耗时 3 分 33 秒**；实际表现取决于硬件、模型和任务，内存降幅不作统一承诺。\n\n## 主要功能\n\n### 录音、转写与双语字幕\n\n支持麦克风、系统声音或双路同时录制，边录边看字幕；也可导入已有音频，完成转写和翻译。支持 30 多种语言，原文和译文并排显示，可导出 SRT 字幕。\n\n逐字稿支持说话人分段、声纹识别和人工修正。安装声纹模型后，实时字幕可标记说话人；证据不足时保留未知身份。\n\n### AI 笔记与会议纪要\n\n会中一边听、一边写笔记，AI 从讨论中提出决定和待办建议，由用户选择采纳。会后生成可编辑的纪要，补充负责人、修正细节后再导出分享。\n\n### AI 术语库\n\nAI 扫描会议中不熟悉的名词，支持回听原句、确认正确名称和释义，积累为工作区或通用词条，供后续会议复用。确认术语后可复核受影响的纪要，原始逐字稿仍保留。\n\n### 鱼骨图与原话回溯\n\n纪要与原因分析并排展示，把结论和背后的讨论关联起来。点击引用或时间戳，定位到对应逐字稿并回听录音，方便核对决定的依据，而不只是阅读一份摘要。\n\n### 手机与电脑协同\n\n同一局域网内，手机扫码连接电脑，可作为无线麦克风近距离收音；电脑完成识别，手机查看实时字幕和笔记。手机也可独立离线录音、标记重点，之后上传电脑继续整理。完整上传后，电脑会继续处理，无需手机一直停留在应用里。\n\n### 会议胶囊与应用感知提醒\n\n最小化主窗口后，在悬浮胶囊里控制录音或回放、查看字幕、编辑笔记和粘贴图片。Brevia 在后台检测到支持的会议应用发声时，可提醒开始录音，减少开会后忘记记录的情况；它不会未经确认自动开录。\n\n### 公网分享会议记录\n\n将已结束会议的记录生成公网访问链接，方便未安装 Brevia 的人通过浏览器查看纪要、逐字稿和原因分析。支持设置密码和有效期。主动分享会将相应文字内容上传至分享服务，录音不包含在这份分享快照中。\n\n### MCP、CLI 与 Agent 接入\n\n在「设置 → Agent 与 MCP」复制接入引导语，让本机 Agent 读取 Brevia Skill，通过 CLI 或 MCP 查询会议、控制录音、转写文件和翻译字幕。例如将西班牙语访谈转成字幕，再生成时间轴一致的英文 SRT。\n\n### 检索与导出\n\n按工作区整理会议，检索历史内容和说话人。支持 Markdown、TXT、JSON、SRT、DOCX、PDF 等格式导出，录音可导出 WAV。\n\n选择在线 AI 时，相关文字会发送给用户配置的服务商；本地处理和公网分享由用户分别选择。\n\n## 界面与动态演示\n\n<table>\n<tr><th>实时转写与双语字幕</th><th>AI 笔记</th></tr>\n<tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/live.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/live.gif\" width=\"460\" alt=\"实时转写与双语字幕\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/ai-notes.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/ai-notes.gif\" width=\"460\" alt=\"AI 笔记\" /></a></td></tr>\n</table>\n\n<table>\n<tr><th>会议纪要与鱼骨图</th><th>AI 术语库</th></tr>\n<tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/summary.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/summary.gif\" width=\"460\" alt=\"会议纪要与鱼骨图\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/glossary.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/glossary.gif\" width=\"460\" alt=\"AI 术语库\" /></a></td></tr>\n</table>\n\n<table>\n<tr><th>手机与电脑协同</th><th>Agent／MCP 接入示例</th></tr>\n<tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/phone.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/phone.gif\" width=\"460\" alt=\"手机与电脑协同\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/agent.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/agent.png\" width=\"460\" alt=\"Agent／MCP 接入示例\" /></a></td></tr>\n</table>\n\n## 下载安装\n\n| 平台 | 下载入口 | 系统要求 |\n| --- | --- | --- |\n| macOS | [DMG](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-WebKit-2.1.1-arm64.dmg) | Apple Silicon · macOS 14+ |\n| Windows | [CPU](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-2.1.1-x64-setup.exe) · [CUDA](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-2.1.1-x64-cuda-setup.exe) | Windows 10 / 11 · x64 · AVX2 |\n| Linux | [CPU deb](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-2.1.1-amd64-cpu.deb) · [CUDA deb](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-2.1.1-amd64-cuda.deb) | Ubuntu 24.04 · x86-64 · AVX2 |\n| iPhone | [App Store](https://apps.apple.com/app/id6819869442) | iOS 15+ |\n| Android | [APK](https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk) | Android 7+ |\n\n国内镜像与更多说明见[官网](https://brevia.work/)。NVIDIA CUDA 版需配合受支持的显卡与驱动。\n\n手机端下载二维码：\n\n<table>\n<tr><th>iPhone · App Store</th><th>Android · APK</th></tr>\n<tr><td align=\"center\"><a href=\"https://apps.apple.com/app/id6819869442\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/download/ios-qr.png\" width=\"150\" alt=\"iPhone 下载二维码\" /></a></td><td align=\"center\"><a href=\"https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/download/android-qr.png\" width=\"150\" alt=\"Android 下载二维码\" /></a></td></tr>\n</table>\n\nISC 协议开源。作者自荐，欢迎试用和反馈。\n",
+    "created_at": "2026-11-16T02:15:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13415"
+  },
+  {
+    "id": 13414,
+    "title": "【工具推荐】Ductus（Handwriting, as a Font）：在浏览器里手写生成个人专属字体",
+    "content": "在 Hacker News 上看到一个很有趣的在线小工具，推荐给周刊。\n\n- 网站地址：https://ductus.sorenblank.com\n- Hacker News 讨论：https://news.ycombinator.com/item?id=50509972\n\n**简介：**\n一个纯网页端的个人手写字体制作工具。不需要安装任何软件，在网页里按提示逐个手写字母和符号，几分钟就能生成并导出属于自己的字体文件，还支持在页面内直接输入文字预览效果。\n\n**推荐理由：**\n- 交互和引导体验非常流畅，手机触摸屏上也能几分钟画完，特别适合用来制作个人博客或趣味截图用的专属字体。\n（注：目前主要面向英文字符，暂不支持重音字母或中文等扩展字符。）\n\n<img width=\"1912\" height=\"914\" alt=\"image\" src=\"https://github.com/user-attachments/assets/10829937-2124-438d-b26a-19be984fb8be\" />\n",
+    "created_at": "2026-11-16T01:30:00Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13414"
+  },
+  {
+    "id": 13413,
+    "title": "[自荐] 再活一次：在浏览器里体验不同选择的分支人生文字游戏",
+    "content": "### 项目名称\n再活一次：黄二勋的传奇人参\n\n### 一句话介绍\n一款浏览器里直接玩的分支人生文字游戏：从十岁离家开始，在生活、学习、职业和创业之间做选择，回看自己走出的另一种人生。\n\n### 试玩地址\nhttps://play.socialai.buzz/\n\n### 玩法\n- 当前新局共 16 站，跨越 1973—2036 年，包含 48 次选择。\n- 每站依次处理生活中的事、做准备、决定接下来的安排；例如到了创业节点，可以辞职创业，也可以留在原来的岗位。\n- 可查看人物状态、人生 K 线和手记；进度保存在当前浏览器，支持暂停与继续。\n- 一局最多计时 26 分钟，暂停或切走页面时不计时。\n\n主角黄二勋是虚构角色，游戏将现实科技史背景与平行人生剧情结合，玩家的选择与结局不代表真实人物的经历或未来。\n\n我是这个项目的创作者，想邀请喜欢文字游戏和分支叙事的读者试玩，也欢迎反馈选择后果是否清楚、哪里读起来拖沓，以及最想重选的一个决定。\n\n### 实机截图\n![游戏首页](https://raw.githubusercontent.com/RuochongZhu/huang-erxun-life/2c34951c24f169c2ed8ea26ac0b6cd0830c6faa2/promotion/20261116/01-home.jpg)\n\n![实机剧情：离家与长大](https://raw.githubusercontent.com/RuochongZhu/huang-erxun-life/2c34951c24f169c2ed8ea26ac0b6cd0830c6faa2/promotion/20261116/02-gameplay.jpg)\n",
+    "created_at": "2026-11-16T01:25:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13413"
+  },
+  {
+    "id": 13412,
+    "title": "【网站自荐】English Dialogue：免费的场景化英语学习网站，3300+ 对话课程，支持口语练习",
+    "content": "大家好，分享一个我独立开发的免费英语学习网站 **English Dialogue**。\n\n网站地址：https://english-dialogue.com/zh\n\n做这个项目的初衷是，传统英语学习往往偏重单词记忆和语法练习，但真正需要使用英语时，比如点餐、旅行、求职面试、工作交流，很多人仍然不知道如何自然地表达。\n\n所以我做了 English Dialogue，希望通过真实生活场景中的英语对话，让学习者在具体语境中掌握词汇、句型和表达方式，而不只是机械地背单词。\n\n### 主要功能\n\n- **真实场景对话**：包含 600+ 生活场景、3300+ 对话课程，覆盖日常交流、旅行、职场等主题。\n- **双语对照学习**：支持英语原文与中文等多种语言翻译对照，方便理解句子含义。\n- **口语练习**：支持语音识别与发音反馈，部分语音处理可以直接在浏览器本地完成。\n- **互动练习**：提供听力、词汇、拼写等多种练习游戏，帮助巩固学习内容。\n- **高频词汇学习**：整理了 2800+ 核心词汇，结合例句和间隔重复复习。\n- **免费使用**：无需注册账号，打开浏览器即可开始学习。\n\n### 项目特点\n\n与传统的单词记忆工具不同，English Dialogue 更强调通过完整对话和实际使用场景来学习英语。\n\n例如，学习者可以先阅读一段餐厅点餐的英语对话，听取发音，再通过口语和互动练习巩固刚学到的表达。\n\n网站目前还在持续更新和完善中，欢迎大家体验，也非常欢迎提出功能建议和反馈。\n\n**网站：https://english-dialogue.com/zh**",
+    "created_at": "2026-11-16T01:23:44Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13412"
+  },
+  {
+    "id": 13411,
+    "title": "【开源自荐】SoloPDF：高亮自动存为 Markdown 笔记的本地 PDF 阅读器与离线工具箱",
+    "content": "SoloPDF 是一款免费、无广告、本地优先的跨平台 PDF 阅读器与全离线文档工具箱（macOS / Windows / Linux / iOS / Android），基于 Tauri 2 + Vue 3 + Rust 构建，MIT 开源，安装包约 24 MB。\n\n- **高亮即普通 Markdown（`.annotations.md`）**：在 PDF 里划的每一条高亮、便签与框选截图，自动保存为同目录下的普通 Markdown 伴生文件，附带 `solopdf://` 页码深链。可用 Obsidian、SoloMD、VS Code 直接编辑或用 Git 管理；内置三重锚定算法（文字指纹 > 页码+坐标），即使 PDF 重新编译导出也能自动找回原位。\n- **20+ 项纯 Rust 离线文档工具（严格 Copy-out，原文件永不修改）**：无需 Docker 或 Java，内置 17 步内存批量流水线、扫描件自动纠偏去黑边（Auto-Deskew）、Sauvola 自适应黑白二值化（消除手机拍照阴影）、双页扫描中缝切分、底层指令级真涂黑脱敏（Redact）、N-up 与小册子骑马钉拼版、X.509 数字签名验签。\n- **视觉闪烁对比与学术提取**：支持两版文档按页词级对比，以及针对扫描合同/工程图纸的像素红青叠印与 **A↔B 闪烁对比（Blink Diff）**；支持框选数学公式转 LaTeX、框选提取 Markdown/CSV 表格、跨多篇论文按 `#标签` 汇总生成文献综述、一键导出 Anki/Obsidian 闪卡。\n- **全本地 OCR + CLI + 56 个 MCP 工具**：macOS/iOS 调用系统 Vision（零体积），Windows/Linux 内置离线 PP-OCRv4 ONNX；自带命令行与 56 个工具的 MCP Server（含离线 BM25 段落检索），可直接接入 Claude Code / Cursor。\n\n项目地址：https://github.com/zhitongblog/solopdf\n官网：https://solopdf.doaipm.com\n\n![SoloPDF](https://raw.githubusercontent.com/zhitongblog/solopdf/main/appstore-assets/mac-1.png)",
+    "created_at": "2026-11-16T00:32:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13411"
+  },
+  {
     "id": 13410,
     "title": "【工具自荐】OffiAI：把多个 AI 编程会话放进 3D 办公室，看清哪个在等权限确认",
     "content": "OffiAI 是一个免费的 Mac 应用，把 Claude Code、Codex、Cowork 和 Gemini 的每个会话放到一个 3D 办公室里，各占一张桌子。\n\n同时开着几个 AI 编程会话时，迟早会有一个停在权限确认上，而那个窗口刚好没人看，任务就一直等着。在 OffiAI 里，正在工作或等你处理的会话都能在办公室里看到；从 OffiAI 启动的 Claude Code 任务，权限请求可以直接点 Allow 或 Deny。完成的任务会一直留在桌上，直到你确认。\n\n它获取各工具在本机的状态：读取 Claude Code 的会话记录，接收 Codex 的 hook 事件并以只读方式读取其会话文件，以只读方式打开 Antigravity CLI 的本地数据库；Cowork 则通过一个本地 MCP 插件主动汇报。应用本身不运行模型，各 Agent 照常使用你原有的账号。\n\n无需注册账号，不收集使用统计数据；除非你主动发送问题反馈，否则会话内容不会上传到我们的服务器。\n\n仅支持 Apple 芯片的 Mac。应用界面只有英文、西班牙文和德文，暂无中文界面。目前是公开测试版。\n\nhttps://offiai.app/zh/\n\n1 分钟中文演示（AI 配音）：https://youtu.be/XHkI3MMdNdU\n\n我们是开发团队（德国不来梅 Delicatino GmbH），这段中文借助 AI 翻译。也欢迎直接用英文交流。\n\n![等待权限确认的 Claude Code 办公桌](https://offiai.app/blog/if-offiai-cannot-open-it-explains/shot-01.png)",
@@ -756,61 +812,5 @@
     "created_at": "2026-11-12T06:28:37Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13315"
-  },
-  {
-    "id": 13314,
-    "title": "【工具自荐】Manta 浏览器：多账号独立工作区 + 持久化指纹 + 代理管理（macOS / Windows）",
-    "content": "## 项目简介\n\nManta 是一个基于 Chromium 的多账号桌面浏览器。它为每个账号创建独立工作区，分别保存 Cookie、登录会话和浏览数据，并可按需配置代理。\n\n官网：https://manta.0dwx.com/\n\n## 解决什么问题\n\n需要同时管理多个业务账号的人（品牌运营、海外业务、内容团队等），常见的麻烦是登录状态互相覆盖、浏览数据混在一起、不同账号对应的网络环境不一致。普通浏览器的多 Profile 能部分解决，但切换和管理都不方便。\n\n## 主要功能\n\n- **独立工作区**：一个工作区对应一个独立的 Chromium Profile，Cookie、会话、浏览数据互不混用。\n- **持久化指纹**：新工作区会获取一份独立的指纹快照并保存在本地。之后无论重启、重命名还是重复打开，都沿用同一份快照，不会每次重新生成。\n- **代理管理**：支持 HTTP / HTTPS / SOCKS5。一个代理可分配给多个工作区，每个工作区最多绑定一个代理。打开前会检测真实出口，并据此协调时区、语言和近似位置。如果检测失败或出口区域明显变化，会暂停打开并提示处理。\n- **单窗口多工作区**：支持缩略图和列表预览、搜索、快捷键和原生切换浮窗。\n\n## 使用说明\n\n- 支持 macOS（Apple Silicon）和 Windows x64，暂无 Intel Mac、Windows ARM 和移动端版本。\n- 首次使用需要微信扫码登录并完成在线账户验证。\n- 工作区和浏览数据都保存在本机，没有云同步或团队共享功能。\n- 官网不提供代理服务，需要自备代理。\n- 官网明确说明：它帮助用户分隔业务环境，但不承诺匿名、不可识别，也不保证账号不被平台关联。\n\n## 更多资料\n\n- 使用指南：https://manta.0dwx.com/guides/\n- 常见问题：https://manta.0dwx.com/#faq\n\n<img width=\"2576\" height=\"1562\" alt=\"image\" src=\"https://github.com/user-attachments/assets/55b06557-b0d2-45e2-8a9a-4e5a6af7ea58\" />",
-    "created_at": "2026-11-12T06:14:05Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13314"
-  },
-  {
-    "id": 13313,
-    "title": "【开源自荐】Kura：把乱成一堆的影视文件整理成 Emby / Jellyfin 认得出的目录",
-    "content": "【开源自荐】Kura：把乱成一堆的影视文件整理成 Emby / Jellyfin 认得出的目录\n\nKura 是一个本地影片库管理器：Electron 桌面应用 + 一个给 agent 用的 CLI，共享一份 TypeScript core 和一个 SQLite 文件。\n\n**它解决的问题**：影视文件的命名千奇百怪，Emby / Jellyfin 认不出来，只能手动改名、建目录、找封面。Kura 做三件事，互不触发：\n\n- `scan` 只读磁盘：登记文件、解析季集号、建条目占位\n- `scrape` 只读网络：从 TMDB 取元数据\n- `organize` **默认 dry-run**，`--apply` 才动文件\n\n整理后的形状：`剧名 (年)/Season 01/剧名 - S01E01.mkv`\n\n![整理前后对比](https://raw.githubusercontent.com/p-nickzhang-q/kura/main/docs/images/organize.gif)\n\n**技术上值得一提的几点**\n\n- **没有服务端，没有守护进程**。打开才运行，关了就退出。GUI 和 CLI 不走端口，只共享一个 SQLite 文件\n- **CLI 是给 agent 写的**：`kura schema --json` 自描述命令清单，退出码是主信号（0 成功 / 2 用法错 / 3 可重试 / 4 需要人 / 5 不存在 / 10 内部 bug），stdout 只放数据、日志走 stderr。参数解析、`--help` 和 `schema` 共用同一份声明，所以永远不会不同步\n- **NFO 双向同步**：库里有网络来源就写回 nfo，没有就从 nfo 补空字段。换一台电脑接上同一块硬盘，`kura nfo recover` 能直接从盘上的 nfo 重建整个库，不用重刮。读的时候只认白名单字段 —— Emby 写的 `<playcount>` / `<watched>` 在类型上就进不来\n- **不猜**：认不出集号的文件留在原地等人来绑，TMDB 搜索结果永远由人挑。认错了会让整季集名全错，代价比多花两分钟大\n- 整理时目标已存在同名文件一律 `skip`，**绝不覆盖**\n\n**链接**\n\n- 仓库：https://github.com/p-nickzhang-q/kura\n- 下载（Windows，免安装 exe + 单文件 CLI）：https://github.com/p-nickzhang-q/kura/releases/latest\n\n界面是中文的（用户群就是中文/日文用户），但 CLI 面向脚本和 agent，不依赖界面语言。英文 README 见 README.en.md。\n\n另外也支持番号制媒体库（另一个域），那部分不在本贴范围内。MIT 协议。\n",
-    "created_at": "2026-11-12T06:00:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13313"
-  },
-  {
-    "id": 13312,
-    "title": "【开源自荐】讣告 Obituary：AI 写下的临时文件到期自己走，删掉的七天内能找回",
-    "content": "用 Claude Code、Codex 这类 agent 写代码，项目里会堆满它顺手生成的调试脚本、日志、截图和 `test-results/`。讣告让这些文件一出生就带寿命，到期自动移进「墓地」，七天内一条命令原样放回，过了保留期才真正删除；只管 Git 没跟踪的文件，源码不碰。\n\nhttps://github.com/woodfishhhh/obituary\n\n- 接入 Claude Code、Codex、Cursor、Gemini CLI、DeepSeek（dsh）、WorkBuddy 等二十多家 agent：有 hook 的接 hook，其余走 MCP\n- agent 回头要用已下葬的文件时，讣告会告诉它编号和复活命令，它自己放回原处\n- 小窗口日历看每天走哪些，拖一下续命\n- 可选的删除护栏：agent 的 `rm -rf`、`git clean` 换成能复活的删法\n- Windows 10 / 11，Go 编写，MIT 开源\n\n![演示：agent 的 rm -rf 被换成能复活的删法，一条命令原样放回](https://raw.githubusercontent.com/woodfishhhh/obituary/main/docs/assets/demo/demo-light.gif)\n\n3 分钟视频讲解：https://www.bilibili.com/video/BV14pWQ6QEeM/\n",
-    "created_at": "2026-11-12T05:30:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13312"
-  },
-  {
-    "id": 13311,
-    "title": "【自荐】Tipitaka.ai：基于巴利三藏原典的 AI 学习与查证工具",
-    "content": "阮老师好，自荐一个我正在开发的网站：[Tipitaka.ai](https://tipitaka.ai/)。\n\n它以巴利三藏及相关文献为基础，结合 AI 问答、原典阅读和巴利辞典，帮助读者学习佛法、查找并核对经典出处。\n\n通用 AI 在回答佛教问题时，有时会混淆不同传统，或者给出难以核实的经文出处。我希望通过整理结构化的巴利文献，让回答尽可能附上可点击的出处，读者可以打开原文自行核对。\n\n网站目前提供：\n\n- **AI 问答**：用自然语言提问，并通过引用链接查看相关文献。\n- **三藏经阁**：阅读巴利三藏原典及相关文献。\n- **巴利辞典**：查询巴利词条、多语言释义和发音，并浏览相关百科条目。\n\n例如，可以试着提问：[佛陀的第一场说法发生在哪里？](https://tipitaka.ai/?q=%E4%BD%9B%E9%99%80%E7%9A%84%E7%AC%AC%E4%B8%80%E5%9C%BA%E8%AF%B4%E6%B3%95%E5%8F%91%E7%94%9F%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F)\n\n项目免费使用，无广告、无付费订阅，接受自愿捐赠。AI 回答仍可能出错，欢迎结合引用的原典核对，也欢迎体验和反馈。\n\n- 网站：https://tipitaka.ai/\n- 巴利辞典：https://tipitaka.ai/dictionary\n- 关于项目：https://tipitaka.ai/about",
-    "created_at": "2026-11-12T04:54:10Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13311"
-  },
-  {
-    "id": 13310,
-    "title": "【工具自荐】ghostlit.app 给一个想法，AI 拍成一部有内味的完整短剧",
-    "content": "**网站**：https://ghostlit.app/\n\n给它一个想法，打字或直接说都行，几秒内它会给出片名、开场和角色。确认后，它的 AI 制片人会写剧本、选角并给每个角色配声音、搭布景、一场一场地拍，不满意的镜头会重拍，最后配上字幕、音效和配乐，剪成一部完整的竖屏短剧。拍摄时页面上能实时看到它在做什么（下图），一般不到一小时就能看成片。\n\n视频 15 秒到 5 分钟，也能拍连续剧，一集一集往下拍，最多 100 集。支持简体中文、繁体中文、英语、日语、韩语、西班牙语、葡萄牙语、法语和德语。拍完不满意，可以直接跟制片人说哪里要改。\n\n比如这个故事：穿成活不过第十章的女配，拒绝配合女主假装落水，还和系统一文一文地讨价还价。拍出来是一部 60 秒的古装短剧《落水前先讲价钱》，下图就是它拍到一半时的样子。\n\n<img width=\"1000\" alt=\"截屏2026-11-11 下午8 22 57\" src=\"https://github.com/user-attachments/assets/b8b10729-8ecd-4673-ae41-c5d04e11d9c7\" />\n\n<img width=\"1000\" alt=\"截屏2026-11-11 下午8 19 00\" src=\"https://github.com/user-attachments/assets/2d5e6f36-12cc-49e1-915e-50d15c725d94\" />",
-    "created_at": "2026-11-12T04:24:13Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13310"
-  },
-  {
-    "id": 13309,
-    "title": "【网站自荐】Builderoom：独立开发者的作品展台，用一句话描述需求就能找到作品",
-    "content": "网址：https://www.builderoom.com/zh-CN\n\nBuilderoom 是独立开发者、设计师与创客的作品展台：找东西的人直接说出需求，做东西的人贴一个链接就能发布。\n\n特点：\n\n- 用一句话或一段语音描述需求，比如「Mac 上有没有能把任意窗口变成置顶小窗的工具」，AI 按意思匹配站内作品，每款附一句推荐理由。推荐的都是站里真实收录、点得进去的作品，不会编出不存在的软件。\n- 发布作品只要一个链接：官网、GitHub 仓库、App Store / Google Play 页面、npm / PyPI 包都可以。AI 读完页面，几十秒内整理出介绍、核心功能、常见问题、分类标签和截图候选，作者核对后提交，人工审核后上架。\n- 不只收网页工具：网页应用、小程序、iOS / Android、桌面软件、浏览器扩展、AI 技能与智能体、API / SDK / 开源库、命令行工具、设计作品，共 10 种形态，卡片和详情页随形态变化。\n- 卡片上直接标出定价方式（完全免费、开源免费、免费增值、付费等），详情页列出支持的平台；每位作者有个人主页，集中展示他做过的全部作品。\n- 提交免费，不卖排名；界面有中文和英文。\n\n每周还会把新上架的作品整理成一期周刊，放在 GitHub：https://github.com/cena001plus/weekly\n\n<img width=\"1740\" height=\"935\" alt=\"截屏2026-11-12 12 11 03\" src=\"https://github.com/user-attachments/assets/00b42854-4ea1-4ad3-b9cd-9e691eb3ecef\" />\n\n<img width=\"1738\" height=\"937\" alt=\"截屏2026-11-12 12 11 23\" src=\"https://github.com/user-attachments/assets/7ff8a8c7-4773-4700-ada4-8d636b74a2e6\" />\n",
-    "created_at": "2026-11-12T04:11:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13309"
-  },
-  {
-    "id": 13308,
-    "title": "【开源自荐】pgcli：数据库与存储底座的瑞士军刀",
-    "content": "pgcli 是一个开源项目，目标是更轻松、更灵活地创建和管理 PostgreSQL 及存储基础设施。从数据库实例、备份、副本、高可用、扩展，到连接池、对象存储、缓存、消息队列，都可以用同一套声明式配置和命令收敛，堪称数据库与存储底座的「瑞士军刀」。不用 Kubernetes，也不用维护一堆 docker-compose 文件。\n\n- 一条命令创建/启动/停止/销毁隔离的 PostgreSQL 实例，支持同机多实例和多 namespace；\n- 基于 pgBackRest 的全量/差异备份与 PITR（时间点恢复）；\n- 物理只读副本、手动 failover，以及 Patroni 高可用集群；\n- 440+ PostgreSQL 扩展直接烘进镜像，容器重建后依然存在；\n- `pg addon` 管理配套服务：PgBouncer、PgDog、PostgREST、etcd、MinIO / silo / rustfs、Redis、ClickHouse、Kafka、RabbitMQ，以及 Prometheus / Alertmanager / Grafana 可观测栈；\n- 自带一套 Ansible playbooks，可以批量部署到整批机器；\n- 支持 Linux 和 macOS，底层用 Podman，每个实例独立容器和数据目录。\n\n安装：\n\n```bash\ncurl -fsSL https://raw.githubusercontent.com/mars-base/pgcli/main/scripts/install.sh | bash\n```\n\n项目 GitHub：https://github.com/mars-base/pgcli\n文档站点（中英）：https://pgcli.pages.dev\n\nApache-2.0 协议，欢迎试用和提 issue。",
-    "created_at": "2026-11-12T03:14:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13308"
   }
 ]
