@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   schedule:
-    - cron: '0 */2 * * *'  # 每小时运行
+    - cron: '0 */6 * * *'  # 每 6 小时运行（UTC 0/6/12/18 点，即北京时间 8/14/20/凌晨2点）
   workflow_dispatch:      # 手动触发
   push:
     branches: [ main ]   # 当 main 分支有推送时也触发
@@ -23,9 +23,9 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.9'
+          python-version: '3.12'
 
       - name: Install Python dependencies
         run: |
