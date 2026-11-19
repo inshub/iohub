@@ -1,8 +1,72 @@
 [
   {
+    "id": 13523,
+    "title": "【开源自荐】TuKuai OS：基于 Web 的桌面级交互系统与个人空间",
+    "content": "**TuKuai OS（土块.art）** 是一个采用「赛博毛玻璃 + 复古像素」视觉语言的交互式 Web 虚拟桌面与个人空间，集合了实时协同画板、复古掌机模拟器、3D 模型展厅与个人作品展示。\n\n- **在线体验**：[https://土块.art](https://xn--udsye.art)\n- **项目源码**：https://github.com/GallantTarry/TuKuai\n\n### 核心亮点\n\n- **零打包器（Zero-Bundler）模块化架构**：基于 Vue 3 + Tailwind CSS，不依赖 Vite/Webpack，将 25 个前端模块按职责解耦，静态托管即改即生效，并配合 PWA Service Worker 实现三级缓存与静默热更新。\n- **桌面级交互与细节彩蛋**：内置 PowerShell 终端乱码解码开机动画、随 24 小时作息切换的像素头像、CRT 关机坍缩 / 聚变跃迁特效，以及支持 `irm https://xn--udsye.art/hello.ps1 | iex` 的终端独白彩蛋。\n- **全服实时协同画板**：点击简介卡片右上角翻转即可进入，基于 WebSocket 与归一化比例坐标实现跨端高清同步涂鸦。\n- **丰富的内置小应用**：集成基于 WebAssembly 的复古掌机模拟器（自研 IndexedDB 自动存档与读档）、`<model-viewer>` 3D 场景展厅、接管系统 MediaSession（锁屏/灵动岛）的音乐终端，以及支持浏览器原生录音的多媒体留言弹窗。\n\n### 界面预览\n\n\n<img width=\"2160\" height=\"1187\" alt=\"TuKuaiOS\" src=\"https://github.com/user-attachments/assets/343f187b-cebc-4d47-b0bb-ba326cdc7b4b\" />",
+    "created_at": "2026-11-19T04:38:59Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13523"
+  },
+  {
+    "id": 13522,
+    "title": "【开源自荐】chrome-devtools-cli v2.4.0 agent 能连 kitesurf 了",
+    "content": "chrome-devtools-cli v2.4.0 的 ws-endpoint 现在能接 wss 地址了，命令行可以直接操作不在你电脑上的浏览器\n\n我拿 cloudflare 的 kitesurf 试了，它是实验性的浏览器引擎，跑在 workers 里，背后没有 chromium，说的是 devtools 协议，公开的 playground 不用注册，所以不用启动 chrome，也没有授权弹窗，官方文档教你把 chrome-devtools-mcp 指过去，这里直接用命令，中间不需要 mcp 服务，打开页面，读成 markdown，截图，点击和输入，看 console 和 network 都行\n\nkitesurf 是无状态的，每个连接拿到一个全新的浏览器，连接一断就没了，命令行的 daemon 替你守着这个连接，所以标签页在命令之间一直在，默认闲置五分钟后结束，用 caffeinate 可以一直保持\n\nwebmcp 也能用，在页面里注册一个工具，list-3p-tools 能列出来，execute-3p-tool 能调用，我从头到尾试过\n\n有些托管浏览器会把 api key 放在 url 里，所以命令行现在通过环境变量把地址交给 daemon，不再放在命令行参数里，别的本地用户看不到，连接出错时也只显示地址，不显示后面的查询参数\n\ntls 用的是 rustls 加系统自带的信任证书，不用装 openssl，同一个参数照样能连本地的 chrome，暂时还没有认证头的参数，要 bearer token 的托管浏览器得等一等\n\n这是一个直接走 devtools 协议的 rust 命令行工具，给需要操作真实浏览器的 ai agent 用，需要 rust 1.89 以上\n\nhttps://github.com/aeroxy/chrome-devtools-cli\n",
+    "created_at": "2026-11-19T03:56:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13522"
+  },
+  {
+    "id": 13521,
+    "title": "【应用自荐】把想说的话，留给想念的人",
+    "content": "不必等对方来到这里。\n一个邮箱，或一个手机号，就能寄存你的心意。\n当对方到来，所有留言都在。https://www.mynote.xin/message/\n<img width=\"1257\" height=\"613\" alt=\"image\" src=\"https://github.com/user-attachments/assets/2b0e68d1-25f2-480a-9850-705401f3674f\" />",
+    "created_at": "2026-11-19T03:02:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13521"
+  },
+  {
+    "id": 13520,
+    "title": "【游戏自荐】Puffer Party：用同一个浏览器房间链接玩的限时词语游戏",
+    "content": "### 游戏\n\n[Puffer Party](https://pufferparty.org/) 是一个免费的多人网页词语游戏。玩家打开同一个房间链接就能参加，不需要注册。轮到自己时，要在倒计时结束前说出当前类别里一个没有用过的词，再把河豚传给下一位玩家。比如题目是「早餐食物」，先后说过“鸡蛋”和“吐司”之后，这一轮便不能再用这两个答案。\n\n一个人可以先在首页试练习模式。[玩法说明](https://pufferparty.org/how-to-play/)有一轮游戏的例子。\n\n我是这个项目的维护者。\n",
+    "created_at": "2026-11-19T02:03:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13520"
+  },
+  {
+    "id": 13519,
+    "title": "【软件自荐】RockDesk（磐石远控）：一个 ID 连上另一台电脑，Claude Code 也能直接操作它",
+    "content": "官网：https://rockdesk.cn （海外：https://rockdesk.io）\n\n![RockDesk：Claude Code 操作另一台 Windows 电脑](https://rockdesk.cn/media/rockdesk-claude-code-windows.jpg)\n\n我们做的远程访问工具。每台设备一个 9 位 ID，不要公网 IP、不用开端口：能打洞就点对点直连，打不通自动走中继。\n\n- 一条连接里都有：远程桌面、终端、传文件、挂目录、端口转发、内网穿透、剪贴板。\n- 给 AI 用，说话指挥就行：自带命令行 rds，在 Claude Code 里说一句「Install the skill at https://rockdesk.io/rockdesk-cli.md」，它就能去另一台电脑上跑命令、拷文件、截屏点鼠标。我们自己就这样让 Claude 去调试机器人小车的底盘、在 GPU 机器上训练模型。\n- 平台：Windows、macOS（Apple 芯片 / Intel）、Linux（.deb，x86_64 / arm64，服务器、板子这种没界面的也能装）、安卓；iPhone / iPad 用 App Store 的「RockDesk Remote」（免费）连电脑；也有网页版，不用装。\n- 安全：每台设备有自己的证书，连接端到端加密，走中继时服务器转发的也是密文；谁能连、能用哪些功能，由被连的那台决定。\n\n其他说明：商业软件，可以免费试用；闭源。有问题发 support@rockdesk.io。",
+    "created_at": "2026-11-19T01:38:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13519"
+  },
+  {
+    "id": 13518,
+    "title": "【开源自荐】AI Short Video Engine：丢一个链接进去，拿到一条能直接发的竖屏短视频",
+    "content": "一个把网页文章自动变成竖屏短视频的桌面工具。粘贴一个链接或正文，依次走完 抓正文 → AI 写稿 → 分句配音 → 匹配素材 → 烧字幕合成，最后得到一条 1080×1920 的 mp4。\n\n做它的原因是，\"一键成片\"的坑从来不在生成，而在生成完才发现不对：腔调跑偏、素材不搭，整条片子只能重跑。所以这条流水线在最贵的两个节点停下来等你点头——AI 写完稿先停下，标题和每句台词都能直接改；素材逐段可预览，不顺眼点\"换一个\"重新检索。\n\n其他几点：\n\n- 同一篇文章换脚本风格就是完全不同的一条片子，内置播客（双人对谈）、相声（捧逗互动）、脱口秀（单人吐槽）三套提示词\n- 配音默认走 Edge 在线语音，不填任何 Key 就能出片；想要更自然的音色再切 CosyVoice 或豆包\n- 每个阶段的产物都落盘，中断后重跑只补缺失部分，不会从抓文章重新开始\n- 素材从 Pixabay / Pexels 竖屏优先检索，大模型选片失败时按时长规则兜底，不会卡死\n- 成片参数可重调，改完字幕字号或 BGM 只重跑合成，配音与素材全部复用\n- Windows 免安装 zip 约 200 MB，内置 ffmpeg，不用装 Node、Python，也无需独立显卡\n\n技术栈是 Electron + Fastify + React 19 + TypeScript，Windows / macOS / Linux 都能打包。\n\n示例（同一篇 36kr 文章，三种风格的成片）：\n\nhttps://github.com/user-attachments/assets/a8a4175d-2ebf-47cc-9c81-8c9a7aa78ae1\n\nGithub: https://github.com/chenwr727/AI-Short-Video-Engine\n",
+    "created_at": "2026-11-19T01:21:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13518"
+  },
+  {
+    "id": 13517,
+    "title": "【数学辅导工具自荐】 Aha!Math：把数学题变成动画分步讲解，辅导孩子不用再干讲",
+    "content": "自荐一个我们自己做的数学工具 **Aha!Math**，主要想解决一个场景：辅导孩子数学太难了。\n\n- 官网：https://myahamath.com/zh/\n\n起因是身边太多家长吐槽同一件事：题目自己会做，但给孩子讲不明白。孩子追问一句\"为什么这一步要通分\"，就卡住了；而且现在课本的解法跟我们当年学的还不完全一样，越教越糊涂，最后变成亲子矛盾。另一条路是搜题软件，但它只给一个答案和一段静态文字，孩子抄完还是不会，下次遇到照样错。\n\nAha!Math 的核心：动画讲解 + 交互探索 + 按步骤追问。\n\n**动画讲解** + **追问**：输入或拍照一道题，生成的不是答案，而是一节动画课——图形、数量关系、每一步推理都演出来，为什么通分、为什么移项要变号，眼睛看一遍比嘴上讲十遍清楚。卡在哪一步，就在哪一步直接追问，讲解会针对他的问题往下展开。等于把\"听老师讲\"变成\"自己动手把这道题摸透\"。\n\n<img width=\"1838\" height=\"839\" alt=\"image\" src=\"https://github.com/user-attachments/assets/96713a8a-81ca-43a0-b050-e4c59cc85a31\" />\n\n**交互探索**：这个跟动画是两回事。课里有可以拉动的东西——点、线段、图形、数值，直接交给孩子自己拖：拖动一个点，看坐标和图形怎么跟着变；拉长一条边，看周长、面积怎么涨。抽象的数学关系变成手上能摸到的变化，她自己拖几次、试几次，规律就看出来了，不用大人在旁边讲。\n\n<img width=\"1838\" height=\"842\" alt=\"image\" src=\"https://github.com/user-attachments/assets/83a98483-0cdd-4645-9ec3-4baf4a18c359\" />\n\n其他功能：\n\n- 覆盖算术、分数、代数、几何等小学到高中常见题型\n- 老师也可以拿来做课堂演示，学生自学、赶作业时半夜没人问，也能先靠它弄懂\n\n一些示例（无需登录）：\n花瓣周长：https://myahamath.com/zh/examples/flower-perimeter/\n抛物线综合：https://myahamath.com/zh/examples/parabola-comprehensive/\n正弦变换：https://myahamath.com/zh/examples/sine-transformation/\n\n其他说明：\n\n- 需要登录使用；看课和重播免费，生成新讲解消耗积分，新账号送 100 积分体验\n- 独立开发的小产品，还在持续打磨，欢迎试用和反馈\n",
+    "created_at": "2026-11-19T01:03:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13517"
+  },
+  {
+    "id": 13516,
+    "title": "【资源投稿】GPT-Rankings：150 家国内 GPT API 中转站对照表",
+    "content": "项目地址：https://github.com/lmdk321321/GPT-Rankings\n\n如果手头有个小工具要接 GPT API，想找几家中转服务做对照，不必从几十个网页开始翻。GPT-Rankings 的 2026 年 11 月 17 日版把 150 家面向国内用户的中转站整理到同一张表里，列出各家标示倍率、号池类型和项目测评结果。\n\n这张表适合用来缩小候选范围。挑出几家后，可以用同一批不含隐私的测试文本跑一遍，比较结果是否可用，以及失败和重试算进去以后，一条可用结果实际花多少钱。榜单不保证上游模型身份、实际扣费或数据留存情况。\n\n说明：我在协助分享这个项目，以上为资源介绍，不是我个人对这些站点的测评。本文含 AI 辅助写作。",
+    "created_at": "2026-11-19T00:56:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13516"
+  },
+  {
     "id": 13515,
     "title": "【开源自荐】vl:  在终端里用 VS Code 风格的界面和 Vim 键位审阅和编辑代码， 10 mb 大小。",
-    "content": "\n<img width=\"3200\" height=\"1838\" alt=\"image\" src=\"https://github.com/user-attachments/assets/a0ca1546-f9a5-4687-8c7a-57d0e0ad1aea\" />\n\n现在我大部分代码都由 Agent 编写，但我仍然会在它们提交前审查代码差异。多年来，我一直习惯使用装有 Vim 扩展的 VS Code，所以我围绕自己真正用到的功能打造了 vl。一个约 10 MB 的二进制文件，开箱即用。\n\nvscode 和 vim 在过去已经是轻量级的代表了，但如今在 vibe coding 时代，整个编辑功能几乎都没有意义。\n\n- vl 不支持的 VS Code 功能\n  - 语言服务器集成\n    - 代码补全\n    - 诊断\n    - 跳转到定义\n  - 调试\n  - 集成终端\n  - 构建和测试任务\n  - 扩展运行环境和扩展市场\n \n- vl 不支持的 Vim 功能\n  - 可视块模式\n  - 宏\n  - 命名寄存器\n  - 位置标记与跳转\n  - Ex 命令\n  - Vimscript/lua 配置和插件\n\n除此之外，我尽量保留了两者大部分的使用体验，比如 vscode 工作台布局，Git 工作流和代码高亮，vim 的大部分基础键位以及 flash, surround 等社区插件。并且将两者融合的很好。\n\nGithub: https://github.com/foursmith/vl \n\n基于 MPL 2.0 开源",
+    "content": "\n<img width=\"3200\" height=\"1838\" alt=\"image\" src=\"https://github.com/user-attachments/assets/a0ca1546-f9a5-4687-8c7a-57d0e0ad1aea\" />\n\n现在我大部分代码都由 Agent 编写，但我仍然会在它们提交前审查代码差异。多年来，我一直习惯使用装有 Vim 扩展的 VS Code，所以我围绕自己真正用到的功能打造了 vl。一个约 10 MB 的二进制文件，开箱即用。\n\nVS Code 和 Vim 在过去已经是轻量级的代表了，但如今在 Vibe Coding 时代，整个编辑功能几乎都没有意义。\n\n- vl 不支持的 VS Code 功能\n  - 语言服务器集成\n    - 代码补全\n    - 诊断\n    - 跳转到定义\n  - 调试\n  - 集成终端\n  - 构建和测试任务\n  - 扩展运行环境和扩展市场\n \n- vl 不支持的 Vim 功能\n  - 可视块模式\n  - 宏\n  - 命名寄存器\n  - 位置标记与跳转\n  - Ex 命令\n  - Vimscript/lua 配置和插件\n\n除此之外，我尽量保留了两者大部分的使用体验，比如 VS Code 工作台布局，Git 工作流和代码高亮，Vim 的大部分基础键位以及 flash, surround 等社区插件。并且将两者融合的很好。\n\nGithub: https://github.com/foursmith/vl \n\n基于 MPL 2.0 开源",
     "created_at": "2026-11-18T22:27:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13515"
@@ -742,69 +806,5 @@
     "created_at": "2026-11-16T07:39:31Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13423"
-  },
-  {
-    "id": 13422,
-    "title": "【开源自荐】点睛：在截图上圈出不满意的地方，翻译成设计术语，生成给 AI 编程工具的提示词",
-    "content": "AI 写出来的界面常常差一点：你觉得底栏「很廉价」，却说不出该改成「悬浮胶囊、大圆角、柔和投影」。点睛是一个开源网页工具，把截图拖进来，圈出不对的地方，它帮你把感觉翻译成设计语言，先看到改完的样子，再生成一段 Cursor、Claude Code、Trae、通义灵码一次就能听懂的提示词。\n\n在线试用：https://ttnan.github.io/dianjing\n项目地址：https://github.com/TTNAN/dianjing\n\n![点睛 · 首页](https://raw.githubusercontent.com/TTNAN/dianjing/main/docs/redesign/01-empty.png)\n\n![改截图：圈出来，说清楚](https://raw.githubusercontent.com/TTNAN/dianjing/main/docs/redesign/02-demo-selected.png)\n\n![画界面：拼出来，一次说全](https://raw.githubusercontent.com/TTNAN/dianjing/main/docs/redesign/03-sketch.png)\n\n主要特点：\n\n- 任意截图都能用：网页、安卓、iOS、小程序、设计稿，不需要源码，也不限框架\n- 设计词典：7 大类 27 个词条（间距、层级、颜色、排版、质感、布局、风格），悬停看白话解释\n- 一眼对比：18 组「前 → 后」小图，比如圆角 → 直角、通栏 → 悬浮，不懂术语也能选\n- 改之前先看效果：内置示例点一下就变；接入任意 OpenAI 兼容视觉模型后，可生成三个方案贴回原图对比\n- 画界面模式：16 种中文零件拼页面、连跳转预览，五套风格包；目标平台可选微信小程序、uni-app、Taro、鸿蒙 ArkUI、Flutter，组件库可选 Vant、TDesign、Ant Design Mobile、NutUI\n- 中英文提示词一键复制，带坐标、语义位置和编号标注图\n- 纯前端、零构建；不配模型也能用，API Key 只存在你自己的浏览器里\n\n开源许可证：MIT。\n\n利益相关：我是项目作者。",
-    "created_at": "2026-11-16T07:39:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13422"
-  },
-  {
-    "id": 13421,
-    "title": "【开源自荐】FreeSWITCH Console：不装 CDR 也能看出一通电话为什么挂断的 FreeSWITCH Web 运维台",
-    "content": "**FreeSWITCH Console** 是一个 FreeSWITCH 的 Web 运维控制台，通过 Event Socket 连接现有的交换机，FreeSWITCH 一侧不需要安装任何东西，也不接管配置。\n\n- 仓库：https://github.com/juki/freeswitch-console （Go，AGPL-3.0，单个二进制）\n- 在线演示（模拟交换机，免登录）：https://fsconsole.vi.uy\n- 本地试用：`docker run --rm -p 127.0.0.1:8080:8080 ghcr.io/juki/freeswitch-console -demo`\n\n运维 FreeSWITCH 时最常被问的是“刚才那通电话为什么断了”，原版不装 CDR 模块就没有通话记录，只能拿 uuid 去翻日志。这个工具的重点就是回答这个问题：\n\n- **最近挂断**：最近 500 个结束的通道，用大白话解释挂断原因，附 SIP 状态码、谁挂的、这通电话自己的日志行，以及途中桥接失败的真实原因。\n- **多实例总览**：会话、SIP Profile、网关、注册、通话、带回放的实时日志。\n- **配置**：展示 FreeSWITCH 实际加载的配置（密码已脱敏），可跳到定义它的文件和行；文件编辑带 diff、历史和恢复。\n- **其他**：带 Tab 补全的控制台、三级角色、审计日志，界面有中文。\n\n![挂断详情](https://raw.githubusercontent.com/juki/freeswitch-console/main/assets/screenshots/hangup-detail.png)\n",
-    "created_at": "2026-11-16T06:35:55Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13421"
-  },
-  {
-    "id": 13420,
-    "title": "【工具自荐】Particle Logo：纯浏览器把 Logo 或 3400+ 开源图标变成 60FPS 粒子动画并导出代码",
-    "content": "我是独立开发者，因为做个人项目和文档站首屏时不想为了一个 Logo 动画引入几百 KB 的 Three.js 或 Lottie 运行时，做了一个纯浏览器端运行的轻量工具：\n\n- 在线工坊（免登录可用）：https://particlelogo.com/zh/workbench\n- 开源核心微运行时（MIT）：https://github.com/88slash/particle-logo-canvas\n- 24 个热门技术栈模板示例：https://particlelogo.com/zh/templates\n\n![Particle Logo Demo](https://raw.githubusercontent.com/88slash/particle-logo-canvas/main/assets/demo.gif)\n\n**主要特点：**\n1. **纯本地点阵采样**：拖拽或粘贴任意 PNG / SVG / JPG / WebP，自动裁去四周留白并保留原生色彩（图片完全在本地 Canvas 采样，不上传服务器）。\n2. **内置 3,467 个科技/开源图标**：没有现成 Logo 也可以直接搜索 Simple Icons 图标或去[粒子文字工坊](https://particlelogo.com/zh/typography)输入文字直接生成。\n3. **零依赖代码与 GitHub README 动图**：提供 9 种物理粒子效果（鼠标悬停避让 + 点击冲击波），支持导出带源码注释的独立 HTML5 单文件（免费免登录），或导出循环 GIF 直接放进 GitHub README（已附上可复制的 Markdown 片段）。\n\n**收费边界说明**：全套 9 种效果预览、独立 HTML5 导出、以及带小角标的 1080p 视频/GIF 导出均免费且无需注册；4K 无水印视频、透明背景和 Vue 3 / React 组件导出为 Pro 付费功能。核心 2D Canvas 粒子微运行时已在上面 GitHub 仓库以 MIT 协议开源。",
-    "created_at": "2026-11-16T06:35:49Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13420"
-  },
-  {
-    "id": 13419,
-    "title": "【软件自荐】学舌鸟：Mac 上按住快捷键说话，松开就粘贴，会在本机慢慢学你的用词",
-    "content": "我是独立开发者，做了一个 Mac 语音输入工具，最初是给自己写东西用的。\n\nhttps://sona-orbit.github.io/parroting/zh-Hans/\n\n在任何应用里按住快捷键说话，松开后文字直接粘贴到光标位置。语音识别默认用本地模型。识别错的字、提醒过头的句子会列进确认列表，由你决定要不要采用；之后可以在自己的 Mac 上训练，先看验收结果再采用，随时可以还原，训练数据不会发送给外部服务。\n\n还有改写模式：语气修正、条理分明、翻译、会议记录、信件格式，把口语整理成能直接发出去的文字（改写使用你自己选择的 AI 服务）。\n\nMac 版需要 Apple 芯片、macOS 11 及以上。另有 iPhone 键盘版，词典和改写格式跟 Mac 共用。\n",
-    "created_at": "2026-11-16T05:39:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13419"
-  },
-  {
-    "id": 13418,
-    "title": "【软件自荐】Shoo! 桌面贴纸：点一下 Mac 桌面上的贴纸，指定的窗口全部藏起来",
-    "content": "我是独立开发者，做了一个 Mac 小工具，起因是开会共享屏幕前，总要手忙脚乱地关一堆窗口。\n\nhttps://sona-orbit.github.io/shoo/zh-Hans/\nMac App Store：https://apps.apple.com/app/id6826754561\n\n把一张贴纸贴在桌面上，告诉它要管哪些 App 或窗口。点一下贴纸，这些窗口全部藏起来；再点一下，回到原来的位置。Safari、Chrome、备忘录可以只藏单个窗口，其他 App 整个藏，也可以用壁纸盖住桌面上的文件。贴纸可以用自己的照片做，抠图在本机完成。\n\n无需账号、不追踪，贴纸和设置只存在你的 Mac 上。需要 macOS 14 及以上，界面有六种语言。\n",
-    "created_at": "2026-11-16T05:39:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13418"
-  },
-  {
-    "id": 13417,
-    "title": "【资源自荐】美国商业账户对 8 国居民创始人的开户政策数据集（CC BY 4.0）",
-    "content": "https://www.globalsolo.global/data/banking-access-index\n\n这个数据集整理了 19 家美国商业账户提供方的开户政策，看它们对 8 个国家的居民创始人怎么写：中国、印度、巴基斯坦、尼日利亚、英国、加拿大、土耳其、巴西。提供方里有传统银行（Chase、Bank of America、Wells Fargo），也有金融科技公司（Mercury、Relay、Wise Business、Payoneer 等）。\n\n每一格只记这家机构在自己页面上写了什么，分四种：书面写明接受、书面写明限制、没写限制、没有公开政策。每格附原文引用和链接。没写限制不等于接受，所以这两种分开标。\n\n拿中国居民这一列来说：19 家里，2 家书面写明接受，8 家写明限制，4 家没写限制，5 家没有公开政策。\n\n可以下载 CSV 和 JSON，协议是 CC BY 4.0，Zenodo DOI 10.5281/zenodo.21336392。最近一次逐条核对是 2026-10-27。\n\n我是这个数据集的维护者。\n",
-    "created_at": "2026-11-16T03:54:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13417"
-  },
-  {
-    "id": 13416,
-    "title": "【工具自荐】两个浏览器小工具：SRT 字幕校对（含简繁转换）和 App Store / Google Play 字数统计",
-    "content": "我是 Stanley J。最近做了两个给自己用的小工具，都在浏览器里运行，不用注册，文件和文案也不会上传，源码是 MIT 协议。\n\n1. SRT 字幕校对\n\nhttps://todanley.github.io/srt-subtitle-checker/  \nhttps://github.com/todanley/srt-subtitle-checker\n\n打开网页，把 SRT 贴进去或把文件拖进去，可以检查编号、时间轴格式、结束时间早于开始、重叠，以及行长和阅读速度是否超限。英文和中日韩有不同的默认上限，也可以自己改。页面里还能做简繁转换（用的是打进页面的 OpenCC 词库），然后下载一份重新编号、时间轴格式统一的字幕。需要的话可以自动折行，或去掉空轴。界面有中文和英文。\n\n2. App Store / Google Play 上架文案字数统计\n\nhttps://todanley.github.io/app-store-listing-counter/  \nhttps://github.com/todanley/app-store-listing-counter\n\n按两个商店的官方字段实时计数：App Store 的名称、副标题、宣传文本、关键词和描述，以及 Google Play 的标题、短描述和完整描述。中日韩和 emoji 按字素簇计数。靠近上限或超出时，计数颜色会变化。关键词可以检查重复、空项和多余空格，并能清理后复制；也可以一次复制某个商店的全部字段。界面同样有中文和英文。",
-    "created_at": "2026-11-16T03:00:28Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13416"
-  },
-  {
-    "id": 13415,
-    "title": "【开源自荐】Brevia 2.x：本地会议转写，支持鱼骨图、会议共享、MCP 与 AI 自动检测术语",
-    "content": "## 项目名称\n\n\nBrevia 2.x：会议转写、知识整理与协作工具。\n\n## 项目地址\n\n- GitHub：https://github.com/zerolovesea/Brevia\n- 官网与下载：https://brevia.work/\n- 最新正式版：https://github.com/zerolovesea/Brevia/releases/latest\n\n## 项目简介\n\nBrevia 2.x将录音、实时转写、AI 笔记、会议纪要和原话回溯放在同一个应用里。适用于线上会议、现场讨论、采访和课堂，也可以导入已有录音整理字幕。\n\n支持 **macOS、Windows、Linux** 三端桌面应用，以及 **iPhone、Android** 手机应用。无需注册账号，录音和会议记录默认保存在自己的设备上；下载所需模型后，转写、翻译、AI 笔记和纪要均可离线运行。\n\n## 架构与性能更新\n\n2.x 从 Electron + Python 迁移到 **Tauri／Rust、系统 WebView 和原生推理引擎**，移除了随包携带的 Electron 和 Python 运行环境。推理引擎随应用提供，模型权重按需下载。\n\n- **标准安装包约 50 MB**：当前 macOS DMG 约 **46 MB**，Windows CPU 版约 **38 MB**，Linux CPU 版约 **57 MB**，不含按需下载的模型权重。\n- **CPU／CUDA 可选**：Windows 和 Linux 均提供 CPU、NVIDIA CUDA 两种构建；macOS 使用 Apple Silicon 的 MLX／Metal。CUDA 包包含额外 GPU 依赖，Linux 约 124 MB、Windows 约 180 MB。\n- **推理速度与内存优化**：原生推理减少运行环境开销，降低内存占用并改善处理速度。公开的 M4 Pro 测试中，**66 分 40 秒录音完整转写耗时 3 分 33 秒**；实际表现取决于硬件、模型和任务，内存降幅不作统一承诺。\n\n## 主要功能\n\n### 录音、转写与双语字幕\n\n支持麦克风、系统声音或双路同时录制，边录边看字幕；也可导入已有音频，完成转写和翻译。支持 30 多种语言，原文和译文并排显示，可导出 SRT 字幕。\n\n逐字稿支持说话人分段、声纹识别和人工修正。安装声纹模型后，实时字幕可标记说话人；证据不足时保留未知身份。\n\n### AI 笔记与会议纪要\n\n会中一边听、一边写笔记，AI 从讨论中提出决定和待办建议，由用户选择采纳。会后生成可编辑的纪要，补充负责人、修正细节后再导出分享。\n\n### AI 术语库\n\nAI 扫描会议中不熟悉的名词，支持回听原句、确认正确名称和释义，积累为工作区或通用词条，供后续会议复用。确认术语后可复核受影响的纪要，原始逐字稿仍保留。\n\n### 鱼骨图与原话回溯\n\n纪要与原因分析并排展示，把结论和背后的讨论关联起来。点击引用或时间戳，定位到对应逐字稿并回听录音，方便核对决定的依据，而不只是阅读一份摘要。\n\n### 手机与电脑协同\n\n同一局域网内，手机扫码连接电脑，可作为无线麦克风近距离收音；电脑完成识别，手机查看实时字幕和笔记。手机也可独立离线录音、标记重点，之后上传电脑继续整理。完整上传后，电脑会继续处理，无需手机一直停留在应用里。\n\n### 会议胶囊与应用感知提醒\n\n最小化主窗口后，在悬浮胶囊里控制录音或回放、查看字幕、编辑笔记和粘贴图片。Brevia 在后台检测到支持的会议应用发声时，可提醒开始录音，减少开会后忘记记录的情况；它不会未经确认自动开录。\n\n### 公网分享会议记录\n\n将已结束会议的记录生成公网访问链接，方便未安装 Brevia 的人通过浏览器查看纪要、逐字稿和原因分析。支持设置密码和有效期。主动分享会将相应文字内容上传至分享服务，录音不包含在这份分享快照中。\n\n### MCP、CLI 与 Agent 接入\n\n在「设置 → Agent 与 MCP」复制接入引导语，让本机 Agent 读取 Brevia Skill，通过 CLI 或 MCP 查询会议、控制录音、转写文件和翻译字幕。例如将西班牙语访谈转成字幕，再生成时间轴一致的英文 SRT。\n\n### 检索与导出\n\n按工作区整理会议，检索历史内容和说话人。支持 Markdown、TXT、JSON、SRT、DOCX、PDF 等格式导出，录音可导出 WAV。\n\n选择在线 AI 时，相关文字会发送给用户配置的服务商；本地处理和公网分享由用户分别选择。\n\n## 界面与动态演示\n\n<table>\n<tr><th>实时转写与双语字幕</th><th>AI 笔记</th></tr>\n<tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/live.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/live.gif\" width=\"460\" alt=\"实时转写与双语字幕\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/ai-notes.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/ai-notes.gif\" width=\"460\" alt=\"AI 笔记\" /></a></td></tr>\n</table>\n\n<table>\n<tr><th>会议纪要与鱼骨图</th><th>AI 术语库</th></tr>\n<tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/summary.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/summary.gif\" width=\"460\" alt=\"会议纪要与鱼骨图\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/glossary.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/glossary.gif\" width=\"460\" alt=\"AI 术语库\" /></a></td></tr>\n</table>\n\n<table>\n<tr><th>手机与电脑协同</th><th>Agent／MCP 接入示例</th></tr>\n<tr><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/phone.gif\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/phone.gif\" width=\"460\" alt=\"手机与电脑协同\" /></a></td><td align=\"center\" valign=\"top\"><a href=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/agent.png\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/e8af448037594afc5e78a045f5dac8ad23345df9/docs/assets/showcase/desktop/zh/agent.png\" width=\"460\" alt=\"Agent／MCP 接入示例\" /></a></td></tr>\n</table>\n\n## 下载安装\n\n| 平台 | 下载入口 | 系统要求 |\n| --- | --- | --- |\n| macOS | [DMG](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-WebKit-2.1.1-arm64.dmg) | Apple Silicon · macOS 14+ |\n| Windows | [CPU](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-2.1.1-x64-setup.exe) · [CUDA](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-2.1.1-x64-cuda-setup.exe) | Windows 10 / 11 · x64 · AVX2 |\n| Linux | [CPU deb](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-2.1.1-amd64-cpu.deb) · [CUDA deb](https://github.com/zerolovesea/Brevia/releases/download/v2.1.1/Brevia-2.1.1-amd64-cuda.deb) | Ubuntu 24.04 · x86-64 · AVX2 |\n| iPhone | [App Store](https://apps.apple.com/app/id6819869442) | iOS 15+ |\n| Android | [APK](https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk) | Android 7+ |\n\n国内镜像与更多说明见[官网](https://brevia.work/)。NVIDIA CUDA 版需配合受支持的显卡与驱动。\n\n手机端下载二维码：\n\n<table>\n<tr><th>iPhone · App Store</th><th>Android · APK</th></tr>\n<tr><td align=\"center\"><a href=\"https://apps.apple.com/app/id6819869442\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/download/ios-qr.png\" width=\"150\" alt=\"iPhone 下载二维码\" /></a></td><td align=\"center\"><a href=\"https://modelscope.cn/models/zyaztec/brevia-release/resolve/master/android/Brevia-android.apk\"><img src=\"https://raw.githubusercontent.com/zerolovesea/Brevia/bf208208cd3493d782a04ca6217c0f402b243f0b/docs/assets/download/android-qr.png\" width=\"150\" alt=\"Android 下载二维码\" /></a></td></tr>\n</table>\n\nISC 协议开源。作者自荐，欢迎试用和反馈。\n",
-    "created_at": "2026-11-16T02:15:47Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13415"
   }
 ]
