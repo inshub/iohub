@@ -1,5 +1,29 @@
 [
   {
+    "id": 13605,
+    "title": "【开源自荐】NodeTool：开源 AI 电影工作室，一句话生成可逐镜头修改的短片",
+    "content": "NodeTool 是一个开源（AGPL-3.0）的 AI 创作桌面应用，支持 macOS、Windows 和 Linux。\n\n输入一句话，智能体会写故事、为每个镜头生成静帧，并在时间线上剪辑。静帧审批通过后才生成视频，任何镜头都能单独重拍。每个项目底层是一张节点图，可以保存为工作流反复运行。\n\n可以用自己的 DeepSeek、通义千问、智谱 GLM 等 API 密钥，也可以通过 Ollama、llama.cpp 等运行本地模型。界面支持简体中文。\n\n项目地址：https://github.com/nodetool-ai/nodetool\n中文介绍：https://nodetool.ai/zh?ref=ruanyf",
+    "created_at": "2026-11-21T21:32:38Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13605"
+  },
+  {
+    "id": 13604,
+    "title": "【工具自荐】Dawnmere：让 Claude Code、Codex 和 Cursor 共用 Mac 上的一份记忆",
+    "content": "Dawnmere 是我做的 Mac 工具：Claude Code、Codex 和 Cursor 通过 MCP 和 hooks 共用本机上的一份记忆（一个 SQLite 文件，检索也在本机）。在 Claude Code 里说一次 \"remember that ...\"（或\"记住：...\"），换到 Codex 用相近的说法问，它就会把这条笔记带进提示词；Cursor 新开对话时也会显示最近的笔记。在我们维护的 memory-bench 上（测试集那一半也由我们保管，用例都是英文；各系统接收遗忘请求和第三方文本的方式不同，也是差距的一部分），Dawnmere 0.1.11 在 1,040 个用例中答对 592 个，Mem0 是 551 个；要求遗忘的内容后来又被带出来的比例，Dawnmere 是 29.5%，Mem0 是 78.4%。0.2.1 起，应用搜索记忆时由多语言模型来读中文，换一种说法提问，找到笔记的比例与英文相近；不过 Codex 和 Claude Code 自动加入提示词的笔记，仍主要出现在用到相同词语的提问里，用中文问英文保存的笔记也大多找不到。第一次用中文时会在后台下载约 271 MB 的模型，国内网络能否顺利安装我还没法测试；Claude Code 接 GLM、Kimi 等模型时，recall 和 remember 照常可用，后台自动保存需要 Claude 登录。免费，早期测试版，只支持 Apple 芯片的 Mac。客户端 MIT，引擎源码可见（FSL）。\n\nhttps://dawnmere.app/?src=cr-ruanyf\n\nhttps://github.com/LF-Labs-Inc/dawnmere\n\n![Dawnmere](https://raw.githubusercontent.com/LF-Labs-Inc/dawnmere/main/assets/kip-loop.gif)\n\n我是作者，这段中文借助 AI 翻译，也可以用英文交流。\n",
+    "created_at": "2026-11-21T21:26:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13604"
+  },
+  {
+    "id": 13603,
+    "title": "【开源自荐】Mingle：纯本地无服务器，把你的 AI Agent 请进微信、飞书、Slack 等常用聊天软件",
+    "content": "阮老师好，自荐一个开源的本地桌面工具 **Mingle**（MIT 协议）。\n\n**它做什么**：把你电脑上已经在用的 AI 编码 Agent（支持 Claude Code、Codex、Cursor、OpenCode、Kimi Code 等 14 种 harness），直接以机器人身份请进你已经在用的聊天软件里——包括微信、企业微信、飞书、钉钉、QQ、Slack、Discord、Telegram、iMessage 和 GitHub Issues/PR。\n\n**核心设计是“零服务器、纯本地运行”**：市面上很多把 Agent 接到 IM 的方案依赖云端中转或托管平台，不仅多了一层服务端被黑客攻击的风险，也存在聊天记录被留存或售卖的隐患。Mingle 没有服务端、没有账号体系、没有遥测——直接走各聊天软件的官方机器人接口（iMessage 走本机 Apple ID），控制台只监听 `127.0.0.1`，机器人凭据只存在 macOS 钥匙串 / Windows DPAPI / Linux Secret Service 里，Agent 的角色和记忆也只是本地文件夹里的 `ROLE.md`、`MEMORY.md` 和 `notes/`。如果需要关机后继续在线，也支持一键部署到你自己的 SSH 主机。\n\n**几个实际用下来比较顺手的细节**：\n- **一脑多端、共享记忆**：同一个 Agent 同时在飞书工作群、微信群、Discord 里，记忆是打通的。可以在微信里直接问它“今天上午飞书群里定了什么”，或者让它把 Slack 里的消息转到 Telegram。\n- **并行干活不卡聊**：交给它耗时任务（写代码、查资料、跑长命令）时，它会在后台开支线/话题（飞书、Slack、Discord 支持原位开 thread），同时照样回复群里其他人。\n- **群聊不乱插话**：能旁听群聊，直接叫名字或昵称就能接话不用每句 @；忙群会自动降频，避免刷屏。飞书还支持在文档评论里 @ 它回复。\n\n目前项目处于早期阶段（v0.4.8），Claude Code、Codex、OpenCode、Kimi Code 已端到端跑通，飞书在真实租户上验证过，其余聊天软件对着平台接口和测试验证。提供 macOS（已过 Apple 签名公证）、Windows、Linux 桌面端安装包和一键安装脚本。\n\n- 项目地址：https://github.com/earayu/Mingle\n- 官网：https://mingle.build/zh/\n\n![Mingle 控制台：同一个 Agent 同时连接多个聊天软件、并行处理任务与提醒](https://raw.githubusercontent.com/earayu/Mingle/main/site/img/agent-zh-light.png)\n",
+    "created_at": "2026-11-21T15:26:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13603"
+  },
+  {
     "id": 13602,
     "title": "【开源自荐】Music Lyrics Bar：把正在唱的那句歌词放到 Mac 菜单栏",
     "content": "阮老师好，自荐一个我写的 Mac 小工具。\n\n**Music Lyrics Bar** 把 Apple Music 正在唱的那句词放进菜单栏。比如写东西时没听清一句，抬眼就能看，不用切回「音乐」。有逐词时间戳的歌，唱到哪里，文字就亮到哪里。\n\n它的做法有点取巧：先在「音乐」里点开这首歌的歌词面板，等歌词缓存在本机，再根据播放进度显示。整个过程不用额外的歌词服务，也不用填 API 密钥。代价是，如果「音乐」没缓存这份歌词，或者苹果改了缓存格式，小工具就可能显示不出来。\n\nv0.0.6 提供通用版 ZIP，内含 Apple Silicon 和 Intel 两种架构，适用于 macOS 13 及以上版本。应用采用临时签名，未经苹果公证。首次打开时系统会提示无法验证开发者，关闭提示后到「系统设置 → 隐私与安全性」为 Music Lyrics Bar 选择「仍要打开」即可。\n\n项目地址：https://github.com/mytrashcan/applemusic-menubar-lyrics\n\n![实际播放时，菜单栏里的歌词随音乐逐词亮起](https://raw.githubusercontent.com/mytrashcan/applemusic-menubar-lyrics/main/docs/images/menu-bar.gif)\n",
@@ -188,16 +212,10 @@
     "title": "【投稿】圆明园数字复原计划：AI 逐景复原 1860 年前的圆明园，77 景开放共建",
     "content": "## 项目\n圆明园数字复原计划（Yuanmingyuan Digital Restoration）\n\n## 链接\n- 站点（中/英）：https://ivan666jjj.github.io/yuanmingyuan-restoration/\n- 仓库：https://github.com/Ivan666jjj/yuanmingyuan-restoration\n\n## 简介\n一个开放、可核验的圆明园数字复原图册。以 1744 年《圆明园四十景图咏》绢本彩绘、1786 年《西洋楼二十景》铜版画、样式雷图档与考古照片为依据，用参考图驱动的 AI 生成逐景复原已毁园林，覆盖三园 77 景（15 已复原、62 待认领）。\n\n## 亮点\n- 每景公开参考图出处、完整提示词与模型，标注\"AI 考据级复原，非考古测绘\"，可复核。\n- 自绘真实格局三园地图 + 西洋楼精确平面图，热点可点选认领。\n- 开放共建：任何人用任意 AI 图像工具即可认领一个景点补上，CC BY-SA 4.0。\n- Astro 静态站 + GitHub Actions 自动部署，中英双语。\n\n适合数字人文、文化遗产、AI 生成艺术爱好者。",
     "created_at": "2026-11-20T08:45:07Z",
-    "labels": [],
+    "labels": [
+      "weekly"
+    ],
     "url": "https://github.com/ruanyf/weekly/issues/13579"
-  },
-  {
-    "id": 13578,
-    "title": "🔥 ChatGPT、Claude Code、Gemini 等 AI 工具用户值得关注的机场",
-    "content": "刚开始玩机场的时候，我也是看跑分、看流量、看谁便宜。后来用得久了，心态完全变了。\n\n尤其是现在每天都在用 ChatGPT、Claude Code 、Gemini写东西、跑任务，网络突然抽风一次，整个人的节奏都会被打断。这时候你才会发现：**最好的机场，是让你几乎感觉不到它存在的那种**。\n\n[TAG 机场](https://570836.l49.net/#/auth/d2RtVGgb) 是我用了好几年、一直没换掉的主力。它是香港老牌机场，主打 IEPL 专线，节点覆盖 92+ 国家和地区，原生 IP、商业宽带和家宽都有，冷门地区也比较齐全。\n\n它不是没有缺点，也不能保证所有节点、所有 AI 平台永远畅通。但对我来说，选机场已经从「追求跑分」变成了「追求省心」。\n\n如果你也更在意长期稳定，而不是一时的测速成绩，可以试试 TAG。\n\n**👉 [TAG 机场官网](https://570836.l49.net/#/auth/d2RtVGgb)**\n\n以下为晚高峰测速：\n\n![image](https://user-images.githubusercontent.com/54033249/233945992-637d8568-776d-4736-ac75-abcd774763b9.png)\n\n",
-    "created_at": "2026-11-20T08:37:17Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13578"
   },
   {
     "id": 13577,
@@ -354,7 +372,7 @@
   {
     "id": 13558,
     "title": "【开源自荐】Trina AX：全公司共用 Claude Code 的 AI 工作台，每个文件按提问者的权限检查",
-    "content": "项目地址：https://github.com/trina-app/trina-ax\n\n大家好，我是 Trina AX 的作者，来自韩国，想自荐这个 AGPL-3.0 开源项目。我在韩国帮一些小公司部署 Claude Code，常见的情况是老板第一天就用得很顺手，给全员都开了账号，但大部分员工很少打开。我猜原因是员工的 Claude 对公司一无所知，从一个空文件夹开始。老板自己的 Claude 好用，是因为他花了几周把写方案、报价、报告的做法写成了 Skill 和 CLAUDE.md，而这些只存在他的电脑里。\n\nTrina AX 在一台服务器上跑 Claude Code 和 Codex，团队有一个共用的文件夹：全公司、部门、项目、团队 Skill、个人文件夹。每个人的 AI 都从这里开始，按同一份 SKILL.md 做事。AI 每打开一个文件，服务器都会按提问者本人的权限检查一次，比如 Finance 文件夹某个人打不开，他的 AI 也打不开。\n\n- 有网页、Mac、Windows、iPhone、Android 客户端，员工不用碰终端，界面支持简体中文。\n- 能读韩国政府常用的 HWP/HWPX 文档，也能预览 PDF 和 PowerPoint。\n- 自托管免费，不限人数，需要 Debian 12/13 或 Ubuntu 24.04（4 GB 内存），也可以用 Docker（比 Linux 安装新，测试得少）。\n- 有 10 分钟的本地演示（虚构团队，不接 AI）：https://github.com/trina-app/trina-ax/blob/main/docs/QUICKSTART.zh.md\n\n需要先说清楚：自托管不等于离线，AI 回答所需的内容会发给你接入的 Claude 或 OpenAI。服务器运维人员能读到存储的文件和聊天记录，没有安全认证。关于中国大陆，不提供任何中转或绕过访问限制的办法，接入的账号需要在你所在的地区能正常使用。\n\n中文说明：https://github.com/trina-app/trina-ax/blob/main/README.zh-CN.md\n\n![不同的人，不同的文件夹权限](https://raw.githubusercontent.com/trina-app/trina-ax/main/docs/images/readme/v4/folder-access.gif)\n\n欢迎试用和反馈，谢谢！",
+    "content": "项目地址：https://github.com/trina-app/trina-ax\n\n大家好，我是 Trina AX 的作者，想自荐这个 AGPL-3.0 开源项目。我平时帮一些小公司部署 Claude Code，常见的情况是老板第一天就用得很顺手，给全员都开了账号，但大部分员工很少打开。我猜原因是员工的 Claude 对公司一无所知，从一个空文件夹开始。老板自己的 Claude 好用，是因为他花了几周把写方案、报价、报告的做法写成了 Skill 和 CLAUDE.md，而这些只存在他的电脑里。\n\nTrina AX 在一台服务器上跑 Claude Code 和 Codex，团队有一个共用的文件夹：全公司、部门、项目、团队 Skill、个人文件夹。每个人的 AI 都从这里开始，按同一份 SKILL.md 做事。AI 每打开一个文件，服务器都会按提问者本人的权限检查一次，比如 Finance 文件夹某个人打不开，他的 AI 也打不开。\n\n- 有网页、Mac、Windows、iPhone、Android 客户端，员工不用碰终端，界面支持简体中文。\n- 能读 HWP/HWPX 文档，也能预览 PDF 和 PowerPoint。\n- 自托管免费，不限人数，需要 Debian 12/13 或 Ubuntu 24.04（4 GB 内存），也可以用 Docker（比 Linux 安装新，测试得少）。\n- 有 10 分钟的本地演示（虚构团队，不接 AI）：https://github.com/trina-app/trina-ax/blob/main/docs/QUICKSTART.zh.md\n\n需要先说清楚：自托管不等于离线，AI 回答所需的内容会发给你接入的 Claude 或 OpenAI。服务器运维人员能读到存储的文件和聊天记录，没有安全认证。关于中国大陆，不提供任何中转或绕过访问限制的办法，接入的账号需要在你所在的地区能正常使用。\n\n中文说明：https://github.com/trina-app/trina-ax/blob/main/README.zh-CN.md\n\n![不同的人，不同的文件夹权限](https://raw.githubusercontent.com/trina-app/trina-ax/main/docs/images/readme/v4/folder-access.gif)\n\n欢迎试用和反馈，谢谢！",
     "created_at": "2026-11-20T00:51:27Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13558"
@@ -782,21 +800,5 @@
     "created_at": "2026-11-18T15:51:12Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13505"
-  },
-  {
-    "id": 13504,
-    "title": "【资源自荐】Find Remote Jobs：海外公开远程岗位中文阅读与条件筛选网站",
-    "content": "Find Remote Jobs（https://findremote.online/ ）聚合海外公开远程岗位，提供中文翻译、AI 摘要，以及申请地区、语言与薪资条件筛选，并直连原帖或雇主官方申请页，方便中文求职者排查英文 JD 里的限制与薪资口径。免费浏览、无需注册，不代投不收费。",
-    "created_at": "2026-11-18T15:43:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13504"
-  },
-  {
-    "id": 13503,
-    "title": "【工具自荐】Tenter：在多个仓库里同时运行 Claude Code / Codex 的 Mac 应用",
-    "content": "一个免费的 Mac 应用（闭源），用来运行 Claude Code 和 Codex。一个任务可以同时修改多个仓库，每个仓库有独立的 git worktree、分支和 PR，多个任务并行互不干扰。\n\n![](https://tenter.build/product/zh-CN/delivery.webp)\n\n网址：https://tenter.build/zh-CN\n\n我是开发者，谢谢阮老师。\n",
-    "created_at": "2026-11-18T14:55:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13503"
   }
 ]
