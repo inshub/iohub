@@ -1,5 +1,13 @@
 [
   {
+    "id": 13591,
+    "title": "打开一个网页就能被黑？聊聊 Coruna、DarkSword 和 worse_query 这几个 iPhone 漏洞",
+    "content": "自荐一篇 HotRepo 的中文 iPhone 安全专题。文章用三个案例解释两个容易混淆的问题：为什么访问一个网页就可能让存在漏洞的 iPhone 被入侵，以及为什么一个已安装的 App 有时能读到其他 App 的私有文件。\n\nCoruna 和 DarkSword 用来讲浏览器与操作系统的多层隔离，worse_query 用来讲 App 沙盒和敏感数据落盘的风险。文末给出几个读者可以马上做的检查，包括到哪里看正式安全更新、怎样判断 App 来源是否可信，以及哪些人值得考虑开启锁定模式。\nTelegram 中文频道正文\n打开网页和装了恶意 App，都可能让 iPhone 上的数据暴露，但触发条件不一样。\n- Coruna、DarkSword：在受影响的系统上，访问被植入恶意代码的网页就可能触发。\n- worse_query：要先有恶意 App 在手机上运行，它才可能越过沙盒去读其他 App 的文件。\n现在可以做两件事：打开「设置 → 通用 → 软件更新」查一下正式更新，再检查自己有没有装过来源不明的 App 或描述文件。HotRepo 这篇把两种风险的区别、旧设备怎么查补丁，以及锁定模式适合谁，放在一起讲清楚了。\n\n原文链接: [hotrepo.ai/zh/stories/ios-exploits-coruna-darksword](https://hotrepo.ai/zh/stories/ios-exploits-coruna-darksword?utm_source=ruanyf_weekly&utm_medium=editorial&utm_campaign=ios_exploits_coruna_darksword&utm_content=github_issue)",
+    "created_at": "2026-11-21T03:04:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13591"
+  },
+  {
     "id": 13590,
     "title": "【自荐】LAN Orangutan：轻量的自托管局域网设备发现与管理工具",
     "content": "LAN Orangutan 是一款用 Go 编写的自托管局域网发现工具，单个二进制文件即可运行。它基于 nmap 并结合 ARP 表扫描网络，识别每台设备的 IP、MAC、厂商、主机名和类型，支持给设备打标签、分组和添加备注，重新扫描后依然保留。还能保存网络快照对比变化，在出现未知设备或预期设备离线时通过 Telegram、Discord、Slack 等 Webhook 通知你。内置 Tailscale 集成，提供 Web 界面和命令行，数据不离开本地，MIT 协议。\n\nGitHub：https://github.com/291-Group/LAN-Orangutan\n官网：https://lanorangutan.com",
@@ -82,7 +90,7 @@
   {
     "id": 13580,
     "title": "【资源自荐】Find Remote Jobs：海外远程岗位的中文整理与筛选",
-    "content": "我做了一个免费整理海外远程岗位的网站 Find Remote Jobs（https://findremote.online/）。\n\n很多远程机会散在各处，英文帖子常藏着限区、时差和薪资坑。我把公开岗位做成中文列表，拆开标明可投地区和原币种薪资，直连公司官网投递页或原帖，不用注册，也不做中介。",
+    "content": "我做了一个免费整理海外远程岗位的网站 [Find Remote Jobs](https://findremote.online/)。\n\n很多远程机会散在各处，英文帖子常藏着限区、时差和薪资坑。我把公开岗位做成中文列表，拆开标明可投地区和原币种薪资，直连公司官网投递页或原帖，不用注册，也不做中介。",
     "created_at": "2026-11-20T09:02:45Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13580"
@@ -792,13 +800,5 @@
     "created_at": "2026-11-18T07:11:44Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13491"
-  },
-  {
-    "id": 13490,
-    "title": "自荐：MailCairn —— 零依赖的本地单文件邮件归档与纯文本阅读器（支持 MBOX / EML / 只读 IMAP）",
-    "content": "你好，向周刊自荐一个我做的桌面小工具 **MailCairn**：\n\n- 项目主页：https://github.com/Osmanthusfish/mailcairn\n- 下载页面（含免装 Python 的 Windows 便携包）：https://github.com/Osmanthusfish/mailcairn/releases/tag/v0.1.0-alpha.9\n\n### 解决什么问题\n\n换工作、毕业或者清理快满的邮箱时，很多人会导出一大包 `.mbox` 或 `.eml` 备份文件。但过一两年真想从里面搜某张收据或找某个旧附件时，往往要么得塞进沉重的传统邮件客户端，要么得自己维护一套带 Docker 和数据库的自托管服务。\n\n**MailCairn** 的思路很克制：**把旧邮件变成你电脑里一个随时能全文搜索的单文件 SQLite 本地档案，像在安静的书房里翻旧信一样读邮件。**\n\n### 主要特点\n\n1. **零外部依赖、单文件持久化**：源码仅使用 Python 3.11+ 标准库（内置 SQLite FTS5 全文检索）+ 原生 HTML/CSS/JS，无需 `pip`、Node.js、Docker 或云账号；同时提供免安装 Python 的 Windows 64 位便携包，解压双击即用。\n2. **数据完整可核验**：原封不动保存原始 `.eml` 字节流并按 SHA-256 精确去重；每次导入生成带字节偏移量与跳过原因的明细回执，支持一键校验数据库与哈希完整性，可随时导出原始 `.eml`、附件、筛选后的 `.mbox` 或一致性快照备份。\n3. **安全纯文本阅读室**：将杂乱的 HTML 邮件转为干净的静态纯文本阅读，不执行脚本、不加载远程图片或追踪像素；支持中英双语切换、日光/灯下主题、字号密度调节与全键盘快捷键。\n4. **可选只读 INBOX 增量同步**：除手动导入导出包外，也支持配置标准 IMAP / Gmail 应用专用密码 / 付费 Proton Bridge 在运行期间只读归档新收件（绝不修改或删除源邮箱状态）。\n\n### 当前状态与许可说明\n\n目前处于 `0.1.0-alpha.9` 预览阶段（Windows 便携包暂未做商业代码签名，真实 Gmail 首次归档已跑通但后续闲置轮询的偶发 TLS 重置仍在排查中，文档均如实标注了测试边界）。源码采用 **PolyForm Noncommercial 1.0.0**（非商业源码可见许可，个人与符合条款的非商业机构免费使用）。\n\n### 界面截图（均为公开合成测试邮件）\n\n![MailCairn 中文阅读室界面](https://raw.githubusercontent.com/Osmanthusfish/mailcairn/main/docs/screenshots/alpha5-reader-zh.png)\n",
-    "created_at": "2026-11-18T07:10:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13490"
   }
 ]
