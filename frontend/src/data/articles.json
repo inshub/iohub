@@ -1,5 +1,93 @@
 [
   {
+    "id": 13602,
+    "title": "【开源自荐】Music Lyrics Bar：把正在唱的那句歌词放到 Mac 菜单栏",
+    "content": "阮老师好，自荐一个我写的 Mac 小工具。\n\n**Music Lyrics Bar** 把 Apple Music 正在唱的那句词放进菜单栏。比如写东西时没听清一句，抬眼就能看，不用切回「音乐」。有逐词时间戳的歌，唱到哪里，文字就亮到哪里。\n\n它的做法有点取巧：先在「音乐」里点开这首歌的歌词面板，等歌词缓存在本机，再根据播放进度显示。整个过程不用额外的歌词服务，也不用填 API 密钥。代价是，如果「音乐」没缓存这份歌词，或者苹果改了缓存格式，小工具就可能显示不出来。\n\nv0.0.6 提供通用版 ZIP，内含 Apple Silicon 和 Intel 两种架构，适用于 macOS 13 及以上版本。应用采用临时签名，未经苹果公证。首次打开时系统会提示无法验证开发者，关闭提示后到「系统设置 → 隐私与安全性」为 Music Lyrics Bar 选择「仍要打开」即可。\n\n项目地址：https://github.com/mytrashcan/applemusic-menubar-lyrics\n\n![实际播放时，菜单栏里的歌词随音乐逐词亮起](https://raw.githubusercontent.com/mytrashcan/applemusic-menubar-lyrics/main/docs/images/menu-bar.gif)\n",
+    "created_at": "2026-11-21T13:58:48Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13602"
+  },
+  {
+    "id": 13601,
+    "title": "[自荐] Crisis Rehearsal：事前 72 小时声誉危机预演 CLI（纯标准库离线可复现，附 30 事件公开回测）",
+    "content": "### 项目名称\nCrisis Rehearsal（危机预演）\n\n### 项目地址\nhttps://github.com/yepinggu66/crisis-rehearsal\n\n### 一句话简介\n一个在声誉危机爆发前 72 小时进行多智能体沙盘预演的开源 CLI 工具，附带 30 个真实历史事件的公开回测与 SHA-256 证据复现包，纯 Python 标准库实现、无需 API Key 即可离线运行。\n\n### 核心亮点\n- **极简离线复现**：只需 `pipx install` + `crh demo --out demo`，30 秒内无需联网、无需 API Key，自动校验 `evidence.sha256`、重算 30 事件 × 3 轮回测统计（82.2%，95% CI 78.5–85.9），并输出 4 份自包含的 HTML 危机预演档案报告。\n- **反“事后监控”的工程思路**：把历史危机倒带回 `T-72h`（严格隔离事后信息），验证多智能体群体推演识别 Top-3 风险的方向性价值，并坦诚公开未达标指标（STA 58 < 60）与待校准项。\n- **开箱即用**：支持 `crh pack init/validate` 创建自定义 T-72h 危机剧本，以及 `crh site` 生成静态证据站点，采用 AGPL-3.0 协议。\n\n### 效果截图\n![危机预演生成的 HTML 档案报告预览](https://raw.githubusercontent.com/yepinggu66/crisis-rehearsal/main/docs/assets/report-preview.png)",
+    "created_at": "2026-11-21T13:02:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13601"
+  },
+  {
+    "id": 13600,
+    "title": "【开源自荐】ming-skill-analyzer：分析 Agent Skill，生成带动态流程图的交互式报告",
+    "content": "你好，推荐一个我最近开源的开发者工具。\n\n## 项目简介\n\n**ming-skill-analyzer** 是一个面向 AI Agent Skill 作者的分析工具，输入一个 Skill 目录，输出一份带动态 SVG 流程图的三栏交互式 HTML 报告。\n\n随着 Claude Code、Codex 等 AI 编程工具的普及，越来越多的开发者在编写自定义 Skill（指令集）来扩展 Agent 能力。但「写完一个 Skill 之后，很难知道 Agent 是怎么理解和执行它的」——这个工具就是为了解决这个问题。\n\n## 核心特点\n\n- **确定性扫描**：只读文件，不执行任何代码，输出可复现的 `facts.json`\n- **证据溯源**：每条分析结论必须追溯到源文件的具体行号，不允许无来源推断\n- **质量验证**：`--strict` 模式输出三项可量化指标（证据覆盖率 ≥90%、推断比例、无来源声明数 = 0）\n- **动态流程图**：SVG 有向图，支持泳道、播放动画、能力筛选、全屏\n- **零依赖**：Python 3.10+ 标准库，`git clone` 即可使用\n\n## 自验证\n\n工具本身也用自己分析了自己（自指分析），通过了 100% 证据覆盖率的严格验证。落地页上展示的流程图和能力说明直接来自那份分析报告，不是手写文案。\n\n## 链接\n\n- 项目地址：https://github.com/LiMingHuaGit/ming-skill-analyzer\n- 落地页：https://ming-skill-analyzer.liminghua.fyi\n- 英文版：https://ming-skill-analyzer.liminghua.fyi/en/\n\n感谢阅读！",
+    "created_at": "2026-11-21T09:37:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13600"
+  },
+  {
+    "id": 13599,
+    "title": "【开源自荐】Ecom Studio：AI 服装商拍工作台，内置 280 张 4 视角姿势与 300 款 2K 空场景",
+    "content": "我是 Ecom Studio 的作者，这是一次开源项目自荐。\n\n- 项目地址：https://github.com/zgrai-com/ecom-studio\n- 在线体验：https://ecom.zgrai.com\n- 开源协议：MIT\n\n用 AI 生成服装商拍图时，最常见的问题是模特姿势不可控、正/侧/背面视角不连贯、商业场景风格不统一。Ecom Studio 把这套流程做成了一个开箱即用的浏览器工作台：\n\n- **70 套 × 4 视角白模姿势库（共 280 张）**：覆盖正面、斜侧、侧面、背面 4 个标准商拍视角，包含站姿、行走、坐姿与半身特写。\n- **300 款 2K 无人商拍空场景**：涵盖商业影棚、买手店、都市街拍、居家、建筑空间与自然外景六大类，居中预留站立区域，支持 3:4 / 4:5 / 1:1 / 9:16 裁切。\n- **三合一合成工作台**：拖拽或 Ctrl+V 粘贴待拍服装图，实时拼出 1800×880 参考图与中英文结构化提示词（内置防白模透传与留白比例控制）。\n- **多模型直连与自部署**：支持 OpenAI Images、Google Gemini、阿里云百炼 Qwen、字节火山豆包 Seedream（API Key 仅存于本地浏览器），支持 Cloudflare Workers 一键部署，线上 Demo 也提供每日免费试用额度。\n- **6 国语言与 Agent Skill**：内置 6 种语言切换及 `SKILL.md` 索引，方便 AI Agent 自动选姿配景。\n\n<img width=\"1329\" height=\"833\" alt=\"5622e4f6-432a-4a40-a095-4dd1e9114656-screenshot\" src=\"https://github.com/user-attachments/assets/d3aed5bf-59f5-40c6-b56d-c488475e5c06\" />",
+    "created_at": "2026-11-21T09:12:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13599"
+  },
+  {
+    "id": 13598,
+    "title": "【工具自荐】图片工坊：在浏览器里做证件照、改 KB 和换底色，照片不上传",
+    "content": "图片工坊（Picfang）是一个免费的在线证件照工具，按官方规格制作护照、签证和考试报名照片。选规格、对准脸部、下载即可，也可以按表格要求改像素或厘米，并把文件压到指定 KB。\n\n- 目前整理了 56 种常用规格，如中国一寸照、二寸照，英语四六级、教师资格证、公务员考试报名照片，以及美国签证 2×2 英寸照等\n- 可按像素、厘米、毫米或英寸改尺寸，并把照片压到 20KB、50KB、100KB、200KB 或自定义大小\n- 在浏览器里用 AI 换成白底、蓝底、红底或任意颜色，也可导出透明 PNG\n- 需要纸质照片时，可下载 4×6 英寸排版图，按普通 4×6 冲洗后沿线剪开\n- 免注册、无广告；全部在浏览器本地完成，照片不上传、不保存\n\n官网（简体中文）：https://picfang.com/zh-CN",
+    "created_at": "2026-11-21T08:37:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13598"
+  },
+  {
+    "id": 13597,
+    "title": "已撤回",
+    "content": "作者已撤回投稿，请仓库管理员永久删除本帖，谢谢。",
+    "created_at": "2026-11-21T07:18:01Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13597"
+  },
+  {
+    "id": 13596,
+    "title": "【作者自荐】notrack：一条命令查出你的开发工具和 AI Agent 谁在偷偷上报遥测",
+    "content": "我是 notrack 的作者，这是一次自荐。\n\n项目地址：https://github.com/zhushen12580/notrack\n\nnotrack 是本地只读的遥测设置检查工具，内置 40 种开发工具的规则，提供检测依据、官方文档链接和 JSON 报告。它还可以输出 bash、zsh、fish 和 PowerShell 的关闭遥测建议，由用户审阅后自行应用，不会自动修改配置。\n\n它适合关注开发工具与隐私设置的读者；检查结果基于可见设置推断，不能验证实际网络上报行为。",
+    "created_at": "2026-11-21T06:35:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13596"
+  },
+  {
+    "id": 13595,
+    "title": "【开源自荐】checkup-brief：把体检报告翻译成一页人话简报，纯本地、不上传",
+    "content": "![checkup-brief：体检单，翻译成人话](https://raw.githubusercontent.com/TTNAN/checkup-brief/main/docs/assets/banner.png)\n\n每年体检完，报告单上的数字大多数人都看不懂：总胆固醇 6.12 是什么意思？尿酸 452 要不要紧？异常了该挂什么科？爸妈的报告发到家庭群里，做子女的也常常看不明白。\n\ncheckup-brief 是一个开源网页工具，把医院给的 PDF、照片或截图拖进来，就能得到一页看得懂的简报：总分、红黄绿灯、每项异常一句人话，再告诉你下次查什么、挂哪个科、接下来 30 天怎么改。全部在浏览器里完成，报告不出本机，不用注册，断网也能用。\n\n在线体验：https://checkupbrief.ggff.net/\n项目地址：https://github.com/TTNAN/checkup-brief\n\n![粘贴报告 → 生成简报 → 五个模块 → 中英切换](https://raw.githubusercontent.com/TTNAN/checkup-brief/main/docs/assets/demo.gif)\n\n### 为什么不直接问大模型\n\n把报告丢给大模型也行，但它可能编参考范围，每次说法不一样，还得把整份报告传上云。checkup-brief 换了个思路：\n\n| | 直接问大模型 | checkup-brief |\n| --- | --- | --- |\n| 红黄绿判定 | 靠模型“记得”的范围，可能编 | 优先用报告单上印的范围，可复算 |\n| 计分 | 每次不一样 | 规则公开在代码里，同一份报告永远同一个分 |\n| 隐私 | 整份报告上传云端 | 100% 本地，PDF / 照片也在本机识别 |\n| 照片识别出错 | 不知道哪里错了 | 常见 OCR 错误自动修正，并标出来让你核对 |\n| 下一步 | 一段长回答 | 套餐、科室、问题清单、30 天打卡，直接能用 |\n\n### 主要特点\n\n**1. 一页纸人话简报**：总分（规则公开）+ 一句话总结，红黄绿灯标出每项数值落在参考范围的哪里，每项异常一句人话。一键生成分享长图发给家人，也能打印带去见医生。\n\n![一页纸简报](https://raw.githubusercontent.com/TTNAN/checkup-brief/main/docs/assets/brief.png)\n\n**2. PDF / 照片直接导入**：文字版 PDF 按坐标还原成“一行一项”；扫描件、手机照片和截图用浏览器内中文 OCR 识别，图片不上传。“6.12”认成“612”、“↑”认成“1”这类错误按参考范围自动修正，并标黄提示核对。30 个常见指标、120 多种写法自动归一（ALT = 谷丙转氨酶 = 丙氨酸氨基转移酶），各家医院的报告都能对上。\n\n![导入一张报告照片，本地识别后生成简报](https://raw.githubusercontent.com/TTNAN/checkup-brief/main/docs/assets/import-photo.gif)\n\n**3. 下次查什么**：按年龄、性别、家族史、预算和本次异常，给出建议加查、可选和可以省掉的项目，附大致价格。\n\n![下次查什么](https://raw.githubusercontent.com/TTNAN/checkup-brief/main/docs/assets/package.png)\n\n**4. 挂号 + 问诊清单**：每个异常一张卡片，写明该挂什么科、带什么资料、问医生哪几个问题，一键复制。\n\n![挂号清单](https://raw.githubusercontent.com/TTNAN/checkup-brief/main/docs/assets/clinic.png)\n\n**5. 30 天改善计划**：只讲吃、动、睡，不给药、不给剂量；每天 3 件小事，带打卡日历。\n\n![30 天打卡和分享长图](https://raw.githubusercontent.com/TTNAN/checkup-brief/main/docs/assets/plan-checkin.gif)\n\n**家庭档案**：帮爸妈也建一份，按成员分开存报告和打卡，年龄、性别自动带入；整个家庭档案可以导出、导入，换到爸妈的手机上，依旧只存在本机。\n\n另外：零依赖、断网可用，中英双语，支持手机端。\n\n只做健康科普，不做诊断，不能替代医生。\n\n开源许可证：MIT。\n\n利益相关：我是项目作者。\n",
+    "created_at": "2026-11-21T06:09:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13595"
+  },
+  {
+    "id": 13594,
+    "title": "【工具自荐】Arioso：钢琴欣赏和学习的助手，提供动态乐谱，学习模式，和常用学习曲目",
+    "content": "Arioso 是一个 iOS 平台的钢琴欣赏与练习应用，我一个人开发。\n\n它通过麦克风听你在真钢琴上弹奏，在乐谱上标出你实际弹了什么：哪里错音、漏音，哪里节奏不稳。你也可以利用动态琴谱辅助学习。有内置播放器享受音乐，还支持显示，播放，和学习用户自己上传的xml文件。\n\n主要功能：\n四种练习方式：逐音练习、连贯弹奏、完整演奏，以及聆听模式\n内置古典曲库，按 ABRSM 1–8 级标注难度，包括巴赫、布格缪勒、门德尔松、德彪西等\n不弹琴也可以当钢琴音乐播放器用，边听边看谱\n入门曲目和部分名曲免费；一次性购买可解锁全部付费曲集。这里的读者如果试用后很喜欢我可提供有限的免费code\n\n目前界面为英文，中国大陆区 App Store 暂未上架，需要非大陆区 Apple ID。\n\nApp Store：https://apps.apple.com/us/app/arioso/id6765957541\n\n<p align=\"center\"><img width=\"260\" alt=\"iphone-04-perform-result\" src=\"https://github.com/user-attachments/assets/8e2c8cd0-773a-41a0-bd71-fc38562cf728\" /> <img width=\"260\" alt=\"iphone-05-library\" src=\"https://github.com/user-attachments/assets/5e7162a2-b19d-4b8c-b5fe-90a75e2f31a0\" /> <img width=\"260\" alt=\"iphone-07-read-listen\" src=\"https://github.com/user-attachments/assets/2a2b443b-b02f-4607-bb9e-f7b9d106e058\" /></p>",
+    "created_at": "2026-11-21T06:00:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13594"
+  },
+  {
+    "id": 13593,
+    "title": "【资源自荐】Anagnoraxis 的 AI 实践教程、Muse2API 与访谈阅读笔记",
+    "content": "我是 Anagnoraxis 的维护者。下面是本人在 AI 协助下整理、已公开发布的工具、教程和阅读资料，自荐供周刊选用。各项的来源、实现范围和待验证事项均在原文中列明。\n\n1. **[让 Claude / ChatGPT 网页操作 Windows：MCPX 图文教程](https://anagnoraxis.com/builds/mcpx-web-local-windows/)**  \n   Windows 下使用 MCPX 的图文指南，包含 HTTPS/OAuth、文件与命令工具、验证和恢复步骤，附脱敏截图、配置示例与 SOP。[配套指南仓库](https://github.com/7yedeng/mcpx-web-local-guide)。MCPX 软件属于上游项目；这里自荐的是指南，不代表所有网页端账号均具备相同权限。\n\n2. **[Muse2API 开源：把 Muse 接进自己的 API 工作流](https://anagnoraxis.com/builds/muse2api/)**  \n   [开源仓库](https://github.com/7yedeng/muse2api)：面向本人已获授权 Muse 会话的单用户社区适配器，提供文字、图片理解、生图编辑和异步视频接口，附部署文档、会话加密持久化、Skill 与完整 AI 执行提示词。无 Meta 官方背书，不扩大账号权益或配额；离线工程测试与真实账号、媒体及中转链路验收分开记录。仓库也说明了上游早期参考链的许可信息缺口。\n\n3. **[一台 VPS，让智能体完成个人代理部署](https://anagnoraxis.com/builds/single-vps-ai-proxy/)**  \n   面向全新专用 Ubuntu 24.04 VPS 的部署方法与工具包，包含主机预检、依赖锁定、私密配置、验收及回退；[完整 AI 提示词](https://anagnoraxis.com/recommendations/vps/ai-prompt/)可单独阅读。已有本地测试，真实 VPS、公网 UDP 与长期运行表现需另行验收。\n\n4. **[会话凭据转换器](https://anagnoraxis.com/builds/session-cookie-converter/)**  \n   将本人已获授权且仍有效的 ChatGPT 会话内容，在浏览器本地整理为 Cookie-Editor 可导入的 JSON。不上传输入，只整理格式，不创建订阅权益；使用前需理解登录凭据的敏感性。这里链接的是公开介绍页。\n\n5. **[先给你的职业加上 AI：Dario Amodei 访谈阅读笔记](https://anagnoraxis.com/research/dario-amodei-ai-career/)**  \n   原创阅读笔记，整理十章阅读范围、八组职业问题、原片时间索引与实践清单，区分访谈观点、作者理解和待验证问题。附原片来源及文本下载，不是访谈逐字稿或官方翻译。\n\n主站：[Anagnoraxis](https://anagnoraxis.com/)。以上以技术资料和阅读资源投稿，供编辑按内容适配选用。\n",
+    "created_at": "2026-11-21T05:54:12Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13593"
+  },
+  {
+    "id": 13592,
+    "title": "推荐一个开源项目：GitHub 每日热门中文站",
+    "content": "推荐项目：GitHub 每日热门中文站\n\n项目地址：https://github.com/hanxianqing/gh-trending-cn\n在线地址：https://gh-trending-cn.pages.dev/\n\n介绍：每天早上自动拉取 GitHub Trending 并翻译成中文的榜单站，含每日 Top 15、周榜月榜、Python/JS/TS/Rust/Go 语言榜和中国开发者榜，每个项目一段中文简介，1 分钟扫完。解决英文榜单阅读慢的问题。部署在 Cloudflare Pages，免费、无需登录。",
+    "created_at": "2026-11-21T05:15:05Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13592"
+  },
+  {
     "id": 13591,
     "title": "打开一个网页就能被黑？聊聊 Coruna、DarkSword 和 worse_query 这几个 iPhone 漏洞",
     "content": "自荐一篇 HotRepo 的中文 iPhone 安全专题。文章用三个案例解释两个容易混淆的问题：为什么访问一个网页就可能让存在漏洞的 iPhone 被入侵，以及为什么一个已安装的 App 有时能读到其他 App 的私有文件。\n\nCoruna 和 DarkSword 用来讲浏览器与操作系统的多层隔离，worse_query 用来讲 App 沙盒和敏感数据落盘的风险。文末给出几个读者可以马上做的检查，包括到哪里看正式安全更新、怎样判断 App 来源是否可信，以及哪些人值得考虑开启锁定模式。\nTelegram 中文频道正文\n打开网页和装了恶意 App，都可能让 iPhone 上的数据暴露，但触发条件不一样。\n- Coruna、DarkSword：在受影响的系统上，访问被植入恶意代码的网页就可能触发。\n- worse_query：要先有恶意 App 在手机上运行，它才可能越过沙盒去读其他 App 的文件。\n现在可以做两件事：打开「设置 → 通用 → 软件更新」查一下正式更新，再检查自己有没有装过来源不明的 App 或描述文件。HotRepo 这篇把两种风险的区别、旧设备怎么查补丁，以及锁定模式适合谁，放在一起讲清楚了。\n\n原文链接: [hotrepo.ai/zh/stories/ios-exploits-coruna-darksword](https://hotrepo.ai/zh/stories/ios-exploits-coruna-darksword?utm_source=ruanyf_weekly&utm_medium=editorial&utm_campaign=ios_exploits_coruna_darksword&utm_content=github_issue)",
@@ -710,95 +798,5 @@
     "created_at": "2026-11-18T14:55:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13503"
-  },
-  {
-    "id": 13501,
-    "title": "【开源自荐】CrossDesk：支持 Agent 自主操控的跨平台远程桌面软件",
-    "content": "**官网地址**：https://www.crossdesk.cn\n**项目地址**：https://github.com/kunkundi/crossdesk\n\n去年这个时间点 CrossDesk 入选过 weekly，经过一年时间的完善，新增了许多功能，补充了移动端的实现，支持了 MCP 接入。\n\n---\n\n### 项目简介\nCrossDesk 是一款开源的跨平台远程桌面软件。\n\n支持从电脑（Windows/Linux/macOS）、[浏览器](https://web.crossdesk.cn)、手机（iOS/Android/鸿蒙）或命令行界面（ CLI）连接远端电脑，支持通过桌面墙集中查看与操控多台设备，支持自托管服务端。\n\n不同于常规远程桌面软件的是，通过 CrossDesk MCP 可将远程操控任务交给 Agent。授权后 Agent 可以查看远端屏幕画面，根据指令执行键鼠操作。\n\n---\n\n### MCP 功能演示\n在 Codex 中调用 MCP 下达指令 ***连接远端的 Mac mini，打开浏览器玩一局中级扫雷***。\n\nhttps://github.com/user-attachments/assets/1681add0-d7e6-49e0-825c-fd9a5f355b49\n\n---\n\n### 完整功能演示动画\n\n<img width=\"800\" height=\"539\" alt=\"crossdesk-weekly-smooth-3mb\" src=\"https://github.com/user-attachments/assets/83f1becc-0ff7-47d2-99b1-2fc9cccae440\" />",
-    "created_at": "2026-11-18T14:42:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13501"
-  },
-  {
-    "id": 13500,
-    "title": "docs(issue-417): remove dead Overgrown intro-article link",
-    "content": "## 修复内容\n\n第 417 期 Overgrown 条目的「介绍文章」链接（charliegerard.dev/blog/overgrown-extension/）已失效，GET 返回 404 Page not found。删除该失效链接引用，保留描述文字。\n\n- 项目主仓库 github.com/charliegerard/Overgrown 仍然有效，未改动。\n- 纯文档修改：docs/issue-417.md 共 +1 / -1，单行替换，不新增或删除任何条目。\n\n## 验证\n\n- 该文章 URL GET 返回 404（页面已移除），blog 站点其他路径正常。\n- 未发现指向该问题的其他 open PR。\n\n> AI-assisted contribution: located and verified the broken link, edited with AI assistance.",
-    "created_at": "2026-11-18T14:21:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/13500"
-  },
-  {
-    "id": 13499,
-    "title": "OmniPulse - 轻量级 macOS 菜单栏原生效率小钢炮（平滑滚轮 / 离线截图翻译 / 剪贴板）",
-    "content": "**项目名称**：OmniPulse\n**项目地址**：https://github.com/Carver-D/OmniPulse-Download\n\n**项目简介**：\n一款专为 macOS 打造的原生 Swift 菜单栏效率工具（常驻右上角，快捷键呼出悬浮工作台），旨在用一个轻量级应用替代多个零散插件：\n1. **普通鼠标滚轮平滑增强**：解决非 Apple 鼠标在 Mac 上滚轮生硬跳跃的问题，支持速度、惯性及方向独立反转。\n2. **系统级离线截图翻译 (OCR)**：快捷键划词截屏，基于系统原生 Vision 与离线翻译引擎，无需联网、不依赖外部 API Key，保护隐私。\n3. **剪贴板历史与隐私脱敏**：自动过滤密码管理器敏感内容，支持关键词搜索、置顶与双击秒贴上屏。\n4. **屏幕取色与拟物文件夹染色**：支持 1024×1024 高清光影置换，一键给 Mac 原生文件夹换色。\n\n首发限时免费发放 Pro 终身激活码，欢迎体验和提建议！\n",
-    "created_at": "2026-11-18T13:46:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13499"
-  },
-  {
-    "id": 13498,
-    "title": "【开源自荐】 Arke：不会卡住的 Windows 资源管理器替代品",
-    "content": "[Arke](https://github.com/Koimsurai/Arke)\n\n![](https://raw.githubusercontent.com/Koimsurai/Arke/main/.github/assets/preview.png)\n\n开源的 Windows 资源管理器替代品，Rust 开发，读取、排序、缩略图、搜索都不在界面线程上，打开十万个文件的文件夹或网络共享断线都不会卡住窗口。内置全盘搜索，删除两万个文件到回收站只要 0.2 秒（资源管理器要 47 秒）。",
-    "created_at": "2026-11-18T11:45:27Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/13498"
-  },
-  {
-    "id": 13497,
-    "title": "投稿：3D 内容工厂 — 把纸质说明书和手机全景变成能点的静态 3D 页面",
-    "content": "https://pengyuyan3d.github.io/3d-content-kit/\n\n一个开源工具（MIT），把两类「二维存量素材」变成能交互的三维页面。产物是纯静态页，没有后端，双击能开，也能塞进小程序 web-view。\n\n说明书线：输入零件表 + 步骤 + 原页图，输出逐步 3D 装配演示。每步高亮当前零件、列出五金数量、右边并排放原手册对应页。零件是按尺寸生成的几何体，不做建模，所以改尺寸只改数据。\n\n店铺线：一张 360 全景 + 热点表，输出可拖可点的看店页，热点带说明和价格。全景贴球面、热点用投影算屏幕坐标，手机单指可拖。\n\n两条线共用一套 three.js（数据驱动 + 编译成静态页）。说明书线带五条自动检查：零件是否完整、竖板数量、层板有没有被劈半、引用是否闭合、页映射是否一致。\n\n适合的场景是家具 / 货架 / 器材品牌，以及餐饮、零售、展厅这类有实体空间的店——因为这两类客户手上通常只有一份纸质手册和一张手机拍的全景，没有 3D 模型，也没预算重新建模。\n\nGitHub：https://github.com/pengyuyan3d/3d-content-kit\n\n![](https://github.com/pengyuyan3d/3d-content-kit/raw/main/images/manual-card.gif)",
-    "created_at": "2026-11-18T11:08:50Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13497"
-  },
-  {
-    "id": 13496,
-    "title": "【工具自荐】AI Code Detector：批量检测代码是否为 AI 生成，逐文件评分并可导出报告",
-    "content": "阮老师好，我是这个工具的作者，自荐一个在线工具：AI Code Detector（AI 代码检测器）。\n\n它用来检测代码是否由 AI 生成：把代码文件批量上传，工具会逐文件给出 AI 生成概率评分，检测完可以导出一份完整的检测报告。\n\n主要面向两个场景：教师检查学生作业中的 AI 使用情况，以及面试官审查候选人提交的代码。和常见的单段粘贴式检测工具相比，我们的差异在于按文件批量检测、逐文件评分、报告可导出。\n\n地址：https://ai-code-detector.com/for-teachers\n\n欢迎使用，也欢迎反馈检测结果是否符合预期。",
-    "created_at": "2026-11-18T10:53:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13496"
-  },
-  {
-    "id": 13495,
-    "title": "【工具自荐】图盒 Tubox，一个在浏览器里用的图片工具箱",
-    "content": "阮老师好，我做了个网页工具，叫图盒 Tubox。打开就能用，不用注册，选进去的图片就在浏览器里处理。\n\n比如手上有一批商品图，要改成一样大、压小一点，再统一加个水印，可以一次拖进去处理。做报名照时可以换底色、设尺寸和文件大小。平时要给截图加箭头、把几张图拼成长图，或者截一小段视频转 GIF，也能在同一个网站做。抠图、图片放大、九宫格和二维码也有。\n\n如果是发原图，里面有个工具可以先看看有没有 GPS 和设备型号，再清掉这些信息。\n\n[打开图盒](https://tubox.top/?utm_source=ruanyf_weekly&utm_medium=editorial&utm_campaign=tubox_toolbox_202611)",
-    "created_at": "2026-11-18T09:07:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13495"
-  },
-  {
-    "id": 13494,
-    "title": "【工具自荐】MD Convert：将网页富文本粘贴为 Markdown",
-    "content": "地址：https://mdconvert.net/paste-to-markdown\n\nMD Convert 的 Paste to Markdown 是一个浏览器端网页富文本转 Markdown 工具。适用于从网页复制内容后整理技术笔记：剪贴板包含 HTML 时，可转换标题、列表、链接和简单表格，并复制或下载 Markdown 结果。\n\n一个典型场景是将网页里的列表、参考链接和简单表格整理成可编辑的文档，而不是先手动提取 HTML 源码。转换在浏览器内完成，页面不要求登录即可打开工具。\n\n使用边界：纯文本粘贴保留文字和换行，不自动恢复表格或链接；复杂表格需人工复核；尚未验证原生 Word 剪贴板的兼容性。\n\n关联披露：本站维护方授权 AI 助手提交此自荐，非独立测评，也不作为开源项目投稿。供周刊编辑评估是否适合作为实用工具介绍，谢谢。\n",
-    "created_at": "2026-11-18T08:35:22Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13494"
-  },
-  {
-    "id": 13493,
-    "title": "【开源自荐】VLink：用一套 C++ 接口开发共享内存、DDS 和车载 SOME/IP 应用",
-    "content": "在一辆车上，感知算法可能通过共享内存取数据，计算节点之间用 DDS，车载服务又要求 SOME/IP。三者对“发一条消息”的写法都不同。VLink 是面向自动驾驶和具身智能的 C++17 通信中间件。它把三个选择拆开了：业务代码决定要发布事件、调用服务还是同步状态，C++ 消息类型决定怎样编解码，部署时的 URL 决定走哪种传输。仓库实现了 10 种后端，还可以通过配置把指定话题从共享内存改到 DDS，复用原来的消息类型和业务回调。[项目源码](https://github.com/thun-res/vlink) · [URL 与后端选择](https://github.com/thun-res/vlink/blob/master/src/impl/url.cc)\n\n仓库里的车载示例很能说明这种拆分有什么用。发送端用普通 C++ 对象填好字段，调用 `publish(msg)`；接收端在回调里直接从 FlatBuffers 缓冲区读字段，省去了还原整棵对象树的开销。底层仍然按 SOME/IP 的服务号、实例号和事件组通信。同一份示例还演示了调用指定方法，以及用 `set()` 和 `get()` 同步状态。已有 AUTOSAR 接口定义的团队，也可以从 ARXML 中受支持的数据类型生成 C++ 消息结构。[完整示例源码](https://github.com/thun-res/vlink/blob/master/examples/samples/someip_flat/someip_flat.cc) · [ARXML 生成器](https://github.com/thun-res/vlink/blob/master/tools/autosar/arxml_to_vlink_someip.py)\n\n**统一接口也保留了底层减少拷贝的机会。** 例如，用 Protobuf 走 iceoryx 共享内存时，发布端先算出编码长度，向传输层借一块等大的内存，再让 Protobuf 直接写进去。编码完成后，后端发布的就是原来那块内存。对于已经在 GPU 上的数据，仓库另有 CUDA 插件示例：同一台机器上的两个进程可以通过 CUDA IPC 句柄共享设备缓冲区，消息里传的是句柄和元数据，省去把整个缓冲区搬回 CPU 的往返。[序列化实现](https://github.com/thun-res/vlink/blob/master/include/vlink/internal/serializer-inl.h) · [共享内存发布实现](https://github.com/thun-res/vlink/blob/master/modules/shm/shm_factory.cc) · [CUDA 插件源码](https://github.com/thun-res/vlink/blob/master/examples/fastbuffer/cuda/cuda_plugin.cc)\n\n调试工具也复用了这套设计。`vlink-parse` 在线时从服务发现取得话题和消息类型，离线时从录制文件读回这些信息，两条路径共用后续的字段解析代码。因此，同一组字段可以在车上实时观察，也可以回到工位从录制文件里提取成 CSV。需要看空间关系时，可以把点云、图像和检测结果接到 Foxglove 或 Rerun。[在线与离线解析源码](https://github.com/thun-res/vlink/blob/master/cli/parse/parse.cc) · [可视化桥接源码](https://github.com/thun-res/vlink/tree/master/webviz)\n\n项目采用 Apache 2.0 许可证，提供 C 和 Python 接口。想评估传输开销，可以看项目公开的 v2.3.0 基准：在同机跨进程、128 字节、每秒 1,000 条消息的共享内存测试中，订阅端端到端延迟 P95 为 21.4 微秒，P99.9 为 338.8 微秒；报告也列出了不同负载下的吞吐量、丢包率和 CPU 占用。[性能报告](https://thun-res.github.io/vlink/bench/) · [项目官网](https://vlink.work)\n",
-    "created_at": "2026-11-18T07:31:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13493"
-  },
-  {
-    "id": 13492,
-    "title": "【开源自荐】SG Bike QR v2 支持 HelloRide 了",
-    "content": "我做了一个新加坡共享单车停车二维码地图 SG Bike QR，这次更新到了 v2\n\n有人提了个 issue，附了一张 helloride 贴纸的照片，说 app 报不了这种码，这次更新就从这开始\n\nhelloride 有自己的停车贴纸，四个字母加三个数字，比如 grab-001，只有 helloride 的车能在那里还车，现在上报时会先问你是 lta 的贴纸还是 helloride 的，横线自动加在对的位置\n\n这类贴纸在地图上有个 hr 小标，点开会提醒你别家的车在这还不了\n\n顶部还加了骑行筛选，选 helloride 或 anywheel，地图就只显示你的车能用的贴纸\n\n后端也搬家了，从原来的数据库换到 mongodb，前面是 vercel 上的一个 rust api，附近搜索直接用地理查询，热闹的地方不会再漏点，也没有每天的读取额度限制了，整体的免费额度也更大了\n\n原来的 675 条上报和 612 个点全部搬过来，逐条核对过，旧链接会自动跳到新地址\n\n免费网页版，在新加坡骑共享单车的都能用，代码开源\n\nhttps://sg-bike-qr.vercel.app\nhttps://github.com/aeroxy/sg-bike-parking-code\n",
-    "created_at": "2026-11-18T07:18:23Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13492"
-  },
-  {
-    "id": 13491,
-    "title": "【开源自荐】ai-webnovel-pipeline：用 AI 写中文长篇网文，写到几百章不崩设定",
-    "content": "一个用 AI 写中文长篇网络小说的开源工具。长篇最难的不是写好一章，而是第 200 章还记得第 3 章埋的伏笔，它用分层记忆（红线、故事圣经、伏笔台账、近期摘要）解决这个问题，第 10 章之后每章输入稳定在 2 万 token 左右。自带 37 个题材模版，开书时一次给几个方案挑。Claude Code、Cursor、Trae、Qoder 都能用，也能直接跑命令行。MIT 协议。\n\nhttps://github.com/XZ-LI/ai-webnovel-pipeline\n",
-    "created_at": "2026-11-18T07:11:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13491"
   }
 ]
