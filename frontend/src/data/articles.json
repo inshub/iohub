@@ -1,5 +1,45 @@
 [
   {
+    "id": 13610,
+    "title": "【开源自荐】Trace：免费开源的 Mac 自动时间记录工具，Timing 的替代品",
+    "content": "项目地址：https://github.com/lxyeternal/Trace\n\nTrace 是一个 macOS 菜单栏应用，自动记录你面前是哪个应用、哪个窗口、哪个文件、哪个网页，以及停留了多久，不需要手动计时。\n\n我想知道自己每天的时间花在哪里，之前用过 Timing，但价格太贵，就自己写了一个。\n\n- 按“标签 › 应用 › 文件或网站 › 页面”逐层查看一天的时间，可以细到某一个文件\n- 自动打标签（开发、学习、沟通、娱乐等），自动识别文件属于哪个项目\n- 专注时段：忘了关，会自动扣掉离开的时间；忘了开，可以事后补记\n- 周、月、年报告，可导出 CSV\n- 数据只存在本机的 SQLite 文件里，不联网、没有账号，不记录按键、不截屏\n\n需要 macOS 14 或更高版本，支持 Apple 芯片和 Intel，安装包经过 Apple 公证，GPL-3.0 许可证。\n\n![Trace 的概览页](https://raw.githubusercontent.com/lxyeternal/Trace/main/docs/screenshots/zh/overview.png)\n",
+    "created_at": "2026-11-22T04:36:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13610"
+  },
+  {
+    "id": 13609,
+    "title": "【开源自荐】航迹 Flyprint：把坐过的每一班飞机画在一个实拍地球上",
+    "content": "做了一个记录飞行的网站。把航旅纵横的截图、电子行程单（PDF、OFD）或者 Flighty、Flightradar24、OpenFlights 的导出拖进去，它会认出每一班航班，按你在哪里过夜判断哪几段算同一次出门，再画到一个地球上。不用注册就能试：第一次上传后地图就画好了，想留下再注册，不注册 7 天后删除。\n\n![首页：实拍地球上的航线，左侧按年份列出示例旅客的旅程](https://raw.githubusercontent.com/billpwchan/flyprint/main/docs/assets/overview.webp)\n\n地球用的是 NASA 的 Blue Marble 和夜间灯光图，太阳在它真实的位置。每班航班都沿航线算出途中的昼夜，在天上的每一小时按当时窗外的天色上色；还没飞的航班，会提前告诉你日出在哪一侧窗外。一年、一次旅程或者一班航班，都能存成一张 3:4 的分享卡片。\n\n![足迹页：在天上的每一小时是一格，颜色是当时窗外的天色](https://raw.githubusercontent.com/billpwchan/flyprint/main/docs/assets/places.webp)\n\n每个账户只看得到自己的航班。公开主页默认关闭，打开后航班也要落地三天才出现。界面有简体、繁体和英文。\n\n可以自托管，一个 Docker 镜像（amd64 和 arm64）加一个 SQLite 数据库。读截图和 PDF 需要 Anthropic API 密钥，其他格式不用。React 19 + MapLibre GL，代码 MIT 协议。大部分代码由 Claude Code 写成，我定方向、逐屏把关。\n\n在线体验：https://flyprint.billpwchan.art/?ref=ruanyf\n\n项目地址：https://github.com/billpwchan/flyprint\n",
+    "created_at": "2026-11-22T04:26:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13609"
+  },
+  {
+    "id": 13608,
+    "title": "【开源自荐】dayan-enterprise-ai-skills：一人公司实战沉淀的 66 枚中文企业级 Agent Skills（去 AI 腔 / 标书打分闭环 / 合同四审 / 兜错知识库）",
+    "content": "阮老师好，自荐一个我们在真实企业交付中沉淀并开源（MIT 协议）的中文 Agent 技能库：**dayan-enterprise-ai-skills**。\n\n**它是什么**：一套兼容 Claude Code、Cursor、Codex CLI 与腾讯 WorkBuddy 的 `SKILL.md` 实战技能包（共 66 枚），聚焦中文商业成稿、招投标与合同风控、企业知识库架构以及实体行业算账诊断。\n\n**为什么要做这个库**：\n我在成都创立了一家做企业 AI 落地的“一人公司（OPC）”。过去一年给工厂、外贸、连锁和服务型企业做方案与内训时，最深的体会是：裸调大模型做个人玩具很惊艳，但一进真实商业场景就会撞上三堵墙：\n1. **中文机器腔太重**：写出来的汇报和方案满篇“赋能、抓手、闭环、排比三连”，没法直接发给客户和老板；\n2. **自审同温层**：同一个会话刚写完代码、合同或标书，顺手让它检查，90% 只会轻飘飘回一句没问题，漏掉无限连带赔偿或 ★ 号废标项；\n3. **重概念轻呈现**：吐出几千字纯文本没人看，用 Mermaid 画复杂中文架构图经常挤字压线。\n\n所以我们把内部每天高频在用的 66 套作业规范脱敏拆了出来，核心不在“提示词话术”，而在几条写死在技能里的工程约束：\n\n- **生成者与只读审查官分离**：例如 `dayan-bid-scoring-loop`（投标技术方案）强制拆成写手与只读模拟评委逐项打分找扣分点；`dayan-contract-4way-audit` 从交付、财务、法务、销售四个视角并行挑刺并给出可直接替换的条款文本；`dayan-code-adversary` 在只读状态下用破坏者、半年后新人、安全戍边三副反方眼镜审代码变更。\n- **中文去 AI 腔五类病灶库（`dayan-humanize-pro`）**：专门针对中文语境清理空洞拔高词、工整四字三连、架空动词与破折号滥用，强制走“草稿 → 换脑挑残留破绽 → 净稿”三段式改写。\n- **零外部依赖单文件交付（`dayan-business-html` / `dayan-svg-diagram`）**：内置一套 `#1B365D` 深蓝印刷感单文件 HTML 高管看板母版（等宽数字、防孤字换行表格）与手算坐标 SVG 架构图规范，发进微信或飞书点开即读。\n- **兜错优先的企业知识库蓝图（`dayan-rag-guardrail-kb`）**：按“权限预过滤 → 责任人签字定权威版 → 价格/制度超期熔断 → 原文模糊接地四态兜错”设计，宁可诚实留白不瞎编报价。\n- **实体经营算账工具**：包含 13 周滚动现金流断流压测、应收款分级催收、采购核价拆解，以及制造 8D 客诉报告、工程签证防核减、餐饮单店真实毛利核算等垂直场景。\n\n**已知边界说明**：\n`SKILL.md` 本质是给智能体注入结构化作业契约、反例红线与交付母版，能解决单次任务的方法论与排版纪律；但涉及真实招投标资质原件核验、正式法律签署、跨系统幂等写入等高风险生产环节，技能内均强制标注了人工复核停手点，不能替代确定性后端代码与人工终审。\n\n**快速体验**：\n```bash\n# 使用 skills CLI 按需或全量安装（自动适配 Claude Code / Cursor / Codex）\nnpx -y skills add Kosmoray/dayan-enterprise-ai-skills\n\n# 或克隆仓库执行本地安装脚本\ngit clone https://github.com/Kosmoray/dayan-enterprise-ai-skills.git\ncd dayan-enterprise-ai-skills && bash install.sh\n```\n\n- GitHub 仓库：https://github.com/Kosmoray/dayan-enterprise-ai-skills\n- 在线关键词检索页：https://kosmoray.github.io/dayan-enterprise-ai-skills/\n- 官网介绍与案例：https://dayanqianji.com/open-source/\n\n![裸调大模型 vs 挂载大衍千机 Skill 效果对比](https://raw.githubusercontent.com/Kosmoray/dayan-enterprise-ai-skills/main/assets/before-after.svg)\n\n![大衍千机 66 枚企业级 AI 实战技能库](https://raw.githubusercontent.com/Kosmoray/dayan-enterprise-ai-skills/main/assets/hero-banner.svg)\n\n我是项目作者雷可扬，欢迎各位同行和朋友试用挑刺！\n",
+    "created_at": "2026-11-22T03:42:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13608"
+  },
+  {
+    "id": 13607,
+    "title": "【工具自荐】TransparentGIFMaker：一键移除动画 GIF 的背景并保留动画，输出透明 GIF",
+    "content": "TransparentGIFMaker 是一个在线 GIF 背景移除工具：上传动画 GIF，AI 逐帧去掉背景，下载一个保留动画的透明 GIF，全程在浏览器完成，无需安装软件。\n\n- 不需要手动选取背景颜色，AI 模型（BirefNet）逐帧识别前景和背景直接抠图，渐变背景、抗锯齿边缘也能处理\n- 保留原帧延时重新编码，输出的是\"还能动\"的透明 GIF，可直接用作 Slack / Discord 贴纸、网页 loading、教程配图\n- 支持处理前后对比预览，确认效果再下载，历史记录可回看\n- 支持 10MB 以内、300 帧以内的 GIF，注册送 3 积分（约 60 帧）免费试用，付费积分包 $4.99 起\n- 已知限制：GIF 格式本身是 1-bit 透明，没有半透明，所以边缘是硬边，FAQ 中已说明\n\n官网：https://transparentgifmaker.online\n\n<img width=\"1850\" height=\"794\" alt=\"transparentgifmaker-01\" src=\"https://github.com/user-attachments/assets/fe781da4-e8bd-4d3f-baa6-932e1975ff46\" />\n\n<img width=\"1868\" height=\"792\" alt=\"transparentgifmaker-02\" src=\"https://github.com/user-attachments/assets/ba9b6d8d-80c9-4d9f-a80a-5d36ce980403\" />\n\n<img width=\"1826\" height=\"804\" alt=\"transparentgifmaker-03\" src=\"https://github.com/user-attachments/assets/39025d50-8aa4-4534-9f17-0a7d989833b4\" />",
+    "created_at": "2026-11-22T02:27:41Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13607"
+  },
+  {
+    "id": 13606,
+    "title": "【工具自荐】CleanBit：Mac App Store 沙盒内的透明磁盘清理工具（针对 Xcode / node_modules / AI 编程工具）",
+    "content": "CleanBit 是我做的一款运行在 Mac App Store 沙盒里的原生 macOS（15+）磁盘清理工具，用 SwiftUI 开发，不需要 root 权限，也没有常驻后台守护进程。\n\n做它的初衷很简单：开发用 Mac 上最占空间的往往不是系统垃圾，而是 Xcode 的 `DerivedData` / 旧 `iOS DeviceSupport`、几十个旧项目里的 `node_modules` / `target` / `.build`，以及 Claude Code、Codex 这些 AI 编程工具留下的会话日志和旧版本。传统清理工具经常一键打包成“系统垃圾”，点下去之前不知道会删什么；或者需要关闭沙盒、装后台 helper。\n\nCleanBit 把所有扫描项拆成三档，删除前每项都写明是什么、删了会有什么影响，你确认之前什么都不删：\n\n1. **建议清理（可自动重建的缓存）**：Xcode DerivedData、保留最新 2 个版本的旧 DeviceSupport、已关机模拟器内部缓存（保留模拟器内已装 App 与数据）、npm/uv/Cargo/Homebrew/SwiftPM 等包管理器缓存、浏览器缓存（不碰 Cookie、历史与登录态）、Claude Code 旧版本与 Claude 桌面版缓存；正在运行的应用缓存自动锁定不可选。\n2. **需要确认（默认不勾选，删时一律移到废纸篓）**：`node_modules` / `.build` / `target` / `.venv` / `Pods` 等项目构建产物（扫描 `~/.claude/worktrees`、`~/.codex/worktrees` 与常规项目目录，并解析 `.git` 索引跳过被 Git 跟踪的内容）、Claude Code / Codex 旧 `.jsonl` 会话（不碰 `memory/`）、Downloads 里的旧安装包、已卸载应用残留与手动勾选的文件。\n3. **仅展示（不可删除）**：Hugging Face / Ollama / LM Studio / PyTorch 本地模型权重、pnpm store、Docker 虚拟磁盘镜像——只帮你看清它们占了多少 GB，避免误删。\n\n在一台开发用 Mac 上实测，项目 `node_modules` 占了 66.3 GB（304 个），`CoreSimulator/Devices` 占了 43.0 GB，`iOS DeviceSupport` 占了 24.1 GB，`DerivedData` 占了 15.3 GB；引擎智能扫描大约 7.4 秒扫描出 124.29 GB，其中建议清理约 66.43 GB。\n\n也坦诚说明沙盒的边界：它只读取你授权的个人文件夹（废纸篓、Safari 等容器需按需开启完全磁盘访问），不碰 APFS 本地快照、`/private/tmp` 或系统底层目录，也不做“加速 Mac”或内存释放；iCloud Drive 同步文件会主动拦截，提示在 Finder 中处理。\n\n价格方面：扫描免费，提供 2 次免费清理；后续按月订阅、年订阅或一次性买断（终身版）均可（具体价格以各区 App Store 显示为准）。\n\n- 官网与清理指南：https://getcleanbit.app/zh/\n- Mac App Store：https://apps.apple.com/app/apple-store/id6829159531?pt=127116872&ct=github-list&mt=8\n\n![CleanBit 智能扫描界面](https://getcleanbit.app/assets/screens/zh-smart-scan.webp)\n\n我是 CleanBit 开发者，欢迎各位提建议和挑刺。\n",
+    "created_at": "2026-11-22T00:11:10Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13606"
+  },
+  {
     "id": 13605,
     "title": "【开源自荐】NodeTool：开源 AI 电影工作室，一句话生成可逐镜头修改的短片",
     "content": "NodeTool 是一个开源（AGPL-3.0）的 AI 创作桌面应用，支持 macOS、Windows 和 Linux。\n\n输入一句话，智能体会写故事、为每个镜头生成静帧，并在时间线上剪辑。静帧审批通过后才生成视频，任何镜头都能单独重拍。每个项目底层是一张节点图，可以保存为工作流反复运行。\n\n可以用自己的 DeepSeek、通义千问、智谱 GLM 等 API 密钥，也可以通过 Ollama、llama.cpp 等运行本地模型。界面支持简体中文。\n\n项目地址：https://github.com/nodetool-ai/nodetool\n中文介绍：https://nodetool.ai/zh?ref=ruanyf",
@@ -760,45 +800,5 @@
     "created_at": "2026-11-18T16:59:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13510"
-  },
-  {
-    "id": 13509,
-    "title": "【工具自荐】Demoready，一个面向 Vibe Coder 的快速产品 Demo 录制工具",
-    "content": "最近做了一个小应用 DemoReady，主要是为了解决自己录制产品演示视频时遇到的一些麻烦。\n\n因为经常会用 AI Coding 工具做一些小 Demo 和应用，做好之后想录个视频分享出去，却总是在录制这个环节卡住。\n\n比如需要反复调整浏览器窗口、适配不同社交媒体的视频比例，录完之后还要添加设备 Mockup 和背景。\n\n以前一直用 Screen Studio 来录制，虽然很好用，但对于我这种经常需要快速录制几十秒 Demo 的场景来说，还是有些重了。\n\n所以干脆自己做了 DemoReady，希望把这些步骤尽可能简化。\n\n它和传统录屏工具不太一样，不需要选择桌面或窗口，而是直接输入网页链接，支持 localhost 和线上网站。\n\n因为现在用 AI 开发的小应用，很多时候只需要在浏览器里就能运行和预览，直接从链接开始录制反而更方便。\n\n输入链接后，选择视频比例、设备 Mockup 和背景，就能实时预览最终画面，直接录制并下载视频，不需要再额外剪辑和调整。\n\n目前支持手机、平板、电脑等多种设备 Mockup，可以模拟不同的使用场景，也能自由调整画面构图。\n\n背景除了常见的渐变和壁纸，还加入了莫奈、葛饰北斋等艺术家的画作。自己一直挺喜欢经典艺术和现代科技结合的感觉，也希望让普通的产品演示多一点视觉上的趣味。\n\n整个工具都在浏览器里使用，不需要安装软件。\nhttps://demoready.bitwonder.app\n\n\n<img width=\"5026\" height=\"2526\" alt=\"image\" src=\"https://github.com/user-attachments/assets/61d19a30-7167-4c09-926a-ebc205706300\" />\n\n<img width=\"5026\" height=\"2526\" alt=\"image\" src=\"https://github.com/user-attachments/assets/a9d150ed-698e-4020-9eed-28e8baac27d6\" />",
-    "created_at": "2026-11-18T16:21:40Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13509"
-  },
-  {
-    "id": 13508,
-    "title": "【工具自荐】Yardlet：在一个原生 Mac 窗口里并排运行 Claude Code、Codex 等编程代理",
-    "content": "Yardlet 是一个开源（MIT）的 macOS 应用，用 Swift 和 SwiftUI 编写，不是网页套壳。它直接启动你已经在用的编程代理命令行工具，比如 Codex、Claude Code、OpenCode、Antigravity CLI，把它们并排放在同一个窗口里。\n\n每个代理保留自己的登录和会话记录，会话仍然存在代理自己的位置，所以在 Yardlet 里开始的会话可以回到原来的应用或命令行接着用。Yardlet 不装 hook，不包装代理命令，也不往代理的设置里写东西，退出或删除后一切照旧。\n\n它还可以给同一家服务登记多个账号，显示每个账号的额度和 token 用量，并提供改动 diff、PR 检查、终端和内置浏览器。空闲时占用内存约 53 MiB，十个任务同时输出时约 214 MiB（不含代理自己的 CLI，M1 Pro 实测）。\n\n免费，需要 macOS 15 或更高版本。\nGitHub：https://github.com/zzunkie/yardlet\n网站：https://yardlet.app\n\n![Yardlet 截图](https://raw.githubusercontent.com/zzunkie/yardlet/main/docs/images/main-light.png)\n\n我是 Yardlet 的开发者，这段中文是翻译的，也可以用英文交流。谢谢。\n",
-    "created_at": "2026-11-18T16:21:24Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13508"
-  },
-  {
-    "id": 13507,
-    "title": "【工具自荐】MoeRouter，多模型 API 网关",
-    "content": "项目方自荐。\n\n在同一个兼容客户端中切换模型时，可以先比较公开的模型单价，再用对应模型 ID 发起请求。Astra 和 Sol 的 6.2 型号已提供。\n\nMoeRouter 提供多模型 API，包含价格和可用性感知的路由、故障切换，按实际模型和线路用量以人民币计费。\n\n官网：https://moerouter.com/\n[模型价目](https://moerouter.com/pricing) · [快速接入](https://moerouter.com/docs/quickstart/)\n",
-    "created_at": "2026-11-18T16:19:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13507"
-  },
-  {
-    "id": 13506,
-    "title": "【资源自荐】资料星球：按主题查找中文学习与创作资料",
-    "content": "资料星球是一个中文学习与创作资料目录，帮助解决“保存了很多资料，但不知道先看哪份”的查找问题。\n\n网址：https://resources.packscena.com/\n\n可以按大类、主题和关键词缩小范围，先查看目录预览，再跳转夸克领取；领取时可能需要夸克账号。也可以将条目收藏在当前浏览器本地。资料目录来自运营者在夸克保存和整理的资源。\n\n当前目录浏览与领取免费，后续可能推出收费合集。\n\n投稿者：Jake Tao（资料星球运营者）。本文本由AI协助整理。",
-    "created_at": "2026-11-18T16:07:07Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13506"
-  },
-  {
-    "id": 13505,
-    "title": "【开源自荐】OmegaStar：把你自己的 Claude Code 变成一支 AI 员工团队",
-    "content": "OmegaStar 是一个免费开源的桌面应用，把你自己的 Claude Code 变成一支 AI 员工团队，支持 Apple Silicon Mac、Windows 和 Linux。\n\n- 它不是一个新的 agent 框架。每个员工就是你自己登录的 Claude Code，自带浏览器和电脑操作能力、最好的模型，以及你电脑上已有的所有工具和登录。\n- 让 agent 真正自主、值得信任很难。在 OmegaStar 里，你搭建自己的小公司，每个员工有明确的目标和只属于它的知识，OmegaStar 负责它们的自我改进循环。\n- 像带新员工一样用对话教它们，每一课变成一个小 skill，彼此叠加，教过的都会记住。\n- 作者自己的整个公司就跑在上面：6 个员工，过去 30 天超过 4,800 次运行。\n\nGitHub：https://github.com/itsfutsy/OmegaStar\n协议：AGPL-3.0\n",
-    "created_at": "2026-11-18T15:51:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13505"
   }
 ]
