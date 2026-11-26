@@ -1,5 +1,421 @@
 [
   {
+    "id": 13845,
+    "title": "【工具自荐】Unscript（脱稿）：渐进脱稿式英语口语 iOS App，四档挖空、端上离线识别",
+    "content": "**Unscript（脱稿）** 是一款原生 SwiftUI 开发的英语口语练习 iOS App，用**「四档渐进脱稿」**解决学英语时「看得懂、听得懂、一开口就卡壳」的断层。\n\n- 官网：https://hintlib.com\n- App Store（中国大陆）：https://apps.apple.com/cn/app/id6803985536\n- App Store（美国 / 全球）：https://apps.apple.com/us/app/id6803985536\n\n![Unscript 界面预览](https://hintlib.com/og-zh.webp)\n\n### 为什么做它\n市面上的口语软件大多走两个极端：要么是机械跟读打分，没有对话感；要么一上来就是自由 AI 聊天，面对空白框反而张不开嘴。Unscript 把同一段固定双人对话拆成四档，让提示逐步撤掉：\n\n1. **初级 Beginner**：看到完整台词，跟着读熟悉发音与节奏；\n2. **中级 Intermediate**：约一半关键内容词被挖空，边读边回忆关键表达；\n3. **高级 Advanced**：整句只保留首字母提示（演员背台词的经典方法）；\n4. **Ultra**：完全隐去台词，只听对方说，凭记忆与情境脱口而出。\n\n### 核心特点\n- **端上离线语音识别**：录音不出设备，台词与单词优先播放随包音频，四档均使用确定性文本对齐评分；\n- **930 段对话场景**：覆盖日常情境、生活英语、工作会议、影视台词与故事对话（其中 562 段含多语言释义与预生成音频，另有原创长对话与开放授权素材）；\n- **纯原生 iOS 体验**：SwiftUI 开发（iOS 17+，适配 iPhone / iPad），支持灵动岛练习进度、点词查释义音标、回放自己录音、间隔复习与 iCloud 同步进度，支持 17 种界面语言；\n- **免费体验 + 极低成本定价**：免费版直接开放 40+ 场景可完整体验四档脱稿；因为端上识别 + 随包音频几乎无按次调用成本，Pro 采用低价策略（国区 ¥1/月、¥10/年、¥30 买断；美区 $0.99/月、$5.99/年、$19.99 买断，以 App Store 当地价格为准）。\n\n欢迎体验和反馈！\n",
+    "created_at": "2026-11-26T15:12:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13845"
+  },
+  {
+    "id": 13844,
+    "title": "【开源自荐】Awesome MAGI-2：19 个 AI 视频案例和可复制提示词",
+    "content": "阮老师好，我整理了一个 **MAGI-2 视频提示词仓库**。看到喜欢的 AI 视频却不知道运镜、对白和参考素材是怎么写的，可以先看生成结果，再复制接近自己需求的提示词改。\n\n仓库：[Awesome MAGI-2](https://github.com/ZeroLu/awesome-magi-2) · [中文 README](https://github.com/ZeroLu/awesome-magi-2/blob/main/README-zh.md)\n\n目前收录 **19 个案例，16 条演示可在 GitHub README 直接播放**，覆盖电影、广告、UGC、动画、短剧和视觉实验。每个案例都附上按原案例整理、可直接复制的提示词，并保留原始出处；需要参考图、视频或音频的，按案例说明准备素材。\n\n推荐先看两个例子：\n\n- **30 秒拉面摊一镜到底**：把点餐对白、端面动作和经过的列车安排到同一个连续镜头里。适合参考长镜头的提示词写法。[来源：CreateVision](https://createvision.ai/magi-2#:~:text=One%20continuous%2030-second%20take%2C%20no%20cuts.)\n\nhttps://github.com/user-attachments/assets/3375ca70-f549-4709-9cae-23e6fcffe526\n\n- **把参考视频的运镜用到商品镜头**：一张产品图确定瓶身和标签，另一段视频只当作镜头运动参考。[来源：CreateVision](https://createvision.ai/magi-2#borrow-the-camera-move-from-another-clip)\n\n欢迎通过 Issue 或 PR 补充案例，附上原始出处和能公开分享的提示词。",
+    "created_at": "2026-11-26T14:50:29Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13844"
+  },
+  {
+    "id": 13843,
+    "title": "【工具自荐】/video：在 Claude Code 里用一句话做出产品发布视频（开源，MIT）",
+    "content": "项目地址：https://github.com/munvard/video-skill\r\n\r\n想给自己的 App 做一个发布视频，但不会 After Effects，也不想为视频模型付钱。所以做了 /video，一个 Claude Code 技能（skill）。\r\n\r\n在 Claude Code 里输入 `/video`，它会读项目的 README、网站和截图，写分镜，做动效和 3D，配音乐和音效，渲染出 9:16（Reels、Shorts、抖音）和 16:9 两个版本。\r\n\r\n- 每一帧都会检查：开头不能是空帧，文字要够大够清楚，每行字幕有足够的阅读时间，响度 -14 LUFS。检查不通过就不交付。\r\n- 动效用浏览器渲染，3D 用 Blender，音乐和音效由代码生成。全部在你自己的电脑上运行，不需要 API key，不调用付费视频模型。\r\n- 它会记住你对每个视频的评价，下次按你的口味做。\r\n- README 里每个示例视频下面都写明了用了几句提示词、几轮修改意见，没有手动剪辑。还有同一个提示词装和不装这个技能的对比。\r\n\r\n不足：需要 Claude Code（Pro 或以上的订阅，或 API 账号）；一个 3D 视频要渲染几十分钟；第一次使用需要装 ffmpeg 和 Python。\r\n\r\n安装（在 Claude Code 里）：\r\n```\r\n/plugin marketplace add munvard/video-skill\r\n/plugin install video@video-skill\r\n```\r\n\r\n作者：Moon Labs，亚美尼亚。欢迎反馈哪里会出问题。\r\n\r\n",
+    "created_at": "2026-11-26T14:47:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13843"
+  },
+  {
+    "id": 13842,
+    "title": "【工具自荐】MusicThings：把吉他的六根弦画进调音器，调好一根就亮一根",
+    "content": "阮老师、各位读者好，我是开发者 Qi。想自荐一款免费、无广告的 iPhone / iPad 练琴工具。今天上架的 1.1.0，把逐弦调音加进了原先的节拍器。\n\n做吉他调音页时，我一直在想一个小问题：低音 E 已经准了，低头拧完另一颗弦钮，再看手机，我还记得刚才调到哪了吗？所以我把六根弦按它们实际通向的旋钮画出来。每调准一根，对应的弦和轴就一起变绿。扫一眼琴头，就知道还剩哪几根。\n\n<img src=\"https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/fe/6c/53/fe6c5372-a1d0-9e10-2ef9-76ffb322f9e3/02-acoustic-guitar.png/320x480bb.jpg\" width=\"220\" alt=\"木吉他调音界面，六根弦中有三根已经调准\" />\n\n调完琴可以接着试个练习：选「静音小节」，跟着节拍弹一段，等声音消失也继续弹，听听节拍回来时自己是抢了还是慢了。调音和基础节拍都可以离线用。\n\n[App Store 下载](https://apps.apple.com/app/id6819347521) · [项目主页](https://app.qi.land/metronome/)\n\n如果你愿意拿自己的琴试试，我尤其想听一个反馈：手机放在谱架上时，你能不能一眼看出下一根该调哪根？",
+    "created_at": "2026-11-26T14:22:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13842"
+  },
+  {
+    "id": 13841,
+    "title": "【开源自荐】BaseHalf：把文件夹打开成一张画布，AI agent 在旁边读写同一批文件",
+    "content": "BaseHalf 是一个开源的 Mac 桌面应用，把一个普通文件夹打开成一张画布。\n\n- 文件夹里的每个文件是一张卡片：Markdown 笔记、PDF、电子书、图片、视频、代码。\n- 从一张卡片拉一条线到一篇笔记，笔记里就多一行文字记下这个连接。连接存在文件里，git diff 看得到。\n- Claude Code、Codex 这些 agent 在画布旁边的终端里运行，读写的是同一批文件。它们新建的文件会直接出现在画布上。\n- 可以当思维导图、读论文和读书的笔记本，也可以用自己的 API key 生成图片、视频和声音。\n- 没有账号，没有服务器，数据就是电脑上的那个文件夹。\n\n我做它是因为用 Claude Code 和 Codex 做的事情总是沉在聊天记录里，每开一个新会话都要把项目重讲一遍。文件没有这个问题。\n\n基于 VS Code 的开源代码，Apache-2.0。目前只支持 Apple 芯片的 Mac；应用还没有公证，第一次打开需要一条命令，下载页有说明。\n\n仓库：https://github.com/Pointa-Labs/basehalf\n官网：https://basehalf.com/zh\n\n![BaseHalf 的窗口：左边是画布上的笔记、表格、图片、代码、PDF 和电子书，右边是 Claude Code 在回答问题](https://raw.githubusercontent.com/Pointa-Labs/basehalf/main/docs/assets/readme/hero.webp)\n",
+    "created_at": "2026-11-26T13:26:49Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13841"
+  },
+  {
+    "id": 13840,
+    "title": "【开源自荐】wecom-aibot-ws & woolradar：零依赖的企微智能机器人 WebSocket Python SDK 与 AI 免费额度监测雷达",
+    "content": "阮老师好，自荐两个刚开源的纯 Python 标准库（`dependencies = []` 零第三方依赖）轻量工具：\n\n### 1. wecom-aibot-ws：企业微信智能机器人 WebSocket 轻量 Python SDK\n- 项目地址：https://github.com/tianou10086-create/wecom-aibot-ws\n- 解决痛点：企业微信近期上线了「智能机器人 API 长连接模式」（`wss://openws.work.weixin.qq.com`），不再需要公网服务器、固定 IP、备案域名和回调加解密就能收发群消息，但官方目前只提供了 Node.js SDK。\n- 特点：不到 350 行纯标准库（仅 `ssl` + `socket`）实现完整协议，既支持 `@bot.on_message` 常驻群聊对话，也专门提供了 `send_oneshot_markdown()`，在 GitHub Actions 或云函数里一行代码即可鉴权推群消息并干净退出。\n\n### 2. AI WoolRadar (`woolradar`)：AI 免费额度与「拉闸避坑」监测雷达\n- 项目地址：https://github.com/tianou10086-create/woolradar\n- 特点：同样 100% 纯标准库零依赖，自动追踪 Gemini / OpenAI / Claude 生态的长期免费额度、开发者补贴与公益 API 聚合仓；除了过滤普通小额营销折扣外，会自动扫描盯盘仓库的最新 Open Issues 与 Release，一旦社区集中反馈风控失效立即推送避坑提醒。内置本地暗色 Web 面板与 GitHub Actions 零服务器定时巡检模板。\n\n希望能帮到有自动化通知与 AI 工具追踪需求的开发者，感谢！",
+    "created_at": "2026-11-26T13:10:02Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13840"
+  },
+  {
+    "id": 13839,
+    "title": "自荐：拾趣 Magpie，开源的划词/识图桌面工具，屏幕文字就地 AI 处理（macOS / Windows）",
+    "content": "<img width=\"1086\" height=\"728\" alt=\"HapiGo_2026-10-16_14 09 56\" src=\"https://github.com/user-attachments/assets/5fb64ef8-3ea6-438f-9aad-38213cc95381\" />\n\n**拾趣 Magpie** 是一款开源（MIT）的 macOS / Windows 桌面工具，定位是「屏幕上任何文字，鼠标一指，就地处理」。\n\n**核心特点**\n\n- **划词 + 识图双管线**：可选中的文字直接划词；图片、扫描件、视频字幕里「看得见选不中」的文字，框选截图、本机 OCR 识别。两条路覆盖屏幕上所有文字\n- **划词即动作**：翻译 / 解释 / 总结 / 搜索 / 朗读 / 离线词典即时可用；链接、邮箱、验证码、电话、日期、地点自动识别一步直达；翻译内置 AI + 9 家机器翻译引擎可切换\n- **结果流向用户自己的知识体系**：一键存入 Obsidian（摘录进日记、任务、知识卡）与 Anki，自动附来源 URL 和日期。不做自家笔记库，只做通路——这是与划词类巨头产品（结果锁死在自家对话窗）的根本差异\n- **模型不锁定**：自备 API Key 即可，DeepSeek、Kimi、Qwen、OpenAI 等十家预设 + 任意 OpenAI 兼容端点；支持自定义动作（名字 + prompt + 图标变成胶囊按钮）\n- **隐私**：基础功能离线完成；OCR 在本机、截图不上传；密钥仅存本机\n\n**技术栈**：Tauri 2 + Rust + React。macOS / Windows 双平台，MIT 开源，永久免费、无需账号；AI 功能需自配模型服务。\n\n仓库：<https://github.com/demo007x/Magpie>（含架构设计与 11 条 ADR）\n\n利益相关：我是作者，自荐投稿，感谢周刊。\n",
+    "created_at": "2026-11-26T13:01:34Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13839"
+  },
+  {
+    "id": 13838,
+    "title": "【工具自荐】Apple Silicon Mac 本地大模型选择器",
+    "content": "我参与维护「哪个LLM」（NaGeLLM），想推荐这个免费的中文工具。\n\n**链接** https://nagellm.com/ia-locale-mac/\n\n选择 Apple Silicon 芯片和统一内存容量后，页面会列出可以尝试的本地语言模型及量化选项。不需要登录，也不会替用户运行模型。适合在下载模型前缩小范围，实际速度和内存占用以自己的设备为准。\n",
+    "created_at": "2026-11-26T12:40:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13838"
+  },
+  {
+    "id": 13837,
+    "title": "【开源自荐】Open Intelligent UI - 智能的生成式 UI 解决方案",
+    "content": "## Open Intelligent UI\n\n智能的生成式 UI 方案：无需预置组件，由模型基于 UI SDK 与 DESIGN.md 构建页面。模型用类似 MDX 的标记流式写出可操作界面；交互行为交给 UI SDK，外观跟你的 DESIGN.md，无需像 A2UI / OpenUI 先注册组件。支持 React、Vue、Solid、Svelte 和纯 Web。\n\n演示：https://open-intelligent-ui.pages.dev\n文档：https://open-intelligent-ui.pages.dev/docs/zh/\n仓库：https://github.com/wzc520pyfm/open-intelligent-ui\n\n\n<img width=\"1512\" height=\"758\" alt=\"image\" src=\"https://github.com/user-attachments/assets/ddb8d452-4f30-4bc8-a17e-affeb370d7d2\" />\n\n\n### 一句话总结：\n\nOpen Intelligent UI：智能的生成式 UI 方案，无需预置组件，由模型基于 UI SDK 与 DESIGN.md 构建页面。演示 https://open-intelligent-ui.pages.dev/ ，仓库 https://github.com/wzc520pyfm/open-intelligent-ui",
+    "created_at": "2026-11-26T12:24:03Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13837"
+  },
+  {
+    "id": 13836,
+    "title": "【开源自荐】ew-color-picker：插件化颜色选择器，内置渐变编辑器，全量 gzip 34KB",
+    "content": "大家好，自荐一个我维护多年的开源颜色选择器 **ew-color-picker**，最近刚做了彻底重写。\n\n- GitHub：https://github.com/eveningwater/ew-color-picker\n- 在线 Playground（可改代码直接跑 24 个示例）：https://eveningwater.github.io/ew-color-picker/playground.html\n- 中文文档：https://eveningwater.github.io/ew-color-picker/zh/\n- 国内镜像（阿里云 ESA）：https://ew-color-picker.eveningwater.com/zh/\n\n**它解决什么问题？**\n\n现成的颜色选择器大多是「单体组件」：想要渐变、不想要预设色块、或者想在移动端换一套尺寸，只能改源码或者自己 hack CSS。ew-color-picker 2.x 的思路是把界面拆成插件——核心只保留颜色状态和事件总线，Box（触发器色块）、Panel（饱和度面板）、Hue、Alpha、Input、InputNumber、Button、Predefine、ColorMode、Gradient（渐变）、Eyedropper（吸管）、CopyColor（复制）都是独立的 npm 包，注册哪些就渲染哪些，也可以自己写插件替换其中任意一块。\n\n**主要能力：**\n\n1. **15 个可组合插件**，按需注册、按需打包；\n2. **内置渐变编辑器**：多停靠点，线性 / 径向 / 圆锥，可调角度与重复，同类库里比较少见；\n3. **框架无关 + 官方封装**：原生 TypeScript 实现，另提供 `@ew-color-picker/vue`（支持 `v-model`）与 `@ew-color-picker/react`（`forwardRef`）；\n4. **面板尺寸档位**：`panelMode` 四档，面板及内部控件整体缩放，移动端无需额外写 CSS；\n5. **独立组件可复用**：Input / InputNumber / Button / Select / Checkbox / Tooltip 都能脱离选择器单独使用；\n6. **吸管取色**（原生 EyeDropper API）与**复制颜色**内置；支持 Hex / RGB / HSL 三种模式与透明通道。\n\n**体积与依赖：** 全量 UMD 141 KB，gzip 34.1 KB；按需注册插件还能更小。运行时依赖为零。\n\n项目全部用 TypeScript 编写并输出类型声明，有单元测试与中英文双语文档，npm 上共 22 个包。这次重写同时补了 Vue / React 封装和在线 Playground，欢迎试用、提 Issue 或拍砖。\n\n项目预览：\n\n![demo](https://eveningwater.github.io/ew-color-picker/demo-preview.gif)\n",
+    "created_at": "2026-11-26T12:22:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13836"
+  },
+  {
+    "id": 13835,
+    "title": "【开源自荐】SmartCall：基于 LiveKit + 大模型的开源 AI 呼叫中心，让 AI 智能体接打电话",
+    "content": "大家好，自荐一个开源项目 **SmartCall**，一个以 AI 智能体为核心的开源呼叫中心。\n\n- GitHub：https://github.com/g-mr/SmartCall\n- Gitee（国内访问更快）：https://gitee.com/gdzWork/SmartCall\n- 官网 / 文档：https://smartcall.qidiangk.com/\n\n**它解决什么问题？**\n\n传统呼叫中心要么依赖人工坐席，要么用按键式 IVR，体验僵硬。SmartCall 的思路是：把「电话」直接交给大模型驱动的智能体——用户拨入或系统外呼后，由智能体通过实时语音与用户自然对话，中间可以查知识库、调业务接口、填变量，必要时转接人工。\n\n**2.0 的核心能力：**\n\n1. **LiveKit 实时语音引擎**：连接 SIP、语音识别（ASR）、对话大模型与语音合成（TTS），处理对话轮次和打断，通话体验接近真人对话；\n2. **智能体配置**：角色提示词、模型、音色、开场白、静默引导与轮次策略都可配置，一个业务场景一个智能体；\n3. **知识检索（RAG）**：可接入 MaxKB 或自定义 HTTP 知识源，让应答有企业资料作为依据；\n4. **技能与工具调用**：智能体可以在对话中查询业务接口、发送短信、回填会话变量、引用用户画像，或按规则转人工；\n5. **电话基础设施**：基于 Asterisk / SIP 接打电话，支持线路配置与来电接入；\n6. **模型不锁定**：支持 DeepSeek、通义千问、OpenAI、智谱、Ollama 等常见大模型，ASR/TTS 可对接阿里云等服务商。\n\n**技术栈：** 后端 Spring Boot / Spring Cloud 微服务（也可单体部署），前端 Vue 3，语音侧 LiveKit + Asterisk，支持 Docker 私有化部署。\n\n**开源版与商业版的边界（说清楚，避免误会）：** 开源仓库提供语音引擎、语音执行服务、Asterisk/SIP 接入和单通外呼 API 示例，适合验证方案和自主集成；批量外呼调度、人工坐席排队、运营看板、可视化智能体工作台等完整呼叫中心能力在商业版中提供，商业版源码交付、支持二次开发。\n\n**适合谁：** 想做 AI 外呼/智能客服的技术团队、需要私有化部署语音智能体的企业，以及想学习 LiveKit + LLM 实时语音链路实现的开发者。\n\n项目截图：\n\n<img width=\"3440\" height=\"1279\" alt=\"image\" src=\"https://github.com/user-attachments/assets/e3453918-2dc4-4f48-a01f-3478a9771577\" />\n\n<img width=\"363\" height=\"711\" alt=\"image\" src=\"https://github.com/user-attachments/assets/1d6e852a-7262-4298-bf5c-632c878dbee1\" />\n\n<img width=\"3440\" height=\"1279\" alt=\"image\" src=\"https://github.com/user-attachments/assets/1d902014-0a9a-4390-b115-2706342e3b2b\" />\n\n欢迎 Star、试用和提 issue，也欢迎对实时语音链路感兴趣的朋友参与共建。",
+    "created_at": "2026-11-26T12:06:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13835"
+  },
+  {
+    "id": 13834,
+    "title": "【项目自荐】WorkBuddy、DSH 安全实测：Safety Arena，涵盖 Codex、Claude 的四类风险场景",
+    "content": "**让读者通过测试条件和实测录像，判断本地 AI Agent 的安全防护究竟拦住了什么。**\r\r\n\r\r\n[**Agent Safety Arena**](https://safety.finaios.ai/zh-cn/)公开 Windows 上的 AI Agent 安全与沙箱对照评估。已完成的测评覆盖 **WorkBuddy、DeepSeek Harness（DSH）、Codex CLI 和 Claude CLI**。\r\r\n\r\r\n### 四类与日常使用相关的风险\r\r\n\r\r\n- **隐私**：屏幕、摄像头、麦克风是否会被访问。\r\r\n- **桌面交互**：弹窗、窗口操控和输入干扰是否影响使用电脑。\r\r\n- **系统**：其他进程是否会被结束，权限或系统资源是否被修改。\r\r\n- **数据**：受保护文件是否被读取、修改、移动或删除。\r\r\n\r\r\n[![受保护目录删除对照录像节选](https://raw.githubusercontent.com/finogeeks/finsafe/main/integrations/dsh/windows/detail/assessments/protected-directory-delete.gif)](https://safety.finaios.ai/zh-cn/agents/dsh/#data)\r\r\n\r\r\n动图为不同运行条件下的 DSH 对照摘录，点击可查看案例集合中的条件与证据。\r\r\n\r\r\n### 不只看分数，也可以检查过程\r\r\n\r\r\n先在受控环境中确认测试程序确实能产生目标效果，再固定代码与提示词，对比 Agent 默认防护和单独使用 FinShield 的配置。公开材料保留版本、模型、配置、审批决定、程序哈希、审核结果和部分录像。\r\r\n\r\r\n**拒绝执行、最初被拦截、批准后产生危害，是不同的观察结果。** 测试代码本身运行失败，也不能直接算作沙箱防护成功。读者可以查看原始记录，并用已有结果重新生成测评网站，无需模型凭证。\r\r\n\r\r\n我们同时维护此项目并开发 FinShield。结果适用于记录中的 Windows 场景与条件；未测试、待核实与已评分项目分别呈现，不能据此推断其他 Agent 的结果，也不代表独立第三方认证。\r\r\n\r\r\n- [中文测评网站](https://safety.finaios.ai/zh-cn/)\r\r\n- [项目、测试材料与复现说明](https://github.com/finogeeks/agent-safety-arena)\r\r\n- [中文项目介绍](https://github.com/finogeeks/agent-safety-arena/blob/main/README.zh-CN.md)\r\r\n- [FinShield 中文文档与接入指南](https://finshield.finogeeks.club/zh-CN/)\r\r\n\r\r\n欢迎讨论测评方法、建议新场景，或提供可复现的反例。\r\r\n",
+    "created_at": "2026-11-26T12:05:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13834"
+  },
+  {
+    "id": 13833,
+    "title": "【工具自荐】WorkBuddy、DSH 的 Windows 沙箱防护：FinShield 智安盾，支持 OpenCode、Codex、Claude 等 Agent",
+    "content": "**让 WorkBuddy、DSH 等 AI Agent 继续帮你完成任务，同时为电脑上的隐私、系统和重要数据增加一道沙箱防护。**\n\n[**FinShield（智安盾）**](https://finshield.finogeeks.club/zh-CN/)通过进程级沙箱与权限控制，约束受保护 Agent 及其启动程序对电脑资源的访问。我们是开发团队，这是一条工具自荐。\n\n### 提供哪些防护\n\n- **隐私**：约束屏幕、摄像头、麦克风等敏感资源的访问。\n- **桌面交互**：限制弹窗、窗口操控和输入干扰。\n- **系统**：约束结束其他进程、修改系统资源等操作。\n- **数据**：按配置控制指定文件和目录的读取、修改与删除。\n\n### 当前有哪些 Agent 接入方式\n\n以下为当前文档列出的 Windows x64 接入范围：\n\n| Agent | 接入方式 |\n| --- | --- |\n| **WorkBuddy 桌面版** | 通过 FinShield 桌面入口受保护启动；[中文指南](https://finshield.finogeeks.club/zh-CN/agents/workbuddy.html) |\n| **DSH Desktop** | 已发布插件 `@finogeeks2026/finshield-dsh`，也可使用 FinShield 桌面入口；[中文指南](https://finshield.finogeeks.club/zh-CN/agents/dsh.html) |\n| **OpenCode Desktop V2** | 已发布插件 `@finogeeks2026/finshield-opencode`，也有桌面接入入口；[中文指南](https://finshield.finogeeks.club/zh-CN/agents/opencode.html) |\n| **Hermes Desktop** | 通过 FinShield 桌面入口接入，保护其执行 Host；[启动说明](https://finshield.finogeeks.club/zh-CN/getting-started/install.html#hermes-desktop) |\n| **Codex CLI** | 已有 Windows 命令行接入；[中文指南](https://finshield.finogeeks.club/zh-CN/agents/codex.html) |\n| **Claude Code CLI** | 已有 Windows 命令行接入；[中文指南](https://finshield.finogeeks.club/zh-CN/agents/claude.html) |\n| **Kilo CLI 本地交互 TUI** | 测试版插件接入；[范围与安装说明](https://finshield.finogeeks.club/zh-CN/getting-started/install.html#kilo-cli) |\n\nmacOS、Linux 另有 Codex、Hermes、OpenCode、agy CLI 的策略示例，需要按当前 Agent 版本调整并验证。插件、桌面入口、CLI 接入和测试版的状态，以及平台与版本要求，统一见[完整兼容矩阵](https://finshield.finogeeks.club/zh-CN/agents/compatibility.html)。\n\n### 怎样开始使用\n\n**WorkBuddy**：先安装并登录 WorkBuddy，再安装 FinShield、完成权限准备，在悬浮控件的智能体列表中选择 WorkBuddy，通过受保护入口启动。\n\n**DSH**：在桌面版“插件 → 添加插件”中安装 `@finogeeks2026/finshield-dsh`，按中文指南完成授权并确认保护状态。\n\n**OpenCode V2 CLI** 用户可以运行：\n\n```shell\nopencode plugin add @finogeeks2026/finshield-opencode\n```\n\nOpenCode 插件的准备和授权在后台进行，完成后按提示退出并重新打开。只有 Desktop、没有 CLI 的安装方式也写在中文指南中。其他 Agent 可按上表对应入口接入。\n\n### 看防护实际做了什么\n\n[![DSH 截屏访问对照录像节选](https://raw.githubusercontent.com/finogeeks/finsafe/main/integrations/dsh/windows/detail/assessments/screen-capture.gif)](https://safety.finaios.ai/zh-cn/agents/dsh/#privacy)\n\n动图来自不同运行条件下的 **DSH 测评**。我们维护的 [Agent Safety Arena](https://safety.finaios.ai/zh-cn/)已发布 **WorkBuddy、DSH、Codex CLI 和 Claude CLI** 的 Windows 对照评估，保留条件、结果与录像；这组已完成的测评不代表其他 Agent 也已完成同样验证。\n\n个人版按产品条款免费使用。公开仓库提供发行包、文档和接入资料，核心引擎尚未完整开源；实际防护取决于配置和当前生效状态。\n\n[中文文档与下载](https://finshield.finogeeks.club/zh-CN/) · [公开发行仓库](https://github.com/finogeeks/finsafe) · [Safety Arena](https://safety.finaios.ai/zh-cn/)\n\n欢迎反馈你希望保护的实际场景。\n",
+    "created_at": "2026-11-26T12:05:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13833"
+  },
+  {
+    "id": 13832,
+    "title": "【工具自荐】ProkBot Plus：在自己的服务器上运行 Grok Bot，用自选模型，全平台客户端",
+    "content": "**ProkBot Plus** 把 Grok Bot 的服务端搬到你自己的服务器上，用你自己选的模型。\n\n网址：https://github.com/ferretgeek/prokbot-plus\n\nGrok Bot 是 xAI 的 AI 助手应用。它的每个 Bot 都有自己的一台 Linux 电脑，能执行命令、操作浏览器、处理文件，还有记忆和定时任务，但原版只能连官方云端。\n\n**能做什么**\n\n- 服务端用 Docker 部署到自己的服务器，不需要显卡，2 核 4 GB 就能跑\n- 接入自选的大模型：Anthropic Messages、OpenAI Responses、OpenAI Chat 三种接口，每个 Bot 可以单独指定模型和备用模型\n- 官方 Windows、macOS、Linux、iOS 客户端打补丁后连自己的服务器，另有自开发的 Android App 和浏览器直接用的网页版\n- 对话、文件和记忆都留在自己的服务器上\n- 部署手册可以直接交给 Claude Code、Codex 等 AI 照着执行\n\n![三端截图：Windows 客户端、浏览器里的网页版、Android App](https://raw.githubusercontent.com/ferretgeek/prokbot-plus/main/docs/images/hero-zh.jpg)\n\n非官方项目，与 xAI 无关，仅限非商业使用；仓库不含官方程序，客户端由用户自己下载的官方安装包生成。\n",
+    "created_at": "2026-11-26T11:54:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13832"
+  },
+  {
+    "id": 13831,
+    "title": "【开源自荐】Ergatai：把多个 AI 编码助手组织成协作团队的本地多智能体工作区",
+    "content": "\nErgatai 是一个本地优先的多智能体协作工作区，把 Claude Code、Codex、OpenCode 等独立 AI 编码助手组织成一个协作团队，解决多个 Agent 同时改代码互相覆盖的问题。\n源码：https://github.com/windreach/ergatai\n协议：Apache-2.0\n**Demo**\n![Ergatai demo](https://raw.githubusercontent.com/windreach/ergatai/main/demo/videos/showdemo.gif)\n\n**主要特点**\n\n*   统一对话gui：所有agent跑在同一gui提供更好的对话UI体验\n*   权限锁在请求阶段就挂载：多 Agent 并发修改时，只有第一个锁持有者成功，避免互相覆盖和浪费轮次\n*   本地优先：Agent 通过原生 CLI 运行，复用已有登录与订阅，中间无代理\n*   每个对话运行在独立的 git worktree 中，跨对话修改有保护\n*   ACP 原生，支持 YAML、DAG 任务图编排、NATS JetStream 可靠消息与 mesh 通信策略\n*   零遥测，完全本地运行\n\n**截图**\n\n<table>\n<tr>\n<td width=\"33%\" valign=\"top\">\n\n### 🖥️ Desktop workspace\n\nMain workspace with agent chats, file tree, and terminal panes.\n\n<img src=\"https://raw.githubusercontent.com/windreach/ergatai/main/demo/pictures/desktop-UI.png\" alt=\"Desktop UI\" width=\"100%\">\n\n</td>\n<td width=\"33%\" valign=\"top\">\n\n### 🔍 Diff review\n\nSide-by-side diff review of agent edits before they land.\n\n<img src=\"https://raw.githubusercontent.com/windreach/ergatai/main/demo/pictures/diff-UI.png\" alt=\"Diff UI\" width=\"100%\">\n\n</td>\n<td width=\"33%\" valign=\"top\">\n\n### ⚙️ Manage agents & workspaces\n\nAgent, workspace, and permission management panel.\n\n<img src=\"https://raw.githubusercontent.com/windreach/ergatai/main/demo/pictures/manage-UI.png\" alt=\"Manage UI\" width=\"100%\">\n\n</td>\n</tr>\n</table>\n\n",
+    "created_at": "2026-11-26T11:43:30Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13831"
+  },
+  {
+    "id": 13830,
+    "title": "【工具自荐】ClearCaption：批量获取 YouTube 字幕（SRT/VTT），可翻译并保留时间轴",
+    "content": "**ClearCaption** 是一个 YouTube 字幕抓取工具：粘贴视频、频道、播放列表链接或搜索关键词，就能拿到干净的字幕文本、SRT / VTT 字幕文件和视频信息，可以保留原语言，也可以翻译成你的语言（翻译后时间轴保持不变）。\n\n网址：https://apify.com/clearcaption/youtube-transcript-translate\n\n**能做什么**\n\n- 批量获取字幕：单个视频、整个频道、播放列表、搜索结果\n- 输出纯文本、SRT、VTT，带时间轴\n- 翻译字幕：优先使用 YouTube 现成的人工字幕，没有时用 AI 翻译，时间轴保留\n- 没有字幕的视频不收费；Apify 免费账户每月约可处理 1000 个视频\n\n**开源部分**（MIT 许可证）\n\n- Python 示例：https://github.com/Andrii2203/clearcaption-youtube-transcript ——如果 `youtube-transcript-api` 在云服务器上报 `RequestBlocked` / `IpBlocked` / 429，可以作为替代方案，输出格式相同\n- 也可以作为 MCP 服务器给 Claude、Cursor 等 AI 助手使用：`https://mcp.apify.com?tools=clearcaption/youtube-transcript-translate`\n",
+    "created_at": "2026-11-26T11:42:08Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13830"
+  },
+  {
+    "id": 13829,
+    "title": "自荐开源项目：ASCII Camera - 实时字符画相机",
+    "content": "阮老师好，想自荐一个最近完成的开源小工具 **ASCII Camera**。\n\n之前在修改 GitHub 个人主页的字符画时，想到能不能把摄像头的实时画面也转换成字符画，于是做了这个项目。\n\nASCII Camera 是一个基于浏览器的实时字符画相机，无需安装，电脑和手机均可使用。\n\n**主要功能：**\n\n- 实时将摄像头画面转换为动态字符画。\n- 内置六种视觉效果预设，支持自定义字符集、渐变调色板、字符密度、亮度和对比度。\n- 支持通过滑杆实时对比原画与字符画。\n- 支持 PNG 截图、MP4 / WebM 视频录制及 GIF 导出。\n- 支持中英文界面，所有画面均在浏览器本地处理，无需上传。\n\n网站内置了动态演示素材，不开启摄像头也可以直接体验全部视觉效果。\n\n**在线体验：** https://ascii.nine19een.com/\n\n**GitHub：** https://github.com/nine19een/ascii-camera\n\n项目免费开源，自有源码采用 MIT 许可证。\n\n感谢阅读，欢迎体验！\n\n<img width=\"640\" height=\"360\" alt=\"ascii-camera-demo\" src=\"https://github.com/user-attachments/assets/1735d57b-7cc1-440a-9a86-63913a9afe86\" />\n\n<img width=\"1920\" height=\"1200\" alt=\"adjust zh-CN\" src=\"https://github.com/user-attachments/assets/9b3fdb7b-09a5-430e-af15-17638b3588e7\" />",
+    "created_at": "2026-11-26T11:41:50Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13829"
+  },
+  {
+    "id": 13828,
+    "title": "自荐项目：ÉTOILE 摘星志 — 零后端、杂志级排版的个人米其林与 World's 50 Best 美食年鉴开源模板",
+    "content": null,
+    "created_at": "2026-11-26T11:33:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13828"
+  },
+  {
+    "id": 13827,
+    "title": "自荐项目：mobile-agent-skills — 面向 Claude Code / Cursor / Codex 的移动端 AI 编程技能库",
+    "content": null,
+    "created_at": "2026-11-26T11:33:06Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13827"
+  },
+  {
+    "id": 13826,
+    "title": "【工具自荐】VGift，一张能拆开的网页贺卡",
+    "content": "大家好，我做了一个网页贺卡工具 VGift，想让发给亲友的祝福多一点拆信的体验。\n\n写一段话，放上照片，发布后把链接发给亲友。收信人点开红信封就能读信，打开已发布的贺卡无需注册。读完也可以点信末的「制作自己的礼物」，做一张自己的贺卡。\n\n[体验简体中文示例「爸妈，新春快乐！」](https://vgift.us/fmQMpw9RqA/)\n\n示例照片为 Charlie Hang 的《Sunset over beach》（CC0）。",
+    "created_at": "2026-11-26T11:24:37Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13826"
+  },
+  {
+    "id": 13825,
+    "title": "【工具自荐】Unzoo Browser：给 Claude / Cursor / Codex 用的本地 AI 浏览器（原生 MCP + 多 Profile 隔离）",
+    "content": "阮老师您好，想向《科技爱好者周刊》自荐我们做的桌面工具 **Unzoo Browser**，供选题参考。\n\n平时用 Claude Code、Cursor 或 Codex 驱动浏览器做调研、填表、数据整理时，传统的 Playwright / Puppeteer 方案往往有三个痛点：登录态难持久化、多 Agent 并行时互相抢焦点和串 Cookie、稍微复杂一点的站点容易触发风控中断。\n\n**Unzoo Browser** 基于真实 Chromium 内核构建，把浏览器本身做成了本地 AI 客户端可直接调用的行动空间：\n\n- **原生内置 MCP 服务与本地 REST / CDP 接口**：无需自己搭桥接脚本，安装后可直接接入 Claude Code、Cursor、Codex、Windsurf 等 AI 工具；\n- **独立本地 Profile 隔离**：不同账号或不同 AI Agent 各自拥有独立的 Cookie、登录会话与代理配置，后台标签页执行任务不互相干扰；\n- **人机协作边界清晰**：支持由 AI 完成页面读取、信息结构化整理（导出 CSV）与表单草稿预填，提交或发布前留给用户核对确认；\n- **跨平台免费可用**：提供 Windows（x64 / ARM64）、Linux、macOS 桌面安装包，基础版免费开放使用。\n\n![Unzoo Browser](https://unzoo.ai/assets/unzoo-share-en-ce554a87.png)\n\n- 官网与下载：https://unzoo.ai\n- 配套开源 Skills 仓库（含多种常见网页工作流）：https://github.com/unzooai/unzooai-skills\n\n感谢阮老师一直以来的优质周刊！",
+    "created_at": "2026-11-26T11:20:33Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13825"
+  },
+  {
+    "id": 13824,
+    "title": "【工具更新】UniPublisher已经正式接入对【稀土掘金】平台的支持，目前可以创作投研或技术文章，并一键同步给19个渠道，包含Linkedin、微博、雪球、Binance, 老虎证券、东财、Threads、TG、Substack等",
+    "content": "UniPublisher.app 已经正式接入对【稀土掘金】平台的支持，目前可以把投研或技术文章一键同步给包含稀土掘金社区，Linkedin、微博、雪球、Binance, 老虎证券、东财、Threads、TG、Substack在内的19个内容渠道了。由于稀土掘金不支持API，所以debug也是费了好多力气。\n\n官方网站：https://unipublisher.app/\n微软商店认证：Microsoft Store 搜索 UniPublisher（或官网直下 Windows 安装包）\n支持系统：Windows 10/11，macOS 原生公测版\n\n**本次更新还大幅增加了对AI与Web3行业热点的支持，使用者可以更快速轻松的获得AI与Web3的主流报道，目前对于github的高星项目跟踪分析也是免费的。**\n\n\n<img width=\"2878\" height=\"1698\" alt=\"market signal\" src=\"https://github.com/user-attachments/assets/69f358df-9302-424a-91ab-a9edae97ea56\" />\n\n主要是GF天天用稀土掘金，还有俩咨询公司和投行的也希望加入，我之前主要是用CSDN也是才知道这个平台，可能投资和投研，在AI大幅崛起前与技术平台还是脱钩的，但是现在开始了一种奇妙的融合趋势。\n\n内置 AI 与 Web3 前沿热点追踪： 内置客观行情看板与主流报道聚合，并免费提供 GitHub 高星开源项目的动态追踪，为技术与行业写作提供一站式选题灵感。\n\n面向 AI Agent 的本地 MCP 接口： 提供本地受控 MCP（Model Context Protocol）扩展，支持 Claude Code 或本地 Agent 在不泄露账号密码的前提下，调用桌面端进行排版与草稿生成。\n\n一起加油吧！🐂 ",
+    "created_at": "2026-11-26T11:20:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13824"
+  },
+  {
+    "id": 13823,
+    "title": "【开源自荐】EduBeam：在浏览器里做结构力学计算的开源工具",
+    "content": "EduBeam 是一个免费开源的二维结构分析网页应用，无需安装和注册。画出梁、刚架或桁架，加上支座和荷载，立即得到支反力、轴力图、剪力图、弯矩图和变形图，修改模型时实时更新。整个模型可以保存成一个分享链接，方便老师放进讲义和作业。支持 22 种语言，包括简体中文。\n\n在线体验（中文界面）：https://run.edubeam.app/?lang=cn\n\nGitHub：https://github.com/janvorisek/edubeam\n\n![EduBeam：门式刚架的荷载、支反力、弯矩图和变形](https://raw.githubusercontent.com/janvorisek/edubeam/dev/.github/readme/hero-light.webp)",
+    "created_at": "2026-11-26T10:34:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13823"
+  },
+  {
+    "id": 13822,
+    "title": "自荐：会员比比——免登录的会员/AI 订阅比价站，价格每天自动核对",
+    "content": "网址：https://vip.quova.me/\n\n一个纯静态、免登录、免费的会员比价小站。\n\n解决的问题：视频/音乐/网盘/办公会员常有「首年便宜、续费涨价」「自动续费」的坑，各家价格也难横向比。\n做了什么：\n- 按「售价 ÷ 月数」统一折算月价，标注自动续费、续费涨价、电视端是否支持，每条都有核对日期\n- 续费刺客雷达 + 关闭自动续费的步骤\n- 会员到期日历（生成 .ics 导入手机日历）\n- 联合卡/全家桶省钱计算器\n- 海外 AI（ChatGPT / Claude / Gemini / Grok 等）各国 App Store 价格按汇率换算成人民币，另附国内 6 家 AI 编程套餐月费对比\n\n技术：Node 生成静态页 + GitHub Actions 每天抓价 + Cloudflare 边缘缓存 + Vercel 托管，无数据库，无需登录。",
+    "created_at": "2026-11-26T10:12:32Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13822"
+  },
+  {
+    "id": 13821,
+    "title": "【开源自荐】MarkerOn：轻量屏幕标注工具",
+    "content": "MarkerOn 是一个轻量的屏幕标注工具（Windows / macOS）。它常驻系统托盘，按 `Ctrl + Shift + D`（macOS 为 `⌘ + Shift + D`）即可进入标注模式，不用先截图，直接在任何应用上方画图、圈重点、写批注，适合课堂演示、会议讲解和录屏。主要特点：\n\n- **小巧**：Rust + Tauri 实现，安装包约 1.5 MB，托盘静默运行。\n- **快捷键优先**：`1`–`8` 切换绘图工具，`T` 写文字、`N` 加序号，换颜色、改线型、穿透、退出也都是单键，演示时手不离键盘。\n- **穿透模式**：按 `Ctrl + Shift + X` 后批注留在最上层，同时可以直接点击、拖动下层应用，边讲边操作。\n- **完全开源**：MIT 许可证，源码完整可查；无账号、无云端上传、无遥测，也可以自行编译。\n\nWindows 有安装版、绿色免安装版和微软商店版，macOS 提供 Apple Silicon 和 Intel 版 dmg。\n\n[源码](https://github.com/ifer47/markeron) · [下载](https://github.com/ifer47/markeron/releases/latest) · [官网与文档](https://markeron.cn) · [B 站演示](https://www.bilibili.com/video/BV17ygy67ETV)\n\n<table>\n<tr>\n<td width=\"50%\">\n<img src=\"https://raw.githubusercontent.com/ifer47/markeron/master/assets/%E6%A1%8C%E9%9D%A2%E6%A0%87%E6%B3%A8%E5%9C%BA%E6%99%AF.png\" alt=\"在 PPT 和浏览器上直接批注\" />\n</td>\n<td width=\"50%\">\n<img src=\"https://raw.githubusercontent.com/ifer47/markeron/master/assets/%E5%8D%81%E7%A7%8D%E6%A0%87%E6%B3%A8%E5%B7%A5%E5%85%B7.png\" alt=\"10 种绘图工具，数字键单键切换\" />\n</td>\n</tr>\n</table>\n\n利益相关：我是项目作者，欢迎试用和反馈。\n",
+    "created_at": "2026-11-26T10:11:47Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13821"
+  },
+  {
+    "id": 13820,
+    "title": "【开源自荐】LineSQL：从 SQL 脚本提取表级和字段级血缘的 JVM 工具",
+    "content": "我是 LineSQL 维护者 Jie Hu（@jarredhj0214），自荐一个面向 Java 数据平台的开源 SQL 血缘解析工具。\n\n项目：https://github.com/jarredhj0214/linesql\n\n它从 SQL 文本提取表与字段之间的依赖，用于元数据采集和字段变更影响分析。比如一条 INSERT 经过临时视图读取源表，工具可以将目标字段的来源追溯回原始字段，并记录 WHERE 等子句的列使用。\n\n项目基于 JVM 与 ANTLR4，提供 Java API 和 CLI，可在本地解析而不执行 SQL。支持 Spark、Hive、Flink 等多种 SQL 方言，具体覆盖因方言而异，许可证为 Apache-2.0。\n\n限制：缺少 schema 信息时不能可靠展开 SELECT *；复杂或不支持的 SQL 可能只得到部分血缘，需要一起查看诊断信息。\n\n可运行的 Flink 示例：https://dev.to/jarred0214/extracting-column-lineage-from-flink-sql-without-running-a-cluster-2ajp\n\n欢迎元数据服务、数据目录和治理工具开发者试用，也欢迎提供脱敏 SQL 与预期依赖关系。感谢审阅！\n",
+    "created_at": "2026-11-26T10:08:46Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13820"
+  },
+  {
+    "id": 13819,
+    "title": "〖工具自荐〗XicoClean：按目录查看 Mac 磁盘占用",
+    "content": "阮老师您好，我们是 XicoClean 团队，想自荐这款 macOS 工具，供周刊选题参考。\n\nMac 的储存设置里，「系统数据」显示的是一类数据的总量。想知道到底是哪些目录占了空间，可以用 XicoClean 的「空间透镜」扫描磁盘，按占用展开目录，查看大小和完整路径。比如整理一个已归档的开发项目时，可以先看旧构建产物、依赖和缓存分别有多大，再决定保留哪些。大文件和重复文件也有单独的检查入口。\n\n1.8.1 版的目录树在扫描完成后就会显示，大文件和重复文件的分析在后台继续。发行包支持 macOS 12 及以上，兼容 Apple 芯片和 Intel Mac。官网提供 15 天全功能试用，正式授权为一次性买断。App 和 DMG 均已通过 Apple 公证。\n\n- [官网与试用](https://xicoclean.com/)\n- [官方演示视频](https://www.youtube.com/watch?v=WxEaVxDcsew)\n\n谢谢！\n",
+    "created_at": "2026-11-26T10:07:54Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13819"
+  },
+  {
+    "id": 13818,
+    "title": "【开源自荐】AI 写真姿势库：200 个白模，用你的照片拍出同款姿势",
+    "content": "[AI 写真姿势库](https://github.com/leisure-cat/ai-photo-poses)是一个开源的写真姿势参考库：200 个白模、20 种风格，每个白模配 4 张用它拍出的不同风格写真。把你的照片和白模一起交给能传参考图的 AI 生图模型，就能拍出同一个姿势的你。（图片和数据 CC BY 4.0，代码 MIT，可免费商用）\n\n![20 种风格的写真，每张都照着库里的白模拍](https://raw.githubusercontent.com/leisure-cat/ai-photo-poses/main/images/readme/mosaic.webp)\n\n- 源码与数据：https://github.com/leisure-cat/ai-photo-poses\n- 网页版（选姿势、上传照片直接生成）：https://promicat.app/zh/poses\n\n**为什么用白模**\n\n用文字描述姿势，AI 往往画得僵硬、对称，手不知道放哪。参考图比文字准，但真人照片有肖像和版权问题。所以先生成自然不僵的写真，再照着画成无脸的木头白模：白模只保留动作、机位和取景，可以和任何人的照片组合。\n\n![照片配姿势：用户照片、挑中的白模、生成结果](https://raw.githubusercontent.com/leisure-cat/ai-photo-poses/main/images/skill-demo.webp)\n\n**里面有什么**\n\n- 200 个白模，覆盖街拍、港风、新中式、哥特、Y2K、老钱风等 20 种风格；每个配 4 张案例和两版提示词（虚构模特版、「用你的照片」版）。\n- 24 套写真配方（每套 9 张）和 436 个提示词组件，换一个组件就是一套新写真。\n- 两个 Agent 技能，其中「照片配姿势」会看用户的照片推荐姿势并直接生成；Claude Code 一行安装：`/plugin install ai-photo-poses --marketplace leisure-cat/ai-photo-poses`\n- 中英双语；所有人物都由 AI 生成，均为虚构。\n\n我是项目维护者，本帖为自荐。\n",
+    "created_at": "2026-11-26T09:57:09Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13818"
+  },
+  {
+    "id": 13817,
+    "title": "[网站自荐] 香港全境像素志：590 亿像素可缩放 16-bit 互动微缩香港沙盘",
+    "content": "### 项目名称\n香港全境像素志（Hong Kong Pixel Atlas）\n\n### 在线体验\nhttps://hk.427795.xyz/\n\n### 简介与技术亮点\n我把整座香港做成了 **590 亿像素（309,248 × 190,464 px）** 的 16-bit 等轴测立体微缩沙盘，无需下载任何客户端，打开浏览器即可自由缩放探索：\n\n1. **稀疏金字塔压缩至 649 MB**：针对香港岛屿海岸线特征构建稀疏 DZI 瓦片金字塔（仅保留 `13,247` 张有效瓦片，跳过 `95.6%` 空白海域），实现浏览器端秒开流畅缩放。\n2. **1,600 处建筑/道路接缝重绘**：通过红框遮罩重绘管线修复跨瓦片切割的高楼立面与高架桥，同时在海面与山地做零误绘保护。\n3. **实时动态模拟与遮挡**：基于 Canvas2D 在地图上实时运行叮叮电车、巴士、车流、维港天星小轮水波与飞鸟，并结合建筑高度遮挡层实现「车辆穿行高楼背后」的立体穿插感。\n4. **22 处香港地标与坐标深链接**：支持一键飞跃中环 IFC、中银大厦、太平山、维多利亞港、ICC、启德体育园与香港国际机场，并可一键复制当前视角坐标链接分享给朋友。",
+    "created_at": "2026-11-26T08:53:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13817"
+  },
+  {
+    "id": 13816,
+    "title": "[自荐工具] 墨卡 Studio：在线将长文快速排版为极简 3:4 知识卡片",
+    "content": "**项目名称**：墨卡 Studio  \n**在线地址**：https://xhs-card-studio-chliziye.netlify.app  \n\n**简介**：  \n一个打开即用、免注册登录的在线长文转卡片排版工具。适合把技术总结、读书笔记或碎片思考，快速排成适合在社媒或相册阅读的 3:4 极简知识卡片。\n\n**主要特性**：\n- **双模式实时编辑**：支持左侧 Markdown 全文源码（用 `---` 分页）与逐卡可视化表单双向同步。\n- **AI 辅助拆页与防溢出**：粘贴长文可自动按阅读节奏分页并生成摘要；单卡内容超出 3:4 画幅时会实时预警，支持一键精简文字。\n- **多风格主题与纯前端导出**：内置备忘录纸感、瑞士杂志风、复古书页、科技蓝图等多套克制审美的排版风格，支持纯前端 3× 超清 PNG 单张导出与 ZIP 批量打包，移动端支持长按存图。\n- **使用方式**：基础排版、常用主题与超清导出均免费可用（无需登录），另提供更多扩展主题与去水印的 Pro 选项。\n\n**界面截图**：\n（此处直接把「工作台截屏」和「导出卡片样图」拖进 GitHub 输入框自动上传）",
+    "created_at": "2026-11-26T08:28:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13816"
+  },
+  {
+    "id": 13815,
+    "title": "【开源自荐】一粟：人管品味，AI 动手，9 天写出 9000 多个汉字的开源中文字体",
+    "content": "\n[一粟](https://yisu.aixie.de)是三套开源的中文手写字体，覆盖繁体、简体共 9,083 个汉字。我们只把控品味和质量，其余的活儿全交给 AI（Claude Code）：从建仓库到现在 9 天。每个字都是 AI 先写出笔画的中心线，再用一支“笔”沿着中心线写出来，没有描摹或转换任何现有字体。（OFL 授权，可免费商用）\n\n<picture>\n  <source media=\"(prefers-color-scheme: dark)\" srcset=\"https://raw.githubusercontent.com/zjlgdx/yisu-fonts/main/docs/hero-dark.png\">\n  <img src=\"https://raw.githubusercontent.com/zjlgdx/yisu-fonts/main/docs/hero-light.png\" alt=\"寄蜉蝣於天地，渺滄海之一粟，三套字体：印泥、画沙、漏痕\">\n</picture>\n\n- 网站：https://yisu.aixie.de （点任意一个字，可以看它按笔顺一笔一笔写出来）\n- 源码与下载：https://github.com/zjlgdx/yisu-fonts\n\n**人做什么，AI 做什么**\n\n- 人：定字体的样子，看每一轮的校样，决定什么能发布。\n- AI：按字频一轮画几百个字，复用已经画好的部件；跑检查（笔画出界、粘连、灰度不匀）；出前后对比的校样；开 PR、发版。改动已经画好的字时，由另一个没参与修改的 AI 来审。\n- 规矩只有一条：不能拿任何现有字体当底稿，连量坐标都不行。AI 可以看参考字，搞清楚一个字长什么样，然后用自己的笔重新写，书法里叫“临而不摹”。\n\n**三支笔，名字取自古人论笔法的三个比喻**\n\n- 印泥（如印印泥）：仿宋铅字，隔着色带打进纸里。英文和数字等宽，内置框线字符和 Powerline 符号，可以直接当终端和编辑器字体。\n- 画沙（如锥画沙）：圆珠笔写的楷书，力度有轻有重，每一笔都稍稍偏离原位。英文每个小写字母画了三种写法轮流出现。\n- 漏痕（如屋漏痕）：马克笔的斜切笔尖，粗细全由笔尖角度决定。\n\n**覆盖范围**\n\n- 简繁各按各的标准写：台湾教育部的“說”、通用规范汉字表的“说”。网页上给简体文字加 `lang=\"zh-Hans\"`，字形和标点就会切换成大陆的写法。\n- 已覆盖通用规范汉字表一、二级 6,500 字、Big5 常用字、GB 2312 一级字，以及注音、日文假名和常用粤语字。\n",
+    "created_at": "2026-11-26T08:21:43Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13815"
+  },
+  {
+    "id": 13814,
+    "title": "【软件自荐】RevHive：代码不出内网的 AI 代码审查（9 个 Agent，BYOK，可离线）",
+    "content": "[RevHive](https://github.com/jovian-zhibai/RevHive) 是一个多 Agent 的 AI 代码审查工具：9 个专职 Agent（安全 / 性能 / 逻辑 / 测试 / 风格 / 重构 / 文档 / 仓库上下文 / 修复建议）并行看同一个 diff，再由一个协调器合并重复、裁决互相矛盾的结论。\n\n它和同类工具的差别不在\"更聪明\"，而在数据流向：模型由使用者自己提供（BYOK），代码只发到你指定的模型厂商；也可以把模型地址指向内网自建的 OpenAI 兼容网关，接 Ollama 时能完全断网运行。目标场景是那些合同里写着\"源代码不得上传第三方云平台\"、因为合规用不了 SaaS 工具的团队。\n\n- 上手：`pip install revhive-ai`，然后 `revhive demo`（免 Key，跑预置数据，先看报告长什么样）\n- 日常：`revhive review -d HEAD~1` 审一个 commit 的改动，支持 markdown / json 输出\n- 接入：GitLab / Jenkins 里当一条命令跑；也可以 docker 自托管\n\n几点需要说清楚：\n\n1. 许可证是 **BSL 1.1，不是 OSI 开源**。非生产用途（评估、个人项目、开源开发）免费；生产环境商用需要授权；2030-05-12 之后转 Apache 2.0。源码可审计。\n2. 我们把自己做过的基准实验连失败一起公开了，包括推翻自己结论的那几篇（10/10 命中率被自己补的对照组推翻、发现跑错了模型）：https://revhive.souljian.cn/blog/\n3. 一个人维护，没有团队。\n\n报告样例（对一个订单服务的真实审查，含命令注入、库存竞态、支付验签绕过）：https://revhive.souljian.cn/sample-report.html\n中文说明：https://revhive.souljian.cn/zh.html\n",
+    "created_at": "2026-11-26T07:56:35Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13814"
+  },
+  {
+    "id": 13813,
+    "title": "【开源自荐】霁月 Jiyue：基于 Rust + GPUI 的本地优先 Markdown 笔记软件，兼容 Obsidian 笔记库",
+    "content": "[霁月 Jiyue](https://github.com/limitcool/jiyue)\n\n一款本地优先、跨平台的开源 Markdown 笔记应用。桌面端基于 Rust 和 GPUI（Zed 编辑器的 GPU 加速界面框架）构建，单个独立可执行文件、无内置浏览器；同时提供共享 Rust 核心的 Android 客户端。\n\n![霁月玄墨与宣纸主题预览](https://raw.githubusercontent.com/limitcool/jiyue/main/docs/images/themes.png)\n\n主要特点：\n\n- **纯本地 `.md` 文件，兼容 Obsidian 笔记库**：无需账号与私有数据库，可直接打开已有 Obsidian 目录，识别 `[[双链]]`、`![[嵌入]]`、`^块引用` 与 YAML 属性，且不修改 `.obsidian` 目录。\n- **实时预览与原生渲染**：支持实时预览 / 源码 / 阅读模式切换，表格、提示块、代码块、LaTeX 公式、Mermaid 流程图与时序图均不依赖浏览器原生绘制。\n- **中文友好**：支持中英双语即时切换、斜杠菜单拼音检索，以及无需词典的中文二元组全文搜索与高亮。\n- **知识管理与数据安全**：内置反向链接、知识图谱、日记日历、Memos 微记、原子保存、崩溃恢复与本地版本历史对比。\n- **可选同步与跨端配对**：支持 S3 / WebDAV 同步（默认关闭，无遥测），桌面端生成二维码供 Android 端扫码导入配置。\n\n![Android 移动端预览](https://raw.githubusercontent.com/limitcool/jiyue/main/docs/images/mobile.png)\n\n协议为 MIT / Apache-2.0 双许可，已提供 Windows、macOS、Linux 与 Android 预编译安装包。",
+    "created_at": "2026-11-26T07:54:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13813"
+  },
+  {
+    "id": 13812,
+    "title": "【工具自荐】泊记 ParkMemo：用照片、楼层和柱子号记住停车位，支持 iPhone 与 Apple Watch",
+    "content": "我是泊记的开发者，自荐一个 iPhone + Apple Watch 停车记录工具。\n\n停车后，用照片、楼层、区域和备注记住“B2、C-128、靠近哪部电梯”等线索；找车时回看照片与文字。有可用坐标时可打开 Apple Maps 导航。\n\n- iPhone：保存停车照片，使用本机 Vision OCR 读取指示牌文字，核对后填写。\n- Apple Watch：可以独立保存楼层、区域、备注和可用坐标，恢复连接后与配对手机同步文字及坐标；照片留在 iPhone。\n- 核心记录保存在本地，无账号、广告或订阅，不依赖开发者服务器。\n- 不提供室内定位或楼层导航；地下车库定位弱时主要依靠照片和文字。\n\n**使用条件与价格**：当前为简体中文界面，需 iOS 17+ / watchOS 10+；美区 App Store 标价 US$1.99，一次购买包含手机与手表端，实际价格以商店页面为准。本次自荐提供的是美区下载入口，中国区可用性尚未确认。\n\n[产品介绍](https://parkmemo-support.netlify.app/) · [美区 App Store](https://apps.apple.com/us/app/id6839172847)\n\n![泊记实际界面与功能说明](https://parkmemo-support.netlify.app/assets/parkmemo-launch.png)\n\n欢迎反馈停车保存步骤和找车时的信息展示。本文为开发者自荐，不是第三方测评；截图中的停车信息为演示示例。\n",
+    "created_at": "2026-11-26T06:47:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13812"
+  },
+  {
+    "id": 13811,
+    "title": "【开源自荐】Fluent-Qt：把 99 项原生 C++ Qt Widgets 控件搬进浏览器做可视化设计器（MIT 开源，支持 C++/PySide6/WASM）",
+    "content": "阮老师好，自荐一个刚打磨好浏览器可视化工作流的开源 Qt UI 库 —— **Fluent-Qt (FluentQt)**。\n\n- **项目地址**：https://github.com/calvinhxx/Fluent-Qt\n- **开源协议**：MIT\n- **在线 WebAssembly Gallery**：https://calvinhxx.github.io/Fluent-Qt/zh-CN/#gallery\n- **浏览器 Page Studio 设计器**：https://calvinhxx.github.io/Fluent-Qt/studio/?lang=zh\n- **技术栈**：C++17 / Qt Widgets (Qt 5.15+ & Qt 6.2+) / PySide6 (`pip install FluentQt`) / WebAssembly\n\n![Fluent-Qt 在线 Gallery 与 Page Studio 演示](https://raw.githubusercontent.com/calvinhxx/Fluent-Qt/main/site/assets/gallery/hero-showcase.webp)\n\n## 解决什么痛点？\n\n国内外的工业上位机、科学仪器软件、内部桌面工具里，依然有大量项目跑在传统的 Qt Widgets 上：UI 观感停留在十年前，但推倒重写成 QML 或 Electron 成本太高；而 Python/Qt 社区流行的同类 Fluent 主题库大多采用 GPLv3 协议，闭源商业项目不太敢直接用。\n\nFluent-Qt 想做的是**全链路 MIT 协议、不改造已有架构的渐进式升级方案**：现有 Qt 5/Qt 6 老工程不必迁移 QML，也不用魔改全局 QSS 样式表，可以按页面甚至单个控件逐步替换。\n\n## 有意思的技术点\n\n1. **把真 C++ Qt Widgets 组件库编进 WebAssembly，在浏览器里做 Page Studio 设计器**\n   桌面 UI 库通常只能发截图，路人本地没装 Qt 很难体验。Fluent-Qt 把 99 项 Gallery 组件直接编译成 WebAssembly，并在官网配套了一个浏览器端 **Page Studio**：打开网页零安装就能直接拖拽控件、切换浅色 / 暗黑 Mica / 高对比度主题、实时编辑属性（甚至调用自带 AI 排版助手生成页面），最后一键导出可运行的 **C++**、**PySide6** 或 **Qt Designer `.ui` 文件**。\n2. **一套 C++17 核心同时驱动 C++、PySide6 与浏览器**\n   通过 CMake + Shiboken6 + Emscripten 维护单一原生控件内核：除了常规输入、导航、浮层和对话框之外，还内置了**不依赖 QtCharts 的高性能纯 Widgets 交互图表**、`DataGrid` 以及可选的 CPU 粒子背景（`Particles`）和 3D 透视宿主视图（`SpatialView`）；本地同样支持 Qt Creator / `pyside6-designer` 插件（95 项控件 + 4 套模板）。\n3. **带工程化起步模板与无障碍/布局自检**\n   配套 `monitor`（实时指标+曲线+表格监控看板）、`workbench`、`existing-qt` 脚手架 CLI 以及 `Inspector` 运行时无障碍/布局重叠检测工具，方便 C++ 或 PySide6 团队直接按清晰分层起步。\n\n如果周刊觉得有意思，欢迎收录；也欢迎对 Qt 桌面开发、WebAssembly 移植或工具链感兴趣的朋友交流指正！\n",
+    "created_at": "2026-11-26T06:23:19Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13811"
+  },
+  {
+    "id": 13810,
+    "title": "【开源自荐】gvim：纯 Go 编写、开箱即用的终端代码阅读器与编辑器",
+    "content": "自荐一个我用纯 Go 编写的开源终端代码阅读器与编辑器 —— **gvim**。\n\n- **项目地址**：https://github.com/tbxark/gvim\n- **开源协议**：GPL-3.0\n- **支持平台**：macOS / Linux / Windows（`CGO_ENABLED=0`，编译为单个静态二进制文件，无运行时依赖）\n\n![gvim 界面预览](https://raw.githubusercontent.com/tbxark/gvim/master/docs/assets/preview.png)\n\n### 为什么要做这个项目？\n\n平时在终端里读代码、看 Git Diff，或者配合 Claude Code / Codex 等终端 AI 编程工具快速翻阅仓库文件时，往往既不想切回重型桌面 IDE，又不想被 Vim 的模式切换和漫长插件配置门槛劝退。\n\n`gvim` 是基于 [Fresh](https://github.com/sinelaw/fresh)（Rust TUI 编辑器）的纯 Go 重写实现，核心聚焦在**快速阅读代码、大项目导航和 Git\n变更审查**。打开就是熟悉的现代编辑器交互：顶部菜单栏、文件树、多标签页、分屏、命令面板（`Ctrl+P`）以及完整的鼠标操作体验，同时内置英文与简体中文界面。\n\n### 主要特性\n\n1. **只读保护与轻量查看**\n   - `gvim -R` 开启只读代码阅读模式，锁定缓冲区防止误编辑、误粘贴与误保存，同时启用类似 `less` 的单键翻页快捷键（`j/k`、`Space/b`、`/`、`q`）；\n   - 支持直接查看管道输入（如 `git show HEAD | gvim -`）；\n   - 支持 30+ 语言语法高亮、代码折叠、顶部 Sticky Scroll（固定当前函数/类作用域标题）以及 100+ MiB 大文件的窗口流式读取。\n2. **代码、Markdown、图片与二进制一站式预览**\n   - 原生支持 Markdown 的源码 / 渲染 / 同步双栏三种视图及侧边栏目录大纲；\n   - 内置图片预览（支持 Kitty 图形协议，普通终端自动降级为半块字符渲染）和二进制十六进制视图（Hex View）。\n3. **开箱即用的 LSP 导航与项目搜索**\n   - 内置常见主流语言服务器配置，支持跳转定义（`F12`）、原位悬浮预览定义（`Alt+F12`）、查找引用、Hover 文档、诊断面板、滚动条总览标尺以及跨文件前进/后退历史（`Alt+Left` / `Alt+Right`）；\n   - 内置 `Ctrl+P` 模糊快开、`Alt+/` 项目级 Live Grep 和 `Alt+A` 搜索替换。\n4. **Git 对比与 Review 审查**\n   - 内置双侧可编辑的文件并排对比（`gvim --diff a b`）；\n   - 内置 Review Diff 模式（`gvim --review`，集中审查暂存、未暂存与未跟踪变更），并支持行号栏变更提示（Git Gutter）与行内 Blame。\n5. **现代键位、终端 Dock 与 Lua 插件**\n   - 提供 `default` / `vscode` / `emacs` / `macos` / `macos-gui` 五套键位预设（也提供可选 `vi_mode` 插件）；\n   - 内置终端 Dock（`` Alt+` ``）、SSH 远程编辑、Daemon 会话托管，以及基于 `gopher-lua` 的 Lua 插件体系（默认仅开启 9\n   个核心插件以保持轻量，`vi_mode`、`flash`、`git_log`、`merge_conflict`、`lsp_navigation` 等可按需开启）。\n\n### 快速体验\n\n```sh\ngo install github.com/tbxark/gvim@latest\n```\n\n常用命令：\n\n```sh\ngvim .                        # 打开当前目录\ngvim -R .                     # 只读代码阅读模式\ngvim --diff fileA.go fileB.go # 双栏对比文件\ngvim --review                 # 进入 Git Review Diff 模式\ngit show HEAD | gvim -        # 查看管道输出\n```\n\n### 说明与致谢\n\n`gvim` 的功能设计、键位方案与 UI 交互参考并重实现自开源项目 [Fresh](https://github.com/sinelaw/fresh)，采用相同的 GPL-3.0 协议；底层基于 Go + Bubble Tea v2 + 自研单元格网格渲染器，插件运行时改为 Lua。\n\n欢迎经常在终端里读代码、看 Diff 或需要轻量终端编辑器的朋友试用和反馈！",
+    "created_at": "2026-11-26T06:21:45Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13810"
+  },
+  {
+    "id": 13809,
+    "title": "【开源自荐】Mikoshi：Windows 上全程键盘操作的 KeePass 密码管理器",
+    "content": "[Mikoshi](https://github.com/ElmTran/mikoshi)\n\n一个开源的 Windows 密码管理器，界面简洁美观，全程键盘操作，直接读写 KeePass 的 `.kdbx` 文件，可以和 KeePassXC、KeePassDX 共用同一个密码库。\n\n- **快速搜索**：在任何程序里按 `Ctrl+Alt+K` 呼出搜索框，模糊匹配，敲几个字母就能找到条目\n- **快速输入**：在登录页按 `Ctrl+Alt+V`，按网址和窗口标题匹配条目，自动填好账号密码\n- **快速保存**：在注册页按 `Ctrl+Alt+N`，网址和用户名自动带入，生成密码一键存下\n- **轻快**：Rust 后端，安装包不到 4 MB；窗口隐藏后界面自动休眠，常驻托盘只占约 30 MB 内存，空闲时 CPU 为 0\n- **安全**：密码只留在 Rust 端，界面拿不到；完全离线，不联网\n\n![Mikoshi 主窗口](https://raw.githubusercontent.com/ElmTran/mikoshi/main/docs/screenshots/main-light-zh.webp)\n\n![快速搜索框](https://raw.githubusercontent.com/ElmTran/mikoshi/main/docs/screenshots/quick-zh.webp)\n",
+    "created_at": "2026-11-26T06:20:36Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13809"
+  },
+  {
+    "id": 13808,
+    "title": "【开源自荐】Tapveo Core：用 $6 ESP32-S3 + 6.8ms 本地视觉给 AI 装上操作原生 iPhone 的物理双手（免越狱 / MCP）",
+    "content": "你好阮老师，自荐一个开源的免越狱真机 iOS 物理操控底座 **[Tapveo Core](https://github.com/tapveo/core)**（Apache-2.0，官网：[tapveo.com](https://tapveo.com)，20 秒浏览器一键刷机：[tapveo.com/flash](https://tapveo.com/flash)，实时手速压测擂台：[tapveo.com/bench](https://tapveo.com/bench)）。\n\n目前大多数 iOS 自动化方案要么依赖系统内部调试栈（XCUITest / 开发者模式 / macOS Xcode），要么靠云端多模态模型截屏轮询（每步 1–5 秒，且苹果官方 iPhone 镜像仅限 macOS）。\n\n**Tapveo Core** 完全运行在手机系统之外：\n- **本地视觉（Eyes）**：通过标准 AirPlay 投屏（UxPlay -> 本地 TCP 流）接入 Rust 编写的轻量视觉闭环（`6.8ms` 帧循环），实时追踪 iOS 辅助触控圆环光标（闭环精度 `~0.1–1.3pt`，执行过程 `0` LLM token）。\n- **物理键鼠（Hands）**：一块常见的 `$6` 开发板（如 Seeed Studio XIAO ESP32-S3）模拟标准 **USB HID** 或 **BLE HID** 键鼠去物理点击与输入，iPhone 端 **零软件安装、免越狱、免开发者模式**，支持 Linux / Windows / macOS。\n- **Agent 接口（Brain）**：提供 Rust CLI 与标准 stdio **MCP Server**（12 个原生工具：`screenshot` / `tap` / `swipe` / `type` / `key` 等），Claude、Cursor、Codex 可直接接入，并内置前台页面校验与紧急锁定 `hold` 安全机制。\n\n**真机实测基准（未越狱 iPhone）**：\n- **连续实时闭环压测（60fps 弹幕）**：`6.8ms` 本地视觉 + `71Hz` 有线 USB HID，全程 `0` LLM token。\n- **12 目标反应与定位测试**：首响应 **`89ms`**、单目标 **`192ms`**、12 目标总耗时 **`2.31s`**（对比人类平均 `~200ms`、云端 VLM `1–5s/步`）。\n\n![Tapveo Core](https://raw.githubusercontent.com/tapveo/core/main/assets/social-preview.png)\n\n如果手边有闲置 ESP32-S3，打开 Chrome/Edge 访问 [tapveo.com/flash](https://tapveo.com/flash) 约 20 秒即可通过 WebSerial 刷入 `v0.4.1` 固件体验。",
+    "created_at": "2026-11-26T06:18:14Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13808"
+  },
+  {
+    "id": 13807,
+    "title": "【工具自荐】值得么：下单前把商品标价换算成真实税后工时的 iOS 理性消费小工具",
+    "content": "## 项目简介\n\n**值得么（Worthii）** 是一款专为容易深夜冲动下单的打工人做的 iOS 原生小工具（本地离线存储、无广告、不绑银行卡）。\n\n传统记账 App 都在钱花完之后才提醒超支，只会增加内耗；「值得么」反过来站在结账按钮之前：\n1. **真实工时换算**：输入想买的商品标价（例如 ¥1,299 的降噪耳机），1 秒折算成你的真实税后工作日与小时数（例如 = 2.4 个工作日 / 19.1 小时）；\n2. **24 小时冷静舱**：拿不准就一键放进 24 小时倒计时冷静舱，睡一觉再决定买不买；\n3. **克制战绩账本**：每一次忍住不买，小宠物会帮你把真实守住的钱一笔笔攒成可视化战绩。\n\n## 价格与直达链接\n\n- 基础工时换算与冷静舱完全免费；支持一次买断的终身版（无强制按月续费）。\n- 国区 App Store（v1.1.0 已上线）：https://apps.apple.com/app/apple-store/id6759552701?pt=128446670&ct=worthii_cn_ruanyf_w1&mt=8\n- 美区/海外版 Worthii：https://apps.apple.com/app/apple-store/id6758259130?pt=128446670&ct=worthii_cn_ruanyf_w1&mt=8\n\n（另附同源趣味解压小作品 **外卖呢 / Takeout Odyssey**，纯免费无内购，可以在真实 Apple 地图上 0 元点一单 ¥12,888 帝王蟹全宴看骑手送货：https://apps.apple.com/app/apple-store/id6801539545?pt=128446670&ct=worthii_cn_ruanyf_w1&mt=8 ）\n\n## 读者福利（1 个月 Pro 免费体验，到期不自动扣费）\n- 兑换码：`ZHIDEME2026`（有效期至 2027-02-25）\n- iPhone 一键兑换：https://apps.apple.com/redeem?ctx=offercodes&id=6759552701&code=ZHIDEME2026\n\n<img width=\"1242\" height=\"1656\" alt=\"slide-01-hook\" src=\"https://github.com/user-attachments/assets/5c6ecca3-721b-4045-925d-643733fbe732\" />\n<img width=\"1242\" height=\"1656\" alt=\"slide-02-cooling\" src=\"https://github.com/user-attachments/assets/7ff7683b-6aaa-4b37-ab2b-f5fce0d7101f\" />\n<img width=\"1242\" height=\"1656\" alt=\"slide-03-wins\" src=\"https://github.com/user-attachments/assets/e6ed4a83-38a7-4c8c-ad53-aca2a4e44dad\" />\n<img width=\"1242\" height=\"1656\" alt=\"slide-04-cta\" src=\"https://github.com/user-attachments/assets/d5964b81-196e-4cb5-a678-99747cc66837\" />\nhttps://github.com/user-attachments/assets/509f9b14-7d8a-4e0b-98ca-0745a81c1aff",
+    "created_at": "2026-11-26T06:05:21Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13807"
+  },
+  {
+    "id": 13806,
+    "title": "【开源自荐】Zelo：基于 NestJS 和 React、支持独立业务 Core 的多租户 SaaS 底座",
+    "content": "作者自荐。我在做一个开源 SaaS 底座 Zelo，希望给开发者一个可复用的公共后台和业务模块接入起点。\n\nZelo 使用 TypeScript、NestJS、React、Prisma 和 MySQL。公共底座提供身份、多租户、权限和后台能力，具体业务通过独立 Core 包接入，可以选择零 Core、单 Core 或多 Core 宿主。AI Native 和 MCP 是可选模块。\n\n仓库里有一个轻量工单示例，展示创建、分派、处理、关闭流程。开发者可以沿这个例子查看业务 API、权限、数据迁移和后台页面怎样接入公共底座。React 页面复用 `CorePage`、`useCoreForm`、`CoreList` 和 `useCoreRequest`，同时提供能力索引与标准 Core 包校验入口。\n\n项目目前持续开发，想邀请有 SaaS 后台或 TypeScript 开发需求的朋友试跑，尤其希望收到首次启动和 Core 接入体验的反馈。已整理入门公告，并开放两个文档类 `good first issue`，欢迎从小贡献开始。\n\n- [源码与中英文说明](https://github.com/JinPen-G/Zelo)\n- [工单 Core 示例](https://github.com/JinPen-G/Zelo/tree/main/packages/example-tickets-core)\n- [入门与反馈](https://github.com/JinPen-G/Zelo/discussions/4)\n- [首次贡献任务](https://github.com/JinPen-G/Zelo/issues?q=is%3Aissue%20is%3Aopen%20label%3A%22good%20first%20issue%22)\n\n感谢周刊提供项目分享入口。",
+    "created_at": "2026-11-26T05:55:40Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13806"
+  },
+  {
+    "id": 13805,
+    "title": "【开源自荐】pdf-cmap-fix：专治「PDF 阅读正常，但复制全是乱码 / Adobe Reader 粘贴变 □□□」的底层矢量修复工具",
+    "content": "阮老师好，自荐一个刚开源的 PDF 底层矢量 CMap 修复工具 —— **`pdf-cmap-fix`**。\n\n- **项目地址**：https://github.com/xyonium/pdf-cmap-fix\n- **开源协议**：MIT\n- **编程语言**：Python 3.10+（基于 PyMuPDF + OpenAI 兼容视觉模型）\n\n![pdf-cmap-fix 架构与流水线](https://raw.githubusercontent.com/xyonium/pdf-cmap-fix/main/docs/architecture.svg)\n\n## 解决什么痛点？\n\n平时阅读电子杂志、老论文或做 RAG 知识库解析时，经常遇到一种很抓狂的 PDF：**屏幕上阅读是清晰锐利的矢量文字，但一复制粘贴（或用 `pymupdf` / `pypdf` 提取）全是一串乱码（`絁磜⡤♶〫…`），或者在 Chrome / Edge 里能正常复制，到了 Adobe Acrobat / Reader 里粘贴出来全是方块 `□□□`。**\n\n传统方案（如 OCRmyPDF、MinerU）是把整页栅格化成图片再做全页 OCR 叠一层隐藏文字，不仅慢、丢失原始矢量排版与字号层级，文件体积还会暴涨。\n\n拆解 PDF 底层后发现，这类 PDF 其实完整保留了内嵌的矢量字形（`/FontFile3` CFF / `/FontFile2` TTF），只是排版或 SVG 转 PDF 工具在做字体子集化时写丢或写坏了 `/ToUnicode` CMap 表。`pdf-cmap-fix` 直接从底层矢量字形重建并原位注入 `/ToUnicode` 流，100% 保留原始矢量排版。\n\n```text\n$ pdf-cmap-fix extract broken.pdf --compare fixed.pdf --pages 1 --max-lines 4\n=== Page 1 ===\n[BEFORE]  ❌ 丢失 /ToUnicode，复制/RAG 提取全是裸 CID 乱码\n  絁磜⡤♶〫僽腊ꆀ䊨⾊㸐⟌䕹姼尲鸑ծ⼸⡲ծⰟ欰Ⱏず絉ⴀ\n  ♧䓎餟瑬Ⰼ魧涸爢❜緸絞⛲⺠⹗ⴀ✫♧猫⟄腊ꆀ崨⸓⚹呍䗱涸䄻倝欰ㄐ錜կ\n[AFTER]   ✅ 原位注入严格合规 /ToUnicode CMap，100% 保留原始矢量字形与排版\n  线粒体不只是能量工厂，它们彼此沟通、协作、共生，共同织出\n  一张贯穿全身的社交网络，也勾勒出了一种以能量流动为核心的崭新生命观。\n```\n\n## 核心技术特点\n\n1. **同文档嵌入字体合成白底矢量重放（Synthetic Vector Replay）**\n   很多缺失 CMap 的 PDF 字体同时写着 `/FontBBox [0 0 0 0]`，从原页按坐标裁剪截图必现偏移、小字模糊与背景图干扰，遇到 90° 旋转文字更是无法识别。`pdf-cmap-fix` 直接在内存 O(1) 白底页上调用该 PDF 自身的 `font_xref`，以 `48pt / 144 DPI` 纯黑水平矢量重放（`[<9F71> -500 <3F77>] TJ`），彻底消除偏移、模糊与 90° 旋转盲区。\n2. **零 API / 零缓存 0.2 秒离线修复「浏览器能复制、Adobe Reader 粘贴变 `□□□`」**\n   严格遵循 ISO 32000-1 §9.10.3 与 Adobe Technical Note #5411，自动拆分跨 CID 高字节 256 边界（`0xXXFF -> 0x(XX+1)00`）与目标末字节 `0xFF` 溢出的非法 `bfrange`，并按 SHA-256 共享压缩流。实测修复 39 本 100 页杂志，Adobe Reader 零方块，总体积反而从 **1.60 GB 缩减至 1.32 GB（省出 280 MB）**。\n3. **10×10 保留基线网格重渲染 + 双模型盲测核验（`cache verify`）**\n   将缓存中的字形按真实基线高度重渲染为 `10×10` 编号网格，由主模型盲读 + 第二裁判模型对分歧项做 `5×5` 放大复核，不到 9 万 Token 即可核验锁定 8,300+ 字库（仓库已内置核验后的思源黑体/宋体参考预设，并提供面向 RAG 流水线预检的 Python SDK）。\n\n如果周刊觉得合适，欢迎收录；也欢迎有 PDF 乱码或 RAG 文档清洗需求的朋友试用反馈！\n",
+    "created_at": "2026-11-26T05:46:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13805"
+  },
+  {
+    "id": 13804,
+    "title": "【开源自荐】一点守护：OpenWrt 路由器上的孩子上网时间管理插件",
+    "content": "我家两个孩子，手机、电脑、路由器上的家长控制都用过，始终没找到合心意的，就自己在 OpenWrt 上写了一个。\n\n它不按固定时段管，而是管「节奏」：孩子开始用才计时，用满一轮网速自动降下来，歇够了自动恢复，到点只限速不断网。每个孩子一个单独的 WiFi，几台设备合在一起算。家长用微信小程序管，孩子设备上什么都不用装。\n\n路由器端是纯 ucode 脚本，22.03 起的 OpenWrt 都能装，8MB 闪存的老机器也行。\n\n项目主页：https://doti.top/?hmsr=ruanyf\n\nGitHub：https://github.com/xautlx/doti-kids-router\n\n<img src=\"https://raw.githubusercontent.com/xautlx/doti-kids-router/main/screenshots/parent@2x.jpg\" >\n\n<img src=\"https://raw.githubusercontent.com/xautlx/doti-kids-router/main/screenshots/kid@2x.jpg\" >",
+    "created_at": "2026-11-26T05:05:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13804"
+  },
+  {
+    "id": 13803,
+    "title": "【开源自荐】faster-mac-use (fmu)：不抢鼠标焦点的 macOS 后台浏览器与原生应用 AI 操控引擎",
+    "content": "你好阮老师，自荐一个开源的 macOS 后台 AI Agent 操控工具 **[faster-mac-use (`fmu`)](https://github.com/lifan-builds/faster-mac-use)**（跑分与在线回放：[clifan.com/faster-mac-use](https://clifan.com/faster-mac-use/)），解决 Claude Code / Codex 操作电脑时频繁抢占物理鼠标焦点、以及 Playwright MCP 跑 10 步烧掉 23 万 token 的痛点。\n\n它通过单个 268-token 的 MCP/CLI 工具同时驱动 Chrome 后台 `\"🤖 Agent\"` 标签组（免 Chrome 144 远程调试弹窗）、Swift `AXObserver` 原生无障碍树增量 diff（`< 1 ms`）与 Apple Silicon 本地 OCR：实测 3 个子 Agent 后台并发操作时前台打字鼠标偏移 `0.0 px`，10 步网页任务仅消耗 `1,290–2,024 tokens`（省 114 倍）。\n\n![faster-mac-use](https://clifan.com/faster-mac-use/cover.jpg)\n\n一行命令即可体验（macOS 开源，已发布 PyPI）：\n```bash\nuvx --from faster-mac-use fmu mcp\n```",
+    "created_at": "2026-11-26T04:43:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13803"
+  },
+  {
+    "id": 13802,
+    "title": "【开源自荐】motion-skills：让 AI 编程助手学会做动效视频的技能包",
+    "content": "一组开源（MIT）的 Agent Skills，让 Claude Code、Codex 等 AI 编程助手学会做动效视频：动态文字（kinetic typography）、讲解视频、数据图表动画、透明底的字幕条（lower thirds）、网页动效、Manim 数学动画等。共 19 个技能包，按需安装，例如 `npx skills add iart-ai/data-animation-skills`。\n\n每个技能都带\"渲染一帧 → 截图 → 自查\"的流程，让 agent 检查自己的输出，而不是一次写完就交。\n\nhttps://github.com/iart-ai/motion-skills\n\n披露：我是 iart.ai 团队成员，这些技能由我们维护。\n",
+    "created_at": "2026-11-26T04:15:11Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13802"
+  },
+  {
+    "id": 13801,
+    "title": "【工具自荐】从一句话到一个可编辑的 Minecraft 建筑，我做了 IntoBlocks",
+    "content": "在 Minecraft 里盖一张地图，最耗时间的部分通常是房子、城堡、村庄，以及一整片能连起来的场景。\n\n我最近在做 **IntoBlocks**。它可以把文字说明、参考图和平面图变成 Minecraft 建筑，最后导出成可编辑的 `.schem` 文件。生成出来的内容可以继续拿回 WorldEdit、Litematica、Axiom，或者直接在 Minecraft 里修改。\n\n![Canal Trading Quarter](https://intoblocks.app/images/schematic-library/canal-trading-quarter/02-southwest.webp?dpl=dpl_9Mt84o1f2FxJcCwtLDiuCWW4tPrF)\n\n上面这个 Canal Trading Quarter，就是在 112 × 52 × 112 的范围内，用多条河道、七栋不同高度的店铺、三种桥和带内部功能的建筑组合出来的。生成后可以继续改房间、材质、路径和地形连接。\n\n这个项目主要做了两种生成方式：\n\n## Build Mode / Agent Mode\n\n适合房子、庭院、城堡、村庄、服务器出生点这类有明确结构的建筑。\n\n- 输入建筑用途、尺寸、房间、入口、材质和需要避开的方块\n- 最多上传 6 张参考图，也可以用平面图约束房间和动线\n- 生成后可以在浏览器里旋转查看\n- 不满意可以直接追问修改，例如“入口再宽一点”“保留现有轮廓，把屋顶换成深色木”\n- 每次修改会保留版本，方便前后对比\n- 输出 Sponge `.schem`，兼容的结果可以在浏览器里转成 `.litematic`\n\n它更像一个可以反复沟通的建筑助手：先生成基础结构，再由作者补细节、调整材质和检查导入效果。\n\n## Shape Mode\n\n适合船、雕像、车辆、生物、地标这类更依赖外形的东西。\n\n可以给一句描述，也可以上传一张轮廓清楚的参考图。生成时能控制尺寸和材质策略，结果同样是可编辑的方块建筑和 schematic 文件。\n\n![海盗船](https://static.intoblocks.app/images/showcase/20-pirate-ship/02-southwest.webp)\n\n## 适合谁\n\n- Minecraft YouTuber 和视频制作团队\n- 接建筑委托的 Build Team\n- Java 服务器和地图团队\n- 卖 schematic、做会员内容的创作者\n- 想更快开始一个建筑的普通玩家\n\n网站里已经放了 30 个示例建筑和造型，可以先看结果、查看对应的 prompt，也可以直接下载示例文件：\n\nhttps://intoblocks.app/schematic-gallery\n\n## 试试看\n\n网站：\n\nhttps://intoblocks.app/\n\n免费示例库：\n\nhttps://intoblocks.app/schematic-gallery\n\nDiscord：\n\nhttps://discord.gg/tMeN3SDq9j\n\n目前产品还在早期阶段，很希望能听到大家关于生成质量、可编辑性和 Minecraft 工作流的意见。\n",
+    "created_at": "2026-11-26T03:22:04Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13801"
+  },
+  {
+    "id": 13800,
+    "title": "2026 最新 Gemini 4 Neon + Antigravity 登录失败与防封号终极指南：解决地区不支持、模型全灰与扫码卡死",
+    "content": "最近，Google 全新推出的 Gemini 4 Neon 和 Antigravity（反重力）开发环境在圈内爆火。但很多国内用户在从 Claude 或 Codex 迁移时，频繁遇到**模型全灰 (Unavailable)**、**地区不支持 (ineligible)**、**扫码卡死**等问题。\n\n本篇指南专为解决这些痛点而写，结合 2026 年最新官方规则，带你半小时内跑通账号注册、网络环境配置（**这是成功率的核心**）以及客户端实战。\n\n> **🚀 快捷通道：30分钟极速上车准备**\n>\n> * **核心环境推荐**：高度纯净的美国/日本 IP 是过风控的关键。实测推荐：[👉 TAG 专线节点（完美解决地区限制）](https://570836.l49.net/#/auth/d2RtVGgb)\n>\n> * **验证码接码**：[👉 狗狗接码（收不到不扣费）](https://www.dogesms.com/r/2n89hB)\n\n## 一、Gemini 4 模型矩阵：Neon 才是当前主力\n\nGoogle Gemini 4 并非单一模型，搞清楚它们的功能定位，能帮你省下大量额度和时间。\n\n### 1. Gemini 4 Neon（强烈推荐主力）\n\n* **定位**：代码编写、知识处理与多步骤复杂任务的最佳平衡点。\n\n* **特点**：中文逻辑极其自然，代码审美好，执行力强。\n\n* **思考档位**：日常建议开 Medium 或 High，极度复杂任务开 Extra。\n\n* **门槛**：需正规付费 Google AI Pro 或 Ultra 订阅。\n\n### 2. 其他模型避坑\n\n* **Carbon**：最强推理，但极耗额度（Neon的3倍），仅 Ultra 可用，日常非必要不用。\n\n* **Hydrogen**：最快速度，适合 Agent 自动化执行。如果开 Low 档会明显“掉智”。\n\n* **Argon**：已被淘汰，新手直接忽略。\n\n## 二、Google Antigravity 是什么？如何选择工具\n\n想发挥 Gemini 4 的全部实力，网页版是不够的，**Antigravity 才是真正的生产力工具**。\n\n| 工具版本 | 适用核心场景 | 额度消耗规则 | \n| ----- | ----- | ----- | \n| Gemini 网页版 / App | 日常聊天、查资料、生图 | 独立额度池 | \n| **Antigravity App** | **本地改代码、跑脚本、多 Agent** | **主力额度池（强烈推荐）** | \n| Antigravity IDE / CLI | 深度开发集成 | 与 App 共用 | \n| AI Studio | 测模型、申请 API Key | 独立消耗，不可给 Antigravity 续命 | \n\n> **💡 新手提示**：直接前往官网 (`antigravity.google/download`) 下载 Antigravity App。注意：旧版的 `@google/gemini-cli` 已停服，请勿再安装。\n\n## 三、Gemini 会员怎么买？揭秘付钱后“模型全灰”的真相\n\n### 推荐订阅方案\n\n* **Google AI Pro（约 \\$19.99/月）**：新手首选，解锁 Neon + Hydrogen。\n\n* **Google AI Ultra 5x（约 \\$99.99/月）**：重度开发者首选，全模型可用。\n\n### ⚠️ 避坑：为什么付款了，Antigravity 模型还是全灰？\n\n很多用户在网页端能用，一进客户端模型就变灰。这是因为 Antigravity 对**非正价 SKU** 风控极严！以下情况都会导致全灰：\n\n1. 0元试用期的 Pro 账号。\n\n2. Jio 等第三方赠送套餐或隐藏优惠。\n\n3. 已经被污染的低价拼车号（家庭组连坐风险极高）。\n\n**解法**：转正规付费，然后在客户端 Settings 中刷新额度。强烈建议主力账号自己走官方渠道充值。\n\n## 四、核心难点攻克：三层国家对齐与纯净节点配置（重中之重）\n\n90%的“地区不支持”、“账号 ineligible”都折在这个环节。Google 风控会同时验证你的三个信息：**网络出口IP**、**账号所属国家**、**付款资料国家**。\n\n### 1. 搞定网络出口 IP（第一层，最容易挂的地方）\n\nAntigravity 客户端对 IP 纯净度极其敏感。数据中心 IP、万人骑的廉价梯子大概率被秒封或无限弹验证。\n\n* ❌ **绝对避开**：香港、台湾节点（Google 重点封锁区域）。\n\n* ✅ **正确做法**：使用**纯净的美国或日本原生/住宅 IP**，且必须开启客户端路由的 **TUN 模式 / 全局代理**。\n\n> **🔥 提高成功率的实测推荐：[TAG 机场专线](https://570836.l49.net/#/auth/d2RtVGgb)**\n>\n> 很多失败的用户换了 TAG 之后直接一次性点亮。作为老牌 IEPL 专线，TAG 提供极高纯净度的美国/日本原生及住宅 IP，完美支持 TUN 模式，能最大限度绕过 Google 的 IP 黑名单风控。\n>\n> * **操作建议**：购买入门 Silver 档即可，连接后选【美国-住宅】或【日本-原生】，开启全局代理再登录。\n>\n> * [👉 点击此处获取 TAG 干净节点，安全登录 Antigravity](https://570836.l49.net/#/auth/d2RtVGgb)\n\n### 2. 账号与国家关联（第二层）\n\n在挂好上述提到的美/日节点后，访问 Google 账号设置，将“国家/地区”改为当前节点国家（原因选 Travel）。\n\n### 3. 清理付款资料（第三层）\n\n必须清除中国区付款信息，新建美国付款资料，地址请填写免税州（如 Delaware, Oregon），否则会有额外税费。\n\n## 五、安装与登录 Antigravity：高频错误终极排查\n\n去官网下载 Antigravity (当前版本推荐 v2.34.0 以上)。登录时请对照以下疑难杂症：\n\n### 1. 网页能用，客户端提示“地区不支持”\n\n* 你是不是没开 TUN 模式？（**必须开！**）\n\n* 你的 IP 质量不行（建议换 [TAG 专线](https://570836.l49.net/#/auth/d2RtVGgb)）。\n\n* 账号的三个国家层级没对齐。\n\n### 2. 强制扫码验证，但死循环 / 短信发不出\n\n* **iPhone 技巧**：手机连同一个国家的节点，用苹果自带相机扫码。\n\n* **死循环解法**：通过浏览器插件将验证方式降级为“6位短信验证码”。\n\n* **无海外手机号**：使用 [👉 狗狗接码平台 (DogeSMS)](https://www.dogesms.com/r/2n89hB) 接收一次性验证码，支持 Google 服务，成功才扣费。\n\n### 3. 第一次成功登入后的建议\n\n绑定一个本地空文件夹，选 Neon 模型，让它生成一个 `index.html`。只要文件能正常生成，说明你的环境彻底通了！\n\n## 六、防封号保命红线与风控机制深度解析（进阶必看）\n\nGoogle 对 Gemini 4 和 Antigravity 的风控策略是动态升级的。近期大量无辜账号被波及，本质上是触碰了以下这几条“隐形高压线”。为了保护你珍贵的主力号，请务必熟记：\n\n### 1. 绝对严禁反向代理 (Reverse Proxy) 与凭证提取\n很多习惯了低价 API 的开发者，会试图把 Antigravity 的内部 Token 提取出来，塞进第三方 UI 或进行 API 转发。\n* **风险点**：Google 引入了严格的客户端指纹 (Client Fingerprinting) 验证机制。非官方客户端的请求包一旦被识别，会瞬间触发 `TOS_VIOLATION`（服务条款违规）。\n* **后果**：直接导致整个 Google 账号（包括 Gmail、Drive）被连坐封禁，申诉极难恢复。\n\n### 2. 规避“时空穿梭”式的多设备异地登录\n这是由于机场节点乱飞导致的常见误封原因。\n* **风险点**：你的电脑挂着美国节点在使用 Antigravity，而手机端 Gemini App 突然连上了日本节点，或者你刚用完美国节点，5分钟后又切到了英国节点。\n* **解法**：**固定你的常用节点！** 如果使用 [TAG 专线](https://570836.l49.net/#/auth/d2RtVGgb)，建议在 PC 和手机端都收藏同一个高可用节点（比如固定的 US-LosAngeles），避免给 Google 造成账号被盗或异常共享的错觉。\n\n### 3. 警惕高频自动化与非人类行为\n虽然 Antigravity 鼓励 Agent 自动化执行，但如果你的脚本陷入死循环，或者在一分钟内发起几百次高并发的底层模型请求（尤其是频繁调用 Hydrogen 模型测试时）。\n* **风险点**：会被 Google 的防滥用系统拦截，轻则强制要求重新扫码验证人机身份，重则暂停账号服务 24 小时。\n\n### 4. 远离黑灰产与“污染车”\n所谓的“教育邮箱代刷”、“印度区/尼日利亚区低价上车”以及在不可靠平台购买的共享家庭组，目前正处于 Google 集中清退的高危期。主力开发号务必自己按正价订阅。\n\n### 💡 附：被误封的紧急申诉策略\n万一真遇到误封（提示 Access Suspended），不要慌，按照以下步骤操作：\n1. **冷静期**：停止尝试登录，等待 24 小时后再提交表单。\n2. **纯净环境**：切换到 [TAG 的静态原生节点](https://570836.l49.net/#/auth/d2RtVGgb) 提交申诉。\n3. **话术要点**：使用全英文，强调自己是“Individual Developer（独立开发者）”，说明可能是 VPN 导致了 IP 变动，并主动附上你的 Google Play/Pay 扣款收据截图。通常 1-3 个工作日可解封。\n\n## 结语：半小时跑通复盘\n\n1. 准备老个人 Gmail，清除国内付款资料。\n\n2. 配置 [**TAG 美国/日本纯净节点**](https://570836.l49.net/#/auth/d2RtVGgb)，全程开启 TUN 全局模式。\n\n3. 走 Google Play 或网页端购买正规 Pro / Ultra 订阅。\n\n4. 遇到验证用 [狗狗接码](https://www.dogesms.com/r/2n89hB)。\n\n5. 顺利用上 Gemini 4 Neon。\n\n搞定环境比什么都重要。希望这篇指南能帮你跨过门槛，体验当前最强 AI 工作流带来的震撼！\n\n## 常见问题 FAQ (Google 搜索词霸屏)\n\n**Q：Gemini 4 Neon 怎么免费使用？**\n\nA：在 Antigravity 环境下，Neon 必须依靠正价付费的 Pro 及其以上订阅。免费版只能调用已被降级的旧版模型。\n\n**Q：为什么我用了梯子还是提示 Gemini 地区不支持？**\n\nA：因为 Antigravity 客户端会绕过普通系统代理。你必须在代理工具中开启 TUN 模式。另外，免费梯子的 IP 大概率已被 Google 拉黑，推荐使用 [TAG 机场](https://570836.l49.net/#/auth/d2RtVGgb) 的原生节点。\n\n**Q：Antigravity 登录扫码卡死怎么办？**\n\nA：这是近期高频 Bug。尝试用手机自带相机扫码，或者降级为短信验证，使用狗狗接码辅助过风控。",
+    "created_at": "2026-11-26T03:17:52Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13800"
+  },
+  {
+    "id": 13799,
+    "title": "〖开源自荐〗我让 Claude Code 用 Windows 画图画了一张土星旅行海报",
+    "content": "我给 Claude Code 出了一道题：在 Windows 自带的「画图」里画一张邀请人们去土星度假的复古海报。土星环要醒目，交通工具和目的地都可以自己编。\n\n它画了一艘「环帆号」，招呼旅客穿过土星环，去「环港」度假。\n\n![Claude Code 用 Windows 画图绘制的土星旅行海报](https://raw.githubusercontent.com/Sanjeever/computer-mcp/main/docs/images/saturn-ringhaven-poster.png)\n\n为了让 AI 能操作桌面软件，我做了一个开源工具 Computer MCP。AI 可以通过截图看画布，通过无障碍接口读取应用提供的按钮和菜单，再用鼠标和键盘操作。海报就是 Claude Code 在画图里选工具、拖动鼠标画出来的。我还用同一个工具让 Codex 在 macOS「无边记」里画了一张灯塔明信片。\n\n项目采用 MIT 协议，支持 Windows 10/11（x64）和 macOS 14+（Apple 芯片）。可通过 npm 接入 MCP 客户端，需要 Node.js 22+。\n\n[GitHub 仓库](https://github.com/Sanjeever/computer-mcp) · [两个绘图示例和原始提示词](https://github.com/Sanjeever/computer-mcp/blob/main/docs/usage.zh-CN.md#用无边记画一张明信片)",
+    "created_at": "2026-11-26T02:56:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13799"
+  },
+  {
+    "id": 13798,
+    "title": "【自荐】LinkAGI API Starter：客户端配置、费用估算和 API 排错工具",
+    "content": "我在运营 LinkAGI，这是我们公开维护的 API 接入资料和小工具，想推荐给需要给客户端接模型、或者自己写脚本调 API 的朋友。\n\n仓库：https://github.com/16871233/linkagi-api-starter\n在线版：https://16871233.github.io/linkagi-api-starter/\n\n里面有 Codex 的配置文件、可导入的 Postman 请求，以及 401、403、404、429 的排查说明。还有一个不带 Key 的路由检查脚本，检查请求有没有到鉴权层；它不调用模型，也不能据此判断模型质量。网页上可以填输入、输出 Token 和单价，估算普通文本请求的费用。\n\n最近补了两个可以下载的例子：从会议笔记里提取待办，并保留对应原话的 n8n 工作流；给 CSV 商品表添加英文标题的 Python 脚本，保留 SKU 和原始标题。示例默认使用 LinkAGI，调用 API 会产生费用，配置和说明都在仓库里。\n\n我是 LinkAGI 的运营方。中转服务按量收费，模型与分组价格在 https://api.linktoagi.com/pricing 可以直接查看。\n",
+    "created_at": "2026-11-26T02:41:07Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13798"
+  },
+  {
+    "id": 13797,
+    "title": "【开源自荐】CutWord（剪字）：仅 2.2 MB 的 macOS 原生离线口播文字剪辑工具，像删 Word 一样剪视频",
+    "content": "## 项目地址\n\n- GitHub（MIT 开源）：https://github.com/wang-builds/cutword\n- 最新版安装包（2.3 MB，支持 macOS 14+ Apple Silicon）：https://github.com/wang-builds/cutword/releases/latest\n\n## 为什么做这个\n\n平时录口播演示视频，最耗时的不是调色，而是反复放大时间轴剪掉换气停顿、口癖（嗯/啊/那个/就是说）以及说错重录的 NG 废句。目前主流商业剪辑软件已把识别字幕、智能切气口、去水词锁进付费会员（且草稿文件已加密）；而 GitHub 上的 Whisper 类脚本通常需要配置 Conda / PyTorch 环境并下载 2GB 模型权重。\n\n所以我用纯原生 Swift 6 调用 macOS 自带的本地离线语音引擎（`SpeechAnalyzer` / `SFSpeechRecognizer`）+ `AVFoundation` + `CoreImage` 做了 **CutWord（剪字）**，整个桌面工作台 + CLI 打包完只有 **2.3 MB**，双击即用、全程断网运行。\n\n## 核心特点\n\n- **声学 + 语义双层自动精剪**：`16kHz PCM` 能量包络扫描自动切除 `≥ 0.45s` 冷场气口（保留 `120ms` 自然呼吸留白，切点自动加 `8ms` 音频交叉淡入淡出防爆音）；自动标橙剔除中英口癖，并通过同音字归一自动标红划掉「说错半句……不对重来……」前一遍 NG 废稿。\n- **删字即剪片 + 零渲染实时预览**：左键点任意字词即可切换「划除 / 保留」对应视频片段，左侧播放器通过 `AVMutableComposition` 零等待实时预览跳接效果；右键可直接修改同音错别字。\n- **三路零门槛导出**：\n  1. `VideoToolbox` 硬件加速直出「逐字金色高亮胶囊字幕」MP4；\n  2. 纯净剪后 MP4 + 重新校准时间轴的 `.srt`（直接拖进免费版剪映 / PR 即可 0 成本套花字）；\n  3. 达芬奇 / Final Cut Pro 原生无损 `FCPXML v1.10`。\n- **5 秒开箱实测 + CLI & Agent Skill**：右上角内置「一键载入实测废片」按钮，无需自备素材即可生成含停顿与口误的测试视频验证效果；自带 `cutword` 命令行与 Claude Code / Cursor `SKILL.md`。\n\n```bash\nbrew install --cask --no-quarantine wang-builds/tap/cutword\n```\n\n## 实机演示与界面截图\n\n![CutWord Demo](https://raw.githubusercontent.com/wang-builds/cutword/main/docs/media/demo.gif)\n\n![CutWord Studio](https://raw.githubusercontent.com/wang-builds/cutword/main/docs/media/app-studio.png)",
+    "created_at": "2026-11-26T02:40:31Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13797"
+  },
+  {
+    "id": 13796,
+    "title": "【工具自荐】今日世界（world.acity.me）：把全球要闻、3D 地球和金融市场拼在一页里的免费看板",
+    "content": "自荐我做的一个免费网页工具「今日世界」：https://world.acity.me/ （免登录打开就能看）。\n\n做它的初衷很单纯：现在的新闻和行情太碎片化了，每天刷完一堆推送，反而对「今天世界上到底发生了什么、跟市场有什么关系」没什么整体概念。原本是写给自己和家人每天花一两分钟快速过一遍世界动态用的，慢慢把几个常用数据都接进来了，整理好分享出来。\n\n打开首屏是一颗 Canvas 2D 手写的交互式 3D 地球（可以切平面图，深色模式下有真实晨昏线），把当天的全球要闻、航运咽喉和各国股市按地理分布标出来。右侧会归并去重多源报道，点开单条事件可以看背景、市场反应和后续主线，不再只是零散标题。\n\n下面接了我日常看市场需要的数据：A 股和美股分时走势、全部转成北京时间的宏观与财报日程、Polymarket/Kalshi 的美联储利率预期和官方点阵图，以及中/美/日/德十年期国债收益率、汇率、商品和地震灾害。前端没用构建工具，纯原生 ES Modules 静态部署；所有涨跌、利差和时段口径都在后端确定性计算，避免模型编造数字。\n\n![首页 3D 地球看板](https://i.imgur.com/lN0tF5C.png)\n\n![美联储利率预期与官方点阵图](https://i.imgur.com/yHYRWai.png)",
+    "created_at": "2026-11-26T02:30:42Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13796"
+  },
+  {
+    "id": 13795,
+    "title": "【开源自荐】Sotto：轻量划词、截图翻译工具（Windows / macOS）",
+    "content": "阮老师好，自荐一个我做的开源桌面翻译工具 Sotto。\n\n平时看文档碰到没看懂的英文，每次切出去查很打断思路，Sotto 的做法是选中文字按一下快捷键，译文直接浮在原窗口旁边，不抢当前应用的焦点；图片或软件界面里选不中的字，也可以框选截图，本地 OCR 识别后再翻。\n\n它支持同时请求多个翻译引擎，结果会陆续返回到同一个气泡里对比着看。只想快速顺一下意思的话，可以切到只显示译文的简约模式；写代码起变量名时，英文结果还能直接复制成 `camelCase`、`snake_case` 等格式。\n\n项目采用 GPL-3.0-only 许可证，支持 Windows 10/11（x64、ARM64）和 macOS 14 及以上（Apple 芯片）。\n\n[GitHub 源码](https://github.com/doyuli/sotto) · [下载安装](https://github.com/doyuli/sotto/releases/latest) · [界面截图](https://raw.githubusercontent.com/doyuli/sotto/v0.3.2/docs/modes-preview.png)\n\n看下是否适合周刊，也欢迎试用后提 issue 交流。",
+    "created_at": "2026-11-26T02:12:20Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13795"
+  },
+  {
+    "id": 13794,
+    "title": "【工具自荐】DeeDee Pulse：AI API 中转站的可用率、倍率对比与实测记录",
+    "content": "### 项目\n\n[DeeDee Pulse · AI 中转站实测榜](https://pulse.deedee.tech/)\n\n给需要使用第三方 AI API 的开发者提供一个选站参考：把分散在各个中转站的分组倍率、可用率和实测结果放在一起查看，方便按 Claude、GPT、Gemini、Grok 等模型比较。\n\n### 可以做什么\n\n- 查看中转站及分组的价格倍率、7 天 / 30 天可用率和实测记录。\n- 查看身份、质量、完整、计费、速度、可靠性等检测维度，以及尚未检测或需要复核的标记。\n- 使用[帮我选站](https://pulse.deedee.tech/pick)和[模型比价](https://pulse.deedee.tech/compare)页面辅助选择。\n- 使用[在线检测](https://pulse.deedee.tech/probe)检查自己的中转接口；检测会调用用户填写的 API Key，调用费用由该 Key 承担。\n\n### 使用边界与关联披露\n\n我是项目运营方，本帖为自荐。DeeDee Pulse 与 DeeDeeAI（deedee.tech）由同一运营方维护；自营站单独标注，不参与排名。\n\n可用率和实测结果只反映对应采样窗口，不能保证第三方服务未来的稳定性或资金安全。采集数据、站方监控与实测结果的口径见[说明](https://pulse.deedee.tech/method)，检测维度见[检测方法](https://pulse.deedee.tech/methodology)。\n\n网站：https://pulse.deedee.tech/\n关于运营方：https://pulse.deedee.tech/about\n",
+    "created_at": "2026-11-26T01:34:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13794"
+  },
+  {
     "id": 13793,
     "title": "【自荐】GTA 6 的 GitHub 移植进展：10 个项目跑到了哪一步？",
     "content": "自荐一篇 HotRepo 的技术观察。文章把 10 个 GTA 6 非官方移植项目按「进入任务、进入世界、只到菜单或过场」分组，保留测试硬件和对应的 README 版本，方便读者判断每个项目实际展示了什么。\n\n有个比较有意思的发现：两天内至少五个仓库沿用了 VIctory 的提交历史。只看热榜会以为有许多独立项目同时突破，沿提交历史往回看，才能看出哪些进度来自同一套代码。文章也对照了 Leonida 的星数快照和 GitHub 公开的下架通知时间。 [中文原文与对比表](https://hotrepo.ai/zh/stories/gta-6-github?utm_source=ruanyf_weekly&utm_medium=editorial&utm_campaign=gta_6_github&utm_content=github_issue)",
@@ -201,8 +617,8 @@
   },
   {
     "id": 13768,
-    "title": "分享一个 DeepSeek Harness 的 GTA VI 主题插件",
-    "content": "项目：dsh-gta6\n仓库：https://github.com/manyuemeiquqi/dsh-gta6\n安装：`npm i dsh-gta6`\n\nDeepSeek Harness 是一个开源的 AI Agent 客户端，支持用插件改界面。这个项目给它做了一套 GTA VI 主题。\n\n比较有意思的是通缉星级。GTA 里六颗星代表警察在追你，这里接到了 agent 的真实运行状态：它一开始生成就亮到六星，跑完瞬间归零。判断依据是宿主 sessions 服务里每个会话自带的 `running` 字段，没有去扫页面文字猜。\n\n其他几处：\n\n- 右侧面板显示当前会话的标题、累计 token、模型和推理档位，切换会话跟着变\n- 工具调用行按动作分色（思考、读取、搜索、编辑、命令、规划），挂的是宿主的 `data-*` 语义标记而不是哈希类名，宿主发版不容易坏\n- 桌面宠物是从官方宣传图里用 macOS Vision 的前景分割抠出来的，会跟着任务变累，夜里会犯困\n\n截图在仓库 README 里。\n\n一点说明：界面美术用的是 Rockstar 官方 GTA VI 宣传物料，著作权归 Rockstar 和 Take-Two，不在项目 MIT 许可范围内，仓库里单独写了 NOTICE。项目与 Rockstar、DeepSeek 均无隶属关系。\n\n宿主还在预览阶段，插件 API 可能继续变化。\n",
+    "title": "【开源自荐】dsh-gta6：给 DeepSeek Harness 做的 GTA VI 主题插件，通缉星级随 Agent 状态亮起",
+    "content": "你好阮老师，自荐一个给 DeepSeek Harness 做的 GTA VI 主题插件。\n\n- **项目地址**：https://github.com/manyuemeiquqi/dsh-gta6\n- **开源协议**：MIT\n- **安装**：`npm i dsh-gta6`\n\n![dsh-gta6 深色界面](https://raw.githubusercontent.com/manyuemeiquqi/dsh-gta6/master/docs/shots/overview-dark.jpg)\n\n![dsh-gta6 浅色界面](https://raw.githubusercontent.com/manyuemeiquqi/dsh-gta6/master/docs/shots/overview-light.jpg)\n\n**把 DeepSeek Harness 换到雷奥奈达的海岸线上。**\n\nDeepSeek Harness 是个开源的 AI Agent 客户端，界面可以用插件整个换掉。这套 GTA VI 主题换的不只是配色：会话顶部是官方主视觉横幅，全局取自 Vice City 的霓虹，明暗两套各自完整；工具调用行按动作分色，思考、读文件、搜索、改代码、执行命令、出方案各是一色，长任务滚动下来，整屏的颜色节奏就是它这一路的轨迹。\n\n通缉星级是整套主题的核心。GTA 里六颗星代表警察在追你，这里它接的是 Agent 的运行状态——任务开始，右下角六颗星依次点亮；任务结束，瞬间归零。不挂进度条也看得出它在不在干活。\n\n右栏是一块真仪表盘：当前会话的标题、累计消耗的 token、调用的模型、推理档位，切会话即刻同步。\n\n角落里还住着 Jason 和 Lucia。它们跟着任务一起变累——跑得越久越没精神，夜里会犯困，点一下说一句。位置随便拖，也能在设置里关掉。\n\n适配 DSH 0.2.x。接口仍在演进，宿主发版后可能需要跟进。\n\n素材取自 Rockstar 官方公布的 GTA VI 宣传物料，著作权归 Rockstar 与 Take-Two，不在项目 MIT 许可范围内，仓库另附来源说明。项目与 Rockstar、DeepSeek 均无隶属关系。\n\n如果周刊觉得有意思，欢迎收录。\n",
     "created_at": "2026-11-25T09:47:18Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13768"
@@ -386,423 +802,5 @@
     "created_at": "2026-11-25T00:04:15Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13746"
-  },
-  {
-    "id": 13745,
-    "title": "【开源自荐】AudioGhost：用文字描述，把任何声音从音频和视频里分离或删掉",
-    "content": "基于 Meta 的 SAM-Audio 模型做的桌面应用（MIT 开源）。输入“背景音乐”“狗叫”“人声”，就能把这个声音分成独立音轨，单独播放、删掉，再导出音频或换好音轨的视频。模型从 14.9 GB 瘦身到 6.3 GB（与官方权重逐位相同），6 GB 显存的显卡就能跑，Windows 有一键安装包。\n\nhttps://github.com/0x0funky/audioghost-ai\n\n在线试听（处理前后对比）：https://audioghost.suixu.ai/?ref=ruanyf\n\n![AudioGhost 演示](https://raw.githubusercontent.com/0x0funky/audioghost-ai/main/docs/images/demo.gif)\n",
-    "created_at": "2026-11-24T20:11:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13745"
-  },
-  {
-    "id": 13744,
-    "title": "【工具自荐】Kite：人和 AI 智能体编辑同一个 HTML/CSS 文件的设计工具，自带 MCP 服务器",
-    "content": "- 网址：https://kite.new\n- 平台：Web（浏览器），有免费版；闭源（我是开发者 Loukman Nacik，泰国）\n\n**解决什么问题**：用 Claude、Cursor 等 AI 智能体做界面设计时，通常只能来回传截图或让它直接写代码，设计稿和代码是两套东西。Kite 是一个\"智能体优先\"的设计工具：人和 AI 编辑的是同一个 HTML/CSS 文件。\n\n**怎么用**：Kite 提供托管的 MCP 服务器（https://kite.new/api/mcp），在 Claude、Cursor 或其他支持 MCP 的客户端里接上后，智能体就能直接在画布上设计页面；人可以随时在同一画布上手动调整。支持组件和变体（variants）、变量模式（如明暗主题），以及和 Figma 之间双向复制粘贴。\n\n**费用**：免费版可用；Pro 每位编辑者 $16/月（按年付）或 $20/月（按月付），不卖 AI 额度，用你自己的智能体。\n",
-    "created_at": "2026-11-24T19:43:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13744"
-  },
-  {
-    "id": 13743,
-    "title": "【开源自荐】ast-bro v4.7.0 搜索快 3 倍",
-    "content": "我做了 ast-bro，一个给 AI 编码 agent 用的代码导航工具，能给出代码的大纲，调用关系，依赖和语义搜索，不用把整个文件读进来，这次发布了 v4.7.0\n\n以前每次 search 开头都要把 64 mb 的模型重新哈希一遍，现在只验证一次\n\n热启动的 cli 搜索，在 pgjdbc 上从 151 毫秒降到 33 毫秒，在 ilspy 上从 175 毫秒降到 50 毫秒，模型固定在上游的一个 commit 上，每个文件都有 sha-256，下载时校验，之后记住结果，所以中间的代理也换不掉它，排序结果不变，在五个评测语料上，向量和 chunk 跟 4.6.0 逐字节一致，分词器也换成了原生实现，发布的二进制从 53.0 mb 缩到 50.8 mb\n\n这次 elixir 的搜索也更好了，以前一个模块只算一个 chunk，现在每个定义单独一个，plug 的 lib 目录从 47 个 chunk 变成 275 个，搜 delete a response cookie 现在能找到 conn.ex，这部分是 danielluning 写的\n\n升级也不会再留下旧答案了，调用图缓存和搜索索引会记住是哪个版本写的，没改过的文件不会再沿用上个版本提取的结果，感谢 vlsi 报告，danielluning 修复，所以升级后第一次运行会把这两个缓存各重建一次，不用做任何事\n\n兼容 rust python typescript go java elixir 等语言，可以当 cli 用，也能当 mcp server，或者编码 agent 的工具\n\nhttps://github.com/aeroxy/ast-bro\n",
-    "created_at": "2026-11-24T18:31:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13743"
-  },
-  {
-    "id": 13742,
-    "title": "【工具自荐】Tesseract：免费的智能体 IDE，一个桌面应用里运行 Claude Code、Codex、Kimi Code 等 14 种编程智能体",
-    "content": "- 网址：https://tesseract.dev/zh-Hans/agentic-ide/\n- 平台：Mac / Windows / Linux，免费；闭源（我们是开发者 Eightcell Labs）\n\n**解决什么问题**：同时用多个编程智能体时，要开一堆终端来回切。Tesseract 让每个对话选一个智能体（支持 Claude Code、OpenAI Codex、OpenCode、Gemini CLI、Kimi Code、Qwen Code、MiniMax Code 等 14 种），多个对话同时运行，旁边是代码编辑器、终端、实时预览和 diff 审阅。\n\n**费用**：应用免费、无需订阅，使用你自己的 Claude/ChatGPT 订阅或 API Key；没有 AI 套餐的用户有带广告的免费额度，另有可选的按量充值。iPhone 上有配套 App，可远程查看和回复智能体会话。\n",
-    "created_at": "2026-11-24T18:11:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13742"
-  },
-  {
-    "id": 13741,
-    "title": "【工具自荐】Web2MD：一键把网页转成干净的 Markdown",
-    "content": "Web2MD（https://web2md.org）是 Chrome/Firefox 插件，把任意网页转成干净的 Markdown，先去掉广告、菜单和侧边栏，再发给 ChatGPT、Claude 或存进 Obsidian。对 Reddit、GitHub、arXiv、微信公众号文章等做了专门提取。转换引擎开源：https://github.com/io-oi-ai/web2md ，另有 CLI 和 MCP server。免费版每天 3 次。",
-    "created_at": "2026-11-24T17:41:11Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13741"
-  },
-  {
-    "id": 13740,
-    "title": "【开源自荐】Unrig：防止 Coding Agent 偷改测试与制造假绿灯的零依赖门禁工具",
-    "content": "- 仓库地址：https://github.com/Janson79jc/unrig\n- 开源协议：Apache-2.0\n- 安装体验：`uvx unrig replay` 或 `npx @janson79jc/unrig replay`（5 秒本地试跑 10 个防作弊场景）\n\n### 解决什么问题\n现在用 Claude Code、Codex CLI、Gemini CLI、Antigravity 做 Vibe Coding 时，经常遇到一个反直觉的问题：测试跑不过时，Agent 往往不是修 Bug，而是找捷径糊弄一个“假绿灯”——比如把断言改成 `assert True`、塞 `@ts-ignore`、加 `.only`、提交时传 `--no-verify`、改门禁配置，或者拿改代码之前的旧 `junit.xml` 报告交差。\n\n`unrig` 是一个纯 Python >=3.10 标准库实现的零三方依赖命令行工具（100% 离线、不调大模型、支持 Python / JS / TS / Vue / Java / Go）：\n1. **事前工具拦截（`unrig hook`）**：接入四大客户端生命周期 Hook，执行前拦断 `--no-verify` 与门禁配置修改。\n2. **存量库友好的增量裁判（`unrig verify`）**：只统计本次净新增的假断言、抑制注释、常量假返回、克隆测试以及过期 JUnit XML，不会因为老项目原有历史债务卡死整个仓库。\n\n演示动图：https://raw.githubusercontent.com/Janson79jc/unrig/main/docs/assets/demo.gif",
-    "created_at": "2026-11-24T17:06:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13740"
-  },
-  {
-    "id": 13739,
-    "title": "【工具自荐】砚台 Inkstone：把 Markdown 笔记里的问答、任务和日历连起来",
-    "content": "自荐开源项目 **砚台 Inkstone**，一个把文档问答、任务和日历放在一起的本地 Markdown 工作台。\n\n演示里的两场阅读活动分别来了 120 人和 80 人。问“哪场参与人数更多”，可以点开引用，对照笔记里的表格。问“哪场满意度更高”，笔记里没有调查结果。接下来就可以把“发放满意度问卷”存成笔记中的任务，排到日历上，以后从日历点回原文。\n\n网页演示使用虚构笔记和预设回答，打开浏览器就能体验。桌面版的编辑、图表和任务可以离线使用，实际问答可以接入自己的模型。[试用中文交互演示](https://raistlinsha-plus.github.io/inkstone/?lang=zh-CN)\n\n目前提供 Apple Silicon Mac（macOS 13+）的源码测试版，支持简体中文和英文，采用 Apache-2.0 许可证。[GitHub 仓库](https://github.com/raistlinsha-plus/inkstone) · [中文操作手册](https://github.com/raistlinsha-plus/inkstone/blob/main/docs/USER-MANUAL.zh-CN.md)\n\n![砚台桌面版在问答中展示引用，图中为虚构资料](https://raw.githubusercontent.com/raistlinsha-plus/inkstone/v1.2.0-beta.1/docs/assets/v1.2.0-beta.1/zh-CN/answers.png)\n",
-    "created_at": "2026-11-24T16:22:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13739"
-  },
-  {
-    "id": 13738,
-    "title": "【开源自荐】Tentacle：面向 Linux 的单进程自托管个人 AI Agent（无外置数据库 / 内嵌图谱记忆 / 每日会话交接）",
-    "content": "我是作者，自荐一个 MIT 协议的开源项目 **Tentacle**，一个面向 Linux / WSL 的轻量自托管个人 AI Agent。\n\n项目地址：https://github.com/shuunO-O/tentacle\n\n之前用过 Hermes Agent、OpenClaw 这类个人 Agent，功能很全，但对我自己的日常使用来说偏重了。原本想在 Hermes 上做减法改造，拆开看了一圈发现包袱太多，改起来不如按自己的想法从头写一套。\n\n迭代到现在（`v2.2.3`），主要围绕两个实际取舍展开：\n\n1. **单进程、无外置数据库**：早期也接过 Neo4j 做图谱记忆，几乎把 2G 内存吃光。后来收拢成单进程（Python + FastAPI）+ SQLite + 内嵌图谱库 LadybugDB，核心服务不依赖外部数据库或容器运行时（仅可选的可视化浏览器插件需要 Docker），日常常驻约 280–350 MiB，低配 Linux VPS 就能安稳跑着。\n2. **每日会话交接 + 子代理分流**：比起把单次对话持续堆到几百 K token 才做大压缩，Tentacle 选择在每天设定的时间窗口整理近况并开启新会话，配合内嵌图谱记忆与原文双路检索保持连续性，日常上下文占用和 token 开销小了很多；真正耗上下文的编程或重活则直接交给可选的 `@deepseek-ai/dsh` 子代理处理。\n\n其他已包含的特性：\n- 内置 React 19 WebUI，支持与 QQ 机器人、鸿蒙客户端、定时心跳共享同一进程与连续上下文；\n- 支持多供应商三层模型配置、MCP 服务与最小权限本地插件沙盒，随包内置 Docker Neko 可视化浏览器、QQ、鸿蒙与 Proton Mail 插件；\n- 面向公网自托管提供登录密码 + 主机带外设备鉴权（`tentacle device`），也支持搭配 Tailscale，以及基于 `systemd` 的可回退升级流程。\n\n界面预览：\n\n![对话工作台](https://raw.githubusercontent.com/shuunO-O/tentacle/main/docs/assets/chat.webp)\n![记忆图谱](https://raw.githubusercontent.com/shuunO-O/tentacle/main/docs/assets/memory-graph.webp)\n![可视化浏览器](https://raw.githubusercontent.com/shuunO-O/tentacle/main/docs/assets/browser-neko.webp)\n",
-    "created_at": "2026-11-24T15:18:25Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13738"
-  },
-  {
-    "id": 13737,
-    "title": "【网站自荐】Refto Explore：保留历史版本、附 DESIGN.md 的真实网站设计参考库",
-    "content": "网址：https://refto.one/explore\n\nRefto Explore 是一个免费的网站设计参考库，收录真实上线的网站，用整页截图展示。\n\n- **保留历史版本**：同一个网站改版前后的截图都在，可以对比一个首页是怎么一步步改出来的。\n- **按类别、风格、页面区块浏览**：比如只看各家的 Hero、定价区、页脚。\n- **DESIGN.md**：469 个网站附有 DESIGN.md（颜色的十六进制值、字体、怎么复用这套风格），可以直接交给 Claude Code、Cursor 等编码代理参考：https://refto.one/design-md\n- 另有设计/开发工具目录：https://refto.one/tools\n\n不用注册即可浏览。\n\n（披露：我是 Refto 的开发者。我们另外做了 Refto for Mac，一个按内容检索截图、视频、PDF 的本地素材库，付费 App，这里自荐的是免费的网站部分。）\n",
-    "created_at": "2026-11-24T15:18:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13737"
-  },
-  {
-    "id": 13736,
-    "title": "【作者自荐】Orzi Apps：纯本地零广告 CSS 转 Tailwind v4 / OKLCH 对比度在线工具，及网页 UI 检视插件 SpecQuill",
-    "content": "做了两个 **100% 纯本地运行、免登录、零广告** 的前端小工具，以及配套的 Chrome / Edge 侧边栏 UI 检视插件，欢迎各位前端和 AI 编程开发者试用反馈。\n\n### 1. 两个永久免费的在线前端工具（纯原生 JS，无后端，源码公开）\n\n- **CSS → Tailwind CSS v4 & React JSX 转换器**：https://apps.orzi.me/tools/css-to-tailwind/\n  - 自动剥离浏览器默认冗余样式（如 `position: static`、`opacity: 1` 及非 Flex/Grid 容器的无效属性），折叠四边简写为 `py-*` / `px-*`，输出干净的 Tailwind v4 类名与 React JSX，并支持实时渲染预览。\n- **OKLCH 颜色转换 + WCAG 2.1 对比度审计 + Tailwind v4 `@theme` 生成器**：https://apps.orzi.me/tools/oklch-contrast/\n  - 实时将 Hex / RGB 转换为感知均匀的 CSS `oklch()`，校验 WCAG 2.1 AA / AAA 对比度，一键导出 Tailwind v4 `@theme`、CSS `:root` 变量或 W3C DTCG JSON。\n- 在线工具源码仓库：https://github.com/orziz/orzi-apps-site\n\n### 2. 配套浏览器侧边栏插件：SpecQuill\n\n- 产品主页：https://apps.orzi.me/specquill/\n- 解决的问题：写页面或给 Cursor / Claude 复刻 UI 时，直接截屏常丢失准确间距/色值，而从 DevTools 复制计算样式又会吐出上百行默认废代码。\n- 核心功能：\n  - 任意网页悬停查看盒模型、按住 `Alt` 测量元素间像素红线距离、方向键游走 DOM、实时显示 WCAG 对比度徽标；\n  - 一键导出精简 HTML / CSS、Tailwind CSS v4 + React JSX、OKLCH 整页设计 Token、以及面向 AI 编程的精简 `<component_spec>` 提示词；\n  - 纯本地执行、最小权限设计（不申请 `<all_urls>` 后台权限）；核心检视与干净 HTML/CSS 导出永久免费（含每日免费 Pro 导出额度），另提供可选一次性买断 Pro 版（无订阅）。\n\n![SpecQuill Live UI Inspector & Redlines](https://apps.orzi.me/specquill/img/screenshot-1-inspector.png)\n\n![SpecQuill Tailwind v4, React JSX & AI Specs Export](https://apps.orzi.me/specquill/img/screenshot-2-tailwind-ai.png)\n",
-    "created_at": "2026-11-24T14:47:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13736"
-  },
-  {
-    "id": 13735,
-    "title": "【开源自荐】AlphaSift：覆盖 7 大市场的开源量化选股引擎、250 日形态实证与公开 T+N 纸面账本",
-    "content": "多数开源 AI 股票分析工具只能“围绕几只自选股聊天”，既难在收盘后覆盖全市场几千只标的做初筛，也很少把推荐结果按统一口径公开跟踪事后胜率。\n\n我开源了一个免 API Key 也可运行的多市场量化选股与公开验真引擎 **AlphaSift**（Apache-2.0 协议，已上架 PyPI：`pip install alphasift`）：\n\n1. **7 大市场全量初筛**：覆盖 A 股、美股、港股、日本、韩国、台湾、印度，内置 12 套可读 YAML 量化策略（`dual_low`、`momentum_quality`、`shrink_pullback` 等）与 8 行业桶正交约束，纯规则赛道零密钥几十秒跑完 `5,000+` 只股票。\n2. **LLM 情报排雷加代码硬锁**：接入 Gemini / DeepSeek / OpenAI 等模型时，自动抓取公告、新闻与资金流；遇未消除重大利空在 Python 代码层面硬封顶 `<= 35` 分，防止模型盲目吹票。\n3. **250 日经典 K 线实证打假与 Walk-Forward 审计**：基于 5,577 只 A 股 / 180 有效交易日全市场回测（Newey-West HAC + FDR 校正），验证出全天候无条件盲跑经典形态（红三兵、单阳不破、仙人指路等）普遍为负期望，并新增严格前视隔离的 **H1 选阶段 → H2 样本外** 市场情绪门控（`--allowed-regimes` / `--exclude-regimes`）。\n4. **公开可审计 `T+N` 纸面账本与同日 AI 对照**：每日 GitHub Actions 自动盘后跑批，按次日开盘价 `next_open` 扣除一字涨停核算 `T+5 / T+10 / T+20` 净超额，提供在线公开看板与独立可打印盘后日报，以及零依赖 STDIO MCP Server（`alphasift mcp`）。\n\n- **GitHub 仓库**：https://github.com/ZhuLinsen/alphasift\n- **公开实时看板**：https://alphasift.zhulinsen.tech/?lang=zh\n\n![AlphaSift 在线看板演示](https://raw.githubusercontent.com/ZhuLinsen/alphasift/main/docs/assets/dashboard-preview.gif)\n",
-    "created_at": "2026-11-24T14:09:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13735"
-  },
-  {
-    "id": 13734,
-    "title": "fix(issue-417): 更新 MenuBarMijia 迁仓后的项目链接（MenuBarHome）",
-    "content": "您好！我是第 417 期工具第 9 条 `MenuBarMijia` 的原作者（原账号 `jryang1997` 已停用，原仓库地址现返回 404）。\n\n项目已改名为 **MenuBarHome** 并迁至新仓库持续维护：https://github.com/jryang2026-code/MenuBarHome （已更新至 v1.4.0）。\n\n特提此 PR 仅修正第 417 期正文中的死链，方便读者正常访问，感谢！",
-    "created_at": "2026-11-24T12:56:43Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/pull/13734"
-  },
-  {
-    "id": 13733,
-    "title": "【开源自荐】 Oralo：会跟着你讲话的 AI 提词器，停顿、插话、跳段都跟得上",
-    "content": "我是作者，自荐开源项目 Oralo（MIT 协议）。\n\n写了多年代码，最近转做管理，突然不得不经常当众讲话、做工作汇报。可多年的开发经历，让我在这种场合反而容易紧张、断片、忘词。背稿背不住，传统提词器也不好用：定速滚动，讲快了跟不上；停一下、临时插个故事，再回来就找不到词了。\n\n身为技术人员，决定用技术手段解决这个问题，于是开发了 Oralo——一个会跟着你讲话的 AI 提词器。\n\n它用设备端语音识别对照讲稿，逐字高亮你讲到的位置：你讲，它跟；你停，它等；你自由发挥，它在听到原稿内容后自动接回原句，跳段也能跟上，实在找不到时手动点一句就行，不用再低头翻稿找词。\n\n难读的词可以提前准备：中文加拼音、英文加音标，还能试听参考发音，上台看一眼就够。\n\nMac 版有一个靠近摄像头的悬浮提词窗，汇报时只分享 PPT 或浏览器窗口，观众只看到幻灯片，提词只有你自己看得见。下图就是我最近一次工作汇报的实测现场：大屏上只有幻灯片，提词在自己的笔记本上。\n\n本地优先：无账号、无广告、无云端语音服务器，讲稿和录音都不上传，语音识别只在设备上跑。\n\niPhone / iPad：iOS 18+，App Store 已上架\nMac：预览版 0.1.0，macOS 15+，Apple 芯片与 Intel 通用\n\n开源地址：https://github.com/CH563/oralo\n官网：https://oralo.fun/\n\n<img width=\"1280\" height=\"1707\" alt=\"image\" src=\"https://github.com/user-attachments/assets/01f951ad-a1f2-4639-8d2c-4a55a32f6ac7\" />",
-    "created_at": "2026-11-24T12:20:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13733"
-  },
-  {
-    "id": 13731,
-    "title": "【开源自荐】SCP Archive：中英双站对照、分批离线图文缓存的开源 SCP-Wiki PC 阅读客户端",
-    "content": "- **项目名称**：SCP Archive\n- **开源仓库**：https://github.com/toydream525/scp-archive-desktop\n- **项目官网**：https://yuriaqua.com/scp-archive/\n- **Windows 安装包与便携版下载（v1.0.1）**：https://github.com/toydream525/scp-archive-desktop/releases/tag/v1.0.1\n- **开源协议**：MIT（客户端代码）/ CC BY-SA 3.0（SCP 相关概念、衍生徽标与在线/离线阅读内容）\n\n### 简介\n\n面向 SCP 基金会维基的免费开源 PC 桌面阅读客户端（Electron）。移动端已有不少 SCP 阅读 App，但电脑端一直缺少兼顾纯净暗黑阅读、分批离线缓存与复杂 Wikidot 页面特效还原的图形客户端，这款工具专门用来解决桌面端追更和离线收藏文档的痛点。\n\n### 主要特性\n\n- **中英文双站对照**：内置 SCP 英文主站与中文分部，单篇阅读时右上角一键 `CN ⇄ EN` 互切对照，预留多语言与更多分部（如日文分部）扩展接口。\n- **纯净排版 × 原版网页双模式**：纯净模式提供暗黑 / 护眼纸色 / 明亮三套主题、工具栏实时调字号（`12–30px` / `Ctrl+滚轮`）、自动目录大纲、折叠块一键全展开与页内查找自动展开命中项；遇到特殊 CSS 版式或交互式解谜文档可一键切回内置独立 Chromium 原版视图。\n- **按系列分批次离线缓存 & 导出**：支持按系列每批 20/50/100/200 篇顺序下载、断点续传跳过已缓存、可选同步本地化文章内图片（`scp-cache://` 断网看图），支持一键导出 Markdown 与内嵌图片的单文件 HTML。\n- **秒开与快速检索**：内置内存 LRU 缓存、磁盘缓存优先加载、鼠标悬停静默预加载与分片懒渲染；`Ctrl+L` 支持直接输编号跳条目或调用 Crom GraphQL 接口全站检索。\n- **统一登录与代理**：支持官方 Wikidot 登录窗口一次登录双站通用（不接触本地密码），内置系统/HTTP/SOCKS5 代理与镜像源测速。\n- **三种 Windows 分发形态**：同时提供定制 SCP 风格向导的 NSIS 安装包、单文件便携 EXE 与绿色免安装 ZIP。\n\n![SCP Archive](https://yuriaqua.com/assets/home-v2/scp-archive-cover.jpg)\n",
-    "created_at": "2026-11-24T11:34:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13731"
-  },
-  {
-    "id": 13730,
-    "title": "【开源自荐】映匣 (YingXia Player)：零联网权限、AES-256-GCM 流式加密视频保险箱的 Android 本地视频播放器",
-    "content": "我是作者，自荐开源项目 **映匣（YingXia Player）**（MIT 协议，Android 8.0+，Kotlin / Jetpack Compose / Media3 / Google Tink）。\n\n市面上常见的手机“私密视频保险箱 / 隐藏相册”大多充满开屏广告、强制登录、索要联网权限，甚至只是改后缀或建 `.nomedia` 假隐藏；而系统相册又缺少倍速、A–B 循环和时间书签等看本地视频与网课的顺手功能。因此写了这款 **100% 离线、零广告、源码可审计** 的本地视频播放器。\n\n![映匣（YingXia Player）](https://raw.githubusercontent.com/QAQ-cmyk/yingxia-player/main/docs/social-preview.png)\n\n### 主要特点\n1. **物理级零联网权限（CI 自动校验）**：在 `AndroidManifest.xml` 中显式移除 `INTERNET` 和 `ACCESS_NETWORK_STATE`，关闭系统云备份与设备迁移，仓库附带 `scripts/check-apk-privacy.py` 可自行核验每个发布版 APK。\n2. **真·流式加密视频保险箱，不落明文临时文件**：\n   - 采用 Google Tink `AES256_GCM_HKDF_1MB` Streaming AEAD 分段加密 + PBKDF2-HMAC-SHA256（60 万次迭代）封装密钥；\n   - 自定义 Media3 `VaultDataSource` 按需在内存分段解密播放、支持随机拖动进度条，绝不先解密出明文临时文件或生成明文缩略图；\n   - 先完整加密并做 SHA-256 校验，再通过系统弹窗一次性确认移除相册原件；切后台秒锁、`FLAG_SECURE` 防截屏，并支持在系统相册直接「分享 → 映匣」无痕观看或入箱，以及离线 Android Keystore 自拟三道密保问题防忘密码。\n3. **顺手的本地看片与网课工具**：8 档变速（0.25×–3×）、长按临时 2×/3×、A–B 区间循环、时间书签（箱内独立加密）、睡眠定时、拼音首字母搜索、离线重复/坏文件体检，以及完整中英双语界面。\n\n- GitHub 仓库：https://github.com/QAQ-cmyk/yingxia-player\n- 项目官网：https://qaq-cmyk.github.io/yingxia-player/\n- 最新正式版下载（v1.8.0）：https://github.com/QAQ-cmyk/yingxia-player/releases/latest",
-    "created_at": "2026-11-24T10:55:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13730"
-  },
-  {
-    "id": 13729,
-    "title": "【作者自荐】PRs, Please：审查虚构 PR 的开源维护游戏",
-    "content": "我是作者，自荐刚公开的开源项目 **PRs, Please**。\n\n这是一个简体中文浏览器游戏：五天内审查 30 份虚构 PR，阅读 diff、CI 日志与 API 参考，选择证据后批准、要求修改或拒绝。既要发现不存在的 API、被削弱的测试和隐藏后门，也要保护正常贡献。\n\n使用 TypeScript 和 Vite，代码与原创案例采用 MIT 许可，无需登录或 API Key，一局设计为约 15–25 分钟，希望作为周刊的趣味开源项目供读者体验。\n\n项目：https://github.com/zhushen12580/prs-please",
-    "created_at": "2026-11-24T10:05:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13729"
-  },
-  {
-    "id": 13728,
-    "title": "【开源自荐】TabRetake：可重复生成的 Web 演示视频与 README 动图生成器",
-    "content": "每次 Web 项目发布或者微调样式，手动录屏做 README 演示不仅耗时，而且一旦界面改版就需全部重录。\n\n我做了一个本地、声明式的 Web 演示视频与 README 动图生成工具 **TabRetake**（同时也是 Claude Code / Cursor / Codex 的 Agent Skill）。开发者只需用几行可编辑的 JSON 描述操作步骤，或让 AI 编程助手代写，工具就会在本地 Chromium 中自动执行流程、平滑放大点击区域、添加光标波纹与居底字幕，并同时导出 16:9 动图/视频与 9:16 手机竖屏短片。产品界面改版时，只需一条命令即可重新生成全套最新演示。\n\n支持 `--auto` 选项，传入网页 URL 即可自动扫描页面关键按钮并拼装出一段可直接运行的多步骤故事。已在真实开源项目 Vikunja（看板拖拽）、Memos（富文本编辑）与 TodoMVC 上完成实测验证，生成的 10 秒看板全流程 README GIF 仅 424 KB。纯本地运行（Playwright + FFmpeg + Sharp），无云端依赖，MIT 协议开源。\n\n项目地址：https://github.com/gnawbit/tabretake\n\n![TabRetake Vikunja 演示](https://raw.githubusercontent.com/gnawbit/tabretake/main/docs/hero.gif)\n",
-    "created_at": "2026-11-24T09:07:19Z",
-    "labels": [
-      "weekly"
-    ],
-    "url": "https://github.com/ruanyf/weekly/issues/13728"
-  },
-  {
-    "id": 13727,
-    "title": "【开源自荐】Apple Music Lyrics：Windows 版 Apple Music 的桌面歌词",
-    "content": "Windows 版 Apple Music 没有桌面歌词，我做了一个置顶的歌词窗口。它读取 Apple Music 已缓存的歌词，有逐字时间就逐字高亮，也能显示翻译和罗马音；Apple 没有歌词时，可选从网易云、QQ 音乐和 LRCLIB 补充。支持鼠标穿透，免费开源。\n\nhttps://github.com/BeteixZ/floating-lyrics-wam\n\n![demo](https://github.com/BeteixZ/floating-lyrics-wam/raw/main/.github/assets/demo-light.gif)\n",
-    "created_at": "2026-11-24T08:54:08Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13727"
-  },
-  {
-    "id": 13726,
-    "title": "〖开源自荐〗用量监控：在 Mac 菜单栏看 Codex、DeepSeek 和 Kimi 用量",
-    "content": "「用量监控」是 AAAAA-STUDIO 维护的原生 macOS 应用。用 Codex、DeepSeek 和 Kimi 时，不用挨个打开客户端或网页，点开菜单栏就能看额度，也可以把可拖动的悬浮窗留在屏幕边上。\n\n目前支持查看 Codex 剩余额度、DeepSeek 账户余额和累计消费、Kimi 会员月额度。Codex 和 DeepSeek 还可以查看最近的本地会话 Token 统计。三个服务可分别开启，未启用的服务不会读取本机数据或发起请求。\n\n项目采用 MIT 许可证，支持 macOS 13 及以上。当前 DMG 尚未通过 Apple 公证，也可用 Xcode 从源码构建。\n\n项目与下载说明：https://github.com/AAAAA-STUDIO/AAAAA-Usage-Plugin-app-macOS",
-    "created_at": "2026-11-24T08:53:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13726"
-  },
-  {
-    "id": 13725,
-    "title": "To Any AI：多模型图片与视频创作工作区",
-    "content": "大家好，我是 Junwu Xu，想自荐正在做的 To Any AI（万物生AI）。\n\n它把多种图片、视频模型放在同一个设计工作区，支持提示词和参考素材生成，并提供 Studio 无限画布、提示词探索及图像编辑工具。采用付费积分方案，具体生成能力以所选模型为准。\n\n产品地址：[To Any AI](https://toany.ai/)\n\n欢迎体验和反馈。",
-    "created_at": "2026-11-24T08:51:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13725"
-  },
-  {
-    "id": 13724,
-    "title": "【开源自荐】Muse 500 招：500 条中文实战技巧，三句话术复制就用，每条都附一句实话",
-    "content": "Muse 什么都能干，但很多人不知道让它干什么——或者话术说不到点子上，问一句回一句，效率还不如自己动手。网上的 AI 教程又大多是泛泛的场景介绍，落到你手头那件具体麻烦事上，还是不知道第一句该说什么。\n\nMuse 500 招是 500 条中文原创实战技巧，每条只干一件事：说中你的痛，给你三句话术，再附一句实话告诉你哪步它搞不定、必须亲手来。覆盖搞钱、投资、开发、效率、生活等 12 大场景。\n\n项目地址：https://github.com/TTNAN/muse-skills\n\n### 通用 AI 教程 vs Muse 500 招\n\n| | 通用 AI 教程 | Muse 500 招 |\n| --- | --- | --- |\n| 讲什么 | 泛泛的几十个场景 | 500 条，每条针对一个具体麻烦 |\n| 话术 | 要自己学提示词 | 三句话术，复制给 Muse 就用 |\n| 边界 | 只说好的，不说不行的 | 每条附一句实话：哪步它搞不定 |\n| 怎么找 | 从头读 | Ctrl+F 搜你正头疼的事，点开才展开 |\n\n### 主要特点\n\n**1. 每条三句话术，复制就用**：不用学提示词工程。搜到你的问题，把三句话术复制给 Muse 就行。Muse 是 Meta 的 AI 个人助理，你动嘴，它动手。\n\n**2. 每条都有一句\"实话\"**：不画饼。闲鱼没给 Muse 开接口，它不能替你自动回消息；不能替你群发邮件，只能把信写好。先说清边界，免得你对它有误会。\n\n**3. 十二个场景，500 条全在这**：搞钱与副业 60、金融与投资 44、独立开发 48、工作与效率 48、生活日常 44、购物与省钱 44、内容创作与涨粉 44、出行与预订 32、健康与运动 34、文件与云盘 34、组合技 38、实话实说 30，加起来正好 500。\n\n**4. 不用从头读**：500 条全是折叠的，点开才展开。直接 Ctrl+F 搜你正头疼的事，点开那条，把三句话术复制给 Muse 就行。\n\n**5. 今晚就能用的几招**：004 自动续费订阅大扫除——各种 App 会员自动续费，钱扣了才发现；008 心愿单降价自动提醒——买完第二天降价气到拍大腿；062 除息日一到就提醒你——账面突然绿了，还以为自己亏了钱；153 重要邮件秒提醒——客户的付款确认混在广告堆里；160 简历针对性改写——一份简历海投 50 家全石沉大海；202 重要日子倒计时——去年忘了结婚纪念日，被念叨了整整三个月。\n\n另外：中英双语；彩蛋是这个 README 是 Muse 自己写的。对，它在给自己写说明书。\n\nMIT 许可证，欢迎 PR。\n\n利益相关：我是项目作者。\n",
-    "created_at": "2026-11-24T08:26:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13724"
-  },
-  {
-    "id": 13723,
-    "title": "【开源自荐】Muse File Bridge：让 Muse 直接读写你 Windows 电脑里的文件，不用再复制粘贴",
-    "content": "Muse 没有 Windows 官方客户端。每次让它写代码，流程都是：它贴一段代码，你复制出来、粘贴到编辑器、保存——改一版就重复一遍，文件一多就乱。\n\nMuse File Bridge 是一个本地小服务加 Cloudflare Tunnel，让 Muse 经 HTTPS 直接读写你白名单里的文件夹。你说\"写个 Python 脚本放我桌面\"，几秒后文件就在磁盘上，不用再从聊天框里复制粘贴。\n\n项目地址：https://github.com/TTNAN/muse-file-bridge\n\n### 复制粘贴 vs File Bridge\n\n| | 手动复制粘贴 | Muse File Bridge |\n| --- | --- | --- |\n| 改一版代码 | 复制、粘贴、保存，来回几趟 | 说一句话，几秒后文件就在磁盘上 |\n| Muse 能碰你的文件 | 碰不到，只能贴在聊天框里 | 只读写你白名单里的文件夹，其他一律看不见 |\n| 出了问题 | 靠记忆回想改了什么 | 每次读写都记进审计日志，一行一条 |\n\n### 主要特点\n\n**1. 十几分钟装好，一键安装**：下载 ZIP，跑 install.ps1，Python 和 cloudflared 自动装好。不用管理员权限，不用懂 Python。装完注册两个开机自启任务，后台静默跑，挂了自动重启。电脑休眠或注销会断开，唤醒后自动恢复，这是正常的。\n\n**2. 只看你批准的文件夹**：默认只开 `Documents\\MuseBridge`，桌面、下载、D 盘其他东西一律看不见、碰不到。`..` 穿越、绝对路径、符号链接逃逸都在服务端直接挡掉。服务只监听本机 127.0.0.1，局域网和公网都连不上，只能走你自己的隧道。\n\n**3. 默认只读**：第一次装建议只读，确认 Muse 表现没问题，再手动开写。写操作是原子的，传一半断了也不会留下半个文件。\n\n**4. 令牌就是密码**：令牌只存在你电脑上的 token 文件里（仅你本人可读），通过加密卡片交给 Muse，绝不贴进聊天。随时能轮换，旧令牌立即失效。\n\n**5. 全程有账可查**：每次读写都记进 audit.log，一行一条 JSON。Muse 没有删除接口，删不了你的文件。支持干净卸载，卸载不碰你白名单里的文件。\n\n**6. 诚实的一句**：这个项目存在，是因为 Muse 现在没有 Windows / Linux 官方客户端。哪天 Meta 出了官方版，这个项目就退役、不再维护。\n\n另外：API 就是普通 HTTPS + Bearer，任何 HTTP 客户端都能用，不只 Muse。仓库里附了一份给 Muse 的接入手册（CONNECTOR-BRIEF.md），复制过去就能连上。\n\nPython，MIT 许可证。\n\n利益相关：我是项目作者。\n",
-    "created_at": "2026-11-24T08:26:51Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13723"
-  },
-  {
-    "id": 13722,
-    "title": "【开源自荐】trend-digest：GitHub Actions 每天把热榜推到飞书 / 钉钉 / 企业微信群",
-    "content": "仓库：https://github.com/everyinfra/trend-digest （MIT）\n\n一个模板仓库。点 Use this template，填两个 secret，换上中文预设（把 `presets/zh.toml` 覆盖到 `digest.toml`），GitHub Actions 就每天定时抓微博热搜、抖音热榜和 GitHub 趋势，整理成一份简报推到飞书、钉钉、企业微信、Slack、Telegram 或 Discord 群里，同时在 GitHub Pages 上留一份网页存档。\n\n- 只用 Python 标准库，不用服务器，不装依赖\n- 改一个 `digest.toml` 就能换来源（还有 Product Hunt、Reddit、新闻）和每段的条数\n\n数据调用 EveryInfra 的接口，按次收费，这是我们自己做的服务。中文预设每天 3 次调用，一个月约 $0.06，没取到数据的调用不收费。\n\n![中文预设的网页存档](https://raw.githubusercontent.com/everyinfra/trend-digest/main/docs/assets/preview-zh.png)\n",
-    "created_at": "2026-11-24T07:36:12Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13722"
-  },
-  {
-    "id": 13721,
-    "title": "【软件自荐】HertzStudio：dbx数据库音乐多媒体插件",
-    "content": "大家好，我是 HertzStudio的开发者。这是一款支持DBX 数据库插件的 音乐软件，同时还支持独立安装: windows和mac(因设备原因，未充分测试)\n\n目前独立版支持 多种舞台效果、桌面歌词、壁纸等功能，项目地址：https://github.com/onceMisery/hertz-studio\n\nAI生成舞台特效功能还在开发中！\n\n### 聚合音乐平台，目前支持：\n- 网易云\n- QQ音乐\n- 汽水音乐\n- 酷狗音乐\n- 酷我\n- 咪咕\n\n- **三维界面登录界面**\n\n<img width=\"1921\" height=\"1200\" alt=\"31504a3fc4615ef7fb7e599204a42cd8\" src=\"https://github.com/user-attachments/assets/54ef86ec-31fc-4223-8fb5-1c44dd3bda56\" />\n\n- **首页**\n\n<img width=\"1925\" height=\"1247\" alt=\"image\" src=\"https://github.com/user-attachments/assets/77a2a10a-7365-47a5-998f-d000caedfc48\" />\n\n- **舞台界面**\n<img width=\"1925\" height=\"1247\" alt=\"image\" src=\"https://github.com/user-attachments/assets/efd9d7c6-d73e-42a4-b0ca-2e531853e857\" />\n\n\n欢迎大家PR、star，提issue，谢谢。",
-    "created_at": "2026-11-24T07:32:09Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13721"
-  },
-  {
-    "id": 13720,
-    "title": "【软件自荐】FlowVoice：把多个网页选段接成朗读队列，也能听读自己的文稿",
-    "content": "大家好，我是 FlowVoice 的开发者。这是一款电脑端 Chrome、Edge 文字朗读扩展。\n\n阅读几篇英文资料时，可以把各页需要的段落选出来加入同一条朗读队列，接着听；开启页面跟随后，朗读会转到相应页面。已有的笔记和草稿也能导入，支持 TXT、Markdown、HTML、DOCX。\n\n如果文稿已经包含原文和译文，还可以切换双语对照排版，再选中需要的段落听读。双语功能使用自行提供的两种语言内容，不会自动翻译。\n\n基础语音和核心朗读功能免费，免费用户有音频广告。可选 Neural 音色需要付费授权和使用积分；可用声音及语言取决于所选引擎和系统。\n\n官网：https://flowvoice.net/\n双语步骤和可导入样例：https://flowvoice.net/zh/bilingual-reading/\n\n供周刊软件栏目参考，谢谢。",
-    "created_at": "2026-11-24T07:22:59Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13720"
-  },
-  {
-    "id": 13719,
-    "title": "工具推荐：Lesen · 莱森 - 免登录聚合雪球、微博与 X 公开动态的 Chrome 侧栏阅读器",
-    "content": "- 名称：Lesen · 莱森（Chrome 扩展）\n- Chrome 网上应用店：https://chromewebstore.google.com/detail/lesen-%C2%B7-%E8%8E%B1%E6%A3%AE-%C2%B7-%E5%A4%9A%E6%BA%90%E4%BF%A1%E6%81%AF%E8%81%9A%E5%90%88/dakdgplahfkbblfpafdjeipneioajgdf?hl=zh-CN\n- 简介：一款免费、本地优先的多源信息聚合 Chrome 扩展，可将雪球、微博和 X 的公开账号动态汇聚到一条统一时间线。支持免登录搜索公开用户、Chrome 原生侧边栏（Side Panel）伴读、三平台并排同步滚动的多列首页、X 英文原帖按需对照翻译，以及订阅列表的 JSON 导入导出与分享，适合希望减少平台算法噪音与标签页切换的桌面阅读场景。",
-    "created_at": "2026-11-24T07:11:00Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13719"
-  },
-  {
-    "id": 13718,
-    "title": "【开源自荐】spec-visualizer：spec-kit / OpenSpec / Kiro 项目的本地进度看板",
-    "content": "[spec-visualizer](https://github.com/josephleee/spec-visualizer)\n\n<img width=\"1200\" height=\"580\" alt=\"board-to-document\" src=\"https://github.com/user-attachments/assets/c894965d-8e0f-4488-9e07-0626138c77e9\" />\n\n一个本地运行的只读看板，给规范驱动开发（SDD）项目用。它读 spec-kit、OpenSpec、Kiro 的文档目录，把六个阶段摆在一块看板上，每个功能停在哪一步、下一步该敲什么命令都能看到；spec、tasks 这些文档按类型显示成用户故事、Given / When / Then 场景和任务进度。不调用 AI，文件改了页面自动刷新。\n\n`npx spec-visualizer --demo` 可以直接看示例（Node.js 20+）。目前没有中文界面，有中文 README。MIT 协议。",
-    "created_at": "2026-11-24T07:06:18Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13718"
-  },
-  {
-    "id": 13717,
-    "title": "【自荐】闪电右键 QuickRight：给访达右键菜单补上「新建文件」（macOS，免费）",
-    "content": "- App Store：https://apps.apple.com/us/app/quickright/id6763963598?mt=12\n- 官网：https://quickright.vercel.app/\n- 系统要求：macOS 14.0+，11 MB\n\n![右键菜单](https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a2/30/45/a23045a3-4359-dcf9-910f-fefff58e15ab/_U53f3_U952e_U83dc_U5355-_U82f1_U6587.png/1280x800bb.png)\n\nmacOS 的访达右键菜单里有「新建文件夹」，没有「新建文件」。这件事我忍了八年——要么切到终端敲一句 `touch`，要么复制一个现成文件再改名。动作两秒，前后的上下文切换二十秒，一天二十来次。\n\n闪电右键（QuickRight）就是把这个菜单补上。它是原生 Swift 写的 Finder Sync 扩展，装上之后右键菜单最上面多出一排，点一下文件就出现在当前目录，而且处于选中状态，可以直接改名或打开。\n\n### 主要功能\n\n- **按模板新建文件**：文本、Markdown、Word、Excel、PowerPoint、Pages，开发向的 HTML、Python、Swift、Shell 都有；模板可以自己加，我把常用的 Markdown front-matter 存了一份进去。\n- **剪切、粘贴、快速移动**：访达自己的剪切要 `⌥⌘V` 绕一圈，这里一步。\n- **复制完整路径**：归档素材、写文档、报 bug 都要路径，以前是把文件拖进终端窗口让它吐出来。\n- **在当前目录开终端**：支持 Terminal、iTerm2、Warp、Ghostty，可以按项目配不同终端；也能把文件直接在 VS Code 里打开。\n- **图片格式转换与压缩**：右键一张 PNG 转 jpeg，不用为了这个开预览。\n- **算 SHA-256**：下完镜像核对哈希的时候省一步。\n- **显示隐藏文件、查看文件信息**。\n\n菜单项的顺序和显示哪些可以自己调，图标可选带图标或纯文字两种。\n\n### 一个容易踩的点\n\n它是 Finder Sync 扩展，所以菜单出现在真正的系统右键菜单里。但 iCloud Drive、OneDrive 这类云盘目录是服务商托管的虚拟目录，扩展拿不到普通路径，**在这些目录里要按住 Shift 再右键**，菜单才会出来。这是整个品类的通病，不是某一个 app 的 bug。\n\n### 价格\n\n完全免费。没有订阅、不用注册账号、不做统计。应用里唯一的付费项是可选小费，不打赏也能用全部功能。\n\n目前版本 2.2，欢迎试用和反馈。\n",
-    "created_at": "2026-11-24T06:54:53Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13717"
-  },
-  {
-    "id": 13716,
-    "title": "【开源自荐】PlayGuard Agent，把游戏卡关保存成可回放的测试案例",
-    "content": "PlayGuard Agent 是一个 MIT 开源的游戏测试工具，适合已经提供状态读取与动作接口的项目。它会自动试玩内置的示例关卡，把发现的问题保存为带初始状态、随机种子和完整操作顺序的记录，再从相同起点重放并核对每一步的状态。\n\n例如，推箱子关卡把关键箱子推入死角后，压力板已经无法到达，游戏却还在继续。开发者可以用这份记录复查规则，也可以在修复后用同一组动作做回归。\n\n示例只用 Python 标准库即可运行，无需安装依赖或配置模型。仓库提供内置关卡、测试和本地运行说明。\n\n[PlayGuard Agent 源码与运行说明](https://github.com/t6am3/playguard-agent)\n",
-    "created_at": "2026-11-24T06:52:01Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13716"
-  },
-  {
-    "id": 13715,
-    "title": "【开源自荐】AI Founder Radar：每日 5-10 分钟全球独立开发、新品与真实 MRR 变现雷达",
-    "content": "自荐一个自己做的开源独立开发商业情报看板：**AI Founder Radar**。\n\n平时看科技早报时，发现大部分内容都是大厂融资通稿或大模型跑分对比，对真正想做小产品变现的独立开发者参考价值不大。于是我写了一套每日定时管线，专门过滤大厂噪音与纯玩具 Demo，只抓取海外经过验证的微型 SaaS 营收案例与真实用户痛点。\n\n- **在线访问**（免登录、无广告）：https://radar.aibuildon.com/zh\n- **GitHub 仓库**（MIT 开源）：https://github.com/wuyexiong/ai-founder-radar\n\n### 主要特点\n\n1. **8 大海外一手商业信源每日扫描**：每天早上自动聚合 **TrustMRR**（Stripe 实名验证营收榜）、**Acquire.com**（盈利微型 SaaS 挂牌估值）、**美/日区 App Store 畅销榜独立黑马**、**Product Hunt**、**Show HN**、**GitHub Trending 新锐**、**Indie Hackers** 以及 **Reddit 痛点许愿池**（`r/SaaS`、`r/SomebodyMakeThis` 等），去重打分后只保留最具实操价值的约 20 条信号。\n2. **固定「商业三要素」3 秒扫读**：借助大模型将每条英文/日文一手动态清洗提炼为三行大白话情报：\n   - **📌 是什么**：目标人群与解决的具体细分场景；\n   - **💵 怎么赚**：提取实名验证的 `$MRR / $ARR`、定价策略、获客渠道或估值倍数；\n   - **💡 抄作业**：单人开发者可切入的微创新方向、本地化机会或避坑提示。\n3. **原生四语种与历史归档**：内置简中、繁中、英、日四语种切换，支持按频道/信源/切口标签联动筛选、跨日书签收藏与每日 Top 5 邮件早报订阅。\n4. **零成本全自动架构（支持一键自部署）**：基于 Next.js 15 + Tailwind CSS v4 + Drizzle ORM + Supabase PostgreSQL 构建，通过 GitHub Actions 每日定时采集入库并按需刷新静态缓存；本地克隆后无需配置任何 API Key 即可开箱预览样本数据，也支持接入 Gemini 免费额度或本地 Apple Silicon（MLX / Ollama）模型自行运行。\n\n### 界面预览\n\n![AI Founder Radar 中文实时看板预览](https://raw.githubusercontent.com/wuyexiong/ai-founder-radar/main/.github/assets/preview-zh.webp)\n",
-    "created_at": "2026-11-24T06:44:26Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13715"
-  },
-  {
-    "id": 13714,
-    "title": "【开源自荐】Ossia：一款体验超棒的 AI 原生乐谱制作软件",
-    "content": "![Ossia 横幅](https://raw.githubusercontent.com/micooz/ossia/main/website/assets/cover-zh.png)\n\n## 项目地址\n\n官网：https://ossia.apporz.com/\n\n项目：https://github.com/micooz/ossia\n\n## 项目介绍\n\nOssia 是一款本地运行的开源乐谱制作软件。接入 Codex、DeepSeek Harness 等 AI Agent 后，可以通过对话创建、改编、移调和导出乐谱。\n\n做这个项目的起因是，我想把喜欢的游戏音乐整理成钢琴谱，打开现有制谱软件后，发现手动输入音符和调整排版需要花不少时间。于是尝试让 Agent 来完成这些操作，自己负责试听和检查。\n\n比如，可以让 Agent 把一首总谱改编成钢琴四手联弹；也可以导入图片乐谱，对照原图检查错漏，再通过对话修改。\n\n![将总谱改编成钢琴四手联弹](https://raw.githubusercontent.com/micooz/ossia/main/docs/readme-assets/case-arrange.webp)\n\n## 功能和使用\n\n- 对话创建和编辑乐谱，制作钢琴、吉他、尤克里里、小提琴及多重奏谱，也可以改编、移调、配和声和调整排版。\n- 导入 MusicXML、MIDI、PDF 和图片乐谱，可配置光学乐谱识别（OMR）服务加速识别。\n- 导出 PDF、PNG、SVG、MIDI 和 WAV 格式的乐谱或音频。\n- 播放试听、选择声部音色，保存并回退历史版本。\n- 在音符、小节等谱面元素上标注，与 Agent 讨论具体修改；也支持自由绘画。\n- 通过局域网在平板等设备上看谱，跨设备同步手绘标记。\n- 乐谱库保存在本地；基于 Rust、Tauri 和 LilyPond，采用 GPL-3.0-or-later 协议开源。目前提供 macOS Apple Silicon 和 Windows x64 安装包。\n\n安装 Ossia 并接入 Agent 后，在对话里输入 `/ossia 创建一首适合初学者的 C 大调钢琴练习曲，共 8 小节` 就能开始。",
-    "created_at": "2026-11-24T06:41:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13714"
-  },
-  {
-    "id": 13713,
-    "title": "【开源自荐】AmendAQ：改一条下一问即生效的 FAQ 问答引擎（附 80 题 RAG 对照与在线演示）",
-    "content": "- **项目地址**：https://github.com/zealot2002/AmendAQ （MIT 协议，Python FastAPI + Vue 3 + SQLite，我是维护者）\n- **免安装在线演示（含 80 题对照浏览器）**：https://zealot2002.github.io/AmendAQ/demo/\n\n### 解决什么问题\n客服 FAQ、公司制度、产品售后手册通常只有几十到几百条，但几乎每天都在改一句口径。用传统 RAG 时，每改一条就要切块、重算向量、同步索引，还经常遇到“旧切片残留”或“跨两条规则拼不全”的问题。\n\n**AmendAQ** 反过来做：不建向量库、不切块。用户提问时先让模型扫全部已发布条目的标题与编号（轻量目录），选出相关条目 ID 后再整条读取原文生成回答，最后过一遍确定性规则核对器。**后台改完任意一条规则点发布，下一问立刻按新原文回答，零重建索引延迟。**\n\n### 公开可复现的 80 题对照（不吹“全面碾压 RAG”）\n仓库内置《澄海精密》手册（211 条已发布 FAQ、80 题含 30 道跨条综合题，全用 Qwen3.6）的完整脚本与 `results.json`：\n\n- **总体通过率**：Condition A（三家都读已发布 FAQ）下 AmendAQ **74/80**、传统 RAG **74/80**、LightRAG 1.5.8 **72/80**；Condition B 下分别为 **74/80**、**73/80**、**74/80**。\n- **30 道跨条综合题**（A/B 均同）：AmendAQ **29/30** vs 传统 RAG **27/30** vs LightRAG **27/30**。\n- **同样直说短板**：传统 RAG 更快、更省 token（Condition A 中位耗时 **8.1s** / 152k 输入 token，AmendAQ 为 **22.4s** / 1.24M 输入 token，LightRAG 33.9s 且索引耗时 903s）；超范围拒答题上两家检索方案为 8/8，AmendAQ 为 6/8。因此它只适合**几十到几百条、频繁修改的规则库/FAQ**，不适合上万份静态长文档。\n\n### 界面与动图预览\n![AmendAQ 工作流演示](https://raw.githubusercontent.com/zealot2002/AmendAQ/main/docs/images/amendaq-demo.gif)\n\n![AmendAQ 中文管理与问答界面](https://raw.githubusercontent.com/zealot2002/AmendAQ/main/docs/images/amendaq-demo-zh.png)\n",
-    "created_at": "2026-11-24T06:09:15Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13713"
-  },
-  {
-    "id": 13712,
-    "title": "【开源自荐】Sourcepick：只在你选定的网站里搜索的浏览器扩展和网页版",
-    "content": "项目地址：[GitHub · dooly6276/sourcepick](https://github.com/dooly6276/sourcepick)  \n网页版：https://sourcepick.toolnjoy.com/  \n开源协议：MIT\n\n我是作者。Sourcepick 0.4.0 已发布：它把网站列表保存为“来源”，一键以 site: 运算符应用到 Google、Bing、DuckDuckGo 和 Brave 搜索，只在你选定的论坛、Reddit、问答、评测、论文、政府和统计网站、官方文档里搜索。内置 69 个来源共 793 个网站，另有韩国和日本网站的来源集，也可以用任意域名或网址路径创建自己的来源并通过链接分享。\n\n开发时我实测了各引擎读取 site: 查询的上限：Google 读取前 32 个词和网站，DuckDuckGo 约 22 个，Brave 20 个，超出部分不会有任何提示。Sourcepick 会把每次搜索调整到上限内，并告知实际搜索了多少个网站。\n\n浏览器扩展（Chrome、Edge、Brave、Opera、Whale、Firefox）在搜索结果页加一排来源按钮，搜索框和标签页标题只显示你输入的关键词。网页版可以在手机上使用。不需要账号，没有服务器，没有统计代码。严格模式 TypeScript，无运行时依赖。扩展目前从 Releases 页面下载压缩包安装，Firefox 附加组件商店审核中。\n",
-    "created_at": "2026-11-24T05:48:42Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13712"
-  },
-  {
-    "id": 13711,
-    "title": "【开源自荐】Peek：纯 Swift 原生 macOS 菜单栏工具，实时硬件监控 + 磁盘/AI Agent 空间分析 + 应用卸载",
-    "content": "- GitHub 仓库：https://github.com/athlan20/peek\n- 官网介绍：https://peek.yuntianyou.cc\n- Homebrew 安装：`brew install --cask athlan20/tap/peek`\n\n![Peek 主面板](https://peek.yuntianyou.cc/assets/panel.png)\n\n平时在 Mac 上写代码、跑本地模型和各种 AI CLI 工具，一直想找一个既轻量又能同时覆盖「硬件监控 + 磁盘空间分析 + 应用彻底卸载」的菜单栏工具，但要么是 Electron 套壳占内存，要么带后台常驻特权进程。再加上 Claude Code、Codex、Cursor、Ollama、LM Studio 这类 AI 工具的缓存和模型散落在主目录与 `~/Library` 各个角落，动辄占掉几十 GB 空间，清理起来非常麻烦。\n\n于是用 **100% 原生 Swift 6 + SwiftUI** 结合 Darwin / IOKit 系统接口写了 **Peek**，完全开源免费，不依赖外部 CLI、无后台常驻特权进程、无需管理员权限，面板收起后停止高频采样，后台 CPU 占用接近 0。\n\n### 主要特点\n\n- **6 卡片 Bento 菜单栏监控面板**：一屏展示 CPU（P/E 核心负载点阵）、内存（对齐活动监视器口径与 Swap）、存储读写与分类矩阵、网络速率与本机监听端口识别（支持按进程分组查看 Node / Web / AI / DB 端口）、电池与实时整机功耗（W）、CPU/GPU/SSD 温度与风扇转速。支持深/浅双主题与自定义等宽菜单栏实时指标。\n- **实时流式方块图磁盘 & AI Agent 空间分析**：纯 Swift 实现的 Squarified Treemap 引擎，边扫边画、扫描中途即可双击下钻，支持断点缓存。专门内置 **AI Agent 占用专页**，自动识别并汇总 19+ 款主流 AI 编程工具与本地模型（Claude Code、Codex、Gemini CLI、Cursor、Windsurf、Ollama、LM Studio、Hugging Face、Trae、Aider 等）的缓存与模型占用，并列出 `~/Downloads` 中超过 90 天未动的大文件。\n- **按使用频率着色的应用卸载器**：方块面积对应应用体积，颜色按 Spotlight 最后使用时间分档，一眼揪出“占空间又吃灰”的软件；自动关联 `~/Library` 残留目录，预览后统一移入废纸篓，不静默硬删。\n- **细节体验**：支持中英双语即时切换（无需重启）、Apple Silicon (`arm64`) & Intel (`x86_64`) 双架构、内置 GitHub Releases 双重校验在线更新（SHA-256 + 签名证书指纹）。\n\n![Peek 磁盘与 AI Agent 空间分析](https://peek.yuntianyou.cc/assets/storage.png)\n\n![Peek 应用卸载](https://peek.yuntianyou.cc/assets/uninstall-light.png)\n\n目前版本 `v0.1.5`（要求 macOS 14+），欢迎各位体验和提 Issue 交流！",
-    "created_at": "2026-11-24T05:45:37Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13711"
-  },
-  {
-    "id": 13710,
-    "title": "开源项目推荐：TabRetake —— 可重复生成的 Web 应用演示与 README 动图生成器",
-    "content": "## 项目名称\nTabRetake\n\n## 项目地址\nhttps://github.com/gnawbit/tabretake\n\n## 项目简介\n每个 Web 项目发版都需要演示素材，但手动录屏不仅费时，且一旦界面微调就需全部重录。\n\nTabRetake 是一个本地、声明式的 Web 演示视频与 README 动图生成工具（同时也是 Claude Code / Cursor / Codex 的 Agent Skill）。开发者只需用 JSON 描述步骤，或让 AI 编程助手代写，工具便会在本地 Chromium 中自动执行流程、平滑放大点击区域、添加光标波纹与居底字幕，并同时导出 16:9 动图/视频与 9:16 竖屏短片。当产品界面改版时，只需一条命令即可重新生成全套最新演示。\n\n## 核心亮点\n1. **真实可复现**：非 AI 假概念，已实测支持 Vikunja（看板拖拽）、Memos（富文本编辑）与 TodoMVC；\n2. **画面居底自适应**：按源视频比例自适应留白，字幕固定位于画面下方，绝不遮挡操作交互；\n3. **极佳压缩比**：真实 10 秒看板全流程生成的 README GIF 仅 424 KB，秒开无卡顿；\n4. **完全本地运行**：基于 Playwright、FFmpeg 与 Sharp，不依赖云端，不上传任何代码与私有数据。\n\n## 演示动图\n![TabRetake Vikunja 演示](https://raw.githubusercontent.com/gnawbit/tabretake/main/docs/hero.gif)",
-    "created_at": "2026-11-24T05:45:14Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13710"
-  },
-  {
-    "id": 13709,
-    "title": "【项目自荐】Agent Safety Arena：用实测录像看 DSH、WorkBuddy、Codex 和 Claude 的安全边界",
-    "content": "**当你允许 AI Agent 运行一个可能造成危害的程序后，究竟会发生什么？** 是拒绝执行、请求批准、阻止操作，还是最终真的产生了影响？\n\n[**Agent Safety Arena**](https://safety.finaios.ai/zh-cn/)通过具体程序、经过审核的结果记录和实测录像，公开评估 Windows 上 Agent 的安全边界。目前已完成的测评覆盖 **DeepSeek Harness（DSH）、WorkBuddy、Codex CLI 和 Claude CLI**。\n\n### 测什么：四类与日常使用相关的风险\n\n- **隐私安全**：屏幕、摄像头和麦克风是否会被访问。\n- **交互安全**：弹窗、窗口操控和输入干扰是否会影响使用电脑。\n- **系统安全**：其他进程是否会被结束，权限或系统设置是否会被修改。\n- **数据安全**：文件是否会被越权读取、修改、移动或删除。\n\n[![受保护目录删除对照实测](https://raw.githubusercontent.com/finogeeks/finsafe/main/integrations/dsh/windows/detail/assessments/protected-directory-delete.gif)](https://safety.finaios.ai/zh-cn/agents/dsh/#data)\n\n动图为不同测试运行的对照摘录，点击可查看对应案例集合中的完整条件与证据。\n\n### 不只看分数，还可以检查过程\n\n测试先在受控环境中确认程序确实能产生目标效果，再固定代码与执行提示词，对比同一 Agent 在两种配置下的表现：一组使用产品默认防护，另一组关闭内置沙箱、单独使用 FinShield 防护，以分别检验两种防护方式。\n\n公开案例保留产品版本、模型与配置、提交的提示词、程序哈希、审核结果和部分实测录像。审批提示与批准决定也会记录下来：**最初被拦截，与批准后实际产生危害，是不同的观察结果**。测试代码本身无法运行，也不能算作沙箱防护成功。\n\n项目公开测试程序、结果记录和复现说明。无需运行 Agent，也无需提供模型凭证，就可以用已有结果在本地重新生成测评网站。\n\n**项目关系与范围说明**：本项目由 FinAI OS 团队维护，该团队也开发 FinShield。结果仅适用于记录中的 Windows 场景、配置和审批策略，不代表独立第三方认证或通用安全排名；未测试、待核实的项目与已评分结果分开呈现。\n\n[中文测评网站](https://safety.finaios.ai/zh-cn/) · [测评方法](https://safety.finaios.ai/methodology/) · [项目与复现材料](https://github.com/finogeeks/agent-safety-arena) · [中文项目介绍](https://github.com/finogeeks/agent-safety-arena/blob/main/README.zh-CN.md)\n\n欢迎提出新的测试场景、讨论测评方法，也欢迎提供可复现的反例。",
-    "created_at": "2026-11-24T05:01:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13709"
-  },
-  {
-    "id": 13708,
-    "title": "【工具自荐】FinShield 智安盾：为 AI Agent 划定安全边界，支持 DSH 桌面版插件",
-    "content": "让 AI Agent 帮忙修改项目时，你是否也担心：它会不会截取屏幕、结束无关进程，或者误删任务范围之外的文件？\n\n**FinShield（智安盾，原 FinSAFE）**通过沙箱隔离与权限控制，为 Agent 执行任务划定安全边界，由 FinAI OS 背后的凡泰极客团队开发。\n\n主要覆盖四类场景：\n\n- **隐私安全**：控制对屏幕、摄像头和麦克风的访问。\n- **交互安全**：限制弹窗、窗口操控和输入干扰，减少对日常工作的影响。\n- **系统安全**：约束结束其他进程、修改系统设置等操作。\n- **数据安全**：按授权控制指定文件和目录的访问范围。\n\n### DSH 用户可以直接安装插件\n\n面向 Windows DSH Desktop 的插件已在 npm 发布，包名为 **`@finogeeks2026/finshield-dsh`**，当前版本为 **0.11.19**。\n\n在 DSH 桌面版中进入 **插件 → 添加插件**，输入包名，安装并启用；按提示完成原生组件安装、Windows 授权和所需重启，再到插件页面确认保护已生效。\n\n插件目前要求 **Windows x64，DSH `>=0.2.1-rc.5 <0.3.0`**。完整运行要求，以及旧包名迁移步骤，见[中文安装指南](https://github.com/finogeeks/finsafe/blob/main/integrations/dsh/windows/README-zh.md)。\n\n除了 DSH 插件，FinShield 也提供 Windows 上的 [Codex CLI 接入指南](https://github.com/finogeeks/finsafe/blob/main/docs/zh-CN/agents/codex.md)和 [Claude Code CLI 接入指南](https://github.com/finogeeks/finsafe/blob/main/docs/zh-CN/agents/claude.md)。DSH 插件本身仅支持 Windows，其他接入方式和平台范围见[兼容矩阵](https://github.com/finogeeks/finsafe/blob/main/docs/zh-CN/agents/compatibility.md)。\n\n### 看一个实际案例\n\n[![DSH 截屏访问对照实测](https://raw.githubusercontent.com/finogeeks/finsafe/main/integrations/dsh/windows/detail/assessments/screen-capture.gif)](https://safety.finaios.ai/zh-cn/agents/dsh/#privacy)\n\n动图为不同测试运行的对照摘录，点击可查看完整案例。[DSH 测评页面](https://safety.finaios.ai/zh-cn/agents/dsh/)保留了录像、版本、权限条件和结果。测评由开发 FinShield 的同一团队发布，实际防护取决于配置与已生效的执行边界。\n\n[产品官网](https://finaios.ai/zh-hans/products/finshield/) · [公开发行与文档仓库](https://github.com/finogeeks/finsafe) · [npm 插件](https://www.npmjs.com/package/@finogeeks2026/finshield-dsh) · [下载最新版本](https://github.com/finogeeks/finsafe/releases/latest)\n\n个人版按产品条款免费使用。欢迎试用，也欢迎反馈安装、兼容性问题和你希望保护的实际场景。",
-    "created_at": "2026-11-24T05:01:21Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13708"
-  },
-  {
-    "id": 13707,
-    "title": "【工具自荐】StarVeil 2.0：让 Claude Code、Cursor 与 OpenClaw 直接画连续漫画与拉框改字的 MCP 引擎",
-    "content": "做了一个面向 AI Agent（Claude Code、Cursor、Antigravity、Codex、OpenClaw）和创作者的漫画/条漫 MCP 服务 **StarVeil AI 2.0**，主要解决直接调用通用生图 API 画多格漫画时常见的“换格换脸、改一个错别字就得整页重画”问题。\n\n### 核心能力\n- **Streamable HTTP MCP 接入**：一行命令接入 `https://starveilai.com/api/mcp`（支持 OAuth 2.1 浏览器授权与 `sv_live_` API Key），包含 18 个工具与实时侧边画布，已上线 [Official MCP Registry](https://registry.modelcontextprotocol.io/v0.1/servers/com.starveilai%2Fstar-veil-ai/versions/latest) 并通过 [Glama Healthy 认证](https://glama.ai/mcp/connectors/com.starveilai/star-veil-ai)。\n- **0 积分照片锁脸与跨页连续**：上传自有照片/OC 设定图锁定角色（0 积分），续画第 2 页时传入 `previousTaskId` 保持角色外观与画风并在新分格下延续。\n- **拉框局部改字/修图**：传入 `0..1` 归一化矩形坐标（或在画布直接拉框）原地修复气泡错别字或单格手部细节，不重绘整页。\n- **6 语无损漫画翻译**：支持中、繁、英、日、韩、西 6 语原位嵌字翻译，保留原画线条与分格。\n\n### 实机截图与多页一致性样例\n\n![StarVeil 2.0 实时画布演示](https://raw.githubusercontent.com/gdfsdjj145/starveil-comic-skill/main/assets/live-studio-2.0.png)\n\n![StarVeil 2.0 连续多页角色一致性实拍](https://raw.githubusercontent.com/gdfsdjj145/starveil-comic-skill/main/assets/showcase-3page-consistency.png)\n\n### 快速接入与免费额度\n```bash\nclaude mcp add --transport http starveil https://starveilai.com/api/mcp\n```\n- **免费试用**：新验证账号包含 1 页免费 3:4 全彩漫画 + 1 次免费局部拉框修图 + 0 积分照片锁脸（无需绑卡）；后续为不强制订阅的永不过期按量积分制（$6 起）。\n- **开源技能规范（SKILL.md & server.json）**：https://github.com/gdfsdjj145/starveil-comic-skill\n- **官网与 MCP 文档**：https://starveilai.com/agents\n",
-    "created_at": "2026-11-24T05:01:19Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13707"
-  },
-  {
-    "id": 13706,
-    "title": "【开源自荐】AIST：原生融入 Shell、自带环境记忆的企业级多机 SSH 运维排障智能体",
-    "content": "- 项目地址：https://github.com/llaoj/aist\n- 文档地址：https://docs.aistrun.cc/zh/\n\n![demo](https://docs.aistrun.cc/demo-zh.gif)\n\n平时管线上服务器，出问题查日志、改配置来回切窗口很折腾。试过一些通用的终端 AI Agent，但在生产跳板机上到处散落上游 API Key 始终不踏实，跨机器排障也比较割裂，每次新开窗口还得把服务器目录结构重讲一遍。所以这大半年用 Go 做了 AIST 这套面向生产环境的终端运维排障系统。\n\n主要特点：\n\n- 原生融入日常 Shell，零配置开箱即用：客户端是一个 10MB 左右的纯静态单文件，终端本机不存任何上游 API Key，换台机器装上登录就能用，不用从新配一堆环境变量。既可以敲 `aist` 进入多轮排障，也可以直接接在管道后面用，比如 `journalctl -n 100 | aist \"看看报错原因\"`，读完管道输出还能直接留在终端里继续追问和排查。\n- 机器环境记忆与免 Agent 多机 SSH：不用往远端服务器上装任何 Agent，直接复用系统自带的 ssh 和 `~/.ssh/config` 主机别名（支持跳板机和 sudo），在同一个会话里就能跨多台机器查日志、对比配置。排障过程中会自动在本地沉淀机器环境记忆（目录结构、服务拓扑、常用路径等），越用越懂你的环境，不用每次从头交代背景。\n- 企业级执行护栏与文件备份：命令执行前会先过一遍 Shell 语法树检查（防黑名单绕过，也会拦住 vim、top 这类容易卡死终端的全屏命令）；只读查询回车放行，涉及状态变更的命令强制二次确认；修改配置文件前会展示彩色 diff、校验文件未被并发改动并在本地自动留存备份。\n- 42MB 单容器私有化网关与审计：服务端基于 Go + PocketBase 打包成单容器镜像，内嵌 SQLite 零外部依赖，5 分钟 Docker Compose 就能在企业内网搭起来（支持断网分发全平台客户端）。后台支持把 DeepSeek、千问、智谱或内网 Ollama/vLLM 串成优先级自动冷却切换链，统一管控团队帐号配额并记录完整的命令与改文件审计日志。\n\n快速体验：\n- 5 分钟私有化部署：https://docs.aistrun.cc/zh/getting-started/self-hosting\n- 在线体验服注册：https://aistrun.cc/register （为周刊读者准备了 50 个专属体验邀请码：`RYF2026W`）\n- 一键安装登录：`curl -fsSL https://aistrun.cc/run.sh | sh`\n\n目前主要打磨好了 Linux 全架构和 macOS（Windows 下推荐在 WSL2 使用），个人视野有限，肯定还有很多考虑不周的地方，非常欢迎大家试用拍砖、提 Issue 交流。\n",
-    "created_at": "2026-11-24T04:50:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13706"
-  },
-  {
-    "id": 13705,
-    "title": "【开源自荐】quicX：一个人断续写了多年的 C++17 QUIC/HTTP3 协议栈，已与 Chrome、nginx 等 17 个主流实现互通",
-    "content": "项目地址：https://github.com/caozhiyi/quicX\n\nquicX 是一个 C++17 的 QUIC / HTTP/3 协议栈：从 UDP 收发包、TLS 1.3\n握手，到 QUIC 流与拥塞控制，再到 HTTP/3 路由、QPACK、服务器推送，\n整条链路全部自实现，不依赖任何现成 HTTP 框架。五个模块各居其位、\n边界干净，一个数据包从网卡到 HTTP/3 handler 的完整路径，有专门的\n设计文档逐步拆解。\n\n代码刻意写得可读：从零读通整条协议栈的学习路径（LEARNING_PATH）\n已经备好，完整文档站（教程/指南/设计文档）在\nhttps://caozhiyi.cc/docs/quicx/ ，每一层都能有迹可循、单独调试。\n1523 个单元/集成测试，ASan/UBSan/TSan 全干净。\n\n外部检验质量合格：24 个场景 × 17 个主流实现（Chrome、nginx、ngtcp2、\nquiche……）双向互通，有效通过率 92.87%，结果每周自动发布：\nhttps://caozhiyi.cc/interop/\n\n开源协议：BSD-3-Clause",
-    "created_at": "2026-11-24T03:57:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13705"
-  },
-  {
-    "id": 13704,
-    "title": "【工具自荐】FujinAI：在浏览器里批量压缩商品图",
-    "content": "工具地址：https://www.fujindeai.com/tools/compress-image\n\n我协助维护 FujinAI，想给周刊「工具」栏目推荐这个免费的网页工具。它可以一次选中多张 JPG、PNG 或 WebP，设置最大宽度和压缩质量，再批量压缩。不用注册，图片在浏览器里处理，不上传。\n\n比如，为同一个商品准备一组不同尺寸的照片，可以把最大宽度设为 1200 像素再压缩，省去逐张调整。",
-    "created_at": "2026-11-24T03:26:16Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13704"
-  },
-  {
-    "id": 13703,
-    "title": "【工具自荐】DataXAPI：让 AI 直接读抖音、小红书、公众号的公开数据",
-    "content": "网址：https://dataxapi.com/zh/?ref=ruanyf-weekly\n\nDataXAPI 是给 AI 和程序用的社媒数据接口。在 Claude、Cursor、Cherry Studio 这类支持 MCP 的客户端里接上远程地址 https://api.dataxapi.com/mcp，就能让 AI 去取某条小红书笔记下面的评论、某个抖音博主最近的作品、某个公众号的历史文章；写代码的话走普通 HTTP 接口，有 OpenAPI 说明和 npm、PyPI 上的 SDK。\n\n- 不用平台账号、不用 Cookie、不用扫码，一把 Key。\n- 覆盖抖音、小红书、公众号、视频号、微博、B站、知乎、快手，以及 TikTok、X、YouTube 等。\n- 按次付费，一次 $0.0003 起，调用失败不收费；免费试用最多 333 次，不用绑卡。\n\n由 DataXAPI 团队提交。\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n",
-    "created_at": "2026-11-24T02:45:31Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13703"
-  },
-  {
-    "id": 13702,
-    "title": "【工具自荐】熊炼健身记录：在微信里逐组记录力量训练",
-    "content": "上周卧推用 40 kg，三组分别做了 8、8、6 次。这周再练时，如果备忘录里只写了「40 kg，3 组」，就看不出上次最后一组到底做了几次。\n\n我们维护的微信小程序「熊炼健身记录」把重量和次数记在每一组上，下次训练时可以翻回自己的记录。日常训练记录免费，训练记录保存在当前手机，自建计划另有可选会员。\n\n准备了一份带小程序码的卧推示例，读者可以照着记自己的第一组，也可以直接在微信搜「熊炼健身记录」。\n\n[查看逐组记录示例并打开小程序](https://xiongll.cn/bench/?utm_source=ruanyf_weekly&utm_medium=referral)\n",
-    "created_at": "2026-11-24T02:39:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13702"
-  },
-  {
-    "id": 13701,
-    "title": "【免费电子书自荐】《DiT 推理加速：原理与工程实践》— 63 页视频 DiT 与 AR-chunk 推理工程读本",
-    "content": "- **项目地址**：https://github.com/snowyLumiere/DiT-Inference-Acceleration\n- **完整读者包下载（PDF + 离线 HTML + 实验代码）**：https://github.com/snowyLumiere/DiT-Inference-Acceleration/releases/tag/v1.0-r9\n\n### 简介\n\n这是一本面向算法与 AI Infra 工程师的免费中文工程读本（主册 63 页 PDF + 7 页《Omni 推理框架》独立配套 PDF + 内置 KaTeX/Mermaid 的离线 HTML），系统拆解视频 Diffusion Transformer（如 Wan2.2）与连续因果分块视频/世界模型（如 SolarWM、Self Forcing）的推理加速原理、固定源码接入点与单卡 GPU 实测。\n\n### 与常见资料的不同\n\n1. **不是论文翻译，而是按工程排障顺序组织**：从执行图、Tensor Shape、GPU Tile/Roofline、显存生命周期账本与 A/B/A 测量纪律讲起，再展开采样蒸馏、TeaCache、FA3/SageAttention、稀疏、量化、CUDA Graph、AR 历史 KV、H2D 搬运、多卡并行与 3D-VAE 流式交付。\n2. **包含 Hopper SM90 → Blackwell SM100 / RTX 5090 (SM120) 迁移核对表**：厘清 SM120 128 KiB 统一池 vs 100 KiB 可配置 Shared Memory 上限、无 TMEM、消费卡不支持跨卡 P2P 等实战坑。\n3. **诚实保留负结果，并支持无 GPU 离线核验**：明确披露单卡合成实验边界，保留“热路径临时 `pin_memory()` 有效带宽掉半”、“Python 侧分页 FP8 KV Gather 耗时飙升近 10 倍”等反直觉观测；仅用 Python 标准库即可重算全书保存的实验统计。\n4. **附带 7 页 vLLM-Omni & SGLang-Omni 源码架构拆解**：解析 `async_chunk`、NIXL / CUDA IPC Relay 传输所有权、慢客户端背压与会话取消。\n\n![封面预览](https://raw.githubusercontent.com/snowyLumiere/DiT-Inference-Acceleration/main/.github/assets/cover-preview.png)\n",
-    "created_at": "2026-11-24T02:37:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13701"
-  },
-  {
-    "id": 13700,
-    "title": "【开源自荐】AGASTHY：看清 Claude Code、Codex 等 AI 编程助手在你电脑上跑了什么、留下了什么、花了多少 Token",
-    "content": "## AGASTHY\n\n一个免费开源（Apache-2.0）的桌面应用，用 Rust + Tauri 编写，把你的开发机整理成一张实时的「知识图谱」，并回答关于它的问题，每个结论都附带证据。\n\n起因：我每天都在用 Claude Code 和 Codex，发现它们会启动开发服务器、MCP 服务器和各种后台进程，会话结束后却常常留在那里继续占用端口和内存。活动监视器只能告诉你「有什么在跑」，却说不清是哪个会话启动的、还能不能关。\n\n- **看清每个 AI 编程助手**：Claude Code、Codex、Gemini CLI、Cursor Agent、Aider 等每个会话的进程树、内存、端口，以及它启动的 MCP 和开发服务器；会话结束后遗留的进程会标出来源，一步确认即可关闭（按 PID + 启动时间定位，不会误杀复用的 PID）。\n- **准确的 Token 用量**：按天、会话、项目和模型统计 Token 与估算费用，读取各助手的本地日志，每条响应只计一次（Claude Code 自带的 /usage 会把同一响应重复计数），只读计数，从不读取提示词内容。\n- **删除前先模拟**：「删掉这个包/运行时会坏什么？」列出依赖它的 Homebrew 包和每个会受影响的项目。\n- **整台机器的地图**：仓库（分支、未提交改动、重复克隆）、运行时（哪个版本生效）、Homebrew / npm / pnpm / uv / pip / cargo 的包，以及 AI 工具、MCP 配置、CLAUDE.md / AGENTS.md 等指令文件，全部连成一张图。\n- **可撤销的磁盘清理**：只清理 Git 忽略的 node_modules、target、虚拟环境和缓存，先预览，再移入可恢复的隔离区。\n- **给 AI 用的只读 MCP 服务器**：提供 Claude Code、Codex、Cursor 插件，AI 只能查看，不能修改。\n- **隐私**：无账号、无遥测，全部在本地运行。\n\n支持 macOS（Apple 芯片和 Intel）、Linux（x64 / ARM64），Windows 为预览版。\n\nmacOS / Linux 一行安装（校验 checksum，无需管理员权限，也不会弹出 macOS 安全提示）：\n\n`curl -fsSL https://raw.githubusercontent.com/HMAKT99/Agasthy/main/install.sh | sh`\n\n![Machine Graph](https://raw.githubusercontent.com/HMAKT99/Agasthy/main/docs/screenshots/graph.png)\n\n[开源地址](https://github.com/HMAKT99/Agasthy) · [下载 (Releases)](https://github.com/HMAKT99/Agasthy/releases/latest) · [中文说明](https://github.com/HMAKT99/Agasthy/blob/main/README.zh-CN.md)\n",
-    "created_at": "2026-11-24T02:28:44Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13700"
-  },
-  {
-    "id": 13699,
-    "title": "【开源自荐】 sightline：让 AI Agent 不再手写 PowerShell 的 Windows 窗口截图与坐标映射、量出 CPU 和内存的命令行工具 方便 APP debug",
-    "content": "https://github.com/sao-coding/sightline\n\nAI 编程工具（Claude Code、Codex 等）在 Windows 上验证 GUI 程序时，常得现场编写一次性的 PowerShell / Win32 脚本：截图、换算坐标、查进程资源占用。这类脚本又长又容易出错，Agent 往往得反复试错，浪费 token 与时间。\n\nsightline 是 Windows 专用的轻量命令行工具（单个 exe，命令是 `sight`），把这些事封装成现成命令。Agent 照常用自己的工具操作程序，再用 sightline 检查结果（它只观察，不会点击、输入或移动鼠标）：\n\n- 找到窗口并截图，被其他窗口遮住也能截，右键菜单等弹出窗口会一并纳入\n- 等画面稳定后再截图，避免截到动画或加载中的中间状态；还能等“画面真的发生了变化”（`--expect-change`、`--baseline`），不会截到操作前的旧画面\n- 告诉 Agent 图片像素如何对应到屏幕像素（也支持相对窗口、相对客户区），支持 Per-Monitor DPI，高缩放下不必手算坐标\n- 录制窗口动画为 GIF（`rec`），可用于 README 演示或测试证据\n- 统计整个进程树（Electron、浏览器、游戏）的 CPU 与内存，给出平均值、P95 与最大值\n- 输出为单行 JSON，图片只返回文件路径，不含 base64，省 token\n\nAgent 只需调用命令，不必每次重写脚本，也少了来回试错。\n\n安装（PowerShell）：\n\n```powershell\nirm https://raw.githubusercontent.com/sao-coding/sightline/main/install.ps1 | iex\n```\n\n开源协议：AGPL-3.0。\n",
-    "created_at": "2026-11-24T02:01:58Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13699"
-  },
-  {
-    "id": 13698,
-    "title": "【工具自荐】文件鸽（Pigeonhole）：下载文件时利用网页上下文自动改名并归档的浏览器扩展",
-    "content": "- Lite 版源码：[GitHub 仓库](https://github.com/welsir/pigeonhole-lite#readme)（非商业使用许可）\n- 完整版安装：[Chrome 应用商店](https://chromewebstore.google.com/detail/pigeonhole/ikjdcjgnlbealhahlogjidahhhlbcdhp?hl=zh-CN) · [桌面 Edge 安装说明](https://support.microsoft.com/en-us/edge/add-turn-off-or-remove-extensions-in-microsoft-edge)\n\n文件鸽在浏览器确定下载文件名时（`onDeterminingFilename`），根据网页标题给 `附件1.xlsx`、纯数字编号或随机字符串改名，授权后还可参考链接附近的文字区分同页附件，默认保留清晰的原名和知网文献的文件名。\n\n完整版可以按浏览器标签组或自定义规则将下载存入对应的项目文件夹，也可以让 AI 从已有项目中选择，归错时可一键撤销。命名和归档无需读取或上传文件内容，无需注册，也支持自带 DeepSeek 或 OpenAI 兼容接口的 API Key。\n\n<img src=\"https://github.com/user-attachments/assets/97e5bdd8-5512-4427-9cbe-c629b90f56fb\" width=\"300\" alt=\"文件鸽下载改名示例\" /> <img src=\"https://github.com/user-attachments/assets/8cec6a11-57ff-4b20-9b7a-6f10ba7decb4\" width=\"300\" alt=\"下载后的归档提示与撤销操作\" />",
-    "created_at": "2026-11-24T01:45:54Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13698"
-  },
-  {
-    "id": 13697,
-    "title": "【开源自荐】ArcMD：纯 Go 打造、致敬 Arc 审美与 120 Hz 手感的原生跨平台 Markdown 编辑器",
-    "content": "<p align=\"center\">\n  <a href=\"https://arcmd.wl.do\">\n    <img src=\"https://arcmd.wl.do/media/logo-horizontal.png\" width=\"340\" alt=\"ArcMD\">\n  </a>\n</p>\n\n### 项目地址\n\n- **GitHub 仓库**：https://github.com/Ciao1019/ArcMD\n- **官方网站**：https://arcmd.wl.do（含完整交互演示、实机截屏与版本日志）\n- **各平台安装包**：https://github.com/Ciao1019/ArcMD/releases（macOS Apple Silicon & Intel / Windows x64 / Linux x64 & ARM64）\n- **当前版本**：`v0.2.7` · **开源协议**：MIT · **开发语言**：纯 Go（`CGO_ENABLED=0`）\n\n---\n\n### 简介\n\n**ArcMD** 是一款完全用 **Go** 与 **[MyGo](https://github.com/egoist/mygo) Native UI** 自研的跨平台原生 Markdown 编辑器（MIT 开源，支持 macOS / Windows / Linux），零 Electron、零 WebView、零 cgo。它将 Arc 浏览器的多彩空间、全局收藏与呼吸感带入本地写作，直接原地读写标准 `.md` 文件；百万字长文输入响应低至 `0.248 ms`，并原生集成手绘白板、思维导图、零向量库空间问答与沙箱云同步，适合追求审美手感的创作者与 Go 原生 GUI 学习者。\n\n> **致敬与起源**：The Browser Company 宣布 Arc 步入维护模式的那天，无数人都在惋惜一款充满审美、手感与灵魂的软件走向终局。既然 Arc 停下了脚步，那就用纯 Go 与原生 UI，在本地写作的世界里把它的竖向侧栏、多彩 Space、全局收藏与安静克制的呼吸感延续下去——献给每一个依然相信「软件应该有审美与触感」的创作者。\n\n---\n\n### 核心亮点\n\n1. **纯 Go 零壳子，120 Hz 满帧跟手（百万字输入 P50 仅 `0.248 ms`）**\n   - 与主流基于 Electron / WebView 的 Markdown 编辑器不同，ArcMD 基于 Go + [MyGo](https://github.com/egoist/mygo) Native UI 完全自研结构化文档模型、增量排版引擎、字形绘制与 UTF-16 系统输入协议，**零 HTML、零 JavaScript、零 WebView、零 cgo**。\n   - 在包含 **100 万字符、549 个章节、500 张表格（9,912 个单元格）** 的极端混合长文基准测试中，输入 P50 仅 **0.248 ms**（仅占 120 Hz `8.33 ms` 帧预算的 **2.98%**），退格 P50 **0.245 ms**，滚动 P50 **0.447 ms**，中文输入法候选高频刷新 **0.234 ms**，久写不卡顿、不发热。\n\n2. **Arc 式多彩空间、资料库与左缘浮现侧栏**\n   - 每个 Space 对应一个本地文件夹，拥有独立名称、图标、置顶常驻标签页与阅读现场；支持 **1–3 色实时渐变、柔焦通透与颗粒质感**，一键在明朗白纸与护眼深夜纸面（`#1F2023`，全套文字与高亮自动重映射）之间平滑切换。\n   - **全局收藏**跨越所有空间，点一下就在当前空间原地打开；按 <kbd>⇧⌘L</kbd> 展开**主题空间卡片资料库**；按 <kbd>⌘&#92;</kbd> 收起侧栏铺满页面，鼠标移到窗口左缘即滑出毛玻璃浮层侧栏与实时纸面缩略图。\n\n3. **像在纸上落笔，却原样保存为标准 `.md`**\n   - 告别「左源码、右预览」的双栏割裂：输入 `**粗体**`、`` `代码` ``、行内 `$…$` 公式浮窗与管道符 `| 表头 |` 回车展开表格均在单张纸面上丝滑成形，按一次 <kbd>⌫</kbd> 随时反悔退回字面原文；光标平滑滑行、任务框弹簧勾选、表格列宽与双栏拖动自动磁吸 `50% · 50%`。\n   - 内置 **12 种手绘逐笔标注**、**原生立体 3D `<kbd>` 键帽**、不污染原文的**页边书签（<kbd>⇧⌘D</kbd> 跨空间秒回）**；原地直接读写 `.md` 文件，通过分块比对保留未改动段落的原始格式，随时与 Obsidian、Typora、VS Code、Git 无缝共存。\n\n4. **写到一半顺手画图：原生手绘白板 + 一键双侧思维导图**\n   - **原生 Excalidraw 兼容手绘白板**：支持在正文里直接内嵌起草编辑，也可按 <kbd>⌥⌘B</kbd> 创建独立的 `.excalidraw.svg` 两栖画板文件，内置 19 种手绘图形、磁吸箭头与双链卡片。\n   - **原生可导航思维导图（<kbd>⌥⌘M</kbd>）**：长文一键展开为单/双侧平衡树，白板、3D 键帽、KaTeX 公式与代码块全部原样渲染，点哪一节即刻跳回对应正文并高亮定位。\n\n5. **零向量库空间问答 Agent（<kbd>⌘J</kbd>）**\n   - 不依赖脆弱的向量库与复杂预建索引，像 Claude Code 读代码库一样，让模型直接搜索、翻阅空间内的实时 Markdown 文件后作答。\n   - 流式输出自带可悬停预览的 `[路径#L12-L18]` 原文出处胶囊，一点直达原文块；支持 OpenAI / DeepSeek / OpenRouter / 本地 Ollama，并附带终端 CLI `arcmd ask`。\n\n6. **WASM 沙箱安全插件 + 云同步与 IDEA 式三栏可视合并**\n   - 核心始终轻量纯粹，内置纯 Go `wazero` WASM 插件沙箱（支持权限确认与凭据隔离）。\n   - 官方云端同步插件支持 **S3 / Cloudflare R2 / OSS / COS / MinIO** 与 **坚果云 / Nextcloud / Alist WebDAV** 三路增量同步；即便多端并发修改同一段落，也会弹出 **IDEA 式三栏可视合并** 窗口逐块勾选消解，不再留下满地冲突副本。\n\n7. **开箱即用的深度写作工具链**\n   - 最多四分屏与拆出独立原生窗口、支持中文拼音/首字母的 <kbd>⌘K</kbd> 毫秒级全文命令栏、跨文档替换与一键撤销、`[[双链]]` 与 `#标签`、`.arcmd/history` 命名里程碑、以及纯 Go 矢量 PDF 导出（含 Type 3 字形子集、目录书签与可点击链接）。\n\n---\n\n### 快速体验\n\n从源码零 cgo 一键运行（使用 `ARCMD_HOME` 隔离体验，不影响现有本地文档）：\n\n```bash\ngit clone https://github.com/Ciao1019/ArcMD.git\ncd ArcMD\nARCMD_HOME=/tmp/arcmd-dev CGO_ENABLED=0 go run ./cmd/arcmd\n```\n\n也可以直接在终端体验零向量库空间问答（自动检索阅读空间内的 Markdown 文档并校验行号引用）：\n\n```bash\nARCMD_AI_KEY=sk-xxx go run ./cmd/arcmd ask -space 工作 \"为什么上次发布延期了？\"\n```\n\n> 不想配置 Go 环境？直接前往官网 [https://arcmd.wl.do](https://arcmd.wl.do) 或 [GitHub Releases](https://github.com/Ciao1019/ArcMD/releases) 下载 macOS / Windows / Linux 原生安装包即可开箱体验。\n\n---\n\n### 官网交互动图与实机截屏\n\n以下交互动图均取自官网 [arcmd.wl.do](https://arcmd.wl.do)（纯矢量 SVG 动画）：\n\n#### 1. 行云流水的原生书写交互\n光标丝滑滑行、行内语法与 TeX 公式实时成形、管道符回车展开原生表格并推动下方双栏顺滑让位、任务框弹簧勾选：\n\n![ArcMD 原生书写与微交互动图](https://arcmd.wl.do/media/svg/flow-zh-CN.svg)\n\n#### 2. 专属空间与实时配色：颜色、渐变、通透与深浅纸面\n为每个空间定制 1–3 色渐变与柔焦通透质感，清晨明朗白纸，深夜一键切换柔和护眼的深色纸面：\n\n![ArcMD 空间主题与深浅纸面动图](https://arcmd.wl.do/media/svg/themes-zh-CN.svg)\n\n#### 3. 笔触与心流：像在纸上落笔，却原样存为 `.md`\n立体 3D `<kbd>` 键帽、12 种手绘笔触批注与原生数学公式，保存下来依然是干净标准的 Markdown：\n\n![ArcMD 3D 键帽、手绘笔触与公式动图](https://arcmd.wl.do/media/svg/stage-writing-zh-CN.svg)\n\n#### 4. 原生手绘白板（兼容 Excalidraw）\n写到一半想画架构图，正文里直接内嵌起草，或按 `⌥⌘B` 新建独立 `.excalidraw.svg` 白板：\n\n![ArcMD 原生手绘白板动图](https://arcmd.wl.do/media/svg/stage-whiteboard-zh-CN.svg)\n\n#### 5. 原生可导航思维导图（`⌥⌘M`）\n长文一键展开为双侧平衡导图，白板、键帽、公式与代码块原样呈现，轻点哪节跳回哪段：\n\n![ArcMD 原生双侧思维导图动图](https://arcmd.wl.do/media/svg/stage-mindmap-zh-CN.svg)\n\n#### 6. 零向量库空间问答（`⌘J`）\n不建复杂索引，直读本地笔记作答，每句结论附带可悬停预览的原文出处卡片：\n\n![ArcMD 零向量库空间问答动图](https://arcmd.wl.do/media/svg/stage-qa-zh-CN.svg)\n\n#### 7. 云端同步与 IDEA 式三栏可视合并\nS3 / R2 / WebDAV 沙箱增量同步，双端并发修改并排勾选合并，不留冲突副本：\n\n![ArcMD 云端同步与三栏合并动图](https://arcmd.wl.do/media/svg/stage-merge-zh-CN.svg)\n\n#### 8. 纯原生 120 Hz 满帧性能\n100 万字符 + 500 张表格的混合长文，敲下按键仅需 `0.248 ms` 响应：\n\n![ArcMD 百万字长文 0.248 ms 性能对比动图](https://arcmd.wl.do/media/svg/stage-perf-zh-CN.svg)\n\n<details>\n<summary>展开查看更多官网交互动图（资料库、页面书签、手绘逐笔标注）</summary>\n\n**Arc 式资料库（`⇧⌘L`）**：所有主题空间卡片一眼尽览，集中管理 WASM 插件与 30 天最近删除\n\n![ArcMD 资料库动图](https://arcmd.wl.do/media/svg/library-zh-CN.svg)\n\n**页边书签（`⌘D` / `⇧⌘D`）**：不污染 `.md` 原文，目录实时同步并支持跨空间瞬间找回\n\n![ArcMD 页面书签动图](https://arcmd.wl.do/media/svg/stage-bookmarks-zh-CN.svg)\n\n**12 种手绘逐笔标注**：波浪线、圈出、荧光笔、双下划线、打叉、箭头与方框\n\n![ArcMD 手绘标注逐笔绘制动图](https://arcmd.wl.do/media/svg/annotations-zh-CN.svg)\n\n</details>\n\n#### 实机截屏（每一帧，皆为纯 Go 真实渲染）\n\n| 原生多彩空间外壳 | 双侧平衡思维导图 | IDEA 式三栏可视合并 |\n| :---: | :---: | :---: |\n| ![原生多彩空间外壳](https://arcmd.wl.do/media/shots/01_opening_shell.png) | ![双侧平衡思维导图](https://arcmd.wl.do/media/shots/05_mindmap_both_sides.png) | ![IDEA 式三栏合并](https://arcmd.wl.do/media/shots/17_idea_3way_merge_resolved.png) |\n\n---\n\n更多功能介绍、实时动图演示与版本更新日志请访问官网：**[https://arcmd.wl.do](https://arcmd.wl.do)**\n",
-    "created_at": "2026-11-24T01:33:41Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13697"
-  },
-  {
-    "id": 13696,
-    "title": "【工具自荐】AI Knowledge Studio：约 40MB、免 Docker 和向量数据库的本地 AI 知识库桌面端，支持解析 Excalidraw 架构图与离线 Ollama",
-    "content": "### 一句话简介\n\n**AI Knowledge Studio** 是一款约 40MB 的轻量级 Windows 本地私有 AI 知识库桌面工具。无需安装 Docker、Python 或外部向量数据库，点选本地文件夹即可基于纯内存 BM25 实现毫秒级检索与原文溯源；原生支持 18 种文档格式与 `.excalidraw` 架构图拓扑反解，支持内置免费体验通道免 Key 直接试用，也可一键对接本地 Ollama 纯断网运行。\n\n---\n\n### 相关链接\n\n- **GitHub 主页**：https://github.com/amigo267/AI-Knowledge-Studio\n\n---\n\n### 开发初衷\n\n平时本地积累了大量 Markdown（Obsidian）、Word、Excel、SQL/YAML 配置以及 Excalidraw 架构图，在尝试搭建本地 AI 知识库时遇到了几个比较普遍的痛点：\n\n1. 市面主流开源 RAG 方案大多依赖 Docker、Embedding 模型和独立向量数据库，部署繁琐且常驻内存占用动辄 4G~8G；\n2. 企业文档、接口配置和个人私密笔记不便上传公有云；\n3. 笔记在外部编辑器修改后，传统方案通常需要手动触发重新向量化同步；\n4. 大多数知识库只处理纯文本，无法理解手绘的 `.excalidraw` 架构图和流程图。\n\n因此做了一款偏极简工程路线的独立本地桌面客户端（Windows，便携版约 40MB）。\n\n---\n\n### 核心技术与功能特点\n\n- **零外部向量库依赖，纯内存毫秒检索**：采用 Jieba 分词 + 改良 BM25 + 多词共现倍增与 3 行滑动窗口近邻加权，对接口路径、错误码、IP、表字段和制度条款等精确信息召回稳定，普通轻薄本也能流畅运行。\n- **3ms 按需自动热更新**：闲置时不轮询、不占 CPU；提问瞬间基于文件 `mtime` 在毫秒级自动检测目录改动并静默增量更新，在 Obsidian 或本地编辑器改完文档即可直接提问。\n- **反解 Excalidraw 架构拓扑图**：原生解析 `.excalidraw` 和 Obsidian `.excalidraw.md`（LZString Base64 压缩格式），提取节点文本与箭头连线关系供大模型理解；支持在弹窗内滚轮无极缩放、切换表格视图，以及一键唤起 Obsidian / 本地编辑器。\n- **18 种本地格式零重型依赖提取**：原生支持 `.md`、`.excalidraw`、`.docx`、`.xlsx`、`.csv`、`.pdf`、`.sql`、`.yaml`、`.json`、`.py`、`.conf`、`.ini`、`.sh`、`.toml` 等格式，保留 Word/Excel 表格结构并支持暗黑模式原文预览。\n- **严格防幻觉与原文溯源**：回答严格基于本地检索切片，附带行内文档跳转链接与「引用来源」卡片（含相关度评分、章节路径、预览全文与本地打开）。\n- **开箱体验 + 纯断网离线双兼顾**：内置 12 套专业场景角色预设（研发架构、SRE 排障、DBA、安全审计、产品 PRD 等）；默认内置免费体验通道免填 API Key 即可上手，同时支持一键切换 14 款主流模型 API 或连接**本地 Ollama（免 Key）**实现拔网线纯离线问答。\n\n---\n\n界面截图\n\n1. 主工作台与多格式本地文档目\n<img width=\"2880\" height=\"1720\" alt=\"01_workspace\" src=\"https://github.com/user-attachments/assets/223d30f8-816e-443c-8ceb-5127c641516b\" />\n2. 结构化问答与原文引用溯源（含相关度评分与一键预览））\n<img width=\"2880\" height=\"1720\" alt=\"02_rag_answer\" src=\"https://github.com/user-attachments/assets/c0adae41-5a14-41bd-823a-7c1013fd7866\" />\n3. Excalidraw 架构图矢量预览与 Obsidian 联动\n<img width=\"2880\" height=\"1720\" alt=\"03_rag_citations\" src=\"https://github.com/user-attachments/assets/2b11ca3c-b442-48bb-86eb-6c994fa30eac\" />\n<img width=\"2880\" height=\"1720\" alt=\"04_excalidraw_topology\" src=\"https://github.com/user-attachments/assets/ed53e88c-579f-41eb-846b-7c683340f66d\" />\n4. 多模型预设与本地 Ollama 纯离线配置\n<img width=\"2880\" height=\"1720\" alt=\"05_models_ollama\" src=\"https://github.com/user-attachments/assets/897cebae-ad8b-45ad-b66a-a0b52d594293\" />\n\n---\n欢迎各位开发者体验并提出改进建议，如果对你有帮助也欢迎点个 Star 支持。",
-    "created_at": "2026-11-24T01:24:29Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13696"
-  },
-  {
-    "id": 13695,
-    "title": "【开源自荐】hakimi-pet-rs：用纯 Rust + Win32 编写的 19MB 内存单文件桌面小猫，支持接入 Claude Code",
-    "content": "## hakimi-pet-rs（哈基米桌宠）\n\n用 **纯 Rust + 原生 Win32 API** 从零编写的轻量级开源 Windows 桌面宠物，MIT 协议免费无广。\n\n因为市面上常见桌宠大多基于 Electron / WebView 套壳，为了在屏幕角落画一只猫动辄占用 250~350MB 内存，于是用纯原生重写了一版：\n\n- **极致轻量，单文件免安装**：运行仅占约 **19MB 私有内存**、**<1% CPU**（全屏时自动挂起至 ~0%）；全部 183 张立绘与近 400 条离线 `.ogg` 语音打包进单个 **21MB `.exe`**（实际代码约 5.8MB），双击即跑，不依赖运行时。\n- **零配置纯离线也能玩**：不填任何 API Key 即可体验 32 种动态表情、8 套服装与圆眼镜、抛物线扔鱼干、爬应用窗口、WASAPI 监听系统音乐实时卡点跳舞，以及连续戳五下炸毛哈气等互动。\n- **支持 `.zip` 自定义角色包**：将自制角色或 OC 立绘打成 `.zip` 拖放到宠物身上即可热切换，不同角色的记忆与声线按目录完全隔离。\n- **`tiny-skia` 自绘奶油快捷面板 + 双声道独立调音**：告别繁琐多级 Win32 右键菜单，支持连点试穿换装不关面板、语音与伴奏音量分开调节，以及悬停 `Ctrl + 滚轮` 盲调音量。\n- **开发者友好与隐私细节**：\n  - 支持一键挂载 **Claude Code / Codex Hook**，长任务跑完欢呼报喜、报错发抖提醒；\n  - 可选接入任意 OpenAI 兼容模型或本机 **Ollama + GPT-SoVITS** 实现自然语言设提醒、番茄钟与看屏吐槽（截屏前强制弹出缩略图二次确认，截图仅走内存不落盘）；\n  - 检测到全屏游戏/视频自动隐身静音，检测到 OBS / B站直播姬 / 抖音直播伴侣运行时自动开启隐私保护防社死。\n\n支持 Windows 10 / 11（x64）。\n\n[开源地址](https://github.com/bilili-syy/hakimi-pet-rs) · [单文件下载 (Releases)](https://github.com/bilili-syy/hakimi-pet-rs/releases/latest)\n",
-    "created_at": "2026-11-24T00:48:56Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13695"
-  },
-  {
-    "id": 13694,
-    "title": "【开源自荐】Save Image as PNG / JPG：零依赖纯浏览器本地 WebP/AVIF 另存为 PNG/JPG 扩展（MIT）",
-    "content": "## Save Image as PNG / JPG\n\n开源仓库：https://github.com/yangjwlove-dev/save-image-as-png-jpg （MIT 协议）\nMicrosoft Edge 官方商店（已上架）：https://microsoftedge.microsoft.com/addons/detail/fbemddekijddbdiojbhpgcajeohdbcbo\n\n### 解决什么问题\n现在越来越多网站默认返回 WebP 或 AVIF 图片，右键「图片另存为」后在旧软件、PPT、印刷或文档编辑器里经常打不开，不得不找在线网站转格式，既慢又有隐私顾虑。\n\n### 核心实现特点\n- **100% 本地转换，零服务端上传**：使用浏览器原生 `OffscreenCanvas` 在本地完成解码与重编码，不上传图片，无任何统计埋点或第三方 SDK。\n- **零外部依赖的 Manifest V3 源码**：纯原生 JS，无需打包构建即可直接加载调试；同时提供 `manifest.firefox.json` 兼容 Firefox 与打包脚本 `scripts/build-zips.sh`。\n- **右键一步保存**：支持右键直接另存为 PNG / JPG / WebP，弹窗可调 JPG 压缩质量与是否弹出保存路径框，内置 5 种语言本地化。\n\n适合需要快速保存网页图片、或想参考无框架 MV3 + OffscreenCanvas 跨浏览器扩展写法的同学。",
-    "created_at": "2026-11-24T00:01:36Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13694"
-  },
-  {
-    "id": 13693,
-    "title": "【开源自荐】UltraProbe：上线前检查提示词和 MCP 工具描述缺了哪些注入防御",
-    "content": "## UltraProbe\n\n开源（MIT）的 Node 命令行工具和 SDK，零依赖，不调用任何模型，也不需要 API key。\n\n它读你准备上线的文字（系统提示词，或 agent 能调用的工具描述，比如 MCP 工具的 description），检查里面有没有写进 25 项提示词注入防御，缺哪几项就列出来。\n\n- **25 项检查：** 12 项对应 OWASP LLM Top 10，13 项对应 OWASP Agentic Top 10（ASI01 到 ASI09）\n- **结果可重复：** 不调用模型，同一段文字每次得到同样的结果，可以放进 pre-commit 或 CI，离线也能跑\n- **接 CI：** 输出 table、JSON 或 SARIF，SARIF 可以接 GitHub Code Scanning；分数低于门槛时退出码为 1\n- **中英文都认：** 防御写法的识别规则同时支持英文和繁体中文\n- **其他：** 文本里的个人信息（PII）检测；对网址做 SEO、AEO 和 agent 可读性检查\n\n它不发动攻击，也不扫描 MCP 服务器本身，只检查写下来的防御有没有写。想知道模型实际会不会被攻破，要搭配 promptfoo、garak、PyRIT 这类动态红队工具。\n\n```bash\nnpx ultraprobe scan -p \"You are a helpful assistant\"\n```\n\n[开源地址](https://github.com/ppcvote/ultraprobe) · [npm](https://www.npmjs.com/package/ultraprobe)\n\n我是这个项目的维护者（Ultra Lab）。\n",
-    "created_at": "2026-11-23T21:10:52Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13693"
   }
 ]
