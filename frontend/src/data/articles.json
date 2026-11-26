@@ -1,5 +1,61 @@
 [
   {
+    "id": 13793,
+    "title": "【自荐】GTA 6 的 GitHub 移植进展：10 个项目跑到了哪一步？",
+    "content": "自荐一篇 HotRepo 的技术观察。文章把 10 个 GTA 6 非官方移植项目按「进入任务、进入世界、只到菜单或过场」分组，保留测试硬件和对应的 README 版本，方便读者判断每个项目实际展示了什么。\n\n有个比较有意思的发现：两天内至少五个仓库沿用了 VIctory 的提交历史。只看热榜会以为有许多独立项目同时突破，沿提交历史往回看，才能看出哪些进度来自同一套代码。文章也对照了 Leonida 的星数快照和 GitHub 公开的下架通知时间。 [中文原文与对比表](https://hotrepo.ai/zh/stories/gta-6-github?utm_source=ruanyf_weekly&utm_medium=editorial&utm_campaign=gta_6_github&utm_content=github_issue)",
+    "created_at": "2026-11-26T01:21:25Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13793"
+  },
+  {
+    "id": 13792,
+    "title": "【开源自荐】Free LLM API Hub：持续核验的 60+ 家大模型 API 免费额度/试用额度数据集",
+    "content": "Free LLM API Hub 是一个持续核验的大模型 API 免费额度/试用额度数据集，目前覆盖 60+ 家供应商（MIT 协议）。\n\n- 每条记录都注明核验日期，并链接到供应商自己的文档（限额、是否需要信用卡/手机号、能否商用、数据政策）。\n- 提供免鉴权的 CORS JSON API、CSV、llms.txt 和 RSS，可以直接在脚本里调用，例如 `curl -s https://freellmapihub.com/api/v1/no-card.json` 返回无需信用卡的供应商。\n- 网站：https://freellmapihub.com\n- GitHub：https://github.com/pacocartones/free-llm-api-hub\n\n声明：我是该项目的维护者。\n",
+    "created_at": "2026-11-25T23:34:55Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13792"
+  },
+  {
+    "id": 13791,
+    "title": "【工具自荐】StagePeek：买演唱会门票前，用 2D/3D 预览全球 201 座场馆的座位舞台视角",
+    "content": "自荐我开发的免费网页工具 **StagePeek**（支持简体中文、繁体中文、英文、日文、韩文五语，免登录即可直接体验）。\n\n买演唱会门票时，静态的官方 PDF 座位图和零散二手图往往看不清看台高度、斜角与舞台遮挡。StagePeek 为全球 **201 座**体育场、室内体育馆、巨蛋与剧院建立了 **100% 定制 3D 场馆模型**（涵盖北美、欧洲、英国、亚太及澳洲，含启德体育园、红磡香港体育馆、台北大巨蛋、东京巨蛋、伦敦 O2 等），输入票面区/排/座号或点击看台分区，即可从约 1.18 米人眼坐姿高度预览舞台视角：\n\n- **三类常见演唱会舞台预设**：支持端台（End Stage）、延伸台/T台（Thrust / Runway）和 360° 四面中央舞台切换；\n- **1x–10x 手机镜头模拟**：可对比广角（1x）、标准（2x–3x）及长焦（5x–10x）下舞台远近与直连距离；\n- **精确坐标与巡演日历**：其中 32 座旗舰场馆具备真实排/座坐标匹配，并整理了 130 座场馆共 536+ 场 2026–2027 巡演日程；\n- **开放与透明**：201 座场馆均免登录免费浏览（2D 座位图、3D 全景旋转及每馆 2 次 1x–2x 视野检查），明确标注为几何结构模拟预览而非实拍照片；提供 Pro 订阅解锁 3x–10x 长焦与无限对比（$4.99/周起）。另外也提供  可嵌入 3D 预览卡片。\n\n官网体验：https://stagepeek.live\n项目源码（部分公开与文档）：https://github.com/Hinstein/StagePeek",
+    "created_at": "2026-11-25T20:04:15Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13791"
+  },
+  {
+    "id": 13790,
+    "title": "【工具自荐】Serpent API：一个接口拿到 Google/Bing 搜索结果、YouTube 字幕、Amazon 报价等数据，返回 JSON",
+    "content": "**Serpent API** 是一个面向开发者的数据接口服务：发一次 HTTP 请求，就能以结构化 JSON 拿到搜索引擎和常见平台的公开数据，不用自己写爬虫、维护代理。\n\n网址：https://apiserpent.com\n\n**能做什么**\n\n- 搜索结果：Google、Bing、Yahoo、DuckDuckGo、Brave 的网页、新闻、图片、视频、购物结果\n- AI 引用排名：查看某个域名是否被 ChatGPT、Claude、Gemini、Perplexity 引用，以及引用了哪些来源\n- 其他数据接口：YouTube 视频字幕、Amazon 卖家报价、AliExpress（速卖通）商品搜索、Google 广告透明度、Telegram 公开频道、Threads、Substack、Airbnb\n\n**示例**\n\n```bash\ncurl -G \"https://apiserpent.com/api/social/youtube/transcript\" \\\n  --data-urlencode \"video=https://youtu.be/8jPQjjsBbIc\" \\\n  --data-urlencode \"output=text\" \\\n  -H \"X-API-Key: sk_live_your_api_key\"\n```\n\n**开源部分**（MIT 许可证，均附中文 README）\n\n- 各接口的 Python / Node.js 示例：https://github.com/apiserpent\n- YouTube 字幕示例：https://github.com/apiserpent/youtube-transcript-api-examples\n- MCP Server（给 AI 智能体接入搜索）：https://github.com/apiserpent/apiserpent-mcp\n- 官方 SDK：`pip install serpent-api`、`npm install apiserpent`\n\n**说明**\n\n这是一个商业服务，按调用次数付费，没有月费；每个账号注册后有 10 次免费调用，可以用来试用任意接口。网站目前是英文的，中文页面正在准备中。\n\n我是这个项目的开发者，欢迎提意见。\n",
+    "created_at": "2026-11-25T20:03:28Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13790"
+  },
+  {
+    "id": 13789,
+    "title": "【工具自荐】StickyPeels：会提醒你的 Mac 桌面便签，一行字排好一天",
+    "content": "StickyPeels：Mac 桌面便签，会到点提醒你，写长了还能展开成完整的页面。\n\n- 按想法直接打字：输入 \"call mum tomorrow 6pm\" 或 \"pay rent every 1st 9am #home\"，桌面上就出现一张便签，提醒时间、重复规则和标签都已经设好。\n- 一行排好一天：在快速记录里输入 \"today: 9a standup 15m, 2p call Sam\"，生成一张当天的计划便签，会避开日历里已有的会议，冲突的地方会标出来。\n- 清单里的每一项都可以有自己的提醒时间。\n- 便签写长了，可以打开成带标题、清单和链接的笔记，桌面上保留一张同步的便签。\n- 提醒可以是安静的横幅，也可以一直停在屏幕上，直到你处理。\n\n原生 macOS 应用（Swift、SwiftUI、AppKit），需要 macOS 26 及以上。界面目前是英文。免费使用；Pro 买断 24.99 美元，或每年 6.99 美元。不用安装也能先在浏览器里试用完整的演示。\n\n- 官网与在线演示：https://munyala.pro/stickypeels\n- 黑五优惠：年付 Pro 第一年 7 折，优惠码 BLACKFRIDAY30，12 月 1 日截止。\n\n![StickyPeels 图标](https://munyala.pro/static/stickypeels/stickypeels-icon.png)\n\n利益相关：我是开发者。\n",
+    "created_at": "2026-11-25T19:45:23Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13789"
+  },
+  {
+    "id": 13788,
+    "title": "【工具自荐】短剧镜头预算计算器，估算每个采用镜头的成本",
+    "content": "做短剧分镜预算时，一次生成的价格容易查，最后剪进片子的一个镜头花了多少却常常要另算。这个网页可以分别填入计费任务数和最终采用数，把重做的费用也算进去。\n\n例如，按千流 11 月 25 日的 MiniMax H3 表价，100 条各 5 秒的 768P 纯文字视频预计共 39 美元。如果最后采用 80 条，每个采用镜头约 0.49 美元。这组数字是试算，页面里可以直接改时长、任务数和采用数。Seedance 2.5 也能按镜头规格试算，或填入样片回执里的计费 token。\n\n我代表千流 API 维护这个工具。试算免费，在浏览器本地完成，无需账号或 API 密钥。预设价格来自千流，实际调用按各自账单核对。[打开上面的 100 条镜头算例](https://qianliu-api-tools.deed.page/?example=h3-100-shots)",
+    "created_at": "2026-11-25T18:52:24Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13788"
+  },
+  {
+    "id": 13787,
+    "title": "【工具自荐】锦囊匣（Jnbox）：让工作流预检、调试和正式运行各有回执",
+    "content": "大家好，我是锦囊匣（Jnbox）的开发团队成员，想向周刊自荐这个已上线的工作流工具。\n\n一个常见场景是接到报价表单后，归类请求、请负责人确认，再写入台账。使用可视化工作台可以编排这几步，并在运行历史中按版本查看每个节点的输入、输出和失败位置。工程人员可以用 jnbox CLI 管理流程，已经授权的工具也可以通过 MCP 供兼容客户端调用。\n\n这次想分享的是发布前的一个细节。jnbox 6.0.0 的 `flow preflight` 默认只校验流程结构和目录引用。需要真实调试时才显式加 `--execute`，可以在测试表和测试收件人上验证写入结果，再核对发布版本。这个区别对让 Agent 参与搭建工作流尤其有用。\n\n- [免登录演示](https://liangyouyiji.com/product/workbench?utm_source=ruanyf_weekly)｜用一条示例咨询走完表单、负责人确认与台账回查。\n- [正式运行实操](https://liangyouyiji.com/help/workflow-formal-run)｜用模拟订单检查分支、版本和节点结果。页面截图来自本地验收。\n- [jnbox 6.0.0 签名发行](https://github.com/liangyouyiji-dev/jnbox/releases/tag/v6.0.0)｜发布仓库提供安装工具和二进制，平台应用源码为私有。\n\n网页版可免费注册，另有付费方案。欢迎有跨系统表单、审批或台账需求的读者用示例数据先走一遍，分享你在登录、搭建或核对第一次运行时卡住的地方。",
+    "created_at": "2026-11-25T18:35:58Z",
+    "labels": [],
+    "url": "https://github.com/ruanyf/weekly/issues/13787"
+  },
+  {
     "id": 13786,
     "title": "【开源自荐】纳川 (Nachuan)：可一条命令自证零遥测的多 Agent 本地编码控制面",
     "content": "阮老师好，自荐一个刚开源的本地 AI 编码控制面项目 —— **纳川（Nachuan）**。\r\n\r\n## 项目信息\r\n\r\n- **项目地址**：https://github.com/wg5759/nachuan\r\n- **开源协议**：Apache-2.0\r\n- **当前版本**：`v0.2.0-alpha`（源码体验版，支持 CLI + 本地 Web 控制面，跨平台 CI 已覆盖 Windows / Linux / macOS）\r\n- **演示视频（31s 实机录屏）**：[nachuan_demo_en_1080p.mp4](https://github.com/wg5759/nachuan/releases/download/v0.2.0-alpha/nachuan_demo_en_1080p.mp4)\r\n\r\n![纳川 v0.2.0-alpha 31秒实机演示：8/8 零遥测自证、多 Git Worktree 审批与空气间隙出站防火墙](https://github.com/wg5759/nachuan/releases/download/v0.2.0-alpha/nachuan_demo_en_preview.gif)\r\n\r\n## 解决什么问题？\r\n\r\n用本地 AI 写项目代码时，常见两个工程痛点：一是很多工具口头宣称“零遥测”，但开发者缺乏简单手段自行验证到底有没有后台外联；二是同时开多个 Agent 改同一个仓库时，很容易互相覆盖改动或在仓库里静默执行非预期命令。\r\n\r\n## 核心特点\r\n\r\n1. **一条命令自证零遥测（8/8 断言）**\r\n   仓库内置 `python scripts/verify_zero_telemetry.py --json`，任何人拉下源码都可以离线复跑验证：静态扫描 **368** 个源码文件确认 0 遥测 SDK / 0 外链 CDN；通过 Python `sys.audithook` 监控底层 socket 确认纯启动与本地模型对话期间非回环外联 = `0`；验证纯离线模式硬拦截 4 类公网请求、无痕模式零数据库/文件残留、出站日志脱敏、默认关闭自动更新以及原生系统密钥环（Windows DPAPI / macOS Keychain / Linux Secret Service）零明文落盘。\r\n2. **Hook 安全的多 Git Worktree 并行 Coding Studio**\r\n   为每个 AI 编码任务自动创建隔离的 Git Worktree 并强制禁用仓库 Hook 与 fsmonitor；Web 界面提供逐行红绿 Unified Diff 审阅与单文件回滚；并将 **Plan（只读探索）** 与 **Build（受控执行）** 分离，写入或构建命令须经人工批准后才执行。\r\n3. **实时出站审计与空气间隙纯离线开关**\r\n   所有出站请求均进入本地环形审计缓冲表可视化展示；拨开「纯离线模式（Air-Gap）」开关后，所有非回环公网请求在建连前直接拦截，同时保留本地回环（如本机 Ollama / `llama-server`）正常运行。\r\n\r\n## 当前边界说明\r\n\r\n`v0.2.0-alpha` 目前为**源码公开体验版**（需拉取源码通过 Python 与 Node 环境运行 CLI 和本地 Web 控制面），尚未发布带商业代码签名的桌面一键安装包。欢迎感兴趣的开发者拉取源码重跑零遥测自检脚本、测试出站防火墙边界并反馈建议。\r\n",
@@ -748,61 +804,5 @@
     "created_at": "2026-11-23T21:10:52Z",
     "labels": [],
     "url": "https://github.com/ruanyf/weekly/issues/13693"
-  },
-  {
-    "id": 13692,
-    "title": "【开源自荐】Awesome Blender：Blender 插件、AI/MCP 工具与 3D 学习资源精选目录",
-    "content": "<img width=\"1551\" height=\"925\" alt=\"CleanShot 2026-11-23 at 22 02 52\" src=\"https://github.com/user-attachments/assets/e8164396-9a2b-4c23-add1-8235b24417d4\" />\n\n大家好，想推荐一个持续整理的 Blender 资源目录：**Awesome Blender**。\n\n项目汇集了 Blender 插件、AI 与 MCP 工具、3D 资产、独立工具、教程和社区资源，主要关注开源与免费项目，并按建模、纹理/UV、动画、模拟、游戏开发、生成式 3D 等主题分类，方便快速查找和学习。\n\n- GitHub：https://github.com/agmmnn/awesome-blender\n- 在线目录：https://awesome-blender.vercel.app/\n- 中文 README：https://github.com/agmmnn/awesome-blender/blob/main/README_ZH.md\n\n<img width=\"1778\" height=\"1060\" alt=\"CleanShot 2026-11-23 at 22 01 56\" src=\"https://github.com/user-attachments/assets/2ec85a84-513f-4cc7-938d-c15ea2a36e4d\" />\n\n仓库提供简体中文目录，也欢迎大家通过 Issue 或 Pull Request 推荐值得加入的 Blender 资源。希望能帮助 Blender 用户和创作者更容易发现实用工具与学习资料。大家好，想推荐一个持续整理的 Blender 资源目录：**Awesome Blender**。\n\n项目汇集了 Blender 插件、AI 与 MCP 工具、3D 资产、独立工具、教程和社区资源，主要关注开源与免费项目，并按建模、纹理/UV、动画、模拟、游戏开发、生成式 3D 等主题分类，方便快速查找和学习。\n\n- GitHub：https://github.com/agmmnn/awesome-blender\n- 在线目录：https://awesome-blender.vercel.app/\n- 中文 README：https://github.com/agmmnn/awesome-blender/blob/main/README_ZH.md\n\n仓库提供简体中文目录，也欢迎大家通过 Issue 或 Pull Request 推荐值得加入的 Blender 资源。希望能帮助 Blender 用户和创作者更容易发现实用工具与学习资料。",
-    "created_at": "2026-11-23T19:03:27Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13692"
-  },
-  {
-    "id": 13691,
-    "title": "【开源自荐】RID Uninstaller：删错了能还原的 Windows 卸载工具",
-    "content": "## RID Uninstaller\n\n用 Rust + Tauri 写的 Windows 卸载工具，免费开源（MIT），没有广告。\n\n系统自带的卸载会留下一堆文件夹和注册表项，而不少清理工具又容易按名字误删。RID 在意的是后一个问题：\n\n- **每一项残留都有依据：** 卸载后扫描出的文件夹、注册表项、服务、快捷方式，后面都写着它是凭什么被找到的；只凭名字相似找到的不会默认勾选\n- **删错了能还原：** 删除的内容先进隔离区，文件原样保留、注册表先导出，可以整批还原\n- **有护栏：** Windows 目录、Program Files 根目录、用户文档和其他程序的目录，无论扫描结果如何都拒绝删除\n- **安装追踪：** 通过它运行安装包，记下安装程序创建的每个文件和注册表项，卸载时照单清理；用的是系统自带的 ETW，不装驱动\n- **其他：** 强制删除、批量静默卸载、Microsoft Store 应用、启动项管理、命令行\n\n支持 Windows 10 / 11（x64）。\n\n[开源地址](https://github.com/Buggo404/RID-Uninstaller) · [下载](https://github.com/Buggo404/RID-Uninstaller/releases/latest)\n\n![RID Uninstaller](https://raw.githubusercontent.com/Buggo404/RID-Uninstaller/main/docs/screenshot.png)\n\n![卸载、清理残留、从隔离区还原](https://raw.githubusercontent.com/Buggo404/RID-Uninstaller/main/docs/demo.gif)",
-    "created_at": "2026-11-23T18:31:30Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13691"
-  },
-  {
-    "id": 13690,
-    "title": "【自荐】InkDesign Tattoo Prompt Generator",
-    "content": "[InkDesign Tattoo Prompt Generator](https://inkdesign.ai/tattoo-prompt-generator)\n\nThree ways in: a guided form, random words, or a D20 roll, all producing an editable tattoo prompt.\n\nInkDesign's Tattoo Prompt Generator offers Guided, Random words and D20 modes. Each ends in a prompt and negative prompt you can edit and copy, free and without an account.",
-    "created_at": "2026-11-23T17:51:39Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13690"
-  },
-  {
-    "id": 13689,
-    "title": "【开源自荐】Prism：免费开源的跨平台下载管理器，可替代 IDM",
-    "content": "自荐一个开源下载管理器 Prism，支持 Windows、macOS 和 Linux，MIT 许可，免费、无广告、无需账号。\n\n- 每个文件最多 32 个连接并行下载，程序崩溃、断网或断电后从断点继续\n- 浏览器扩展（Chrome、Edge、Brave、Firefox 等）接管下载，鼠标悬停在视频上即可下载 MP4 或 MP3（基于 yt-dlp，支持 1800 多个网站）\n- 支持 BitTorrent 和磁力链接、下载队列和定时任务，还能从 Hugging Face 下载 AI 模型（支持 hf-mirror.com）\n- 界面支持简体中文\n\nGitHub：https://github.com/FortoGraphy/prism-download-manager\n官网：https://prismdl.site\n\n![Prism](https://raw.githubusercontent.com/FortoGraphy/prism-download-manager/main/site/assets/img/main-dark.webp)\n\n说明：我是 Prism 的作者。这份自荐由 AI 编程助手 Claude Code 协助撰写；Prism 的开发也大量借助了 AI 编程助手。\n",
-    "created_at": "2026-11-23T17:48:45Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13689"
-  },
-  {
-    "id": 13688,
-    "title": "【开源自荐】声迹：在 Mac 本机把录音、音视频和系统声音转成可编辑的文字与字幕",
-    "content": "## 项目名称\n\n声迹（英文名 LocalScribe）：Apple silicon Mac 上的本地语音转文字与字幕工具，免费、MIT 开源，无需注册。\n\n## 项目地址\n\n- 源码：https://github.com/maddylaneeee/ShengJi\n- 使用文档：https://lixinchen.ca/docs/localscribe/\n\n## 项目简介\n\n开会录音、课程视频、网上看的外语视频，想要一份能改、能导出的文字稿或字幕，又不想把音频传到云端。声迹把识别、编辑、翻译和出字幕放在同一个原生 App 里，识别全部在本机完成。\n\n## 主要功能\n\n- 三种来源：麦克风、导入的音视频文件、Mac 正在播放的声音（可开悬浮实时字幕）。\n- 四种识别引擎可选：Apple Speech、Whisper、SenseVoice、NVIDIA Parakeet，中文、英文和多语种都能处理。\n- 稿件编辑：搜索替换、删除、范围裁剪，导出 TXT、Markdown、JSON、PDF、SRT、WebVTT；麦克风转录可选保存原音，回听核对。\n- 本机翻译：默认 Apple Translation，也可下载 NLLB 模型离线翻译。\n- 字幕烧录（1.8.0 新增）：把 SRT、WebVTT、ASS 等字幕或刚转出来的原文/译文压进视频，字体、位置、背景、阴影可调；命令行也能用。\n- 可选 AI 整理：用本机 Gemma 4 纠错、润色或总结转录稿；也可以改接 LM Studio、OpenAI 或 DeepSeek，选云端时才会发送文字稿。\n- 长录音可暂停、恢复，中途退出有恢复记录。\n\n## 界面展示\n\n![声迹首页](https://raw.githubusercontent.com/maddylaneeee/ShengJi/main/Documentation/Screenshots/home-zh-CN.png)\n\n![声迹稿件编辑器](https://raw.githubusercontent.com/maddylaneeee/ShengJi/main/Documentation/Screenshots/transcript-editor-zh-CN.png)\n\n## 下载安装\n\n- DMG：https://github.com/maddylaneeee/ShengJi/releases/latest\n- 需要 Apple silicon 和 macOS 15.5 以上；Apple Speech 识别与悬浮实时字幕需要 macOS 26。\n- 安装包尚未经 Apple 公证，首次打开需在“系统设置 → 隐私与安全性”中允许，步骤见 [安装指南](https://github.com/maddylaneeee/ShengJi/blob/main/INSTALL.zh-CN.md)。\n\n我是项目作者。\n",
-    "created_at": "2026-11-23T17:14:48Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13688"
-  },
-  {
-    "id": 13687,
-    "title": "【开源自荐】pt-tools：自托管的 PT 站点自动化工具，RSS 下载、刷流辅种、追剧入库、签到统计",
-    "content": "## 项目名称\n\npt-tools：自托管的 PT 站点自动化工具。\n\n## 项目地址\n\n- 源码：https://github.com/sunerpy/pt-tools\n- 文档：https://firlab.app/pt-tools/\n\n## 项目简介\n\n给有 PT 账号的人用：一个 Docker 容器按 RSS 自动下载、刷流、IYUU 辅种、追剧入库、每天签到、在封号前提醒、汇总各站数据，统一管理多台 qBittorrent 和 Transmission。数据库是内置的 SQLite，不用另装别的服务。\n\n## 主要功能\n\n- RSS 下载：按过滤规则下载，推送前检查磁盘空间和站点做种容量。\n- 刷流与辅种：从站点列表里挑免费新种做种，按做种时长、分享率、上传速度删除；IYUU 辅种。\n- 追剧与订阅：按 TMDB 每一集的播出时间去搜，版本锁保证一季用同一个制作组和分辨率；下载完硬链接进媒体库，写 NFO 和海报，通知 Emby、Jellyfin 或 Plex 扫描。\n- 签到与保号：每日签到，部分站点的验证码可以交给 AI 识别；长期没登录的站点提前提醒。\n- AI 助手：接任何 OpenAI 兼容的模型，可以让它加下载器、站点、订阅，改动先确认再保存；也提供 MCP 接口。\n- 手机 App（Android）、Telegram、QQ、飞书里都能查看和操作。\n\n## 界面展示\n\n![用户统计页（演示数据）](https://raw.githubusercontent.com/sunerpy/pt-tools/main/docs/public/screens/home-light.webp)\n\n![刷流任务页（演示数据）](https://raw.githubusercontent.com/sunerpy/pt-tools/main/docs/public/screens/brush-light.webp)\n\n## 下载安装\n\n- Docker：`docker run -d --name pt-tools -p 8080:8080 -v \"$PWD/data:/app/.pt-tools\" sunerpy/pt-tools:latest`，完整的 compose 见 README。\n- Linux、Windows 二进制和 Android 安装包：https://github.com/sunerpy/pt-tools/releases/latest\n\n我是项目作者。\n",
-    "created_at": "2026-11-23T16:49:02Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13687"
-  },
-  {
-    "id": 13686,
-    "title": "〖文章自荐〗Marionette、Vue 和 React：速度、内存和包体积怎么比？",
-    "content": "[第 418 期](https://www.ruanyifeng.com/blog/2026/11/weekly-issue-418.html)介绍了 Nolan Lawson 的 JS 框架 AI 编程成本测试。我们用 Codex 重做了同一个宝可梦应用，在对照中加入原测试未纳入的 Marionette 5，也整理了 Chrome 158 表格基准中 Marionette、Vue 和 React 的差异。[中文版](https://marionettejs.com/zh-CN/news/react-show-your-work/)附原始结果和复现资料。",
-    "created_at": "2026-11-23T16:39:46Z",
-    "labels": [],
-    "url": "https://github.com/ruanyf/weekly/issues/13686"
   }
 ]
